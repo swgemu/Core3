@@ -5,7 +5,6 @@
 #ifndef GETPLAYERIDCOMMAND_H_
 #define GETPLAYERIDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class GetPlayerIdCommand : public QueueCommand {

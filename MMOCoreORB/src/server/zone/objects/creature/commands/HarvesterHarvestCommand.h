@@ -5,8 +5,6 @@
 #ifndef HARVESTERHARVESTCOMMAND_H_
 #define HARVESTERHARVESTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class HarvesterHarvestCommand : public QueueCommand {
 public:
 

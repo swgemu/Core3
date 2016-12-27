@@ -22,7 +22,6 @@
 #include "engine/engine.h"
 #include "pathfinding/recast/DetourNavMesh.h"
 #include "pathfinding/recast/Recast.h"
-#include "terrain/layer/boundaries/BoundaryPolygon.h"
 #include "RecastPolygon.h"
 #include "server/zone/Zone.h"
 #include "terrain/manager/TerrainManager.h"
@@ -31,14 +30,6 @@
 class RecastNavMesh;
 
 class MeshData;
-
-class BoundaryPolygon;
-namespace server {
-	namespace zone {
-		class Zone;
-	}
-}
-
 
 class RecastNavMeshBuilder : public Logger {
 protected:

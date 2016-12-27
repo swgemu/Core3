@@ -17,13 +17,9 @@
 //
 
 #include "RecastTileBuilder.h"
-#include "pathfinding/recast/Recast.h"
-#include "pathfinding/recast/DetourNavMesh.h"
 #include "pathfinding/recast/DetourNavMeshBuilder.h"
-#include "pathfinding/recast/DetourNavMeshQuery.h"
 #include "templates/appearance/MeshData.h"
 #include "ChunkyTriMesh.h"
-#include "terrain/layer/boundaries/BoundaryPolygon.h"
 
 inline unsigned int nextPow2(unsigned int v) {
 	v--;

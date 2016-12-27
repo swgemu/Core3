@@ -5,7 +5,6 @@
 #ifndef FORCEMEDITATECOMMAND_H_
 #define FORCEMEDITATECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
 
 class ForceMeditateCommand : public QueueCommand {

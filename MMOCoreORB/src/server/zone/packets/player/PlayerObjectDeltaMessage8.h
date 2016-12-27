@@ -5,8 +5,7 @@
 #ifndef PLAYEROBJECTDELTAMESSAGE8_H_
 #define PLAYEROBJECTDELTAMESSAGE8_H_
 
-#include "../DeltaMessage.h"
-
+#include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage8 : public DeltaMessage {

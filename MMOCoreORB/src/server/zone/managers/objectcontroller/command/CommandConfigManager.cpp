@@ -32,7 +32,6 @@
 #include "server/zone/objects/creature/commands/pet/PetGetPatrolPointCommand.h"
 
 #include "templates/params/creature/CreatureState.h"
-#include "templates/params/creature/CreaturePosture.h"
 #include "templates/params/creature/CreatureLocomotion.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"

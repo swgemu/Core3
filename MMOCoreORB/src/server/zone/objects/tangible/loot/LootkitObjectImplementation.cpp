@@ -6,11 +6,9 @@
  */
 
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "templates/tangible/LootkitObjectTemplate.h"

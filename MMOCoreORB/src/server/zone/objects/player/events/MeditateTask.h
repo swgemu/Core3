@@ -12,9 +12,7 @@
 #define MEDITATETASK_H_
 
 #include "engine/engine.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
 

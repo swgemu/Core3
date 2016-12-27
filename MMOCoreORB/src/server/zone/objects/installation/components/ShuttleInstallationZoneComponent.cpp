@@ -5,14 +5,9 @@
  *      Author: TragD
  */
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
-#include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/region/CityRegion.h"

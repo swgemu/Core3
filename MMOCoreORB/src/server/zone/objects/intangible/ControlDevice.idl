@@ -4,15 +4,9 @@
 
 package server.zone.objects.intangible;
 
-import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
-import server.zone.objects.creature.VehicleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-include server.zone.managers.radial.RadialOptions;
-import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 
 @lua

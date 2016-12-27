@@ -10,10 +10,7 @@
 
 #include "AuctionTerminalDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
-#include "server/zone/Zone.h"
 
 class VendorDataComponent: public AuctionTerminalDataComponent {
 protected:

@@ -5,8 +5,6 @@
 #ifndef CUSTOMIZEDROIDCOMMAND_H_
 #define CUSTOMIZEDROIDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CustomizeDroidCommand : public QueueCommand {
 public:
 

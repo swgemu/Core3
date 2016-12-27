@@ -5,14 +5,9 @@
 #ifndef CMDSTARTSCENE_H_
 #define CMDSTARTSCENE_H_
 
-#include "engine/engine.h"
-
-#include "server/zone/objects/player/Races.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "terrain/Terrain.h"
-
 #include "server/zone/Zone.h"
-
 #include "templates/manager/TemplateManager.h"
 
 class CmdStartScene : public BaseMessage {

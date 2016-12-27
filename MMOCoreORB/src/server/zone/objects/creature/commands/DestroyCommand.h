@@ -5,10 +5,6 @@
 #ifndef DESTROYCOMMAND_H_
 #define DESTROYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
-
 class DestroyCommand : public QueueCommand {
 public:
 

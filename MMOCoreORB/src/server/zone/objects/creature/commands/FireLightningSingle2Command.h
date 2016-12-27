@@ -5,7 +5,6 @@
 #ifndef FIRELIGHTNINGSINGLE2COMMAND_H_
 #define FIRELIGHTNINGSINGLE2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FireLightningSingle2Command : public CombatQueueCommand {

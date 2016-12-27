@@ -14,12 +14,10 @@
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
-#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/packets/scene/GameSceneChangedMessage.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {

@@ -5,8 +5,6 @@
 #ifndef DEATHCOUNTCOMMAND_H_
 #define DEATHCOUNTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class DeathCountCommand : public QueueCommand {
 public:
 

@@ -8,7 +8,6 @@
 #ifndef MEDIUMDISEASECOMMAND_H_
 #define MEDIUMDISEASECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class MediumDiseaseCommand : public CombatQueueCommand {

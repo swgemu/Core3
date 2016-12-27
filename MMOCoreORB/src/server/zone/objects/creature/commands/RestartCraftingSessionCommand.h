@@ -5,8 +5,6 @@
 #ifndef RESTARTCRAFTINGSESSIONCOMMAND_H_
 #define RESTARTCRAFTINGSESSIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RestartCraftingSessionCommand : public QueueCommand {
 public:
 

@@ -11,7 +11,6 @@
 #ifndef RESOURCEMAP_H_
 #define RESOURCEMAP_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
 namespace server {
@@ -150,6 +149,5 @@ public:
 	 */
 	void getAttributeSubset(ResourceMap& subMap, const String& attributeName);
 };
-
 
 #endif /* RESOURCEMAP_H_ */

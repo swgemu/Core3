@@ -4,16 +4,13 @@
 
 #include "ImageDesignManager.h"
 #include "templates/customization/CustomizationIdManager.h"
-#include "server/db/ServerDatabase.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/creature/PlayerCreatureTemplate.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
-
 
 ImageDesignManager::ImageDesignManager() {
 	setLoggingName("ImageDesignManager");

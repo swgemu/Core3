@@ -5,14 +5,9 @@
 
 package server.zone.managers.minigames;
 
-import engine.core.ManagedObject;
-import engine.log.Logger;
-import engine.core.ManagedReference;
 import engine.util.Facade;
-import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.scene.SessionFacadeType;
 import server.zone.managers.minigames.events.FishingEvent;
 
 class FishingSession extends Facade {

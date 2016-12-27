@@ -10,23 +10,16 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
-#include "terrain/manager/TerrainManager.h"
-#include "server/zone/Zone.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
-#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
 #include "server/zone/objects/player/sui/callbacks/GamblingSlotSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/GamblingRouletteSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/GamblingSlotPayoutSuiCallback.h"
 #include "server/zone/managers/minigames/GamblingBet.h"
-#include "engine/service/proto/BaseMessage.h"
-#include "server/zone/managers/minigames/events/GamblingEvent.h"
-#include "server/zone/objects/area/ActiveArea.h"
 
 void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	if (terminal == NULL || player == NULL)

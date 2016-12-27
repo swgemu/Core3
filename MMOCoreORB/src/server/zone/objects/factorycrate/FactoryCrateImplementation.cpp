@@ -12,10 +12,6 @@
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
-#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
-#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
-#include "server/zone/packets/scene/UpdateContainmentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 

@@ -7,9 +7,8 @@
 
 #ifndef HQDEFENSESTATUSSUICALLBACK_H_
 #define HQDEFENSESTATUSSUICALLBACK_H_
+
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/scene/SceneObjectType.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 class HQDefenseStatusSuiCallback : public SuiCallback {

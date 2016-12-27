@@ -5,8 +5,6 @@
 #ifndef TOGGLECOMBATTAUNTSCOMMAND_H_
 #define TOGGLECOMBATTAUNTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ToggleCombatTauntsCommand : public QueueCommand {
 public:
 

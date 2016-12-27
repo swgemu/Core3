@@ -1,7 +1,6 @@
 #ifndef _H_BADGELIST_
 #define _H_BADGELIST_
 
-#include "engine/engine.h"
 #include "server/zone/objects/player/badges/Badge.h"
 
 class BadgeList : public Singleton<BadgeList>, Logger, public Object {

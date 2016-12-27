@@ -6,7 +6,6 @@
 #define FREEZEPLAYERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "templates/params/creature/CreatureState.h"
 
 class FreezePlayerCommand : public QueueCommand {
 public:

@@ -8,7 +8,6 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include templates.tangible.CharacterBuilderMenuNode;
-import server.zone.objects.creature.CreatureObject;
 
 class SuiCharacterBuilderBox extends SuiListBox {
 	protected transient CharacterBuilderMenuNode rootNode;

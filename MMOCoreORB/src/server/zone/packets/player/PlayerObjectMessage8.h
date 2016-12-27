@@ -5,11 +5,8 @@
 #ifndef PLAYEROBJECTMESSAGE8_H_
 #define PLAYEROBJECTMESSAGE8_H_
 
-#include "../BaseLineMessage.h"
-
+#include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "../../objects/player/variables/WaypointList.h"
-
 
 class PlayerObjectMessage8 : public BaseLineMessage {
 public:

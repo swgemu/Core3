@@ -8,12 +8,10 @@
 #ifndef PORTALLAYOUTMAP_H_
 #define PORTALLAYOUTMAP_H_
 
-#include "engine/engine.h"
-
-class PortalLayout;
-class FloorMesh;
-class AppearanceTemplate;
-class InteriorLayoutTemplate;
+#include "templates/appearance/PortalLayout.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/AppearanceTemplate.h"
+#include "templates/building/InteriorLayoutTemplate.h"
 
 class PortalLayoutMap : public HashTable<String, Reference<PortalLayout*> > {
 public:

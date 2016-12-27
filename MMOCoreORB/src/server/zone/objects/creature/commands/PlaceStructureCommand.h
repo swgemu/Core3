@@ -6,7 +6,6 @@
 #define PLACESTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 
 class PlaceStructureCommand : public QueueCommand {

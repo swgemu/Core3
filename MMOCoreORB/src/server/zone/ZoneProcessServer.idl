@@ -35,27 +35,20 @@ class ZoneProcessServer extends ManagedService {
 
 	//Static Managers
 	transient protected NameManager nameManager;
-	
+
 	transient protected HolocronManager holocronManager;
 
 	transient protected SuiManager suiManager;
-	
+
 	transient protected SkillManager professionManager;
-	
+
 	private transient FishingManager fishingManager;
 	private transient GamblingManager gamblingManager;
 	private transient ForageManager forageManager;
 
 	@weak
 	transient protected ObjectController objectController;
-	
-	/*CombatManager combatManager;
-	SkillManager skillManager;
-	RadialManager radialManager;
-	GroupManager groupManager;
-	LootManager lootManager;
-	*/
-	
+
 	public native ZoneProcessServer(ZoneServer server);
 
 	public native void initialize();
@@ -78,7 +71,7 @@ class ZoneProcessServer extends ManagedService {
 	public ZonePacketHandler getPacketHandler() {
 		return zonePacketHandler;
 	}
-	
+
 	@local
 	@dirty
 	public SkillManager getSkillManager() {
@@ -101,7 +94,7 @@ class ZoneProcessServer extends ManagedService {
 	public NameManager getNameManager() {
 		return nameManager;
 	}
-	
+
 	@local
 	@dirty
 	public HolocronManager getHolocronManager() {
@@ -118,12 +111,12 @@ class ZoneProcessServer extends ManagedService {
 	public SuiManager getSuiManager() {
 		return suiManager;
 	}
-	
+
 	@dirty
 	public FishingManager getFishingManager() {
 		return fishingManager;
 	}
-	
+
 	@dirty
 	public GamblingManager getGamblingManager() {
 		return gamblingManager;
@@ -133,44 +126,4 @@ class ZoneProcessServer extends ManagedService {
 	public ForageManager getForageManager() {
 		return forageManager;
 	}
-
-	/*UserManager getUserManager() {
-		return server.getUserManager();
-	}
-
-	CraftingManager getCraftingManager() {
-		return server.getCraftingManager();
-	}
-
-	ItemManager getItemManager() {
-		return server.getItemManager();
-	}
-
-	GuildManager getGuildManager() {
-		return server.getGuildManager();
-	}
-
-	BankManager getBankManager() {
-		return server.getBankManager();
-	}
-
-	MissionManager getMissionManager() {
-		return server.getMissionManager();
-	}
-
-	CombatManager getCombatManager() {
-		return combatManager;
-	}
-
-	RadialManager getRadialManager() {
-		return radialManager;
-	}
-
-	GroupManager getGroupManager() {
-		return groupManager;
-	}
-
-	LootManager getLootManager() {
-		return lootManager;
-	}*/
 }

@@ -8,7 +8,7 @@
 //Mail - "You got mail"
 //ChatOnConnectAvatar
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnConnectAvatar : public BaseMessage {
 public:
@@ -18,6 +18,5 @@ public:
 	} 
 	
 };
-
 
 #endif /*CHATONCONNECTAVATAR_H_*/

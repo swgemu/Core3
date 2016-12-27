@@ -8,8 +8,6 @@
 #ifndef TERMINALLISTVECTOR_H_
 #define TERMINALLISTVECTOR_H_
 
-#include "engine/engine.h"
-
 class TerminalItemList : public SortedVector<ManagedReference<AuctionItem*> >, public ReadWriteLock {
 protected:
 	bool searchable;
@@ -69,6 +67,5 @@ class TerminalGalaxyList : public VectorMap<String, Reference<TerminalPlanetList
 class TerminalListVector : public SortedVector<Reference<TerminalItemList*> > {
 
 };
-
 
 #endif /* TERMINALLISTVECTOR_H_ */

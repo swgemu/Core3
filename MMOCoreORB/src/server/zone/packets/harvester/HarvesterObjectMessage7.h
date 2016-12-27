@@ -1,9 +1,8 @@
 #ifndef HARVESTEROBJECTMESSAGE7_H_
 #define HARVESTEROBJECTMESSAGE7_H_
 
-#include "../BaseLineMessage.h"
-
-#include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/packets/BaseLineMessage.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/Zone.h"
@@ -103,4 +102,5 @@ public:
 		hopperList->insertToMessage(this);
 	}
 };
+
 #endif /*HARVESTEROBJECTMESSAGE7_H_*/

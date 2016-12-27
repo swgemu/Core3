@@ -8,6 +8,8 @@
 #ifndef CONGENERICMESSAGE_H_
 #define CONGENERICMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class ConGenericMessage : public BaseMessage {
 public:
    ConGenericMessage(const String& msg) : BaseMessage() {
@@ -18,7 +20,6 @@ public:
 		insertInt(0); //??
 
 		setCompression(true);
-
    }
 
 };

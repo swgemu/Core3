@@ -5,8 +5,6 @@
 #ifndef SETMATCHMAKINGPERSONALIDCOMMAND_H_
 #define SETMATCHMAKINGPERSONALIDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetMatchMakingPersonalIdCommand : public QueueCommand {
 public:
 

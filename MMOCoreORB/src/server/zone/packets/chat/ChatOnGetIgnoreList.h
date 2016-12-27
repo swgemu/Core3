@@ -5,8 +5,7 @@
 #ifndef CHATONGETIGNORELIST_H_
 #define CHATONGETIGNORELIST_H_
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class ChatOnGetIgnoreList : public BaseMessage {

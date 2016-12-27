@@ -5,8 +5,6 @@
 #ifndef STARTTRACELOGGINGCOMMAND_H_
 #define STARTTRACELOGGINGCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class StartTraceLoggingCommand : public QueueCommand {
 public:
 

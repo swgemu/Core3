@@ -5,14 +5,8 @@
 package server.zone.objects.tangible.firework;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
-include templates.tangible.FireworkObjectTemplate;
 include templates.SharedObjectTemplate;
 
 class FireworkObject extends TangibleObject {	

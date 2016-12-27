@@ -5,7 +5,6 @@
 #ifndef JEDIMINDTRICKCOMMAND_H_
 #define JEDIMINDTRICKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/commands/JediQueueCommand.h"
 
 class JediMindTrickCommand : public JediQueueCommand {

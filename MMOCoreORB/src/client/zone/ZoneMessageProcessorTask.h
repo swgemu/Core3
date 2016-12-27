@@ -5,8 +5,6 @@
 #ifndef ZONEMESSAGEPROCESSORTASK_H_
 #define ZONEMESSAGEPROCESSORTASK_H_
 
-#include "engine/engine.h"
-
 #include "ZonePacketHandler.h"
 
 

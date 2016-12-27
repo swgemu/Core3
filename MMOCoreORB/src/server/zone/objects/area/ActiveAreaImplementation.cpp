@@ -6,9 +6,7 @@
  */
 
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "events/ActiveAreaEvent.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) {

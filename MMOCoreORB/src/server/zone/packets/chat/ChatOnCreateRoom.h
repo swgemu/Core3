@@ -5,8 +5,7 @@
 #ifndef CHATONCREATEROOM_H_
 #define CHATONCREATEROOM_H_
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/room/ChatRoom.h"
 
 class ChatOnCreateRoom : public BaseMessage {

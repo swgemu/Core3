@@ -8,7 +8,8 @@
 #ifndef LOGINSESSION_H_
 #define LOGINSESSION_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
+#include "engine/log/Logger.h"
 
 class LoginClient;
 

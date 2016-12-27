@@ -4,16 +4,8 @@
 
 package server.zone.objects.region;
 
-import system.util.VectorMap;
-import engine.core.ManagedObject;
-import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.region.CityRegion;
-import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.scene.variables.StringId;
-include server.zone.objects.region.RegionCenterPoint;
-include server.zone.objects.region.RegionCenterPointList;
-import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 
 class Region extends ActiveArea {

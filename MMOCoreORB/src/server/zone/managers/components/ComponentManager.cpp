@@ -91,7 +91,6 @@
 #include "server/zone/objects/tangible/components/ElevatorDownMenuComponent.h"
 #include "server/zone/objects/region/components/CityManagementMenuComponent.h"
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DataStorageUnitDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
@@ -320,6 +319,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("FlagGameMenuComponent", new FlagGameMenuComponent() );
 	dataObjectFactory.registerObject<FlagGameDataComponent>("FlagGameDataComponent");
+
 	// Droid components
 	dataObjectFactory.registerObject<DroidMaintenanceModuleDataComponent>("DroidMaintenanceModuleDataComponent");
 	dataObjectFactory.registerObject<DroidEffectsModuleDataComponent>("DroidEffectsModuleDataComponent");

@@ -5,7 +5,6 @@
 #ifndef SABERSLASH1COMMAND_H_
 #define SABERSLASH1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "JediCombatQueueCommand.h"
 
 class SaberSlash1Command : public JediCombatQueueCommand {

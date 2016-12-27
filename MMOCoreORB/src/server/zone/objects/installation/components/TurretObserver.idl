@@ -6,11 +6,7 @@ package server.zone.objects.installation;
 
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.scene.SceneObject;
 import engine.log.Logger;
-
-import engine.util.Observer;
-
 
 class TurretObserver extends Observer implements Logger{
 	

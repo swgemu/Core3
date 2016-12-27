@@ -5,7 +5,6 @@
 #ifndef STUNATTACKCOMMAND_H_
 #define STUNATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class StunAttackCommand : public CombatQueueCommand {

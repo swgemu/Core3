@@ -8,16 +8,13 @@
 #include "server/zone/objects/tangible/consumable/Consumable.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/creature/buffs/DurationBuff.h"
 #include "server/zone/objects/creature/buffs/SpiceBuff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "templates/tangible/ConsumableTemplate.h"
-#include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

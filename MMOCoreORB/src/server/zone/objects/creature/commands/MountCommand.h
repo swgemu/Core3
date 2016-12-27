@@ -6,7 +6,6 @@
 #define MOUNTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class MountCommand : public QueueCommand {

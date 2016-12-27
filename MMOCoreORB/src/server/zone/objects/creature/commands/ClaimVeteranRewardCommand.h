@@ -5,8 +5,6 @@
 #ifndef CLAIMVETERANREWARDCOMMAND_H_
 #define CLAIMVETERANREWARDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ClaimVeteranRewardCommand : public QueueCommand {
 public:
 

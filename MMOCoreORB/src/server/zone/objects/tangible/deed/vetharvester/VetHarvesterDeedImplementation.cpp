@@ -6,13 +6,11 @@
  */
 
 #include "server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeed.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/ZoneServer.h"
 
 void VetHarvesterDeedImplementation::initializeTransientMembers() {

@@ -5,11 +5,7 @@
 package server.zone.objects.tangible.deed.resource;
 
 import server.zone.objects.tangible.deed.Deed;
-import engine.lua.LuaObject;
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 
 class VetHarvesterDeed extends Deed {

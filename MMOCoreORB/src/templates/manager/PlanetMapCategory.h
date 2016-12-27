@@ -8,7 +8,6 @@
 #ifndef PLANETMAPCATEGORY_H_
 #define PLANETMAPCATEGORY_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableRow.h"
 
 class PlanetMapCategory : public Object {

@@ -8,8 +8,6 @@
 #ifndef SLOTID_H_
 #define SLOTID_H_
 
-#include "engine/engine.h"
-
 class SlotId : public Object {
 	String slotName;
 	byte unk1;
@@ -83,6 +81,5 @@ public:
 		return slotName;
 	}
 };
-
 
 #endif /* SLOTID_H_ */

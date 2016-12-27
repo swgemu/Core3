@@ -1,10 +1,8 @@
 package server.zone.managers.creature;
 
 import server.zone.Zone;
-import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.ai.NonPlayerCreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.ai.Creature;
 import server.zone.managers.ZoneManager;
@@ -13,9 +11,7 @@ import server.zone.managers.creature.DnaManager;
 import server.zone.objects.area.SpawnArea;
 import system.util.Vector;
 include server.zone.managers.creature.SpawnAreaMap;
-include server.zone.managers.creature.AiMap;
 include server.zone.managers.creature.AiSpeciesData;
-import engine.util.u3d.Vector3;
 import system.thread.Mutex;
 
 class CreatureManager extends ZoneManager {

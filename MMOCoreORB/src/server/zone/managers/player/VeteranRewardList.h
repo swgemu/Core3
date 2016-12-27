@@ -8,7 +8,6 @@
 #ifndef VETERANREWARDLIST_H_
 #define VETERANREWARDLIST_H_
 
-#include "engine/engine.h"
 #include "VeteranReward.h"
 
 class VeteranRewardList : public Vector<VeteranReward> {

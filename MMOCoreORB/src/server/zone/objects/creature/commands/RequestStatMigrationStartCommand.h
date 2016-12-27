@@ -5,11 +5,6 @@
 #ifndef REQUESTSTATMIGRATIONSTARTCOMMAND_H_
 #define REQUESTSTATMIGRATIONSTARTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/Races.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
-
 class RequestStatMigrationStartCommand : public QueueCommand {
 public:
 

@@ -1,5 +1,5 @@
 /*
- * SkillBuffTemplate.h
+ * SkillBuffObjectAttributeListComponent.h
  *
  *  Created on: 9/21/2013
  *      Author: Klivian
@@ -10,7 +10,6 @@
 
 #include "templates/tangible/SkillBuffTemplate.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 
 class SkillBuffObjectAttributeListComponent: public AttributeListComponent {
 public:

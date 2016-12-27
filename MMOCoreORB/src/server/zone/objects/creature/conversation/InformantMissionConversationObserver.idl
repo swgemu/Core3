@@ -5,10 +5,7 @@
 package server.zone.objects.creature.conversation;
 
 include server.zone.objects.creature.conversation.ConversationObserver;
-include server.zone.objects.creature.conversation.ConversationTemplate;
-include server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.InformantMissionScreenHandler;
-include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
 
 class InformantMissionConversationObserver extends ConversationObserver {
 	@dereferenced

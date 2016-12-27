@@ -9,13 +9,13 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "templates/params/creature/CreatureState.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class DataTransformWithParent : public ObjectControllerMessage {
 public:

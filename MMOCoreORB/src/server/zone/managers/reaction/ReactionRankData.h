@@ -2,8 +2,6 @@
 #ifndef REACTIONRANKDATA_H_
 #define REACTIONRANKDATA_H_
 
-#include "engine/engine.h"
-
 namespace server {
 namespace zone {
 namespace managers {

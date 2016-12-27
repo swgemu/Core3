@@ -8,8 +8,6 @@
 #ifndef AFFECTORPROCEDURALRULE_H_
 #define AFFECTORPROCEDURALRULE_H_
 
-#include "../ProceduralRule.h"
-
 class TerrainGenerator;
 
 class AffectorProceduralRule {

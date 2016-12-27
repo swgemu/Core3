@@ -4,8 +4,6 @@
 
 package server.zone.objects.player.sui.listbox;
 
-import server.zone.objects.player.sui.listbox.SuiListBox;
-
 class SuiListBoxMenuItem extends ManagedObject {
 	protected string optionName;
 	

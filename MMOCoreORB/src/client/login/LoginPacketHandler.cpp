@@ -6,7 +6,6 @@
  */
 
 #include "LoginSession.h"
-#include "LoginClient.h"
 
 #include "LoginPacketHandler.h"
 

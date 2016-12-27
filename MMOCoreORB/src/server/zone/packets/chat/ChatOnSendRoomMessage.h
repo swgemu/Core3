@@ -5,7 +5,7 @@
 #ifndef CHATONSENDROOMMESSAGE_H_
 #define CHATONSENDROOMMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnSendRoomMessage : public BaseMessage {
 public:
@@ -17,4 +17,5 @@ public:
 	}
 
 };
+
 #endif /*CHATONSENDROOMMESSAGE_H_*/

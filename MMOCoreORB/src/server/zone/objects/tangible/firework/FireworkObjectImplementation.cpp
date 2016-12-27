@@ -6,18 +6,15 @@
  */
 
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
+#include "templates/tangible/FireworkObjectTemplate.h"
 #include "FireworkRemoveEvent.h"
 #include "FireworkLaunchEvent.h"
 #include "FireworkShowLaunchFireworkEvent.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
-#include "system/util/VectorMap.h"
 #include "server/zone/Zone.h"
-
 
 void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -159,7 +156,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player, int removeDela
 }
 
 void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int removeDelay) {
-	ManagedReference<StaticObject*> launcherObject = (server->getZoneServer()->createObject(fireworkObject.hashCode(), 0)).castTo<StaticObject*>();
+	ManagedReference<StaticObject*> launcherObject = (getZoneServer()->createObject(fireworkObject.hashCode(), 0)).castTo<StaticObject*>();
 
 	if (launcherObject == NULL)
 		return;
@@ -218,7 +215,7 @@ void FireworkObjectImplementation::beginShowLaunch(CreatureObject* player) {
 	if (fireworkShowData->getTotalFireworkCount() == 0)
 		return;
 
-	ManagedReference<StaticObject*> showLauncherObject = (server->getZoneServer()->createObject(fireworkObject.hashCode(), 0)).castTo<StaticObject*>();
+	ManagedReference<StaticObject*> showLauncherObject = (getZoneServer()->createObject(fireworkObject.hashCode(), 0)).castTo<StaticObject*>();
 
 	if (showLauncherObject == NULL)
 		return;

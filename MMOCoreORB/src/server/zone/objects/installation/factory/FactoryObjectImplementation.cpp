@@ -9,31 +9,14 @@
 #include "server/zone/objects/installation/factory/FactoryHopperObserver.h"
 #include "sui/InsertSchematicSuiCallback.h"
 #include "tasks/CreateFactoryObjectTask.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/chat/ChatManager.h"
-
-#include "server/zone/packets/installation/InstallationObjectMessage3.h"
-#include "server/zone/packets/installation/InstallationObjectDeltaMessage3.h"
-#include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
-#include "server/zone/packets/installation/InstallationObjectMessage6.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
-#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
-#include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 
-#include "server/zone/packets/chat/ChatSystemMessage.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
-
-#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/Zone.h"
-
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"

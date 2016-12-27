@@ -1,8 +1,6 @@
 #include "server/zone/objects/tangible/misc/CustomIngredient.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
 
 void CustomIngredientImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

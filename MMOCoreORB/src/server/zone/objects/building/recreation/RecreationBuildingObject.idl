@@ -5,12 +5,6 @@
 package server.zone.objects.building.recreation;
 
 import server.zone.objects.building.BuildingObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
-import server.zone.objects.cell.CellObject;
-include templates.building.RecreationBuildingObjectTemplate;
-include server.zone.managers.skill.SkillModManager;
-
 
 class RecreationBuildingObject extends BuildingObject {
 

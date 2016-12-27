@@ -4,9 +4,7 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"

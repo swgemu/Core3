@@ -9,11 +9,8 @@
 #define SELECTWAYPOINTEFFECTSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidMerchantModuleDataComponent.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/PlayerObject.h"
 
 class SelectWaypointSuiCallback : public SuiCallback, public Logger {
 

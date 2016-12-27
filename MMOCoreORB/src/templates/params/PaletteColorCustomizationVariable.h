@@ -8,11 +8,6 @@
 #ifndef PALETTECOLORCUSTOMIZATIONVARIABLE_H_
 #define PALETTECOLORCUSTOMIZATIONVARIABLE_H_
 
-#include "engine/engine.h"
-
-#include "templates/params/Param.h"
-#include "templates/params/primitives/StringParam.h"
-#include "templates/params/primitives/IntegerParam.h"
 #include "templates/params/RangedIntCustomizationVariable.h"
 
 class PaletteColorCustomizationVariable : public RangedIntCustomizationVariable {
@@ -120,6 +115,5 @@ public:
 	}
 
 };
-
 
 #endif /* PALETTECOLORCUSTOMIZATIONVARIABLE_H_ */

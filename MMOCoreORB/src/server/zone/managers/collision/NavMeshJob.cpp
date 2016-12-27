@@ -1,9 +1,5 @@
 #include "NavMeshJob.h"
-#include "pathfinding/RecastNavMesh.h"
-#include "pathfinding/RecastNavMeshBuilder.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "NavMeshManager.h"
-
 
 void NavMeshJob::addArea(const AABB& area) {
     float size = area.extents().getX() * area.extents().getZ();

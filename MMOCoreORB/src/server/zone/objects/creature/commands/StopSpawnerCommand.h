@@ -5,8 +5,6 @@
 #ifndef STOPSPAWNERCOMMAND_H_
 #define STOPSPAWNERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class StopSpawnerCommand : public QueueCommand {
 public:
 

@@ -7,7 +7,7 @@
 
 #include "ZoneReference.h"
 #include "server/zone/Zone.h"
-#include "../ServerCore.h"
+#include "server/ServerCore.h"
 
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
 	Zone* object = Reference<Zone*>::get();

@@ -6,16 +6,9 @@
  */
 
 #include "ClientCreateCharacterCallback.h"
-
-#include "ClientCreateCharacter.h"
-
-#include "ClientCreateCharacterSuccess.h"
-#include "ClientCreateCharacterFailed.h"
-
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/player/Races.h"
-
 
 void ClientCreateCharacterCallback::parse(Message* message) {
 

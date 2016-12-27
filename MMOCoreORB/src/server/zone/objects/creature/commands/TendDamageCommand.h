@@ -5,7 +5,6 @@
 #ifndef TENDDAMAGECOMMAND_H_
 #define TENDDAMAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "TendCommand.h"
 
 class TendDamageCommand : public TendCommand {

@@ -5,7 +5,6 @@
 
 package server.zone.objects.tangible.terminal.spaceship;
 
-import engine.core.ManagedObject;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.creature.CreatureObject;
 

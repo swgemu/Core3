@@ -8,9 +8,6 @@
 #ifndef APPEARANCETEMPLATE_H_
 #define APPEARANCETEMPLATE_H_
 
-#include "engine/engine.h"
-#include "templates/IffTemplate.h"
-#include "templates/collision/BoundingVolumes.h"
 #include "templates/collision/BoundingVolumeFactory.h"
 #include "templates/appearance/MeshData.h"
 

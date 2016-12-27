@@ -61,7 +61,6 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 
-#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/commands/TransferstructureCommand.h"
 

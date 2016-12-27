@@ -10,7 +10,6 @@
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 
 class GenerateCraftedItemCommand : public QueueCommand {
 public:

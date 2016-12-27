@@ -5,8 +5,6 @@
 #ifndef SHOWMUSICIANVISUALSCOMMAND_H_
 #define SHOWMUSICIANVISUALSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ShowMusicianVisualsCommand : public QueueCommand {
 public:
 

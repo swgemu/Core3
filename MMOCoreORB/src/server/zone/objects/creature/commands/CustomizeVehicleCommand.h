@@ -5,8 +5,6 @@
 #ifndef CUSTOMIZEVEHICLECOMMAND_H_
 #define CUSTOMIZEVEHICLECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CustomizeVehicleCommand : public QueueCommand {
 public:
 

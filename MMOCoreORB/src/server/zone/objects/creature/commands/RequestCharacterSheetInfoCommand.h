@@ -5,8 +5,6 @@
 #ifndef REQUESTCHARACTERSHEETINFOCOMMAND_H_
 #define REQUESTCHARACTERSHEETINFOCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/packets/player/CharacterSheetResponseMessage.h"
 
 class RequestCharacterSheetInfoCommand : public QueueCommand {

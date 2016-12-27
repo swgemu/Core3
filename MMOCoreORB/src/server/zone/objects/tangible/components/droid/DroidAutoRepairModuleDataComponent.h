@@ -6,7 +6,6 @@
 #define DROIDAUTOREPAIRMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -14,7 +13,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidAutoRepairModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -43,7 +41,6 @@ public:
 	virtual void copy(BaseDroidModuleComponent* other);
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -51,4 +48,5 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDAUTOREPAIRMODULEDATACOMPONENT_H_ */

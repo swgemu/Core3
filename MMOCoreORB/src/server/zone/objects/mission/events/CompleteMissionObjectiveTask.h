@@ -9,7 +9,6 @@
 #define AWARDREWARDTASK_H_
 
 #include "server/zone/objects/mission/MissionObjective.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 
 class CompleteMissionObjectiveTask : public Task {
 	ManagedReference<MissionObjective*> objective;

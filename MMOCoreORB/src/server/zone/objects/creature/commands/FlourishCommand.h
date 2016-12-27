@@ -5,7 +5,6 @@
 #ifndef FLOURISHCOMMAND_H_
 #define FLOURISHCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 class FlourishCommand: public QueueCommand {

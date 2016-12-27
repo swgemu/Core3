@@ -5,7 +5,6 @@ import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
-include templates.faction.Factions;
 
 class ContrabandScanSession extends Facade {
 

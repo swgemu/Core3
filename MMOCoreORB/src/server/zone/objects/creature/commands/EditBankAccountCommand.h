@@ -5,8 +5,6 @@
 #ifndef EDITBANKACCOUNTCOMMAND_H_
 #define EDITBANKACCOUNTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class EditBankAccountCommand : public QueueCommand {
 public:
 

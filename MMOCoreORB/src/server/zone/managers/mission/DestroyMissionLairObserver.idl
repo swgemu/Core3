@@ -4,11 +4,8 @@
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
-import engine.util.Observable;
 import server.zone.managers.creature.LairObserver;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.managers.creature.HealLairObserverEvent;
 import engine.log.Logger;
 
 class DestroyMissionLairObserver extends LairObserver {

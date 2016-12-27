@@ -7,30 +7,6 @@
 
 #include "TangibleObjectMenuComponent.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-	class SceneObject;
-}
-}
-}
-}
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-	class CreatureObject;
-}
-}
-}
-}
-
-using namespace server::zone::objects::creature;
-
 class WaypointDatapadMenuComponent : public TangibleObjectMenuComponent {
 public:
 

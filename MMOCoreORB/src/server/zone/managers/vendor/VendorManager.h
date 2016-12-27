@@ -8,7 +8,6 @@
 #ifndef VENDORMANAGER_H_
 #define VENDORMANAGER_H_
 
-#include "engine/engine.h"
 #include "VendorSelectionNode.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/name/NameManager.h"

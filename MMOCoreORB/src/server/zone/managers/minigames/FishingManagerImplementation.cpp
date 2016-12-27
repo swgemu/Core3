@@ -9,7 +9,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
@@ -19,14 +18,12 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/minigames/events/FishingEvent.h"
 #include "server/zone/managers/minigames/events/FishingSplashEvent.h"
 #include "server/zone/managers/minigames/FishingSession.h"
 #include "system/util/VectorMap.h"
-
 
 int FishingManagerImplementation::checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z) {
 	if (player == NULL)
@@ -913,8 +910,6 @@ void FishingManagerImplementation::fishingProceed(CreatureObject* player, int ne
 			}
 		}
 	}
-
-
 }
 
 void FishingManagerImplementation::mishapEvent(const String& text, CreatureObject* player, uint32 boxID, bool losebait, String& moodString) {

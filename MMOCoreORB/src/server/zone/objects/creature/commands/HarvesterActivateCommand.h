@@ -6,9 +6,6 @@
 #define HARVESTERACTIVATECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/installation/harvester/HarvesterObject.h"
-#include "server/zone/packets/harvester/HarvesterResourceDataMessage.h"
-
 
 class HarvesterActivateCommand : public QueueCommand {
 public:
@@ -34,11 +31,6 @@ public:
 			return GENERALERROR;
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
-
-	/*	if (!inso->isHarvesterObject())
-			return GENERALERROR;
-
-		HarvesterObject* harvester = cast<HarvesterObject*>( inso);*/
 
 		try {
 			Locker clocker(inso, player);

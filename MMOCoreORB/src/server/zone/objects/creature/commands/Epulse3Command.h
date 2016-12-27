@@ -5,8 +5,6 @@
 #ifndef EPULSE3_H_
 #define EPULSE3_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class Epulse3Command : public CombatQueueCommand {

@@ -6,7 +6,6 @@
 #define KILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 
 class KillCommand : public QueueCommand {
 public:

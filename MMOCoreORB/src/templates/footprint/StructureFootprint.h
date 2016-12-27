@@ -8,7 +8,6 @@
 #ifndef STRUCTUREFOOTPRINT_H_
 #define STRUCTUREFOOTPRINT_H_
 
-#include "engine/engine.h"
 #include "templates/IffTemplate.h"
 
 class StructureFootprint : public IffTemplate {
@@ -124,6 +123,5 @@ public:
 		return colChunkSize;
 	}
 };
-
 
 #endif /* STRUCTUREFOOTPRINT_H_ */

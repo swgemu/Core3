@@ -7,7 +7,6 @@
 
 #include "LuaPlayerObject.h"
 #include "engine/engine.h"
-#include "FactionStatus.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"

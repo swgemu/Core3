@@ -10,12 +10,13 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
 #include "server/zone/managers/vendor/sui/RegisterVendorSuiCallback.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/ZoneProcessServer.h"
 
 VendorManager::VendorManager() {
 	setLoggingName("VendorManager");

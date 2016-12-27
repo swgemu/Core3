@@ -8,7 +8,6 @@
 #ifndef DATATABLEROW_H_
 #define DATATABLEROW_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableCell.h"
 
 class DataTableRow {

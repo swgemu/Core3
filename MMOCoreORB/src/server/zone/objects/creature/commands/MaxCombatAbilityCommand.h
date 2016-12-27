@@ -5,8 +5,6 @@
 #ifndef MAXCOMBATABILITYCOMMAND_H_
 #define MAXCOMBATABILITYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class MaxCombatAbilityCommand : public QueueCommand {
 public:
 

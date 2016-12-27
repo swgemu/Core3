@@ -8,8 +8,7 @@
 #ifndef PATHNODE_H_
 #define PATHNODE_H_
 
-#include "engine/engine.h"
-
+#include "engine/util/u3d/Vector3.h"
 #include "templates/appearance/PathEdge.h"
 
 class PathGraph;

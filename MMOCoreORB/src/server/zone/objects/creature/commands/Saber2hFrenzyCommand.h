@@ -5,8 +5,6 @@
 #ifndef SABER2HFRENZYCOMMAND_H_
 #define SABER2HFRENZYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "JediCombatQueueCommand.h"
 
 class Saber2hFrenzyCommand : public JediCombatQueueCommand {

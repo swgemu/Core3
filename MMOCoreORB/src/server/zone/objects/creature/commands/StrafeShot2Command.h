@@ -5,7 +5,6 @@
 #ifndef STRAFESHOT2COMMAND_H_
 #define STRAFESHOT2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class StrafeShot2Command : public CombatQueueCommand {

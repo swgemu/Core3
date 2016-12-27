@@ -8,8 +8,8 @@
 #ifndef REQUESTGALAXYLOOPTIMES_H_
 #define REQUESTGALAXYLOOPTIMES_H_
 
-
-#include "../MessageCallback.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class GalaxyLoopTimesResponse : public BaseMessage {
 public:

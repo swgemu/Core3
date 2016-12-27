@@ -5,8 +5,6 @@
 #ifndef FINDMYTRAINERCOMMAND_H_
 #define FINDMYTRAINERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class FindMyTrainerCommand : public QueueCommand {
 public:
 

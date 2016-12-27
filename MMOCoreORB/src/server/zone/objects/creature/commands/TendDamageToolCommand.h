@@ -5,8 +5,6 @@
 #ifndef TENDDAMAGETOOLCOMMAND_H_
 #define TENDDAMAGETOOLCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class TendDamageToolCommand : public QueueCommand {
 public:
 

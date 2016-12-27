@@ -4,20 +4,12 @@
 
 package server.zone.objects.tangible.pharmaceutical;
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
-import system.lang.Math;
 import system.lang.String;
 import system.util.Vector;
 include templates.tangible.StimPackTemplate;
-include templates.params.creature.CreatureAttribute;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class StimPack extends PharmaceuticalObject {

@@ -5,7 +5,6 @@
 #ifndef ACTIONSHOT1COMMAND_H_
 #define ACTIONSHOT1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class ActionShot1Command : public CombatQueueCommand {

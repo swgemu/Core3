@@ -5,7 +5,7 @@
 package server.zone.objects.installation.harvester;
 
 import server.zone.objects.installation.InstallationObject;
-import server.zone.objects.area.ActiveArea;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class HarvesterObject extends InstallationObject {
 	

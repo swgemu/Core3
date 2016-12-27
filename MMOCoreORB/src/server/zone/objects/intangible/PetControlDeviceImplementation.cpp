@@ -1,20 +1,16 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/PetControlObserver.h"
 #include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/MountGrowthArrestSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PetFixSuiCallback.h"
-#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "tasks/CallPetTask.h"
@@ -28,6 +24,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {

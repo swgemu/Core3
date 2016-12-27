@@ -5,9 +5,7 @@
 #ifndef POWERBOOSTCOMMAND_H_
 #define POWERBOOSTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
-
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 
 class PowerBoostCommand : public QueueCommand {

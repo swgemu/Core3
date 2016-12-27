@@ -5,8 +5,6 @@
 #ifndef RELOADCOMMAND_H_
 #define RELOADCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ReloadCommand : public QueueCommand {
 public:
 

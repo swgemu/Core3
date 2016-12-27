@@ -7,6 +7,7 @@
 
 #include "SpawnAreaMap.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"

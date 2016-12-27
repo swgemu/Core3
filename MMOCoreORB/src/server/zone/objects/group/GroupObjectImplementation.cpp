@@ -15,11 +15,9 @@
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/buffs/SquadLeaderBuff.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 #include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
-#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {

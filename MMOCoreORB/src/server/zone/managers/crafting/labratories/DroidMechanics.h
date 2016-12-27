@@ -1,9 +1,6 @@
 #ifndef DROID_MECHANICS_H
 #define DROID_MECHANICS_H
 
-#include "SharedLabratory.h"
-#include "engine/engine.h"
-#include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 
 namespace server {
@@ -104,4 +101,5 @@ public:
 }
 
 using namespace server::zone::managers::crafting::labratories;
+
 #endif /* DROID_MECHANICS_H */

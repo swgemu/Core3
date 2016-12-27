@@ -5,11 +5,7 @@
 package server.zone.objects.tangible.terminal.characterbuilder;
 
 import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
-import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.Zone;
 include templates.SharedObjectTemplate;
 include templates.tangible.CharacterBuilderMenuNode;
 

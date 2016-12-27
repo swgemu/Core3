@@ -8,7 +8,6 @@
 #ifndef WEAPONOBJECTMESSAGE6_H_
 #define WEAPONOBJECTMESSAGE6_H_
 
-#include "engine/engine.h"
 #include "TangibleObjectMessage6.h"
 
 class WeaponObjectMessage6 : public TangibleObjectMessage6 {

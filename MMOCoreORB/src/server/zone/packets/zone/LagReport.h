@@ -8,7 +8,8 @@
 #ifndef LAGREPORT_H_
 #define LAGREPORT_H_
 
-#include "../MessageCallback.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class GameServerLagResponse : public BaseMessage {
 public:

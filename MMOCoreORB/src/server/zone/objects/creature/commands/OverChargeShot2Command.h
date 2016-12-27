@@ -5,7 +5,6 @@
 #ifndef OVERCHARGESHOT2COMMAND_H_
 #define OVERCHARGESHOT2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class OverChargeShot2Command : public CombatQueueCommand {

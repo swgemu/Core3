@@ -10,7 +10,6 @@
 
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
-#include "FireworkShowDataComponent.h"
 
 class FireworkShowMenuComponent : public TangibleObjectMenuComponent {
 public:

@@ -8,8 +8,6 @@
 #ifndef SCENEOBJECTFACTORY_H_
 #define SCENEOBJECTFACTORY_H_
 
-#include "engine/engine.h"
-
 namespace server {
  namespace zone {
   namespace managers {

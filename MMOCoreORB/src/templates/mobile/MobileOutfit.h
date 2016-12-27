@@ -8,8 +8,6 @@
 #ifndef MOBILEOUTFIT_H_
 #define MOBILEOUTFIT_H_
 
-#include "engine/engine.h"
-
 class OutfitTangibleObject : public Object {
 	String objectTemplate;
 	VectorMap<String, uint8> customizationVariables;

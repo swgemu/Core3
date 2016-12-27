@@ -5,7 +5,6 @@
 #ifndef THROWTRAPCOMMAND_H_
 #define THROWTRAPCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/events/ThrowTrapTask.h"
 #include "templates/tangible/TrapTemplate.h"
 

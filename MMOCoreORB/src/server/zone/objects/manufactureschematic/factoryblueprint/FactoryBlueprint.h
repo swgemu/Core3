@@ -10,7 +10,6 @@
 
 #include "engine/engine.h"
 #include "BlueprintEntry.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 
 class FactoryBlueprint  : public Serializable  {

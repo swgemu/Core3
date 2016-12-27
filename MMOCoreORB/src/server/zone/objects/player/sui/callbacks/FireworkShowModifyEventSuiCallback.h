@@ -1,12 +1,10 @@
 #ifndef FIREWORKSHOWMODIFYEVENTSUICALLBACK_H_
 #define FIREWORKSHOWMODIFYEVENTSUICALLBACK_H_
 
-#include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 #include "server/zone/objects/player/sui/callbacks/FireworkShowDelaySelectionSuiCallback.h"
-#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/fireworkdelaybox/SuiFireworkDelayBox.h"
 

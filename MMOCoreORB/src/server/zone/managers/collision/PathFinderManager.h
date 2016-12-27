@@ -8,11 +8,8 @@
 #ifndef PATHFINDERMANAGER_H_
 #define PATHFINDERMANAGER_H_
 
-#include "engine/engine.h"
-
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
-#include "pathfinding/recast/DetourCommon.h"
 #include "pathfinding/recast/DetourNavMeshQuery.h"
 
 namespace server {
@@ -21,17 +18,10 @@ namespace server {
    namespace cell {
    	   class CellObject;
    }
-
-   namespace creature {
-    namespace ai {
-    	class AiAgent;
-    }
-   }
   }
  }
 }
 
-using namespace server::zone::objects::creature;
 using namespace server::zone::objects::cell;
 
 class FloorMesh;
@@ -86,7 +76,5 @@ private:
 	dtQueryFilter m_filter;
 	ThreadLocal<dtNavMeshQuery*> m_navQuery;
 };
-
-
 
 #endif /* PATHFINDERMANAGER_H_ */

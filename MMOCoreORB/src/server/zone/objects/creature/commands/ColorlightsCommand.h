@@ -5,8 +5,6 @@
 #ifndef COLORLIGHTSCOMMAND_H_
 #define COLORLIGHTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ColorlightsCommand : public QueueCommand {
 public:
 

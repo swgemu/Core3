@@ -5,10 +5,7 @@
 #ifndef POLEARMSWEEP1COMMAND_H_
 #define POLEARMSWEEP1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
-
 
 class PolearmSweep1Command : public CombatQueueCommand {
 public:

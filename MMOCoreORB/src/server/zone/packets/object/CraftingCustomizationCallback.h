@@ -8,11 +8,8 @@
 #ifndef CRAFTINGCUSTOMIZATIONCALLBACK_H_
 #define CRAFTINGCUSTOMIZATIONCALLBACK_H_
 
-
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
 
 class CraftingCustomizationCallback : public MessageCallback {
 	String name;

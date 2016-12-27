@@ -2,8 +2,6 @@
 #ifndef AISPECIESDATA_H_
 #define AISPECIESDATA_H_
 
-#include "engine/engine.h"
-
 namespace server {
 namespace zone {
 namespace managers {

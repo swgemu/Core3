@@ -5,7 +5,7 @@
 #ifndef PLANETTRAVELPOINTLISTRESPONSE_H_
 #define PLANETTRAVELPOINTLISTRESPONSE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class TravelPoint {
 	String name;

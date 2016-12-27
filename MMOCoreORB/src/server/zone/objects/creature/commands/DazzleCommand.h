@@ -5,8 +5,6 @@
 #ifndef DAZZLECOMMAND_H_
 #define DAZZLECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class DazzleCommand : public QueueCommand {
 public:
 

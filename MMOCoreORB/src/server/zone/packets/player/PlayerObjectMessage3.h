@@ -5,8 +5,7 @@
 #ifndef PLAYEROBJECTMESSAGE3_H_
 #define PLAYEROBJECTMESSAGE3_H_
 
-#include "../BaseLineMessage.h"
-#include "../intangible/IntangibleObjectMessage3.h"
+#include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectMessage3 : public IntangibleObjectMessage3 {

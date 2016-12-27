@@ -5,20 +5,7 @@
 package server.zone.objects.installation.shuttle;
 
 import server.zone.objects.installation.InstallationObject;
-import engine.lua.LuaObject;
-import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
-import engine.service.proto.BasePacket;
-import system.lang.ref.Reference;
-import server.zone.Zone;
-include templates.SharedObjectTemplate;
-import system.util.VectorMap;
-import server.zone.objects.tangible.terminal.ticketcollector.TicketCollector;
-import server.zone.objects.tangible.terminal.travel.TravelTerminal;
 
 class ShuttleInstallation extends InstallationObject {
 	

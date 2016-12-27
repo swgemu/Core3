@@ -5,7 +5,7 @@
 #ifndef HEARTBEAT_H_
 #define HEARTBEAT_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 //Even though this opcode isnt in our tables, its required for some reason to make things work :(
 

@@ -5,8 +5,6 @@
 #ifndef REQUESTWAYPOINTATPOSITIONCOMMAND_H_
 #define REQUESTWAYPOINTATPOSITIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RequestWaypointAtPositionCommand : public QueueCommand {
 public:
 

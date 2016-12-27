@@ -5,7 +5,7 @@
 #ifndef CHATONSENDINSTANTMESSAGE_H_
 #define CHATONSENDINSTANTMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnSendInstantMessage : public BaseMessage {
 public:

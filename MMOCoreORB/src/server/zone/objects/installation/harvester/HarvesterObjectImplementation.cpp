@@ -7,14 +7,9 @@
 
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
-#include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
-#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/Zone.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
-#include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
 
 void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))

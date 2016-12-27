@@ -1,10 +1,6 @@
-#include "engine/engine.h"
-
-#include "client/zone/Zone.h"
-
 #include "PlayerCreature.h"
+#include "client/zone/Zone.h"
 #include "server/zone/packets/object/ObjectControllerMessage.h"
-
 
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(templateData) {
 	setLoggingName("PlayerCreature");

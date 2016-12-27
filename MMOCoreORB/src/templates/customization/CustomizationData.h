@@ -8,7 +8,6 @@
 #ifndef CUSTOMIZATIONDATA_H_
 #define CUSTOMIZATIONDATA_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableRow.h"
 
 class CustomizationData : public Object {

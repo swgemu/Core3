@@ -9,11 +9,10 @@
 #ifndef DNAMANAGER_H_
 #define DNAMANAGER_H_
 
-#include "engine/engine.h"
-#include "DnaSampleRange.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
+
 namespace server {
 namespace zone {
 namespace managers {

@@ -9,10 +9,8 @@
 #define EMPTYHOPPERCALLBACK_H_
 
 #include "ObjectControllerMessageCallback.h"
-#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "GenericResponse.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
-
 
 class EmptyHopperCallback : public MessageCallback {
 	uint64 harvesterId;

@@ -5,10 +5,8 @@
 #ifndef FIREWORKREMOVEEVENT_H_
 #define FIREWORKREMOVEEVENT_H_
 
-
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
-#include "server/zone/ZoneServer.h"
 
 class FireworkRemoveEvent : public Task {
 	ManagedReference<StaticObject*> firework;

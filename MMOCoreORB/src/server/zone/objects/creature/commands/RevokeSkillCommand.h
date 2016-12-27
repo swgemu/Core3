@@ -5,8 +5,6 @@
 #ifndef REVOKESKILLCOMMAND_H_
 #define REVOKESKILLCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RevokeSkillCommand : public QueueCommand {
 public:
 

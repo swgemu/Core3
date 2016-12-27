@@ -5,14 +5,6 @@
 #ifndef SCRIPTCOMMAND_H_
 #define SCRIPTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/loot/LootkitObject.h"
-#include "server/zone/managers/loot/LootManager.h"
-
 class ScriptCommand : public QueueCommand {
 public:
 

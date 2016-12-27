@@ -5,8 +5,6 @@
 #ifndef DISMOUNTANDSTORECOMMAND_H_
 #define DISMOUNTANDSTORECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class DismountandstoreCommand : public QueueCommand {
 public:
 

@@ -5,7 +5,6 @@
 #ifndef ANIMALATTACKCOMMAND_H_
 #define ANIMALATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/commands/JediQueueCommand.h"
 
 class AnimalAttackCommand : public JediQueueCommand {

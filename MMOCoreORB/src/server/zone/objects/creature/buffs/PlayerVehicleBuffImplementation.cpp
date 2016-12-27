@@ -1,16 +1,9 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
-#include "BuffDurationEvent.h"
-#include "BuffList.h"
 
-#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/Buffs.h"
-#include "server/zone/packets/object/ShowFlyText.h"
-#include "server/zone/managers/skill/SkillModManager.h"
 
-#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/ZoneServer.h"
 

@@ -89,7 +89,7 @@ void ShuttleBeaconImplementation::callShuttle(CreatureObject* player) {
 		ghost->closeSuiWindowType(SuiWindowType::SHUTTLE_BEACON);
 
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::SHUTTLE_BEACON);
-    listbox->setCallback(new ShuttleBeaconSuiCallback(server->getZoneServer()));
+    listbox->setCallback(new ShuttleBeaconSuiCallback(getZoneServer()));
 	listbox->setPromptTitle("@event_perk:shuttle_beacon_t"); // Select Shuttle Landing Type
 	listbox->setPromptText("@event_perk:shuttle_beacon_d"); // Select the type of shuttle landing you would like to call. Contacting the shuttle again after it lands will order the shuttle to leave.
 	listbox->setUsingObject(_this.getReferenceUnsafeStaticCast());

@@ -6,9 +6,7 @@
 #define RESOURCECONTAINEROBJECTMESSAGE3_H_
 
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "../BaseLineMessage.h"
-
-#include "../tangible/TangibleObjectMessage3.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 
 class ResourceContainerObjectMessage3 : public TangibleObjectMessage3 {
 public:

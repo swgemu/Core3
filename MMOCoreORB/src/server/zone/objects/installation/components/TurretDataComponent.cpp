@@ -10,6 +10,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/installation/components/TurretFireTask.h"
+#include "server/zone/Zone.h"
 
 void TurretDataComponent::initializeTransientMembers() {
 	ManagedReference<SceneObject*> turret = getParent();

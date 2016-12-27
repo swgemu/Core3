@@ -8,7 +8,6 @@
 #ifndef TARGETUPDATE_H_
 #define TARGETUPDATE_H_
 
-#include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class TargetUpdateCallback : public MessageCallback {
@@ -43,7 +42,5 @@ public:
 			object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, scene);
 	}
 };
-
-
 
 #endif /* TARGETUPDATE_H_ */

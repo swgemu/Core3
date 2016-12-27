@@ -5,7 +5,7 @@
 #ifndef SERVERWEATHERMESSAGE_H_
 #define SERVERWEATHERMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ServerWeatherMessage : public BaseMessage {
 public:

@@ -9,7 +9,6 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h"
-#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 
 void PlantObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

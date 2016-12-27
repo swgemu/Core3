@@ -5,11 +5,9 @@
 package server.zone.managers.objectcontroller;
 
 import engine.core.ManagedService;
-import engine.lua.Lua;
 import server.zone.managers.objectcontroller.command.CommandList;
 import server.zone.managers.objectcontroller.command.CommandConfigManager;
 import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.ZoneServer;
 import engine.log.Logger;
 import server.zone.ZoneProcessServer;
 import server.zone.objects.scene.SceneObject;

@@ -5,9 +5,7 @@
 #ifndef LAIROBJECTMESSAGE3_H_
 #define LAIROBJECTMESSAGE3_H_
 
-#include "../BaseLineMessage.h"
-
-#include "../tangible/TangibleObjectMessage3.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 
 class LairObject;
 

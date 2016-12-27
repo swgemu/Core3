@@ -16,12 +16,8 @@
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/WeaponRanges.h"
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
-#include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/Zone.h"
-
+#include "server/zone/ZoneProcessServer.h"
 
 
 void WeaponObjectImplementation::initializeTransientMembers() {

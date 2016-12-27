@@ -1,8 +1,6 @@
 #ifndef HEIGHTMAPPLANE_H_
 #define HEIGHTMAPPLANE_H_
 
-#include "engine/engine.h"
-
 class HeightMapPlane {
 	byte* buffer;
 

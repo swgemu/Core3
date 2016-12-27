@@ -5,8 +5,6 @@
 #ifndef CSGETARTICLECOMMAND_H_
 #define CSGETARTICLECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CsGetArticleCommand : public QueueCommand {
 public:
 

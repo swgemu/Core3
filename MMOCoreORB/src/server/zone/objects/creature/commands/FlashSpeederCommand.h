@@ -5,7 +5,6 @@
 #ifndef FLASHSPEEDERCOMMAND_H_
 #define FLASHSPEEDERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/ReplaceFlashSpeederSuiCallback.h"
 

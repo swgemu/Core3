@@ -4,9 +4,7 @@
 
 package server.zone.managers.space;
 
-import engine.core.ManagedService;
 import server.zone.managers.planet.PlanetManager;
-include server.zone.managers.ship.ShipManager;
 
 class SpaceManager extends PlanetManager {
 	public SpaceManager(Zone planet, ZoneProcessServer srv) {

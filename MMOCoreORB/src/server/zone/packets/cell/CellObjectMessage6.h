@@ -5,7 +5,7 @@
 #ifndef CELLOBJECTMESSAGE6_H_
 #define CELLOBJECTMESSAGE6_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class CellObjectMessage6 : public BaseLineMessage {
 public:
@@ -53,4 +53,5 @@ Pre-CU:
 		//System::out << msg.toString();
 	}
 };
+
 #endif /*CELLOBJECTMESSAGE6_H_*/

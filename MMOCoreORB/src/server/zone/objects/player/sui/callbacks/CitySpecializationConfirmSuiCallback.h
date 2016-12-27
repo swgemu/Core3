@@ -9,7 +9,6 @@
 #define CITYSPECIALIZATIONCONFIRMSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 
 class CitySpecializationConfirmSuiCallback : public SuiCallback {

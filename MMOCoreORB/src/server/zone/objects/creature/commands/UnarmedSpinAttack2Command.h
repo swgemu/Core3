@@ -5,7 +5,6 @@
 #ifndef UNARMEDSPINATTACK2COMMAND_H_
 #define UNARMEDSPINATTACK2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class UnarmedSpinAttack2Command : public CombatQueueCommand {

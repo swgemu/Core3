@@ -3,8 +3,6 @@
  */
 
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityObserver.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 
 int DroidPersonalityObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

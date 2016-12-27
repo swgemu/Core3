@@ -5,9 +5,9 @@
 #ifndef PARAMETERSMESSAGE_H_
 #define PARAMETERSMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class ParametersMessage : public BaseMessage {
 public:

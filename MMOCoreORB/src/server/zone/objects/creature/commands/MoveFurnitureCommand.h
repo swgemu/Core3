@@ -7,12 +7,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/packets/object/DataTransform.h"
-#include "server/zone/packets/object/DataTransformWithParent.h"
-#include "templates/appearance/PortalLayout.h"
-#include "templates/appearance/FloorMesh.h"
-#include "templates/appearance/MeshAppearanceTemplate.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:

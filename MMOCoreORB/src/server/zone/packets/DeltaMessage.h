@@ -5,7 +5,7 @@
 #ifndef DELTAMESSAGE_H_
 #define DELTAMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/scene/variables/StringId.h"
 
 class DeltaMessage : public BaseMessage {
@@ -17,7 +17,6 @@ public:
 		insertInt(0x12862153);
 		insertLong(oid);
 		insertInt(name);
-		//insertInt(generateRandomObjectCRC());
 		insertByte(type);
 		insertInt(0);
 
@@ -26,19 +25,6 @@ public:
 		updateCount = 0;
 		insertShort(updateCount);
 	}
-
-	uint32 generateRandomObjectCRC() {
-		int idx = System::random(4);
-		
-		if (idx == 0)
-			return 0x4352454F;  // CREO;
-		else if (idx == 1)
-			return 0x504C4159;  // PLAY 
-		else if (idx == 2)
-			return 0x54414E4F;  // TANO 
-		else 
-			return System::random(0xFFFFFFFF); 
-	};
 
 	inline void startUpdate(uint16 type) {
 		++updateCount;

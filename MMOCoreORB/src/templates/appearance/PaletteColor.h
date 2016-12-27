@@ -8,8 +8,6 @@
 #ifndef PALETTECOLOR_H_
 #define PALETTECOLOR_H_
 
-#include "engine/engine.h"
-
 class PaletteColor : public Object {
 	uint8 red;
 	uint8 green;
@@ -59,6 +57,5 @@ public:
 		return blue;
 	}
 };
-
 
 #endif /* PALETTECOLOR_H_ */

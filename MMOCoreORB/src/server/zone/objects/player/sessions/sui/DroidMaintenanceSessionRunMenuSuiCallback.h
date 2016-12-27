@@ -9,11 +9,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/structure/StructureObject.h"
 
 class DroidMaintenanceSessionRunMenuSuiCallback : public SuiCallback {

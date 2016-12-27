@@ -4,18 +4,11 @@
 
 package server.zone.objects.creature.buffs;
 
-import engine.core.ManagedObject;
-import system.util.VectorMap;
-import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
-import system.lang.Time;
 
-include server.zone.ZoneProcessServer;
-import server.zone.objects.creature.buffs.BuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
-include server.chat.StringIdChatParameter;
+include server.zone.objects.creature.buffs.BuffCRC;
 include templates.params.ObserverEventType;
 
 class SpiceDownerBuff extends Buff {

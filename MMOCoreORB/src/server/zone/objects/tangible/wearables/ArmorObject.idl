@@ -5,10 +5,6 @@
 package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.WearableObject;
-import server.zone.objects.tangible.weapon.WeaponObject;
-import engine.lua.LuaObject;
-import system.util.SortedVector;
-import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 

@@ -5,8 +5,6 @@
 #ifndef TRANSFERITEMCOMMAND_H_
 #define TRANSFERITEMCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class TransferItemCommand : public QueueCommand {
 public:
 

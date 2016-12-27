@@ -5,9 +5,6 @@
 #ifndef TUMBLETOPRONECOMMAND_H_
 #define TUMBLETOPRONECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/events/AnimationTask.h"
-
 class TumbleToProneCommand : public QueueCommand {
 public:
 

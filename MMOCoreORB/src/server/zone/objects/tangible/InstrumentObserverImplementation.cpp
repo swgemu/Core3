@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/tangible/InstrumentObserver.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
 
 int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

@@ -5,7 +5,6 @@
 #ifndef MEDICALFORAGECOMMAND_H_
 #define MEDICALFORAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 
 class MedicalForageCommand : public QueueCommand {

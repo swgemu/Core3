@@ -1,7 +1,6 @@
 #ifndef BASESHUTDOWNTASK_H_
 #define BASESHUTDOWNTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/BaseShutdownSuiCallback.h"

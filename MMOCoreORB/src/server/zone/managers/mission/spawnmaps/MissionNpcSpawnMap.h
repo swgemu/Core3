@@ -8,7 +8,6 @@
 #include "engine/util/u3d/Vector3.h"
 #include "engine/log/Logger.h"
 #include "UniverseSpawnMap.h"
-#include "engine/core/ManagedObject.h"
 
 namespace server {
 namespace zone {

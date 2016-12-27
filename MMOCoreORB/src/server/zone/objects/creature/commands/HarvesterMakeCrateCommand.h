@@ -5,8 +5,6 @@
 #ifndef HARVESTERMAKECRATECOMMAND_H_
 #define HARVESTERMAKECRATECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class HarvesterMakeCrateCommand : public QueueCommand {
 public:
 

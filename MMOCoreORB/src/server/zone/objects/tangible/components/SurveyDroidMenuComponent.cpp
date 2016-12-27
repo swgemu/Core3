@@ -8,7 +8,6 @@
 #include "SurveyDroidMenuComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
 

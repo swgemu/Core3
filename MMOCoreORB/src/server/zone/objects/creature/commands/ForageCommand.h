@@ -5,7 +5,6 @@
 #ifndef FORAGECOMMAND_H_
 #define FORAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 
 class ForageCommand : public QueueCommand {
@@ -34,7 +33,6 @@ public:
 		}
 
 		return SUCCESS;
-
 	}
 
 };

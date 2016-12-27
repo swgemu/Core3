@@ -5,8 +5,6 @@
 #ifndef TELEPORTCOMMAND_H_
 #define TELEPORTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class TeleportCommand : public QueueCommand {
 public:
 

@@ -4,18 +4,11 @@
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.Zone;
 include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.objects.scene.SceneObject;
-include templates.TemplateReference;
-include templates.SharedObjectTemplate;
 include server.zone.objects.area.ActiveArea;
 
 class EntertainerMissionObjective extends MissionObjective {

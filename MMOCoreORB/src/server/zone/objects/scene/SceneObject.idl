@@ -4,27 +4,19 @@
 
 package server.zone.objects.scene;
 
-include engine.core.ManagedObject;
-
 import engine.log.Logger;
-import engine.core.ManagedReference;
 import engine.util.u3d.Coordinate;
 import engine.util.u3d.QuadTreeEntry;
-import system.io.Serializable;
-import engine.lua.Lua;
-import engine.lua.LuaObject;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.u3d.Quaternion;
 import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
 import system.util.SortedVector;
-import system.lang.StackTrace;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.u3d.Vector3;
 include engine.util.Facade;
-import engine.util.Observable;
 include templates.params.ObserverEventType;
 include server.zone.ZoneReference;
 include server.zone.objects.scene.SceneObjectType;
@@ -46,7 +38,6 @@ include server.zone.objects.scene.ObserverType;
 include templates.manager.PlanetMapCategory;
 include templates.manager.TemplateManager;
 include templates.SharedObjectTemplate;
-import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
@@ -63,7 +54,6 @@ import server.zone.objects.creature.ai.AiAgent;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 
-
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -74,20 +64,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ContainerComponent containerComponent;
 
 	protected transient SharedObjectTemplate templateObject;
-	
+
 	protected boolean sendToClient;
-	
+
 	@dereferenced
 	protected ZoneReference zone;
-	
+
 	@dereferenced
 	protected DataObjectComponentReference dataObjectComponent; 
-	
+
 	protected transient Matrix4 transformForCollisionMatrix;
-		
+
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
-	
+
 	@dereferenced
 	protected ContainerPermissions containerPermissions;
 
@@ -101,20 +91,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dereferenced
 	protected StringId objectName;
-		
+
 	protected transient PendingTasksMap pendingTasks;
-	
+
 	protected boolean staticObject;
-		
+
 	@dereferenced
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
 	protected unsigned int gameObjectType;
 	protected unsigned int containmentType;
-	
+
 	protected int planetMapCategory;
 	protected int planetMapSubCategory;
-	
+
 	protected unicode customName;
 
 	@weakReference
@@ -122,20 +112,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dereferenced
 	protected SortedVector<SceneObject> childObjects;
-	
+
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
 
-	
 	@dereferenced
 	protected transient ReadWriteLock containerLock;
-	
+
 	@dereferenced
 	protected transient Mutex parentLock;
 
-	/*@dereferenced
-	protected VectorMap<unsigned long, SceneObject> containerObjects;
-	*/
 	@dereferenced
 	protected ContainerObjectsMap containerObjects;
 
@@ -148,14 +134,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public SceneObject() {
 		initializePrivateData();
 	}
-	
+
 	public void finalize() {
-		//Logger.info("deleting object from memory", true);
-		//StackTrace.printStackTrace();
+
 	}
-	
+
 	public native void initializePrivateData();
-	
 
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
@@ -165,7 +149,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
-
 
 	/**
 	* Acts as a copy constructor for ManagedObjects. This function will be invoked by the cloneObject function in the object manager.
@@ -187,7 +170,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
@@ -259,7 +242,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return returns true if the object has been successfully removed
 	 */
 	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
-	
+
 	/**
 	 * Destroys the object from the world
 	 */
@@ -277,7 +260,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native abstract int canAddObject(SceneObject object, int containmentType, string errorDescription);
-	
+
 	/**
 	 * 
 	 */
@@ -285,7 +268,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent) {
 		return 0;
 	}
-	
+
 	@dirty
 	public abstract int notifyObjectRemovedFromChild(SceneObject object, SceneObject child) {
 		return 0;
@@ -293,7 +276,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@reference
 	public native abstract SceneObject getCraftedComponentsSatchel();
-	
+
 	/**
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -305,7 +288,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract void synchronizedUIListen(CreatureObject player, int value) {
 		Logger.info("Unhandled synchronizedUIListen", true);
 	}
-	
+
 	/**
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -317,7 +300,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract void synchronizedUIStopListen(CreatureObject player, int value) {
 		Logger.info("Unhandled synchronizedUIStopListen", true);
 	}
-	
+
 	/**
 	 * Updates this object to database (calls updatesToDatabaseAllObjects())
 	 * @pre { this object is locked }
@@ -326,7 +309,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	 public native void updateToDatabase();
-	 
+
 	 /**
 	  * Updates only this object to database without updating children
 	  * WARNING use only when necessary
@@ -350,7 +333,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
 	/**
 	 * Checks if the object can be destroyed
 	 * @pre { player is locked }
@@ -402,13 +385,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native abstract void sendTo(SceneObject player, boolean doClose);
-	
+
 	/**
 	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
 	 */
 	@dirty
 	public native abstract void sendWithoutParentTo(SceneObject player);
-	
+
 	@dirty
 	public native abstract void sendWithoutContainerObjectsTo(SceneObject player);
 
@@ -467,7 +450,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native abstract void sendAttributeListTo(CreatureObject object);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -478,9 +461,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@dirty
 	public abstract void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
-		
+
 	}
-	
+
 	/**
 	 * Updates the custom name of the object
 	 * @pre { this locked }
@@ -499,7 +482,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@dirty
 	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Opens container contents to player
 	 * @pre { }
@@ -508,18 +491,18 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public abstract native void openContainerTo(CreatureObject player);
-	
+
 	@local
 	public abstract byte checkContainerPermission(CreatureObject player, unsigned short permission) {
 		return containerComponent.checkContainerPermission(this, player, permission);
 	}
-	
+
 	/**
 	 * Closes the container of a player
 	 */
 	@dirty
 	public abstract native void closeContainerTo(CreatureObject player, boolean notify = true);
-	
+
 	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }
@@ -538,29 +521,28 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param newPositionY new position Y
 	 */
 	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0, boolean  toggleInvisibility = false);
-	
+
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
-	
-	
+
 	/**
 	 * Updates the direction of this object, and braodcasts DataTransform with the update 
 	 */
 	public native void updateDirection(float fw, float fx, float fy, float fz);
-	
+
 	public native void updateDirection(float angleHeadingRadians);
-	
+
 	@dirty
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {
 		zoneComponent.notifyInsert(this, entry);
 	}
-	
+
 	@dirty
 	@local
 	public void notifyDissapear(QuadTreeEntry entry) {
 		zoneComponent.notifyDissapear(this, entry);
 	}
-	
+
 	public native abstract void notifyRemoveFromZone();
 
 	/**
@@ -588,7 +570,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
-	
+
 	@dirty
 	public native void broadcastMessagePrivate(BasePacket message, SceneObject selfObject, boolean lockZone);
 
@@ -601,7 +583,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
-	
+
 	@dirty
 	public native void broadcastObjectPrivate(SceneObject object, SceneObject selfObject);
 
@@ -614,10 +596,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native void broadcastDestroy(SceneObject object, boolean sendSelf);
-	
+
 	@dirty
 	public native void broadcastDestroyPrivate(SceneObject object, SceneObject selfObject);
-
 
 	/**
 	 * Broadcasts a vector of messages to the in range objects
@@ -629,7 +610,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@dirty
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
-	
+
 	@local
 	@dirty
 	public native void broadcastMessagesPrivate(Vector<BasePacket> messages, SceneObject selfObject);
@@ -670,7 +651,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
 
-	
 	@local
 	@dirty
 	public native void getContainerObjects(@dereferenced VectorMap<unsigned long, SceneObject> objects);
@@ -690,7 +670,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 				return 0;
 		}
 	}
-	
+
 	/**
 	 * Adds a pending task of this SceneObject
 	 * @pre { this locked }
@@ -706,7 +686,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			}
 		}
 	}
-	
+
 	/**
 	 * Executes a task async of this SceneObject in a serialized manner
 	 * Order of execution is guaranteed to be the same as insertion order
@@ -721,7 +701,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			getPendingTasks().putOrdered(task, this);
 		}
 	}
-	
+
 	/**
 	 * Removes a pending task from this SceneObject
 	 * @pre { this locked }
@@ -742,7 +722,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			pendingTasks.drop(name);
 		}
 	}
-	
+
 	@local
 	public PendingTasksMap getPendingTasks() {
 		synchronized (containerLock) {
@@ -753,7 +733,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			return pendingTasks;
 		}
 	}
-	
+
 	/**
 	 * Looks up a specific pending tasks by the name
 	 * @pre { this locked }
@@ -771,7 +751,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			return pendingTasks.get(name);
 		}
 	}
-	
+
 	@dirty
 	public boolean containsPendingTask(final string name) {
 		synchronized (containerLock) {
@@ -781,16 +761,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			return pendingTasks.contains(name);
 		}
 	}
-	
+
 	@dirty
 	public native void showFlyText(final string file, final string aux, byte red, byte green, byte blue, boolean isPrivate = false);
 
 	public native int getContainedObjectsRecursive();
-	
+
 	public abstract native int getCountableObjectsRecursive();
 
 	public abstract native int getSizeOnVendorRecursive();
-	
+
 	/**
 	 * Returns a Facade session
 	 */
@@ -799,31 +779,31 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public Facade getActiveSession(unsigned int type) {
 		return objectActiveSessions.get(type);
 	}
-	
+
 	public void addActiveSession(unsigned int type, Facade session) {
 		objectActiveSessions.put(type, session);
 	}
-	
+
 	@read
 	public boolean containsActiveSession(final unsigned int type) {
 		return objectActiveSessions.contains(type);
 	}
-	
+
 	public boolean dropActiveSession(unsigned int type) {
 		return objectActiveSessions.drop(type);
 	}
-	
+
 	@read
 	public int getActiveSessionsCount() {
 		return objectActiveSessions.size();
 	}
-	
+
 	@local
 	@dirty
 	public VectorMap<unsigned int, Facade> getObjectActiveSessions() {
 		return objectActiveSessions;
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -833,25 +813,24 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @returns 0 if successfull
 	 */
 	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@dirty
 	public native float getDistanceTo(SceneObject object);
-	
+
 	@local
 	@dirty
 	public native float getDistanceTo(Coordinate coordinate);
-	
+
 	public abstract native void updateVehiclePosition(boolean sendPackets);
-	
+
 	@dirty
 	public native void playEffect(final string file, final string aux);
-	
+
 	@dirty
 	public void playEffect(final string file) {
 		playEffect(file, "");
 	}
-	
-	
+
 	/**
 	 * Is called when this object has been inserted with an object
 	 * @param object object that has been inserted
@@ -860,7 +839,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int notifyObjectInserted(SceneObject object) {
 		return 0;
 	}
-	
+
 	/**
 	 * Is called when an object was removed
 	 * @param object object that has been inserted
@@ -876,19 +855,19 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract CityRegion getCityRegion() {
 		return cityRegion;
 	}
-	
+
 	@local
 	public void setCityRegion(CityRegion region) {
 		cityRegion = region;
 	}
-	
+
 	@dirty
 	public Zone getZone() {
 		SceneObject strong = null;
-		
+
 		if ((strong = getParent()) != null) {
 			strong = getRootParent();
-			
+
 			if (strong != null) {
 				return strong.getZone();
 			} else
@@ -897,7 +876,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			return zone.get();
 		}
 	}
-	
+
 	@read 
 	public Zone getLocalZone() {
 		return zone.get();
@@ -905,29 +884,29 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	public native unsigned long getObjectID();
-	
+
 	@local
 	@dereferenced
 	@dirty
 	public native Vector3 getCoordinate(float distance, float angleDegrees, boolean includeZ);
-	
+
 	@local
 	@dereferenced
 	@dirty
 	public native Vector3 getWorldCoordinate(float distance, float angleDegrees, boolean includeZ);
-	
+
 	@mock
 	@dirty
 	public native float getWorldPositionX();
-	
+
 	@dirty
 	@mock
 	public native float getWorldPositionY();
-	
+
 	@dirty
 	@mock
 	public native float getWorldPositionZ();
-	
+
 	@dirty
 	@local
 	@dereferenced
@@ -953,7 +932,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public float getDirectionW() {
 		return direction.getW();
 	}
-	
+
 	@dirty
 	@local
 	public native Quaternion getDirection();
@@ -967,7 +946,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public unsigned int getServerObjectCRC() {
 		return serverObjectCRC;
 	}
-	
+
 	@read
 	public boolean isWaypointObject() {
 		return gameObjectType == SceneObjectType.WAYPOINT;
@@ -978,12 +957,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public StringId getObjectName() {
 		return objectName;
 	}
-	
+
 	@read
 	public string getObjectNameStringIdFile() {
 		return objectName.getFile();
 	}
-	
+
 	@read
 	public string getObjectNameStringIdName() {
 		return objectName.getStringID();
@@ -994,13 +973,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
 	}
-	
+
 	public abstract void setDetailedDescription(final string detail) {
 		return;
 	}
 
 	public native int getArrangementDescriptorSize();
- 	
+ 
 	@local
 	public native final Vector<string> getArrangementDescriptor(int idx);
 
@@ -1008,22 +987,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public string getSlotDescriptor(int idx) {
 		return templateObject.getSlotDescriptors().get(idx);
 	}
-	
+
 	@dirty
 	public boolean hasSlotDescriptor(final string descr) {
 		for (int i = 0; i < getSlotDescriptorSize(); ++i) {
 			if (getSlotDescriptor(i) == descr)
 				return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	@read
 	public boolean hasArrangementDescriptor(final string descr) {
 		return templateObject.hasArrangementDescriptor(descr);
 	}
-	
+
 	@local
 	public VectorMap<string, SceneObject> getSlottedObjects() {
 		return slottedObjects;
@@ -1037,27 +1016,27 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public int getSlotDescriptorSize() {
 		if (templateObject.getSlotDescriptors() != null)
 			return templateObject.getSlotDescriptors().size();
-		
+
 		return 0;
 	}
 
 	@dirty
 	@reference
 	public native SceneObject getSlottedObject(int idx);
-	
+
 	@dirty
 	@reference
 	public native SceneObject getContainerObjectRecursive(unsigned long oid);
-	
+
 	public native void dropSlottedObject(final string arrengementDescriptor);
-	
+
 	public native void removeSlottedObject(int index);
-	
+
 	@dirty
 	public int getContainerObjectsSize() {
 		return containerObjects.size();
 	}
-	
+
 	@read
 	public int getSlottedObjectsSize() {
 		return slottedObjects.size();
@@ -1083,45 +1062,45 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public SceneObject getContainerObject(int idx) {
 		return containerObjects.get(idx);
 	}
-	
+
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects.getContainerObjects();
 	}
-	
+
 	@dirty
 	public boolean hasObjectInContainer(unsigned long objectID) {
 		return containerObjects.contains(objectID);
 	}
-	
+
 	public native boolean hasObjectInSlottedContainer(SceneObject object) ;
-	
+
 	@dirty
 	@reference
 	public SceneObject getContainerObject(unsigned long objectID) {
 		return containerObjects.get(objectID);
 	}
-	
+
 	public void removeAllContainerObjects() {
 		containerObjects.removeAll();
 	}
-	
+
 	public void putInContainer(SceneObject obj, unsigned long key) {
 		containerObjects.put(key, obj);
 	}
-	
+
 	public void removeFromContainerObjects(int index) {
 		containerObjects.removeElementAt(index);
 	}
-	
+
 	public void setContainerVolumeLimit(int lim) {
 		containerVolumeLimit = lim;
 	}
-	
+
 	public void setContainerType(int type) {
 		containerType = type;
 	}
-	
+
 	@read
 	public unsigned int getContainerType() {
 		return containerType;
@@ -1136,7 +1115,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public unsigned int getGameObjectType() {
 		return gameObjectType;
 	}
-	
+
 	@read
 	public unsigned int getClientGameObjectType() {
 		return templateObject.getClientGameObjectType();
@@ -1151,20 +1130,19 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public float getDirectionAngle() {
 		return direction.getDegrees();
 	}
-	
+
 	@read
 	public float getSpecialDirectionAngle() {
 		return direction.getSpecialDegrees();
 	}
-	
-	
+
 	/**
 	 * Rotates an object by a specified number of degrees.
 	 * @param degrees How many degrees to rotate the object with 0 being North.
 	 * TODO: @param notifyClient
 	 */
 	public native void rotate(int degrees);
-	
+
 	/**
 	 * Sets this objects direction so that the object is facing the specified object.
 	 * @param obj The object to face.
@@ -1175,10 +1153,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native boolean isFacingObject(SceneObject obj);
 
 	public native abstract void notifySelfPositionUpdate();
-	
+
 	@dirty
 	public native void notifyPositionUpdate(QuadTreeEntry entry);
-	
+
 	/**
 	 * @param player player that closed the container
 	 */
@@ -1192,7 +1170,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	@weakReference
 	public native SceneObject getParent();
-	
+
 	public native void setParent(QuadTreeEntry entry);
 
 	@read
@@ -1212,7 +1190,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	@weakReference
 	public native SceneObject getRootParent();
-	
+
 	/**
 	 * Returns the parent of object type in the tree
 	 * @pre { this object is locked }
@@ -1223,7 +1201,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@weakReference
 	public native SceneObject getParentRecursively(unsigned int gameObjectType);
 
-
 	/**
 	 * Evaluates if this object is a child of the specified SceneObject
 	 * @pre { this object is locked }
@@ -1232,13 +1209,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public native boolean isASubChildOf(SceneObject object);
-	
+
 	@local
 	@dirty
 	public native ReadWriteLock getContainerLock() {
 		return containerLock;
 	}
-	
+
 	@read
 	public unicode getCustomObjectName() {
 		return customName;
@@ -1270,7 +1247,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();
 	}
-	
+
 	@local
 	@read
 	public boolean isTurret() {
@@ -1287,7 +1264,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get().isMinefieldData();
 	}
 
-	
 	@local
 	@read
 	public boolean isDetector() {
@@ -1303,7 +1279,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isSecurityTerminalData();
 	}
-	
+
 	@local
 	@read
 	public boolean isTurretControlTerminal(){
@@ -1325,7 +1301,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
-	
+
 	@local
 	@dirty
 	public ObjectMenuComponent getObjectMenuComponent() {
@@ -1343,16 +1319,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public DataObjectComponentReference getDataObjectComponent() {
 		return dataObjectComponent;
 	}
-	
+
 	public native boolean isDecoration();
-	
+
 	@local
 	public native void setObjectMenuComponent(final string name);
-	
+
 	@local
 	public native void setContainerComponent(final string name);
 	public native void setZoneComponent(final string name);
-	
+
 	public boolean isNoTrade() {
 		return templateObject.isNoTrade();
 	}
@@ -1361,17 +1337,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isShuttleInstallation() {
 		return gameObjectType == SceneObjectType.SHUTTLEINSTALLATION;
 	}
-	
+
 	@read
 	public boolean isPlayerObject() {
 		return gameObjectType == SceneObjectType.PLAYEROBJECT;
 	}
-	
+
 	@dirty
 	public abstract boolean isActiveArea() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isRegion() {
 		return false;
@@ -1381,18 +1357,18 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isCreatureObject() {
 		return false;
 	}
-	
+
 	@dirty
 	@local
 	public abstract CreatureObject asCreatureObject() {
 		return null;
 	}
-	
+
 	@dirty
 	public abstract boolean isAiAgent() {
 		return false;
 	}
-	
+
 	@dirty
 	@local
 	public abstract AiAgent asAiAgent() {
@@ -1408,12 +1384,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isShipObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isVehicleObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isDroidObject() {
 		return false;
@@ -1423,18 +1399,18 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isBuildingObject() {
 		return false;
 	}
-	
+
 	@dirty
 	@local
 	public abstract BuildingObject asBuildingObject() {
 		return null;
 	}
-	
+
 	@dirty
 	public abstract boolean isCloningBuildingObject() {
 		return false;
 	}
-	
+
 	@read
 	public boolean isGarage() {
 		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
@@ -1444,12 +1420,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isWeaponObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isWearableObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isWearableContainerObject() {
 		return false;
@@ -1459,98 +1435,98 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isArmorObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isRobeObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isLightsaberCrystalObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isFireworkObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public native boolean isPsgArmorObject() {
 		return gameObjectType == SceneObjectType.SHIELDGENERATOR;
 	}
-	
+
 	@dirty
 	public abstract boolean isCellObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isTangibleObject() {
 		return false;
 	}
-	
+
 	@dirty
 	@local
 	public abstract TangibleObject asTangibleObject() {
 		return null;
 	}
-	
+
 	@dirty
 	@local
 	@nativeStub
 	public native SceneObject asSceneObject();
-	
+
 	@dirty
 	public abstract boolean isResourceContainer() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isResourceSpawn() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isComponent() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isIntangibleObject() {
 		return false;
 	}
-	
+
 	@read
 	public boolean isInstrument() {
 		return gameObjectType == SceneObjectType.INSTRUMENT;
 	}
-	
+
 	@read
 	public boolean isBazaarTerminal() {
 		return gameObjectType == SceneObjectType.BAZAAR;
 	}
-	
+
 	@read
 	public boolean isLiveSample() {
 		return gameObjectType == SceneObjectType.LIVESAMPLE;
 	}
-	
+
 	@dirty
 	public abstract boolean isInstallationObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isHarvesterObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isGeneratorObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isCityTerminal() {
 		return false;
@@ -1560,12 +1536,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isCityVoteTerminal() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isFactory() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isFactoryCrate() {
 		return false;
@@ -1580,57 +1556,57 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isFishingPoleObject() {
 		return gameObjectType == SceneObjectType.FISHINGPOLE;
 	}
-	
+
 	@dirty
 	public abstract boolean isDeedObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isVehicleDeedObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isDroidDeedObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isBuildingDeed() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isSignObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isInstallationDeed() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isCraftingTool() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isCraftingStation() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isManufactureSchematic() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isStructureObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isAuctionObject() {
 		return false;
@@ -1640,17 +1616,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isFishingBait() {
 		return gameObjectType == SceneObjectType.FISHINGBAIT;
 	}
-	
+
 	@read
 	public boolean isTrapObject() {
 		return gameObjectType == SceneObjectType.TRAP;
 	}
-	
+
 	@read
 	public boolean isRepairTool() {
 		return gameObjectType == SceneObjectType.REPAIRTOOL;
 	}
-	
+
 	@dirty
 	public boolean isCamoKit() {
 		return templateObject.isCamoKitTemplate();
@@ -1660,37 +1636,37 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isAttachment() {
 		return false;
 	}
-	
+
 	@dirty
 	public boolean isDiceObject() {
 		return templateObject.isDiceTemplate();
 	}
-	
+
 	@dirty
 	public boolean isCreatureHabitat() {
 		return templateObject.isCreatureHabitatTemplate();
 	}
-	
+
 	@read
 	public boolean isCampKit() {
 		return gameObjectType == SceneObjectType.CAMPKIT;
 	}
-	
+
 	@dirty
 	public abstract boolean isCampStructure() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isRecycleToolObject() {
 		return gameObjectType == SceneObjectType.RECYCLETOOL;
 	}
-	
+
 	@dirty
 	public abstract boolean isAntiDecayKitObject() {
 		return gameObjectType == SceneObjectType.ANTIDECAYKIT;
 	}
-	
+
 	@local
 	public ContainerPermissions getContainerPermissions() {
 		return containerPermissions;
@@ -1752,32 +1728,32 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public void setZoneProcessServer(ZoneProcessServer srv) {
 		server = srv;
 	}
-	
+
 	@local
 	public ZoneProcessServer getZoneProcessServer() {
 		return server;
 	}
-	
+
 	public native void setZone(Zone zone);
-	
+
 	@local
 	public abstract native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
 	}
-	
+
 	public void setDirection(float headingAngleRadians) {
 		direction.setHeadingDirection(headingAngleRadians);
 	}
-	
+
 	@local
 	public native void setDirection(@dereferenced final Quaternion dir);
 
 	public void setMovementCounter(unsigned int count) {
 		movementCounter = count;
 	}
-	
+
 	public void incrementMovementCounter() {
 		movementCounter++;
 	}
@@ -1789,11 +1765,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
 	}
-	
+
 	public void setClientObject(boolean val) {
 		staticObject = val;
 	}
-	
+
 	@dirty
 	public abstract native unsigned int getPlanetCRC();
 
@@ -1807,32 +1783,32 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	    return false;
 	}
 
-    @dirty
-    @local
-    public abstract StaticObject asStaticObject() {
-        return null;
-    }
+	@dirty
+	@local
+	public abstract StaticObject asStaticObject() {
+		return null;
+	}
 
 	@dirty
 	public abstract boolean isContainerObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isTerminal() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isGroupObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isGuildObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isControlDevice() {
 		return false;
@@ -1857,12 +1833,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isMissionTerminal() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isMissionObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isActorObject() {
 		return false;
@@ -1872,12 +1848,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public int getPlanetMapCategoryCRC() {
 		return planetMapCategory;
 	}
-	
+
 	@read
 	public int getPlanetMapSubCategoryCRC() {
 		return planetMapSubCategory;
 	}
-	
+
 	@local
 	public void setPlanetMapCategory(PlanetMapCategory pmc) {
 		if (pmc == null)
@@ -1885,48 +1861,43 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		else
 			planetMapCategory = pmc.getCrc();
 	}
-	
+
 	@local
 	public void setPlanetMapSubCategory(PlanetMapCategory pmc)  {
 		planetMapSubCategory = pmc.getCrc();
 	}
-	
+
 	@local
 	@read
 	public PlanetMapCategory getPlanetMapCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
 	}
-	
+
 	@local
 	@read
 	public PlanetMapCategory getPlanetMapSubCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
 	}
-	
+
 	@local
 	@dirty
 	public SortedVector<SceneObject> getChildObjects() {
 		return childObjects;
 	}
-	
+
 	@read
 	public boolean containsChildObject(SceneObject obj) {
 		return childObjects.contains(obj);
 	}
-	
-	/*@local
-	public SortedVector<SceneObject> getNotifiedSentObjects() {
-		return notifiedSentObjects;
-	}*/
-	
+
 	@local
 	@read
 	public SharedObjectTemplate getObjectTemplate() {
 		return templateObject;
 	}
-	
+
 	/**
 	 * The returning value points directly to the internal vector, do not delete it or store it
 	 */
@@ -1949,10 +1920,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public Matrix4 getTransformForCollisionMatrix() {
 		return transformForCollisionMatrix;
 	}
-	
+
 	@local
 	public native boolean setTransformForCollisionMatrixIfNull(Matrix4 mat);
-	
+
 	/**
 	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed
 	 * as an argument to the method.
@@ -1961,7 +1932,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param controllerObject The object that has this object specified as a "childObject".
 	 */
 	public native abstract void initializeChildObject(SceneObject controllerObject);
-	
+
 	@dirty
 	public native boolean isInWater();
 
@@ -1970,12 +1941,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	public native string getDisplayedName();
-	
+
 	@ready
 	public boolean doSendToClient() {
 		return sendToClient;
 	}
-	
+
 	public void setSendToClient(boolean val) {
 		sendToClient = val;
 	}

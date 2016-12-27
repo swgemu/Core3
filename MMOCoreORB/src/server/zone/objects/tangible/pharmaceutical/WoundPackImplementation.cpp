@@ -1,7 +1,6 @@
 
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/FactionStatus.h"

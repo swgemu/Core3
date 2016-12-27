@@ -5,7 +5,6 @@
 #ifndef ENRAGEPETSCOMMAND_H_
 #define ENRAGEPETSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"

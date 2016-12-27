@@ -6,22 +6,12 @@
 #ifndef VENDOROUTFITMANAGER_H_
 #define VENDOROUTFITMANAGER_H_
 
-#include "engine/engine.h"
 #include "Outfit.h"
-
-namespace server {
-namespace zone {
-	class ZoneProcessServer;
-}
-}
-
-using namespace server::zone;
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace vendor {
-
 
 class VendorOutfitManager : public Singleton<VendorOutfitManager>, public Logger, public Object {
 	VectorMap<String, Reference<Outfit*> > outfits;

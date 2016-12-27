@@ -5,10 +5,8 @@
 #ifndef CHANGEBANDMUSICCOMMAND_H_
 #define CHANGEBANDMUSICCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/skill/PerformanceManager.h"

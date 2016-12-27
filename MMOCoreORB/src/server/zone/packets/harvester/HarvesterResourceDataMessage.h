@@ -5,7 +5,7 @@
 #ifndef HARVESTERRESOURCEDATAMESSAGE_H_
 #define HARVESTERRESOURCEDATAMESSAGE_H_
 
-#include "../object/ObjectControllerMessage.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:

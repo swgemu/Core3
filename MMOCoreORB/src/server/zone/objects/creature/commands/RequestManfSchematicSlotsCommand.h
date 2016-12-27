@@ -5,8 +5,6 @@
 #ifndef REQUESTMANFSCHEMATICSLOTSCOMMAND_H_
 #define REQUESTMANFSCHEMATICSLOTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RequestManfSchematicSlotsCommand : public QueueCommand {
 public:
 

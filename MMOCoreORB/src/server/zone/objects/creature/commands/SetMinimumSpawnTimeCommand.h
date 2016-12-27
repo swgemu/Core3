@@ -5,8 +5,6 @@
 #ifndef SETMINIMUMSPAWNTIMECOMMAND_H_
 #define SETMINIMUMSPAWNTIMECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetMinimumSpawnTimeCommand : public QueueCommand {
 public:
 

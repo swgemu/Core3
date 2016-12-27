@@ -5,13 +5,11 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.tangible.tool.CraftingStation;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
 
 import server.zone.managers.crafting.CraftingManager;
-include server.zone.objects.scene.SessionFacadeType;
 include templates.customization.CustomizationVariable;
 
 class CraftingSession extends Facade {

@@ -4,18 +4,11 @@
 
 package server.zone.objects.intangible;
 
-import engine.lua.LuaObject;
-import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
-import server.zone.objects.creature.VehicleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
-import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.intangible.VehicleControlObserver;
 
 class VehicleControlDevice extends ControlDevice {

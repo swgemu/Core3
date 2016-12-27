@@ -5,17 +5,14 @@
 
 package server.zone.objects.creature.ai;
 
-import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.ai.AiAgent;
-import server.zone.objects.area.ActiveArea;
-import engine.util.u3d.Coordinate;
 import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
-include templates.SharedObjectTemplate;
 include server.zone.objects.structure.StructureObject;
+include system.util.Vector;
 
 class DroidObject extends AiAgent {
 

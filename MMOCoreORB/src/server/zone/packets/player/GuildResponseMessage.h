@@ -5,7 +5,7 @@
 #ifndef GUILDRESPONSEMESSAGE_H_
 #define GUILDRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 

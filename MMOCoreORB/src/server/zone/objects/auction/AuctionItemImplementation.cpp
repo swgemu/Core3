@@ -6,9 +6,6 @@
  */
 
 #include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/Zone.h"
-
 
 void AuctionItemImplementation::clearAuctionWithdraw() {
 	if (auctionOptions & OPTION_WITHDRAW)

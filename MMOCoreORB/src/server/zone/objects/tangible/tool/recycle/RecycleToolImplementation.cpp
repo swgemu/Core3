@@ -2,11 +2,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/tangible/Container.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "templates/tangible/tool/RecycleToolTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 

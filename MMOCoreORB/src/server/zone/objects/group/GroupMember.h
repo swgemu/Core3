@@ -9,7 +9,6 @@
 #define GROUPMEMBER_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/variables/StringId.h"
 
 class GroupMember : public Variable {
 	ManagedReference<CreatureObject*> creature;

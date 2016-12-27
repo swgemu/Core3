@@ -14,6 +14,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/objects/creature/buffs/SingleUseBuff.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class JediQueueCommand : public QueueCommand {
 

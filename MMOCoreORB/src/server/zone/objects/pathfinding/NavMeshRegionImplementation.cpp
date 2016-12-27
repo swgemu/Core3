@@ -1,6 +1,5 @@
 #include <cstdint>
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
-#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObjectType.h"

@@ -5,12 +5,6 @@
 #ifndef CENTEROFBEINGCOMMAND_H_
 #define CENTEROFBEINGCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/ShowFlyText.h"
-
-using server::zone::packets::object::ShowFlyText;
-
-
 class CenterOfBeingCommand : public QueueCommand {
 public:
 

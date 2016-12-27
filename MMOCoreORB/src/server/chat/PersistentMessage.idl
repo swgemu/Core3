@@ -6,8 +6,6 @@ package server.chat;
 
 import engine.core.ManagedObject;
 import system.lang.System;
-import system.util.Vector;
-include server.chat.ChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameter;
 include server.chat.WaypointChatParameterVector;
