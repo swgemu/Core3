@@ -5,8 +5,6 @@
 #ifndef INSPACEREPAIR_H_
 #define INSPACEREPAIR_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class InspacerepairCommand : public CombatQueueCommand {

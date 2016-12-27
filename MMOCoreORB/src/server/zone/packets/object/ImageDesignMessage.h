@@ -5,9 +5,8 @@
 #ifndef IMAGEDESIGNMESSAGE_H_
 #define IMAGEDESIGNMESSAGE_H_
 
-
-#include "engine/engine.h"
 #include "ObjectControllerMessage.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class ImageDesignStartMessage : public ObjectControllerMessage {
 public:

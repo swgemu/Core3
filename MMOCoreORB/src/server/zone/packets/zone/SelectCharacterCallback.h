@@ -9,21 +9,14 @@
 #define SELECTCHARACTERCALLBACK_H_
 
 #include "server/zone/packets/MessageCallback.h"
-
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
-
-#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-
 #include "server/chat/ChatManager.h"
-#include "server/login/account/Account.h"
-
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 
 class SelectCharacterCallback : public MessageCallback {

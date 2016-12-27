@@ -8,7 +8,8 @@
 #ifndef LOOTGROUPTEMPLATE_H_
 #define LOOTGROUPTEMPLATE_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
+#include "engine/lua/LuaObject.h"
 
 class LootGroupTemplate : public Object {
 	String templateName;

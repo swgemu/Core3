@@ -4,10 +4,7 @@
 
 package server.zone.objects.auction;
 
-import system.util.VectorMap;
 import engine.core.ManagedObject;
-import system.lang.StringBuffer;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.StringId;
 
@@ -289,7 +286,7 @@ class AuctionItem extends ManagedObject {
 	}
 
 	@read
-	public boolean isOwner(CreatureObject player) {
+	public boolean isOwner(SceneObject player) {
 		return player.getObjectID() == getOwnerID();
 	}
 

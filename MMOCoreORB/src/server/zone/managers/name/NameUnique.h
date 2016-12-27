@@ -1,8 +1,6 @@
 #ifndef NAMEUNIQUE_H_
 #define NAMEUNIQUE_H_
 
-#include "engine/engine.h"
-
 class NameUnique : public Object {
 
 protected:

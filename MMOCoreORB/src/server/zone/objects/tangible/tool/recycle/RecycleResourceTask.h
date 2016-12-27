@@ -9,10 +9,6 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
-#include "server/zone/Zone.h"
-#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeEntry.h"
-#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.h"
-#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.h"
 
 class RecycleResourceTask : public Task {
 private:

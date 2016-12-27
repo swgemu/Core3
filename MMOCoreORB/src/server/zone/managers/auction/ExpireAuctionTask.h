@@ -8,8 +8,6 @@
 #ifndef EXPIREAUCTIONTASK_H_
 #define EXPIREAUCTIONTASK_H_
 
-#include "engine/engine.h"
-
 #include "server/zone/managers/auction/AuctionManager.h"
 
 class ExpireAuctionTask : public Task {

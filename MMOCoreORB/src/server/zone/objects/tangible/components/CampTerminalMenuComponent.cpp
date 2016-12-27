@@ -9,13 +9,11 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
 #include "CampTerminalMenuComponent.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/structure/StructureManager.h"
-
 
 void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

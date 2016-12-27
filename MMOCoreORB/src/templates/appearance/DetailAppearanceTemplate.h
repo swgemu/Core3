@@ -8,7 +8,6 @@
 #ifndef DETAILAPPEARANCETEMPLATE_H_
 #define DETAILAPPEARANCETEMPLATE_H_
 
-#include "engine/engine.h"
 #include "templates/appearance/AppearanceTemplate.h"
 
 class DetailAppearanceTemplate : public AppearanceTemplate {

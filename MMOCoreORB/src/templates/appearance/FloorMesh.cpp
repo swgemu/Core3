@@ -7,8 +7,6 @@
 
 #include "FloorMesh.h"
 
-#include "templates/appearance/MeshAppearanceTemplate.h"
-
 void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
 	indicies[0] = iffStream->getInt(); // Corner Index[0]
 	indicies[1] = iffStream->getInt(); // Corner Index[1]

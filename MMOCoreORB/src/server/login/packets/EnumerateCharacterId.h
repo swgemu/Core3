@@ -5,7 +5,7 @@
 #ifndef ENUMERATECHARACTERID_H_
 #define ENUMERATECHARACTERID_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/login/account/Account.h"
 #include "../objects/CharacterList.h"
 

@@ -1,5 +1,5 @@
 /*
- * ImageDesignMessageCallback.h
+ * ImageDesignChangeMessageCallback.h
  *
  *  Created on: 02/02/2011
  *      Author: Polonel
@@ -9,7 +9,6 @@
 #define IMAGEDESIGNCHANGEMESSAGECALLBACK_H_
 
 #include "ObjectControllerMessageCallback.h"
-#include "ImageDesignMessage.h"
 #include "server/zone/objects/player/sessions/ImageDesignSession.h"
 #include "server/zone/objects/player/sessions/ImageDesignData.h"
 

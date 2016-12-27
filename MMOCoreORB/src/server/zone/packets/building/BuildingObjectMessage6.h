@@ -6,7 +6,7 @@
 #define BUILDINGOBJECTMESSAGE6_H_
 
 #include "server/zone/objects/building/BuildingObject.h"
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class BuildingObjectMessage6 : public BaseLineMessage {
 public:
@@ -42,4 +42,5 @@ public:
 		//System::out << msg.toString();
 	}*/
 };
+
 #endif /*BUILDINGOBJECTMESSAGE6_H_*/

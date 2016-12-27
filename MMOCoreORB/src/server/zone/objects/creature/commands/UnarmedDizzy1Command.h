@@ -5,7 +5,6 @@
 #ifndef UNARMEDDIZZY1COMMAND_H_
 #define UNARMEDDIZZY1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class UnarmedDizzy1Command : public CombatQueueCommand {

@@ -5,8 +5,6 @@
 #ifndef VERTFURNITURECOMMAND_H_
 #define VERTFURNITURECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class VertFurnitureCommand : public QueueCommand {
 public:
 

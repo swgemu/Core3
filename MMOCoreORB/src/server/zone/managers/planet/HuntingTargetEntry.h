@@ -8,8 +8,6 @@
 #ifndef HUNTINGTARGETENTRY_H_
 #define HUNTINGTARGETENTRY_H_
 
-#include "engine/engine.h"
-
 class HuntingTargetEntry : public Object {
 private:
 	String templatePrimary;

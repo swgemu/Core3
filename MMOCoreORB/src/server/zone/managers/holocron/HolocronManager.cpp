@@ -8,7 +8,7 @@
 #include "HolocronManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/ui/CreateTicketResponseMessage.h"
+//#include "server/zone/packets/ui/CreateTicketResponseMessage.h"
 #include "server/zone/packets/ui/RequestCategoriesResponseMessage.h"
 #include "server/db/MantisDatabase.h"
 #include "server/login/account/AccountManager.h"

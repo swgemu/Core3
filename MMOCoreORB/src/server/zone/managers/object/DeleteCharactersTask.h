@@ -8,8 +8,6 @@
 #ifndef DELETECHARACTERSTASK_H_
 #define DELETECHARACTERSTASK_H_
 
-#include "engine/engine.h"
-
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
 

@@ -5,8 +5,6 @@
 #ifndef MAKESURVEYCOMMAND_H_
 #define MAKESURVEYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class MakeSurveyCommand : public QueueCommand {
 public:
 

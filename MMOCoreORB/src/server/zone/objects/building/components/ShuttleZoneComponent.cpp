@@ -5,7 +5,6 @@
  *      Author: crush
  */
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "ShuttleZoneComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/tasks/ScheduleShuttleTask.h"

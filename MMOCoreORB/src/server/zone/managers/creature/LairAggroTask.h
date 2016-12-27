@@ -8,9 +8,9 @@
 #ifndef LAIRAGGROTASK_H_
 #define LAIRAGGROTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+
 class LairAggroTask : public Task {
 
 	bool all;
@@ -45,6 +45,5 @@ public:
 		strongObserver->doAggro(strongRef, strongAttackerRef, all);
 	}
 };
-
 
 #endif /* LAIRAGGROTASK_H_ */

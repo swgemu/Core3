@@ -5,7 +5,6 @@
 #ifndef MINDSHOT2COMMAND_H_
 #define MINDSHOT2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class MindShot2Command : public CombatQueueCommand {

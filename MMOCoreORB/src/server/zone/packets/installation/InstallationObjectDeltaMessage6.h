@@ -5,8 +5,7 @@
 #ifndef INSTALLATIONOBJECTDELTAMESSAGE6_H_
 #define INSTALLATIONOBJECTDELTAMESSAGE6_H_
 
-#include "../../packets/DeltaMessage.h"
-
+#include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 
 class InstallationObjectDeltaMessage6 : public DeltaMessage {

@@ -138,4 +138,5 @@ public:
 		return permissionNames.contains(name);
 	}
 };
+
 #endif //PERMISSIONLEVELLIST_H_

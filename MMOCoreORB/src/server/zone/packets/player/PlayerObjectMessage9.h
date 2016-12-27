@@ -5,12 +5,9 @@
 #ifndef PLAYEROBJECTMESSAGE9_H_
 #define PLAYEROBJECTMESSAGE9_H_
 
-#include "../BaseLineMessage.h"
-
+#include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/variables/AbilityList.h"
-
-//#include "../../objects/draftschematic/DraftSchematic.h"
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:

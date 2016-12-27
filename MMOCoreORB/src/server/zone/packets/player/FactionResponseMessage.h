@@ -5,7 +5,7 @@
 #ifndef FACTIONRESPONSEMESSAGE_H_
 #define FACTIONRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class FactionResponseMessage : public BaseMessage {
 public:

@@ -1,7 +1,6 @@
 #include "server/zone/objects/tangible/components/FlagGameMenuComponent.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
-#include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 #include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/FlagGame.h"

@@ -3,7 +3,9 @@
 #include "server/zone/objects/tangible/tasks/RemoveEventPerkDeedTask.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -13,7 +15,6 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();

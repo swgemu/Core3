@@ -4,26 +4,19 @@
 
 package server.zone.managers.mission;
 
-import system.util.SortedVector;
-
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServer;
 import server.zone.objects.mission.MissionObject;
 import engine.util.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.region.Region;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.group.GroupObject;
-import server.zone.managers.stringid.StringIdManager;
 include terrain.manager.TerrainManager;
-include server.zone.managers.mission.LairObjectsToSpawnMap;
 include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 import server.zone.managers.creature.LairSpawn;
-import server.zone.objects.creature.ai.CreatureTemplate;
 import system.thread.Mutex;
+include system.util.Vector;
 
 class MissionManager extends Observer implements Logger {
 	protected ZoneServer server;

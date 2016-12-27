@@ -6,14 +6,13 @@
  */
 
 #include "PlayerContainerComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/objects/tangible/wearables/RobeObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/creature/CreatureObjectMessage6.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {

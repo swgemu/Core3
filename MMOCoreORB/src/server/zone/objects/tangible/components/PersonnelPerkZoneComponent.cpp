@@ -1,8 +1,8 @@
-#include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "PersonnelPerkZoneComponent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/tangible/EventPerkDeedTemplate.h"
 
 void PersonnelPerkZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {

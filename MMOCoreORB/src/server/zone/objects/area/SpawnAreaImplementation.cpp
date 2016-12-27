@@ -10,7 +10,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
-#include "server/zone/managers/collision/CollisionManager.h"
+//#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/area/SpawnAreaObserver.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"

@@ -4,8 +4,6 @@
 
 #include "SuiManager.h"
 
-#include "server/zone/managers/radial/RadialManager.h"
-
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
@@ -13,47 +11,17 @@
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/objects/creature/commands/UnconsentCommand.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/player/sui/SuiBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
-#include "server/zone/managers/minigames/GamblingManager.h"
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-#include "server/zone/objects/tangible/ticket/TicketObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
 #include "server/zone/objects/player/sui/callbacks/LuaSuiCallback.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
-#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
-#include "server/zone/managers/planet/MapLocationType.h"
-#include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/creature/commands/FindCommand.h"
-#include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
-#include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
-#include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
-#include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
-#include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
-#include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
-#include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
-#include "server/zone/objects/creature/commands/sui/InstallMissionTerminalSuiCallback.h"
-#include "server/zone/objects/creature/commands/sui/RecruitSkillTrainerSuiCallback.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreatureState.h"
-#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
-#include "server/zone/managers/guild/GuildManager.h"
-#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
-#include "server/zone/objects/guild/GuildObject.h"
-#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
@@ -156,9 +124,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::CHARACTER_BUILDER_LIST:
 		handleCharacterBuilderSelectItem(player, suiBox, eventIndex, args);
 		break;
-	case SuiWindowType::MEDIC_DIAGNOSE:
-		handleDiagnose(player, suiBox, eventIndex, args);
-		break;
 	case SuiWindowType::OBJECT_NAME:
 		handleSetObjectName(player, suiBox, eventIndex, args);
 		break;
@@ -250,42 +215,6 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 	}
 }
 
-/*
-void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	uint64 ticketObjectID = listBox->getMenuObjectID(index);
-
-	if (ticketObjectID == 0)
-		return;
-
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (inventory == NULL)
-		return;
-
-	ManagedReference<SceneObject*> obj = inventory->getContainerObject(ticketObjectID);
-
-	if (obj == NULL || !obj->isTangibleObject())
-		return;
-
-	TangibleObject* tano = cast<TangibleObject*>( obj.get());
-
-	if (!tano->isTicketObject())
-		return;
-
-	TicketObject* ticket = cast<TicketObject*>( tano);
-	ticket->handleObjectMenuSelect(player, 20);
-}
- */
 void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isBankTransferBox() || cancel != 0)
 		return;
@@ -680,9 +609,6 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 	}
 }
 
-void SuiManager::handleDiagnose(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-}
-
 void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
@@ -750,8 +676,6 @@ void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, cons
 	}
 
 }
-
-
 
 void SuiManager::sendInputBox(SceneObject* terminal, SceneObject* player, const String& play, const String& callback, const String& prompt, const String& button) {
 	if (terminal == NULL)

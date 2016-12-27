@@ -8,9 +8,6 @@
 #ifndef REQUESTQUESTTIMERSANDCOUNTERSCOMMAND_H_
 #define REQUESTQUESTTIMERSANDCOUNTERSCOMMAND_H_
 
-
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RequestQuestTimersAndCountersCommand : public QueueCommand {
 public:
 

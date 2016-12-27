@@ -5,8 +5,6 @@
 #ifndef STRINGIDCHATPARAMETER_H_
 #define STRINGIDCHATPARAMETER_H_
 
-#include "engine/engine.h"
-
 #include "server/chat/ChatParameter.h"
 #include "server/zone/objects/scene/variables/StringIdParameter.h"
 #include "server/zone/objects/scene/variables/StringId.h"

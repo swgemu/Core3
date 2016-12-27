@@ -4,10 +4,9 @@
 
 package server.zone.objects.tangible.eventperk;
 
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import system.util.VectorMap;
-import server.zone.Zone;
+include system.util.Vector;
 
 class ScavengerDroid extends CreatureObject {
 	@dereferenced

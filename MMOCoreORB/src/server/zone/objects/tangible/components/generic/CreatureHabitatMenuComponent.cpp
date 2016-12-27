@@ -7,11 +7,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "CreatureHabitatMenuComponent.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
-#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
 #include "templates/tangible/LiveSampleTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/objects/building/BuildingObject.h"
 

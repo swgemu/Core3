@@ -9,13 +9,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreaturePosture.h"
-#include "templates/params/creature/CreatureLocomotion.h"
-
-
 #include "server/zone/ZoneProcessServer.h"
-#include "server/zone/objects/creature/variables/Skill.h"
-//#include "../../../managers/combat/CombatManager.h"
 
 namespace server {
 namespace zone {

@@ -4,20 +4,13 @@
 
 package server.zone.objects.tangible.pharmaceutical;
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
-import system.lang.StringBuffer;
+include system.lang.Math;
 include templates.params.creature.CreatureState;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.CurePackTemplate;
-
 
 class CurePack extends PharmaceuticalObject {
 	protected float effectiveness;

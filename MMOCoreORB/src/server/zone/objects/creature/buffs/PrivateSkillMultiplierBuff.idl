@@ -4,8 +4,6 @@
 
 package server.zone.objects.creature.buffs;
 
-import engine.core.ManagedObject;
-import system.lang.ref.Reference;
 import server.zone.objects.creature.buffs.PrivateBuff;
 
 // A private buff will only be appropriate if it only contains private_ skillmods and does not need

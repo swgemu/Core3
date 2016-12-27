@@ -8,8 +8,6 @@
 #ifndef PATROLPATHNODE_H_
 #define PATROLPATHNODE_H_
 
-#include "engine/engine.h"
-
 class PatrolPathNode : public Object {
 	String id, link;
 	Vector3 position;

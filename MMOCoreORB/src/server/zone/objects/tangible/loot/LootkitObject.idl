@@ -6,13 +6,9 @@ package server.zone.objects.tangible.loot;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import server.zone.ZoneServer;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import system.util.VectorMap;
-import system.lang.ref.Reference;
 import system.util.Vector;
 include templates.SharedObjectTemplate;
 

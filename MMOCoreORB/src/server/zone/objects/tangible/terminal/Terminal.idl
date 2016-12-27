@@ -4,10 +4,8 @@
 
 package server.zone.objects.tangible.terminal;
 
-import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 
 class Terminal extends TangibleObject {
 	//@weakReference

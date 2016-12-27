@@ -9,8 +9,7 @@
 #define LOGINPACKETHANDLER_H_
 
 #include "engine/engine.h"
-
-class LoginSession;
+#include "LoginSession.h"
 
 class LoginPacketHandler : public Logger {
 	Reference<LoginSession*> loginSession;
@@ -36,7 +35,5 @@ public:
 
 	void handleUpdateTransformMessage(Message* pack);*/
 };
-
-
 
 #endif /* LOGINPACKETHANDLER_H_ */

@@ -8,7 +8,7 @@
 #ifndef CLIENTIDMESSAGECALLBACK_H_
 #define CLIENTIDMESSAGECALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/db/ServerDatabase.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/login/account/Account.h"

@@ -2,14 +2,10 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "engine/engine.h"
-
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "ResourceShiftTask.h"
 #include "resourcespawner/SampleTask.h"
 #include "resourcespawner/SampleResultsTask.h"
-#include "server/zone/managers/resource/InterplanetarySurvey.h"
-#include "server/zone/managers/resource/InterplanetarySurveyTask.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

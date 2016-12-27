@@ -8,12 +8,9 @@
 #include "engine/util/u3d/Vector3.h"
 #include "engine/util/u3d/Quaternion.h"
 #include "engine/log/Logger.h"
-#include "engine/lua/Lua.h"
-#include "engine/orb/object/DistributedObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "terrain/manager/TerrainManager.h"
-#include <iostream>
 #include <fstream>
 
 namespace server {

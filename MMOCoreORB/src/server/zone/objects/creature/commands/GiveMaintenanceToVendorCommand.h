@@ -5,8 +5,6 @@
 #ifndef GIVEMAINTENANCETOVENDORCOMMAND_H_
 #define GIVEMAINTENANCETOVENDORCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GiveMaintenanceToVendorCommand : public QueueCommand {
 public:
 

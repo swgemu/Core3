@@ -4,12 +4,7 @@
 
 package server.zone.objects.factorycrate;
 
-import system.util.VectorMap;
-import engine.lua.LuaObject;
-
 import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-include templates.params.OptionBitmask;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;

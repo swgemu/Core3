@@ -9,7 +9,7 @@
 #define COLLISIONMANAGER_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/scene/WorldCoordinates.h"
+#include "templates/appearance/AppearanceTemplate.h"
 
 class PathNode;
 class FloorMesh;

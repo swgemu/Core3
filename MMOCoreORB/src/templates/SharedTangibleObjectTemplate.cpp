@@ -6,9 +6,7 @@
  */
 
 #include "SharedTangibleObjectTemplate.h"
-
 #include "templates/manager/TemplateManager.h"
-#include "templates/footprint/StructureFootprint.h"
 #include "templates/params/PaletteColorCustomizationVariables.h"
 #include "templates/params/RangedIntCustomizationVariables.h"
 

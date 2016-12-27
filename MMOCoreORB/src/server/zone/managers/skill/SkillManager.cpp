@@ -6,7 +6,6 @@
 #include "SkillManager.h"
 #include "SkillModManager.h"
 #include "PerformanceManager.h"
-#include "imagedesign/ImageDesignManager.h"
 #include "server/zone/objects/creature/variables/Skill.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -18,9 +17,6 @@
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/wearables/RobeObject.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {

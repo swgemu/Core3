@@ -5,8 +5,6 @@
 #ifndef STOPLISTENINGCOMMAND_H_
 #define STOPLISTENINGCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class StoplisteningCommand : public QueueCommand {

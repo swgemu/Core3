@@ -5,8 +5,6 @@
 #ifndef SABER2HPHANTOMCOMMAND_H_
 #define SABER2HPHANTOMCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "JediCombatQueueCommand.h"
 
 class Saber2hPhantomCommand : public JediCombatQueueCommand {

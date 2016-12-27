@@ -6,7 +6,6 @@
  */
 
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
-#include "server/zone/objects/scene/SceneObject.h"
 
 BaseMessage* SuiColorBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.ColorPicker");

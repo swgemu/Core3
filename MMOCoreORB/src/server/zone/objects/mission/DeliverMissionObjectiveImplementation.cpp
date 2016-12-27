@@ -6,23 +6,15 @@
  */
 
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/packets/object/NpcConversationMessage.h"
-#include "server/zone/packets/object/StartNpcConversation.h"
-#include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
 	if (activated) {

@@ -1,16 +1,13 @@
-#include "engine/engine.h"
-
 #include "server/zone/Zone.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h"
-#include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void ReactionManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();

@@ -5,11 +5,8 @@
 #ifndef PERFORMANCEMANAGER_H_
 #define PERFORMANCEMANAGER_H_
 
-#include "engine/engine.h"
-
-#include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServer.h"
 #include "Performance.h"
+#include "engine/log/Logger.h"
 
 class PerformanceManager: public Logger {
 	HashTable<String, String> danceMap;

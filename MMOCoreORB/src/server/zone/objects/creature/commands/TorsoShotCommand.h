@@ -5,7 +5,6 @@
 #ifndef TORSOSHOTCOMMAND_H_
 #define TORSOSHOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class TorsoShotCommand : public CombatQueueCommand {

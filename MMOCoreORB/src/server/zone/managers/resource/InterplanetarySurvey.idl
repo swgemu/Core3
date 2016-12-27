@@ -5,8 +5,6 @@
 package server.zone.managers.resource;
 
 import engine.core.ManagedObject;
-import system.lang.System;
-import system.util.Vector;
 
 class InterplanetarySurvey extends ManagedObject {
 	protected int timeStamp;

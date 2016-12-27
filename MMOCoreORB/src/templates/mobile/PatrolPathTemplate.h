@@ -8,8 +8,6 @@
 #ifndef PATROLPATHTEMPLATE_H_
 #define PATROLPATHTEMPLATE_H_
 
-#include "engine/engine.h"
-
 #include "templates/mobile/PatrolPathNode.h"
 
 class PatrolPathTemplate : public Object {

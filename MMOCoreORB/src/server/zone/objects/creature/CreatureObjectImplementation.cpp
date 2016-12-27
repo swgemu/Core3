@@ -3,11 +3,11 @@
 		See file COPYING for copying conditions. */
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreatureFlag.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -36,6 +36,7 @@
 #include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
 #include "server/zone/packets/ui/OpenHolocronToPageMessage.h"
 #include "server/zone/packets/object/Animation.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
@@ -43,31 +44,23 @@
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
-#include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/creature/events/DizzyFallDownEvent.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
-#include "server/zone/objects/creature/buffs/PrivateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
 #include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
-
-#include "server/zone/packets/object/SitOnObject.h"
-
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
-#include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 
@@ -78,7 +71,6 @@
 
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
-#include "server/zone/packets/zone/CmdSceneReady.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
@@ -88,7 +80,6 @@
 
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
-#include "buffs/BuffDurationEvent.h"
 #include "engine/core/TaskManager.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;

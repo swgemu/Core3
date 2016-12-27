@@ -9,7 +9,6 @@
 #define CITYREGISTERSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/Zone.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 

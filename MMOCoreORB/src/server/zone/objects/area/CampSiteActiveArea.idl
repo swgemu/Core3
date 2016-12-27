@@ -15,9 +15,10 @@ import server.zone.objects.area.events.CampDespawnTask;
 import server.zone.objects.area.events.CampAbandonTask;
 include templates.building.CampStructureTemplate;
 include system.thread.Mutex;
-import system.lang.ref.Reference;
 import system.lang.Time;
 include templates.TemplateReference;
+include system.lang.System;
+include system.util.Vector;
 
 class CampSiteActiveArea extends ActiveArea {
 

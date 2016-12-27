@@ -5,7 +5,6 @@
 package server.zone.objects.manufactureschematic;
 
 import system.lang.ref.Reference;
-import engine.service.proto.BaseMessage;
 import system.util.Vector;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
@@ -13,7 +12,6 @@ import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.area.ActiveArea;
 import server.zone.objects.installation.factory.FactoryObject;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
@@ -24,8 +22,6 @@ include server.zone.objects.scene.variables.ContainerPermissions;
 include server.zone.objects.manufactureschematic.variables.StringIdDeltaVector;
 include server.zone.objects.manufactureschematic.variables.Uint64VectorDeltaVector;
 include server.zone.objects.manufactureschematic.variables.IntVectorDeltaVector;
-include server.zone.packets.DeltaMessage;
-//include server.zone.packets.manufactureschematic.ManufactureSchematicObjectDeltaMessage7;
 
 class ManufactureSchematic extends IntangibleObject {
 

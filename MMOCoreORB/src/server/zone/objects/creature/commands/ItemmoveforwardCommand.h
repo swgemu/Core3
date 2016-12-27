@@ -5,8 +5,6 @@
 #ifndef ITEMMOVEFORWARDCOMMAND_H_
 #define ITEMMOVEFORWARDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ItemmoveforwardCommand : public QueueCommand {
 public:
 

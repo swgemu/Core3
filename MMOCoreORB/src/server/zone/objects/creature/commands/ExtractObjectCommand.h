@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 
 class ExtractObjectCommand : public QueueCommand {
 public:

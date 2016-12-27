@@ -5,7 +5,7 @@
 #ifndef FORAGECLEANUPEVENT_H_
 #define FORAGECLEANUPEVENT_H_
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneProcessServer.h"
 
 namespace server {
 namespace zone {

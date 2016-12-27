@@ -6,17 +6,12 @@
  */
 
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-
 
 void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);

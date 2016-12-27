@@ -5,11 +5,8 @@
 #ifndef CREATUREOBJECTMESSAGE6_H_
 #define CREATUREOBJECTMESSAGE6_H_
 
-#include "../../packets/BaseLineMessage.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "../tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 
 class CreatureObjectMessage6 : public TangibleObjectMessage6 {
 public:

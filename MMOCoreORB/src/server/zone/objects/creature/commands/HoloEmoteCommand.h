@@ -5,11 +5,6 @@
 #ifndef HOLOEMOTECOMMAND_H_
 #define HOLOEMOTECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/packets/scene/PlayClientEventObjectMessage.h"
-
 class HoloEmoteCommand : public QueueCommand {
 public:
 

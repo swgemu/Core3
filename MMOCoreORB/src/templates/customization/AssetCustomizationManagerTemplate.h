@@ -8,7 +8,7 @@
 #ifndef ASSETCUSTOMIZATIONMANAGERTEMPLATE_H_
 #define ASSETCUSTOMIZATIONMANAGERTEMPLATE_H_
 
-#include "engine/engine.h"
+#include "engine/util/Singleton.h"
 #include "templates/IffTemplate.h"
 #include "templates/customization/CustomizationVariable.h"
 
@@ -90,7 +90,5 @@ private:
 	void* getCustomizationVariablesFromMap(uint16 key, uint64 a2, bool skipSharedOwner, VectorMap<String, Reference<CustomizationVariable*> >& result);
 
 };
-
-
 
 #endif /* ASSETCUSTOMIZATIONMANAGER_H_ */

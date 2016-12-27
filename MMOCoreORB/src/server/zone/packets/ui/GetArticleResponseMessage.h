@@ -5,6 +5,8 @@
 #ifndef GETARTICLERESPONSEMESSAGE_H_
 #define GETARTICLERESPONSEMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class GetArticleResponseMessage : public BaseMessage {
 public:
    GetArticleResponseMessage(bool success) : BaseMessage() {

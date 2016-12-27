@@ -5,8 +5,6 @@
 #ifndef DISABLETARGET_H_
 #define DISABLETARGET_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class DisableTargetCommand : public CombatQueueCommand {

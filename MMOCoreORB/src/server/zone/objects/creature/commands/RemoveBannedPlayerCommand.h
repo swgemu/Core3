@@ -5,8 +5,6 @@
 #ifndef REMOVEBANNEDPLAYERCOMMAND_H_
 #define REMOVEBANNEDPLAYERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RemoveBannedPlayerCommand : public QueueCommand {
 public:
 

@@ -15,7 +15,6 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/Zone.h"
 
 class PlaceCityHallSuiCallback : public SuiCallback {

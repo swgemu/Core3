@@ -6,8 +6,6 @@
 #define TEACHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/PlayerTeachSuiCallback.h"
 
 class TeachCommand : public QueueCommand {
 public:

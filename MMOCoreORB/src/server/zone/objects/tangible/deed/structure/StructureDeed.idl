@@ -4,7 +4,6 @@
 
 package server.zone.objects.tangible.deed.structure;
 
-import server.zone.Zone;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.deed.Deed;

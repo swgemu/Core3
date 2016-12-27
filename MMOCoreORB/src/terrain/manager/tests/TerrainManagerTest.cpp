@@ -5,19 +5,15 @@
  *      Author: swgemu
  */
 
-#include "../TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-
-#include "server/zone/Zone.h"
 
 using ::testing::_;
 using ::testing::Return;
 
-namespace server {
-namespace zone {
-namespace managers {
 namespace terrain {
+namespace manager {
 namespace tests {
 
 class TerrainManagerTest : public ::testing::Test, public Logger {
@@ -61,8 +57,6 @@ TEST_F(TerrainManagerTest, GetHighestHeightDifferenceShouldReturnTheHeightDiffer
 	EXPECT_EQ(7.0, terrainManager->getHighestHeightDifference(10, 10, 20, 20));
 }
 
-}
-}
 }
 }
 }

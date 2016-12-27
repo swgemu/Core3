@@ -8,9 +8,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 
 class SelectHarvestSuiCallback : public SuiCallback {

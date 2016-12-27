@@ -6,7 +6,7 @@
 #define RESOURCECONTAINEROBJECTMESSAGE6_H_
 
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class ResourceContainerObjectMessage6 : public BaseLineMessage {
 public:

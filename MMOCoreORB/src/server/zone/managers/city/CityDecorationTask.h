@@ -8,10 +8,10 @@
 #ifndef CITYDECORATIONTASK_H_
 #define CITYDECORATIONTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class CityDecorationTask : public Task {
 	ManagedReference<CreatureObject*> mayor;

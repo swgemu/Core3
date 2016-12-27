@@ -8,7 +8,6 @@
 #ifndef TEMPLATEBASE_H_
 #define TEMPLATEBASE_H_
 
-#include "engine/engine.h"
 #include "templates/params/Param.h"
 
 template <class V> class TemplateBase : public Param {

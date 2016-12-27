@@ -6,7 +6,6 @@
  */
 
 #include "SelectorBehavior.h"
-#include "server/zone/managers/creature/AiMap.h"
 
 SelectorBehavior::SelectorBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 

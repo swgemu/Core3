@@ -9,21 +9,14 @@
 #include "sui/InsertPowerSuiCallback.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 
 #include "server/zone/packets/installation/InstallationObjectMessage3.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage3.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectMessage6.h"
-
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
@@ -31,11 +24,8 @@
 #include "server/zone/Zone.h"
 #include "templates/installation/SharedInstallationObjectTemplate.h"
 #include "SyncrhonizedUiListenInstallationTask.h"
-#include "server/zone/objects/installation/components/TurretObserver.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "templates/params/OptionBitmask.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"

@@ -5,7 +5,7 @@
 #ifndef SCENEOBJECTCREATEMESSAGE_H_
 #define SCENEOBJECTCREATEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 

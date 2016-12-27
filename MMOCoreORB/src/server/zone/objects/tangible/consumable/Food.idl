@@ -5,9 +5,6 @@
 package server.zone.objects.tangible.consumable;
 
 import server.zone.objects.tangible.consumable.Consumable;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
 
 class Food extends Consumable {
 	public Food() {		

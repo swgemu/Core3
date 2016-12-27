@@ -8,8 +8,6 @@
 #ifndef AIMAP_H_
 #define AIMAP_H_
 
-#include "engine/engine.h"
-
 #include "templates/AiTemplate.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
@@ -22,7 +20,6 @@
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/objects/intangible/PetControlDevice.h"
 
 class AiMap : public Singleton<AiMap>, public Logger, public Object {
 public:

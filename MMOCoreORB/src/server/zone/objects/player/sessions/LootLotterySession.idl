@@ -4,25 +4,13 @@
 
 package server.zone.objects.player.sessions;
 
-include engine.core.ManagedObject;
-
 import engine.log.Logger;
-import engine.core.ManagedReference;
-import system.lang.ref.Reference;
-
 import engine.util.Facade;
 import system.util.SortedVector;
-import system.util.VectorMap;
-
-
-include server.zone.objects.scene.SceneObject;
-include server.zone.objects.group.GroupObject;
 include server.zone.objects.creature.CreatureObject;
 
 include server.zone.objects.creature.ai.AiAgent;
 include server.zone.objects.player.sessions.LootLotteryBallot;
-include server.zone.objects.scene.SessionFacadeType;
-
 
 class LootLotterySession extends Facade {
 	protected AiAgent corpse;

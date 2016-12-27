@@ -10,7 +10,6 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/SharedObjectTemplate.h"
 
 void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	//All objects in a cell can be picked up, if the player is on the structures permission list.

@@ -5,8 +5,6 @@
 #ifndef FORCECUREPOISONCOMMAND_H_
 #define FORCECUREPOISONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/CombatAction.h"
 #include "ForceHealQueueCommand.h"
 
 class ForceCurePoisonCommand : public ForceHealQueueCommand {

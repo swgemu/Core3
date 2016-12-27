@@ -5,7 +5,6 @@
 #ifndef THROWGRENADECOMMAND_H_
 #define THROWGRENADECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "engine/core/TaskManager.h"
 
 class ThrowGrenadeCommand : public CombatQueueCommand {

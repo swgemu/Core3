@@ -5,8 +5,6 @@
 #ifndef PLACEBATTLEFIELDSTRUCTURECOMMAND_H_
 #define PLACEBATTLEFIELDSTRUCTURECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class PlaceBattlefieldStructureCommand : public QueueCommand {
 public:
 

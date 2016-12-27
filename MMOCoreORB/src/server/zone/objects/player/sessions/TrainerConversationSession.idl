@@ -4,8 +4,6 @@
 
 package server.zone.objects.player.sessions;
 
-import engine.util.Facade;
-include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sessions.ConversationSession;
 import server.zone.objects.creature.CreatureObject;
 

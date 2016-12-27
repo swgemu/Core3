@@ -5,8 +5,6 @@
 #ifndef ITEMROTATERIGHTCOMMAND_H_
 #define ITEMROTATERIGHTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ItemrotaterightCommand : public QueueCommand {
 public:
 

@@ -9,7 +9,6 @@
 #define CONTRABANDSCANTASK_H_
 
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
-#include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class ContrabandScanTask : public Task {

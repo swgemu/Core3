@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/intangible/VehicleControlObserver.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/creature/events/VehicleDecayTask.h"

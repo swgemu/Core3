@@ -6,7 +6,7 @@
 #ifndef RESOURCEHARVESTERACTIVATEPAGEMESSAGE_H_
 #define RESOURCEHARVESTERACTIVATEPAGEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ResourceHarvesterActivatePageMessage : public BaseMessage {
 public:
@@ -14,7 +14,6 @@ public:
     	insertShort(0x02);
     	insertInt(0xBD18C679);  // CRC
     	insertLong(oid);
-
 	}
 
 };

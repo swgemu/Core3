@@ -5,7 +5,6 @@
 #ifndef VOLLEYFIREATTACKCOMMAND_H_
 #define VOLLEYFIREATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class VolleyFireAttackCommand : public CombatQueueCommand {

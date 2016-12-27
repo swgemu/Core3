@@ -5,8 +5,6 @@
 #ifndef TARGETCOMMAND_H_
 #define TARGETCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class TargetCommand : public QueueCommand {
 public:
 

@@ -8,10 +8,11 @@
 #ifndef DESTROYSTRUCTURETASK_H_
 #define DESTROYSTRUCTURETASK_H_
 
-#include "engine/engine.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 

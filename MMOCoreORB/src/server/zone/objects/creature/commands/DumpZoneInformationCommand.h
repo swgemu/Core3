@@ -9,7 +9,6 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
-#include "terrain/layer/boundaries/BoundaryRectangle.h"
 
 class DumpZoneInformationCommand : public QueueCommand {
 public:

@@ -7,8 +7,6 @@ package server.zone.objects.tangible.sign;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
 
 class SignObject extends TangibleObject {
 	@weakReference

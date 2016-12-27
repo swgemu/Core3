@@ -4,18 +4,10 @@
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
-import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
-import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-include templates.TemplateReference;
-include templates.SharedObjectTemplate;
-import server.zone.objects.area.MissionSpawnActiveArea;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class DeliverMissionObjective extends MissionObjective {

@@ -8,7 +8,7 @@
 #ifndef GALAXYACCOUNTINFO_H_
 #define GALAXYACCOUNTINFO_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
 #include "system/util/SynchronizedVectorMap.h"
 
 class GalaxyAccountInfo : public Object {

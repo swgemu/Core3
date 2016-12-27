@@ -8,7 +8,6 @@
 #ifndef GROUPLOOTCOMMAND_H_
 #define GROUPLOOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootRuleSuiCallback.h"

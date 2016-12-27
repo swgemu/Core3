@@ -11,7 +11,6 @@
 #ifndef RESOURCEPOOL_H_
 #define RESOURCEPOOL_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
 class ResourceSpawner;

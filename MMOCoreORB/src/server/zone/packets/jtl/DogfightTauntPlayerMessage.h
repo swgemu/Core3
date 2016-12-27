@@ -8,6 +8,8 @@
 #ifndef DOGFIGHTTAUNTPLAYERMESSAGE_H_
 #define DOGFIGHTTAUNTPLAYERMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class DogfightTauntPlayerMessage : public BaseMessage {
 public:
 	DogfightTauntPlayerMessage() : BaseMessage() {

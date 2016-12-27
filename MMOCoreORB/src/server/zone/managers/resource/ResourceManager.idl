@@ -7,20 +7,16 @@ package server.zone.managers.resource;
 import engine.core.ManagedObject;
 import engine.log.Logger;
 import server.zone.ZoneServer;
-import server.zone.Zone;
 import server.zone.ZoneProcessServer;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.resource.ResourceContainer;
-import engine.service.proto.BaseMessage;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
-include server.zone.managers.resource.resourcespawner.resourcetree.ResourceTree;
-include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
+include system.util.Vector;
 
 /**
  * The resource manager handles all aspects of in game resources

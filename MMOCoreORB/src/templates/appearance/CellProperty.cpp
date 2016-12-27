@@ -1,13 +1,6 @@
 #include "CellProperty.h"
 
 #include "templates/manager/TemplateManager.h"
-#include "templates/appearance/AppearanceTemplate.h"
-#include "templates/appearance/MeshAppearanceTemplate.h"
-#include "templates/appearance/DetailAppearanceTemplate.h"
-
-#include "templates/appearance/PathNode.h"
-#include "templates/appearance/FloorMesh.h"
-#include "engine/util/u3d/AStarAlgorithm.h"
 
 void CellPortal::readObject(IffStream* iff) {
 	Chunk* chunk = iff->openChunk();

@@ -11,7 +11,6 @@
 #ifndef MANUALPOOL_H_
 #define MANUALPOOL_H_
 
-#include "engine/engine.h"
 #include "ResourcePool.h"
 
 class ResourceSpawner;

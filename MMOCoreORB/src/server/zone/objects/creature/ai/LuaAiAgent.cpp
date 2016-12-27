@@ -8,24 +8,17 @@
 #include "LuaAiAgent.h"
 
 #include <engine/core/ManagedReference.h>
-#include <engine/lua/Luna.h>
-#include <lua.h>
-#include <stddef.h>
 #include <system/lang/ref/Reference.h>
 #include <system/lang/String.h>
-#include <system/platform.h>
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/ServerCore.h"
 
-#include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-
-//#include "server/zone/objects/creature/ai/AiAgent.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 

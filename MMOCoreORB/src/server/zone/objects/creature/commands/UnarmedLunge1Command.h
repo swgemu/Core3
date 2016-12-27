@@ -5,9 +5,7 @@
 #ifndef UNARMEDLUNGE1COMMAND_H_
 #define UNARMEDLUNGE1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
-
 
 class UnarmedLunge1Command : public CombatQueueCommand {
 public:

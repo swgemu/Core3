@@ -5,8 +5,6 @@
 #ifndef VENTRILOQUISMCOMMAND_H_
 #define VENTRILOQUISMCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class VentriloquismCommand : public QueueCommand {
 public:
 

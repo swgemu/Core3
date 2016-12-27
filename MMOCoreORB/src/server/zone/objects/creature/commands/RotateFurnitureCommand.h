@@ -6,7 +6,6 @@
 #define ROTATEFURNITURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 
 class RotateFurnitureCommand : public QueueCommand {

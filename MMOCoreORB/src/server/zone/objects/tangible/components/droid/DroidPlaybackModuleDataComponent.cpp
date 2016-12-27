@@ -17,6 +17,7 @@
 #include "server/zone/packets/object/Flourish.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 DroidPlaybackModuleDataComponent::DroidPlaybackModuleDataComponent() {
 	active = false;

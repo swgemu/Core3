@@ -6,8 +6,6 @@
 #define NAMESTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 
 class NameStructureCommand : public QueueCommand {
 public:

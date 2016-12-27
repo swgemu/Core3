@@ -5,8 +5,6 @@
 #ifndef CSAPPENDCOMMENTCOMMAND_H_
 #define CSAPPENDCOMMENTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CsAppendCommentCommand : public QueueCommand {
 public:
 

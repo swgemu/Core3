@@ -2,9 +2,7 @@
 #define BASESHUTDOWNSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
 class BaseShutdownSuiCallback : public SuiCallback {

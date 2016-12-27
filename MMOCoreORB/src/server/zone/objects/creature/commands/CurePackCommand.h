@@ -13,10 +13,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/events/InjuryTreatmentTask.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
-#include "server/zone/objects/creature/BuffAttribute.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
-#include "server/zone/packets/object/CombatAction.h"
 #include "QueueCommand.h"
 
 class CurePackCommand : public QueueCommand {

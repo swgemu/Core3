@@ -5,9 +5,7 @@
 #ifndef GETMAPLOCATIONSRESPONSEMESSAGE_H_
 #define GETMAPLOCATIONSRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
-
-#include "templates/manager/PlanetMapCategory.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/planet/MapLocationTable.h"
 #include "server/zone/managers/planet/MapLocationEntry.h"
 

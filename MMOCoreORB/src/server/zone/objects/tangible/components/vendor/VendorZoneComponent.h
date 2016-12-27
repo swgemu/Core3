@@ -8,31 +8,8 @@
 #ifndef VENDORZONECOMPONENT_H_
 #define VENDORZONECOMPONENT_H_
 
-#include "engine/engine.h"
-
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
+#include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
-
-namespace server {
- namespace zone {
-  namespace objects {
-   namespace scene {
-    class SceneObject;
-   }
-
-   namespace building {
-    class BuildingObject;
-   }
-  }
-
-  class Zone;
- }
-}
-
-using namespace server::zone::objects::scene;
-using namespace server::zone::objects::building;
-using namespace server::zone;
-
 #include "engine/util/u3d/QuadTreeEntry.h"
 
 class VendorZoneComponent : public ZoneComponent {

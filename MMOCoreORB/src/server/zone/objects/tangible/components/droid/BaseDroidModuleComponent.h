@@ -5,7 +5,6 @@
 #ifndef BASEDROIDMODULECOMPONENT_H_
 #define BASEDROIDMODULECOMPONENT_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -141,4 +140,5 @@ public:
 } //zone
 } //server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /*BASEDROIDMODULECOMPONENT_H_*/

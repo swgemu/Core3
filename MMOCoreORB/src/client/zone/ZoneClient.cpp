@@ -2,15 +2,9 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "Zone.h"
 #include "ZoneClient.h"
-
 #include "ZonePacketHandler.h"
-
 #include "ZoneMessageProcessorTask.h"
-#include "engine/service/proto/packets/SessionIDRequestMessage.h"
-#include "server/zone/packets/zone/ClientIDMessage.h"
-
 
 ZoneClient::ZoneClient(int port) {
 	client = new BaseClient("localhost", port);

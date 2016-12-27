@@ -5,12 +5,10 @@
 #ifndef CHATPERSISTENTMESSAGETOCLIENT_H_
 #define CHATPERSISTENTMESSAGETOCLIENT_H_
 
-#include "engine/engine.h"
-#include "server/chat/ChatParameter.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"
 #include "server/chat/PersistentMessage.h"
-#include "server/chat/StringIdChatParameter.h"
 
 class ChatPersistentMessageToClient : public BaseMessage {
 	void insertParameters(PersistentMessage* mail) {

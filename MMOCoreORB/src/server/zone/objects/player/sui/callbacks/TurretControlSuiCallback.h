@@ -9,8 +9,6 @@
 #define TURRETCONTROLSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/installation/components/TurretFireTask.h"
 

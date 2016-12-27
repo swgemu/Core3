@@ -6,7 +6,6 @@
  */
 
 #include "PathGraph.h"
-#include "engine/util/u3d/AStarAlgorithm.h"
 #include "templates/appearance/FloorMesh.h"
 
 uint32 PathNode::getID() {

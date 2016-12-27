@@ -6,7 +6,6 @@
 #define DROIDTRAPMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -14,7 +13,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidTrapModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -54,7 +52,6 @@ private:
 
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -62,4 +59,5 @@ private:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDTRAPMODULEDATACOMPONENT_H_ */

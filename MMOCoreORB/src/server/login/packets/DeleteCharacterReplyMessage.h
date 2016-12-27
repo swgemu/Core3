@@ -5,7 +5,7 @@
 #ifndef DELETECHARACTERREPLYMESSAGE_H_
 #define DELETECHARACTERREPLYMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class DeleteCharacterReplyMessage : public BaseMessage {
 public:
@@ -15,6 +15,5 @@ public:
 		insertInt(Failure);
       }
 };
-
 
 #endif /*DELETECHARACTERREPLYMESSAGE_H_*/

@@ -4,11 +4,8 @@
 
 package server.zone.objects.creature.ai;
 
-import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
-import server.zone.objects.area.ActiveArea;
-import engine.util.u3d.Coordinate;
 
 class NonPlayerCreatureObject extends AiAgent {
 	

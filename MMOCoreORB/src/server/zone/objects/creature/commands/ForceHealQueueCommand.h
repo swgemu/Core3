@@ -5,16 +5,7 @@
 #ifndef FORCEHEALQUEUECOMMAND_H_
 #define FORCEHEALQUEUECOMMAND_H_
 
-
-#include "server/zone/objects/scene/SceneObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/ZoneProcessServer.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "JediQueueCommand.h"
-
 
 class ForceHealQueueCommand : public JediQueueCommand {
 public:

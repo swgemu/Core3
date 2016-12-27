@@ -5,8 +5,7 @@
 #ifndef GETACCOUNTINFOCOMMAND_H_
 #define GETACCOUNTINFOCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
 #include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
 #include "engine/service/proto/BaseClientProxy.h"
 

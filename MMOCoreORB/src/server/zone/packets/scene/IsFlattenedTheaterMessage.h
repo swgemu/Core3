@@ -8,6 +8,8 @@
 #ifndef ISFLATTENEDTHEATERMESSAGE_H_
 #define ISFLATTENEDTHEATERMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class IsFlattenedTheaterMessage : public BaseMessage {
 public:
 	IsFlattenedTheaterMessage() : BaseMessage() {
@@ -16,8 +18,6 @@ public:
 
 		insertLong(0); //Object id of the flattened theater?
 		insertByte(0); //is it flattened? is it not?
-
-
    }
 
 };

@@ -5,9 +5,6 @@
 #ifndef RADIALMENUITEM_H_
 #define RADIALMENUITEM_H_
 
-#include "engine/engine.h"
-
-
 /**
  * Please see Radial in the wiki for a list of client side radial id's.
  * Also, please note that radial id's are handled in RadialManager.cpp and most have already been defined.

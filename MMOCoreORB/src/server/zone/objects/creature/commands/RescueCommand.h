@@ -5,9 +5,8 @@
 #ifndef RESCUECOMMAND_H_
 #define RESCUECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/CombatSpam.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/tangible/threat/ThreatStates.h"
 
 class RescueCommand : public QueueCommand {
 public:

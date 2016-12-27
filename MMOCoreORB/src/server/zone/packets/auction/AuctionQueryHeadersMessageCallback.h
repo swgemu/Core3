@@ -9,8 +9,6 @@
 #define AUCTIONQUERYHEADERSMESSAGECALLBACK_H_
 
 #include "server/zone/packets/MessageCallback.h"
-
-#include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 
 class AuctionQueryHeadersMessageCallback : public MessageCallback {
@@ -57,6 +55,5 @@ public:
 			auctionManager->getData(player, extent, vendorID, screen, category, counter, offset);
 	}
 };
-
 
 #endif /* AUCTIONQUERYHEADERSMESSAGECALLBACK_H_ */

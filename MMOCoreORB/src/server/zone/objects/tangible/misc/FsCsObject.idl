@@ -5,15 +5,11 @@
 package server.zone.objects.tangible.fscsobject;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
 import system.lang.String;
 import system.lang.Time;
+include system.lang.System;
 
 @lua
 class FsCsObject extends TangibleObject {

@@ -8,12 +8,6 @@
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-namespace server {
-namespace zone {
-namespace packets {
-namespace object {
-
-
 class ShowFlyText : public ObjectControllerMessage {
 public:
 	ShowFlyText(SceneObject* creo, const String& file, const String& aux, uint8 red, uint8 green, uint8 blue, float size)
@@ -39,10 +33,5 @@ public:
 	}
 
 };
-
-}
-}
-}
-}
 
 #endif /*SHOWFLYTEXT_H_*/

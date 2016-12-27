@@ -5,10 +5,7 @@
 #ifndef LISTENCOMMAND_H_
 #define LISTENCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
 
 class ListenCommand : public QueueCommand {
 public:

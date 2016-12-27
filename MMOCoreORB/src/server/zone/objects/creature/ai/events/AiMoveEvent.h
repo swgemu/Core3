@@ -10,7 +10,6 @@
 
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/AiMap.h"
-#include "server/zone/objects/creature/ai/PatrolPoint.h"
 
 namespace server {
 namespace zone {

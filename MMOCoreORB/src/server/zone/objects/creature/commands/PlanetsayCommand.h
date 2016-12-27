@@ -5,7 +5,6 @@
 #ifndef PLANETSAYCOMMAND_H_
 #define PLANETSAYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
 
 class PlanetsayCommand : public QueueCommand {

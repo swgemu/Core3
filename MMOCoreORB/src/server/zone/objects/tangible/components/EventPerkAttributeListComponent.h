@@ -9,8 +9,6 @@
 #define EVENTPERKATTRIBUTELISTCOMPONENT_H_
 
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 

@@ -5,8 +5,6 @@
 #ifndef COMBATESCAPECOMMAND_H_
 #define COMBATESCAPECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CombatEscapeCommand : public QueueCommand {
 public:
 

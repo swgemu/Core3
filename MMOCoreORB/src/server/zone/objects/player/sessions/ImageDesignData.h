@@ -9,6 +9,7 @@
 #define IMAGEDESIGNDATA_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 class ImageDesignData : public Object {
 protected:

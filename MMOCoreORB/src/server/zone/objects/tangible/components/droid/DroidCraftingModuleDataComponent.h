@@ -7,7 +7,6 @@
 
 #include "BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
-#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -15,7 +14,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidCraftingModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -79,7 +77,6 @@ public:
 	void copy(BaseDroidModuleComponent* other);
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -87,4 +84,5 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDCRAFTINGMODULEDATACOMPONENT_H_ */

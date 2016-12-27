@@ -4,15 +4,13 @@
  *  Created on: Jan 31, 2013
  *      Author: root
  */
+
 #include "MinefieldMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "templates/params/creature/CreatureFlag.h"
-
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

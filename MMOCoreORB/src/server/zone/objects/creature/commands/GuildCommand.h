@@ -5,9 +5,7 @@
 #ifndef GUILDCOMMAND_H_
 #define GUILDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
-
 
 class GuildCommand : public QueueCommand {
 public:

@@ -8,12 +8,8 @@
 #ifndef REPAIRVEHICLESUICALLBACK_H_
 #define REPAIRVEHICLESUICALLBACK_H_
 
-
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/VehicleObject.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/region/Region.h"
 
 class RepairVehicleSuiCallback : public SuiCallback {
 public:

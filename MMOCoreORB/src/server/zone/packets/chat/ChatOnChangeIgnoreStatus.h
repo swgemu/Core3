@@ -5,7 +5,7 @@
 #ifndef CHATONCHANGEIGNORESTATUS_H_
 #define CHATONCHANGEIGNORESTATUS_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnChangeIgnoreStatus : public BaseMessage {
 public:

@@ -8,7 +8,6 @@
 #ifndef CLIENTPOIDATATABLE_H_
 #define CLIENTPOIDATATABLE_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 

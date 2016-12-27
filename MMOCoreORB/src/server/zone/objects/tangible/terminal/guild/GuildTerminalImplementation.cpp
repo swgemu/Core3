@@ -116,7 +116,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+	ManagedReference<GuildManager*> guildManager = getZoneServer()->getGuildManager();
 
 	if (guildManager == NULL)
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);

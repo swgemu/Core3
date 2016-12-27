@@ -4,9 +4,8 @@
 */
 
 package server.zone.objects.player.sessions;
-import engine.core.ManagedObject;
+
 import engine.util.Facade;
-import server.zone.objects.player.PlayerObject;
 import system.util.SortedVector;
 import server.zone.objects.scene.SceneObject;
 

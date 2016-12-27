@@ -5,7 +5,7 @@
 #ifndef PLAYMUSICMESSAGE_H_
 #define PLAYMUSICMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class PlayMusicMessage : public BaseMessage {
 public:

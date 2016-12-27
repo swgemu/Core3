@@ -5,7 +5,7 @@
 #ifndef GUILDOBJECTMESSAGE6_H_
 #define GUILDOBJECTMESSAGE6_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class GuildObjectMessage6 : public BaseLineMessage {
 public:

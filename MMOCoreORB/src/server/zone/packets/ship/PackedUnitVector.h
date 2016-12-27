@@ -8,8 +8,6 @@
 #ifndef SRC_SERVER_ZONE_PACKETS_SHIP_PACKEDUNITVECTOR_H_
 #define SRC_SERVER_ZONE_PACKETS_SHIP_PACKEDUNITVECTOR_H_
 
-#include "engine/engine.h"
-
 template<class T>inline const T clamp(const T &minT, const T &t, const T &maxT) {
 	return (t < minT) ? minT : ((t > maxT) ? maxT : t);
 }

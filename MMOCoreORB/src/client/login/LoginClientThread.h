@@ -8,8 +8,6 @@
 #ifndef LOGINCLIENTTHREAD_H_
 #define LOGINCLIENTTHREAD_H_
 
-#include "engine/engine.h"
-
 #include "LoginClient.h"
 
 class LoginClientThread : public Thread {
@@ -38,6 +36,5 @@ public:
 		client->stop();
 	}
 };
-
 
 #endif /* LOGINCLIENTTHREAD_H_ */

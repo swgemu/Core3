@@ -5,8 +5,6 @@
 #ifndef HASVETERANREWARDCOMMAND_H_
 #define HASVETERANREWARDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class HasVeteranRewardCommand : public QueueCommand {
 public:
 

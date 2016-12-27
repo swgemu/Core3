@@ -11,14 +11,8 @@
 #ifndef SAMPLETASK_H_
 #define SAMPLETASK_H_
 
-#include "engine/engine.h"
-#include "server/zone/packets/resource/SurveyMessage.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
-
-class ResourceSpawner;
 
 class SampleTask : public Task {
 

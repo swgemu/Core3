@@ -12,6 +12,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.creature.ValidMountScaleRange;
 include server.zone.managers.creature.MountSpeedData;
+include system.util.Vector;
+include system.lang.ref.Reference;
 
 class PetManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;

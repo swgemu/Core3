@@ -5,10 +5,8 @@
  *      Author: crush
  */
 
-
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 
 BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 

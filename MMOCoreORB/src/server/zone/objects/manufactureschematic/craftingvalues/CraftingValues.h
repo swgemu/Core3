@@ -6,7 +6,7 @@
 #define CRAFTINGVALUES_H_
 
 #include "templates/crafting/ValuesMap.h"
-
+#include "engine/engine.h"
 
 namespace server {
  namespace zone {

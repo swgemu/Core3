@@ -6,14 +6,10 @@ package server.zone.objects.tangible.attachement;
 
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-import engine.lua.LuaObject;
-import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.SceneObjectType;
-import server.zone.Zone;
 import system.util.HashTable;
 
 class Attachment extends TangibleObject {

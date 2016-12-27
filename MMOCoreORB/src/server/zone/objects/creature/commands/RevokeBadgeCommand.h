@@ -5,8 +5,6 @@
 #ifndef REVOKEBADGECOMMAND_H_
 #define REVOKEBADGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RevokeBadgeCommand : public QueueCommand {
 public:
 

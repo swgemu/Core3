@@ -5,10 +5,7 @@
 #ifndef CHARACTERLIST_H_
 #define CHARACTERLIST_H_
 
-#include "../../db/ServerDatabase.h"
-
-#include "server/zone/objects/player/Races.h"
-#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/db/ServerDatabase.h"
 #include "CharacterListEntry.h"
 
 class CharacterList : public Vector<CharacterListEntry> {

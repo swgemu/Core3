@@ -8,9 +8,8 @@
 #ifndef WORLDSNAPSHOTNODE_H_
 #define WORLDSNAPSHOTNODE_H_
 
-#include "engine/engine.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "engine/util/iffstream/IffStream.h"
-#include "engine/util/iffstream/chunks/Chunk.h"
 
 class WorldSnapshotNode : public Object {
 	Vector<WorldSnapshotNode> childNodes;
@@ -148,6 +147,5 @@ public:
 		return &childNodes.get(idx);
 	}
 };
-
 
 #endif /* WORLDSNAPSHOTNODE_H_ */

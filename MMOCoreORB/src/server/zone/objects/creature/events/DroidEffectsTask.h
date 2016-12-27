@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.h"
-#include "server/zone/objects/group/GroupObject.h"
 
 namespace server {
 namespace zone {

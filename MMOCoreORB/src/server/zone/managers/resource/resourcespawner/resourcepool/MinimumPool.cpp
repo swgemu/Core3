@@ -9,7 +9,7 @@
  */
 
 #include "MinimumPool.h"
-#include "../ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 MinimumPool::MinimumPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 	setLoggingName("MinimumPool");

@@ -6,7 +6,7 @@
 #ifndef MANUFACTURESCHEMATICOBJECTMESSAGE9_H_
 #define MANUFACTURESCHEMATICOBJECTMESSAGE9_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class ManufactureSchematicObjectMessage9 : public BaseLineMessage {
 public:

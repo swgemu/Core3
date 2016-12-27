@@ -4,14 +4,12 @@
  *  Created on: Dec 17, 2012
  *      Author: root
  */
-#include "server/zone/objects/scene/components/ZoneComponent.h"
+
 #include "DetectorZoneComponent.h"
 #include "DetectorDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
 

@@ -8,7 +8,6 @@
 #ifndef PALETTECOLORCUSTOMIZATIONVARIABLES_H_
 #define PALETTECOLORCUSTOMIZATIONVARIABLES_H_
 
-#include "engine/engine.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"
 #include "templates/params/Param.h"
 
@@ -16,7 +15,6 @@ class PaletteColorCustomizationVariables : public Param {
 protected:
 	//QMap<QString, PaletteColorCustomizationVariable*> variables;
 	Vector<PaletteColorCustomizationVariable*> variables;
-
 
 public:
 	PaletteColorCustomizationVariables() : Param() {
@@ -49,6 +47,5 @@ public:
 
 	void parseType1(IffStream* source);
 };
-
 
 #endif /* PALETTECOLORCUSTOMIZATIONVARIABLES_H_ */

@@ -5,7 +5,7 @@
 #ifndef CLIENTOPENCONTAINERMESSAGE_H_
 #define CLIENTOPENCONTAINERMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 

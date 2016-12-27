@@ -4,16 +4,11 @@
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.scene.SceneObject;
-include templates.TemplateReference;
-include templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
-include templates.mobile.LairTemplate;
 import server.zone.objects.tangible.LairObject;
 import server.zone.Zone;
 

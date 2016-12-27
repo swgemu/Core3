@@ -10,9 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
-
 
 namespace server {
 	namespace zone {
@@ -27,8 +25,6 @@ namespace server {
 
 using namespace server::zone::objects::scene;
 using namespace server::zone;
-
-#include "engine/util/u3d/QuadTreeEntry.h"
 
 class ShuttleInstallationZoneComponent : public StructureZoneComponent {
 

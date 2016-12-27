@@ -1,11 +1,8 @@
 package server.zone.objects.waypoint;
 
-import engine.lua.LuaObject;
-import engine.core.ManagedReference;
 import server.zone.objects.intangible.IntangibleObject;
 import engine.service.proto.BaseMessage;
 include server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 

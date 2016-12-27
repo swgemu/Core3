@@ -13,7 +13,6 @@
 #ifndef LOGOUTSERVERCOMMAND_H_
 #define LOGOUTSERVERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 
 class LogoutServerCommand : public QueueCommand {

@@ -1,8 +1,8 @@
 #ifndef GROWABLEPLANTPULSETASK_H_
 #define GROWABLEPLANTPULSETASK_H_
 
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/misc/PlantObject.h"
+#include "server/zone/ZoneServer.h"
 
 namespace server {
 namespace zone {

@@ -5,16 +5,12 @@
 package server.zone.objects.tangible.component;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 import system.util.VectorMap;
 import system.util.Vector;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.packets.object.ObjectMenuResponse;
 
 @lua
 class Component extends TangibleObject {

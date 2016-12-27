@@ -8,7 +8,6 @@
 #ifndef DIRECTORMANAGER_H_
 #define DIRECTORMANAGER_H_
 
-#include "engine/engine.h"
 #include "DirectorSharedMemory.h"
 #include "server/zone/managers/director/QuestStatus.h"
 #include "server/zone/managers/director/QuestVectorMap.h"

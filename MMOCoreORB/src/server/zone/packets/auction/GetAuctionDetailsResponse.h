@@ -1,7 +1,7 @@
 #ifndef GETAUCTIONDETAILSRESPONSEMESSAGE_H_
 #define GETAUCTIONDETAILSRESPONSEMESSAGE_H_
 
-#include "../BaseMessage.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class GetAuctionDetailsResponse : public BaseMessage {
 public:

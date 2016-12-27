@@ -5,7 +5,7 @@
 #ifndef RESOURCELISTFORSURVEYMESSAGE_H_
 #define RESOURCELISTFORSURVEYMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ResourceListForSurveyMessage : public BaseMessage {
 public:

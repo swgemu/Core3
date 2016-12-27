@@ -8,8 +8,6 @@
 #ifndef PALETTETEMPLATE_H_
 #define PALETTETEMPLATE_H_
 
-#include "engine/engine.h"
-
 #include "templates/appearance/PaletteColor.h"
 
 class PaletteTemplate : public Object {
@@ -63,6 +61,5 @@ public:
 		return colors.size();
 	}
 };
-
 
 #endif /* PALLETEFILE_H_ */

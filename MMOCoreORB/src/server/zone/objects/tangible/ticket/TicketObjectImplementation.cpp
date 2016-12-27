@@ -8,8 +8,6 @@
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
-#include "server/zone/Zone.h"
 
 void TicketObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	alm->insertAttribute("travel_departure_planet", "@planet_n:" + departurePlanet);

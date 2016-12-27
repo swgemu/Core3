@@ -5,10 +5,8 @@
 #ifndef CLEARVETERANREWARDCOMMAND_H_
 #define CLEARVETERANREWARDCOMMAND_H_
 
-#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/login/account/AccountManager.h"
 
 class ClearVeteranRewardCommand : public QueueCommand {
 public:

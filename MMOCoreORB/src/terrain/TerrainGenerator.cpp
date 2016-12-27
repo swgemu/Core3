@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#include "ProceduralTerrainAppearance.h"
 #include "TerrainGenerator.h"
+#include "engine/util/u3d/AABB.h"
 
 void TerrainGenerator::processLayers() {
 	Vector<Layer*>* layerVector = layers.getLayers();

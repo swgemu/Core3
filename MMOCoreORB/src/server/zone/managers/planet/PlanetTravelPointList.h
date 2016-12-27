@@ -8,7 +8,6 @@
 #ifndef PLANETTRAVELPOINTLIST_H_
 #define PLANETTRAVELPOINTLIST_H_
 
-#include "engine/engine.h"
 #include "PlanetTravelPoint.h"
 
 class PlanetTravelPointList : public VectorMap<String, Reference<PlanetTravelPoint*> >, public ReadWriteLock {

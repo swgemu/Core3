@@ -8,7 +8,6 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.ReconMissionObjective;
-import server.zone.Zone;
 include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 
 class MissionReconActiveArea extends ActiveArea {
@@ -51,8 +50,6 @@ class MissionReconActiveArea extends ActiveArea {
 				if (super.isPersistent()) {
 					super.destroyObjectFromDatabase(true);
 				}
-				//getZone().removeObject(this, true);
-				//super.removeFromZone();
 			}
 		}
 	}
@@ -80,8 +77,6 @@ class MissionReconActiveArea extends ActiveArea {
 				if (super.isPersistent()) {
 					super.destroyObjectFromDatabase(true);
 				}
-				//getZone().removeObject(this, true);
-				//super.removeFromZone();
 			}
 		}
 	}

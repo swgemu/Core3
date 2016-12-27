@@ -6,9 +6,6 @@
 #define DROIDDETONATIONMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
-#include "system/util/Vector.h"
-#include "system/util/VectorMap.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 
 namespace server {
@@ -17,7 +14,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidDetonationModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -79,7 +75,6 @@ public:
 	void initialize(DroidObject* droid);
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -87,4 +82,5 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDDETONATIONMODULEDATACOMPONENT_H_ */

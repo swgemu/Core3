@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 #include "PowerBoostBuffDurationEvent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
 
 void PowerBoostBuffImplementation::initializeTransientMembers() {

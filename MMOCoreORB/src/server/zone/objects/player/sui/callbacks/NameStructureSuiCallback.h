@@ -11,8 +11,6 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-
 class NameStructureSuiCallback : public SuiCallback {
 public:
 	NameStructureSuiCallback(ZoneServer* serv) : SuiCallback(serv) {

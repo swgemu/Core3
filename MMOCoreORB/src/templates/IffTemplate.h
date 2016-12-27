@@ -8,7 +8,6 @@
 #ifndef IFFTEMPLATE_H_
 #define IFFTEMPLATE_H_
 
-#include "engine/engine.h"
 #include "engine/util/iffstream/IffStream.h"
 #include "templates/TemplateData.h"
 

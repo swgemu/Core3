@@ -5,7 +5,6 @@
 #ifndef WARNINGSHOTCOMMAND_H_
 #define WARNINGSHOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class WarningShotCommand : public CombatQueueCommand {

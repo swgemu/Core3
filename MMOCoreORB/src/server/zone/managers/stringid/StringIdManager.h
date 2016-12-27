@@ -8,9 +8,6 @@
 #ifndef STRINGIDMANAGER_H_
 #define STRINGIDMANAGER_H_
 
-#include "engine/engine.h"
-#include "server/db/ServerDatabase.h"
-#include "server/ServerCore.h"
 #include "server/zone/objects/scene/variables/StringId.h"
 
 namespace server {

@@ -6,12 +6,10 @@
 
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "BuffDurationEvent.h"
-#include "BuffList.h"
 
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/Buffs.h"
-#include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 
 void BuffImplementation::init() {

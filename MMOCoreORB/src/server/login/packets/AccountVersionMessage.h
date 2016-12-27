@@ -5,7 +5,7 @@
 #ifndef ACCOUNTVERSIONMESSAGE_H_
 #define ACCOUNTVERSIONMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class AccountVersionMessage : public BaseMessage {
 

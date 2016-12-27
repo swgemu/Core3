@@ -9,9 +9,6 @@ import engine.util.u3d.QuadTreeEntry;
 include server.chat.room.ChatRoom;
 
 import system.lang.Time;
-import engine.core.TaskManager;
-import engine.core.ManagedObject;
-
 import server.zone.ZoneProcessServer;
 include server.zone.ZoneServer;
 include server.zone.InRangeObjectsVector;
@@ -21,23 +18,15 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.gcw.GCWManager;
-import system.util.VectorMap;
 import system.util.SortedVector;
-import server.zone.managers.minigames.FishingManager;
-import server.zone.managers.minigames.GamblingManager;
-import server.zone.managers.minigames.ForageManager;
 include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
 include engine.util.u3d.Vector3;
 include server.zone.QuadTreeReference;
 
-import system.lang.System;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.pathfinding.NavMeshRegion;
-
 import system.thread.atomic.AtomicInteger;
 
 @mock
@@ -115,8 +104,8 @@ class Zone extends SceneObject {
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector objects, boolean readLockZone);
 
-    @local
-    public native int getInRangeNavMeshes(float x, float y, float range, SortedVector<NavMeshRegion> objects, boolean readLockZone);
+	@local
+	public native int getInRangeNavMeshes(float x, float y, float range, SortedVector<NavMeshRegion> objects, boolean readLockZone);
 
 	@local
 	@dereferenced

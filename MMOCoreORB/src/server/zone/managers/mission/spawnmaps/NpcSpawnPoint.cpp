@@ -3,8 +3,10 @@
 		See file COPYING for copying conditions.*/
 
 #include "NpcSpawnPoint.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/mission/spawnmaps/events/DespawnMissionNpcTask.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 NpcSpawnPoint::NpcSpawnPoint() {
 	inUseByNumberOfMissions = 0;

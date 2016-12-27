@@ -5,8 +5,6 @@
 #ifndef VREPAIR_H_
 #define VREPAIR_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class VrepairCommand : public CombatQueueCommand {

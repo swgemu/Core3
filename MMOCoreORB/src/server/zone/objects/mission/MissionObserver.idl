@@ -6,9 +6,7 @@ package server.zone.objects.mission;
 
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
-import server.zone.objects.scene.SceneObject;
 import engine.log.Logger;
 
 class MissionObserver extends Observer implements Logger {

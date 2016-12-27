@@ -5,9 +5,6 @@
 package server.zone.objects.tangible.component.droid;
 
 import server.zone.objects.tangible.component.Component;
-import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
  
 class DroidComponent extends Component {

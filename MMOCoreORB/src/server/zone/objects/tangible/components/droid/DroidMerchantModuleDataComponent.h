@@ -6,15 +6,14 @@
 #define DROIDMERCHANTODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidMerchantModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -44,7 +43,6 @@ public:
 	bool isStackable() { return false; }
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -52,4 +50,5 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDMERCHANTODULEDATACOMPONENT_H_ */

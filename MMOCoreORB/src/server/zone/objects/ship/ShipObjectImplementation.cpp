@@ -9,8 +9,8 @@
 #include "server/zone/packets/ship/ShipObjectMessage3.h"
 #include "server/zone/packets/ship/ShipObjectMessage4.h"
 #include "server/zone/packets/ship/ShipObjectMessage6.h"
-#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
-#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
+//#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
+//#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	//info("testing");

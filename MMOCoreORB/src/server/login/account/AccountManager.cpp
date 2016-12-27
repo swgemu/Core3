@@ -5,13 +5,10 @@
  *      Author: crush
  */
 
-#include "engine/engine.h"
-
 #include "server/login/account/Account.h"
 #include "AccountManager.h"
 #include "server/login/LoginClient.h"
 #include "server/login/LoginServer.h"
-#include "server/login/objects/CharacterList.h"
 #include "server/login/packets/AccountVersionMessage.h"
 #include "server/login/packets/EnumerateCharacterId.h"
 #include "server/login/packets/LoginClientToken.h"

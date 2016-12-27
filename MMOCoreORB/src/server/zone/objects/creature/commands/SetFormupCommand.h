@@ -5,7 +5,6 @@
 #ifndef SETFORMUPCOMMAND_H_
 #define SETFORMUPCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "SquadLeaderCommand.h"
 
 class SetFormupCommand : public SquadLeaderCommand {
