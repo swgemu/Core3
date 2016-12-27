@@ -6,7 +6,6 @@
 #define DROIDCOMBATMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -14,7 +13,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidCombatModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -49,7 +47,6 @@ public:
 	bool isCombatModule() { return true; }
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -57,4 +54,5 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDCOMBATMODULEDATACOMPONENT_H_ */

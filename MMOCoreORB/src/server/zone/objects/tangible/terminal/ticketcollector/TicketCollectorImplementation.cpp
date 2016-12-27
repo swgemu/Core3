@@ -7,13 +7,7 @@
 
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/region/Region.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/director/DirectorManager.h"

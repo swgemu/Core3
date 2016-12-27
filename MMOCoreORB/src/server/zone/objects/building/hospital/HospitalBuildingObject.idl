@@ -5,12 +5,6 @@
 package server.zone.objects.building.hospital;
 
 import server.zone.objects.building.BuildingObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
-import server.zone.objects.cell.CellObject;
-include templates.building.HospitalBuildingObjectTemplate;
-include server.zone.managers.skill.SkillModManager;
-
 
 class HospitalBuildingObject extends BuildingObject {
 

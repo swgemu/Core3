@@ -3,12 +3,9 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "SaberInventoryContainerComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 

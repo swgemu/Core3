@@ -5,8 +5,6 @@
 #ifndef GMFORCERANKCOMMAND_H_
 #define GMFORCERANKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GmForceRankCommand : public QueueCommand {
 public:
 

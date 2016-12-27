@@ -1,7 +1,6 @@
 #ifndef BASEREBOOTTASK_H_
 #define BASEREBOOTTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 class BaseRebootTask : public Task {

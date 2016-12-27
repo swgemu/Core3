@@ -7,20 +7,12 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/Creature.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 //#define DEBUG
 

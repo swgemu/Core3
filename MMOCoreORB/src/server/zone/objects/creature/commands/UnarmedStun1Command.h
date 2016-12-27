@@ -5,9 +5,7 @@
 #ifndef UNARMEDSTUN1COMMAND_H_
 #define UNARMEDSTUN1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
-
 
 class UnarmedStun1Command : public CombatQueueCommand {
 public:

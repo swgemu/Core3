@@ -5,7 +5,6 @@
 #ifndef KNOCKDOWNATTACKCOMMAND_H_
 #define KNOCKDOWNATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class KnockdownAttackCommand : public CombatQueueCommand {

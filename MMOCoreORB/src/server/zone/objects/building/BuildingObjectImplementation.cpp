@@ -8,52 +8,36 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
 
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "templates/appearance/PortalLayout.h"
-#include "templates/appearance/FloorMesh.h"
-#include "templates/appearance/PathNode.h"
-#include "templates/appearance/PathGraph.h"
 
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-#include "server/zone/objects/scene/components/ContainerComponent.h"
-#include "server/zone/objects/scene/WorldCoordinates.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "tasks/EjectObjectEvent.h"
-#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/objects/player/FactionStatus.h"
 
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 
-#include "server/zone/managers/planet/MapLocationType.h"
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "templates/appearance/AppearanceTemplate.h"
-
-#include "server/zone/managers/collision/CollisionManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();

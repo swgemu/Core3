@@ -5,9 +5,6 @@
 package server.zone.objects.tangible.ticket;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;

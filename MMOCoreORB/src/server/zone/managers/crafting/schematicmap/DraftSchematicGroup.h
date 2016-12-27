@@ -11,7 +11,6 @@
 #ifndef DRAFTSCHEMATICGROUP_H_
 #define DRAFTSCHEMATICGROUP_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 class DraftSchematicGroup : public Vector<ManagedReference<DraftSchematic*> > {

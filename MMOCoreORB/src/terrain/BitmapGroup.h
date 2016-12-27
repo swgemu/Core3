@@ -8,9 +8,7 @@
 #ifndef BITMAPGROUP_H_
 #define BITMAPGROUP_H_
 
-#include "MapFamily.h"
 #include "BitmapFamily.h"
-
 #include "TargaBitmap.h"
 
 class BitmapGroup : public TemplateVariable<'MGRP'> {

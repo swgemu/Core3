@@ -8,10 +8,12 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "ThreatMap.h"
+#include "ThreatStates.h"
 #include "server/zone/objects/tangible/tasks/ClearThreatStateTask.h"
 #include "server/zone/objects/tangible/tasks/RemoveAggroTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "ThreatMapClearObserversTask.h"
+#include "server/zone/Zone.h"
 
 void ThreatMapEntry::addDamage(WeaponObject* weapon, uint32 damage) {
 	addDamage(weapon->getXpType(), damage);

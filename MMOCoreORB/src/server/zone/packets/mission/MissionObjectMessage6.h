@@ -5,7 +5,7 @@
 #ifndef MISSIONOBJECTMESSAGE6_H_
 #define MISSIONOBJECTMESSAGE6_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class MissionObjectMessage6 : public BaseLineMessage {
 public:

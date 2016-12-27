@@ -7,11 +7,8 @@
 
 #include "PlayerZoneComponent.h"
 
-#include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {

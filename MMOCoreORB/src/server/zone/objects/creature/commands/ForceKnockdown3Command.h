@@ -5,7 +5,6 @@
 #ifndef FORCEKNOCKDOWN3COMMAND_H_
 #define FORCEKNOCKDOWN3COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "ForcePowersQueueCommand.h"
 
 class ForceKnockdown3Command : public ForcePowersQueueCommand {

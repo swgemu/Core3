@@ -5,7 +5,6 @@
 #ifndef GMCREATESPECIFICRESOURCECOMMAND_H_
 #define GMCREATESPECIFICRESOURCECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 
 class GmCreateSpecificResourceCommand : public QueueCommand {

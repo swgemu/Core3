@@ -8,7 +8,8 @@
 #ifndef CONNECTPLAYERRESPONSEMESSAGE_H_
 #define CONNECTPLAYERRESPONSEMESSAGE_H_
 
-#include "../MessageCallback.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class ConnectPlayerResponseMessage : public BaseMessage {
 public:

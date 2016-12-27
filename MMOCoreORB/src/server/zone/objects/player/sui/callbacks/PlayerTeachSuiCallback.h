@@ -9,7 +9,6 @@
 #define PLAYERTEACHSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
 
 class PlayerTeachSuiCallback : public SuiCallback {
 

@@ -8,7 +8,6 @@
 #ifndef SKILLDATAFORM_H_
 #define SKILLDATAFORM_H_
 
-#include "engine/engine.h"
 #include "templates/IffTemplate.h"
 
 class SkillDataForm : public IffTemplate {

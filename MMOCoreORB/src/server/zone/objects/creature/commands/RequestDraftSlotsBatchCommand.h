@@ -5,7 +5,6 @@
 #ifndef REQUESTDRAFTSLOTSBATCHCOMMAND_H_
 #define REQUESTDRAFTSLOTSBATCHCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 class RequestDraftSlotsBatchCommand : public QueueCommand {

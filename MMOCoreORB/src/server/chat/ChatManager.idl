@@ -14,17 +14,13 @@ import engine.service.proto.BaseMessage;
 import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
 import system.util.VectorMap;
-import system.util.HashTable;
 import server.zone.objects.player.PlayerObject;
-import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.objects.waypoint.WaypointObject;
 include server.chat.StringIdChatParameter;
-include server.chat.WaypointChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
-include system.util.SynchronizedVectorMap;
 
 class ChatManager extends ManagedService implements Logger {
 	ZoneServer server;

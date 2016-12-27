@@ -9,13 +9,6 @@
  */
 
 #include "SchematicMap.h"
-#include "templates/crafting/draftslot/DraftSlot.h"
-#include "templates/crafting/resourceweight/ResourceWeight.h"
-#include "engine/engine.h"
-
-//VectorMap<uint32, ManagedReference<DraftSchematic* > > SchematicMap::schematicIdMap;
-//VectorMap<String, DraftSchematicGroup* > SchematicMap::groupMap;
-//ZoneServer* SchematicMap::zoneServer = NULL;
 
 SchematicMap::SchematicMap() : objectManager(NULL) {
 	setLoggingName("SchematicMap");

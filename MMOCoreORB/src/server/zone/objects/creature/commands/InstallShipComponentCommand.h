@@ -5,8 +5,6 @@
 #ifndef INSTALLSHIPCOMPONENTCOMMAND_H_
 #define INSTALLSHIPCOMPONENTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class InstallShipComponentCommand : public QueueCommand {
 public:
 

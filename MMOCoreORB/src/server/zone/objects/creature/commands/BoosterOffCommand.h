@@ -5,8 +5,6 @@
 #ifndef BOOSTEROFF_H_
 #define BOOSTEROFF_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class BoosterOffCommand : public CombatQueueCommand {

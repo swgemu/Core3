@@ -5,11 +5,9 @@
  *      Author: xyborn
  */
 
-#include "server/ServerCore.h"
 #include "SuiManager.h"
 #include "LuaSuiManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/SuiPageData.h"
 
 const char LuaSuiManager::className[] = "LuaSuiManager";

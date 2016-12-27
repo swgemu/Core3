@@ -5,11 +5,8 @@
 #ifndef FORCEOFWILLCOMMAND_H_
 #define FORCEOFWILLCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
-
 #include "server/zone/objects/creature/buffs/Buff.h"
-#include "server/zone/objects/creature/BuffAttribute.h"
 
 class ForceOfWillCommand : public QueueCommand {
 

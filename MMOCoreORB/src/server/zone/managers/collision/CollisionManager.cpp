@@ -13,13 +13,9 @@
 #include "templates/appearance/PortalLayout.h"
 #include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/PathGraph.h"
-#include "templates/appearance/PortalLayout.h"
-#include "templates/appearance/MeshAppearanceTemplate.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/objects/area/ActiveArea.h"
 
 float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;

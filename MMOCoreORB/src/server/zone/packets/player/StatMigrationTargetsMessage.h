@@ -5,9 +5,7 @@
 #ifndef STATMIGRATIONTARGETSMESSAGE_H_
 #define STATMIGRATIONTARGETSMESSAGE_H_
 
-#include "engine/engine.h"
-
-// StatMigrationTargetsMessage
+#include "engine/service/proto/BaseMessage.h"
 
 class StatMigrationTargetsMessage : public BaseMessage {
 public:

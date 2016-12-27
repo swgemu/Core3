@@ -8,11 +8,11 @@
 #include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sui/callbacks/StructureSetAccessFeeSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureSetAccessDurationSuiCallback.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 int StructureSetAccessFeeSessionImplementation::initializeSession() {
 

@@ -5,9 +5,7 @@
 package server.zone.objects.tangible.tool;
 
 import server.zone.objects.tangible.tool.ToolTangibleObject;
-import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;

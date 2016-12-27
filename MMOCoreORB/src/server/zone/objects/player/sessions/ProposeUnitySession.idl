@@ -4,10 +4,8 @@
 */
 
 package server.zone.objects.player.sessions;
-import engine.core.ManagedObject;
+
 import engine.util.Facade;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.scene.SceneObject;
 
 class ProposeUnitySession extends Facade {
 	

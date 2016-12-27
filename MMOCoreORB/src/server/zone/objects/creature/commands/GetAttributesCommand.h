@@ -5,8 +5,6 @@
 #ifndef GETATTRIBUTESCOMMAND_H_
 #define GETATTRIBUTESCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GetAttributesCommand : public QueueCommand {
 public:
 

@@ -9,7 +9,6 @@
 #define SURVEYDRIODCALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sessions/SlicingSession.h"
 
 class SurveyDroidSessionSuiCallback : public SuiCallback {
 public:

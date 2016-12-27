@@ -5,8 +5,6 @@
 #ifndef FORCERESISTSTATESCOMMAND_H_
 #define FORCERESISTSTATESCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ForceResistStatesCommand : public JediQueueCommand {
 public:
 

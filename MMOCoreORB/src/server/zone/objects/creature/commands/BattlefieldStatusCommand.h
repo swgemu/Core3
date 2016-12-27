@@ -5,8 +5,6 @@
 #ifndef BATTLEFIELDSTATUSCOMMAND_H_
 #define BATTLEFIELDSTATUSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class BattlefieldStatusCommand : public QueueCommand {
 public:
 

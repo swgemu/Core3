@@ -8,9 +8,6 @@
 #include "ObjectControllerMessage.h"
 #include "server/zone/packets/MessageCallback.h"
 
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
 	CommandQueueEnqueue(CreatureObject* creo, uint32 actioncnt, uint32 actionCRC) 

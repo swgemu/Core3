@@ -4,17 +4,13 @@ import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.tangible.tool.SurveyTool;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.tangible.TangibleObject;
+import engine.core.Task;
 import server.zone.managers.resource.ResourceManager;
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 import engine.util.u3d.Coordinate;
 import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.waypoint.WaypointObject;
 include server.zone.packets.resource.SurveyMessage;
-
-include server.zone.objects.scene.SessionFacadeType;
-include templates.customization.CustomizationVariable;
 
 class SurveySession extends Facade {
 	@weakReference

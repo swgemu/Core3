@@ -5,9 +5,6 @@
  */
 
 #include "engine/engine.h"
-
-
-#include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"

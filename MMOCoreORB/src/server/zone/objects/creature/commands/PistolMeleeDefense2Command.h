@@ -5,7 +5,6 @@
 #ifndef PISTOLMELEEDEFENSE2COMMAND_H_
 #define PISTOLMELEEDEFENSE2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class PistolMeleeDefense2Command : public CombatQueueCommand {

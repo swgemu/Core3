@@ -3,7 +3,6 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidMedicalModuleDataComponent.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 
 DroidMedicalModuleDataComponent::DroidMedicalModuleDataComponent() {

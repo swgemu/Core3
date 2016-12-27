@@ -8,7 +8,6 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.DestroyMissionObjective;
-import server.zone.Zone;
 
 class MissionSpawnActiveArea extends ActiveArea {
 	@weakReference
@@ -37,12 +36,8 @@ class MissionSpawnActiveArea extends ActiveArea {
 				if ((CreatureObject) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
 					destroyMissionObjective.spawnLair();
-
-					//super.removeFromZone();
 				}
 			} else {
-				//super.removeFromZone();
-				//getZone().removeObject(this, true);
 				super.destroyObjectFromWorld(false);
 
 				if (super.isPersistent()) {

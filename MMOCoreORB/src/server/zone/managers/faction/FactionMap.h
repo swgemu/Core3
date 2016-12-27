@@ -8,7 +8,6 @@
 #ifndef FACTIONRELATIONSHIPMAP_H_
 #define FACTIONRELATIONSHIPMAP_H_
 
-#include "engine/engine.h"
 #include "Faction.h"
 
 class FactionMap : public VectorMap<String, Faction> {
@@ -20,6 +19,5 @@ public:
 
 	Faction* getFaction(const String& factionName);
 };
-
 
 #endif /* FACTIONRELATIONSHIPMAP_H_ */

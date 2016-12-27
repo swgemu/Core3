@@ -5,7 +5,6 @@
 #ifndef TOGGLEAWAYFROMKEYBOARDCOMMAND_H_
 #define TOGGLEAWAYFROMKEYBOARDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class ToggleAwayFromKeyBoardCommand : public QueueCommand {

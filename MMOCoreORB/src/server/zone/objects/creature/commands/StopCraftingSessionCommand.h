@@ -5,8 +5,6 @@
 #ifndef STOPCRAFTINGSESSIONCOMMAND_H_
 #define STOPCRAFTINGSESSIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class StopCraftingSessionCommand : public QueueCommand {
 public:
 

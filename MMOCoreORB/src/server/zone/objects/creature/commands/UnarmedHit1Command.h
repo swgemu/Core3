@@ -5,7 +5,6 @@
 #ifndef UNARMEDHIT1COMMAND_H_
 #define UNARMEDHIT1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class UnarmedHit1Command : public CombatQueueCommand {

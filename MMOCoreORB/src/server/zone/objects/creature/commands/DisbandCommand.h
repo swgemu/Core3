@@ -5,7 +5,6 @@
 #ifndef DISBANDCOMMAND_H_
 #define DISBANDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/group/GroupManager.h"
 

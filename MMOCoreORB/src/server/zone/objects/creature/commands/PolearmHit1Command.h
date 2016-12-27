@@ -5,10 +5,7 @@
 #ifndef POLEARMHIT1COMMAND_H_
 #define POLEARMHIT1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
-
 
 class PolearmHit1Command : public CombatQueueCommand {
 public:

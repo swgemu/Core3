@@ -5,8 +5,6 @@
 #ifndef UNPILOTSHIP_H_
 #define UNPILOTSHIP_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class UnpilotShipCommand : public CombatQueueCommand {

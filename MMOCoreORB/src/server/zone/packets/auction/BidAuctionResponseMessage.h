@@ -14,8 +14,7 @@
  * 
  */
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 
 class BidAuctionResponseMessage : public BaseMessage {
 public:

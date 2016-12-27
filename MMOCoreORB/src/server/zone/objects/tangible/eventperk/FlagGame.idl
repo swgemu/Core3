@@ -5,7 +5,6 @@
 package server.zone.objects.tangible.eventperk;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.objects.tangible.tasks.FlagGamePulseTask;

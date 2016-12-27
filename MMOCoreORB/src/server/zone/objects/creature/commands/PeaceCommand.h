@@ -5,9 +5,7 @@
 #ifndef PEACECOMMAND_H_
 #define PEACECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-
 
 class PeaceCommand : public QueueCommand {
 public:

@@ -5,6 +5,8 @@
 #ifndef APPENDCOMMENTSRESPONSEMESSAGE_H_
 #define APPENDCOMMENTSRESPONSEMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class AppendCommentsResponseMessage : public BaseMessage {
 public:
    AppendCommentsResponseMessage(uint32 ticketid, bool success) : BaseMessage() {
@@ -17,8 +19,6 @@ public:
 			insertInt(1);
 
 		insertInt(ticketid); //ticketid.
-
-
    }
 
 };

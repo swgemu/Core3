@@ -8,8 +8,6 @@
 #ifndef HAIRSTYLEINFO_H_
 #define HAIRSTYLEINFO_H_
 
-
-#include "engine/engine.h"
 #include "templates/IffTemplate.h"
 
 namespace server {

@@ -9,7 +9,6 @@
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {

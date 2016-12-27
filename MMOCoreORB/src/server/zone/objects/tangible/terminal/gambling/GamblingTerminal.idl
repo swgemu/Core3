@@ -5,19 +5,14 @@
 package server.zone.objects.tangible.terminal.gambling;
 
 import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.Zone;
 import system.util.Vector;
 import system.util.VectorMap;
-import system.lang.ref.Reference;
 import server.zone.managers.minigames.GamblingBet;
 import server.zone.managers.minigames.events.GamblingEvent;
 import server.chat.StringIdChatParameter;
 include templates.tangible.GamblingTerminalTemplate;
-include server.zone.objects.player.sui.SuiWindowType;
 
 class GamblingTerminal extends Terminal {
 	

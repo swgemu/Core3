@@ -5,7 +5,6 @@
 #ifndef LEAVEGROUPCOMMAND_H_
 #define LEAVEGROUPCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 

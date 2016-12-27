@@ -5,9 +5,6 @@
 package server.zone.objects.building.travel;
 
 import server.zone.objects.building.BuildingObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
-import server.zone.objects.cell.CellObject;
 
 class TravelBuildingObject extends BuildingObject {
 

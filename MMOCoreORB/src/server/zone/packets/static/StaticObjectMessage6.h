@@ -5,7 +5,7 @@
 #ifndef STATICOBJECTMESSAGE6_H_
 #define STATICOBJECTMESSAGE6_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 #include "server/zone/objects/staticobject/StaticObject.h"
 

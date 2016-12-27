@@ -7,9 +7,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
-#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/objects/creature/events/DroidPlaybackEvent.h"
 
 int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

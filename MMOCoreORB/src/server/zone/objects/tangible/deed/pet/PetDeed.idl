@@ -4,10 +4,7 @@
 
 package server.zone.objects.tangible.deed.pet;
 
-import engine.lua.LuaObject;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.deed.Deed;
-import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;

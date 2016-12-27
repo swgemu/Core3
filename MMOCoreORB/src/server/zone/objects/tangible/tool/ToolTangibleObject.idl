@@ -5,9 +5,6 @@
 package server.zone.objects.tangible.tool;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
 
 class ToolTangibleObject extends TangibleObject {
 	public ToolTangibleObject() {

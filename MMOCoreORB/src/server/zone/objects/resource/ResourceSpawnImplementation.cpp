@@ -3,7 +3,6 @@
 		See file COPYING for copying conditions. */
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
-#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/crafting/CraftingManager.h"

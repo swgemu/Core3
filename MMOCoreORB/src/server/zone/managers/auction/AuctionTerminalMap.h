@@ -8,7 +8,6 @@
 #ifndef AUCTIONTERMINALMAP_H_
 #define AUCTIONTERMINALMAP_H_
 
-#include "engine/engine.h"
 #include "TerminalListVector.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"

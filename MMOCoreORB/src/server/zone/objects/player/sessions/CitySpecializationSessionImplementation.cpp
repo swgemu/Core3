@@ -6,7 +6,6 @@
  */
 
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
-#include "server/zone/Zone.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"

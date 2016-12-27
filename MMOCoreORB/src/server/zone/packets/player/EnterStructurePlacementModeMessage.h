@@ -5,7 +5,7 @@
 #ifndef ENTERSTRUCTUREPLACEMENTMODEMESSAGE_H_
 #define ENTERSTRUCTUREPLACEMENTMODEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class EnterStructurePlacementModeMessage : public BaseMessage {
 public:

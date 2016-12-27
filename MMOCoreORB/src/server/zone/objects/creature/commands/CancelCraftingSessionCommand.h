@@ -5,8 +5,6 @@
 #ifndef CANCELCRAFTINGSESSIONCOMMAND_H_
 #define CANCELCRAFTINGSESSIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 
 class CancelCraftingSessionCommand : public QueueCommand {

@@ -6,7 +6,6 @@
 #define CLIENTCORE_H_
 
 #include "system/lang.h"
-#include "engine/engine.h"
 
 class Zone;
 

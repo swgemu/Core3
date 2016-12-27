@@ -8,6 +8,8 @@
 #ifndef CREATENEBULALIGHTNINGMESSAGE_H_
 #define CREATENEBULALIGHTNINGMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class CreateNebulaLightningMessage : public BaseMessage {
 public:
 	CreateNebulaLightningMessage() : BaseMessage() {
@@ -24,9 +26,8 @@ public:
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
-
-
    }
 
 };
+
 #endif /* CREATENEBULALIGHTNINGMESSAGE_H_ */

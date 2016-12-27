@@ -5,8 +5,6 @@
 #ifndef STOPBLEEDINGCOMMAND_H_
 #define STOPBLEEDINGCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/CombatAction.h"
 #include "ForceHealQueueCommand.h"
 
 class StopBleedingCommand : public ForceHealQueueCommand {

@@ -11,8 +11,8 @@
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "templates/tangible/ContainerTemplate.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

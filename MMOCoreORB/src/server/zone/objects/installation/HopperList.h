@@ -10,7 +10,6 @@
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/objects/resource/ResourceSpawn.h"
 
 class HopperList : public DeltaVector<ManagedReference<ResourceContainer*> > {
 public:

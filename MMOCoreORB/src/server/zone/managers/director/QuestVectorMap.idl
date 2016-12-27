@@ -4,7 +4,7 @@
 
 package server.zone.managers.director;
 
-import engine.lua.LuaObject;
+import engine.lua.Lua;
 import engine.core.ManagedObject;
 import system.lang.String;
 

@@ -5,8 +5,6 @@
 #ifndef GIVEVENDORMAINTCOMMAND_H_
 #define GIVEVENDORMAINTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GivevendormaintCommand : public QueueCommand {
 public:
 

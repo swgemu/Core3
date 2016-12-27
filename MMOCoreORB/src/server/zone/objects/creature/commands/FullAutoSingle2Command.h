@@ -5,7 +5,6 @@
 #ifndef FULLAUTOSINGLE2COMMAND_H_
 #define FULLAUTOSINGLE2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FullAutoSingle2Command : public CombatQueueCommand {

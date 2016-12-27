@@ -9,7 +9,7 @@
 #define CITYREMOVEMILITIAMEMBERSUICALLBACK_H_
 
 #include "engine/engine.h"
-#include "../SuiCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
 namespace server {
 namespace zone {

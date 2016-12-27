@@ -8,7 +8,7 @@
 #ifndef LAIRTEMPLATE_H_
 #define LAIRTEMPLATE_H_
 
-#include "engine/engine.h"
+#include "engine/lua/LuaObject.h"
 #include "templates/faction/Factions.h"
 
 class LairTemplate : public Object {

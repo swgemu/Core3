@@ -5,7 +5,7 @@
 #ifndef PLAYCLIENTEFFECTLOC_H_
 #define PLAYCLIENTEFFECTLOC_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class PlayClientEffectLoc : public BaseMessage {
 public:

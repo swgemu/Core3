@@ -8,12 +8,9 @@
 #ifndef FACTIONMANAGER_H_
 #define FACTIONMANAGER_H_
 
-#include "engine/engine.h"
 #include "FactionMap.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/faction/FactionRanks.h"
-
-class FactionMap;
 
 class FactionManager : public Singleton<FactionManager>, public Logger, public Object {
 	FactionMap factionMap;

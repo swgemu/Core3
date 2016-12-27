@@ -6,7 +6,6 @@
 #define ACTIVATECLONECOMMAND_H_
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class ActivateCloneCommand : public QueueCommand {

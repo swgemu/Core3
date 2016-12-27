@@ -5,7 +5,7 @@
 #ifndef ENTERTICKETPURCHASEMODEMESSAGE_H_
 #define ENTERTICKETPURCHASEMODEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 class EnterTicketPurchaseModeMessage : public BaseMessage {

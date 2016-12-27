@@ -8,7 +8,6 @@
 #ifndef TREEARCHIVE_H_
 #define TREEARCHIVE_H_
 
-#include "engine/engine.h"
 #include "TreeFile.h"
 #include "TreeDirectory.h"
 
@@ -120,6 +119,5 @@ public:
 		return files;
 	}
 };
-
 
 #endif /* TREEARCHIVE_H_ */

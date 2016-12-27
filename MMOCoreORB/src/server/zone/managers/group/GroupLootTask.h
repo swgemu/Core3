@@ -7,7 +7,7 @@
 
 #ifndef GROUPLOOTTASK_H_
 #define GROUPLOOTTASK_H_
-#include "engine/engine.h"
+
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/group/GroupManager.h"
@@ -220,6 +220,5 @@ public:
 	}
 
 };
-
 
 #endif /* GROUPLOOTTASK_H_ */

@@ -12,6 +12,8 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 
 void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (droidObject == NULL || !droidObject->isTangibleObject() || player == NULL) {

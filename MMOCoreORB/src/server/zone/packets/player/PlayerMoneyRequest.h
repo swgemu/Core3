@@ -9,7 +9,6 @@
 #define PLAYERMONEYREQUEST_H_
 
 #include "server/zone/packets/MessageCallback.h"
-#include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 #include "PlayerMoneyResponseMessage.h"
 
 class PlayerMoneyRequestMessageCallback : public MessageCallback {

@@ -5,8 +5,6 @@
 #ifndef NBLAST_H_
 #define NBLAST_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class NblastCommand : public CombatQueueCommand {

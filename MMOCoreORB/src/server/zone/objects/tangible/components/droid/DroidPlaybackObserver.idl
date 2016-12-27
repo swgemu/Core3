@@ -5,23 +5,17 @@
 package server.zone.objects.tangible.components.droid;
 
 include engine.core.ManagedObject;
-
-import engine.log.Logger;
-import engine.core.ManagedReference;
-import engine.util.Facade;
-import system.lang.ref.Reference;
-import engine.core.Task;
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.creature.CreatureObject;
-include templates.params.ObserverEventType;
 import server.zone.objects.tangible.components.droid.DroidPlaybackModuleDataComponent;
 
 class DroidPlaybackObserver extends Observer {
 	// reference to the droid module that is listening
 	@weakReference
 	protected DroidPlaybackModuleDataComponent module;
+
 	protected int slot;
+
 	public DroidPlaybackObserver(DroidPlaybackModuleDataComponent m) {
 		module = m;
 		slot = -1;

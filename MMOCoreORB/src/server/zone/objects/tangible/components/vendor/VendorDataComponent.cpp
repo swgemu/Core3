@@ -16,7 +16,6 @@
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/object/SpatialChat.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/tangible/tasks/VendorReturnToPositionTask.h"
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent(), adBarkingMutex() {

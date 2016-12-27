@@ -5,16 +5,11 @@
 package server.zone.objects.tangible;
 
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.tangible.variables.SkillModMap;
-import engine.lua.LuaObject;
-import system.util.Vector;
 import system.util.SortedVector;
 import engine.log.Logger;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.Zone;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.player.PlayerObject;
 include templates.params.OptionBitmask;
 import server.zone.objects.factorycrate.FactoryCrate;
 include server.zone.objects.scene.SceneObjectType;
@@ -22,9 +17,7 @@ include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
-import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 

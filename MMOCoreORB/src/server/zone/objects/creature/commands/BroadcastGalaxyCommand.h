@@ -5,10 +5,8 @@
 #ifndef BROADCASTGALAXYCOMMAND_H_
 #define BROADCASTGALAXYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
 
 class BroadcastGalaxyCommand : public QueueCommand {
 public:

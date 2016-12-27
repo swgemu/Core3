@@ -8,7 +8,6 @@
 #ifndef PROFESSIONDEFAULTSINFO_H_
 #define PROFESSIONDEFAULTSINFO_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/creature/variables/Skill.h"
 #include "server/zone/managers/skill/SkillManager.h"
 

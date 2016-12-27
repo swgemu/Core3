@@ -8,8 +8,6 @@
 #ifndef REGIONMAP_H_
 #define REGIONMAP_H_
 
-#include "engine/engine.h"
-
 #include "server/zone/objects/region/CityRegion.h"
 
 class RegionMap : public ReadWriteLock, public Object {

@@ -4,11 +4,10 @@
 */
 
 package server.zone.objects.tangible.consumable;
+
 import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.buffs.DelayedBuff;
 
 class DelayedBuffObserver extends Observer implements Logger {

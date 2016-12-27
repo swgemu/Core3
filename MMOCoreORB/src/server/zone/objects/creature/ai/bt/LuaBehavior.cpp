@@ -11,9 +11,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "engine/engine.h"
 
-#include "server/zone/ZoneServer.h"
-#include "server/chat/ChatManager.h"
-
 #ifndef AI_DEBUG
 //#define AI_DEBUG
 #endif

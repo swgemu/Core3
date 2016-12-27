@@ -5,8 +5,6 @@
 #ifndef LEAVESTATION_H_
 #define LEAVESTATION_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class LeaveStationCommand : public CombatQueueCommand {

@@ -5,8 +5,7 @@
 #ifndef MISSIONOBJECTDELTAMESSAGE3_H_
 #define MISSIONOBJECTDELTAMESSAGE3_H_
 
-#include "../DeltaMessage.h"
-
+#include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/mission/MissionObject.h"
 
 class MissionObjectDeltaMessage3 : public DeltaMessage {
@@ -131,8 +130,6 @@ public:
 		insertInt(miso->getTitleKey()); //make sure this isnt being reversed! like m27t -> t72m
 	}
 
-
-
 	void updateDestination() {
 		startUpdate(0x06);
 
@@ -149,21 +146,11 @@ public:
 		insertUnicode(miso->getCreatorName());
 	}
 
-
-
-
-
 	void updateDepictedObject() {
 		startUpdate(0x0A);
 
 		insertInt(miso->getDepictedObjCrc());
-	}
-
-
-
-
 	}*/
-
 
 };
 

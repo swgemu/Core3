@@ -9,10 +9,7 @@
 #define CLONINGREQUESTSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/scene/SceneObjectType.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class CloningRequestSuiCallback : public SuiCallback {

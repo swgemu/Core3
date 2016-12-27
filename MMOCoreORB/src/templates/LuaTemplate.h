@@ -8,8 +8,8 @@
 #ifndef LUATEMPLATE_H_
 #define LUATEMPLATE_H_
 
-#include "engine/engine.h"
 #include "templates/TemplateData.h"
+#include "engine/lua/LuaObject.h"
 
 class LuaTemplate : public virtual TemplateData {
 public:
@@ -19,6 +19,5 @@ public:
 
 	}
 };
-
 
 #endif /* LUATEMPLATE_H_ */

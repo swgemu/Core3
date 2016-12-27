@@ -4,11 +4,8 @@
 
 package server.zone.objects.creature.buffs;
 
-import system.thread.Mutex;
-import engine.core.ManagedObject;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.creature.buffs.BuffType;
 
 // This buff is intended for mounts and vehicles. It's start and end messages are sent to it's rider
 class PlayerVehicleBuff extends Buff {

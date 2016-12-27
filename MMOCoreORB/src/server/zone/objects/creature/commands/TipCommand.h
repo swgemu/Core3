@@ -7,7 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "../../player/sui/callbacks/TipCommandSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/TipCommandSuiCallback.h"
 
 class TipCommand: public QueueCommand {
 private:

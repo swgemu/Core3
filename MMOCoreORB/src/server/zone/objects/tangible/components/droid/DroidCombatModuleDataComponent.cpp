@@ -3,10 +3,8 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidCombatModuleDataComponent.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 DroidCombatModuleDataComponent::DroidCombatModuleDataComponent() {
 	setLoggingName("DroidCombatModule");

@@ -9,7 +9,6 @@
 #define BADGES_H_
 
 #include "engine/engine.h"
-#include "server/ServerCore.h"
 #include "server/zone/managers/player/BadgeList.h"
 #include "Badge.h"
 

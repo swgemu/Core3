@@ -8,8 +8,6 @@
 #ifndef SHAREDOBJECTTEMPLATE_H_
 #define SHAREDOBJECTTEMPLATE_H_
 
-#include "engine/engine.h"
-
 #include "templates/LuaTemplate.h"
 #include "templates/IffTemplate.h"
 #include "templates/ChildObject.h"
@@ -24,9 +22,6 @@
 
 class PortalLayout;
 class AppearanceTemplate;
-class SlotDescriptor;
-class ArrangementDescriptor;
-
 
 class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
 protected:
@@ -754,6 +749,5 @@ public:
 		return updatesNavMesh;
 	}
 };
-
 
 #endif /* SHAREDOBJECTTEMPLATE_H_ */

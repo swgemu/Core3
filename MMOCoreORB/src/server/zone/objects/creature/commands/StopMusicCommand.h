@@ -5,10 +5,8 @@
 #ifndef STOPMUSICCOMMAND_H_
 #define STOPMUSICCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
-
 
 class StopMusicCommand : public QueueCommand {
 public:

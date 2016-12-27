@@ -5,8 +5,6 @@
 #ifndef INITIALIZECOMPONENTCOMMAND_H_
 #define INITIALIZECOMPONENTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class InitializeComponentCommand : public QueueCommand {
 public:
 

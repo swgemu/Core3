@@ -4,12 +4,10 @@
 
 package server.zone.objects.player;
 
-import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 import engine.service.proto.BasePacket;
 import engine.util.u3d.Vector3;
 import server.zone.objects.building.BuildingObject;
-import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.intangible.IntangibleObject;
@@ -19,22 +17,17 @@ import server.zone.objects.player.events.ForceRegenerationEvent;
 import server.zone.objects.player.events.PvpTefRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
-import server.zone.objects.tangible.tool.CraftingTool;
-import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.waypoint.WaypointObject;
 include templates.SharedObjectTemplate;
-import server.zone.Zone;
 import server.zone.ZoneClientSession;
 import server.login.account.Account;
-
+include system.lang.ref.Reference;
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
 import system.util.SynchronizedSortedVector;
 include server.login.account.GalaxyAccountInfo;
-include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.player.badges.Badge;
 include server.zone.objects.player.badges.Badges;
 include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
 include server.zone.objects.player.sui.SuiBox;

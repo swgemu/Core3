@@ -6,9 +6,6 @@ package server.zone.objects.cell;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import engine.lua.LuaObject;
-import system.util.VectorMap;
-import server.zone.Zone;
 include server.zone.objects.scene.variables.ContainerPermissions;
 include templates.SharedObjectTemplate;
 

@@ -5,8 +5,6 @@
 #ifndef REGENERATIONCOMMAND_H_
 #define REGENERATIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RegenerationCommand : public QueueCommand {
 public:
 

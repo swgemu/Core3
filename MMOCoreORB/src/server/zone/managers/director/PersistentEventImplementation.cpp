@@ -3,12 +3,8 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/ServerCore.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/director/PersistentEvent.h"
-#include "DirectorManager.h"
 #include "ScreenPlayTask.h"
-#include "engine/engine.h"
 
 void PersistentEventImplementation::loadTransientTask() {
 	if (eventExecuted)

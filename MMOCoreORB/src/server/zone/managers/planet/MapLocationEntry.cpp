@@ -11,12 +11,10 @@
 #include "MapLocationType.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/building/BuildingObject.h"
-
 
 uint64 MapLocationEntry::getObjectID() const {
 	return object->getObjectID();

@@ -2,8 +2,8 @@
 #include "pathfinding/RecastNavMesh.h"
 #include "pathfinding/RecastNavMeshBuilder.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "conf/ConfigManager.h"
 #include "terrain/manager/TerrainManager.h"
+#include "terrain/ProceduralTerrainAppearance.h"
 
 // Lower thread count, used during runtime
 const String NavMeshManager::TileQueue = "NavMeshWorker";

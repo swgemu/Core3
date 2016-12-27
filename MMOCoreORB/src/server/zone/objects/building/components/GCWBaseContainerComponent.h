@@ -8,14 +8,10 @@
 #ifndef GCWBASECONTAINERCOMPONENT_H_
 #define GCWBASECONTAINERCOMPONENT_H_
 
-#include "server/zone/objects/scene/components/ContainerComponent.h"
-#include "GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
-#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
+
 class GCWBaseContainerComponent : public StructureContainerComponent {
 public:
 	bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const;

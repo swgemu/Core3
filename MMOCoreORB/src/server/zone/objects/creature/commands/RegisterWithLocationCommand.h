@@ -5,8 +5,6 @@
 #ifndef REGISTERWITHLOCATIONCOMMAND_H_
 #define REGISTERWITHLOCATIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RegisterWithLocationCommand : public QueueCommand {
 public:
 

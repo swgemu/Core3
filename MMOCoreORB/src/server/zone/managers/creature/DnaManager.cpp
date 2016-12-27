@@ -6,17 +6,13 @@
  */
 
 #include "DnaManager.h"
-#include "conf/ConfigManager.h"
-#include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/creature/DnaManager.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "server/zone/managers/crafting/labratories/Genetics.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 AtomicInteger DnaManager::loadedDnaData;
 

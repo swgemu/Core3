@@ -8,7 +8,6 @@
 #ifndef PERFORMANCE_H_
 #define PERFORMANCE_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableRow.h"
 
 class PerformanceType {

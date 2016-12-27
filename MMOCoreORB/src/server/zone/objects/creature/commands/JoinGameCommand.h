@@ -5,8 +5,6 @@
 #ifndef JOINGAMECOMMAND_H_
 #define JOINGAMECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class JoinGameCommand : public QueueCommand {
 public:
 

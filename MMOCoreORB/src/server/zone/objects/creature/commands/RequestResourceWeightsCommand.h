@@ -5,8 +5,6 @@
 #ifndef REQUESTRESOURCEWEIGHTSCOMMAND_H_
 #define REQUESTRESOURCEWEIGHTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RequestResourceWeightsCommand : public QueueCommand {
 public:
 

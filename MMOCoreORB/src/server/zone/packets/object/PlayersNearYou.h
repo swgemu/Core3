@@ -6,15 +6,9 @@
 #define PLAYERSNEARYOU_H_
 
 #include "ObjectControllerMessage.h"
-
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/player/Races.h"
-
-#include "terrain/RegionNames.h"
 
 class PlayersNearYouMessage : public ObjectControllerMessage {
 public:

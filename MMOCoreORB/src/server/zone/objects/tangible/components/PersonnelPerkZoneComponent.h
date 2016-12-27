@@ -1,11 +1,7 @@
 #ifndef PERSONNELPERKZONECOMPONENT_H_
 #define PERSONNELPERKZONECOMPONENT_H_
 
-#include "engine/engine.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
-#include "engine/util/u3d/QuadTreeEntry.h"
-
+#include "server/zone/objects/scene/components/ZoneComponent.h"
 
 class PersonnelPerkZoneComponent : public ZoneComponent {
 

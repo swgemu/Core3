@@ -9,8 +9,6 @@
 #define CITYTREASURYDEPOSITSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/region/CityRegion.h"
 
 class CityTreasuryDepositSuiCallback : public SuiCallback {

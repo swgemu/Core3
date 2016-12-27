@@ -21,7 +21,6 @@ namespace conf {
 	class ConfigManager;
 }
 
-
 using namespace conf;
 
 class ServerDatabase;
@@ -29,7 +28,6 @@ class MantisDatabase;
 class StatusServer;
 class Features;
 class PingServer;
-class StatusServer;
 
 namespace server {
  namespace web {

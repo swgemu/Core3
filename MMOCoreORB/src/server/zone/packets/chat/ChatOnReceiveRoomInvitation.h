@@ -5,7 +5,7 @@
 #ifndef CHATONRECEIVEROOMINVITATION_H_
 #define CHATONRECEIVEROOMINVITATION_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnReceiveRoomInvitation : public BaseMessage {
 public:

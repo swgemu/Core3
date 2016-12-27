@@ -5,7 +5,6 @@
 #ifndef VOLLEYFIRECOMMAND_H_
 #define VOLLEYFIRECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "SquadLeaderCommand.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 

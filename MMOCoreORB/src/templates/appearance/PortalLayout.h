@@ -11,11 +11,10 @@
 #include "templates/IffTemplate.h"
 #include "templates/appearance/CellProperty.h"
 #include "templates/appearance/MeshData.h"
-
-class AppearanceTemplate;
-class PathNode;
-class FloorMesh;
-class PathGraph;
+#include "templates/appearance/PathNode.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/AppearanceTemplate.h"
+#include "templates/appearance/PathGraph.h"
 
 class PortalGeometry : public Object {
 	Reference<MeshData*> geometry;

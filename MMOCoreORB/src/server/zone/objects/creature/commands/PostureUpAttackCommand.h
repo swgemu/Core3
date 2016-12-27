@@ -5,7 +5,6 @@
 #ifndef POSTUREUPATTACKCOMMAND_H_
 #define POSTUREUPATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class PostureUpAttackCommand : public CombatQueueCommand {

@@ -9,10 +9,6 @@
 #include "server/zone/objects/tangible/pharmaceutical/RevivePack.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/creature/events/InjuryTreatmentTask.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
-#include "server/zone/objects/creature/buffs/DelayedBuff.h"
-#include "server/zone/packets/object/CombatAction.h"
 
 class RevivePlayerCommand : public QueueCommand {
 	float mindCost;

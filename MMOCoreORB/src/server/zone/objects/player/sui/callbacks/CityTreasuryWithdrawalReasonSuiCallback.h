@@ -9,7 +9,6 @@
 #define CITYTREASURYWITHDRAWALREASONSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 
 class CityTreasuryWithdrawalReasonSuiCallback : public SuiCallback {

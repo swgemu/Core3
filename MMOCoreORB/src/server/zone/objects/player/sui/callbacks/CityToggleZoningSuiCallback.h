@@ -3,7 +3,6 @@
 #define CITYTOGGLEZONINGSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 namespace server {
 namespace zone {

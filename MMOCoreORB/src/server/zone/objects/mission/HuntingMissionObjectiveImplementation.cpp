@@ -8,10 +8,7 @@
 
 #include "server/zone/objects/mission/HuntingMissionObjective.h"
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/chat/StringIdChatParameter.h"

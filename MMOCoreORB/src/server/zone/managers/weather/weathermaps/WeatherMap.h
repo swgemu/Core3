@@ -11,7 +11,6 @@
 #ifndef WEATHERMAP_H_
 #define WEATHERMAP_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/resource/simplexnoise/SimplexNoise.h"
 
 /*

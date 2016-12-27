@@ -5,9 +5,7 @@
 #ifndef TAKECOVERCOMMAND_H_
 #define TAKECOVERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "QueueCommand.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
 
 class TakeCoverCommand : public QueueCommand {
 public:

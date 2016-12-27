@@ -8,7 +8,7 @@
 #ifndef FILTERDIRECTION_H_
 #define FILTERDIRECTION_H_
 
-
+#include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
 
 class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRule {

@@ -8,9 +8,8 @@
 #ifndef CREATETICKETMESSAGECALLBACK_H_
 #define CREATETICKETMESSAGECALLBACK_H_
 
-
-#include "../MessageCallback.h"
-#include "server/zone/packets/ui/CreateTicketResponseMessage.h"
+#include "server/zone/packets/MessageCallback.h"
+#include "server/zone/managers/holocron/HolocronManager.h"
 
 class CreateTicketMessageCallback : public MessageCallback {
 	String playerName;
@@ -24,7 +23,6 @@ public:
 
 		taskqueue = 7;
 	}
-
 
 	void parse(Message* message) {
 		message->parseAscii(playerName);

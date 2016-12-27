@@ -3,7 +3,6 @@
 #define PETRECHARGECOMMAND_H_
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 
 class PetRechargeCommand : public QueueCommand {

@@ -7,8 +7,8 @@
 
 #ifndef HQMENUCOMPONENT_H_
 #define HQMENUCOMPONENT_H_
+
 #include "engine/engine.h"
-#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 
 class HQMenuComponent : public ObjectMenuComponent {

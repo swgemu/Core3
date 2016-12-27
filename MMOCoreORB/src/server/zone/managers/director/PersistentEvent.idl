@@ -5,8 +5,6 @@
 package server.zone.managers.director;
 
 import engine.core.ManagedObject;
-import system.lang.System;
-import system.util.Vector;
 include server.zone.objects.scene.SceneObject;
 include server.zone.managers.director.ScreenPlayTask;
 

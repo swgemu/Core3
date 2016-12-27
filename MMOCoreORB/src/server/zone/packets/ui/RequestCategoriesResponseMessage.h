@@ -8,7 +8,6 @@
 #ifndef REQUESTCATEGORIESRESPONSEMESSAGE_H_
 #define REQUESTCATEGORIESRESPONSEMESSAGE_H_
 
-//#include "server/zone/managers/holocron/BugCategory.h"
 #include "server/zone/managers/holocron/HolocronManager.h"
 #include "server/zone/packets/MessageCallback.h"
 

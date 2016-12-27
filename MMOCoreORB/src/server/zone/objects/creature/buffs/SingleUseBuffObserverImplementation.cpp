@@ -9,7 +9,6 @@
 #include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-//#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"

@@ -5,8 +5,6 @@
 #ifndef SKILLCOMMAND_H_
 #define SKILLCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SkillCommand : public QueueCommand {
 public:
 

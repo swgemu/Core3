@@ -8,8 +8,7 @@
 #ifndef GUILDOBJECTDELTAMESSAGE3_H_
 #define GUILDOBJECTDELTAMESSAGE3_H_
 
-#include "../DeltaMessage.h"
-
+#include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/guild/GuildObject.h"
 
 class GuildObjectDeltaMessage3 : public DeltaMessage {

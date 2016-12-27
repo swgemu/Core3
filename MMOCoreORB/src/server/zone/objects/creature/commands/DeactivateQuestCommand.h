@@ -5,8 +5,6 @@
 #ifndef DEACTIVATEQUESTCOMMAND_H_
 #define DEACTIVATEQUESTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class DeactivateQuestCommand : public QueueCommand {
 public:
 

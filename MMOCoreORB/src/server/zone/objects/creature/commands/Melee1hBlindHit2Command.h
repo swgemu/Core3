@@ -5,8 +5,6 @@
 #ifndef MELEE1HBLINDHIT2COMMAND_H_
 #define MELEE1HBLINDHIT2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class Melee1hBlindHit2Command : public CombatQueueCommand {

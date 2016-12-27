@@ -6,7 +6,6 @@
 #define GIVEITEMCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 

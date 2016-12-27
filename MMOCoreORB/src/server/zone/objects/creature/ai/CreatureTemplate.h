@@ -11,9 +11,8 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
 #include "templates/params/creature/CreatureFlag.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
-#include "templates/mobile/MobileOutfit.h"
 
 namespace server {
 namespace zone {
@@ -90,7 +89,6 @@ protected:
 
 	String patrolPathTemplate;
 
-	//MobileOutfit outfit;
 	String outfit;
 
 	String aiTemplate;

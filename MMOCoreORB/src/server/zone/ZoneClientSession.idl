@@ -7,23 +7,9 @@ package server.zone;
 import engine.service.proto.BaseClientProxy;
 import engine.service.proto.BasePacket;
 import engine.core.ManagedObject;
-import system.lang.ref.Reference;
-import system.net.SocketAddress;
-import system.net.Socket;
-
 import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
-
-import engine.service.proto.events.BaseClientNetStatusCheckupEvent;
-import engine.service.proto.events.BaseClientCleanupEvent;
-import engine.service.proto.events.BaseClientNetStatusRequestEvent;
-import engine.service.proto.events.BaseClientEvent;
-
 import system.lang.Time;
-import system.util.HashSet;
-import system.util.HashTable;
 import system.util.VectorMap;
-import engine.log.Logger;
 
 //@nonTransactional
 class ZoneClientSession extends ManagedObject {

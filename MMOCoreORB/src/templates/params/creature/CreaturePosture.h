@@ -5,7 +5,6 @@
 #ifndef CREATUREPOSTURE_H_
 #define CREATUREPOSTURE_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "templates/manager/TemplateManager.h"

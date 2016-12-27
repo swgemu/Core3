@@ -5,18 +5,14 @@
 #ifndef OBJECTMENURESPONSE_H_
 #define OBJECTMENURESPONSE_H_
 
-#include "engine/engine.h"
-
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
-
 #include "RadialMenuItem.h"
 
 namespace server {
 namespace zone {
 namespace packets {
 namespace object {
-
 
 class ObjectMenuResponse : public ObjectControllerMessage {
 	int listSize;
@@ -144,7 +140,6 @@ public:
 		return root;
 	}
 };
-
 
 }
 }

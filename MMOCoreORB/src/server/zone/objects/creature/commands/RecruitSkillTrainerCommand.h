@@ -5,7 +5,6 @@
 #ifndef RECRUITSKILLTRAINERCOMMAND_H_
 #define RECRUITSKILLTRAINERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/creature/commands/sui/RecruitSkillTrainerSuiCallback.h"
 

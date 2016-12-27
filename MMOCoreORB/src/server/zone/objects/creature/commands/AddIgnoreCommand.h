@@ -5,11 +5,9 @@
 #ifndef ADDIGNORECOMMAND_H_
 #define ADDIGNORECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
 
 class AddIgnoreCommand : public QueueCommand {
 public:

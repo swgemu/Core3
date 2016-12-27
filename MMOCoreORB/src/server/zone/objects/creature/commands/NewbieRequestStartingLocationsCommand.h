@@ -5,8 +5,6 @@
 #ifndef NEWBIEREQUESTSTARTINGLOCATIONSCOMMAND_H_
 #define NEWBIEREQUESTSTARTINGLOCATIONSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class NewbieRequestStartingLocationsCommand : public QueueCommand {
 public:
 

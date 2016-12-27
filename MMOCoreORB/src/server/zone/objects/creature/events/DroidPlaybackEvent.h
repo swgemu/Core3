@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 
 namespace server {
 namespace zone {

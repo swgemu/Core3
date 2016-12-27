@@ -8,8 +8,6 @@
 #ifndef TEMPLATECRCMAP_H_
 #define TEMPLATECRCMAP_H_
 
-#include "engine/engine.h"
-
 #include "templates/SharedObjectTemplate.h"
 #include "templates/TemplateReference.h"
 
@@ -34,6 +32,5 @@ public:
 		setNullValue("");
 	}
 };
-
 
 #endif /* TEMPLATECRCMAP_H_ */

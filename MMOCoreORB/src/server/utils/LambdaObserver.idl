@@ -7,9 +7,6 @@ package server.utils;
 
 import engine.util.Observable;
 include engine.core.ManagedObject;
-//import engine.core.ManagedReference;
-
-import engine.log.Logger;
 
 import engine.util.Observer;
 

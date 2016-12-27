@@ -8,11 +8,10 @@
 #ifndef LOOTGROUPMAP_H_
 #define LOOTGROUPMAP_H_
 
-#include "engine/engine.h"
-
 class LootItemTemplate;
-//class LootGroupTemplate;
 #include "templates/LootGroupTemplate.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 
 class LootGroupMap : public Singleton<LootGroupMap>, public Object, public Logger {
 public:

@@ -6,7 +6,6 @@ package server.zone.objects.player.sessions;
 
 import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 include server.zone.objects.scene.SessionFacadeType;
 

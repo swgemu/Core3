@@ -5,7 +5,6 @@
 #ifndef FULLAUTOAREA2COMMAND_H_
 #define FULLAUTOAREA2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FullAutoArea2Command : public CombatQueueCommand {

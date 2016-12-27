@@ -1,19 +1,14 @@
 package server.login.account;
 
-import server.chat.StringIdChatParameter;
 import engine.core.ManagedObject;
-import engine.core.ManagedReference;
 import engine.log.Logger;
-import server.login.account.AccountManager;
 import system.util.VectorMap;
-import system.lang.Time;
-import system.lang.System;
 include server.login.objects.CharacterList;
 include server.login.objects.CharacterListEntry;
 include server.login.objects.GalaxyBanEntry;
 include server.login.account.GalaxyAccountInfo;
 include server.login.account.GalaxyAccountInfoMap;
-
+import system.lang.ref.Reference;
 
 class Account extends ManagedObject implements Logger {
 

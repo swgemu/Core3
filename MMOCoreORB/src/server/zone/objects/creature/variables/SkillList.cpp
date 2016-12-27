@@ -7,9 +7,7 @@
 
 #include "SkillList.h"
 
-#include "../variables/Skill.h"
-#include "server/ServerCore.h"
-#include "server/zone/ZoneServer.h"
+#include "Skill.h"
 #include "server/zone/managers/skill/SkillManager.h"
 
 bool SkillList::containsSkill(const String& skillBox) {

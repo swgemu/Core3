@@ -8,7 +8,8 @@
 #ifndef PARAM_H_
 #define PARAM_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
+#include "engine/util/iffstream/IffStream.h"
 
 class Param {
 	uint32 type;
@@ -66,6 +67,5 @@ public:
 		return type == STRINGID;
 	}
 };
-
 
 #endif /* PARAM_H_ */

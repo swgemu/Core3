@@ -5,7 +5,6 @@
 #ifndef LFGCOMMAND_H_
 #define LFGCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class LfgCommand : public QueueCommand {

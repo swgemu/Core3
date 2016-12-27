@@ -6,7 +6,6 @@
 #define NOBUILDAREAMAP_H_
 
 #include "server/zone/objects/region/Region.h"
-#include "engine/engine.h"
 
 class NoBuildAreaMap : public Object {
 	Vector<ManagedReference<Region*> > areas;

@@ -5,8 +5,6 @@
 #ifndef USESKILLBUFFCOMMAND_H_
 #define USESKILLBUFFCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class UseSkillBuffCommand : public QueueCommand {
 public:
 

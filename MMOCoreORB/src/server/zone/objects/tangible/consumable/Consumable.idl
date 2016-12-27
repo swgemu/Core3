@@ -5,18 +5,13 @@
 package server.zone.objects.tangible.consumable;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import system.util.VectorMap;
 include templates.SharedObjectTemplate;
+include system.util.Vector;
 
 class Consumable extends TangibleObject {
 	protected int duration;

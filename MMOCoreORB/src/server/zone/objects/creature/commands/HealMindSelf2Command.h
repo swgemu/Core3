@@ -5,7 +5,6 @@
 #ifndef HEALMINDSELF2COMMAND_H_
 #define HEALMINDSELF2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "ForceHealQueueCommand.h"
 
 class HealMindSelf2Command : public ForceHealQueueCommand {

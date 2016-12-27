@@ -5,7 +5,6 @@
 #ifndef FLUSHINGSHOT1COMMAND_H_
 #define FLUSHINGSHOT1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FlushingShot1Command : public CombatQueueCommand {

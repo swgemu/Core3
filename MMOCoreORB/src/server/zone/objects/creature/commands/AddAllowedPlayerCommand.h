@@ -5,9 +5,6 @@
 #ifndef ADDALLOWEDPLAYERCOMMAND_H_
 #define ADDALLOWEDPLAYERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-
 class AddAllowedPlayerCommand : public QueueCommand {
 public:
 

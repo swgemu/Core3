@@ -8,8 +8,6 @@
 #ifndef DELTABASICVARIABLE_H_
 #define DELTABASICVARIABLE_H_
 
-#include "server/zone/packets/DeltaMessage.h"
-
 template<typename K>
 class DeltaBasicVariable {
 protected:

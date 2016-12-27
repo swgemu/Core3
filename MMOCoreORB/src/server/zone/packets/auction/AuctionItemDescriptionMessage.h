@@ -5,7 +5,7 @@
 #ifndef AUCTIONITEMDESCRIPTIONMESSAGE_H_
 #define AUCTIONITEMDESCRIPTIONMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class AuctionItemDescriptionMessage : public BaseMessage {
 	

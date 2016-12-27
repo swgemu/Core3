@@ -6,9 +6,6 @@
  */
 
 #include "PortalLayout.h"
-#include "templates/appearance/MeshAppearanceTemplate.h"
-#include "templates/appearance/PathNode.h"
-#include "templates/appearance/FloorMesh.h"
 #include "engine/util/u3d/AStarAlgorithm.h"
 
 void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
@@ -80,7 +77,6 @@ void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
 	}
 }
 
-
 void PortalLayout::readPortalGeometry0004(IffStream *iff, int numPortals) {
 
 	for(int i=0; i<numPortals; i++) {
@@ -147,6 +143,7 @@ void PortalLayout::readPortalGeometry0004(IffStream *iff, int numPortals) {
 		portalGeometry.add(portal);
 	}
 }
+
 PortalLayout::PortalLayout() {
 	pathGraph = NULL;
 
@@ -268,7 +265,6 @@ void PortalLayout::connectFloorMeshGraphs() {
 			}
 		}
 	}
-
 }
 
 int PortalLayout::getFloorMeshID(int globalNodeID, int floorMeshToExclude) {

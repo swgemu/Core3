@@ -5,8 +5,6 @@
 #ifndef SEGOGGLESCOMMAND_H_
 #define SEGOGGLESCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SeGogglesCommand : public QueueCommand {
 public:
 

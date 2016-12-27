@@ -5,10 +5,8 @@
 #ifndef BADGESRESPONSEMESSAGE_H_
 #define BADGESRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/objects/player/badges/Badges.h"
 
 class BadgesResponseMessage : public BaseMessage {

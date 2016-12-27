@@ -6,7 +6,6 @@
 #define DROIDHARVESTMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestObserver.h"
 
 namespace server {

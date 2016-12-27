@@ -3,7 +3,6 @@
 #define PETFIXSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 

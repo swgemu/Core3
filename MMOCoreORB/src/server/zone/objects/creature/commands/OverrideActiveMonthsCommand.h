@@ -5,8 +5,6 @@
 #ifndef OVERRIDEACTIVEMONTHSCOMMAND_H_
 #define OVERRIDEACTIVEMONTHSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class OverrideActiveMonthsCommand : public QueueCommand {
 public:
 

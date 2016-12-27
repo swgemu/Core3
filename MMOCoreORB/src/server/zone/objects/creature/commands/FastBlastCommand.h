@@ -5,7 +5,6 @@
 #ifndef FASTBLASTCOMMAND_H_
 #define FASTBLASTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FastBlastCommand : public CombatQueueCommand {

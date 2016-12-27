@@ -5,20 +5,13 @@
  *      Author: root
  */
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "MinefieldZoneComponent.h"
 #include "MinefieldDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/combat/CreatureAttackData.h"
-#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "MinefieldAttackTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 

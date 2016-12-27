@@ -5,7 +5,6 @@
 #ifndef FORCELIGHTNINGCONE1COMMAND_H_
 #define FORCELIGHTNINGCONE1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "ForcePowersQueueCommand.h"
 
 class ForceLightningCone1Command : public ForcePowersQueueCommand {

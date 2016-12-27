@@ -9,19 +9,13 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.structure.events.StructureMaintenanceTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerObject;
 include templates.SharedObjectTemplate;
-import server.zone.objects.area.ActiveArea;
-import engine.util.u3d.AABBTree;
-import engine.util.u3d.AABBNode;
-import engine.util.u3d.Vector3;
 import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
 import server.zone.objects.pathfinding.NavMeshRegion;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
-	//protected transient StructurePowerTask structurePowerTask;
 
 	protected NavMeshRegion navmeshRegion;
 

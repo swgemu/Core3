@@ -5,8 +5,6 @@
 #ifndef GETPROTOTYPECOMMAND_H_
 #define GETPROTOTYPECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GetPrototypeCommand : public QueueCommand {
 public:
 

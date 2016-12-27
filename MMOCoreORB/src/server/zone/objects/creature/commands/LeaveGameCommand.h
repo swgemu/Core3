@@ -5,8 +5,6 @@
 #ifndef LEAVEGAMECOMMAND_H_
 #define LEAVEGAMECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class LeaveGameCommand : public QueueCommand {
 public:
 

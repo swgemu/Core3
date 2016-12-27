@@ -5,7 +5,6 @@
 #ifndef BODYSHOT2COMMAND_H_
 #define BODYSHOT2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class BodyShot2Command : public CombatQueueCommand {

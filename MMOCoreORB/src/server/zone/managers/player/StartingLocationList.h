@@ -8,9 +8,7 @@
 #ifndef STARTINGLOCATIONLIST_H_
 #define STARTINGLOCATIONLIST_H_
 
-#include "engine/engine.h"
 #include "StartingLocation.h"
-
 #include "templates/datatables/DataTableIff.h"
 
 class StartingLocationList : public SortedVector<StartingLocation> {

@@ -11,10 +11,6 @@
 #ifndef RESOURCESHIFTTASK_H_
 #define RESOURCESHIFTTASK_H_
 
-#include "engine/engine.h"
-
-class ResourceSpawner;
-
 class ResourceShiftTask : public Task {
 	ManagedReference<ResourceManager* > resourceManager;
 

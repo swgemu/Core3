@@ -8,7 +8,7 @@
 #ifndef CREATECLIENTPATHMESSAGE_H_
 #define CREATECLIENTPATHMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class CreateClientPathMessage : public BaseMessage {
 	int coordinateCount;
@@ -36,7 +36,6 @@ public:
 	void updateCount() {
 		insertInt(10, ++coordinateCount);
 	}
-
 
 };
 

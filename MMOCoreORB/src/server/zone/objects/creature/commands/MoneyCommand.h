@@ -5,8 +5,6 @@
 #ifndef MONEYCOMMAND_H_
 #define MONEYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class MoneyCommand : public QueueCommand {
 public:
 

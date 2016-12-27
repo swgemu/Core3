@@ -4,12 +4,9 @@
 
 package server.zone.objects.tangible.eventperk;
 
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
 import server.zone.objects.tangible.tasks.LotteryDroidPulseTask;
-import system.util.VectorMap;
-import server.zone.Zone;
 
 class LotteryDroid extends CreatureObject {	
 	@dereferenced

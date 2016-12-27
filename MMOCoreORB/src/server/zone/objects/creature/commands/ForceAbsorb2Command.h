@@ -5,9 +5,6 @@
 #ifndef FORCEABSORB2COMMAND_H_
 #define FORCEABSORB2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
-
 class ForceAbsorb2Command : public JediQueueCommand {
 public:
 

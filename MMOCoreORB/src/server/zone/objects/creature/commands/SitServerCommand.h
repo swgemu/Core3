@@ -5,9 +5,6 @@
 #ifndef SITSERVERCOMMAND_H_
 #define SITSERVERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/packets/object/SitOnObject.h"
 #include "templates/params/creature/CreatureState.h"
 
 class SitServerCommand : public QueueCommand {

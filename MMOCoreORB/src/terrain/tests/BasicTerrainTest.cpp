@@ -11,7 +11,6 @@
 #include "templates/manager/DataArchiveStore.h"
 #include "terrain/ProceduralTerrainAppearance.h"
 #include "terrain/SpaceTerrainAppearance.h"
-#include "terrain/TargaBitmap.h"
 #include "conf/ConfigManager.h"
 
 class BasicTerrainTest : public ::testing::Test {

@@ -4,11 +4,11 @@
 */
 
 package server.zone.managers.creature;
+
 import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.ai.AiAgent;
 include templates.mobile.LairTemplate;
 include system.util.SynchronizedVector;
 

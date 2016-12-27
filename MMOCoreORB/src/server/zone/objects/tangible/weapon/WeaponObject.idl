@@ -5,20 +5,16 @@
 package server.zone.objects.tangible.weapon;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.scene.SceneObjectType;
 include templates.SharedObjectTemplate;
 include templates.tangible.SharedWeaponObjectTemplate;
-import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.powerup.PowerupObject;
 import system.util.Vector;
 import system.lang.String;
-include server.zone.objects.tangible.Container;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;

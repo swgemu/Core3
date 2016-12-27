@@ -5,10 +5,7 @@
 #ifndef INTIMIDATE1COMMAND_H_
 #define INTIMIDATE1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/packets/object/CombatSpam.h"
-#include "server/chat/ChatMessage.h"
 #include "CombatQueueCommand.h"
 
 class Intimidate1Command : public CombatQueueCommand {

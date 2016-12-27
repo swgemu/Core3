@@ -4,20 +4,18 @@
  *  Created on: Oct 22, 2012
  *      Author: root
  */
+
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
-#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
-#include "server/zone/objects/installation/components/MinefieldDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 
 #include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
@@ -27,12 +25,10 @@
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
-#include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
 
+#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
 #include "server/zone/objects/player/sui/callbacks/HQDefenseStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/JamUplinkSuiCallback.h"
@@ -46,6 +42,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
 
 void GCWManagerImplementation::initialize() {
 	loadLuaConfig();

@@ -7,10 +7,6 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
-#include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
-
 class SetGodModeCommand : public QueueCommand {
 public:
 

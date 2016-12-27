@@ -5,8 +5,6 @@
 #ifndef SETPLANETLIMITCOMMAND_H_
 #define SETPLANETLIMITCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetPlanetLimitCommand : public QueueCommand {
 public:
 

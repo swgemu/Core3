@@ -5,10 +5,8 @@
 #ifndef CREATUREOBJECTMESSAGE1_H_
 #define CREATUREOBJECTMESSAGE1_H_
 
-#include "../../packets/BaseLineMessage.h"
-
+#include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/objects/creature/variables/SkillList.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
@@ -29,7 +27,6 @@ public:
 
 		setCompression(true);
 	}
-
 
 };
 

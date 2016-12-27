@@ -8,7 +8,6 @@
 #ifndef DATATABLEIFF_H_
 #define DATATABLEIFF_H_
 
-#include "engine/engine.h"
 #include "templates/IffTemplate.h"
 
 class DataTableRow;
@@ -69,6 +68,5 @@ public:
 		return columns.size();
 	}
 };
-
 
 #endif /* DATATABLEIFF_H_ */

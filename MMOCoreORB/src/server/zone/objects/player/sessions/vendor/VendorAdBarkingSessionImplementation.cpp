@@ -7,7 +7,7 @@
 
 #include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
 #include "server/zone/ZoneServer.h"
-
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/callbacks/AdBarkingPhraseSuiCallback.h"

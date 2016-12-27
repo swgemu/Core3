@@ -6,7 +6,6 @@
 #define HARVESTERGETRESOURCEDATACOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/packets/harvester/HarvesterResourceDataMessage.h"
 
 class HarvesterGetResourceDataCommand : public QueueCommand {
@@ -39,9 +38,6 @@ public:
 
 		if (inso->getZone() == NULL)
 			return GENERALERROR;
-
-		/*if (!inso->isHarvesterObject())
-			return GENERALERROR;*/
 
 		try {
 			Locker clocker(object, player);

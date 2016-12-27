@@ -8,10 +8,7 @@
 #ifndef STARTINGLOCATION_H_
 #define STARTINGLOCATION_H_
 
-#include "engine/engine.h"
 #include "templates/datatables/DataTableRow.h"
-#include "templates/datatables/DataTableCell.h"
-
 
 class StartingLocation : public Object {
 	String zoneName;

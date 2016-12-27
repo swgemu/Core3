@@ -9,7 +9,6 @@
 #define PETRECOVERCOMMAND_H_
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 
 class PetRecoverCommand : public QueueCommand {
