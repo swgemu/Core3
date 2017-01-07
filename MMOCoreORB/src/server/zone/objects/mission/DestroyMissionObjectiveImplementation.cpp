@@ -90,6 +90,9 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 	if(mission == NULL)
 		return position;
 
+	if (zone == NULL)
+		return position;
+
 	float newX = spawnActiveArea->getPositionX() + (256.0f - (float) System::random(512));
 	float newY = spawnActiveArea->getPositionY() + (256.0f - (float) System::random(512));
 
@@ -145,6 +148,9 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 		return;
 
 	Zone* zone = spawnActiveArea->getZone();
+
+	if (zone == NULL)
+		return;
 
 	Locker locker(spawnActiveArea);
 
