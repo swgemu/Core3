@@ -54,16 +54,6 @@ public:
 	}
 };
 
-TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtLoadConfiguration) {
-	MockLua mockLua;
-
-	constructorDefaults(mockLua);
-
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/jedi_manager.lua"))).Times(1);
-
-	jediManager->loadConfiguration(&mockLua);
-}
-
 TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtLoadConfigurations) {
 	MockLua mockLua;
 

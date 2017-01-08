@@ -32,7 +32,7 @@ untrained_wielder_of_the_dark_side = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 3500000},
-				{group = "crystals_poor", chance = 500000},
+				{group = "power_crystals", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "holocron_dark", chance = 500000},
 				{group = "holocron_light", chance = 500000},

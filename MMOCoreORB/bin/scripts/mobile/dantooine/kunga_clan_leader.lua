@@ -36,7 +36,7 @@ kunga_clan_leader = Creature:new {
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "wearables_all", chance = 2000000},
-				{group = "crystals_okay", chance = 500000}
+				{group = "power_crystals", chance = 500000}
 			}
 		}
 	},
