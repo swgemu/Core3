@@ -6,6 +6,7 @@
 #define JEDIMANAGER_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/jedi/CrystalData.h"
 
 namespace server {
 namespace zone {
@@ -17,6 +18,8 @@ namespace jedi {
  */
 class JediManager : public Singleton<JediManager>, public Logger, public Object, public ReadWriteLock {
 private:
+	VectorMap<String, CrystalData*> crystalData;
+
 	/**
 	 * The Jedi progression type currently configured.
 	 */
@@ -57,6 +60,10 @@ public:
 	 * Destructor for the Jedi Manager.
 	 */
 	~JediManager();
+
+	CrystalData* getCrystalData(const String& name) {
+		return crystalData.get(name);
+	}
 
 	/**
 	 * Load the Jedi Manager configuration.
