@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_6ea00ff5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-01-08T15:04:33Z",
+      "side": 1,
+      "message": "how often will this be called? maybe having the data in a manager loaded at startup from lua would be better, unless you want the scripts to be updateable on the fly",
+      "revId": "d523d8af28f768923bcce5ee1e2df9d32964f27e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_ae5ef710",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-01-08T15:04:33Z",
+      "side": 1,
+      "message": "you return early without deleting lua.\n\nno need to allocate it on the heap anyway, can just declare it on the stack Lua lua and not need to worry about deleting it",
+      "revId": "d523d8af28f768923bcce5ee1e2df9d32964f27e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
