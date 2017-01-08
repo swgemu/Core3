@@ -40,7 +40,7 @@ mercenary_warlord = Creature:new {
 				{group = "wearables_uncommon", chance = 500000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "color_crystals", chance = 400000},
-				{group = "crystals_okay", chance = 400000},
+				{group = "power_crystals", chance = 400000},
 				{group = "melee_unarmed", chance = 600000},
 				{group = "melee_polearm", chance = 600000},
 				{group = "pistols", chance = 600000},
