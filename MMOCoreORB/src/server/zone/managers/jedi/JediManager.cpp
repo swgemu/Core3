@@ -69,6 +69,20 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 
 	setJediManagerName(luaEngine->getGlobalString(String("jediManagerName")));
 
+	luaEngine->runFile("scripts/managers/jedi/crystal_data.lua");
+
+	LuaObject luaObject = luaEngine->getGlobalObject("lightsaber_module_force_crystal");
+	CrystalData* crystal = new CrystalData();
+	crystal->readObject(&luaObject);
+	crystalData.put("lightsaber_module_force_crystal", crystal);
+	luaObject.pop();
+
+	luaObject = luaEngine->getGlobalObject("lightsaber_module_krayt_dragon_pearl");
+	crystal = new CrystalData();
+	crystal->readObject(&luaObject);
+	crystalData.put("lightsaber_module_krayt_dragon_pearl", crystal);
+	luaObject.pop();
+
 	info("Loaded.");
 }
 

@@ -8,63 +8,64 @@ import server.zone.objects.tangible.component.Component;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.creature.CreatureObject;
-include templates.tangible.LightsaberCrystalObjectTemplate;
 
 @lua
 class LightsaberCrystalComponent extends Component {
-	protected string postTuneName;
+	public final static int POOR = 0;
+	public final static int FAIR = 1;
+	public final static int GOOD = 2;
+	public final static int QUALITY = 3;
+	public final static int SELECT = 4;
+	public final static int PREMIUM = 5;
+	public final static int FLAWLESS = 6;
 	
-	protected transient LightsaberCrystalObjectTemplate lcoTemplate;
-	
+	protected int damage;
 	protected int color;
 	protected int quality;
 	protected float attackSpeed;
-	protected int minimumDamage;	
-	protected int maximumDamage;
 	protected int sacHealth;
 	protected int sacAction;
 	protected int sacMind;
 	protected int woundChance;
-	protected string crystalType;
-	
-	// TODO: Remove this after a server wipe
-	protected int forceCost;
-	
+	protected int itemLevel;
 	protected float floatForceCost;
+	
 	protected unsigned long ownerID;
+	protected string ownerName;
+	
+	// TODO: Remove these after a server wipe
+	protected int forceCost;
+	protected int minimumDamage;	
+	protected int maximumDamage;
+	protected string postTuneName;
+	// ----
 
 	public LightsaberCrystalComponent() {
-
 		attackSpeed = 0.0;
-		minimumDamage = 0;	
-		maximumDamage = 0;
 		sacHealth = 0;
 		sacAction = 0;
 		sacMind = 0;
 		woundChance = 0;
 		color = 0;
 		quality = 0;
-		postTuneName = "";
-		
-		forceCost = 0;
-
+		itemLevel = 0;
 		floatForceCost = 0.0;
+		
 		ownerID = 0;
+		ownerName = "";
+		
+		// TODO: Remove these after a server wipe
+		forceCost = 0;
+		minimumDamage = 0;	
+		maximumDamage = 0;
+		postTuneName = "";
+		// ----
 
 		Logger.setLoggingName("LightsaberCrystal");
 	}
 	
 	public native void initializeTransientMembers();
 	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-
 	public native void notifyLoadFromDatabase();
 	
 	@local
@@ -91,15 +92,15 @@ class LightsaberCrystalComponent extends Component {
 	public native void updateCrystal(int value);
 
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	
+	public native void generateCrystalStats();
+	public native int getRandomizedStat(int min, int max, int itemLevel);
+	public native float getRandomizedStat(float min, float max, int itemLevel);
+	public native int getCrystalQuality();
 
 	@read
-	public int getMinimumDamage() {
-		return minimumDamage;
-	}
-
-	@read
-	public int getMaximumDamage() {
-		return maximumDamage;
+	public int getDamage() {
+		return damage;
 	}
 
 	@read
@@ -159,6 +160,10 @@ class LightsaberCrystalComponent extends Component {
 		ownerID = value;
 	}
 
+	public void setItemLevel(int value) {
+		itemLevel = value;
+	}
+	
 	public void setMinimumDamage(int value) {
 		minimumDamage = value;
 	}
