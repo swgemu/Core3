@@ -33,7 +33,7 @@ dark_adept = Creature:new {
 			groups = {
 				{group = "holocron_dark", chance = 400000},
 				{group = "holocron_light", chance = 400000},
-				{group = "crystals_premium", chance = 400000},
+				{group = "power_crystals", chance = 400000},
 				{group = "color_crystals", chance = 1000000},
 				{group = "rifles", chance = 1300000},
 				{group = "pistols", chance = 1300000},

@@ -96,7 +96,6 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
 			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
-			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
 			  	terrain/manager/tests/TerrainManagerTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \

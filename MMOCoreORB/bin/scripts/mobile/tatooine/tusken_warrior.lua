@@ -37,7 +37,7 @@ tusken_warrior = Creature:new {
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "crystals_poor", chance = 500000}
+				{group = "power_crystals", chance = 500000}
 			}
 		}
 	},
