@@ -32,7 +32,7 @@ spiderclan_elder = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 1500000},
-				{group = "crystals_premium", chance = 500000},
+				{group = "power_crystals", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "armor_attachments", chance = 600000},
 				{group = "clothing_attachments", chance = 600000},
