@@ -31,7 +31,7 @@ nightsister_protector = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "crystals_select", chance = 500000},
+				{group = "power_crystals", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "nightsister_common", chance = 2300000},
 				{group = "armor_attachments", chance = 350000},
