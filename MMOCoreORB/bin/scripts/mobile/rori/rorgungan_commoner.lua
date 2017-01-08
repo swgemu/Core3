@@ -36,7 +36,7 @@ rorgungan_commoner = Creature:new {
 				{group = "tailor_components", chance = 500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 250000},
-				{group = "crystals_poor", chance = 250000}
+				{group = "power_crystals", chance = 250000}
 			}
 		}
 	},
