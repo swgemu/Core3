@@ -33,8 +33,7 @@ looted_container = {
 
 		-- Uncommon
 		{itemTemplate = "force_color_crystal", weight = 43861},
-		{itemTemplate = "force_crystal_poor", weight = 43861},
-		{itemTemplate = "force_crystal_okay", weight = 43861},
+		{itemTemplate = "force_power_crystal", weight = 87722},
 		{itemTemplate = "jedi_holocron_dark", weight = 43861},
 		{itemTemplate = "jedi_holocron_light", weight = 43861},
 		{itemTemplate = "attachment_clothing", weight = 43860},
