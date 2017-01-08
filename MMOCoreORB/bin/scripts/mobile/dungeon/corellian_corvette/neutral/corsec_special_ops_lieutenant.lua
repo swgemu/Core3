@@ -37,7 +37,7 @@ corsec_special_ops_lieutenant = Creature:new {
 				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals_premium", chance = 650000},
+				{group = "power_crystals", chance = 650000},
 				{group = "color_crystals", chance = 850000}
 			}
 		}

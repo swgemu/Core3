@@ -32,7 +32,7 @@ forsaken_force_drifter = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 3000000},
-				{group = "crystals_poor", chance = 800000},
+				{group = "power_crystals", chance = 800000},
 				{group = "color_crystals", chance = 700000},
 				{group = "holocron_dark", chance = 500000},
 				{group = "holocron_light", chance = 500000},
