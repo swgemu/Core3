@@ -17,6 +17,7 @@ namespace jedi {
  */
 class JediManager : public Singleton<JediManager>, public Logger, public Object, public ReadWriteLock {
 private:
+
 	/**
 	 * The Jedi progression type currently configured.
 	 */
