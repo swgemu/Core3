@@ -572,11 +572,13 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	String vendorPlanetName("@planet_n:" + vendor->getZone()->getZoneName());
 	String vendorRegionName = vendorPlanetName;
 
-	if( vendor->getCityRegion() != NULL){
-		city = vendor->getCityRegion().get();
+	city = vendor->getCityRegion().get();
+
+	if( city != NULL) {
 		tax = item->getPrice() - ( item->getPrice() / ( 1.0f + (city->getSalesTax() / 100.f)));
 		vendorRegionName = city->getRegionName();
 	}
+
 	String playername = player->getFirstName().toLowerCase();
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
