@@ -292,8 +292,9 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	}
 
 	// add city tax to the price
-	if(vendor->getCityRegion() != NULL) {
-		price *= (1.0f + (vendor->getCityRegion().get()->getSalesTax() / 100.0f));
+	ManagedReference<CityRegion*> city = vendor->getCityRegion().get();
+	if (city != NULL) {
+		price *= (1.0f + (city->getSalesTax() / 100.0f));
 	}
 
 	ManagedReference<AuctionItem*> item = createVendorItem(player, objectToSell.get(), vendor, description, price, duration, auction, premium);
