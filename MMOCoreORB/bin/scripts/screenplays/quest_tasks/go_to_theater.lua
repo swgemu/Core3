@@ -55,6 +55,13 @@ function GoToTheater:getSpawnedMobileList(pPlayer)
 	return SpawnMobiles.getSpawnedMobiles(pTheater, self.taskName)
 end
 
+function GoToTheater:getTheaterObject(pPlayer)
+	local theaterId = readData(SceneObject(pPlayer):getObjectID() .. self.taskName .. THEATER_ID_STRING)
+	local pTheater = getSceneObject(theaterId)
+	
+	return pTheater
+end
+
 -- Setup the active area around the theater.
 -- @param pPlayer pointer to the creature object for whom the theater is created for.
 -- @param spawnPoint the coordinates to spawn the active area at.
@@ -65,11 +72,19 @@ function GoToTheater:setupActiveArea(pPlayer, spawnPoint)
 
 	if (pActiveArea ~= nil) then
 		writeData(SceneObject(pPlayer):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, SceneObject(pActiveArea):getObjectID())
-		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
+		createEvent(5000, self.taskName, "createAreaObserver", pActiveArea, "")
 		return true
 	end
 
 	return false
+end
+
+function GoToTheater:createAreaObserver(pActiveArea)
+	if (pActiveArea == nil) then
+		return
+	end
+	
+	createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
 end
 
 -- Handle the entered active area event.
@@ -114,7 +129,10 @@ function GoToTheater:taskStart(pPlayer)
 
 			for i = 1, #self.theater, 1 do
 				local objectData = self.theater[i]
-				local pObject = spawnSceneObject(zoneName, objectData.template, spawnPoint[1] + objectData.xDiff, spawnPoint[2]  + objectData.zDiff, spawnPoint[3] + objectData.yDiff, 0, objectData.heading)
+				local xLoc = spawnPoint[1] + objectData.xDiff
+				local yLoc = spawnPoint[3] + objectData.yDiff
+				local zLoc = getTerrainHeight(pPlayer, xLoc, yLoc) + objectData.zDiff
+				local pObject = spawnSceneObject(zoneName, objectData.template, xLoc, zLoc, yLoc, 0, objectData.heading)
 
 				if (pObject ~= nil) then
 					writeData(playerID .. self.taskName .. "theaterObject" .. i, SceneObject(pObject):getObjectID())
@@ -191,6 +209,8 @@ function GoToTheater:taskFinish(pPlayer)
 		SpawnMobiles.despawnMobiles(pTheater, self.taskName)
 		SceneObject(pTheater):destroyObjectFromWorld()
 	end
+	
+	deleteData(playerID .. self.taskName .. THEATER_ID_STRING)
 
 	self:callFunctionIfNotNil(self.onTheaterDespawn, nil, pPlayer)
 
