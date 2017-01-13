@@ -7,94 +7,50 @@ MellichaeOutroTheater = GoToTheater:new {
 	-- Task properties
 	taskName = "MellichaeOutroTheater",
 	-- GoToTheater properties
-	minimumDistance = 1024,
-	maximumDistance = 1536,
+	minimumDistance = 900,
+	maximumDistance = 1500,
 	theater = {
-		{ template = "object/tangible/furniture/all/frn_all_light_lamp_table_s03.iff", xDiff =0.52, zDiff = 1.14, yDiff = -3.37, heading = 0 },
-		{ template = "object/tangible/camp/camp_crate_s1.iff", xDiff =-3.78,zDiff = 0, yDiff = 0.91, heading = -18.91 },
-		{ template = "object/weapon/ranged/pistol/pistol_dl44_metal.iff", xDiff =0.13, zDiff = 1.17, yDiff = -2.9, heading = -9.74 },
-		{ template = "object/tangible/camp/camp_crate_s1.iff", xDiff =1.74, zDiff = 0, yDiff = -2.84, heading = -80.214 },
-		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff =3.74, zDiff = 0, yDiff = 2.42, heading = -47.74 },
-		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff =2.04, zDiff = 0, yDiff = 1.55, heading = 0.39 },
-		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff =-0.26, zDiff = 0, yDiff = 5.28, heading = 111.15 },
-		{ template = "object/static/structure/general/campfire_fresh.iff", xDiff =2.30, zDiff = 0, yDiff = 4.01, heading = 0 },
-		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff =1.72, zDiff = 0, yDiff = 3.92, heading = 83.59 },
-		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff =2.76, zDiff = 0, yDiff = 4.21, heading = 63.79 },
-		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff =2.33, zDiff = 0, yDiff = 3.3, heading = -24.13 },
-		{ template = "object/static/structure/general/trash_pile_s01.iff", xDiff =-3.48, zDiff = 0, yDiff = 2.61, heading = -120.3 },
-		{ template = "object/static/structure/tatooine/debris_tatt_crate_1.iff", xDiff =1.78, zDiff = 0, yDiff = -2.7, heading = 7.45 },
-		{ template = "object/static/structure/tatooine/debris_tatt_drum_dented_1.iff", xDiff =1.61, zDiff = 0, yDiff = -3.92, heading = -82.51 },
-		{ template = "object/static/structure/tatooine/debris_tatt_crate_metal_1.iff", xDiff =-2.18, zDiff = 0, yDiff = 1.27, heading = -12.03 },
-		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff =-1.2, zDiff = 0, yDiff = -4.84, heading = -20.05 },
-		{ template = "object/static/structure/tatooine/tent_house_tatooine_style_01.iff", xDiff =-2.46, zDiff = 0, yDiff = -2.15, heading = -140.38 },
-		{ template = "object/static/structure/tatooine/debris_tatt_drum_dented_1.iff", xDiff =0.32, zDiff = 0, yDiff = -3.04, heading = 9.74 },
-		{ template = "object/static/structure/general/trash_pile_s01.iff", xDiff =-3.64, zDiff = 0, yDiff = 2.997, heading = 156.99 },
-		{ template = "object/static/structure/tatooine/debris_tatt_crate_1.iff", xDiff =-2.3, zDiff = 0, yDiff = 1.28, heading = -110.58 },
-		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff =-4.51, zDiff = 0, yDiff = -4.41, heading = 39.53 },
-		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff =-5.42, zDiff = 0, yDiff = -1.45, heading = 99.69 },
-		{ template = "object/static/structure/tatooine/debris_tatt_crate_metal_1.iff", xDiff =1.92, zDiff = 0, yDiff = -1.88, heading = -12.03 },
-		{ template = "object/static/item/item_container_organic_food.iff", xDiff =-3.13, zDiff = 0, yDiff = 1.086, heading = 137.69 },
+		{ template = "object/tangible/furniture/all/frn_all_light_lamp_table_s03.iff", xDiff = 0.52, zDiff = 1.14, yDiff = -3.37, heading = 0 },
+		{ template = "object/tangible/camp/camp_crate_s1.iff", xDiff = -3.78, zDiff = 0, yDiff = 0.91, heading = -18.91 },
+		{ template = "object/weapon/ranged/pistol/pistol_dl44_metal.iff", xDiff = 0.13, zDiff = 1.17, yDiff = -2.9, heading = -9.74 },
+		{ template = "object/tangible/camp/camp_crate_s1.iff", xDiff = 1.74, zDiff = 0, yDiff = -2.84, heading = -80.214 },
+		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff = 3.74, zDiff = 0, yDiff = 2.42, heading = -47.74 },
+		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff = 2.04, zDiff = 0, yDiff = 1.55, heading = 0.39 },
+		{ template = "object/static/structure/general/camp_lawn_chair_s01.iff", xDiff = -0.26, zDiff = 0, yDiff = 5.28, heading = 111.15 },
+		{ template = "object/static/structure/general/campfire_fresh.iff", xDiff = 2.30, zDiff = 0, yDiff = 4.01, heading = 0 },
+		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff = 1.72, zDiff = 0, yDiff = 3.92, heading = 83.59 },
+		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff = 2.76, zDiff = 0, yDiff = 4.21, heading = 63.79 },
+		{ template = "object/static/structure/general/camp_spit_s01.iff", xDiff = 2.33, zDiff = 0, yDiff = 3.3, heading = -24.13 },
+		{ template = "object/static/structure/general/trash_pile_s01.iff", xDiff = -3.48, zDiff = 0, yDiff = 2.61, heading = -120.3 },
+		{ template = "object/static/structure/tatooine/debris_tatt_crate_1.iff", xDiff = 1.78, zDiff = 0, yDiff = -2.7, heading = 7.45 },
+		{ template = "object/static/structure/tatooine/debris_tatt_drum_dented_1.iff", xDiff = 1.61, zDiff = 0, yDiff = -3.92, heading = -82.51 },
+		{ template = "object/static/structure/tatooine/debris_tatt_crate_metal_1.iff", xDiff = -2.18, zDiff = 0, yDiff = 1.27, heading = -12.03 },
+		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff = -1.2, zDiff = 0, yDiff = -4.84, heading = -20.05 },
+		{ template = "object/static/structure/tatooine/tent_house_tatooine_style_01.iff", xDiff = -2.46, zDiff = 0, yDiff = -2.15, heading = -140.38 },
+		{ template = "object/static/structure/tatooine/debris_tatt_drum_dented_1.iff", xDiff = 0.32, zDiff = 0, yDiff = -3.04, heading = 9.74 },
+		{ template = "object/static/structure/general/trash_pile_s01.iff", xDiff = -3.64, zDiff = 0, yDiff = 2.997, heading = 156.99 },
+		{ template = "object/static/structure/tatooine/debris_tatt_crate_1.iff", xDiff = -2.3, zDiff = 0, yDiff = 1.28, heading = -110.58 },
+		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff = -4.51, zDiff = 0, yDiff = -4.41, heading = 39.53 },
+		{ template = "object/static/structure/general/camp_cot_s01.iff", xDiff = -5.42, zDiff = 0, yDiff = -1.45, heading = 99.69 },
+		{ template = "object/static/structure/tatooine/debris_tatt_crate_metal_1.iff", xDiff = 1.92, zDiff = 0, yDiff = -1.88, heading = -12.03 },
+		{ template = "object/static/item/item_container_organic_food.iff", xDiff = -3.13, zDiff = 0, yDiff = 1.086, heading = 137.69 },
+		{ template = "object/tangible/jedi/power_shrine_red.iff", xDiff = -25, zDiff = 0, yDiff = 25, heading = 0 },
+		{ template = "object/tangible/jedi/power_shrine.iff", xDiff = 25, zDiff = 0, yDiff = 25, heading = 0 },
+		{ template = "object/tangible/jedi/power_shrine_red.iff", xDiff = 25, zDiff = 0, yDiff = -25, heading = 0 },
+		{ template = "object/tangible/jedi/power_shrine.iff", xDiff = -25, zDiff = 0, yDiff = -25, heading = 0 },
 	},
 	waypointDescription = "@quest/force_sensitive/exit:exit_sum",
 	mobileList = {
 		{ template = "mellichae", minimumDistance = 3, maximumDistance = 6, referencePoint = 0 },
 		{ template = "daktar_bloodmoon", minimumDistance = 3, maximumDistance = 6, referencePoint = 0 },
-		{ template = "sith_shadow_mercenary", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
-		{ template = "sith_shadow_mercenary", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
-		{ template = "sith_shadow_mercenary", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
-		{ template = "sith_shadow_thug", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
-		{ template = "sith_shadow_thug", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
-		{ template = "sith_shadow_thug", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 }
+		{ template = "sith_shadow_mercenary", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 },
+		{ template = "sith_shadow_mercenary", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 },
+		{ template = "sith_shadow_thug", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 },
+		{ template = "sith_shadow_thug", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 }
 	},
-	despawnTime =  60* 60* 1000, -- 1 hour
+	despawnTime =  60 * 60 * 1000, -- 1 hour
 	activeAreaRadius = 72 -- Make sure we grab the entering of radius.
 }
-
--- Event handler for killing Mellichae and looting him.
-function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
-	if (pLootedCreature == nil or pLooter == nil) then
-		return 1
-	end
-
-	Logger:log("Mellichae Looted.", LT_INFO)
-
-	-- We need to see which player/group got loot rights...
-	local pInventory = SceneObject(pLootedCreature):getSlottedObject("inventory")
-
-	if (pInventory == nil) then
-		return 1
-	end
-
-	local ownerID = SceneObject(pInventory):getContainerOwnerID()
-
-	local looterID = SceneObject(pLooter):getObjectID()
-
-	local theaterID = readData(looterID .. self.taskName .. "theaterId")
-	local pTheater = getSceneObject(theaterID)
-
-	if (pTheater == nil) then
-		return 1
-	end
-
-	if (CreatureObject(pLooter):isGrouped()) then
-		looterID = CreatureObject(pLooter):getGroupID()
-	end
-
-	local ownedSpawn = SpawnMobiles.isFromSpawn(pTheater, MellichaeOutroTheater.taskName, pLootedCreature)
-
-	if (looterID == ownerID) and (ownedSpawn == true) then
-		createLoot(pInventory, "mellichae_outro", 0, true)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)
-		CreatureObject(pLooter):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
-		VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
-		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Red")
-		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Green")
-		FsOutro:setCurrentStep(pLooter, 4)
-	end
-
-	return 1
-
-end
 
 -- Event handler for the enter active area event.
 function MellichaeOutroTheater:onEnteredActiveArea(pPlayer, spawnedSithShadowsList)
@@ -102,41 +58,6 @@ function MellichaeOutroTheater:onEnteredActiveArea(pPlayer, spawnedSithShadowsLi
 		return
 	end
 
-	local playerID = SceneObject(pPlayer):getObjectID()
-
-	local theaterID = readData(playerID .. self.taskName .. "theaterId")
-
-	local pTheater = getSceneObject(theaterID)
-
-	if (pTheater == nil) then
-		return
-	end
-
-	local ownedSpawn = SpawnMobiles.isFromSpawn(pTheater, MellichaeOutroTheater.taskName, spawnedSithShadowsList[1])
-
-	-- Shouldn't be here...
-	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) == false) then
-		if (ownedSpawn == false) then
-			return
-		end
-	end
-
-	foreach(spawnedSithShadowsList, function(pMobile)
-		if (pMobile ~= nil) then
-			if (SceneObject(pMobile):getDisplayedName() ~= "Mellichae") then
-				AiAgent(pMobile):setDefender(pPlayer)
-			end
-
-			if (SceneObject(pMobile):getDisplayedName() == "Daktar Bloodmoon") then
-				local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
-				local firstName = CreatureObject(pPlayer):getFirstName()
-				greetingString:setTT(firstName)
-				spatialChat(pMobile, greetingString:_getObject()) -- %TT, You shall pay for your tresspass here - SOLDIERS - defend the crystals! Let no one leave here alive.
-			end
-		end
-	end)
-
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
 end
 
@@ -149,38 +70,87 @@ function MellichaeOutroTheater:onSuccessfulSpawn(pPlayer, spawnedSithShadowsList
 	VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
 
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
-	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
-	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[1])
-	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[2])
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onMellichaeKilled", spawnedSithShadowsList[1])
 
-	writeData(SceneObject(spawnedSithShadowsList[1]):getObjectID() .. ":mell:encounter:belongs:to", SceneObject(pPlayer):getObjectID())
-	writeData(SceneObject(spawnedSithShadowsList[2]):getObjectID() .. ":mell:encounter:belongs:to", SceneObject(pPlayer):getObjectID())
+	local mellichaeID = SceneObject(spawnedSithShadowsList[1]):getObjectID()
+	local daktarID = SceneObject(spawnedSithShadowsList[2]):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
-	for i=1,2 do
-		MellichaeOutroTheater:spawnScenePowerShrines(pPlayer, spawnedSithShadowsList[1], "red", i)
-		writeData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Red", i)
+	writeData(mellichaeID .. "questOwner", playerID)
+	writeData(daktarID .. "questOwner", playerID)
+	writeData(playerID .. ":daktar", daktarID)
+	writeData(playerID .. ":mellichae", mellichaeID)
 
-		MellichaeOutroTheater:spawnScenePowerShrines(pPlayer, spawnedSithShadowsList[1], "green", i)
-		writeData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Green", i)
+	self:setupPowerShrines(pPlayer)
+
+	createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, "")
+end
+
+function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
+	if (pMellichae == nil) then
+		return 1
 	end
 
+	local ownerID = readData(SceneObject(pMellichae):getObjectID() .. "questOwner")
+	local pOwner = getSceneObject(ownerID)
+
+	if (pOwner == nil) then
+		return 1
+	end
+
+	dropObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pOwner)
+	QuestManager.completeQuest(pOwner, QuestManager.quests.FS_THEATER_FINAL)
+	CreatureObject(pOwner):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pOwner, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
+	FsOutro:setCurrentStep(pOwner, 4)
+	createEvent(10 * 1000, "MellichaeOutroTheater", "finish", pOwner, "")
+
+	return 1
 end
 
 -- Handle the event PLAYERKILLED, 0 keeps, 1 does not keep observer.
 function MellichaeOutroTheater:onPlayerKilled(pPlayer, pKiller, nothing)
-	if (pPlayer == nil or pKiller == nil) then
+	if (pPlayer == nil or QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)) then
 		return 1
 	end
 
 	Logger:log("Player was killed.", LT_INFO)
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
-	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Red")
-	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Green")
-	FsOutro:startOldMan(pPlayer)
-	
-	self:finish()
+
+	createEvent(10 * 1000, "MellichaeOutroTheater", "finish", pPlayer, "")
+
 	return 1
+end
+
+function MellichaeOutroTheater:setupPowerShrines(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	for i = 1, #self.theater, 1 do
+		local objectID = readData(playerID .. self.taskName .. "theaterObject" .. i)
+		local pObject = getSceneObject(objectID)
+		if (pObject ~= nil) then
+			local color = nil
+			local crystalCount = 0
+			if (SceneObject(pObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine_red.iff") then
+				color = "red"
+				crystalCount = readData(playerID .. "redShrines")
+			elseif (SceneObject(pObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine.iff") then
+				color = "green"
+				crystalCount = readData(playerID .. "greenShrines")
+			end
+
+			if (color ~= nil) then
+				crystalCount = crystalCount + 1
+				TangibleObject(pObject):setMaxCondition(40000)
+				createObserver(OBJECTDESTRUCTION, self.taskName, "onPowerShrineDestroyed", pObject)
+				writeData(objectID .. "questOwner", playerID)
+				writeData(playerID .. color .. "Shrines", crystalCount)
+				writeData(playerID .. ":powershrines:" .. color .. ":" .. crystalCount, objectID)
+			end
+		end
+	end
 end
 
 -- Handle the event object destruction for the red shrines in the camp.
@@ -189,159 +159,217 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 		return 1
 	end
 
-	local ownerID = readData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
-
+	local ownerID = readData(SceneObject(pSceneObject):getObjectID() .. "questOwner")
 
 	if (SceneObject(pSceneObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine_red.iff") then
 		Logger:log("1 Red Shrine was destroyed.", LT_INFO)
-		local numOfShrines = readData(ownerID .. ":totalNum:Shrines:Red")
+		local numOfShrines = readData(ownerID .. "redShrines")
+		numOfShrines = numOfShrines - 1
 
-		if (numOfShrines ~= nil) then
-			writeData(ownerID .. ":totalNum:Shrines:Red", numOfShrines - 1)
-		end
+		writeData(ownerID .. "redShrines", numOfShrines)
+
+		deleteData(SceneObject(pSceneObject):getObjectID() .. "questOwner")
 		SceneObject(pSceneObject):destroyObjectFromWorld()
-		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
-		return 1
 
+		if (numOfShrines == 0) then
+			self:helpCrystal(pKiller, "red", ownerID)
+		end
 	elseif (SceneObject(pSceneObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine.iff") then
 		Logger:log("1 Green Shrine was destroyed.", LT_INFO)
-		local numOfShrines = readData(ownerID .. ":totalNum:Shrines:Green")
+		local numOfShrines = readData(ownerID .. "greenShrines")
+		numOfShrines = numOfShrines - 1
 
-		if (numOfShrines ~= nil) then
-			writeData(ownerID .. ":totalNum:Shrines:Green", numOfShrines - 1)
-		end
-		SceneObject(pSceneObject):destroyObjectFromWorld()
-		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
-		return 1
+		writeData(ownerID .. "greenShrines", numOfShrines)
 
-	end
-end
+		if (numOfShrines == 0) then
+			for i = 1, 2, 1 do
+				local redID = readData(ownerID .. ":powershrines:red:" .. i)
 
--- Handle the event damage done, if the shrines are still up then they will heal Mellichae/Daktar.
-function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
-	if (pObject == nil or pAttacker == nil) then
-		return 1
-	end
+				local pRed = getSceneObject(redID)
 
-	-- Due to how this observer is setup, we are only tracking red shrines, daktar, and mellichae.
-	-- Green shrines must be up for red healing, red must be up for Mellichae/Dak healing.
-
-	if (SceneObject(pObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine_red.iff") then
-		local creoOwnerId = readData(SceneObject(pObject):getObjectID() .. ":isShrineOwned:By")
-		local numOfShrines = readData(creoOwnerId .. ":totalNum:Shrines:Green")
-
-		if (numOfShrines ~= nil and numOfShrines > 0) then
-			TangibleObject(pObject):setConditionDamage(0)
-			SceneObject(pObject):playEffect("clienteffect/healing_healdamage.cef", "")
-			return 0
-		elseif (numOfShrines == nil or numOfShrines <= 0) then
-			return 1
-		end
-	elseif (SceneObject(pObject):isCreatureObject()) then -- Not a Shrine.
-		local creoOwnerId = readData(SceneObject(pObject):getObjectID() .. ":mell:encounter:belongs:to")
-		local numOfShrines = readData(creoOwnerId .. ":totalNum:Shrines:Red")
-
-		if (numOfShrines ~= nil and numOfShrines > 0 and damage > 0) then
-			CreatureObject(pObject):healDamage(damage, 0)
-			CreatureObject(pObject):healDamage(damage, 3)
-			CreatureObject(pObject):healDamage(damage, 6)
-			CreatureObject(pObject):playEffect("clienteffect/healing_healdamage.cef", "")
-			return 0
-		elseif (numOfShrines == nil or numOfShrines <= 0) then
-			if (SceneObject(pObject):getDisplayedName() == "Daktar Bloodmoon") then -- Only Daktar should taunt.
-				local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt3") -- %TT, You may have destroyed my power crystals, but now I will destroy you! SOLDIERS ATTACK!!!
-				local firstName = CreatureObject(pAttacker):getFirstName()
-				greetingString:setTT(firstName)
-				spatialChat(pObject, greetingString:_getObject())
-
-				-- Do the extra spawn of 6 more sith shadows, only on Daktar so they don't spawn twice.
-				for i=1,3 do
-					local zoneName = CreatureObject(pObject):getZoneName()
-					local randomDistance = getRandomNumber(32)
-					local x = CreatureObject(pObject):getWorldPositionX() + randomDistance
-					local y = CreatureObject(pObject):getWorldPositionY() + randomDistance
-					local z = getTerrainHeight(pObject, x, y)
-
-					local pMobile = spawnMobile(zoneName, "sith_shadow_mercenary", 0, x, z, y, 0, 0)
-					if (pMobile ~= nil and SceneObject(pMobile):isAiAgent()) then
-						AiAgent(pMobile):setDefender(pAttacker)
-					end
-
-					x = x + randomDistance
-					y = y + randomDistance
-					z = getTerrainHeight(pObject, x, y)
-					pMobile = spawnMobile(zoneName,"sith_shadow_thug", 0, x, z, y, 0, 0)
-					if (pMobile ~= nil and SceneObject(pMobile):isAiAgent()) then
-						AiAgent(pMobile):setDefender(pAttacker)
-					end
-
+				if (pRed ~= nil) then
+					SceneObject(pRed):playEffect("clienteffect/combat_lightning_rifle_hit.cef", "")
 				end
 			end
-			return 1
+
+			self:helpCrystal(pKiller, "green", ownerID)
+		end
+
+		deleteData(SceneObject(pSceneObject):getObjectID() .. "questOwner")
+		SceneObject(pSceneObject):destroyObjectFromWorld()
+	end
+
+	return 1
+end
+
+function MellichaeOutroTheater:helpCrystal(pKiller, color, ownerID)
+	local pOwner = getSceneObject(ownerID)
+
+	if (pOwner == nil) then
+		return
+	end
+
+	local pTheater = self:getTheaterObject(pOwner)
+
+	if (pTheater == nil) then
+		return
+	end
+
+	local daktarID = readData(ownerID .. ":daktar")
+	local pDaktar = getSceneObject(daktarID)
+
+	if (pDaktar ~= nil and not CreatureObject(pDaktar):isDead()) then
+		local greetingString
+
+		if (color == "green") then
+			greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
 		else
-			return 0
+			greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt2")
+		end
+
+		local firstName = CreatureObject(pKiller):getFirstName()
+		greetingString:setTT(firstName)
+		spatialChat(pDaktar, greetingString:_getObject())
+		AiAgent(pDaktar):setDefender(pKiller)
+	end
+
+	if (color == "red") then
+		local mellichaeID = readData(ownerID .. ":mellichae")
+		local pMellichae = getSceneObject(mellichaeID)
+
+		if (pMellichae ~= nil and not CreatureObject(pMellichae):isDead()) then
+			local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt3")
+			local firstName = CreatureObject(pKiller):getFirstName()
+			greetingString:setTT(firstName)
+			spatialChat(pMellichae, greetingString:_getObject())
+			AiAgent(pMellichae):setDefender(pKiller)
+		end
+	end
+
+	local mobTemplate
+
+	if (color == "green") then
+		mobTemplate = "sith_shadow_thug"
+	else
+		mobTemplate = "sith_shadow_mercenary"
+	end
+
+	for i = 1, 4, 1 do
+		local zoneName = CreatureObject(pKiller):getZoneName()
+		local xLoc = SceneObject(pTheater):getWorldPositionX() + (-10 + getRandomNumber(20))
+		local yLoc = SceneObject(pTheater):getWorldPositionY() + (-10 + getRandomNumber(20))
+		local zLoc = getTerrainHeight(pKiller, xLoc, yLoc)
+
+		local pMobile = spawnMobile(zoneName, mobTemplate, 0, xLoc, zLoc, yLoc, 0, 0)
+
+		if (pMobile ~= nil) then
+			AiAgent(pMobile):setDefender(pKiller)
 		end
 	end
 end
 
--- This is called from the base module to clean up anything extra...
-function MellichaeOutroTheater:onTheaterDespawn(pPlayer)
+function MellichaeOutroTheater:doHealingPulse(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
 
-	local pShrine = nil
+	local pTheater = self:getTheaterObject(pPlayer)
 
-	for i=1,2 do
-		local shrineIDRed = readData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. "red" .. ":" .. tostring(i))
-		local pShrineR = getSceneObject(shrineIDRed)
-
-		if (pShrineR ~= nil) then
-			SceneObject(pShrineR):destroyObjectFromWorld()
-			SceneObject(pShrineR):destroyObjectFromDatabase()
-			deleteData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. "red" .. ":" .. tostring(i))
-			deleteData(shrineIDRed .. ":isShrineOwned:By")
-		end
-
-		local shrineIDGreen = readData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. "green" .. ":" .. tostring(i))
-		local pShrineG = getSceneObject(shrineIDGreen)
-
-		if (pShrineG ~= nil) then
-			SceneObject(pShrineG):destroyObjectFromWorld()
-			SceneObject(pShrineG):destroyObjectFromDatabase()
-			deleteData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. "green" .. ":" .. tostring(i))
-			deleteData(shrineIDGreen .. ":isShrineOwned:By")
-		end
-
-	end
-end
-
--- For spawning the extra shrine scene objects.
-function MellichaeOutroTheater:spawnScenePowerShrines(pPlayer, pMellichae, color, i)
-	if (pMellichae == nil or pPlayer == nil) then
+	if (pTheater == nil) then
 		return
 	end
 
-	local planet = SceneObject(pMellichae):getZoneName()
-	local theX = SceneObject(pMellichae):getWorldPositionX()
-	local theY = SceneObject(pMellichae):getWorldPositionY()
-	local boundaryCrystalsLoc = getSpawnPoint(planet, theX, theY, 32, 64, true)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local numGreen = readData(playerID .. "greenShrines")
+	local numRed = readData(playerID .. "redShrines")
+	local healedSomething = false
 
-	if (color == "red") then
-		local pShrine = spawnSceneObject(planet, "object/tangible/jedi/power_shrine_red.iff", boundaryCrystalsLoc[1], boundaryCrystalsLoc[2], boundaryCrystalsLoc[3], 0, 0)
-		TangibleObject(pShrine):setMaxCondition(40000)
-		createObserver(OBJECTDESTRUCTION, self.taskName, "onPowerShrineDestroyed", pShrine)
-		createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", pShrine)
-		writeData(SceneObject(pShrine):getObjectID() .. ":isShrineOwned:By", SceneObject(pPlayer):getObjectID())
-		writeData(SceneObject(pPlayer):getObjectID() .. ":powershrines:" .. color .. ":" .. tostring(i), SceneObject(pShrine):getObjectID())
-	elseif (color == "green") then
-		local pShrine = spawnSceneObject(planet, "object/tangible/jedi/power_shrine.iff", boundaryCrystalsLoc[1], boundaryCrystalsLoc[2], boundaryCrystalsLoc[3], 0, 0)
-		TangibleObject(pShrine):setMaxCondition(40000)
-		createObserver(OBJECTDESTRUCTION, self.taskName, "onPowerShrineDestroyed", pShrine)
-		writeData(SceneObject(pShrine):getObjectID() .. ":isShrineOwned:By", SceneObject(pPlayer):getObjectID())
-		writeData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. color .. ":" .. tostring(i), SceneObject(pShrine):getObjectID())
+	local daktarID = readData(playerID .. ":daktar")
+	local pDaktar = getSceneObject(daktarID)
+
+	if (pDaktar ~= nil and not CreatureObject(pDaktar):isDead() and numRed > 0) then
+		self:healToFull(pDaktar)
+		healedSomething = true
 	end
 
+	local mellichaeID = readData(playerID .. ":mellichae")
+	local pMellichae = getSceneObject(mellichaeID)
+
+	if (pMellichae ~= nil and not CreatureObject(pMellichae):isDead() and numRed > 0) then
+		self:healToFull(pMellichae)
+		healedSomething = true
+	end
+
+	for i = 1, 2, 1 do
+		local redID = readData(playerID .. ":powershrines:red:" .. i)
+
+		local pRed = getSceneObject(redID)
+
+		if (pRed ~= nil and numGreen > 0) then
+			self:healToFull(pRed)
+			healedSomething = true
+		end
+	end
+
+	if (healedSomething) then
+		createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, "")
+	end
+end
+
+function MellichaeOutroTheater:healToFull(pObj)
+	if (pObj == nil) then
+		return
+	end
+
+	SceneObject(pObj):playEffect("clienteffect/healing_healdamage.cef", "")
+
+	if (SceneObject(pObj):isCreatureObject()) then
+		for i = 0, 6, 3 do
+			local maxHam = CreatureObject(pObj):getMaxHAM(i)
+			CreatureObject(pObj):setHAM(i, maxHam)
+		end
+	else
+		TangibleObject(pObj):setConditionDamage(0)
+	end
+end
+
+function MellichaeOutroTheater:onTheaterDespawn(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	for i = 1, 2, 1 do
+		local shrineID = readData(playerID .. ":powershrines:red:" .. i)
+
+		local pShrine = getSceneObject(shrineID)
+
+		if (pShrine ~= nil) then
+			SceneObject(pShrine):destroyObjectFromWorld()
+		end
+
+		deleteData(shrineID .. "questOwner")
+		deleteData(playerID .. ":powershrines:red:" .. i)
+
+		shrineID = readData(playerID .. ":powershrines:green:" .. i)
+
+		pShrine = getSceneObject(shrineID)
+
+		if (pShrine ~= nil) then
+			SceneObject(pShrine):destroyObjectFromWorld()
+		end
+
+		deleteData(shrineID .. "questOwner")
+		deleteData(playerID .. ":powershrines:green:" .. i)
+	end
+
+	deleteData(playerID .. "redShrines")
+	deleteData(playerID .. "greenShrines")
+
+	local daktarID = readData(playerID .. ":daktar")
+	deleteData(daktarID .. "questOwner")
+	deleteData(playerID .. ":daktar")
+
+	local mellichaeID = readData(playerID .. ":mellichae")
+	deleteData(mellichaeID .. "questOwner")
+	deleteData(playerID .. ":mellichae")
 end
 
 return MellichaeOutroTheater

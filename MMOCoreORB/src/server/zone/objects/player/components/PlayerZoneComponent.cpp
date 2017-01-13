@@ -78,6 +78,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 
 		player->setMovementCounter(0);
 
+		player->notifyObservers(ObserverEventType::ZONESWITCHED);
 	}
 
 	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
