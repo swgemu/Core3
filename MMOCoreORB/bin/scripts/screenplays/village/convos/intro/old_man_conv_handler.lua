@@ -31,6 +31,7 @@ function oldManIntroConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 		MellichaeOutroTheater:start(pPlayer)
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 		FsOutro:setCurrentStep(pPlayer, 3)
+		createObserver(ZONESWITCHED, "FsOutro", "onZoneSwitched", pPlayer)
 	end
 
 	return pConvScreen
