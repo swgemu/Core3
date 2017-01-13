@@ -30,7 +30,7 @@ dark_side_savage = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 4000000},
-				{group = "crystals_poor", chance = 500000},
+				{group = "power_crystals", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "holocron_dark", chance = 500000},
 				{group = "holocron_light", chance = 500000},
