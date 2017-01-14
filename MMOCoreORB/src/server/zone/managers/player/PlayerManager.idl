@@ -38,6 +38,7 @@ include server.zone.managers.player.QuestInfo;
 include server.zone.objects.player.badges.Badge;
 include system.util.Vector;
 include system.lang.ref.Reference;
+include server.zone.managers.player.XpBonusList;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -53,6 +54,9 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredDroids;
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
+	
+	@dereferenced
+	protected XpBonusList xpBonusList;
 
 	@dereferenced
 	private SortedVector<int> veteranRewardMilestones;
@@ -480,4 +484,7 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	@arg1preLocked
 	public native void doPvpDeathRatingUpdate(CreatureObject player, ThreatMap threatMap);
+	
+	private native void loadXpBonusList();
+	public native float getSpeciesXpModifier(final string species, final string xpType);
 }

@@ -115,6 +115,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadStartingLocations();
 	loadQuestInfo();
 	loadPermissionLevels();
+	loadXpBonusList();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -231,6 +232,52 @@ void PlayerManagerImplementation::loadStartingLocations() {
 	delete iffStream;
 
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
+}
+
+void PlayerManagerImplementation::loadXpBonusList() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/xp/species.iff");
+
+	if (iffStream == NULL) {
+		info("Couldn't load species xp bonuses.", true);
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalColumns(); i++) {
+		VectorMap<String, int> bonusList;
+		String speciesName = dtiff.getColumnNameByIndex(i);
+
+		for (int j = 0; j < dtiff.getTotalRows(); j++) {
+			DataTableRow* row = dtiff.getRow(j);
+			String columnData = "";
+			row->getCell(i)->getValue(columnData);
+
+			if (columnData != "") {
+				StringTokenizer callbackString(columnData);
+				callbackString.setDelimeter(":");
+
+				String xpType = "";
+				int bonusMod = 0;
+
+				callbackString.getStringToken(xpType);
+				bonusMod = callbackString.getIntToken();
+
+				if (xpType == "" or bonusMod == 0)
+					continue;
+
+				bonusList.put(xpType, bonusMod);
+			}
+		}
+
+		if (bonusList.size() > 0)
+			xpBonusList.put(speciesName, bonusList);
+	}
+
+	info("Loaded xp bonuses for " + String::valueOf(xpBonusList.size()) + " species.", true);
 }
 
 void PlayerManagerImplementation::loadQuestInfo() {
@@ -1450,7 +1497,12 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 	if (playerObject == NULL)
 		return;
 
-	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
+	float speciesModifier = 1.f;
+
+	if (amount > 0)
+		speciesModifier = getSpeciesXpModifier(player->getSpeciesName(), xpType);
+
+	int xp = playerObject->addExperience(xpType, (int) (amount * speciesModifier * localMultiplier * globalExpMultiplier));
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
@@ -5243,4 +5295,16 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		player->sendSystemMessage(toVictim);
 	}
+}
+
+float PlayerManagerImplementation::getSpeciesXpModifier(const String& species, const String& xpType) {
+	int bonus = xpBonusList.get(species).get(xpType);
+
+	if (bonus == -1)
+		bonus = xpBonusList.get(species).get("all");
+
+	if (bonus == -1)
+		return 1.f;
+
+	return (100.f + bonus) / 100.f;
 }
