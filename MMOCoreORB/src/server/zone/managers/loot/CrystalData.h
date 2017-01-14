@@ -117,7 +117,7 @@ public:
 	}
 
 	inline int getMaxActionSac() {
-		return minDamage;
+		return maxActionSac;
 	}
 
 	inline int getMinMindSac() {
