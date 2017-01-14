@@ -196,6 +196,8 @@ int LuaTangibleObject::isCovert(lua_State* L) {
 int LuaTangibleObject::setConditionDamage(lua_State* L) {
 	float damage = lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setConditionDamage(damage, true);
 
 	return 0;
