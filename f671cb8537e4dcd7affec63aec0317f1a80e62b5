@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_6ed80f54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-14T02:27:51Z",
+      "side": 1,
+      "message": "you need to delete the 6 \"questOwner\" datas (2 mobs and 4 crystals)",
+      "revId": "f671cb8537e4dcd7affec63aec0317f1a80e62b5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
