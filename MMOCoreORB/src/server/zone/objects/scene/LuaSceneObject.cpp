@@ -151,6 +151,8 @@ int LuaSceneObject::switchZone(lua_State* L) {
 	float x = lua_tonumber(L, -4);
 	String planet = lua_tostring(L, -5);
 
+	Locker locker(realObject);
+
 	realObject->switchZone(planet, x, z, y, parentid);
 
 	return 0;
