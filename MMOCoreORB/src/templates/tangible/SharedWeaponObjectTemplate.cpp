@@ -216,7 +216,7 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	healthAttackCost = templateData->getIntField("healthAttackCost");
 	actionAttackCost = templateData->getIntField("actionAttackCost");
 	mindAttackCost = templateData->getIntField("mindAttackCost");
-	forceCost = templateData->getIntField("forceCost");
+	forceCost = templateData->getFloatField("forceCost");
 
 	pointBlankAccuracy = templateData->getIntField("pointBlankAccuracy");
 	pointBlankRange = templateData->getIntField("pointBlankRange");
