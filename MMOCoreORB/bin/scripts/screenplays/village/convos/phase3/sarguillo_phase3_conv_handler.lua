@@ -12,7 +12,7 @@ function villageSarguilloPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pCon
 		return convoTemplate:getScreen("intro_not_available")
 	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_completed_other_quest")
-	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_INTRO)) then
+	elseif (FsCounterStrike:isOnQuest(pPlayer)) then
 		return convoTemplate:getScreen("intro")
 	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_has_other_quest")
