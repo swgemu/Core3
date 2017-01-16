@@ -360,6 +360,8 @@ int LuaAiAgent::isWaiting(lua_State* L) {
 }
 
 int LuaAiAgent::stopWaiting(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->stopWaiting();
 
 	return 0;
