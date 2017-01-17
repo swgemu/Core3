@@ -43,7 +43,6 @@
 
 object_tangible_loot_quest_force_sensitive_camp_waypoint_datapad = object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad:new {
 	gameObjectType = 8249,
-	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/camp_waypoint_datapad.iff")

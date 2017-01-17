@@ -34,6 +34,15 @@ function FsPhase3:failActiveTasks(pPlayer, loggingIn)
 		end
 	end
 
+	if QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_KILL5_GUARDS) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ENSURE_CAPTURE) then
+		local playerID = SceneObject(pPlayer):getObjectID()
+		local playerTheaterID = readData(playerID .. ":csTheater")
+		
+		if (playerTheaterID == 0 or writeData(playerTheaterID .. ":attackerID") ~= playerID) then
+			FsCounterStrike:resetPlayerToStart(pPlayer)
+		end
+	end
+
 	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ESCORT_COMMANDER_PRI)) then
 		FsCounterStrike:handleCommanderAbandoned(pPlayer)
 	end

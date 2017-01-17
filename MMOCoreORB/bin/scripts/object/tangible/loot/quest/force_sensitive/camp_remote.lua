@@ -44,7 +44,6 @@
 object_tangible_loot_quest_force_sensitive_camp_remote = object_tangible_loot_quest_force_sensitive_shared_camp_remote:new {
 	objectMenuComponent = "FsCampRemoteMenuComponent",
 	gameObjectType = 8249,
-	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_camp_remote, "object/tangible/loot/quest/force_sensitive/camp_remote.iff")
