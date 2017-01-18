@@ -38,7 +38,7 @@ function FsPhase3:failActiveTasks(pPlayer, loggingIn)
 		local playerID = SceneObject(pPlayer):getObjectID()
 		local playerTheaterID = readData(playerID .. ":csTheater")
 		
-		if (playerTheaterID == 0 or writeData(playerTheaterID .. ":attackerID") ~= playerID) then
+		if (playerTheaterID == 0 or readData(playerTheaterID .. ":attackerID") ~= playerID) then
 			FsCounterStrike:resetPlayerToStart(pPlayer)
 		end
 	end
