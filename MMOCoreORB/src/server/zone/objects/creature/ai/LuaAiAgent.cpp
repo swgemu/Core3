@@ -338,6 +338,8 @@ int LuaAiAgent::setLevel(lua_State* L) {
 int LuaAiAgent::setWait(lua_State* L) {
 	float seconds = lua_tonumber(L, -1);
 
+  	Locker locker(realObject);
+  
 	realObject->setWait((int)(seconds*1000));
 
 	return 0;
