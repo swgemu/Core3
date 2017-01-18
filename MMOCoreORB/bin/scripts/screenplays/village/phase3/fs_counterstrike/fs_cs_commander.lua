@@ -276,7 +276,7 @@ function FsCsCommander:handleCommanderEscorterFailure(pPlayer, pCommander)
 		end
 
 		AiAgent(pCommander):setAiTemplate("manualescort")
-		self:doRun(pCommander)
+		createEvent(10, "FsCsCommander", "doRun", pCommander, "")
 		createEvent(self.runAwayTime * 1000, "FsCsCommander", "runAwaySuccessful", pCommander, "")
 		writeData(commanderID .. ":canBeRecaptured", 1)
 		CreatureObject(pShieldKiller):sendSystemMessage("@fs_quest_village:commander_is_free")
