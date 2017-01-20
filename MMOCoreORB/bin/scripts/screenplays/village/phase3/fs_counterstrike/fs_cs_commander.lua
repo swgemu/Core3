@@ -203,7 +203,7 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 		return 1
 	end
 
-	if (shieldKillerID ~= escorterID) then
+	if (shieldKillerID ~= escorterID and self:isOnQuest(pShieldKiller)) then
 		teamTurnin = true
 	end
 
