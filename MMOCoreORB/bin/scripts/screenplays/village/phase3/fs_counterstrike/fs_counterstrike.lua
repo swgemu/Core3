@@ -287,6 +287,10 @@ function FsCounterStrike:doPhaseChangeFail(pPlayer)
 end
 
 function FsCounterStrike:completeQuest(pPlayer, teamComplete)
+	if (not self:isOnQuest(pPlayer)) then
+		return
+	end
+	
 	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ENSURE_CAPTURE)) then
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CS_ENSURE_CAPTURE)
 	end

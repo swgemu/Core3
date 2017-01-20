@@ -203,7 +203,7 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 		return 1
 	end
 
-	if (shieldKillerID ~= escorterID) then
+	if (shieldKillerID ~= escorterID and self:isOnQuest(pShieldKiller)) then
 		teamTurnin = true
 	end
 
@@ -440,10 +440,11 @@ end
 
 function FsCsCommander:destroyCommanderWaypoint(pPlayer)
 	local waypointID = readData(SceneObject(pPlayer):getObjectID() .. ":village:csCommanderWaypoint")
-	local pWaypoint = getSceneObject(waypointID)
 
-	if (pWaypoint ~= nil) then
-		SceneObject(pWaypoint):destroyObjectFromWorld()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):removeWaypoint(waypointID, true)
 	end
 
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":village:csCommanderWaypoint")
