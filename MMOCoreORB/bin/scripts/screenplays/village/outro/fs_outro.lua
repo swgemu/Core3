@@ -73,6 +73,10 @@ function FsOutro:onZoneSwitched(pPlayer)
 	if (not self:isOnOutro(pPlayer)) then
 		return 1
 	end
+	
+	if (SceneObject(pPlayer):getZoneName() ~= readScreenPlayData(pPlayer, "FsOutro", "mellichaePlanet")) then
+		return 0
+	end
 
 	local curStep = self:getCurrentStep(pPlayer)
 

@@ -28,6 +28,7 @@ function oldManIntroConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 	elseif screenID == "where_camp" then
 		OldManOutroEncounter:scheduleDespawnOfOldMan(pPlayer)
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
+		writeScreenPlayData(pPlayer, "FsOutro", "mellichaePlanet", CreatureObject(pPlayer):getZoneName())
 		MellichaeOutroTheater:start(pPlayer)
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 		FsOutro:setCurrentStep(pPlayer, 3)
