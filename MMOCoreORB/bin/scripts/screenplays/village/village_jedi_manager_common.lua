@@ -186,7 +186,7 @@ function VillageJediManagerCommon.getLearnedForceSensitiveBranches(pPlayer)
 	local branchesLearned = 0
 
 	for i = 1, #VillageJediManagerCommon.forceSensitiveBranches, 1 do
-		if (CreatureObject(pPlayer):hasSkill(VillageJediManagerCommon.forceSensitiveBranches[i]) .. "_04") then
+		if (CreatureObject(pPlayer):hasSkill(VillageJediManagerCommon.forceSensitiveBranches[i] .. "_04")) then
 			branchesLearned = branchesLearned + 1
 		end
 	end
