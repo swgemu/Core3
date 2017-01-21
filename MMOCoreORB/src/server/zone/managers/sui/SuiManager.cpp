@@ -837,7 +837,7 @@ void SuiManager::sendTransferBox(SceneObject* usingObject, SceneObject* player, 
 	}
 }
 
-int32 SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, const String& play, const String& callback) {
+int32 SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, const String& play, const String& callback, unsigned int windowType) {
 
 	if (pageData == NULL)
 		return 0;
@@ -848,7 +848,7 @@ int32 SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, c
 	PlayerObject* playerObject = creature->getPlayerObject();
 
 	if (playerObject != NULL) {
-		ManagedReference<SuiBoxPage*> boxPage = new SuiBoxPage(creature, pageData, 0x00);
+		ManagedReference<SuiBoxPage*> boxPage = new SuiBoxPage(creature, pageData, windowType);
 		boxPage->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
 		creature->sendMessage(boxPage->generateMessage());
 		playerObject->addSuiBox(boxPage);

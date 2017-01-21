@@ -13,12 +13,21 @@ SuiEventType = {
 	SET_numEventTypes = 0x0B,
 }
 
+SuiWindowType = {
+	FS_EXP_CONVERT = 1042
+}
+
 SuiTemplate = {}
 SuiTemplate.new = function (templateName)
 	local self = {}
 	local luaCallback = {}
+	local windowType = 0
 
 	local suiPageData = LuaSuiPageData(templateName)
+
+	self.setWindowType = function (type)
+		windowType = type
+	end
 
 	self.setForceCloseDistance = function (distance)
 		suiPageData:setForceCloseDistance(distance)
@@ -86,7 +95,7 @@ SuiTemplate.new = function (templateName)
 		end
 
 		local suiManager = LuaSuiManager()
-		return suiManager:sendSuiPage(pPlayer, pPageData, luaCallback.play, luaCallback.callback)
+		return suiManager:sendSuiPage(pPlayer, pPageData, luaCallback.play, luaCallback.callback, windowType)
 	end
 
 	return self

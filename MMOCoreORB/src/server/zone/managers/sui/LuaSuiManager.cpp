@@ -31,17 +31,18 @@ LuaSuiManager::~LuaSuiManager(){
 }
 
 int LuaSuiManager::sendSuiPage(lua_State* L) {
-	if (lua_gettop(L) - 1 < 4) {
+	if (lua_gettop(L) - 1 < 5) {
 		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendSuiPage");
 		return 0;
 	}
 
-	String callback = lua_tostring(L, -1);
-	String play = lua_tostring(L, -2);
-	SuiPageData* page = (SuiPageData*) lua_touserdata(L, -3);
-	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -4);
+	unsigned int windowType = lua_tonumber(L, -1);
+	String callback = lua_tostring(L, -2);
+	String play = lua_tostring(L, -3);
+	SuiPageData* page = (SuiPageData*) lua_touserdata(L, -4);
+	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -5);
 
-	int32 pageId = realObject->sendSuiPage(creo, page, play, callback);
+	int32 pageId = realObject->sendSuiPage(creo, page, play, callback, windowType);
 
 	lua_pushinteger(L, pageId);
 

@@ -7,264 +7,312 @@ require("screenplays.screenplay")
 -- 0: Does NOT qualify for branch unlock.
 -- 1: Qualifies for branch unlock, not unlocked. NOTE: This only applies to Hologrinder boxes.
 -- 2: Branch Unlocked.
--- 4: Branch Mastered.
 
-
--- Pulled from "quest/force_sensitive/utils.stf"
-local unlockableFSBranches = {
-	FSCombatProwess1 = {unlockString = "Combat Prowess -- Ranged Accuracy", topBox = "force_sensitive_combat_prowess_ranged_accuracy_04"},
-	FSCombatProwess2 = {unlockString = "Combat Prowess -- Ranged Speed", topBox = "force_sensitive_combat_prowess_ranged_speed_04"},
-	FSCombatProwess3 = {unlockString = "Combat Prowess -- Melee Accuracy", topBox = "force_sensitive_combat_prowess_melee_accuracy_04"},
-	FSCombatProwess4 = {unlockString = "Combat Prowess -- Melee Speed", topBox = "force_sensitive_combat_prowess_melee_speed_04"},
-	FSCraftingMastery1 = {unlockString = "Crafting Mastery -- Experimentation", topBox = "force_sensitive_crafting_mastery_experimentation_04"},
-	FSCraftingMastery2 = {unlockString = "Crafting Mastery -- Assembly", topBox = "force_sensitive_crafting_mastery_assembly_04"},
-	FSCraftingMastery3 = {unlockString = "Crafting Mastery -- Repair", topBox = "force_sensitive_crafting_mastery_repair_04"},
-	FSCraftingMastery4 = {unlockString = "Crafting Mastery -- Technique", topBox = "force_sensitive_crafting_mastery_technique_04"},
-	FSEnhancedReflexes1 = {unlockString = "Enhanced Reflexes -- Ranged Defense", topBox = "force_sensitive_enhanced_reflexes_ranged_defense_04"},
-	FSEnhancedReflexes2 = {unlockString = "Enhanced Reflexes -- Melee Defense", topBox = "force_sensitive_enhanced_reflexes_melee_defense_04"},
-	FSEnhancedReflexes3 = {unlockString = "Enhanced Reflexes -- Vehicle Control", topBox = "force_sensitive_enhanced_reflexes_vehicle_control_04"},
-	FSEnhancedReflexes4 = {unlockString = "Enhanced Reflexes -- Survival", topBox = "force_sensitive_enhanced_reflexes_survival_04"},
-	FSHeightenedSenses1 = {unlockString = "Heightened Senses -- Healing", topBox = "force_sensitive_heightened_senses_healing_04"},
-	FSHeightenedSenses2 = {unlockString = "Heightened Senses -- Surveying", topBox = "force_sensitive_heightened_senses_surveying_04"},
-	FSHeightenedSenses3 = {unlockString =	"Heightened Senses -- Persuasion", topBox = "force_sensitive_heightened_senses_persuasion_04"},
-	FSHeightenedSenses4 = {unlockString =	"Heightened Senses -- Luck", topBox = "force_sensitive_heightened_senses_luck_04"}
+ExperienceConverter = ScreenPlay:new {
+	xpConversion = {
+		combat = {
+			{ "bountyhunter", 5 },
+			{ "combat_general", 3 },
+			{ "combat_meleespecialize_onehand", 30 },
+			{ "combat_meleespecialize_polearm", 30 },
+			{ "combat_meleespecialize_twohand", 30 },
+			{ "combat_meleespecialize_unarmed", 30 },
+			{ "combat_rangedspecialize_carbine", 30 },
+			{ "combat_rangedspecialize_heavy", 30 },
+			{ "combat_rangedspecialize_pistol", 30 },
+			{ "combat_rangedspecialize_rifle", 30 },
+			{ "squadleader", 90 }
+		},
+		senses = {
+			{ "bio_engineer_dna_harvesting", 3 },
+			{ "camp", 5 },
+			{ "creaturehandler", 9 },
+			{ "dance", 10 },
+			{ "entertainer_healing", 10 },
+			{ "imagedesigner", 7 },
+			{ "medical", 10 },
+			{ "merchant", 4 },
+			{ "music", 10 },
+			{ "political", 3 },
+			{ "resource_harvesting_inorganic", 10 },
+			{ "scout", 8 },
+			{ "slicing", 3 },
+			{ "trapping", 25 },
+		},
+		reflex = {
+			{ "bountyhunter", 5 },
+			{ "combat_general", 30 },
+			{ "combat_meleespecialize_onehand", 30 },
+			{ "combat_meleespecialize_polearm", 30 },
+			{ "combat_meleespecialize_twohand", 30 },
+			{ "combat_meleespecialize_unarmed", 30 },
+			{ "combat_rangedspecialize_carbine", 30 },
+			{ "combat_rangedspecialize_heavy", 30 },
+			{ "combat_rangedspecialize_pistol", 30 },
+			{ "combat_rangedspecialize_rifle", 30 },
+			{ "squadleader", 90 }
+		},
+		crafting = {
+			{ "crafting_bio_engineer_creature", 4 },
+			{ "crafting_clothing_armor", 5 },
+			{ "crafting_clothing_general", 5 },
+			{ "crafting_droid_general", 5 },
+			{ "crafting_food_general", 5 },
+			{ "crafting_general", 8 },
+			{ "crafting_medicine_general", 5 },
+			{ "crafting_spice", 5 },
+			{ "crafting_structure_general", 35 },
+			{ "crafting_weapons_general", 5 }
+		}
+	}
 }
 
--- These are the 3 types of FS experience for regex searches, full strings not needed for each type, just least specific.
-local XpCombat =
-	{
-		{"combat_general", 3},
-		{"squadleader", 90},
-		{"bountyhunter", 1},
-		{"combat_melee", 30},
-		{"combat_ranged", 30}
-	}
-
-local XpSenses =
-	{
-		{"bio_engineer_dna_harvesting", 3},
-		{"political", 3},
-		{"slicing",  3},
-		{"merchant",  4},
-		{"resource_harvesting_inorganic",  10},
-		{"imagedesigner", 7},
-		{"scout",  8},
-		{"creaturehandler",  9},
-		{"dance",  10},
-		{"music",  10},
-		{"entertainer_healing",  10},
-		{"camp",  10},
-		{"medical",  10},
-		{"trapping",  25},
-	}
-
-local XpCrafting =
-	{
-		{"crafting_bio_engineer_creature",  4},
-		{"crafting_bio_engineer_tissue",  5},
-		{"crafting_c", 5},
-		{"crafting_d", 5},
-		{"crafting_f", 5},
-		{"crafting_m", 5},
-		{"crafting_sc", 5},
-		{"crafting_sp", 5},
-		{"crafting_w", 5},
-		{"crafting_general", 8},
-		{"crafting_structure_general", 35}
-	}
-
-ExperienceConverter = ScreenPlay:new {}
-
--- Since the logic flow of the conversation calls set always before get, it should work, but just in case...
-function ExperienceConverter:setSuiTransferExperienceSelection(var, oid)
-	if (readStringData("suiTransferExperienceSelection:" .. oid) ~= nil) then
-		deleteStringData("suiTransferExperienceSelection:"  .. oid)
-	end
-	if (var ~= nil) then
-		writeStringData("suiTransferExperienceSelection:"  .. oid, var)
-	end
-end
-
-function ExperienceConverter:getSuiTransferExperienceSelection(oid)
-	return readStringData("suiTransferExperienceSelection:"  .. oid)
-end
-
-function ExperienceConverter:deleteSuiTransferExperienceSelection(oid)
-	return deleteStringData("suiTransferExperienceSelection:"  .. oid)
-end
-
-
-function ExperienceConverter:setSuiTransferExperienceType(var, oid)
-	if (readData("suiTransferExperienceType:" .. oid) ~= nil) then
-		deleteData("suiTransferExperienceType:"  .. oid)
-	end
-	if (var ~= nil) then
-		writeData("suiTransferExperienceType:"  .. oid, var)
-	end
-end
-
-function ExperienceConverter:getSuiTransferExperienceType(oid)
-	return readData("suiTransferExperienceType:"  .. oid)
-end
-
-function ExperienceConverter:deleteSuiTransferExperienceType(oid)
-	return deleteData("suiTransferExperienceType:"  .. oid)
-end
-
--- See if the player qualifies for the conversion.
--- @param pPlayer pointer to the creature object of the player.
--- @return a boolean.
-function ExperienceConverter.qualifiesForConversation(pPlayer)
-	-- TODO: Research why Paemos wouldn't converse with player.
+function ExperienceConverter:getBranchLearnList(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
-	return true
-end
+	local branchList = "\nNothing"
+	local hasBranch = false
+	for i = 1, #VillageJediManagerCommon.forceSensitiveBranches, 1 do
+		local branchName = VillageJediManagerCommon.forceSensitiveBranches[i]
 
--- Get the next unlockable branches that the player qualifies for.
--- @param pPlayer pointer to the creature object of the player.
--- @return table of strings of the branches ready to unlock.
-function ExperienceConverter:getNextUnlockableBranches(pPlayer)
-	if (pPlayer == nil) then
-		return nil
-	end
-
-	local trees = {}
-	local insertion = nil
-
-
-	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = CreatureObject(pPlayer):getScreenPlayState("VillageFreeUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
-		if (checkTrees == 1) then
-			local option = {theTable.unlockString, 0}
-			table.insert(trees, option)
+		if (VillageJediManagerCommon.hasUnlockedBranch(pPlayer, branchName)) then
+			local localizedBranch = getStringId("@quest/force_sensitive/utils:" .. branchName)
+			if (hasBranch) then
+				branchList = branchList + "\n" + localizedBranch
+			else
+				hasBranch = true
+				branchList = "\n" .. localizedBranch
+			end
 		end
-	end)
-
-	if (#trees > 0) then
-		return trees
-	else
-		return nil
-	end
-end
-
--- Get the fully mastered and trained trees.
--- @param pPlayer pointer to the creature object of the player.
--- @return number of trees mastered.
-function ExperienceConverter:getMasteredBranches(pPlayer)
-	if (pPlayer == nil) then
-		return 0
 	end
 
-	local returnValue = 0 -- None.
-
-	foreach(unlockableFSBranches, function(theTable)
-		if CreatureObject(pPlayer):hasScreenPlayState(4, "VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3))) then
-			returnValue = returnValue + 1
-		end
-	end)
-
-	return returnValue
+	return branchList
 end
 
--- Get the highest box from the tables above for the trainer.
-function ExperienceConverter:getHighestBoxForTrainer(selection)
-	local boxName = nil
-
-	foreach(unlockableFSBranches, function(theTable)
-		local theString = theTable.unlockString
-		if (theString == selection) then
-			boxName = theTable.topBox
-		end
-	end)
-
-	return boxName
-end
-
-function ExperienceConverter:getExperienceForConversion(pPlayer, theType)
+function ExperienceConverter:sendConversionSUI(pPlayer, pNpc, experienceType)
 	if (pPlayer == nil) then
-		return nil
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return nil
+		return
 	end
 
-	local returnTable = {}
+	PlayerObject(pGhost):closeSuiWindowType(SuiWindowType.FS_EXP_CONVERT)
 
-	local inputTable = {}
+	local conversionList = self.xpConversion[experienceType]
 
-	if (theType == 0 or theType == 3) then
-		inputTable = XpCombat
-	elseif (theType == 1) then
-		inputTable = XpCrafting
-	elseif (theType == 2) then
-		inputTable = XpSenses
+	if (conversionList == nil) then
+		printf("Error in ExperienceConverter:sendConversionSUI, could not grab xp conversion table for type " .. experienceType .. "\n")
+		return
 	end
 
-	local expList = PlayerObject(pGhost):getExperienceList()
+	local xpList = { }
 
-	if (expList == nil) then
-		return nil
-	end
+	for i = 1, #conversionList, 1 do
+		local xpAmount = PlayerObject(pGhost):getExperience(conversionList[i][1])
 
-	for i = 1, #expList do
-		if (self:containsKey(inputTable, expList[i])) then
-			local option = {"@exp_n:" .. expList[i], 0}
-			table.insert(returnTable, option)
+		if (xpAmount >= conversionList[i][2]) then
+			table.insert(xpList, conversionList[i][1])
 		end
 	end
 
-	return returnTable
-
-end
-
-function ExperienceConverter:getExperienceRatio(experienceType, theType)
-
-	local returnAmount = nil
-
-	local inputTable = {}
-
-	if (theType == 0 or theType == 3) then
-		inputTable = XpCombat
-	elseif (theType == 1) then
-		inputTable = XpCrafting
-	elseif (theType == 2) then
-		inputTable = XpSenses
+	if (#xpList <= 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_for_conversion")
+		return
 	end
 
+	local sui = SuiListBox.new("ExperienceConverter", "convertXpTypeCallback")
 
-	returnAmount = self:getValue(inputTable, experienceType)
+	sui.setTargetNetworkId(SceneObject(pNpc):getObjectID())
+	sui.setTitle("@quest/force_sensitive/utils:xp_transfer_prompt")
+	sui.setPrompt("Select the experience you wish to convert to " .. getStringId("@exp_n:fs_" .. experienceType) .. ".")
 
-	if (returnAmount == nil) then
-		return 0
+	for i = 1, #xpList, 1 do
+		sui.add(getStringId("@exp_n:" .. xpList[i]), xpList[i])
 	end
+	sui.setWindowType(SuiWindowType.FS_EXP_CONVERT)
+	sui.sendTo(pPlayer)
 
-	return returnAmount
+	writeStringSharedMemory(SceneObject(pPlayer):getObjectID() .. ":paemosConversionType", experienceType)
 end
 
+function ExperienceConverter:convertXpTypeCallback(pPlayer, pSui, eventIndex, args)
+	if (pPlayer == nil) then
+		return
+	end
 
--- Generic search function for the strings in the tables above.
-function ExperienceConverter:containsKey(table, element)
-	for i = 1, #table do
-		if (string.find(element, table[i][1]) ~= nil) then
-			return true
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+	local xpType = readStringSharedMemory(playerID .. ":paemosConversionType")
+
+	if (xpType == "") then
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	PlayerObject(pGhost):closeSuiWindowType(SuiWindowType.FS_EXP_CONVERT)
+
+	local chosenXp = suiPageData:getStoredData(tostring(args))
+	local xpAmount = PlayerObject(pGhost):getExperience(chosenXp)
+	local conversionList = self.xpConversion[xpType]
+
+	local ratio = 0
+
+	for i = 1, #conversionList, 1 do
+		if (conversionList[i][1] == chosenXp) then
+			ratio = conversionList[i][2]
 		end
 	end
-	return false
+
+	if (xpAmount < ratio) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	if (ratio == 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_illegal_type")
+		deleteStringSharedMemory(playerID .. ":paemosConversionType")
+		return
+	end
+
+	writeStringSharedMemory(playerID .. ":paemosChosenXp", chosenXp)
+	local npcID = suiPageData:getTargetNetworkId()
+
+	local sui = SuiTransferBox.new("ExperienceConverter", "convertXpTransferCallback")
+
+	sui.setTargetNetworkId(npcID)
+	sui.setTitle("@quest/force_sensitive/utils:xp_transfer_prompt")
+	sui.setPrompt("How much " .. getStringId("@exp_n:" .. chosenXp) .. " experience do you wish to convert?\n(1 for " .. ratio .. " conversion ratio)")
+	sui.setTransferFromText("Experience")
+	sui.setTransferFromValue(xpAmount)
+	sui.setTransferFromInputValue(xpAmount)
+	sui.setTransferToText("To Convert")
+	sui.setTransferToValue(0)
+	sui.setTransferToInputValue(0)
+	sui.setConversionFromRatio(1)
+	sui.setConversionToRatio(1)
+	sui.setWindowType(SuiWindowType.FS_EXP_CONVERT)
+
+	sui.sendTo(pPlayer)
 end
 
--- Generic search function for the ratio in the tables above.
-function ExperienceConverter:getValue(table, element)
-	for i = 1, #table do
-		if (string.find(element, table[i][1]) ~= nil) then
-			return table[i][2]
+function ExperienceConverter:convertXpTransferCallback(pPlayer, pSui, eventIndex, transferInputFromValue, transferInputToValue)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local conversionType = readStringSharedMemory(playerID .. ":paemosConversionType")
+	local chosenXp = readStringSharedMemory(playerID .. ":paemosChosenXp")
+	deleteStringSharedMemory(playerID .. ":paemosConversionType")
+	deleteStringSharedMemory(playerID .. ":paemosChosenXp")
+
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local xpToConvert = tonumber(transferInputToValue)
+
+	if xpToConvert <= 0 then
+		return
+	end
+
+	local conversionList = self.xpConversion[conversionType]
+	local ratio = 0
+
+	for i = 1, #conversionList, 1 do
+		if (conversionList[i][1] == chosenXp) then
+			ratio = conversionList[i][2]
 		end
 	end
+
+	if (ratio == 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_illegal_type")
+		return
+	end
+
+	local xpAmount = PlayerObject(pGhost):getExperience(chosenXp)
+
+	if (xpAmount < xpToConvert) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
+		return
+	end
+
+	local convertedXp = math.floor(xpToConvert / ratio)
+	local modValue = xpToConvert % ratio
+
+	if modValue > 0 then
+		xpToConvert = xpToConvert - modValue
+	end
+
+	local fsXpAmount = PlayerObject(pGhost):getExperience("fs_" .. conversionType)
+	local fsXpCap = PlayerObject(pGhost):getExperienceCap("fs_" .. conversionType)
+
+	if (fsXpCap > 0) then
+		if (fsXpCap <= fsXpAmount) then
+			CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
+			return
+		end
+
+		if (fsXpAmount + convertedXp > fsXpCap) then
+			convertedXp = fsXpCap - fsXpAmount;
+			xpToConvert = convertedXp * ratio;
+		end
+	else
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_no_skill")
+		return
+	end
+
+	if (convertedXp < 1) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_allocate_more_xp")
+		return
+	end
+
+	CreatureObject(pPlayer):awardExperience(chosenXp, xpToConvert * -1, false)
+
+	local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_lose")
+	messageString:setTO(getStringId("@exp_n:" .. chosenXp))
+	messageString:setDI(xpToConvert)
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+
+	CreatureObject(pPlayer):awardExperience("fs_" .. conversionType, convertedXp, false)
+
+	messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_gain")
+	messageString:setTO(getStringId("@exp_n:fs_" .. conversionType))
+	messageString:setDI(convertedXp)
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 end
 
 return ExperienceConverter
