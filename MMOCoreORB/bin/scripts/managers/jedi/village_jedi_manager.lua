@@ -139,12 +139,11 @@ function VillageJediManager:onFSTreeCompleted(pPlayer, branch)
 		return
 	end
 
-	-- Remove the "_04" from the end of the skill...
-	local branchSub = string.sub(branch, 0, (string.len(branch) - 3))
+	if (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL) or VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE) or VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)) then
+		return
+	end
 
-	CreatureObject(pPlayer):setScreenPlayState(4, "VillageUnlockScreenPlay:" .. branchSub)
-
-	if (ExperienceConverter:getMasteredBranches(pPlayer) >= NUMBEROFTREESTOMASTER) then
+	if (VillageJediManagerCommon.getLearnedForceSensitiveBranches(pPlayer) >= NUMBEROFTREESTOMASTER) then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
 		FsOutro:startOldMan(pPlayer)
 	end

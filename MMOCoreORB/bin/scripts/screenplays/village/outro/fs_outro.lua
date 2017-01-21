@@ -73,6 +73,10 @@ function FsOutro:onZoneSwitched(pPlayer)
 	if (not self:isOnOutro(pPlayer)) then
 		return 1
 	end
+	
+	if (SceneObject(pPlayer):getZoneName() ~= self:getMellichaePlanet(pPlayer)) then
+		return 0
+	end
 
 	local curStep = self:getCurrentStep(pPlayer)
 
@@ -103,6 +107,14 @@ function FsOutro:startOldMan(pPlayer)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
 	writeScreenPlayData(pPlayer, "VillageJediProgression", "FsOutroStepDelay", stepDelay + os.time())
 	createEvent(stepDelay, "FsOutro", "doOldManSpawn", pPlayer, "")
+end
+
+function FsOutro:setMellichaePlanet(pPlayer, planetName)
+	writeScreenPlayData(pPlayer, "FsOutro", "mellichaePlanet", planetName)
+end
+
+function FsOutro:getMellichaePlanet(pPlayer)
+	return readScreenPlayData(pPlayer, "FsOutro", "mellichaePlanet")
 end
 
 function FsOutro:onLoggedOut(pPlayer)
