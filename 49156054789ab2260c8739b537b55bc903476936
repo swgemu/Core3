@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_8e769b05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "I don\u0027t see this function being used anywhere. It was called from the old convo handler that you are deleting.",
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_ae735714",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it make more sense to check xpAmount \u003e\u003d conversionList[i][2]\n\nIf a player has 20 unarmed xp which transfers at 30:1 then they don\u0027t have enough to transfer to a single point. No point in including it in the list.",
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_2e5f6774",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "Look at line 173 above. You already declared this.",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 15
+      },
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_ce53436b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "I would put this after you get the ratio and check if xpAmount is \u003c ratio",
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_ee507f60",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "I\u0027d check \u003c\u003d",
+      "range": {
+        "startLine": 273,
+        "startChar": 16,
+        "endLine": 273,
+        "endChar": 17
+      },
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_8e4d3bc7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "shouldn\u0027t that be xpAmount \u003c xpToConvert?",
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_ee695f26",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/LuaSuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-01-22T01:38:06Z",
+      "side": 1,
+      "message": "change this to 5",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "49156054789ab2260c8739b537b55bc903476936",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
