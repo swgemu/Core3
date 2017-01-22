@@ -546,7 +546,7 @@ function FsCsCommander:setupRescueMob(pMobile)
 	createEvent(getRandomNumber(20, 60) * 1000, "FsCsCommander", "doRescuerSpatial", pMobile, "")
 end
 
-function FsCsBaseControl:doRescuerSpatial(pMobile)
+function FsCsCommander:doRescuerSpatial(pMobile)
 	if (pMobile == nil or getRandomNumber(100) < 75) then
 		return
 	end
