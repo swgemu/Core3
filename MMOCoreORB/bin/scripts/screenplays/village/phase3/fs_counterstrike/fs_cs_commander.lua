@@ -203,7 +203,7 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 		return 1
 	end
 
-	if (shieldKillerID ~= escorterID and FsCounterStrike:isOnQuest(pShieldKiller)) then
+	if (shieldKillerID ~= escorterID and FsCounterStrike:isOnEscort(pShieldKiller)) then
 		teamTurnin = true
 	end
 
@@ -463,7 +463,7 @@ function FsCsCommander:createCommanderWaypoint(pPlayer, theaterID)
 		end
 
 		local waypointID = PlayerObject(pGhost):addWaypoint("dathomir", wayDesc, "", wayX, wayY, WAYPOINTYELLOW, true, true, 0)
-		writeData(SceneObject(pPlayer):getObjectID() .. ":village:csCommanderWaypoint")
+		writeData(SceneObject(pPlayer):getObjectID() .. ":village:csCommanderWaypoint", waypointID)
 	end
 end
 
