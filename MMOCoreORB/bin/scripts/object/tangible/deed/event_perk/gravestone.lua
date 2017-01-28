@@ -45,7 +45,7 @@ object_tangible_deed_event_perk_gravestone = object_tangible_deed_event_perk_sha
 	templateType = EVENTPERKDEED,
 	gameObjectType = 8388615,
 	noTrade = 1,
-	generatedObjectTemplate = "object/tangible/gravestone/gravestone02.iff",
+	generatedObjectTemplate = "object/tangible/event_perk/static_gravestone.iff",
 	perkType = STATIC,
 }
 
