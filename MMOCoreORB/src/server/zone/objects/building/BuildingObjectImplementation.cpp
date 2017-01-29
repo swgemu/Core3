@@ -245,11 +245,11 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 			PortalLayout* portalLayout = templateData->getPortalLayout();
 
 			if (portalLayout != NULL) {
-				const Vector<CellProperty>& cells = portalLayout->getCellProperties();
+				const Vector<Reference<CellProperty*> >& cells = portalLayout->getCellProperties();
 				if(cells.size() > 0) {
-					const CellProperty& cell = cells.get(0);
-					if (cell.getNumberOfPortals() > 0) {
-						const CellPortal* portal = cell.getPortal(0);
+					const CellProperty* cell = cells.get(0);
+					if (cell->getNumberOfPortals() > 0) {
+						const CellPortal* portal = cell->getPortal(0);
 						const AABB& box = portalLayout->getPortalBounds(portal->getGeometryIndex());
 
 						Vector3 center = box.center();
@@ -1655,10 +1655,10 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
 			data.addAll(appr->getTransformedMeshData(transform * *parentTransform));
 
-			const CellProperty tmpl = pl->getCellProperty(0);
+			const CellProperty* tmpl = pl->getCellProperty(0);
 
-			for (int i=0; i<tmpl.getNumberOfPortals(); i++) {
-				const CellPortal* portal = tmpl.getPortal(i);
+			for (int i=0; i<tmpl->getNumberOfPortals(); i++) {
+				const CellPortal* portal = tmpl->getPortal(i);
 				const MeshData* mesh = pl->getPortalGeometry(portal->getGeometryIndex());
 
 				if(portal->hasDoorTransform()) {

@@ -68,7 +68,7 @@ protected:
 	FloorMesh* floorMesh;
 	AppearanceTemplate* appearanceTemplate;
 	int cellID;
-	BaseBoundingVolume *boundingVolume;
+	Reference<BaseBoundingVolume*> boundingVolume;
 	Vector<Reference<CellPortal*> > portals;
 
 public:

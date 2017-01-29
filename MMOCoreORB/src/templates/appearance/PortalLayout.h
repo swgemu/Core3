@@ -38,7 +38,7 @@ public:
 class PortalLayout : public IffTemplate, public Logger {
 	PathGraph* pathGraph;
 	Vector<Reference<PortalGeometry*> > portalGeometry;
-	Vector<CellProperty> cellProperties;
+	Vector<Reference<CellProperty*> > cellProperties;
 public:
 	PortalLayout();
 	~PortalLayout();
@@ -76,18 +76,18 @@ public:
 	}
 
 	inline FloorMesh* getFloorMesh(int cellIndex) {
-		return cellProperties.get(cellIndex).getFloorMesh();
+		return cellProperties.get(cellIndex)->getFloorMesh();
 	}
 
 	inline AppearanceTemplate* getAppearanceTemplate(int cellIndex) {
-		return cellProperties.get(cellIndex).getAppearanceTemplate();
+		return cellProperties.get(cellIndex)->getAppearanceTemplate();
 	}
 
-	const Vector<CellProperty>& getCellProperties() {
+	const Vector<Reference<CellProperty*> >& getCellProperties() {
 		return cellProperties;
 	}
 
-	inline CellProperty& getCellProperty(int cellIndex) {
+	inline CellProperty* getCellProperty(int cellIndex) {
 		return cellProperties.get(cellIndex);
 	}
 

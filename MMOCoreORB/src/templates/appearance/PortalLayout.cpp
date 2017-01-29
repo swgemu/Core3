@@ -213,9 +213,9 @@ void PortalLayout::parse(IffStream* iffStream) {
 
 int PortalLayout::getCellID(const String& cellName) {
 	for (int i = 0; i < cellProperties.size(); ++i) {
-		CellProperty& cell = cellProperties.get(i);
+		CellProperty* cell = cellProperties.get(i);
 
-		if (cell.getName() == cellName)
+		if (cell->getName() == cellName)
 			return i;
 	}
 
@@ -289,8 +289,8 @@ void PortalLayout::parseCELSForm(IffStream* iffStream, int numCells) {
 		uint32 nextType;
 
 		for (int i=0; i<numCells; i++) {
-			CellProperty cell(cellProperties.size());
-			cell.readObject(iffStream);
+			Reference<CellProperty*> cell = new CellProperty(cellProperties.size());
+			cell->readObject(iffStream);
 			cellProperties.add(cell);
 		}
 

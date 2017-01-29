@@ -623,8 +623,11 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo() {
 	lock();
 
+	TaskManager* taskMgr = Core::getTaskManager();
 	StringBuffer msg;
-	msg << Core::getTaskManager()->getInfo(false) << endl;
+
+	if (taskMgr != NULL)
+		msg << taskMgr->getInfo(false) << endl;
 	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
 
 	float packetloss;

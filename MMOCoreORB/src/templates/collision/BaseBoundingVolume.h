@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class BaseBoundingVolume : public Logger {
+class BaseBoundingVolume : public Object, public Logger {
 protected:
 	Sphere bsphere; // All volumes have an enclosing sphere
 public:

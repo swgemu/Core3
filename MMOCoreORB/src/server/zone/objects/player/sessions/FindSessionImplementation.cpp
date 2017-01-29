@@ -182,11 +182,11 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 			PortalLayout* portalLayout = templateData->getPortalLayout();
 
 			if (portalLayout != NULL) {
-				const Vector <CellProperty>& cells = portalLayout->getCellProperties();
+				const Vector <Reference<CellProperty*> >& cells = portalLayout->getCellProperties();
 				if (cells.size() > 0) {
-					const CellProperty& cell = cells.get(0);
-					for (int i = 0; i < cell.getNumberOfPortals(); i++) {
-						const CellPortal* portal = cell.getPortal(i);
+					const CellProperty* cell = cells.get(0);
+					for (int i = 0; i < cell->getNumberOfPortals(); i++) {
+						const CellPortal* portal = cell->getPortal(i);
 						const AABB& box = portalLayout->getPortalBounds(portal->getGeometryIndex());
 
 						Vector3 center = box.center();
