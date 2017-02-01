@@ -16,13 +16,13 @@ void SpawnObserverImplementation::despawnSpawns() {
 
 	spawnedCreatures.removeAll();
 
-	EXECUTE_TASK_1(agents, {
-			for (int i = 0; i < agents_p.size(); ++i) {
-				AiAgent* agent = agents_p.get(i);
+	Core::getTaskManager()->executeTask([=] () {
+		for (int i = 0; i < agents.size(); ++i) {
+			AiAgent* agent = agents.get(i);
 
-				Locker locker(agent);
+			Locker locker(agent);
 
-				agent->setDespawnOnNoPlayerInRange(true);
-			}
-	});
+			agent->setDespawnOnNoPlayerInRange(true);
+		}
+	}, "DespawnSpawnsLambda");
 }

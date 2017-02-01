@@ -828,24 +828,7 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 
 	if (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
-/*
-	Vector3 position = getPosition();
 
-	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
-	Quaternion dir = direction;
-	EXECUTE_TASK_4(parent, position, dir, sendPackets, {
-			Locker locker(parent_p);
-
-			parent_p->setDirection(dir_p.getW(),
-					dir_p.getX(), dir_p.getY(), dir_p.getZ());
-			parent_p->setPosition(position_p.getX(), position_p.getZ(), position_p.getY());
-
-			parent_p->incrementMovementCounter();
-
-			parent_p->updateZone(false, sendPackets_p);
-		}
-	);
-*/
 	Locker locker(parent);
 
 	parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
@@ -1707,3 +1690,7 @@ const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {
 	return NULL;
 }
 
+void SceneObjectImplementation::executeOrderedTask(const StdFunction& function, const String& name) {
+	auto taskObject = new LambdaTask(function, name.toCharArray());
+	executeOrderedTask(taskObject);
+}

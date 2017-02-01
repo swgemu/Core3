@@ -736,14 +736,13 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		playerRef->sendSystemMessage(stringId);
 
 		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
-		PlayerManager* pManager = _this.getReferenceUnsafeStaticCast();
 
-		EXECUTE_TASK_3(pManager, playerRef, copyThreatMap, {
-				if (playerRef_p != NULL) {
-					Locker locker(playerRef_p);
-					pManager_p->doPvpDeathRatingUpdate(playerRef_p, copyThreatMap_p);
-				}
-		});
+		Core::getTaskManager()->executeTask([=] () {
+			if (playerRef != NULL) {
+				Locker locker(playerRef);
+				doPvpDeathRatingUpdate(playerRef, copyThreatMap);
+			}
+		}, "PvpDeathRatingUpdateLambda");
 	}
 
 	if (player->isRidingMount()) {

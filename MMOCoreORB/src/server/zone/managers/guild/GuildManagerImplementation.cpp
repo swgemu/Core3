@@ -1251,16 +1251,18 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 
 		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
 		if (guildChat != NULL) {
-			EXECUTE_TASK_2(guildChat, target, {
-				Locker locker(target_p);
-				Locker cLocker(guildChat_p, target_p);
-				guildChat_p->removePlayer(target_p);
-				guildChat_p->sendDestroyTo(target_p);
+			ManagedReference<CreatureObject*> targetCreo = target->asCreatureObject();
 
-				ManagedReference<ChatRoom*> parentRoom = guildChat_p->getParent();
+			Core::getTaskManager()->executeTask([=] () {
+				Locker locker(targetCreo);
+				Locker cLocker(guildChat, targetCreo);
+				guildChat->removePlayer(targetCreo);
+				guildChat->sendDestroyTo(targetCreo);
+
+				ManagedReference<ChatRoom*> parentRoom = guildChat->getParent();
 				if (parentRoom != NULL)
-					parentRoom->sendDestroyTo(target_p);
-			});
+					parentRoom->sendDestroyTo(targetCreo);
+			}, "RemovePlayerFromGuildChatLambda");
 		}
 
 		PlayerObject* targetGhost = target->getPlayerObject();

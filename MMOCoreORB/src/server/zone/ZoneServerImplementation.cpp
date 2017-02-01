@@ -396,9 +396,9 @@ void ZoneServerImplementation::clearZones() {
 		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
-			EXECUTE_TASK_1(zone, {
-					zone_p->clearZone();
-			});
+			Core::getTaskManager()->executeTask([=] () {
+				zone->clearZone();
+			}, "ClearZoneLambda");
 		}
 	}
 

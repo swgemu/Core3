@@ -231,10 +231,10 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 				ManagedReference<SceneObject*> sceno = zserv->getObject(oid);
 
 				if (sceno != NULL) {
-					EXECUTE_TASK_1(sceno, {
-							Locker locker(sceno_p);
-							sceno_p->destroyObjectFromDatabase(true);
-					});
+					Core::getTaskManager()->executeTask([=] () {
+						Locker locker(sceno);
+						sceno->destroyObjectFromDatabase(true);
+					}, "DeleteTerminalItemLambda");
 				}
 			}
 		}

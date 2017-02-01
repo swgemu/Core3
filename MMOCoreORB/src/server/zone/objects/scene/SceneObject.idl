@@ -53,6 +53,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.ai.AiAgent;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
+include server.zone.objects.scene.variables.StdFunction;
 
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {
@@ -692,7 +693,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Order of execution is guaranteed to be the same as insertion order
 	 * @pre { this locked }
 	 * @post { this locked}
-	 * @param name Name of the task
 	 * @param task Task to add
 	 */
 	@local
@@ -701,6 +701,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			getPendingTasks().putOrdered(task, this);
 		}
 	}
+
+	/**
+	 * Executes a task async of this SceneObject in a serialized manner
+	 * Order of execution is guaranteed to be the same as insertion order
+	 * @pre { this locked }
+	 * @post { this locked}
+	 * @param function the lambda function for the task to run
+	 * @param name Name of the task
+	 */
+	@local
+	public native void executeOrderedTask(@dereferenced final StdFunction function, final string name);
 
 	/**
 	 * Removes a pending task from this SceneObject

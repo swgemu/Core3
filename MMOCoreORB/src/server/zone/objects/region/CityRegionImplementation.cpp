@@ -788,34 +788,33 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 	typedef VectorMap<String, int> SkillMods;
 	typedef VectorMapEntry<String, int> SkillModsEntry;
 
-	EXECUTE_ORDERED_TASK_3(creature, creatureReference, cityspec, city, {
-			Locker locker(creatureReference_p);
+	creature->executeOrderedTask([=] () {
+		Locker locker(creatureReference);
 
-			//Remove all current city skillmods
-			creatureReference_p->removeAllSkillModsOfType(SkillModManager::CITY);
+		//Remove all current city skillmods
+		creatureReference->removeAllSkillModsOfType(SkillModManager::CITY);
 
-			SkillMods* mods = cityspec_p->getSkillMods();
+		SkillMods* mods = cityspec->getSkillMods();
 
-			for (int i = 0; i < mods->size(); ++i) {
-				SkillModsEntry& entry = mods->elementAt(i);
+		for (int i = 0; i < mods->size(); ++i) {
+			SkillModsEntry& entry = mods->elementAt(i);
 
-				if (entry.getKey() == "private_defense" && !city_p->isMilitiaMember(creatureReference_p->getObjectID()))
-					continue;
+			if (entry.getKey() == "private_defense" && !city->isMilitiaMember(creatureReference->getObjectID()))
+				continue;
 
-				creatureReference_p->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
-			}
-	});
+			creatureReference->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
+		}
+	}, "ApplySpecializationModifiersLambda");
 }
 
 void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* creature) {
 	Reference<CreatureObject*> creatureReference = creature;
 
-	EXECUTE_ORDERED_TASK_1(creature, creatureReference, {
-			Locker locker(creatureReference_p);
+	creature->executeOrderedTask([=] () {
+		Locker locker(creatureReference);
 
-			creatureReference_p->removeAllSkillModsOfType(SkillModManager::CITY);
-	});
-
+		creatureReference->removeAllSkillModsOfType(SkillModManager::CITY);
+	}, "RemoveSpecializationModifiersLambda");
 }
 
 void CityRegionImplementation::transferCivicStructuresToMayor() {

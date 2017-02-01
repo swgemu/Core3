@@ -52,14 +52,14 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 		ManagedReference<SceneObject*> sceno = obj;
 		Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
 
-		EXECUTE_TASK_2(scene, sceno, {
-			for (int i = 0; i < scene_p.size(); i++) {
-				SceneObject* scenery = scene_p.get(i);
+		Core::getTaskManager()->executeTask([=] () {
+			for (int i = 0; i < scene.size(); i++) {
+				SceneObject* scenery = scene.get(i);
 				Locker locker(scenery);
 
-				scenery->sendTo(sceno_p, true);
+				scenery->sendTo(sceno, true);
 			}
-		});
+		}, "SendSceneryLambda");
 	}
 }
 
@@ -71,14 +71,14 @@ void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 		ManagedReference<SceneObject*> sceno = obj;
 		Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
 
-		EXECUTE_TASK_2(scene, sceno, {
-			for (int i = 0; i < scene_p.size(); i++) {
-				SceneObject* scenery = scene_p.get(i);
+		Core::getTaskManager()->executeTask([=] () {
+			for (int i = 0; i < scene.size(); i++) {
+				SceneObject* scenery = scene.get(i);
 				Locker locker(scenery);
 
-				scenery->sendDestroyTo(sceno_p);
+				scenery->sendDestroyTo(sceno);
 			}
-		});
+		}, "SendDestroySceneryLambda");
 	}
 }
 
