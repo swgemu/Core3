@@ -25,7 +25,6 @@ FsReflex1Theater = GoToTheater:new {
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 32,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil,
 	onEnteredActiveArea = nil
 }
 
@@ -39,7 +38,7 @@ function FsReflex1Theater:onEnteredActiveArea(pPlayer, mobileList)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 end
 
-function FsReflex1Theater:onSuccessfulSpawn(pPlayer, mobileList)
+function FsReflex1Theater:onObjectsSpawned(pPlayer, mobileList)
 	if (pPlayer == nil) then
 		return
 	end
@@ -47,6 +46,12 @@ function FsReflex1Theater:onSuccessfulSpawn(pPlayer, mobileList)
 	if (mobileList[1] ~= nil) then
 		writeData(SceneObject(mobileList[1]):getObjectID() .. ":ownerID", SceneObject(pPlayer):getObjectID())
 		CreatureObject(mobileList[1]):setPvpStatusBitmask(0)
+	end
+end
+
+function FsReflex1Theater:onTheaterCreated(pPlayer)
+	if (pPlayer == nil) then
+		return
 	end
 
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
