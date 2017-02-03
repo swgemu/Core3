@@ -45,7 +45,6 @@ SithShadowIntroTheater = GoToTheater:new {
 	despawnTime = 2 * 60* 60* 1000, -- 2 hours
 	activeAreaRadius = 64,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil,
 	onEnteredActiveArea = nil
 }
 
@@ -120,13 +119,20 @@ end
 -- The event will activate the FS_THEATER_CAMP quest for the player.
 -- @param pPlayer pointer to the creature object of the player.
 -- @param spawnedSithShadowsList list with pointers to the spawned sith shadows.
-function SithShadowIntroTheater:onSuccessfulSpawn(pPlayer, spawnedSithShadowsList)
+function SithShadowIntroTheater:onObjectsSpawned(pPlayer, spawnedSithShadowsList)
 	if (pPlayer == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil) then
 		return
 	end
 
-	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
+end
+
+function SithShadowIntroTheater:onTheaterCreated(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
 end
 
 -- Handling of the activation of the theater waypoint datapad.
