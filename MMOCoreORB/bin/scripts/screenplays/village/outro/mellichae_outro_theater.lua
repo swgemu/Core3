@@ -62,14 +62,11 @@ function MellichaeOutroTheater:onEnteredActiveArea(pPlayer, spawnedSithShadowsLi
 end
 
 -- Event handler for the successful spawn event.
-function MellichaeOutroTheater:onSuccessfulSpawn(pPlayer, spawnedSithShadowsList)
+function MellichaeOutroTheater:onObjectsSpawned(pPlayer, spawnedSithShadowsList)
 	if (pPlayer == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil or spawnedSithShadowsList[2] == nil) then
 		return
 	end
 
-	VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
-
-	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onMellichaeKilled", spawnedSithShadowsList[1])
 
@@ -84,7 +81,21 @@ function MellichaeOutroTheater:onSuccessfulSpawn(pPlayer, spawnedSithShadowsList
 
 	self:setupPowerShrines(pPlayer)
 
-	createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, "")
+	local pTheater = self:getTheaterObject(pPlayer)
+
+	if (pTheater ~= nil) then
+		createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, tostring(SceneObject(pTheater):getObjectID()))
+	end
+end
+
+function MellichaeOutroTheater:onTheaterCreated(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
+
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
 end
 
 function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
@@ -268,14 +279,16 @@ function MellichaeOutroTheater:helpCrystal(pKiller, color, ownerID)
 	end
 end
 
-function MellichaeOutroTheater:doHealingPulse(pPlayer)
+function MellichaeOutroTheater:doHealingPulse(pPlayer, arg)
 	if (pPlayer == nil) then
 		return
 	end
 
+	local theaterID = tonumber(arg)
+
 	local pTheater = self:getTheaterObject(pPlayer)
 
-	if (pTheater == nil) then
+	if (pTheater == nil or SceneObject(pTheater):getObjectID() ~= theaterID) then
 		return
 	end
 
@@ -312,7 +325,7 @@ function MellichaeOutroTheater:doHealingPulse(pPlayer)
 	end
 
 	if (healedSomething) then
-		createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, "")
+		createEvent(10 * 1000, "MellichaeOutroTheater", "doHealingPulse", pPlayer, tostring(theaterID))
 	end
 end
 

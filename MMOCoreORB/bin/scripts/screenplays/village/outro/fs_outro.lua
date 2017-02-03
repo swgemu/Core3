@@ -8,7 +8,7 @@ FsOutro = ScreenPlay:new {
 	FORCESHRINE = 4,
 
 	stepDelay = {
-		[1] = { 300, 600 }, -- Old man visit, 5-10 mins for testing
+		[1] = { 3, 6 }, -- Old man visit, 5-10 mins for testing
 	}
 }
 
@@ -61,32 +61,9 @@ function FsOutro:onLoggedIn(pPlayer)
 			MellichaeOutroTheater:finish(pPlayer)
 		end
 
-		dropObserver(ZONESWITCHED, "FsOutro", "onZoneSwitched", pPlayer)
-		createObserver(ZONESWITCHED, "FsOutro", "onZoneSwitched", pPlayer)
-
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
 		local result = MellichaeOutroTheater:start(pPlayer)
 	end
-end
-
-function FsOutro:onZoneSwitched(pPlayer)
-	if (not self:isOnOutro(pPlayer)) then
-		return 1
-	end
-
-	local curStep = self:getCurrentStep(pPlayer)
-
-	if (curStep ~= self.MELLICHAETHEATER) then
-		return 1
-	end
-
-	if (MellichaeOutroTheater:hasTaskStarted(pPlayer)) then
-		MellichaeOutroTheater:finish(pPlayer)
-	end
-
-	MellichaeOutroTheater:start(pPlayer)
-
-	return 0
 end
 
 function FsOutro:startOldMan(pPlayer)
