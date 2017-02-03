@@ -29,7 +29,7 @@ FsSad2Theater5 = GoToTheater:new {
 	activeAreaRadius = 16,
 }
 
-function FsSad2Theater5:onSuccessfulSpawn(pPlayer, spawnedMobileList)
+function FsSad2Theater5:onObjectsSpawned(pPlayer, spawnedMobileList)
 	if (pPlayer == nil) then
 		return
 	end
@@ -43,8 +43,14 @@ function FsSad2Theater5:onSuccessfulSpawn(pPlayer, spawnedMobileList)
 			createObserver(OBJECTDESTRUCTION, self.taskName, "notifyKilledMobile", spawnedMobileList[i])
 		end
 	end
+end
 
-	local theaterId = readData(playerID .. self.taskName .. "theaterId")
+function FsSad2Theater5:onTheaterCreated(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local theaterId = readData(SceneObject(pPlayer):getObjectID() .. self.taskName .. "theaterId")
 	local pTheater = getSceneObject(theaterId)
 
 	if (pTheater ~= nil) then

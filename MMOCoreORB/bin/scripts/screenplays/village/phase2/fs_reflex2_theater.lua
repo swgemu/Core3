@@ -23,7 +23,6 @@ FsReflex2Theater = GoToTheater:new {
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil,
 	onEnteredActiveArea = nil
 }
 
@@ -50,7 +49,7 @@ function FsReflex2Theater:onEnteredActiveArea(pPlayer, mobileList)
 	FsReflex2GoBack:start(pPlayer)
 end
 
-function FsReflex2Theater:onSuccessfulSpawn(pPlayer, mobileList)
+function FsReflex2Theater:onTheaterCreated(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
