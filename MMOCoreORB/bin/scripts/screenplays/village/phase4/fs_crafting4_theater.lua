@@ -16,8 +16,6 @@ FsCrafting4Theater = GoToTheater:new {
 	mobileList = {},
 	despawnTime = 30 * 60 * 1000, -- 30 minutes
 	activeAreaRadius = 32,
-	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil,
 	onEnteredActiveArea = nil
 }
 
