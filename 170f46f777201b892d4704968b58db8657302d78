@@ -1,0 +1,290 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_11208e9a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "just use zoneName",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_31258aab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "should be Exit",
+      "range": {
+        "startLine": 105,
+        "startChar": 98,
+        "endLine": 105,
+        "endChar": 103
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_d139a6d9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "how could it be nil?",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_91331ef6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "I\u0027m confused by this. You want this to evaluate to true if the theater had either a mobileList or a mobileListWithLoc or if it didn\u0027t have a mobileList? That will always be true. What\u0027s the actual intention?",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_f13622e7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "Isn\u0027t this redundant since the waypoint is created in taskStart?",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_71523215",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "just use playerID",
+      "range": {
+        "startLine": 243,
+        "startChar": 12,
+        "endLine": 243,
+        "endChar": 46
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_11572e04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 6
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_315caa25",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 6
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_d140c637",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "playerID",
+      "range": {
+        "startLine": 252,
+        "startChar": 12,
+        "endLine": 252,
+        "endChar": 45
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_b1309ae9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "you can remove a line by calling getTheaterObject here instead",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_f13dc2bc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "I don\u0027t think you are writing this anywhere",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_914a3e54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "You could just use getTheaterObject() here in each of these sad theaters",
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_b1473a4b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_sad_2_theaters/fs_sad_2_theater_1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "Spawned",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_5174d69b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_sad_2_theaters/fs_sad_2_theater_2.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-04T04:56:46Z",
+      "side": 1,
+      "message": "Spawned",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "170f46f777201b892d4704968b58db8657302d78",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
