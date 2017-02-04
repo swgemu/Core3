@@ -137,14 +137,14 @@ public:
 
 		creature->removeMountedCombatSlow(false); // these are already removed off the player - Just remove it off the mount
 
-		if(vehicle->hasBuff(gallopCRC)) {
+		if (vehicle->hasBuff(gallopCRC)) {
 			ManagedReference<Buff*> buff = vehicle->getBuff(gallopCRC);
-			if(buff != NULL) {
-				EXECUTE_TASK_2(buff, vehicle, {
-					Locker lock(vehicle_p);
-					Locker buffLocker(buff_p, vehicle_p);
-					buff_p->removeAllModifiers();
-				});
+			if (buff != NULL) {
+				Core::getTaskManager()->executeTask([=] () {
+					Locker lock(vehicle);
+					Locker buffLocker(buff, vehicle);
+					buff->removeAllModifiers();
+				}, "RemoveGallopModsLambda");
 			}
 		}
 

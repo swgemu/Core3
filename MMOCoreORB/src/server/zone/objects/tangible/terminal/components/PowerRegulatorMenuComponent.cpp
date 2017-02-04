@@ -85,19 +85,12 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 1;
 	}
 
-	EXECUTE_TASK_4(player, gcwMan, powerRegulator, building, {
-			Locker locker(player_p);
-			Locker clocker(building_p, player_p);
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(player);
+		Locker clocker(building, player);
 
-			gcwMan_p->sendPowerRegulatorControls(player_p, building_p, powerRegulator_p);
-	});
+		gcwMan->sendPowerRegulatorControls(player, building, powerRegulator);
+	}, "SendPowerRegulatorControlsLambda");
 
 	return 0;
 }
-
-
-
-
-
-
-

@@ -1415,14 +1415,14 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			ManagedReference<AiAgent*> ai = asAiAgent();
 			ManagedReference<SceneObject*> sceno = scno;
 
-			EXECUTE_TASK_2(ai, sceno, {
-				Locker locker(ai_p);
-				Locker clocker(sceno_p, ai_p);
+			Core::getTaskManager()->executeTask([=] () {
+				Locker locker(ai);
+				Locker clocker(sceno, ai);
 
-				if (sceno_p == ai_p->getFollowObject().get()) {
-					ai_p->restoreFollowObject();
+				if (sceno == ai->getFollowObject().get()) {
+					ai->restoreFollowObject();
 				}
-			});
+			}, "RestoreFollowObjectLambda");
 	}
 
 	if (scno->isPlayerCreature()) {
@@ -2934,43 +2934,42 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 
 	Reference<AiAgent*> aiAgent = asAiAgent();
 
-	EXECUTE_TASK_2(aiAgent, msg, {
-			SortedVector<QuadTreeEntry*> closeAiAgents;
+	Core::getTaskManager()->executeTask([=] () {
+		SortedVector<QuadTreeEntry*> closeAiAgents;
 
-			CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent_p->getCloseObjects();
-			Zone* zone = aiAgent_p->getZone();
+		CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent->getCloseObjects();
+		Zone* zone = aiAgent->getZone();
 
-			if (zone == NULL)
-				return;
+		if (zone == NULL)
+			return;
 
-			try {
-				if (closeobjects == NULL) {
+		try {
+			if (closeobjects == NULL) {
 #ifdef COV_DEBUG
-					aiAgent_p->info("Null closeobjects vector in AiAgentImplementation::broadcastInterrupt", true);
+				aiAgent->info("Null closeobjects vector in AiAgentImplementation::broadcastInterrupt", true);
 #endif
-					zone->getInRangeObjects(aiAgent_p->getPositionX(), aiAgent_p->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
-				} else {
-					closeAiAgents.removeAll(closeobjects->size(), 10);
-					closeobjects->safeCopyTo(closeAiAgents);
-				}
-			} catch (Exception& e) {
-
+				zone->getInRangeObjects(aiAgent->getPositionX(), aiAgent->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
+			} else {
+				closeAiAgents.removeAll(closeobjects->size(), 10);
+				closeobjects->safeCopyTo(closeAiAgents);
 			}
+		} catch (Exception& e) {
 
-			for (int i = 0; i < closeAiAgents.size(); ++i) {
-				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
+		}
 
-				if (aiAgent_p == agent || agent == NULL)
-					continue;
+		for (int i = 0; i < closeAiAgents.size(); ++i) {
+			AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
 
-				Locker locker(agent);
+			if (aiAgent == agent || agent == NULL)
+				continue;
 
-				Locker crossLocker(aiAgent_p, agent);
+			Locker locker(agent);
 
-				agent->interrupt(aiAgent_p, msg_p);
-			}
-	});
+			Locker crossLocker(aiAgent, agent);
 
+			agent->interrupt(aiAgent, msg);
+		}
+	}, "BroadcastInterruptLambda");
 }
 
 void AiAgentImplementation::setCombatState() {
@@ -2986,14 +2985,13 @@ void AiAgentImplementation::setCombatState() {
 		ManagedReference<TangibleObject*> target = cast<TangibleObject*>(followCopy.get());
 		ManagedReference<AiAgent*> ai = asAiAgent();
 
-		EXECUTE_TASK_2(ai, target, {
-			Locker locker(ai_p);
-			Locker clocker(target_p, ai_p);
+		Core::getTaskManager()->executeTask([=] () {
+			Locker locker(ai);
+			Locker clocker(target, ai);
 
-			if (target_p->hasDefender(ai_p))
-				ai_p->sendReactionChat(ReactionManager::ATTACKED);
-		});
-
+			if (target->hasDefender(ai))
+				ai->sendReactionChat(ReactionManager::ATTACKED);
+		}, "SendAttackedChatLambda");
 	}
 
 	//broadcastInterrupt(ObserverEventType::STARTCOMBAT);
