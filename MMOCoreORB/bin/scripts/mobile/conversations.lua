@@ -159,6 +159,8 @@ includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
 
 -- Heralds
 includeFile("conversations/tasks/heralds/herald_conv.lua")
+includeFile("conversations/tasks/heralds/herald_corellia1_conv.lua")
+includeFile("conversations/tasks/heralds/herald_corellia2_conv.lua")
 includeFile("conversations/tasks/heralds/herald_lok1_conv.lua")
 includeFile("conversations/tasks/heralds/herald_lok2_conv.lua")
 includeFile("conversations/tasks/heralds/herald_naboo1_conv.lua")

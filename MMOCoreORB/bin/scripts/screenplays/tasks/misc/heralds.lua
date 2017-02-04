@@ -5,8 +5,8 @@ heraldScreenPlay = ScreenPlay:new {
 		heraldList = {
 			{ planet = "corellia", template = "herald_commoner", customName = "Excited Journalist", x = -5192.9, z = 21, y = -2545.55, angle = 46.5164, cell = 0, destX = 4651, destY = -5616, stringFile = "herald_corellia_imperial_strongold" },
 			{ planet = "corellia", template = "herald_selonian_diplomat", x = 3256.5, z = 300, y = 5418.4, angle = -89, cell = 0, destX = -2482, destY = 2907, stringFile = "herald_corellia_afarathucave" },
-			{ planet = "corellia", template = "herald_corellia_karin", x = -185, z = 28, y = -4460.71, angle = 0, cell = 0, destX = 1041, destY = 4193, stringFile = "herald_corellia_drall_patriot_hideout" },
-			{ planet = "corellia", template = "herald_corellia_lock", x = -5418.26, z = 20.9986, y = -2792.36, angle = 59.9, cell = 0, destX = 1413, destY = -317, stringFile = "herald_corellia_lord_nyax_cult" },
+			--{ planet = "corellia", template = "", x = , z = , y = , angle = , cell = , destX = 1041, destY = 4193, stringFile = "herald_corellia_drall_patriot_hideout" },
+			--{ planet = "corellia", template = "", x = , z = , y = , angle = , cell = , destX = 1413, destY = -317, stringFile = "herald_corellia_lord_nyax_cult" },
 			{ planet = "corellia", template = "herald_corsec_agent", x = -202.143, z = 28, y = -4504.32, angle = 203.539, cell = 0, destX = 5290, destY = 1493, stringFile = "herald_corellia_rogue_corsec" },
 
 			{ planet = "dantooine", template = "herald_imperial_colonel", x = -588.77, z = 3, y = 2499, angle = 264.6, cell = 0, destX = -152, destY = -444, stringFile = "herald_dantooine_kunga_stronghold" },
@@ -72,12 +72,14 @@ heraldScreenPlay = ScreenPlay:new {
 		},
 
 		multiDestHeraldList = {
-			{ planet = "lok", template = "herald_lok_talia", x = 371.717, z = 11.8618, y = 5179.1, angle = 286.408, cell = 0, dest1X = -68, dest1Y = 2650, dest1String = ":s_95bfd0f3", dest2X = -3792, dest2Y = -3904, dest2String = ":s_434a59e6", stringFile = "heraldlok" },
-			{ planet = "lok", template = "herald_lok_andria", x = 221.864, z = 17.0919, y = 5154.99, angle = 342.34, cell = 0, dest1X = 3364, dest1Y = -4923, dest1String = ":s_4db27a02", dest2X = 3703, dest2Y = 2274, dest2String = ":s_7884d24e", stringFile = "heraldlok2" },
-			{ planet = "naboo", template = "herald_naboo_vaikanna", x = -5484, z = 10, y = 4424, angle = -29, cell = 0, dest1X = -6570, dest1Y = -3240, dest1String = ":s_7431a8fb", dest2X = 2850, dest2Y = 1084, dest2String = ":s_b7659e9e", dest3X = 4771, dest3Y = -3868, dest3String = ":s_7ad7fe8f", stringFile = "heraldnaboo" },
+			{ planet = "corellia", template = "herald_corellia_lock", x = -5418.26, z = 20.9986, y = -2792.36, angle = 59.9, cell = 0, dest1X = 1414, dest1Y = -317, dest1String = "Lord Nyax's Clan", dest2X = -2483, dest2Y = 2907, dest2String = "Afarathu Cave", dest3X = 4651, dest3Y = -5617, dest3String = "Imperial Stronghold", stringFile = "heraldcorellia1" },
+			{ planet = "corellia", template = "herald_corellia_karin", x = -185, z = 28, y = -4460.71, angle = 0, cell = 0, dest1X = 1042, dest1Y = 4193, dest1String = "Drall Patriots Hideout", dest2X = 5291, dest2Y = 1494, dest2String = "Rogue Corsec band", stringFile = "heraldcorellia2" },
+			{ planet = "lok", template = "herald_lok_talia", x = 371.717, z = 11.8618, y = 5179.1, angle = 286.408, cell = 0, dest1X = -68, dest1Y = 2650, dest1String = "Kimogila Town", dest2X = -3792, dest2Y = -3904, dest2String = "Canyon Corsair Stronghold", stringFile = "heraldlok" },
+			{ planet = "lok", template = "herald_lok_andria", x = 221.864, z = 17.0919, y = 5154.99, angle = 342.34, cell = 0, dest1X = 3364, dest1Y = -4923, dest1String = "Droid Engineer's Cave", dest2X = 3703, dest2Y = 2274, dest2String = "Smuggler's Ship", stringFile = "heraldlok2" },
+			{ planet = "naboo", template = "herald_naboo_vaikanna", x = -5484, z = 10, y = 4424, angle = -29, cell = 0, dest1X = -6570, dest1Y = -3240, dest1String = "The Imperial Weapons Research Facility", dest2X = 2850, dest2Y = 1084, dest2String = "Mauler Encampment", dest3X = 4771, dest3Y = -3868, dest3String = "The Gungans and Imperials", stringFile = "heraldnaboo" },
 			{ planet = "naboo", template = "herald_naboo_ronin", x = 4810, z = 6.3, y = -4977, angle = -21, cell = 0, dest1X = -263, dest1Y = 2859, dest1String = "Gungan Stronghold", dest2X = 5741, dest2Y = -1546, dest2String = "Veermok Cave", stringFile = "heraldnaboo2" },
-			{ planet = "tatooine", template = "herald_tatooine_viconya", x = -1001.04, z = 10, y = -3550.02, angle = 271.672, cell = 0, dest1X = -3980, dest1Y = 6311, dest1String = ":s_dca89f7e", dest2X = -5315, dest2Y = -4440, dest2String = ":s_8ac3feb5", stringFile = "heraldtatooine1" },
-			{ planet = "tatooine", template = "herald_tatooine_errik", x = 3380.6, z = 5, y = -4498, angle = 160, cell = 0, dest1X = 5003, dest1Y = 581, dest1String = ":s_7f115744", dest1Cost = 60, dest2X = -780, dest2Y = -4444, dest2String = ":s_8d322c6b", dest2Cost = 50, dest3X = -860, dest3Y = -4780, dest3String = ":s_8d322c6b", dest3Cost = 30, dest4X = -1490, dest4Y = -210, dest4String = ":s_d1f219dd", dest4Cost = 30, stringFile = "heraldtatooine2" },
+			{ planet = "tatooine", template = "herald_tatooine_viconya", x = -1001.04, z = 10, y = -3550.02, angle = 271.672, cell = 0, dest1X = -3980, dest1Y = 6311, dest1String = "Fort Tusken", dest2X = -5315, dest2Y = -4440, dest2String = "Tusken Village", stringFile = "heraldtatooine1" },
+			{ planet = "tatooine", template = "herald_tatooine_errik", x = 3380.6, z = 5, y = -4498, angle = 160, cell = 0, dest1X = 5003, dest1Y = 581, dest1String = "Hutt Hideout", dest1Cost = 60, dest2X = -780, dest2Y = -4444, dest2String = "Rebel Military Base", dest2Cost = 50, dest3X = -860, dest3Y = -4780, dest3String = "Rebel Military Base", dest3Cost = 30, dest4X = -1490, dest4Y = -210, dest4String = "Tusken Bunker", dest4Cost = 30, stringFile = "heraldtatooine2" },
 		}
 }
 

@@ -1,6 +1,6 @@
 herald_corellia_lock = Creature:new {
 	objectName = "@npc_name:corellia_herald_01",
-	customName = "",
+	customName = "Lock Vlash",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -29,9 +29,8 @@ herald_corellia_lock = Creature:new {
 	templates = {"object/mobile/dressed_herald_corellia_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "heraldConvoTemplate",
-	attacks = {
-	}
+	conversationTemplate = "heraldCorellia1ConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(herald_corellia_lock, "herald_corellia_lock")
