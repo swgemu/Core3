@@ -956,7 +956,8 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 }
 
 float LootManagerImplementation::calculateDotValue(float min, float max, float level) {
-	float value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
+	float randVal = (float)System::random(max - min);
+	float value = MAX(min, MIN(max, randVal * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
 
 	if (value < min) {
 		value = min;

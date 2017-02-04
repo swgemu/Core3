@@ -34,7 +34,8 @@ int FishingManagerImplementation::checkLocation(CreatureObject* player, int qual
 	if (angle > 360)
 		angle = angle - 360;
 
-	float distance = MIN((MAX(10.0 - (quality / 12.f), 2.1) + (float)System::random(3)), 10.0); // Calculates the Distance, using the Pole's Quality
+	float randVal = (float)System::random(3);
+	float distance = MIN((MAX(10.0 - (quality / 12.f), 2.1) + randVal), 10.0); // Calculates the Distance, using the Pole's Quality
 
 	angle = 2 * M_PI * angle / 360;
 
