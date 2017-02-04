@@ -232,8 +232,8 @@ knew_it = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_herald_dealer:s_8a046130", -- I knew it! Wait 'til I tell everyone. Now they'll know I'm not crazy! Did you find any relics that I might be able to buy from you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_herald_dealer:s_52beeae8", "what_you_have"}, -- Yes, I have a few things you might be interested in.
-		{"@conversation/biogenic_herald_dealer:s_2b7c5c5a", "thanks_for_checking"}, -- No, I don't have anything, sorry.
+		--{"@conversation/biogenic_herald_dealer:s_52beeae8", "what_you_have"}, -- Yes, I have a few things you might be interested in.
+		--{"@conversation/biogenic_herald_dealer:s_2b7c5c5a", "thanks_for_checking"}, -- No, I don't have anything, sorry.
 	}
 }
 biogenicHeraldDealerConvoTemplate:addScreen(knew_it);
