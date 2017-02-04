@@ -45,27 +45,27 @@ public:
 		if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
-			EXECUTE_TASK_2(playerManager, player, {
-				playerManager_p->sendAdminJediList(player_p);
-			});
+			Core::getTaskManager()->executeTask([=] () {
+				playerManager->sendAdminJediList(player);
+			}, "ListJediLambda");
 
 			return 0;
 
 		} else if (command == "listfrs") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
-			EXECUTE_TASK_2(playerManager, player, {
-					playerManager_p->sendAdminFRSList(player_p);
-			});
+			Core::getTaskManager()->executeTask([=] () {
+				playerManager->sendAdminFRSList(player);
+			}, "ListFrsLambda");
 
 			return 0;
 
 		} else if (command == "listadmins") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
-			EXECUTE_TASK_2(playerManager, player, {
-					playerManager_p->sendAdminList(player_p);
-			});
+			Core::getTaskManager()->executeTask([=] () {
+				playerManager->sendAdminList(player);
+			}, "ListAdminsLambda");
 
 			return 0;
 

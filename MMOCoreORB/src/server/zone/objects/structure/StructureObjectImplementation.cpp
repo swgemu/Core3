@@ -90,24 +90,38 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 	} 
 
 	if (permissionsFixed == false) {
-		ManagedReference<StructureObject*> structure = _this.getReferenceUnsafeStaticCast();
 
-		EXECUTE_TASK_1(structure, {
-				ZoneServer* zoneServer = structure_p->getZoneServer();
+		class MigratePermissionsTask : public Task {
+			ManagedReference<StructureObject*> structure;
 
-				if (zoneServer == NULL) {
+		public:
+			MigratePermissionsTask(StructureObject* st) {
+				structure = st;
+			}
+
+			void run() {
+				if (structure == NULL)
 					return;
-				}
+
+				ZoneServer* zoneServer = structure->getZoneServer();
+
+				if (zoneServer == NULL)
+					return;
 
 				if (zoneServer->isServerLoading()) {
-					this->reschedule(5000);
+					reschedule(15000);
 					return;
 				}
 
-				Locker locker(structure_p);
+				Locker locker(structure);
 
-				structure_p->migratePermissions();
-		});
+				structure->migratePermissions();
+			}
+		};
+
+		Reference<MigratePermissionsTask*> task = new MigratePermissionsTask(_this.getReferenceUnsafeStaticCast());
+
+		task->execute();
 	}
 }
 

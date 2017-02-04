@@ -65,11 +65,11 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		if (ghost != NULL && ghost->isPrivileged()) {
 			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
 
-			EXECUTE_TASK_2(ownerPlayer, playerManager, {
-				Locker locker(ownerPlayer_p);
+			Core::getTaskManager()->executeTask([=] () {
+				Locker locker(ownerPlayer);
 
-				playerManager_p->grantDivorce(ownerPlayer_p);
-			});
+				playerManager->grantDivorce(ownerPlayer);
+			}, "GrantDivorceLambda");
 		}
 		break;
 	}

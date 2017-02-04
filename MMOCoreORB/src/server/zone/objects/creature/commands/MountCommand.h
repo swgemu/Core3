@@ -114,19 +114,18 @@ public:
 		//We released this crosslock before to remove player buffs
 		Locker vehicleLocker(vehicle, creature);
 
-		if(vehicle->hasBuff(gallopCRC)) {
-			EXECUTE_TASK_1(vehicle, {
-
+		if (vehicle->hasBuff(gallopCRC)) {
+			Core::getTaskManager()->executeTask([=] () {
 				uint32 gallopCRC = STRING_HASHCODE("gallop");
-				Locker lock(vehicle_p);
+				Locker lock(vehicle);
 
-				ManagedReference<Buff*> gallop = vehicle_p->getBuff(gallopCRC);
-				Locker blocker(gallop, vehicle_p);
+				ManagedReference<Buff*> gallop = vehicle->getBuff(gallopCRC);
+				Locker blocker(gallop, vehicle);
 
-				if(gallop != NULL) {
+				if (gallop != NULL) {
 					gallop->applyAllModifiers();
 				}
-			});
+			}, "AddGallopModsLambda");
 		}
 
 		// Speed hack buffer

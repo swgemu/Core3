@@ -44,7 +44,7 @@ int VetHarvesterDeedImplementation::useObject(CreatureObject* creature) {
 
 	ZoneServer *zone = creature->getZoneServer();
 
-	if(ghost == NULL || zone == NULL)
+	if (ghost == NULL || zone == NULL)
 		return 0;
 
 	if (!isASubChildOf(creature))
@@ -57,12 +57,12 @@ int VetHarvesterDeedImplementation::useObject(CreatureObject* creature) {
 	if (targetObject == NULL || !targetObject->isHarvesterObject())
 		return 0;
 
-	HarvesterObject *harvester = targetObject.castTo<HarvesterObject*>();
+	ManagedReference<HarvesterObject*> harvester = targetObject.castTo<HarvesterObject*>();
 
-	if(harvester == NULL || !harvester->isOwnerOf(creature))
+	if (harvester == NULL || !harvester->isOwnerOf(creature))
 		return 0;
 
-	if(harvester->isSelfPowered()) {
+	if (harvester->isSelfPowered()) {
 		creature->sendSystemMessage("@veteran:harvester_already_selfpowered");
 		return 0;
 	}
@@ -74,10 +74,10 @@ int VetHarvesterDeedImplementation::useObject(CreatureObject* creature) {
 
 	cman->sendMail("system", "@veteran:harvester_converted_subject", messageBody, creature->getFirstName());
 
-  	EXECUTE_TASK_1(harvester, {
-          Locker locker(harvester_p);
-          harvester_p->setSelfPowered(true);
-        });
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(harvester);
+		harvester->setSelfPowered(true);
+	}, "SetSelfPoweredLambda");
 
 	destroyDeed();
 

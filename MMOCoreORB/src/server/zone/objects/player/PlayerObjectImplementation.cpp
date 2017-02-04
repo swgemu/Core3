@@ -1068,14 +1068,14 @@ void PlayerObjectImplementation::removeAllFriends() {
 		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 		if (playerToRemove != NULL && playerToRemove->isPlayerCreature()) {
-			EXECUTE_TASK_2(playerToRemove, playerName, {
-					Locker locker(playerToRemove_p);
+			Core::getTaskManager()->executeTask([=] () {
+				Locker locker(playerToRemove);
 
-					PlayerObject* ghost = playerToRemove_p->getPlayerObject();
-					if (ghost != NULL) {
-						ghost->removeFriend(playerName_p, false);
-					}
-			});
+				PlayerObject* ghost = playerToRemove->getPlayerObject();
+				if (ghost != NULL) {
+					ghost->removeFriend(playerName, false);
+				}
+			}, "RemoveFriendLambda");
 		}
 
 		removeReverseFriend(name);
@@ -1093,14 +1093,14 @@ void PlayerObjectImplementation::removeAllReverseFriends(const String& oldName) 
 		ManagedReference<CreatureObject*> reverseFriend = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 		if (reverseFriend != NULL && reverseFriend->isPlayerCreature()) {
-			EXECUTE_TASK_2(reverseFriend, oldName, {
-					Locker locker(reverseFriend_p);
+			Core::getTaskManager()->executeTask([=] () {
+				Locker locker(reverseFriend);
 
-					PlayerObject* ghost = reverseFriend_p->getPlayerObject();
-					if (ghost != NULL) {
-						ghost->removeFriend(oldName_p, false);
-					}
-			});
+				PlayerObject* ghost = reverseFriend->getPlayerObject();
+				if (ghost != NULL) {
+					ghost->removeFriend(oldName, false);
+				}
+			}, "RemoveFriendLambda2");
 		}
 
 		removeReverseFriend(name);
@@ -1666,9 +1666,9 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
-	EXECUTE_TASK_2(finalArea, creature, {
-			finalArea_p->tryToSpawn(creature_p);
-	});
+	Core::getTaskManager()->executeTask([=] () {
+		finalArea->tryToSpawn(creature);
+	}, "TryToSpawnLambda");
 }
 
 void PlayerObjectImplementation::activateRecovery() {
@@ -2190,11 +2190,11 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 						ManagedReference<CityRegion*> city = structure->getCityRegion().get();
 
 						if (city != NULL) {
-							EXECUTE_TASK_1(city, {
-									Locker locker(city_p);
+							Core::getTaskManager()->executeTask([=] () {
+								Locker locker(city);
 
-									city_p->setMayorID(0);
-							});
+								city->setMayorID(0);
+							}, "SetMayorIDLambda");
 						}
 					}
 
