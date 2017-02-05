@@ -45,7 +45,7 @@ object_tangible_event_perk_static_bantha_saddle = object_mobile_shared_bantha_sa
 	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	customName = "a bantha mount"
+	objectName = "@event_perk:pro_bantha_static"
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_static_bantha_saddle, "object/tangible/event_perk/static_bantha_saddle.iff")
