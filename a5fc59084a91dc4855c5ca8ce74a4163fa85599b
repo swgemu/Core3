@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_d171a678",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-05T13:33:31Z",
+      "side": 1,
+      "message": "Instead of adding the check in 5 different places, just put it once in runCommandWithTarget(). Also, you can replace both of these checks with just an isDroidObject() check.",
+      "revId": "a5fc59084a91dc4855c5ca8ce74a4163fa85599b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_f16e2296",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-05T13:33:31Z",
+      "side": 1,
+      "message": "This is not the appropriate place for these checks",
+      "revId": "a5fc59084a91dc4855c5ca8ce74a4163fa85599b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
