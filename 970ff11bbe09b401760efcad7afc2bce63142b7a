@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_b1689a88",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/event_perk/static_fruit_stand.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-05T13:51:25Z",
+      "side": 1,
+      "message": "Don\u0027t set a customName. There are client strings for their names so set an objectName. This one would be \"@event_perk:pro_fruit_stand\"",
+      "revId": "970ff11bbe09b401760efcad7afc2bce63142b7a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
