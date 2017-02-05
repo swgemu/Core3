@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac40928_b1517ada",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/go_to_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-05T13:08:21Z",
+      "side": 1,
+      "message": "Should you return here or put the onObjectsSpawned call in an else?",
+      "revId": "9d9001039aa53a2105a47f60ea336fe9e61fc5fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac40928_515e16eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/fs_outro.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-05T13:08:21Z",
+      "side": 1,
+      "message": "I think 5-10 minutes is fine for Nova, change it back.",
+      "revId": "9d9001039aa53a2105a47f60ea336fe9e61fc5fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
