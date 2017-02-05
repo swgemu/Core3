@@ -29,7 +29,7 @@
 
 #define COMBAT_SPAM_RANGE 85
 
-bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender) {
+bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender, bool allowIncapTarget) {
 	if (attacker == defender)
 		return false;
 
@@ -52,12 +52,18 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	CreatureObject *creo = defender->asCreatureObject();
-	if (creo != NULL && creo->isIncapacitated() && creo->isFeigningDeath() == false)
-		return false;
-
 	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
 		return false;
+
+	CreatureObject *creo = defender->asCreatureObject();
+	if (creo != NULL && creo->isIncapacitated() && creo->isFeigningDeath() == false) {
+		if (allowIncapTarget) {
+			attacker->clearState(CreatureState::PEACE);
+			return true;
+		}
+
+		return false;
+	}
 
 	attacker->clearState(CreatureState::PEACE);
 
@@ -165,7 +171,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	if(data.getCommand() == NULL)
 		return -3;
 
-	if (!startCombat(attacker, defenderObject))
+	if (!startCombat(attacker, defenderObject, true, data.getHitIncapTarget()))
 		return -1;
 
 	//info("past start combat", true);

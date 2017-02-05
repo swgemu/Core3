@@ -61,6 +61,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	areaRange = data.areaRange;
 
 	splashDamage = data.splashDamage;
+	hitIncapTarget = data.hitIncapTarget;
 
 	forceAttack = data.forceAttack;
 	trails = data.trails;
@@ -98,6 +99,8 @@ void CreatureAttackData::fillFromBase() {
 	healthDamageMultiplier = 1.f;
 	actionDamageMultiplier = 1.f;
 	mindDamageMultiplier = 1.f;
+
+	hitIncapTarget = false;
 }
 
 void CreatureAttackData::setVariable(const String& var, const String& val) {
@@ -165,6 +168,9 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0x97F6A373: // STRING_HASHCODE("stateAccuracyBonus")
 		stateAccuracyBonus = Integer::valueOf(val);
+		break;
+	case 0xBD39E628: // STRING_HASHCODE("hitIncapTarget")
+		hitIncapTarget = (bool)Integer::valueOf(val);
 		break;
 	default:
 		break;

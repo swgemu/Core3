@@ -81,7 +81,7 @@ public:
 	 * @param lockDefender will crosslock with attacker if true
 	 * @return true on success
 	 */
-	bool startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender = true);
+	bool startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender = true, bool allowIncapTarget = false);
 
 	/**
 	 * Attempts to stop combat
