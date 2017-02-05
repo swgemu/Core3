@@ -5,8 +5,8 @@ heraldScreenPlay = ScreenPlay:new {
 		heraldList = {
 			{ planet = "corellia", template = "herald_commoner", customName = "Excited Journalist", x = -5192.9, z = 21, y = -2545.55, angle = 46.5164, cell = 0, destX = 4651, destY = -5616, stringFile = "herald_corellia_imperial_strongold" },
 			{ planet = "corellia", template = "herald_selonian_diplomat", x = 3256.5, z = 300, y = 5418.4, angle = -89, cell = 0, destX = -2482, destY = 2907, stringFile = "herald_corellia_afarathucave" },
-			--{ planet = "corellia", template = "", x = , z = , y = , angle = , cell = , destX = 1041, destY = 4193, stringFile = "herald_corellia_drall_patriot_hideout" },
-			--{ planet = "corellia", template = "", x = , z = , y = , angle = , cell = , destX = 1413, destY = -317, stringFile = "herald_corellia_lord_nyax_cult" },
+			{ planet = "corellia", template = "herald_drall", x = -3774.1, z = 86, y = 3213.8, angle = 5, cell = 0, destX = 1041, destY = 4193, stringFile = "herald_corellia_drall_patriot_hideout" },
+			{ planet = "corellia", template = "herald_commoner", x = -3104.7, z = 31, y = 2793.8, angle = -64, cell = 0, destX = 1413, destY = -317, stringFile = "herald_corellia_lord_nyax_cult" },
 			{ planet = "corellia", template = "herald_corsec_agent", x = -202.143, z = 28, y = -4504.32, angle = 203.539, cell = 0, destX = 5290, destY = 1493, stringFile = "herald_corellia_rogue_corsec" },
 
 			{ planet = "dantooine", template = "herald_imperial_colonel", x = -588.77, z = 3, y = 2499, angle = 264.6, cell = 0, destX = -152, destY = -444, stringFile = "herald_dantooine_kunga_stronghold" },
@@ -132,7 +132,7 @@ function heraldScreenPlay:createLoc(pPlayer, heraldNum)
 	local stfFile = "@spawning/static_npc/" .. heraldData.stringFile
 	local playerID = CreatureObject(pPlayer):getObjectID()
 
-	local waypointID = PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. ":waypoint_name_1", stfFile .. ":waypoint_description_1", heraldData.destX, heraldData.destY, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. ":waypoint_name_1", stfFile .. ":waypoint_description_1", heraldData.destX, heraldData.destY, WAYPOINTPURPLE, true, true, 0, 0)
 	writeData(playerID .. ":herald" .. heraldNum, waypointID)
 
 	local pArea = spawnActiveArea(heraldData.planet, "object/active_area.iff", heraldData.destX, heraldData.z, heraldData.destY, 10, 0)
