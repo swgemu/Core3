@@ -189,9 +189,11 @@ namespace server {
 		static int createQuestVectorMap(lua_State* L);
 		static int createNavMesh(lua_State* L);
 		static int creatureTemplateExists(lua_State* L);
+		static int printLuaError(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
+		static void printTraceError(lua_State* L, const String& error);
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);
