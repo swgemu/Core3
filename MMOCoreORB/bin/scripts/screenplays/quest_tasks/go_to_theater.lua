@@ -115,7 +115,9 @@ function GoToTheater:spawnTheaterObjects(pPlayer)
 	local pTheater = self:getTheaterObject(pPlayer)
 
 	if (pTheater == nil) then
+		printf("Error in GoToTheater:spawnTheaterObjects for " .. self.taskName .. ", theater object null.\n")
 		self:finish(pPlayer)
+		return
 	end
 
 	local zoneName = SceneObject(pTheater):getZoneName()

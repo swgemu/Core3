@@ -193,6 +193,7 @@ function SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, f
 	if spawnPoints ~= nil and #spawnPoints > 0 then
 		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	else
+		printf("Error in SpawnMobiles.spawnMobilesWithPrefix, null spawnPoints table returned for location " .. SceneObject(pSceneObject):getWorldPositionX() .. " " .. SceneObject(pSceneObject):getWorldPositionY() .. " on " .. SceneObject(pSceneObject):getZoneName() .. "\n")
 		return nil
 	end
 end
