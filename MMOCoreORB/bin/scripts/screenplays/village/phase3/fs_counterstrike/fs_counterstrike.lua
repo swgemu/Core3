@@ -138,7 +138,7 @@ function FsCounterStrike:spawnCamps()
 		local pTheater = spawnSceneObject("dathomir", "object/static/structure/nobuild/nobuild_32.iff", campLoc[2], campLoc[3], campLoc[4], 0, 0)
 
 		if (pTheater == nil) then
-			printf("Error creating theater in FsCounterStrike:spawnCamps()\n")
+			printLuaError("Error creating theater in FsCounterStrike:spawnCamps().")
 			return
 		end
 

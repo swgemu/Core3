@@ -138,7 +138,7 @@ function SuiAmpPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
 
 	if (pPageData == nil) then
-		printf("Error in SuiAmpPuzzle:defaultCallback, pageData is nil.\n")
+		printLuaError("SuiAmpPuzzle:defaultCallback, pageData is nil.")
 		return
 	end
 
@@ -154,7 +154,7 @@ function SuiAmpPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 	local pPuzzle = getSceneObject(puzzleID)
 
 	if (pPuzzle == nil) then
-		printf("Error in SuiAmpPuzzle:defaultCallback, pPuzzle nil.\n")
+		printLuaError("SuiAmpPuzzle:defaultCallback, pPuzzle nil.")
 		return
 	end
 

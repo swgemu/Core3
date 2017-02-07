@@ -160,7 +160,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	local pHermit = getSceneObject(hermitId)
 
 	if (pHermit == nil) then
-		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		printLuaError("HeroOfTatooineScreenPlay, unable to find hermit object.")
 		return 0
 	end
 
@@ -203,7 +203,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		createObserver(OBJECTDESTRUCTION, "HeroOfTatooineScreenPlay", "notifyDefeatedBoar", pBoar)
 		writeData("hero_of_tat:courage_mob_id", SceneObject(pBoar):getObjectID())
 	else
-		printf("Error in HeroOfTatooineScreenPlay:doCourageChange, unable to spawn boar.\n")
+		printLuaError("HeroOfTatooineScreenPlay:doCourageChange, unable to spawn boar.")
 	end
 
 	self:createCourageEvent("life")
@@ -278,7 +278,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	local pHermit = getSceneObject(hermitId)
 
 	if (pHermit == nil) then
-		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		printLuaError("HeroOfTatooineScreenPlay, unable to find hermit object.")
 		return 0
 	end
 
@@ -316,7 +316,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
 	else
-		printf("Error in HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.\n")
+		printLuaError("HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.")
 	end
 
 	self:createAltruismEvent("life")
@@ -331,7 +331,7 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 	local pHermit = getSceneObject(hermitId)
 
 	if (pHermit == nil) then
-		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		printLuaError("HeroOfTatooineScreenPlay, unable to find hermit object.")
 		return 0
 	end
 
@@ -355,7 +355,7 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 	local pBountyHunter = spawnMobile("tatooine", "hero_of_tat_bh", 0, self.intellectSpawns[newLoc]["bhX"], self.intellectSpawns[newLoc]["bhZ"], self.intellectSpawns[newLoc]["bhY"], self.intellectSpawns[newLoc]["bhAngle"], 0)
 
 	if (pBountyHunter == nil) then
-		printf("Error in HeroOfTatooineScreenPlay, unable to spawn bounty hunter.\n")
+		printLuaError("HeroOfTatooineScreenPlay, unable to spawn bounty hunter.")
 		return
 	end
 
@@ -511,7 +511,7 @@ function HeroOfTatooineScreenPlay:spawnIntellectLiars(pBountyHunter)
 		end
 
 		if (pLiar == nil) then
-			printf("Error in HeroOfTatooineScreenPlay, unable to spawn Mark of Intellect smugglers.\n")
+			printLuaError("HeroOfTatooineScreenPlay, unable to spawn Mark of Intellect smugglers.")
 			self:destroyIntellectMobs() -- If not all were able to spawn, destroy them all until next spawn attempt
 			return
 		end
@@ -774,7 +774,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	local pHermit = getSceneObject(hermitId)
 
 	if (pHermit == nil) then
-		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		printLuaError("HeroOfTatooineScreenPlay, unable to find hermit object.")
 		return
 	end
 
@@ -837,7 +837,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	pLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, self.honorSpawns[newLoc][1], z, self.honorSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
 
 	if (pLeader == nil) then
-		printf("Failed to create leader in HeroOfTatooineScreenPlay:doHonorChange()\n")
+		printLuaError("Failed to create leader in HeroOfTatooineScreenPlay:doHonorChange().")
 		return
 	end
 
