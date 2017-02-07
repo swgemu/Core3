@@ -43,37 +43,35 @@
 
 object_draft_schematic_item_item_recycler_ore = object_draft_schematic_item_shared_item_recycler_ore:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ore Recycler Schematic",
+	customObjectName = "Ore Recycler Schematic",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 12, 
-   size = 1, 
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 12,
+	size = 1,
+	disableFactoryRun = true,
 
-   xpType = "crafting_general", 
-   xp = 28, 
+	xpType = "crafting_general",
+	xp = 28,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "general_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "general_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"tumble_blender", "pulverizer", "chemical_tubing", "smashing_plates", "sifting_plates"},
-   ingredientSlotType = {1, 2, 0, 0, 0},
-   resourceTypes = {"object/tangible/loot/simple_kit/shared_tumble_blender.iff", "object/tangible/loot/simple_kit/shared_pulverizer.iff", "fiberplast", "steel", "iron"},
-   resourceQuantities = {1, 8, 50, 40, 15},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"tumble_blender", "pulverizer", "chemical_tubing", "smashing_plates", "sifting_plates"},
+	ingredientSlotType = {1, 2, 0, 0, 0},
+	resourceTypes = {"object/tangible/loot/simple_kit/shared_tumble_blender.iff", "object/tangible/loot/simple_kit/shared_pulverizer.iff", "fiberplast", "steel", "iron"},
+	resourceQuantities = {1, 8, 50, 40, 15},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/recycler/ore_recycler.iff",
 
-   targetTemplate = "object/tangible/recycler/ore_recycler.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_recycler_ore, "object/draft_schematic/item/item_recycler_ore.iff")

@@ -48,6 +48,8 @@ object_tangible_deed_vehicle_deed_speederbike_deed = object_tangible_deed_vehicl
 	controlDeviceObjectTemplate = "object/intangible/vehicle/speederbike_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/speederbike.iff",
 
+	factoryCrateSize = 50,
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR"},
 	experimentalWeights = {1, 1, 1},

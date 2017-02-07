@@ -43,37 +43,35 @@
 
 object_draft_schematic_item_item_agitator_motor = object_draft_schematic_item_shared_item_agitator_motor:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Agitator Motor",
+	customObjectName = "Agitator Motor",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 12, 
-   size = 1, 
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 12,
+	size = 1,
+	disableFactoryRun = true,
 
-   xpType = "crafting_general", 
-   xp = 36, 
+	xpType = "crafting_general",
+	xp = 36,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "general_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "general_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"wiring_red", "battery_cheap_copper", "interior_gears"},
-   ingredientSlotType = {2, 1, 0},
-   resourceTypes = {"object/tangible/loot/simple_kit/shared_wiring_red.iff", "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff", "metal_ferrous"},
-   resourceQuantities = {2, 1, 40},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"wiring_red", "battery_cheap_copper", "interior_gears"},
+	ingredientSlotType = {2, 1, 0},
+	resourceTypes = {"object/tangible/loot/simple_kit/shared_wiring_red.iff", "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff", "metal_ferrous"},
+	resourceQuantities = {2, 1, 40},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/loot/simple_kit/motor_small_red.iff",
 
-   targetTemplate = "object/tangible/loot/simple_kit/motor_small_red.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_agitator_motor, "object/draft_schematic/item/item_agitator_motor.iff")

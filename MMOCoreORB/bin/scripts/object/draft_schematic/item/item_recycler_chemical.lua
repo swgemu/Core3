@@ -43,37 +43,35 @@
 
 object_draft_schematic_item_item_recycler_chemical = object_draft_schematic_item_shared_item_recycler_chemical:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Chemical Recycler Schematic",
+	customObjectName = "Chemical Recycler Schematic",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 12, 
-   size = 1, 
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 12,
+	size = 1,
+	disableFactoryRun = true,
 
-   xpType = "crafting_general", 
-   xp = 28, 
+	xpType = "crafting_general",
+	xp = 28,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "general_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "general_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"tumble_blender", "feed_tubes", "chemical_tubing", "reaction_housing"},
-   ingredientSlotType = {1, 1, 0, 0},
-   resourceTypes = {"object/tangible/loot/simple_kit/shared_tumble_blender.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "gemstone"},
-   resourceQuantities = {1, 1, 50, 30},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"tumble_blender", "feed_tubes", "chemical_tubing", "reaction_housing"},
+	ingredientSlotType = {1, 1, 0, 0},
+	resourceTypes = {"object/tangible/loot/simple_kit/shared_tumble_blender.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "gemstone"},
+	resourceQuantities = {1, 1, 50, 30},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/recycler/chemical_recycler.iff",
 
-   targetTemplate = "object/tangible/recycler/chemical_recycler.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_recycler_chemical, "object/draft_schematic/item/item_recycler_chemical.iff")

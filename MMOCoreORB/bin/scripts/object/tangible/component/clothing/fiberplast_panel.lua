@@ -43,6 +43,7 @@
 
 object_tangible_component_clothing_fiberplast_panel = object_tangible_component_clothing_shared_fiberplast_panel:new {
 
+	factoryCrateSize = 50,
 
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},

@@ -47,6 +47,7 @@ object_draft_schematic_community_crafting_component_primary_computer = object_dr
 	craftingToolTab = 2148007936, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 1,
+	disableFactoryRun = true,
 
 	xpType = "crafting_general",
 	xp = 0,
