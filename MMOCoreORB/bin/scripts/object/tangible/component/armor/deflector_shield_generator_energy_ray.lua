@@ -43,6 +43,7 @@
 
 object_tangible_component_armor_deflector_shield_generator_energy_ray = object_tangible_component_armor_shared_deflector_shield_generator_energy_ray:new {
 
+	factoryCrateSize = 50,
 
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
