@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_0d7cf171",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/FsBuffItemImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-07T11:36:02Z",
+      "side": 1,
+      "message": "Poison and disease should come after the mind stats. Mind should be 6. You can see the correct order in the enum in BuffAttribute.h",
+      "revId": "5d86ccf4cf4830d67f83136d6f415fd70761a1bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
