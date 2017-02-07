@@ -81,6 +81,12 @@ function FsReflex2:completeSupplyFetch(pPlayer)
 
 			if (pBuffItem == nil) then
 				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
+			else
+				local buffItem = LuaFsBuffItem(pBuffItem)
+				buffItem:setBuffAttribute(0)
+				buffItem:setReuseTime(259200000)
+				buffItem:setBuffValue(2000)
+				buffItem:setBuffDuration(7200000)
 			end
 		end
 
