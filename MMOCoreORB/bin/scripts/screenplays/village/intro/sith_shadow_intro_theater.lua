@@ -88,7 +88,7 @@ function SithShadowIntroTheater:onLoot(pLootedCreature, pLooter, nothing)
 	if QuestManager.hasActiveQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP) then
 		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 			self:addWaypointDatapadAsLoot(pLootedCreature)
-			FsIntro:setCurrentStep(pLootedCreature, 7)
+			FsIntro:setCurrentStep(pLooter, 7)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_2)
 			return 1
