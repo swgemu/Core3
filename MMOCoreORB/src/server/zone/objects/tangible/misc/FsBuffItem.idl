@@ -1,0 +1,66 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+
+@lua
+class FsBuffItem extends TangibleObject {
+	protected unsigned int reuseTime;
+	protected int buffAttribute;
+	protected int buffValue;
+	protected unsigned int buffDuration;
+	
+	public FsBuffItem() {
+		setLoggingName("FsBuffItem");
+
+		reuseTime = 3 * 24 * 60 * 60 * 1000; // 3 Day default
+		buffAttribute = 0; // Default health
+		buffValue = 1000; // 1000 point default
+		buffDuration = 60 * 60 * 1000; // 1 hour default
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native string getTimeString(unsigned int timestamp);
+
+	public native unsigned int getBuffCRC();
+
+	@preLocked
+	public void setReuseTime(unsigned int time) {
+		reuseTime = time;
+	}
+
+	@preLocked
+	public void setBuffAttribute(int attrib) {
+		buffAttribute = attrib;
+	}
+
+	@preLocked
+	public void setBuffValue(int value) {
+		buffValue = value;
+	}
+
+	@preLocked
+	public void setBuffDuration(unsigned int dur) {
+		buffDuration = dur;
+	}
+}
