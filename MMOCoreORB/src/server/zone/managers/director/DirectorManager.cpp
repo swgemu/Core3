@@ -1263,10 +1263,12 @@ int DirectorManager::spatialChat(lua_State* L) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
 		if (creature != NULL && message != NULL) {
+			StringIdChatParameter param = *message;
+
 			Core::getTaskManager()->executeTask([=] () {
 				Locker locker(creature);
 
-				chatManager->broadcastChatMessage(creature, *message, 0, 0, creature->getMoodID());
+				chatManager->broadcastChatMessage(creature, param, 0, 0, creature->getMoodID());
 			}, "BroadcastChatLambda");
 		}
 	} else {
