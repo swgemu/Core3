@@ -80,7 +80,7 @@ function ExperienceConverter:getBranchLearnList(pPlayer)
 		if (VillageJediManagerCommon.hasUnlockedBranch(pPlayer, branchName)) then
 			local localizedBranch = getStringId("@quest/force_sensitive/utils:" .. branchName)
 			if (hasBranch) then
-				branchList = branchList + "\n" + localizedBranch
+				branchList = branchList .. "\n" .. localizedBranch
 			else
 				hasBranch = true
 				branchList = "\n" .. localizedBranch
