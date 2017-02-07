@@ -54,14 +54,14 @@ function SuiRadiationSensor:updateSensor(pPlayer)
 	local pBox = PlayerObject(pGhost):getSuiBox(sensorPid)
 
 	if (pBox == nil) then
-		printf("Error in SuiRadiationSensor:updateSensor, suiBox is nil.\n")
+		printLuaError("SuiRadiationSensor:updateSensor, suiBox is nil.")
 		return
 	end
 
 	local pPageData = LuaSuiBoxPage(pBox):getSuiPageData()
 
 	if (pPageData == nil) then
-		printf("Error in SuiRadiationSensor:updateSensor, pageData is nil.\n")
+		printLuaError("SuiRadiationSensor:updateSensor, pageData is nil.")
 		return
 	end
 
