@@ -48,6 +48,8 @@ object_tangible_medicine_crafted_medpack_stunned_a = object_tangible_medicine_cr
 	medicineUse = 5,
 	state = STUNNED,
 
+	factoryCrateSize = 50,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

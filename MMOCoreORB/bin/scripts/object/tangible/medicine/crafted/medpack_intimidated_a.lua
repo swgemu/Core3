@@ -48,6 +48,8 @@ object_tangible_medicine_crafted_medpack_intimidated_a = object_tangible_medicin
 	medicineUse = 5,
 	state = INTIMIDATED,
 
+	factoryCrateSize = 50,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

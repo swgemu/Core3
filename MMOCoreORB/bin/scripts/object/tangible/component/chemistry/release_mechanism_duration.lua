@@ -43,6 +43,7 @@
 
 object_tangible_component_chemistry_release_mechanism_duration = object_tangible_component_chemistry_shared_release_mechanism_duration:new {
 
+	factoryCrateSize = 50,
 
 	numberExperimentalProperties = {1, 1, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},

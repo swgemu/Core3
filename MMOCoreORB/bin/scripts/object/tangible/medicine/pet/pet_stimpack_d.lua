@@ -49,6 +49,8 @@ object_tangible_medicine_pet_pet_stimpack_d = object_tangible_medicine_pet_share
 	effectiveness = 700,
 	attributes = {0, 3, 6},
 
+	factoryCrateSize = 50,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
