@@ -70,7 +70,7 @@ function FsOutro:startOldMan(pPlayer)
 	local stepData = self.stepDelay[self.OLDMANWAIT]
 
 	if (stepData == nil) then
-		printf("Error in FsOutro:startOldMan, invalid step data.\n")
+		printLuaError("FsOutro:startOldMan, invalid step data.")
 		return
 	end
 
