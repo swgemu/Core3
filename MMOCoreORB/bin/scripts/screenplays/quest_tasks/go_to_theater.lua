@@ -120,6 +120,10 @@ function GoToTheater:spawnTheaterObjects(pPlayer)
 		return
 	end
 
+	if (self:areTheaterObjectsSpawned(pPlayer)) then
+		return
+	end
+
 	local zoneName = SceneObject(pTheater):getZoneName()
 
 	local spawnPoint = { SceneObject(pTheater):getWorldPositionX(), SceneObject(pTheater):getWorldPositionZ(), SceneObject(pTheater):getWorldPositionY() }
@@ -153,6 +157,10 @@ function GoToTheater:spawnTheaterObjects(pPlayer)
 end
 
 function GoToTheater:despawnTheaterObjects(pPlayer)
+	if (not self:areTheaterObjectsSpawned(pPlayer)) then
+		return
+	end
+
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	local activeAreaId = readData(playerID .. self.taskName .. "activeAreaId")
@@ -213,6 +221,21 @@ function GoToTheater:handleEnteredAreaEvent(pActiveArea, pPlayer, nothing)
 	end
 
 	return 0
+end
+
+function GoToTheater:areTheaterObjectsSpawned(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	for i = 1, #self.theater, 1 do
+		local objectID = readData(playerID .. self.taskName .. "theaterObject" .. i)
+		local pObject = getSceneObject(objectID)
+
+		if (pObject ~= nil) then
+			return true
+		end
+	end
+
+	return false
 end
 
 function GoToTheater:taskFinish(pPlayer)
