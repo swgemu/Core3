@@ -83,7 +83,7 @@ function FsCsCommander:captureCommander(pCommander, pPlayer)
 		writeData(playerID .. ":fsCounterStrike:commanderID", commanderID)
 		CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:fs_cs_capd_commander_via_group")
 	else
-		printf("ERROR in FsCsCommander:notifyCommanderCaptured(), got to end of function without matching if conditions.\n")
+		printLuaError("ERROR in FsCsCommander:notifyCommanderCaptured(), got to end of function without matching if conditions.")
 	end
 end
 
@@ -136,7 +136,7 @@ function FsCsCommander:createCommander(pTheater)
 	pCommander = spawnMobile("dathomir", "sith_shadow_mercenary_nofaction", 0, tentX, tentZ, tentY, 0, 0)
 
 	if (pCommander == nil) then
-		printf("Error in FsCsCommander:createCommander, unable to create commander.")
+		printLuaError("FsCsCommander:createCommander, unable to create commander.")
 		return
 	end
 

@@ -213,7 +213,7 @@ function VillageCommunityCrafting:addToActiveCrafterList(pPlayer)
 	if (not crafterMap:hasMapRow(playerID)) then
 		crafterMap:addMapRow(playerID, tostring(0))
 	else
-		printf("Error in crafterMap, attempting to add existing player " .. SceneObject(pPlayer):getCustomObjectName() .. " to active community crafter list.\n")
+		printLuaError("Error in crafterMap, attempting to add existing player " .. SceneObject(pPlayer):getCustomObjectName() .. " to active community crafter list.")
 	end
 
 end
@@ -262,7 +262,7 @@ function VillageCommunityCrafting:getIngredientsNeededByPlayer(pPlayer)
 	local pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quantity")
 
 	if (pMap == nil) then
-		printf("Error in VillageCommunityCrafting:getIngredientsNeededByPlayer, unable to get active crafter list.")
+		printLuaError("VillageCommunityCrafting:getIngredientsNeededByPlayer, unable to get active crafter list.")
 		return -1
 	end
 
@@ -320,7 +320,7 @@ function VillageCommunityCrafting:createAttributeValueTables()
 		local pMap = createQuestVectorMap("VillageCCAttributeTable:" .. phaseID .. ":slot" .. i)
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to create vector map in VillageCommunityCrafting:createAttributeValueTables, slot " .. i .. ".\n")
+			printLuaError("Failed to create vector map in VillageCommunityCrafting:createAttributeValueTables, slot " .. i .. ".")
 			return
 		end
 
@@ -340,7 +340,7 @@ function VillageCommunityCrafting:createProjectStatsTables()
 	local pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":overallQuality")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to create overall quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.\n")
+		printLuaError("Failed to create overall quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.")
 		return
 	end
 
@@ -352,21 +352,21 @@ function VillageCommunityCrafting:createProjectStatsTables()
 	pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quality")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to create quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.\n")
+		printLuaError("Failed to create quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.")
 		return
 	end
 
 	pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quantity")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to create quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.\n")
+		printLuaError("Failed to create quality stats vector map in VillageCommunityCrafting:createProjectStatsTables.")
 		return
 	end
 
 	pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":playerNames")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to create player name vector map in VillageCommunityCrafting:createProjectStatsTables.\n")
+		printLuaError("Failed to create player name vector map in VillageCommunityCrafting:createProjectStatsTables.")
 		return
 	end
 
@@ -374,14 +374,14 @@ function VillageCommunityCrafting:createProjectStatsTables()
 		pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quality")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to create slot quality stat vector map in VillageCommunityCrafting:createProjectStatsTables, slot " .. i .. ".\n")
+			printLuaError("Failed to create slot quality stat vector map in VillageCommunityCrafting:createProjectStatsTables, slot " .. i .. ".")
 			return
 		end
 
 		pMap = createQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quantity")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to create slot quantity stat vector map in VillageCommunityCrafting:createProjectStatsTables, slot " .. i .. ".\n")
+			printLuaError("Failed to create slot quantity stat vector map in VillageCommunityCrafting:createProjectStatsTables, slot " .. i .. ".")
 			return
 		end
 	end
@@ -396,7 +396,7 @@ function VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 	local	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":playerNames")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab player name vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.\n")
+		printLuaError("Failed to grab player name vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.")
 		return
 	end
 
@@ -406,7 +406,7 @@ function VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quality")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab quality stats vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.\n")
+		printLuaError("Failed to grab quality stats vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.")
 		return
 	end
 
@@ -416,7 +416,7 @@ function VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quantity")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab quantity stats vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.\n")
+		printLuaError("Failed to grab quantity stats vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables.")
 		return
 	end
 
@@ -427,7 +427,7 @@ function VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 		pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quality")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to grab slot quality stat vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables, slot " .. i .. ".\n")
+			printLuaError("Failed to grab slot quality stat vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables, slot " .. i .. ".")
 			return
 		end
 
@@ -437,7 +437,7 @@ function VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 		pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quantity")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to grab slot quantity stat vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables, slot " .. i .. ".\n")
+			printLuaError("Failed to grab slot quantity stat vector map in VillageCommunityCrafting:addDefaultPlayerStatsToStatTables, slot " .. i .. ".")
 			return
 		end
 
@@ -453,7 +453,7 @@ function VillageCommunityCrafting:updatePlayerStatTables(pPlayer, value, slot)
 	local pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quality")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab quality stats vector map in VillageCommunityCrafting:updatePlayerStatTables.\n")
+		printLuaError("Failed to grab quality stats vector map in VillageCommunityCrafting:updatePlayerStatTables.")
 		return
 	end
 
@@ -467,7 +467,7 @@ function VillageCommunityCrafting:updatePlayerStatTables(pPlayer, value, slot)
 	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quantity")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab quantity stats vector map in VillageCommunityCrafting:updatePlayerStatTables.\n")
+		printLuaError("Failed to grab quantity stats vector map in VillageCommunityCrafting:updatePlayerStatTables.")
 		return
 	end
 
@@ -481,7 +481,7 @@ function VillageCommunityCrafting:updatePlayerStatTables(pPlayer, value, slot)
 	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. slot .. ":quality")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab slot " .. slot .. " quality stats vector map in VillageCommunityCrafting:updatePlayerStatTables.\n")
+		printLuaError("Failed to grab slot " .. slot .. " quality stats vector map in VillageCommunityCrafting:updatePlayerStatTables.")
 		return
 	end
 
@@ -495,7 +495,7 @@ function VillageCommunityCrafting:updatePlayerStatTables(pPlayer, value, slot)
 	pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. slot .. ":quantity")
 
 	if (pMap == nil) then
-		printf("ERROR: Failed to grab slot " .. slot .. " quantity stats vector map in VillageCommunityCrafting:updatePlayerStatTables.\n")
+		printLuaError("Failed to grab slot " .. slot .. " quantity stats vector map in VillageCommunityCrafting:updatePlayerStatTables.")
 		return
 	end
 
@@ -509,7 +509,7 @@ end
 
 function VillageCommunityCrafting:getPlayerStatTableData(pPlayer, tableType, slotBool, slotNum)
 	if (slotBool and (slotNum == nil or slotNum < 0)) then
-		printf("ERROR: Invalid slot number in VillageCommunityCrafting:getPlayerStatTableData.\n")
+		printLuaError("Invalid slot number in VillageCommunityCrafting:getPlayerStatTableData.")
 		return
 	end
 
@@ -525,9 +525,9 @@ function VillageCommunityCrafting:getPlayerStatTableData(pPlayer, tableType, slo
 
 	if (pMap == nil) then
 		if (slotBool) then
-			printf("ERROR: Failed to grab slot " .. slotNum .. " " .. tableType .. " stats vector map in VillageCommunityCrafting:getPlayerStatTableData.\n")
+			printLuaError("Failed to grab slot " .. slotNum .. " " .. tableType .. " stats vector map in VillageCommunityCrafting:getPlayerStatTableData.")
 		else
-			printf("ERROR: Failed to grab " .. tableType .. " stats vector map in VillageCommunityCrafting:getPlayerStatTableData.\n")
+			printLuaError("Failed to grab " .. tableType .. " stats vector map in VillageCommunityCrafting:getPlayerStatTableData.")
 		end
 
 		return
@@ -556,7 +556,7 @@ function VillageCommunityCrafting:sendPlayerProjectAttributes(pPlayer, pNpc)
 		local pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":overallQuality")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to grab quantity stats vector map in VillageCommunityCrafting:sendPlayerProjectAttributes.\n")
+			printLuaError("Failed to grab quantity stats vector map in VillageCommunityCrafting:sendPlayerProjectAttributes.")
 		else
 			local statMap = LuaQuestVectorMap(pMap)
 			local curValue = tonumber(statMap:getMapRow(i))
@@ -581,7 +581,7 @@ function VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc,
 	local pQuantityMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. slot .. ":quantity")
 
 	if (pQuantityMap == nil) then
-		printf("ERROR: Failed to grab quantity stats vector map for slot " .. slot .. " in VillageCommunityCrafting:sendPlayerProjectAttributes.\n")
+		printLuaError("Failed to grab quantity stats vector map for slot " .. slot .. " in VillageCommunityCrafting:sendPlayerProjectAttributes.")
 		return
 	end
 
@@ -590,7 +590,7 @@ function VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc,
 	local pQualityMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. slot .. ":quality")
 
 	if (pQualityMap == nil) then
-		printf("ERROR: Failed to grab quality stats vector map for slot " .. slot .. " in VillageCommunityCrafting:sendPlayerProjectAttributes.\n")
+		printLuaError("Failed to grab quality stats vector map for slot " .. slot .. " in VillageCommunityCrafting:sendPlayerProjectAttributes.")
 		return
 	end
 
@@ -599,7 +599,7 @@ function VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc,
 	local pNameMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":playerNames")
 
 	if (pNameMap == nil) then
-		printf("ERROR: Failed to grab player name vector in VillageCommunityCrafting:sendPlayerProjectAttributes.\n")
+		printLuaError("Failed to grab player name vector in VillageCommunityCrafting:sendPlayerProjectAttributes.")
 		return
 	end
 
@@ -702,7 +702,7 @@ function VillageCommunityCrafting:calculateIngredientQuality(pObj, pPlayer)
 	local pMap = self:getAttributeValueTable(slotNum)
 
 	if (pMap == nil) then
-		printf("ERROR: Unable to get attribute map in VillageCommunityCrafting:calculateIngredientQuality() for slot " .. slotNum .. ".\n")
+		printLuaError("Unable to get attribute map in VillageCommunityCrafting:calculateIngredientQuality() for slot " .. slotNum .. ".")
 		return -1
 	end
 
@@ -728,7 +728,7 @@ function VillageCommunityCrafting:calculateIngredientQuality(pObj, pPlayer)
 			local tableValue = attribMap:getMapRow(attribName)
 
 			if (tableValue == "") then
-				printf("Error in VillageCommunityCrafting:getIngredientQuality(), table value empty for attribute " .. attribName .. ".\n")
+				printLuaError("VillageCommunityCrafting:getIngredientQuality(), table value empty for attribute " .. attribName)
 			else
 				local newTableValue = tonumber(tableValue) + attribValue
 				attribMap:deleteMapRow(attribName)
@@ -747,7 +747,7 @@ function VillageCommunityCrafting:calculateIngredientQuality(pObj, pPlayer)
 		local pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":overallQuality")
 
 		if (pMap == nil) then
-			printf("ERROR: Failed to grab overall quality stats vector map in VillageCommunityCrafting:calculateIngredientQuality.\n")
+			printLuaError("Failed to grab overall quality stats vector map in VillageCommunityCrafting:calculateIngredientQuality.")
 			return -1
 		end
 
@@ -903,7 +903,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 	local pNameMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":playerNames")
 
 	if (pNameMap == nil) then
-		printf("ERROR: Failed to grab player name vector in VillageCommunityCrafting:doEndOfPhasePrizes.\n")
+		printLuaError("Failed to grab player name vector in VillageCommunityCrafting:doEndOfPhasePrizes.")
 		return
 	end
 
@@ -931,7 +931,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 		local pQuantityMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quantity")
 
 		if (pQuantityMap == nil) then
-			printf("ERROR: Failed to grab quantity stats vector map for slot " .. i .. " in VillageCommunityCrafting:doEndOfPhasePrizes.\n")
+			printLuaError("Failed to grab quantity stats vector map for slot " .. i .. " in VillageCommunityCrafting:doEndOfPhasePrizes.")
 			return
 		end
 
@@ -940,7 +940,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 		local pQualityMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":slot" .. i .. ":quality")
 
 		if (pQualityMap == nil) then
-			printf("ERROR: Failed to grab quality stats vector map for slot " .. i .. " in VillageCommunityCrafting:doEndOfPhasePrizes.\n")
+			printLuaError("Failed to grab quality stats vector map for slot " .. i .. " in VillageCommunityCrafting:doEndOfPhasePrizes.")
 			return
 		end
 

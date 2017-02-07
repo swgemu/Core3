@@ -239,7 +239,7 @@ function VillageRaids:startAttackerPatrolPath(pMobile)
 	end
 
 	if (closestVictimLoc == -1) then
-		printf("Error in VillageRaids:startPatrolPath, unable to get closest victim loc.\n")
+		printLuaError("VillageRaids:startPatrolPath, unable to get closest victim loc.")
 		return
 	end
 
@@ -270,7 +270,7 @@ function VillageRaids:doEnemySpawnPulse()
 	local pMaster = VillageJediManagerTownship:getMasterObject()
 
 	if (pMaster == nil) then
-		printf("Error in VillageRaids:doEnemySpawnPulse(), unable to get master village object.\n")
+		printLuaError("VillageRaids:doEnemySpawnPulse(), unable to get master village object.")
 		return
 	end
 
@@ -324,7 +324,7 @@ end
 
 function VillageRaids:getPlayersInVillage(pMaster)
 	if (pMaster == nil) then
-		printf("Error in VillageRaids:getPlayersInVillage(), unable to get master village object.\n")
+		printLuaError("VillageRaids:getPlayersInVillage(), unable to get master village object.")
 		return
 	end
 

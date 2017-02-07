@@ -38,7 +38,7 @@ function GoToTheater:taskStart(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (spawnPoint == nil) then
-		printf("Error in GoToTheater:taskStart() for task " .. self.taskName .. ", spawnPoint is nil.\n")
+		printLuaError("GoToTheater:taskStart() for task " .. self.taskName .. ", spawnPoint is nil.")
 		self:callFunctionIfNotNil(self.onFailedSpawn, nil, pPlayer)
 		self:finish(pPlayer)
 		return false
@@ -115,7 +115,7 @@ function GoToTheater:spawnTheaterObjects(pPlayer)
 	local pTheater = self:getTheaterObject(pPlayer)
 
 	if (pTheater == nil) then
-		printf("Error in GoToTheater:spawnTheaterObjects for " .. self.taskName .. ", theater object null.\n")
+		printLuaError("GoToTheater:spawnTheaterObjects for " .. self.taskName .. ", theater object null.")
 		self:finish(pPlayer)
 		return
 	end

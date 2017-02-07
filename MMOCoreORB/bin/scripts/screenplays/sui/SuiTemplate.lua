@@ -85,13 +85,13 @@ SuiTemplate.new = function (templateName)
 
 	self.sendTo = function (pPlayer)
 		if (luaCallback.play == nil or luaCallback.callback == nil) then
-			printf("Error in SuiTemplate:sendTo, nil callback data.\n")
+			printLuaError("SuiTemplate:sendTo, nil callback data.")
 		end
 
 		local pPageData = suiPageData:_getObject()
 
 		if (pPageData == nil) then
-			printf("Error in SuiTemplate:sendTo, nil page data.\n")
+			printLuaError("SuiTemplate:sendTo, nil page data.")
 		end
 
 		local suiManager = LuaSuiManager()
