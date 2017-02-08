@@ -23,7 +23,7 @@ namespace server {
 }
 
 class ValidatedPosition : public Serializable {
-	Vector3 point;
+	SerializableVector3 point;
 	uint64 parent;
 public:
 	ValidatedPosition() {

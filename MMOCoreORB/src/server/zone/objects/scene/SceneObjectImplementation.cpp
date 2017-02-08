@@ -508,7 +508,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 	if (zone == NULL)
 		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<QuadTreeEntry*> closeSceneObjects;
 
 	int maxInRangeObjectCount = 0;
 
@@ -523,13 +523,13 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		CloseObjectsVector* vec = (CloseObjectsVector*) closeobjects;
 		closeSceneObjects.removeAll(vec->size(), 10);
 
-		vec->safeCopyTo(closeSceneObjects);
+		vec->safeCopyReceiversTo(closeSceneObjects, 1);
 
 		maxInRangeObjectCount = closeSceneObjects.size(); //closeobjects->size();
 	}
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
-		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
 		ManagedReference<ZoneClientSession*> client = scno->getClient();
 
@@ -565,7 +565,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	if (zone == NULL)
 		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<QuadTreeEntry*> closeSceneObjects;
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
@@ -580,14 +580,14 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 		CloseObjectsVector* vec = (CloseObjectsVector*) closeobjects;
 		closeSceneObjects.removeAll(vec->size(), 10);
 
-		vec->safeCopyTo(closeSceneObjects);
+		vec->safeCopyReceiversTo(closeSceneObjects, 1);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 
 	}
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
-		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
 		ManagedReference<ZoneClientSession*> client = scno->getClient();
 
@@ -649,7 +649,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 			maxInRangeObjectCount = closeobjects->size();
 			closeNoneReference = new SortedVector<QuadTreeEntry*>(maxInRangeObjectCount, 50);
 
-			closeobjects->safeCopyTo(*closeNoneReference);
+			closeobjects->safeCopyReceiversTo(*closeNoneReference, 1);
 			maxInRangeObjectCount = closeNoneReference->size();
 		}
 
@@ -731,7 +731,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 
 	bool readlock = !zone->isLockedByCurrentThread();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<QuadTreeEntry*> closeSceneObjects;
 	int maxInRangeObjectCount = 0;
 
 	try {
@@ -748,7 +748,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 
 			closeSceneObjects.removeAll(maxInRangeObjectCount, 10);
 
-			closeobjects->safeCopyTo(closeSceneObjects);
+			closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
 		}
@@ -759,7 +759,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	}
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
-		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
 		if (selfObject == scno)
 			continue;
