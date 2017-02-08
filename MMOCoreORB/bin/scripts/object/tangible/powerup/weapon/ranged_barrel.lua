@@ -62,8 +62,6 @@ object_tangible_powerup_weapon_ranged_barrel = object_tangible_powerup_weapon_sh
 		{"idealRange", "Condensing", "cat_pup.pup_wpn_range_mid"}
 	},
 
-	factoryCrateSize = 10,
-
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

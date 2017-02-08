@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_biologic_effect_controller_advanced = object_draft_schematic_chemistry_component_shared_biologic_effect_controller_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Biological Effect Controller",
+	customObjectName = "Advanced Biological Effect Controller",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 80, 
+	xpType = "crafting_medicine_general",
+	xp = 80,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"wheat_wild_lok", "fiberplast_tatooine"},
-   resourceQuantities = {18, 18},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"wheat_wild_lok", "fiberplast_tatooine"},
+	resourceQuantities = {18, 18},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_biologic_effect_controller_advanced, "object/draft_schematic/chemistry/component/biologic_effect_controller_advanced.iff")

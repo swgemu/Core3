@@ -59,8 +59,6 @@ object_tangible_powerup_weapon_mine_explosive = object_tangible_powerup_weapon_s
 		{"woundsRatio", "Bomblet-Generating", "cat_pup.pup_wpn_wound_chance"}
 	},
 
-	factoryCrateSize = 10,
-
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 2, 1},

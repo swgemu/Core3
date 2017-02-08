@@ -404,9 +404,10 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 		return;
 	}
 	uint8 allowFactory = 1;
-	if (!craftingManager.get()->allowManufactureSchematic(manufactureSchematic)) {
+	if (!manufactureSchematic->allowFactoryRun()) {
 		allowFactory = 0;
 	}
+
 	// Object Controller w/ Ingredients ***************************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
 			crafter->getObjectID(), 0x1B, 0x0103);
@@ -1283,7 +1284,7 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		return;
 	}
 
-	if (!craftingManager.get()->allowManufactureSchematic(manufactureSchematic)){
+	if (!manufactureSchematic->allowFactoryRun()) {
 		sendSlotMessage(0, IngredientSlot::NOSCHEMATIC);
 		return;
 	}

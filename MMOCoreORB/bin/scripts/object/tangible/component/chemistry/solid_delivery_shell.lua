@@ -43,8 +43,6 @@
 
 object_tangible_component_chemistry_solid_delivery_shell = object_tangible_component_chemistry_shared_solid_delivery_shell:new {
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 1, 1},

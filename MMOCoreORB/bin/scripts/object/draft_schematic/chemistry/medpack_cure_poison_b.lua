@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_cure_poison_b = object_draft_schematic_chemistry_shared_medpack_cure_poison_b:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Cure Poison Medpack - B",
+	customObjectName = "Cure Poison Medpack - B",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 1, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 55, 
+	xpType = "crafting_medicine_general",
+	xp = 55,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 1},
-   resourceTypes = {"fruit_fruits", "gas_inert", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {14, 14, 1, 1},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 1, 1},
+	resourceTypes = {"fruit_fruits", "gas_inert", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+	resourceQuantities = {14, 14, 1, 1},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_cure_poison_b.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_cure_poison_b.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_cure_poison_b, "object/draft_schematic/chemistry/medpack_cure_poison_b.iff")

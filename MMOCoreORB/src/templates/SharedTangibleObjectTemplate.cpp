@@ -35,8 +35,6 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	useCount = 0;
 
-	factoryCrateSize = 25;
-
 	sliceable = false;
 
 	faction = 0;
@@ -110,8 +108,6 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		playerUseMask = Lua::getShortParameter(state);
 	} else if (varName == "useCount") {
 		useCount = Lua::getIntParameter(state);
-	} else if (varName == "factoryCrateSize") {
-		factoryCrateSize = Lua::getIntParameter(state);
 	} else if (varName == "maxCondition") {
 		maxCondition = Lua::getIntParameter(state);
 	} else if (varName == "level") {

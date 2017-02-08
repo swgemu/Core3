@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Kashyyykian Ceremonial Armor Segment",
+	customObjectName = "Kashyyykian Ceremonial Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 4, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 4,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 40, 
+	xpType = "crafting_clothing_armor",
+	xp = 40,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_segment_ceremonial", "segment_mounting_tabs", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 3},
-   resourceTypes = {"hide_leathery", "wood", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
-   resourceQuantities = {5, 20, 1},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_segment_ceremonial", "segment_mounting_tabs", "segment_enhancement"},
+	ingredientSlotType = {0, 0, 3},
+	resourceTypes = {"hide_leathery", "wood", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+	resourceQuantities = {5, 20, 1},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_ceremonial.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_ceremonial.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial, "object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial.iff")

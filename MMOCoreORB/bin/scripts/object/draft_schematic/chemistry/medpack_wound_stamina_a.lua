@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_wound_stamina_a = object_draft_schematic_chemistry_shared_medpack_wound_stamina_a:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Stamina Wound Medpack - A",
+	customObjectName = "Stamina Wound Medpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 30, 
+	xpType = "crafting_medicine_general",
+	xp = 30,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"organic", "inorganic"},
-   resourceQuantities = {8, 8},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"organic", "inorganic"},
+	resourceQuantities = {8, 8},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_wound_stamina_a.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_wound_stamina_a.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_wound_stamina_a, "object/draft_schematic/chemistry/medpack_wound_stamina_a.iff")

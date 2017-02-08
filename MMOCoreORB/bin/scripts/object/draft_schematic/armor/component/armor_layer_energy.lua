@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_component_armor_layer_energy = object_draft_schematic_armor_component_shared_armor_layer_energy:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Energy Protection Armor Layer",
+	customObjectName = "Energy Protection Armor Layer",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 20, 
-   size = 3, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 20,
+	size = 3,
+	factoryCrateSize = 100,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 90, 
+	xpType = "crafting_clothing_armor",
+	xp = 90,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_layer_frame", "ablative_damage_absorbtion_medium", "energy_sink", "second_tier_insulation_medium"},
-   ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"metal", "petrochem_inert_polymer", "gas_inert_known", "ore"},
-   resourceQuantities = {20, 8, 8, 5},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_layer_frame", "ablative_damage_absorbtion_medium", "energy_sink", "second_tier_insulation_medium"},
+	ingredientSlotType = {0, 0, 0, 0},
+	resourceTypes = {"metal", "petrochem_inert_polymer", "gas_inert_known", "ore"},
+	resourceQuantities = {20, 8, 8, 5},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_layer_energy.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_layer_energy.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_armor_layer_energy, "object/draft_schematic/armor/component/armor_layer_energy.iff")

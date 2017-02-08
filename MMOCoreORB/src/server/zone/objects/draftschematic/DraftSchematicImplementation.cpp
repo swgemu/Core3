@@ -172,9 +172,11 @@ String DraftSchematicImplementation::getCustomName() {
 uint32 DraftSchematicImplementation::getTanoCRC() {
 	return schematicTemplate->getTanoCRC();
 }
+
 int DraftSchematicImplementation::getLabratory() {
 	return schematicTemplate->getLabratory();
 }
-bool DraftSchematicImplementation::allowFactoryRun() {
-	return schematicTemplate->allowFactoryRun();
+
+int DraftSchematicImplementation::getFactoryCrateSize() {
+	return schematicTemplate->getFactoryCrateSize();
 }

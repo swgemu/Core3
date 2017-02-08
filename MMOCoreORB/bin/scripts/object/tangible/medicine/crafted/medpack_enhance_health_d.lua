@@ -50,8 +50,6 @@ object_tangible_medicine_crafted_medpack_enhance_health_d = object_tangible_medi
 	duration = 1800,
 	attribute = 0,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},

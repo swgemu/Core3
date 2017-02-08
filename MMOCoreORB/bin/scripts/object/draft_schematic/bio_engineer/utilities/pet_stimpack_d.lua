@@ -43,37 +43,35 @@
 
 object_draft_schematic_bio_engineer_utilities_pet_stimpack_d = object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Pet Stimpack - D",
+	customObjectName = "Pet Stimpack - D",
 
-   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 32, 
-   size = 3, 
+	craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 32,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_bio_engineer_creature", 
-   xp = 120, 
+	xpType = "crafting_bio_engineer_creature",
+	xp = 120,
 
-   assemblySkill = "bio_engineer_assembly", 
-   experimentingSkill = "bio_engineer_experimentation", 
-   customizationSkill = "bio_customization", 
+	assemblySkill = "bio_engineer_assembly",
+	experimentingSkill = "bio_engineer_experimentation",
+	customizationSkill = "bio_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 1, 1},
-   resourceTypes = {"seafood_fish", "fiberplast_dantooine", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {24, 26, 1, 1, 3},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 1, 1, 1},
+	resourceTypes = {"seafood_fish", "fiberplast_dantooine", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+	resourceQuantities = {24, 26, 1, 1, 3},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/pet/pet_stimpack_d.iff",
 
-   targetTemplate = "object/tangible/medicine/pet/pet_stimpack_d.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_pet_stimpack_d, "object/draft_schematic/bio_engineer/utilities/pet_stimpack_d.iff")

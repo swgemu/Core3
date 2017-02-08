@@ -43,8 +43,6 @@
 
 object_tangible_component_chemistry_infection_amplifier_advanced = object_tangible_component_chemistry_shared_infection_amplifier_advanced:new {
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 3, 1, 1, 1, 1, 1, 1},

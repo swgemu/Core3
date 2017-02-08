@@ -50,7 +50,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
 	craftingToolTab = 8192, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 18, 
 	size = 1, 
-	disableFactoryRun = true,
+	factoryCrateSize = 0,
 
 	xpType = "crafting_bio_engineer_creature", 
 	xp = 50, 

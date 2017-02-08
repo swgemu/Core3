@@ -17,11 +17,6 @@ ResourceLabratory::ResourceLabratory() {
 ResourceLabratory::~ResourceLabratory() {
 }
 
-bool ResourceLabratory::allowFactoryRun(ManufactureSchematic* manufactureSchematic) {
-	return manufactureSchematic->allowFactoryRun();
-}
-
-
 void ResourceLabratory::initialize(ZoneServer* server) {
 	SharedLabratory::initialize(server);
 	Reference<Lua* > lua = new Lua();

@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced = object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Liquid Suspension",
+	customObjectName = "Advanced Liquid Suspension",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 25, 
+	xpType = "crafting_medicine_general",
+	xp = 25,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"purified_organic_suspension", "suspension_base"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"fruit_berries_dantooine", "water_vapor_talus"},
-   resourceQuantities = {6, 6},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"purified_organic_suspension", "suspension_base"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"fruit_berries_dantooine", "water_vapor_talus"},
+	resourceQuantities = {6, 6},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced, "object/draft_schematic/chemistry/component/liquid_delivery_suspension_advanced.iff")

@@ -12,6 +12,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -554,24 +555,37 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
-	ManagedReference<FactoryCrate*> crate =
-			locateCrateInOutputHopper(prototype);
+	int crateSize = schematic->getFactoryCrateSize();
 
-	if (crate == NULL)
-		crate = createNewFactoryCrate(prototype);
-	else {
-		Locker clocker(crate, _this.getReferenceUnsafeStaticCast());
-		crate->setUseCount(crate->getUseCount() + 1, false);
-
-		FactoryCrateObjectDeltaMessage3* dfcty3 = new FactoryCrateObjectDeltaMessage3(crate);
-		dfcty3->setQuantity(crate->getUseCount());
-		dfcty3->close();
-
-		broadcastToOperators(dfcty3);
+	if (crateSize <= 0) {
+		stopFactory("manf_error", "", "", -1);
+		return;
 	}
 
-	if (crate == NULL) {
-		return;
+	if (crateSize > 1) {
+		ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(prototype);
+
+		if (crate == NULL)
+			crate = createNewFactoryCrate(prototype, crateSize);
+		else {
+			Locker clocker(crate, _this.getReferenceUnsafeStaticCast());
+			crate->setUseCount(crate->getUseCount() + 1, false);
+
+			FactoryCrateObjectDeltaMessage3* dfcty3 = new FactoryCrateObjectDeltaMessage3(crate);
+			dfcty3->setQuantity(crate->getUseCount());
+			dfcty3->close();
+
+			broadcastToOperators(dfcty3);
+		}
+
+		if (crate == NULL) {
+			return;
+		}
+	} else {
+		ManagedReference<TangibleObject*> newItem = createNewUncratedItem(prototype);
+
+		if (newItem == NULL)
+			return;
 	}
 
 	Locker clocker(schematic, _this.getReferenceUnsafeStaticCast());
@@ -623,7 +637,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 	return NULL;
 }
 
-FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype) {
+FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype, int maxSize) {
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -637,7 +651,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return NULL;
 	}
 
-	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(false);
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(maxSize, false);
 
 	if (crate == NULL) {
 		stopFactory("manf_error_7", "", "", -1);
@@ -651,6 +665,37 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 	}
 
 	return crate;
+}
+
+TangibleObject* FactoryObjectImplementation::createNewUncratedItem(TangibleObject* prototype) {
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if (outputHopper == NULL) {
+		stopFactory("manf_error_6", "", "", -1);
+		return NULL;
+	}
+
+	if (outputHopper->isContainerFull()) {
+		stopFactory("manf_output_hopper_full", getDisplayedName(), "", -1);
+		return NULL;
+	}
+
+	ObjectManager* objectManager = ObjectManager::instance();
+	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype->asTangibleObject()));
+
+	if (protoclone == NULL) {
+		stopFactory("manf_error_8", "", "", -1);
+		return NULL;
+	}
+
+	protoclone->setParent(NULL);
+	outputHopper->transferObject(protoclone, -1, false);
+
+	for (int i = 0; i < operatorList.size(); ++i) {
+		protoclone->sendTo(operatorList.get(i), true);
+	}
+
+	return protoclone;
 }
 
 void FactoryObjectImplementation::collectMatchesInInputHopper(

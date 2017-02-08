@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_component_deflector_shield_projector_plate = object_draft_schematic_armor_component_shared_deflector_shield_projector_plate:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deflector Shield Projector Plate",
+	customObjectName = "Deflector Shield Projector Plate",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 30, 
-   size = 2, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 30,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 80, 
+	xpType = "crafting_clothing_armor",
+	xp = 80,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"plate_mounting_brackets", "field_isolator_assembly", "projector_field_array"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal_nonferrous", "ore", "copper"},
-   resourceQuantities = {15, 10, 15},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"plate_mounting_brackets", "field_isolator_assembly", "projector_field_array"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal_nonferrous", "ore", "copper"},
+	resourceQuantities = {15, 10, 15},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/deflector_shield_projector_plate.iff",
 
-   targetTemplate = "object/tangible/component/armor/deflector_shield_projector_plate.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_projector_plate, "object/draft_schematic/armor/component/deflector_shield_projector_plate.iff")

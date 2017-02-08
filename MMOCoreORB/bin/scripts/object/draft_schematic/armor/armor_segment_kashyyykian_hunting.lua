@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Kashyyykian Hunting Armor Segment",
+	customObjectName = "Kashyyykian Hunting Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 30, 
-   size = 3, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 30,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 35, 
+	xpType = "crafting_clothing_armor",
+	xp = 35,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_segment_kashyyykian_hunting", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "defensive_layer_3", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
-   resourceTypes = {"hide_leathery", "bone_avian", "softwood_evergreen", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
-   resourceQuantities = {15, 10, 5, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_segment_kashyyykian_hunting", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "defensive_layer_3", "segment_enhancement"},
+	ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
+	resourceTypes = {"hide_leathery", "bone_avian", "softwood_evergreen", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+	resourceQuantities = {15, 10, 5, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_hunting.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_hunting.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_kashyyykian_hunting, "object/draft_schematic/armor/armor_segment_kashyyykian_hunting.iff")

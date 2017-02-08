@@ -43,7 +43,6 @@
 
 object_tangible_item_quest_force_sensitive_fs_medic_puzzle_heal_pack = object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack:new {
 	gameObjectType = 8246,
-	factoryCrateSize = 1,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE"},

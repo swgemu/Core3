@@ -54,7 +54,7 @@ object_draft_schematic_furniture_furniture_tatooine_tapestry = object_draft_sche
    xpType = "crafting_clothing_general", 
    xp = 340, 
    
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 

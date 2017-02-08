@@ -57,7 +57,7 @@ object_draft_schematic_space_capacitor_capacitor_mk2 = object_draft_schematic_sp
    assemblySkill = "advanced_assembly", 
    experimentingSkill = "advanced_ship_experimentation", 
    customizationSkill = "advanced_customization", 
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    customizationOptions = {},
    customizationStringNames = {},

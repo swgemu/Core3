@@ -54,7 +54,7 @@ object_draft_schematic_furniture_tanning_hide_2 = object_draft_schematic_furnitu
    xpType = "crafting_structure_general", 
    xp = 500, 
 
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 

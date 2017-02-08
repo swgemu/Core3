@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_release_mechanism_duration_advanced = object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Chemical Release Duration Mechanism",
+	customObjectName = "Advanced Chemical Release Duration Mechanism",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 17, 
-   size = 4, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 17,
+	size = 4,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 65, 
+	xpType = "crafting_medicine_general",
+	xp = 65,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "chemical_element"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"meat_herbivore", "petrochem_fuel_liquid_type4"},
-   resourceQuantities = {16, 16},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "chemical_element"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"meat_herbivore", "petrochem_fuel_liquid_type4"},
+	resourceQuantities = {16, 16},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/release_mechanism_duration_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/release_mechanism_duration_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_release_mechanism_duration_advanced, "object/draft_schematic/chemistry/component/release_mechanism_duration_advanced.iff")

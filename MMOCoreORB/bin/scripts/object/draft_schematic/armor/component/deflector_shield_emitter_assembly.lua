@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_component_deflector_shield_emitter_assembly = object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deflector Shield Emitter Assembly",
+	customObjectName = "Deflector Shield Emitter Assembly",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 30, 
-   size = 4, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 30,
+	size = 4,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 80, 
+	xpType = "crafting_clothing_armor",
+	xp = 80,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"assembly_mounting_frame", "emitter_precharger_array", "emitter_module_insulation", "field_emitter_crystals"},
-   ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"metal_nonferrous", "copper", "ore", "gemstone_crystalline"},
-   resourceQuantities = {15, 10, 10, 5},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"assembly_mounting_frame", "emitter_precharger_array", "emitter_module_insulation", "field_emitter_crystals"},
+	ingredientSlotType = {0, 0, 0, 0},
+	resourceTypes = {"metal_nonferrous", "copper", "ore", "gemstone_crystalline"},
+	resourceQuantities = {15, 10, 10, 5},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/deflector_shield_emitter_assembly.iff",
 
-   targetTemplate = "object/tangible/component/armor/deflector_shield_emitter_assembly.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/deflector_shield_emitter_assembly.iff")

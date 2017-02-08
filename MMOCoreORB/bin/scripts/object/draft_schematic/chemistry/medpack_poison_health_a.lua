@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_poison_health_a = object_draft_schematic_chemistry_shared_medpack_poison_health_a:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Health Poison Delivery Unit - A",
+	customObjectName = "Health Poison Delivery Unit - A",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 3, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 60, 
+	xpType = "crafting_medicine_general",
+	xp = 60,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 1, 1, 1},
-   resourceTypes = {"metal_nonferrous", "vegetable_fungi", "chemical", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
-   resourceQuantities = {4, 10, 15, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 0, 1, 1, 1},
+	resourceTypes = {"metal_nonferrous", "vegetable_fungi", "chemical", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
+	resourceQuantities = {4, 10, 15, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_poison_health_a.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_poison_health_a.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_poison_health_a, "object/draft_schematic/chemistry/medpack_poison_health_a.iff")

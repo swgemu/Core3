@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_schematic_chemistry_component_shared_solid_delivery_shell:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Solid Delivery Shell",
+	customObjectName = "Solid Delivery Shell",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 3, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 35, 
+	xpType = "crafting_medicine_general",
+	xp = 35,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"purified_organic_element", "shell_material_seed_matrix"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"organic", "metal"},
-   resourceQuantities = {8, 8},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"purified_organic_element", "shell_material_seed_matrix"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"organic", "metal"},
+	resourceQuantities = {8, 8},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_solid_delivery_shell, "object/draft_schematic/chemistry/component/solid_delivery_shell.iff")

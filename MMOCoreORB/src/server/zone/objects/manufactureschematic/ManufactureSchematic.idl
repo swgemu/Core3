@@ -330,6 +330,10 @@ class ManufactureSchematic extends IntangibleObject {
 		return factoryBlueprint.getConsolidatedEntry(i);
 	}
 
+	@dirty
+	public native int getFactoryCrateSize();
+
+	@dirty
 	public native boolean allowFactoryRun();
 
 	@dirty

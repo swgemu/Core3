@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_wound_constitution_c = object_draft_schematic_chemistry_shared_medpack_wound_constitution_c:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Constitution Wound Medpack - C",
+	customObjectName = "Constitution Wound Medpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 30, 
-   size = 1, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 30,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 65, 
+	xpType = "crafting_medicine_general",
+	xp = 65,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 1, 1},
-   resourceTypes = {"seeds", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {18, 18, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 1, 1, 1},
+	resourceTypes = {"seeds", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+	resourceQuantities = {18, 18, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_wound_constitution_c.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_wound_constitution_c.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_wound_constitution_c, "object/draft_schematic/chemistry/medpack_wound_constitution_c.iff")

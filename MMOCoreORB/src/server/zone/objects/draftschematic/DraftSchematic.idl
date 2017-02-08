@@ -203,5 +203,5 @@ class DraftSchematic extends IntangibleObject {
 	public native int getLabratory();
 
 	@dirty
-	public native boolean allowFactoryRun();
+	public native int getFactoryCrateSize();
 }

@@ -337,10 +337,6 @@ int GeneticLabratory::getCreationCount(ManufactureSchematic* manufactureSchemati
 	return 1;
 }
 
-bool GeneticLabratory::allowFactoryRun(ManufactureSchematic* manufactureSchematic) {
-	return false;
-}
-
 void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
 	// we can 'run super' then reset our resists accordingly as well as armor base.
 	//

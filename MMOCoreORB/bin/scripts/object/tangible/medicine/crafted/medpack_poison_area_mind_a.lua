@@ -56,8 +56,6 @@ object_tangible_medicine_crafted_medpack_poison_area_mind_a = object_tangible_me
 	commandToExecute = "applypoison",
 	area = 10,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},

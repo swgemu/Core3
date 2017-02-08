@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_resilience_compound = object_draft_schematic_chemistry_component_shared_resilience_compound:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Resilience Compound",
+	customObjectName = "Resilience Compound",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 45, 
+	xpType = "crafting_medicine_general",
+	xp = 45,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"gas_reactive", "radioactive"},
-   resourceQuantities = {12, 12},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"gas_reactive", "radioactive"},
+	resourceQuantities = {12, 12},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/resilience_compound.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/resilience_compound.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_resilience_compound, "object/draft_schematic/chemistry/component/resilience_compound.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_schematic_chemistry_component_shared_dispersal_mechanism:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Dispersal Mechanism",
+	customObjectName = "Dispersal Mechanism",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 45, 
+	xpType = "crafting_medicine_general",
+	xp = 45,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"delivery_medium", "body_shell"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"fuel_petrochem_liquid", "petrochem_inert"},
-   resourceQuantities = {12, 12},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"delivery_medium", "body_shell"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"fuel_petrochem_liquid", "petrochem_inert"},
+	resourceQuantities = {12, 12},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_dispersal_mechanism, "object/draft_schematic/chemistry/component/dispersal_mechanism.iff")

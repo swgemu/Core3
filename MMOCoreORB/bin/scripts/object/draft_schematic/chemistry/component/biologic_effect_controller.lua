@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_biologic_effect_controller = object_draft_schematic_chemistry_component_shared_biologic_effect_controller:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Biological Effect Controller",
+	customObjectName = "Biological Effect Controller",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 35, 
+	xpType = "crafting_medicine_general",
+	xp = 35,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"organic", "inorganic"},
-   resourceQuantities = {6, 6},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"organic", "inorganic"},
+	resourceQuantities = {6, 6},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_biologic_effect_controller, "object/draft_schematic/chemistry/component/biologic_effect_controller.iff")

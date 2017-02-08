@@ -44,8 +44,6 @@
 object_tangible_medicine_pet_pet_vitapack_c = object_tangible_medicine_pet_shared_pet_vitapack_c:new {
 	gameObjectType = 8219,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1},

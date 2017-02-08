@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_resilience_compound_advanced = object_draft_schematic_chemistry_component_shared_resilience_compound_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Resilience Compound",
+	customObjectName = "Advanced Resilience Compound",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 100, 
+	xpType = "crafting_medicine_general",
+	xp = 100,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"gas_reactive_tolium", "radioactive_type1"},
-   resourceQuantities = {24, 24},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"gas_reactive_tolium", "radioactive_type1"},
+	resourceQuantities = {24, 24},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/resilience_compound_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/resilience_compound_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_resilience_compound_advanced, "object/draft_schematic/chemistry/component/resilience_compound_advanced.iff")

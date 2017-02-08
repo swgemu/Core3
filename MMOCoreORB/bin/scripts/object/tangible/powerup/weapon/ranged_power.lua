@@ -62,9 +62,6 @@ object_tangible_powerup_weapon_ranged_power = object_tangible_powerup_weapon_sha
 		{"pointBlankAccuracy", "Searing", "cat_pup.pup_wpn_range_attack_mod_zero"}
 	},
 
-	factoryCrateSize = 10,
-
-
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

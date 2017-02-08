@@ -54,7 +54,7 @@ object_draft_schematic_furniture_furniture_bottle_fat = object_draft_schematic_f
    xpType = "crafting_general", 
    xp = 110, 
 
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 

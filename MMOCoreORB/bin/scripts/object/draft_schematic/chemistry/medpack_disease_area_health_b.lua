@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_disease_area_health_b = object_draft_schematic_chemistry_shared_medpack_disease_area_health_b:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Health Area Disease Delivery Unit - B",
+	customObjectName = "Health Area Disease Delivery Unit - B",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 35, 
-   size = 3, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 35,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 90, 
+	xpType = "crafting_medicine_general",
+	xp = 90,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 1, 1, 1},
-   resourceTypes = {"metal_nonferrous", "meat_insect", "radioactive", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
-   resourceQuantities = {10, 15, 20, 2, 1, 2},
-   contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 0, 1, 1, 1},
+	resourceTypes = {"metal_nonferrous", "meat_insect", "radioactive", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
+	resourceQuantities = {10, 15, 20, 2, 1, 2},
+	contribution = {100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_disease_area_health_b.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_disease_area_health_b.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_disease_area_health_b, "object/draft_schematic/chemistry/medpack_disease_area_health_b.iff")

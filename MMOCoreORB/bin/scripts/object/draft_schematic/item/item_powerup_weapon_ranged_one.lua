@@ -43,38 +43,36 @@
 
 object_draft_schematic_item_item_powerup_weapon_ranged_one = object_draft_schematic_item_shared_item_powerup_weapon_ranged_one:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Barrel",
+	customObjectName = "Barrel",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 5, 
-   size = 1, 
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 5,
+	size = 1,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_general", 
-   xp = 20, 
+	xpType = "crafting_general",
+	xp = 20,
 
-   isMagic = true,
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "general_customization", 
+	isMagic = true,
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "general_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"resource_one", "resource_two"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"mineral", "chemical"},
-   resourceQuantities = {6, 4},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"resource_one", "resource_two"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"mineral", "chemical"},
+	resourceQuantities = {6, 4},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/powerup/weapon/ranged_barrel.iff",
 
-   targetTemplate = "object/tangible/powerup/weapon/ranged_barrel.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_ranged_one, "object/draft_schematic/item/item_powerup_weapon_ranged_one.iff")

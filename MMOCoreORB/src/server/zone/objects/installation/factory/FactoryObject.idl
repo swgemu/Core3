@@ -111,7 +111,10 @@ class FactoryObject extends InstallationObject {
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
 
 	@preLocked
-	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype);
+	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype, int maxSize);
+
+	@preLocked
+	private native TangibleObject createNewUncratedItem(TangibleObject prototype);
 
 	private native boolean populateSchematicBlueprint(ManufactureSchematic schematic);
 

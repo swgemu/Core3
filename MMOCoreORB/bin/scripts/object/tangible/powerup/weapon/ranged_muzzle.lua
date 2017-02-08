@@ -63,9 +63,6 @@ object_tangible_powerup_weapon_ranged_muzzle = object_tangible_powerup_weapon_sh
 		{"pointBlankAccuracy", "Flaring", "cat_pup.pup_wpn_range_attack_mod_zero"}
 	},
 
-	factoryCrateSize = 10,
-
-
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

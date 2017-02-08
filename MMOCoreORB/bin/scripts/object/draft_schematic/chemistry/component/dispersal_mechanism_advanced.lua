@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_dispersal_mechanism_advanced = object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Dispersal Mechanism",
+	customObjectName = "Advanced Dispersal Mechanism",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 100, 
+	xpType = "crafting_medicine_general",
+	xp = 100,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"delivery_medium", "body_shell"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"petrochem_fuel_liquid_type2", "fiberplast_yavin4"},
-   resourceQuantities = {25, 25},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"delivery_medium", "body_shell"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"petrochem_fuel_liquid_type2", "fiberplast_yavin4"},
+	resourceQuantities = {25, 25},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_dispersal_mechanism_advanced, "object/draft_schematic/chemistry/component/dispersal_mechanism_advanced.iff")

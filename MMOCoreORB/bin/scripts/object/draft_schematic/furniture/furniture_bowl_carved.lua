@@ -54,7 +54,7 @@ object_draft_schematic_furniture_furniture_bowl_carved = object_draft_schematic_
    xpType = "crafting_general", 
    xp = 100, 
 
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 

@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_shield_generator_personal_b = object_draft_schematic_armor_shared_shield_generator_personal_b:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Personal Shield Generator Mk.2",
+	customObjectName = "Personal Shield Generator Mk.2",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 55, 
-   size = 14, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 55,
+	size = 14,
+	factoryCrateSize = 20,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 200, 
+	xpType = "crafting_clothing_armor",
+	xp = 200,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"assembly_containment_module", "charge_insulator_shield", "personal_mounting_clip", "feed_power_regulator_unit", "field_transmission_substrate_assembly", "ray_shielding_generator", "particle_shielding_generators", "shield_unit_energy_distributor", "field_emitter_matrix"},
-   ingredientSlotType = {0, 0, 0, 1, 1, 1, 1, 1, 1},
-   resourceTypes = {"iron", "gemstone_crystalline", "steel", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff", "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff", "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff", "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff"},
-   resourceQuantities = {60, 20, 20, 1, 1, 1, 2, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"assembly_containment_module", "charge_insulator_shield", "personal_mounting_clip", "feed_power_regulator_unit", "field_transmission_substrate_assembly", "ray_shielding_generator", "particle_shielding_generators", "shield_unit_energy_distributor", "field_emitter_matrix"},
+	ingredientSlotType = {0, 0, 0, 1, 1, 1, 1, 1, 1},
+	resourceTypes = {"iron", "gemstone_crystalline", "steel", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff", "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff", "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff", "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff"},
+	resourceQuantities = {60, 20, 20, 1, 1, 1, 2, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/shield_generator_personal_b.iff",
 
-   targetTemplate = "object/tangible/component/armor/shield_generator_personal_b.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shield_generator_personal_b, "object/draft_schematic/armor/shield_generator_personal_b.iff")

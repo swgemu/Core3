@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_component_infection_amplifier_advanced = object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Infection Amplifier",
+	customObjectName = "Advanced Infection Amplifier",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 115, 
+	xpType = "crafting_medicine_general",
+	xp = 115,
 
-   assemblySkill = "combat_medicine_assembly", 
-   experimentingSkill = "combat_medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "combat_medicine_assembly",
+	experimentingSkill = "combat_medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"delivery_medium", "body_shell"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"gas_reactive_eleton", "aluminum_titanium"},
-   resourceQuantities = {28, 28},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"delivery_medium", "body_shell"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"gas_reactive_eleton", "aluminum_titanium"},
+	resourceQuantities = {28, 28},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/chemistry/infection_amplifier_advanced.iff",
 
-   targetTemplate = "object/tangible/component/chemistry/infection_amplifier_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_infection_amplifier_advanced, "object/draft_schematic/chemistry/component/infection_amplifier_advanced.iff")

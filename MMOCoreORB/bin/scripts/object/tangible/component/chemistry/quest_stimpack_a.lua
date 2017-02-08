@@ -49,8 +49,6 @@ object_tangible_component_chemistry_quest_stimpack_a = object_tangible_component
 	medicineClass = STIM_A,
 	attributes = {0, 3},
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemistry_shared_med_fire_blanket:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Flame Suppression Blanket",
+	customObjectName = "Flame Suppression Blanket",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 28, 
-   size = 3, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 28,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 105, 
+	xpType = "crafting_medicine_general",
+	xp = 105,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"coolent_gel", "fire_suppression_lining", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 1},
-   resourceTypes = {"vegetable_fungi_rori", "aluminum", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {26, 44, 2, 2},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"coolent_gel", "fire_suppression_lining", "delivery_medium", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 1, 1},
+	resourceTypes = {"vegetable_fungi_rori", "aluminum", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+	resourceQuantities = {26, 44, 2, 2},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/crafted/medic_fire_blanket.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medic_fire_blanket.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_fire_blanket, "object/draft_schematic/chemistry/med_fire_blanket.iff")

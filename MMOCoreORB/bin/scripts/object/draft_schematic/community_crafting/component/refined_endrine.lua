@@ -47,7 +47,7 @@ object_draft_schematic_community_crafting_component_refined_endrine = object_dra
 	craftingToolTab = 2148007936, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 1,
-	disableFactoryRun = true,
+	factoryCrateSize = 0,
 
 	xpType = "crafting_general",
 	xp = 0,

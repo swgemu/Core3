@@ -47,13 +47,14 @@ object_draft_schematic_item_quest_item_fs_medic_puzzle_heal_pack = object_draft_
 	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 5,
 	size = 1,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_medicine_general", 
-   xp = 30, 
+	xpType = "crafting_medicine_general",
+	xp = 30,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
 	customizationOptions = {},
 	customizationStringNames = {},

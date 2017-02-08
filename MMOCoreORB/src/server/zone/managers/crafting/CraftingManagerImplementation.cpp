@@ -56,11 +56,6 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureO
 	return failure;
 }
 
-bool CraftingManagerImplementation::allowManufactureSchematic(ManufactureSchematic* manufactureSchematic) {
-	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
-	return lab->allowFactoryRun(manufactureSchematic);
-}
-
 int CraftingManagerImplementation::getCreationCount(ManufactureSchematic* manufactureSchematic) {
 	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
 	return lab->getCreationCount(manufactureSchematic);

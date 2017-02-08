@@ -772,7 +772,7 @@ void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 	}
 }
 
-Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool insertSelf) {
+Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int maxSize, bool insertSelf) {
 	String file;
 	uint32 type = getGameObjectType();
 
@@ -795,11 +795,6 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool i
 	else
 		file = "object/factory/factory_crate_generic_items.iff";
 
-	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
-
-	if (tanoData == NULL)
-		return NULL;
-
 	ObjectManager* objectManager = ObjectManager::instance();
 
 	Reference<FactoryCrate*> crate = (getZoneServer()->createObject(file.hashCode(), 2)).castTo<FactoryCrate*>();
@@ -809,7 +804,7 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool i
 
 	Locker locker(crate);
 
-	crate->setMaxCapacity(tanoData->getFactoryCrateSize());
+	crate->setMaxCapacity(maxSize);
 
 	if (insertSelf) {
 		if (!crate->transferObject(asTangibleObject(), -1, false)) {

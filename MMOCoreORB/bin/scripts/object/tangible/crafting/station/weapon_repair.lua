@@ -51,7 +51,6 @@ object_tangible_crafting_station_weapon_repair = object_tangible_crafting_statio
 	boostSkillMod = "weapon_repair",
 
 	stationType = 7,
-	factoryCrateSize = 25,
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},

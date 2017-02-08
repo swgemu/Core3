@@ -51,8 +51,6 @@ object_tangible_medicine_crafted_medpack_cure_disease_area_a = object_tangible_m
 	commandToExecute = "curedisease",
 	area = 5,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 1},

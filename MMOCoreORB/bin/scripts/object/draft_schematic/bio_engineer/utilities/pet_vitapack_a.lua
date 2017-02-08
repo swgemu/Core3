@@ -43,37 +43,35 @@
 
 object_draft_schematic_bio_engineer_utilities_pet_vitapack_a = object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Pet Vitality Medpack - A",
+	customObjectName = "Pet Vitality Medpack - A",
 
-   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 28, 
-   size = 3, 
+	craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 28,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_bio_engineer_creature", 
-   xp = 80, 
+	xpType = "crafting_bio_engineer_creature",
+	xp = 80,
 
-   assemblySkill = "bio_engineer_assembly", 
-   experimentingSkill = "bio_engineer_experimentation", 
-   customizationSkill = "bio_customization", 
+	assemblySkill = "bio_engineer_assembly",
+	experimentingSkill = "bio_engineer_experimentation",
+	customizationSkill = "bio_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 1},
-   resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
-   resourceQuantities = {20, 18, 1, 1},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 1, 1},
+	resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
+	resourceQuantities = {20, 18, 1, 1},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/pet/pet_vitapack_a.iff",
 
-   targetTemplate = "object/tangible/medicine/pet/pet_vitapack_a.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_pet_vitapack_a, "object/draft_schematic/bio_engineer/utilities/pet_vitapack_a.iff")

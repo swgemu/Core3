@@ -25,13 +25,13 @@ function ThemeParkLogic:start()
 	if (self.requiredPlanets ~= nil and #self.requiredPlanets > 0) then
 		for i = 1, #self.requiredPlanets, 1 do
 			if not isZoneEnabled(self.requiredPlanets[i]) then
-				printLuaError("Unable to load screenplay " .. self.className .. ", zone " .. self.requiredPlanets[i] .. " is not enabled.")
+				printf("ERROR: Unable to load screenplay " .. self.className .. ", zone " .. self.requiredPlanets[i] .. " is not enabled.\n")
 				return
 			end
 		end
 	else
 		if not isZoneEnabled(self.planetName) and not self.genericGiver then
-			printLuaError("Unable to load screenplay " .. self.className .. ", zone " .. self.planetName .. " is not enabled.")
+			printf("ERROR: Unable to load screenplay " .. self.className .. ", zone " .. self.planetName .. " is not enabled.\n")
 			return
 		end
 	end

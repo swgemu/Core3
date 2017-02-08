@@ -44,7 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_sand_panther = object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther:new {
 
    templateType = DRAFTSCHEMATIC,
-   disableFactoryRun = true,	
+   factoryCrateSize = 0,	
 
    customObjectName = "Razor Cat",
 

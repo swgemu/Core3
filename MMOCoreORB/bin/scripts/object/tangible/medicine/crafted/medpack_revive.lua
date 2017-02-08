@@ -45,8 +45,6 @@ object_tangible_medicine_crafted_medpack_revive = object_tangible_medicine_craft
 	gameObjectType = 8243,
 	useCount = 10,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1},

@@ -50,7 +50,7 @@ object_draft_schematic_item_item_recycler_metal = object_draft_schematic_item_sh
 	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 12,
 	size = 1,
-	disableFactoryRun = true,
+	factoryCrateSize = 0,
 
 	xpType = "crafting_general",
 	xp = 28,

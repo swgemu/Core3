@@ -49,8 +49,6 @@ object_tangible_medicine_crafted_medpack_wound_constitution_a = object_tangible_
 	effectiveness = 100,
 	attribute = 2,
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

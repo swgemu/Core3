@@ -65,8 +65,6 @@ object_tangible_powerup_weapon_melee_generic = object_tangible_powerup_weapon_sh
 		{"maxDamage", "Refining", "cat_pup.pup_wpn_damage_max"}
 	},
 
-	factoryCrateSize = 10,
-
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

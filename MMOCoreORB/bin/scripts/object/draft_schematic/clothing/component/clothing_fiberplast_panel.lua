@@ -43,37 +43,35 @@
 
 object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Fiberplast Panel",
+	customObjectName = "Fiberplast Panel",
 
-   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 5, 
-   size = 2, 
+	craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 5,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_general", 
-   xp = 20, 
+	xpType = "crafting_general",
+	xp = 20,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "clothing_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"body", "binding_and_reinforcement"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"fiberplast", "metal"},
-   resourceQuantities = {8, 2},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+	ingredientTitleNames = {"body", "binding_and_reinforcement"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"fiberplast", "metal"},
+	resourceQuantities = {8, 2},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/clothing/fiberplast_panel.iff",
 
-   targetTemplate = "object/tangible/component/clothing/fiberplast_panel.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/clothing_fiberplast_panel.iff")

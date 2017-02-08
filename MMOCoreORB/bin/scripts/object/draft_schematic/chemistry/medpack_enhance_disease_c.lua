@@ -43,37 +43,35 @@
 
 object_draft_schematic_chemistry_medpack_enhance_disease_c = object_draft_schematic_chemistry_shared_medpack_enhance_disease_c:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Enhance Disease Resist Medpack - C",
+	customObjectName = "Enhance Disease Resist Medpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 37, 
-   size = 3, 
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 37,
+	size = 3,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_medicine_general", 
-   xp = 90, 
+	xpType = "crafting_medicine_general",
+	xp = 90,
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "medicine_assembly",
+	experimentingSkill = "medicine_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
-   ingredientTitleNames = {"first_organic_element", "second_organic_element", "first_inorganic_element", "second_inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
-   resourceTypes = {"bone_mammal_lok", "corn_wild", "petrochem_inert_polymer", "armophous_regvis", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {12, 12, 12, 12, 1, 2, 4},
-   contribution = {100, 100, 100, 100, 50, 50, 50},
+	ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+	ingredientTitleNames = {"first_organic_element", "second_organic_element", "first_inorganic_element", "second_inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
+	ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
+	resourceTypes = {"bone_mammal_lok", "corn_wild", "petrochem_inert_polymer", "armophous_regvis", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
+	resourceQuantities = {12, 12, 12, 12, 1, 2, 4},
+	contribution = {100, 100, 100, 100, 50, 50, 50},
 
+	targetTemplate = "object/tangible/medicine/crafted/medpack_enhance_disease_c.iff",
 
-   targetTemplate = "object/tangible/medicine/crafted/medpack_enhance_disease_c.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_disease_c, "object/draft_schematic/chemistry/medpack_enhance_disease_c.iff")

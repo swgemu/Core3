@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_shared_armor_segment_zam:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Armorweave Segment",
+	customObjectName = "Armorweave Segment",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 12, 
-   size = 4, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 12,
+	size = 4,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 35, 
+	xpType = "crafting_clothing_armor",
+	xp = 35,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_segment_zam", "segment_mounting_tabs", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 3},
-   resourceTypes = {"metal", "metal", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
-   resourceQuantities = {14, 3, 1},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_segment_zam", "segment_mounting_tabs", "segment_enhancement"},
+	ingredientSlotType = {0, 0, 3},
+	resourceTypes = {"metal", "metal", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+	resourceQuantities = {14, 3, 1},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_segment_zam.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_segment_zam.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_zam, "object/draft_schematic/armor/armor_segment_zam.iff")

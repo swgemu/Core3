@@ -53,7 +53,7 @@ object_draft_schematic_furniture_furniture_technical_console_s01 = object_draft_
    xpType = "crafting_structure_general", 
    xp = 1480, 
 
-   disableFactoryRun = true,
+   factoryCrateSize = 0,
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 

@@ -43,37 +43,35 @@
 
 object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draft_schematic_clothing_component_shared_clothing_metal_fasteners:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Metal Fasteners",
+	customObjectName = "Metal Fasteners",
 
-   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 6, 
-   size = 2, 
+	craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 6,
+	size = 2,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_general", 
-   xp = 30, 
+	xpType = "crafting_general",
+	xp = 30,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "clothing_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"fastener_housing", "fastener_clip"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "metal"},
-   resourceQuantities = {5, 10},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+	ingredientTitleNames = {"fastener_housing", "fastener_clip"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "metal"},
+	resourceQuantities = {5, 10},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/clothing/metal_fasteners.iff",
 
-   targetTemplate = "object/tangible/component/clothing/metal_fasteners.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_metal_fasteners, "object/draft_schematic/clothing/component/clothing_metal_fasteners.iff")

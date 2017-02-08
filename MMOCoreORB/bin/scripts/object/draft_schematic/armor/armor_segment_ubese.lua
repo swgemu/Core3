@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_ubese = object_draft_schematic_armor_shared_armor_segment_ubese:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ubese Armor Segment",
+	customObjectName = "Ubese Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 20, 
-   size = 6, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 20,
+	size = 6,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 60, 
+	xpType = "crafting_clothing_armor",
+	xp = 60,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "defensive_layer", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 0, 3, 3},
-   resourceTypes = {"iron", "steel", "fiberplast", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
-   resourceQuantities = {15, 10, 5, 1, 1},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "defensive_layer", "segment_enhancement"},
+	ingredientSlotType = {0, 0, 0, 3, 3},
+	resourceTypes = {"iron", "steel", "fiberplast", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+	resourceQuantities = {15, 10, 5, 1, 1},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_segment_ubese.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_segment_ubese.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_ubese, "object/draft_schematic/armor/armor_segment_ubese.iff")

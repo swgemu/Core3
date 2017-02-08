@@ -78,7 +78,7 @@ protected:
 
 	int labratory;
 
-	bool disableFactory;
+	int factoryCrateSize;
 
 public:
 	enum LabType {
@@ -93,6 +93,7 @@ public:
 
 	void readObject(LuaObject* templateData);
 
+	void parseVariableData(const String& varName, LuaObject* data);
 
 	Vector<Reference<DraftSlot* > >* getDraftSlots() {
         return draftSlots;
@@ -204,8 +205,8 @@ public:
     	return labratory;
     }
 
-    bool allowFactoryRun() {
-    	return !disableFactory;
+    int getFactoryCrateSize() {
+    	return factoryCrateSize;
     }
 
 };

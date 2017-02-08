@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_component_armor_layer_blast = object_draft_schematic_armor_component_shared_armor_layer_blast:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Blast Protection Armor Layer",
+	customObjectName = "Blast Protection Armor Layer",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 2, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 2,
+	factoryCrateSize = 100,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 100, 
+	xpType = "crafting_clothing_armor",
+	xp = 100,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_layer_frame", "defensive_layer_microlattice", "shockwave_repulsion_compound", "blast_harmonics_absorbtion_medium"},
-   ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"metal_ferrous", "petrochem_inert_polymer", "gemstone_armophous", "ore_intrusive"},
-   resourceQuantities = {25, 10, 8, 3},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_layer_frame", "defensive_layer_microlattice", "shockwave_repulsion_compound", "blast_harmonics_absorbtion_medium"},
+	ingredientSlotType = {0, 0, 0, 0},
+	resourceTypes = {"metal_ferrous", "petrochem_inert_polymer", "gemstone_armophous", "ore_intrusive"},
+	resourceQuantities = {25, 10, 8, 3},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_layer_blast.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_layer_blast.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_armor_layer_blast, "object/draft_schematic/armor/component/armor_layer_blast.iff")

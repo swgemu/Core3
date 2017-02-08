@@ -43,37 +43,35 @@
 
 object_draft_schematic_armor_armor_segment_chitin_advanced = object_draft_schematic_armor_shared_armor_segment_chitin_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Chitin Armor Segment",
+	customObjectName = "Advanced Chitin Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 4, 
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 4,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 40, 
+	xpType = "crafting_clothing_armor",
+	xp = 40,
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
-   ingredientTitleNames = {"armor_segment_chitin", "segment_mounting_tabs", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 3},
-   resourceTypes = {"bone_mammal_dantooine", "iron_doonium", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
-   resourceQuantities = {25, 8, 1},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+	ingredientTitleNames = {"armor_segment_chitin", "segment_mounting_tabs", "segment_enhancement"},
+	ingredientSlotType = {0, 0, 3},
+	resourceTypes = {"bone_mammal_dantooine", "iron_doonium", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
+	resourceQuantities = {25, 8, 1},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/armor/armor_segment_chitin_advanced.iff",
 
-   targetTemplate = "object/tangible/component/armor/armor_segment_chitin_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_chitin_advanced, "object/draft_schematic/armor/armor_segment_chitin_advanced.iff")

@@ -48,8 +48,6 @@ object_tangible_deed_vehicle_deed_landspeeder_x34_deed = object_tangible_deed_ve
 	controlDeviceObjectTemplate = "object/intangible/vehicle/landspeeder_x34_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/landspeeder_x34.iff",
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR"},
 	experimentalWeights = {1, 1, 1},

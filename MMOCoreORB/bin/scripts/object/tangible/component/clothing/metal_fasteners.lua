@@ -43,8 +43,6 @@
 
 object_tangible_component_clothing_metal_fasteners = object_tangible_component_clothing_shared_metal_fasteners:new {
 
-	factoryCrateSize = 50,
-
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
