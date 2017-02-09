@@ -86,6 +86,10 @@ public:
 		point.setZ(z);
 	}
 
+	inline const Vector3& getPoint() const {
+		return point;
+	}
+
 	inline Vector3 getPoint() const {
 		return point;
 	}
