@@ -142,11 +142,12 @@ function GoToTheater:spawnTheaterObjects(pPlayer)
 		end
 	end
 
-	local spawnedMobilesList = SpawnMobiles.spawnMobiles(pTheater, self.taskName, self.mobileList, true)
-	local spawnedMobilesWithLocList = SpawnMobiles.spawnMobilesWithLoc(pTheater, self.taskName, self.mobileListWithLoc)
+	local spawnedMobilesList
 
-	if (spawnedMobilesList == nil and spawnedMobilesWithLocList ~= nil) then
-		spawnedMobilesList = spawnedMobilesWithLocList
+	if (self.mobileList ~= nil and #self.mobileList > 0) then
+		spawnedMobilesList = SpawnMobiles.spawnMobiles(pTheater, self.taskName, self.mobileList, true)
+	elseif (self.mobileListWithLoc ~= nil and #self.mobileListWithLoc > 0) then
+		spawnedMobilesList = SpawnMobiles.spawnMobilesWithLoc(pTheater, self.taskName, self.mobileListWithLoc)
 	end
 
 	if not self:setupActiveArea(pPlayer, spawnPoint) then
