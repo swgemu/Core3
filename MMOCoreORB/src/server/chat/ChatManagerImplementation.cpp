@@ -991,16 +991,28 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 
 	playerMap->resetIterator(false);
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	message->acquire();
+#endif
+
 	while (playerMap->hasNext(false)) {
 		ManagedReference<CreatureObject*> player = playerMap->getNextValue(false);
 
 		if (player == NULL || !player->isOnline())
 			continue;
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		player->sendMessage(message);
+#else
 		player->sendMessage(message->clone());
+#endif
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	message->release();
+#else
 	delete message;
+#endif
 	message = NULL;
 }
 

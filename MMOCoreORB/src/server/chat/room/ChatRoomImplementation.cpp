@@ -98,30 +98,58 @@ void ChatRoomImplementation::removeAllPlayers() {
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	msg->acquire();
+#endif
+
 	for (int i = 0; i < playerList.size(); ++i) {
 		ManagedReference<CreatureObject*> player = playerList.get(i);
 
-		if (player != NULL)
+		if (player != NULL) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+			player->sendMessage(msg);
+#else
 			player->sendMessage(msg->clone());
+#endif
+		}
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	msg->release();
+#else
 	delete msg;
+#endif
 }
 
 void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	for (int j = 0; j < messages->size(); ++j) {
+		BaseMessage* msg = messages->get(j);
+		msg->acquire();
+	}
+#endif
 
 	for (int i = 0; i < playerList.size(); ++i) {
 		CreatureObject* player = playerList.get(i);
 
 		for (int j = 0; j < messages->size(); ++j) {
 			BaseMessage* msg = messages->get(j);
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+			player->sendMessage(msg);
+#else
 			player->sendMessage(msg->clone());
+#endif
 		}
 	}
 
 	for (int j = 0; j < messages->size(); ++j) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		messages->get(j)->release();
+#else
 		delete messages->get(j);
+#endif
 	}
 
 	messages->removeAll();
@@ -157,6 +185,9 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const
 	if (senderPlayer->hasGodMode())
 		godMode = true;
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	msg->acquire();
+#endif
 
 	for (int i = 0; i < playerList.size(); ++i) {
 		ManagedReference<CreatureObject*> player = playerList.get(i);
@@ -167,12 +198,20 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const
 				continue;
 
 			if (!ghost->isIgnoring(lowerName) || godMode) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+				player->sendMessage(msg);
+#else
 				player->sendMessage(msg->clone());
+#endif
 			}
 		}
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	msg->release();
+#else
 	delete msg;
+#endif
 }
 
 String ChatRoomImplementation::getGalaxyName() {

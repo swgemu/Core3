@@ -660,16 +660,27 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		throw;
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	Reference<BasePacket*> pack = message;
+#endif
+
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeNoneReference.get(i));
 
 		ManagedReference<ZoneClientSession*> client = scno->getClient();
 
-		if (scno->isVehicleObject() || client != NULL || scno->isMount())
+		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+			scno->sendMessage(pack);
+#else
 			scno->sendMessage(message->clone());
+#endif
+		}
 	}
 
+#ifndef LOCKFREE_BCLIENT_BUFFERS
 	delete message;
+#endif
 }
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
@@ -740,6 +751,13 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		e.printStackTrace();
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	for (int j = 0; j < messages->size(); ++j) {
+		BasePacket* msg = messages->get(j);
+		msg->acquire();
+	}
+#endif
+
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
@@ -751,13 +769,21 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
 			for (int j = 0; j < messages->size(); ++j) {
 				BasePacket* msg = messages->get(j);
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+				scno->sendMessage(msg);
+#else
 				scno->sendMessage(msg->clone());
+#endif
 			}
 		}
 	}
 
 	while (!messages->isEmpty()) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		messages->remove(0)->release();
+#else
 		delete messages->remove(0);
+#endif
 	}
 }
 
