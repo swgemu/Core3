@@ -70,7 +70,7 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int winningFaction;
 	private transient int winnerDifficultyScaling;
 
-	public transient int gcwCheckTimer;
+	public transient unsigned long gcwCheckTimer;
 	public transient int vulnerabilityDuration;
 	public transient int vulnerabilityFrequency;
 	public transient int resetTimer;

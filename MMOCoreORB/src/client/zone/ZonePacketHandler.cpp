@@ -245,9 +245,9 @@ void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
 
 	uint64 objid = pack->parseLong();
 
-	float x = pack->parseSignedShort() / 4;
-	float z = pack->parseSignedShort() / 4;
-	float y = pack->parseSignedShort() / 4;
+	float x = (float)pack->parseSignedShort() / 4;
+	float z = (float)pack->parseSignedShort() / 4;
+	float y = (float)pack->parseSignedShort() / 4;
 
 	uint32 counter = pack->parseInt();
 
