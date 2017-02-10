@@ -6,8 +6,8 @@
 class ObjectMap : public HashTable<uint64, Reference<SceneObject*> > {
 	int maxConnections;
 
-	int hash(const uint64& key) {
-        return Long::hashCode(key);
+	int hash(const uint64& key) const {
+		return Long::hashCode(key);
 	}
 
 public:

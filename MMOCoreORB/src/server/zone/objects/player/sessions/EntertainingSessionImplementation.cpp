@@ -844,7 +844,7 @@ void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* 
 	/*if (updateEntValue)
 		creature->setTerrainNegotiation(0.8025000095f, true);*/
 
-	String str = entertainer->getZoneServer()->getChatManager()->getMoodAnimation(mood);
+	String str = creature->getZoneServer()->getChatManager()->getMoodAnimation(mood);
 	creature->setMoodString(str, true);
 }
 

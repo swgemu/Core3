@@ -225,7 +225,7 @@ void GCWManagerImplementation::performGCWTasks(bool initial) {
 
 	if (initial) {
 		// randomize a bit so every zone doesn't run it's check at the same time
-		timer = (uint64)(System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
+		timer = (System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
 	}
 
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());

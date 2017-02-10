@@ -25,6 +25,7 @@ Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 sessio
 	clientThread = NULL;
 
 	Zone::instance = instance;
+	started = false;
 }
 
 Zone::~Zone() {

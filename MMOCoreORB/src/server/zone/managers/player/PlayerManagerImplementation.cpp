@@ -1077,6 +1077,11 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
+	if (totalDamage == 0) {
+		threatMap->removeAll();
+		return;
+	}
+
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
 	slExperience.setAllowOverwriteInsertPlan();
 	slExperience.setNullValue(0);
@@ -1260,8 +1265,6 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	threatMap->removeAll();
 }
-
-
 
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);
@@ -5138,6 +5141,10 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		return;
 
 	uint32 totalDamage = threatMap->getTotalDamage();
+
+	if (totalDamage == 0)
+		return;
+
 	int defenderPvpRating = ghost->getPvpRating();
 	int victimRatingTotalDelta = 0;
 	ManagedReference<CreatureObject*> highDamageAttacker = NULL;
