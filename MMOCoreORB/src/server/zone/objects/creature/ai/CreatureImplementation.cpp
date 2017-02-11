@@ -489,6 +489,9 @@ bool CreatureImplementation::isMount() {
 
 void CreatureImplementation::sendMessage(BasePacket* msg) {
 	if (!isMount()) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		if (!msg->getReferenceCount())
+#endif
 		delete msg;
 		return;
 	}
@@ -497,6 +500,10 @@ void CreatureImplementation::sendMessage(BasePacket* msg) {
 
 	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
 		linkedCreature->sendMessage(msg);
-	else
+	else {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		if (!msg->getReferenceCount())
+#endif
 		delete msg;
+	}
 }

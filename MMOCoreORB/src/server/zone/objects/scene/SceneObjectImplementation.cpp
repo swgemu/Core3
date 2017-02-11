@@ -828,6 +828,9 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 }
 
 void SceneObjectImplementation::sendMessage(BasePacket* msg) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	if (!msg->getReferenceCount())
+#endif
 	delete msg;
 }
 

@@ -399,6 +399,9 @@ void PlayerObjectImplementation::sendFriendLists() {
 void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 	if (strongParent == NULL)
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		if (!msg->getReferenceCount())
+#endif
 		delete msg;
 	else {
 		strongParent->sendMessage(msg);

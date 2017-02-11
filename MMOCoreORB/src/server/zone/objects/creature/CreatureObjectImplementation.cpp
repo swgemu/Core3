@@ -2764,7 +2764,11 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 	ManagedReference<ZoneClientSession*> ownerClient = owner.get();
 
 	if (ownerClient == NULL) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		if (!msg->getReferencenceCount())
+#endif
 		delete msg;
+
 		return;
 	} else {
 		ownerClient->sendMessage(msg);
