@@ -27,7 +27,6 @@ import engine.util.u3d.AABB;
 import server.zone.objects.pathfinding.NavMeshRegion;
 include system.util.Vector;
 
-@lua
 class CityRegion extends ManagedObject implements Logger {
 
 	@weakReference
@@ -427,10 +426,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return cityTreasury;
 	}
 
-    @preLocked
+	@preLocked
 	public native void createNavRegion(final string queue, boolean forceRebuild);
 
-    @preLocked
+	@preLocked
 	public native void createNavRegion();
 
 	@preLocked

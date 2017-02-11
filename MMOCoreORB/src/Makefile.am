@@ -446,6 +446,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/StructureSetAccessFeeSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
+		server/zone/objects/region/LuaCityRegion.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
 		server/zone/objects/tangible/LuaTangibleObject.cpp \

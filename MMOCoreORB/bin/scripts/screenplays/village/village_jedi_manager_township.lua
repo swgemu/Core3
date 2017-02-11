@@ -58,7 +58,11 @@ end
 
 function VillageJediManagerTownship:switchToNextPhase()
 	if (not isZoneEnabled("dathomir")) then
-		rescheduleServerEvent("VillagePhaseChange", 60 * 60 * 1000)
+		if (hasServerEvent("VillagePhaseChange")) then
+			rescheduleServerEvent("VillagePhaseChange", 60 * 60 * 1000)
+		end
+
+		return
 	end
 
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
