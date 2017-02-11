@@ -488,7 +488,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 }
 
 bool PlayerManagerImplementation::checkPlayerName(ClientCreateCharacterCallback* callback) {
-	ZoneClientSession* client = callback->getClient();
+	auto client = callback->getClient();
 
 	NameManager* nm = processor->getNameManager();
 	BaseMessage* msg = NULL;

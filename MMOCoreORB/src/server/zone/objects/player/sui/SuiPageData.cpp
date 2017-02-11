@@ -153,7 +153,7 @@ void SuiPageData::sendTo(CreatureObject* creo) {
 
 void SuiPageData::sendUpdateTo(CreatureObject* creo) {
 	PlayerObject* playerObject = creo->getPlayerObject();
-	ZoneClientSession* client = creo->getClient();
+	auto client = creo->getClient();
 
 	if (playerObject != NULL && client != NULL) {
 		client->sendMessage(new SuiUpdatePageMessage(this));

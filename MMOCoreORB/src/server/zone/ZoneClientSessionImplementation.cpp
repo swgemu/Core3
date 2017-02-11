@@ -54,11 +54,12 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	disconnecting = true;
 
 	ManagedReference<CreatureObject*> player = this->player.get();
-
+	Reference<ZoneClientSession*> session;
 	if (session->hasError() || !session->isClientDisconnected()) {
 		if (player != NULL) {
+			session = player->getClient();
 
-			if (player->getClient() == _this.getReferenceUnsafeStaticCast()) {
+			if (session == _this.getReferenceUnsafeStaticCast()) {
 				//((CreatureObject*)player.get())->disconnect(false, true);
 				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(player, _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
@@ -67,9 +68,11 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
+		session = player->getClient();
+
 		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost->isLoggingOut() && player->getClient() == _this.getReferenceUnsafeStaticCast()) {
+		if (ghost->isLoggingOut() && session == _this.getReferenceUnsafeStaticCast()) {
 			//((CreatureObject*)player.get())->logout(true);
 			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(player, _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::LOGOUT);
 			Core::getTaskManager()->executeTask(task);
@@ -77,8 +80,9 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		else {
 			try {
 				//player->wlock();
+				session = player->getClient();
 
-				if (player->getClient() == _this.getReferenceUnsafeStaticCast()) {
+				if (session == _this.getReferenceUnsafeStaticCast()) {
 					//((CreatureObject*)player.get())->setLinkDead();
 					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(player, _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::SETLINKDEAD);
 					Core::getTaskManager()->executeTask(task);
