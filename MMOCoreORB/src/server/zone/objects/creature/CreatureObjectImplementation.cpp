@@ -2765,7 +2765,7 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 
 	if (ownerClient == NULL) {
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-		if (!msg->getReferencenceCount())
+		if (!msg->getReferenceCount())
 #endif
 		delete msg;
 
