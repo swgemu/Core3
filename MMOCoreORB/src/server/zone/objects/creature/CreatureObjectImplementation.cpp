@@ -244,6 +244,8 @@ void CreatureObjectImplementation::finalize() {
 }
 
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
+	auto owner = this->owner.get();
+
 	if (owner == NULL)
 		return;
 
@@ -2773,6 +2775,10 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 	} else {
 		ownerClient->sendMessage(msg);
 	}
+}
+
+Reference<ZoneClientSession*> CreatureObjectImplementation::getClient() {
+	return owner.get();
 }
 
 void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, const String& stringName, byte color, int damage, bool broadcast) {

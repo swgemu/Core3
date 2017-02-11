@@ -334,7 +334,7 @@ void PlayerCreationManager::loadLuaStartingItems(Lua* lua) {
 bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callback) {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	ZoneClientSession* client = callback->getClient();
+	auto client = callback->getClient();
 
 	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 10) {
 		ErrorMessage* errMsg = new ErrorMessage("Create Error", "You are limited to 10 characters per galaxy.", 0x0);
