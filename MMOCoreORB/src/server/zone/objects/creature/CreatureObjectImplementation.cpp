@@ -2775,6 +2775,10 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 	}
 }
 
+Reference<ZoneClientSession*> CreatureObjectImplementation::getClient() {
+	return owner.get();
+}
+
 void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, const String& stringName, byte color, int damage, bool broadcast) {
 	Zone* zone = getZone();
 	if (zone == NULL)

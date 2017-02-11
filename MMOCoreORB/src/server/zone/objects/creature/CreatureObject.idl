@@ -37,6 +37,7 @@ import system.thread.Mutex;
 
 @mock
 class CreatureObject extends TangibleObject {
+	@weakReference
 	protected transient ZoneClientSession owner;
 
 	protected int bankCredits;
@@ -1895,9 +1896,8 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@dirty
-	public ZoneClientSession getClient() {
-		return owner;
-	}
+	@reference
+	public native ZoneClientSession getClient();
 
 	@weakReference
 	@read
