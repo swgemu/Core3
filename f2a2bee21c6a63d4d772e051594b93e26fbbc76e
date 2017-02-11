@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_cdd029fa",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-11T19:27:38Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you are trying to accomplish here. A negative resist denotes a vulnerability. The value of the resist makes no difference when it is negative. (-1 and -9999 would have the same result).\n\nI first thought that maybe you were setting a potentially lower min in the case of a vulnerability because experimentation might raise it to be an effectiveness but based on your comment below I think you want to limit experimentation to only affect resists that are not special and not vulnerable. If that\u0027s true, these changes seem pointless.\n\nCan you clarify your intent?",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_8dda2116",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-11T19:27:38Z",
+      "side": 1,
+      "message": "I think I have a good idea of what you are trying to accomplish here. I do see issues with how the loop is currently written (not actually getting the current subtitle, comparing to title which would be empty).\n\nYou\u0027ve done fine in correcting the loop to check for \"resists\" subtitles, but your assertion that minValue equaling 0 indicates an effectiveness resist is wrong. The minValue is set in setInitialCraftingValues above based on the then current fortitude value.\n\nWhat you\u0027d want to do is check that minValue is non-negative (\u003e\u003d 0). This filters out any vulnerabilities. Specials are already filtered out below since their minValue is set equal to their maxValue in assembly.",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_add7ddec",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/Genetics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-11T19:27:38Z",
+      "side": 1,
+      "message": "Why are you changing this?",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
