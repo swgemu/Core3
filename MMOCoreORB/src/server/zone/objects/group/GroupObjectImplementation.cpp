@@ -21,7 +21,7 @@
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	ZoneClientSession* client = player->getClient();
+	auto client = player->getClient();
 	if (client == NULL)
 		return;
 

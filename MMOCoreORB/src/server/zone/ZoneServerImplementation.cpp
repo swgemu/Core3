@@ -464,7 +464,7 @@ void ZoneServerImplementation::handleMessage(ZoneClientSession* client, Packet* 
 void ZoneServerImplementation::processMessage(Message* message) {
 	ZonePacketHandler* zonePacketHandler = processor->getPacketHandler();
 
-	ZoneClientSession* client = zoneHandler->getClientSession(message->getClient());
+	auto client = zoneHandler->getClientSession(message->getClient());
 
 	Task* task = zonePacketHandler->generateMessageTask(client, message);
 

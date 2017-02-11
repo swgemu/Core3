@@ -1118,6 +1118,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@dirty
+	@reference
 	public abstract ZoneClientSession getClient() {
 		return null;
 	}
