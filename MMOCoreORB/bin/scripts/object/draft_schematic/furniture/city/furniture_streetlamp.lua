@@ -43,52 +43,51 @@
 
 object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schematic_furniture_city_shared_furniture_streetlamp:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Streetlamp",
+	customObjectName = "Streetlamp",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 21, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 21,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 570, 
+	xpType = "crafting_structure_general",
+	xp = 570,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "light_housing", "lighting_module"},
-   ingredientSlotType = {0, 0, 2},
-   resourceTypes = {"metal", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
-   resourceQuantities = {200, 100, 2},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "light_housing", "lighting_module"},
+	ingredientSlotType = {0, 0, 2},
+	resourceTypes = {"metal", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
+	resourceQuantities = {200, 100, 2},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/city/streetlamp_large_01.iff",
 
-   targetTemplate = "object/tangible/furniture/city/streetlamp_large_01.iff",
-
-   additionalTemplates = {
-            "object/tangible/furniture/city/shared_streetlamp_large_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_blue_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_blue_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_green_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_green_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_red_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_large_red_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_blue_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_blue_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_green_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_green_02.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_red_01.iff",
-            "object/tangible/furniture/city/shared_streetlamp_med_red_02.iff",
-             }
-
+	additionalTemplates = {
+		"object/tangible/furniture/city/shared_streetlamp_large_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_blue_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_blue_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_green_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_green_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_red_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_large_red_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_blue_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_blue_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_green_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_green_02.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_red_01.iff",
+		"object/tangible/furniture/city/shared_streetlamp_med_red_02.iff",
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_streetlamp, "object/draft_schematic/furniture/city/furniture_streetlamp.iff")

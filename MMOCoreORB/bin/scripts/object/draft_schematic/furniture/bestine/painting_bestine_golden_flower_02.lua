@@ -49,6 +49,7 @@ object_draft_schematic_furniture_bestine_painting_bestine_golden_flower_02 = obj
 	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 2,
+	factoryCrateSize = 15,
 
 	xpType = "crafting_structure_general",
 	xp = 80,
@@ -68,11 +69,9 @@ object_draft_schematic_furniture_bestine_painting_bestine_golden_flower_02 = obj
 	resourceQuantities = {50, 50, 40},
 	contribution = {100, 100, 100},
 
-
 	targetTemplate = "object/tangible/painting/painting_bestine_golden_flower_02.iff",
 
-	additionalTemplates = {
-	}
+	additionalTemplates = {}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_painting_bestine_golden_flower_02, "object/draft_schematic/furniture/bestine/painting_bestine_golden_flower_02.iff")

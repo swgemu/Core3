@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_schematic_furniture_shared_furniture_terminal_freestanding:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Data Terminal",
+	customObjectName = "Data Terminal",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 36, 
-   size = 4, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 36,
+	size = 4,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 500, 
+	xpType = "crafting_structure_general",
+	xp = 500,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "memory_module", "processing_module"},
-   ingredientSlotType = {0, 1, 1},
-   resourceTypes = {"aluminum", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
-   resourceQuantities = {250, 6, 3},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "memory_module", "processing_module"},
+	ingredientSlotType = {0, 1, 1},
+	resourceTypes = {"aluminum", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
+	resourceQuantities = {250, 6, 3},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_data_terminal_free_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_data_terminal_free_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_terminal_freestanding, "object/draft_schematic/furniture/furniture_terminal_freestanding.iff")

@@ -43,42 +43,41 @@
 
 object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_furniture_city_shared_furniture_statue:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Gungan Head Statue",
+	customObjectName = "Gungan Head Statue",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 21, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 21,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 5000, 
+	xpType = "crafting_structure_general",
+	xp = 5000,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"artistic_medium", "decorative_trim"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"ore", "gemstone"},
-   resourceQuantities = {2000, 1000},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"artistic_medium", "decorative_trim"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"ore", "gemstone"},
+	resourceQuantities = {2000, 1000},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/city/statue_gungan_head.iff",
 
-   targetTemplate = "object/tangible/furniture/city/statue_gungan_head.iff",
-
-   additionalTemplates = {
-              "object/tangible/furniture/city/shared_statue_sentinel_01.iff",
-              "object/tangible/furniture/city/shared_statue_sentinel_02.iff",
-              "object/tangible/furniture/city/shared_statue_tatooine_sunball.iff",
-              "object/tangible/furniture/city/shared_statue_weird_01.iff",
-              "object/tangible/furniture/city/shared_statue_weird_02.iff",
-             }
-
+	additionalTemplates = {
+			  "object/tangible/furniture/city/shared_statue_sentinel_01.iff",
+			  "object/tangible/furniture/city/shared_statue_sentinel_02.iff",
+			  "object/tangible/furniture/city/shared_statue_tatooine_sunball.iff",
+			  "object/tangible/furniture/city/shared_statue_weird_01.iff",
+			  "object/tangible/furniture/city/shared_statue_weird_02.iff",
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_statue, "object/draft_schematic/furniture/city/furniture_statue.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_furniture_shared_furniture_chair_futon:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Futon",
+	customObjectName = "Futon",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 350, 
+	xpType = "crafting_structure_general",
+	xp = 350,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame"},
-   ingredientSlotType = {0},
-   resourceTypes = {"metal"},
-   resourceQuantities = {175},
-   contribution = {100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame"},
+	ingredientSlotType = {0},
+	resourceTypes = {"metal"},
+	resourceQuantities = {175},
+	contribution = {100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_couch_futon_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_couch_futon_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_futon, "object/draft_schematic/furniture/furniture_chair_futon.iff")

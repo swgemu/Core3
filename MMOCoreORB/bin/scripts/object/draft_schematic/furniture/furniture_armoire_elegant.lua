@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_armoire_elegant = object_draft_schematic_furniture_shared_furniture_armoire_elegant:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Armoire",
+	customObjectName = "Armoire",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 30, 
-   size = 1, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 30,
+	size = 1,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 575, 
+	xpType = "crafting_structure_general",
+	xp = 575,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "upholstery"},
-   ingredientSlotType = {0, 1},
-   resourceTypes = {"copper_kelsh", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
-   resourceQuantities = {250, 8},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "upholstery"},
+	ingredientSlotType = {0, 1},
+	resourceTypes = {"copper_kelsh", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
+	resourceQuantities = {250, 8},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/elegant/armoire_elegant_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/elegant/armoire_elegant_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_armoire_elegant, "object/draft_schematic/furniture/furniture_armoire_elegant.iff")

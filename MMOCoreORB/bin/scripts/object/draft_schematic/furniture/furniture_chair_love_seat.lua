@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_love_seat = object_draft_schematic_furniture_shared_furniture_chair_love_seat:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Loveseat",
+	customObjectName = "Loveseat",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 16, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 16,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 460, 
+	xpType = "crafting_structure_general",
+	xp = 460,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"upholstery", "frame"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"hide", "metal"},
-   resourceQuantities = {140, 90},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"upholstery", "frame"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"hide", "metal"},
+	resourceQuantities = {140, 90},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_couch_love_seat_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_couch_love_seat_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_love_seat, "object/draft_schematic/furniture/furniture_chair_love_seat.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_couch_elegant = object_draft_schematic_furniture_shared_furniture_couch_elegant:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Couch",
+	customObjectName = "Couch",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 40, 
-   size = 4, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 40,
+	size = 4,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 1150, 
+	xpType = "crafting_structure_general",
+	xp = 1150,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "cushions", "upholstery"},
-   ingredientSlotType = {0, 0, 1},
-   resourceTypes = {"metal", "hide_wooly_endor", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
-   resourceQuantities = {310, 250, 8},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "cushions", "upholstery"},
+	ingredientSlotType = {0, 0, 1},
+	resourceTypes = {"metal", "hide_wooly_endor", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
+	resourceQuantities = {310, 250, 8},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/elegant/couch_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/elegant/couch_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_couch_elegant, "object/draft_schematic/furniture/furniture_couch_elegant.iff")

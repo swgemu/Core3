@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_furniture_shared_furniture_tiki_torch:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Torch",
+	customObjectName = "Torch",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 80, 
+	xpType = "crafting_structure_general",
+	xp = 80,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "lighting_module", "torch_module"},
-   ingredientSlotType = {0, 1, 0},
-   resourceTypes = {"metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "metal"},
-   resourceQuantities = {20, 1, 20},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "lighting_module", "torch_module"},
+	ingredientSlotType = {0, 1, 0},
+	resourceTypes = {"metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "metal"},
+	resourceQuantities = {20, 1, 20},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_tiki_torch, "object/draft_schematic/furniture/furniture_tiki_torch.iff")

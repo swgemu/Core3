@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_schematic_furniture_shared_furniture_table_coffee_modern:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Cafe Table",
+	customObjectName = "Cafe Table",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 27, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 27,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 350, 
+	xpType = "crafting_structure_general",
+	xp = 350,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "table_top"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal_nonferrous", "copper"},
-   resourceQuantities = {100, 75},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "table_top"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal_nonferrous", "copper"},
+	resourceQuantities = {100, 75},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/modern/coffee_table_modern_style_01.iff",
 
-   targetTemplate = "object/tangible/furniture/modern/coffee_table_modern_style_01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_coffee_modern, "object/draft_schematic/furniture/furniture_table_coffee_modern.iff")

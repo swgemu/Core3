@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schematic_furniture_shared_furniture_bookcase_elegant:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Bookcase",
+	customObjectName = "Bookcase",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 3, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 3,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 700, 
+	xpType = "crafting_structure_general",
+	xp = 700,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "shelves"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"aluminum_titanium", "metal_nonferrous"},
-   resourceQuantities = {200, 150},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "shelves"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"aluminum_titanium", "metal_nonferrous"},
+	resourceQuantities = {200, 150},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/elegant/bookcase_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/elegant/bookcase_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bookcase_elegant, "object/draft_schematic/furniture/furniture_bookcase_elegant.iff")

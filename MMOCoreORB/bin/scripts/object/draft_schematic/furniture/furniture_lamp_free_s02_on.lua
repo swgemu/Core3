@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_lamp_free_s02_on = object_draft_schematic_furniture_shared_furniture_lamp_free_s02_on:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Free-standing Lamp \'Razorcoil\'",
+	customObjectName = "Free-standing Lamp \'Razorcoil\'",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 1, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 1,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 250, 
+	xpType = "crafting_structure_general",
+	xp = 250,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"lamp_body", "neck", "lamp_assembly", "shade"},
-   ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"metal", "metal", "metal", "mineral"},
-   resourceQuantities = {40, 50, 15, 20},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"lamp_body", "neck", "lamp_assembly", "shade"},
+	ingredientSlotType = {0, 0, 0, 0},
+	resourceTypes = {"metal", "metal", "metal", "mineral"},
+	resourceQuantities = {40, 50, 15, 20},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_light_lamp_free_s02.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_light_lamp_free_s02.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_free_s02_on, "object/draft_schematic/furniture/furniture_lamp_free_s02_on.iff")

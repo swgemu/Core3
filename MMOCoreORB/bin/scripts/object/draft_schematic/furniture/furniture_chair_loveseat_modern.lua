@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_loveseat_modern = object_draft_schematic_furniture_shared_furniture_chair_loveseat_modern:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Loveseat",
+	customObjectName = "Loveseat",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 20, 
-   size = 3, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 20,
+	size = 3,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 700, 
+	xpType = "crafting_structure_general",
+	xp = 700,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "upholstery"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "hide"},
-   resourceQuantities = {100, 250},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "upholstery"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "hide"},
+	resourceQuantities = {100, 250},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/modern/love_seat_modern_style_01.iff",
 
-   targetTemplate = "object/tangible/furniture/modern/love_seat_modern_style_01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_loveseat_modern, "object/draft_schematic/furniture/furniture_chair_loveseat_modern.iff")

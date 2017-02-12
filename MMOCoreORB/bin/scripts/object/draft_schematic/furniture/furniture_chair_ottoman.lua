@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_ottoman = object_draft_schematic_furniture_shared_furniture_chair_ottoman:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ottoman",
+	customObjectName = "Ottoman",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 12, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 12,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 460, 
+	xpType = "crafting_structure_general",
+	xp = 460,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"upholstery", "frame"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"hide", "metal"},
-   resourceQuantities = {150, 80},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"upholstery", "frame"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"hide", "metal"},
+	resourceQuantities = {150, 80},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_couch_ottoman_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_couch_ottoman_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_ottoman, "object/draft_schematic/furniture/furniture_chair_ottoman.iff")

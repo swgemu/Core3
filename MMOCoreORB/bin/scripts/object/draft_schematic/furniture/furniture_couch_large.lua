@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_couch_large = object_draft_schematic_furniture_shared_furniture_couch_large:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Large Couch",
+	customObjectName = "Large Couch",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 20, 
-   size = 3, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 20,
+	size = 3,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 600, 
+	xpType = "crafting_structure_general",
+	xp = 600,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"cushions", "frame"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"hide", "metal"},
-   resourceQuantities = {150, 150},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"cushions", "frame"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"hide", "metal"},
+	resourceQuantities = {150, 150},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_couch_lg_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_couch_lg_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_couch_large, "object/draft_schematic/furniture/furniture_couch_large.iff")

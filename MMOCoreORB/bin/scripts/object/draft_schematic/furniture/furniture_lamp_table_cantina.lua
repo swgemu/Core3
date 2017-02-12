@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_schematic_furniture_shared_furniture_lamp_table_cantina:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Table-top Lamp \'Coruscant\'",
+	customObjectName = "Table-top Lamp \'Coruscant\'",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 19, 
-   size = 1, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 19,
+	size = 1,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 150, 
+	xpType = "crafting_structure_general",
+	xp = 150,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "metal", "mineral"},
-   resourceQuantities = {35, 15, 20},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "metal", "mineral"},
+	resourceQuantities = {35, 15, 20},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_table_cantina, "object/draft_schematic/furniture/furniture_lamp_table_cantina.iff")

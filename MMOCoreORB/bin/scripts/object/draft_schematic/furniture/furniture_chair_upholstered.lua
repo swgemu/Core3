@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_schematic_furniture_shared_furniture_chair_upholstered:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Upholstered Chair",
+	customObjectName = "Upholstered Chair",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 16, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 16,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 480, 
+	xpType = "crafting_structure_general",
+	xp = 480,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "upholstery"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "hide"},
-   resourceQuantities = {90, 150},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "upholstery"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "hide"},
+	resourceQuantities = {90, 150},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_upholstered, "object/draft_schematic/furniture/furniture_chair_upholstered.iff")

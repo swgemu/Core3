@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schematic_furniture_shared_furniture_chair_recliner:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Reclining Chair",
+	customObjectName = "Reclining Chair",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 19, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 19,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 440, 
+	xpType = "crafting_structure_general",
+	xp = 440,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "recliner_mechanism", "upholstery"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "steel", "hide"},
-   resourceQuantities = {80, 20, 120},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "recliner_mechanism", "upholstery"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "steel", "hide"},
+	resourceQuantities = {80, 20, 120},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_chair_recliner_s1.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_chair_recliner_s1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_recliner, "object/draft_schematic/furniture/furniture_chair_recliner.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_table_endtable_modern = object_draft_schematic_furniture_shared_furniture_table_endtable_modern:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "End Table",
+	customObjectName = "End Table",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 31, 
-   size = 3, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 31,
+	size = 3,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 250, 
+	xpType = "crafting_structure_general",
+	xp = 250,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "table_top"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal_nonferrous", "aluminum"},
-   resourceQuantities = {75, 50},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "table_top"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal_nonferrous", "aluminum"},
+	resourceQuantities = {75, 50},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/modern/end_table_large_modern_style_01.iff",
 
-   targetTemplate = "object/tangible/furniture/modern/end_table_large_modern_style_01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_endtable_modern, "object/draft_schematic/furniture/furniture_table_endtable_modern.iff")

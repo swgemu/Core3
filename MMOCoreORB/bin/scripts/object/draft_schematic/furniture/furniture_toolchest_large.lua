@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schematic_furniture_shared_furniture_toolchest_large:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Toolchest",
+	customObjectName = "Toolchest",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 260, 
+	xpType = "crafting_structure_general",
+	xp = 260,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"frame", "panels"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "metal"},
-   resourceQuantities = {75, 50},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "panels"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "metal"},
+	resourceQuantities = {75, 50},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_toolchest_large, "object/draft_schematic/furniture/furniture_toolchest_large.iff")

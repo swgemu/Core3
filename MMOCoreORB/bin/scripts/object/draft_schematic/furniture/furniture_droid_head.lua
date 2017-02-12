@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_droid_head = object_draft_schematic_furniture_shared_furniture_droid_head:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "A Droid Head",
+	customObjectName = "A Droid Head",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 1, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "", 
-   xp = 340, 
+	xpType = "",
+	xp = 340,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"head_base", "head_interior"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "aluminum_titanium"},
-   resourceQuantities = {90, 80},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"head_base", "head_interior"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "aluminum_titanium"},
+	resourceQuantities = {90, 80},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/poi/object/droid_head.iff",
 
-   targetTemplate = "object/tangible/poi/object/droid_head.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_droid_head, "object/draft_schematic/furniture/furniture_droid_head.iff")

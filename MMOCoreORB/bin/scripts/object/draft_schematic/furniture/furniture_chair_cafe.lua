@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_chair_cafe = object_draft_schematic_furniture_shared_furniture_chair_cafe:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Chair",
+	customObjectName = "Chair",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "crafting_structure_general", 
-   xp = 150, 
+	xpType = "crafting_structure_general",
+	xp = 150,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"seat", "frame"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "metal"},
-   resourceQuantities = {35, 80},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"seat", "frame"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "metal"},
+	resourceQuantities = {35, 80},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/furniture/cheap/chair_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/cheap/chair_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_cafe, "object/draft_schematic/furniture/furniture_chair_cafe.iff")

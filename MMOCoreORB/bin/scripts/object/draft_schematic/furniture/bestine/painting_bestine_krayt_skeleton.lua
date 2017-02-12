@@ -49,6 +49,7 @@ object_draft_schematic_furniture_bestine_painting_bestine_krayt_skeleton = objec
 	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 2,
+	factoryCrateSize = 15,
 
 	xpType = "crafting_structure_general",
 	xp = 80,
@@ -68,11 +69,9 @@ object_draft_schematic_furniture_bestine_painting_bestine_krayt_skeleton = objec
 	resourceQuantities = {50, 50, 40},
 	contribution = {100, 100, 100},
 
-
 	targetTemplate = "object/tangible/painting/painting_bestine_krayt_skeleton.iff",
 
-	additionalTemplates = {
-	}
+	additionalTemplates = {}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_painting_bestine_krayt_skeleton, "object/draft_schematic/furniture/bestine/painting_bestine_krayt_skeleton.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_plants_potted_small = object_draft_schematic_furniture_shared_furniture_plants_potted_small:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Small Potted Plant, Style One",
+	customObjectName = "Small Potted Plant, Style One",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 110, 
+	xpType = "crafting_structure_general",
+	xp = 110,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"pot", "tree", "greenery"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"mineral", "wood", "chemical"},
-   resourceQuantities = {25, 20, 20},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"pot", "tree", "greenery"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"mineral", "wood", "chemical"},
+	resourceQuantities = {25, 20, 20},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/all/frn_all_potted_plants_sml_s01.iff",
 
-   targetTemplate = "object/tangible/furniture/all/frn_all_potted_plants_sml_s01.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_plants_potted_small, "object/draft_schematic/furniture/furniture_plants_potted_small.iff")

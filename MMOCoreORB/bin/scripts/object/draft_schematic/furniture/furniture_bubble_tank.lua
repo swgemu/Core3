@@ -43,37 +43,35 @@
 
 object_draft_schematic_furniture_furniture_bubble_tank = object_draft_schematic_furniture_shared_furniture_bubble_tank:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Bubble Tank Draft Schematic",
+	customObjectName = "Bubble Tank Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15,
-   size = 1,
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "crafting_spice",
-   xp = 250,
+	xpType = "crafting_spice",
+	xp = 250,
 
-   assemblySkill = "spice_assembly",
-   experimentingSkill = "spice_experimentation",
-   customizationSkill = "spice_customization",
+	assemblySkill = "spice_assembly",
+	experimentingSkill = "spice_experimentation",
+	customizationSkill = "spice_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"tank", "filler_liquid", "stand"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"gemstone_crystalline", "petrochem_inert_polymer", "gemstone_crystalline"},
-   resourceQuantities = {35, 30, 15},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"tank", "filler_liquid", "stand"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"gemstone_crystalline", "petrochem_inert_polymer", "gemstone_crystalline"},
+	resourceQuantities = {35, 30, 15},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/decorative/bubble_tank.iff",
 
-   targetTemplate = "object/tangible/furniture/decorative/bubble_tank.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bubble_tank, "object/draft_schematic/furniture/furniture_bubble_tank.iff")

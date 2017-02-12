@@ -43,43 +43,42 @@
 
 object_draft_schematic_furniture_city_furniture_fountain = object_draft_schematic_furniture_city_shared_furniture_fountain:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Fountain",
+	customObjectName = "Fountain",
 
-   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 21, 
-   size = 2, 
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 21,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general",
-   xp = 3300, 
+	xpType = "crafting_structure_general",
+	xp = 3300,
 
-   assemblySkill = "structure_assembly",
-   experimentingSkill = "structure_experimentation",
-   customizationSkill = "structure_customization",
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"fountain", "water_pump", "water"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"ore", "metal", "water"},
-   resourceQuantities = {1000, 300, 500},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"fountain", "water_pump", "water"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"ore", "metal", "water"},
+	resourceQuantities = {1000, 300, 500},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/furniture/city/fountain_generic.iff",
 
-   targetTemplate = "object/tangible/furniture/city/fountain_generic.iff",
-
-   additionalTemplates = {
-			"object/tangible/furniture/city/shared_fountain_brazier_round.iff",
-			"object/tangible/furniture/city/shared_fountain_brazier_square.iff",
-			"object/tangible/furniture/city/shared_fountain_circle.iff",
-			"object/tangible/furniture/city/shared_fountain_contemplate.iff",
-			"object/tangible/furniture/city/shared_fountain_heroic.iff",
-			"object/tangible/furniture/city/shared_fountain_rectangle.iff",
-			}
-
+	additionalTemplates = {
+		"object/tangible/furniture/city/shared_fountain_brazier_round.iff",
+		"object/tangible/furniture/city/shared_fountain_brazier_square.iff",
+		"object/tangible/furniture/city/shared_fountain_circle.iff",
+		"object/tangible/furniture/city/shared_fountain_contemplate.iff",
+		"object/tangible/furniture/city/shared_fountain_heroic.iff",
+		"object/tangible/furniture/city/shared_fountain_rectangle.iff",
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_furniture_fountain, "object/draft_schematic/furniture/city/furniture_fountain.iff")
