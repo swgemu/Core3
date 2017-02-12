@@ -197,13 +197,11 @@ class BuildingObject extends StructureObject {
 	public native void notifyLoadFromDatabase();
 
 	@local
-	@dirty
 	public native void notifyInsert(QuadTreeEntry obj);
 
 	public native void notifyInsertToZone(Zone zone);
 
 	@local
-	@dirty
 	public native void notifyDissapear(QuadTreeEntry obj);
 
 	public native void notifyObjectInsertedToZone(SceneObject object);
