@@ -53,8 +53,8 @@ class BountyMissionObjective extends MissionObjective {
 		Logger.setLoggingName("BountyMissionObjective");
 	}
 
-	public native void finalize() {
-		cancelAllTasks();
+	public void finalize() {
+
 	}
 
 	public void initializeTransientMembers() {
