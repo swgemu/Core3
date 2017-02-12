@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_installation_factory_clothing = object_draft_schematic_structure_shared_installation_factory_clothing:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Wearables Factory",
+	customObjectName = "Deed for: Wearables Factory",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 16, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 16,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 1900, 
+	xpType = "crafting_structure_general",
+	xp = 1900,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_frame_and_reinforcement", "body_shell_and_casing", "structure_foundation", "thermal_noise_and_charge_proof_shielding", "power_supply_unit", "ouput_storage_unit", "semi_automated_assembly_mechanism"},
-   ingredientSlotType = {0, 2, 0, 0, 1, 1, 1},
-   resourceTypes = {"steel", "object/tangible/component/structure/shared_wall_module.iff", "ore", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
-   resourceQuantities = {300, 3, 250, 400, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_frame_and_reinforcement", "body_shell_and_casing", "structure_foundation", "thermal_noise_and_charge_proof_shielding", "power_supply_unit", "ouput_storage_unit", "semi_automated_assembly_mechanism"},
+	ingredientSlotType = {0, 2, 0, 0, 1, 1, 1},
+	resourceTypes = {"steel", "object/tangible/component/structure/shared_wall_module.iff", "ore", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
+	resourceQuantities = {300, 3, 250, 400, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/factory_deed/factory_clothing_deed.iff",
 
-   targetTemplate = "object/tangible/deed/factory_deed/factory_clothing_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_factory_clothing, "object/draft_schematic/structure/installation_factory_clothing.iff")

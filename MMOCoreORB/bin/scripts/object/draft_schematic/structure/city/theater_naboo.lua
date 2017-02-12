@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_city_theater_naboo = object_draft_schematic_structure_city_shared_theater_naboo:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Naboo Theater",
+	customObjectName = "Deed for: Naboo Theater",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 24, 
-   size = 14, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 24,
+	size = 14,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 7250, 
+	xpType = "crafting_structure_general",
+	xp = 7250,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
-   ingredientSlotType = {0, 0, 0, 2, 1, 1},
-   resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
-   resourceQuantities = {1500, 2000, 300, 8, 1, 3},
-   contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
+	ingredientSlotType = {0, 0, 0, 2, 1, 1},
+	resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
+	resourceQuantities = {1500, 2000, 300, 8, 1, 3},
+	contribution = {100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/city_deed/theater_naboo_deed.iff",
 
-   targetTemplate = "object/tangible/deed/city_deed/theater_naboo_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_theater_naboo, "object/draft_schematic/structure/city/theater_naboo.iff")

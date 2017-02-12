@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structural_module = object_draft_schematic_structure_component_shared_structural_module:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Structural Module",
+	customObjectName = "Structural Module",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 8, 
-   size = 3, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 8,
+	size = 3,
+	factoryCrateSize = 100,
 
-   xpType = "crafting_structure_general", 
-   xp = 500, 
+	xpType = "crafting_structure_general",
+	xp = 500,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"reinforcement_rods", "body_material", "insulation"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "ore", "ore"},
-   resourceQuantities = {50, 100, 100},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"reinforcement_rods", "body_material", "insulation"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "ore", "ore"},
+	resourceQuantities = {50, 100, 100},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/structure/structural_module.iff",
 
-   targetTemplate = "object/tangible/component/structure/structural_module.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structural_module, "object/draft_schematic/structure/component/structural_module.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_installation_mining_liquid_vapor = object_draft_schematic_structure_shared_installation_mining_liquid_vapor:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Moisture Vaporator",
+	customObjectName = "Deed for: Moisture Vaporator",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 8, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 8,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 1900, 
+	xpType = "crafting_structure_general",
+	xp = 1900,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "chiller_bar_structure", "subterannean_storage_tank", "gaskets_and_storage_tank_lining", "power_supply_unit", "liquid_storage_unit", "condensor_system"},
-   ingredientSlotType = {0, 0, 0, 0, 2, 0, 1, 1, 1},
-   resourceTypes = {"steel", "metal", "ore", "metal", "object/tangible/component/structure/shared_structural_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_fluidic_drilling_pumping_unit.iff"},
-   resourceQuantities = {200, 300, 150, 100, 3, 200, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "chiller_bar_structure", "subterannean_storage_tank", "gaskets_and_storage_tank_lining", "power_supply_unit", "liquid_storage_unit", "condensor_system"},
+	ingredientSlotType = {0, 0, 0, 0, 2, 0, 1, 1, 1},
+	resourceTypes = {"steel", "metal", "ore", "metal", "object/tangible/component/structure/shared_structural_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_fluidic_drilling_pumping_unit.iff"},
+	resourceQuantities = {200, 300, 150, 100, 3, 200, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/harvester_deed/harvester_moisture_deed_medium.iff",
 
-   targetTemplate = "object/tangible/deed/harvester_deed/harvester_moisture_deed_medium.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_liquid_vapor, "object/draft_schematic/structure/installation_mining_liquid_vapor.iff")

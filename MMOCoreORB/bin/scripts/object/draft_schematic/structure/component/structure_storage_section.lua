@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structure_storage_section = object_draft_schematic_structure_component_shared_structure_storage_section:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Structure Storage Module",
+	customObjectName = "Structure Storage Module",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 5, 
-   size = 2, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 5,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 400, 
+	xpType = "crafting_structure_general",
+	xp = 400,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "metal"},
-   resourceQuantities = {50, 200},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "metal"},
+	resourceQuantities = {50, 200},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/structure/structure_storage_section.iff",
 
-   targetTemplate = "object/tangible/component/structure/structure_storage_section.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_storage_section, "object/draft_schematic/structure/component/structure_storage_section.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_installation_generator_solar = object_draft_schematic_structure_shared_installation_generator_solar:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Solar Power Generator",
+	customObjectName = "Deed for: Solar Power Generator",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 10,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 1900, 
+	xpType = "crafting_structure_general",
+	xp = 1900,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "solar_platform", "structure_sway_joints", "power_modulation_unit", "capacitance_storage_tank", "cell_manufacturing_mechanism"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1},
-   resourceTypes = {"steel", "metal", "ore", "metal", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_light_ore_mining_unit.iff"},
-   resourceQuantities = {200, 300, 150, 100, 200, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "solar_platform", "structure_sway_joints", "power_modulation_unit", "capacitance_storage_tank", "cell_manufacturing_mechanism"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1},
+	resourceTypes = {"steel", "metal", "ore", "metal", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_light_ore_mining_unit.iff"},
+	resourceQuantities = {200, 300, 150, 100, 200, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/generator_deed/generator_solar_deed.iff",
 
-   targetTemplate = "object/tangible/deed/generator_deed/generator_solar_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_solar, "object/draft_schematic/structure/installation_generator_solar.iff")

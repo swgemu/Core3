@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_installation_generator_wind = object_draft_schematic_structure_shared_installation_generator_wind:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Wind Power Generator",
+	customObjectName = "Deed for: Wind Power Generator",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 13, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 13,
+	size = 10,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_general", 
-   xp = 425, 
+	xpType = "crafting_general",
+	xp = 425,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "clothing_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "generator", "capacitance_tank"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
-   resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
-   resourceQuantities = {145, 45, 40, 20, 10},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "generator", "capacitance_tank"},
+	ingredientSlotType = {0, 0, 0, 0, 0},
+	resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
+	resourceQuantities = {145, 45, 40, 20, 10},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/generator_deed/generator_wind_deed.iff",
 
-   targetTemplate = "object/tangible/deed/generator_deed/generator_wind_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_wind, "object/draft_schematic/structure/installation_generator_wind.iff")

@@ -43,39 +43,38 @@
 
 object_draft_schematic_structure_city_garden_exotic_dantooine = object_draft_schematic_structure_city_shared_garden_exotic_dantooine:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Dantooine Meditation Area (Garden)",
+	customObjectName = "Deed for: Dantooine Meditation Area (Garden)",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 27, 
-   size = 12, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 27,
+	size = 12,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 9000, 
+	xpType = "crafting_structure_general",
+	xp = 9000,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
-   ingredientSlotType = {0, 0, 2},
-   resourceTypes = {"fruit_flowers_dantooine", "ore_extrusive", "object/tangible/component/structure/shared_wall_module.iff"},
-   resourceQuantities = {3000, 1500, 13},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
+	ingredientSlotType = {0, 0, 2},
+	resourceTypes = {"fruit_flowers_dantooine", "ore_extrusive", "object/tangible/component/structure/shared_wall_module.iff"},
+	resourceQuantities = {3000, 1500, 13},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff",
 
-   targetTemplate = "object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff",
-
-   additionalTemplates = {
-			"object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff",
-             }
-
+	additionalTemplates = {
+		"object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff",
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_garden_exotic_dantooine, "object/draft_schematic/structure/city/garden_exotic_dantooine.iff")

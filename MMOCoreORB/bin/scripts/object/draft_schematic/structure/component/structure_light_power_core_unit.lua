@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structure_light_power_core_unit = object_draft_schematic_structure_component_shared_structure_light_power_core_unit:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Light Power Core Unit",
+	customObjectName = "Light Power Core Unit",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 10,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_structure_general", 
-   xp = 520, 
+	xpType = "crafting_structure_general",
+	xp = 520,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"sub_assembly_frame", "micro_turbine_and_charge_accumulator", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "super_mini_turbo_generator", "energy_flow_modulator_and_filter", "energy_distribution_net"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
-   resourceTypes = {"metal", "metal", "chemical", "ore", "metal", "metal", "metal"},
-   resourceQuantities = {15, 85, 18, 60, 50, 15, 15},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"sub_assembly_frame", "micro_turbine_and_charge_accumulator", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "super_mini_turbo_generator", "energy_flow_modulator_and_filter", "energy_distribution_net"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
+	resourceTypes = {"metal", "metal", "chemical", "ore", "metal", "metal", "metal"},
+	resourceQuantities = {15, 85, 18, 60, 50, 15, 15},
+	contribution = {100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/structure/light_power_core_unit.iff",
 
-   targetTemplate = "object/tangible/component/structure/light_power_core_unit.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_light_power_core_unit, "object/draft_schematic/structure/component/structure_light_power_core_unit.iff")

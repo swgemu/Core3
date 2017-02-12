@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structure_small_storage_section = object_draft_schematic_structure_component_shared_structure_small_storage_section:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Small Structure Storage Module",
+	customObjectName = "Small Structure Storage Module",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 5, 
-   size = 2, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 5,
+	size = 2,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 260, 
+	xpType = "crafting_structure_general",
+	xp = 260,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "metal"},
-   resourceQuantities = {50, 80},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "metal"},
+	resourceQuantities = {50, 80},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/structure/structure_small_storage_section.iff",
 
-   targetTemplate = "object/tangible/component/structure/structure_small_storage_section.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_small_storage_section, "object/draft_schematic/structure/component/structure_small_storage_section.iff")

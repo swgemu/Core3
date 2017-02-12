@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structure_power_core_unit = object_draft_schematic_structure_component_shared_structure_power_core_unit:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Power Core Unit",
+	customObjectName = "Power Core Unit",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 10,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_structure_general", 
-   xp = 1850, 
+	xpType = "crafting_structure_general",
+	xp = 1850,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"sub_assembly_frame", "micro_turbine_and_charge_accumulator", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator", "energy_flow_modulator_and_filter", "energy_distribution_net"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
-   resourceTypes = {"steel", "metal_nonferrous", "ore_carbonate", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
-   resourceQuantities = {75, 450, 280, 120, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"sub_assembly_frame", "micro_turbine_and_charge_accumulator", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator", "energy_flow_modulator_and_filter", "energy_distribution_net"},
+	ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
+	resourceTypes = {"steel", "metal_nonferrous", "ore_carbonate", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
+	resourceQuantities = {75, 450, 280, 120, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/structure/power_core_unit.iff",
 
-   targetTemplate = "object/tangible/component/structure/power_core_unit.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_power_core_unit, "object/draft_schematic/structure/component/structure_power_core_unit.iff")

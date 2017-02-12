@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_installation_mining_gas = object_draft_schematic_structure_shared_installation_mining_gas:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Natural Gas Processor",
+	customObjectName = "Deed for: Natural Gas Processor",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 21, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 21,
+	size = 10,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 1900, 
+	xpType = "crafting_structure_general",
+	xp = 1900,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "bore_mechanism", "gas_storage_tank", "boreing_mechanism_buffers_and_bushings", "power_supply_unit", "gas_storage_unit", "resource_handling_system"},
-   ingredientSlotType = {0, 0, 0, 0, 2, 0, 1, 1, 1},
-   resourceTypes = {"steel", "metal", "ore", "metal", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_light_ore_mining_unit.iff"},
-   resourceQuantities = {200, 300, 150, 100, 3, 200, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "bore_mechanism", "gas_storage_tank", "boreing_mechanism_buffers_and_bushings", "power_supply_unit", "gas_storage_unit", "resource_handling_system"},
+	ingredientSlotType = {0, 0, 0, 0, 2, 0, 1, 1, 1},
+	resourceTypes = {"steel", "metal", "ore", "metal", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_light_ore_mining_unit.iff"},
+	resourceQuantities = {200, 300, 150, 100, 3, 200, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff",
 
-   targetTemplate = "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_gas, "object/draft_schematic/structure/installation_mining_gas.iff")

@@ -43,51 +43,50 @@
 
 object_draft_schematic_structure_city_garden_medium = object_draft_schematic_structure_city_shared_garden_medium:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Medium Garden",
+	customObjectName = "Deed for: Medium Garden",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 24, 
-   size = 12, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 24,
+	size = 12,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 7000, 
+	xpType = "crafting_structure_general",
+	xp = 7000,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
-   ingredientSlotType = {0, 0, 2},
-   resourceTypes = {"flora_resources", "ore", "object/tangible/component/structure/shared_wall_module.iff"},
-   resourceQuantities = {3000, 1000, 10},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
+	ingredientSlotType = {0, 0, 2},
+	resourceTypes = {"flora_resources", "ore", "object/tangible/component/structure/shared_wall_module.iff"},
+	resourceQuantities = {3000, 1000, 10},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
 
-   targetTemplate = "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
-
-   additionalTemplates = {
-			"object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff",
-			"object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff",
-             }
-
+	additionalTemplates = {
+		"object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff",
+		"object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff",
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_garden_medium, "object/draft_schematic/structure/city/garden_medium.iff")

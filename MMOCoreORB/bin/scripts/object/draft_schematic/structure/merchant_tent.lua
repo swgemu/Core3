@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_merchant_tent = object_draft_schematic_structure_shared_merchant_tent:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Merchant Tent",
+	customObjectName = "Deed for: Merchant Tent",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 13, 
-   size = 10, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 13,
+	size = 10,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 2400, 
+	xpType = "crafting_structure_general",
+	xp = 2400,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"tent_frame", "insulation_and_covering", "foundation", "fiberplast_tent_covering", "reinforced_secondary_covering"},
-   ingredientSlotType = {0, 0, 0, 2, 1},
-   resourceTypes = {"metal", "hide", "ore", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
-   resourceQuantities = {400, 600, 200, 20, 4},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"tent_frame", "insulation_and_covering", "foundation", "fiberplast_tent_covering", "reinforced_secondary_covering"},
+	ingredientSlotType = {0, 0, 0, 2, 1},
+	resourceTypes = {"metal", "hide", "ore", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
+	resourceQuantities = {400, 600, 200, 20, 4},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff",
 
-   targetTemplate = "object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_merchant_tent, "object/draft_schematic/structure/merchant_tent.iff")

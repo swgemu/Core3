@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_unit = object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Fluidic Drilling Pump Unit",
+	customObjectName = "Fluidic Drilling Pump Unit",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 13, 
-   size = 4, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 13,
+	size = 4,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_structure_general", 
-   xp = 1170, 
+	xpType = "crafting_structure_general",
+	xp = 1170,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"bore_head", "well_head_positioning_and_piping", "fluid_hoses", "pump_unit", "sealant_and_shock_absorbing_buffers"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
-   resourceTypes = {"steel", "metal", "chemical", "metal", "chemical"},
-   resourceQuantities = {100, 150, 200, 35, 100},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"bore_head", "well_head_positioning_and_piping", "fluid_hoses", "pump_unit", "sealant_and_shock_absorbing_buffers"},
+	ingredientSlotType = {0, 0, 0, 0, 0},
+	resourceTypes = {"steel", "metal", "chemical", "metal", "chemical"},
+	resourceQuantities = {100, 150, 200, 35, 100},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/structure/fluidic_drilling_pumping_unit.iff",
 
-   targetTemplate = "object/tangible/component/structure/fluidic_drilling_pumping_unit.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/structure_fluidic_drilling_pumping_unit.iff")

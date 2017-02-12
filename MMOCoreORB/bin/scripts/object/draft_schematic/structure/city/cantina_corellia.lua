@@ -43,37 +43,35 @@
 
 object_draft_schematic_structure_city_cantina_corellia = object_draft_schematic_structure_city_shared_cantina_corellia:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Corellia Cantina",
+	customObjectName = "Deed for: Corellia Cantina",
 
-   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 14, 
+	craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 14,
+	factoryCrateSize = 1,
 
-   xpType = "crafting_structure_general", 
-   xp = 8800, 
+	xpType = "crafting_structure_general",
+	xp = 8800,
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
-   ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
-   ingredientSlotType = {0, 0, 0, 2, 1, 1},
-   resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
-   resourceQuantities = {1700, 2350, 400, 10, 1, 2},
-   contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
+	ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
+	ingredientSlotType = {0, 0, 0, 2, 1, 1},
+	resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
+	resourceQuantities = {1700, 2350, 400, 10, 1, 2},
+	contribution = {100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/city_deed/cantina_corellia_deed.iff",
 
-   targetTemplate = "object/tangible/deed/city_deed/cantina_corellia_deed.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_cantina_corellia, "object/draft_schematic/structure/city/cantina_corellia.iff")
