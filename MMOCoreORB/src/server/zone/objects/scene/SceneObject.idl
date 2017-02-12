@@ -532,13 +532,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public native void updateDirection(float angleHeadingRadians);
 
-	@dirty
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {
 		zoneComponent.notifyInsert(this, entry);
 	}
 
-	@dirty
 	@local
 	public void notifyDissapear(QuadTreeEntry entry) {
 		zoneComponent.notifyDissapear(this, entry);
