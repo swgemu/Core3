@@ -53,77 +53,18 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
 
 	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient, allowOverflow)) {
-		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
+		StringBuffer msg;
+		msg << "could not add " << objectToTransfer->getLoggingName() << " to this object in ObjectManager::transferObject ";
+		msg << "with containmentType: " << containmentType << " allowOverflow: " << allowOverflow << " destination container size:";
+		msg << destinationObject->getContainerObjectsSize() << " slotted container size:" << destinationObject->getSlottedObjectsSize();
+
+		destinationObject->error(msg.toString());
+
 		parent->transferObject(objectToTransfer, oldContainmentType);
 
 		return false;
 	}
 
-	/*if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
-		destinationObject->broadcastObject(objectToTransfer, false);
-
-	uint32 oldContainmentType = objectToTransfer->getContainmentType();
-
-	//What about nested containers inside of the inventory...
-	SceneObject* playerParent = objectToTransfer->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-
-	if (playerParent != NULL && destinationObject->isCellObject())
-		objectToTransfer->sendDestroyTo(playerParent);
-
-	if (parent->isCellObject()) {
-		objectToTransfer->removeFromZone();
-		parent->removeObject(objectToTransfer, false);
-	} else {
-		if (!parent->removeObject(objectToTransfer)) {
-			error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
-			return false;
-		}
-	}
-
-	if (parent->isCellObject()) {
-		objectToTransfer->sendTo(destinationObject->getParent(), true);
-	}
-
-	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient)) {
-		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
-		parent->transferObject(objectToTransfer, oldContainmentType);
-
-		if (parent->isCellObject()) {
-			Zone* zne = destinationObject->getParent()->getZone();
-
-			//objectToTransfer->insertToZone(zne);
-			zne->transferObject(objectToTransfer, -1, true);
-		}
-
-		return false;
-	}
-
-	if (destinationObject->isCellObject()) {
-		if (destinationObject->getParent() != NULL) {
-			Zone* zne = destinationObject->getParent()->getZone();
-
-			if (zne != NULL) {
-				//objectToTransfer->insertToZone(zne);
-				zne->transferObject(objectToTransfer, -1, true);
-				//System::out << "Inserted to zone" << endl;
-			}
-		}
-	}
-
-	if (parent->isContainerObject() && parent->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
-		objectToTransfer->sendTo(destinationObject, true);
-	}
-
-	if (objectToTransfer->isContainerObject()) {
-		objectToTransfer->sendTo(destinationObject, true);
-	}
-
-	if (destinationObject->isPlayerCreature() && parent->isCellObject())
-		objectToTransfer->sendTo(destinationObject, true);
-
-	parent->updateToDatabase();
-	//destinationObject->updateToDatabaseAllObjects(false);
-	*/
 	return true;
 }
 

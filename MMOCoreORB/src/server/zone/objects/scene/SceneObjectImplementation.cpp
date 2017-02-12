@@ -366,7 +366,6 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
-
 	if (name.isEmpty())
 		return;
 	
@@ -530,12 +529,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
-
-		ManagedReference<ZoneClientSession*> client = scno->getClient();
-
-		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
-			object->sendTo(scno, true);
-		}
+		object->sendTo(scno, true);
 	}
 }
 
@@ -589,11 +583,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
-		ManagedReference<ZoneClientSession*> client = scno->getClient();
-
-		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
-			object->sendDestroyTo(scno);
-		}
+		object->sendDestroyTo(scno);
 	}
 }
 
@@ -667,15 +657,11 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeNoneReference.get(i));
 
-		ManagedReference<ZoneClientSession*> client = scno->getClient();
-
-		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-			scno->sendMessage(pack);
+		scno->sendMessage(pack);
 #else
-			scno->sendMessage(message->clone());
+		scno->sendMessage(message->clone());
 #endif
-		}
 	}
 
 #ifndef LOCKFREE_BCLIENT_BUFFERS
@@ -764,17 +750,13 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		if (selfObject == scno)
 			continue;
 
-		ManagedReference<ZoneClientSession*> client = scno->getClient();
-
-		if (scno->isVehicleObject() || client != NULL || scno->isMount()) {
-			for (int j = 0; j < messages->size(); ++j) {
-				BasePacket* msg = messages->get(j);
+		for (int j = 0; j < messages->size(); ++j) {
+			BasePacket* msg = messages->get(j);
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-				scno->sendMessage(msg);
+			scno->sendMessage(msg);
 #else
-				scno->sendMessage(msg->clone());
+			scno->sendMessage(msg->clone());
 #endif
-			}
 		}
 	}
 
