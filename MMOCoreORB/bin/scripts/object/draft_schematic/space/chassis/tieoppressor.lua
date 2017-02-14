@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_chassis_tieoppressor = object_draft_schematic_space_chassis_shared_tieoppressor:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "TIE Oppressor Chassis Blueprints",
+	customObjectName = "TIE Oppressor Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 43, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 43,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 37500, 
+	xpType = "shipwright",
+	xp = 37500,
 
-   assemblySkill = "chassis_assembly", 
-   experimentingSkill = "chassis_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "chassis_assembly",
+	experimentingSkill = "chassis_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation", "advanced_structural_support", "chassis_pulse_shielding"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast", "ore_siliclastic", "copper"},
-   resourceQuantities = {60000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation", "advanced_structural_support", "chassis_pulse_shielding"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast", "ore_siliclastic", "copper"},
+	resourceQuantities = {60000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/components/chassis/tieoppressor_chassis_token.iff",
 
-   targetTemplate = "object/tangible/ship/components/chassis/tieoppressor_chassis_token.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_tieoppressor, "object/draft_schematic/space/chassis/tieoppressor.iff")

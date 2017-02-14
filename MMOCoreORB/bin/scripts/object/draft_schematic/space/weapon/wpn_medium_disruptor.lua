@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_weapon_wpn_medium_disruptor = object_draft_schematic_space_weapon_shared_wpn_medium_disruptor:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Mid-Grade Disruptor",
+	customObjectName = "Mid-Grade Disruptor",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 125, 
+	xpType = "shipwright",
+	xp = 125,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
-   ingredientSlotType = {0, 0, 3, 0, 0},
-   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk2.iff", "gas_inert", "ore_carbonate"},
-   resourceQuantities = {125, 125, 1, 125, 125},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
+	ingredientSlotType = {0, 0, 3, 0, 0},
+	resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk2.iff", "gas_inert", "ore_carbonate"},
+	resourceQuantities = {125, 125, 1, 125, 125},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/wpn_medium_disruptor.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/wpn_medium_disruptor.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_wpn_medium_disruptor, "object/draft_schematic/space/weapon/wpn_medium_disruptor.iff")

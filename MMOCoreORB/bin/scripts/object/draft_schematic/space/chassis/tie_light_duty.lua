@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_chassis_tie_light_duty = object_draft_schematic_space_chassis_shared_tie_light_duty:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "TIE Light Duty Fighter Chassis Blueprints",
+	customObjectName = "TIE Light Duty Fighter Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 23, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 23,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 1250, 
+	xpType = "shipwright",
+	xp = 1250,
 
-   assemblySkill = "chassis_assembly", 
-   experimentingSkill = "chassis_experimentation", 
-   customizationSkill = "chassis_customization", 
+	assemblySkill = "chassis_assembly",
+	experimentingSkill = "chassis_experimentation",
+	customizationSkill = "chassis_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"frame", "ship_skin", "structural_support", "basic_heat_shielding"},
-   ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
-   resourceQuantities = {2000, 1000, 1000, 1000},
-   contribution = {100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"frame", "ship_skin", "structural_support", "basic_heat_shielding"},
+	ingredientSlotType = {0, 0, 0, 0},
+	resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
+	resourceQuantities = {2000, 1000, 1000, 1000},
+	contribution = {100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/components/chassis/tie_light_duty_chassis_token.iff",
 
-   targetTemplate = "object/tangible/ship/components/chassis/tie_light_duty_chassis_token.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_tie_light_duty, "object/draft_schematic/space/chassis/tie_light_duty.iff")

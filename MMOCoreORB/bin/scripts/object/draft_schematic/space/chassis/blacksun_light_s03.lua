@@ -43,38 +43,35 @@
 
 object_draft_schematic_space_chassis_blacksun_light_s03 = object_draft_schematic_space_chassis_shared_blacksun_light_s03:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Kihraxz Light Fighter Chassis Blueprints, Style 3",
+	customObjectName = "Kihraxz Light Fighter Chassis Blueprints, Style 3",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 31, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 31,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 7500, 
+	xpType = "shipwright",
+	xp = 7500,
 
-   assemblySkill = "chassis_assembly", 
-   experimentingSkill = "chassis_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "chassis_assembly",
+	experimentingSkill = "chassis_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0},
-   resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast"},
-   resourceQuantities = {9000, 3000, 3000, 3000, 3000, 3000, 3000, 3000},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0},
+	resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast"},
+	resourceQuantities = {9000, 3000, 3000, 3000, 3000, 3000, 3000, 3000},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/components/chassis/blacksun_light_s03_chassis_token.iff",
 
-   targetTemplate = "object/tangible/ship/components/chassis/blacksun_light_s03_chassis_token.iff",
-
-   additionalTemplates = {
-              "object/tangible/ship/components/chassis/shared_blacksun_light_s03_chassis_token.iff",
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_blacksun_light_s03, "object/draft_schematic/space/chassis/blacksun_light_s03.iff")

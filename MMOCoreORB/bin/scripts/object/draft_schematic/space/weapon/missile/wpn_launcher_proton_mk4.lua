@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_weapon_missile_wpn_launcher_proton_mk4 = object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Mark IV Proton Launcher",
+	customObjectName = "Mark IV Proton Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 23, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 23,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 1250, 
+	xpType = "shipwright",
+	xp = 1250,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "ammo_chamber"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "aluminum"},
-   resourceQuantities = {4000, 1000},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "ammo_chamber"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "aluminum"},
+	resourceQuantities = {4000, 1000},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_proton_mk4.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_proton_mk4.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_wpn_launcher_proton_mk4, "object/draft_schematic/space/weapon/missile/wpn_launcher_proton_mk4.iff")

@@ -43,38 +43,35 @@
 
 object_draft_schematic_space_weapon_missile_countermeasure_em_launcher = object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "EM Emitter Launcher",
+	customObjectName = "EM Emitter Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 17, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 17,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 625, 
+	xpType = "shipwright",
+	xp = 625,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "core"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "radioactive"},
-   resourceQuantities = {3750, 1250},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "core"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "radioactive"},
+	resourceQuantities = {3750, 1250},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_em_launcher.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_em_launcher.iff",
-
-   additionalTemplates = {
-              "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_launcher.iff",
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_em_launcher, "object/draft_schematic/space/weapon/missile/countermeasure_em_launcher.iff")

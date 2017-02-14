@@ -43,38 +43,35 @@
 
 object_draft_schematic_space_weapon_missile_wpn_launcher_spacebomb_mk2 = object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Mark II Spacebomb Launcher",
+	customObjectName = "Mark II Spacebomb Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 150, 
+	xpType = "shipwright",
+	xp = 150,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "weapon_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "weapon_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "ammo_chamber"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "aluminum"},
-   resourceQuantities = {4000, 1000},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "ammo_chamber"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "aluminum"},
+	resourceQuantities = {4000, 1000},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_spacebomb_mk2.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_spacebomb_mk2.iff",
-
-   additionalTemplates = {
-              "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff",
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_wpn_launcher_spacebomb_mk2, "object/draft_schematic/space/weapon/missile/wpn_launcher_spacebomb_mk2.iff")

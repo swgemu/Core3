@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_weapon_wpn_light_disruptor = object_draft_schematic_space_weapon_shared_wpn_light_disruptor:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Light Disruptor",
+	customObjectName = "Light Disruptor",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 21, 
-   size = 1, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 21,
+	size = 1,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 50, 
+	xpType = "shipwright",
+	xp = 50,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
-   ingredientSlotType = {0, 0, 3, 0, 0},
-   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk1.iff", "gas_inert", "ore_carbonate"},
-   resourceQuantities = {50, 50, 1, 50, 50},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
+	ingredientSlotType = {0, 0, 3, 0, 0},
+	resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk1.iff", "gas_inert", "ore_carbonate"},
+	resourceQuantities = {50, 50, 1, 50, 50},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/wpn_light_disruptor.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/wpn_light_disruptor.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_wpn_light_disruptor, "object/draft_schematic/space/weapon/wpn_light_disruptor.iff")

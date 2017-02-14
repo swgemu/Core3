@@ -43,37 +43,35 @@
 
 object_draft_schematic_space_weapon_wpn_heavy_blaster = object_draft_schematic_space_weapon_shared_wpn_heavy_blaster:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Heavy Blaster (Red)",
+	customObjectName = "Heavy Blaster (Red)",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 29, 
-   size = 0, 
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 29,
+	size = 0,
+	factoryCrateSize = 0,
 
-   xpType = "shipwright", 
-   xp = 250, 
+	xpType = "shipwright",
+	xp = 250,
 
-   assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "weapon_systems",
+	experimentingSkill = "weapons_systems_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
-   ingredientSlotType = {0, 0, 3, 0, 0},
-   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk3.iff", "gas_inert", "ore_carbonate"},
-   resourceQuantities = {250, 250, 1, 250, 250},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
+	ingredientSlotType = {0, 0, 3, 0, 0},
+	resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk3.iff", "gas_inert", "ore_carbonate"},
+	resourceQuantities = {250, 250, 1, 250, 250},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/weapon/wpn_heavy_blaster.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/weapon/wpn_heavy_blaster.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_wpn_heavy_blaster, "object/draft_schematic/space/weapon/wpn_heavy_blaster.iff")
