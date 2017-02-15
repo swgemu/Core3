@@ -183,12 +183,20 @@ void MissionObjectiveImplementation::awardReward() {
 
 		playerCount = group->getNumberOfPlayerMembers();
 
-		for(int i = 0; i < group->getGroupSize(); i++) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	Reference<BasePacket*> pack = pmm;
+#endif
+
+		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
 			if (groupMember != NULL && groupMember->isPlayerCreature()) {
 				//Play mission complete sound.
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+				groupMember->sendMessage(pack);
+#else
 				groupMember->sendMessage(pmm->clone());
+#endif
 
 				if (groupMember->getWorldPosition().distanceTo(missionEndPoint) < 128) {
 					players.add(groupMember);
@@ -196,7 +204,9 @@ void MissionObjectiveImplementation::awardReward() {
 			}
 		}
 
+#ifndef LOCKFREE_BCLIENT_BUFFERS
 		delete pmm;
+#endif
 	} else {
 		//Play mission complete sound.
 		owner->sendMessage(pmm);

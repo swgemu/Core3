@@ -80,37 +80,6 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 
 }
 
-void InstallationObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
-	Zone* zone = getZone();
-
-	if (zone == NULL) {
-		delete message;
-		return;
-	}
-
-	Locker zoneLocker(zone);
-
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
-	zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
-
-	for (int i = 0; i < closeSceneObjects.size(); ++i) {
-		ManagedReference<SceneObject*> scno = cast<SceneObject*>( closeSceneObjects.get(i).get());
-
-		if (!sendSelf && scno == _this.getReferenceUnsafeStaticCast())
-			continue;
-
-		if(!scno->isPlayerCreature())
-			continue;
-
-		CreatureObject* creo = cast<CreatureObject*>( scno.get());
-
-		if(isOnAdminList(creo))
-			scno->sendMessage(message->clone());
-	}
-
-	delete message;
-}
-
 void InstallationObjectImplementation::setOperating(bool value, bool notifyClient) {
 	//updateInstallationWork();
 
@@ -544,12 +513,22 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 }
 
 void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	Reference<BasePacket*> pack = packet;
+#endif
+
 	for (int i = 0; i < operatorList.size(); ++i) {
 		CreatureObject* player = operatorList.get(i);
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		player->sendMessage(pack);
+#else
 		player->sendMessage(packet->clone());
+#endif
 	}
 
+#ifndef LOCKFREE_BCLIENT_BUFFERS
 	delete packet;
+#endif
 }
 
 void InstallationObjectImplementation::activateUiSync() {

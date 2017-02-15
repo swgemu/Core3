@@ -271,17 +271,3 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition, false);
 }
-
-void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
-	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
-
-	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
-		linkedCreature->sendMessage(msg);
-	else {
-#ifdef LOCKFREE_BCLIENT_BUFFERS
-		if (!msg->getReferenceCount())
-#endif
-		delete msg;
-	}
-}
-

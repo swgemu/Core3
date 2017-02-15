@@ -765,11 +765,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 
 				setPosture(CreaturePosture::SITTING, false);
 
-				SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
-				int maxInRangeObjects = 0;
-
 				if (thisZone != NULL) {
-					//Locker locker(thisZone);
+					SortedVector<QuadTreeEntry*> closeSceneObjects;
+					int maxInRangeObjects = 0;
 
 					if (closeobjects == NULL) {
 #ifdef COV_DEBUG
@@ -778,26 +776,42 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {
-						closeobjects->safeCopyTo(closeSceneObjects);
+						closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
 						maxInRangeObjects = closeSceneObjects.size();
 					}
 
-					for (int i = 0; i < closeSceneObjects.size(); ++i) {
-						SceneObject* object = static_cast<SceneObject*> (closeSceneObjects.get(i).get());
+					SitOnObject* soo = new SitOnObject(asCreatureObject(), getPositionX(), getPositionZ(), getPositionY());
+					CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
+					dcreo3->updatePosture();
+					dcreo3->updateState();
+					dcreo3->close();
+
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+					Reference<BasePacket*> pack1 = soo;
+					Reference<BasePacket*> pack2 = dcreo3;
+#endif
+
+					for (int i = 0; i < maxInRangeObjects; ++i) {
+						SceneObject* object = static_cast<SceneObject*> (closeSceneObjects.get(i));
 
 						if (object->getParent().get() == getParent().get()) {
-							SitOnObject* soo = new SitOnObject(asCreatureObject(), getPositionX(), getPositionZ(), getPositionY());
-							object->sendMessage(soo);
-							CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
-							dcreo3->updatePosture();
-							dcreo3->updateState();
-							dcreo3->close();
-							object->sendMessage(dcreo3);
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+							object->sendMessage(pack1);
+							object->sendMessage(pack2);
+#else
+							object->sendMessage(soo->clone());
+							object->sendMessage(dcreo3->clone());
+#endif
 						} else {
 							sendDestroyTo(object);
 							sendTo(object, true);
 						}
 					}
+
+#ifndef LOCKFREE_BCLIENT_BUFFERS
+					delete soo;
+					delete dcreo3;
+#endif
 				}
 			} else {
 				CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
@@ -2577,11 +2591,17 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 	if (group != NULL) {
 		GroupList* list = group->getGroupList();
 		if (list != NULL) {
+			ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(creo);
+
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+			Reference<BasePacket*> pack = msg;
+#endif
+
 			for (int i = 0; i < list->size(); i++) {
 
 				Reference<CreatureObject*> member = list->get(i).get();
 
-				if (member == NULL || creo == member)
+				if (member == NULL || creo == member || !member->isPlayerCreature())
 					continue;
 
 				CloseObjectsVector* cev = (CloseObjectsVector*)member->getCloseObjects();
@@ -2589,9 +2609,16 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 				if (cev == NULL || cev->contains(creo.get()))
 					continue;
 
-				ClientMfdStatusUpdateMessage *msg = new ClientMfdStatusUpdateMessage(creo);
-				member->sendMessage(msg);
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+				member->sendMessage(pack);
+#else
+				member->sendMessage(msg->clone());
+#endif
 			}
+
+#ifndef LOCKFREE_BCLIENT_BUFFERS
+			delete msg;
+#endif
 		}
 	}
 }
