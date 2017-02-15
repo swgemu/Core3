@@ -298,28 +298,26 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	float excMod = 1.0;
 
-	if (level >= 50) {
-		float adjustment = floor((float)(level - 50) / 10.f + 0.5);
+	float adjustment = floor((float)(((level > 50) ? level : 50) - 50) / 10.f + 0.5);
 
-		if (System::random(legendaryChance) >= legendaryChance - adjustment) {
-			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
-			prototype->setCustomObjectName(newName, false);
+	if (System::random(legendaryChance) >= legendaryChance - adjustment) {
+		UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
+		prototype->setCustomObjectName(newName, false);
 
-			excMod = legendaryModifier;
+		excMod = legendaryModifier;
 
-			prototype->addMagicBit(false);
+		prototype->addMagicBit(false);
 
-			legendaryLooted.increment();
-		} else if (System::random(exceptionalChance) >= exceptionalChance - adjustment) {
-			UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
-			prototype->setCustomObjectName(newName, false);
+		legendaryLooted.increment();
+	} else if (System::random(exceptionalChance) >= exceptionalChance - adjustment) {
+		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
+		prototype->setCustomObjectName(newName, false);
 
-			excMod = exceptionalModifier;
+		excMod = exceptionalModifier;
 
-			prototype->addMagicBit(false);
+		prototype->addMagicBit(false);
 
-			exceptionalLooted.increment();
-		}
+		exceptionalLooted.increment();
 	}
 
 	if (prototype->isLightsaberCrystalObject()) {
