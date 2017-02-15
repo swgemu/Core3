@@ -500,17 +500,18 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 	VectorMap<String, int> additionalMods;
 
 	bool yellow = false;
+	float modSqr = excMod * excMod;
 
-	if (System::random(skillModChance / excMod) == 0) {
+	if (System::random(skillModChance / modSqr) == 0) {
 		// if it has a skillmod the name will be yellow
 		yellow = true;
 		int modCount = 1;
 		int roll = System::random(100);
 
-		if(roll > (100 - excMod))
+		if(roll > (100 - modSqr))
 			modCount += 2;
 
-		if(roll < (5 * excMod))
+		if(roll < (5 + modSqr))
 			modCount += 1;
 
 		for(int i = 0; i < modCount; ++i) {
@@ -839,8 +840,10 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 	if (dotChance < 0)
 		return;
 
+	float modSqr = excMod * excMod;
+
 	// Apply the Dot if the chance roll equals the number or is zero.
-	if (dotChance == 0 || System::random(dotChance / excMod) == 0) { // Defined in loot item script.
+	if (dotChance == 0 || System::random(dotChance / modSqr) == 0) { // Defined in loot item script.
 		shouldGenerateDots = true;
 	}
 
@@ -848,7 +851,7 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 
 		int number = 1;
 
-		if (System::random(250 / excMod) == 5)
+		if (System::random(250 / modSqr) == 0)
 			number = 2;
 
 		bool yellow = false;
