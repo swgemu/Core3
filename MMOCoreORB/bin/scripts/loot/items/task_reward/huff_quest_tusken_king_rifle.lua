@@ -10,7 +10,7 @@ huff_quest_tusken_king_rifle = {
 
 	},
 
-	randomDotChance = 800,
+	randomDotChance = 625,
 	junkDealerTypeNeeded = JUNKARMS,
 	junkMinValue = 30,
 	junkMaxValue = 55
