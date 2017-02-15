@@ -101,15 +101,6 @@ class InstallationObject extends StructureObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
-	/**
-	 * Broadcasts the message to the in range objects
-	 * @pre {this object is locked, message is not null }
-	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
-	 * @param sendSelf if true the owner if this object receives the message too
-	 */
-	@dirty
-	public native void broadcastMessage(BasePacket message, boolean sendSelf);
-
 	@preLocked
 	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
 
