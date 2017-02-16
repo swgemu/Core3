@@ -45,8 +45,8 @@ object_tangible_medicine_crafted_medpack_enhance_poison_b = object_tangible_medi
 	gameObjectType = 8238,
 	templateType = ENHANCEPACK,
 	useCount = 10,
-	medicineUse = 5,
-	effectiveness = 100,
+	medicineUse = 90,
+	effectiveness = 80,
 	duration = 1800,
 	attribute = 9,
 

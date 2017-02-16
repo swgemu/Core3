@@ -45,8 +45,8 @@ object_tangible_medicine_crafted_medpack_enhance_disease_b = object_tangible_med
 	gameObjectType = 8238,
 	templateType = ENHANCEPACK,
 	useCount = 10,
-	medicineUse = 5,
-	effectiveness = 100,
+	medicineUse = 90,
+	effectiveness = 80,
 	duration = 1800,
 	attribute = 10,
 

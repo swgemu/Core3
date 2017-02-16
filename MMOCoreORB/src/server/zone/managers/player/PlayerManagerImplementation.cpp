@@ -2096,7 +2096,7 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 	}
 }
 
-int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
+int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration, int absorption) {
 	String buffname = "medical_enhance_" + BuffAttribute::getName(attribute);
 	uint32 buffcrc = buffname.hashCode();
 	uint32 buffdiff = buffvalue;
@@ -2124,6 +2124,9 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 
 	if(BuffAttribute::isProtection(attribute)) {
 		buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
+
+		if (absorption > 0)
+			buff->setSkillModifier(BuffAttribute::getAbsorptionString(attribute), absorption);
 	} else {
 		buff->setAttributeModifier(attribute, buffvalue);
 		buff->setFillAttributesOnBuff(true);

@@ -13,6 +13,7 @@
 class EnhancePackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;
 	float effectiveness;
+	float absorption;
 	float duration;
 	byte attribute;
 
@@ -20,6 +21,7 @@ public:
 	EnhancePackTemplate() {
 		medicineUse = 0;
 		effectiveness = 0;
+		absorption = 0;
 		duration = 0;
 		attribute = 0;
 	}
@@ -33,6 +35,7 @@ public:
 
 		medicineUse = templateData->getIntField("medicineUse");
 		effectiveness = templateData->getFloatField("effectiveness");
+		absorption = templateData->getFloatField("absorption");
 		duration = templateData->getFloatField("duration");
 		attribute = templateData->getIntField("attribute");
     }
@@ -43,6 +46,10 @@ public:
 
 	inline float getEffectiveness() {
 		return effectiveness;
+	}
+
+	inline float getAbsorption() {
+		return absorption;
 	}
 
 	inline byte getAttribute() {

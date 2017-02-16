@@ -54,6 +54,23 @@ public:
 		return name;
 	}
 
+	static String getAbsorptionString(uint8 attribute) {
+		String name = "";
+
+		switch(attribute) {
+		case POISON:
+			name = "absorption_poison";
+			break;
+		case DISEASE:
+			name = "absorption_disease";
+			break;
+		default:
+			name = "unknown";
+			break;
+		}
+
+		return name;
+	}
 
 	static uint8 getAttribute(String attribute) {
 		attribute = attribute.toLowerCase();
