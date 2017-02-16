@@ -19,7 +19,11 @@
 #include "engine/util/u3d/Segment.h"
 #include "pathfinding/recast/DetourCommon.h"
 
-PathFinderManager::PathFinderManager() : Logger("PathFinderManager") {
+void destroyNavMeshQuery(void* value) {
+	dtFreeNavMeshQuery(reinterpret_cast<dtNavMeshQuery*>(value));
+}
+
+PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery(destroyNavMeshQuery) {
 	setFileLogger("log/pathfinder.log");
 
 	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ SAMPLE_POLYFLAGS_DISABLED);
