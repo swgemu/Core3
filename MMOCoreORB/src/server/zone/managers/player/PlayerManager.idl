@@ -310,7 +310,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param duration The duration in seconds the enhancement will last.
 	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
 	 */
-	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
+	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration, int absorption = 0);
 
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, SynchronizedVector<CreatureObject> lairSpawnedCreatures = null);
