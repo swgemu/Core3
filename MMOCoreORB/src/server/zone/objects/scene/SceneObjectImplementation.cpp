@@ -1400,16 +1400,16 @@ void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
-	Locker locker(&parentLock);
+	/*Locker locker(&parentLock);
 
 	ManagedReference<QuadTreeEntry*> parent = this->parent.get();
 
 	if (parent == NULL)
 		return NULL;
 
-	assert(parent != asSceneObject());
+	assert(parent != asSceneObject());*/
 
-	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
+	return this->parent.staticCastToWeak<SceneObject*>();
 }
 
 SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObservers(unsigned int eventType) {
