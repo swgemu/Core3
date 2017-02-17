@@ -13,7 +13,7 @@
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/PathGraph.h"
 
-class EdgeID : public Object {
+class EdgeID {
 	int triangleID;
 	int edgeID;
 public:
@@ -49,7 +49,7 @@ public:
 	}
 };
 
-class Vert : public Object {
+class Vert {
 	float x, z, y;
 
 public:
@@ -92,7 +92,7 @@ public:
 	}
 };
 
-class Nods  : public Object {
+class Nods {
 	float x0, y0, z0, x1, y1, z1;
 	int id, var2, leftNode, rightNode;
 
@@ -118,7 +118,7 @@ public:
 	}
 };
 
-class Bedg : public Object {
+class Bedg {
 	int triangleID;
 	int edgeID;
 	char var3;
@@ -268,7 +268,6 @@ public:
 	}
 
 	inline void setCellID(int id) {
-
 		cellID = id;
 	}
 

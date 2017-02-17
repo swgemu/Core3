@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class MeshTriangle : public Object {
+class MeshTriangle {
 protected:
 	int verts[3];
 
@@ -88,7 +88,7 @@ public:
 		return newData;
 	}
 
-	void transformMeshData(Matrix4 transform) {
+	void transformMeshData(const Matrix4& transform) {
 		for (int i = 0; i < vertices.size(); i++) {
 			Vector3& vert = vertices.get(i);
 			vert = Vector3(vert.getX(), vert.getY(), vert.getZ()) * transform;

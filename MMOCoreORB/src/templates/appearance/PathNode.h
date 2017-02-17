@@ -13,7 +13,7 @@
 
 class PathGraph;
 
-class PathNode : public Object {
+class PathNode {
 public:
 	enum PathNodeType
 	{
