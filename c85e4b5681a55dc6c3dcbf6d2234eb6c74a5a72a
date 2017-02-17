@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_10a5ea03",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-17T14:12:22Z",
+      "side": 1,
+      "message": "Put this before the distance and collision checks.",
+      "revId": "c85e4b5681a55dc6c3dcbf6d2234eb6c74a5a72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_30aa66d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-17T14:12:22Z",
+      "side": 1,
+      "message": "What\u0027s all this about? The commit message only mentions not allowing the healing of droids and you have that covered above.",
+      "revId": "c85e4b5681a55dc6c3dcbf6d2234eb6c74a5a72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
