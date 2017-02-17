@@ -53,28 +53,27 @@ MindShot1Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
-	combatSpam = "head",
-	    
+	combatSpam = "distractshot",
+
 	dotEffects = {
-	  DotEffect( 
-		BLEEDING, 
+	  DotEffect(
+		BLEEDING,
 		{ "resistance_bleeding", "bleed_resist" },
 		MIND,
 		true,
 		0,
 		100,
-		60, 
-		60
+		60,
+		120
 	  )
 	},
-	
+
 	weaponType = RIFLEWEAPON,
 
 	range = -1
 }
 
 AddCommand(MindShot1Command)
-
