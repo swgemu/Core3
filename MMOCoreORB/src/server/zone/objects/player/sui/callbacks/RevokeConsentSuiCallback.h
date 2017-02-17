@@ -16,7 +16,6 @@ public:
 		: SuiCallback(server) {
 	}
 
-
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
@@ -26,20 +25,28 @@ public:
 		int index = Integer::valueOf(args->get(0).toString());
 
 		PlayerObject* ghost = player->getPlayerObject();
-		for (int i = 0; i < ghost->getConsentListSize(); ++i) {
-			String entryName = ghost->getConsentName(i);
-			if (!entryName.isEmpty() && index == i){
-				ghost->removeFromConsentList(entryName);
-				StringIdChatParameter stringId("base_player", "prose_unconsent");
-				stringId.setTO(entryName);
-				player->sendSystemMessage(stringId);
+
+		if (ghost == NULL)
+			return;
+
+		String entryName = ghost->getConsentName(index);
+
+		if (!entryName.isEmpty()) {
+			ghost->removeFromConsentList(entryName);
+			StringIdChatParameter stringId("base_player", "prose_unconsent"); //You revoke your consent from %TO.
+			stringId.setTO(entryName);
+			player->sendSystemMessage(stringId);
+
+			PlayerManager* playerManager = server->getPlayerManager();
+			CreatureObject* targetPlayer = playerManager->getPlayer(entryName);
+
+			if (targetPlayer != NULL) {
+				StringIdChatParameter stringId2("base_player", "prose_lost_consent"); //%TO no longer consents you.
+				stringId2.setTO(player->getFirstName());
+				targetPlayer->sendSystemMessage(stringId2);
 			}
 		}
 	}
 };
-
-
-
-
 
 #endif /* REVOKECONSENTSUICALLBACK_H_ */
