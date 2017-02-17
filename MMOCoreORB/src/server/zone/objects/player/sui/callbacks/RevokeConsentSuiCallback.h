@@ -26,7 +26,7 @@ public:
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == NULL || index < 0 || index >= ghost->getConsentListSize())
 			return;
 
 		String entryName = ghost->getConsentName(index);
