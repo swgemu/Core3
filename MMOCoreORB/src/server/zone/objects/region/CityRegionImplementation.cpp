@@ -481,8 +481,10 @@ void CityRegionImplementation::createNavRegion(const String& queue, bool forceRe
 	if (navRegion != NULL) {
 		RecastNavMesh* mesh = getNavMesh();
 		if (mesh == NULL || !mesh->isLoaded()) {
+			Reference<CityRegion*> strongRef = _this.getReferenceUnsafeStaticCast();
+
 			Core::getTaskManager()->executeTask([=] {
-				updateNavmesh(navRegion->getBoundingBox(), queue);
+				strongRef->updateNavmesh(navRegion->getBoundingBox(), queue);
 			}, "cityregion_navmesh_update");
 			return;
 		}
