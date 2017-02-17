@@ -10,7 +10,7 @@
 
 #include "engine/util/iffstream/IffStream.h"
 
-class PathEdge : public Object  {
+class PathEdge {
 	int from, to;
 
 	float laneWidthRight;
@@ -42,6 +42,15 @@ public:
 	inline float getLaneWidthLeft() const {
 		return laneWidthLeft;
 	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
 
 };
 
