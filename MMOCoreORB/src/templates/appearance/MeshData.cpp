@@ -114,6 +114,8 @@ void MeshData::readObject(IffStream* iffStream) {
 
 	int intBytesPerVertex = vertexDataChunkSize / numVertices;
 
+	vertices.removeAll(numVertices);
+
 	for (int i = 0; i < numVertices; ++i) {
 		Vector3 vert = iffStream->getVector3();
 		vertices.add(Vector3(vert[0], vert[1], vert[2]));
@@ -127,6 +129,8 @@ void MeshData::readObject(IffStream* iffStream) {
 	Chunk* indexData = iffStream->openChunk('INDX');
 
 	int indexCount = iffStream->getInt();
+
+	triangles.removeAll(indexCount / 3);
 
 	for (int i = 1; i <= indexCount; i += 3) {
 		int a = indexData->readShort();
