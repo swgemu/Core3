@@ -54,7 +54,8 @@ void ForceHealQueueCommand::doAnimations(CreatureObject* creature, CreatureObjec
 }
 
 int ForceHealQueueCommand::doHealBF(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
-	if (creature == NULL || target == NULL) return GENERALERROR;
+	if (creature == NULL || target == NULL)
+		return GENERALERROR;
 
 	int currentValue = target->getShockWounds();
 #ifdef DEBUG_FORCE_HEALS
@@ -74,7 +75,6 @@ int ForceHealQueueCommand::doHealBF(CreatureObject* creature, CreatureObject* ta
 
 	return SUCCESS;
 }
-
 
 int ForceHealQueueCommand::checkWoundAttributes(CreatureObject* creature, CreatureObject* targetCreature) const {
 	int retval = 0;
@@ -117,9 +117,9 @@ int ForceHealQueueCommand::checkWoundAttributes(CreatureObject* creature, Creatu
 	return retval;
 }
 
-
 int ForceHealQueueCommand::doHealWounds(CreatureObject* creature, CreatureObject* targetCreature, int healableWounds, healedAttributes_t& attrs) const {
-	if (targetCreature == NULL) return GENERALERROR;
+	if (targetCreature == NULL)
+		return GENERALERROR;
 #ifdef DEBUG_FORCE_HEALS
 	creature->sendSystemMessage(name + "[doHealWounds] Healing wounds " + String::valueOf(healWoundAmount) + " " + String::valueOf(healableWounds));
 #endif
@@ -174,7 +174,8 @@ int ForceHealQueueCommand::checkHAMAttributes(CreatureObject* creature, Creature
 	return retval;
 }
 int ForceHealQueueCommand::doHealHAM(CreatureObject* creature, CreatureObject* target, int healableHAM, healedAttributes_t& attrs) const {
-	if (target == NULL) return GENERALERROR;
+	if (target == NULL)
+		return GENERALERROR;
 #ifdef DEBUG_FORCE_HEALS
 	creature->sendSystemMessage("[doHealHAM] Healable HAM:" + String::valueOf(healableHAM));
 #endif
@@ -468,7 +469,7 @@ void ForceHealQueueCommand::sendDefaultSystemMessage(CreatureObject* creature, C
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other");
 		}
 	} else if (healStates != 0) {
-		// was supposed to heal states but there werent any
+		// was supposed to heal states but there weren't any
 		if (!didHealTarget) {
 			// You have no state of that type to heal.
 			creature->sendSystemMessage("@healing_response:healing_response_72");
@@ -508,7 +509,7 @@ void ForceHealQueueCommand::sendDefaultSystemMessage(CreatureObject* creature, C
 			// You are not diseased.
 			creature->sendSystemMessage("@healing_response:healing_response_90");
 		} else {
-			// %NT is nto diseased.
+			// %NT is not diseased.
 			StringIdChatParameter msg("healing_response", "healing_response_92");
 			msg.setTT(target->getObjectID());
 			creature->sendSystemMessage(msg);
@@ -525,10 +526,14 @@ void ForceHealQueueCommand::sendDefaultSystemMessage(CreatureObject* creature, C
 }
 
 int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, CreatureObject* targetCreature) const {
-	if (creature == NULL || targetCreature == NULL) return GENERALERROR;
+	if (creature == NULL || targetCreature == NULL)
+		return GENERALERROR;
 
 	if (creature->getObjectID() == targetCreature->getObjectID()) // no self healing
 		return GENERALERROR;
+
+	if ((!targetCreature->isPlayerCreature() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isWalkerSpecies())
+		return INVALIDTARGET;
 
 	if (targetCreature->isDead() || targetCreature->isAttackableBy(creature))
 		return GENERALERROR;
