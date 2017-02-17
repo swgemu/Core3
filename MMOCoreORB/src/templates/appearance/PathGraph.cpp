@@ -27,6 +27,8 @@ void PathGraph::readObject(IffStream* iffStream) {
 
 	int nodesSize = iffStream->getInt();
 
+	pathNodes.removeAll(nodesSize);
+
 	for (int i = 0; i < nodesSize; ++i) {
 		PathNode* pathNode = new PathNode(this);
 
@@ -40,6 +42,8 @@ void PathGraph::readObject(IffStream* iffStream) {
 	iffStream->openChunk('PEDG');
 
 	int pathEdgeSize = iffStream->getInt();
+
+	pathEdges.removeAll(pathEdgeSize);
 
 	for (int i = 0; i < pathEdgeSize; ++i) {
 		PathEdge pathEdge;
@@ -55,6 +59,8 @@ void PathGraph::readObject(IffStream* iffStream) {
 
 	int ecntSize = iffStream->getInt();
 
+	edgeCounts.removeAll(ecntSize);
+
 	for (int i = 0; i < ecntSize; ++i) {
 		edgeCounts.add(iffStream->getInt());
 	}
@@ -64,6 +70,8 @@ void PathGraph::readObject(IffStream* iffStream) {
 	iffStream->openChunk('ESTR');
 
 	int estrSize = iffStream->getInt();
+
+	edgeStarts.removeAll(estrSize);
 
 	for (int i = 0; i < estrSize; ++i) {
 		edgeStarts.add(iffStream->getInt());

@@ -13,7 +13,7 @@
 
 class PathGraph;
 
-class PathNode : public Object {
+class PathNode {
 public:
 	enum PathNodeType
 	{
@@ -71,6 +71,14 @@ public:
 		radius = iffStream->getFloat(); //radius
 		if(radius == 0.0f)
 			radius = 0.5f;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
 	}
 
 	inline float getX() const {

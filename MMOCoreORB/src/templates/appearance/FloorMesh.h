@@ -13,7 +13,7 @@
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/PathGraph.h"
 
-class EdgeID : public Object {
+class EdgeID {
 	int triangleID;
 	int edgeID;
 public:
@@ -25,7 +25,7 @@ public:
 		triangleID = -1;
 		edgeID = -1;
 	}
-	EdgeID(const EdgeID& edge) : Object(edge) {
+	EdgeID(const EdgeID& edge) {
 		triangleID = edge.triangleID;
 		edgeID = edge.edgeID;
 	}
@@ -47,9 +47,18 @@ public:
 			return -1;
 		}
 	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
 };
 
-class Vert : public Object {
+class Vert {
 	float x, z, y;
 
 public:
@@ -57,7 +66,7 @@ public:
 		x = z = y = 0;
 	}
 
-	Vert(const Vert& v) : Object() {
+	Vert(const Vert& v) {
 		x = v.x;
 		z = v.z;
 		y = v.y;
@@ -90,9 +99,18 @@ public:
 	inline Vector3 getPosition() {
 		return Vector3(x, y, z);
 	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
 };
 
-class Nods  : public Object {
+class Nods {
 	float x0, y0, z0, x1, y1, z1;
 	int id, var2, leftNode, rightNode;
 
@@ -116,9 +134,18 @@ public:
 		leftNode = iffStream->getInt();
 		rightNode = iffStream->getInt();
 	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
 };
 
-class Bedg : public Object {
+class Bedg {
 	int triangleID;
 	int edgeID;
 	char var3;
@@ -142,6 +169,13 @@ public:
 		return edgeID;
 	}
 
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
 };
 
 class FloorMeshTriangleNode : public TriangleNode {
@@ -210,6 +244,15 @@ public:
 	inline Vector<TriangleNode*>* getNeighbors() {
 		return &neighbors;
 	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
 };
 
 class FloorMesh : public IffTemplate, public Logger {
@@ -268,7 +311,6 @@ public:
 	}
 
 	inline void setCellID(int id) {
-
 		cellID = id;
 	}
 
