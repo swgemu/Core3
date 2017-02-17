@@ -186,8 +186,9 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
+	auto attribute = this->attribute;
 
-	Core::getTaskManager()->executeTask([=] () {
+	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, damage] () {
 		Locker locker(victimRef);
 
 		Locker crossLocker(attackerRef, victimRef);
@@ -225,8 +226,10 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
+	auto attribute = this->attribute;
+	auto secondaryStrength = this->secondaryStrength;
 
-	Core::getTaskManager()->executeTask([=] () {
+	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, woundsToApply, secondaryStrength, damage] () {
 		Locker locker(victimRef);
 
 		Locker crossLocker(attackerRef, victimRef);
@@ -269,8 +272,9 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
+	auto attribute = this->attribute;
 
-	Core::getTaskManager()->executeTask([=] () {
+	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, damage] () {
 		Locker locker(victimRef);
 
 		Locker crossLocker(attackerRef, victimRef);
@@ -301,8 +305,10 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
+	auto attribute = this->attribute;
+	auto strength = this->strength;
 
-	Core::getTaskManager()->executeTask([=] () {
+	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, damage, strength] () {
 		Locker locker(victimRef);
 		Locker crossLocker(attackerRef, victimRef);
 
@@ -333,8 +339,10 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
+	auto attribute = this->attribute;
+	auto strength = this->strength;
 
-	Core::getTaskManager()->executeTask([=] () {
+	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, strength] () {
 		Locker locker(victimRef);
 
 		Locker crossLocker(attackerRef, victimRef);

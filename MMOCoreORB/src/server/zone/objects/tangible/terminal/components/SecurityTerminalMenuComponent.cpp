@@ -71,8 +71,10 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 1;
 
 	if (gcwMan->isTerminalDamaged(securityTerminal)) {
+		Reference<CreatureObject*> playerRef = player;
+
 		Core::getTaskManager()->executeTask([=] () {
-			gcwMan->repairTerminal(player, securityTerminal);
+			gcwMan->repairTerminal(playerRef, securityTerminal);
 		}, "RepairTerminalLambda");
 
 	} else {
