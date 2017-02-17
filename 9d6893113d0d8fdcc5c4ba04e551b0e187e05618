@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_509b72c9",
+        "filename": "MMOCoreORB/bin/scripts/commands/mindShot1.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-17T13:36:52Z",
+      "side": 1,
+      "message": "There\u0027s no way that both of these commands should use the same spam (and none of the links in the report say that either).",
+      "revId": "9d6893113d0d8fdcc5c4ba04e551b0e187e05618",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b05e5611",
+        "filename": "MMOCoreORB/bin/scripts/commands/mindShot1.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-17T13:36:52Z",
+      "side": 1,
+      "message": "strength does nothing in this case since it uses the damage of the initial hit. There\u0027s no point in changing it. Same for #2.",
+      "revId": "9d6893113d0d8fdcc5c4ba04e551b0e187e05618",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
