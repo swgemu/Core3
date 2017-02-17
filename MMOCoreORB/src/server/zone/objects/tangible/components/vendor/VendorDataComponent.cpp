@@ -346,7 +346,7 @@ void VendorDataComponent::performVendorBark(SceneObject* target) {
 		return;
 
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(target);
-	if (player == NULL || !player->isPlayerCreature())
+	if (player == NULL || !player->isPlayerCreature() || player->isInvisible())
 		return;
 
 	resetLastBark();
