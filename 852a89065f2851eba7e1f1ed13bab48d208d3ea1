@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_b0e3b632",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WaypointCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-17T16:53:07Z",
+      "side": 1,
+      "message": "instead of putting a redundant check here, I would move this whole if block after the hasMoreTkens if block.\n\n1.e. if (hasMoreTokens()) { .. } else if (targetObject !\u003d NULL) { .. }",
+      "revId": "852a89065f2851eba7e1f1ed13bab48d208d3ea1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
