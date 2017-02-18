@@ -73,7 +73,7 @@ class AiAgent extends CreatureObject {
 	protected CreatureAttackMap defaultAttackMap;
 
 	@dereferenced
-	protected transient Vector<unsigned long> camouflagedObjects;
+	protected transient SortedVector<unsigned long> camouflagedObjects;
 
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;

@@ -533,7 +533,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 		radius = radius * 2;
 
 	if (!isInRange3d(creoObject, radius * 1.2)) {
-		camouflagedObjects.removeElement(creoObject->getObjectID());
+		camouflagedObjects.drop(creoObject->getObjectID());
 
 		return false;
 	}
@@ -2132,7 +2132,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
 		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
-			camouflagedObjects.removeElement(effectiveTargetID);
+			camouflagedObjects.drop(effectiveTargetID);
 		}
 		return false;
 	}
@@ -2160,9 +2160,9 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
 	if (success)
-		camouflagedObjects.add(effectiveTargetID); // add to award
+		camouflagedObjects.put(effectiveTargetID); // add to award
 	else
-		camouflagedObjects.removeElement(effectiveTargetID);
+		camouflagedObjects.drop(effectiveTargetID);
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success);
 	ct->execute();
@@ -2187,7 +2187,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	if (!effectiveTarget->hasBuff(concealCRC)) {
 		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-			camouflagedObjects.removeElement(effectiveTargetID);
+			camouflagedObjects.drop(effectiveTargetID);
 		}
 		return false;
 	}
@@ -2224,9 +2224,9 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
 	if (success) {
-		camouflagedObjects.add(effectiveTargetID); // add to award
+		camouflagedObjects.put(effectiveTargetID); // add to award
 	} else {
-		camouflagedObjects.removeElement(effectiveTargetID);
+		camouflagedObjects.drop(effectiveTargetID);
 	}
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success);
