@@ -66,7 +66,7 @@ public:
 		if (maskScent) {
 			playerManager->awardExperience(player, "scout", (ai->getLevel() * 2), true);
 		} else {
-			ConcealBuff* buff = cast<ConcealBuff*>(player->getBuff(crc));
+			Reference<ConcealBuff*> buff = cast<ConcealBuff*>(player->getBuff(crc));
 			if (buff != NULL) {
 				clocker.release();
 				locker.release();
