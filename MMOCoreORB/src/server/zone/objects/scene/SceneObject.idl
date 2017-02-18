@@ -223,6 +223,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native boolean isInRange(SceneObject obj, float range);
 
 	/**
+	 * Evaluates if the object is in range using 3 dimensions
+	 * @pre { this object is locked, obj is locked}
+	 * @post { thisobject is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
+	@dirty
+	public native boolean isInRange3d(SceneObject obj, float range);
+
+	/**
 	 * Tries to add/link object
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }

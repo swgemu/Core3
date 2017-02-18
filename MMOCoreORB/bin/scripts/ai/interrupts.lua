@@ -78,11 +78,11 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
 	radius = radius*mod
 
-	local inRange = sceneObject:isInRangeWithObject(pAgent, radius)
+	local inRange = sceneObject:isInRangeWithObject3d(pAgent, radius)
 
 	local pFollow = aiAgent:getFollowObject();
 
-	if aiAgent:isStalker() and sceneObject:isPlayerCreature() and aiAgent:isAggressiveTo(pObject) and sceneObject:isInRangeWithObject(pAgent, radius*2) then
+	if aiAgent:isStalker() and sceneObject:isPlayerCreature() and aiAgent:isAggressiveTo(pObject) and sceneObject:isInRangeWithObject3d(pAgent, radius*2) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1") end
 		if pFollow == nil and not inRange then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1a") end
@@ -251,9 +251,11 @@ function VillageRaiderInterrupt:startAwarenessInterrupt(pAgent, pObject)
 
 	if aiAgent:isInCombat() then return end
 
-	local inRange = sceneObject:isInRangeWithObject(pAgent, 32)
+	local inRange = sceneObject:isInRangeWithObject3d(pAgent, 32)
 
-	if inRange and aiAgent:checkLineOfSight(pObject) then aiAgent:addDefender(pObject) end
+	if inRange and aiAgent:checkLineOfSight(pObject) then
+		aiAgent:addDefender(pObject)
+	end
 
 	aiAgent:stopWaiting();
 	aiAgent:executeBehavior();
@@ -280,7 +282,7 @@ function VillageRaiderInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	if creoObject:isInvisible() then return false end
 
-	if not sceneObject:isInRangeWithObject(pAgent, 32) then return false end
+	if not sceneObject:isInRangeWithObject3d(pAgent, 32) then return false end
 
 	local tanoObject = TangibleObject2(pObject)
 

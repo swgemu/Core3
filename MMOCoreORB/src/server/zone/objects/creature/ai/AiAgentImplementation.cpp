@@ -532,8 +532,9 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (pObject->isPlayerCreature())
 		radius = radius * 2;
 
-	if (!isInRange(creoObject, radius * 1.2)) {
-		camouflagedObjects.removeElement(creoObject->getTargetID());
+	if (!isInRange3d(creoObject, radius * 1.2)) {
+		camouflagedObjects.removeElement(creoObject->getObjectID());
+
 		return false;
 	}
 
@@ -2124,7 +2125,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		effectiveTarget = target->getSlottedObject("rider").castTo<CreatureObject*>();
 	}
 
-	if (effectiveTarget == NULL)
+	if (effectiveTarget == NULL || !effectiveTarget->isPlayerCreature())
 		return false;
 
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
@@ -2145,7 +2146,6 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 	// Step 1. Check for break
 	bool success = false;
-	bool awardXp = !camouflagedObjects.contains(effectiveTargetID);
 	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
 
@@ -2159,15 +2159,12 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
-	// first time through we award, second time on same mob if successful we dont
-	if (success && camouflagedObjects.contains(effectiveTargetID))
-		return true;
-	else if (success)
+	if (success)
 		camouflagedObjects.add(effectiveTargetID); // add to award
 	else
 		camouflagedObjects.removeElement(effectiveTargetID);
 
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success, awardXp);
+	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success);
 	ct->execute();
 
 	return success;
@@ -2186,8 +2183,9 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return false;
 
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
+	uint32 concealCRC = STRING_HASHCODE("skill_buff_mask_scent");
 
-	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
+	if (!effectiveTarget->hasBuff(concealCRC)) {
 		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
 			camouflagedObjects.removeElement(effectiveTargetID);
 		}
@@ -2198,11 +2196,16 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return false;
 
 	// Don't check if it's already been checked
-	if (camouflagedObjects.contains(effectiveTargetID))
+	if (camouflagedObjects.contains(effectiveTargetID)) {
 		return true;
+	}
+
+	ConcealBuff* buff = cast<ConcealBuff*>(effectiveTarget->getBuff(concealCRC));
+
+	if (buff == NULL || buff->getPlanetName() != getZone()->getZoneName())
+		return false;
 
 	bool success = false;
-	bool awardXp = !camouflagedObjects.contains(effectiveTargetID);
 	int camoSkill = effectiveTarget->getSkillMod("private_conceal");
 	int creatureLevel = getLevel();
 
@@ -2220,15 +2223,13 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
-	if (success && camouflagedObjects.contains(effectiveTargetID))
-		return true;
-	else if (success){
+	if (success) {
 		camouflagedObjects.add(effectiveTargetID); // add to award
 	} else {
 		camouflagedObjects.removeElement(effectiveTargetID);
 	}
 
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success, awardXp);
+	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success);
 	ct->execute();
 
 	return success;
@@ -2733,7 +2734,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		Behavior* behavior = AiMap::createNewInstance(asAiAgent(), temp->className, temp->classType);
 		behavior->setID(temp->id);
 		behaviors.put(temp->id, behavior);
-
 		Vector<uint32> ids = parents.get(temp->parent);
 		ids.add(temp->id);
 		parents.put(temp->parent, ids);

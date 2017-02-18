@@ -95,8 +95,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isCreature", &LuaSceneObject::isCreature},
 		{ "isAggressiveTo", &LuaAiAgent::isAggressiveTo },
 		{ "isAttackableBy", &LuaAiAgent::isAttackableBy },
-		{ "isScentMasked", &LuaAiAgent::isScentMasked },
-		{ "isConcealed", &LuaAiAgent::isConcealed },
 		{ "isCamouflaged", &LuaAiAgent::isCamouflaged },
 		{ "shouldRetreat", &LuaAiAgent::shouldRetreat },
 		{ "leash", &LuaAiAgent::leash },
@@ -675,24 +673,6 @@ int LuaAiAgent::isAttackableBy(lua_State* L) {
 	CreatureObject* obj = (CreatureObject*) lua_touserdata(L, -1);
 
 	bool retVal = realObject->isAttackableBy(obj);
-	lua_pushboolean(L, retVal);
-
-	return 1;
-}
-
-int LuaAiAgent::isScentMasked(lua_State* L) {
-	CreatureObject* obj = (CreatureObject*) lua_touserdata(L, -1);
-
-	bool retVal = realObject->isScentMasked(obj);
-	lua_pushboolean(L, retVal);
-
-	return 1;
-}
-
-int LuaAiAgent::isConcealed(lua_State* L) {
-	CreatureObject* obj = (CreatureObject*) lua_touserdata(L, -1);
-
-	bool retVal = realObject->isConcealed(obj);
 	lua_pushboolean(L, retVal);
 
 	return 1;

@@ -26,7 +26,9 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getWorldPositionY", &LuaSceneObject::getWorldPositionY },
 		{ "getWorldPositionZ", &LuaSceneObject::getWorldPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
+		{ "isInRange", &LuaSceneObject::isInRange },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
+		{ "isInRangeWithObject3d", &LuaSceneObject::isInRangeWithObject3d },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getDistanceToPosition", &LuaSceneObject::getDistanceToPosition },
@@ -333,6 +335,17 @@ int LuaSceneObject::isInRangeWithObject(lua_State* L) {
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -2);
 
 	bool res = realObject->isInRange(obj, range);
+
+	lua_pushboolean(L, res);
+
+	return 1;
+}
+
+int LuaSceneObject::isInRangeWithObject3d(lua_State* L) {
+	float range = lua_tonumber(L, -1);
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -2);
+
+	bool res = realObject->isInRange3d(obj, range);
 
 	lua_pushboolean(L, res);
 

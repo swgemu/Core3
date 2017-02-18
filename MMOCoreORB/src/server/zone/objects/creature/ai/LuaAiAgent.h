@@ -98,8 +98,6 @@ namespace ai {
 		int isPet(lua_State* L);
 		int isAggressiveTo(lua_State* L);
 		int isAttackableBy(lua_State* L);
-		int isScentMasked(lua_State* L);
-		int isConcealed(lua_State* L);
 		int isCamouflaged(lua_State* L);
 		int shouldRetreat(lua_State* L);
 		int leash(lua_State* L);

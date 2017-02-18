@@ -12,15 +12,23 @@ class ConcealBuff extends Buff {
 	@weakReference
 	protected CreatureObject buffGiver;
 
-	public ConcealBuff(CreatureObject creo, CreatureObject ranger, unsigned int buffCRC, int duration) {
+	string planetName;
+
+	public ConcealBuff(CreatureObject creo, CreatureObject ranger, unsigned int buffCRC, int duration, string zoneName) {
 		super(creo, buffCRC, duration, BuffType.SKILL);
 
 		buffGiver = ranger;
+		planetName = zoneName;
 	}
 
 	@dirty
 	public CreatureObject getBuffGiver() {
 		CreatureObject creo = buffGiver;
 		return creo;
+	}
+
+	@dirty
+	public string getPlanetName() {
+		return planetName;
 	}
 }

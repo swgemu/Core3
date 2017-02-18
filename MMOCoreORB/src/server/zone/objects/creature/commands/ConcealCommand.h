@@ -31,6 +31,7 @@ public:
 
 		// Rangers can remove their own conceal buff by targeting nothing.
 		if(targetPlayer == NULL && creature->hasBuff(crc)) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_remove"); // You remove the camouflage. You are no longer concealed.
 			creature->removeBuff(crc);
 			return SUCCESS;
 		}
@@ -128,7 +129,7 @@ public:
 		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
 
 
-		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration);
+		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration, zoneName);
 
 		Locker blocker(buff);
 

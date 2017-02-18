@@ -303,10 +303,10 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
-	public native boolean isScentMasked(CreatureObject target);
+	protected native boolean isScentMasked(CreatureObject target);
 
 	@dirty
-	public native boolean isConcealed(CreatureObject target);
+	protected native boolean isConcealed(CreatureObject target);
 
 	@preLocked
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);

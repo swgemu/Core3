@@ -43,6 +43,7 @@ namespace scene {
 		int getParentID(lua_State* L);
 		int isInRange(lua_State* L);
 		int isInRangeWithObject(lua_State* L);
+		int isInRangeWithObject3d(lua_State* L);
 		int wlock(lua_State* L);
 		int unlock(lua_State* L);
 		int getServerObjectCRC(lua_State* L);
