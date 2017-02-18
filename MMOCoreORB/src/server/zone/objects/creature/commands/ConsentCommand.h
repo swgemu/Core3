@@ -98,6 +98,11 @@ public:
 				return INVALIDTARGET;
 			}
 
+			if (ghost->hasInConsentList(playerTarget->getFirstName().toLowerCase())) {
+				creature->sendSystemMessage("You already gave that player your consent.");
+				return GENERALERROR;
+			}
+
 			consent(creature, playerTarget);
 		}
 
