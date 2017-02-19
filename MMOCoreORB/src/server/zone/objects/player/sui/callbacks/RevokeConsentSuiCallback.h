@@ -38,7 +38,7 @@ public:
 			player->sendSystemMessage(stringId);
 
 			PlayerManager* playerManager = server->getPlayerManager();
-			CreatureObject* targetPlayer = playerManager->getPlayer(entryName);
+			Reference<CreatureObject*> targetPlayer = playerManager->getPlayer(entryName);
 
 			if (targetPlayer != NULL) {
 				StringIdChatParameter stringId2("base_player", "prose_lost_consent"); //%TO no longer consents you.
