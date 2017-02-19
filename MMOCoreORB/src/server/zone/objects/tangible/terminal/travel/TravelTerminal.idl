@@ -1,5 +1,5 @@
 /*
-				Copyright <SWGEmu>
+			Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
 /*
@@ -51,7 +51,11 @@ class TravelTerminal extends Terminal {
 		if(planetTravelPoint != null)
 		    return planetTravelPoint;
 	
-		planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
+		Zone zone = getZone();
+		
+		if (zone != null) {
+			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+		}
 
 		return planetTravelPoint;
 	}
