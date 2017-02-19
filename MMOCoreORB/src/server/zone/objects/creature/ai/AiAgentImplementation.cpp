@@ -211,7 +211,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	setupAttackMaps();
 
-	int ham;
+	int ham = 0;
 	baseHAM.removeAll();
 	if (petDeed == NULL) {
 		for (int i = 0; i < 9; ++i) {
@@ -542,15 +542,8 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 		return false;
 
 	//-- if not in combat, ignore creatures in different cells
-
-
-	//uint64 agentParentID = getBuildingParentID();
-
-	//local targetParentID = creoObject:getBuildingParentID()
-
-	ManagedReference<SceneObject*> root = getRootParent();
-
-	ManagedReference<SceneObject*> rootObject = pObject->getRootParent();
+	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto rootObject = static_cast<SceneObject*>(pObject->getRootParentUnsafe());
 
 	uint64 agentParentID = 0;
 	uint64 targetParentID = 0;
@@ -565,7 +558,6 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 
 	if (agentParentID != targetParentID)
 		return false;
-
 
 	if (isCamouflaged(creoObject) || !isAttackableBy(creoObject) || !creoObject->isAttackableBy(asAiAgent()))
 		return false;
