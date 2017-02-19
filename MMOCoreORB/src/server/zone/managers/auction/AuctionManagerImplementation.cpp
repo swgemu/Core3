@@ -102,6 +102,8 @@ void AuctionManagerImplementation::initialize() {
 
 			String vuid = getVendorUID(defaultBazaar);
 			auctionMap->addItem(NULL, defaultBazaar, auctionItem);
+
+			Locker alocker(auctionItem);
 			auctionItem->setVendorID(defaultBazaar->getObjectID());
 
 			if(auctionItem->isAuction()) {
