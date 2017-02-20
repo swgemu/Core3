@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_f0785e2d",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 2681
+      },
+      "writtenOn": "2017-02-20T00:21:20Z",
+      "side": 1,
+      "message": "Keeping the negative value is important as it will affect the CL calculation. The greater the negative value the more it reduces the CL, which is needed to produce the \u0027uber\u0027 type non-ch pets.",
+      "parentUuid": "5ac10518_cdd029fa",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_8dda2116",
         "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_90755a34",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 2681
+      },
+      "writtenOn": "2017-02-20T00:21:20Z",
+      "side": 1,
+      "message": "Please change this to work as it should. I didn\u0027t fully understand the process here and used the first way I came across to spot effective resists.",
+      "parentUuid": "5ac10518_8dda2116",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_add7ddec",
         "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/Genetics.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-02-11T19:27:38Z",
       "side": 1,
       "message": "Why are you changing this?",
+      "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b072d647",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/Genetics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 2681
+      },
+      "writtenOn": "2017-02-20T00:21:20Z",
+      "side": 1,
+      "message": "I changed this to -99 to reflect the lowest possible value for a vulnerability.",
+      "parentUuid": "5ac10518_add7ddec",
       "revId": "f2a2bee21c6a63d4d772e051594b93e26fbbc76e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
