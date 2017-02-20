@@ -41,13 +41,13 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_loot_bestine_bestine_painting_schematic_blumbrush = object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush:new {
+object_tangible_loot_bestine_bestine_painting_schematic_blumbush = object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush:new {
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_03",
-	targetDraftSchematic = "object/draft_schematic/furniture/bestine/painting_bestine_blumbrush.iff",
+	targetDraftSchematic = "object/draft_schematic/furniture/bestine/painting_bestine_blumbush.iff",
 	targetUseCount = 2
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_bestine_bestine_painting_schematic_blumbrush, "object/tangible/loot/bestine/bestine_painting_schematic_blumbrush.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_bestine_bestine_painting_schematic_blumbush, "object/tangible/loot/bestine/bestine_painting_schematic_blumbush.iff")

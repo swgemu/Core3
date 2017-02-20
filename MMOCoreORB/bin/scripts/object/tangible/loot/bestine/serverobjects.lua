@@ -46,7 +46,7 @@
 
 -- Server Objects
 includeFile("tangible/loot/bestine/bestine_painting_schematic_blueleaf_temple.lua")
-includeFile("tangible/loot/bestine/bestine_painting_schematic_blumbrush.lua")
+includeFile("tangible/loot/bestine/bestine_painting_schematic_blumbush.lua")
 includeFile("tangible/loot/bestine/bestine_painting_schematic_boffa.lua")
 includeFile("tangible/loot/bestine/bestine_painting_schematic_golden_flower_01.lua")
 includeFile("tangible/loot/bestine/bestine_painting_schematic_golden_flower_02.lua")
