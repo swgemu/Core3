@@ -324,7 +324,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
 
 		if (crystal != NULL)
-			crystal->setItemLevel(uncappedLevel * excMod);
+			crystal->setItemLevel(uncappedLevel);
 	}
 
 	String subtitle;
