@@ -486,32 +486,34 @@ function FsCsBaseControl:spawnDefenseWaves(pTheater)
 
 	local nearbyPlayers = SceneObject(pTheater):getPlayersInRange(100)
 
-	local waveData = { self.defenseWaves.small }
-	local antennaExists = self:ifAntennaExists(pTheater)
+	if (nearbyPlayers ~= nil) then
+		local waveData = { self.defenseWaves.small }
+		local antennaExists = self:ifAntennaExists(pTheater)
 
-	if (#nearbyPlayers > 30) then
-		if (antennaExists) then
-			waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium, self.defenseWaves.medium }
-		else
-			waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium }
+		if (#nearbyPlayers > 30) then
+			if (antennaExists) then
+				waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium, self.defenseWaves.medium }
+			else
+				waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium }
+			end
+		elseif (#nearbyPlayers > 20) then
+			if (antennaExists) then
+				waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium }
+			else
+				waveData = { self.defenseWaves.small, self.defenseWaves.medium }
+			end
+		elseif (#nearbyPlayers > 10) then
+			if (antennaExists) then
+				waveData = { self.defenseWaves.small, self.defenseWaves.medium }
+			else
+				waveData = { self.defenseWaves.medium }
+			end
 		end
-	elseif (#nearbyPlayers > 20) then
-		if (antennaExists) then
-			waveData = { self.defenseWaves.small, self.defenseWaves.small, self.defenseWaves.medium }
-		else
-			waveData = { self.defenseWaves.small, self.defenseWaves.medium }
-		end
-	elseif (#nearbyPlayers > 10) then
-		if (antennaExists) then
-			waveData = { self.defenseWaves.small, self.defenseWaves.medium }
-		else
-			waveData = { self.defenseWaves.medium }
-		end
-	end
 
-	for i = 1, #waveData, 1 do
-		local spawnPoint = getSpawnPoint("dathomir", theaterX, theaterY, 50, 100, true)
-		QuestSpawner:createQuestSpawner("FsCsBaseControl", waveData[i][1], waveData[i][2], spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, "dathomir", pTheater)
+		for i = 1, #waveData, 1 do
+			local spawnPoint = getSpawnPoint("dathomir", theaterX, theaterY, 50, 100, true)
+			QuestSpawner:createQuestSpawner("FsCsBaseControl", waveData[i][1], waveData[i][2], spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, "dathomir", pTheater)
+		end
 	end
 
 	createEvent(getRandomNumber(self.reinforcementWaveMin, self.reinforcementWaveMax), "FsCsBaseControl", "spawnDefenseWaves", pTheater, "")
