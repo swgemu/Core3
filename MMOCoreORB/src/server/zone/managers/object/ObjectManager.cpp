@@ -589,19 +589,22 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
     
 	VectorMap<String, ManagedReference<SceneObject*> > slottedObjects;
 	clonedObject->getSlottedObjects(slottedObjects);
+
+	SortedVector<SceneObject*> inserted;
+	inserted.setNoDuplicateInsertPlan();
     
 	for (int i=slottedObjects.size()-1; i>=0; i--) {
 		String key = slottedObjects.elementAt(i).getKey();
         
 		Reference<SceneObject*> obj = slottedObjects.elementAt(i).getValue();
-        
 		clonedObject->removeSlottedObject(i);
+
+		if (inserted.put(obj) == -1) {
+			Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
+			clonedChild->setParent(object);
         
-		Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
-		clonedChild->setParent(object);
-        
-		slottedObjects.put(key, clonedChild);
-        
+			slottedObjects.put(key, clonedChild);
+		}
 	}
 	
 	VectorMap<uint64, ManagedReference<SceneObject*> > objects;
