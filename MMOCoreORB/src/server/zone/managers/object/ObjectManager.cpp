@@ -589,35 +589,28 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
     
 	VectorMap<String, ManagedReference<SceneObject*> > slottedObjects;
 	clonedObject->getSlottedObjects(slottedObjects);
-    
-	for (int i=slottedObjects.size()-1; i>=0; i--) {
-		String key = slottedObjects.elementAt(i).getKey();
-        
+
+	for (int i = slottedObjects.size() - 1; i >= 0; i--) {
 		Reference<SceneObject*> obj = slottedObjects.elementAt(i).getValue();
-        
+
 		clonedObject->removeSlottedObject(i);
-        
+
 		Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
-		clonedChild->setParent(object);
-        
-		slottedObjects.put(key, clonedChild);
-        
+
+		clonedObject->transferObject(clonedChild, 4, false);
 	}
-	
+
 	VectorMap<uint64, ManagedReference<SceneObject*> > objects;
 	clonedObject->getContainerObjects(objects);
-	
-	for (int i=objects.size()-1; i>=0; i--) {
-		uint64 key = objects.elementAt(i).getKey();
-		
+
+	for (int i = objects.size() - 1; i >= 0; i--) {
 		Reference<SceneObject*> obj = objects.elementAt(i).getValue();
-		
-		objects.remove(i);
-		
+
+		clonedObject->removeFromContainerObjects(i);
+
 		Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
-		clonedChild->setParent(object);
-		
-		objects.put(key, clonedChild);
+
+		clonedObject->transferObject(clonedChild, -1, false);
 	}
 	
 	clonedObject->onCloneObject(object);
