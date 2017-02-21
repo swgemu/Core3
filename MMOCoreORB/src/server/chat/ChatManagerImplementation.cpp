@@ -1909,11 +1909,10 @@ void ChatManagerImplementation::deletePersistentMessage(CreatureObject* player, 
 
 UnicodeString ChatManagerImplementation::formatMessage(const UnicodeString& message) {
 	UnicodeString text = message;
+	int index;
 
-	while (text.indexOf("\\>") >= 0) {
-		int index = text.indexOf("\\>");
-		UnicodeString sub = "\\" + text.subString(index, index + 2);
-		text = text.replaceFirst(sub,"");
+	while ((index = text.indexOf("\\>")) >= 0) {
+		text = text.replaceFirst("\\>", "");
 	}
 
 	return text;
