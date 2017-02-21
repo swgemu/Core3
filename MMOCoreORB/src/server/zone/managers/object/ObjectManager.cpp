@@ -590,14 +590,19 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 	VectorMap<String, ManagedReference<SceneObject*> > slottedObjects;
 	clonedObject->getSlottedObjects(slottedObjects);
 
+	SortedVector<SceneObject*> inserted;
+	inserted.setNoDuplicateInsertPlan();
+
 	for (int i = slottedObjects.size() - 1; i >= 0; i--) {
 		Reference<SceneObject*> obj = slottedObjects.elementAt(i).getValue();
 
 		clonedObject->removeSlottedObject(i);
 
-		Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
+		if (inserted.put(obj) == -1) {
+			Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
 
-		clonedObject->transferObject(clonedChild, 4, false);
+			clonedObject->transferObject(clonedChild, 4, false);
+		}
 	}
 
 	VectorMap<uint64, ManagedReference<SceneObject*> > objects;
