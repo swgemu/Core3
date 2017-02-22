@@ -232,11 +232,11 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 }
 
 void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 			return;
 
 	if (closeobjects != NULL) {
-		Zone* zone = getZone();
+		Zone* zone = getZoneUnsafe();
 
 		CreatureObject* thisCreo = asCreatureObject();
 

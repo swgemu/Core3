@@ -50,24 +50,25 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 }
 
 int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (getZone() == NULL)
+	auto zone = getZone();
+
+	if (zone == NULL)
 		return 0;
 
 	if (!(_this.getReferenceUnsafeStaticCast()->isDead())) {
 		if (selectedID == 112) {
-			getZone()->getCreatureManager()->milk(_this.getReferenceUnsafeStaticCast(), player);
+			zone->getCreatureManager()->milk(_this.getReferenceUnsafeStaticCast(), player);
 		}
 	} else {
 		if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)) {
-
-			getZone()->getCreatureManager()->harvest(_this.getReferenceUnsafeStaticCast(), player, selectedID);
+			zone->getCreatureManager()->harvest(_this.getReferenceUnsafeStaticCast(), player, selectedID);
 
 			return 0;
 		}
 	}
 
 	if (selectedID == 159) {
-		getZone()->getCreatureManager()->tame(_this.getReferenceUnsafeStaticCast(), player);
+		zone->getCreatureManager()->tame(_this.getReferenceUnsafeStaticCast(), player);
 	}
 
 	return AiAgentImplementation::handleObjectMenuSelect(player, selectedID);

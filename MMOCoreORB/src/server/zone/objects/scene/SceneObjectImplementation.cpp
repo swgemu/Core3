@@ -776,7 +776,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return 0;
 
 	int numberOfObjects = 0;
@@ -1008,7 +1008,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	Reference<SceneObject*> root = getRootParent().get();
 
 	if (root != NULL) {
 		return root->getZone();
@@ -1017,8 +1017,18 @@ Zone* SceneObjectImplementation::getZone() {
 	}
 }
 
+Zone* SceneObjectImplementation::getZoneUnsafe() {
+	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+
+	if (root != NULL) {
+		return root->getZoneUnsafe();
+	} else {
+		return zone;
+	}
+}
+
 bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
-	if (getZone() != object->getZone()) {
+	if (getZoneUnsafe() != object->getZoneUnsafe()) {
 		return false;
 	}
 
@@ -1034,7 +1044,7 @@ bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
 }
 
 bool SceneObjectImplementation::isInRange3d(SceneObject* object, float range) {
-	if (getZone() != object->getZone()) {
+	if (getZoneUnsafe() != object->getZoneUnsafe()) {
 		return false;
 	}
 
@@ -1121,7 +1131,7 @@ Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegr
 	float newZ = 0.0f;
 
 	if (includeZ)
-		newZ = getZone()->getHeight(newX, newY);
+		newZ = getZoneUnsafe()->getHeight(newX, newY);
 
 	return Vector3(newX, newY, newZ);
 }
@@ -1135,7 +1145,7 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 	float newZ = 0.0f;
 
 	if (includeZ)
-		newZ = getZone()->getHeight(newX, newY);
+		newZ = getZoneUnsafe()->getHeight(newX, newY);
 
 	return Vector3(newX, newY, newZ);
 }
@@ -1174,17 +1184,17 @@ float SceneObjectImplementation::getWorldPositionZ() {
 }
 
 uint32 SceneObjectImplementation::getPlanetCRC() {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return 0;
 
-	return getZone()->getZoneCRC();
+	return getZoneUnsafe()->getZoneCRC();
 }
 
 void SceneObjectImplementation::createChildObjects() {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return;
 
-	ZoneServer* zoneServer = getZone()->getZoneServer();
+	ZoneServer* zoneServer = getZoneUnsafe()->getZoneServer();
 	bool client = isClientObject();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
@@ -1268,7 +1278,7 @@ void SceneObjectImplementation::createChildObjects() {
 				}
 			}
 
-			if (!getZone()->transferObject(obj, -1, false)) {
+			if (!getZoneUnsafe()->transferObject(obj, -1, false)) {
 				obj->destroyObjectFromDatabase(true);
 				continue;
 			}
@@ -1429,12 +1439,12 @@ SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObserv
 }
 
 bool SceneObjectImplementation::isInWater() {
-	if (getZone() == NULL) {
+	if (getZoneUnsafe() == NULL) {
 		error("Zone is NULL SceneObjectImplementation::isInWater");
 		return false;
 	}
 
-	ManagedReference<PlanetManager*> planetManager = getZone()->getPlanetManager();
+	ManagedReference<PlanetManager*> planetManager = getZoneUnsafe()->getPlanetManager();
 
 	if (planetManager == NULL) {
 		error("Unable to get PlanetManager SceneObjectImplementation::isInWater");
@@ -1669,6 +1679,14 @@ SceneObject* SceneObjectImplementation::asSceneObject() {
 
 SceneObject* SceneObject::asSceneObject() {
 	return this;
+}
+
+CreatureObject* SceneObjectImplementation::asCreatureObject() {
+	return nullptr;
+}
+
+CreatureObject* SceneObject::asCreatureObject() {
+	return nullptr;
 }
 
 Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {

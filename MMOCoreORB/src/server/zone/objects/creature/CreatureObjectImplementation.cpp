@@ -307,7 +307,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	CreatureObject* thisPointer = asCreatureObject();
-	Zone* zone = getZone();
+	Zone* zone = getZoneUnsafe();
 
 	if (zone == NULL)
 		return;
@@ -761,7 +761,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			if (state == CreatureState::SITTINGONCHAIR) {
 				//this is fucking wrong
 
-				Zone* thisZone = getZone();
+				Zone* thisZone = getZoneUnsafe();
 
 				setPosture(CreaturePosture::SITTING, false);
 
@@ -2624,9 +2624,9 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 }
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
-	if (getZone() != NULL) {
+	if (getZoneUnsafe() != NULL) {
 		ManagedReference<PlanetManager*> planetManager =
-				getZone()->getPlanetManager();
+				getZoneUnsafe()->getPlanetManager();
 
 		if (planetManager != NULL) {
 			TerrainManager* terrainManager = planetManager->getTerrainManager();
@@ -2809,7 +2809,7 @@ Reference<ZoneClientSession*> CreatureObjectImplementation::getClient() {
 }
 
 void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, const String& stringName, byte color, int damage, bool broadcast) {
-	Zone* zone = getZone();
+	Zone* zone = getZoneUnsafe();
 	if (zone == NULL)
 		return;
 
@@ -2953,7 +2953,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if ((!bypassDeadCheck && isDead()) || isInvisible())
 		return false;
 
-	if (object->getZone() != getZone())
+	if (object->getZoneUnsafe() != getZoneUnsafe())
 		return false;
 
 	if (isPlayerCreature()) {

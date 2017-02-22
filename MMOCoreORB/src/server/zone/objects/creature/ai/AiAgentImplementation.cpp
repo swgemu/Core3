@@ -516,7 +516,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	checkForReactionChat(pObject);
 
 	if (getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
-		getZone()->getGCWManager()->runCrackdownScan(asAiAgent(), creoObject);
+		getZoneUnsafe()->getGCWManager()->runCrackdownScan(asAiAgent(), creoObject);
 	}
 
 	Reference<SceneObject*> follow = getFollowObject().get();
@@ -591,7 +591,7 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 	if (!hasReactionChatMessages())
 		return 3;
 
-	if (getParent() != pObject->getParent())
+	if (getParentUnsafe() != pObject->getParentUnsafe())
 		return 4;
 
 	float dist = getDistanceTo(pObject);
@@ -697,7 +697,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
-	if (isDead() || getZone() == NULL)
+	if (isDead() || getZoneUnsafe() == NULL)
 		return;
 
 	activateHAMRegeneration(latency);
@@ -1078,7 +1078,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	if (target == NULL || getZone() == NULL || followCopy == NULL) {
+	if (target == NULL || getZoneUnsafe() == NULL || followCopy == NULL) {
 		setOblivious();
 		return;
 	}
@@ -1107,7 +1107,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 		runTrajectory = runTrajectory * (fleeRange / runTrajectory.length());
 		runTrajectory += getPosition();
 
-		setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
+		setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 	}
 }
 
@@ -1230,7 +1230,7 @@ void AiAgentImplementation::clearDespawnEvent() {
 }
 
 void AiAgentImplementation::respawn(Zone* zone, int level) {
-	if (getZone() != NULL)
+	if (getZoneUnsafe() != NULL)
 		return;
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
@@ -1530,7 +1530,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
 	info("reached " + reachedPosition.toString(), true);*/
 
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return;
 
 	if (cell != NULL && cell->getParent().get() != NULL)
@@ -1550,7 +1550,7 @@ void AiAgentImplementation::checkNewAngle() {
 	if (!nextStepPosition.isReached()) {
 		broadcastNextPositionUpdate(&nextStepPosition);
 	} else {
-		if (getZone() == NULL)
+		if (getZoneUnsafe() == NULL)
 			return;
 
 		broadcastNextPositionUpdate(NULL);
@@ -1642,7 +1642,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// Don't recalculate path if mob hasn't entered the target cell yet (we already checked to make sure the target is still in the same cell)
 			if (currentCell == targetCoordinateCell && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition.getCoordinates().getWorldPosition()) > 3) {
 				// Our target has moved, so we will need a new path with a new position.
-				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZone()));
+				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZoneUnsafe()));
 			} else {
 				// Our target is close to where it was before, so our path begins where we are standing
 				WorldCoordinates curr(asAiAgent());
@@ -1653,7 +1653,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		} else {
 			// either our target cell is different than the current path cell or we don't have a current path,
 			// so we need to automatically re-calculate the path (and we don't need to include our current location)
-			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZone()));
+			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZoneUnsafe()));
 			targetCellObject = targetCoordinateCell;
 		}
 
@@ -1873,7 +1873,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	float ret = 0.f;
 
-	Zone* zone = getZone();
+	Zone* zone = getZoneUnsafe();
 	if (zone == NULL)
 		return ret;
 
@@ -1910,7 +1910,7 @@ void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
 
 	// Do pre-checks (these should remain hard-coded)
-	if (isDead() || isIncapacitated() || (getZone() == NULL)) {
+	if (isDead() || isIncapacitated() || (getZoneUnsafe() == NULL)) {
 		setFollowObject(NULL);
 		return;
 	}
@@ -1939,7 +1939,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 	SortedVector<QuadTreeEntry*> closeObjects;
 
-	Zone* zone = getZone();
+	Zone* zone = getZoneUnsafe();
 
 	if (zone == NULL)
 		return false;
@@ -2194,7 +2194,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	ConcealBuff* buff = cast<ConcealBuff*>(effectiveTarget->getBuff(concealCRC));
 
-	if (buff == NULL || buff->getPlanetName() != getZone()->getZoneName())
+	if (buff == NULL || buff->getPlanetName() != getZoneUnsafe()->getZoneName())
 		return false;
 
 	bool success = false;
@@ -2228,7 +2228,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 }
 
 void AiAgentImplementation::activateMovementEvent() {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return;
 
 	Locker locker(&movementEventMutex);
@@ -2262,7 +2262,7 @@ void AiAgentImplementation::activateMovementEvent() {
 }
 
 void AiAgentImplementation::activateWaitEvent() {
-	if (getZone() == NULL)
+	if (getZoneUnsafe() == NULL)
 		return;
 
 	if (waitEvent == NULL) {
@@ -2319,8 +2319,8 @@ int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* atta
 		petManager->notifyDestruction(attacker, asAiAgent(), condition, isCombatAction);
 
 	} else {
-		if (getZone() != NULL) {
-			CreatureManager* creatureManager = getZone()->getCreatureManager();
+		if (getZoneUnsafe() != NULL) {
+			CreatureManager* creatureManager = getZoneUnsafe()->getCreatureManager();
 
 			creatureManager->notifyDestruction(attacker, asAiAgent(), condition, isCombatAction);
 		}
@@ -2930,7 +2930,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 		SortedVector<QuadTreeEntry*> closeAiAgents;
 
 		CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent->getCloseObjects();
-		Zone* zone = aiAgent->getZone();
+		Zone* zone = aiAgent->getZoneUnsafe();
 
 		if (zone == NULL)
 			return;
@@ -3184,7 +3184,7 @@ String AiAgentImplementation::getPersonalityStf() {
 }
 
 void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
-	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
+	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZoneUnsafe() == NULL) {
 		return;
 	}
 
