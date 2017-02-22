@@ -883,6 +883,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	public native Zone getZone();
+	
+	@dirty
+	public native Zone getZoneUnsafe();
 
 	@read 
 	public Zone getLocalZone() {
@@ -1368,9 +1371,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	@local
-	public abstract CreatureObject asCreatureObject() {
-		return null;
-	}
+	@nativeStub
+	public native abstract CreatureObject asCreatureObject();
 
 	@dirty
 	public abstract boolean isAiAgent() {
