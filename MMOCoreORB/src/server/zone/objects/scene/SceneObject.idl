@@ -1366,10 +1366,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@dirty
-	public abstract boolean isCreatureObject() {
-		return false;
-	}
-
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isCreatureObject();
+	
 	@dirty
 	@local
 	@nativeStub
@@ -1377,15 +1378,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native abstract CreatureObject asCreatureObject();
 
 	@dirty
-	public abstract boolean isAiAgent() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract boolean isAiAgent();
 
 	@dirty
 	@local
-	public abstract AiAgent asAiAgent() {
-		return null;
-	}
+	@nativeStub
+	@virtualStub
+	public abstract AiAgent asAiAgent();
 
 	@dirty
 	public abstract boolean isCreature() {

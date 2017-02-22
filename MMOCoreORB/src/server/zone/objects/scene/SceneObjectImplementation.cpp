@@ -1681,6 +1681,30 @@ bool SceneObject::isPlayerCreature() {
 	return false;
 }
 
+bool SceneObjectImplementation::isAiAgent() {
+	return false;
+}
+
+bool SceneObject::isAiAgent() {
+	return false;
+}
+
+bool SceneObjectImplementation::isCreatureObject() {
+	return false;
+}
+
+bool SceneObject::isCreatureObject() {
+	return false;
+}
+
+AiAgent* SceneObjectImplementation::asAiAgent() {
+	return nullptr;
+}
+
+AiAgent* SceneObject::asAiAgent() {
+	return nullptr;
+}
+
 SceneObject* SceneObjectImplementation::asSceneObject() {
 	return _this.getReferenceUnsafeStaticCast();
 }
