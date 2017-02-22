@@ -13,7 +13,7 @@ namespace tangible {
 namespace tasks {
 
 class RemoveEventPerkDeedTask : public Task {
-	ManagedReference<EventPerkDeed*> deed;
+	ManagedWeakReference<EventPerkDeed*> deed;
 
 public:
 	RemoveEventPerkDeedTask(EventPerkDeed* de) {
@@ -21,17 +21,22 @@ public:
 	}
 
 	void run() {
+		auto deed = this->deed.get();
+
 		if (deed == NULL) {
 			return;
 		}
 
+		Locker locker(deed);
+
+		deed->getRootParent();
+
 		ManagedReference<TangibleObject*> genOb = deed->getGeneratedObject().get();
 		ManagedReference<CreatureObject*> player = deed->getOwner().get();
 
-		Locker locker(deed);
-
 		if (genOb != NULL) {
 			Locker clocker(genOb, deed);
+
 			genOb->destroyChildObjects();
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
