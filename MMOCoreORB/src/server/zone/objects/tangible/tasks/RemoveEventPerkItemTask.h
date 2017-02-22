@@ -12,7 +12,7 @@ namespace tangible {
 namespace tasks {
 
 class RemoveEventPerkItemTask : public Task {
-	ManagedReference<TangibleObject*> tano;
+	ManagedWeakReference<TangibleObject*> tano;
 
 public:
 	RemoveEventPerkItemTask(TangibleObject* obj) {
@@ -20,6 +20,8 @@ public:
 	}
 
 	void run() {
+		Reference<TangibleObject*> tano = this->tano.get();
+
 		if (tano == NULL) {
 			return;
 		}
