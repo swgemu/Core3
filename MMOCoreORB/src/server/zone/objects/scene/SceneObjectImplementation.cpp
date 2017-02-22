@@ -1673,6 +1673,14 @@ void SceneObjectImplementation::playEffect(const String& file,
 	broadcastMessage(effect, true);
 }
 
+bool SceneObjectImplementation::isPlayerCreature() {
+	return false;
+}
+
+bool SceneObject::isPlayerCreature() {
+	return false;
+}
+
 SceneObject* SceneObjectImplementation::asSceneObject() {
 	return _this.getReferenceUnsafeStaticCast();
 }
