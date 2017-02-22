@@ -1372,6 +1372,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	@local
 	@nativeStub
+	@virtualStub
 	public native abstract CreatureObject asCreatureObject();
 
 	@dirty
