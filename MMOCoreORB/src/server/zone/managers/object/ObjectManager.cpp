@@ -598,7 +598,7 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 
 		clonedObject->removeSlottedObject(i);
 
-		if (inserted.put(obj) == -1) {
+		if (inserted.put(obj) != -1) {
 			Reference<SceneObject*> clonedChild = cloneObject(obj, makeTransient);
 
 			clonedObject->transferObject(clonedChild, 4, false);
