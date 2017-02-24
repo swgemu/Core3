@@ -67,6 +67,12 @@ public:
 	static const int R4 = 4; // R4-A1
 	static const int R5 = 5; // R5-A1
 
+	static const int DROID_3P0 = 6; // XX-P0
+	static const int DROID_EG6 = 7; // EX-X
+	static const int DROID_WED = 8; // WED-XX
+	static const int DROID_LE = 9; // LE-XXX
+	static const int DROID_RA7 = 10; // RA7-XX
+
 	static const int STORMTROOPER = 11; // XX-123
 	static const int SCOUTTROOPER = 12; // XX-123
 	static const int DARKTROOPER = 13; // XX-123
@@ -144,7 +150,6 @@ private:
 	int getFragmentType(const String& frag, NameData* data);
 
 	String makeImperialTrooperName(int type);
-	String makeAstromechName(int type);
 
 public:
 	NameManager();
@@ -174,6 +179,8 @@ public:
 	String generateRandomName(NameData* nameData);
 
 	String generateResourceName(const String& randomNameClass);
+
+	String makeDroidName(int type);
 
 	String capitalizeName(String& name);
 

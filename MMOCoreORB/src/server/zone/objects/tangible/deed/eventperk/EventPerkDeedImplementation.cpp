@@ -301,16 +301,35 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 				child->setCustomObjectName("a bantha mount", true);
 			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1 && perkType != EventPerkDeedTemplate::RECRUITER) {
 				NameManager* nameManager = NameManager::instance();
-				String name = nameManager->makeCreatureName();
+				String name = "";
+				if (child->getServerObjectCRC() == 0xA87E2035) { // object/mobile/cll8_binary_load_lifter.iff
+					name = "a CLL-8 binary load lifter";
+				} else if (child->getServerObjectCRC() == 0xF1DED7AD) { // object/mobile/eg6_power_droid.iff
+					name = nameManager->makeDroidName(NameManagerType::DROID_EG6);
+				} else if (child->getServerObjectCRC() == 0x6C1D79FD) { // object/mobile/r2.iff
+					name = nameManager->makeDroidName(NameManagerType::R2);
+				} else if (child->getServerObjectCRC() == 0x25101E70) { // object/mobile/r3.iff
+					name = nameManager->makeDroidName(NameManagerType::R3);
+				} else if (child->getServerObjectCRC() == 0xDEF33564) { // object/mobile/r4.iff
+					name = nameManager->makeDroidName(NameManagerType::R4);
+				} else if (child->getServerObjectCRC() == 0x97FE52E9) { // object/mobile/r5.iff
+					name = nameManager->makeDroidName(NameManagerType::R5);
+				} else if (child->getServerObjectCRC() == 0x905BB76C) { // object/mobile/ra7_bug_droid.iff
+					name = nameManager->makeDroidName(NameManagerType::DROID_RA7);
+				} else {
+					name = nameManager->makeCreatureName();
 
-				if (child->getServerObjectCRC() == 0x63371470) // object/mobile/dressed_corsec_officer_human_male_01.iff
-					name = name + " (a CorSec trooper)";
-				else if (child->getServerObjectCRC() == 0x86752E27) // object/mobile/dressed_fed_dub_patrolman_human_male_01.iff
-					name = name + " (a Fed-Dub patrolman)";
-				else if (child->getServerObjectCRC() == 0x450C04C9) // object/mobile/dressed_rebel_crewman_human_male_01.iff
-					name = name + " (a Rebel crewman)";
-				else if (child->getServerObjectCRC() == 0xF171DF10) // object/mobile/dressed_rsf_security_guard.iff
-					name = name + " (an RSF security guard)";
+					if (child->getServerObjectCRC() == 0x63371470) // object/mobile/dressed_corsec_officer_human_male_01.iff
+						name = name + " (a CorSec trooper)";
+					else if (child->getServerObjectCRC() == 0x86752E27) // object/mobile/dressed_fed_dub_patrolman_human_male_01.iff
+						name = name + " (a Fed-Dub patrolman)";
+					else if (child->getServerObjectCRC() == 0x450C04C9) // object/mobile/dressed_rebel_crewman_human_male_01.iff
+						name = name + " (a Rebel crewman)";
+					else if (child->getServerObjectCRC() == 0xF171DF10) // object/mobile/dressed_rsf_security_guard.iff
+						name = name + " (an RSF security guard)";
+					else if (child->getServerObjectCRC() == 0x7BD5CF73) // object/mobile/jawa.iff
+						name = name + " (a jawa)";
+				}
 
 				child->setCustomObjectName(name, true);
 			}

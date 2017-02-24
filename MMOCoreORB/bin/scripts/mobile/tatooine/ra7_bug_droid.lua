@@ -1,5 +1,6 @@
 ra7_bug_droid = Creature:new {
 	objectName = "@mob/creature_names:ra7_bug_droid",
+	randomNameType = NAME_RA7,
 	socialGroup = "",
 	faction = "",
 	level = 20,

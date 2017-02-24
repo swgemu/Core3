@@ -1,5 +1,6 @@
 protocol_droid_3po = Creature:new {
 	objectName = "@mob/creature_names:protocol_droid_3po",
+	randomNameType = NAME_3P0,
 	socialGroup = "",
 	faction = "",
 	level = 100,
