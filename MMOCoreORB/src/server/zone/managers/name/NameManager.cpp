@@ -528,8 +528,8 @@ const String NameManager::makeCreatureName(int type, int species) {
 	// Covers all Imperial Trooper types
 	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
 		name = makeImperialTrooperName(type);
-	} else if (type >= NameManagerType::R2 && type <= NameManagerType::R5) {
-		name = makeAstromechName(type);
+	} else if (type >= NameManagerType::R2 && type <= NameManagerType::DROID_RA7) {
+		name = makeDroidName(type);
 	} else {
 		name = generateRandomName(data);
 	}
@@ -555,12 +555,35 @@ String NameManager::makeImperialTrooperName(int type) {
 	return name;
 }
 
-String NameManager::makeAstromechName(int type) {
+String NameManager::makeDroidName(int type) {
 	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	String name = "";
 
-	String name = "R" + String::valueOf(type) + "-";
-	name += alphabet[System::random(25)];
-	name += String::valueOf(System::random(9));
+	if (type >= NameManagerType::R2 && type <= NameManagerType::R5) {
+		name = "R" + String::valueOf(type) + "-";
+		name += alphabet[System::random(25)];
+		name += String::valueOf(System::random(9));
+	} else if (type == NameManagerType::DROID_3P0) {
+		name += alphabet[System::random(25)];
+		name += String::valueOf(System::random(9)) + "-P0";
+	} else if (type == NameManagerType::DROID_EG6) {
+		name = "E";
+		name += alphabet[System::random(25)];
+		name += "-" + String::valueOf(System::random(9));
+	} else if (type == NameManagerType::DROID_WED) {
+		name = "WED-";
+		name += alphabet[System::random(25)];
+		name += String::valueOf(System::random(9));
+	} else if (type == NameManagerType::DROID_LE) {
+		name = "LE-";
+		name += alphabet[System::random(25)];
+		name += alphabet[System::random(25)];
+		name += String::valueOf(System::random(9));
+	} else if (type == NameManagerType::DROID_RA7) {
+		name = "RA7-";
+		name += alphabet[System::random(25)];
+		name += String::valueOf(System::random(9));
+	}
 
 	return name;
 }

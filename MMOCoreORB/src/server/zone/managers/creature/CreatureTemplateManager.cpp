@@ -75,6 +75,11 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("NAME_R3", NameManagerType::R3);
 	lua->setGlobalInt("NAME_R4", NameManagerType::R4);
 	lua->setGlobalInt("NAME_R5", NameManagerType::R5);
+	lua->setGlobalInt("NAME_3PO", NameManagerType::DROID_3P0);
+	lua->setGlobalInt("NAME_EG6", NameManagerType::DROID_EG6);
+	lua->setGlobalInt("NAME_WED", NameManagerType::DROID_WED);
+	lua->setGlobalInt("NAME_LE", NameManagerType::DROID_LE);
+	lua->setGlobalInt("NAME_RA7", NameManagerType::DROID_RA7);
 	lua->setGlobalInt("NAME_STORMTROOPER", NameManagerType::STORMTROOPER);
 	lua->setGlobalInt("NAME_SCOUTTROOPER", NameManagerType::SCOUTTROOPER);
 	lua->setGlobalInt("NAME_DARKTROOPER", NameManagerType::DARKTROOPER);
