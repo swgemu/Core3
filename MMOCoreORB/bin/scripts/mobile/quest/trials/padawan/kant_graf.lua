@@ -23,13 +23,13 @@ kant_graf = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_patron_devaronian_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trialsPadawanArchitect01ConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

@@ -375,6 +375,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 
 core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
+		server/zone/objects/creature/variables/LuaSkill.cpp \
 		server/zone/objects/player/sui/listbox/LuaSuiListBox.cpp \
 		server/zone/objects/player/sui/LuaSuiPageData.cpp \
 		server/zone/objects/player/sui/SuiPageData.cpp \
