@@ -66,6 +66,8 @@ public:
 
 	bool countdownInProgress() { return started; }
 
+	int getRating() { return rating; }
+
 	void startCountDown() { started = true;}
 
 	void stopCountDown() { started = false;}
