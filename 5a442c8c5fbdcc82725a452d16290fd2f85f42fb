@@ -1,0 +1,506 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_9048facd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "hasStartedTrials and setStartedTrials use PadawanTrials as the screenplay name.",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_303a6637",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "missing return",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b045f6b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "There\u0027s no table with that name in this screenplay. Is this supposed to be the table in trialData.lua ?",
+      "range": {
+        "startLine": 203,
+        "startChar": 25,
+        "endLine": 203,
+        "endChar": 43
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d03e8229",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "You aren\u0027t using this arg",
+      "range": {
+        "startLine": 223,
+        "startChar": 55,
+        "endLine": 223,
+        "endChar": 61
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_701d4e73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "This function is called from PadawanTrials:resetAllPadawanTrials(). One of the places that is called from is PadawanTrials:passTrial() when the player is not eligible for padawan trials. With this check here, none of this data will get deleted when trials are reset in that case. You need a different way to determine whether to delete padawan or knight trial data here. Maybe pass a second arg for that determination?\n\nIn fact, several of these places where you use an eligibility check to determine which trial set they are on could probably be changed to just take an additional arg.",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f03b7e36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "Knight",
+      "range": {
+        "startLine": 292,
+        "startChar": 33,
+        "endLine": 292,
+        "endChar": 40
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_501292b5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "There\u0027s no table with that name in this screenplay",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 33
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5063721a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/padawan_architect_01.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7068eef5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/padawan_architect_01.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "This is redundant as you check above if they are not equal.",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_902ebaa4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/padawan_architect_02.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "you aren\u0027t using this",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b02bb693",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you are calling this from anywhere",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_50185284",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "You use this table several times yet there\u0027s no table with that name in this screenplay. Is this supposed to be the table in trialData.lua ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1012ca62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "This table doesn\u0027t exist in this screenplay.",
+      "range": {
+        "startLine": 159,
+        "startChar": 20,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3017c653",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "Ditto with this one.",
+      "range": {
+        "startLine": 166,
+        "startChar": 25,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d00be229",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "and this one",
+      "range": {
+        "startLine": 176,
+        "startChar": 24,
+        "endLine": 176,
+        "endChar": 53
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f0085e2f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "Don\u0027t you need to call JediTrials:getTrialPlanetAndCity() to get the correct planet?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d3120c58",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you are ever destroying this area.",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b002d609",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "Should you fail the current trial at this point?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_53fffc01",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "Should you fail the current trial at this point?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1309742c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "What about destroying the area?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_330ef035",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be called from anywhere.",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_732b1883",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you are ever destroying this area",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f30f082d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "should you fail the trial here?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_931c846c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "use planetName",
+      "range": {
+        "startLine": 383,
+        "startChar": 26,
+        "endLine": 383,
+        "endChar": 60
+      },
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b319807b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "should you fail the trial at this point?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_53261cbc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-02-25T17:08:07Z",
+      "side": 1,
+      "message": "should you fail the trial at this point?",
+      "revId": "5a442c8c5fbdcc82725a452d16290fd2f85f42fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
