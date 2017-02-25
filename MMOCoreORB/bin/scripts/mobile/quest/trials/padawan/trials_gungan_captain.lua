@@ -23,13 +23,13 @@ trials_gungan_captain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_s04_male.iff", "object/mobile/gungan_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trialsPadawanArchitect02ConvoTemplate",
+	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 	
 }

@@ -115,6 +115,7 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	CreatureObject(pOwner):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
 	VillageJediManagerCommon.setJediProgressionScreenPlayState(pOwner, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 	FsOutro:setCurrentStep(pOwner, 4)
+	PadawanTrials:doPadawanTrialsSetup(pOwner)
 	createEvent(10 * 1000, "MellichaeOutroTheater", "finish", pOwner, "")
 
 	return 1
