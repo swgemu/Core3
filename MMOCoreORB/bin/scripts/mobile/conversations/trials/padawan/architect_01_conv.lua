@@ -1,7 +1,7 @@
-trialsPadawanArchitect01ConvoTemplate = ConvoTemplate:new {
+padawan_architect_01_convo_template = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "trialsPadawanArchitect01ConvoHandler",
+	luaClassHandler = "padawan_architect_01_conv_handler",
 	screens = {}
 }
 
@@ -14,7 +14,7 @@ intro = ConvoScreen:new {
 		{"@conversation/padawan_architect_01:s_cc9db25e", "no_decline"} -- Stop! I'm not interested in your petty little problems.
 	}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(intro);
+padawan_architect_01_convo_template:addScreen(intro);
 
 yes_accept = ConvoScreen:new {
 	id = "yes_accept",
@@ -22,7 +22,7 @@ yes_accept = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(yes_accept);
+padawan_architect_01_convo_template:addScreen(yes_accept);
 
 no_decline = ConvoScreen:new {
 	id = "no_decline",
@@ -30,15 +30,15 @@ no_decline = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(no_decline);
+padawan_architect_01_convo_template:addScreen(no_decline);
 
-not_yet_done = ConvoScreen:new {
-	id = "not_yet_done",
+not_quest_owner = ConvoScreen:new {
+	id = "not_quest_owner",
 	leftDialog = "@conversation/padawan_architect_01:s_25d34a1e", -- Sorry friend... can't talk. I'm losing money every day we fail to begin construction.
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(not_yet_done);
+padawan_architect_01_convo_template:addScreen(not_quest_owner);
 
 done_with_task = ConvoScreen:new {
 	id = "done_with_task",
@@ -49,7 +49,7 @@ done_with_task = ConvoScreen:new {
 		--{"@conversation/padawan_architect_01:s_88ac3394", "back_chose_success"} -- That land already has an owner. You have no right to take it from them.
 	}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(done_with_task);
+padawan_architect_01_convo_template:addScreen(done_with_task);
 
 yes_kill_fail = ConvoScreen:new {
 	id = "yes_kill_fail",
@@ -57,7 +57,7 @@ yes_kill_fail = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(yes_kill_fail);
+padawan_architect_01_convo_template:addScreen(yes_kill_fail);
 
 back_chose_success = ConvoScreen:new {
 	id = "back_chose_success",
@@ -65,14 +65,14 @@ back_chose_success = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(back_chose_success);
+padawan_architect_01_convo_template:addScreen(back_chose_success);
 
-over_sour_success = ConvoScreen:new {
-	id = "over_sour_success",
+completed_quest = ConvoScreen:new {
+	id = "completed_quest",
 	leftDialog = "@conversation/padawan_architect_01:s_ac5709b0", -- Bah... I'll just find someone else who can clear that land for me. Leave me alone.
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect01ConvoTemplate:addScreen(over_sour_success);
+padawan_architect_01_convo_template:addScreen(completed_quest);
 
-addConversationTemplate("trialsPadawanArchitect01ConvoTemplate", trialsPadawanArchitect01ConvoTemplate);
+addConversationTemplate("padawan_architect_01_convo_template", padawan_architect_01_convo_template);

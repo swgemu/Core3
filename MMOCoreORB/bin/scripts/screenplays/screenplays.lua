@@ -201,14 +201,14 @@ includeFile("village/convos/phase4/med_droid_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sarguillo_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sivarra_phase4_conv_handler.lua")
 
--- Jedi Trials (Padawan)
-includeFile("jedi/padawan/jedi_padawan_trial.lua")
-includeFile("jedi/padawan/convos/trials_padawan_architect_01.lua")
-includeFile("jedi/padawan/convos/trials_padawan_architect_02.lua")
+-- Jedi Trials
+includeFile("jedi/trialData.lua")
+includeFile("jedi/jedi_trials.lua")
+includeFile("jedi/padawan/padawan_trials.lua")
+includeFile("jedi/padawan/convos/padawan_architect_01.lua")
+includeFile("jedi/padawan/convos/padawan_architect_02.lua")
 includeFile("jedi/padawan/convos/trials_padawan_artist_01.lua")
 includeFile("jedi/padawan/convos/trials_padawan_artist_02.lua")
-includeFile("jedi/padawan/trials/trial_architect.lua")
-includeFile("jedi/padawan/trials/trial_artist.lua")
 
 -- Jedi Objects
 includeFile("jedi/shrine/ForceShrineMenuComponent.lua")
