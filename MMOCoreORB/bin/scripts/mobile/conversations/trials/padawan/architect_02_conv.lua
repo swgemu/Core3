@@ -1,7 +1,7 @@
-trialsPadawanArchitect02ConvoTemplate = ConvoTemplate:new {
+padawan_architect_02_convo_template = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "trialsPadawanArchitect02ConvoHandler",
+	luaClassHandler = "padawan_architect_02_conv_handler",
 	screens = {}
 }
 
@@ -13,7 +13,7 @@ intro = ConvoScreen:new {
 		{"@conversation/padawan_architect_02:s_17f3f71f", "proclaim_greet"} -- You are trespassing on my client's land.
 	}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(intro);
+padawan_architect_02_convo_template:addScreen(intro);
 
 proclaim_greet = ConvoScreen:new {
 	id = "proclaim_greet",
@@ -24,7 +24,7 @@ proclaim_greet = ConvoScreen:new {
 		{"@conversation/padawan_architect_02:s_7280c4d8", "initiate_attack_fail"} -- I don't care anything about all that. You must leave or else.
 	}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(proclaim_greet);
+padawan_architect_02_convo_template:addScreen(proclaim_greet);
 
 investigate_success = ConvoScreen:new {
 	id = "investigate_success",
@@ -35,7 +35,7 @@ investigate_success = ConvoScreen:new {
 		{"@conversation/padawan_architect_02:s_7280c4d8", "initiate_attack_fail"} -- I don't care anything about all that. You must leave or else.
 	}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(investigate_success);
+padawan_architect_02_convo_template:addScreen(investigate_success);
 
 nice_away = ConvoScreen:new {
 	id = "nice_away",
@@ -43,7 +43,7 @@ nice_away = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(nice_away);
+padawan_architect_02_convo_template:addScreen(nice_away);
 
 initiate_attack_fail = ConvoScreen:new {
 	id = "initiate_attack_fail",
@@ -51,7 +51,7 @@ initiate_attack_fail = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(initiate_attack_fail);
+padawan_architect_02_convo_template:addScreen(initiate_attack_fail);
 
 noquest_player_talk = ConvoScreen:new {
 	id = "noquest_player_talk",
@@ -59,6 +59,6 @@ noquest_player_talk = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanArchitect02ConvoTemplate:addScreen(noquest_player_talk);
+padawan_architect_02_convo_template:addScreen(noquest_player_talk);
 
-addConversationTemplate("trialsPadawanArchitect02ConvoTemplate", trialsPadawanArchitect02ConvoTemplate);
+addConversationTemplate("padawan_architect_02_convo_template", padawan_architect_02_convo_template);
