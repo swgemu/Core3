@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_335cb025",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2017-02-26T00:45:54Z",
+      "side": 1,
+      "message": "pPlayer should be removed as per my other review fix, since it shouldn\u0027t have an arg sent, which I think causes an issue.",
+      "range": {
+        "startLine": 109,
+        "startChar": 38,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "edde11ba6a9005112901cdc6f2a8c904f9760b64",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
