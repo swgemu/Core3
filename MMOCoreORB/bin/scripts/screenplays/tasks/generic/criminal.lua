@@ -120,7 +120,7 @@ generic_criminal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target_black_sun", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
