@@ -792,7 +792,7 @@ function ThemeParkLogic:notifyKilledHuntTarget(pAttacker, pVictim)
 		return 0
 	end
 
-	if (SceneObject(pVictim):getObjectName() == mission.huntTarget.npcTemplate) then
+	if (SceneObject(pVictim):getObjectName() == mission.huntTarget.npcTemplate and self:isInQuestRangeOf(pAttacker, pVictim)) then
 		self:completeMission(pAttacker)
 		return 1
 	end

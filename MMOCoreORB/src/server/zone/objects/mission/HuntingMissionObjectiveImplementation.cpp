@@ -63,14 +63,22 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 	if (mission == NULL)
 		return 1;
 
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+
+	if (player == NULL)
+		return 1;
+
 	if (eventType == ObserverEventType::KILLEDCREATURE) {
-		if (cast<CreatureObject*>(observable) != getPlayerOwner().get())
+		if (cast<CreatureObject*>(observable) != player)
 			return 0;
 
 		CreatureObject* creature = cast<CreatureObject*>(arg1);
 		AiAgent* agent = cast<AiAgent*>(creature);
 
 		if (agent == NULL)
+			return 0;
+
+		if (!agent->isInRange(player, 128.0f))
 			return 0;
 
 		CreatureTemplate* creatureTemplate = agent->getCreatureTemplate();
@@ -93,7 +101,7 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			message.setDI(targetsKilled);
 			message.setTO(mission->getTargetName());
 
-			getPlayerOwner().get()->sendSystemMessage(message);
+			player->sendSystemMessage(message);
 		}
 	}
 
