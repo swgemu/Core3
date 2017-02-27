@@ -34,7 +34,7 @@ end
 function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
 	local isJediPadawan = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02")
 	local isJediKnight = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")
-	local currentTrial = tonumber(readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial"))
+	local currentTrial = JediTrials:getCurrentTrial(pPlayer)
 	local knightAvailable = CreatureObject(pPlayer):villageKnightPrereqsMet("")
 
 	if (not isJediPadawan) then
