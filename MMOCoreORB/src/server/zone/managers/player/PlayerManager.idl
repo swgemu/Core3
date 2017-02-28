@@ -337,19 +337,28 @@ class PlayerManager extends Observer implements Logger {
 	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
 	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
 
+	@dirty
 	public native boolean existsName(final string name);
+	
+	@dirty
 	public native unsigned long getObjectID(final string name);
+	
+	@dirty
+	public native string getPlayerName(unsigned long oid);
+	
 	@reference
 	public native CreatureObject getPlayer(final string name);
 
 	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);
 	public native void updatePermissionName(CreatureObject player, int adminLevel);
 
+	@dirty
 	public void addPlayer(CreatureObject player) {
 		nameMap.put(player);
 	}
 
-	public void removePlayer(string playerName) {
+	@dirty
+	public void removePlayer(final string playerName) {
 		nameMap.remove(playerName);
 	}
 

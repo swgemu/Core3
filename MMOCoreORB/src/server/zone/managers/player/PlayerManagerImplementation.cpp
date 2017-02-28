@@ -466,6 +466,10 @@ uint64 PlayerManagerImplementation::getObjectID(const String& name) {
 	return oid;
 }
 
+String PlayerManagerImplementation::getPlayerName(uint64 oid) {
+	return nameMap->get(oid);
+}
+
 bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name) {
 	if (name.isEmpty())
 		return false;

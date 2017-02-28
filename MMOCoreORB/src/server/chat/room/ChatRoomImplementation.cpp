@@ -221,40 +221,28 @@ String ChatRoomImplementation::getGalaxyName() {
 String ChatRoomImplementation::getModeratorName(int index) {
 	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
-	String name = "";
 	uint64 objectID = moderatorList.get(index);
+	auto playerManager = server->getPlayerManager();
 
-	Reference<CreatureObject*> moderator = server->getObject(objectID).castTo<CreatureObject*>();
-	if (moderator != NULL)
-		name = moderator->getFirstName();
-
-	return name;
+	return playerManager->getPlayerName(objectID);
 }
 
 String ChatRoomImplementation::getInvitedName(int index) {
 	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
-	String name = "";
 	uint64 objectID = invitedList.get(index);
+	auto playerManager = server->getPlayerManager();
 
-	Reference<CreatureObject*> invited = server->getObject(objectID).castTo<CreatureObject*>();
-	if (invited != NULL)
-		name = invited->getFirstName();
-
-	return name;
+	return playerManager->getPlayerName(objectID);
 }
 
 String ChatRoomImplementation::getBannedName(int index) {
 	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
-	String name = "";
 	uint64 objectID = bannedList.get(index);
+	auto playerManager = server->getPlayerManager();
 
-	Reference<CreatureObject*> banned = server->getObject(objectID).castTo<CreatureObject*>();
-	if (banned != NULL)
-		name = banned->getFirstName();
-
-	return name;
+	return playerManager->getPlayerName(objectID);
 }
 
 int ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
