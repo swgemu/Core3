@@ -22,6 +22,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
@@ -3307,5 +3308,43 @@ int DirectorManager::printLuaError(lua_State* L) {
 	printTraceError(L, error);
 
 	return 0;
+}
+
+int DirectorManager::getSpawnPointInArea(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::printLuaError");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName  = lua_tostring(L, -4);
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	if (zone == NULL) {
+		instance()-> error("Zone == NULL in DirectorManager::getSpawnPointInArea (" + zoneName + ")");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	float radius = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -2);
+	float x = lua_tonumber(L, -1);
+
+	Sphere sphere(Vector3(x, 0, z), radius);
+	Vector3 result;
+
+	if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result)) {
+		lua_newtable(L);
+		lua_pushnumber(L, result.getX());
+		lua_pushnumber(L, result.getY());
+		lua_pushnumber(L, result.getZ());
+		lua_rawseti(L, -4, 3);
+		lua_rawseti(L, -3, 2);
+		lua_rawseti(L, -2, 1);
+		return 1;
+	} else {
+		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPointInArea");
+		return 0;
+	}
+
 }
 
