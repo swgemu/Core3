@@ -11,6 +11,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@dirty
 class RadialManager extends ManagedObject implements Logger {
 	ZoneServer zoneServer;
 	

@@ -71,7 +71,7 @@ private:
 
 	void setDefaults();
 
-	bool compareMods(VectorMap<String, int> mods, CreatureObject* creature, uint32 type);
+	bool compareMods(VectorMap<String, int>& mods, CreatureObject* creature, uint32 type);
 
 
 public:

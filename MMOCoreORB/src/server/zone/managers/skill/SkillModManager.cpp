@@ -288,7 +288,7 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 	}
 }
 
-bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* creature, uint32 type) {
+bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* creature, uint32 type) {
 
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);

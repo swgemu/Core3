@@ -25,6 +25,7 @@ include system.util.Vector;
 include system.util.HashTable;
 include system.lang.ref.Reference;
 
+@dirty
 class GCWManager extends ManagedService implements Logger {
 
 	public static final int NOTAFACTIONBASE = 0;

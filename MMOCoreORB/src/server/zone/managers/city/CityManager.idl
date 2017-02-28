@@ -22,6 +22,7 @@ include server.zone.managers.city.CitySpecializationMap;
 include server.zone.managers.city.CityTax;
 include server.zone.managers.city.CityTaxMap;
 
+@dirty
 class CityManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
 
