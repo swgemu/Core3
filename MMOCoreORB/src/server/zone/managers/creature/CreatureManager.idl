@@ -14,6 +14,7 @@ include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiSpeciesData;
 import system.thread.Mutex;
 
+@dirty
 class CreatureManager extends ZoneManager {
 	protected Zone zone;
 

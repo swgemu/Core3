@@ -30,6 +30,7 @@ import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.objects.pathfinding.NavMeshRegion;
 
+@dirty
 class PlanetManager extends ManagedService implements Logger {
 	protected Zone zone;
 

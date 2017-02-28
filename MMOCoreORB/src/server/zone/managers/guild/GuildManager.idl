@@ -17,6 +17,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 
+@dirty
 class GuildManager extends ManagedService implements Logger {
 	private transient ZoneServer server;
 	private transient ZoneProcessServer processor;

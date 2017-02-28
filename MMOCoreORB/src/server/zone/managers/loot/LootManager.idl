@@ -21,6 +21,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.managers.loot.CrystalData;
 include system.lang.ref.Reference;
 
+@dirty
 class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
 	private transient ZoneServer zoneServer;
