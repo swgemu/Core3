@@ -18,6 +18,14 @@ function PadawanTrials:doPadawanTrialsSetup(pPlayer)
 end
 
 function PadawanTrials:startPadawanTrials(pObject, pPlayer)
+	if (not JediTrials:isEligibleForPadawanTrials(pPlayer)) then
+		local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
+		sui.setTitle("@jedi_trials:padawan_trials_title")
+		sui.setPrompt("@jedi_trials:padawan_trials_started_not_eligible")
+		sui.sendTo(pPlayer)
+		return
+	end
+
 	local sui = SuiMessageBox.new("PadawanTrials", "jediPadawanTrialsStartCallback")
 	sui.setTargetNetworkId(SceneObject(pObject):getObjectID())
 	sui.setTitle("@jedi_trials:force_shrine_title")
@@ -38,13 +46,21 @@ function PadawanTrials:jediPadawanTrialsStartCallback(pPlayer, pSui, eventIndex,
 		return
 	end
 
+	if (not JediTrials:isEligibleForPadawanTrials(pPlayer)) then
+		local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
+		sui.setTitle("@jedi_trials:padawan_trials_title")
+		sui.setPrompt("@jedi_trials:padawan_trials_started_not_eligible")
+		sui.sendTo(pPlayer)
+		return
+	end
+
 	local rand = getRandomNumber(1, #padawanTrialQuests) -- 16 Jedi Padawan Trials
 
 	while padawanTrialQuests[rand].trialType == TRIAL_LIGHTSABER do
 		rand = getRandomNumber(1, #padawanTrialQuests)
 	end
 
-	JediTrials:setStartedTrials(pPlayer, true)
+	JediTrials:setStartedTrials(pPlayer)
 	JediTrials:setTrialsCompleted(pPlayer, 0)
 	PadawanTrials:startTrial(pPlayer, rand)
 end
@@ -413,9 +429,10 @@ function PadawanTrials:notifyEnteredSecondLocSpawnArea(pArea, pPlayer)
 		createObserver(OBJECTDESTRUCTION, "PadawanTrials", "notifyQuestTargetDead", pNpc)
 	end
 
-	CreatureObject(pNpc):setOptionsBitmask(136)
-
-	AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
+	if (trialData.trialType == TRIAL_TALK) then
+		CreatureObject(pNpc):setOptionsBitmask(136)
+		AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
+	end
 
 	deleteData(playerID .. ":secondLocSpawnAreaID")
 	deleteData(SceneObject(pArea):getObjectID() .. ":ownerID")
@@ -495,7 +512,7 @@ function PadawanTrials:removeAllAreas(pPlayer)
 	if (pMobile ~= nil) then
 		SceneObject(pMobile):destroyObjectFromWorld()
 	end
-	
+
 	deleteData(areaID .. ":npcID")
 	deleteData(areaID .. ":ownerID")
 	deleteData(playerID .. ":destroyAreaID")

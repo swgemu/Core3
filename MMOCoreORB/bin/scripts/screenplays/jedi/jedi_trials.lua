@@ -174,38 +174,23 @@ function JediTrials:getNearestForceShrine(pPlayer)
 	return pClosestShrine
 end
 
-function JediTrials:hasStartedTrials(pPlayer)
+function JediTrials:setStartedTrials(pPlayer)
 	if (self:isEligibleForPadawanTrials(pPlayer)) then
-		return readScreenPlayData(pPlayer, "PadawanTrials", "startedTrials") == 1
+		writeScreenPlayData(pPlayer, "PadawanTrials", "startedTrials", 1)
 	elseif (self:isEligibleForKnightTrials(pPlayer)) then
-		return readScreenPlayData(pPlayer, "KnightTrials", "startedTrials") == 1
-	else
-		return false
-	end
-end
-
-function JediTrials:setStartedTrials(pPlayer, started)
-	local val = 0
-
-	if (started) then
-		val = 1
-	end
-
-	if (self:isEligibleForPadawanTrials(pPlayer)) then
-		writeScreenPlayData(pPlayer, "PadawanTrials", "startedTrials", val)
-	elseif (self:isEligibleForKnightTrials(pPlayer)) then
-		writeScreenPlayData(pPlayer, "KnightTrials", "startedTrials", val)
+		writeScreenPlayData(pPlayer, "KnightTrials", "startedTrials", 1)
 	end
 end
 
 function JediTrials:getTrialStateName(pPlayer, number)
 	if (number == 0) then
 		return nil
-	elseif (self:isEligibleForPadawanTrials(pPlayer)) then
+	elseif (self:isOnPadawanTrials(pPlayer)) then
 		return "JediTrial:" .. padawanTrialQuests[number].trialName
-	elseif (self:isEligibleForKnightTrials(pPlayer)) then
+	elseif (self:isOnKnightTrials(pPlayer)) then
 		return "JediTrial:" .. knightTrialQuests[number].trialName
 	else
+		printLuaError("JediTrials:getTrialStateName, player not currently on padawan or knight trials (trial " .. number .. " sent)")
 		return nil
 	end
 end
@@ -268,9 +253,9 @@ function JediTrials:setTrialFailureCount(pPlayer, num)
 end
 
 function JediTrials:getTrialsCompleted(pPlayer)
-	if (self:isEligibleForPadawanTrials(pPlayer)) then
+	if (self:isOnPadawanTrials(pPlayer)) then
 		return tonumber(readScreenPlayData(pPlayer, "PadawanTrials", "trialsCompleted"))
-	elseif (self:isEligibleForKnightTrials(pPlayer)) then
+	elseif (self:isOnKnightTrials(pPlayer)) then
 		return  tonumber(readScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted"))
 	else
 		return 0
@@ -278,9 +263,9 @@ function JediTrials:getTrialsCompleted(pPlayer)
 end
 
 function JediTrials:setTrialsCompleted(pPlayer, num)
-	if (self:isEligibleForPadawanTrials(pPlayer)) then
+	if (self:isOnPadawanTrials(pPlayer)) then
 		writeScreenPlayData(pPlayer, "PadawanTrials", "trialsCompleted", num)
-	elseif (self:isEligibleForKnightTrials(pPlayer)) then
+	elseif (self:isOnKnightTrials(pPlayer)) then
 		writeScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted", num)
 	end
 end
@@ -305,9 +290,9 @@ end
 function JediTrials:getTrialNumByName(pPlayer, name)
 	local trialTable
 
-	if (self:isEligibleForPadawanTrials(pPlayer)) then
+	if (self:isOnPadawanTrials(pPlayer)) then
 		trialTable = padawanTrialQuests
-	elseif (self:isEligibleForKnightTrials(pPlayer)) then
+	elseif (self:isOnKnightTrials(pPlayer)) then
 		trialTable = knightTrialQuests
 	else
 		return -1
