@@ -33,8 +33,14 @@ protected:
 	Vector3 position;
 	Reference<NavMeshRegion*> region;
 public:
-	int compare(const NavCollision& o1, const NavCollision& o2) const {
-		return o1.dist < o2.dist;
+
+	int compareTo(const NavCollision* rhs) const {
+		if (fabs(dist - rhs->dist) < 0.001f)
+			return 0;
+		else if (dist < rhs->dist)
+			return 1;
+		else
+			return -1;
 	}
 
 	NavCollision(const Vector3& p, float len, Reference<NavMeshRegion*> r) : dist(len), position(p), region(r) { }
@@ -61,6 +67,7 @@ public:
 	 */
 	int getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes);
 	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, Vector<WorldCoordinates>& endPoints, Zone* zone, bool allowPartial);
+	bool getSpawnPointInArea(const Sphere& area, Zone* zone, Vector3& point);
 protected:
 	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
 	Vector<WorldCoordinates>* findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
@@ -71,7 +78,10 @@ protected:
 	Vector<WorldCoordinates>* findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 	bool getRecastPath(const Vector3& start, const Vector3& end, NavMeshRegion* region, Vector<WorldCoordinates>* path, float& len, bool allowPartial);
 	void addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, CellObject* cell);
-	void getNavMeshCollisions(SortedVector<Reference<NavCollision*>> *collisions, const SortedVector<ManagedReference<NavMeshRegion*>> *regions, const Vector3& start, const Vector3& end);
+
+	// The caller of this function is responsible for deleting the NavCollision objects.
+	// Collisions should be sorted from closest to farthest.
+	void getNavMeshCollisions(SortedVector<NavCollision*> *collisions, const SortedVector<ManagedReference<NavMeshRegion*>> *regions, const Vector3& start, const Vector3& end);
 private:
 	dtQueryFilter m_filter;
 	ThreadLocal<dtNavMeshQuery*> m_navQuery;
