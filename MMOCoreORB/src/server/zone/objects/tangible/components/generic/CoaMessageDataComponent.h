@@ -6,7 +6,7 @@
 
 class CoaMessageDataComponent : public DataObjectComponent {
 protected:
-	String faction;
+	SerializableString faction;
 	int number;
 public:
 	CoaMessageDataComponent() {

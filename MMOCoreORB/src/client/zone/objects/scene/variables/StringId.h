@@ -9,8 +9,8 @@
 #include "engine/service/Message.h"
 
 class StringId : public Serializable {
-	String file;
-	String stringID;
+	SerializableString file;
+	SerializableString stringID;
 
 	UnicodeString customName;
 

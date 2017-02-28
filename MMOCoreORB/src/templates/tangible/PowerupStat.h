@@ -10,9 +10,9 @@
 
 class PowerupStat: public virtual Serializable {
 protected:
-	String attributeToModify;
-	String name;
-	String pupAttribute;
+	SerializableString attributeToModify;
+	SerializableString name;
+	SerializableString pupAttribute;
 	float value;
 public:
 

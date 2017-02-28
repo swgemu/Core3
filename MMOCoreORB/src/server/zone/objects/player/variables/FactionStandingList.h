@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 
 class FactionStandingList : public Serializable {
-	String factionRank;
+	SerializableString factionRank;
 	int rebelPoints;
 	int imperialPoints;
 	SynchronizedVectorMap<String, float> factions;

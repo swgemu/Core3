@@ -17,7 +17,7 @@ class AuctionTerminalDataComponent : public DataObjectComponent {
 protected:
 
 	ManagedWeakReference<AuctionManager*> auctionMan;
-	String uid;
+	SerializableString uid;
 
 public:
 	AuctionTerminalDataComponent() {

@@ -39,9 +39,9 @@ protected:
 
 	Vector<uint64> vendorBarks;
 	uint64 lastBark;
-	String barkMessage;
-	String barkMood;
-	String barkAnimation;
+	SerializableString barkMessage;
+	SerializableString barkMood;
+	SerializableString barkAnimation;
 
 	float originalDirection;
 

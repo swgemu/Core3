@@ -44,10 +44,10 @@ private:
 	String key;
 
 	/// Name to display in UI
-	String displayedName;
+	SerializableString displayedName;
 
 	/// Serial number of tangible item
-	String serialNumber;
+	SerializableString serialNumber;
 
 	/// Designates if this item needs to be identical
 	bool identical;

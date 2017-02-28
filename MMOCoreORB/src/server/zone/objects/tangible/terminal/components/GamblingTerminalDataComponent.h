@@ -11,7 +11,7 @@ class GamblingTerminalDataComponent : public DataObjectComponent {
 protected:
 
 	uint64 bank;
-	String game;
+	SerializableString game;
 
 public:
 	GamblingTerminalDataComponent() {
