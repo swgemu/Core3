@@ -17,6 +17,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include system.util.HashTable;
 include system.lang.ref.Reference;
 
+@dirty
 class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;
 

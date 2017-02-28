@@ -22,6 +22,7 @@ include system.util.Vector;
  * The resource manager handles all aspects of in game resources
  * within the Core3 environment
  */
+@dirty
 class ResourceManager extends Observer implements Logger {
 	private transient ZoneProcessServer processor;
 	private transient ZoneServer zoneServer;

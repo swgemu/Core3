@@ -22,6 +22,7 @@ include server.chat.StringIdChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
 
+@dirty
 class ChatManager extends ManagedService implements Logger {
 	ZoneServer server;
 	PlayerManager playerManager;

@@ -18,6 +18,7 @@ import server.zone.managers.creature.LairSpawn;
 import system.thread.Mutex;
 include system.util.Vector;
 
+@dirty
 class MissionManager extends Observer implements Logger {
 	protected ZoneServer server;
 	transient ZoneProcessServer processor;

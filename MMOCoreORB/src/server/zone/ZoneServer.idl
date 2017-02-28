@@ -43,6 +43,7 @@ import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
 
+@dirty
 class ZoneServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
 
