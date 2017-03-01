@@ -502,12 +502,9 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (getNumberOfPlayersInRange() <= 0 || isRetreating() || isFleeing() || isInCombat())
 		return false;
 
-	if (!pObject->isCreatureObject())
-		return false;
-
 	CreatureObject* creoObject = pObject->asCreatureObject();
 
-	if (creoObject->isInvisible())
+	if (!creoObject || creoObject->isInvisible())
 		return false;
 
 //	then return false end
@@ -663,11 +660,11 @@ void AiAgentImplementation::doAwarenessCheck() {
 		newPlayerCount = 0;
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
 			CreatureObject* target = scene->asCreatureObject();
 
-			if (thisObject == target || target == NULL)
+			if (target == NULL || thisObject == target)
 				continue;
 
 			if (target->isVehicleObject() || target->hasRidingCreature())
