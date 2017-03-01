@@ -1705,6 +1705,14 @@ bool SceneObject::isCreatureObject() {
 	return false;
 }
 
+bool SceneObjectImplementation::isBuildingObject() {
+	return false;
+}
+
+bool SceneObject::isBuildingObject() {
+	return false;
+}
+
 AiAgent* SceneObjectImplementation::asAiAgent() {
 	return nullptr;
 }
