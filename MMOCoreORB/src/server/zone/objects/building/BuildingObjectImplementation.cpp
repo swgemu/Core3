@@ -173,8 +173,6 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		SceneObjectImplementation::sendTo(player, doClose);
 	} //else { // just send the objects that are in the building, without the cells because they are static in the client
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
-
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -381,7 +379,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone", true);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+	CloseObjectsVector* closeObjects = getCloseObjects();
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects->get(i).get());

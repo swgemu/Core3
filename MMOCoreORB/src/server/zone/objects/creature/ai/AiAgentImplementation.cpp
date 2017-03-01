@@ -663,11 +663,11 @@ void AiAgentImplementation::doAwarenessCheck() {
 		newPlayerCount = 0;
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
 			CreatureObject* target = scene->asCreatureObject();
 
-			if (thisObject == target || target == NULL)
+			if (target == NULL || thisObject == target)
 				continue;
 
 			if (target->isVehicleObject() || target->hasRidingCreature())
