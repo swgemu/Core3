@@ -271,3 +271,11 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition, false);
 }
+
+bool VehicleObject::isVehicleObject() {
+	return true;
+}
+
+bool VehicleObjectImplementation::isVehicleObject() {
+	return true;
+}

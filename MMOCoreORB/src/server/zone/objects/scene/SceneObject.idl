@@ -1411,9 +1411,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}	
 
 	@dirty
-	public abstract boolean isBuildingObject() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isBuildingObject();
 
 	@dirty
 	@local

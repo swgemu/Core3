@@ -103,7 +103,7 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 #endif
 
 	for (int i = 0; i < playerList.size(); ++i) {
-		ManagedReference<CreatureObject*> player = playerList.get(i);
+		CreatureObject* player = playerList.get(i);
 
 		if (player != NULL) {
 #ifdef LOCKFREE_BCLIENT_BUFFERS
