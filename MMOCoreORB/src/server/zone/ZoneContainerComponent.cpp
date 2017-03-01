@@ -258,7 +258,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		
 //		zoneLocker.release();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = object->getCloseObjects();
+		auto closeObjects = object->getCloseObjects();
 
 		if (closeObjects != NULL) {
 			try {

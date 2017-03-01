@@ -230,9 +230,9 @@ class VehicleObject extends CreatureObject {
 	}
 
 	@dirty
-	public boolean isVehicleObject() {
-		return true;
-	}
+	@local
+	@nativeStub
+	public native boolean isVehicleObject();
 
 	@dirty
 	public unsigned int getArmor() {

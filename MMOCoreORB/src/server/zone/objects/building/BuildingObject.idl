@@ -290,9 +290,9 @@ class BuildingObject extends StructureObject {
 	public native abstract void onExit(CreatureObject player, unsigned long parentid);
 
 	@dirty
-	public boolean isBuildingObject() {
-		return true;
-	}
+	@local
+	@nativeStub
+	public native boolean isBuildingObject();
 
 	@preLocked
 	public void setSignObject(SignObject sign) {
