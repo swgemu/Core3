@@ -42,7 +42,7 @@ function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
 		if (CreatureObject(pPlayer):hasScreenPlayState(64, "VillageJediProgression")) then
 		-- TODO: Change to generic message after padawan trials complete if not qualified for Knight trials.
 		elseif (CreatureObject(pPlayer):hasScreenPlayState(32, "VillageJediProgression")) then
-			if (currentTrial == nil) then
+			if (not JediTrials:isOnPadawanTrials(pPlayer)) then
 				PadawanTrials:startPadawanTrials(pObject, pPlayer)
 			elseif (currentTrial == 0) then
 				PadawanTrials:startNextPadawanTrial(pObject, pPlayer)

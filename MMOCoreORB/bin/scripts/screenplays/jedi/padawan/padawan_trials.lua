@@ -109,7 +109,7 @@ function PadawanTrials:jediPadawanTrialsAbortCallback(pPlayer, pSui, eventIndex,
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_aborted")
-	PadawanTrials:resetAllPadawanTrials(pPlayer)
+	self:resetAllPadawanTrials(pPlayer)
 end
 
 function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
@@ -119,26 +119,27 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
+	if (trialsCompleted >= #padawanTrialQuests and trialsCompleted < 8) then
+		CreatureObject(pPlayer):sendSystemMessage("You have completed all of the current Padawan Trials, more will be added in the near future.")
+		return
+	end
+
 	if (trialsCompleted == 8) then
 	-- TODO: Crafting Trial, after implemented uncomment below lines.
 	-- JediPadawanTrialCraftLightsaberScreenPlay:startTrial(pPlayer)
 	else
-		local uncompletedTrials = {}
+		local incompleteTrials = {}
 		for i = 1, #padawanTrialQuests, 1 do
 			local trialState = JediTrials:getTrialStateName(pPlayer, i)
 			if not CreatureObject(pPlayer):hasScreenPlayState(1, trialState) then
-				table.insert(uncompletedTrials, i)
+				table.insert(incompleteTrials, i)
 			end
 		end
 
-		if (#uncompletedTrials <= 0) then -- Finished all trials.
-			-- Temp
-			CreatureObject(pPlayer):sendSystemMessage("You have completed all of the current Padawan Trials, but you are not a jedi yet...")
-		else -- Still more.
-			local rand = getRandomNumber(1, #uncompletedTrials)
-			local randTrial = uncompletedTrials[rand]
-			PadawanTrials:startTrial(pPlayer, randTrial)
-		end
+
+		local rand = getRandomNumber(1, #incompleteTrials)
+		local randTrial = incompleteTrials[rand]
+		PadawanTrials:startTrial(pPlayer, randTrial)
 	end
 end
 
@@ -328,14 +329,14 @@ function PadawanTrials:notifyExitedLocDestroyArea(pArea, pPlayer)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 
-	if (trialNumber == nil) then
+	if (trialNumber == nil or not JediTrials:isOnPadawanTrials(pPlayer)) then
 		self:removeNpcDestroyActiveArea(pPlayer)
 		deleteData(npcID .. ":ownerID")
 		deleteData(npcID .. ":destroyNpcOnExit")
 		SceneObject(pNpc):destroyObjectFromWorld()
 		return 1
 	end
-	
+
 	local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
 	if (trialState == nil or CreatureObject(pPlayer):hasScreenPlayState(1, trialState) or readData(npcID .. ":destroyNpcOnExit") == 1) then
@@ -568,7 +569,7 @@ function PadawanTrials:failTrial(pPlayer)
 		failAmountMsg = "@jedi_trials:padawan_trials_trial_failed_second"
 	elseif (failAmount == 2) then
 		failAmountMsg = "@jedi_trials:padawan_trials_trial_failed_final"
-		PadawanTrials:resetAllPadawanTrials(pPlayer)
+		self:resetAllPadawanTrials(pPlayer)
 	end
 
 	local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
@@ -602,7 +603,7 @@ function PadawanTrials:passTrial(pPlayer)
 		sui.setOkButtonText("@jedi_trials:button_close")
 		sui.sendTo(pPlayer)
 
-		PadawanTrials:resetAllPadawanTrials(pPlayer)
+		self:resetAllPadawanTrials(pPlayer)
 		return
 	end
 
