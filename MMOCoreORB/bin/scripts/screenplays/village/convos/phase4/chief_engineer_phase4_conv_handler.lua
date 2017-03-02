@@ -18,7 +18,7 @@ function villageChiefEngineerPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, 
 		return convoTemplate:getScreen("intro_continue")
 	elseif (self:isOnQuestOneThroughFive(pPlayer)) then
 		return convoTemplate:getScreen("intro_quest1to5")
-	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) or (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and not self:isOnEngineerQuest(pPlayer))) then
+	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	else
 		return convoTemplate:getScreen("intro")
@@ -29,13 +29,6 @@ function villageChiefEngineerPhase4ConvoHandler:isOnQuestOneThroughFive(pPlayer)
 	return QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_02) or
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_03) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_04) or
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_05)
-end
-
-function villageChiefEngineerPhase4ConvoHandler:isOnEngineerQuest(pPlayer)
-	return QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_00) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01) or
-		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_02) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_03) or
-		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_04) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_05) or
-		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)
 end
 
 function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
