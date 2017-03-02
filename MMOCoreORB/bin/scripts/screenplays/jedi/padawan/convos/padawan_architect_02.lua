@@ -10,6 +10,11 @@ function padawan_architect_02_conv_handler:getInitialScreen(pPlayer, pNpc, pConv
 		return convoTemplate:getScreen("noquest_player_talk")
 	end
 
+	if (not JediTrials:isOnPadawanTrials(pPlayer)) then
+		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
+		return convoTemplate:getScreen("noquest_player_talk")
+	end
+
 	return convoTemplate:getScreen("intro")
 end
 

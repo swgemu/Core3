@@ -2,14 +2,20 @@ padawan_architect_01_conv_handler = conv_handler:new {}
 
 function padawan_architect_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "architect")
-	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (trialOwnerID ~= playerID) then
 		return convoTemplate:getScreen("not_quest_owner")
 	end
+
+	if (not JediTrials:isOnPadawanTrials(pPlayer)) then
+		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
+		return convoTemplate:getScreen("not_quest_owner")
+	end
+
+	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "architect")
+	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
 		return convoTemplate:getScreen("completed_quest")
