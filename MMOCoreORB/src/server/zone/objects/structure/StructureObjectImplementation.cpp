@@ -245,7 +245,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 		}
 
 		maintenanceExpires.updateToCurrentTime();
-		maintenanceExpires.addMiliTime(timeRemaining * 1000);
+		maintenanceExpires.addMiliTime((uint64)timeRemaining * 1000);
 	}
 	else
 	{

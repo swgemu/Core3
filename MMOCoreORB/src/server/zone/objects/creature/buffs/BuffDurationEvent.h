@@ -19,7 +19,7 @@ namespace server {
 			ManagedWeakReference<Buff*> buffObject;
 
 		public:
-			BuffDurationEvent(CreatureObject* creature, Buff* buff) : Task((int) buff->getBuffDuration() * 1000) {
+			BuffDurationEvent(CreatureObject* creature, Buff* buff) : Task((int64) buff->getBuffDuration() * 1000) {
 				creatureObject = creature;
 				buffObject = buff;
 			}
