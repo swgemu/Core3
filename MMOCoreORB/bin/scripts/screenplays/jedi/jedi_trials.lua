@@ -190,7 +190,7 @@ function JediTrials:getTrialStateName(pPlayer, number)
 	elseif (self:isOnKnightTrials(pPlayer)) then
 		return "JediTrial:" .. knightTrialQuests[number].trialName
 	else
-		printLuaError("JediTrials:getTrialStateName, player not currently on padawan or knight trials (trial " .. number .. " sent)")
+		printLuaError("JediTrials:getTrialStateName, player " .. SceneObject(pPlayer):getCustomObjectName() .. " is not currently on padawan or knight trials (trial " .. number .. " sent)")
 		return nil
 	end
 end
