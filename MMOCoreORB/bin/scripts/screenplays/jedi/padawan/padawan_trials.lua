@@ -328,7 +328,7 @@ function PadawanTrials:notifyExitedLocDestroyArea(pArea, pPlayer)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 
-	if (trialNumber == nil) then
+	if (trialNumber == nil or not JediTrials:isOnPadawanTrials(pPlayer)) then
 		self:removeNpcDestroyActiveArea(pPlayer)
 		deleteData(npcID .. ":ownerID")
 		deleteData(npcID .. ":destroyNpcOnExit")
