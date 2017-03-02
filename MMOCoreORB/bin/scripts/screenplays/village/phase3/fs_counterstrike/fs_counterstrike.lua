@@ -331,7 +331,7 @@ function FsCounterStrike:completeQuest(pPlayer, teamComplete)
 			buffItem:setBuffAttribute(6)
 			buffItem:setReuseTime(345600000)
 			buffItem:setBuffValue(900)
-			buffItem:setBuffDuration(5400000)
+			buffItem:setBuffDuration(5400)
 		end
 
 		CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:teamwork_bonus")

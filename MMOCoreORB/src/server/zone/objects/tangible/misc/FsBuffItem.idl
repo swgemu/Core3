@@ -25,7 +25,7 @@ class FsBuffItem extends TangibleObject {
 		reuseTime = 3 * 24 * 60 * 60 * 1000; // 3 Day default
 		buffAttribute = 0; // Default health
 		buffValue = 1000; // 1000 point default
-		buffDuration = 60 * 60 * 1000; // 1 hour default
+		buffDuration = 60 * 60; // 1 hour default
 	}
 
 	@local

@@ -19,7 +19,7 @@ int FsBuffItemImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		uint32 buffCRC = getBuffCRC();
 
 		if (player->hasBuff(buffCRC)) {
-			player->sendSystemMessage("@quest/force_sensitive/utils:has_buff");
+			player->sendSystemMessage("@quest/force_sensitive/utils:have_buff");
 			return 0;
 		}
 
@@ -27,6 +27,10 @@ int FsBuffItemImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			player->sendSystemMessage("@quest/force_sensitive/utils:timer_not_up");
 			return 0;
 		}
+
+		// TODO: Remove before merge to Bas, temporary fix for existing items on Nova
+		if (buffDuration > 7200)
+			buffDuration = 7200;
 
 		Reference<Buff*> buff = new Buff(player, buffCRC, buffDuration, BuffType::MEDICAL);
 
