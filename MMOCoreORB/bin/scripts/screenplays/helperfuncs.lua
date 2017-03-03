@@ -21,3 +21,16 @@ function HelperFuncs:toTitleCase(str)
 	end
 	return table.concat(buf, " ")
 end
+
+function HelperFuncs:despawnMobileTask(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+	
+	if (CreatureObject(pMobile):isInCombat() or AiAgent(pMobile):getFollowObject() ~= nil) then
+		createEvent(10000, "HelperFuncs", "despawnMobileTask", pMobile, "")
+		return
+	end
+	
+	SceneObject(pMobile):destroyObjectFromWorld()
+end

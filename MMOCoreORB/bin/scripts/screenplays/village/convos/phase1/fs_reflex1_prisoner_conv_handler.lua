@@ -30,6 +30,7 @@ function villageFsReflex1PrisonerConvoHandler:runScreenHandlers(pConvTemplate, p
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
+		FsReflex1Theater:removeTheaterWaypoint(pPlayer)
 		FsReflex1Escort:start(pPlayer, pNpc)
 	elseif (screenID == "intro_inprogress") then
 		FsReflex1Escort:setEscortFollow(pPlayer, pNpc)

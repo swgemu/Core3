@@ -115,33 +115,23 @@ end
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @param spawnPoints a list of spawn points to use.
 -- @return a list with pointers to the spawned mobiles.
-function SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
+function SpawnMobiles.spawnMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	local spawnedObjects = {}
 	local success = true
+	local playerID = SceneObject(pSceneObject):getObjectID()
 
 	for spawnNumber = 1, #spawnPoints, 1 do
-		local spawnedObject = spawnMobile(SceneObject(pSceneObject):getZoneName(),
-			mobileList[spawnNumber]["template"],
-			0,
-			spawnPoints[spawnNumber][1],
-			spawnPoints[spawnNumber][2],
-			spawnPoints[spawnNumber][3],
-			getRandomNumber(360) - 180,
-			SceneObject(pSceneObject):getParentID())
-		AiAgent(spawnedObject):setNoAiAggro()
+		local spawnedObject = nil
+
+		if (readData(playerID .. prefix .. SPAWN_MOBILES_STRING .. spawnNumber .. ":noRespawn") ~= 1) then
+			spawnedObject = spawnMobile(SceneObject(pSceneObject):getZoneName(), mobileList[spawnNumber]["template"], 0, spawnPoints[spawnNumber][1], spawnPoints[spawnNumber][2], spawnPoints[spawnNumber][3], getRandomNumber(360) - 180, SceneObject(pSceneObject):getParentID())
+		end
+		
+		if (spawnedObject ~= nil) then
+			AiAgent(spawnedObject):setNoAiAggro()
+		end
+		
 		table.insert(spawnedObjects, spawnedObject)
-		if spawnedObject == nil then
-			success = false
-			return
-		end
-	end
-
-	if not success then
-		for i = 1, #spawnedObjects, 1 do
-			SceneObject(spawnedObjects[i]):destroyObjectFromWorld()
-		end
-
-		return nil
 	end
 
 	return spawnedObjects
@@ -172,7 +162,7 @@ end
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @param spawnPoints a list with spawn points to use for the mobile objects.
 function SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
-	local spawnedObjects = SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
+	local spawnedObjects = SpawnMobiles.spawnMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 
 	if spawnedObjects ~= nil and #spawnedObjects > 0 then
 		SpawnMobiles.saveSpawnedMobileObjects(pSceneObject, prefix, spawnedObjects)
@@ -258,11 +248,36 @@ end
 
 -- Despawn the mobiles.
 -- @param spawnedMobilesList a list of pointers to the spawned mobiles.
-function SpawnMobiles.despawnMobilesInList(spawnedMobilesList)
+function SpawnMobiles.despawnMobilesInList(pSceneObject, spawnedMobilesList, prefix, storeRespawn)
 	if spawnedMobilesList ~= nil then
-		for i = 1, #spawnedMobilesList, 1 do
-			SceneObject(spawnedMobilesList[i]):destroyObjectFromWorld()
+		local playerID = SceneObject(pSceneObject):getObjectID()
+		if (storeRespawn == nil) then
+			storeRespawn = false
 		end
+
+		for i = 1, #spawnedMobilesList, 1 do
+			if (storeRespawn and (spawnedMobilesList[i] == nil or CreatureObject(spawnedMobilesList[i]):isDead())) then
+				writeData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn", 1)
+			end
+
+			if (CreatureObject(spawnedMobilesList[i]):isInCombat() or AiAgent(spawnedMobilesList[i]):getFollowObject() ~= nil) then
+				createEvent(10000, "HelperFuncs", "despawnMobileTask", spawnedMobilesList[i], "")
+				
+				if (storeRespawn) then
+					writeData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn", 1)
+				end
+			else
+				SceneObject(spawnedMobilesList[i]):destroyObjectFromWorld()
+			end
+		end
+	end
+end
+
+function SpawnMobiles.clearStoredRespawnData(pSceneObject, prefix, mobileList)
+	local playerID = SceneObject(pSceneObject):getObjectID()
+
+	for i = 1, #mobileList, 1 do
+		deleteData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn")
 	end
 end
 
@@ -293,8 +308,8 @@ end
 -- This function will clean up the information stored with the prefix so that spawnMobiles can be called again with the same prefix.
 -- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for reading information about the mobiles to despawn.
-function SpawnMobiles.despawnMobiles(pSceneObject, prefix)
-	SpawnMobiles.despawnMobilesInList(SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix))
+function SpawnMobiles.despawnMobiles(pSceneObject, prefix, storeRespawn)
+	SpawnMobiles.despawnMobilesInList(pSceneObject, SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix), prefix, storeRespawn)
 	writeData(SceneObject(pSceneObject):getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_FREE)
 end
 

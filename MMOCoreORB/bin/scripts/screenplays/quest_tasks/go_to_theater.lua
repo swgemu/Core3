@@ -106,6 +106,7 @@ function GoToTheater:exitedTheaterSpawnArea(pActiveArea, pPlayer)
 
 	if (storedActiveAreaId == SceneObject(pActiveArea):getObjectID()) then
 		self:despawnTheaterObjects(pPlayer)
+		self:callFunctionIfNotNil(self.exitedDespawnArea, nil, pPlayer)
 	end
 
 	return 0
@@ -183,7 +184,7 @@ function GoToTheater:despawnTheaterObjects(pPlayer)
 	local pTheater = self:getTheaterObject(pPlayer)
 
 	if (pTheater ~= nil) then
-		SpawnMobiles.despawnMobiles(pTheater, self.taskName)
+		SpawnMobiles.despawnMobiles(pTheater, self.taskName, true)
 		self:callFunctionIfNotNil(self.onTheaterDespawn, nil, pPlayer)
 	end
 end
@@ -244,6 +245,7 @@ function GoToTheater:taskFinish(pPlayer)
 
 	self:removeTheaterWaypoint(pPlayer)
 	self:despawnTheaterObjects(pPlayer)
+	SpawnMobiles.clearStoredRespawnData(pPlayer, self.taskName, self.mobileList)
 
 	local activeAreaId = readData(playerID .. self.taskName .. "spawnEnterAreaId")
 	local pArea = getSceneObject(activeAreaId)
