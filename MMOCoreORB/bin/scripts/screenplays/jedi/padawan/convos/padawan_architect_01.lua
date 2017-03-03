@@ -37,7 +37,7 @@ function padawan_architect_01_conv_handler:runScreenHandlers(pConvTemplate, pPla
 	if (screenID == "done_with_task") then
 		if (readData(playerID .. ":JediTrials:killedTarget") == 1) then
 			clonedConversation:addOption("@conversation/padawan_architect_01:s_f0d9878f", "yes_kill_fail")
-		elseif (readData(playerID .. ":JediTrials:spokeToTarget")) then
+		elseif (readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
 			clonedConversation:addOption("@conversation/padawan_architect_01:s_88ac3394", "back_chose_success")
 		else
 			clonedConversation:setStopConversation(true)
