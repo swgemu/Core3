@@ -33,9 +33,10 @@ function FsReflex1Theater:onEnteredActiveArea(pPlayer, mobileList)
 		return
 	end
 
-	self:removeTheaterWaypoint(pPlayer)
-	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
-	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
+	if (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)) then
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
+	end
 end
 
 function FsReflex1Theater:onObjectsSpawned(pPlayer, mobileList)

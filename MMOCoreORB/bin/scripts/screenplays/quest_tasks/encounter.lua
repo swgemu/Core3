@@ -271,7 +271,7 @@ function Encounter:doDespawn(pPlayer)
 
 	Logger:log("Despawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
 
-	SpawnMobiles.despawnMobiles(pPlayer, self.taskName)
+	SpawnMobiles.despawnMobiles(pPlayer, self.taskName, false)
 	self:callFunctionIfNotNil(self.onEncounterDespawned, nil, pPlayer)
 
 	self:finish(pPlayer)
