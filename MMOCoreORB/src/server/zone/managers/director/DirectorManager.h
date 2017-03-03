@@ -190,6 +190,7 @@ namespace server {
 		static int createNavMesh(lua_State* L);
 		static int creatureTemplateExists(lua_State* L);
 		static int printLuaError(lua_State* L);
+		static int getSpawnPointInArea(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
