@@ -117,7 +117,6 @@ end
 -- @return a list with pointers to the spawned mobiles.
 function SpawnMobiles.spawnMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	local spawnedObjects = {}
-	local success = true
 	local playerID = SceneObject(pSceneObject):getObjectID()
 
 	for spawnNumber = 1, #spawnPoints, 1 do
