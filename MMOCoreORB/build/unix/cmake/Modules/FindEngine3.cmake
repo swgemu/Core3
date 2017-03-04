@@ -21,6 +21,7 @@ FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
   /opt/engine3/include
   /opt/engine3pub/include
   ../MMOEngine/include
+  ../MMOEngine/src
 )
 
 SET(ENGINE3_NAMES engine3)

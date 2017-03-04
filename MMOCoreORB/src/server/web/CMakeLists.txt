@@ -8,4 +8,4 @@ file(GLOB_RECURSE web3_sources "*.cpp")
 include_directories(../..)
 
 # Create web library
-add_library(web3 SHARED ${web3_sources} mongoose/mongoose.c)
+add_library(web3 STATIC ${web3_sources} mongoose/mongoose.c)

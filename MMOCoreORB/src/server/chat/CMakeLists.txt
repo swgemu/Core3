@@ -8,5 +8,5 @@ file(GLOB_RECURSE chat3_sources "*.cpp")
 include_directories(../..)
 
 # Create chat library
-add_library(chat3 SHARED ${chat3_sources})
+add_library(chat3 STATIC ${chat3_sources})
 #add_dependencies(chat3 idl)

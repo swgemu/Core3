@@ -15,5 +15,5 @@ include_directories(../..)
 #list(REMOVE_ITEM zone3_sources ${zone3_excludes})
 
 # Create zone library
-add_library(zone3 SHARED ${zone3_sources})
+add_library(zone3 STATIC ${zone3_sources})
 #add_dependencies(zone3 login3)

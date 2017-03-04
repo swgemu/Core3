@@ -16,6 +16,7 @@ class LockMockSceneObject : public MockSceneObject {
 	MOCK_LOCKS(LockMockSceneObject, MockSceneObject);
 };
 
+
 class GeneralDeadlockTestBase : public ::testing::Test {
 public:
 	Reference<LockMockSceneObject*> sceneObject1;
