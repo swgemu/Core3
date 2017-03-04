@@ -24,6 +24,10 @@ public:
 			return INVALIDLOCOMOTION;
 
 		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
 		int newStackSize = tokenizer.getIntToken();
 
 		if (newStackSize < 1)

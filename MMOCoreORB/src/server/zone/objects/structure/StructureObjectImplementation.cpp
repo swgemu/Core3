@@ -265,7 +265,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 		}
 
 		maintenanceExpires.updateToCurrentTime();
-		maintenanceExpires.addMiliTime(timeRemaining * 1000);
+		maintenanceExpires.addMiliTime((uint64)timeRemaining * 1000);
 	}
 
 	scheduleMaintenanceTask(timeRemaining);
@@ -281,9 +281,9 @@ void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
 	}
 
 	if (structureMaintenanceTask->isScheduled()) {
-		structureMaintenanceTask->reschedule(timeFromNow * 1000);
+		structureMaintenanceTask->reschedule((uint64)timeFromNow * 1000);
 	} else {
-		structureMaintenanceTask->schedule(timeFromNow * 1000);
+		structureMaintenanceTask->schedule((uint64)timeFromNow * 1000);
 	}
 }
 
