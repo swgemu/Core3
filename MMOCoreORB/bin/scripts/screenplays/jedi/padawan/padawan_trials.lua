@@ -198,9 +198,26 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 		return
 	end
 
-	local locZ = getTerrainHeight(pPlayer, randomLoc[1], randomLoc[2])
+	local spawnPoint = getSpawnPointInArea(planetName, randomLoc[1], randomLoc[2], randomLoc[3])
 
-	JediTrials:setTrialLocation(pPlayer, randomLoc[1], locZ, randomLoc[2], planetName)
+	-- Execute the function again to pick a new random location
+	if (spawnPoint == nil) then
+		local pointAttempts = readData(playerID .. ":JediTrials:spawnPointAttempts")
+
+		if (pointAttempts <= 5) then
+			self:startTrial(pPlayer, trialNum)
+			writeData(playerID .. ":JediTrials:spawnPointAttempts", pointAttempts + 1)
+		else
+			printLuaError("PadawanTrials:startTrial, unable to find start point for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNum .. " after 5 attempts.")
+			deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+		end
+
+		return
+	end
+
+	deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+
+	JediTrials:setTrialLocation(pPlayer, spawnPoint[1], spawnPoint[2], spawnPoint[3], planetName)
 
 	self:sendSuiNotification(pPlayer)
 	self:createFirstLocation(pPlayer)
@@ -234,10 +251,13 @@ end
 function PadawanTrials:sendSuiNotification(pPlayer)
 	local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+	local cityName = planetData[2]
+	cityName = string.gsub(cityName, "_", " ")
+	cityName = string.gsub(" "..cityName, "%W%l", string.upper):sub(2)
 
 	local trialData = padawanTrialQuests[trialNumber]
 	local msgPrefix =  "@jedi_trials:" .. trialData.trialName .. "_01 " .. "@jedi_trials:" .. planetData[1]
-	local msgPostfix =  "@jedi_trials:" .. trialData.trialName .. "_02 " .. planetData[2] .. "."
+	local msgPostfix =  "@jedi_trials:" .. trialData.trialName .. "_02 " .. cityName .. "."
 	local msgFinal = msgPrefix .. " " .. msgPostfix
 
 	local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
