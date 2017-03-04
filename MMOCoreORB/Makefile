@@ -109,7 +109,7 @@ ifeq ($(PLATFORM),Darwin)
 endif
 endif
 
-build-cmake: idl-cmake
+build-cmake: idl gtest
 	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. ../.. && make -j$(CPU_CORES)
 	cd build/unix && make install
 
