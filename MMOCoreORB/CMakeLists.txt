@@ -28,23 +28,23 @@ include_directories(${ENGINE3_INCLUDE_DIR})
 link_directories(${ENGINE3_LIBRARY})
 
 # Compile idl sources
-file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
-set(auto_sources)
-set(auto_headers)
-foreach(idl ${idls})
-	string(REPLACE "src/" "src/autogen/" auto_base ${idl})
-	string(REPLACE ".idl" ".cpp" auto_cpp ${auto_base})
-	string(REPLACE ".idl" ".h" auto_h ${auto_base})
-	set(auto_sources ${auto_sources} "${auto_cpp}")
-	set(auto_headers ${auto_headers} "${auto_cpp}")
-endforeach()
-add_custom_target(idl ALL
-	${IDLC_BIN_DIR}/idlc ${IDL_DIRECTIVES}
-	COMMENT "Compiling IDL sources")
+#file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
+#set(auto_sources)
+#set(auto_headers)
+#foreach(idl ${idls})
+#	string(REPLACE "src/" "src/autogen/" auto_base ${idl})
+#	string(REPLACE ".idl" ".cpp" auto_cpp ${auto_base})
+#	string(REPLACE ".idl" ".h" auto_h ${auto_base})
+#	set(auto_sources ${auto_sources} "${auto_cpp}")
+#	set(auto_headers ${auto_headers} "${auto_cpp}")
+#endforeach()
+#add_custom_target(idl ALL
+#	${IDLC_BIN_DIR}/idlc ${IDL_DIRECTIVES}
+#	COMMENT "Compiling IDL sources")
 
-add_custom_target(cleanidl
-	${IDLC_BIN_DIR}/idlc -rebuild ${IDL_DIRECTIVES}
-	COMMENT "Rebuilding IDL sources")
+#add_custom_target(cleanidl
+#	${IDLC_BIN_DIR}/idlc -rebuild ${IDL_DIRECTIVES}
+#	COMMENT "Rebuilding IDL sources")
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
@@ -58,7 +58,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sig
 
 # Define sources
 add_subdirectory(src)
-add_subdirectory(src/server/conf)
+add_subdirectory(src/conf)
+add_subdirectory(src/terrain)
+add_subdirectory(src/templates)
+add_subdirectory(src/pathfinding)
 add_subdirectory(src/server/db)
 add_subdirectory(src/server/status)
 add_subdirectory(src/server/web)

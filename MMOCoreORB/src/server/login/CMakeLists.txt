@@ -8,5 +8,5 @@ file(GLOB_RECURSE login3_sources "*.cpp")
 include_directories(../..)
 
 # Create login library
-add_library(login3 SHARED ${login3_sources})
+add_library(login3 STATIC ${login3_sources})
 #add_dependencies(login3 chat3)

@@ -8,4 +8,4 @@ file(GLOB_RECURSE status3_sources "*.cpp")
 include_directories(../..)
 
 # Create status library
-add_library(status3 SHARED ${status3_sources})
+add_library(status3 STATIC ${status3_sources})

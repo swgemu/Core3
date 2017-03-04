@@ -8,4 +8,4 @@ file(GLOB_RECURSE ping3_sources "*.cpp")
 include_directories(../..)
 
 # Create ping library
-add_library(ping3 SHARED ${ping3_sources})
+add_library(ping3 STATIC ${ping3_sources})
