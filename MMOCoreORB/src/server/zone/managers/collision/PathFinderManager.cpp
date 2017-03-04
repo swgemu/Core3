@@ -35,6 +35,9 @@ PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery
 	m_filter.setAreaCost(SAMPLE_POLYAREA_GRASS, 2.0f);
 	m_filter.setAreaCost(SAMPLE_POLYAREA_JUMP, 1.5f);
 
+	m_spawn_filter.setIncludeFlags(SAMPLE_POLYFLAGS_WALK);
+	m_spawn_filter.setExcludeFlags(SAMPLE_POLYFLAGS_ALL ^ SAMPLE_POLYFLAGS_WALK);
+
 	setLogging(true);
 }
 
@@ -996,11 +999,11 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		ReadLocker rLocker(mesh->getLock());
 		query->init(dtNavMesh, 2048);
 
-		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
+		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_spawnFilter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			continue;
 
 		for (int i=0; i<50; i++) {
-			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter, frand, &ref, pt)) & DT_SUCCESS)) {
+			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_spawnFilter, frand, &ref, pt)) & DT_SUCCESS)) {
 				continue;
 			} else {
 				point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
