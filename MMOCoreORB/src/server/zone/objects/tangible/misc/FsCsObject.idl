@@ -16,13 +16,29 @@ class FsCsObject extends TangibleObject {
 	@dereferenced
 	protected Time createdTime;
 
+	// TODO: Remove this after a wipe
 	protected int phaseDuration;
+	
+	protected unsigned long newPhaseDuration;
 
 	public FsCsObject() {
 		setLoggingName("FsCsObject");
 		createdTime.updateToCurrentTime();
 
-		phaseDuration = 1814400000; // 3 week default
+		// Remove after wipe
+		phaseDuration = 0;
+		
+		newPhaseDuration = 1814400000; // 3 week default
+	}
+	
+	// Not needed after a wipe
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+
+		if (phaseDuration != 0) {
+			phaseDuration = 0;
+			newPhaseDuration = 1814400000;
+		}
 	}
 
 	/**
@@ -40,9 +56,14 @@ class FsCsObject extends TangibleObject {
 		string decayStr = String.valueOf(decay) + "%";
 
 		msg.insertAttribute("fs_p3_item_decay_rate", decayStr);
+		
+		if (decay == 100) {
+			msg.insertAttribute("fs_p3_item_decay_in", "Already Decayed");
+			return;
+		}
 
-		int itemAge = System.getMiliTime() - createdTime.getMiliTime();
-		int timeLeft = phaseDuration - itemAge;
+		unsigned long itemAge = System.getMiliTime() - createdTime.getMiliTime();
+		unsigned long timeLeft = newPhaseDuration - itemAge;
 
 		int days = (timeLeft / 1000 / 60 / 60 / 24);
 		int hours = ((timeLeft / 1000 / 60 / 60) % 24);
@@ -60,21 +81,26 @@ class FsCsObject extends TangibleObject {
 
 	@dirty
 	public int getDecayPercent() {
-		int itemAge = System.getMiliTime() - createdTime.getMiliTime();
-		int decay = (int)(((float)itemAge / (float)phaseDuration) * 100);
+		if (isDisabled())
+			return 100;
+		
+		unsigned long itemAge = System.getMiliTime() - createdTime.getMiliTime();
+		int decay = (int)((itemAge * 100) / newPhaseDuration);
 
-		if (decay > 100)
+		if (decay >= 100) {
 			decay = 100;
+			setDisabled(true);
+		}
 
 		return decay;
 	}
 
 	@dirty
-	public int getPhaseDuration() {
-		return phaseDuration;
+	public unsigned long getPhaseDuration() {
+		return newPhaseDuration;
 	}
 
-	public void setPhaseDuration(int dur) {
-		phaseDuration = dur;
+	public void setPhaseDuration(unsigned long dur) {
+		newPhaseDuration = dur;
 	}
 }
