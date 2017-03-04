@@ -996,11 +996,11 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		ReadLocker rLocker(mesh->getLock());
 		query->init(dtNavMesh, 2048);
 
-		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
+		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_spawnFilter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			continue;
 
 		for (int i=0; i<50; i++) {
-			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter, frand, &ref, pt)) & DT_SUCCESS)) {
+			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_spawnFilter, frand, &ref, pt)) & DT_SUCCESS)) {
 				continue;
 			} else {
 				point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
