@@ -340,6 +340,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getTimestampMilli", getTimestampMilli);
 	lua_register(luaEngine->getLuaState(), "getFormattedTime", getFormattedTime);
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
+	lua_register(luaEngine->getLuaState(), "getSpawnPointInArea", getSpawnPointInArea);
 	lua_register(luaEngine->getLuaState(), "getSpawnArea", getSpawnArea);
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
@@ -3312,7 +3313,7 @@ int DirectorManager::printLuaError(lua_State* L) {
 
 int DirectorManager::getSpawnPointInArea(lua_State* L) {
 	if (checkArgumentCount(L, 4) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::printLuaError");
+		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnPointInArea");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
@@ -3325,18 +3326,18 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 		return 0;
 	}
 
-	float radius = lua_tonumber(L, -3);
-	float z = lua_tonumber(L, -2);
-	float x = lua_tonumber(L, -1);
+	float x = lua_tonumber(L, -3);
+	float y = lua_tonumber(L, -2);
+	float radius = lua_tonumber(L, -1);
 
-	Sphere sphere(Vector3(x, 0, z), radius);
+	Sphere sphere(Vector3(x, y, zone->getHeightNoCache(x, y)), radius);
 	Vector3 result;
 
 	if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result)) {
 		lua_newtable(L);
 		lua_pushnumber(L, result.getX());
-		lua_pushnumber(L, result.getY());
 		lua_pushnumber(L, result.getZ());
+		lua_pushnumber(L, result.getY());
 		lua_rawseti(L, -4, 3);
 		lua_rawseti(L, -3, 2);
 		lua_rawseti(L, -2, 1);
