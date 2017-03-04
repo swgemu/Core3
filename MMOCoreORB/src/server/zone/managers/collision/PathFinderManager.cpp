@@ -964,7 +964,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
 	Vector3 flipped(center.getX(), center.getZ(), -center.getY());
-	static float extents[3] = {3, 5, 3};
+	float extents[3] = {radius, 150, radius};
 
 	dtNavMeshQuery *query = m_navQuery.get();
 	if(query == NULL) {
@@ -976,6 +976,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		return false;
 
 	zone->getInRangeNavMeshes(center.getX(), center.getY(), radius, &regions, false);
+
 	bool found = false;
 	for (const auto& region : regions) {
 		Vector3 polyStart;
@@ -998,13 +999,14 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			continue;
 
-		for (int i=0; i<5; i++) {
-			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter,
-															   frand, &ref, pt)) & DT_SUCCESS)) {
+		for (int i=0; i<50; i++) {
+			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter, frand, &ref, pt)) & DT_SUCCESS)) {
 				continue;
 			} else {
 				point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
-				if ((point - center).length() > radius)
+				Vector3 temp = point-center;
+
+				if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > radius*radius)
 					continue;
 
 				return true;
@@ -1012,13 +1014,5 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		}
 	}
 
-	int multiplier = radius * 100;
-	float randX = ((System::random() % multiplier) * 0.01f) + center.getX();
-	float randZ = ((System::random() % multiplier) * 0.01f) + center.getY();
-
-	point = Vector3(randX, randZ, zone->getHeightNoCache(randX, randZ));
-
-
-	return true;
-
+	return false;
 }
