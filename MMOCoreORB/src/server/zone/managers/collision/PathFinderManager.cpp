@@ -954,8 +954,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	return path;
 }
 
-static float frand() {
-	return System::random() / (float)INT_MAX;
+float frand() {
+	return System::getMTRand()->randExc();
 }
 
 
@@ -964,7 +964,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
 	Vector3 flipped(center.getX(), center.getZ(), -center.getY());
-	float extents[3] = {radius, 150, radius};
+	float extents[3] = {3, 5, 3};
 
 	dtNavMeshQuery *query = m_navQuery.get();
 	if(query == NULL) {
@@ -1001,15 +1001,27 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 		for (int i=0; i<50; i++) {
 			try {
-				if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter,
+				if (!((status = query->findRandomPointAroundCircle(startPoly, polyStart.toFloatArray(), radius, &m_filter,
 																   frand, &ref, pt)) & DT_SUCCESS)) {
 					continue;
 				} else {
 					point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
 					Vector3 temp = point - center;
 
-					if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > radius * radius)
+					if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > (radius * radius * 1.5f)) {
+						info ("Failed radius check: " + point.toString(), true);
+						info ("Bad Poly: " + String::valueOf((uint64)ref), true);
 						continue;
+					}
+
+					dtRaycastHit hit;
+					dtPolyRef dummy = 0;
+					status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_filter, 0, &hit, dummy);
+
+					if (! (status & DT_SUCCESS)) {
+						info("failed raycast", true);
+						continue;
+					}
 
 					return true;
 				}
