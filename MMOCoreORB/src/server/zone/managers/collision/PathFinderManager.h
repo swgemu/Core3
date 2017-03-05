@@ -67,7 +67,7 @@ public:
 	 */
 	int getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes);
 	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, Vector<WorldCoordinates>& endPoints, Zone* zone, bool allowPartial);
-	bool getSpawnPointInArea(const Sphere& area, Zone* zone, Vector3& point);
+	bool getSpawnPointInArea(const Sphere& area, Zone* zone, Vector3& point, bool checkRaycast = true);
 protected:
 	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
 	Vector<WorldCoordinates>* findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);

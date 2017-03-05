@@ -963,7 +963,7 @@ float frand() {
 }
 
 
-bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point) {
+bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point, bool checkRaycast) {
 	SortedVector<ManagedReference<NavMeshRegion*>> regions;
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
@@ -1017,10 +1017,12 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 						continue;
 					}
 
-					dtRaycastHit hit;
-					dtPolyRef dummy = 0;
-					if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
-						continue;
+					if (checkRaycast) {
+						dtRaycastHit hit;
+						dtPolyRef dummy = 0;
+						if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
+							continue;
+						}
 					}
 
 					return true;

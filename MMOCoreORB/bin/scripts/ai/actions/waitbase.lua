@@ -43,3 +43,15 @@ function Wait10Base:setWait(pAgent)
 		agent:setWait(getRandomNumber(10) + 5)
 	end
 end
+
+Wait10VillageRaiderBase = createClass(Wait10Base)
+
+function Wait10VillageRaiderBase:checkConditions(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		if (agent:isInRangeOfHome(20)) then
+			return true
+		end
+	end
+	return false
+end

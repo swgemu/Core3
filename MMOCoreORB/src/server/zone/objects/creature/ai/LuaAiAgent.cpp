@@ -19,6 +19,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 
@@ -42,6 +43,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
 		{ "generatePatrol", &LuaAiAgent::generatePatrol },
+		{ "generatePatrolInArea", &LuaAiAgent::generatePatrolInArea },
 		{ "setDestination", &LuaAiAgent::setDestination },
 		{ "completeMove", &LuaAiAgent::completeMove },
 		{ "setWait", &LuaAiAgent::setWait },
@@ -133,6 +135,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getCreatureTemplateName", &LuaAiAgent::getCreatureTemplateName },
 		{ "clearCreatureBit", &LuaAiAgent::clearCreatureBit },
 		{ "setCreatureBit", &LuaAiAgent::setCreatureBit },
+		{ "isInRangeOfHome", &LuaAiAgent::isInRangeOfHome },
+		{ "getPatrolPointsSize", &LuaAiAgent::getPatrolPointsSize },
 		{ 0, 0 }
 };
 
@@ -303,6 +307,42 @@ int LuaAiAgent::generatePatrol(lua_State* L) {
 	bool retVal = realObject->generatePatrol(num, dist);
 
 	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::generatePatrolInArea(lua_State* L) {
+	float dist = lua_tonumber(L, -1);
+	int num = lua_tointeger(L, -2);
+
+	bool found = false;
+	Zone* zone = realObject->getZone();
+
+	if (zone == NULL) {
+		lua_pushboolean(L, found);
+		return 1;
+	}
+
+	realObject->clearPatrolPoints();
+	realObject->clearSavedPatrolPoints();
+
+	Sphere sphere(realObject->getWorldPosition(), dist);
+	Vector3 result;
+
+	for (int i = 0; i < num; i++) {
+
+		if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result, false)) {
+			PatrolPoint point(result);
+			realObject->addPatrolPoint(point);
+		}
+	}
+
+	if (realObject->getPatrolPointSize() > 0) {
+		realObject->setFollowState(AiAgent::PATROLLING);
+		found = true;
+	}
+
+	lua_pushboolean(L, found);
 
 	return 1;
 }
@@ -1045,4 +1085,24 @@ int LuaAiAgent::setCreatureBit(lua_State* L) {
 	realObject->setCreatureBit(lua_tointeger(L, -1));
 
 	return 0;
+}
+
+int LuaAiAgent::isInRangeOfHome(lua_State* L) {
+	float range = lua_tonumber(L, -1);
+	PatrolPoint* home = realObject->getHomeLocation();
+
+	bool ret = home->isInRange(realObject, range);
+
+	lua_pushboolean(L, ret);
+
+	return 1;
+}
+
+int LuaAiAgent::getPatrolPointsSize(lua_State* L) {
+
+	int ret = realObject->getPatrolPointSize();
+
+	lua_pushinteger(L, ret);
+
+	return 1;
 }
