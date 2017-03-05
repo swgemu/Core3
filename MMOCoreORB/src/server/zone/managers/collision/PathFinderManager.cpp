@@ -1000,17 +1000,22 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 			continue;
 
 		for (int i=0; i<50; i++) {
-			if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter, frand, &ref, pt)) & DT_SUCCESS)) {
-				continue;
-			} else {
-				point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
-				Vector3 temp = point-center;
+            try {
+                if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter,
+                                                                   frand, &ref, pt)) & DT_SUCCESS)) {
+                    continue;
+                } else {
+                    point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
+                    Vector3 temp = point - center;
 
-				if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > radius*radius)
-					continue;
+                    if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > radius * radius)
+                        continue;
 
-				return true;
-			}
+                    return true;
+                }
+            } catch (Exception& exc) {
+                error(exc.getMessage());
+            }
 		}
 	}
 
