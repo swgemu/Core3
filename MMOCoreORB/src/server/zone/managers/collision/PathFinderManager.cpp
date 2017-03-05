@@ -35,6 +35,10 @@ PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery
 	m_filter.setAreaCost(SAMPLE_POLYAREA_GRASS, 2.0f);
 	m_filter.setAreaCost(SAMPLE_POLYAREA_JUMP, 1.5f);
 
+	m_spawnFilter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ (SAMPLE_POLYFLAGS_DISABLED | SAMPLE_POLYFLAGS_SWIM));
+	m_spawnFilter.setAreaCost(SAMPLE_POLYAREA_GROUND, 1.0f);
+	m_spawnFilter.setExcludeFlags(0);
+
 	setLogging(true);
 }
 
@@ -954,8 +958,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	return path;
 }
 
-static float frand() {
-	return System::random() / (float)INT_MAX;
+float frand() {
+	return System::getMTRand()->randExc();
 }
 
 
@@ -964,7 +968,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
 	Vector3 flipped(center.getX(), center.getZ(), -center.getY());
-	float extents[3] = {radius, 150, radius};
+	float extents[3] = {3, 5, 3};
 
 	dtNavMeshQuery *query = m_navQuery.get();
 	if(query == NULL) {
@@ -977,7 +981,6 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 	zone->getInRangeNavMeshes(center.getX(), center.getY(), radius, &regions, false);
 
-	bool found = false;
 	for (const auto& region : regions) {
 		Vector3 polyStart;
 		dtPolyRef startPoly;
@@ -996,20 +999,29 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		ReadLocker rLocker(mesh->getLock());
 		query->init(dtNavMesh, 2048);
 
-		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
+		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_spawnFilter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			continue;
 
 		for (int i=0; i<50; i++) {
 			try {
-				if (!((status = query->findRandomPointAroundCircle(startPoly, flipped.toFloatArray(), radius, &m_filter,
+				if (!((status = query->findRandomPointAroundCircle(startPoly, polyStart.toFloatArray(), radius, &m_spawnFilter,
 																   frand, &ref, pt)) & DT_SUCCESS)) {
 					continue;
 				} else {
 					point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
 					Vector3 temp = point - center;
 
-					if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > radius * radius)
+					if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > (radius * radius * 1.5f)) {
+						info ("Failed radius check: " + point.toString(), true);
+						info ("Bad Poly: " + String::valueOf((uint64)ref), true);
 						continue;
+					}
+
+					dtRaycastHit hit;
+					dtPolyRef dummy = 0;
+					if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
+						continue;
+					}
 
 					return true;
 				}

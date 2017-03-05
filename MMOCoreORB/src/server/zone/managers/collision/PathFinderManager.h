@@ -84,6 +84,7 @@ protected:
 	void getNavMeshCollisions(SortedVector<NavCollision*> *collisions, const SortedVector<ManagedReference<NavMeshRegion*>> *regions, const Vector3& start, const Vector3& end);
 private:
 	dtQueryFilter m_filter;
+	dtQueryFilter m_spawnFilter;
 	ThreadLocal<dtNavMeshQuery*> m_navQuery;
 };
 
