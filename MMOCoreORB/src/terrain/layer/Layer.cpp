@@ -216,6 +216,8 @@ IffTemplateVariable* Layer::parseAffector(IffStream* iffStream) {
 		break;
 	}
 	default:
+		Logger logger;
+			logger.info("Failed to parse affector" + String::hexvalueOf((int64)type), true);
 		res = NULL;
 		break;
 	}
@@ -254,6 +256,8 @@ IffTemplateVariable* Layer::parseBoundary(IffStream* iffStream) {
 		iffStream->skipChunks();
 		break;
 	default:
+		Logger logger;
+			logger.info("Failed to parse boundary" + String::hexvalueOf((int64)type), true);
 		res = NULL;
 		break;
 	}
@@ -294,6 +298,8 @@ IffTemplateVariable* Layer::parseFilter(IffStream* iffStream) {
 		break;
 	}
 	default:
+		Logger logger;
+			logger.info("Failed to parse filter" + String::hexvalueOf((int64)type), true);
 		res = NULL;
 		break;
 	}
