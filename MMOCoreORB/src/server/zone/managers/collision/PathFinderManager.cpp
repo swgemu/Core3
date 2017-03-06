@@ -244,7 +244,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 		Vector3 mid = startTemp + ((targetTemp-startTemp) * 0.5f);
 
-		zone->getInRangeNavMeshes(mid.getX(), mid.getY(), startTemp.distanceTo(targetTemp), &regions, false);
+		zone->getInRangeNavMeshes(mid.getX(), mid.getY(), &regions, false);
 
 		SortedVector<NavCollision*> collisions;
 		getNavMeshCollisions(&collisions, &regions, pointA.getWorldPosition(), pointB.getWorldPosition());
@@ -963,7 +963,7 @@ float frand() {
 }
 
 
-bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point) {
+bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point, bool checkRaycast) {
 	SortedVector<ManagedReference<NavMeshRegion*>> regions;
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
@@ -979,7 +979,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	if (zone == NULL)
 		return false;
 
-	zone->getInRangeNavMeshes(center.getX(), center.getY(), radius, &regions, false);
+	zone->getInRangeNavMeshes(center.getX(), center.getY(), &regions, false);
 
 	for (const auto& region : regions) {
 		Vector3 polyStart;
@@ -1017,14 +1017,17 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 						info("Bad Poly: " + String::valueOf((uint64)ref), true);
 						continue;
 					}
-					dtPolyRef path[64];
-					dtRaycastHit hit;
-					hit.path = path;
-					hit.maxPath = 64;
 
-					dtPolyRef dummy = 0;
-					if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
-						continue;
+					if (checkRaycast) {
+						dtPolyRef path[64];
+						dtRaycastHit hit;
+						hit.path = path;
+						hit.maxPath = 64;
+
+						dtPolyRef dummy = 0;
+						if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
+							continue;
+						}
 					}
 
 					return true;

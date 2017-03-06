@@ -85,6 +85,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getContainerOwnerID", &LuaSceneObject::getContainerOwnerID },
 		{ "info", &LuaSceneObject::info },
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
+		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
 		{ 0, 0 }
 
 };
@@ -822,6 +823,14 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 		lua_pushlightuserdata(L, object);
 		lua_rawseti(L, -2, numPlayers);
 	}
+
+	return 1;
+}
+
+int LuaSceneObject::isInNavMesh(lua_State* L) {
+	bool val = realObject->isInNavMesh();
+
+	lua_pushboolean(L, val);
 
 	return 1;
 }

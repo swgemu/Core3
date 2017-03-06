@@ -133,6 +133,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getCreatureTemplateName", &LuaAiAgent::getCreatureTemplateName },
 		{ "clearCreatureBit", &LuaAiAgent::clearCreatureBit },
 		{ "setCreatureBit", &LuaAiAgent::setCreatureBit },
+		{ "isInRangeOfHome", &LuaAiAgent::isInRangeOfHome },
+		{ "getPatrolPointsSize", &LuaAiAgent::getPatrolPointsSize },
 		{ 0, 0 }
 };
 
@@ -1045,4 +1047,24 @@ int LuaAiAgent::setCreatureBit(lua_State* L) {
 	realObject->setCreatureBit(lua_tointeger(L, -1));
 
 	return 0;
+}
+
+int LuaAiAgent::isInRangeOfHome(lua_State* L) {
+	float range = lua_tonumber(L, -1);
+	PatrolPoint* home = realObject->getHomeLocation();
+
+	bool ret = home->isInRange(realObject, range);
+
+	lua_pushboolean(L, ret);
+
+	return 1;
+}
+
+int LuaAiAgent::getPatrolPointsSize(lua_State* L) {
+
+	int ret = realObject->getPatrolPointSize();
+
+	lua_pushinteger(L, ret);
+
+	return 1;
 }

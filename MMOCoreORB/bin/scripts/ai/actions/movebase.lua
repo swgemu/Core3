@@ -105,3 +105,15 @@ function WalkBase:findNextPosition(pAgent)
 	end
 	return false
 end
+
+MoveVillageRaiderBase = createClass(MoveBase)
+
+function MoveVillageRaiderBase:findNextPosition(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		if (agent:findNextPosition(agent:getMaxDistance(), agent:isInRangeOfHome(20))) then
+			return true
+		end
+	end
+	return false
+end

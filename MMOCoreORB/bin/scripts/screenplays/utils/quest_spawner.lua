@@ -179,10 +179,18 @@ function QuestSpawner:createSpawn(pSpawner)
 	local spawnerY = SceneObject(pSpawner):getPositionY()
 
 	local zoneName = SceneObject(pSpawner):getZoneName()
+	local inNavMesh = SceneObject(pSpawner):isInNavMesh()
 
 	while (numToSpawn > 0) do
 		if (maxPop > curPop) then
-			local spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
+			local spawnPoint
+
+			if (inNavMesh) then 
+				spawnPoint = getSpawnPointInArea(zoneName, spawnerX, spawnerY, 10)
+			else
+				spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
+			end
+
 			local pNpc = spawnMobile(zoneName, randSpawn[1], 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 			if (pNpc ~= nil) then

@@ -871,5 +871,8 @@ class TangibleObject extends SceneObject {
 	
 	public native void setDisabled(boolean disabled);
 	public native boolean isDisabled();
+
+	@dirty
+	public native boolean isInNavMesh();
 }
 

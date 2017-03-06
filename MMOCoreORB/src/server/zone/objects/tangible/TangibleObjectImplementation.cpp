@@ -1112,6 +1112,16 @@ bool TangibleObjectImplementation::isDisabled() {
 	return getOptionsBitmask() & OptionBitmask::DISABLED;
 }
 
+bool TangibleObjectImplementation::isInNavMesh() {
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		auto& area = activeAreas.get(i);
+		if (area->isNavRegion())
+			return true;
+	}
+
+	return false;
+}
+
 TangibleObject* TangibleObject::asTangibleObject() {
 	return this;
 }

@@ -197,7 +197,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = object->getWorldPosition();
 		SortedVector<ManagedReference<NavMeshRegion*> > objects;
-		zone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), 1, &objects, false);
+		zone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), &objects, false);
 
 		for(auto& area : objects) {
 			if(area->isNavRegion()) {

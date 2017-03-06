@@ -1765,3 +1765,15 @@ void SceneObjectImplementation::executeOrderedTask(const StdFunction& function, 
 	auto taskObject = new LambdaTask(function, name.toCharArray());
 	executeOrderedTask(taskObject);
 }
+
+bool SceneObjectImplementation::isInNavMesh() {
+	Zone* zone = getZone();
+
+	if (zone == NULL)
+		return false;
+
+	SortedVector<ManagedReference<NavMeshRegion*> > regions;
+	int ret = zone->getInRangeNavMeshes(getWorldPositionX(), getWorldPositionY(), &regions, false);
+
+	return ret > 0;
+}

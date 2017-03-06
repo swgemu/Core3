@@ -160,7 +160,7 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 
 	SortedVector<ManagedReference<NavMeshRegion*> > regions;
 	//fetch nav meshes near the target position
-	zone->getInRangeNavMeshes(end.getX(), end.getY(), 5, &regions, false);
+	zone->getInRangeNavMeshes(end.getX(), end.getY(), &regions, false);
 
 	bool withinNavMesh = false;
 

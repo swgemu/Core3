@@ -2014,5 +2014,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	@local
 	public abstract native final BaseBoundingVolume getBoundingVolume();
+
+	@dirty
+	public abstract native boolean isInNavMesh();
 }
 
