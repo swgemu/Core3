@@ -1,35 +1,35 @@
-padawan_architect_02_conv_handler = conv_handler:new {}
+padawan_chef_02_conv_handler = conv_handler:new {}
 
-function padawan_architect_02_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+function padawan_chef_02_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (trialOwnerID ~= playerID) then
-		return convoTemplate:getScreen("noquest_player_talk")
+		return convoTemplate:getScreen("not_quest_owner")
 	end
 
 	if (not JediTrials:isOnPadawanTrials(pPlayer)) then
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		return convoTemplate:getScreen("noquest_player_talk")
+		return convoTemplate:getScreen("not_quest_owner")
 	end
 
 	return convoTemplate:getScreen("intro")
 end
 
-function padawan_architect_02_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+function padawan_chef_02_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	if (screenID == "nice_away") then
+	if (screenID == "pay_next_time") then
 		writeData(playerID .. ":JediTrials:spokeToTarget", 1)
 		CreatureObject(pNpc):setPvpStatusBitmask(0)
 		CreatureObject(pNpc):setOptionsBitmask(0)
 		PadawanTrials:createFirstLocation(pPlayer)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-	elseif (screenID == "initiate_attack_fail") then
+	elseif (screenID == "just_a_minute") then
 		PadawanTrials:removeNpcDestroyActiveArea(pPlayer)
 		CreatureObject(pNpc):engageCombat(pPlayer)
 	end

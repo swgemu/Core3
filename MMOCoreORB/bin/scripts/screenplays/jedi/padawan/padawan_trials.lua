@@ -62,7 +62,7 @@ function PadawanTrials:jediPadawanTrialsStartCallback(pPlayer, pSui, eventIndex,
 
 	JediTrials:setStartedTrials(pPlayer)
 	JediTrials:setTrialsCompleted(pPlayer, 0)
-	PadawanTrials:startTrial(pPlayer, rand)
+	self:startTrial(pPlayer, rand)
 end
 
 function PadawanTrials:restartCurrentPadawanTrial(pPlayer)
@@ -87,7 +87,7 @@ function PadawanTrials:jediPadawanTrialsRestartCallback(pPlayer, pSui, eventInde
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialName = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
-	PadawanTrials:startTrial(pPlayer, trialNumber)
+	self:startTrial(pPlayer, trialNumber)
 end
 
 function PadawanTrials:quitPadawanTrials(pPlayer)
@@ -540,7 +540,7 @@ function PadawanTrials:removeAllAreas(pPlayer)
 	local pMobile = getSceneObject(npcID)
 
 	if (pMobile ~= nil) then
-		SceneObject(pMobile):destroyObjectFromWorld()
+		createEvent(5000, "HelperFuncs", "despawnMobileTask", pMobile, "")
 	end
 
 	deleteData(areaID .. ":npcID")
@@ -668,9 +668,9 @@ function PadawanTrials:handleShowInfoChoice(pPlayer, pSui, eventIndex, ...)
 	local restart = args[1]
 
 	if (cancelPressed) then
-		PadawanTrials:quitPadawanTrials(pPlayer)
+		self:quitPadawanTrials(pPlayer)
 	elseif (restart ~= nil) then
-		PadawanTrials:restartCurrentPadawanTrial(pPlayer)
+		self:restartCurrentPadawanTrial(pPlayer)
 	else
 		return
 	end
