@@ -17,10 +17,10 @@ FsReflex1Theater = GoToTheater:new {
 		{ template = "object/static/structure/naboo/poi_nboo_tent_small.iff", xDiff = -1.61, zDiff = 0.32, yDiff = -6.46, heading = 14.32 }
 	},
 	waypointDescription = "@quest/quest_journal/fs_quests_reflex1:s_02",
-	mobileList = {
-		{ template = "fs_reflex1_prisoner", minimumDistance = 2, maximumDistance = 4, referencePoint = 0 },
-		{ template = "sith_shadow_pirate", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_thug", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 }
+	mobileListWithLoc = {
+		{ template = "fs_reflex1_prisoner", x = 1.146, y = -0.849 },
+		{ template = "sith_shadow_pirate", x = 2.42, y = 1.669 },
+		{ template = "sith_shadow_thug", x = -0.127, y = -3.36 }
 	},
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 32,
@@ -33,7 +33,7 @@ function FsReflex1Theater:onEnteredActiveArea(pPlayer, mobileList)
 		return
 	end
 
-	if (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)) then
+	if (not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)) then
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 	end

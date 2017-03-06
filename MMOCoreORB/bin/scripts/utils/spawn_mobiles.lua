@@ -98,7 +98,7 @@ function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 		if spawnPointParams ~= nil then
 			local spawnPoint = getSpawnPoint(zoneName, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"], forceSpawn)
 			if spawnPoint ~= nil then
-				table.insert(spawnPoints, spawnPoint)
+				spawnPoints[spawnObjectNumber] = spawnPoint
 			else
 				return nil
 			end
@@ -130,7 +130,7 @@ function SpawnMobiles.spawnMobileObjects(pSceneObject, prefix, mobileList, spawn
 			AiAgent(spawnedObject):setNoAiAggro()
 		end
 		
-		table.insert(spawnedObjects, spawnedObject)
+		spawnedObjects[spawnNumber] = spawnedObject
 	end
 
 	return spawnedObjects
@@ -198,7 +198,7 @@ function SpawnMobiles.spawnMobilesWithLocAndPrefix(pSceneObject, prefix, mobileL
 		local newY = baseY + mobileList[i].y
 		local newZ = getTerrainHeight(pSceneObject, newX, newY)
 
-		table.insert(spawnPoints, { newX, newZ, newY })
+		spawnPoints[i] = { newX, newZ, newY }
 	end
 
 	if spawnPoints ~= nil and #spawnPoints > 0 then
@@ -224,9 +224,7 @@ function SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 		Logger:log(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. " = " .. mobileID, LT_INFO)
 		local mobile = getSceneObject(mobileID)
 
-		if mobile ~= nil then
-			table.insert(spawnedMobiles, mobile)
-		end
+		spawnedMobiles[i] = mobile
 	end
 
 	return spawnedMobiles
