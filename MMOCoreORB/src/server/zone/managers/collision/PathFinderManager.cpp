@@ -1012,12 +1012,16 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 					Vector3 temp = point - center;
 
 					if ((temp.getX() * temp.getX() + temp.getY() * temp.getY()) > (radius * radius * 1.5f)) {
-						info ("Failed radius check: " + point.toString(), true);
-						info ("Bad Poly: " + String::valueOf((uint64)ref), true);
+						info("Failed radius check: " + point.toString(), true);
+						info("Center: " + flipped.toString(), true);
+						info("Bad Poly: " + String::valueOf((uint64)ref), true);
 						continue;
 					}
-
+					dtPolyRef path[64];
 					dtRaycastHit hit;
+					hit.path = path;
+					hit.maxPath = 64;
+
 					dtPolyRef dummy = 0;
 					if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit, dummy)) & DT_SUCCESS)) {
 						continue;
