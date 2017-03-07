@@ -210,6 +210,8 @@ includeFile("jedi/padawan/convos/padawan_architect_02_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_artist_01_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_artist_02_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_bad_cat_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_chef_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_chef_02_conv_handler.lua")
 
 -- Jedi Objects
 includeFile("jedi/shrine/ForceShrineMenuComponent.lua")

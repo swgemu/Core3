@@ -28,6 +28,14 @@ padawanTrialQuests = {
 		targetNpc = "bloodstained_prowler",
 		targetKillable = true
 	},
+	{
+		trialName = "chef",
+		trialType = TRIAL_TALK,
+		trialNpc = "dannik_malaan",
+		trialNpcName = "Seevi Nyed (a chef)",
+		targetNpc = "neo_cobral_overlord",
+		targetKillable = true
+	},
 }
 
 --trialsCivilizedPlanets = { "corellia", "naboo", "rori", "talus", "tatooine" }
