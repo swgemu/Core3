@@ -1,7 +1,7 @@
-trialsPadawanSpiceMom02ConvoTemplate = ConvoTemplate:new {
+padawan_spice_mom_02_conv_handler = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "trialsPadawanSpiceMom02ConvoHandler",
+	luaClassHandler = "padawan_spice_mom_02_conv_handler",
 	screens = {}
 }
 
@@ -10,82 +10,66 @@ intro = ConvoScreen:new {
 	leftDialog = "@conversation/padawan_spice_mom_02:s_168212d8", -- What are you lookin' for? Somethin' to keep you awake? Help you sleep? Help you walk, talk, eat, not eat, run faster, swim longer? Anything you want, need, or can dream up, I have and am willing to sell. For a price.
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_spice_mom_02:s_1f593aa5", "intro_more"}, -- I'm not interested. But I believe I know someone who is?
-		{"@conversation/padawan_spice_mom_02:s_d0812b8d", "intro_not"} -- I'm sorry, I think I have the wrong person.
+		{"@conversation/padawan_spice_mom_02:s_d0812b8d", "sure_about_that"}, -- I'm sorry, I think I have the wrong person.
+		{"@conversation/padawan_spice_mom_02:s_1f593aa5", "law_enforcement"}, -- I'm not interested. But I believe I know someone who is?
 	}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro);
+padawan_spice_mom_02_conv_handler:addScreen(intro);
 
-intro_more = ConvoScreen:new {
-	id = "intro_more",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_a0730d59", -- Sola sent you didn't she?
+sure_about_that = ConvoScreen:new {
+	id = "sure_about_that",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_e66080c4", -- You sure about that?  I've got what every man and woman in the Galaxy needs.  Name your pleasure, my friend.
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_spice_mom_02:s_625ba59c", "more_done"}, -- I guess. Thought I can't imagine why she'd be dealing with you..
-		{"@conversation/padawan_spice_mom_02:s_ca7eddd3", "intro_protect"} -- You leave her alone! She doesn't need a thug like you bothering her.
+		{"@conversation/padawan_spice_mom_02:s_798612aa", "good_friend"}, -- It's not for me, Sola sent me for her weekly supplies.
+		{"@conversation/padawan_spice_mom_02:s_6168a073", "sola_sent_you"}, -- Now I'm certain I have the wrong guy.
 	}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro_more);
+padawan_spice_mom_02_conv_handler:addScreen(sure_about_that);
 
-intro_protect = ConvoScreen:new {
-	id = "intro_protect",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_6242972e", -- Whatever you say friend. I'm not going to argue. I'll say this though... shouldn't be so quick to judge people you barely know. And believe me, Sola can take care of herself. She's willing to do what she feels needs doing.
-	stopConversation = "true",
-	options = {}
-}
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro_protect);
-
-intro_not = ConvoScreen:new {
-	id = "intro_not",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_e66080c4", -- You sure about that? I've got what every man and woman in the Galaxy needs. Name your pleasure, my friend.
+sola_sent_you = ConvoScreen:new {
+	id = "sola_sent_you",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_a0730d59", -- 	Sola sent you didn't she?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_spice_mom_02:s_798612aa", "intro_done"}, -- It's not for me, Sola sent me for her weekly supplies.
-		{"@conversation/padawan_spice_mom_02:s_6168a073", "not_sure"} -- Now I'm certain I have the wrong guy.
+		{"@conversation/padawan_spice_mom_02:s_798612aa", "good_friend"}, -- It's not for me, Sola sent me for her weekly supplies.
+		{"@conversation/padawan_spice_mom_02:s_6168a073", "sola_sent_you"}, -- Now I'm certain I have the wrong guy.
 	}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro_not);
+padawan_spice_mom_02_conv_handler:addScreen(sola_sent_you);
 
-not_sure = ConvoScreen:new {
-	id = "not_sure",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_a04364ee", -- You aren't in law enforcement now are you?
-	stopConversation = "false",
-	options = {
-		{"@conversation/padawan_spice_mom_02:s_bdb90e46", "intro_done_too"} -- No, Sola sent me here for her weekly supplies.
-	}
-}
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(not_sure);
-
-intro_done_too = ConvoScreen:new {
-	id = "intro_done_too",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_2c96cac3", -- Oh! You should have said so before friend, and you shouldn't be so quick to judge. Everyone has their hobbies; Miss Sola is a good friend of mine, and a loyal customer. Take this to her and tell her Evif sends his well wishes.
-	stopConversation = "true",
-	options = {}
-}
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro_done_too);
-
-intro_done = ConvoScreen:new {
-	id = "intro_done",
+good_friend = ConvoScreen:new {
+	id = "good_friend",
 	leftDialog = "@conversation/padawan_spice_mom_02:s_f5bb1061", -- Oh! You should have said so before friend. Miss Sola is a good friend of mine... and a loyal customer. Take this to her and tell her Evif sends his well wishes.
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(intro_done);
+padawan_spice_mom_02_conv_handler:addScreen(good_friend);
 
-more_done = ConvoScreen:new {
-	id = "more_done",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_350fcbe3", -- She has her reasons. Miss Sola is a friend and a loyal customer. just take this to her and tell her Evif sends his well wishes.
+law_enforcement = ConvoScreen:new {
+	id = "law_enforcement",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_a04364ee", -- You aren't in law enforcement now are you?
+	stopConversation = "false",
+	options = {
+		{"@conversation/padawan_spice_mom_02:s_bdb90e46", "quick_to_judge"}, -- No, Sola sent me here for her weekly supplies.
+	}
+}
+padawan_spice_mom_02_conv_handler:addScreen(law_enforcement);
+
+quick_to_judge = ConvoScreen:new {
+	id = "quick_to_judge",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_2c96cac3", -- Oh!  You should have said so before friend, and you shouldn't be so quick to judge.  
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(more_done);
+padawan_spice_mom_02_conv_handler:addScreen(quick_to_judge);
 
-noquest_player_talks = ConvoScreen:new {
-	id = "noquest_player_talks",
+not_quest_owner = ConvoScreen:new {
+	id = "not_quest_owner",
 	leftDialog = "@conversation/padawan_spice_mom_02:s_b56527e1", -- Anything you want, need, or can dream up, I have and am willing to sell. For a price.
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanSpiceMom02ConvoTemplate:addScreen(noquest_player_talks);
+padawan_spice_mom_02_conv_handler:addScreen(not_quest_owner);
 
-addConversationTemplate("trialsPadawanSpiceMom02ConvoTemplate", trialsPadawanSpiceMom02ConvoTemplate);
+addConversationTemplate("padawan_spice_mom_02_conv_handler", padawan_spice_mom_02_conv_handler);

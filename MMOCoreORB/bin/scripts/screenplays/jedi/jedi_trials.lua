@@ -47,7 +47,7 @@ function JediTrials:onPlayerLoggedIn(pPlayer)
 	end
 
 	if (self:isOnPadawanTrials(pPlayer)) then
-		PadawanTrials:onLoggedIn(pPlayer)
+		PadawanTrials:onPlayerLoggedIn(pPlayer)
 	elseif (self:isOnKnightTrials(pPlayer)) then
 	end
 end
