@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_569b6ac9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/sui/SurveyDroidSessionSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-03-07T05:36:55Z",
+      "side": 1,
+      "message": "Can you fix the tab spacing?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "067fb616e3d4bdedb7aae9135c4d55023cd2c08a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
