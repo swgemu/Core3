@@ -212,6 +212,12 @@ includeFile("jedi/padawan/convos/padawan_artist_02_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_bad_cat_01_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_chef_01_conv_handler.lua")
 includeFile("jedi/padawan/convos/padawan_chef_02_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_kill_baz_nitch_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_peoples_soldier_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_politician_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_spice_mom_01_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_spice_mom_02_conv_handler.lua")
+includeFile("jedi/padawan/convos/padawan_surveyor_01_conv_handler.lua")
 
 -- Jedi Objects
 includeFile("jedi/shrine/ForceShrineMenuComponent.lua")

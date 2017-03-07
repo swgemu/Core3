@@ -119,14 +119,13 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
-	if (trialsCompleted >= #padawanTrialQuests and trialsCompleted < 8) then
+	if (trialsCompleted >= #padawanTrialQuests and trialsCompleted < 7) then
 		CreatureObject(pPlayer):sendSystemMessage("You have completed all of the current Padawan Trials, more will be added in the near future.")
 		return
 	end
 
-	if (trialsCompleted == 8) then
-	-- TODO: Crafting Trial, after implemented uncomment below lines.
-	-- JediPadawanTrialCraftLightsaberScreenPlay:startTrial(pPlayer)
+	if (trialsCompleted == 7) then
+		CreatureObject(pPlayer):sendSystemMessage("You have completed enough trials to begin the lightsaber trial, however it has not been implemented yet. Check back soon.")
 	else
 		local incompleteTrials = {}
 		for i = 1, #padawanTrialQuests, 1 do
@@ -139,7 +138,7 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 
 		local rand = getRandomNumber(1, #incompleteTrials)
 		local randTrial = incompleteTrials[rand]
-		PadawanTrials:startTrial(pPlayer, randTrial)
+		self:startTrial(pPlayer, randTrial)
 	end
 end
 
@@ -221,6 +220,58 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 
 	self:sendSuiNotification(pPlayer)
 	self:createFirstLocation(pPlayer)
+end
+
+function PadawanTrials:setupHuntTrial(pPlayer)
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+
+	if (trialNumber <= 1) then
+		return
+	end
+
+	local trialData = padawanTrialQuests[trialNumber]
+
+	writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.huntTarget)
+	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
+	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
+	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+end
+
+function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
+	if (pVictim == nil or pPlayer == nil) then
+		return 0
+	end
+
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+
+	if (trialNumber <= 1) then
+		return 1
+	end
+
+	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData.trialType ~= TRIAL_HUNT) then
+		return 1
+	end
+
+	local huntTarget = readScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
+	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
+
+	if (SceneObject(pVictim):getObjectName() == huntTarget) then
+		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_progress")
+		targetCount = targetCount + 1
+		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", targetCount)
+
+		if (targetCount >= targetGoal) then
+			CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_return_to_npc")
+			self:createFirstLocation(pPlayer)
+			return 1
+		end
+	end
+
+	return 0
 end
 
 function PadawanTrials:createFirstLocation(pPlayer)
@@ -453,6 +504,10 @@ function PadawanTrials:notifyEnteredSecondLocSpawnArea(pArea, pPlayer)
 	local npcID = SceneObject(pNpc):getObjectID()
 	writeData(npcID .. ":ownerID", playerID)
 
+	if (trialData.targetNpcName ~= nil) then
+		CreatureObject(pNpc):setCustomObjectName(trialData.targetNpcName)
+	end
+
 	if (not trialData.targetKillable) then
 		CreatureObject(pNpc):setPvpStatusBitmask(0)
 	else
@@ -578,6 +633,10 @@ function PadawanTrials:failTrial(pPlayer)
 	deleteData(playerID .. ":JediTrials:killedTarget")
 	deleteData(playerID .. ":JediTrials:spokeToTarget")
 
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
+
 	local failAmount = JediTrials:getTrialFailureCount(pPlayer)
 	local failAmountMsg = nil
 
@@ -627,10 +686,19 @@ function PadawanTrials:passTrial(pPlayer)
 		return
 	end
 
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
+
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
+
+	deleteData(playerID .. ":JediTrials:acceptedTask")
+	deleteData(playerID .. ":JediTrials:killedTarget")
+	deleteData(playerID .. ":JediTrials:spokeToTarget")
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 	CreatureObject(pPlayer):setScreenPlayState(1, trialState) -- Complete Trial.
@@ -673,5 +741,18 @@ function PadawanTrials:handleShowInfoChoice(pPlayer, pSui, eventIndex, ...)
 		self:restartCurrentPadawanTrial(pPlayer)
 	else
 		return
+	end
+end
+
+function PadawanTrials:onPlayerLoggedIn(pPlayer)
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+
+	if (trialNumber >= 1) then
+		local trialData = padawanTrialQuests[trialNumber]
+
+		if (trialData.trialType == TRIAL_HUNT) then
+			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+			createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+		end
 	end
 end
