@@ -194,7 +194,7 @@ function GoToTheater:setupActiveArea(pPlayer, spawnPoint)
 
 	if (pActiveArea ~= nil) then
 		writeData(SceneObject(pPlayer):getObjectID() .. self.taskName .. "activeAreaId", SceneObject(pActiveArea):getObjectID())
-		createEvent(5000, self.taskName, "createAreaObserver", pActiveArea, "")
+		createEvent(2000, self.taskName, "createAreaObserver", pActiveArea, "")
 		return true
 	end
 

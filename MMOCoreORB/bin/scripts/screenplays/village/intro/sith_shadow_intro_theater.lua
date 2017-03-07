@@ -120,11 +120,13 @@ end
 -- @param pPlayer pointer to the creature object of the player.
 -- @param spawnedSithShadowsList list with pointers to the spawned sith shadows.
 function SithShadowIntroTheater:onObjectsSpawned(pPlayer, spawnedSithShadowsList)
-	if (pPlayer == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil) then
+	if (pPlayer == nil or spawnedSithShadowsList == nil) then
 		return
 	end
 
-	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
+	if (SpawnMobiles.isValidMobile(spawnedSithShadowsList[1])) then
+		createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
+	end
 end
 
 function SithShadowIntroTheater:onTheaterCreated(pPlayer)

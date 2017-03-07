@@ -8,8 +8,8 @@ FsReflex1Theater = GoToTheater:new {
 	-- Task properties
 	taskName = "FsReflex1Theater",
 	-- GoToTheater properties
-	minimumDistance = 64,
-	maximumDistance = 128,
+	minimumDistance = 90,
+	maximumDistance = 140,
 	theater = {
 		{ template = "object/static/structure/military/military_wall_med_imperial_style_01.iff", xDiff = 0.5, zDiff = -0.11, yDiff = 2.12, heading = -14.32 },
 		{ template = "object/static/structure/military/military_column_med_imperial_style_01.iff", xDiff = -3.84, zDiff = -0.11, yDiff = 1.098, heading = -14.32 },
@@ -44,7 +44,7 @@ function FsReflex1Theater:onObjectsSpawned(pPlayer, mobileList)
 		return
 	end
 
-	if (mobileList[1] ~= nil) then
+	if (SpawnMobiles.isValidMobile(mobileList[1])) then
 		writeData(SceneObject(mobileList[1]):getObjectID() .. ":ownerID", SceneObject(pPlayer):getObjectID())
 		CreatureObject(mobileList[1]):setPvpStatusBitmask(0)
 	end

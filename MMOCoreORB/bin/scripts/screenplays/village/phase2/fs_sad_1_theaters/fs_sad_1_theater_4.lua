@@ -37,7 +37,7 @@ function FsSad1Theater4:onObjectsSpawned(pPlayer, spawnedMobileList)
 	writeData(playerID .. self.taskName .. ":killableCount", #spawnedMobileList)
 
 	for i = 1, #spawnedMobileList, 1 do
-		if (spawnedMobileList[i] ~= nil) then
+		if (SpawnMobiles.isValidMobile(spawnedMobileList[i])) then
 			writeData(SceneObject(spawnedMobileList[i]):getObjectID() .. self.taskName .. "ownerID", playerID)
 			createObserver(OBJECTDESTRUCTION, self.taskName, "notifyKilledMobile", spawnedMobileList[i])
 		end
