@@ -63,7 +63,7 @@ end
 
 -- Event handler for the successful spawn event.
 function MellichaeOutroTheater:onObjectsSpawned(pPlayer, spawnedSithShadowsList)
-	if (pPlayer == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil or spawnedSithShadowsList[2] == nil) then
+	if (pPlayer == nil or spawnedSithShadowsList == nil or not SpawnMobiles.isValidMobile(spawnedSithShadowsList[1]) or not SpawnMobiles.isValidMobile(spawnedSithShadowsList[2])) then
 		return
 	end
 
