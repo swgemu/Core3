@@ -85,7 +85,7 @@ int PlaceGCWBaseComponent::notifyStructurePlaced(StructureDeed* deed, CreatureOb
 
 			if (!buildingObject->hasNavmesh()) {
 				Locker locker(buildingObject);
-				buildingObject->createNavRegion();
+				buildingObject->createNavMesh();
 			}
 
 		}

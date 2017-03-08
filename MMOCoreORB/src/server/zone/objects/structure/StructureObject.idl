@@ -12,12 +12,12 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
-import server.zone.objects.pathfinding.NavMeshRegion;
+import server.zone.objects.pathfinding.NavArea;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 
-	protected NavMeshRegion navmeshRegion;
+	protected NavArea navArea;
 
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
@@ -443,15 +443,15 @@ class StructureObject extends TangibleObject {
 	}
 
     @dirty
-	public NavMeshRegion getNavMeshRegion() {
-	    return navmeshRegion;
+	public NavArea getNavArea() {
+	    return navArea;
 	}
 
     @dirty
 	public boolean hasNavmesh() {
-	    return navmeshRegion != null;
+	    return navArea != null;
 	}
 
     @preLocked
-	public native abstract void createNavRegion();
+	public native abstract void createNavMesh();
 }
