@@ -108,7 +108,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 
 core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
-				autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
+				autogen/server/zone/objects/pathfinding/NavArea.cpp \
 				autogen/server/zone/objects/creature/buffs/ConcealBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ScavengerDroid.cpp \
 				autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
@@ -759,7 +759,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
-		server/zone/objects/pathfinding/NavMeshRegionImplementation.cpp \
+		server/zone/objects/pathfinding/NavAreaImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/DelegateSuiCallback.cpp \
 		server/zone/objects/player/sui/callbacks/LuaSuiCallback.cpp \

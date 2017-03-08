@@ -1,33 +1,33 @@
 #include <cstdint>
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 
 //#define NAVMESH_DEBUG
 
-void NavMeshRegionImplementation::initializeTransientMembers() {
+void NavAreaImplementation::initializeTransientMembers() {
 
 }
 
-void NavMeshRegionImplementation::notifyLoadFromDatabase() {
-	RegionImplementation::notifyLoadFromDatabase();
+void NavAreaImplementation::notifyLoadFromDatabase() {
+	ActiveAreaImplementation::notifyLoadFromDatabase();
 	navMesh = new RecastNavMesh("navmeshes/"+meshName, false);
 }
 
-void NavMeshRegionImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	RegionImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+void NavAreaImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	ActiveAreaImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
 	navMesh->deleteFile();
 }
 
-void NavMeshRegionImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	disableUpdates = true;
 
-	RegionImplementation::destroyObjectFromWorld(sendSelfDestroy);
+	ActiveAreaImplementation::destroyObjectFromWorld(sendSelfDestroy);
 }
 
-AABB NavMeshRegionImplementation::getBoundingBox() {
+AABB NavAreaImplementation::getBoundingBox() {
 	float f = radius;
 	float x = getPositionX();
 	float y = getPositionY();
@@ -37,8 +37,8 @@ AABB NavMeshRegionImplementation::getBoundingBox() {
 }
 
 
-void NavMeshRegionImplementation::setRadius(float f) {
-    RegionImplementation::setRadius(f);
+void NavAreaImplementation::setRadius(float f) {
+    ActiveAreaImplementation::setRadius(f);
     float x = getPositionX();
     float y = getPositionY();
     Vector3 center(x, 0, y);
@@ -46,7 +46,7 @@ void NavMeshRegionImplementation::setRadius(float f) {
     meshBounds = AABB(center-radius, center+radius);
 }
 
-bool NavMeshRegionImplementation::isInRange(float x, float y, float range) {
+bool NavAreaImplementation::isInRange(float x, float y, float range) {
    const Vector3& worldPos = getWorldPosition();
 	float dx = worldPos.getX() - x;
 	float dy = worldPos.getY() - y;
@@ -59,18 +59,18 @@ bool NavMeshRegionImplementation::isInRange(float x, float y, float range) {
     return false;
 }
 
-void NavMeshRegionImplementation::updateNavMesh(const AABB& bounds) {
-	Locker locker(asNavRegion());
+void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
+	Locker locker(asNavArea());
 
     RecastSettings settings;
     if (navMesh == NULL || !navMesh->isLoaded()) {
-        NavMeshManager::instance()->enqueueJob(zone, asNavRegion(), meshBounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(zone, asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
-        NavMeshManager::instance()->enqueueJob(zone, asNavRegion(), bounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(zone, asNavArea(), bounds, settings, NavMeshManager::TileQueue);
     }
 }
 
-void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh, bool forceRebuild) {
+void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh, bool forceRebuild) {
 
     meshName = zone->getZoneName()+"_"+name+".navmesh";
     navMesh = new RecastNavMesh("navmeshes/"+meshName, forceRebuild);
@@ -83,11 +83,11 @@ void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float r
     }
 }
 
-void NavMeshRegionImplementation::initialize() {
+void NavAreaImplementation::initialize() {
     meshName = zone->getZoneName()+"_"+String::valueOf(getObjectID())+".navmesh";
 }
 
-void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
+void NavAreaImplementation::notifyEnter(SceneObject* object) {
     if(disableUpdates)
         return;
 
@@ -116,7 +116,7 @@ void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
     }
 }
 
-void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
+void NavAreaImplementation::notifyExit(SceneObject* object) {
     if(disableUpdates)
         return;
 
@@ -132,7 +132,7 @@ void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
     }
 }
 
-void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove) {
+void NavAreaImplementation::updateNavMesh(SceneObject *object, bool remove) {
     if (disableUpdates) // We check this redundantly as to not burden the zoneContainerComponent with this logic
         return;
 
@@ -160,11 +160,11 @@ void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove
     }
 }
 
-NavMeshRegion* NavMeshRegionImplementation::asNavRegion() {
+NavArea* NavAreaImplementation::asNavArea() {
     return _this.getReferenceUnsafeStaticCast();
 }
 
-bool NavMeshRegionImplementation::containsPoint(float px, float py) {
+bool NavAreaImplementation::containsPoint(float px, float py) {
     float dx = px - getPositionX();
     float dy = py - getPositionY();
 

@@ -1757,8 +1757,8 @@ bool SceneObjectImplementation::isInNavMesh() {
 	if (zone == NULL)
 		return false;
 
-	SortedVector<ManagedReference<NavMeshRegion*> > regions;
-	int ret = zone->getInRangeNavMeshes(getWorldPositionX(), getWorldPositionY(), &regions, false);
+	SortedVector<ManagedReference<NavArea*> > areas;
+	int ret = zone->getInRangeNavMeshes(getWorldPositionX(), getWorldPositionY(), &areas, false);
 
 	return ret > 0;
 }

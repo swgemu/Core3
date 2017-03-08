@@ -4,7 +4,7 @@
 
 package server.zone.objects.pathfinding;
 
-import server.zone.objects.region.Region;
+import server.zone.objects.area.ActiveArea;
 import server.zone.objects.scene.SceneObject;
 import engine.util.u3d.AABB;
 import engine.util.u3d.Vector3;
@@ -12,12 +12,12 @@ import system.thread.ReadWriteLock;
 include pathfinding.RecastNavMesh;
 include system.util.HashSet;
 
-class NavMeshRegion extends Region {
+class NavArea extends ActiveArea {
 
 	protected string meshName;
 	protected RecastNavMesh navMesh;
 
-	// Disables notifyEnter/Exit updates for static city regions
+	// Disables notifyEnter/Exit updates for static cities
 	protected boolean disableUpdates;
 
 	// Original bounds of the recastNavMesh, this is absolutely required to stay constant in order to rebuild tiles correctly
@@ -31,7 +31,7 @@ class NavMeshRegion extends Region {
 	@dereferenced
 	protected transient ReadWriteLock containedLock;
 
-	public NavMeshRegion() {
+	public NavArea() {
 		super();
 		disableUpdates = false;
 		navMesh = null;
@@ -40,7 +40,7 @@ class NavMeshRegion extends Region {
 
 	@local
 	@preLocked
-	public native void initializeNavRegion(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true, boolean forceRebuild = false);
+	public native void initializeNavArea(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true, boolean forceRebuild = false);
 
 	public native void initializeTransientMembers();
 
@@ -96,17 +96,12 @@ class NavMeshRegion extends Region {
 	}
 
 	@dirty
-	public boolean isRegion() {
+	public boolean isNavArea() {
 		return true;
 	}
 
 	@dirty
-	public boolean isNavRegion() {
-		return true;
-	}
-
-	@dirty
-	public native NavMeshRegion asNavRegion();
+	public native NavArea asNavArea();
 
 	@dirty
 	public boolean objectInMesh(SceneObject obj) {

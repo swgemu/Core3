@@ -14,7 +14,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == NULL)
@@ -196,12 +196,13 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = object->getWorldPosition();
-		SortedVector<ManagedReference<NavMeshRegion*> > objects;
+
+		SortedVector<ManagedReference<NavArea*> > objects;
 		zone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), &objects, false);
 
 		for(auto& area : objects) {
-			if(area->isNavRegion()) {
-				NavMeshRegion *mesh = area->asNavRegion();
+			if(area->isNavArea()) {
+				NavArea *mesh = area->asNavArea();
 
 				if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
 					mesh->updateNavMesh(object, false);

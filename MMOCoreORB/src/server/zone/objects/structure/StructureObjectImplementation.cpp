@@ -17,7 +17,7 @@
 
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/city/PayPropertyTaxTask.h"
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -40,17 +40,17 @@ void StructureObjectImplementation::initializeTransientMembers() {
 void StructureObjectImplementation::finalize() {
 }
 
-void StructureObjectImplementation::createNavRegion() {
+void StructureObjectImplementation::createNavMesh() {
 
-	navmeshRegion = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
-														isPersistent()).castTo<NavMeshRegion *>();
+	navArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
+														isPersistent()).castTo<NavArea *>();
 
-	if (navmeshRegion == NULL || !navmeshRegion->isRegion()) {
-		error("Failed to create navmesh region");
+	if (navArea == NULL) {
+		error("Failed to create navmesh");
 		return;
 	}
 
-	Locker clocker(navmeshRegion, _this.getReferenceUnsafeStaticCast());
+	Locker clocker(navArea, _this.getReferenceUnsafeStaticCast());
 
 	String name = String::valueOf(getObjectID());
 
@@ -77,9 +77,9 @@ void StructureObjectImplementation::createNavRegion() {
 
 	Vector3 position = Vector3(getPositionX(), 0, getPositionY());
 	// This is invoked when a new faction base is placed, always force a rebuild
-	navmeshRegion->initializeNavRegion(position, length * 1.25f, zone, name, true, true);
+	navArea->initializeNavArea(position, length * 1.25f, zone, name, true, true);
 
-	zone->transferObject(navmeshRegion, -1, false);
+	zone->transferObject(navArea, -1, false);
 }
 
 void StructureObjectImplementation::notifyLoadFromDatabase() {
