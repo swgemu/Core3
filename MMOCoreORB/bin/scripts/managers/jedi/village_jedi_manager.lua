@@ -72,6 +72,8 @@ function VillageJediManager:onPlayerLoggedIn(pPlayer)
 		VillageCommunityCrafting:removeSchematics(pPlayer, 2)
 		VillageCommunityCrafting:removeSchematics(pPlayer, 3)
 	end
+	
+	JediTrials:onPlayerLoggedIn(pPlayer)
 end
 
 function VillageJediManager:onPlayerLoggedOut(pPlayer)

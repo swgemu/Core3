@@ -1,6 +1,6 @@
-padawan_kill_baz_nitch_01_conv_handler = conv_handler:new {}
+padawan_kill_sludge_panther_01_conv_handler = conv_handler:new {}
 
-function padawan_kill_baz_nitch_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+function padawan_kill_sludge_panther_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
@@ -14,7 +14,7 @@ function padawan_kill_baz_nitch_01_conv_handler:getInitialScreen(pPlayer, pNpc, 
 		return convoTemplate:getScreen("not_quest_owner")
 	end
 
-	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "kill_baz_nitch")
+	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "kill_falumpaset")
 	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
@@ -28,14 +28,14 @@ function padawan_kill_baz_nitch_01_conv_handler:getInitialScreen(pPlayer, pNpc, 
 	end
 end
 
-function padawan_kill_baz_nitch_01_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+function padawan_kill_sludge_panther_01_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "intro_reached_goal") then
 		PadawanTrials:passTrial(pPlayer)
-	elseif (screenID == "curb_infestation") then
+	elseif (screenID == "find_and_kill") then
 		PadawanTrials:setupHuntTrial(pPlayer)
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
