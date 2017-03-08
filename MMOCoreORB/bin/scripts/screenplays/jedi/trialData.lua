@@ -37,6 +37,30 @@ padawanTrialQuests = {
 		targetKillable = true
 	},
 	{
+		trialName = "kill_baz_nitch",
+		trialType = TRIAL_HUNT,
+		trialNpc = "sullustan_male",
+		trialNpcName = "Menchi (an environmentalist)",
+		huntTarget = "baz_nitch",
+		huntGoal = 20
+	},
+	{
+		trialName = "kill_falumpaset",
+		trialType = TRIAL_HUNT,
+		trialNpc = "irenez",
+		trialNpcName = "Braganta (a naturalist)",
+		huntTarget = "falumpaset",
+		huntGoal = 20
+	},
+	{
+		trialName = "kill_sludge_panther",
+		trialType = TRIAL_HUNT,
+		trialNpc = "kima_nazith",
+		trialNpcName = "Luha Kellaro (an ecologist)",
+		huntTarget = "sludge_panther",
+		huntGoal = 20
+	},
+	{
 		trialName = "peoples_soldier",
 		trialType = TRIAL_KILL,
 		trialNpc = "marco_vahn",
@@ -51,6 +75,15 @@ padawanTrialQuests = {
 		trialNpcName = "Kaul Dysen (a politician)",
 		targetNpc = "bloodseeker_mite",
 		targetKillable = true
+	},
+	{
+		trialName = "sob_story",
+		trialType = TRIAL_TALK,
+		trialNpc = "karena_keer",
+		trialNpcName = "Erim Thelcar",
+		targetNpc = "object/tangible/jedi/padawan_trials_skeleton.iff",
+		targetNpcName = "The remains of Josef Thelcar",
+		targetKillable = false
 	},
 	{
 		trialName = "spice_mom",
@@ -68,14 +101,6 @@ padawanTrialQuests = {
 		trialNpcName = "Par Doiae (a surveyor)",
 		targetNpc = "sharnaff_bull",
 		targetKillable = true
-	},
-	{
-		trialName = "kill_baz_nitch",
-		trialType = TRIAL_HUNT,
-		trialNpc = "sullustan_male",
-		trialNpcName = "Menchi (an environmentalist)",
-		huntTarget = "baz_nitch",
-		huntGoal = 20
 	},
 }
 
