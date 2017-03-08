@@ -9,7 +9,7 @@
 #define PATHFINDERMANAGER_H_
 
 #include "server/zone/objects/scene/WorldCoordinates.h"
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 #include "pathfinding/recast/DetourNavMeshQuery.h"
 
 namespace server {
@@ -31,7 +31,7 @@ class NavCollision : public Object {
 protected:
 	float dist;
 	Vector3 position;
-	Reference<NavMeshRegion*> region;
+	Reference<NavArea*> area;
 public:
 
 	int compareTo(const NavCollision* rhs) const {
@@ -43,10 +43,10 @@ public:
 			return -1;
 	}
 
-	NavCollision(const Vector3& p, float len, Reference<NavMeshRegion*> r) : dist(len), position(p), region(r) { }
+	NavCollision(const Vector3& p, float len, Reference<NavArea*> r) : dist(len), position(p), area(r) { }
 	float getDistance() const { return dist; }
 	const Vector3& getPosition() const { return position; }
-	const Reference<NavMeshRegion*>& getRegion() { return region; }
+	const Reference<NavArea*>& getNavArea() { return area; }
 };
 
 class PathFinderManager : public Singleton<PathFinderManager>, public Logger, public Object {
@@ -76,12 +76,12 @@ protected:
 	Vector<WorldCoordinates>* findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 
 	Vector<WorldCoordinates>* findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
-	bool getRecastPath(const Vector3& start, const Vector3& end, NavMeshRegion* region, Vector<WorldCoordinates>* path, float& len, bool allowPartial);
+	bool getRecastPath(const Vector3& start, const Vector3& end, NavArea* area, Vector<WorldCoordinates>* path, float& len, bool allowPartial);
 	void addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, CellObject* cell);
 
 	// The caller of this function is responsible for deleting the NavCollision objects.
 	// Collisions should be sorted from closest to farthest.
-	void getNavMeshCollisions(SortedVector<NavCollision*> *collisions, const SortedVector<ManagedReference<NavMeshRegion*>> *regions, const Vector3& start, const Vector3& end);
+	void getNavMeshCollisions(SortedVector<NavCollision*> *collisions, const SortedVector<ManagedReference<NavArea*>> *area, const Vector3& start, const Vector3& end);
 private:
 	dtQueryFilter m_filter;
 	dtQueryFilter m_spawnFilter;

@@ -28,7 +28,7 @@ include server.zone.managers.planet.TravelFare;
 import system.thread.Mutex;
 import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
-include server.zone.objects.pathfinding.NavMeshRegion;
+include server.zone.objects.pathfinding.NavArea;
 
 @dirty
 class PlanetManager extends ManagedService implements Logger {
@@ -76,7 +76,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected static transient Mutex poiMutex;
 
 	@dereferenced
-	protected transient VectorMap<string, NavMeshRegion> pendingNavMeshes;
+	protected transient VectorMap<string, NavArea> pendingNavMeshes;
 
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;

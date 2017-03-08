@@ -125,8 +125,8 @@ void ServerCore::initialize() {
 			int zoneAllowedConnections =
 					configManager->getZoneAllowedConnections();
 
-			if (arguments.contains("deleteNavRegions") && zoneServer != NULL) {
-				zoneServer->setShouldDeleteNavRegions(true);
+			if (arguments.contains("deleteNavMeshes") && zoneServer != NULL) {
+				zoneServer->setShouldDeleteNavAreas(true);
 			}
 
 			ObjectDatabaseManager* dbManager =

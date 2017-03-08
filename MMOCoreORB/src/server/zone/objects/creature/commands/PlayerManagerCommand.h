@@ -42,6 +42,12 @@ public:
 		tokenizer.getStringToken(command);
 		command = command.toLowerCase();
 
+		if (command == "path") {
+			Vector3 pos = creature->getWorldPosition();
+			Sphere sphere(pos, 125);
+			Vector3 result;
+			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
+		}
 		if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 

@@ -224,7 +224,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 	for (int i = 0; i < objects.size(); ++i) {
 		ActiveArea* area = objects.get(i).get();
 
-		if (!area->isRegion() || area->isNavRegion())
+		if (!area->isRegion())
 			continue;
 
 		city = dynamic_cast<Region*>(area)->getCityRegion();
