@@ -24,13 +24,13 @@ include system.thread.atomic.AtomicInteger;
 include pathfinding.RecastNavMesh;
 import system.thread.Mutex;
 import engine.util.u3d.AABB;
-import server.zone.objects.pathfinding.NavMeshRegion;
+import server.zone.objects.pathfinding.NavArea;
 include system.util.Vector;
 
 class CityRegion extends ManagedObject implements Logger {
 
 	@weakReference
-	protected transient NavMeshRegion navmeshRegion;
+	protected transient NavArea navMesh;
 
 	protected byte cityRank;
 
@@ -249,12 +249,12 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	@dirty
 	public RecastNavMesh getNavMesh() {
-		NavMeshRegion navRegion = navmeshRegion;
+		NavArea strongRef = navMesh;
 
-		if (navRegion == null)
+		if (strongRef == null)
 			return null;
 
-		return navRegion.getNavMesh();
+		return strongRef.getNavMesh();
 	}
 
 	@preLocked
@@ -427,13 +427,13 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@preLocked
-	public native void createNavRegion(final string queue, boolean forceRebuild);
+	public native void createNavMesh(final string queue, boolean forceRebuild);
 
 	@preLocked
-	public native void createNavRegion();
+	public native void createNavMesh();
 
 	@preLocked
-	public native void destroyNavRegion();
+	public native void destroyNavMesh();
 
 	@dirty
 	public boolean isMayor(unsigned long objectid) {

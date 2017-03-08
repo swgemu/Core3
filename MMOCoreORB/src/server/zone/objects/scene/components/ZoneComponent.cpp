@@ -18,7 +18,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	info("inserting to zone");
@@ -547,8 +547,8 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			rootZone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
 
 			for(auto& area : objects) {
-				if(area->isNavRegion()) {
-					NavMeshRegion *mesh = area->asNavRegion();
+				if(area->isNavArea()) {
+					NavArea *mesh = area->asNavArea();
 
 					if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
 						mesh->updateNavMesh(sceneObject, true);

@@ -119,7 +119,7 @@
 #include "server/zone/objects/tangible/misc/FsBuffItem.h"
 #include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
 #include "server/zone/objects/tangible/misc/FsCsObject.h"
-#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/area/SarlaccArea.h"

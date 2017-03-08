@@ -82,7 +82,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	totalDeletedPlayers = 0;
 
 	serverState = OFFLINE;
-	deleteNavRegions = false;
+	deleteNavAreas = false;
 
 	setLogging(true);
 }
@@ -92,7 +92,7 @@ void ZoneServerImplementation::initializeTransientMembers() {
 
 	objectManager = NULL;
 
-	deleteNavRegions = false;
+	deleteNavAreas = false;
 
 	ManagedObjectImplementation::initializeTransientMembers();
 }
