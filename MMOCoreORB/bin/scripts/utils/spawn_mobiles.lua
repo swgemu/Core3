@@ -228,7 +228,13 @@ function SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 	for i = 1, numberOfSpawns, 1 do
 		local mobileID = readData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i)
 		Logger:log(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. " = " .. mobileID, LT_INFO)
-		local mobile = getSceneObject(mobileID)
+		local mobile
+
+		if (mobileID == 0) then
+			mobile = -1
+		else
+			mobile = getSceneObject(mobileID)
+		end
 
 		spawnedMobiles[i] = mobile
 	end
@@ -241,7 +247,6 @@ end
 -- @param prefix the prefix to read the spawned mobiles from.
 -- @return a list with pointers to the spawned mobiles or nil if none have been spawned.
 function SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix)
-	Logger:log("Getting spawned mobiles for prefix '" .. prefix .. "'.", LT_INFO)
 	if not SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
 		return SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 	else
@@ -259,18 +264,20 @@ function SpawnMobiles.despawnMobilesInList(pSceneObject, spawnedMobilesList, pre
 		end
 
 		for i = 1, #spawnedMobilesList, 1 do
-			if (storeRespawn and (spawnedMobilesList[i] == nil or CreatureObject(spawnedMobilesList[i]):isDead())) then
+			if (storeRespawn and (spawnedMobilesList[i] == nil or spawnedMobilesList[i] == -1 or CreatureObject(spawnedMobilesList[i]):isDead())) then
 				writeData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn", 1)
 			end
 
-			if (CreatureObject(spawnedMobilesList[i]):isInCombat() or AiAgent(spawnedMobilesList[i]):getFollowObject() ~= nil) then
-				createEvent(10000, "HelperFuncs", "despawnMobileTask", spawnedMobilesList[i], "")
+			if (spawnedMobilesList[i] ~= nil and spawnedMobilesList[i] ~= -1) then
+				if (CreatureObject(spawnedMobilesList[i]):isInCombat() or AiAgent(spawnedMobilesList[i]):getFollowObject() ~= nil) then
+					createEvent(10000, "HelperFuncs", "despawnMobileTask", spawnedMobilesList[i], "")
 
-				if (storeRespawn) then
-					writeData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn", 1)
+					if (storeRespawn) then
+						writeData(playerID .. prefix .. SPAWN_MOBILES_STRING .. i .. ":noRespawn", 1)
+					end
+				else
+					SceneObject(spawnedMobilesList[i]):destroyObjectFromWorld()
 				end
-			else
-				SceneObject(spawnedMobilesList[i]):destroyObjectFromWorld()
 			end
 		end
 	end
