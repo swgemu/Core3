@@ -158,13 +158,13 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 	WorldCoordinates start(player);
 	WorldCoordinates end(object);
 
-	SortedVector<ManagedReference<NavMeshRegion*> > regions;
+	SortedVector<ManagedReference<NavArea*> > areas;
 	//fetch nav meshes near the target position
-	zone->getInRangeNavMeshes(end.getX(), end.getY(), &regions, false);
+	zone->getInRangeNavMeshes(end.getX(), end.getY(), &areas, false);
 
 	bool withinNavMesh = false;
 
-	for (const auto& mesh : regions) {
+	for (const auto& mesh : areas) {
 		// test to see if our player is within the same nav mesh
 		if (mesh->containsPoint(start.getX(), start.getY())) {
 			withinNavMesh = true;

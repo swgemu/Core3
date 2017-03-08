@@ -26,7 +26,7 @@ include server.zone.QuadTreeReference;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.region.CityRegion;
-import server.zone.objects.pathfinding.NavMeshRegion;
+import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
 
 @mock
@@ -98,7 +98,7 @@ class Zone extends SceneObject {
 	@local
 	public native int getInRangeActiveAreas(float x, float y, ActiveAreasVector objects, boolean readLockZone);
 	@local
-	public native int getInRangeNavMeshes(float x, float y, SortedVector<NavMeshRegion> objects, boolean readLockZone);
+	public native int getInRangeNavMeshes(float x, float y, SortedVector<NavArea> objects, boolean readLockZone);
 
 	/* gets active areas whose center is within the given range */
 	@local

@@ -6,7 +6,7 @@ package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.areashapes.AreaShape;
-import server.zone.objects.pathfinding.NavMeshRegion;
+import server.zone.objects.pathfinding.NavArea;
 include system.util.Vector;
 
 @mock
@@ -80,13 +80,13 @@ class ActiveArea extends SceneObject {
 	}
 
 	@dirty
-	public abstract boolean isNavRegion() {
+	public abstract boolean isNavArea() {
 		return false;
 	}
 
 	@dirty
 	@local
-	public abstract NavMeshRegion asNavRegion() {
+	public abstract NavArea asNavArea() {
 		return null;
 	}
 
