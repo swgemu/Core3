@@ -1272,6 +1272,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	resetBehaviorList();
 	clearCombatState(true);
 
+	setPosture(CreaturePosture::UPRIGHT, false);
+
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
 	CellObject* cell = homeLocation.getCell();
@@ -1335,8 +1337,6 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		setLevel(level);
 
 	stateBitmask = 0;
-
-	setPosture(CreaturePosture::UPRIGHT, false);
 
 	shockWounds = 0;
 
