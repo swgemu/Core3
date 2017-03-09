@@ -42,6 +42,7 @@ public:
 
 			if (inventory->transferObject(prototype, -1, true)) {
 				crafter->sendSystemMessage("@system_msg:prototype_transferred");
+				crafter->notifyObservers(ObserverEventType::PROTOTYPECREATED, prototype, 0);
 				craftingTool->setReady();
 				return;
 			}

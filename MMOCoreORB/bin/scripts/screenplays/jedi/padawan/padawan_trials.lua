@@ -119,13 +119,9 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
-	if (trialsCompleted >= #padawanTrialQuests and trialsCompleted < 7) then
-		CreatureObject(pPlayer):sendSystemMessage("You have completed all of the current Padawan Trials, more will be added in the near future.")
-		return
-	end
-
 	if (trialsCompleted == 7) then
-		CreatureObject(pPlayer):sendSystemMessage("You have completed enough trials to begin the lightsaber trial, however it has not been implemented yet. Check back soon.")
+		local trialNum = self:getSaberCraftingTrialNumber()
+		self:startTrial(pPlayer, trialNum)
 	else
 		local incompleteTrials = {}
 		for i = 1, #padawanTrialQuests, 1 do
@@ -135,11 +131,20 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 			end
 		end
 
-
 		local rand = getRandomNumber(1, #incompleteTrials)
 		local randTrial = incompleteTrials[rand]
 		self:startTrial(pPlayer, randTrial)
 	end
+end
+
+function PadawanTrials:getSaberCraftingTrialNumber()
+	for i = 1, #padawanTrialQuests, 1 do
+		if padawanTrialQuests[i].trialType == TRIAL_LIGHTSABER then
+			return i
+		end
+	end
+
+	return -1
 end
 
 function PadawanTrials:resetAllPadawanTrials(pPlayer)
@@ -147,6 +152,11 @@ function PadawanTrials:resetAllPadawanTrials(pPlayer)
 	for i = 1, #padawanTrialQuests, 1 do
 		local trialState = JediTrials:getTrialStateName(pPlayer, i)
 		CreatureObject(pPlayer):removeScreenPlayState(1, trialState)
+
+		if padawanTrialQuests[i].trialType == TRIAL_LIGHTSABER then
+			CreatureObject(pPlayer):removeScreenPlayState(2, trialState)
+			CreatureObject(pPlayer):removeScreenPlayState(4, trialState)
+		end
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -156,7 +166,7 @@ function PadawanTrials:resetAllPadawanTrials(pPlayer)
 	end
 
 	if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
-		surrenderSkill(pPlayer, "force_title_jedi_rank_01")
+		CreatureObject(pPlayer):surrenderSkill("force_title_jedi_rank_01")
 	end
 
 	JediTrials:resetTrialData(pPlayer, "padawan")
@@ -165,6 +175,18 @@ end
 
 function PadawanTrials:startTrial(pPlayer, trialNum)
 	JediTrials:setCurrentTrial(pPlayer, trialNum)
+	local trialData = padawanTrialQuests[trialNum]
+
+	if (trialData.trialType == TRIAL_LIGHTSABER) then
+		if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
+			awardSkill(pPlayer, "force_title_jedi_rank_01")
+		end
+
+		dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
+		createObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
+		self:sendSuiNotification(pPlayer)
+		return
+	end
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
@@ -177,8 +199,6 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 	while (not isZoneEnabled(planetName)) do
 		planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
 	end
-
-	local trialData = padawanTrialQuests[trialNum]
 
 	if (self.trialName == "artist") then
 		planetName = "naboo"
@@ -225,6 +245,67 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 
 	self:sendSuiNotification(pPlayer)
 	self:createFirstLocation(pPlayer)
+end
+
+function PadawanTrials:notifyCraftedTrainingSaber(pPlayer, pItem)
+	if (pPlayer == nil or pItem == nil) then
+		return 0
+	end
+
+	if (not JediTrials:isEligibleForPadawanTrials(pPlayer)) then
+		return 1
+	end
+
+	local trialNum = JediTrials:getCurrentTrial(pPlayer)
+	local trialData = padawanTrialQuests[trialNum]
+
+	if (trialData.trialType ~= TRIAL_LIGHTSABER) then
+		return 1
+	end
+
+	local trialState = JediTrials:getTrialStateName(pPlayer, trialNum)
+
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, trialState)) then -- Already crafted a saber
+		return 1
+	end
+
+	if (not string.find(SceneObject(pItem):getTemplateObjectPath(), "object/weapon/melee/sword/crafted_saber")) then
+		return 0
+	end
+
+	CreatureObject(pPlayer):setScreenPlayState(2, trialState)
+	dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+	createObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+	self:sendSuiNotification(pPlayer)
+
+	return 1
+end
+
+function PadawanTrials:notifyTunedLightsaberCrystal(pPlayer, pItem)
+	if (pPlayer == nil or pItem == nil) then
+		return 0
+	end
+
+	if (not JediTrials:isEligibleForPadawanTrials(pPlayer)) then
+		return 1
+	end
+
+	local trialNum = JediTrials:getCurrentTrial(pPlayer)
+	local trialData = padawanTrialQuests[trialNum]
+
+	if (trialData.trialType ~= TRIAL_LIGHTSABER) then
+		return 1
+	end
+
+	local trialState = JediTrials:getTrialStateName(pPlayer, trialNum)
+
+	if (CreatureObject(pPlayer):hasScreenPlayState(4, trialState)) then -- Already crafted a saber
+		return 1
+	end
+
+	CreatureObject(pPlayer):setScreenPlayState(4, trialState)
+	self:passTrial(pPlayer)
+	return 1
 end
 
 function PadawanTrials:setupHuntTrial(pPlayer)
@@ -329,16 +410,27 @@ function PadawanTrials:createFirstLocation(pPlayer)
 end
 
 function PadawanTrials:sendSuiNotification(pPlayer)
-	local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
-	local cityName = planetData[2]
-	cityName = string.gsub(cityName, "_", " ")
-	cityName = string.gsub(" "..cityName, "%W%l", string.upper):sub(2)
-
 	local trialData = padawanTrialQuests[trialNumber]
-	local msgPrefix =  "@jedi_trials:" .. trialData.trialName .. "_01 " .. "@jedi_trials:" .. planetData[1]
-	local msgPostfix =  "@jedi_trials:" .. trialData.trialName .. "_02 " .. cityName .. "."
-	local msgFinal = msgPrefix .. " " .. msgPostfix
+	local msgFinal
+
+	if (trialData.trialType == TRIAL_LIGHTSABER) then
+		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
+		if (CreatureObject(pPlayer):hasScreenPlayState(2, trialState)) then
+			msgFinal = "@jedi_trials:craft_lightsaber_02"
+		else
+			msgFinal = "@jedi_trials:craft_lightsaber_01"
+		end
+	else
+		local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
+		local cityName = planetData[2]
+		cityName = string.gsub(cityName, "_", " ")
+		cityName = string.gsub(" "..cityName, "%W%l", string.upper):sub(2)
+
+		local msgPrefix =  "@jedi_trials:" .. trialData.trialName .. "_01 " .. "@jedi_trials:" .. planetData[1]
+		local msgPostfix =  "@jedi_trials:" .. trialData.trialName .. "_02 " .. cityName .. "."
+		msgFinal = msgPrefix .. " " .. msgPostfix
+	end
 
 	local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
 	sui.hideCancelButton()
@@ -732,7 +824,7 @@ function PadawanTrials:passTrial(pPlayer)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
-	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
+	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer) + 1
 
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
@@ -742,11 +834,17 @@ function PadawanTrials:passTrial(pPlayer)
 	deleteData(playerID .. ":JediTrials:killedTarget")
 	deleteData(playerID .. ":JediTrials:spokeToTarget")
 
-	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 	CreatureObject(pPlayer):setScreenPlayState(1, trialState) -- Complete Trial.
 	JediTrials:setCurrentTrial(pPlayer, 0)
-	JediTrials:setTrialsCompleted(pPlayer, trialsCompleted + 1)
+	JediTrials:setTrialsCompleted(pPlayer, trialsCompleted)
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
+	
+	if (trialsCompleted < #padawanTrialQuests) then
+		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
+	else
+		--TODO: Uncomment when all trials are implemented
+		--JediTrials:unlockJediPadawan(pPlayer)
+	end
 end
 
 
@@ -763,7 +861,17 @@ function PadawanTrials:showCurrentTrial(pShrine, pPlayer)
 	-- Other Button setup subscribe
 	sui.setProperty("btnRevert", "OnPress", "RevertWasPressed=1\r\nparent.btnOk.press=t")
 	sui.subscribeToPropertyForEvent(SuiEventType.SET_onClosedOk, "btnRevert", "RevertWasPressed")
-	sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_03")
+
+	if (trialData.trialType == TRIAL_LIGHTSABER) then
+		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
+		if (CreatureObject(pPlayer):hasScreenPlayState(2, trialState)) then
+			sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_02")
+		else
+			sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_01")
+		end
+	else
+		sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_03")
+	end
 
 	sui.sendTo(pPlayer)
 end
@@ -791,10 +899,19 @@ function PadawanTrials:onPlayerLoggedIn(pPlayer)
 
 	if (trialNumber >= 1) then
 		local trialData = padawanTrialQuests[trialNumber]
+		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
 		if (trialData.trialType == TRIAL_HUNT) then
 			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 			createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+		elseif (trialData.trialType == TRIAL_LIGHTSABER and not CreatureObject(pPlayer):hasScreenPlayState(4, trialState)) then
+			if (CreatureObject(pPlayer):hasScreenPlayState(2, trialState)) then
+				dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+				createObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+			else
+				dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
+				createObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
+			end
 		end
 	end
 end

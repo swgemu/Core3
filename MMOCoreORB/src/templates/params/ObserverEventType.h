@@ -52,6 +52,7 @@ public:
 		PLAYERCLONED,				// ManagedObject arg1 = player, long arg2 = 0
 		CRAFTINGASSEMBLY,			// ManagedObject arg1 = player, long arg2 = 0
 		CRAFTINGEXPERIMENTATION,	// ManagedObject arg1 = player, long arg2 = 0
+		PROTOTYPECREATED,			// ManagedObject arg1 = prototype, long arg2 = 0
 		ENHANCINGPERFORMED,			// ManagedObject arg1 = player, long arg2 = enhance amount
 		WOUNDHEALINGRECEIVED,		// ManagedObject arg1 = player, long arg2 = wound heal amount
 		XPAWARDED,					// ManagedObject arg1 = player, long arg2 = xp amount
@@ -82,6 +83,7 @@ public:
 		LOGGEDOUT,					// ManagedObject arg1 = player, long arg2 = 0
 		CREATUREREVIVED,			// ManagedObject arg1 = healer (optional), long arg2 = 0
 		ZONESWITCHED,				// ManagedObject arg1 = null, long arg2 = 0
+		TUNEDCRYSTAL,				// ManagedObject arg1 = crystal, long arg2 = 0
 	};
 };
 

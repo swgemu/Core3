@@ -5,6 +5,10 @@ TRIAL_HUNT = 4
 
 padawanTrialQuests = {
 	{
+		trialName = "craft_lightsaber",
+		trialType = TRIAL_LIGHTSABER,
+	},
+	{
 		trialName = "architect",
 		trialType = TRIAL_TALK,
 		trialNpc = "devaronian_male",
