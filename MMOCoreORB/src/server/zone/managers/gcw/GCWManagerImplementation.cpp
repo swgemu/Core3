@@ -1149,7 +1149,7 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 		return;
 	}
 
-	if (!isBaseVulnerable(building) || !isTerminalDamaged(building))
+	if (!isBaseVulnerable(building) || !isTerminalDamaged(securityTerminal))
 		return;
 
 	if (baseData->isTerminalBeingRepaired()) {
