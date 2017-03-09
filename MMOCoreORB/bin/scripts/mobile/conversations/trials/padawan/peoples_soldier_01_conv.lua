@@ -109,6 +109,34 @@ stench_of_failure = ConvoScreen:new {
 }
 padawan_peoples_soldier_01_convo_template:addScreen(stench_of_failure);
 
+intro_killed_target = ConvoScreen:new {
+	id = "intro_in_progress",
+	leftDialog = "@conversation/padawan_peoples_soldier_01:s_d1008bcb", -- Have you got the disk?
+	stopConversation = "false",
+	options = {
+		{"@conversation/padawan_peoples_soldier_01:s_b9bc27b2", "pretty_penny"}, -- Sure enough.  I thought it was going to be a challenge.
+	}
+}
+padawan_peoples_soldier_01_convo_template:addScreen(intro_in_progress);
+
+pretty_penny = ConvoScreen:new {
+	id = "pretty_penny",
+	leftDialog = "@conversation/padawan_peoples_soldier_01:s_f485390d", -- Good show, all this spice is going to fetch a pretty penny.  See you around.
+	stopConversation = "false",
+	options = {
+		{"@conversation/padawan_peoples_soldier_01:s_c7676f2f", "six_million"}, -- Spice!  You said it was foods and medicine!
+	}
+}
+padawan_peoples_soldier_01_convo_template:addScreen(pretty_penny);
+
+six_million = ConvoScreen:new {
+	id = "six_million",
+	leftDialog = "@conversation/padawan_peoples_soldier_01:s_53e9175a", -- Would you have returned the disk had you known the contents were worth well over six million credits?  Didn't think so.  
+	stopConversation = "true",
+	options = {}
+}
+padawan_peoples_soldier_01_convo_template:addScreen(six_million);
+
 completed_quest = ConvoScreen:new {
 	id = "completed_quest",
 	leftDialog = "@conversation/padawan_peoples_soldier_01:s_a082f8ab", -- Don't feel so bad... it's all to a good cause. My bank account! Ha!

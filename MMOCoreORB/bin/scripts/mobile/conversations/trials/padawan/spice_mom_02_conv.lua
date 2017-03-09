@@ -1,4 +1,4 @@
-padawan_spice_mom_02_conv_handler = ConvoTemplate:new {
+padawan_spice_mom_02_convo_template = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
 	luaClassHandler = "padawan_spice_mom_02_conv_handler",
@@ -14,7 +14,7 @@ intro = ConvoScreen:new {
 		{"@conversation/padawan_spice_mom_02:s_1f593aa5", "law_enforcement"}, -- I'm not interested. But I believe I know someone who is?
 	}
 }
-padawan_spice_mom_02_conv_handler:addScreen(intro);
+padawan_spice_mom_02_convo_template:addScreen(intro);
 
 sure_about_that = ConvoScreen:new {
 	id = "sure_about_that",
@@ -25,7 +25,7 @@ sure_about_that = ConvoScreen:new {
 		{"@conversation/padawan_spice_mom_02:s_6168a073", "sola_sent_you"}, -- Now I'm certain I have the wrong guy.
 	}
 }
-padawan_spice_mom_02_conv_handler:addScreen(sure_about_that);
+padawan_spice_mom_02_convo_template:addScreen(sure_about_that);
 
 sola_sent_you = ConvoScreen:new {
 	id = "sola_sent_you",
@@ -36,7 +36,7 @@ sola_sent_you = ConvoScreen:new {
 		{"@conversation/padawan_spice_mom_02:s_6168a073", "sola_sent_you"}, -- Now I'm certain I have the wrong guy.
 	}
 }
-padawan_spice_mom_02_conv_handler:addScreen(sola_sent_you);
+padawan_spice_mom_02_convo_template:addScreen(sola_sent_you);
 
 good_friend = ConvoScreen:new {
 	id = "good_friend",
@@ -44,7 +44,7 @@ good_friend = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_spice_mom_02_conv_handler:addScreen(good_friend);
+padawan_spice_mom_02_convo_template:addScreen(good_friend);
 
 law_enforcement = ConvoScreen:new {
 	id = "law_enforcement",
@@ -54,7 +54,7 @@ law_enforcement = ConvoScreen:new {
 		{"@conversation/padawan_spice_mom_02:s_bdb90e46", "quick_to_judge"}, -- No, Sola sent me here for her weekly supplies.
 	}
 }
-padawan_spice_mom_02_conv_handler:addScreen(law_enforcement);
+padawan_spice_mom_02_convo_template:addScreen(law_enforcement);
 
 quick_to_judge = ConvoScreen:new {
 	id = "quick_to_judge",
@@ -62,7 +62,7 @@ quick_to_judge = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_spice_mom_02_conv_handler:addScreen(quick_to_judge);
+padawan_spice_mom_02_convo_template:addScreen(quick_to_judge);
 
 not_quest_owner = ConvoScreen:new {
 	id = "not_quest_owner",
@@ -70,6 +70,6 @@ not_quest_owner = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_spice_mom_02_conv_handler:addScreen(not_quest_owner);
+padawan_spice_mom_02_convo_template:addScreen(not_quest_owner);
 
-addConversationTemplate("padawan_spice_mom_02_conv_handler", padawan_spice_mom_02_conv_handler);
+addConversationTemplate("padawan_spice_mom_02_convo_template", padawan_spice_mom_02_convo_template);
