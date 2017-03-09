@@ -11,8 +11,8 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-class MissionTargetMap : public ReadWriteLock, public Object {
-	SortedVector<ManagedReference<SceneObject*> > missions;
+class MissionTargetMap : public Object {
+	SynchronizedSortedVector<Reference<SceneObject*> > missions;
 
 public:
 	MissionTargetMap() {
