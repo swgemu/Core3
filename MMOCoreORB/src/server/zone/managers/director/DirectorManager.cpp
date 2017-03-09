@@ -2647,11 +2647,11 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
 		float newY = y + (sin(newAngle) * distance);
 
-		newX = (newX < -8192) ? -8192 : newX;
-		newX = (newX > 8192) ? 8192 : newX;
+		newX = (newX < -8150) ? -8150 : newX;
+		newX = (newX > 8150) ? 8150 : newX;
 
-		newY = (newY < -8192) ? -8192 : newY;
-		newY = (newY > 8192) ? 8192 : newY;
+		newY = (newY < -8150) ? -8150 : newY;
+		newY = (newY > 8150) ? 8150 : newY;
 
 		float newZ = zone->getHeight(newX, newY);
 
