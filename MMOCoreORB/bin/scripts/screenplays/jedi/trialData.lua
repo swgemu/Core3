@@ -5,10 +5,6 @@ TRIAL_HUNT = 4
 
 padawanTrialQuests = {
 	{
-		trialName = "craft_lightsaber",
-		trialType = TRIAL_LIGHTSABER,
-	},
-	{
 		trialName = "architect",
 		trialType = TRIAL_TALK,
 		trialNpc = "devaronian_male",
@@ -39,6 +35,10 @@ padawanTrialQuests = {
 		trialNpcName = "Seevi Nyed (a chef)",
 		targetNpc = "neo_cobral_overlord",
 		targetKillable = true
+	},
+	{
+		trialName = "craft_lightsaber",
+		trialType = TRIAL_LIGHTSABER,
 	},
 	{
 		trialName = "kill_baz_nitch",
@@ -104,6 +104,14 @@ padawanTrialQuests = {
 		trialNpc = "bestine_rumor08",
 		trialNpcName = "Par Doiae (a surveyor)",
 		targetNpc = "sharnaff_bull",
+		targetKillable = true
+	},
+	{
+		trialName = "the_ring",
+		trialType = TRIAL_TALK,
+		trialNpc = "giaal_itotr",
+		trialNpcName = "Keicho",
+		targetNpc = "dread_pirate",
 		targetKillable = true
 	},
 }
