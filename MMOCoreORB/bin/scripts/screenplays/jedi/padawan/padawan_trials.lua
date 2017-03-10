@@ -59,7 +59,7 @@ function PadawanTrials:jediPadawanTrialsStartCallback(pPlayer, pSui, eventIndex,
 	while padawanTrialQuests[rand].trialType == TRIAL_LIGHTSABER do
 		rand = getRandomNumber(1, #padawanTrialQuests)
 	end
-
+	
 	JediTrials:setStartedTrials(pPlayer)
 	JediTrials:setTrialsCompleted(pPlayer, 0)
 	self:startTrial(pPlayer, rand)
@@ -126,7 +126,7 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 		local incompleteTrials = {}
 		for i = 1, #padawanTrialQuests, 1 do
 			local trialState = JediTrials:getTrialStateName(pPlayer, i)
-			if not CreatureObject(pPlayer):hasScreenPlayState(1, trialState) then
+			if not CreatureObject(pPlayer):hasScreenPlayState(1, trialState) and padawanTrialQuests[i].trialType ~= TRIAL_LIGHTSABER then
 				table.insert(incompleteTrials, i)
 			end
 		end
@@ -934,9 +934,9 @@ function PadawanTrials:showCurrentTrial(pShrine, pPlayer)
 	local sui = SuiMessageBox.new("PadawanTrials", "handleShowInfoChoice")
 	sui.setTitle("@jedi_trials:force_shrine_title")
 	sui.setTargetNetworkId(SceneObject(pShrine):getObjectID())
-	sui.setCancelButtonText("@jedi_trials:button_abort_padawan") -- Quit Padawan Trials
+	sui.setCancelButtonText("@jedi_trials:button_close") -- Close
 	sui.setOtherButtonText("@jedi_trials:button_restart") -- Restart Current Trial
-	sui.setOkButtonText("@jedi_trials:button_close") -- Close
+	sui.setOkButtonText("@jedi_trials:button_abort_padawan") -- Quit Padawan Trials
 	-- Other Button setup subscribe
 	sui.setProperty("btnRevert", "OnPress", "RevertWasPressed=1\r\nparent.btnOk.press=t")
 	sui.subscribeToPropertyForEvent(SuiEventType.SET_onClosedOk, "btnRevert", "RevertWasPressed")
@@ -963,13 +963,13 @@ function PadawanTrials:handleShowInfoChoice(pPlayer, pSui, eventIndex, ...)
 	local cancelPressed = (eventIndex == 1)
 	local args = {...}
 	local restart = args[1]
-
+	
 	if (cancelPressed) then
-		self:quitPadawanTrials(pPlayer)
+		return
 	elseif (restart ~= nil) then
 		self:restartCurrentPadawanTrial(pPlayer)
-	else
-		return
+	elseif (eventIndex == 0) then
+		self:quitPadawanTrials(pPlayer)
 	end
 end
 
