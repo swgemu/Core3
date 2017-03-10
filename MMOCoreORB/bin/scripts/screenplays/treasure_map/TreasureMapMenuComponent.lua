@@ -76,6 +76,11 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 
 	local pWaypoint = getSceneObject(waypointID)
 
+	if (pWaypoint == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
+		return 0
+	end
+
 	local pActiveArea = getSceneObject(searchAreaID)
 	SceneObject(pActiveArea):destroyObjectFromWorld()
 	local zoneName = SceneObject(pPlayer):getZoneName()
@@ -107,6 +112,11 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 	local waypointID = readData(playerID .. ":treasureMapExactWaypointID")
 
 	local pWaypoint = getSceneObject(waypointID)
+
+	if (pWaypoint == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
+		return 0
+	end
 
 	local x = SceneObject(pWaypoint):getWorldPositionX()
 	local y = SceneObject(pWaypoint):getWorldPositionY()
