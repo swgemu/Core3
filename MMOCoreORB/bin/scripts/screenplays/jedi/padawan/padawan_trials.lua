@@ -953,7 +953,19 @@ function PadawanTrials:showCurrentTrial(pShrine, pPlayer)
 			sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_01")
 		end
 	else
-		sui.setPrompt("@jedi_trials:" .. trialData.trialName .. "_03")
+		local suiPrompt = "@jedi_trials:" .. trialData.trialName .. "_03"
+		
+		if (trialData.trialType == TRIAL_HUNT) then
+			local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
+			
+			if (targetCount == nil) then
+				targetCount = 0
+			end
+			
+			suiPrompt = suiPrompt .. " " .. targetCount
+		end
+		
+		sui.setPrompt(suiPrompt)
 	end
 
 	sui.sendTo(pPlayer)
