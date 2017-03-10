@@ -58,8 +58,14 @@ case "$host_cpu-$host_os" in
     *)
       SYSTEM_INCLUDES=""
       SYSTEM_LIBS="-lrt -ldl -pthread"
-      USER_INCLUDES_PATH="/usr/local/include"
-      USER_LIBS_PATH="/usr/local/lib"
+      if [[ -f "/etc/redhat-release" ]]; then
+          USER_INCLUDES_PATH="/usr/include"
+          USER_LIBS_PATH="/usr/lib64"
+      else
+          USER_INCLUDES_PATH="/usr/local/include"
+          USER_LIBS_PATH="/usr/local/lib"
+      fi
+      ;;
 esac
 
 AC_SUBST(CFLAGS)
