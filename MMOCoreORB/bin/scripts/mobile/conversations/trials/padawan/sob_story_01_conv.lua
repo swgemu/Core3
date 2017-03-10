@@ -190,13 +190,13 @@ intro_in_progress = ConvoScreen:new {
 }
 padawan_sob_story_01_convo_template:addScreen(intro_in_progress);
 
-thanks_for_nothing = ConvoScreen:new {
-	id = "thanks_for_nothing",
+hurry_up = ConvoScreen:new {
+	id = "hurry_up",
 	leftDialog = "@conversation/padawan_sob_story_01:s_e2b8c011", -- Just hurry up and get me that blaster before someone else makes off with it.
 	stopConversation = "true",
 	options = {}
 }
-padawan_sob_story_01_convo_template:addScreen(thanks_for_nothing);
+padawan_sob_story_01_convo_template:addScreen(hurry_up);
 
 thanks_for_nothing = ConvoScreen:new {
 	id = "thanks_for_nothing",
