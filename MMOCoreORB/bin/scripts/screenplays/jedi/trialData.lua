@@ -75,6 +75,17 @@ padawanTrialQuests = {
 		thirdTargetLoc = { 469, 12, 5021, "lok" }
 	},
 	{
+		trialName = "pannaqa",
+		trialType = TRIAL_TALK,
+		trialNpc = nil,
+		trialLoc = { 5291.3, 78.5, -4037.8, "dathomir", "Aurilia" },
+		targetNpc = "commoner",
+		targetKillable = false,
+		thirdTargetNpc = "commoner_male",
+		thirdTargetName = "Shendo",
+		thirdTargetKillable = false
+	},
+	{
 		trialName = "peoples_soldier",
 		trialType = TRIAL_KILL,
 		trialNpc = "marco_vahn",

@@ -1,83 +1,76 @@
-trialsPadawanPannaqa03ConvoTemplate = ConvoTemplate:new {
+padawan_pannaqa_03_convo_template = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "trialsPadawanPannaqa03ConvoHandler",
+	luaClassHandler = "padawan_pannaqa_03_conv_handler",
 	screens = {}
 }
 
 intro = ConvoScreen:new {
 	id = "intro",
-	leftDialog = "@conversation/padawan_pannaqa_03:s_552042df", -- Show me the drink to go way. I'm home and I wanna go drink....
+	leftDialog = "@conversation/padawan_pannaqa_03:s_70fea75d", -- Um, hello?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_pannaqa_03:s_70fea75d", "continue"} -- Um, hello?
+		{"@conversation/padawan_pannaqa_03:s_4cc97351", "um_who"} -- Pannaqa has been waiting for you for quite a while, Shendo. He needs that vibro-tiller part.
 	}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(intro);
+padawan_pannaqa_03_convo_template:addScreen(intro);
 
-continue = ConvoScreen:new {
-	id = "continue",
-	leftDialog = "@conversation/padawan_pannaqa_03:s_2b0e7d3c", -- Pannaqa! You are already many hours late.
+um_who = ConvoScreen:new {
+	id = "um_who",
+	leftDialog = "@conversation/padawan_pannaqa_03:s_9035e1f5", -- Um, who?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_pannaqa_03:s_4cc97351", "continue_more"} -- Pannaqa has been waiting for you for quite a while, Shendo. He needs that vibro-tiller part.
+		{"@conversation/padawan_pannaqa_03:s_2b0e7d3c", "no_kidding"} -- Pannaqa!  You are already many hours late.
 	}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(continue);
+padawan_pannaqa_03_convo_template:addScreen(um_who);
 
-continue_more = ConvoScreen:new {
-	id = "continue_more",
-	leftDialog = "@conversation/padawan_pannaqa_03:s_6abc7ab9", -- No kidding eh? I guess I should probably get on that huh?
+no_kidding = ConvoScreen:new {
+	id = "no_kidding",
+	animation = "tap_head",
+	leftDialog = "@conversation/padawan_pannaqa_03:s_6abc7ab9", -- No kidding eh?  I guess I should probably get on that huh?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_pannaqa_03:s_7bbf7ffe", "continue_again"}, -- I don't think I can trust you to finish the job.
-		{"@conversation/padawan_pannaqa_03:s_b7bc9ab", "continue_too"} -- At this point I do not care, I've lost all hope.
+		{"@conversation/padawan_pannaqa_03:s_7bbf7ffe", "take_part_for_me"}, -- I don't think I can trust you to finish the job.
+		{"@conversation/padawan_pannaqa_03:s_b7bc9ab", "give_you_part"} -- At this point I do not care, I've lost all hope.
 	}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(continue_more);
+padawan_pannaqa_03_convo_template:addScreen(no_kidding);
 
-continue_again = ConvoScreen:new {
-	id = "continue_again",
+take_part_for_me = ConvoScreen:new {
+	id = "take_part_for_me",
 	leftDialog = "@conversation/padawan_pannaqa_03:s_eb635904", -- So you are going to take the part for me, and I can stay here and drink?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_pannaqa_03:s_1a22a5dc", "continue_final"} -- Basically.
+		{"@conversation/padawan_pannaqa_03:s_1a22a5dc", "drinking_and_wandering"}, -- Basically.
 	}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(continue_again);
+padawan_pannaqa_03_convo_template:addScreen(take_part_for_me);
 
-continue_too = ConvoScreen:new {
-	id = "continue_too",
-	leftDialog = "@conversation/padawan_pannaqa_03:s_e51e11cc", -- Cheer up mate, how about I give you the part, and you take it to Pan.. Paqanna.. Whatever his name was. I'm going to keep my eyes on this bottle of ale for you and make sure it doesn't do whatever it is I think it's going to do. [You stash the vibro-tiller part in a safe place.]
-	stopConversation = "true",
-	options = {}
-}
-trialsPadawanPannaqa03ConvoTemplate:addScreen(continue_too);
-
-continue_final = ConvoScreen:new {
-	id = "continue_final",
+drinking_and_wandering = ConvoScreen:new {
+	id = "drinking_and_wandering",
+	animation = "celebrate1",
 	leftDialog = "@conversation/padawan_pannaqa_03:s_b6307da0", -- Deal. Now I can get back to my drinking and wandering. [You stash the vibro-tiller part in a safe place.]
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(continue_final);
+padawan_pannaqa_03_convo_template:addScreen(drinking_and_wandering);
 
-noquest_player_talks = ConvoScreen:new {
-	id = "noquest_player_talks",
-	leftDialog = "@conversation/padawan_pannaqa_03:s_2b0e7d3c", -- Pannaqa! You are already many hours late.
-	stopConversation = "false",
-	options = {
-		{"@conversation/padawan_pannaqa_03:s_9035e1f5", "noquest_reply"} -- Um, who?
-	}
+give_you_part = ConvoScreen:new {
+	id = "give_you_part",
+	animation = "rub_belly",
+	leftDialog = "@conversation/padawan_pannaqa_03:s_e51e11cc", -- Cheer up mate, how about I give you the part, and you take it to Pan.. Paqanna.. Whatever his name was. I'm going to keep my eyes on this bottle of ale for you and make sure it doesn't do whatever it is I think it's going to do. [You stash the vibro-tiller part in a safe place.]
+	stopConversation = "true",
+	options = {}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(noquest_player_talks);
+padawan_pannaqa_03_convo_template:addScreen(give_you_part);
 
-noquest_reply = ConvoScreen:new {
-	id = "noquest_reply",
+not_quest_owner = ConvoScreen:new {
+	id = "not_quest_owner",
 	leftDialog = "@conversation/padawan_pannaqa_03:s_552042df", -- Show me the drink to go way. I'm home and I wanna go drink....
 	stopConversation = "true",
 	options = {}
 }
-trialsPadawanPannaqa03ConvoTemplate:addScreen(noquest_reply);
+padawan_pannaqa_03_convo_template:addScreen(not_quest_owner);
 
-addConversationTemplate("trialsPadawanPannaqa03ConvoTemplate", trialsPadawanPannaqa03ConvoTemplate);
+addConversationTemplate("padawan_pannaqa_03_convo_template", padawan_pannaqa_03_convo_template);

@@ -201,12 +201,27 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 		planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
 	end
 
-	if (self.trialName == "artist") then
+	if (trialData.trialName == "artist") then
 		planetName = "naboo"
 	end
 
 	local randomCityTable = trialsCivilizedPlanetCities[planetName]
 	local randomCity = randomCityTable[getRandomNumber(1, #randomCityTable)]
+
+	if (trialData.trialLoc ~= nil) then
+		local locData = trialData.trialLoc
+
+		if locData[4] ~= nil then
+			planetName = locData[4]
+		end
+
+		if locData[5] ~= nil then
+			randomCity = locData[5]
+		else
+			randomCityTable = trialsCivilizedPlanetCities[planetName]
+			randomCity = randomCityTable[getRandomNumber(1, #randomCityTable)]
+		end
+	end
 
 	if (randomCity == nil) then
 		printLuaError("PadawanTrials:startTrial, unable to get random city for planet " .. planetName .. ".")
@@ -215,32 +230,38 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 
 	JediTrials:setTrialPlanetAndCity(pPlayer, planetName, randomCity)
 
-	local randomLocTable = trialsCivilizedNpcSpawnPoints[planetName][randomCity]
-	local randomLoc = randomLocTable[getRandomNumber(1, #randomLocTable)]
+	local spawnPoint
 
-	if (randomLoc == nil) then
-		printLuaError("PadawanTrials:startTrial, unable to get random location for " .. randomCity .. " on  " .. planetName .. ".")
-		return
-	end
+	if (trialData.trialLoc == nil) then
+		local randomLocTable = trialsCivilizedNpcSpawnPoints[planetName][randomCity]
+		local randomLoc = randomLocTable[getRandomNumber(1, #randomLocTable)]
 
-	local spawnPoint = getSpawnPointInArea(planetName, randomLoc[1], randomLoc[2], randomLoc[3])
-
-	-- Execute the function again to pick a new random location
-	if (spawnPoint == nil) then
-		local pointAttempts = readData(playerID .. ":JediTrials:spawnPointAttempts")
-
-		if (pointAttempts <= 5) then
-			self:startTrial(pPlayer, trialNum)
-			writeData(playerID .. ":JediTrials:spawnPointAttempts", pointAttempts + 1)
-		else
-			printLuaError("PadawanTrials:startTrial, unable to find start point for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNum .. " after 5 attempts.")
-			deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+		if (randomLoc == nil) then
+			printLuaError("PadawanTrials:startTrial, unable to get random location for " .. randomCity .. " on  " .. planetName .. ".")
+			return
 		end
 
-		return
-	end
+		spawnPoint = getSpawnPointInArea(planetName, randomLoc[1], randomLoc[2], randomLoc[3])
 
-	deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+		-- Execute the function again to pick a new random location
+		if (spawnPoint == nil) then
+			local pointAttempts = readData(playerID .. ":JediTrials:spawnPointAttempts")
+
+			if (pointAttempts <= 5) then
+				self:startTrial(pPlayer, trialNum)
+				writeData(playerID .. ":JediTrials:spawnPointAttempts", pointAttempts + 1)
+			else
+				printLuaError("PadawanTrials:startTrial, unable to find start point for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNum .. " after 5 attempts.")
+				deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+			end
+
+			return
+		end
+
+		deleteData(playerID .. ":JediTrials:spawnPointAttempts")
+	else
+		spawnPoint = trialData.trialLoc
+	end
 
 	JediTrials:setTrialLocation(pPlayer, spawnPoint[1], spawnPoint[2], spawnPoint[3], planetName)
 
@@ -386,22 +407,27 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 end
 
 function PadawanTrials:createMainLocation(pPlayer)
+	local trialNum = JediTrials:getCurrentTrial(pPlayer)
+	local trialData = padawanTrialQuests[trialNum]
+
 	local mainLocData = JediTrials:getTrialPlanetAndCity(pPlayer)
 	local planetName = mainLocData[1]
 	local spawnLoc = JediTrials:getTrialLocation(pPlayer)
 
-	local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnLoc[1], spawnLoc[2], spawnLoc[3], 64, 0)
-	local playerID = SceneObject(pPlayer):getObjectID()
+	if (trialData.trialLoc == nil) then
+		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnLoc[1], spawnLoc[2], spawnLoc[3], 64, 0)
+		local playerID = SceneObject(pPlayer):getObjectID()
 
-	if pActiveArea == nil then
-		printLuaError("PadawanTrials:createMainLocation, failed to create active area.")
-		return
+		if pActiveArea == nil then
+			printLuaError("PadawanTrials:createMainLocation, failed to create active area.")
+			return
+		end
+
+		local areaID = SceneObject(pActiveArea):getObjectID()
+		writeData(playerID .. ":mainLocSpawnAreaID", areaID)
+		writeData(areaID .. ":ownerID", playerID)
+		createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredMainLocSpawnArea", pActiveArea)
 	end
-
-	local areaID = SceneObject(pActiveArea):getObjectID()
-	writeData(playerID .. ":mainLocSpawnAreaID", areaID)
-	writeData(areaID .. ":ownerID", playerID)
-	createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredMainLocSpawnArea", pActiveArea)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
@@ -635,6 +661,7 @@ function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local areaID = SceneObject(pArea):getObjectID()
 	local ownerID = readData(areaID .. ":ownerID")
+	local isThirdLocation = readData(areaID .. ":isThirdLoc") == 1
 
 	if (playerID ~= ownerID) then
 		return 0
@@ -647,7 +674,6 @@ function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
-	local isThirdLocation = readData(areaID .. ":isThirdLoc") == 1
 
 	local npcTemplate
 
@@ -681,21 +707,28 @@ function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 		local npcID = SceneObject(pNpc):getObjectID()
 		writeData(npcID .. ":ownerID", playerID)
 
-		if (trialData.targetNpcName ~= nil) then
+		if (isThirdLocation and trialData.thirdTargetName ~= nil) then
+			SceneObject(pNpc):setCustomObjectName(trialData.thirdTargetName)
+		elseif (trialData.targetNpcName ~= nil) then
 			SceneObject(pNpc):setCustomObjectName(trialData.targetNpcName)
 		end
 
 		if (not string.find(trialData.targetNpc, ".iff")) then
-			if (not trialData.targetKillable) then
-				CreatureObject(pNpc):setPvpStatusBitmask(0)
-			else
+			if ((isThirdLocation and trialData.thirdTargetKillable ~= nil and trialData.thirdTargetKillable) or trialData.targetKillable) then
 				createObserver(OBJECTDESTRUCTION, "PadawanTrials", "notifyQuestTargetDead", pNpc)
+			else
+				CreatureObject(pNpc):setPvpStatusBitmask(0)
 			end
 		end
 
 		if (trialData.trialType == TRIAL_TALK and not string.find(trialData.targetNpc, ".iff")) then
 			CreatureObject(pNpc):setOptionsBitmask(136)
-			AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
+
+			if (isThirdLocation) then
+				AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_03_convo_template")
+			else
+				AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
+			end
 		end
 
 		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", locX, locZ, locY, 32, 0)
@@ -889,8 +922,7 @@ function PadawanTrials:passTrial(pPlayer)
 	if (trialsCompleted < #padawanTrialQuests) then
 		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 	else
-	--TODO: Uncomment when all trials are implemented
-	--JediTrials:unlockJediPadawan(pPlayer)
+		JediTrials:unlockJediPadawan(pPlayer)
 	end
 end
 
