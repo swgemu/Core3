@@ -59,7 +59,7 @@ function PadawanTrials:jediPadawanTrialsStartCallback(pPlayer, pSui, eventIndex,
 	while padawanTrialQuests[rand].trialType == TRIAL_LIGHTSABER do
 		rand = getRandomNumber(1, #padawanTrialQuests)
 	end
-	
+
 	JediTrials:setStartedTrials(pPlayer)
 	JediTrials:setTrialsCompleted(pPlayer, 0)
 	self:startTrial(pPlayer, rand)
@@ -365,6 +365,10 @@ function PadawanTrials:hasCompletedHunt(pPlayer)
 
 	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
+
+	if (targetCount == nil or targetGoal == nil) then
+		return false
+	end
 
 	return targetCount >= targetGoal
 end
@@ -963,7 +967,7 @@ function PadawanTrials:handleShowInfoChoice(pPlayer, pSui, eventIndex, ...)
 	local cancelPressed = (eventIndex == 1)
 	local args = {...}
 	local restart = args[1]
-	
+
 	if (cancelPressed) then
 		return
 	elseif (restart ~= nil) then
