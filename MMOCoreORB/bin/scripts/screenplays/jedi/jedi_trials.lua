@@ -71,7 +71,7 @@ function JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 		sui.setOkButtonText("@jedi_trials:button_close")
 		sui.sendTo(pPlayer)
 	end
-	
+
 	return 0
 end
 
@@ -91,6 +91,10 @@ function JediTrials:unlockJediPadawan(pPlayer)
 	sui.setPrompt("@jedi_trials:padawan_trials_completed")
 	sui.sendTo(pPlayer)
 
+	if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
+		awardSkill(pPlayer, "force_title_jedi_rank_01")
+	end
+
 	awardSkill(pPlayer, "force_title_jedi_rank_02")
 
 	CreatureObject(pPlayer):playEffect("clienteffect/trap_electric_01.cef", "")
@@ -98,25 +102,17 @@ function JediTrials:unlockJediPadawan(pPlayer)
 
 	PlayerObject(pGhost):setJediState(2)
 
-	if not (self:hasFullInventory(pPlayer)) then
-		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-		local pItem = giveItem(pInventory, self.jediPadawanRobe, -1)
-	else
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:inventory_full_jedi_robe")
+	else
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+		local pItem = giveItem(pInventory, "object/tangible/wearables/robe/robe_jedi_padawan.iff", -1)
 	end
 
 	-- Find Trainer.
 	PlayerObject(pGhost):findJediTrainer()
-end
-
-function JediTrials:hasFullInventory(pPlayer)
-	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
-
-	if (pInventory == nil) then
-		return true
-	end
-
-	return SceneObject(pInventory):isContainerFullRecursive()
 end
 
 function JediTrials:emptyCallback(pPlayer)

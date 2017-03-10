@@ -3,16 +3,15 @@ padawan_old_musician_03_conv_handler = conv_handler:new {}
 function padawan_old_musician_03_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
-	local playerID = SceneObject(pPlayer):getObjectID()
-
-	if (trialNumber <= 0 or readData(playerID .. ":JediTrials:spokeToTarget02") == 1) then
+	if (not JediTrials:isOnPadawanTrials(pPlayer)) then
 		return convoTemplate:getScreen("not_on_quest")
 	end
 
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local trialData = padawanTrialQuests[trialNumber]
 
-	if (trialData.trialName ~= "old_musician" or readData(playerID .. ":JediTrials:spokeToTarget01") ~= 1) then
+	if (trialData.trialName ~= "old_musician" or readData(playerID .. ":JediTrials:spokeToTarget02") == 1 or readData(playerID .. ":JediTrials:spokeToTarget01") ~= 1) then
 		return convoTemplate:getScreen("not_on_quest")
 	end
 

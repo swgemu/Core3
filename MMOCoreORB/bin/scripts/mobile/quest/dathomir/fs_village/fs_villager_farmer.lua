@@ -22,7 +22,7 @@ fs_villager_farmer = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -30,7 +30,7 @@ fs_villager_farmer = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "padawan_pannaqa_01_convo_template",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
