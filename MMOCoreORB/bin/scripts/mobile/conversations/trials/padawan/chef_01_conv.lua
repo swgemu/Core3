@@ -114,7 +114,7 @@ intro_has_quest = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/padawan_chef_01:s_bc5c7c4a", "dont_waste_time"}, -- Not just yet. I'm still working on it.
-		{"@conversation/padawan_chef_01:s_7c44e561", "my_sweet_revenge"} -- No but I'm done. I'm not going to help you seek revenge.
+		{"@conversation/padawan_chef_01:s_3f4dfda1", "my_sweet_revenge"} -- No but I'm done. I'm not going to help you seek revenge.
 	}
 }
 padawan_chef_01_convo_template:addScreen(intro_has_quest);
