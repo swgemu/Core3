@@ -19,12 +19,14 @@
 class DestroyStructureTask : public Task {
 protected:
 	ManagedReference<StructureObject*> structureObject;
-	bool destroyQuestStructure;
+	bool playEffect;
+	bool killOccupants;
 
 public:
-	DestroyStructureTask(StructureObject* structure, bool destroyQuest = false) {
+	DestroyStructureTask(StructureObject* structure, bool doEffect = false, bool killStuff = false) {
 		structureObject = structure;
-		destroyQuestStructure = destroyQuest;
+		playEffect = doEffect;
+		killOccupants = killStuff;
 	}
 
 	void run() {
@@ -47,12 +49,9 @@ public:
 		float y = structureObject->getPositionY();
 		float z = zone->getHeight(x, y);
 
-		if (destroyQuestStructure)
+		if (playEffect)
 		{
-			PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(structureObject, "clienteffect/lair_damage_heavy.cef", "");
-			structureObject->broadcastMessage(explode, false);
-
-			PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", structureObject->getZone()->getZoneName(), structureObject->getPositionX(), structureObject->getPositionZ(), structureObject->getPositionY());
+			PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/combat_explosion_lair_large.cef", structureObject->getZone()->getZoneName(), structureObject->getPositionX(), structureObject->getPositionZ(), structureObject->getPositionY());
 			structureObject->broadcastMessage(explodeLoc, false);
 		}
 
@@ -89,7 +88,7 @@ public:
 						try {
 							Locker plocker(playerCreature);
 
-							if (destroyQuestStructure) {
+							if (killOccupants) {
 								playerCreature->inflictDamage(playerCreature, 0, 9999999, true, true);
 								playerCreature->inflictDamage(playerCreature, 3, 9999999, true, true);
 								playerCreature->inflictDamage(playerCreature, 6, 9999999, true, true);

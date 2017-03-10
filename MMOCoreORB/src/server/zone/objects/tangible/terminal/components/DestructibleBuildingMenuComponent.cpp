@@ -42,7 +42,7 @@ int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	if (pendingTask != NULL)
 		return 0;
 
-	pendingTask = new DestroyStructureTask(building, true);
+	pendingTask = new DestroyStructureTask(building, true, true);
 
 	if (selectedID == 128) {
 		building->addPendingTask("destruction", pendingTask, 15000);

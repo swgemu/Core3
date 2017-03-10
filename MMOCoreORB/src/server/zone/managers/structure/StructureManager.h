@@ -73,7 +73,7 @@ public:
 	 * post: structure deleted*
 	 * @param structure The structure that is being destroyed.
 	 */
-	int destroyStructure(StructureObject* structureObject);
+	int destroyStructure(StructureObject* structureObject, bool playEffect = false);
 
 	/**
 	 * Redeeds the structure, returning it to the player in deed form with any surplus maintenance and power attached.

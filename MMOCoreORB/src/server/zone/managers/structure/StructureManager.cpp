@@ -485,8 +485,8 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	return structureObject;
 }
 
-int StructureManager::destroyStructure(StructureObject* structureObject) {
-	Reference<DestroyStructureTask*> task = new DestroyStructureTask(structureObject);
+int StructureManager::destroyStructure(StructureObject* structureObject, bool playEffect) {
+	Reference<DestroyStructureTask*> task = new DestroyStructureTask(structureObject, playEffect);
 	task->execute();
 
 	return 0;

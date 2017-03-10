@@ -1573,7 +1573,7 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
 
 	unregisterGCWBase(building);
 
-	StructureManager::instance()->destroyStructure(building);
+	StructureManager::instance()->destroyStructure(building, true);
 }
 
 void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params) {
