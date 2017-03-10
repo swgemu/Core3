@@ -20,7 +20,7 @@ villageWhipPhase1ConvoTemplate:addScreen(intro);
 intro_has_other_quest = ConvoScreen:new {
 	id = "intro_has_other_quest",
 	leftDialog = "@conversation/village_whip:s_bfdaca25", -- Say, could you... oh, it looks like you're already pretty busy. On your way then.
-	stopConversation = "false",
+	stopConversation = "true",
 	options = {}
 }
 villageWhipPhase1ConvoTemplate:addScreen(intro_has_other_quest);
