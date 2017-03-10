@@ -19,7 +19,7 @@ function padawan_artist_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTem
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
 		return convoTemplate:getScreen("completed_quest")
-	elseif (readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	elseif (readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("intro_spoke_to_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then
 		return convoTemplate:getScreen("intro_in_progress")
@@ -41,7 +41,7 @@ function padawan_artist_01_conv_handler:runScreenHandlers(pConvTemplate, pPlayer
 	elseif (screenID == "meet_assistant") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

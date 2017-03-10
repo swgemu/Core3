@@ -24,10 +24,10 @@ function padawan_chef_02_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "pay_next_time") then
-		writeData(playerID .. ":JediTrials:spokeToTarget", 1)
+		writeData(playerID .. ":JediTrials:spokeToTarget01", 1)
 		CreatureObject(pNpc):setPvpStatusBitmask(0)
 		CreatureObject(pNpc):setOptionsBitmask(0)
-		PadawanTrials:createFirstLocation(pPlayer)
+		PadawanTrials:createMainLocation(pPlayer)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
 	elseif (screenID == "just_a_minute") then
 		PadawanTrials:removeNpcDestroyActiveArea(pPlayer)

@@ -6,7 +6,7 @@ function padawan_spice_mom_02_conv_handler:getInitialScreen(pPlayer, pNpc, pConv
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	if (trialOwnerID ~= playerID or readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	if (trialOwnerID ~= playerID or readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("not_quest_owner")
 	end
 
@@ -19,8 +19,8 @@ function padawan_spice_mom_02_conv_handler:runScreenHandlers(pConvTemplate, pPla
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "quick_to_judge" or screenID == "has_her_reasons" or screenID == "good_friend") then
-		writeData(playerID .. ":JediTrials:spokeToTarget", 1)
-		PadawanTrials:createFirstLocation(pPlayer)
+		writeData(playerID .. ":JediTrials:spokeToTarget01", 1)
+		PadawanTrials:createMainLocation(pPlayer)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
 	end
 

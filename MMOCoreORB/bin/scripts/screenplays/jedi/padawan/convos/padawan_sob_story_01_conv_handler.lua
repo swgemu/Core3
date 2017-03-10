@@ -19,7 +19,7 @@ function padawan_sob_story_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConv
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
 		return convoTemplate:getScreen("quest_completed")
-	elseif (readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	elseif (readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("intro_found_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then
 		return convoTemplate:getScreen("intro_in_progress")
@@ -43,7 +43,7 @@ function padawan_sob_story_01_conv_handler:runScreenHandlers(pConvTemplate, pPla
 	elseif (screenID == "going_camping" or screenID == "somewhere_in_wild") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

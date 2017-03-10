@@ -40,7 +40,7 @@ function padawan_surveyor_01_conv_handler:runScreenHandlers(pConvTemplate, pPlay
 	elseif (screenID == "here_is_waypoint") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

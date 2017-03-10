@@ -40,7 +40,7 @@ function padawan_peoples_soldier_01_conv_handler:runScreenHandlers(pConvTemplate
 	elseif (screenID == "spirit_in_your_eyes" or screenID == "hanging_around") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

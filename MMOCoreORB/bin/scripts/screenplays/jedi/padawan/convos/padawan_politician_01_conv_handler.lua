@@ -40,7 +40,7 @@ function padawan_politician_01_conv_handler:runScreenHandlers(pConvTemplate, pPl
 	elseif (screenID == "uploaded_waypoint") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen
