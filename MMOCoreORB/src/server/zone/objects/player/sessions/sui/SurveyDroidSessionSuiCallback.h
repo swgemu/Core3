@@ -1,8 +1,8 @@
 /*
  * SlicingSessionSuiCallback.h
  *
- *  Created on: Mar 5, 2011
- *      Author: polonel
+ *	Created on: Mar 5, 2011
+ *		Author: polonel
  */
 
 #ifndef SURVEYDRIODCALLBACK_H_
@@ -30,10 +30,10 @@ public:
 
 		if (session == NULL) {
 			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject().get().get());
-			if (obj != NULL)
+			if (obj != NULL) {
 				Locker crosslock(obj, player);
 				obj->dropActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
-
+			}
 			return;
 		}
 
