@@ -1,4 +1,4 @@
-padawan_falumpaset_01_convo_template = ConvoTemplate:new {
+padawan_kill_falumpaset_01_convo_template = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
 	luaClassHandler = "padawan_kill_falumpaset_01_conv_handler",
@@ -14,7 +14,7 @@ intro = ConvoScreen:new {
 		{"@conversation/padawan_kill_falumpaset_01:s_beb9462d", "not_exactly"} -- I assume that is the royal 'we', correct?
 	}
 }
-padawan_falumpaset_01_convo_template:addScreen(intro);
+padawan_kill_falumpaset_01_convo_template:addScreen(intro);
 
 cargo_vessel = ConvoScreen:new {
 	id = "cargo_vessel",
@@ -24,7 +24,7 @@ cargo_vessel = ConvoScreen:new {
 		{"@conversation/padawan_kill_falumpaset_01:s_dedea172", "need_you_to_do"} -- Sure, what is your plan?
 	}
 }
-padawan_falumpaset_01_convo_template:addScreen(cargo_vessel);
+padawan_kill_falumpaset_01_convo_template:addScreen(cargo_vessel);
 
 need_you_to_do = ConvoScreen:new {
 	id = "need_you_to_do",
@@ -32,7 +32,7 @@ need_you_to_do = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(need_you_to_do);
+padawan_kill_falumpaset_01_convo_template:addScreen(need_you_to_do);
 
 not_exactly = ConvoScreen:new {
 	id = "not_exactly",
@@ -43,7 +43,7 @@ not_exactly = ConvoScreen:new {
 		{"@conversation/padawan_kill_falumpaset_01:s_f3993d68", "thanks_anyway"} -- No. And I'm sorry I spoke to you in the first place.
 	}
 }
-padawan_falumpaset_01_convo_template:addScreen(not_exactly);
+padawan_kill_falumpaset_01_convo_template:addScreen(not_exactly);
 
 thanks_anyway = ConvoScreen:new {
 	id = "thanks_anyway",
@@ -51,7 +51,7 @@ thanks_anyway = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(thanks_anyway);
+padawan_kill_falumpaset_01_convo_template:addScreen(thanks_anyway);
 
 intro_in_progress = ConvoScreen:new {
 	id = "intro_in_progress",
@@ -59,7 +59,7 @@ intro_in_progress = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(intro_in_progress);
+padawan_kill_falumpaset_01_convo_template:addScreen(intro_in_progress);
 
 intro_reached_goal = ConvoScreen:new {
 	id = "intro_reached_goal",
@@ -67,7 +67,7 @@ intro_reached_goal = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(intro_reached_goal);
+padawan_kill_falumpaset_01_convo_template:addScreen(intro_reached_goal);
 
 not_quest_owner = ConvoScreen:new {
 	id = "not_quest_owner",
@@ -75,7 +75,7 @@ not_quest_owner = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(not_quest_owner);
+padawan_kill_falumpaset_01_convo_template:addScreen(not_quest_owner);
 
 quest_completed = ConvoScreen:new {
 	id = "quest_completed",
@@ -83,6 +83,6 @@ quest_completed = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-padawan_falumpaset_01_convo_template:addScreen(quest_completed);
+padawan_kill_falumpaset_01_convo_template:addScreen(quest_completed);
 
-addConversationTemplate("padawan_falumpaset_01_convo_template", padawan_falumpaset_01_convo_template);
+addConversationTemplate("padawan_kill_falumpaset_01_convo_template", padawan_kill_falumpaset_01_convo_template);
