@@ -21,7 +21,7 @@ good_questions = ConvoScreen:new {
 	leftDialog = "@conversation/padawan_surveyor_01:s_4f0a7816", -- Good questions. My boss employs me to go out and gather samples for him from around the galaxy. He recently asked me to go out and gather some from a fairly dangerous area. I mean, there's a sharnaff bull there. Those things are HUGE. Actually, maybe you could help me.
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_surveyor_01:s_80783f21", "here_is_waypoint"}, -- Sure, I'm willing to help you out.
+		{"@conversation/padawan_surveyor_01:s_df1f4d74", "here_is_waypoint"}, -- Sure, I'm willing to help you out.
 		{"@conversation/padawan_surveyor_01:s_6f9237a3", "cant_blame_you"} -- Yeah, right. Like that's gonna happen.
 	}
 }
