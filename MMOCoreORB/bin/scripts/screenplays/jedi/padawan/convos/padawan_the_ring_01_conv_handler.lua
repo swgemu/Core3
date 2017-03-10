@@ -21,7 +21,7 @@ function padawan_the_ring_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvT
 		return convoTemplate:getScreen("quest_completed")
 	elseif (readData(playerID .. ":JediTrials:killedTarget") == 1) then
 		return convoTemplate:getScreen("intro_killed_target")
-	elseif (readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	elseif (readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("intro_spoke_to_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then
 		return convoTemplate:getScreen("intro_in_progress")
@@ -45,7 +45,7 @@ function padawan_the_ring_01_conv_handler:runScreenHandlers(pConvTemplate, pPlay
 	elseif (screenID == "last_location") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

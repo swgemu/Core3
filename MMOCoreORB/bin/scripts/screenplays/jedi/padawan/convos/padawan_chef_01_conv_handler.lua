@@ -21,7 +21,7 @@ function padawan_chef_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTempl
 		return convoTemplate:getScreen("not_quest_owner")
 	elseif (readData(playerID .. ":JediTrials:killedTarget") == 1) then
 		return convoTemplate:getScreen("intro_killed_target")
-	elseif (readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	elseif (readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("intro_spoke_to_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then
 		return convoTemplate:getScreen("intro_has_quest")
@@ -45,7 +45,7 @@ function padawan_chef_01_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, 
 	elseif (screenID == "chased_thug") then
 		writeData(playerID .. ":JediTrials:acceptedTask", 1)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
-		PadawanTrials:createSecondLocation(pPlayer)
+		PadawanTrials:createTargetLocation(pPlayer)
 	end
 
 	return pConvScreen

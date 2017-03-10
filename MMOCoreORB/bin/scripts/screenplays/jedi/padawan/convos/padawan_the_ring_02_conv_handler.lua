@@ -24,10 +24,10 @@ function padawan_the_ring_02_conv_handler:runScreenHandlers(pConvTemplate, pPlay
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "good_choice") then
-		writeData(playerID .. ":JediTrials:spokeToTarget", 1)
+		writeData(playerID .. ":JediTrials:spokeToTarget01", 1)
 		CreatureObject(pNpc):setPvpStatusBitmask(0)
 		CreatureObject(pNpc):setOptionsBitmask(0)
-		PadawanTrials:createFirstLocation(pPlayer)
+		PadawanTrials:createMainLocation(pPlayer)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
 	elseif (screenID == "we_will_see") then
 		PadawanTrials:removeNpcDestroyActiveArea(pPlayer)

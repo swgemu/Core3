@@ -192,7 +192,8 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 
 	deleteData(playerID .. ":JediTrials:acceptedTask")
 	deleteData(playerID .. ":JediTrials:killedTarget")
-	deleteData(playerID .. ":JediTrials:spokeToTarget")
+	deleteData(playerID .. ":JediTrials:spokeToTarget01")
+	deleteData(playerID .. ":JediTrials:spokeToTarget02")
 
 	local planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
 
@@ -244,7 +245,7 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 	JediTrials:setTrialLocation(pPlayer, spawnPoint[1], spawnPoint[2], spawnPoint[3], planetName)
 
 	self:sendSuiNotification(pPlayer)
-	self:createFirstLocation(pPlayer)
+	self:createMainLocation(pPlayer)
 end
 
 function PadawanTrials:notifyCraftedTrainingSaber(pPlayer, pItem)
@@ -376,7 +377,7 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 
 		if (targetCount >= targetGoal) then
 			CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_return_to_npc")
-			self:createFirstLocation(pPlayer)
+			self:createMainLocation(pPlayer)
 			return 1
 		end
 	end
@@ -384,23 +385,23 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	return 0
 end
 
-function PadawanTrials:createFirstLocation(pPlayer)
-	local firstLocData = JediTrials:getTrialPlanetAndCity(pPlayer)
-	local planetName = firstLocData[1]
+function PadawanTrials:createMainLocation(pPlayer)
+	local mainLocData = JediTrials:getTrialPlanetAndCity(pPlayer)
+	local planetName = mainLocData[1]
 	local spawnLoc = JediTrials:getTrialLocation(pPlayer)
 
 	local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnLoc[1], spawnLoc[2], spawnLoc[3], 64, 0)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if pActiveArea == nil then
-		printLuaError("PadawanTrials:createFirstLocation, failed to create active area.")
+		printLuaError("PadawanTrials:createMainLocation, failed to create active area.")
 		return
 	end
 
 	local areaID = SceneObject(pActiveArea):getObjectID()
-	writeData(playerID .. ":firstLocSpawnAreaID", areaID)
+	writeData(playerID .. ":mainLocSpawnAreaID", areaID)
 	writeData(areaID .. ":ownerID", playerID)
-	createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredFirstLocSpawnArea", pActiveArea)
+	createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredMainLocSpawnArea", pActiveArea)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
@@ -441,7 +442,7 @@ function PadawanTrials:sendSuiNotification(pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_tell_about_restart")
 end
 
-function PadawanTrials:notifyEnteredFirstLocSpawnArea(pArea, pPlayer)
+function PadawanTrials:notifyEnteredMainLocSpawnArea(pArea, pPlayer)
 	if (pArea == nil or pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
@@ -456,7 +457,7 @@ function PadawanTrials:notifyEnteredFirstLocSpawnArea(pArea, pPlayer)
 	local pActiveArea = spawnActiveArea(SceneObject(pPlayer):getZoneName(), "object/active_area.iff", SceneObject(pArea):getWorldPositionX(), SceneObject(pArea):getWorldPositionZ(), SceneObject(pArea):getWorldPositionY(), 32, 0)
 
 	if pActiveArea == nil then
-		printLuaError("PadawanTrials:notifyEnteredFirstLocSpawnArea, failed to create npc destroy active area.")
+		printLuaError("PadawanTrials:notifyEnteredMainLocSpawnArea, failed to create npc destroy active area.")
 		CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest area, please submit a bug report.")
 		self:failTrial(pPlayer)
 		return 1
@@ -489,7 +490,7 @@ function PadawanTrials:notifyEnteredFirstLocSpawnArea(pArea, pPlayer)
 	writeData(npcID .. ":ownerID", playerID)
 	AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_01_convo_template")
 
-	deleteData(playerID .. ":firstLocSpawnAreaID")
+	deleteData(playerID .. ":mainLocSpawnAreaID")
 	deleteData(SceneObject(pArea):getObjectID() .. ":ownerID")
 	SceneObject(pArea):destroyObjectFromWorld()
 
@@ -560,114 +561,157 @@ function PadawanTrials:removeNpcDestroyActiveArea(pPlayer)
 	deleteData(playerID .. ":destroyAreaID")
 end
 
-function PadawanTrials:createSecondLocation(pPlayer)
+function PadawanTrials:createTargetLocation(pPlayer, isThirdLocation)
+	if (isThirdLocation == nil) then
+		isThirdLocation = false
+	end
+
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
-	local trialName = padawanTrialQuests[trialNumber].trialName
+	local trialData = padawanTrialQuests[trialNumber]
+	local trialName = trialData.trialName
 	local zoneName = SceneObject(pPlayer):getZoneName()
 
-	local secondaryLoc = getSpawnPoint(zoneName, SceneObject(pPlayer):getWorldPositionX(), SceneObject(pPlayer):getWorldPositionY(), 900, 1800, true)
+	local targetLoc
 
-	if (secondaryLoc == nil) then
-		printLuaError("Unable to find spawn point in PadawanTrials:createSecondLocation.")
+	if (isThirdLocation and trialData.thirdTargetLoc ~= nil) then
+		targetLoc = trialData.thirdTargetLoc
+		zoneName = targetLoc[4]
+	elseif (trialData.targetLoc ~= nil) then
+		targetLoc = trialData.targetLoc
+		zoneName = targetLoc[4]
+	else
+		targetLoc = getSpawnPoint(zoneName, SceneObject(pPlayer):getWorldPositionX(), SceneObject(pPlayer):getWorldPositionY(), 900, 1800, true)
+	end
+
+	if (targetLoc == nil) then
+		printLuaError("Unable to find spawn point in PadawanTrials:createTargetLocation.")
 		CreatureObject(pPlayer):sendSystemMessage("Failed to get a good spawn location, please submit a bug report.")
 		self:failTrial(pPlayer)
 		return
 	end
 
-	local pActiveArea = spawnActiveArea(zoneName, "object/active_area.iff", secondaryLoc[1], secondaryLoc[2], secondaryLoc[3], 100, 0)
-	local playerID = SceneObject(pPlayer):getObjectID()
+	local npcTemplate
 
-	if pActiveArea == nil then
-		printLuaError("PadawanTrials:createSecondLocation, failed to create active area.")
-		CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest area, please submit a bug report.")
-		self:failTrial(pPlayer)
-		return
+	if (isThirdLocation and trialData.thirdTargetNpc ~= nil) then
+		npcTemplate = trialData.thirdTargetNpc
+	elseif (trialData.targetNpc ~= nil) then
+		npcTemplate = trialData.targetNpc
 	end
 
-	local areaID = SceneObject(pActiveArea):getObjectID()
-	writeData(areaID .. ":ownerID", playerID)
-	writeData(playerID .. ":secondLocSpawnAreaID", areaID)
-	createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredSecondLocSpawnArea", pActiveArea)
+	if (npcTemplate ~= nil) then
+		local pActiveArea = spawnActiveArea(zoneName, "object/active_area.iff", targetLoc[1], targetLoc[2], targetLoc[3], 100, 0)
+		local playerID = SceneObject(pPlayer):getObjectID()
+
+		if pActiveArea == nil then
+			printLuaError("PadawanTrials:createTargetLocation, failed to create active area.")
+			CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest area, please submit a bug report.")
+			self:failTrial(pPlayer)
+			return
+		end
+
+		local areaID = SceneObject(pActiveArea):getObjectID()
+		writeData(areaID .. ":ownerID", playerID)
+		writeData(playerID .. ":targetLocSpawnAreaID", areaID)
+
+		if (isThirdLocation) then
+			writeData(areaID .. ":isThirdLoc", 1)
+		end
+
+		createObserver(ENTEREDAREA, "PadawanTrials", "notifyEnteredTargetLocSpawnArea", pActiveArea)
+	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint(zoneName, "Padawan Trial waypoint", "", secondaryLoc[1], secondaryLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
+		PlayerObject(pGhost):addWaypoint(zoneName, "Padawan Trial waypoint", "", targetLoc[1], targetLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
 	end
 end
 
-function PadawanTrials:notifyEnteredSecondLocSpawnArea(pArea, pPlayer)
+function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 	if (pArea == nil or pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
 
 	local playerID = SceneObject(pPlayer):getObjectID()
-	local ownerID = readData(SceneObject(pArea):getObjectID() .. ":ownerID")
+	local areaID = SceneObject(pArea):getObjectID()
+	local ownerID = readData(areaID .. ":ownerID")
 
 	if (playerID ~= ownerID) then
 		return 0
 	end
 
-	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
-	local trialData = padawanTrialQuests[trialNumber]
-
-	local planetName = SceneObject(pPlayer):getZoneName()
-	local locX = SceneObject(pArea):getWorldPositionX()
-	local locZ = SceneObject(pArea):getWorldPositionZ()
-	local locY = SceneObject(pArea):getWorldPositionY()
-
-	local pNpc
-
-	if (string.find(trialData.targetNpc, ".iff")) then
-		pNpc = spawnSceneObject(planetName, trialData.targetNpc, locX, locZ, locY, 0, getRandomNumber(180) - 180)
-	else
-		pNpc = spawnMobile(planetName, trialData.targetNpc, 0, locX, locZ, locY, getRandomNumber(180) - 180, 0)
-	end
-
-	if (pNpc == nil) then
-		printLuaError("PadawanTrials:notifyEnteredSecondLocSpawnArea, failed to spawn quest mobile.")
-		CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest mobile, please submit a bug report.")
-		self:failTrial(pPlayer)
-		return 1
-	end
-
-	local npcID = SceneObject(pNpc):getObjectID()
-	writeData(npcID .. ":ownerID", playerID)
-
-	if (trialData.targetNpcName ~= nil) then
-		SceneObject(pNpc):setCustomObjectName(trialData.targetNpcName)
-	end
-
-	if (not string.find(trialData.targetNpc, ".iff")) then
-		if (not trialData.targetKillable) then
-			CreatureObject(pNpc):setPvpStatusBitmask(0)
-		else
-			createObserver(OBJECTDESTRUCTION, "PadawanTrials", "notifyQuestTargetDead", pNpc)
-		end
-	end
-
-	if (trialData.trialType == TRIAL_TALK and not string.find(trialData.targetNpc, ".iff")) then
-		CreatureObject(pNpc):setOptionsBitmask(136)
-		AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
-	end
-
-	deleteData(playerID .. ":secondLocSpawnAreaID")
-	deleteData(SceneObject(pArea):getObjectID() .. ":ownerID")
+	deleteData(playerID .. ":targetLocSpawnAreaID")
+	deleteData(areaID .. ":ownerID")
+	deleteData(areaID .. ":isThirdLoc")
 	SceneObject(pArea):destroyObjectFromWorld()
 
-	local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", locX, locZ, locY, 32, 0)
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+	local trialData = padawanTrialQuests[trialNumber]
+	local isThirdLocation = readData(areaID .. ":isThirdLoc") == 1
 
-	if pActiveArea == nil then
-		printLuaError("PadawanTrials:notifyEnteredSecondLocSpawnArea, failed to create npc destroy active area.")
-		CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest area, please submit a bug report.")
-		self:failTrial(pPlayer)
-		return 1
+	local npcTemplate
+
+	if (isThirdLocation and trialData.thirdTargetNpc ~= nil) then
+		npcTemplate = trialData.thirdTargetNpc
+	elseif (trialData.targetNpc ~= nil) then
+		npcTemplate = trialData.targetNpc
 	end
 
-	local areaID = SceneObject(pActiveArea):getObjectID()
-	writeData(areaID .. ":ownerID", playerID)
-	writeData(areaID .. ":npcID", npcID)
-	createObserver(EXITEDAREA, "PadawanTrials", "notifyExitedLocDestroyArea", pActiveArea)
+	if (npcTemplate ~= nil) then
+		local planetName = SceneObject(pPlayer):getZoneName()
+		local locX = SceneObject(pArea):getWorldPositionX()
+		local locZ = SceneObject(pArea):getWorldPositionZ()
+		local locY = SceneObject(pArea):getWorldPositionY()
+
+		local pNpc
+
+		if (string.find(trialData.targetNpc, ".iff")) then
+			pNpc = spawnSceneObject(planetName, trialData.targetNpc, locX, locZ, locY, 0, getRandomNumber(180) - 180)
+		else
+			pNpc = spawnMobile(planetName, trialData.targetNpc, 0, locX, locZ, locY, getRandomNumber(180) - 180, 0)
+		end
+
+		if (pNpc == nil) then
+			printLuaError("PadawanTrials:notifyEnteredTargetLocSpawnArea, failed to spawn quest mobile.")
+			CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest mobile, please submit a bug report.")
+			self:failTrial(pPlayer)
+			return 1
+		end
+
+		local npcID = SceneObject(pNpc):getObjectID()
+		writeData(npcID .. ":ownerID", playerID)
+
+		if (trialData.targetNpcName ~= nil) then
+			SceneObject(pNpc):setCustomObjectName(trialData.targetNpcName)
+		end
+
+		if (not string.find(trialData.targetNpc, ".iff")) then
+			if (not trialData.targetKillable) then
+				CreatureObject(pNpc):setPvpStatusBitmask(0)
+			else
+				createObserver(OBJECTDESTRUCTION, "PadawanTrials", "notifyQuestTargetDead", pNpc)
+			end
+		end
+
+		if (trialData.trialType == TRIAL_TALK and not string.find(trialData.targetNpc, ".iff")) then
+			CreatureObject(pNpc):setOptionsBitmask(136)
+			AiAgent(pNpc):setConvoTemplate("padawan_" .. trialData.trialName .. "_02_convo_template")
+		end
+
+		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", locX, locZ, locY, 32, 0)
+
+		if pActiveArea == nil then
+			printLuaError("PadawanTrials:notifyEnteredTargetLocSpawnArea, failed to create npc destroy active area.")
+			CreatureObject(pPlayer):sendSystemMessage("Failed to spawn quest area, please submit a bug report.")
+			self:failTrial(pPlayer)
+			return 1
+		end
+
+		local areaID = SceneObject(pActiveArea):getObjectID()
+		writeData(areaID .. ":ownerID", playerID)
+		writeData(areaID .. ":npcID", npcID)
+		createObserver(EXITEDAREA, "PadawanTrials", "notifyExitedLocDestroyArea", pActiveArea)
+	end
 
 	return 1
 end
@@ -689,7 +733,7 @@ function PadawanTrials:notifyQuestTargetDead(pVictim, pAttacker)
 	if (readData(npcID .. ":destroyNpcOnExit") ~= 1) then
 		CreatureObject(pOwner):sendSystemMessage("@jedi_trials:padawan_trials_return_to_npc")
 		writeData(ownerID .. ":JediTrials:killedTarget", 1)
-		self:createFirstLocation(pOwner)
+		self:createMainLocation(pOwner)
 	end
 
 	deleteData(npcID .. ":destroyNpcOnExit")
@@ -705,7 +749,7 @@ function PadawanTrials:removeAllAreas(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	local areaID = readData(playerID .. ":firstLocSpawnAreaID")
+	local areaID = readData(playerID .. ":mainLocSpawnAreaID")
 	local pArea = getSceneObject(areaID)
 
 	if (pArea ~= nil) then
@@ -713,7 +757,7 @@ function PadawanTrials:removeAllAreas(pPlayer)
 	end
 
 	deleteData(areaID .. ":ownerID")
-	deleteData(playerID .. ":firstLocSpawnAreaID")
+	deleteData(playerID .. ":mainLocSpawnAreaID")
 
 	areaID = readData(playerID .. ":destroyAreaID")
 	pArea = getSceneObject(areaID)
@@ -736,7 +780,7 @@ function PadawanTrials:removeAllAreas(pPlayer)
 	deleteData(areaID .. ":ownerID")
 	deleteData(playerID .. ":destroyAreaID")
 
-	areaID = readData(playerID .. ":secondLocSpawnAreaID")
+	areaID = readData(playerID .. ":targetLocSpawnAreaID")
 	pArea = getSceneObject(areaID)
 
 	if (pArea ~= nil) then
@@ -744,7 +788,8 @@ function PadawanTrials:removeAllAreas(pPlayer)
 	end
 
 	deleteData(areaID .. ":ownerID")
-	deleteData(playerID .. ":secondLocSpawnAreaID")
+	deleteData(areaID .. ":isThirdLoc")
+	deleteData(playerID .. ":targetLocSpawnAreaID")
 end
 
 function PadawanTrials:failTrial(pPlayer)
@@ -765,7 +810,8 @@ function PadawanTrials:failTrial(pPlayer)
 	JediTrials:setCurrentTrial(pPlayer, 0)
 	deleteData(playerID .. ":JediTrials:acceptedTask")
 	deleteData(playerID .. ":JediTrials:killedTarget")
-	deleteData(playerID .. ":JediTrials:spokeToTarget")
+	deleteData(playerID .. ":JediTrials:spokeToTarget01")
+	deleteData(playerID .. ":JediTrials:spokeToTarget02")
 
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
@@ -832,18 +878,19 @@ function PadawanTrials:passTrial(pPlayer)
 
 	deleteData(playerID .. ":JediTrials:acceptedTask")
 	deleteData(playerID .. ":JediTrials:killedTarget")
-	deleteData(playerID .. ":JediTrials:spokeToTarget")
+	deleteData(playerID .. ":JediTrials:spokeToTarget01")
+	deleteData(playerID .. ":JediTrials:spokeToTarget02")
 
 	CreatureObject(pPlayer):setScreenPlayState(1, trialState) -- Complete Trial.
 	JediTrials:setCurrentTrial(pPlayer, 0)
 	JediTrials:setTrialsCompleted(pPlayer, trialsCompleted)
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
-	
+
 	if (trialsCompleted < #padawanTrialQuests) then
 		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 	else
-		--TODO: Uncomment when all trials are implemented
-		--JediTrials:unlockJediPadawan(pPlayer)
+	--TODO: Uncomment when all trials are implemented
+	--JediTrials:unlockJediPadawan(pPlayer)
 	end
 end
 

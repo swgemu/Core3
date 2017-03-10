@@ -6,7 +6,7 @@ function padawan_artist_02_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTem
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	if (trialOwnerID ~= playerID or readData(playerID .. ":JediTrials:spokeToTarget") == 1) then
+	if (trialOwnerID ~= playerID or readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("no_active_quest")
 	end
 
@@ -19,8 +19,8 @@ function padawan_artist_02_conv_handler:runScreenHandlers(pConvTemplate, pPlayer
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "okay_thanks") then
-		writeData(playerID .. ":JediTrials:spokeToTarget", 1)
-		PadawanTrials:createFirstLocation(pPlayer)
+		writeData(playerID .. ":JediTrials:spokeToTarget01", 1)
+		PadawanTrials:createMainLocation(pPlayer)
 		writeData(SceneObject(pNpc):getObjectID() .. ":destroyNpcOnExit", 1)
 	end
 

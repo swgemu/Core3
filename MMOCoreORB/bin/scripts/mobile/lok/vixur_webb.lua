@@ -22,12 +22,14 @@ vixur_webb = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = HERD,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_old_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "padawan_old_musician_03_convo_template",
 	attacks = {}
 }
 

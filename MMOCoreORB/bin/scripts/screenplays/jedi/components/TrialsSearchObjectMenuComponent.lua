@@ -30,8 +30,8 @@ function TrialsSearchObjectMenuComponent:handleObjectMenuSelect(pObject, pPlayer
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:successful_search_msg")
 	writeData(objectID .. ":JediTrials:objectSearched", 1)
-	writeData(playerID .. ":JediTrials:spokeToTarget", 1)
-	PadawanTrials:createFirstLocation(pPlayer)
+	writeData(playerID .. ":JediTrials:spokeToTarget01", 1)
+	PadawanTrials:createMainLocation(pPlayer)
 
 	return 0
 end

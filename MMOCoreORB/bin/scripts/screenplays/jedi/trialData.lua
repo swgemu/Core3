@@ -65,6 +65,16 @@ padawanTrialQuests = {
 		huntGoal = 20
 	},
 	{
+		trialName = "old_musician",
+		trialType = TRIAL_TALK,
+		trialNpc = "grobber",
+		trialNpcName = "Grizzlo (a retired musician)",
+		targetNpc = nil,
+		targetLoc = { 3468, 5, -4852, "tatooine" },
+		thirdTargetNpc = nil,
+		thirdTargetLoc = { 469, 12, 5021, "lok" }
+	},
+	{
 		trialName = "peoples_soldier",
 		trialType = TRIAL_KILL,
 		trialNpc = "marco_vahn",
