@@ -84,7 +84,10 @@ function PadawanTrials:jediPadawanTrialsRestartCallback(pPlayer, pSui, eventInde
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_trial_restarted")
-	self:restartTrial(pPlayer)
+	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
+	local trialName = JediTrials:getTrialStateName(pPlayer, trialNumber)
+
+	self:startTrial(pPlayer, trialNumber)
 end
 
 function PadawanTrials:quitPadawanTrials(pPlayer)
@@ -168,37 +171,6 @@ function PadawanTrials:resetAllPadawanTrials(pPlayer)
 
 	JediTrials:resetTrialData(pPlayer, "padawan")
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
-end
-
-function PadawanTrials:restartTrial(pPlayer)
-	local playerID = SceneObject(pPlayer):getObjectID()
-
-	local trialNum = JediTrials:getCurrentTrial(pPlayer)
-	local trialData = padawanTrialQuests[trialNum]
-
-	if (trialData.trialType == TRIAL_LIGHTSABER) then
-		if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
-			awardSkill(pPlayer, "force_title_jedi_rank_01")
-		end
-
-		local trialState = JediTrials:getTrialStateName(pPlayer, trialNum)
-
-		CreatureObject(pPlayer):removeScreenPlayState(1, trialState .. "_saber")
-		CreatureObject(pPlayer):removeScreenPlayState(1, trialState .. "_crystal")
-
-		dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
-		createObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
-		self:sendSuiNotification(pPlayer)
-		return
-	end
-
-	deleteData(playerID .. ":JediTrials:acceptedTask")
-	deleteData(playerID .. ":JediTrials:killedTarget")
-	deleteData(playerID .. ":JediTrials:spokeToTarget01")
-	deleteData(playerID .. ":JediTrials:spokeToTarget02")
-
-	self:sendSuiNotification(pPlayer)
-	self:createMainLocation(pPlayer)
 end
 
 function PadawanTrials:startTrial(pPlayer, trialNum)
