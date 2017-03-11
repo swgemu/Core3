@@ -110,14 +110,14 @@ stench_of_failure = ConvoScreen:new {
 padawan_peoples_soldier_01_convo_template:addScreen(stench_of_failure);
 
 intro_killed_target = ConvoScreen:new {
-	id = "intro_in_progress",
+	id = "intro_killed_target",
 	leftDialog = "@conversation/padawan_peoples_soldier_01:s_d1008bcb", -- Have you got the disk?
 	stopConversation = "false",
 	options = {
 		{"@conversation/padawan_peoples_soldier_01:s_b9bc27b2", "pretty_penny"}, -- Sure enough.  I thought it was going to be a challenge.
 	}
 }
-padawan_peoples_soldier_01_convo_template:addScreen(intro_in_progress);
+padawan_peoples_soldier_01_convo_template:addScreen(intro_killed_target);
 
 pretty_penny = ConvoScreen:new {
 	id = "pretty_penny",
