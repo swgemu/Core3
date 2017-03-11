@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_d6243ac8",
+        "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-11T21:13:05Z",
+      "side": 1,
+      "message": "This check really isn\u0027t needed since you\u0027ve already cast to NavArea. The null check will suffice.",
+      "range": {
+        "startLine": 494,
+        "startChar": 28,
+        "endLine": 494,
+        "endChar": 49
+      },
+      "revId": "ec2a79769c5dcad5a8be02b6bab9749d7c91bda6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_36401e56",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-11T21:13:05Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "ec2a79769c5dcad5a8be02b6bab9749d7c91bda6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
