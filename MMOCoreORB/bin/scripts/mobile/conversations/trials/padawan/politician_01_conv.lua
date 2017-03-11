@@ -66,7 +66,7 @@ intro_in_progress = ConvoScreen:new {
 	leftDialog = "@conversation/padawan_politician_01:s_4eb51131", -- That was quick... did you make the countryside a safer place?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_politician_01:s_e6b7fdc0", "such_enthusiasm"}, -- Not yet, but believe me they will.
+		{"@conversation/padawan_politician_01:s_d30e03d9", "such_enthusiasm"}, -- "Not yet, but believe me they will."
 		{"@conversation/padawan_politician_01:s_99bdf01", "real_shame"} -- I decided to make myself a safer place. Go deal with it yourself.
 	}
 }
@@ -97,3 +97,4 @@ not_quest_owner = ConvoScreen:new {
 padawan_politician_01_convo_template:addScreen(not_quest_owner);
 
 addConversationTemplate("padawan_politician_01_convo_template", padawan_politician_01_convo_template);
+

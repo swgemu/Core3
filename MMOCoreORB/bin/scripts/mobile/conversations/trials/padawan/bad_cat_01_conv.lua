@@ -112,7 +112,7 @@ intro_in_progress = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/padawan_bad_cat_01:s_6077d5", "please_hurry"}, -- Not yet, but I will.
-		{"@conversation/padawan_bad_cat_01:s_5ffd7e8f", "oh_dear"}, -- No, and I've decided I'm not going to. Deal with it yourself.
+		{"@conversation/padawan_bad_cat_01:s_ee242807", "oh_dear"}, -- No, and I've decided I'm not going to. Deal with it yourself.
 	}
 }
 padawan_bad_cat_01_convo_template:addScreen(intro_in_progress);
