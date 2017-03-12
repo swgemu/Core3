@@ -174,6 +174,10 @@ function PadawanTrials:resetAllPadawanTrials(pPlayer)
 end
 
 function PadawanTrials:startTrial(pPlayer, trialNum)
+	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
+	dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+
 	JediTrials:setCurrentTrial(pPlayer, trialNum)
 	local trialData = padawanTrialQuests[trialNum]
 
@@ -187,7 +191,6 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 		CreatureObject(pPlayer):removeScreenPlayState(1, trialState .. "_saber")
 		CreatureObject(pPlayer):removeScreenPlayState(1, trialState .. "_crystal")
 
-		dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
 		createObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
 		self:sendSuiNotification(pPlayer)
 		return
@@ -350,7 +353,7 @@ function PadawanTrials:setupHuntTrial(pPlayer)
 	end
 
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.huntTarget)
-	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
+	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", "0")
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
 	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 	createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
