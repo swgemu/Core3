@@ -107,7 +107,10 @@ int LuaSceneObject::_getObject(lua_State* L) {
 }
 
 int LuaSceneObject::_setObject(lua_State* L) {
-	realObject = reinterpret_cast<SceneObject*>(lua_touserdata(L, -1));
+	auto obj = reinterpret_cast<SceneObject*>(lua_touserdata(L, -1));
+
+	if (obj != realObject)
+		realObject = obj;
 
 	return 0;
 }

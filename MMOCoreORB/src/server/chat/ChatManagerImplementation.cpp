@@ -858,7 +858,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	SortedVector<QuadTreeEntry* > closeEntryObjects(200, 50);
 
 	if (vec != NULL) {
-		vec->safeCopyTo(closeEntryObjects);
+		vec->safeCopyReceiversTo(closeEntryObjects, 1);
 	} else {
 #ifdef COV_DEBUG
 		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
@@ -869,10 +869,10 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	float range = defaultSpatialChatDistance;
 
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
+		SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.getUnsafe(i));
 
 		if (object->isPlayerCreature()) {
-			CreatureObject* creature = cast<CreatureObject*>(object);
+			CreatureObject* creature = object->asCreatureObject();
 
 			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
@@ -882,7 +882,6 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 			if (creature->isInRange(sender, range) && ((firstName != "" && !ghost->isIgnoring(firstName)) || godMode || !sender->isPlayerCreature())) {
 				Emote* emsg = new Emote(sender->getObjectID(), creature->getObjectID(), targetID, emoteID, doAnim, doText);
 				creature->sendMessage(emsg);
-
 			}
 		}
 	}
@@ -1067,7 +1066,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	StringIdChatParameter* param = NULL;
 
-	if (message[0] == '@' && message.indexOf(":") != -1) {
+	if (message.length() && message[0] == '@' && message.indexOf(":") != -1) {
 		param = new StringIdChatParameter(message.toString());
 	}
 
@@ -1213,7 +1212,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != NULL) {
-		closeObjects->safeCopyTo(closeEntryObjects);
+		closeObjects->safeCopyReceiversTo(closeEntryObjects, 1);
 	} else {
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
@@ -1230,12 +1229,12 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.get(i));
+			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.getUnsafe(i));
 
 			if (object == NULL)
 				continue;
 
-			CreatureObject* creature = cast<CreatureObject*>(object);
+			CreatureObject* creature = object->asCreatureObject();
 
 			if (creature == NULL)
 				continue;

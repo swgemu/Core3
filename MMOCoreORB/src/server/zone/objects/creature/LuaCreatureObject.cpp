@@ -155,11 +155,17 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 	LuaTangibleObject::_setObject(L);
 
 #ifdef DYNAMIC_CAST_LUAOBJECTS
-	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
+	auto obj = dynamic_cast<CreatureObject*>(_getRealSceneObject());
+
+	if (obj != realObject)
+		realObject = obj;
 
 	assert(!_getRealSceneObject() || realObject != NULL);
 #else
-	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+	auto obj = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	if (realObject != obj)
+		realObject = obj;
 #endif
 
 	return 0;
