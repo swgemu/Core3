@@ -108,6 +108,9 @@ void CommandLuaTest::loadAnimList() {
 
 	IffStream *stream = DataArchiveStore::instance()->openIffFile("combat/combat_manager.iff");
 
+	SortedVector<String> animNames;
+	animNames.setNoDuplicateInsertPlan();
+
 	ASSERT_TRUE(stream != NULL);
 
 	stream->openForm('CBTM');
@@ -117,11 +120,16 @@ void CommandLuaTest::loadAnimList() {
 		while((form = stream->openForm('ENTR'))) {
 			String str;
 			form->getChunk(0)->readString(str);
+			animNames.put(str);
 			animList.add(str.hashCode());
 			stream->closeForm('ENTR');
 		}
 	} catch (...) {
 		// end of list throws exception
+	}
+
+	for (const auto& str : animNames) {
+		logger.info(str, true);
 	}
 
 	stream->closeForm('0002');

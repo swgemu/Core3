@@ -1654,7 +1654,9 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 	if(pl) {
 		if(pl->getCellTotalNumber() > 0) {
 			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+
 			data.addAll(appr->getTransformedMeshData(transform * *parentTransform));
+
 
 			const CellProperty* tmpl = pl->getCellProperty(0);
 

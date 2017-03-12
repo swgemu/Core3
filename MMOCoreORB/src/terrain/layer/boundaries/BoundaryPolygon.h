@@ -26,10 +26,10 @@ class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	float minX, minY, maxX, maxY;
 
 public:
+	
 	const Vector<Point2D*>& getVertices() const {
 		return vertices;
 	}
-
 	BoundaryPolygon() : localWaterTableEnabled(0), localWaterTableHeight(0), shaderSize(0) {
 		//ruleType = BOUNDARYPOLYGON;
 

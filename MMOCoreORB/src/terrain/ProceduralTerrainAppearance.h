@@ -16,6 +16,8 @@ class TerrainGenerator;
 class Boundary;
 class TerrainMaps;
 
+class Boundary;
+
 class Layer;
 
 class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logger, public TerrainAppearance {
@@ -90,7 +92,7 @@ public:
 	void insertWaterBoundary(Boundary* boundary) {
 		waterBoundaries.add(boundary);
 	}
-
+	
 	void getWaterBoundariesInAABB(const AABB& bounds, Vector<const Boundary*>* boundariesOut) const;
 
 	/**
@@ -102,27 +104,30 @@ public:
 	}
 
 	bool getWater(float x, float y, float& waterHeight);
-	float getHeight(float x, float y);
-	int getEnvironmentID(float x, float y);
-
-	float getGlobalWaterTableHeight() {
-		return globalWaterTableHeight;
-	}
 
 	bool getUseGlobalWaterTable() {
 		return useGlobalWaterTable;
-	}
-	ReadWriteLock* getGuard() {
-		return &guard;
 	}
 
 	float getDistanceBetweenPoles() {
 		return chunkSize / (tilesPerChunk * 2.0f);
 	}
 
+	float getHeight(float x, float y);
+
+	int getEnvironmentID(float x, float y);
+
+	float getGlobalWaterTableHeight() {
+		return globalWaterTableHeight;
+	}
+	ReadWriteLock* getGuard() {
+		return &guard;
+	}
+
 	TerrainGenerator* addTerrainModification(engine::util::IffStream* terrainGeneratorIffStream, float x, float y, uint64 objectid);
 	TerrainGenerator* removeTerrainModification(uint64 objectid);
 
 };
+
 
 #endif /* PROCEDURALTERRAINAPPEARANCE_H_ */

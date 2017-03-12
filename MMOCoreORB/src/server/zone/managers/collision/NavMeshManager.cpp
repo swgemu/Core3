@@ -57,7 +57,7 @@ void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, con
 
     Core::getTaskManager()->scheduleTask([=]{
         checkJobs();
-    }, "checkJobs", 750, TileQueue.toCharArray());
+    }, "checkJobs", 750);
 
 }
 
@@ -97,7 +97,7 @@ void NavMeshManager::checkJobs() {
 
             Locker locker(&jobQueueMutex);
             runningJobs.drop(name);
-        }, "updateNavMesh", job->getQueue().toCharArray());
+        }, "updateNavMesh");
     }
 
     locker.release();
@@ -228,7 +228,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     //TODO: Fixme
     Core::getTaskManager()->scheduleTask([=]{
         checkJobs();
-    }, "checkNavJobs", 1000, TileQueue.toCharArray());
+    }, "checkNavJobs", 1000);
 }
 
 void NavMeshManager::cancelJobs(NavArea* area) {

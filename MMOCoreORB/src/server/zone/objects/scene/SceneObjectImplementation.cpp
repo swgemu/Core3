@@ -1748,7 +1748,9 @@ Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(
 	transform.setRotationMatrix(direction.toMatrix3());
 	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
-	return appearance->getTransformedMeshData(transform * *parentTransform );
+	Vector<Reference<MeshData*>> data = appearance->getTransformedMeshData(transform * *parentTransform );
+
+	return data;
 }
 
 const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {

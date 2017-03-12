@@ -6,6 +6,7 @@
  */
 
 #include "FloorMesh.h"
+#include "templates/appearance/MeshData.h"
 
 void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
 	indicies[0] = iffStream->getInt(); // Corner Index[0]
@@ -13,9 +14,9 @@ void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
 	indicies[2] = iffStream->getInt(); // Corner Index[2]
 
 	Vector3 tri[3];
-	tri[0] = mesh->getVertex(indicies[0])->getPosition();
-	tri[1] = mesh->getVertex(indicies[1])->getPosition();
-	tri[2] = mesh->getVertex(indicies[2])->getPosition();
+	tri[0] = *mesh->getVertex(indicies[0]);
+	tri[1] = *mesh->getVertex(indicies[1]);
+	tri[2] = *mesh->getVertex(indicies[2]);
 	set(tri);
 
 	triangleID = iffStream->getUnsignedInt(); // Triangle Index
@@ -120,7 +121,7 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	}*/
 
 	//tris.removeAll(1, 1);
-	vertices.removeAll(1, 1);
+	//vertices.removeAll(1, 1);
 
 	AABBTreeHeuristic heurData;
 	heurData.maxdepth = 2; // maximum depth
@@ -176,11 +177,11 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 		int vertSize = vertData->getChunkSize();
 
 		while (vertSize > 0) {
-			Vert vert;
-			vert.readObject(iffStream);
+			float x = iffStream->getFloat();
+			float y = iffStream->getFloat();
+			float z = iffStream->getFloat();
 
-			vertices.add(vert);
-
+			vertices.add(Vector3(x, y, z));
 			vertSize -= 12;
 		}
 
@@ -230,10 +231,7 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 		int verticesSize = data->readInt();
 
 		for (int i = 0; i < verticesSize; ++i) {
-			Vert vert;
-			vert.readObject(iffStream);
-
-			vertices.add(vert);
+			vertices.add(Vector3(iffStream->getFloat(), iffStream->getFloat(), iffStream->getFloat()));
 		}
 
 		iffStream->closeChunk();
@@ -345,4 +343,34 @@ bool FloorMesh::testCollide(float x, float z, float y, float radius) {
 	Sphere sphere(point, radius);
 
 	return aabbTree->testCollide(sphere);
+}
+
+
+Reference<MeshData*> FloorMesh::getMeshData() {
+	Reference<MeshData*> data = new MeshData();
+
+	Vector<Vector3> *vertices = data->getVerts();
+	Vector<MeshTriangle> *triangles = data->getTriangles();
+
+	for (const auto& edge : uncrossableEdges) {
+		const auto& tri = tris.get(edge.getTriangleID());
+		int startIndex = edge.getEdgeID() % 3;
+
+		Vector3 start = tri->getVertex(startIndex);
+		Vector3 end = tri->getVertex(startIndex < 2 ? startIndex + 1 : 0);
+
+		start = Vector3(start.getX(), start.getY(), start.getZ());
+		end = Vector3(end.getX(), end.getY(), end.getZ());
+
+		vertices->add(start);
+		vertices->add(end);
+		vertices->add(Vector3(start.getX(), start.getY()+2, start.getZ()));
+		vertices->add(Vector3(end.getX(), end.getY()+2, end.getZ()));
+
+		int ind = vertices->size() - 1;
+		triangles->add(MeshTriangle(ind-1, ind-2, ind-3));
+		triangles->add(MeshTriangle(ind, ind-2, ind-1));
+
+	}
+	return data;
 }

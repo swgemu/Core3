@@ -80,7 +80,6 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	}
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
-
 		Reference<CallMountTask*> callMount = new CallMountTask(_this.getReferenceUnsafeStaticCast(), player, "call_mount");
 
 		StringIdChatParameter message("pet/pet_menu", "call_vehicle_delay");
