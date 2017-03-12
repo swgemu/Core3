@@ -509,6 +509,13 @@ function PadawanTrials:notifyEnteredMainLocSpawnArea(pArea, pPlayer)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyEnteredMainLocSpawnArea, nil trialData for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNumber .. "\n.")
+		self:failTrial(pPlayer)
+		return 1
+	end
+
 	local spawnLoc = JediTrials:getTrialLocation(pPlayer)
 	local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
 
