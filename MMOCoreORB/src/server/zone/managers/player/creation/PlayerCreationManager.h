@@ -70,8 +70,8 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 
 	bool freeGodMode;
 
-	HashTable<uint32, Time> lastCreatedCharacter;
-	Mutex charCountMutex;
+	mutable HashTable<uint32, Time> lastCreatedCharacter;
+	mutable Mutex charCountMutex;
 
 	void loadLuaConfig();
 	void loadRacialCreationData();
@@ -86,11 +86,11 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 	 */
 	void loadLuaStartingItems(Lua* lua);
 
-	void addCustomization(CreatureObject* creature, const String& customizationString, const String& appearanceFilename);
-	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization);
-	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems, bool equipmentOnly);
-	void addStartingItems(CreatureObject* creature, const String& clientTemplate, bool equipmentOnly);
-	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate, bool equipmentOnly);
+	void addCustomization(CreatureObject* creature, const String& customizationString, const String& appearanceFilename) const;
+	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization) const;
+	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems, bool equipmentOnly) const;
+	void addStartingItems(CreatureObject* creature, const String& clientTemplate, bool equipmentOnly) const;
+	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate, bool equipmentOnly) const;
 	//void generateHologrindProfessions(CreatureObject* creature);
 
 public:
@@ -101,11 +101,11 @@ public:
 	 * Validates the character's name.
 	 * @param characterName The character's name.
 	 */
-	bool validateCharacterName(const String& characterName);
+	bool validateCharacterName(const String& characterName) const;
 	/**
 	 * Attempts to create a character, validating the information passed back by the client.
 	 */
-	bool createCharacter(ClientCreateCharacterCallback* callback);
+	bool createCharacter(ClientCreateCharacterCallback* callback) const;
 
 	/**
 	 * Returns the requested maximum attribute limit for the specified race.
@@ -113,7 +113,7 @@ public:
 	 * @param attributeNumber The attribute number (starting from 0).
 	 * @return maximum attribute limit.
 	 */
-	int getMaximumAttributeLimit(const String& race, int attributeNumber);
+	int getMaximumAttributeLimit(const String& race, int attributeNumber) const;
 
 	/**
 	 * Returns the requested minimum attribute limit for the specified race.
@@ -121,28 +121,28 @@ public:
 	 * @param attributeNumber The attribute number (starting from 0).
 	 * @return minimum attribute limit.
 	 */
-	int getMinimumAttributeLimit(const String& race, int attributeNumber);
+	int getMinimumAttributeLimit(const String& race, int attributeNumber) const;
 
 	/**
 	 * Returns the total attribute limit for the specified race.
 	 * @param race the race of interest.
 	 * @return total attribute limit.
 	 */
-	int getTotalAttributeLimit(const String& race);
+	int getTotalAttributeLimit(const String& race) const;
 
 	/**
 	 * Adds starting Weapons into the target container
 	 * @param creature the player creature
 	 * @param container the target container
 	 */
-	void addStartingWeaponsInto(CreatureObject* creature, SceneObject* container);
+	void addStartingWeaponsInto(CreatureObject* creature, SceneObject* container) const;
 
 	/**
 	 * Adds starting Items except Weapons into the target container
 	 * @param creature the player creature
 	 * @param container the target container
 	 */
-	void addStartingItemsInto(CreatureObject* creature, SceneObject* container);
+	void addStartingItemsInto(CreatureObject* creature, SceneObject* container) const;
 };
 
 }

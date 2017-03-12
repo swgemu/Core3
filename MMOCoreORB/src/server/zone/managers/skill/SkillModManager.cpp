@@ -242,9 +242,9 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 	SkillList* skillList = creature->getSkillList();
 	for(int i = 0; i < skillList->size(); ++i) {
 		Reference<Skill*> skill = skillList->get(i);
-		VectorMap<String, int>* skillMods = skill->getSkillModifiers();
+		auto skillMods = skill->getSkillModifiers();
 		for(int j = 0; j < skillMods->size(); ++j) {
-			String name = skillMods->elementAt(j).getKey();
+			const String& name = skillMods->elementAt(j).getKey();
 			int value = skillMods->get(name);
 
 			if(mods.contains(name)) {

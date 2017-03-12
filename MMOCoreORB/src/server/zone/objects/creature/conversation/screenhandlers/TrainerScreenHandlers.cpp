@@ -146,7 +146,7 @@ void TrainerTrainableSkillsScreenHandler::getTrainableSkillsList(CreatureObject*
 		}
 	} else if (skill->getSkillName().indexOf("novice") < 0){
 		//Check skills recursive but no longer down the tree than novice skill.
-		Vector<String>* requiredSkills = skill->getSkillsRequired();
+		auto requiredSkills = skill->getSkillsRequired();
 		for (int i = 0; i < requiredSkills->size(); ++i) {
 			getTrainableSkillsList(conversingPlayer, trainableSkillList, SkillManager::instance()->getSkill(requiredSkills->get(i)));
 		}
@@ -217,7 +217,7 @@ void TrainerNextSkillsScreenHandler::getNextSkillsList(CreatureObject* conversin
 		}
 	} else if (skill->getSkillName().indexOf("novice") < 0){
 		//Check skills recursive but no longer down the tree than novice skill.
-		Vector<String>* requiredSkills = skill->getSkillsRequired();
+		auto requiredSkills = skill->getSkillsRequired();
 		for (int i = 0; i < requiredSkills->size(); ++i) {
 			getNextSkillsList(conversingPlayer, nextSkillList, SkillManager::instance()->getSkill(requiredSkills->get(i)));
 		}

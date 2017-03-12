@@ -88,19 +88,23 @@ public:
 		professionMods.put(idx, value);
 	}
 
-	SortedVector<String>* getProfessionItems(const String& clientTemplate) {
+	const SortedVector<String>* getProfessionItems(const String& clientTemplate) const {
 		if (!professionItems.contains(clientTemplate))
 			return NULL;
 
 		return &professionItems.get(clientTemplate);
 	}
 
-	Skill* getSkill() {
+	const Skill* getSkill() const {
 		return skill;
 	}
 
-	int getAttributeMod(uint8 idx) {
+	int getAttributeMod(uint8 idx) const {
 		return professionMods.get(idx);
+	}
+
+	inline const Vector<String>* getStartingItems() const {
+		return &startingItems;
 	}
 
 	inline Vector<String>* getStartingItems() {

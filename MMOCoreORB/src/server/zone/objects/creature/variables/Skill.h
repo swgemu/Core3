@@ -217,51 +217,51 @@ public:
 
 	}
 
-	inline String& getSkillName() {
+	inline const String& getSkillName() const {
 		return skillName;
 	}
 
-	inline int getJediStateRequired() {
+	inline int getJediStateRequired() const {
 		return jediStateRequired;
 	}
 
-	inline bool isGodOnly() {
+	inline bool isGodOnly() const {
 		return godOnly;
 	}
 
-	inline bool isTitle() {
+	inline bool isTitle() const {
 		return title;
 	}
 
-	inline bool isSkill() {
+	inline bool isSkill() const {
 		return profession;
 	}
 
-	inline bool isHidden() {
+	inline bool isHidden() const {
 		return hidden;
 	}
 
-	inline bool isSearchable() {
+	inline bool isSearchable() const {
 		return searchable;
 	}
 
-	inline Skill* getParent() {
+	inline Skill* getParent() const {
 		return parentNode.get();
 	}
 
-	inline int getTotalChildren() {
+	inline int getTotalChildren() const {
 		return childNodes.size();
 	}
 
-	inline Skill* getChildNode(int idx) {
+	inline const Skill* getChildNode(int idx) const {
 		return childNodes.get(idx);
 	}
 
-	inline bool containsChildNode(Skill* skill) {
+	inline bool containsChildNode(Skill* skill) const {
 		return childNodes.contains(skill);
 	}
 
-	inline String& getParentName() {
+	inline const String& getParentName() const {
 		return parentName;
 	}
 
@@ -270,31 +270,31 @@ public:
 		childNodes.add(skill);
 	}
 
-	inline Vector<String>* getAbilities() {
+	inline const Vector<String>* getAbilities() const {
 		return &commands;
 	}
 
-	inline Vector<String>* getSchematicsGranted() {
+	inline const Vector<String>* getSchematicsGranted() const {
 		return &schematicsGranted;
 	}
 
-	inline VectorMap<String, int>* getSkillModifiers() {
+	inline const VectorMap<String, int>* getSkillModifiers() const {
 		return &skillModifiers;
 	}
 
-	inline Vector<String>* getSkillsRequired() {
+	inline const Vector<String>* getSkillsRequired() const {
 		return &skillsRequired;
 	}
 
-	inline bool isRequiredSkillOf(Skill* skill) {
+	inline bool isRequiredSkillOf(Skill* skill) const {
 		return skillsRequired.contains(skill->getSkillName());
 	}
 
-	inline String getXpType() {
+	inline const String& getXpType() const {
 		return xpType;
 	}
 
-	inline int getXpCap() {
+	inline int getXpCap() const {
 		return xpCap;
 	}
 
@@ -302,7 +302,7 @@ public:
 	 * Returns the XP cost for the skill.
 	 * @return XP cost for the skill.
 	 */
-	inline int getXpCost() {
+	inline int getXpCost() const {
 		return xpCost;
 	}
 
@@ -310,7 +310,7 @@ public:
 	 * Returns the credits required for training the skill at a trainer.
 	 * @return the credits required for training the skill at a trainer.
 	 */
-	inline int getMoneyRequired() {
+	inline int getMoneyRequired() const {
 		return moneyRequired;
 	}
 
@@ -318,7 +318,7 @@ public:
 	 * Returns the number of skill points required for the skill.
 	 * @return the number of skill points required for the skill.
 	 */
-	inline int getSkillPointsRequired() {
+	inline int getSkillPointsRequired() const {
 		return pointsRequired;
 	}
 
@@ -326,7 +326,7 @@ public:
 	 * Returns the species required for the skill.
 	 * @return the species required for the skill.
 	 */
-	inline Vector<String>* getSpeciesRequired() {
+	inline const Vector<String>* getSpeciesRequired() const {
 		return &speciesRequired;
 	}
 

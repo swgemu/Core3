@@ -68,8 +68,8 @@ public:
 	void addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
 	void removeAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
 
-	void addAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
-	void removeAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
+	void addAbilities(PlayerObject* ghost, const Vector<String>& abilityNames, bool notifyClient = true);
+	void removeAbilities(PlayerObject* ghost, const Vector<String>& abilityNames, bool notifyClient = true);
 
 	bool awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool awardRequiredSkills = false, bool noXpRequired = false);
 	void awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient = true);
@@ -109,23 +109,23 @@ public:
 
 	void updateXpLimits(PlayerObject* ghost);
 
-	Skill* getSkill(const String& skillName) {
-		return skillMap.get(skillName.hashCode());
+	Skill* getSkill(const String& skillName) const {
+		return skillMap.get(skillName.hashCode()).get();
 	}
 
-	Skill* getSkill(uint32 hashCode) {
-		return skillMap.get(hashCode);
+	Skill* getSkill(uint32 hashCode) const {
+		return skillMap.get(hashCode).get();
 	}
 
-	Ability* getAbility(const String& abilityName) {
-		return abilityMap.get(abilityName);
+	Ability* getAbility(const String& abilityName) const {
+		return abilityMap.get(abilityName).get();
 	}
 
 	PerformanceManager* getPerformanceManager() {
 		return performanceManager;
 	}
 
-	inline bool isApprenticeshipEnabled() {
+	inline bool isApprenticeshipEnabled() const {
 		return apprenticeshipEnabled;
 	}
 };

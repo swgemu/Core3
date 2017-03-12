@@ -40,14 +40,14 @@ bool SkillList::containsSkill(const String& skillBox) {
 
 void SkillList::getStringList(Vector<String>& skills) {
 	for (int i = 0; i < vector.size(); ++i) {
-		Reference<Skill*> skill = vector.get(i);
+		const Reference<Skill*>& skill = vector.get(i);
 
 		if (skill == NULL)
 			continue;
 
-		String& name = skill->getSkillName();
+		const String& name = skill->getSkillName();
 
-		skills.add(name);
+		skills.emplace(name);
 	}
 }
 
@@ -90,7 +90,7 @@ void SkillList::loadFromNames(Vector<String>& skillBoxes) {
 }
 
 bool SkillList::add(Skill* skill, DeltaMessage* message) {
-	bool val = vector.add(skill);
+	bool val = vector.emplace(skill);
 
 	if (message != NULL && skill != NULL) {
 		message->startList(1, ++updateCounter);
@@ -123,7 +123,7 @@ void SkillList::insertToMessage(BaseMessage* msg) {
 	msg->insertInt(updateCounter);
 
 	for (int i = 0; i < vector.size(); ++i) {
-		Reference<Skill*> skill = get(i);
+		const Reference<Skill*>& skill = get(i);
 
 		if (skill == NULL)
 			continue;

@@ -308,8 +308,9 @@ void PlayerCreationManager::loadLuaStartingItems(Lua* lua) {
 			for (int itemNumber = 1;
 					itemNumber <= professionSpecificItemList.getTableSize();
 					itemNumber++) {
-				professionDefaultsInfo.get(professions.get(professionNumber))->getStartingItems()->add(
-						professionSpecificItemList.getStringAt(itemNumber));
+				auto& val = professionDefaultsInfo.get(professions.get(professionNumber));
+				auto itemObj = professionSpecificItemList.getStringAt(itemNumber);
+				val->getStartingItems()->add(itemObj);
 			}
 			professionSpecificItemList.pop();
 		}
@@ -331,7 +332,7 @@ void PlayerCreationManager::loadLuaStartingItems(Lua* lua) {
 	}
 }
 
-bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callback) {
+bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callback) const {
 	TemplateManager* templateManager = TemplateManager::instance();
 
 	auto client = callback->getClient();
@@ -613,7 +614,7 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 }
 
 int PlayerCreationManager::getMaximumAttributeLimit(const String& race,
-		int attributeNumber) {
+		int attributeNumber) const {
 	String maleRace = race + "_male";
 
 	if (attributeNumber < 0 || attributeNumber > 8) {
@@ -632,7 +633,7 @@ int PlayerCreationManager::getMaximumAttributeLimit(const String& race,
 }
 
 int PlayerCreationManager::getMinimumAttributeLimit(const String& race,
-		int attributeNumber) {
+		int attributeNumber) const {
 	String maleRace = race + "_male";
 
 	if (attributeNumber < 0 || attributeNumber > 8) {
@@ -650,7 +651,7 @@ int PlayerCreationManager::getMinimumAttributeLimit(const String& race,
 	}
 }
 
-int PlayerCreationManager::getTotalAttributeLimit(const String& race) {
+int PlayerCreationManager::getTotalAttributeLimit(const String& race) const {
 	String maleRace = race + "_male";
 
 	Reference<RacialCreationData*> racialData = racialCreationData.get(
@@ -663,13 +664,13 @@ int PlayerCreationManager::getTotalAttributeLimit(const String& race) {
 	}
 }
 
-bool PlayerCreationManager::validateCharacterName(const String& characterName) {
+bool PlayerCreationManager::validateCharacterName(const String& characterName) const {
 	return true;
 }
 
 void PlayerCreationManager::addStartingItems(CreatureObject* creature,
-		const String& clientTemplate, bool equipmentOnly) {
-	SortedVector < String > *items = NULL;
+		const String& clientTemplate, bool equipmentOnly) const {
+	const SortedVector < String >* items = NULL;
 
 	if (!defaultCharacterEquipment.contains(clientTemplate))
 		items = &defaultCharacterEquipment.get(0);
@@ -718,14 +719,14 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature,
 
 void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		const String& profession, const String& clientTemplate,
-		bool equipmentOnly) {
-	ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(
+		bool equipmentOnly) const {
+	const ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(
 			profession);
 
 	if (professionData == NULL)
 		professionData = professionDefaultsInfo.get(0);
 
-	Reference<Skill*> startingSkill = professionData->getSkill();
+	auto startingSkill = professionData->getSkill();
 	//Reference<Skill*> startingSkill = SkillManager::instance()->getSkill("crafting_artisan_novice");
 
 	//Starting skill.
@@ -740,7 +741,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		creature->setMaxHAM(i, mod, false);
 	}
 
-	SortedVector < String > *itemTemplates = professionData->getProfessionItems(
+	auto itemTemplates = professionData->getProfessionItems(
 			clientTemplate);
 
 	if (itemTemplates == NULL)
@@ -801,7 +802,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 }
 
 void PlayerCreationManager::addHair(CreatureObject* creature,
-		const String& hairTemplate, const String& hairCustomization) {
+		const String& hairTemplate, const String& hairCustomization) const {
 	if (hairTemplate.isEmpty())
 		return;
 
@@ -868,7 +869,7 @@ void PlayerCreationManager::addHair(CreatureObject* creature,
 }
 
 void PlayerCreationManager::addCustomization(CreatureObject* creature,
-		const String& customizationString, const String& appearanceFilename) {
+		const String& customizationString, const String& appearanceFilename) const {
 	//TODO: Validate customizationString
 	CustomizationVariables data;
 
@@ -880,7 +881,7 @@ void PlayerCreationManager::addCustomization(CreatureObject* creature,
 }
 
 void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
-		SceneObject* container) {
+		SceneObject* container) const {
 
 	if (creature == NULL || container == NULL
 			|| !creature->isPlayerCreature()) {
@@ -961,7 +962,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 }
 
 void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
-		SceneObject* container) {
+		SceneObject* container) const {
 	if (creature == NULL || container == NULL || !creature->isPlayerCreature())
 		return;
 
@@ -1049,7 +1050,7 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 
 void PlayerCreationManager::addRacialMods(CreatureObject* creature,
 		const String& race, Vector<String>* startingSkills,
-		Vector<String>* startingItems, bool equipmentOnly) {
+		Vector<String>* startingItems, bool equipmentOnly) const {
 	Reference<RacialCreationData*> racialData = racialCreationData.get(race);
 
 	if (racialData == NULL)

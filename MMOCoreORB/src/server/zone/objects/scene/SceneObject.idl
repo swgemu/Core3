@@ -642,14 +642,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
 	 */
 	@dirty
-	public int compareTo(SceneObject obj) {
-		if (getObjectID() < obj.getObjectID())
-			return 1;
-		else if (getObjectID() > obj.getObjectID())
-			return -1;
-		else
-			return 0;
-	}
+	@nativeStub
+	public native int compareTo(SceneObject obj);
 
 	/**
 	 * Fills the specified vector with the containment objects of this object
@@ -891,9 +885,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public Zone getLocalZone() {
 		return zone.get();
 	}
-
-	@dirty
-	public native unsigned long getObjectID();
 
 	@local
 	@dereferenced
