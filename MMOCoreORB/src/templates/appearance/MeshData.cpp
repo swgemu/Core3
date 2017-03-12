@@ -114,12 +114,13 @@ void MeshData::readObject(IffStream* iffStream) {
 
 	int intBytesPerVertex = vertexDataChunkSize / numVertices;
 
-	vertices.removeAll(numVertices);
+	//vertices.removeAll(numVertices);
 
 	for (int i = 0; i < numVertices; ++i) {
 		Vector3 vert = iffStream->getVector3();
-		vertices.add(Vector3(vert[0], vert[1], vert[2]));
+		vertices.add(vert);
 		vertexDataChunk->shiftOffset(intBytesPerVertex - 12);
+
 	}
 
 	iffStream->closeChunk('DATA');

@@ -1346,15 +1346,15 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			}
 		}
 		if((pool & ACTION)){
-			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true, false);
 			return (int)actionDamage;
 		}
 		if((pool & HEALTH)) {
-			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true, false);
 			return (int)healthDamage;
 		}
 		if((pool & MIND)) {
-			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true, false);
 			return (int)mindDamage;
 		}
 		return 0;

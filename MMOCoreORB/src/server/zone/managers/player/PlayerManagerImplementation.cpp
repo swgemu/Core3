@@ -1097,15 +1097,6 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	Zone* zone = destructedObject->getZone();
 
-	if (zone != NULL) {
-		GCWManager* gcwMan = zone->getGCWManager();
-
-		if (gcwMan != NULL) {
-			gcwBonus += (gcwMan->getGCWXPBonus() / 100.0f);
-			winningFaction = gcwMan->getWinningFaction();
-		}
-	}
-
 	if (!destructedObject->isCreatureObject() && spawnedCreatures != NULL) {
 		ManagedReference<AiAgent*> ai = NULL;
 

@@ -203,8 +203,6 @@ bool RecastNavMeshBuilder::rebuildArea(const AABB& buildArea, RecastNavMesh* exi
 
 bool RecastNavMeshBuilder::build() {
 
-	dtFreeNavMesh(m_navMesh);
-
 	if (m_navMesh) {
 		dtFreeNavMesh(m_navMesh);
 	}

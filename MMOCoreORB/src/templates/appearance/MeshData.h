@@ -99,7 +99,7 @@ public:
 	void transformMeshData(const Matrix4& transform) {
 		for (int i = 0; i < vertices.size(); i++) {
 			Vector3& vert = vertices.get(i);
-			vert = Vector3(vert.getX(), vert.getY(), vert.getZ()) * transform;
+			vert = vert * transform;
 		}
 	}
 

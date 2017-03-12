@@ -6,7 +6,7 @@
  */
 
 #include "MeshAppearanceTemplate.h"
-
+#include "templates/manager/TemplateManager.h"
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	//file = iffStream->getFileName();
 
@@ -150,4 +150,19 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 	iffStream->closeForm(nextVersion);
 
 	iffStream->closeForm(formVersion);
+}
+
+
+Vector<Reference<MeshData* > > MeshAppearanceTemplate::getTransformedMeshData(const Matrix4& parentTransform) const {
+	Vector<Reference<MeshData* > > newMeshes;
+	for(int i=0; i<meshes.size(); i++) {
+		newMeshes.add(MeshData::makeCopyNegateZ(meshes.get(i), parentTransform));
+	}
+
+	FloorMesh* floor = TemplateManager::instance()->getFloorMesh(getFloorMesh());
+	if (floor != NULL) {
+		newMeshes.add(MeshData::makeCopyNegateZ(floor->getMeshData(), parentTransform));
+	}
+
+	return newMeshes;
 }

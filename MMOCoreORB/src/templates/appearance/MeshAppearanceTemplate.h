@@ -88,13 +88,7 @@ public:
 		return aabbTree->intersects(ray, maxDistance, result);
 	}
 
-	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
-		Vector<Reference<MeshData* > > newMeshes;
-		for(int i=0; i<meshes.size(); i++) {
-			newMeshes.add(MeshData::makeCopyNegateZ(meshes.get(i), parentTransform));
-		}
-		return newMeshes;
-	}
+	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const;
 };
 
 #endif /* MESHAPPEARANCETEMPLATE_H_ */
