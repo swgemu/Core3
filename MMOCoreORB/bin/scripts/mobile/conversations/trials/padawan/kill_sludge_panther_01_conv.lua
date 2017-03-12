@@ -7,7 +7,7 @@ padawan_kill_sludge_panther_01_convo_template = ConvoTemplate:new {
 
 intro = ConvoScreen:new {
 	id = "intro",
-	leftDialog = "@conversation/padawan_kill_sludge_panther_01:s_7b35cfbc", -- It's getting out of control.
+	leftDialog = "@conversation/padawan_kill_sludge_panther_01:s_da6f521d", -- It's getting out of control.
 	stopConversation = "false",
 	options = {
 		{"@conversation/padawan_kill_sludge_panther_01:s_7b35cfbc", "bad_meat"} -- What is the problem?

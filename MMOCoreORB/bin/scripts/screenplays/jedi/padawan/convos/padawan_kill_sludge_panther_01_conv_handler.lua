@@ -14,7 +14,7 @@ function padawan_kill_sludge_panther_01_conv_handler:getInitialScreen(pPlayer, p
 		return convoTemplate:getScreen("not_quest_owner")
 	end
 
-	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "kill_falumpaset")
+	local giverTrialNum = JediTrials:getTrialNumByName(pPlayer, "kill_sludge_panther")
 	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
