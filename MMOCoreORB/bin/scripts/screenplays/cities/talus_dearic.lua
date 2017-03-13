@@ -344,6 +344,10 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "businessman",60,-18.8153,3.22324,21.6509,252.41,6255472)
 
 	--newb grind starter spawns
+	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
+	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
+	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
+	
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
