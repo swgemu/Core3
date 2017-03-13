@@ -17,15 +17,16 @@ end
 
 function FsReflex2:restartQuest(pPlayer)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase2")
+
+	self:resetTasks(pPlayer)
+
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00)
-	FsReflex2Theater:finish(pPlayer)
 	FsReflex2Goto:start(pPlayer)
 end
 
 function FsReflex2:failQuest(pPlayer)
 	writeData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase2", 1)
 	FsReflex2Theater:finish(pPlayer)
-	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03)
