@@ -79,7 +79,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		}
 	}
 
-	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
+	if(player->getCurrentCamp() == NULL && player->getCityRegion().get() == NULL) {
 
 		Reference<CallMountTask*> callMount = new CallMountTask(_this.getReferenceUnsafeStaticCast(), player, "call_mount");
 

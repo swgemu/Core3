@@ -2588,7 +2588,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
 	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeTrainer) {
-		ManagedReference<CityRegion*> city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			playerCreature->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.

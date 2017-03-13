@@ -21,7 +21,7 @@ int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vend
 	String planet = vendor->getZone()->getZoneName();
 
 	String region = "@planet_n:" + vendor->getZone()->getZoneName();
-	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
 	if(cityRegion != NULL)
 		region = cityRegion->getRegionName();
 
@@ -261,7 +261,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 	String planet = zone->getZoneName();
 
 	String region = "@planet_n:" + planet;
-	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
 	if(cityRegion != NULL)
 		region = cityRegion->getRegionName();
 

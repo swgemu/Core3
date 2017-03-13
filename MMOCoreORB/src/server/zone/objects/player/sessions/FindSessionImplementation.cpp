@@ -128,7 +128,7 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 		return;
 	}
 
-	ManagedReference<CityRegion*> region = object->getCityRegion();
+	ManagedReference<CityRegion*> region = object->getCityRegion().get();
 	String regFullName = "";
 
 	if (region != NULL) {

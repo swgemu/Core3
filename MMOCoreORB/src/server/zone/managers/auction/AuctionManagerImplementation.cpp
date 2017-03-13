@@ -490,7 +490,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 
 	AuctionItem* item  = new AuctionItem(objectToSell->getObjectID());
 
-	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
 	String region = "@planet_n:" + planetStr;
 
 	if (cityRegion != NULL)
@@ -886,7 +886,7 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
-	ManagedReference<CityRegion*> city = vendor->getCityRegion();
+	ManagedReference<CityRegion*> city = vendor->getCityRegion().get();
 
 	int totalPrice = item->getPrice();
 
@@ -971,7 +971,7 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 
 
 	if (vendor->isBazaarTerminal()) {
-		ManagedReference<CityRegion*> region = vendor->getCityRegion();
+		ManagedReference<CityRegion*> region = vendor->getCityRegion().get();
 
 		String location = vendor->getZone()->getZoneName() + ".";
 
@@ -1283,8 +1283,9 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 	case 3:
 		vendor = vendorInUse;
 	case 2:
-		if(player->getCityRegion() != NULL)
-			region = player->getCityRegion().get()->getRegionName();
+		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		if (city != NULL)
+			region = city->getRegionName();
 		else {
 			region = "@planet_n:" + player->getZone()->getZoneName();
 			vendor = vendorInUse;
@@ -1559,7 +1560,6 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 
 	Zone* zone = vendor->getZone();
-	ManagedReference<CityRegion*> city = NULL;
 	String vendorPlanetName;
 
 	if (zone != NULL) {
@@ -1568,8 +1568,8 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 
 	String vendorRegionName = vendorPlanetName;
 
-	if (vendor->getCityRegion() != NULL) {
-		city = vendor->getCityRegion().get();
+	ManagedReference<CityRegion*> city = vendor->getCityRegion().get();
+	if (city != NULL) {
 		vendorRegionName = city->getRegionName();
 	}
 

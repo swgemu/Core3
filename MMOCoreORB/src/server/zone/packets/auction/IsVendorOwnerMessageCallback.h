@@ -48,7 +48,7 @@ public:
 		String vendorRegion = zone->getZoneName();
 
 
-		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
+		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion().get();
 		if (cityRegion != NULL)
 			vendorRegion = cityRegion->getRegionName();
 

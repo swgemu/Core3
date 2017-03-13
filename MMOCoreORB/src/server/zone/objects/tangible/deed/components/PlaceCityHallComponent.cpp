@@ -39,7 +39,7 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 	ManagedReference<BuildingObject*> declaredResidence = zone->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != NULL) {
-		ManagedReference<CityRegion*> city = declaredResidence->getCityRegion();
+		ManagedReference<CityRegion*> city = declaredResidence->getCityRegion().get();
 
 		if (city != NULL && city->isMayor(creature->getObjectID())) {
 			creature->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city.  You may not be mayor of another city.
@@ -66,7 +66,7 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost != NULL && structure->isBuildingObject()) {
-		ManagedReference<CityRegion*> city = structure->getCityRegion();
+		ManagedReference<CityRegion*> city = structure->getCityRegion().get();
 
 		if (city != NULL && city->isMayor(creature->getObjectID())) {
 			Locker locker(city);

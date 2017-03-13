@@ -31,7 +31,7 @@ public:
 		if (!ghost->hasAbility("recruitskilltrainer"))
 			return GENERALERROR;
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion();
+		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 		if (city == NULL)
 			return GENERALERROR;
 

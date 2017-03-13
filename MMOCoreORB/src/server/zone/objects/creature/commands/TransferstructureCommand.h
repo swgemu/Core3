@@ -167,7 +167,7 @@ public:
 		//TODO:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
 
-		ManagedReference<CityRegion*> region = structure->getCityRegion();
+		ManagedReference<CityRegion*> region = structure->getCityRegion().get();
 
 		if (region != NULL && ghost != NULL) {
 			Locker locker(region);

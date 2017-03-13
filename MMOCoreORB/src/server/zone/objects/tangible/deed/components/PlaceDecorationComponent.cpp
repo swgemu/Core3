@@ -12,10 +12,14 @@
 #include "server/zone/managers/structure/StructureManager.h"
 
 int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
-	if(creature == NULL || creature->getZoneServer() == NULL || creature->getCityRegion() == NULL)
+	if(creature == NULL || creature->getZoneServer() == NULL)
 		return 1;
 
-	CityRegion* city = creature->getCityRegion().get();
+	ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+
+	if (city == NULL)
+		return 1;
+
 	CityManager* cityManager = creature->getZoneServer()->getCityManager();
 	if(cityManager == NULL)
 		return 1;

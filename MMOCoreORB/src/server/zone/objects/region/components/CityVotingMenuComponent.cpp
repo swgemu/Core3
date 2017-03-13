@@ -13,7 +13,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void CityVotingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
+	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == NULL || (!city->isCitizen(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()))
 			return;
@@ -35,7 +35,7 @@ void CityVotingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 }
 
 int CityVotingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
+	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == NULL)
 		return 0;

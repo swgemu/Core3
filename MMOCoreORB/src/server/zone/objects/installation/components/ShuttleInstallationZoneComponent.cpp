@@ -32,7 +32,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 
 			if (installationObject->isShuttleInstallation()) {
 
-				ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion();
+				ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion().get();
 				ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 				if (cityRegion != NULL) {

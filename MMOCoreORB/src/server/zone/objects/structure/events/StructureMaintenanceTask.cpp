@@ -75,7 +75,7 @@ void StructureMaintenanceTask::run() {
 
 
 	// add city tax to the week maintenance
-	ManagedReference<CityRegion*> city = strongRef->getCityRegion();
+	ManagedReference<CityRegion*> city = strongRef->getCityRegion().get();
 	if(strongRef->isBuildingObject() && city != NULL){
 		oneWeekMaintenance += city->getPropertyTax() / 100.0f * oneWeekMaintenance;
 	}

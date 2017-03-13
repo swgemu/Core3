@@ -295,7 +295,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		ManagedReference<Region*> activeRegion = tano->getActiveRegion().castTo<Region*>();
 
 		if (activeRegion != NULL) {
-			ManagedReference<CityRegion*> city = activeRegion->getCityRegion();
+			ManagedReference<CityRegion*> city = activeRegion->getCityRegion().get();
 
 			object->setCityRegion(city);
 
