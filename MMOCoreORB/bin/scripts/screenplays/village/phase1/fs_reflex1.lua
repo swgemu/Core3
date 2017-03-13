@@ -16,6 +16,8 @@ end
 
 function FsReflex1:restartQuest(pPlayer)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase1")
+
+	self:resetTasks(pPlayer)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
 	FsReflex1Goto:start(pPlayer)
 end
@@ -40,21 +42,19 @@ function FsReflex1:hasActiveRescue(pPlayer)
 		QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
 end
 
-function FsReflex1:failQuest(pPlayer)
+function FsReflex1:failQuest(pPlayer, failMsg)
 	writeData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase1", 1)
-	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
+	CreatureObject(pPlayer):sendSystemMessage(failMsg)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
-	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 end
 
 function FsReflex1:resetEscortStatus(pPlayer)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
-	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 end
 
 function FsReflex1:doPhaseChangeFail(pPlayer)
@@ -89,12 +89,12 @@ function FsReflex1:completeVillagerEscort(pPlayer)
 
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
-	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 
 	if (count == 5) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_finished")
 		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_enhanced_reflexes_survival")
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 

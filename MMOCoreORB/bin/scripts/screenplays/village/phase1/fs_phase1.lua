@@ -21,7 +21,7 @@ function FsPhase1:failActiveTasks(pPlayer)
 
 	if (FsReflex1:hasActiveRescue(pPlayer)) then
 		FsReflex1:resetTasks(pPlayer)
-		FsReflex1:failQuest(pPlayer)
+		FsReflex1:failQuest(pPlayer, "@quest/force_sensitive/fs_reflex:msg_phase_01_quest_failed")
 	end
 end
 
