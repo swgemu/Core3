@@ -34,7 +34,7 @@ trainer_brawler = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trainer_brawler_convotemplate",
+	conversationTemplate = "brawlerTrainerConvoTemplate",
 	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_brawler,"trainer_brawler")

@@ -391,6 +391,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \
+		server/zone/managers/skill/LuaSkillManager.cpp \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/skill/SkillModManager.cpp \
 		server/login/account/AccountImplementation.cpp \
