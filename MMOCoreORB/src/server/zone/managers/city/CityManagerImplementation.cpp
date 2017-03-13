@@ -2210,7 +2210,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	ManagedReference<BuildingObject*> declaredResidence = creature->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != NULL) {
-		ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion();
+		ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion().get();
 
 		if (declaredCity != NULL && declaredCity->isMayor(objectid) && city != declaredCity) {
 			creature->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city.  You may not be mayor of another city.

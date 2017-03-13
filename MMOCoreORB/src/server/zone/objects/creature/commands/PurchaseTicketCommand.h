@@ -120,7 +120,7 @@ public:
 			return GENERALERROR;
 
 
-		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion();
+		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion().get();
 
 		if (destCity != NULL){
 			if (destCity.get()->isBanned(creature->getObjectID())) {

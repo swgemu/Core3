@@ -65,8 +65,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 	if (player == NULL)
 		return;
 
-	if (camp != NULL)
-		camp->addTemplateSkillMods(player);
+	camp->addTemplateSkillMods(player);
 
 	if (campObserver == NULL) {
 		campObserver = new CampSiteObserver(_this.getReferenceUnsafeStaticCast());
@@ -113,8 +112,7 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 	if (player == NULL)
 		return;
 
-	if (camp != NULL)
-		camp->removeTemplateSkillMods(player);
+	camp->removeTemplateSkillMods(player);
 
 	StringIdChatParameter stringID("camp", "prose_camp_exit");
 	stringID.setTO(terminal->getDisplayedName());

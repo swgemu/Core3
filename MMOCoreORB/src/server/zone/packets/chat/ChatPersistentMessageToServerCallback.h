@@ -130,7 +130,7 @@ public:
 			}
 
 			// Player must be the mayor of the city where he resides
-			ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion();
+			ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion().get();
 			if (declaredCity != NULL && declaredCity->isMayor(player->getObjectID())) {
 
 				Locker cityLocker(declaredCity);

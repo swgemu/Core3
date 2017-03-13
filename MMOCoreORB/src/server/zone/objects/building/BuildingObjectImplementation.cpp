@@ -339,7 +339,7 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 bool BuildingObjectImplementation::isCityBanned(CreatureObject* player) {
-	ManagedReference<CityRegion*> thisRegion  = this->getCityRegion();
+	ManagedReference<CityRegion*> thisRegion  = this->getCityRegion().get();
 
 	if (thisRegion != NULL)
 		if (thisRegion->isBanned(player->getObjectID()))

@@ -825,7 +825,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	//Get the name of the pre-designated facility
 	if (preDesignatedFacility != NULL) {
-		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion();
+		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion().get();
 
 		if (preDesignatedFacility->getZone() != zone) {
 			predesignatedName = "off-planet (unavailable)";
@@ -843,7 +843,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		return;
 	}
 	String closestName = "None";
-	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
+	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion().get();
 	unsigned long long playerID = player->getObjectID();
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
@@ -861,7 +861,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			if (cbot == NULL || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction()))
 				continue;
 
-			cr = location->getCityRegion();
+			cr = location->getCityRegion().get();
 			String name;
 
 			if (cr != NULL) {

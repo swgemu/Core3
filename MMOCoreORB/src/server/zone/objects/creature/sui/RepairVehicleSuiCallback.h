@@ -46,7 +46,7 @@ public:
 		int totalFunds = player->getBankCredits();
 		int tax = 0;
 
-		ManagedReference<CityRegion*> city =vehicle->getCityRegion();
+		ManagedReference<CityRegion*> city =vehicle->getCityRegion().get();
 		if(city != NULL && city->getGarageTax() > 0){
 			tax = repairCost * city->getGarageTax() / 100;
 			repairCost += tax;

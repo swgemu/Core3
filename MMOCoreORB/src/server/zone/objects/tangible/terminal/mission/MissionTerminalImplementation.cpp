@@ -16,7 +16,7 @@
 void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TerminalImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	ManagedReference<CityRegion*> city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 	if (city != NULL && city->isMayor(player->getObjectID()) && getParent().get() == NULL) {
 
@@ -31,7 +31,7 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ManagedReference<CityRegion*> city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
 		if (isBountyTerminal())

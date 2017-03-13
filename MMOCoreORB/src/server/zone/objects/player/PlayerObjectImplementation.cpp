@@ -1600,7 +1600,7 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
-	if (creature->getCityRegion() != NULL) {
+	if (creature->getCityRegion().get() != NULL) {
 		return;
 	}
 

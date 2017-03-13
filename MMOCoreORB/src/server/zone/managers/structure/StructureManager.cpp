@@ -227,7 +227,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 		if (!area->isRegion())
 			continue;
 
-		city = dynamic_cast<Region*>(area)->getCityRegion();
+		city = dynamic_cast<Region*>(area)->getCityRegion().get();
 
 		if (city != NULL)
 			break;
@@ -552,7 +552,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
 	ManagedReference<BuildingObject*> declaredResidence = server->getObject(declaredOidResidence).castTo<BuildingObject*>();
-	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
+	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion().get();
 
 	CityManager* cityManager = server->getCityManager();
 
@@ -562,7 +562,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 			return 1;
 		}
 
-		ManagedReference<CityRegion*> residentCity = declaredResidence->getCityRegion();
+		ManagedReference<CityRegion*> residentCity = declaredResidence->getCityRegion().get();
 
 		if (residentCity != NULL) {
 			Locker lock(residentCity, player);
@@ -855,15 +855,10 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	if (!structure->isCivicStructure() && !structure->isGCWBase()) {
 		// property tax
 		float propertytax = 0.f;
-		if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
-			ManagedReference<CityRegion*> city = structure->getCityRegion().get();
-			if(city != NULL){
-				propertytax = city->getPropertyTax()/ 100.f * structure->getMaintenanceRate();
-				status->addMenuItem(
-							"@city/city:property_tax_prompt : "
-									+ String::valueOf(ceil(propertytax))
-									+  " cr/hr");
-			}
+		ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+		if (city != NULL) {
+			propertytax = city->getPropertyTax() / 100.f * structure->getMaintenanceRate();
+			status->addMenuItem("@city/city:property_tax_prompt : " + String::valueOf(ceil(propertytax)) + " cr/hr");
 		}
 
 		// maintenance

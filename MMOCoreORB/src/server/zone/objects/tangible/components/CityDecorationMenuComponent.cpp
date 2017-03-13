@@ -15,14 +15,14 @@
 void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	ManagedReference<CityRegion*> city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 
 	if(isInInventory(sceneObject, player) && player->getParent() == NULL) {
 		menuResponse->addRadialMenuItem(233, 3, "@city/city:place"); // Place Decoration
 	}
 
-	if(city != NULL && sceneObject->getParent().get() == NULL && sceneObject->getCityRegion() == city && city->isMayor(player->getObjectID()) ) {
+	if(city != NULL && sceneObject->getParent().get() == NULL && sceneObject->getCityRegion().get() == city && city->isMayor(player->getObjectID()) ) {
 		menuResponse->addRadialMenuItem(234, 3, "@city/city:mt_remove"); // Remove
 
 		menuResponse->addRadialMenuItem(73, 3, "@city/city:align"); // Align
@@ -54,7 +54,7 @@ int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 0;
 
 	} else if (selectedID == 74 || selectedID == 75 || selectedID == 76 || selectedID == 77) {
-		ManagedReference<CityRegion*> city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 		CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
 		cityManager->alignAmenity(city, player, sceneObject, selectedID - 74);

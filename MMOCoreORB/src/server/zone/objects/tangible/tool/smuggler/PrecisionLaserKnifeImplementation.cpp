@@ -46,7 +46,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		if (terminal == NULL || terminal->isBountyTerminal())
 			return 0;
 
-		ManagedReference<CityRegion*> city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 			return 0;

@@ -162,7 +162,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 		if (activeArea != NULL && activeArea->isRegion()) {
 			Region* region = cast<Region*>( activeArea.get());
 
-			ManagedReference<CityRegion*> gb = region->getCityRegion();
+			ManagedReference<CityRegion*> gb = region->getCityRegion().get();
 			
 			if (gb == NULL)
 				return;
@@ -204,7 +204,7 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 	int totalFunds = player->getBankCredits();
 	int tax = 0;
 
-	ManagedReference<CityRegion*> city = getCityRegion();
+	ManagedReference<CityRegion*> city = getCityRegion().get();
 	if(city != NULL && city->getGarageTax() > 0){
 		repairCost += repairCost * city->getGarageTax() / 100;
 	}

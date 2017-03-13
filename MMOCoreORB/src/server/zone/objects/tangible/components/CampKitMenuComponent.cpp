@@ -115,7 +115,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		ManagedReference<CityRegion*> region = player->getCityRegion();
+		ManagedReference<CityRegion*> region = player->getCityRegion().get();
 		if(region != NULL) {
 			player->sendSystemMessage("@camp:error_muni_true");
 			return 0;

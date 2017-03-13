@@ -215,7 +215,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
-	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
+	if (player->getCurrentCamp() == NULL && player->getCityRegion().get() == NULL) {
 
 		Reference<CallPetTask*> callPet = new CallPetTask(_this.getReferenceUnsafeStaticCast(), player, "call_pet");
 

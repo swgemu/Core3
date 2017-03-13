@@ -46,7 +46,7 @@ public:
 	void placeDecoration() {
 		Locker _lock(mayor);
 
-		ManagedReference<CityRegion*> city = mayor->getCityRegion();
+		ManagedReference<CityRegion*> city = mayor->getCityRegion().get();
 
 		if(city == NULL) {
 			mayor->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
@@ -132,7 +132,7 @@ public:
 	void removeDecoration() {
 		Locker _lock(mayor);
 
-		ManagedReference<CityRegion*> city = mayor->getCityRegion();
+		ManagedReference<CityRegion*> city = mayor->getCityRegion().get();
 
 		if(city == NULL)
 			return;

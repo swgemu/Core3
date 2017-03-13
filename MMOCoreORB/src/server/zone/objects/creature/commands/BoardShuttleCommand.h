@@ -136,7 +136,7 @@ public:
 		ManagedReference<CreatureObject*> targetShuttleObject = arrivalPoint->getShuttle();
 
 		if (targetShuttleObject != NULL) {
-			ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion();
+			ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion().get();
 
 			if (region != NULL) {
 #ifdef ENABLE_CITY_TRAVEL_LIMIT
@@ -152,7 +152,7 @@ public:
 			}
 		}
 
-		ManagedReference<CityRegion*> departCity = shuttle->getCityRegion();
+		ManagedReference<CityRegion*> departCity = shuttle->getCityRegion().get();
 
 		if (departCity != NULL){
 			if (departCity->isBanned(creature->getObjectID())) {
@@ -168,7 +168,7 @@ public:
 
 		p.initializePosition(arrivalPoint->getArrivalPosition());
 
-		ManagedReference<CityRegion*> region = targetShuttleObject != NULL ? targetShuttleObject->getCityRegion() : NULL;
+		ManagedReference<CityRegion*> region = targetShuttleObject != NULL ? targetShuttleObject->getCityRegion().get() : NULL;
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method
