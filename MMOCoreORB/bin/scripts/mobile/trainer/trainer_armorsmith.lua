@@ -30,7 +30,7 @@ trainer_armorsmith = Creature:new {
 		"object/mobile/dressed_armorsmith_trainer_02.iff",
 		"object/mobile/dressed_armorsmith_trainer_03.iff"
 	},
-	conversationTemplate = "trainer_armorsmith_convotemplate",
+	conversationTemplate = "armorsmithTrainerConvoTemplate",
 	optionsBitmask = INVULNERABLE + CONVERSABLE
 }
 CreatureTemplates:addCreatureTemplate(trainer_armorsmith,"trainer_armorsmith")
