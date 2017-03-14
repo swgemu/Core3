@@ -115,6 +115,70 @@ void LightsaberCrystalComponentImplementation::generateCrystalStats() {
 	quality = getCrystalQuality();
 }
 
+void LightsaberCrystalComponentImplementation::validateCrystalStats() {
+	ManagedReference<LootManager*> lootManager = getZoneServer()->getLootManager();
+
+	if (lootManager == NULL)
+		return;
+
+	CrystalData* crystalData = lootManager->getCrystalData(getObjectTemplate()->getTemplateFileName());
+
+	if (crystalData == NULL) {
+		error("Unable to find crystal stats for " + getObjectTemplate()->getTemplateFileName());
+		return;
+	}
+
+	int minStat = crystalData->getMinHitpoints();
+	int maxStat = crystalData->getMaxHitpoints();
+
+	if (getMaxCondition() > maxStat || getMaxCondition() < minStat)
+		setMaxCondition(getRandomizedStat(minStat, maxStat, itemLevel));
+
+	if (color == 31) {
+		minStat = crystalData->getMinDamage();
+		maxStat = crystalData->getMaxDamage();
+
+		if (damage > maxStat || damage < minStat)
+			damage = getRandomizedStat(minStat, maxStat, itemLevel);
+
+		minStat = crystalData->getMinHealthSac();
+		maxStat = crystalData->getMaxHealthSac();
+
+		if (sacHealth > maxStat || sacHealth < minStat)
+			sacHealth = getRandomizedStat(minStat, maxStat, itemLevel);
+
+		minStat = crystalData->getMinActionSac();
+		maxStat = crystalData->getMaxActionSac();
+
+		if (sacAction > maxStat || sacAction < minStat)
+			sacAction = getRandomizedStat(minStat, maxStat, itemLevel);
+
+		minStat = crystalData->getMinMindSac();
+		maxStat = crystalData->getMaxMindSac();
+
+		if (sacMind > maxStat || sacMind < minStat)
+			sacMind = getRandomizedStat(minStat, maxStat, itemLevel);
+
+		minStat = crystalData->getMinWoundChance();
+		maxStat = crystalData->getMaxWoundChance();
+
+		if (woundChance > maxStat || woundChance < minStat)
+			woundChance = getRandomizedStat(minStat, maxStat, itemLevel);
+
+		float minFloatStat = crystalData->getMinForceCost();
+		float maxFloatStat = crystalData->getMaxForceCost();
+
+		if (floatForceCost > maxFloatStat || floatForceCost < minFloatStat)
+			floatForceCost = getRandomizedStat(minFloatStat, maxFloatStat, itemLevel);
+
+		minFloatStat = crystalData->getMinAttackSpeed();
+		maxFloatStat = crystalData->getMaxAttackSpeed();
+
+		if (attackSpeed > maxFloatStat || attackSpeed < minFloatStat)
+			attackSpeed = Math::getPrecision(getRandomizedStat(minFloatStat, maxFloatStat, itemLevel), 2);
+	}
+}
+
 int LightsaberCrystalComponentImplementation::getCrystalQuality() {
 	if (itemLevel < 40)
 		return POOR;
@@ -212,7 +276,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	PlayerObject* player = object->getPlayerObject();
-	if (player->getJediState() > 1 || player->isPrivileged()) {
+	if (object->hasSkill("force_title_jedi_rank_01") || player->isPrivileged()) {
 		if (ownerID == 0) {
 			StringBuffer str;
 			str << "\\#pcontrast2 UNTUNED";
@@ -226,7 +290,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 			str3 << "@jedi_spam:saber_color_" << getColor();
 			alm->insertAttribute("color", str3);
 		} else {
-			if (ownerID != 0) {
+			if (ownerID != 0 || player->isPrivileged()) {
 				alm->insertAttribute("mindamage", damage);
 				alm->insertAttribute("maxdamage", damage);
 				alm->insertAttribute("wpn_attack_speed", attackSpeed);
@@ -235,10 +299,18 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 				alm->insertAttribute("wpn_attack_cost_action", sacAction);
 				alm->insertAttribute("wpn_attack_cost_mind", sacMind);
 				alm->insertAttribute("forcecost", (int)getForceCost());
+
+				// For debugging
+				if (player->isPrivileged()) {
+					StringBuffer str;
+					str << "@jedi_spam:crystal_quality_" << getQuality();
+					alm->insertAttribute("challenge_level", itemLevel);
+					alm->insertAttribute("crystal_quality", str);
+				}
 			} else {
 				StringBuffer str;
 				str << "@jedi_spam:crystal_quality_" << getQuality();
-				alm->insertAttribute("quality", str);
+				alm->insertAttribute("crystal_quality", str);
 			}
 		}
 	}
@@ -250,22 +322,46 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
 
+	PlayerObject* ghost = player->getPlayerObject();
+	if (ghost != NULL && ghost->isPrivileged()) {
+		menuResponse->addRadialMenuItem(129, 3, "Staff Commands");
+		menuResponse->addRadialMenuItemToRadialID(129, 130, 3, "Recalculate Stats");
+
+		if (ownerID != 0)
+			menuResponse->addRadialMenuItemToRadialID(129, 131, 3, "Untune Crystal");
+	}
+
 	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 128 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
-		if(ownerID == 0) {
-			ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
+	if (selectedID == 128 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player) && ownerID == 0) {
+		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
 
-			suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
-			suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
-			suiMessageBox->setCancelButton(true, "Cancel");
-			suiMessageBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
-			suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
+		suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
+		suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
+		suiMessageBox->setCancelButton(true, "Cancel");
+		suiMessageBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
+		suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
 
-			player->getPlayerObject()->addSuiBox(suiMessageBox);
-			player->sendMessage(suiMessageBox->generateMessage());
+		player->getPlayerObject()->addSuiBox(suiMessageBox);
+		player->sendMessage(suiMessageBox->generateMessage());
+	}
+
+	PlayerObject* ghost = player->getPlayerObject();
+	if (ghost != NULL && ghost->isPrivileged()){
+		if (selectedID == 130) {
+			generateCrystalStats();
+		} else if (selectedID == 131) {
+			ownerID = 0;
+
+			String tuneName = StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
+			if (getCustomObjectName().toString().contains("(Exceptional)"))
+				tuneName = tuneName + " (Exceptional)\\#.";
+			else if (getCustomObjectName().toString().contains("(Legendary)"))
+				tuneName = tuneName + " (Legendary)\\#.";
+			else
+				tuneName = tuneName + "\\#.";
 		}
 	}
 
@@ -302,7 +398,25 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 		return;
 	}
 
+	if (getColor() == 31) {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		int tuningCost = 100 + (quality * 75);
+
+		if (ghost->getForcePower() <= tuningCost) {
+			player->sendSystemMessage("@jedi_spam:no_force_power");
+			return;
+		}
+
+		ghost->setForcePower(ghost->getForcePower() - tuningCost);
+	}
+
 	if (ownerID == 0) {
+		validateCrystalStats();
+
 		ownerID = player->getObjectID();
 		ownerName = player->getDisplayedName();
 
