@@ -19,6 +19,11 @@ namespace variables {
 
 		int _setObject(lua_State* L);
 		int getName(lua_State* L);
+		int getMoneyRequired(lua_State* L);
+		int getSkillPointsRequired(lua_State* L);
+		int getSkillsRequired(lua_State* L);
+		int getXpType(lua_State* L);
+		int getXpCost(lua_State* L);
 
 	private:
 		Reference<Skill*> realObject;
