@@ -34,7 +34,7 @@ trainer_bountyhunter = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trainer_bountyhunter_convotemplate",
+	conversationTemplate = "bountyhunterTrainerConvoTemplate",
 	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_bountyhunter,"trainer_bountyhunter")
