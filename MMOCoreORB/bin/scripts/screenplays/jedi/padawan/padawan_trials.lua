@@ -511,7 +511,7 @@ function PadawanTrials:notifyEnteredMainLocSpawnArea(pArea, pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
 
 	if (trialData == nil) then
-		printLuaError("PadawanTrials:notifyEnteredMainLocSpawnArea, nil trialData for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNumber .. "\n.")
+		printLuaError("PadawanTrials:notifyEnteredMainLocSpawnArea, nil trialData for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNumber .. "\n.")
 		self:failTrial(pPlayer)
 		return 1
 	end
