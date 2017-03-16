@@ -119,7 +119,10 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
-	if (trialsCompleted == 7) then
+	if (trialsCompleted == #padawanTrialQuests) then
+		JediTrials:unlockJediPadawan(pPlayer)
+		return
+	elseif (trialsCompleted == 7) then
 		local trialNum = self:getSaberCraftingTrialNumber()
 		self:startTrial(pPlayer, trialNum)
 	else
@@ -206,8 +209,10 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 	local planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
 	local playerPlanet = SceneObject(pPlayer):getZoneName()
 
-	while (not isZoneEnabled(planetName) or playerPlanet == planetName) do
+	local retries = 0
+	while ((not isZoneEnabled(planetName) or playerPlanet == planetName) and retries < 20) do
 		planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
+		retries = retries + 1
 	end
 
 	if (trialData.trialName == "artist") then
@@ -406,8 +411,7 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 
 	if (targetCount == nil) then
 		printLuaError("PadawanTrials:notifyKilledHuntTarget, nil targetCount for player:" .. SceneObject(pPlayer):getCustomObjectName())
-
-		return  0
+		return 1
 	end
 
 	if (string.find(SceneObject(pVictim):getObjectName(), huntTarget)) then
@@ -945,11 +949,7 @@ function PadawanTrials:passTrial(pPlayer)
 	JediTrials:setTrialsCompleted(pPlayer, trialsCompleted)
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 
-	if (trialsCompleted < #padawanTrialQuests) then
-		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
-	else
-		JediTrials:unlockJediPadawan(pPlayer)
-	end
+	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 end
 
 
@@ -980,11 +980,9 @@ function PadawanTrials:showCurrentTrial(pShrine, pPlayer)
 		if (trialData.trialType == TRIAL_HUNT) then
 			local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 
-			if (targetCount == nil) then
-				targetCount = 0
+			if (targetCount ~= nil) then
+				suiPrompt = suiPrompt .. " " .. targetCount
 			end
-
-			suiPrompt = suiPrompt .. " " .. targetCount
 		end
 
 		sui.setPrompt(suiPrompt)
@@ -1018,7 +1016,7 @@ function PadawanTrials:onPlayerLoggedIn(pPlayer)
 		local trialData = padawanTrialQuests[trialNumber]
 		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
-		if (trialData.trialType == TRIAL_HUNT) then
+		if (trialData.trialType == TRIAL_HUNT and readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal") ~= nil) then
 			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 			createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 		elseif (trialData.trialType == TRIAL_LIGHTSABER and not CreatureObject(pPlayer):hasScreenPlayState(1, trialState .. "_crystal")) then
