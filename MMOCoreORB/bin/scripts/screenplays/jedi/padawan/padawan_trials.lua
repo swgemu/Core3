@@ -404,6 +404,12 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
 
+	if (targetCount == nil) then
+		printLuaError("PadawanTrials:notifyKilledHuntTarget, nil targetCount for player:" .. SceneObject(pPlayer):getCustomObjectName())
+
+		return  0
+	end
+
 	if (string.find(SceneObject(pVictim):getObjectName(), huntTarget)) then
 		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_progress")
 		targetCount = targetCount + 1
