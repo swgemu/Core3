@@ -686,12 +686,11 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 	}
 
 	for (int i = 0; i < cells.size(); ++i) {
-		ManagedReference<CellObject*> cell = cells.get(i);
+		ManagedReference<CellObject*> cell = cells.getUnsafe(i);
 
 		if (cell == NULL)
 			continue;
 
-		//cell->sendPermissionsTo(creature,false);
 		cell->sendPermissionsTo(creature, allowEntry);
 	}
 }
@@ -706,10 +705,7 @@ void BuildingObjectImplementation::ejectObject(CreatureObject* creature) {
 
 	float x = ejectionPoint.getX();
 	float y = ejectionPoint.getY();
-	float z = 0;
-
-	if (zone != NULL)
-		z = zone->getHeight(x, y);
+	float z = ejectionPoint.getZ();
 
 	Reference<Task*> task = new EjectObjectEvent(creature, x, z, y);
 	task->execute();
