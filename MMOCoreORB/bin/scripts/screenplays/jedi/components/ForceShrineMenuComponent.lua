@@ -32,26 +32,18 @@ function ForceShrineMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selec
 end
 
 function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
-	local isJediPadawan = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02")
-	local isJediKnight = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")
-	local currentTrial = JediTrials:getCurrentTrial(pPlayer)
-	local knightAvailable = CreatureObject(pPlayer):villageKnightPrereqsMet("")
-
-	if (not isJediPadawan) then
-		-- Unlock Padawan
-		if (CreatureObject(pPlayer):hasScreenPlayState(64, "VillageJediProgression")) then
-		-- TODO: Change to generic message after padawan trials complete if not qualified for Knight trials.
-		elseif (CreatureObject(pPlayer):hasScreenPlayState(32, "VillageJediProgression")) then
-			if (not JediTrials:isOnPadawanTrials(pPlayer)) then
-				PadawanTrials:startPadawanTrials(pObject, pPlayer)
-			elseif (currentTrial == 0) then
-				PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
-			else
-				PadawanTrials:showCurrentTrial(pObject, pPlayer)
-			end
+	if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02") and CreatureObject(pPlayer):hasScreenPlayState(32, "VillageJediProgression")) then
+		local currentTrial = JediTrials:getCurrentTrial(pPlayer)
+		
+		if (not JediTrials:isOnPadawanTrials(pPlayer)) then
+			PadawanTrials:startPadawanTrials(pObject, pPlayer)
+		elseif (currentTrial == 0) then
+			PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 		else
-			CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:force_shrine_wisdom_" .. getRandomNumber(1, 15))
+			PadawanTrials:showCurrentTrial(pObject, pPlayer)
 		end
+	else
+		CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:force_shrine_wisdom_" .. getRandomNumber(1, 15))
 	end
 end
 

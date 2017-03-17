@@ -794,6 +794,13 @@ function PadawanTrials:notifyQuestTargetDead(pVictim, pAttacker)
 	local npcID = SceneObject(pVictim):getObjectID()
 
 	if (readData(npcID .. ":destroyNpcOnExit") ~= 1) then
+		local trialNumber = JediTrials:getCurrentTrial(pOwner)
+		local trialData = padawanTrialQuests[trialNumber]
+		
+		if (trialData.killMessage ~= nil and trialData.killMessage ~= "") then
+			CreatureObject(pOwner):sendSystemMessage(trialData.killMessage)
+		end
+
 		CreatureObject(pOwner):sendSystemMessage("@jedi_trials:padawan_trials_return_to_npc")
 		writeData(ownerID .. ":JediTrials:killedTarget", 1)
 		self:createMainLocation(pOwner)
