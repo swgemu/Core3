@@ -133,6 +133,7 @@ padawanTrialQuests = {
 		trialNpc = "giaal_itotr",
 		trialNpcName = "Keicho",
 		targetNpc = "dread_pirate",
+		killMessage = "@jedi_trials:padawan_trials_received_the_ring",
 		targetKillable = true
 	},
 }
