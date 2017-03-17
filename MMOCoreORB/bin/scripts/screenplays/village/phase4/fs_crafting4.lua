@@ -242,9 +242,12 @@ function FsCrafting4:setupComputerCore(pCore, pPlayer)
 	TangibleObject(pCore):setLuaStringData("puzzleGuess2", self.NOWIRE)
 	TangibleObject(pCore):setLuaStringData("puzzleGuess3", self.NOWIRE)
 	TangibleObject(pCore):setLuaStringData("puzzleGuess4", self.NOWIRE)
+	TangibleObject(pCore):setLuaStringData("puzzleGuess5", self.NOWIRE)
+	TangibleObject(pCore):setLuaStringData("puzzleGuess6", self.NOWIRE)
+	TangibleObject(pCore):setLuaStringData("puzzleGuess7", self.NOWIRE)
 
-	for i = 1, 4, 1 do
-		TangibleObject(pCore):setLuaStringData("puzzleSolution" .. i, getRandomNumber(1,3))
+	for i = 1, 7, 1 do
+		TangibleObject(pCore):setLuaStringData("puzzleSolution" .. i, getRandomNumber(1,6))
 	end
 
 	TangibleObject(pCore):setLuaStringData("puzzleIntegrity", getRandomNumber(93, 99))
@@ -474,7 +477,10 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 	local puzzleGuess2 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess2"))
 	local puzzleGuess3 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess3"))
 	local puzzleGuess4 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess4"))
-	local puzzleGuesses = { puzzleGuess1, puzzleGuess2, puzzleGuess3, puzzleGuess4 }
+	local puzzleGuess5 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess5"))
+	local puzzleGuess6 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess6"))
+	local puzzleGuess7 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleGuess7"))
+	local puzzleGuesses = { puzzleGuess1, puzzleGuess2, puzzleGuess3, puzzleGuess4, puzzleGuess5, puzzleGuess6, puzzleGuess7 }
 
 	local puzzleSolution1 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleSolution1"))
 	local puzzleSolution2 = tonumber(TangibleObject(pCore):getLuaStringData("puzzleSolution2"))
@@ -485,7 +491,7 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 	local puzzleResults = { false, false, false, false }
 	local correctlyConnected = 0
 
-	for i = 1, 4, 1 do
+	for i = 1, 7, 1 do
 		if (puzzleGuesses[i] == puzzleSolutions[i]) then
 			puzzleResults[i] = true
 			correctlyConnected = correctlyConnected + 1
@@ -509,14 +515,14 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 		local correctWiresUsed = 0
 		local tempResults = puzzleResults
 
-		for i = 1, 4, 1 do
+		for i = 1, 7, 1 do
 			local alreadySolved = puzzleResults[i]
 
 			if (not alreadySolved) then
 				local curGuess = puzzleGuesses[i]
 
 				local doBreak = false
-				for j = 1, 4, 1 do
+				for j = 1, 7, 1 do
 					if (not doBreak) then
 						local alreadyUsed = tempResults[j]
 
@@ -538,11 +544,14 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 		TangibleObject(pCore):setLuaStringData("lastGuess2", puzzleGuess2)
 		TangibleObject(pCore):setLuaStringData("lastGuess3", puzzleGuess3)
 		TangibleObject(pCore):setLuaStringData("lastGuess4", puzzleGuess4)
+		TangibleObject(pCore):setLuaStringData("lastGuess5", puzzleGuess5)
+		TangibleObject(pCore):setLuaStringData("lastGuess6", puzzleGuess6)
+		TangibleObject(pCore):setLuaStringData("lastGuess7", puzzleGuess7)
 		TangibleObject(pCore):setLuaStringData("lastCorrectWiresConnected", correctlyConnected)
 		TangibleObject(pCore):setLuaStringData("lastCorrectWiresUsed", correctWiresUsed)
 
 		local integrity = tonumber(TangibleObject(pCore):getLuaStringData("puzzleIntegrity"))
-		integrity = integrity - getRandomNumber(12,24)
+		integrity = integrity - getRandomNumber(8,16)
 		TangibleObject(pCore):setLuaStringData("puzzleIntegrity", integrity)
 
 		if (integrity <= 0) then
@@ -603,11 +612,14 @@ function FsCrafting4ComputerCoreMenuComponent:sendCurrentStatus(pCore, pPlayer)
 		local lastGuess2 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess2"))
 		local lastGuess3 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess3"))
 		local lastGuess4 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess4"))
+		local lastGuess5 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess5"))
+		local lastGuess6 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess6"))
+		local lastGuess7 = tonumber(TangibleObject(pCore):getLuaStringData("lastGuess7"))
 		local lastCorrectConnected = tonumber(TangibleObject(pCore):getLuaStringData("lastCorrectWiresConnected"))
 		local lastCorrectUsed = tonumber(TangibleObject(pCore):getLuaStringData("lastCorrectWiresUsed"))
 		local integrity = tonumber(TangibleObject(pCore):getLuaStringData("puzzleIntegrity"))
 
-		if (lastGuess1 ~= nil and lastGuess2 ~= nil and lastGuess3 ~= nil and lastGuess4 ~= nil) then
+		if (lastGuess1 ~= nil and lastGuess2 ~= nil and lastGuess3 ~= nil and lastGuess4 ~= nil and lastGuess5 ~= nil and lastGuess6 ~= nil and lastGuess7 ~= nil) then
 			local status06 = "@quest/force_sensitive/fs_crafting:crafting4_core_current_status_06"
 			local status07 = "@quest/force_sensitive/fs_crafting:crafting4_core_current_status_07"
 			local status08 = "@quest/force_sensitive/fs_crafting:crafting4_core_current_status_08"
