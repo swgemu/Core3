@@ -120,7 +120,11 @@ function PadawanTrials:startNextPadawanTrial(pObject, pPlayer)
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 	if (trialsCompleted == #padawanTrialQuests) then
-		JediTrials:unlockJediPadawan(pPlayer)
+	
+		if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02")) then
+			JediTrials:unlockJediPadawan(pPlayer)
+		end
+		
 		return
 	elseif (trialsCompleted == 7) then
 		local trialNum = self:getSaberCraftingTrialNumber()
