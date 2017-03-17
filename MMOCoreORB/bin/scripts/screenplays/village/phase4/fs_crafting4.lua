@@ -542,7 +542,7 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 		TangibleObject(pCore):setLuaStringData("lastCorrectWiresUsed", correctWiresUsed)
 
 		local integrity = tonumber(TangibleObject(pCore):getLuaStringData("puzzleIntegrity"))
-		integrity = integrity - getRandomNumber(12,24)
+		integrity = integrity - getRandomNumber(13,17)
 		TangibleObject(pCore):setLuaStringData("puzzleIntegrity", integrity)
 
 		if (integrity <= 0) then
