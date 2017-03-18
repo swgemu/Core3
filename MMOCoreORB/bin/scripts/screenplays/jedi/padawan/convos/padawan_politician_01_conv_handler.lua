@@ -18,7 +18,7 @@ function padawan_politician_01_conv_handler:getInitialScreen(pPlayer, pNpc, pCon
 	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
-		return convoTemplate:getScreen("completed_quest")
+		return convoTemplate:getScreen("quest_completed")
 	elseif (readData(playerID .. ":JediTrials:killedTarget") == 1) then
 		return convoTemplate:getScreen("intro_killed_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then

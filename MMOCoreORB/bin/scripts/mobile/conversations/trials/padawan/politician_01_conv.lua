@@ -55,7 +55,7 @@ padawan_politician_01_convo_template:addScreen(intro_killed_target);
 
 thank_you = ConvoScreen:new {
 	id = "thank_you",
-	leftDialog = "@conversation/padawan_politician_01:s_e6b7fdc0", -- Excellent. Such enthusiasm in one's work is always a pleasure to behold.
+	leftDialog = "@conversation/padawan_politician_01:s_4fc89968", -- Excellent, thank you for your services friend.
 	stopConversation = "true",
 	options = {}
 }
