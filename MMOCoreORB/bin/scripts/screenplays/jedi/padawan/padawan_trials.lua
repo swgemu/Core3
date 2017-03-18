@@ -206,6 +206,10 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 	deleteData(playerID .. ":JediTrials:spokeToTarget01")
 	deleteData(playerID .. ":JediTrials:spokeToTarget02")
 
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
+	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
+
 	local planetName = trialsCivilizedPlanets[getRandomNumber(1, #trialsCivilizedPlanets)]
 	local playerPlanet = SceneObject(pPlayer):getZoneName()
 
@@ -796,7 +800,7 @@ function PadawanTrials:notifyQuestTargetDead(pVictim, pAttacker)
 	if (readData(npcID .. ":destroyNpcOnExit") ~= 1) then
 		local trialNumber = JediTrials:getCurrentTrial(pOwner)
 		local trialData = padawanTrialQuests[trialNumber]
-		
+
 		if (trialData.killMessage ~= nil and trialData.killMessage ~= "") then
 			CreatureObject(pOwner):sendSystemMessage(trialData.killMessage)
 		end
