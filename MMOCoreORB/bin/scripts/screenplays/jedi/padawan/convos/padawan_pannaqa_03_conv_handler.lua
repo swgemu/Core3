@@ -6,7 +6,7 @@ function padawan_pannaqa_03_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTe
 	local trialOwnerID = readData(SceneObject(pNpc):getObjectID() .. ":ownerID")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	if (trialOwnerID ~= playerID) then
+	if (trialOwnerID ~= playerID or readData(playerID .. ":JediTrials:spokeToTarget02") == 1) then
 		return convoTemplate:getScreen("not_quest_owner")
 	end
 
