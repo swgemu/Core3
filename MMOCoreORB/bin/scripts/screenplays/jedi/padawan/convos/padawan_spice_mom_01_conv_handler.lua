@@ -18,7 +18,7 @@ function padawan_spice_mom_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConv
 	local trialState = JediTrials:getTrialStateName(pPlayer, giverTrialNum)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState)) then
-		return convoTemplate:getScreen("completed_quest")
+		return convoTemplate:getScreen("quest_completed")
 	elseif (readData(playerID .. ":JediTrials:spokeToTarget01") == 1) then
 		return convoTemplate:getScreen("intro_talked_to_target")
 	elseif (readData(playerID .. ":JediTrials:acceptedTask") == 1) then
