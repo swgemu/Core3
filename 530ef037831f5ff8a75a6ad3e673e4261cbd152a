@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_2c11b3ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "You should remove this since you no longer have a clonedConversation at this point. Most of the blocks below already set this individually inside them. You\u0027ll just need to set this in the couple of places where you don\u0027t already and need to.",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_cc258f0b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "Remove the local or you\u0027ll not be returning the cloned screen at the end of the function.",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_ec22cb00",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "remove local",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_8c1f87b7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "remove local",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_ac1cc3c2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "remove local",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_4c799ffb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "remove local",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_6c7edbe6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "I would move the cloning into handleNsfSkillPointsScreen",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_0c8397cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "I would move the cloning into handleLearnScreen",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_2c88d3e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T21:02:47Z",
+      "side": 1,
+      "message": "remove local",
+      "revId": "530ef037831f5ff8a75a6ad3e673e4261cbd152a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
