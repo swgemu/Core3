@@ -4,6 +4,7 @@
 
 #include "VisibilityManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
@@ -61,7 +62,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
-			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32)) {
+			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32) && CollisionManager::checkLineOfSight(creature, obj)) {
 				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
 				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
 					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
