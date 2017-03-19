@@ -6,7 +6,6 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
 #include "server/zone/objects/creature/conversation/InformantMissionConversationObserver.h"
-#include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/creature/conversation/LuaConversationObserver.h"
 #include "server/zone/objects/creature/conversation/PetTrainingConversationObserver.h"
@@ -33,9 +32,6 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 			switch (conversationTemplate->getConversationTemplateType()) {
 			case ConversationTemplate::ConversationTemplateTypeNormal:
 				conversationObserver = new ConversationObserver(conversationTemplateCRC);
-				break;
-			case ConversationTemplate::ConversationTemplateTypeTrainer:
-				conversationObserver = new TrainerConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
 				conversationObserver = new DeliverMissionConversationObserver(conversationTemplateCRC);

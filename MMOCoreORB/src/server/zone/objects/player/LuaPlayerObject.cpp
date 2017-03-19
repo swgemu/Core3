@@ -71,6 +71,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
 		{ "removeSuiBox", &LuaPlayerObject::removeSuiBox },
 		{ "findJediTrainer", &LuaPlayerObject::findJediTrainer },
+		{ "isJediTrainer", &LuaPlayerObject::isJediTrainer },
 		{ 0, 0 }
 };
 
@@ -693,4 +694,18 @@ int LuaPlayerObject::findJediTrainer(lua_State* L) {
 	realObject->setTrainerZoneName(zoneName); // For the waypoint.
 
 	return 0;
+}
+
+int LuaPlayerObject::isJediTrainer(lua_State* L) {
+	CreatureObject* trainer = (CreatureObject*)lua_touserdata(L, -1);
+
+	Vector3 npc(trainer->getWorldPositionX(), trainer->getWorldPositionY(), 0);
+	Vector3 playerCoord = realObject->getTrainerCoordinates();
+	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
+
+	bool result = (npc == player) && (realObject->getTrainerZoneName() == trainer->getZone()->getZoneName());
+
+	lua_pushboolean(L, result);
+
+	return 1;
 }

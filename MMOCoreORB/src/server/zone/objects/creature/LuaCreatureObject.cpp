@@ -135,6 +135,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setFactionStatus", &LuaTangibleObject::setFactionStatus },
 		{ "getDamageDealerList", &LuaCreatureObject::getDamageDealerList },
 		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList},
+		{ "getSkillMod", &LuaCreatureObject::getSkillMod},
 		{ 0, 0 }
 };
 
@@ -1032,6 +1033,16 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 			lua_rawseti(L, -2, count);
 		}
 	}
+
+	return 1;
+}
+
+int LuaCreatureObject::getSkillMod(lua_State* L) {
+	String skillMod = lua_tostring(L, -1);
+
+	int result = realObject->getSkillMod(skillMod);
+
+	lua_pushnumber(L, result);
 
 	return 1;
 }
