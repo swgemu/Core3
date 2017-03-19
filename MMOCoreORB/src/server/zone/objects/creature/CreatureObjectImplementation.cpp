@@ -978,15 +978,17 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 }
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient, bool isCombatAction) {
+	int damageDone = inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
+
 	if (attacker->isCreatureObject()) {
 		CreatureObject* creature = attacker->asCreatureObject();
 
 		if (damage > 0) {
-			getThreatMap()->addDamage(creature, damage, xp);
+			getThreatMap()->addDamage(creature, damageDone, xp);
 		}
 	}
 
-	return inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
+	return damageDone;
 }
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient, bool isCombatAction) {
@@ -1000,16 +1002,24 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	int currentValue = hamList.get(damageType);
 
-	int newValue = currentValue - (int) damage;
+	int damageDone = (int) damage;
+	int newValue = currentValue - damageDone;
 
-	if (!destroy && newValue <= 0)
+	if (!destroy && newValue <= 0) {
+		damageDone = currentValue - 1;
 		newValue = 1;
+	}
 
-	if (getSkillMod("avoid_incapacitation") > 0 && newValue <= 0)
+	if (getSkillMod("avoid_incapacitation") > 0 && newValue <= 0) {
+		damageDone = currentValue - 1;
 		newValue = 1;
+	}
 
 	if (damageType % 3 != 0 && newValue < 0) // secondaries never should go negative
 		newValue = 0;
+
+	if (newValue <= 0)
+		damageDone = currentValue;
 
 	setHAM(damageType, newValue, notifyClient);
 
@@ -1019,7 +1029,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (newValue <= 0)
 		notifyObjectDestructionObservers(attacker, newValue, isCombatAction);
 
-	return 0;
+	return damageDone;
 }
 
 int CreatureObjectImplementation::healDamage(TangibleObject* healer,
