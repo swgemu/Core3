@@ -147,7 +147,7 @@ includeFile("conversations/dungeon/geonosian_lab/biogenic_security_tech_convo.lu
 
 -- ** OTHER **
 
-includeFile("conversations/trainer/trainers_conv.lua")
+includeFile("conversations/trainer/trainer_conv.lua")
 
 -- Missions
 includeFile("conversations/mission/deliver_npc.lua")

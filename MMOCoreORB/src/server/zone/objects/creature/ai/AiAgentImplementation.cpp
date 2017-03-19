@@ -2587,7 +2587,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
-	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeTrainer) {
+	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeLua && conversationTemplate->getLuaClassHandler() == "trainerConvHandler") {
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
