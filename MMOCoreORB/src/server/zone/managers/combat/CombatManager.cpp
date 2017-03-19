@@ -1116,9 +1116,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			float feedbackDmg = rawDamage * (forceFeedback / 100.f);
 			float splitDmg = feedbackDmg / 3;
 
-			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true, true, true);
-			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true, true, true);
-			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true, true, true);
+			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true, true, false);
+			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true, true, false);
+			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true, true, false);
 			broadcastCombatSpam(defender, attacker, NULL, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
 			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
@@ -1346,15 +1346,15 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			}
 		}
 		if((pool & ACTION)){
-			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true, false);
 			return (int)actionDamage;
 		}
 		if((pool & HEALTH)) {
-			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true, false);
 			return (int)healthDamage;
 		}
 		if((pool & MIND)) {
-			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true, false);
 			return (int)mindDamage;
 		}
 		return 0;
