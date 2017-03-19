@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_ec9f2b4f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/screenplays.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you include this before skillTrainer so it\u0027s loaded first?",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_8cac678e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "I don\u0027t see this screen in the template",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_aca9237d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "I would put these options on the screen template instead of adding them every time.",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_0cb077dc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "The template doesn\u0027t have this screen",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_4cb67fde",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "This will never be true since you check it earlier in the elseif chain.",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_ccc90f5c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "I think this will cause a memory leak. In runScreenHandlers you clone the incoming screen and pass the cloned screen to this function. Here you are changing the pointer to a different screen leaving the cloned screen in memory with nothing pointing to it.\n\nYou probably want to change runScreenHandlers to not clone the screen by default but instead only clone where it\u0027s needed.",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_6cbb3bc5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "The template has a nsf_skill_points screen but not ones with _ and a num appended.",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_2cb533cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/trainers/trainerConvHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-03-19T02:38:45Z",
+      "side": 1,
+      "message": "I think you should move all the credit payment stuff to after you award the skill and only if success is true.",
+      "revId": "d48a1782379bb3a2f78b808fae43b19019b25d62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
