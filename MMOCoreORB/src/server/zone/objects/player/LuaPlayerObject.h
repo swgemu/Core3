@@ -74,7 +74,6 @@ public:
 	int getSuiBox(lua_State* L);
 	int addSuiBox(lua_State* L);
 	int removeSuiBox(lua_State* L);
-	int findJediTrainer(lua_State* L);
 	int isJediTrainer(lua_State* L);
 
 private:

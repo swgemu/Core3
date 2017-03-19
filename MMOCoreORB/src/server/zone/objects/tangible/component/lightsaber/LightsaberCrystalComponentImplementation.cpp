@@ -325,7 +325,9 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 	PlayerObject* ghost = player->getPlayerObject();
 	if (ghost != NULL && ghost->isPrivileged()) {
 		menuResponse->addRadialMenuItem(129, 3, "Staff Commands");
-		menuResponse->addRadialMenuItemToRadialID(129, 130, 3, "Recalculate Stats");
+
+		if (getColor() == 31)
+			menuResponse->addRadialMenuItemToRadialID(129, 130, 3, "Recalculate Stats");
 
 		if (ownerID != 0)
 			menuResponse->addRadialMenuItemToRadialID(129, 131, 3, "Untune Crystal");
@@ -350,9 +352,9 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 
 	PlayerObject* ghost = player->getPlayerObject();
 	if (ghost != NULL && ghost->isPrivileged()){
-		if (selectedID == 130) {
+		if (selectedID == 130 && getColor() == 31) {
 			generateCrystalStats();
-		} else if (selectedID == 131) {
+		} else if (selectedID == 131 && ownerID != 0) {
 			ownerID = 0;
 
 			String tuneName = StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
