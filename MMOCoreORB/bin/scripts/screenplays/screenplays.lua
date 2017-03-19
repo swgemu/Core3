@@ -59,6 +59,10 @@ includeFile("tools/tools.lua")
 includeFile("tools/shuttle_dropoff.lua")
 includeFile("tools/firework_event.lua")
 
+includeFile("trainers/trainerData.lua")
+includeFile("trainers/skillTrainer.lua")
+includeFile("trainers/trainerConvHandler.lua")
+
 -- GCW
 includeFile("gcw/newsnet.lua")
 includeFile("gcw/recruiters/recruiterConvoHandler.lua")

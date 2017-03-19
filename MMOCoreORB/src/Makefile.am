@@ -255,7 +255,6 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				autogen/server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				autogen/server/zone/objects/player/sessions/ConversationSession.cpp \
-				autogen/server/zone/objects/player/sessions/TrainerConversationSession.cpp \
 				autogen/server/zone/objects/player/EntertainingObserver.cpp \
 				autogen/server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				autogen/server/zone/objects/cell/CellObject.cpp \
@@ -369,7 +368,6 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/managers/gcw/sessions/ContrabandScanSession.cpp \
 				autogen/server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/ConversationObserver.cpp \
-				autogen/server/zone/objects/creature/conversation/TrainerConversationObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/DeliverMissionConversationObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/InformantMissionConversationObserver.cpp
 
@@ -391,6 +389,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \
+		server/zone/managers/skill/LuaSkillManager.cpp \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/skill/SkillModManager.cpp \
 		server/login/account/AccountImplementation.cpp \
@@ -751,11 +750,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
 		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
-		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/PetTrainingConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/InformantMissionConversationObserverImplementation.cpp \
-		server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
@@ -785,7 +782,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/sessions/CitySpecializationSessionImplementation.cpp \
 		server/zone/objects/player/sessions/CityTreasuryWithdrawalSessionImplementation.cpp \
-		server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \
 		server/zone/objects/player/sessions/LuaConversationSession.cpp \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
