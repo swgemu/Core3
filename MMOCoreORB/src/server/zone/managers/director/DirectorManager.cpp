@@ -55,6 +55,7 @@
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/sui/LuaSuiManager.h"
+#include "server/zone/managers/skill/LuaSkillManager.h"
 #include "server/zone/objects/player/sui/LuaSuiBox.h"
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
@@ -551,6 +552,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiListBox>::Register(luaEngine->getLuaState());
 	Luna<LuaLightsaberCrystalComponent>::Register(luaEngine->getLuaState());
 	Luna<LuaSkill>::Register(luaEngine->getLuaState());
+	Luna<LuaSkillManager>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -2656,7 +2658,6 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 		float newZ = zone->getHeight(newX, newY);
 
 		position = Vector3(newX, newY, newZ);
-
 
 		found = forceSpawn == true || (zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &&
 				!CollisionManager::checkSphereCollision(position, sphereCollision, zone));
