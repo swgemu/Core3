@@ -110,9 +110,6 @@ function JediTrials:unlockJediPadawan(pPlayer)
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		local pItem = giveItem(pInventory, "object/tangible/wearables/robe/robe_jedi_padawan.iff", -1)
 	end
-
-	-- Find Trainer.
-	PlayerObject(pGhost):findJediTrainer()
 end
 
 function JediTrials:emptyCallback(pPlayer)
