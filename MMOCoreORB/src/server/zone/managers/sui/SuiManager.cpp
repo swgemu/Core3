@@ -131,7 +131,7 @@ void SuiManager::handleSetObjectName(CreatureObject* player, SuiBox* suiBox, uin
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
 	if (object == NULL)
 		return;
@@ -341,7 +341,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 		ghost->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 	} else {
-		ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
+		ManagedReference<SceneObject*> scob = cbSui->getUsingObject().get();
 
 		if (scob == NULL)
 			return;

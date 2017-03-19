@@ -32,10 +32,9 @@ class MigrateStatsSession extends Facade {
 	}
 	
 	public int cancelSession() {
-		if (creature == null) {
-			return 0;
-		} else {
-			creature.dropActiveSession(SessionFacadeType.MIGRATESTATS);
+		CreatureObject creo = creature;
+		if (creo != null) {
+			creo.dropActiveSession(SessionFacadeType.MIGRATESTATS);
 		}
 		
 		return 0;
@@ -60,14 +59,21 @@ class MigrateStatsSession extends Facade {
 	}
 	
 	public void migrateStats() {
+		CreatureObject creo = creature;
+
+		if (creo == null) {
+			cancelSession();
+			return;
+		}
+
 		for (int i = 0; i < 9; i = i + 1) {
 			int newValue = attributesToModify.get(i);
 			
-			int originalAmount = creature.getBaseHAM(i);
+			int originalAmount = creo.getBaseHAM(i);
 			
-			creature.setBaseHAM(i, newValue);
-			creature.setHAM(i, creature.getHAM(i) + (newValue - originalAmount));
-			creature.setMaxHAM(i, creature.getMaxHAM(i) + (newValue - originalAmount));
+			creo.setBaseHAM(i, newValue);
+			creo.setHAM(i, creo.getHAM(i) + (newValue - originalAmount));
+			creo.setMaxHAM(i, creo.getMaxHAM(i) + (newValue - originalAmount));
 			
 			//setAttributeBar(attribute, getAttribute(attribute) + (value - originalAmount));
 			//setMaxAttributeBar(attribute, getAttributeMax(attribute) + (value - originalAmount), updateClient);

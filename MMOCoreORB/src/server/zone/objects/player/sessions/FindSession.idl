@@ -31,8 +31,10 @@ class FindSession extends Facade {
 	}
 	
 	public int cancelSession() {
-		if (player != null)
-			player.dropActiveSession(SessionFacadeType.FIND);
+		CreatureObject play = player;
+
+		if (play != null)
+			play.dropActiveSession(SessionFacadeType.FIND);
 
 		clearSession();
 		return 0;

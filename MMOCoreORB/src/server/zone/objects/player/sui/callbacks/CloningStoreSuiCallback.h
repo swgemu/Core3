@@ -29,7 +29,7 @@ public:
 
 		int cost = 1000;
 
-		ManagedReference<SceneObject*> term = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> term = suiBox->getUsingObject().get();
 
 		if (term == NULL) {
 			StringIdChatParameter params;
@@ -73,7 +73,7 @@ public:
 			player->subtractBankCredits(cost);
 		}
 
-		ManagedReference<SceneObject*> building = term->getRootParent();
+		ManagedReference<SceneObject*> building = term->getRootParent().get();
 
 		if (building == NULL || !building->isBuildingObject()) {
 			return;

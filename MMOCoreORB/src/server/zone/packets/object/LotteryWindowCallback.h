@@ -43,7 +43,7 @@ public:
 			return;
 
 		//Get the corpse the lottery is for.
-		ManagedReference<AiAgent*> corpse = server->getZoneServer()->getObject(containerID)->getParent().castTo<AiAgent*>();
+		ManagedReference<AiAgent*> corpse = server->getZoneServer()->getObject(containerID)->getParent().get().castTo<AiAgent*>();
 		if (corpse == NULL)
 			return;
 

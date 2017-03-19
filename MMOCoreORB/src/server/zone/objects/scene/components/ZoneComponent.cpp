@@ -110,7 +110,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			QuadTreeEntry* o = closeObjects.get(i);
 			QuadTreeEntry* objectToRemove = o;
-			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
+			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent().get();
 
 			if (rootParent != NULL)
 				o = rootParent;
@@ -392,7 +392,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 				sceneObject->sendToOwner(true);
 
 				if (newParent->isCellObject()) {
-					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
+					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent().get();
 
 					if (rootParent != NULL)
 						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);

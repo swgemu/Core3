@@ -17,7 +17,7 @@ public:
 		if (!suiBox->isMessageBox() || cancelPressed || player == NULL)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL)
 			return;

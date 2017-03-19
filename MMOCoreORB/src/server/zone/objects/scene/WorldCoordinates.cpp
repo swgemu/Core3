@@ -62,7 +62,7 @@ Vector3 WorldCoordinates::getWorldPosition() const {
 	if (cell == NULL)
 		return point;
 
-	ManagedReference<SceneObject*> root = cell->getRootParent();
+	ManagedReference<SceneObject*> root = cell->getRootParent().get();
 
 	if (root == NULL)
 		return point;

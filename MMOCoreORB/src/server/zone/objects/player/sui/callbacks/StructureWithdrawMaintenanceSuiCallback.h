@@ -24,7 +24,7 @@ public:
 		if (amount < 0)
 			return;
 
-		ManagedReference<SceneObject*> obj = sui->getUsingObject();
+		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
 		if (obj == NULL || !obj->isStructureObject())
 			return;

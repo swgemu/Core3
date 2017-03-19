@@ -79,7 +79,7 @@ void DroidRepairModuleDataComponent::handlePetCommand(String cmd, CreatureObject
 		return;
 
 	// Owner-only command
-	if( droid->getLinkedCreature() != speaker )
+	if( droid->getLinkedCreature().get() != speaker )
 		return;
 
 	if( petManager->isTrainedCommand( pcd, PetManager::REPAIR, cmd ) ){

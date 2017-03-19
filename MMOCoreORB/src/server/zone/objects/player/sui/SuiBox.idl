@@ -83,9 +83,15 @@ class SuiBox extends ManagedObject implements Logger {
 	public void initialize() {
 		Logger.setLoggingName("SuiBox");
 
-		PlayerObject ghost = player.getPlayerObject();
+		CreatureObject strongRef = player;
 
-		boxID = ghost.getNewSuiBoxID(windowType);
+		if (strongRef != null) {
+			PlayerObject ghost = strongRef.getPlayerObject();
+
+			if (ghost != null) {
+				boxID = ghost.getNewSuiBoxID(windowType);
+			}
+		}
 
 		handlerStr = "msgSelected";
 

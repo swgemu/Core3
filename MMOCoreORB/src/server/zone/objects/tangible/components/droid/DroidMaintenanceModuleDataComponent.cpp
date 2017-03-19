@@ -333,12 +333,12 @@ bool DroidMaintenanceModuleDataComponent::isValidStructure(uint64 objectID){
 		return false;
 	}
 
-	ManagedWeakReference< CreatureObject*> linkedCreature = droid->getLinkedCreature();
+	ManagedReference< CreatureObject*> linkedCreature = droid->getLinkedCreature().get();
 	if( linkedCreature == NULL ) {
 		return false;
 	}
 
-	if( !structureObject->isOnAdminList( linkedCreature.get() ) ) {
+	if( !structureObject->isOnAdminList( linkedCreature ) ) {
 		return false;
 	}
 

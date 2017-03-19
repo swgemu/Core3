@@ -34,7 +34,7 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		ManagedReference<StimPack*> stimpack = server->getObject(listBox->getMenuObjectID(index)).castTo<StimPack*>();
-		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 		if(stimpack == NULL) {
 			player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
 			return;

@@ -28,7 +28,7 @@ public:
 		if (guildManager == NULL)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;

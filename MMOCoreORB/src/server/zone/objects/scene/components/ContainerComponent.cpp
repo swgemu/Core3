@@ -19,11 +19,11 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	}
 
 	if ((object->isNoTrade() || object->containsNoTradeObjectRecursive()) && !object->isVendor()) {
-		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-		ManagedReference<SceneObject*> containerBuildingParent = sceneObject->getParentRecursively(SceneObjectType::BUILDING);
-		ManagedReference<SceneObject*> containerFactoryParent = sceneObject->getParentRecursively(SceneObjectType::FACTORY);
-		ManagedReference<SceneObject*> objPlayerParent = object->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING);
+		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> containerBuildingParent = sceneObject->getParentRecursively(SceneObjectType::BUILDING).get();
+		ManagedReference<SceneObject*> containerFactoryParent = sceneObject->getParentRecursively(SceneObjectType::FACTORY).get();
+		ManagedReference<SceneObject*> objPlayerParent = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING).get();
 
 
 		if (containerFactoryParent != NULL) {
@@ -51,7 +51,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 
 	} else if (object->isVendor()) {
-		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
 
 		if (!sceneObject->isCellObject() && (!sceneObject->hasArrangementDescriptor("inventory") || containerPlayerParent == NULL)) {
 			return TransferErrorCode::CANTADD;
@@ -244,7 +244,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		//object->updateToDatabaseWithoutChildren()();
 	}
 
-	ManagedReference<SceneObject*> rootParent = object->getRootParent();
+	ManagedReference<SceneObject*> rootParent = object->getRootParent().get();
 
 	if (rootParent != NULL && notifyRoot)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
@@ -346,7 +346,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (sceneObject->getParent() == NULL) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
-		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
+		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent().get();
 
 		if (rootParent != NULL)
 			rootParent->notifyObjectRemovedFromChild(object, sceneObject);

@@ -15,7 +15,7 @@ int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 	Locker jlocker(jbox);
 
 	if (eventType == ObserverEventType::PARENTCHANGED) {
-		ManagedReference<SceneObject*> boxParent = jbox->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> boxParent = jbox->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
 
 		// Jukebox parent is a player, jukebox was picked up
 		if ((boxParent != NULL) && (boxParent->isPlayerCreature())) {

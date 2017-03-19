@@ -33,7 +33,7 @@ public:
 
 		String palette = cBox->getColorPalette();
 
-		ManagedReference<SceneObject*> goggles = cBox->getUsingObject();
+		ManagedReference<SceneObject*> goggles = cBox->getUsingObject().get();
 
 		if (goggles == NULL)
 			return;

@@ -27,7 +27,7 @@ public:
 			return;
 
 		SuiMessageBox* listBox = cast<SuiMessageBox*>( suiBox);
-		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
 		if (object == NULL) {
 			return;

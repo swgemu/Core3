@@ -11,8 +11,6 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.managers.minigames.events.FishingEvent;
 
 class FishingSession extends Facade {
-	@weakReference
-	protected CreatureObject player;
 	protected transient FishingEvent event; 
 	protected SceneObject marker;
 	
@@ -22,8 +20,7 @@ class FishingSession extends Facade {
 	protected int fishingState;
 	protected string mood;
 	
-	public FishingSession(CreatureObject player, FishingEvent event, SceneObject marker, int nextAction, int fish, unsigned int boxID, int fishingState, final string mood) {
-		setPlayer(player);
+	public FishingSession(FishingEvent event, SceneObject marker, int nextAction, int fish, unsigned int boxID, int fishingState, final string mood) {
 		setEvent(event);
 		setMarker(marker);
 		setNextAction(nextAction);
@@ -85,10 +82,6 @@ class FishingSession extends Facade {
 
 	public void setFishingState(int state) {
 		fishingState = state;
-	}
-	
-	public void setPlayer(CreatureObject pl) {
-		player = pl;
 	}
 
 	public void update(int nextAction, SceneObject marker, int fish, unsigned int boxID, int fishingState) {

@@ -1243,7 +1243,7 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 		return;
 	}
 
-	ManagedReference<SceneObject*> parent = vendorInUse->getRootParent();
+	ManagedReference<SceneObject*> parent = vendorInUse->getRootParent().get();
 
 	if (parent != NULL && parent != player->getRootParent().get())
 		return;

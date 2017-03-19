@@ -29,7 +29,7 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL)
 			return;

@@ -36,7 +36,7 @@ public:
 		if (firework == NULL || !firework->isFireworkObject())
 			return;
 
-		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject().get();
 
 		if (fireworkShow == NULL || !fireworkShow->isFireworkObject())
 			return;

@@ -142,7 +142,7 @@ public:
 			if (currentPos.squaredDistanceTo(newPos) > 0.01) {
 				bounceBack(object, pos);
 			} else {
-				ManagedReference<SceneObject*> currentParent = object->getParent();
+				ManagedReference<SceneObject*> currentParent = object->getParent().get();
 				bool light = objectControllerMain->getPriority() != 0x23;
 
 				if (currentParent != NULL)

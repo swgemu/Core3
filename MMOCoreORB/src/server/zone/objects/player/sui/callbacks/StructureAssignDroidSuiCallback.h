@@ -26,7 +26,7 @@ public:
 			return;
 		}
 
-		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 		if (object == NULL || !object->isStructureObject())
 			return;
 

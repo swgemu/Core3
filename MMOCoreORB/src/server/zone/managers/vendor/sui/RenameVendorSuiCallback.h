@@ -32,7 +32,7 @@ public:
 
 		String name = args->get(0).toString();
 
-		ManagedReference<SceneObject*> strong = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> strong = suiBox->getUsingObject().get();
 
 		if (strong == NULL)
 			return;

@@ -342,7 +342,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		if (generated || !isASubChildOf(player))
 			return 1;
 
-		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
+		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING).get() != NULL) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call"); //You can only unpack vehicles while Outside and not in Combat.
 			return 1;
 		}

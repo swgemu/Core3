@@ -40,7 +40,7 @@ public:
 		if (pet == NULL)
 			return GENERALERROR;
 
-		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().castTo<PetControlDevice*>();
+		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == NULL)
 			return GENERALERROR;
 

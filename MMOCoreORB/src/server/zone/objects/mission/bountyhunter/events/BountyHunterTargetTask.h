@@ -69,14 +69,14 @@ public:
 
 		Locker locker(playerRef);
 
-		if (objectiveRef->getPlayerOwner() == NULL)
+		if (objectiveRef->getPlayerOwner().get() == NULL)
 			return;
 
 		if (move && playerRef->getZone() != NULL) {
 			updatePosition(playerRef);
 		}
 
-		ManagedReference<MissionObject*> strongMissionRef = objectiveRef->getMissionObject();
+		ManagedReference<MissionObject*> strongMissionRef = objectiveRef->getMissionObject().get();
 
 		String zoneName = strongMissionRef->getEndPlanet();
 

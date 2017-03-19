@@ -29,7 +29,7 @@ public:
 			return;
 		}
 
-		ManagedReference<SceneObject*> droid = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> droid = suiBox->getUsingObject().get();
 
 		if (droid == NULL)
 			return;

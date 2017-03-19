@@ -110,7 +110,7 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 				} else { //patron is not in range, force to stop listening
 					ManagedReference<PlayerManager*> playerManager = patron->getZoneServer()->getPlayerManager();
 
-					Locker locker(patron, entertainer.get());
+					Locker locker(patron, creo);
 
 					if (dancing) {
 						if (playerManager != NULL)
@@ -140,7 +140,7 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 }
 
 bool EntertainingSessionImplementation::isInEntertainingBuilding(CreatureObject* creature) {
-	ManagedReference<SceneObject*> root = creature->getRootParent();
+	ManagedReference<SceneObject*> root = creature->getRootParent().get();
 
 	if (root != NULL) {
 		uint32 gameObjectType = root->getGameObjectType();

@@ -35,7 +35,7 @@ int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int even
 		return 1;
 	}
 
-	if (player->getParentRecursively(SceneObjectType::BUILDING) == leader->getParentRecursively(SceneObjectType::BUILDING)) {
+	if (player->getParentRecursively(SceneObjectType::BUILDING).get() == leader->getParentRecursively(SceneObjectType::BUILDING).get()) {
 		if (!buff->isActive())
 			buff->activate();
 	} else if (buff->isActive())

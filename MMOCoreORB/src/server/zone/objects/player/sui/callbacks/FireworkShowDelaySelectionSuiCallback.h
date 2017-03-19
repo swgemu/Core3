@@ -25,7 +25,7 @@ public:
 		if (delay < 1000)
 			delay = 1000; // Minimum of 1.0 second delay
 
-		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject().get();
 
 		if (fireworkShow == NULL || !fireworkShow->isFireworkObject())
 			return;

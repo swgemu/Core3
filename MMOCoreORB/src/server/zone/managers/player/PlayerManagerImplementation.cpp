@@ -2586,7 +2586,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	}
 
 
-	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+	ManagedReference<SceneObject*> rootParent = creature->getRootParent().get();
 
 	if (rootParent != NULL && rootParent->isStructureObject() && (cast<StructureObject*>(rootParent.get()))->isOnAdminList(creature)) {
 		return rootParent;
@@ -2899,7 +2899,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	player->info(newWorldPosMsg.toString(), true);*/
 
 	if (newParent != NULL) {
-		ManagedReference<SceneObject*> root = newParent->getRootParent();
+		ManagedReference<SceneObject*> root = newParent->getRootParent().get();
 
 		if (!root->isBuildingObject())
 			return 1;
@@ -3210,7 +3210,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 				continue;
 			}
 			// only the player can benefit from their own droid
-			if( droid->getLinkedCreature() != player ) {
+			if( droid->getLinkedCreature().get() != player ) {
 				continue;
 			}
 			// check the droid

@@ -15,18 +15,20 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 int StructureSetAccessFeeSessionImplementation::initializeSession() {
+	ManagedReference<CreatureObject*> player = this->player.get();
+	ManagedReference<BuildingObject*> structure = this->structure.get();
 
-	if(player == NULL || structure == NULL) {
+	if (player == NULL || structure == NULL) {
 		cancelSession();
 		return 0;
 	}
 
-	if(!structure->isOnAdminList(player)) {
+	if (!structure->isOnAdminList(player)) {
 		cancelSession();
 		return 0;
 	}
 
-	if(structure->isPrivateStructure()) {
+	if (structure->isPrivateStructure()) {
 		player->sendSystemMessage("@player_structure:public_only");
 		cancelSession();
 		return 0;
@@ -36,19 +38,24 @@ int StructureSetAccessFeeSessionImplementation::initializeSession() {
 }
 
 int StructureSetAccessFeeSessionImplementation::clearSession() {
+	ManagedReference<CreatureObject*> player = this->player.get();
 
-	if(feeAmountBox != NULL && playerGhost != NULL && player != NULL) {
-		if(playerGhost->hasSuiBox(feeAmountBox->getBoxID())) {
-			player->sendMessage(feeAmountBox->generateCloseMessage());
+	if (player != NULL) {
+		ManagedReference<PlayerObject*> playerGhost = player->getPlayerObject();
+
+		if (playerGhost != NULL) {
+			if (feeAmountBox != NULL) {
+				if (playerGhost->hasSuiBox(feeAmountBox->getBoxID())) {
+					player->sendMessage(feeAmountBox->generateCloseMessage());
+				}
+			}
+
+			if (durationBox != NULL) {
+				if (playerGhost->hasSuiBox(durationBox->getBoxID())) {
+					player->sendMessage(durationBox->generateCloseMessage());
+				}
+			}
 		}
-
-	}
-
-	if(durationBox != NULL && playerGhost != NULL && player != NULL) {
-		if(playerGhost->hasSuiBox(durationBox->getBoxID())) {
-			player->sendMessage(durationBox->generateCloseMessage());
-		}
-
 	}
 
 	player = NULL;
@@ -57,19 +64,28 @@ int StructureSetAccessFeeSessionImplementation::clearSession() {
 }
 
 void StructureSetAccessFeeSessionImplementation::promptSetAccessFee() {
+	ManagedReference<CreatureObject*> player = this->player.get();
+	ManagedReference<BuildingObject*> structure = this->structure.get();
 
-	if(!structure->isOnAdminList(player)) {
+	if (player == NULL || structure == NULL) {
 		cancelSession();
 		return;
 	}
 
-	if(structure->isPrivateStructure()) {
+	ManagedReference<PlayerObject*> playerGhost = player->getPlayerObject();
+
+	if (!structure->isOnAdminList(player) || playerGhost == NULL) {
+		cancelSession();
+		return;
+	}
+
+	if (structure->isPrivateStructure()) {
 		player->sendSystemMessage("@player_structure:public_only");
 		cancelSession();
 		return;
 	}
 
-	if(feeAmountBox == NULL) {
+	if (feeAmountBox == NULL) {
 		feeAmountBox = new SuiInputBox(player, SuiWindowType::STRUCTURE_SET_ACCESS_FEE);
 		feeAmountBox->setCallback(new StructureSetAccessFeeSuiCallback(player->getZoneServer()));
 		feeAmountBox->setPromptTitle("@player_structure:access_fee_t"); //Access Fee
@@ -88,18 +104,28 @@ void StructureSetAccessFeeSessionImplementation::setAccessFee(const int fee) {
 }
 
 void StructureSetAccessFeeSessionImplementation::promptSetAccessDuration() {
-	if(!structure->isOnAdminList(player)) {
+	ManagedReference<CreatureObject*> player = this->player.get();
+	ManagedReference<BuildingObject*> structure = this->structure.get();
+
+	if (player == NULL || structure == NULL) {
 		cancelSession();
 		return;
 	}
 
-	if(structure->isPrivateStructure()) {
+	ManagedReference<PlayerObject*> playerGhost = player->getPlayerObject();
+
+	if (!structure->isOnAdminList(player) || playerGhost == NULL) {
+		cancelSession();
+		return;
+	}
+
+	if (structure->isPrivateStructure()) {
 		player->sendSystemMessage("@player_structure:public_only");
 		cancelSession();
 		return;
 	}
 
-	if(durationBox == NULL) {
+	if (durationBox == NULL) {
 		durationBox = new SuiInputBox(player, SuiWindowType::STRUCTURE_SET_ACCESS_DURATION);
 		durationBox->setCallback(new StructureSetAccessDurationSuiCallback(player->getZoneServer()));
 		durationBox->setPromptTitle("@player_structure:access_time_t"); //Access Fee
@@ -113,6 +139,13 @@ void StructureSetAccessFeeSessionImplementation::promptSetAccessDuration() {
 }
 
 void StructureSetAccessFeeSessionImplementation::setAccessDuration(const int duration) {
+	ManagedReference<CreatureObject*> player = this->player.get();
+	ManagedReference<BuildingObject*> structure = this->structure.get();
+
+	if (player == NULL || structure == NULL) {
+		cancelSession();
+		return;
+	}
 
 	structure->setAccessFee(accessFee, duration);
 

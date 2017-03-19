@@ -21,7 +21,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return;
 
-		ManagedReference<SceneObject*> object = sui->getUsingObject();
+		ManagedReference<SceneObject*> object = sui->getUsingObject().get();
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 		if (object == NULL || playerObject == NULL)

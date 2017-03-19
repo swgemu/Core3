@@ -119,8 +119,8 @@ public:
 					return GENERALERROR;
 				}
 
-				if (instrument->getSpawnerPlayer() != NULL
-						&& instrument->getSpawnerPlayer() != creature) {
+				ManagedReference<CreatureObject*> spawnerPlayer = instrument->getSpawnerPlayer().get();
+				if (spawnerPlayer != NULL && spawnerPlayer != creature) {
 					creature->sendSystemMessage("You must be the owner of the instrument");
 
 					return GENERALERROR;
@@ -132,7 +132,7 @@ public:
 					return GENERALERROR;
 				}
 
-				if (instrument->getParent() != NULL || instrument->getSpawnerPlayer() != NULL) {
+				if (instrument->getParent().get() != NULL || spawnerPlayer != NULL) {
 					instrument->setDirection(*creature->getDirection());
 					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
 				}

@@ -267,7 +267,6 @@ int SlicingSessionImplementation::getSlicingSkill(CreatureObject* slicer) {
 
 bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
 
 	if (player == NULL)
 		return 0;
@@ -302,7 +301,6 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 
 bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
 
 	if (player == NULL)
 		return false;
@@ -326,13 +324,10 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 	}
 
 	return false;
-
 }
 
 bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
-
 
 	if (player == NULL)
 		return false;
@@ -356,13 +351,10 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 	}
 
 	return false;
-
 }
 
 void SlicingSessionImplementation::useClampFromInventory(SlicingTool* clamp) {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
-
 
 	if (clamp == NULL || clamp->getGameObjectType() != SceneObjectType::MOLECULARCLAMP)
 		return;
@@ -379,15 +371,12 @@ void SlicingSessionImplementation::useClampFromInventory(SlicingTool* clamp) {
 
 	//if (player->hasSuiBox(slicingSuiBox->getBoxID()))
 	//	player->closeSuiWindowType(SuiWindowType::SLICING_MENU);
-
 }
 
 void SlicingSessionImplementation::handleUseClamp() {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
 
-
-	if (player == NULL || tangibleObject == NULL)
+	if (player == NULL)
 		return;
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
@@ -415,9 +404,8 @@ void SlicingSessionImplementation::handleUseClamp() {
 
 void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
 
-	if (player == NULL || tangibleObject == NULL)
+	if (player == NULL)
 		return;
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");

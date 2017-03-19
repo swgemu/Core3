@@ -35,7 +35,7 @@ class MissionSpawnActiveArea extends ActiveArea {
 
 				if ((CreatureObject) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
-					destroyMissionObjective.spawnLair();
+					objective.spawnLair();
 				}
 			} else {
 				super.destroyObjectFromWorld(false);

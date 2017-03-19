@@ -32,7 +32,7 @@ public:
 
 		String palette = cBox->getColorPalette();
 
-		ManagedReference<SceneObject*> armorRehue = cBox->getUsingObject();
+		ManagedReference<SceneObject*> armorRehue = cBox->getUsingObject().get();
 
 		if (armorRehue == NULL)
 			return;

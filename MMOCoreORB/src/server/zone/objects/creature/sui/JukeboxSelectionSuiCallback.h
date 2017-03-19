@@ -20,7 +20,7 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
-		ManagedReference<SceneObject*> terminal = listBox->getUsingObject();
+		ManagedReference<SceneObject*> terminal = listBox->getUsingObject().get();
 
 		if (terminal == NULL)
 			return;

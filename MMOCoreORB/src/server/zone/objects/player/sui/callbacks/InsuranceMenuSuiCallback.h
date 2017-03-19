@@ -41,7 +41,7 @@ public:
 
 		int cost = 100;
 
-		ManagedReference<SceneObject*> term = listBox->getUsingObject();
+		ManagedReference<SceneObject*> term = listBox->getUsingObject().get();
 
 		if (term == NULL) {
 			StringIdChatParameter params;

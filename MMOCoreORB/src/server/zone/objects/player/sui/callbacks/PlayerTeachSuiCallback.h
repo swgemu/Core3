@@ -32,7 +32,7 @@ public:
 		if (listBox->getMenuSize() <= index || index < 0)
 			return;
 
-		ManagedReference<SceneObject*> usingObject = listBox->getUsingObject();
+		ManagedReference<SceneObject*> usingObject = listBox->getUsingObject().get();
 
 		if (usingObject == NULL || !usingObject->isCreatureObject())
 			return;

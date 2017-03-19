@@ -60,7 +60,7 @@ void MissionObjectiveImplementation::activate() {
 void MissionObjectiveImplementation::complete() {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 	if (player == NULL)
 		return;
@@ -114,7 +114,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	}
 
 	//Award faction points for faction delivery missions.
-	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
+	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner().get();
 
 	if (creatureOwner != NULL) {
 		ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
@@ -145,7 +145,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 }
 
 void MissionObjectiveImplementation::removeMissionFromPlayer() {
-	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if (player != NULL && mission != NULL) {
@@ -172,7 +172,7 @@ void MissionObjectiveImplementation::awardReward() {
 
 	Vector3 missionEndPoint = getEndPosition();
 
-	ManagedReference<CreatureObject*> owner = getPlayerOwner();
+	ManagedReference<CreatureObject*> owner = getPlayerOwner().get();
 
 	ManagedReference<GroupObject*> group = owner->getGroup();
 

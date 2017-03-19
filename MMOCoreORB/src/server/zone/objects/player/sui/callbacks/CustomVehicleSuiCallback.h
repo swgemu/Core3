@@ -35,7 +35,7 @@ public:
 
 		if(!creature->isPlayerCreature())
 			return;
-		ManagedReference<SceneObject*> obj = sui->getUsingObject();
+		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
 		if(obj == NULL)
 			return;

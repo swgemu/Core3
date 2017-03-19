@@ -184,7 +184,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		return;
 	}
 
-	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
+	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
 	if( linkedCreature == NULL )
 		return;
 
@@ -192,8 +192,8 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	if( linkedCreature != speaker && !pcd->isFriend(speaker->getObjectID()))
 		return;
 
-	ManagedWeakReference<SceneObject*> speakerParent = speaker->getRootParent();
-	ManagedWeakReference<SceneObject*> petParent = pet->getRootParent();
+	ManagedReference<SceneObject*> speakerParent = speaker->getRootParent().get();
+	ManagedReference<SceneObject*> petParent = pet->getRootParent().get();
 
 	// If speaker is mounted, pet must be outdoors
 	if( speaker->isRidingMount() && petParent != NULL )
@@ -312,7 +312,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 	if( message.isEmpty() )
 		return false;
 
-	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
+	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
 	if( linkedCreature == NULL )
 		return false;
 

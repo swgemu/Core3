@@ -643,7 +643,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObject* droid, int selectedID, int harvestBonus) {
 	// droid and creature are locked coming in.
-	ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
+	ManagedReference<CreatureObject*> owner = droid->getLinkedCreature().get();
 
 	if (owner == NULL) {
 		return;

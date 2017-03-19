@@ -24,7 +24,6 @@ import server.zone.managers.minigames.ForageManager;
 
 @dirty
 class ZoneProcessServer extends ManagedService {
-	@weak
 	transient protected ZoneServer zoneServer;
 
 	transient protected PlayerCreationManager playerCreationManager;
@@ -47,7 +46,6 @@ class ZoneProcessServer extends ManagedService {
 	private transient GamblingManager gamblingManager;
 	private transient ForageManager forageManager;
 
-	@weak
 	transient protected ObjectController objectController;
 
 	public native ZoneProcessServer(ZoneServer server);

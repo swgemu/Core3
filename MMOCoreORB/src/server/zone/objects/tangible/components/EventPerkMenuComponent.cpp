@@ -127,7 +127,7 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		inventory->transferObject(deed, -1, true);
 		deed->setGenerated(false);
 
-		ManagedReference<TangibleObject*> perk = deed->getGeneratedObject();
+		ManagedReference<TangibleObject*> perk = deed->getGeneratedObject().get();
 
 		if (perk != NULL) {
 			Locker perkLock(perk);
