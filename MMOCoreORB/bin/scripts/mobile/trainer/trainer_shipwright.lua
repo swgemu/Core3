@@ -33,7 +33,7 @@ trainer_shipwright = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trainer_shipwright_convotemplate",
+	conversationTemplate = "shipwrightTrainerConvoTemplate",
 	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_shipwright,"trainer_shipwright")
