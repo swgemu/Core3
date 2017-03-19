@@ -37,18 +37,19 @@ public:
 
 			String palette = cBox->getColorPalette();
 
-			ManagedReference<SceneObject*> target = cBox->getUsingObject();
+			ManagedReference<TangibleObject*> target = cBox->getUsingObject().get().castTo<TangibleObject*>();
 
-			ManagedReference<TangibleObject*> targetTano = cast<TangibleObject*>(target.get());
+			if (target == NULL)
+				return;
 
-			if (targetTano != NULL) {
-				Locker clocker(targetTano, creature);
+			Locker clocker(target, creature);
 
-				targetTano->setCustomizationVariable(palette, index, true);
-			}
+			target->setCustomizationVariable(palette, index, true);
 
-			if(customizationKit != NULL){
-				Locker clocker(customizationKit, creature);
+			clocker.release();
+
+			if (customizationKit != NULL) {
+				Locker clocker2(customizationKit, creature);
 				customizationKit->decreaseUseCount();
 			}
 		}

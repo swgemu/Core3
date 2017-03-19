@@ -22,7 +22,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<SceneObject*> obj = creature->getRootParent();
+		ManagedReference<SceneObject*> obj = creature->getRootParent().get();
 
 		if (obj == NULL || !obj->isBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.

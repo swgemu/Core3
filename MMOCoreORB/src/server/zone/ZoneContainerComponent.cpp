@@ -154,7 +154,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		else
 			parent->removeObject(object, sceneObject, true);
 
-		if (object->getParent() != NULL && parent->containsChildObject(object))
+		if (object->getParent().get() != NULL && parent->containsChildObject(object))
 			return false;
 		else
 			object->setParent(NULL);
@@ -235,7 +235,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 	if (object->isActiveArea())
 		return removeActiveArea(zone, dynamic_cast<ActiveArea*>(object));
 
-	ManagedReference<SceneObject*> parent = object->getParent();
+	ManagedReference<SceneObject*> parent = object->getParent().get();
 	//SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 
 	try {

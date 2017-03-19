@@ -13,10 +13,10 @@ include server.zone.objects.player.sui.inputbox.SuiInputBox;
 
 
 class VendorAdBarkingSession extends Facade {
-	@weakreference
+	@weakReference
 	protected CreatureObject owner;
 	
-	@weakreference
+	@weakReference
 	protected SceneObject vendor;
 	
 	protected int advertisingMod;
@@ -37,8 +37,9 @@ class VendorAdBarkingSession extends Facade {
 	public native int initializeSession();
 	
 	public int cancelSession() {
-		if (owner != null)
-			owner.dropActiveSession(SessionFacadeType.VENDORADBARKING);
+		CreatureObject player = owner;
+		if (player != null)
+			player.dropActiveSession(SessionFacadeType.VENDORADBARKING);
 
 		clearSession();
 		return 0;

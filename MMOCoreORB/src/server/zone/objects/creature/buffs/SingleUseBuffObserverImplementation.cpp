@@ -19,13 +19,13 @@ int SingleUseBuffObserverImplementation::notifyObserverEvent(unsigned int eventT
 	if (buff == NULL)
 		return 1;
 
-	ManagedReference<CreatureObject*> player = buff.get()->getPlayer();
+	ManagedReference<CreatureObject*> player = buff->getPlayer();
 	if (player == NULL)
 		return 1;
 
 	ManagedReference<ObjectController*> objectController = player->getZoneServer()->getObjectController();
 
-	unsigned int commandCRC = buff.get()->getCommandCRC();
+	unsigned int commandCRC = buff->getCommandCRC();
 	QueueCommand* queueCommand = objectController->getQueueCommand(commandCRC);
 
 	SceneObject* creature = cast<SceneObject*>( observable);
@@ -34,6 +34,3 @@ int SingleUseBuffObserverImplementation::notifyObserverEvent(unsigned int eventT
 
 	return 0;
 }
-
-
-

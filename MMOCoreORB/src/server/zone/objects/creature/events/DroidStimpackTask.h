@@ -94,7 +94,7 @@ public:
 			}
 		}
 
-		if (droid->getLinkedCreature() != target) {
+		if (droid->getLinkedCreature().get() != target) {
 			if (!groupMember) {
 				target->sendSystemMessage("@pet/droid_modules:stimpack_cant_use_droid");
 				return;

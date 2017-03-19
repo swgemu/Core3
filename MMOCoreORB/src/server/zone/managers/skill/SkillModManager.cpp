@@ -199,7 +199,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	ManagedReference<SceneObject*> parent = creature->getRootParent();
+	ManagedReference<SceneObject*> parent = creature->getRootParent().get();
 
 	if (parent == NULL) {
 		if (creature->getCurrentCamp() != NULL) {

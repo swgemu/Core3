@@ -151,7 +151,6 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/intangible/PetControlObserver.cpp \
 				autogen/server/zone/objects/intangible/PetControlDevice.cpp \
 				autogen/server/zone/managers/space/SpaceManager.cpp \
-				autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
 				autogen/server/zone/objects/area/SarlaccArea.cpp \

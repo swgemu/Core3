@@ -83,7 +83,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 void CraftingMissionObjectiveImplementation::abort() {
 	//Remove the schematic.
 	ManagedReference<MissionObject* > mission = this->mission.get();
-	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 	if (player != NULL && mission != NULL) {
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();

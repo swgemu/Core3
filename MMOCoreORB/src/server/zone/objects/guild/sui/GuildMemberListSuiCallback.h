@@ -34,7 +34,7 @@ public:
 		if (index == -1)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL || !obj->isTerminal())
 			return;

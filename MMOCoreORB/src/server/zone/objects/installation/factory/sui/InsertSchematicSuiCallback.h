@@ -40,7 +40,7 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
-		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
 		if (object == NULL || !object->isFactory())
 			return;
@@ -66,7 +66,7 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
-		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
 		if (object == NULL || !object->isFactory())
 			return;

@@ -28,7 +28,7 @@ public:
 		if (player->isDead() || player->isIncapacitated())
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL)
 			return;

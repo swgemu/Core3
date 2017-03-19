@@ -117,7 +117,7 @@ public:
 
 		playerManager->updateSwimmingState(creature, z);
 
-		ManagedReference<ControlDevice*> device = vehicle->getControlDevice();
+		ManagedReference<ControlDevice*> device = vehicle->getControlDevice().get();
 
 		if (device != NULL && vehicle->getServerObjectCRC() == 0x32F87A54) // Auto-store jetpack on dismount.
 			device->storeObject(creature);

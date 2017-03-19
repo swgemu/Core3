@@ -884,7 +884,7 @@ int LuaAiAgent::getSocialGroup(lua_State* L) {
 }
 
 int LuaAiAgent::getLastCommand(lua_State* L) {
-	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (controlDevice == NULL)
 		lua_pushinteger(L, 0);
@@ -895,7 +895,7 @@ int LuaAiAgent::getLastCommand(lua_State* L) {
 }
 
 int LuaAiAgent::getLastCommandTarget(lua_State* L) {
-	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
 	if (controlDevice == NULL)
 		lua_pushnil(L);
 
@@ -912,7 +912,7 @@ int LuaAiAgent::getLastCommandTarget(lua_State* L) {
 int LuaAiAgent::setLastCommandTarget(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
-	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
 	if (controlDevice == NULL)
 		return 0;
 

@@ -3,7 +3,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 void FsCraftingComponentObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
-	ManagedReference<CreatureObject*> strongOwner = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+	ManagedReference<CreatureObject*> strongOwner = getParentRecursively(SceneObjectType::PLAYERCREATURE).get().castTo<CreatureObject*>();
 
 	if (strongOwner != NULL) {
 		PlayerObject* ghost = strongOwner->getPlayerObject();

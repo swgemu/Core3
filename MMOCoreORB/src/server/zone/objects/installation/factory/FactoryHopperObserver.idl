@@ -19,23 +19,23 @@ import server.zone.objects.installation.factory.FactoryObject;
 class FactoryHopperObserver extends Observer {
 	@weakReference
 	protected FactoryObject factory;
-	
+
 	public FactoryHopperObserver(FactoryObject fact) {
 		factory = fact;
 	}
 
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
-		
-		if(factory == null)
+		FactoryObject strongRef = factory;
+
+		if (strongRef == null)
 			return 0;
-		
-		if(eventType == ObserverEventType.OPENCONTAINER) {
-			factory.openHopper(observable, arg1);
+
+		if (eventType == ObserverEventType.OPENCONTAINER) {
+			strongRef.openHopper(observable, arg1);
 		} else if(eventType == ObserverEventType.CLOSECONTAINER) {
-			factory.closeHopper(observable, arg1);
+			strongRef.closeHopper(observable, arg1);
 		}
-		
+
 		return 0;
 	}
-	
 }

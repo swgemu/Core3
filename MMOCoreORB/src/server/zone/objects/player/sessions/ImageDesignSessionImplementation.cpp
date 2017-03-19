@@ -53,7 +53,7 @@ void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer
 		designerTentID = obj->getObjectID();
 
 	if (designerTentID != 0) {
-		obj = targetPlayer->getParentRecursively(SceneObjectType::SALONBUILDING);
+		obj = targetPlayer->getParentRecursively(SceneObjectType::SALONBUILDING).get();
 
 		if (obj != NULL)
 			targetTentID = obj->getObjectID();
@@ -282,12 +282,12 @@ void ImageDesignSessionImplementation::checkDequeueEvent(SceneObject* scene) {
 	if (scene == designerCreature) {
 		Locker clocker(targetCreature, designerCreature);
 
-		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL)
 			return;
 	} else if (scene == targetCreature) {
 		Locker clocker(designerCreature, targetCreature);
 
-		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL)
 			return;
 	}
 
@@ -301,7 +301,7 @@ void ImageDesignSessionImplementation::sessionTimeout() {
 	if (designerCreature != NULL) {
 		Locker locker(designerCreature);
 
-		if (designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
+		if (designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL || imageDesignData.isAcceptedByDesigner()) {
 			designerCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
 
 			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);
@@ -314,7 +314,7 @@ void ImageDesignSessionImplementation::sessionTimeout() {
 		Locker locker(designerCreature);
 		Locker clocker(targetCreature, designerCreature);
 
-		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING).get() == NULL || imageDesignData.isAcceptedByDesigner()) {
 			targetCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
 
 			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);

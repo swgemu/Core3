@@ -23,7 +23,7 @@ public:
 		if (cancelPressed || !suiBox->isListBox() || player == NULL)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL || !obj->isBuildingObject())
 			return;

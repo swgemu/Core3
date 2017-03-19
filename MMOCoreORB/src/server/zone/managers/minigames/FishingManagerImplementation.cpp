@@ -1230,7 +1230,7 @@ void FishingManagerImplementation::createFishingSplashEvent(CreatureObject* play
 void FishingManagerImplementation::createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String& mood) {
 	if ((player != NULL) && (event != NULL) && (marker != NULL))	{
 
-		player->addActiveSession(SessionFacadeType::FISHING, new FishingSession(player, event, marker, nextAction, fish, boxID, fishingState, mood));
+		player->addActiveSession(SessionFacadeType::FISHING, new FishingSession(event, marker, nextAction, fish, boxID, fishingState, mood));
 	}
 }
 

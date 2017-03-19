@@ -30,7 +30,7 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
-		ManagedReference<SceneObject*> parent = player->getRootParent();
+		ManagedReference<SceneObject*> parent = player->getRootParent().get();
 
 		if (player->containsActiveSession(SessionFacadeType::CREATEVENDOR)) {
 			player->sendSystemMessage("@player_structure:already_creating");

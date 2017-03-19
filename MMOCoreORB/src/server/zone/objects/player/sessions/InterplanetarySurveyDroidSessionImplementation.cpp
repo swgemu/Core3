@@ -139,8 +139,8 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 			return;
 		}
 
-		Locker toolObject(tool);
-		Locker droidLocker(this->droidObject.get());
+		Locker toolLocker(tool);
+		Locker droidLocker(tangibleObject);
 
 		Component* component = dynamic_cast<Component*>(tangibleObject.get());
 

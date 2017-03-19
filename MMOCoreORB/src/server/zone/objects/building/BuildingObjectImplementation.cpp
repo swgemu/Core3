@@ -443,7 +443,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	if (scno == NULL)
 		return;
 
-	bool objectInThisBuilding = scno->getRootParent() == asBuildingObject();
+	bool objectInThisBuilding = scno->getRootParent().get() == asBuildingObject();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -681,7 +681,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 	bool allowEntry = isAllowedEntry(creature);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!allowEntry && creature->getRootParent() == asBuildingObject()) {
+	if (!allowEntry && creature->getRootParent().get() == asBuildingObject()) {
 		ejectObject(creature);
 	}
 
@@ -1160,7 +1160,7 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	for (int i = 0; i < ejectList.size(); ++i) {
 		paidAccessList.drop(ejectList.get(i));
 		ManagedReference<CreatureObject*> creature = server->getZoneServer()->getObject(ejectList.get(i)).castTo<CreatureObject*>();
-		if (creature != NULL && creature->getRootParent() == asBuildingObject()) {
+		if (creature != NULL && creature->getRootParent().get() == asBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:turnstile_expire"); // You have been ejected because your access expired
 			ejectObject(creature);
 		}

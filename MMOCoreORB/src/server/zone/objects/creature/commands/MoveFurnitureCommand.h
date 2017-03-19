@@ -40,8 +40,8 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
-		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
+		ManagedReference<SceneObject*> rootParent = obj->getRootParent().get();
+		ManagedReference<SceneObject*> creatureParent = creature->getRootParent().get();
 
 		if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
@@ -55,12 +55,12 @@ public:
 
 		BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
 
-		if (buildingObject == NULL || obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj)) {
+		if (buildingObject == NULL || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
 			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 			return GENERALERROR;
 		}
 
-		if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature)) {
+		if (!buildingObject->isOnAdminList(creature)) {
 			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
 			return GENERALERROR;
 		}

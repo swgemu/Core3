@@ -44,7 +44,7 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 }
 
 Reference<CreatureObject*> LootkitObjectImplementation::getPlayer() {
-	ManagedReference<CreatureObject*> strong = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+	ManagedReference<CreatureObject*> strong = getParentRecursively(SceneObjectType::PLAYERCREATURE).get().castTo<CreatureObject*>();
 	return strong.get();
 }
 

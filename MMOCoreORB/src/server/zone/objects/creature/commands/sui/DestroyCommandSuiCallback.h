@@ -22,7 +22,7 @@ public:
 		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == NULL)
 			return;

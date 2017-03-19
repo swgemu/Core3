@@ -53,7 +53,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if (structure->isBuildingObject() && creature->getRootParent() != structure) {
+		if (structure->isBuildingObject() && creature->getRootParent().get() != structure) {
 			creature->sendSystemMessage("@player_structure:not_in_building"); //You must be inside your building to transfer it.
 			return GENERALERROR;
 		}

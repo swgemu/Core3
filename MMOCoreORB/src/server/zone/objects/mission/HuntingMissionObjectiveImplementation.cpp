@@ -26,7 +26,7 @@ void HuntingMissionObjectiveImplementation::activate() {
 
 	targetsKilled = 15 * getMissionObject().get()->getDifficultyLevel();
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 	ManagedReference<MissionObserver*> observer = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 	addObserver(observer, true);
@@ -41,7 +41,7 @@ void HuntingMissionObjectiveImplementation::abort() {
 	for (int i = 0; i < getObserverCount(); i++) {
 		ManagedReference<MissionObserver*> observer = getObserver(i);
 
-		ManagedReference<CreatureObject*> player = getPlayerOwner();
+		ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 		if (player != NULL) {
 			Locker locker(player);

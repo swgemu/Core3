@@ -72,7 +72,7 @@ public:
 			return false;
 		} else {
 			// are we in a cantina? we have a private medical rating so either thats from a droid or camp or hospital
-			ManagedReference<SceneObject*> root = creature->getRootParent();
+			ManagedReference<SceneObject*> root = creature->getRootParent().get();
 			if (root != NULL && root->isClientObject()) {
 				uint32 gameObjectType = root->getGameObjectType();
 				switch (gameObjectType) {

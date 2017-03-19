@@ -28,7 +28,7 @@ public:
 		try {
 			int value = Integer::valueOf(args->get(0).toString());
 
-			ManagedReference<SceneObject*> vendor = sui->getUsingObject();
+			ManagedReference<SceneObject*> vendor = sui->getUsingObject().get();
 
 			if(vendor == NULL)
 				return;

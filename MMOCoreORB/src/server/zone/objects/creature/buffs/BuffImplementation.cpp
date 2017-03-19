@@ -105,17 +105,18 @@ void BuffImplementation::activate(bool applyModifiers) {
 
 		//info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
-		if (creature.get()->isPlayerCreature())
-			sendTo((cast<CreatureObject*>(creature.get().get())));
+		ManagedReference<CreatureObject*> creo = creature.get();
+		if (creo->isPlayerCreature())
+			sendTo(creo);
 
 		if (!startMessage.isEmpty())
-			creature.get()->sendSystemMessage(startMessage);
+			creo->sendSystemMessage(startMessage);
 
 		if (!startFlyFile.isEmpty())
-			creature.get()->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
+			creo->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
 
 		if (!startSpam.isEmpty()) {
-			creature.get()->sendStateCombatSpam(startSpam.getFile(), startSpam.getStringID(), spamColor, 0, broadcastSpam);
+			creo->sendStateCombatSpam(startSpam.getFile(), startSpam.getStringID(), spamColor, 0, broadcastSpam);
 		}
 
 	} catch (Exception& e) {
@@ -143,7 +144,7 @@ void BuffImplementation::removeAllModifiers() {
 }
 
 void BuffImplementation::deactivate(bool removeModifiers) {
-	ManagedReference<CreatureObject*> strongRef = creature.get().get();
+	ManagedReference<CreatureObject*> strongRef = creature.get();
 
 	if (strongRef == NULL)
 		return;
@@ -152,17 +153,17 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		if(removeModifiers)
 			removeAllModifiers();
 
-		if (creature.get()->isPlayerCreature())
-			sendDestroyTo(cast<CreatureObject*>(creature.get().get()));
+		if (strongRef->isPlayerCreature())
+			sendDestroyTo(strongRef);
 
 		if (!endMessage.isEmpty())
-			creature.get()->sendSystemMessage(endMessage);
+			strongRef->sendSystemMessage(endMessage);
 
 		if (!endFlyFile.isEmpty())
-			creature.get()->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
+			strongRef->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
 
 		if (!endSpam.isEmpty()) {
-			creature.get()->sendStateCombatSpam(endSpam.getFile(), endSpam.getStringID(), spamColor, 0, broadcastSpam);
+			strongRef->sendStateCombatSpam(endSpam.getFile(), endSpam.getStringID(), spamColor, 0, broadcastSpam);
 		}
 
 		clearBuffEvent();
@@ -266,7 +267,9 @@ float BuffImplementation::getTimeLeft() {
 
 
 void BuffImplementation::applyAttributeModifiers() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = attributeModifiers.size();
@@ -284,7 +287,7 @@ void BuffImplementation::applyAttributeModifiers() {
 			continue;
 
 		try {
-			int currentMaxHAM = creature.get()->getMaxHAM(attribute);
+			int currentMaxHAM = creo->getMaxHAM(attribute);
 
 			int newMaxHAM = currentMaxHAM + value;
 			if (newMaxHAM < 1)
@@ -294,17 +297,17 @@ void BuffImplementation::applyAttributeModifiers() {
 			attributeModifiers.drop(attribute);
 			attributeModifiers.put(attribute, buffAmount);
 
-			creature.get()->setMaxHAM(attribute, newMaxHAM);
+			creo->setMaxHAM(attribute, newMaxHAM);
 
-			if (creature.get()->getHAM(attribute) > newMaxHAM - creature.get()->getWounds(attribute))
-				creature.get()->setHAM(attribute, newMaxHAM - creature.get()->getWounds(attribute));
+			if (creo->getHAM(attribute) > newMaxHAM - creo->getWounds(attribute))
+				creo->setHAM(attribute, newMaxHAM - creo->getWounds(attribute));
 
-			if (!creature.get()->isDead() && !creature.get()->isIncapacitated()) {
+			if (!creo->isDead() && !creo->isIncapacitated()) {
 				if (fillAttributesOnBuff) {
-					int attributeval = MAX(newMaxHAM, creature.get()->getHAM(attribute) + value);
-					creature.get()->healDamage(creature.get(), attribute, attributeval, true);
+					int attributeval = MAX(newMaxHAM, creo->getHAM(attribute) + value);
+					creo->healDamage(creo, attribute, attributeval, true);
 				} else if (value >= 0)
-					creature.get()->healDamage(creature.get(), attribute, value);
+					creo->healDamage(creo, attribute, value);
 			}
 
 		} catch (Exception& e) {
@@ -316,7 +319,9 @@ void BuffImplementation::applyAttributeModifiers() {
 }
 
 void BuffImplementation::applySkillModifiers() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = skillModifiers.size();
@@ -327,29 +332,33 @@ void BuffImplementation::applySkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature.get()->addSkillMod(SkillModManager::BUFF, key, value, true);
+		creo->addSkillMod(SkillModManager::BUFF, key, value, true);
 	}
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature.get()->updateSpeedAndAccelerationMods();
-	creature.get()->updateTerrainNegotiation();
+	creo->updateSpeedAndAccelerationMods();
+	creo->updateTerrainNegotiation();
 }
 
 void BuffImplementation::applyStates() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
 
-		creature.get()->setState(states.get(i), true);
+		creo->setState(states.get(i), true);
 	}
 }
 
 void BuffImplementation::removeAttributeModifiers() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = attributeModifiers.size();
@@ -368,17 +377,17 @@ void BuffImplementation::removeAttributeModifiers() {
 
 		try {
 
-			int attributemax = creature.get()->getMaxHAM(attribute) - value;
+			int attributemax = creo->getMaxHAM(attribute) - value;
 
-			int currentVal = creature.get()->getHAM(attribute);
+			int currentVal = creo->getHAM(attribute);
 
-			creature.get()->setMaxHAM(attribute, attributemax);
+			creo->setMaxHAM(attribute, attributemax);
 
 			if (currentVal >= attributemax) {
 				//creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, isSpiceBuff());
 
 				if (attribute % 3 == 0) {
-					creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, false);
+					creo->inflictDamage(creo, attribute, currentVal - attributemax, false);
 				} // else setMaxHam sets secondaries to max
 			}
 
@@ -396,7 +405,9 @@ void BuffImplementation::removeAttributeModifiers() {
 }
 
 void BuffImplementation::removeSkillModifiers() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = skillModifiers.size();
@@ -407,24 +418,26 @@ void BuffImplementation::removeSkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature.get()->addSkillMod(SkillModManager::BUFF, key, -value, true);
+		creo->addSkillMod(SkillModManager::BUFF, key, -value, true);
 
 	}
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature.get()->updateSpeedAndAccelerationMods();
-	creature.get()->updateTerrainNegotiation();
+	creo->updateSpeedAndAccelerationMods();
+	creo->updateTerrainNegotiation();
 }
 
 void BuffImplementation::removeStates() {
-	if (creature.get() == NULL)
+	ManagedReference<CreatureObject*> creo = creature.get();
+
+	if (creo == NULL)
 		return;
 
 	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
-		creature.get()->clearState(states.get(i), true);
+		creo->clearState(states.get(i), true);
 	}
 }
 
@@ -482,4 +495,3 @@ void BuffImplementation::setEndFlyText(const String& file, const String& aux, ui
 	endFlyGreen = green;
 	endFlyBlue = blue;
 }
-

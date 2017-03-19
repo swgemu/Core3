@@ -37,7 +37,7 @@ public:
 
 		Locker clocker(firework, player);
 
-		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject().get();
 
 		if (fireworkShow == NULL || !fireworkShow->isFireworkObject())
 			return;

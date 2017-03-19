@@ -176,7 +176,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	mlocker.release();
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 	if (player != NULL) {
 		//TODO: find correct string id
@@ -253,7 +253,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 	if (hasObservers()) {
 		ManagedReference<MissionObserver*> observer = getObserver(0);
 
-		ManagedReference<CreatureObject*> player = getPlayerOwner();
+		ManagedReference<CreatureObject*> player = getPlayerOwner().get();
 
 		ManagedReference<LairObject*> lair = lairObject;
 

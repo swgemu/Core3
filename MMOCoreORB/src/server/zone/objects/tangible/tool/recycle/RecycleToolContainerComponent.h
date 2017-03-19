@@ -30,7 +30,7 @@ public:
 
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
-		if (sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE) != object->getParentRecursively(SceneObjectType::PLAYERCREATURE))
+		if (sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get() != object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get())
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
 		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();

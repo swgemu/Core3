@@ -100,12 +100,6 @@ class Jukebox extends Terminal {
 		owner = player;
 	}
 
-	@weakReference
-	@read
-	public CreatureObject getOwner() {
-		return owner;
-	}
-
 	@local
 	public Time getPurchaseTime() {
 		return purchaseTime;

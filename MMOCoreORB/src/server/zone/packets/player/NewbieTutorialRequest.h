@@ -93,14 +93,12 @@ public:
 		} else if (response == "closeInventory") {
 			player->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
-			if (player->getZone() != NULL && player->getParent() != NULL) {
-				ManagedReference<SceneObject*> par = player->getParent();
+			Zone* zone = player->getZone();
+			ManagedReference<SceneObject*> par = player->getParent().get();
 
-				if (par->getParent() != NULL) {
-					Zone* zone = player->getZone();
-
-					if (zone->getZoneName() == "tutorial")
-						DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+			if (zone != NULL && par != NULL) {
+				if (par->getParent().get() != NULL && zone->getZoneName() == "tutorial") {
+					DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
 				}
 			}
 		}

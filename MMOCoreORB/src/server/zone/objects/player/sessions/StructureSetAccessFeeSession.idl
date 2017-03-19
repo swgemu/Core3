@@ -13,56 +13,50 @@ include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.inputbox.SuiInputBox;
 
 class StructureSetAccessFeeSession extends Facade {
-
-	@weakreference
-	protected PlayerObject playerGhost;
-	
-	@weakreference
+	@weakReference
 	protected CreatureObject player;
-	
-	@weakreference
+
+	@weakReference
 	protected BuildingObject structure;
-	
-	@weakreference
+
 	protected SuiInputBox feeAmountBox;
-	
-	@weakreference
+
 	protected SuiInputBox durationBox;
-	
+
 	protected int accessFee;
 
 	public StructureSetAccessFeeSession(CreatureObject play, BuildingObject struc) {
-		
+
 		player = play;
-		playerGhost = player.getPlayerObject();
 		structure = struc;
-		
+
 		feeAmountBox = null;
 		durationBox = null;
-		
+
 		accessFee = 0;
-		
+
 		Logger.setLoggingName("StructureSetAccessFeeSession");
 		Logger.setLogging(true);
 	}
 
 	public native int initializeSession();
-	
+
 	public int cancelSession() {
-		if (player != null)
-			player.dropActiveSession(SessionFacadeType.SETSTRUCTUREACCESSFEE);
+		CreatureObject strongRef = player;
+		if (strongRef != null)
+			strongRef.dropActiveSession(SessionFacadeType.SETSTRUCTUREACCESSFEE);
 
 		clearSession();
 		return 0;
 	}
-	
+
 	public native int clearSession();
-	
+
 	public native void promptSetAccessFee();
-	
+
 	public native void setAccessFee(final int fee);
-	
+
 	public native void promptSetAccessDuration();
-	
+
 	public native void setAccessDuration(final int duration);
 }

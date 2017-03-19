@@ -371,7 +371,7 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 }
 
 bool LightsaberCrystalComponentImplementation::hasPlayerAsParent(CreatureObject* player) {
-	ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER);
+	ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER).get();
 	SceneObject* inventory = player->getSlottedObject("inventory");
 	SceneObject* bank = player->getSlottedObject("bank");
 

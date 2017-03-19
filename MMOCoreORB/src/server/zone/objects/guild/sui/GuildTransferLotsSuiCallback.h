@@ -27,7 +27,7 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject().get();
 		if (usingObject == NULL)
 			return;
 

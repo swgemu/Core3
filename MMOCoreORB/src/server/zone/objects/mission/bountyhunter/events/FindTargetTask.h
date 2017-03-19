@@ -118,7 +118,7 @@ class FindTargetTask : public Task, public Logger {
 	bool findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		Locker locker(player);
 
-		if (objective->getPlayerOwner() == NULL) {
+		if (objective->getPlayerOwner().get() == NULL) {
 			return false;
 		}
 
@@ -193,7 +193,7 @@ class FindTargetTask : public Task, public Logger {
 	}
 
 	int getTargetLevel(CreatureObject* player, BountyMissionObjective* objective) {
-		ManagedReference<MissionObject*> strong = objective->getMissionObject();
+		ManagedReference<MissionObject*> strong = objective->getMissionObject().get();
 		String targetTemplateName = strong->getTargetOptionalTemplate();
 
 		if (targetTemplateName != "") {

@@ -21,7 +21,7 @@ void JukeboxImplementation::initializeTransientMembers() {
 }
 
 void JukeboxImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ManagedReference<CreatureObject*> perkOwner = getOwner().get();
+	ManagedReference<CreatureObject*> perkOwner = owner.get();
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
@@ -53,7 +53,7 @@ void JukeboxImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 
 
 int JukeboxImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ManagedReference<CreatureObject*> perkOwner = getOwner().get();
+	ManagedReference<CreatureObject*> perkOwner = owner.get();
 
 	bool isOwner = perkOwner != NULL && player == perkOwner;
 

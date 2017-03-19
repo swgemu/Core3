@@ -146,7 +146,7 @@ public:
 			if (currentPos.squaredDistanceTo(newPos) > 0.01) {
 				bounceBack(object, pos);
 			} else {
-				ManagedReference<SceneObject*> currentParent = object->getParent();
+				ManagedReference<SceneObject*> currentParent = object->getParent().get();
 				bool light = objectControllerMain->getPriority() != 0x23;
 
 				if (currentParent != NULL)
@@ -211,7 +211,7 @@ public:
 		if (!newParent->isCellObject())
 			return;
 
-		ManagedReference<SceneObject*> parentSceneObject = newParent->getParent();
+		ManagedReference<SceneObject*> parentSceneObject = newParent->getParent().get();
 
 		if (parentSceneObject == NULL)
 			return;
@@ -221,7 +221,7 @@ public:
 		if (building == NULL)
 			return;
 
-		ManagedReference<SceneObject*> par = object->getParent();
+		ManagedReference<SceneObject*> par = object->getParent().get();
 
 		if (par != NULL && par->isShipObject())
 			return;

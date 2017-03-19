@@ -131,7 +131,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ManagedReference<CreatureObject*> object = getPlayerOwner();
+	ManagedReference<CreatureObject*> object = getPlayerOwner().get();
 
 	if (object == NULL)
 		return;
