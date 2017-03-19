@@ -33,7 +33,7 @@ trainer_smuggler = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "trainer_smuggler_convotemplate",
+	conversationTemplate = "smugglerTrainerConvoTemplate",
 	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_smuggler,"trainer_smuggler")

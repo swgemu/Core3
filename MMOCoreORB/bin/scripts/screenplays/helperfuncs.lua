@@ -26,11 +26,36 @@ function HelperFuncs:despawnMobileTask(pMobile)
 	if (pMobile == nil) then
 		return
 	end
-	
+
 	if (CreatureObject(pMobile):isInCombat() or AiAgent(pMobile):getFollowObject() ~= nil) then
 		createEvent(10000, "HelperFuncs", "despawnMobileTask", pMobile, "")
 		return
 	end
-	
+
 	SceneObject(pMobile):destroyObjectFromWorld()
+end
+
+function HelperFuncs:tableContainsValue(table, value)
+	if (table == nil or #table == 0 or value == nil) then
+		return false
+	end
+
+	for i = 1, #table, 1 do
+		if (table[i] == value) then
+			return true
+		end
+	end
+
+	return false
+end
+
+-- Look for all values of table 1 in table 2, return true if all values are found
+function HelperFuncs:isTableASubset(table1, table2)
+	for i = 1, #table1, 1 do
+		if (not self:tableContainsValue(table2, table1[i])) then
+			return false
+		end
+	end
+
+	return true
 end

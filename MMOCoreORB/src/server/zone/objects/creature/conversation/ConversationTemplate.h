@@ -21,7 +21,6 @@ class ConversationTemplate : public Object, public Logger {
 public:
 	enum ConversationTemplateType {
 		ConversationTemplateTypeNormal,
-		ConversationTemplateTypeTrainer,
 		ConversationTemplateTypeDeliverMission,
 		ConversationTemplateTypeInformantMission,
 		ConversationTemplateTypeLua,
@@ -60,9 +59,7 @@ public:
 			templateType = "Normal";
 		}
 
-		if (templateType == "Trainer") {
-			conversationTemplateType = ConversationTemplateTypeTrainer;
-		} else if (templateType == "DeliverNPC") {
+		if (templateType == "DeliverNPC") {
 			conversationTemplateType = ConversationTemplateTypeDeliverMission;
 		} else if (templateType == "InformantNPC") {
 			conversationTemplateType = ConversationTemplateTypeInformantMission;
