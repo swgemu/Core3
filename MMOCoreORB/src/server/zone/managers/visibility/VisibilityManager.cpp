@@ -4,6 +4,7 @@
 
 #include "VisibilityManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
@@ -64,18 +65,20 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32)) {
 				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
 				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
-					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
+					if (CollisionManager::checkLineOfSight(creature, c)) {
+						if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
 						visibilityIncrease += 0.5;
 						//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
-					} else {
-						if (creature->getFaction() == c->getFaction()) {
-							visibilityIncrease += 0.25;
-							//info(c->getCreatureName().toString() + " generating a 0.25 visibility modifier", true);
 						} else {
-							visibilityIncrease += 1;
-							//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
+							if (creature->getFaction() == c->getFaction()) {
+								visibilityIncrease += 0.25;
+								//info(c->getCreatureName().toString() + " generating a 0.25 visibility modifier", true);
+							} else {
+								visibilityIncrease += 1;
+								//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
+							}
 						}
-					}
+					} 
 				}
 			}
 		}
