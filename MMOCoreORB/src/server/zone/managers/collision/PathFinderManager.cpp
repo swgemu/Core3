@@ -1025,7 +1025,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 					Vector3 temp = point - center;
 					float len = temp.length();
-					float multiplier = radius / (MIN(len, 1.0f));
+					float multiplier = radius / (MAX(len, 1.0f));
 					temp.setX(temp.getX() * multiplier);
 					temp.setY(temp.getY() * multiplier);
 					point = center + temp;
