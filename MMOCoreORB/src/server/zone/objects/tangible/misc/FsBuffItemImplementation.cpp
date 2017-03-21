@@ -58,7 +58,7 @@ void FsBuffItemImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 	alm->insertAttribute("examine_dot_attribute", BuffAttribute::getName(buffAttribute, true));
 	alm->insertAttribute("potency", buffValue);
-	alm->insertAttribute("duration", getTimeString(buffDuration));
+	alm->insertAttribute("duration", getTimeString(buffDuration * 1000));
 }
 
 uint32 FsBuffItemImplementation::getBuffCRC() {
