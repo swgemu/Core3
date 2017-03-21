@@ -192,6 +192,13 @@ class AiAgent extends CreatureObject {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
 
 	public void finalize() {
 		//Logger.info("deleting from ram", true);

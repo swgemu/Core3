@@ -469,6 +469,21 @@ void AiAgentImplementation::initializeTransientMembers() {
 	rescheduleTrackingTask();
 }
 
+void AiAgentImplementation::notifyLoadFromDatabase() {
+	CreatureObjectImplementation::notifyLoadFromDatabase();
+
+	if (npcTemplate != NULL && convoTemplateCRC != 0) {
+		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
+
+		if (conversationTemplate == NULL) {
+			uint64 tempCRC = npcTemplate->getConversationTemplate();
+
+			if (convoTemplateCRC != tempCRC)
+				convoTemplateCRC = tempCRC;
+		}
+	}
+}
+
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 
