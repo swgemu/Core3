@@ -991,8 +991,17 @@ function PadawanTrials:showCurrentTrial(pShrine, pPlayer)
 		if (trialData.trialType == TRIAL_HUNT) then
 			local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 
-			if (targetCount ~= nil) then
+			if (targetCount ~= nil and targetCount > 0) then
 				suiPrompt = suiPrompt .. " " .. targetCount
+			else
+				local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
+				local cityName = planetData[2]
+				cityName = string.gsub(cityName, "_", " ")
+				cityName = string.gsub(" "..cityName, "%W%l", string.upper):sub(2)
+
+				local msgPrefix =  "@jedi_trials:" .. trialData.trialName .. "_01 " .. "@jedi_trials:" .. planetData[1]
+				local msgPostfix =  "@jedi_trials:" .. trialData.trialName .. "_02 " .. cityName .. "."
+				suiPrompt = msgPrefix .. " " .. msgPostfix
 			end
 		end
 
