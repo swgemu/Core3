@@ -463,8 +463,20 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
-	if (npcTemplate != NULL)
+	if (npcTemplate != NULL) {
 		setupAttackMaps();
+
+		if (convoTemplateCRC != 0) {
+			ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
+
+			if (conversationTemplate == NULL) {
+				uint64 tempCRC = npcTemplate->getConversationTemplate();
+
+				if (convoTemplateCRC != tempCRC)
+					convoTemplateCRC = tempCRC;
+			}
+		}
+	}
 
 	rescheduleTrackingTask();
 }
