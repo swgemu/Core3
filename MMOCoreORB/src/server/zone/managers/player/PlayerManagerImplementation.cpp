@@ -1229,9 +1229,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				awardExperience(attacker, xpType, xpAmount);
 			}
 
-			combatXp /= 10.f;
-
-			awardExperience(attacker, "combat_general", combatXp);
+			combatXp = awardExperience(attacker, "combat_general", combatXp, true, 0.1f);
 
 			//Check if the group leader is a squad leader
 			if (group == NULL)
@@ -1497,13 +1495,13 @@ void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier
 	playerManager->awardExperience(playerCreature, "resource_harvesting_inorganic", 500);
  *
  */
-void PlayerManagerImplementation::awardExperience(CreatureObject* player, const String& xpType,
+int PlayerManagerImplementation::awardExperience(CreatureObject* player, const String& xpType,
 		int amount, bool sendSystemMessage, float localMultiplier) {
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
 	if (playerObject == NULL)
-		return;
+		return 0;
 
 	float speciesModifier = 1.f;
 
@@ -1528,7 +1526,7 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 		}
 	}
 
-
+	return xp;
 }
 
 void PlayerManagerImplementation::sendLoginMessage(CreatureObject* creature) {

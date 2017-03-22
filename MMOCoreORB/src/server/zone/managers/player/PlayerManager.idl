@@ -159,7 +159,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void awardBadge(PlayerObject ghost, final Badge badge);
 
 	public native void setExperienceMultiplier(float globalMultiplier);
-	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
+	public native int awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
 
 	@local @dereferenced
 	public native SortedVector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
