@@ -38,8 +38,8 @@ public:
 
 		// Check if droid is spawned
 		if( strongDroidRef->getLocalZone() == NULL ){  // Not outdoors
-			ManagedReference<SceneObject*> parent = strongDroidRef->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			ManagedReference<SceneObject*> parent = strongDroidRef->getParent().get();
+			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
 				return;
 			}
 		}

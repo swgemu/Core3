@@ -231,7 +231,7 @@ public:
 			return true;
 		}
 
-		Reference<CellObject*> targetCell = creature->getParent().castTo<CellObject*>();
+		Reference<CellObject*> targetCell = creature->getParent().get().castTo<CellObject*>();
 
 		if (targetCell != NULL) {
 			ContainerPermissions* perms = targetCell->getContainerPermissions();

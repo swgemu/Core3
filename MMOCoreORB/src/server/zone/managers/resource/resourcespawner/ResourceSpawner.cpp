@@ -817,7 +817,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 		return;
 	}
 
-	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool().get();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player->getZone() == NULL)
 		return;
@@ -906,7 +906,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 		return;
 	}
 
-	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool().get();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player->getZone() == NULL)
 		return;
@@ -944,7 +944,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 		return;
 	}
 
-	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool().get();
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (surveyTool == NULL || player->getZone() == NULL)

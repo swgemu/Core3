@@ -66,8 +66,8 @@ public:
 			return GENERALERROR;
 		// Check if droid is spawned
 		if( droid->getLocalZone() == NULL ){  // Not outdoors
-			ManagedWeakReference<SceneObject*> parent = droid->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			ManagedReference<SceneObject*> parent = droid->getParent().get();
+			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
 				return GENERALERROR;
 			}
 		}

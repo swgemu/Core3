@@ -44,7 +44,7 @@ public:
 			cycles = 10;
 
 		ManagedReference<SceneObject*> rootParent = strongRef->getRootParent().get();
-		ManagedReference<SceneObject*> parent = strongRef->getParent();
+		ManagedReference<SceneObject*> parent = strongRef->getParent().get();
 
 		strongRef->updateLastPulse();
 

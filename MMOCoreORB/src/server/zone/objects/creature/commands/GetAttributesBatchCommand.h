@@ -58,7 +58,7 @@ public:
 			ManagedReference<SceneObject*> object = zone->getZoneServer()->getObject(objid);
 
 			if (object != NULL) {
-				ManagedReference<SceneObject*> parent = object->getParent();
+				ManagedReference<SceneObject*> parent = object->getParent().get();
 
 				if (parent != NULL && parent->isCreatureObject() &&
 					!ghost->isPrivileged() && !object->isASubChildOf(creature)) {

@@ -86,7 +86,7 @@ public:
 					award(cl,rollMod);
 					if (count >= maxSamples ){
 						// nuke deed you killed it
-						ManagedReference<SceneObject*> deedContainer = deed->getParent();
+						ManagedReference<SceneObject*> deedContainer = deed->getParent().get();
 						if (deedContainer != NULL) {
 							deed->destroyObjectFromWorld(true);
 						}

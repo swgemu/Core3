@@ -121,7 +121,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 }
 
 bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
-	ManagedReference<SceneObject*> building = cellObject->getParent();
+	ManagedReference<SceneObject*> building = cellObject->getParent().get();
 
 	if (building == NULL)
 		return true;
@@ -494,8 +494,8 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 //	zone->runlock();
 
-	ManagedReference<SceneObject*> parent1 = object1->getParent();
-	ManagedReference<SceneObject*> parent2 = object2->getParent();
+	ManagedReference<SceneObject*> parent1 = object1->getParent().get();
+	ManagedReference<SceneObject*> parent2 = object2->getParent().get();
 
 	if (parent1 != NULL || parent2 != NULL) {
 		CellObject* cell = NULL;
@@ -729,7 +729,7 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 }
 
 bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint) {
-	ManagedReference<SceneObject*> parent = object->getParent();
+	ManagedReference<SceneObject*> parent = object->getParent().get();
 
 	if (parent == NULL || !parent->isCellObject())
 		return true;

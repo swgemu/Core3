@@ -52,8 +52,8 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 	if (isClientObject())
 		return;
 
-
-	if (getParent() == NULL)
+	ManagedReference<SceneObject*> parent = getParent().get();
+	if (parent == NULL)
 		return;
 
 	// Scene Create
@@ -61,7 +61,7 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 	player->sendMessage(create);
 
 	// Link to Crafting Tool
-	BaseMessage* link = new UpdateContainmentMessage(getObjectID(), getParent().get()->getObjectID(), 4);
+	BaseMessage* link = new UpdateContainmentMessage(getObjectID(), parent->getObjectID(), 4);
 	player->sendMessage(link);
 
 	sendBaselinesTo(player);
@@ -120,7 +120,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(CreatureObject* pl
 		return;
 
 	Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-	if (session == NULL || session->getSchematic() != _this.getReferenceUnsafeStaticCast()) {
+	if (session == NULL || session->getSchematic().get() != _this.getReferenceUnsafeStaticCast()) {
 		return;
 	}
 

@@ -218,7 +218,7 @@ public:
 		}
 
 		if (creature->isPlayerCreature() && !targetObject->isPlayerCreature() && targetObject->getParentID() != 0 && creature->getParentID() != targetObject->getParentID()) {
-			Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
+			Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
 
 			if (targetCell != NULL) {
 				ContainerPermissions* perms = targetCell->getContainerPermissions();

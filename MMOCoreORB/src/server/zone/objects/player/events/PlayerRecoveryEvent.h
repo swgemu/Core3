@@ -36,7 +36,7 @@ public:
 		if (play == NULL)
 			return;
 
-		ManagedReference<SceneObject*> strongParent = play->getParent();
+		ManagedReference<SceneObject*> strongParent = play->getParent().get();
 		
 		if (strongParent == NULL)
 			return;

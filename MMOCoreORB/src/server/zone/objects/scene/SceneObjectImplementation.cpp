@@ -348,7 +348,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		for (int i = 0; i < containerObjects.size(); ++i) {
 			ManagedReference<SceneObject* > obj = containerObjects.get(i);
 
-			if (obj->getParent() != asSceneObject()) {
+			if (obj->getParent().get() != asSceneObject()) {
 				obj->setParent(asSceneObject());
 				obj->setContainmentType(-1);
 			}
@@ -914,7 +914,7 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
-	ManagedReference<SceneObject*> grandParent = getParent();
+	ManagedReference<SceneObject*> grandParent = getParent().get();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
 	if (grandParent == NULL)
@@ -925,7 +925,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	parents.setNoDuplicateInsertPlan();
 #endif
 
-	while ((tempParent = grandParent->getParent()) != NULL && grandParent != asSceneObject()) {
+	while ((tempParent = grandParent->getParent().get()) != NULL && grandParent != asSceneObject()) {
 		grandParent = tempParent;
 
 #ifdef DEBUG_GETROOT_PARENT
@@ -945,7 +945,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
-	ManagedReference<SceneObject*> temp = getParent();
+	ManagedReference<SceneObject*> temp = getParent().get();
 
 	if (temp == NULL)
 		return NULL;
@@ -953,7 +953,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursive
 	if (temp->getGameObjectType() == gameObjectType)
 		return temp.get();
 
-	while ((temp = temp->getParent()) != NULL && temp != asSceneObject()) {
+	while ((temp = temp->getParent().get()) != NULL && temp != asSceneObject()) {
 		if (temp->getGameObjectType() == gameObjectType) {
 			ManagedWeakReference<SceneObject*> weak = temp.get();
 
@@ -968,7 +968,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursive
 }
 
 bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
-	ManagedReference<SceneObject*> temp = getParent();
+	ManagedReference<SceneObject*> temp = getParent().get();
 
 	if (temp == NULL)
 		return false;
@@ -978,7 +978,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 
 	ManagedReference<SceneObject*> grandParent = temp;
 
-	while ((temp = grandParent->getParent()) != NULL) {
+	while ((temp = grandParent->getParent().get()) != NULL) {
 		grandParent = temp;
 
 		if (grandParent == object)

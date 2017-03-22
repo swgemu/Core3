@@ -66,7 +66,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
+		Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
 
 		if (targetCell != NULL) {
 			ContainerPermissions* perms = targetCell->getContainerPermissions();

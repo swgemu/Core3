@@ -1148,7 +1148,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 		}
 	}
 
-	ManagedReference<SceneObject*> clothingParent = clothing->getParent();
+	ManagedReference<SceneObject*> clothingParent = clothing->getParent().get();
 
 	if (clothingParent == NULL)
 		return false;

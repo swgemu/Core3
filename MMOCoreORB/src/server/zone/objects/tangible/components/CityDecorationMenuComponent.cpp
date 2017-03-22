@@ -18,7 +18,7 @@ void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 
-	if(isInInventory(sceneObject, player) && player->getParent() == NULL) {
+	if(isInInventory(sceneObject, player) && player->getParent().get() == NULL) {
 		menuResponse->addRadialMenuItem(233, 3, "@city/city:place"); // Place Decoration
 	}
 

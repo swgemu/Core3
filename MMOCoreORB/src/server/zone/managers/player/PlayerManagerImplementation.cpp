@@ -1054,7 +1054,7 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 	if (zone == NULL)
 		return;
 
-	ManagedReference<SceneObject*> parent = player->getParent();
+	ManagedReference<SceneObject*> parent = player->getParent().get();
 
 	if (parent == NULL || !parent->isCellObject())
 		return;
@@ -1064,7 +1064,7 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 	if (cell == NULL)
 		return;
 
-	ManagedReference<BuildingObject*> building = cell->getParent().castTo<BuildingObject*>();
+	ManagedReference<BuildingObject*> building = cell->getParent().get().castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;
@@ -2731,7 +2731,7 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 
 void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections, CloseObjectsVector* closeObjectsVector) {
 	player->notifySelfPositionUpdate();
-	if (player->getParent() != NULL) {
+	if (player->getParent().get() != NULL) {
 		return;
 	}
 
@@ -2792,7 +2792,7 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
-	ManagedReference<SceneObject*> parent = player->getParent();
+	ManagedReference<SceneObject*> parent = player->getParent().get();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();

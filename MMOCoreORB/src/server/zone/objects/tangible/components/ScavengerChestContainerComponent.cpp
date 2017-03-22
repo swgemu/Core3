@@ -65,7 +65,7 @@ int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* container
 	if (destination == NULL)
 		return 0;
 
-	ManagedReference<SceneObject*> rootParent = destination->getParent();
+	ManagedReference<SceneObject*> rootParent = destination->getParent().get();
 
 	if (rootParent != NULL && rootParent->isCreatureObject()) {
 		CreatureObject* creature = cast<CreatureObject*>(rootParent.get());

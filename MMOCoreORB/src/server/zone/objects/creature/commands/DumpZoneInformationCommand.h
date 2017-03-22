@@ -47,7 +47,7 @@ public:
 			cityPlayerCount = city->getCurrentPlayerCount();
 		}
 
-		ManagedReference<SceneObject*> cell = creature->getParent();
+		ManagedReference<SceneObject*> cell = creature->getParent().get();
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
@@ -56,7 +56,7 @@ public:
 
 		if (cell != NULL && cell->isCellObject()) {
 			cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
-			building = cell->getParent();
+			building = cell->getParent().get();
 			buildingTemplate = building->getServerObjectCRC();
 			buildingTemplateObject = dynamic_cast<SharedStructureObjectTemplate*>(building->getObjectTemplate());
 		}

@@ -37,7 +37,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<SceneObject*> mount = creature->getParent();
+		ManagedReference<SceneObject*> mount = creature->getParent().get();
 
 		if (mount == NULL || !mount->isCreatureObject()) {
 			creature->clearState(CreatureState::RIDINGMOUNT);

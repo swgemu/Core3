@@ -132,7 +132,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 	bool ret = false;
 
-	ManagedReference<SceneObject*> oldParent = object->getParent();
+	ManagedReference<SceneObject*> oldParent = object->getParent().get();
 
 	try {
 		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow, notifyRoot);

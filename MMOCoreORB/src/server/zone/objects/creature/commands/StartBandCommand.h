@@ -204,7 +204,7 @@ public:
 
 			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
 				instrument = cast<Instrument*> (nala.get());
-				ManagedReference<SceneObject*> creatureParent = creature->getParent();
+				ManagedReference<SceneObject*> creatureParent = creature->getParent().get();
 
 				if (!checkDistance(creature, nala, 3) || nala->getZone()
 						== NULL || (creatureParent == NULL && NULL

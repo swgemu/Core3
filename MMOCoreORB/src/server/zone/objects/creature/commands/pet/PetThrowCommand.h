@@ -83,7 +83,7 @@ public:
 
 		// check droid state
 		if (droid->getLocalZone() == NULL) {  // Not outdoors
-			ManagedReference<SceneObject*> parent = droid->getParent();
+			ManagedReference<SceneObject*> parent = droid->getParent().get();
 			if (parent == NULL || !parent->isCellObject()) { // Not indoors either
 				return GENERALERROR;
 			}

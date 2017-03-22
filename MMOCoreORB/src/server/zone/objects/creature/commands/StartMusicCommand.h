@@ -109,7 +109,7 @@ public:
 
 				targetedInstrument = true;
 				instrument = cast<Instrument*> (nala.get());
-				ManagedReference<SceneObject*> creatureParent = creature->getParent();
+				ManagedReference<SceneObject*> creatureParent = creature->getParent().get();
 
 				if (creature->getDistanceTo(nala) >= 3 || nala->getZone()
 						== NULL || (creatureParent == NULL && NULL

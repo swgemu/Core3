@@ -144,7 +144,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 	}
 
-	ManagedReference<SceneObject*> objParent = object->getParent();
+	ManagedReference<SceneObject*> objParent = object->getParent().get();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
 	ManagedReference<Zone*> oldRootZone = object->getZone();
 
@@ -160,7 +160,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		if (objParent != NULL)
 			objParent->removeObject(object, sceneObject, notifyClient);
 
-		if (object->getParent() != NULL) {
+		if (object->getParent().get() != NULL) {
 			object->error("error removing from parent");
 
 			return false;
@@ -259,10 +259,9 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	ManagedReference<SceneObject*> objectKeeper = object;
+	ManagedReference<SceneObject*> objParent = object->getParent().get();
 
-	if (object->getParent() != sceneObject && object->getParent() != NULL) {
-		ManagedReference<SceneObject*> objParent = object->getParent();
-
+	if (objParent != NULL && objParent != sceneObject) {
 		Locker contLocker(sceneObject->getContainerLock());
 
 		containerObjects->drop(object->getObjectID());
@@ -343,7 +342,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	sceneObject->updateToDatabase();
 	object->updateToDatabase();
 
-	if (sceneObject->getParent() == NULL) {
+	if (sceneObject->getParent().get() == NULL) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
 		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent().get();

@@ -37,7 +37,7 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	if (strongParent == NULL)
 		return;
 
-	ManagedReference<SceneObject*> player = strongParent->getParent();
+	ManagedReference<SceneObject*> player = strongParent->getParent().get();
 
 	if (player == NULL)
 		return;

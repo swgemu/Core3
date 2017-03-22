@@ -40,7 +40,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent();
+		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent().get();
 
 		if (objectsParent == NULL ||
 				objectsParent->isCellObject()) {

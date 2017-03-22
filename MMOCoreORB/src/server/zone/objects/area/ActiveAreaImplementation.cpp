@@ -91,7 +91,7 @@ bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
 }
 
 void ActiveAreaImplementation::initializeChildObject(SceneObject* controllerObject) {
-	ManagedReference<SceneObject*> objectParent = controllerObject->getParent();
+	ManagedReference<SceneObject*> objectParent = controllerObject->getParent().get();
 
 	if (objectParent != NULL && objectParent->isCellObject()) {
 		setCellObjectID(objectParent->getObjectID());

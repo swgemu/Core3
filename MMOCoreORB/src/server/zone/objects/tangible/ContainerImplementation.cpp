@@ -230,7 +230,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			}
 		}
 
-		ManagedReference<SceneObject*> myParent = getParent();
+		ManagedReference<SceneObject*> myParent = getParent().get();
 
 		// Check if the container is in a building or factory ingredient hopper
 		// If it is a droid object, don't consider these cases as it can still
@@ -261,7 +261,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			}
 		}
 
-		ManagedReference<SceneObject*> otherParent = object->getParent();
+		ManagedReference<SceneObject*> otherParent = object->getParent().get();
 
 		if (myParent != NULL && otherParent != NULL) {
 			if (otherParent->isCreatureObject()) {

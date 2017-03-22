@@ -17,9 +17,6 @@ class SurveySession extends Facade {
 	protected transient CreatureObject surveyer;
 	
 	@weakReference
-	protected transient PlayerObject surveyerGhost;
-	
-	@weakReference
 	protected transient SurveyTool activeSurveyTool;
 	
 	@weakReference

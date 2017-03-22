@@ -811,7 +811,7 @@ bool WeaponObjectImplementation::applyPowerup(CreatureObject* player, PowerupObj
 
 	powerupObject = pup;
 
-	if(pup->getParent() != NULL) {
+	if(pup->getParent().get() != NULL) {
 		Locker clocker(pup, player);
 		pup->destroyObjectFromWorld(true);
 	}

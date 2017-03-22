@@ -66,7 +66,7 @@ public:
 		if (!vehicle->isInRange(creature, 5))
 			return GENERALERROR;
 
-		if (creature->getParent() != NULL || vehicle->getParent() != NULL)
+		if (creature->getParent().get() != NULL || vehicle->getParent().get() != NULL)
 			return GENERALERROR;
 
 		if (vehicle->isDisabled()) {

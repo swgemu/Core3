@@ -29,7 +29,7 @@ public:
 string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed because you moved.
 		 */
 
-		if (creature->getParent() != NULL) {
+		if (creature->getParent().get() != NULL) {
 			creature->sendSystemMessage("@error_message:sys_eject_fail_contained"); //The ejection attempt failed because you are inside a building.
 			return GENERALERROR;
 		}

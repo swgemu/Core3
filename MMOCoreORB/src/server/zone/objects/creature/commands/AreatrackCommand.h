@@ -29,7 +29,7 @@ public:
 		if(!creature->hasSkill("outdoors_ranger_novice"))
 			return GENERALERROR;
 
-		if(creature->getParent() != NULL && creature->getParent().get()->isCellObject()) {
+		if(creature->getParent().get() != NULL && creature->getParent().get()->isCellObject()) {
 			creature->sendSystemMessage("@skl_use:sys_scan_inside"); // Your tracking skills only apply to outdoor environments.
 			return GENERALERROR;
 		}

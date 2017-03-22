@@ -35,12 +35,12 @@ public:
 		if (zone == NULL || zone->getZoneName() != "tutorial")
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> cell = creature->getParent();
+		ManagedReference<SceneObject*> cell = creature->getParent().get();
 
 		if (cell == NULL)
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> tutorial = cell->getParent();
+		ManagedReference<SceneObject*> tutorial = cell->getParent().get();
 
 		String city = arguments.toString();
 

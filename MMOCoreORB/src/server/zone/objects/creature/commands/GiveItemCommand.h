@@ -53,7 +53,7 @@ public:
 
 		if (object != NULL) {
 
-			ManagedReference<SceneObject*> objectsParent = object->getParent();
+			ManagedReference<SceneObject*> objectsParent = object->getParent().get();
 
 			if (objectsParent == NULL)
 				return GENERALERROR;

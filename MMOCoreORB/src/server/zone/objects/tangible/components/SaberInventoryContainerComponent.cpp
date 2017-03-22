@@ -11,7 +11,7 @@
 
 int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
-	ManagedReference<SceneObject*> p = sceneObject->getParent();
+	ManagedReference<SceneObject*> p = sceneObject->getParent().get();
 
 	if (p != NULL){
 		int containment = p->getContainmentType();

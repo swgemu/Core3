@@ -60,7 +60,7 @@ public:
 				float y = creature->getPositionY();
 				float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
 
-				ManagedReference<SceneObject*> parent = creature->getParent();
+				ManagedReference<SceneObject*> parent = creature->getParent().get();
 
 				blueFrog->initializePosition(x, z, y);
 								blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());

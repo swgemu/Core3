@@ -45,7 +45,7 @@ public:
 
 		Locker locker(factoryCrate, creature);
 
-		ManagedReference<SceneObject*> objectsParent = factoryCrate->getParent();
+		ManagedReference<SceneObject*> objectsParent = factoryCrate->getParent().get();
 
 
 		if(objectsParent == NULL)

@@ -11,7 +11,7 @@
 
 int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	if (destination != NULL) {
-		ManagedReference<SceneObject*> rootParent = destination->getParent();
+		ManagedReference<SceneObject*> rootParent = destination->getParent().get();
 
 		if (rootParent != NULL && rootParent->isCreatureObject()) {
 			CreatureObject* creature = cast<CreatureObject*>(rootParent.get());

@@ -53,7 +53,7 @@ public:
 			return SUCCESS;
 		}
 
-		ManagedReference<SceneObject*> objectParent = object->getParent();
+		ManagedReference<SceneObject*> objectParent = object->getParent().get();
 
 		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
 			return GENERALERROR;

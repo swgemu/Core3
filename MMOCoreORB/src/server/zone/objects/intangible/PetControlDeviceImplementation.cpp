@@ -37,7 +37,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	if (player->getParent() != NULL) {
+	if (player->getParent().get() != NULL) {
 		ManagedReference<SceneObject*> strongRef = player->getRootParent().get();
 		ManagedReference<BuildingObject*> building = NULL;
 
@@ -427,7 +427,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	if (!force && (pet->isInCombat() || player->isInCombat()))
 		return;
 
-	if (player->isRidingMount() && player->getParent() == pet) {
+	if (player->isRidingMount() && player->getParent().get() == pet) {
 
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;

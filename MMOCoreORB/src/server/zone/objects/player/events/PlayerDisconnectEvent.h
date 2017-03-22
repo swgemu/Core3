@@ -28,7 +28,7 @@ public:
 		if (play == NULL)
 			return;
 
-		ManagedReference<SceneObject*> par = play->getParent();
+		ManagedReference<SceneObject*> par = play->getParent().get();
 
 		Locker locker(par);
 

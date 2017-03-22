@@ -131,8 +131,9 @@ public:
 
 		obj->incrementMovementCounter();
 
-		if (obj->getParent() != NULL)
-			obj->teleport(x, z, y, obj->getParent().get()->getObjectID());
+		ManagedReference<SceneObject*> objParent = obj->getParent().get();
+		if (objParent != NULL)
+			obj->teleport(x, z, y, objParent->getObjectID());
 		else
 			obj->teleport(x, z, y);
 

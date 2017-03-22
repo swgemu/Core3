@@ -1615,7 +1615,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 #ifdef SHOW_WALK_PATH
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
-	if (getParent() == NULL) {
+	if (getParent().get() == NULL) {
 		pathMessage->addCoordinate(getPositionX(), getZone()->getHeight(getPositionX(), getPositionY()), getPositionY());
 	} else {
 		pathMessage->addCoordinate(getPositionX(), getPositionZ(), getPositionY());
@@ -2643,7 +2643,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		return false;
 
 	if (getParentID() != 0 && getParentID() != target->getParentID()) {
-		Reference<CellObject*> curCell = getParent().castTo<CellObject*>();
+		Reference<CellObject*> curCell = getParent().get().castTo<CellObject*>();
 
 		if (curCell != NULL) {
 			ContainerPermissions* perms = curCell->getContainerPermissions();

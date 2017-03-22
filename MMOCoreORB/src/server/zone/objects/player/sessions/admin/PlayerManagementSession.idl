@@ -16,108 +16,102 @@ include server.zone.objects.player.sui.messagebox.SuiMessageBox;
 import server.login.account.Account;
 
 class PlayerManagementSession extends Facade {
-
-	@weakreference
-	protected PlayerObject adminGhost;
-	
-	@weakreference
+	@weakReference
 	protected CreatureObject admin;
-	
-	@weakreference
+
 	protected SuiListBox accountBox;
-	
-	@weakreference
+
 	protected SuiInputBox durationBox;
-	
-	@weakreference
+
 	protected SuiInputBox reasonBox;
-	
-	@weakreference
+
 	protected SuiListBox summaryBox;
-	
-	@weakreference
+
 	protected SuiMessageBox unbanSummaryBox;
-	
-	@weakreference
+
 	protected PlayerManager playerManager;
-	
+
 	protected int banType;
 	protected int banMode;
-	
+
 	protected Account targetAccount;
-	
+
 	protected unsigned int galaxyID;
 	protected string galaxyName;
-	
+
 	protected unsigned int banExpiration;
-	
+
 	protected string banReason;
-	
+
 	protected string targetName;
-	
+
 	protected static final int NONE = 0;
 	protected static final int ACCOUNT = 1;
 	protected static final int GALAXY = 2;
 	protected static final int CHARACTER = 3;
-			
+
 	protected static final int BAN = 1;
 	protected static final int UNBAN = 2;
 
 	public PlayerManagementSession(Account account, CreatureObject adm) {
-		
+
 		targetAccount = account;
-		
+
 		admin = adm;
-		adminGhost = admin.getPlayerObject();
-		
+
 		banMode = NONE;
 		galaxyID = 0;
 		galaxyName = "";
-		
+
 		accountBox = null;
-		
+		durationBox = null;
+		reasonBox = null;
+		summaryBox = null;
+		unbanSummaryBox = null;
+
 		Logger.setLoggingName("PlayerManagementSession");
 		Logger.setLogging(true);
-		
+
 		initializeSession();
 	}
 
 	public native int initializeSession();
-	
+
 	public int cancelSession() {
-		if (admin != null)
-			admin.dropActiveSession(SessionFacadeType.PLAYERMANAGEMENT);
+		CreatureObject adm = admin;
+
+		if (adm != null)
+			adm.dropActiveSession(SessionFacadeType.PLAYERMANAGEMENT);
 
 		clearSession();
 		return 0;
 	}
-	
+
 	public native int clearSession();
-	
+
 	public native void addAccountSui(SuiListBox box) {
 		accountBox = box;
 	}
-	
+
 	public native void ban(final int tablevel, final unsigned int galaxy, final string gname, final string name);
 
 	public native void getPlayerInfo(final int tablevel, final string firstName);
 
 	public native void sendAccountInfo();
-	
-	public native void sendBanDuration();
-	
-	public native void parseBanDuration(final string duration);
-	
-	public native void sendBanReason(boolean unban = false);
-	
-	public native void setBanReason(final string reason);
-	
-	public native void showBanSummary();
-	
-	public native void showUnbanSummary();
-	
-	public native void completeBan();
-	
-	public native string getBanDuration(unsigned int timestamp);
 
+	public native void sendBanDuration();
+
+	public native void parseBanDuration(final string duration);
+
+	public native void sendBanReason(boolean unban = false);
+
+	public native void setBanReason(final string reason);
+
+	public native void showBanSummary();
+
+	public native void showUnbanSummary();
+
+	public native void completeBan();
+
+	public native string getBanDuration(unsigned int timestamp);
 }

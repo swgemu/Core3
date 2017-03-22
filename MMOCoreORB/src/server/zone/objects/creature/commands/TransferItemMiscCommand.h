@@ -65,7 +65,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
+		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent().get();
 
 		if (objectsParent == NULL) {
 			return GENERALERROR;
@@ -110,7 +110,7 @@ public:
 					return INVALIDTARGET;
 				}
 
-				while ((par = obj->getParent()) != NULL) {
+				while ((par = obj->getParent().get()) != NULL) {
 					if (par->isCellObject()) {
 						if (obj->getDistanceTo(creature) > maxDistance) {
 							return TOOFAR;

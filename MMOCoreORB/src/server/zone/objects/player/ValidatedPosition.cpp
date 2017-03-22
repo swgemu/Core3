@@ -12,7 +12,7 @@
 void ValidatedPosition::update(SceneObject* object) {
 	point = object->getPosition();
 
-	ManagedReference<SceneObject*> parentPointer = object->getParent();
+	ManagedReference<SceneObject*> parentPointer = object->getParent().get();
 
 	if (parentPointer != NULL && parentPointer->isCellObject())
 		parent = parentPointer->getObjectID();

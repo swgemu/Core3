@@ -450,7 +450,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 }
 
 FloorMesh* PathFinderManager::getFloorMesh(CellObject* cell) {
-    ManagedReference<BuildingObject*> building1 = (cell->getParent().castTo<BuildingObject*>());
+    ManagedReference<BuildingObject*> building1 = (cell->getParent().get().castTo<BuildingObject*>());
 
     SharedObjectTemplate* templateObject = building1->getObjectTemplate();
 

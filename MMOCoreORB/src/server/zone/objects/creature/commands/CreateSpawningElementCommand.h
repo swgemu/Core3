@@ -71,7 +71,7 @@ public:
 				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(objectTemplate.hashCode());
 
 				if (lair != NULL) {
-					if (creature->getParent() != NULL) {
+					if (creature->getParent().get() != NULL) {
 						creature->sendSystemMessage("You need to be outside and unmounted to spawn that");
 
 						return GENERALERROR;
@@ -122,7 +122,7 @@ public:
 
 				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
 				if (serverTemplate != NULL) {
-					if (creature->getParent() != NULL) {
+					if (creature->getParent().get() != NULL) {
 						creature->sendSystemMessage("You need to be outside and unmounted to spawn a structure");
 						return GENERALERROR;
 					}
@@ -144,7 +144,7 @@ public:
 				if (object->isIntangibleObject())
 					return GENERALERROR;
 
-				ManagedReference<SceneObject*> parent = creature->getParent();
+				ManagedReference<SceneObject*> parent = creature->getParent().get();
 
 				Locker clocker(object, creature);
 

@@ -203,7 +203,7 @@ void PlayerObjectImplementation::unload() {
 	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
 	playerManager->ejectPlayerFromBuilding(creature);
 
-	ManagedReference<SceneObject*> creoParent = creature->getParent();
+	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
 
 	if (creature->getZone() != NULL) {
 		savedTerrainName = creature->getZone()->getZoneName();
@@ -1139,7 +1139,7 @@ void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient
 
 void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyClient) {
 	String nameLower = name.toLowerCase();
-	ManagedReference<SceneObject*> parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (!ignoreList.contains(nameLower)) {
 		if (notifyClient) {
@@ -1594,7 +1594,7 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
-	ManagedReference<SceneObject*> parent = creature->getParent();
+	ManagedReference<SceneObject*> parent = creature->getParent().get();
 
 	if (parent != NULL && parent->isCellObject()) {
 		return;
@@ -1779,7 +1779,7 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 
 	//notifiedSentObjects.removeAll();
 
-	if (creature->isRidingMount() && creature->getParent() == NULL) {
+	if (creature->isRidingMount() && creature->getParent().get() == NULL) {
 		creature->clearState(CreatureState::RIDINGMOUNT);
 	}
 

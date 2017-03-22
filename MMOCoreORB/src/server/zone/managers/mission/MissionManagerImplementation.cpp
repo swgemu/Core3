@@ -165,12 +165,12 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 }
 
 void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player) {
-	ManagedReference<SceneObject*> missionBag = mission->getParent();
+	ManagedReference<SceneObject*> missionBag = mission->getParent().get();
 
 	if (missionBag == NULL)
 		return;
 
-	ManagedReference<SceneObject*> bagParent = missionBag->getParent();
+	ManagedReference<SceneObject*> bagParent = missionBag->getParent().get();
 
 	if (bagParent != player)
 		return;
@@ -400,7 +400,7 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 void MissionManagerImplementation::removeMission(MissionObject* mission, CreatureObject* player) {
 	ManagedReference<MissionObject*> ref = mission;
 
-	ManagedReference<SceneObject*> missionParent = mission->getParent();
+	ManagedReference<SceneObject*> missionParent = mission->getParent().get();
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
 	if (missionParent != datapad)

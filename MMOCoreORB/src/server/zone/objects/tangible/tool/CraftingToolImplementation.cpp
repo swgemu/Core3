@@ -105,7 +105,7 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertAttribute("@crafting:crit_experiment", forceCriticalExperiment);
 
 	Reference<CraftingSession*> session = object->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-	if(session == NULL && getParent() != NULL) {
+	if(session == NULL && getParent().get() != NULL) {
 		disperseItems();
 	}
 }
@@ -159,7 +159,7 @@ void CraftingToolImplementation::disperseItems() {
 
 	if(craftedComponents != NULL  && craftedComponents->getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
-		ManagedReference<SceneObject*> inventory = getParent();
+		ManagedReference<SceneObject*> inventory = getParent().get();
 
 		if(satchel != NULL && inventory != NULL) {
 			while(satchel->getContainerObjectsSize() > 0) {

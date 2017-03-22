@@ -34,7 +34,7 @@ public:
 				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature() || !fromContainer->isASubChildOf(creature) || !toContainer->isASubChildOf(creature)))
 			return INVALIDTARGET;
 
-		ManagedReference<SceneObject*> par = toContainer->getParent();
+		ManagedReference<SceneObject*> par = toContainer->getParent().get();
 
 		if (par != NULL && par->isContainerFull()) {
 			creature->sendSystemMessage("@container_error_message:container03");
