@@ -9,10 +9,8 @@ function FsPhase3:onLoggedIn(pPlayer)
 	if (currentPhase == 3 and VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		self:failActiveTasks(pPlayer, true)
 
-		if (FsCounterStrike:isOnQuest(pPlayer)) then
-			-- Recreate observers in case server had restarted since player took quest
-			dropObserver(OBJECTDESTRUCTION, "FsCounterStrike", "onPlayerKilled", pPlayer)
-			createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "onPlayerKilled", pPlayer)
+		if (FsCounterStrike:isOnQuest(pPlayer) and readData(SceneObject(pPlayer):getObjectID() .. ":csTheater") == 0) then
+			FsCounterStrike:resetPlayerToStart(pPlayer)
 		end
 	else
 		self:doPhaseChangeFails(pPlayer)
