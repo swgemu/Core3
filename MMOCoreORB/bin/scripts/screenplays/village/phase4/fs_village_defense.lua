@@ -183,6 +183,7 @@ function FsVillageDefense:incrementDefenseCredit(pPlayer, questType, mobType)
 		QuestManager.completeQuest(pPlayer, questData.questNum)
 
 		if (questType == "ranged") then
+			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)
 			VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_combat_prowess_ranged_speed")
 
 			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
@@ -195,6 +196,7 @@ function FsVillageDefense:incrementDefenseCredit(pPlayer, questType, mobType)
 				end
 			end
 		else
+			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02)
 			VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_enhanced_reflexes_melee_defense")
 		end
 	end
@@ -223,7 +225,7 @@ function FsVillageDefense:notifyKilledRaider(pVictim, pKiller)
 	if (mobType == nil) then
 		return 1
 	end
-	
+
 	self:checkHealerList(pVictim)
 
 	for i = 1, #attackerList, 1 do
@@ -303,6 +305,20 @@ function FsVillageDefense:doPhaseChangeFail(pPlayer)
 
 	self:setVillageDefenseCount(pPlayer, "ranged", "outlaw", 0)
 	self:setVillageDefenseCount(pPlayer, "ranged", "pirate", 0)
+
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not QuestManager.hasCompletedquest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)) then
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_SET_FACTION)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_01)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_02)
+	end
+
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)) then
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_SET_FACTION_02)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_03)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_04)
+	end
 
 	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_1) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_1)) then
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_1)
