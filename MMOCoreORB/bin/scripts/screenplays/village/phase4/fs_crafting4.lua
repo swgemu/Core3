@@ -384,6 +384,12 @@ function FsCrafting4SatelliteMenuComponent:handleObjectMenuSelect(pSceneObject, 
 		end
 	end
 
+	local pTracker = getContainerObjectByTemplate(pInventory, "object/tangible/loot/collectible/collectible_rewards/fs_tracking_device.iff", true)
+
+	if (pTracker ~= nil) then
+		TangibleObject(pTracker):setLuaStringData("needsTrackingData", "true")
+	end
+
 	return 0
 end
 
