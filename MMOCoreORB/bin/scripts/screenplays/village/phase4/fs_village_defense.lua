@@ -306,14 +306,14 @@ function FsVillageDefense:doPhaseChangeFail(pPlayer)
 	self:setVillageDefenseCount(pPlayer, "ranged", "outlaw", 0)
 	self:setVillageDefenseCount(pPlayer, "ranged", "pirate", 0)
 
-	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not QuestManager.hasCompletedquest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)) then
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)) then
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_SET_FACTION)
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_01)
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_02)
 	end
 
-	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01)) then
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02)) then
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02)
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_SET_FACTION_02)
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_DEFEND_03)
