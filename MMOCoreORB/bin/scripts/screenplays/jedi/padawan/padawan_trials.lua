@@ -162,6 +162,8 @@ function PadawanTrials:resetAllPadawanTrials(pPlayer)
 		end
 	end
 
+	self:removeAllAreas(pPlayer)
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -180,6 +182,8 @@ function PadawanTrials:startTrial(pPlayer, trialNum)
 	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 	dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
 	dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
+
+	self:removeAllAreas(pPlayer)
 
 	JediTrials:setCurrentTrial(pPlayer, trialNum)
 	local trialData = padawanTrialQuests[trialNum]
@@ -532,6 +536,12 @@ function PadawanTrials:notifyEnteredMainLocSpawnArea(pArea, pPlayer)
 
 	local spawnLoc = JediTrials:getTrialLocation(pPlayer)
 	local planetData = JediTrials:getTrialPlanetAndCity(pPlayer)
+
+	if (trialData.trialNpc == nil) then
+		printLuaError("PadawanTrials:notifyEnteredMainLocSpawnArea, nil trialNpc for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNumber .. "\n.")
+		self:failTrial(pPlayer)
+		return 1
+	end
 
 	local pNpc = spawnMobile(planetData[1], trialData.trialNpc, 0, spawnLoc[1], spawnLoc[2], spawnLoc[3], getRandomNumber(180) - 180, 0)
 
