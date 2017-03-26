@@ -103,7 +103,7 @@ class GCWManager extends ManagedService implements Logger {
 		imperialScore = 0;
 		rebelBases = 0;
 		rebelScore = 0;
-		winningFaction = Factions.FACTIONIMPERIAL;
+		winningFaction = Factions.FACTIONNEUTRAL;
 		winnerDifficultyScaling = 1;
 
 		gcwCheckTimer = 3600;

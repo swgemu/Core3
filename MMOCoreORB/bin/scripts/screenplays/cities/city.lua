@@ -13,6 +13,10 @@ function CityScreenPlay:spawnGcwMobiles()
 		local controllingFaction = getControllingFaction(self.planet)
 		local difficulty = getWinningFactionDifficultyScaling(self.planet)
 
+		if controllingFaction == FACTIONNEUTRAL then
+			controllingFaction = FACTIONIMPERIAL
+		end
+
 		for i = 1, #self.gcwMobs do
 			self:spawnMob(i, controllingFaction, difficulty)
 		end
@@ -81,6 +85,10 @@ function CityScreenPlay:respawn(pAiAgent, args)
 	local mobNumber = tonumber(args)
 	local controllingFaction = getControllingFaction(self.planet)
 	local difficulty = getWinningFactionDifficultyScaling(self.planet)
+
+	if controllingFaction == FACTIONNEUTRAL then
+		controllingFaction = FACTIONIMPERIAL
+	end
 
 	self:spawnMob(mobNumber, controllingFaction, difficulty)
 end
