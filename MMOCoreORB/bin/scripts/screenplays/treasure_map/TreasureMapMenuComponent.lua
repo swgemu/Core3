@@ -258,10 +258,12 @@ function TreasureMapMenuComponent:removeTreasureChest(pChest)
 	local chestOwnerID = readData(chestID .. ":ownerID")
 	local pOwner = getSceneObject(chestOwnerID)
 
-	local pGhost = CreatureObject(pOwner):getPlayerObject()
+	if (pOwner ~= nil) then
+		local pGhost = CreatureObject(pOwner):getPlayerObject()
 
-	if (pGhost ~= nil) then
-		PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
+		end
 	end
 
 	deleteData(chestOwnerID .. ":treasureChestID")
