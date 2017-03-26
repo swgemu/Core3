@@ -79,7 +79,7 @@ padawan_kill_falumpaset_01_convo_template:addScreen(not_quest_owner);
 
 quest_completed = ConvoScreen:new {
 	id = "quest_completed",
-	leftDialog = "conversation/padawan_kill_falumpaset_01:s_761aa5f8", -- Well done. You took to that quite well. Sad business, but necessary. This kind of thing happens from time to time.
+	leftDialog = "@conversation/padawan_kill_falumpaset_01:s_761aa5f8", -- Well done. You took to that quite well. Sad business, but necessary. This kind of thing happens from time to time.
 	stopConversation = "true",
 	options = {}
 }
