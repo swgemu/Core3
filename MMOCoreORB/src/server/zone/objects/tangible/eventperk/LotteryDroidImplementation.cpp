@@ -295,9 +295,9 @@ void LotteryDroidImplementation::startLottery(CreatureObject* player) {
 void LotteryDroidImplementation::activateGamePulse() {
 	if (gamePulse == NULL) {
 		gamePulse = new LotteryDroidPulseTask(_this.getReferenceUnsafeStaticCast());
-		gamePulse->schedule(gameDuration * 60 * 60 * 1000);
+		gamePulse->schedule((uint64)gameDuration * 60 * 60 * 1000);
 	} else {
-		gamePulse->reschedule(gameDuration * 60 * 60 * 1000);
+		gamePulse->reschedule((uint64)gameDuration * 60 * 60 * 1000);
 	}
 }
 
@@ -364,29 +364,27 @@ CreatureObject* LotteryDroidImplementation::getDeedOwner() {
 }
 
 String LotteryDroidImplementation::getTimeLeft(uint64 timeLeft) {
-
-	float hours = (float)timeLeft / (3600.f * 1000.f);
 	int minHours = 0;
 
-	if (hours < 1)
+	if (timeLeft < (1 * 3600000))
 		minHours = 1;
-	else if (hours < 2)
+	else if (timeLeft < (2 * 3600000))
 		minHours = 2;
-	else if (hours < 4)
+	else if (timeLeft < (4 * 3600000))
 		minHours = 4;
-	else if (hours < 8)
+	else if (timeLeft < (8 * 3600000))
 		minHours = 8;
-	else if (hours < 24)
+	else if (timeLeft < (24 * 3600000))
 		minHours = 24;
-	else if (hours < 48)
+	else if (timeLeft < (48 * 3600000))
 		minHours = 48;
-	else if (hours < 72)
+	else if (timeLeft < (72 * 3600000))
 		minHours = 72;
-	else if (hours < 96)
+	else if (timeLeft < (96 * 3600000))
 		minHours = 96;
-	else if (hours < 120)
+	else if (timeLeft < (120 * 3600000))
 		minHours = 120;
-	else if (hours < 144)
+	else if (timeLeft < (144 * 3600000))
 		minHours = 144;
 	else
 		minHours = 168;
