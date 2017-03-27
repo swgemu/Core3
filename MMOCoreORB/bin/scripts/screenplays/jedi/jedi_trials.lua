@@ -201,34 +201,44 @@ function JediTrials:getTrialPlanetAndCity(pPlayer)
 end
 
 function JediTrials:setTrialLocation(pPlayer, x, z, y)
-	local playerID = SceneObject(pPlayer):getObjectID()
-	writeStringSharedMemory(playerID .. ":JediTrials:trialLocX", x)
-	writeStringSharedMemory(playerID .. ":JediTrials:trialLocZ", z)
-	writeStringSharedMemory(playerID .. ":JediTrials:trialLocY", y)
+	writeScreenPlayData(pPlayer, "JediTrials", "trialLocX", x)
+	writeScreenPlayData(pPlayer, "JediTrials", "trialLocZ", z)
+	writeScreenPlayData(pPlayer, "JediTrials", "trialLocY", y)
 end
 
 function JediTrials:getTrialLocation(pPlayer)
-	local playerID = SceneObject(pPlayer):getObjectID()
-	local locX = tonumber(readStringSharedMemory(playerID .. ":JediTrials:trialLocX"))
-	local locZ = tonumber(readStringSharedMemory(playerID .. ":JediTrials:trialLocZ"))
-	local locY = tonumber(readStringSharedMemory(playerID .. ":JediTrials:trialLocY"))
+	local locX = tonumber(readScreenPlayData(pPlayer, "JediTrials", "trialLocX"))
+	local locZ = tonumber(readScreenPlayData(pPlayer, "JediTrials", "trialLocZ"))
+	local locY = tonumber(readScreenPlayData(pPlayer, "JediTrials", "trialLocY"))
 
-	if (locX == 0 or locY == 0) then
+	if (locX == nil or locX == 0 or locY == nil or locY == 0) then
 		return nil
 	end
 
 	return { locX, locZ, locY }
 end
 
-function JediTrials:hasTrialLocation(pPlayer)
+function JediTrials:hasTrialArea(pPlayer)
 	local locData = self:getTrialLocation(pPlayer)
 
 	if (locData == nil) then
 		return false
 	end
 
-	local areaID = readData(SceneObject(pPlayer) .. ":trialActiveArea")
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	local areaID = readData(playerID .. ":mainLocSpawnAreaID")
 	local pArea = getSceneObject(areaID)
+
+	if (pArea == nil) then
+		areaID = readData(playerID .. ":destroyAreaID")
+		pArea = getSceneObject(areaID)
+	end
+
+	if (pArea == nil) then
+		areaID = readData(playerID .. ":targetLocSpawnAreaID")
+		pArea = getSceneObject(areaID)
+	end
 
 	return pArea ~= nil
 end
