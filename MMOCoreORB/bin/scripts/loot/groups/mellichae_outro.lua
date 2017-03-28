@@ -3,8 +3,8 @@ mellichae_outro = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "mellichae_cybernetic_arm", weight = 5000000},
-		{itemTemplate = "medallion_dark_jedi", weight = 5000000},
+		{itemTemplate = "mellichae_cybernetic_arm", weight = 3000000},
+		{itemTemplate = "medallion_dark_jedi", weight = 7000000},
 	}
 }
 

@@ -33,6 +33,7 @@ function FsReflex2:failQuest(pPlayer)
 end
 
 function FsReflex2:resetFetchStatus(pPlayer)
+	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03)
 end
