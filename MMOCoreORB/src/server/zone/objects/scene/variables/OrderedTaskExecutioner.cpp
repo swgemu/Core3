@@ -13,7 +13,7 @@
 using namespace server::zone::objects::scene::variables;
 using namespace server::zone::objects::scene;
 
-OrderedTaskExecutioner::OrderedTaskExecutioner(SceneObject* sceneObject) : sceneObject(sceneObject) {
+OrderedTaskExecutioner::OrderedTaskExecutioner(SceneObject* sceneObject) : sceneObject(sceneObject), taskName(nullptr) {
 
 }
 
@@ -42,5 +42,15 @@ void OrderedTaskExecutioner::run() {
 		}
 
 		pendingTasks->runMoreOrderedTasks(strongReference);
+	}
+
+	taskName = task->getTaskName();
+}
+
+const char* OrderedTaskExecutioner::getTaskName() {
+	if (taskName) {
+		return taskName;
+	} else {
+		return Task::getTaskName();
 	}
 }
