@@ -109,6 +109,13 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	if (pOwner == nil) then
 		return 1
 	end
+	
+	local pInventory = SceneObject(pMellichae):getSlottedObject("inventory")
+	
+	if (pInventory ~= nil) then
+		SceneObject(pInventory):setContainerOwnerID(ownerID)
+		createLoot(pInventory, "mellichae_outro", 1, true)
+	end
 
 	dropObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pOwner)
 	QuestManager.completeQuest(pOwner, QuestManager.quests.FS_THEATER_FINAL)

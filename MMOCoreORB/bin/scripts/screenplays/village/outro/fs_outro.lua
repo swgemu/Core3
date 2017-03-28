@@ -67,6 +67,12 @@ function FsOutro:onLoggedIn(pPlayer)
 end
 
 function FsOutro:startOldMan(pPlayer)
+	local curStep = self:getCurrentStep(pPlayer)
+
+	if (curStep ~= self.OLDMANMEET) then
+		return
+	end
+
 	local stepData = self.stepDelay[self.OLDMANWAIT]
 
 	if (stepData == nil) then
@@ -96,6 +102,12 @@ end
 
 function FsOutro:doOldManSpawn(pPlayer)
 	if (pPlayer == nil) then
+		return
+	end
+
+	local curStep = self:getCurrentStep(pPlayer)
+
+	if (curStep ~= self.OLDMANMEET) then
 		return
 	end
 

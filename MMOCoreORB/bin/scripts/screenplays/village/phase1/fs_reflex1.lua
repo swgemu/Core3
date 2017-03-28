@@ -52,6 +52,7 @@ function FsReflex1:failQuest(pPlayer, failMsg)
 end
 
 function FsReflex1:resetEscortStatus(pPlayer)
+	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
@@ -85,7 +86,6 @@ function FsReflex1:completeVillagerEscort(pPlayer)
 	local count = self:getRescueCount(pPlayer) + 1
 
 	self:setRescueCount(pPlayer, count)
-	self:resetEscortStatus(pPlayer)
 
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
@@ -94,7 +94,6 @@ function FsReflex1:completeVillagerEscort(pPlayer)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_finished")
 		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_enhanced_reflexes_survival")
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
-		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 
