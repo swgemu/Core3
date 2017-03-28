@@ -40,7 +40,7 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	if(selectedID == 20) {
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		ManagedReference<BuildingObject*> cloner = sceneObject->getRootParent().get().castTo<BuildingObject*>();
+		ManagedReference<BuildingObject*> cloner = cast<BuildingObject*>(sceneObject->getRootParent());
 
 		if (cloner != NULL && (ghost->getCloningFacility() == cloner->getObjectID())) {
 			player->sendSystemMessage("Your clone data is already stored here.");

@@ -244,7 +244,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		//object->updateToDatabaseWithoutChildren()();
 	}
 
-	ManagedReference<SceneObject*> rootParent = object->getRootParent().get();
+	ManagedReference<SceneObject*> rootParent = object->getRootParent();
 
 	if (rootParent != NULL && notifyRoot)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
@@ -345,7 +345,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (sceneObject->getParent().get() == NULL) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
-		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent().get();
+		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
 		if (rootParent != NULL)
 			rootParent->notifyObjectRemovedFromChild(object, sceneObject);

@@ -73,6 +73,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	savedRootParent = getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -112,6 +114,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerType = 0;
 	containerVolumeLimit = 0;
 	containmentType = 0;
+
+	savedRootParent = NULL;
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -489,7 +493,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		return;
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent().get();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObjectPrivate(object, selfObject);
@@ -541,7 +545,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 		return;
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent().get();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
@@ -597,7 +601,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 	}
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent().get();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
@@ -678,7 +682,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	}
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent().get();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagesPrivate(messages, selfObject);
@@ -913,7 +917,11 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 	}
 }
 
-ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
+SceneObject* SceneObjectImplementation::getRootParent() {
+	if (savedRootParent != NULL) {
+		return savedRootParent;
+	}
+
 	ManagedReference<SceneObject*> grandParent = getParent().get();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
@@ -939,9 +947,35 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	if (grandParent == asSceneObject())
 		return NULL;
 
-	ManagedWeakReference<SceneObject*> weak = grandParent.get();
+	return grandParent;
+}
 
-	return weak;
+SceneObject* SceneObjectImplementation::getRootParentUnsafe() {
+	if (savedRootParent != NULL) {
+		return savedRootParent;
+	}
+
+	return static_cast<SceneObject*>(QuadTreeEntryImplementation::getRootParentUnsafe());
+}
+
+void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newRoot) {
+	Locker locker(&parentLock);
+
+	savedRootParent = newRoot;
+
+	locker.release();
+
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> object = getContainerObject(j);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getSlottedObject(i);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
@@ -989,7 +1023,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
-	Reference<SceneObject*> root = getRootParent().get();
+	Reference<SceneObject*> root = getRootParent();
 
 	if (root != NULL) {
 		return root->getZone();
@@ -999,7 +1033,7 @@ Zone* SceneObjectImplementation::getZone() {
 }
 
 Zone* SceneObjectImplementation::getZoneUnsafe() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root != NULL) {
 		return root->getZoneUnsafe();
@@ -1090,7 +1124,7 @@ void SceneObjectImplementation::setObjectName(StringId& stringID, bool notifyCli
 }
 
 Vector3 SceneObjectImplementation::getWorldPosition() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPosition();
@@ -1136,7 +1170,7 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 }
 
 float SceneObjectImplementation::getWorldPositionX() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionX();
@@ -1148,7 +1182,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 }
 
 float SceneObjectImplementation::getWorldPositionY() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionY();
@@ -1160,7 +1194,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 }
 
 float SceneObjectImplementation::getWorldPositionZ() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionZ();
@@ -1403,7 +1437,13 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 	Locker locker(&parentLock);
 
+	savedRootParent = NULL;
+
 	QuadTreeEntryImplementation::setParent(entry);
+
+	locker.release();
+
+	updateSavedRootParentRecursive(getRootParent());
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {

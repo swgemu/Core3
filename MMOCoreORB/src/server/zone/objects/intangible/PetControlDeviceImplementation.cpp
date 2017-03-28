@@ -38,7 +38,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	}
 
 	if (player->getParent().get() != NULL) {
-		ManagedReference<SceneObject*> strongRef = player->getRootParent().get();
+		ManagedReference<SceneObject*> strongRef = player->getRootParent();
 		ManagedReference<BuildingObject*> building = NULL;
 
 		if (strongRef != NULL)

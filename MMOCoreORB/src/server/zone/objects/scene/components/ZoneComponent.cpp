@@ -90,7 +90,7 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const {
 	try {
 		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
-		CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent().get()->getCloseObjects();
+		CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent()->getCloseObjects();
 
 		SortedVector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 		closeObjectsVector->safeCopyTo(closeObjects);
@@ -110,7 +110,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			QuadTreeEntry* o = closeObjects.get(i);
 			QuadTreeEntry* objectToRemove = o;
-			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent().get();
+			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
 
 			if (rootParent != NULL)
 				o = rootParent;
@@ -154,7 +154,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	Zone* zone = sceneObject->getZone();
-	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent().get();
+	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
 
 	if (zone == NULL) {
 		if (sceneObjectRootParent == NULL)
@@ -174,7 +174,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		//parent->removeObject(sceneObject, true);
 		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
 
-		ManagedReference<SceneObject*> rootParent = parent->getRootParent().get();
+		ManagedReference<SceneObject*> rootParent = parent->getRootParent();
 
 		if (rootParent == NULL)
 			return;
@@ -251,7 +251,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		return;
 
 	if (zone == NULL)
-		zone = newParent->getRootParent().get()->getZone();
+		zone = newParent->getRootParent()->getZone();
 
 	Locker _locker(zone);
 
@@ -392,7 +392,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 				sceneObject->sendToOwner(true);
 
 				if (newParent->isCellObject()) {
-					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent().get();
+					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
 					if (rootParent != NULL)
 						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);

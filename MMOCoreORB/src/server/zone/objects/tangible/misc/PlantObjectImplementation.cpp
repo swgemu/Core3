@@ -32,7 +32,7 @@ void PlantObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 }
 
 int PlantObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ManagedReference<SceneObject*> rootParent = getRootParent().get();
+	ManagedReference<SceneObject*> rootParent = getRootParent();
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (rootParent == NULL || parent == NULL) {

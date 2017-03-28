@@ -24,7 +24,7 @@ public:
 		if (!player->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(player->getRootParent());
 
 		// If outside don't bother doing anything ...
 		if (building == NULL) {

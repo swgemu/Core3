@@ -192,8 +192,8 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	if( linkedCreature != speaker && !pcd->isFriend(speaker->getObjectID()))
 		return;
 
-	ManagedReference<SceneObject*> speakerParent = speaker->getRootParent().get();
-	ManagedReference<SceneObject*> petParent = pet->getRootParent().get();
+	ManagedReference<SceneObject*> speakerParent = speaker->getRootParent();
+	ManagedReference<SceneObject*> petParent = pet->getRootParent();
 
 	// If speaker is mounted, pet must be outdoors
 	if( speaker->isRidingMount() && petParent != NULL )

@@ -18,7 +18,7 @@ uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, Creatur
 
 		int factionPerk = healer->getSkillMod("private_faction_medical_rating");
 
-		ManagedReference<BuildingObject*> building = healer->getRootParent().get().castTo<BuildingObject*>();
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(healer->getRootParent());
 
 		if (building != NULL && factionPerk > 0 && building->isPlayerRegisteredWithin(healer->getObjectID())) {
 			unsigned int buildingFaction = building->getFaction();

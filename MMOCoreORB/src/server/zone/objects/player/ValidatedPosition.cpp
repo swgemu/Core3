@@ -31,7 +31,7 @@ Vector3 ValidatedPosition::getWorldPosition(ZoneServer* zoneServer) {
 	if (newParent == NULL)
 		return point;
 
-	ManagedReference<SceneObject*> root = newParent->getRootParent().get();
+	ManagedReference<SceneObject*> root = newParent->getRootParent();
 
 	float length = Math::sqrt(point.getX() * point.getX() + point.getY() * point.getY());
 	float angle = root->getDirection()->getRadians() + atan2(point.getX(), point.getY());
