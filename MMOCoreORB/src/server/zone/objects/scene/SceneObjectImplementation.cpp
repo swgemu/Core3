@@ -73,6 +73,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	savedRootParent = getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -112,6 +114,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerType = 0;
 	containerVolumeLimit = 0;
 	containmentType = 0;
+
+	savedRootParent = NULL;
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -914,6 +918,11 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
+	if (savedRootParent != NULL) {
+		ManagedWeakReference<SceneObject*> weak = savedRootParent.get();
+		return weak;
+	}
+
 	ManagedReference<SceneObject*> grandParent = getParent().get();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
@@ -942,6 +951,32 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	ManagedWeakReference<SceneObject*> weak = grandParent.get();
 
 	return weak;
+}
+
+SceneObject* SceneObjectImplementation::getRootParentUnsafe() {
+	if (savedRootParent != NULL) {
+		return savedRootParent;
+	}
+
+	return static_cast<SceneObject*>(QuadTreeEntryImplementation::getRootParentUnsafe());
+}
+
+void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newRoot) {
+	Locker locker(&parentLock);
+
+	savedRootParent = newRoot;
+
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> object = getContainerObject(j);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getSlottedObject(i);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
@@ -999,7 +1034,7 @@ Zone* SceneObjectImplementation::getZone() {
 }
 
 Zone* SceneObjectImplementation::getZoneUnsafe() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root != NULL) {
 		return root->getZoneUnsafe();
@@ -1090,7 +1125,7 @@ void SceneObjectImplementation::setObjectName(StringId& stringID, bool notifyCli
 }
 
 Vector3 SceneObjectImplementation::getWorldPosition() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPosition();
@@ -1136,7 +1171,7 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 }
 
 float SceneObjectImplementation::getWorldPositionX() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionX();
@@ -1148,7 +1183,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 }
 
 float SceneObjectImplementation::getWorldPositionY() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionY();
@@ -1160,7 +1195,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 }
 
 float SceneObjectImplementation::getWorldPositionZ() {
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+	auto root = getRootParentUnsafe();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionZ();
@@ -1403,7 +1438,11 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 	Locker locker(&parentLock);
 
+	savedRootParent = NULL;
+
 	QuadTreeEntryImplementation::setParent(entry);
+
+	updateSavedRootParentRecursive(getRootParent().get());
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
