@@ -73,6 +73,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -914,6 +916,11 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
+	if (savedRootParent != NULL) {
+		ManagedWeakReference<SceneObject*> weak = savedRootParent.get();
+		return weak;
+	}
+
 	ManagedReference<SceneObject*> grandParent = getParent().get();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
@@ -939,9 +946,31 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	if (grandParent == asSceneObject())
 		return NULL;
 
+	if (grandParent != savedRootParent) {
+		updateSavedRootParentRecursive(grandParent);
+	}
+
 	ManagedWeakReference<SceneObject*> weak = grandParent.get();
 
 	return weak;
+}
+
+void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newRoot) {
+	Locker locker(&parentLock);
+
+	savedRootParent = newRoot;
+
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> object = getContainerObject(j);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getSlottedObject(i);
+
+		object->updateSavedRootParentRecursive(newRoot);
+	}
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
@@ -1403,7 +1432,11 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 	Locker locker(&parentLock);
 
+	savedRootParent = NULL;
+
 	QuadTreeEntryImplementation::setParent(entry);
+
+	getRootParent();
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
