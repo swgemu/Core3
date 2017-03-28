@@ -73,6 +73,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -914,6 +916,11 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
+	if (savedRootParent != NULL) {
+		ManagedWeakReference<SceneObject*> weak = savedRootParent.get();
+		return weak;
+	}
+
 	ManagedReference<SceneObject*> grandParent = getParent().get();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
@@ -938,6 +945,11 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 
 	if (grandParent == asSceneObject())
 		return NULL;
+
+	if (grandParent != savedRootParent) {
+		Locker locker(&parentLock);
+		savedRootParent = grandParent;
+	}
 
 	ManagedWeakReference<SceneObject*> weak = grandParent.get();
 
@@ -1403,7 +1415,11 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 	Locker locker(&parentLock);
 
+	savedRootParent = NULL;
+
 	QuadTreeEntryImplementation::setParent(entry);
+
+	getRootParent();
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {

@@ -111,6 +111,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@weakReference
 	protected transient CityRegion cityRegion;
 
+	protected transient SceneObject savedRootParent;
+
 	@dereferenced
 	protected SortedVector<SceneObject> childObjects;
 
