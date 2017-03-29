@@ -55,27 +55,30 @@ public:
 		SkillManager* skillManager = server->getSkillManager();
 		ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
 
-		if(targetPlayer == NULL)
+		if (targetPlayer == NULL)
 			return GENERALERROR;
 
 		Locker clocker(targetPlayer, creature);
 
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
-		if(targetGhost != NULL) {
+		if (targetGhost != NULL) {
 			int targetPermissionLevel = targetGhost->getAdminLevel();
 
-			if(param == "on" && targetPermissionLevel > 0) {
+			if (targetPermissionLevel > ghostPermissionLevel)
+				return INSUFFICIENTPERMISSION;
+
+			if (param == "on" && targetPermissionLevel > 0) {
 				skillManager->addAbility(targetGhost, "admin");
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
-			} else if(param == "off" && targetPermissionLevel > 0) {
+			} else if (param == "off" && targetPermissionLevel > 0) {
 				skillManager->removeAbility(targetGhost, "admin");
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
-			} else  {
-				if(ghostPermissionLevel < permissionLevelList->getLevelNumber("admin")) {
+			} else {
+				if (ghostPermissionLevel < permissionLevelList->getLevelNumber("admin")) {
 					creature->sendSystemMessage("Must have \"admin\" level permission to set permissions.");
 					return INSUFFICIENTPERMISSION;
 				}
-				if(permissionLevelList->containsLevel(param)) {
+				if (permissionLevelList->containsLevel(param)) {
 					int permissionLevel = permissionLevelList->getLevelNumber(param);
 					playerManager->updatePermissionLevel(targetPlayer, permissionLevel);
 					creature->sendSystemMessage("You have set " + targetPlayer->getFirstName()
