@@ -23,10 +23,14 @@ namespace server {
     class OrderedTaskExecutioner : public Task {
     protected:
     	WeakReference<server::zone::objects::scene::SceneObject*> sceneObject;
+
+    	const char* taskName;
     public:
     	OrderedTaskExecutioner(SceneObject* sceneObject);
 
     	void run();
+
+    	const char* getTaskName();
     };
 
     }

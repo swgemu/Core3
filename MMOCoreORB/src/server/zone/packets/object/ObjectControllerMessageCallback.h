@@ -27,6 +27,8 @@ public:
 
 	static MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;
 
+	const char* getTaskName();
+
 	void parse(Message* message);
 
 	void run();
