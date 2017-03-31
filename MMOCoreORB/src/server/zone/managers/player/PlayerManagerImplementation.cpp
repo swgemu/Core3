@@ -2584,7 +2584,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	}
 
 
-	ManagedReference<SceneObject*> rootParent = creature->getRootParent().get();
+	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
 	if (rootParent != NULL && rootParent->isStructureObject() && (cast<StructureObject*>(rootParent.get()))->isOnAdminList(creature)) {
 		return rootParent;
@@ -2897,7 +2897,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	player->info(newWorldPosMsg.toString(), true);*/
 
 	if (newParent != NULL) {
-		ManagedReference<SceneObject*> root = newParent->getRootParent().get();
+		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
 		if (!root->isBuildingObject())
 			return 1;

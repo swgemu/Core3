@@ -75,7 +75,7 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 		return;
 	}
 
-	ManagedReference<BuildingObject*> building = creo->getRootParent().get().castTo<BuildingObject*>();
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(creo->getRootParent());
 
 	if (building != NULL && factionPerkSkill > 0 && building->isPlayerRegisteredWithin(creo->getObjectID())) {
 		unsigned int buildingFaction = building->getFaction();
@@ -140,7 +140,7 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 }
 
 bool EntertainingSessionImplementation::isInEntertainingBuilding(CreatureObject* creature) {
-	ManagedReference<SceneObject*> root = creature->getRootParent().get();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
 
 	if (root != NULL) {
 		uint32 gameObjectType = root->getGameObjectType();
@@ -657,7 +657,7 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 
 	float factionPerkStrength = entertainer->getSkillMod("private_faction_buff_mind");
 
-	ManagedReference<BuildingObject*> building = entertainer->getRootParent().get().castTo<BuildingObject*>();
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(entertainer->getRootParent());
 
 	if (building != NULL && factionPerkStrength > 0 && building->isPlayerRegisteredWithin(entertainer->getObjectID())) {
 		unsigned int buildingFaction = building->getFaction();

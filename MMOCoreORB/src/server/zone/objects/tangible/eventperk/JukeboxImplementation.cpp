@@ -128,7 +128,7 @@ void JukeboxImplementation::notifyInsertToZone(Zone* zone) {
 
 	jbox->registerObserver(ObserverEventType::PARENTCHANGED, observer);
 
-	ManagedReference<SceneObject*> obj = jbox->getRootParent().get();
+	ManagedReference<SceneObject*> obj = jbox->getRootParent();
 
 	if (obj == NULL || !obj->isStructureObject())
 		setRadius(100);

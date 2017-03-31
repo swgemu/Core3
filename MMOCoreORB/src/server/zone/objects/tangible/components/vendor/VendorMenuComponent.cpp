@@ -197,7 +197,7 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 
 	case 79: {
-		if (player->getRootParent().get() != vendor->getRootParent().get()) {
+		if (player->getRootParent() != vendor->getRootParent()) {
 			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
 			return 0;
 		}

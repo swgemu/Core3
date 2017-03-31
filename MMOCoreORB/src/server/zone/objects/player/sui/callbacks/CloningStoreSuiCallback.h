@@ -73,7 +73,7 @@ public:
 			player->subtractBankCredits(cost);
 		}
 
-		ManagedReference<SceneObject*> building = term->getRootParent().get();
+		ManagedReference<SceneObject*> building = term->getRootParent();
 
 		if (building == NULL || !building->isBuildingObject()) {
 			return;

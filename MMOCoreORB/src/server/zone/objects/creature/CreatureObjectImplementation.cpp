@@ -266,7 +266,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 			server->getZoneServer()->getGuildManager();
 	guildManager->sendBaselinesTo(asCreatureObject());
 
-	ManagedReference<SceneObject*> grandParent = getRootParent().get();
+	ManagedReference<SceneObject*> grandParent = getRootParent();
 
 	if (grandParent != NULL) {
 		grandParent->sendTo(asCreatureObject(), true);

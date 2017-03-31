@@ -28,7 +28,7 @@ public:
 			return;
 
 		if (obj->getGameObjectType() == SceneObjectType::PLAYERTERMINALSTRUCTURE) {
-			ManagedReference<SceneObject*> root = obj->getRootParent().get();
+			ManagedReference<SceneObject*> root = obj->getRootParent();
 			if (root != NULL)
 				obj = root;
 		}

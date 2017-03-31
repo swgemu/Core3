@@ -94,7 +94,7 @@ public:
 		Zone* zoneObject = objectToTransfer->getZone();
 
 		if (zoneObject != NULL) {
-			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent().get();
+			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
 
 			float maxDistance = 12.5;
 

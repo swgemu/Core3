@@ -210,7 +210,7 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObject* cellObject) {
 	Vector<float>* collisions = NULL;
 
-	ManagedReference<SceneObject*> rootObject = cellObject->getRootParent().get();
+	ManagedReference<SceneObject*> rootObject = cellObject->getRootParent();
 
 	if (rootObject == NULL)
 		return NULL;
@@ -401,8 +401,8 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 //			delete path;
 	}
 
-	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent().get();
-	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent().get();
+	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
+	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
 
 	if (rootParent1 != NULL || rootParent2 != NULL) {
 		if (rootParent1 == rootParent2) {
@@ -736,7 +736,7 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 
 	CellObject* cell = cast<CellObject*>( parent.get());
 
-	SharedObjectTemplate* objectTemplate = parent->getRootParent().get()->getObjectTemplate();
+	SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 	const AppearanceTemplate* appearanceMesh = NULL;
 

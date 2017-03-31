@@ -238,7 +238,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 		bool isDroid = (myParent != NULL && myParent->isDroidObject());
 
 		if (playerParent == NULL && !isDroid) {
-			ManagedReference<SceneObject*> rootParent = getRootParent().get();
+			ManagedReference<SceneObject*> rootParent = getRootParent();
 
 			if (rootParent != NULL) {
 				if (rootParent->isBuildingObject()) {

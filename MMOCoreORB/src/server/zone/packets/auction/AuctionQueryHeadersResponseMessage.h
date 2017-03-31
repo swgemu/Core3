@@ -80,7 +80,7 @@ public:
 			int accessFee = 0;
 			ManagedReference<SceneObject*> vendor = player->getZoneServer()->getObject(il->getVendorID());
 			if(vendor != NULL && vendor->getParent().get() != NULL) {
-				ManagedReference<SceneObject*> parent = vendor->getRootParent().get();
+				ManagedReference<SceneObject*> parent = vendor->getRootParent();
 				if(parent != NULL && parent->isBuildingObject()) {
 					BuildingObject* building = cast<BuildingObject*>(parent.get());
 					if(building != NULL)

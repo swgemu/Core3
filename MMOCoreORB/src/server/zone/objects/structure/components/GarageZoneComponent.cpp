@@ -28,7 +28,7 @@ void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 			data->removeNotifiedPlayer(objID);
 
 	} else {
-		ManagedReference<SceneObject*> rootParent = obj->getRootParent().get();
+		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 
 		if (rootParent == NULL || !rootParent->isVehicleObject())
 			return;
