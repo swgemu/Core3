@@ -37,7 +37,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	if (player->getParent().get() != NULL) {
+	if (player->getParent() != NULL) {
 		ManagedReference<SceneObject*> strongRef = player->getRootParent();
 		ManagedReference<BuildingObject*> building = NULL;
 
@@ -215,7 +215,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
-	if (player->getCurrentCamp() == NULL && player->getCityRegion().get() == NULL) {
+	if (player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
 		Reference<CallPetTask*> callPet = new CallPetTask(_this.getReferenceUnsafeStaticCast(), player, "call_pet");
 
@@ -427,7 +427,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	if (!force && (pet->isInCombat() || player->isInCombat()))
 		return;
 
-	if (player->isRidingMount() && player->getParent().get() == pet) {
+	if (player->isRidingMount() && player->getParent() == pet) {
 
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;

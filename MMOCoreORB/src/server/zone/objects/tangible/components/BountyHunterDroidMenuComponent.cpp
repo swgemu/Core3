@@ -95,7 +95,7 @@ bool BountyHunterDroidMenuComponent::isSeekerDroid(SceneObject* droidObject) con
 bool BountyHunterDroidMenuComponent::droidIsInPlayerInventory(SceneObject* droidObject, CreatureObject* player) const {
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	return droidObject->getParent().get() == inventory;
+	return droidObject->getParent() == inventory;
 }
 
 bool BountyHunterDroidMenuComponent::droidIsInZone(SceneObject* droidObject) const {

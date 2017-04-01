@@ -339,7 +339,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		for (int i = 0; i < slottedObjects.size(); ++i) {
 			ManagedReference<SceneObject* > obj = slottedObjects.get(i);
 
-			if (obj->getParent().get() != asSceneObject()) {
+			if (obj->getParent() != asSceneObject()) {
 				obj->setParent(asSceneObject());
 
 				if (obj->isPlayerCreature())
@@ -352,7 +352,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		for (int i = 0; i < containerObjects.size(); ++i) {
 			ManagedReference<SceneObject* > obj = containerObjects.get(i);
 
-			if (obj->getParent().get() != asSceneObject()) {
+			if (obj->getParent() != asSceneObject()) {
 				obj->setParent(asSceneObject());
 				obj->setContainmentType(-1);
 			}

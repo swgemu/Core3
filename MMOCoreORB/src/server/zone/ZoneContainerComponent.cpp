@@ -154,7 +154,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		else
 			parent->removeObject(object, sceneObject, true);
 
-		if (object->getParent().get() != NULL && parent->containsChildObject(object))
+		if (object->getParent() != NULL && parent->containsChildObject(object))
 			return false;
 		else
 			object->setParent(NULL);

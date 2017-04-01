@@ -80,7 +80,7 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getParent().get() != NULL && surveyer->getParent().get()->isCellObject()) {
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isCellObject()) {
 		surveyer->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
@@ -170,7 +170,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getParent().get() != NULL && surveyer->getParent().get()->isCellObject()) {
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isCellObject()) {
 		surveyer->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}

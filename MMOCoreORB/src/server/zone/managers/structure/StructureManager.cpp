@@ -782,7 +782,7 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 				continue;
 
 			//if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
-			if (creature->getParent().get() != NULL
+			if (creature->getParent() != NULL
 					&& !building->containsChildObject(childObject)
 					&& !childObject->isCreatureObject()) {
 				if (creature->getParent().get()->getParent().get()

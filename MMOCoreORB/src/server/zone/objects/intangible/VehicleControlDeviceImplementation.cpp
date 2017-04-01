@@ -25,7 +25,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	if (!isASubChildOf(player))
 		return;
 
-	if (player->getParent().get() != NULL || player->isInCombat()) {
+	if (player->getParent() != NULL || player->isInCombat()) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); // You can only unpack vehicles while Outside and not in Combat.
 		return;
 	}
@@ -79,7 +79,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		}
 	}
 
-	if(player->getCurrentCamp() == NULL && player->getCityRegion().get() == NULL) {
+	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
 		Reference<CallMountTask*> callMount = new CallMountTask(_this.getReferenceUnsafeStaticCast(), player, "call_mount");
 
@@ -115,7 +115,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (!isASubChildOf(player))
 		return;
 
-	if (player->getParent().get() != NULL || player->isInCombat()) {
+	if (player->getParent() != NULL || player->isInCombat()) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); // You can only unpack vehicles while Outside and not in Combat.
 		return;
 	}
@@ -179,7 +179,7 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 	/*if (!controlledObject->isInQuadTree())
 		return;*/
 
-	if (player->isRidingMount() && player->getParent().get() == controlledObject) {
+	if (player->isRidingMount() && player->getParent() == controlledObject) {
 
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;

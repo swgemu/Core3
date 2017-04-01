@@ -470,7 +470,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 						else
 							scno->notifyInsert(child);
 
-						if (scno->getParent().get() != NULL)
+						if (scno->getParent() != NULL)
 							scno->sendTo(child, true);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
@@ -650,7 +650,7 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
 	ManagedReference<SceneObject*> obj = getZoneServer()->getObject(objectid);
 
-	if (obj == NULL || !obj->isCellObject() || obj->getParent().get() != asBuildingObject())
+	if (obj == NULL || !obj->isCellObject() || obj->getParent() != asBuildingObject())
 		return;
 
 	CellObject* cell = obj.castTo<CellObject*>();

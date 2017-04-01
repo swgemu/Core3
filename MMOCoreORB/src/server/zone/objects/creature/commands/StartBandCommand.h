@@ -146,7 +146,7 @@ public:
 					instrument->setBeingUsed(true);
 				}
 
-				if (targetedInstrument && (instrument->getParent().get() != NULL  || instrument->getSpawnerPlayer().get() != NULL)) {
+				if (targetedInstrument && (instrument->getParent() != NULL  || instrument->getSpawnerPlayer() != NULL)) {
 					instrument->setDirection(*groupMember->getDirection());
 					instrument->teleport(groupMember->getPositionX(), groupMember->getPositionZ(), groupMember->getPositionY(), groupMember->getParentID());
 				}

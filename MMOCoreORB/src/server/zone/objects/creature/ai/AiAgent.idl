@@ -1137,9 +1137,7 @@ class AiAgent extends CreatureObject {
 
 	@dirty
 	public boolean isPet() {
-		ControlDevice device = getControlDevice();
-
-		return (device != null);
+		return (getControlDevice() != null);
 	}
 
 	/**

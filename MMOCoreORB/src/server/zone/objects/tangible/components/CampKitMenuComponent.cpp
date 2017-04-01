@@ -100,7 +100,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(player->getParent().get() != NULL && player->getParent().get()->isCellObject()) {
+		if(player->getParent() != NULL && player->getParent().get()->isCellObject()) {
 			player->sendSystemMessage("@camp:error_inside");
 			return 0;
 		}

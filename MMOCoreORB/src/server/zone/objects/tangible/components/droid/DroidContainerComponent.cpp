@@ -22,7 +22,7 @@ bool DroidContainerComponent::checkContainerPermission(SceneObject* sceneObject,
 		return false;
 	}
 
-	if (!creature->getPlayerObject()->isPrivileged() && droid->getLinkedCreature().get() != creature){
+	if (!creature->getPlayerObject()->isPrivileged() && droid->getLinkedCreature() != creature){
 		return false;
 	}
 

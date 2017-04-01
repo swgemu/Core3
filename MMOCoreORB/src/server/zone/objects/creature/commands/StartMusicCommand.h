@@ -132,7 +132,7 @@ public:
 					return GENERALERROR;
 				}
 
-				if (instrument->getParent().get() != NULL || spawnerPlayer != NULL) {
+				if (instrument->getParent() != NULL || spawnerPlayer != NULL) {
 					instrument->setDirection(*creature->getDirection());
 					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
 				}

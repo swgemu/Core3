@@ -136,7 +136,7 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
 	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
-	if (sceneObject->getParent().get() != NULL && sceneObject->isPlayerCreature()) {
+	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
 

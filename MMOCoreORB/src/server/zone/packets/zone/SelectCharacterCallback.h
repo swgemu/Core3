@@ -147,7 +147,7 @@ public:
 				} else {
 					playerParent->transferObject(player, -1, false);
 
-					if (player->getParent().get() == NULL) {
+					if (player->getParent() == NULL) {
 						zone->transferObject(player, -1, false);
 					} else if (root->getZone() == NULL) {
 						Locker clocker(root, player);

@@ -165,7 +165,7 @@ int CraftingSessionImplementation::clearSession() {
 
 		Locker locker(manufactureSchematic);
 
-		if (manufactureSchematic->getParent().get() == craftingTool) {
+		if (manufactureSchematic->getParent() == craftingTool) {
 			manufactureSchematic->setDraftSchematic(NULL);
 			manufactureSchematic->cleanupIngredientSlots(crafter);
 			manufactureSchematic->destroyObjectFromWorld(true);
@@ -190,7 +190,7 @@ int CraftingSessionImplementation::clearSession() {
 
 			if (craftingTool->isReady()) {
 
-				if (prototype->getParent().get() == craftingTool) {
+				if (prototype->getParent() == craftingTool) {
 					prototype->destroyObjectFromWorld(true);
 				}
 

@@ -35,7 +35,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 
-		if (creature->getParent().get() != NULL) {
+		if (creature->getParent() != NULL) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 			return GENERALERROR;
 		}

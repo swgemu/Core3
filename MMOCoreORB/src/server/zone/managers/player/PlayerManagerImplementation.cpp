@@ -2729,7 +2729,7 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 
 void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections, CloseObjectsVector* closeObjectsVector) {
 	player->notifySelfPositionUpdate();
-	if (player->getParent().get() != NULL) {
+	if (player->getParent() != NULL) {
 		return;
 	}
 
@@ -3208,7 +3208,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 				continue;
 			}
 			// only the player can benefit from their own droid
-			if( droid->getLinkedCreature().get() != player ) {
+			if( droid->getLinkedCreature() != player ) {
 				continue;
 			}
 			// check the droid

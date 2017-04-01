@@ -1610,7 +1610,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 #ifdef SHOW_WALK_PATH
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
-	if (getParent().get() == NULL) {
+	if (getParent() == NULL) {
 		pathMessage->addCoordinate(getPositionX(), getZone()->getHeight(getPositionX(), getPositionY()), getPositionY());
 	} else {
 		pathMessage->addCoordinate(getPositionX(), getPositionZ(), getPositionY());

@@ -27,7 +27,7 @@ public:
 		if (args->size() < 1)
 			return;
 
-		if (player->getParent().get() != NULL)
+		if (player->getParent() != NULL)
 			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();

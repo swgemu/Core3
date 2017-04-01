@@ -1779,7 +1779,7 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 
 	//notifiedSentObjects.removeAll();
 
-	if (creature->isRidingMount() && creature->getParent().get() == NULL) {
+	if (creature->isRidingMount() && creature->getParent() == NULL) {
 		creature->clearState(CreatureState::RIDINGMOUNT);
 	}
 
