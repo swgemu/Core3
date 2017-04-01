@@ -73,7 +73,7 @@ public:
 		if (target == leader)
 			return true;
 
-		if (target->getParentRecursively(SceneObjectType::BUILDING).get() != leader->getParentRecursively(SceneObjectType::BUILDING).get())
+		if (target->getParentRecursively(SceneObjectType::BUILDING) != leader->getParentRecursively(SceneObjectType::BUILDING))
 			return false;
 
 		PlayerObject* leaderGhost = leader->getPlayerObject();

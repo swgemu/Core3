@@ -142,8 +142,8 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			return TransferErrorCode::CONTAINERFULL;
 		}
 
-		ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER).get();
-		ManagedReference<SceneObject*> playerParent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER);
+		ManagedReference<SceneObject*> playerParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		// If there's a wearable container parent, return if it doesn't have enough room
 		if (wearableParent != NULL) {

@@ -25,7 +25,7 @@ void DeliverMissionObjectiveImplementation::activate() {
 
 	if (!activateWithResult()) {
 		//Send error message to player.
-		ManagedReference<CreatureObject*> owner = getPlayerOwner().get();
+		ManagedReference<CreatureObject*> owner = getPlayerOwner();
 		if (owner == NULL) {
 			return;
 		}
@@ -47,7 +47,7 @@ void DeliverMissionObjectiveImplementation::deactivate() {
 }
 
 bool DeliverMissionObjectiveImplementation::activateWithResult() {
-	ManagedReference<CreatureObject*> owner = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if (owner == NULL || mission == NULL) {
@@ -132,7 +132,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 		mission->updateMissionLocation();
 	} else {
-		updateMissionTarget(getPlayerOwner().get());
+		updateMissionTarget(getPlayerOwner());
 	}
 
 	return true;

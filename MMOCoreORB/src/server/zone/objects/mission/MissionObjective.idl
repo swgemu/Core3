@@ -116,8 +116,8 @@ class MissionObjective extends ManagedObject implements Logger {
 		return objectiveType;
 	}
 
-	@weakReference
 	@dirty
+	@reference
 	public native CreatureObject getPlayerOwner();
 
 	public native void awardFactionPoints();

@@ -39,7 +39,7 @@ public:
 		if (guildTerminal == NULL)
 			return;
 
-		ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+		ManagedReference<BuildingObject*> buildingObject = guildTerminal->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 		if (buildingObject == NULL)
 			return;
 

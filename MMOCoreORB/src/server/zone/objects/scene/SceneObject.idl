@@ -1206,7 +1206,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return Returns the parent of object type in the tree
 	 */
 	@dirty
-	@weakReference
+	@reference
 	public native SceneObject getParentRecursively(unsigned int gameObjectType);
 
 	/**

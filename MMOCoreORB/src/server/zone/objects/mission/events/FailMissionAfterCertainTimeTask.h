@@ -29,7 +29,7 @@ public:
 
 			if (objectiveRef != NULL) {
 				//Fail mission.
-				ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner().get();
+				ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner();
 				if (owner != NULL) {
 					Locker locker(owner);
 

@@ -131,7 +131,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ManagedReference<CreatureObject*> object = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> object = getPlayerOwner();
 
 	if (object == NULL)
 		return;
@@ -162,7 +162,7 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 		return 0;
 	}
 
-	if (cast<CreatureObject*>(arg1) != getPlayerOwner().get()) {
+	if (cast<CreatureObject*>(arg1) != getPlayerOwner()) {
 		return 0;
 	}
 
@@ -188,7 +188,7 @@ Vector3 EntertainerMissionObjectiveImplementation::getEndPosition() {
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

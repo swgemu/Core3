@@ -181,9 +181,9 @@ public:
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent().get());
 
-		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE).get() != NULL || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE).get() != NULL);
+		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != NULL || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != NULL);
 
-		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER).get() != NULL);
+		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != NULL);
 
 		Locker clocker(objectsParent, creature);
 

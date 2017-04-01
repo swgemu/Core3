@@ -39,8 +39,8 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING).get();
-		ManagedReference<SceneObject*> tobj = creature->getParentRecursively(SceneObjectType::THEATERBUILDING).get();
+		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING);
+		ManagedReference<SceneObject*> tobj = creature->getParentRecursively(SceneObjectType::THEATERBUILDING);
 		if ( obj == NULL || !obj->isStructureObject() ){
 			// wasn't a building. Is it a theater, as theater has different object flag
 			if (tobj == NULL || !tobj->isStructureObject()) {

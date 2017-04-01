@@ -1947,7 +1947,7 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 			ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 			if (objective != NULL) {
-				ManagedReference<CreatureObject*> player = objective->getPlayerOwner().get();
+				ManagedReference<CreatureObject*> player = objective->getPlayerOwner();
 				if (player != NULL) {
 					player->sendSystemMessage("@mission/mission_generic:failed");
 				}

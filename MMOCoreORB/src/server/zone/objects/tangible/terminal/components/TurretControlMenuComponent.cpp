@@ -15,7 +15,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 
 void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
 	if (thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
@@ -52,7 +52,7 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (ghost == NULL)
 		return 1;
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return 1;

@@ -21,7 +21,7 @@ public:
 	void run() {
 		Locker locker(objective);
 
-		if (objective->getPlayerOwner().get() == NULL)
+		if (objective->getPlayerOwner() == NULL)
 			return;
 
 		objective->awardReward();

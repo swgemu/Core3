@@ -29,13 +29,12 @@ public:
 	}
 
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
-
-		if (sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get() != object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get())
-			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
-
-		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		if (parent == NULL)
+			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
+
+		if (parent != object->getParentRecursively(SceneObjectType::PLAYERCREATURE))
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
 		int containerObjects = parent->getSlottedObject("inventory")->getContainerObjectsSize();

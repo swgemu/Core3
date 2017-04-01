@@ -444,7 +444,7 @@ int LuaCreatureObject::getInCellNumber(lua_State* L) {
 }
 
 int LuaCreatureObject::getBuildingParentID(lua_State* L) {
-	SceneObject* parent = realObject->getParentRecursively(SceneObjectType::BUILDING).get().get();
+	ManagedReference<SceneObject*> parent = realObject->getParentRecursively(SceneObjectType::BUILDING);
 
 	if (parent == NULL)
 		lua_pushnumber(L, 0);
