@@ -17,7 +17,7 @@
 
 
 void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObjectType::BUILDING).get().get());
+	ManagedReference<BuildingObject*> building = getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 	if (building == NULL) {
 		return;
 	}
@@ -121,7 +121,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	if (guildManager == NULL)
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObjectType::BUILDING).get().get());
+	ManagedReference<BuildingObject*> building = getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 	if (building == NULL) {
 		return 1;
 	}

@@ -48,7 +48,7 @@ public:
 		if (resource == NULL)
 			return;
 
-		ManagedReference<SceneObject*> playerParent = resource->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> playerParent = resource->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		if (playerParent == NULL)
 			return;

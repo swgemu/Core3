@@ -98,7 +98,7 @@ Vector3 ReconMissionObjectiveImplementation::getEndPosition() {
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
 
-	Zone* zone =  getPlayerOwner().get()->getZone();
+	Zone* zone =  getPlayerOwner()->getZone();
 
 	if (zone != NULL) {
 		TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();

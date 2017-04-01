@@ -28,7 +28,7 @@ void ShuttleBeaconImplementation::fillAttributeList(AttributeListMessage* alm, C
 
 void ShuttleBeaconImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<CreatureObject*> perkOwner = owner.get();
-	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (perkOwner == NULL || beaconParent == NULL || perkOwner != beaconParent)
 		return;
@@ -41,7 +41,7 @@ void ShuttleBeaconImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 int ShuttleBeaconImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ManagedReference<CreatureObject*> perkOwner = owner.get();
-	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (perkOwner == NULL || beaconParent == NULL || perkOwner != beaconParent || selectedID != 20)
 		return 0;

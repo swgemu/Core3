@@ -69,7 +69,7 @@ public:
 
 		Locker locker(playerRef);
 
-		if (objectiveRef->getPlayerOwner().get() == NULL)
+		if (objectiveRef->getPlayerOwner() == NULL)
 			return;
 
 		if (move && playerRef->getZone() != NULL) {

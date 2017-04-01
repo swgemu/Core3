@@ -30,7 +30,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject* > sceno = recycler->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject* > sceno = recycler->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 		if (!sceno->isPlayerCreature() || sceno == NULL) {
 			return;
 		} else {

@@ -22,7 +22,7 @@ public:
 		if (obj == NULL)
 			return;
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+		ManagedReference<BuildingObject*> building = obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 		if (building == NULL)
 			return;

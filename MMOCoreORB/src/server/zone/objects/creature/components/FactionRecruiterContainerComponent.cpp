@@ -24,7 +24,7 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	CreatureObject* player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().castTo<CreatureObject*>();
+	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
 	if (player == NULL) {
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
@@ -51,7 +51,7 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 		return false;
 	}
 
-	CreatureObject* player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().castTo<CreatureObject*>();
+	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
 	if (player == NULL) {
 		return false;

@@ -118,7 +118,7 @@ class FindTargetTask : public Task, public Logger {
 	bool findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		Locker locker(player);
 
-		if (objective->getPlayerOwner().get() == NULL) {
+		if (objective->getPlayerOwner() == NULL) {
 			return false;
 		}
 

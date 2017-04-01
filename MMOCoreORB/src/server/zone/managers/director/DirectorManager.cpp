@@ -1673,7 +1673,7 @@ int DirectorManager::giveItem(lua_State* L) {
 		if (obj->transferObject(item, slot, true, overload)) {
 			item->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
-			ManagedReference<SceneObject*> parent = item->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+			ManagedReference<SceneObject*> parent = item->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 			if (parent != NULL && parent->isPlayerCreature()) {
 				item->sendTo(parent, true);
 			}

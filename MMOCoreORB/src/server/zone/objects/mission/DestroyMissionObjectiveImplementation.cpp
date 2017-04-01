@@ -125,7 +125,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	if (tries == 128) {
 		//Failed to find a spawn point for the lair, fail mission.
-		getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed");
+		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 		fail();
 	}
 
@@ -176,7 +176,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	mlocker.release();
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player != NULL) {
 		//TODO: find correct string id
@@ -253,7 +253,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 	if (hasObservers()) {
 		ManagedReference<MissionObserver*> observer = getObserver(0);
 
-		ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 		ManagedReference<LairObject*> lair = lairObject;
 
@@ -306,7 +306,7 @@ Vector3 DestroyMissionObjectiveImplementation::getEndPosition() {
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
 
-	Zone* zone = getPlayerOwner().get()->getZone();
+	Zone* zone = getPlayerOwner()->getZone();
 
 	if (zone != NULL) {
 		missionEndPoint.setZ(zone->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));

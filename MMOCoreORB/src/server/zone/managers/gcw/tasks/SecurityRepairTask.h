@@ -35,7 +35,7 @@ public:
 			return;
 		}
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(terminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+		ManagedReference<BuildingObject*> building = terminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 		if (building == NULL)
 			return;

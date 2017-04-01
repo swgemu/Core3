@@ -652,7 +652,7 @@ void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyConta
 
 void PetControlDeviceImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	if (petType == PetManager::CREATUREPET) {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+		ManagedReference<CreatureObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
 		if (player != NULL) {
 			player->sendSystemMessage("@pet/pet_menu:pet_released"); // You release your pet back into the wild

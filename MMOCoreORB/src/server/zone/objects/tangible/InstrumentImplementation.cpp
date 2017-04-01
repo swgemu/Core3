@@ -20,7 +20,7 @@ void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 		return;
 
 	if (canDropInstrument()) {
-		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		if (parent != NULL && parent == player->asSceneObject())
 			menuResponse->addRadialMenuItem(20, 3, "@ui_radial:item_use");
@@ -44,7 +44,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 1;
 
 	if (canDropInstrument()) {
-		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		if (parent == NULL || parent != player->asSceneObject())
 			return 1;

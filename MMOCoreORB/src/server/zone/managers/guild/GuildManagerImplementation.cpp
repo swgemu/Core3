@@ -872,7 +872,7 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 }
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( sceoTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+	ManagedReference<BuildingObject*> building = sceoTerminal->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 	if (building == NULL) {
 		return;
 	}
@@ -1003,7 +1003,7 @@ bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, Sce
 	if ( guildTerminal == NULL )
 		return false;
 
-	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+	ManagedReference<BuildingObject*> buildingObject = guildTerminal->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
 
 	if ( buildingObject != NULL ) {

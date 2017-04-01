@@ -26,7 +26,7 @@ void HuntingMissionObjectiveImplementation::activate() {
 
 	targetsKilled = 15 * getMissionObject().get()->getDifficultyLevel();
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	ManagedReference<MissionObserver*> observer = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 	addObserver(observer, true);
@@ -41,7 +41,7 @@ void HuntingMissionObjectiveImplementation::abort() {
 	for (int i = 0; i < getObserverCount(); i++) {
 		ManagedReference<MissionObserver*> observer = getObserver(i);
 
-		ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 		if (player != NULL) {
 			Locker locker(player);
@@ -63,7 +63,7 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 	if (mission == NULL)
 		return 1;
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player == NULL)
 		return 1;
@@ -118,7 +118,7 @@ Vector3 HuntingMissionObjectiveImplementation::getEndPosition() {
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

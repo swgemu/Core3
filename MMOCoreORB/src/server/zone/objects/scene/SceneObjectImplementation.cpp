@@ -978,20 +978,18 @@ void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newR
 	}
 }
 
-ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
+Reference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
 	ManagedReference<SceneObject*> temp = getParent().get();
 
 	if (temp == NULL)
 		return NULL;
 
 	if (temp->getGameObjectType() == gameObjectType)
-		return temp.get();
+		return temp;
 
 	while ((temp = temp->getParent().get()) != NULL && temp != asSceneObject()) {
 		if (temp->getGameObjectType() == gameObjectType) {
-			ManagedWeakReference<SceneObject*> weak = temp.get();
-
-			return weak;
+			return temp;
 		}
 	}
 

@@ -823,7 +823,7 @@ bool GCWManagerImplementation::isUplinkJammed(BuildingObject* building) {
 }
 
 bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTerminal) {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return true;
@@ -1056,7 +1056,7 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 	Locker _lock(creature);
 	Locker clocker(tano, creature);
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(tano->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = tano->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (!isBaseVulnerable(building))
 		return false;
@@ -1090,7 +1090,7 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 // @pre: player is locked since called from Slicing session
 // @post: player is locked
 void GCWManagerImplementation::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal) {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;
@@ -1111,7 +1111,7 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 	if (securityTerminal == NULL)
 		return;
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;
@@ -1136,7 +1136,7 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 	if (securityTerminal == NULL)
 		return;
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;
@@ -1247,7 +1247,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 }
 
 void GCWManagerImplementation::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const int index) {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL || creature == NULL)
 		return;
@@ -1381,7 +1381,7 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 }
 
 void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int index) {
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(powerRegulator->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = powerRegulator->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;
@@ -2286,7 +2286,7 @@ void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, 
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TURRET_TERMINAL))
 		ghost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(turretControlTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<BuildingObject*> building = turretControlTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 	if (building == NULL)
 		return;

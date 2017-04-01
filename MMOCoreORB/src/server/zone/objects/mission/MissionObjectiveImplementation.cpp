@@ -33,14 +33,13 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	ObjectManager::instance()->destroyObjectFromDatabase(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 }
 
-ManagedWeakReference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
+Reference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
 	ManagedReference<MissionObject*> strongReference = mission.get();
-	ManagedWeakReference<CreatureObject*> weak;
 
 	if (strongReference != NULL)
-		weak = cast<CreatureObject*>( strongReference->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+		return strongReference->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	return weak;
+	return NULL;
 }
 
 void MissionObjectiveImplementation::activate() {
@@ -60,7 +59,7 @@ void MissionObjectiveImplementation::activate() {
 void MissionObjectiveImplementation::complete() {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player == NULL)
 		return;
@@ -114,7 +113,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	}
 
 	//Award faction points for faction delivery missions.
-	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
 
 	if (creatureOwner != NULL) {
 		ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
@@ -145,7 +144,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 }
 
 void MissionObjectiveImplementation::removeMissionFromPlayer() {
-	ManagedReference<CreatureObject*> player = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if (player != NULL && mission != NULL) {
@@ -172,7 +171,7 @@ void MissionObjectiveImplementation::awardReward() {
 
 	Vector3 missionEndPoint = getEndPosition();
 
-	ManagedReference<CreatureObject*> owner = getPlayerOwner().get();
+	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
@@ -261,7 +260,7 @@ Vector3 MissionObjectiveImplementation::getEndPosition() {
 	if(mission != NULL) {
 		missionEndPoint.setX(mission->getEndPositionX());
 		missionEndPoint.setY(mission->getEndPositionY());
-		TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
+		TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
 		missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 	}
 
