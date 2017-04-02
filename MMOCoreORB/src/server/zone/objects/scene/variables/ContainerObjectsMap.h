@@ -64,6 +64,10 @@ namespace server {
    		bool hasDelayedLoadOperationMode() {
    			return operationMode == DELAYED_LOAD;
    		}
+
+   		bool isLoaded() {
+   			return operationMode == NORMAL_LOAD || oids == NULL;
+   		}
    	};
    }
   }

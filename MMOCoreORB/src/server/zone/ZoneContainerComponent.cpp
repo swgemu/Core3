@@ -363,7 +363,5 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 	object->setZone(NULL);
 
-	object->setParent(NULL); // To clear rootParent on children
-
 	return true;
 }

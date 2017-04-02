@@ -82,6 +82,10 @@ void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 	}
 }
 
+void ActiveAreaImplementation::setZone(Zone* zone) {
+	this->zone = zone;
+}
+
 bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
 	if (areaShape == NULL) {
 		return false;

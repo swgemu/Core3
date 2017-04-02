@@ -8,6 +8,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.pathfinding.NavArea;
 include system.util.Vector;
+import server.zone.Zone;
 
 @mock
 class ActiveArea extends SceneObject {
@@ -63,6 +64,8 @@ class ActiveArea extends SceneObject {
 
 	public native abstract void notifyEnter(SceneObject object);
 	public native abstract void notifyExit(SceneObject object);
+
+	public native void setZone(Zone zone);
 
 	@dirty
 	public boolean isActiveArea() {

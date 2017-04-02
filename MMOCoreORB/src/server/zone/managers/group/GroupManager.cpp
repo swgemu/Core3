@@ -238,7 +238,6 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	group->initializeLeader(leader);
 	group->startChatRoom(leader);
-	group->setZone(leader->getZone());
 
 	group->sendTo(leader, true);
 

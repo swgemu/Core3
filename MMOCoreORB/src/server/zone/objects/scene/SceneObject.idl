@@ -1747,7 +1747,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return server;
 	}
 
-	public native void setZone(Zone zone);
+	public abstract native void setZone(Zone zone);
 
 	@local
 	public abstract native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);

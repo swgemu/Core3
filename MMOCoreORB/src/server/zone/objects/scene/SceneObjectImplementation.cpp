@@ -961,20 +961,25 @@ SceneObject* SceneObjectImplementation::getRootParentUnsafe() {
 void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newRoot) {
 	Locker locker(&parentLock);
 
-	savedRootParent = newRoot;
+	if (newRoot == asSceneObject())
+		savedRootParent = NULL;
+	else
+		savedRootParent = newRoot;
 
 	locker.release();
 
-	for (int j = 0; j < getContainerObjectsSize(); ++j) {
-		ManagedReference<SceneObject*> object = getContainerObject(j);
+	if (containerObjects.isLoaded()) {
+		for (int j = 0; j < getContainerObjectsSize(); ++j) {
+			ManagedReference<SceneObject*> object = getContainerObject(j);
 
-		object->updateSavedRootParentRecursive(newRoot);
-	}
+			object->updateSavedRootParentRecursive(newRoot);
+		}
 
-	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
-		ManagedReference<SceneObject*> object = getSlottedObject(i);
+		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+			ManagedReference<SceneObject*> object = getSlottedObject(i);
 
-		object->updateSavedRootParentRecursive(newRoot);
+			object->updateSavedRootParentRecursive(newRoot);
+		}
 	}
 }
 
@@ -1416,6 +1421,11 @@ void SceneObjectImplementation::removeSlottedObject(int index) {
 
 void SceneObjectImplementation::setZone(Zone* zone) {
 	this->zone = zone;
+
+	if (zone == NULL)
+		updateSavedRootParentRecursive(NULL);
+	else
+		updateSavedRootParentRecursive(asSceneObject());
 }
 
 void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue, bool isPrivate) {

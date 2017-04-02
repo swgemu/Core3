@@ -143,8 +143,6 @@ bool InstrumentImplementation::canDropInstrument() {
 void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
 	if (spawnedObject == NULL) {
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
-		spawnedObject->setParent(NULL);
-		spawnedObject->setZone(NULL);
 	}
 
 	if (spawnedObject->getZone() == NULL) {
