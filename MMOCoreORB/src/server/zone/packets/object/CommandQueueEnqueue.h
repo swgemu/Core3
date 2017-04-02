@@ -28,12 +28,13 @@ class CommandQueueEnqueueCallback : public MessageCallback {
 
 	UnicodeString arguments;
 
-	ObjectControllerMessageCallback* objectControllerMain;
+	const char* actionName;
 
+	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	CommandQueueEnqueueCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
-		size(0), actionCount(0), actionCRC(0), targetID(0), objectControllerMain(objectControllerCallback) {
+		size(0), actionCount(0), actionCRC(0), targetID(0), actionName(nullptr), objectControllerMain(objectControllerCallback) {
 
 	}
 
@@ -64,6 +65,16 @@ public:
 			player->clearQueueAction(actionCount);
 			//player->sendSystemMessage("Please stop spamming commands");
 		} else {
+			ObjectController* objectController = server->getObjectController();
+
+			if (objectController) {
+				QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
+
+				if (queueCommand) {
+					actionName = queueCommand->getQueueCommandName();
+				}
+			}
+
 			if (miliDifference < 1000)
 				client->increaseCommandCount();
 			else {
@@ -72,6 +83,14 @@ public:
 			}
 
 			player->enqueueCommand(actionCRC, actionCount, targetID, arguments, -1, actionCount&0x3FFFFFFF);
+		}
+	}
+
+	const char* getTaskName() {
+		if (actionName) {
+			return actionName;
+		} else {
+			return Task::getTaskName();
 		}
 	}
 };
