@@ -805,6 +805,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/colorbox/SuiColorBoxImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
 		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
+		server/zone/packets/object/CommandQueueEnqueue.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/PersistentMessageImplementation.cpp \
