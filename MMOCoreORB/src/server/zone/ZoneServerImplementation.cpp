@@ -470,11 +470,16 @@ void ZoneServerImplementation::processMessage(Message* message) {
 
 	if (task != NULL) {
 		int queue = ((MessageCallback*)task)->getTaskQueue();
+		auto taskManager = Core::getTaskManager();
 
-		if (queue >= 0) {
-			Core::getTaskManager()->executeTask(task, queue);
+		if (taskManager) {
+			if (queue >= 0) {
+				taskManager->executeTask(task, queue);
+			} else {
+				taskManager->executeTask(task);
+			}
 		} else {
-			Core::getTaskManager()->executeTask(task);
+			delete task;
 		}
 	}
 
