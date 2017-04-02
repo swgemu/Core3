@@ -4,6 +4,8 @@
 
 #include "ServerCore.h"
 
+#include <type_traits>
+
 #include "db/ServerDatabase.h"
 #include "db/MantisDatabase.h"
 
@@ -295,7 +297,18 @@ void ServerCore::shutdown() {
 	DistributedObjectDirectory* dir = objectManager->getLocalObjectDirectory();
 
 	HashTable<uint64, Reference<DistributedObject*> > tbl;
-	tbl.copyFrom(dir->getDistributedObjectMap());
+	auto objects = dir->getDistributedObjectMap();
+	auto objectsIterator = objects->iterator();
+	typedef std::remove_reference<decltype(*objects)>::type ObjectsMapType;
+
+	while (objectsIterator.hasNext()) {
+		ObjectsMapType::key_type key;
+		ObjectsMapType::value_type value;
+
+		objectsIterator.getNextKeyAndValue(key, value);
+
+		tbl.put(key, value);
+	}
 
 	objectManager->finalizeInstance();
 
