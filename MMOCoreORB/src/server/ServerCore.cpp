@@ -295,7 +295,18 @@ void ServerCore::shutdown() {
 	DistributedObjectDirectory* dir = objectManager->getLocalObjectDirectory();
 
 	HashTable<uint64, Reference<DistributedObject*> > tbl;
-	tbl.copyFrom(dir->getDistributedObjectMap());
+	auto objects = dir->getDistributedObjectMap();
+	auto objectsIterator = objects->iterator();
+	typedef decltype(*objects) ObjectsMapType;
+
+	while (objectsIterator.hasNext()) {
+		uint64 key;
+		ObjectsMapType::value_type value;
+
+		objectsIterator.getNextKeyAndValue(key, value);
+
+		tbl.put(key, value);
+	}
 
 	objectManager->finalizeInstance();
 
