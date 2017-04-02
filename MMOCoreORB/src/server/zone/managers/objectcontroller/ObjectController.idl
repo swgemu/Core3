@@ -55,9 +55,11 @@ class ObjectController extends ManagedService implements Logger {
 	public native void addQueueCommand(QueueCommand command);
 	
 	@local
+	@dirty
 	public native QueueCommand getQueueCommand(final string name);
 
 	@local
+	@dirty
 	public native QueueCommand getQueueCommand(unsigned int crc);
 	
 	@local
