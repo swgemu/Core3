@@ -21,6 +21,56 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		StringTokenizer args(arguments.toString());
+
+		if(!args.hasMoreTokens())
+			return GENERALERROR;
+
+		String cmdName = "";
+
+		args.getStringToken(cmdName);
+
+		if (cmdName == "readshareddata") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script readSharedData <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+#ifndef WITH_STM
+			DirectorManager::instance()->rlock();
+#endif
+
+			uint64 data = DirectorManager::instance()->readSharedMemory(key);
+
+#ifndef WITH_STM
+			DirectorManager::instance()->runlock();
+#endif
+
+			creature->sendSystemMessage("Value for shared data using key " + key + " is: " + String::valueOf(data));
+		} else if (cmdName == "readstringshareddata") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script readStringSharedData <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+#ifndef WITH_STM
+			DirectorManager::instance()->rlock();
+#endif
+
+			String data = DirectorManager::instance()->readStringSharedMemory(key);
+
+#ifndef WITH_STM
+			DirectorManager::instance()->runlock();
+#endif
+			creature->sendSystemMessage("Value for shared string data using key " + key + " is: " + data);
+		}
+
 		return SUCCESS;
 	}
 

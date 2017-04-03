@@ -224,6 +224,34 @@ void DirectorManager::removeQuestStatus(const String& key) {
 		ObjectManager::instance()->destroyObjectFromDatabase(status->_getObjectID());
 }
 
+String DirectorManager::readStringSharedMemory(const String& key) {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	String data = DirectorManager::instance()->sharedMemory->getString(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return data;
+}
+
+uint64 DirectorManager::readSharedMemory(const String& key) {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	uint64 data = DirectorManager::instance()->sharedMemory->get(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return data;
+}
+
 void DirectorManager::printTraceError(lua_State* L, const String& error) {
 	luaL_traceback(L, L, error.toCharArray(), 0);
 	String trace = lua_tostring(L, -1);
@@ -869,15 +897,7 @@ int DirectorManager::readSharedMemory(lua_State* L) {
 
 	String key = Lua::getStringParameter(L);
 
-#ifndef WITH_STM
-	DirectorManager::instance()->rlock();
-#endif
-
-	uint64 data = DirectorManager::instance()->sharedMemory->get(key);
-
-#ifndef WITH_STM
-	DirectorManager::instance()->runlock();
-#endif
+	uint64 data = instance()->readSharedMemory(key);
 
 	lua_pushinteger(L, data);
 
@@ -940,15 +960,7 @@ int DirectorManager::readStringSharedMemory(lua_State* L) {
 
 	String key = Lua::getStringParameter(L);
 
-#ifndef WITH_STM
-	DirectorManager::instance()->rlock();
-#endif
-
-	String data = DirectorManager::instance()->sharedMemory->getString(key);
-
-#ifndef WITH_STM
-	DirectorManager::instance()->runlock();
-#endif
+	String data = instance()->readStringSharedMemory(key);
 
 	lua_pushstring(L, data.toCharArray());
 
