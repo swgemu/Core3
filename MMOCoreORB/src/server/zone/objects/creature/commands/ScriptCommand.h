@@ -21,6 +21,41 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		StringTokenizer args(arguments.toString());
+
+		if(!args.hasMoreTokens())
+			return GENERALERROR;
+
+		String cmdName = "";
+
+		args.getStringToken(cmdName);
+
+		if (cmdName == "readshareddata") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script readshareddata <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+			uint64 data = DirectorManager::instance()->readSharedMemory(key);
+
+			creature->sendSystemMessage("Value for shared data using key " + key + " is: " + String::valueOf(data));
+		} else if (cmdName == "readstringshareddata") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script readstringshareddata <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+			String data = DirectorManager::instance()->readStringSharedMemory(key);
+
+			creature->sendSystemMessage("Value for shared string data using key " + key + " is: " + data);
+		}
+
 		return SUCCESS;
 	}
 

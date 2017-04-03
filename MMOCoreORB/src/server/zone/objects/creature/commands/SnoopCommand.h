@@ -108,6 +108,25 @@ public:
 			return sendVeteranRewardInfo(creature, targetObj);
 		} else if(container == "faction") {
 			return sendFactionInfo(creature, targetObj);
+		} else if (container == "screenplaydata") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
+				return INVALIDPARAMETERS;
+			}
+
+			String playName, varName;
+			args.getStringToken(playName);
+
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
+				return INVALIDPARAMETERS;
+			}
+
+			args.getStringToken(varName);
+
+			String result = ghost->getScreenPlayData(playName, varName);
+
+			creature->sendSystemMessage(targetObj->getFirstName() + "'s screenplay data value for screenplay " + playName + " and variable " + varName + " is: " + result);
 		} else if (container == "screenplaystate") {
 			if (!args.hasMoreTokens()) {
 				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaystate <stateName> [state]");
