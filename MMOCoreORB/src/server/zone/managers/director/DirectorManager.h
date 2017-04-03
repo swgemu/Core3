@@ -92,6 +92,9 @@ namespace server {
 		String getQuestStatus(const String& keyString);
 		void removeQuestStatus(const String& key);
 
+		String readStringSharedMemory(const String& key);
+		uint64 readSharedMemory(const String& key);
+
 		QuestVectorMap* getQuestVectorMap(const String& keyString);
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
 		void removeQuestVectorMap(const String& keyString);
