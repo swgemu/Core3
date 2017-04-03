@@ -40,6 +40,8 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 }
 
 void DroidDeedImplementation::onCloneObject(SceneObject* objectToClone) {
+	DeedImplementation::onCloneObject(objectToClone);
+
 	ManagedReference<DroidDeed*> deed = cast<DroidDeed*>(objectToClone);
 	if (deed == NULL) {
 		error("Invalid object type used in DroidDeedImplementation::onCloneObject");

@@ -160,6 +160,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	* @param objectToClone objectToClone is the source object being used to clone into the current SceneObject
 	*/
 	public abstract void onCloneObject(SceneObject objectToClone) {
+		containerObjects.setContainer(asSceneObject());
+
 		//TODO: Move container clone and other sceno cases here
 	}
 
@@ -1094,6 +1096,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public void removeFromContainerObjects(int index) {
 		containerObjects.removeElementAt(index);
+	}
+
+	public long getLastContainerAccess() {
+		return containerObjects.getLastAccess().miliDifference();
+	}
+
+	public void unloadContainerObjects() {
+		containerObjects.unloadObjects();
 	}
 
 	public void setContainerVolumeLimit(int lim) {
