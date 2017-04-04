@@ -51,11 +51,11 @@ function FsOutro:onLoggedIn(pPlayer)
 	if (curStep == self.OLDMANWAIT) then
 		if (self:hasDelayPassed(pPlayer)) then
 			createEvent(getRandomNumber(300, 900) * 1000, "FsOutro", "startOldMan", pPlayer, "")
-			self:setCurrentStep(pPlayer, curStep + 1)
 		end
 	elseif (curStep == self.OLDMANMEET) then
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
 		createEvent(getRandomNumber(300, 900) * 1000, "FsOutro", "startOldMan", pPlayer, "")
+		self:setCurrentStep(pPlayer, self.OLDMANWAIT)
 	elseif (curStep == self.MELLICHAETHEATER) then
 		if (MellichaeOutroTheater:hasTaskStarted(pPlayer)) then
 			MellichaeOutroTheater:finish(pPlayer)
@@ -69,18 +69,17 @@ end
 function FsOutro:startOldMan(pPlayer)
 	local curStep = self:getCurrentStep(pPlayer)
 
-	if (curStep ~= self.OLDMANMEET) then
+	if (curStep ~= self.OLDMANWAIT) then
 		return
 	end
 
 	local stepData = self.stepDelay[self.OLDMANWAIT]
-
+	
 	if (stepData == nil) then
 		printLuaError("FsOutro:startOldMan, invalid step data.")
 		return
 	end
 
-	self:setCurrentStep(pPlayer, self.OLDMANWAIT)
 	local stepDelay = getRandomNumber(stepData[1], stepData[2]) * 1000
 
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
@@ -107,7 +106,7 @@ function FsOutro:doOldManSpawn(pPlayer)
 
 	local curStep = self:getCurrentStep(pPlayer)
 
-	if (curStep ~= self.OLDMANMEET) then
+	if (curStep == self.OLDMANMEET) then
 		return
 	end
 
