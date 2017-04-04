@@ -71,7 +71,7 @@ public:
 
 
 		if (tutorial != NULL)
-			tutorial->destroyObjectFromDatabase(true);
+			StructureManager::instance()->destroyStructure(tutorial->asBuildingObject(), false);
 
 		return SUCCESS;
 	}
