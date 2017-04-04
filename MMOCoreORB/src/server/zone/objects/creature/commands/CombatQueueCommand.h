@@ -176,7 +176,7 @@ public:
 
 						if (targetCreature != NULL) {
 							if (targetCreature->isPlayerCreature()) {
-								if (!CombatManager::instance()->areInDuel(creature, targetCreature) && targetCreature->getFactionStatus() == FactionStatus::OVERT) {
+								if (!CombatManager::instance()->areInDuel(creature, targetCreature) && (!targetCreature->hasBountyMissionFor(creature) || !creature->hasBountyMissionFor(targetCreature)) && targetCreature->getFactionStatus() == FactionStatus::OVERT) {
 										ghost->doFieldFactionChange(FactionStatus::OVERT);
 								}
 							} else if (targetCreature->isPet()) {
