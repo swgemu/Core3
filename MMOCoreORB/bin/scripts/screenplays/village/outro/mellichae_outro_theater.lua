@@ -246,7 +246,7 @@ function MellichaeOutroTheater:helpCrystal(pKiller, color, ownerID)
 			greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt2")
 		end
 
-		local firstName = CreatureObject(pKiller):getFirstName()
+		local firstName = CreatureObject(pOwner):getFirstName()
 		greetingString:setTT(firstName)
 		spatialChat(pDaktar, greetingString:_getObject())
 		AiAgent(pDaktar):setDefender(pKiller)
@@ -258,7 +258,7 @@ function MellichaeOutroTheater:helpCrystal(pKiller, color, ownerID)
 
 		if (pMellichae ~= nil and not CreatureObject(pMellichae):isDead()) then
 			local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt3")
-			local firstName = CreatureObject(pKiller):getFirstName()
+			local firstName = CreatureObject(pOwner):getFirstName()
 			greetingString:setTT(firstName)
 			spatialChat(pMellichae, greetingString:_getObject())
 			AiAgent(pMellichae):setDefender(pKiller)
