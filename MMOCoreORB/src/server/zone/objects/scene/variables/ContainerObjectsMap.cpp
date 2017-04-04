@@ -7,6 +7,7 @@
 
 #include "ContainerObjectsMap.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/UnloadContainerTask.h"
 
 
 ContainerObjectsMap::ContainerObjectsMap() {
@@ -14,6 +15,7 @@ ContainerObjectsMap::ContainerObjectsMap() {
 	containerObjects.setNoDuplicateInsertPlan();
 
 	oids = NULL;
+	unloadTask = NULL;
 }
 
 ContainerObjectsMap::ContainerObjectsMap(const ContainerObjectsMap& c) : loadMutex() {
@@ -21,6 +23,7 @@ ContainerObjectsMap::ContainerObjectsMap(const ContainerObjectsMap& c) : loadMut
 	containerObjects.setNoDuplicateInsertPlan();
 
 	oids = NULL;
+	unloadTask = NULL;
 
 	copyData(c);
 }
@@ -30,11 +33,19 @@ ContainerObjectsMap::~ContainerObjectsMap() {
 		delete oids;
 		oids = NULL;
 	}
+
+	if (unloadTask != NULL) {
+		if (Core::getTaskManager())
+			unloadTask->cancel();
+
+		unloadTask = NULL;
+	}
 }
 
 void ContainerObjectsMap::copyData(const ContainerObjectsMap& c) {
 	operationMode = c.operationMode;
 	containerObjects = c.containerObjects;
+	lastAccess = c.lastAccess;
 
 	if (c.oids == NULL) {
 		if (oids != NULL)
@@ -58,6 +69,8 @@ ContainerObjectsMap& ContainerObjectsMap::operator=(const ContainerObjectsMap& c
 }
 
 void ContainerObjectsMap::loadObjects() {
+	lastAccess.updateToCurrentTime();
+
 	if (oids == NULL)
 		return;
 
@@ -79,6 +92,42 @@ void ContainerObjectsMap::loadObjects() {
 
 	delete oids;
 	oids = NULL;
+
+	uint64 delay = 1800000 + System::random(1800000); // 30 - 60 minutes
+
+	if (unloadTask != NULL) {
+		if (unloadTask->isScheduled()) {
+			unloadTask->reschedule(delay);
+		} else {
+			unloadTask->schedule(delay);
+		}
+	} else {
+		unloadTask = new UnloadContainerTask(container.get());
+		unloadTask->schedule(delay);
+	}
+}
+
+void ContainerObjectsMap::unloadObjects() {
+	Locker locker(&loadMutex);
+
+	auto vector = new VectorMap<uint64, uint64>();
+
+	for (int i = 0; i < containerObjects.size(); i++) {
+		SceneObject* obj = containerObjects.get(i);
+
+		if (obj != NULL) {
+			uint64 oid = obj->getObjectID();
+			vector->put(oid, oid);
+		}
+	}
+
+	if (!oids.compareAndSet(NULL, vector)) {
+		delete vector;
+	}
+
+	containerObjects.removeAll();
+
+	unloadTask = NULL;
 }
 
 void ContainerObjectsMap::notifyLoadFromDatabase() {

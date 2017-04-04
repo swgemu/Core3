@@ -15,6 +15,7 @@ namespace server {
   namespace objects {
    namespace scene {
    	   class SceneObject;
+   	   class UnloadContainerTask;
 
    	class ContainerObjectsMap : public Variable {
    		int operationMode;
@@ -23,6 +24,13 @@ namespace server {
    		AtomicReference<VectorMap<uint64, uint64>*> oids;
 
    		Mutex loadMutex;
+
+   		Time lastAccess;
+
+   		ManagedWeakReference<SceneObject*> container;
+
+   		Reference<UnloadContainerTask*> unloadTask;
+
    	public:
    		enum {NORMAL_LOAD = 0, DELAYED_LOAD };
 
@@ -44,6 +52,7 @@ namespace server {
    		void notifyLoadFromDatabase();
 
    		void loadObjects();
+   		void unloadObjects();
 
    		void removeAll();
    		void removeElementAt(int index);
@@ -57,6 +66,10 @@ namespace server {
    		void put(uint64 oid, SceneObject* object);
    		void drop(uint64 oid);
 
+   		void setContainer(SceneObject* obj) {
+   			container = obj;
+   		}
+
    		void setDelayedLoadOperationMode() {
    			operationMode = DELAYED_LOAD;
    		}
@@ -67,6 +80,14 @@ namespace server {
 
    		bool isLoaded() {
    			return operationMode == NORMAL_LOAD || oids == NULL;
+   		}
+
+   		Time* getLastAccess() {
+   			return &lastAccess;
+   		}
+
+   		ManagedWeakReference<SceneObject*> getContainer() {
+   			return container;
    		}
    	};
    }

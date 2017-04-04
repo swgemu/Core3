@@ -75,6 +75,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLoggingName("SceneObject");
 
 	savedRootParent = getRootParent();
+
+	if (containerObjects.getContainer() != asSceneObject()) {
+		containerObjects.setContainer(asSceneObject());
+	}
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -123,6 +127,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	setLoggingName("SceneObject");
 
 	childObjects.setNoDuplicateInsertPlan();
+
+	containerObjects.setContainer(asSceneObject());
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
