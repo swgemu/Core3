@@ -32,7 +32,7 @@ public:
 
 		uint32 pvpStatusBitmask = player->getPvpStatusBitmask();
 
-		if (player->getFutureFactionStatus() != FactionStatus::ONLEAVE)
+		if (player->getFutureFactionStatus() != -1)
 			return;
 
 		int curStatus = player->getFactionStatus();
