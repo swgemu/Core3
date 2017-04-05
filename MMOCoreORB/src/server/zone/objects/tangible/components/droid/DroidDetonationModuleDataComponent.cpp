@@ -168,7 +168,7 @@ void DroidDetonationModuleDataComponent::onCall() {
 		if(droid != NULL) {
 			Locker locker(droid);
 
-			DroidDetonationModuleDataComponent* module = cast<DroidDetonationModuleDataComponent*>(droid->getModule("detonation_module"));
+			auto module = droid->getModule("detonation_module").castTo<DroidDetonationModuleDataComponent*>();
 
 			if (module != NULL)
 				module->setReadyForDetonation();

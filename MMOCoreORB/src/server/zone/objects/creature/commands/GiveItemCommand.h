@@ -139,7 +139,7 @@ public:
 						Locker cross(sceno,creature);
 						StimPack* medicine = cast<StimPack*>(object.get());
 						if(medicine != NULL) {
-							DroidStimpackModuleDataComponent* module = cast<DroidStimpackModuleDataComponent*>(droid->getModule("stimpack_module"));
+							auto module = droid->getModule("stimpack_module").castTo<DroidStimpackModuleDataComponent*>();
 							CreatureObject* player = cast<CreatureObject*>(creature);
 							if(module != NULL)
 								module->handleInsertStimpack(player,medicine);
@@ -156,7 +156,7 @@ public:
 						Locker cross(sceno,creature);
 						TangibleObject* trap = cast<TangibleObject*>(object.get());
 						if(trap != NULL) {
-							DroidTrapModuleDataComponent* module = cast<DroidTrapModuleDataComponent*>(droid->getModule("trap_module"));
+							auto module = droid->getModule("trap_module").castTo<DroidTrapModuleDataComponent*>();
 							CreatureObject* player = cast<CreatureObject*>(creature);
 							if(module != NULL)
 								module->handleInsertTrap(player,trap);
