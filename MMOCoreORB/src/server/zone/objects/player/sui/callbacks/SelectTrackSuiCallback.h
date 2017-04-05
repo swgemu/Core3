@@ -41,7 +41,7 @@ public:
 			return;
 		}
 		Locker crosslock(droid,player);
-		DroidPlaybackModuleDataComponent* module = cast<DroidPlaybackModuleDataComponent*>( droid->getModule("playback_module"));
+		auto module = droid->getModule("playback_module").castTo<DroidPlaybackModuleDataComponent*>();
 		if(module == NULL) {
 			return;
 		}

@@ -2455,9 +2455,9 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 			creature->sendSystemMessage("@performance:music_listen_npc"); // "You cannot /listen to NPCs."
 			return;
 		}
-		BaseDroidModuleComponent* bmodule = droid->getModule("playback_module");
+		auto bmodule = droid->getModule("playback_module");
 		if(bmodule != NULL) {
-			DroidPlaybackModuleDataComponent* module = cast<DroidPlaybackModuleDataComponent*>(bmodule);
+			DroidPlaybackModuleDataComponent* module = cast<DroidPlaybackModuleDataComponent*>(bmodule.get());
 			if(module != NULL) {
 				if (creature->isDancing() || creature->isPlayingMusic()) {
 					StringIdChatParameter stringID;

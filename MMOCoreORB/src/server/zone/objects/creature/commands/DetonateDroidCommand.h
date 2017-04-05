@@ -40,7 +40,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		DroidDetonationModuleDataComponent* module = cast<DroidDetonationModuleDataComponent*>(droid->getModule("detonation_module"));
+		auto module = droid->getModule("detonation_module").castTo<DroidDetonationModuleDataComponent*>();
 
 		if (module == NULL) {
 			creature->sendSystemMessage("@pet/droid_modules:no_bomb_module");

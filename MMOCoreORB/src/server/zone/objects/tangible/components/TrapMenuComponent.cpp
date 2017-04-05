@@ -67,7 +67,7 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 					if (droid != NULL) {
 						if (droid->isTrapDroid()) {
 							Locker lock(droid);
-							DroidTrapModuleDataComponent* module = cast<DroidTrapModuleDataComponent*>(droid->getModule("trap_module"));
+							auto module = droid->getModule("trap_module").castTo<DroidTrapModuleDataComponent*>();
 							if (module != NULL) {
 								module->handleInsertTrap(player,cast<TangibleObject*>(sceneObject));
 								return 0;

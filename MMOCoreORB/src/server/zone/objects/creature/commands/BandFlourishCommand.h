@@ -110,10 +110,10 @@ public:
 				if (groupMember != player && groupMember->isDroidObject()) {
 					// is the droid playing music?
 					DroidObject* droid = cast<DroidObject*>(groupMember.get());
-					BaseDroidModuleComponent* module = droid->getModule("playback_module");
+					auto module = droid->getModule("playback_module");
 
 					if (module != NULL) {
-						DroidPlaybackModuleDataComponent* entertainer = cast<DroidPlaybackModuleDataComponent*>(module);
+						DroidPlaybackModuleDataComponent* entertainer = cast<DroidPlaybackModuleDataComponent*>(module.get());
 
 						if (entertainer != NULL) {
 							if (entertainer->isActive() && musicflourish && (instrumentType == entertainer->getCurrentInstrument() || instrumentType < 1)) {

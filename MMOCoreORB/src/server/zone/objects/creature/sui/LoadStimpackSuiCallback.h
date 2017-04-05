@@ -48,7 +48,7 @@ public:
 			return;
 		}
 
-		DroidStimpackModuleDataComponent* module = cast<DroidStimpackModuleDataComponent*>( droid->getModule("stimpack_module"));
+		auto module = droid->getModule("stimpack_module").castTo<DroidStimpackModuleDataComponent*>();
 		if(module == NULL) {
 			return;
 		}

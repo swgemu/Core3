@@ -4,6 +4,7 @@
 
 #include "PetTrainingScreenHandler.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"

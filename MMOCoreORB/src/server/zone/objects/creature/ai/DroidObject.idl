@@ -13,6 +13,7 @@ import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.objects.structure.StructureObject;
 include system.util.Vector;
+include system.lang.ref.Reference;
 
 class DroidObject extends AiAgent {
 
@@ -50,7 +51,7 @@ class DroidObject extends AiAgent {
 	 * List of installed droid modules
 	 */
 	@dereferenced
-	protected transient Vector<BaseDroidModuleComponent> modules;
+	protected transient Vector<Reference<BaseDroidModuleComponent> > modules;
 
 	/**
 	 * Droid hit chance
@@ -273,6 +274,7 @@ class DroidObject extends AiAgent {
 
 	@local
 	@dirty
+	@reference
 	public native BaseDroidModuleComponent getModule(final string name);
 
 	@local

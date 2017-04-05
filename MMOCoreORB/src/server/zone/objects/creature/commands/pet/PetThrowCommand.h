@@ -41,7 +41,7 @@ public:
 
 		Locker olock(owner, creature);
 
-		DroidTrapModuleDataComponent* module = cast<DroidTrapModuleDataComponent*>(droid->getModule("trap_module"));
+		auto module = droid->getModule("trap_module").castTo<DroidTrapModuleDataComponent*>();
 		if (module == NULL) {
 			return GENERALERROR;
 		}

@@ -39,7 +39,7 @@ public:
 			droid->removePendingTask("harvest_check");
 		}
 
-		DroidHarvestModuleDataComponent* module = cast<DroidHarvestModuleDataComponent*>(droid->getModule("harvest_module"));
+		auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
 		if(module == NULL) {
 			return GENERALERROR;
 		}
