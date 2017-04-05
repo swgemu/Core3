@@ -1032,7 +1032,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
-	Reference<SceneObject*> root = getRootParent();
+	auto root = getRootParent();
 
 	if (root != NULL) {
 		return root->getZone();
@@ -1052,7 +1052,7 @@ Zone* SceneObjectImplementation::getZoneUnsafe() {
 }
 
 bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
-	if (getZoneUnsafe() != object->getZoneUnsafe()) {
+	if (getZone() != object->getZone()) {
 		return false;
 	}
 
