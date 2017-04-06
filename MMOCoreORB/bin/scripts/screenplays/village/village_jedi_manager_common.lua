@@ -86,6 +86,22 @@ function VillageJediManagerCommon.hasUnlockedBranch(pPlayer, branch)
 	return CreatureObject(pPlayer):hasScreenPlayState(2, "VillageUnlockScreenPlay:" .. branch)
 end
 
+function VillageJediManagerCommon.getUnlockedBranchCount(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+	
+	local count = 0
+	
+	for i = 1, #VillageJediManagerCommon.forceSensitiveBranches, 1 do
+		if VillageJediManagerCommon.hasUnlockedBranch(pPlayer, VillageJediManagerCommon.forceSensitiveBranches[i]) then
+			count = count + 1
+		end
+	end
+	
+	return count
+end
+
 function VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
 	if (pPlayer == nil) then
 		return false

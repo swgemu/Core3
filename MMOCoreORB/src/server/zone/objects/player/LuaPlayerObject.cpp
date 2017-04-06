@@ -46,6 +46,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isJediLight", &LuaPlayerObject::isJediLight },
 		{ "isJediDark", &LuaPlayerObject::isJediDark },
 		{ "setJediState", &LuaPlayerObject::setJediState },
+		{ "getJediState", &LuaPlayerObject::getJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
 		{ "clearActiveQuestsBit", &LuaPlayerObject::clearActiveQuestsBit },
@@ -387,6 +388,12 @@ int LuaPlayerObject::setJediState(lua_State* L) {
 	return 0;
 }
 
+int LuaPlayerObject::getJediState(lua_State* L) {
+	lua_pushinteger(L, realObject->getJediState());
+
+	return 1;
+}
+
 int LuaPlayerObject::isOnline(lua_State* L) {
 	lua_pushboolean(L, realObject->isOnline());
 
@@ -620,6 +627,7 @@ int LuaPlayerObject::removeSuiBox(lua_State* L) {
 
 	return 1;
 }
+
 
 int LuaPlayerObject::isJediTrainer(lua_State* L) {
 	CreatureObject* trainer = (CreatureObject*)lua_touserdata(L, -1);

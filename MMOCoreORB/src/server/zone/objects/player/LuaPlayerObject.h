@@ -50,6 +50,7 @@ public:
 	int isJediLight(lua_State* L);
 	int isJediDark(lua_State* L);
 	int setJediState(lua_State* L);
+	int getJediState(lua_State* L);
 	int isOnline(lua_State* L);
 	int setActiveQuestsBit(lua_State* L);
 	int clearActiveQuestsBit(lua_State* L);
