@@ -9,7 +9,7 @@ function VillageGmSui:showMainPage(pPlayer)
 
 	local curPhase = VillageJediManagerTownship:getCurrentPhase()
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
-	local phaseTimeLeft = self:getPhaseDuration(pPlayer)
+	local phaseTimeLeft = self:getPhaseDuration()
 
 	local suiPrompt = " \\#pcontrast1 " .. "Current Phase:" .. " \\#pcontrast2 " .. curPhase .. " (id " .. phaseID .. ")\n" .. " \\#pcontrast1 " .. "Time Left: " .. " \\#pcontrast2 " .. phaseTimeLeft
 
@@ -24,11 +24,12 @@ function VillageGmSui:showMainPage(pPlayer)
 	sui.setTitle("Village GM Panel")
 	sui.setPrompt(suiPrompt)
 
-	sui.add("List players in village", "listOnlineVillagePlayers")
+	sui.add("Lookup player by target", "playerLookupByTarget")
 	sui.add("Lookup player by name", "playerLookupByName")
 	sui.add("Lookup player by oid", "playerLookupByOID")
+	sui.add("List players in village", "listOnlineVillagePlayers")
 
-	if (not productionServer) then
+	if (not self.productionServer) then
 		sui.add("Change to next phase", "changePhase")
 	end
 
@@ -106,6 +107,24 @@ function VillageGmSui:changePhaseCallback(pPlayer, pSui, eventIndex, args)
 
 	CreatureObject(pPlayer):sendSystemMessage("Changing the Village from phase " .. curPhase .. " to phase " .. nextPhase .. ".")
 	VillageJediManagerTownship:switchToNextPhase()
+end
+
+function VillageGmSui.playerLookupByTarget(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local targetID = CreatureObject(pPlayer):getTargetID()
+
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil or not SceneObject(pTarget):isPlayerCreature()) then
+		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a valid player.")
+		VillageGmSui:showMainPage(pPlayer)
+		return
+	end
+
+	VillageGmSui.playerInfo(pPlayer, targetID)
 end
 
 function VillageGmSui.playerLookupByName(pPlayer)
@@ -230,67 +249,89 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Jedi State:" .. " \\#pcontrast2 " .. PlayerObject(pGhost):getJediState() .. "\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Progression:" .. " \\#pcontrast2 "
 
-	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_PADAWAN_TRIALS)) then
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_COMPLETED_PADAWAN_TRIALS)) then
 		promptBuf = promptBuf.. "Padawan Trials Completed\n"
-	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)) then
-		if (JediTrials:isOnPadawanTrials(pPlayer)) then
-			promptBuf = promptBuf .. "Padawan Trials (" .. JediTrials:getTrialsCompleted(pPlayer) .. " completed)\n"
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)) then
+		if (JediTrials:isOnPadawanTrials(pTarget)) then
+			promptBuf = promptBuf .. "Padawan Trials (" .. JediTrials:getTrialsCompleted(pTarget) .. " completed)\n"
 		else
 			promptBuf = promptBuf .. "Mellichae (Defeated)\n"
 		end
-	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
 		promptBuf = promptBuf .. "Mellichae\n"
-	elseif (FsOutro:isOnOutro(pPlayer)) then
-		local curStep = FsIntro:getCurrentStep(pPlayer)
+	elseif (FsOutro:isOnOutro(pTarget)) then
+		local curStep = FsIntro:getCurrentStep(pTarget)
 
 		if (curStep == OLDMANWAIT) then
 			promptBuf = promptBuf .. "Outro (Waiting for Old Man)\n"
 		elseif (curStep == OLDMANMEET) then
 			promptBuf = promptBuf .. "Outro (Old Man Visit)\n"
 		end
-	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS)) then
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS)) then
 		promptBuf = promptBuf .. "Village Phase Quests\n"
-	elseif (FsIntro:isOnIntro(pPlayer)) then
-		local curStep = FsIntro:getCurrentStep(pPlayer)
+	elseif (FsIntro:isOnIntro(pTarget)) then
+		local curStep = FsIntro:getCurrentStep(pTarget)
 
-		if (curStep == OLDMANWAIT) then
+		if (curStep == FsIntro.OLDMANWAIT) then
 			promptBuf = promptBuf .. "Intro (Waiting for Old Man)\n"
-		elseif (curStep == OLDMANMEET) then
+			local timeTilVisit = readScreenPlayData(pTarget, "VillageJediProgression", "FsIntroDelay") - os.time()
+
+			if (not PlayerObject(pGhost):isOnline()) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Player Offline\n"
+			elseif (timeTilVisit > 0) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit) .. "\n"
+			else
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Soon\n"
+			end
+			local totalVisits = tonumber(readScreenPlayData(pTarget, "VillageJediProgression", "FsIntroOldManVisits"))
+
+			if (totalVisits == nil) then totalVisits = 0 end
+			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Old Man Visits So Far:" .. " \\#pcontrast2 " .. totalVisits .. "\n"
+		elseif (curStep == FsIntro.OLDMANMEET) then
 			promptBuf = promptBuf .. "Intro (Old Man Visit)\n"
-		elseif (curStep == SITHWAIT) then
+		elseif (curStep == FsIntro.SITHWAIT) then
 			promptBuf = promptBuf .. "Intro (Waiting for Sith Attack)\n"
-		elseif (curStep == SITHATTACK) then
+			local timeTilAttack = readScreenPlayData(pTarget, "VillageJediProgression", "FsIntroDelay") - os.time()
+
+			if (not PlayerObject(pGhost):isOnline()) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until attack:" .. " \\#pcontrast2 Player Offline\n"
+			elseif (timeTilAttack > 0) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until attack:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilAttack) .. "\n"
+			else
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until attack:" .. " \\#pcontrast2 Soon\n"
+			end
+		elseif (curStep == FsIntro.SITHATTACK) then
 			promptBuf = promptBuf .. "Intro (Sith Attack)\n"
-		elseif (curStep == USEDATAPADONE) then
+		elseif (curStep == FsIntro.USEDATAPADONE) then
 			promptBuf = promptBuf .. "Intro (First Datapad Looted)\n"
-		elseif (curStep == SITHTHEATER) then
+		elseif (curStep == FsIntro.SITHTHEATER) then
 			promptBuf = promptBuf .. "Intro (Sith Camp)\n"
-		elseif (curStep == USEDATAPADTWO) then
+		elseif (curStep == FsIntro.USEDATAPADTWO) then
 			promptBuf = promptBuf .. "Intro (Second Datapad Looted)\n"
-		elseif (curStep == VILLAGE) then
+		elseif (curStep == FsIntro.VILLAGE) then
 			promptBuf = promptBuf .. "Intro (Sent to Village)\n"
 		end
-	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_GLOWING)) then
+	elseif (Glowing:isGlowing(pTarget)) then
 		promptBuf = promptBuf .. "Glowing\n"
 	else
 		promptBuf = promptBuf .. "Not Glowing\n"
 	end
 
-	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS) and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
-		if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
-			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 YES\n"
-		else
-			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 NO\n"
-		end
-
-		if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
-			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 YES\n"
-		else
-			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 NO\n"
-		end
+	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 YES\n"
+	else
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 NO\n"
 	end
 
-	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Unlocked Branches:" .. " \\#pcontrast2 " .. VillageJediManagerCommon.getUnlockedBranchCount(pPlayer) .. "\n"
+	if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pTarget)) then
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 YES\n"
+	else
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 NO\n"
+	end
+
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS) or VillageJediManagerCommon.getUnlockedBranchCount(pTarget) > 0) then
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Unlocked Branches:" .. " \\#pcontrast2 " .. VillageJediManagerCommon.getUnlockedBranchCount(pTarget) .. "\n"
+	end
 
 	local sui = SuiListBox.new("VillageGmSui", "mainCallback")
 	sui.setTitle("Village GM Panel")
@@ -298,7 +339,116 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 
 	sui.add("FS Branch Management", "branchManagement" .. targetID)
 
+	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
+		sui.add("Reset Active Quest This Phase", "resetActiveQuest" .. targetID)
+	end
+
+	if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pTarget)) then
+		sui.add("Reset Completed Quest This Phase", "resetCompletedQuest" .. targetID)
+	end
+
 	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui.resetActiveQuest(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local sui = SuiMessageBox.new("VillageGmSui", "resetActiveQuestCallback")
+
+	sui.setTitle("Reset Active Quest")
+	sui.setPrompt("Are you sure you want to reset the player's active quest status? This could potentially allow a player to have two active quests at the same time.")
+	sui.setOkButtonText("Yes")
+	sui.setCancelButtonText("No")
+	sui.setTargetNetworkId(targetID)
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui:resetActiveQuestCallback(pPlayer, pSui, eventIndex, args)
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+
+	local targetID = suiPageData:getTargetNetworkId()
+
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		VillageGmSui.playerInfo(pPlayer, targetID)
+		return
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	VillageJediManagerCommon.removeFromActiveQuestList(pTarget)
+	removeQuestStatus(targetID .. ":village:lastActiveQuest")
+
+	CreatureObject(pPlayer):sendSystemMessage("Player has been removed from this phase's active quest list.")
+
+	VillageGmSui.playerInfo(pPlayer, targetID)
+end
+
+function VillageGmSui.resetCompletedQuest(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local sui = SuiMessageBox.new("VillageGmSui", "resetCompletedQuestCallback")
+
+	sui.setTitle("Reset Completed Quest")
+	sui.setPrompt("Are you sure you want to reset the player's completed quest status? This will allow the player to complete a second quest this phase.")
+	sui.setOkButtonText("Yes")
+	sui.setCancelButtonText("No")
+	sui.setTargetNetworkId(targetID)
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui:resetCompletedQuestCallback(pPlayer, pSui, eventIndex, args)
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+
+	local targetID = suiPageData:getTargetNetworkId()
+
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		VillageGmSui.playerInfo(pPlayer, targetID)
+		return
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	removeQuestStatus(targetID .. ":village:lastCompletedQuest")
+
+	CreatureObject(pPlayer):sendSystemMessage("Player has had their completed quest status for this phase reset.")
+
+	VillageGmSui.playerInfo(pPlayer, targetID)
 end
 
 function VillageGmSui.branchManagement(pPlayer, targetID)
@@ -366,14 +516,18 @@ function VillageGmSui:branchManagementCallback(pPlayer, pSui, eventIndex, args)
 	VillageGmSui.branchManagement(pPlayer, targetID)
 end
 
-function VillageGmSui:getPhaseDuration(pPlayer)
+function VillageGmSui:getPhaseDuration()
 	local eventID = getServerEventID("VillagePhaseChange")
 
 	if (eventID == nil) then
 		return
 	end
 
-	local timeLeft = getServerEventTimeLeft(eventID) / 1000
+	return self:getTimeString(getServerEventTimeLeft(eventID))
+end
+
+function VillageGmSui:getTimeString(miliTime)
+	local timeLeft = miliTime / 1000
 	local daysLeft = math.floor(timeLeft / (24 * 60 * 60))
 	local hoursLeft = math.floor((timeLeft / 3600) % 24)
 	local minutesLeft = math.floor((timeLeft / 60) % 60)
