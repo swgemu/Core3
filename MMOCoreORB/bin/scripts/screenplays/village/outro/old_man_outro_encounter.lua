@@ -44,6 +44,7 @@ function OldManOutroEncounter:handleScheduledDespawn(pPlayer)
 	end
 
 	self:handleDespawnEvent(pPlayer)
+	FsOutro:startOldMan(pPlayer)
 end
 
 -- Schedule despawn of old man due to player conversation has ended.

@@ -77,7 +77,7 @@ function FsIntro:startStepDelay(pPlayer, step)
 		end
 	end
 
-	writeScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroStepDelay", stepDelay + os.time())
+	writeScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroDelay", stepDelay + os.time())
 	createEvent(stepDelay, "FsIntro", "doDelayedStep", pPlayer, "")
 end
 
