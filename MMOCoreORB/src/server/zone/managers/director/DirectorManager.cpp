@@ -390,6 +390,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "creatureTemplateExists", creatureTemplateExists);
 	lua_register(luaEngine->getLuaState(), "printLuaError", printLuaError);
+	lua_register(luaEngine->getLuaState(), "getPlayerByName", getPlayerByName);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -3368,6 +3369,26 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPointInArea");
 		return 0;
 	}
-
 }
 
+int DirectorManager::getPlayerByName(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getPlayerByName");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String playerName = lua_tostring(L, -1);
+
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+
+	CreatureObject* player = playerManager->getPlayer(playerName);
+
+	if (player != NULL) {
+		lua_pushlightuserdata(L, player);
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}

@@ -194,6 +194,7 @@ namespace server {
 		static int creatureTemplateExists(lua_State* L);
 		static int printLuaError(lua_State* L);
 		static int getSpawnPointInArea(lua_State* L);
+		static int getPlayerByName(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);

@@ -46,6 +46,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isJediLight", &LuaPlayerObject::isJediLight },
 		{ "isJediDark", &LuaPlayerObject::isJediDark },
 		{ "setJediState", &LuaPlayerObject::setJediState },
+		{ "getJediState", &LuaPlayerObject::getJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
 		{ "clearActiveQuestsBit", &LuaPlayerObject::clearActiveQuestsBit },
@@ -387,6 +388,12 @@ int LuaPlayerObject::setJediState(lua_State* L) {
 	return 0;
 }
 
+int LuaPlayerObject::getJediState(lua_State* L) {
+	lua_pushinteger(L, realObject->getJediState());
+
+	return 1;
+}
+
 int LuaPlayerObject::isOnline(lua_State* L) {
 	lua_pushboolean(L, realObject->isOnline());
 
@@ -624,11 +631,19 @@ int LuaPlayerObject::removeSuiBox(lua_State* L) {
 int LuaPlayerObject::isJediTrainer(lua_State* L) {
 	CreatureObject* trainer = (CreatureObject*)lua_touserdata(L, -1);
 
-	Vector3 npc(trainer->getWorldPositionX(), trainer->getWorldPositionY(), 0);
+	uint64 cellID = trainer->getParentID();
+	Vector3 npc;
+
+	if (cellID != 0)
+		npc = Vector3(trainer->getWorldPositionX(), trainer->getWorldPositionY(), 0);
+	else
+		npc = Vector3(trainer->getPositionX(), trainer->getPositionY(), 0);
+
 	Vector3 playerCoord = realObject->getTrainerCoordinates();
 	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
+	uint64 trainerCellID = realObject->getTrainerCellID();
 
-	bool result = (npc == player) && (realObject->getTrainerZoneName() == trainer->getZone()->getZoneName());
+	bool result = (trainerCellID == cellID) && (npc == player) && (realObject->getTrainerZoneName() == trainer->getZone()->getZoneName());
 
 	lua_pushboolean(L, result);
 
