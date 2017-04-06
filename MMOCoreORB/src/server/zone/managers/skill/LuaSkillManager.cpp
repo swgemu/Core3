@@ -9,6 +9,7 @@ Luna<LuaSkillManager>::RegType LuaSkillManager::Register[] = {
 		{ "fulfillsSkillPrerequisites", &LuaSkillManager::fulfillsSkillPrerequisites },
 		{ "getSkill", &LuaSkillManager::getSkill },
 		{ "awardSkill", &LuaSkillManager::awardSkill },
+		{ "canLearnSkill", &LuaSkillManager::canLearnSkill },
 		{ 0, 0 }
 };
 
@@ -47,6 +48,23 @@ int LuaSkillManager::fulfillsSkillPrerequisites(lua_State* L) {
 	bool success = realObject->fulfillsSkillPrerequisites(skillName, creo);
 
 	lua_pushboolean(L, success);
+
+	return 1;
+}
+
+int LuaSkillManager::canLearnSkill(lua_State* L) {
+	if (lua_gettop(L) - 1 != 3) {
+		Logger::console.error("incorrect number of arguments for LuaSkillManager::canLearnSkill");
+		return 0;
+	}
+
+	bool xpReq = lua_toboolean(L, -1);
+	String skillName = lua_tostring(L, -2);
+	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -3);
+
+	bool canLearn = realObject->canLearnSkill(skillName, creo, xpReq);
+
+	lua_pushboolean(L, canLearn);
 
 	return 1;
 }
