@@ -13,7 +13,7 @@ namespace tangible {
 namespace tasks {
 
 class LotteryDroidPulseTask : public Task {
-	ManagedReference<LotteryDroid*> droid;
+	WeakReference<LotteryDroid*> droid;
 
 public:
 	LotteryDroidPulseTask(LotteryDroid* dr) {
