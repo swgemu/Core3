@@ -27,7 +27,7 @@ function VillageGmSui:showMainPage(pPlayer)
 	sui.add("List players in village", "listOnlineVillagePlayers")
 	sui.add("Lookup player by name", "playerLookupByName")
 	sui.add("Lookup player by oid", "playerLookupByOID")
-	
+
 	if (not productionServer) then
 		sui.add("Change to next phase", "changePhase")
 	end
@@ -228,17 +228,66 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	local promptBuf = " \\#pcontrast1 " .. "Player name:" .. " \\#pcontrast2 " .. SceneObject(pTarget):getCustomObjectName() .. "\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Object ID:" .. " \\#pcontrast2 " .. targetID .. "\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Jedi State:" .. " \\#pcontrast2 " .. PlayerObject(pGhost):getJediState() .. "\n"
+	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Progression:" .. " \\#pcontrast2 "
 
-	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
-		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 YES\n"
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_PADAWAN_TRIALS)) then
+		promptBuf = promptBuf.. "Padawan Trials Completed\n"
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)) then
+		if (JediTrials:isOnPadawanTrials(pPlayer)) then
+			promptBuf = promptBuf .. "Padawan Trials (" .. JediTrials:getTrialsCompleted(pPlayer) .. " completed)\n"
+		else
+			promptBuf = promptBuf .. "Mellichae (Defeated)\n"
+		end
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
+		promptBuf = promptBuf .. "Mellichae\n"
+	elseif (FsOutro:isOnOutro(pPlayer)) then
+		local curStep = FsIntro:getCurrentStep(pPlayer)
+
+		if (curStep == OLDMANWAIT) then
+			promptBuf = promptBuf .. "Outro (Waiting for Old Man)\n"
+		elseif (curStep == OLDMANMEET) then
+			promptBuf = promptBuf .. "Outro (Old Man Visit)\n"
+		end
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS)) then
+		promptBuf = promptBuf .. "Village Phase Quests\n"
+	elseif (FsIntro:isOnIntro(pPlayer)) then
+		local curStep = FsIntro:getCurrentStep(pPlayer)
+
+		if (curStep == OLDMANWAIT) then
+			promptBuf = promptBuf .. "Intro (Waiting for Old Man)\n"
+		elseif (curStep == OLDMANMEET) then
+			promptBuf = promptBuf .. "Intro (Old Man Visit)\n"
+		elseif (curStep == SITHWAIT) then
+			promptBuf = promptBuf .. "Intro (Waiting for Sith Attack)\n"
+		elseif (curStep == SITHATTACK) then
+			promptBuf = promptBuf .. "Intro (Sith Attack)\n"
+		elseif (curStep == USEDATAPADONE) then
+			promptBuf = promptBuf .. "Intro (First Datapad Looted)\n"
+		elseif (curStep == SITHTHEATER) then
+			promptBuf = promptBuf .. "Intro (Sith Camp)\n"
+		elseif (curStep == USEDATAPADTWO) then
+			promptBuf = promptBuf .. "Intro (Second Datapad Looted)\n"
+		elseif (curStep == VILLAGE) then
+			promptBuf = promptBuf .. "Intro (Sent to Village)\n"
+		end
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_GLOWING)) then
+		promptBuf = promptBuf .. "Glowing\n"
 	else
-		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 NO\n"
+		promptBuf = promptBuf .. "Not Glowing\n"
 	end
 
-	if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
-		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 YES\n"
-	else
-		promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 NO\n"
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS) and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
+		if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 YES\n"
+		else
+			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Active Quest This Phase:" .. " \\#pcontrast2 NO\n"
+		end
+
+		if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
+			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 YES\n"
+		else
+			promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Completed Quest This Phase:" .. " \\#pcontrast2 NO\n"
+		end
 	end
 
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Unlocked Branches:" .. " \\#pcontrast2 " .. VillageJediManagerCommon.getUnlockedBranchCount(pPlayer) .. "\n"
