@@ -88,6 +88,8 @@ function OldManOutroEncounter:taskFinish(pPlayer)
 	if (pPlayer == nil) then
 		return true
 	end
+	
+	FsOutro:startOldMan(pPlayer)
 
 	return true
 end
