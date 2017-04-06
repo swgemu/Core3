@@ -102,7 +102,7 @@ int LotteryDroidImplementation::handleObjectMenuSelect(CreatureObject* player, b
 		if (winner != NULL) {
 			StringIdManager* sMan = StringIdManager::instance();
 
-			String resultMsg = sMan->getStringId(String("@event_perk:lottery_complete_show_winner").hashCode()).toString() + " " + winner->getCustomObjectName().toString() + ".";
+			String resultMsg = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_complete_show_winner")).toString() + " " + winner->getCustomObjectName().toString() + ".";
 			player->sendSystemMessage(resultMsg);
 		}
 	}
@@ -226,9 +226,9 @@ void LotteryDroidImplementation::sendRegistrationSUI(CreatureObject* player) {
 
 	StringIdManager* sMan = StringIdManager::instance();
 
-	String part1 = sMan->getStringId(String("@event_perk:lottery_reg_purchase_desc1").hashCode()).toString();
-	String part2 = sMan->getStringId(String("@event_perk:lottery_reg_purchase_desc2").hashCode()).toString();
-	String part3 = sMan->getStringId(String("@event_perk:lottery_reg_purchase_desc3").hashCode()).toString();
+	String part1 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_reg_purchase_desc1")).toString();
+	String part2 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_reg_purchase_desc2")).toString();
+	String part3 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_reg_purchase_desc3")).toString();
 
 	String finalMsg = part1 + String::valueOf(ticketPrice) + part2 + String::valueOf(ticketPrice) + part3;
 
@@ -260,11 +260,11 @@ void LotteryDroidImplementation::sendLotteryInfoSUI(CreatureObject* player) {
 
 	StringIdManager* sMan = StringIdManager::instance();
 
-	String parse1 = sMan->getStringId(String("@event_perk:lottery_info_parse1").hashCode()).toString();
-	String parse2 = sMan->getStringId(String("@event_perk:lottery_info_parse2").hashCode()).toString();
-	String parse3 = sMan->getStringId(String("@event_perk:lottery_info_parse3").hashCode()).toString();
-	String parse4 = sMan->getStringId(String("@event_perk:lottery_info_parse4").hashCode()).toString();
-	String parse5 = sMan->getStringId(String("@event_perk:lottery_info_parse5").hashCode()).toString();
+	String parse1 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_info_parse1")).toString();
+	String parse2 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_info_parse2")).toString();
+	String parse3 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_info_parse3")).toString();
+	String parse4 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_info_parse4")).toString();
+	String parse5 = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_info_parse5")).toString();
 
 	String finalString = parse1 + String::valueOf(getNumPlayers()) + parse2 + String::valueOf(payout) + parse3 + getTimeLeft(timeRemaining) + parse4 + String::valueOf(ticketPrice) + parse5;
 
@@ -293,11 +293,18 @@ void LotteryDroidImplementation::startLottery(CreatureObject* player) {
 }
 
 void LotteryDroidImplementation::activateGamePulse() {
+	Time currentTime;
+	uint64 timeDelta = currentTime.getMiliTime() - gameStartTime.getMiliTime();
+	uint64 duration = (uint64)gameDuration * 60 * 60 * 1000;
+	uint64 timeLeft = duration - timeDelta;
+
 	if (gamePulse == NULL) {
 		gamePulse = new LotteryDroidPulseTask(_this.getReferenceUnsafeStaticCast());
-		gamePulse->schedule((uint64)gameDuration * 60 * 60 * 1000);
-	} else {
-		gamePulse->reschedule((uint64)gameDuration * 60 * 60 * 1000);
+
+		if (timeLeft <= 0)
+			gamePulse->execute();
+		else
+			gamePulse->schedule(timeLeft);
 	}
 }
 
@@ -391,7 +398,7 @@ String LotteryDroidImplementation::getTimeLeft(uint64 timeLeft) {
 
 	StringIdManager* sMan = StringIdManager::instance();
 
-	String finalStr = sMan->getStringId(String("@event_perk:lottery_dur_hours_" + String::valueOf(minHours)).hashCode()).toString();
+	String finalStr = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_dur_hours_" + String::valueOf(minHours))).toString();
 
 	return finalStr;
 }
