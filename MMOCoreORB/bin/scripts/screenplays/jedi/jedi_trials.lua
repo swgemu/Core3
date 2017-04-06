@@ -110,6 +110,8 @@ function JediTrials:unlockJediPadawan(pPlayer)
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		local pItem = giveItem(pInventory, "object/tangible/wearables/robe/robe_jedi_padawan.iff", -1)
 	end
+	
+	sendMail("system", "@jedi_spam:welcome_subject", "@jedi_spam:welcome_body", CreatureObject(pPlayer):getFirstName())
 end
 
 function JediTrials:emptyCallback(pPlayer)
