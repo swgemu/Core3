@@ -58,6 +58,14 @@ class LotteryDroid extends CreatureObject {
 	}
 
 	public native void initializeTransientMembers();
+	
+	public void notifyLoadFromDatabase() {
+		super.notifyLoadFromDatabase();
+
+		if (gameStatus == GAMESTARTED || gameStatus == GAMEENDED) {
+			activateGamePulse();
+		}
+	}
 
 	@preLocked
 	@arg1preLocked
