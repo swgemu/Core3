@@ -391,6 +391,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "creatureTemplateExists", creatureTemplateExists);
 	lua_register(luaEngine->getLuaState(), "printLuaError", printLuaError);
 	lua_register(luaEngine->getLuaState(), "getPlayerByName", getPlayerByName);
+	lua_register(luaEngine->getLuaState(), "sendMail", sendMail);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -3391,4 +3392,24 @@ int DirectorManager::getPlayerByName(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int DirectorManager::sendMail(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::sendMail");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String recipient = lua_tostring(L, -1);
+	String body = lua_tostring(L, -2);
+	String subject = lua_tostring(L, -3);
+	String senderName = lua_tostring(L, -4);
+
+	ManagedReference<ChatManager*> chatManager = ServerCore::getZoneServer()->getChatManager();
+
+	if (chatManager != NULL)
+		chatManager->sendMail(senderName, subject, body, recipient);
+
+	return 0;
 }
