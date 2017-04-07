@@ -595,9 +595,17 @@ int BountyMissionObjectiveImplementation::handleNpcTargetReceivesDamage(ManagedO
 }
 
 void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg1) {
+	CreatureObject* creo = cast<CreatureObject*>(arg1);
+
+	if (creo == NULL)
+		return;
+
 	CreatureObject* killer = NULL;
 
-	killer = cast<CreatureObject*>(arg1);
+	if (creo->isPet())
+		killer = creo->getLinkedCreature().get();
+	else
+		killer = creo;
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
