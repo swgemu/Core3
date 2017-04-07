@@ -66,6 +66,8 @@ function villageDageerinPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPla
 		elseif (screenID == "good_luck") then
 			FsSad2:acceptNextTask(pPlayer)
 		end
+	elseif (screenID == "intro_max_tasks_for_day") then
+		FsSad2:despawnCamp(pPlayer)
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
 		FsSad2:acceptNextTask(pPlayer)
 	elseif (screenID == "intro_on_task") then

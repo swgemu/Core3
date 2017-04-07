@@ -68,6 +68,8 @@ function FsSad:despawnCamp(pPlayer)
 	if (FsSadTheater:hasTaskStarted(pPlayer)) then
 		FsSadTheater:finish(pPlayer)
 	end
+
+	SuiRadiationSensor:unsetLocation(pPlayer)
 end
 
 function FsSad:recreateCampIfDespawned(pPlayer)

@@ -194,6 +194,18 @@ function SuiRadiationSensor:removeSensor(pPlayer)
 	deleteData(playerID .. ":radiationSensorPid")
 end
 
+function SuiRadiationSensor:unsetLocation(pPlayer)
+	local pSensor = self:getSensor(pPlayer)
+
+	if (pSensor ~= nil) then
+		local sensorID = SceneObject(pSensor):getObjectID()
+
+		deleteData(sensorID .. ":locX")
+		deleteData(sensorID .. ":locY")
+		deleteStringSharedMemory(sensorID .. ":locPlanet")
+	end
+end
+
 function SuiRadiationSensor:setLocation(pPlayer, x, y, planet)
 	local pSensor = self:getSensor(pPlayer)
 
