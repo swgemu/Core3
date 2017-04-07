@@ -425,7 +425,12 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
 
 	if (targetCount == nil) then
-		printLuaError("PadawanTrials:notifyKilledHuntTarget, nil targetCount for player:" .. SceneObject(pPlayer):getCustomObjectName())
+		printLuaError("PadawanTrials:notifyKilledHuntTarget, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. ").")
+		return 1
+	end
+
+	if (targetGoal == nil) then
+		printLuaError("PadawanTrials:notifyKilledHuntTarget, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. ").")
 		return 1
 	end
 
