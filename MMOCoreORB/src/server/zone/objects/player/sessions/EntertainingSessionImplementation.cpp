@@ -614,8 +614,8 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool gran
 			addEntertainerFlourishBuff();
 
 			// Grant Experience
-			if(grantXp && flourishCount < 2)
-				flourishXp += performance->getBaseXp() + performance->getFlourishXpMod();
+			if(grantXp)
+				flourishXp += performance->getFlourishXpMod() / 5;
 
 			flourishCount++;
 		}
@@ -1029,7 +1029,25 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 	ManagedReference<CreatureObject*> player = this->entertainer.get();
 	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+	Performance* performance = NULL;
+	ManagedReference<Instrument*> instrument = getInstrument(player);
+
+	if (dancing)
+		performance = performanceManager->getDance(performanceName);
+	else if (playingMusic && instrument)
+		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
+
 	if (player->isPlayerCreature()) {
+		if (oldFlourishXp > flourishXp && (isDancing() || isPlayingMusic())) {
+			flourishXp = oldFlourishXp;
+
+			if (flourishXp > 0)
+				flourishXp =- performance->getFlourishXpMod() / 5;
+			else if (flourishXp < 0)
+				flourishXp = 0;
+		}
+
 		if (flourishXp > 0 && (isDancing() || isPlayingMusic())) {
 			String xptype;
 
@@ -1038,8 +1056,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 			else if (isPlayingMusic())
 				xptype = "music";
 
-			int groupBonusPercent = 0;
-			int groupBonus  = 0;
+			int groupBonusCount = 0;
 
 			ManagedReference<GroupObject*> group = player->getGroup();
 
@@ -1052,23 +1069,23 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 					if (groupMember != NULL && groupMember->isPlayerCreature()) {
 						Locker clocker(groupMember, player);
 
-						if (groupMember->isEntertaining() && groupMember->isInRange(player, 40.0f)
-								&& groupMember->hasSkill("social_entertainer_novice")) {
-							++groupBonusPercent;
+						if (groupMember != player && groupMember->isEntertaining() && groupMember->isInRange(player, 40.0f) && groupMember->hasSkill("social_entertainer_novice")) {
+							++groupBonusCount;
 						}
 					}
 				}
-
-				groupBonus = ceil(flourishXp * (groupBonusPercent / 100));
-
 			}
 
-			flourishXp += groupBonus;
+			int xpAmount = flourishXp + performance->getBaseXp();
+
+			float groupBonus = 1.f + ((groupBonusCount / 8) * 0.4f);
+
+			xpAmount = ceil(xpAmount * groupBonus);
 
 			if (playerManager != NULL)
-				playerManager->awardExperience(player, xptype, flourishXp, true);
+				playerManager->awardExperience(player, xptype, xpAmount, true);
 
-			//flourishXp--;
+			oldFlourishXp = flourishXp;
 			flourishXp = 0;
 		}
 
