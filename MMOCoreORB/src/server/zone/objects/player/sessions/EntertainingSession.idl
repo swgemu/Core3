@@ -38,6 +38,7 @@ class EntertainingSession extends Facade {
 	protected boolean playingMusic;
 	
 	protected int flourishXp;
+	protected int oldFlourishXp;
 	protected int healingXp;
 	protected int flourishCount;
 	protected boolean acceptingBandFlourishes;
@@ -48,6 +49,7 @@ class EntertainingSession extends Facade {
 		entertainer = ent;
 		
 		flourishXp = 0;
+		oldFlourishXp = 0;
 		healingXp = 0;
 		flourishCount = 0;
 		
