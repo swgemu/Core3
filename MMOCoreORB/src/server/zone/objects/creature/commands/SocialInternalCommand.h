@@ -44,6 +44,27 @@ public:
 			return GENERALERROR;
 		}
 
+		Reference<CreatureObject*> creo = server->getZoneServer()->getObject(targetid, true).castTo<CreatureObject*>();
+
+		if (creo == NULL)
+			return SUCCESS;
+
+		if (creo->isPlayerCreature()) {
+			String socialType = chatManager->getSocialType(emoteid);
+
+			if (socialType != "applaud" && socialType != "cheer" && socialType != "clap")
+				return SUCCESS;
+
+			if (creo->isEntertaining() && creo->isInRange(creature, 40.0f)) {
+				ManagedReference<EntertainingSession*> session = creo->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+				if (session != NULL && session->getApplauseCount() < 100)
+					session->incrementApplauseCount();
+			}
+
+			return SUCCESS;
+		}
+
 		// If target is a pet, enqueue command to handle it
 		Reference<AiAgent*> aiAgent = server->getZoneServer()->getObject(targetid, true).castTo<AiAgent*>();
 		if(aiAgent == NULL)
