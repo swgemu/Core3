@@ -38,8 +38,10 @@ class EntertainingSession extends Facade {
 	protected boolean playingMusic;
 	
 	protected int flourishXp;
+	protected int oldFlourishXp;
 	protected int healingXp;
 	protected int flourishCount;
+	protected int applauseCount;
 	protected boolean acceptingBandFlourishes;
 	protected boolean targetInstrument;
 	protected Instrument externalInstrument;
@@ -48,8 +50,10 @@ class EntertainingSession extends Facade {
 		entertainer = ent;
 		
 		flourishXp = 0;
+		oldFlourishXp = 0;
 		healingXp = 0;
 		flourishCount = 0;
+		applauseCount = 0;
 		
 		observer = null;
 		
@@ -202,4 +206,18 @@ class EntertainingSession extends Facade {
 	public native void increaseEntertainerBuff(CreatureObject patron);
 	
 	public native void awardEntertainerExperience();
+	
+	@local
+	@dereferenced
+	public native Vector<unsigned long> getAudience();
+	
+	public native int getBandAudienceSize();
+	
+	public void incrementApplauseCount() {
+		applauseCount++;
+	}
+	
+	public int getApplauseCount() {
+		return applauseCount;
+	}
 }
