@@ -262,7 +262,7 @@ float BuffImplementation::getTimeLeft() {
 
 	//info("timeLeft = " + String::valueOf(timeleft), true);
 
-	return MAX(0.0f, timeleft);
+	return Math::max(0.0f, timeleft);
 }
 
 
@@ -304,7 +304,7 @@ void BuffImplementation::applyAttributeModifiers() {
 
 			if (!creo->isDead() && !creo->isIncapacitated()) {
 				if (fillAttributesOnBuff) {
-					int attributeval = MAX(newMaxHAM, creo->getHAM(attribute) + value);
+					int attributeval = Math::max(newMaxHAM, creo->getHAM(attribute) + value);
 					creo->healDamage(creo, attribute, attributeval, true);
 				} else if (value >= 0)
 					creo->healDamage(creo, attribute, value);
@@ -397,7 +397,7 @@ void BuffImplementation::removeAttributeModifiers() {
 		}
 
 
-		/*int attributeval = MIN(attributemax, creature.get()->getHAM(attribute) - value);
+		/*int attributeval = Math::min(attributemax, creature.get()->getHAM(attribute) - value);
 
 		creature.get()->setHAM(attribute, attributeval);*/
 	}

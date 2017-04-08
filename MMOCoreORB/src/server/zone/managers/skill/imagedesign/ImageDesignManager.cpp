@@ -50,7 +50,7 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 
 		float height = minScale + value * (maxScale - minScale);
 
-		creatureObject->setHeight(MAX(MIN(height, maxScale), minScale));
+		creatureObject->setHeight(Math::max(Math::min(height, maxScale), minScale));
 
 		return;
 	}
@@ -104,7 +104,7 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 
 					// pre: i � [0, 1] && value � [0, 1]
 					// post f � [0, 1]
-					currentValue = MAX(0, ((value - 0.5) * 2) * (-1 + (i * 2)));
+					currentValue = Math::max(0.f, ((value - 0.5f) * 2.f) * (-1.f + (i * 2.f)));
 				}
 
 				if (customData->getReverse()) {

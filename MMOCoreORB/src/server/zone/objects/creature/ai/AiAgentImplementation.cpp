@@ -96,7 +96,7 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 }
 
 int AiAgentImplementation::calculateAttackMinDamage(int level) {
-	int minDmg = MAX(getDamageMin(), 20 + (level * 5));
+	int minDmg = Math::max(getDamageMin(), 20 + (level * 5));
 	if (petDeed != NULL) {
 		minDmg = petDeed->getMinDamage();
 		if (level < petDeed->getLevel()) {
@@ -112,7 +112,7 @@ int AiAgentImplementation::calculateAttackMinDamage(int level) {
 }
 
 int AiAgentImplementation::calculateAttackMaxDamage(int level) {
-	int dmg = MAX(getDamageMax(), calculateAttackMinDamage(level) * 2);
+	int dmg = Math::max(getDamageMax(), calculateAttackMinDamage(level) * 2);
 	if (petDeed != NULL) {
 		dmg = petDeed->getMaxDamage();
 		if (level < petDeed->getLevel()) {
@@ -1514,9 +1514,9 @@ void AiAgentImplementation::activateHAMRegeneration(int latency) {
     if (isIncapacitated() || isDead() || isInCombat())
         return;
 
-    uint32 healthTick = MAX(1, ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));
-    uint32 actionTick = MAX(1, ceil(getMaxHAM(CreatureAttribute::ACTION) / 300000.f * latency));
-    uint32 mindTick   = MAX(1, ceil(getMaxHAM(CreatureAttribute::MIND)   / 300000.f * latency));
+    uint32 healthTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));
+    uint32 actionTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::ACTION) / 300000.f * latency));
+    uint32 mindTick   = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::MIND) / 300000.f * latency));
 
     healDamage(asCreatureObject(), CreatureAttribute::HEALTH, healthTick, true, false);
     healDamage(asCreatureObject(), CreatureAttribute::ACTION, actionTick, true, false);
@@ -1698,7 +1698,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// go to the edge of the maxDistance radius and stop, so select the minimum
 			// of either our max travel distance (maxSpeed) or the distance from the
 			// maxDistance radius
-			maxDist = MIN(maxSpeed, targetDistance - maxDistance + 0.1);
+			maxDist = Math::min(maxSpeed, targetDistance - maxDistance + 0.1f);
 		else
 			// We are already at or inside the maxDistance radius, so we have reached this
 			// patrolPoint. We want to stop at every patrolPoint exactly once, so we will
@@ -1844,7 +1844,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
 		if (dist > 0 && newSpeed > 0.1) {
-			nextMovementInterval = MIN((int)((MIN(dist, maxDist)/newSpeed)*1000 + 0.5), UPDATEMOVEMENTINTERVAL);
+			auto interval = UPDATEMOVEMENTINTERVAL;
+			nextMovementInterval = Math::min((int)((Math::min(dist, maxDist)/newSpeed)*1000 + 0.5), interval);
 			currentSpeed = newSpeed;
 		} else
 			currentSpeed = 0;
@@ -2029,8 +2030,8 @@ float AiAgentImplementation::getMaxDistance() {
 			if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
 				return 0.1f;
 			} else if (getWeapon() != NULL ) {
-				float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-				return MAX(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
+				float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
+				return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
 			}
 		} else {
 			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
