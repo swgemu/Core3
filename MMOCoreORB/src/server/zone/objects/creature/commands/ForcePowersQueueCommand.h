@@ -15,6 +15,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "CombatQueueCommand.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/creature/buffs/ForceWeakenDebuff.h"
 
 class ForcePowersQueueCommand : public CombatQueueCommand {
 public:

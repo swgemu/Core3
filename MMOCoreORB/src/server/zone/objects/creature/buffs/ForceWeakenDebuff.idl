@@ -1,0 +1,52 @@
+
+package server.zone.objects.creature.buffs;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
+import system.lang.Time;
+
+include server.zone.ZoneProcessServer;
+import server.zone.objects.creature.buffs.ForceWeakenDebuffDurationEvent;
+import server.zone.objects.creature.buffs.Buff;
+include server.zone.objects.creature.buffs.BuffType;
+include server.zone.objects.creature.buffs.BuffCRC;
+include server.chat.StringIdChatParameter;
+
+
+class ForceWeakenDebuff extends Buff {
+	protected transient ForceWeakenDebuffDurationEvent fwBuffEvent;
+
+	protected int fwAmount;
+	protected int fwTick;
+	protected int time;
+	protected int counter;
+	protected int deBuffAmount;
+
+	@dereferenced
+	protected Time nextTickTime;
+
+	public ForceWeakenDebuff(CreatureObject creo, final string name, unsigned int buffCRC, int value, int duration) {
+		super(creo, buffCRC, duration, BuffType.JEDI);
+
+		super.buffName = name;
+		fwAmount = value;
+		fwTick = value/1;
+		time = duration * 1000;
+		counter = 0;
+		deBuffAmount=0;
+	}
+
+	public native void initializeTransientMembers();
+
+	public native void activate(boolean applyModifiers);
+
+	public native void deactivate(boolean removeModifiers);
+
+	public native void doHealthActionMindTick(boolean weak);
+
+	public native void clearBuffEvent();
+
+}
