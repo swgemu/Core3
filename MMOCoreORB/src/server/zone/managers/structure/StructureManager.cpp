@@ -142,11 +142,11 @@ int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objec
 	float bottomRightX = (8 * structureFootprint->getColSize() - centerX);
 	float bottomRightY = -centerY;
 
-	w0 = MIN(topLeftX, bottomRightX);
-	l0 = MIN(topLeftY, bottomRightY);
+	w0 = Math::min(topLeftX, bottomRightX);
+	l0 = Math::min(topLeftY, bottomRightY);
 
-	w1 = MAX(topLeftX, bottomRightX);
-	l1 = MAX(topLeftY, bottomRightY);
+	w1 = Math::max(topLeftX, bottomRightX);
+	l1 = Math::max(topLeftY, bottomRightY);
 
 	Matrix4 translationMatrix;
 	translationMatrix.setTranslation(0, 0, 0);
@@ -174,11 +174,11 @@ int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objec
 	Vector3 resultBottom = pointBottom * moveAndRotate;
 	Vector3 resultTop = pointTop * moveAndRotate;
 
-	w0 = MIN(resultBottom.getX(), resultTop.getX());
-	l0 = MIN(resultBottom.getZ(), resultTop.getZ());
+	w0 = Math::min(resultBottom.getX(), resultTop.getX());
+	l0 = Math::min(resultBottom.getZ(), resultTop.getZ());
 
-	w1 = MAX(resultTop.getX(), resultBottom.getX());
-	l1 = MAX(resultTop.getZ(), resultBottom.getZ());
+	w1 = Math::max(resultTop.getX(), resultBottom.getX());
+	l1 = Math::max(resultTop.getZ(), resultBottom.getZ());
 
 	//info("objectTemplate:" + objectTemplate->getFullTemplateString() + " :" + structureFootprint->toString(), true);
 	//info("angle:" + String::valueOf(angle) + " w0:" + String::valueOf(w0) + " l0:" + String::valueOf(l0) + " w1:" + String::valueOf(w1) + " l1:" + String::valueOf(l1), true);
