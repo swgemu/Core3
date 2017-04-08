@@ -91,7 +91,7 @@ public:
 		int cacheSize = terrainManager->getCachedValuesCount();
 		int evictCount = terrainManager->getCacheEvictCount();
 
-		int total = MAX(heightCacheHitCount + heightCacheMissCount, 1);
+		int total = Math::max(heightCacheHitCount + heightCacheMissCount, 1);
 
 		msg << "height cache total hit count = " << heightCacheHitCount << ", total miss count = " << heightCacheMissCount
 				<< ", total hit rate = " << ((float)heightCacheHitCount / (float)total) * 100 << "% "
