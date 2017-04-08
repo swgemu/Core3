@@ -44,10 +44,13 @@
 ForceIntimidate2Command = {
 	name = "forceintimidate2",
 
-	damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speed = 4.0,
 	forceCost = 500,
 	accuracySkillMod = "forceintimidate_accuracy",
+	accuracyBonus = 10,
 	forceAttack = true,
 	splashDamage = true,
 	areaAction = true,
@@ -70,10 +73,10 @@ ForceIntimidate2Command = {
 
 	combatSpam = "forceintimidate2",
 
-	poolsToDamage = NO_ATTRIBUTE,
+	poolsToDamage = MIND_ATTRIBUTE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	range = 32
 }
 
 AddCommand(ForceIntimidate2Command)
-
