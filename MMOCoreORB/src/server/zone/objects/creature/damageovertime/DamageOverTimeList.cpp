@@ -119,7 +119,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 		return 0;
 
 	// determine chance to hit, if no hit, just return 0. potency of less than 0 can't be resisted
-	if (potency > 0 && System::random(100) >= MAX(5.f, MIN(potency * (80.f / (100.f + defense)), 95.f)))
+	if (potency > 0 && System::random(100) >= Math::max(5.f, Math::min(potency * (80.f / (100.f + defense)), 95.f)))
 		return 0;
 
 	if (pool == CreatureAttribute::UNKNOWN) {
@@ -149,7 +149,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 
 	if (durationMod > 0) {
 		if (durationMod > 90) durationMod = 90;
-		duration = MAX(1, (int)(duration * (1.f - (durationMod / 100.f))));
+		duration = Math::max(1, (int)(duration * (1.f - (durationMod / 100.f))));
 	}
 
 	//only 1 disease per bar allowed

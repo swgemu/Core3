@@ -63,7 +63,7 @@ int ForceHealQueueCommand::doHealBF(CreatureObject* creature, CreatureObject* ta
 	creature->sendSystemMessage("[doHealBF] healBattleFatigue = " + String::valueOf(healBattleFatigue));
 #endif
 	if (currentValue > 0) {
-		int healedValue = MIN(currentValue, healBattleFatigue);
+		int healedValue = Math::min(currentValue, (int) healBattleFatigue);
 
 #ifdef DEBUG_FORCE_HEALS
 		creature->sendSystemMessage("[doHealBF] healedValue = " + String::valueOf(healedValue));
@@ -393,7 +393,7 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 
 		// if forceCost > 0 we will ensure the total costs are never above it
 		if (forceCost > 0) {
-			calculatedForceCost = MIN(calculatedForceCost, forceCost);
+			calculatedForceCost = Math::min(calculatedForceCost, forceCost);
 		}
 
 	} else { // forceCostDivisor == 0

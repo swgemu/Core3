@@ -153,7 +153,7 @@ public:
 			return INVALIDWEAPON;
 
 		if (rangeToCheck == -1)
-			rangeToCheck = MAX(10.f, weapon->getMaxRange());
+			rangeToCheck = (float) Math::max(10, weapon->getMaxRange());
 
 		if (creature->isDead() || (creature->isPet() && creature->isIncapacitated()))
 			return INVALIDLOCOMOTION;
@@ -663,7 +663,7 @@ public:
 
 		targetDefense -= mod;
 
-		uint32 duration = MAX(5, effect.getStateLength()*(1.f-targetDefense/120.f));
+		uint32 duration = (uint32) Math::max(5.f, effect.getStateLength()*(1.f-targetDefense/120.f));
 
 		switch (effectType) {
 		case CommandEffect::BLIND:

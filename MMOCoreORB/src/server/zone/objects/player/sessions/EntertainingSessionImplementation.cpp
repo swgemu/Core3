@@ -1078,7 +1078,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 
 			int xpAmount = flourishXp + performance->getBaseXp();
 
-			int audienceSize = MIN(getBandAudienceSize(), 50);
+			int audienceSize = Math::min(getBandAudienceSize(), 50);
 			float audienceMod = audienceSize / 50.f;
 			float applauseMod = applauseCount / 100.f;
 

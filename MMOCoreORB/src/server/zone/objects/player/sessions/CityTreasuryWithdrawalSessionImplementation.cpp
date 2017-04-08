@@ -50,7 +50,7 @@ int CityTreasuryWithdrawalSessionImplementation::sendTransferBox(const String& r
 	if (ghost == NULL)
 		return cancelSession();
 
-	int maxWithdrawal = MIN(cityRegion->getMaxWithdrawal(), cityRegion->getCityTreasury());
+	int maxWithdrawal = (int) Math::min((double) cityRegion->getMaxWithdrawal(), cityRegion->getCityTreasury());
 
 	ManagedReference<SuiTransferBox*> transfer = new SuiTransferBox(creatureObject, SuiWindowType::CITY_TREASURY_WITHDRAWAL);
 	transfer->setPromptTitle("@city/city:treasury_withdraw"); //Treasury Withdrawal

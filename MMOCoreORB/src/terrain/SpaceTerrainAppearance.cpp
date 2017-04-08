@@ -210,13 +210,13 @@ void SpaceTerrainAppearance::parseCLEA(engine::util::IffStream* iffStream) {
 	iffStream->openChunk('0000');
 
 	float var1 = iffStream->getFloat();
-	var1 = MAX(MIN(var1, 1.0), 0);
+	var1 = Math::max(Math::min(var1, 1.f), 0.f);
 
 	float var2 = iffStream->getFloat();
-	var2 = MAX(MIN(var1, 1.0), 0);
+	var2 = Math::max(Math::min(var1, 1.f), 0.f);
 
 	float var3 = iffStream->getFloat();
-	var3 = MAX(MIN(var1, 1.0), 0);
+	var3 = Math::max(Math::min(var1, 1.f), 0.f);
 
 	uint8 thisVar1 = (uint8) (var1 * 255.f);
 	uint8 thisVar2 = (uint8) (var2 * 255.f);
