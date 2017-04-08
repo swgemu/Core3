@@ -171,7 +171,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature, int visibil
 		decreaseVisibility(creature);
 
 		float newVis = ghost->getVisibility() + (calculateVisibilityIncrease(creature) * visibilityMultiplier); // Calculate new total vis
-		newVis = MIN(maxVisibility,  newVis); // Cap visibility
+		newVis = Math::min(maxVisibility,  newVis); // Cap visibility
 
 		ghost->setVisibility(newVis);
 
