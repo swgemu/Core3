@@ -285,7 +285,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	int arrangementSize = object->getArrangementDescriptorSize();
 
-	int arrangementGroup = MAX(0, containedType - 4);
+	int arrangementGroup = Math::max(0, containedType - 4);
 
 	if (object->getArrangementDescriptorSize() > arrangementGroup) {
 		bool removeFromSlot = false;

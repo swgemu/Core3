@@ -55,9 +55,9 @@ public:
 		int balValue = (health + action + mind) / 3;
 
 		// Get the difference between current HEALTH and the balValue.
-		int diffHealth = MAX(health, balValue) - MIN(health, balValue);
-		int diffAction = MAX(action, balValue) - MIN(action, balValue);
-		int diffMind = MAX(mind, balValue) - MIN(mind, balValue);
+		int diffHealth = Math::max(health, balValue) - Math::min(health, balValue);
+		int diffAction = Math::max(action, balValue) - Math::min(action, balValue);
+		int diffMind = Math::max(mind, balValue) - Math::min(mind, balValue);
 
 		// Check rather to Heal or inflict damage to the player.
 		if (health < balValue) {

@@ -93,7 +93,7 @@ public:
 		pet->addShockWounds(-shockHeal, true, false);
 
 		// Heal damage
-		mindHeal = MIN( mindHeal, pet->getMaxHAM(CreatureAttribute::MIND) - pet->getHAM(CreatureAttribute::MIND) );
+		mindHeal = Math::min( mindHeal, pet->getMaxHAM(CreatureAttribute::MIND) - pet->getHAM(CreatureAttribute::MIND) );
 		pet->inflictDamage(pet, CreatureAttribute::MIND, -mindHeal, false);
 
 		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::SITTING)
