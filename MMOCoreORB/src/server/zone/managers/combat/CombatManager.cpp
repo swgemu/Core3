@@ -962,7 +962,7 @@ int CombatManager::getArmorObjectReduction(ArmorObject* armor, int damageType) {
 		break;
 	}
 
-	return MAX(0, (int)resist);
+	return Math::max(0, (int)resist);
 }
 
 ArmorObject* CombatManager::getArmorObject(CreatureObject* defender, uint8 hitLocation) {
@@ -1560,7 +1560,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	if (jediSpeed > 0)
 		attackSpeed = attackSpeed * jediSpeed;
 
-	return MAX(attackSpeed, 1.0f);
+	return Math::max(attackSpeed, 1.0f);
 }
 
 void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
@@ -1851,7 +1851,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	int numSpillOverPools = 3 - numberOfPoolsDamaged;
 
-	float spillMultPerPool = (0.1f * numSpillOverPools) / MAX(numberOfPoolsDamaged, 1);
+	float spillMultPerPool = (0.1f * numSpillOverPools) / Math::max(numberOfPoolsDamaged, 1);
 	int totalSpillOver = 0; // Accumulate our total spill damage
 
 	// from screenshots, it appears that food mitigation and armor mitigation were independently calculated
@@ -1866,7 +1866,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		hitLocation = bodyLocations[System::random(3)];
 
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
-		healthDamage -= MIN(healthDamage, foodMitigation * data.getHealthDamageMultiplier());
+		healthDamage -= Math::min(healthDamage, foodMitigation * data.getHealthDamageMultiplier());
 
 		int spilledDamage = (int)(healthDamage*spillMultPerPool); // Cut our damage by the spill percentage
 		healthDamage -= spilledDamage; // subtract spill damage from total damage
@@ -1882,7 +1882,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		hitLocation = legLocations[System::random(1)];
 
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), hitLocation, data) * damageMultiplier;
-		actionDamage -= MIN(actionDamage, foodMitigation * data.getActionDamageMultiplier());
+		actionDamage -= Math::min(actionDamage, foodMitigation * data.getActionDamageMultiplier());
 
 		int spilledDamage = (int)(actionDamage*spillMultPerPool);
 		actionDamage -= spilledDamage;
@@ -1896,7 +1896,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (mindDamaged) {
 		hitLocation = HIT_HEAD;
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
-		mindDamage -= MIN(mindDamage, foodMitigation * data.getMindDamageMultiplier());
+		mindDamage -= Math::min(mindDamage, foodMitigation * data.getMindDamageMultiplier());
 
 		int spilledDamage = (int)(mindDamage*spillMultPerPool);
 		mindDamage -= spilledDamage;

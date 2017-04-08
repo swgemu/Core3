@@ -516,8 +516,8 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 
 		for(int i = 0; i < modCount; ++i) {
 			//Mods can't be lower than -1 or greater than 25
-			int max = MAX(-1, MIN(25, round(0.1f * level + 3)));
-			int min = MAX(-1, MIN(25, round(0.075f * level - 1)));
+			int max = (int) Math::max(-1.f, Math::min(25.f, (float) round(0.1f * level + 3)));
+			int min = (int) Math::max(-1.f, Math::min(25.f, (float) round(0.075f * level - 1)));
 
 			int mod = System::random(max - min) + min;
 
@@ -958,7 +958,7 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 
 float LootManagerImplementation::calculateDotValue(float min, float max, float level) {
 	float randVal = (float)System::random(max - min);
-	float value = MAX(min, MIN(max, randVal * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
+	float value = Math::max(min, Math::min(max, randVal * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
 
 	if (value < min) {
 		value = min;

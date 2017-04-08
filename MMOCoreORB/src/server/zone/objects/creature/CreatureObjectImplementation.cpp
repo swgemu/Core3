@@ -1044,7 +1044,7 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 	if (newValue > maxValue)
 		returnValue = maxValue - currentValue;
 
-	newValue = MIN(newValue, maxValue);
+	newValue = Math::min(newValue, maxValue);
 
 	if (currentValue <= 0 && (isIncapacitated() || isDead())) {
 		if (newValue <= 0)
@@ -1103,7 +1103,7 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 
 	int newValue = currentValue - damage;
 
-	newValue = MAX(newValue, 0);
+	newValue = Math::max(newValue, 0);
 
 	int returnValue = currentValue - newValue; //How many wounds we had minus how many we now have = how much was healed.
 
@@ -2673,11 +2673,11 @@ void CreatureObjectImplementation::activateHAMRegeneration(int latency) {
 		modifier *= 1.75f;
 
 	// this formula gives the amount of regen per second
-	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(
+	uint32 healthTick = (uint32) ceil((float) Math::max(0, getHAM(
 			CreatureAttribute::CONSTITUTION)) * 13.0f / 2100.0f * modifier);
-	uint32 actionTick = (uint32) ceil((float) MAX(0, getHAM(
+	uint32 actionTick = (uint32) ceil((float) Math::max(0, getHAM(
 			CreatureAttribute::STAMINA)) * 13.0f / 2100.0f * modifier);
-	uint32 mindTick = (uint32) ceil((float) MAX(0, getHAM(
+	uint32 mindTick = (uint32) ceil((float) Math::max(0, getHAM(
 			CreatureAttribute::WILLPOWER)) * 13.0f / 2100.0f * modifier);
 
 	if (healthTick < 1)
