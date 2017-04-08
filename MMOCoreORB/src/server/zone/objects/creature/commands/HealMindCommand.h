@@ -61,7 +61,7 @@ public:
 
 	int calculateWound(int wound, int poolWounds, int poolMax) const {
 		int maxWound = poolMax - poolWounds - 1;
-		return (MAX(0,MIN(maxWound,wound)));
+		return (Math::max(0,Math::min(maxWound,wound)));
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {

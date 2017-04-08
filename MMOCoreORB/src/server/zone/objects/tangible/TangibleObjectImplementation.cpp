@@ -696,7 +696,7 @@ int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageT
 	if (returnValue < 0)
 		returnValue = 0;
 
-	setConditionDamage(MAX(0, newConditionDamage), notifyClient);
+	setConditionDamage(Math::max(0.f, newConditionDamage), notifyClient);
 
 	return returnValue;
 }
