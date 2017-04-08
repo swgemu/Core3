@@ -87,7 +87,7 @@ public:
 			if (tokenizer.hasMoreTokens())
 				quality = tokenizer.getIntToken();
 
-			quality = MAX(0, quality);
+			quality = Math::max(0, quality);
 
 			unsigned int targetTemplate = draftSchematic->getTanoCRC();
 
@@ -140,7 +140,7 @@ public:
 							float maxValue = craftingValues->getMaxValue(subtitle);
 							float minValue = craftingValues->getMinValue(subtitle);
 
-							//float newValue = fabs(maxValue-minValue)*((float)quality/100.f) + MAX(minValue, maxValue);
+							//float newValue = fabs(maxValue-minValue)*((float)quality/100.f) + Math::max(minValue, maxValue);
 							//craftingValues->setCurrentValue(subtitle, newValue);
 
 							craftingValues->setCurrentPercentage(subtitle, (float)quality/100.f, 5.f);

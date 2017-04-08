@@ -32,8 +32,8 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 
 	for(int i = 0; i < modCount; ++i) {
 		//Mods can't be lower than -1 or greater than 25
-		int max = MAX(-1, MIN(25, round(0.1f * level + 3)));
-		int min = MAX(-1, MIN(25, round(0.075f * level - 1)));
+		int max = Math::max(-1, Math::min(25, round(0.1f * level + 3)));
+		int min = Math::max(-1, Math::min(25, round(0.075f * level - 1)));
 
 		int mod = System::random(max - min) + min;
 

@@ -405,7 +405,7 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		if (subtitlesTitle == "resists" && minValue >= 0) {
 			float maxValue = craftingValues->getMaxValue(subtitle);
 			if (craftingValues->getCurrentValue(i) < maxValue) {
-				craftingValues->setCurrentValue(subtitle, MIN(currentEffective, maxValue));
+				craftingValues->setCurrentValue(subtitle, Math::min(currentEffective, maxValue));
 			}
 		}
 	}

@@ -104,9 +104,9 @@ public:
 
 					if(maxSkill != 0 && minSkill != 0) {
 						if(newSkillBonus >= 0)
-							newSkillBonus = MIN(newSkillBonus, maxSkill);
+							newSkillBonus = Math::min(newSkillBonus, maxSkill);
 						else
-							newSkillBonus = MAX(newSkillBonus, minSkill);
+							newSkillBonus = Math::max(newSkillBonus, minSkill);
 					}
 					newEntry.setSkillBonus(newSkillBonus);
 
@@ -115,9 +115,9 @@ public:
 
 					if(maxSkill != 0 && minSkill != 0) {
 						if(newSkillMod >= 0)
-							newSkillMod = MIN(newSkillMod, maxSkill);
+							newSkillMod = Math::min(newSkillMod, maxSkill);
 						else
-							newSkillMod = MAX(newSkillMod, minSkill);
+							newSkillMod = Math::max(newSkillMod, minSkill);
 					}
 
 					newEntry.setSkillMod(newSkillMod);
@@ -155,9 +155,9 @@ public:
 
 				if(maxSkill != 0 && minSkill != 0) {
 					if (newSkillBonus >= 0)
-						newSkillBonus = MIN(newSkillBonus, maxSkill);
+						newSkillBonus = Math::min(newSkillBonus, maxSkill);
 					else
-						newSkillBonus = MAX(newSkillBonus, minSkill);
+						newSkillBonus = Math::max(newSkillBonus, minSkill);
 				}
 
 				skill += newSkillBonus;
@@ -198,9 +198,9 @@ public:
 
 				if(maxSkill != 0 && minSkill != 0) {
 					if (skillModValue >= 0)
-						skillModValue = MIN(skillModValue, maxSkill);
+						skillModValue = Math::min(skillModValue, maxSkill);
 					else
-						skillModValue = MAX(skillModValue, minSkill);
+						skillModValue = Math::max(skillModValue, minSkill);
 				}
 
 				if(skills.contains(skillMod))
