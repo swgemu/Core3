@@ -1857,15 +1857,17 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	// from screenshots, it appears that food mitigation and armor mitigation were independently calculated
 	// and then added together.
 	int foodBonus = defender->getSkillMod("mitigate_damage");
-	int foodMitigation = 0;
-	if (foodBonus > 0)
-		foodMitigation = (int)(damage * foodBonus / 100.f);
 
 	if (healthDamaged) {
 		static uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
 		hitLocation = bodyLocations[System::random(3)];
 
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
+
+		int foodMitigation = 0;
+		if (foodBonus > 0)
+			foodMitigation = (int)(healthDamage * foodBonus / 100.f);
+
 		healthDamage -= MIN(healthDamage, foodMitigation * data.getHealthDamageMultiplier());
 
 		int spilledDamage = (int)(healthDamage*spillMultPerPool); // Cut our damage by the spill percentage
@@ -1882,6 +1884,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		hitLocation = legLocations[System::random(1)];
 
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), hitLocation, data) * damageMultiplier;
+
+		int foodMitigation = 0;
+		if (foodBonus > 0)
+			foodMitigation = (int)(actionDamage * foodBonus / 100.f);
+
 		actionDamage -= MIN(actionDamage, foodMitigation * data.getActionDamageMultiplier());
 
 		int spilledDamage = (int)(actionDamage*spillMultPerPool);
@@ -1896,6 +1903,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (mindDamaged) {
 		hitLocation = HIT_HEAD;
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
+
+		int foodMitigation = 0;
+		if (foodBonus > 0)
+			foodMitigation = (int)(mindDamage * foodBonus / 100.f);
+
 		mindDamage -= MIN(mindDamage, foodMitigation * data.getMindDamageMultiplier());
 
 		int spilledDamage = (int)(mindDamage*spillMultPerPool);
