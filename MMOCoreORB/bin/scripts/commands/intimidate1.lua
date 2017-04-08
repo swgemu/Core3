@@ -44,23 +44,26 @@
 Intimidate1Command = {
 	name = "intimidate1",
 
-	damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speedMultiplier = 1,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	
+
 	accuracySkillMod = "intimidate",
+	accuracyBonus = 5,
 
 	stateEffects = {
-	  StateEffect( 
-		INTIMIDATE_EFFECT, 
-		{}, 
-		{}, 
-		{}, 
-		100, 
-		0, 
-		30 
+	  StateEffect(
+		INTIMIDATE_EFFECT,
+		{},
+		{ "intimidate_defense" },--mod is currently disabled since it was bugged during 14.1 era
+		{},
+		100,
+		0,
+		30
 	  )
 	},
 
@@ -69,8 +72,8 @@ Intimidate1Command = {
 	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
 	range = 24,
 
-	poolsToDamage = NO_ATTRIBUTE
+	damageType = STUN_DAMAGE,
+	poolsToDamage = MIND_ATTRIBUTE
 }
 
 AddCommand(Intimidate1Command)
-

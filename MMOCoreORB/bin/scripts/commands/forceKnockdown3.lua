@@ -44,11 +44,14 @@
 ForceKnockdown3Command = {
 	name = "forceknockdown3",
 
-    damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speed = 4.0,
 	forceCost = 200,
 	visMod = 25,
 	accuracySkillMod = "forceknockdown_accuracy",
+	accuracyBonus = 15,
 	areaAction = true,
 	areaRange = 15,
 
@@ -68,7 +71,8 @@ ForceKnockdown3Command = {
 
 	combatSpam = "forceknockdown3",
 
-	poolsToDamage = NO_ATTRIBUTE,
+	poolsToDamage = ACTION_ATTRIBUTE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	forceAttack = true,
 
