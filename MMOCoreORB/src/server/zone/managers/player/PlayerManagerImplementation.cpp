@@ -630,7 +630,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 	uint32 recoveryTime = (value / 5); //In seconds - 3 seconds is recoveryEvent timer
 
 	//Recovery time is gated between 10 and 60 seconds.
-	recoveryTime = MIN(MAX(recoveryTime, 10), 60);
+	recoveryTime = Math::min(Math::max(recoveryTime, 10u), 60u);
 
 	//Check for incap recovery food buff - overrides recovery time gate.
 	/*if (hasBuff(BuffCRC::FOOD_INCAP_RECOVERY)) {
@@ -1183,7 +1183,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			if (levelRatio <= 0.5) {
 				xpAmount = 1;
 			} else {
-				xpAmount = MIN(xpAmount, (float)attacker->getLevel() * 50.f);
+				xpAmount = Math::min(xpAmount, (float)attacker->getLevel() * 50.f);
 				xpAmount /= totalPets;
 
 				if (winningFaction == attacker->getFaction())
@@ -1210,7 +1210,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				xpAmount *= (float) damage / totalDamage;
 
 				//Cap xp based on level
-				xpAmount = MIN(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
 
 				//Apply group bonus if in group
 				if (group != NULL)
@@ -1345,9 +1345,9 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 }
 
 void PlayerManagerImplementation::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
-	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
-	int actionEncumb = MAX(0, armor->getActionEncumbrance());
-	int mindEncumb = MAX(0, armor->getMindEncumbrance());
+	int healthEncumb = Math::max(0, armor->getHealthEncumbrance());
+	int actionEncumb = Math::max(0, armor->getActionEncumbrance());
+	int mindEncumb = Math::max(0, armor->getMindEncumbrance());
 
 	player->addEncumbrance(CreatureEncumbrance::HEALTH, healthEncumb, true);
 	player->addEncumbrance(CreatureEncumbrance::ACTION, actionEncumb, true);
@@ -1373,9 +1373,9 @@ void PlayerManagerImplementation::applyEncumbrancies(CreatureObject* player, Arm
 }
 
 void PlayerManagerImplementation::removeEncumbrancies(CreatureObject* player, ArmorObject* armor) {
-	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
-	int actionEncumb = MAX(0, armor->getActionEncumbrance());
-	int mindEncumb = MAX(0, armor->getMindEncumbrance());
+	int healthEncumb = Math::max(0, armor->getHealthEncumbrance());
+	int actionEncumb = Math::max(0, armor->getActionEncumbrance());
+	int mindEncumb = Math::max(0, armor->getMindEncumbrance());
 
 	player->addEncumbrance(CreatureEncumbrance::HEALTH, -healthEncumb, true);
 	player->addEncumbrance(CreatureEncumbrance::ACTION, -actionEncumb, true);
@@ -3126,7 +3126,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 	if (player->getPlayerObject() != NULL && player->getPlayerObject()->isJedi() && weapon->isJediWeapon())
 		skillMod += player->getSkillMod("private_jedi_difficulty");
 
-	int level = MIN(25, skillMod / 100 + 1);
+	int level = Math::min(25, skillMod / 100 + 1);
 
 	return level;
 }
@@ -3153,7 +3153,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player, St
 	else
 		weaponType = "heavyweapon";
 
-	int level = MIN(25, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100 + 1);
+	int level = Math::min(25, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100 + 1);
 
 	return level;
 }
