@@ -949,7 +949,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 				name = name.trim();
 
 				int difficulty = creature->getSkillMod("private_jedi_difficulty");
-				level = MIN(difficulty / 10, 250);
+				level = Math::min(difficulty / 10, 250);
 			}
 
 			mission->setMissionTargetName(name);
@@ -1664,7 +1664,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	LairSpawn* lairSpawn = NULL;
 
 	//Cap the minLevel to prevent a group from being too high to get missions on a planet
-	int minLevel = MIN(playerLevel - 5, minLevelCeiling);
+	int minLevel = Math::min(playerLevel - 5, minLevelCeiling);
 
 	//Try to pick random lair within playerLevel +-5;
 	while (counter > 0 && !foundLair) {
