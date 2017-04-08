@@ -68,7 +68,7 @@ public:
 
 	inline int getCellTotalNumber() {
 		//exclude the outside cell
-		return MAX(0, cellProperties.size() - 1);
+		return Math::max(0, cellProperties.size() - 1);
 	}
 
 	inline int getFloorMeshNumber() {

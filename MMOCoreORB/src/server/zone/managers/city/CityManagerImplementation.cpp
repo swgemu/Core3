@@ -563,7 +563,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 		return;
 	}
 
-	int maxWithdrawal = MIN(city->getMaxWithdrawal(), city->getCityTreasury());
+	int maxWithdrawal = (int) Math::min((double) city->getMaxWithdrawal(), city->getCityTreasury());
 
 	if (value > maxWithdrawal || value < minWithdrawal) {
 		mayor->sendSystemMessage("@city/city:withdraw_limits"); // You may only withdraw between 10,000 and 50,000 credits per day.

@@ -156,7 +156,7 @@ void RecastNavMeshBuilder::saveAll(const String& path) {
 bool RecastNavMeshBuilder::rebuildArea(const AABB& buildArea, RecastNavMesh* existingMesh) {
 	destroyMesh = false;
 	float longest = buildArea.extents()[buildArea.longestAxis()];
-	longest = MAX(settings.m_tileSize * settings.m_cellSize * 2.25, longest);
+	longest = Math::max(settings.m_tileSize * settings.m_cellSize * 2.25f, longest);
 
 	Vector3 center = buildArea.midPoint();
 	//un-fucking (or re-fucking) our coordinate system
