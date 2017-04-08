@@ -1535,11 +1535,11 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 			if (targetWeapon == NULL)
 				return System::random(2) + 1;
 
-			if (def == "block")
+			if (def == "block" && (!targetCreature->isRidingMount() && !targetCreature->isSwimming()))
 				return BLOCK;
-			else if (def == "dodge")
+			else if (def == "dodge" && (!targetCreature->isRidingMount() && !targetCreature->isSwimming()))
 				return DODGE;
-			else if (def == "counterattack")
+			else if (def == "counterattack" && (!(targetCreature->getParent() != NULL && targetCreature->getParent().get()->isVehicleObject()) && !targetCreature->isSwimming()))
 				return COUNTER;
 			else if (def == "unarmed_passive_defense")
 				return System::random(2) + 1;
