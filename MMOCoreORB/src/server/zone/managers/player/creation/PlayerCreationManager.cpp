@@ -390,7 +390,7 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	callback->getHairCustomization(hairCustomization);
 
 	float height = callback->getHeight();
-	height = MAX(MIN(height, playerTemplate->getMaxScale()),
+	height = Math::max(Math::min(height, playerTemplate->getMaxScale()),
 			playerTemplate->getMinScale());
 
 	//validate biography

@@ -323,9 +323,9 @@ public:
 		int eValue = ( effectiveness / (rating + 1));
 		if(input > 0) {
 			if (multiply) {
-				return MAX((input - (rValue +eValue)),0) * multValue;
+				return Math::max((input - (rValue +eValue)),0) * multValue;
 			} else {
-				return MAX((input - (rValue +eValue)),0) / multValue;
+				return Math::max((input - (rValue +eValue)),0) / multValue;
 			}
 		} else {
 			if (lowValue == 1) {
