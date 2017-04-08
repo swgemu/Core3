@@ -616,7 +616,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 		float waterHeight = -16368.f;
 
 		if (terrainManager->getWaterHeight(targetPosition.getY(), targetPosition.getY(), waterHeight))
-			height = MAX(waterHeight, height);
+			height = Math::max(waterHeight, height);
 
 		if (height > targetPosition.getZ()) {
 			collisionPoint = targetPosition;

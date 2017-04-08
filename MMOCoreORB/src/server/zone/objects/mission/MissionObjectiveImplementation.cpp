@@ -228,7 +228,7 @@ void MissionObjectiveImplementation::awardReward() {
 		owner->sendSystemMessage("@mission/mission_generic:group_too_far"); // Mission Alert! Some group members are too far away from the group to receive their reward and and are not eligible for reward.
 	}
 
-	int dividedReward = mission->getRewardCredits() / MAX(divisor, 1);
+	int dividedReward = mission->getRewardCredits() / Math::max(divisor, 1);
 
 	for (int i = 0; i < players.size(); i++) {
 		ManagedReference<CreatureObject*> player = players.get(i);

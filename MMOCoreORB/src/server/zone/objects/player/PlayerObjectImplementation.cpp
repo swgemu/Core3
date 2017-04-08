@@ -1344,11 +1344,11 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	float newAmount = currentAmount + amount;
 
 	if (!factionStandingList.isPvpFaction(factionName))
-		newAmount = MIN(5000, newAmount);
+		newAmount = Math::min(5000.f, newAmount);
 	else if (player->getFaction() == factionName.hashCode())
-		newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+		newAmount = Math::min((float) FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
 	else
-		newAmount = MIN(1000, newAmount);
+		newAmount = Math::min(1000.f, newAmount);
 
 	factionStandingList.put(factionName, newAmount);
 
@@ -1404,13 +1404,13 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 		return;
 
 	//Ensure that the new amount is not less than -5000.
-	float newAmount = MAX(-5000, currentAmount - amount);
+	float newAmount = Math::max(-5000.f, currentAmount - amount);
 
 	if (factionStandingList.isPvpFaction(factionName)) {
 		if (player->getFaction() == factionName.hashCode())
-			newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+			newAmount = Math::min((float) FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
 		else
-			newAmount = MIN(1000, newAmount);
+			newAmount = Math::min(1000.f, newAmount);
 	}
 
 	factionStandingList.put(factionName, newAmount);
@@ -1436,13 +1436,13 @@ void PlayerObjectImplementation::setFactionStanding(const String& factionName, f
 	if (player == NULL)
 		return;
 
-	newAmount = MAX(-5000, newAmount);
+	newAmount = Math::max(-5000.f, newAmount);
 
 	if (factionStandingList.isPvpFaction(factionName)) {
 		if (player->getFaction() == factionName.hashCode())
-			newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+			newAmount = Math::min((float) FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
 		else
-			newAmount = MIN(1000, newAmount);
+			newAmount = Math::min(1000.f, newAmount);
 	}
 
 	factionStandingList.put(factionName, newAmount);
@@ -1556,7 +1556,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 			if (targetObject != NULL) {
-				if (targetObject->isInRange(creature, MAX(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
+				if (targetObject->isInRange(creature, Math::max(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 				}
 

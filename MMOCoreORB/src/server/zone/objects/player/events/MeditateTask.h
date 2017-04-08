@@ -77,7 +77,7 @@ public:
 				int wounds = player->getWounds(pool);
 
 				//Cap the heal at the amount of wounds the creature has.
-				heal = MIN(wounds, heal);
+				heal = Math::min(wounds, heal);
 
 				player->healWound(player, pool, heal, true, false);
 
