@@ -204,7 +204,7 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 
 	if (not skillManager:canLearnSkill(pPlayer, skillName, true)) then
 		local convoTemplate = LuaConversationTemplate(pConvTemplate)
-		pConvScreen = convoTemplate:getScreen("nsf_skill_pts")
+		pConvScreen = convoTemplate:getScreen("nsf_skill_points")
 		return self:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	end
 
