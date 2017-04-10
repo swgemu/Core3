@@ -26,9 +26,10 @@ intro_begin = ConvoScreen:new {
 	leftDialog = "@conversation/defend_the_village:s_d2fe23af", -- "Easy there recruit. I have an assignment for you whenever you're ready. I can give you training after you complete this mission. Would you be more interested in learning how to fire ranged weapons more quickly, or defending yourself in melee combat?"
 	stopConversation = "false",
 	options = {
-		{"@conversation/defend_the_village:s_6e8bed18", "choose_ranged"}, -- "Definitely increasing my ranged speed."
-		{"@conversation/defend_the_village:s_95fe56b2", "choose_melee"}, -- "Melee defense. No question."
-		{"@conversation/defend_the_village:s_64cad97c", "choose_neither"}, -- "I'm not ready to work right now."
+		-- See convo handler
+		--{"@conversation/defend_the_village:s_6e8bed18", "choose_ranged"}, -- "Definitely increasing my ranged speed."
+		--{"@conversation/defend_the_village:s_95fe56b2", "choose_melee"}, -- "Melee defense. No question."
+		--{"@conversation/defend_the_village:s_64cad97c", "choose_neither"}, -- "I'm not ready to work right now."
 	}
 }
 villageSarguilloPhase4ConvoTemplate:addScreen(intro_begin);
