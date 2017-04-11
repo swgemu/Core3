@@ -314,7 +314,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 	bool match = true;
 
 	StringBuffer compare;
-	compare << "	" << "SkillMod" << "  " << "Player" << "	" << "Computed" << endl;
+	compare << endl << "	" << "SkillMod" << "  " << "Player" << "	" << "Computed" << endl;
 
 	for(int i = 0; i < group->size(); ++i) {
 		String key = group->elementAt(i).getKey();
@@ -336,6 +336,13 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 
 	if(!mods.isEmpty()) {
 		match = false;
+
+		for (int i = 0; i < mods.size(); i++) {
+			String key = mods.elementAt(i).getKey();
+			int currentValue = mods.get(key);
+
+			compare << "	" << key << "	" << "none" << "	" << currentValue << endl;
+		}
 	}
 
 	if(match == false) {
