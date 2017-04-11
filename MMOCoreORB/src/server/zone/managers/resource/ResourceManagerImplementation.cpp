@@ -177,9 +177,13 @@ void ResourceManagerImplementation::startResourceSpawner() {
 }
 
 void ResourceManagerImplementation::shiftResources() {
+	info("starting resource shift");
+
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	resourceSpawner->shiftResources();
+
+	info("resource shift ended");
 
 	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
 	resourceShift->schedule(shiftInterval);
