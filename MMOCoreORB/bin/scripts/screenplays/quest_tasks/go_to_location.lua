@@ -94,7 +94,7 @@ function GoToLocation:taskStart(pPlayer)
 			tempY = point.y
 		end
 
-		local tempPoint = getSpawnArea(spawnPlanet, tempX, tempY, self.randomMinDistance, self.randomMaxDistance, 20, 15, true)
+		local tempPoint = getSpawnArea(spawnPlanet, tempX, tempY, self.randomMinDistance, self.randomMaxDistance, 20, 10, true)
 		point.x = tempPoint[1]
 		point.y = tempPoint[3]
 	end
