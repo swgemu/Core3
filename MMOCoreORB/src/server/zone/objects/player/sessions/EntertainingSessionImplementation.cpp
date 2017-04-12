@@ -1042,9 +1042,12 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 		if (oldFlourishXp > flourishXp && (isDancing() || isPlayingMusic())) {
 			flourishXp = oldFlourishXp;
 
-			if (flourishXp > 0)
-				flourishXp -= ceil(performance->getFlourishXpMod() / 6);
-			else if (flourishXp < 0)
+			if (flourishXp > 0) {
+				int flourishDec = (int)((float)performance->getFlourishXpMod() / 6.0f);
+				flourishXp -= Math::max(1, flourishDec);
+			}
+
+			if (flourishXp < 0)
 				flourishXp = 0;
 		}
 
@@ -1093,6 +1096,8 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 
 			oldFlourishXp = flourishXp;
 			flourishXp = 0;
+		} else {
+			oldFlourishXp = 0;
 		}
 
 		if (healingXp > 0) {
