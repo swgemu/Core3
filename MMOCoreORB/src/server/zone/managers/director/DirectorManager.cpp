@@ -2748,7 +2748,8 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 
 		return 1;
 	} else {
-		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPoint");
+		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPoint, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) +
+				", zone: " + zoneName + ", minDist: " + String::valueOf(minimumDistance) + ", maxDist: " + String::valueOf(maximumDistance));
 		return 0;
 	}
 }
@@ -2788,7 +2789,7 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 	zone = ServerCore::getZoneServer()->getZone(zoneName);
 
 	if (zone == NULL) {
-		instance()->error("Zone is NULL in DirectorManager::getSpawnArea");
+		instance()->error("Zone is NULL in DirectorManager::getSpawnArea using zone name: " + zoneName);
 		return 0;
 	}
 
@@ -2830,6 +2831,9 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 
 		return 1;
 	} else {
+		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) +
+				", zone: " + zoneName + ", areaSize: " + String::valueOf(areaSize) + ", minDist: " + String::valueOf(minimumDistance) + ", maxDist: " +
+				String::valueOf(maximumDistance) + ", maxHeightDiff: " + String::valueOf(maximumHeightDifference));
 		return 0;
 	}
 }
@@ -3367,7 +3371,7 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 		lua_rawseti(L, -2, 1);
 		return 1;
 	} else {
-		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPointInArea");
+		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPointInArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) + ", zone: " + zoneName + ", radius: " + String::valueOf(radius));
 		return 0;
 	}
 }
