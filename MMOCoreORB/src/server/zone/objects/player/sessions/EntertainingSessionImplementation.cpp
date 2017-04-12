@@ -1043,7 +1043,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 			flourishXp = oldFlourishXp;
 
 			if (flourishXp > 0)
-				flourishXp =- ceil(performance->getFlourishXpMod() / 6);
+				flourishXp -= ceil(performance->getFlourishXpMod() / 6);
 			else if (flourishXp < 0)
 				flourishXp = 0;
 		}
