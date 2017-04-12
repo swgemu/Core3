@@ -53,10 +53,18 @@ end
 function FsSad2:despawnCamp(pPlayer)
 	local curQuest = -1
 	for i = 1, 8, 1 do
-		local questID = getPlayerQuestID("fs_quests_sad2_task" .. i)
+		for j = 1, 2, 1 do
+			local questID
 
-		if QuestManager.hasActiveQuest(pPlayer, questID) then
-			curQuest = i
+			if (j == 1) then
+				questID = getPlayerQuestID("fs_quests_sad2_task" .. i)
+			else
+				questID = getPlayerQuestID("fs_quests_sad2_return" .. i)
+			end
+
+			if QuestManager.hasActiveQuest(pPlayer, questID) then
+				curQuest = i
+			end
 		end
 	end
 
@@ -115,6 +123,8 @@ function FsSad2:acceptNextTask(pPlayer)
 
 		self:startTask(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASK1, 1)
 	else
+		self:despawnCamp(pPlayer)
+
 		for i = 1, 8, 1 do
 			local questID = getPlayerQuestID("fs_quests_sad2_return" .. i)
 
