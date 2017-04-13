@@ -109,9 +109,15 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	if (pOwner == nil) then
 		return 1
 	end
-	
+
+	local pTheater = self:getTheaterObject(pOwner)
+
+	if (pTheater == nil) then
+		return 1
+	end
+
 	local pInventory = SceneObject(pMellichae):getSlottedObject("inventory")
-	
+
 	if (pInventory ~= nil) then
 		SceneObject(pInventory):setContainerOwnerID(ownerID)
 		createLoot(pInventory, "mellichae_outro", 1, true)
@@ -123,7 +129,33 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	VillageJediManagerCommon.setJediProgressionScreenPlayState(pOwner, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 	FsOutro:setCurrentStep(pOwner, 4)
 	PadawanTrials:doPadawanTrialsSetup(pOwner)
-	createEvent(10 * 1000, "MellichaeOutroTheater", "finish", pOwner, "")
+
+	local pActiveArea = spawnActiveArea(CreatureObject(pOwner):getZoneName(), "object/active_area.iff", SceneObject(pTheater):getWorldPositionX(), 0, SceneObject(pTheater):getWorldPositionY(), 64, 0)
+
+	if (pActiveArea ~= nil) then
+		writeData(SceneObject(pActiveArea):getObjectID() .. ":ownerID", ownerID)
+		createObserver(EXITEDAREA, "MellichaeOutroTheater", "handleExitedMissionAreaEvent", pActiveArea)
+		return true
+	end
+
+	createEvent(600 * 1000, "MellichaeOutroTheater", "finish", pOwner, "")
+
+	return 1
+end
+
+function MellichaeOutroTheater:handleExitedMissionAreaEvent(pActiveArea, pPlayer, nothing)
+	if not SceneObject(pPlayer):isPlayerCreature() then
+		return 0
+	end
+
+	local areaID = SceneObject(pActiveArea):getObjectID()
+
+	if (readData(areaID .. ":ownerID") ~= SceneObject(pPlayer):getObjectID()) then
+		return 0
+	end
+
+	deleteData(areaID .. ":ownerID")
+	self:finish(pPlayer)
 
 	return 1
 end
