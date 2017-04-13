@@ -135,7 +135,6 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	if (pActiveArea ~= nil) then
 		writeData(SceneObject(pActiveArea):getObjectID() .. ":ownerID", ownerID)
 		createObserver(EXITEDAREA, "MellichaeOutroTheater", "handleExitedMissionAreaEvent", pActiveArea)
-		return true
 	end
 
 	createEvent(600 * 1000, "MellichaeOutroTheater", "finish", pOwner, "")
