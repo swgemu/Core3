@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_b547224b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase1/fs_reflex1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-14T23:44:37Z",
+      "side": 1,
+      "message": "This is redundant since you\u0027re adding it to resetTasks as well which is caled 2 lines up.",
+      "revId": "7411da8230d9e0f7d0419408af0c14d14ec9a461",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_5574be9b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase2/fs_reflex2.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-14T23:44:37Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "7411da8230d9e0f7d0419408af0c14d14ec9a461",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_7579ba92",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase2/fs_reflex2.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-14T23:44:37Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "7411da8230d9e0f7d0419408af0c14d14ec9a461",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
