@@ -27,9 +27,11 @@ end
 function FsReflex2:failQuest(pPlayer)
 	writeData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase2", 1)
 	FsReflex2Theater:finish(pPlayer)
+	self:removeSupplyCrate(pPlayer)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_02)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03)
+	dropObserver(OBJECTDESTRUCTION, "FsReflex2Theater", "onPlayerKilled", pPlayer)
 end
 
 function FsReflex2:resetFetchStatus(pPlayer)
@@ -48,6 +50,9 @@ function FsReflex2:resetTasks(pPlayer)
 	if (FsReflex2GoBack:hasTaskStarted(pPlayer)) then
 		FsReflex2GoBack:finish(pPlayer)
 	end
+
+	self:removeSupplyCrate(pPlayer)
+	dropObserver(OBJECTDESTRUCTION, "FsReflex1Theater", "onPlayerKilled", pPlayer)
 end
 
 function FsReflex2:hasActiveFetch(pPlayer)
@@ -56,6 +61,19 @@ function FsReflex2:hasActiveFetch(pPlayer)
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03) or
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) and not
 		QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)
+end
+
+function FsReflex2:removeSupplyCrate(pPlayer)
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+	if pInventory ~= nil then
+		local pSupplies = getContainerObjectByTemplate(pInventory, "object/tangible/item/quest/force_sensitive/fs_reflex_supply_crate.iff", false)
+
+		if (pSupplies ~= nil) then
+			SceneObject(pSupplies):destroyObjectFromWorld()
+			SceneObject(pSupplies):destroyObjectFromDatabase()
+		end
+	end
 end
 
 function FsReflex2:completeSupplyFetch(pPlayer)
@@ -128,7 +146,7 @@ function FsReflex2:doPhaseChangeFail(pPlayer)
 	end
 
 	FsReflex2:resetTasks(pPlayer)
-	deleteData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase1")
+	deleteData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase2")
 end
 
 return FsReflex2
