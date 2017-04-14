@@ -181,7 +181,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	//info("past delay", true);
 
-	if (!applySpecialAttackCost(attacker, weapon, data))
+	if (!applySpecialAttackCost(attacker, weapon, defenderObject, data))
 		return -2;
 
 	//info("past special attack cost", true);
@@ -1625,7 +1625,7 @@ void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, Crea
 
 }
 
-bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data) {
+bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CreatureAttackData& data) {
 	if (attacker->isAiAgent() || data.isForceAttack())
 		return true;
 
@@ -1639,7 +1639,36 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 				return false;
 			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
-				VisibilityManager::instance()->increaseVisibility(attacker, data.getCommand()->getVisMod()); // Give visibility
+
+				//'Give Visibility' check should happen only when the target is NOT a creature...
+				if (defender != NULL && !defender->isCreature() && !defender->isTurret())
+					VisibilityManager::instance()->increaseVisibility(attacker, data.getCommand()->getVisMod());
+
+				//...but also account for AOE's and if any "non-animals" are in range 32m to witness self heals/powers
+				SortedVector<QuadTreeEntry*> objects(512, 512);
+				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) attacker->getCloseObjects();
+				if (closeObjectsVector == NULL) {
+					attacker->getZone()->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 32, &objects, true);
+				} else {
+					closeObjectsVector->safeCopyTo(objects);
+				}
+
+				for (int i = 0; i < objects.size(); ++i) {
+					SceneObject* object = static_cast<SceneObject*>(objects.get(i));
+					if (object != NULL && object->isCreatureObject() && attacker->isInRange(object, 32)) {
+						ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(object);
+						if (!creo->isCreature() && !(creo->isPet() && creo->isDroidObject()) && (!creo->isDead() || !creo->isInvisible())) {
+							VisibilityManager::instance()->increaseVisibility(attacker, data.getCommand()->getVisMod()); // Give visibility
+						} else if (attacker->hasDefender(object)) {
+							CreatureObject* dcreo = defender->asCreatureObject();
+							uint64 visTarget = dcreo->getTargetID();
+							Reference<CreatureObject*> targetObject = attacker->getZoneServer()->getObject(visTarget, true).castTo<CreatureObject*>();
+							if (targetObject != NULL && !targetObject->isCreature() && !targetObject->isDead()) {
+								VisibilityManager::instance()->increaseVisibility(attacker, data.getCommand()->getVisMod()); // Give visibility
+							}
+						}
+					}
+				}
 			}
 		}
 	}

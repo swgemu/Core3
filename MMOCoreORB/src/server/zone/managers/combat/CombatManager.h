@@ -224,7 +224,7 @@ protected:
 	/**
 	 * returns false on insufficient
 	 */
-	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data);
+	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CreatureAttackData& data);
 };
 
 #endif /* COMBATMANAGER_H_ */
