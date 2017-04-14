@@ -58,6 +58,14 @@ function FsReflex1Theater:onTheaterCreated(pPlayer)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 end
 
+function FsReflex1Theater:onTheaterFinished(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	dropObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
+end
+
 function FsReflex1Theater:onPlayerKilled(pPlayer, pKiller, nothing)
 	if (pPlayer == nil or pKiller == nil) then
 		return 0
