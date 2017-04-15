@@ -93,6 +93,8 @@ function FsReflex1:completeVillagerEscort(pPlayer)
 
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
+	
+	self:resetTasks(pPlayer)
 
 	if (count == 5) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_finished")

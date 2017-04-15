@@ -52,7 +52,7 @@ function FsReflex2:resetTasks(pPlayer)
 	end
 
 	self:removeSupplyCrate(pPlayer)
-	dropObserver(OBJECTDESTRUCTION, "FsReflex1Theater", "onPlayerKilled", pPlayer)
+	dropObserver(OBJECTDESTRUCTION, "FsReflex2Theater", "onPlayerKilled", pPlayer)
 end
 
 function FsReflex2:hasActiveFetch(pPlayer)
@@ -86,6 +86,7 @@ function FsReflex2:completeSupplyFetch(pPlayer)
 	self:setFetchCount(pPlayer, count)
 
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03)
+	self:resetTasks(pPlayer)
 
 	if (count == 6) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_finished")
