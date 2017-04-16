@@ -1061,7 +1061,12 @@ function PadawanTrials:onPlayerLoggedIn(pPlayer)
 
 		if (trialData.trialType == TRIAL_HUNT and readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal") ~= nil) then
 			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
-			createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+
+			if (self:hasCompletedHunt(pPlayer)) then
+				self:createMainLocation(pPlayer)
+			else
+				createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+			end
 		elseif (trialData.trialType == TRIAL_LIGHTSABER and not CreatureObject(pPlayer):hasScreenPlayState(1, trialState .. "_crystal")) then
 			if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState .. "_saber")) then
 				dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
