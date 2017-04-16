@@ -130,7 +130,7 @@ function MellichaeOutroTheater:onMellichaeKilled(pMellichae, pKiller)
 	FsOutro:setCurrentStep(pOwner, 4)
 	PadawanTrials:doPadawanTrialsSetup(pOwner)
 
-	local pActiveArea = spawnActiveArea(CreatureObject(pOwner):getZoneName(), "object/active_area.iff", SceneObject(pTheater):getWorldPositionX(), 0, SceneObject(pTheater):getWorldPositionY(), 64, 0)
+	local pActiveArea = spawnActiveArea(CreatureObject(pOwner):getZoneName(), "object/active_area.iff", SceneObject(pTheater):getWorldPositionX(), 0, SceneObject(pTheater):getWorldPositionY(), 150, 0)
 
 	if (pActiveArea ~= nil) then
 		writeData(SceneObject(pActiveArea):getObjectID() .. ":ownerID", ownerID)
