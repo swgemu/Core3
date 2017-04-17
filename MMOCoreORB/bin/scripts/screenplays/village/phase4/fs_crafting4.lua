@@ -15,6 +15,10 @@ FsCrafting4 = {
 }
 
 function FsCrafting4:activateQuest(pPlayer)
+	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		return
+	end
+
 	local lastCompleted = self:getLastCompletedQuest(pPlayer)
 
 	if (lastCompleted >  -1) then
@@ -29,7 +33,7 @@ function FsCrafting4:activateQuest(pPlayer)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01)
 	end
 
-	VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+	VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, "FsCrafting4")
 end
 
 function FsCrafting4:removeCore(pPlayer)

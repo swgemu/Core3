@@ -290,6 +290,7 @@ function VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, curre
 
 	for i = 1, mapSize, 1 do
 		local playerID = tonumber(questMap:getMapKeyAtIndex(i - 1))
+		removeQuestStatus(playerID .. ":village:activeQuestName")
 
 		local pPlayer = getSceneObject(playerID)
 
