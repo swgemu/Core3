@@ -16,6 +16,8 @@ function villageChiefEngineerPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, 
 		return convoTemplate:getScreen("intro_quest6")
 	elseif (self:isOnQuestOneThroughFive(pPlayer) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_continue")
+	elseif (self:isOnQuestOneThroughFive(pPlayer) and VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and VillageJediManagerCommon.getActiveQuestNameThisPhase(pPlayer) ~= "FsCrafting4") then
+		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (self:isOnQuestOneThroughFive(pPlayer)) then
 		return convoTemplate:getScreen("intro_quest1to5")
 	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then

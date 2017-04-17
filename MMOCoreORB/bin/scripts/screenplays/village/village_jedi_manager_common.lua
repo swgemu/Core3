@@ -90,15 +90,15 @@ function VillageJediManagerCommon.getUnlockedBranchCount(pPlayer)
 	if (pPlayer == nil) then
 		return 0
 	end
-	
+
 	local count = 0
-	
+
 	for i = 1, #VillageJediManagerCommon.forceSensitiveBranches, 1 do
 		if VillageJediManagerCommon.hasUnlockedBranch(pPlayer, VillageJediManagerCommon.forceSensitiveBranches[i]) then
 			count = count + 1
 		end
 	end
-	
+
 	return count
 end
 
@@ -113,16 +113,36 @@ function VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
 	return phaseID == lastActiveQuest
 end
 
-function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, questName)
 	if (pPlayer == nil) then
 		return
 	end
 
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
 	VillageJediManagerCommon.addToActiveQuestList(pPlayer)
-	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest", phaseID)
+	setQuestStatus(playerID .. ":village:lastActiveQuest", phaseID)
+
+	if (questName ~= nil and questName ~= "") then
+		setQuestStatus(playerID .. ":village:activeQuestName", questName)
+	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:quest_accepted")
+end
+
+function VillageJediManagerCommon.getActiveQuestNameThisPhase(pPlayer)
+	if (pPlayer == nil) then
+		return ""
+	end
+
+	local questName = getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:activeQuestName")
+
+	if (questName ~= "" and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		removeQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:activeQuestName")
+		return ""
+	end
+
+	return questName
 end
 
 function VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
@@ -143,6 +163,7 @@ function VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
 	VillageJediManagerCommon.removeFromActiveQuestList(pPlayer)
+	removeQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:activeQuestName")
 	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastCompletedQuest", phaseID)
 end
 
