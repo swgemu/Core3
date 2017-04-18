@@ -465,7 +465,7 @@ function VillageGmSui.branchManagement(pPlayer, targetID)
 	for i = 1, #VillageJediManagerCommon.forceSensitiveBranches, 1 do
 		local rowString = getStringId("@quest/force_sensitive/utils:" .. VillageJediManagerCommon.forceSensitiveBranches[i])
 
-		if (VillageJediManagerCommon.hasUnlockedBranch(pPlayer, VillageJediManagerCommon.forceSensitiveBranches[i])) then
+		if (VillageJediManagerCommon.hasUnlockedBranch(pTarget, VillageJediManagerCommon.forceSensitiveBranches[i])) then
 			rowString = rowString .. " \\#pcontrast1 (UNLOCKED)"
 		else
 			rowString = rowString .. " \\#pcontrast2 (Locked)"
