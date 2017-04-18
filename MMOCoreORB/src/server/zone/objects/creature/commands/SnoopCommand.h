@@ -124,7 +124,12 @@ public:
 
 			args.getStringToken(varName);
 
-			String result = ghost->getScreenPlayData(playName, varName);
+			PlayerObject* targetGhost = targetObj->getPlayerObject();
+
+			if (targetGhost == NULL)
+				return GENERALERROR;
+
+			String result = targetGhost->getScreenPlayData(playName, varName);
 
 			creature->sendSystemMessage(targetObj->getFirstName() + "'s screenplay data value for screenplay " + playName + " and variable " + varName + " is: " + result);
 		} else if (container == "screenplaystate") {
