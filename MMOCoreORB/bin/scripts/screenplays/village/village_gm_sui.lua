@@ -244,8 +244,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 		return
 	end
 
-	local promptBuf = " \\#pcontrast1 " .. "Player name:" .. " \\#pcontrast2 " .. SceneObject(pTarget):getCustomObjectName() .. "\n"
-	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Object ID:" .. " \\#pcontrast2 " .. targetID .. "\n"
+	local promptBuf = " \\#pcontrast1 " .. "Player:" .. " \\#pcontrast2 " .. SceneObject(pTarget):getCustomObjectName() .. " (" .. targetID .. ")\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Jedi State:" .. " \\#pcontrast2 " .. PlayerObject(pGhost):getJediState() .. "\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Progression:" .. " \\#pcontrast2 "
 
@@ -260,10 +259,20 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)) then
 		promptBuf = promptBuf .. "Mellichae\n"
 	elseif (FsOutro:isOnOutro(pTarget)) then
-		local curStep = FsIntro:getCurrentStep(pTarget)
+		local curStep = FsOutro:getCurrentStep(pTarget)
 
 		if (curStep == OLDMANWAIT) then
 			promptBuf = promptBuf .. "Outro (Waiting for Old Man)\n"
+
+			local timeTilVisit = readScreenPlayData(pTarget, "VillageJediProgression", "FsOutroDelay") - os.time()
+
+			if (not PlayerObject(pGhost):isOnline()) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Player Offline\n"
+			elseif (timeTilVisit > 0) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit) .. "\n"
+			else
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Soon\n"
+			end
 		elseif (curStep == OLDMANMEET) then
 			promptBuf = promptBuf .. "Outro (Old Man Visit)\n"
 		end
