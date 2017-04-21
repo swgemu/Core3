@@ -560,6 +560,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneContainerComponent.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/director/DirectorManager.cpp \
+		server/zone/managers/director/ScreenPlayTask.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
