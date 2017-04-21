@@ -6,7 +6,7 @@ package server.zone.managers.director;
 
 import engine.core.ManagedObject;
 include server.zone.objects.scene.SceneObject;
-include server.zone.managers.director.ScreenPlayTask;
+import server.zone.managers.director.ScreenPlayTask;
 
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
