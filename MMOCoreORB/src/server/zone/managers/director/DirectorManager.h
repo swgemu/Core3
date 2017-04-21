@@ -10,12 +10,11 @@
 
 #include "DirectorSharedMemory.h"
 #include "server/zone/managers/director/QuestStatus.h"
+#include "server/zone/managers/director/ScreenPlayTask.h"
 #include "server/zone/managers/director/QuestVectorMap.h"
 
 #include "system/util/SynchronizedHashTable.h"
 #include "system/util/SynchronizedVectorMap.h"
-
-class ScreenPlayTask;
 
 namespace server {
 namespace zone {
@@ -50,6 +49,7 @@ namespace server {
   namespace managers {
    namespace director {
    class PersistentEvent;
+   class ScreenPlayTask;
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
@@ -58,6 +58,7 @@ namespace server {
 		VectorMap<String, bool> screenPlays;
 		SynchronizedVectorMap<String, Reference<QuestStatus*> > questStatuses;
 		SynchronizedVectorMap<String, Reference<QuestVectorMap*> > questVectorMaps;
+		Vector<Reference<ScreenPlayTask*> > screenplayTasks;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
@@ -99,6 +100,7 @@ namespace server {
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
 		void removeQuestVectorMap(const String& keyString);
 
+		Vector<Reference<ScreenPlayTask*> > getPlayerEvents(CreatureObject* player);
 		String getStringSharedMemory(const String& key);
 
 		virtual Lua* getLuaInstance();
