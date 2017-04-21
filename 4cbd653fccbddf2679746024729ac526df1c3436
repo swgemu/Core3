@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_35e25204",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-21T22:50:25Z",
+      "side": 1,
+      "message": "Why are you sending this twice?",
+      "revId": "4cbd653fccbddf2679746024729ac526df1c3436",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_d5e66e16",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-21T22:50:25Z",
+      "side": 1,
+      "message": "You only need to add this cooldown once.",
+      "revId": "4cbd653fccbddf2679746024729ac526df1c3436",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
