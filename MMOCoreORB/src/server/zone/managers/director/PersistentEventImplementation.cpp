@@ -4,7 +4,7 @@
 */
 
 #include "server/zone/managers/director/PersistentEvent.h"
-#include "ScreenPlayTask.h"
+#include "server/zone/managers/director/ScreenPlayTask.h"
 
 void PersistentEventImplementation::loadTransientTask() {
 	if (eventExecuted)
