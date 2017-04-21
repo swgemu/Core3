@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_95f0e6ca",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-21T23:00:38Z",
+      "side": 1,
+      "message": "Don\u0027t add all this stuff here. increaseVisibility() already goes through the attackers closeObjectsVector and adjusts visibility when non-animals are in range. You are exponentially increasing the amount of visibility that players will gain by adding this here, not to mention greatly increasing cpu time for the action.",
+      "revId": "cb85102b54e1e045d2c6e0c29d1dbfa19e7facd8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_b5ede2f1",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-21T23:00:38Z",
+      "side": 1,
+      "message": "so you want in-range vehicles to increase a players visibility? It\u0027s much better to check for what you do want to increase vis than to try and check for everything that you don\u0027t want to.",
+      "revId": "cb85102b54e1e045d2c6e0c29d1dbfa19e7facd8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
