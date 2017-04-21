@@ -8,7 +8,6 @@
 #ifndef SCREENPLAYTASK_H_
 #define SCREENPLAYTASK_H_
 
-#include "DirectorManager.h"
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "server/ServerCore.h"
 #include "server/zone/ZoneServer.h"
@@ -31,28 +30,7 @@ public:
 		persistentEvent = NULL;
 	}
 
-	void run() {
-		ZoneServer* zoneServer = ServerCore::getZoneServer();
-
-		if (zoneServer == NULL || zoneServer->isServerShuttingDown())
-			return;
-
-		if (zoneServer->isServerLoading()) {
-			schedule(10000);
-
-			return;
-		}
-
-		ManagedReference<SceneObject*> obj = this->obj.get();
-
-		if (obj != NULL) {
-			Locker locker(obj);
-
-			DirectorManager::instance()->activateEvent(this);
-		} else {
-			DirectorManager::instance()->activateEvent(this);
-		}
-	}
+	void run();
 
 	ManagedReference<SceneObject*> getSceneObject() {
 		return obj.get();

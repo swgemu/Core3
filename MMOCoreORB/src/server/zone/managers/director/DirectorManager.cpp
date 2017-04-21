@@ -28,7 +28,6 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "ScreenPlayTask.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -109,6 +108,8 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	questVectorMaps.setNoDuplicateInsertPlan();
 
 	masterScreenPlayVersion.set(0);
+
+	screenplayTasks = new Vector<ScreenPlayTask*> ();
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -250,6 +251,20 @@ uint64 DirectorManager::readSharedMemory(const String& key) {
 #endif
 
 	return data;
+}
+
+Vector<Reference<ScreenPlayTask*> > DirectorManager::getPlayerEvents(CreatureObject* player) {
+	Vector<Reference<ScreenPlayTask*> > eventList;
+
+	for (int i = 0; i < screenplayTasks.size(); i++) {
+		Reference<ScreenPlayTask*> task = screenplayTasks.get(i);
+
+		if (task->getSceneObject() == player) {
+			eventList.add(task);
+		}
+	}
+
+	return eventList;
 }
 
 void DirectorManager::printTraceError(lua_State* L, const String& error) {
@@ -1069,6 +1084,7 @@ int DirectorManager::createEvent(lua_State* L) {
 		task->schedule(mili);
 	}
 
+	screenplayTasks.add(task);
 	return 0;
 }
 
@@ -2482,6 +2498,8 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 
 		e.printStackTrace();
 	}
+
+	screenplayTasks.removeElement(task);
 }
 
 int DirectorManager::createConversationScreen(lua_State* L) {

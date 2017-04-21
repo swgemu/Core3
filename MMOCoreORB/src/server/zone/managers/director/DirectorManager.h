@@ -10,6 +10,7 @@
 
 #include "DirectorSharedMemory.h"
 #include "server/zone/managers/director/QuestStatus.h"
+#include "server/zone/managers/director/ScreenPlayTask.h"
 #include "server/zone/managers/director/QuestVectorMap.h"
 
 #include "system/util/SynchronizedHashTable.h"
@@ -58,6 +59,7 @@ namespace server {
 		VectorMap<String, bool> screenPlays;
 		SynchronizedVectorMap<String, Reference<QuestStatus*> > questStatuses;
 		SynchronizedVectorMap<String, Reference<QuestVectorMap*> > questVectorMaps;
+		Vector<Reference<ScreenPlayTask*> > screenplayTasks;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
@@ -99,6 +101,7 @@ namespace server {
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
 		void removeQuestVectorMap(const String& keyString);
 
+		Vector<Reference<ScreenPlayTask*> > getPlayerEvents(CreatureObject* player);
 		String getStringSharedMemory(const String& key);
 
 		virtual Lua* getLuaInstance();
