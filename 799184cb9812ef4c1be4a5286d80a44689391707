@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_75d8da53",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-21T22:47:18Z",
+      "side": 1,
+      "message": "This isn\u0027t the right place to put checks like this. They\u0027d be better in getDefenderSecondaryDefenseModifier()",
+      "revId": "799184cb9812ef4c1be4a5286d80a44689391707",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
