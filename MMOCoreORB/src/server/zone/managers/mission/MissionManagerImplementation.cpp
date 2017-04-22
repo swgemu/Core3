@@ -1871,11 +1871,11 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
 
 			if (creo != NULL) {
-				auto targetClient = creo->getClient();
-				auto playerClient = player->getClient();
+				auto targetGhost = creo->getPlayerObject();
+				auto playerGhost = player->getPlayerObject();
 
-				if (targetClient != NULL && playerClient != NULL) {
-					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+				if (targetGhost != NULL && playerGhost != NULL) {
+					if (targetGhost->getAccountID() == playerGhost->getAccountID()) {
 						continue;
 					}
 				}
@@ -1896,11 +1896,11 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
 
 			if (creo != NULL) {
-				auto targetClient = creo->getClient();
-				auto playerClient = player->getClient();
+				auto targetGhost = creo->getPlayerObject();
+				auto playerGhost = player->getPlayerObject();
 
-				if (targetClient != NULL && playerClient != NULL) {
-					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+				if (targetGhost != NULL && playerGhost != NULL) {
+					if (targetGhost->getAccountID() == playerGhost->getAccountID()) {
 						continue;
 					}
 				}
