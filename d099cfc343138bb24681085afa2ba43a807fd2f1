@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_d5cd0e88",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-04-22T00:36:34Z",
+      "side": 1,
+      "message": "I would put this check after the npc/player checks. No point in checking line of sight for every in range creo.",
+      "revId": "d099cfc343138bb24681085afa2ba43a807fd2f1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
