@@ -16,6 +16,7 @@ ContainerObjectsMap::ContainerObjectsMap() {
 
 	oids = NULL;
 	unloadTask = NULL;
+	container = NULL;
 }
 
 ContainerObjectsMap::ContainerObjectsMap(const ContainerObjectsMap& c) : loadMutex() {
@@ -23,7 +24,6 @@ ContainerObjectsMap::ContainerObjectsMap(const ContainerObjectsMap& c) : loadMut
 	containerObjects.setNoDuplicateInsertPlan();
 
 	oids = NULL;
-	unloadTask = NULL;
 
 	copyData(c);
 }
@@ -55,6 +55,9 @@ void ContainerObjectsMap::copyData(const ContainerObjectsMap& c) {
 	} else {
 		oids = new VectorMap<uint64, uint64>(*c.oids);
 	}
+
+	unloadTask = NULL;
+	container = NULL;
 }
 
 ContainerObjectsMap& ContainerObjectsMap::operator=(const ContainerObjectsMap& c) {
@@ -93,6 +96,10 @@ void ContainerObjectsMap::loadObjects() {
 	delete oids;
 	oids = NULL;
 
+	scheduleContainerUnload();
+}
+
+void ContainerObjectsMap::scheduleContainerUnload() {
 	uint64 delay = 1800000 + System::random(1800000); // 30 - 60 minutes
 
 	if (unloadTask != NULL) {

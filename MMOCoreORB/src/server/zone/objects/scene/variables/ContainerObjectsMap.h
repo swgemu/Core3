@@ -36,6 +36,7 @@ namespace server {
 
    	private:
    		void copyData(const ContainerObjectsMap& c);
+   		void scheduleContainerUnload();
 
    	public:
    		ContainerObjectsMap();
@@ -68,6 +69,10 @@ namespace server {
 
    		void setContainer(SceneObject* obj) {
    			container = obj;
+
+   			if (operationMode == DELAYED_LOAD && oids == NULL) {
+   				scheduleContainerUnload();
+   			}
    		}
 
    		void setDelayedLoadOperationMode() {
