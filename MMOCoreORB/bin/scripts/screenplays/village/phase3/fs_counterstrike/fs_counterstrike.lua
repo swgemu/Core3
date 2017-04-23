@@ -3,7 +3,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 
 FsCounterStrike = {
-	testMode = true, -- For testing only, sets turnin for commander to close by the base
+	testMode = false, -- For testing only, sets turnin for commander to close by the base
 	maxCampsToSpawn = 20, -- Number of camps to spawn from campSpawns on phase change
 
 	-- Spawn locations for camps, names found in string file string/en/fs_quest_village.stf
