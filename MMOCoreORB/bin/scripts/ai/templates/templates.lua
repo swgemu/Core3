@@ -80,6 +80,7 @@ addAiBehavior("CombatMoveCreaturePet")
 addAiBehavior("GetTargetCreaturePet")
 addAiBehavior("SelectAttackCreaturePet")
 addAiBehavior("SelectWeaponCreaturePet")
+addAiBehavior("MoveEscort")
 
 addAiBehavior("CompositeDroidPet")
 addAiBehavior("WaitDroidPet")

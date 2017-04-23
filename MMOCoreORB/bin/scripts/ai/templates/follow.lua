@@ -10,7 +10,11 @@ followf = {
 follow = {
 	{"root", "MoveCreaturePet", "none", BEHAVIOR},
 }
+escort = {
+	{"root", "MoveEscort", "none", BEHAVIOR},
+}
 
+addAiTemplate("escort", escort)
 addAiTemplate("follow", follow)
 addAiTemplate("followc", followc)
 addAiTemplate("followd", followd)

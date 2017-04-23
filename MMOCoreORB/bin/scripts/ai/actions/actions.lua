@@ -15,6 +15,7 @@ MoveCreaturePet = createClass(MovePetBase, CreaturePetInterrupt)
 MoveDroidPet = createClass(MovePetBase, DroidPetInterrupt)
 MoveFactionPet = createClass(MovePetBase, FactionPetInterrupt)
 MoveVillageRaider = createClass(MoveVillageRaiderBase, VillageRaiderInterrupt)
+MoveEscort = createClass(MoveEscortBase, CreaturePetInterrupt)
 
 CombatMove = createClass(CombatMoveBase, Interrupt)
 CombatMoveCreaturePet = createClass(CombatMoveBase, CreaturePetInterrupt)
@@ -68,7 +69,6 @@ SelectAttackFactionPet = createClass(SelectAttackBase, FactionPetInterrupt)
 SelectAttackVillageRaider = createClass(SelectAttackBase, VillageRaiderInterrupt)
 
 -- these are done backwards and should probably be moved
-includeAiFile("actions/move.lua")
 includeAiFile("actions/combatmove.lua")
 includeAiFile("actions/walk.lua")
 includeAiFile("actions/wait10.lua")
