@@ -35,3 +35,7 @@ function MoveFactionPet:checkConditions(pAgent)
 	end
 	return false
 end
+
+function MoveEscort:checkConditions(pAgent)
+	return MoveCreaturePet:checkConditions(pAgent)
+end

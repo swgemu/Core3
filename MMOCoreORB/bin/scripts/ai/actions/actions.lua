@@ -15,6 +15,7 @@ MoveCreaturePet = createClass(MovePetBase, CreaturePetInterrupt)
 MoveDroidPet = createClass(MovePetBase, DroidPetInterrupt)
 MoveFactionPet = createClass(MovePetBase, FactionPetInterrupt)
 MoveVillageRaider = createClass(MoveVillageRaiderBase, VillageRaiderInterrupt)
+MoveEscort = createClass(MoveEscortBase, CreaturePetInterrupt)
 
 CombatMove = createClass(CombatMoveBase, Interrupt)
 CombatMoveCreaturePet = createClass(CombatMoveBase, CreaturePetInterrupt)

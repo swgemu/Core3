@@ -2095,7 +2095,7 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		end
 	end
 
-	AiAgent(pConversingNpc):setAiTemplate("follow")
+	AiAgent(pConversingNpc):setAiTemplate("escort")
 end
 
 function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)

@@ -21,11 +21,11 @@ end
 function MoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
-		
-		if (agent:getCurrentSpeed() > 0) then 
+
+		if (agent:getCurrentSpeed() > 0) then
 			agent:completeMove()
 		end
-		
+
 		if (self:findNextPosition(pAgent)) then
 			return BEHAVIOR_RUNNING
 		else
@@ -49,29 +49,52 @@ end
 MovePetBase = createClass(MoveBase)
 
 function MovePetBase:doAction(pAgent)
-  if (pAgent ~= nil) then
-    local agent = AiAgent1(pAgent)
-    
-    if (agent:getCurrentSpeed() > 0) then 
-      agent:completeMove()
-    end
-    local Ptarget = agent:getFollowObject()
-    
-    if (Ptarget ~= nil and not agent:checkRange(Ptarget,156)) then
-      local scno = SceneObject1(Ptarget)
-      if (scno ~= nil) then
-        SceneObject2(pAgent):teleport(scno:getPositionX(), scno:getPositionZ(), scno:getPositionY(), scno:getParentID())
-        return BEHAVIOR_SUCCESS    
-      end    
-    end
-    
-    if (self:findNextPosition(pAgent)) then
-      return BEHAVIOR_RUNNING
-    else
-      return BEHAVIOR_SUCCESS
-    end
-  end
-  return BEHAVIOR_FAILURE
+	if (pAgent ~= nil) then
+		local agent = AiAgent1(pAgent)
+
+		if (agent:getCurrentSpeed() > 0) then
+			agent:completeMove()
+		end
+		local Ptarget = agent:getFollowObject()
+
+		if (Ptarget ~= nil and not agent:checkRange(Ptarget,156)) then
+			local scno = SceneObject1(Ptarget)
+			if (scno ~= nil) then
+				SceneObject2(pAgent):teleport(scno:getPositionX(), scno:getPositionZ(), scno:getPositionY(), scno:getParentID())
+			end
+		end
+
+		if (self:findNextPosition(pAgent)) then
+			return BEHAVIOR_RUNNING
+		else
+			return BEHAVIOR_SUCCESS
+		end
+	end
+	return BEHAVIOR_FAILURE
+end
+
+MoveEscortBase = createClass(MoveBase)
+
+function MoveEscortBase:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent1(pAgent)
+
+		if (agent:getCurrentSpeed() > 0) then
+			agent:completeMove()
+		end
+		local Ptarget = agent:getFollowObject()
+
+		if (Ptarget ~= nil and not agent:checkRange(Ptarget,156)) then
+			return BEHAVIOR_SUCCESS
+		end
+
+		if (self:findNextPosition(pAgent)) then
+			return BEHAVIOR_RUNNING
+		else
+			return BEHAVIOR_SUCCESS
+		end
+	end
+	return BEHAVIOR_FAILURE
 end
 
 CombatMoveBase = createClass(MoveBase)
@@ -79,13 +102,13 @@ CombatMoveBase = createClass(MoveBase)
 function CombatMoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
-		
-		if (agent:getCurrentSpeed() > 0) then 
+
+		if (agent:getCurrentSpeed() > 0) then
 			agent:completeMove()
 		end
-		
+
 		self:findNextPosition(pAgent)
-		
+
 		agent = AiAgent(pAgent) --reset our pointer to agent
 		if agent:getTargetOfTargetID() == agent:getObjectID() then agent:broadcastInterrupt(STARTCOMBAT) end
 		return BEHAVIOR_SUCCESS

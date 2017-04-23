@@ -101,7 +101,7 @@ function FsCsCommander:setPlayerAsEscorter(pCommander, pPlayer)
 	self:createCommanderWaypoint(pPlayer, theaterID)
 
 	AiAgent(pCommander):setFollowState(3)
-	AiAgent(pCommander):setAiTemplate("follow")
+	AiAgent(pCommander):setAiTemplate("escort")
 	AiAgent(pCommander):setFollowObject(pPlayer)
 	AiAgent(pCommander):executeBehavior()
 end
