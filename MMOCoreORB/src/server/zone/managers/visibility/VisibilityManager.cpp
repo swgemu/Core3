@@ -61,7 +61,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
-			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32)) {
+			if (obj != NULL && obj->isCreatureObject() && obj->getObjectID() != creature->getObjectID() && creature->isInRange(obj, 32)) {
 				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
 				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
 					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
@@ -123,13 +123,6 @@ void VisibilityManager::login(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
-
-		//You only gain visibility after completing the padawan trials
-		if(!creature->hasSkill("force_title_jedi_rank_02")) {
-			//info("Player " + creature->getFirstName() + " does not qualify for visibility", true);
-			return;
-		}
-
 		decreaseVisibility(creature);
 
 		Locker locker(&visibilityListLock);
@@ -141,7 +134,7 @@ void VisibilityManager::login(CreatureObject* creature) {
 
 		locker.release();
 
-		if (ghost->getVisibility() >= terminalVisThreshold) {
+		if (creature->hasSkill("force_title_jedi_rank_02") && ghost->getVisibility() >= terminalVisThreshold) {
 			// TODO: Readjust after FRS implementation.
 			// +100k per FRS level
 			int reward = calculateReward(creature);
