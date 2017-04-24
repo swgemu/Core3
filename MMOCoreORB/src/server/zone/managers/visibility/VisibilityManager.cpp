@@ -46,39 +46,54 @@ int VisibilityManager::calculateReward(CreatureObject* creature) {
 }
 
 float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
-	ManagedReference<Zone*> zone = creature->getZone();
+	Zone* zone = creature->getZone();
 
 	float visibilityIncrease = 0;
 
-	if (zone != NULL) {
-		SortedVector<QuadTreeEntry*> closeObjects;
-		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
-		if (closeObjectsVector == NULL) {
-			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
-		} else {
-			closeObjectsVector->safeCopyTo(closeObjects);
-		}
+	if (zone == NULL)
+		return visibilityIncrease;
 
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
-			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32)) {
-				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
-				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
-					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
-						visibilityIncrease += 0.5;
-						//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
-					} else {
-						if (creature->getFaction() == c->getFaction()) {
-							visibilityIncrease += 0.25;
-							//info(c->getCreatureName().toString() + " generating a 0.25 visibility modifier", true);
-						} else {
-							visibilityIncrease += 1;
-							//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
-						}
-					}
-				}
+	SortedVector<QuadTreeEntry*> closeObjects;
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
+	if (closeObjectsVector == NULL) {
+		zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
+	} else {
+		closeObjectsVector->safeCopyTo(closeObjects);
+	}
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj == NULL || !obj->isCreatureObject())
+			continue;
+
+		if (obj->getObjectID() == creature->getObjectID())
+			continue;
+
+		ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
+
+		if (c == NULL || (!c->isNonPlayerCreatureObject() && !c->isPlayerCreature()))
+			continue;
+
+		if (c->isDead() || c->isIncapacitated() || (c->isPlayerCreature() && c->getPlayerObject()->hasGodMode()))
+			continue;
+
+		if (!creature->isInRange(c, 32))
+			continue;
+
+		if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
+			visibilityIncrease += 0.5;
+			//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
+		} else {
+			if (creature->getFaction() == c->getFaction()) {
+				visibilityIncrease += 0.25;
+				//info(c->getCreatureName().toString() + " generating a 0.25 visibility modifier", true);
+			} else {
+				visibilityIncrease += 1;
+				//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
 			}
 		}
+
 	}
 
 	//info("Increasing visibility for player " + String::valueOf(creature->getObjectID()) + " with " + String::valueOf(visibilityIncrease), true);
@@ -123,13 +138,6 @@ void VisibilityManager::login(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
-
-		//You only gain visibility after completing the padawan trials
-		if(!creature->hasSkill("force_title_jedi_rank_02")) {
-			//info("Player " + creature->getFirstName() + " does not qualify for visibility", true);
-			return;
-		}
-
 		decreaseVisibility(creature);
 
 		Locker locker(&visibilityListLock);
@@ -141,7 +149,7 @@ void VisibilityManager::login(CreatureObject* creature) {
 
 		locker.release();
 
-		if (ghost->getVisibility() >= terminalVisThreshold) {
+		if (creature->hasSkill("force_title_jedi_rank_02") && ghost->getVisibility() >= terminalVisThreshold) {
 			// TODO: Readjust after FRS implementation.
 			// +100k per FRS level
 			int reward = calculateReward(creature);
