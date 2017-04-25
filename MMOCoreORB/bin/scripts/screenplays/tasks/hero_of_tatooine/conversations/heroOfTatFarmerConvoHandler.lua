@@ -47,6 +47,12 @@ function heroOfTatFarmerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 		clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_2fdb8fbd", "ill_go_myself")
 	elseif (screenID == "thanks_for_offering") then
 		CreatureObject(pPlayer):removeScreenPlayState(1, "hero_of_tatooine_altruism")
+	elseif (screenID == "intro") then
+		if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine")) then
+			clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_9e0bb613", "family_is_gone")
+			clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_ca776e30", "moisture_farmer")
+		end
+		clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_b658a801", "ill_go_myself")
 	end
 
 	return pConvScreen

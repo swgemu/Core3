@@ -10,9 +10,9 @@ intro = ConvoScreen:new {
 	leftDialog = "@conversation/quest_hero_of_tatooine_farmer:s_4de6ecbe", -- Please, oh please. You've got to help me! I'm desperate!
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_hero_of_tatooine_farmer:s_9e0bb613", "family_is_gone"}, -- Slow down. What's the matter?
-		{"@conversation/quest_hero_of_tatooine_farmer:s_ca776e30", "moisture_farmer"}, -- Who are you?
-		{"@conversation/quest_hero_of_tatooine_farmer:s_b658a801", "ill_go_myself"} -- Sorry, I can't help you.
+		--{"@conversation/quest_hero_of_tatooine_farmer:s_9e0bb613", "family_is_gone"}, -- Slow down. What's the matter?
+		--{"@conversation/quest_hero_of_tatooine_farmer:s_ca776e30", "moisture_farmer"}, -- Who are you?
+		--{"@conversation/quest_hero_of_tatooine_farmer:s_b658a801", "ill_go_myself"} -- Sorry, I can't help you.
 	}
 }
 heroOfTatFarmerConvoTemplate:addScreen(intro);
