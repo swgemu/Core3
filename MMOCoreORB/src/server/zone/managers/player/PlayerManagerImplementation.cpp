@@ -4384,6 +4384,13 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	}
 
 	VeteranReward reward = veteranRewards.get(itemIndex);
+
+	if (playerGhost->hasChosenVeteranReward(reward.getTemplateFile())) {
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession(player);
+		return;
+	}
+
 	rewardSession->setSelectedRewardIndex(itemIndex);
 
 	// Generate confirmation dialog if item is one-time.  Otherwise, just generate it.
