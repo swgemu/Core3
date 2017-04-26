@@ -7,7 +7,9 @@ package server.zone.objects.mission;
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
+import server.zone.objects.mission.MissionObject;
 import engine.core.ManagedObject;
+
 include server.zone.objects.creature.CreatureObject;
 
 class SurveyMissionObjective extends MissionObjective {
