@@ -272,6 +272,8 @@ function GoToTheater:taskFinish(pPlayer)
 	end
 
 	deleteData(playerID .. self.taskName .. "theaterID")
+	
+	self:callFunctionIfNotNil(self.onTheaterFinished, nil, pPlayer)
 
 	return true
 end

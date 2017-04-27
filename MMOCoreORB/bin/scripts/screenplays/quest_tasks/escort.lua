@@ -105,7 +105,7 @@ function Escort:setEscortFollow(pPlayer, pEscort)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
-	AiAgent(pEscort):setAiTemplate("follow")
+	AiAgent(pEscort):setAiTemplate("escort")
 	AiAgent(pEscort):setFollowObject(pPlayer)
 
 	writeData(playerID .. self.taskName .. "escortID", escortID)
