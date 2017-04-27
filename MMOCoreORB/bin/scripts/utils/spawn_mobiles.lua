@@ -234,6 +234,10 @@ function SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 			mobile = -1
 		else
 			mobile = getSceneObject(mobileID)
+			
+			if (mobile == nil) then
+				mobile = -1
+			end
 		end
 
 		spawnedMobiles[i] = mobile
