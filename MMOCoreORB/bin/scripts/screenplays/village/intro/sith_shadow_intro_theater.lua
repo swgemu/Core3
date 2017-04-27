@@ -108,7 +108,7 @@ function SithShadowIntroTheater:onEnteredActiveArea(pPlayer, spawnedSithShadowsL
 	end
 
 	foreach(spawnedSithShadowsList, function(pMobile)
-		if (pMobile ~= nil) then
+		if (SpawnMobiles.isValidMobile(pMobile)) then
 			AiAgent(pMobile):setDefender(pPlayer)
 		end
 	end)
