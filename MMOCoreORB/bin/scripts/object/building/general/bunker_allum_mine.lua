@@ -42,7 +42,6 @@
 
 
 object_building_general_bunker_allum_mine = object_building_general_shared_bunker_allum_mine:new {
-	publicStructure = 0,
 	ejectionPoint = {-57, 15}
 }
 

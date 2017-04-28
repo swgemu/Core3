@@ -42,7 +42,6 @@
 
 
 object_building_general_bunker_mad_bio = object_building_general_shared_bunker_mad_bio:new {
-	publicStructure = 0,
 	ejectionPoint = {-66, -23}
 
 }
