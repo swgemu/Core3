@@ -84,17 +84,28 @@ void ContainerObjectsMap::loadObjects() {
 	if (oids == NULL)
 		return;
 
+	auto parent = container.get();
+
 	for (int i = 0; i < oids->size(); ++i) {
 		uint64 oid = oids->elementAt(i).getKey();
 
 		Reference<SceneObject*> object = Core::getObjectBroker()->lookUp(oid).castTo<SceneObject*>();
 
-		if (object != NULL)
+		if (object != NULL) {
 			containerObjects.put(oid, object);
+
+			//parent->broadcastObject(object, true);
+			//parent->broadcastMessage(object->link(parent->getObjectID(), object->getContainmentType()), true);
+		}
 	}
 
 	delete oids;
 	oids = NULL;
+
+	ManagedReference<SceneObject*> sceno = container.get();
+
+	if (sceno != NULL)
+		sceno->onContainerLoaded();
 
 	scheduleContainerUnload();
 }
@@ -119,12 +130,18 @@ void ContainerObjectsMap::unloadObjects() {
 
 	auto vector = new VectorMap<uint64, uint64>();
 
+	auto parent = container.get();
+	auto zone = parent->getZone();
+
+	Vector<ManagedReference<SceneObject*> > containerCopy;
+
 	for (int i = 0; i < containerObjects.size(); i++) {
 		SceneObject* obj = containerObjects.get(i);
 
 		if (obj != NULL) {
 			uint64 oid = obj->getObjectID();
 			vector->put(oid, oid);
+			containerCopy.add(obj);
 		}
 	}
 
@@ -135,6 +152,18 @@ void ContainerObjectsMap::unloadObjects() {
 	containerObjects.removeAll();
 
 	unloadTask = NULL;
+
+	locker.release();
+
+	for (int i = 0; i < containerCopy.size(); i++) {
+		SceneObject* obj = containerCopy.get(i);
+
+		if (obj != NULL) {
+			Locker olocker(obj);
+			parent->broadcastDestroy(obj, true);
+			obj->removeObjectFromZone(zone, parent);
+		}
+	}
 }
 
 void ContainerObjectsMap::notifyLoadFromDatabase() {

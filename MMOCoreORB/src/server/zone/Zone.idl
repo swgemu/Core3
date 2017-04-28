@@ -86,10 +86,10 @@ class Zone extends SceneObject {
 	public native int getInRangeSolidObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
 
 	@local
-	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
+	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone, boolean includeBuildingObjects = true);
 
 	@local
-	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone);
+	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = true);
 
 	public native void createContainerComponent();
 

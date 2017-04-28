@@ -909,6 +909,10 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* d
 	return containerComponent->removeObject(asSceneObject(), object, destination, notifyClient);
 }
 
+void SceneObjectImplementation::removeObjectFromZone(Zone* zone, SceneObject* par) {
+	zoneComponent->removeObjectFromZone(asSceneObject(), zone, par);
+}
+
 void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
 	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(asSceneObject());
 	player->sendMessage(cont);

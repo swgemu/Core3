@@ -263,7 +263,7 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 
 float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+	zone->getInRangeObjects(x, y, 128, &closeObjects, true, false);
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
@@ -638,7 +638,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	Triangle* triangle = NULL;
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
-	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects, true);
+	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects, true, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		const AppearanceTemplate *app = NULL;

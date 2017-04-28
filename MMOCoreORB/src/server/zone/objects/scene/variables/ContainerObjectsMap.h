@@ -83,6 +83,10 @@ namespace server {
    			return operationMode == DELAYED_LOAD;
    		}
 
+   		void setNormalLoadOperationMode() {
+   			operationMode = NORMAL_LOAD;
+   		}
+
    		bool isLoaded() {
    			return operationMode == NORMAL_LOAD || oids == NULL;
    		}

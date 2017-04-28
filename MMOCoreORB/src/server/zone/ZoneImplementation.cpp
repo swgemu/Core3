@@ -234,10 +234,8 @@ int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, So
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone, bool includeBuildingObjects) {
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
-
-	Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
 
 	try {
 		_this.getReferenceUnsafeStaticCast()->rlock(readlock);
@@ -249,49 +247,51 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 	}
 
-	for (int i = 0; i < objects->size(); ++i) {
-		SceneObject* sceneObject = cast<SceneObject*>(objects->get(i).get());
-		BuildingObject* building = dynamic_cast<BuildingObject*>(sceneObject);
+	if (includeBuildingObjects) {
+		Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
 
-		if (building != NULL) {
-			for (int j = 1; j <= building->getMapCellSize(); ++j) {
-				CellObject* cell = building->getCell(j);
+		for (int i = 0; i < objects->size(); ++i) {
+			SceneObject* sceneObject = cast<SceneObject*>(objects->get(i).get());
+			BuildingObject* building = dynamic_cast<BuildingObject*>(sceneObject);
 
-				if (cell != NULL) {
-					try {
-						ReadLocker rlocker(cell->getContainerLock());
+			if (building != NULL) {
+				for (int j = 1; j <= building->getMapCellSize(); ++j) {
+					CellObject* cell = building->getCell(j);
 
-						for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
-							ManagedReference<SceneObject*> obj = cell->getContainerObject(h);
+					if (cell != NULL && cell->isContainerLoaded()) {
+						try {
+							ReadLocker rlocker(cell->getContainerLock());
 
-							if (obj != NULL)
-								buildingObjects.add(obj.get());
+							for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
+								ManagedReference<SceneObject*> obj = cell->getContainerObject(h);
+
+								if (obj != NULL)
+									buildingObjects.add(obj.get());
+							}
+
+						} catch (...) {
 						}
-
-					} catch (...) {
 					}
 				}
+			} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
+				ManagedReference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
+
+				if (rider != NULL)
+					buildingObjects.add(rider.get());
 			}
-		} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
-			ManagedReference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
-
-			if (rider != NULL)
-				buildingObjects.add(rider.get());
 		}
+
+		//_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+
+		for (int i = 0; i < buildingObjects.size(); ++i)
+			objects->put(buildingObjects.get(i));
 	}
-
-	//_this.getReferenceUnsafeStaticCast()->runlock(readlock);
-
-	for (int i = 0; i < buildingObjects.size(); ++i)
-		objects->put(buildingObjects.get(i));
 
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRangeObjectsVector* objects, bool readLockZone) {
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRangeObjectsVector* objects, bool readLockZone, bool includeBuildingObjects) {
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
-
-	Vector<QuadTreeEntry*> buildingObjects;
 
 	try {
 		_this.getReferenceUnsafeStaticCast()->rlock(readlock);
@@ -303,40 +303,44 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRange
 		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 	}
 
-	for (int i = 0; i < objects->size(); ++i) {
-		SceneObject* sceneObject = static_cast<SceneObject*>(objects->get(i));
+	if (includeBuildingObjects) {
+		Vector<QuadTreeEntry*> buildingObjects;
 
-		BuildingObject* building = dynamic_cast<BuildingObject*>(sceneObject);
+		for (int i = 0; i < objects->size(); ++i) {
+			SceneObject* sceneObject = static_cast<SceneObject*>(objects->get(i));
 
-		if (building != NULL) {
-			for (int j = 1; j <= building->getMapCellSize(); ++j) {
-				CellObject* cell = building->getCell(j);
+			BuildingObject* building = dynamic_cast<BuildingObject*>(sceneObject);
 
-				if (cell != NULL) {
-					try {
-						ReadLocker rlocker(cell->getContainerLock());
+			if (building != NULL) {
+				for (int j = 1; j <= building->getMapCellSize(); ++j) {
+					CellObject* cell = building->getCell(j);
 
-						for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
-							ManagedReference<SceneObject*> obj = cell->getContainerObject(h);
+					if (cell != NULL && cell->isContainerLoaded()) {
+						try {
+							ReadLocker rlocker(cell->getContainerLock());
 
-							if (obj != NULL)
-								buildingObjects.add(obj.get());
+							for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
+								ManagedReference<SceneObject*> obj = cell->getContainerObject(h);
+
+								if (obj != NULL)
+									buildingObjects.add(obj.get());
+							}
+
+						} catch (...) {
 						}
-
-					} catch (...) {
 					}
 				}
+			} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
+				ManagedReference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
+
+				if (rider != NULL)
+					buildingObjects.add(rider.get());
 			}
-		} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
-			ManagedReference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
-
-			if (rider != NULL)
-				buildingObjects.add(rider.get());
 		}
-	}
 
-	for (int i = 0; i < buildingObjects.size(); ++i)
-		objects->put(buildingObjects.get(i));
+		for (int i = 0; i < buildingObjects.size(); ++i)
+			objects->put(buildingObjects.get(i));
+	}
 
 	return objects->size();
 }
