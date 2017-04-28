@@ -30,6 +30,8 @@ function villageSarguilloPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pCon
 		return convoTemplate:getScreen("intro_secondsetinprogress")
 	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_hasotherquest")
+	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
+		return convoTemplate:getScreen("intro_noteligible")
 	else
 		return convoTemplate:getScreen("intro")
 	end
