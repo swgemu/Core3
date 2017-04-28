@@ -267,6 +267,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	/**
+	 * Removes object from zone without removing from parent. Should only be used for container unloading.
+	 */
+	public native void removeObjectFromZone(Zone zone, SceneObject par);
+
+	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
@@ -1104,6 +1109,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public void unloadContainerObjects() {
 		containerObjects.unloadObjects();
+	}
+
+	public boolean isContainerLoaded() {
+		return containerObjects.isLoaded();
+	}
+
+	// Gets called when delayed-load containerObjects is loaded
+	public abstract void onContainerLoaded() {
+
 	}
 
 	public void setContainerVolumeLimit(int lim) {

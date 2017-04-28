@@ -6,6 +6,7 @@ package server.zone.objects.cell;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.building.BuildingObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 include templates.SharedObjectTemplate;
 
@@ -13,14 +14,15 @@ include templates.SharedObjectTemplate;
 class CellObject extends SceneObject {
 	protected int cellNumber;
 
-	protected int currentNumberOfItems;
+	@dereferenced
+	protected AtomicInteger forceLoadObjectCount;
 
 	public CellObject() {
 		Logger.setLoggingName("CellObject");
 
 		cellNumber = 0;
 
-		currentNumberOfItems = 0;
+		forceLoadObjectCount.set(0);
 	}
 
 	@local
@@ -40,6 +42,14 @@ class CellObject extends SceneObject {
 	 */
 	public native void notifyLoadFromDatabase();
 
+	// Gets called when delayed-load containerObjects is loaded
+	public native void onContainerLoaded();
+
+	public boolean hasForceLoadObject() {
+		return forceLoadObjectCount.get() > 0;
+	}
+
+	public native void onBuildingInsertedToZone(BuildingObject building);
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
@@ -75,22 +85,20 @@ class CellObject extends SceneObject {
 	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false, boolean notifyRoot = true);
 
 	/**
-	 * Sends the necessary messages to player in order to create this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received this object }
-	 * @param player SceneObject that will receive the messages
-	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 * Tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param destination SceneObject that will be the new destination of the object.
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
 	 */
-	//public native void sendTo(SceneObject player, boolean doClose);
+	public native boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
 
 	public native void initializeTransientMembers();
 
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-
-	/*public void resetCurrentNumerOfPlayerItems() {
-		currentNumberOfItems = 0;
-	}*/
 
 	@dirty
 	public native int getCurrentNumberOfPlayerItems();

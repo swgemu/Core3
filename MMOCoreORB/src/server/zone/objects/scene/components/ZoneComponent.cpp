@@ -441,118 +441,119 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		zone->removeObject(sceneObject, NULL, false);
 	}
 
-	if (rootZone != NULL) {
-		Locker locker(rootZone);
+	removeObjectFromZone(sceneObject, rootZone, par);
+}
 
-		rootZone->dropSceneObject(sceneObject);
+void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const {
+	if (zone == NULL)
+		return;
 
-		if (sceneObject->isActiveArea()) {
-			return;
+	Locker locker(zone);
+
+	zone->dropSceneObject(sceneObject);
+
+	if (sceneObject->isActiveArea()) {
+		return;
+	}
+
+	zone->remove(sceneObject);
+
+	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(sceneObject->getObjectTemplate());
+
+	if (objtemplate != NULL) {
+		String modFile = objtemplate->getTerrainModificationFile();
+
+		if (!modFile.isEmpty()) {
+			zone->getPlanetManager()->getTerrainManager()->removeTerrainModification(sceneObject->getObjectID());
 		}
+	}
 
-		rootZone->remove(sceneObject);
-
-		SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(sceneObject->getObjectTemplate());
-
-		if (objtemplate != NULL) {
-			String modFile = objtemplate->getTerrainModificationFile();
-
-			if (!modFile.isEmpty()) {
-				rootZone->getPlanetManager()->getTerrainManager()->removeTerrainModification(sceneObject->getObjectID());
-			}
-		}
-		
-		locker.release();
+	locker.release();
 
 
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
-		CloseObjectsVector* closeobjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
-		ManagedReference<SceneObject*> vectorOwner = sceneObject;
+	CloseObjectsVector* closeobjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+	ManagedReference<SceneObject*> vectorOwner = sceneObject;
 
-		if (closeobjects == NULL && par != NULL) {
-			vectorOwner = par;
+	if (closeobjects == NULL && par != NULL) {
+		vectorOwner = par;
+		closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
+	}
+
+	while (closeobjects == NULL && vectorOwner != NULL) {
+		vectorOwner = vectorOwner->getParent().get();
+
+		if (vectorOwner != NULL) {
 			closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
 		}
+	}
 
-		while (closeobjects == NULL && vectorOwner != NULL) {
-			vectorOwner = vectorOwner->getParent().get();
+	if (closeobjects != NULL) {
+		try {
+			closeobjects->safeCopyTo(closeSceneObjects);
 
-			if (vectorOwner != NULL) {
-				closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
-			}
-		}
+			while (closeSceneObjects.size() > 0) {
+				ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
 
-		if (closeobjects != NULL) {
-			try {
-				closeobjects->safeCopyTo(closeSceneObjects);
-
-				while (closeSceneObjects.size() > 0) {
-					ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
-
-					if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL)
-						obj->removeInRangeObject(sceneObject);
-
-					if (vectorOwner == sceneObject)
-						vectorOwner->removeInRangeObject((int) 0);
-
-					closeSceneObjects.remove((int) 0);
-				}
+				if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(sceneObject);
 
 				if (vectorOwner == sceneObject)
-					closeobjects->removeAll();
+					vectorOwner->removeInRangeObject((int) 0);
 
-			} catch (...) {
+				closeSceneObjects.remove((int) 0);
 			}
-		} else {
-#ifdef COV_DEBUG
-			String templateName = "none";
-			if (sceneObject->getObjectTemplate() != NULL)
-				templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
 
-			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
+			if (vectorOwner == sceneObject)
+				closeobjects->removeAll();
+
+		} catch (...) {
+		}
+	} else {
+#ifdef COV_DEBUG
+		String templateName = "none";
+		if (sceneObject->getObjectTemplate() != NULL)
+			templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
+
+		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
+		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
-			for (int i = 0; i < closeSceneObjects.size(); ++i) {
-				QuadTreeEntry* obj = closeSceneObjects.get(i);
+		for (int i = 0; i < closeSceneObjects.size(); ++i) {
+			QuadTreeEntry* obj = closeSceneObjects.get(i);
 
-				if (obj != sceneObject && obj->getCloseObjects() != NULL)
-					obj->removeInRangeObject(sceneObject);
-			}
+			if (obj != sceneObject && obj->getCloseObjects() != NULL)
+				obj->removeInRangeObject(sceneObject);
 		}
+	}
 
-//		rootZone->dropSceneObject(sceneObject);
+	if (sceneObject->isTangibleObject()) {
+		TangibleObject* tano = sceneObject->asTangibleObject();
+		SortedVector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
 
-//		locker.release();
+		while (activeAreas->size() > 0) {
+			Locker _alocker(sceneObject->getContainerLock());
+			ManagedReference<ActiveArea*> area = activeAreas->get(0);
+			activeAreas->remove(0);
 
-		if (sceneObject->isTangibleObject()) {
-			TangibleObject* tano = sceneObject->asTangibleObject();
-			SortedVector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
+			_alocker.release();
 
-			while (activeAreas->size() > 0) {
-				Locker _alocker(sceneObject->getContainerLock());
-				ManagedReference<ActiveArea*> area = activeAreas->get(0);
-				activeAreas->remove(0);
+			area->enqueueExitEvent(sceneObject);
+		}
+	} else if (sceneObject->isStaticObjectClass()) {
+		// hack to get around notifyEnter/Exit only working with tangible objects
+		Vector3 worldPos = sceneObject->getWorldPosition();
+		SortedVector<ActiveArea* > objects;
+		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
 
-				_alocker.release();
+		for(auto& area : objects) {
+			if(area->isNavArea()) {
+				NavArea *mesh = area->asNavArea();
 
-				area->enqueueExitEvent(sceneObject);
-			}
-		} else if (sceneObject->isStaticObjectClass()) {
-			// hack to get around notifyEnter/Exit only working with tangible objects
-			Vector3 worldPos = sceneObject->getWorldPosition();
-			SortedVector<ActiveArea* > objects;
-			rootZone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
-
-			for(auto& area : objects) {
-				if(area->isNavArea()) {
-					NavArea *mesh = area->asNavArea();
-
-					if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
-						mesh->updateNavMesh(sceneObject, true);
-					}
+				if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
+					mesh->updateNavMesh(sceneObject, true);
 				}
 			}
 		}

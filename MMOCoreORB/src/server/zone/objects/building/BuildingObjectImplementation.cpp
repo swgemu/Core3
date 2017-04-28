@@ -83,29 +83,6 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
-void BuildingObjectImplementation::notifyLoadFromDatabase() {
-	StructureObjectImplementation::notifyLoadFromDatabase();
-
-	if (zone != NULL) {
-		for (int i = 0; i < cells.size(); ++i) {
-			CellObject* cell = cells.get(i);
-
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				ReadLocker rlocker(cell->getContainerLock());
-
-				SceneObject* child = cell->getContainerObject(j);
-
-				rlocker.release();
-
-				if (child->isTangibleObject()) {
-					TangibleObject* tano = cast<TangibleObject*>(child);
-					zone->updateActiveAreas(tano);
-				}
-			}
-		}
-	}
-}
-
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StructureObjectImplementation::notifyInsertToZone(zone);
 
@@ -114,15 +91,7 @@ void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(cell->getContainerLock());
-
-			SceneObject* child = cell->getContainerObject(j);
-
-			rlocker.release();
-
-			notifyObjectInsertedToZone(child);
-		}
+		cell->onBuildingInsertedToZone(asBuildingObject());
 	}
 }
 
@@ -192,6 +161,9 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 				player->sendMessage(perm);
 			}
 		}
+
+		if (!cell->isContainerLoaded())
+			continue;
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			ReadLocker rlocker(cell->getContainerLock());
@@ -403,12 +375,14 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 					object->addInRangeObject(obj, false);
 				else
 					object->notifyInsert(obj);
+
 				//object->sendTo(obj, true);
 
 				if (obj->getCloseObjects() != NULL)
 					obj->addInRangeObject(object, false);
 				else
 					obj->notifyInsert(object);
+
 				//obj->sendTo(object, true);
 			}
 		}
@@ -421,13 +395,15 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	addInRangeObject(object, false);
 
-	if (getZone() != NULL) {
+	Zone* zone = getZone();
+
+	if (zone != NULL) {
 		if (object->isTangibleObject()) {
 			TangibleObject* tano = cast<TangibleObject*>(object);
-			getZone()->updateActiveAreas(tano);
+			zone->updateActiveAreas(tano);
 		}
 
-		object->notifyInsertToZone(getZone());
+		object->notifyInsertToZone(zone);
 	}
 
 	//this->sendTo(object, true);
@@ -447,6 +423,9 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		if (!cell->isContainerLoaded())
+			continue;
 
 		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
@@ -493,6 +472,9 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		if (!cell->isContainerLoaded())
+			continue;
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			ReadLocker rlocker(cell->getContainerLock());

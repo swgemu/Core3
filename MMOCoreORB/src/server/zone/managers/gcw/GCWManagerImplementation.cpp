@@ -333,7 +333,7 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
 		return true;
 
 	SortedVector<QuadTreeEntry*> inRangeObjects;
-	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true);
+	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true, false);
 	int count = 0;
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {

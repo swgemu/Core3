@@ -4,6 +4,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 namespace server {
  namespace zone {
@@ -27,6 +28,15 @@ class UnloadContainerTask : public Task {
 			if (obj->getLastContainerAccess() < 900000) { // if accessed within the last 15 minutes, reschedule
 				reschedule(1800000); // 30 minutes
 				return;
+			}
+
+			if (obj->isCellObject()) {
+				CellObject* cell = obj.castTo<CellObject*>();
+
+				if (cell->hasForceLoadObject()) {
+					reschedule(1800000); // 30 minutes
+					return;
+				}
 			}
 
 			obj->unloadContainerObjects();

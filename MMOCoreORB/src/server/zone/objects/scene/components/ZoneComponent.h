@@ -100,6 +100,7 @@ public:
 
 	virtual void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const;
 
+	void removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const;
 };
 
 
