@@ -562,6 +562,11 @@ function DeathWatchBunkerScreenPlay:despawnMobile(pMobile)
 		return
 	end
 
+	if (CreatureObject(pMobile):isInCombat()) then
+		createEvent(15 * 1000, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+		return
+	end
+
 	SceneObject(pMobile):destroyObjectFromWorld()
 end
 
@@ -987,38 +992,101 @@ end
 --------------------------------------------------------------
 --   Key Spawn Events                                        -
 --------------------------------------------------------------
+function DeathWatchBunkerScreenPlay:spawnDefender(spawnData, spawnName)
+	local pMobile = spawnMobile("endor", spawnData[1], spawnData[2], spawnData[3], spawnData[4], spawnData[5], spawnData[6], spawnData[7])
+
+	if (pMobile ~= nil) then
+		createEvent(300 * 1000, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+		createEvent(5 * 1000, "DeathWatchBunkerScreenPlay", "startDefenderPath", pMobile, spawnName)
+	end
+
+	return pMobile
+end
+
+function DeathWatchBunkerScreenPlay:startDefenderPath(pMobile, spawnName)
+	if (pMobile == nil) then
+		return
+	end
+
+	local patrolPoint
+
+	if (string.find(spawnName, "rageon_vart")) then
+		local waveNum = tonumber(string.sub(spawnName, 12))
+		patrolPoint = deathWatchPatrolPoints.rageon_vart[waveNum]
+	elseif (string.find(spawnName, "klin_nif")) then
+		local waveNum = tonumber(string.sub(spawnName, 9))
+		patrolPoint = deathWatchPatrolPoints.klin_nif[waveNum]
+	elseif (string.find(spawnName, "fenri_dalso")) then
+		local waveNum = tonumber(string.sub(spawnName, 12))
+		patrolPoint = deathWatchPatrolPoints.fenri_dalso[waveNum]
+	else
+		printLuaError("DeathWatchBunkerScreenPlay:startDefenderPath, invalid spawnName " .. spawnName)
+	end
+
+	local spawnData = deathWatchSpecialSpawns[spawnName]
+
+	AiAgent(pMobile):setAiTemplate("stationary")
+	AiAgent(pMobile):setFollowState(4)
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+
+	local randomX = (-5 + getRandomNumber(10)) / 10
+	local randomY = (-5 + getRandomNumber(10)) / 10
+
+	AiAgent(pMobile):setNextPosition(patrolPoint[1] + randomX, patrolPoint[2], patrolPoint[3] + randomY, patrolPoint[4])
+end
+
 function DeathWatchBunkerScreenPlay:spawnNextA(pCreature)
 	if (pCreature == nil) then
-		return 0
+		return
 	end
 
 	local nextSpawn = readData(5996314 .. ":dwb:terminalAnextSpawn")
 
 	if nextSpawn == 0 then
-		return 0
+		return
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["rageon_vart_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local pDefender = self:spawnDefender(spawn, "rageon_vart1")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnADefenderDamageReceived", pDefender)
 		end
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 3)
-		local spawn = deathWatchSpecialSpawns["rageon_vart_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = deathWatchSpecialSpawns["rageon_vart_assist1"]
+		local pDefender = self:spawnDefender(spawn, "rageon_vart2")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnADefenderDamageReceived", pDefender)
 		end
+
+		spawn = deathWatchSpecialSpawns["rageon_vart_assist2"]
+		self:spawnDefender(spawn, "rageon_vart2")
 	else
-		writeData(5996314 .. ":dwb:terminalAnextSpawn", 0)
-		local spawn = deathWatchSpecialSpawns["rageon_vart"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		deleteData(5996314 .. ":dwb:terminalAnextSpawn")
+
+		local spawn = deathWatchSpecialSpawns["rageon_vart_assist1"]
+		self:spawnDefender(spawn, "rageon_vart3")
+
+		spawn = deathWatchSpecialSpawns["rageon_vart_assist2"]
+		self:spawnDefender(spawn, "rageon_vart3")
+
+		spawn = deathWatchSpecialSpawns["rageon_vart"]
+		self:spawnDefender(spawn, "rageon_vart1")
 	end
+end
+
+function DeathWatchBunkerScreenPlay:spawnADefenderDamageReceived(pDefender, pPlayer, damage)
+	if pDefender == nil then
+		return 1
+	end
+
+	spatialChat(pDefender, "@dungeon/death_watch:call_back_up")
+	createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pPlayer, "")
+
+	return 1
 end
 
 function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
@@ -1033,26 +1101,46 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local pDefender = self:spawnDefender(spawn, "klin_nif1")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnBDefenderDamageReceived", pDefender)
 		end
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
-		local spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
+		local pDefender = self:spawnDefender(spawn, "klin_nif2")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnBDefenderDamageReceived", pDefender)
 		end
+
+		spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
+		pDefender = self:spawnDefender(spawn, "klin_nif2")
 	else
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 0)
+		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
+		self:spawnDefender(spawn, "klin_nif3")
+
+		local spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
+		self:spawnDefender(spawn, "klin_nif3")
+
 		local spawn = deathWatchSpecialSpawns["klin_nif"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		self:spawnDefender(spawn, "klin_nif2")
 	end
+end
+
+function DeathWatchBunkerScreenPlay:spawnBDefenderDamageReceived(pDefender, pPlayer, damage)
+	if pDefender == nil then
+		return 1
+	end
+
+	local defenderID = SceneObject(pDefender):getObjectID()
+
+	spatialChat(pDefender, "@dungeon/death_watch:call_back_up")
+	createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pPlayer, "")
+
+	return 1
 end
 
 function DeathWatchBunkerScreenPlay:spawnNextC(creatureObject)
@@ -1066,34 +1154,52 @@ function DeathWatchBunkerScreenPlay:spawnNextC(creatureObject)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local pDefender = self:spawnDefender(spawn, "fenri_dalso1")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnCDefenderDamageReceived", pDefender)
 		end
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 3)
-		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject, "")
-		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist1"]
+		local pDefender = self:spawnDefender(spawn, "fenri_dalso2")
 
-		if (pMobile ~= nil) then
-			spatialChat(pMobile, "@dungeon/death_watch:call_back_up")
+		if (pDefender ~= nil) then
+			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnCDefenderDamageReceived", pDefender)
 		end
+
+		spawn = deathWatchSpecialSpawns["fenri_dalso_assist2"]
+		pDefender = self:spawnDefender(spawn, "fenri_dalso2")
 	else
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 0)
-		local spawn = deathWatchSpecialSpawns["fenri_dalso_add1"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spawn = deathWatchSpecialSpawns["fenri_dalso_add2"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spawn = deathWatchSpecialSpawns["fenri_dalso_add3"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spawn = deathWatchSpecialSpawns["fenri_dalso_add4"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist1"]
+		local pDefender = self:spawnDefender(spawn, "fenri_dalso3")
+
+		spawn = deathWatchSpecialSpawns["fenri_dalso_assist2"]
+		pDefender = self:spawnDefender(spawn, "fenri_dalso3")
+
+		spawn = deathWatchSpecialSpawns["fenri_dalso_assist3"]
+		pDefender = self:spawnDefender(spawn, "fenri_dalso3")
+
+		spawn = deathWatchSpecialSpawns["fenri_dalso_assist4"]
+		pDefender = self:spawnDefender(spawn, "fenri_dalso3")
+
 		spawn = deathWatchSpecialSpawns["fenri_dalso"]
-		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		pDefender = self:spawnDefender(spawn, "fenri_dalso1")
 	end
+end
+
+function DeathWatchBunkerScreenPlay:spawnCDefenderDamageReceived(pDefender, pPlayer, damage)
+	if pDefender == nil then
+		return 1
+	end
+
+	local defenderID = SceneObject(pDefender):getObjectID()
+
+	spatialChat(pDefender, "@dungeon/death_watch:call_back_up")
+	createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", pPlayer, "")
+	
+	return 1
 end
 
 --   DeathWatchBunkerScreenPlay whether a creature has sufficient skill to access a particular crafting room
@@ -1199,13 +1305,18 @@ function DeathWatchBunkerScreenPlay:spawnDefenders(number, pCreature)
 
 	if number == 1 then
 		local spawn = deathWatchSpecialSpawns["entrance1"]
-		local spawnPointer1 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local pMobile1 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spawn = deathWatchSpecialSpawns["entrance2"]
-		local spawnPointer2 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local pMobile2 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if pCreature ~= nil then
-			CreatureObject(spawnPointer1):engageCombat(pCreature)
-			CreatureObject(spawnPointer2):engageCombat(pCreature)
+			if (pMobile1 ~= nil) then
+				CreatureObject(pMobile1):engageCombat(pCreature)
+			end
+
+			if (pMobile2 ~= nil) then
+				CreatureObject(pMobile2):engageCombat(pCreature)
+			end
 		end
 	else
 		writeData(5996314 .. ":dwb:" .. self.spawnGroups[number], 1)
@@ -1553,9 +1664,9 @@ function DeathWatchBunkerScreenPlay:doValveSwitch(pCreature, valveNumber)
 	local state4 = readData("dwb:valve4")
 
 	if (state1 == 1 and state2 == 1 and state3 == 1 and state4 == 1) then
-			playClientEffectLoc(CreatureObject(pCreature):getObjectID(), "clienteffect/dth_watch_water_pressure.cef", "endor", CreatureObject(pCreature):getPositionX(), CreatureObject(pCreature):getPositionZ(), CreatureObject(pCreature):getPositionY(), CreatureObject(pCreature):getParentID())
-			CreatureObject(pCreature):setScreenPlayState(64, "death_watch_foreman_stage")
-			CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:restored_pressure")
+		playClientEffectLoc(CreatureObject(pCreature):getObjectID(), "clienteffect/dth_watch_water_pressure.cef", "endor", CreatureObject(pCreature):getPositionX(), CreatureObject(pCreature):getPositionZ(), CreatureObject(pCreature):getPositionY(), CreatureObject(pCreature):getParentID())
+		CreatureObject(pCreature):setScreenPlayState(64, "death_watch_foreman_stage")
+		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:restored_pressure")
 		-- Reset valves to starting state with A, B and D active
 		self:swapValveState(pCreature, 3, false)
 	end
