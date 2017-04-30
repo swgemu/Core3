@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_006596e0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-04-30T11:41:33Z",
+      "side": 1,
+      "message": "This needs to be:\n\nif (!CombatManager::instance()-\u003eareInDuel(creature, targetCreature) \u0026\u0026 !targetCreature-\u003ehasBountyMissionFor(creature) \u0026\u0026 !creature-\u003ehasBountyMissionFor(targetCreature) \u0026\u0026 targetCreature-\u003egetFactionStatus() \u003d\u003d FactionStatus::OVERT)\n\nOtherwise, it won\u0027t fail the check if one of the two hasBountyMissionFor calls returns true.",
+      "revId": "4fa8d1af031c997c205304f4e5d9a9007281bc92",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
