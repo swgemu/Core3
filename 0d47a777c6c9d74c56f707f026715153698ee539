@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_e0ae4ae7",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-04-30T11:57:34Z",
+      "side": 1,
+      "message": "Missing a !, this will continue if the object is in LOS.",
+      "revId": "0d47a777c6c9d74c56f707f026715153698ee539",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
