@@ -9,27 +9,17 @@ deathWatchQuestNpcs = {
 }
 
 deathWatchSpecialSpawns = {
-	--[[according to a bug report these spawned at the other door pre-cu
-	rageon_vart = {"rageon_vart", 0, -84.8, -20, -25.7, -114, 5996323},
-	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -84.8, -20, -25.7, -114, 5996323},
-	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -84.8, -20, -25.7, -114, 5996323},]]
-	rageon_vart = {"rageon_vart", 0, -114.3, -20, -25.7, 108, 5996323},
-	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -114.3, -20, -25.7, 108, 5996323},
-	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -114.3, -20, -25.7, 108, 5996323},
-	--[[according to a bug report these spawned at the other door pre-cu
-	klin_nif = {"klin_nif", 0, -44.9, -32, -99.4, 56, 5996331},
-	klin_nif_assist1 = {"death_watch_bloodguard", 0, -44.9, -32, -99.4, 56, 5996331},
-	klin_nif_assist2 = {"death_watch_bloodguard", 0, -44.9, -32, -99.4, 56, 5996331},]]
-	klin_nif = {"klin_nif", 0, -9.9, -32, -100.5, -47, 5996331},
-	klin_nif_assist1 = {"death_watch_bloodguard", 0, -9.9, -32, -100.5, -47, 5996331},
-	klin_nif_assist2 = {"death_watch_bloodguard", 0, -9.9, -32, -100.5, -47, 5996331},
-	fenri_dalso = {"fenri_dalso", 0, 25.8, -60, -172.1, -9, 5996346},
-	fenri_dalso_add1 = {"death_watch_wraith", 0, 26.0, -60, -171.1, 0, 5996346},
-	fenri_dalso_add2 = {"death_watch_s_battle_droid", 0, 24.9, -60, -174.0, -5, 5996346},
-	fenri_dalso_add3 = {"death_watch_s_battle_droid", 0, 27.3, -60, -173.7, -9, 5996346},
-	fenri_dalso_add4 = {"death_watch_wraith", 0, 25.8, -60, -173.7, 0, 5996346},
-	fenri_dalso_assist1 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
-	fenri_dalso_assist2 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
+	rageon_vart = {"rageon_vart", 0, -115.8, -20, -25.8, 90, 5996323},
+	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -74.3, -20, -24.5, 108, 5996322},
+	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -115.4, -20, -52.4, 108, 5996323},
+	klin_nif = {"klin_nif", 0, -56, -32, -98, 90, 5996334},
+	klin_nif_assist1 = {"death_watch_bloodguard", 0, -57.8, -32, -101.4, 90, 5996334},
+	klin_nif_assist2 = {"death_watch_ghost", 0, 1.9, -32, -52.6, -90, 5996335},
+	fenri_dalso = {"fenri_dalso", 0, 25.3, -60, -176.1, -9, 5996346},
+	fenri_dalso_assist1 = {"death_watch_ghost", 0, 25.2, -60, -176.4, 0, 5996346},
+	fenri_dalso_assist4 = {"death_watch_ghost", 0, 26.1, -60, -174.3, 0, 5996346},
+	fenri_dalso_assist2 = {"death_watch_s_battle_droid", 0, 25, -64, -173.3, 0, 5996346},
+	fenri_dalso_assist3 = {"death_watch_s_battle_droid", 0, 25.3, -60, -176.1, 0, 5996346},
 	haldo1 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
 	haldo2 = {"mand_bunker_crazed_miner", 0, -178.7,-60.1,-147.9,12,5996369},
 	haldo3 = {"mand_bunker_crazed_miner", 0, -185,-60.4,-250.5,-138,5996376},
@@ -61,6 +51,24 @@ deathWatchSpecialSpawns = {
 	droidengineerattack4 = {"death_watch_bloodguard", 0,-254.9, -40.0, -92.7, -130, 5996370},
 	bombdroid = {"r2", 0, 94, -64, -132, 90, 5996348},
 	ventdroid = {"mand_bunker_vent_droid", 0, -20.3, -52, -160.9, 0, 5996378},
+}
+
+deathWatchPatrolPoints = {
+	rageon_vart = {
+		{ -101.4, -20, -50.5, 5996323 },
+		{ -88.5 , -20, -37.5, 5996323 },
+		{ -92.5, -20, -45.5, 5996323 }
+	},
+	klin_nif = {
+		{ -29.8, -32, -93.7, 5996331 },
+		{ -20.5, -32, -74.5, 5996331 },
+		{ -22.1, -32, -85.2, 5996331 }
+	},
+	feri_dalso = {
+		{ -101.4, -60, -50.5, 5996346 },
+		{ -88.5, -60, -37.5, 5996346 },
+		{ -92.5, -60, -45.5, 5996346 },
+	}
 }
 
 deathWatchStaticSpawns = {
