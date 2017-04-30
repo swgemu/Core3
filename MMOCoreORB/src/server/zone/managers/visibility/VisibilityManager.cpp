@@ -4,6 +4,7 @@
 
 #include "VisibilityManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
@@ -53,6 +54,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 	if (zone == NULL)
 		return visibilityIncrease;
 
+
 	SortedVector<QuadTreeEntry*> closeObjects;
 	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
 	if (closeObjectsVector == NULL) {
@@ -78,7 +80,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 		if (c->isDead() || c->isIncapacitated() || (c->isPlayerCreature() && c->getPlayerObject()->hasGodMode()))
 			continue;
 
-		if (!creature->isInRange(c, 32))
+		if (!creature->isInRange(c, 32) || !CollisionManager::checkLineOfSight(creature, c))
 			continue;
 
 		if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
