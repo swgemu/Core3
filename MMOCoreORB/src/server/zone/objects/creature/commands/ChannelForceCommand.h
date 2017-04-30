@@ -72,7 +72,7 @@ public:
 		// Setup buffs.
 		uint32 buffCRC = STRING_HASHCODE("channelforcebuff");
 		Reference<Buff*> buff = creature->getBuff(buffCRC);
-		int duration = ChannelForceBuff::FORCE_CHANNEL_TICK_SECONDS * 20;
+		int duration = ChannelForceBuff::FORCE_CHANNEL_DURATION_SECONDS;
 		if (buff == NULL) {
 			buff = new ChannelForceBuff(creature, buffCRC, duration);
 			
@@ -97,7 +97,7 @@ public:
 			creature->addMaxHAM(CreatureAttribute::ACTION, -forceBonus);
 			creature->addMaxHAM(CreatureAttribute::MIND, -forceBonus);
 			
-			creature->renewBuff(buffCRC, duration + buff->getTimeLeft());
+			creature->renewBuff(buffCRC, duration);
 			Reference<ChannelForceBuff*> channelBuff = buff.castTo<ChannelForceBuff*>();
 			if (channelBuff != NULL)
 				channelBuff->activateRegenTick();

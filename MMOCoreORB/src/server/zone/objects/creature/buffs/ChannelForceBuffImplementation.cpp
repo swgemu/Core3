@@ -25,8 +25,11 @@ void ChannelForceBuffImplementation::activateRegenTick() {
 	if (cfBuffEvent == NULL)
 		cfBuffEvent = new ChannelForceBuffTickEvent(_this.getReferenceUnsafeStaticCast());
 
+	auto delay = FORCE_CHANNEL_TICK_DELAY_SECONDS * 1000;
 	if (!cfBuffEvent->isScheduled())
-		cfBuffEvent->schedule(FORCE_CHANNEL_TICK_SECONDS * 1000);
+		cfBuffEvent->schedule(delay);
+	else
+		cfBuffEvent->reschedule(delay);
 }
 
 void ChannelForceBuffImplementation::doHamTick() {
