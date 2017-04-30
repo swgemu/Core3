@@ -462,7 +462,18 @@ function BestineMuseumScreenPlay:createArtistWaypoint(pPlayer, id)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint("tatooine", artistName, "", artistData.x, artistData.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
+		local pWaypoint = PlayerObject(pGhost):getWaypointAt(artistData.x, artistData.y, "tatooine")
+		
+		if pWaypoint ~= nil then
+			local waypoint = LuaWaypointObject(pWaypoint)
+
+			if not waypoint:isActive() then
+				waypoint:setActive(1)
+				PlayerObject(pGhost):updateWaypoint(SceneObject(pWaypoint):getObjectID())
+			end
+		else
+			PlayerObject(pGhost):addWaypoint("tatooine", artistName, "", artistData.x, artistData.y, WAYPOINTPURPLE, true, true, 0, 0)
+		end
 	end
 end
 
