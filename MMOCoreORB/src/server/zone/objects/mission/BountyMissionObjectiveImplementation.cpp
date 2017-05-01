@@ -32,24 +32,21 @@ void BountyMissionObjectiveImplementation::activate() {
 
 	MissionObjectiveImplementation::activate();
 
-	bool failMission = false;
-
-	//Start NPC task or add observers to player target.
+	// Destroy existing npc target and start a new task
 	if (getObserverCount() == 2) {
 		removeNpcTargetObservers();
 		startNpcTargetTask();
-	} else if (getObserverCount() != 6) {
-		if (isPlayerTarget()) {
-			failMission = !addPlayerTargetObservers();
-		} else {
-			startNpcTargetTask();
-		}
+		return;
 	}
-  
-	if (failMission) {
-		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
-		abort();
-		removeMissionFromPlayer();
+
+	if (isPlayerTarget()) {
+		if (!addPlayerTargetObservers()) {
+			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
+			abort();
+			removeMissionFromPlayer();
+		}
+	} else {
+		startNpcTargetTask();
 	}
 }
 
@@ -194,7 +191,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 
 	switch (objectiveStatus) {
 	case INITSTATUS:
-		if (mission->getTargetOptionalTemplate() != "") {
+		if (mission->getTargetOptionalTemplate() != "" && (targetTask == NULL || !targetTask->isScheduled())) {
 			startNpcTargetTask();
 		}
 
@@ -313,7 +310,9 @@ Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
 			ManagedReference<CreatureObject*> creature = zoneServer->getObject(targetId).castTo<CreatureObject*>();
 
 			if (creature != NULL) {
-				return creature->getWorldPosition();
+				Vector3 targetPos = creature->getWorldPosition();
+				targetPos.setZ(0);
+				return targetPos;
 			}
 		}
 	} else {
@@ -523,9 +522,9 @@ void BountyMissionObjectiveImplementation::startNpcTargetTask() {
 	Locker locker(&syncMutex);
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	if(mission == NULL)
 		return;
-
 
 	targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
 

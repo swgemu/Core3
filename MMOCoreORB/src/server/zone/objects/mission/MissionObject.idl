@@ -282,6 +282,11 @@ class MissionObject extends IntangibleObject {
 	public string getEndPlanet() {
 		return endPlanet;
 	}
+	
+	@preLocked
+	public void setEndPlanet(final string newEndPlanet) {
+		endPlanet = newEndPlanet;
+	}
 
 	@dirty
 	public WaypointObject getWaypointToMission() {

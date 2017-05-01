@@ -149,25 +149,25 @@ class FindTargetTask : public Task, public Logger {
 			maximumSkillMod = 125;
 		}
 
-		long long skillMods = player->getSkillMod(skillToUse) + player->getSkillModFromBuffs(skillToUse);
+		long long successChance = player->getSkillMod(skillToUse) + player->getSkillModFromBuffs(skillToUse);
 
-		int checkedSkillMods = skillMods;
-		if (checkedSkillMods < 0) {
-			checkedSkillMods = 0;
-		} else if (checkedSkillMods > maximumSkillMod) {
-			checkedSkillMods = maximumSkillMod;
+		if (successChance < 0) {
+			successChance = 0;
+		} else if (successChance > maximumSkillMod) {
+			successChance = maximumSkillMod;
 		}
 
-		int checkValue = checkedSkillMods - ((getTargetLevel(player, objective)) / 2);
-		if (checkValue < 5) {
-			checkValue = 5;
-		} else if (checkValue > 95) {
-			checkValue = 95;
+		successChance -= ((getTargetLevel(player, objective)) / 3);
+
+		if (successChance < 5) {
+			successChance = 5;
+		} else if (successChance > 95) {
+			successChance = 95;
 		}
 
 		int randomValue = System::random(100);
 
-		return randomValue < checkValue;
+		return randomValue < successChance;
 	}
 
 	int calculateTime(CreatureObject* player) {
