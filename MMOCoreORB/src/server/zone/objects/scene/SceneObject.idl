@@ -1116,9 +1116,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	// Gets called when delayed-load containerObjects is loaded
-	public abstract void onContainerLoaded() {
-
-	}
+	public native abstract void onContainerLoaded();
 
 	public void setContainerVolumeLimit(int lim) {
 		containerVolumeLimit = lim;

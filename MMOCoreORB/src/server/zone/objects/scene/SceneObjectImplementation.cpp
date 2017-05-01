@@ -1630,6 +1630,14 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 	return false;
 }
 
+void SceneObjectImplementation::onContainerLoaded() {
+	ManagedReference<SceneObject*> playerParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+	if (playerParent != NULL) {
+		sendContainerObjectsTo(playerParent);
+	}
+}
+
 Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel() {
     
 	Reference<SceneObject*> sceno = asSceneObject();
