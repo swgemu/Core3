@@ -132,7 +132,7 @@ class BountyMissionObjective extends MissionObjective {
 	private native void startNpcTargetTask();
 
 	@dirty
-	private native boolean isPlayerTarget();
+	public native boolean isPlayerTarget();
 
 	private native void handleNpcTargetKilled(Observable observable);
 	private native int handleNpcTargetReceivesDamage(ManagedObject arg1);

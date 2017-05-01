@@ -8,6 +8,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"
 
@@ -23,9 +24,9 @@ class BountyHunterTargetTask: public Task, public Logger {
 	ManagedWeakReference<BountyMissionObjective*> objective;
 	ManagedWeakReference<CreatureObject*> player;
 
-	Vector3 nextPosition;
 	Vector3 currentPosition;
-	bool move;
+	Vector3 destination;
+	bool move, movedOffPlanet, movingToStarport;
 	String zoneName;
 
 public:
@@ -34,13 +35,32 @@ public:
 		this->mission = mission;
 		this->player = player;
 		this->zoneName = zoneName;
+		this->movedOffPlanet = false;
+		this->movingToStarport = false;
 
 		objective = cast<BountyMissionObjective*> (mission->getMissionObjective());
 
 		currentPosition.setX(mission->getEndPositionX());
 		currentPosition.setY(mission->getEndPositionY());
 		currentPosition.setZ(0);
-		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
+		ZoneServer* zoneServer = player->getZoneServer();
+		Zone* zone = zoneServer->getZone(zoneName);
+
+		if (zone == NULL) {
+			cancel();
+			return;
+		}
+
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		if (!movedOffPlanet && mission->getMissionLevel() > 2) {
+			Reference<PlanetTravelPoint*> randomStarport = planetManager->getRandomStarport();
+			destination = randomStarport->getDeparturePosition();
+			destination.setZ(0);
+			movingToStarport = true;
+		} else {
+			destination = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
+		}
 
 		if (mission->getMissionLevel() > 1) {
 			move = true;
@@ -50,10 +70,8 @@ public:
 	}
 
 	~BountyHunterTargetTask() {
-
 	}
 
-	// TODO: add shuttle jumping and planet jumping when path finding in cities is good enough.
 	void run() {
 		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
@@ -86,9 +104,9 @@ public:
 			Vector3 playerPosition = playerRef->getWorldPosition();
 			playerPosition.setZ(0);
 
-			if (playerPosition.distanceTo(currentPosition) < 500.0f) {
+			if (playerPosition.distanceTo(currentPosition) < 256.0f) {
 				updateToSpawnableTargetPosition();
-				if (playerPosition.distanceTo(currentPosition) < 500.0f) {
+				if (playerPosition.distanceTo(currentPosition) < 256.0f) {
 					move = false;
 					Locker olocker(objectiveRef);
 					objectiveRef->spawnTarget(zoneName);
@@ -109,19 +127,59 @@ public:
 
 private:
 	void updatePosition(CreatureObject* player) {
-		Vector3 direction = nextPosition - currentPosition;
-		Vector3 movementUpdate = direction;
-		movementUpdate.normalize();
+		Vector3 direction = destination - currentPosition;
+		float distToDest = direction.length();
+		int distPerSec = Math::min(4, 1 + mission.get()->getMissionLevel());
+		float distToTravel = distPerSec * 10.f;
 
-		if (direction.length() > 10.0) {
-			currentPosition = currentPosition + (10 * movementUpdate);
+		if (distToDest <= distToTravel) {
+			currentPosition = destination;
+
+			if (movingToStarport and !movedOffPlanet) {
+				zoneName = player->getZoneServer()->getMissionManager()->getRandomBountyPlanet();
+				movedOffPlanet = true;
+				movingToStarport = false;
+
+				ZoneServer* zoneServer = player->getZoneServer();
+				Zone* zone = zoneServer->getZone(zoneName);
+
+				if (zone == NULL) {
+					return;
+				}
+
+				ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+				Reference<PlanetTravelPoint*> randomStarport = planetManager->getRandomStarport();
+				currentPosition = randomStarport->getDeparturePosition();
+			}
+
+			destination = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
 		} else {
-			currentPosition = nextPosition;
-			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
+			Vector3 movementUpdate = direction;
+			movementUpdate.normalize();
+			movementUpdate = movementUpdate * distToTravel;
+
+			currentPosition = currentPosition + movementUpdate;
 		}
 	}
 
 	void updateToSpawnableTargetPosition() {
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (playerRef == NULL || playerRef->getZone() == NULL)
+			return;
+
+		Zone* zone = playerRef->getZone();
+		SortedVector<ManagedReference<NavArea*> > areas;
+
+		Sphere sphere(Vector3(currentPosition.getX(), currentPosition.getY(), zone->getHeightNoCache(currentPosition.getX(), currentPosition.getY())), 20);
+		Vector3 result;
+
+		if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result)) {
+			currentPosition.setX(result.getX());
+			currentPosition.setY(result.getY());
+			return;
+		}
+
 		if (canSpawnTargetAt(currentPosition)) {
 			return;
 		}
