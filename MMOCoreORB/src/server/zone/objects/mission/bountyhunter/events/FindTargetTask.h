@@ -143,31 +143,20 @@ class FindTargetTask : public Task, public Logger {
 
 	bool getSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		String skillToUse = "droid_find_chance";
-		int maximumSkillMod = 155;
-		if (track) {
+
+		if (track)
 			skillToUse = "droid_track_chance";
-			maximumSkillMod = 125;
-		}
 
 		long long skillMods = player->getSkillMod(skillToUse) + player->getSkillModFromBuffs(skillToUse);
 
-		int checkedSkillMods = skillMods;
-		if (checkedSkillMods < 0) {
-			checkedSkillMods = 0;
-		} else if (checkedSkillMods > maximumSkillMod) {
-			checkedSkillMods = maximumSkillMod;
-		}
-
-		int checkValue = checkedSkillMods - ((getTargetLevel(player, objective)) / 2);
-		if (checkValue < 5) {
-			checkValue = 5;
-		} else if (checkValue > 95) {
-			checkValue = 95;
-		}
+		if (skillMods < 5)
+			skillMods = 5;
+		else if (skillMods > 95)
+			skillMods = 95;
 
 		int randomValue = System::random(100);
 
-		return randomValue < checkValue;
+		return randomValue < skillMods;
 	}
 
 	int calculateTime(CreatureObject* player) {
