@@ -564,6 +564,19 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(cons
 	return planetTravelPoint;
 }
 
+PlanetTravelPoint* PlanetManagerImplementation::getRandomStarport() {
+	Vector<Reference<PlanetTravelPoint*> > planetStarports;
+
+	for (int i = 0; i < planetTravelPointList->size(); ++i) {
+		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
+
+		if (ptp->isInterplanetary() && ptp->isIncomingAllowed())
+			planetStarports.add(ptp);
+	}
+
+	return planetStarports.get(System::random(planetStarports.size() - 1));
+}
+
 void PlanetManagerImplementation::loadClientPoiData() {
 
 	Locker locker(&poiMutex);
