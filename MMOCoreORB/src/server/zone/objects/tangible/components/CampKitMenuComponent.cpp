@@ -150,7 +150,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		/// Check camps/lairs nearby
 		SortedVector<ManagedReference<QuadTreeEntry* > > nearbyObjects;
 		zone->getInRangeObjects(player->getPositionX(), player->getPositionY(),
-				512, &nearbyObjects, true);
+				512, &nearbyObjects, true, false);
 
 		for(int i = 0; i < nearbyObjects.size(); ++i) {
 			SceneObject* scno = cast<SceneObject*>(nearbyObjects.get(i).get());
