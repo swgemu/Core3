@@ -764,7 +764,8 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
-	if (defender->isIntimidated() || defender->isBerserked() || defender->isVehicleObject()) return 0;
+	if (defender->isIntimidated() || defender->isBerserked() || defender->isVehicleObject() || defender->isSwimming())
+		return 0;
 
 	int targetDefense = defender->isPlayerCreature() ? 0 : defender->getLevel();
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
@@ -773,8 +774,11 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
 		const String& mod = defenseAccMods->get(i);
-		targetDefense += defender->getSkillMod(mod);
-		targetDefense += defender->getSkillMod("private_" + mod);
+		if ((mod == "dodge" && defender->isRidingMount()) || (mod == "counterattack" && (defender->getParent() != NULL && defender->getParent().get()->isVehicleObject())))
+			return 0;
+		else
+			targetDefense += defender->getSkillMod(mod);
+			targetDefense += defender->getSkillMod("private_" + mod);
 	}
 
 	if (targetDefense > 125)
