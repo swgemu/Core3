@@ -42,11 +42,11 @@
 --true = 1, false = 0
 
 HealMindSelf2Command = {
-        name = "healmindself2",
-	forceCost = 100,
+	name = "healmindself2",
+	forceCost = 25,
 	healAmount = 1500,
-	forceCostDivisor = 14.0,
-	healAttributes = MIND_ATTRIBUTE,
+	forceCostMultiplier = 0.05,
+	attributesToHeal = MIND_ATTRIBUTE,
 	range = 0
 }
 

@@ -42,11 +42,11 @@
 --true = 1, false = 0
 
 HealAllOther1Command = {
-        name = "healallother1",
-	forceCost = (500 * 3)/4,
-	healAmount = 500,
-	forceCostDivisor = 4,
-	healAttributes = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
+	name = "healallother1",
+	forceCost = 600,
+	healAmount = 250,
+	forceCostMultiplier = 0.1,
+	attributesToHeal = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
 	range = 32,
 }
 

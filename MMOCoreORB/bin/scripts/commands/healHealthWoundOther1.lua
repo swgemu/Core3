@@ -42,13 +42,12 @@
 --true = 1, false = 0
 
 HealHealthWoundOther1Command = {
-        name = "healhealthwoundother1",
-	healWoundAmount = 150,
-	forceCost = 85,
-	forceCostDivisor = 15,
-	healWoundAttributes = HEALTH_ATTRIBUTE,
+	name = "healhealthwoundother1",
+	healWoundAmount = 100,
+	forceCost = 50,
+	forceCostMultiplier = 0.1,
+	woundAttributesToHeal = HEALTH_ATTRIBUTE,
 	range = 32
-
 }
 
 AddCommand(HealHealthWoundOther1Command)
