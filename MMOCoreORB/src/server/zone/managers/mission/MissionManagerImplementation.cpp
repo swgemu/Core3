@@ -861,8 +861,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		String planet = playerZone->getZoneName();
 		if (level == 3 && bhTargetZones.size() > 0) {
-			int randomNumber = System::random(bhTargetZones.size() - 1);
-			planet = bhTargetZones.get(randomNumber);
+			planet = getRandomBountyPlanet();
 		}
 
 		Vector3 endPos = getRandomBountyTargetPosition(player, planet);
@@ -2018,4 +2017,9 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 			}
 		}
 	}
+}
+
+String MissionManagerImplementation::getRandomBountyPlanet() {
+	int randomNumber = System::random(bhTargetZones.size() - 1);
+	return bhTargetZones.get(randomNumber);
 }
