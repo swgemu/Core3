@@ -42,12 +42,11 @@
 --true = 1, false = 0
 
 HealAllSelf1Command = {
-        name = "healallself1",
-	forceCost = (500 * 3)/9.5,
+	name = "healallself1",
+	forceCost = 250,
 	healAmount = 500,
-	forceCostDivisor = 9.5,
-	healAttributes = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
-
+	forceCostMultiplier = 0.05,
+	attributesToHeal = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
 }
 
 AddCommand(HealAllSelf1Command)

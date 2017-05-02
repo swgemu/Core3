@@ -42,12 +42,11 @@
 --true = 1, false = 0
 
 HealHealthWoundSelf2Command = {
-        name = "healhealthwoundself2",
-	healWoundAmount = 350,
-	forceCostDivisor = 15,
-	healWoundAttributes = HEALTH_ATTRIBUTE,
-	forceCost = 100,
-
+	name = "healhealthwoundself2",
+	healWoundAmount = 500,
+	forceCostMultiplier = 0.05,
+	woundAttributesToHeal = HEALTH_ATTRIBUTE,
+	forceCost = 50,
 }
 
 AddCommand(HealHealthWoundSelf2Command)

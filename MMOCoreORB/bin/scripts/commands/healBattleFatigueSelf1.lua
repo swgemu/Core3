@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 HealBattleFatigueSelf1Command = {
-        name = "healbattlefatigueself1",
-	forceCost = 75,
-	healBattleFatigue = 150
+	name = "healbattlefatigueself1",
+	forceCost = 60,
+	healBattleFatigue = 150,
+	forceCostMultiplier = 0.1,
 }
 
 AddCommand(HealBattleFatigueSelf1Command)
