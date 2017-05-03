@@ -133,7 +133,7 @@ private:
 		if (distToDest <= distToTravel) {
 			currentPosition = destination;
 
-			if (movingToStarport and !movedOffPlanet) {
+			if (movingToStarport && !movedOffPlanet) {
 				zoneName = player->getZoneServer()->getMissionManager()->getRandomBountyPlanet();
 				movedOffPlanet = true;
 				movingToStarport = false;
@@ -149,6 +149,7 @@ private:
 				if (strongMissionRef == NULL)
 					return;
 
+				Locker clocker(strongMissionRef, player);
 				strongMissionRef->setEndPlanet(zoneName);
 
 				ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();

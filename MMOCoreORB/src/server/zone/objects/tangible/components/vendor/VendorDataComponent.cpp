@@ -395,6 +395,10 @@ void VendorDataComponent::scheduleVendorCheckTask(int delay) {
 	if (vendorCheckTask == NULL)
 		vendorCheckTask = new UpdateVendorTask(strongParent);
 
+	if (vendorCheckTask->isScheduled()) {
+		assert(0 && "vendor task already scheduled");
+	}
+
 	vendorCheckTask->schedule(1000 * 60 * delay);
 }
 
