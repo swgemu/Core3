@@ -68,7 +68,7 @@ public:
 	VendorDataComponent();
 
 	virtual ~VendorDataComponent() {
-
+		assert(0 && "vendor unloading");
 	}
 
 	void initializeTransientMembers();
