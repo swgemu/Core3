@@ -130,10 +130,13 @@ public:
 
 	String getDirection(CreatureObject* tracker, CreatureObject* trackee) {
 		String direction;
-		float trackerX = tracker->getPositionX();
-		float trackerY = tracker->getPositionY();
-		float trackeeX = trackee->getPositionX();
-		float trackeeY = trackee->getPositionY();
+		auto trackeeWorldPosition = trackee->getWorldPosition();
+		auto trackerWorldPosition = tracker->getWorldPosition();
+
+		float trackerX = trackerWorldPosition.getX();
+		float trackerY = trackerWorldPosition.getY();
+		float trackeeX = trackeeWorldPosition.getX();
+		float trackeeY = trackeeWorldPosition.getY();
 
 		// transform points so the origin is the tracker's position
 		float transformedX = trackeeX - trackerX;
