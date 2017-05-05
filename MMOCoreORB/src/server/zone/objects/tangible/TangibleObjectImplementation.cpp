@@ -806,6 +806,7 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int ma
 
 	crate->setMaxCapacity(maxSize);
 
+
 	if (insertSelf) {
 		if (!crate->transferObject(asTangibleObject(), -1, false)) {
 			crate->destroyObjectFromDatabase(true);
@@ -813,17 +814,19 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int ma
 		}
 	} else {
 		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(asTangibleObject()));
+
+		if (protoclone == NULL) {
+			crate->destroyObjectFromDatabase(true);
+			return NULL;
+		}
+
 		/*
 		* I really didn't want to do this this way, but I had no other way of making the text on the crate be white
 		* if the item it contained has yellow magic bit set. So I stripped the yellow magic bit off when the item is placed inside
 		* the crate here, and added it back when the item is extracted from the crate if it is a crafted enhanced item.
 		*/
-		if(protoclone->getIsCraftedEnhancedItem())
+		if(protoclone->getIsCraftedEnhancedItem()) {
 			protoclone->removeMagicBit(false);
-
-		if (protoclone == NULL) {
-			crate->destroyObjectFromDatabase(true);
-			return NULL;
 		}
 
 		protoclone->setParent(NULL);
