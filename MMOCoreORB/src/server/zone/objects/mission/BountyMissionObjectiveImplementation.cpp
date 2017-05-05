@@ -117,6 +117,8 @@ void BountyMissionObjectiveImplementation::complete() {
 
 	removeFromBountyLock(true);
 
+	locker.release();
+
 	MissionObjectiveImplementation::complete();
 }
 
