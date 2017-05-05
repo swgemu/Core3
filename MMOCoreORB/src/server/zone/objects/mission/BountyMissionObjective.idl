@@ -33,6 +33,8 @@ class BountyMissionObjective extends MissionObjective {
 	protected FindTargetTaskList droidTasks;
 
 	protected BountyHunterTargetTask targetTask;
+	
+	protected boolean completedMission;
 
 	@dereferenced
 	protected transient Mutex syncMutex;
@@ -49,6 +51,8 @@ class BountyMissionObjective extends MissionObjective {
 
 		activeDroid = null;
 		droid = null;
+		
+		completedMission = false;
 
 		Logger.setLoggingName("BountyMissionObjective");
 	}
