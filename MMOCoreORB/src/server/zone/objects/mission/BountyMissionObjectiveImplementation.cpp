@@ -102,6 +102,10 @@ void BountyMissionObjectiveImplementation::abort() {
 void BountyMissionObjectiveImplementation::complete() {
 	Locker locker(&syncMutex);
 
+	if (completedMission) {
+		return;
+	}
+
 	cancelAllTasks();
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
@@ -116,6 +120,10 @@ void BountyMissionObjectiveImplementation::complete() {
 	owner->getZoneServer()->getMissionManager()->completePlayerBounty(mission->getTargetObjectId(), owner->getObjectID());
 
 	removeFromBountyLock(true);
+
+	completedMission = true;
+
+	locker.release();
 
 	MissionObjectiveImplementation::complete();
 }
@@ -170,6 +178,9 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 	} else if (eventType == ObserverEventType::DAMAGERECEIVED) {
 		return handleNpcTargetReceivesDamage(arg1);
 	} else if (eventType == ObserverEventType::PLAYERKILLED) {
+		Reference<ManagedObject*> obj;
+
+
 		handlePlayerKilled(arg1);
 	} else if (eventType == ObserverEventType::DEFENDERADDED) {
 		handleDefenderAdded(arg1);
@@ -612,7 +623,7 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 	if(mission == NULL)
 		return;
 
-	if (owner != NULL && killer != NULL) {
+	if (owner != NULL && killer != NULL && !completedMission) {
 		if (owner->getObjectID() == killer->getObjectID()) {
 			//Target killed by player, complete mission.
 			ZoneServer* zoneServer = owner->getZoneServer();
