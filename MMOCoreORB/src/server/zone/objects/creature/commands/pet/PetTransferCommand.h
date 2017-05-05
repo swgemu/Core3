@@ -105,6 +105,7 @@ public:
 		pet->setCreatureLink(targetPlayer);
 		pet->setFaction(targetPlayer->getFaction());
 		pet->setFollowObject(targetPlayer);
+		pet->storeFollowObject();
 
 		if (targetPlayer->getPvpStatusBitmask() & CreatureFlag::PLAYER)
 			pet->setPvpStatusBitmask(targetPlayer->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
