@@ -75,9 +75,9 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("SceneObject");
 
-	savedRootParent = getRootParent();
-
 	containerObjects.setContainer(asSceneObject());
+
+	savedRootParent = getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
