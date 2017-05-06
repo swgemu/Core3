@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_80cc2637",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-06T08:04:29Z",
+      "side": 1,
+      "message": "This will override anything done before and will cause, for example, an exceptional weapon with no skill mods to not be yellow.",
+      "revId": "f47b9ccfe39f8e60d0f333e8d460860dedf8e5cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
