@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_20b0d2dc",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-06T00:58:37Z",
+      "side": 1,
+      "message": "I would put this inside the if (size \u003e 0) check.",
+      "revId": "2389a6f1f8eed94985063a13ca1195aaf3935555",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
