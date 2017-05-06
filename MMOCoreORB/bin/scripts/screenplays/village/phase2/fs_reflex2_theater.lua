@@ -20,10 +20,7 @@ FsReflex2Theater = GoToTheater:new {
 		{ template = "sith_shadow_pirate", x = -11.14, y = -7.26 },
 		{ template = "sith_shadow_thug", x = -2.57, y = 12.67 }
 	},
-	despawnTime = 20 * 60 * 1000, -- 20 minutes
-	activeAreaRadius = 16,
-	onFailedSpawn = nil,
-	onEnteredActiveArea = nil
+	activeAreaRadius = 16
 }
 
 function FsReflex2Theater:onEnteredActiveArea(pPlayer, mobileList)

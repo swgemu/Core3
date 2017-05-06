@@ -25,8 +25,8 @@ FsSad2Theater5 = GoToTheater:new {
 	},
 	waypointDescription = "@quest/quest_journal/fs_quests_sad2:task5",
 	createWaypoint = true,
-	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
+	flattenLayer = true
 }
 
 function FsSad2Theater5:onObjectsSpawned(pPlayer, spawnedMobileList)

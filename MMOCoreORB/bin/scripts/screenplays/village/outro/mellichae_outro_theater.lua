@@ -48,8 +48,8 @@ MellichaeOutroTheater = GoToTheater:new {
 		{ template = "sith_shadow_thug", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 },
 		{ template = "sith_shadow_thug", minimumDistance = 8, maximumDistance = 36, referencePoint = 0 }
 	},
-	despawnTime =  60 * 60 * 1000, -- 1 hour
-	activeAreaRadius = 72 -- Make sure we grab the entering of radius.
+	activeAreaRadius = 72, -- Make sure we grab the entering of radius.
+	flattenLayer = true
 }
 
 -- Event handler for the enter active area event.

@@ -14,9 +14,7 @@ FsCrafting4Theater = GoToTheater:new {
 	},
 	waypointDescription = "Downed Satellite",
 	mobileList = {},
-	despawnTime = 30 * 60 * 1000, -- 30 minutes
-	activeAreaRadius = 32,
-	onEnteredActiveArea = nil
+	activeAreaRadius = 32
 }
 
 return FsCrafting4Theater
