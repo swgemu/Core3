@@ -25,6 +25,7 @@ FsSad1Theater5 = GoToTheater:new {
 		{ template = "sith_shadow_pirate", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 }
 	},
 	createWaypoint = true,
+	waypointDescription = "@quest/quest_journal/fs_quests_sad:task5",
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
 }
