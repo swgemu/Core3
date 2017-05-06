@@ -24,8 +24,8 @@ FsSad1Theater4 = GoToTheater:new {
 		{ template = "sith_shadow_pirate", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 }
 	},
 	createWaypoint = false,
-	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
+	flattenLayer = true
 }
 
 function FsSad1Theater4:onObjectsSpawned(pPlayer, spawnedMobileList)

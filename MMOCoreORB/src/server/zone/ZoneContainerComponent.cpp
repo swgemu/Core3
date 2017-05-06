@@ -15,6 +15,7 @@
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/intangible/TheaterObject.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == NULL)
@@ -210,6 +211,12 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 					mesh->updateNavMesh(object, true);
 				}
 			}
+		}
+	} else if (object->isTheaterObject()) {
+		TheaterObject* theater = static_cast<TheaterObject*>(object);
+
+		if (theater != NULL && theater->shouldFlattenTheater()) {
+			zone->getPlanetManager()->getTerrainManager()->addTerrainModification(object->getWorldPositionX(), object->getWorldPositionY(), "terrain/poi_small.lay", object->getObjectID());
 		}
 	}
 

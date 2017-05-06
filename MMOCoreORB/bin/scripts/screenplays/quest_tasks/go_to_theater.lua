@@ -6,7 +6,6 @@
 --  - theater  	 			- the script to use for the theater.
 --  - waypointDescription 	- description for the waypoint that is shown for the player.
 --  - mobileList 			- a list of mobiles to spawn around the theater. The list follows the format of the spawn_mobiles module.
---  - despawnTime 			- the time in milliseconds that the theater will remain in the world before being despawned.
 --  - onFailedSpawn 		- function that is called if the spawn of the theater or any element creation fails.
 
 local ObjectManager = require("managers.object.object_manager")
@@ -23,8 +22,8 @@ GoToTheater = Task:new {
 	createWaypoint = true,
 	mobileList = {},
 	mobileListWithLoc = {},
-	despawnTime = 0,
 	activeAreaRadius = 0,
+	flattenLayer = false,
 	onFailedSpawn = nil,
 	onTheaterCreated = nil,
 	onObjectsSpawned = nil,
@@ -44,12 +43,12 @@ function GoToTheater:taskStart(pPlayer)
 		return false
 	end
 
-	local pTheater = spawnSceneObject(zoneName, "object/static/structure/nobuild/nobuild_32.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
+	local pTheater = spawnTheaterObject(zoneName, spawnPoint[1], spawnPoint[2], spawnPoint[3], self.flattenLayer)
 
 	if (pTheater == nil) then
 		return false
 	end
-
+	
 	writeData(playerID .. self.taskName .. "theaterID", SceneObject(pTheater):getObjectID())
 
 	local pActiveArea = spawnActiveArea(zoneName, "object/active_area.iff", spawnPoint[1], 0, spawnPoint[3], 250, 0)

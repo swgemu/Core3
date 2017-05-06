@@ -14,6 +14,7 @@ class TheaterObject extends IntangibleObject {
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
 	protected boolean despawnOnNoPlayersInRange;
+	protected boolean shouldFlatten;
 
 	protected transient DespawnLairOnPlayerDisappear despawnEvent;
 
@@ -24,8 +25,9 @@ class TheaterObject extends IntangibleObject {
 		super.closeobjects.setNoDuplicateInsertPlan();
 
 		despawnOnNoPlayersInRange = false;
+		shouldFlatten = false;
 	}
-
+	
 	@dirty
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange.get();
@@ -41,6 +43,16 @@ class TheaterObject extends IntangibleObject {
 		despawnOnNoPlayersInRange = b;
 	}
 
+	@read
+	public boolean shouldFlattenTheater() {
+		return shouldFlatten;
+	}
+
+	@preLocked
+	public void setShouldFlatten(boolean b) {
+		shouldFlatten = b;
+	}
+	
 	public void notifyInsert(QuadTreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 

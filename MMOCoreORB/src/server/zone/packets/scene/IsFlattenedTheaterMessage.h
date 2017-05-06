@@ -12,12 +12,12 @@
 
 class IsFlattenedTheaterMessage : public BaseMessage {
 public:
-	IsFlattenedTheaterMessage() : BaseMessage() {
+	IsFlattenedTheaterMessage(uint64 objectID, bool shouldFlatten) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x4EB0B06A);  // CRC
 
-		insertLong(0); //Object id of the flattened theater?
-		insertByte(0); //is it flattened? is it not?
+		insertLong(objectID); //Object id of the theater
+		insertByte(shouldFlatten); // Whether or not to flatten terrain
    }
 
 };
