@@ -530,30 +530,23 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 		}
 	}
 
-	if (yellow)
-		object->addMagicBit(false);
+	if (object->isWearableObject() || object->isWeaponObject()) {
+		ManagedReference<TangibleObject*> item = cast<TangibleObject*>(object);
 
-	if (object->isWearableObject()) {
-		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
+		if(additionalMods.size() > 0 || skillMods->size() > 0)
+			yellow = true;
 
 		for (int i = 0; i < additionalMods.size(); i++) {
-			wearableObject->addSkillMod(SkillModManager::WEARABLE, additionalMods.elementAt(i).getKey(), additionalMods.elementAt(i).getValue());
+			item->addSkillMod(SkillModManager::WEARABLE, additionalMods.elementAt(i).getKey(), additionalMods.elementAt(i).getValue());
 		}
 
 		for (int i = 0; i < skillMods->size(); i++) {
-			wearableObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
-		}
-	} else if (object->isWeaponObject()) {
-		ManagedReference<WeaponObject*> weaponObject = cast<WeaponObject*>(object);
-
-		for (int i = 0; i < additionalMods.size(); i++) {
-			weaponObject->addSkillMod(SkillModManager::WEARABLE, additionalMods.elementAt(i).getKey(), additionalMods.elementAt(i).getValue());
-		}
-
-		for (int i = 0; i < skillMods->size(); i++) {
-			weaponObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
+			item->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
 		}
 	}
+
+	if (yellow)
+		object->addMagicBit(false);
 }
 
 String LootManagerImplementation::getRandomLootableMod( unsigned int sceneObjectType ) {
