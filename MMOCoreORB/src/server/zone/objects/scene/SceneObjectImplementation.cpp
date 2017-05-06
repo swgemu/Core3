@@ -45,7 +45,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	// FIXME: temp hack
-	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer").get();
+	if (server == NULL)
+		server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer").get();
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
@@ -76,9 +77,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	savedRootParent = getRootParent();
 
-	if (containerObjects.getContainer() != asSceneObject()) {
-		containerObjects.setContainer(asSceneObject());
-	}
+	containerObjects.setContainer(asSceneObject());
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -127,8 +126,6 @@ void SceneObjectImplementation::initializePrivateData() {
 	setLoggingName("SceneObject");
 
 	childObjects.setNoDuplicateInsertPlan();
-
-	containerObjects.setContainer(asSceneObject());
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1384,8 +1381,6 @@ void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) 
 }
 
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
-	containerObjects.loadObjects();
-
 	ReadLocker locker(&containerLock);
 
 	objects = *containerObjects.getContainerObjects();
@@ -1498,7 +1493,7 @@ bool SceneObjectImplementation::isInWater() {
 }
 
 bool SceneObjectImplementation::containsNoTradeObjectRecursive() {
-	Locker locker(&containerLock);
+	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
@@ -1529,7 +1524,7 @@ bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* ma
 int SceneObjectImplementation::getCountableObjectsRecursive() {
 	int count = 0;
 
-	Locker locker(&containerLock);
+	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
@@ -1547,7 +1542,7 @@ int SceneObjectImplementation::getCountableObjectsRecursive() {
 int SceneObjectImplementation::getContainedObjectsRecursive() {
 	int count = 0;
 
-	Locker locker(&containerLock);
+	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
@@ -1563,7 +1558,7 @@ int SceneObjectImplementation::getContainedObjectsRecursive() {
 int SceneObjectImplementation::getSizeOnVendorRecursive() {
 	int count = 0;
 
-	Locker locker(&containerLock);
+	ReadLocker locker(&containerLock);
 
 	if (containerObjects.size() == 0)
 		++count;
@@ -1589,9 +1584,9 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 	if (obj != NULL)
 		return obj;
 
-	for (int i = 0; i < containerObjects.size(); ++i) {
-		Locker locker(&containerLock);
+	ReadLocker locker(&containerLock);
 
+	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> inContainerObject = containerObjects.get(i);
 
 		obj = inContainerObject->getContainerObjectRecursive(oid);

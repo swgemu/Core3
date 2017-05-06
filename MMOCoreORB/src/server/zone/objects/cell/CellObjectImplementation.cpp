@@ -28,6 +28,8 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 void CellObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
+	containerObjects.setNormalLoadOperationMode();
+
 	//Rebuild count to account for transient creos
 	//TODO: modify server shutdown to despawn transient mobs before final db save
 	if (!containerObjects.hasDelayedLoadOperationMode() || hasForceLoadObject()) {
@@ -35,11 +37,7 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 		forceLoadObjectCount.set(0);
 
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(getContainerLock());
-
 			SceneObject* child = getContainerObject(j);
-
-			rlocker.release();
 
 			if (child->isCreatureObject() || child->isVendor() || child->getPlanetMapCategoryCRC() != 0 || child->getPlanetMapSubCategoryCRC() != 0)
 				forceLoadObjectCount.increment();
@@ -54,13 +52,9 @@ void CellObjectImplementation::onContainerLoaded() {
 		return;
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
-		ReadLocker rlocker(getContainerLock());
-
 		SceneObject* child = getContainerObject(j);
 
-		rlocker.release();
-
-		building->notifyObjectInsertedToZone(child);
+		building->notifyObjectInsertedToChild(child, asSceneObject(), NULL);
 	}
 }
 
@@ -69,11 +63,7 @@ void CellObjectImplementation::onBuildingInsertedToZone(BuildingObject* building
 		return;
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
-		ReadLocker rlocker(getContainerLock());
-
 		SceneObject* child = getContainerObject(j);
-
-		rlocker.release();
 
 		building->notifyObjectInsertedToZone(child);
 	}
@@ -199,9 +189,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 
 	if (strongParent != NULL) {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(getContainerLock());
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
-			rlocker.release();
 
 			if (!strongParent->containsChildObject(containerObject) && !containerObject->isCreatureObject() && !containerObject->isVendor()) {
 
@@ -225,9 +213,7 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 	int containerSize = getContainerObjectsSize();
 
 	for (int j = containerSize - 1; j >= 0; --j) {
-		ReadLocker rlocker(getContainerLock());
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
-		rlocker.release();
 
 		if (strongParent->containsChildObject(containerObject))
 			continue;

@@ -42,8 +42,6 @@ class NavArea extends ActiveArea {
 	@preLocked
 	public native void initializeNavArea(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true, boolean forceRebuild = false);
 
-	public native void initializeTransientMembers();
-
 	@preLocked
 	public native void initialize();
 

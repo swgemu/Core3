@@ -9,10 +9,6 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
-void ResourceSpawnImplementation::initializeTransientMembers() {
-
-}
-
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 		CreatureObject* object) {
 
