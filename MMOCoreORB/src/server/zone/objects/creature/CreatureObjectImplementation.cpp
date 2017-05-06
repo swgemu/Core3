@@ -2172,10 +2172,19 @@ void CreatureObjectImplementation::dismount() {
 }
 
 float CreatureObjectImplementation::calculateBFRatio() {
+	float bfRatio = 1.f;
+
 	if (shockWounds <= 250)
-		return 0;
+		return bfRatio;
 	else
-		return ((((float) shockWounds) - 250.0f) / 1000.0f);
+		bfRatio = ((float)shockWounds - 250.0f) / 1000.0f;
+
+	if (bfRatio > 1.0f)
+		bfRatio = 1.0f;
+	else if (bfRatio < 0.25f)
+		bfRatio = 0.25f;
+
+	return bfRatio;
 }
 
 void CreatureObjectImplementation::removeFeignedDeath() {

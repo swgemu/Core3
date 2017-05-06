@@ -7,9 +7,8 @@
 uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 		float power = getEffectiveness();
 
-		if (applyBattleFatigue) {
-			power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
-		}
+		if (applyBattleFatigue)
+			power *= patient->calculateBFRatio();
 
 		int droidBuff = healer->getSkillModOfType("private_medical_rating",SkillModManager::DROID);
 		int bldBuff = healer->getSkillModOfType("private_medical_rating", SkillModManager::STRUCTURE);

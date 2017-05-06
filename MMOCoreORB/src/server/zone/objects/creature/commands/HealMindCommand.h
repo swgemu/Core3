@@ -144,7 +144,7 @@ public:
 		int healPower = (int) (System::random(500)+800) * modSkill / 100;
 
 		// Check BF
-		healPower = (int) (healPower * (1 - creature->calculateBFRatio()) * (1 - creatureTarget->calculateBFRatio()));
+		healPower = (int) (healPower * creature->calculateBFRatio());
 
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 

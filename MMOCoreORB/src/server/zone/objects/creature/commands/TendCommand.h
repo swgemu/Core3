@@ -198,7 +198,7 @@ public:
 			return GENERALERROR;
 		}
 
-		float bfScale = 1 - creatureTarget->calculateBFRatio();
+		float bfScale = creatureTarget->calculateBFRatio();
 
 		if (tendDamage) {
 			if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {

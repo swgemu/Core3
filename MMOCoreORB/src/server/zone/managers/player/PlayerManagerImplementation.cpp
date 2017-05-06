@@ -2077,9 +2077,17 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	if (target->isPlayerCreature()) {
-		uint32 targetBattleFatigue = target->getShockWounds();
+	uint32 targetBattleFatigue = target->getShockWounds();
 
+	if (player == target) {
+		if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
+			player->sendSystemMessage("@healing:shock_effect_low");
+		} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
+			player->sendSystemMessage("@healing:shock_effect_medium");
+		} else if (targetBattleFatigue >= 750) {
+			player->sendSystemMessage("@healing:shock_effect_high");
+		}
+	} else if (target->isPlayerCreature()) {
 		if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
 			target->sendSystemMessage("@healing:shock_effect_low_target");
 		} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
@@ -2087,16 +2095,6 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 		} else if (targetBattleFatigue >= 750) {
 			target->sendSystemMessage("@healing:shock_effec_high_target");
 		}
-	}
-
-	uint32 playerBattleFatigue = player->getShockWounds();
-
-	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
-		player->sendSystemMessage("@healing:shock_effect_low");
-	} else if (playerBattleFatigue >= 500 && playerBattleFatigue < 750) {
-		player->sendSystemMessage("@healing:shock_effect_medium");
-	} else if (playerBattleFatigue >= 750) {
-		player->sendSystemMessage("@healing:shock_effect_high");
 	}
 }
 
