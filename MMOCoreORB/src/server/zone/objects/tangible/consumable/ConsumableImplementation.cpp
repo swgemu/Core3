@@ -135,6 +135,9 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	if (player->hasBuff(buffCRC)  && (!isAttributeEffect() || isForagedFood())) {
+		if (player->hasBuff(buffCRC)) {
+			printf("has buff, crc %d \n", buffCRC);
+		}
 		player->sendSystemMessage("@combat_effects:already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
 		return 0;
 	}
