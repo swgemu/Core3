@@ -702,6 +702,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				healCommand->setHealBattleFatigue(Lua::getUnsignedIntParameter(L));
 			else if (varName == "healStateCost")
 				healCommand->setHealStateCost(Lua::getUnsignedIntParameter(L));
+			else if (varName == "statesToHeal")
+				healCommand->setStatesToHeal(Lua::getUnsignedIntParameter(L));
 			else if (varName == "speed")
 				healCommand->setSpeed(Lua::getUnsignedIntParameter(L));
 			else if (varName == "allowedTarget")

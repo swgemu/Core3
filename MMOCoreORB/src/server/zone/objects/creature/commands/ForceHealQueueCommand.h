@@ -100,6 +100,10 @@ public:
 		healStateCost = cost;
 	}
 
+	void setStatesToHeal(unsigned int states) {
+		statesToHeal = states;
+	}
+
 	void setHealDiseaseCost(unsigned int cost) {
 		healDiseaseCost = cost;
 	}
