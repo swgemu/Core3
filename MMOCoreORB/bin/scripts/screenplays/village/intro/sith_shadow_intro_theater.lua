@@ -42,10 +42,8 @@ SithShadowIntroTheater = GoToTheater:new {
 		{ template = "sith_shadow_outlaw_mission", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 },
 		{ template = "sith_shadow_outlaw_mission", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 }
 	},
-	despawnTime = 2 * 60* 60* 1000, -- 2 hours
 	activeAreaRadius = 64,
-	onFailedSpawn = nil,
-	onEnteredActiveArea = nil
+	flattenLayer = true
 }
 
 -- Check if the sith shadow is the first one spawned for the player.

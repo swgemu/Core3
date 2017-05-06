@@ -24,8 +24,8 @@ FsSad2Theater8 = GoToTheater:new {
 		{ template = "sith_shadow_taskmaster", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
 	},
 	createWaypoint = false,
-	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
+	flattenLayer = true
 }
 
 function FsSad2Theater8:onObjectsSpawned(pPlayer, spawnedMobileList)

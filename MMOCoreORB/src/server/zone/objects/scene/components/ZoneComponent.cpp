@@ -19,6 +19,7 @@
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/intangible/TheaterObject.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	info("inserting to zone");
@@ -465,6 +466,14 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 
 		if (!modFile.isEmpty()) {
 			zone->getPlanetManager()->getTerrainManager()->removeTerrainModification(sceneObject->getObjectID());
+		}
+	}
+
+	if (sceneObject->isTheaterObject()) {
+		TheaterObject* theater = static_cast<TheaterObject*>(sceneObject);
+
+		if (theater != NULL && theater->shouldFlattenTheater()) {
+			zone->getPlanetManager()->getTerrainManager()->removeTerrainModification(theater->getObjectID());
 		}
 	}
 
