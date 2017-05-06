@@ -26,7 +26,7 @@ class BountyHunterTargetTask: public Task, public Logger {
 
 	Vector3 currentPosition;
 	Vector3 destination;
-	bool move, movedOffPlanet, movingToStarport;
+	bool move, movedOffPlanet, movingToStarport, targetSpawned;
 	String zoneName;
 
 public:
@@ -37,6 +37,7 @@ public:
 		this->zoneName = zoneName;
 		this->movedOffPlanet = false;
 		this->movingToStarport = false;
+		this->targetSpawned = false;
 		this->destination = Vector3(0, 0, 0);
 
 		objective = cast<BountyMissionObjective*> (mission->getMissionObjective());
@@ -93,19 +94,19 @@ public:
 
 		Locker locker(playerRef);
 
-		if (move)
+		if (move && !targetSpawned)
 			updatePosition(playerRef);
 
 		Zone* playerZone = playerRef->getZone();
 
-		if (playerZone != NULL && playerZone->getZoneName() == zoneName) {
+		if (!targetSpawned && playerZone != NULL && playerZone->getZoneName() == zoneName) {
 			Vector3 playerPosition = playerRef->getWorldPosition();
 			playerPosition.setZ(0);
 
 			if (playerPosition.distanceTo(currentPosition) < 256.0f) {
 				updateToSpawnableTargetPosition();
 				if (playerPosition.distanceTo(currentPosition) < 256.0f) {
-					move = false;
+					targetSpawned = true;
 					Locker olocker(objectiveRef);
 					objectiveRef->spawnTarget(zoneName);
 				}
