@@ -62,7 +62,7 @@ class StimPack extends PharmaceuticalObject {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue) {
-			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+			power *= patient.calculateBFRatio();
 		}
 
 		if (isPetStimPack() || isDroidRepairKit()) {

@@ -101,7 +101,7 @@ class RangedStimPack extends StimPack {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue) {
-			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+			power *= patient.calculateBFRatio();
 		}
 
 		float modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");

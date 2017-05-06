@@ -11,9 +11,8 @@ bool WoundPackImplementation::isDroidReconstructionKit() {
 uint32 WoundPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	float power = getEffectiveness();
 
-	if (applyBattleFatigue) {
-		power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
-	}
+	if (applyBattleFatigue)
+		power *= patient->calculateBFRatio();
 
 	if (isDroidReconstructionKit()) {
 		return power;

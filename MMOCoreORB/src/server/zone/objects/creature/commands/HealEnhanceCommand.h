@@ -208,7 +208,7 @@ public:
 		uint32 buffPower = 0;
 		if (BuffAttribute::isProtection(enhancePack->getAttribute())) {  // If it's a protection enhancement, wound treatment has no effect
 			buffPower = enhancePack->getEffectiveness();
-			buffPower = buffPower * (1 - patient->calculateBFRatio()) * (1 - enhancer->calculateBFRatio());
+			buffPower = buffPower * patient->calculateBFRatio();
 		} else
 			buffPower = enhancePack->calculatePower(enhancer, patient);
 
