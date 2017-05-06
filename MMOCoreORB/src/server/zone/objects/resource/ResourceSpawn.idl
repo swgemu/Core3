@@ -79,8 +79,6 @@ class ResourceSpawn extends SceneObject {
 		//	decreaseContainerReferenceCount();
 	}
 
-	public native void initializeTransientMembers();
-
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }

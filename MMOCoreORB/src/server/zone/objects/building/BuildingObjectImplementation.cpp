@@ -166,11 +166,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 			continue;
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(cell->getContainerLock());
-
 			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
-
-			rlocker.release();
 
 			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
 							|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
@@ -260,9 +256,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		//cell->resetCurrentNumerOfPlayerItems();
 
 		while (cell->getContainerObjectsSize() > 0) {
-			ReadLocker rlocker(cell->getContainerLock());
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
-			rlocker.release();
 
 			Locker objLocker(obj);
 
@@ -399,7 +393,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	if (zone != NULL) {
 		if (object->isTangibleObject()) {
-			TangibleObject* tano = cast<TangibleObject*>(object);
+			TangibleObject* tano = object->asTangibleObject();
 			zone->updateActiveAreas(tano);
 		}
 
@@ -429,9 +423,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				ReadLocker rlocker(cell->getContainerLock());
 				ManagedReference<SceneObject*> child = cell->getContainerObject(j);
-				rlocker.release();
 
 				if (child != obj && child != NULL) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
@@ -477,9 +469,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 			continue;
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(cell->getContainerLock());
 			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
-			rlocker.release();
 
 			if (child == NULL)
 				continue;
@@ -558,9 +548,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 		CellObject* cell = cells.get(i);
 
 		for (int j = cell->getContainerObjectsSize() - 1; j >= 0 ; --j) {
-			ReadLocker rlocker(cell->getContainerLock());
 			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
-			rlocker.release();
 
 			if (child->isPlayerCreature()) {
 				child->teleport(x, z, y);
@@ -811,16 +799,11 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 	try {
 		if (object->getCloseObjects() != NULL)
 			object->addInRangeObject(object, false);
-		//info("SceneObjectImplementation::insertToBuilding");
 
-		//parent->transferObject(asBuildingObject(), 0xFFFFFFFF);
-
-		if (object->getParent().get()->isCellObject()) {
-
+		if (child->isCellObject()) {
 			bool runInRange = true;
 
-			if ((oldParent == NULL || !oldParent->isCellObject()) || oldParent == object->getParent().get()) {
-				//insert(object);
+			if ((oldParent == NULL || !oldParent->isCellObject()) || oldParent == child) {
 
 				if (oldParent == NULL || (oldParent != NULL && dynamic_cast<Zone*>(oldParent) == NULL && !oldParent->isCellObject())) {
 					notifyObjectInsertedToZone(object);
@@ -831,65 +814,56 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 					broadcastDestroy(object, true);
 					broadcastObject(object, false);
 				}
-
-				//notifyObjectInsertedToZone(object);
 			}
 
 			if (runInRange) {
-				ManagedReference<CellObject*> cell = cast<CellObject*>(object->getParent().get().get());
+				ManagedReference<CellObject*> cell = cast<CellObject*>(child);
 
 				if (cell != NULL) {
 					for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+						ManagedReference<SceneObject*> cobj = cell->getContainerObject(j);
 
-						ReadLocker rlocker(cell->getContainerLock());
-						ManagedReference<SceneObject*> child = cell->getContainerObject(j);
-						rlocker.release();
+						if (cobj != object) {
 
-						if (child != object) {
-							//if (is)
-
-							if (child->getCloseObjects() != NULL) {
-								if (!child->getCloseObjects()->contains(object)) {
-									child->addInRangeObject(object, false);
-									object->sendTo(child, true);
+							if (cobj->getCloseObjects() != NULL) {
+								if (!cobj->getCloseObjects()->contains(object)) {
+									cobj->addInRangeObject(object, false);
+									object->sendTo(cobj, true);
 								}
 							} else
-								child->notifyInsert(object);
+								cobj->notifyInsert(object);
 
 							if (object->getCloseObjects() != NULL) {
-								if (!object->getCloseObjects()->contains(child.get())) {
-									object->addInRangeObject(child.get(), false);
-									child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+								if (!object->getCloseObjects()->contains(cobj.get())) {
+									object->addInRangeObject(cobj.get(), false);
+									cobj->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
 								} else {
-									if (object->getClient() != NULL && child->isCreatureObject()) {
-										object->sendMessage(child->link(cell->getObjectID(), -1));
+									if (object->getClient() != NULL && cobj->isCreatureObject()) {
+										object->sendMessage(cobj->link(cell->getObjectID(), -1));
 									}
 								}
 							} else {
-								object->notifyInsert(child.get());
+								object->notifyInsert(cobj.get());
 							}
 
 						}
 					}
 				}
 			}
-
 		}
 
-		//sceneObject->broadcastMessage(sceneObject->link(parent->getObjectID(), 0xFFFFFFFF), true, false);
-
-		//info("sent cell link to everyone else");
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
 
-	if (zone != NULL)
+	if (zone != NULL) {
 		delete _locker;
 
-	if (getZone() != NULL && object->isTangibleObject()) {
-		TangibleObject* tano = cast<TangibleObject*>(object);
-		getZone()->updateActiveAreas(tano);
+		if (object->isTangibleObject()) {
+			TangibleObject* tano = object->asTangibleObject();
+			zone->updateActiveAreas(tano);
+		}
 	}
 
 	return 0;

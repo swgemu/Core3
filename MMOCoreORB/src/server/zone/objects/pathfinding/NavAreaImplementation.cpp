@@ -6,10 +6,6 @@
 
 //#define NAVMESH_DEBUG
 
-void NavAreaImplementation::initializeTransientMembers() {
-
-}
-
 void NavAreaImplementation::notifyLoadFromDatabase() {
 	ActiveAreaImplementation::notifyLoadFromDatabase();
 	navMesh = new RecastNavMesh("navmeshes/"+meshName, false);

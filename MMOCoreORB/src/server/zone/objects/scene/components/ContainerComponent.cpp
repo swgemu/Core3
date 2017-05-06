@@ -64,8 +64,6 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	if (containmentType >= 4) {
-		Locker contLocker(sceneObject->getContainerLock());
-
 		int arrangementGroup = containmentType - 4;
 
 		if (object->getArrangementDescriptorSize() > arrangementGroup) {
@@ -177,13 +175,13 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	bool update = true;
 
+	Locker contLocker(sceneObject->getContainerLock());
+
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	//if (containerType == 1 || containerType == 5) {
 	if (containmentType >= 4) {
-		Locker contLocker(sceneObject->getContainerLock());
-
 		int arrangementGroup = containmentType - 4;
 
 		if (object->getArrangementDescriptorSize() > arrangementGroup) {
@@ -206,8 +204,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
-		Locker contLocker(sceneObject->getContainerLock());
-
 		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;
 		}
@@ -232,6 +228,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 	}
 
+	contLocker.release();
+
 	if ((containmentType >= 4) && objZone == NULL)
 		sceneObject->broadcastObject(object, true);
 	else if (notifyClient)
@@ -255,6 +253,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 }
 
 bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+	Locker contLocker(sceneObject->getContainerLock());
+
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
@@ -262,8 +262,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	if (object->getParent() != NULL && object->getParent() != sceneObject) {
 		ManagedReference<SceneObject*> objParent = object->getParent();
-
-		Locker contLocker(sceneObject->getContainerLock());
 
 		containerObjects->drop(object->getObjectID());
 
@@ -279,9 +277,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	int containedType = object->getContainmentType();
 
 	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
-
-//	if (containedType == 4 || containedType == 5) {
-	Locker contLocker(sceneObject->getContainerLock());
 
 	int arrangementSize = object->getArrangementDescriptorSize();
 
@@ -309,10 +304,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		}
 	}
 
-
-	//	} else if (containedType == -1) {
-	//Locker contLocker(sceneObject->getContainerLock());
-
 	if (containerObjects->contains(object->getObjectID())) {
 		//info("containerObjects doesnt contain specified object", true);
 		//object->setParent(NULL);
@@ -325,15 +316,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	object->setParent(NULL);
 
 	contLocker.release();
-	/*
-
-	} else {
-		sceneObject->error("unknown contained type " + String::valueOf(containedType));
-		StackTrace::printStackTrace();
-
-		return false;
-	}
-	*/
 
 	if (notifyClient)
 		sceneObject->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);

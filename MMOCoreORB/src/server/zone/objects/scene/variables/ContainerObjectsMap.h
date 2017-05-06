@@ -23,11 +23,11 @@ namespace server {
    		VectorMap<uint64, ManagedReference<SceneObject*> > containerObjects;
    		AtomicReference<VectorMap<uint64, uint64>*> oids;
 
-   		Mutex loadMutex;
-
    		Time lastAccess;
 
    		ManagedWeakReference<SceneObject*> container;
+
+   		ReadWriteLock* containerLock;
 
    		Reference<UnloadContainerTask*> unloadTask;
 
@@ -67,16 +67,14 @@ namespace server {
    		void put(uint64 oid, SceneObject* object);
    		void drop(uint64 oid);
 
-   		void setContainer(SceneObject* obj) {
-   			container = obj;
-
-   			if (operationMode == DELAYED_LOAD && oids == NULL) {
-   				scheduleContainerUnload();
-   			}
-   		}
+   		void setContainer(SceneObject* obj);
 
    		void setDelayedLoadOperationMode() {
    			operationMode = DELAYED_LOAD;
+   		}
+
+   		void setNormalLoadOperationMode() {
+   			operationMode = NORMAL_LOAD;
    		}
 
    		bool hasDelayedLoadOperationMode() {

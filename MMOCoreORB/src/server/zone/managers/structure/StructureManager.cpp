@@ -768,15 +768,9 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 	for (uint32 i = 1; i <= building->getTotalCellNumber(); ++i) {
 		ManagedReference<CellObject*> cell = building->getCell(i);
 
-		int size = cell->getContainerObjectsSize();
-
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ReadLocker rlocker(cell->getContainerLock());
-
 			ManagedReference<SceneObject*> childObject =
 					cell->getContainerObject(j);
-
-			rlocker.release();
 
 			if (childObject->isVendor())
 				continue;
