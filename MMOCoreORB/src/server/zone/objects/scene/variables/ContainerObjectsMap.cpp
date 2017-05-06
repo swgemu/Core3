@@ -96,12 +96,14 @@ void ContainerObjectsMap::loadObjects() {
 	delete oids;
 	oids = NULL;
 
+	scheduleContainerUnload();
+
+	locker.release();
+
 	auto sceno = container.get();
 
 	if (sceno != NULL)
 		sceno->onContainerLoaded();
-
-	scheduleContainerUnload();
 }
 
 void ContainerObjectsMap::scheduleContainerUnload() {

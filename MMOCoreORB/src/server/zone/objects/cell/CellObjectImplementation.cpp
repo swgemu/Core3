@@ -46,6 +46,8 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void CellObjectImplementation::onContainerLoaded() {
+	SceneObjectImplementation::onContainerLoaded();
+
 	ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
 
 	if (building == NULL)
