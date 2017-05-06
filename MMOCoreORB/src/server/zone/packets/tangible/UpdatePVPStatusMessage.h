@@ -19,11 +19,19 @@ public:
 		insertLong(tano->getObjectID());
 	}
 
-	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpStatusBitmask) : BaseMessage() {
+	UpdatePVPStatusMessage(TangibleObject* tano, TangibleObject* receiver, uint32 pvpStatusBitmask) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x08A1C126);  //UpdatePVPStatusMessage
 		insertInt(pvpStatusBitmask);
-		insertInt(tano->getFaction());
+
+		unsigned int faction = 0;
+		if(!tano->isPlayerCreature() ||
+			tano->getFaction() == receiver->getFaction() ||
+			pvpStatusBitmask & CreatureFlag::OVERT) {
+				faction = tano->getFaction();
+		}
+
+		insertInt(faction);
 		insertLong(tano->getObjectID());
 	}
 };

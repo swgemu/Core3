@@ -227,7 +227,7 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	if (getFactionStatus() == FactionStatus::OVERT && getFutureFactionStatus() == FactionStatus::COVERT)
 		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
 
-	BaseMessage* pvp = new UpdatePVPStatusMessage(asTangibleObject(), newPvpStatusBitmask);
+	BaseMessage* pvp = new UpdatePVPStatusMessage(asTangibleObject(), player, newPvpStatusBitmask);
 	player->sendMessage(pvp);
 }
 
