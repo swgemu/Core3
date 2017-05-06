@@ -76,8 +76,6 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLoggingName("SceneObject");
 
 	containerObjects.setContainer(asSceneObject());
-
-	savedRootParent = getRootParent();
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -343,7 +341,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 			ManagedReference<SceneObject* > obj = slottedObjects.get(i);
 
 			if (obj->getParent() != asSceneObject()) {
-				obj->setParent(asSceneObject());
+				obj->setParent(asSceneObject(), false);
 
 				if (obj->isPlayerCreature())
 					obj->setContainmentType(5);
@@ -356,7 +354,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 			ManagedReference<SceneObject* > obj = containerObjects.get(i);
 
 			if (obj->getParent() != asSceneObject()) {
-				obj->setParent(asSceneObject());
+				obj->setParent(asSceneObject(), false);
 				obj->setContainmentType(-1);
 			}
 		}
@@ -1457,6 +1455,16 @@ void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
 	locker.release();
 
 	updateSavedRootParentRecursive(getRootParent());
+}
+
+void SceneObjectImplementation::setParent(QuadTreeEntry* entry, bool updateRecursively) {
+	if (updateRecursively) {
+		setParent(entry);
+	} else {
+		Locker locker(&parentLock);
+
+		QuadTreeEntryImplementation::setParent(entry);
+	}
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {

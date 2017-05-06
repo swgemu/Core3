@@ -1199,6 +1199,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public native void setParent(QuadTreeEntry entry);
 
+	public native void setParent(QuadTreeEntry entry, boolean updateRecursively);
+
 	@read
 	public ZoneServer getZoneServer() {
 		if (server != null)
