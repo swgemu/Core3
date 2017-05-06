@@ -682,26 +682,26 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				healCommand->setHealAmount(Lua::getIntParameter(L));
 			else if (varName == "healWoundAmount") 
 				healCommand->setHealWoundAmount(Lua::getIntParameter(L));
-			else if (varName == "healAttributes")
-				healCommand->setHealAttributes(Lua::getUnsignedIntParameter(L));
-			else if (varName == "healWoundAttributes")
-				healCommand->setHealWoundAttributes(Lua::getUnsignedIntParameter(L));
-			else if (varName == "forceCostDivisor")
-				healCommand->setForceCostDivisor(Lua::getFloatParameter(L));
+			else if (varName == "attributesToHeal")
+				healCommand->setAttributesToHeal(Lua::getUnsignedIntParameter(L));
+			else if (varName == "woundAttributesToHeal")
+				healCommand->setWoundAttributesToHeal(Lua::getUnsignedIntParameter(L));
+			else if (varName == "forceCostMultiplier")
+				healCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
 			else if (varName == "range")
 				healCommand->setRange(Lua::getIntParameter(L));
-			else if (varName == "healBleeding")
-				healCommand->setHealBleeding(Lua::getUnsignedIntParameter(L));
-			else if (varName == "healFire")
-				healCommand->setHealFire(Lua::getUnsignedIntParameter(L));
-			else if (varName == "healDisease")
-				healCommand->setHealDisease(Lua::getUnsignedIntParameter(L));
-			else if (varName == "healPoison")
-				healCommand->setHealPoison(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healBleedingCost")
+				healCommand->setHealBleedingCost(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healFireCost")
+				healCommand->setHealFireCost(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healDiseaseCost")
+				healCommand->setHealDiseaseCost(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healPoisonCost")
+				healCommand->setHealPoisonCost(Lua::getUnsignedIntParameter(L));
 			else if (varName == "healBattleFatigue")
 				healCommand->setHealBattleFatigue(Lua::getUnsignedIntParameter(L));
-			else if (varName == "healStates")
-				healCommand->setHealStates(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healStateCost")
+				healCommand->setHealStateCost(Lua::getUnsignedIntParameter(L));
 			else if (varName == "speed")
 				healCommand->setSpeed(Lua::getUnsignedIntParameter(L));
 			else if (varName == "allowedTarget")

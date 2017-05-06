@@ -42,10 +42,10 @@
 --true = 1, false = 0
 
 ForceCurePoisonCommand = {
-        name = "forcecurepoison",
-	healPoison = 250,
+	name = "forcecurepoison",
+	healPoisonCost = 75,
 	range = 32,
-	forceCost = 75,
+	forceCost = 0,
 	allowedTarget = FORCE_HEAL_TARGET_SELF + FORCE_HEAL_TARGET_OTHER,
 }
 

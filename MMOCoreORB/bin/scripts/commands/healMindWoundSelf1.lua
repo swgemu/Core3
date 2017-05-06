@@ -42,12 +42,11 @@
 --true = 1, false = 0
 
 HealMindWoundSelf1Command = {
-        name = "healmindwoundself1",
+	name = "healmindwoundself1",
 	healWoundAmount = 250,
-	forceCostDivisor = 7,
-	healWoundAttributes = MIND_ATTRIBUTE,
-	forceCost = 65,
-
+	forceCostMultiplier = 0.05,
+	woundAttributesToHeal = MIND_ATTRIBUTE,
+	forceCost = 25,
 }
 
 AddCommand(HealMindWoundSelf1Command)

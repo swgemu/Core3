@@ -42,11 +42,11 @@
 --true = 1, false = 0
 
 HealMindWoundOther1Command = {
-        name = "healmindwoundother1",
-	healWoundAmount = 150,
-	forceCost = 85,
-	forceCostDivisor = 15,
-	healWoundAttributes = MIND_ATTRIBUTE,
+	name = "healmindwoundother1",
+	healWoundAmount = 100,
+	forceCost = 50,
+	forceCostMultiplier = 0.1,
+	woundAttributesToHeal = MIND_ATTRIBUTE,
 	range = 32
 }
 

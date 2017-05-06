@@ -42,10 +42,10 @@
 --true = 1, false = 0
 
 HealStatesOtherCommand = {
-        name = "healstatesother",
-	forceCost = 50,
-	forceCostDivisor = 0,
-	healStates = STUNNED_STATE + DIZZY_STATE + BLINDED_STATE + INTIMIDATED_STATE + FEIGNDEATH_STATE,
+	name = "healstatesother",
+	forceCost = 0,
+	statesToHeal = STUNNED_STATE + DIZZY_STATE + BLINDED_STATE + INTIMIDATED_STATE + FEIGNDEATH_STATE,
+	healStateCost = 50,
 	speed = 2,
 	range = 32
 }

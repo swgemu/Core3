@@ -42,10 +42,10 @@
 --true = 1, false = 0
 
 HealBattleFatigueOther2Command = {
-        name = "healbattlefatigueother2",
-	forceCost = 350,
+	name = "healbattlefatigueother2",
+	forceCost = 180,
 	healBattleFatigue = 120,
-	forceCostDivisor = 1,
+	forceCostMultiplier = 1,
 	speed = 4,
 	range = 32
 }
