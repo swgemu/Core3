@@ -82,6 +82,8 @@ namespace server {
    		}
 
    		bool isLoaded() {
+			ReadLocker locker(containerLock);
+
    			return operationMode == NORMAL_LOAD || oids == NULL;
    		}
 

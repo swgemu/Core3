@@ -432,6 +432,9 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	if (!containerObjects.isLoaded())
+		return;
+
 	//sending all objects by default
 	VectorMap<uint64, ManagedReference<SceneObject* > > objects;
 	getContainerObjects(objects);
@@ -911,6 +914,8 @@ void SceneObjectImplementation::removeObjectFromZone(Zone* zone, SceneObject* pa
 void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
 	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(asSceneObject());
 	player->sendMessage(cont);
+
+	containerObjects.loadObjects();
 
 	sendContainerObjectsTo(player);
 }
