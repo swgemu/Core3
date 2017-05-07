@@ -47,8 +47,7 @@ public:
 		Reference<SceneObject*> object = new SceneObject();
 		setDefaultComponents(object);
 		object->_setObjectID(nextObjectId.increment());
-		object->setZoneProcessServer(processServer);
-		object->initializeTransientMembers();
+		object->initializeContainerObjectsMap();
 
 		return object;
 	}
@@ -57,8 +56,7 @@ public:
 		Reference<TangibleObject*> object = new TangibleObject();
 		setDefaultComponents(object);
 		object->_setObjectID(nextObjectId.increment());
-		object->setZoneProcessServer(processServer);
-		object->initializeTransientMembers();
+		object->initializeContainerObjectsMap();
 
 		return object;
 	}
@@ -73,8 +71,7 @@ public:
 		}
 		setDefaultComponents(activeArea);
 		activeArea->_setObjectID(nextObjectId.increment());
-		activeArea->setZoneProcessServer(processServer);
-		activeArea->initializeTransientMembers();
+		activeArea->initializeContainerObjectsMap();
 
 		return activeArea;
 	}

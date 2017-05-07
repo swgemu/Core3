@@ -230,6 +230,8 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		}
 	}
 
+	zoneLocker.release();
+
 	object->notifyInsertToZone(zone);
 
 	return true;

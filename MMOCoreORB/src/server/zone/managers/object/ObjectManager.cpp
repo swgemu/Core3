@@ -494,6 +494,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		databaseManager->addTemporaryObject(object);
 
 		object->setServerObjectCRC(objectCRC);
+		object->initializeContainerObjectsMap();
 		object->loadTemplateData(templateData);
 
 	} catch (Exception& e) {

@@ -144,6 +144,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public native void initializePrivateData();
 
+	public void initializeContainerObjectsMap() {
+		containerObjects.setContainer(asSceneObject());
+	}
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
