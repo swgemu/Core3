@@ -432,6 +432,9 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	if (!containerObjects.isLoaded())
+		return;
+
 	//sending all objects by default
 	VectorMap<uint64, ManagedReference<SceneObject* > > objects;
 	getContainerObjects(objects);
