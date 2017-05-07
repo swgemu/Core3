@@ -8,7 +8,7 @@
 #include "ContainerObjectsMap.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/UnloadContainerTask.h"
-
+#include "server/zone/ZoneServer.h"
 
 ContainerObjectsMap::ContainerObjectsMap() {
 	operationMode = NORMAL_LOAD;
@@ -100,10 +100,17 @@ void ContainerObjectsMap::loadObjects() {
 
 	locker.release();
 
-	auto sceno = container.get();
+	ManagedReference<SceneObject*> sceno = container.get();
 
-	if (sceno != NULL)
-		sceno->onContainerLoaded();
+	if (sceno != NULL) {
+		Core::getTaskManager()->executeTask([sceno] () {
+			if (sceno->getZoneServer()->isServerShuttingDown())
+				return;
+
+			Locker locker(sceno);
+			sceno->onContainerLoaded();
+		}, "OnContainerLoadedLambda");
+	}
 }
 
 void ContainerObjectsMap::scheduleContainerUnload() {
