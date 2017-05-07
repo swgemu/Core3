@@ -74,8 +74,6 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
-
-	containerObjects.setContainer(asSceneObject());
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -127,6 +125,8 @@ void SceneObjectImplementation::initializePrivateData() {
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	containerObjects.setContainer(asSceneObject());
+
 	objectName.setStringId(templateData->getObjectName());
 	customName = templateData->getCustomName();
 	//detailedDescription.setStringId(templateData->getDetailedDescription());
@@ -362,7 +362,13 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 	}
 
 	if (zone != NULL) {
-		zone->transferObject(asSceneObject(), -1, true);
+		ManagedReference<SceneObject*> sceno = asSceneObject();
+		ManagedReference<Zone*> thisZone = zone;
+
+		Core::getTaskManager()->executeTask([sceno, thisZone] () {
+			Locker locker(sceno);
+			thisZone->transferObject(sceno, -1, true);
+		}, "TransferToZoneLambda");
 	}
 }
 
