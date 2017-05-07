@@ -19,6 +19,8 @@
 #include "server/zone/objects/area/events/CampDespawnTask.h"
 
 void CampSiteActiveAreaImplementation::initializeTransientMembers() {
+	ActiveAreaImplementation::initializeTransientMembers();
+
 	startTasks();
 
 	setAbandoned(abandoned);

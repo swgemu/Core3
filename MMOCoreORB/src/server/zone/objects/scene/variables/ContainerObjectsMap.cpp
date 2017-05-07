@@ -158,6 +158,9 @@ void ContainerObjectsMap::unloadObjects() {
 
 	locker.release();
 
+	if (!parent->isCellObject())
+		return;
+
 	for (int i = 0; i < containerCopy.size(); i++) {
 		SceneObject* obj = containerCopy.get(i);
 
