@@ -100,10 +100,14 @@ void ContainerObjectsMap::loadObjects() {
 
 	locker.release();
 
-	auto sceno = container.get();
+	ManagedReference<SceneObject*> sceno = container.get();
 
-	if (sceno != NULL)
-		sceno->onContainerLoaded();
+	if (sceno != NULL) {
+		Core::getTaskManager()->executeTask([sceno] () {
+			Locker locker(sceno);
+			sceno->onContainerLoaded();
+		}, "OnContainerLoadedLambda");
+	}
 }
 
 void ContainerObjectsMap::scheduleContainerUnload() {

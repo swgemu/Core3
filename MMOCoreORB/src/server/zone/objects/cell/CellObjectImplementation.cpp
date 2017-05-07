@@ -28,8 +28,6 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 void CellObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
-	containerObjects.setNormalLoadOperationMode();
-
 	//Rebuild count to account for transient creos
 	//TODO: modify server shutdown to despawn transient mobs before final db save
 	if (!containerObjects.hasDelayedLoadOperationMode() || hasForceLoadObject()) {
