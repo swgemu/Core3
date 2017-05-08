@@ -69,7 +69,7 @@ function JunkDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 				kitTemplate = "object/tangible/loot/collectible/kits/sculpture_kit.iff"
 			end
 
-			if getContainerObjectByTemplate(pInventory, kitTemplate, true) ~= nil then
+			if self:hasLootKit(pPlayer) then
 				clonedScreen:setDialogTextStringId("@conversation/junk_dealer_generic:s_3df21ea0") -- It would appear that you already have one of these kits. I know I really want to get rid of all these kits but I just can't be handing them all out at once. You never know when they might be worth something.
 			else
 				giveItem(pInventory, kitTemplate, -1)
@@ -78,6 +78,28 @@ function JunkDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	end
 
 	return pConvScreen
+end
+
+function JunkDealerConvoHandler:hasLootKit(pPlayer)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return false
+	end
+
+	for i = 0, SceneObject(pInventory):getContainerObjectsSize() - 1, 1 do
+		local pItem = SceneObject(pInventory):getContainerObject(i)
+
+		if pItem ~= nil then
+			local objectPath = SceneObject(pItem):getTemplateObjectPath()
+
+			if (string.find(objectPath, "object/tangible/loot/collectible/kits") ~= nil) then
+				return true
+			end
+		end
+	end
+
+	return false
 end
 
 JunkDealerGenericConvoHandler = JunkDealerConvoHandler:new {
