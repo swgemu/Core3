@@ -86,6 +86,8 @@
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/objects/creature/variables/LuaSkill.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/tangible/misc/ContractCrate.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -407,6 +409,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getPlayerByName", getPlayerByName);
 	lua_register(luaEngine->getLuaState(), "sendMail", sendMail);
 	lua_register(luaEngine->getLuaState(), "spawnTheaterObject", spawnTheaterObject);
+	lua_register(luaEngine->getLuaState(), "getSchematicItemName", getSchematicItemName);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -598,6 +601,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaLightsaberCrystalComponent>::Register(luaEngine->getLuaState());
 	Luna<LuaSkill>::Register(luaEngine->getLuaState());
 	Luna<LuaSkillManager>::Register(luaEngine->getLuaState());
+	Luna<LuaContractCrate>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -3488,6 +3492,26 @@ int DirectorManager::spawnTheaterObject(lua_State* L) {
 	} else {
 		lua_pushnil(L);
 	}
+
+	return 1;
+}
+
+int DirectorManager::getSchematicItemName(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getSchematicItemName");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String itemName = "";
+	String templatePath = Lua::getStringParameter(L);
+
+	DraftSchematic* schematicTemplate = SchematicMap::instance()->get(templatePath.hashCode());
+
+	if (schematicTemplate != NULL)
+		itemName = schematicTemplate->getCustomName();
+
+	lua_pushstring(L, itemName.toCharArray());
 
 	return 1;
 }

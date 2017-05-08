@@ -1,0 +1,98 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+
+@lua
+class ContractCrate extends TangibleObject {
+	protected string requiredItem;
+	protected string xpType;
+	protected string itemName;
+
+	protected int amountNeeded;
+	protected int currentAmount;
+	protected int xpAmount;
+	protected int crateDifficulty;
+	
+	public ContractCrate() {
+		setLoggingName("ContractCrate");
+		
+		requiredItem = "";
+		xpType = "";
+		itemName = "";
+
+		xpAmount = 0;
+		amountNeeded = 0;
+		currentAmount = 0;
+		crateDifficulty = 0;
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject player);
+	
+	@dirty
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription); 
+
+	public native int notifyObjectInserted(SceneObject object);
+	
+	public native int notifyObjectRemoved(SceneObject object);
+	
+	public native byte checkContainerPermission(CreatureObject player, unsigned short permission);
+	
+	@preLocked
+	public native void parseDraftSchematic(final string schematic);
+	
+	@preLocked
+	public void setRequiredItem(final string item) {
+		requiredItem = item;
+	}
+
+	@preLocked
+	public void setAmountNeeded(int amt) {
+		amountNeeded = amt;
+	}
+	
+	@read
+	public int getCrateDifficulty() {
+		return crateDifficulty;
+	}
+	
+	@read
+	public int getAmountNeeded() {
+		return amountNeeded;
+	}
+	
+	@preLocked
+	public void setCrateDifficulty(int diff) {
+		crateDifficulty = diff;
+	}
+	
+	@preLocked
+	public void setXpType(final string type) {
+		xpType = type;
+	}
+	
+	@read
+	public string getXpType() {
+		return xpType;
+	}
+	
+	@read
+	public int getXpAmount() {
+		return xpAmount;
+	}
+	
+	public boolean isCompleted() {
+		return currentAmount == amountNeeded;
+	}
+}
