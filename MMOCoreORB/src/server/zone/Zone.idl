@@ -28,6 +28,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
+import system.thread.Mutex;
 
 @mock
 class Zone extends SceneObject {
@@ -47,6 +48,9 @@ class Zone extends SceneObject {
 
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
+
+	@dereferenced
+	protected transient Mutex cityUpdateLock;
 
 	private transient ZoneServer server;
 
@@ -143,8 +147,10 @@ class Zone extends SceneObject {
 	@preLocked
 	public native void addSceneObject(SceneObject object);
 
-	public synchronized void addCityRegionToUpdate(CityRegion city) {
-		cityRegionUpdateVector.put(city);
+	public void addCityRegionToUpdate(CityRegion city) {
+		synchronized(cityUpdateLock) {
+			cityRegionUpdateVector.put(city);
+		}
 	}
 
 	public native void updateCityRegions();
