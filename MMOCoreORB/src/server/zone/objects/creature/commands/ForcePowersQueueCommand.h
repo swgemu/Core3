@@ -77,7 +77,12 @@ public:
 		}
 
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
-		return defaultTime * speed;
+		float combatHaste = object->getSkillMod("combat_haste");
+
+		if (combatHaste > 0)
+			return speed * (1.f - (combatHaste / 100.f));
+		else
+			return speed;
 	}
 
 	virtual bool isJediCombatQueueCommand() {

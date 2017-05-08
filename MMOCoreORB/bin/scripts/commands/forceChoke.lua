@@ -46,7 +46,7 @@ ForceChokeCommand = {
 
   minDamage = 175,
   maxDamage = 375,
-  speed = 6.0,
+  speed = 4.0,
   forceCost = 400,
   visMod = 25,
   forceAttack = true,
