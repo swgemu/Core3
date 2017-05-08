@@ -170,6 +170,7 @@ includeFile("conversations/tasks/heralds/herald_tatooine2_conv.lua")
 
 -- Tasks
 includeFile("conversations/tasks/audience_member_conv.lua")
+includeFile("conversations/tasks/crafting_contractor_conv.lua")
 includeFile("conversations/tasks/kidnapped_noble_conv.lua")
 includeFile("conversations/tasks/ris_armor_quest_conv.lua")
 includeFile("conversations/tasks/librarian_conv.lua")
