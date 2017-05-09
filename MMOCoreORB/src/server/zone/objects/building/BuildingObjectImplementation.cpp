@@ -268,6 +268,8 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 
 			objLocker.release();
 
+			Locker contLocker(cell->getContainerLock());
+
 			VectorMap<uint64, ManagedReference<SceneObject*> >* cont =
 					cell->getContainerObjects();
 
@@ -275,7 +277,6 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 				Reference<SceneObject*> test = cell->getContainerObject(0);
 
 				if (test == obj) {
-					Locker contLocker(cell->getContainerLock());
 					cont->remove(0);
 				}
 			}

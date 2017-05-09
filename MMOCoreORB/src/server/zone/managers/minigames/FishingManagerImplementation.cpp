@@ -1187,14 +1187,8 @@ void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObj
 					marker->destroyObjectFromDatabase(true);
 				}
 
-				VectorMap<uint64, ManagedReference<SceneObject*> >* objects = marker->getContainerObjects();
-
-				while (objects->size() > 0) {
-					Locker locker(marker->getContainerLock());
-
-					ManagedReference<SceneObject*> object = objects->get((int)0);
-
-					locker.release();
+				while (marker->getContainerObjectsSize() > 0) {
+					ManagedReference<SceneObject*> object = marker->getContainerObject(0);
 
 					if (object->isPersistent()) {
 						object->destroyObjectFromDatabase(true);

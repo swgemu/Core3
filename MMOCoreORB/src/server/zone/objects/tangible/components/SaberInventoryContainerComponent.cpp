@@ -46,17 +46,15 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
-
-	if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
+	if (sceneObject->getContainerObjectsSize() >= sceneObject->getContainerVolumeLimit()) {
 		errorDescription = "@container_error_message:container03"; //This container is full.
 		return TransferErrorCode::CONTAINERFULL;
 	}
 
-	for (int i = 0; i < containerObjects->size(); i++){
+	for (int i = 0; i < sceneObject->getContainerObjectsSize(); i++) {
 		Reference<LightsaberCrystalComponent*> crystalInside =  sceneObject->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
 
-		if (crystal->getColor() != 31 && crystalInside->getColor() != 31){
+		if (crystal->getColor() != 31 && crystalInside->getColor() != 31) {
 				errorDescription = "@jedi_spam:saber_already_has_color";
 				return TransferErrorCode::INVALIDTYPE;
 		}

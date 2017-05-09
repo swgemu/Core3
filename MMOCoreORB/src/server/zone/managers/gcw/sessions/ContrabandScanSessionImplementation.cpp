@@ -225,10 +225,8 @@ int ContrabandScanSessionImplementation::countContrabandItemsInContainer(SceneOb
 
 int ContrabandScanSessionImplementation::countContrabandItems(CreatureObject* player) {
 	VectorMap<String, ManagedReference<SceneObject*>> slots;
-
-	Locker containerLock(player->getContainerLock());
-
 	player->getSlottedObjects(slots);
+
 	int numberOfSlots = slots.size();
 	int numberOfContrabandItems = 0;
 
