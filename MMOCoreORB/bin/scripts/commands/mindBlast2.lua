@@ -43,7 +43,6 @@
 
 MindBlast2Command = {
 	name = "mindblast2",
-
 	minDamage = 1125,
 	maxDamage = 1500,
 	speed = 4.0,
@@ -61,7 +60,7 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  ),
 
 	  StateEffect(
@@ -71,7 +70,7 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  ),
 
 	  StateEffect(
@@ -81,11 +80,11 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  )
 	},
 
-	animation = "force_mind_blast_1_arc_particle_level_1", 
+	animation = "force_mind_blast_1_arc_particle_level_1",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "mindblast2",
