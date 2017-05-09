@@ -134,7 +134,10 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void finalize();
 
 	public native abstract void initialize();
-	public native void loadClientRegions();
+
+	@local
+	public native void loadClientRegions(LuaObject outposts);
+
 	public native void loadClientPoiData();
 	public native void start();
 

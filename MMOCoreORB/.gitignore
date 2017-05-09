@@ -23,7 +23,7 @@ bin/*.xml
 bin/*sh
 bin/*out
 *test*
-*sh
+*.sh
 build_temp
 *_includes
 html
