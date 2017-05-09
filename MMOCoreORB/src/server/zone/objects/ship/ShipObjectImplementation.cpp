@@ -12,9 +12,9 @@
 //#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
 //#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
 
-void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	//info("testing");
-	TangibleObjectImplementation::sendTo(player, doClose);
+	TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
 
 void ShipObjectImplementation::initializeTransientMembers() {

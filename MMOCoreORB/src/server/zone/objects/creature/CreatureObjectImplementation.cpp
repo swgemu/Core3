@@ -294,7 +294,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 			}
 
 			//obj->notifyInsert(asCreatureObject());
-			sendTo(obj, true);
+			sendTo(obj, true, false);
 		}
 
 	}

@@ -281,12 +281,12 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 	sendBaselinesTo(player);
 
 	sendSlottedObjectsTo(player);
-	sendContainerObjectsTo(player);
+	sendContainerObjectsTo(player, true);
 
 	SceneObjectImplementation::close(player);
 }
 
-void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	if (isClientObject() || !sendToClient || player == NULL || player->getClient() == NULL)
 		return;
 
@@ -305,7 +305,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	try {
 		sendBaselinesTo(player);
 
-		sendContainerObjectsTo(player);
+		sendContainerObjectsTo(player, forceLoadContainer);
 
 		sendSlottedObjectsTo(player);
 	} catch (Exception& e) {
@@ -429,13 +429,16 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 			if (object->isInQuadTree()) {
 				notifyInsert(object);
 			} else {
-				object->sendTo(player, true);
+				object->sendTo(player, true, false);
 			}
 		}
 	}
 }
 
-void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
+	if (!forceLoad && !containerObjects.isLoaded())
+		return;
+
 	//sending all objects by default
 	VectorMap<uint64, ManagedReference<SceneObject* > > objects;
 	getContainerObjects(objects);
@@ -449,7 +452,7 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 		if (containerObject->isInQuadTree()) {
 			notifyInsert(containerObject);
 		} else {
-			containerObject->sendTo(player, true);
+			containerObject->sendTo(player, true, false);
 		}
 	}
 }
@@ -916,7 +919,7 @@ void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
 	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(asSceneObject());
 	player->sendMessage(cont);
 
-	sendContainerObjectsTo(player);
+	sendContainerObjectsTo(player, true);
 }
 
 void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool notify) {
@@ -1505,7 +1508,6 @@ bool SceneObjectImplementation::isInWater() {
 }
 
 bool SceneObjectImplementation::containsNoTradeObjectRecursive() {
-	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
@@ -1520,8 +1522,8 @@ bool SceneObjectImplementation::containsNoTradeObjectRecursive() {
 	}
 
 	return false;
-
 }
+
 String SceneObjectImplementation::getDisplayedName() {
 	if (!customName.isEmpty())
 		return customName.toString();
@@ -1535,8 +1537,6 @@ bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* ma
 
 int SceneObjectImplementation::getCountableObjectsRecursive() {
 	int count = 0;
-
-	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
@@ -1554,8 +1554,6 @@ int SceneObjectImplementation::getCountableObjectsRecursive() {
 int SceneObjectImplementation::getContainedObjectsRecursive() {
 	int count = 0;
 
-	ReadLocker locker(&containerLock);
-
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
 
@@ -1569,8 +1567,6 @@ int SceneObjectImplementation::getContainedObjectsRecursive() {
 
 int SceneObjectImplementation::getSizeOnVendorRecursive() {
 	int count = 0;
-
-	ReadLocker locker(&containerLock);
 
 	if (containerObjects.size() == 0)
 		++count;
@@ -1595,8 +1591,6 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 
 	if (obj != NULL)
 		return obj;
-
-	ReadLocker locker(&containerLock);
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> inContainerObject = containerObjects.get(i);

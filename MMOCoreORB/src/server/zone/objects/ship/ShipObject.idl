@@ -83,7 +83,7 @@ class ShipObject extends TangibleObject {
 	
 	public native void initializeTransientMembers();
 	
-	public native void sendTo(SceneObject player, boolean doClose);
+	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
 	public native void sendBaselinesTo(SceneObject player);
 	
 	public void setMaxYawAcceleration(float radians, boolean notifyClient = true) {

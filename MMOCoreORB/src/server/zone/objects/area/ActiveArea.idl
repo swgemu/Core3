@@ -52,7 +52,7 @@ class ActiveArea extends SceneObject {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	@dirty
-	public native void sendTo(SceneObject player, boolean doClose) {
+	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true) {
 		
 	}
 

@@ -69,20 +69,8 @@ void CellObjectImplementation::onBuildingInsertedToZone(BuildingObject* building
 	}
 }
 
-void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
-	//SceneObjectImplementation::sendContainerObjectsTo(player);
-	//info("sending cell containers", true);
-	/*BuildingObject* building = dynamic_cast<BuildingObject*>(parent.get());
-	bool publicStructure = (building != NULL) ? building->isPublicStructure() : true;
+void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
 
-
-
-	for (int j = 0; j < getContainerObjectsSize(); ++j) {
-		SceneObject* containerObject = getContainerObject(j);
-
-		if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject)
-			containerObject->sendTo(player, true);
-	}*/
 }
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {

@@ -48,7 +48,7 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 	}
 }
 
-void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
+void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	if (isClientObject())
 		return;
 
@@ -67,7 +67,7 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 	sendBaselinesTo(player);
 
 	sendSlottedObjectsTo(player);
-	sendContainerObjectsTo(player);
+	sendContainerObjectsTo(player, forceLoadContainer);
 
 	if(doClose) {
 		BaseMessage* msg = new SceneObjectCloseMessage(_this.getReferenceUnsafeStaticCast());
