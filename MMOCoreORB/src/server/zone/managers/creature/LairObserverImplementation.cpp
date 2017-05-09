@@ -74,8 +74,14 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 void LairObserverImplementation::notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition) {
 	ThreatMap* threatMap = lair->getThreatMap();
 
-	Reference<DisseminateExperienceTask*> deTask = new DisseminateExperienceTask(lair, threatMap, &spawnedCreatures);
-	deTask->execute();
+
+	Locker locker(lair);
+
+	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
+	playerManager->disseminateExperience(lair, threatMap, &spawnedCreatures);
+
+	//Reference<DisseminateExperienceTask*> deTask = new DisseminateExperienceTask(lair, threatMap, &spawnedCreatures);
+	//deTask->execute();
 
 	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
