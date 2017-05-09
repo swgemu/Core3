@@ -189,6 +189,83 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_initiate",600,2.20982,-11.8595,-2.93477,7,4115619)
 
 	self:respawnAxkvaMin()
+
+	local pTrap = spawnSceneObject("dathomir", "object/static/terrain/corellia/rock_crystl_shrpbush_med.iff", -11.5, -64.6, -202.2, 4115624, 0.707107, 0, 0.707107, 0)
+
+	if (pTrap ~= nil) then
+		local pActiveArea = spawnActiveArea("dathomir", "object/active_area.iff", -3987.5, 50.23, 188.99, 4, 4115624)
+		if pActiveArea ~= nil then
+			createObserver(ENTEREDAREA, "NightSisterStrongholdScreenPlay", "notifyEnteredTrapArea", pActiveArea)
+		end
+
+		local pSwitch = spawnSceneObject("dathomir", "object/tangible/dungeon/cave_stalagmite_ice_style_01.iff", -8.88, -65, -189.23, 4115624, 0.707107, 0, 0.707107, 0)
+
+		if (pSwitch ~= nil) then
+			createObserver(OBJECTRADIALUSED, "NightSisterStrongholdScreenPlay", "notifyTrapSwitchUsed", pSwitch);
+			spawnSceneObject("dathomir", "object/static/particle/pt_light_blink_blue.iff", -8.88, -65, -189.23, 4115624, 0.707107, 0, 0.707107, 0)
+
+			self:enableTrap()
+		end
+	end
+end
+
+function NightSisterStrongholdScreenPlay:enableTrap()
+	local pTrapEffect = spawnSceneObject("dathomir", "object/static/particle/pt_poi_electricity_2x2.iff", -11.5, -64.6, -202.2, 4115624, 0.707107, 0, 0.707107, 0)
+
+	if (pTrapEffect ~= nil) then
+		writeData("NightSisterStrongholdScreenPlay:trapEffect", SceneObject(pTrapEffect):getObjectID())
+	end
+end
+
+function NightSisterStrongholdScreenPlay:notifyTrapSwitchUsed(pSwitch, pPlayer)
+	if (pSwitch == nil) then
+		return 1
+	end
+
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local effectID = readData("NightSisterStrongholdScreenPlay:trapEffect")
+
+	if (effectID == 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@dungeon/nightsister_rancor_cave:power_already_off")
+	else
+		local pEffect = getSceneObject(effectID)
+
+		if (pEffect ~= nil) then
+			SceneObject(pEffect):destroyObjectFromWorld()
+		end
+
+		CreatureObject(pPlayer):sendSystemMessage("@dungeon/nightsister_rancor_cave:power_off")
+		deleteData("NightSisterStrongholdScreenPlay:trapEffect")
+		createEvent(7 * 1000, "NightSisterStrongholdScreenPlay", "enableTrap", nil, "")
+	end
+
+	return 0
+end
+
+function NightSisterStrongholdScreenPlay:notifyEnteredTrapArea(pActiveArea, pPlayer)
+	if (pActiveArea == nil) then
+		return 1
+	end
+
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	if (readData("NightSisterStrongholdScreenPlay:trapEffect") == 0) then
+		return 0
+	end
+
+	spawnSceneObject("dathomir", "object/static/particle/pt_magic_sparks.iff", -11.5, -64.6, -202.2, 4115624, 0.707107, 0, 0.707107, 0)
+	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", "dathomir", -11.5, -64.6, -202.2, 4115624)
+
+	CreatureObject(pPlayer):sendSystemMessage("@dungeon/nightsister_rancor_cave:shock")
+	local trapDmg = getRandomNumber(400, 700)
+	CreatureObject(pPlayer):inflictDamage(pPlayer, 0, trapDmg, 1)
+
+	return 0
 end
 
 function NightSisterStrongholdScreenPlay:respawnAxkvaMin()
