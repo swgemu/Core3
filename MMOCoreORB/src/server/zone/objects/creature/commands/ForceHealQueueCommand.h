@@ -28,7 +28,6 @@ public:
 		DIZZY = 2,
 		BLIND = 4,
 		INTIMIDATE = 8,
-		FEIGNDEATH = 16
 	};
 
 	enum {

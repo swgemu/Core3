@@ -134,7 +134,8 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		int totalStates = 0;
 		int healedStates = 0;
 		for (int i = 12; i <= 15; i++) {
-			int state = (i << 1);
+			int state = (1 << i);
+
 			if ((statesToHeal & state) && targetCreature->hasState(state)) {
 				totalStates++;
 				int newTotal = totalCost + healStateCost;
@@ -182,7 +183,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 	// Disease
 	if (targetCreature->isDiseased() && healDiseaseCost > 0 && totalCost + healDiseaseCost < currentForce) {
-		bool result = targetCreature->healDot(CreatureState::DISEASED, 100);
+		bool result = targetCreature->healDot(CreatureState::DISEASED, 200);
 		totalCost += healDiseaseCost;
 
 		if (result) {
@@ -270,7 +271,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 		StringIdChatParameter message("jedi_spam", "stop_states_other");
 		message.setTT(targetID);
 		creature->sendSystemMessage(message);
-	} else if (healType == HEAL_POISON) {
+	} else if (healType == HEAL_POISON && !selfHeal) {
 		if (amount == 1) {
 			StringIdChatParameter message("jedi_spam", "stop_poison_other");
 			message.setTT(targetID);
@@ -280,7 +281,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 			message.setTT(targetID);
 			creature->sendSystemMessage(message);
 		}
-	} else if (healType == HEAL_DISEASE) {
+	} else if (healType == HEAL_DISEASE && !selfHeal) {
 		if (amount == 1) {
 			StringIdChatParameter message("jedi_spam", "stop_disease_other");
 			message.setTT(targetID);
@@ -290,7 +291,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 			message.setTT(targetID);
 			creature->sendSystemMessage(message);
 		}
-	} else if (healType == HEAL_BLEEDING) {
+	} else if (healType == HEAL_BLEEDING && !selfHeal) {
 		if (amount == 1) {
 			StringIdChatParameter message("jedi_spam", "stop_bleeding_other");
 			message.setTT(targetID);
