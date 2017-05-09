@@ -155,8 +155,23 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 		break;
 	case CommandEffect::FORCECHOKE:
 		nextTick.addMiliTime(6000);
-		strength = (float)(strength * 0.01f) + (strength * (System::random(100) * 0.01f));
+		strength = (float)strength * (1.f - (System::random(25) / 100.f));
 		victim->showFlyText("combat_effects", "choke", 0xFF, 0, 0);
+
+		if (victim->isPlayerCreature() && attacker->isPlayerCreature()) {
+			strength *= 0.25;
+			if (victim->isProne() || victim->isKnockedDown()) {
+				strength *= 1.5;
+			} else if (victim->isKneeling()) {
+				strength *= 1.25;
+			}
+		}
+
+		if (!victim->isPlayerCreature() && (victim->isProne() || victim->isKnockedDown())) {
+			strength *= 1.5;
+		} else if (!victim->isPlayerCreature() && victim->isKneeling()) {
+			strength *= 1.25;
+		}
 
 		break;
 	}
@@ -353,6 +368,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 		victimRef->playEffect("clienteffect/pl_force_choke.cef", "");
 		victimRef->sendSystemMessage("@combat_effects:choke_single");
+		victimRef->showFlyText("combat_effects", "choke", 0xFF, 0, 0);
 	}, "ForceChokeTickLambda");
 
 	return strength;
