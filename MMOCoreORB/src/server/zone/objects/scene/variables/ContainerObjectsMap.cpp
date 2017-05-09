@@ -98,8 +98,6 @@ void ContainerObjectsMap::loadObjects() {
 
 	scheduleContainerUnload();
 
-	locker.release();
-
 	ManagedReference<SceneObject*> sceno = container.get();
 
 	if (sceno != NULL) {
@@ -107,7 +105,6 @@ void ContainerObjectsMap::loadObjects() {
 			if (sceno->getZoneServer()->isServerShuttingDown())
 				return;
 
-			Locker locker(sceno);
 			sceno->onContainerLoaded();
 		}, "OnContainerLoadedLambda");
 	}

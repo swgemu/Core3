@@ -42,7 +42,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 		return;
 	}
 
-	scno->sendTo(sceneObject, true);
+	scno->sendTo(sceneObject, true, false);
 }
 
 void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {

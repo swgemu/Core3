@@ -132,7 +132,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	@dirty
-	public native abstract void sendTo(SceneObject player, boolean doClose);
+	public native abstract void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
 
 	/**
 	 * Sends the baseline messages of this object to the specified player

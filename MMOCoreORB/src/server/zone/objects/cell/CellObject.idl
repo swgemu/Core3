@@ -57,7 +57,7 @@ class CellObject extends SceneObject {
 	 * @param player SceneObject that will receive the objects
 	 */
 	@dirty
-	public native void sendContainerObjectsTo(SceneObject player);
+	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
 
 	@dirty
 	public native void sendPermissionsTo(CreatureObject object, boolean allowEntry);

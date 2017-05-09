@@ -1073,11 +1073,11 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 	activeAreas.put(area);
 }
 
-void TangibleObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+void TangibleObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	if (isInvisible() && player != asTangibleObject())
 		return;
 
-	SceneObjectImplementation::sendTo(player, doClose);
+	SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
 
 bool TangibleObjectImplementation::isCityStreetLamp(){

@@ -409,7 +409,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	@dirty
-	public native abstract void sendTo(SceneObject player, boolean doClose);
+	public native abstract void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
 
 	/**
 	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
@@ -446,7 +446,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	@dirty
-	public native abstract void sendContainerObjectsTo(SceneObject player);
+	public native abstract void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
 
 	/**
 	 * Sends the contained slotted objects to the specified player

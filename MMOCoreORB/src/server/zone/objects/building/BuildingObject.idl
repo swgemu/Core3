@@ -116,7 +116,7 @@ class BuildingObject extends StructureObject {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	@dirty
-	public native void sendContainerObjectsTo(SceneObject player);
+	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
 
 	/**
 	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
@@ -212,7 +212,7 @@ class BuildingObject extends StructureObject {
 	public native void inRange(QuadTreeEntry obj, float range);
 
 	@dirty
-	public native void sendTo(SceneObject player, boolean doClose);
+	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	@dirty

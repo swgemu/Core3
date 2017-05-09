@@ -128,7 +128,7 @@ void BuildingObjectImplementation::createCellObjects() {
 	updateToDatabase();
 }
 
-void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
@@ -136,13 +136,13 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	}
 }
 
-void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	//info("building sendto..", true);
 
 	if (!isStaticBuilding()) { // send Baselines etc..
 		//info("sending building object create");
 
-		SceneObjectImplementation::sendTo(player, doClose);
+		SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 	} //else { // just send the objects that are in the building, without the cells because they are static in the client
 
 	auto closeObjects = player->getCloseObjects();
@@ -170,7 +170,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
 							|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
-						containerObject->sendTo(player, true);
+						containerObject->sendTo(player, true, false);
 		}
 	}
 	//}
@@ -434,7 +434,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 						else
 							child->notifyInsert(obj);
 
-						child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
+						child->sendTo(scno, true, false);//sendTo because notifyInsert doesnt send objects with parent
 
 						if (scno->getCloseObjects() != NULL)
 							scno->addInRangeObject(child, false);
@@ -442,7 +442,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 							scno->notifyInsert(child);
 
 						if (scno->getParent() != NULL)
-							scno->sendTo(child, true);
+							scno->sendTo(child, true, false);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
 						obj->notifyInsert(child);
@@ -828,7 +828,7 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 							if (cobj->getCloseObjects() != NULL) {
 								if (!cobj->getCloseObjects()->contains(object)) {
 									cobj->addInRangeObject(object, false);
-									object->sendTo(cobj, true);
+									object->sendTo(cobj, true, false);
 								}
 							} else
 								cobj->notifyInsert(object);
@@ -836,7 +836,7 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 							if (object->getCloseObjects() != NULL) {
 								if (!object->getCloseObjects()->contains(cobj.get())) {
 									object->addInRangeObject(cobj.get(), false);
-									cobj->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+									cobj->sendTo(object, true, false);//sendTo because notifyInsert doesnt send objects with parent
 								} else {
 									if (object->getClient() != NULL && cobj->isCreatureObject()) {
 										object->sendMessage(cobj->link(cell->getObjectID(), -1));
