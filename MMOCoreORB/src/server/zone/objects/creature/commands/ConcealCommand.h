@@ -10,11 +10,19 @@
 #include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 class ConcealCommand : public QueueCommand {
+
 public:
 
 	ConcealCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
+	}
+
+	void doAnimations(CreatureObject* creature, CreatureObject* targetPlayer) const {
+		if (creature == targetPlayer)
+			creature->doAnimation("heal_self");
+		else
+			creature->doAnimation("heal_other");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -44,6 +52,9 @@ public:
 		Locker clocker(targetPlayer, creature);
 
 		if(!checkDistance(creature, targetPlayer, 10.0f)) {
+			StringIdChatParameter tooFar("cmd_err", "target_range_prose"); // Your target is too far away to %TO.
+			tooFar.setTO("conceal");
+			creature->sendSystemMessage(tooFar);
 			return GENERALERROR;
 		}
 
@@ -126,7 +137,7 @@ public:
 
 		int camoMod = creature->getSkillMod("camouflage");
 		int cdReduction = ((float)(camoMod / 100.0f)) * 45;
-		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
+		int duration = 60 + (((float)(camoMod / 100.0f)) * 1440);
 
 
 		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration, zoneName);
@@ -144,6 +155,7 @@ public:
 			creature->sendSystemMessage(param);
 		}
 
+		doAnimations(creature, targetPlayer);
 		targetPlayer->addBuff(buff);
 
 		blocker.release();
