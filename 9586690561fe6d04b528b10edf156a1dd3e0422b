@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_1b82e700",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/tasks/crafting_contractor_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T05:40:46Z",
+      "side": 1,
+      "message": "You don\u0027t use this screen",
+      "revId": "9586690561fe6d04b528b10edf156a1dd3e0422b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_3b87a311",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/misc/conversations/crafting_contractor_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T05:40:46Z",
+      "side": 1,
+      "message": "You should call CraftingContractor:resetVariables here or inside setupCrate",
+      "revId": "9586690561fe6d04b528b10edf156a1dd3e0422b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_db7bff27",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/misc/crafting_contractor.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T05:40:46Z",
+      "side": 1,
+      "message": "Were you going to do anything with this check?",
+      "revId": "9586690561fe6d04b528b10edf156a1dd3e0422b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
