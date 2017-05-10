@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_9bac978e",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T20:48:12Z",
+      "side": 1,
+      "message": "Don\u0027t invent sys messages for things without evidence.",
+      "revId": "fa8fb64c736aa9fa3064769988956bf2319865cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_bba9537d",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T20:48:12Z",
+      "side": 1,
+      "message": "The bug report says nothing about not being able to store while in these states. Where\u0027s the evidence? Same applies to vehicles.",
+      "revId": "fa8fb64c736aa9fa3064769988956bf2319865cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
