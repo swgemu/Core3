@@ -84,7 +84,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 			if (totalCost < currentForce) {
 				uint8 attrib = i * 3;
 				int curHam = targetCreature->getHAM(attrib);
-				int maxHam = targetCreature->getMaxHAM(attrib);
+				int maxHam = targetCreature->getMaxHAM(attrib) - targetCreature->getWounds(attrib);
 				int amtToHeal = maxHam - curHam;
 
 				if (healAmount > 0 && amtToHeal > healAmount)
