@@ -537,7 +537,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
-		object->sendTo(scno, true);
+		object->sendTo(scno, true, false);
 	}
 }
 
