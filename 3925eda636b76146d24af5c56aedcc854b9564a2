@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_dba21f9a",
+        "filename": "MMOCoreORB/bin/scripts/ai/interrupts.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T20:34:16Z",
+      "side": 1,
+      "message": "Your change to this comment makes no sense. You\u0027re not checking if the source is dead.",
+      "revId": "3925eda636b76146d24af5c56aedcc854b9564a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_3b9ec357",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-10T20:34:16Z",
+      "side": 1,
+      "message": "What are you trying to do here? It makes no sense.\n\nFirst of all, why try and trigger a unique reaction message when the ai is dead if sendReactionChat is just going to return and do nothing if they are dead (your addition below)? \n\nSecond, NONE is not a valid reaction chat type. NONE is a state and has a value of 0 which is equal to the reaction type ALERT.",
+      "revId": "3925eda636b76146d24af5c56aedcc854b9564a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
