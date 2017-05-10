@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_capacitor_low_discharge = object_draft_schematic_droid_component_shared_capacitor_low_discharge:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Capacitor Discharge Unit",
+	customObjectName = "Capacitor Discharge Unit",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 50, 
+	xpType = "crafting_droid_general",
+	xp = 50,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"conductive_surface", "core_plates", "resistor_material"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "fuel_petrochem_solid", "ore"},
-   resourceQuantities = {5, 5, 5},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"conductive_surface", "core_plates", "resistor_material"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "fuel_petrochem_solid", "ore"},
+	resourceQuantities = {5, 5, 5},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/capacitor_low_discharge.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/capacitor_low_discharge.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_capacitor_low_discharge, "object/draft_schematic/droid/component/capacitor_low_discharge.iff")

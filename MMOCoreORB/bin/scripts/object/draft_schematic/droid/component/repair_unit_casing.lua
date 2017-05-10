@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_repair_unit_casing = object_draft_schematic_droid_component_shared_repair_unit_casing:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Repair Unit Casing",
+	customObjectName = "Repair Unit Casing",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 50, 
+	xpType = "crafting_droid_general",
+	xp = 50,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"main_unit_housing", "fiber_unit_housing"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"metal", "fiberplast"},
-   resourceQuantities = {10, 5},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"main_unit_housing", "fiber_unit_housing"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"metal", "fiberplast"},
+	resourceQuantities = {10, 5},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/repair_unit_casing.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/repair_unit_casing.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_repair_unit_casing, "object/draft_schematic/droid/component/repair_unit_casing.iff")

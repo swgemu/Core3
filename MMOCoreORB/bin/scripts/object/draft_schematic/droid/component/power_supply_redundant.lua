@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_power_supply_redundant = object_draft_schematic_droid_component_shared_power_supply_redundant:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Redundant Power Supply",
+	customObjectName = "Redundant Power Supply",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 50, 
+	xpType = "crafting_droid_general",
+	xp = 50,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"power_supply_housing", "reactive_energy_core", "reaction_catalyst"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "fuel_petrochem_liquid", "gas"},
-   resourceQuantities = {5, 5, 5},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"power_supply_housing", "reactive_energy_core", "reaction_catalyst"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "fuel_petrochem_liquid", "gas"},
+	resourceQuantities = {5, 5, 5},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/power_supply_redundant.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/power_supply_redundant.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_power_supply_redundant, "object/draft_schematic/droid/component/power_supply_redundant.iff")

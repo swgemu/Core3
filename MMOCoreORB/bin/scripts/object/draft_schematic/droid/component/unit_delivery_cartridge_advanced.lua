@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Unit Delivery Cartridge",
+	customObjectName = "Advanced Unit Delivery Cartridge",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 100, 
+	xpType = "crafting_droid_general",
+	xp = 100,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"ore_intrusive_ionite", "armophous_baradium"},
-   resourceQuantities = {15, 10},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"ore_intrusive_ionite", "armophous_baradium"},
+	resourceQuantities = {15, 10},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_unit_delivery_cartridge_advanced, "object/draft_schematic/droid/component/unit_delivery_cartridge_advanced.iff")

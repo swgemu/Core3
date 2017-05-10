@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_schematic_droid_component_shared_chassis_droid_le_repair:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "LE Repair ADV Droid Chassis",
+	customObjectName = "LE Repair ADV Droid Chassis",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 6, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 6,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_droid_general", 
-   xp = 40, 
+	xpType = "crafting_droid_general",
+	xp = 40,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite"},
-   ingredientSlotType = {1, 0, 1, 1, 1, 1},
-   resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
-   resourceQuantities = {1, 20, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite"},
+	ingredientSlotType = {1, 0, 1, 1, 1, 1},
+	resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
+	resourceQuantities = {1, 20, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/droid/le_repair_droid_chassis.iff",
 
-   targetTemplate = "object/tangible/component/droid/le_repair_droid_chassis.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_chassis_droid_le_repair, "object/draft_schematic/droid/component/chassis_droid_le_repair.iff")

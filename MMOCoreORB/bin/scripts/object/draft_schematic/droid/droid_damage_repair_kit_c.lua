@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_damage_repair_kit_c = object_draft_schematic_droid_shared_droid_damage_repair_kit_c:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Droid Repair Kit - C",
+	customObjectName = "Droid Repair Kit - C",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 28, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 28,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 120, 
+	xpType = "crafting_droid_general",
+	xp = 120,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"electronics_patch_assembly", "electronic_sealant_light", "diagnostic_circuit", "capacitor_discharge_unit", "delivery_cartridge"},
-   ingredientSlotType = {0, 0, 1, 1, 1},
-   resourceTypes = {"aluminum", "fiberplast_dantooine", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff", "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"},
-   resourceQuantities = {30, 25, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"electronics_patch_assembly", "electronic_sealant_light", "diagnostic_circuit", "capacitor_discharge_unit", "delivery_cartridge"},
+	ingredientSlotType = {0, 0, 1, 1, 1},
+	resourceTypes = {"aluminum", "fiberplast_dantooine", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff", "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"},
+	resourceQuantities = {30, 25, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/pet/droid_damage_kit_c.iff",
 
-   targetTemplate = "object/tangible/medicine/pet/droid_damage_kit_c.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_damage_repair_kit_c, "object/draft_schematic/droid/droid_damage_repair_kit_c.iff")

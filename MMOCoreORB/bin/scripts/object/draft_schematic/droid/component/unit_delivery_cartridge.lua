@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_schematic_droid_component_shared_unit_delivery_cartridge:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Unit Delivery Cartridge",
+	customObjectName = "Unit Delivery Cartridge",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 50, 
+	xpType = "crafting_droid_general",
+	xp = 50,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"ore", "gemstone"},
-   resourceQuantities = {10, 5},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"ore", "gemstone"},
+	resourceQuantities = {10, 5},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/unit_delivery_cartridge.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/unit_delivery_cartridge.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_unit_delivery_cartridge, "object/draft_schematic/droid/component/unit_delivery_cartridge.iff")

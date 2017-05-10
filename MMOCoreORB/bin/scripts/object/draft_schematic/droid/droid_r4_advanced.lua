@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_r4_advanced = object_draft_schematic_droid_shared_droid_r4_advanced:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: R4 Droid, Advanced Model",
+	customObjectName = "Deed for: R4 Droid, Advanced Model",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 1,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_droid_general", 
-   xp = 100, 
+	xpType = "crafting_droid_general",
+	xp = 100,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"base_chassis", "chassis_frame_interface", "general_droid_module", "general_droid_module2", "general_droid_module3", "droid_defensive_module", "droid_defensive_module2"},
-   ingredientSlotType = {1, 0, 3, 3, 3, 3, 3},
-   resourceTypes = {"object/tangible/component/droid/shared_r4_droid_chassis.iff", "steel", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
-   resourceQuantities = {1, 65, 1, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"base_chassis", "chassis_frame_interface", "general_droid_module", "general_droid_module2", "general_droid_module3", "droid_defensive_module", "droid_defensive_module2"},
+	ingredientSlotType = {1, 0, 3, 3, 3, 3, 3},
+	resourceTypes = {"object/tangible/component/droid/shared_r4_droid_chassis.iff", "steel", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
+	resourceQuantities = {1, 65, 1, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/pet_deed/deed_r4_advanced_basic.iff",
 
-   targetTemplate = "object/tangible/deed/pet_deed/deed_r4_advanced_basic.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_r4_advanced, "object/draft_schematic/droid/droid_r4_advanced.iff")

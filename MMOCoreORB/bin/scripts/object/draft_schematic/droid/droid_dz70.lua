@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_dz70 = object_draft_schematic_droid_shared_droid_dz70:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: DZ70 Droid",
+	customObjectName = "Deed for: DZ70 Droid",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 18, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 18,
+	size = 1,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_droid_general", 
-   xp = 145, 
+	xpType = "crafting_droid_general",
+	xp = 145,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"primary_frame", "body_shell", "system_hardening", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 1, 1, 3},
-   resourceTypes = {"metal", "chemical", "metal", "metal", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff"},
-   resourceQuantities = {30, 15, 15, 12, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"primary_frame", "body_shell", "system_hardening", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
+	ingredientSlotType = {0, 0, 0, 0, 1, 1, 1, 3},
+	resourceTypes = {"metal", "chemical", "metal", "metal", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff"},
+	resourceQuantities = {30, 15, 15, 12, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/pet_deed/deed_dz70_basic.iff",
 
-   targetTemplate = "object/tangible/deed/pet_deed/deed_dz70_basic.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_dz70, "object/draft_schematic/droid/droid_dz70.iff")

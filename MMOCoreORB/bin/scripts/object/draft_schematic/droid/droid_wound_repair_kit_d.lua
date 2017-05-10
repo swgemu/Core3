@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_wound_repair_kit_d = object_draft_schematic_droid_shared_droid_wound_repair_kit_d:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Droid Reconstruction Kit - D",
+	customObjectName = "Droid Reconstruction Kit - D",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 32, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 32,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 150, 
+	xpType = "crafting_droid_general",
+	xp = 150,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"reconstructive_rigging", "insulated_cement", "diagnostic_circuit", "backup_power_supply", "unit_casing"},
-   ingredientSlotType = {0, 0, 1, 1, 1},
-   resourceTypes = {"copper_beyrllius", "armophous_plexite", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"},
-   resourceQuantities = {35, 30, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"reconstructive_rigging", "insulated_cement", "diagnostic_circuit", "backup_power_supply", "unit_casing"},
+	ingredientSlotType = {0, 0, 1, 1, 1},
+	resourceTypes = {"copper_beyrllius", "armophous_plexite", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"},
+	resourceQuantities = {35, 30, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/medicine/pet/droid_wound_kit_d.iff",
 
-   targetTemplate = "object/tangible/medicine/pet/droid_wound_kit_d.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_wound_repair_kit_d, "object/draft_schematic/droid/droid_wound_repair_kit_d.iff")

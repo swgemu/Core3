@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schematic_droid_component_shared_advanced_droid_frame:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Advanced Droid Frame Unit",
+	customObjectName = "Advanced Droid Frame Unit",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 10, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 10,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_droid_general", 
-   xp = 440, 
+	xpType = "crafting_droid_general",
+	xp = 440,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"primary_frame", "body_shell"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "fiberplast"},
-   resourceQuantities = {150, 70},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"primary_frame", "body_shell"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "fiberplast"},
+	resourceQuantities = {150, 70},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/droid/advanced_droid_frame.iff",
 
-   targetTemplate = "object/tangible/component/droid/advanced_droid_frame.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_advanced_droid_frame, "object/draft_schematic/droid/component/advanced_droid_frame.iff")

@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_navicomputer_6 = object_draft_schematic_droid_shared_navicomputer_6:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "v6 Flight Computer",
+	customObjectName = "v6 Flight Computer",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 1,
+	factoryCrateSize = 10,
 
-   xpType = "crafting_droid_general", 
-   xp = 202, 
+	xpType = "crafting_droid_general",
+	xp = 202,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"primary_frame", "body_shell", "droid_brain", "engine_unit", "sensor_suite"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
-   resourceTypes = {"metal", "chemical", "metal", "metal", "metal"},
-   resourceQuantities = {45, 40, 37, 40, 31},
-   contribution = {100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"primary_frame", "body_shell", "droid_brain", "engine_unit", "sensor_suite"},
+	ingredientSlotType = {0, 0, 0, 0, 0},
+	resourceTypes = {"metal", "chemical", "metal", "metal", "metal"},
+	resourceQuantities = {45, 40, 37, 40, 31},
+	contribution = {100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/droid/navicomputer_6.iff",
 
-   targetTemplate = "object/tangible/droid/navicomputer_6.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_navicomputer_6, "object/draft_schematic/droid/navicomputer_6.iff")

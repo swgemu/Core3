@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shared_droid_treadwell:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Treadwell Droid",
+	customObjectName = "Deed for: Treadwell Droid",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 16, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 16,
+	size = 1,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_droid_general", 
-   xp = 155, 
+	xpType = "crafting_droid_general",
+	xp = 155,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"primary_frame", "body_shell", "arm_struts", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 1, 1, 3},
-   resourceTypes = {"metal", "chemical", "steel", "metal", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"},
-   resourceQuantities = {30, 20, 15, 15, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"primary_frame", "body_shell", "arm_struts", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
+	ingredientSlotType = {0, 0, 0, 0, 1, 1, 1, 3},
+	resourceTypes = {"metal", "chemical", "steel", "metal", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"},
+	resourceQuantities = {30, 20, 15, 15, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/deed/pet_deed/deed_treadwell_basic.iff",
 
-   targetTemplate = "object/tangible/deed/pet_deed/deed_treadwell_basic.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_treadwell, "object/draft_schematic/droid/droid_treadwell.iff")

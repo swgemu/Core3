@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schematic_droid_shared_droid_interplanetary_survey:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Interplanetary Survey Droid",
+	customObjectName = "Interplanetary Survey Droid",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 25,
+	size = 1,
+	factoryCrateSize = 5,
 
-   xpType = "crafting_droid_general", 
-   xp = 380, 
+	xpType = "crafting_droid_general",
+	xp = 380,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "communication_array", "transportation_module", "survey_control_circuit", "survey_scanning_storage_circuit", "command_interpreter", "navigation_control_circuit"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 1},
-   resourceTypes = {"steel_carbonite", "chemical", "chemical", "crystalline_vertex", "radioactive_known", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
-   resourceQuantities = {40, 20, 25, 30, 35, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "communication_array", "transportation_module", "survey_control_circuit", "survey_scanning_storage_circuit", "command_interpreter", "navigation_control_circuit"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 1},
+	resourceTypes = {"steel_carbonite", "chemical", "chemical", "crystalline_vertex", "radioactive_known", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
+	resourceQuantities = {40, 20, 25, 30, 35, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
+	targetTemplate = "object/tangible/component/droid/droid_interplanetary_survey.iff",
 
-   targetTemplate = "object/tangible/component/droid/droid_interplanetary_survey.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_interplanetary_survey, "object/draft_schematic/droid/droid_interplanetary_survey.iff")

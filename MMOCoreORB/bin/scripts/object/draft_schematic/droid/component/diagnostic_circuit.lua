@@ -43,37 +43,35 @@
 
 object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schematic_droid_component_shared_diagnostic_circuit:new {
 
-   templateType = DRAFTSCHEMATIC,
+	templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Diagnostic Circuit",
+	customObjectName = "Diagnostic Circuit",
 
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 10, 
-   size = 1, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 10,
+	size = 1,
+	factoryCrateSize = 50,
 
-   xpType = "crafting_droid_general", 
-   xp = 50, 
+	xpType = "crafting_droid_general",
+	xp = 50,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"insulated_board_material", "integrated_circuit"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"ore", "metal"},
-   resourceQuantities = {10, 5},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"insulated_board_material", "integrated_circuit"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"ore", "metal"},
+	resourceQuantities = {10, 5},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/component/droid/repair/diagnostic_circuit.iff",
 
-   targetTemplate = "object/tangible/component/droid/repair/diagnostic_circuit.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_diagnostic_circuit, "object/draft_schematic/droid/component/diagnostic_circuit.iff")
