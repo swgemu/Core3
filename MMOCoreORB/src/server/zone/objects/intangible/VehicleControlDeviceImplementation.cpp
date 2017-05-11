@@ -128,16 +128,15 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	ManagedReference<CreatureObject*> vehicle = NULL;
-	
-	if (controlledObject->isCreatureObject())
-	{
+
+	if (controlledObject->isCreatureObject()) {
 		vehicle = cast<CreatureObject*>(controlledObject.get());
 		vehicle->setCreatureLink(player);
 		vehicle->setControlDevice(_this.getReferenceUnsafeStaticCast());
 	}
-	
+
 	Zone* zone = player->getZone();
-	
+
 	if (zone == NULL)
 		return;
 
@@ -178,6 +177,9 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 
 	/*if (!controlledObject->isInQuadTree())
 		return;*/
+
+	if (!force && (player->isInCombat() || player->isDead()))
+		return;
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
 
