@@ -147,16 +147,20 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 	if (pAgent ~= pObject) then
 		if (pAgent ~= nil and pObject ~= nil) then
 			if SceneObject(pObject):isAiAgent() then
-				if AiAgent(pObject):getSocialGroup() ~= AiAgent(pAgent):getSocialGroup() or not AiAgent(pAgent):checkLineOfSight(pObject) then
+				if AiAgent(pObject):getSocialGroup() ~= AiAgent(pAgent):getSocialGroup() then
 					return
 				end
 			end
-
 			-- if the source is not an AiAgent (like a lair) then don't check social group
+
+			if CreatureObject(pAgent):isDead() then
+				return
+			end
+
 			-- TODO (dannuic): change the range to calculate based on level difference and ferocity
 			agent = AiAgent(pAgent)
 
-			if agent:checkRange(pObject, 15) then
+			if agent:checkRange(pObject, 15) and agent:checkLineOfSight(pObject) then
 				agent:assist(pObject)
 			end
 		end
