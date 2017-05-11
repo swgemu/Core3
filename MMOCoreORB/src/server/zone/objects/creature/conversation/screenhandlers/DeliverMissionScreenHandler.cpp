@@ -43,11 +43,31 @@ MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObj
 }
 
 bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
-	return isSameSpawnPoint(objective->getTargetSpawnPoint()->getPosition()->getX(), objective->getTargetSpawnPoint()->getPosition()->getY(), npcPosition);
+	NpcSpawnPoint* point = objective->getTargetSpawnPoint();
+
+	if (point == NULL)
+		return false;
+
+	Vector3* pos = point->getPosition();
+
+	if (pos == NULL)
+		return false;
+
+	return isSameSpawnPoint(pos->getX(), pos->getY(), npcPosition);
 }
 
 bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
-	return isSameSpawnPoint(objective->getDestinationSpawnPoint()->getPosition()->getX(), objective->getDestinationSpawnPoint()->getPosition()->getY(), npcPosition);
+	NpcSpawnPoint* point = objective->getDestinationSpawnPoint();
+
+	if (point == NULL)
+		return false;
+
+	Vector3* pos = point->getPosition();
+
+	if (pos == NULL)
+		return false;
+
+	return isSameSpawnPoint(pos->getX(), pos->getY(), npcPosition);
 }
 
 bool DeliverMissionScreenHandler::isSameSpawnPoint(const float& positionX, const float& positionY, const Vector3& comparisonPosition) {
