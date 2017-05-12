@@ -1633,6 +1633,12 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 
 void SceneObjectImplementation::onContainerLoaded() {
 	updateSavedRootParentRecursive(getRootParent());
+
+	auto player = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (player != NULL && player->isPlayerCreature() && player->getSlottedObject("datapad") == asSceneObject() && player->getPlayerObject()->hasGodMode()) {
+		player->sendSystemMessage("Your datapad has loaded from the database.");
+	}
 }
 
 Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel() {

@@ -9,6 +9,8 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/UnloadContainerTask.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 ContainerObjectsMap::ContainerObjectsMap() {
 	operationMode = NORMAL_LOAD;
@@ -154,6 +156,12 @@ void ContainerObjectsMap::unloadObjects() {
 	unloadTask = NULL;
 
 	locker.release();
+
+	auto player = parent->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (player != NULL && player->isPlayerCreature() && player->getSlottedObject("datapad") == parent && player->getPlayerObject()->hasGodMode()) {
+		player->sendSystemMessage("Your datapad has unloaded from RAM.");
+	}
 
 	if (!parent->isCellObject())
 		return;
