@@ -48,6 +48,7 @@ object_building_military_event_imperial_cloning_facility = object_building_milit
 	containerComponent = "GCWBaseContainerComponent",
 	zoneComponent = "StructureZoneComponent",
 	templateType = CLONINGBUILDING,
+	facilityType = CLONER_FACTION_IMPERIAL,
 	alwaysPublic = 1,
 
 	skillMods = {

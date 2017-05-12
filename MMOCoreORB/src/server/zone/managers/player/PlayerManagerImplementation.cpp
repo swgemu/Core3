@@ -837,6 +837,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	}
 
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
+
 	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
 	if(closestCloning == NULL){
 		warning("nearest cloning facility for player is NULL");
@@ -848,7 +849,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
 	//Check if player is city banned where the closest facility is or if it's not a valid cloner
-	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction())) {
+	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL || cbot->isJediCloner() || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction())) {
 		int distance = 50000;
 		for (int j = 0; j < locations.size(); j++) {
 			ManagedReference<SceneObject*> location = locations.get(j);
@@ -858,7 +859,16 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 			cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
 
-			if (cbot == NULL || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction()))
+			if (cbot == NULL)
+				continue;
+
+			if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_IMPERIAL && player->getFaction() != Factions::FACTIONIMPERIAL)
+				continue;
+
+			if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_REBEL && player->getFaction() != Factions::FACTIONREBEL)
+				continue;
+
+			if (cbot->isJediCloner())
 				continue;
 
 			cr = location->getCityRegion().get();
@@ -901,6 +911,27 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone() == zone)
 		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
 
+	for (int i = 0; i < locations.size(); i++) {
+		ManagedReference<SceneObject*> loc = locations.get(i);
+
+		if (loc == NULL)
+			continue;
+
+		CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(loc->getObjectTemplate());
+
+		if (cbot == NULL)
+			continue;
+
+		if (cbot->getFacilityType() == CloningBuildingObjectTemplate::JEDI_ONLY && player->hasSkill("force_title_jedi_novice")) {
+			String name = "Force Shrine (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
+			cloneMenu->addMenuItem(name, loc->getObjectID());
+		} else if ((cbot->getFacilityType() == CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY && player->hasSkill("force_rank_light_novice")) ||
+				(cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY && player->hasSkill("force_rank_dark_novice"))) {
+			String name = "Jedi Enclave (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
+			cloneMenu->addMenuItem(name, loc->getObjectID());
+		}
+	}
+
 	ghost->addSuiBox(cloneMenu);
 	player->sendMessage(cloneMenu->generateMessage());
 }
@@ -930,7 +961,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	BuildingObject* cloningBuilding = cloner.castTo<BuildingObject*>();
 
-	if (cloningBuilding == NULL)  {
+	if (cloningBuilding == NULL && !cbot->isJediCloner())  {
 		error("Cloning building is null");
 		return;
 	}
@@ -946,19 +977,25 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	Quaternion* direction = clonePoint->getDirection();
 
 	int cellID = clonePoint->getCellID();
+	SceneObject* cell = NULL;
 
-	SceneObject* cell = cloningBuilding->getCell(cellID);
+	if (cellID != 0) {
+		cell = cloningBuilding->getCell(cellID);
 
-	if (cell == NULL) {
-		StringBuffer msg;
-		msg << "null cell for cellID " << cellID << " in building: " << cbot->getFullTemplateString();
-		error(msg.toString());
-		return;
+		if (cell == NULL) {
+			StringBuffer msg;
+			msg << "null cell for cellID " << cellID << " in building: " << cbot->getFullTemplateString();
+			error(msg.toString());
+			return;
+		}
 	}
 
 	Zone* zone = player->getZone();
 
-	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
+	if (cellID == 0)
+		player->switchZone(zone->getZoneName(), cloner->getWorldPositionX() + coordinate->getPositionX(), cloner->getWorldPositionZ() + coordinate->getPositionZ(), cloner->getWorldPositionY() + coordinate->getPositionY(), 0);
+	else
+		player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);

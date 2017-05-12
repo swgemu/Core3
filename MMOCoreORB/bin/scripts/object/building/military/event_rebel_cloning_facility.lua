@@ -48,6 +48,7 @@ object_building_military_event_rebel_cloning_facility = object_building_military
 	containerComponent = "GCWBaseContainerComponent",
 	zoneComponent = "StructureZoneComponent",
 	templateType = CLONINGBUILDING,
+	facilityType = CLONER_FACTION_REBEL,
 	alwaysPublic = 1,
 
 	skillMods = {

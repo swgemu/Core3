@@ -44,6 +44,7 @@
 object_building_military_event_outpost_cloning_facility = object_building_military_shared_outpost_cloning_facility:new {
 	planetMapCategory = "cloningfacility",
 	templateType = CLONINGBUILDING,
+	facilityType = CLONER_STANDARD,
 	zoneComponent = "StructureZoneComponent",
 	alwaysPublic = 1,
 
