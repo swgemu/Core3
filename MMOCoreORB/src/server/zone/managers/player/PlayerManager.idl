@@ -323,6 +323,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void resendLoginMessageToAll();
 
 	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
+	public native boolean isValidClosestCloner(CreatureObject player, SceneObject cloner);
 	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
 
 	public native void ejectPlayerFromBuilding(CreatureObject player);

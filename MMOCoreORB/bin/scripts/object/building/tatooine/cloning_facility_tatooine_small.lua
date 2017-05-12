@@ -43,6 +43,7 @@
 
 object_building_tatooine_cloning_facility_tatooine_small = object_building_tatooine_shared_cloning_facility_tatooine_small:new {
 	planetMapCategory = "cloningfacility",
+	facilityType = CLONER_STANDARD,
 
 	skillMods = {
 		{"private_medical_rating", 100}
