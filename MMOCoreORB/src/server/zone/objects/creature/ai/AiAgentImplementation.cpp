@@ -3204,7 +3204,7 @@ String AiAgentImplementation::getPersonalityStf() {
 }
 
 void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
-	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZoneUnsafe() == NULL) {
+	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZoneUnsafe() == NULL || isDead()) {
 		return;
 	}
 
