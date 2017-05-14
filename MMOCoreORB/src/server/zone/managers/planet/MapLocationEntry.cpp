@@ -15,6 +15,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "templates/building/CloningBuildingObjectTemplate.h"
+#include "templates/faction/Factions.h"
 
 uint64 MapLocationEntry::getObjectID() const {
 	return object->getObjectID();
@@ -120,7 +122,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	displayName = newName;
 }
 
-bool MapLocationEntry::insertToMessage(BaseMessage* message, unsigned int faction) const {
+bool MapLocationEntry::insertToMessage(BaseMessage* message, CreatureObject* player) {
 	if (object == NULL)
 		return false;
 
@@ -132,7 +134,25 @@ bool MapLocationEntry::insertToMessage(BaseMessage* message, unsigned int factio
 	if (category->isFactionVisibleOnly()) {
 		unsigned int entryFaction = category->getFaction().hashCode();
 
-		if (entryFaction != faction)
+		if (entryFaction != player->getFaction())
+			return false;
+	}
+
+	if (category->getName() == "cloningfacility") {
+		CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(object->getObjectTemplate());
+
+		if (cbot == NULL)
+			return false;
+
+		if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_IMPERIAL && player->getFaction() != Factions::FACTIONIMPERIAL)
+			return false;
+		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_REBEL && player->getFaction() != Factions::FACTIONREBEL)
+			return false;
+		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::JEDI_ONLY && !player->hasSkill("force_title_jedi_novice"))
+			return false;
+		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY && !player->hasSkill("force_rank_light_novice"))
+			return false;
+		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY && !player->hasSkill("force_rank_dark_novice"))
 			return false;
 	}
 

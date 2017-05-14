@@ -25,18 +25,14 @@ public:
 
 		int totalEntries = 0;
 
-		unsigned int faction = 0;
-		TangibleObject* play = cast<TangibleObject*>(player);
-
-		if (play != NULL)
-			faction = play->getFaction();
+		CreatureObject* play = cast<CreatureObject*>(player);
 
 		try {
 			for (int i = 0; i < mapLocations->size(); ++i) {
 				SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
 
 				for (int j = 0; j < sortedVector.size(); ++j) {
-					if (sortedVector.elementAt(j).insertToMessage(this, faction))
+					if (sortedVector.elementAt(j).insertToMessage(this, play))
 						++totalEntries;
 				}
 			}

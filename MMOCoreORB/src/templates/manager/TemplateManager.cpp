@@ -783,6 +783,13 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("STIM_D", StimPackTemplate::STIM_D);
 	luaTemplatesInstance->setGlobalInt("STIM_E", StimPackTemplate::STIM_E);
 
+	luaTemplatesInstance->setGlobalInt("CLONER_STANDARD", CloningBuildingObjectTemplate::STANDARD);
+	luaTemplatesInstance->setGlobalInt("CLONER_PLAYER_CITY", CloningBuildingObjectTemplate::PLAYER_CITY);
+	luaTemplatesInstance->setGlobalInt("CLONER_JEDI_ONLY", CloningBuildingObjectTemplate::JEDI_ONLY);
+	luaTemplatesInstance->setGlobalInt("CLONER_LIGHT_JEDI_ONLY", CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY);
+	luaTemplatesInstance->setGlobalInt("CLONER_DARK_JEDI_ONLY", CloningBuildingObjectTemplate::DARK_JEDI_ONLY);
+	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_REBEL", CloningBuildingObjectTemplate::FACTION_REBEL);
+	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_IMPERIAL", CloningBuildingObjectTemplate::FACTION_IMPERIAL);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {
