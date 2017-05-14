@@ -94,7 +94,8 @@ VillageRaids = ScreenPlay:new {
 		maxPopulation = 5, -- Max mobs to have up at any one time
 		mobileLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider", -- Name of function that should setup a defender after it's spawned
+		spawnVerifyFunc = "verifyCurrentPhase" -- Function to verify if a spawner should continue creating waves
 	},
 
 	enemySmall = { "enemySmallData", "enemySmallList" },
@@ -112,7 +113,8 @@ VillageRaids = ScreenPlay:new {
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		mobileLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider", -- Name of function that should setup a defender after it's spawned
+		spawnVerifyFunc = "verifyCurrentPhase" -- Function to verify if a spawner should continue creating waves
 	},
 
 	enemyMedium = { "enemyMediumData", "enemyMediumList" },
@@ -131,7 +133,8 @@ VillageRaids = ScreenPlay:new {
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		mobileLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider", -- Name of function that should setup a defender after it's spawned
+		spawnVerifyFunc = "verifyCurrentPhase" -- Function to verify if a spawner should continue creating waves
 	},
 
 	uberEnemyMedium = { "uberEnemyMediumData", "uberEnemyMediumList" },
@@ -149,7 +152,8 @@ VillageRaids = ScreenPlay:new {
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		mobileLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider", -- Name of function that should setup a defender after it's spawned
+		spawnVerifyFunc = "verifyCurrentPhase" -- Function to verify if a spawner should continue creating waves
 	},
 
 	enemyLarge = { "enemyLargeData", "enemyLargeList" },
@@ -168,7 +172,8 @@ VillageRaids = ScreenPlay:new {
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		mobileLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider", -- Name of function that should setup a defender after it's spawned
+		spawnVerifyFunc = "verifyCurrentPhase" -- Function to verify if a spawner should continue creating waves
 	},
 
 	uberEnemyLarge = { "uberEnemyLargeData", "uberEnemyLargeList" },
@@ -200,6 +205,13 @@ function VillageRaids:spawnTurrets()
 			writeData("Village:Turret:" .. phaseID .. ":" .. i, SceneObject(pTurret):getObjectID())
 		end
 	end
+end
+
+-- Verify phase prior to spawning spawner waves
+function VillageRaids:verifyCurrentPhase()
+	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+
+	return currentPhase == 4
 end
 
 function VillageRaids:setupSpawnedRaider(pMobile)
