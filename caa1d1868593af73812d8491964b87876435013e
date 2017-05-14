@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_bb54f321",
+        "filename": "MMOCoreORB/bin/scripts/commands/mindBlast2.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T23:33:41Z",
+      "side": 1,
+      "message": "Is there evidence for these changes?",
+      "revId": "caa1d1868593af73812d8491964b87876435013e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
