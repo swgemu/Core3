@@ -410,6 +410,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "sendMail", sendMail);
 	lua_register(luaEngine->getLuaState(), "spawnTheaterObject", spawnTheaterObject);
 	lua_register(luaEngine->getLuaState(), "getSchematicItemName", getSchematicItemName);
+	lua_register(luaEngine->getLuaState(), "getBadgeListByType", getBadgeListByType);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -3512,6 +3513,34 @@ int DirectorManager::getSchematicItemName(lua_State* L) {
 		itemName = schematicTemplate->getCustomName();
 
 	lua_pushstring(L, itemName.toCharArray());
+
+	return 1;
+}
+
+int DirectorManager::getBadgeListByType(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getBadgeListByType");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String type = Lua::getStringParameter(L);
+
+	lua_newtable(L);
+
+	int count = 0;
+
+	VectorMap<unsigned int, const Badge*>* badgeList = BadgeList::instance()->getMap();
+
+	for (int i = 0; i < badgeList->size(); i++) {
+		const Badge* badge = badgeList->get(i);
+
+		if (badge->getTypeString() == type) {
+			count++;
+			lua_pushinteger(L, badge->getIndex());
+			lua_rawseti(L, -2, count);
+		}
+	}
 
 	return 1;
 }
