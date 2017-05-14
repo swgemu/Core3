@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_bb7dd3b3",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T23:21:58Z",
+      "side": 1,
+      "message": "I think you\u0027re over complicating this a bit.\n\nInstead of adding the isLair bool and having different isInRange checks, I would simply do the following:\n\nZone* zone \u003d lairZone;\nif (zone \u003d\u003d NULL) {zone \u003d destructedObject-\u003egetZone;}\n\nthen below\n\nif (!(attacker-\u003egetZone() \u003d\u003d zone \u0026\u0026 destructedObject-\u003eisInRangeZoneless(attacker, 80))) {continue;}",
+      "revId": "aea5a56fe51bfe311032c0b7df33e7085a366467",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
