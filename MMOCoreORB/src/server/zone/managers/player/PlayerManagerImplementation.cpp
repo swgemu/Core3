@@ -1124,7 +1124,7 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 
 
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap,
-		SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
+		SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures,Zone* lairZone) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	if (totalDamage == 0) {
@@ -1140,9 +1140,10 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	float gcwBonus = 1.0f;
 	uint32 winningFaction = -1;
 	int baseXp = 0;
-
-	Zone* zone = destructedObject->getZone();
-
+	Zone* zone = lairZone;
+	if (zone==NULL){
+		zone = destructedObject->getZone();
+	}
 	if (zone != NULL) {
 		GCWManager* gcwMan = zone->getGCWManager();
 
@@ -1239,9 +1240,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			awardExperience(owner, "creaturehandler", xpAmount);
 
 		} else if (attacker->isPlayerCreature()) {
-			if (!destructedObject->isInRange(attacker, 80))
+			if (!(attacker->getZone() == zone && destructedObject->isInRangeZoneless(attacker, 80))){
 				continue;
-
+			}
 			ManagedReference<GroupObject*> group = attacker->getGroup();
 
 			uint32 combatXp = 0;
