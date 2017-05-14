@@ -41,7 +41,6 @@ public:
 
 		if (mount == NULL || !mount->isCreatureObject()) {
 			creature->clearState(CreatureState::RIDINGMOUNT);
-
 			return GENERALERROR;
 		}
 
@@ -49,7 +48,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* vehicle = cast<CreatureObject*>( mount.get());
+		CreatureObject* vehicle = cast<CreatureObject*>(mount.get());
 
 		Locker clocker(vehicle, creature);
 
@@ -87,11 +86,11 @@ public:
 		clocker.release(); // Buff needs to be locked below
 
 		//reapply speed buffs if they exist
-		for(int i=0; i<restrictedBuffCRCs.size(); i++) {
+		for (int i=0; i<restrictedBuffCRCs.size(); i++) {
 
 			uint32 buffCRC = restrictedBuffCRCs.get(i);
 
-			if(creature->hasBuff(buffCRC)) {
+			if (creature->hasBuff(buffCRC)) {
 				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
 				if(buff != NULL) {
 					Locker lock(buff, creature);
@@ -119,8 +118,10 @@ public:
 
 		ManagedReference<ControlDevice*> device = vehicle->getControlDevice().get();
 
-		if (device != NULL && vehicle->getServerObjectCRC() == 0x32F87A54) // Auto-store jetpack on dismount.
+		if (device != NULL && vehicle->getServerObjectCRC() == 0x32F87A54) { // Auto-store jetpack on dismount.
 			device->storeObject(creature);
+			creature->sendSystemMessage("@pet/pet_menu:jetpack_dismount"); // "You have been dismounted from the jetpack, and it has been stored."
+		}
 
 		creature->updateToDatabase();
 
