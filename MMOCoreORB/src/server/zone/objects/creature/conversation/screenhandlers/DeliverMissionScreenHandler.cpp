@@ -4,6 +4,7 @@
 
 #include "DeliverMissionScreenHandler.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
@@ -29,8 +30,8 @@ MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObj
 				DeliverMissionObjective* objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
 				if (objective != NULL) {
 					//Check if it is target or destination NPC
-					if (isTargetNpc(objective, npc->getPosition()) ||
-							isDestinationNpc(objective, npc->getPosition())) {
+					if (isTargetNpc(objective, npc) ||
+							isDestinationNpc(objective, npc)) {
 						return mission;
 					}
 				}
@@ -42,41 +43,24 @@ MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObj
 	return NULL;
 }
 
-bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
-	NpcSpawnPoint* point = objective->getTargetSpawnPoint();
+bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, CreatureObject* npc) {
+	ManagedReference<AiAgent*> targetNpc = objective->getTargetSpawn();
 
-	if (point == NULL)
+	if (targetNpc == NULL) {
 		return false;
-
-	Vector3* pos = point->getPosition();
-
-	if (pos == NULL)
-		return false;
-
-	return isSameSpawnPoint(pos->getX(), pos->getY(), npcPosition);
-}
-
-bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
-	NpcSpawnPoint* point = objective->getDestinationSpawnPoint();
-
-	if (point == NULL)
-		return false;
-
-	Vector3* pos = point->getPosition();
-
-	if (pos == NULL)
-		return false;
-
-	return isSameSpawnPoint(pos->getX(), pos->getY(), npcPosition);
-}
-
-bool DeliverMissionScreenHandler::isSameSpawnPoint(const float& positionX, const float& positionY, const Vector3& comparisonPosition) {
-	if (positionX == comparisonPosition.getX() &&
-			positionY == comparisonPosition.getY()) {
-		//Spawn point is the same.
-		return true;
 	}
-	return false;
+
+	return targetNpc == npc;
+}
+
+bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, CreatureObject* npc) {
+	ManagedReference<AiAgent*> destinationNpc = objective->getDestinationSpawn();
+
+	if (destinationNpc == NULL) {
+		return false;
+	}
+
+	return destinationNpc == npc;
 }
 
 void DeliverMissionScreenHandler::performPickupConversation(ConversationScreen* conversationScreen, MissionObject* mission) {
@@ -152,7 +136,7 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 			//Run mission logic.
 
 			String text;
-			if (isTargetNpc(objective, conversingNPC->getPosition())) {
+			if (isTargetNpc(objective, conversingNPC)) {
 				//Target NPC.
 				if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
 					//Update mission objective status.

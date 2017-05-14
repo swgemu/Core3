@@ -10,6 +10,7 @@ import server.zone.objects.mission.MissionObject;
 import engine.util.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.ai.AiAgent;
 include terrain.manager.TerrainManager;
 include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
@@ -153,7 +154,7 @@ class MissionManager extends Observer implements Logger {
 	@local
 	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
 	@local
-	public native void freeMissionNpc(NpcSpawnPoint npc);
+	public native void freeMissionNpc(AiAgent npc);
 	@local
 	public native void despawnMissionNpc(NpcSpawnPoint npc);
 	

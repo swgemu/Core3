@@ -15,6 +15,7 @@
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
 	if (activated) {
@@ -40,10 +41,9 @@ void DeliverMissionObjectiveImplementation::activate() {
 }
 
 void DeliverMissionObjectiveImplementation::deactivate() {
-	if (activated) {
-		MissionObjectiveImplementation::deactivate();
-		despawnNpcs();
-	}
+	MissionObjectiveImplementation::deactivate();
+
+	despawnNpcs();
 }
 
 bool DeliverMissionObjectiveImplementation::activateWithResult() {
@@ -97,7 +97,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	//Target NPC
 	//Find a free spawn point.
-	targetSpawnPoint = missionManager->getFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), spawnType);
+	NpcSpawnPoint* targetSpawnPoint = missionManager->getFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), spawnType);
 	if (targetSpawnPoint == NULL) {
 		return false;
 	}
@@ -109,7 +109,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	//Destination NPC.
 	//Find a free spawn point.
 	int retries = 10;
-	destinationSpawnPoint = NULL;
+	NpcSpawnPoint* destinationSpawnPoint = NULL;
 	while (retries > 0 && (destinationSpawnPoint == NULL || destinationSpawnPoint == targetSpawnPoint)) {
 		destinationSpawnPoint = missionManager->getFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
 		retries--;
@@ -119,6 +119,9 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	}
 
 	missionManager->allocateMissionNpcs(targetSpawnPoint, destinationSpawnPoint, terrainManager, creatureManager);
+
+	targetSpawn = targetSpawnPoint->getNpc();
+	destinationSpawn = destinationSpawnPoint->getNpc();
 
 	//Create waypoint and activate it.
 	if (objectiveStatus == 0) {
@@ -154,11 +157,13 @@ void DeliverMissionObjectiveImplementation::despawnNpcs() {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
-	if (targetSpawnPoint != NULL)
-		missionManager->freeMissionNpc(targetSpawnPoint);
+	ManagedReference<AiAgent*> targetNpc = targetSpawn;
+	if (targetNpc != NULL)
+		missionManager->freeMissionNpc(targetNpc);
 
-	if (destinationSpawnPoint != NULL)
-		missionManager->freeMissionNpc(destinationSpawnPoint);
+	ManagedReference<AiAgent*> destinationNpc = destinationSpawn;
+	if (destinationNpc != NULL)
+		missionManager->freeMissionNpc(destinationNpc);
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
@@ -229,7 +234,7 @@ bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* 
 	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getEndPlanet().hashCode());
-	waypoint->setPosition(destinationSpawnPoint->getPosition()->getX(), 0, destinationSpawnPoint->getPosition()->getY());
+	waypoint->setPosition(destinationSpawn.get()->getPositionX(), 0, destinationSpawn.get()->getPositionY());
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();

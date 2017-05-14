@@ -129,6 +129,14 @@ public:
 	}
 
 	/**
+	 * Get the spawned npc pointer.
+	 * @return a pointer to the spawned npc.
+	 */
+	inline AiAgent* getNpc() {
+		return npc;
+	}
+
+	/**
 	 * Load the object from a stream.
 	 * @param stream stream to load from.
 	 * @return true if successful.

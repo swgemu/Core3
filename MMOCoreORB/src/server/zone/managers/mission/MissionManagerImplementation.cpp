@@ -8,6 +8,7 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
@@ -1095,8 +1096,6 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	//Setup mission object.
 	mission->setMissionNumber(randomTexts);
-	mission->setMissionTarget(startNpc);
-	mission->setMissionTargetDest(endNpc);
 
 	NameManager* nm = processor->getNameManager();
 	mission->setCreatorName(nm->makeCreatureName());
@@ -1975,10 +1974,15 @@ void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, Np
 	destination->allocateNpc(terrainManager, creatureManager);
 }
 
-void MissionManagerImplementation::freeMissionNpc(NpcSpawnPoint* npc) {
+void MissionManagerImplementation::freeMissionNpc(AiAgent* npc) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
-	npc->freeNpc(_this.getReferenceUnsafeStaticCast());
+	Vector3 pos = npc->getPosition();
+	pos.setZ(0);
+	NpcSpawnPoint* point = missionNpcSpawnMap.findSpawnAt(npc->getPlanetCRC(), &pos);
+
+	if (point != NULL)
+		point->freeNpc(_this.getReferenceUnsafeStaticCast());
 }
 
 void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {

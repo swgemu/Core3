@@ -56,8 +56,6 @@ class MissionObject extends IntangibleObject {
 	protected unsigned int refreshCounter;
 
 	protected string targetName;
-	protected NpcSpawnPoint missionTarget;
-	protected NpcSpawnPoint missionTargetDest;
 
 	protected string templateString1;
 	protected string templateString2;
@@ -94,9 +92,6 @@ class MissionObject extends IntangibleObject {
 		startPositionY = 0;
 		endPositionX = 0;
 		endPositionY = 0;
-
-		missionTarget = null;
-		missionTargetDest = null;
 
 		targetObjectId = 0;
 
@@ -200,18 +195,6 @@ class MissionObject extends IntangibleObject {
 		rewardFactionPointsImperial = points;
 	}
 
-	@local
-	@preLocked
-	public void setMissionTarget(NpcSpawnPoint target) {
-		missionTarget = target;
-	}
-
-	@local
-	@preLocked
-	public void setMissionTargetDest(NpcSpawnPoint target) {
-		missionTargetDest = target;
-	}
-
 	@preLocked
 	public void setMissionNumber(int num) {
 		missionNumber = num;
@@ -291,18 +274,6 @@ class MissionObject extends IntangibleObject {
 	@dirty
 	public WaypointObject getWaypointToMission() {
 		return waypointToMission;
-	}
-
-	@dirty
-	@local
-	public NpcSpawnPoint getMissionTarget() {
-		return missionTarget;
-	}
-
-	@dirty
-	@local
-	public NpcSpawnPoint getMissionTargetDest() {
-		return missionTargetDest;
 	}
 
 	@read

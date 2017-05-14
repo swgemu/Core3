@@ -124,5 +124,6 @@ void NpcSpawnPoint::despawnNpc() {
 		Locker locker(npc);
 
 		npc->scheduleDespawn(1);
+		npc = NULL;
 	}
 }
