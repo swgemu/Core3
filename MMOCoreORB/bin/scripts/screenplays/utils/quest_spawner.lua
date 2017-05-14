@@ -92,6 +92,17 @@ function QuestSpawner:doQuestSpawnerPulse(pSpawner)
 		return
 	end
 
+	local spawnVerifyFunc = sPlay[dataTable.spawnVerifyFunc]
+
+	if (spawnVerifyFunc ~= nil) then
+		local shouldCreateSpawn = spawnVerifyFunc()
+
+		if (not shouldCreateSpawn) then
+			createEvent(10 * 1000, "QuestSpawner", "destroyQuestSpawner", pSpawner, "")
+			return
+		end
+	end
+
 	self:createSpawn(pSpawner)
 
 	local expireTime = readData(spawnerID .. ":expireTime")
@@ -179,18 +190,10 @@ function QuestSpawner:createSpawn(pSpawner)
 	local spawnerY = SceneObject(pSpawner):getPositionY()
 
 	local zoneName = SceneObject(pSpawner):getZoneName()
-	local inNavMesh = SceneObject(pSpawner):isInNavMesh()
 
 	while (numToSpawn > 0) do
 		if (maxPop > curPop) then
-			local spawnPoint
-
-			if (inNavMesh) then 
-				spawnPoint = getSpawnPointInArea(zoneName, spawnerX, spawnerY, 10)
-			else
-				spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
-			end
-
+			local spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
 			local pNpc = spawnMobile(zoneName, randSpawn[1], 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 			if (pNpc ~= nil) then
@@ -235,7 +238,7 @@ function QuestSpawner:destroySpawnerMobile(pMobile)
 	if (pMobile == nil) then
 		return
 	end
-	
+
 	if (AiAgent(pMobile):isInCombat()) then
 		createEvent(10 * 1000, "QuestSpawner", "destroySpawnerMobile", pMobile, "")
 		return
