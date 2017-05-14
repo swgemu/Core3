@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_db245fc8",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T23:42:58Z",
+      "side": 1,
+      "message": "should be zone, not lairZone",
+      "range": {
+        "startLine": 1243,
+        "startChar": 32,
+        "endLine": 1243,
+        "endChar": 40
+      },
+      "revId": "868f9a3178dacaac53045c1effe282c1a5beb111",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
