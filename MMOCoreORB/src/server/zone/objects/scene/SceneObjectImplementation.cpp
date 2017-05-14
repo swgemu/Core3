@@ -1047,6 +1047,7 @@ Zone* SceneObjectImplementation::getZone() {
 	}
 }
 
+
 Zone* SceneObjectImplementation::getZoneUnsafe() {
 	auto root = getRootParentUnsafe();
 
@@ -1072,7 +1073,17 @@ bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
 
 	return false;
 }
+ bool SceneObjectImplementation::isInRangeZoneless(SceneObject* object, float range) {
+	Vector3 worldPos = object->getWorldPosition();
+	worldPos.setZ(0);
+	Vector3 thisPos = getWorldPosition();
+	thisPos.setZ(0);
 
+	if (thisPos.squaredDistanceTo(worldPos) <= range * range)
+		return true;
+
+	return false;
+}
 bool SceneObjectImplementation::isInRange3d(SceneObject* object, float range) {
 	if (getZoneUnsafe() != object->getZoneUnsafe()) {
 		return false;
