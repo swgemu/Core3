@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ace114c_9b9257f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T10:35:34Z",
+      "side": 1,
+      "message": "Follow our standard commit message format. Start with a bracketed keyword, followed by the description and the mantis reference at the end, if any. eg. [Fixed] XXX - mantis #YYYY",
+      "revId": "c5b962a955f614817a378f42c17df9346876f22c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ace114c_db88dfc8",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
         "patchSetId": 2
