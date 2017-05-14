@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_dbda1fe9",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T07:20:30Z",
+      "side": 1,
+      "message": "You should update the faction checks here to use facilityType as well. I\u0027d probably add an isValidClosestCloner or something method with all these checks and call it here and within the loop below instead of trying to inline all the checks here.",
+      "revId": "d9523b798f6e2165378675d2273e20aeae8e2135",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_fbd7dbbd",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T07:20:30Z",
+      "side": 1,
+      "message": "I\u0027d probably move this to after you get the cellID and check cellID !\u003d 0 instead of the isJediCloner() check. This will make it more generic and allow the possibility of generic cloners with outdoor spawn points.",
+      "revId": "d9523b798f6e2165378675d2273e20aeae8e2135",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_3bd6c3c6",
+        "filename": "MMOCoreORB/src/server/zone/packets/player/GetMapLocationsResponseMessage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-14T07:20:30Z",
+      "side": 1,
+      "message": "Since you aren\u0027t passing faction to insertToMessage anymore, you don\u0027t need this.",
+      "revId": "d9523b798f6e2165378675d2273e20aeae8e2135",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
