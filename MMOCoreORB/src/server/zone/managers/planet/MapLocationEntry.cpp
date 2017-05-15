@@ -148,7 +148,7 @@ bool MapLocationEntry::insertToMessage(BaseMessage* message, CreatureObject* pla
 			return false;
 		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_REBEL && player->getFaction() != Factions::FACTIONREBEL)
 			return false;
-		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::JEDI_ONLY && !player->hasSkill("force_title_jedi_novice"))
+		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::JEDI_ONLY && !player->hasSkill("force_title_jedi_rank_01"))
 			return false;
 		else if (cbot->getFacilityType() == CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY && !player->hasSkill("force_rank_light_novice"))
 			return false;
