@@ -72,6 +72,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
 		{ "removeSuiBox", &LuaPlayerObject::removeSuiBox },
 		{ "isJediTrainer", &LuaPlayerObject::isJediTrainer },
+		{ "getVisibility", &LuaPlayerObject::getVisibility},
 		{ 0, 0 }
 };
 
@@ -639,6 +640,12 @@ int LuaPlayerObject::isJediTrainer(lua_State* L) {
 	bool result = (npc == player) && (realObject->getTrainerZoneName() == trainer->getZone()->getZoneName());
 
 	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+int LuaPlayerObject::getVisibility(lua_State* L) {
+	lua_pushnumber(L, realObject->getVisibility());
 
 	return 1;
 }
