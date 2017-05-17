@@ -2,7 +2,8 @@ TRIAL_LIGHTSABER = 1
 TRIAL_TALK = 2
 TRIAL_KILL = 3
 TRIAL_HUNT = 4
-TRIAL_COUNCIL = 5
+TRIAL_HUNT_FACTION = 5
+TRIAL_COUNCIL = 6
 
 padawanTrialQuests = {
 	{
@@ -185,7 +186,52 @@ knightTrialQuests = {
 	{
 		trialName = "light_or_dark",
 		trialType = TRIAL_COUNCIL
-	}
+	},
+	{
+		trialName = "enemy_soldier",
+		trialType = TRIAL_HUNT_FACTION,
+		rebelTarget = "storm_commando",
+		imperialTarget = "rebel_commando",
+		huntGoal = 47
+	},
+	{
+		trialName = "high_general",
+		trialType = TRIAL_HUNT_FACTION,
+		rebelTarget = "imperial_surface_marshall;imperial_high_general;imperial_general",
+		imperialTarget = "rebel_high_general;rebel_surface_marshall;rebel_general",
+		huntGoal = 22
+	},
+	{
+		trialName = "corvette_officer",
+		trialType = TRIAL_HUNT_FACTION,
+		rebelTarget = "stormtrooper_novatrooper_elite_commander",
+		imperialTarget = "corvette_rebel_rear_admiral",
+		huntGoal = 4
+	},
+	{
+		trialName = "geonosian_bunker_acklay",
+		trialType = TRIAL_HUNT,
+		huntTarget = "geonosian_acklay_bunker_boss",
+		huntGoal = 1
+	},
+	{
+		trialName = "nightsister_elder",
+		trialType = TRIAL_HUNT,
+		huntTarget = "nightsister_elder",
+		huntGoal = 1
+	},
+	{
+		trialName = "kiin_dray",
+		trialType = TRIAL_HUNT,
+		huntTarget = "gaping_spider_recluse_giant_kiin_dray",
+		huntGoal = 1
+	},
+	{
+		trialName = "giant_canyon_krayt",
+		trialType = TRIAL_HUNT,
+		huntTarget = "giant_canyon_krayt_dragon",
+		huntGoal = 1
+	},
 }
 
 trialsCivilizedPlanets = { "corellia", "naboo", "rori", "talus", "tatooine" }
