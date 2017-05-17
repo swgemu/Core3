@@ -20,25 +20,34 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship.setLastPhaseChangeTime(os.time())
 		createServerEvent(VillageJediManagerTownship.VILLAGE_PHASE_DURATION, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
 	else
-		-- Fixes servers that were already running the village prior to the change in schedule handling
-		local lastChange = tonumber(getQuestStatus("Village:lastPhaseChangeTime"))
-
-		if (lastChange ~= nil) then
-			return
-		end
-
 		local eventID = getServerEventID("VillagePhaseChange")
 
 		if (eventID == nil) then
+			VillageJediManagerTownship:switchToNextPhase(true)
 			return
 		end
 
 		local eventTimeLeft = getServerEventTimeLeft(eventID)
 
 		if (eventTimeLeft == nil) then
+			VillageJediManagerTownship:switchToNextPhase(true)
 			return
-		elseif (eventTimeLeft < 0) then
-			setQuestStatus("Village:lastPhaseChangeTime", os.time() - (VillageJediManagerTownship.getVillagePhaseDuration() / 1000))
+		end
+
+		if (eventTimeLeft > VillageJediManagerTownship.getVillagePhaseDuration()) then
+			rescheduleServerEvent("VillagePhaseChange", VillageJediManagerTownship.getVillagePhaseDuration())
+			setQuestStatus("Village:lastPhaseChangeTime", os.time())
+			return
+		end
+
+		-- Fixes servers that were already running the village prior to the change in schedule handling
+		local lastChange = tonumber(getQuestStatus("Village:lastPhaseChangeTime"))
+
+		if (lastChange ~= nil and lastChange ~= 0) then
+			return
+		end
+
+		if (eventTimeLeft < 0) then
 			return
 		end
 
