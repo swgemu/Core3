@@ -28,7 +28,7 @@ function Glowing:getCompletedBadgeTypeCount(pPlayer)
 		local badgeCount = 0
 
 		for j = 1, #badgeListByType, 1 do
-			if PlayerObject(pGhost):hasBadge(badgeListByType[i]) then
+			if PlayerObject(pGhost):hasBadge(badgeListByType[j]) then
 				badgeCount = badgeCount + 1
 			end
 		end
