@@ -1,4 +1,7 @@
 JediTrials = ScreenPlay:new {
+	padawanTrialsEnabled = true,
+	knightTrialsEnabled = true,
+
 	-- Object ID's of the various force shrines.
 	forceShrineIds = {
 		corellia = { 7345554, 7345568, 7345533, 7345540, 7345561 },
@@ -12,10 +15,12 @@ JediTrials = ScreenPlay:new {
 		tatooine = { 5996497, 5996504, 5996539, 5996546, 5996560 },
 		yavin4 = { 6845418, 6845425, 7665623, 7665630 }
 	},
+
+	shrinePlanets = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4" }
 }
 
 function JediTrials:isEligibleForPadawanTrials(pPlayer)
-	if (pPlayer == nil) then
+	if (pPlayer == nil or not self.padawanTrialsEnabled) then
 		return false
 	end
 
@@ -33,11 +38,23 @@ function JediTrials:isOnPadawanTrials(pPlayer)
 end
 
 function JediTrials:isEligibleForKnightTrials(pPlayer)
-	return false -- Temporary
+	if (pPlayer == nil or not self.knightTrialsEnabled) then
+		return false
+	end
+
+	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		return false
+	end
+
+	return CreatureObject(pPlayer):villageKnightPrereqsMet("")
 end
 
 function JediTrials:isOnKnightTrials(pPlayer)
-	return false -- Temporary
+	if (pPlayer == nil) then
+		return false
+	end
+
+	return tonumber(readScreenPlayData(pPlayer, "KnightTrials", "startedTrials")) == 1
 end
 
 function JediTrials:onPlayerLoggedIn(pPlayer)
@@ -48,8 +65,9 @@ function JediTrials:onPlayerLoggedIn(pPlayer)
 
 	if (self:isOnPadawanTrials(pPlayer)) then
 		PadawanTrials:onPlayerLoggedIn(pPlayer)
-	elseif (self:isOnKnightTrials(pPlayer)) then
 	end
+
+	KnightTrials:onPlayerLoggedIn(pPlayer)
 end
 
 function JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
@@ -110,7 +128,7 @@ function JediTrials:unlockJediPadawan(pPlayer)
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		local pItem = giveItem(pInventory, "object/tangible/wearables/robe/robe_jedi_padawan.iff", -1)
 	end
-	
+
 	sendMail("system", "@jedi_spam:welcome_subject", "@jedi_spam:welcome_body", CreatureObject(pPlayer):getFirstName())
 end
 
@@ -132,15 +150,59 @@ function JediTrials:createClosestShrineWaypoint(pPlayer)
 
 	pShrine = self:getNearestForceShrine(pPlayer)
 
-	if (pShrine ~= nil) then
-		local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-		if (pGhost ~= nil) then
-			local zoneName = SceneObject(pPlayer):getZoneName()
-			local waypointID = PlayerObject(pGhost):addWaypoint(zoneName, zoneName:gsub("^%l", string.upper) .. " Force Shrine", "", SceneObject(pShrine):getWorldPositionX(), SceneObject(pShrine):getWorldPositionY(), WAYPOINTYELLOW, true, true, 0)
-			writeData(playerID .. ":jediShrineWaypointID", waypointID)
-		end
+	if (pShrine == nil) then
+		return
 	end
+
+	self:createShrineWaypoint(pPlayer, pShrine)
+end
+
+function JediTrials:createShrineWaypoint(pPlayer, pShrine)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		local zoneName = SceneObject(pShrine):getZoneName()
+		local waypointID = PlayerObject(pGhost):addWaypoint(zoneName, zoneName:gsub("^%l", string.upper) .. " Force Shrine", "", SceneObject(pShrine):getWorldPositionX(), SceneObject(pShrine):getWorldPositionY(), WAYPOINTYELLOW, true, true, 0)
+		writeData(SceneObject(pPlayer):getObjectID() .. ":jediShrineWaypointID", waypointID)
+	end
+end
+
+function JediTrials:getRandomDifferentShrinePlanet(pPlayer)
+	local shrinePlanet = self.shrinePlanets[getRandomNumber(1, #self.shrinePlanets)]
+	local playerPlanet = SceneObject(pPlayer):getZoneName()
+	local attempts = 0
+
+	while (shrinePlanet == playerPlanet or not isZoneEnabled(shrinePlanet)) and attempts <= 50 do
+		shrinePlanet = self.shrinePlanets[getRandomNumber(1, #self.shrinePlanets)]
+		attempts = attempts + 1
+	end
+
+	if (attempts >= 50) then
+		printLuaError("JediTrials:getRandomDifferentShrinePlanet failed to grab random shrine planet after 50 attempts.")
+		return nil
+	end
+
+	return shrinePlanet
+end
+
+function JediTrials:getRandomShrineOnPlanet(planet)
+	local shrineList = self.forceShrineIds[planet]
+	local shrineID = shrineList[getRandomNumber(1, #shrineList)]
+	local pShrine = getSceneObject(shrineID)
+	local attempts = 0
+
+	while pShrine == nil and attempts <= 50 do
+		shrineID = shrineList[getRandomNumber(1, #shrineList)]
+		pShrine = getSceneObject(shrineID)
+		attempts = attempts + 1
+	end
+
+	if (attempts >= 50) then
+		printLuaError("JediTrials:getRandomShrineOnPlanet failed to grab random shrine after 50 attempts.")
+		return nil
+	end
+
+	return pShrine
 end
 
 function JediTrials:getNearestForceShrine(pPlayer)
