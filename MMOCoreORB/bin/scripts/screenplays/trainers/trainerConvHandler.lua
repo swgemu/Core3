@@ -231,6 +231,10 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 		messageString:setTO(skillStringId)
 		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 		clonedConversation:setDialogTextStringId(stringTable .. "msg3_2")
+		
+		if (JediTrials:isEligibleForKnightTrials(pPlayer)) then
+			KnightTrials:startKnightTrials(pPlayer)
+		end
 	else
 		local messageString = LuaStringIdChatParameter(stringTable .. "prose_train_failed")
 		messageString:setTO(skillStringId)
