@@ -46,7 +46,7 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 
 		VillageJediManagerTownship.setLastPhaseChangeTime(os.time())
 
-		local timeToSchedule = (VillageJediManagerTownship.getNextPhaseChangeTime() - os.time()) * 1000
+		local timeToSchedule = (VillageJediManagerTownship.getNextPhaseChangeTime(false) - os.time()) * 1000
 
 		rescheduleServerEvent("VillagePhaseChange", timeToSchedule)
 	end
@@ -56,7 +56,7 @@ function VillageJediManagerTownship.getVillagePhaseDuration()
 	return VillageJediManagerTownship.VILLAGE_PHASE_DURATION
 end
 
-function VillageJediManagerTownship.getNextPhaseChangeTime()
+function VillageJediManagerTownship.getNextPhaseChangeTime(includePast)
 	local lastPhaseChange = VillageJediManagerTownship.getLastPhaseChangeTime()
 	local nextPhaseChange = lastPhaseChange + (VillageJediManagerTownship.getVillagePhaseDuration() / 1000)
 
@@ -70,7 +70,7 @@ function VillageJediManagerTownship.getNextPhaseChangeTime()
 
 	local returnTime = os.time(timeTable)
 
-	if (returnTime < os.time()) then
+	if (returnTime < os.time() and not includePast) then
 		returnTime = returnTime + 86400 -- If the time was modified by phaseChangeTimeOfDay and ended up being in the past, push it forward by 24 hours
 	end
 
@@ -134,7 +134,7 @@ function VillageJediManagerTownship:switchToNextPhase(manualSwitch)
 		return
 	end
 
-	local nextPhaseChange = VillageJediManagerTownship.getNextPhaseChangeTime()
+	local nextPhaseChange = VillageJediManagerTownship.getNextPhaseChangeTime(true)
 
 	if (manualSwitch) then
 		nextPhaseChange = os.time()
@@ -142,7 +142,7 @@ function VillageJediManagerTownship:switchToNextPhase(manualSwitch)
 
 	VillageJediManagerTownship.setLastPhaseChangeTime(nextPhaseChange)
 
-	local timeToSchedule = (VillageJediManagerTownship.getNextPhaseChangeTime() - os.time()) * 1000
+	local timeToSchedule = (VillageJediManagerTownship.getNextPhaseChangeTime(false) - os.time()) * 1000
 
 	if (hasServerEvent("VillagePhaseChange")) then
 		rescheduleServerEvent("VillagePhaseChange", timeToSchedule)
