@@ -61,16 +61,21 @@ function VillageJediManagerTownship.getNextPhaseChangeTime(includePast)
 	local nextPhaseChange = lastPhaseChange + (VillageJediManagerTownship.getVillagePhaseDuration() / 1000)
 
 	local timeTable = os.date("*t", nextPhaseChange)
+	local disregardTimeOfDay = VillageJediManagerTownship.getVillagePhaseDuration() < (24 * 60 * 60 * 1000)
 
 	if (VillageJediManagerTownship.phaseChangeTimeOfDay ~= nil) then
-		timeTable.hour = VillageJediManagerTownship.phaseChangeTimeOfDay.hour
-		timeTable.min = VillageJediManagerTownship.phaseChangeTimeOfDay.min
-		timeTable.sec = 0
+		if (disregardTimeOfDay) then
+			printf("VillageJediManagerTownship.getNextPhaseChangeTime disregarding phaseChangeTimeOfDay due to a phase duration under 24 hours.\n")
+		else
+			timeTable.hour = VillageJediManagerTownship.phaseChangeTimeOfDay.hour
+			timeTable.min = VillageJediManagerTownship.phaseChangeTimeOfDay.min
+			timeTable.sec = 0
+		end
 	end
 
 	local returnTime = os.time(timeTable)
 
-	if (returnTime < os.time() and not includePast) then
+	if (returnTime < os.time() and not includePast and not disregardTimeOfDay) then
 		returnTime = returnTime + 86400 -- If the time was modified by phaseChangeTimeOfDay and ended up being in the past, push it forward by 24 hours
 	end
 
