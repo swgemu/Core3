@@ -9,7 +9,6 @@ VillageJediManagerTownship = ScreenPlay:new {
 	phaseChangeTimeOfDay = { hour = 18, min = 0 }, -- Hour of day, server military time, to change the phase. Comment out to disable
 
 	VILLAGE_PHASE_DURATION = 48 * 60 * 60 * 1000 -- Testing value.
---VILLAGE_PHASE_DURATION = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
 }
 
 -- Set the current Village Phase for the first time.
@@ -34,9 +33,7 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 			return
 		end
 
-		if (eventTimeLeft > VillageJediManagerTownship.getVillagePhaseDuration()) then
-			rescheduleServerEvent("VillagePhaseChange", VillageJediManagerTownship.getVillagePhaseDuration())
-			setQuestStatus("Village:lastPhaseChangeTime", os.time())
+		if (eventTimeLeft < 0) then
 			return
 		end
 
@@ -47,13 +44,11 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 			return
 		end
 
-		if (eventTimeLeft < 0) then
-			return
-		end
+		VillageJediManagerTownship.setLastPhaseChangeTime(os.time())
 
-		local newLastChange = math.floor((os.time() + (eventTimeLeft / 1000)) - (VillageJediManagerTownship.getVillagePhaseDuration() / 1000))
+		local timeToSchedule = (VillageJediManagerTownship.getNextPhaseChangeTime() - os.time()) * 1000
 
-		setQuestStatus("Village:lastPhaseChangeTime", newLastChange)
+		rescheduleServerEvent("VillagePhaseChange", timeToSchedule)
 	end
 end
 
@@ -73,7 +68,13 @@ function VillageJediManagerTownship.getNextPhaseChangeTime()
 		timeTable.sec = 0
 	end
 
-	return os.time(timeTable)
+	local returnTime = os.time(timeTable)
+
+	if (returnTime < os.time()) then
+		returnTime = returnTime + 86400 -- If the time was modified by phaseChangeTimeOfDay and ended up being in the past, push it forward by 24 hours
+	end
+
+	return returnTime
 end
 
 function VillageJediManagerTownship.setLastPhaseChangeTime(time)
@@ -133,8 +134,7 @@ function VillageJediManagerTownship:switchToNextPhase(manualSwitch)
 		return
 	end
 
-	local lastPhaseChange = VillageJediManagerTownship.getLastPhaseChangeTime()
-	local nextPhaseChange = lastPhaseChange + (VillageJediManagerTownship.getVillagePhaseDuration() / 1000)
+	local nextPhaseChange = VillageJediManagerTownship.getNextPhaseChangeTime()
 
 	if (manualSwitch) then
 		nextPhaseChange = os.time()
