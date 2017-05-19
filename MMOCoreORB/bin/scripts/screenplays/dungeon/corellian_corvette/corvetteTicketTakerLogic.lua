@@ -22,9 +22,15 @@ end
 
 function CorvetteTicketTakerLogic:spawnNpc()
 	local npcSpawnData = self.npc
-	if isZoneEnabled(npcSpawnData.planetName) then
-		local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-		if pNpc ~= nil and npcSpawnData.position == SIT then
+
+	if not isZoneEnabled(npcSpawnData.planetName) then
+		return
+	end
+
+	local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
+
+	if pNpc ~= nil then
+		if (npcSpawnData.position == SIT) then
 			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
 		end
 		if (npcSpawnData.mood ~= nil and npcSpawnData.mood ~= "") then
@@ -34,17 +40,34 @@ function CorvetteTicketTakerLogic:spawnNpc()
 end
 
 function CorvetteTicketTakerLogic:checkFaction(pPlayer)
-	if self.faction == 0 then
+	if (self.faction == FACTIONNEUTRAL) then
 		return true
 	end
-	--TODO: add group faction checks
-	return false
+
+	if (not ThemeParkLogic:isInFaction(self.faction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer)) then
+		return false
+	end
+
+	if (CreatureObject(pPlayer):isGrouped()) then
+		local groupSize = CreatureObject(pPlayer):getGroupSize()
+
+		for i = 0, groupSize - 1, 1 do
+			local pMember = CreatureObject(pPlayer):getGroupMember(i)
+			if pMember ~= nil and (not ThemeParkLogic:isInFaction(self.faction, pMember) or ThemeParkLogic:isOnLeave(pMember)) then
+				return false
+			end
+		end
+	end
+
+	return true
 end
 
 function CorvetteTicketTakerLogic:validateTicket(pPlayer)
-	local player = CreatureObject(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
 
-	player:sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
+	CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
 
 	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer, "")
 end
@@ -82,19 +105,17 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 	local ret = CorellianCorvetteScreenPlay:activate(pPlayer, self:getFactionString(), activeQuestType)
 
 	--if ret == 1 then --TODO destroy ticket
-		--ticket:destroyObjectFromWorld()
-		--ticket:destroyObjectFromDatabase()
+	--ticket:destroyObjectFromWorld()
+	--ticket:destroyObjectFromDatabase()
 	--end
 end
 
 function CorvetteTicketTakerLogic:getFactionString()
-	if self.faction == 0 then
-		return "neutral"
-	elseif self.faction == FACTIONIMPERIAL then
+	if self.faction == FACTIONIMPERIAL then
 		return "imperial"
 	elseif self.faction == FACTIONREBEL then
 		return "rebel"
+	else
+		return "neutral"
 	end
-
-	return "neutral"
 end

@@ -1,4 +1,4 @@
-pashna = Creature:new {
+corvette_pashna_rebel_assassin = Creature:new {
 	objectName = "@npc_name:moncal_base_male",
 	customName = "Pashna Starkiller",
 	socialGroup = "rebel",
@@ -23,15 +23,15 @@ pashna = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvettePashnaConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(pashna, "pashna")
+CreatureTemplates:addCreatureTemplate(corvette_pashna_rebel_assassin, "corvette_pashna_rebel_assassin")

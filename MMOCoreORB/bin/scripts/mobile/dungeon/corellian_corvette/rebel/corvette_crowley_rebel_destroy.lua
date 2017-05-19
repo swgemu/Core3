@@ -1,6 +1,6 @@
-adar = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Adar Tallon",
+corvette_crowley_rebel_destroy = Creature:new {
+	objectName = "@npc_name:twilek_base_female",
+	customName = "Master Sergeant Crowley",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 100,
@@ -23,15 +23,15 @@ adar = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
+	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteCrowleyConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(adar, "adar")
+CreatureTemplates:addCreatureTemplate(corvette_crowley_rebel_destroy, "corvette_crowley_rebel_destroy")

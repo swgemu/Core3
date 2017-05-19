@@ -1,8 +1,8 @@
-bruce_mcbrain = Creature:new {
+corvette_sabol_imperial_assassin = Creature:new {
 	objectName = "",
-	customName = "Bruce Mcbrain",
-	socialGroup = "jabba",
-	faction = "jabba",
+	customName = "Lt. Sabol",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ bruce_mcbrain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteSabolConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(bruce_mcbrain, "bruce_mcbrain")
+CreatureTemplates:addCreatureTemplate(corvette_sabol_imperial_assassin, "corvette_sabol_imperial_assassin")

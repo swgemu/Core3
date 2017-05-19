@@ -418,7 +418,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_unarmed", 1, -3570, 86, 3146, 233, 0)
 
 	--named npc's
-	spawnMobile(self.planet, "crowley", 60, -3404.73, 86, 3092.64, 323.239, 0)
 	spawnMobile(self.planet, "dac_axfow", 60, -3143.7, 31, 2803.73, 233.156, 0)
 	spawnMobile(self.planet, "eryk_chinn", 60, -3145.32, 31, 2803.95, 208.286, 0)
 	spawnMobile(self.planet, "logro_elsin", 60, -3144.67, 31, 2806.06, 174, 0)

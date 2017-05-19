@@ -1,6 +1,6 @@
-lt_velso = Creature:new {
+corvette_colonel_imperial_rescue = Creature:new {
 	objectName = "",
-	customName = "Lt. Velso",
+	customName = "Colonel Darkstone",
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -23,15 +23,15 @@ lt_velso = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteColonelConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(lt_velso, "lt_velso")
+CreatureTemplates:addCreatureTemplate(corvette_colonel_imperial_rescue, "corvette_colonel_imperial_rescue")
