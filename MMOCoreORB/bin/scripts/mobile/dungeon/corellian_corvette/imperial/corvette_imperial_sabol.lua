@@ -1,8 +1,8 @@
-corvette_yondalla_neutral_rescue = Creature:new {
+corvette_imperial_sabol = Creature:new {
 	objectName = "",
-	customName = "Yondalla",
-	socialGroup = "jabba",
-	faction = "jabba",
+	customName = "Lt. Sabol",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,12 +26,12 @@ corvette_yondalla_neutral_rescue = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteYondallaConvoTemplate",
+	conversationTemplate = "corvetteSabolConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_yondalla_neutral_rescue, "corvette_yondalla_neutral_rescue")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_sabol, "corvette_imperial_sabol")

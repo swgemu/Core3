@@ -1,8 +1,8 @@
-corvette_bronell_neutral_assassin = Creature:new {
-	objectName = "",
-	customName = "Bronell",
-	socialGroup = "jabba",
-	faction = "jabba",
+corvette_rebel_pashna = Creature:new {
+	objectName = "@npc_name:moncal_base_male",
+	customName = "Pashna Starkiller",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,11 +26,12 @@ corvette_bronell_neutral_assassin = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
+	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteBronellConvoTemplate",
-	attacks = {}
+	conversationTemplate = "corvettePashnaConvoTemplate",
+	attacks = {
+	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_bronell_neutral_assassin, "corvette_bronell_neutral_assassin")
+CreatureTemplates:addCreatureTemplate(corvette_rebel_pashna, "corvette_rebel_pashna")

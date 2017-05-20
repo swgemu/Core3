@@ -1,8 +1,8 @@
-corvette_bruce_neutral_destroy = Creature:new {
+corvette_imperial_velso = Creature:new {
 	objectName = "",
-	customName = "Bruce Mcbrain",
-	socialGroup = "jabba",
-	faction = "jabba",
+	customName = "Lt. Velso",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,12 +26,12 @@ corvette_bruce_neutral_destroy = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteBruceConvoTemplate",
+	conversationTemplate = "corvetteVelsoConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_bruce_neutral_destroy, "corvette_bruce_neutral_destroy")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_velso, "corvette_imperial_velso")

@@ -1,8 +1,8 @@
-corvette_tallon_rebel_rescue = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Adar Tallon",
-	socialGroup = "rebel",
-	faction = "rebel",
+corvette_imperial_darkstone = Creature:new {
+	objectName = "",
+	customName = "Colonel Darkstone",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,12 +26,12 @@ corvette_tallon_rebel_rescue = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteTallonConvoTemplate",
+	conversationTemplate = "corvetteDarkstoneConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_tallon_rebel_rescue, "corvette_tallon_rebel_rescue")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_darkstone, "corvette_imperial_darkstone")

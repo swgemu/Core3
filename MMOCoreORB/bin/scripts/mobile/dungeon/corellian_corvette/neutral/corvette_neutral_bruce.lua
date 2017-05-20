@@ -1,8 +1,8 @@
-corvette_colonel_imperial_rescue = Creature:new {
+corvette_neutral_bruce = Creature:new {
 	objectName = "",
-	customName = "Colonel Darkstone",
-	socialGroup = "imperial",
-	faction = "imperial",
+	customName = "Bruce Mcbrain",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,12 +26,12 @@ corvette_colonel_imperial_rescue = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteColonelConvoTemplate",
+	conversationTemplate = "corvetteBruceConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_colonel_imperial_rescue, "corvette_colonel_imperial_rescue")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_bruce, "corvette_neutral_bruce")

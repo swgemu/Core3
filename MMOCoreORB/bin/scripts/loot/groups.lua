@@ -47,6 +47,13 @@ includeFile("groups/bestine_election/bestine_election_tusken_loot.lua")
 includeFile("groups/bestine_election/bestine_election_tusken_quest.lua")
 includeFile("groups/bestine_election/bestine_election_victor_visalis_rewards.lua")
 
+-- corellian_corvette sub-folder
+includeFile("groups/corellian_corvette/imperial_corvette_loot.lua")
+includeFile("groups/corellian_corvette/neutral_corvette_loot.lua")
+includeFile("groups/corellian_corvette/rebel_corvette_loot.lua")
+includeFile("groups/corellian_corvette/disk_loot.lua")
+includeFile("groups/corellian_corvette/r2droid_loot.lua")
+
 -- creature sub-folder
 includeFile("groups/creature/brackaset_common.lua")
 includeFile("groups/creature/fambaa_common.lua")
