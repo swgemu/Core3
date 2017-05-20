@@ -36,6 +36,10 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 	if (trialsCompleted >= #knightTrialQuests) then
+		dropObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+		deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+		deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
+		deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
 		JediTrials:unlockJediKnight(pPlayer)
 		return
 	end
@@ -87,8 +91,8 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 
 	dropObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
-	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
+	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
 
 	if (trialData.trialType == TRIAL_HUNT or trialData.trialType == TRIAL_HUNT_FACTION) then
 		if (trialData.trialType == TRIAL_HUNT) then
@@ -102,7 +106,7 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 				writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.imperialTarget)
 			end
 		end
-		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
+
 		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
 		createObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 	end
@@ -198,6 +202,7 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 
 	if (trialNumber <= 0) then
+		printLuaError("KnightTrials:notifyKilledHuntTarget, invalid trial for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
 		return 1
 	end
 
@@ -254,6 +259,12 @@ function KnightTrials:showCurrentTrial(pPlayer)
 	end
 
 	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
+
+	if (targetCount == nil) then
+		printLuaError("KnightTrials:showCurrentTrial, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return
+	end
+
 	local trialData = knightTrialQuests[trialNumber]
 
 	if (trialData.trialType == TRIAL_COUNCIL) then
