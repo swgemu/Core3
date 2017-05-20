@@ -23,7 +23,7 @@ generic_businessman_missions =
 			itemSpawns = {},
 			rewards =
 			{
-				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/ticket_expired.iff" }
+				{ rewardType = "loot", lootGroup = "generic_quests_businessman_expired_ticket" }
 			}
 		},
 		{
@@ -55,7 +55,7 @@ generic_businessman_missions =
 			},
 			rewards =
 			{
-				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/ticket_expired.iff" }
+				{ rewardType = "loot", lootGroup = "generic_quests_businessman_expired_ticket" }
 			}
 		},
 		{
@@ -87,7 +87,7 @@ generic_businessman_missions =
 			},
 			rewards =
 			{
-				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/ticket_expired.iff" }
+				{ rewardType = "loot", lootGroup = "generic_quests_businessman_expired_ticket" }
 			}
 		}
 	}

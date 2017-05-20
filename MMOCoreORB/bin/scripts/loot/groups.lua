@@ -93,6 +93,9 @@ includeFile("groups/forage/forage_live_creatures.lua")
 includeFile("groups/forage/forage_medical_component.lua")
 includeFile("groups/forage/forage_rare.lua")
 
+-- generic_quests sub-folder
+includeFile("groups/generic_quests/generic_quests_businessman_expired_ticket.lua")
+
 -- geonosian_lab sub-folder
 includeFile("groups/geonosian_lab/acklay.lua")
 includeFile("groups/geonosian_lab/enhanced_kwi.lua")
