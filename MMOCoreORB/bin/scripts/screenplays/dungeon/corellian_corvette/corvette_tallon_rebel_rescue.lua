@@ -7,7 +7,7 @@ tallonTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "r
 
 tallonCompensation = { { compType = "faction", amount = 100 } }
 
-tallon = { planetName = "corellia", npcTemplate = "corvette_tallon_rebel_rescue", x = -5448.03, z = 21, y = -2674.92, direction = 163, cellID = 0, position = STAND }
+tallon = { planetName = "corellia", npcTemplate = "corvette_rebel_adar", x = -5448.03, z = 21, y = -2674.92, direction = 163, cellID = 0, position = STAND }
 
 ticketGivertallon = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

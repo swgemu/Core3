@@ -7,7 +7,7 @@ sabolTicketInfo = { depPlanet = "tatooine", faction = "imperial", missionType = 
 
 sabolCompensation = { { compType = "faction", faction = "imperial", amount = 100 } }
 
-lt_sabol = { planetName = "tatooine", npcTemplate = "corvette_sabol_imperial_assassin", x = -1291.67, z = 12, y = -3539, direction = 110, cellID = 0, position = STAND, mood = "npc_imperial" }
+lt_sabol = { planetName = "tatooine", npcTemplate = "corvette_imperial_sabol", x = -1291.67, z = 12, y = -3539, direction = 110, cellID = 0, position = STAND, mood = "npc_imperial" }
 
 ticketGiverSabol = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

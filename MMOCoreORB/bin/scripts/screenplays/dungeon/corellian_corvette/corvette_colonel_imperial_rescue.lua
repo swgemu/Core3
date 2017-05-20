@@ -7,7 +7,7 @@ darkstoneTicketInfo = { depPlanet = "naboo", faction = "imperial", missionType =
 
 darkstoneCompensation = { { compType = "faction", faction = "imperial",  amount = 100 } }
 
-darkstone = { planetName = "tatooine", npcTemplate = "corvette_colonel_imperial_rescue", x = -5313 , z = 8.4, y = 2662, direction = -175, cellID = 0, position = STAND, mood = "npc_imperial"}
+darkstone = { planetName = "tatooine", npcTemplate = "corvette_imperial_darkstone", x = -5313 , z = 8.4, y = 2662, direction = -175, cellID = 0, position = STAND, mood = "npc_imperial"}
 
 ticketGiverDarkstone = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

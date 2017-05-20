@@ -7,7 +7,7 @@ yondallaTicketInfo = { depPlanet = "tatooine", faction = "neutral", missionType 
 
 yondallaCompensation = { { compType = "credits", amount = 500 } }
 
-yondalla = { planetName = "tatooine", npcTemplate = "corvette_yondalla_neutral_rescue", x = 20.19, z = -0.89, y = -19.07, direction = 109, cellID = 1134561, position = STAND }
+yondalla = { planetName = "tatooine", npcTemplate = "corvette_neutral_yondalla", x = 20.19, z = -0.89, y = -19.07, direction = 109, cellID = 1134561, position = STAND }
 
 ticketGiverYondalla = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

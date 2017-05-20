@@ -7,7 +7,7 @@ pashnaTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "a
 
 pashnaCompensation = { { compType = "faction", faction = "rebel", amount = 100 } }
 
-pashna = { planetName = "corellia", npcTemplate = "corvette_pashna_rebel_assassin", x = 6772.57, z = 315, y = -5697.8, direction = 245, cellID = 0, position = STAND }
+pashna = { planetName = "corellia", npcTemplate = "corvette_rebel_pashna", x = 6772.57, z = 315, y = -5697.8, direction = 245, cellID = 0, position = STAND }
 
 ticketGiverPashna = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,
