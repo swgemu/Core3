@@ -182,6 +182,19 @@ includeFile("items/coa/coa_reb_3.lua")
 includeFile("items/coa/coa_reb_4.lua")
 includeFile("items/coa/coa_rebel_message.lua")
 
+--corellian_corvette sub-folder
+includeFile("items/corellian_corvette/shirt_s03_rebel.lua")
+includeFile("items/corellian_corvette/armor_marine_chest_plate_rebel.lua")
+includeFile("items/corellian_corvette/bantha_doll.lua")
+includeFile("items/corellian_corvette/berserker_schematic.lua")
+includeFile("items/corellian_corvette/corellian_corvette_rifle_berserker_schematic.lua")
+includeFile("items/corellian_corvette/corvette_rifle_barrel.lua")
+includeFile("items/corellian_corvette/droid_maint_module.lua")
+includeFile("items/corellian_corvette/bootdisk.lua")
+includeFile("items/corellian_corvette/spice_crash_n_burn.lua")
+includeFile("items/corellian_corvette/spice_giggledust.lua")
+includeFile("items/corellian_corvette/veh_power_plant_av21.lua")
+
 -- creature sub-folder
 includeFile("items/creature/brackaset_plates.lua")
 includeFile("items/creature/brackaset_plating_segment.lua")

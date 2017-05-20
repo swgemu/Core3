@@ -7,7 +7,7 @@ crowleyTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "
 
 crowleyCompensation = { { compType = "faction", faction = "rebel", amount = 100 } }
 
-crowley = { planetName = "corellia", npcTemplate = "corvette_crowley_rebel_destroy", x = -3404.73, z = 86, y = 3092.64, direction = 323, cellID = 0, position = STAND }
+crowley = { planetName = "corellia", npcTemplate = "corvette_rebel_crowley", x = -3404.73, z = 86, y = 3092.64, direction = 323, cellID = 0, position = STAND }
 
 ticketGiverCrowley = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

@@ -7,7 +7,7 @@ bruceTicketInfo = { depPlanet = "tatooine", faction = "neutral", missionType = "
 
 bruceCompensation = { { compType = "credits", amount = 487 } }
 
-bruce_mcbrain = { planetName = "tatooine", npcTemplate = "corvette_bruce_neutral_destroy", x = 7.71, z = 0.2, y = 130.29, direction = 292, cellID = 1177466, position = STAND }
+bruce_mcbrain = { planetName = "tatooine", npcTemplate = "corvette_neutral_bruce", x = 7.71, z = 0.2, y = 130.29, direction = 292, cellID = 1177466, position = STAND }
 
 ticketGiverBruce = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,

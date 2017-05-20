@@ -7,7 +7,7 @@ bronellTicketInfo = { depPlanet = "tatooine", faction = "neutral", missionType =
 
 bronellCompensation = { { compType = "credits", amount = 500 } }
 
-bronell = { planetName = "tatooine", npcTemplate = "corvette_bronell_neutral_assassin", x = -6.7, z = 5.8, y = 97.9, direction = 180, cellID = 1177469, position = STAND }
+bronell = { planetName = "tatooine", npcTemplate = "corvette_neutral_bronell", x = -6.7, z = 5.8, y = 97.9, direction = 180, cellID = 1177469, position = STAND }
 
 ticketGiverBronell = CorvetteTicketGiverLogic:new {
 	numberOfActs = 1,
