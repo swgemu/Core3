@@ -1,8 +1,8 @@
-corvette_pashna_rebel_assassin = Creature:new {
-	objectName = "@npc_name:moncal_base_male",
-	customName = "Pashna Starkiller",
-	socialGroup = "rebel",
-	faction = "rebel",
+dr_bledsoe = Creature:new {
+	objectName = "",
+	customName = "Dr Bledsoe (an Imperial scientist)",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,12 +26,12 @@ corvette_pashna_rebel_assassin = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvettePashnaConvoTemplate",
+	conversationTemplate = "corvetteBledsoeConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corvette_pashna_rebel_assassin, "corvette_pashna_rebel_assassin")
+CreatureTemplates:addCreatureTemplate(dr_bledsoe, "dr_bledsoe")

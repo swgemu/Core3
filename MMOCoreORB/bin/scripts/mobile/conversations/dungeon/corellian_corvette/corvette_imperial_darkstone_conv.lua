@@ -1,7 +1,7 @@
-corvetteColonelConvoTemplate = ConvoTemplate:new {
+corvetteDarkstoneConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "ticketGiverColonelConvoHandler",
+	luaClassHandler = "ticketGiverDarkstoneConvoHandler",
 	screens = {}
 }
 
@@ -11,7 +11,7 @@ no_business = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(no_business);
+corvetteDarkstoneConvoTemplate:addScreen(no_business);
 
 no_faction = ConvoScreen:new {
 	id = "no_faction",
@@ -19,7 +19,7 @@ no_faction = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(no_faction);
+corvetteDarkstoneConvoTemplate:addScreen(no_faction);
 
 already_busy = ConvoScreen:new {
 	id = "already_busy",
@@ -27,7 +27,7 @@ already_busy = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(already_busy);
+corvetteDarkstoneConvoTemplate:addScreen(already_busy);
 
 convo_start = ConvoScreen:new {
 	id = "convo_start",
@@ -38,7 +38,7 @@ convo_start = ConvoScreen:new {
 		{"@conversation/corvette_colonel_imperial1:s_5200ce80","convo_exit"},--I'm not interested. Good-bye.
 	}
 }
-corvetteColonelConvoTemplate:addScreen(convo_start);
+corvetteDarkstoneConvoTemplate:addScreen(convo_start);
 
 convo_start_1 = ConvoScreen:new {
 	id = "convo_start_1",
@@ -49,7 +49,7 @@ convo_start_1 = ConvoScreen:new {
 		{"@conversation/corvette_colonel_imperial1:s_157ef5eb","convo_exit"} --I... don't like this at all. I'll have to pass.
 	}
 }
-corvetteColonelConvoTemplate:addScreen(convo_start_1);
+corvetteDarkstoneConvoTemplate:addScreen(convo_start_1);
 
 convo_exit = ConvoScreen:new {
 	id = "convo_exit",
@@ -57,7 +57,7 @@ convo_exit = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(convo_exit);
+corvetteDarkstoneConvoTemplate:addScreen(convo_exit);
 
 quest_start = ConvoScreen:new {
 	id = "quest_start",
@@ -65,7 +65,7 @@ quest_start = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(quest_start);
+corvetteDarkstoneConvoTemplate:addScreen(quest_start);
 
 which_planet = ConvoScreen:new {
 	id = "which_planet",
@@ -73,7 +73,7 @@ which_planet = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(which_planet);
+corvetteDarkstoneConvoTemplate:addScreen(which_planet);
 
 first_location = ConvoScreen:new {
 	id = "first_location",
@@ -81,7 +81,7 @@ first_location = ConvoScreen:new {
 	stopConversation = "false",
 	options = { }
 }
-corvetteColonelConvoTemplate:addScreen(first_location);
+corvetteDarkstoneConvoTemplate:addScreen(first_location);
 
 second_location = ConvoScreen:new {
 	id = "second_location",
@@ -89,7 +89,7 @@ second_location = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(second_location);
+corvetteDarkstoneConvoTemplate:addScreen(second_location);
 
 third_location = ConvoScreen:new {
 	id = "third_location",
@@ -97,7 +97,7 @@ third_location = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(third_location);
+corvetteDarkstoneConvoTemplate:addScreen(third_location);
 
 go_get_intel = ConvoScreen:new {
 	id = "go_get_intel",
@@ -105,7 +105,7 @@ go_get_intel = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(go_get_intel);
+corvetteDarkstoneConvoTemplate:addScreen(go_get_intel);
 
 hear_locations_quit = ConvoScreen:new {
 	id = "hear_locations_quit",
@@ -113,7 +113,7 @@ hear_locations_quit = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(hear_locations_quit);
+corvetteDarkstoneConvoTemplate:addScreen(hear_locations_quit);
 
 back_already = ConvoScreen:new {
 	id = "back_already",
@@ -121,7 +121,7 @@ back_already = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(back_already);
+corvetteDarkstoneConvoTemplate:addScreen(back_already);
 
 back_already_reset = ConvoScreen:new {
 	id = "back_already_reset",
@@ -129,7 +129,7 @@ back_already_reset = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(back_already_reset);
+corvetteDarkstoneConvoTemplate:addScreen(back_already_reset);
 
 has_intel = ConvoScreen:new {
 	id = "has_intel",
@@ -137,7 +137,7 @@ has_intel = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(has_intel);
+corvetteDarkstoneConvoTemplate:addScreen(has_intel);
 
 bad_intel_1 = ConvoScreen:new {
 	id = "bad_intel_1",
@@ -145,7 +145,7 @@ bad_intel_1 = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(bad_intel_1);
+corvetteDarkstoneConvoTemplate:addScreen(bad_intel_1);
 
 bad_intel_2 = ConvoScreen:new {
 	id = "bad_intel_2",
@@ -153,7 +153,7 @@ bad_intel_2 = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(bad_intel_2);
+corvetteDarkstoneConvoTemplate:addScreen(bad_intel_2);
 
 check_other_places = ConvoScreen:new {
 	id = "check_other_places",
@@ -162,7 +162,7 @@ check_other_places = ConvoScreen:new {
 	options = {}
 }
 
-corvetteColonelConvoTemplate:addScreen(check_other_places);
+corvetteDarkstoneConvoTemplate:addScreen(check_other_places);
 
 other_documents = ConvoScreen:new {
 	id = "other_documents",
@@ -170,7 +170,7 @@ other_documents = ConvoScreen:new {
 	stopConversation = "false",
 	options = { }
 }
-corvetteColonelConvoTemplate:addScreen(other_documents);
+corvetteDarkstoneConvoTemplate:addScreen(other_documents);
 
 good_intel = ConvoScreen:new {
 	id = "good_intel",
@@ -178,7 +178,7 @@ good_intel = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(good_intel);
+corvetteDarkstoneConvoTemplate:addScreen(good_intel);
 
 go_to_corvette = ConvoScreen:new {
 	id = "go_to_corvette",
@@ -186,7 +186,7 @@ go_to_corvette = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(go_to_corvette);
+corvetteDarkstoneConvoTemplate:addScreen(go_to_corvette);
 
 still_here = ConvoScreen:new {
 	id = "still_here",
@@ -194,7 +194,7 @@ still_here = ConvoScreen:new {
 	stopConversation = "false",
 	options = {	}
 }
-corvetteColonelConvoTemplate:addScreen(still_here);
+corvetteDarkstoneConvoTemplate:addScreen(still_here);
 
 still_here_decline = ConvoScreen:new {
 	id = "still_here_decline",
@@ -205,7 +205,7 @@ still_here_decline = ConvoScreen:new {
 		{"@conversation/corvette_colonel_imperial1:s_7a2a05c4","changed_mind"},--In that case, I'll continue.
 	}
 }
-corvetteColonelConvoTemplate:addScreen(still_here_decline);
+corvetteDarkstoneConvoTemplate:addScreen(still_here_decline);
 
 decline_quest_reset = ConvoScreen:new {
 	id = "decline_quest_reset",
@@ -213,7 +213,7 @@ decline_quest_reset = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(decline_quest_reset);
+corvetteDarkstoneConvoTemplate:addScreen(decline_quest_reset);
 
 changed_mind = ConvoScreen:new {
 	id = "changed_mind",
@@ -221,7 +221,7 @@ changed_mind = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(changed_mind);
+corvetteDarkstoneConvoTemplate:addScreen(changed_mind);
 
 launch_location = ConvoScreen:new {
 	id = "launch_location",
@@ -229,7 +229,7 @@ launch_location = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(launch_location);
+corvetteDarkstoneConvoTemplate:addScreen(launch_location);
 
 reward = ConvoScreen:new {
 	id = "reward",
@@ -240,7 +240,7 @@ reward = ConvoScreen:new {
 		{"@conversation/corvette_colonel_imperial1:s_a38773c1","reward_notyet"} --I'm not sure. Maybe I'll come back later.
 	}
 }
-corvetteColonelConvoTemplate:addScreen(reward);
+corvetteDarkstoneConvoTemplate:addScreen(reward);
 
 reward_notyet = ConvoScreen:new {
 	id = "reward_notyet",
@@ -248,7 +248,7 @@ reward_notyet = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(reward_notyet);
+corvetteDarkstoneConvoTemplate:addScreen(reward_notyet);
 
 give_reward = ConvoScreen:new {
 	id = "give_reward",
@@ -256,7 +256,7 @@ give_reward = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(give_reward);
+corvetteDarkstoneConvoTemplate:addScreen(give_reward);
 
 cant_give_reward = ConvoScreen:new {
 	id = "cant_give_reward",
@@ -264,7 +264,7 @@ cant_give_reward = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteColonelConvoTemplate:addScreen(cant_give_reward);
+corvetteDarkstoneConvoTemplate:addScreen(cant_give_reward);
 
-addConversationTemplate("corvetteColonelConvoTemplate", corvetteColonelConvoTemplate);
+addConversationTemplate("corvetteDarkstoneConvoTemplate", corvetteDarkstoneConvoTemplate);
 

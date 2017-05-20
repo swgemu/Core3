@@ -1,7 +1,8 @@
-klaatu = Creature:new {
-	objectName = "@mob/creature_names:klaatu",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+corvette_neutral_yondalla = Creature:new {
+	objectName = "",
+	customName = "Yondalla",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -10,7 +11,7 @@ klaatu = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {15,15,15,15,15,15,15,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,12 +26,12 @@ klaatu = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/klaatu.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteKlaatuConvoTemplate",
-	outfit = "klaatu_outfit",
-	attacks = {}
+	conversationTemplate = "corvetteYondallaConvoTemplate",
+	attacks = {
+	}
 }
 
-CreatureTemplates:addCreatureTemplate(klaatu, "klaatu")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_yondalla, "corvette_neutral_yondalla")

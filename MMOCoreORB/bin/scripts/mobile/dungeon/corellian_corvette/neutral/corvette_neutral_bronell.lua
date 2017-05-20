@@ -1,8 +1,8 @@
-dr_bledsoe = Creature:new {
+corvette_neutral_bronell = Creature:new {
 	objectName = "",
-	customName = "Dr. Bledsoe",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	customName = "Bronell",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,14 @@ dr_bledsoe = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "corvetteBronellConvoTemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(dr_bledsoe, "dr_bledsoe")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_bronell, "corvette_neutral_bronell")
