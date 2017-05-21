@@ -69,7 +69,7 @@ function CorvetteTicketTakerLogic:validateTicket(pPlayer)
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
 
-	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer, "")
+	createEvent(5 * 1000, "CorvetteTicketTakerLogic", "finishValidateTicket", pPlayer, "")
 end
 
 function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
@@ -102,12 +102,12 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 
 	--TODO add validation of group
 
-	local ret = CorellianCorvetteScreenPlay:activate(pPlayer, self:getFactionString(), activeQuestType)
+	local result = CorellianCorvette:activate(pPlayer, self:getFactionString(), activeQuestType)
 
-	--if ret == 1 then --TODO destroy ticket
-	--ticket:destroyObjectFromWorld()
-	--ticket:destroyObjectFromDatabase()
-	--end
+	if (result) then
+		--SceneObject(pInvItem):destroyObjectFromWorld()
+		--SceneObject(pInvItem):destroyObjectFromDatabase()
+	end
 end
 
 function CorvetteTicketTakerLogic:getFactionString()

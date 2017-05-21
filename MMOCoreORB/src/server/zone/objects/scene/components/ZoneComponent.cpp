@@ -365,7 +365,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (newParent != NULL)
 		sceneObject->sendMessage(new GameSceneChangedMessage());
 
-	if (newPositionZ == 0) {
+	if (newPositionZ == 0 && newParent != NULL) {
 		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
 	}
 
