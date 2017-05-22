@@ -134,6 +134,8 @@ public:
 	 */
 	VisibilityManager();
 
+	float getTerminalVisThreshold();
+
 	/**
 	 * Load lua configuration for visibility variables
 	 */
