@@ -157,12 +157,6 @@ void ContainerObjectsMap::unloadObjects() {
 
 	locker.release();
 
-	auto player = parent->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
-
-	if (player != NULL && player->isPlayerCreature() && player->getSlottedObject("datapad") == parent && player->getPlayerObject()->hasGodMode()) {
-		player->sendSystemMessage("Your datapad has unloaded from RAM.");
-	}
-
 	if (!parent->isCellObject())
 		return;
 
