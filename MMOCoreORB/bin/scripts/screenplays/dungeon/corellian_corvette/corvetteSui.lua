@@ -1,7 +1,7 @@
 CorvetteSui = ScreenPlay:new {}
 
 function CorvetteSui:sendEngineSui(pPlayer, pSceneObject)
-	local sui = SuiMessageBox.new("CorvetteSui", "hyperdriveSuiCallback")
+	local sui = SuiMessageBox.new("CorvetteSui", "engineSuiCallback")
 	sui.setTitle("@dungeon/corvette:engine_title") -- ENGINE SETTINGS
 	sui.setPrompt("@dungeon/corvette:engine_settings") -- Select Engine settings for the Corvette: Exiting without making a selection will force the engine to its default setting.
 	sui.setTargetNetworkId(SceneObject(pSceneObject):getObjectID())
@@ -89,8 +89,7 @@ function CorvetteSui:engineSuiCallback(pPlayer, pSui, eventIndex, ...)
 		writeData(corvetteID .. ":engineSetting", valueC)
 	end
 
-	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:fuel_is") -- You have set the engine to
-	CreatureObject(pPlayer):sendSystemMessage(tostring(pickedValue) .. "%")
+	CreatureObject(pPlayer):sendSystemMessage("You have set the engine to " .. tostring(pickedValue) .. "%") -- You have set the engine to
 
 	if (revertPressed ~= nil or cancelPressed) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:engine_result") -- The engine appears to be running normally.
@@ -107,8 +106,7 @@ function CorvetteSui:engineSuiCallback(pPlayer, pSui, eventIndex, ...)
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:blew_up") -- You have successfully managed to destroy the engines! Your mission is complete.
 	writeData(corvetteID .. ":engineDestroyed", 1)
-
-	-- TODO: Trigger "win" for all players
+	CorellianCorvette:handleQuestSuccess(pCorvette)
 end
 
 function CorvetteSui:sendFuelSui(pPlayer, pSceneObject)
@@ -172,14 +170,12 @@ function CorvetteSui:fuelSuiCallback(pPlayer, pSui, eventIndex, ...)
 
 	writeData(corvetteID .. ":fuelSetting", fuelSetting)
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:fuel_" .. fuelSetting)
-	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:hyperdrive_is") -- Hyperdrive is at
-	CreatureObject(pPlayer):sendSystemMessage(hyperdriveSetting)
+	CreatureObject(pPlayer):sendSystemMessage("Hyperdrive is at " .. hyperdriveSetting)
 
 	if (engineSetting == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:engine_result") -- The engine appears to be running normally.
 	else
-		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:engine_is") -- Engine is at
-		CreatureObject(pPlayer):sendSystemMessage(engineSetting)
+		CreatureObject(pPlayer):sendSystemMessage("Engine is at " .. engineSetting)
 	end
 
 	if (fuelSetting > hyperdriveSetting) then
@@ -248,14 +244,12 @@ function CorvetteSui:hyperdriveSuiCallback(pPlayer, pSui, eventIndex, ...)
 
 	writeData(corvetteID .. ":hyperdriveSetting", powerSetting)
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:hypr_" .. powerSetting)
-	CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:fuel_is") -- Fuel is at
-	CreatureObject(pPlayer):sendSystemMessage(fuelSetting)
+	CreatureObject(pPlayer):sendSystemMessage("Fuel is at " .. fuelSetting)
 
 	if (engineSetting == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:engine_result") -- The engine appears to be running normally.
 	else
-		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:engine_is") -- Engine is at
-		CreatureObject(pPlayer):sendSystemMessage(engineSetting)
+		CreatureObject(pPlayer):sendSystemMessage("Engine is at " .. engineSetting)
 	end
 
 	if (fuelSetting > powerSetting) then

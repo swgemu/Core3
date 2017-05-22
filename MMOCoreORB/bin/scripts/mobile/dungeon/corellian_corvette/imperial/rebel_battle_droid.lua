@@ -2,15 +2,15 @@ rebel_battle_droid = Creature:new {
 	objectName = "@mob/creature_names:rebel_battle_droid",
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 100,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 9429,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	level = 134,
+	chanceHit = 5.5,
+	damageMin = 795,
+	damageMax = 1300,
+	baseXp = 12612,
+	baseHAM = 56000,
+	baseHAMmax = 68000,
+	armor = 2,
+	resists = {75,75,100,60,100,25,40,85,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -20,15 +20,18 @@ rebel_battle_droid = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	scale = 1.15,
 
-	templates = {"object/mobile/battle_droid.iff"},
-	lootGroups = {},
+	templates = {
+		"object/mobile/battle_droid.iff"
+	},
+	lootGroups = {
+	},
 	weapons = {"battle_droid_weapons"},
-	conversationTemplate = "",
 	attacks = merge(pistoleermaster,carbineermaster,marksmanmaster)
 }
 

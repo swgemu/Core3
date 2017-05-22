@@ -173,8 +173,93 @@ function CorellianCorvette:setupSceneObjects(pCorvette)
 					end
 				end
 			end
+		else
+			printLuaError("Unable to grab cell object for cell named " .. spawnData[5] .. " when trying to spawn object " .. spawnData[1] .. ".")
 		end
 	end
+end
+
+function CorellianCorvette:spawnNpcs(pCorvette)
+	if (pCorvette == nil) then
+		return
+	end
+
+	local corvetteID = SceneObject(pCorvette):getObjectID()
+	local corvetteFaction = self:getBuildingFaction(pCorvette)
+
+	if (readData("corvetteActive:" .. corvetteID) ~= 1) then
+		return
+	end
+
+	local spawnTable = corvetteNeutralSpawns
+
+	if (corvetteFaction == "imperial") then
+		spawnTable = corvetteImperialSpawns
+	elseif (corvetteFaction == "rebel") then
+		spawnTable = corvetteRebelSpawns
+	end
+
+	for i = 1, #spawnTable, 1 do
+		local spawnData = spawnTable[i]
+		local pCell = BuildingObject(pCorvette):getNamedCell(spawnData[6])
+
+		if (pCell ~= nil) then
+			local cellID = SceneObject(pCell):getObjectID()
+			local pMobile = spawnMobile("dungeon1", spawnData[1], 0, spawnData[2], spawnData[3], spawnData[4], spawnData[5], cellID)
+
+			if (pMobile == nil) then
+				printLuaError("CorellianCorvette:setupSceneObjects unable to spawn mobile " .. spawnData[1] .. " for " .. corvetteFaction .. " corvette ID " .. corvetteID)
+			else
+				if (spawnData[7] ~= nil and spawnData[7] ~= "") then
+					createEvent(100, "CorellianCorvette", spawnData[7], pMobile, "")
+				end
+			end
+		else
+			printLuaError("Unable to grab cell object for cell named " .. spawnData[6] .. " in corvette ID " .. corvetteID .. " when trying to spawn " .. spawnData[1])
+		end
+	end
+end
+
+function CorellianCorvette:setupAssassinationTarget(pTarget)
+	if (pTarget == nil) then
+		return
+	end
+
+	local pCorvette = self:getCorvetteObject(pTarget)
+
+	if (pCorvette == nil) then
+		return
+	end
+
+	local corvetteID = SceneObject(pCorvette):getObjectID()
+
+	if (readData("corvetteActive:" .. corvetteID) ~= 1) then
+		return
+	end
+
+	createObserver(OBJECTDESTRUCTION, "CorellianCorvette", "onAssassinationTargetKilled", pTarget)
+end
+
+function CorellianCorvette:onAssassinationTargetKilled(pTarget, pKiller)
+	if (pTarget == nil or pKiller == nil) then
+		return 1
+	end
+
+	local pCorvette = self:getCorvetteObject(pTarget)
+
+	if (pCorvette == nil) then
+		return 1
+	end
+
+	local questType = readStringData(SceneObject(pKiller):getObjectID() .. "questType")
+
+	if (questType ~= "assassinate") then
+		return 1
+	end
+
+	CorellianCorvette:handleQuestSuccess(pCorvette)
+
+	return 1
 end
 
 function CorellianCorvette:setupBrokenDroid(pDroid)
@@ -435,6 +520,7 @@ function CorellianCorvette:startQuest(pCorvette, questType)
 	createEvent(5 * 60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 
 	self:setupSceneObjects(pCorvette)
+	self:spawnNpcs(pCorvette)
 	self:lockRooms(pCorvette)
 	--TODO spawn quest mobs, and objectives
 end
@@ -535,6 +621,11 @@ function CorellianCorvette:handleQuestFailure(pCorvette)
 	--TODO reset ticket giver quest
 	self:ejectAllPlayers(pCorvette)
 	writeData("corvetteActive:" .. SceneObject(pCorvette):getObjectID(), 0)
+end
+
+function CorellianCorvette:handleQuestSuccess(pCorvette)
+	self:broadcastToPlayers(pCorvette, "@dungeon/corvette:escape_pods") -- You have completed your assignment! Make your way to the escape pods before time expires and get off this ship!
+	self:writeDataToGroup(pCorvette, ":corvetteMissionComplete", 1)
 end
 
 function CorellianCorvette:broadcastToPlayers(pCorvette, message)
