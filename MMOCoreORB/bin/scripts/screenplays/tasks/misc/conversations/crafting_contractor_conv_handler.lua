@@ -110,7 +110,7 @@ function craftingContractorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer
 
 		clonedConversation:addOption("@conversation/crafting_contractor:s_b2b95d1f", "come_back_for_work") -- No, I'd rather not do that job.
 	elseif (screenID == "accept_quest") then
-		deleteData(SceneObject(pPlayer) .. ":craftingContractor:lastJobOffer")
+		deleteData(SceneObject(pPlayer):getObjectID() .. ":craftingContractor:lastJobOffer")
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
@@ -127,7 +127,7 @@ function craftingContractorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer
 
 		CraftingContractor:setupCrate(pPlayer, pCrate)
 	elseif (screenID == "inv_full") then
-		deleteData(SceneObject(pPlayer) .. ":craftingContractor:lastJobOffer")
+		deleteData(SceneObject(pPlayer):getObjectID() .. ":craftingContractor:lastJobOffer")
 		CraftingContractor:resetVariables(pPlayer)
 	end
 
