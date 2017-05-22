@@ -1100,7 +1100,7 @@ end
 
 function CraftingContractor:canTakeQuest(pPlayer)
 	local lastOffer = readData(SceneObject(pPlayer):getObjectID() .. ":craftingContractor:lastJobOffer")
-	return lastOffer ~= 0 and os.difftime(os.time(), lastOffer) > 60
+	return lastOffer == 0 or os.difftime(os.time(), lastOffer) > 60
 end
 
 function CraftingContractor:pickRandomQuest(pPlayer)
