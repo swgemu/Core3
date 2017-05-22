@@ -106,7 +106,8 @@ public:
 	 * @param bountyHunterId the object id of the bounty hunter.
 	 */
 	void addBountyHunter(uint64 bountyHunterId) {
-		activeBountyHunters.add(bountyHunterId);
+		if(!activeBountyHunters.contains(bountyHunterId))
+			activeBountyHunters.add(bountyHunterId);
 	}
 
 	/**

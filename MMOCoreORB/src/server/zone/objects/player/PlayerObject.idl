@@ -223,9 +223,12 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected Time lastVisibilityUpdateTimestamp;
+	
+	@dereferenced
+	protected Time lastBhPvpCombatActionTimestamp;
 
 	@dereferenced
-	protected Time lastPvpCombatActionTimestamp;
+	protected Time lastGcwPvpCombatActionTimestamp;
 
 	@dereferenced
 	protected Reference<PvpTefRemovalTask> pvpTefTask;
@@ -340,7 +343,8 @@ class PlayerObject extends IntangibleObject {
 		visibility = 0;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 
-		lastPvpCombatActionTimestamp.updateToCurrentTime();
+		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
+		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 
 		lastDigestion.updateToCurrentTime();
 
@@ -1592,14 +1596,24 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@local
 	public native Time getLastVisibilityUpdateTimestamp();
+	
+	@dereferenced
+	@local
+	public native Time getLastBhPvpCombatActionTimestamp();
 
 	@dereferenced
 	@local
-	public native Time getLastPvpCombatActionTimestamp();
+	public native Time getLastGcwPvpCombatActionTimestamp();
+	
+	public native void updateLastPvpCombatActionTimestamp(boolean updateGcwAction, boolean updateBhAction);
 
-	public native void updateLastPvpCombatActionTimestamp();
+	public native void updateLastBhPvpCombatActionTimestamp();
+
+	public native void updateLastGcwPvpCombatActionTimestamp();
 
 	public native boolean hasPvpTef();
+	
+	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
 
 	public native void schedulePvpTefRemovalTask(boolean removeNow = false);
 

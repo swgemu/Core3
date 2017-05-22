@@ -119,10 +119,6 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 				clearVisibility(creature);
 			} else {
 				ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
-
-				if (ghost->getVisibility() < falloffThreshold) {
-					removePlayerFromBountyList(creature);
-				}
 			}
 		}
 	}
@@ -160,6 +156,10 @@ void VisibilityManager::login(CreatureObject* creature) {
 	}
 }
 
+float VisibilityManager::getTerminalVisThreshold() {
+	return terminalVisThreshold;
+}
+
 void VisibilityManager::logout(CreatureObject* creature) {
 	//info("Logging out " + creature->getFirstName(), true);
 	Locker locker(&visibilityListLock);
@@ -167,8 +167,6 @@ void VisibilityManager::logout(CreatureObject* creature) {
 	if (visibilityList.contains(creature->getObjectID())) {
 		//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from visibility list.", true);
 		visibilityList.drop(creature->getObjectID());
-
-		removePlayerFromBountyList(creature);
 	}
 }
 
