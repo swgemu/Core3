@@ -42,7 +42,7 @@ ticketGiverDarkstone = CorvetteTicketGiverLogic:new {
 
 registerScreenPlay("ticketGiverDarkstone", true)
 
-ticketGiverColonelConvoHandler = CorvetteTicketGiverConvoHandler:new {
+ticketGiverDarkstoneConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverDarkstone
 }
 
