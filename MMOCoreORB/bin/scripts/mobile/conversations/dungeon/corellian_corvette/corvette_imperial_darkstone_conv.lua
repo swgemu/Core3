@@ -5,14 +5,6 @@ corvetteDarkstoneConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_colonel_imperial1:s_979b7ad4", --It never ends... it never ends. I must admit, though, that I'll be relieved when my part in this is finally over. Coordinating the release of Imperial hostages has its challenges but also a high level of stress. After my retirement, I think I'll get a little place on Naboo near Kaadara. 
-	stopConversation = "true",
-	options = {}
-}
-corvetteDarkstoneConvoTemplate:addScreen(no_business);
-
 no_faction = ConvoScreen:new {
 	id = "no_faction",
 	leftDialog = "@conversation/corvette_colonel_imperial1:s_684f9e1", --I cannot help you, citizen. Please try elsewhere.
@@ -77,7 +69,7 @@ corvetteDarkstoneConvoTemplate:addScreen(which_planet);
 
 first_location = ConvoScreen:new {
 	id = "first_location",
-	leftDialog = "@conversation/corvette_colonel_imperial1:s_56fe6ddb",--The Woolamander Palace can be found on Yavin IV. I do not know the history of the place. We have received several reports that affiliates of the Alliance still operate from its ruins from time to time. It can be found in the central area of Yavin IV. I don't have anymore information. 
+	leftDialog = "@conversation/corvette_colonel_imperial1:s_56fe6ddb",--The Woolamander Palace can be found on Yavin IV. I do not know the history of the place. We have received several reports that affiliates of the Alliance still operate from its ruins from time to time. It can be found in the central area of Yavin IV. I don't have anymore information.
 	stopConversation = "false",
 	options = { }
 }

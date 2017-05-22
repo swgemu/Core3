@@ -5,14 +5,6 @@ corvetteVelsoConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_velso_imperial_destroy:s_59e77066", --I must find a way to impress my commanding officers. That'll be the quickest way to advance. Perhaps I can find a way to hamper Rebel efforts in this sector. That should be suitably impressive. 
-	stopConversation = "true",
-	options = {}
-}
-corvetteVelsoConvoTemplate:addScreen(no_business);
-
 no_faction = ConvoScreen:new {
 	id = "no_faction",
 	leftDialog = "@conversation/corvette_velso_imperial_destroy:s_cc45dddf", --I do not have time to chat, citizen. Please move along.
@@ -66,7 +58,7 @@ corvetteVelsoConvoTemplate:addScreen(which_planet);
 
 first_location = ConvoScreen:new {
 	id = "first_location",
-	leftDialog = "@conversation/corvette_velso_imperial_destroy:s_e5e44e1d",--The traitor Erran Sif is leading a small group of warriors on Talus. She betrayed the Empire in the past and is considered an enemy, so don't expect a friendly reception. I hear she's also no friend to the Rebel Alliance for whatever that's worth. Regardless, I believe she may have the codes for this corvette as she may have used it once herself. Infiltrate her base and report back with whatever you find. 
+	leftDialog = "@conversation/corvette_velso_imperial_destroy:s_e5e44e1d",--The traitor Erran Sif is leading a small group of warriors on Talus. She betrayed the Empire in the past and is considered an enemy, so don't expect a friendly reception. I hear she's also no friend to the Rebel Alliance for whatever that's worth. Regardless, I believe she may have the codes for this corvette as she may have used it once herself. Infiltrate her base and report back with whatever you find.
 	stopConversation = "false",
 	options = { }
 }

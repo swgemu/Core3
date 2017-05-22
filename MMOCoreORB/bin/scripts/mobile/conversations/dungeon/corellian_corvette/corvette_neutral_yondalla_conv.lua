@@ -1,21 +1,13 @@
 corvetteYondallaConvoTemplate = ConvoTemplate:new {
-  initialScreen = "",
-  templateType = "Lua",
-  luaClassHandler = "ticketGiverYondallaConvoHandler",
-  screens = {}
+	initialScreen = "",
+	templateType = "Lua",
+	luaClassHandler = "ticketGiverYondallaConvoHandler",
+	screens = {}
 }
-
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_14b16106", -- [She doesn't seem to notice you.] The fool had to go and land himself in the custody of the Corellian Security Force... this 
-	stopConversation = "true",
-	options = {}
-}
-corvetteYondallaConvoTemplate:addScreen(no_business);
 
 already_busy = ConvoScreen:new {
 	id = "already_busy",
-	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_310d2ff3", -- Something's come up. I can see that you're busy now, but come talk to me when you finish with that. I could use your help. 
+	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_310d2ff3", -- Something's come up. I can see that you're busy now, but come talk to me when you finish with that. I could use your help.
 	stopConversation = "true",
 	options = {}
 }
@@ -23,7 +15,7 @@ corvetteYondallaConvoTemplate:addScreen(already_busy);
 
 convo_start = ConvoScreen:new {
 	id = "convo_start",
-	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_f5664125", -- About time you got here. You're the ones Jabba sent, right? 
+	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_f5664125", -- About time you got here. You're the ones Jabba sent, right?
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_yondalla_neutral_rescue:s_dfb8d44e","quest_start"}, --  Well, no. But maybe I can help anyway.
@@ -34,7 +26,7 @@ corvetteYondallaConvoTemplate:addScreen(convo_start);
 
 quest_start = ConvoScreen:new {
 	id = "quest_start",
-	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_2bdf5b50",--Yeah okay. Normally I don't need help, but this may be a special case. One of Jabba's top assassins was captured. He's currently on a CorSec corvette and on his way to being traded to the Empire at the Imperial Prison on Dathomir in exchange for the release of an imprisoned CorSec officer. Jabba does not want him talking to Imperial officers. He could reveal too much. We must find the location of that corvette and intercept it. I have three leads on how to do that. 
+	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_2bdf5b50",--Yeah okay. Normally I don't need help, but this may be a special case. One of Jabba's top assassins was captured. He's currently on a CorSec corvette and on his way to being traded to the Empire at the Imperial Prison on Dathomir in exchange for the release of an imprisoned CorSec officer. Jabba does not want him talking to Imperial officers. He could reveal too much. We must find the location of that corvette and intercept it. I have three leads on how to do that.
 	stopConversation = "false",
 	options = {	}
 }

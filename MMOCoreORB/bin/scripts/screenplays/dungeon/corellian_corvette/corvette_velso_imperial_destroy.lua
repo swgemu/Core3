@@ -1,6 +1,4 @@
 velsoIntel =	{
-	containerIds = { 3795407, 4015461, 4465373 }, --2143 -5650 talus; 133 -5349 tatooine; 7196 -4089 dantooine
-
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/imperial_destroy_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_destroy_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_destroy_intel.iff" },
 }
 
@@ -11,7 +9,6 @@ velsoCompensation = { { compType = "faction", faction = "imperial",  amount = 10
 lt_velso = { planetName = "naboo", npcTemplate = "corvette_imperial_velso", x = 23.4, z = .2, y = -19.4, direction = 180, cellID = 1418874, position = STAND, mood = "npc_imperial"}
 
 ticketGiverVelso = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = lt_velso,
 	intelMap = velsoIntel,
 	ticketInfo = velsoTicketInfo,
@@ -49,6 +46,6 @@ ticketGiverVelsoConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverVelso
 }
 
-VelsoIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+VelsoIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverVelso
 }

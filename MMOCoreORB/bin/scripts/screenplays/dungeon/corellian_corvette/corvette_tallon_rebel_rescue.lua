@@ -1,5 +1,4 @@
 tallonIntel = {
-	containerIds = {4465363, 4105801, 4355510 }, -- -525 -3870 dantooine; 3658 2184 lok; -6354 749 dathomir 
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/rebel_rescue_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_rescue_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_rescue_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ tallonCompensation = { { compType = "faction", amount = 100 } }
 tallon = { planetName = "corellia", npcTemplate = "corvette_rebel_adar", x = -5448.03, z = 21, y = -2674.92, direction = 163, cellID = 0, position = STAND }
 
 ticketGivertallon = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = tallon,
 	intelMap = tallonIntel,
 	ticketInfo = tallonTicketInfo,
@@ -49,6 +47,6 @@ ticketGiverTallonConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGivertallon
 }
 
-tallonIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+tallonIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGivertallon
 }

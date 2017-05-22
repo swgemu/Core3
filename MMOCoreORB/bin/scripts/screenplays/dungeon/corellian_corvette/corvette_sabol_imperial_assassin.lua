@@ -1,5 +1,4 @@
 sabolIntel =	{
-	containerIds = { 4355520, 4305488, 4465395 }, --5694 1935 dathomir; -2659 3003 corellia; -6678 5557 dantooine 
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/imperial_assassin_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_assassin_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_assassin_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ sabolCompensation = { { compType = "faction", faction = "imperial", amount = 100
 lt_sabol = { planetName = "tatooine", npcTemplate = "corvette_imperial_sabol", x = -1291.67, z = 12, y = -3539, direction = 110, cellID = 0, position = STAND, mood = "npc_imperial" }
 
 ticketGiverSabol = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = lt_sabol,
 	intelMap = sabolIntel,
 	ticketInfo = sabolTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverSabolConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverSabol
 }
 
-sabolIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+sabolIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverSabol
 }

@@ -1,5 +1,4 @@
 crowleyIntel = {
-	containerIds = {4355509 ,4395565 ,4105791 }, -- -6308 754 dathomir; 5452 5025 rori;-1891 -3033 lok
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/rebel_destroy_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_destroy_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_destroy_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ crowleyCompensation = { { compType = "faction", faction = "rebel", amount = 100 
 crowley = { planetName = "corellia", npcTemplate = "corvette_rebel_crowley", x = -3404.73, z = 86, y = 3092.64, direction = 323, cellID = 0, position = STAND }
 
 ticketGiverCrowley = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = crowley,
 	intelMap = crowleyIntel,
 	ticketInfo = crowleyTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverCrowleyConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverCrowley
 }
 
-CrowleyIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+CrowleyIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverCrowley
 }

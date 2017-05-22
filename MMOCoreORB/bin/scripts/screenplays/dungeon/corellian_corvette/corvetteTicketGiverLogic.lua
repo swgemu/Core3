@@ -24,12 +24,11 @@ CorvetteTicketGiverLogic = ScreenPlay:new {
 	faction = 0,
 	compensation = {},
 	badgeNumber = 0,
-	menuComponent = "IntelSearchMenuComponent",
+	menuComponent = "CorvetteIntelSearchMenuComponent",
 }
 
 function CorvetteTicketGiverLogic:start()
 	self:spawnNpc()
-	self:setupComponents()
 end
 
 function CorvetteTicketGiverLogic:spawnNpc()
@@ -49,29 +48,29 @@ function CorvetteTicketGiverLogic:spawnNpc()
 	end
 end
 
-IntelSearchMenuComponent = Object:new {
+CorvetteIntelSearchMenuComponent = Object:new {
 	ticketGiver = nil
 }
 
-function IntelSearchMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	local player = CreatureObject(pPlayer)
-	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
-	local activeStep = getQuestStatus(player:getObjectID() .. ":activeCorvetteStep")
+function CorvetteIntelSearchMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local activeQuest = getQuestStatus(playerID .. ":activeCorvetteQuest")
+	local activeStep = getQuestStatus(playerID .. ":activeCorvetteStep")
 
-	if activeQuest == self.ticketGiver.giverName and activeStep == "1" then
+	if CorvetteTicketGiverLogic:isCorrectQuestContainer(pSceneObject, pPlayer, self.ticketGiver) and activeStep == "1" then
 		local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 
 		menuResponse:addRadialMenuItem(20, 3, "@bestine:search_item") -- Search
 	end
 end
 
-function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, selectedID)
+function CorvetteIntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, selectedID)
 	local player = CreatureObject(pPlayer)
 	local playerID = player:getObjectID()
 	local activeQuest = getQuestStatus(playerID .. ":activeCorvetteQuest")
 	local activeStep = getQuestStatus(playerID .. ":activeCorvetteStep")
 
-	if activeQuest == self.ticketGiver.giverName and activeStep == "1" and selectedID == 20 then
+	if CorvetteTicketGiverLogic:isCorrectQuestContainer(pContainer, pPlayer, self.ticketGiver) and activeStep == "1" and selectedID == 20 then
 		local intelNumber = self.ticketGiver:getContainersIntelNumber(pPlayer, pContainer)
 
 		if intelNumber == 0 then
@@ -115,15 +114,30 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 	return 0
 end
 
-function CorvetteTicketGiverLogic:setupComponents()
-	local containers = self.intelMap.containerIds
+function CorvetteTicketGiverLogic:isCorrectQuestContainer(pContainer, pPlayer, ticketGiver)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local templatePath = SceneObject(pContainer):getTemplateObjectPath()
+	local questType = getQuestStatus(playerID .. ":activeCorvetteQuestType")
 
-	for i = 1, # containers do
-		local pContainer = getSceneObject(containers[i])
-		if pContainer ~= nil then
-			SceneObject(pContainer):setObjectMenuComponent(self.menuComponent)
-		end
+	local faction = "neutral"
+	if string.find(templatePath, "imperial") ~= nil then
+		faction = "imperial"
+	elseif string.find(templatePath, "rebel") ~= nil then
+		faction = "rebel"
 	end
+
+	if (ticketGiver.ticketInfo.faction ~= faction) then
+		return false
+	end
+
+	local type = "destroy"
+	if string.find(templatePath, "assassin") ~= nil then
+		type = "assassin"
+	elseif string.find(templatePath, "rescue") ~= nil then
+		type = "rescue"
+	end
+
+	return type == questType
 end
 
 function CorvetteTicketGiverLogic:getContainersIntelNumber(pPlayer, pContainer)
@@ -133,17 +147,10 @@ function CorvetteTicketGiverLogic:getContainersIntelNumber(pPlayer, pContainer)
 		return 0
 	end
 
-	local containers = self.intelMap.containerIds
-	local containerNumber = 0
-	local containerID = SceneObject(pContainer):getObjectID()
+	local templatePath = SceneObject(pContainer):getTemplateObjectPath()
+	local containerNumber = tonumber(string.sub(templatePath, -5, -5))
 
-	for i = 1, # containers do
-		if containers[i] == containerID then
-			containerNumber = i
-		end
-	end
-
-	if containerNumber == 0 then
+	if containerNumber == nil or containerNumber == 0 then
 		return 0
 	end
 
@@ -253,7 +260,6 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 		ticket:setArrivalPlanet(self.ticketInfo.missionType)
 		ticket:setArrivalPoint(self.ticketInfo.faction)
 		SceneObject(pItem):sendTo(pPlayer)
-		setQuestStatus(player:getObjectID() .. ":activeCorvetteQuestType", self.ticketInfo.missionType)
 	end
 end
 

@@ -5,14 +5,6 @@ corvettePashnaConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_pashna_rebel1:s_ed0270a5", --That Imperial Commander must be stopped, but I'm not yet convinced that killing him is the only option. He's violent and ruthless and definitely a major threat, but assassinating him seems to lower us to his level. But perhaps I'm being naive... 
-	stopConversation = "true",
-	options = {}
-}
-corvettePashnaConvoTemplate:addScreen(no_business);
-
 no_faction = ConvoScreen:new {
 	id = "no_faction",
 	leftDialog = "@conversation/corvette_pashna_rebel1:s_dbef483d", --I have some serious... and unfortunate... business for the Rebellion that demands my attention. Forgive me, but I can't speak with you right now.
@@ -104,7 +96,7 @@ corvettePashnaConvoTemplate:addScreen(which_planet);
 
 first_location = ConvoScreen:new {
 	id = "first_location",
-	leftDialog = "@conversation/corvette_pashna_rebel1:s_e92b0e11",--An Imperial force led by this Imperial commander was sent to Fort Tusken not long ago. Before he received his current rank, actually. We don't know why his force was there, though we speculate that they intended to research the Sand People living there. Or maybe attempt to broker some sort of deal with them. We do know it went badly and much of the Imperial force was obliterated by the Tusken Raiders. Seek out anything that might have been left behind during their retreat. 
+	leftDialog = "@conversation/corvette_pashna_rebel1:s_e92b0e11",--An Imperial force led by this Imperial commander was sent to Fort Tusken not long ago. Before he received his current rank, actually. We don't know why his force was there, though we speculate that they intended to research the Sand People living there. Or maybe attempt to broker some sort of deal with them. We do know it went badly and much of the Imperial force was obliterated by the Tusken Raiders. Seek out anything that might have been left behind during their retreat.
 	stopConversation = "false",
 	options = {}
 }
@@ -140,7 +132,7 @@ hear_locations_quit = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteCrowleyConvoTemplate:addScreen(hear_locations_quit);
+corvettePashnaConvoTemplate:addScreen(hear_locations_quit);
 
 back_already = ConvoScreen:new {
 	id = "back_already",
@@ -236,7 +228,7 @@ corvettePashnaConvoTemplate:addScreen(still_here_decline);
 
 decline_quest_reset = ConvoScreen:new {
 	id = "decline_quest_reset",
-	leftDialog = "@conversation/corvette_pashna_rebel1:s_2be3fa16", --I am distressed. I hope to find a replacement. 
+	leftDialog = "@conversation/corvette_pashna_rebel1:s_2be3fa16", --I am distressed. I hope to find a replacement.
 	stopConversation = "true",
 	options = {}
 }
