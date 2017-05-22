@@ -5,14 +5,6 @@ corvetteCrowleyConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_crowley_rebel1:s_71f656a9", -- He's still missing. We have no word at all since losing communication with him. The Empire's behind this... I just know it. One of our best pilots too.
-	stopConversation = "true",
-	options = {}
-}
-corvetteCrowleyConvoTemplate:addScreen(no_business);
-
 no_faction = ConvoScreen:new {
 	id = "no_faction",
 	leftDialog = "@conversation/corvette_crowley_rebel1:s_c55f8e77", --I've much to do... I'm afraid I don't have time to spare unless it involves urgent Rebel business.
@@ -42,7 +34,7 @@ corvetteCrowleyConvoTemplate:addScreen(convo_start);
 
 quest_start = ConvoScreen:new {
 	id = "quest_start",
-		leftDialog = "@conversation/corvette_crowley_rebel1:s_e77661bc",--Hmm... Indeed. You seem capable enough to help us in this endeavor. We must find the location of that Corellian corvette. We believe it to be somewhere in deep space and thus harder to find and safer in case anything goes wrong. Based on intel gathered, I know of three places you should look. Those being  the Imperial Base on Lok, the Rogue CorSec base on Corellia, and the Imperial prison on Dathomir.
+	leftDialog = "@conversation/corvette_crowley_rebel1:s_e77661bc",--Hmm... Indeed. You seem capable enough to help us in this endeavor. We must find the location of that Corellian corvette. We believe it to be somewhere in deep space and thus harder to find and safer in case anything goes wrong. Based on intel gathered, I know of three places you should look. Those being  the Imperial Base on Lok, the Rogue CorSec base on Corellia, and the Imperial prison on Dathomir.
 	stopConversation = "false",
 	options = {	}
 }

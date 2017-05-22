@@ -1,5 +1,4 @@
 bronellIntel =	{
-	containerIds = { 3795397, 3915469, 4105781 }, -- 5569 -4067 talus;-1517 -1719 naboo;-3893 -3801 lok
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ bronellCompensation = { { compType = "credits", amount = 500 } }
 bronell = { planetName = "tatooine", npcTemplate = "corvette_neutral_bronell", x = -6.7, z = 5.8, y = 97.9, direction = 180, cellID = 1177469, position = STAND }
 
 ticketGiverBronell = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = bronell,
 	intelMap = bronellIntel,
 	ticketInfo = bronellTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverBronellConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverBronell
 }
 
-BronellIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+BronellIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverBronell
 }

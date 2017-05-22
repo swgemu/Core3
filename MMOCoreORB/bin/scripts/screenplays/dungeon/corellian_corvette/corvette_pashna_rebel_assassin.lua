@@ -1,5 +1,4 @@
 pashnaIntel = {
-	containerIds = { 4245460, 4015451, 4465384 }, -- -6332 -476 yavin4; -3978 6260 tatooine; -7064 -3326 dantooine
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ pashnaCompensation = { { compType = "faction", faction = "rebel", amount = 100 }
 pashna = { planetName = "corellia", npcTemplate = "corvette_rebel_pashna", x = 6772.57, z = 315, y = -5697.8, direction = 245, cellID = 0, position = STAND }
 
 ticketGiverPashna = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = pashna,
 	intelMap = pashnaIntel,
 	ticketInfo = pashnaTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverPashnaConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverPashna
 }
 
-PashnaIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+PashnaIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverPashna
 }

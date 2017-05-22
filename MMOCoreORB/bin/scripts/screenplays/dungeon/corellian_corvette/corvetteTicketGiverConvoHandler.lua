@@ -16,6 +16,8 @@ function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConvoTemplate, pPlay
 
 	if (screenID == "go_get_intel") then
 		setQuestStatus(playerID .. ":activeCorvetteQuest", self.ticketGiver.giverName)
+		setQuestStatus(playerID .. ":activeCorvetteQuestType", self.ticketGiver.ticketInfo.missionType)
+		setQuestStatus(playerID .. ":activeCorvetteQuestFaction", self.ticketGiver.ticketInfo.faction)
 		setQuestStatus(playerID .. ":activeCorvetteStep", "1")
 		self.ticketGiver:randomizeIntelLocs(pPlayer)
 	elseif (screenID == "back_already") then
@@ -28,6 +30,7 @@ function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConvoTemplate, pPlay
 		removeQuestStatus(playerID .. ":corvetteIntelAcquired")
 		removeQuestStatus(playerID .. ":corvetteIntelLocs")
 		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
+		removeQuestStatus(playerID .. ":activeCorvetteQuestFaction")
 		removeQuestStatus(playerID .. ":heardLocation1")
 		removeQuestStatus(playerID .. ":heardLocation2")
 		removeQuestStatus(playerID .. ":heardLocation3")
@@ -86,8 +89,6 @@ function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConvoT
 
 	if (self.ticketGiver.faction ~= 0 and not ThemeParkLogic:isInFaction(self.ticketGiver.faction, pPlayer)) then
 		return convoTemplate:getScreen("no_faction")
-	elseif (not ThemeParkLogic:hasEliteCombatProfession(pPlayer)) then
-		return convoTemplate:getScreen("no_business")
 	elseif (activeQuest ~= nil and activeQuest ~= self.ticketGiver.giverName) then
 		return convoTemplate:getScreen("already_busy")
 	elseif (activeQuest == nil) then

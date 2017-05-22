@@ -5,14 +5,6 @@ corvetteBruceConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_33849d1f", -- Oy, who'd a known that slimeball could run so fast... maybe Jabba can give me some big work and I'll make me money back. Hey, go away... can't you see I've got me own worries.
-	stopConversation = "true",
-	options = {}
-}
-corvetteBruceConvoTemplate:addScreen(no_business);
-
 already_busy = ConvoScreen:new {
 	id = "already_busy",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_1ffa4e4b", -- Hmmm... I could use yer help, but I can see that ye are already busy. Come back when ye have finished yer current task and maybe we can do business.

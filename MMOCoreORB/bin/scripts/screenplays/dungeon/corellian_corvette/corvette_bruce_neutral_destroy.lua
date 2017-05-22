@@ -1,5 +1,4 @@
 bruceIntel =	{
-	containerIds = {3815388, 4305432,4355495 }, -- 2910 1098 naboo; 5231 1593 corellia; 2475 -1540 dathomir
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/neutral_destroy_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_destroy_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_destroy_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ bruceCompensation = { { compType = "credits", amount = 487 } }
 bruce_mcbrain = { planetName = "tatooine", npcTemplate = "corvette_neutral_bruce", x = 7.71, z = 0.2, y = 130.29, direction = 292, cellID = 1177466, position = STAND }
 
 ticketGiverBruce = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = bruce_mcbrain,
 	intelMap = bruceIntel,
 	ticketInfo = bruceTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverBruceConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverBruce
 }
 
-BruceIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+BruceIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverBruce
 }

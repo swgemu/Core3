@@ -1,5 +1,4 @@
 darkstoneIntel =	{
-	containerIds = { 4105811, 4245471,4305433}, -- 3205 -4873 lok; 580 -695 yavin4; 5229 1592 corellia
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/imperial_rescue_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_rescue_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/imperial_rescue_intel.iff" },
 }
 
@@ -10,7 +9,6 @@ darkstoneCompensation = { { compType = "faction", faction = "imperial",  amount 
 darkstone = { planetName = "tatooine", npcTemplate = "corvette_imperial_darkstone", x = -5313 , z = 8.4, y = 2662, direction = -175, cellID = 0, position = STAND, mood = "npc_imperial"}
 
 ticketGiverDarkstone = CorvetteTicketGiverLogic:new {
-	numberOfActs = 1,
 	npc = darkstone,
 	intelMap = darkstoneIntel,
 	ticketInfo = darkstoneTicketInfo,
@@ -48,6 +46,6 @@ ticketGiverColonelConvoHandler = CorvetteTicketGiverConvoHandler:new {
 	ticketGiver = ticketGiverDarkstone
 }
 
-DarkstoneIntelSearchMenuComponent = IntelSearchMenuComponent:new {
+DarkstoneIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
 	ticketGiver = ticketGiverDarkstone
 }

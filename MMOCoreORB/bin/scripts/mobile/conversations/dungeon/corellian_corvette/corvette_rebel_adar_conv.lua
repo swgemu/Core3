@@ -5,14 +5,6 @@ corvetteTallonConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/corvette_tallon_rebel1:s_71f656a9", -- He's still missing. We have no word at all since losing communication with him. The Empire's behind this... I just know it. One of our best pilots too.
-	stopConversation = "true",
-	options = {}
-}
-corvetteTallonConvoTemplate:addScreen(no_business);
-
 no_faction = ConvoScreen:new {
 	id = "no_faction",
 	leftDialog = "@conversation/corvette_tallon_rebel1:s_3e144812", --No... no. This can't be allowed to... Oh, my apologies. I didn't see you there. More apologies, because another matter urgently demands my attention. Good bye.
@@ -42,7 +34,7 @@ corvetteTallonConvoTemplate:addScreen(convo_start);
 
 quest_start = ConvoScreen:new {
 	id = "quest_start",
-		leftDialog = "@conversation/corvette_tallon_rebel1:s_94007006", --There is hope yet! I have been informed that the security override codes I need could be in one of three locations. Based on that information, the places to seek out are a downed Bloodrazor smuggling vessel on Lok, the Imperial Warren on Dantooine and the Imperial Prison itself on Dathomir.  It will be a dangerous journey, filled with obstacles, but justice must be done. We must rescue the officer before he reaches that prison!
+	leftDialog = "@conversation/corvette_tallon_rebel1:s_94007006", --There is hope yet! I have been informed that the security override codes I need could be in one of three locations. Based on that information, the places to seek out are a downed Bloodrazor smuggling vessel on Lok, the Imperial Warren on Dantooine and the Imperial Prison itself on Dathomir.  It will be a dangerous journey, filled with obstacles, but justice must be done. We must rescue the officer before he reaches that prison!
 	stopConversation = "false",
 	options = {	}
 }
@@ -114,7 +106,7 @@ corvetteTallonConvoTemplate:addScreen(back_already);
 
 back_already_reset = ConvoScreen:new {
 	id = "back_already_reset",
-	leftDialog = "@conversation/corvette_tallon_rebel1:s_abd76541", --I'm sorry to learn of this unexpected turn of events. I suppose I'll have to find someone else. Oh, I'll need to take any documents you've found while on this mission. May the Force be with you.	
+	leftDialog = "@conversation/corvette_tallon_rebel1:s_abd76541", --I'm sorry to learn of this unexpected turn of events. I suppose I'll have to find someone else. Oh, I'll need to take any documents you've found while on this mission. May the Force be with you.
 	stopConversation = "true",
 	options = { }
 }
