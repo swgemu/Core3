@@ -1,9 +1,7 @@
-require("screenplays.screenplay")
 local ObjectManager = require("managers.object.object_manager")
 
 SIT = 1
 STAND = 0
-local ticketTemplate = "object/tangible/travel/travel_ticket/dungeon_ticket.iff"
 
 CorvetteTicketTakerLogic = ScreenPlay:new {
 	numberOfActs = 1,
@@ -69,7 +67,7 @@ function CorvetteTicketTakerLogic:validateTicket(pPlayer)
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
 
-	createEvent(5 * 1000, "CorvetteTicketTakerLogic", "finishValidateTicket", pPlayer, "")
+	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer, "")
 end
 
 function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
@@ -85,7 +83,7 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 		return
 	end
 
-	local pInvItem = getContainerObjectByTemplate(pInventory, ticketTemplate, true)
+	local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/travel/travel_ticket/dungeon_ticket.iff", true)
 
 	if pInvItem == nil then
 		player:sendSystemMessageWithTO("@dungeon/space_dungeon:no_ticket", "@dungeon/space_dungeon:corvette_" .. self:getFactionString()) -- You do not have the proper authorization to access the %TO.
@@ -105,8 +103,8 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 	local result = CorellianCorvette:activate(pPlayer, self:getFactionString(), activeQuestType)
 
 	if (result) then
-		--SceneObject(pInvItem):destroyObjectFromWorld()
-		--SceneObject(pInvItem):destroyObjectFromDatabase()
+	--SceneObject(pInvItem):destroyObjectFromWorld()
+	--SceneObject(pInvItem):destroyObjectFromDatabase()
 	end
 end
 

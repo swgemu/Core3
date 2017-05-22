@@ -15,7 +15,7 @@ corvetteSabolConvoTemplate:addScreen(no_faction);
 
 already_busy = ConvoScreen:new {
 	id = "already_busy",
-	leftDialog = "@conversation/corvette_sabol_imperial1:s_74947555	", --Typical... I actually need some assistance, and they send me someone who can't help me. You're already busy. What was the point. Come back when you've finished your current task and maybe, assuming it's not too late, you could still be of use.
+	leftDialog = "@conversation/corvette_sabol_imperial1:s_74947555", --Typical... I actually need some assistance, and they send me someone who can't help me. You're already busy. What was the point. Come back when you've finished your current task and maybe, assuming it's not too late, you could still be of use.
 	stopConversation = "true",
 	options = {}
 }
@@ -80,7 +80,7 @@ corvetteSabolConvoTemplate:addScreen(convo_exit_3);
 
 convo_start_4 = ConvoScreen:new {
 	id = "convo_start_4",
-	leftDialog = "@conversation/corvette_sabol_imperial1:s_963fc82f", ----I have some data on where this document might be found. Let me check my datapad. Hmm... Only three locations. Unfortunately I have nothing that gives us a hint about which might be the one with the document we seek. It could be at any of these places. Are you still interested in assisting me?
+	leftDialog = "@conversation/corvette_sabol_imperial1:s_963fc82f", --I have some data on where this document might be found. Let me check my datapad. Hmm... Only three locations. Unfortunately I have nothing that gives us a hint about which might be the one with the document we seek. It could be at any of these places. Are you still interested in assisting me?
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_sabol_imperial1:s_b9bb7669	","quest_start"}, --Yes, of course. I'll check all three if need be.

@@ -1,5 +1,3 @@
-
-
 lt_lance = { planetName = "corellia", npcTemplate = "lt_lance", x = -6518.5, z = 398.0, y = 6044.1, direction = -18, cellID = 0, position = STAND }
 
 ticketTakerLtLance = CorvetteTicketTakerLogic:new {
