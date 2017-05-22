@@ -217,13 +217,36 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
 
 	if (targetCount == nil) then
-		printLuaError("KnightTrials:notifyKilledHuntTarget, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. ").")
-		return 1
+		printLuaError("KnightTrials:notifyKilledHuntTarget, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. "). Setting to 0.")
+		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
+		targetCount = 0
 	end
 
 	if (targetGoal == nil) then
-		printLuaError("KnightTrials:notifyKilledHuntTarget, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. ").")
-		return 1
+		printLuaError("KnightTrials:notifyKilledHuntTarget, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. "). Setting to " .. trialData.huntGoal .. ".")
+		readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
+		targetGoal = trialData.huntGoal
+	end
+
+	if (huntTarget == nil or huntTarget == "") then
+		local newTarget = ""
+		if (trialData.trialType == TRIAL_HUNT) then
+			writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.huntTarget)
+			newTarget = trialData.huntTarget
+		else
+			local councilChoice = JediTrials:getJediCouncil(pPlayer)
+
+			if (councilChoice == JediTrials.COUNCIL_LIGHT) then
+				writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.rebelTarget)
+				newTarget = trialData.rebelTarget
+			else
+				writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.imperialTarget)
+				newTarget = trialData.imperialTarget
+			end
+		end
+
+		printLuaError("KnightTrials:notifyKilledHuntTarget, nil huntTarget for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. "). Setting to " .. newTarget .. ".")
+		huntTarget = newTarget
 	end
 
 	local targetList = HelperFuncs:splitString(huntTarget, ";")
@@ -258,18 +281,48 @@ function KnightTrials:showCurrentTrial(pPlayer)
 		return
 	end
 
-	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
-
-	if (targetCount == nil) then
-		printLuaError("KnightTrials:showCurrentTrial, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
-		return
-	end
-
 	local trialData = knightTrialQuests[trialNumber]
 
 	if (trialData.trialType == TRIAL_COUNCIL) then
 		self:sendCouncilChoiceSui(pPlayer)
 		return
+	end
+
+	local huntTarget = readScreenPlayData(pPlayer, "JediTrials", "huntTarget")
+	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
+	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
+
+	if (targetCount == nil) then
+		printLuaError("KnightTrials:showCurrentTrial, nil targetCount for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. ". Setting to 0.")
+		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
+		targetCount = 0
+	end
+
+	if (targetGoal == nil) then
+		printLuaError("KnightTrials:showCurrentTrial, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. ". Setting to " .. trialData.huntGoal .. ".")
+		readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
+		targetGoal = trialData.huntGoal
+	end
+
+	if (huntTarget == nil or huntTarget == "") then
+		local newTarget = ""
+		if (trialData.trialType == TRIAL_HUNT) then
+			writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.huntTarget)
+			newTarget = trialData.huntTarget
+		else
+			local councilChoice = JediTrials:getJediCouncil(pPlayer)
+
+			if (councilChoice == JediTrials.COUNCIL_LIGHT) then
+				writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.rebelTarget)
+				newTarget = trialData.rebelTarget
+			else
+				writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.imperialTarget)
+				newTarget = trialData.imperialTarget
+			end
+		end
+
+		printLuaError("KnightTrials:showCurrentTrial, nil huntTarget for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. ". Setting to " .. newTarget .. ".")
+		huntTarget = newTarget
 	end
 
 	local shrinePrompt = "@jedi_trials:" .. trialData.trialName
