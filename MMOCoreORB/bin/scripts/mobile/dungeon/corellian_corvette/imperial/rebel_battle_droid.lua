@@ -1,4 +1,4 @@
-rebel_corvet_battle_droid = Creature:new {
+rebel_battle_droid = Creature:new {
 	objectName = "@mob/creature_names:rebel_battle_droid",
 	socialGroup = "rebel",
 	faction = "rebel",
@@ -35,4 +35,4 @@ rebel_corvet_battle_droid = Creature:new {
 	attacks = merge(pistoleermaster,carbineermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_corvet_battle_droid, "rebel_corvet_battle_droid")
+CreatureTemplates:addCreatureTemplate(rebel_battle_droid, "rebel_battle_droid")
