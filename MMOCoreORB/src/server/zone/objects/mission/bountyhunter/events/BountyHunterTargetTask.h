@@ -120,7 +120,7 @@ public:
 		return currentPosition;
 	}
 
-	String getTargetZoneName() {
+	const String& getTargetZoneName() {
 		return zoneName;
 	}
 

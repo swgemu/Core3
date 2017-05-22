@@ -38,7 +38,7 @@ public:
 	}
 
 	~CallArakydTask() {
-		cancel();
+
 	}
 
 	void run() {

@@ -62,6 +62,12 @@ void BountyMissionObjectiveImplementation::deactivate() {
 
 		activeDroid = NULL;
 	}
+
+	cancelAllTasks();
+
+	if (!isPlayerTarget()) {
+		removeNpcTargetObservers();
+	}
 }
 
 void BountyMissionObjectiveImplementation::abort() {
@@ -534,7 +540,8 @@ void BountyMissionObjectiveImplementation::startNpcTargetTask() {
 	if(mission == NULL)
 		return;
 
-	targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
+	if (targetTask == NULL)
+		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
 
 	if (targetTask != NULL && !targetTask->isScheduled()) {
 		targetTask->schedule(10 * 1000);
