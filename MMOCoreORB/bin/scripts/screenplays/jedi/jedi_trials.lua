@@ -393,9 +393,23 @@ end
 
 function JediTrials:getTrialsCompleted(pPlayer)
 	if (self:isOnPadawanTrials(pPlayer)) then
-		return tonumber(readScreenPlayData(pPlayer, "PadawanTrials", "trialsCompleted"))
+		local completed = tonumber(readScreenPlayData(pPlayer, "PadawanTrials", "trialsCompleted"))
+
+		if (completed == nil) then
+			writeScreenPlayData(pPlayer, "PadawanTrials", "trialsCompleted", 0)
+			return 0
+		else
+			return completed
+		end
 	elseif (self:isOnKnightTrials(pPlayer)) then
-		return  tonumber(readScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted"))
+		local completed = tonumber(readScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted"))
+
+		if (completed == nil) then
+			writeScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted", 0)
+			return 0
+		else
+			return completed
+		end
 	else
 		return 0
 	end

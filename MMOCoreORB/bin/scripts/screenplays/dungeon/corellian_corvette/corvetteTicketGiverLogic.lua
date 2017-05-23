@@ -119,6 +119,13 @@ function CorvetteTicketGiverLogic:isCorrectQuestContainer(pContainer, pPlayer, t
 	local templatePath = SceneObject(pContainer):getTemplateObjectPath()
 	local questType = getQuestStatus(playerID .. ":activeCorvetteQuestType")
 
+	-- Bandaid fix because SOE, in their infinite wisdom, somehow managed to swap two locations
+	if (string.find(templatePath, "corvette_search_rebel_destroy_02")) then
+		return ticketGiver.ticketInfo.faction == "neutral" and questType == "rescue"
+	elseif (string.find(templatePath, "corvette_search_neutral_rescue_02")) then
+		return ticketGiver.ticketInfo.faction == "rebel" and questType == "destroy"
+	end
+
 	local faction = "neutral"
 	if string.find(templatePath, "imperial") ~= nil then
 		faction = "imperial"
