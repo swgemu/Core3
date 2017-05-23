@@ -235,7 +235,7 @@ function FsCsBaseControl:notifyKilledLootMobile(pVictim, pAttacker)
 
 		if pItem ~= nil and SceneObject(pItem):getTemplateObjectPath() == "object/tangible/loot/quest/force_sensitive/camp_frequency_datapad.iff" or SceneObject(pItem):getTemplateObjectPath() == "object/tangible/loot/quest/force_sensitive/camp_waypoint_datapad.iff" then
 			local csItem = LuaFsCsObject(pItem)
-			csItem:setPhaseDuration(VillageJediManagerTownship.getVillagePhaseChangeTime())
+			csItem:setPhaseDuration(VillageJediManagerTownship.getVillagePhaseDuration())
 		end
 	end
 
