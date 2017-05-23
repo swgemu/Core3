@@ -300,7 +300,7 @@ function KnightTrials:showCurrentTrial(pPlayer)
 
 	if (targetGoal == nil) then
 		printLuaError("KnightTrials:showCurrentTrial, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. ". Setting to " .. trialData.huntGoal .. ".")
-		readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
+		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
 		targetGoal = trialData.huntGoal
 	end
 
