@@ -42,7 +42,7 @@
 
 
 object_tangible_dungeon_corellian_corvette_corvette_search_rebel_destroy_02 = object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02:new {
-	objectMenuComponent = "CrowleyIntelSearchMenuComponent",
+	objectMenuComponent = "YondallaIntelSearchMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_corvette_search_rebel_destroy_02, "object/tangible/dungeon/corellian_corvette/corvette_search_rebel_destroy_02.iff")
