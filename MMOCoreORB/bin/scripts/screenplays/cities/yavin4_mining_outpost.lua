@@ -33,4 +33,13 @@ function Yavin4MiningOutpostScreenPlay:spawnMobiles()
 	--building empty
 	pNpc = spawnMobile("yavin4", "ithorian_male",60,3.6,0.1,-0.5,0,1713372)
 	self:setMoodString(pNpc, "npc_sitting_chair")
+
+	--outside tavern area
+	local pNpc = spawnMobile("yavin4", "rebel_commando", 460, -255.5, 35.0, 4859.2, 81, 0)
+	AiAgent(pNpc):setAiTemplate("idlewander")
+	pNpc = spawnMobile("yavin4", "rebel_commando", 460, -250.5, 35.0, 4854.2, 86, 0)
+	AiAgent(pNpc):setAiTemplate("idlewander")
+	pNpc = spawnMobile("yavin4", "rebel_commando", 460, -260.5, 35.0, 4864.2, 76, 0)
+	AiAgent(pNpc):setAiTemplate("idlewander")
+
 end
