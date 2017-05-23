@@ -197,8 +197,8 @@ knightTrialQuests = {
 	{
 		trialName = "high_general",
 		trialType = TRIAL_HUNT_FACTION,
-		rebelTarget = "imperial_surface_marshall;imperial_high_general;imperial_general",
-		imperialTarget = "rebel_high_general;rebel_surface_marshall;rebel_general",
+		rebelTarget = "imperial_surface_marshal;imperial_high_general;imperial_general",
+		imperialTarget = "rebel_high_general;rebel_surface_marshal;rebel_general",
 		huntGoal = 22
 	},
 	{
