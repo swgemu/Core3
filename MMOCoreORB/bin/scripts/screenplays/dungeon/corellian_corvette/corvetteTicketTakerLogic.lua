@@ -98,8 +98,6 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 		return
 	end
 
-	--TODO add validation of group
-
 	local result = CorellianCorvette:activate(pPlayer, self:getFactionString(), activeQuestType)
 
 	if (result) then

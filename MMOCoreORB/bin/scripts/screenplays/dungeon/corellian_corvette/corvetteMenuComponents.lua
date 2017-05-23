@@ -48,7 +48,8 @@ function CorvetteDestroyTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 		return
 	end
 
-	local questType = readStringData(SceneObject(pPlayer):getObjectID() .. "questType")
+	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	local questType = readStringData("corvetteQuestType:" .. corvetteId)
 
 	if (questType ~= "destroy") then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:does_nothing")

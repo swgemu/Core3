@@ -293,6 +293,16 @@ end
 
 
 function CorvetteTicketGiverLogic:giveReward(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	if (not PlayerObject(pGhost):hasBadge(self.badgeNumber)) then
+		PlayerObject(pGhost):awardBadge(self.badgeNumber)
+	end
+
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 	if pInventory == nil then

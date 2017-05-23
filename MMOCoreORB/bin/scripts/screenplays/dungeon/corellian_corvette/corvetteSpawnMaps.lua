@@ -22,7 +22,6 @@ corvetteStaticSpawns = {
 	{ "object/tangible/dungeon/keypad_terminal.iff", -9.35, -10.8, 128.65, "armory54", 180, "Keypad", "setupKeypad", "armorybackroom55" },
 	{ "object/tangible/dungeon/keypad_terminal.iff", -13.05, -10.8, 6.65, "hall37", 270, "Keypad", "setupKeypad", "meetingroom38" },
 	{ "object/tangible/dungeon/computer_mainframe.iff", 5.2, -12, 69.7, "hyperdrive47", 0, "Hyperdrive Console", "setupDestroyTerminal", "hyperdrive" },
-	{ "object/tangible/container/general/tech_armoire.iff", 12.9, -12, 132.97, "armorybackroom55", -90, "", "", "" },
 	{ "object/tangible/dungeon/computer_desktop.iff", 8.21, 0.8, -36.11, "thrusterroom24", -90, "", "setupComputerObject", "one" },
 	{ "object/tangible/dungeon/computer_desktop.iff", 8.21, 0.77, -41.03, "thrusterroom24", -90, "", "setupComputerObject", "two" },
 	{ "object/tangible/dungeon/computer_desktop.iff", -8.5, 0.75, -36.54, "thrusterroom24", 90, "", "setupComputerObject", "three" },
@@ -36,11 +35,12 @@ corvetteStaticSpawns = {
 	{ "object/tangible/dungeon/computer_mainframe.iff", -4.5, -14, -36.24, "thrustersubroom28", 180, "SECURITY CONSOLE", "setupRoomPanel", "meetingroom38" },
 	{ "object/tangible/dungeon/wall_terminal_s4.iff", -7.5, 0, 152, "bridge66", 90, "ENGINE SETTINGS", "setupDestroyTerminal", "engine" },
 	{ "object/tangible/dungeon/computer_mainframe.iff", -8.5, -6.7, -38.11, "thrustersubroom27", 180, "FUEL INTAKE CONTROL", "setupDestroyTerminal", "fuel" },
-	{ "object/tangible/container/loot/astromech_container.iff", -13.9, 0, 51.44, "spawnroom8", 90, "spare droid (for parts)", "", "" },
-	{ "object/tangible/container/general/tech_chest.iff", 0.5, 12, -8.91, "vipquarters21", 0, "", "", "" },
-	{ "object/tangible/container/general/tech_armoire.iff", 5.9, 12, 13.2, "vipquarters22", 270, "", "", "" },
-	{ "object/tangible/container/loot/astromech_container.iff", 22.1, -12, 51.87, "spawnroom49", 0, "", "", "" },
-	{ "object/tangible/container/general/tech_armoire.iff", 22.74, -12, 52.08, "spawnroom49", -90, "", "", "" },
+	{ "object/tangible/container/loot/astromech_container.iff", -13.9, 0, 51.44, "spawnroom8", 90, "spare droid (for parts)", "setupLootCrate", "r2" },
+	{ "object/tangible/container/general/tech_chest.iff", 0.5, 12, -8.91, "vipquarters21", 0, "", "setupLootCrate", "disk" },
+	{ "object/tangible/container/general/tech_armoire.iff", 5.9, 12, 13.2, "vipquarters22", 270, "", "setupLootCrate", "" },
+	{ "object/tangible/container/loot/astromech_container.iff", 22.1, -12, 51.87, "spawnroom49", 0, "", "setupLootCrate", "" },
+	{ "object/tangible/container/general/tech_armoire.iff", 22.74, -12, 52.08, "spawnroom49", -90, "", "setupLootCrate", "" },
+	{ "object/tangible/container/general/tech_armoire.iff", 12.9, -12, 132.97, "armorybackroom55", -90, "", "setupLootCrate", "" },
 }
 
 corvetteRebelSpawns = {
@@ -117,7 +117,7 @@ corvetteRebelSpawns = {
 	{ "ra7_bug_droid", 20.61, -12, 50.32, -177.83, "spawnroom49", "" },
 	{ "ra7_bug_droid", 3.17, -12, 6.62, 90.79, "messhall33", "" },
 	{ "corvette_r2", -18.86, -12, 66.59, 86.2, "radarroom46", "" },
-	--{ "corvette_r3", 5.58, -14, -36.82,180 , "thrustersubroom28", "" },
+	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "setupBrokenDroid" },
 	{ "imperial_battle_droid", -21.48, -12, -59.01, -28.73, "thrusterroom24", "" },
 	{ "imperial_battle_droid", -7.42, -14, -46, -2.15, "thrusterroom24", "" },
 	{ "imperial_super_battle_droid", 15.87, -12, -44.88, 94.54, "thrusterroom24", "" },
@@ -224,6 +224,7 @@ corvetteImperialSpawns = {
 	{ "rebel_ensign", -0.13, -12, 28.3, -1.09,"hall31" , "" },
 	{ "rebel_first_mate", -0.08, 0, 115.9, 177.78, "hall62", "" },
 	{ "rebel_midshipman", 25.2, 0, 12.95, 85, "hall10", "" },
+	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "setupBrokenDroid" },
 }
 
 corvetteNeutralSpawns = {
@@ -314,7 +315,7 @@ corvetteNeutralSpawns = {
 	{ "corsec_super_battle_droid", 27.19, -12, -56.71, -0.1, "thrusterroom24", "" },
 	{ "corsec_super_battle_droid", 7.29, -14, -50.23, 2.11, "thrusterroom24", "" },
 	{ "corsec_super_battle_droid", 7.84, -14, -36, 0, "thrustersubroom28", "" },
-	--	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "" },	--broken droid
+	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "setupBrokenDroid" },
 	{ "commoner", 20, 0, 122, 23, "officerquarters63", "" },
 	{ "imo_vledmo", 15, 0, 123, 179, "officerquarters63", "" },
 }
