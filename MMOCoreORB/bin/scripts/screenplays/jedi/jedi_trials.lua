@@ -161,7 +161,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	if (councilType == self.COUNCIL_LIGHT) then
 		unlockMusic = "sound/music_become_dark_light.snd"
 		unlockString = "@jedi_trials:knight_trials_completed_light"
-		enclaveLoc = { 5079, 305, "yavin4" }
+		enclaveLoc = { -5575, 4905, "yavin4" }
 		enclaveName = "Light Jedi Enclave"
 		jediState = 4
 		setFactionVal = FACTIONREBEL
@@ -169,7 +169,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	elseif (councilType == self.COUNCIL_DARK) then
 		unlockMusic = "sound/music_become_dark_dark.snd"
 		unlockString = "@jedi_trials:knight_trials_completed_dark"
-		enclaveLoc = { -5575, 4905, "yavin4" }
+		enclaveLoc = { 5079, 305, "yavin4" }
 		enclaveName = "Dark Jedi Enclave"
 		jediState = 8
 		setFactionVal = FACTIONIMPERIAL
