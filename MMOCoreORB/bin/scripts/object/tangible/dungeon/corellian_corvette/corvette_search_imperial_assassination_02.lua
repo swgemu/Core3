@@ -42,7 +42,7 @@
 
 
 object_tangible_dungeon_corellian_corvette_corvette_search_imperial_assassination_02 = object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02:new {
-	objectMenuComponent = "sabolIntelSearchMenuComponent",
+	objectMenuComponent = "VelsoIntelSearchMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_corvette_search_imperial_assassination_02, "object/tangible/dungeon/corellian_corvette/corvette_search_imperial_assassination_02.iff")

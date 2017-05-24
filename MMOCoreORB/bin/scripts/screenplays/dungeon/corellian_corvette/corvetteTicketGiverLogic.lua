@@ -57,7 +57,7 @@ function CorvetteIntelSearchMenuComponent:fillObjectMenuResponse(pSceneObject, p
 	local activeQuest = getQuestStatus(playerID .. ":activeCorvetteQuest")
 	local activeStep = getQuestStatus(playerID .. ":activeCorvetteStep")
 
-	if CorvetteTicketGiverLogic:isCorrectQuestContainer(pSceneObject, pPlayer, self.ticketGiver) and activeStep == "1" then
+	if activeQuest == self.ticketGiver.giverName and activeStep == "1" then
 		local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 
 		menuResponse:addRadialMenuItem(20, 3, "@bestine:search_item") -- Search
@@ -70,7 +70,7 @@ function CorvetteIntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPl
 	local activeQuest = getQuestStatus(playerID .. ":activeCorvetteQuest")
 	local activeStep = getQuestStatus(playerID .. ":activeCorvetteStep")
 
-	if CorvetteTicketGiverLogic:isCorrectQuestContainer(pContainer, pPlayer, self.ticketGiver) and activeStep == "1" and selectedID == 20 then
+	if activeQuest == self.ticketGiver.giverName and activeStep == "1" and selectedID == 20 then
 		local intelNumber = self.ticketGiver:getContainersIntelNumber(pPlayer, pContainer)
 
 		if intelNumber == 0 then
@@ -112,39 +112,6 @@ function CorvetteIntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPl
 	end
 
 	return 0
-end
-
-function CorvetteTicketGiverLogic:isCorrectQuestContainer(pContainer, pPlayer, ticketGiver)
-	local playerID = SceneObject(pPlayer):getObjectID()
-	local templatePath = SceneObject(pContainer):getTemplateObjectPath()
-	local questType = getQuestStatus(playerID .. ":activeCorvetteQuestType")
-
-	-- Bandaid fix because SOE, in their infinite wisdom, somehow managed to swap two locations
-	if (string.find(templatePath, "corvette_search_rebel_destroy_02")) then
-		return ticketGiver.ticketInfo.faction == "neutral" and questType == "rescue"
-	elseif (string.find(templatePath, "corvette_search_neutral_rescue_02")) then
-		return ticketGiver.ticketInfo.faction == "rebel" and questType == "destroy"
-	end
-
-	local faction = "neutral"
-	if string.find(templatePath, "imperial") ~= nil then
-		faction = "imperial"
-	elseif string.find(templatePath, "rebel") ~= nil then
-		faction = "rebel"
-	end
-
-	if (ticketGiver.ticketInfo.faction ~= faction) then
-		return false
-	end
-
-	local type = "destroy"
-	if string.find(templatePath, "assassin") ~= nil then
-		type = "assassin"
-	elseif string.find(templatePath, "rescue") ~= nil then
-		type = "rescue"
-	end
-
-	return type == questType
 end
 
 function CorvetteTicketGiverLogic:getContainersIntelNumber(pPlayer, pContainer)

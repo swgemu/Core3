@@ -1124,8 +1124,8 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 		local pCell = BuildingObject(pCorvette):getCell(i)
 
 		if (pCell ~= nil) then
-			for j = 1, SceneObject(pCell):getContainerObjectsSize(), 1 do
-				local pObject = SceneObject(pCell):getContainerObject(j - 1)
+			for j = SceneObject(pCell):getContainerObjectsSize() - 1, 0, -1 do
+				local pObject = SceneObject(pCell):getContainerObject(j)
 
 				if pObject ~= nil and not SceneObject(pObject):isPlayerCreature() then
 					SceneObject(pObject):destroyObjectFromWorld()

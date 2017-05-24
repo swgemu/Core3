@@ -33,7 +33,7 @@ ticketGivertallon = CorvetteTicketGiverLogic:new {
 	good_intel = "@conversation/corvette_tallon_rebel1:s_135bf1fb", --Show the Security Override Codes.
 
 	go_to_corvette = "@conversation/corvette_tallon_rebel1:s_67499366",--I am leaving for the Corellian corvette.
-	check_other_places = "@conversation/corvette_tallon_rebel1:	", --Looks like I have more to do.
+	check_other_places = "@conversation/corvette_tallon_rebel1:s_a128e067", --Looks like I have more to do.
 	other_documents = "@conversation/corvette_tallon_rebel1:s_2f26b4c4", -- I still have documents for you.
 
 	launch_location ="@conversation/corvette_tallon_rebel1:s_3925fbc0", --I forgot the location of our contact.
