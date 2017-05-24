@@ -62,7 +62,7 @@ heraldScreenPlay = ScreenPlay:new {
 			{ planet = "yavin4", template = "herald_commoner", x = -6982.5, z = 73, y = -5659.5, angle = 175, cell = 0, destX = -921, destY = -2042, stringFile = "herald_yavin_temple_of_the_blueleaf_cluster" },
 			{ planet = "yavin4", template = "herald_chiss", x = -6877.3, z = 73, y = -5682.3, angle = -80, cell = 0, destX = 5152, destY = 5537, stringFile = "herald_yavin_temple_of_exarkun" },
 			{ planet = "yavin4", template = "herald_commoner", x = -351.45, z = 35, y = 4856.88, angle = 178, cell = 0, destX = 482, destY = -678, stringFile = "herald_yavin_palace_of_the_woolamander" },
-			{ planet = "yavin4", template = "herald_rebel_commando", x = -325, z = 48, y = 4682, angle = 40, cell = 0, destX = 4031, destY = -6281, stringFile = "herald_yavin_imperial_outpost" },
+			{ planet = "yavin4", template = "herald_rebel_commando", x = -325, z = 48, y = 4862, angle = 40, cell = 0, destX = 4031, destY = -6281, stringFile = "herald_yavin_imperial_outpost" },
 		},
 
 		kidnappedNobles = {
