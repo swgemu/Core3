@@ -153,13 +153,13 @@ function CorellianCorvette:closeAuthorizationSui(pPlayer, pageId)
 	if (pCorvette ~= nil and SceneObject(pCorvette):getObjectID() == readData(playerID .. "corvetteId")) then
 		return
 	end
-	
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-	
+
 	if (pGhost == nil) then
 		return
 	end
-	
+
 	PlayerObject(pGhost):removeSuiBox(pageId)
 
 	deleteData(playerID .. "corvetteId")
@@ -407,8 +407,11 @@ function CorellianCorvette:startRepairDroidMovement(pDroid)
 end
 
 function CorellianCorvette:repairDroidDestinationReached(pDroid)
+	if (pDroid == nil) then
+		return 1
+	end
+
 	createEvent(3 * 1000, "CorellianCorvette", "startRepairDroidRepairing", pDroid, "")
-	local pCorvette = self:getCorvetteObject(pDroid)
 
 	return 1
 end
@@ -489,6 +492,73 @@ function CorellianCorvette:notifyTrapAreaEntered(pActiveArea, pMovingObject)
 	CreatureObject(pMovingObject):sendSystemMessage("@quest/corvetter_trap:shocked") --You feel electricity coursing through your body!
 
 	return 0
+end
+
+function CorellianCorvette:setupPrisoner(pPrisoner)
+	local pCorvette = self:getCorvetteObject(pPrisoner)
+
+	if (pCorvette == nil) then
+		return
+	end
+
+	createObserver(DESTINATIONREACHED, "CorellianCorvette", "prisonerDestinationReached", pPrisoner)
+	AiAgent(pPrisoner):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
+	AiAgent(pPrisoner):setFollowState(4) -- Patrolling
+
+	if (SceneObject(pPrisoner):getObjectName() == "prisoner") then
+		CreatureObject(pPrisoner):setOptionBit(CONVERSABLE)
+		local corvetteFaction = self:getBuildingFaction(pCorvette)
+
+		if (corvetteFaction == "neutral") then
+			AiAgent(pPrisoner):setConvoTemplate("corvetteNeutralPrisonerConvoTemplate")
+		elseif (corvetteFaction == "imperial") then
+			AiAgent(pPrisoner):setConvoTemplate("corvetteImperialPrisonerConvoTemplate")
+		elseif (corvetteFaction == "rebel") then
+			AiAgent(pPrisoner):setConvoTemplate("corvetteRebelPrisonerConvoTemplate")
+		end
+	end
+end
+
+function CorellianCorvette:doPrisonerEscape(pPrisoner)
+	local pCorvette = self:getCorvetteObject(pPrisoner)
+
+	if (pCorvette == nil) then
+		return
+	end
+
+	local pCell = BuildingObject(pCorvette):getNamedCell("elevator57")
+
+	if (pCell == nil) then
+		return
+	end
+
+	createEvent(60 * 1000, "CorellianCorvette", "removePrisoner", pPrisoner, "")
+
+	local cellId = SceneObject(pCell):getObjectID()
+
+	AiAgent(pPrisoner):stopWaiting()
+	AiAgent(pPrisoner):setWait(0)
+	AiAgent(pPrisoner):setNextPosition(-18.1, 0, 117.7, cellId)
+	AiAgent(pPrisoner):executeBehavior()
+end
+
+function CorellianCorvette:prisonerDestinationReached(pPrisoner)
+	if (pPrisoner == nil) then
+		return 1
+	end
+
+	createEvent(2 * 1000, "CorellianCorvette", "removePrisoner", pPrisoner, "")
+
+	return 1
+end
+
+function CorellianCorvette:removePrisoner(pPrisoner)
+	if (pPrisoner == nil) then
+		return
+	end
+
+	deleteData(SceneObject(pPrisoner):getObjectID() .. ":alreadyRescued")
+	SceneObject(pPrisoner):destroyObjectFromWorld()
 end
 
 function CorellianCorvette:setupRoomPanel(pPanel, room)
@@ -682,6 +752,12 @@ function CorellianCorvette:onCrateLooted(pCrate)
 	if (pCrate == nil) then
 		return
 	end
+	
+	local pCorvette = self:getCorvetteObject(pCrate)
+	
+	if (pCorvette == nil) then
+		return
+	end
 
 	local crateID = SceneObject(pCrate):getObjectID()
 	local crateType = readStringData(crateID .. ":crateType")
@@ -689,7 +765,19 @@ function CorellianCorvette:onCrateLooted(pCrate)
 	if (crateType == "r2") then
 		createEvent(600 * 1000, "CorellianCorvette", "setupLootCrate", pCrate, "r2")
 	elseif (crateType ~= "disk" and readData(crateID .. ":crateLooted") ~= 1) then
-	--todo: spawn enemies
+		writeData(crateID .. ":crateLooted", 1)
+		local faction = self:getBuildingFaction(pCorvette)
+		local spawnTemplate
+		
+		if (faction == "neutral") then
+			spawnTemplate = "corsec_super_battle_droid"
+		elseif (faction == "imperial") then
+			spawnTemplate = "rebel_super_battle_droid"
+		elseif (faction == "rebel") then
+			spawnTemplate =  "imperial_super_battle_droid"
+		end
+		-- TODO: pick random spot in room for spawn loc once we can find random good room location
+		local pMobile = spawnMobile("dungeon1", spawnTemplate, 0, SceneObject(pCrate):getPositionX(), SceneObject(pCrate):getPositionZ(), SceneObject(pCrate):getPositionY(), 0, SceneObject(pCrate):getParentID())
 	end
 
 	writeData(crateID .. ":crateLooted", 1)
@@ -913,6 +1001,26 @@ function CorellianCorvette:readDataFromGroup(pCorvette, key)
 	end
 
 	return 0
+end
+
+function CorellianCorvette:increaseGroupFactionStanding(pCorvette, faction, points)
+	for i = 1, 66, 1 do
+		local pCell = BuildingObject(pCorvette):getCell(i)
+
+		if (pCell ~= nil) then
+			for j = 1, SceneObject(pCell):getContainerObjectsSize(), 1 do
+				local pObject = SceneObject(pCell):getContainerObject(j - 1)
+
+				if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
+					local pGhost = CreatureObject(pObject):getPlayerObject()
+
+					if (pGhost ~= nil) then
+						PlayerObject(pGhost):increaseFactionStanding(faction, points)
+					end
+				end
+			end
+		end
+	end
 end
 
 function CorellianCorvette:checkSlicingSkill(pPlayer)

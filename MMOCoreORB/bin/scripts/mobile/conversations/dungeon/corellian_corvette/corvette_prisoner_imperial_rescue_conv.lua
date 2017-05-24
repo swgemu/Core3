@@ -13,7 +13,6 @@ not_rescued = ConvoScreen:new {
 }
 corvetteImperialPrisonerConvoTemplate:addScreen(not_rescued);
 
-
 rescued = ConvoScreen:new {
 	id = "rescued",
 	leftDialog = "@conversation/corvette_imperial_prisoner_02:s_a8dab33a", --Time to get off this ship. Thanks again!

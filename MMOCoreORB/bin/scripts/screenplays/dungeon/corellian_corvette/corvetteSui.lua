@@ -308,7 +308,7 @@ function CorvetteSui:keypadSuiCallback(pPlayer, pSui, eventIndex, args)
 		enteredCode = tonumber(args)
 	end
 
-	if (enteredCode == keypadCode) then
+	if (keypadCode ~= nil and keypadCode ~= "" and enteredCode == keypadCode) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:open") -- This door is now unlocked.
 		CorellianCorvette:unlockRoom(pCorvette, keypadRoom)
 	else
