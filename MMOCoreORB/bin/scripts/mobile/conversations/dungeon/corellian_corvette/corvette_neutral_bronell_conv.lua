@@ -223,8 +223,8 @@ changed_mind = ConvoScreen:new {
 }
 corvetteBronellConvoTemplate:addScreen(changed_mind);
 
-earned_reward = ConvoScreen:new {
-	id = "earned_reward",
+reward = ConvoScreen:new {
+	id = "reward",
 	leftDialog = "@conversation/corvette_bronell_neutral_assassin:s_1779cf3b", -- Lord Jabba is pleased to hear that the CorSec officer has been eliminated. Let this be a lesson to all who fail to pay their debts to Lord Jabba the Hutt, yes? Are you here to receive your reward, yes?
 	stopConversation = "false",
 	options = {
@@ -232,7 +232,7 @@ earned_reward = ConvoScreen:new {
 		{"@conversation/corvette_bronell_neutral_assassin:s_ffc988c3","ill_be_back"} --  No, not just yet. I'll be back.
 	}
 }
-corvetteBronellConvoTemplate:addScreen(earned_reward);
+corvetteBronellConvoTemplate:addScreen(reward);
 
 ill_be_back = ConvoScreen:new {
 	id = "ill_be_back",
