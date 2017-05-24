@@ -224,7 +224,7 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 
 	if (targetGoal == nil) then
 		printLuaError("KnightTrials:notifyKilledHuntTarget, nil targetGoal for player: " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber .. " (player killed target: " .. SceneObject(pVictim):getObjectName() .. "). Setting to " .. trialData.huntGoal .. ".")
-		readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
+		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
 		targetGoal = trialData.huntGoal
 	end
 

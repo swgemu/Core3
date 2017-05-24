@@ -131,8 +131,8 @@ corvetteRebelSpawns = {
 	{ "mouse_droid", -0.81, -6.7, -36.36, -119.65, "thrustersubroom27", "" },
 	{ "mouse_droid", -4.68, 0, 146.7, 0, "bridge66", "" },
 	{ "mouse_droid", 11.88, -12, -15.89, -89.91, "escapepods34", "" },
-	{ "commoner", 20.46, 0, 121.82, 22.61, "officerquarters63", "" },
-	{ "gabriel_lan", 15.49, 0, 122.78, 179.18, "officerquarters63", "" },
+	{ "corvette_prisoner", 20.46, 0, 121.82, 22.61, "officerquarters63", "setupPrisoner" },
+	{ "gabriel_lan", 15.49, 0, 122.78, 179.18, "officerquarters63", "setupPrisoner" },
 }
 
 corvetteImperialSpawns = {
@@ -196,8 +196,6 @@ corvetteImperialSpawns = {
 	{ "rebel_super_battle_droid", 7.84, -14, -36, 0, "thrustersubroom28", "" },
 	{ "protocol_droid_3po_red", 20.4, -12, 50.7, 20, "spawnroom49", "" },
 	{ "protocol_droid_3po_silver", 3.17,-12,6.62, 90.79, "messhall33", "" },
-	{ "corvette_imperial_prisoner_02", 20.46, 0, 121.82, 22.61, "officerquarters63", "" },
-	{ "dr_bledsoe", 15.49, 0, 122.78, 179.18, "officerquarters63", "" },
 	{ "corvette_r4", 19.92, 0, 16.15, 0.44, "hall10", "" },
 	{ "corvette_r2", -6.71, -14, -54.59, 95.32, "thrusterroom24", "" },
 	{ "corvette_r4", -0.81, -6.7, -36.36, -119.65, "thrustersubroom27", "" },
@@ -225,6 +223,8 @@ corvetteImperialSpawns = {
 	{ "rebel_first_mate", -0.08, 0, 115.9, 177.78, "hall62", "" },
 	{ "rebel_midshipman", 25.2, 0, 12.95, 85, "hall10", "" },
 	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "setupBrokenDroid" },
+	{ "corvette_prisoner", 20, 0, 122, 23, "officerquarters63", "setupPrisoner" },
+	{ "dr_bledsoe", 15, 0, 123, 179, "officerquarters63", "setupPrisoner" },
 }
 
 corvetteNeutralSpawns = {
@@ -316,6 +316,6 @@ corvetteNeutralSpawns = {
 	{ "corsec_super_battle_droid", 7.29, -14, -50.23, 2.11, "thrusterroom24", "" },
 	{ "corsec_super_battle_droid", 7.84, -14, -36, 0, "thrustersubroom28", "" },
 	{ "corvette_r3", 6, -14, -37,180, "thrustersubroom28", "setupBrokenDroid" },
-	{ "commoner", 20, 0, 122, 23, "officerquarters63", "" },
-	{ "imo_vledmo", 15, 0, 123, 179, "officerquarters63", "" },
+	{ "corvette_prisoner", 20, 0, 122, 23, "officerquarters63", "setupPrisoner" },
+	{ "imo_vledmo", 15, 0, 123, 179, "officerquarters63", "setupPrisoner" },
 }

@@ -1,5 +1,6 @@
 --common
 includeFile("dungeon/corellian_corvette/common/protocol_droid_h6p0.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_prisoner.lua")
 includeFile("dungeon/corellian_corvette/common/corvette_r2.lua")
 includeFile("dungeon/corellian_corvette/common/corvette_r3.lua")
 includeFile("dungeon/corellian_corvette/common/corvette_r4.lua")

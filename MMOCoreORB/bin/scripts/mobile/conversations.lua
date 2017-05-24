@@ -107,7 +107,6 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 -- ** DUNGEONS **
 
 -- Corellian Corvette
-includeFile("conversations/dungeon/corellian_corvette/corvette_bledsoe_imperial_rescue_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/corvette_imperial_darkstone_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/corvette_imperial_sabol_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/corvette_imperial_velso_conv.lua")
@@ -120,9 +119,11 @@ includeFile("conversations/dungeon/corellian_corvette/corvette_rebel_pashna_conv
 includeFile("conversations/dungeon/corellian_corvette/corvette_prisoner_imperial_rescue_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/corvette_prisoner_neutral_rescue_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/corvette_prisoner_rebel_rescue_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_bledsoe_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_ian_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_vledmo_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/ds_297_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/h6p0_conv.lua")
-includeFile("conversations/dungeon/corellian_corvette/imo_vledmo_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/klaatu_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/lt_lance_conv.lua")
 
