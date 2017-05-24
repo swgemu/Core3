@@ -1016,7 +1016,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->addShockWounds(100, true);
 	}
 
-	if (player->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFaction() == 0)
+	if (player->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_IMPERIAL && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_REBEL)
 		player->setFactionStatus(FactionStatus::ONLEAVE);
 
 	if (ghost->hasPvpTef())

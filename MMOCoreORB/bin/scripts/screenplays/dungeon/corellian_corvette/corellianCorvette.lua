@@ -743,6 +743,10 @@ function CorellianCorvette:setupLootCrate(pCrate, type)
 		createLoot(pCrate, faction .. "_corvette_loot", 300, false)
 	end
 
+	SceneObject(pCrate):setContainerInheritPermissionsFromParent(false)
+	SceneObject(pCrate):setContainerDefaultDenyPermission(MOVEIN)
+	SceneObject(pCrate):setContainerDefaultAllowPermission(OPEN + MOVEOUT)
+
 	writeStringData(SceneObject(pCrate):getObjectID() .. ":crateType", type)
 	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyLootCrateRemovedFromZone", pCrate, 1)
 	SceneObject(pCrate):setContainerComponent("corvetteLootCrateContainerComponent")
@@ -752,9 +756,9 @@ function CorellianCorvette:onCrateLooted(pCrate)
 	if (pCrate == nil) then
 		return
 	end
-	
+
 	local pCorvette = self:getCorvetteObject(pCrate)
-	
+
 	if (pCorvette == nil) then
 		return
 	end
@@ -768,7 +772,7 @@ function CorellianCorvette:onCrateLooted(pCrate)
 		writeData(crateID .. ":crateLooted", 1)
 		local faction = self:getBuildingFaction(pCorvette)
 		local spawnTemplate
-		
+
 		if (faction == "neutral") then
 			spawnTemplate = "corsec_super_battle_droid"
 		elseif (faction == "imperial") then
