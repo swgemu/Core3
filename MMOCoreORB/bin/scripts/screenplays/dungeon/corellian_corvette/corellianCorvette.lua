@@ -78,27 +78,27 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 	end
 
 	local active = 1
-	local corvetteId = 0
+	local corvetteID = 0
 	for i = 1, #ids, 1 do
 		active = readData("corvetteActive:" .. ids[i])
 
 		if active ~= 1 then
-			corvetteId = ids[i]
+			corvetteID = ids[i]
 			break
 		end
 	end
 
-	local pCorvette = getSceneObject(corvetteId)
+	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:corellian_corvette_travel_fail")
-		printLuaError("CorellianCorvette:activate unable to find corvette object with id " .. corvetteId)
+		printLuaError("CorellianCorvette:activate unable to find corvette object with id " .. corvetteID)
 		return false
 	end
 
 	self:startQuest(pCorvette, questType)
 
-	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteId", corvetteId)
+	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteID", corvetteID)
 	createEvent(1000, "CorellianCorvette", "transportPlayer", pPlayer, "")
 
 	if (CreatureObject(pPlayer):isGrouped()) then
@@ -120,7 +120,7 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 		return
 	end
 
-	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteId", SceneObject(pCorvette):getObjectID())
+	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteID", SceneObject(pCorvette):getObjectID())
 
 	local sui = SuiMessageBox.new("CorellianCorvette", "authorizationSuiCallback")
 	sui.setTargetNetworkId(SceneObject(pCorvette):getObjectID())
@@ -138,7 +138,7 @@ function CorellianCorvette:authorizationSuiCallback(pPlayer, pSui, eventIndex, a
 	local cancelPressed = (eventIndex == 1)
 
 	if (cancelPressed) then
-		deleteData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+		deleteData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 		return
 	end
 
@@ -150,7 +150,7 @@ function CorellianCorvette:closeAuthorizationSui(pPlayer, pageId)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local pageId = tonumber(pageId)
 
-	if (pCorvette ~= nil and SceneObject(pCorvette):getObjectID() == readData(playerID .. "corvetteId")) then
+	if (pCorvette ~= nil and SceneObject(pCorvette):getObjectID() == readData(playerID .. "corvetteID")) then
 		return
 	end
 
@@ -162,7 +162,7 @@ function CorellianCorvette:closeAuthorizationSui(pPlayer, pageId)
 
 	PlayerObject(pGhost):removeSuiBox(pageId)
 
-	deleteData(playerID .. "corvetteId")
+	deleteData(playerID .. "corvetteID")
 end
 
 function CorellianCorvette:lockRooms(pCorvette)
@@ -423,7 +423,7 @@ function CorellianCorvette:startRepairDroidRepairing(pDroid)
 		return 1
 	end
 
-	local corvetteId = BuildingObject(pCorvette):getObjectID()
+	local corvetteID = BuildingObject(pCorvette):getObjectID()
 	CreatureObject(pDroid):doAnimation("sp_10")
 
 	createEvent(3 * 1000, "CorellianCorvette", "removeElectricTrap", pCorvette, "")
@@ -456,12 +456,12 @@ function CorellianCorvette:removeElectricTrap(pCorvette)
 		deleteData(corvetteID .. ":electricTrap" .. i)
 	end
 
-	local H3POID = readData(corvetteId .. ":H3P0ID")
+	local H3POID = readData(corvetteID .. ":H3P0ID")
 	local pH3PO = getSceneObject(H3POID)
 
 	if (pH3PO ~= nil) then
 		spatialChat(pH3PO, "@dungeon/corvette:pdroid_congrats")
-		writeData(corvetteId.. ":repairDroidComplete", 1)
+		writeData(corvetteID.. ":repairDroidComplete", 1)
 	end
 end
 
@@ -805,14 +805,21 @@ function CorellianCorvette:transportPlayer(pPlayer)
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local pCorvette = getSceneObject(corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	
+	local pCorvette = getSceneObject(corvetteID)
+	
+	if (pCorvette == nil) then
+		printLuaError("CorellianCorvette:transportPlayer nil corvette object using corvette id " .. corvetteID)
+		return
+	end
 
 	local pCell = BuildingObject(pCorvette):getCell(1)
 
 	if (pCell == nil) then
 		return
 	end
+	
 	local cellID = SceneObject(pCell):getObjectID()
 	SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellID)
 end
