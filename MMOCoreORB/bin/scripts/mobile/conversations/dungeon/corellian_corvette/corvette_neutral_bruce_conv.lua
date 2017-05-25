@@ -52,7 +52,7 @@ corvetteBruceConvoTemplate:addScreen(convo_exit);
 
 which_planet = ConvoScreen:new {
 	id = "which_planet",
-	leftDialog = "@conversation/corvette_bruce_neutral_destroy:	", -- Have ye been out drinkin? Okay me go over it again.
+	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_dea1004c", -- Have ye been out drinkin? Okay me go over it again.
 	stopConversation = "false",
 	options = {}
 }
@@ -92,7 +92,7 @@ corvetteBruceConvoTemplate:addScreen(go_get_intel);
 
 hear_locations_quit = ConvoScreen:new {
 	id = "hear_locations_quit",
-	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_369d526d", -- --Bah! Consider yourself fortunate that I haven't time to report your insolence to Jabba!
+	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_a5cbd64e", -- Durnit! Dis not be good.
 	stopConversation = "true",
 	options = {}
 }
@@ -204,7 +204,7 @@ changed_mind = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteBruceConvoTemplate:addScreen(changed_mind );
+corvetteBruceConvoTemplate:addScreen(changed_mind);
 
 launch_location = ConvoScreen:new {
 	id = "launch_location",
@@ -213,6 +213,16 @@ launch_location = ConvoScreen:new {
 	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(launch_location);
+
+--TODO: Use this convo once the 'reset ticket giver quest' TODO in function CorellianCorvette:handleQuestFailure(pCorvette)
+-- within screenplays/dungeon/corellian_corvette/corellianCorvette.lua  is taken care of.
+return_failed = ConvoScreen:new {
+	id = "return_failed",
+	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_33849d1f", -- Oy, who'd a known that slimeball could run so fast... maybe Jabba can give me some big work and I'll make me money back. Hey, go away... can't you see I've got me own worries.
+	stopConversation = "true",
+	options = {}
+}
+corvetteBruceConvoTemplate:addScreen(return_failed);
 
 reward = ConvoScreen:new {
 	id = "reward",
