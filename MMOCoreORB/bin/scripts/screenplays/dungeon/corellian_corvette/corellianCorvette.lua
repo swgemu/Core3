@@ -806,13 +806,20 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	end
 
 	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	
 	local pCorvette = getSceneObject(corvetteId)
+	
+	if (pCorvette == nil) then
+		printLuaError("CorellianCorvette:transportPlayer nil corvette object using corvette id " .. corvetteId)
+		return
+	end
 
 	local pCell = BuildingObject(pCorvette):getCell(1)
 
 	if (pCell == nil) then
 		return
 	end
+	
 	local cellID = SceneObject(pCell):getObjectID()
 	SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellID)
 end
