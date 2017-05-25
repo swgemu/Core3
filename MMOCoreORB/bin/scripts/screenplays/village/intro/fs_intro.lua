@@ -39,13 +39,13 @@ function FsIntro:isOnIntro(pPlayer)
 end
 
 function FsIntro:hasDelayPassed(pPlayer)
-	local stepDelay = readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroDelay")
+	local stepDelay = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroDelay"))
 
-	if (stepDelay == "") then
+	if (stepDelay == nil or stepDelay == 0) then
 		return true
 	end
-
-	return tonumber(stepDelay) >= os.time()
+	
+	return os.time() >= stepDelay
 end
 
 function FsIntro:startStepDelay(pPlayer, step)
@@ -57,22 +57,22 @@ function FsIntro:startStepDelay(pPlayer, step)
 	end
 
 	self:setCurrentStep(pPlayer, step)
-	local stepDelay = getRandomNumber(stepData[1], stepData[2]) * 1000
+	local stepDelay = getRandomNumber(stepData[1], stepData[2])
 
 	if (step == 1) then
 		local oldManVisits = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroOldManVisits"))
 
 		if oldManVisits ~= nil then
 			if (oldManVisits == 2) then
-				stepDelay = stepDelay + (2 * 24 * 60 * 60 * 1000)
+				stepDelay = stepDelay + (2 * 24 * 60 * 60)
 			elseif (oldManVisits == 3) then
-				stepDelay = stepDelay + (7 * 24 * 60 * 60 * 1000)
+				stepDelay = stepDelay + (7 * 24 * 60 * 60)
 			elseif (oldManVisits == 4) then
-				stepDelay = stepDelay + (14 * 24 * 60 * 60 * 1000)
+				stepDelay = stepDelay + (14 * 24 * 60 * 60)
 			elseif (oldManVisits == 5) then
-				stepDelay = stepDelay + (30 * 24 * 60 * 60 * 1000)
+				stepDelay = stepDelay + (30 * 24 * 60 * 60)
 			elseif (oldManVisits >= 6) then
-				stepDelay = stepDelay + (60 * 24 * 60 * 60 * 1000)
+				stepDelay = stepDelay + (60 * 24 * 60 * 60)
 			end
 		end
 	end

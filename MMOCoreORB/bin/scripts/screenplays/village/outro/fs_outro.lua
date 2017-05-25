@@ -32,13 +32,13 @@ function FsOutro:isOnOutro(pPlayer)
 end
 
 function FsOutro:hasDelayPassed(pPlayer)
-	local stepDelay = readScreenPlayData(pPlayer, "VillageJediProgression", "FsOutroDelay")
+	local stepDelay = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "FsOutroDelay"))
 
-	if (stepDelay == "") then
+	if (stepDelay == nil or stepDelay == 0) then
 		return true
 	end
-
-	return tonumber(stepDelay) >= os.time()
+	
+	return os.time() >= stepDelay
 end
 
 function FsOutro:onLoggedIn(pPlayer)
@@ -80,7 +80,7 @@ function FsOutro:startOldMan(pPlayer)
 		return
 	end
 
-	local stepDelay = getRandomNumber(stepData[1], stepData[2]) * 1000
+	local stepDelay = getRandomNumber(stepData[1], stepData[2])
 
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
 	writeScreenPlayData(pPlayer, "VillageJediProgression", "FsOutroDelay", stepDelay + os.time())
