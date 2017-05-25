@@ -35,21 +35,23 @@ function GoToDathomir:onSuccessfulSpawn(pPlayer)
 		return
 	end
 
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)) then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost == nil) then
-		return
+		if (pGhost == nil) then
+			return
+		end
+
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS)
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/intro:force_sensitive")
+
+		if (not PlayerObject(pGhost):isJedi()) then
+			PlayerObject(pGhost):setJediState(1)
+		end
+
+		awardSkill(pPlayer, "force_title_jedi_novice")
 	end
-
-	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)
-	VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS)
-	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/intro:force_sensitive")
-
-	if (not PlayerObject(pGhost):isJedi()) then
-		PlayerObject(pGhost):setJediState(1)
-	end
-
-	awardSkill(pPlayer, "force_title_jedi_novice")
 end
 
 return GoToDathomir

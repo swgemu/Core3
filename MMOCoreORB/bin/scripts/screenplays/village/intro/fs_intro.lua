@@ -44,7 +44,7 @@ function FsIntro:hasDelayPassed(pPlayer)
 	if (stepDelay == nil or stepDelay == 0) then
 		return true
 	end
-	
+
 	return os.time() >= stepDelay
 end
 
@@ -149,7 +149,7 @@ function FsIntro:onLoggedIn(pPlayer)
 	end
 
 	local curStep = self:getCurrentStep(pPlayer)
-	
+
 	-- Extra check in case the player's current step gets messed up
 	if ((curStep == self.OLDMANWAIT or curStep == self.OLDMANMEET) and OldManIntroEncounter:hasForceCrystal(pPlayer)) then
 		self:setCurrentStep(pPlayer, self.SITHWAIT)
@@ -230,6 +230,9 @@ function FsIntro:onLoggedIn(pPlayer)
 			self:setCurrentStep(pPlayer, curStep - 1)
 			SithShadowIntroTheater:start(pPlayer)
 		end
+	elseif (curStep == self.VILLAGE and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)) then
+		GoToDathomir:finish(pPlayer)
+		GoToDathomir:start(pPlayer)
 	end
 end
 
