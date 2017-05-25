@@ -17,8 +17,8 @@ function CorvetteRoomPanelMenuComponent:handleObjectMenuSelect(pSceneObject, pPl
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local pCorvette = getSceneObject(corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
 		return
@@ -48,8 +48,8 @@ function CorvetteDestroyTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local questType = readStringData("corvetteQuestType:" .. corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	local questType = readStringData("corvetteQuestType:" .. corvetteID)
 
 	if (questType ~= "destroy") then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:does_nothing")
@@ -77,8 +77,8 @@ function CorvetteKeypadMenuComponent:handleObjectMenuSelect(pKeypad, pPlayer, se
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local pCorvette = getSceneObject(corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
 		return
@@ -119,8 +119,8 @@ function CorvetteComputerMenuComponent:handleObjectMenuSelect(pComputer, pPlayer
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local pCorvette = getSceneObject(corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
 		return
