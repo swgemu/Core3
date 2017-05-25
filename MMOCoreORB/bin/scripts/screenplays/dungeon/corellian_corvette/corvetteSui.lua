@@ -61,7 +61,7 @@ function CorvetteSui:engineSuiCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
@@ -146,7 +146,7 @@ function CorvetteSui:fuelSuiCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
@@ -220,7 +220,7 @@ function CorvetteSui:hyperdriveSuiCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
@@ -287,8 +287,8 @@ function CorvetteSui:keypadSuiCallback(pPlayer, pSui, eventIndex, args)
 		return
 	end
 
-	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
-	local pCorvette = getSceneObject(corvetteId)
+	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
+	local pCorvette = getSceneObject(corvetteID)
 
 	if (pCorvette == nil) then
 		return
