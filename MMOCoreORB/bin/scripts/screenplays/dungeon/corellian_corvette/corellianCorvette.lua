@@ -38,25 +38,19 @@ function CorellianCorvette:initialize()
 		local building = self.buildings[i]
 		for j = 1, #building.buildingIds, 1 do
 			local pCorvette = getSceneObject(building.buildingIds[j])
-			if pCorvette ~= nil then
-				if not SceneObject(pCorvette):isBuildingObject() then
-					print("Corvette id isn't a building: " .. building.buildingIds[j])
-				else
-					local corvetteID = SceneObject(pCorvette):getObjectID()
-					writeData("corvetteActive:" .. corvetteID, 0)
-					self:ejectAllPlayers(pCorvette)
-					writeData("corvettePlayerCount:" .. corvetteID, 0)
-					createObserver(ENTEREDBUILDING, "CorellianCorvette", "onEnterCorvette", pCorvette)
-					createObserver(EXITEDBUILDING, "CorellianCorvette", "onExitCorvette", pCorvette)
-					num = num + 1
-				end
+			if pCorvette == nil or not SceneObject(pCorvette):isBuildingObject() then
+				printLuaError("CorellianCorvette:initialize tried using a corvette id that was nil or not a building: " .. building.buildingIds[j])
 			else
-				print("Corvette id isn't valid: " .. building.buildingIds[j])
+				local corvetteID = SceneObject(pCorvette):getObjectID()
+				writeData("corvetteActive:" .. corvetteID, 0)
+				self:ejectAllPlayers(pCorvette)
+				writeData("corvettePlayerCount:" .. corvetteID, 0)
+				createObserver(ENTEREDBUILDING, "CorellianCorvette", "onEnterCorvette", pCorvette)
+				createObserver(EXITEDBUILDING, "CorellianCorvette", "onExitCorvette", pCorvette)
+				num = num + 1
 			end
 		end
 	end
-
-	print(num .. " corvette buildings initialized.")
 end
 
 function CorellianCorvette:activate(pPlayer, faction, questType)
@@ -81,6 +75,20 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 	local corvetteID = 0
 	for i = 1, #ids, 1 do
 		active = readData("corvetteActive:" .. ids[i])
+
+		if (active == 1) then
+			local startTime = readData("corvetteStartTime:" .. ids[i])
+			local timeLeftSecs = 3600 - (os.time() - startTime)
+
+			if (timeLeftSecs < 0) then
+				local pCorvette = getSceneObject(ids[i])
+
+				if (pCorvette ~= nil) then
+					self:ejectAllPlayers(pCorvette)
+					createEvent(5000, "CorellianCorvette", "doCorvetteCleanup", pCorvette, "")
+				end
+			end
+		end
 
 		if active ~= 1 then
 			corvetteID = ids[i]
@@ -806,9 +814,9 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	end
 
 	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
-	
+
 	local pCorvette = getSceneObject(corvetteID)
-	
+
 	if (pCorvette == nil) then
 		printLuaError("CorellianCorvette:transportPlayer nil corvette object using corvette id " .. corvetteID)
 		return
@@ -819,7 +827,7 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	if (pCell == nil) then
 		return
 	end
-	
+
 	local cellID = SceneObject(pCell):getObjectID()
 	SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellID)
 end
@@ -850,21 +858,23 @@ function CorellianCorvette:getBuildingFaction(pCorvette)
 end
 
 function CorellianCorvette:onEnterCorvette(pCorvette, pPlayer)
-	if SceneObject(pPlayer):isPlayerCreature() then
-		local active = readData("corvetteActive:" .. SceneObject(pCorvette):getObjectID())
-		if active ~= 1 then
-			createEvent(10 * 1000, "CorellianCorvette", "handleNotAuthorized", pPlayer, "")
-			return 0
-		end
+	if not SceneObject(pPlayer):isPlayerCreature() then
+		return 0
+	end
 
-		local playerCount = readData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID())
+	local active = readData("corvetteActive:" .. SceneObject(pCorvette):getObjectID())
+	if active ~= 1 then
+		createEvent(10 * 1000, "CorellianCorvette", "handleNotAuthorized", pPlayer, "")
+		return 0
+	end
 
-		writeData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID(), playerCount + 1)
+	local playerCount = readData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID())
 
-		if playerCount > 10 then
-			createEvent(10 * 1000, "CorellianCorvette", "handleTooMany", pPlayer, "")
-			return 0
-		end
+	writeData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID(), playerCount + 1)
+
+	if playerCount > 10 then
+		createEvent(10 * 1000, "CorellianCorvette", "handleTooMany", pPlayer, "")
+		return 0
 	end
 
 	return 0
@@ -901,18 +911,20 @@ function CorellianCorvette:handleCorvetteTimer(pCorvette)
 	if (timeLeft > 10) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(5 * 60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
-	elseif (timeLeftSecs <= 90) then
-		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeftSecs .. "s")
-		if (timeLeftSecs == 0) then
-			self:handleQuestFailure(pCorvette)
-		elseif (timeLeftSecs <= 10) then
-			createEvent(10 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
-		else
-			createEvent(30 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
-		end
-	else
+	elseif (timeLeft > 2) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	elseif (timeLeftSecs >= 90) then
+		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_90s")
+		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	elseif (timeLeftSecs >= 30) then
+		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_30s")
+		createEvent(20 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	elseif (timeLeftSecs >= 10) then
+		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_10s")
+		createEvent(10 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	else
+		self:handleQuestFailure(pCorvette)
 	end
 end
 
@@ -1076,7 +1088,7 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	local pCorvette = SceneObject(pParent):getParent()
 
 	if pCorvette == nil or not SceneObject(pCorvette):isBuildingObject() then
-		print("Error: unable to get corvette in CorellianCorvette:ejectPlayer")
+		printLuaError("CorellianCorvette:ejectPlayer unable to find corvette object")
 		return
 	end
 
@@ -1089,7 +1101,7 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	end
 
 	if point == nil then
-		print("Error: nil escape point for faction: " .. faction)
+		printLuaError("CorellianCorvette:ejectPlayer was unable to grab an escape point for faction: " .. faction)
 		return
 	end
 
@@ -1100,9 +1112,8 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 
 	if (isZoneEnabled(point.planet)) then
 		SceneObject(pPlayer):switchZone(point.planet, point.x, 0, point.y, 0)
-		print("Ejecting player " .. SceneObject(pPlayer):getCustomObjectName() .. " from corvette.")
 	else
-		print("Error: escape zone for corvette transfer is not enabled.")
+		printLuaError("CorellianCorvette:ejectPlayer attempted to eject a player to a zone that was not enabled.")
 	end
 end
 
