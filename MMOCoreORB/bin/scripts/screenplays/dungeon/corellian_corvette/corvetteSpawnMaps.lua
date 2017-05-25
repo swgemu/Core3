@@ -2,7 +2,7 @@ corvetteStaticSpawns = {
 	-- { template, x, z, y, roomName, yaw, customName, functionName, functionData, factionOnlySpawn }
 	--TODO: Remove blue frog before publish
 	{"object/tangible/terminal/terminal_character_builder.iff", -41.1, 0, 2.6, "airlock1", -140, "", "", "" },
-	
+
 	{ "object/tangible/terminal/terminal_elevator_up.iff", 5, 0, -13.4, "elevator18", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_down.iff", 5, 12, -13.4, "elevator18", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_up.iff", 0, -12, 37.67, "elevator19", 180, "", "", "" },
@@ -234,7 +234,7 @@ corvetteNeutralSpawns = {
 	{ "corsec_soldier", 0, 0, 30, -176, "hall3", "" },
 	{ "corsec_soldier", 0, 0, 10, 2, "hall3", "" },
 	{ "corsec_soldier", -10, 0, 6, 0, "hall4", "" },
-	{ "corsec_soldier", 180, 0, -21, -176, "hall17", "" },
+	{ "corsec_soldier", 8.2, 0, -27, 42, "hall16", "" },
 	{ "corsec_soldier", 20.1, 0, -11, 0, "hall14", "" },
 	{ "corsec_soldier", 36, 0, 0, -91, "hall11", "" },
 	{ "corsec_soldier", 9.9, 0, 28.2, 170, "hall12", "" },
