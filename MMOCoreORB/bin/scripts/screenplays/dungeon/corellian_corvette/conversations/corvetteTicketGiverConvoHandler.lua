@@ -96,7 +96,7 @@ function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConvoT
 	elseif (activeStep == 2) then
 		return convoTemplate:getScreen("still_here")
 	elseif (activeStep == 3) then
-		return convoTemplate:getScreen("earned_reward")
+		return convoTemplate:getScreen("reward")
 	end
 end
 
