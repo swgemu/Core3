@@ -101,8 +101,8 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 	local result = CorellianCorvette:activate(pPlayer, self:getFactionString(), activeQuestType)
 
 	if (result) then
-	--SceneObject(pInvItem):destroyObjectFromWorld()
-	--SceneObject(pInvItem):destroyObjectFromDatabase()
+		SceneObject(pInvItem):destroyObjectFromWorld()
+		SceneObject(pInvItem):destroyObjectFromDatabase()
 	end
 end
 
