@@ -998,7 +998,6 @@ function CorellianCorvette:writeDataToGroup(pCorvette, key, data)
 				local pObject = SceneObject(pCell):getContainerObject(j - 1)
 				if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
 					writeData(SceneObject(pObject):getObjectID() .. key, data)
-					printf("wrote " .. data .. " to " .. SceneObject(pObject):getObjectID() .. key .. "\n")
 				end
 			end
 		end
@@ -1015,7 +1014,6 @@ function CorellianCorvette:readDataFromGroup(pCorvette, key)
 
 				if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
 					local data = readData(SceneObject(pObject):getObjectID() .. key)
-					printf("read " .. data .. " from " .. SceneObject(pObject):getObjectID() .. key .. "\n")
 					if (data ~= 0) then
 						return data
 					end
@@ -1119,7 +1117,6 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 end
 
 function CorellianCorvette:doPlayerCleanup(pPlayer)
-	printf("doPlayerCleanup\n")
 	if (pPlayer == nil) then
 		return
 	end
