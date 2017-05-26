@@ -812,6 +812,9 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	if pPlayer == nil then
 		return
 	end
+	
+	-- Make sure the player had no data left over from a previous corvette
+	self:doPlayerCleanup(pPlayer)
 
 	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 
@@ -887,8 +890,6 @@ function CorellianCorvette:onExitCorvette(pCorvette, pPlayer)
 
 	local playerCount = readData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID())
 	writeData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID(), playerCount - 1)
-
-	self:doPlayerCleanup(pPlayer)
 
 	return 0
 end
@@ -1119,6 +1120,8 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	else
 		printLuaError("CorellianCorvette:ejectPlayer attempted to eject a player to a zone that was not enabled.")
 	end
+
+	self:doPlayerCleanup(pPlayer)
 end
 
 function CorellianCorvette:doPlayerCleanup(pPlayer)
@@ -1137,7 +1140,7 @@ function CorellianCorvette:doPlayerCleanup(pPlayer)
 	deleteData(playerID .. ":unlocked:meetingroom38")
 
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
-	
+
 	if (pInventory ~= nil) then
 		local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/corellian_corvette/bootdisk.iff", true)
 
