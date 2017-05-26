@@ -943,7 +943,6 @@ function CorellianCorvette:getCorvetteObject(pPlayer)
 end
 
 function CorellianCorvette:handleQuestFailure(pCorvette)
-	--TODO reset ticket giver quest
 	self:ejectAllPlayers(pCorvette)
 	createEvent(5000, "CorellianCorvette", "doCorvetteCleanup", pCorvette, "")
 end
@@ -1105,9 +1104,14 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	end
 
 	local playerID = SceneObject(pPlayer):getObjectID()
+
 	if (readData(playerID .. ":corvetteMissionComplete") == 1) then
 		setQuestStatus(playerID .. ":activeCorvetteStep", "3")
 		deleteData(playerID .. ":corvetteMissionComplete")
+	else
+		removeQuestStatus(playerID .. ":activeCorvetteQuest")
+		removeQuestStatus(playerID .. ":activeCorvetteStep")
+		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
 	end
 
 	if (isZoneEnabled(point.planet)) then
@@ -1131,6 +1135,24 @@ function CorellianCorvette:doPlayerCleanup(pPlayer)
 	deleteData(playerID .. ":code:officerquarters65")
 	deleteData(playerID .. ":unlocked:elevator57")
 	deleteData(playerID .. ":unlocked:meetingroom38")
+
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	
+	if (pInventory ~= nil) then
+		local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/corellian_corvette/bootdisk.iff", true)
+
+		if (pItem ~= nil) then
+			SceneObject(pItem):destroyObjectFromWorld()
+			SceneObject(pItem):destroyObjectFromDatabase()
+		end
+
+		pItem = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/droid_maint_module.iff", true)
+
+		if (pItem ~= nil) then
+			SceneObject(pItem):destroyObjectFromWorld()
+			SceneObject(pItem):destroyObjectFromDatabase()
+		end
+	end
 end
 
 function CorellianCorvette:doCorvetteCleanup(pCorvette)
