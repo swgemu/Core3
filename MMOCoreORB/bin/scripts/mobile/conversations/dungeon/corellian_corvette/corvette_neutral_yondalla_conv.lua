@@ -205,7 +205,7 @@ corvetteYondallaConvoTemplate:addScreen(launch_location);
 
 reward = ConvoScreen:new {
 	id = "reward",
-	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_2a75ee0f", -- Well done. The assassin is safely back in Jabba's hands. Well, I suppose it remains to be seen how safe that will be for him. Regardless, you've done your part and done it well. Are you here for your reward?
+	leftDialog = "@conversation/corvette_yondalla_neutral_rescue:s_b13f163d", -- Well done. The assassin is safely back in Jabba's hands. Well, I suppose it remains to be seen how safe that will be for him. Regardless, you've done your part and done it well. Are you here for your reward?
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_yondalla_neutral_rescue:s_9fb0ad73","give_reward"}, --Yes I am, thank you.
