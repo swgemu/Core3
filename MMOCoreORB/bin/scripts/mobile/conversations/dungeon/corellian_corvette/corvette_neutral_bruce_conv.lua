@@ -52,7 +52,7 @@ corvetteBruceConvoTemplate:addScreen(convo_exit);
 
 which_planet = ConvoScreen:new {
 	id = "which_planet",
-	leftDialog = "@conversation/corvette_bruce_neutral_destroy:	", -- Have ye been out drinkin? Okay me go over it again.
+	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_dea1004c", -- Have ye been out drinkin? Okay me go over it again.
 	stopConversation = "false",
 	options = {}
 }
@@ -62,7 +62,7 @@ first_location = ConvoScreen:new {
 	id = "first_location",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_5d72e2a5", -- Well on the planet of Naboo, sum of dem Maulers have been planning a raid against dem CorSec. Jabba think dem may have whut we wunt and haven't used it yet. Dey no wunt to give it up though so go dere and take it from dem. It sure ta be in dem camp sumwhere.
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(first_location);
 
@@ -70,7 +70,7 @@ second_location = ConvoScreen:new {
 	id = "second_location",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_bb218f7b", -- Well Jabba have a strong suspicion dem Rogue CorSec culd have dis here information. Dey after all former employees. Maybe dem stupid CorSec forget to change the sequence.
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(second_location);
 
@@ -78,7 +78,7 @@ third_location = ConvoScreen:new {
 	id = "third_location",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_7f918abd", -- Well if all else fails, on the dreaded planet of Dathomir, there be dem Nightsisters. Jabba once sent a traitor to one of dem slave camps, since he wus a bit of a womanizer. Wonderful sense of humor he has Jabba. Anyway, the traitor probably dead but he had some information dat may have been wut we want and the Sisters may have it now.
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(third_location);
 
@@ -92,7 +92,7 @@ corvetteBruceConvoTemplate:addScreen(go_get_intel);
 
 hear_locations_quit = ConvoScreen:new {
 	id = "hear_locations_quit",
-	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_369d526d", -- --Bah! Consider yourself fortunate that I haven't time to report your insolence to Jabba!
+	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_a5cbd64e", -- Durnit! Dis not be good.
 	stopConversation = "true",
 	options = {}
 }
@@ -110,7 +110,7 @@ back_already_reset = ConvoScreen:new {
 	id = "back_already_reset",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_ed430e90", -- Didn't take ye fer a quitter, guess I wus wrong. Dis not good news, not at all. I'm gonna take all everything about dis from ye. Ye keep nuthin.
 	stopConversation = "true",
-	options = { }
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(back_already_reset);
 
@@ -134,7 +134,7 @@ bad_intel_2 = ConvoScreen:new {
 	id = "bad_intel_2",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_269fe8a6", -- Culd be interesting me suppose. Here's some creds fer it.
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(bad_intel_2);
 
@@ -159,7 +159,7 @@ good_intel = ConvoScreen:new {
 	id = "good_intel",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_3da0d379", -- Fantalistic! Now ye just need to fly up to that corvette and make it go boom! Take dis here travel form and show to Klaatu outside behind the palace. He'll hook ye up! Destroy dat ship den come see me for yer reward!
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(good_intel);
 
@@ -175,7 +175,7 @@ still_here = ConvoScreen:new {
 	id = "still_here",
 	leftDialog = "@conversation/corvette_bruce_neutral_destroy:s_28c81b92", --  Ye haven't left yet? Whut ye still doing here?
 	stopConversation = "false",
-	options = {	}
+	options = {}
 }
 corvetteBruceConvoTemplate:addScreen(still_here);
 
@@ -204,7 +204,7 @@ changed_mind = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-corvetteBruceConvoTemplate:addScreen(changed_mind );
+corvetteBruceConvoTemplate:addScreen(changed_mind);
 
 launch_location = ConvoScreen:new {
 	id = "launch_location",
