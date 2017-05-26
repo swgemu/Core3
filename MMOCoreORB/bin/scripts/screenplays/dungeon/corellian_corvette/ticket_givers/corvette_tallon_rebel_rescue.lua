@@ -28,8 +28,8 @@ ticketGivertallon = CorvetteTicketGiverLogic:new {
 	which_planet ="@conversation/corvette_tallon_rebel1:s_60c4f974", -- Where do I go?
 	back_already_reset = "@conversation/corvette_tallon_rebel1:s_e70aed96", -- I can't continue. Please erase all records of my progress on this mission.
 
-	bad_intel1 = "@conversation/corvette_tallon_rebel1:s_9b6fd578", --Show the Imperial Resignation Form.
-	bad_intel2 = "@conversation/corvette_tallon_rebel1:s_b0e6356e", --Show the Imperial Purchase Order.
+	bad_intel_1 = "@conversation/corvette_tallon_rebel1:s_9b6fd578", --Show the Imperial Resignation Form.
+	bad_intel_2 = "@conversation/corvette_tallon_rebel1:s_b0e6356e", --Show the Imperial Purchase Order.
 	good_intel = "@conversation/corvette_tallon_rebel1:s_135bf1fb", --Show the Security Override Codes.
 
 	go_to_corvette = "@conversation/corvette_tallon_rebel1:s_67499366",--I am leaving for the Corellian corvette.
