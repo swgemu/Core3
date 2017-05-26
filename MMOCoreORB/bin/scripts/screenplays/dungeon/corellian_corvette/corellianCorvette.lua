@@ -1107,6 +1107,7 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	if (readData(playerID .. ":corvetteMissionComplete") == 1) then
 		setQuestStatus(playerID .. ":activeCorvetteStep", "3")
+		deleteData(playerID .. ":corvetteMissionComplete")
 	end
 
 	if (isZoneEnabled(point.planet)) then
