@@ -1,43 +1,43 @@
 --Copyright (C) 2007 <SWGEmu>
- 
+
 --This File is part of Core3.
- 
---This program is free software; you can redistribute 
---it and/or modify it under the terms of the GNU Lesser 
+
+--This program is free software; you can redistribute
+--it and/or modify it under the terms of the GNU Lesser
 --General Public License as published by the Free Software
---Foundation; either version 2 of the License, 
+--Foundation; either version 2 of the License,
 --or (at your option) any later version.
- 
---This program is distributed in the hope that it will be useful, 
---but WITHOUT ANY WARRANTY; without even the implied warranty of 
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+--This program is distributed in the hope that it will be useful,
+--but WITHOUT ANY WARRANTY; without even the implied warranty of
+--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 --See the GNU Lesser General Public License for
 --more details.
- 
---You should have received a copy of the GNU Lesser General 
+
+--You should have received a copy of the GNU Lesser General
 --Public License along with this program; if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
---Linking Engine3 statically or dynamically with other modules 
---is making a combined work based on Engine3. 
---Thus, the terms and conditions of the GNU Lesser General Public License 
+
+--Linking Engine3 statically or dynamically with other modules
+--is making a combined work based on Engine3.
+--Thus, the terms and conditions of the GNU Lesser General Public License
 --cover the whole combination.
- 
---In addition, as a special exception, the copyright holders of Engine3 
---give you permission to combine Engine3 program with free software 
---programs or libraries that are released under the GNU LGPL and with 
---code included in the standard release of Core3 under the GNU LGPL 
---license (or modified versions of such code, with unchanged license). 
---You may copy and distribute such a system following the terms of the 
---GNU LGPL for Engine3 and the licenses of the other code concerned, 
---provided that you include the source code of that other code when 
+
+--In addition, as a special exception, the copyright holders of Engine3
+--give you permission to combine Engine3 program with free software
+--programs or libraries that are released under the GNU LGPL and with
+--code included in the standard release of Core3 under the GNU LGPL
+--license (or modified versions of such code, with unchanged license).
+--You may copy and distribute such a system following the terms of the
+--GNU LGPL for Engine3 and the licenses of the other code concerned,
+--provided that you include the source code of that other code when
 --and as the GNU LGPL requires distribution of source code.
- 
---Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
---it is their choice whether to do so. The GNU Lesser General Public License 
---gives permission to release a modified version without this exception; 
---this exception also makes it possible to release a modified version 
+
+--Note that people who make modified versions of Engine3 are not obligated
+--to grant this special exception for their modified versions;
+--it is their choice whether to do so. The GNU Lesser General Public License
+--gives permission to release a modified version without this exception;
+--this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
 --Time, in seconds, that a shuttle is away for
@@ -76,11 +76,11 @@ corellia = {
 	},
 
 	badgeAreas = {
-		{"badge_agrilat_swap",1387,3749,30,20},
-		{"badge_bela_vistal_fountain",6767,-5617,30,81},
-		{"badge_rebel_hideout",-6530,5967,30,78},
-		{"badge_rogue_corsec_base",5291,1494,30,79},
-		{"badge_tyrena_theater",-5418,-6248,30,80},
+		{"badge_agrilat_swap",1387,3749,0,30,20},
+		{"badge_bela_vistal_fountain",6767,-5617,0,30,81},
+		{"badge_rebel_hideout",-6530,5967,0,30,78},
+		{"badge_rogue_corsec_base",5291,1494,0,30,79},
+		{"badge_tyrena_theater",-5418,-6248,0,30,80},
 	},
 
 	navAreas = {
@@ -117,10 +117,10 @@ dantooine = {
 	},
 
 	badgeAreas = {
-		{"badge_dantari_village1",-3929,-5632,30,84},
-		{"badge_dantari_village2",-7185,-883,30,85},
-		{"badge_jedi_temple",4195,5203,30,30},
-		{"badge_rebel_base",-6836,5520,30,31},
+		{"badge_dantari_village1",-3929,-5632,0,30,84},
+		{"badge_dantari_village2",-7185,-883,0,30,85},
+		{"badge_jedi_temple",4195,5203,0,30,30},
+		{"badge_rebel_base",-6836,5520,0,30,31},
 	},
 
 	navAreas = {
@@ -138,7 +138,7 @@ dantooine = {
 	planetObjects = {
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.695864, oz = 0, ow = 0.718174, x = 1585.68, z = 4, y = -6368.95, parentid = 0},
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.725999, oz = 0, ow = -0.687696, x = -629.417, z = 3, y = 2481.24, parentid = 0}
- 	}
+	}
 }
 
 dathomir = {
@@ -149,17 +149,17 @@ dathomir = {
 
 	planetTravelPoints = {
 		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
-		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1} 
+		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
 
 	badgeAreas = {
-		{"badge_crashed_ship",5676,1901,30,82},
-		{"badge_escape_pod",-4427,586,30,27},
-		{"badge_imperial_prison",-6141,973,30,83},
-		{"badge_misty_falls_1",3558,1554,30,28},
-		{"badge_misty_falls_2",3021,1289,30,29},
-		{"badge_sarlacc",-2101,3165,30,26},
-		{"badge_tarpit",652,-4888,30,25},
+		{"badge_crashed_ship",5676,1901,0,30,82},
+		{"badge_escape_pod",-4427,586,0,30,27},
+		{"badge_imperial_prison",-6141,973,0,30,83},
+		{"badge_misty_falls_1",3558,1554,0,30,28},
+		{"badge_misty_falls_2",3021,1289,0,30,29},
+		{"badge_sarlacc",-2101,3165,0,30,26},
+		{"badge_tarpit",652,-4888,0,30,25},
 	},
 
 	navAreas = {
@@ -217,10 +217,10 @@ endor = {
 	},
 
 	badgeAreas = {
-		{"badge_dulok_villlage",5921,-2514,30,88},
-		{"badge_ewok_tree_villlage",4661,-2425,30,86},
-		{"badge_imp_outpost",-4628,-2273,30,89},
-		{"badge_lake_villlage",1454,-3272,30,87},
+		{"badge_dulok_villlage",5921,-2514,0,30,88},
+		{"badge_ewok_tree_villlage",4661,-2425,0,30,86},
+		{"badge_imp_outpost",-4628,-2273,0,30,89},
+		{"badge_lake_villlage",1454,-3272,0,30,87},
 	},
 
 	navAreas = {
@@ -257,9 +257,9 @@ lok = {
 	},
 
 	badgeAreas = {
-		{"badge_imp_outpost",-1814,-3086,10,98},
-		{"badge_kimogila_skeleton",4562,-1156,10,99},
-		{"badge_volcano",3091,-4638,10,24},
+		{"badge_imp_outpost",-1814,-3086,0,10,98},
+		{"badge_kimogila_skeleton",4562,-1156,0,10,99},
+		{"badge_volcano",3091,-4638,0,10,24},
 	},
 
 	navAreas = {
@@ -305,10 +305,10 @@ naboo = {
 	},
 
 	badgeAreas = {
-		{"badge_amidalas_sandy_beach",-5828,-93,10,77},
-		{"badge_deeja_falls_top",5161,-1627,10,76},
-		{"badge_gungan_sacred_place",-2000,-5429,10,19},
-		{"badge_theed_falls_bottom",-4614,4261,10,75},
+		{"badge_amidalas_sandy_beach",-5828,-93,0,10,77},
+		{"badge_deeja_falls_top",5161,-1627,0,10,76},
+		{"badge_gungan_sacred_place",-2000,-5429,0,10,19},
+		{"badge_theed_falls_bottom",-4614,4261,0,10,75},
 	},
 
 	navAreas = {
@@ -359,10 +359,10 @@ rori = {
 	},
 
 	badgeAreas = {
-		{"badge_imp_camp",-5633,-5661,10,96},
-		{"badge_imp_hyperdrive_fac",-1130,4544,10,97},
-		{"badge_kobala_spice_mine",7304,63,10,94},
-		{"badge_rebel_outpost",3664,-6501,10,95}
+		{"badge_imp_camp",-5633,-5661,0,10,96},
+		{"badge_imp_hyperdrive_fac",-1130,4544,0,10,97},
+		{"badge_kobala_spice_mine",7304,63,0,10,94},
+		{"badge_rebel_outpost",3664,-6501,0,10,95}
 	},
 
 	navAreas = {
@@ -438,10 +438,10 @@ talus = {
 	},
 
 	badgeAreas = {
-		{"badge_aqualish_cave",-4425,-1414,30,93},
-		{"badge_creature_village",4300,1020,30,90},
-		{"badge_imp_base",-2185,2383,30,91},
-		{"badge_imp_vs_reb_battle",-2595,3724,30,92},
+		{"badge_aqualish_cave",-4425,-1414,0,30,93},
+		{"badge_creature_village",4300,1020,0,30,90},
+		{"badge_imp_base",-2185,2383,0,30,91},
+		{"badge_imp_vs_reb_battle",-2595,3724,0,30,92},
 	},
 
 	navAreas = {
@@ -528,13 +528,13 @@ tatooine = {
 	},
 
 	badgeAreas = {
-		{"badge_bens_hut",-4512,-2270,10,12},
-		{"badge_escape_pod",-3930,-4425,10,15},
-		{"badge_krayt_graveyard",7396,4478,10,18},
-		{"badge_krayt_skeleton",-4650,-4363,10,14},
-		{"badge_lars_homestead",-2579,-5500,10,17},
-		{"badge_sarlacc_pit",-6176,-3372,10,16},
-		{"badge_tusken_pool",-3969,6267,10,13},
+		{"badge_bens_hut",-4512,-2270,0,10,12},
+		{"badge_escape_pod",-3930,-4425,0,10,15},
+		{"badge_krayt_graveyard",7396,4478,0,10,18},
+		{"badge_krayt_skeleton",-4650,-4363,0,10,14},
+		{"badge_lars_homestead",-2579,-5500,0,10,17},
+		{"badge_sarlacc_pit",-6176,-3372,0,10,16},
+		{"badge_tusken_pool",-3969,6267,0,10,13},
 	},
 
 	navAreas = {
@@ -587,9 +587,9 @@ yavin4 = {
 	},
 
 	badgeAreas = {
-		{"badge_temple_exar_kun",5097,5537,30,23},
-		{"badge_temple_woolamander",519,-646,30,21},
-		{"badge_yav_temple_blueleaf",-875,-2047,30,22},
+		{"badge_temple_exar_kun",5097,5537,0,30,23},
+		{"badge_temple_woolamander",519,-646,0,30,21},
+		{"badge_yav_temple_blueleaf",-875,-2047,0,30,22},
 	},
 
 	navAreas = {

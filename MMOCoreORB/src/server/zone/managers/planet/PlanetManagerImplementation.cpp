@@ -285,8 +285,9 @@ void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
 		String badgeName = badge.getStringAt(1);
 		float x = badge.getFloatAt(2);
 		float y = badge.getFloatAt(3);
-		float radius = badge.getFloatAt(4);
-		int badgeID = badge.getIntAt(5);
+		int cellID = badge.getIntAt(4);
+		float radius = badge.getFloatAt(5);
+		int badgeID = badge.getIntAt(6);
 
 		ManagedReference<BadgeActiveArea*> obj = server->getZoneServer()->createObject(hashCode, 0).castTo<BadgeActiveArea*>();
 
@@ -295,6 +296,9 @@ void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
 		obj->setRadius(radius);
 		obj->setBadge(badgeID);
 		obj->initializePosition(x, 0, y);
+
+		if (cellID != 0)
+			obj->setCellObjectID(cellID);
 
 		zone->transferObject(obj, -1, false);
 		objLocker.release();
