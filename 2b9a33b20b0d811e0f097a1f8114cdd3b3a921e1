@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_21b0d4dc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-05-27T22:47:07Z",
+      "side": 1,
+      "message": "Not sure what your intent was here, but all you did was store the same string in a variable rather then send it to the command directly. It doesn\u0027t actually fix anything or do anything differently.",
+      "revId": "2b9a33b20b0d811e0f097a1f8114cdd3b3a921e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_81bbc8c3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-05-27T22:47:07Z",
+      "side": 1,
+      "message": "No need to pull the player\u0027s inventory again, you already did it above.",
+      "revId": "2b9a33b20b0d811e0f097a1f8114cdd3b3a921e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_41b5e0cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-05-27T22:47:07Z",
+      "side": 1,
+      "message": "You dont need to store the return value in a pointer here since you\u0027re not doing anything with it afterwards. No need for the local pItem portion.",
+      "revId": "2b9a33b20b0d811e0f097a1f8114cdd3b3a921e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
