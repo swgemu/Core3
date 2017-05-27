@@ -127,6 +127,12 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	if (pPlayer == nil or pCorvette == nil) then
 		return
 	end
+	
+	local corvetteFaction = self:getBuildingFaction(pCorvette)
+	
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(corvetteFaction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
+		return
+	end
 
 	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteID", SceneObject(pCorvette):getObjectID())
 
@@ -666,7 +672,9 @@ function CorellianCorvette:spawnComputerEnemies(pCorvette, pComputer)
 
 	local cellID = SceneObject(pComputer):getParentID()
 
-	-- TODO: Spawn the mobile after we can pick a good random room location
+	-- TODO: pick random spot in room for spawn loc once we can find random good room location
+	local pMobile = spawnMobile("dungeon1", spawnTemplate, 0, SceneObject(pComputer):getPositionX(), SceneObject(pComputer):getPositionZ(), SceneObject(pComputer):getPositionY(), 0, SceneObject(pComputer):getParentID())
+
 end
 
 function CorellianCorvette:notifyComputerRemovedFromZone(pComputer)
@@ -812,7 +820,7 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	if pPlayer == nil then
 		return
 	end
-	
+
 	-- Make sure the player had no data left over from a previous corvette
 	self:doPlayerCleanup(pPlayer)
 
