@@ -84,7 +84,7 @@ function FsOutro:startOldMan(pPlayer)
 
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
 	writeScreenPlayData(pPlayer, "VillageJediProgression", "FsOutroDelay", stepDelay + os.time())
-	createEvent(stepDelay, "FsOutro", "doOldManSpawn", pPlayer, "")
+	createEvent(stepDelay * 1000, "FsOutro", "doOldManSpawn", pPlayer, "")
 end
 
 function FsOutro:onLoggedOut(pPlayer)
