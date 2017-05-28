@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_4103a073",
+        "filename": "MMOCoreORB/bin/scripts/object/weapon/ranged/carbine/carbine_dh17_snubnose.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-28T02:19:11Z",
+      "side": 1,
+      "message": "don\u0027t change midrange. The ideal rage of a weapon is supposed to be static.",
+      "revId": "fb4ff92118107b0f3e9528b533e902b7c08818f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_e1f72c8b",
+        "filename": "MMOCoreORB/bin/scripts/object/weapon/ranged/carbine/carbine_ee3.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-28T02:19:11Z",
+      "side": 1,
+      "message": "What\u0027s your source for changing these midrangemod values? I can\u0027t believe this many weapons have typos from when the data from the client iffs was entered.",
+      "revId": "fb4ff92118107b0f3e9528b533e902b7c08818f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_01f59882",
+        "filename": "MMOCoreORB/bin/scripts/object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-28T02:19:11Z",
+      "side": 0,
+      "message": "You just need to switch the min and max values so that the mod increases with experimentation instead of decreases.",
+      "revId": "334297feca5de09ef8f6b7e38b6c154cc3daf5fc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_a1f12497",
+        "filename": "MMOCoreORB/bin/scripts/object/weapon/ranged/rifle/rifle_berserker.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-05-28T02:19:11Z",
+      "side": 0,
+      "message": "You just need to switch the min and max values so that the mod increases with experimentation instead of decreases.",
+      "revId": "334297feca5de09ef8f6b7e38b6c154cc3daf5fc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
