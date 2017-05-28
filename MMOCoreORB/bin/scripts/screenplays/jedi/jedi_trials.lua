@@ -155,25 +155,27 @@ function JediTrials:unlockJediKnight(pPlayer)
 		return
 	end
 
-	local knightSkill, unlockMusic, unlockString, enclaveLoc, enclaveName, jediState, setFactionVal, skillName
+	local knightRobe, unlockMusic, unlockString, enclaveLoc, enclaveName, jediState, setFactionVal, skillForceRank
 	local councilType = self:getJediCouncil(pPlayer)
 
 	if (councilType == self.COUNCIL_LIGHT) then
-		unlockMusic = "sound/music_become_dark_light.snd"
+		knightRobe = "object/tangible/wearables/robe/robe_jedi_light_s01.iff"
+		unlockMusic = "sound/music_become_light_jedi.snd"
 		unlockString = "@jedi_trials:knight_trials_completed_light"
 		enclaveLoc = { -5575, 4905, "yavin4" }
 		enclaveName = "Light Jedi Enclave"
 		jediState = 4
 		setFactionVal = FACTIONREBEL
-		skillName = "force_rank_light_novice"
+		skillForceRank = "force_rank_light_novice"
 	elseif (councilType == self.COUNCIL_DARK) then
-		unlockMusic = "sound/music_become_dark_dark.snd"
+		knightRobe = 'object/tangible/wearables/robe/robe_jedi_dark_s01.iff'
+		unlockMusic = "sound/music_become_dark_jedi.snd"
 		unlockString = "@jedi_trials:knight_trials_completed_dark"
 		enclaveLoc = { 5079, 305, "yavin4" }
 		enclaveName = "Dark Jedi Enclave"
 		jediState = 8
 		setFactionVal = FACTIONIMPERIAL
-		skillName = "force_rank_dark_novice"
+		skillForceRank = "force_rank_dark_novice"
 	else
 		printLuaError("Invalid council type in JediTrials:unlockJediKnight")
 		return
@@ -181,12 +183,12 @@ function JediTrials:unlockJediKnight(pPlayer)
 
 	awardSkill(pPlayer, "force_title_jedi_rank_03")
 	writeScreenPlayData(pPlayer, "KnightTrials", "completedTrials", 1)
-	awardSkill(pPlayer, skillName)
 	CreatureObject(pPlayer):playMusicMessage(unlockMusic)
 	playClientEffectLoc(CreatureObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", CreatureObject(pPlayer):getZoneName(), CreatureObject(pPlayer):getPositionX(), CreatureObject(pPlayer):getPositionZ(), CreatureObject(pPlayer):getPositionY(), CreatureObject(pPlayer):getParentID())
 
 	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
 	PlayerObject(pGhost):setJediState(jediState)
+	awardSkill(pPlayer, skillForceRank)
 	CreatureObject(pPlayer):setFactionStatus(2) -- Overt
 	CreatureObject(pPlayer):setFaction(setFactionVal)
 
@@ -194,6 +196,15 @@ function JediTrials:unlockJediKnight(pPlayer)
 	sui.setTitle("@jedi_trials:knight_trials_title")
 	sui.setPrompt(unlockString)
 	sui.sendTo(pPlayer)
+	
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
+		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:inventory_full_jedi_robe")
+	else
+		giveItem(pInventory, knightRobe, -1)
+	end
+	
 end
 
 function JediTrials:emptyCallback(pPlayer)
