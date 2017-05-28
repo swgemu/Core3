@@ -77,11 +77,24 @@ function ForceShrineMenuComponent:recoverRobe(pPlayer)
 		return
 	end
 
-	if not (SceneObject(pInventory):isContainerFullRecursive()) then
-		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-		local pItem = giveItem(pInventory, "object/tangible/wearables/robe/robe_jedi_padawan.iff", -1)
-		CreatureObject(pPlayer):sendSystemMessage("@force_rank:items_recovered")
-	else
+	if (SceneObject(pInventory):isContainerFullRecursive()) then
 		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:inventory_full_jedi_robe")
+		return
 	end
+
+	local robeTemplate
+	if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
+		local councilType = JediTrials:getJediCouncil(pPlayer)
+
+		if (councilType == JediTrials.COUNCIL_LIGHT) then
+			robeTemplate = "object/tangible/wearables/robe/robe_jedi_light_s01.iff"
+		else
+			robeTemplate = "object/tangible/wearables/robe/robe_jedi_dark_s01.iff"
+		end
+	else
+		robeTemplate = "object/tangible/wearables/robe/robe_jedi_padawan.iff"
+	end
+
+	giveItem(pInventory, robeTemplate, -1)
+	CreatureObject(pPlayer):sendSystemMessage("@force_rank:items_recovered")
 end

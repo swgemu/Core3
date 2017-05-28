@@ -233,8 +233,25 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 		ticket:setDeparturePoint(self.ticketInfo.faction)
 		ticket:setArrivalPlanet(self.ticketInfo.missionType)
 		ticket:setArrivalPoint(self.ticketInfo.faction)
+		ticket:setOwnerID(SceneObject(pPlayer):getObjectID())
 		SceneObject(pItem):sendTo(pPlayer)
+		createObserver(OBJECTREMOVEDFROMZONE, "CorvetteTicketGiverLogic", "notifyTicketDestroyed", pItem, 1)
 	end
+end
+
+function CorvetteTicketGiverLogic:notifyTicketDestroyed(pTicket)
+	if (pTicket == nil) then
+		return 1
+	end
+
+	local ticket = LuaTicketObject(pTicket)
+	local ownerID = ticket:getOwnerID()
+
+	removeQuestStatus(ownerID .. ":activeCorvetteQuest")
+	removeQuestStatus(ownerID .. ":activeCorvetteStep")
+	removeQuestStatus(ownerID .. ":activeCorvetteQuestType")
+	
+	return 1
 end
 
 function CorvetteTicketGiverLogic:hasTicket(pPlayer)

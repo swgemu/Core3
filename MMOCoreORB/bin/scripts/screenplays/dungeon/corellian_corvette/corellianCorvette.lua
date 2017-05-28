@@ -78,7 +78,7 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 
 		if (active == 1) then
 			local startTime = readData("corvetteStartTime:" .. ids[i])
-			local timeLeftSecs = 3600 - (os.time() - startTime)
+			local timeLeftSecs = 3600 - (os.time() - startTime) + 120
 
 			if (timeLeftSecs < 0) then
 				local pCorvette = getSceneObject(ids[i])
@@ -88,9 +88,7 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 					createEvent(5000, "CorellianCorvette", "doCorvetteCleanup", pCorvette, "")
 				end
 			end
-		end
-
-		if active ~= 1 then
+		else
 			corvetteID = ids[i]
 			break
 		end
@@ -106,7 +104,9 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 
 	self:startQuest(pCorvette, questType)
 
-	writeData(SceneObject(pPlayer):getObjectID() .. "corvetteID", corvetteID)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	writeData(playerID .. "corvetteID", corvetteID)
+	writeData(corvetteID .. "ownerID", playerID)
 	createEvent(1000, "CorellianCorvette", "transportPlayer", pPlayer, "")
 
 	if (CreatureObject(pPlayer):isGrouped()) then
@@ -127,9 +127,9 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	if (pPlayer == nil or pCorvette == nil) then
 		return
 	end
-	
+
 	local corvetteFaction = self:getBuildingFaction(pCorvette)
-	
+
 	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(corvetteFaction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
 		return
 	end
@@ -581,7 +581,7 @@ function CorellianCorvette:setupRoomPanel(pPanel, room)
 	end
 
 	SceneObject(pPanel):setObjectMenuComponent("CorvetteRoomPanelMenuComponent")
-	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyRoomPanelRemovedFromZone", pPanel, 1)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyRoomPanelRemovedFromZone", pPanel)
 	writeStringData(SceneObject(pPanel):getObjectID() .. ":panelRoom", room)
 end
 
@@ -604,7 +604,7 @@ function CorellianCorvette:setupKeypad(pKeypad, room)
 	end
 
 	SceneObject(pKeypad):setObjectMenuComponent("CorvetteKeypadMenuComponent")
-	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyKeypadRemovedFromZone", pKeypad, 1)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyKeypadRemovedFromZone", pKeypad)
 	writeStringData(SceneObject(pKeypad):getObjectID() .. ":keypadRoom", room)
 end
 
@@ -626,7 +626,7 @@ function CorellianCorvette:setupDestroyTerminal(pTerminal, type)
 	end
 
 	SceneObject(pTerminal):setObjectMenuComponent("CorvetteDestroyTerminalMenuComponent")
-	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyDestroyTerminalRemovedFromZone", pTerminal, 1)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyDestroyTerminalRemovedFromZone", pTerminal)
 	writeStringData(SceneObject(pTerminal):getObjectID() .. ":terminalType", type)
 end
 
@@ -648,7 +648,7 @@ function CorellianCorvette:setupComputerObject(pComputer, label)
 	end
 
 	SceneObject(pComputer):setObjectMenuComponent("CorvetteComputerMenuComponent")
-	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyComputerRemovedFromZone", pComputer, 1)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyComputerRemovedFromZone", pComputer)
 	writeStringData(SceneObject(pComputer):getObjectID() .. ":computerLabel", label)
 end
 
@@ -764,7 +764,7 @@ function CorellianCorvette:setupLootCrate(pCrate, type)
 	SceneObject(pCrate):setContainerDefaultAllowPermission(OPEN + MOVEOUT)
 
 	writeStringData(SceneObject(pCrate):getObjectID() .. ":crateType", type)
-	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyLootCrateRemovedFromZone", pCrate, 1)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyLootCrateRemovedFromZone", pCrate)
 	SceneObject(pCrate):setContainerComponent("corvetteLootCrateContainerComponent")
 end
 
@@ -1113,14 +1113,17 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	end
 
 	local playerID = SceneObject(pPlayer):getObjectID()
+	local ownerID = readData(SceneObject(pCorvette):getObjectID() .. ":ownerID")
 
-	if (readData(playerID .. ":corvetteMissionComplete") == 1) then
-		setQuestStatus(playerID .. ":activeCorvetteStep", "3")
-		deleteData(playerID .. ":corvetteMissionComplete")
-	else
-		removeQuestStatus(playerID .. ":activeCorvetteQuest")
-		removeQuestStatus(playerID .. ":activeCorvetteStep")
-		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
+	if (playerID == ownerID) then
+		if (readData(playerID .. ":corvetteMissionComplete") == 1) then
+			setQuestStatus(playerID .. ":activeCorvetteStep", "3")
+			deleteData(playerID .. ":corvetteMissionComplete")
+		else
+			removeQuestStatus(playerID .. ":activeCorvetteQuest")
+			removeQuestStatus(playerID .. ":activeCorvetteStep")
+			removeQuestStatus(playerID .. ":activeCorvetteQuestType")
+		end
 	end
 
 	if (isZoneEnabled(point.planet)) then
@@ -1193,7 +1196,8 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 	deleteData(corvetteID .. ":engineDestroyed")
 	deleteData(corvetteID .. ":electricTrapEnabled")
 	deleteData(corvetteID .. ":H3P0ID")
-	deleteData(corvetteID.. ":repairDroidComplete")
+	deleteData(corvetteID .. ":repairDroidComplete")
+	deleteData(corvetteID .. ":ownerID")
 
 	for i = 1, #self.electricTrapLocs, 1 do
 		local trapID = readData(corvetteID .. ":electricTrap" .. i)
