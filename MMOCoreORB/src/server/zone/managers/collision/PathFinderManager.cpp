@@ -153,7 +153,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	dtPolyRef startPoly;
 	dtPolyRef endPoly;
 
-	Reference<RecastNavMesh*> navMesh = area->getNavMesh();
+	RecastNavMesh* navMesh = area->getNavMesh();
 
 	if(navMesh == NULL || navMesh->isLoaded() == false)
 		return 0;

@@ -279,6 +279,8 @@ String DirectorManager::getStringSharedMemory(const String& key) {
 }
 
 void DirectorManager::startGlobalScreenPlays() {
+	info("Starting global screenplays.", true);
+
 	for (int i = 0; i < screenPlays.size(); ++i) {
 		String screenPlay = screenPlays.elementAt(i).getKey();
 		bool start = screenPlays.elementAt(i).getValue();
@@ -3316,7 +3318,7 @@ int DirectorManager::createNavMesh(lua_State *L) {
         return 0;
     }
 
-    ManagedReference<NavArea*> navArea = ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), 0).castTo<NavArea*>();
+    ManagedReference<NavArea*> navArea = ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", 0).castTo<NavArea*>();
     if (name.length() == 0) {
         name = String::valueOf(navArea->getObjectID());
     }
@@ -3330,6 +3332,7 @@ int DirectorManager::createNavMesh(lua_State *L) {
         navArea->disableMeshUpdates(!dynamic);
         navArea->initializeNavArea(position, radius, zone, str);
         zone->transferObject(navArea, -1, false);
+        zone->getPlanetManager()->addNavArea(str, navArea);
     }, "create_lua_navmesh", 1000);
     lua_pushlightuserdata(L, navArea);
     return 1;

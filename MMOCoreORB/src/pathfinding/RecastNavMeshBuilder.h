@@ -77,8 +77,6 @@ public:
 	getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize,
 				   float distanceBetweenHeights);
 
-	void saveAll(const String& file);
-
 	RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus);
 
 	virtual ~RecastNavMeshBuilder();

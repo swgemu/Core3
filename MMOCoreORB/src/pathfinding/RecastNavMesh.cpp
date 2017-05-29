@@ -7,55 +7,41 @@
 
 #include "RecastNavMesh.h"
 
-RecastNavMesh::RecastNavMesh(const String& filename, bool forceRebuild) : Logger("RecastNavMesh"), header() {
-	navMesh = NULL;
-
-	if (!forceRebuild)
-		loadAll(filename);
-
-	this->filename = filename;
+bool RecastNavMesh::toBinaryStream(ObjectOutputStream* stream) {
+	saveAll(stream);
+	return true;
 }
 
-void RecastNavMesh::loadAll(const String& filename) {
-	File file(filename);
-	FileInputStream stream(&file);
+bool RecastNavMesh::parseFromBinaryStream(ObjectInputStream* stream) {
+	loadAll(stream);
+	return true;
+}
 
-	if (!file.exists()) {
-		info("File does not exist " + filename, true);
-		return;
-	}
-
+void RecastNavMesh::loadAll(ObjectInputStream* stream) {
 	// Read header.
 	int size = sizeof(NavMeshSetHeader);
 
-	if (stream.read((byte * ) & header, size) != size) {
-		error("Error reading RecastNavMesh " + filename);
-		file.close();
+	stream->readStream((char*)&header, size);
+
+	if (header.magic != NAVMESHSET_MAGIC) {
+		error("Attempting to read invalid RecastNavMesh " + name);
 		return;
 	}
 
-	if (header.magic != NAVMESHSET_MAGIC) {
-		error("Attempting to read invalid RecastNavMesh " + filename);
-		file.close();
-		return;
-	}
 	if (header.version != NAVMESHSET_VERSION) {
 		error("RecastNavMesh header version is out of date");
-		file.close();
 		return;
 	}
 
 	dtNavMesh* mesh = dtAllocNavMesh();
 	if (!mesh) {
-		error("Failed to allocate RecastNavMesh " + filename);
-		file.close();
+		error("Failed to allocate RecastNavMesh " + name);
 		return;
 	}
 
 	dtStatus status = mesh->init(&header.params);
 	if (dtStatusFailed(status)) {
-		error("Invalid Detour status for RecastNavMesh " + filename);
-		file.close();
+		error("Invalid Detour status for RecastNavMesh " + name);
 		dtFreeNavMesh(mesh);
 		return;
 	}
@@ -65,67 +51,58 @@ void RecastNavMesh::loadAll(const String& filename) {
 		NavMeshTileHeader tileHeader;
 		int headerSize = sizeof(tileHeader);
 
-		if (stream.read((byte * ) & tileHeader, headerSize) != headerSize) {
-			error("Failed to read tileHeader for tile :" + String::valueOf(i) + " in RecastNavMesh " + filename);
-			file.close();
-			dtFreeNavMesh(mesh);
-			return;
-		}
+		stream->readStream((char*)&tileHeader, headerSize);
 
 		if (!tileHeader.tileRef || !tileHeader.dataSize) {
-			error("Invalid tileHeader tileRef or dataSize in " + filename);
-			file.close();
+			error("Invalid tileHeader tileRef or dataSize in " + name);
 			dtFreeNavMesh(mesh);
 			return;
 		}
 
 		byte* data = (byte*) dtAlloc(tileHeader.dataSize, DT_ALLOC_PERM);
 		if (!data) {
-			error("Failed to buffer for tile in RecastNavMesh " + filename);
-			file.close();
+			error("Failed to buffer for tile in RecastNavMesh " + name);
 			dtFreeNavMesh(mesh);
 			return;
 		}
 
 		memset(data, 0, tileHeader.dataSize);
-		if (stream.read(data, tileHeader.dataSize) != tileHeader.dataSize) {
-			error("Failed to read tileData:" + String::valueOf(i) + " in RecastNavMesh " + filename);
-			file.close();
-			dtFreeNavMesh(mesh);
-			dtFree(data);
-			return;
-		}
+		stream->readStream((char*)data, tileHeader.dataSize);
 
 		mesh->addTile(data, tileHeader.dataSize, DT_TILE_FREE_DATA, tileHeader.tileRef, 0);
 	}
-
-	file.close();
 
 	rwLock.wlock();
 	navMesh = mesh;
 	rwLock.unlock();
 }
 
-void RecastNavMesh::deleteFile() {
-	File file(filename);
-	file.setWriteable();
+void RecastNavMesh::saveAll(ObjectOutputStream* stream) {
+	const dtNavMesh* mesh = navMesh;
+	if (!mesh) return;
 
-	if (!file.exists()) {
-		info("File does not exist " + filename, true);
-		return;
+	// Store header.
+	header.magic = NAVMESHSET_MAGIC;
+	header.version = NAVMESHSET_VERSION;
+	header.numTiles = 0;
+	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = mesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
+		header.numTiles++;
 	}
+	memcpy(&header.params, mesh->getParams(), sizeof(dtNavMeshParams));
+	stream->writeStream((char*)&header, sizeof(NavMeshSetHeader));
 
-	file.deleteFile();
-	file.close();
+	// Store tiles.
+	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = mesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
 
-	File objFile(filename + ".obj");
-	objFile.setWriteable();
+		NavMeshTileHeader tileHeader;
+		tileHeader.tileRef = mesh->getTileRef(tile);
+		tileHeader.dataSize = tile->dataSize;
+		stream->writeStream((char*)&tileHeader, sizeof(tileHeader));
 
-	if (!objFile.exists()) {
-		info("File does not exist " + filename + ".obj", true);
-		return;
+		stream->writeStream((char*)tile->data, tile->dataSize);
 	}
-
-	objFile.deleteFile();
-	objFile.close();
 }

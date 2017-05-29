@@ -13,16 +13,16 @@
 
 class dtNavMesh;
 
-class RecastNavMesh : public Object, Logger {
-	void loadAll(const String& filename);
+class RecastNavMesh : public ManagedObject, Logger {
+	void loadAll(ObjectInputStream* stream);
+	void saveAll(ObjectOutputStream* stream);
+
 	dtNavMesh *navMesh;
-	//Vector3 position;
 	NavMeshSetHeader header;
-	String filename;
+	String name;
 	ReadWriteLock rwLock;
 
 public:
-	RecastNavMesh(const String& filename, bool forceRebuild=false);
 	RecastNavMesh() : header() {
 		navMesh = NULL;
 	}
@@ -31,11 +31,9 @@ public:
 		dtFreeNavMesh(navMesh);
 	}
 
-	void reloadNavmesh() {
-		loadAll(filename);
-	}
+	bool toBinaryStream(ObjectOutputStream* stream);
 
-	void deleteFile();
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	bool isLoaded() {
 		return navMesh != NULL;
@@ -57,8 +55,8 @@ public:
 		this->navMesh = navMesh;
 	}
 
-	void setFileName(const String& name) {
-		filename = name;
+	void setName(const String& name) {
+		this->name = name;
 	}
 
 	ReadWriteLock* getLock() { return &rwLock; }

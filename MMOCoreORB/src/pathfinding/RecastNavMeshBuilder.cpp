@@ -114,45 +114,6 @@ void RecastNavMeshBuilder::cleanup() {
 	m_dmesh = 0;
 }
 
-
-void RecastNavMeshBuilder::saveAll(const String& path) {
-	const dtNavMesh* mesh = m_navMesh;
-	if (!mesh) return;
-
-	String newPath = "navmeshes/" + path;
-
-	FILE* fp = fopen(newPath.toCharArray(), "wb");
-	if (!fp)
-		return;
-
-	// Store header.
-	header.magic = NAVMESHSET_MAGIC;
-	header.version = NAVMESHSET_VERSION;
-	header.numTiles = 0;
-	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
-		const dtMeshTile* tile = mesh->getTile(i);
-		if (!tile || !tile->header || !tile->dataSize) continue;
-		header.numTiles++;
-	}
-	memcpy(&header.params, mesh->getParams(), sizeof(dtNavMeshParams));
-	fwrite(&header, sizeof(NavMeshSetHeader), 1, fp);
-
-	// Store tiles.
-	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
-		const dtMeshTile* tile = mesh->getTile(i);
-		if (!tile || !tile->header || !tile->dataSize) continue;
-
-		NavMeshTileHeader tileHeader;
-		tileHeader.tileRef = mesh->getTileRef(tile);
-		tileHeader.dataSize = tile->dataSize;
-		fwrite(&tileHeader, sizeof(tileHeader), 1, fp);
-
-		fwrite(tile->data, tile->dataSize, 1, fp);
-	}
-
-	fclose(fp);
-}
-
 bool RecastNavMeshBuilder::rebuildArea(const AABB& buildArea, RecastNavMesh* existingMesh) {
 	destroyMesh = false;
 	float longest = buildArea.extents()[buildArea.longestAxis()];

@@ -135,7 +135,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     float range = bBox.extents()[bBox.longestAxis()];
     const Vector3& center = bBox.center();
 
-    String filename = area->getMeshName();
+    String name = area->getMeshName();
 
     SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
     zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
@@ -161,7 +161,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     RecastNavMeshBuilder *builder = NULL;
 
     const AtomicBoolean* running = job->getJobStatus();
-    builder = new RecastNavMeshBuilder(zone, filename, running);
+    builder = new RecastNavMeshBuilder(zone, name, running);
 
 	builder->setRecastConfig(job->getRecastConfig());
 
@@ -174,8 +174,8 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     builder->initialize(meshData, bBox, poleDist);
     meshData.removeAll();
     // This will take a very long time to complete
-    Reference<RecastNavMesh*> navmesh = area->getNavMesh();
-    bool initialBuild = (navmesh == NULL || !navmesh->isLoaded());
+    RecastNavMesh* navmesh = area->getNavMesh();
+    bool initialBuild = (!navmesh->isLoaded());
     if (initialBuild) {
 #ifdef NAVMESH_DEBUG
         info("Rebuilding Base Mesh", true);
@@ -192,33 +192,23 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     }
 
 #ifdef NAVMESH_DEBUG
-    info("NavArea->name: " + filename);
+    info("NavArea->name: " + name);
 #endif
 
-    if(running->get())
-        builder->saveAll(filename);
-
-    if(initialBuild) {
-        if(navmesh == NULL)
-            navmesh = new RecastNavMesh();
-
-        navmesh->setFileName("navmeshes/" + filename);
+    if (initialBuild) {
+        navmesh->setName(name);
         navmesh->setDetourNavMesh(builder->getNavMesh());
         navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
-
-        Core::getTaskManager()->executeTask([=]{
-            Locker locker(area);
-            area->setNavMesh(navmesh);
-        }, "setNavMesh");
     }
 
     Locker locker(&jobQueueMutex);
-    if(job->getAreas().size() > 0) {
 
-        jobs.put(filename, job);
+    if (job->getAreas().size() > 0) {
+
+        jobs.put(name, job);
     } else {
-        jobs.drop(filename);
-        runningJobs.drop(filename);
+        jobs.drop(name);
+        runningJobs.drop(name);
     }
 
     locker.release();
