@@ -14,7 +14,7 @@ function villageDageerinPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 		end
 	end
 
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 3) then
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 3 or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_FINISH)) then
 		return convoTemplate:getScreen("intro_completed_quest")

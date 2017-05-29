@@ -6,7 +6,7 @@ villageSivarraPhase1ConvoHandler = conv_handler:new {}
 function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1 or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_cant_talk")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_FINISH)) then
 		return convoTemplate:getScreen("intro_did_all_sets")

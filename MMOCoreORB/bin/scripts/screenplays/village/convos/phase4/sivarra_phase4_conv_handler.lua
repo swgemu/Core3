@@ -8,7 +8,7 @@ function villageSivarraPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 	local healCount = FsVillageDefense:getVillageHealingCount(pPlayer)
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 4) then
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 4 or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_FINISH)) then
 		return convoTemplate:getScreen("intro_completed_quest")

@@ -6,7 +6,7 @@ villageSarguilloPhase3ConvoHandler = conv_handler:new {}
 function villageSarguilloPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 3) then
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 3 or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_available")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_CS_QUEST_DONE)) then
 		return convoTemplate:getScreen("intro_not_available")

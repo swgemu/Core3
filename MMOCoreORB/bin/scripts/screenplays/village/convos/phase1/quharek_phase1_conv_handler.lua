@@ -8,6 +8,8 @@ function villageQuharekPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
 		return convoTemplate:getScreen("intro_wrong_phase")
+	elseif (not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
+		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_03)) then
 		return convoTemplate:getScreen("intro_completed_quest")
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)) then

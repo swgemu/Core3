@@ -5,7 +5,7 @@ villageWhipPhase2ConvoHandler = conv_handler:new {}
 
 function villageWhipPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 2 or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (readData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase2") == 1) then
 		return convoTemplate:getScreen("intro_quest_failed")

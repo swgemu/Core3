@@ -20,7 +20,7 @@ function villageChiefEngineerPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, 
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (self:isOnQuestOneThroughFive(pPlayer)) then
 		return convoTemplate:getScreen("intro_quest1to5")
-	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+	elseif (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) or not VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	else
 		return convoTemplate:getScreen("intro")

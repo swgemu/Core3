@@ -26,11 +26,11 @@ function villageSarguilloPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "intro_begin") then
-		if (FsVillageDefense:canAcceptRangedQuest(pPlayer)) then
+		if (FsVillageDefense:canAcceptRangedQuest(pPlayer) and VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 			clonedConversation:addOption("@conversation/defend_the_village:s_6e8bed18", "choose_ranged")
 		end
 		
-		if (FsVillageDefense:canAcceptMeleeQuest(pPlayer)) then
+		if (FsVillageDefense:canAcceptMeleeQuest(pPlayer) and VillageJediManagerCommon.isVillageEligible(pPlayer)) then
 			clonedConversation:addOption("@conversation/defend_the_village:s_95fe56b2", "choose_melee")
 		end
 		
