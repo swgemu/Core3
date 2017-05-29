@@ -7,6 +7,8 @@ corvetteStaticSpawns = {
 	{ "object/tangible/terminal/terminal_elevator_down.iff", 5, 12, -13.4, "elevator18", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_up.iff", 0, -12, 37.67, "elevator19", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_down.iff", 0, 0, 37.67, "elevator19", 180, "", "", "" },
+	{ "object/tangible/terminal/terminal_elevator_up.iff", 18, -24, 120.6, "elevator56", 180, "", "", "" },
+	{ "object/tangible/terminal/terminal_elevator_down.iff", 18, 12, 120.6, "elevator56", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_up.iff", -18, -12, 120.67, "elevator57", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_down.iff", -18, 0, 120.67, "elevator57", 180, "", "", "" },
 	{ "object/tangible/dungeon/terminal_free_s1.iff", -11.9, -12, 4.29, "meetingroom38", 90, "Elevator Control", "setupRoomPanel", "elevator57" },
