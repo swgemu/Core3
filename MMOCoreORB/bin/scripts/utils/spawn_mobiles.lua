@@ -339,7 +339,7 @@ function SpawnMobiles.isFromSpawn(pSceneObject, prefix, pMobile)
 
 	if spawnedMobiles ~= nil then
 		for i = 1, #spawnedMobiles, 1 do
-			if objectIdToCheck == SceneObject(spawnedMobiles[i]):getObjectID() then
+			if SpawnMobiles.isValidMobile(spawnedMobiles[i]) and objectIdToCheck == SceneObject(spawnedMobiles[i]):getObjectID() then
 				return true
 			end
 		end
