@@ -153,13 +153,15 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	dtPolyRef startPoly;
 	dtPolyRef endPoly;
 
-	Reference<RecastNavMesh*> navMesh = area->getNavMesh();
+	ReadLocker rLocker(area);
 
-	if(navMesh == NULL || navMesh->isLoaded() == false)
+	RecastNavMesh* navMesh = area->getNavMesh();
+
+	if (navMesh == NULL || navMesh->isLoaded() == false)
 		return 0;
 
 	dtNavMeshQuery *query = m_navQuery.get();
-	if(query == NULL) {
+	if (query == NULL) {
 		query = dtAllocNavMeshQuery();
 		m_navQuery.set(query);
 	}
@@ -177,8 +179,6 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 		int numPolys;
 		dtPolyRef polyPath[2048];
 		int status = 0;
-
-		ReadLocker rLocker(navMesh->getLock());
 
 		if (!((status =query->findNearestPoly(startPosAsFloat, extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			return false;
@@ -981,22 +981,23 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 	zone->getInRangeNavMeshes(center.getX(), center.getY(), &areas, false);
 
-	for (const auto& area : areas) {
+	for (const auto& navArea : areas) {
 		Vector3 polyStart;
 		dtPolyRef startPoly;
 		dtPolyRef ref;
 		int status = 0;
 		float pt[3];
 
-		RecastNavMesh *mesh = area->getNavMesh();
+		RecastNavMesh *mesh = navArea->getNavMesh();
 		if (mesh == NULL)
 			continue;
+
+		ReadLocker rLocker(navArea);
 
 		dtNavMesh *dtNavMesh = mesh->getNavMesh();
 		if (dtNavMesh == NULL)
 			continue;
 
-		ReadLocker rLocker(mesh->getLock());
 		query->init(dtNavMesh, 2048);
 
 		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_spawnFilter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))

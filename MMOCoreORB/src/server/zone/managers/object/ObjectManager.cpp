@@ -794,7 +794,24 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-		error("could not deserialize object from DB");
+
+		SceneObject* sceno = cast<SceneObject*>(object);
+
+		if (sceno) {
+			String dbName;
+			uint16 tableID = (uint16)(sceno->getObjectID() >> 48);
+			ObjectDatabaseManager::instance()->getDatabaseName(tableID, dbName);
+
+			String append;
+			NavArea* area = cast<NavArea*>(sceno);
+			if (area) {
+				append = ". It's a nav area with mesh name: " + area->getMeshName();
+			}
+
+			error("could not deserialize scene object of type: " + String::valueOf(sceno->getGameObjectType()) + " from DB: " + dbName + append);
+		} else {
+			error("could not deserialize managed object from DB");
+		}
 	} catch (...) {
 		error("could not deserialize object from DB");
 

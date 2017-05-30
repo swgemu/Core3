@@ -31,7 +31,7 @@ class RecastNavMesh;
 
 class MeshData;
 
-class RecastNavMeshBuilder : public Logger {
+class RecastNavMeshBuilder : public Object, Logger {
 protected:
 	bool m_keepInterResults;
 	bool m_buildAll;
@@ -59,6 +59,8 @@ protected:
 
 	unsigned char* buildTileMesh(const int tx, const int ty, int& dataSize);
 
+	virtual void rebuildArea(const AABB& buildArea);
+
 	void cleanup();
 
 	Vector <Reference<RecastPolygon*>> water;
@@ -77,8 +79,6 @@ public:
 	getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize,
 				   float distanceBetweenHeights);
 
-	void saveAll(const String& file);
-
 	RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus);
 
 	virtual ~RecastNavMeshBuilder();
@@ -91,11 +91,11 @@ public:
 
 	virtual bool build();
 
-	virtual bool rebuildArea(const AABB& area, RecastNavMesh* existingMesh);
+	virtual void rebuildAreas(const Vector<AABB>& buildAreas, NavArea* navArea);
 
 	void buildAllTiles();
 
-	void buildAllTiles(RecastNavMesh* mesh, const AABB& areaToRebuild);
+	void buildAllTiles(const AABB& areaToRebuild);
 
 	RecastSettings& getRecastConfig() {
 		return settings;

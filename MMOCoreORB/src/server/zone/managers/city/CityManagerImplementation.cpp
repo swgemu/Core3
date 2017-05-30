@@ -146,7 +146,7 @@ void CityManagerImplementation::loadLuaConfig() {
 }
 
 void CityManagerImplementation::loadCityRegions() {
-	info("Loading any remaining city regions.", true);
+	info("Loading city regions.", true);
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 
