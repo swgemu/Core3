@@ -249,6 +249,10 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 		huntTarget = newTarget
 	end
 
+	if (SceneObject(pVictim):getZoneName() ~= SceneObject(pPlayer):getZoneName() or not CreatureObject(pPlayer):isInRangeWithObject(pVictim, 80)) then
+		return 0
+	end
+
 	local targetList = HelperFuncs:splitString(huntTarget, ";")
 
 	if (huntTarget == SceneObject(pVictim):getObjectName() or HelperFuncs:tableContainsValue(targetList, SceneObject(pVictim):getObjectName())) then
