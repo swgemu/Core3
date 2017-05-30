@@ -123,14 +123,25 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 	return true
 end
 
+function CorellianCorvette:getFactionCRC(faction)
+	if faction == "imperial" then
+		return FACTIONIMPERIAL
+	elseif faction == "rebel" then
+		return FACTIONREBEL
+	else
+		return FACTIONNEUTRAL
+	end
+end
+
 function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	if (pPlayer == nil or pCorvette == nil) then
 		return
 	end
 
 	local corvetteFaction = self:getBuildingFaction(pCorvette)
+	local factionCRC = self:getFactionCRC(corvetteFaction)
 
-	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(corvetteFaction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
 		return
 	end
 
