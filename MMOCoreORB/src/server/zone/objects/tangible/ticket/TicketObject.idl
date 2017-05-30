@@ -15,9 +15,12 @@ class TicketObject extends TangibleObject {
 	protected string departurePoint;
 	protected string arrivalPlanet;
 	protected string arrivalPoint;
+	protected unsigned long ownerID;
 	
 	public TicketObject() {
 		Logger.setLoggingName("TicketObject");
+		
+		ownerID = 0;
 	}
 	
 	public void initializeTransientMembers() {
@@ -60,6 +63,10 @@ class TicketObject extends TangibleObject {
 		arrivalPoint = arrival;
 	}
 	
+	public void setOwnerID(unsigned long id) {
+		ownerID = id;
+	}
+	
 	@dirty
 	public string getDeparturePlanet() {
 		return departurePlanet;
@@ -78,6 +85,11 @@ class TicketObject extends TangibleObject {
 	@dirty
 	public string getArrivalPoint() {
 		return arrivalPoint;
+	}
+	
+	@dirty
+	public unsigned long getOwnerID() {
+		return ownerID;
 	}
 	
 	@dirty

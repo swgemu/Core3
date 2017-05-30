@@ -91,7 +91,12 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 	end
 
 	local ticket = LuaTicketObject(pInvItem)
-	local activeQuestType = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuestType")
+	local playerID = player:getObjectID()
+
+	-- Bandaid fix for existing nova tickets prior to storing an ownerid
+	ticket:setOwnerID(playerID)
+
+	local activeQuestType = getQuestStatus(playerID .. ":activeCorvetteQuestType")
 
 	if ticket:getDeparturePoint() ~= self:getFactionString() or ticket:getArrivalPlanet() ~= activeQuestType then
 		player:sendSystemMessage("@dungeon/space_dungeon:illegal_ticket") -- That is not the proper travel authorization.
