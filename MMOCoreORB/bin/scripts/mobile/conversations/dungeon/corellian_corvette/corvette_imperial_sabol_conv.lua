@@ -42,7 +42,7 @@ corvetteSabolConvoTemplate:addScreen(convo_exit);
 
 convo_start_2 = ConvoScreen:new {
 	id = "convo_start_2",
-	leftDialog = "@conversation/corvette_sabol_imperial1:s_145e07df", --So? Are you looking for work? Are you that desperate? I suppose I might be thankful but, as a lieutenant of the Empire, I am more suspicious than grateful. Oh fine! I'll tell you but only because I need someone to help me with some... field work. Do you wish to hear me out?
+	leftDialog = "@conversation/corvette_sabol_imperial1:s_1e7ac1df", --So? Are you looking for work? Are you that desperate? I suppose I might be thankful but, as a lieutenant of the Empire, I am more suspicious than grateful. Oh fine! I'll tell you but only because I need someone to help me with some... field work. Do you wish to hear me out?
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_sabol_imperial1:s_683de974	","convo_start_3"}, --Yes, I'll hear your story.
