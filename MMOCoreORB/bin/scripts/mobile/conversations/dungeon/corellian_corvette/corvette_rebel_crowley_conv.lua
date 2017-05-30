@@ -90,7 +90,7 @@ corvetteCrowleyConvoTemplate:addScreen(go_get_intel);
 
 hear_locations_quit = ConvoScreen:new {
 	id = "hear_locations_quit",
-	leftDialog = "@conversation/corvette_crowley_rebel1:s_cb6caf3", --That is sad news, but I will do so. It will be difficult to replace you. I'll have to retrieve all documents and data gathered for this mission from you. Sorry, but it's required.
+	leftDialog = "@conversation/corvette_crowley_rebel1:s_762ce016", --A pity. I am disappointed but will find another to replace you.
 	stopConversation = "true",
 	options = {}
 }
