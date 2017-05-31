@@ -106,7 +106,7 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. "corvetteID", corvetteID)
-	writeData(corvetteID .. "ownerID", playerID)
+	writeData(corvetteID .. ":ownerID", playerID)
 	createEvent(1000, "CorellianCorvette", "transportPlayer", pPlayer, "")
 
 	if (CreatureObject(pPlayer):isGrouped()) then
@@ -710,12 +710,33 @@ function CorellianCorvette:setupEscapePod(pPod)
 	end
 
 	createObserver(OBJECTRADIALUSED, "CorellianCorvette", "notifyPodRadialUsed", pPod)
+	createObserver(OBJECTREMOVEDFROMZONE, "CorellianCorvette", "notifyPodRemovedFromZone", pPod)
 
 	local pActiveArea = spawnActiveArea("dungeon1", "object/active_area.iff", SceneObject(pPod):getWorldPositionX(), SceneObject(pPod):getWorldPositionZ(), SceneObject(pPod):getWorldPositionY(), 3, SceneObject(pPod):getParentID())
 
 	if pActiveArea ~= nil then
 		createObserver(ENTEREDAREA, "CorellianCorvette", "notifyEnteredEscapePodArea", pActiveArea)
+		writeData(SceneObject(pPod):getObjectID() .. ":areaID", SceneObject(pActiveArea):getObjectID())
 	end
+end
+
+function CorellianCorvette:notifyPodRemovedFromZone(pPod)
+	if (pPod == nil) then
+		return 1
+	end
+
+	local podID = SceneObject(pPod):getObjectID()
+	local areaID = readData(podID .. ":areaID")
+	
+	local pArea = getSceneObject(areaID)
+	
+	if (pArea ~= nil) then
+		SceneObject(pArea):destroyObjectFromWorld()
+	end
+
+	deleteData(podID .. ":areaID")
+
+	return 1
 end
 
 function CorellianCorvette:notifyPodRadialUsed(pPod, pPlayer, radialSelected)
