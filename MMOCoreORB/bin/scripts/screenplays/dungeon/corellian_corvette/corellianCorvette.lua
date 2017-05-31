@@ -106,7 +106,7 @@ function CorellianCorvette:activate(pPlayer, faction, questType)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. "corvetteID", corvetteID)
-	writeData(corvetteID .. "ownerID", playerID)
+	writeData(corvetteID .. ":ownerID", playerID)
 	createEvent(1000, "CorellianCorvette", "transportPlayer", pPlayer, "")
 
 	if (CreatureObject(pPlayer):isGrouped()) then
