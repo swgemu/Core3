@@ -22,7 +22,8 @@ void CellObjectImplementation::initializeTransientMembers() {
 void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::loadTemplateData(templateData);
 
-	containerObjects.setDelayedLoadOperationMode();
+	if (!isClientObject())
+		containerObjects.setDelayedLoadOperationMode();
 }
 
 void CellObjectImplementation::notifyLoadFromDatabase() {
@@ -31,7 +32,9 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 	//Rebuild count to account for transient creos
 	//TODO: modify server shutdown to despawn transient mobs before final db save
 	if (!containerObjects.hasDelayedLoadOperationMode() || hasForceLoadObject()) {
-		containerObjects.setDelayedLoadOperationMode();
+		if (!isClientObject())
+			containerObjects.setDelayedLoadOperationMode();
+
 		forceLoadObjectCount.set(0);
 
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
