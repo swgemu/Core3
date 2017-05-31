@@ -249,6 +249,11 @@ void ZoneServerImplementation::startManagers() {
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
 
+	//Start global screen plays
+	DirectorManager::instance()->loadPersistentEvents();
+	DirectorManager::instance()->loadPersistentStatus();
+	DirectorManager::instance()->startGlobalScreenPlays();
+
 	cityManager->loadCityRegions();
 
 	for (int i = 0; i < zones->size(); ++i) {
@@ -257,11 +262,6 @@ void ZoneServerImplementation::startManagers() {
 			zone->updateCityRegions();
 		}
 	}
-
-	//Start global screen plays
-	DirectorManager::instance()->loadPersistentEvents();
-	DirectorManager::instance()->loadPersistentStatus();
-	DirectorManager::instance()->startGlobalScreenPlays();
 
 	auctionManager->initialize();
 }

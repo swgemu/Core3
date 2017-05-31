@@ -76,7 +76,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected static transient Mutex poiMutex;
 
 	@dereferenced
-	protected transient VectorMap<string, NavArea> pendingNavMeshes;
+	protected transient VectorMap<string, NavArea> navMeshAreas;
 
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
@@ -126,6 +126,18 @@ class PlanetManager extends ManagedService implements Logger {
 
 	@local
 	private native void loadNavAreas(LuaObject lua);
+
+	public void addNavArea(final string name, NavArea area) {
+		navMeshAreas.put(name, area);
+	}
+
+	public NavArea getNavArea(final string name) {
+		return navMeshAreas.get(name);
+	}
+
+	public void dropNavArea(final string name) {
+		navMeshAreas.drop(name);
+	}
 
 	private native void loadLuaConfig();
 

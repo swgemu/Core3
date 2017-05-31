@@ -21,6 +21,7 @@ protected:
 	VectorMap<String, Reference<NavMeshJob*> > runningJobs;
 	Mutex jobQueueMutex;
 	bool stopped;
+	ZoneServer* zoneServer;
 
 
 	void startJob(Reference<NavMeshJob*> job);
@@ -28,7 +29,7 @@ protected:
 public:
 	NavMeshManager();
 	~NavMeshManager() { }
-	void initialize(int numThreads);
+	void initialize(int numThreads, ZoneServer* server);
 
 	void enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue);
 

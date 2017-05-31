@@ -57,6 +57,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("questdata", true);
 	databaseManager->loadObjectDatabase("surveys", true);
 	databaseManager->loadObjectDatabase("accounts", true);
+	databaseManager->loadObjectDatabase("navareas", true, 0xFFFF, false);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -794,7 +795,18 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-		error("could not deserialize object from DB");
+
+		SceneObject* sceno = cast<SceneObject*>(object);
+
+		if (sceno) {
+			String dbName;
+			uint16 tableID = (uint16)(sceno->getObjectID() >> 48);
+			ObjectDatabaseManager::instance()->getDatabaseName(tableID, dbName);
+
+			error("could not deserialize scene object of type: " + String::valueOf(sceno->getGameObjectType()) + " from DB: " + dbName);
+		} else {
+			error("could not deserialize managed object from DB");
+		}
 	} catch (...) {
 		error("could not deserialize object from DB");
 
