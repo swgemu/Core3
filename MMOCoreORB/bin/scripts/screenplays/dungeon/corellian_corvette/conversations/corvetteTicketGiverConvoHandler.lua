@@ -221,7 +221,9 @@ function CorvetteTicketGiverConvoHandler:handleScreenHasIntel(pConvoTemplate, pP
 	if self.ticketGiver:hasTicket(pPlayer) then
 		clonedScreen:addOption(self.ticketGiver.go_to_corvette, "go_to_corvette")
 	else
-		clonedScreen:addOption(self.ticketGiver.check_other_places, "check_other_places")
+		if (pIntel1 == nil and pIntel2 == nil) then
+			clonedScreen:addOption(self.ticketGiver.check_other_places, "check_other_places")
+		end
 	end
 
 	return pConvoScreen
