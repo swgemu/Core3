@@ -158,6 +158,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	local knightRobe, unlockMusic, unlockString, enclaveLoc, enclaveName, jediState, setFactionVal, skillForceRank
 	local councilType = self:getJediCouncil(pPlayer)
 
+	councilType = 1
 	if (councilType == self.COUNCIL_LIGHT) then
 		knightRobe = "object/tangible/wearables/robe/robe_jedi_light_s01.iff"
 		unlockMusic = "sound/music_become_light_jedi.snd"
@@ -188,6 +189,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 
 	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
 	PlayerObject(pGhost):setJediState(jediState)
+	PlayerObject(pGhost):setFrsCouncil(councilType)
 	awardSkill(pPlayer, skillForceRank)
 	CreatureObject(pPlayer):setFactionStatus(2) -- Overt
 	CreatureObject(pPlayer):setFaction(setFactionVal)

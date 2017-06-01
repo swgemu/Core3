@@ -1,0 +1,150 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedService;
+import engine.log.Logger;
+import system.util.Vector;
+import server.zone.ZoneServer;
+import server.zone.managers.frs.RankMaintenanceTask;
+import server.zone.objects.building.BuildingObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.managers.frs.FrsRankingData;
+include system.lang.ref.Reference;
+
+class FrsManager extends ManagedService implements Logger {
+	public static final short COUNCIL_LIGHT = 1;
+	public static final short COUNCIL_DARK = 2;
+
+	private transient ZoneServer zoneServer;
+	
+	protected transient RankMaintenanceTask rankMaintenanceTask;
+	
+	@dereferenced
+	protected Time lastMaintenanceTime;
+	
+	@weakReference
+	protected BuildingObject lightEnclave;
+	
+	@weakReference
+	protected BuildingObject darkEnclave;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> lightRankedMembers;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned int, Reference<FrsRankingData> > lightRankingData;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> darkRankedMembers;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned int, Reference<FrsRankingData> > darkRankingData;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> experienceDebt;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, int> roomRequirements;
+	
+	protected transient int petitionInterval;
+	protected transient int votingInterval;
+	protected transient int acceptanceInterval;
+	protected transient int maintenanceInterval;
+
+	protected transient int requestDemotionDuration;
+	protected transient int voteChallengeDuration;
+
+	protected transient int baseMaintCost;
+	protected transient int requestDemotionCost;
+	protected transient int voteChallengeCost;
+
+	protected transient int maxPetitioners;
+	protected transient int missedVotePenalty;
+	
+	public FrsManager(ZoneServer zserv) {
+		Logger.setLoggingName("FrsManager");
+		Logger.setLogging(true);
+
+		zoneServer = zserv;
+		rankMaintenanceTask = null;
+		
+		lightEnclave = null;
+		darkEnclave = null;
+		
+		petitionInterval = 0;
+		votingInterval = 0;
+		acceptanceInterval = 0;
+		maintenanceInterval = 0;
+
+		requestDemotionDuration = 0;
+		voteChallengeDuration = 0;
+
+		baseMaintCost = 0;
+		requestDemotionCost = 0;
+		voteChallengeCost = 0;
+
+		maxPetitioners = 0;
+		missedVotePenalty = 0;
+		
+		experienceDebt.setNoDuplicateInsertPlan();
+	}
+	
+	public native void initialize();
+	public native void loadLuaConfig();
+
+	public native void setupEnclaves();
+	public native void setupEnclaveRooms(BuildingObject enclaveBuilding, final string groupName);
+	
+	@local
+	@dereferenced
+	public native Vector<unsigned long> getFullPlayerList();
+	
+	@preLocked
+	@arg1preLocked
+	public native void setPlayerRank(CreatureObject player, int rank);
+	
+	@arg1preLocked
+	public native void updatePlayerSkills(CreatureObject player);
+	
+	@preLocked
+	@arg1preLocked
+	public native void demotePlayer(CreatureObject player);
+	
+	@preLocked
+	@arg1preLocked
+	public native void promotePlayer(CreatureObject player);
+	
+	@preLocked
+	@arg1preLocked
+	public native void adjustFrsExperience(CreatureObject player, int amount);
+	public native void deductMaintenanceXp(CreatureObject player);
+	public native void addExperienceDebt(CreatureObject player, int amount);
+	
+	@arg1preLocked
+	public native void deductDebtExperience(CreatureObject player);
+	
+	public native int getRoomRequirement(unsigned long cellID) {
+		if (roomRequirements.contains(cellID))
+			return roomRequirements.get(cellID);
+
+		return 1;
+	}
+	
+	public native int getMaintenanceInterval() {
+		return maintenanceInterval;
+	}
+	
+	@dirty
+	public ZoneServer getZoneServer() {
+		return zoneServer;
+	}
+	
+	@preLocked
+	public void updateLastMaintenance() {
+		lastMaintenanceTime.updateToCurrentTime();
+	}
+}

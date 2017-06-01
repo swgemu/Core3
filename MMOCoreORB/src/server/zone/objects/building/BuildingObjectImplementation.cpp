@@ -41,6 +41,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
+#include "server/zone/objects/building/components/EnclaveContainerComponent.h"
 #include "templates/appearance/AppearanceTemplate.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
@@ -332,6 +333,12 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 			return true;
 
 		return checkContainerPermission(player,ContainerPermissions::WALKIN);
+	}
+
+	EnclaveContainerComponent* encComp = containerComponent.castTo<EnclaveContainerComponent*>();
+
+	if (encComp != NULL) {
+		return checkContainerPermission(player, ContainerPermissions::WALKIN);
 	}
 
 	if (!isClientObject()) {
