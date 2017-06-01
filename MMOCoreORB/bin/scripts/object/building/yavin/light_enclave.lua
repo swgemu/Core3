@@ -42,6 +42,7 @@
 
 
 object_building_yavin_light_enclave = object_building_yavin_shared_light_enclave:new {
+	containerComponent = "EnclaveContainerComponent",
 	planetMapCategory = "cloningfacility",
 	templateType = CLONINGBUILDING,
 	facilityType = CLONER_LIGHT_JEDI_ONLY,

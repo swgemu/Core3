@@ -1,0 +1,93 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedService;
+import engine.log.Logger;
+import system.util.Vector;
+import server.zone.ZoneServer;
+import server.zone.managers.frs.RankMaintenanceTask;
+import server.zone.objects.building.BuildingObject;
+import server.zone.objects.player.PlayerObject;
+include system.lang.ref.Reference;
+
+class FrsManager extends ManagedService implements Logger {
+	private transient ZoneServer zoneServer;
+	
+	protected transient RankMaintenanceTask rankMaintenanceTask;
+	
+	@dereferenced
+	protected Time lastMaintenanceTime;
+	
+	@weakReference
+	protected BuildingObject lightEnclave;
+	
+	@weakReference
+	protected BuildingObject darkEnclave;
+	
+	@dereferenced
+	protected transient Vector<unsigned long> enclaveIds;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, int> roomRequirements;
+	
+	protected transient int petitionInterval;
+	protected transient int votingInterval;
+	protected transient int acceptanceInterval;
+	protected transient int maintenanceInterval;
+
+	protected transient int requestDemotionDuration;
+	protected transient int voteChallengeDuration;
+
+	protected transient int baseMaintCost;
+	protected transient int requestDemotionCost;
+	protected transient int voteChallengeCost;
+
+	protected transient int maxPetitioners;
+	protected transient int missedVotePenalty;
+	
+	public FrsManager(ZoneServer zserv) {
+		Logger.setLoggingName("FrsManager");
+		Logger.setLogging(true);
+
+		zoneServer = zserv;
+		rankMaintenanceTask = null;
+		
+		lightEnclave = null;
+		darkEnclave = null;
+		
+		petitionInterval = 0;
+		votingInterval = 0;
+		acceptanceInterval = 0;
+		maintenanceInterval = 0;
+
+		requestDemotionDuration = 0;
+		voteChallengeDuration = 0;
+
+		baseMaintCost = 0;
+		requestDemotionCost = 0;
+		voteChallengeCost = 0;
+
+		maxPetitioners = 0;
+		missedVotePenalty = 0;
+	}
+	
+	public native void initialize();
+	public native void loadLuaConfig();
+
+	public native void setupEnclaves();
+	public native void setupEnclaveRooms(BuildingObject enclaveBuilding, final string groupName);
+	
+	public native void processRankMaintenance();
+	
+	public native void setPlayerRank(PlayerObject ghost, int rank);
+	
+	public native int getRoomRequirement(unsigned long cellID) {
+		if (roomRequirements.contains(cellID))
+			return roomRequirements.get(cellID);
+
+		return 1;
+	}
+}
