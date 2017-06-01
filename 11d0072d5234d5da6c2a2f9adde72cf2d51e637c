@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_b333b7f5",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T03:08:31Z",
+      "side": 1,
+      "message": "This is an incomplete fix. You need to also change the callback to only check bank credits and only subtract bank credits.",
+      "revId": "11d0072d5234d5da6c2a2f9adde72cf2d51e637c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
