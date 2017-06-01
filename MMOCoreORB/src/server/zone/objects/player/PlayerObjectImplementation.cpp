@@ -2041,11 +2041,15 @@ Time PlayerObjectImplementation::getLastVisibilityUpdateTimestamp() {
 	return lastVisibilityUpdateTimestamp;
 }
 
-Time PlayerObjectImplementation::getLastPvpCombatActionTimestamp() {
-	return lastPvpCombatActionTimestamp;
+Time PlayerObjectImplementation::getLastBhPvpCombatActionTimestamp() {
+	return lastBhPvpCombatActionTimestamp;
 }
 
-void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
+Time PlayerObjectImplementation::getLastGcwPvpCombatActionTimestamp() {
+	return lastGcwPvpCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == NULL)
@@ -2053,8 +2057,15 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
 
 	bool alreadyHasTef = hasPvpTef();
 
-	lastPvpCombatActionTimestamp.updateToCurrentTime();
-	lastPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+	if(updateBhAction) {
+		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
+		lastBhPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+	}
+
+	if(updateGcwAction) {
+		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		lastGcwPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+	}
 
 	schedulePvpTefRemovalTask();
 
@@ -2064,11 +2075,19 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
 	}
 }
 
-bool PlayerObjectImplementation::hasPvpTef() {
-	return !lastPvpCombatActionTimestamp.isPast();
+void PlayerObjectImplementation::updateLastBhPvpCombatActionTimestamp() {
+	updateLastPvpCombatActionTimestamp(false, true);
 }
 
-void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
+void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
+	updateLastPvpCombatActionTimestamp(true, false);
+}
+
+bool PlayerObjectImplementation::hasPvpTef() {
+	return !lastGcwPvpCombatActionTimestamp.isPast() || !lastBhPvpCombatActionTimestamp.isPast();
+}
+
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == NULL)
@@ -2078,23 +2097,30 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
 		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
-	if (removeNow) {
-		lastPvpCombatActionTimestamp.updateToCurrentTime();
+	if (removeGcwTefNow || removeBhTefNow) {
+		if(removeGcwTefNow)
+			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		if(removeBhTefNow)
+			lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 
 		if (pvpTefTask->isScheduled()) {
 			pvpTefTask->cancel();
 		}
+	}
 
-		pvpTefTask->execute();
-
-	} else if (!pvpTefTask->isScheduled()) {
+	if (!pvpTefTask->isScheduled()) {
 		if (hasPvpTef()) {
-			pvpTefTask->schedule(llabs(getLastPvpCombatActionTimestamp().miliDifference()));
+			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
+			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
+			pvpTefTask->schedule(llabs(gcwTefMs > bhTefMs ? gcwTefMs : bhTefMs));
 		} else {
 			pvpTefTask->execute();
 		}
 	}
+}
 
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
+	schedulePvpTefRemovalTask(removeNow, removeNow);
 }
 
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() {
