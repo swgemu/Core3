@@ -2765,6 +2765,8 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 		tanod3->close();
 		player->broadcastMessage(tanod3, true);
 
+		ghost->updateInRangeBuildingPermissions();
+
 		/*PlayerObjectDeltaMessage6* playd6 = new PlayerObjectDeltaMessage6(ghost);
 			playd6->setAdminLevel(adminLevel);
 			playd6->close();

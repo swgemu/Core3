@@ -106,7 +106,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/misc/ContractCrate.cpp \
+core3_IDLS =	autogen/server/zone/managers/frs/FrsManager.cpp \
+				autogen/server/zone/objects/tangible/misc/ContractCrate.cpp \
 				autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
 				autogen/server/zone/objects/pathfinding/NavArea.cpp \
@@ -523,6 +524,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/ShuttleInstallationZoneComponent.cpp \
 		server/zone/objects/structure/components/StructureContainerComponent.cpp \
 		server/zone/objects/building/components/GCWBaseContainerComponent.cpp \
+		server/zone/objects/building/components/EnclaveContainerComponent.cpp \
 		server/zone/objects/scene/components/ZoneComponent.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
@@ -844,6 +846,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/resource/InterplanetarySurveyImplementation.cpp \
 		server/zone/managers/reaction/ReactionManagerImplementation.cpp \
+		server/zone/managers/frs/FrsManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/PetManagerImplementation.cpp \
 		server/zone/managers/creature/SpawnAreaMap.cpp \

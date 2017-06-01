@@ -36,6 +36,7 @@ include server.zone.objects.player.variables.Ability;
 include server.zone.objects.player.variables.AbilityList;
 include server.zone.objects.player.variables.FactionStandingList;
 include server.zone.objects.player.variables.FriendList;
+include server.zone.objects.player.variables.FrsData;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.WaypointList;
@@ -108,6 +109,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
+	
+	@dereferenced
+	protected FrsData frsData;
 
 	@dereferenced
 	protected WaypointList waypointList;
@@ -361,7 +365,7 @@ class PlayerObject extends IntangibleObject {
 		drinkFillingMax = 0;
 
 		reactionFines = 0;
-
+		
 		Logger.setLoggingName("PlayerObject");
 	}
 
@@ -1298,6 +1302,12 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public AbilityList getAbilityList() {
 		return abilityList;
+	}
+	
+	@local
+	@dirty
+	public FrsData getFrsData() {
+		return frsData;
 	}
 	
 	@local

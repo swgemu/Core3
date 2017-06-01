@@ -12,6 +12,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/PersistentMessage.h"
@@ -1257,6 +1258,14 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
+
+	if (getFrsData()->getRank() > 0) {
+		FrsManager* frsManager = zoneServer->getFrsManager();
+
+		if (frsManager != NULL) {
+			frsManager->deductDebtExperience(playerCreature);
+		}
+	}
 
 	playerCreature->notifyObservers(ObserverEventType::LOGGEDIN);
 

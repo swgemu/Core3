@@ -30,6 +30,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -264,6 +265,9 @@ void ZoneServerImplementation::startManagers() {
 	}
 
 	auctionManager->initialize();
+
+	frsManager = new FrsManager(_this.getReferenceUnsafeStaticCast());
+	frsManager->initialize();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -334,6 +338,7 @@ void ZoneServerImplementation::stopManagers() {
 	auctionManager = NULL;
 	petManager = NULL;
 	reactionManager = NULL;
+	frsManager = NULL;
 	creatureTemplateManager = NULL;
 	dnaManager = NULL;
 	stringIdManager = NULL;

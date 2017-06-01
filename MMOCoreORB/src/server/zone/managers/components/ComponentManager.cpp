@@ -15,6 +15,7 @@
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
+#include "server/zone/objects/building/components/EnclaveContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
@@ -293,6 +294,7 @@ ComponentManager::ComponentManager() {
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 	components.put("PlaceDecorationComponent", new PlaceDecorationComponent());
 	components.put("CityDecorationMenuComponent", new CityDecorationMenuComponent());
+	components.put("EnclaveContainerComponent", new EnclaveContainerComponent());
 
 	// SE Goggles.
 	components.put("GogglesObjectMenuComponent", new GogglesObjectMenuComponent());
