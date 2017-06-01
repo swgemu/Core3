@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_93879b61",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T08:58:14Z",
+      "side": 1,
+      "message": "delete lua",
+      "revId": "fc99ec17a3fe88034ecc3da63940a77bc492d2e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_337ca772",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/variables/FrsData.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T08:58:14Z",
+      "side": 1,
+      "message": "I would move this enum to the manager",
+      "revId": "fc99ec17a3fe88034ecc3da63940a77bc492d2e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
