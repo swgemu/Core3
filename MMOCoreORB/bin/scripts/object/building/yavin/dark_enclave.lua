@@ -42,6 +42,7 @@
 
 
 object_building_yavin_dark_enclave = object_building_yavin_shared_dark_enclave:new {
+	containerComponent = "EnclaveContainerComponent",
 	planetMapCategory = "cloningfacility",
 	templateType = CLONINGBUILDING,
 	facilityType = CLONER_DARK_JEDI_ONLY,
