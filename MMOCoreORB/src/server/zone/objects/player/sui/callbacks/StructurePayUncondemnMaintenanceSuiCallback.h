@@ -37,7 +37,7 @@ public:
 
 		int uncondemnCost = -structure->getSurplusMaintenance();
 
-		if (uncondemnCost < 0 || (creature->getBankCredits() + creature->getCashCredits() < uncondemnCost)) {
+		if (uncondemnCost < 0 || (creature->getBankCredits() < uncondemnCost)) {
 			StringIdChatParameter params("@player_structure:structure_condemned_owner_no_credits"); // "This structure has been condemned by the order of the Empire. It currently requires %DI credits to uncondemn this structure. You do not have sufficient funds in your bank account. Add sufficient funds to your account and return to regain access to this structure."
 			params.setDI(uncondemnCost);
 			creature->sendSystemMessage(params);

@@ -947,6 +947,7 @@ void StructureManager::promptNameStructure(CreatureObject* creature,
 	ghost->addSuiBox(inputBox);
 	creature->sendMessage(inputBox->generateMessage());
 }
+
 void StructureManager::promptMaintenanceDroid(StructureObject* structure, CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -994,8 +995,8 @@ void StructureManager::promptMaintenanceDroid(StructureObject* structure, Creatu
 	creature->sendMessage(box->generateMessage());
 
 }
-void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
-		StructureObject* structure) {
+
+void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL) {
@@ -1007,13 +1008,12 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 	ManagedReference<SuiMessageBox*> sui = NULL;
 	String text;
 
-	if (creature->getCashCredits() + creature->getBankCredits()
-			>= uncondemnCost) {
+	if (creature->getBankCredits() >= uncondemnCost) {
 		//Owner can un-condemn the structure.
 		sui = new SuiMessageBox(creature, SuiWindowType::STRUCTURE_UNCONDEMN_CONFIRM);
 		if (sui == NULL) {
 			return;
-                }
+		}
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId =
@@ -1031,7 +1031,7 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 		sui = new SuiMessageBox(creature, SuiWindowType::NONE);
 		if (sui == NULL) {
 			return;
-                }
+		}
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId =
@@ -1053,8 +1053,7 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 	creature->sendMessage(sui->generateMessage());
 }
 
-void StructureManager::promptPayMaintenance(StructureObject* structure,
-		CreatureObject* creature, SceneObject* terminal) {
+void StructureManager::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
 	int availableCredits = creature->getCashCredits();
 
 	if (availableCredits <= 0) {
