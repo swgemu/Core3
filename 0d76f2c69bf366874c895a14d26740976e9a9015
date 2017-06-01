@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_3320279b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T03:05:42Z",
+      "side": 1,
+      "message": "This will work, but let\u0027s consider an alternative.\n\nIn the case where both tefs are active and only one is removed here, the task will be cancelled and then executed. When the task runs it will reschedule itself since one of the tefs is still active.....",
+      "revId": "0d76f2c69bf366874c895a14d26740976e9a9015",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_7326afbc",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T03:05:42Z",
+      "side": 1,
+      "message": "I think it would be better to skip the task execution when not needed. Keep the cancellation if scheduled above but remove this execution....",
+      "revId": "0d76f2c69bf366874c895a14d26740976e9a9015",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_932b1b82",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-01T03:05:42Z",
+      "side": 1,
+      "message": "Then remove the else here and make this block stand alone. That will save us the extra task execution by scheduling now for when the remaining tef ends.",
+      "revId": "0d76f2c69bf366874c895a14d26740976e9a9015",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
