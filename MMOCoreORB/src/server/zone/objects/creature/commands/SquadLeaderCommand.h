@@ -100,6 +100,12 @@ public:
 		if (leader->getFaction() == 0 && target->getFaction() != 0 && targetCreo->getFactionStatus() != FactionStatus::ONLEAVE)
 			return false;
 
+		if(target->isPlayerCreature()) {
+			PlayerObject* ghost = target->getPlayerObject();
+			if(ghost != NULL && ghost->hasBhTef())
+				return false;
+		}
+
 		return true;
 	}
 

@@ -255,6 +255,24 @@ void PlayerObjectImplementation::unload() {
 	creature->printReferenceHolders();*/
 }
 
+int PlayerObjectImplementation::calculateBhReward() {
+	int minReward = 25000; // Minimum reward for a player bounty
+	int maxReward = 250000; // Maximum reward for a player bounty
+
+	int reward = minReward;
+
+	int skillPoints = getSpentJediSkillPoints();
+
+	reward = skillPoints * 1000;
+
+	if (reward < minReward)
+		reward = minReward;
+	else if (reward > maxReward)
+		reward = maxReward;
+
+	return reward;
+}
+
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending player object baselines");
 
@@ -2084,7 +2102,11 @@ void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
 }
 
 bool PlayerObjectImplementation::hasPvpTef() {
-	return !lastGcwPvpCombatActionTimestamp.isPast() || !lastBhPvpCombatActionTimestamp.isPast();
+	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
+}
+
+bool PlayerObjectImplementation::hasBhTef() {
+	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow) {
@@ -2112,7 +2134,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 		if (hasPvpTef()) {
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
-			pvpTefTask->schedule(llabs(gcwTefMs > bhTefMs ? gcwTefMs : bhTefMs));
+			pvpTefTask->schedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
 		} else {
 			pvpTefTask->execute();
 		}
