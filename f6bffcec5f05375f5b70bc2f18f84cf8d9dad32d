@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_13488b2c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/creature_dynamic/yavin4_stintaril_prowler_neutral_none.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-02T21:45:11Z",
+      "side": 1,
+      "message": "I think you should set this a little higher (4 or 5). This would better match the evidence that says it spawned 1-2 at a time. It\u0027s also logical that they be a bit more abundant than blurrg raptors since the trial for the latter requires fewer kills (though we could also accomplish that via spawn weighting in the spawn group).",
+      "revId": "f6bffcec5f05375f5b70bc2f18f84cf8d9dad32d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
