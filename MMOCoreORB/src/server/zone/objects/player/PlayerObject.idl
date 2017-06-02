@@ -383,6 +383,8 @@ class PlayerObject extends IntangibleObject {
 	public native void notifyLoadFromDatabase();
 
 	public native void unload();
+	
+	public native int calculateBhReward();
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
@@ -1612,6 +1614,8 @@ class PlayerObject extends IntangibleObject {
 	public native void updateLastGcwPvpCombatActionTimestamp();
 
 	public native boolean hasPvpTef();
+	
+	public native boolean hasBhTef();
 	
 	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
 

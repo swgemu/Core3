@@ -693,9 +693,6 @@ void BountyMissionObjectiveImplementation::handleTargetLoggedIn(ManagedObject* a
 
 	target = cast<CreatureObject*>(arg1);
 
-	if(target == NULL)
-		info("target is null", true);
-
 	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
