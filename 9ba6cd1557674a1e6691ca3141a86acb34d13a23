@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_53461325",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-02T21:29:46Z",
+      "side": 1,
+      "message": "It\u0027ll probably work 99% of the time but, to be safe, you should null check the object you get before calling methods with it. If getObject returns null, we\u0027ll crash. If the object getObject returns isn\u0027t a creo, we\u0027ll crash.",
+      "revId": "9ba6cd1557674a1e6691ca3141a86acb34d13a23",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_3341070c",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-02T21:29:46Z",
+      "side": 1,
+      "message": "These two lines aren\u0027t needed since we already have a pointer named ghost that is pointing to creature\u0027s PlayerObject.",
+      "revId": "9ba6cd1557674a1e6691ca3141a86acb34d13a23",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
