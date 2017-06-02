@@ -1835,6 +1835,10 @@ void MissionManagerImplementation::addBountyHunterToPlayerBounty(uint64 targetId
 
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->addBountyHunter(bountyHunterId);
+	} else {
+		PlayerObject* ghost = server->getObject(targetId)->asCreatureObject()->getPlayerObject();
+		if(ghost != NULL)
+			addPlayerToBountyList(targetId, ghost->calculateBhReward());
 	}
 }
 
@@ -1931,8 +1935,6 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 
 void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 bountyHunter) {
 	Locker listLocker(&playerBountyListMutex);
-
-	info("Bounty completed for targetId: " + String::valueOf(targetId), true);
 
 	if (playerBountyList.contains(targetId)) {
 		BountyTargetListElement* target = playerBountyList.get(targetId);

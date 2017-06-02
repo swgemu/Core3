@@ -36,7 +36,7 @@ public:
 		if (ghost->hasPvpTef()) {
 			auto gcwTefMs = ghost->getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = ghost->getLastBhPvpCombatActionTimestamp().miliDifference();
-			this->reschedule(llabs(gcwTefMs > bhTefMs ? gcwTefMs : bhTefMs));
+			this->reschedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
 		} else {
 			ghost->updateInRangeBuildingPermissions();
 			player->clearPvpStatusBit(CreatureFlag::TEF);
