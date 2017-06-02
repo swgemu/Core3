@@ -3069,6 +3069,12 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
+	if(targetCreo->isPlayerCreature()) {
+		PlayerObject* targetGhost = targetCreo->getPlayerObject();
+		if(targetGhost != NULL && targetGhost->hasBhTef())
+			return false;
+	}
+
 	return true;
 }
 
