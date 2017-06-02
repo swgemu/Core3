@@ -237,20 +237,22 @@ public:
 		bool shouldBhTef = false;
 
 		ManagedReference<CreatureObject*> attackingCreature = creature->isPet() ? creature->getLinkedCreature() : creature;
-		ManagedReference<CreatureObject*> targetCreature = targetObject->isPet() || targetObject->isVehicleObject()
-				? targetCreature->getLinkedCreature() : targetObject.castTo<CreatureObject*>();
+
+		ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> targetOwningCreature = targetCreature != NULL && (targetObject->isPet() || targetObject->isVehicleObject())
+				? targetCreature->getLinkedCreature() : targetCreature;
 
 		if(
 			attackingCreature != NULL &&
-			targetCreature != NULL &&
+			targetOwningCreature != NULL &&
 			attackingCreature->isPlayerCreature() &&
-			targetCreature->isPlayerCreature() &&
-			!combatManager->areInDuel(attackingCreature, targetCreature)
+			targetOwningCreature->isPlayerCreature() &&
+			!combatManager->areInDuel(attackingCreature, targetOwningCreature)
 		) {
-			if(attackingCreature->getFaction() != targetCreature->getFaction() && attackingCreature->getFactionStatus() & FactionStatus::OVERT && targetCreature->getFactionStatus() & FactionStatus::OVERT)
+			if(attackingCreature->getFaction() != targetOwningCreature->getFaction() && attackingCreature->getFactionStatus() & FactionStatus::OVERT && targetOwningCreature->getFactionStatus() & FactionStatus::OVERT)
 				shouldGcwTef = true;
 
-			if(attackingCreature->hasBountyMissionFor(targetCreature) || targetCreature->hasBountyMissionFor(attackingCreature))
+			if(attackingCreature->hasBountyMissionFor(targetOwningCreature) || targetOwningCreature->hasBountyMissionFor(attackingCreature))
 				shouldBhTef = true;
 		}
 
