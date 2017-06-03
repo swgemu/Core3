@@ -3011,6 +3011,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (areInDuel)
 		return true;
 
+	if(object->hasBountyMissionFor(asCreatureObject()) || (ghost->isBountyLocked() && ghost->isInBountyLockList(object->getObjectID())))
+		return true;
+
 	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
 		return false;
 
