@@ -7,55 +7,49 @@
 
 #include "RecastNavMesh.h"
 
-RecastNavMesh::RecastNavMesh(const String& filename, bool forceRebuild) : Logger("RecastNavMesh"), header() {
-	navMesh = NULL;
-
-	if (!forceRebuild)
-		loadAll(filename);
-
-	this->filename = filename;
+bool RecastNavMesh::toBinaryStream(ObjectOutputStream* stream) {
+	saveAll(stream);
+	return true;
 }
 
-void RecastNavMesh::loadAll(const String& filename) {
-	File file(filename);
-	FileInputStream stream(&file);
+bool RecastNavMesh::parseFromBinaryStream(ObjectInputStream* stream) {
+	loadAll(stream);
+	return true;
+}
 
-	if (!file.exists()) {
-		info("File does not exist " + filename, true);
+void RecastNavMesh::loadAll(ObjectInputStream* stream) {
+	name.parseFromBinaryStream(stream);
+
+	bool meshWritten = stream->readBoolean();
+
+	if (!meshWritten) {
+		info("Loading NavArea with null mesh: " + name, true);
 		return;
 	}
 
 	// Read header.
 	int size = sizeof(NavMeshSetHeader);
-
-	if (stream.read((byte * ) & header, size) != size) {
-		error("Error reading RecastNavMesh " + filename);
-		file.close();
-		return;
-	}
+	stream->readStream((char*)&header, size);
 
 	if (header.magic != NAVMESHSET_MAGIC) {
-		error("Attempting to read invalid RecastNavMesh " + filename);
-		file.close();
+		error("Attempting to read invalid RecastNavMesh " + name);
 		return;
 	}
+
 	if (header.version != NAVMESHSET_VERSION) {
 		error("RecastNavMesh header version is out of date");
-		file.close();
 		return;
 	}
 
 	dtNavMesh* mesh = dtAllocNavMesh();
 	if (!mesh) {
-		error("Failed to allocate RecastNavMesh " + filename);
-		file.close();
+		error("Failed to allocate RecastNavMesh " + name);
 		return;
 	}
 
 	dtStatus status = mesh->init(&header.params);
 	if (dtStatusFailed(status)) {
-		error("Invalid Detour status for RecastNavMesh " + filename);
-		file.close();
+		error("Invalid Detour status for RecastNavMesh " + name);
 		dtFreeNavMesh(mesh);
 		return;
 	}
@@ -65,67 +59,112 @@ void RecastNavMesh::loadAll(const String& filename) {
 		NavMeshTileHeader tileHeader;
 		int headerSize = sizeof(tileHeader);
 
-		if (stream.read((byte * ) & tileHeader, headerSize) != headerSize) {
-			error("Failed to read tileHeader for tile :" + String::valueOf(i) + " in RecastNavMesh " + filename);
-			file.close();
-			dtFreeNavMesh(mesh);
-			return;
-		}
+		stream->readStream((char*)&tileHeader, headerSize);
 
 		if (!tileHeader.tileRef || !tileHeader.dataSize) {
-			error("Invalid tileHeader tileRef or dataSize in " + filename);
-			file.close();
+			error("Invalid tileHeader tileRef or dataSize in " + name);
 			dtFreeNavMesh(mesh);
 			return;
 		}
 
 		byte* data = (byte*) dtAlloc(tileHeader.dataSize, DT_ALLOC_PERM);
 		if (!data) {
-			error("Failed to buffer for tile in RecastNavMesh " + filename);
-			file.close();
+			error("Failed to buffer for tile in RecastNavMesh " + name);
 			dtFreeNavMesh(mesh);
 			return;
 		}
 
 		memset(data, 0, tileHeader.dataSize);
-		if (stream.read(data, tileHeader.dataSize) != tileHeader.dataSize) {
-			error("Failed to read tileData:" + String::valueOf(i) + " in RecastNavMesh " + filename);
-			file.close();
-			dtFreeNavMesh(mesh);
-			dtFree(data);
-			return;
-		}
+		stream->readStream((char*)data, tileHeader.dataSize);
 
 		mesh->addTile(data, tileHeader.dataSize, DT_TILE_FREE_DATA, tileHeader.tileRef, 0);
 	}
 
-	file.close();
-
-	rwLock.wlock();
 	navMesh = mesh;
-	rwLock.unlock();
 }
 
-void RecastNavMesh::deleteFile() {
-	File file(filename);
-	file.setWriteable();
+void RecastNavMesh::saveAll(ObjectOutputStream* stream) {
+	name.toBinaryStream(stream);
 
-	if (!file.exists()) {
-		info("File does not exist " + filename, true);
+	const dtNavMesh* mesh = navMesh;
+	if (!mesh) {
+		stream->writeBoolean(false); // not writing mesh
 		return;
 	}
 
-	file.deleteFile();
-	file.close();
+	stream->writeBoolean(true); // writing mesh
 
-	File objFile(filename + ".obj");
-	objFile.setWriteable();
+	// Store header.
+	stream->writeStream((char*)&header, sizeof(NavMeshSetHeader));
 
-	if (!objFile.exists()) {
-		info("File does not exist " + filename + ".obj", true);
+	// Store tiles.
+	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = mesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
+
+		NavMeshTileHeader tileHeader;
+		tileHeader.tileRef = mesh->getTileRef(tile);
+		tileHeader.dataSize = tile->dataSize;
+		stream->writeStream((char*)&tileHeader, sizeof(tileHeader));
+
+		stream->writeStream((char*)tile->data, tile->dataSize);
+	}
+}
+
+void RecastNavMesh::setupDetourNavMeshHeader() {
+	const dtNavMesh* mesh = navMesh;
+	if (!mesh) return;
+
+	header.magic = NAVMESHSET_MAGIC;
+	header.version = NAVMESHSET_VERSION;
+	header.numTiles = 0;
+	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = mesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
+		header.numTiles++;
+	}
+
+	memcpy(&header.params, mesh->getParams(), sizeof(dtNavMeshParams));
+}
+
+void RecastNavMesh::copyMeshTo(dtNavMesh* mesh) {
+	const dtNavMesh* origMesh = navMesh;
+	if (!origMesh) {
+		error("Original mesh is null in copyMeshTo for " + name);
 		return;
 	}
 
-	objFile.deleteFile();
-	objFile.close();
+	mesh = dtAllocNavMesh();
+	if (!mesh) {
+		error("Failed to allocate dtNavMesh in copyMeshTo for " + name);
+		return;
+	}
+
+	dtStatus status = mesh->init(&header.params);
+	if (dtStatusFailed(status)) {
+		error("Invalid Detour status for dtNavMesh in copyMeshTo for " + name);
+		dtFreeNavMesh(mesh);
+		return;
+	}
+
+	// Copy tiles.
+	for (int i = 0; i < origMesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = origMesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
+
+		NavMeshTileHeader tileHeader;
+		tileHeader.tileRef = origMesh->getTileRef(tile);
+		tileHeader.dataSize = tile->dataSize;
+
+		byte* data = (byte*) dtAlloc(tileHeader.dataSize, DT_ALLOC_PERM);
+		if (!data) {
+			error("Failed to alloc data in copyMeshTo for " + name);
+			dtFreeNavMesh(mesh);
+			return;
+		}
+
+		memcpy(data, tile->data, tileHeader.dataSize);
+
+		mesh->addTile(data, tileHeader.dataSize, DT_TILE_FREE_DATA, tileHeader.tileRef, 0);
+	}
 }

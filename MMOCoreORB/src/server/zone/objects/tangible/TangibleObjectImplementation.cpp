@@ -1070,6 +1070,8 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 	if (!area->isDeplyoed())
 		area->deploy();
 
+	Locker locker(&containerLock);
+
 	activeAreas.put(area);
 }
 

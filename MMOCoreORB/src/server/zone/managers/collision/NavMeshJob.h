@@ -18,7 +18,7 @@ protected:
 	WeakReference<Zone*> zone;
 	Vector<AABB> areas;
 	RecastSettings settings;
-	const String& queue;
+	String queue;
 	AtomicBoolean running;
 	Mutex mutex;
 

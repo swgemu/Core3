@@ -16,10 +16,12 @@ const String NavMeshManager::MeshQueue = "NavMeshBuilder";
 NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
     maxConcurrentJobs = 4;
     stopped = false;
+    zoneServer = NULL;
 }
 
-void NavMeshManager::initialize(int numThreads) {
+void NavMeshManager::initialize(int numThreads, ZoneServer* server) {
     maxConcurrentJobs = numThreads;
+    zoneServer = server;
     Core::getTaskManager()->initializeCustomQueue(TileQueue.toCharArray(), maxConcurrentJobs/2, false);
     Core::getTaskManager()->initializeCustomQueue(MeshQueue.toCharArray(), maxConcurrentJobs, false);
 }
@@ -28,16 +30,26 @@ void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, con
 	if (stopped)
 		return;
 
+	if (queue != TileQueue && queue != MeshQueue) {
+		error("queue is not tile or mesh in NavMeshManager::enqueueJob. queue is " + queue + " for area " + area->getMeshName() + " in zone " + zone->getZoneName());
+		return;
+	}
+
     Locker locker(&jobQueueMutex);
 
     const String& name = area->getMeshName();
     Reference<NavMeshJob*> job = runningJobs.get(name);
     if (job) {
-        job->addArea(areaToBuild);
+    	if (job->getNavArea() == area) {
+    		job->addArea(areaToBuild);
 #ifdef NAVMESH_DEBUG
-        info("Adding area to running job " + name);
+        	info("Adding area to running job " + name);
 #endif
-        return;
+    	} else {
+    		error("Trying to add area to running job with same name and different NavArea");
+    	}
+
+    	return;
     }
 
     job = jobs.get(name);
@@ -47,6 +59,10 @@ void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, con
         info("Creating new job for " + name);
 #endif
     } else {
+    	if (job->getNavArea() != area) {
+    		error("Trying to add area to queued job with same name and different NavArea");
+    		return;
+    	}
 #ifdef NAVMESH_DEBUG
         info("Adding area to existing job " + name);
 #endif
@@ -62,8 +78,11 @@ void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, con
 }
 
 void NavMeshManager::checkJobs() {
-	if (stopped)
+	if (stopped || zoneServer == NULL)
 		return;
+
+	while (zoneServer->isServerLoading())
+		Thread::sleep(5000);
 
     Locker locker(&jobQueueMutex);
 
@@ -103,14 +122,13 @@ void NavMeshManager::checkJobs() {
     locker.release();
 }
 
-
 void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     if (stopped || job == NULL) {
         return;
     }
 
-    Reference<NavArea*> area = job->getNavArea();
+    ManagedReference<NavArea*> area = job->getNavArea();
 
     if (area == NULL) {
     	return;
@@ -135,7 +153,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     float range = bBox.extents()[bBox.longestAxis()];
     const Vector3& center = bBox.center();
 
-    String filename = area->getMeshName();
+    String name = area->getMeshName();
 
     SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
     zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
@@ -158,10 +176,10 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         }
     }
 
-    RecastNavMeshBuilder *builder = NULL;
+    Reference<RecastNavMeshBuilder*> builder = NULL;
 
     const AtomicBoolean* running = job->getJobStatus();
-    builder = new RecastNavMeshBuilder(zone, filename, running);
+    builder = new RecastNavMeshBuilder(zone, name, running);
 
 	builder->setRecastConfig(job->getRecastConfig());
 
@@ -174,8 +192,8 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     builder->initialize(meshData, bBox, poleDist);
     meshData.removeAll();
     // This will take a very long time to complete
-    Reference<RecastNavMesh*> navmesh = area->getNavMesh();
-    bool initialBuild = (navmesh == NULL || !navmesh->isLoaded());
+    RecastNavMesh* navmesh = area->getNavMesh();
+    bool initialBuild = (!navmesh->isLoaded());
     if (initialBuild) {
 #ifdef NAVMESH_DEBUG
         info("Rebuilding Base Mesh", true);
@@ -185,45 +203,47 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 #ifdef NAVMESH_DEBUG
         info("Rebuilding area", true);
 #endif
-        for (int i = dirtyZones.size() - 1; i >= 0; i--) {
-            const AABB &area = dirtyZones.get(i);
-            builder->rebuildArea(area, navmesh);
-        }
+        builder->rebuildAreas(dirtyZones, area);
     }
 
 #ifdef NAVMESH_DEBUG
-    info("NavArea->name: " + filename);
+    info("NavArea->name: " + name);
 #endif
 
-    if(running->get())
-        builder->saveAll(filename);
+    Core::getTaskManager()->executeTask([area, name, builder, initialBuild, this] {
+    	if (stopped)
+    		return;
 
-    if(initialBuild) {
-        if(navmesh == NULL)
-            navmesh = new RecastNavMesh();
+    	Locker locker(area);
+    	RecastNavMesh* navmesh = area->getNavMesh();
 
-        navmesh->setFileName("navmeshes/" + filename);
-        navmesh->setDetourNavMesh(builder->getNavMesh());
-        navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
+    	if (initialBuild) {
+    		navmesh->setName(name);
+    		navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
+    	} else {
+    		dtNavMesh* oldMesh = navmesh->getNavMesh();
 
-        Core::getTaskManager()->executeTask([=]{
-            Locker locker(area);
-            area->setNavMesh(navmesh);
-        }, "setNavMesh");
-    }
+    		if (oldMesh)
+    			dtFreeNavMesh(oldMesh);
+    	}
+
+    	navmesh->setDetourNavMesh(builder->getNavMesh());
+    	navmesh->setupDetourNavMeshHeader();
+    	area->_setUpdated(true);
+    	info("Done building and setting navmesh for area: " + name + " on planet: " + area->getZone()->getZoneName() + " at: " + area->getPosition().toString(), true);
+    }, "setNavMeshLambda");
 
     Locker locker(&jobQueueMutex);
-    if(job->getAreas().size() > 0) {
 
-        jobs.put(filename, job);
+    if (job->getAreas().size() > 0) {
+
+        jobs.put(name, job);
     } else {
-        jobs.drop(filename);
-        runningJobs.drop(filename);
+        jobs.drop(name);
+        runningJobs.drop(name);
     }
 
     locker.release();
-
-    delete builder;
 
     //TODO: Fixme
     Core::getTaskManager()->scheduleTask([=]{
