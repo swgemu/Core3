@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ace114c_73b6afde",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_93bb1bc4",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_33b027dd",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_53b5b3cb",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_b3ac178e",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_d3a9a37c",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@arg1preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_f3c93f5b",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_13a08b8f",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "Locker locker(_this.getReferenceUnsafeStaticCast());",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_f3a29f99",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "Locker clocker(_this.getReferenceUnsafeStaticCast(), player);",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_33826701",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRankingData.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "Change the return to const String\u0026",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_d3720349",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/RankMaintenanceTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "Locker locker(strongRef);",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_3399076f",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/RankMaintenanceTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "locker.release();",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ace114c_5387f30f",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/RankMaintenanceTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-03T23:19:23Z",
+      "side": 1,
+      "message": "I don\u0027t really care for how you are doing this with a specific number of tasks. When the number of players is less than 20, you\u0027ll still be spawning 20 tasks, some which will have an empty taskList.\n\nPersonally, I would decide on a specific number of players per task and spawn as many tasks are necessary to handle the total number of players. For example, if you set it to 10 players per task you\u0027d only need 1 task when the total is 10 or fewer. Once the total exceeds 50 you\u0027ll be spawning 6 tasks, etc.",
+      "revId": "b1ae76c591217203dcb6dad7f8b9d58a6806ec74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
