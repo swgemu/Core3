@@ -681,8 +681,15 @@ void BountyMissionObjectiveImplementation::handleDefenderAdded(ManagedObject* ar
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
 	if (mission != NULL && owner != NULL && defender != NULL) {
-		if (owner->getObjectID() == defender->getObjectID() ||
-				mission->getTargetObjectId() == defender->getObjectID()) {
+		bool defenderIsTheirPet = false;
+
+		if(defender->isPet() || defender->isVehicleObject()) {
+			ManagedReference<CreatureObject*> defendersOwner = defender->getLinkedCreature();
+			if(defendersOwner != NULL && (defendersOwner->getObjectID() == owner->getObjectID() || defendersOwner->getObjectID() == mission->getTargetObjectId()))
+				defenderIsTheirPet = true;
+		}
+
+		if (defenderIsTheirPet || owner->getObjectID() == defender->getObjectID() || mission->getTargetObjectId() == defender->getObjectID()) {
 			addToBountyLock();
 		}
 	}
