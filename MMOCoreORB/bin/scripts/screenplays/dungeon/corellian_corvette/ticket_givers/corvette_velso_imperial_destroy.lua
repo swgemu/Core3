@@ -15,7 +15,7 @@ ticketGiverVelso = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverVelso",
 	faction = FACTIONIMPERIAL,
 	compensation = velsoCompensation,
-	badgeNumber = 112,--	...has been recognized as an Elite Imperial Soldier, for bravery in the call of duty, eliminating a Rebel Blockade Runner.
+	badgeNumber = 112,--...has been recognized as an Elite Imperial Soldier, for bravery in the call of duty, eliminating a Rebel Blockade Runner.
 	menuComponent = "VelsoIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_velso_imperial_destroy:s_1be45010",  --Ok, let me type this down. What's the first lead?
@@ -34,7 +34,7 @@ ticketGiverVelso = CorvetteTicketGiverLogic:new {
 
 	go_to_corvette = "@conversation/corvette_velso_imperial_destroy:s_566ff600",--Alright so I will be taken to the corvette to blow it up from the inside?
 	check_other_places = "@conversation/corvette_velso_imperial_destroy:s_e60ca0aa", --Alright Sir, I'll get back to searching.
-	other_documents = "@co1nversation/corvette_velso_imperial_destroy:s_cd8ede71", --I found some other documents as well.
+	other_documents = "@conversation/corvette_velso_imperial_destroy:s_cd8ede71", --I found some other documents as well.
 
 	launch_location = "@conversation/corvette_velso_imperial_destroy:s_af39813", --I'm sorry Sir, where do I take this ticket again?
 	still_here_decline = "@conversation/corvette_velso_imperial_destroy:s_547609c8", --I can't do this. Please remove all progress I've made from your records.
