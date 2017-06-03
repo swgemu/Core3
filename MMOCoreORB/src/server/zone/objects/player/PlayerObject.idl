@@ -50,6 +50,8 @@ class PlayerObject extends IntangibleObject {
 
 	protected string savedTerrainName;
 	protected unsigned long savedParentID;
+	
+	public static final int TEFTIMER = 300000;
 
 	@dereferenced
 	protected Badges badges;
