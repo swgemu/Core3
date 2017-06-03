@@ -59,6 +59,8 @@ class StructureObject extends TangibleObject {
 		maintenanceReduced = false;
 
 		permissionsFixed = false;
+
+		navArea = null;
 	}
 
 	public native void initializeTransientMembers();
@@ -82,6 +84,14 @@ class StructureObject extends TangibleObject {
 	public native void notifyLoadFromDatabase();
 
 	public native void destroyObjectFromWorld(boolean sendSelfDestroy);
+
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	public native void notifyInsertToZone(Zone zone);
 

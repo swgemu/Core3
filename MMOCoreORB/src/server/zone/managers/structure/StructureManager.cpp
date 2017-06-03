@@ -50,9 +50,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 	info("Loading player structures from playerstructures.db for zone: " + zoneName);
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	ObjectDatabase* playerStructuresDatabase =
-			ObjectDatabaseManager::instance()->loadObjectDatabase(
-					"playerstructures", true);
+	ObjectDatabase* playerStructuresDatabase = dbManager->loadObjectDatabase("playerstructures", true);
 
 	if (playerStructuresDatabase == NULL) {
 		error("Could not load the player structures database.");

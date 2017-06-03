@@ -1,26 +1,39 @@
 #include <cstdint>
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 
 //#define NAVMESH_DEBUG
 
-void NavAreaImplementation::notifyLoadFromDatabase() {
-	ActiveAreaImplementation::notifyLoadFromDatabase();
-	navMesh = new RecastNavMesh("navmeshes/"+meshName, false);
-}
-
-void NavAreaImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	ActiveAreaImplementation::destroyObjectFromDatabase(destroyContainedObjects);
-
-	navMesh->deleteFile();
-}
-
 void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	disableUpdates = true;
 
+	if (zone != NULL) {
+		PlanetManager* planetManager = zone->getPlanetManager();
+
+		if (planetManager != NULL)
+			planetManager->dropNavArea(meshName);
+	}
+
 	ActiveAreaImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}
+
+void NavAreaImplementation::notifyLoadFromDatabase() {
+	//TODO: remove all this. It's just to get rid of old nav areas
+	String dbName;
+	uint16 tableID = (uint16)(getObjectID() >> 48);
+	ObjectDatabaseManager::instance()->getDatabaseName(tableID, dbName);
+
+	if (dbName != "navareas") {
+		info("Destroying nav area that's not in navareas.db", true);
+		destroyObjectFromDatabase(true);
+		return;
+	}
+
+	ActiveAreaImplementation::notifyLoadFromDatabase();
 }
 
 AABB NavAreaImplementation::getBoundingBox() {
@@ -59,32 +72,31 @@ void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 	Locker locker(asNavArea());
 
     RecastSettings settings;
-    if (navMesh == NULL || !navMesh->isLoaded()) {
+    if (!navMesh.isLoaded()) {
         NavMeshManager::instance()->enqueueJob(zone, asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
         NavMeshManager::instance()->enqueueJob(zone, asNavArea(), bounds, settings, NavMeshManager::TileQueue);
     }
 }
 
-void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh, bool forceRebuild) {
-
-    meshName = zone->getZoneName()+"_"+name+".navmesh";
-    navMesh = new RecastNavMesh("navmeshes/"+meshName, forceRebuild);
+void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, const String& name, bool forceRebuild) {
+    meshName = name;
+    navMesh.setName(meshName);
     initializePosition(position[0], position[1], position[2]);
     setRadius(radius);
     setZone(zone);
 
-    if (!navMesh->isLoaded() && buildMesh) {
+    if (forceRebuild || !navMesh.isLoaded()) {
         updateNavMesh(getBoundingBox());
     }
 }
 
 void NavAreaImplementation::initialize() {
-    meshName = zone->getZoneName()+"_"+String::valueOf(getObjectID())+".navmesh";
+    meshName = String::valueOf(getObjectID());
 }
 
 void NavAreaImplementation::notifyEnter(SceneObject* object) {
-    if(disableUpdates)
+    if (disableUpdates)
         return;
 
     if (object->getParentID() != 0)
@@ -105,10 +117,14 @@ void NavAreaImplementation::notifyEnter(SceneObject* object) {
         return;
 
     ReadLocker rlocker(&containedLock);
-    if(!containedObjects.contains(object->getObjectID()) &&  !object->getObjectTemplate()->getTemplateFileName().contains("construction_")) {
+    if(!containedObjects.contains(object->getObjectID()) && !object->getObjectTemplate()->getTemplateFileName().contains("construction_")) {
     	rlocker.release();
 
-        updateNavMesh(object, false);
+    	ZoneServer* zServ = server->getZoneServer();
+    	if (zServ->isServerLoading() || zServ->isServerShuttingDown())
+    		containedObjects.add(object->getObjectID());
+    	else
+    		updateNavMesh(object, false);
     }
 }
 
@@ -124,7 +140,12 @@ void NavAreaImplementation::notifyExit(SceneObject* object) {
 #endif
 
         rlocker.release();
-        updateNavMesh(object, true);
+
+    	ZoneServer* zServ = server->getZoneServer();
+    	if (zServ->isServerLoading() || zServ->isServerShuttingDown())
+        	containedObjects.remove(object->getObjectID());
+        else
+        	updateNavMesh(object, true);
     }
 }
 
