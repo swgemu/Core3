@@ -1327,6 +1327,16 @@ void CreatureObjectImplementation::removeSkill(Skill* skill, bool notifyClient) 
 	if (!skillList.contains(skill))
 		return;
 
+	if(skill->getSkillName() == "combat_bountyhunter_investigation_03") {
+		ManagedReference<ZoneServer*> zoneServer = getZoneServer();
+		if(zoneServer != NULL) {
+			ManagedReference<MissionManager*> missionManager = zoneServer->getMissionManager();
+			if(missionManager != NULL) {
+				missionManager->failPlayerBountyMission(getObjectID());
+			}
+		}
+	}
+
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* msg =
 				new CreatureObjectDeltaMessage1(this);
