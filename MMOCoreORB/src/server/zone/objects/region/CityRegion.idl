@@ -30,15 +30,12 @@ include system.util.Vector;
 class CityRegion extends ManagedObject implements Logger {
 
 	@weakReference
-	protected transient NavArea navMesh;
+	protected NavArea navMesh;
 
 	protected byte cityRank;
 
 	@dereferenced
 	protected StringId regionName;
-
-	@dereferenced
-	protected string navMeshName;
 
 	@dereferenced
 	protected VectorMap<unsigned long, int> candidates;
@@ -334,13 +331,6 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public Zone getZone() {
 		return zone.get();
-	}
-
-	@dirty
-	public native string getNavMeshName();
-
-	public void setNavMeshName(string name) {
-		navMeshName = name;
 	}
 
 	@dirty

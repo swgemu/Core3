@@ -18,6 +18,7 @@
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/city/PayPropertyTaxTask.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -41,9 +42,17 @@ void StructureObjectImplementation::finalize() {
 }
 
 void StructureObjectImplementation::createNavMesh() {
+	if (server->getZoneServer()->shouldDeleteNavAreas() && navArea != NULL) {
+		zone->getPlanetManager()->dropNavArea(navArea->getMeshName());
+		navArea->destroyObjectFromWorld(true);
+		navArea->destroyObjectFromDatabase(true);
+		navArea == NULL;
+	}
 
-	navArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
-														isPersistent()).castTo<NavArea *>();
+	if (navArea != NULL)
+		return;
+
+	navArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea *>();
 
 	if (navArea == NULL) {
 		error("Failed to create navmesh");
@@ -56,14 +65,14 @@ void StructureObjectImplementation::createNavMesh() {
 
 	float length = 32.0f;
 
-	for(const auto& child : childObjects) {
+	for (const auto& child : childObjects) {
 		const BaseBoundingVolume* boundingVolume = child->getBoundingVolume();
 		if (boundingVolume) {
 			const AABB& box = boundingVolume->getBoundingBox();
 			float distance = (child->getWorldPosition() - getWorldPosition()).length();
 			float radius = box.extents()[box.longestAxis()];
-			if(distance + radius > length)
-				length = radius;
+			if (distance + radius > length)
+				length = radius + distance;
 		}
 	}
 
@@ -71,15 +80,17 @@ void StructureObjectImplementation::createNavMesh() {
 	if (boundingVolume) {
 		const AABB& box = boundingVolume->getBoundingBox();
 		float radius = box.extents()[box.longestAxis()];
-		if(radius > length)
+		if (radius > length)
 			length = radius;
 	}
 
 	Vector3 position = Vector3(getPositionX(), 0, getPositionY());
 	// This is invoked when a new faction base is placed, always force a rebuild
-	navArea->initializeNavArea(position, length * 1.25f, zone, name, true, true);
+	navArea->initializeNavArea(position, length * 1.25f, zone, name, true);
 
 	zone->transferObject(navArea, -1, false);
+
+	zone->getPlanetManager()->addNavArea(name, navArea);
 }
 
 void StructureObjectImplementation::notifyLoadFromDatabase() {
@@ -152,6 +163,9 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 		scheduleMaintenanceExpirationEvent();
 	}
 
+	if (isGCWBase() && !isClientObject()) {
+		createNavMesh();
+	}
 }
 
 int StructureObjectImplementation::getLotSize() {
@@ -296,7 +310,17 @@ void StructureObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy)
 		structureMaintenanceTask = NULL;
 	}
 
+	if (navArea != NULL)
+		navArea->destroyObjectFromWorld(sendSelfDestroy);
+
 	TangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}
+
+void StructureObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	if (navArea != NULL)
+		navArea->destroyObjectFromDatabase(true);
+
+	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {

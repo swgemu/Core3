@@ -118,9 +118,9 @@ void ServerCore::initialize() {
 			webServer = WebServer::instance();
 		}
 
-		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs());
-
 		ZoneServer* zoneServer = zoneServerRef.get();
+
+		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
 
 		if (zoneServer != NULL) {
 			int zonePort = 44463;
