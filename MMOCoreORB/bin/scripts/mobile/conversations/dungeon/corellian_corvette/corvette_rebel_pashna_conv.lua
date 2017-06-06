@@ -244,7 +244,7 @@ corvettePashnaConvoTemplate:addScreen(changed_mind);
 
 launch_location = ConvoScreen:new {
 	id = "launch_location",
-	leftDialog = "@conversation/corvette_pashna_rebel1:s_2373d61a", --Lt. Lance at the Rebel hideout on Corellia is waiting to meet you. He will provide transportation which will enable you to intercept the stolen Corellian corvette. After you've victoriously completed your mission, return to me for a reward.
+	leftDialog = "@conversation/corvette_pashna_rebel1:s_aaee7ac8", -- Go to the Rebel Alliance hideout on Corellia. Seek Lt. Lance who will accept your travel authorization and allow you to board a starship which intercept the Imperial commander on the Corellian corvette. After the Imperial commander has been eliminated and you've escaped from the corvette, I will have your reward ready.
 	stopConversation = "true",
 	options = {}
 }
@@ -256,14 +256,14 @@ reward = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_pashna_rebel1:s_cb13589","give_reward"}, --Yes, please. Thank you.
-		{"@conversation/corvette_pashna_rebel1:s_823e1fa","reward_notyet"} --No, I'm not yet ready for it.
+		{"@conversation/corvette_pashna_rebel1:s_615637f6","reward_notyet"} --No, not yet. Maybe later.
 	}
 }
 corvettePashnaConvoTemplate:addScreen(reward);
 
 reward_notyet = ConvoScreen:new {
 	id = "reward_notyet",
-	leftDialog = "@conversation/corvette_pashna_rebel1:s_a539245b", --I see. Well, whenever you're ready, just come talk to me.
+	leftDialog = "@conversation/corvette_pashna_rebel1:s_8a5c56ae", --Whenever you're ready, let me know.
 	stopConversation = "true",
 	options = {}
 }
