@@ -554,12 +554,17 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 		if (defender->hasDotImmunity(type))
 			continue;
 
-		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) &&
-			defender->addDotState(attacker, type, weapon->getObjectID(),
-								  weapon->getDotStrength(i), weapon->getDotAttribute(i),
-								  weapon->getDotDuration(i), -1, 0,
-								  (int)(weapon->getDotStrength(i)/5.f)) > 0) // Unresisted, reduce use count.
-			if (weapon->getDotUses(i) > 0) weapon->setDotUses(weapon->getDotUses(i) - 1, i);
+		if (weapon->getDotType(i) == CreatureState::BLEEDING) {
+			if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) &&
+				defender->addDotState(attacker, type, weapon->getObjectID(), weapon->getDotStrength(i), weapon->getDotAttribute(i), weapon->getDotDuration(i), -1, 0, (int)(weapon->getDotStrength(i)/5.f)) > 0)
+				if (weapon->getDotUses(i) > 0)
+					weapon->setDotUses(weapon->getDotUses(i) - 1, i); // Unresisted despite mod ^^ , reduce use count.
+		} else {
+			if (weapon->getDotPotency(i) > System::random(100) &&
+				defender->addDotState(attacker, type, weapon->getObjectID(), weapon->getDotStrength(i), weapon->getDotAttribute(i), weapon->getDotDuration(i), -1, 0, (int)(weapon->getDotStrength(i)/5.f)) > 0)
+				if (weapon->getDotUses(i) > 0)
+					weapon->setDotUses(weapon->getDotUses(i) - 1, i); // Unresisted, reduce use count.
+		}
 	}
 }
 
