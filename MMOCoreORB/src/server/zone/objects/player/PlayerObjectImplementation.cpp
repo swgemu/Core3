@@ -2000,7 +2000,7 @@ void PlayerObjectImplementation::addToBountyLockList(uint64 playerId) {
 }
 
 void PlayerObjectImplementation::removeFromBountyLockList(uint64 playerId, bool immediately) {
-	int tefTime = 15 * 60 * 1000;
+	int tefTime = FactionManager::TEFTIMER;
 	if (immediately) {
 		//Schedule tef removal to happen soon but delay it enough for any bh mission to be dropped correctly.
 		tefTime = 100;
@@ -2077,12 +2077,12 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 
 	if(updateBhAction) {
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
-		lastBhPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+		lastBhPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
 	if(updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
-		lastGcwPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
 	schedulePvpTefRemovalTask();
