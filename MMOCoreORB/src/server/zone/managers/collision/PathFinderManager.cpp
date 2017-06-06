@@ -981,6 +981,14 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 	zone->getInRangeNavMeshes(center.getX(), center.getY(), &areas, false);
 
+	if (areas.size() == 0) {
+		Vector3 temp((frand() * 2.0f) - 1.0f, (frand() * 2.0f) - 1.0f, 0);
+		Vector3 result = temp * (frand() * radius);
+		point = center + result;
+		point.setZ(zone->getHeightNoCache(point.getX(), point.getY()));
+		return true;
+	}
+
 	for (const auto& navArea : areas) {
 		Vector3 polyStart;
 		dtPolyRef startPoly;
