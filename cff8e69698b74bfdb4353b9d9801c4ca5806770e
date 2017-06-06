@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_8bb8cd2b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-06T23:53:59Z",
+      "side": 1,
+      "message": "Don\u0027t put this here or it\u0027ll break the logic of some cases.\n\nConsider the case of an on leave imperial player trying to attack the pet of an special forces rebel. Say they are dueling or in a guild war. Your isAttackableBy check will return true meaning the logic will move to the else on line 187 below. Since the player is on leave, it\u0027ll give them a field faction change prompt to go combatant.\n\nIt\u0027d be best to leave this level of the nested logic to only be worried about the type of target (player, pet, or other). To fix what you are trying to fix, I would simply add hasBountyMissionFor checks to line 184 just like we have on 179 above for the player vs player case.",
+      "revId": "cff8e69698b74bfdb4353b9d9801c4ca5806770e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
