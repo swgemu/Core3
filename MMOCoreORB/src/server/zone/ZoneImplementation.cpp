@@ -396,7 +396,7 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		NavArea* obj = dynamic_cast<NavArea*>(entryObjects.get(i).get());
-		if (obj)
+		if (obj && obj->isNavMeshLoaded())
 			objects->put(obj);
 	}
 
