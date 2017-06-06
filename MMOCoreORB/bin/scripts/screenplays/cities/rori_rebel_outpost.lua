@@ -100,8 +100,8 @@ function RoriRebelOutpostScreenPlay:spawnMobiles()
 	spawnMobile("rori", "specforce_marine", 360, 0, 0.1, -6.0, 0, 4505666)
 
 		--Right Storage Shed (Cloner)
-	spawnMobile("rori", "rebel_medic", 360, 5.3, 0.1, 0.9, 270, 4505609)
-	spawnMobile("rori", "rebel_colonel", 360, 0, 0.1, -6.0, 0, 4505608)
+	spawnMobile("rori", "rebel_medic", 360, 5.3, 0.1, 0.9, -85, 4505609)
+	spawnMobile("rori", "rebel_colonel", 360, 0.1, 0.1, -1.5, -5, 4505608)
 
 	--misc
 	spawnMobile("rori", "rebel_recruiter", 0, 3683, 96, -6460, -101, 0)
