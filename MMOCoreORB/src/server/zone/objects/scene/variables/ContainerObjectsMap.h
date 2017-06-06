@@ -94,6 +94,8 @@ namespace server {
    		ManagedWeakReference<SceneObject*> getContainer() {
    			return container;
    		}
+
+   		void cancelUnloadTask();
    	};
    }
   }

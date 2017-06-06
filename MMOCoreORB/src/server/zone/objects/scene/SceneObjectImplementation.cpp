@@ -227,6 +227,8 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 		assert(0 && "attempting to delete a player creature from database");
 	}
 
+	containerObjects.cancelUnloadTask();
+
 	if(dataObjectComponent != NULL) {
 		dataObjectComponent->notifyObjectDestroyingFromDatabase();
 	}

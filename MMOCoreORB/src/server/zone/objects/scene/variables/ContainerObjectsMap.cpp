@@ -37,12 +37,7 @@ ContainerObjectsMap::~ContainerObjectsMap() {
 		oids = NULL;
 	}
 
-	if (unloadTask != NULL) {
-		if (Core::getTaskManager())
-			unloadTask->cancel();
-
-		unloadTask = NULL;
-	}
+	cancelUnloadTask();
 }
 
 void ContainerObjectsMap::copyData(const ContainerObjectsMap& c) {
@@ -289,3 +284,11 @@ void ContainerObjectsMap::drop(uint64 oid) {
 		containerObjects.drop(oid);
 }
 
+void ContainerObjectsMap::cancelUnloadTask() {
+	if (unloadTask != NULL) {
+		if (Core::getTaskManager())
+			unloadTask->cancel();
+
+		unloadTask = NULL;
+	}
+}
