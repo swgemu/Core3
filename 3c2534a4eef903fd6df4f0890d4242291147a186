@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_2baaf9d4",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-06T23:35:44Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "3c2534a4eef903fd6df4f0890d4242291147a186",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_cbaed5e7",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-06T23:35:44Z",
+      "side": 1,
+      "message": "This should be crosslocking with player",
+      "revId": "3c2534a4eef903fd6df4f0890d4242291147a186",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_0ba5bd03",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/RankMaintenanceTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-06T23:35:44Z",
+      "side": 1,
+      "message": "You\u0027re doing integer division inside the ceil() so the remainder will get truncated off before ceil() is evaluated. Cast one as a float.",
+      "revId": "3c2534a4eef903fd6df4f0890d4242291147a186",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
