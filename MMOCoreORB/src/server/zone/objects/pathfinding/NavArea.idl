@@ -17,7 +17,7 @@ class NavArea extends ActiveArea {
 	protected string meshName;
 
 	@dereferenced
-	protected RecastNavMesh navMesh;
+	protected RecastNavMesh recastNavMesh;
 
 	// Disables notifyEnter/Exit updates for static cities
 	protected boolean disableUpdates;
@@ -71,7 +71,7 @@ class NavArea extends ActiveArea {
 	@local
 	@dirty
 	public RecastNavMesh getNavMesh() {
-		return navMesh;
+		return recastNavMesh;
 	}
 
 	@local
@@ -129,7 +129,7 @@ class NavArea extends ActiveArea {
 	public abstract native boolean containsPoint(float x, float y);
 
 	public boolean isNavMeshLoaded() {
-		return navMesh.isLoaded();
+		return recastNavMesh.isLoaded();
 	}
 }
 

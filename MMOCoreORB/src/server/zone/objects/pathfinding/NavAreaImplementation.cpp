@@ -72,7 +72,7 @@ void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 	Locker locker(asNavArea());
 
     RecastSettings settings;
-    if (!navMesh.isLoaded()) {
+    if (!recastNavMesh.isLoaded()) {
         NavMeshManager::instance()->enqueueJob(zone, asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
         NavMeshManager::instance()->enqueueJob(zone, asNavArea(), bounds, settings, NavMeshManager::TileQueue);
@@ -81,12 +81,12 @@ void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 
 void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, const String& name, bool forceRebuild) {
     meshName = name;
-    navMesh.setName(meshName);
+    recastNavMesh.setName(meshName);
     initializePosition(position[0], position[1], position[2]);
     setRadius(radius);
     setZone(zone);
 
-    if (forceRebuild || !navMesh.isLoaded()) {
+    if (forceRebuild || !recastNavMesh.isLoaded()) {
         updateNavMesh(getBoundingBox());
     }
 }
