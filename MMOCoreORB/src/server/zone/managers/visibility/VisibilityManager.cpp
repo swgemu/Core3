@@ -145,6 +145,9 @@ void VisibilityManager::logout(CreatureObject* creature) {
 		//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from visibility list.", true);
 		visibilityList.drop(creature->getObjectID());
 	}
+
+	if(!creature->isOnline())
+		removePlayerFromBountyList(creature);
 }
 
 void VisibilityManager::increaseVisibility(CreatureObject* creature, int visibilityMultiplier) {
