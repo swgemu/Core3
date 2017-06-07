@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_2b467924",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-06-07T02:54:46Z",
+      "side": 1,
+      "message": "No need for this isOnline check, the ghost is always set offline before this function is called.",
+      "range": {
+        "startLine": 149,
+        "startChar": 15,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "d9a9b0b50535e1ff60e3ddac0c0c7fc7879daf55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
