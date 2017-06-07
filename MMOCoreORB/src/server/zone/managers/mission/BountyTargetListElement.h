@@ -25,11 +25,6 @@ class BountyTargetListElement : public Object {
 	int reward;
 
 	/**
-	 * Indication if the bounty is still active i.e. bounty isn't to old.
-	 */
-	bool canHaveNewMissions;
-
-	/**
 	 * List of object id's for the bounty hunters that have the mission.
 	 */
 	Vector<uint64> activeBountyHunters;
@@ -43,7 +38,6 @@ public:
 	BountyTargetListElement(uint64 targetObjectId, int reward) {
 		this->targetObjectId = targetObjectId;
 		this->reward = reward;
-		canHaveNewMissions = true;
 		activeBountyHunters.removeAll();
 	}
 
@@ -75,22 +69,6 @@ public:
 	 */
 	void setReward(int reward) {
 		this->reward = reward;
-	}
-
-	/**
-	 * Get information if the bounty is still active.
-	 * @return true if new missions can be created for the bounty.
-	 */
-	bool getCanHaveNewMissions() {
-		return canHaveNewMissions;
-	}
-
-	/**
-	 * Set if new missions can be created for the bounty.
-	 * @param value true if new missions can be created.
-	 */
-	void setCanHaveNewMissions(bool value) {
-		canHaveNewMissions = value;
 	}
 
 	/**
@@ -134,7 +112,6 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		targetObjectId = stream->readLong();
 		reward = stream->readInt();
-		canHaveNewMissions = stream->readBoolean();
 		return activeBountyHunters.parseFromBinaryStream(stream);
 	}
 
@@ -146,7 +123,6 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		stream->writeLong(targetObjectId);
 		stream->writeInt(reward);
-		stream->writeBoolean(canHaveNewMissions);
 		return activeBountyHunters.toBinaryStream(stream);
 	}
 };
