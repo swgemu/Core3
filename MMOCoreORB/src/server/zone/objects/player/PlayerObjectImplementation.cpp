@@ -1252,8 +1252,8 @@ void PlayerObjectImplementation::notifyOnline() {
 		parent->sendMessage(sui->generateMessage());
 	}
 
-	//Login to visibility manager
-	VisibilityManager::instance()->login(playerCreature);
+	//Add player to visibility list
+	VisibilityManager::instance()->addToVisibilityList(playerCreature);
 
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
@@ -1288,8 +1288,8 @@ void PlayerObjectImplementation::notifyOffline() {
 		}
 	}
 
-	//Logout from visibility manager
-	VisibilityManager::instance()->logout(playerCreature);
+	//Remove player from visibility list
+	VisibilityManager::instance()->removeFromVisibilityList(playerCreature);
 
 	playerCreature->notifyObservers(ObserverEventType::LOGGEDOUT);
 

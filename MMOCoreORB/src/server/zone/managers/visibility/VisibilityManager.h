@@ -142,16 +142,16 @@ public:
 	void loadConfiguration();
 
 	/**
-	 * Login a player and add it to the visibility list if he/she still has visibility.
-	 * @param creature the player to login.
+	 * Add player to the visibility list if he/she still has visibility.
+	 * @param creature the player to add.
 	 */
-	void login(CreatureObject* creature);
+	void addToVisibilityList(CreatureObject* creature);
 
 	/**
-	 * Logout a player and remove him/her from the visibility list.
-	 * @param creature the player to logout.
+	 * Remove player from the visibility list.
+	 * @param creature the player to remove.
 	 */
-	void logout(CreatureObject* creature);
+	void removeFromVisibilityList(CreatureObject* creature);
 
 	/**
 	 * Increase visibility for a player. The player is added to the visibility list
