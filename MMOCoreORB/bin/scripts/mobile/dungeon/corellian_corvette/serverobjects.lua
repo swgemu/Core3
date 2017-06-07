@@ -45,6 +45,7 @@ includeFile("dungeon/corellian_corvette/neutral/klaatu.lua")
 includeFile("dungeon/corellian_corvette/neutral/corvette_neutral_yondalla.lua")
 
 --Rebel
+includeFile("dungeon/corellian_corvette/rebel/corvette_imperial_inquisitor.lua")
 includeFile("dungeon/corellian_corvette/rebel/corvette_rebel_adar.lua")
 includeFile("dungeon/corellian_corvette/rebel/corvette_rebel_crowley.lua")
 includeFile("dungeon/corellian_corvette/rebel/corvette_rebel_pashna.lua")

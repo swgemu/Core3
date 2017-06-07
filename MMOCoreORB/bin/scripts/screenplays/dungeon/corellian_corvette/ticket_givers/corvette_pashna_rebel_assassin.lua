@@ -2,7 +2,7 @@ pashnaIntel = {
 	itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_intel.iff" },
 }
 
-pashnaTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "assassin" }
+pashnaTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "assassinate" }
 
 pashnaCompensation = { { compType = "faction", faction = "rebel", amount = 100 } }
 

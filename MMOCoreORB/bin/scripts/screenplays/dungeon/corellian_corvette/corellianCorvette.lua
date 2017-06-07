@@ -744,7 +744,7 @@ function CorellianCorvette:notifyPodRadialUsed(pPod, pPlayer, radialSelected)
 		return 1
 	end
 
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or not CreatureObject(pPlayer):isInRangeWithObject(pPod, 4)) then
 		return 0
 	end
 
@@ -952,7 +952,7 @@ function CorellianCorvette:handleCorvetteTimer(pCorvette)
 	if (timeLeft > 10) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(5 * 60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
-	elseif (timeLeft > 2) then
+	elseif (timeLeft >= 2) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 	elseif (timeLeftSecs >= 90) then

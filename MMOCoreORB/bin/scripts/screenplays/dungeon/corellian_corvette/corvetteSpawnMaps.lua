@@ -117,7 +117,7 @@ corvetteRebelSpawns = {
 	{ "dark_trooper_novatrooper", 24.35, -12, 61.7, 178.44, "navroom45", "" },
 	{ "dark_trooper_novatrooper", 18.26, 0.04, 115.54, -155.06, "hall61", "" },
 	{ "dark_trooper_novatrooper", -17.84, -12, 61.7, 179.71, "radarroom46", "" },
-	{ "imperial_inquisitor", -6.15, 0, 134, 3.04, "officerquarters65", "setupAssassinationTarget" },
+	{ "corvette_imperial_inquisitor", -6.15, 0, 134, 3.04, "officerquarters65", "setupAssassinationTarget" },
 	{ "ra7_bug_droid", 3, 0.2, 151.41, -5.89, "bridge66", "" },
 	{ "ra7_bug_droid", 20.61, -12, 50.32, -177.83, "spawnroom49", "" },
 	{ "ra7_bug_droid", 3.17, -12, 6.62, 90.79, "messhall33", "" },

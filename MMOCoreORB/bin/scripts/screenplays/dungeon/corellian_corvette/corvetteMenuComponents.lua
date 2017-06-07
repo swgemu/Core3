@@ -10,6 +10,10 @@ function CorvetteRoomPanelMenuComponent:handleObjectMenuSelect(pSceneObject, pPl
 		return
 	end
 
+	if (not CreatureObject(pPlayer):isInRangeWithObject(pSceneObject, 4)) then
+		return
+	end
+
 	local panelID = SceneObject(pSceneObject):getObjectID()
 
 	if (readData(panelID .. ":roomUnlocked") == 1) then
@@ -48,6 +52,11 @@ function CorvetteDestroyTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 		return
 	end
 
+	if (not CreatureObject(pPlayer):isInRangeWithObject(pSceneObject, 4)) then
+		return
+	end
+
+
 	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local questType = readStringData("corvetteQuestType:" .. corvetteID)
 
@@ -76,6 +85,11 @@ function CorvetteKeypadMenuComponent:handleObjectMenuSelect(pKeypad, pPlayer, se
 	if (pKeypad == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
+
+	if (not CreatureObject(pPlayer):isInRangeWithObject(pSceneObject, 4)) then
+		return
+	end
+
 
 	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local pCorvette = getSceneObject(corvetteID)
@@ -118,6 +132,11 @@ function CorvetteComputerMenuComponent:handleObjectMenuSelect(pComputer, pPlayer
 	if (pComputer == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
+
+	if (not CreatureObject(pPlayer):isInRangeWithObject(pSceneObject, 4)) then
+		return
+	end
+
 
 	local corvetteID = readData(SceneObject(pPlayer):getObjectID() .. "corvetteID")
 	local pCorvette = getSceneObject(corvetteID)
