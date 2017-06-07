@@ -727,9 +727,9 @@ function CorellianCorvette:notifyPodRemovedFromZone(pPod)
 
 	local podID = SceneObject(pPod):getObjectID()
 	local areaID = readData(podID .. ":areaID")
-	
+
 	local pArea = getSceneObject(areaID)
-	
+
 	if (pArea ~= nil) then
 		SceneObject(pArea):destroyObjectFromWorld()
 	end
@@ -1150,6 +1150,7 @@ function CorellianCorvette:ejectPlayer(pPlayer)
 	if (playerID == ownerID) then
 		if (readData(playerID .. ":corvetteMissionComplete") == 1) then
 			setQuestStatus(playerID .. ":activeCorvetteStep", "3")
+			CreatureObject(pPlayer):sendSystemMessage("@dungeon/corvette:reward") -- You have done well. Return to the person who gave you this assignment and receive your reward.
 			deleteData(playerID .. ":corvetteMissionComplete")
 		else
 			removeQuestStatus(playerID .. ":activeCorvetteQuest")
