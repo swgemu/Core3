@@ -842,18 +842,15 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 			winner->sendSystemMessage(problem);
 
 			if (stillGrouped && group != NULL) {
-				StringIdChatParameter unable("group", "unable_to_transfer"); //"Unable to transfer %TO to %TT.  The item is available on the corpse for %TT to retrieve.
+				StringIdChatParameter unable("group", "unable_to_transfer"); //"Unable to transfer %TO to %TT.  The item is available on the corpse for %TT to retrieve."
 				unable.setTO(object->getObjectID());
 				unable.setTT(winner->getObjectID());
 				group->sendSystemMessage(unable, winner);
 			}
-
 		} else {
 			if (winner->getZoneServer()->getObjectController()->transferObject(object, winnerInventory, -1, true)) {
 				itemPerms->clearDenyPermission("player", ContainerPermissions::OPEN);
 				itemPerms->clearDenyPermission("player", ContainerPermissions::MOVECONTAINER);
 			}
 		}
-
 	}
-
