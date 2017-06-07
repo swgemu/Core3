@@ -42,7 +42,6 @@ public:
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
-			//GO GET 'EM, NINJA! YEEEHAW!!!
 			break;
 		case GroupManager::MASTERLOOTER:
 			if (!group->checkMasterLooter(player)) {
@@ -103,9 +102,15 @@ public:
 			lootAllLocker.release();
 
 			Locker groupLocker(group, corpse);
-			if (group->getLootRule() == GroupManager::MASTERLOOTER && lootContainer->getContainerObjectsSize() <= 0) {
-				StringIdChatParameter msg("group","master_loot_all"); //"The master looter has looted all items from the corpse."
-				group->sendSystemMessage(msg, false);
+
+			if (lootContainer->getContainerObjectsSize() <= 0) {
+				if (group->getLootRule() == GroupManager::MASTERLOOTER) {
+					StringIdChatParameter msg("group","master_loot_all"); //"The master looter has looted all items from the corpse."
+					group->sendSystemMessage(msg, false);
+				} else {
+					StringIdChatParameter msg("group","free_for_all_loot_all"); //"The corpse has been looted of all items."
+					group->sendSystemMessage(msg, true);
+				}
 			}
 		} else {
 			gclocker.release();

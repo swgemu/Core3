@@ -713,8 +713,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 		playerCreature->sendSystemMessage(toVictim);
 
-
-		if(destructor->isPlayerCreature()) {
+		if (destructor->isPlayerCreature()) {
 			StringIdChatParameter toKiller;
 
 			toKiller.setStringId("base_player", "prose_target_incap");
@@ -722,6 +721,16 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 			destructor->asCreatureObject()->sendSystemMessage(toKiller);
 		}
+		// NEE began...
+		if (playerCreature->isGrouped()) {
+			StringIdChatParameter groupMsg("group", "notify_incap"); // [GROUP] %TU has fallen incapacitated.
+
+			groupMsg.setTU(playerCreature->getFirstName());
+
+			ChatSystemMessage* sysMsg = new ChatSystemMessage(groupMsg);
+			playerCreature->getGroup()->broadcastMessage(playerCreature, sysMsg, false);
+		}
+		// NEE ended.
 	}
 
 	return 0;
@@ -766,6 +775,16 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->updateTimeOfDeath();
 	player->clearBuffs(true);
+	// NEE begin...
+	if (player->isGrouped()) {
+		StringIdChatParameter groupMsg("group", "notify_death"); // [GROUP] %TU has died.
+
+		groupMsg.setTU(player->getFirstName());
+
+		ChatSystemMessage* sysMsg = new ChatSystemMessage(groupMsg);
+		player->getGroup()->broadcastMessage(player, sysMsg, false);
+	}
+	// NEE ended.
 
 	PlayerObject* ghost = player->getPlayerObject();
 
@@ -997,13 +1016,41 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 			error(msg.toString());
 			return;
 		}
+		// NEE started...
+		if (player->isGrouped()) {
+			if (cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_IMPERIAL || cbot->getFacilityType() == CloningBuildingObjectTemplate::FACTION_REBEL || cbot->getFacilityType() == CloningBuildingObjectTemplate::STANDARD || cbot->getFacilityType() == CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY || cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY) {
+
+				StringIdChatParameter groupMsg("group", "notify_cloned"); // [GROUP] %TU has been cloned at a non-city facility.
+				groupMsg.setTU(player->getFirstName());
+
+				ChatSystemMessage* sysMsg = new ChatSystemMessage(groupMsg);
+				player->getGroup()->broadcastMessage(player, sysMsg, false);
+			} else {
+				ManagedReference<CityRegion*> city = player->getCityRegion().get();
+
+				StringIdChatParameter groupMsg("group", "notify_cloned_city"); // [GROUP] %TU has been cloned at a facility in %TO.
+				groupMsg.setTU(player->getFirstName());
+				groupMsg.setTO(city->getRegionName());
+
+				ChatSystemMessage* sysMsg = new ChatSystemMessage(groupMsg);
+				player->getGroup()->broadcastMessage(player, sysMsg, false);
+			}
+		}
+		// NEE ended.
 	}
 
 	Zone* zone = player->getZone();
-
-	if (cellID == 0)
+	// NEE began again...
+	if (cellID == 0) {
 		player->switchZone(zone->getZoneName(), cloner->getWorldPositionX() + coordinate->getPositionX(), cloner->getWorldPositionZ() + coordinate->getPositionZ(), cloner->getWorldPositionY() + coordinate->getPositionY(), 0);
-	else
+		if (player->isGrouped() && cbot->getFacilityType() == CloningBuildingObjectTemplate::JEDI_ONLY) {
+			StringIdChatParameter groupMsg("group", "notify_cloned"); // [GROUP] %TU has been cloned at a non-city facility.
+			groupMsg.setTU(player->getFirstName());
+
+			ChatSystemMessage* sysMsg = new ChatSystemMessage(groupMsg);
+			player->getGroup()->broadcastMessage(player, sysMsg, false);
+		}
+	} else // NEE ended again.
 		player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
@@ -1021,7 +1068,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	if (ghost->hasPvpTef())
 		ghost->schedulePvpTefRemovalTask(true);
-
 
 	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
 
