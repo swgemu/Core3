@@ -52,6 +52,8 @@ void CellObjectImplementation::onContainerLoaded() {
 	if (building == NULL)
 		return;
 
+	Locker locker(building);
+
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* child = getContainerObject(j);
 
