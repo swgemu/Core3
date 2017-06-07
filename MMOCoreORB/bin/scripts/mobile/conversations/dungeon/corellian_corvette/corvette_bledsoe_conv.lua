@@ -38,18 +38,18 @@ cleanse_ship = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_bledsoe_imperial_rescue_target:s_7dbf5a70","great_work"}, -- Yes...Sir.
-		{"@conversation/corvette_bledsoe_imperial_rescue_target:s_5128536b","breed_and_spread"}, -- Genocide is not my thing doctor. I think our work here is done.
+		{"@conversation/corvette_bledsoe_imperial_rescue_target:s_8bc64ef3","breed_and_spread"}, -- Genocide is not my thing doctor. I think our work here is done.
 	}
 }
 corvetteBledsoeConvoTemplate:addScreen(cleanse_ship);
 
 great_work = ConvoScreen:new {
-	id = "good_work",
+	id = "great_work",
 	leftDialog = "@conversation/corvette_bledsoe_imperial_rescue_target:s_2a121860", -- Good! I will make my way to the escape pods. Great work here soldier, I will make sure your commanding officer hears about it.
 	stopConversation = "true",
 	options = {}
 }
-corvetteBledsoeConvoTemplate:addScreen(good_work);
+corvetteBledsoeConvoTemplate:addScreen(great_work);
 
 breed_and_spread = ConvoScreen:new {
 	id = "breed_and_spread",
