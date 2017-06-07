@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_4b82e553",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-07T00:02:14Z",
+      "side": 1,
+      "message": "I\u0027d rather you put this in a manager somewhere (maybe FactionManager). There\u0027s no reason that every PlayerObject needs to have a copy of a static int that could easily be in a class that won\u0027t have multiple objects instantiated. I suggested FactionManager because PlayerObjectImplementation already includes it.",
+      "revId": "fde9bb03651d4c89a050563cd07f979e2546afc8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
