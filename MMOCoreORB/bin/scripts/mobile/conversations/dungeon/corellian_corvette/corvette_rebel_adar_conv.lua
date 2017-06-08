@@ -147,7 +147,7 @@ corvetteTallonConvoTemplate:addScreen(check_other_places);
 
 other_documents = ConvoScreen:new {
 	id = "other_documents",
-	leftDialog = "@conversation/corvette_tallon_rebel1:s_14963f17", -- I see. Which ones do you have?
+	leftDialog = "@conversation/corvette_tallon_rebel1:s_8b512dfa", -- I see. Which ones do you have?
 	stopConversation = "false",
 	options = {	}
 }
