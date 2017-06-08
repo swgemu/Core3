@@ -74,6 +74,18 @@ function VillageJediManager:onPlayerLoggedIn(pPlayer)
 	end
 	
 	JediTrials:onPlayerLoggedIn(pPlayer)
+	
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	
+	-- Covers players who had unlocked jedi knight prior to enclave implementation/frs data storage
+	if (pGhost ~= nil) then
+		local playerCouncil = PlayerObject(pGhost):getFrsCouncil()
+		local playerRank = PlayerObject(pGhost):getFrsRank()
+		
+		if (playerRank == 0 and playerCouncil ~= 0) then
+			PlayerObject(pGhost):setFrsRank(1)
+		end
+	end
 end
 
 function VillageJediManager:onPlayerLoggedOut(pPlayer)

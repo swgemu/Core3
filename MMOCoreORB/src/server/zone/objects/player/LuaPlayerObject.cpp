@@ -76,6 +76,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getVisibility", &LuaPlayerObject::getVisibility },
 		{ "setFrsCouncil", &LuaPlayerObject::setFrsCouncil },
 		{ "setFrsRank", &LuaPlayerObject::setFrsRank },
+		{ "getFrsRank", &LuaPlayerObject::getFrsRank },
+		{ "getFrsCouncil", &LuaPlayerObject::getFrsCouncil },
 		{ 0, 0 }
 };
 
@@ -674,4 +676,20 @@ int LuaPlayerObject::setFrsRank(lua_State* L) {
 		frsManager->setPlayerRank(player, rank);
 
 	return 0;
+}
+
+int LuaPlayerObject::getFrsRank(lua_State* L) {
+	FrsData* frsData = realObject->getFrsData();
+
+	lua_pushinteger(L, frsData->getRank());
+
+	return 1;
+}
+
+int LuaPlayerObject::getFrsCouncil(lua_State* L) {
+	FrsData* frsData = realObject->getFrsData();
+
+	lua_pushinteger(L, frsData->getCouncilType());
+
+	return 1;
 }
