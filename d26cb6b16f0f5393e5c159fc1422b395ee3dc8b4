@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_cba2559a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2017-06-08T05:18:50Z",
+      "side": 1,
+      "message": "We try to avoid string compares anywhere we can, so lets compare hash codes here instead.\n\nskill-\u003egetSkillName().hashCode() \u003d\u003d STRING_HASHCODE(\"combat_bountyhunter_investigation_03\")",
+      "revId": "d26cb6b16f0f5393e5c159fc1422b395ee3dc8b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
