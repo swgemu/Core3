@@ -3011,19 +3011,14 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (areInDuel)
 		return true;
 
+	if(object->hasBountyMissionFor(asCreatureObject()) || (ghost->isBountyLocked() && ghost->isInBountyLockList(object->getObjectID())))
+		return true;
+
 	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
 		return false;
 
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
-
-	if (ghost->isInBountyLockList(object->getObjectID()) || targetGhost->isInBountyLockList(asCreatureObject()->getObjectID())) {
-		return true;
-	}
-
-	if (object->hasBountyMissionFor(asCreatureObject())) {
-		return true;
-	}
 
 	ManagedReference<GuildObject*> guildObject = guild.get();
 	if (guildObject != NULL && guildObject->isInWaringGuild(object))
