@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_abd7c9ec",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-08T20:13:33Z",
+      "side": 1,
+      "message": "You can remove the existing checks that are now redundant.",
+      "revId": "38063cfffeac13d7d7757f268f430d7bd103867f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_6b09e194",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-08T20:13:33Z",
+      "side": 1,
+      "message": "This one too.",
+      "revId": "38063cfffeac13d7d7757f268f430d7bd103867f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
