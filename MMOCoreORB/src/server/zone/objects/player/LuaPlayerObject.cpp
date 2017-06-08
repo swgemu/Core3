@@ -672,8 +672,11 @@ int LuaPlayerObject::setFrsRank(lua_State* L) {
 
 	ManagedReference<CreatureObject*> player = realObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (frsManager != NULL && player != NULL)
+	if (frsManager == NULL && player != NULL) {
+		Locker locker(frsManager);
+
 		frsManager->setPlayerRank(player, rank);
+	}
 
 	return 0;
 }
