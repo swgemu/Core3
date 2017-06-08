@@ -16,6 +16,24 @@
       "revId": "d26cb6b16f0f5393e5c159fc1422b395ee3dc8b4",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_8bac4d8e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-08T05:26:54Z",
+      "side": 1,
+      "message": "I think you should put this into SkillManager::surrenderSkill() instead.",
+      "parentUuid": "1acb0d3e_cba2559a",
+      "revId": "d26cb6b16f0f5393e5c159fc1422b395ee3dc8b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
