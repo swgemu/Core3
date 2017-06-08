@@ -17,6 +17,7 @@
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -364,6 +365,18 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	return true;
 }
 
+void SkillManager::removeSkillRelatedMissions(CreatureObject* creature, Skill* skill) {
+	if(skill->getSkillName().hashCode() == STRING_HASHCODE("combat_bountyhunter_investigation_03")) {
+		ManagedReference<ZoneServer*> zoneServer = creature->getZoneServer();
+		if(zoneServer != NULL) {
+			ManagedReference<MissionManager*> missionManager = zoneServer->getMissionManager();
+			if(missionManager != NULL) {
+				missionManager->failPlayerBountyMission(creature->getObjectID());
+			}
+		}
+	}
+}
+
 bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient) {
 	Skill* skill = skillMap.get(skillName.hashCode());
 
@@ -387,6 +400,8 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
 		return false;
+
+	removeSkillRelatedMissions(creature, skill);
 
 	creature->removeSkill(skill, notifyClient);
 
@@ -493,6 +508,8 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		Skill* skill = copyOfList.get(i);
 
 		if (skill->getSkillPointsRequired() > 0) {
+			removeSkillRelatedMissions(creature, skill);
+
 			creature->removeSkill(skill, notifyClient);
 
 			//Remove skill modifiers

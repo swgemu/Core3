@@ -128,6 +128,8 @@ public:
 	inline bool isApprenticeshipEnabled() const {
 		return apprenticeshipEnabled;
 	}
+
+	void removeSkillRelatedMissions(CreatureObject* creature, Skill* skill);
 };
 
 }
