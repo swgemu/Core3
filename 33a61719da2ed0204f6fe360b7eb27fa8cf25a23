@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_2b03d974",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-08T20:22:00Z",
+      "side": 1,
+      "message": "What about a covert bh attacking an overt jedi\u0027s pet? Don\u0027t you need to also check if creature has a bounty for targetOwner?",
+      "revId": "33a61719da2ed0204f6fe360b7eb27fa8cf25a23",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
