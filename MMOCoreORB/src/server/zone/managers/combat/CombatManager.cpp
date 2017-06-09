@@ -532,23 +532,25 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		int type = 0;
 		int resist = 0;
-
+		// utilizing this switch-block for easier *functionality* , present & future
+		// SOE strings only provide this ONE specific type of mod (combat_bleeding_defense) and
+		// there's no evidence (yet) of other 3 WEAPON dot versions also being resistable.
 		switch (weapon->getDotType(i)) {
 		case 1: //POISON
 			type = CreatureState::POISONED;
-			resist = defender->getSkillMod("resistance_poison");
+			//resist = defender->getSkillMod("resistance_poison");
 			break;
 		case 2: //DISEASE
 			type = CreatureState::DISEASED;
-			resist = defender->getSkillMod("resistance_disease");
+			//resist = defender->getSkillMod("resistance_disease");
 			break;
 		case 3: //FIRE
 			type = CreatureState::ONFIRE;
-			resist = defender->getSkillMod("resistance_fire");
+			//resist = defender->getSkillMod("resistance_fire");
 			break;
 		case 4: //BLEED
 			type = CreatureState::BLEEDING;
-			resist = defender->getSkillMod("resistance_bleeding");
+			resist = defender->getSkillMod("combat_bleeding_defense");
 			break;
 		default:
 			break;
