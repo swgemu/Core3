@@ -55,6 +55,7 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredDroids;
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
+	protected boolean allowSameAccountPvpRatingCredit;
 	
 	@dereferenced
 	protected XpBonusList xpBonusList;

@@ -6,12 +6,13 @@ package server.zone.managers.frs;
 
 import engine.core.ManagedService;
 import engine.log.Logger;
-import system.util.Vector;
 import server.zone.ZoneServer;
 import server.zone.managers.frs.RankMaintenanceTask;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.CreatureObject;
+import system.util.VectorMap;
+import system.util.Vector;
 include server.zone.managers.frs.FrsRankingData;
 include system.lang.ref.Reference;
 
@@ -50,6 +51,12 @@ class FrsManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient VectorMap<unsigned long, int> roomRequirements;
 	
+	@dereferenced
+	@rawTemplate(value = "uint64, Vector<int>")
+	protected transient VectorMap experienceValues;
+	
+	protected transient boolean frsEnabled;
+	
 	protected transient int petitionInterval;
 	protected transient int votingInterval;
 	protected transient int acceptanceInterval;
@@ -71,6 +78,8 @@ class FrsManager extends ManagedService implements Logger {
 
 		zoneServer = zserv;
 		rankMaintenanceTask = null;
+		
+		frsEnabled = false;
 		
 		lightEnclave = null;
 		darkEnclave = null;
@@ -124,6 +133,10 @@ class FrsManager extends ManagedService implements Logger {
 	public native void deductMaintenanceXp(CreatureObject player);
 	public native void addExperienceDebt(CreatureObject player, int amount);
 	
+	public native boolean isValidFrsBattle(CreatureObject attacker, CreatureObject victim);
+	public native int calculatePvpExperienceChange(CreatureObject attacker, CreatureObject victim, float contribution, boolean isVictim);
+	public native int getBaseExperienceGain(PlayerObject playerGhost, PlayerObject opponentGhost, boolean playerWon);
+	
 	@arg1preLocked
 	public native void deductDebtExperience(CreatureObject player);
 	
@@ -146,5 +159,10 @@ class FrsManager extends ManagedService implements Logger {
 	@preLocked
 	public void updateLastMaintenance() {
 		lastMaintenanceTime.updateToCurrentTime();
+	}
+	
+	@read
+	public boolean isFrsEnabled() {
+		return frsEnabled;
 	}
 }
