@@ -15,6 +15,7 @@
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -5210,6 +5211,8 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	int victimRatingTotalDelta = 0;
 	ManagedReference<CreatureObject*> highDamageAttacker = NULL;
 	uint32 highDamageAmount = 0;
+	FrsManager* frsManager = server->getFrsManager();
+	int frsXpAdjustment = 0;
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -5251,8 +5254,6 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			continue;
 		}
 
-		ghost->addToKillerList(attacker->getObjectID());
-
 		if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 			String stringFile;
 			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
@@ -5271,6 +5272,22 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
+
+		if (frsManager != NULL && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attacker, player)) {
+			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, false);
+			int victimFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, true);
+			frsXpAdjustment += victimFrsXp;
+
+			if (attackerFrsXp > 0) {
+				Core::getTaskManager()->executeTask([=] () {
+					Locker locker(attacker);
+					Locker clocker(frsManager, attacker);
+					frsManager->adjustFrsExperience(attacker, attackerFrsXp);
+				}, "FrsExperienceAdjustLambda");
+			}
+		}
+
+		ghost->addToKillerList(attacker->getObjectID());
 
 		int attackerRatingDelta = 20 + ((curAttackerRating - defenderPvpRating) / 25);
 		int victimRatingDelta = -20 + ((defenderPvpRating - curAttackerRating) / 25);
@@ -5315,6 +5332,12 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 	if (highDamageAttacker == NULL)
 		return;
+
+	if (frsManager != NULL && frsManager->isFrsEnabled() && frsXpAdjustment > 0) {
+		Locker crossLock(frsManager, player);
+
+		frsManager->adjustFrsExperience(player, frsXpAdjustment);
+	}
 
 	if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 		String stringFile;
