@@ -310,8 +310,12 @@ void StructureObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy)
 		structureMaintenanceTask = NULL;
 	}
 
-	if (navArea != NULL)
-		navArea->destroyObjectFromWorld(sendSelfDestroy);
+	if (navArea != NULL) {
+		Core::getTaskManager()->executeTask([navArea, sendSelfDestroy] () {
+			Locker locker(navArea);
+			navArea->destroyObjectFromWorld(sendSelfDestroy);
+		}, "destroyStructureNavAreaLambda");
+	}
 
 	TangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
 }
