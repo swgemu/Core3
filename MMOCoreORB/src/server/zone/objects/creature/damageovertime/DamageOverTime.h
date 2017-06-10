@@ -84,11 +84,11 @@ public:
 		duration = seconds;
 	}
 
-	inline void setExpires(Time time) {
+	inline void setExpires(const Time& time) {
 		expires = time;
 	}
 
-	inline void setNextTick(Time tick) {
+	inline void setNextTick(const Time& tick) {
 		nextTick = tick;
 	}
 

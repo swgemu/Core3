@@ -16,7 +16,7 @@ DamageOverTime::DamageOverTime() {
 	setAttribute(CreatureAttribute::HEALTH);
 	strength = 0;
 	setDuration(0);
-	setExpires(0);
+	setExpires(Time((uint32) 0));
 	setSecondaryStrength(0);
 	addSerializableVariables();
 }
