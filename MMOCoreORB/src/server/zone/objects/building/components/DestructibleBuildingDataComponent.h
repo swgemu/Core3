@@ -118,15 +118,15 @@ public:
 
 	void setState(int state);
 
-	void setLastVulnerableTime(Time time) {
+	void setLastVulnerableTime(const Time& time) {
 		lastVulnerableTime = time;
 	}
 
-	void setNextVulnerableTime(Time time) {
+	void setNextVulnerableTime(const Time& time) {
 		nextVulnerableTime = time;
 	}
 
-	void setVulnerabilityEndTime(Time time) {
+	void setVulnerabilityEndTime(const Time& time) {
 		vulnerabilityEndTime = time;
 	}
 

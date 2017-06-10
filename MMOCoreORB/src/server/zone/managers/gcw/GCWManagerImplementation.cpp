@@ -1678,10 +1678,10 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 	baseData->setLastVulnerableTime(nextTime);
 
 	nextTime.addMiliTime(vulnerabilityFrequency * 1000);
-	baseData->setNextVulnerableTime(nextTime.getTime());
+	baseData->setNextVulnerableTime(nextTime);
 
 	nextTime.addMiliTime(vulnerabilityDuration * 1000);
-	baseData->setVulnerabilityEndTime(nextTime.getTime());
+	baseData->setVulnerabilityEndTime(nextTime);
 
 
 	Reference<Task*> task = getStartTask(building->getObjectID());
