@@ -243,17 +243,6 @@ class CityRegion extends ManagedObject implements Logger {
 		return assessmentPending;
 	}
 
-	@local
-	@dirty
-	public RecastNavMesh getNavMesh() {
-		NavArea strongRef = navMesh;
-
-		if (strongRef == null)
-			return null;
-
-		return strongRef.getNavMesh();
-	}
-
 	@preLocked
 	public void setAssessmentPending(boolean pend) {
 		assessmentPending = pend;

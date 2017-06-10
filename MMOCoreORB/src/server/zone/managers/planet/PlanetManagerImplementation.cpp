@@ -385,12 +385,16 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 		}
 
 		if (destroy) {
-			NavArea* area = navMeshAreas.get(name);
+			ManagedReference<NavArea*> area = navMeshAreas.get(name);
 
 			if (area != NULL) {
-				area->destroyObjectFromWorld(true);
-				area->destroyObjectFromDatabase(true);
 				navMeshAreas.drop(name);
+
+				Core::getTaskManager()->executeTask([area] {
+					Locker locker(area);
+					area->destroyObjectFromWorld(true);
+					area->destroyObjectFromDatabase(true);
+				}, "destroyNavAreaLambda");
 			}
 
 			create = true;

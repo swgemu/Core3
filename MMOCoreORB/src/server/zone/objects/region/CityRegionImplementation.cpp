@@ -93,7 +93,6 @@ void CityRegionImplementation::initialize() {
 
 	setLoggingName("CityRegion");
 	setLogging(true);
-
 }
 
 void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& queue) {
@@ -102,24 +101,20 @@ void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& q
 	if (area == NULL)
 		return;
 
-	RecastNavMesh *navmesh = area->getNavMesh();
-
 	RecastSettings settings;
 
-	if(!isClientRegion()) {
+	if (!isClientRegion()) {
 		settings.m_cellSize = 0.2f;
 		settings.m_cellHeight = 0.2f;
 		settings.m_tileSize = 64.0f;
 		settings.distanceBetweenPoles = 4.0f;
 	}
 
-	if (navmesh == NULL || !navmesh->isLoaded()) {
+	if (!area->isNavMeshLoaded()) {
 		NavMeshManager::instance()->enqueueJob(zone, area, area->getBoundingBox(), settings, queue);
 	} else {
 		NavMeshManager::instance()->enqueueJob(zone, area, bounds, settings, queue);
 	}
-
-
 }
 
 Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool persistent) {
@@ -449,13 +444,13 @@ void CityRegionImplementation::destroyNavMesh() {
 	ManagedReference<NavArea*> strongMesh = navMesh.get();
 
 	if (strongMesh != NULL) {
-		NavMeshManager::instance()->cancelJobs(strongMesh);
 		Locker locker(strongMesh);
-		zone->getPlanetManager()->dropNavArea(strongMesh->getMeshName());
 		strongMesh->destroyObjectFromWorld(true);
 
 		if (strongMesh->isPersistent())
 			strongMesh->destroyObjectFromDatabase(true);
+
+		navMesh = NULL;
 	}
 }
 
@@ -476,8 +471,7 @@ void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebu
 	ManagedReference<NavArea*> strongMesh = navMesh.get();
 
 	if (strongMesh != NULL) {
-		RecastNavMesh* mesh = getNavMesh();
-		if (mesh == NULL || !mesh->isLoaded()) {
+		if (!strongMesh->isNavMeshLoaded()) {
 			Reference<CityRegion*> strongRef = _this.getReferenceUnsafeStaticCast();
 
 			Core::getTaskManager()->executeTask([=] {
