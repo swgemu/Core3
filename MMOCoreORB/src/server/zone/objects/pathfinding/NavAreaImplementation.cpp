@@ -11,6 +11,8 @@
 void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	disableUpdates = true;
 
+	NavMeshManager::instance()->cancelJobs(asNavArea());
+
 	if (zone != NULL) {
 		PlanetManager* planetManager = zone->getPlanetManager();
 
@@ -44,7 +46,6 @@ AABB NavAreaImplementation::getBoundingBox() {
 	Vector3 radius(f, f, f);
 	return AABB(center-radius, center+radius);
 }
-
 
 void NavAreaImplementation::setRadius(float f) {
     ActiveAreaImplementation::setRadius(f);
@@ -96,7 +97,7 @@ void NavAreaImplementation::initialize() {
 }
 
 void NavAreaImplementation::notifyEnter(SceneObject* object) {
-    if (disableUpdates)
+    if (disableUpdates || NavMeshManager::instance()->isStopped())
         return;
 
     if (object->getParentID() != 0)
@@ -116,46 +117,42 @@ void NavAreaImplementation::notifyEnter(SceneObject* object) {
     if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object
         return;
 
-    ReadLocker rlocker(&containedLock);
-    if(!containedObjects.contains(object->getObjectID()) && !object->getObjectTemplate()->getTemplateFileName().contains("construction_")) {
-    	rlocker.release();
+    if (object->getObjectTemplate()->getTemplateFileName().contains("construction_"))
+    	return;
 
-    	ZoneServer* zServ = server->getZoneServer();
-    	if (zServ->isServerLoading() || zServ->isServerShuttingDown())
-    		containedObjects.add(object->getObjectID());
-    	else
-    		updateNavMesh(object, false);
-    }
+    updateNavMesh(object, false);
 }
 
 void NavAreaImplementation::notifyExit(SceneObject* object) {
-    if(disableUpdates)
+    if (disableUpdates || NavMeshManager::instance()->isStopped())
+        return;
+
+    updateNavMesh(object, true);
+}
+
+void NavAreaImplementation::updateNavMesh(SceneObject *object, bool remove) {
+    if (disableUpdates || NavMeshManager::instance()->isStopped()) // We check this redundantly as to not burden the zoneContainerComponent with this logic
         return;
 
     ReadLocker rlocker(&containedLock);
 
-    if(containedObjects.contains(object->getObjectID())) {
+    if (remove) {
+    	if (!containedObjects.contains(object->getObjectID()))
+    		return;
+    } else {
+    	if (containedObjects.contains(object->getObjectID()))
+    		return;
+    }
+
+    rlocker.release();
+
 #ifdef NAVMESH_DEBUG
         info(object->getObjectTemplate()->getTemplateFileName() + " caused navmesh rebuild with: collisionmaterialflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialFlags()) + "\ncollisionmaterialblockflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialBlockFlags())+ "\ncollisionmaterialpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialPassFlags()) + "\ncollisionmaterialactionflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionFlags())+ "\ncollisionmaterialactionpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionPassFlags()) + "\ncollisionmaterialactionBlockflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionBlockFlags()), true);
 #endif
 
-        rlocker.release();
-
-    	ZoneServer* zServ = server->getZoneServer();
-    	if (zServ->isServerLoading() || zServ->isServerShuttingDown())
-        	containedObjects.remove(object->getObjectID());
-        else
-        	updateNavMesh(object, true);
-    }
-}
-
-void NavAreaImplementation::updateNavMesh(SceneObject *object, bool remove) {
-    if (disableUpdates) // We check this redundantly as to not burden the zoneContainerComponent with this logic
-        return;
-
     Vector3 position = object->getWorldPosition();
     const BaseBoundingVolume *volume = object->getBoundingVolume();
-    if(volume) {
+    if (volume) {
 
         AABB bbox = volume->getBoundingBox();
         float len = bbox.extents()[bbox.longestAxis()];

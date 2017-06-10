@@ -116,7 +116,7 @@ void NavMeshManager::checkJobs() {
 
             Locker locker(&jobQueueMutex);
             runningJobs.drop(name);
-        }, "updateNavMesh", job->getQueue().toCharArray());
+        }, "startNavMeshJob", job->getQueue().toCharArray());
     }
 
     locker.release();
@@ -191,9 +191,9 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     builder->initialize(meshData, bBox, poleDist);
     meshData.removeAll();
+
     // This will take a very long time to complete
-    RecastNavMesh* navmesh = area->getNavMesh();
-    bool initialBuild = (!navmesh->isLoaded());
+    bool initialBuild = (!area->isNavMeshLoaded());
     if (initialBuild) {
 #ifdef NAVMESH_DEBUG
         info("Rebuilding Base Mesh", true);
