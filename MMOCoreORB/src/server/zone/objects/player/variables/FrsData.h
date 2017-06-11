@@ -14,7 +14,7 @@ class FrsData : public Object {
 public:
 	FrsData() : Object() {
 		councilType = 0;
-		rank = 0;
+		rank = -1;
 	}
 
 	FrsData(const FrsData& data) : Object() {
