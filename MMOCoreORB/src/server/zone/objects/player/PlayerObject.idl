@@ -148,7 +148,7 @@ class PlayerObject extends IntangibleObject {
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 
 	@dereferenced
-	protected Vector<unsigned int> killerList;
+	protected Vector<unsigned long> newKillerList;
 
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
@@ -198,6 +198,9 @@ class PlayerObject extends IntangibleObject {
 	protected int skillPoints; //TODO: This could be encapsulated in the skill list.
 
 	protected int pvpRating;
+	
+	@dereferenced
+	protected Time lastPvpRatingUpdate; // Timestamp of when last time player received a pvp rating change
 
 	@dereferenced
 	protected Vector<byte> hologrindProfessions;
@@ -286,6 +289,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int LOADING = 6;
 
 	public static final int PVP_RATING_FLOOR = 500;
+	public static final unsigned long PVP_RESET_TIME = 259200000; // 3 days
 
 	public PlayerObject() {
 		characterBitmask = 0;
@@ -364,6 +368,8 @@ class PlayerObject extends IntangibleObject {
 		drinkFillingMax = 0;
 
 		reactionFines = 0;
+		
+		lastPvpRatingUpdate.updateToCurrentTime();
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1813,14 +1819,24 @@ class PlayerObject extends IntangibleObject {
 	public native void doFieldFactionChange(int newStatus);
 
 	public void addToKillerList(unsigned int playerID) {
-		killerList.add(0, playerID);
+		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && newKillerList.size() > 0)
+			newKillerList.removeAll();
+		
+		newKillerList.add(0, playerID);
 
-		if (killerList.size() > 20)
-			killerList.remove(killerList.size() - 1);
+		if (newKillerList.size() > 20)
+			newKillerList.remove(newKillerList.size() - 1);
+		
+		lastPvpRatingUpdate.updateToCurrentTime();
 	}
 
 	public boolean hasOnKillerList(unsigned int playerID) {
-		return killerList.contains(playerID);
+		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && newKillerList.size() > 0) {
+			newKillerList.removeAll();
+			return false;
+		}
+		
+		return newKillerList.contains(playerID);
 	}
 
 	@read
