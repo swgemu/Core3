@@ -82,10 +82,6 @@ function VillageJediManager:onPlayerLoggedIn(pPlayer)
 		local playerCouncil = PlayerObject(pGhost):getFrsCouncil()
 		local playerRank = PlayerObject(pGhost):getFrsRank()
 
-		if (playerRank == 0 and playerCouncil ~= 0) then
-			PlayerObject(pGhost):setFrsRank(1)
-		end
-
 		if (playerCouncil == 0 and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			local councilType = JediTrials:getJediCouncil(pPlayer)
 
