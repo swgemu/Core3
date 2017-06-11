@@ -11,6 +11,10 @@
 
 void FrsManagerImplementation::initialize() {
 	loadLuaConfig();
+
+	if (!frsEnabled)
+		return;
+
 	setupEnclaves();
 
 	uint64 miliDiff = lastMaintenanceTime.miliDifference();
@@ -40,6 +44,7 @@ void FrsManagerImplementation::loadLuaConfig() {
 		return;
 	}
 
+	frsEnabled = lua->getGlobalInt("frsEnabled");
 	petitionInterval = lua->getGlobalInt("petitionInterval");
 	votingInterval = lua->getGlobalInt("votingInterval");
 	acceptanceInterval = lua->getGlobalInt("acceptanceInterval");
@@ -119,6 +124,28 @@ void FrsManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 
+	luaObject = lua->getGlobalObject("frsExperienceValues");
+
+	if (luaObject.isValidTable()) {
+		for(int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject entry = luaObject.getObjectAt(i);
+			uint64 keyHash = entry.getStringAt(1).hashCode();
+
+			Vector<int> expValues;
+
+			for (int j = 0; j <= 11; j++) {
+				int value = entry.getIntAt(j + 2);
+				expValues.add(value);
+			}
+
+			experienceValues.put(keyHash, expValues);
+
+			entry.pop();
+		}
+	}
+
+	luaObject.pop();
+
 	delete lua;
 	lua = NULL;
 }
@@ -136,7 +163,7 @@ void FrsManagerImplementation::setupEnclaves() {
 }
 
 void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding, const String& groupName) {
-	for (uint32 j = 1; j < enclaveBuilding->getTotalCellNumber(); ++j) {
+	for (uint32 j = 2; j < enclaveBuilding->getTotalCellNumber(); ++j) {
 		ManagedReference<CellObject*> cell = enclaveBuilding->getCell(j);
 
 		if (cell != NULL) {
@@ -414,4 +441,132 @@ void FrsManagerImplementation::deductDebtExperience(CreatureObject* player) {
 	adjustFrsExperience(player, debtAmt * -1);
 
 	experienceDebt.drop(playerID);
+}
+
+bool FrsManagerImplementation::isValidFrsBattle(CreatureObject* attacker, CreatureObject* victim) {
+	PlayerObject* attackerGhost = attacker->getPlayerObject();
+	PlayerObject* victimGhost = victim->getPlayerObject();
+
+	// No credit if they were killed by the attacker recently
+	if (attackerGhost == NULL || victimGhost == NULL)
+		return false;
+
+	FrsData* attackerData = attackerGhost->getFrsData();
+	int attackerRank = attackerData->getRank();
+	int attackerCouncil = attackerData->getCouncilType();
+
+	FrsData* victimData = victimGhost->getFrsData();
+	int victimRank = victimData->getRank();
+	int victimCouncil = victimData->getCouncilType();
+
+	// Neither player is in the FRS
+	if (victimCouncil == 0 && attackerCouncil == 0)
+		return false;
+
+	// No credit if they are in the same council
+	if ((attackerCouncil == COUNCIL_LIGHT && victimCouncil == COUNCIL_LIGHT) || (attackerCouncil == COUNCIL_DARK && victimCouncil == COUNCIL_DARK))
+		return false;
+
+	return true;
+}
+
+int FrsManagerImplementation::calculatePvpExperienceChange(CreatureObject* attacker, CreatureObject* victim, float contribution, bool isVictim) {
+	PlayerObject* attackerGhost = attacker->getPlayerObject();
+	PlayerObject* victimGhost = victim->getPlayerObject();
+
+	if (attackerGhost == NULL || victimGhost == NULL)
+		return 0;
+
+	int targetRating = 0;
+	int opponentRating = 0;
+
+	PlayerObject* playerGhost = NULL;
+	PlayerObject* opponentGhost = NULL;
+
+	if (isVictim) {
+		targetRating = victimGhost->getPvpRating();
+		opponentRating = attackerGhost->getPvpRating();
+
+		playerGhost = victimGhost;
+		opponentGhost = attackerGhost;
+	} else {
+		targetRating = attackerGhost->getPvpRating();
+		opponentRating = victimGhost->getPvpRating();
+
+		playerGhost = attackerGhost;
+		opponentGhost = victimGhost;
+	}
+
+	int ratingDiff = abs(targetRating - opponentRating);
+
+	if (ratingDiff > 2000)
+		ratingDiff = 2000;
+
+	float xpAdjustment = ((float)ratingDiff / 2000.f) * 0.5f;
+	int xpChange = getBaseExperienceGain(playerGhost, opponentGhost, !isVictim);
+
+	if (xpChange != 0) {
+		xpChange = (int)((float)xpChange * contribution);
+
+		// Adjust xp value depending on pvp rating
+		// A lower rated victim will lose less experience, a higher rated victim will lose more experience
+		// A lower rated victor will gain more experience, a higher rated victor will gain less experience
+		if ((targetRating < opponentRating && isVictim) || (targetRating > opponentRating && !isVictim)) {
+			xpChange -= (int)((float)xpChange * xpAdjustment);
+		} else {
+			xpChange += (int)((float)xpChange * xpAdjustment);
+		}
+	}
+
+	return xpChange;
+}
+
+int FrsManagerImplementation::getBaseExperienceGain(PlayerObject* playerGhost, PlayerObject* opponentGhost, bool playerWon) {
+	ManagedReference<CreatureObject*> opponent = opponentGhost->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (opponent == NULL)
+		return 0;
+
+	FrsData* playerData = playerGhost->getFrsData();
+	int playerRank = playerData->getRank();
+	int playerCouncil = playerData->getCouncilType();
+
+	FrsData* opponentData = opponentGhost->getFrsData();
+	int opponentRank = opponentData->getRank();
+
+	// Make sure player is part of a council before we grab any value to award
+	if (playerCouncil == 0)
+		return 0;
+
+	String key = "";
+
+	if (opponent->hasSkill("combat_bountyhunter_master")) { // Opponent is MBH
+		key = "bh_";
+	} else if (opponentRank >= 0 && opponent->hasSkill("force_title_jedi_rank_03")) { // Opponent is at least a knight
+		key = "rank" + String::valueOf(opponentRank) + "_";
+	} else if (opponent->hasSkill("force_title_jedi_rank_02")) { // Opponent is padawan
+		key = "padawan_";
+	} else { // Opponent is non jedi
+		key = "nonjedi_";
+	}
+
+	if (playerWon) {
+		key = key + "win";
+	} else {
+		key = key + "lose";
+	}
+
+	uint64 keyHash = key.hashCode();
+
+	if (!experienceValues.contains(keyHash))
+		return 0;
+
+	Vector<int> expValues = experienceValues.get(keyHash);
+
+	int returnValue = expValues.get(playerRank);
+
+	if (!playerWon)
+		returnValue *= -1;
+
+	return returnValue;
 }

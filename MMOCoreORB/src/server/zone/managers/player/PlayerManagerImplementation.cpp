@@ -15,6 +15,7 @@
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -148,6 +149,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 
 	lua->runFile("scripts/managers/player_manager.lua");
 
+	allowSameAccountPvpRatingCredit = lua->getGlobalInt("allowSameAccountPvpRatingCredit");
 	performanceBuff = lua->getGlobalInt("performanceBuff");
 	medicalBuff = lua->getGlobalInt("medicalBuff");
 	performanceDuration = lua->getGlobalInt("performanceDuration");
@@ -730,25 +732,6 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
-	ThreatMap* threatMap = player->getThreatMap();
-
-	if (attacker->isPlayerCreature()) {
-		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
-
-		stringId.setStringId("base_player", "prose_target_dead");
-		stringId.setTT(player->getDisplayedName());
-		playerRef->sendSystemMessage(stringId);
-
-		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
-
-		Core::getTaskManager()->executeTask([=] () {
-			if (playerRef != NULL) {
-				Locker locker(playerRef);
-				doPvpDeathRatingUpdate(playerRef, copyThreatMap);
-			}
-		}, "PvpDeathRatingUpdateLambda");
-	}
-
 	if (player->isRidingMount()) {
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
@@ -798,6 +781,25 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	}
 
 	CombatManager::instance()->freeDuelList(player, false);
+
+	ThreatMap* threatMap = player->getThreatMap();
+
+	if (attacker->isPlayerCreature()) {
+		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
+
+		stringId.setStringId("base_player", "prose_target_dead");
+		stringId.setTT(player->getDisplayedName());
+		playerRef->sendSystemMessage(stringId);
+
+		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
+
+		Core::getTaskManager()->executeTask([=] () {
+			if (playerRef != NULL) {
+				Locker locker(playerRef);
+				doPvpDeathRatingUpdate(playerRef, copyThreatMap);
+			}
+		}, "PvpDeathRatingUpdateLambda");
+	}
 
 	threatMap->removeAll(true);
 
@@ -5211,6 +5213,8 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	int victimRatingTotalDelta = 0;
 	ManagedReference<CreatureObject*> highDamageAttacker = NULL;
 	uint32 highDamageAmount = 0;
+	FrsManager* frsManager = server->getFrsManager();
+	int frsXpAdjustment = 0;
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -5219,12 +5223,21 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		if (entry == NULL || attacker == NULL || attacker == player || !attacker->isPlayerCreature())
 			continue;
 
-		if (player->getDistanceTo(attacker) > 80.f)
+		if (!player->isAttackableBy(attacker, true))
 			continue;
 
 		PlayerObject* attackerGhost = attacker->getPlayerObject();
 
 		if (attackerGhost == NULL)
+			continue;
+
+		if (!allowSameAccountPvpRatingCredit && ghost->getAccountID() == attackerGhost->getAccountID())
+			continue;
+
+		if (entry->getTotalDamage() <= 0)
+			continue;
+
+		if (player->getDistanceTo(attacker) > 80.f)
 			continue;
 
 		int curAttackerRating = attackerGhost->getPvpRating();
@@ -5252,8 +5265,6 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			continue;
 		}
 
-		ghost->addToKillerList(attacker->getObjectID());
-
 		if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 			String stringFile;
 			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
@@ -5272,6 +5283,23 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
+
+		if (frsManager != NULL && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attacker, player)) {
+			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, false);
+			int victimFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, true);
+			frsXpAdjustment += victimFrsXp;
+
+			ManagedReference<CreatureObject*> attackerRef = attacker;
+			if (attackerFrsXp > 0) {
+				Core::getTaskManager()->executeTask([attackerRef, frsManager, attackerFrsXp] () {
+					Locker locker(attackerRef);
+					Locker clocker(frsManager, attackerRef);
+					frsManager->adjustFrsExperience(attackerRef, attackerFrsXp);
+				}, "FrsExperienceAdjustLambda");
+			}
+		}
+
+		ghost->addToKillerList(attacker->getObjectID());
 
 		int attackerRatingDelta = 20 + ((curAttackerRating - defenderPvpRating) / 25);
 		int victimRatingDelta = -20 + ((defenderPvpRating - curAttackerRating) / 25);
@@ -5316,6 +5344,12 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 	if (highDamageAttacker == NULL)
 		return;
+
+	if (frsManager != NULL && frsManager->isFrsEnabled() && frsXpAdjustment < 0) {
+		Locker crossLock(frsManager, player);
+
+		frsManager->adjustFrsExperience(player, frsXpAdjustment);
+	}
 
 	if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 		String stringFile;
