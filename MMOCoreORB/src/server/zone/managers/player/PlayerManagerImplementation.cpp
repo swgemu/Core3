@@ -769,8 +769,13 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost != NULL)
+	if (ghost != NULL) {
 		ghost->resetIncapacitationTimes();
+		if(ghost->hasPvpTef()) {
+			ghost->schedulePvpTefRemovalTask(true, true);
+		}
+	}
+
 
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature() || attacker->isPet()) {
@@ -1018,10 +1023,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	if (player->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_IMPERIAL && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_REBEL && !player->hasSkill("force_title_jedi_rank_03"))
 		player->setFactionStatus(FactionStatus::ONLEAVE);
-
-	if (ghost->hasPvpTef())
-		ghost->schedulePvpTefRemovalTask(true);
-
 
 	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
 
