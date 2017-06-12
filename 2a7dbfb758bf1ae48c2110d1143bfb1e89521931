@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_0e570b04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/jedi_trials.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-12T01:30:23Z",
+      "side": 1,
+      "message": "councilType doesn\u0027t seem like the correct rank to set.",
+      "range": {
+        "startLine": 190,
+        "startChar": 32,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "2a7dbfb758bf1ae48c2110d1143bfb1e89521931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_ce402338",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-12T01:30:23Z",
+      "side": 1,
+      "message": "Should BHs killing frs targets also pass the faction check above?",
+      "range": {
+        "startLine": 469,
+        "startChar": 47,
+        "endLine": 469,
+        "endChar": 94
+      },
+      "revId": "2a7dbfb758bf1ae48c2110d1143bfb1e89521931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_ee3ddfbc",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-12T01:30:23Z",
+      "side": 1,
+      "message": "shouldn\u0027t that be !\u003d so that negative xp will also get adjusted?",
+      "range": {
+        "startLine": 511,
+        "startChar": 14,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "2a7dbfb758bf1ae48c2110d1143bfb1e89521931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_8e4a1b54",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 5344,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-12T01:30:23Z",
+      "side": 1,
+      "message": "Wouldn\u0027t player\u0027s adjustment be zero or negative? It shouldn\u0027t ever be positive if I\u0027m understanding this all correctly.",
+      "range": {
+        "startLine": 5344,
+        "startChar": 73,
+        "endLine": 5344,
+        "endChar": 74
+      },
+      "revId": "2a7dbfb758bf1ae48c2110d1143bfb1e89521931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_2e5c4725",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 12
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-06-12T01:30:23Z",
+      "side": 1,
+      "message": "updating the time here seems wrong",
+      "revId": "2a7dbfb758bf1ae48c2110d1143bfb1e89521931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
