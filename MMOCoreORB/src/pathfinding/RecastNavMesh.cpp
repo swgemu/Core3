@@ -113,7 +113,10 @@ void RecastNavMesh::saveAll(ObjectOutputStream* stream) {
 
 void RecastNavMesh::setupDetourNavMeshHeader() {
 	const dtNavMesh* mesh = navMesh;
-	if (!mesh) return;
+	if (!mesh) {
+		error("dtNavMesh is null in RecastNavMesh::setupDetourNavMeshHeader for " + name);
+		return;
+	}
 
 	header.magic = NAVMESHSET_MAGIC;
 	header.version = NAVMESHSET_VERSION;
@@ -131,12 +134,6 @@ void RecastNavMesh::copyMeshTo(dtNavMesh* mesh) {
 	const dtNavMesh* origMesh = navMesh;
 	if (!origMesh) {
 		error("Original mesh is null in copyMeshTo for " + name);
-		return;
-	}
-
-	mesh = dtAllocNavMesh();
-	if (!mesh) {
-		error("Failed to allocate dtNavMesh in copyMeshTo for " + name);
 		return;
 	}
 

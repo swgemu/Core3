@@ -37,6 +37,10 @@ public:
 	void cancelAllJobs();
 	void stop();
 
+	bool isStopped() {
+		return stopped;
+	}
+
     static bool AABBEncompasessAABB(const AABB& lhs, const AABB& rhs);
 
     // Lower thread count, used during runtime

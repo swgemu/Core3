@@ -64,9 +64,9 @@ class StructureObject extends TangibleObject {
 	}
 
 	public native void initializeTransientMembers();
-	
+
 	public native void finalize();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -99,14 +99,14 @@ class StructureObject extends TangibleObject {
 	public void createChildObjects() {
 		super.createChildObjects();
 	}
-	
+
 	/**
 	 * Gets called when the structure has been created;
 	 */
 	public abstract int notifyStructurePlaced(CreatureObject creature) {
 		return 0;
 	}
-	
+
 	@dirty
 	public abstract boolean checkRequisitesForPlacement(CreatureObject player) {
 		return true;
@@ -128,7 +128,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void scheduleMaintenanceTask(int timeFromNow);
-	
+
 	/**
 	 * This method should be called anytime a method needs up to date information about
 	 * maintenance, power, and condition of the structure.
@@ -143,7 +143,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean isOnAdminList(CreatureObject player);
-	
+
 	/**
 	 * Checks if the player/guild is on the admin list.
 	 * For PermissionsListModify command
@@ -154,7 +154,7 @@ class StructureObject extends TangibleObject {
 	public boolean isOnAdminList(final unsigned long objectID) {
 		return structurePermissionList.isOnPermissionList("ADMIN", objectID);
 	}
-	
+
 	/**
 	 * Checks if the player is on the entry list.
 	 * @param player The creo of the player to check for entry permission.
@@ -162,7 +162,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean isOnEntryList(CreatureObject player);
-	
+
 	/**
 	 * Checks if the player is on the ban list.
 	 * @param player The creo of the player to check for ban permission.
@@ -170,7 +170,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean isOnBanList(CreatureObject player);
-	
+
 	/**
 	 * Checks if the player/guild is on the ban list.
 	 * For PermissionsListModify command
@@ -181,7 +181,7 @@ class StructureObject extends TangibleObject {
 	public boolean isOnBanList(final unsigned long objectID) {
 		return structurePermissionList.isOnPermissionList("BAN", objectID);
 	}
-	
+
 	/**
 	 * Checks if the player is on the hopper list.
 	 * @param player The creo of the player to check for hopper permission.
@@ -189,7 +189,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean isOnHopperList(CreatureObject player);
-	
+
 	/**
 	 * Checks if the player is the on the specified permission list.
 	 * @param listName The name of the list to check.
@@ -198,7 +198,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean isOnPermissionList(final string listName, CreatureObject player);
-	
+
 	/**
 	 * Checks if the player/guild is the on the specified permission list.
 	 * For PermissionsListModify command
@@ -215,12 +215,12 @@ class StructureObject extends TangibleObject {
 	public native boolean isOwnerOf(SceneObject obj);
 	@dirty
 	public native boolean isOwnerOf(unsigned long oid);
-	
+
 	@dirty
 	public boolean isOnAccessList(SceneObject obj) {
 		return false;
 	}
-	
+
 	@dirty
 	public boolean isOnAccessList(unsigned long oid) {
 		return false;
@@ -230,29 +230,29 @@ class StructureObject extends TangibleObject {
 	public void sendPermissionListTo(CreatureObject creature, final string listName) {
 		structurePermissionList.sendTo(creature, listName);
 	}
-	
+
 	@dirty
 	public boolean hasPermissionList(final string listName) {
 		return structurePermissionList.containsList(listName);
 	}
-	
+
 	@dirty
 	public boolean isPermissionListFull(final string listName) {
 		return structurePermissionList.isListFull(listName);
 	}
-	
+
 	public int togglePermission(final string listName, final unsigned long objectID) {
 		return structurePermissionList.togglePermission(listName, objectID);
 	}
-	
+
 	public int grantPermission(final string listName, final unsigned long objectID) {
 		return structurePermissionList.grantPermission(listName, objectID);
 	}
-	
+
 	public int revokePermission(final string listName, final unsigned long objectID) {
 		return structurePermissionList.revokePermission(listName, objectID);
 	}
-	
+
 	public int revokeAllPermissions(final unsigned long objectID) {
 		return structurePermissionList.revokeAllPermissions(objectID);
 	}
@@ -272,17 +272,17 @@ class StructureObject extends TangibleObject {
 
 	@dirty
 	public native CreatureObject getOwnerCreatureObject(); 
-	
+
 	@read
 	public unsigned long getOwnerObjectID() {
 		return ownerObjectID;
 	}
-	
+
 	@read
 	public unsigned long getDeedObjectID() {
 		return deedObjectID;
 	}
-	
+
 	@dirty
 	public native int getLotSize();
 
@@ -299,25 +299,25 @@ class StructureObject extends TangibleObject {
 
 	@dirty
 	public native int getBaseMaintenanceRate();
-	
+
 	@dirty
 	public abstract native int getBasePowerRate();
-	
+
 	@read
 	public int getSurplusMaintenance() {
 		return surplusMaintenance;
 	}
-	
+
 	@read
 	public int getSurplusPower() {
 		return surplusPower;
 	}
-	
+
 	@dirty
 	public abstract boolean isPublicStructure() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isPrivateStructure() {
 		return false;
@@ -389,16 +389,16 @@ class StructureObject extends TangibleObject {
 	public abstract boolean isCondemned() {
 		return false;
 	}
-	
+
 	public abstract void setPublicStructure(boolean privacy) {
-		
+
 	}
 
 	@dirty
 	public boolean isStructureObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public native boolean isCampStructure();
 
@@ -428,12 +428,12 @@ class StructureObject extends TangibleObject {
 	@dirty
 	@arg1preLocked
 	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
-	
+
 	@dirty
 	public abstract string getRedeedMessage() {
 		return "";
 	}
-	
+
 	@dirty
 	public native boolean isCivicStructure();
 
@@ -452,16 +452,16 @@ class StructureObject extends TangibleObject {
 		permissionsFixed = true;
 	}
 
-    @dirty
+	@dirty
 	public NavArea getNavArea() {
-	    return navArea;
+		return navArea;
 	}
 
-    @dirty
+	@dirty
 	public boolean hasNavmesh() {
-	    return navArea != null;
+		return navArea != null;
 	}
 
-    @preLocked
+	@preLocked
 	public native abstract void createNavMesh();
 }

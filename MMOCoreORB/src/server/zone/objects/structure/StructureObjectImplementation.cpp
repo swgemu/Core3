@@ -43,54 +43,62 @@ void StructureObjectImplementation::finalize() {
 
 void StructureObjectImplementation::createNavMesh() {
 	if (server->getZoneServer()->shouldDeleteNavAreas() && navArea != NULL) {
-		zone->getPlanetManager()->dropNavArea(navArea->getMeshName());
-		navArea->destroyObjectFromWorld(true);
-		navArea->destroyObjectFromDatabase(true);
-		navArea == NULL;
+		ManagedReference<NavArea*> nav = navArea;
+		zone->getPlanetManager()->dropNavArea(nav->getMeshName());
+
+		Core::getTaskManager()->executeTask([nav] {
+			Locker locker(nav);
+			nav->destroyObjectFromWorld(true);
+			nav->destroyObjectFromDatabase(true);
+		}, "destroyStructureNavAreaLambda");
+
+		navArea = NULL;
 	}
-
-	if (navArea != NULL)
-		return;
-
-	navArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea *>();
 
 	if (navArea == NULL) {
-		error("Failed to create navmesh");
-		return;
-	}
+		navArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea *>();
 
-	Locker clocker(navArea, _this.getReferenceUnsafeStaticCast());
+		if (navArea == NULL) {
+			error("Failed to create navmesh");
+			return;
+		}
 
-	String name = String::valueOf(getObjectID());
+		Locker clocker(navArea, _this.getReferenceUnsafeStaticCast());
 
-	float length = 32.0f;
+		String name = String::valueOf(getObjectID());
 
-	for (const auto& child : childObjects) {
-		const BaseBoundingVolume* boundingVolume = child->getBoundingVolume();
+		float length = 32.0f;
+
+		for (const auto& child : childObjects) {
+			const BaseBoundingVolume* boundingVolume = child->getBoundingVolume();
+			if (boundingVolume) {
+				const AABB& box = boundingVolume->getBoundingBox();
+				float distance = (child->getWorldPosition() - getWorldPosition()).length();
+				float radius = box.extents()[box.longestAxis()];
+				if (distance + radius > length)
+					length = radius + distance;
+			}
+		}
+
+		const BaseBoundingVolume* boundingVolume = getBoundingVolume();
 		if (boundingVolume) {
 			const AABB& box = boundingVolume->getBoundingBox();
-			float distance = (child->getWorldPosition() - getWorldPosition()).length();
 			float radius = box.extents()[box.longestAxis()];
-			if (distance + radius > length)
-				length = radius + distance;
+			if (radius > length)
+				length = radius;
 		}
+
+		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
+		// This is invoked when a new faction base is placed, always force a rebuild
+		navArea->initializeNavArea(position, length * 1.25f, zone, name, true);
+
+		zone->transferObject(navArea, -1, false);
+
+		zone->getPlanetManager()->addNavArea(name, navArea);
+
+	} else if (!navArea->isNavMeshLoaded()) {
+		navArea->updateNavMesh(navArea->getBoundingBox());
 	}
-
-	const BaseBoundingVolume* boundingVolume = getBoundingVolume();
-	if (boundingVolume) {
-		const AABB& box = boundingVolume->getBoundingBox();
-		float radius = box.extents()[box.longestAxis()];
-		if (radius > length)
-			length = radius;
-	}
-
-	Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-	// This is invoked when a new faction base is placed, always force a rebuild
-	navArea->initializeNavArea(position, length * 1.25f, zone, name, true);
-
-	zone->transferObject(navArea, -1, false);
-
-	zone->getPlanetManager()->addNavArea(name, navArea);
 }
 
 void StructureObjectImplementation::notifyLoadFromDatabase() {
@@ -315,7 +323,7 @@ void StructureObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy)
 		Core::getTaskManager()->executeTask([nav, sendSelfDestroy] () {
 			Locker locker(nav);
 			nav->destroyObjectFromWorld(sendSelfDestroy);
-		}, "destroyStructureNavAreaLambda");
+		}, "destroyStructureNavAreaLambda2");
 	}
 
 	TangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
