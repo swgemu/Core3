@@ -215,7 +215,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		if (mission->getTargetObjectId() != 0) {
 			BountyTargetListElement* bounty = playerBountyList.get(mission->getTargetObjectId());
 
-			if (bounty == NULL || !bounty->getCanHaveNewMissions()) {
+			if (bounty == NULL) {
 				player->sendSystemMessage("Mission has expired.");
 				return;
 			}
@@ -1790,13 +1790,7 @@ Reference<MissionObject*> MissionManagerImplementation::getBountyHunterMission(C
 void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int reward) {
 	Locker listLocker(&playerBountyListMutex);
 
-	if (playerBountyList.contains(targetId)) {
-		if (!playerBountyList.get(targetId)->getCanHaveNewMissions()) {
-			playerBountyList.get(targetId)->setCanHaveNewMissions(true);
-
-			info("Re-adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
-		}
-	} else {
+	if (!playerBountyList.contains(targetId)) {
 		playerBountyList.put(targetId, new BountyTargetListElement(targetId, reward));
 
 		info("Adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
@@ -1810,15 +1804,9 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 
 		BountyTargetListElement* target = playerBountyList.get(targetId);
 
-		if (target->numberOfActiveMissions() > 0 && target->getCanHaveNewMissions()) {
-			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
-			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list with pending missions.", true);
-
-		} else {
-			playerBountyList.remove(playerBountyList.find(targetId));
-			delete target;
-			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list.", true);
-		}
+		playerBountyList.remove(playerBountyList.find(targetId));
+		delete target;
+		info("Removing player " + String::valueOf(targetId) + " from bounty hunter list.", true);
 	}
 }
 
@@ -1851,8 +1839,7 @@ void MissionManagerImplementation::removeBountyHunterFromPlayerBounty(uint64 tar
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->removeBountyHunter(bountyHunterId);
 
-		if (!playerBountyList.get(targetId)->getCanHaveNewMissions() &&
-				playerBountyList.get(targetId)->numberOfActiveMissions() == 0) {
+		if (playerBountyList.get(targetId)->numberOfActiveMissions() == 0) {
 			BountyTargetListElement* target = playerBountyList.get(targetId);
 			playerBountyList.remove(playerBountyList.find(targetId));
 			delete target;
@@ -1863,74 +1850,40 @@ void MissionManagerImplementation::removeBountyHunterFromPlayerBounty(uint64 tar
 BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(CreatureObject* player) {
 	Locker listLocker(&playerBountyListMutex);
 
-	VectorMap<unsigned long long, BountyTargetListElement*> visiblePlayers;
+	VectorMap<unsigned long long, BountyTargetListElement*> potentialTargets;
 
 	float terminalVisibilityThreshold = VisibilityManager::instance()->getTerminalVisThreshold();
 
-	for(int i = 0; i < playerBountyList.size(); i++) {
-		auto targetId = playerBountyList.get(i)->getTargetId();
-		ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
-		PlayerObject* ghost = creature->getPlayerObject();
+	auto playerGhost = player->getPlayerObject();
+	if(playerGhost == NULL)
+		return NULL;
 
-		if(ghost != NULL && ghost->getVisibility() >= terminalVisibilityThreshold) {
-			visiblePlayers.put(i, playerBountyList.get(i));
+	for(int i = 0; i < playerBountyList.size(); i++) {
+		BountyTargetListElement* playerBounty = playerBountyList.get(i);
+		auto targetId = playerBounty->getTargetId();
+		ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
+		PlayerObject* targetGhost = creature->getPlayerObject();
+
+		if(
+			targetGhost != NULL &&
+			targetGhost->getVisibility() >= terminalVisibilityThreshold &&
+			playerBounty->numberOfActiveMissions() < 6 &&
+			(enableSameAccountBountyMissions || targetGhost->getAccountID() != playerGhost->getAccountID())
+		) {
+			potentialTargets.put(i, playerBountyList.get(i));
 		}
 	}
 
-	if (visiblePlayers.size() <= 0) {
+	if (potentialTargets.size() <= 0) {
 		return NULL;
 	}
 
-	int retries = 20;
+	int index = System::random(potentialTargets.size() - 1);
 
-	while (retries-- > 0) {
-		int index = System::random(visiblePlayers.size() - 1);
-		BountyTargetListElement* randomTarget = visiblePlayers.get(index);
+	BountyTargetListElement* randomTarget = potentialTargets.get(index);
 
-		if (enableSameAccountBountyMissions != true) {
-			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
-
-			if (creo != NULL) {
-				auto targetGhost = creo->getPlayerObject();
-				auto playerGhost = player->getPlayerObject();
-
-				if (targetGhost != NULL && playerGhost != NULL) {
-					if (targetGhost->getAccountID() == playerGhost->getAccountID()) {
-						continue;
-					}
-				}
-			}
-		}
-
-		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
-				randomTarget->getTargetId() != player->getObjectID()) {
-			return randomTarget;
-		}
-	}
-
-	for (int i = 0; i < visiblePlayers.size(); i++) {
-		BountyTargetListElement* randomTarget = visiblePlayers.get(i);
-
-
-		if (enableSameAccountBountyMissions != true) {
-			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
-
-			if (creo != NULL) {
-				auto targetGhost = creo->getPlayerObject();
-				auto playerGhost = player->getPlayerObject();
-
-				if (targetGhost != NULL && playerGhost != NULL) {
-					if (targetGhost->getAccountID() == playerGhost->getAccountID()) {
-						continue;
-					}
-				}
-			}
-		}
-
-		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
-				randomTarget->getTargetId() != player->getObjectID()) {
-			return randomTarget;
-		}
+	if (randomTarget->getTargetId() != player->getObjectID()) {
+		return randomTarget;
 	}
 
 	return NULL;
