@@ -114,7 +114,7 @@ public:
 			creatureTarget = creature;
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
+			creature->sendSystemMessage("@healing_response:unwise_to_help");  //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
