@@ -217,15 +217,16 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		}
 
 		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+		return SUCCESS;
 	} else {
 		if (selfHeal) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self");
 		} else {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other");
 		}
-	}
 
-	return SUCCESS;
+		return GENERALERROR;
+	}
 }
 
 void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureObject* target, int healType, int healSpec, int amount) const {

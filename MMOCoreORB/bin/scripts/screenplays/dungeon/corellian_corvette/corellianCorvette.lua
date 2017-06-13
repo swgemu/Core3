@@ -954,10 +954,13 @@ function CorellianCorvette:handleCorvetteTimer(pCorvette)
 		createEvent(5 * 60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 	elseif (timeLeft >= 2) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
-		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+		createEvent(30 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 	elseif (timeLeftSecs >= 90) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_90s")
-		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+		createEvent(30 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	elseif (timeLeftSecs >= 60) then
+		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_1")
+		createEvent(30 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 	elseif (timeLeftSecs >= 30) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_30s")
 		createEvent(20 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
