@@ -62,5 +62,7 @@ public:
 	void setupDetourNavMeshHeader();
 
 	void copyMeshTo(dtNavMesh* mesh);
+
+	void saveToFile();
 };
 #endif /* RECASTNAVMESH_H_ */

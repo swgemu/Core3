@@ -165,3 +165,37 @@ void RecastNavMesh::copyMeshTo(dtNavMesh* mesh) {
 		mesh->addTile(data, tileHeader.dataSize, DT_TILE_FREE_DATA, tileHeader.tileRef, 0);
 	}
 }
+
+void RecastNavMesh::saveToFile() {
+	const dtNavMesh* mesh = navMesh;
+	if (!mesh) {
+		error("trying to save to file a NULL nav mesh from RecastNavMesh " + name);
+		return;
+	}
+
+	String newPath = "navmeshes/" + name;
+
+	FILE* fp = fopen(newPath.toCharArray(), "wb");
+	if (!fp) {
+		error("could not open file to save navmesh: " + newPath);
+		return;
+	}
+
+	// Store header.
+	fwrite(&header, sizeof(NavMeshSetHeader), 1, fp);
+
+	// Store tiles.
+	for (int i = 0; i < mesh->getMaxTiles(); ++i) {
+		const dtMeshTile* tile = mesh->getTile(i);
+		if (!tile || !tile->header || !tile->dataSize) continue;
+
+		NavMeshTileHeader tileHeader;
+		tileHeader.tileRef = mesh->getTileRef(tile);
+		tileHeader.dataSize = tile->dataSize;
+		fwrite(&tileHeader, sizeof(tileHeader), 1, fp);
+
+		fwrite(tile->data, tile->dataSize, 1, fp);
+	}
+
+	fclose(fp);
+}

@@ -6,6 +6,7 @@
 
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/tests/TestCore.h"
 
 #include "gtest/gtest.h"
@@ -70,6 +71,10 @@ int main(int argc, char* argv[]) {
 			testing::InitGoogleTest(&argc, argv);
 
 			ret = RUN_ALL_TESTS();
+		} else if (arguments.contains("dumpNavMeshesToFile")) {
+			printf("Dumping nav meshes to files...\n");
+
+			NavMeshManager::instance()->dumpMeshesToFiles();
 		} else {
 			bool truncateData = arguments.contains("clean");
 

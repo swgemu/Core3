@@ -26,6 +26,7 @@ protected:
 
 	void startJob(Reference<NavMeshJob*> job);
     void checkJobs();
+
 public:
 	NavMeshManager();
 	~NavMeshManager() { }
@@ -40,6 +41,8 @@ public:
 	bool isStopped() {
 		return stopped;
 	}
+
+	void dumpMeshesToFiles();
 
     static bool AABBEncompasessAABB(const AABB& lhs, const AABB& rhs);
 

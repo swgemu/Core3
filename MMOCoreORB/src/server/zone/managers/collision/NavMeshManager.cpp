@@ -305,3 +305,42 @@ bool NavMeshManager::AABBEncompasessAABB(const AABB& lhs, const AABB& rhs) {
 
     return false;
 }
+
+void NavMeshManager::dumpMeshesToFiles() {
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	dbManager->loadDatabases(false);
+	ObjectDatabase* navAreasDatabase = dbManager->loadObjectDatabase("navareas", false, 0xFFFF, false);
+
+	if (navAreasDatabase != NULL) {
+		int i = 0;
+
+		try {
+			ObjectDatabaseIterator iterator(navAreasDatabase);
+
+			uint64 objectID;
+			ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+			while (iterator.getNextKeyAndValue(objectID, objectData)) {
+				RecastNavMesh mesh;
+
+				if (!Serializable::getVariable<RecastNavMesh>(STRING_HASHCODE("NavArea.recastNavMesh"), &mesh, objectData)) {
+					objectData->clear();
+					continue;
+				}
+
+				++i;
+				mesh.saveToFile();
+
+				objectData->clear();
+			}
+
+			delete objectData;
+		} catch (DatabaseException& e) {
+			error("Database exception in NavMeshManager::dumpMeshesToFiles(): " + e.getMessage());
+		}
+
+		info(String::valueOf(i) + " nav meshes saved to file.", true);
+	} else {
+		error("Could not load the navareas database.");
+	}
+}
