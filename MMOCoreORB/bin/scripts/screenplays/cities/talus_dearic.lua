@@ -22,7 +22,7 @@ end
 function TalusDearicScreenPlay:spawnMobiles()
 
 	--added Capitol building
-	local pNpc = spawnMobile("talus", "seeker",60,-3.5,7.9,-30.5,4,6255457)
+	local pNpc = spawnMobile("talus", "seeker",60,-3.5,7.9,-30.5,4,6255467)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("talus", "judge",60,24.5,3.2,19.3,-89,6255473)
 	self:setMoodString(pNpc, "npc_sitting_chair")
@@ -347,7 +347,7 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
 	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
 	spawnMobile("talus", "minor_sludge_panther", 300, getRandomNumber(10) + 83.9, 6.0, getRandomNumber(10) + -2729.6, getRandomNumber(360), 0)
-	
+
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
 	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
