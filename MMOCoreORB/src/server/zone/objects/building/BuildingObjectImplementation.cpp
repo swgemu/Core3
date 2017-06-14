@@ -1625,6 +1625,16 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 	if(pl) {
 		if(pl->getCellTotalNumber() > 0) {
 			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+			FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appr->getFloorMesh());
+
+			if (floor == NULL) {
+				floor = pl->getFloorMesh(0);
+			}
+
+			if (floor != NULL) {
+				data.addAll(floor->getTransformedMeshData(transform * *parentTransform));
+			}
+
 			data.addAll(appr->getTransformedMeshData(transform * *parentTransform));
 
 			const CellProperty* tmpl = pl->getCellProperty(0);
