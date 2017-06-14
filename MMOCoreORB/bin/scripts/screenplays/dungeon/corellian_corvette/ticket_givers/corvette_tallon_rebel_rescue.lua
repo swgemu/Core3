@@ -4,15 +4,15 @@ tallonIntel = {
 
 tallonTicketInfo = { depPlanet = "corellia", faction = "rebel", missionType = "rescue" }
 
-tallonCompensation = { { compType = "faction", amount = 100 } }
+tallonCompensation = { { compType = "faction", faction = "rebel", amount = 100 } }
 
 tallon = { planetName = "corellia", npcTemplate = "corvette_rebel_adar", x = -5448.03, z = 21, y = -2674.92, direction = 163, cellID = 0, position = STAND }
 
-ticketGivertallon = CorvetteTicketGiverLogic:new {
+ticketGiverTallon = CorvetteTicketGiverLogic:new {
 	npc = tallon,
 	intelMap = tallonIntel,
 	ticketInfo = tallonTicketInfo,
-	giverName = "ticketGivertallon",
+	giverName = "ticketGiverTallon",
 	faction = FACTIONREBEL,
 	compensation = tallonCompensation,
 	badgeNumber = 119, --...has been recognized by the Alliance as an elite soldier for work in rescuing imprisoned comrades aboard a captured Rebel Blockade Runner.
@@ -41,12 +41,12 @@ ticketGivertallon = CorvetteTicketGiverLogic:new {
 
 }
 
-registerScreenPlay("ticketGivertallon", true)
+registerScreenPlay("ticketGiverTallon", true)
 
 ticketGiverTallonConvoHandler = CorvetteTicketGiverConvoHandler:new {
-	ticketGiver = ticketGivertallon
+	ticketGiver = ticketGiverTallon
 }
 
 tallonIntelSearchMenuComponent = CorvetteIntelSearchMenuComponent:new {
-	ticketGiver = ticketGivertallon
+	ticketGiver = ticketGiverTallon
 }
