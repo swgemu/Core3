@@ -488,6 +488,8 @@ function CorellianCorvette:removeElectricTrap(pCorvette)
 		spatialChat(pH3PO, "@dungeon/corvette:pdroid_congrats")
 		writeData(corvetteID.. ":repairDroidComplete", 1)
 	end
+
+	writeData(corvetteID .. ":electricTrapEnabled", 0)
 end
 
 function CorellianCorvette:notifyTrapAreaEntered(pActiveArea, pMovingObject)
