@@ -1209,6 +1209,28 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 	if (pCorvette == nil) then
 		return
 	end
+	
+	local corvetteID = SceneObject(pCorvette):getObjectID()
+
+	for i = 1, #self.electricTrapLocs, 1 do
+		local trapID = readData(corvetteID .. ":electricTrap" .. i)
+		local areaID = readData(trapID .. ":trapArea")
+
+		local pArea = getSceneObject(areaID)
+
+		if (pArea ~= nil) then
+			SceneObject(pArea):destroyObjectFromWorld()
+		end
+
+		local pTrap = getSceneObject(trapID)
+
+		if (pTrap ~= nil) then
+			SceneObject(pTrap):destroyObjectFromWorld()
+		end
+
+		deleteData(trapID .. ":trapArea")
+		deleteData(corvetteID .. ":electricTrap" .. i)
+	end
 
 	for i = 1, 66, 1 do
 		local pCell = BuildingObject(pCorvette):getCell(i)
@@ -1224,8 +1246,6 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 		end
 	end
 
-	local corvetteID = SceneObject(pCorvette):getObjectID()
-
 	deleteData(corvetteID .. ":fuelSetting")
 	deleteData(corvetteID .. ":engineSetting")
 	deleteData(corvetteID .. ":hyperdriveSetting")
@@ -1234,13 +1254,6 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 	deleteData(corvetteID .. ":H3P0ID")
 	deleteData(corvetteID .. ":repairDroidComplete")
 	deleteData(corvetteID .. ":ownerID")
-
-	for i = 1, #self.electricTrapLocs, 1 do
-		local trapID = readData(corvetteID .. ":electricTrap" .. i)
-		deleteData(trapID .. ":trapArea")
-		deleteData(corvetteID .. ":electricTrap" .. i)
-	end
-
 	deleteData("corvetteActive:" .. corvetteID)
 	deleteData("corvetteDungeonID:" .. corvetteID)
 	deleteData("corvetteStartTime:" .. corvetteID)
