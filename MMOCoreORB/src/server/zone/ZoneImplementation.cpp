@@ -359,14 +359,22 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 		thisZone->rlock(readlock);
 
 		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects2;
 
 		regionTree->inRange(x, y, entryObjects);
+		regionTree->inRange(x, y, 1024, entryObjects2);
 
 		thisZone->runlock(readlock);
 
 		for (int i = 0; i < entryObjects.size(); ++i) {
 			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 			objects->put(obj);
+		}
+
+		for (int i = 0; i < entryObjects2.size(); ++i) {
+			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects2.get(i).get());
+			if (obj->containsPoint(x, y))
+				objects->put(obj);
 		}
 	}catch (...) {
 //		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
@@ -384,10 +392,14 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects2;
 
 	try {
 		thisZone->rlock(readlock);
 		regionTree->inRange(x, y, entryObjects);
+
+		regionTree->inRange(x, y, 1024, entryObjects2);
+
 		thisZone->runlock(readlock);
 	}catch (...) {
 		thisZone->runlock(readlock);
@@ -396,7 +408,14 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		NavArea* obj = dynamic_cast<NavArea*>(entryObjects.get(i).get());
-		if (obj && obj->isNavMeshLoaded())
+		if (obj && obj->isNavMeshLoaded() && obj->isInRange(x, y, 256)) {
+			objects->put(obj);
+		}
+	}
+
+	for (int i = 0; i < entryObjects2.size(); ++i) {
+		NavArea* obj = dynamic_cast<NavArea*>(entryObjects2.get(i).get());
+		if (obj && obj->isNavMeshLoaded() && obj->isInRange(x, y, 256))
 			objects->put(obj);
 	}
 
@@ -416,14 +435,23 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, ActiveAreasVecto
 		thisZone->rlock(readlock);
 
 		SortedVector<QuadTreeEntry*> entryObjects;
+		SortedVector<QuadTreeEntry*> entryObjects2;
 
 		regionTree->inRange(x, y, entryObjects);
+		regionTree->inRange(x, y, 1024, entryObjects2);
 
 		thisZone->runlock(readlock);
 
 		for (int i = 0; i < entryObjects.size(); ++i) {
 			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i));
 			objects->put(obj);
+		}
+
+		for (int i = 0; i < entryObjects2.size(); ++i) {
+			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects2.get(i));
+
+			if (obj->containsPoint(x, y))
+				objects->put(obj);
 		}
 	}catch (...) {
 //		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
@@ -514,6 +542,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 	Vector3 worldPos = tano->getWorldPosition();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects2;
 
 	Zone* managedRef = _this.getReferenceUnsafeStaticCast();
 
@@ -523,6 +552,8 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 	try {
 		regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
+
+		regionTree->inRange(worldPos.getX(), worldPos.getY(), 1024, entryObjects2);
 	} catch (...) {
 		error("unexpeted error caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
 	}
@@ -556,6 +587,22 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 		for (int i = 0; i < entryObjects.size(); ++i) {
 			//update in new ones
 			ActiveArea* activeArea = static_cast<ActiveArea*>(entryObjects.get(i).get());
+
+			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
+				//Locker lockerO(object);
+
+				//Locker locker(activeArea, object);
+
+				tano->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(tano);
+				//activeArea->notifyEnter(object);
+			}
+		}
+
+		// we update the ones in quadtree.
+		for (int i = 0; i < entryObjects2.size(); ++i) {
+			//update in new ones
+			ActiveArea* activeArea = static_cast<ActiveArea*>(entryObjects2.get(i).get());
 
 			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				//Locker lockerO(object);
