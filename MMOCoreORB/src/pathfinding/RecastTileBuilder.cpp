@@ -272,7 +272,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
 
 	for (int i = 0; i < nverts; i++) {
-		const Vector3& vert = vertArray->get(i);
+		const Vector3& vert = vertArray->getUnsafe(i);
 		verts[i * 3 + 0] = vert.getX();
 		verts[i * 3 + 1] = vert.getY();
 		verts[i * 3 + 2] = vert.getZ();

@@ -13,6 +13,8 @@
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/PathGraph.h"
 
+class MeshData;
+
 class EdgeID {
 	int triangleID;
 	int edgeID;
@@ -30,8 +32,8 @@ public:
 		edgeID = edge.edgeID;
 	}
 
-	inline int getEdgeID() { return edgeID; }
-	inline int getTriangleID() { return triangleID; }
+	inline int getEdgeID() const { return edgeID; }
+	inline int getTriangleID() const { return triangleID; }
 
 	int compareTo(const EdgeID& rhs) const {
 		if(triangleID == rhs.triangleID) {
@@ -46,58 +48,6 @@ public:
 		} else {
 			return -1;
 		}
-	}
-
-	bool toBinaryStream(ObjectOutputStream* stream) {
-		return false;
-	}
-
-	bool parseFromBinaryStream(ObjectInputStream* stream) {
-		return false;
-	}
-
-};
-
-class Vert {
-	float x, z, y;
-
-public:
-	Vert() {
-		x = z = y = 0;
-	}
-
-	Vert(const Vert& v) {
-		x = v.x;
-		z = v.z;
-		y = v.y;
-	}
-
-	Vert(float px, float py, float pz) {
-		x = px;
-		y = py;
-		z = pz;
-	}
-
-	void readObject(IffStream* iffStream) {
-		x = iffStream->getFloat();
-		y = iffStream->getFloat();
-		z = iffStream->getFloat();
-	}
-
-	inline float getX() {
-		return x;
-	}
-
-	inline float getY() {
-		return y;
-	}
-
-	inline float getZ() {
-		return z;
-	}
-
-	inline Vector3 getPosition() {
-		return Vector3(x, y, z);
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
@@ -161,11 +111,11 @@ public:
 		var3 = iffStream->getByte();
 	}
 
-	inline int getTriangleID() {
+	inline int getTriangleID() const {
 		return triangleID;
 	}
 
-	inline int getEdgeID() {
+	inline int getEdgeID() const {
 		return edgeID;
 	}
 
@@ -192,11 +142,11 @@ public:
 			portalID = -1;
 		}
 
-		int32 getNeighbor() { return neighbor; }
+		int32 getNeighbor() const { return neighbor; }
 
-		uint8 getFlags() { return flags; }
+		uint8 getFlags() const { return flags; }
 
-		int32 getPortalID() { return portalID; }
+		int32 getPortalID() const { return portalID; }
 		friend class FloorMeshTriangleNode;
 		friend class FloorMesh;
 	};
@@ -225,9 +175,19 @@ public:
 
 	void readObject(IffStream* iffStream);
 
-	inline bool isEdge() {
+	inline int getIndex(int val) {
+		assert(val < 3);
+
+		return indicies[val];
+	}
+
+	inline bool isEdge() const {
 		//return edge;
 		return neighbors.size() < 3;
+	}
+
+	inline uint32 getID() const {
+		return triangleID;
 	}
 
 	inline uint32 getID() {
@@ -253,10 +213,11 @@ public:
 		return false;
 	}
 
+	friend class FloorMesh;
 };
 
 class FloorMesh : public IffTemplate, public Logger {
-	Vector<Vert> vertices;
+	Vector<Vector3> vertices;
 	Vector<FloorMeshTriangleNode*> tris;
 	SortedVector<EdgeID> connectedEdges;
 	SortedVector<EdgeID> uncrossableEdges;
@@ -277,6 +238,8 @@ public:
 	void parsePGRF(IffStream* iffStream);
 	void parseVersion0006(IffStream* iffStream);
 	void parseVersion0005(IffStream* iffStream);
+
+	Vector <Reference<MeshData*>> getTransformedMeshData(const Matrix4& parentTransform) const;
 
 	Vector<TriangleNode*>* getNeighbors(uint32 triangleID);
 
@@ -302,7 +265,7 @@ public:
 		return aabbTree;
 	}
 
-	inline Vert* getVertex(int vert) {
+	inline Vector3* getVertex(int vert) {
 		return &vertices.get(vert);
 	}
 

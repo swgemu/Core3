@@ -9,3 +9,5 @@ include_directories(../)
 
 # Create conf library
 add_library(core3pathfinding STATIC ${core3pathfinding_sources})
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
