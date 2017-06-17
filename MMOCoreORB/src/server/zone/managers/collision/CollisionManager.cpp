@@ -534,13 +534,13 @@ TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* flo
 
 	aabbTree->intersects(ray, 4, intersectionDistance, triangle, true);
 
-	TriangleNode* triangleNode = dynamic_cast<TriangleNode*>(triangle);
-
-	if (triangleNode == NULL) {
+	if (triangle == NULL) {
 		//System::out << "CollisionManager::getTriangle triangleNode NULL" << endl;
 
 		return floor->findNearestTriangle(rayOrigin);
 	}
+
+	TriangleNode* triangleNode = static_cast<TriangleNode*>(triangle);
 
 	return triangleNode;
 }

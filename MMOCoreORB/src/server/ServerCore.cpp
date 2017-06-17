@@ -358,7 +358,10 @@ void ServerCore::handleCommands() {
 			System::out << "> ";
 
 			char line[256];
-			fgets(line, sizeof(line), stdin);
+			auto res = fgets(line, sizeof(line), stdin);
+
+			if (!res)
+				continue;
 
 			fullCommand = line;
 			fullCommand = fullCommand.replaceFirst("\n", "");

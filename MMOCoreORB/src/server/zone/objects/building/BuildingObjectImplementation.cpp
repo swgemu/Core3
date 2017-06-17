@@ -1621,11 +1621,23 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 	transform.setRotationMatrix(direction.toMatrix3());
 	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
+	const auto fullTransform = transform * *parentTransform;
+
 	PortalLayout *pl = getObjectTemplate()->getPortalLayout();
 	if(pl) {
 		if(pl->getCellTotalNumber() > 0) {
 			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
-			data.addAll(appr->getTransformedMeshData(transform * *parentTransform));
+			FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appr->getFloorMesh());
+
+			if (floor == NULL) {
+				floor = pl->getFloorMesh(0);
+			}
+
+			if (floor != NULL) {
+				data.addAll(floor->getTransformedMeshData(fullTransform));
+			}
+
+			data.addAll(appr->getTransformedMeshData(fullTransform));
 
 			const CellProperty* tmpl = pl->getCellProperty(0);
 
@@ -1638,7 +1650,7 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 					doorTransform.swapLtoR();
 					data.add(MeshData::makeCopyNegateZ(mesh, (doorTransform * transform) * *parentTransform));
 				} else
-					data.add(MeshData::makeCopyNegateZ(mesh, transform * *parentTransform));
+					data.add(MeshData::makeCopyNegateZ(mesh, fullTransform));
 			}
 		}
 	}
