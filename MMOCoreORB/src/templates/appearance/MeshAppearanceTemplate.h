@@ -91,7 +91,7 @@ public:
 	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
 		Vector<Reference<MeshData* > > newMeshes;
 		for(int i=0; i<meshes.size(); i++) {
-			newMeshes.add(MeshData::makeCopyNegateZ(meshes.get(i), parentTransform));
+			newMeshes.emplace(std::move(MeshData::makeCopyNegateZ(meshes.get(i), parentTransform)));
 		}
 		return newMeshes;
 	}

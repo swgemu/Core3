@@ -17,10 +17,10 @@ AABB MeshData::buildAABB() const {
 	float maxz = -1000000;
 
 	for (int i = 0; i < vertices.size(); i++) {
-		const Vector3& vert = vertices.get(i);
-		const float& x = vert.getX();
-		const float& y = vert.getY();
-		const float& z = vert.getZ();
+		const Vector3& vert = vertices.getUnsafe(i);
+		const float x = vert.getX();
+		const float y = vert.getY();
+		const float z = vert.getZ();
 
 		if (x < minx)
 			minx = x;
@@ -56,7 +56,7 @@ Vector <MeshTriangle>* MeshData::getMeshWithinBounds(AABB& bounds) const {
 	Vector <MeshTriangle>* tris = new Vector<MeshTriangle>();
 
 	for (int i = 0; i < triangles.size(); i++) {
-		const MeshTriangle& tri = triangles.get(i);
+		const MeshTriangle& tri = triangles.getUnsafe(i);
 		const int* v = tri.getVerts();
 		float minx = 30000;
 		float miny = 30000;
@@ -68,9 +68,9 @@ Vector <MeshTriangle>* MeshData::getMeshWithinBounds(AABB& bounds) const {
 
 		for (int i = 0; i < 3; i++) {
 			const Vector3& vert = vertices.get(v[i]);
-			const float& x = vert.getX();
-			const float& y = vert.getY();
-			const float& z = vert.getZ();
+			const float x = vert.getX();
+			const float y = vert.getY();
+			const float z = vert.getZ();
 
 			if (x > maxx)
 				maxx = x;
@@ -117,8 +117,8 @@ void MeshData::readObject(IffStream* iffStream) {
 	vertices.removeAll(numVertices);
 
 	for (int i = 0; i < numVertices; ++i) {
-		Vector3 vert = iffStream->getVector3();
-		vertices.add(Vector3(vert[0], vert[1], vert[2]));
+		vertices.emplace(iffStream->getVector3());
+
 		vertexDataChunk->shiftOffset(intBytesPerVertex - 12);
 	}
 

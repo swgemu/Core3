@@ -115,8 +115,11 @@ void RecastNavMeshBuilder::cleanup() {
 }
 
 void RecastNavMeshBuilder::rebuildAreas(const Vector<AABB>& buildAreas, NavArea* navArea) {
+	ReadLocker rLocker(navArea);
+
 	RecastNavMesh* existingMesh = navArea->getNavMesh();
 	dtNavMesh* oldMesh = existingMesh->getNavMesh();
+
 	if (!oldMesh) {
 		error("old mesh is null in RecastNavMeshBuilder::rebuildAreas for " + navArea->getMeshName());
 		return;
@@ -128,7 +131,6 @@ void RecastNavMeshBuilder::rebuildAreas(const Vector<AABB>& buildAreas, NavArea*
 		return;
 	}
 
-	ReadLocker rLocker(navArea);
 	existingMesh->copyMeshTo(m_navMesh);
 	rLocker.release();
 

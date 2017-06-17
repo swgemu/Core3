@@ -1809,7 +1809,15 @@ Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(
 	transform.setRotationMatrix(direction.toMatrix3());
 	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
-	return appearance->getTransformedMeshData(transform * *parentTransform );
+	const auto fullTransform = transform * *parentTransform;
+
+	Vector<Reference<MeshData*>> data = appearance->getTransformedMeshData(fullTransform);
+
+	FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appearance->getFloorMesh());
+	if (floor != NULL)
+		data.addAll(floor->getTransformedMeshData(fullTransform));
+
+	return data;
 }
 
 const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {

@@ -115,7 +115,7 @@ public:
 		return &children;
 	}
 
-	inline int getGlobalGraphNodeID() {
+	inline int getGlobalGraphNodeID() const {
 		return globalGraphNodeID;
 	}
 

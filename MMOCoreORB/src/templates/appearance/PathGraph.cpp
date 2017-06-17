@@ -86,7 +86,7 @@ void PathGraph::readObject(IffStream* iffStream) {
 
 PathNode* PathGraph::getNode(int globalNumberID) {
 	for (int i = 0; i < pathNodes.size(); ++i) {
-		PathNode* pathNode = pathNodes.get(i);
+		PathNode* pathNode = pathNodes.getUnsafe(i);
 
 		if (pathNode->getGlobalGraphNodeID() == globalNumberID)
 			return pathNode;
@@ -97,7 +97,7 @@ PathNode* PathGraph::getNode(int globalNumberID) {
 
 PathNode* PathGraph::findGlobalNode(int globalNodeID) {
 	for (int i = 0; i < pathNodes.size(); ++i) {
-		PathNode* pathNode = pathNodes.get(i);
+		PathNode* pathNode = pathNodes.getUnsafe(i);
 
 		if (pathNode->getGlobalGraphNodeID() == globalNodeID)
 			return pathNode;
@@ -111,7 +111,7 @@ PathNode* PathGraph::findNearestGlobalNode(const Vector3& pointAlfa) {
 	PathNode* node = NULL;
 
 	for (int i = 0; i < pathNodes.size(); ++i) {
-		PathNode* pathNode = pathNodes.get(i);
+		PathNode* pathNode = pathNodes.getUnsafe(i);
 
 		if (pathNode->getGlobalGraphNodeID() == -1)
 			continue;
@@ -144,7 +144,7 @@ PathNode* PathGraph::findNearestNode(const Vector3& pointAlfa) {
 	PathNode* node = NULL;
 
 	for (int i = 0; i < pathNodes.size(); ++i) {
-		PathNode* pathNode = pathNodes.get(i);
+		PathNode* pathNode = pathNodes.getUnsafe(i);
 
 		Vector3 point(pathNode->getX(), pathNode->getY(), pathNode->getZ());
 

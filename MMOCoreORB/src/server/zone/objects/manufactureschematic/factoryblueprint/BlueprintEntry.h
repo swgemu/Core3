@@ -38,10 +38,10 @@ class BlueprintEntry : public Serializable {
 private:
 
 	/// Type of resource
-	String type;
+	SerializableString type;
 
 	/// Unique identifier - Resource = spawnName; Component = server script crc
-	String key;
+	SerializableString key;
 
 	/// Name to display in UI
 	SerializableString displayedName;

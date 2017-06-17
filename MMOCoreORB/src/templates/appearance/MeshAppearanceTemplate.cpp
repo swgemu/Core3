@@ -34,7 +34,7 @@ void MeshAppearanceTemplate::createAABB() {
 		MeshData* meshData = meshes.get(k);
 
 		for (int i = 0; i < meshData->triangles.size(); ++i) {
-			MeshTriangle* tri = &meshData->triangles.get(i);
+			MeshTriangle* tri = &meshData->triangles.getUnsafe(i);
 
 			int pointA = tri->verts[0];
 			int pointB = tri->verts[1];

@@ -117,7 +117,7 @@ void CellProperty::loadVersion5(IffStream* iffStream) {
 
 		iffStream->closeForm('PRTL');
 
-		portals.add(portal);
+		portals.emplace(std::move(portal));
 
 	}
 
@@ -166,7 +166,7 @@ void CellProperty::loadVersion4(IffStream* iffStream) {
 
 		iffStream->closeForm('PRTL');
 
-		portals.add(portal);
+		portals.emplace(std::move(portal));
 
 	}
 

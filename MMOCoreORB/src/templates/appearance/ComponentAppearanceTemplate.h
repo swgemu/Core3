@@ -138,7 +138,7 @@ public:
 	virtual bool intersects(const Ray& ray, float distance, float& intersectionDistance, Triangle*& triangle, bool checkPrimitives = false) const {
 
 		for(int i=0; i<meshes.size(); i++) {
-			const ComponentMeshAppearanceTemplate *mesh = meshes.get(i);
+			const ComponentMeshAppearanceTemplate *mesh = meshes.getUnsafe(i);
 
 			Vector3 start = ray.getOrigin() * mesh->getInverseTransform();
 			Vector3 end = ray.getDirection() * mesh->getInverseTransform();
