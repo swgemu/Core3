@@ -238,6 +238,7 @@ public:
 	void parsePGRF(IffStream* iffStream);
 	void parseVersion0006(IffStream* iffStream);
 	void parseVersion0005(IffStream* iffStream);
+	void parseVersion0003(IffStream* iffStream);
 
 	Vector <Reference<MeshData*>> getTransformedMeshData(const Matrix4& parentTransform) const;
 

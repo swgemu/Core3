@@ -93,6 +93,9 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	case '0005':
 		parseVersion0005(iffStream);
 		break;
+	case '0003':
+		parseVersion0003(iffStream);
+		break;
 	default:
 		error("unkown FloorMesh version " + String::hexvalueOf((int)nextFormType) + " in file " + iffStream->getFileName());
 		break;
@@ -169,6 +172,50 @@ TriangleNode* FloorMesh::findNearestTriangle(const Vector3& point) {
 	}
 
 	return found;
+}
+
+void FloorMesh::parseVersion0003(IffStream* iffStream) {
+	try {
+		iffStream->openForm('0003');
+
+		Chunk* vertData = iffStream->openChunk('VERT');
+
+		int vertSize = vertData->getChunkSize();
+
+		while (vertSize > 0) {
+			vertices.add(iffStream->getVector3());
+			vertSize -= 12;
+		}
+
+		iffStream->closeChunk();
+
+		Chunk* trisData = iffStream->openChunk('TRIS');
+
+		int trisDataSize = trisData->getChunkSize();
+
+		tris.removeAll(trisDataSize / 60);
+
+		while (trisDataSize > 0) {
+			FloorMeshTriangleNode* tri = new FloorMeshTriangleNode(this);
+
+			tri->readObject(iffStream);
+
+			tris.add(tri);
+
+			trisDataSize -= 60;
+		}
+
+		iffStream->closeChunk();
+
+		iffStream->closeForm('0003');
+	} catch (Exception& e) {
+		String err = "unable to parse file ";
+		err += iffStream->getFileName();
+		error(err);
+
+		error(e.getMessage());
+		e.printStackTrace();
+	}
 }
 
 void FloorMesh::parseVersion0005(IffStream* iffStream) {
