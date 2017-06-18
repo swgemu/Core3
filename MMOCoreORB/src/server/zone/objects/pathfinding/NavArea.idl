@@ -24,7 +24,7 @@ class NavArea extends ActiveArea {
 
 	// Original bounds of the recastNavMesh, this is absolutely required to stay constant in order to rebuild tiles correctly
 	@dereferenced
-	protected transient AABB meshBounds;
+	protected AABB meshBounds;
 
 	// List of objects this navmesh currently has built in it's scene.
 	@dereferenced
