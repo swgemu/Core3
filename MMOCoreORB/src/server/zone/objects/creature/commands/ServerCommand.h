@@ -15,6 +15,7 @@
 #include "DebugCommand.h"
 #include "MarketCommand.h"
 #include "ServerStatisticsCommand.h"
+#include "PathFindCommand.h"
 
 class ServerCommand : public QueueCommand {
 	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
@@ -33,6 +34,7 @@ public:
 		methodFactory.registerMethod<DebugCommand>("debug");
 		methodFactory.registerMethod<MarketCommand>("market");
 		methodFactory.registerMethod<ServerStatisticsCommand>("statistics");
+		methodFactory.registerMethod<PathFindCommand>("pathfind");
 }
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
