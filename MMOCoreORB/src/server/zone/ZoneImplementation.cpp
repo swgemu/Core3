@@ -348,6 +348,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRange
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
 	//Locker locker(_this.getReferenceUnsafeStaticCast());
+	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
@@ -388,6 +389,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 }
 
 int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<ManagedReference<NavArea*> >* objects, bool readlock) {
+	objects->setNoDuplicateInsertPlan();
 
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
@@ -424,6 +426,7 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, ActiveAreasVector* objects, bool readLockZone) {
 	//Locker locker(_this.getReferenceUnsafeStaticCast());
+	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
@@ -466,6 +469,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, ActiveAreasVecto
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector* objects, bool readLockZone) {
 	//Locker locker(_this.getReferenceUnsafeStaticCast());
+	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
@@ -499,6 +503,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, Act
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
 	//Locker locker(_this.getReferenceUnsafeStaticCast());
+	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
