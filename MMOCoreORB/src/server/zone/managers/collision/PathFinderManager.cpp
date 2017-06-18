@@ -123,6 +123,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 
 		const Vector3& bPos = bounds->center();
 		Vector3 sPos(bPos.getX(), bPos.getZ(), 0);
+		sPos.setZ(CollisionManager::getWorldFloorCollision(sPos.getX(), sPos.getY(), area->getZone(), false));
 		const float radius = bounds->extents()[bounds->longestAxis()] * .975f;
 		float radiusSq = radius*radius;
 
@@ -158,7 +159,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	RecastNavMesh* navMesh = area->getNavMesh();
 
 	if (navMesh == NULL || navMesh->isLoaded() == false)
-		return 0;
+		return false;
 
 	dtNavMeshQuery *query = m_navQuery.get();
 	if (query == NULL) {
@@ -166,7 +167,9 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 		m_navQuery.set(query);
 	}
 
-	const Vector3& areaPos = area->getPosition();
+	Vector3 areaPos = area->getPosition();
+	areaPos.setZ(CollisionManager::getWorldFloorCollision(areaPos.getX(), areaPos.getY(), area->getZone(), false));
+
 	// We need to flip the Y/Z axis and negate Z to put it in recasts model space
 	const Sphere sphere(Vector3(areaPos.getX(), areaPos.getZ(), -areaPos.getY()), area->getRadius());
 
@@ -224,6 +227,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 			}
 		}
 	}
+
 	return true;
 }
 
@@ -236,7 +240,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 	t.start();
 #endif
 
-	for(const WorldCoordinates& pointB : endPoints) {
+	for (const WorldCoordinates& pointB : endPoints) {
 		const Vector3& startTemp = pointA.getPoint();
 		const Vector3& targetTemp = pointB.getPoint();
 
@@ -254,16 +258,31 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 		float len = 0.0f;
 
 		try {
-			if (collisions.size() == 1) { // we're entering a navmesh
+			int collisionSize = collisions.size();
+
+			if (collisionSize == 1) { // we're entering/exiting a navmesh
 				NavCollision* collision = collisions.get(0);
 				NavArea *area = collision->getNavArea();
 				Vector3 position = collision->getPosition();
-				position.setZ(zone->getHeightNoCache(position.getX(), position.getY()));
+				position.setZ(CollisionManager::getWorldFloorCollision(position.getX(), position.getY(), zone, true));
 
-				path->add(pointA);
-
-				if (!getRecastPath(position, targetTemp, area, path, len, allowPartial)) { // entering navmesh
+				if (area->containsPoint(startTemp.getX(), startTemp.getY())) {
+					if (!getRecastPath(startTemp, position, area, path, len, allowPartial)) { // exiting navmesh
+						delete collision;
+						if (path != NULL) delete path;
 						continue;
+					}
+
+					path->add(pointB);
+
+				} else {
+					path->add(pointA);
+
+					if (!getRecastPath(position, targetTemp, area, path, len, allowPartial)) { // entering navmesh
+						delete collision;
+						if (path != NULL) delete path;
+						continue;
+					}
 				}
 
 				if (len > 0 && len < finalLengthSq) {
@@ -274,7 +293,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 					finalpath = path;
 					path = NULL;
 				}
-			} else { // we're already inside a navmesh
+			} else if (collisionSize == 0) { // we're already inside a navmesh (or there are no navmeshes around)
 				for (int i = 0; i < areas.size(); i++) {
 					if (!getRecastPath(startTemp, targetTemp, areas.get(i), path, len, allowPartial)) {
 						continue;
@@ -289,6 +308,42 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 						path = new Vector<WorldCoordinates>();
 					}
 				}
+			} else if (collisionSize == 2) { // we're crossing over a mesh or dealing with multiple meshes
+				NavCollision* collision1 = collisions.get(0);
+				NavArea *area1 = collision1->getNavArea();
+				NavCollision* collision2 = collisions.get(1);
+				NavArea *area2 = collision2->getNavArea();
+
+				if (area1 == area2) { // crossing same mesh
+					path->add(pointA);
+
+					Vector3 position1 = collision1->getPosition();
+					position1.setZ(CollisionManager::getWorldFloorCollision(position1.getX(), position1.getY(), zone, false));
+					Vector3 position2 = collision2->getPosition();
+					position2.setZ(CollisionManager::getWorldFloorCollision(position2.getX(), position2.getY(), zone, false));
+
+					if (!getRecastPath(position1, position2, area1, path, len, allowPartial)) {
+						delete collision1;
+						delete collision2;
+						if (path != NULL) delete path;
+						continue;
+					}
+
+					path->add(pointB);
+
+					if (len > 0 && len < finalLengthSq) {
+						if (finalpath)
+							delete finalpath;
+
+						finalLengthSq = len;
+						finalpath = path;
+						path = NULL;
+					}
+				} else { // TODO: handle multiple meshes
+
+				}
+			} else { // TODO: handle multiple meshes
+
 			}
 		} catch (...) {
 			error("Unhandled pathing exception");
