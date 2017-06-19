@@ -712,9 +712,7 @@ class AiAgent extends CreatureObject {
 	public native void restoreFollowObject();
 
 	public unsigned int getFollowState() {
-		synchronized (targetMutex) {
-			return followState;
-		}
+        return followState;
 	}
 
 	public void setFollowState(int state) {
