@@ -711,10 +711,9 @@ class AiAgent extends CreatureObject {
 
 	public native void restoreFollowObject();
 
+	@read
 	public unsigned int getFollowState() {
-		synchronized (targetMutex) {
-			return followState;
-		}
+		return followState;
 	}
 
 	public void setFollowState(int state) {
@@ -726,8 +725,10 @@ class AiAgent extends CreatureObject {
 
 	@dirty
 	public native float getMaxDistance();
+
 	@preLocked
 	public native int setDestination();
+
 	@preLocked
 	public native boolean completeMove();
 
