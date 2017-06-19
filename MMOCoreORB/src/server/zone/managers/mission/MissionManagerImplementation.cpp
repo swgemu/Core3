@@ -1825,7 +1825,7 @@ void MissionManagerImplementation::addBountyHunterToPlayerBounty(uint64 targetId
 		playerBountyList.get(targetId)->addBountyHunter(bountyHunterId);
 	} else {
 		ManagedReference<CreatureObject*> targetCreature = server->getObject(targetId).castTo<CreatureObject*>();
-		if(targetCreature != NULL && targetCreature->isPlayerCreature()) {
+		if(targetCreature != NULL && targetCreature->isPlayerCreature() && targetCreature->isOnline()) {
 			PlayerObject* ghost = targetCreature->getPlayerObject();
 			if(ghost != NULL)
 				addPlayerToBountyList(targetId, ghost->calculateBhReward());
