@@ -280,7 +280,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	Vector3 rayStart(x, 16384.f, y);
 	Vector3 rayEnd(x, -16384.f, y);
 
-	Triangle* triangle = NULL;
+	//Triangle* triangle = NULL;
 
 	if (testWater) {
 		float waterHeight;
@@ -290,16 +290,30 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 				height = waterHeight;
 	}
 
-	float intersectionDistance;
+	//float intersectionDistance;
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		BuildingObject* building = dynamic_cast<BuildingObject*>(closeObjects.get(i).get());
+		SceneObject* sceno = static_cast<SceneObject*>(closeObjects.get(i).get());
 
-		if (building == NULL)
+		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
+
+		if (app != NULL) {
+			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
+
+			IntersectionResults results;
+
+			app->intersects(ray, 16384 * 2, results);
+
+			for (int i = 0; i < results.size(); i++) {
+				float floorHeight = 16384.f - results.getUnsafe(i).getIntersectionDistance();
+
+				if (floorHeight > height)
+					height = floorHeight;
+			}
+		} else {
 			continue;
-
-		//building->getObjectTemplate()->get
-
+		}
+/*
 		SharedObjectTemplate* templateObject = building->getObjectTemplate();
 
 		if (templateObject == NULL)
@@ -327,7 +341,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 
 			if (floorHeight > height)
 				height = floorHeight;
-		}
+		}*/
 	}
 
 	return height;
