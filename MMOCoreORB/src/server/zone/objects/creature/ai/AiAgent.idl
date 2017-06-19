@@ -698,9 +698,7 @@ class AiAgent extends CreatureObject {
 
 	@weakReference
 	public SceneObject getFollowObject() {
-		synchronized (targetMutex) {
-			return followObject;
-		}
+		return followObject;
 	}
 
 	public void storeFollowObject() {
