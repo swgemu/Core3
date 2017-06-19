@@ -1018,7 +1018,7 @@ float frand() {
 }
 
 
-bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point, bool checkRaycast) {
+bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vector3& point, bool checkPath) {
 	SortedVector<ManagedReference<NavArea*>> areas;
 	float radius = area.getRadius();
 	const Vector3& center = area.getCenter();
@@ -1040,7 +1040,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		Vector3 temp((frand() * 2.0f) - 1.0f, (frand() * 2.0f) - 1.0f, 0);
 		Vector3 result = temp * (frand() * radius);
 		point = center + result;
-		point.setZ(zone->getHeightNoCache(point.getX(), point.getY()));
+		point.setZ(CollisionManager::getWorldFloorCollision(point.getX(), point.getY(), zone, false));
 		return true;
 	}
 
@@ -1072,20 +1072,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 																   frand, &ref, pt)) & DT_SUCCESS)) {
 					continue;
 				} else {
-					point = Vector3(pt[0], -pt[2], zone->getHeightNoCache(pt[0], -pt[2]));
-
-					if (checkRaycast) {
-						dtPolyRef path[64];
-						dtRaycastHit hit;
-						hit.path = path;
-						hit.maxPath = 64;
-
-						dtPolyRef dummy = 0;
-						if (!((status = query->raycast(startPoly, polyStart.toFloatArray(), pt, &m_spawnFilter, 0, &hit,
-													   dummy)) & DT_SUCCESS)) {
-							continue;
-						}
-					}
+					point = Vector3(pt[0], -pt[2], CollisionManager::getWorldFloorCollision(pt[0], -pt[2], zone, false));
 
 					Vector3 temp = point - center;
 					float len = temp.length();
@@ -1095,8 +1082,17 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 						temp.setY(temp.getY() * multiplier);
 						point = center + temp;
 
-						point.setZ(zone->getHeightNoCache(point.getX(), point.getY()));
+						point.setZ(CollisionManager::getWorldFloorCollision(point.getX(), point.getY(), zone, false));
 					}
+
+					if (checkPath) {
+						Vector<WorldCoordinates> path;
+
+						if (!getRecastPath(center, point, navArea, &path, len, false)) {
+							continue;
+						}
+					}
+
 					return true;
 				}
 			} catch (Exception& exc) {

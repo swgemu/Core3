@@ -684,6 +684,7 @@ WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
 
 WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
 	ManagedReference<WaypointObject*> obj = getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+	Locker locker(obj);
 	obj->setPlanetCRC(planet.hashCode());
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);
