@@ -26,7 +26,7 @@ void destroyNavMeshQuery(void* value) {
 PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery(destroyNavMeshQuery) {
 	setFileLogger("log/pathfinder.log");
 
-	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ SAMPLE_POLYFLAGS_DISABLED);
+	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ (SAMPLE_POLYFLAGS_DISABLED));
 	m_filter.setExcludeFlags(0);
 	m_filter.setAreaCost(SAMPLE_POLYAREA_GROUND, 1.0f);
 	m_filter.setAreaCost(SAMPLE_POLYAREA_WATER, 15.0f);
@@ -150,7 +150,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	const Vector3 targetPosition(end.getX(), end.getZ(), -end.getY());
 	const float* startPosAsFloat = startPosition.toFloatArray();
 	const float* tarPosAsFloat = targetPosition.toFloatArray();
-	static float extents[3] = {2, 4, 2};
+	const static float extents[3] = {2, 4, 2};
 	dtPolyRef startPoly;
 	dtPolyRef endPoly;
 
@@ -180,17 +180,26 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 		Vector3 polyStart;
 		Vector3 polyEnd;
 		int numPolys;
-		dtPolyRef polyPath[2048];
+		const static int MAX_POLYS = 2048;
+
+		dtPolyRef polyPath[MAX_POLYS];
 		int status = 0;
 
-		if (!((status =query->findNearestPoly(startPosAsFloat, extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
+		if (!((status = query->findNearestPoly(startPosAsFloat, extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			return false;
 
 		if (!((status = query->findNearestPoly(tarPosAsFloat, extents, &m_filter, &endPoly, polyEnd.toFloatArray())) & DT_SUCCESS))
 			return false;
 
-		if (!((status = query->findPath(startPoly, endPoly, polyStart.toFloatArray(), polyEnd.toFloatArray(), &m_filter, polyPath, &numPolys, 2048)) & DT_SUCCESS) && !allowPartial)
+		if (!((status = query->findPath(startPoly, endPoly, polyStart.toFloatArray(), polyEnd.toFloatArray(), &m_filter, polyPath, &numPolys, MAX_POLYS)) & DT_SUCCESS))
 			return false;
+
+		if ((status & DT_PARTIAL_RESULT) && !allowPartial)
+			return false;
+
+#ifdef DEBUG_PATHING
+		info("findPath result: 0x" + String::hexvalueOf(status), true);
+#endif
 
 		if (numPolys) {
 			// In case of partial path, make sure the end point is clamped to the last polygon.
@@ -208,7 +217,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 					return false;
 			}
 
-			unsigned char flags[128];
+			//unsigned char flags[128];
 			float pathPoints[128][3];
 			int numPoints = 0;
 
