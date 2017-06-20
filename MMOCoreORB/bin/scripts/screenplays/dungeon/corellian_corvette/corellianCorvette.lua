@@ -150,6 +150,7 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	local sui = SuiMessageBox.new("CorellianCorvette", "authorizationSuiCallback")
 	sui.setTargetNetworkId(SceneObject(pCorvette):getObjectID())
 	local corvetteName = getStringId("@dungeon/space_dungeon:corvette_" .. self:getBuildingFaction(pCorvette))
+	sui.setTitle("Corellian Corvette")
 	sui.setPrompt(CreatureObject(pLeader):getFirstName() .. " has granted you authorization to travel to " .. corvetteName ..". Do you accept this travel offer?")
 	sui.setOkButtonText("Yes")
 	sui.setCancelButtonText("No")
@@ -952,6 +953,9 @@ function CorellianCorvette:handleCorvetteTimer(pCorvette)
 	if (timeLeft > 10) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(5 * 60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
+	elseif (timeLeft >= 3) then
+		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
+		createEvent(60 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
 	elseif (timeLeft >= 2) then
 		self:broadcastToPlayers(pCorvette, "@dungeon/corvette:timer_" .. timeLeft)
 		createEvent(30 * 1000, "CorellianCorvette", "handleCorvetteTimer", pCorvette, "")
@@ -1209,7 +1213,7 @@ function CorellianCorvette:doCorvetteCleanup(pCorvette)
 	if (pCorvette == nil) then
 		return
 	end
-	
+
 	local corvetteID = SceneObject(pCorvette):getObjectID()
 
 	for i = 1, #self.electricTrapLocs, 1 do
