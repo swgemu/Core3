@@ -19,6 +19,8 @@
 #include "engine/util/u3d/Segment.h"
 #include "pathfinding/recast/DetourCommon.h"
 
+static constexpr int MAX_QUERY_NODES = 2048 * 2;
+
 void destroyNavMeshQuery(void* value) {
 	dtFreeNavMeshQuery(reinterpret_cast<dtNavMeshQuery*>(value));
 }
@@ -145,6 +147,17 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 	}
 }
 
+dtNavMeshQuery* PathFinderManager::getNavQuery() {
+	dtNavMeshQuery* query = m_navQuery.get();
+
+	if (query == NULL) {
+		query = dtAllocNavMeshQuery();
+		m_navQuery.set(query);
+	}
+
+	return query;
+}
+
 bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, NavArea* area, Vector<WorldCoordinates>* path, float& len, bool allowPartial) {
 	const Vector3 startPosition(start.getX(), start.getZ(), -start.getY());
 	const Vector3 targetPosition(end.getX(), end.getZ(), -end.getY());
@@ -154,33 +167,33 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	dtPolyRef startPoly;
 	dtPolyRef endPoly;
 
+	Vector3 areaPos = area->getPosition();
+	Zone* zone = area->getZone();
+
+	if (zone == nullptr)
+		return false;
+
+	areaPos.setZ(CollisionManager::getWorldFloorCollision(areaPos.getX(), areaPos.getY(), zone, false));
+
+	dtNavMeshQuery* query = getNavQuery();
+
 	ReadLocker rLocker(area);
 
 	RecastNavMesh* navMesh = area->getNavMesh();
 
-	if (navMesh == NULL || navMesh->isLoaded() == false)
+	if (navMesh == NULL || !navMesh->isLoaded())
 		return false;
-
-	dtNavMeshQuery *query = m_navQuery.get();
-	if (query == NULL) {
-		query = dtAllocNavMeshQuery();
-		m_navQuery.set(query);
-	}
-
-	Vector3 areaPos = area->getPosition();
-	areaPos.setZ(CollisionManager::getWorldFloorCollision(areaPos.getX(), areaPos.getY(), area->getZone(), false));
 
 	// We need to flip the Y/Z axis and negate Z to put it in recasts model space
 	const Sphere sphere(Vector3(areaPos.getX(), areaPos.getZ(), -areaPos.getY()), area->getRadius());
 
-	query->init(navMesh->getNavMesh(), 2048);
+	query->init(navMesh->getNavMesh(), MAX_QUERY_NODES);
 
 	if (pointInSphere(targetPosition, sphere) || pointInSphere(startPosition, sphere)) {
-
 		Vector3 polyStart;
 		Vector3 polyEnd;
 		int numPolys;
-		const static int MAX_POLYS = 2048;
+		const static constexpr int MAX_POLYS = 2048;
 
 		dtPolyRef polyPath[MAX_POLYS];
 		int status = 0;
@@ -194,30 +207,30 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 		if (!((status = query->findPath(startPoly, endPoly, polyStart.toFloatArray(), polyEnd.toFloatArray(), &m_filter, polyPath, &numPolys, MAX_POLYS)) & DT_SUCCESS))
 			return false;
 
-		if ((status & DT_PARTIAL_RESULT) && !allowPartial)
-			return false;
-
 #ifdef DEBUG_PATHING
 		info("findPath result: 0x" + String::hexvalueOf(status), true);
 #endif
+
+		if ((status & DT_PARTIAL_RESULT) && !allowPartial)
+			return false;
+
+		if (path == nullptr)
+			return true;
 
 		if (numPolys) {
 			// In case of partial path, make sure the end point is clamped to the last polygon.
 			float epos[3];
 			dtVcopy(epos, polyEnd.toFloatArray());
 			if (polyPath[numPolys - 1] != endPoly) {
-				
 #ifdef DEBUG_PATHING
 				info("Poly mismatch: Expected: " + String::hexvalueOf((int64)endPoly) + " actual: " + String::hexvalueOf((int64)polyPath[numPolys-1]), true);
 #endif
-
 				if (allowPartial)
 					query->closestPointOnPoly(polyPath[numPolys - 1], tarPosAsFloat, polyEnd.toFloatArray(), 0);
 				else
 					return false;
 			}
 
-			//unsigned char flags[128];
 			float pathPoints[128][3];
 			int numPoints = 0;
 
@@ -225,7 +238,9 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 									polyPath, numPolys,
 									(float*) pathPoints, NULL, NULL,
 									&numPoints, 128, 0);
-
+#ifdef DEBUG_PATHING
+			info("findStraightPath result: 0x" + String::hexvalueOf(status), true);
+#endif
 			if (numPoints > 0) {
 				for (int i = 0; i < numPoints; i++) {
 					//info("PathFind Point : " + point.toString(), true);
@@ -1034,11 +1049,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	Vector3 flipped(center.getX(), center.getZ(), -center.getY());
 	float extents[3] = {3, 5, 3};
 
-	dtNavMeshQuery *query = m_navQuery.get();
-	if(query == NULL) {
-		query = dtAllocNavMeshQuery();
-		m_navQuery.set(query);
-	}
+	dtNavMeshQuery* query = getNavQuery();
 
 	if (zone == NULL)
 		return false;
@@ -1070,7 +1081,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		if (dtNavMesh == NULL)
 			continue;
 
-		query->init(dtNavMesh, 2048);
+		query->init(dtNavMesh, MAX_QUERY_NODES);
 
 		if (!((status = query->findNearestPoly(flipped.toFloatArray(), extents, &m_spawnFilter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			continue;
@@ -1095,9 +1106,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 					}
 
 					if (checkPath) {
-						Vector<WorldCoordinates> path;
-
-						if (!getRecastPath(center, point, navArea, &path, len, false)) {
+						if (!getRecastPath(center, point, navArea, nullptr, len, false)) {
 							continue;
 						}
 					}

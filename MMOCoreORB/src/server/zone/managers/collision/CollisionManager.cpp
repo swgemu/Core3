@@ -262,7 +262,7 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 }
 
 float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 	zone->getInRangeObjects(x, y, 128, &closeObjects, true, false);
 
 	PlanetManager* planetManager = zone->getPlanetManager();
@@ -280,8 +280,6 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	Vector3 rayStart(x, 16384.f, y);
 	Vector3 rayEnd(x, -16384.f, y);
 
-	//Triangle* triangle = NULL;
-
 	if (testWater) {
 		float waterHeight;
 
@@ -290,10 +288,8 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 				height = waterHeight;
 	}
 
-	//float intersectionDistance;
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* sceno = static_cast<SceneObject*>(closeObjects.get(i).get());
+	for (const auto& entry : closeObjects) {
+		SceneObject* sceno = static_cast<SceneObject*>(entry);
 
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
 
@@ -304,8 +300,8 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 
 			app->intersects(ray, 16384 * 2, results);
 
-			for (const auto& result : results) {
-				float floorHeight = 16384.f - result.getIntersectionDistance();
+			if (results.size()) { // results are ordered based on intersection distance from min to max
+				float floorHeight = 16384.f - results.getUnsafe(0).getIntersectionDistance();
 
 				if (floorHeight > height)
 					height = floorHeight;
@@ -313,36 +309,6 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 		} else {
 			continue;
 		}
-		
-/*
-		SharedObjectTemplate* templateObject = building->getObjectTemplate();
-
-		if (templateObject == NULL)
-			continue;
-
-		PortalLayout* portalLayout = templateObject->getPortalLayout();
-
-		if (portalLayout == NULL)
-			continue;
-
-		if (portalLayout->getFloorMeshNumber() == 0)
-			continue;
-
-		//find nearest entrance
-		FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
-		AABBTree* aabbTree = exteriorFloorMesh->getAABBTree();
-
-		if (aabbTree == NULL)
-			continue;
-
-		Ray ray = convertToModelSpace(rayStart, rayEnd, building);
-
-		if (aabbTree->intersects(ray, 16384 * 2, intersectionDistance, triangle, true)) {
-			float floorHeight = 16384 - intersectionDistance;
-
-			if (floorHeight > height)
-				height = floorHeight;
-		}*/
 	}
 
 	return height;
