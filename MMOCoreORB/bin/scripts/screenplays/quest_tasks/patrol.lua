@@ -120,6 +120,7 @@ function Patrol:failPatrol(pPlayer)
 	self:waypointCleanup(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	
+	deleteData(playerID .. ":completedCurrentPoint")
 	deleteData(playerID .. ":patrolWaypointsReached")
 	writeData(playerID .. ":failedPatrol", 1)
 	return true
@@ -145,6 +146,7 @@ end
 function Patrol:taskFinish(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. ":patrolWaypointsReached")
+	deleteData(playerID .. ":completedCurrentPoint")
 	deleteData(playerID .. ":failedPatrol")
 	dropObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pPlayer)
 	self:waypointCleanup(pPlayer)
