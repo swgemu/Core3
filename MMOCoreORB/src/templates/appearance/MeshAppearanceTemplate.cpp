@@ -145,7 +145,7 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 
 	Reference<MeshData*> meshData = new MeshData;
 	meshData->readObject(iffStream);
-	meshes.add(meshData);
+	meshes.emplace(std::move(meshData));
 
 	iffStream->closeForm(nextVersion);
 

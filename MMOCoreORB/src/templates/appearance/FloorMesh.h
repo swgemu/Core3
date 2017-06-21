@@ -13,6 +13,8 @@
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/PathGraph.h"
 
+//#define RENDER_EXTERNAL_FLOOR_MESHES_ONLY
+
 class MeshData;
 
 class EdgeID {

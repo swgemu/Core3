@@ -83,6 +83,7 @@ protected:
 	// The caller of this function is responsible for deleting the NavCollision objects.
 	// Collisions should be sorted from closest to farthest.
 	void getNavMeshCollisions(SortedVector<NavCollision*> *collisions, const SortedVector<ManagedReference<NavArea*>> *area, const Vector3& start, const Vector3& end);
+	dtNavMeshQuery* getNavQuery();
 private:
 	dtQueryFilter m_filter;
 	dtQueryFilter m_spawnFilter;

@@ -226,6 +226,8 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 
 		int vertSize = vertData->getChunkSize();
 
+		vertices.removeAll(vertSize);
+
 		while (vertSize > 0) {
 			vertices.add(iffStream->getVector3());
 			vertSize -= 12;
@@ -275,6 +277,8 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 		Chunk* data = iffStream->openChunk('VERT');
 
 		int verticesSize = data->readInt();
+
+		vertices.removeAll(verticesSize);
 
 		for (int i = 0; i < verticesSize; ++i) {
 			vertices.add(iffStream->getVector3());
@@ -423,6 +427,31 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 
 	Vector<Reference<MeshData*>> meshData;
 	meshData.emplace(std::move(data));
+
+#ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
+	Reference<MeshData*> floorData = new MeshData();
+
+	Vector<Vector3>* floorVertices = floorData->getVerts();
+	floorVertices->removeAll(this->vertices.size() + 1);
+
+	Vector<MeshTriangle>* floorTriangles = floorData->getTriangles();
+	floorTriangles->removeAll(tris.size() + 1);
+
+	for (const auto& vert : this->vertices) {
+		Vector3 transformedVert = vert;
+
+		transformedVert.setZ(-transformedVert.getZ());
+		transformedVert = transformedVert * parentTransform;
+
+		floorVertices->add(transformedVert);
+	}
+
+	for (const auto& tri : tris) {
+		floorTriangles->emplace(tri->getIndex(0), tri->getIndex(1), tri->getIndex(2));
+	}
+
+	meshData.emplace(std::move(floorData));
+#endif
 
 	return meshData;
 }

@@ -688,14 +688,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
 	 */
 	@dirty
-	public unsigned long getParentID() {
-		synchronized (parentLock) {
-			if (super.parent != null) {
-				return super.parent.getObjectID();
-			} else
-				return 0;
-		}
-	}
+	public native unsigned long getParentID();
 
 	/**
 	 * Adds a pending task of this SceneObject

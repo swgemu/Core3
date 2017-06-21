@@ -33,7 +33,7 @@ using namespace server::zone::objects::scene;
 using namespace server::zone::objects::creature;
 
 class MapLocationEntry : public Object {
-	ManagedReference<SceneObject*> object;
+	Reference<SceneObject*> object;
 	UnicodeString displayName;
 	byte icon; // 0 = None, 1 = Moon, 2 = Star
 
@@ -62,11 +62,11 @@ public:
 
 	void setObject(SceneObject* obj);
 
-	inline SceneObject* getObject() {
+	inline SceneObject* getObject() const {
 		return object;
 	}
 
-	inline byte getIcon() {
+	inline byte getIcon() const {
 		return icon;
 	}
 
