@@ -416,7 +416,7 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 	}
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
-		ActiveArea* area = static_cast<NavArea*>(entryObjects.getUnsafe(i));
+		ActiveArea* area = static_cast<ActiveArea*>(entryObjects.getUnsafe(i));
 		NavArea* obj = area->asNavArea();
 
 		if (obj && obj->isNavMeshLoaded() && obj->isInRange(x, y, 256)) {
@@ -425,7 +425,7 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 	}
 
 	for (int i = 0; i < entryObjects2.size(); ++i) {
-		ActiveArea* area = static_cast<NavArea*>(entryObjects2.getUnsafe(i));
+		ActiveArea* area = static_cast<ActiveArea*>(entryObjects2.getUnsafe(i));
 		NavArea* obj = area->asNavArea();
 
 		if (obj && obj->isNavMeshLoaded() && obj->isInRange(x, y, 256))
