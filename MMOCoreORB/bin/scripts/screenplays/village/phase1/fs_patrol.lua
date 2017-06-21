@@ -138,14 +138,14 @@ function FsPatrol:resetFsPatrol(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. ":patrolWaypointsReached")
 	deleteData(playerID .. ":failedPatrol")
-	deleteData(playerID .. "completedCurrentPoint")
+	deleteData(playerID .. ":completedCurrentPoint")
 	self:waypointCleanup(pPlayer)
 	self:setupPatrolPoints(pPlayer)
 end
 
 function FsPatrol:completeFsPatrol(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
-	deleteData(playerID .. "completedCurrentPoint")
+	deleteData(playerID .. ":completedCurrentPoint")
 	deleteData(playerID .. ":patrolWaypointsReached")
 	self:finish(pPlayer)
 end
