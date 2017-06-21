@@ -6,7 +6,7 @@ villageDageerinPhase3ConvoHandler = conv_handler:new {}
 function villageDageerinPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (FsSad:hasActiveReturnTask(pPlayer)) then
+	if (FsSad2:hasActiveReturnTask(pPlayer)) then
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
