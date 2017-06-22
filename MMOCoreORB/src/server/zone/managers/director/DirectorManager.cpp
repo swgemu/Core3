@@ -111,6 +111,12 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	questVectorMaps.setNoDuplicateInsertPlan();
 
 	masterScreenPlayVersion.set(0);
+
+	luaErrorLog.setLoggingName("LuaErrors");
+	StringBuffer fileName;
+	fileName << "log/luaErrors.log";
+	luaErrorLog.setFileLogger(fileName.toString(), true);
+	luaErrorLog.setLogging(true);
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -271,7 +277,7 @@ Vector<Reference<ScreenPlayTask*> > DirectorManager::getPlayerEvents(CreatureObj
 void DirectorManager::printTraceError(lua_State* L, const String& error) {
 	luaL_traceback(L, L, error.toCharArray(), 0);
 	String trace = lua_tostring(L, -1);
-	instance()->error(trace);
+	instance()->luaErrorLog.error(trace);
 }
 
 String DirectorManager::getStringSharedMemory(const String& key) {
@@ -2940,7 +2946,7 @@ int DirectorManager::awardSkill(lua_State* L) {
 	if(creature == NULL)
 		return 0;
 
-	SkillManager::instance()->awardSkill(skillName, creature, true, false, true);
+	SkillManager::instance()->awardSkill(skillName, creature, true, true, true);
 
 	return 0;
 }
