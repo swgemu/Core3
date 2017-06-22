@@ -269,9 +269,10 @@ Vector<Reference<ScreenPlayTask*> > DirectorManager::getPlayerEvents(CreatureObj
 }
 
 void DirectorManager::printTraceError(lua_State* L, const String& error) {
+	Lua* lua = instance()->getLuaInstance();
 	luaL_traceback(L, L, error.toCharArray(), 0);
 	String trace = lua_tostring(L, -1);
-	instance()->error(trace);
+	lua->error(trace);
 }
 
 String DirectorManager::getStringSharedMemory(const String& key) {
@@ -313,6 +314,10 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setLoggingName("DirectorManagerLuaInstance");
 	luaEngine->setGlobalLogging(true);
 	luaEngine->setLogging(true);
+
+	StringBuffer fileName;
+	fileName << "log/lua.log";
+	luaEngine->setFileLogger(fileName.toString(), true);
 
 	setupLuaPackagePath(luaEngine);
 
