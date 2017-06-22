@@ -61,6 +61,8 @@ namespace server {
 		SynchronizedVectorMap<String, Reference<QuestVectorMap*> > questVectorMaps;
 		SynchronizedSortedVector<Reference<ScreenPlayTask*> > screenplayTasks;
 
+		Logger luaErrorLog;
+
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
 #else
