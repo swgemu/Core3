@@ -93,7 +93,9 @@ void ContainerObjectsMap::loadObjects() {
 	delete oids;
 	oids = NULL;
 
-	scheduleContainerUnload();
+	if (operationMode == DELAYED_LOAD) {
+		scheduleContainerUnload();
+	}
 
 	ManagedReference<SceneObject*> sceno = container.get();
 

@@ -43,6 +43,11 @@ public:
 			if (tokenizer.hasMoreTokens()) {
 				z = tokenizer.getFloatToken();
 				parentID = tokenizer.getLongToken();
+			} else {
+				Zone* newZone = creature->getZoneServer()->getZone(zoneName);
+
+				if (newZone != NULL)
+					z = CollisionManager::getWorldFloorCollision(x, y, newZone, false);
 			}
 
 			creature->setDirection(0);
