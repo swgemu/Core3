@@ -1809,8 +1809,10 @@ Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(
 		return emptyData;
 	}
 
+	Quaternion directionRecast(direction.getW(), direction.getX(), direction.getY(), -direction.getZ());
+
 	Matrix4 transform;
-	transform.setRotationMatrix(direction.toMatrix3());
+	transform.setRotationMatrix(directionRecast.toMatrix3());
 	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
 	const auto fullTransform = transform * *parentTransform;
