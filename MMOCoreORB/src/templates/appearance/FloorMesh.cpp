@@ -8,6 +8,8 @@
 #include "FloorMesh.h"
 #include "templates/appearance/MeshData.h"
 
+#define BARRIER_HEIGHT 3
+
 void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
 	indicies[0] = iffStream->getInt(); // Corner Index[0]
 	indicies[1] = iffStream->getInt(); // Corner Index[1]
@@ -417,8 +419,8 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 
 		vertices->add(start);
 		vertices->add(end);
-		vertices->emplace(start.getX(), start.getY() + 2, start.getZ());
-		vertices->emplace(end.getX(), end.getY() + 2, end.getZ());
+		vertices->emplace(start.getX(), start.getY() + BARRIER_HEIGHT, start.getZ());
+		vertices->emplace(end.getX(), end.getY() + BARRIER_HEIGHT, end.getZ());
 
 		int ind = vertices->size() - 1;
 		triangles->emplace(ind - 1, ind - 2, ind - 3);
