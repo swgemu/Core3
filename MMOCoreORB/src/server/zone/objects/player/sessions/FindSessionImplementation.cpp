@@ -192,7 +192,12 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 						Vector3 center = box.center();
 						center.setZ(center.getZ() + 5.0f);
 						Matrix4 transform;
-						transform.setRotationMatrix(building->getDirection()->toMatrix3());
+
+						auto dir = building->getDirection();
+
+						Quaternion directionRecast(dir->getW(), dir->getX(), dir->getY(), -dir->getZ());
+
+						transform.setRotationMatrix(directionRecast.toMatrix3());
 						transform.setTranslation(building->getPositionX(), building->getPositionZ(),
 												 -building->getPositionY());
 

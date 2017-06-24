@@ -233,7 +233,10 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 
 						Vector3 center = box.center();
 						Matrix4 transform;
-						transform.setRotationMatrix(direction.toMatrix3());
+
+						Quaternion directionRecast(direction.getW(), direction.getX(), direction.getY(), -direction.getZ());
+
+						transform.setRotationMatrix(directionRecast.toMatrix3());
 						transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
 						Vector3 dPos = (Vector3(center.getX(), center.getY(), -center.getZ()) * transform);
@@ -1617,8 +1620,10 @@ BuildingObject* BuildingObjectImplementation::asBuildingObject() {
 Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {
 	Vector<Reference<MeshData*> > data;
 
+	Quaternion directionRecast(direction.getW(), direction.getX(), direction.getY(), -direction.getZ());
+
 	Matrix4 transform;
-	transform.setRotationMatrix(direction.toMatrix3());
+	transform.setRotationMatrix(directionRecast.toMatrix3());
 	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
 
 	const auto fullTransform = transform * *parentTransform;
