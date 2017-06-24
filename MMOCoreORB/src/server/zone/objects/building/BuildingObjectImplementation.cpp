@@ -1647,16 +1647,11 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 #endif
 			const CellProperty* tmpl = pl->getCellProperty(0);
 
-			for (int i=0; i<tmpl->getNumberOfPortals(); i++) {
+			for (int i = 0; i < tmpl->getNumberOfPortals(); i++) {
 				const CellPortal* portal = tmpl->getPortal(i);
 				const MeshData* mesh = pl->getPortalGeometry(portal->getGeometryIndex());
 
-				if(portal->hasDoorTransform()) {
-					Matrix4 doorTransform = portal->getDoorTransform();
-					doorTransform.swapLtoR();
-					data.emplace(std::move(MeshData::makeCopyNegateZ(mesh, (doorTransform * transform) * *parentTransform)));
-				} else
-					data.emplace(std::move(MeshData::makeCopyNegateZ(mesh, fullTransform)));
+				data.emplace(std::move(MeshData::makeCopyNegateZ(mesh, fullTransform)));
 			}
 
 #ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
