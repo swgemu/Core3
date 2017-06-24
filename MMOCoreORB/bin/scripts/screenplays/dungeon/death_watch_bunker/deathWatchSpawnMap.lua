@@ -10,11 +10,11 @@ deathWatchQuestNpcs = {
 
 deathWatchSpecialSpawns = {
 	rageon_vart = {"rageon_vart", 0, -115.8, -20, -25.8, 90, 5996323},
-	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -74.3, -20, -24.5, 108, 5996322},
+	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -80.4, -20, -24.8, -106, 5996322},
 	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -115.4, -20, -52.4, 108, 5996323},
-	klin_nif = {"klin_nif", 0, -56, -32, -98, 90, 5996334},
-	klin_nif_assist1 = {"death_watch_bloodguard", 0, -57.8, -32, -101.4, 90, 5996334},
-	klin_nif_assist2 = {"death_watch_ghost", 0, 1.9, -32, -52.6, -90, 5996335},
+	klin_nif = {"klin_nif", 0, -49.1, -32, -100.7, 51, 5996334},
+	klin_nif_assist1 = {"death_watch_bloodguard", 0, -49.1, -32, -100.7, 51, 5996334},
+	klin_nif_assist2 = {"death_watch_ghost", 0, -6.7, -32, -100.5, -89, 5996337},
 	fenri_dalso = {"fenri_dalso", 0, 25.3, -60, -176.1, -9, 5996346},
 	fenri_dalso_assist1 = {"death_watch_ghost", 0, 25.2, -60, -176.4, 0, 5996346},
 	fenri_dalso_assist4 = {"death_watch_ghost", 0, 26.1, -60, -174.3, 0, 5996346},
@@ -55,19 +55,19 @@ deathWatchSpecialSpawns = {
 
 deathWatchPatrolPoints = {
 	rageon_vart = {
-		{ -101.4, -20, -50.5, 5996323 },
-		{ -88.5 , -20, -37.5, 5996323 },
-		{ -92.5, -20, -45.5, 5996323 }
+		{ -102.3, -20, -27.8, 5996323 },
+		{ -111.9, -20, -47.4, 5996323 },
+		{ -104.8, -20, -50.7, 5996323 }
 	},
 	klin_nif = {
-		{ -29.8, -32, -93.7, 5996331 },
-		{ -20.5, -32, -74.5, 5996331 },
-		{ -22.1, -32, -85.2, 5996331 }
+		{ -36.9, -32, -98.2, 5996331 },
+		{ -22.9, -32, -98.7, 5996331 },
+		{ -34.5, -32, -93.7, 5996331 }
 	},
 	fenri_dalso = {
-		{ -101.4, -60, -50.5, 5996346 },
-		{ -88.5, -60, -37.5, 5996346 },
-		{ -92.5, -60, -45.5, 5996346 },
+		{ 26.0, -64, -147.7, 5996347 },
+		{ 26.0, -64, -137.7, 5996347 },
+		{ 26.0, -64, -114.4, 5996347 },
 	}
 }
 
