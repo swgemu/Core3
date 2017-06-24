@@ -1068,7 +1068,7 @@ function DeathWatchBunkerScreenPlay:spawnNextA(pCreature)
 		deleteData(5996314 .. ":dwb:terminalAnextSpawn")
 
 		local spawn = deathWatchSpecialSpawns["rageon_vart_assist1"]
-		self:spawnDefender(spawn, "rageon_vart3")
+		self:spawnDefender(spawn, "rageon_vart1")
 
 		spawn = deathWatchSpecialSpawns["rageon_vart_assist2"]
 		self:spawnDefender(spawn, "rageon_vart3")
@@ -1109,7 +1109,7 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
-		local pDefender = self:spawnDefender(spawn, "klin_nif2")
+		local pDefender = self:spawnDefender(spawn, "klin_nif1")
 
 		if (pDefender ~= nil) then
 			createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "spawnBDefenderDamageReceived", pDefender)
@@ -1120,13 +1120,13 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 	else
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 0)
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
-		self:spawnDefender(spawn, "klin_nif3")
+		self:spawnDefender(spawn, "klin_nif1")
 
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
-		self:spawnDefender(spawn, "klin_nif3")
+		self:spawnDefender(spawn, "klin_nif2")
 
 		local spawn = deathWatchSpecialSpawns["klin_nif"]
-		self:spawnDefender(spawn, "klin_nif2")
+		self:spawnDefender(spawn, "klin_nif3")
 	end
 end
 
@@ -1198,7 +1198,7 @@ function DeathWatchBunkerScreenPlay:spawnCDefenderDamageReceived(pDefender, pPla
 
 	spatialChat(pDefender, "@dungeon/death_watch:call_back_up")
 	createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", pPlayer, "")
-	
+
 	return 1
 end
 
