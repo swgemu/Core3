@@ -42,7 +42,9 @@ public:
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
-			//GO GET 'EM, NINJA! YEEEHAW!!!
+			//TODO: Figure out best place (GroupManager.cpp  maybe? ) to add...
+			// string/en/group.stf	98	full_inventory_free_for_all
+			// "%TT inventory is full. Unable to transfer %TO to %TT. The item is available on the corpse for anyone to retrieve."
 			break;
 		case GroupManager::MASTERLOOTER:
 			if (!group->checkMasterLooter(player)) {
@@ -103,9 +105,14 @@ public:
 			lootAllLocker.release();
 
 			Locker groupLocker(group, corpse);
-			if (group->getLootRule() == GroupManager::MASTERLOOTER && lootContainer->getContainerObjectsSize() <= 0) {
-				StringIdChatParameter msg("group","master_loot_all"); //"The master looter has looted all items from the corpse."
-				group->sendSystemMessage(msg, false);
+			if (lootContainer->getContainerObjectsSize() <= 0) {
+				if (group->getLootRule() == GroupManager::MASTERLOOTER) {
+					StringIdChatParameter msg("group","master_loot_all"); //"The master looter has looted all items from the corpse."
+					group->sendSystemMessage(msg, false);
+				} else {
+					StringIdChatParameter msg("group","free_for_all_loot_all"); //"The corpse has been looted of all items."
+					group->sendSystemMessage(msg, true);
+				}
 			}
 		} else {
 			gclocker.release();
