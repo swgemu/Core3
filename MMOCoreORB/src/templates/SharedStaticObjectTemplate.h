@@ -10,7 +10,9 @@
 
 #include "templates/SharedObjectTemplate.h"
 
-class SharedStaticObjectTemplate : public SharedObjectTemplate {
+#include "building/SharedBuildingObjectTemplate.h"
+
+class SharedStaticObjectTemplate : public SharedBuildingObjectTemplate {
 protected:
 
 
@@ -31,11 +33,13 @@ public:
 		uint32 nextType = iffStream->getNextFormType();
 
 		if (nextType != 'STAT') {
-			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
+			//Logger::console.error("expecting STAT got " + String::hexvalueOf((int)nextType));
 
-			SharedObjectTemplate::readObject(iffStream);
+			SharedBuildingObjectTemplate::readObject(iffStream);
 
 			return;
+		} else {
+			Logger::console.error("opening STAT");
 		}
 
 		iffStream->openForm('STAT');
@@ -48,14 +52,10 @@ public:
 			derv = iffStream->getNextFormType();
 		}
 
-		/*while (derv != 0) {
-					if (derv != '
-				}*/
-
 		iffStream->openForm(derv);
 
 		try {
-			//parseFileData(iffStream);
+			parseFileData(iffStream);
 		} catch (Exception& e) {
 			String msg;
 			msg += "exception caught parsing file data ->";

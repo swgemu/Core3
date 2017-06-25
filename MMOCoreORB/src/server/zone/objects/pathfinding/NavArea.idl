@@ -89,9 +89,7 @@ class NavArea extends ActiveArea {
 	public native NavArea asNavArea();
 
 	@dirty
-	public boolean objectInMesh(SceneObject obj) {
-		return containedObjects.contains(obj.getObjectID());
-	}
+	public native boolean objectInMesh(SceneObject obj);
 
 	@dirty
 	public string getMeshName() {
@@ -130,6 +128,10 @@ class NavArea extends ActiveArea {
 
 	public boolean isNavMeshLoaded() {
 		return recastNavMesh.isLoaded();
+	}
+
+	public int getContainedObjectsCount() {
+		return containedObjects.size();
 	}
 }
 
