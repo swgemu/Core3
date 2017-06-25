@@ -173,7 +173,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	if (zone == nullptr)
 		return false;
 
-	areaPos.setZ(CollisionManager::getWorldFloorCollision(areaPos.getX(), areaPos.getY(), zone, false));
+	areaPos.setZ(zone->getHeight(areaPos.getX(), areaPos.getY()));
 
 	dtNavMeshQuery* query = getNavQuery();
 
@@ -231,13 +231,16 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 					return false;
 			}
 
-			float pathPoints[128][3];
+			static constexpr int MAX_PATH_POINTS = 256;
+
+			float pathPoints[MAX_PATH_POINTS][3];
 			int numPoints = 0;
+			int pathOptions = DT_STRAIGHTPATH_ALL_CROSSINGS;
 
 			status = query->findStraightPath(polyStart.toFloatArray(), polyEnd.toFloatArray(),
 									polyPath, numPolys,
 									(float*) pathPoints, NULL, NULL,
-									&numPoints, 128, 0);
+									&numPoints, MAX_PATH_POINTS, pathOptions);
 #ifdef DEBUG_PATHING
 			info("findStraightPath result: 0x" + String::hexvalueOf(status), true);
 #endif
@@ -272,7 +275,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 		Vector3 mid = startTemp + ((targetTemp-startTemp) * 0.5f);
 
-		zone->getInRangeNavMeshes(mid.getX(), mid.getY(), &areas, false);
+		zone->getInRangeNavMeshes(mid.getX(), mid.getY(), &areas, true);
 
 		SortedVector<NavCollision*> collisions;
 		getNavMeshCollisions(&collisions, &areas, pointA.getWorldPosition(), pointB.getWorldPosition());
@@ -1054,7 +1057,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 	if (zone == NULL)
 		return false;
 
-	zone->getInRangeNavMeshes(center.getX(), center.getY(), &areas, false);
+	zone->getInRangeNavMeshes(center.getX(), center.getY(), &areas, true);
 
 	if (areas.size() == 0) {
 		Vector3 temp((frand() * 2.0f) - 1.0f, (frand() * 2.0f) - 1.0f, 0);

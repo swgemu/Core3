@@ -72,7 +72,7 @@ bool NavAreaImplementation::isInRange(float x, float y, float range) {
 void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 	Locker locker(asNavArea());
 
-    RecastSettings settings;
+    static const RecastSettings settings;
     if (!recastNavMesh.isLoaded()) {
         NavMeshManager::instance()->enqueueJob(zone, asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
@@ -96,6 +96,12 @@ void NavAreaImplementation::initialize() {
     meshName = String::valueOf(getObjectID());
 }
 
+bool NavAreaImplementation::objectInMesh(SceneObject* obj) {
+	ReadLocker rlocker(&containedLock);
+
+	return containedObjects.contains(obj->getObjectID());
+}
+
 void NavAreaImplementation::notifyEnter(SceneObject* object) {
     if (disableUpdates || NavMeshManager::instance()->isStopped())
         return;
@@ -117,7 +123,7 @@ void NavAreaImplementation::notifyEnter(SceneObject* object) {
     if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object
         return;
 
-    if (object->getObjectTemplate()->getTemplateFileName().contains("construction_"))
+    if (shot->getTemplateFileName().contains("construction_"))
     	return;
 
     updateNavMesh(object, false);

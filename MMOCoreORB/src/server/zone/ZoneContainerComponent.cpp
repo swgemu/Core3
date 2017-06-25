@@ -55,11 +55,22 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
 
-		if (!object->isTangibleObject()) {
+		TangibleObject* tano = object->asTangibleObject();
+
+		if (tano == nullptr && activeArea->isNavArea()) {
+			if (object->isStaticObjectClass()) {
+				Vector3 worldPos = object->getWorldPosition();
+
+				if (activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+					activeArea->enqueueEnterEvent(object);
+				}
+			}
+
+			continue;
+		} else if (tano == nullptr) {
 			continue;
 		}
 
-		TangibleObject* tano = cast<TangibleObject*>(object);
 		Vector3 worldPos = object->getWorldPosition();
 
 		if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
@@ -101,13 +112,21 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
 
-	//	Locker olocker(object);
+		TangibleObject* tano = object->asTangibleObject();
 
-		if (!object->isTangibleObject()) {
+		if (tano == nullptr && activeArea->isNavArea()) {
+			if (object->isStaticObjectClass()) {
+				Vector3 worldPos = object->getWorldPosition();
+
+				if (activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+					activeArea->enqueueExitEvent(object);
+				}
+			}
+
+			continue;
+		} else if (tano == nullptr) {
 			continue;
 		}
-
-		TangibleObject* tano = cast<TangibleObject*>(object);
 
 		if (tano->hasActiveArea(activeArea)) {
 			tano->dropActiveArea(activeArea);
@@ -189,27 +208,19 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->inRange(object, ZoneServer::CLOSEOBJECTRANGE);
 
-	if (object->isTangibleObject()) {
-		TangibleObject* tano = cast<TangibleObject*>(object);
-
-		zone->updateActiveAreas(tano);
+	TangibleObject* tanoObject = object->asTangibleObject();
+	if (tanoObject != nullptr) {
+		zone->updateActiveAreas(tanoObject);
 	} else if (object->isStaticObjectClass()) {
-
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = object->getWorldPosition();
 
-		SortedVector<ManagedReference<NavArea*> > objects;
-		zone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), &objects, false);
+		SortedVector<ManagedReference<NavArea*> > meshes;
+		zone->getInRangeNavMeshes(worldPos.getX(), worldPos.getY(), &meshes, false);
 
-		for(auto& area : objects) {
-			if(area->isNavArea()) {
-				NavArea *mesh = area->asNavArea();
-
-				if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
-					mesh->updateNavMesh(object, false);
-				} else if (mesh->objectInMesh(object)) {
-					mesh->updateNavMesh(object, true);
-				}
+		for(auto& mesh : meshes) {
+			if (mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
+				mesh->enqueueEnterEvent(object);
 			}
 		}
 	} else if (object->isTheaterObject()) {
@@ -328,6 +339,15 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 				_alocker.release();
 
 				area->enqueueExitEvent(object);
+			}
+		} else if (object->isStaticObjectClass()) {
+			SortedVector<ManagedReference<NavArea*> > meshes;
+			oldZone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), &meshes, true);
+
+			for(auto& mesh : meshes) {
+				if (mesh->containsPoint(object->getPositionX(), object->getPositionY())) {
+					mesh->enqueueExitEvent(object);
+				}
 			}
 		}
 

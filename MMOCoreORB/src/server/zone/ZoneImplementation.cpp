@@ -403,15 +403,16 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 	SortedVector<QuadTreeEntry*> entryObjects2;
 
 	try {
-		thisZone->rlock(readlock);
+		//thisZone->rlock(readlock);
+		ReadLocker rlocker(thisZone);
 
 		regionTree->inRange(x, y, entryObjects);
 
 		regionTree->inRange(x, y, 1024, entryObjects2);
 
-		thisZone->runlock(readlock);
+		//thisZone->runlock(readlock);
 	}catch (...) {
-		thisZone->runlock(readlock);
+		//thisZone->runlock(readlock);
 		throw;
 	}
 
