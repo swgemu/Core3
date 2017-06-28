@@ -74,6 +74,11 @@ protected:
 	int healAmount; // amount to heal (HAM pools)
 	int healWoundAmount; // amount of wounds to heal
 
+	int bleedHealIterations;
+	int poisonHealIterations;
+	int diseaseHealIterations;
+	int fireHealIterations;
+
 	int range; // range to heal up to, if <= 0 it heals the user
 
 public:
@@ -137,6 +142,22 @@ public:
 
 	void setHealWoundAmount(unsigned int amount) {
 		healWoundAmount = amount;
+	}
+
+	void setBleedHealIterations(unsigned int amount) {
+		bleedHealIterations = amount;
+	}
+
+	void setPoisonHealIterations(unsigned int amount) {
+		poisonHealIterations = amount;
+	}
+
+	void setDiseaseHealIterations(unsigned int amount) {
+		diseaseHealIterations = amount;
+	}
+
+	void setFireHealIterations(unsigned int amount) {
+		fireHealIterations = amount;
 	}
 
 	void setRange(int r) {

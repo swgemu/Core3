@@ -704,6 +704,14 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				healCommand->setHealStateCost(Lua::getUnsignedIntParameter(L));
 			else if (varName == "statesToHeal")
 				healCommand->setStatesToHeal(Lua::getUnsignedIntParameter(L));
+			else if (varName == "bleedHealIterations")
+				healCommand->setBleedHealIterations(Lua::getUnsignedIntParameter(L));
+			else if (varName == "poisonHealIterations")
+				healCommand->setPoisonHealIterations(Lua::getUnsignedIntParameter(L));
+			else if (varName == "diseaseHealIterations")
+				healCommand->setDiseaseHealIterations(Lua::getUnsignedIntParameter(L));
+			else if (varName == "fireHealIterations")
+				healCommand->setFireHealIterations(Lua::getUnsignedIntParameter(L));
 			else if (varName == "speed")
 				healCommand->setSpeed(Lua::getUnsignedIntParameter(L));
 			else if (varName == "allowedTarget")
