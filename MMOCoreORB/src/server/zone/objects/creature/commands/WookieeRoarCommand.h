@@ -67,8 +67,33 @@ public:
 		player->sendSystemMessage("@innate:roar_active"); // You let out a mighty roar.
 		player->addCooldown("innate_roar", 300 * 1000); // 5min reuse time.
 
-		if (res == GENERALERROR)
-			creature->sendSystemMessage("@combat_effects:wookiee_roar_miss");
+		// *There doesn't seem to be an 'INNATE_BUFF_ROAR' enum in BuffCRC.h
+		uint32 buffcrc = STRING_HASHCODE("wookieeroar");
+		ManagedReference<Buff*> buff = new Buff(player, buffcrc, 300, BuffType::OTHER); // Duration of 5min
+
+		DeltaVector<ManagedReference<SceneObject*> >* roaredAt = player->getDefenderList();
+
+		for (int i = 0; i < roaredAt->size(); i++) {
+			ManagedReference<SceneObject*> object = roaredAt->get(i);
+
+			TangibleObject* defender = cast<TangibleObject*>( object.get());
+
+			if (defender == NULL)
+				continue;
+
+			if (res == GENERALERROR)
+				defender->showFlyText("combat_effects", "wookiee_roar_miss", 0, 255, 0); // -Roar-
+
+		}
+
+		int minplusDefs = roaredAt->size() * 20;
+		//if (res == SUCCESS) {
+			Locker clocker(buff, player);
+			buff->setAttributeModifier(CreatureAttribute::MIND, minplusDefs);
+			buff->setAttributeModifier(CreatureAttribute::FOCUS, minplusDefs);
+			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, minplusDefs);
+			player->addBuff(buff);
+		//}
 
 		return res;
 

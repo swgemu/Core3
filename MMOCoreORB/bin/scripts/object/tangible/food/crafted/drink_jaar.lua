@@ -43,13 +43,14 @@
 
 object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_drink_jaar:new {
 
-	templateType = CONSUMABLE,
+  templateType = CONSUMABLE,
 
-	duration = 30,
+  duration = 30,
   filling = 11,
   nutrition = 10,
 
-  effectType = 0,
+  effectType = 0, --TODO: Research seems to indicate this actually should be an 'effectType = 3, -- Event Based Buff'
+  --eventTypes = {?????}, *I dont see any "WOOKIEEROAR" or "WOOKIEE_ROAR" enum listed in ObserverEventType.h file
 
   fillingMin = 11,
   fillingMax = 7,
@@ -61,7 +62,7 @@ object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_dr
   quantityMax = 10,
   speciesRestriction = "4",
 
-  modifiers = { "wookiee_roar", 0 },
+  modifiers = { "wookiee_roar", 0 },--TODO: How to set the modifiers to be BOTH extra "mind buff" AND "more targets hit"??
 
   buffName = "",
   buffCRC = 0,
