@@ -3317,7 +3317,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	account->setBanReason(reason);
 	account->setBanExpires(System::getMiliTime() + seconds*1000);
 	account->setBanAdmin(admin->getAccountID());
-	
+
 	try {
 
 		Reference<CharacterList*> characters = account->getCharacterList();
@@ -4903,6 +4903,82 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 
 }
 
+bool PlayerManagerImplementation::doWookieeJaar(CreatureObject* player, float roarModifier, float cooldownModifier) {
+	if (player == NULL)
+		return false;
+
+	uint32 crc = STRING_HASHCODE("wookieeroar");
+	float roarBase = 100.0f;
+	float duration = 30;
+	float cooldown = 300;
+
+	float roarMod = (float) player->getSkillMod("wookiee_roar");
+	roarModifier += (roarMod / 100.f);
+
+	if (roarModifier > 1.0f) {
+		roarModifier = 1.0f;
+	}
+
+	float roarEnhanced = 1.f + roarModifier;
+	roarBase *= roarEnhanced;
+	int newRoarBase = (int) roarBase;
+
+	if (cooldownModifier > 1.0f) {
+		cooldownModifier = 1.0f;
+	}
+
+	float cooldownReduction = 1.f - cooldownModifier;
+	cooldown *= cooldownReduction;
+	int newCooldown = (int) cooldown;
+
+	//TODO: FIX ALL THIS BELOW, to match new evidence in Mantis 7436, so Jaar functions as 'event based' buff drink
+		// rather than as an 'instant' activation-of-command drink
+	if (cooldownModifier != 0.f) {
+		if (player->checkCooldownRecovery("wookieeroar")) {
+			player->executeObjectControllerAction(crc, player->getTargetID(), "");
+			player->sendSystemMessage("@combat_effects:instant_wookiee_roar"); // You unleash a ferocious roar!
+			player->updateCooldownTimer("innate_roar", (newCooldown + duration) * 1000);
+
+			DeltaVector<ManagedReference<SceneObject*> >* roaredAt = player->getDefenderList();
+
+			for (int i = roaredAt->size() - 1; i >= 0; --i) {
+				try {
+					ManagedReference<SceneObject*> object = roaredAt->get(i);
+
+					TangibleObject* defender = cast<TangibleObject*>( object.get());
+
+					if (defender == NULL)
+						continue;
+
+					try {
+						Locker clocker(defender, player);
+
+						if (defender->hasDefender(player)) {
+
+							if (defender->isCreatureObject()) {
+								CreatureObject* creature = defender->asCreatureObject();
+								creature->setIntimidatedState(newRoarBase);
+							}
+						}
+
+						clocker.release();
+
+					} catch (Exception& e) {
+						error(e.getMessage());
+						e.printStackTrace();
+					}
+				} catch (ArrayIndexOutOfBoundsException& exc) {
+
+				}
+			}
+		} else
+			return false;
+	}
+
+	return true;
+
+}
+
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
 	if (player == NULL)
 		return false;
@@ -4962,8 +5038,8 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		cooldownModifier = 1.0f;
 	}
 
-	float coodownReduction = 1.f - cooldownModifier;
-	cooldown *= coodownReduction;
+	float cooldownReduction = 1.f - cooldownModifier;
+	cooldown *= cooldownReduction;
 	int newCooldown = (int) cooldown;
 
 	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {

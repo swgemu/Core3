@@ -53,6 +53,7 @@ WookieeRoarCommand = {
 	coneAction = true,
 	
 	accuracySkillMod = "intimidate",
+	accuracyBonus = 25,
 
 	stateEffects = {
 	  StateEffect( 
