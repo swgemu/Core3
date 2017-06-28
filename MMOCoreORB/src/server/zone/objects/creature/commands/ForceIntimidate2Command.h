@@ -36,6 +36,10 @@ public:
 		}
 
 		CreatureObject *tarCreo = targetObject->asCreatureObject();
+		if (tarCreo->isIntimidated()) {
+			creature->sendSystemMessage("@jedi_spam:power_already_active"); //This target is already affected by that power.
+			return GENERALERROR;
+		}
 
 		int res = doCombatAction(creature, target);
 
