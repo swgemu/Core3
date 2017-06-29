@@ -125,7 +125,7 @@ public:
 	virtual void doAction(bool directlyExecuted = false);
 
 	virtual int interrupt(SceneObject* source, int64 msg) {
-		Reference<AiAgent*> strongReference = agent.get();
+		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast(); // our agent should always be in ram
 
 		return interface->interrupt(strongReference, source, msg);
 	}
