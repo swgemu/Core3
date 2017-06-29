@@ -5,13 +5,21 @@
 #ifndef LIGHTUPDATETRANSFORMMESSAGE_H_
 #define LIGHTUPDATETRANSFORMMESSAGE_H_
 
-#include "engine/service/proto/BaseMessage.h"
+#include "engine/service/proto/StandaloneBaseMessage.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class LightUpdateTransformMessage : public BaseMessage {
+//#define UNRELIABLE_LIGHT_TRANSFORMS
+
+#ifdef UNRELIABLE_LIGHT_TRANSFORMS
+#define UNRELIABLE_LIGHT_BASE_CLASS StandaloneBaseMessage
+#else
+#define UNRELIABLE_LIGHT_BASE_CLASS BaseMessage
+#endif
+
+class LightUpdateTransformMessage : public UNRELIABLE_LIGHT_BASE_CLASS {
 public:
-	LightUpdateTransformMessage(SceneObject* scno) : BaseMessage(50) {
+	LightUpdateTransformMessage(SceneObject* scno) : UNRELIABLE_LIGHT_BASE_CLASS(50) {
 		insertShort(0x08);
 		insertInt(0x1B24F808);
 	    insertLong(scno->getObjectID());
@@ -23,8 +31,13 @@ public:
 
 		// add movement counter
 		insertInt(scno->getMovementCounter());
-		
-		insertByte(0); // unknown
+
+		auto creo = scno->asCreatureObject();
+
+		if (creo)
+			insertByte((int8)creo->getCurrentSpeed());
+		else
+			insertByte(0);
 		
 		// add direction
 		insertByte((byte) scno->getSpecialDirectionAngle());
@@ -34,7 +47,7 @@ public:
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
 	
-	LightUpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : BaseMessage(50) {
+	LightUpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : UNRELIABLE_LIGHT_BASE_CLASS(50) {
 		insertShort(0x08);
 		insertInt(0x1B24F808);
 		insertLong(scno->getObjectID());
@@ -47,7 +60,12 @@ public:
 		// add movement counter
 		insertInt(scno->getMovementCounter());
 
-		insertByte(0); // unknown
+		auto creo = scno->asCreatureObject();
+
+		if (creo)
+			insertByte((int8)creo->getCurrentSpeed());
+		else
+			insertByte(0);
 
 		// add direction
 		insertByte((byte) scno->getSpecialDirectionAngle());

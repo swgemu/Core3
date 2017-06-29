@@ -1735,7 +1735,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				nextPosition.setY(thisPos.getY() + (maxDist * (dy / dist)));
 
 				// Now do cell checks to get the Z coordinate outside
-				if (nextPosition.getCell() == NULL) {
+				if (nextPosition.getCell() == NULL && nextPosition.getZ() == 0) {
 					targetMutex.unlock();
 					nextPosition.setZ(getWorldZ(nextPosition.getWorldPosition()));
 					targetMutex.lock();
@@ -1839,9 +1839,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (err >= 0.05)
 			direction.setHeadingDirection(directionangle);
 
-		// Tell the clients where to expect us next tick -- requires that we have found a destination
-		broadcastNextPositionUpdate(&nextStepPosition);
-
 		float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
 		if (dist > 0 && newSpeed > 0.1) {
 			auto interval = UPDATEMOVEMENTINTERVAL;
@@ -1849,13 +1846,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			currentSpeed = newSpeed;
 		} else
 			currentSpeed = 0;
+
+		// Tell the clients where to expect us next tick -- requires that we have found a destination
+		broadcastNextPositionUpdate(&nextStepPosition);
 	} else {
 		PatrolPoint oldPoint = patrolPoints.remove(0);
 
 		if (getFollowState() == AiAgent::PATROLLING)
 			savedPatrolPoints.add(oldPoint);
 
-		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+		ManagedReference<SceneObject*> followCopy = followObject.get();
 		if (followCopy == NULL)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
@@ -1867,11 +1867,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		currentSpeed = 0;
 	}
 
-	if (!(isRetreating() || isFleeing())) {
+	/*if (!(isRetreating() || isFleeing())) {
 		targetMutex.unlock();
 		checkNewAngle();
 		targetMutex.lock();
-	}
+	}*/
 
 	updateLocomotion();
 

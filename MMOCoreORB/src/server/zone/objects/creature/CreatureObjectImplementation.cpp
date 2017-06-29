@@ -2655,11 +2655,12 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 		}
 	}
 
-	if(cooldownTimerMap->isPast("groupMFDUpdate")) {
+	if (cooldownTimerMap->isPast("groupMFDUpdate")) {
 		cooldownTimerMap->updateToCurrentAndAddMili("groupMFDUpdate", 2000);
 
 		updateGroupMFDPositions();
 	}
+
 	updateLocomotion();
 
 	TangibleObjectImplementation::notifySelfPositionUpdate();

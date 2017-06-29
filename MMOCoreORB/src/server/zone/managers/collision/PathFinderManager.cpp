@@ -173,7 +173,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	if (zone == nullptr)
 		return false;
 
-	areaPos.setZ(zone->getHeight(areaPos.getX(), areaPos.getY()));
+	areaPos.setZ(area->getAreaTerrainHeight());
 
 	dtNavMeshQuery* query = getNavQuery();
 

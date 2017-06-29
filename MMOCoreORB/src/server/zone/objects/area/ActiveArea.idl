@@ -57,12 +57,17 @@ class ActiveArea extends SceneObject {
 	}
 
 	@mock
+	@dirty
 	public native abstract void enqueueEnterEvent(SceneObject obj);
 
 	@mock
+	@dirty
 	public native abstract void enqueueExitEvent(SceneObject obj);
 
+	@dirty
 	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
 	public native abstract void notifyExit(SceneObject object);
 
 	public native void setZone(Zone zone);

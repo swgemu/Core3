@@ -1227,7 +1227,7 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int s
 
 	shuttle->setPosture(CreaturePosture::UPRIGHT);
 
-	ShuttleDepartureTask* task = new ShuttleDepartureTask(shuttle);
+	Reference<ShuttleDepartureTask*> task = new ShuttleDepartureTask(shuttle);
 
 	switch (shuttleType) {
 	case SHUTTLEPORT:
@@ -1242,7 +1242,8 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int s
 		break;
 	}
 
-	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
-
 	shuttleMap.put(oid, task);
+
+
+	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
 }
