@@ -79,6 +79,12 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 		}
 	}
 
+	auto navArea = activeArea->asNavArea();
+
+	if (navArea) {
+		navArea->setAreaTerrainHeight(newZone->getHeight(activeArea->getPositionX(), activeArea->getPositionY()));
+	}
+
 	newZone->addSceneObject(activeArea);
 
 	return true;
