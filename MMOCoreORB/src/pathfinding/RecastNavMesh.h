@@ -34,7 +34,7 @@ public:
 
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	bool isLoaded() {
+	bool isLoaded() const {
 		return navMesh != NULL;
 	}
 

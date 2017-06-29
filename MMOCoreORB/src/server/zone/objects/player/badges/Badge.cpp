@@ -55,5 +55,7 @@ uint8 Badge::getTypeFromString(const String& typeString) {
 		buffer << ".";
 		Logger::console.error(buffer.toString());
 		assert(0 && "Unknown badge type in Badge::getTypeFromString.");
+
+		throw Exception(buffer.toString());
 	}
 }
