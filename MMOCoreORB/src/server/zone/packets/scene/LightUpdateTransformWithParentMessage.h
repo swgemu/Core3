@@ -9,9 +9,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class LightUpdateTransformWithParentMessage : public BaseMessage {
+class LightUpdateTransformWithParentMessage : public StandaloneBaseMessage {
 public:
-	LightUpdateTransformWithParentMessage(SceneObject* object) : BaseMessage(50) {
+	LightUpdateTransformWithParentMessage(SceneObject* object) : StandaloneBaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(object->getParentID());
@@ -35,7 +35,7 @@ public:
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
 
-	LightUpdateTransformWithParentMessage(SceneObject* object, float posX, float posZ, float posY, uint64 cellID) : BaseMessage(50) {
+	LightUpdateTransformWithParentMessage(SceneObject* object, float posX, float posZ, float posY, uint64 cellID) : StandaloneBaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(cellID);

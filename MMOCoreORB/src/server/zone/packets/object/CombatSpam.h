@@ -5,15 +5,15 @@
 #ifndef COMBATSPAM_H_
 #define COMBATSPAM_H_
 
-#include "ObjectControllerMessage.h"
+#include "StandaloneObjectControllerMessage.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-class CombatSpam : public ObjectControllerMessage {
+class CombatSpam : public StandaloneObjectControllerMessage {
 public:
 
 	CombatSpam(TangibleObject* attacker, TangibleObject* defender, CreatureObject* receiver, TangibleObject* item, uint32 damage, const String& file, const String& stringName, byte color)
-			: ObjectControllerMessage(receiver->getObjectID(), 0x1B, 0x134) {
+			: StandaloneObjectControllerMessage(receiver->getObjectID(), 0x1B, 0x134) {
 
 		if (attacker != NULL)
 			insertLong(attacker->getObjectID()); //%TU in strings.
@@ -42,7 +42,7 @@ public:
 
 	//For custom combat spam messages.
 	CombatSpam(CreatureObject* receiver, const UnicodeString& uniString, byte color)
-			: ObjectControllerMessage(receiver->getObjectID(), 0x1B, 0x134) {
+			: StandaloneObjectControllerMessage(receiver->getObjectID(), 0x1B, 0x134) {
 
 		insertLong(0);
 		insertLong(0);
