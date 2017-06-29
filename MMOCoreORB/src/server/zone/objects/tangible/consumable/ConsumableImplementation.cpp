@@ -307,6 +307,12 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
 			params.setDI(nutrition);
 			player->sendSystemMessage(params);
+		} else if (effect == "enhanced_regen") {
+			float cooldownModifier = (float) duration / 100.f;
+			float regenModifier = (float) nutrition / 100.f;
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+			if (!playerManager->doKarkanRegen(player, regenModifier, cooldownModifier))
+				return 0;
 		}
 
 		break;

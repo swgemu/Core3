@@ -4903,6 +4903,53 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 
 }
 
+bool PlayerManagerImplementation::doKarkanRegen(CreatureObject* player, float regenModifier, float cooldownModifier) {
+	if (player == NULL)
+		return false;
+
+	uint32 buffcrc = STRING_HASHCODE("regeneration");
+	float regenValue = 100.0f;
+	float duration = 300;
+	float cooldown = 3600;
+
+	float regenKarkanMod = (float) player->getSkillMod("private_innate_regeneration");
+	regenModifier += (regenKarkanMod / 100.f);
+
+	if (regenModifier > 1.0f) {
+		regenModifier = 1.0f;
+	}
+
+	float regenIncrease = 1.f * regenModifier;
+	regenValue *= regenIncrease;
+	int newRegenValue = (int) regenValue;
+
+	if (cooldownModifier > 1.0f) {
+		cooldownModifier = 1.0f;
+	}
+
+	float cooldownReduction = 1.f - cooldownModifier;
+	cooldown *= cooldownReduction;
+	int newCooldown = (int) cooldown;
+
+	ManagedReference<Buff*> karkanBuff = new Buff(player, buffcrc, duration, BuffType::INNATE);
+
+	if (cooldownModifier != 0.f) {
+		if (player->checkCooldownRecovery("regeneration")) {
+			player->executeObjectControllerAction(buffcrc, player->getObjectID(), "");
+
+			Locker locker(karkanBuff);
+
+			karkanBuff->setAttributeModifier(CreatureAttribute::CONSTITUTION, newRegenValue);
+
+			player->addBuff(karkanBuff);
+			player->updateCooldownTimer("innate_regeneration", (newCooldown + duration) * 1000);
+		}
+	}
+
+	return true;
+
+}
+
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
 	if (player == NULL)
 		return false;

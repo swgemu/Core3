@@ -48,7 +48,7 @@ object_tangible_food_crafted_dish_karkan_ribenes = object_tangible_food_crafted_
 	filling = 10,
 	nutrition = 10,
 
-	effectType = 0,
+	effectType = 0,--TODO: Should this be 'EVENT BASED' (effectType = 3) ?? evidence is vague & contradictory, in Mantis 7207
 
 	fillingMin = 3,
 	fillingMax = 2,

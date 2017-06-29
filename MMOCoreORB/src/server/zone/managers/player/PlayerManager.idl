@@ -440,6 +440,8 @@ class PlayerManager extends Observer implements Logger {
 
 	public native boolean doBurstRun(CreatureObject player, float hamModifier, float cooldownModifier);
 
+	public native boolean doKarkanRegen(CreatureObject player, float regenModifier, float cooldownModifier);
+
 	/**
 	 * Enhances the target character with doc/ent buffs
 	 * @pre { player is locked }
