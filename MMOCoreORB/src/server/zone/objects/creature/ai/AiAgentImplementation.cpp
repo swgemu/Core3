@@ -2970,7 +2970,8 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 		}
 
 		for (int i = 0; i < closeAiAgents.size(); ++i) {
-			AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
+			auto sceno = static_cast<SceneObject*>(closeAiAgents.getUnsafe(i));
+			AiAgent* agent = sceno->asAiAgent();
 
 			if (aiAgent == agent || agent == NULL)
 				continue;
