@@ -81,8 +81,10 @@ void ContainerObjectsMap::loadObjects() {
 	if (oids == NULL)
 		return;
 
-	for (int i = 0; i < oids->size(); ++i) {
-		uint64 oid = oids->elementAt(i).getKey();
+	VectorMap<uint64, uint64> oidsCopy = *oids;
+
+	for (int i = 0; i < oidsCopy.size(); ++i) {
+		uint64 oid = oidsCopy.elementAt(i).getKey();
 
 		Reference<SceneObject*> object = Core::getObjectBroker()->lookUp(oid).castTo<SceneObject*>();
 
@@ -90,8 +92,8 @@ void ContainerObjectsMap::loadObjects() {
 			containerObjects.put(oid, object);
 	}
 
-	delete oids;
 	oids = NULL;
+	delete oids;
 
 	if (operationMode == DELAYED_LOAD) {
 		scheduleContainerUnload();
