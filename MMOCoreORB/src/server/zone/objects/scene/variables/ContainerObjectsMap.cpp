@@ -92,8 +92,8 @@ void ContainerObjectsMap::loadObjects() {
 			containerObjects.put(oid, object);
 	}
 
-	oids = NULL;
 	delete oids;
+	oids = NULL;
 
 	if (operationMode == DELAYED_LOAD) {
 		scheduleContainerUnload();
