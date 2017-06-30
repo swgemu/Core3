@@ -14,6 +14,7 @@ includeAiFile("templates/gettargetpet.lua")
 includeAiFile("templates/selectattackpet.lua")
 includeAiFile("templates/combatmovepet.lua")
 includeAiFile("templates/villageraider.lua")
+includeAiFile("templates/enclavesentinel.lua")
 
 getTarget = {
 	{CREATURE_PET, "gettargetpetc"},
@@ -110,3 +111,11 @@ addAiBehavior("SelectAttackVillageRaider")
 addAiBehavior("SelectWeaponVillageRaider")
 addAiBehavior("Wait10VillageRaider")
 addAiBehavior("GeneratePatrolVillageRaider")
+
+addAiBehavior("CompositeEnclaveSentinel")
+addAiBehavior("MoveEnclaveSentinel")
+addAiBehavior("CombatMoveEnclaveSentinel")
+addAiBehavior("WaitEnclaveSentinel")
+addAiBehavior("SelectAttackEnclaveSentinel")
+addAiBehavior("SelectWeaponEnclaveSentinel")
+addAiBehavior("GetTargetEnclaveSentinel")
