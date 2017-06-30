@@ -505,14 +505,19 @@ int LuaSceneObject::playEffect(lua_State* L) {
 
 
 int LuaSceneObject::updateDirection(lua_State* L) {
-	//void updateDirection(float fw, float fx, float fy, float fz);
+	int numberOfArguments = lua_gettop(L) - 1;
 
-	float fz = lua_tonumber(L, -1);
-	float fy = lua_tonumber(L, -2);
-	float fx = lua_tonumber(L, -3);
-	float fw = lua_tonumber(L, -4);
+	if (numberOfArguments == 1) {
+		float angle = lua_tonumber(L, -1);
+		realObject->updateDirection(angle);
+	} else {
+		float fz = lua_tonumber(L, -1);
+		float fy = lua_tonumber(L, -2);
+		float fx = lua_tonumber(L, -3);
+		float fw = lua_tonumber(L, -4);
 
-	realObject->updateDirection(fw, fx, fy, fz);
+		realObject->updateDirection(fw, fx, fy, fz);
+	}
 
 	return 0;
 }
