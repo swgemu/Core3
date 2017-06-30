@@ -154,6 +154,11 @@ function KnightTrials:doCouncilDecision(pPlayer, choice)
 		return
 	end
 
+	if (not JediTrials:isEligibleForKnightTrials(pPlayer)) then
+		self:failTrialsIneligible(pPlayer)
+		return
+	end
+
 	local playerFaction = CreatureObject(pPlayer):getFaction()
 	local musicFile
 	local successMsg
@@ -261,6 +266,10 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", targetCount)
 
 		if (targetCount >= targetGoal) then
+			if (not JediTrials:isEligibleForKnightTrials(pPlayer)) then
+				self:failTrialsIneligible(pPlayer)
+				return 1
+			end
 			local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer) + 1
 			JediTrials:setTrialsCompleted(pPlayer, trialsCompleted)
 			self:startNextKnightTrial(pPlayer)
@@ -269,6 +278,21 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	end
 
 	return 0
+end
+
+function KnightTrials:failTrialsIneligible(pPlayer)
+	if (pPlayer == nil or JediTrials:isEligibleForKnightTrials(pPlayer)) then
+		return
+	end
+
+	local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
+	sui.setTitle("@jedi_trials:knight_trials_title")
+	sui.setPrompt("@jedi_trials:knight_trials_being_removed")
+	sui.setOkButtonText("@jedi_trials:button_close")
+	sui.sendTo(pPlayer)
+
+	JediTrials:resetTrialData(pPlayer, "knight")
+	self:unsetTrialShrine(pPlayer)
 end
 
 function KnightTrials:showCurrentTrial(pPlayer)

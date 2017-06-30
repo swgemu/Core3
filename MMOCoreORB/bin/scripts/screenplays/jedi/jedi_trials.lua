@@ -99,6 +99,12 @@ function JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 		sui.setPrompt("@jedi_trials:padawan_trials_no_longer_eligible")
 		sui.setOkButtonText("@jedi_trials:button_close")
 		sui.sendTo(pPlayer)
+	elseif (self:isOnKnightTrials(pPlayer) and not self:isEligibleForKnightTrials(pPlayer)) then
+		local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
+		sui.setTitle("@jedi_trials:knight_trials_title")
+		sui.setPrompt("@jedi_trials:knight_trials_no_longer_eligible")
+		sui.setOkButtonText("@jedi_trials:button_close")
+		sui.sendTo(pPlayer)
 	end
 
 	return 0
@@ -195,7 +201,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	sui.setTitle("@jedi_trials:knight_trials_title")
 	sui.setPrompt(unlockString)
 	sui.sendTo(pPlayer)
-	
+
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 	if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
@@ -203,7 +209,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	else
 		giveItem(pInventory, knightRobe, -1)
 	end
-	
+
 end
 
 function JediTrials:emptyCallback(pPlayer)
