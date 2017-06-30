@@ -259,8 +259,14 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Jedi State:" .. " \\#pcontrast2 " .. PlayerObject(pGhost):getJediState() .. "\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Progression:" .. " \\#pcontrast2 "
 
-	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_COMPLETED_PADAWAN_TRIALS)) then
-		promptBuf = promptBuf.. "Padawan Trials Completed\n"
+	if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
+		promptBuf = promptBuf.. "Knight Trials Completed\n"
+	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_COMPLETED_PADAWAN_TRIALS)) then
+		if (JediTrials:isOnKnightTrials(pTarget)) then
+			promptBuf = promptBuf .. "Knight Trials (" .. JediTrials:getTrialsCompleted(pTarget) .. " completed)\n"
+		else
+			promptBuf = promptBuf.. "Padawan Trials Completed\n"
+		end
 	elseif (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pTarget, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)) then
 		if (JediTrials:isOnPadawanTrials(pTarget)) then
 			promptBuf = promptBuf .. "Padawan Trials (" .. JediTrials:getTrialsCompleted(pTarget) .. " completed)\n"
@@ -374,6 +380,10 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 
 	sui.add("FS Branch Management", "branchManagement" .. targetID)
 
+	if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
+		sui.add("Manage Player FRS", "frsManagement" .. targetID)
+	end
+
 	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
 		sui.add("Reset Active Quest This Phase", "resetActiveQuest" .. targetID)
 	end
@@ -411,14 +421,14 @@ function VillageGmSui.forceIntroSithAttackEvent(pPlayer, targetID)
 	if (pTarget == nil) then
 		return
 	end
-	
+
 	local curStep = FsIntro:getCurrentStep(pTarget)
-	
+
 	if (not FsIntro:isOnIntro(pTarget) or (curStep ~= FsIntro.SITHWAIT and curStep ~= FsIntro.SITHATTACK)) then
 		CreatureObject(pPlayer):sendSystemMessage("Unable to force the sith attack intro event for " .. CreatureObject(pTarget):getFirstName() .. ", they are not on the correct step.")
 		return
 	end
-	
+
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the sith attack intro event to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
 	FsIntro:startSithAttack(pPlayer)
 end
@@ -429,14 +439,14 @@ function VillageGmSui.forceIntroOldManEvent(pPlayer, targetID)
 	if (pTarget == nil) then
 		return
 	end
-	
+
 	local curStep = FsIntro:getCurrentStep(pTarget)
-	
+
 	if (not FsIntro:isOnIntro(pTarget) or (curStep ~= FsIntro.OLDMANWAIT and curStep ~= FsIntro.OLDMANMEET)) then
 		CreatureObject(pPlayer):sendSystemMessage("Unable to force the old man intro event for " .. CreatureObject(pTarget):getFirstName() .. ", they are not on the correct step.")
 		return
 	end
-	
+
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event intro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
 	FsIntro:startOldMan(pPlayer)
 end
@@ -447,14 +457,14 @@ function VillageGmSui.forceOutroOldManEvent(pPlayer, targetID)
 	if (pTarget == nil) then
 		return
 	end
-	
+
 	local curStep = FsOutro:getCurrentStep(pTarget)
-	
+
 	if (not FsOutro:isOnOutro(pTarget) or (curStep ~= FsOutro.OLDMANWAIT and curStep ~= FsOutro.OLDMANMEET)) then
 		CreatureObject(pPlayer):sendSystemMessage("Unable to force the old man outro event for " .. CreatureObject(pTarget):getFirstName() .. ", they are not on the correct step.")
 		return
 	end
-	
+
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event outro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
 	FsOutro:startOldMan(pPlayer)
 end
@@ -595,6 +605,168 @@ function VillageGmSui:manageVisibilityCallback(pPlayer, pSui, eventIndex, args)
 	if (cancelPressed) then
 		return
 	end
+end
+
+function VillageGmSui.frsManagement(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pTarget):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local councilType = PlayerObject(pGhost):getFrsCouncil()
+	local luaCouncil = JediTrials:getJediCouncil(pTarget)
+	local councilRank = PlayerObject(pGhost):getFrsRank()
+
+	local sui = SuiListBox.new("VillageGmSui", "mainCallback")
+	sui.setTitle("FRS Management")
+
+	local promptBuf = " \\#pcontrast1 " .. "Player:" .. " \\#pcontrast2 " .. SceneObject(pTarget):getCustomObjectName() .. " (" .. targetID .. ")\n"
+	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Council:" .. " \\#pcontrast2 "
+
+	if (councilType == JediTrials.COUNCIL_LIGHT) then
+		promptBuf = promptBuf .. "Light\n"
+	elseif (councilType == JediTrials.COUNCIL_DARK) then
+		promptBuf = promptBuf .. "Dark\n"
+	else
+		promptBuf = promptBuf .. "Invalid\n"
+	end
+
+	if (luaCouncil == nil or councilType == nil or luaCouncil ~= councilType) then
+		promptBuf = promptBuf .. " \\#pcontrast1 " .. "WARNING:" .. " \\#pcontrast2 Trials council choice does not match council type stored on player. Use menu option below to fix.\n"
+	end
+
+	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Rank:" .. " \\#pcontrast2 " .. councilRank .. "\n"
+
+	sui.setPrompt(promptBuf)
+
+	if (luaCouncil ~= councilType) then
+		sui.add("Fix Player Council Type", "fixCouncilType" .. targetID)
+	else
+		sui.add("Change Council Type", "changeCouncilType" .. targetID)
+	end
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui.changeCouncilType(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local sui = SuiListBox.new("VillageGmSui", "changeCouncilTypeCallback")
+	sui.setTitle("Change Council Type")
+	sui.setPrompt("Choose " .. SceneObject(pTarget):getCustomObjectName() .. "'s new council type below. Note: Changing a player's council will set them back to rank 0.")
+
+	sui.add("Light Side", "lightSide" .. targetID)
+	sui.add("Dark Side", "darkSide" .. targetID)
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui:changeCouncilTypeCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		return
+	end
+
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+	local menuOption = suiPageData:getStoredData(tostring(args))
+
+	local targetID = string.match(menuOption, '%d+')
+	local newType = string.gsub(menuOption, targetID, "")
+	
+	local councilType = 0
+	
+	if (newType == "lightSide") then
+		councilType = 1
+	elseif (newType == "darkSide") then
+		councilType = 2
+	end
+
+	if (councilType ~= JediTrials.COUNCIL_LIGHT and councilType ~= JediTrials.COUNCIL_DARK) then
+		printLuaError("Invalid council type " .. newType .. " sent to VillageGmSui:changeCouncilTypeCallback")
+		return
+	end
+
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		printLuaError("Unable to find player in VillageGmSui:changeCouncilTypeCallback using oid " .. targetID)
+		return
+	end
+
+	local pGhost = CreatureObject(pTarget):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+	
+	if (councilType == JediTrials.COUNCIL_LIGHT) then
+		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Light Side.")
+		CreatureObject(pPlayer):setFaction(FACTIONREBEL)
+	else
+		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Dark Side.")
+		CreatureObject(pPlayer):setFaction(FACTIONIMPERIAL)
+	end
+
+	PlayerObject(pGhost):setFrsRank(0)
+	PlayerObject(pGhost):setFrsCouncil(councilType)
+	JediTrials:setJediCouncil(pPlayer, councilType)
+
+	VillageGmSui.frsManagement(pPlayer, targetID)
+end
+
+function VillageGmSui.fixCouncilType(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pTarget):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local luaCouncil = JediTrials:getJediCouncil(pTarget)
+	local frsCouncil = PlayerObject(pGhost):getFrsCouncil()
+
+	if (luaCouncil ~= JediTrials.COUNCIL_LIGHT and luaCouncil ~= JediTrials.COUNCIL_DARK and frsCouncil ~= JediTrials.COUNCIL_LIGHT and frsCouncil ~= JediTrials.COUNCIL_DARK) then
+		CreatureObject(pPlayer):sendSystemMessage("Unable to fix player council type. Player does not have a valid type stored from the knight trials.")
+		return
+	end
+
+	if (luaCouncil ~= JediTrials.COUNCIL_LIGHT and luaCouncil ~= JediTrials.COUNCIL_DARK) then
+		luaCouncil = frsCouncil
+		JediTrials:setJediCouncil(pPlayer, frsCouncil)
+	else
+		PlayerObject(pGhost):setFrsCouncil(luaCouncil)
+	end
+
+	if (luaCouncil == JediTrials.COUNCIL_LIGHT) then
+		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Light Side.")
+	else
+		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Dark Side.")
+	end
+
+	VillageGmSui.frsManagement(pPlayer, targetID)
 end
 
 function VillageGmSui.branchManagement(pPlayer, targetID)
