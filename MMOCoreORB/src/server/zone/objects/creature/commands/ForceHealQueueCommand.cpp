@@ -29,6 +29,12 @@ ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServ
 	healBattleFatigue = 0;
 	healAmount = 0;
 	healWoundAmount = 0;
+
+	bleedHealIterations = 1;
+	poisonHealIterations = 1;
+	diseaseHealIterations = 1;
+	fireHealIterations = 1;
+
 	visMod = 10;
 
 	range = 0;
@@ -157,8 +163,14 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 	// Bleeding
 	if (targetCreature->isBleeding() && healBleedingCost > 0 && totalCost + healBleedingCost < currentForce) {
-		bool result = targetCreature->healDot(CreatureState::BLEEDING, 250);
-		totalCost += healBleedingCost;
+		bool result = false;
+		int iteration = 1;
+
+		while (!result && (totalCost + healBleedingCost < currentForce) && (bleedHealIterations == -1 || iteration <= bleedHealIterations)) {
+			result = targetCreature->healDot(CreatureState::BLEEDING, 250);
+			totalCost += healBleedingCost;
+			iteration++;
+		}
 
 		if (result) {
 			sendHealMessage(creature, targetCreature, HEAL_BLEEDING, 0, 1);
@@ -170,8 +182,14 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 	// Poison
 	if (targetCreature->isPoisoned() && healPoisonCost > 0 && totalCost + healPoisonCost < currentForce) {
-		bool result = targetCreature->healDot(CreatureState::POISONED, 250);
-		totalCost += healPoisonCost;
+		bool result = false;
+		int iteration = 1;
+
+		while (!result && (totalCost + healPoisonCost < currentForce) && (poisonHealIterations == -1 || iteration <= poisonHealIterations)) {
+			bool result = targetCreature->healDot(CreatureState::POISONED, 250);
+			totalCost += healPoisonCost;
+			iteration++;
+		}
 
 		if (result) {
 			sendHealMessage(creature, targetCreature, HEAL_POISON, 0, 1);
@@ -183,8 +201,14 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 	// Disease
 	if (targetCreature->isDiseased() && healDiseaseCost > 0 && totalCost + healDiseaseCost < currentForce) {
-		bool result = targetCreature->healDot(CreatureState::DISEASED, 200);
-		totalCost += healDiseaseCost;
+		bool result = false;
+		int iteration = 1;
+
+		while (!result && (totalCost + healDiseaseCost < currentForce) && (diseaseHealIterations == -1 || iteration <= diseaseHealIterations)) {
+			bool result = targetCreature->healDot(CreatureState::DISEASED, 200);
+			totalCost += healDiseaseCost;
+			iteration++;
+		}
 
 		if (result) {
 			sendHealMessage(creature, targetCreature, HEAL_DISEASE, 0, 1);
@@ -196,9 +220,15 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 	// Fire
 	if (targetCreature->isOnFire() && healFireCost > 0 && totalCost + healFireCost < currentForce) {
-		targetCreature->healDot(CreatureState::ONFIRE, 500);
-		totalCost += healFireCost;
-		healPerformed = true;
+		bool result = false;
+		int iteration = 1;
+
+		while (!result && (totalCost + healFireCost < currentForce) && (fireHealIterations == -1 || iteration <= fireHealIterations)) {
+			result = targetCreature->healDot(CreatureState::ONFIRE, 500);
+			totalCost += healFireCost;
+			healPerformed = true;
+			iteration++;
+		}
 	}
 
 	bool selfHeal = creature->getObjectID() == targetCreature->getObjectID();
