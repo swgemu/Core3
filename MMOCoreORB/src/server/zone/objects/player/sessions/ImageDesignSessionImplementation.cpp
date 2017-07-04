@@ -203,6 +203,12 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			for (int i = 0; i < colorAttributes->size(); ++i) {
 				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
 				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, strongReferenceTarget);
+
+				// TODO: Not sure why the Lekku "/shared_owner/index_color_pattern" customization variable on the hair object,
+				// isn't propogating to the player's customization variables on the female too, but we can fake it and fix the markings color
+				// "Fixes" Mantis [#3192]
+				if (entry->getKey() == "color_markings")
+					strongReferenceTarget.getForUpdate()->setCustomizationVariable("/shared_owner/index_color_pattern", entry->getValue(), true);
 			}
 		}
 
