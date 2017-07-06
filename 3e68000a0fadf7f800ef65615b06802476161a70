@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "fab9d9a7_8de6a543",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-06T10:19:20Z",
+      "side": 1,
+      "message": "Please begin all your commit messages with a bracketed tag denoting the type of patch it is ([fixed], [changed], [added], etc.). You can look at merged commits to see examples.",
+      "revId": "3e68000a0fadf7f800ef65615b06802476161a70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fab9d9a7_edd96184",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-06T10:19:20Z",
+      "side": 1,
+      "message": "Look at the imageDesignManager-\u003eupdateColorCustomization() call just above. Looking in that method, it queries the CustomizationData to determine which object to update: the hair or the creo. It doesn\u0027t update both.\n\nif (customData-\u003egetIsVarHairColor()) {\n\t\tobjectToUpdate \u003d hairObject;\n}\n\nI don\u0027t see a difference in the male and female data regarding isVarHairColor. Only the index_color_skin and index_color_pattern vars under the lekku group have that bool set to true. I\u0027ve never looked at how our image design code works before now so I may be completely wrong, but it doesn\u0027t look to me like the issue is in the data.\n\nHave you double checked the values that the client is sending?\n\nActually, I think I just found the issue. CustomizationDataMap is keyed by the customizationName and allows duplicate entries since there are duplicates in the datatable. Both the male and female twilek data have three separate customization names that are color_markings: one in the body group, one in the face group, and one in the lekku group.\n\nWhen ImageDesignManager::updateColorCustomization calls getCustomizationData, it passes the species/gender string and the customization name. The former gets the correct map and the latter is used to (presumably) get the correct data. The problem is, as we\u0027ve said, there\u0027s 3 of that same name in the map. There\u0027s no guarantee that we\u0027re actually getting the correct data since the group is not checked. Since only the color_markings customization in the lekku group has the isVarHairColor bool set to true, if a different group\u0027s data is returned, the wrong object will get updated with the customization variable. We need to fix that getter so that we ensure that we are getting the correct data from the correct group and it should resolve this issue.",
+      "revId": "3e68000a0fadf7f800ef65615b06802476161a70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fab9d9a7_ad8cc980",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp",
         "patchSetId": 1
@@ -13,6 +47,24 @@
       "writtenOn": "2017-07-06T07:21:19Z",
       "side": 1,
       "message": "I was going to ask if this needs to be `getForUpdate()` or if a simple .get() would work here?  I wasn\u0027t sure if the `setCustomizationVariable` is considered \"an update\" or not.",
+      "revId": "3e68000a0fadf7f800ef65615b06802476161a70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fab9d9a7_cddc9d77",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-06T10:19:20Z",
+      "side": 1,
+      "message": "You don\u0027t need either. You can call methods directly with a ManagedReference. The method called will determine whether the object is marked for update. In .idl, methods annotated with @dirty or @read do not mark the object as updated when called. Any other methods will. setCustomizationVariable is not marked @read or @dirty so the object will get updated when it\u0027s called.",
+      "parentUuid": "fab9d9a7_ad8cc980",
       "revId": "3e68000a0fadf7f800ef65615b06802476161a70",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
