@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab9d9a7_6deed124",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/yavin4_static_spawns.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-06T09:04:31Z",
+      "side": 1,
+      "message": "should be sentinelDefenderDropped, right?",
+      "range": {
+        "startLine": 135,
+        "startChar": 67,
+        "endLine": 135,
+        "endChar": 93
+      },
+      "revId": "a7ff5ad41bfa2ce9f325a39ccdf518396c4256f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fab9d9a7_0df3950b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/yavin4_static_spawns.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-06T09:04:31Z",
+      "side": 1,
+      "message": "sentinelDefenderDropped",
+      "range": {
+        "startLine": 158,
+        "startChar": 67,
+        "endLine": 158,
+        "endChar": 93
+      },
+      "revId": "a7ff5ad41bfa2ce9f325a39ccdf518396c4256f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
