@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab9d9a7_ad8cc980",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 3306
+      },
+      "writtenOn": "2017-07-06T07:21:19Z",
+      "side": 1,
+      "message": "I was going to ask if this needs to be `getForUpdate()` or if a simple .get() would work here?  I wasn\u0027t sure if the `setCustomizationVariable` is considered \"an update\" or not.",
+      "revId": "3e68000a0fadf7f800ef65615b06802476161a70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
