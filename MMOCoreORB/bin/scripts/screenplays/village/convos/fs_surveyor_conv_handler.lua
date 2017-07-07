@@ -55,12 +55,12 @@ function villageSurveyorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 	elseif (screenID == "sample_phase_2") then
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_MAIN)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_01)
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE2_SURVEYOR)
 		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
 	elseif (screenID == "sample_phase_3") then
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_MAIN)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_01)
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE3_SURVEYOR)
 		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
 	end
 

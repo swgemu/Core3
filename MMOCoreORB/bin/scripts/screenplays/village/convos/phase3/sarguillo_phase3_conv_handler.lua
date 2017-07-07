@@ -60,7 +60,7 @@ function villageSarguilloPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 			clonedConversation:addOption("@conversation/combat_quest_p3:s_f3864fa4", "work_with_friend")
 		end
 	elseif (screenID == "excellent") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE3_SARGUILLO)
 		FsCounterStrike:startQuest(pPlayer)
 	elseif (screenID == "here_is_remote") then
 		FsCounterStrike:giveCampRemote(pPlayer)
