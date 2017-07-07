@@ -33,7 +33,7 @@ function FsCrafting4:activateQuest(pPlayer)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01)
 	end
 
-	VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, "FsCrafting4")
+	VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE4_ENGINEER)
 end
 
 function FsCrafting4:removeCore(pPlayer)

@@ -39,7 +39,7 @@ function villageQuharekPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 	elseif (screenID == "need_people_to_help") then
 		clonedConversation:setDialogTextDI(VillageCommunityCrafting:getMinimumIngredients())
 	elseif (screenID == "talk_to_qtqc") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE3_QUHAREK)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
 		VillageCommunityCrafting:addToActiveCrafterList(pPlayer)

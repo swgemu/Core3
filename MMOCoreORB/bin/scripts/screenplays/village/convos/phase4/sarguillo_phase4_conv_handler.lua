@@ -36,10 +36,10 @@ function villageSarguilloPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 		
 		clonedConversation:addOption("@conversation/defend_the_village:s_64cad97c", "choose_neither")
 	elseif (screenID == "fantastic_accept_ranged" or screenID == "accept_quest_ranged") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE4_SARGUILLO_CP)
 		FsVillageDefense:acceptRangedQuest(pPlayer)
 	elseif (screenID == "fantastic_accept_melee" or screenID == "accept_quest_melee") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE4_SARGUILLO_ER)
 		FsVillageDefense:acceptMeleeQuest(pPlayer)
 	end
 
