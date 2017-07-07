@@ -150,22 +150,22 @@ function FsCounterStrike:spawnCamps()
 		local spawnedFirstTurret = false
 		local spawnedSecondTurret = false
 
-		for i = 1, #self.campLayout, 1 do
-			local objectData = self.campLayout[i]
+		for j = 1, #self.campLayout, 1 do
+			local objectData = self.campLayout[j]
 			local pObject = spawnSceneObject("dathomir", objectData[1], campLoc[2] + objectData[2], campLoc[3]  + objectData[3], campLoc[4] + objectData[4], 0, math.rad(objectData[5]))
 
 			if (pObject ~= nil) then
-				writeData(theaterID .. "theaterObject" .. i, SceneObject(pObject):getObjectID())
+				writeData(theaterID .. "theaterObject" .. j, SceneObject(pObject):getObjectID())
 
 				local objectTemplate = SceneObject(pObject):getTemplateObjectPath()
 
 				if (objectTemplate == "object/installation/battlefield/destructible/bfield_base_gate_impl.iff") then
 					if (spawnedFirstDoor) then
 						writeData(theaterID .. "campDoor2", SceneObject(pObject):getObjectID())
-						writeData(theaterID .. ":campDoor2Index", i)
+						writeData(theaterID .. ":campDoor2Index", j)
 					else
 						writeData(theaterID .. "campDoor1", SceneObject(pObject):getObjectID())
-						writeData(theaterID .. ":campDoor1Index", i)
+						writeData(theaterID .. ":campDoor1Index", j)
 						spawnedFirstDoor = true
 					end
 					createObserver(OBJECTDISABLED, "FsCsBaseControl", "notifyDestructibleDisabled", pObject)
@@ -173,14 +173,14 @@ function FsCounterStrike:spawnCamps()
 				elseif (objectTemplate == "object/installation/turret/turret_fs_cs.iff") then
 					if (spawnedFirstTurret and spawnedSecondTurret) then
 						writeData(theaterID .. "turret3", SceneObject(pObject):getObjectID())
-						writeData(theaterID .. ":turret3Index", i)
+						writeData(theaterID .. ":turret3Index", j)
 					elseif (spawnedFirstTurret) then
 						writeData(theaterID .. "turret2", SceneObject(pObject):getObjectID())
-						writeData(theaterID .. ":turret2Index", i)
+						writeData(theaterID .. ":turret2Index", j)
 						spawnedSecondTurret = true
 					else
 						writeData(theaterID .. "turret1", SceneObject(pObject):getObjectID())
-						writeData(theaterID .. ":turret1Index", i)
+						writeData(theaterID .. ":turret1Index", j)
 						spawnedFirstTurret = true
 					end
 				elseif (objectTemplate == "object/installation/battlefield/destructible/antenna_tatt_style_1.iff") then
@@ -188,16 +188,22 @@ function FsCounterStrike:spawnCamps()
 					createObserver(OBJECTDISABLED, "FsCsBaseControl", "notifyDestructibleDisabled", pObject)
 					TangibleObject(pObject):setOptionBit(INVULNERABLE)
 				elseif (objectTemplate == "object/static/structure/corellia/corl_tent_hut_s01.iff") then
-					writeData(theaterID .. ":tentIndex", i)
+					writeData(theaterID .. ":tentIndex", j)
 				end
 			end
 		end
 
-		createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
-		FsCsBaseControl:erectShield(pTheater)
+		local pMesh = createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
 
-		FsCsBaseControl:spawnLootMobGroups(pTheater)
-		FsCsBaseControl:spawnSurveillanceDroids(pTheater)
+		if (pMesh == nil) then
+			printLuaError("FsCounterStrike:spawnCamps() failed to create navmesh for camp " .. campLoc[1] .. ".")
+		else
+			writeData("FsCounterstrikeMesh:" .. i, SceneObject(pMesh):getObjectID())
+			FsCsBaseControl:erectShield(pTheater)
+
+			FsCsBaseControl:spawnLootMobGroups(pTheater)
+			FsCsBaseControl:spawnSurveillanceDroids(pTheater)
+		end
 	end
 end
 
@@ -212,6 +218,14 @@ function FsCounterStrike:despawnAllCamps()
 
 	for i = 1, #campTable, 1 do
 		self:despawnCamp(tonumber(campTable[i]))
+
+		local meshID = readData("FsCounterstrikeMesh:" .. i)
+
+		local pMesh = getSceneObject(meshID)
+
+		if (pMesh ~= nil) then
+			SceneObject(pMesh):destroyObjectFromWorld()
+		end
 	end
 end
 

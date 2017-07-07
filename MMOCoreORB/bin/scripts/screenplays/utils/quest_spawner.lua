@@ -196,12 +196,16 @@ function QuestSpawner:createSpawn(pSpawner)
 		if (maxPop > curPop) then
 			local spawnPoint
 
-			if (inNavMesh) then 
+			if (inNavMesh) then
 				spawnPoint = getSpawnPointInArea(zoneName, spawnerX, spawnerY, 10)
 			else
 				spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
 			end
-			
+
+			if (spawnPoint == nil) then
+				spawnPoint = { spawnerX, getTerrainHeight(pSpawner, spawnerX, spawnerY), spawnerY }
+			end
+
 			local pNpc = spawnMobile(zoneName, randSpawn[1], 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 			if (pNpc ~= nil) then
