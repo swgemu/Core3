@@ -47,7 +47,7 @@ function villageWhipPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "here_is_location") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE2_WHIP)
 		FsReflex2:setFetchCount(pPlayer, 0)
 		FsReflex2:startQuest(pPlayer)
 	elseif (screenID == "intro_quest_failed" or screenID == "beacons_not_reliable") then

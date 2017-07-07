@@ -115,7 +115,7 @@ function FsSad2:acceptNextTask(pPlayer)
 
 	if (not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASKS) and not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASKS)) then
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASKS)
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE3_DAGEERIN)
 
 		if (not SuiRadiationSensor:hasSensor(pPlayer)) then
 			SuiRadiationSensor:giveSensor(pPlayer)

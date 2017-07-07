@@ -50,7 +50,7 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 	local reachedAllWaypoints = readData(playerID .. ":patrolWaypointsReached") == 8
 
 	if (screenID == "all_eight_points") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE1_SARGUILLO)
 		QuestManager.setCurrentQuestID(pPlayer, QuestManager.quests.FS_PATROL_QUEST_1)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_START)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_1)

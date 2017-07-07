@@ -385,6 +385,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	end
 
 	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
+		sui.add("Manage Active Village Quest", "manageActiveVillageQuest" .. targetID)
 		sui.add("Reset Active Quest This Phase", "resetActiveQuest" .. targetID)
 	end
 
@@ -411,6 +412,33 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	if (PlayerObject(pGhost):getVisibility() > 0 or CreatureObject(pTarget):hasSkill("force_title_jedi_rank_02")) then
 		sui.add("Manage Visibility", "manageVisibility" .. targetID)
 	end
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui.manageActiveVillageQuest(pPlayer, targetID)
+	local pTarget = getSceneObject(targetID)
+
+	if (pTarget == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pTarget):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	if (not VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
+		CreatureObject(pPlayer):sendSystemMessage("Player does not have an active quest this phase.")
+		return
+	end
+	
+	local sui = SuiListBox.new("VillageGmSui", "mainCallback")
+	sui.setTitle("FRS Management")
+
+	sui.setPrompt(promptBuf)
+
 
 	sui.sendTo(pPlayer)
 end

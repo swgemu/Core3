@@ -29,7 +29,7 @@ function villageQuharekPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 
 	if (screenID == "get_to_work") then
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE1_QUHAREK)
 		FsCrafting1Goto1:start(pPlayer)
 	end
 
