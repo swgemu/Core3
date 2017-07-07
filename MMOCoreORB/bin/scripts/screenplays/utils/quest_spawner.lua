@@ -202,6 +202,12 @@ function QuestSpawner:createSpawn(pSpawner)
 				spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
 			end
 			
+			if (spawnPoint == nil) then
+				spawnPoint[1] = spawnerX
+				spawnPoint[2] = getTerrainHeight(pSpawner, spawnerX, spawnerY)
+				spawnPoint[3] = spawnerY
+			end
+			
 			local pNpc = spawnMobile(zoneName, randSpawn[1], 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 			if (pNpc ~= nil) then

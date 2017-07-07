@@ -511,7 +511,7 @@ function FsCsBaseControl:spawnDefenseWaves(pTheater)
 		end
 
 		for i = 1, #waveData, 1 do
-			local spawnPoint = getSpawnPoint("dathomir", theaterX, theaterY, 50, 100, true)
+			local spawnPoint = getSpawnPoint("dathomir", theaterX, theaterY, 75, 110, true)
 			QuestSpawner:createQuestSpawner("FsCsBaseControl", waveData[i][1], waveData[i][2], spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, "dathomir", pTheater)
 		end
 	end
