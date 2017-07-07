@@ -22,6 +22,23 @@ VillageJediManagerCommon = ScreenPlay:new {
 	}
 }
 
+VILLAGE_PHASE1_SARGUILLO = 1
+VILLAGE_PHASE1_QUHAREK = 2
+VILLAGE_PHASE1_SIVARRA = 3
+VILLAGE_PHASE1_WHIP = 4
+VILLAGE_PHASE2_DAGEERIN = 5
+VILLAGE_PHASE2_QUHAREK = 6
+VILLAGE_PHASE2_WHIP = 7
+VILLAGE_PHASE2_SURVEYOR = 8
+VILLAGE_PHASE3_DAGEERIN = 9
+VILLAGE_PHASE3_QUHAREK = 10
+VILLAGE_PHASE3_SARGUILLO = 11
+VILLAGE_PHASE3_SURVEYOR = 12
+VILLAGE_PHASE4_ENGINEER = 13
+VILLAGE_PHASE4_SARGUILLO_CP = 14
+VILLAGE_PHASE4_SARGUILLO_ER = 15
+VILLAGE_PHASE4_SIVARRA = 16
+
 VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING = "VillageJediProgression"
 VILLAGE_JEDI_PROGRESSION_GLOWING = 1
 VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL = 2
@@ -114,7 +131,7 @@ function VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
 	return phaseID == lastActiveQuest
 end
 
-function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, questName)
+function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, questId)
 	if (pPlayer == nil) then
 		return
 	end
@@ -124,26 +141,32 @@ function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, questName)
 	VillageJediManagerCommon.addToActiveQuestList(pPlayer)
 	setQuestStatus(playerID .. ":village:lastActiveQuest", phaseID)
 
-	if (questName ~= nil and questName ~= "") then
-		setQuestStatus(playerID .. ":village:activeQuestName", questName)
+	if (questId ~= nil and questId ~= "") then
+		setQuestStatus(playerID .. ":village:activeQuestName", questId)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:quest_accepted")
 end
 
-function VillageJediManagerCommon.getActiveQuestNameThisPhase(pPlayer)
+function VillageJediManagerCommon.getActiveQuestIdThisPhase(pPlayer)
 	if (pPlayer == nil) then
-		return ""
+		return -1
 	end
 
-	local questName = getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:activeQuestName")
-
-	if (questName ~= "" and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
-		removeQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:activeQuestName")
-		return ""
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local questId = getQuestStatus(playerID .. ":village:activeQuestName")
+	
+	if (not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		removeQuestStatus(playerID .. ":village:activeQuestName")
+		return -1
+	end
+	
+	if (questId == "") then
+		printLuaError("VillageJediManagerCommon.getActiveQuestIdThisPhase unable to grab active questid for player")
+		return -1
 	end
 
-	return questName
+	return tonumber(questId)
 end
 
 function VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)

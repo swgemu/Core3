@@ -29,7 +29,7 @@ function villageWhipPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "good_place_to_start") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE1_WHIP)
 		FsReflex1:setRescueCount(pPlayer, 0)
 		FsReflex1:startQuest(pPlayer)
 	elseif (screenID == "intro_quest_failed" or screenID == "intro_quest_inprogress") then
