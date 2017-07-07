@@ -217,8 +217,6 @@ function FsCounterStrike:despawnAllCamps()
 	local campTable = HelperFuncs:splitString(campList, ",")
 
 	for i = 1, #campTable, 1 do
-		self:despawnCamp(tonumber(campTable[i]))
-
 		local meshID = readData("FsCounterstrikeMesh:" .. i)
 
 		local pMesh = getSceneObject(meshID)
@@ -226,6 +224,8 @@ function FsCounterStrike:despawnAllCamps()
 		if (pMesh ~= nil) then
 			SceneObject(pMesh):destroyObjectFromWorld()
 		end
+		
+		self:despawnCamp(tonumber(campTable[i]))
 	end
 end
 
