@@ -193,11 +193,17 @@ function FsCounterStrike:spawnCamps()
 			end
 		end
 
-		createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
-		FsCsBaseControl:erectShield(pTheater)
+		local pMesh = createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
 
-		FsCsBaseControl:spawnLootMobGroups(pTheater)
-		FsCsBaseControl:spawnSurveillanceDroids(pTheater)
+		if (pMesh == nil) then
+			printLuaError("FsCounterStrike:spawnCamps() failed to create navmesh for camp " .. campLoc[1] .. ".")
+		else
+			writeData("FsCounterstrikeMesh:" .. i, SceneObject(pMesh):getObjectID())
+			FsCsBaseControl:erectShield(pTheater)
+
+			FsCsBaseControl:spawnLootMobGroups(pTheater)
+			FsCsBaseControl:spawnSurveillanceDroids(pTheater)
+		end
 	end
 end
 
@@ -212,6 +218,14 @@ function FsCounterStrike:despawnAllCamps()
 
 	for i = 1, #campTable, 1 do
 		self:despawnCamp(tonumber(campTable[i]))
+
+		local meshID = readData("FsCounterstrikeMesh:" .. i)
+
+		local pMesh = getSceneObject(meshID)
+
+		if (pMesh ~= nil) then
+			SceneObject(pMesh):destroyObjectFromWorld()
+		end
 	end
 end
 
