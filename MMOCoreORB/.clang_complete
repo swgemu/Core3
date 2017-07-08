@@ -9,8 +9,8 @@
 -I/usr/include/mysql
 -I/usr/local/BerkeleyDB.5.0/include
 -I/usr/include/db5.0
--Iutils/gtest-1.6.0/include
--Iutils/gmock-1.6.0/include
+-I/usr/include/gtest
+-I/usr/include/gmock
 -Isrc/autogen
 -DHAVE_CONFIG_H
 -DDEFAULT_DYNAMIC_CAST

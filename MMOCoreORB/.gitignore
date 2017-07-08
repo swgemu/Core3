@@ -22,7 +22,6 @@ bin/*.log
 bin/*.xml
 bin/*sh
 bin/*out
-*test*
 *.sh
 build_temp
 *_includes
@@ -39,7 +38,6 @@ src/server/status/Makefile
 src/server/web/Makefile
 src/server/zone/Makefile
 tags
-utils/gtest-1.6.0/*
 ../*
 bin/conf/*
 .*.swp
