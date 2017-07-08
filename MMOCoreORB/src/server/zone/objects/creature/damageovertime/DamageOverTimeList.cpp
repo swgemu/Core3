@@ -234,7 +234,7 @@ uint8 DamageOverTimeList::getRandomPool(uint64 dotType) {
 	return pool;
 }
 
-bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float reduction) {
+bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float reduction, bool sendMsg) {
 	Locker locker(&guard);
 
 	if (!hasDot())
@@ -280,7 +280,8 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 		return true;
 	}
 
-	sendDecreaseMessage(victim, dotType);
+	if (sendMsg)
+		sendDecreaseMessage(victim, dotType);
 
 	return false;
 }

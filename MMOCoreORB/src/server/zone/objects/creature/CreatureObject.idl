@@ -747,8 +747,8 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@preLocked
-	public boolean healDot(unsigned long dotType, int reduction) {
-		return damageOverTimeList.healState(this, dotType, reduction);
+	public boolean healDot(unsigned long dotType, int reduction, boolean sendMsg = true) {
+		return damageOverTimeList.healState(this, dotType, reduction, sendMsg);
 	}
 
 	@preLocked
