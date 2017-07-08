@@ -33,7 +33,7 @@ public:
 		return &dataMap;
 	}
 
-	CustomizationData* getCustomizationData(const String& customizationName) {
+	Vector<CustomizationData>* getCustomizationData(const String& customizationName) {
 		return &dataMap.get(customizationName);
 	}
 
