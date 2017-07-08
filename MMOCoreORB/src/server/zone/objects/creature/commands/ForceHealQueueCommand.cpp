@@ -260,7 +260,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 }
 
 void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureObject* target, int healType, int healSpec, int amount) const {
-	if (creature == NULL || target == NULL || amount <= 0)
+	if (creature == NULL || target == NULL || amount < 0)
 		return;
 
 	uint64 playerID = creature->getObjectID();
