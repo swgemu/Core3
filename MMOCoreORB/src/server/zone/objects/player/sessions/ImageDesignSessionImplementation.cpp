@@ -202,7 +202,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 				xpGranted = 100;
 			for (int i = 0; i < colorAttributes->size(); ++i) {
 				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, strongReferenceTarget);
+				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), type == 1, hairObject, strongReferenceTarget);
 			}
 		}
 
