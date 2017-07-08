@@ -64,14 +64,16 @@ build: idl gtest
 unittest: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
 unittest: build
 
-rebuild: clean build
+rebuild: clean config build
 
 idl:
 	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 
 gtest:
-	cd utils/gtest-1.6.0 && make all
+	cd utils/gtest && g++ -I/usr/src/googletest/googlemock -c /usr/src/googletest/googlemock/src/gmock-all.cc
+	cd utils/gtest && g++ -I/usr/src/googletest/googletest -c /usr/src/googletest/googletest/src/gtest-all.cc
+	cd utils/gtest && ar -rv libgmock.a gmock-all.o gtest-all.o
 
 config:
 	aclocal
@@ -83,7 +85,7 @@ config:
 
 clean: cleanidl
 	cd build/unix && make clean
-	cd utils/gtest-1.6.0 && make clean
+	cd utils/gtest && rm *.o && rm *.a
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done

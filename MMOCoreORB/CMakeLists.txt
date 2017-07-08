@@ -49,9 +49,9 @@ link_directories(${ENGINE3_LIBRARY})
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
-include_directories(${CMAKE_SOURCE_DIR}/utils/gtest-1.6.0/include)
-include_directories(${CMAKE_SOURCE_DIR}/utils/gmock-1.6.0/include)
-link_directories(${CMAKE_SOURCE_DIR}/utils/gtest-1.6.0/lib)
+include_directories(/usr/include/gtest)
+include_directories(/usr/include/gmock)
+link_directories(${CMAKE_SOURCE_DIR}/utils/gtest)
 
 # Define build flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11")
