@@ -235,7 +235,7 @@ void JukeboxImplementation::changeMusic(const String& song) {
 #endif
 
 	for (int i = 0; i < closeObjects.size(); i++) {
-		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+		SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i).get());
 		if (targetObject->isPlayerCreature()) {
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 			targetObject->sendMessage(pack);

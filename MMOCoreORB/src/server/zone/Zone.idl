@@ -15,6 +15,7 @@ include server.zone.InRangeObjectsVector;
 include server.zone.ActiveAreasVector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.gcw.GCWManager;
@@ -150,7 +151,7 @@ class Zone extends SceneObject {
 
 	public native void updateCityRegions();
 
-	public native void sendMapLocationsTo(SceneObject player);
+	public native void sendMapLocationsTo(CreatureObject player);
 
 	@arg1preLocked
 	@preLocked

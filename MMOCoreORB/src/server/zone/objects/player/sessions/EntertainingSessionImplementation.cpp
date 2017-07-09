@@ -1038,7 +1038,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 	else if (playingMusic && instrument)
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
 
-	if (player->isPlayerCreature()) {
+	if (player->isPlayerCreature() && performance != NULL) {
 		if (oldFlourishXp > flourishXp && (isDancing() || isPlayingMusic())) {
 			flourishXp = oldFlourishXp;
 
@@ -1121,10 +1121,12 @@ Vector<uint64> EntertainingSessionImplementation::getAudience() {
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
 	if (dancing) {
 		patrons = &watchers;
-	}
-	else if (playingMusic) {
+	} else if (playingMusic) {
 		patrons = &listeners;
 	}
+
+	if (patrons == NULL)
+		return audienceList;
 
 	for (int i = 0; i < patrons->size(); i++) {
 		ManagedReference<CreatureObject*> patron = patrons->elementAt(i).getKey();
