@@ -21,7 +21,7 @@ public:
 	MOCK_METHOD1(addArgument, void(int64 number));
 	MOCK_METHOD1(addArgument, void(uint64 number));
 	MOCK_METHOD1(addArgument, void(bool boolean));
-	MOCK_METHOD1(addArgument, void(String& str));
+	MOCK_METHOD1(addArgument, void(const String& str));
 	MOCK_METHOD1(addArgument, void(const char* str));
 	MOCK_METHOD1(addArgument, void(void* pointer));
 
@@ -32,7 +32,7 @@ public:
 	virtual void operator<<(int64 number) { addArgument(number); }
 	virtual void operator<<(uint64 number) { addArgument(number); }
 	virtual void operator<<(bool boolean) { addArgument(boolean); }
-	virtual void operator<<(String& str) { addArgument(str); }
+	virtual void operator<<(const String& str) { addArgument(str); }
 	virtual void operator<<(const char* str) { addArgument(str); }
 	virtual void operator<<(void* pointer) { addArgument(pointer); }
 };

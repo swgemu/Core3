@@ -278,7 +278,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 						}
 					}
 				}
-			} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
+			} else if (sceneObject->isVehicleObject() || sceneObject->isMount()) {
 				Reference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
 
 				if (rider != NULL)
@@ -337,7 +337,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRange
 						}
 					}
 				}
-			} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
+			} else if (sceneObject->isVehicleObject() || sceneObject->isMount()) {
 				Reference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
 
 				if (rider != NULL)
@@ -779,7 +779,7 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	}
 }
 
-void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
+void ZoneImplementation::sendMapLocationsTo(CreatureObject* player) {
 	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, mapLocations, player);
 	player->sendMessage(gmlr);
 }

@@ -150,7 +150,7 @@ class Zone extends SceneObject {
 
 	public native void updateCityRegions();
 
-	public native void sendMapLocationsTo(SceneObject player);
+	public native void sendMapLocationsTo(CreatureObject player);
 
 	@arg1preLocked
 	@preLocked

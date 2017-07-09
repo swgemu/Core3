@@ -158,7 +158,6 @@ unsigned char* RecastTileBuilder::build(float x, float y, const AABB& lastTileBo
 	// Max tiles and max polys affect how the tile IDs are caculated.
 	// There are 22 bits available for identifying a tile and a polygon.
 	int tileBits = rcMin((int) ilog2(nextPow2(tw * th)), 14);
-	if (tileBits > 14) tileBits = 14;
 	int polyBits = 22 - tileBits;
 	m_maxTiles = 1<<tileBits;
 	m_maxPolysPerTile = 1<<polyBits;
