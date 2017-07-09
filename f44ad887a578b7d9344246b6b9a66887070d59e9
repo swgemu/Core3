@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab9d9a7_4da18da8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-09T03:19:53Z",
+      "side": 1,
+      "message": "You\u0027re re-declaring result here and in the disease loop below",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 7
+      },
+      "revId": "f44ad887a578b7d9344246b6b9a66887070d59e9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
