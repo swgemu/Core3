@@ -18,23 +18,11 @@ ImageDesignManager::ImageDesignManager() {
 	loadCustomizationData();
 }
 
-void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo) {
-	if (creo == NULL)
+void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, CustomizationData* customData, float value, CreatureObject* creo) {
+	if (creo == NULL || value < 0 || value > 1)
 		return;
-
-	if (value < 0 || value > 1)
-		return;
-
-	String speciesGender = getSpeciesGenderString(creo);
 
 	ManagedReference<CreatureObject*> creatureObject = creo;
-
-	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
-
-	if (customData == NULL) {
-		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
-		return;
-	}
 
 	String variables = customData->getVariables();
 	String type = customData->getType();
@@ -119,7 +107,26 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 			}
 		}
 	}
+}
 
+void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo) {
+	if (creo == NULL || value < 0 || value > 1)
+		return;
+
+	String speciesGender = getSpeciesGenderString(creo);
+
+	Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
+
+	if (data == NULL) {
+		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
+		return;
+	}
+
+	for (int i = 0; i < data->size(); ++i) {
+		CustomizationData* customData = &data->get(i);
+
+		updateCustomization(imageDesigner, customData, value, creo);
+	}
 }
 
 void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano, int skillLevel) {
@@ -169,20 +176,11 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 	}
 }
 
-void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
+void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, CustomizationData* customData, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
 	if (value > 255 || creo == NULL)
 		return;
 
-	String speciesGender = getSpeciesGenderString(creo);
-
 	ManagedReference<CreatureObject*> creatureObject = creo;
-
-	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
-
-	if (customData == NULL) {
-		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
-		return;
-	}
 
 	String skillMod = customData->getImageDesignSkillMod();
 
@@ -215,6 +213,25 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	int skillLevel = getSkillLevel(imageDesigner, skillMod);
 
 	updateColorVariable(fullVariables, value, objectToUpdate, skillLevel);
+}
+
+void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
+	if (value > 255 || creo == NULL)
+		return;
+
+	String speciesGender = getSpeciesGenderString(creo);
+
+	Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
+
+	if (data == NULL) {
+		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
+		return;
+	}
+
+	for (int i = 0; i < data->size(); ++i) {
+		CustomizationData* customData = &data->get(i);
+		updateColorCustomization(imageDesigner, customData, value, hairObject, creo);
+	}
 }
 
 int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const String& skillMod) {
@@ -291,8 +308,12 @@ void ImageDesignManager::loadCustomizationData() {
 		customizationData.setMinScale(tmpl->getMinScale());
 		customizationData.setMaxScale(tmpl->getMaxScale());
 
-		dataMap->put(customizationData.getCustomizationName(), customizationData);
+		if (!dataMap->contains(customizationData.getCustomizationName()))
+			dataMap->put(customizationData.getCustomizationName(), Vector<CustomizationData>());
 
+		Vector<CustomizationData> &records = dataMap->get(customizationData.getCustomizationName());
+
+		records.add(customizationData);
 	}
 
 	//Done with the stream, so delete it.
@@ -303,7 +324,7 @@ void ImageDesignManager::loadCustomizationData() {
 
 }
 
-CustomizationData* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
+Vector<CustomizationData>* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
 	TemplateManager* templateManager = TemplateManager::instance();
 
 	uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
@@ -313,12 +334,7 @@ CustomizationData* ImageDesignManager::getCustomizationData(const String& specie
 	if (tmpl == NULL)
 		return NULL;
 
-	CustomizationData* customization = tmpl->getCustomizationData(customizationName);
-
-	if (customization == NULL)
-		return NULL;
-
-	return customization;
+	return tmpl->getCustomizationData(customizationName);
 }
 
 String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
