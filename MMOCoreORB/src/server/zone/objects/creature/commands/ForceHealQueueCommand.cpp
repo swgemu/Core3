@@ -155,10 +155,8 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 			}
 		}
 
-		if (healedStates == totalStates)
+		if (healedStates > 0 && healedStates == totalStates)
 			sendHealMessage(creature, targetCreature, HEAL_STATES, 0, 0);
-		else
-			sendHealMessage(creature, targetCreature, HEAL_STATES, 0, 1);
 	}
 
 	// Bleeding
