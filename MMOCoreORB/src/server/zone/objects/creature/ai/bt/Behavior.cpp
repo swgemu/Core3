@@ -29,7 +29,7 @@ void Behavior::start() {
 	result = AiMap::RUNNING;
 
 	if (interface != NULL) {
-		Reference<AiAgent*> strongReference = agent.get();
+		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
 
 		interface->start(strongReference);
 	}
@@ -37,14 +37,14 @@ void Behavior::start() {
 
 void Behavior::end() {
 	if (interface != NULL) {
-		Reference<AiAgent*> strongReference = agent.get();
+		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
 
 		interface->end(strongReference);
 	}
 }
 
 void Behavior::doAction(bool directlyExecuted) {
-	Reference<AiAgent*> agent = this->agent.get();
+	AiAgent* agent = this->agent.getReferenceUnsafeStaticCast();
 
 	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
 		agent->setFollowObject(NULL);
@@ -59,7 +59,7 @@ void Behavior::doAction(bool directlyExecuted) {
 	else if (!this->checkConditions())
 		endWithFailure();
 
-	agent = this->agent.get();
+	agent = this->agent.getReferenceUnsafeStaticCast();
 
 	if (finished()) {
 		if (parent == NULL) {

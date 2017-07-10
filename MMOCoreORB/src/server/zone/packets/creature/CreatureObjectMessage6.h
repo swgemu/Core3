@@ -42,42 +42,6 @@ public:
 	}
 
 	void insertEquipmentList(CreatureObject* creo) {
-		/*VectorMap<String, ManagedReference<SceneObject*> >* equipmentList = creo->getSlottedObjects();
-
-		SortedVector<ManagedReference<SceneObject*> > uniqueObjects;
-		uniqueObjects.setNoDuplicateInsertPlan();
-
-		for (int i = 0; i < equipmentList->size(); ++i) {
-			SceneObject* object = equipmentList->get(i);
-
-			String arrangement = equipmentList->elementAt(i).getKey();
-
-			if (arrangement == "mission_bag" || arrangement == "ghost" || arrangement == "bank")
-				continue;
-
-			uniqueObjects.put(object);
-		}
-
-		int size = uniqueObjects.size();
-
-		insertInt(size);
-		insertInt(size);
-
-		for (int i = 0; i < size; ++i) {
-			SceneObject* object = uniqueObjects.get(i);
-
-			String custString;
-
-			if (object->isTangibleObject()) {
-				cast<TangibleObject*>(object)->getCustomizationString(custString);
-			}
-
-			insertAscii(custString);
-			insertInt(object->getContainmentType()); //Equipped
-			insertLong(object->getObjectID()); //object id
-			insertInt(object->getClientObjectCRC()); //CRC of the object
-		}*/
-
 		DeltaVector<ManagedReference<TangibleObject*> >* wearables = creo->getWearablesDeltaVector();
 		wearables->insertToMessage(this);
 

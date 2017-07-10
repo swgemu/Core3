@@ -333,7 +333,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	CreatureObject* playerCreature = cast<CreatureObject*> (player);
+	CreatureObject* playerCreature = static_cast<CreatureObject*> (player);
 
 	sendPvpStatusTo(playerCreature);
 }
