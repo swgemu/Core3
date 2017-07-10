@@ -106,7 +106,10 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 	client->info("please enter character to login... -1 to create a new one", true);
 
 	char characterID[32];
-	fgets(characterID, sizeof(characterID), stdin);
+	auto res = fgets(characterID, sizeof(characterID), stdin);
+
+	if (!res)
+		return;
 
 	String selected = characterID;
 	selected = selected.replaceFirst("\n", "");

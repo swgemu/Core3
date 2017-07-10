@@ -101,7 +101,10 @@ void ClientCore::handleCommands() {
 			System::out << "> ";
 
 			char line[256];
-			fgets(line, sizeof(line), stdin);
+			auto res = fgets(line, sizeof(line), stdin);
+
+			if (!res)
+				continue;
 
 			command = line;
 			command = command.replaceFirst("\n", "");

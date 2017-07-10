@@ -110,7 +110,7 @@ public:
 		return point.getZ();
 	}
 
-	inline String toString() {
+	inline String toString() const {
 		StringBuffer sb;
 		sb << point.toString();
 		sb << " in " << String::valueOf(cell != NULL ? cell->getCellNumber() : 0) << ".";

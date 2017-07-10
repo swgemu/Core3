@@ -24,7 +24,7 @@ public:
 		insertStringId(stringId);
 
 		if (tano->isPlayerCreature()) {
-			ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(tano))->getPlayerObject();
+			Reference<PlayerObject*> ghost = (static_cast<CreatureObject*>(tano))->getPlayerObject();
 
 			if (ghost != NULL && ghost->hasGodMode()) {
 				UnicodeString name = tano->getCustomObjectName();

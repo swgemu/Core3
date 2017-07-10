@@ -1593,10 +1593,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	if (walk && !(isRetreating() || isFleeing()))
 		newSpeed = walkSpeed;
 
-	if(hasState(CreatureState::IMMOBILIZED))
+	if (hasState(CreatureState::IMMOBILIZED))
 		newSpeed = newSpeed / 2.f;
 
-	if(hasState(CreatureState::FROZEN))
+	if (hasState(CreatureState::FROZEN))
 		newSpeed = 0.01f;
 
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
@@ -1607,6 +1607,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	float maxDist = maxSpeed;
 
 	bool found = false;
+
+	auto thisWorldPos = getWorldPosition();
 
 #ifdef SHOW_WALK_PATH
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
@@ -1691,7 +1693,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		 * STEP 2: Calculate distance to travel
 		 */
 
-		float targetDistance = targetPosition.getWorldPosition().distanceTo(getWorldPosition());
+		float targetDistance = targetPosition.getWorldPosition().distanceTo(thisWorldPos);
 
 		if (targetDistance > maxDistance)
 			// this is the actual "distance we can travel" calculation. We only want to
@@ -1718,11 +1720,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			nextPosition = path->get(1);
 			found = true;
 
-			float dist = fabs(nextPosition.getWorldPosition().distanceTo(getWorldPosition()));
+			float dist = fabs(nextPosition.getWorldPosition().distanceTo(thisWorldPos));
 			if (dist > maxDist && dist > 0) {
 				// okay, we can't go that far in one update (since we've capped update times)
 				// calculate the distance we can go and set nextPosition
-				Vector3 thisPos = getWorldPosition();
+				Vector3 thisPos = thisWorldPos;
 				if (nextPosition.getCell() != NULL)
 					thisPos = PathFinderManager::transformToModelSpace(thisPos, nextPosition.getCell()->getParent().get());
 
@@ -1745,7 +1747,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 #ifdef SHOW_WALK_PATH
 		for (int i = 1; i < path->size(); ++i) { // i = 0 is our position
-			WorldCoordinates nextPositionDebug = path->get(i);
+			const WorldCoordinates& nextPositionDebug = path->get(i);
 
 			Vector3 nextWorldPos = nextPositionDebug.getWorldPosition();
 
@@ -1824,7 +1826,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		nextStepPosition.setReached(false);
 
-		Vector3 thisWorldPos = getWorldPosition();
 		Vector3 nextWorldPos = nextStepPosition.getWorldPosition();
 
 		float directionangle = atan2(nextWorldPos.getX() - thisWorldPos.getX(), nextWorldPos.getY() - thisWorldPos.getY());

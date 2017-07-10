@@ -38,7 +38,7 @@ void CompositeBehavior::start() {
 }
 
 void CompositeBehavior::doAction(bool directlyExecuted) {
-	Reference<AiAgent*> agent = this->agent.get();
+	AiAgent* agent = this->agent.getReferenceUnsafeStaticCast();
 
 	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
 		agent->setFollowObject(NULL);

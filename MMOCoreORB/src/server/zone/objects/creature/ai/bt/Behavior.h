@@ -92,7 +92,7 @@ public:
 	 */
 	virtual bool checkConditions() {
 		if (interface != NULL) {
-			Reference<AiAgent*> strongReference = agent.get();
+			auto strongReference = agent.getReferenceUnsafeStaticCast();
 
 			if (strongReference != NULL) {
 				return interface->checkConditions(strongReference);
@@ -125,7 +125,7 @@ public:
 	virtual void doAction(bool directlyExecuted = false);
 
 	virtual int interrupt(SceneObject* source, int64 msg) {
-		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast(); // our agent should always be in ram
+		auto strongReference = agent.getReferenceUnsafeStaticCast(); // our agent should always be in ram
 
 		return interface->interrupt(strongReference, source, msg);
 	}
@@ -135,7 +135,7 @@ public:
 	 */
 	virtual bool doAwarenessCheck(SceneObject* target) {
 		if (interface != NULL) {
-			Reference<AiAgent*> strongReference = agent.get();
+			auto strongReference = agent.getReferenceUnsafeStaticCast();
 
 			return interface->doAwarenessCheck(strongReference, target);
 		}
