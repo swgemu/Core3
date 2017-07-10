@@ -12,9 +12,9 @@ import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 include terrain.manager.TerrainManager;
-include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
+include server.zone.objects.mission.PlayerBounty;
 import server.zone.managers.creature.LairSpawn;
 import system.thread.Mutex;
 include system.util.Vector;
@@ -29,135 +29,141 @@ class MissionManager extends Observer implements Logger {
 
 	@dereferenced
 	protected Vector<string> craftingMissionItems;
-	
+
 	@dereferenced
 	protected Vector<string> bhTargetZones;
-	
+
 	@dereferenced
 	@rawTemplate(value = "unsigned int, Vector<String>")
 	protected VectorMap bhTargetsAtMissionLevel;
-	
+
 	@dereferenced
-	protected VectorMap<unsigned long, BountyTargetListElement> playerBountyList;
-	
+	protected VectorMap<unsigned long, PlayerBounty> playerBountyList;
+
 	@dereferenced
 	protected transient Mutex playerBountyListMutex;
-	
+
 	protected boolean enableFactionalCraftingMissions;
-	
+
 	protected boolean enableFactionalReconMissions;
-	
+
 	protected boolean enableFactionalEntertainerMissions;
-	
+
 	protected boolean enableSameAccountBountyMissions;
-	
+
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
-	
+
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
-		
+
 		playerBountyList.setNoDuplicateInsertPlan();
 
 		enableFactionalCraftingMissions = false;
 		enableFactionalReconMissions = false;
 		enableFactionalEntertainerMissions = false;
 		enableSameAccountBountyMissions = false;
-		
+
 		Logger.setLoggingName("MissionManager");
-		
+
 		missionNpcSpawnMap.loadSpawnPointsFromLua();
-		
+
 		loadLuaSettings();
+		loadPlayerBounties();
 	}
-	
-	public native void loadLuaSettings();
-	
+
+	private native void loadLuaSettings();
+	private native void loadPlayerBounties();
+
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, CreatureObject player);
 	public native void handleMissionAbort(MissionObject mission, CreatureObject player);
-	
+
 	public native void removeMission(MissionObject mission, CreatureObject player);
-	
-	public native void populateMissionList(MissionTerminal missionTerminal, CreatureObject player, int counter);
 
-	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final unsigned int faction);
+	private native void populateMissionList(MissionTerminal missionTerminal, CreatureObject player, int counter);
 
-	public native void randomizeGenericBountyMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericDestroyMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final unsigned int faction, final unsigned int missionType);
-	public native void randomizeGenericHuntingMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	public native void randomizeGenericSurveyMission(CreatureObject player, MissionObject mission, final unsigned int faction);
-	
-	public native void randomizeSurveyMission(CreatureObject player, MissionObject mission);
-	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
-	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
-	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
-	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
-	
-	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
-	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
-	public native void randomizeImperialCraftingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeImperialReconMission(CreatureObject player, MissionObject mission);
-	
-	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
-	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
-	public native void randomizeRebelCraftingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeRebelReconMission(CreatureObject player, MissionObject mission);
-	
+	private native void randomizeGeneralTerminalMissions(CreatureObject player, int counter, boolean slicer);
+	private native void randomizeArtisanTerminalMissions(CreatureObject player, int counter, boolean slicer);
+	private native void randomizeEntertainerTerminalMissions(CreatureObject player, int counter, boolean slicer);
+	private native void randomizeScoutTerminalMissions(CreatureObject player, int counter, boolean slicer);
+	private native void randomizeBountyTerminalMissions(CreatureObject player, int counter);
+	private native void randomizeFactionTerminalMissions(CreatureObject player, int counter, boolean slicer, final unsigned int faction);
+
+	private native void randomizeGenericBountyMission(CreatureObject player, MissionObject mission, final unsigned int faction, Vector<PlayerBounty> potentialTargets);
+	private native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+	private native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+	private native void randomizeGenericDestroyMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+	private native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final unsigned int faction, final unsigned int missionType);
+	private native void randomizeGenericHuntingMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+	private native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+	private native void randomizeGenericSurveyMission(CreatureObject player, MissionObject mission, final unsigned int faction);
+
+	private native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final unsigned int faction);
+
 	private native void generateRandomFactionalDestroyMissionDescription(CreatureObject player, MissionObject mission, final string faction);
-	
-	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
-	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+
+	private native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	private native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 
 	@local
 	public native NpcSpawnPoint getFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
-	
+
 	@local
-	public native LairSpawn getRandomLairSpawn(CreatureObject player, final unsigned int faction, unsigned int type);
+	private native LairSpawn getRandomLairSpawn(CreatureObject player, final unsigned int faction, unsigned int type);
+
 	@local
 	@dereferenced
 	public native Vector3 getRandomBountyTargetPosition(CreatureObject player, final string planet);
+
 	@reference
 	public native MissionObject getBountyHunterMission(CreatureObject player);
-		
-	public native string getDeliveryMissionFileName(final unsigned int faction);
-	public native int getDeliverMissionNumberOfMissions(final unsigned int faction);
-	public native int getDeliverMissionSpawnType(final unsigned int faction);
-	
+
+	private native string getDeliveryMissionFileName(final unsigned int faction);
+	private native int getDeliverMissionNumberOfMissions(final unsigned int faction);
+	private native int getDeliverMissionSpawnType(final unsigned int faction);
+
 	public native void addPlayerToBountyList(unsigned long targetId, int reward);
 	public native void removePlayerFromBountyList(unsigned long targetId);
 	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
-	public native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
-	public native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
-	@local
-	public native BountyTargetListElement getRandomPlayerBounty(CreatureObject player);
+	public native void updatePlayerBountyOnlineStatus(unsigned long targetId, boolean status);
 	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
 	public native void failPlayerBountyMission(unsigned long bountyHunter);
 
 	@local
+	@dereferenced
+	private native Vector<PlayerBounty> getPotentialPlayerBountyTargets(CreatureObject player);
+	private native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+	private native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+
+	@dirty
+	public boolean hasPlayerBountyTargetInList(unsigned long targetId) {
+		return playerBountyList.contains(targetId);
+	}
+
+	@dirty
+	public boolean hasBountyHunterInPlayerBounty(unsigned long targetId, unsigned long bhId) {
+		return playerBountyList.contains(targetId) && playerBountyList.get(targetId).hasBountyHunter(bhId);
+	}
+
+	@local
 	public native Vector<unsigned long> getHuntersHuntingTarget(unsigned long targetId);
-	
+
 	@local
 	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
 	@local
 	public native void freeMissionNpc(AiAgent npc);
 	@local
 	public native void despawnMissionNpc(NpcSpawnPoint npc);
-	
+
 	public native void deactivateMissions(CreatureObject player);
 	public native string getRandomBountyPlanet();
 }

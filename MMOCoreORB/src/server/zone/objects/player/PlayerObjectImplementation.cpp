@@ -156,7 +156,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	lastValidatedPosition.update(getParent().get());
 
 	clientLastMovementStamp = 0;
-
 }
 
 void PlayerObjectImplementation::unloadSpawnedChildren() {
@@ -1218,8 +1217,12 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 
 void PlayerObjectImplementation::notifyOnline() {
 	ManagedReference<SceneObject*> parent = getParent().get();
-	CreatureObject* playerCreature = cast<CreatureObject*>( parent.get());
-	if (playerCreature == NULL || parent == NULL)
+
+	if (parent == NULL)
+		return;
+
+	CreatureObject* playerCreature = parent->asCreatureObject();
+	if (playerCreature == NULL)
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
@@ -1274,6 +1277,18 @@ void PlayerObjectImplementation::notifyOnline() {
 		activateForcePowerRegen();
 
 	schedulePvpTefRemovalTask();
+
+	MissionManager* missionManager = zoneServer->getMissionManager();
+
+	if (missionManager != NULL && playerCreature->hasSkill("force_title_jedi_rank_02")) {
+		uint64 id = playerCreature->getObjectID();
+
+		if (!missionManager->hasPlayerBountyTargetInList(id))
+			missionManager->addPlayerToBountyList(id, calculateBhReward());
+		else {
+			missionManager->updatePlayerBountyOnlineStatus(id, true);
+		}
+	}
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1305,6 +1320,12 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	//Logout from jedi manager
 	JediManager::instance()->onPlayerLoggedOut(playerCreature);
+
+	MissionManager* missionManager = getZoneServer()->getMissionManager();
+
+	if (missionManager != NULL && playerCreature->hasSkill("force_title_jedi_rank_02")) {
+		missionManager->updatePlayerBountyOnlineStatus(playerCreature->getObjectID(), false);
+	}
 }
 
 void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {

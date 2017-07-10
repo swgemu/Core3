@@ -87,19 +87,6 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	Mutex visibilityListLock;
 
 	/**
-	 * Add the player to the bounty list.
-	 * @param creature the player to add.
-	 * @param reward the reward for the player bounty.
-	 */
-	void addPlayerToBountyList(CreatureObject* creature, int reward);
-
-	/**
-	 * Remove the player to the bounty list.
-	 * @param creature the player to remove.
-	 */
-	void removePlayerFromBountyList(CreatureObject* creature);
-
-	/**
 	 * Calculate/generate a reward for the player bounty.
 	 * @param creature the jedi's player creature object.
 	 * @return calculated/generated reward.

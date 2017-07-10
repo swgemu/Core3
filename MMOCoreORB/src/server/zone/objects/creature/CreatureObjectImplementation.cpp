@@ -3305,6 +3305,10 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	if (!destroyContainedObjects)
 		return;
 
+	MissionManager* missionManager = server->getMissionManager();
+	if (missionManager != NULL)
+		missionManager->removePlayerFromBountyList(getObjectID());
+
 	SortedVector<ManagedReference<SceneObject*> > destroyedObjects;
 	destroyedObjects.setNoDuplicateInsertPlan();
 

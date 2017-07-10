@@ -1,0 +1,71 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.objects.mission;
+
+import engine.core.ManagedObject;
+
+class PlayerBounty extends ManagedObject {
+	protected unsigned long targetPlayerID;
+
+	protected int reward;
+
+	protected boolean online;
+
+	@dereferenced
+	protected SortedVector<unsigned long> bountyHunterIDs;
+
+	public PlayerBounty(unsigned long targetID, int payout) {
+		targetPlayerID = targetID;
+		reward = payout;
+		online = true;
+		bountyHunterIDs.setNoDuplicateInsertPlan();
+	}
+
+	public void setReward(int amount) {
+		reward = amount;
+	}
+
+	public void setOnline(boolean state) {
+		online = state;
+	}
+
+	@read
+	public unsigned long getTargetPlayerID() {
+		return targetPlayerID;
+	}
+
+	@read
+	public int getReward() {
+		return reward;
+	}
+
+	@read
+	public boolean isOnline() {
+		return online;
+	}
+
+	@read
+	public int numberOfActiveMissions() {
+		return bountyHunterIDs.size();
+	}
+
+	public void addBountyHunter(unsigned long id) {
+		bountyHunterIDs.put(id);
+	}
+
+	public void removeBountyHunter(unsigned long id) {
+		bountyHunterIDs.drop(id);
+	}
+
+	@dirty
+	public boolean hasBountyHunter(unsigned long id) {
+		return bountyHunterIDs.contains(id);
+	}
+
+	@local
+	public SortedVector<unsigned long> getBountyHunters() {
+		return bountyHunterIDs;
+	}
+}
