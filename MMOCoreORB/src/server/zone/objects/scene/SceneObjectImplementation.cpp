@@ -202,7 +202,12 @@ void SceneObjectImplementation::close(SceneObject* client) {
 }
 
 void SceneObjectImplementation::link(SceneObject* client, uint32 containmentType) {
-	BaseMessage* msg = new UpdateContainmentMessage(asSceneObject(), getParent().get(), containmentType);
+	auto ref = getParent().get();
+
+	if (ref == nullptr)
+		return;
+
+	BaseMessage* msg = new UpdateContainmentMessage(asSceneObject(), ref, containmentType);
 	client->sendMessage(msg);
 }
 
@@ -301,8 +306,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
 
-	if (parent.get() != NULL)
-		link(player, containmentType);
+	link(player, containmentType);
 
 	try {
 		sendBaselinesTo(player);
