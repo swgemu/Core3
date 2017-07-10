@@ -74,8 +74,7 @@ void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
 
 SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* player) {
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
-			"inventory");
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	Locker inventoryLocker(inventory);
 	SceneObject* craftingTool = NULL;
 
@@ -96,8 +95,7 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 				return object;
 			}
 
-			if (toolType == CraftingTool::JEDI && type
-					== CraftingTool::WEAPON) {
+			if (toolType == CraftingTool::JEDI && type == CraftingTool::WEAPON) {
 				craftingTool = object;
 			}
 		}
@@ -111,8 +109,7 @@ void CraftingStationImplementation::createChildObjects() {
 }
 
 void CraftingStationImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the effectiveness
-
+	// useModifier is the effectiveness
 	effectiveness = values->getCurrentValue("usemodifier");
 
 	/*if(firstUpdate && values->hasSlotFilled("storage_compartment")) {

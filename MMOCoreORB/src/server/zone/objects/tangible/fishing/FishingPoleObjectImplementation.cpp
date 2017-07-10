@@ -47,8 +47,7 @@ int FishingPoleObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 }
 
 void FishingPoleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the quality
-
+	// useModifier is the quality
 	quality = values->getCurrentValue("usemodifier");
 
 	//craftingValues->toString();
