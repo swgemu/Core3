@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_894a1954",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/component/bio/bio_component_clothing_field_cover.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2017-07-11T07:35:55Z",
+      "side": 0,
+      "message": "It looks like they were half right and you\u0027re changing more than you need to. leave the @obj_attr_n alone in each file but keep your change to the @stat_n\n\nIt also looks like we\u0027re using the wrong mod in the TakeCoverCommand. You should change it while you\u0027re at it.",
+      "range": {
+        "startLine": 51,
+        "startChar": 75,
+        "endLine": 51,
+        "endChar": 105
+      },
+      "revId": "8a3df81d5227deb34c40d08ea97bdfb12a3245ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
