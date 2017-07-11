@@ -35,7 +35,7 @@ public:
 
 		if (creature->isInCombat()) {
 
-			float chance = 10 + creature->getSkillMod("cover");
+			float chance = 10 + creature->getSkillMod("take_cover");
 
 			if (System::random(100)  > chance) {
 
