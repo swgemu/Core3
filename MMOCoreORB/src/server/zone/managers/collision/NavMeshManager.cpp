@@ -209,6 +209,10 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     info("NavArea->name: " + name);
 #endif
 
+    if (!running->get()) {
+        return;
+    }
+
     Core::getTaskManager()->executeTask([area, name, builder, initialBuild, this] {
     	if (stopped)
     		return;
