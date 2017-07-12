@@ -175,6 +175,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		} else {
 			sendHealMessage(creature, targetCreature, HEAL_BLEEDING, 0, 0);
 		}
+
 		healPerformed = true;
 	}
 
@@ -194,6 +195,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		} else {
 			sendHealMessage(creature, targetCreature, HEAL_POISON, 0, 0);
 		}
+
 		healPerformed = true;
 	}
 
@@ -213,6 +215,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		} else {
 			sendHealMessage(creature, targetCreature, HEAL_DISEASE, 0, 0);
 		}
+
 		healPerformed = true;
 	}
 
@@ -224,9 +227,16 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		while (!result && (totalCost + healFireCost < currentForce) && (fireHealIterations == -1 || iteration <= fireHealIterations)) {
 			result = targetCreature->healDot(CreatureState::ONFIRE, 500, false);
 			totalCost += healFireCost;
-			healPerformed = true;
 			iteration++;
 		}
+
+		if (result) {
+			sendHealMessage(creature, targetCreature, HEAL_FIRE, 0, 1);
+		} else {
+			sendHealMessage(creature, targetCreature, HEAL_FIRE, 0, 0);
+		}
+
+		healPerformed = true;
 	}
 
 	bool selfHeal = creature->getObjectID() == targetCreature->getObjectID();
@@ -330,6 +340,28 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 			message.setTT(targetID);
 			creature->sendSystemMessage(message);
 		}
+	}
+
+	if (healType == HEAL_POISON) {
+		if (healAmount == 0)
+			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::POISONED);
+		else
+			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::POISONED);
+	} else if (healType == HEAL_DISEASE) {
+		if (healAmount == 0)
+			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::DISEASED);
+		else
+			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::DISEASED);
+	} else if (healType == HEAL_BLEEDING) {
+		if (healAmount == 0)
+			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::BLEEDING);
+		else
+			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::BLEEDING);
+	} else if (healType == HEAL_FIRE) {
+		if (healAmount == 0)
+			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::ONFIRE);
+		else
+			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::ONFIRE);
 	}
 }
 
