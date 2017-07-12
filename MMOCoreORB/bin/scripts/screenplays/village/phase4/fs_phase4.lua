@@ -9,4 +9,8 @@ function FsPhase4:onLoggedIn(pPlayer)
 	if (currentPhase ~= 4 or not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		FsVillageDefense:doPhaseChangeFail(pPlayer)
 	end
+
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)) then
+		FsCrafting4:sendTooLateSui(pPlayer)
+	end
 end

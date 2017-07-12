@@ -146,6 +146,7 @@ end
 function FsPatrol:completeFsPatrol(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. ":completedCurrentPoint")
+	deleteData(playerID .. ":failedPatrol")
 	deleteData(playerID .. ":patrolWaypointsReached")
 	self:finish(pPlayer)
 end

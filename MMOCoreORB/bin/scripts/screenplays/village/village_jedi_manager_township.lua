@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+local QuestManager = require("managers.quest.quest_manager")
 
 -- Utils.
 local Logger = require("utils.logger")
@@ -400,6 +401,10 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pPlayer, currentPha
 		FsCounterStrike:doPhaseChangeFail(pPlayer)
 	elseif (currentPhase == 4) then
 		FsVillageDefense:doPhaseChangeFail(pPlayer)
+
+		if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)) then
+			FsCrafting4:sendTooLateSui(pPlayer)
+		end
 	end
 end
 
