@@ -74,15 +74,16 @@ void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 
     static const RecastSettings settings;
     if (!recastNavMesh.isLoaded()) {
-        NavMeshManager::instance()->enqueueJob(zone, asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
-        NavMeshManager::instance()->enqueueJob(zone, asNavArea(), bounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(asNavArea(), bounds, settings, NavMeshManager::TileQueue);
     }
 }
 
 void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, const String& name, bool forceRebuild) {
     meshName = name;
     recastNavMesh.setName(meshName);
+    setLoggingName("NavArea " + meshName);
     initializePosition(position[0], position[1], position[2]);
     setRadius(radius);
     setZone(zone);
@@ -94,6 +95,7 @@ void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Z
 
 void NavAreaImplementation::initialize() {
     meshName = String::valueOf(getObjectID());
+    setLoggingName("NavArea " + meshName);
 }
 
 bool NavAreaImplementation::objectInMesh(SceneObject* obj) {

@@ -26,12 +26,12 @@ void NavMeshManager::initialize(int numThreads, ZoneServer* server) {
     Core::getTaskManager()->initializeCustomQueue(MeshQueue.toCharArray(), maxConcurrentJobs, false);
 }
 
-void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue) {
+void NavMeshManager::enqueueJob(NavArea* area, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue) {
 	if (stopped)
 		return;
 
 	if (queue != TileQueue && queue != MeshQueue) {
-		error("queue is not tile or mesh in NavMeshManager::enqueueJob. queue is " + queue + " for area " + area->getMeshName() + " in zone " + zone->getZoneName());
+		error("queue is not tile or mesh in NavMeshManager::enqueueJob. queue is " + queue + " for area " + area->getMeshName() + " in zone " + area->getZone()->getZoneName());
 		return;
 	}
 
@@ -54,7 +54,7 @@ void NavMeshManager::enqueueJob(Zone* zone, NavArea* area, AABB areaToBuild, con
 
     job = jobs.get(name);
     if (job == NULL) {
-        job = new NavMeshJob(area, zone, recastConfig, queue);
+        job = new NavMeshJob(area, recastConfig, queue);
 #ifdef NAVMESH_DEBUG
         info("Creating new job for " + name);
 #endif
@@ -123,7 +123,6 @@ void NavMeshManager::checkJobs() {
 }
 
 void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
-
     if (stopped || job == NULL) {
         return;
     }
@@ -134,11 +133,9 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	return;
     }
 
-    Reference<Zone*> zone = job->getZone();
+    Reference<Zone*> zone = area->getZone();
 
-    if (!zone) {
-        Locker locker(&jobQueueMutex);
-        jobs.put(area->getMeshName(), job);
+    if (zone == NULL) {
         return;
     }
 
@@ -155,7 +152,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     String name = area->getMeshName();
 
-	info("Starting building navmesh for area: " + name + " on planet: " + area->getZone()->getZoneName() + " at: " + area->getPosition().toString(), true);
+	info("Starting building navmesh for area: " + name + " on planet: " + zone->getZoneName() + " at: " + area->getPosition().toString(), true);
 
 	SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
     zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
@@ -169,7 +166,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
             // Example: v 1393.67 3.09307e+06 -3217
             // mos entha pristine wall
             const float height = sceno->getPosition().getZ();
-            if(height > 10000 || height < -10000)
+            if (height > 10000 || height < -10000)
                 continue;
 
             static const Matrix4 identity;
@@ -187,7 +184,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     float poleDist = job->getRecastConfig().distanceBetweenPoles;
 
-    if(poleDist < 1.0f) {
+    if (poleDist < 1.0f) {
         poleDist = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance()->getDistanceBetweenPoles();
     }
 

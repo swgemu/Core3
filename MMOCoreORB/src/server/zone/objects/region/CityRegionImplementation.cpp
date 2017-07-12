@@ -111,9 +111,9 @@ void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& q
 	}
 
 	if (!area->isNavMeshLoaded()) {
-		NavMeshManager::instance()->enqueueJob(zone, area, area->getBoundingBox(), settings, queue);
+		NavMeshManager::instance()->enqueueJob(area, area->getBoundingBox(), settings, queue);
 	} else {
-		NavMeshManager::instance()->enqueueJob(zone, area, bounds, settings, queue);
+		NavMeshManager::instance()->enqueueJob(area, bounds, settings, queue);
 	}
 }
 

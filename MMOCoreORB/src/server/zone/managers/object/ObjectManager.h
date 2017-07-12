@@ -64,7 +64,7 @@ namespace zone {
 		void loadStaticObjects();
 
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
+		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0, bool initializeTransientMembers = true);
 
 		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0, bool initializeTransientMembers = true);
 

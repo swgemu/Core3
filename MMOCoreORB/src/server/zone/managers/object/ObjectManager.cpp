@@ -844,7 +844,7 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid,
 	return object;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid) {
+SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid, bool initializeTransientMembers) {
 	SceneObject* object = NULL;
 
 	loadTable(database, oid);
@@ -862,7 +862,8 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 		return NULL;
 	}
 
-	object->initializeTransientMembers();
+	if (initializeTransientMembers)
+		object->initializeTransientMembers();
 
 	if (persistenceLevel > 0) {
 		object->setPersistent(persistenceLevel);

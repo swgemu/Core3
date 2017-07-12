@@ -17,13 +17,17 @@ void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("CellObject");
+
+	if (isClientObject()) {
+		containerObjects.setNormalLoadOperationMode();
+		containerObjects.cancelUnloadTask();
+	}
 }
 
 void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::loadTemplateData(templateData);
 
-	if (!isClientObject())
-		containerObjects.setDelayedLoadOperationMode();
+	containerObjects.setDelayedLoadOperationMode();
 }
 
 void CellObjectImplementation::notifyLoadFromDatabase() {

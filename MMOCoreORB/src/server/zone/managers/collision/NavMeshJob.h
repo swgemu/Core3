@@ -9,13 +9,11 @@
 #define NAVMESHJOB_H_
 
 #include "server/zone/objects/pathfinding/NavArea.h"
-#include "server/zone/Zone.h"
 #include "engine/util/u3d/AABB.h"
 
 class NavMeshJob : public Object {
 protected:
 	WeakReference<NavArea*> area;
-	WeakReference<Zone*> zone;
 	Vector<AABB> areas;
 	RecastSettings settings;
 	String queue;
@@ -23,18 +21,13 @@ protected:
 	Mutex mutex;
 
 public:
-	NavMeshJob(NavArea *area, Zone* zone, const RecastSettings& config, const String& targetQueue) : queue(targetQueue), running(true)  {
-		this->zone = zone;
+	NavMeshJob(NavArea *area, const RecastSettings& config, const String& targetQueue) : queue(targetQueue), running(true)  {
 		this->area = area;
 		settings = config;
 	}
 
 	Vector<AABB>& getAreas() {
 		return areas;
-	}
-
-	Reference<Zone*> getZone() {
-		return zone.get();
 	}
 
 	Reference<NavArea*> getNavArea() {

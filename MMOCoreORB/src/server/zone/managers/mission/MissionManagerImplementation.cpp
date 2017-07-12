@@ -723,7 +723,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, faction, MissionTypes::DESTROY);
 
 	if (randomLairSpawn == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -731,7 +730,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	LairTemplate* lairTemplateObject = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
 	if (lairTemplateObject == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -753,7 +751,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	String building = lairTemplateObject->getMissionBuilding(difficulty);
 
 	if (building.isEmpty()) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -761,15 +758,10 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	if (templateObject == NULL || !templateObject->isSharedTangibleObjectTemplate()) {
 		error("incorrect template object in randomizeDestroyMission " + building);
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	NameManager* nm = processor->getNameManager();
-
-	int randTexts = System::random(34) + 1;
-
-	mission->setMissionNumber(randTexts);
 
 	TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();
 
@@ -807,6 +799,10 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	if (!foundPosition) {
 		return;
 	}
+
+	int randTexts = System::random(34) + 1;
+
+	mission->setMissionNumber(randTexts);
 
 	mission->setStartPosition(startPos.getX(), startPos.getY(), zone->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
@@ -941,14 +937,12 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const uint32 faction, Vector<ManagedReference<PlayerBounty*>>* potentialTargets) {
 	if (!player->hasSkill("combat_bountyhunter_novice")) {
 		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	Zone* playerZone = player->getZone();
 
 	if (playerZone == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -1340,13 +1334,11 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	PlanetManager* pmng = zone->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
 	if (performanceLocations->size() <= 0) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	SceneObject* target = performanceLocations->getRandomTarget(player, randomRange);
 	if (target == NULL || !target->isStructureObject()) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -1412,28 +1404,24 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, Factions::FACTIONNEUTRAL, MissionTypes::HUNTING);
 
 	if (randomLairSpawn == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	Zone* playerZone = player->getZone();
 
 	if (playerZone == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	LairTemplate* lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(randomLairSpawn->getLairTemplateName().hashCode());
 
 	if (lairTemplate == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
 
 	if (mobiles->size() == 0) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -1442,14 +1430,12 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(mobileName);
 
 	if (creatureTemplate == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
 	Vector<String>& templatesNames = creatureTemplate->getTemplates();
 
 	if (templatesNames.size() == 0) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -1458,7 +1444,6 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	SharedObjectTemplate* sharedTemplate = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
 
 	if (sharedTemplate == NULL) {
-		mission->setTypeCRC(0);
 		return;
 	}
 
