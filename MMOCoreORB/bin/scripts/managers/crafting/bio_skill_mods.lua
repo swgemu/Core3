@@ -1,7 +1,7 @@
 bioSkillMods = {
 	"camouflage",
 	"combat_bleeding_defense",
-	"cover",
+	"take_cover",
 	"healing_dance_wound",
 	"healing_injury_treatment",
 	"healing_music_wound",
