@@ -1927,6 +1927,9 @@ Vector<ManagedReference<PlayerBounty*>> MissionManagerImplementation::getPotenti
 	if (playerGhost == NULL)
 		return potentialTargets;
 
+	uint64 playerId = player->getObjectID();
+	uint64 accountId = playerGhost->getAccountID();
+
 	for (int i = 0; i < playerBountyList.size(); i++) {
 		PlayerBounty* playerBounty = playerBountyList.get(i);
 
@@ -1938,7 +1941,7 @@ Vector<ManagedReference<PlayerBounty*>> MissionManagerImplementation::getPotenti
 
 		auto targetId = playerBounty->getTargetPlayerID();
 
-		if (targetId == player->getObjectID())
+		if (targetId == playerId)
 			continue;
 
 		ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
@@ -1951,9 +1954,27 @@ Vector<ManagedReference<PlayerBounty*>> MissionManagerImplementation::getPotenti
 		if (targetGhost == NULL || targetGhost->getVisibility() < terminalVisibilityThreshold)
 			continue;
 
-		if (enableSameAccountBountyMissions || targetGhost->getAccountID() != playerGhost->getAccountID()) {
-			potentialTargets.add(playerBounty);
+		if (!enableSameAccountBountyMissions && targetGhost->getAccountID() == accountId)
+			continue;
+
+		auto hunters = playerBounty->getBountyHunters();
+		bool hasSameAccountHunter = false;
+
+		for (int j = 0; j < hunters->size(); j++) {
+			ManagedReference<CreatureObject*> hunter = server->getObject(hunters->get(j)).castTo<CreatureObject*>();
+
+			if (hunter != NULL) {
+				auto hunterGhost = hunter->getPlayerObject();
+
+				if (hunterGhost != NULL && hunterGhost->getAccountID() == accountId)
+					hasSameAccountHunter = true;
+			}
 		}
+
+		if (hasSameAccountHunter)
+			continue;
+
+		potentialTargets.add(playerBounty);
 	}
 
 	return potentialTargets;
