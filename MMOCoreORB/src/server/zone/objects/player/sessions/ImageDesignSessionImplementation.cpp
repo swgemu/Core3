@@ -240,6 +240,17 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 	}
 
 	targetObject->sendMessage(message);
+
+	if (updater == strongReferenceDesigner && imageDesignData.isAcceptedByTarget()) {
+		StringIdChatParameter stringId;
+		stringId.setStringId("@image_designer:image_design_complete_design"); //You modify %TT's %TO.
+		stringId.setTT(strongReferenceTarget->getObjectID());
+		StringIdChatParameter dataId("@image_designer:image_design_complete_target"); //%TT modifies your %TO.
+		dataId.setTO("Body-feature or Attribute");// NEE REMEMBER TO FIX THIS
+		strongReferenceTarget->sendSystemMessage(dataId);
+		strongReferenceDesigner->sendSystemMessage(stringId);
+	}
+
 }
 
 int ImageDesignSessionImplementation::doPayment() {
@@ -250,10 +261,11 @@ int ImageDesignSessionImplementation::doPayment() {
 
 	uint32 requiredPayment = imageDesignData.getRequiredPayment();
 
-	// The client should prevent this, but in case it doesn't
+	// The CLIENT prevents this, by not allowing the designer to even click 'accept' if the offered credits don't
+		//match the exact required amount, but just in case the client-side check doesn't catch...
 	if (targetCredits < requiredPayment) {
-		targetCreature->sendSystemMessage("You do not have enough credits to pay the required payment.");
-		designerCreature->sendSystemMessage("Target does not have enough credits for the required payment.");
+		targetCreature->sendSystemMessage("@ui_imagedesigner:imagedesigner_not_paying_enough");
+		designerCreature->sendSystemMessage("@ui_imagedesigner:imagedesigner_not_paying_enough");//Session canceled, the recipient isn't paying enough credits.
 
 		cancelSession();
 
@@ -301,8 +313,12 @@ void ImageDesignSessionImplementation::sessionTimeout() {
 	if (designerCreature != NULL) {
 		Locker locker(designerCreature);
 
-		if (designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
-			designerCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+		if (designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner() || (!designerCreature->isInRange(targetCreature, 32))) {
+			StringIdChatParameter stringId;
+			stringId.setStringId("@image_designer:offer_timeout"); //Your Image Design offer to %TT has timed out.
+			stringId.setTT(targetCreature->getObjectID());
+
+			designerCreature->sendSystemMessage(stringId);
 
 			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);
 
@@ -314,8 +330,12 @@ void ImageDesignSessionImplementation::sessionTimeout() {
 		Locker locker(designerCreature);
 		Locker clocker(targetCreature, designerCreature);
 
-		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
-			targetCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner() || (!targetCreature->isInRange(designerCreature, 32))) {
+			StringIdChatParameter stringId;
+			stringId.setStringId("@image_designer:offer_timeout_target"); //%TT's Image Design offer has timed out.
+			stringId.setTT(designerCreature->getObjectID());
+
+			targetCreature->sendSystemMessage(stringId);
 
 			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);
 
