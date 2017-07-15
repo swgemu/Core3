@@ -562,6 +562,8 @@ function DeathWatchBunkerScreenPlay:despawnMobile(pMobile)
 		return
 	end
 
+	deleteData(SceneObject(pMobile):getObjectID() .. ":spawnName")
+
 	if (CreatureObject(pMobile):isInCombat()) then
 		createEvent(15 * 1000, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
 		return
@@ -998,9 +1000,42 @@ function DeathWatchBunkerScreenPlay:spawnDefender(spawnData, spawnName)
 	if (pMobile ~= nil) then
 		createEvent(300 * 1000, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
 		createEvent(5 * 1000, "DeathWatchBunkerScreenPlay", "startDefenderPath", pMobile, spawnName)
+		createObserver(DEFENDERADDED, "DeathWatchBunkerScreenPlay", "setDefenderHomeLoc", pMobile)
+		writeData(SceneObject(pMobile):getObjectID() .. ":spawnName", spawnName)
 	end
 
 	return pMobile
+end
+
+function DeathWatchBunkerScreenPlay:setDefenderHomeLoc(pNpc, pPlayer)
+	if (pPlayer == nil or pNpc == nil) then
+		return 1
+	end
+
+	local spawnName = readData(SceneObject(pNpc):getObjectID() .. ":spawnName")
+
+	local homeLoc
+
+	if (string.find(spawnName, "rageon_vart")) then
+		local waveNum = tonumber(string.sub(spawnName, 12))
+		homeLoc = deathWatchPatrolPoints.rageon_vart[waveNum]
+	elseif (string.find(spawnName, "klin_nif")) then
+		local waveNum = tonumber(string.sub(spawnName, 9))
+		homeLoc = deathWatchPatrolPoints.klin_nif[waveNum]
+	elseif (string.find(spawnName, "fenri_dalso")) then
+		local waveNum = tonumber(string.sub(spawnName, 12))
+		homeLoc = deathWatchPatrolPoints.fenri_dalso[waveNum]
+	else
+		deleteData(SceneObject(pNpc):getObjectID() .. ":spawnName")
+		return 1
+	end
+
+	local randomX = (-5 + getRandomNumber(10)) / 10
+	local randomY = (-5 + getRandomNumber(10)) / 10
+
+	AiAgent(pNpc):setHomeLocation(homeLoc[1] + randomX, homeLoc[2], homeLoc[3] + randomY, homeLoc[4])
+	deleteData(SceneObject(pNpc):getObjectID() .. ":spawnName")
+	return 1
 end
 
 function DeathWatchBunkerScreenPlay:startDefenderPath(pMobile, spawnName)
