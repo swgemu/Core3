@@ -63,7 +63,28 @@ end
 function Yavin4StaticSpawnsScreenPlay:setupSentinel(pSentinel)
 	AiAgent(pSentinel):setAiTemplate("enclavesentinel")
 	createObserver(OBJECTDESTRUCTION, "Yavin4StaticSpawnsScreenPlay", "notifySentinelDead", pSentinel)
-	createObserver(DEFENDERDROPPED, "Yavin4StaticSpawnsScreenPlay", "sentinelDefenderDropped", pSentinel)
+	createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel)
+end
+
+function Yavin4StaticSpawnsScreenPlay:rotateSentinel(pSentinel)
+	if (pSentinel == nil or CreatureObject(pSentinel):isDead()) then
+		return
+	end
+
+	if (CreatureObject(pSentinel):isInCombat()) then
+		createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel, "")
+		return
+	end
+
+	local objName = SceneObject(pSentinel):getObjectName()
+
+	if (objName == "light_jedi_sentinel") then
+		SceneObject(pSentinel):updateDirection(-179)
+	elseif (objName == "dark_jedi_sentinel") then
+		SceneObject(pSentinel):updateDirection(90)
+	end
+
+	createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel, "")
 end
 
 function Yavin4StaticSpawnsScreenPlay:notifySentinelDead(pSentinel, pKiller)
@@ -130,9 +151,7 @@ function Yavin4StaticSpawnsScreenPlay:respawnLightSentinel(pOldSentinel, sentine
 
 	if (pSentinel ~= nil) then
 		writeData(SceneObject(pSentinel):getObjectID() .. ":sentinelID", sentinelID)
-		AiAgent(pSentinel):setAiTemplate("enclavesentinel")
-		createObserver(OBJECTDESTRUCTION, "Yavin4StaticSpawnsScreenPlay", "notifySentinelDead", pSentinel)
-		createObserver(DEFENDERDROPPED, "Yavin4StaticSpawnsScreenPlay", "sentinelDefenderDropped", pSentinel)
+		createEvent(10, "Yavin4StaticSpawnsScreenPlay", "setupSentinel", pSentinel, "")
 	end
 end
 
@@ -153,8 +172,6 @@ function Yavin4StaticSpawnsScreenPlay:respawnDarkSentinel(pOldSentinel, sentinel
 
 	if (pSentinel ~= nil) then
 		writeData(SceneObject(pSentinel):getObjectID() .. ":sentinelID", sentinelID)
-		AiAgent(pSentinel):setAiTemplate("enclavesentinel")
-		createObserver(OBJECTDESTRUCTION, "Yavin4StaticSpawnsScreenPlay", "notifySentinelDead", pSentinel)
-		createObserver(DEFENDERDROPPED, "Yavin4StaticSpawnsScreenPlay", "sentinelDefenderDropped", pSentinel)
+		createEvent(10, "Yavin4StaticSpawnsScreenPlay", "setupSentinel", pSentinel, "")
 	end
 end
