@@ -130,7 +130,6 @@ dantooine = {
 		{"dantari_village_west",-7185,-861,100},
 		{"jedi_temple_ruins",4203,5222,100},
 		{"mokk_stronghold",-7046,-3332,50},
-		{"native_village",7181,887,75},
 		{"ris_armor_hut",-6805,6021,32},
 		{"the_warren",-550,-3834,50},
 	},
