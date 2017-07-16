@@ -116,24 +116,6 @@ function Yavin4StaticSpawnsScreenPlay:sentinelDefenderDropped(pSentinel)
 	return 0
 end
 
-function Yavin4StaticSpawnsScreenPlay:rotateSentinel(pSentinel)
-	if (pSentinel == nil or CreatureObject(pSentinel):isDead()) then
-		return
-	end
-
-	if (CreatureObject(pSentinel):isInCombat()) then
-		createEvent(10 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel, "")
-	end
-
-	local objName = SceneObject(pSentinel):getObjectName()
-
-	if (objName == "light_jedi_sentinel") then
-		SceneObject(pSentinel):updateDirection(-179)
-	elseif (objName == "dark_jedi_sentinel") then
-		SceneObject(pSentinel):updateDirection(90)
-	end
-end
-
 function Yavin4StaticSpawnsScreenPlay:respawnLightSentinel(pOldSentinel, sentinelID)
 	local spawnLoc
 
