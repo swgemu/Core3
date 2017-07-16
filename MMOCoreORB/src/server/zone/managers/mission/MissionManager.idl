@@ -141,6 +141,7 @@ class MissionManager extends Observer implements Logger {
 	@local
 	@dereferenced
 	private native Vector<PlayerBounty> getPotentialPlayerBountyTargets(CreatureObject player);
+	private native boolean isBountyValidForPlayer(CreatureObject player, PlayerBounty bounty);
 	private native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
 	private native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
 

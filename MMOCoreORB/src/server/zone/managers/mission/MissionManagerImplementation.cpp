@@ -258,7 +258,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		if (targetID != 0) {
 			PlayerBounty* bounty = playerBountyList.get(targetID);
 
-			if (bounty == NULL) {
+			if (bounty == NULL || !isBountyValidForPlayer(player, bounty)) {
 				player->sendSystemMessage("Mission has expired.");
 				return;
 			} else {
@@ -1921,63 +1921,64 @@ Vector<ManagedReference<PlayerBounty*>> MissionManagerImplementation::getPotenti
 
 	Vector<ManagedReference<PlayerBounty*>> potentialTargets;
 
-	float terminalVisibilityThreshold = VisibilityManager::instance()->getTerminalVisThreshold();
-
-	auto playerGhost = player->getPlayerObject();
-	if (playerGhost == NULL)
-		return potentialTargets;
-
-	uint64 playerId = player->getObjectID();
-	uint64 accountId = playerGhost->getAccountID();
-
 	for (int i = 0; i < playerBountyList.size(); i++) {
 		PlayerBounty* playerBounty = playerBountyList.get(i);
 
-		if (!playerBounty->isOnline())
-			continue;
-
-		if (playerBounty->numberOfActiveMissions() >= 5)
-			continue;
-
-		auto targetId = playerBounty->getTargetPlayerID();
-
-		if (targetId == playerId)
-			continue;
-
-		ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
-
-		if (creature == NULL)
-			continue;
-
-		auto targetGhost = creature->getPlayerObject();
-
-		if (targetGhost == NULL || targetGhost->getVisibility() < terminalVisibilityThreshold)
-			continue;
-
-		if (!enableSameAccountBountyMissions && targetGhost->getAccountID() == accountId)
-			continue;
-
-		auto hunters = playerBounty->getBountyHunters();
-		bool hasSameAccountHunter = false;
-
-		for (int j = 0; j < hunters->size(); j++) {
-			ManagedReference<CreatureObject*> hunter = server->getObject(hunters->get(j)).castTo<CreatureObject*>();
-
-			if (hunter != NULL) {
-				auto hunterGhost = hunter->getPlayerObject();
-
-				if (hunterGhost != NULL && hunterGhost->getAccountID() == accountId)
-					hasSameAccountHunter = true;
-			}
-		}
-
-		if (hasSameAccountHunter)
-			continue;
-
-		potentialTargets.add(playerBounty);
+		if (isBountyValidForPlayer(player, playerBounty))
+			potentialTargets.add(playerBounty);
 	}
 
 	return potentialTargets;
+}
+
+bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player, PlayerBounty* bounty) {
+	if (!bounty->isOnline())
+		return false;
+
+	if (bounty->numberOfActiveMissions() >= 5)
+		return false;
+
+	uint64 targetId = bounty->getTargetPlayerID();
+	uint64 playerId = player->getObjectID();
+
+	if (targetId == playerId)
+		return false;
+
+	ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
+
+	if (creature == NULL)
+		return false;
+
+	auto targetGhost = creature->getPlayerObject();
+	float terminalVisibilityThreshold = VisibilityManager::instance()->getTerminalVisThreshold();
+
+	if (targetGhost == NULL || targetGhost->getVisibility() < terminalVisibilityThreshold)
+		return false;
+
+	auto playerGhost = player->getPlayerObject();
+
+	if (playerGhost == NULL)
+		return false;
+
+	uint64 accountId = playerGhost->getAccountID();
+
+	if (!enableSameAccountBountyMissions && targetGhost->getAccountID() == accountId)
+		return false;
+
+	auto hunters = bounty->getBountyHunters();
+
+	for (int j = 0; j < hunters->size(); j++) {
+		ManagedReference<CreatureObject*> hunter = server->getObject(hunters->get(j)).castTo<CreatureObject*>();
+
+		if (hunter != NULL) {
+			auto hunterGhost = hunter->getPlayerObject();
+
+			if (hunterGhost != NULL && hunterGhost->getAccountID() == accountId)
+				return false;
+		}
+	}
+
+	return true;
 }
 
 void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 bountyHunter) {
