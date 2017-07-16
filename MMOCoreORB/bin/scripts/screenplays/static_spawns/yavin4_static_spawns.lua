@@ -63,7 +63,7 @@ end
 function Yavin4StaticSpawnsScreenPlay:setupSentinel(pSentinel)
 	AiAgent(pSentinel):setAiTemplate("enclavesentinel")
 	createObserver(OBJECTDESTRUCTION, "Yavin4StaticSpawnsScreenPlay", "notifySentinelDead", pSentinel)
-	createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel)
+	createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "rotateSentinel", pSentinel, "")
 end
 
 function Yavin4StaticSpawnsScreenPlay:rotateSentinel(pSentinel)

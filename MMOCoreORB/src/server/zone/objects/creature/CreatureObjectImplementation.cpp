@@ -2824,7 +2824,7 @@ void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, c
 	if (isDead()) //We don't need to know when a corpse can see clearly again!
 		return;
 
-	ManagedReference<CreatureObject*> creature = asCreatureObject();
+	auto creature = asCreatureObject();
 
 	if (broadcast) { //Send spam to all nearby players.
 		CombatManager::instance()->broadcastCombatSpam(creature, NULL, NULL, 0, fileName, stringName, color);

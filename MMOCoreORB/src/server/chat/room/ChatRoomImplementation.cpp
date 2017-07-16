@@ -96,14 +96,14 @@ void ChatRoomImplementation::removeAllPlayers() {
 }
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 	msg->acquire();
 #endif
 
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
+
 	for (int i = 0; i < playerList.size(); ++i) {
-		CreatureObject* player = playerList.get(i);
+		ManagedReference<CreatureObject*>& player = playerList.get(i);
 
 		if (player != NULL) {
 #ifdef LOCKFREE_BCLIENT_BUFFERS
@@ -122,17 +122,17 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 }
 
 void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 	for (int j = 0; j < messages->size(); ++j) {
-		BaseMessage* msg = messages->get(j);
+		BaseMessage* msg = messages->getUnsafe(j);
 		msg->acquire();
 	}
 #endif
 
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
+
 	for (int i = 0; i < playerList.size(); ++i) {
-		CreatureObject* player = playerList.get(i);
+		ManagedReference<CreatureObject*>& player = playerList.get(i);
 
 		for (int j = 0; j < messages->size(); ++j) {
 			BaseMessage* msg = messages->get(j);
@@ -156,12 +156,13 @@ void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 }
 
 void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const String& senderName) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-	String lowerName = senderName.toLowerCase();
 	PlayerManager* playerManager = server->getPlayerManager();
+	String lowerName = senderName.toLowerCase();
+
 	ManagedReference<CreatureObject*> sender = NULL;
-	bool godMode = false;
 	ManagedReference<PlayerObject*> senderPlayer = NULL;
+
+	bool godMode = false;
 
 	if (playerManager == NULL) {
 		delete msg;
@@ -189,10 +190,12 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const
 	msg->acquire();
 #endif
 
-	for (int i = 0; i < playerList.size(); ++i) {
-		ManagedReference<CreatureObject*> player = playerList.get(i);
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
-		if (player){
+	for (int i = 0; i < playerList.size(); ++i) {
+		ManagedReference<CreatureObject*>& player = playerList.get(i);
+
+		if (player != nullptr) {
 			PlayerObject* ghost = player->getPlayerObject();
 			if (ghost == NULL)
 				continue;

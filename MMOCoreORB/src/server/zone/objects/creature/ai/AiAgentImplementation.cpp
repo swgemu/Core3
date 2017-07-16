@@ -500,7 +500,9 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (pObject == NULL)
 		return false;
 
-	if (asAiAgent() == pObject)
+	AiAgent* thisAiAgent = asAiAgent();
+
+	if (thisAiAgent == pObject)
 		return false;
 
 	if (isDead() || isIncapacitated())
@@ -520,7 +522,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	checkForReactionChat(pObject);
 
 	if (getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
-		getZoneUnsafe()->getGCWManager()->runCrackdownScan(asAiAgent(), creoObject);
+		getZoneUnsafe()->getGCWManager()->runCrackdownScan(thisAiAgent, creoObject);
 	}
 
 	ManagedReference<SceneObject*> follow = getFollowObject().get();
@@ -566,10 +568,8 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (isCamouflaged(creoObject) || !isAttackableBy(creoObject))
 		return false;
 
-	if (pObject->isAiAgent()) {
-		AiAgent* agentObject = pObject->asAiAgent();
-
-		if (!agentObject->isAttackableBy(asAiAgent()))
+	if (AiAgent* agentObject = pObject->asAiAgent()) {
+		if (!agentObject->isAttackableBy(thisAiAgent))
 			return false;
 
 		uint32 creatureFaction = getFaction();
@@ -579,7 +579,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 				|| ((creatureFaction == 0) && (creatureTargetFaction != 0)))
 			return false;
 
-	} else if (!creoObject->isAttackableBy(asAiAgent())) {
+	} else if (!creoObject->isAttackableBy(thisAiAgent)) {
 		return false;
 	}
 
