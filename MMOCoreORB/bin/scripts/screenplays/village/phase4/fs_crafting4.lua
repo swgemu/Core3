@@ -534,7 +534,7 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 
 			sui.sendTo(pPlayer)
 		else
-			self:sendTooLateSui(pPlayer)
+			FsCrafting4:sendTooLateSui(pPlayer)
 		end
 		TangibleObject(pCore):setLuaStringData("correctlyConfigured", "true")
 	else
