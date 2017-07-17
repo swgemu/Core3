@@ -342,26 +342,16 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 		}
 	}
 
-	if (healType == HEAL_POISON) {
-		if (healAmount == 0)
+	if (healAmount == 0) {
+		if (healType == HEAL_POISON) {
 			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::POISONED);
-		else
-			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::POISONED);
-	} else if (healType == HEAL_DISEASE) {
-		if (healAmount == 0)
+		} else if (healType == HEAL_DISEASE) {
 			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::DISEASED);
-		else
-			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::DISEASED);
-	} else if (healType == HEAL_BLEEDING) {
-		if (healAmount == 0)
+		} else if (healType == HEAL_BLEEDING) {
 			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::BLEEDING);
-		else
-			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::BLEEDING);
-	} else if (healType == HEAL_FIRE) {
-		if (healAmount == 0)
+		} else if (healType == HEAL_FIRE) {
 			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::ONFIRE);
-		else
-			target->getDamageOverTimeList()->sendStopMessage(target, CreatureState::ONFIRE);
+		}
 	}
 }
 
