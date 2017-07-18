@@ -57,7 +57,6 @@
 #include "templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
-#include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
 #include "server/zone/objects/player/events/PvpTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
@@ -2019,73 +2018,6 @@ void PlayerObjectImplementation::clearScreenPlayData(const String& screenPlay) {
 	}
 }
 
-void PlayerObjectImplementation::addToBountyLockList(uint64 playerId) {
-	if (bountyLockList.contains(playerId)) {
-		if (bountyLockList.get(playerId)->isScheduled()) {
-			bountyLockList.get(playerId)->cancel();
-		}
-	} else {
-		bountyLockList.put(playerId, new BountyHunterTefRemovalTask(_this.getReferenceUnsafeStaticCast(), playerId));
-		updateBountyPvpStatus(playerId);
-	}
-}
-
-void PlayerObjectImplementation::removeFromBountyLockList(uint64 playerId, bool immediately) {
-	int tefTime = FactionManager::TEFTIMER;
-	if (immediately) {
-		//Schedule tef removal to happen soon but delay it enough for any bh mission to be dropped correctly.
-		tefTime = 100;
-	}
-	if (bountyLockList.contains(playerId)) {
-		if (bountyLockList.get(playerId)->isScheduled()) {
-			//Reschedule for another 15 minutes tef.
-			bountyLockList.get(playerId)->reschedule(tefTime);
-		} else {
-			bountyLockList.get(playerId)->schedule(tefTime);
-		}
-	}
-}
-
-void PlayerObjectImplementation::removeFromBountyLockListDirectly(uint64 playerId) {
-	if (bountyLockList.contains(playerId)) {
-		if (bountyLockList.get(playerId)->isScheduled()) {
-			bountyLockList.get(playerId)->cancel();
-		}
-	}
-	bountyLockList.drop(playerId);
-	updateBountyPvpStatus(playerId);
-}
-
-void PlayerObjectImplementation::updateBountyPvpStatus(uint64 playerId) {
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(getParent().get().get());
-
-	if (creature == NULL) {
-		return;
-	}
-
-	ZoneServer* zoneServer = creature->getZoneServer();
-	if (zoneServer == NULL) {
-		return;
-	}
-
-	ManagedReference<CreatureObject*> target = zoneServer->getObject(playerId).castTo<CreatureObject*>();
-
-	if (target == NULL) {
-		return;
-	}
-
-	creature->sendPvpStatusTo(target);
-	target->sendPvpStatusTo(creature);
-}
-
-bool PlayerObjectImplementation::isBountyLocked() {
-	return bountyLockList.size() > 0;
-}
-
-bool PlayerObjectImplementation::isInBountyLockList(uint64 playerId) {
-	return bountyLockList.contains(playerId);
-}
-
 Time PlayerObjectImplementation::getLastVisibilityUpdateTimestamp() {
 	return lastVisibilityUpdateTimestamp;
 }
@@ -2106,12 +2038,12 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 
 	bool alreadyHasTef = hasPvpTef();
 
-	if(updateBhAction) {
+	if (updateBhAction) {
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 		lastBhPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
-	if(updateGcwAction) {
+	if (updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
@@ -2151,9 +2083,9 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	}
 
 	if (removeGcwTefNow || removeBhTefNow) {
-		if(removeGcwTefNow)
+		if (removeGcwTefNow)
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
-		if(removeBhTefNow)
+		if (removeBhTefNow)
 			lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 
 		if (pvpTefTask->isScheduled()) {

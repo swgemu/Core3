@@ -29,7 +29,6 @@ import system.util.SynchronizedSortedVector;
 include server.login.account.GalaxyAccountInfo;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.player.badges.Badges;
-include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
 include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.player.ValidatedPosition;
 include server.zone.objects.player.variables.Ability;
@@ -149,9 +148,6 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected Vector<unsigned long> newKillerList;
-
-	@dereferenced
-	protected BountyHunterTefRemovalTaskMap bountyLockList;
 
 	protected unsigned long declaredResidence;
 
@@ -1566,20 +1562,6 @@ class PlayerObject extends IntangibleObject {
 	public void setStarterProfession(string profession) {
 		starterProfession = profession;
 	}
-
-	public native void addToBountyLockList(unsigned long playerId);
-
-	@dirty
-	public native boolean isInBountyLockList(unsigned long playerId);
-
-	public native void removeFromBountyLockList(unsigned long playerId, boolean immediately);
-
-	public native void removeFromBountyLockListDirectly(unsigned long playerId);
-
-	@dirty
-	public native boolean isBountyLocked();
-
-	private native void updateBountyPvpStatus(unsigned long playerId);
 
 	@read
 	public unsigned long getPerformanceBuffTarget() {

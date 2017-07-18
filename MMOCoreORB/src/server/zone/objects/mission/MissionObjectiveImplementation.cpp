@@ -74,12 +74,6 @@ void MissionObjectiveImplementation::complete() {
 		Locker locker(group);
 		group->scheduleUpdateNearestMissionForGroup(player->getPlanetCRC());
 	}
-
-	/*awardReward();
-
-	awardFactionPoints();
-
-	removeMissionFromPlayer();*/
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {

@@ -121,9 +121,6 @@ class BountyMissionObjective extends MissionObjective {
 	@dirty
 	public native string getTargetZoneName();
 
-	private native void addToBountyLock();
-	private native void removeFromBountyLock(boolean immediately);
-
 	@preLocked
 	private native void removePlayerTargetObservers();
 	@preLocked
@@ -141,8 +138,6 @@ class BountyMissionObjective extends MissionObjective {
 	private native void handleNpcTargetKilled(Observable observable);
 	private native int handleNpcTargetReceivesDamage(ManagedObject arg1);
 	private native void handlePlayerKilled(ManagedObject arg1);
-	private native void handleDefenderAdded(ManagedObject arg1);
-	private native void handleDefenderDropped(ManagedObject arg1);
 
 	@dereferenced
 	@local

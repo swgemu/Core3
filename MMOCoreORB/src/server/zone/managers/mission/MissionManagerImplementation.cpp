@@ -453,8 +453,11 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	if (missionParent != datapad)
 		return;
 
+	uint64 targetId = 0;
+
 	if (mission->getTypeCRC() == MissionTypes::BOUNTY) {
-		removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), player->getObjectID());
+		targetId = mission->getTargetObjectId();
+		removeBountyHunterFromPlayerBounty(targetId, player->getObjectID());
 	}
 
 	Locker mlocker(mission);
@@ -466,6 +469,13 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	player->updateToDatabaseAllObjects(false);
 
 	mlocker.release();
+
+	if (targetId != 0) {
+		ManagedReference<CreatureObject*> target = server->getObject(targetId).castTo<CreatureObject*>();
+
+		if (target != NULL)
+			target->sendPvpStatusTo(player);
+	}
 
 	if (player->isGrouped() && player->getGroup() != NULL) {
 		Reference<GroupObject*> group = player->getGroup();
@@ -489,7 +499,7 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (mission->getTypeCRC() == MissionTypes::BOUNTY && ghost != NULL && ghost->isBountyLocked()) {
+	if (mission->getTypeCRC() == MissionTypes::BOUNTY && ghost != NULL && ghost->hasBhTef()) {
 		player->sendSystemMessage("You cannot abort a bounty hunter mission this soon after being in combat with the mission target.");
 		return;
 	}
