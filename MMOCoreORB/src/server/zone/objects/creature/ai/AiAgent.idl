@@ -641,6 +641,7 @@ class AiAgent extends CreatureObject {
 		synchronized (targetMutex) {
 			setFollowState(OBLIVIOUS);
 			setTargetObject(null);
+			clearState(CreatureState.PEACE);
 			//activateMovementEvent();
 		}
 	}
@@ -719,8 +720,12 @@ class AiAgent extends CreatureObject {
 
 	public void setFollowState(int state) {
 		synchronized (targetMutex) {
+			int oldState = followState;
 			clearPatrolPoints();
 			followState = state;
+			
+			if (oldState == LEASHING || state == LEASHING)
+				broadcastPvpStatusBitmask();
 		}
 	}
 
