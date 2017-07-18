@@ -10,6 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/badges/Badge.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "templates/manager/TemplateManager.h"
@@ -356,6 +357,17 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		} else if (skill->getSkillName().contains("force_discipline")) {
 			if (missionManager != NULL)
 				missionManager->updatePlayerBountyReward(creature->getObjectID(), ghost->calculateBhReward());
+		} else if (skill->getSkillName().contains("squadleader")) {
+			Reference<GroupObject*> group = creature->getGroup();
+
+			if (group != NULL && group->getLeader() == creature) {
+				Core::getTaskManager()->executeTask([group] () {
+					Locker locker(group);
+
+					group->removeGroupModifiers();
+					group->addGroupModifiers();
+				}, "UpdateGroupModsLambda");
+			}
 		}
 	}
 
@@ -494,6 +506,19 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		} else if (skill->getSkillName().contains("force_discipline")) {
 			if (missionManager != NULL)
 				missionManager->updatePlayerBountyReward(creature->getObjectID(), ghost->calculateBhReward());
+		} else if (skill->getSkillName().contains("squadleader")) {
+			Reference<GroupObject*> group = creature->getGroup();
+
+			if (group != NULL && group->getLeader() == creature) {
+				Core::getTaskManager()->executeTask([group] () {
+					Locker locker(group);
+
+					group->removeGroupModifiers();
+
+					if (group->hasSquadLeader())
+						group->addGroupModifiers();
+				}, "UpdateGroupModsLambda2");
+			}
 		}
 	}
 
@@ -573,6 +598,16 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	if (missionManager != NULL)
 		missionManager->removePlayerFromBountyList(creature->getObjectID());
+
+	Reference<GroupObject*> group = creature->getGroup();
+
+	if (group != NULL && group->getLeader() == creature) {
+		Core::getTaskManager()->executeTask([group] () {
+			Locker locker(group);
+
+			group->removeGroupModifiers();
+		}, "UpdateGroupModsLambda3");
+	}
 }
 
 void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient) {
