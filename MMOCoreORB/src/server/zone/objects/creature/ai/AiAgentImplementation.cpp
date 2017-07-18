@@ -1127,6 +1127,8 @@ void AiAgentImplementation::leash() {
 
 	CombatManager::instance()->forcePeace(asAiAgent());
 
+	broadcastPvpStatusBitmask();
+
 	if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
 		homeLocation.setReached(false);
 		addPatrolPoint(homeLocation);
@@ -2074,6 +2076,7 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::LEASHING:
 		if (!isRetreating()) {
 			setOblivious();
+			broadcastPvpStatusBitmask();
 			return setDestination();
 		}
 
