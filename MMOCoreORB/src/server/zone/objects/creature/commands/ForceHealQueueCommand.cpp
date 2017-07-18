@@ -342,7 +342,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 		}
 	}
 
-	if (healAmount == 0) {
+	if (amount == 0) {
 		if (healType == HEAL_POISON) {
 			target->getDamageOverTimeList()->sendDecreaseMessage(target, CreatureState::POISONED);
 		} else if (healType == HEAL_DISEASE) {
