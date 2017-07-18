@@ -45,6 +45,7 @@ class CellObject extends SceneObject {
 	// Gets called when delayed-load containerObjects is loaded
 	public native void onContainerLoaded();
 
+	@read
 	public boolean hasForceLoadObject() {
 		return forceLoadObjectCount.get() > 0;
 	}

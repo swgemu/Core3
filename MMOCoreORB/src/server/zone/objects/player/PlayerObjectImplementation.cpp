@@ -273,7 +273,7 @@ int PlayerObjectImplementation::calculateBhReward() {
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending player object baselines");
+	debug("sending player object baselines");
 
 	BaseMessage* play3 = new PlayerObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(play3);
@@ -392,25 +392,27 @@ void PlayerObjectImplementation::notifySceneReady() {
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
-	info("sending friendslist message  size " + String::valueOf(friendList.size()));
+	debug("sending friendslist message  size " + String::valueOf(friendList.size()));
 
 	ChatManager* chatManager = server->getChatManager();
 
 	friendList.resetUpdateCounter();
 	ignoreList.resetUpdateCounter();
 
+	auto parent = getParent().get();
+
 	ChatOnGetFriendsList* flist = new ChatOnGetFriendsList(_this.getReferenceUnsafeStaticCast());
-	getParent().get()->sendMessage(flist);
+	parent->sendMessage(flist);
 
 	ChatOnGetIgnoreList* ilist = new ChatOnGetIgnoreList(_this.getReferenceUnsafeStaticCast());
-	getParent().get()->sendMessage(ilist);
+	parent->sendMessage(ilist);
 
 	DeltaMessage* delta = new PlayerObjectDeltaMessage9(_this.getReferenceUnsafeStaticCast());
 	friendList.insertToDeltaMessage(delta);
 	ignoreList.insertToDeltaMessage(delta);
 	delta->close();
 
-	getParent().get()->sendMessage(delta);
+	parent->sendMessage(delta);
 }
 
 void PlayerObjectImplementation::sendMessage(BasePacket* msg) {

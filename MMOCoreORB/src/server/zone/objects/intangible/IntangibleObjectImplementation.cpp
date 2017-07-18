@@ -17,7 +17,7 @@ void IntangibleObjectImplementation::initializeTransientMembers() {
 }
 
 void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending intangible object baselines");
+	debug("sending intangible object baselines");
 
 	BaseMessage* itno3 = new IntangibleObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(itno3);

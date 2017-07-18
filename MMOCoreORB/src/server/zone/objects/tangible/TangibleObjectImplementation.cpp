@@ -104,7 +104,7 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending tano baselines");
+	debug("sending tano baselines");
 
 	TangibleObject* thisPointer = asTangibleObject();
 
@@ -446,7 +446,7 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 	//info("trying to remove defender");
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defenderList.get(i) == defender) {
-			info("removing defender");
+			debug("removing defender");
 
 			notifyObservers(ObserverEventType::DEFENDERDROPPED, defender);
 

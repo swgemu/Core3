@@ -126,6 +126,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
 		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
 		{ "runAwarenessLogicCheck", &LuaAiAgent::runAwarenessLogicCheck },
+		{ "runStartAwarenessInterrupt", &LuaAiAgent::runStartAwarenessInterrupt },
 		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
 		{ "setHomeLocation", &LuaAiAgent::setHomeLocation },
 		{ "setNoAiAggro", &LuaAiAgent::setNoAiAggro },
@@ -984,6 +985,14 @@ int LuaAiAgent::runAwarenessLogicCheck(lua_State* L) {
 	lua_pushboolean(L, ret);
 
 	return 1;
+}
+
+int LuaAiAgent::runStartAwarenessInterrupt(lua_State* L) {
+	SceneObject* target = static_cast<SceneObject*>(lua_touserdata(L, -1));
+
+	realObject->runStartAwarenessInterrupt(target);
+
+	return 0;
 }
 
 int LuaAiAgent::setConvoTemplate(lua_State* L) {

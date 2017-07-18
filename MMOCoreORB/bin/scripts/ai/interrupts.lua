@@ -46,7 +46,8 @@ end
 
 -- put this in a different function so that the generic checks are re-usable
 function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
-	if (pAgent == pObject) then return end
+	AiAgent(pAgent):runStartAwarenessInterrupt(pObject)
+	--[[if (pAgent == pObject) then return end
 	if (pAgent == nil or pObject == nil) then return end
 
 	local sceneObject = SceneObject1(pObject)
@@ -138,7 +139,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	end
 
 	aiAgent:stopWaiting();
-	aiAgent:executeBehavior();
+	aiAgent:executeBehavior();--]]
 end
 
 

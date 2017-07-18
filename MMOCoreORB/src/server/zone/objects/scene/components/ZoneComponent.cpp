@@ -22,7 +22,7 @@
 #include "server/zone/objects/intangible/TheaterObject.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
-	info("inserting to zone");
+	debug("inserting to zone");
 
 	if (newZone == NULL)
 		return;

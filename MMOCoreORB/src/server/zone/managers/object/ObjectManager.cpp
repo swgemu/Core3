@@ -839,7 +839,7 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid,
 	object->setLoggingName(newLogName.toString());
 
 	object->deploy(newLogName.toString());
-	info("deployed.." + newLogName.toString());
+	debug("deployed.." + newLogName.toString());
 
 	return object;
 }

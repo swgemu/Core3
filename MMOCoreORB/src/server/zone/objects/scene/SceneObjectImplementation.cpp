@@ -388,7 +388,7 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			objectMenuComponent = new LuaObjectMenuComponent(name);
-			info("New Lua ObjectMenuComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug("New Lua ObjectMenuComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
 			ComponentManager::instance()->putComponent(name, objectMenuComponent);
 		} else {
 			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
@@ -410,7 +410,7 @@ void SceneObjectImplementation::setContainerComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			containerComponent = new LuaContainerComponent(name);
-			info("New Lua ContainerComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug("New Lua ContainerComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
 			ComponentManager::instance()->putComponent(name, containerComponent);
 		} else {
 			error("ContainerComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());

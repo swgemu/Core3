@@ -2813,7 +2813,7 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 Reference<ZoneClientSession*> CreatureObjectImplementation::getClient() {
-	return owner.get();
+	return owner.WeakReference::get();
 }
 
 void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, const String& stringName, byte color, int damage, bool broadcast) {
@@ -2910,8 +2910,10 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 }
 
 bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
-	if(object->isCreatureObject())
-		return isAttackableBy(object->asCreatureObject());
+	auto creo = object->asCreatureObject();
+
+	if (creo != nullptr)
+		return isAttackableBy(creo);
 
 	return isAttackableBy(object, false);
 }

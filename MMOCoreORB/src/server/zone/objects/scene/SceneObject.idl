@@ -211,6 +211,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	/**
+	 * Logs a debug message
+	 * @pre {}
+	 * @post {debug message has been printed to console and file }
+	 * @param msg debug message to print
+	 */
+	@dirty
+	public void debug(final string msg) {
+		Logger.debug(msg);
+	}
+
+	/**
 	 * Returns number of specified game objects in range
 	 * @pre { this object is locked }
 	 * @post { this object is locked }

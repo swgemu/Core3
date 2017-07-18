@@ -496,6 +496,121 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	}
 }
 
+void AiAgentImplementation::runStartAwarenessInterrupt(SceneObject* pObject) {
+	AiAgent* thisAgent = asAiAgent();
+
+	if (thisAgent == pObject) return;
+
+	if (pObject == nullptr) return;
+
+	CreatureObject* creoObject = pObject->asCreatureObject();
+
+	if (!creoObject) return; //-- don't aggro TANOs (lairs, turrets, etc)
+
+	if (isDead() || isIncapacitated()) return;
+
+	if (creoObject->isDead() || creoObject->isIncapacitated()) return;
+
+	if (isInCombat()) return;
+
+	float levelDiff = creoObject->getLevel() - getLevel();
+	float mod = Math::max(0.04f, Math::min((1.f - (levelDiff / 20.f)), 1.2f));
+
+	float radius = getAggroRadius();
+
+	if (radius == 0) {
+		radius = DEFAULTAGGRORADIUS;
+	}
+
+	radius = radius*mod;
+
+	auto inRange = creoObject->isInRange3d(thisAgent, radius);
+
+	auto pFollow = followObject.get();
+
+	bool alertedTimeIsPast = true;
+	Time* alert = getAlertedTime();
+
+	if (alert != NULL)
+		alertedTimeIsPast = alert->isPast();
+
+	if (isStalker()
+		&& creoObject->isPlayerCreature()
+		&& isAggressiveTo(creoObject)
+		&& creoObject->isInRange3d(thisAgent, radius*2)) {
+
+		if (pFollow == nullptr && !inRange) {
+
+			if (CollisionManager::checkLineOfSight(thisAgent, pObject)) {
+				setStalkObject(pObject);
+				//setAlertDuration(10000);
+				if (alert != NULL) {
+					alert->updateToCurrentTime();
+					alert->addMiliTime(10000);
+				}
+
+				if (creoObject->hasSkill("outdoors_ranger_novice")) {
+					StringIdChatParameter param("@skl_use:notify_stalked");
+					param.setTO(getDisplayedName());
+
+					creoObject->sendSystemMessage(param);
+				}
+			}
+		} else if (inRange || creoObject->getCurrentSpeed() <= creoObject->getWalkSpeed()) {
+			if (CollisionManager::checkLineOfSight(thisAgent, pObject)) { addDefender(pObject); }
+		} else {
+			setOblivious();
+		}
+	} else if (isAggressiveTo(creoObject) && inRange) {
+		if (CollisionManager::checkLineOfSight(thisAgent, pObject)) { addDefender(pObject); }
+	} else if (pFollow == nullptr && inRange && isCreature() && (creoObject->getCurrentSpeed() >= creoObject->getWalkSpeed())) {
+		if (CollisionManager::checkLineOfSight(thisAgent, pObject)) {
+			setWatchObject(pObject);
+			//setAlertDuration(10000); //-- TODO (dannuic): make this wait time more dynamic
+
+			if (alert != NULL) {
+				alert->updateToCurrentTime();
+				alert->addMiliTime(10000);
+			}
+
+			showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
+		}
+	} else if (pObject == pFollow && alertedTimeIsPast && (getFollowState() == WATCHING)) {
+		setOblivious();
+	} else if (pObject == pFollow && inRange && pObject->getParent() == nullptr) {
+		//local sceneFollow = SceneObject2(pFollow)
+		auto creoFollow = pFollow->asCreatureObject();
+		if (creoFollow != nullptr) {
+			auto creoLevel = creoFollow->getLevel();
+
+			auto aiFollow = creoFollow->asAiAgent();
+			auto isBackwardsAggressive = aiFollow != nullptr && aiFollow->isAggressiveTo(thisAgent);
+
+			if (isCreature() && getLevel() * mod < creoLevel
+			    && (isBackwardsAggressive || creoFollow->isPlayerCreature()) &&
+			    creoObject->getCurrentSpeed() > 2 * creoObject->getWalkSpeed() and creoObject->isFacingObject(thisAgent)) {
+
+				if (CollisionManager::checkLineOfSight(thisAgent, pObject)) {
+					runAway(aiFollow, 64 - radius);
+					//setAlertDuration(10000);
+
+					if (alert != NULL) {
+						alert->updateToCurrentTime();
+						alert->addMiliTime(10000);
+					}
+				}
+			}
+		} else {
+			setOblivious();
+		}
+	} else if (! (pObject == pFollow && getFollowState() == FOLLOWING)) {
+		setOblivious();
+	}
+
+	stopWaiting();
+	activateMovementEvent();
+}
+
 bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (pObject == NULL)
 		return false;

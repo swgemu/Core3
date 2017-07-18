@@ -42,7 +42,6 @@ void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
 	session->sendPacket(msg);
 }
 
-
 //this needs to be run in a different thread
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -169,6 +168,10 @@ void ZoneClientSessionImplementation::resetPacketCheckupTime() {
 
 void ZoneClientSessionImplementation::info(const String& msg, bool force) {
 	session->info(msg, force);
+}
+
+void ZoneClientSessionImplementation::debug(const String& msg) {
+	session->debug(msg);
 }
 
 void ZoneClientSessionImplementation::error(const String& msg) {

@@ -25,7 +25,7 @@ void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* al
 }
 
 void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending rnco baselines");
+	debug("sending rnco baselines");
 
 	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(rnco3);

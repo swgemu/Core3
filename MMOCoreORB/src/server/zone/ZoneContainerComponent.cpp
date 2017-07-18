@@ -270,7 +270,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		if (zone == NULL)
 			return false;
 
-		object->info("removing from zone");
+		object->debug("removing from zone");
 
 		Locker zoneLocker(zone);
 
@@ -392,7 +392,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 	//activeAreas.removeAll();
 
-	object->info("removed from zone");
+	object->debug("removed from zone");
 
 	object->notifyRemoveFromZone();
 
