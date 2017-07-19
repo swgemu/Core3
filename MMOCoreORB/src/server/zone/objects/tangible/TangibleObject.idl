@@ -11,6 +11,7 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 include templates.params.OptionBitmask;
+include templates.params.ObserverEventType;
 import server.zone.objects.factorycrate.FactoryCrate;
 include server.zone.objects.scene.SceneObjectType;
 include server.zone.objects.scene.variables.CustomizationVariables;
@@ -588,6 +589,8 @@ class TangibleObject extends SceneObject {
 
 	public abstract void setFaction(unsigned int crc) {
 		faction = crc;
+
+		notifyObservers(ObserverEventType.FACTIONCHANGED);
 	}
 
 	@read

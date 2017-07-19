@@ -71,7 +71,7 @@ public:
 
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
+			if (member == NULL || !member->isPlayerCreature())
 				continue;
 
 			if (!isValidGroupAbilityTarget(leader, member, false))

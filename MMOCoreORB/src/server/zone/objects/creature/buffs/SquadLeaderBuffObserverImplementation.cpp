@@ -16,7 +16,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 
 int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType != ObserverEventType::PARENTCHANGED && eventType != ObserverEventType::BHTEFCHANGED)
+	if (eventType != ObserverEventType::PARENTCHANGED && eventType != ObserverEventType::BHTEFCHANGED && eventType != ObserverEventType::FACTIONCHANGED)
 		return 0;
 
 	ManagedReference<SquadLeaderBuff* > strongBuff = buff.get();

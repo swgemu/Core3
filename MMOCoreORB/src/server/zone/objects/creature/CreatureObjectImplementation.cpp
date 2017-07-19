@@ -3286,6 +3286,8 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, petsToStore);
 		task->execute();
 	}
+
+	notifyObservers(ObserverEventType::FACTIONCHANGED);
 }
 
 void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destroyContainedObjects) {

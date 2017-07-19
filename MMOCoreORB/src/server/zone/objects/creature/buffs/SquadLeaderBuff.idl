@@ -8,6 +8,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.buffs.SquadLeaderBuffObserver;
+include server.zone.objects.creature.commands.SquadLeaderCommand;
 include server.zone.managers.object.ObjectManager;
 include server.zone.objects.creature.buffs.BuffType;
 include templates.params.ObserverEventType;
@@ -29,7 +30,9 @@ class SquadLeaderBuff extends Buff {
 	public void finalize() {
 		player.dropObserver(ObserverEventType.PARENTCHANGED, playerObserver);
 		player.dropObserver(ObserverEventType.BHTEFCHANGED, playerObserver);
+		player.dropObserver(ObserverEventType.FACTIONCHANGED, playerObserver);
 		leader.dropObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
+		leader.dropObserver(ObserverEventType.FACTIONCHANGED, leaderObserver);
 	}
 
 	@dirty
@@ -68,19 +71,7 @@ class SquadLeaderBuff extends Buff {
 		if (player == null || leader == null)
 			return false;
 
-		PlayerObject ghost = player.getPlayerObject();
-
-		if (ghost == null || ghost.hasBhTef())
-			return false;
-
-		if (player.getRootParent() != leader.getRootParent())
-			return false;
-
-		if (player.getZone() != leader.getZone()) {
-			return false;
-		}
-
-		return true;
+		return SquadLeaderCommand.isValidGroupAbilityTarget(leader, player, false);
 	}
 
 	@dirty
@@ -104,6 +95,8 @@ class SquadLeaderBuff extends Buff {
 
 		player.registerObserver(ObserverEventType.PARENTCHANGED, playerObserver);
 		player.registerObserver(ObserverEventType.BHTEFCHANGED, playerObserver);
+		player.registerObserver(ObserverEventType.FACTIONCHANGED, playerObserver);
 		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
+		leader.registerObserver(ObserverEventType.FACTIONCHANGED, leaderObserver);
 	}
 }

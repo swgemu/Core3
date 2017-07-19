@@ -199,6 +199,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		ghost->updateInRangeBuildingPermissions();
 	}
+
+	notifyObservers(ObserverEventType::FACTIONCHANGED);
 }
 
 void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {

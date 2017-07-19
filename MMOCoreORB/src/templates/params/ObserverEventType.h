@@ -84,7 +84,8 @@ public:
 		CREATUREREVIVED,			// ManagedObject arg1 = healer (optional), long arg2 = 0
 		ZONESWITCHED,				// ManagedObject arg1 = null, long arg2 = 0
 		TUNEDCRYSTAL,				// ManagedObject arg1 = crystal, long arg2 = 0
-		BHTEFCHANGED,					// ManagedObject arg1 = null, long arg2 = 0
+		BHTEFCHANGED,				// ManagedObject arg1 = null, long arg2 = 0
+		FACTIONCHANGED,				// ManagedObject arg1 = null, long arg2 = 0
 	};
 };
 

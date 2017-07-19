@@ -22,7 +22,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (creature->getZone() == NULL) {
+		if (zone == NULL) {
 			return false;
 		}
 
@@ -87,7 +87,7 @@ public:
 		for (int i = 1; i < group->getGroupSize(); ++i) {
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || !member->isPlayerCreature() || member->getZone() != creature->getZone())
+			if (member == NULL || !member->isPlayerCreature())
 				continue;
 
 			if (!isValidGroupAbilityTarget(creature, member, false))

@@ -66,7 +66,7 @@ public:
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || member->getZone() != leader->getZone())
+			if (member == NULL)
 				continue;
 
 			if (!isValidGroupAbilityTarget(leader, member, true))

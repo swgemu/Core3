@@ -154,10 +154,10 @@ class GroupObject extends SceneObject {
 
 	@preLocked
 	@arg1preLocked
-	public native void addGroupModifiers(CreatureObject player);
+	private native void addGroupModifiers(CreatureObject player);
 
 	@preLocked
-	public native void removeGroupModifiers(CreatureObject player);
+	private native void removeGroupModifiers(CreatureObject player);
 
 	@dirty
 	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
