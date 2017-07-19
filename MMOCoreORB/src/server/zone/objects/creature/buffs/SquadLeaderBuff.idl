@@ -47,23 +47,40 @@ class SquadLeaderBuff extends Buff {
 		if (player == null)
 			return;
 
-		PlayerObject ghost = player.getPlayerObject();
-
-		if (ghost == null || leader == null || player.getGroupID() != leader.getGroupID()) {
+		if (leader == null || player.getGroupID() != leader.getGroupID()) {
 			player.removeBuff(super.buffCRC);
 			return;
 		}
 
-		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING) && !ghost.hasBhTef()) {
-			super.activate();
-			player.updateTerrainNegotiation();
-		}
+		doActivate(true);
 	}
 
 	@preLocked
-	public void deactivate() {
-		super.deactivate();
-		player.updateTerrainNegotiation();
+	public void doActivate(boolean doCheck) {
+		if (doCheck && !qualifiesForActivation())
+			return;
+
+		super.activate();
+	}
+
+	@dirty
+	public boolean qualifiesForActivation() {
+		if (player == null || leader == null)
+			return false;
+
+		PlayerObject ghost = player.getPlayerObject();
+
+		if (ghost == null || ghost.hasBhTef())
+			return false;
+
+		if (player.getRootParent() != leader.getRootParent())
+			return false;
+
+		if (player.getZone() != leader.getZone()) {
+			return false;
+		}
+
+		return true;
 	}
 
 	@dirty
