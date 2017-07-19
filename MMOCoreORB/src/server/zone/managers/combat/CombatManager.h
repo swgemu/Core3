@@ -163,8 +163,8 @@ public:
 	//all the combat math will go here
 protected:
 
-	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data);
-	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
+	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef);
+	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef);
 	void applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage);
 	void applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	uint8 getPoolForDot(uint64 dotType, int poolsToDamage);
@@ -225,6 +225,8 @@ protected:
 	 * returns false on insufficient
 	 */
 	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data);
+
+	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
 };
 
 #endif /* COMBATMANAGER_H_ */

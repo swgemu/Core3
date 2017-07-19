@@ -168,7 +168,7 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	//info("entering doCombat action with data ", true);
 
-	if(data.getCommand() == NULL)
+	if (data.getCommand() == NULL)
 		return -3;
 
 	if (!startCombat(attacker, defenderObject, true, data.getHitIncapTarget()))
@@ -187,14 +187,14 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	//info("past special attack cost", true);
 
 	int damage = 0;
-	damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+	bool shouldGcwTef = false, shouldBhTef = false;
+	damage = doTargetCombatAction(attacker, weapon, defenderObject, data, &shouldGcwTef, &shouldBhTef);
 
 	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
-
 		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
 
-		for(int i=0; i<areaDefenders->size(); i++) {
-			damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
+		for (int i=0; i<areaDefenders->size(); i++) {
+			damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data, &shouldGcwTef, &shouldBhTef);
 		}
 	}
 
@@ -209,23 +209,38 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 			weapon->decreasePowerupUses(attacker);
 	}
 
+	// Update PvP TEF Duration
+	if (shouldGcwTef || shouldBhTef) {
+		ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
+
+		if (attackingCreature != NULL) {
+			PlayerObject* ghost = attackingCreature->getPlayerObject();
+
+			if (ghost != NULL) {
+				Locker olocker(attackingCreature, attacker);
+				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+			}
+		}
+	}
+
 	return damage;
 }
 
-int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
+int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command) {
 
-	if(command == NULL)
+	if (command == NULL)
 		return -3;
 
 	const CreatureAttackData data = CreatureAttackData("", command, defender->getObjectID());
 	int damage = 0;
 
-	if(weapon != NULL){
+	if (weapon != NULL){
 		damage = doTargetCombatAction(attacker, weapon, defender, data);
 
 		if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
 			Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defender, data);
-			for(int i=0; i<areaDefenders->size(); i++) {
+
+			for (int i=0; i<areaDefenders->size(); i++) {
 				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
 			}
 		}
@@ -234,7 +249,7 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef) {
 	int damage = 0;
 
 	Locker clocker(tano, attacker);
@@ -251,7 +266,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		if (defender->getWeapon() == NULL)
 			return 0;
 
-		damage = doTargetCombatAction(attacker, weapon, defender, data);
+		damage = doTargetCombatAction(attacker, weapon, defender, data, shouldGcwTef, shouldBhTef);
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
@@ -260,10 +275,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		broadcastCombatAction(attacker, tano, weapon, data, damage, 0x01, 0);
 
 		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage, data);
-
 	}
-
-
 
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
@@ -290,7 +302,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef) {
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
@@ -314,12 +326,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-
-
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
 		broadcastCombatAction(attacker, defender, weapon, data, 0, hitVal, 0);
+		checkForTefs(attacker, defender, shouldGcwTef, shouldBhTef);
 		return 0;
 		break;
 	case BLOCK:
@@ -347,8 +358,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	// Apply states first
 	applyStates(attacker, defender, data);
 
-
-
 	//if it's a state only attack (intimidate, warcry, wookiee roar) don't apply dots or break combat delays
 	if (!data.isStateOnlyAttack()) {
 		if (defender->hasAttackDelay())
@@ -366,6 +375,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	}
 
 	broadcastCombatAction(attacker, defender, weapon, data, damage, hitVal, hitLocation);
+
+	checkForTefs(attacker, defender, shouldGcwTef, shouldBhTef);
 
 	return damage;
 }
@@ -2718,4 +2729,21 @@ void CombatManager::initializeDefaultAttacks() {
 	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_medium_3"));
 	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_medium_3"));
 	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_medium_3"));
+}
+
+void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef) {
+	if (*shouldGcwTef && *shouldBhTef)
+		return;
+
+	ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
+	ManagedReference<CreatureObject*> targetCreature = defender->isPet() || defender->isVehicleObject() ? defender->getLinkedCreature() : defender;
+
+	if (attackingCreature != NULL && targetCreature != NULL && attackingCreature->isPlayerCreature() && targetCreature->isPlayerCreature() && !areInDuel(attackingCreature, targetCreature)) {
+
+		if (!(*shouldGcwTef) && (attackingCreature->getFaction() != targetCreature->getFaction()) && (attackingCreature->getFactionStatus() == FactionStatus::OVERT) && (targetCreature->getFactionStatus() == FactionStatus::OVERT))
+			*shouldGcwTef = true;
+
+		if (!(*shouldBhTef) && (attackingCreature->hasBountyMissionFor(targetCreature) || targetCreature->hasBountyMissionFor(attackingCreature)))
+			*shouldBhTef = true;
+	}
 }
