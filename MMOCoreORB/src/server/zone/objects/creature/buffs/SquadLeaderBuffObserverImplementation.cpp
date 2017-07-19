@@ -42,36 +42,21 @@ int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int even
 	Reference<SquadLeaderBuffObserver*> thisObserver = _this.getReferenceUnsafeStaticCast();
 
 	Core::getTaskManager()->executeTask([=] () {
-		thisObserver->handleObserverEvent(eventType, player, leader, strongBuff);
+		thisObserver->handleObserverEvent(player, strongBuff);
 	}, "HandleSquadLeaderObserverEventLambda");
 
 	return 0;
 }
 
-void SquadLeaderBuffObserverImplementation::handleObserverEvent(unsigned int eventType, CreatureObject* player, CreatureObject* leader, SquadLeaderBuff* slBuff) {
+void SquadLeaderBuffObserverImplementation::handleObserverEvent(CreatureObject* player, SquadLeaderBuff* slBuff) {
 	Locker locker(player);
 	Locker clocker(slBuff, player);
 
-	auto ghost = player->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
-
-	if (eventType == ObserverEventType::PARENTCHANGED) {
-		if (player->getRootParent() == leader->getRootParent()) {
-			if (!slBuff->isActive() && !ghost->hasBhTef()) {
-				slBuff->activate();
-			}
-		} else if (slBuff->isActive()) {
-			slBuff->deactivate();
+	if (slBuff->qualifiesForActivation()) {
+		if (!slBuff->isActive()) {
+			slBuff->doActivate(false);
 		}
-	} else if (eventType == ObserverEventType::BHTEFCHANGED) {
-		if (ghost->hasBhTef()) {
-			if (slBuff->isActive()) {
-				slBuff->deactivate();
-			}
-		} else if (!slBuff->isActive() && player->getRootParent() == leader->getRootParent()) {
-			slBuff->activate();
-		}
+	} else if (slBuff->isActive()) {
+		slBuff->deactivate();
 	}
 }

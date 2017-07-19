@@ -20,5 +20,5 @@ class SquadLeaderBuffObserver extends Observer {
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
-	public native void handleObserverEvent(unsigned int eventType, CreatureObject player, CreatureObject leader, SquadLeaderBuff slBuff);
+	public native void handleObserverEvent(CreatureObject player, SquadLeaderBuff slBuff);
 }
