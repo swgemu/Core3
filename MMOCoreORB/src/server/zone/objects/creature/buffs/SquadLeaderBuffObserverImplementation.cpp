@@ -11,35 +11,67 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/group/GroupObject.h"
 
 int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType != ObserverEventType::PARENTCHANGED)
+	if (eventType != ObserverEventType::PARENTCHANGED && eventType != ObserverEventType::BHTEFCHANGED)
 		return 0;
 
-	ManagedReference<SquadLeaderBuff* > buff = this->buff.get();
+	ManagedReference<SquadLeaderBuff* > strongBuff = buff.get();
 
-	if (buff == NULL)
+	if (strongBuff == NULL)
 		return 1;
 
-	Locker locker(buff);
-
-	ManagedReference<CreatureObject*> player = buff->getPlayer();
+	ManagedReference<CreatureObject*> player = strongBuff->getPlayer();
 	if (player == NULL)
 		return 1;
 
-	ManagedReference<CreatureObject*> leader = buff->getLeader();
+	ManagedReference<CreatureObject*> leader = strongBuff->getLeader();
+
 	if (leader == NULL || player->getGroup() == NULL || player->getGroup()->getLeader() != leader) {
-		player->removeBuff(buff->getBuffCRC());
+		Core::getTaskManager()->executeTask([=] () {
+			Locker locker(player);
+			Locker clocker(strongBuff, player);
+			player->removeBuff(strongBuff->getBuffCRC());
+		}, "SquadLeaderObserverRemoveBuffLambda");
 		return 1;
 	}
 
-	if (player->getParentRecursively(SceneObjectType::BUILDING) == leader->getParentRecursively(SceneObjectType::BUILDING)) {
-		if (!buff->isActive())
-			buff->activate();
-	} else if (buff->isActive())
-		buff->deactivate();
+	Reference<SquadLeaderBuffObserver*> thisObserver = _this.getReferenceUnsafeStaticCast();
+
+	Core::getTaskManager()->executeTask([=] () {
+		thisObserver->handleObserverEvent(eventType, player, leader, strongBuff);
+	}, "HandleSquadLeaderObserverEventLambda");
 
 	return 0;
+}
+
+void SquadLeaderBuffObserverImplementation::handleObserverEvent(unsigned int eventType, CreatureObject* player, CreatureObject* leader, SquadLeaderBuff* slBuff) {
+	Locker locker(player);
+	Locker clocker(slBuff, player);
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (eventType == ObserverEventType::PARENTCHANGED) {
+		if (player->getRootParent() == leader->getRootParent()) {
+			if (!slBuff->isActive() && !ghost->hasBhTef()) {
+				slBuff->activate();
+			}
+		} else if (slBuff->isActive()) {
+			slBuff->deactivate();
+		}
+	} else if (eventType == ObserverEventType::BHTEFCHANGED) {
+		if (ghost->hasBhTef()) {
+			if (slBuff->isActive()) {
+				slBuff->deactivate();
+			}
+		} else if (!slBuff->isActive() && player->getRootParent() == leader->getRootParent()) {
+			slBuff->activate();
+		}
+	}
 }

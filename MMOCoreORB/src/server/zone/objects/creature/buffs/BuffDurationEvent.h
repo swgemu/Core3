@@ -34,7 +34,11 @@ namespace server {
 				Locker locker(creature);
 				Locker clocker(buff, creature);
 
-				creature->removeBuff(buff);
+				if (buff->checkRenew()) {
+					creature->renewBuff(buff->getBuffCRC(), buff->getBuffDuration());
+				} else {
+					creature->removeBuff(buff);
+				}
 
 			}
 
