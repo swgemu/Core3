@@ -1341,7 +1341,7 @@ class CreatureObject extends TangibleObject {
 		lastSuccessfulCombatAction.updateToCurrentTime();
 	}
 
-	public void updatePostureChangeDelay(int delay) {
+	public void updatePostureChangeDelay(unsigned long delay) {
 		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeDelay", delay);
 	}
 
@@ -1421,7 +1421,7 @@ class CreatureObject extends TangibleObject {
 		}
 	}
 
-	public void updateCooldownTimer(final string coooldownTimer, unsigned int miliSecondsToAdd = 0) {
+	public void updateCooldownTimer(final string coooldownTimer, unsigned long miliSecondsToAdd = 0) {
 		if (miliSecondsToAdd != 0) {
 			cooldownTimerMap.updateToCurrentAndAddMili(coooldownTimer, miliSecondsToAdd);
 		} else {
@@ -1439,7 +1439,7 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap.getTime(cooldown);
 	}
 
-	public void addCooldown(final string name, unsigned int miliseconds) {
+	public void addCooldown(final string name, unsigned long miliseconds) {
 		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
 	}
 
