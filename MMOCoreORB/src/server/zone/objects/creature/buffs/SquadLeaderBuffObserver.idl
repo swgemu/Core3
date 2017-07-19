@@ -8,15 +8,17 @@ include engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.buffs.SquadLeaderBuff;
+import server.zone.objects.creature.CreatureObject;
 
 class SquadLeaderBuffObserver extends Observer {
 	@weakReference
 	protected SquadLeaderBuff buff;
-	
+
 	public SquadLeaderBuffObserver(SquadLeaderBuff b) {
 		buff = b;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
+	public native void handleObserverEvent(unsigned int eventType, CreatureObject player, CreatureObject leader, SquadLeaderBuff slBuff);
 }

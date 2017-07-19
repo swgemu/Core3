@@ -251,6 +251,8 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	object->notifyInsertToZone(zone);
 
+	object->notifyObservers(ObserverEventType::PARENTCHANGED, NULL);
+
 	return true;
 }
 

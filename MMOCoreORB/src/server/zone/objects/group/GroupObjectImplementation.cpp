@@ -341,6 +341,8 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	buff->setSkillModifier("private_group_melee_defense", leader->getSkillMod("group_melee_defense"));
 	buff->setSkillModifier("burst_run", leader->getSkillMod("group_burst_run"));
 	player->addBuff(buff);
+
+	buff->addObservers();
 }
 
 void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {

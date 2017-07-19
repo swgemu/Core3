@@ -36,10 +36,12 @@ class SingleUseBuff extends Buff {
 		}
 	}
 
+	@read
 	public unsigned int getCommandCRC() {
 		return commandCRC;
 	}
 
+	@dirty
 	public CreatureObject getPlayer() {
 		return player;
 	}

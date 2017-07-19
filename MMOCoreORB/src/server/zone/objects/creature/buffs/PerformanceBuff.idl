@@ -9,11 +9,9 @@ import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 
 class PerformanceBuff extends Buff {
-	
 	protected float strength;
 	protected int type;
-	
-	
+
 	public PerformanceBuff(CreatureObject creo, unsigned int buffCRC, float value, int duration, int typeOfBuff) {
 		super(creo, buffCRC, duration, BuffType.PERFORMANCE);
 		strength = value;
@@ -21,12 +19,11 @@ class PerformanceBuff extends Buff {
 	}
 
 	public native void activate(boolean applyModifiers);
-	
-	public native float getBuffStrength() {
+
+	@read
+	public float getBuffStrength() {
 		return strength;
 	}
-	
+
 	public native void deactivate(boolean removeModifiers);
-
-
 }

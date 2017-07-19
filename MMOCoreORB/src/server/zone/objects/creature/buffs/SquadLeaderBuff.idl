@@ -5,7 +5,7 @@
 package server.zone.objects.creature.buffs;
 
 import server.zone.objects.creature.CreatureObject;
-
+import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.buffs.SquadLeaderBuffObserver;
 include server.zone.managers.object.ObjectManager;
@@ -24,26 +24,20 @@ class SquadLeaderBuff extends Buff {
 
 		player = creo;
 		leader = lead;
-
-		playerObserver = new SquadLeaderBuffObserver(this);
-		ObjectManager.instance().persistObject(playerObserver, 1, "buffs");
-
-		leaderObserver = new SquadLeaderBuffObserver(this);
-		ObjectManager.instance().persistObject(leaderObserver, 1, "buffs");
-
-		player.registerObserver(ObserverEventType.PARENTCHANGED, playerObserver);
-		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 	}
 
 	public void finalize() {
 		player.dropObserver(ObserverEventType.PARENTCHANGED, playerObserver);
+		player.dropObserver(ObserverEventType.BHTEFCHANGED, playerObserver);
 		leader.dropObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 	}
 
+	@dirty
 	public CreatureObject getPlayer() {
 		return player;
 	}
 
+	@dirty
 	public CreatureObject getLeader() {
 		return leader;
 	}
@@ -53,12 +47,14 @@ class SquadLeaderBuff extends Buff {
 		if (player == null)
 			return;
 
-		if (leader == null || player.getGroupID() != leader.getGroupID()) {
+		PlayerObject ghost = player.getPlayerObject();
+
+		if (ghost == null || leader == null || player.getGroupID() != leader.getGroupID()) {
 			player.removeBuff(super.buffCRC);
 			return;
 		}
 
-		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING)) {
+		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING) && !ghost.hasBhTef()) {
 			super.activate();
 			player.updateTerrainNegotiation();
 		}
@@ -68,5 +64,29 @@ class SquadLeaderBuff extends Buff {
 	public void deactivate() {
 		super.deactivate();
 		player.updateTerrainNegotiation();
+	}
+
+	@dirty
+	public boolean checkRenew() {
+		if (leader == null || player == null || player.getGroupID() != leader.getGroupID()) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@preLocked
+	public void addObservers() {
+		SquadLeaderBuffObserver playObserver = new SquadLeaderBuffObserver(this);
+		ObjectManager.instance().persistObject(playObserver, 1, "buffs");
+		playerObserver = playObserver;
+
+		SquadLeaderBuffObserver leadObserver = new SquadLeaderBuffObserver(this);
+		ObjectManager.instance().persistObject(leadObserver, 1, "buffs");
+		leaderObserver = leadObserver;
+
+		player.registerObserver(ObserverEventType.PARENTCHANGED, playerObserver);
+		player.registerObserver(ObserverEventType.BHTEFCHANGED, playerObserver);
+		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 	}
 }

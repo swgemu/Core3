@@ -41,6 +41,9 @@ public:
 			ghost->updateInRangeBuildingPermissions();
 			player->clearPvpStatusBit(CreatureFlag::TEF);
 		}
+
+		if (!ghost->hasBhTef())
+			player->notifyObservers(ObserverEventType::BHTEFCHANGED);
 	}
 };
 
