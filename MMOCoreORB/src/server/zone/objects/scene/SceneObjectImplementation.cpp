@@ -442,23 +442,22 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
-	if (!forceLoad && !containerObjects.isLoaded())
-		return;
+	if (forceLoad || containerObjects.isLoaded() || isASubChildOf(player)) {
+		//sending all objects by default
+		VectorMap<uint64, ManagedReference<SceneObject* > > objects;
+		getContainerObjects(objects);
 
-	//sending all objects by default
-	VectorMap<uint64, ManagedReference<SceneObject* > > objects;
-	getContainerObjects(objects);
+		for (int j = 0; j < objects.size(); ++j) {
+			SceneObject* containerObject = objects.get(j);
 
-	for (int j = 0; j < objects.size(); ++j) {
-		SceneObject* containerObject = objects.get(j);
+			if (containerObject == NULL)
+				continue;
 
-		if (containerObject == NULL)
-			continue;
-
-		if (containerObject->isInQuadTree()) {
-			notifyInsert(containerObject);
-		} else {
-			containerObject->sendTo(player, true, false);
+			if (containerObject->isInQuadTree()) {
+				notifyInsert(containerObject);
+			} else {
+				containerObject->sendTo(player, true, false);
+			}
 		}
 	}
 }
