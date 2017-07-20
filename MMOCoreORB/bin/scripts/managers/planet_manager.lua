@@ -481,7 +481,6 @@ talus = {
 		{"quarantined_building",3886,-2848,32},
 		{"rebel_camp",3100,-4044,32},
 		{"rebel_installation",2371,-4989,50},
-		{"red_fire",-1833,1437,32},
 		{"ruined_lookout_tower",-4382,2673,32},
 		{"ruins_central_1",-1394,2117,32},
 		{"ruins_central_2",-1600,-540,32},
