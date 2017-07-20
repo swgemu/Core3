@@ -30,8 +30,6 @@ public:
 			return;
 		}
 
-		uint32 pvpStatusBitmask = player->getPvpStatusBitmask();
-
 		if (player->getFutureFactionStatus() != -1)
 			return;
 

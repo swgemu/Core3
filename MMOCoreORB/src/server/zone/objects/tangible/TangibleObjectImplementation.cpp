@@ -187,11 +187,6 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 					continue;
 				}
 			}
-
-			if (pvpStatusBitmask & CreatureFlag::PLAYER)
-				pvpStatusBitmask &= ~CreatureFlag::PLAYER;
-
-			pet->setPvpStatusBitmask(pvpStatusBitmask);
 		}
 
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, petsToStore);
@@ -272,6 +267,27 @@ void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool noti
 	pvpStatusBitmask = bitmask;
 
 	broadcastPvpStatusBitmask();
+
+	if (isPlayerCreature()) {
+		PlayerObject* ghost = asCreatureObject()->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		if (bitmask & CreatureFlag::PLAYER)
+			bitmask &= ~CreatureFlag::PLAYER;
+
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			Reference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet == NULL)
+				continue;
+
+			Locker clocker(pet, asTangibleObject());
+
+			pet->setPvpStatusBitmask(bitmask);
+		}
+	}
 }
 
 void TangibleObjectImplementation::setIsCraftedEnhancedItem(bool value) {
