@@ -903,7 +903,7 @@ class AiAgent extends CreatureObject {
 
 	@dirty
 	protected float getReducedResist(float value) {
-		if (super.shockWounds <= 500) {
+		if (super.shockWounds <= 500 || value == -1) {
 			return value;
 		}
 
