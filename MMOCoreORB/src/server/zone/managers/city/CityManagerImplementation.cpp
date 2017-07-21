@@ -584,7 +584,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 
 	StringIdChatParameter emailBody("@city/city:treasury_withdraw_body");
 	emailBody.setDI(value);
-	emailBody.setTO(mayor->getObjectID());
+	emailBody.setTO(mayor->getFirstName());
 	emailBody.setTT(reason);
 
 	sendMail(city, "@city/city:treasury_withdraw_from", "@city/city:treasury_withdraw_subject", emailBody, NULL);

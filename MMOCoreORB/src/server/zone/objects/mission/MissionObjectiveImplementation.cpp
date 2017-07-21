@@ -45,7 +45,8 @@ Reference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
 void MissionObjectiveImplementation::activate() {
 	if (!activated) {
 		activated = true;
-		timeRemaining -= missionStartTime.miliDifference();
+		int64 timeElapsed = missionStartTime.miliDifference();
+		int64 timeRemaining = MISSIONDURATION - timeElapsed;
 
 		if (timeRemaining < 1) {
 			timeRemaining = 1;
@@ -74,6 +75,8 @@ void MissionObjectiveImplementation::complete() {
 		Locker locker(group);
 		group->scheduleUpdateNearestMissionForGroup(player->getPlanetCRC());
 	}
+
+	clearFailTask();
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
@@ -88,8 +91,15 @@ void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool
 }
 
 void MissionObjectiveImplementation::abort() {
-	if (failTask != NULL && failTask->isScheduled()) {
-		failTask->cancel();
+	clearFailTask();
+}
+
+void MissionObjectiveImplementation::clearFailTask() {
+	if (failTask != NULL) {
+		if (failTask->isScheduled())
+			failTask->cancel();
+
+		failTask = NULL;
 	}
 }
 
