@@ -368,8 +368,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			int unmitDamage = damage;
 			damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, hitLocation, data);
 
-			applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
-			applyWeaponDots(attacker, defender, weapon);
+			if (!defender->isDead()) {
+				applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
+				applyWeaponDots(attacker, defender, weapon);
+			}
 
 		}
 	}
