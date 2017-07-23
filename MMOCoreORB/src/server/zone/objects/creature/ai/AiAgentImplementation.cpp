@@ -1240,6 +1240,8 @@ void AiAgentImplementation::leash() {
 
 	clearPatrolPoints();
 
+	clearDots();
+
 	CombatManager::instance()->forcePeace(asAiAgent());
 
 	if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
