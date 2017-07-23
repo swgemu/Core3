@@ -425,8 +425,9 @@ void BountyMissionObjectiveImplementation::removeNpcTargetObservers() {
 		// NPC not spawned, remove observers anyway.
 		Locker locker(&syncMutex);
 
-		dropObserver(getObserver(1), true);
-		dropObserver(getObserver(0), true);
+		for (int i = getObserverCount() - 1; i >= 0; i--) {
+			dropObserver(getObserver(i), true);
+		}
 	}
 }
 
