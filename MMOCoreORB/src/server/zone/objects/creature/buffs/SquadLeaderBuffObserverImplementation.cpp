@@ -52,6 +52,9 @@ void SquadLeaderBuffObserverImplementation::handleObserverEvent(CreatureObject* 
 	Locker locker(player);
 	Locker clocker(slBuff, player);
 
+	if (player->getBuff(slBuff->getBuffCRC()) != slBuff)
+		return;
+
 	if (slBuff->qualifiesForActivation()) {
 		if (!slBuff->isActive()) {
 			slBuff->doActivate(false);
