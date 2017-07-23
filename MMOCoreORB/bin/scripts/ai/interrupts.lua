@@ -302,10 +302,85 @@ EnclaveSentinelInterrupt = createClass(DefaultInterrupt)
 function EnclaveSentinelInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if (pAgent == pObject) then return end
 	if (pAgent == nil or pObject == nil) then return end
+  printf("\nstartAwarenessInterrupt 1a ")
+	local sceneObject = SceneObject1(pObject)
+printf("1b ")
+	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+printf("1c ")
+	local creoAgent = CreatureObject1(pAgent)
+printf("1d ")
+	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
+printf("1e ")
+	local creoObject = CreatureObject2(pObject)
+printf("1f ")
+	if creoObject:isDead() or creoObject:isIncapacitated() then return end
+printf("1g ")
+	local aiAgent = AiAgent1(pAgent)
+printf("1h ")
+	if aiAgent:isInCombat() then return end
+printf("1i ")
+	local inRange = sceneObject:isInRangeWithObject3d(pAgent, 32)
+printf("1j ")
+	if inRange and aiAgent:checkLineOfSight(pObject) then
+		aiAgent:addDefender(pObject)
+	end
+printf("1k ")
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
+end
+
+function EnclaveSentinelInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then return false end
+	if (pAgent == nil or pObject == nil) then return false end
+	printf("\ndoAwarenessCheck 1a ")
+	local tanoAgent = TangibleObject1(pAgent)
+	local creoAgent = CreatureObject1(pAgent)
+
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
+	printf("1b")
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isRetreating() or aiAgent:isInCombat() then return false end
+	printf("1c")
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isPlayerCreature() then return false end
+	printf("1d")
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isInvisible() then return false end
+	printf("1e")
+	if not sceneObject:isInRangeWithObject3d(pAgent, 32) then return false end
+	printf("1f")
+	local tanoObject = TangibleObject2(pObject)
+
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+	printf("1g")
+	if not aiAgent:isAttackableBy(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
+	printf("1h")
+	local pGhost = creoObject:getPlayerObject()
+
+	if (pGhost == nil) then return false end
+	printf("1i")
+	local councilType = PlayerObject(pGhost):getFrsCouncil()
+
+	if (councilType ~= JediTrials.COUNCIL_LIGHT and councilType ~= JediTrials.COUNCIL_DARK) then return true end
+	printf("1j")
+	local objName = SceneObject(pAgent):getObjectName()
+
+	if (objName == "light_jedi_sentinel" and councilType == JediTrials.COUNCIL_LIGHT) or (objName == "dark_jedi_sentinel" and councilType == JediTrials.COUNCIL_DARK) then return false end
+	printf("1k")
+	return true
+end
+
+DeathWatchDefenderInterrupt = createClass(DefaultInterrupt)
+function DeathWatchDefenderInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then return end
+	if (pAgent == nil or pObject == nil) then return end
 
 	local sceneObject = SceneObject1(pObject)
 
-	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+	if not sceneObject:isPlayerCreature() then return false end
 
 	local creoAgent = CreatureObject1(pAgent)
 
@@ -329,7 +404,7 @@ function EnclaveSentinelInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	aiAgent:executeBehavior();
 end
 
-function EnclaveSentinelInterrupt:doAwarenessCheck(pAgent, pObject)
+function DeathWatchDefenderInterrupt:doAwarenessCheck(pAgent, pObject)
 	if (pAgent == pObject) then return false end
 	if (pAgent == nil or pObject == nil) then return false end
 
@@ -344,7 +419,7 @@ function EnclaveSentinelInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	local sceneObject = SceneObject1(pObject)
 
-	if not sceneObject:isPlayerCreature() then return false end
+	if not sceneObject:isCreatureObject() then return false end
 
 	local creoObject = CreatureObject2(pObject)
 
@@ -357,18 +432,6 @@ function EnclaveSentinelInterrupt:doAwarenessCheck(pAgent, pObject)
 	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
 
 	if not aiAgent:isAttackableBy(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
-
-	local pGhost = creoObject:getPlayerObject()
-
-	if (pGhost == nil) then return false end
-
-	local councilType = PlayerObject(pGhost):getFrsCouncil()
-
-	if (councilType ~= JediTrials.COUNCIL_LIGHT and councilType ~= JediTrials.COUNCIL_DARK) then return true end
-
-	local objName = SceneObject(pAgent):getObjectName()
-
-	if (objName == "light_jedi_sentinel" and councilType == JediTrials.COUNCIL_LIGHT) or (objName == "dark_jedi_sentinel" and councilType == JediTrials.COUNCIL_DARK) then return false end
 
 	return true
 end
