@@ -14,6 +14,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "server/zone/packets/ui/DestroyClientPathMessage.h"
 
 class PathFindCommand {
 public:
@@ -23,6 +24,13 @@ public:
 
 		if (ghost == nullptr || ghost->getAdminLevel() < 15 || zone == nullptr)
 			return 1;
+
+		if (arguments == "clear") {
+			DestroyClientPathMessage* msg = new DestroyClientPathMessage();
+
+			creature->sendMessage(msg);
+			return 0;
+		}
 
 		try {
 			StringTokenizer args(arguments.toString());
