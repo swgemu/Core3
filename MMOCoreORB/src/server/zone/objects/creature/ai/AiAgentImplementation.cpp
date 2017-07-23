@@ -1960,12 +1960,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			auto interval = UPDATEMOVEMENTINTERVAL;
 			nextMovementInterval = Math::min((int)((Math::min(dist, maxDist)/newSpeed)*1000 + 0.5), interval);
 			currentSpeed = newSpeed;
-		} else
-			currentSpeed = 0;
 
-		// Tell the clients where to expect us next tick -- requires that we have found a destination
-		broadcastNextPositionUpdate(&nextStepPosition);
-	} else {
+			// Tell the clients where to expect us next tick -- requires that we have found a destination
+			broadcastNextPositionUpdate(&nextStepPosition);
+		} else {
+			found = false;
+		}
+	}
+
+	if (!found) {
 		PatrolPoint oldPoint = patrolPoints.remove(0);
 
 		if (getFollowState() == AiAgent::PATROLLING)
