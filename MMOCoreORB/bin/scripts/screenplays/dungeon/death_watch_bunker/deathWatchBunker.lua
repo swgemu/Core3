@@ -1033,6 +1033,7 @@ function DeathWatchBunkerScreenPlay:startDefenderPath(pMobile, spawnName)
 		return
 	end
 
+	AiAgent(pMobile):setAiTemplate("deathwatchdefender")
 	AiAgent(pMobile):setHomeLocation(patrolPoint[1] + randomX, patrolPoint[2], patrolPoint[3] + randomY, pCell)
 	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setWait(0)

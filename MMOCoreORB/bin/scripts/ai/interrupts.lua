@@ -372,3 +372,66 @@ function EnclaveSentinelInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	return true
 end
+
+DeathWatchDefenderInterrupt = createClass(DefaultInterrupt)
+function DeathWatchDefenderInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then return end
+	if (pAgent == nil or pObject == nil) then return end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isPlayerCreature() then return false end
+
+	local creoAgent = CreatureObject1(pAgent)
+
+	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isDead() or creoObject:isIncapacitated() then return end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isInCombat() then return end
+
+	local inRange = sceneObject:isInRangeWithObject3d(pAgent, 32)
+
+	if inRange and aiAgent:checkLineOfSight(pObject) then
+		aiAgent:addDefender(pObject)
+	end
+
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
+end
+
+function DeathWatchDefenderInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then return false end
+	if (pAgent == nil or pObject == nil) then return false end
+
+	local tanoAgent = TangibleObject1(pAgent)
+	local creoAgent = CreatureObject1(pAgent)
+
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isRetreating() or aiAgent:isInCombat() then return false end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isInvisible() then return false end
+
+	if not sceneObject:isInRangeWithObject3d(pAgent, 32) then return false end
+
+	local tanoObject = TangibleObject2(pObject)
+
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+
+	if not aiAgent:isAttackableBy(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
+
+	return true
+end
