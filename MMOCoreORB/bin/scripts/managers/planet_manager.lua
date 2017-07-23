@@ -271,7 +271,7 @@ lok = {
 		{"imperial_lookout",-2569,-861,32},
 		{"kimogila_town",-78,2710,50},
 		{"lok_broken_wall",-4433,-5750,32},
-		{"lokkian_fountain",6399,5102,32},
+		{"lokkian_fountain",6399,5102,64},
 		{"rebel_house",-4751,3525,75},
 		{"torches_and_arches",716,-3380,32},
 	},
