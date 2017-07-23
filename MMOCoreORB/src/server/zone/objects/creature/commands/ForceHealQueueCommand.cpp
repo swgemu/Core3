@@ -306,7 +306,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 				target->sendSystemMessage(message);
 			}
 		}
-	} else if (healType == HEAL_STATES && amount == 0) {
+	} else if (healType == HEAL_STATES && amount == 0 && !selfHeal) {
 		StringIdChatParameter message("jedi_spam", "stop_states_other");
 		message.setTT(targetID);
 		creature->sendSystemMessage(message);
