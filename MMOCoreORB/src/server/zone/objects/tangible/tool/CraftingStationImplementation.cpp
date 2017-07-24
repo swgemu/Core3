@@ -4,13 +4,20 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/tool/CraftingStationTemplate.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "templates/tangible/tool/CraftingStationTemplate.h"
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -27,26 +34,27 @@ void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templ
 void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	/*ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
+	//ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+	BuildingObject* building = player->getRootParent()->asBuildingObject();
 
-	if(building != NULL && !isASubChildOf(player)) {
-		if(building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != NULL) {
+	if (building != NULL && !isASubChildOf(player)) {
+		if (building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != NULL) {
 			menuResponse->addRadialMenuItem(68, 3, "@ui_radial:craft_hopper_input"); //Open
 		}
-	}*/
+	}
 }
 
 int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
-	/*if (selectedID == 68 && getSlottedObject("ingredient_hopper") != NULL) { // use object
+	if (selectedID == 68 && getSlottedObject("ingredient_hopper") != NULL) { // use object
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
+		BuildingObject* building = player->getRootParent()->asBuildingObject();
 
-		if(building != NULL && !isASubChildOf(player)) {
-			if(building->isOnAdminList(player))
+		if (building != NULL && !isASubChildOf(player)) {
+			if (building->isOnAdminList(player))
 				sendInputHopper(player);
 		}
-	}*/
+	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
@@ -59,9 +67,25 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 
 void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
 
-	/*ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	ManagedReference<SceneObject*> station = inputHopper->getParent().get();
 
-	if(inputHopper == NULL) {
+	if (inputHopper == NULL) {
+		return;
+	}
+
+	if (!CollisionManager::checkLineOfSight(player, station)) {
+		StringIdChatParameter params("container_error_message", "container18_prose");
+		params.setTT("Hopper");
+		player->sendSystemMessage(params); //You can't see %TT. You may have to move closer to it.
+		return;
+	}
+
+	if (!player->isInRange(station, 10.0f)) {
+		StringIdChatParameter params;
+		params.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
+		params.setTT("Hopper");
+		player->sendSystemMessage(params);
 		return;
 	}
 
@@ -69,7 +93,8 @@ void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
 	inputHopper->closeContainerTo(player, true);
 
 	inputHopper->sendWithoutContainerObjectsTo(player);
-	inputHopper->openContainerTo(player);*/
+	inputHopper->openContainerTo(player);
+
 }
 
 SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* player) {
@@ -86,7 +111,7 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 
 			CraftingTool* tool = cast<CraftingTool*>( object);
 
-			if(!tool->isReady())
+			if (!tool->isReady())
 				continue;
 
 			int toolType = tool->getToolType();
@@ -112,12 +137,12 @@ void CraftingStationImplementation::updateCraftingValues(CraftingValues* values,
 	// useModifier is the effectiveness
 	effectiveness = values->getCurrentValue("usemodifier");
 
-	/*if(firstUpdate && values->hasSlotFilled("storage_compartment")) {
+	if (firstUpdate && values->hasSlotFilled("storage_compartment")) {
 		String ingredientHopperName = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_small.iff";
 		ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
 
 		transferObject(ingredientHopper, 4, true);
-	}*/
+	}
 
-	//craftingValues->toString();
+	// craftingValues->toString();
 }
