@@ -75,24 +75,25 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 		end
 		clonedConversation:addOption("@conversation/fs_patrol_quest_start:s_d33566f3", "are_you_sure")
 	elseif (screenID == "you_know_routine" or screenID == "get_to_it") then
-		local questID = QuestManager.getCurrentQuestID(pPlayer)
-		QuestManager.completeQuest(pPlayer, questID)
-		questID = questID + 1
-		QuestManager.setCurrentQuestID(pPlayer, questID)
-		QuestManager.activateQuest(pPlayer, questID)
-		QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
-		FsPatrol:completeFsPatrol(pPlayer)
-		FsPatrol:start(pPlayer)
+		self:completeCurrentPatrol(pPlayer)
 	elseif (screenID == "need_data_asap" or screenID == "worried_about_performance" or screenID == "data_is_incomplete") then
 		FsPatrol:resetFsPatrol(pPlayer)
-	elseif (screenID == "intro_completedfirstset") then
-		FsPatrol:completeFsPatrol(pPlayer)
-		QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
+	elseif (screenID == "intro_completedfirstset" or screenID == "intro_completedsecondset") then
+		self:completeCurrentPatrol(pPlayer)
+	end
+
+	return pConvScreen
+end
+
+function villageSarguilloPhase1ConvoHandler:completeCurrentPatrol(pPlayer)
+	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount")) + 1
+	FsPatrol:completeFsPatrol(pPlayer)
+	QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
+
+	if (completedCount == 10) then
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_10)
 		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_combat_prowess_ranged_accuracy")
-	elseif (screenID == "intro_completedsecondset") then
-		FsPatrol:completeFsPatrol(pPlayer)
-		QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
+	elseif (completedCount == 20) then
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_20)
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_FINISH)
 		QuestManager.setCurrentQuestID(pPlayer, 0)
@@ -107,7 +108,12 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			end
 		end
+	else
+		local questID = QuestManager.getCurrentQuestID(pPlayer)
+		QuestManager.completeQuest(pPlayer, questID)
+		questID = questID + 1
+		QuestManager.setCurrentQuestID(pPlayer, questID)
+		QuestManager.activateQuest(pPlayer, questID)
+		FsPatrol:start(pPlayer)
 	end
-
-	return pConvScreen
 end
