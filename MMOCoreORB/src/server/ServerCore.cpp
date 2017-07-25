@@ -231,6 +231,9 @@ void ServerCore::shutdown() {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
+	while (objectManager->isObjectUpdateInProcess())
+		Thread::sleep(500);
+
 	objectManager->cancelDeleteCharactersTask();
 	objectManager->cancelUpdateModifiedObjectsTask();
 
@@ -241,9 +244,16 @@ void ServerCore::shutdown() {
 
 		Thread::sleep(2000);
 
+		info("Disconnecting all players", true);
+
 		PlayerManager* playerManager = zoneServer->getPlayerManager();
 
 		playerManager->disconnectAllPlayers();
+
+		while (zoneServer->getConnectionCount() > 0)
+			Thread::sleep(500);
+
+		info("All players disconnected", true);
 	}
 
 	if (loginServer != NULL) {

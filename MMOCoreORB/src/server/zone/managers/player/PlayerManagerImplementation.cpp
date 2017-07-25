@@ -4692,8 +4692,6 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 			}
 		}
 	}
-
-	info("All players disconnected", true);
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
