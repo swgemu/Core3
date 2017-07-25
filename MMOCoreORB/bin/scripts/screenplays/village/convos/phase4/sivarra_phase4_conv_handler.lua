@@ -24,7 +24,7 @@ function villageSivarraPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 		return convoTemplate:getScreen("intro_has_no_medic")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_1)) then
 		return convoTemplate:getScreen("intro_start_second_set")
-	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_has_otherquest")
 	else
 		return convoTemplate:getScreen("intro_begin")
