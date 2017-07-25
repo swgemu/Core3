@@ -218,6 +218,7 @@ public:
 							Locker locker (targetPlayer, creature);
 
 							playerManager->killPlayer(creature, targetPlayer, 1);
+							targetPlayer->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
 
 							++count;
 						} else if (targetPlayer->isPet()) {
@@ -228,6 +229,7 @@ public:
 
 								PetManager* petManager = server->getZoneServer()->getPetManager();
 								petManager->killPet(creature, pet);
+								pet->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
 
 								++count;
 							}
@@ -282,10 +284,17 @@ public:
 					Locker locker(targetPlayer, creature);
 
 					playerManager->killPlayer(creature, targetPlayer, 1);
+					targetPlayer->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
 				} else if (targetPlayer->isPet()) {
-					Locker locker(targetPlayer, creature);
+					AiAgent* pet = cast<AiAgent*>(targetPlayer.get());
 
-					targetPlayer->notifyObjectDestructionObservers(creature, 0, false);
+					if (pet != NULL) {
+						Locker locker(pet, creature);
+
+						PetManager* petManager = server->getZoneServer()->getPetManager();
+						petManager->killPet(creature, pet);
+						pet->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
+					}
 				}
 			}
 			else {

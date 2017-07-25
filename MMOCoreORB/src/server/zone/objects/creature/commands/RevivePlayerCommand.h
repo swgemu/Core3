@@ -240,6 +240,8 @@ public:
 
 		applyDebuff(creatureTarget);
 
+		creatureTarget->notifyObservers(ObserverEventType::CREATUREREVIVED, creature, 0);
+
 		return SUCCESS;
 	}
 

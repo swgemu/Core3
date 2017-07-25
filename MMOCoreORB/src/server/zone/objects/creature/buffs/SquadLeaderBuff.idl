@@ -33,6 +33,8 @@ class SquadLeaderBuff extends Buff {
 		player.dropObserver(ObserverEventType.FACTIONCHANGED, playerObserver);
 		leader.dropObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 		leader.dropObserver(ObserverEventType.FACTIONCHANGED, leaderObserver);
+		leader.dropObserver(ObserverEventType.OBJECTDESTRUCTION, leaderObserver);
+		leader.dropObserver(ObserverEventType.CREATUREREVIVED, leaderObserver);
 	}
 
 	@dirty
@@ -68,7 +70,7 @@ class SquadLeaderBuff extends Buff {
 
 	@dirty
 	public boolean qualifiesForActivation() {
-		if (player == null || leader == null)
+		if (player == null || leader == null || leader.isDead() || leader.isIncapacitated())
 			return false;
 
 		return SquadLeaderCommand.isValidGroupAbilityTarget(leader, player, false);
@@ -98,6 +100,8 @@ class SquadLeaderBuff extends Buff {
 		player.registerObserver(ObserverEventType.FACTIONCHANGED, playerObserver);
 		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 		leader.registerObserver(ObserverEventType.FACTIONCHANGED, leaderObserver);
+		leader.registerObserver(ObserverEventType.OBJECTDESTRUCTION, leaderObserver);
+		leader.registerObserver(ObserverEventType.CREATUREREVIVED, leaderObserver);
 	}
 
 	@read
