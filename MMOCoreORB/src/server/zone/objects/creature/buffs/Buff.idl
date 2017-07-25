@@ -340,4 +340,9 @@ class Buff extends ManagedObject implements Logger {
 	public void setModsApplied(boolean applied) {
 		modsApplied = applied;
 	}
+
+	@read
+	public abstract boolean removeOnClearBuffs() {
+		return true;
+	}
 }

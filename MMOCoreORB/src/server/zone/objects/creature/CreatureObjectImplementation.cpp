@@ -2574,8 +2574,8 @@ void CreatureObjectImplementation::removeBuff(Buff* buff) {
 	creatureBuffs.removeBuff(buff);
 }
 
-void CreatureObjectImplementation::clearBuffs(bool updateclient) {
-	creatureBuffs.clearBuffs(updateclient);
+void CreatureObjectImplementation::clearBuffs(bool updateclient, bool removeAll) {
+	creatureBuffs.clearBuffs(updateclient, removeAll);
 }
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
@@ -3294,7 +3294,7 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	if (!isPlayerCreature())
 		return;
 
-	clearBuffs(false);
+	clearBuffs(false, true);
 
 	if(dataObjectComponent != NULL) {
 		dataObjectComponent->notifyObjectDestroyingFromDatabase();

@@ -673,7 +673,7 @@ class CreatureObject extends TangibleObject {
 	 * @param updateclient Should packets be sent to the player?
 	 */
 	@preLocked
-	public native void clearBuffs(boolean updateclient);
+	public native void clearBuffs(boolean updateclient, boolean removeAll);
 	
 	/**
 	 * Renews the buff and all secondary buffs associated with it.
@@ -1183,7 +1183,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public void destroyObjectFromDatabase(boolean destroyContainedObjects = false) {
-		clearBuffs(false);
+		clearBuffs(false, true);
 
 		super.destroyObjectFromDatabase(destroyContainedObjects);
 	}

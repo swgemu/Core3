@@ -27,7 +27,7 @@ public:
 	bool removeBuff(uint32 buffcrc);
 	void removeBuff(Buff* buff);
 
-	void clearBuffs(bool updateclient);
+	void clearBuffs(bool updateclient, bool removeAll);
 
 	int findBuff(Buff* buff);
 

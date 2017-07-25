@@ -3377,7 +3377,7 @@ AiAgent* AiAgent::asAiAgent() {
 }
 
 void AiAgentImplementation::reloadTemplate() {
-	clearBuffs(false);
+	clearBuffs(false, false);
 	loadTemplateData(npcTemplate);
 
 	if (isMount()) {

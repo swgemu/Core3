@@ -99,4 +99,9 @@ class SquadLeaderBuff extends Buff {
 		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 		leader.registerObserver(ObserverEventType.FACTIONCHANGED, leaderObserver);
 	}
+
+	@read
+	public boolean removeOnClearBuffs() {
+		return false;
+	}
 }

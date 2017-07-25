@@ -576,7 +576,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet, b
 	Core::getTaskManager()->executeTask([=] () {
 		Locker locker(petAgent);
 
-		petAgent->clearBuffs(false);
+		petAgent->clearBuffs(false, false);
 	}, "ClearPetBuffsLambda");
 
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
