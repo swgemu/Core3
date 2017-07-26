@@ -125,6 +125,10 @@ function VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
 		return false
 	end
 
+	if (VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
+		return false
+	end
+
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
 	local lastActiveQuest = tonumber(getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest"))
 
@@ -155,12 +159,12 @@ function VillageJediManagerCommon.getActiveQuestIdThisPhase(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local questId = getQuestStatus(playerID .. ":village:activeQuestName")
-	
+
 	if (not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		removeQuestStatus(playerID .. ":village:activeQuestName")
 		return -1
 	end
-	
+
 	if (questId == "") then
 		printLuaError("VillageJediManagerCommon.getActiveQuestIdThisPhase unable to grab active questid for player")
 		return -1

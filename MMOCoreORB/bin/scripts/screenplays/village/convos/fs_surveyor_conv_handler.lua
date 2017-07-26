@@ -23,7 +23,7 @@ function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempla
 		return convoTemplate:getScreen("intro_in_progress")
 	end
 
-	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_has_other_quest")
 	else
 		return convoTemplate:getScreen("intro")

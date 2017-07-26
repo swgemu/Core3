@@ -15,7 +15,7 @@ function villageWhipPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemp
 		return convoTemplate:getScreen("intro_quest_continue")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
 		return convoTemplate:getScreen("intro_quest_completed")
-	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) or VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)) then
 		return convoTemplate:getScreen("intro_has_other_quest")
 	else
 		return convoTemplate:getScreen("intro")
