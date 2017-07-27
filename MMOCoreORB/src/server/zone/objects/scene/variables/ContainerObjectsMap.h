@@ -81,10 +81,14 @@ namespace server {
    			return operationMode == DELAYED_LOAD;
    		}
 
-   		bool isLoaded() {
-			ReadLocker locker(containerLock);
+   		bool isLoaded(bool readLock = true) {
+   			if (readLock) {
+   				ReadLocker locker(containerLock);
 
-   			return operationMode == NORMAL_LOAD || oids == NULL;
+   				return operationMode == NORMAL_LOAD || oids == NULL;
+   			} else {
+   				return operationMode == NORMAL_LOAD || oids == NULL;
+   			}
    		}
 
    		Time* getLastAccess() {

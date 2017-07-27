@@ -1408,7 +1408,15 @@ void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) 
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
 	ReadLocker locker(&containerLock);
 
-	objects = *containerObjects.getContainerObjects();
+	if (containerObjects.isLoaded(false)) {
+		objects = *containerObjects.getContainerObjects();
+	} else {
+		locker.release();
+
+		Locker writeLocker(&containerLock);
+
+		objects = *containerObjects.getContainerObjects();
+	}
 }
 
 void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
