@@ -16,18 +16,32 @@ end
 
 function NabooMordranScreenPlay:spawnMobiles()
 
-		--mordran respawns between 15-20 minutes
+	--mordran respawns between 15-20 minutes
 	local pNpc = spawnMobile("naboo", "mordran", 1200, -1969, 6.4, -5295, 45, 0)
 	spawnMobile("naboo", "outcast_gungan", 300, -1967, 6.4, -5296, 45, 0)
 	spawnMobile("naboo", "outcast_gungan", 300, -1964, 6.4, -5292, 45, 0)
 	spawnMobile("naboo", "outcast_gungan", 300, -1966, 6.4, -5301, 45, 0)
 	pNpc = spawnMobile("naboo", "gungan_reject", 360, -1969, 6.4, -5291, 45, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
-	pNpc = spawnMobile("naboo", "gungan_reject", 360, -1969, 6.4, -5297, 45, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
-	pNpc = spawnMobile("naboo", "exiled_gungan", 360, -1966, 6.4, -5295, 45, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
-	pNpc = spawnMobile("naboo", "exiled_gungan", 360, -1963, 6.4, -5299, 45, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
 
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
+
+	pNpc = spawnMobile("naboo", "gungan_reject", 360, -1969, 6.4, -5297, 45, 0)
+
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
+
+	pNpc = spawnMobile("naboo", "exiled_gungan", 360, -1966, 6.4, -5295, 45, 0)
+
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
+
+	pNpc = spawnMobile("naboo", "exiled_gungan", 360, -1963, 6.4, -5299, 45, 0)
+
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
 end

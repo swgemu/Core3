@@ -274,10 +274,8 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	local spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 	CreatureObject(spawnedPointer):setPvpStatusBitmask(0)
 	CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
-	AiAgent(spawnedPointer):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
-	AiAgent(spawnedPointer):setFollowState(4) -- Patrolling
 	writeData("dwb:bombDroid", SceneObject(spawnedPointer):getObjectID())
-	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", spawnedPointer)
+	createEvent(100, "DeathWatchBunkerScreenPlay", "setBombDroidTemplate", spawnedPointer, "")
 
 	-- Bomb Droid Debris
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-63.7,-116.21,5996348,0.925444,0,0.378885,0)
@@ -438,6 +436,12 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
 	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+end
+
+function DeathWatchBunkerScreenPlay:setBombDroidTemplate(pDroid)
+	AiAgent(pDroid):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
+	AiAgent(pDroid):setFollowState(4) -- Patrolling
+	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", spawnedPointer)
 end
 
 function DeathWatchBunkerScreenPlay:setLootBoxPermissions(pContainer)
@@ -879,10 +883,8 @@ function DeathWatchBunkerScreenPlay:respawnBombDroid(pDroid)
 	local pBombDroid = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 	CreatureObject(pBombDroid):setPvpStatusBitmask(0)
 	CreatureObject(pBombDroid):setCustomObjectName("R2-M2")
-	AiAgent(pBombDroid):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
-	AiAgent(pBombDroid):setFollowState(4) -- Patrolling
 	writeData("dwb:bombDroid", SceneObject(pBombDroid):getObjectID())
-	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", pBombDroid)
+	createEvent(100, "DeathWatchBunkerScreenPlay", "setBombDroidTemplate", pBombDroid, "")
 end
 
 function DeathWatchBunkerScreenPlay:haldoTimer(pCreature)

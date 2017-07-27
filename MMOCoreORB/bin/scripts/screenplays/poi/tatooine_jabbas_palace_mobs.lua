@@ -189,10 +189,7 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
 			CreatureObject(pMobile):setCustomObjectName(v[8])
-			createEvent(getRandomNumber(250,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
-			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
-			AiAgent(pMobile):setFollowState(4)
+			createEvent(1000, "TatooineJabbasPalaceMobsScreenPlay", "setupJabbaPatrol", pMobile, "")
 		end
 	end
 
@@ -202,10 +199,7 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
 			CreatureObject(pMobile):setCustomObjectName(v[8])
-			createEvent(getRandomNumber(250,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
-			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
-			AiAgent(pMobile):setFollowState(4)
+			createEvent(1000, "TatooineJabbasPalaceMobsScreenPlay", "setupJabbaPatrol", pMobile, "")
 		end
 	end
 
@@ -215,13 +209,16 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
 			CreatureObject(pMobile):setCustomObjectName(v[8])
-			createEvent(getRandomNumber(350,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
-			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
-			AiAgent(pMobile):setFollowState(4)
+			createEvent(1000, "TatooineJabbasPalaceMobsScreenPlay", "setupJabbaPatrol", pMobile, "")
 		end
 	end
+end
 
+function TatooineJabbasPalaceMobsScreenPlay:setupJabbaPatrol(pMobile)
+	createEvent(getRandomNumber(30,45) * 1000, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
+	createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
+	AiAgent(pMobile):setAiTemplate("manualescortwalk")
+	AiAgent(pMobile):setFollowState(4)
 end
 
 function TatooineJabbasPalaceMobsScreenPlay:palaceConverseJawa(pMobile)
