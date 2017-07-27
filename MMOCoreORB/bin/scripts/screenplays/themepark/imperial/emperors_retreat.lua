@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 EmperorsRetreatScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-		screenplayName = "EmperorsRetreatScreenPlay",
+	screenplayName = "EmperorsRetreatScreenPlay",
 }
 
 registerScreenPlay("EmperorsRetreatScreenPlay", true)
@@ -120,43 +120,45 @@ function EmperorsRetreatScreenPlay:spawnMobiles()
 	-- Inside
 	local pNpc = spawnMobile("naboo", "royal_imperial_guard", 120, 11.2, 0.2, -31.5, 0, 1418874)
 	self:setMoodString(pNpc, "npc_imperial")
+
 	pNpc = spawnMobile("naboo", "royal_imperial_guard", 120, 14.8, 0.2, -31.5, 0, 1418874)
 	self:setMoodString(pNpc, "npc_imperial")
 
 	pNpc = spawnMobile("naboo", "royal_imperial_guard", 120, 10.8, 20, -27.2, 180, 1418886)
 	self:setMoodString(pNpc, "npc_imperial")
+
 	pNpc = spawnMobile("naboo", "royal_imperial_guard", 120, 15.3, 20, -27.2, 180, 1418886)
 	self:setMoodString(pNpc, "npc_imperial")
 
 	spawnMobile("naboo", "ra7_bug_droid", 120, 4.0, 0.2, -45.7, 4, 1418876)
 
 	pNpc = spawnMobile("naboo", "mouse_droid", 120, -52.15, 0.2, -23.82, -15, 1418884)
-	writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
-	writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid1")
-	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pNpc, "")
-	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pNpc)
-	AiAgent(pNpc):setAiTemplate("manualescortwalk")
-	AiAgent(pNpc):setFollowState(4)
+
+	if (pNpc ~= nil) then
+		writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
+		writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid1")
+		createEvent(1000, "EmperorsRetreatScreenPlay", "setupDroidPatrol", pNpc, "")
+	end
 
 	pNpc = spawnMobile("naboo", "mouse_droid", 120, 23.83, 0.2, -40.42, -25, 1418875)
-	writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
-	writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid2")
-	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pNpc, "")
-	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pNpc)
-	AiAgent(pNpc):setAiTemplate("manualescortwalk")
-	AiAgent(pNpc):setFollowState(4)
+
+	if (pNpc ~= nil) then
+		writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
+		writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid2")
+		createEvent(1000, "EmperorsRetreatScreenPlay", "setupDroidPatrol", pNpc, "")
+	end
 
 	pNpc = spawnMobile("naboo", "mouse_droid", 120, -45.79, 0.2, -12.5, -25, 1418879)
-	writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
-	writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid3")
-	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pNpc, "")
-	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pNpc)
-	AiAgent(pNpc):setAiTemplate("manualescortwalk")
-	AiAgent(pNpc):setFollowState(4)
 
+	if (pNpc ~= nil) then
+		writeData(SceneObject(pNpc):getObjectID() .. ":currentLoc", 1)
+		writeStringData(SceneObject(pNpc):getObjectID() .. ":name", "droid3")
+		createEvent(1000, "EmperorsRetreatScreenPlay", "setupDroidPatrol", pNpc, "")
+	end
 
 	pNpc = spawnMobile("naboo", "stormtrooper", 120, -0.5, 0.2, -23.6, 76, 1418874)
 	self:setMoodString(pNpc, "conversation")
+
 	pNpc = spawnMobile("naboo", "stormtrooper", 120, 0.7, 0.2, -23.5, -20, 1418874)
 	self:setMoodString(pNpc, "conversation")
 
@@ -187,15 +189,30 @@ function EmperorsRetreatScreenPlay:spawnMobiles()
 
 	--By the emperors retreat
 	pNpc = spawnMobile("naboo", "at_st", 900, 2452.61, 292, -3961.49, 108, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
+
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
+
 	pNpc = spawnMobile("naboo", "at_st", 900, 2463.18, 292.089, -3929.16, -105, 0)
-	AiAgent(pNpc):setAiTemplate("idlewander")
+
+	if (pNpc ~= nil) then
+		HelperFuncs:setMobileTemplate(pNpc, "idlewander")
+	end
 	spawnMobile("naboo", "dark_trooper", 450, 2433.3, 292, -3968.4, 4, 0)
 	spawnMobile("naboo", "dark_trooper", 450, 2452, 292, -3912.8, -170, 0)
 	spawnMobile("naboo", "dark_trooper", 450, 2434.47, 292, -3932.06, 90, 0)
 	spawnMobile("naboo", "dark_trooper", 450, 2437.01, 292, -3947.8, 147, 0)
 	spawnMobile("naboo", "dark_trooper", 450, 2411.91, 292, -3986.99, -115, 0)
 	spawnMobile("naboo", "imperial_pilot", 450, 2432.33, 292, -3887.25, -131, 0)
+
 	pNpc = spawnMobile("naboo", "noble", 60, 2443.42, 292, -3893.91, 18, 0)
 	self:setMoodString(pNpc, "conversation")
+end
+
+function EmperorsRetreatScreenPlay:setupDroidPatrol(pDroid)
+	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pDroid, "")
+	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pDroid)
+	AiAgent(pDroid):setAiTemplate("manualescortwalk")
+	AiAgent(pDroid):setFollowState(4)
 end

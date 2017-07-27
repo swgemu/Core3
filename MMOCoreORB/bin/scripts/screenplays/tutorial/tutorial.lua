@@ -456,12 +456,16 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		if (pMobile ~= nil) then
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
-			createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile, "")
-			createObserver(DESTINATIONREACHED, "TutorialScreenPlay", "trooperDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
-			AiAgent(pMobile):setFollowState(4) -- Patrolling
+			createEvent(1000, "TutorialScreenPlay", "setupTrooperPathing", pMobile, "")
 		end
 	end
+end
+
+function TutorialScreenPlay:setupTrooperPathing(pMobile)
+	createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile, "")
+	createObserver(DESTINATIONREACHED, "TutorialScreenPlay", "trooperDestReached", pMobile)
+	AiAgent(pMobile):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
+	AiAgent(pMobile):setFollowState(4) -- Patrolling
 end
 
 -- Triggered any time a player changes between cells, sets previous room complete as they move to a new one

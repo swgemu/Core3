@@ -35,6 +35,14 @@ function HelperFuncs:despawnMobileTask(pMobile)
 	SceneObject(pMobile):destroyObjectFromWorld()
 end
 
+function HelperFuncs:setMobileTemplate(pMobile, template)
+	createEvent(100, "HelperFuncs", "setMobileTemplateEvent", pMobile, template)
+end
+
+function HelperFuncs:setMobileTemplateEvent(pMobile, template)
+	AiAgent(pMobile):setAiTemplate(template)
+end
+
 function HelperFuncs:tableContainsValue(table, value)
 	if (table == nil or #table == 0 or value == nil) then
 		return false
