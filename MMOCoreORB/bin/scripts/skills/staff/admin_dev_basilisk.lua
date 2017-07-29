@@ -27,6 +27,7 @@ admin_dev_basilisk = {
 		"getObjVars",
 		"script",
 		"server",
+		"setspeed",
 		"teleport",
 		"teleportto",
 		"invulnerable",
