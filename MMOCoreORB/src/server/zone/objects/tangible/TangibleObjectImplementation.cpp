@@ -134,6 +134,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			return;
 
 		uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
+		uint32 oldStatusBitmask = pvpStatusBitmask;
 
 		if (factionStatus == FactionStatus::COVERT) {
 			creature->sendSystemMessage("@faction_recruiter:covert_complete");
@@ -166,7 +167,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
 		}
 
-		creature->setPvpStatusBitmask(pvpStatusBitmask);
+		if (oldStatusBitmask != CreatureFlag::NONE)
+			creature->setPvpStatusBitmask(pvpStatusBitmask);
 
 		Vector<ManagedReference<CreatureObject*> > petsToStore;
 

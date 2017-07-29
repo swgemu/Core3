@@ -217,6 +217,8 @@ void PlayerObjectImplementation::unload() {
 
 	creature->clearCombatState(true);
 
+	creature->setAlternateAppearance("", false);
+
 	creature->stopEntertaining();
 
 	ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
