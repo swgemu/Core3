@@ -54,6 +54,18 @@ public:
 			String data = DirectorManager::instance()->readStringSharedMemory(key);
 
 			creature->sendSystemMessage("Value for shared string data using key " + key + " is: " + data);
+		} else if (cmdName == "getqueststatus") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script getqueststatus <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+			String data = DirectorManager::instance()->getQuestStatus(key);
+
+			creature->sendSystemMessage("Value for queststatus using key " + key + " is: " + data);
 		}
 
 		return SUCCESS;
