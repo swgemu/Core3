@@ -27,6 +27,9 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
+-- Custom content
+includeFile("../custom_scripts/screenplays/screenplays.lua")
+
 includeFile("helperfuncs.lua")
 
 
