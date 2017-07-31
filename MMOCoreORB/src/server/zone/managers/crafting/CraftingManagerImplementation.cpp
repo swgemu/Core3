@@ -11,7 +11,6 @@
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();
 	schematicMap->initialize(zoneServer.get());
-	loadBioSkillMods();
 	configureLabratories();
 }
 
@@ -163,45 +162,6 @@ void CraftingManagerImplementation::experimentRow(ManufactureSchematic* schemati
 	int labratory = schematic->getLabratory();
 	SharedLabratory* lab = labs.get(labratory);
 	lab->experimentRow(craftingValues,rowEffected,pointsAttempted,failure,experimentationResult);
-}
-
-bool CraftingManagerImplementation::loadBioSkillMods() {
-	Reference<Lua* > lua = new Lua();
-	lua->init();
-
-	if (!lua->runFile("scripts/managers/crafting/bio_skill_mods.lua")) {
-		return false;
-	}
-
-	LuaObject bioModsTable = lua->getGlobalObject("bioSkillMods");
-
-	if (!bioModsTable.isValidTable())
-		return false;
-
-	for (int i = 1; i <= bioModsTable.getTableSize(); ++i) {
-		String mod = bioModsTable.getStringAt(i);
-		bioMods.put(mod);
-	}
-
-	bioModsTable.pop();
-
-	return true;
-
-}
-
-String CraftingManagerImplementation::checkBioSkillMods(const String& property) {
-
-	for (int l = 0; l < bioMods.size(); ++l) {
-
-		String key = bioMods.elementAt(l);
-		String statname = "cat_skill_mod_bonus.@stat_n:" + key;
-
-		if (property == statname) {
-			return key;
-		}
-	}
-
-	return "";
 }
 
 void CraftingManagerImplementation::configureLabratories() {
