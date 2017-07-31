@@ -11,6 +11,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "conf/ConfigManager.h"
 
 ContainerObjectsMap::ContainerObjectsMap() {
 	operationMode = NORMAL_LOAD;
@@ -112,6 +113,9 @@ void ContainerObjectsMap::loadObjects() {
 }
 
 void ContainerObjectsMap::scheduleContainerUnload() {
+	if (!ConfigManager::instance()->shouldUnloadContainers())
+		return;
+
 	uint64 delay = 1800000 + System::random(1800000); // 30 - 60 minutes
 
 	if (unloadTask != NULL) {

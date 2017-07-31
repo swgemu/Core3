@@ -15,6 +15,7 @@ namespace conf {
 		bool makeStatus;
 		bool makeWeb;
 		bool dumpObjFiles;
+		bool unloadContainers;
 
 		String orbNamingDirectoryAddress;
 		uint16 orbNamingDirectoryPort;
@@ -111,6 +112,10 @@ namespace conf {
 
 		inline bool getDumpObjFiles() {
 			return dumpObjFiles;
+		}
+
+		inline bool shouldUnloadContainers() {
+			return unloadContainers;
 		}
 
 		inline String& getORBNamingDirectoryAddress() {

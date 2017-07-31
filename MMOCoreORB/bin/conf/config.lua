@@ -205,3 +205,5 @@ WebSessionTimeout = 600 -- Length that inactive web sessions expire
 PurgeDeletedCharacters = 10 --How often in minutes to purge deleted characters
 MaxNavMeshJobs = 6
 DumpObjFiles = 1
+
+UnloadContainers = 1 --Whether to unload container contents from RAM after the container hasn't been accessed for a time
