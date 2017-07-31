@@ -90,43 +90,43 @@ namespace conf {
 
 		//getters
 
-		inline bool getMakeLogin() {
+		inline bool getMakeLogin() const {
 			return makeLogin;
 		}
 
-		inline bool getMakeZone() {
+		inline bool getMakeZone() const {
 			return makeZone;
 		}
 
-		inline bool getMakePing() {
+		inline bool getMakePing() const {
 			return makePing;
 		}
 
-		inline bool getMakeStatus() {
+		inline bool getMakeStatus() const {
 			return makeStatus;
 		}
 
-		inline bool getMakeWeb() {
+		inline bool getMakeWeb() const {
 			return makeWeb;
 		}
 
-		inline bool getDumpObjFiles() {
+		inline bool getDumpObjFiles() const {
 			return dumpObjFiles;
 		}
 
-		inline bool shouldUnloadContainers() {
+		inline bool shouldUnloadContainers() const {
 			return unloadContainers;
 		}
 
-		inline String& getORBNamingDirectoryAddress() {
+		inline const String& getORBNamingDirectoryAddress() const {
 			return orbNamingDirectoryAddress;
 		}
 
-		inline uint16 getORBNamingDirectoryPort() {
+		inline uint16 getORBNamingDirectoryPort() const {
 			return orbNamingDirectoryPort;
 		}
 
-		inline String& getDBHost() {
+		inline const String& getDBHost() const {
 			return dBHost;
 		}
 
@@ -134,147 +134,147 @@ namespace conf {
 			return progressMonitors;
 		}
 
-		inline uint16& getDBPort() {
+		inline const uint16& getDBPort() const {
 			return dBPort;
 		}
 
-		inline String& getDBName() {
+		inline const String& getDBName() const {
 			return dBName;
 		}
 
-		inline String& getDBUser() {
+		inline const String& getDBUser() const {
 			return dBUser;
 		}
 
-		inline String& getDBPass() {
+		inline const String& getDBPass() const {
 			return dBPass;
 		}
 
-		inline String& getDBSecret() {
+		inline const String& getDBSecret() const {
 			return dBSecret;
 		}
 
-		inline String& getMantisHost() {
+		inline const String& getMantisHost() const {
 			return mantisHost;
 		}
 
-		inline uint16& getMantisPort() {
+		inline const uint16& getMantisPort() const {
 			return mantisPort;
 		}
 
-		inline Vector<String>& getTreFiles() {
+		inline const Vector<String>& getTreFiles() const {
 			return treFiles;
 		}
 
-		inline String& getMantisName() {
+		inline const String& getMantisName() const {
 			return mantisName;
 		}
 
-		inline String& getMantisUser() {
+		inline const String& getMantisUser() const {
 			return mantisUser;
 		}
 
-		inline String& getMantisPass() {
+		inline const String& getMantisPass() const {
 			return mantisPass;
 		}
 
-		inline String& getMantisPrefix() {
+		inline const String& getMantisPrefix() const {
 			return mantisPrfx;
 		}
 
-		inline String& getMessageOfTheDay() {
+		inline const String& getMessageOfTheDay() const {
 			return messageOfTheDay;
 		}
 
-		inline String& getRevision() {
+		inline const String& getRevision() const {
 			return revision;
 		}
 
-		inline String& getTrePath() {
+		inline const String& getTrePath() const {
 			return trePath;
 		}
 
-		inline uint16 getLoginPort() {
+		inline uint16 getLoginPort() const {
 			return loginPort;
 		}
 
-		inline uint16 getStatusPort() {
+		inline uint16 getStatusPort() const {
 			return statusPort;
 		}
 
-		inline uint16 getPingPort() {
+		inline uint16 getPingPort() const {
 			return pingPort;
 		}
 
-		inline String getWebPorts() {
+		inline const String& getWebPorts() const {
 			return webPorts;
 		}
 
-		inline String getWebAccessLog() {
+		inline const String& getWebAccessLog() const {
 			return webAccessLog;
 		}
 
-		inline String getWebErrorLog() {
+		inline const String& getWebErrorLog() const {
 			return webErrorLog;
 		}
 
-		inline int getWebSessionTimeout() {
+		inline int getWebSessionTimeout() const {
 			return webSessionTimeout;
 		}
 
-		inline String& getLoginRequiredVersion() {
+		inline const String& getLoginRequiredVersion() const {
 			return loginRequiredVersion;
 		}
 
-		inline int getLoginProcessingThreads() {
+		inline int getLoginProcessingThreads() const {
 			return loginProcessingThreads;
 		}
 
-		inline int getLoginAllowedConnections() {
+		inline int getLoginAllowedConnections() const {
 			return loginAllowedConnections;
 		}
 
-		inline int getStatusAllowedConnections() {
+		inline int getStatusAllowedConnections() const {
 			return statusAllowedConnections;
 		}
 
-		inline int getPingAllowedConnections() {
+		inline int getPingAllowedConnections() const {
 			return pingAllowedConnections;
 		}
 
-		inline int getStatusInterval() {
+		inline int getStatusInterval() const {
 			return statusInterval;
 		}
 
-		inline int getAutoReg() {
+		inline int getAutoReg() const {
 			return autoReg;
 		}
 
-		inline int getZoneProcessingThreads() {
+		inline int getZoneProcessingThreads() const {
 			return zoneProcessingThreads;
 		}
 
-		inline int getZoneAllowedConnections() {
+		inline int getZoneAllowedConnections() const {
 			return zoneAllowedConnections;
 		}
 
-		inline int getZoneGalaxyID() {
+		inline int getZoneGalaxyID() const {
 			return zoneGalaxyID;
 		}
 
-		inline int getZoneOnlineCharactersPerAccount() {
+		inline int getZoneOnlineCharactersPerAccount() const {
 			return zoneOnlineCharactersPerAccount;
 		}
 
-		SortedVector<String>* getEnabledZones() {
+		const SortedVector<String>* getEnabledZones() const {
 			return &enabledZones;
 		}
 
-		inline int getPurgeDeletedCharacters() {
+		inline int getPurgeDeletedCharacters() const {
 			return purgeDeletedCharacters;
 		}
 
-		inline int getMaxNavMeshJobs() {
+		inline int getMaxNavMeshJobs() const {
 			return maxNavMeshJobs;
 		}
 

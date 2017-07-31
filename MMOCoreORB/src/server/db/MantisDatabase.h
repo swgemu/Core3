@@ -18,12 +18,12 @@ class MantisDatabase {
 
 public:
 	MantisDatabase(ConfigManager* configManager) {
-		String& dbHost = configManager->getMantisHost();
-        String& dbUser = configManager->getMantisUser();
-        String& dbPass = configManager->getMantisPass();
-        String& dbName = configManager->getMantisName();
+		const String& dbHost = configManager->getMantisHost();
+		const String& dbUser = configManager->getMantisUser();
+		const String& dbPass = configManager->getMantisPass();
+		const String& dbName = configManager->getMantisName();
         tablePrefix = configManager->getMantisPrefix();
-        uint16& dbPort = configManager->getMantisPort();
+		const uint16& dbPort = configManager->getMantisPort();
 
         databases = new Vector<Database*>();
 

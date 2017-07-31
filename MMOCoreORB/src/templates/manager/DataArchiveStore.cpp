@@ -61,7 +61,7 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 	return data;
 }
 
-int DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
+int DataArchiveStore::loadTres(const String& path, const Vector<String>& treFilesToLoad) {
 	Locker locker(this);
 
 	if (treeDirectory != NULL) {
@@ -82,11 +82,10 @@ int DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
 
 	int j = 0;
 
-	for (int i = 0; i < treFilesToLoad.size(); ++i) {
-		String file = treFilesToLoad.get(i);
 
-		String fullPath = path + "/";
-		fullPath += file;
+	for (int i = 0; i < treFilesToLoad.size(); ++i) {
+		const String& file = treFilesToLoad.get(i);
+		String fullPath = path + "/" + file;
 
 		treeDirectory->unpackFile(fullPath);
 	}

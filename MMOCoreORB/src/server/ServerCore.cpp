@@ -87,7 +87,7 @@ void ServerCore::initialize() {
 
 		mantisDatabase = new MantisDatabase(configManager);
 
-		String& orbaddr = configManager->getORBNamingDirectoryAddress();
+		const String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr,
 //				DistributedObjectBroker::NAMING_DIRECTORY_PORT);
 				configManager->getORBNamingDirectoryPort());
