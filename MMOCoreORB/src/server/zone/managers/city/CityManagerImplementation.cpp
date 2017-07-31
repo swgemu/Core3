@@ -463,7 +463,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->addMenuItem("@city/city:current_mt " + String::valueOf(city->getMissionTerminalCount())); // Current Terminal Count:
 
 	for (int i = 0; i < cityTaxes.size(); ++i) {
-		CityTax* cityTax = &cityTaxes.get(i);
+		const CityTax* cityTax = getCityTax(i);
 		int tax = city->getTax(i);
 		String prompt = cityTax->getStatusPrompt();
 
@@ -900,7 +900,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	}
 
 	if (city->getCitySpecialization() != "") {
-		CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
+		const CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
 
 		if (spec != NULL) {
 			thisCost = maintenanceDiscount * spec->getCost();
@@ -1844,7 +1844,7 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 	listbox->setCallback(new CityAdjustTaxSuiCallback(zoneServer, city));
 
 	for (int i = 0; i < cityTaxes.size(); ++i) {
-		CityTax* cityTax = &cityTaxes.get(i);
+		const CityTax* cityTax = getCityTax(i);
 		listbox->addMenuItem(cityTax->getMenuText(), i); //Property Tax
 	}
 
@@ -1853,7 +1853,7 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 }
 
 void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
-	CityTax* cityTax = getCityTax(selectedTax);
+	const CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == NULL)
 		return;
@@ -1890,7 +1890,7 @@ void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* m
 }
 
 void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
-	CityTax* cityTax = getCityTax(selectedTax);
+	const CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == NULL)
 		return;
@@ -1962,7 +1962,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 	}
 
 	if (city->getCitySpecialization() != "") {
-		CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
+		const CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
 
 		if (spec != NULL) {
 			int speccost = maintenanceDiscount * spec->getCost();
@@ -2262,14 +2262,14 @@ void CityManagerImplementation::unregisterFromMayoralRace(CityRegion* city, Crea
 	sendMail(city, "@city/city:new_city_from", "@city/city:unregistered_citizen_email_subject", params, NULL); // Candidate exited the race!
 }
 
-CitySpecialization* CityManagerImplementation::getCitySpecialization(const String& name) {
+const CitySpecialization* CityManagerImplementation::getCitySpecialization(const String& name) {
 	if (!citySpecializations.containsKey(name))
 		return NULL;
 
 	return &citySpecializations.get(name);
 }
 
-CityTax* CityManagerImplementation::getCityTax(int idx) {
+const CityTax* CityManagerImplementation::getCityTax(int idx) {
 	if (idx > cityTaxes.size() - 1 || idx < 0)
 		return NULL;
 

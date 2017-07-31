@@ -62,7 +62,7 @@ public:
 		return delegateRatioTo;
 	}
 
-	String getName() const {
+	const String& getName() const {
 		return name;
 	}
 

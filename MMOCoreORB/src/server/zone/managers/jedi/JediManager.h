@@ -93,7 +93,7 @@ public:
 	 * Get the name of the currently active lua jedi manager.
 	 * @return the name of the currently active lua jedi manager.
 	 */
-	String getJediManagerName();
+	const String& getJediManagerName();
 
 	/**
 	 * Get the value of the currently active jedi progression type.
@@ -105,7 +105,7 @@ public:
 	 * Set the name of the currently active lua jedi manager.
 	 * @param name the name of the currently active lua jedi manager.
 	 */
-	void setJediManagerName(String name);
+	void setJediManagerName(const String& name);
 
 	/**
 	 * Handle usage of any item related to the jedi progression.

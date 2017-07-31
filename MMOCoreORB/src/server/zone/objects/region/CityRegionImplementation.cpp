@@ -765,7 +765,7 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 		return;
 
 	CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
-	CitySpecialization* cityspec = cityManager->getCitySpecialization(citySpecialization);
+	const CitySpecialization* cityspec = cityManager->getCitySpecialization(citySpecialization);
 
 	if (cityspec == NULL)
 		return;
@@ -786,7 +786,7 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 		//Remove all current city skillmods
 		creatureReference->removeAllSkillModsOfType(SkillModManager::CITY);
 
-		SkillMods* mods = cityspec->getSkillMods();
+		const SkillMods* mods = cityspec->getSkillMods();
 
 		for (int i = 0; i < mods->size(); ++i) {
 			SkillModsEntry& entry = mods->elementAt(i);

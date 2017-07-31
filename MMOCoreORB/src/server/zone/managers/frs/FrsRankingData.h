@@ -23,19 +23,19 @@ public:
 	~FrsRankingData() {
 	}
 
-	int getRequiredExperience() {
+	int getRequiredExperience() const {
 		return requiredXp;
 	}
 
-	int getPlayerCap() {
+	int getPlayerCap() const {
 		return playerCap;
 	}
 
-	int getRank() {
+	int getRank() const {
 		return rank;
 	}
 
-	const String& getSkillName() {
+	const String& getSkillName() const {
 		return skillName;
 	}
 

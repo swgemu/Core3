@@ -250,10 +250,10 @@ class CityManager extends ManagedService implements Logger {
 	public native boolean canSupportMoreMissionTerminals(CityRegion city);
 
 	@local
-	public native CitySpecialization getCitySpecialization(final string cityspec); 
+	public native final CitySpecialization getCitySpecialization(final string cityspec);
 
 	@local
-	public native CityTax getCityTax(int idx);
+	public native final CityTax getCityTax(int idx);
 
 	public native void sendChangeCityName(CityRegion city, CreatureObject mayor);
 

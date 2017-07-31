@@ -14,23 +14,19 @@ JediManager::~JediManager() {
 
 }
 
-String JediManager::getJediManagerName() {
+const String& JediManager::getJediManagerName() {
 	ReadLocker locker(this);
 
-	String ret = jediManagerName;
-
-	return ret;
+	return jediManagerName;
 }
 
 int JediManager::getJediProgressionType() {
 	ReadLocker locker(this);
 
-	int ret = jediProgressionType;
-
-	return ret;
+	return jediProgressionType;
 }
 
-void JediManager::setJediManagerName(String name) {
+void JediManager::setJediManagerName(const String& name) {
 	Locker writeLock(this);
 
 	jediManagerName = name;

@@ -65,39 +65,39 @@ public:
 		emailBody = luaObject->getStringField("emailBody");
 	}
 
-	inline int getMinValue() {
+	inline int getMinValue() const {
 		return minValue;
 	}
 
-	inline int getMaxValue() {
+	inline int getMaxValue() const {
 		return maxValue;
 	}
 
-	inline String& getMenuText() {
+	inline const String& getMenuText() const {
 		return menuText;
 	}
 
-	inline String& getInputTitle() {
+	inline const String& getInputTitle() const {
 		return inputTitle;
 	}
 
-	inline String& getInputText() {
+	inline const String& getInputText() const {
 		return inputText;
 	}
 
-	inline String& getStatusPrompt() {
+	inline const String& getStatusPrompt() const {
 		return statusPrompt;
 	}
 
-	inline String& getSystemMessage() {
+	inline const String& getSystemMessage() const {
 		return systemMessage;
 	}
 
-	inline String& getEmailSubject() {
+	inline const String& getEmailSubject() const {
 		return emailSubject;
 	}
 
-	inline String& getEmailBody() {
+	inline const String& getEmailBody() const {
 		return emailBody;
 	}
 };
