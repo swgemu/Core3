@@ -380,7 +380,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 
 	sui.add("FS Branch Management", "branchManagement" .. targetID)
 
-	if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
+	if (CreatureObject(pTarget):hasSkill("force_title_jedi_rank_03")) then
 		sui.add("Manage Player FRS", "frsManagement" .. targetID)
 	end
 
