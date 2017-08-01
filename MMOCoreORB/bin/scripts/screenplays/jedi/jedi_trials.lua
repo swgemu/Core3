@@ -193,7 +193,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
 	PlayerObject(pGhost):setJediState(jediState)
 	PlayerObject(pGhost):setFrsCouncil(councilType)
-	PlayerObject(pGhost):setFrsRank(0)
+	PlayerObject(pGhost):setFrsRank(1)
 	CreatureObject(pPlayer):setFactionStatus(2) -- Overt
 	CreatureObject(pPlayer):setFaction(setFactionVal)
 

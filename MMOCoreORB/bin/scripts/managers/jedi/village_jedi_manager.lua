@@ -89,6 +89,10 @@ function VillageJediManager:onPlayerLoggedIn(pPlayer)
 				PlayerObject(pGhost):setFrsCouncil(councilType)
 			end
 		end
+
+		if (playerCouncil ~= 0 and playerRank == 0) then
+			PlayerObject(pGhost):setFrsRank(1)
+		end
 	end
 end
 
