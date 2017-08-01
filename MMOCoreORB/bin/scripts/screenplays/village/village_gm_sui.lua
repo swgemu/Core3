@@ -280,7 +280,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 
 		if (curStep == FsOutro.OLDMANWAIT) then
 			promptBuf = promptBuf .. "Outro (Waiting for Old Man)\n"
-			if (FsOutro:hasDelayPassed(pPlayer)) then
+			if (FsOutro:hasDelayPassed(pTarget)) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 YES \n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 NO \n"
@@ -305,7 +305,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 
 		if (curStep == FsIntro.OLDMANWAIT) then
 			promptBuf = promptBuf .. "Intro (Waiting for Old Man)\n"
-			if (FsIntro:hasDelayPassed(pPlayer)) then
+			if (FsIntro:hasDelayPassed(pTarget)) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 YES \n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 NO \n"
@@ -327,7 +327,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 			promptBuf = promptBuf .. "Intro (Old Man Visit)\n"
 		elseif (curStep == FsIntro.SITHWAIT) then
 			promptBuf = promptBuf .. "Intro (Waiting for Sith Attack)\n"
-			if (FsIntro:hasDelayPassed(pPlayer)) then
+			if (FsIntro:hasDelayPassed(pTarget)) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 YES \n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Has Delay Passed: \\#pcontrast2 NO \n"
@@ -578,7 +578,7 @@ function VillageGmSui.forceIntroSithAttackEvent(pPlayer, targetID)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the sith attack intro event to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
-	FsIntro:startSithAttack(pPlayer)
+	FsIntro:startSithAttack(pTarget)
 end
 
 function VillageGmSui.forceIntroOldManEvent(pPlayer, targetID)
@@ -596,7 +596,7 @@ function VillageGmSui.forceIntroOldManEvent(pPlayer, targetID)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event intro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
-	FsIntro:startOldMan(pPlayer)
+	FsIntro:startOldMan(pTarget)
 end
 
 function VillageGmSui.forceOutroOldManEvent(pPlayer, targetID)
@@ -614,7 +614,7 @@ function VillageGmSui.forceOutroOldManEvent(pPlayer, targetID)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event outro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
-	FsOutro:startOldMan(pPlayer)
+	FsOutro:startOldMan(pTarget)
 end
 
 function VillageGmSui.resetActiveQuest(pPlayer, targetID)
@@ -867,15 +867,15 @@ function VillageGmSui:changeCouncilTypeCallback(pPlayer, pSui, eventIndex, args)
 
 	if (councilType == JediTrials.COUNCIL_LIGHT) then
 		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Light Side.")
-		CreatureObject(pPlayer):setFaction(FACTIONREBEL)
+		CreatureObject(pTarget):setFaction(FACTIONREBEL)
 	else
 		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Dark Side.")
-		CreatureObject(pPlayer):setFaction(FACTIONIMPERIAL)
+		CreatureObject(pTarget):setFaction(FACTIONIMPERIAL)
 	end
 
 	PlayerObject(pGhost):setFrsRank(0)
 	PlayerObject(pGhost):setFrsCouncil(councilType)
-	JediTrials:setJediCouncil(pPlayer, councilType)
+	JediTrials:setJediCouncil(pTarget, councilType)
 
 	VillageGmSui.frsManagement(pPlayer, targetID)
 end
@@ -903,7 +903,7 @@ function VillageGmSui.fixCouncilType(pPlayer, targetID)
 
 	if (luaCouncil ~= JediTrials.COUNCIL_LIGHT and luaCouncil ~= JediTrials.COUNCIL_DARK) then
 		luaCouncil = frsCouncil
-		JediTrials:setJediCouncil(pPlayer, frsCouncil)
+		JediTrials:setJediCouncil(pTarget, frsCouncil)
 	else
 		PlayerObject(pGhost):setFrsCouncil(luaCouncil)
 	end
