@@ -163,11 +163,19 @@ void FrsManagerImplementation::setupEnclaves() {
 }
 
 void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding, const String& groupName) {
-	for (uint32 j = 2; j < enclaveBuilding->getTotalCellNumber(); ++j) {
+	for (uint32 j = 1; j < enclaveBuilding->getTotalCellNumber(); ++j) {
 		ManagedReference<CellObject*> cell = enclaveBuilding->getCell(j);
 
 		if (cell != NULL) {
 			cell->setContainerComponent("EnclaveContainerComponent");
+
+			uint64 cellID = cell->getObjectID();
+
+			// Entrance cells for dark/light enclaves are handled by the building permission check
+			// This ensures the player gets the live accurate rubber banding rather than a blocked door
+			// Light enclave does not use cell 1 as the entrance cell
+			if (cellID == 8525444 || cellID == 3435627)
+				continue;
 
 			ContainerPermissions* permissions = cell->getContainerPermissions();
 
