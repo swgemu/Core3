@@ -163,19 +163,22 @@ void FrsManagerImplementation::setupEnclaves() {
 }
 
 void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding, const String& groupName) {
-	for (uint32 j = 2; j < enclaveBuilding->getTotalCellNumber(); ++j) {
+	for (int j = 1; j <= enclaveBuilding->getTotalCellNumber(); ++j) {
 		ManagedReference<CellObject*> cell = enclaveBuilding->getCell(j);
 
 		if (cell != NULL) {
 			cell->setContainerComponent("EnclaveContainerComponent");
+
+			int roomReq = getRoomRequirement(cell->getObjectID());
+
+			if (roomReq == -1)
+				continue;
 
 			ContainerPermissions* permissions = cell->getContainerPermissions();
 
 			permissions->setInheritPermissionsFromParent(false);
 			permissions->clearDefaultAllowPermission(ContainerPermissions::WALKIN);
 			permissions->setDefaultDenyPermission(ContainerPermissions::WALKIN);
-
-			int roomReq = getRoomRequirement(cell->getObjectID());
 
 			for (int i = 11; i >= roomReq; i--) {
 				permissions->setAllowPermission(groupName + String::valueOf(i), ContainerPermissions::WALKIN);

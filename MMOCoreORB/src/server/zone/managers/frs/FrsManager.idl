@@ -144,7 +144,7 @@ class FrsManager extends ManagedService implements Logger {
 		if (roomRequirements.contains(cellID))
 			return roomRequirements.get(cellID);
 
-		return 1;
+		return 0;
 	}
 	
 	public native int getMaintenanceInterval() {

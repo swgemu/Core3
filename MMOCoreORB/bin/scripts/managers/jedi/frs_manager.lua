@@ -55,6 +55,7 @@ darkRankingData = {
 
 enclaveRoomRequirements = {
 	-- Light enclave
+	{ 8525444, -1 }, -- entrancehall1
 	{ 8525421, 1 }, -- tier1hall1
 	{ 8525420, 1 }, -- tier1room
 	{ 8525419, 1 }, -- tier1hall2
@@ -71,6 +72,7 @@ enclaveRoomRequirements = {
 	{ 8525426, 11 }, -- tier5room
 	{ 8525425, 11 }, -- tier5hall2
 	-- Dark enclave
+	{ 3435626, -1 }, -- ramp1
 	{ 3435644, 1 }, -- hallwayb1
 	{ 3435650, 1 }, -- council1
 	{ 3435637, 5 }, -- hallwaya1
