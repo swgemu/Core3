@@ -88,7 +88,7 @@ end
 function villageSarguilloPhase1ConvoHandler:completeCurrentPatrol(pPlayer)
 	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount")) + 1
 	FsPatrol:completeFsPatrol(pPlayer)
-	QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
+	QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount)
 
 	if (completedCount == 10) then
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PATROL_QUEST_10)
