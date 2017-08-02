@@ -86,7 +86,7 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 end
 
 function villageSarguilloPhase1ConvoHandler:completeCurrentPatrol(pPlayer)
-	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount")) + 1
+	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount"))
 	FsPatrol:completeFsPatrol(pPlayer)
 	QuestManager.setStoredVillageValue(pPlayer, "FsPatrolCompletedCount", completedCount + 1)
 
