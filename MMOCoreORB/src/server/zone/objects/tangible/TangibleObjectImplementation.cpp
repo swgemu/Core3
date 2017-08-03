@@ -169,6 +169,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		if (oldStatusBitmask != CreatureFlag::NONE)
 			creature->setPvpStatusBitmask(pvpStatusBitmask);
+		else
+			broadcastPvpStatusBitmask(); // Invuln players still need faction changes broadcasted even without the bitmask changing
 
 		Vector<ManagedReference<CreatureObject*> > petsToStore;
 
