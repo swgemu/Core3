@@ -28,10 +28,6 @@ int FsBuffItemImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			return 0;
 		}
 
-		// TODO: Remove before merge to Bas, temporary fix for existing items on Nova
-		if (buffDuration > 7200)
-			buffDuration = 7200;
-
 		Reference<Buff*> buff = new Buff(player, buffCRC, buffDuration, BuffType::MEDICAL);
 
 		Locker locker(buff);

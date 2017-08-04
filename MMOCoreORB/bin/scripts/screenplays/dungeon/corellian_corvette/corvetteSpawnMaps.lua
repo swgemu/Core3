@@ -1,8 +1,5 @@
 corvetteStaticSpawns = {
 	-- { template, x, z, y, roomName, yaw, customName, functionName, functionData, factionOnlySpawn }
-	--TODO: Remove blue frog before publish
-	{"object/tangible/terminal/terminal_character_builder.iff", -41.1, 0, 2.6, "airlock1", -140, "", "", "" },
-
 	{ "object/tangible/terminal/terminal_elevator_up.iff", 5, 0, -13.4, "elevator18", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_down.iff", 5, 12, -13.4, "elevator18", 180, "", "", "" },
 	{ "object/tangible/terminal/terminal_elevator_up.iff", 0, -12, 37.67, "elevator19", 180, "", "", "" },
