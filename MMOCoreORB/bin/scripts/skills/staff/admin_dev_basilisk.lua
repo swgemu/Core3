@@ -25,6 +25,7 @@ admin_dev_basilisk = {
 		"dumpTargetInformation",
 		"dumpZoneInformation",
 		"getObjVars",
+		"gmfsvillage",
 		"script",
 		"server",
 		"setspeed",

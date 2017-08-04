@@ -1,23 +1,24 @@
-frsEnabled = 1
+frsEnabled = 0
 
 -- Object ID of Enclave buildings
 lightEnclaveID = 8525417
 darkEnclaveID = 3435626
 
-petitionInterval = 86400000
-votingInterval = 86400000
-acceptanceInterval = 86400000
-maintenanceInterval = 900000
+petitionInterval = 86400000 -- 1 day
+votingInterval = 86400000 -- 1 day
+acceptanceInterval = 86400000 -- 1 day
+maintenanceInterval = 86400000 -- 1 day
 
-requestDemotionDuration = 604800
-voteChallengeDuration = 604800
+requestDemotionDuration = 604800000 -- 7 days
+voteChallengeDuration = 604800000 -- 7 days
 
+-- Costs are in FRS experience
 baseMaintCost = 100
 requestDemotionCost = 2500
 voteChallengeCost = 2000
 
 maxPetitioners = 11
-missedVotePenalty = 100
+missedVotePenalty = 100 -- FRS XP
 
 darkFrsSkills = {}
 lightFrsSkills = {}
