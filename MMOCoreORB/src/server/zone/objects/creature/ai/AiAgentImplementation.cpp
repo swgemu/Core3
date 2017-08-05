@@ -636,9 +636,9 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 
 	checkForReactionChat(pObject);
 
-	if (getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
+	/*if (getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
 		getZoneUnsafe()->getGCWManager()->runCrackdownScan(thisAiAgent, creoObject);
-	}
+	}*/
 
 	ManagedReference<SceneObject*> follow = getFollowObject().get();
 
