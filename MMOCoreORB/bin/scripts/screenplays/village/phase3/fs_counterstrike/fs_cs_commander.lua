@@ -184,14 +184,22 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 	end
 
 	local areaID = SceneObject(pArea):getObjectID()
-	local commanderID = SceneObject(pCreature):getObjectID()
+
+	local creatureID = SceneObject(pCreature):getObjectID()
+	local theaterID = readData(areaID .. ":theaterID")
+	local commanderID = readData(theaterID .. ":commanderID")
+
+	if (creatureID ~= commanderID) then
+		return 0
+	end
+
 	local escorterID = readData(commanderID .. ":escorterID")
-	local theaterID = readData(commanderID .. ":theaterID")
 	local teamTurnin = false
 
 	local pEscorter = getSceneObject(escorterID)
 
 	if (pEscorter == nil) then
+		printLuaError("FsCsCommander:notifyEnteredCommanderTurninArea unable to get escorter object, returned nil.")
 		return 1
 	end
 
@@ -200,6 +208,7 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 	local pShieldKiller = getSceneObject(shieldKillerID)
 
 	if (pShieldKiller == nil) then
+		printLuaError("FsCsCommander:notifyEnteredCommanderTurninArea unable to get shieldkiller object, returned nil.")
 		return 1
 	end
 
@@ -547,7 +556,7 @@ function FsCsCommander:setupRescueMob(pMobile)
 end
 
 function FsCsCommander:doRescuerSpatial(pMobile)
-	if (pMobile == nil or getRandomNumber(100) < 75) then
+	if (pMobile == nil or CreatureObject(pMobile):isDead() or getRandomNumber(100) < 75) then
 		return
 	end
 
