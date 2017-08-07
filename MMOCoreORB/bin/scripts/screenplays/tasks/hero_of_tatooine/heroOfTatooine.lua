@@ -1296,8 +1296,8 @@ function HeroOfTatooineScreenPlay:doHonorTimeout(pPlayer)
 end
 
 function HeroOfTatooineScreenPlay:doHonorSuccess(pPlayer)
-	local pTrooper1 = spawnMobile("tatooine", "crackdown_elite_sand_trooper", 0, -2.0, 0.6, 10.2, 0, 4005939)
-	local pTrooper2 = spawnMobile("tatooine", "crackdown_elite_sand_trooper", 0, -4.0, 0.6, 10.2, 0, 4005939)
+	local pTrooper1 = spawnMobile("tatooine", "elite_sand_trooper", 0, -2.0, 0.6, 10.2, 0, 4005939)
+	local pTrooper2 = spawnMobile("tatooine", "elite_sand_trooper", 0, -4.0, 0.6, 10.2, 0, 4005939)
 	local pRancher = spawnMobile("tatooine", "hero_of_tat_rancher", 0, 0, 0.6, 10.2, 0, 4005939)
 
 	if (pTrooper1 == nil or pTrooper2 == nil or pRancher == nil) then
