@@ -291,7 +291,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 			if (not PlayerObject(pGhost):isOnline()) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Player Offline\n"
 			elseif (timeTilVisit > 0) then
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit * 1000) .. "\n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Soon\n"
 			end
@@ -315,7 +315,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 			if (not PlayerObject(pGhost):isOnline()) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Player Offline\n"
 			elseif (timeTilVisit > 0) then
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilVisit * 1000) .. "\n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time until visit:" .. " \\#pcontrast2 Soon\n"
 			end
@@ -337,7 +337,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 			if (not PlayerObject(pGhost):isOnline()) then
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time Until Attack:" .. " \\#pcontrast2 Player Offline\n"
 			elseif (timeTilAttack > 0) then
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time Until Attack:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilAttack) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time Until Attack:" .. " \\#pcontrast2 " .. VillageGmSui:getTimeString(timeTilAttack * 1000) .. "\n"
 			else
 				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Time Until Attack:" .. " \\#pcontrast2 Soon\n"
 			end
