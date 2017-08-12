@@ -917,8 +917,12 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			cloneMenu->addMenuItem(name, loc->getObjectID());
 		} else if ((cbot->getFacilityType() == CloningBuildingObjectTemplate::LIGHT_JEDI_ONLY && player->hasSkill("force_rank_light_novice")) ||
 				(cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY && player->hasSkill("force_rank_dark_novice"))) {
-			String name = "Jedi Enclave (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
-			cloneMenu->addMenuItem(name, loc->getObjectID());
+			FrsManager* frsManager = server->getFrsManager();
+
+			if (frsManager->isFrsEnabled()) {
+				String name = "Jedi Enclave (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
+				cloneMenu->addMenuItem(name, loc->getObjectID());
+			}
 		}
 	}
 
