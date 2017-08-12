@@ -3050,8 +3050,13 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 
 	CreatureObject* targetCreo = asCreatureObject();
 
-	if (isPet())
-		targetCreo = getLinkedCreature().get();
+	if (isPet()) {
+		auto linkedCreature = getLinkedCreature().get();
+
+		if (linkedCreature != nullptr) {
+			targetCreo = linkedCreature.get();
+		}
+	}
 
 	uint32 targetFactionStatus = targetCreo->getFactionStatus();
 	uint32 currentFactionStatus = object->getFactionStatus();
