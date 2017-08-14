@@ -12,8 +12,8 @@ FsIntro = ScreenPlay:new {
 	VILLAGE = 8,
 
 	stepDelay = {
-		[1] = { 86400, 172800 }, -- Old man visit, 1-2 days
-		[3] = { 3600, 86400 } -- Sith shadow attack, 1 hour to 1 day
+		[1] = { 28800, 129600 }, -- Old man visit, 12-36 hours
+		[3] = { 3600, 28800 } -- Sith shadow attack, 1 hour to 12 hours
 	}
 }
 
@@ -62,15 +62,9 @@ function FsIntro:startStepDelay(pPlayer, step)
 
 		if oldManVisits ~= nil then
 			if (oldManVisits == 2) then
-				stepDelay = stepDelay + (2 * 24 * 60 * 60)
-			elseif (oldManVisits == 3) then
-				stepDelay = stepDelay + (7 * 24 * 60 * 60)
-			elseif (oldManVisits == 4) then
-				stepDelay = stepDelay + (14 * 24 * 60 * 60)
-			elseif (oldManVisits == 5) then
-				stepDelay = stepDelay + (30 * 24 * 60 * 60)
-			elseif (oldManVisits >= 6) then
-				stepDelay = stepDelay + (60 * 24 * 60 * 60)
+				stepDelay = stepDelay + (1 * 24 * 60 * 60)
+			elseif (oldManVisits >= 3) then
+				stepDelay = stepDelay + (oldManVisits * 24 * 60 * 60)
 			end
 		end
 	end
