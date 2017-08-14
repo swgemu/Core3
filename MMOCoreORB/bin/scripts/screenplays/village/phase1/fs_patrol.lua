@@ -151,6 +151,7 @@ function FsPatrol:onEnteredActiveArea(pPlayer, pActiveArea)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:large_group" .. numEnemies)
 		self:spawnEnemies(pPlayer, numEnemies, SceneObject(pActiveArea):getWorldPositionX(), SceneObject(pActiveArea):getWorldPositionY())
 	else
+		self:clearLastPoint(pPlayer)
 		writeData(playerID .. ":completedCurrentPoint", 1)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:no_objective")
 	end
