@@ -8,6 +8,7 @@
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidDetonationModuleDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
@@ -90,6 +91,7 @@ public:
 			case 3: {
 				// BOOM
 				int areaDamage = module->calculateDamage(droid);
+				bool shouldGcwTef = false, shouldBhTef = false;
 
 				// find all valid targets in 17 m range and hit them with the damage
 				CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
@@ -135,18 +137,23 @@ public:
 							// apply the damage
 							float amount = CombatManager::instance()->doDroidDetonation(droid, creo, areaDamage);
 
-							if (creo->isPlayerCreature()) {
-								StringIdChatParameter stringId;
-								stringId.setStringId("@pet/droid_modules:hit_by_detonation");
-								stringId.setDI((int)amount);
-								creo->sendSystemMessage(stringId);
+							if (amount > 0) {
+								if (creo->isPlayerCreature()) {
+									StringIdChatParameter stringId;
+									stringId.setStringId("@pet/droid_modules:hit_by_detonation");
+									stringId.setDI((int)amount);
+									creo->sendSystemMessage(stringId);
+								}
+
+								StringIdChatParameter tomaster;
+								tomaster.setStringId("@pet/droid_modules:hit_by_detonation_master");
+								tomaster.setTT(object->getObjectID());
+								tomaster.setDI((int)amount);
+								player->sendSystemMessage(tomaster);
+
+								CombatManager::instance()->checkForTefs(player, creo, &shouldGcwTef, &shouldBhTef);
 							}
 
-							StringIdChatParameter tomaster;
-							tomaster.setStringId("@pet/droid_modules:hit_by_detonation_master");
-							tomaster.setTT(object->getObjectID());
-							tomaster.setDI((int)amount);
-							player->sendSystemMessage(tomaster);
 						}
 					} catch (Exception& e) {
 						error(e.getMessage());
@@ -169,6 +176,16 @@ public:
 					petControlDevice->destroyObjectFromWorld(true);
 					petControlDevice->destroyObjectFromDatabase(true);
 				}
+
+				// Update PvP TEF Duration
+				if (shouldGcwTef || shouldBhTef) {
+					PlayerObject* ghost = player->getPlayerObject();
+
+					if (ghost != NULL) {
+						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+					}
+				}
+
 				break;
 			}
 		}
