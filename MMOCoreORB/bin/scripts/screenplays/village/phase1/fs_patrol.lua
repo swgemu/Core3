@@ -16,8 +16,6 @@ FsPatrol = Patrol:new {
 }
 
 function FsPatrol:spawnEnemies(pPlayer, numEnemies, x, y)
-	self:clearLastPoint(pPlayer)
-
 	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. self.taskName .. "numEnemies", numEnemies)
 	writeData(playerID .. self.taskName .. "totalEnemies", numEnemies)
@@ -66,6 +64,7 @@ function FsPatrol:clearLastPoint(pPlayer)
 				createEvent(30 * 1000, self.taskName, "destroyMobile", pMobile, "")
 			else
 				SceneObject(pMobile):destroyObjectFromWorld()
+				deleteData(mobileID .. self.taskName .. "ownerID")
 			end
 
 			deleteData(playerID .. self.taskName .. "enemyNum" .. i)
@@ -130,6 +129,7 @@ function FsPatrol:onEnteredActiveArea(pPlayer, pActiveArea)
 	end
 
 	local playerID = SceneObject(pPlayer):getObjectID()
+	self:clearLastPoint(pPlayer)
 
 	if (readData(playerID .. ":completedCurrentPoint") == -1) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:failed_previous_point")
@@ -151,7 +151,6 @@ function FsPatrol:onEnteredActiveArea(pPlayer, pActiveArea)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:large_group" .. numEnemies)
 		self:spawnEnemies(pPlayer, numEnemies, SceneObject(pActiveArea):getWorldPositionX(), SceneObject(pActiveArea):getWorldPositionY())
 	else
-		self:clearLastPoint(pPlayer)
 		writeData(playerID .. ":completedCurrentPoint", 1)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:no_objective")
 	end
