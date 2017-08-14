@@ -85,6 +85,7 @@ class DroidObject extends AiAgent {
 	public static final int DZ70 = 0xDE;
 	public static final int TREADWELL = 0xDF;
 	public static final int PROBE_DROID = 0xE1;
+	public static final int MSE_ADV = 0xE2;
 
 	protected int maximumHam;
 	protected int minDamage;
