@@ -160,6 +160,9 @@ public:
 
 	float hitChanceEquation(float attackerAccuracy, float attackerRoll, float targetDefense, float defenderRoll);
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
+
+	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
+
 	//all the combat math will go here
 protected:
 
@@ -225,8 +228,6 @@ protected:
 	 * returns false on insufficient
 	 */
 	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data);
-
-	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
 };
 
 #endif /* COMBATMANAGER_H_ */
