@@ -12,6 +12,7 @@ ConfigManager::ConfigManager() {
 	makeWeb = true;
 	dumpObjFiles = true;
 	unloadContainers = true;
+	useMetrics = true;
 
 	orbNamingDirectoryAddress = "";
 	orbNamingDirectoryPort = 44419;
@@ -39,6 +40,9 @@ ConfigManager::ConfigManager() {
 	webErrorLog = "log/web_error.log";
 	webAccessLog = "log/web_access.log";
 	webSessionTimeout = 600;
+
+	metricsHost = "127.0.0.1";
+	metricsPort = 8125;
 
 	loginProcessingThreads = 1;
 	loginRequiredVersion = "20050408-18:00";
@@ -76,6 +80,7 @@ bool ConfigManager::loadConfigData() {
 	makeWeb = getGlobalByte("MakeWeb");
 	dumpObjFiles = getGlobalByte("DumpObjFiles");
 	unloadContainers = getGlobalByte("UnloadContainers");
+	useMetrics = getGlobalByte("UseMetrics");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 	orbNamingDirectoryPort = getGlobalShort("ORBPort");
@@ -122,6 +127,9 @@ bool ConfigManager::loadConfigData() {
 	webAccessLog = getGlobalString("WebAccessLog");
 	webErrorLog = getGlobalString("WebErrorLog");
 	webSessionTimeout = getGlobalInt("WebSessionTimeout");
+
+	metricsHost = getGlobalString("MetricsHost");
+	metricsPort = getGlobalInt("MetricsPort");
 
 	progressMonitors = getGlobalBoolean("ProgressMonitors");
 
