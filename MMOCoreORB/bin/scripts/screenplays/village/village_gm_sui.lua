@@ -31,6 +31,7 @@ function VillageGmSui:showMainPage(pPlayer)
 	sui.add("Lookup player by oid", "playerLookupByOID")
 	sui.add("List players in village", "listOnlineVillagePlayers")
 	sui.add("Output LUA os.time() (Debugging)", "getOSTime")
+	sui.add("Full Village Reset (DO NOT TOUCH)", "resetVillageValues")
 
 	if (not self.productionServer) then
 		sui.add("Change to next phase", "changePhase")
@@ -76,6 +77,45 @@ function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 
 
 	self[menuOption](pPlayer, targetID)
+end
+
+function VillageGmSui.resetVillageValues(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
+	VillageJediManagerTownship:despawnMobiles(currentPhase)
+	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
+	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
+	VillageCommunityCrafting:doEndOfPhaseCheck()
+	VillageCommunityCrafting:doEndOfPhasePrizes()
+	VillageJediManagerTownship:destroyVillageMasterObject()
+
+	-- Despawn camps going into phase 4
+	if (currentPhase == 3) then
+		FsCounterStrike:despawnAllCamps()
+	end
+
+	if (currentPhase == 3 or currentPhase == 4) then
+		VillageRaids:despawnTurrets()
+	end
+
+	removeQuestStatus("Village:lastPhaseChangeTime")
+	VillageJediManagerTownship.setCurrentPhase(1)
+	VillageJediManagerTownship.setCurrentPhaseID(1)
+	VillageJediManagerTownship:spawnMobiles(1, false)
+	VillageJediManagerTownship:spawnSceneObjects(1, false)
+	VillageJediManagerTownship:createVillageMasterObject()
+
+	if (hasServerEvent("VillagePhaseChange")) then
+		rescheduleServerEvent("VillagePhaseChange", VillageJediManagerTownship.VILLAGE_PHASE_DURATION)
+	else
+		createServerEvent(VillageJediManagerTownship.VILLAGE_PHASE_DURATION, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("Village has been completely reset.")
 end
 
 function VillageGmSui.getOSTime(pPlayer)
