@@ -36,13 +36,15 @@ public:
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
-		if (inso->getZone() == NULL)
+		auto zone = inso->getZone();
+
+		if (zone == NULL)
 			return GENERALERROR;
 
 		try {
 			Locker clocker(object, player);
 
-			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, inso);
+			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, inso, zone);
 			player->sendMessage(msg);
 
 		} catch (Exception& e) {

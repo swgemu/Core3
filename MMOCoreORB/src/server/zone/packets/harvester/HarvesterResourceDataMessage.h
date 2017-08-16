@@ -9,7 +9,7 @@
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(CreatureObject* player, InstallationObject* hino)
+	HarvesterResourceDataMessage(CreatureObject* player, InstallationObject* hino, Zone* zone)
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
 
 		insertLong(hino->getObjectID()); // Harvester Object
@@ -17,7 +17,7 @@ public:
 		Vector<ManagedReference<ResourceSpawn*> > resourceList;
 
 		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
-		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneName());
+		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), zone->getZoneName());
 
 		/*StringBuffer msg;
 		msg << "resource list for type " << hino->getInstallationType() << " with size " << resourceList.size();
@@ -43,7 +43,13 @@ public:
 			insertLong(ri->getObjectID());
 			insertAscii(ri->getName());
 			insertAscii(ri->getType());
-			insertByte((int) (ri->getDensityAt(hino->getZone()->getZoneName(), hino->getPositionX(), hino->getPositionY()) * 100.f));
+			auto zone = hino->getZone();
+
+			if (zone != nullptr) {
+				insertByte((int) (ri->getDensityAt(zone->getZoneName(), hino->getPositionX(), hino->getPositionY()) * 100.f));
+			} else {
+				insertByte((int) 0);
+			}
 		}
 
 	}
