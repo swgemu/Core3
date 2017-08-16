@@ -66,46 +66,47 @@ Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& po
 }
 
 void PathFinderManager::filterPastPoints(Vector<WorldCoordinates>* path, SceneObject* object) {
-    Vector3 thisWorldPosition = object->getWorldPosition();
-    Vector3 thiswP = thisWorldPosition;
-    thiswP.setZ(0);
+	Vector3 thisWorldPosition = object->getWorldPosition();
+	Vector3 thiswP = thisWorldPosition;
+	thiswP.setZ(0);
 
-    if (path->size() > 2 && path->get(0) == path->get(1))
-        path->remove(1);
+	int i = 2;
 
-    for (int i = 2; i < path->size(); ++i) {
-        WorldCoordinates coord1 = path->get(i);
-        WorldCoordinates coord2 = path->get(i - 1);
+	while (i < path->size()) {
+		WorldCoordinates coord1 = path->get(i);
+		WorldCoordinates coord2 = path->get(i - 1);
 
-        Vector3 end = coord1.getWorldPosition();
-        Vector3 start = coord2.getWorldPosition();
+		if (path->size() > 2) {
+			if (coord1 == coord2) {
+				path->remove(i - 1);
+				continue;
+			}
 
-        if (coord1.getCell() != coord2.getCell()) {
-            Vector3 coord1WorldPosition = end;
-            Vector3 coord2WorldPosition = start;
+			Vector3 end = coord1.getWorldPosition();
+			Vector3 start = coord2.getWorldPosition();
 
-            if (coord1WorldPosition == coord2WorldPosition && thisWorldPosition == coord1WorldPosition) {
-                path->remove(i - 1);
-                break;
-            }
+			if (end == start) {
+				path->remove(i - 1);
+				continue;
+			}
 
-            continue;
-        }
+			end.setZ(0);
+			start.setZ(0);
+			Segment sgm(start, end);
 
-        end.setZ(0);
-        start.setZ(0);
-        Segment sgm(start, end);
+			Vector3 closestP = sgm.getClosestPointTo(thiswP);
 
-        Vector3 closestP = sgm.getClosestPointTo(thiswP);
+			if (closestP.distanceTo(thiswP) <= FLT_EPSILON) {
+				for (int j = i - 1; j > 0; --j) {
+					path->remove(j);
+				}
 
-        if (closestP.distanceTo(thiswP) <= FLT_EPSILON) {
-            for (int j = i - 1; j > 0; --j) {
-                path->remove(j);
-            }
+				continue;
+			}
+		}
 
-            break;
-        }
-    }
+		i++;
+	}
 }
 
 bool pointInSphere(const Vector3 &point, const Sphere& sphere) {
