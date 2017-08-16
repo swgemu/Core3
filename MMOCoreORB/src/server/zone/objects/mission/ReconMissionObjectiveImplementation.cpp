@@ -35,17 +35,23 @@ void ReconMissionObjectiveImplementation::activate() {
 
 		Zone* zone = zoneServer->getZone(planetName);
 
-		Locker locker(locationActiveArea);
+		if (zone != nullptr) {
+			Reference<MissionReconActiveArea* > area = locationActiveArea;
 
-		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
-		locationActiveArea->setRadius(32.f);
+			Core::getTaskManager()->executeTask([zone, area, this, mission] () {
+				Locker locker(area);
 
-		if (zone != NULL) {
-			zone->transferObject(locationActiveArea, -1, true);
-		} else {
-			error("Failed to insert recon location to zone.");
-			abort();
-			return;
+				area->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
+				area->setRadius(32.f);
+
+				if (zone != NULL) {
+					zone->transferObject(area, -1, true);
+				} else {
+					error("Failed to insert recon location to zone.");
+					abort();
+					return;
+				}
+			}, "ReconMissionObjectiveActivateLambda");
 		}
 	}
 
