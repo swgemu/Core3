@@ -294,76 +294,83 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		object->setCityRegion(NULL);
 	}
 
-
-	if (object->isBazaarTerminal() || object->isVendor()) {
-		if (object->isBazaarTerminal())
-			bazaars.drop(object->getObjectID());
-
-		AuctionTerminalDataComponent* terminalData = NULL;
-		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
-			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
-
-		if(terminalData != NULL)
-			terminalData->updateUID();
-	}
-
 	if (object->isPlayerCreature())
 		currentPlayers.decrement();
 
-	if (isClientRegion()) {
-		return;
-	}
+	Reference<CityRegion*> thisRegion = _this.getReferenceUnsafeStaticCast();
+	Reference<SceneObject*> objectRef = object;
 
-	if (object->isCreatureObject()) {
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(thisRegion);
 
-		CreatureObject* creature = cast<CreatureObject*>(object);
+		if (object->isBazaarTerminal() || object->isVendor()) {
+			if (object->isBazaarTerminal())
+				bazaars.drop(object->getObjectID());
 
-		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-		params.setTO(getRegionName());
+			AuctionTerminalDataComponent* terminalData = NULL;
+			DataObjectComponentReference* data = object->getDataObjectComponent();
+			if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+				terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		creature->sendSystemMessage(params);
+			if(terminalData != NULL)
+				terminalData->updateUID();
+		}
 
-		removeSpecializationModifiers(creature);
-	}
+		if (isClientRegion()) {
+			return;
+		}
 
-	if (object->isStructureObject()) {
-		float x = object->getWorldPositionX();
-		float y = object->getWorldPositionY();
+		if (object->isCreatureObject()) {
+			CreatureObject* creature = cast<CreatureObject*>(object);
 
-		StructureObject* structure = cast<StructureObject*>(object);
+			StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
+			params.setTO(getRegionName());
 
-		Locker slocker(&structureListMutex);
+			creature->sendSystemMessage(params);
 
-		if (structure->isBuildingObject()) {
+			removeSpecializationModifiers(creature);
+		}
 
-			BuildingObject* building = cast<BuildingObject*>(object);
-			uint64 ownerID = structure->getOwnerObjectID();
+		if (object->isStructureObject()) {
+			float x = object->getWorldPositionX();
+			float y = object->getWorldPositionY();
 
-			ZoneServer* zoneServer = building->getZoneServer();
+			StructureObject* structure = cast<StructureObject*>(object);
 
-			if (zoneServer != NULL) {
-				ManagedReference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
+			Locker slocker(&structureListMutex);
 
-				if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
-					CityManager* cityManager = zoneServer->getCityManager();
-					cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+			if (structure->isBuildingObject()) {
+
+				BuildingObject* building = cast<BuildingObject*>(object);
+				uint64 ownerID = structure->getOwnerObjectID();
+
+				ZoneServer* zoneServer = building->getZoneServer();
+
+				if (zoneServer != NULL) {
+					ManagedReference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
+
+					if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
+						CityManager* cityManager = zoneServer->getCityManager();
+						cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+					}
 				}
+			}
+
+			completeStructureList.drop(structure->getObjectID());
+
+			if (structure->isCivicStructure()) {
+				removeStructure(structure);
+			} else if (structure->isCommercialStructure()) {
+				removeCommercialStructure(structure);
 			}
 		}
 
-		completeStructureList.drop(structure->getObjectID());
-
-		if (structure->isCivicStructure()) {
-			removeStructure(structure);
-		} else if (structure->isCommercialStructure()) {
-			removeCommercialStructure(structure);
+		if (object->isDecoration() && object->getParent().get() == NULL) {
+			removeDecoration(object);
 		}
-	}
 
-	if (object->isDecoration() && object->getParent().get() == NULL) {
-		removeDecoration(object);
-	}
+		objectRef = NULL;
+	});
 }
 
 
