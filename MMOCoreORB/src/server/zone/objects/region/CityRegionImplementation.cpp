@@ -243,7 +243,16 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
 
 			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !isCitizen(ownerID)) {
-				cityManager->registerCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+				Reference<CityRegion*> thisRegion = _this.getReferenceUnsafeStaticCast();
+				Reference<SceneObject*> objectRef = object;
+
+				Core::getTaskManager()->executeTask([this, thisRegion, cityManager, owner] () {
+					Locker lockerObject(owner);
+
+					Locker locker(thisRegion, owner);
+
+					cityManager->registerCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+				}, "CityRegionNotifyEnterLambda");
 			}
 		 }
 
@@ -297,81 +306,83 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	if (object->isPlayerCreature())
 		currentPlayers.decrement();
 
-	Reference<CityRegion*> thisRegion = _this.getReferenceUnsafeStaticCast();
-	Reference<SceneObject*> objectRef = object;
 
-	Core::getTaskManager()->executeTask([this, thisRegion, objectRef, object] () {
-		Locker lockerObject(objectRef);
+	if (object->isBazaarTerminal() || object->isVendor()) {
+		if (object->isBazaarTerminal())
+			bazaars.drop(object->getObjectID());
 
-		Locker locker(thisRegion, objectRef);
+		AuctionTerminalDataComponent* terminalData = NULL;
+		DataObjectComponentReference* data = object->getDataObjectComponent();
+		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if (object->isBazaarTerminal() || object->isVendor()) {
-			if (object->isBazaarTerminal())
-				bazaars.drop(object->getObjectID());
+		if(terminalData != NULL)
+			terminalData->updateUID();
+	}
 
-			AuctionTerminalDataComponent* terminalData = NULL;
-			DataObjectComponentReference* data = object->getDataObjectComponent();
-			if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
-				terminalData = cast<AuctionTerminalDataComponent*>(data->get());
+	if (isClientRegion()) {
+		return;
+	}
 
-			if(terminalData != NULL)
-				terminalData->updateUID();
-		}
+	if (object->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(object);
 
-		if (isClientRegion()) {
-			return;
-		}
+		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
+		params.setTO(getRegionName());
 
-		if (object->isCreatureObject()) {
-			CreatureObject* creature = cast<CreatureObject*>(object);
+		creature->sendSystemMessage(params);
 
-			StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-			params.setTO(getRegionName());
+		removeSpecializationModifiers(creature);
+	}
 
-			creature->sendSystemMessage(params);
+	if (object->isStructureObject()) {
+		float x = object->getWorldPositionX();
+		float y = object->getWorldPositionY();
 
-			removeSpecializationModifiers(creature);
-		}
+		StructureObject* structure = cast<StructureObject*>(object);
 
-		if (object->isStructureObject()) {
-			float x = object->getWorldPositionX();
-			float y = object->getWorldPositionY();
+		Locker slocker(&structureListMutex);
 
-			StructureObject* structure = cast<StructureObject*>(object);
+		if (structure->isBuildingObject()) {
 
-			Locker slocker(&structureListMutex);
+			BuildingObject* building = cast<BuildingObject*>(object);
+			uint64 ownerID = structure->getOwnerObjectID();
 
-			if (structure->isBuildingObject()) {
+			ZoneServer* zoneServer = building->getZoneServer();
 
-				BuildingObject* building = cast<BuildingObject*>(object);
-				uint64 ownerID = structure->getOwnerObjectID();
+			if (zoneServer != NULL) {
+				ManagedReference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
 
-				ZoneServer* zoneServer = building->getZoneServer();
+				if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
+					CityManager* cityManager = zoneServer->getCityManager();
 
-				if (zoneServer != NULL) {
-					ManagedReference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
+					Reference<CityRegion*> thisRegion = _this.getReferenceUnsafeStaticCast();
+					Reference<SceneObject*> objectRef = object;
 
-					if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
-						CityManager* cityManager = zoneServer->getCityManager();
+					Core::getTaskManager()->executeTask([this, thisRegion, objectRef, cityManager, owner] () {
+						Locker lockerObject(owner);
+
+						Locker locker(thisRegion, owner);
+
 						cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
-					}
+					}, "CityRegionNotifyExitLambda");
+
 				}
 			}
-
-			completeStructureList.drop(structure->getObjectID());
-
-			if (structure->isCivicStructure()) {
-				removeStructure(structure);
-			} else if (structure->isCommercialStructure()) {
-				removeCommercialStructure(structure);
-			}
 		}
 
-		if (object->isDecoration() && object->getParent().get() == NULL) {
-			removeDecoration(object);
-		}
+		completeStructureList.drop(structure->getObjectID());
 
-	}, "CityRegionNotifyExitLambda");
+		if (structure->isCivicStructure()) {
+			removeStructure(structure);
+		} else if (structure->isCommercialStructure()) {
+			removeCommercialStructure(structure);
+		}
+	}
+
+	if (object->isDecoration() && object->getParent().get() == NULL) {
+		removeDecoration(object);
+	}
 }
 
 
