@@ -2641,14 +2641,19 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 			if (terrainManager != NULL) {
 				float waterHeight;
 				
-				Reference<CreatureObject*> creature = _this.getReferenceUnsafeStaticCast();
+				CreatureObject* creature = asCreatureObject();
 				
 				if (creature->getParent() == NULL && terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
 					
 					if (creature->getPositionZ() + creature->getSwimHeight() - waterHeight < 0.2) {
+						Reference<CreatureObject*> strongRef = asCreatureObject();
 						
-						if (creature->hasState(CreatureState::ONFIRE))
-							creature->healDot(CreatureState::ONFIRE, 100);
+						Core::getTaskManager()->executeTask([strongRef] () {
+							Locker locker(strongRef);
+
+							if (strongRef->hasState(CreatureState::ONFIRE))
+								strongRef->healDot(CreatureState::ONFIRE, 100);
+						}, "CreoPositionUpdateHealFireLambda");
 					}
 				}
 			}
