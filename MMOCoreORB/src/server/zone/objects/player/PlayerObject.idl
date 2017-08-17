@@ -96,6 +96,7 @@ class PlayerObject extends IntangibleObject {
 
 	protected int jediState;
 	protected unsigned int adminLevel;
+	protected int priviledgeFlag;
 
 	protected byte languageID;
 
@@ -336,6 +337,7 @@ class PlayerObject extends IntangibleObject {
 		maximumLots = 10;
 
 		adminLevel = 0;
+		priviledgeFlag = 0;
 
 		languageID = 0;
 
@@ -1215,6 +1217,15 @@ class PlayerObject extends IntangibleObject {
 
 	public void setAdminLevel(unsigned int adminlvl) {
 		adminLevel = adminlvl;
+	}
+	
+	@read
+	public int getPriviledgeFlag() {
+		return priviledgeFlag;
+	}
+
+	public void setPriviledgeFlag(int flag) {
+		priviledgeFlag = flag;
 	}
 
 	public void setBiography(final unicode bio) {
