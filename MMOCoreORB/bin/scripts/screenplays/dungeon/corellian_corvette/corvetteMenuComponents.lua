@@ -86,7 +86,7 @@ function CorvetteKeypadMenuComponent:handleObjectMenuSelect(pKeypad, pPlayer, se
 		return
 	end
 
-	if (SceneObject(pPlayer):getParentID() ~= SceneObject(pSceneObject):getParentID() or not CreatureObject(pPlayer):isInRangeWithObject(pKeypad, 4)) then
+	if (SceneObject(pKeypad):getParentID() ~= SceneObject(pPlayer):getParentID() or not CreatureObject(pPlayer):isInRangeWithObject(pKeypad, 4)) then
 		return
 	end
 
@@ -133,7 +133,7 @@ function CorvetteComputerMenuComponent:handleObjectMenuSelect(pComputer, pPlayer
 		return
 	end
 
-	if (SceneObject(pPlayer):getParentID() ~= SceneObject(pSceneObject):getParentID() or not CreatureObject(pPlayer):isInRangeWithObject(pComputer, 4)) then
+	if (SceneObject(pPlayer):getParentID() ~= SceneObject(pComputer):getParentID() or not CreatureObject(pPlayer):isInRangeWithObject(pComputer, 4)) then
 		return
 	end
 
