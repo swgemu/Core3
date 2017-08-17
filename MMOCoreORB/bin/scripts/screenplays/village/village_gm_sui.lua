@@ -1,5 +1,5 @@
 VillageGmSui = ScreenPlay:new {
-	productionServer = false
+	productionServer = true
 }
 
 function VillageGmSui:showMainPage(pPlayer)
@@ -42,7 +42,7 @@ end
 function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 	local cancelPressed = (eventIndex == 1)
 
-	if (cancelPressed) then
+	if (cancelPressed or args == nil or args < 0) then
 		return
 	end
 
@@ -53,7 +53,7 @@ function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 	end
 
 	local suiPageData = LuaSuiPageData(pPageData)
-	local menuOption =  suiPageData:getStoredData(tostring(args))
+	local menuOption = suiPageData:getStoredData(tostring(args))
 
 	local targetID
 
@@ -73,7 +73,6 @@ function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 		printLuaError("Tried to execute invalid function " .. menuOption .. " in VillageGmSui")
 		return
 	end
-
 
 	self[menuOption](pPlayer, targetID)
 end
@@ -614,7 +613,7 @@ function VillageGmSui.forceOutroOldManEvent(pPlayer, targetID)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event outro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
-	FsOutro:startOldMan(pTarget)
+	FsOutro:doOldManSpawn(pTarget)
 end
 
 function VillageGmSui.resetActiveQuest(pPlayer, targetID)
