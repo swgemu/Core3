@@ -70,6 +70,9 @@ MantisUser = "swgemu"
 MantisPass = "123456"
 MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
+MetricsHost = "localhost"
+MetricsPort = 8125
+
 AutoReg = 1
 
 ProgressMonitors = "true"

@@ -16,6 +16,7 @@ namespace conf {
 		bool makeWeb;
 		bool dumpObjFiles;
 		bool unloadContainers;
+		bool useMetrics;
 
 		String orbNamingDirectoryAddress;
 		uint16 orbNamingDirectoryPort;
@@ -45,6 +46,9 @@ namespace conf {
 		String webErrorLog;
 		int webSessionTimeout;
 		String revision;
+
+		String metricsHost;
+		int metricsPort;
 
 		int purgeDeletedCharacters;
 
@@ -118,6 +122,10 @@ namespace conf {
 			return unloadContainers;
 		}
 
+		inline bool shouldUseMetrics() const {
+			return useMetrics;
+		}
+
 		inline const String& getORBNamingDirectoryAddress() const {
 			return orbNamingDirectoryAddress;
 		}
@@ -188,6 +196,14 @@ namespace conf {
 
 		inline const String& getRevision() const {
 			return revision;
+		}
+
+		inline const String& getMetricsHost() const {
+			return metricsHost;
+		}
+
+		inline int getMetricsPort() const {
+			return metricsPort;
 		}
 
 		inline const String& getTrePath() const {

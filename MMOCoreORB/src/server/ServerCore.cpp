@@ -25,6 +25,8 @@
 
 #include "engine/util/u3d/QuadTree.h"
 
+#include "engine/core/MetricsManager.h"
+
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
@@ -93,6 +95,14 @@ void ServerCore::initialize() {
 				configManager->getORBNamingDirectoryPort());
 
 		orb->setCustomObjectManager(objectManager);
+
+		System::out << "METRICS: " << String::valueOf(configManager->shouldUseMetrics()) << " " << configManager->getMetricsHost() << " " << String::valueOf(configManager->getMetricsPort()) << endl;
+		if (configManager->shouldUseMetrics()) {
+			metricsManager = MetricsManager::instance();
+			metricsManager->initializeStatsDConnection(
+					configManager->getMetricsHost().toCharArray(),
+					configManager->getMetricsPort());
+		}
 
 		if (configManager->getMakeLogin()) {
 			loginServer = new LoginServer(configManager);
@@ -326,6 +336,7 @@ void ServerCore::shutdown() {
 	objectManager->finalizeInstance();
 
 	configManager = NULL;
+	metricsManager = NULL;
 
 	if (database != NULL) {
 		delete database;
