@@ -1,0 +1,33 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.*/
+
+package server.chat;
+
+import engine.core.ManagedObject;
+import system.lang.System;
+import system.util.Vector;
+
+class PendingMessageList extends ManagedObject {
+
+    @dereferenced
+    Vector<unsigned long> pendingMessages;
+
+    public PendingMessageList() {
+
+    }
+
+    @local
+    public Vector<unsigned long> getPendingMessages() {
+        return pendingMessages;
+    }
+
+    public void clearPendingMessages() {
+        pendingMessages.removeAll();
+    }
+
+    public void addPendingMessage(unsigned long oid) {
+        pendingMessages.add(oid);
+    }
+}
+
