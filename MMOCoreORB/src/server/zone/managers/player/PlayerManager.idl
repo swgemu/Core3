@@ -365,6 +365,11 @@ class PlayerManager extends Observer implements Logger {
 		nameMap.remove(playerName);
 	}
 
+	@dirty
+	public boolean containsPlayer(final string playerName) {
+		return nameMap.containsKey(playerName);
+	}
+
 	public native void sendAdminJediList(CreatureObject player);
 	public native void sendAdminFRSList(CreatureObject player);	
 	public native void sendAdminList(CreatureObject player);
