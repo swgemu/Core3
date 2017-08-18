@@ -69,6 +69,7 @@
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
 #include "server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h"
 #include "server/zone/packets/ui/DestroyClientPathMessage.h"
+#include "server/chat/PendingMessageList.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -82,6 +83,30 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	setLoggingName("PlayerObject");
 
 	initializeAccount();
+}
+
+void PlayerObjectImplementation::checkPendingMessages() {
+    CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+    if (creature != NULL) {
+        ObjectManager *objectManager = ObjectManager::instance();
+        ManagedReference<PendingMessageList*> messageList = getZoneServer()->getChatManager()->getPendingMessages(creature->getObjectID());
+        
+        if (messageList != NULL) {
+            Locker locker(messageList);
+            Vector<uint64>& pendingMessages = *messageList->getPendingMessages();
+            for (uint64 messageID : pendingMessages) {
+                
+                ManagedReference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageID).castTo<PersistentMessage*>();
+                
+                if (isIgnoring(mail->getSenderName())) {
+                    objectManager->destroyObjectFromDatabase(mail->getObjectID());
+                    continue;
+                }
+                persistentMessages.add(messageID);
+            }
+            messageList->clearPendingMessages();
+        }
+    }
 }
 
 void PlayerObjectImplementation::initializeAccount() {
@@ -1219,6 +1244,7 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 }
 
 void PlayerObjectImplementation::notifyOnline() {
+    
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (parent == NULL)
