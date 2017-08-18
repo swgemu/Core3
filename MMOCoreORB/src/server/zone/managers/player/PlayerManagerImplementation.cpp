@@ -2763,6 +2763,9 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 
 void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, int permissionLevel) {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	int priviledgeFlag = permissionLevelList->getPriviledgeFlag(permissionLevel);
+
+	ghost->setPriviledgeFlag(priviledgeFlag);
 	//Send deltas
 	if (player->isOnline()) {
 		UnicodeString tag = permissionLevelList->getPermissionTag(permissionLevel);

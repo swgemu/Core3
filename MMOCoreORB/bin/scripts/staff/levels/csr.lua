@@ -1,6 +1,7 @@
 csr = {
 	level = 12,
 	name = "csr",
+	flag = 1, -- CSR
 	tag = "SWGEmu-CSR",
 	skills = {
 		"admin_base",

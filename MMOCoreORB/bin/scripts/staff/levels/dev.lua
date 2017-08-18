@@ -1,6 +1,7 @@
 dev = {
 	level = 14,
 	name = "dev",
+	flag = 2, -- Developer
 	tag = "SWGEmu-Dev",
 	skills = {
 		"admin_base",
