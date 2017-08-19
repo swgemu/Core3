@@ -13,6 +13,8 @@
 CityUpdateEvent::CityUpdateEvent(CityRegion* city, ZoneServer* zserv) : Task() {
 	cityRegion = city;
 	zoneServer = zserv;
+
+	setCustomTaskQueue("slowQueue");
 }
 
 void CityUpdateEvent::run() {
