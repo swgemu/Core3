@@ -21,6 +21,8 @@ public:
 	}
 
 	void run() {
+		Vector<uint64> members;
+
 		Locker locker(guild);
 
 		GuildMemberList* memberList = guild->getGuildMemberList();
@@ -34,14 +36,17 @@ public:
 			if (gmi == NULL)
 				continue;
 
-			ManagedReference<SceneObject*> obj = guild->getZoneServer()->getObject(gmi->getPlayerID());
+			members.add(gmi->getPlayerID());
+		}
 
-			if (obj == NULL || !obj->isPlayerCreature())
-				continue;
+		auto guildName = guild->getGuildName();
 
-			CreatureObject* recipient = cast<CreatureObject*>( obj.get());
+		locker.release();
 
-			guild->getZoneServer()->getChatManager()->sendMail(guild->getGuildName(), subject, body, recipient->getFirstName());
+		for (const auto& memberID : members) {
+			auto firstName = guild->getZoneServer()->getPlayerManager()->getPlayerName(memberID);
+
+			guild->getZoneServer()->getChatManager()->sendMail(guildName, subject, body, firstName);
 		}
 	}
 };
