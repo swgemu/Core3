@@ -16,6 +16,8 @@ class CheckGCWTask : public Task {
 public:
 	CheckGCWTask(GCWManager* manager){
 		gcwManager = manager;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
