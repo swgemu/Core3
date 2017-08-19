@@ -22,6 +22,8 @@ public:
 		guildObject = guildObj;
 
 		server = zserv;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {

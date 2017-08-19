@@ -16,6 +16,8 @@ class GuildMailTask : public Task {
 public:
 	GuildMailTask(const String& subject, StringIdChatParameter& body,
 		GuildObject* guild) : guild(guild), body(body), subject(subject) {
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
