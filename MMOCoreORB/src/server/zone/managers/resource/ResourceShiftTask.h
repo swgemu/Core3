@@ -17,6 +17,8 @@ class ResourceShiftTask : public Task {
 public:
 	ResourceShiftTask(ManagedReference<ResourceManager* >  resMan) {
 		resourceManager = resMan;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
