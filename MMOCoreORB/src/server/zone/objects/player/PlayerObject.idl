@@ -1737,11 +1737,6 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@dirty
-	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ) {
-		galaxyAccountInfo.addChosenVeteranReward( milestone, rewardTemplate );
-	}
-
-	@dirty
 	public native boolean hasChosenVeteranReward( final string rewardTemplate ) {
 		return galaxyAccountInfo.hasChosenVeteranReward(rewardTemplate);
 	}

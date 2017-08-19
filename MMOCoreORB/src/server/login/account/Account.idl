@@ -104,12 +104,10 @@ class Account extends ManagedObject implements Logger {
 		return accountID;
 	}
 	
-	@preLocked
 	@local
 	@reference
 	public native GalaxyAccountInfo getGalaxyAccountInfo(final string galaxyName);
 	
-	@dirty
 	@local
 	public GalaxyAccountInfoMap getGalaxyAccountInfo() {
 		return galaxyAccountInfo;
