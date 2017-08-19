@@ -26,6 +26,8 @@ using namespace engine::db;
 
 // http://tinyurl.com/2g9mqh
 
+#define SLOW_QUEUES_COUNT 4
+
 uint32 ObjectManager::serverObjectCrcHashCode = STRING_HASHCODE("SceneObject.serverObjectCRC");
 uint32 ObjectManager::_classNameHashCode = STRING_HASHCODE("_className");
 
@@ -61,6 +63,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
+	Core::getTaskManager()->initializeCustomQueue("slowQueue", SLOW_QUEUES_COUNT, true);
 
 	loadLastUsedObjectID();
 
