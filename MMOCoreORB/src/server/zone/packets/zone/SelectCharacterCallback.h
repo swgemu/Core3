@@ -25,6 +25,7 @@ public:
 	SelectCharacterCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server), characterID(0) {
 
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void parse(Message* message) {
