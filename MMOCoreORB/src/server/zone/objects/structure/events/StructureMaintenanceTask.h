@@ -41,6 +41,8 @@ protected:
 public:
 	StructureMaintenanceTask(StructureObject* structure) : Task(), Logger("StructureMaintenanceTask") {
 		structureObject = structure;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run();
