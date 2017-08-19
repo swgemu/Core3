@@ -108,7 +108,7 @@ void PlayerObjectImplementation::initializeAccount() {
 		galaxyAccountInfo = account->getGalaxyAccountInfo(getZoneServer()->getGalaxyName());
 		
 		if (chosenVeteranRewards.size() > 0) {
-			galaxyAccountInfo->updateVetRewardsFromPlayer(chosenVeteranRewards);
+			//galaxyAccountInfo->updateVetRewardsFromPlayer(chosenVeteranRewards);
 			chosenVeteranRewards.removeAll();
 		}
 	} else {
