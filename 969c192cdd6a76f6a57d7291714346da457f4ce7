@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_8f4d39c7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-08-19T19:44:44Z",
+      "side": 1,
+      "message": "you can get the creo oid by running parent.getSavedObjectID() and avoid looking up the entire creo",
+      "revId": "969c192cdd6a76f6a57d7291714346da457f4ce7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_af4a7daa",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-08-19T19:44:44Z",
+      "side": 1,
+      "message": "persistentMessages.put",
+      "revId": "969c192cdd6a76f6a57d7291714346da457f4ce7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
