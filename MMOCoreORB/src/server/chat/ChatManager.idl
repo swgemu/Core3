@@ -405,8 +405,14 @@ class ChatManager extends ManagedService implements Logger {
 		return gameRooms.get(game);
 	}
 
+	@dirty
 	public int getPlayerCount() {
 		return playerMap.size();
+	}
+	
+	@dirty
+	public ZoneServer getZoneServer() {
+		return server;
 	}
 
 	@local

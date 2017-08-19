@@ -12,7 +12,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 class TaxPayMailTask : public Task {
-	Vector<ManagedReference<CreatureObject*> > citizens;
+	Vector<uint64> citizens;
 	String mayorName;
 	ManagedReference<ChatManager*> chatManager;
 	ManagedReference<CityRegion*> city;
@@ -24,6 +24,8 @@ public:
 		chatManager = chat;
 		incomeTax = tax;
 		city = cityRegion;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
@@ -32,8 +34,20 @@ public:
 		StringIdChatParameter params("city/city", "income_tax_paid_body");
 		params.setDI(incomeTax);
 
+		auto zoneServer = chatManager->getZoneServer();
+
 		for (int i = 0; i < citizens.size(); ++i) {
-			CreatureObject* citizen = citizens.get(i);
+			uint64 citizenOID = citizens.get(i);
+
+			ManagedReference<SceneObject*> obj = zoneServer->getObject(citizenOID);
+
+			if (obj == NULL)
+				continue;
+
+			CreatureObject* citizen = obj->asCreatureObject();
+
+			if (citizen == NULL || !citizen->isPlayerCreature())
+				continue;
 
 			Locker lock(citizen);
 
@@ -71,7 +85,7 @@ public:
 		city->addToCityTreasury(totalIncome);
 	}
 
-	void addCitizen(CreatureObject* citizen) {
+	void addCitizen(uint64 citizen) {
 		citizens.add(citizen);
 	}
 
