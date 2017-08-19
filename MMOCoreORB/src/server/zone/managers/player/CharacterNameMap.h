@@ -66,6 +66,12 @@ public:
 		return names.containsKey(name);
 	}
 
+	bool containsOID(uint64 name) {
+		ReadLocker locker(&guard);
+
+		return reverseTable.containsKey(name);
+	}
+
 	int size() {
 		return names.size();
 	}

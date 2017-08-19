@@ -179,9 +179,9 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 
 	try {
 		for (const auto& memberID : initialMembers) {
-			ManagedReference<CreatureObject*> member = server->getObject(memberID).castTo<CreatureObject*>();
+			bool existsPlayer = server->getPlayerManager()->existsPlayerCreatureOID(memberID);
 
-			if (member == NULL) {
+			if (!existsPlayer) {
 				toRemove.add(memberID);
 
 				if (memberID == guild->getGuildLeaderID()) {
@@ -286,6 +286,8 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	}
 
 	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
+
+	info("Finished guild update for: " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + ">");
 }
 
 void GuildManagerImplementation::processGuildElection(GuildObject* guild) {

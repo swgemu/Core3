@@ -388,6 +388,9 @@ bool PlayerManagerImplementation::existsName(const String& name) {
 	return res;
 }
 
+bool PlayerManagerImplementation::existsPlayerCreatureOID(uint64 oid) {
+	return nameMap->containsOID(oid);
+}
 
 bool PlayerManagerImplementation::kickUser(const String& name, const String& admin, String& reason, bool doBan) {
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();
