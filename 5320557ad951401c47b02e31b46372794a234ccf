@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_f20ffe2c",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-08-20T06:02:43Z",
+      "side": 1,
+      "message": "persistentMessages.put",
+      "revId": "5320557ad951401c47b02e31b46372794a234ccf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
