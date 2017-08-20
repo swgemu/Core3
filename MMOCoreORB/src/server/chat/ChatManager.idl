@@ -18,6 +18,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.objects.waypoint.WaypointObject;
+import server.chat.PendingMessageList;
 include server.chat.StringIdChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
@@ -452,5 +453,8 @@ class ChatManager extends ManagedService implements Logger {
 	public string getSocialType(unsigned int id) {
 		return socialTypes.get(id);
 	}
+
+	// returns a list of pending persistent messages for the player
+	public native PendingMessageList getPendingMessages(unsigned long oid);
 }
 
