@@ -2711,10 +2711,12 @@ unsigned int ChatManagerImplementation::getRandomMoodID() {
 	return moodTypes.get(System::random(moodTypes.size() - 3));
 }
 
-PendingMessageList* ChatManagerImplementation::getPendingMessages(uint64 playerID) {
-	ManagedReference<ManagedObject*> listObj = NULL;
+Reference<PendingMessageList*> ChatManagerImplementation::getPendingMessages(uint64 playerID) {
+	Reference<ManagedObject*> listObj = NULL;
 
-	static uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("pendingmail");
+	static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("pendingmail");
+
+	playerID = playerID & 0x0000FFFFFFFFFFFFull;
 
 	uint64 oid = (playerID | (databaseID << 48));
 
