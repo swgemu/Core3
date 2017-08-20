@@ -32,6 +32,8 @@ public:
 		MessageCallback(client, server) {
 
 		sequence = 0;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void parse(Message* message) {
