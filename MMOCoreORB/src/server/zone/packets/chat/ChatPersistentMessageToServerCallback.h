@@ -79,6 +79,7 @@ public:
 	}
 
 	int sendMail(CreatureObject* player, const String& recipient) {
+		auto playerManager = server->getZoneServer()->getPlayerManager();
 
 		if (recipient == "guild") {
 			ManagedReference<GuildObject*> guild = player->getGuildObject().get();
@@ -106,14 +107,9 @@ public:
 			locker.release();
 
 			for (int i = 0; i < guildMembers.size(); ++i) {
-				ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(guildMembers.get(i));
+				auto playerName = playerManager->getPlayerName(guildMembers.get(i));
 
-				if (receiver == NULL || !receiver->isPlayerCreature())
-					continue;
-
-				CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
-
-				sendMailToPlayer(player, receiverPlayer->getFirstName());
+				sendMailToPlayer(player, playerName);
 			}
 
 			return 0;
@@ -146,14 +142,9 @@ public:
 				for (int i = 0; i < citizenList->size(); ++i) {
 					uint64 citizenID = citizenList->get(i);
 
-					ManagedReference<SceneObject*> receiver = player->getZoneServer()->getObject(citizenID);
+					auto playerName = playerManager->getPlayerName(citizenID);
 
-					if (receiver == NULL || !receiver->isPlayerCreature())
-						continue;
-
-					CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
-
-					players.add(receiverPlayer->getFirstName());
+					players.add(playerName);
 				}
 
 				cityLocker.release();
@@ -173,14 +164,13 @@ public:
 	}
 
 	int sendMailToPlayer(CreatureObject* player, const String& recipientName) {
-		ChatManager* chatManager = server->getChatManager();
+		auto chatManager = server->getChatManager();
+		auto playerManager = server->getZoneServer()->getPlayerManager();
 
-		if (chatManager == NULL)
+		if (chatManager == nullptr || playerManager == nullptr)
 			return 0;
 
-		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
-
-		if (receiverObjectID == 0) {
+		if (!playerManager->containsPlayer(recipientName)) {
 			StringIdChatParameter noname;
 			noname.setStringId("@ui_pm:recipient_invalid_prose"); // "Are you sure you have the correct name? There is no player named '%TT'."
 			noname.setTT(recipientName);
@@ -188,7 +178,7 @@ public:
 			return ChatManager::NOAVATAR;
 		}
 
-		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
+		/*ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
 		ManagedReference<PlayerObject*> sender = player->getPlayerObject();
 
 		if (receiver == NULL || !receiver->isPlayerCreature() || sender == NULL)
@@ -210,7 +200,7 @@ public:
 			player->sendSystemMessage(err);
 
 			return ChatManager::IM_IGNORED;
-		}
+		}*/
 
 		return chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
 	}
