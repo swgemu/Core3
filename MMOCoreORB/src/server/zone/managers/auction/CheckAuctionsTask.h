@@ -16,6 +16,8 @@ class CheckAuctionsTask : public Task {
 public:
 	CheckAuctionsTask(AuctionManager* manager) {
 		auctionManager = manager;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
