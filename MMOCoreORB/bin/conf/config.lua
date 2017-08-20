@@ -47,6 +47,7 @@ MakeZone = 1
 MakePing = 1
 MakeStatus = 1
 MakeWeb = 0
+UseMetrics = 1
 
 ORB = ""
 ORBPort = 44419
@@ -95,7 +96,7 @@ ZonesEnabled = {
 	--"character_farm",
 	--"cinco_city_test_m5",
 	--"corellia",
-	--"creature_test",
+	"creature_test",
 	--"dantooine",
 	--"dathomir",
 	--"dungeon1",
@@ -128,9 +129,9 @@ ZonesEnabled = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
-	"tutorial",
+	--"tutorial",
 	--"umbra",
 	--"watertabletest",
 	--"yavin4"
