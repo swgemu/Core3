@@ -8,6 +8,7 @@
 #include "SpawnAreaMap.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
@@ -19,6 +20,23 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	setLoggingName("SpawnAreaMap " + planetName);
 
 	lua->init();
+	lua->setGlobalInt("NPC", CreatureFlag::NPC);
+	lua->setGlobalInt("PACK", CreatureFlag::PACK);
+	lua->setGlobalInt("HERD", CreatureFlag::HERD);
+	lua->setGlobalInt("KILLER", CreatureFlag::KILLER);
+	lua->setGlobalInt("STALKER", CreatureFlag::STALKER);
+	lua->setGlobalInt("BABY", CreatureFlag::BABY);
+	lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
+	lua->setGlobalInt("HEALER", CreatureFlag::HEALER);
+	lua->setGlobalInt("SCOUT", CreatureFlag::SCOUT);
+	lua->setGlobalInt("PET", CreatureFlag::PET);
+	lua->setGlobalInt("DROID_PET", CreatureFlag::DROID_PET);
+	lua->setGlobalInt("FACTION_PET", CreatureFlag::FACTION_PET);
+	lua->setGlobalInt("ESCORT", CreatureFlag::ESCORT);
+	lua->setGlobalInt("FOLLOW", CreatureFlag::FOLLOW);
+	lua->setGlobalInt("STATIC", CreatureFlag::STATIC);
+	lua->setGlobalInt("STATIONARY", CreatureFlag::STATIONARY);
+	lua->setGlobalInt("NOAIAGGRO", CreatureFlag::NOAIAGGRO);
 
 	try {
 		loadRegions();
