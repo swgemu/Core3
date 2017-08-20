@@ -99,7 +99,7 @@ public:
 		return position.getWorldPosition();
 	}
 
-	bool isInRange(SceneObject* obj, float range) {
+	virtual bool isInRange(SceneObject* obj, float range) {
 		Vector3 thisWorldPos = getWorldPosition();
 		Vector3 objWorldPos = obj->getWorldPosition();
 

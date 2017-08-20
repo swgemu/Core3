@@ -48,6 +48,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 find_package(Git QUIET)
 
+# Set compile output
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
