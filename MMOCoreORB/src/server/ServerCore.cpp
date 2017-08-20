@@ -487,7 +487,6 @@ void ServerCore::handleCommands() {
 
 					System::out << "result: " << file << endl;
 				}
-
 			} else if (command == "loglevel") {
 				int level = 0;
 				try {
@@ -501,6 +500,15 @@ void ServerCore::handleCommands() {
 
 					System::out << "log level changed to: " << level << endl;
 				}
+			} else if (command == "gencrc") {
+				uint32 crc = 0;
+				try {
+					crc = arguments.hashCode();
+				} catch (Exception& e) {
+					System::out << e.getMessage();
+				}
+
+				std::cout << "CRC: 0x" << std::hex << crc << std::endl;
 			} else if (command == "rev") {
 				System::out << ConfigManager::instance()->getRevision() << endl;
 			} else if (command == "broadcast") {
