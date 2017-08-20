@@ -2716,6 +2716,8 @@ PendingMessageList* ChatManagerImplementation::getPendingMessages(uint64 playerI
 
 	static uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("pendingmail");
 
+	playerID = playerID & 0x0000FFFFFFFFFFFFull;
+
 	uint64 oid = (playerID | (databaseID << 48));
 
 	listObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
