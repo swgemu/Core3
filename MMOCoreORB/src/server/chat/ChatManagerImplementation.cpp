@@ -1736,30 +1736,28 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	mail->setReceiverObjectID(receiverObjectID);
 
 	Core::getTaskManager()->executeTask([=] () {
+		Reference<CreatureObject*> receiver = getPlayer(recipientName);
+		if (receiver == NULL) {
+			ObjectManager::instance()->persistObject(mail, 1, "mail");
+			ManagedReference<PendingMessageList*> list = getPendingMessages(receiverObjectID);
+			Locker locker(list);
+			list->addPendingMessage(mail->getObjectID());
+		} else {
+			Locker locker(receiver);
+			PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
 
-	Reference<CreatureObject*> receiver = getPlayer(recipientName);
-	if (receiver == NULL) {
-		ObjectManager::instance()->persistObject(mail, 1, "mail");
-		ManagedReference<PendingMessageList*> list = getPendingMessages(receiverObjectID);
-		Locker locker(list);
-		list->addPendingMessage(mail->getObjectID());
-	} else {
-		Locker locker(receiver);
-		PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
+			if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
+				return;
 
-		if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
-			return;
+			ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-		ObjectManager::instance()->persistObject(mail, 1, "mail");
+			PlayerObject* ghost = receiver->getPlayerObject();
 
-		PlayerObject* ghost = receiver->getPlayerObject();
+			ghost->addPersistentMessage(mail->getObjectID());
 
-		ghost->addPersistentMessage(mail->getObjectID());
-
-		if (receiver->isOnline())
-			mail->sendTo(receiver, false);
-	}
-
+			if (receiver->isOnline())
+				mail->sendTo(receiver, false);
+		}
 	}, "SendMailLambda2");
 
 	return IM_SUCCESS;
