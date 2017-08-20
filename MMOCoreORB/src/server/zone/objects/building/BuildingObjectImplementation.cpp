@@ -619,8 +619,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 			continue;
 
 		Locker locker(child);
-
-		AiAgent* ai = child->asAiAgent();
+		auto ai = child->asAiAgent();
 
 		if (ai != nullptr) {
 			ai->setRespawnTimer(0);
