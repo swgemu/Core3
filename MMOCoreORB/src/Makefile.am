@@ -52,14 +52,15 @@ GMOCK_PATH=../../../utils/googletest-release-1.8.0/googlemock
 
 AUTOGEN_PATH=../../../src/autogen
 
-#CC = clang
-#CXX = clang++
+#CC = clang -fno-lto
+#CXX = clang++ -fno-lto
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-            -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/local/include -I/usr/include/mysql \
+	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/local/include -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.3/include \
 	    -I/usr/include/db5.3 \
+	    -I/usr/include/lua5.3 \
 	    -I$(GTEST_PATH)/include \
 	    -I$(GMOCK_PATH)/include \
 	    -I$(AUTOGEN_PATH)
@@ -93,26 +94,20 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = 	tests/CircularAreaShapeTest.cpp \
-			  	tests/BasicScreenPlayTest.cpp \
-			  	tests/LuaMobileTest.cpp \
-			  	tests/JediManagerTest.cpp \
-			  	tests/TerrainManagerTest.cpp \
-			  	tests/BehaviorTest.cpp \
-			  	tests/RectangularAreaShapeTest.cpp \
-			  	tests/RingAreaShapeTest.cpp \
-			  	tests/DeadlockTestBase.cpp \
-			  	tests/BasicTerrainTest.cpp \
-			  	tests/ZoneTest.cpp \
-			  	tests/CommandLuaTest.cpp
+core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
+			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
+			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
+			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
+			  	terrain/manager/tests/TerrainManagerTest.cpp \
+			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
+			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
+			  	server/zone/tests/DeadlockTestBase.cpp \
+			  	server/zone/objects/creature/ai/bt/tests/BehaviorTreeTest.cpp \
+			  	terrain/tests/BasicTerrainTest.cpp \
+			  	server/zone/tests/ZoneTest.cpp \
+			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/frs/ArenaChallengeData.cpp \
-				autogen/server/zone/managers/frs/FrsManagerData.cpp \
-				autogen/server/zone/managers/frs/FrsRank.cpp \
-				autogen/server/zone/managers/frs/ChallengeVoteData.cpp \
-				autogen/server/zone/QuadTreeEntry.cpp \
-				autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
-				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/creature/credits/CreditObject.cpp \
 				autogen/server/zone/objects/mission/PlayerBounty.cpp \
 				autogen/server/chat/PendingMessageList.cpp \
 				autogen/server/zone/managers/frs/FrsManager.cpp \
@@ -762,14 +757,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
-		server/zone/objects/creature/ai/bt/CompositeBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/NonDeterministicBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
+		server/zone/objects/creature/ai/bt/leaf/Checks.cpp \
+		server/zone/objects/creature/ai/bt/node/Composite.cpp \
+		server/zone/objects/creature/ai/bt/node/Sequence.cpp \
+		server/zone/objects/creature/ai/bt/node/Selector.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/PetTrainingConversationObserverImplementation.cpp \
