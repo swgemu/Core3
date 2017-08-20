@@ -8,6 +8,9 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 
+#include "server/zone/objects/player/events/ForceMeditateTask.h"
+
+
 class PowerBoostCommand : public QueueCommand {
 public:
 
