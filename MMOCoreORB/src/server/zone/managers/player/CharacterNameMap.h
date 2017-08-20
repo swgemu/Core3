@@ -33,10 +33,12 @@ public:
 	bool put(const String& name, uint64 oid) {
 		Locker locker(&guard);
 
-		if (names.put(name, oid) != names.getNullValue())
+		auto lowerCase = name.toLowerCase();
+
+		if (names.put(lowerCase, oid) != names.getNullValue())
 			return false;
 
-		reverseTable.put(oid, name);
+		reverseTable.put(oid, lowerCase);
 
 		return true;
 	}
@@ -51,7 +53,7 @@ public:
 	uint64 get(const String& name) {
 		ReadLocker locker(&guard);
 
-		return names.get(name);
+		return names.get(name.toLowerCase());
 	}
 
 	String get(uint64 oid) {
@@ -63,13 +65,13 @@ public:
 	bool containsKey(const String& name) {
 		ReadLocker locker(&guard);
 
-		return names.containsKey(name);
+		return names.containsKey(name.toLowerCase());
 	}
 
-	bool containsOID(uint64 name) {
+	bool containsOID(uint64 oid) {
 		ReadLocker locker(&guard);
 
-		return reverseTable.containsKey(name);
+		return reverseTable.containsKey(oid);
 	}
 
 	int size() {
