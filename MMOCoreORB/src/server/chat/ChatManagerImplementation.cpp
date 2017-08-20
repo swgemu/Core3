@@ -2723,10 +2723,16 @@ Reference<PendingMessageList*> ChatManagerImplementation::getPendingMessages(uin
 	listObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
 
 	if (listObj == NULL) {
-		listObj = ObjectManager::instance()->createObject("PendingMessageList", 3, "pendingmail", oid);
+		Locker locker(_this.getReferenceUnsafeStaticCast());
+
+		listObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
 
 		if (listObj == NULL) {
-			return NULL;
+			listObj = ObjectManager::instance()->createObject("PendingMessageList", 3, "pendingmail", oid);
+
+			if (listObj == NULL) {
+				return NULL;
+			}
 		}
 	}
 
