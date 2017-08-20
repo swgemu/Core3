@@ -1550,12 +1550,14 @@ class CreatureObject extends TangibleObject {
 		return encumbrances;
 	}
 
-	@read
-	public byte getPosture() {
+	@mock
+	@dirty
+	public abstract byte getPosture() {
 		return posture;
 	}
 
-	@read
+	@mock
+	@dirty
 	public byte getLocomotion() {
 		return locomotion;
 	}
@@ -1596,8 +1598,9 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask;
 	}
 
-	@read
-	public boolean hasState(unsigned long state) {
+	@mock
+	@dirty
+	public abstract boolean hasState(unsigned long state) {
 		return stateBitmask & state;
 	}
 
@@ -1631,8 +1634,9 @@ class CreatureObject extends TangibleObject {
 		return speedMultiplierMod;
 	}
 
-	@read
-	public float getCurrentSpeed() {
+	@mock
+	@dirty
+	public abstract float getCurrentSpeed() {
 		return currentSpeed;
 	}
 
@@ -1719,10 +1723,13 @@ class CreatureObject extends TangibleObject {
 			return weapon.getObjectID();
 	}
 
-	@reference
 	@dirty
 	@preLocked
 	public native WeaponObject getWeapon();
+
+	@mock
+	@dirty
+	public abstract native WeaponObject getDefaultWeapon();
 
 	@weakReference
 	@read
@@ -1935,13 +1942,15 @@ class CreatureObject extends TangibleObject {
 		return swimHeight;
 	}
 
-	@read
-	public boolean isIncapacitated() {
+	@mock
+	@dirty
+	public abstract boolean isIncapacitated() {
 		return posture == CreaturePosture.INCAPACITATED;
 	}
 
-	@read
-	public boolean isDead() {
+	@mock
+	@dirty
+	public abstract boolean isDead() {
 		return posture == CreaturePosture.DEAD;
 	}
 
@@ -1980,8 +1989,9 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.RALLIED;
 	}
 
-	@read
-	public boolean isInCombat() {
+	@mock
+	@dirty
+	public abstract boolean isInCombat() {
 		return stateBitmask & CreatureState.COMBAT;
 	}
 

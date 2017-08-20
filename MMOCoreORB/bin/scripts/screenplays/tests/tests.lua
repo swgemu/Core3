@@ -35,7 +35,7 @@ function Tests:aiMoveTest()
 	-- in a test zone, create a creature at a point, and have it move to another
 	-- point. Do this outside (we can try to create an inside test later).
 	local spawnPoint = getSpawnPoint("creature_test", 0, 0, 0, 100)
-	local agent = spawnMobile("creature_test", "bark_mite", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
+	local agent = spawnEventMobile("creature_test", "bark_mite", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
 	if agent == nil then
 		AiAgent(agent):info("Error creating agent (return nil) in Tests:aiMoveTest.")
@@ -52,9 +52,10 @@ function Tests:aiMoveTest()
 		Tests:addPlayer(spawnPoint)
 	end
 
-	AiAgent(agent):setAiTemplate("")
+	AiAgent(agent):setAIDebug()
+
+	AiAgent(agent):setAITemplate()
 	AiAgent(agent):stopWaiting()
-	AiAgent(agent):setWait(0)
 	AiAgent(agent):setFollowState(4) -- Patrolling
 
 	local moveTarget = getSpawnPoint("creature_test", 10, 0, 0, 100)
@@ -98,7 +99,7 @@ function Tests:aiAggroTest()
 	-- point. Do this outside (we can try to create an inside test later).
 	-- TODO: use creature_test zone (won't load due to being version 0013)
 	local spawnPoint = getSpawnPoint("creature_test", 0, 0, 0, 100)
-	local agent = spawnMobile("creature_test", "acklay", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
+	local agent = spawnEventMobile("creature_test", "acklay", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
 	if agent == nil then
 		AiAgent(agent):info("Error creating agent (return nil) in Tests:aiMoveTest.")
@@ -113,9 +114,10 @@ function Tests:aiAggroTest()
 
 	Tests:addPlayer(spawnPoint)
 
-	AiAgent(agent):setAiTemplate("")
+	AiAgent(agent):setAIDebug()
+
+	AiAgent(agent):setAITemplate()
 	AiAgent(agent):stopWaiting()
-	AiAgent(agent):setWait(0)
 	AiAgent(agent):executeBehavior()
 
 	AiAgent(agent):info("Starting aggro test.")
