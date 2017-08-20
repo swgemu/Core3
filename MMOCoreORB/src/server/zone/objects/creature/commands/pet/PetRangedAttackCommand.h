@@ -58,8 +58,6 @@ public:
 
 		controlDevice->toggleUseRanged();
 
-		pet->selectWeapon();
-
 		return SUCCESS;
 	}
 

@@ -90,13 +90,62 @@ Core3 = {
 	--To save on RAM and CPU usage, you should only enable the zones you need.
 	--In order to disable a zone, all you have to do is comment it out.
 	ZonesEnabled = {
+MakeLogin = 1
+MakeZone = 1
+MakePing = 1
+MakeStatus = 1
+MakeWeb = 0
+UseMetrics = 1
+
+ORB = ""
+ORBPort = 44419
+
+DBHost = "127.0.0.1"
+DBPort = 3306
+DBName = "swgemu"
+DBUser = "swgemu"
+DBPass = "123456"
+DBSecret = "swgemus3cr37!" -- Change this! This value should be unique and of reasonable length.
+
+LoginPort = 44453
+LoginProcessingThreads = 1
+LoginAllowedConnections = 3000
+LoginRequiredVersion = "20050408-18:00"
+
+MantisHost = "127.0.0.1"
+MantisPort = 3306
+MantisName = "swgemu"
+MantisUser = "swgemu"
+MantisPass = "123456"
+MantisPrfx = "mantis_" -- The prefix for your mantis tables.
+
+MetricsHost = "localhost"
+MetricsPort = 8125
+MetricsPrefix = ""
+
+AutoReg = 1
+
+ProgressMonitors = "true"
+
+PingPort = 44462
+PingAllowedConnections = 3000
+
+ZoneProcessingThreads = 10
+ZoneAllowedConnections = 30000
+ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
+
+
+--The following zones are enabled, and will be loaded with server start.
+--To save on RAM and CPU usage, you should only enable the zones you need.
+--In order to disable a zone, all you have to do is comment it out.
+ZonesEnabled = {
 	--"09",
 	--"10",
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
 	--"corellia",
-	--"creature_test",
+	"creature_test",
 	--"dantooine",
 	--"dathomir",
 	--"dungeon1",
@@ -129,9 +178,9 @@ Core3 = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
-	"tutorial",
+	--"tutorial",
 	--"umbra",
 	--"watertabletest",
 	--"yavin4"
