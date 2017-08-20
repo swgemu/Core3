@@ -74,6 +74,9 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+	setPath("server.zone.objects.scene");
+
+	publish("foo", "1", "c");
 }
 
 void SceneObjectImplementation::initializePrivateData() {
