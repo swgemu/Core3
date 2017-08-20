@@ -73,10 +73,12 @@ namespace metrics {
 
 	public:
 		Metrics() {
-			Metrics("");
+			this->path = "";
+			active = ConfigManager::instance()->shouldUseMetrics();
 		}
 		Metrics(const char* path) {
-			Metrics(String(path));
+			this->path = String(path);
+			active = ConfigManager::instance()->shouldUseMetrics();
 		}
 		Metrics(String path) {
 			this->path = path;

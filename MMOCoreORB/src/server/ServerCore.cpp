@@ -50,6 +50,7 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 	instance = this;
 
 	configManager = ConfigManager::instance();
+	metricsManager = MetricsManager::instance();
 
 	features = NULL;
 
@@ -98,7 +99,6 @@ void ServerCore::initialize() {
 
 		System::out << "METRICS: " << String::valueOf(configManager->shouldUseMetrics()) << " " << configManager->getMetricsHost() << " " << String::valueOf(configManager->getMetricsPort()) << endl;
 		if (configManager->shouldUseMetrics()) {
-			metricsManager = MetricsManager::instance();
 			metricsManager->initializeStatsDConnection(
 					configManager->getMetricsHost().toCharArray(),
 					configManager->getMetricsPort());
