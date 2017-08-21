@@ -2372,6 +2372,8 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZoneUnsafe() == NULL)
 		return;
 
+	const static uint64 minScheduleTime = 100;
+
 	Locker locker(&movementEventMutex);
 
 	if (isWaiting() && moveEvent != NULL)
@@ -2389,12 +2391,12 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(asAiAgent());
 
-		moveEvent->schedule(waitTime > 0 ? waitTime : nextMovementInterval);
+		moveEvent->schedule(Math::max(minScheduleTime, (uint64) (waitTime > 0 ? waitTime : nextMovementInterval)));
 	}
 
 	try {
 		if (!moveEvent->isScheduled())
-			moveEvent->schedule(waitTime > 0 ? waitTime : nextMovementInterval);
+			moveEvent->schedule(Math::max(minScheduleTime, (uint64) (waitTime > 0 ? waitTime : nextMovementInterval)));
 	} catch (IllegalArgumentException& e) {
 
 	}

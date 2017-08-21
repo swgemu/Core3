@@ -1682,7 +1682,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 				mail->sendTo(creo, false);
 		}
 
-	}, "SendMailLambda3");
+	}, "SendMailLambda3", "slowQueue");
 }
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
@@ -1758,7 +1758,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 			if (receiver->isOnline())
 				mail->sendTo(receiver, false);
 		}
-	}, "SendMailLambda2");
+	}, "SendMailLambda2", "slowQueue");
 
 	return IM_SUCCESS;
 }
@@ -1820,7 +1820,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		if (receiver->isOnline())
 			mail->sendTo(receiver, false);
 	}
-	}, "SendMailLambda");
+	}, "SendMailLambda", "slowQueue");
 
 	return IM_SUCCESS;
 }
