@@ -1972,10 +1972,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 
 	if (!found) {
-		PatrolPoint oldPoint = patrolPoints.remove(0);
+		if (patrolPoints.size()) {
+			PatrolPoint oldPoint = patrolPoints.remove(0);
 
-		if (getFollowState() == AiAgent::PATROLLING)
-			savedPatrolPoints.add(oldPoint);
+			if (getFollowState() == AiAgent::PATROLLING)
+				savedPatrolPoints.add(oldPoint);
+		}
 
 		ManagedReference<SceneObject*> followCopy = followObject.get();
 		if (followCopy == NULL)
