@@ -1938,35 +1938,36 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	if (found) {
 		// Set the next place we will be if we are to move
-		nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
-		nextStepPosition.setCell(nextPosition.getCell());
+		Vector3 nextWorldPos = nextPosition.getWorldPosition();
+		float dist = thisWorldPos.distanceTo(nextWorldPos);
 
-		nextStepPosition.setReached(false);
+		if (!(dist > 0 && newSpeed > 0.1)) {
+			found = false;
+		} else {
+			nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
+			nextStepPosition.setCell(nextPosition.getCell());
 
-		Vector3 nextWorldPos = nextStepPosition.getWorldPosition();
+			nextStepPosition.setReached(false);
 
-		float directionangle = atan2(nextWorldPos.getX() - thisWorldPos.getX(), nextWorldPos.getY() - thisWorldPos.getY());
+			float directionangle = atan2(nextWorldPos.getX() - thisWorldPos.getX(), nextWorldPos.getY() - thisWorldPos.getY());
 
-		if (directionangle < 0) {
-			float a = M_PI + directionangle;
-			directionangle = M_PI + a;
-		}
+			if (directionangle < 0) {
+				float a = M_PI + directionangle;
+				directionangle = M_PI + a;
+			}
 
-		float err = fabs(directionangle - direction.getRadians());
+			float err = fabs(directionangle - direction.getRadians());
 
-		if (err >= 0.05)
-			direction.setHeadingDirection(directionangle);
+			if (err >= 0.05)
+				direction.setHeadingDirection(directionangle);
 
-		float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
-		if (dist > 0 && newSpeed > 0.1) {
+			float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
 			auto interval = UPDATEMOVEMENTINTERVAL;
 			nextMovementInterval = Math::min((int)((Math::min(dist, maxDist)/newSpeed)*1000 + 0.5), interval);
 			currentSpeed = newSpeed;
 
 			// Tell the clients where to expect us next tick -- requires that we have found a destination
 			broadcastNextPositionUpdate(&nextStepPosition);
-		} else {
-			found = false;
 		}
 	}
 
@@ -2244,8 +2245,12 @@ int AiAgentImplementation::setDestination() {
 }
 
 bool AiAgentImplementation::completeMove() {
-	updateCurrentPosition(&nextStepPosition);
-	nextStepPosition.setReached(true);
+	if (!nextStepPosition.isReached()) {
+		updateCurrentPosition(&nextStepPosition);
+
+		nextStepPosition.setReached(true);
+	}
+
 	return true;
 }
 
@@ -2372,6 +2377,8 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZoneUnsafe() == NULL)
 		return;
 
+	const static uint64 minScheduleTime = 100;
+
 	Locker locker(&movementEventMutex);
 
 	if (isWaiting() && moveEvent != NULL)
@@ -2389,12 +2396,12 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(asAiAgent());
 
-		moveEvent->schedule(waitTime > 0 ? waitTime : nextMovementInterval);
+		moveEvent->schedule(Math::max(minScheduleTime, (uint64) (waitTime > 0 ? waitTime : nextMovementInterval)));
 	}
 
 	try {
 		if (!moveEvent->isScheduled())
-			moveEvent->schedule(waitTime > 0 ? waitTime : nextMovementInterval);
+			moveEvent->schedule(Math::max(minScheduleTime, (uint64) (waitTime > 0 ? waitTime : nextMovementInterval)));
 	} catch (IllegalArgumentException& e) {
 
 	}
