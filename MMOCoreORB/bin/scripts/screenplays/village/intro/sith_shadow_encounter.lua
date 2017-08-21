@@ -33,18 +33,6 @@ function SithShadowEncounter:isTheFirstSithShadowOfThePlayer(pSithShadow, pPlaye
 	return spawnedSithShadows ~= nil and spawnedSithShadows[1] ~= nil and CreatureObject(spawnedSithShadows[1]):getObjectID() == CreatureObject(pSithShadow):getObjectID()
 end
 
--- Create the waypoint data pad as loot on the sith shadow.
--- @param pSithShadow pointer to the creature object of the sith shadow.
-function SithShadowEncounter:addWaypointDatapadAsLoot(pSithShadow)
-	local pInventory = SceneObject(pSithShadow):getSlottedObject("inventory")
-
-	if (pInventory == nil) then
-		return
-	end
-
-	createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
-end
-
 -- Event handler for the LOOTCREATURE event on one of the sith shadows.
 -- @param pLootedCreature pointer to the sith shadow creature that is being looted.
 -- @param pLooter pointer to the creature object of the looter.
@@ -58,7 +46,6 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	Logger:log("Looting the sith shadow.", LT_INFO)
 	if QuestManager.hasActiveQuest(pLooter, QuestManager.quests.TWO_MILITARY) then
 		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
-			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TWO_MILITARY)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD)
 			return 1
@@ -66,6 +53,32 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	end
 
 	return 0
+end
+
+function SithShadowEncounter:onSithKilled(pSith, pKiller, nothing)
+	if (pSith == nil or pKiller == nil) then
+		return 0
+	end
+
+	local sithID = SceneObject(pSith):getObjectID()
+	local ownerID = readData(sithID .. ":ownerID")
+
+	local pOwner = getSceneObject(ownerID)
+
+	if (pOwner ~= nil) then
+		local pInventory = SceneObject(pSith):getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			deleteData(sithID .. ":ownerID")
+			return 1
+		end
+
+		SceneObject(pInventory):setContainerOwnerID(ownerID)
+		createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
+	end
+
+	deleteData(sithID .. ":ownerID")
+	return 1
 end
 
 -- Handle the event PLAYERKILLED.
@@ -102,7 +115,8 @@ function SithShadowEncounter:onEncounterSpawned(pPlayer, spawnedObjects)
 	end
 
 	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
-	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
+	writeData(SceneObject(spawnedObjects[1]):getObjectID() .. ":ownerID", SceneObject(pPlayer):getObjectID())
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onSithKilled", spawnedObjects[1])
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	FsIntro:setCurrentStep(pPlayer, 4)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
