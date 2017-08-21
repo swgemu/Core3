@@ -1,5 +1,5 @@
 VillageGmSui = ScreenPlay:new {
-	productionServer = false
+	productionServer = true
 }
 
 function VillageGmSui:showMainPage(pPlayer)
@@ -42,7 +42,7 @@ end
 function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 	local cancelPressed = (eventIndex == 1)
 
-	if (cancelPressed) then
+	if (cancelPressed or args == nil or tonumber(args) < 0) then
 		return
 	end
 
@@ -53,7 +53,7 @@ function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 	end
 
 	local suiPageData = LuaSuiPageData(pPageData)
-	local menuOption =  suiPageData:getStoredData(tostring(args))
+	local menuOption = suiPageData:getStoredData(tostring(args))
 
 	local targetID
 
@@ -73,7 +73,6 @@ function VillageGmSui:mainCallback(pPlayer, pSui, eventIndex, args)
 		printLuaError("Tried to execute invalid function " .. menuOption .. " in VillageGmSui")
 		return
 	end
-
 
 	self[menuOption](pPlayer, targetID)
 end
@@ -352,6 +351,17 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 		elseif (curStep == FsIntro.VILLAGE) then
 			promptBuf = promptBuf .. "Intro (Sent to Village)\n"
 		end
+
+		if (curStep == FsIntro.OLDMANWAIT or curStep == FsIntro.SITHWAIT) then
+			promptBuf = promptBuf .. " -- Encounter Checks --\n" .. "\\#pcontrast1 " .. "InPositionForEncounter:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInPositionForEncounter(pPlayer)) .. "\n"
+
+			if (not Encounter:isPlayerInPositionForEncounter(pPlayer)) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player Online:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerOnline(pPlayer)) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In a Building:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInABuilding(pPlayer)) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In NPC City:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInNpcCity(pPlayer)) .. "\n"
+			end
+			promptBuf = promptBuf .. " ----\n"
+		end
 	elseif (Glowing:isGlowing(pTarget)) then
 		promptBuf = promptBuf .. "Glowing\n"
 	else
@@ -614,7 +624,7 @@ function VillageGmSui.forceOutroOldManEvent(pPlayer, targetID)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event outro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
-	FsOutro:startOldMan(pTarget)
+	FsOutro:doOldManSpawn(pTarget)
 end
 
 function VillageGmSui.resetActiveQuest(pPlayer, targetID)
