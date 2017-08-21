@@ -353,12 +353,12 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 		end
 
 		if (curStep == FsIntro.OLDMANWAIT or curStep == FsIntro.SITHWAIT) then
-			promptBuf = promptBuf .. " -- Encounter Checks --\n" .. "\\#pcontrast1 " .. "InPositionForEncounter:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInPositionForEncounter(pPlayer)) .. "\n"
+			promptBuf = promptBuf .. " -- Encounter Checks --\n" .. "\\#pcontrast1 " .. "InPositionForEncounter:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInPositionForEncounter(pTarget)) .. "\n"
 
-			if (not Encounter:isPlayerInPositionForEncounter(pPlayer)) then
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player Online:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerOnline(pPlayer)) .. "\n"
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In a Building:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInABuilding(pPlayer)) .. "\n"
-				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In NPC City:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInNpcCity(pPlayer)) .. "\n"
+			if (not Encounter:isPlayerInPositionForEncounter(pTarget)) then
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player Online:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerOnline(pTarget)) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In a Building:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInABuilding(pTarget)) .. "\n"
+				promptBuf = promptBuf .. " \\#pcontrast1 " .. "Player In NPC City:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInNpcCity(pTarget)) .. "\n"
 			end
 			promptBuf = promptBuf .. " ----\n"
 		end
