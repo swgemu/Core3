@@ -27,6 +27,8 @@ public:
 		structureObject = structure;
 		playEffect = doEffect;
 		killOccupants = killStuff;
+
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {

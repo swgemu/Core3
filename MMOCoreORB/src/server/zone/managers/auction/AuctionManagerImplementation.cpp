@@ -1119,7 +1119,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 
 	for (int j = 0; (j < terminalList->size()) && (displaying < (offset + 100)); ++j) {
 
-		Reference<TerminalItemList*> items = terminalList->get(j);
+		auto& items = terminalList->get(j);
 
 		if(items == NULL)
 			continue;
@@ -1132,7 +1132,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 			items->rlock();
 
 			for (int i = 0; (i < items->size()) && (displaying < (offset + 100)); i++) {
-				ManagedReference<AuctionItem*> item = items->get(i);
+				ManagedReference<AuctionItem*>& item = items->get(i);
 
 				if(item == NULL)
 					continue;

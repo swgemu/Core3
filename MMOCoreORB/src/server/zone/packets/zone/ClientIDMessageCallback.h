@@ -26,8 +26,7 @@ public:
 	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server), dataLen(0), sessionID(0), accountID(0) {
 
-
-
+		setCustomTaskQueue("slowQueue");
 	}
 
 	void parse(Message* message) {
