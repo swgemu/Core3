@@ -1179,12 +1179,8 @@ void PetControlDeviceImplementation::setVitality(int vit) {
 	vitality = vit;
 
 	if (petType == PetManager::CREATUREPET || petType == PetManager::DROIDPET) {
-		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-		if (controlledObject == NULL || !controlledObject->isCreatureObject())
-			return;
-
-		CreatureObject* pet = cast<CreatureObject*>(controlledObject.get());
-		if (pet == NULL )
+		ManagedReference<CreatureObject*> pet = this->controlledObject.get().castTo<CreatureObject*>();
+		if (controlledObject == NULL)
 			return;
 
 		float hamPenaltyModifier = 0;
@@ -1198,26 +1194,37 @@ void PetControlDeviceImplementation::setVitality(int vit) {
 			hamPenaltyModifier = 0.75f;
 		}
 
-		int newVitalityHealthPenalty = pet->getBaseHAM(0) * hamPenaltyModifier;
-		int newVitalityActionPenalty = pet->getBaseHAM(3) * hamPenaltyModifier;
-		int newVitalityMindPenalty = pet->getBaseHAM(6) * hamPenaltyModifier;
+		Reference<PetControlDevice*> petControlDevice = _this.getReferenceUnsafeStaticCast();
 
-		if (newVitalityHealthPenalty != vitalityHealthPenalty) {
-			int change = vitalityHealthPenalty - newVitalityHealthPenalty;
-			pet->setMaxHAM(0, pet->getMaxHAM(0) + change, true);
-			vitalityHealthPenalty = newVitalityHealthPenalty;
-		}
+		float vitalityMindPenalty = this->vitalityMindPenalty;
+		float vitalityActionPenalty = this->vitalityActionPenalty;
+		float vitalityHealthPenalty	= this->vitalityHealthPenalty;
 
-		if (newVitalityActionPenalty != vitalityActionPenalty) {
-			int change = vitalityActionPenalty - newVitalityActionPenalty;
-			pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
-			vitalityActionPenalty = newVitalityActionPenalty;
-		}
+		Core::getTaskManager()->executeTask([pet, petControlDevice, hamPenaltyModifier, vitalityMindPenalty, vitalityActionPenalty, vitalityHealthPenalty] () {
+			Locker locker(pet);
 
-		if (newVitalityMindPenalty != vitalityMindPenalty) {
-			int change = vitalityMindPenalty - newVitalityMindPenalty;
-			pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
-			vitalityMindPenalty = newVitalityMindPenalty;
-		}
+			Locker clocker(petControlDevice, pet);
+
+			int newVitalityHealthPenalty = pet->getBaseHAM(0) * hamPenaltyModifier;
+			int newVitalityActionPenalty = pet->getBaseHAM(3) * hamPenaltyModifier;
+			int newVitalityMindPenalty = pet->getBaseHAM(6) * hamPenaltyModifier;
+
+			if (newVitalityHealthPenalty != vitalityHealthPenalty) {
+				int change = vitalityHealthPenalty - newVitalityHealthPenalty;
+				petControlDevice->setVitalityHealthPenalty(newVitalityHealthPenalty);
+			}
+
+			if (newVitalityActionPenalty != vitalityActionPenalty) {
+				int change = vitalityActionPenalty - newVitalityActionPenalty;
+				pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
+				petControlDevice->setVitalityActionPenalty(newVitalityActionPenalty);
+			}
+
+			if (newVitalityMindPenalty != vitalityMindPenalty) {
+				int change = vitalityMindPenalty - newVitalityMindPenalty;
+				pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
+				petControlDevice->setVitalityMindPenalty(newVitalityMindPenalty);
+			}
+		}, "PetSetVitalityLambda");
 	}
 }

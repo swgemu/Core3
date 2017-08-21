@@ -328,6 +328,18 @@ class PetControlDevice extends ControlDevice {
 	public void toggleUseRanged() {
 		useRanged = !useRanged;
 	}
+	
+	public void setVitalityHealthPenalty(float value) {
+		vitalityHealthPenalty = value;
+	}
+	
+	public void setVitalityActionPenalty(float value) {
+		vitalityActionPenalty = value;
+	}
+	
+	public void setVitalityMindPenalty(float value) {
+		vitalityMindPenalty = value;
+	}
 
 	@read
 	public boolean getUseRanged() {
