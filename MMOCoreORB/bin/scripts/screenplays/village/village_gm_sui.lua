@@ -352,7 +352,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 			promptBuf = promptBuf .. "Intro (Sent to Village)\n"
 		end
 
-		if (curStep == FsIntro.OLDMANWAIT or curStep == FsIntro.SITHWAIT) then
+		if (curStep == FsIntro.OLDMANWAIT or curStep == FsIntro.OLDMANMEET or curStep == FsIntro.SITHWAIT or curStep == FsIntro.SITHATTACK) then
 			promptBuf = promptBuf .. " -- Encounter Checks --\n" .. "\\#pcontrast1 " .. "InPositionForEncounter:" .. " \\#pcontrast2 " .. tostring(Encounter:isPlayerInPositionForEncounter(pTarget)) .. "\n"
 
 			if (not Encounter:isPlayerInPositionForEncounter(pTarget)) then
