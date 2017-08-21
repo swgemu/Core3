@@ -162,6 +162,7 @@ function Encounter:createEncounter(pPlayer)
 		return true
 	end
 
+	printLuaError("Encounter:createEncounter failed to spawn mobiles for task " .. self.taskName .. " (Player " .. CreatureObject(pPlayer):getFirstName() .. ", playerID " .. SceneObject(pPlayer):getObjectID() .. ")")
 	return false
 end
 

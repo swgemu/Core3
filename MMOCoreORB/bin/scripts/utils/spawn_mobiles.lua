@@ -306,6 +306,7 @@ function SpawnMobiles.spawnMobiles(pSceneObject, prefix, mobileList, forceSpawn)
 	if SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
 		return SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, forceSpawn)
 	else
+		printLuaError("SpawnMobiles.spawnMobiles prefix " .. prefix .. " not free for player " .. CreatureObject(pSceneObject):getFirstName() .. "(playerID " .. SceneObject(pSceneObject):getObjectID() .. ")")
 		return nil
 	end
 end
