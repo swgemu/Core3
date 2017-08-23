@@ -23,8 +23,6 @@ namespace packets {
 
 		ManagedReference<ZoneProcessServer*> server;
 		
-		int taskqueue;
-
 	public:
 		MessageCallback(ZoneClientSession* client, ZoneProcessServer* server) {
 			MessageCallback::client = client;
@@ -39,10 +37,6 @@ namespace packets {
 		}
 
 		virtual void parse(Message* message) = 0;
-		
-		inline int getTaskQueue() {
-			return taskqueue;
-		}
 
 		bool parseMessage(Message* packet) {
 			try {

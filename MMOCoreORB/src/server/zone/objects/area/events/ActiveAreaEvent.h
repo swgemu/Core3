@@ -38,6 +38,12 @@ namespace server {
 		   activeArea = ar;
 		   eventType = eventt;
 		   sceneObject = obj;
+
+		   auto zone = obj->getZone();
+
+		   if (zone != NULL) {
+			   setCustomTaskQueue(zone->getZoneName());
+		   }
 	   }
 
 	   void run() {

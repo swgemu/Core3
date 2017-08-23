@@ -62,9 +62,7 @@ public:
 		parsedSpeed = 0;
 
 		objectControllerMain = objectControllerCallback;
-		
-		taskqueue = 3;
-		
+
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 		
 		if (player != NULL) {
@@ -73,12 +71,7 @@ public:
 			if (zone != NULL) {
 				String zoneName = zone->getZoneName();
 			
-				if (zoneName == "corellia")
-					taskqueue = 4;
-				else if (zoneName == "tatooine")
-					taskqueue = 5;
-				else if (zoneName == "naboo")
-					taskqueue = 6;
+				setCustomTaskQueue(zoneName);
 			}
 		}
 	}
