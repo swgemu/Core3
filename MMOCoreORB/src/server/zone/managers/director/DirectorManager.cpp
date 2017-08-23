@@ -2961,12 +2961,18 @@ int DirectorManager::getCityRegionAt(lua_State* L) {
 	float x = lua_tonumber(L, -2);
 	float y = lua_tonumber(L, -1);
 
-	PlanetManager* planetManager = ServerCore::getZoneServer()->getZone(zoneid)->getPlanetManager();
+	auto zone =  ServerCore::getZoneServer()->getZone(zoneid);
 
-	CityRegion* cityRegion = planetManager->getRegionAt(x, y);
+	if (zone != nullptr) {
+		PlanetManager* planetManager = zone->getPlanetManager();
 
-	if (cityRegion != NULL) {
-		lua_pushlightuserdata(L, cityRegion);
+		CityRegion* cityRegion = planetManager->getRegionAt(x, y);
+
+		if (cityRegion != NULL) {
+			lua_pushlightuserdata(L, cityRegion);
+		} else {
+			lua_pushnil(L);
+		}
 	} else {
 		lua_pushnil(L);
 	}
