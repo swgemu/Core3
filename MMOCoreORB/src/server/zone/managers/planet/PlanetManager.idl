@@ -82,7 +82,9 @@ class PlanetManager extends ManagedService implements Logger {
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
-
+		
+		performanceLocations = new MissionTargetMap();
+		
 		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
