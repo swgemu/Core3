@@ -15,6 +15,7 @@
  */
 
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/Zone.h"
 
 namespace server {
  namespace zone {
@@ -38,6 +39,12 @@ namespace server {
 		   activeArea = ar;
 		   eventType = eventt;
 		   sceneObject = obj;
+
+		   auto zone = obj->getZone();
+
+		   if (zone != NULL) {
+			   setCustomTaskQueue(zone->getZoneName());
+		   }
 	   }
 
 	   void run() {

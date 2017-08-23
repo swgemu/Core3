@@ -38,12 +38,12 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		return;
 	}
 	
-	int newTaskQueue = objectControllerCallback->getTaskQueue();
+	const auto& newTaskQueue = objectControllerCallback->getCustomTaskQueue();
 	
-	if (newTaskQueue > 2)
-		taskqueue = newTaskQueue;
+	if (newTaskQueue.length()) {
+		setCustomTaskQueue(newTaskQueue);
+	}
 	
-
 	try {
 
 		/*StringBuffer objectCtrl;
