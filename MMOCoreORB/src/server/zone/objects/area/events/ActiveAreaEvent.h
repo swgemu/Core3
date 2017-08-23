@@ -40,7 +40,7 @@ namespace server {
 		   eventType = eventt;
 		   sceneObject = obj;
 
-		   auto zone = obj->getZone();
+		   auto zone = ar->getZone();
 
 		   if (zone != NULL) {
 			   setCustomTaskQueue(zone->getZoneName());

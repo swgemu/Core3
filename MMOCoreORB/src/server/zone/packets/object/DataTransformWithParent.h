@@ -70,7 +70,7 @@ public:
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player != NULL) {
-			Zone* zone = player->getLocalZone();
+			Zone* zone = player->getZone();
 
 			if (zone != NULL) {
 				String zoneName = zone->getZoneName();

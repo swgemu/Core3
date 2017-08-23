@@ -36,7 +36,19 @@ public:
 
 		object->setTargetID(target, true);
 
-		ManagedReference<SceneObject*> scene = object->getZoneServer()->getObject(target);
+		object->unlock();
+
+		Reference<SceneObject*> scene;
+
+		try {
+			scene = object->getZoneServer()->getObject(target);
+
+			object->wlock();
+		} catch (...) {
+			object->wlock();
+
+			throw;
+		}
 
 		if (scene != NULL)
 			object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, scene);
