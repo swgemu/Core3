@@ -20,8 +20,6 @@ class CreateTicketMessageCallback : public MessageCallback {
 public:
 	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server), categoryId(0), subCategoryId(0) {
-
-		taskqueue = 7;
 	}
 
 	void parse(Message* message) {

@@ -53,6 +53,14 @@ public:
 
 		mtime = delay;
 
+		ManagedReference<AiAgent*> strongRef = creature.get();
+
+		auto zone = strongRef->getZone();
+
+		if (zone != nullptr) {
+			setCustomTaskQueue(zone->getZoneName());
+		}
+
 		try {
 			Task::schedule(delay);
 		} catch (...) {

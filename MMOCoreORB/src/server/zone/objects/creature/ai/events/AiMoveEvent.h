@@ -74,15 +74,21 @@ public:
 
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
+		auto zone = strongRef->getZone();
+
+		if (zone != nullptr) {
+			setCustomTaskQueue(zone->getZoneName());
+		}
+
 		try {
 			Task::schedule(delay);
 
 			if (strongRef != NULL) {
-				if (strongRef->getFollowObject().get() != NULL && !hasFollowObject) {
+				if (strongRef->getFollowObject() != NULL && !hasFollowObject) {
 					AiMap::instance()->moveEventsWithFollowObject.increment();
 
 					hasFollowObject = true;
-				} else if (strongRef->getFollowObject().get() == NULL && hasFollowObject) {
+				} else if (strongRef->getFollowObject() == NULL && hasFollowObject) {
 					AiMap::instance()->moveEventsWithFollowObject.decrement();
 
 					hasFollowObject = false;
