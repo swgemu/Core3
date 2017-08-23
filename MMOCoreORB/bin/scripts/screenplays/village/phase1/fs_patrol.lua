@@ -39,9 +39,10 @@ function FsPatrol:spawnEnemies(pPlayer, numEnemies, x, y)
 		local pMobile = spawnMobile(SceneObject(pPlayer):getZoneName(), self.enemyList[npcType], 0, spawnX, spawnZ, spawnY, 0, 0)
 
 		if (pMobile ~= nil) then
-			writeData(playerID .. self.taskName .. "enemyNum" .. i)
+			local mobileID = SceneObject(pMobile):getObjectID()
+			writeData(playerID .. self.taskName .. "enemyNum" .. i, mobileID)
 			createEvent(600 * 1000, self.taskName, "destroyMobile", pMobile, "")
-			writeData(SceneObject(pMobile):getObjectID() .. self.taskName .. "ownerID", playerID)
+			writeData(mobileID .. self.taskName .. "ownerID", playerID)
 			if (numEnemies <= 3) then
 				createObserver(OBJECTDESTRUCTION, self.taskName, "notifyKilledGoodTarget", pMobile)
 			else
