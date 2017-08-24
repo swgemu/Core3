@@ -295,6 +295,10 @@ function FsIntro:startOldMan(pPlayer)
 		return
 	end
 
+	if (SceneObject(pPlayer):getObjectID() == 281477883834985) then
+		printLuaError("***** FsIntro:startOldMan executing for oid 281477883834985\n")
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil or not PlayerObject(pGhost):isOnline()) then
@@ -304,6 +308,10 @@ function FsIntro:startOldMan(pPlayer)
 	local result = OldManIntroEncounter:start(pPlayer)
 
 	if (not result) then
+		if (SceneObject(pPlayer):getObjectID() == 281477883834985) then
+			printLuaError("***** FsIntro:startOldMan failed to execute for oid 281477883834985, rescheduling\n")
+		end
+
 		createEvent(getRandomNumber(300, 900) * 1000, "FsIntro", "startOldMan", pPlayer, "")
 		return
 	end
