@@ -44,10 +44,17 @@ Encounter = Task:new {
 function Encounter:taskStart(pPlayer)
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pPlayer) then
 		if not self:isPlayerInPositionForEncounter(pPlayer) or CreatureObject(pPlayer):isDead() then
+			if (SceneObject(pPlayer):getObjectID() == 281477883834985) then
+				printf("***** Encounter:taskStart returning false for oid 281477883834985, failed isPlayerInPositionForEncounter or isDead check\n")
+			end
 			return false
 		end
 
 		local result = self:createEncounter(pPlayer)
+
+		if (result == false and SceneObject(pPlayer):getObjectID() == 281477883834985) then
+			printf("***** Encounter:taskStart returning false for oid 281477883834985, failed createEncounter\n")
+		end
 
 		if (result) then
 			createEvent(self.encounterDespawnTime, self.taskName, "handleDespawnEvent", pPlayer, "")
