@@ -24,6 +24,12 @@ class DespawnLairOnPlayerDisappear : public Task {
 public:
 	DespawnLairOnPlayerDisappear(SceneObject* l) {
 		lair = l;
+
+		auto zone = l->getZone();
+
+		if (zone != nullptr) {
+			setCustomTaskQueue(zone->getZoneName());
+		}
 	}
 
 	void run() {

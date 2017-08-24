@@ -16,6 +16,12 @@ class DespawnCreatureTask : public Task {
 public:
 	DespawnCreatureTask(AiAgent* cr) {
 		creature = cr;
+
+		auto zone = cr->getZone();
+
+		if (zone != nullptr) {
+			setCustomTaskQueue(zone->getZoneName());
+		}
 	}
 
 	void run() {
