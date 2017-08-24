@@ -9,6 +9,7 @@
 #define DESPAWNCREATURETASK_H_
 
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/Zone.h"
 
 class DespawnCreatureTask : public Task {
 	ManagedReference<AiAgent*> creature;
@@ -16,6 +17,12 @@ class DespawnCreatureTask : public Task {
 public:
 	DespawnCreatureTask(AiAgent* cr) {
 		creature = cr;
+
+		auto zone = cr->getZone();
+
+		if (zone != nullptr) {
+			setCustomTaskQueue(zone->getZoneName());
+		}
 	}
 
 	void run() {

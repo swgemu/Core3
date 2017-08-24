@@ -372,7 +372,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		Core::getTaskManager()->executeTask([sceno, thisZone] () {
 			Locker locker(sceno);
 			thisZone->transferObject(sceno, -1, true);
-		}, "TransferToZoneLambda");
+		}, "TransferToZoneLambda", thisZone->getZoneName().toCharArray());
 	}
 }
 

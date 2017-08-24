@@ -1745,9 +1745,16 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
+	String zoneName;
+	auto zone = creature->getZone();
+
+	if (zone != nullptr) {
+		zoneName = zone->getZoneName();
+	}
+
 	Core::getTaskManager()->executeTask([=] () {
 		finalArea->tryToSpawn(creature);
-	}, "TryToSpawnLambda");
+	}, "TryToSpawnLambda", zoneName.toCharArray());
 }
 
 void PlayerObjectImplementation::activateRecovery() {
