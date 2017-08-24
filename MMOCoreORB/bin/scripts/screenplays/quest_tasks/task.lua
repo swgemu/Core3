@@ -10,8 +10,6 @@ Task = ScreenPlay:new {
 	onLoggedOut = nil,
 }
 
-local TASK_STARTED = 0xABCD
-
 -- Check if the task has been started for the player.
 -- @param pPlayer pointer to the creature object of the player.
 function Task:hasTaskStarted(pPlayer)
@@ -19,19 +17,19 @@ function Task:hasTaskStarted(pPlayer)
 		return false
 	end
 
-	return CreatureObject(pPlayer):getScreenPlayState(self.taskName) == TASK_STARTED
+	return readData(SceneObject(pPlayer):getObjectID() .. ":taskStarted:" .. self.taskName) == 1
 end
 
 -- Set the task started screen play state for the player.
 -- @param pPlayer pointer to the creature object of the player.
 function Task:setTaskStarted(pPlayer)
-	CreatureObject(pPlayer):setScreenPlayState(TASK_STARTED, self.taskName)
+	writeData(SceneObject(pPlayer):getObjectID() .. ":taskStarted:" .. self.taskName, 1)
 end
 
 -- Set the task finished screen play state for the player.
 -- @param pPlayer pointer to the creature object of the player.
 function Task:setTaskFinished(pPlayer)
-	CreatureObject(pPlayer):removeScreenPlayState(TASK_STARTED, self.taskName)
+	deleteData(SceneObject(pPlayer):getObjectID() .. ":taskStarted:" .. self.taskName)
 end
 
 -- Call the supplied function with the argument if the function is not nil.

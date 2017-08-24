@@ -583,13 +583,13 @@ function VillageGmSui.forceIntroSithAttackEvent(pPlayer, targetID)
 	end
 
 	local curStep = FsIntro:getCurrentStep(pTarget)
-
+	local playerName = CreatureObject(pTarget):getFirstName()
 	if (not FsIntro:isOnIntro(pTarget) or (curStep ~= FsIntro.SITHWAIT and curStep ~= FsIntro.SITHATTACK)) then
-		CreatureObject(pPlayer):sendSystemMessage("Unable to force the sith attack intro event for " .. CreatureObject(pTarget):getFirstName() .. ", they are not on the correct step.")
+		CreatureObject(pPlayer):sendSystemMessage("Unable to force the sith attack intro event for " .. playerName .. ", they are not on the correct step.")
 		return
 	end
 
-	CreatureObject(pPlayer):sendSystemMessage("Now forcing the sith attack intro event to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
+	CreatureObject(pPlayer):sendSystemMessage("Now forcing the sith attack intro event to start for " .. playerName .. ".")
 	FsIntro:startSithAttack(pTarget)
 end
 
@@ -601,13 +601,13 @@ function VillageGmSui.forceIntroOldManEvent(pPlayer, targetID)
 	end
 
 	local curStep = FsIntro:getCurrentStep(pTarget)
-
+	local playerName = CreatureObject(pTarget):getFirstName()
 	if (not FsIntro:isOnIntro(pTarget) or (curStep ~= FsIntro.OLDMANWAIT and curStep ~= FsIntro.OLDMANMEET)) then
-		CreatureObject(pPlayer):sendSystemMessage("Unable to force the old man intro event for " .. CreatureObject(pTarget):getFirstName() .. ", they are not on the correct step.")
+		CreatureObject(pPlayer):sendSystemMessage("Unable to force the old man intro event for " .. playerName .. ", they are not on the correct step.")
 		return
 	end
 
-	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event intro to start for " .. CreatureObject(pTarget):getFirstName() .. ".")
+	CreatureObject(pPlayer):sendSystemMessage("Now forcing the old man event intro to start for " .. playerName .. ".")
 	FsIntro:startOldMan(pTarget)
 end
 
