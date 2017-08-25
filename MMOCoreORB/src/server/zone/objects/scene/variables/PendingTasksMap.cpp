@@ -52,8 +52,9 @@ void PendingTasksMap::putOrdered(Task* task, server::zone::objects::scene::Scene
 	orderedTasks.add(task);
 
 	if (orderedTasks.size() == 1) {
-		OrderedTaskExecutioner* task = new OrderedTaskExecutioner(sceneObject);
-		task->execute();
+		OrderedTaskExecutioner* newTask = new OrderedTaskExecutioner(sceneObject);
+		newTask->setCustomTaskQueue(task->getCustomTaskQueue());
+		newTask->execute();
 	}
 }
 

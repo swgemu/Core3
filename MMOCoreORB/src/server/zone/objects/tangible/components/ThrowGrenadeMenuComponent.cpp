@@ -30,7 +30,14 @@ int ThrowGrenadeMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 1;
 
 	if(selectedID == 20) {
-		player->sendCommand(STRING_HASHCODE("throwgrenade"), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
+		Reference<CreatureObject*> strongRef = player;
+		Reference<WeaponObject*> strongRefWeapon = weapon;
+
+		Core::getTaskManager()->executeTask([strongRef, strongRefWeapon] () {
+			Locker locker(strongRef);
+
+			strongRef->sendCommand(STRING_HASHCODE("throwgrenade"), String::valueOf(strongRefWeapon->getObjectID()), strongRef->getTargetID());
+		}, "ThrowGrenadeSendCommandLambda");
 
 		return 1;
 	}
