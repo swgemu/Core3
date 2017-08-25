@@ -20,6 +20,8 @@ public:
 		creature = cr;
 		zone = zn;
 		this->level = level;
+
+		setCustomTaskQueue(zone->getZoneName());
 	}
 
 	void run() {

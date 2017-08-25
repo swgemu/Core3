@@ -1687,7 +1687,7 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 	Vector<SpawnArea*> worldSpawnAreas;
 
 	for (int i = 0; i < areas.size(); ++i) {
-		ManagedReference<ActiveArea*> area = areas.get(i);
+		ManagedReference<ActiveArea*>& area = areas.get(i);
 
 		if (area->isNoSpawnArea()) {
 			return;

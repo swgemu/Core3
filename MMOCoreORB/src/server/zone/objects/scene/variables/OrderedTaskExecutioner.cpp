@@ -42,9 +42,9 @@ void OrderedTaskExecutioner::run() {
 		}
 
 		pendingTasks->runMoreOrderedTasks(strongReference);
-	}
 
-	taskName = task->getTaskName();
+		taskName = task->getTaskName();
+	}
 }
 
 const char* OrderedTaskExecutioner::getTaskName() {

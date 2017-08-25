@@ -27,6 +27,9 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	ManagedReference<TangibleObject*> lair = cast<TangibleObject*>(observable);
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 
+	auto zone = lair->getZone();
+	String queueName = zone == nullptr ? "" : zone->getZoneName();
+
 	switch (eventType) {
 	case ObserverEventType::OBJECTREMOVEDFROMZONE:
 		despawnSpawns();
@@ -46,7 +49,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(lair);
 			lairObserver->checkForNewSpawns(lair, attacker);
-		}, "CheckForNewSpawnsLambda");
+		}, "CheckForNewSpawnsLambda", queueName.toCharArray());
 
 		checkForHeal(lair, attacker);
 
