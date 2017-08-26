@@ -344,9 +344,6 @@ class PlayerManager extends Observer implements Logger {
 	public native boolean existsName(final string name);
 	
 	@dirty
-	public native boolean existsPlayerCreatureOID(unsigned long oid);
-	
-	@dirty
 	public native unsigned long getObjectID(final string name);
 	
 	@dirty
@@ -367,6 +364,11 @@ class PlayerManager extends Observer implements Logger {
 	public void removePlayer(final string playerName) {
 		nameMap.remove(playerName);
 	}
+
+    @dirty
+    public boolean containsPlayer(final string playerName) {
+        return nameMap.containsKey(playerName);
+    }
 
 	public native void sendAdminJediList(CreatureObject player);
 	public native void sendAdminFRSList(CreatureObject player);	

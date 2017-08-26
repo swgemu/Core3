@@ -8,5 +8,5 @@ file(GLOB_RECURSE zone3_sources "*.cpp")
 include_directories(../..)
 
 # Create zone library
-add_library(zone3 STATIC ${zone3_sources})
+add_library(zone3 STATIC ${zone3_sources} packets/ship/PackedPosition.h objects/ship/ShipProjectileData.h packets/ship/OnShipHit.h)
 #add_dependencies(zone3 login3)

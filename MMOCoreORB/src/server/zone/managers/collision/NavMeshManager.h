@@ -11,28 +11,38 @@
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "engine/util/u3d/AABB.h"
 #include "server/zone/managers/collision/NavMeshJob.h"
+#include "pathfinding/RecastNavMesh.h"
+
+class SharedBuildingObjectTemplate;
 
 class NavMeshManager : public Singleton<NavMeshManager>, public Logger, public Object{
+public:
+	class BuildingJob : public Object {
 
+	};
 protected:
 	int maxConcurrentJobs;
-	VectorMap<String, Reference<NavMeshJob*> > jobs;
-	VectorMap<String, Reference<NavMeshJob*> > runningJobs;
+	VectorMap<String, Reference<NavManagerJob*> > jobs;
+	VectorMap<String, Reference<NavManagerJob*> > runningJobs;
 	Mutex jobQueueMutex;
 	bool stopped;
 	ZoneServer* zoneServer;
 
 
-	void startJob(Reference<NavMeshJob*> job);
+	void startJob(Reference<NavManagerJob*> job);
     void checkJobs();
 
 public:
+	VectorMap<String, Reference<RecastNavMesh*> > buildingMeshes;
+
+	RecastNavMesh* getBuildingMesh(SharedBuildingObjectTemplate *templ);
+
 	NavMeshManager();
 	~NavMeshManager() { }
 	void initialize(int numThreads, ZoneServer* server);
 
 	void enqueueJob(NavArea* area, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue);
-
+	void enqueueJob(Reference<RecastNavMesh*> mesh, SharedBuildingObjectTemplate* templ, const RecastSettings& recastConfig, const String& queue);
 	void cancelJobs(NavArea* area);
 	void cancelAllJobs();
 	void stop();

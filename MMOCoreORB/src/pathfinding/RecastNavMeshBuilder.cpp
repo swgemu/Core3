@@ -18,6 +18,7 @@
 
 #include "RecastNavMeshBuilder.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 #include "templates/appearance/MeshData.h"
 #include "ChunkyTriMesh.h"
 #include "terrain/layer/boundaries/BoundaryRectangle.h"
@@ -73,14 +74,18 @@ RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const
 		m_tileTriCount(0),
 		running(jobStatus),
 		header() {
-	ProceduralTerrainAppearance* pta = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance();
-	if (pta->getUseGlobalWaterTable())
-		waterTableHeight = pta->getGlobalWaterTableHeight();
-	else {
+	ProceduralTerrainAppearance* pta = zone ? zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance() : NULL;
+	if (pta) {
+		if (pta->getUseGlobalWaterTable())
+			waterTableHeight = pta->getGlobalWaterTableHeight();
+		else {
 #ifdef NAVMESH_DEBUG
-		info("Disabling water table for " + zone->getZoneName(), true);
+			info("Disabling water table for " + zone->getZoneName(), true);
 #endif
-		waterTableHeight = -1000.0f;
+			waterTableHeight = -1000.0f;
+		}
+	} else {
+		waterTableHeight = -10000.0f;
 	}
 	this->name = name;
 	this->zone = zone;
@@ -460,7 +465,7 @@ void RecastNavMeshBuilder::buildAllTiles() {
 
 void
 RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const AABB& bounds, float distanceBetweenHeights) {
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrainManager = zone ? zone->getPlanetManager()->getTerrainManager() : NULL;
 
 #ifdef NAVMESH_DEBUG
 	info("Building region terrain for: " + name, true);
@@ -473,9 +478,10 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 #ifdef NAVMESH_DEBUG
 	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
 #endif
-	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
-								distanceBetweenHeights));
-
+    if (terrainManager != NULL) {
+		meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
+									distanceBetweenHeights));
+	}
 	Reference < MeshData * > flattened = flattenMeshData(meshData);
 
 	Vector <Reference<MeshData*>> test;
@@ -493,7 +499,9 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 	info("Building region navmesh for: " + name, true);
 #endif
 	Vector<const Boundary*> water;
-	terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+	if (terrainManager != NULL)
+		terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+
 	// Render water as polygons
 	for (const Boundary* boundary : water) {
 		const BoundaryPolygon* bPoly = dynamic_cast<const BoundaryPolygon*>(boundary);

@@ -6,7 +6,7 @@
  */
 
 #include "PathFinderManager.h"
-#include "server/zone/objects/building/BuildingObject.h"
+
 #include "server/zone/objects/cell/CellObject.h"
 #include "templates/SharedObjectTemplate.h"
 #include "templates/appearance/PortalLayout.h"
@@ -18,7 +18,7 @@
 #include "engine/util/u3d/Funnel.h"
 #include "engine/util/u3d/Segment.h"
 #include "pathfinding/recast/DetourCommon.h"
-
+#include "server/zone/objects/building/BuildingObject.h"
 static constexpr int MAX_QUERY_NODES = 2048 * 2;
 
 void destroyNavMeshQuery(void* value) {
@@ -162,11 +162,6 @@ dtNavMeshQuery* PathFinderManager::getNavQuery() {
 bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, NavArea* area, Vector<WorldCoordinates>* path, float& len, bool allowPartial) {
 	const Vector3 startPosition(start.getX(), start.getZ(), -start.getY());
 	const Vector3 targetPosition(end.getX(), end.getZ(), -end.getY());
-	const float* startPosAsFloat = startPosition.toFloatArray();
-	const float* tarPosAsFloat = targetPosition.toFloatArray();
-	const static float extents[3] = {2, 4, 2};
-	dtPolyRef startPoly;
-	dtPolyRef endPoly;
 
 	Vector3 areaPos = area->getPosition();
 	Zone* zone = area->getZone();
@@ -176,7 +171,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 
 	areaPos.setZ(area->getAreaTerrainHeight());
 
-	dtNavMeshQuery* query = getNavQuery();
+
 
 	ReadLocker rLocker(area);
 
@@ -188,37 +183,52 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	// We need to flip the Y/Z axis and negate Z to put it in recasts model space
 	const Sphere sphere(Vector3(areaPos.getX(), areaPos.getZ(), -areaPos.getY()), area->getRadius());
 
-	query->init(navMesh->getNavMesh(), MAX_QUERY_NODES);
+
 
 	if (pointInSphere(targetPosition, sphere) || pointInSphere(startPosition, sphere)) {
-		Vector3 polyStart;
-		Vector3 polyEnd;
-		int numPolys;
-		const static constexpr int MAX_POLYS = 2048;
+		return getPathFromMesh(navMesh, startPosition, targetPosition, path, len, allowPartial);
+	}
 
-		dtPolyRef polyPath[MAX_POLYS];
-		int status = 0;
+	return false;
+}
 
-		if (!((status = query->findNearestPoly(startPosAsFloat, extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
+bool PathFinderManager::getPathFromMesh(RecastNavMesh *navMesh, const Vector3 &startPosition, const Vector3 &targetPosition,
+								   Vector<WorldCoordinates> *path, float &len, bool allowPartial) {
+	dtNavMeshQuery* query = getNavQuery();
+	query->init(navMesh->getNavMesh(), MAX_QUERY_NODES);
+	const float* startPosAsFloat = startPosition.toFloatArray();
+	const float* tarPosAsFloat = targetPosition.toFloatArray();
+	const static float extents[3] = {2, 4, 2};
+	dtPolyRef startPoly;
+	dtPolyRef endPoly;
+	Vector3 polyStart;
+	Vector3 polyEnd;
+	int numPolys;
+	const static constexpr int MAX_POLYS = 2048;
+
+	dtPolyRef polyPath[MAX_POLYS];
+	int status = 0;
+
+	if (!((status = query->findNearestPoly(startPosAsFloat, extents, &m_filter, &startPoly, polyStart.toFloatArray())) & DT_SUCCESS))
 			return false;
 
-		if (!((status = query->findNearestPoly(tarPosAsFloat, extents, &m_filter, &endPoly, polyEnd.toFloatArray())) & DT_SUCCESS))
+	if (!((status = query->findNearestPoly(tarPosAsFloat, extents, &m_filter, &endPoly, polyEnd.toFloatArray())) & DT_SUCCESS))
 			return false;
 
-		if (!((status = query->findPath(startPoly, endPoly, polyStart.toFloatArray(), polyEnd.toFloatArray(), &m_filter, polyPath, &numPolys, MAX_POLYS)) & DT_SUCCESS))
+	if (!((status = query->findPath(startPoly, endPoly, polyStart.toFloatArray(), polyEnd.toFloatArray(), &m_filter, polyPath, &numPolys, MAX_POLYS)) & DT_SUCCESS))
 			return false;
 
 #ifdef DEBUG_PATHING
-		info("findPath result: 0x" + String::hexvalueOf(status), true);
+	info("findPath result: 0x" + String::hexvalueOf(status), true);
 #endif
 
-		if ((status & DT_PARTIAL_RESULT) && !allowPartial)
+	if ((status & DT_PARTIAL_RESULT) && !allowPartial)
 			return false;
 
-		if (path == nullptr)
+	if (path == nullptr)
 			return true;
 
-		if (numPolys) {
+	if (numPolys) {
 			// In case of partial path, make sure the end point is clamped to the last polygon.
 			float epos[3];
 			dtVcopy(epos, polyEnd.toFloatArray());
@@ -254,8 +264,6 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 				}
 			}
 		}
-	}
-
 	return true;
 }
 
@@ -448,86 +456,34 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	FloorMesh* targetFloorMesh = portalLayout->getFloorMesh(targetCell->getCellNumber());
 	PathGraph* targetPathGraph = targetFloorMesh->getPathGraph();
 
-	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
-	path->add(pointA);
+	Vector<const PathNode*> entrances = exteriorPathGraph->getEntrances();
 
-	Vector3 transformedPosition = transformToModelSpace(pointA.getPoint(), building);
+	bool found = false;
+	Vector<WorldCoordinates> entranceCoords;
+	Matrix4 transform;
+	transform.setRotationMatrix(building->getDirection()->toMatrix3());
+	transform.setTranslation(building->getPositionX(), building->getPositionY(), building->getPositionZ());
 
-	PathNode* nearestEntranceNode = exteriorPathGraph->findNearestNode(transformedPosition);
+	Matrix4 inverse = CollisionManager::Inverse(transform);
 
-	if (nearestEntranceNode == NULL) {
-		error("NULL entrance node for building " + templateObject->getFullTemplateString());
-		delete path;
-		return NULL;
-	}
-	//PathNode* nearestTargetNode = targetPathGraph->findNearestNode(pointB.getPoint());
-	TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), targetFloorMesh);
-
-	if (nearestTargetNodeTriangle == NULL) {
-		delete path;
-		return NULL;
+	for (const PathNode* node : entrances) {
+		const Vector3& localPos = node->getPosition();
+		Vector3 worldPos = localPos * transform;
+		entranceCoords.add(WorldCoordinates(worldPos, NULL));
 	}
 
-	PathNode* nearestTargetNode = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, targetFloorMesh, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+	Vector<WorldCoordinates>* path = findPathFromWorldToWorld(pointA, entranceCoords, zone, false);
 
-	if (nearestTargetNode == NULL) {
-		delete path;
-		return NULL;
-	}
 
-	/*if (nearestEntranceNode == nearestTargetNode)
-		info("nearestEntranceNode == nearestTargetNode", true);*/
+	Vector3 localStart = path->get(path->size()-1).getPoint() * inverse;
 
-	//find graph from outside to appropriate cell
-	Vector<PathNode*>* pathToCell = portalLayout->getPath(nearestEntranceNode, nearestTargetNode);
+	int cellIndex = portalLayout->cellFromPosition(localStart);
+	CellObject *cell = building->getCell(portalLayout->getCellProperty(cellIndex)->getName());
 
-	if (pathToCell == NULL) {
-		error("pathToCell = portalLayout->getPath(nearestEntranceNode, nearestTargetNode); == NULL");
-		delete path;
-		return NULL;
-	}
-
-	for (int i = 0; i < pathToCell->size(); ++i) {
-		PathNode* pathNode = pathToCell->get(i);
-		PathGraph* pathGraph = pathNode->getPathGraph();
-
-		FloorMesh* floorMesh = pathGraph->getFloorMesh();
-
-		int cellID = floorMesh->getCellID();
-
-		//info("cellID:" + String::valueOf(cellID), true);
-
-		if (cellID == 0) { // we are still outside
-			WorldCoordinates coord(pathNode->getPosition(), targetCell);
-
-			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
-		} else { // we are inside the building
-			CellObject* pathCell = building->getCell(cellID);
-
-			path->add(WorldCoordinates(pathNode->getPosition(), pathCell));
-
-			if (i == pathToCell->size() - 1)
-				if (pathCell != targetCell) {
-					error("final cell not target cell");
-				}
-		}
-	}
-
-	delete pathToCell;
-	pathToCell = NULL;
-
-	// path from cell path node to destination point
-	Vector<Triangle*>* trianglePath = NULL;
-
-	int res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), targetFloorMesh, trianglePath);
-
-	if (res != -1 && trianglePath != NULL)
-		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointB.getPoint(), trianglePath, path, targetCell);
-
-	if (trianglePath != NULL)
-		delete trianglePath;
-
-	path->add(pointB);
+	WorldCoordinates cellStart(localStart, cell);
+	Vector<WorldCoordinates>* interiorPath = findPathFromCellToCell(cellStart, pointB);
+	path->addAll(*interiorPath);
+	delete interiorPath;
 
 	return path;
 }
@@ -984,8 +940,11 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
 
-	if (ourCell != targetCell)
-		return findPathFromCellToDifferentCell(pointA, pointB);
+	const Vector3 startPosition(pointA.getX(), pointA.getZ(), -pointA.getY());
+	const Vector3 targetPosition(pointB.getX(), pointB.getZ(), -pointB.getY());
+
+//	if (ourCell != targetCell)
+//		return findPathFromCellToDifferentCell(pointA, pointB);
 
 	int ourCellID = ourCell->getCellNumber();
 
@@ -1000,42 +959,41 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	if (portalLayout == NULL)
 		return NULL;
-
-	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
-	PathGraph* pathGraph1 = floorMesh1->getPathGraph();
+//
+//	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
+//	PathGraph* pathGraph1 = floorMesh1->getPathGraph();
 
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
-	path->add(pointA); // adding source
+	//path->add(pointA); // adding source
 
-	//info("same cell... trying to calculate triangle path", true);
-
-	Vector<Triangle*>* trianglePath = NULL;
-
-	//info("searching floorMesh for cellID " + String::valueOf(ourCellID), true);
-
-	int res = getFloorPath(pointA.getPoint(), pointB.getPoint(), floorMesh1, trianglePath);
-
-	if (res == -1) { //points in the same triangle
-		path->add(pointB);
-
-		return path;
-	}
-
-	if (trianglePath == NULL) { // returning NULL, no path found
-		//error("path NULL");
-		delete path;
-
-		return findPathFromCellToDifferentCell(pointA, pointB);
+	Reference<RecastNavMesh*> mesh = building->getInteriorNavMesh();
+	float len = 0.0f;
+	if(!getPathFromMesh(mesh, startPosition, targetPosition, path, len, true)) {
+		info("Failed", true);
 	} else {
-		//info("path found", true);
+		for (auto& point : *path) {
+			int index = portalLayout->cellFromPosition(point.getPoint());
+			if (index == -1) {
+				error("Failed to fetch cell index from position: " + point.getPoint().toString());
+				delete path;
+				return NULL;
+			}
 
-		addTriangleNodeEdges(pointA.getPoint(), pointB.getPoint(), trianglePath, path, ourCell);
+			CellProperty *cellProperty = portalLayout->getCellProperty(index);
+			if (cellProperty == NULL) {
+				error("Failed to fetch cellID for " + point.getPoint().toString());
+				delete path;
+				return NULL;
+			}
+			Reference<CellObject*> cell = building->getCell(cellProperty->getName());
+			if (cell == NULL) {
+				error("Failed to fetch cell from building");
+				delete path;
+				return NULL;
+			}
 
-		delete trianglePath;
-
-		path->add(pointB); //adding destination
-
-		return path;
+			point.setCell(cell);
+		}
 	}
 
 	return path;

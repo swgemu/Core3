@@ -5,13 +5,13 @@
  *      Author: victor
  */
 
-#ifndef SHIPCOMPONENT_H_
-#define SHIPCOMPONENT_H_
+#ifndef SHIPCOMPONENTDATA_H_
+#define SHIPCOMPONENTDATA_H_
 
 #include "engine/engine.h"
 #include "templates/datatables/DataTableRow.h"
 
-class ShipComponent : public Object {
+class ShipComponentData : public Object {
 protected:
 	String name;
 	String objectTemplate;
@@ -19,7 +19,7 @@ protected:
 	String componentType;
 	String compatibility;
 public:
-	ShipComponent() {
+	ShipComponentData() {
 
 	}
 
@@ -29,6 +29,8 @@ public:
 		row->getCell(2)->getValue(sharedObjectTemplate);
 		row->getCell(3)->getValue(componentType);
 		row->getCell(4)->getValue(compatibility);
+        static Logger logger;
+        logger.info("Loaded ship component\n\tName: " + name + "\n\tobjectTemplate: " + objectTemplate + "\n\tsharedObjectTemplate: " + sharedObjectTemplate + "\n\tcomponentType: " + componentType + "\n\tcompatability: " + compatibility, true);
 	}
 
 	const String& getCompatibility() const {

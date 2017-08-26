@@ -1,6 +1,7 @@
 #include "CellProperty.h"
 
 #include "templates/manager/TemplateManager.h"
+#include "engine/util/u3d/AABBTree.h"
 
 void CellPortal::readObject(IffStream* iff) {
 	Chunk* chunk = iff->openChunk();
@@ -102,6 +103,23 @@ void CellProperty::loadVersion5(IffStream* iffStream) {
 		floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
 		floorMesh->setCellID(cellID);
 
+		AABBTreeHeuristic heurData;
+		heurData.maxdepth = 4; // maximum depth
+		heurData.mintricnt = 5; // minimum triangle count
+		heurData.tartricnt = 10; // target triangle count
+		heurData.minerror = 0.5f; // minimum error required
+		heurData.storePrimitives = true;
+		Vector<Triangle*> tris;
+		for (auto& t : *floorMesh->getTriangles()) {
+			Vector3 points[3];
+			points[0] = t->getVertex(0);
+			points[1] = t->getVertex(1);
+			points[2] = t->getVertex(2);
+
+			tris.add(new Triangle(points));
+		}
+
+		aabbTree = new AABBTree(tris, 0, heurData, false);
 	}
 
 	iffStream->closeChunk();
@@ -154,6 +172,23 @@ void CellProperty::loadVersion4(IffStream* iffStream) {
 		iffStream->getString(floorFile);
 		floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
 
+		AABBTreeHeuristic heurData;
+		heurData.maxdepth = 4; // maximum depth
+		heurData.mintricnt = 5; // minimum triangle count
+		heurData.tartricnt = 10; // target triangle count
+		heurData.minerror = 0.5f; // minimum error required
+		heurData.storePrimitives = true;
+		Vector<Triangle*> tris;
+		for (auto& t : *floorMesh->getTriangles()) {
+			Vector3 points[3];
+			points[0] = t->getVertex(0);
+			points[1] = t->getVertex(1);
+			points[2] = t->getVertex(2);
+
+			tris.add(new Triangle(points));
+		}
+
+		aabbTree = new AABBTree(tris, 0, heurData, false);
 	}
 
 	iffStream->closeChunk();

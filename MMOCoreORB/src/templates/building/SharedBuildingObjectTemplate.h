@@ -8,6 +8,7 @@
 #ifndef SHAREDBUILDINGOBJECTTEMPLATE_H_
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
+#include "pathfinding/RecastNavMesh.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "templates/ChildCreatureObject.h"
 #include "templates/building/SignTemplate.h"

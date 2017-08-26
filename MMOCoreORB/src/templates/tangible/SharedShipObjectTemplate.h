@@ -13,6 +13,18 @@
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;
 	StringParam cockpitFilename;
+    String shipName;
+    String booster;
+    String capacitor;
+    String weapon;
+    String engine;
+    String reactor;
+    String countermeasures;
+    String droidinterface;
+    VectorMap<uint64, String> shields;
+    VectorMap<uint64, String> armor;
+    VectorMap<uint64, String> weapons;
+    
 	BoolParam hasWings;
 	BoolParam playerControlled;
 public:
@@ -26,7 +38,11 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
-	}
+    }
+    
+    String getShipName() {
+        return shipName;
+    }
 
 	void parseVariableData(const String& varName, Chunk* data) {
 		if (varName == "interiorLayoutFileName") {
@@ -39,7 +55,19 @@ public:
 			playerControlled.parse(data);
 		}
 	}
-
+    
+    void loadMap(LuaObject& luaObj, VectorMap<uint64, String>& dest) {
+        if (dest.size() != 0) {
+            dest.removeAll();
+        }
+        
+        for (int i = 1; i <= luaObj.getTableSize(); ++i) {
+            String temp = luaObj.getStringAt(i);
+            if (!temp.isEmpty())
+                dest.put(i, temp);
+        }
+    }
+    
 	void parseFileData(IffStream* iffStream) {
 		iffStream->openChunk('PCNT');
 

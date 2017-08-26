@@ -43,6 +43,8 @@
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
 #include "templates/appearance/AppearanceTemplate.h"
+#include "pathfinding/RecastNavMesh.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -50,6 +52,9 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 	updatePaidAccessList();
 	registeredPlayerIdList.removeAll();
+    SharedBuildingObjectTemplate *templ = dynamic_cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
+
+    interiorNavMesh = NavMeshManager::instance()->getBuildingMesh(templ);
 }
 
 void BuildingObjectImplementation::loadTemplateData(

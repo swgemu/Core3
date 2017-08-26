@@ -9,6 +9,7 @@
 #define PATHFINDERMANAGER_H_
 
 #include "server/zone/objects/scene/WorldCoordinates.h"
+#include "pathfinding/RecastNavMesh.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "pathfinding/recast/DetourNavMeshQuery.h"
 
@@ -88,6 +89,9 @@ private:
 	dtQueryFilter m_filter;
 	dtQueryFilter m_spawnFilter;
 	ThreadLocal<dtNavMeshQuery*> m_navQuery;
+
+    bool getPathFromMesh(RecastNavMesh *navMesh, const Vector3 &startPosition, const Vector3 &targetPosition,
+                    Vector<WorldCoordinates> *path, float &len, bool allowPartial);
 };
 
 #endif /* PATHFINDERMANAGER_H_ */

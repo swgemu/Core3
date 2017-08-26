@@ -29,6 +29,7 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "templates/ChildObject.h"
 #include "templates/appearance/MeshAppearanceTemplate.h"
@@ -1806,7 +1807,7 @@ SceneObject* SceneObject::asSceneObject() {
 }
 
 CreatureObject* SceneObjectImplementation::asCreatureObject() {
-	return nullptr;
+    return nullptr;
 }
 
 CreatureObject* SceneObject::asCreatureObject() {

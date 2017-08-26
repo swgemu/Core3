@@ -24,9 +24,13 @@ import engine.util.u3d.Matrix4;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
+include pathfinding.RecastNavMesh;
 
 
 class BuildingObject extends StructureObject {
+
+    protected transient RecastNavMesh interiorNavMesh;
+
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
 
@@ -428,6 +432,11 @@ class BuildingObject extends StructureObject {
 	public int getFactionBaseType() {
 		return factionBaseType;
 	}
+
+    @local
+	public RecastNavMesh getInteriorNavMesh() {
+	    return interiorNavMesh;
+    }
 
 	/**
 	 * Adds the desired sign as a child object, removing any current sign

@@ -166,41 +166,24 @@ void GuildManagerImplementation::scheduleGuildUpdates() {
 void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	info("Processing guild update for: " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + ">");
 
-	Vector<uint64> toRemove, initialMembers;
+	Vector<uint64> toRemove;
 
 	// Check that members still exist
 	for (int i = 0; i < guild->getTotalMembers(); i++) {
 		uint64 memberID = guild->getMember(i);
+		ManagedReference<CreatureObject*> member = server->getObject(memberID).castTo<CreatureObject*>();
 
-		initialMembers.add(memberID);
-	}
+		if (member == NULL) {
+			toRemove.add(memberID);
 
-	guild->unlock();
-
-	try {
-		for (const auto& memberID : initialMembers) {
-			bool existsPlayer = server->getPlayerManager()->existsPlayerCreatureOID(memberID);
-
-			if (!existsPlayer) {
-				toRemove.add(memberID);
-
-				if (memberID == guild->getGuildLeaderID()) {
-					Locker locker(guild);
-
-					guild->setGuildLeaderID(0);
-				}
+			if (memberID == guild->getGuildLeaderID()) {
+				guild->setGuildLeaderID(0);
 			}
 		}
-	} catch (...) {
-		guild->lock();
-
-		throw;
 	}
 
-	guild->lock();
-
 	for (int i = 0; i < toRemove.size(); i++) {
-		guild->removeMember(toRemove.getUnsafe(i));
+		guild->removeMember(toRemove.get(i));
 	}
 
 	toRemove.removeAll();
@@ -286,8 +269,6 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	}
 
 	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
-
-	info("Finished guild update for: " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + ">");
 }
 
 void GuildManagerImplementation::processGuildElection(GuildObject* guild) {

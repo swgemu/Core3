@@ -20,6 +20,7 @@ class RecastNavMesh : public Object, Logger {
 	dtNavMesh *navMesh;
 	NavMeshSetHeader header;
 	String name;
+	Mutex mutex;
 
 public:
 	RecastNavMesh() : Logger("RecastNavMesh"), header() {
@@ -57,6 +58,10 @@ public:
 	void setName(const String& name) {
 		this->name = name;
 		Logger::setLoggingName("RecastNavMesh " + name);
+	}
+
+	Mutex* getMutex() {
+		return &mutex;
 	}
 
 	void setupDetourNavMeshHeader();

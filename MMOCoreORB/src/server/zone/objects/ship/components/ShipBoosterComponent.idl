@@ -1,0 +1,32 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+
+class ShipBoosterComponent extends ShipComponent {
+
+    float energyConsumptionRate;
+    float boosterAcceleration;
+    float boosterEnergy;
+    float boosterRechargeRate;
+    float boosterSpeed;
+
+    public ShipBoosterComponent() {
+    }
+
+    @local
+    public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+    @local
+    @dirty
+    public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+    public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}

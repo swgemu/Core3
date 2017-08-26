@@ -48,6 +48,13 @@ public:
 			Vector3 result;
 			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
 		}
+        
+        if (command == "hash") {
+            String word;
+            tokenizer.getStringToken(word);
+            Logger logger;
+            logger.info("Hash of " + word + " is " + String::hexvalueOf((int64)word.hashCode()), true);
+        }
 		if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 

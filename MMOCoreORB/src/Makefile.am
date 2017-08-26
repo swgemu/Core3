@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
-DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -fsanitize=thread -Werror -std=c++11 -march=native
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
@@ -79,7 +79,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 core3client #odb3
 
-libcore3pathfinding_a_CXXFLAGS = $(DEFAULT_FLAGS) -Ofast
+libcore3pathfinding_a_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 noinst_LIBRARIES = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 
 core3_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
@@ -106,7 +106,17 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/frs/FrsManager.cpp \
+core3_IDLS =	autogen/server/zone/objects/ship/components/ShipComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipArmorComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipEngineComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipBoosterComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipWeaponComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipShieldComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipCapacitorComponent.cpp \
+				autogen/server/zone/objects/ship/components/ShipReactorComponent.cpp \
+				autogen/server/zone/objects/mission/PlayerBounty.cpp \
+				autogen/server/chat/PendingMessageList.cpp \
+				autogen/server/zone/managers/frs/FrsManager.cpp \
 				autogen/server/zone/objects/tangible/misc/ContractCrate.cpp \
 				autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
@@ -460,6 +470,14 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
+        server/zone/objects/ship/components/ShipComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipWeaponComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipBoosterComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipArmorComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipCapacitorComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipShieldComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipReactorComponentImplementation.cpp \
+        server/zone/objects/ship/components/ShipEngineComponentImplementation.cpp \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
 		server/zone/objects/tangible/deed/components/PlaceStructureComponent.cpp \

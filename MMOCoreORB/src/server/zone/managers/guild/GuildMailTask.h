@@ -7,6 +7,7 @@
 
 #ifndef GUILDMAILTASK_H_
 #define GUILDMAILTASK_H_
+#include "server/zone/managers/player/PlayerManager.h"
 
 class GuildMailTask : public Task {
 	ManagedReference<GuildObject*> guild;
@@ -16,13 +17,9 @@ class GuildMailTask : public Task {
 public:
 	GuildMailTask(const String& subject, StringIdChatParameter& body,
 		GuildObject* guild) : guild(guild), body(body), subject(subject) {
-
-		setCustomTaskQueue("slowQueue");
 	}
 
 	void run() {
-		Vector<uint64> members;
-
 		Locker locker(guild);
 
 		GuildMemberList* memberList = guild->getGuildMemberList();
@@ -30,23 +27,21 @@ public:
 		if (memberList == NULL)
 			return;
 
+        PlayerManager* playerManager = guild->getZoneServer()->getPlayerManager();
+        
+        const String& guildName = guild->getGuildName();
+        
 		for (int i = 0; i < memberList->size(); ++i) {
 			GuildMemberInfo* gmi = &memberList->get(i);
 
 			if (gmi == NULL)
 				continue;
 
-			members.add(gmi->getPlayerID());
-		}
+            String name = playerManager->getPlayerName(gmi->getPlayerID());
+            if (name.isEmpty())
+                continue;
 
-		auto guildName = guild->getGuildName();
-
-		locker.release();
-
-		for (const auto& memberID : members) {
-			auto firstName = guild->getZoneServer()->getPlayerManager()->getPlayerName(memberID);
-
-			guild->getZoneServer()->getChatManager()->sendMail(guildName, subject, body, firstName);
+			guild->getZoneServer()->getChatManager()->sendMail(guildName, subject, body, name);
 		}
 	}
 };

@@ -1,0 +1,100 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.tangible.component.Component;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.ship.ShipObject;
+
+class ShipComponent extends Component {
+
+    protected float mass;
+    protected float hitpointsMax;
+    protected float armorMax;
+    protected float hitpoints;
+    protected float armor;
+    protected float energyCost;
+    protected float energyEfficiency;
+    protected float efficiency;
+
+    public ShipComponent() {
+        mass = 0.0f;
+        hitpoints = 0.0f;
+        armor = 0.0f;
+        energyCost = 0.0f;
+    }
+
+
+public void setMass(float value) {
+    mass = value;
+}
+
+public void setEnergyCost(float value) {
+energyCost = value;
+}
+
+public void setEnergyEfficiency(float value) {
+energyEfficiency = value;
+}
+
+public void setEfficiency(float value) {
+efficiency = value;
+}
+
+public void setHitpointsMax(float value) {
+hitpointsMax = value;
+}
+
+public void setArmorMax(float value) {
+armorMax = value;
+}
+
+public void setArmor(float value) {
+armor = value;
+}
+
+public void setHitpoints(float value) {
+hitpoints = value;
+}
+public float getEfficiency() {
+return efficiency;
+}
+
+public float getEnergyEfficiency() {
+return efficiency;
+}
+public float getMass() {
+    return mass;
+}
+
+public float getMaxHitpoints() {
+    return hitpointsMax;
+}
+public float getHitpoints() {
+    return hitpoints;
+}
+public float getMaxArmor() {
+    return armorMax;
+}
+
+public float getArmor() {
+    return armor;
+}
+
+public float getEnergyCost() {
+    return energyCost;
+}
+
+    @local
+    public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+    @local
+    @dirty
+    public abstract native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+    public abstract native void install(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+}

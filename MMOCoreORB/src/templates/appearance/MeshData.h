@@ -13,24 +13,34 @@
 class MeshTriangle {
 protected:
 	int verts[3];
-
+	int areaID;
 public:
 	MeshTriangle() {
 		verts[0] = 0;
 		verts[1] = 1;
 		verts[2] = 2;
+		areaID = 0;
 	}
 
 	MeshTriangle(int a, int b, int c) {
 		verts[0] = a;
 		verts[1] = b;
 		verts[2] = c;
+		areaID = 0;
+	}
+
+	MeshTriangle(int a, int b, int c, int type) {
+		verts[0] = a;
+		verts[1] = b;
+		verts[2] = c;
+		areaID = type;
 	}
 
 	MeshTriangle(const MeshTriangle& mesh) {
 		verts[0] = mesh.verts[0];
 		verts[1] = mesh.verts[1];
 		verts[2] = mesh.verts[2];
+		areaID = mesh.areaID;
 	}
 
 	const int* getVerts() const {
@@ -39,6 +49,14 @@ public:
 
 	const int* getVerts() {
 		return verts;
+	}
+
+	void setAreaID(int id) {
+		areaID = id;
+	}
+
+	int getAreaID() const {
+		return areaID;
 	}
 
 	void set(uint8 index, uint32 value) {

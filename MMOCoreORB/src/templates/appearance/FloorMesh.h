@@ -244,6 +244,8 @@ public:
 
 	Vector <Reference<MeshData*>> getTransformedMeshData(const Matrix4& parentTransform) const;
 
+	Vector <Reference<MeshData*>> getLocalMeshData() const;
+
 	Vector<TriangleNode*>* getNeighbors(uint32 triangleID);
 
 	TriangleNode* findNearestTriangle(const Vector3& point);
@@ -263,6 +265,10 @@ public:
 	inline int getTriangleCount() {
 		return tris.size();
 	}
+
+    inline const Vector<FloorMeshTriangleNode*>* getTriangles() const {
+        return &tris;
+    }
 
 	inline AABBTree* getAABBTree() {
 		return aabbTree;

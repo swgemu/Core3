@@ -47,6 +47,8 @@ public:
 		return pathGraph;
 	}
 
+	int cellFromPosition(const Vector3& pos);
+
 	void readPortalGeometry0003(IffStream *iff, int numPortals);
 	void readPortalGeometry0004(IffStream *iff, int numPortals);
 

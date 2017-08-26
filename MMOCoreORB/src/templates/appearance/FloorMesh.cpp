@@ -423,8 +423,8 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 		vertices->emplace(end.getX(), end.getY() + BARRIER_HEIGHT, end.getZ());
 
 		int ind = vertices->size() - 1;
-		triangles->emplace(ind - 1, ind - 2, ind - 3);
-		triangles->emplace(ind, ind - 2, ind - 1);
+		triangles->emplace(ind - 1, ind - 2, ind - 3, cellID);
+		triangles->emplace(ind, ind - 2, ind - 1, cellID);
 	}
 
 	Vector<Reference<MeshData*>> meshData;
@@ -454,6 +454,62 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 
 	meshData.emplace(std::move(floorData));
 #endif
+
+	return meshData;
+}
+
+Vector <Reference<MeshData*>> FloorMesh::getLocalMeshData() const {
+	Vector<Reference<MeshData*>> meshData;
+	Reference<MeshData*> edgeData = new MeshData();
+	{
+		Vector<Vector3> *vertices = edgeData->getVerts();
+		Vector<MeshTriangle> *triangles = edgeData->getTriangles();
+
+		for (const auto &edge : uncrossableEdges) {
+			const auto &tri = tris.get(edge.getTriangleID());
+			int startIndex = edge.getEdgeID() % 3;
+
+			Vector3 start = tri->getVertex(startIndex);
+			Vector3 end = tri->getVertex(startIndex < 2 ? startIndex + 1 : 0);
+
+			//negate z + transform
+			start.setZ(-start.getZ());
+
+			end.setZ(-end.getZ());
+
+			vertices->add(start);
+			vertices->add(end);
+			vertices->emplace(start.getX(), start.getY() + BARRIER_HEIGHT, start.getZ());
+			vertices->emplace(end.getX(), end.getY() + BARRIER_HEIGHT, end.getZ());
+
+			int ind = vertices->size() - 1;
+			triangles->emplace(ind - 1, ind - 2, ind - 3);
+			triangles->emplace(ind, ind - 2, ind - 1);
+		}
+		meshData.emplace(std::move(edgeData));
+	}
+
+	Reference<MeshData*> floorData = new MeshData();
+
+	Vector<Vector3>* floorVertices = floorData->getVerts();
+	floorVertices->removeAll(this->vertices.size() + 1);
+
+	Vector<MeshTriangle>* floorTriangles = floorData->getTriangles();
+	floorTriangles->removeAll(tris.size() + 1);
+
+	for (const auto& vert : this->vertices) {
+		Vector3 transformedVert = vert;
+
+		transformedVert.setZ(-transformedVert.getZ());
+
+		floorVertices->add(transformedVert);
+	}
+
+	for (const auto& tri : tris) {
+		floorTriangles->emplace(tri->getIndex(0), tri->getIndex(1), tri->getIndex(2));
+	}
+
+	meshData.emplace(std::move(floorData));
 
 	return meshData;
 }

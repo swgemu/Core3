@@ -30,6 +30,8 @@ public:
 
 	void parse(IffStream* iffStream);
 
+	const AppearanceTemplate* getFirstMesh() const { return firstMesh; }
+
 	virtual bool testCollide(const Sphere& testsphere) const {
 		return firstMesh->testCollide(testsphere);
 	}

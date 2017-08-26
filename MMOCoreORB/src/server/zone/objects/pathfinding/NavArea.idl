@@ -3,13 +3,13 @@
 		See file COPYING for copying conditions.*/
 
 package server.zone.objects.pathfinding;
-
+include pathfinding.RecastNavMesh;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.scene.SceneObject;
 import engine.util.u3d.AABB;
 import engine.util.u3d.Vector3;
 import system.thread.ReadWriteLock;
-include pathfinding.RecastNavMesh;
+
 include system.util.HashSet;
 
 class NavArea extends ActiveArea {

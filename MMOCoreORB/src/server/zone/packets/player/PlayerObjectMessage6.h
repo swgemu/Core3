@@ -15,9 +15,9 @@ public:
 
 		insertInt(0);
 
-		uint8 privFlag = play->getPriviledgeFlag();
+		uint8 adminFlag = play->getAdminLevel();
 
-		insertByte(privFlag);  //Developer/CSR Flag
+		insertByte(adminFlag);  //Developer/CSR Flag
 
 		setSize();
 	}

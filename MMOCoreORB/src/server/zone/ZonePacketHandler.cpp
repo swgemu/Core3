@@ -93,7 +93,7 @@
 #include "packets/trade/GiveMoneyMessageCallback.h"
 
 #include "packets/ship/ShipUpdateTransformCallback.h"
-
+#include "packets/jtl/CreateProjectileMessage.h"
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServer* serv) : Logger(s) {
@@ -171,6 +171,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatBanFromRoomCallback>(0xD9FA0194);
 	messageCallbackFactory.registerObject<ChatUnbanFromRoomCallback>(0x4C8F94A9);
 	messageCallbackFactory.registerObject<ChatDeleteAllPersistentMessagesCallback>(0x8B1E8E72);
+	messageCallbackFactory.registerObject<CreateProjectileMessageCallback>(STRING_HASHCODE("CreateProjectileMessage"));
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {

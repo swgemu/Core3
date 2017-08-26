@@ -12,7 +12,7 @@
 
 class PermissionLevel : public Object{
 protected:
-	int permissionLevel, priviledgeFlag;
+	int permissionLevel;
 	String name;
 	UnicodeString tag;
 	Vector<String> skillList;
@@ -20,14 +20,12 @@ protected:
 public:
 	PermissionLevel() {
 		permissionLevel = 0;
-		priviledgeFlag = 0;
 	}
 
-	PermissionLevel(int staffLev, String levelName, String staffTag, int flag, Vector<String> skills) : Object() {
+	PermissionLevel(int staffLev, String levelName, String staffTag, Vector<String> skills) : Object() {
 		permissionLevel = staffLev;
 		name = levelName;
 		tag = staffTag;
-		priviledgeFlag = flag;
 		skillList = skills;
 	}
 
@@ -37,17 +35,12 @@ public:
 	PermissionLevel(const PermissionLevel& al) : Object() {
 		permissionLevel = al.permissionLevel;
 		tag  = al.tag;
-		priviledgeFlag = al.priviledgeFlag;
 		skillList = al.skillList;
 		name = al.name;
 	}
 
 	int getPermissionLevel() {
 		return permissionLevel;
-	}
-
-	int getPriviledgeFlag() {
-		return priviledgeFlag;
 	}
 
 	String getName() {
@@ -114,14 +107,12 @@ public:
 
 		String tag = luaLevel->getStringField("tag");
 
-		int priviledgeFlag = luaLevel->getIntField("flag");
-
 		LuaObject skillsTable = luaLevel->getObjectField("skills");
 		for(int i = 1; i <= skillsTable.getTableSize(); ++i) {
 			skills.add(skillsTable.getStringAt(i));
 		}
 		skillsTable.pop();
-		put(levelNum, new PermissionLevel(levelNum, name, tag, priviledgeFlag, skills));
+		put(levelNum, new PermissionLevel(levelNum, name, tag, skills));
 		permissionNames.put(name, levelNum);
 	}
 
@@ -137,13 +128,6 @@ public:
 			return NULL;
 		else
 			return get(permissionLevel)->getSkillList();
-	}
-
-	int getPriviledgeFlag(uint32 permissionLevel) {
-		if(!contains(permissionLevel))
-			return 0;
-		else
-			return get(permissionLevel)->getPriviledgeFlag();
 	}
 
 	int getLevelNumber(String name) {

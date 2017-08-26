@@ -815,7 +815,14 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	for (int i = 0; i < citizens->size(); ++i) {
 		uint64 oid = citizens->get(i);
 
-		task->addCitizen(oid);
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(oid);
+
+		if (obj == NULL || !obj->isPlayerCreature())
+			continue;
+
+		CreatureObject* citizen = obj.castTo<CreatureObject*> ();
+
+		task->addCitizen(citizen);
 	}
 
 	task->execute();

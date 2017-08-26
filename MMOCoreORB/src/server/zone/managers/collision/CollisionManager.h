@@ -74,8 +74,9 @@ public:
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);
 
 	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);
-
-	static bool checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint);
+	static bool checkShipWeaponCollision(ShipObject* ship, const Vector3 startPosition, const Vector3& targetPosition, Vector3& collisionPoint, Vector<ManagedReference<SceneObject*> >& collidedObjects);
+	static Matrix4 Inverse(Matrix4 mat);
+		static bool checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint);
 
 };
 

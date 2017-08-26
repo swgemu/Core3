@@ -348,3 +348,19 @@ uint32 PortalLayout::loadCRC(IffStream* iffStream) {
 
 	return crc;
 }
+int PortalLayout::cellFromPosition(const Vector3& pos) {
+	Vector3 flipped = Vector3(pos.getX(), pos.getZ(), pos.getY());
+	float dist;
+	Triangle *tri;
+	Sphere sphere(flipped, 3.0f);
+	Ray ray(flipped, flipped - (Vector3(0, 15, 0)));
+	for(int i=1; i<cellProperties.size(); i++) {
+		auto& cell = cellProperties.get(i);
+//		if(cell->getAABBTree()->intersects(ray, 15, dist, tri, true)) {
+//			return i;
+//		}
+		if (cell->getAABBTree()->testCollide(sphere))
+			return i;
+	}
+	return -1;
+}
