@@ -301,6 +301,7 @@ function CorellianCorvette:spawnNpcs(pCorvette)
 			if (pMobile == nil) then
 				printLuaError("CorellianCorvette:setupSceneObjects unable to spawn mobile " .. spawnData[1] .. " for " .. corvetteFaction .. " corvette ID " .. corvetteID)
 			else
+				CreatureObject(pMobile):setOptionBit(IGNORE_FACTION_STANDING)
 				if (spawnData[7] ~= nil and spawnData[7] ~= "") then
 					createEvent(100, "CorellianCorvette", spawnData[7], pMobile, "")
 				end
