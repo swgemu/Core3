@@ -86,7 +86,7 @@ protected:
 	rcPolyMesh* m_pmesh;
 	rcPolyMeshDetail* m_dmesh;
 	rcConfig m_cfg;
-
+	AABBTree *tree;
 	int m_maxTiles;
 	int m_maxPolysPerTile;
 	Reference<MeshData*> m_geom;

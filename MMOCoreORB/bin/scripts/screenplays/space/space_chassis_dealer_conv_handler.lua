@@ -6,7 +6,6 @@ chassis_dealer_conv_handler = conv_handler:new {}
 
 function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
-
 	local screenID = screen:getScreenID()
 
 	if (screenID == "chassis_dealer_buy_chassis") then

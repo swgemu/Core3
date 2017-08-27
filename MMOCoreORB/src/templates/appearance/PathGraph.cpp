@@ -130,12 +130,15 @@ PathNode* PathGraph::findNearestGlobalNode(const Vector3& pointAlfa) {
 }
 
 Vector<const PathNode*> PathGraph::getEntrances() {
+    Logger logger;
 	Vector<const PathNode*> vec;
 	for (const PathNode *node : pathNodes) {
+        logger.info("PathNodeType: " + String::valueOf(node->getType()), true);
 		if(node->getType() == PathNode::BuildingEntrance) {
 			vec.add(node);
 		}
 	}
+
 	return vec;
 }
 

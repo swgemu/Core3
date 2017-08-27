@@ -23,9 +23,20 @@ class CellPortal : public Object {
 	String doorName;
 	bool transformFlag;
 	Matrix4 doorTransform;
+	int destinationCell;
+	int destinationIndex;
 public:
 
 	void readObject(IffStream *iff);
+
+	void setDestination(int cell, int portal) {
+		destinationCell = cell;
+		destinationIndex = portal;
+	}
+
+	int getDestinationCell() const {
+		return destinationCell;
+	}
 
 	bool isSolid() const {
 		return solid;
@@ -105,6 +116,10 @@ public:
 	}
 
 	const CellPortal* getPortal(int idx) const {
+		return portals.get(idx);
+	}
+
+	CellPortal* getPortal(int idx) {
 		return portals.get(idx);
 	}
 

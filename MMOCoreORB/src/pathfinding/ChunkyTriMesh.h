@@ -30,11 +30,12 @@ struct rcChunkyTriMeshNode
 struct rcChunkyTriMesh
 {
 	inline rcChunkyTriMesh() : nodes(0), nnodes(0), tris(0), ntris(0), maxTrisPerChunk(0) {};
-	inline ~rcChunkyTriMesh() { delete [] nodes; delete [] tris; }
+	inline ~rcChunkyTriMesh() { delete [] nodes; delete [] tris; delete[] areaFlags;}
 
 	rcChunkyTriMeshNode* nodes;
 	int nnodes;
 	int* tris;
+	int* areaFlags;
 	int ntris;
 	int maxTrisPerChunk;
 
@@ -46,7 +47,7 @@ private:
 
 /// Creates partitioned triangle mesh (AABB tree),
 /// where each node contains at max trisPerChunk triangles.
-bool rcCreateChunkyTriMesh(const float* verts, const int* tris, int ntris,
+bool rcCreateChunkyTriMesh(const float* verts, const int* tris, const int* areaFlags, int ntris,
 						   int trisPerChunk, rcChunkyTriMesh* cm);
 
 /// Returns the chunk indices which overlap the input rectable.

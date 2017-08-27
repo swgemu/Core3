@@ -423,8 +423,8 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 		vertices->emplace(end.getX(), end.getY() + BARRIER_HEIGHT, end.getZ());
 
 		int ind = vertices->size() - 1;
-		triangles->emplace(ind - 1, ind - 2, ind - 3, cellID);
-		triangles->emplace(ind, ind - 2, ind - 1, cellID);
+		triangles->emplace(ind - 1, ind - 2, ind - 3, 0);
+		triangles->emplace(ind, ind - 2, ind - 1, 0);
 	}
 
 	Vector<Reference<MeshData*>> meshData;
@@ -483,8 +483,8 @@ Vector <Reference<MeshData*>> FloorMesh::getLocalMeshData() const {
 			vertices->emplace(end.getX(), end.getY() + BARRIER_HEIGHT, end.getZ());
 
 			int ind = vertices->size() - 1;
-			triangles->emplace(ind - 1, ind - 2, ind - 3);
-			triangles->emplace(ind, ind - 2, ind - 1);
+			triangles->emplace(ind - 1, ind - 2, ind - 3, 0);
+			triangles->emplace(ind, ind - 2, ind - 1, 0);
 		}
 		meshData.emplace(std::move(edgeData));
 	}
@@ -506,7 +506,7 @@ Vector <Reference<MeshData*>> FloorMesh::getLocalMeshData() const {
 	}
 
 	for (const auto& tri : tris) {
-		floorTriangles->emplace(tri->getIndex(0), tri->getIndex(1), tri->getIndex(2));
+		floorTriangles->emplace(tri->getIndex(0), tri->getIndex(1), tri->getIndex(2), 63);
 	}
 
 	meshData.emplace(std::move(floorData));

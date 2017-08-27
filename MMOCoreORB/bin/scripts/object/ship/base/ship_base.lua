@@ -42,7 +42,14 @@
 
 
 object_ship_base_ship_base = object_ship_base_shared_ship_base:new {
-
+reactor = "rct_generic",
+engine = "eng_generic",
+shield = "shd_generic",
+capacitor = "cap_generic",
+armor = {"armor_generic", "armor_generic"},
+droidInterface = "ddi_generic",
+weapon = {"wpn_generic"},
+countermeasures = "wpn_std_countermeasure",
 }
 
 ObjectTemplates:addTemplate(object_ship_base_ship_base, "object/ship/base/ship_base.iff")

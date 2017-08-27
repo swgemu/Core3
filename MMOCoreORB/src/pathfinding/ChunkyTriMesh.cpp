@@ -72,7 +72,7 @@ inline int longestAxis(float x, float y) {
 
 static void subdivide(BoundsItem* items, int nitems, int imin, int imax, int trisPerChunk,
 					  int& curNode, rcChunkyTriMeshNode* nodes, const int maxNodes,
-					  int& curTri, int* outTris, const int* inTris) {
+					  int& curTri, int* outTris, const int* inTris, const int* inFlags, int* outFlags) {
 	int inum = imax - imin;
 	int icur = curNode;
 
@@ -96,6 +96,7 @@ static void subdivide(BoundsItem* items, int nitems, int imin, int imax, int tri
 			dst[0] = src[0];
 			dst[1] = src[1];
 			dst[2] = src[2];
+			outFlags[curTri] = inFlags[items[i].i];
 		}
 	} else {
 		// Split
@@ -115,9 +116,9 @@ static void subdivide(BoundsItem* items, int nitems, int imin, int imax, int tri
 		int isplit = imin + inum / 2;
 
 		// Left
-		subdivide(items, nitems, imin, isplit, trisPerChunk, curNode, nodes, maxNodes, curTri, outTris, inTris);
+		subdivide(items, nitems, imin, isplit, trisPerChunk, curNode, nodes, maxNodes, curTri, outTris, inTris, inFlags, outFlags);
 		// Right
-		subdivide(items, nitems, isplit, imax, trisPerChunk, curNode, nodes, maxNodes, curTri, outTris, inTris);
+		subdivide(items, nitems, isplit, imax, trisPerChunk, curNode, nodes, maxNodes, curTri, outTris, inTris, inFlags, outFlags);
 
 		int iescape = curNode - icur;
 		// Negative index means escape.
@@ -125,7 +126,7 @@ static void subdivide(BoundsItem* items, int nitems, int imin, int imax, int tri
 	}
 }
 
-bool rcCreateChunkyTriMesh(const float* verts, const int* tris, int ntris,
+bool rcCreateChunkyTriMesh(const float* verts, const int* tris, const int* areaFlags, int ntris,
 						   int trisPerChunk, rcChunkyTriMesh* cm) {
 	int nchunks = (ntris + trisPerChunk - 1) / trisPerChunk;
 
@@ -136,6 +137,12 @@ bool rcCreateChunkyTriMesh(const float* verts, const int* tris, int ntris,
 	cm->tris = new int[ntris * 3];
 	if (!cm->tris)
 		return false;
+
+	cm->areaFlags = new int[ntris+1];
+	if (!cm->areaFlags)
+		return false;
+
+	cm->areaFlags[ntris] = 30;
 
 	cm->ntris = ntris;
 
@@ -163,7 +170,7 @@ bool rcCreateChunkyTriMesh(const float* verts, const int* tris, int ntris,
 
 	int curTri = 0;
 	int curNode = 0;
-	subdivide(items, ntris, 0, ntris, trisPerChunk, curNode, cm->nodes, nchunks * 4, curTri, cm->tris, tris);
+	subdivide(items, ntris, 0, ntris, trisPerChunk, curNode, cm->nodes, nchunks * 4, curTri, cm->tris, tris, areaFlags, cm->areaFlags);
 
 	delete[] items;
 

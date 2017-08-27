@@ -42,7 +42,15 @@
 
 
 object_ship_basic_z95 = object_ship_shared_basic_z95:new {
-
+    reactor = "rct_z95_basic",
+    engine = "eng_z95_basic",
+    shield = "shd_z95_basic",
+    capacitor = "cap_z95_basic",
+    armor = {"armor_z95_basic", "armor_z95_basic"},
+    droidInterface = "ddi_generic",
+    weapon = {"wpn_z95_basic"},
+    countermeasures = "wpn_std_countermeasure",
+    shipName = "z95_basic"
 }
 
 ObjectTemplates:addTemplate(object_ship_basic_z95, "object/ship/basic_z95.iff")

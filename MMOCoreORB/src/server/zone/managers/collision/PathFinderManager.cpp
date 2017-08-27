@@ -422,66 +422,104 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 	return findPathFromWorldToWorld(pointA, temp, zone, true);
 }
 
+void printPath(Vector<WorldCoordinates> *path, String name) {
+    static Logger logger;
+    logger.info("Path: " + name, true);
+    for (const WorldCoordinates& point : *path) {
+        logger.info("Point: " + point.getPoint().toString() + (point.getCell() ? String::valueOf(point.getCell()->getCellNumber()) : ""), true);
+    }
+    logger.info("EndPath: " + name, true);
+}
+
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone) {
-	CellObject* targetCell = pointB.getCell();
+	CellObject *targetCell = pointB.getCell();
 
 	if (targetCell == NULL)
 		return NULL;
 
-	ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(targetCell->getParent().get().get());
+	ManagedReference<BuildingObject *> building = dynamic_cast<BuildingObject *>(targetCell->getParent().get().get());
 
 	if (building == NULL) {
 		error("building == NULL in PathFinderManager::findPathFromWorldToCell");
 		return NULL;
 	}
 
-	SharedObjectTemplate* templateObject = building->getObjectTemplate();
+	SharedObjectTemplate *templateObject = building->getObjectTemplate();
 
 	if (templateObject == NULL)
 		return NULL;
 
-	PortalLayout* portalLayout = templateObject->getPortalLayout();
+	PortalLayout *portalLayout = templateObject->getPortalLayout();
 
 	if (portalLayout == NULL)
 		return NULL;
 
 	//find nearest entrance
-	FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
+	FloorMesh *exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
 
 	if (exteriorFloorMesh == NULL)
 		return NULL;
 
-	PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
+	PathGraph *exteriorPathGraph = exteriorFloorMesh->getPathGraph();
 
-	FloorMesh* targetFloorMesh = portalLayout->getFloorMesh(targetCell->getCellNumber());
-	PathGraph* targetPathGraph = targetFloorMesh->getPathGraph();
+	FloorMesh *targetFloorMesh = portalLayout->getFloorMesh(targetCell->getCellNumber());
+	PathGraph *targetPathGraph = targetFloorMesh->getPathGraph();
 
-	Vector<const PathNode*> entrances = exteriorPathGraph->getEntrances();
+	Vector<const PathNode *> entrances = exteriorPathGraph->getEntrances();
 
 	bool found = false;
 	Vector<WorldCoordinates> entranceCoords;
 	Matrix4 transform;
 	transform.setRotationMatrix(building->getDirection()->toMatrix3());
-	transform.setTranslation(building->getPositionX(), building->getPositionY(), building->getPositionZ());
+	transform.setTranslation(building->getPositionX(), building->getPositionZ(), building->getPositionY());
 
-	Matrix4 inverse = CollisionManager::Inverse(transform);
+    Matrix4 zForward = transform;
+    zForward.setTranslation(building->getPositionX(), building->getPositionY(), building->getPositionZ());
 
-	for (const PathNode* node : entrances) {
-		const Vector3& localPos = node->getPosition();
+	Matrix4 inverse = CollisionManager::Inverse(zForward);
+
+
+    if (entrances.isEmpty()) {
+        CellProperty *cell = portalLayout->getCellProperty(0);
+        CellPortal *portal = cell->getPortal(0);
+        const PortalGeometry *geom = portalLayout->getPortalGeometryObject(portal->getGeometryIndex());
+        const MeshData *dat = geom->getGeometry();
+        const auto& verts = dat->getVerts();
+        const auto& tris = dat->getTriangles();
+        const auto& tri = tris->get(0);
+        const int* v = tri.getVerts();
+
+        Vector3 points[3] = {verts->get(v[0]), verts->get(v[1]), verts->get(v[2])};
+        Vector3 normal = (points[0] - points[1]).crossProduct(points[0]-points[2]);
+        normal.normalize();
+
+        Vector3 position = geom->getBoundingBox().center();
+        position = (position + (normal * 1.5f)) * transform;
+        entranceCoords.add(WorldCoordinates(Vector3(position[0], position[2], position[1]), NULL));
+    }
+
+	for (const PathNode *node : entrances) {
+		const Vector3 &localPos = node->getPosition();
 		Vector3 worldPos = localPos * transform;
 		entranceCoords.add(WorldCoordinates(worldPos, NULL));
 	}
 
-	Vector<WorldCoordinates>* path = findPathFromWorldToWorld(pointA, entranceCoords, zone, false);
+    printPath(&entranceCoords, "WorldToCell: Entrances");
 
+	Vector<WorldCoordinates> *path = findPathFromWorldToWorld(pointA, entranceCoords, zone, false);
 
-	Vector3 localStart = path->get(path->size()-1).getPoint() * inverse;
+    printPath(path, "WorldToCell: World Path");
 
-	int cellIndex = portalLayout->cellFromPosition(localStart);
+	const Vector3& worldEnd = path->get(path->size() - 1).getPoint();
+	Vector3 worldEndLocalCoords = worldEnd * inverse;
+
+	int cellIndex = portalLayout->cellFromPosition(worldEndLocalCoords);
 	CellObject *cell = building->getCell(portalLayout->getCellProperty(cellIndex)->getName());
 
-	WorldCoordinates cellStart(localStart, cell);
-	Vector<WorldCoordinates>* interiorPath = findPathFromCellToCell(cellStart, pointB);
+	WorldCoordinates cellStart(Vector3(worldEndLocalCoords[0], worldEndLocalCoords[2], worldEndLocalCoords[1]), cell);
+	Vector<WorldCoordinates> *interiorPath = findPathFromCellToCell(cellStart, pointB);
+
+    printPath(interiorPath, "WorldToCell: Interior Path");
 	path->addAll(*interiorPath);
 	delete interiorPath;
 

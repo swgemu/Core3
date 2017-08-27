@@ -283,12 +283,19 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		const rcChunkyTriMeshNode& node = chunkyMesh->nodes[cid[i]];
 		const int* ctris = &chunkyMesh->tris[node.i * 3];
 		const int nctris = node.n;
+        const int* areas = &chunkyMesh->areaFlags[node.i];
 
 		m_tileTriCount += nctris;
 
 		memset(m_triareas, 0, nctris * sizeof(unsigned char));
 		rcMarkWalkableTriangles(m_ctx, m_cfg.walkableSlopeAngle,
 								verts, nverts, ctris, nctris, m_triareas);
+
+//        for (int i=0; i<nctris; i++) {
+//            if (areas[i] != 0 && areas[i] != 63) {
+//                m_triareas[i] = areas[i];
+//            }
+//        }
 
 		if (!rcRasterizeTriangles(m_ctx, verts, nverts, ctris, m_triareas, nctris, *m_solid, m_cfg.walkableClimb)) {
 			delete[] verts;
@@ -467,7 +474,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 
 		// Update poly flags from areas.
 		for (int i = 0; i < m_pmesh->npolys; ++i) {
-			if (m_pmesh->areas[i] == RC_WALKABLE_AREA)
+			if (m_pmesh->areas[i] ==  RC_WALKABLE_AREA)
 				m_pmesh->areas[i] = SAMPLE_POLYAREA_GROUND;
 
 			if (m_pmesh->areas[i] == SAMPLE_POLYAREA_GROUND ||

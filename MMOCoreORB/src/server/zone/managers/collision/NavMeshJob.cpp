@@ -160,7 +160,29 @@ bool BuildingMeshJob::startJob() {
 //    if (layout->getCellTotalNumber() == 1)
 //        return false;
 
+    for (int i=2; i<layout->getCellTotalNumber()+1 && i<3; i++) {
+        CellProperty *cell = layout->getCellProperty(i);
+        for (int j = 0; j < cell->getNumberOfPortals(); j++) {
+            const CellPortal* portal = cell->getPortal(j);
+            Reference<MeshData*> mesh = new MeshData(*layout->getPortalGeometry(portal->getGeometryIndex()));
+            if (!portal->isWindingCCW()) {
+                auto tris = mesh->getTriangles();
+                Vector<MeshTriangle> old = *mesh->getTriangles();
+                tris->removeAll(tris->size(), 1);
+
+                for(int k=0; k<tris->size(); k++) {
+                    const auto& tri = old.get(k);
+                    const int* verts = tri.getVerts();
+                    MeshTriangle flipped(verts[2], verts[1], verts[0]);
+                    tris->add(flipped);
+                }
+            }
+            data.add(MeshData::makeCopyNegateZ(mesh, Matrix4()));
+        }
+    }
+
     for (int i=1; i<layout->getCellTotalNumber()+1; i++) {
+        CellProperty *cell = layout->getCellProperty(i);
         FloorMesh* mesh = layout->getFloorMesh(i);
         if (mesh == NULL)
             continue;
@@ -197,7 +219,7 @@ bool BuildingMeshJob::startJob() {
             }
             AppearanceTemplate *appr = childTemplate->getAppearanceTemplate();
             if (appr != NULL) {
-                data.addAll(appr->getTransformedMeshData(transform));
+                //data.addAll(appr->getTransformedMeshData(transform));
             } else {
                 logger.info("No Appearance Template " + obj, true);
             }
@@ -215,6 +237,7 @@ bool BuildingMeshJob::startJob() {
     builder->build();
 
     Locker locker(navmesh->getMutex());
+    navmesh->setName(getMeshName());
     navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
     navmesh->setDetourNavMesh(builder->getNavMesh());
     navmesh->setupDetourNavMeshHeader();

@@ -260,16 +260,18 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
 
 	int* tris = new int[triArray->size() * 3];
-	for (int i = 0; i < nverts; i++) {
+    int* areaFlags = new int[triArray->size()];
+
+    for (int i = 0; i < nverts; i++) {
 		const Vector3& vert = vertArray->get(i);
 		verts[i * 3 + 0] = vert.getX();
 		verts[i * 3 + 1] = vert.getY();
 		verts[i * 3 + 2] = vert.getZ();
 	}
 
-	for (int i = 0; i < triArray->size(); i++) {
-		memcpy(tris + (i * 3), triArray->get(i).getVerts(), sizeof(int) * 3);
-	}
+
+
+	Vector<Triangle*> aabbTriangles;
 
 	float bmin[3];
 	float bmax[3];
@@ -290,8 +292,9 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 	const float tcs = settings.m_tileSize * settings.m_cellSize;
 
 	rcChunkyTriMesh mesh;
-	rcCreateChunkyTriMesh(verts, tris, triArray->size(), 256, &mesh);
+	rcCreateChunkyTriMesh(verts, tris, areaFlags, triArray->size(), 32, &mesh);
 	const rcChunkyTriMesh* chunkyMesh = &mesh;
+
 	// Start the build process.
 
 	AtomicInteger jobStatus;
@@ -299,6 +302,7 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 
 	delete[] tris;
 	delete[] verts;
+    delete[] areaFlags;
 
 	RecastTileBuilder builder(waterTableHeight, 0, 0, lastTileBounds, chunkyMesh, settings);
 	builder.changeMesh(m_geom);
@@ -380,6 +384,7 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
 
 	int* tris = new int[triArray->size() * 3];
+    int* areaFlags = new int[triArray->size()];
 	for (int i = 0; i < nverts; i++) {
 		const Vector3& vert = vertArray->get(i);
 		verts[i * 3 + 0] = vert.getX();
@@ -388,7 +393,11 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	}
 
 	for (int i = 0; i < triArray->size(); i++) {
-		memcpy(tris + (i * 3), triArray->get(i).getVerts(), sizeof(int) * 3);
+        const auto& tri = triArray->get(i);
+		memcpy(tris + (i * 3), tri.getVerts(), sizeof(int) * 3);
+        areaFlags[i] = tri.getAreaID();
+		if (tri.getAreaID() != 63 && tri.getAreaID() != 0)
+        	info("AreaID: " + String::valueOf(tri.getAreaID()), true);
 	}
 
 	float bmin[3];
@@ -410,8 +419,9 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	const float tcs = settings.m_tileSize * settings.m_cellSize;
 
 	rcChunkyTriMesh mesh;
-	rcCreateChunkyTriMesh(verts, tris, triArray->size(), 256, &mesh);
+	rcCreateChunkyTriMesh(verts, tris, areaFlags, triArray->size(), 32, &mesh);
 	const rcChunkyTriMesh* chunkyMesh = &mesh;
+
 	// Start the build process.
 
 	AtomicInteger jobStatus;
@@ -419,6 +429,7 @@ void RecastNavMeshBuilder::buildAllTiles() {
 
 	delete[] tris;
 	delete[] verts;
+    delete[] areaFlags;
 
 	RecastTileBuilder builder(waterTableHeight, 0, 0, lastTileBounds, chunkyMesh, settings);
 	builder.changeMesh(m_geom);
@@ -587,8 +598,8 @@ Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector <Reference<Mes
 
 		for (int i = 0; i < tris->size(); i++) {
 			MeshTriangle& tri = tris->get(i);
-			newT.add(MeshTriangle(lastIndex + tri.getVerts()[2], lastIndex + tri.getVerts()[1],
-								  lastIndex + tri.getVerts()[0]));
+			newT.emplace(lastIndex + tri.getVerts()[2], lastIndex + tri.getVerts()[1],
+								  lastIndex + tri.getVerts()[0], tri.getAreaID());
 		}
 
 		lastIndex += verts->size();

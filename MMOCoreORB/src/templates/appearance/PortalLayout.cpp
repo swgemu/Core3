@@ -57,7 +57,7 @@ void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
 		Vector3 center = portal->getBoundingBox().center();
 
 		tris->removeAll(size * 2, 2);
-
+        Vector<Triangle*> aabbTris;
 		for (int i=0; i<size; i++) {
 			Vector3 &vert = verts->get(i);
 
@@ -76,8 +76,24 @@ void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
 				triB.set(1, i-1);
 				triB.set(2, i);
 				tris->add(triB);
+
+                Vector3 tempA[3] = {verts->get(i), verts->get(i-1), verts->get(0)};
+                Vector3 tempB[3] = {verts->get(0), verts->get(i-1), verts->get(i)};
+                aabbTris.add(new Triangle(tempA));
+                aabbTris.add(new Triangle(tempB));
+
 			}
 		}
+
+        AABBTreeHeuristic heurData;
+        heurData.maxdepth = 4; // maximum depth
+        heurData.mintricnt = 5; // minimum triangle count
+        heurData.tartricnt = 10; // target triangle count
+        heurData.minerror = 0.5f; // minimum error required
+        heurData.storePrimitives = true;
+
+        portal->setCollisionTree(new AABBTree(aabbTris, 0, heurData, false));
+
 		portalGeometry.add(portal);
 	}
 }
@@ -138,13 +154,27 @@ void PortalLayout::readPortalGeometry0004(IffStream *iff, int numPortals) {
 		uint32 numIdx = indxChunk->getChunkSize() / 12;
 
 		tris->removeAll(numIdx);
+        Vector<Triangle*> aabbTris;
 
 		for (int i=0; i<numIdx; i++) {
 			int a = iff->getInt();
 			int b = iff->getInt();
 			int c = iff->getInt();
 			tris->add(MeshTriangle(c, b, a));
-		}
+            Vector3 tempA[3] = {verts->get(c), verts->get(b), verts->get(a)};
+            aabbTris.add(new Triangle(tempA));
+
+        }
+
+
+        AABBTreeHeuristic heurData;
+        heurData.maxdepth = 4; // maximum depth
+        heurData.mintricnt = 5; // minimum triangle count
+        heurData.tartricnt = 10; // target triangle count
+        heurData.minerror = 0.5f; // minimum error required
+        heurData.storePrimitives = true;
+
+        portal->setCollisionTree(new AABBTree(aabbTris, 0, heurData, false));
 
 		iff->closeChunk('INDX');
 		iff->closeForm('0000');
@@ -217,6 +247,33 @@ void PortalLayout::parse(IffStream* iffStream) {
 		err += iffStream->getFileName();
 		error(err);
 	}
+
+    for (int i=0; i<cellProperties.size(); i++) {
+        CellProperty *cell = cellProperties.get(i);
+        for (int j=0; j<cell->getNumberOfPortals(); j++) {
+            CellPortal *portalA = cell->getPortal(j);
+            if (portalA->isWindingCCW())
+                continue;
+
+            int idx = portalA->getGeometryIndex();
+            bool found = false;
+            for (int x=0; x<cellProperties.size(); x++) {
+                if (x == i)
+                    continue;
+                CellProperty *cell = cellProperties.get(x);
+                for (int z=0; z<cell->getNumberOfPortals(); z++) {
+                    const CellPortal *portalB = cell->getPortal(z);
+                    if (idx == portalB->getGeometryIndex()) {
+                        portalA->setDestination(cell->getCellID(), z);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    break;
+            }
+        }
+    }
 
 	connectFloorMeshGraphs();
 }

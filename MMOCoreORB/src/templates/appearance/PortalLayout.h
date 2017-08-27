@@ -19,14 +19,23 @@
 class PortalGeometry : public Object {
 	Reference<MeshData*> geometry;
 	AABB boundingBox;
+	AABBTree *collisionTree;
 public:
 	PortalGeometry() : geometry(new MeshData()), boundingBox(Vector3(0, 0, 0), Vector3(0, 0, 0)) { }
 
-	MeshData* getGeometry() {
+	AABBTree *getCollisionTree() const {
+		return collisionTree;
+	}
+
+	void setCollisionTree(AABBTree *t) {
+		collisionTree = t;
+	}
+
+	MeshData* getGeometry() const {
 		return geometry;
 	}
 
-	const AABB& getBoundingBox() {
+	const AABB& getBoundingBox() const{
 		return boundingBox;
 	}
 
@@ -97,7 +106,11 @@ public:
 		return cellProperties.size();
 	}
 
-	inline const MeshData* getPortalGeometry(int idx) {
+	inline const PortalGeometry* getPortalGeometryObject(int idx) const {
+		return portalGeometry.get(idx);
+	}
+
+	inline const MeshData* getPortalGeometry(int idx) const {
 		return portalGeometry.get(idx)->getGeometry();
 	}
 
