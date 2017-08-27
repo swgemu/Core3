@@ -2804,7 +2804,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		// for players, we are only an enemy if the standing is less than -3000, but we are
 		// forced to non-aggressive status if the standing is over 3000, otherwise use the
 		// pvpStatusBitmask to determine aggressiveness
-		if (target->isPlayerCreature() && ghost != NULL) {
+		if (target->isPlayerCreature() && ghost != NULL && !(getOptionsBitmask() & CreatureFlag::IGNORE_FACTION_STANDING)) {
 			float targetsStanding = ghost->getFactionStanding(factionString);
 
 			if (targetsStanding <= -3000)
