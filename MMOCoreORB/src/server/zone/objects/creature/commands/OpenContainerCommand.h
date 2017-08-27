@@ -74,12 +74,29 @@ public:
 
 */
 
-		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
-		if(container != NULL && container->isContainerLocked()) {
-			creature->sendSystemMessage("@slicing/slicing:locked");
-			return SUCCESS;
-		}
+		if (!CollisionManager::checkLineOfSight(creature, objectToOpen))
+			return GENERALERROR;
 
+		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
+		if(container != NULL) {
+			if (container->isContainerLocked()) {
+				creature->sendSystemMessage("@slicing/slicing:locked");
+				return SUCCESS;
+			}
+
+			uint64 containerParentID = container->getParentID();
+
+			if (containerParentID != 0 && containerParentID != creature->getParentID()) {
+				Reference<CellObject*> targetCell = container->getParent().get().castTo<CellObject*>();
+
+				if (targetCell != NULL) {
+					ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+					if (!perms->hasInheritPermissionsFromParent() && !targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
+						return GENERALERROR;
+				}
+			}
+		}
 
 		if (objectToOpen->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
 
