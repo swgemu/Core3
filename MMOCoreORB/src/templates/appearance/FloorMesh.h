@@ -287,6 +287,8 @@ public:
 		return bary.squaredDistanceTo(bary2);
 	}
 
+	Vector<Reference<MeshData*> > getLocalMeshData() const;
+
 	friend class FloorMeshTriangleNode;
 };
 

@@ -43,6 +43,13 @@ public:
 			if (tokenizer.hasMoreTokens()) {
 				z = tokenizer.getFloatToken();
 				parentID = tokenizer.getLongToken();
+
+				ManagedReference<CellObject*> cell = Core::getObjectBroker()->lookUp(parentID).castTo<CellObject*>();
+				if (cell != NULL) {
+					Vector3 point(x, z, y);
+					CollisionManager::convertToModelSpace(point, cell->getParent().get());
+					Reference<Vector<float>*> collisions =  CollisionManager::getCellFloorCollision(point.getX(), point.getZ(), cell);
+				}
 			} else {
 				Zone* newZone = creature->getZoneServer()->getZone(zoneName);
 

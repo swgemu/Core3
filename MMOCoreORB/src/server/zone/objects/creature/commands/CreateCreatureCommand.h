@@ -183,6 +183,8 @@ public:
 
 		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
 
+		npc->sendBaselinesTo(creature);
+
 		if (scale > 0 && scale != 1.0)
 			npc->setHeight(scale);
 

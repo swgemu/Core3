@@ -101,7 +101,7 @@ void CellProperty::loadVersion5(IffStream* iffStream) {
 		iffStream->getString(floorFile);
 		floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
 		floorMesh->setCellID(cellID);
-
+		aabbTree = floorMesh->getAABBTree();
 	}
 
 	iffStream->closeChunk();
@@ -153,7 +153,7 @@ void CellProperty::loadVersion4(IffStream* iffStream) {
 		String floorFile;
 		iffStream->getString(floorFile);
 		floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
-
+		aabbTree = floorMesh->getAABBTree();
 	}
 
 	iffStream->closeChunk();

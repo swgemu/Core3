@@ -73,15 +73,19 @@ RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const
 		m_tileTriCount(0),
 		running(jobStatus),
 		header() {
-	ProceduralTerrainAppearance* pta = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance();
-	if (pta->getUseGlobalWaterTable())
-		waterTableHeight = pta->getGlobalWaterTableHeight();
-	else {
+
+	ProceduralTerrainAppearance* pta = zone ? zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance() : NULL;
+	if (pta != NULL) {
+		if (pta->getUseGlobalWaterTable())
+			waterTableHeight = pta->getGlobalWaterTableHeight();
+		else {
 #ifdef NAVMESH_DEBUG
-		info("Disabling water table for " + zone->getZoneName(), true);
+			info("Disabling water table for " + zone->getZoneName(), true);
 #endif
-		waterTableHeight = -1000.0f;
+			waterTableHeight = -1000.0f;
+		}
 	}
+
 	this->name = name;
 	this->zone = zone;
 	m_navMesh = NULL;
@@ -460,21 +464,81 @@ void RecastNavMeshBuilder::buildAllTiles() {
 
 void
 RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const AABB& bounds, float distanceBetweenHeights) {
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	if (zone) {
+		TerrainManager *terrainManager = zone->getPlanetManager()->getTerrainManager();
 
 #ifdef NAVMESH_DEBUG
-	info("Building region terrain for: " + name, true);
+		info("Building region terrain for: " + name, true);
 #endif
 
-	float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
-	assert(boundsRadius != 0.f);
+		float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
+		assert(boundsRadius != 0.f);
 
-	Vector3 center = bounds.center();
+		Vector3 center = bounds.center();
 #ifdef NAVMESH_DEBUG
-	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
+		info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
 #endif
-	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
-								distanceBetweenHeights));
+		meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
+									distanceBetweenHeights));
+
+		Vector<const Boundary*> water;
+		terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+		// Render water as polygons
+		for (const Boundary* boundary : water) {
+			const BoundaryPolygon* bPoly = dynamic_cast<const BoundaryPolygon*>(boundary);
+			const BoundaryRectangle* bRect = dynamic_cast<const BoundaryRectangle*>(boundary);
+			if (bPoly != NULL) {
+				const Vector<Point2D*>& points = bPoly->getVertices();
+
+				Reference < RecastPolygon * > poly = new RecastPolygon(points.size());
+				poly->type = SAMPLE_POLYAREA_WATER;
+
+				for (int i = points.size() - 1; i >= 0; i--) {
+					const Point2D& point = *points.get(i);
+					const float& x = point.getX();
+					const float& z = point.getY();
+
+					poly->verts[i * 3 + 0] = x;
+					poly->verts[i * 3 + 1] = bPoly->getLocalWaterTableHeight();
+					poly->verts[i * 3 + 2] = -z;
+				}
+
+				poly->hmin = -FLT_MAX;
+				poly->hmax = bPoly->getLocalWaterTableHeight();
+
+				addWater(poly);
+				continue;
+
+			} else if (bRect != NULL) {
+				Reference < RecastPolygon * > poly = new RecastPolygon(4);
+				poly->type = SAMPLE_POLYAREA_WATER;
+				float tableHeight = bRect->getLocalWaterTableHeight();
+				poly->verts[0] = bRect->getMinX();
+				poly->verts[1] = tableHeight;
+				poly->verts[2] = -bRect->getMinY();
+
+				poly->verts[3] = bRect->getMaxX();
+				poly->verts[4] = tableHeight;
+				poly->verts[5] = -bRect->getMinY();
+
+				poly->verts[6] = bRect->getMaxX();
+				poly->verts[7] = tableHeight;
+				poly->verts[8] = -bRect->getMaxY();
+
+				poly->verts[9] = bRect->getMinX();
+				poly->verts[10] = tableHeight;
+				poly->verts[11] = -bRect->getMaxY();
+
+				poly->hmin = -FLT_MAX;
+				poly->hmax = tableHeight;
+
+				addWater(poly);
+				continue;
+			} else {
+				info("BoundaryPolyCast Fail", true);
+			}
+		}
+	}
 
 	Reference < MeshData * > flattened = flattenMeshData(meshData);
 
@@ -492,63 +556,6 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 #ifdef NAVMESH_DEBUG
 	info("Building region navmesh for: " + name, true);
 #endif
-	Vector<const Boundary*> water;
-	terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
-	// Render water as polygons
-	for (const Boundary* boundary : water) {
-		const BoundaryPolygon* bPoly = dynamic_cast<const BoundaryPolygon*>(boundary);
-		const BoundaryRectangle* bRect = dynamic_cast<const BoundaryRectangle*>(boundary);
-		if (bPoly != NULL) {
-			const Vector<Point2D*>& points = bPoly->getVertices();
-
-			Reference < RecastPolygon * > poly = new RecastPolygon(points.size());
-			poly->type = SAMPLE_POLYAREA_WATER;
-
-			for (int i = points.size() - 1; i >= 0; i--) {
-				const Point2D& point = *points.get(i);
-				const float& x = point.getX();
-				const float& z = point.getY();
-
-				poly->verts[i * 3 + 0] = x;
-				poly->verts[i * 3 + 1] = bPoly->getLocalWaterTableHeight();
-				poly->verts[i * 3 + 2] = -z;
-			}
-
-			poly->hmin = -FLT_MAX;
-			poly->hmax = bPoly->getLocalWaterTableHeight();
-
-			addWater(poly);
-			continue;
-
-		} else if (bRect != NULL) {
-			Reference < RecastPolygon * > poly = new RecastPolygon(4);
-			poly->type = SAMPLE_POLYAREA_WATER;
-			float tableHeight = bRect->getLocalWaterTableHeight();
-			poly->verts[0] = bRect->getMinX();
-			poly->verts[1] = tableHeight;
-			poly->verts[2] = -bRect->getMinY();
-
-			poly->verts[3] = bRect->getMaxX();
-			poly->verts[4] = tableHeight;
-			poly->verts[5] = -bRect->getMinY();
-
-			poly->verts[6] = bRect->getMaxX();
-			poly->verts[7] = tableHeight;
-			poly->verts[8] = -bRect->getMaxY();
-
-			poly->verts[9] = bRect->getMinX();
-			poly->verts[10] = tableHeight;
-			poly->verts[11] = -bRect->getMaxY();
-
-			poly->hmin = -FLT_MAX;
-			poly->hmax = tableHeight;
-
-			addWater(poly);
-			continue;
-		} else {
-			info("BoundaryPolyCast Fail", true);
-		}
-	}
 }
 
 Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector <Reference<MeshData*>>& data) {

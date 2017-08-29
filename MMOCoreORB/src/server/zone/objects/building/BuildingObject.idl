@@ -24,11 +24,13 @@ import engine.util.u3d.Matrix4;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
-
+include pathfinding.RecastNavMesh;
 
 class BuildingObject extends StructureObject {
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
+
+	protected transient RecastNavMesh interiorMesh;
 
 	protected int totalCellNumber;
 
@@ -145,6 +147,12 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native boolean isAllowedEntry(CreatureObject player);
+
+	@local
+	@dirty
+	public RecastNavMesh getInteriorNavMesh() {
+	    return interiorMesh;
+    }
 
 	/**
 	 * Checks to see if the player is CityBanned from the city

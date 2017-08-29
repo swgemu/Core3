@@ -70,7 +70,7 @@ protected:
 	int cellID;
 	Reference<BaseBoundingVolume*> boundingVolume;
 	Vector<Reference<CellPortal*> > portals;
-
+	AABBTree *aabbTree;
 public:
 	CellProperty();
 	CellProperty(int cellID);
@@ -102,6 +102,10 @@ public:
 
 	const CellPortal* getPortal(int idx) const {
 		return portals.get(idx);
+	}
+
+	const AABBTree* getAABBTree() {
+		return aabbTree;
 	}
 
 	void loadVersion4(IffStream* iffStream);

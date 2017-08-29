@@ -348,3 +348,15 @@ uint32 PortalLayout::loadCRC(IffStream* iffStream) {
 
 	return crc;
 }
+int PortalLayout::cellFromPosition(const Vector3& pos) {
+	// World (Z Up) to D3D (Z Forward)
+	Sphere sphere(Vector3(pos.getX(), pos.getZ(), pos.getY()), 3.0f);
+
+	for(int i=1; i<cellProperties.size(); i++) {
+		auto& cell = cellProperties.get(i);
+		const AABBTree* tree = cell->getAABBTree();
+		if (tree != NULL && tree->testCollide(sphere))
+			return i;
+	}
+	return -1;
+}

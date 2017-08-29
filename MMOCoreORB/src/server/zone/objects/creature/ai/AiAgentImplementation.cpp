@@ -1783,6 +1783,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			targetCellObject = targetCoordinateCell;
 		}
 
+		if (path->size() < 2) {
+			path = NULL;
+		}
+
 		if (path == NULL) {
 			// we weren't able to find a path, so remove this location from patrolPoints and try again with the next one
 			PatrolPoint oldPoint = patrolPoints.remove(0);

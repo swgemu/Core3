@@ -43,6 +43,7 @@
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
 #include "templates/appearance/AppearanceTemplate.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -50,6 +51,8 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 	updatePaidAccessList();
 	registeredPlayerIdList.removeAll();
+
+	interiorMesh = NavMeshManager::instance()->getBuildingMesh(templateObject.castTo<SharedBuildingObjectTemplate*>());
 }
 
 void BuildingObjectImplementation::loadTemplateData(
@@ -821,10 +824,10 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 					runInRange = false;
 				}
 
-				if (!object->isPlayerCreature()) {
-					broadcastDestroy(object, true);
-					broadcastObject(object, false);
-				}
+    //				if (!object->isPlayerCreature()) {
+    //					broadcastDestroy(object, true);
+    //					broadcastObject(object, false);
+    //				}
 			}
 
 			if (runInRange) {

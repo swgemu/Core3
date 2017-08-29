@@ -61,6 +61,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("accounts", true);
     databaseManager->loadObjectDatabase("pendingmail", true);
 	databaseManager->loadObjectDatabase("navareas", true, 0xFFFF, false);
+	databaseManager->loadObjectDatabase("buildingmeshes", true, 0xFFFF, false);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 

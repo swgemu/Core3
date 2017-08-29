@@ -26,7 +26,11 @@ public:
 		return geometry;
 	}
 
-	const AABB& getBoundingBox() {
+	const MeshData* getGeometry() const {
+		return geometry;
+	}
+
+	const AABB& getBoundingBox() const {
 		return boundingBox;
 	}
 
@@ -99,9 +103,17 @@ public:
 		return portalGeometry.get(idx)->getGeometry();
 	}
 
+	inline const PortalGeometry* getPortalGeometryObject(int idx) {
+		return portalGeometry.get(idx);
+	}
+
+	// out: AABB in D3D (Z Forward) coords
 	const AABB& getPortalBounds(int idx) {
 		return portalGeometry.get(idx)->getBoundingBox();
 	}
+
+	// in: Vector3 in world (Z up) coords
+	int cellFromPosition(const Vector3& pos);
 
 	static uint32 loadCRC(IffStream* iffStream);
 };

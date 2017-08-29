@@ -45,6 +45,8 @@ using namespace server::zone;
 
 class CollisionManager : public Singleton<CollisionManager> {
 public:
+	static Matrix4 Inverse(const Matrix4& mat);
+
 	static const AppearanceTemplate* getCollisionAppearance(SceneObject* scno, int collisionBlockFlags);
 	static Ray convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model);
 	static Vector3 convertToModelSpace(const Vector3& point, SceneObject* model);
