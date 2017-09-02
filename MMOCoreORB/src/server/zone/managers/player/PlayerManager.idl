@@ -367,6 +367,11 @@ class PlayerManager extends Observer implements Logger {
 	public void removePlayer(final string playerName) {
 		nameMap.remove(playerName);
 	}
+	
+	@dirty
+	public void removePlayer(unsigned long playerID) {
+		nameMap.remove(playerID);
+	}
 
 	@dirty
 	public boolean containsPlayer(final string playerName) {

@@ -50,6 +50,16 @@ public:
 		reverseTable.remove(oid);
 	}
 
+	void remove(uint64 oid) {
+		Locker locker(&guard);
+
+		if (reverseTable.containsKey(oid)) {
+			String name = reverseTable.get(oid);
+			names.remove(name);
+			reverseTable.remove(oid);
+		}
+	}
+
 	uint64 get(const String& name) {
 		ReadLocker locker(&guard);
 
