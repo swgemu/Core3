@@ -10,6 +10,7 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/credit/CreditManager.h"
 
 class TaxPayMailTask : public Task {
 	Vector<uint64> citizens;
@@ -36,31 +37,22 @@ public:
 
 		auto zoneServer = chatManager->getZoneServer();
 
+		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
 		for (int i = 0; i < citizens.size(); ++i) {
 			uint64 citizenOID = citizens.get(i);
 
-			ManagedReference<SceneObject*> obj = zoneServer->getObject(citizenOID);
+			String name = playerManager->getPlayerName(citizenOID);
 
-			if (obj == NULL)
+			if (name.isEmpty())
 				continue;
 
-			CreatureObject* citizen = obj->asCreatureObject();
+			params.setTO(name);
 
-			if (citizen == NULL || !citizen->isPlayerCreature())
-				continue;
-
-			Locker lock(citizen);
-
-			params.setTO(citizen->getDisplayedName());
-
-			int bank = citizen->getBankCredits();
-
-			if (bank < incomeTax) {
-				lock.release();
-
+			if (!CreditManager::subtractBankCredits(citizenOID, incomeTax)) {
 				// Failed to Pay Income Tax!
 				params.setStringId("city/city", "income_tax_nopay_body");
-				chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_subject", params, citizen->getFirstName(), NULL);
+				chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_subject", params, name, NULL);
 
 				// Citizen Failed to Pay Income Tax
 				params.setStringId("city/city", "income_tax_nopay_mayor_body");
@@ -69,13 +61,9 @@ public:
 				continue;
 			}
 
-			citizen->subtractBankCredits(incomeTax);
-
-			lock.release();
-
 			// City Income Tax Paid
 			params.setStringId("city/city", "income_tax_paid_body");
-			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_paid_subject", params, citizen->getFirstName(), NULL);
+			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_paid_subject", params, name, NULL);
 
 			totalIncome += incomeTax;
 		}
