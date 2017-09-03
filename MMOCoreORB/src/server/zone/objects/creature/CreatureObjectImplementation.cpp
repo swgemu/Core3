@@ -7,6 +7,8 @@
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreatureFlag.h"
 
+#include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -92,6 +94,10 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	currentWeather = 0;
 	currentWind = 0;
 
+	if (creditObject == NULL) {
+		creditObject = getCreditObject();
+	}
+
 	lastActionCounter = 0x40000000;
 
 	setContainerOwnerID(getObjectID());
@@ -106,8 +112,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	linkedCreature = NULL;
 	controlDevice = NULL;
 
-	bankCredits = 0;
-	cashCredits = 0;
+	bankCredits = -1;
+	cashCredits = -1;
 
 	pvpStatusBitmask = 0;
 
@@ -1274,36 +1280,16 @@ void CreatureObjectImplementation::addEncumbrance(int type, int value,
 
 void CreatureObjectImplementation::setBankCredits(int credits,
 		bool notifyClient) {
-	if (bankCredits == credits)
-		return;
 
-	bankCredits = credits;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(
-				this);
-		delta->updateBankCredits();
-		delta->close();
-
-		sendMessage(delta);
-	}
+	Locker locker(creditObject);
+	creditObject->setBankCredits(credits, notifyClient);
 }
 
 void CreatureObjectImplementation::setCashCredits(int credits,
 		bool notifyClient) {
-	if (cashCredits == credits)
-		return;
 
-	cashCredits = credits;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(
-				this);
-		delta->updateCashCredits();
-		delta->close();
-
-		sendMessage(delta);
-	}
+	Locker locker(creditObject);
+	creditObject->setCashCredits(credits, notifyClient);
 }
 
 void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
@@ -1998,19 +1984,11 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 }
 
 void CreatureObjectImplementation::subtractBankCredits(int credits) {
-	int newCredits = bankCredits - credits;
-
-	assert(newCredits >= 0);
-
-	setBankCredits(newCredits);
+	CreditManager::subtractBankCredits(getObjectID(), credits);
 }
 
 void CreatureObjectImplementation::subtractCashCredits(int credits) {
-	int newCredits = cashCredits - credits;
-
-	assert(newCredits >= 0);
-
-	setCashCredits(newCredits);
+	CreditManager::subtractCashCredits(getObjectID(), credits);
 }
 
 void CreatureObjectImplementation::notifyLoadFromDatabase() {
@@ -2029,12 +2007,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	listenToID = 0;
 	watchToID = 0;
-
-	if (cashCredits < 0)
-		cashCredits = 0;
-
-	if (bankCredits < 0)
-		bankCredits = 0;
 
 	if (isIncapacitated()) {
 
@@ -3473,4 +3445,30 @@ bool CreatureObjectImplementation::isPlayerCreature() {
 		return false;
 
 	return templateObject->isPlayerCreatureTemplate();
+}
+
+CreditObject* CreatureObjectImplementation::getCreditObject() {
+	if (creditObject)
+		return creditObject;
+
+	uint64 oid = (getObjectID() & 0x0000FFFFFFFFFFFFull);
+
+	ManagedReference<ManagedObject*> obj = ObjectManager::instance()->createObject("CreditObject", 3, "credits", oid);
+
+	if (obj == NULL) {
+		return NULL;
+	}
+
+	creditObject = obj.castTo<CreditObject*>();
+	if (creditObject == NULL) {
+		return NULL;
+	}
+
+	Locker locker(creditObject);
+	creditObject->setBankCredits(bankCredits, false);
+	creditObject->setCashCredits(cashCredits, false);
+	creditObject->setOwner(_this.getReferenceUnsafeStaticCast());
+	cashCredits = -1;
+	bankCredits = -1;
+	return creditObject;
 }
