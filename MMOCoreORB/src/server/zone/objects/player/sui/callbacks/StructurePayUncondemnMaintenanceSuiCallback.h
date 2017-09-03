@@ -6,6 +6,7 @@
 #define STRUCTUREPAYUNCONDEMNMAINTENANCESUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/managers/credit/CreditManager.h"
 
 class StructurePayUncondemnMaintenanceSuiCallback : public SuiCallback {
 public:
@@ -44,8 +45,11 @@ public:
 			return;
 		}
 
-		structure->payMaintenance(uncondemnCost, creature, false);
-
+		ManagedReference<CreditObject*> creditObj = creature->getCreditObject();
+		{
+			Locker locker(creditObj);
+			structure->payMaintenance(uncondemnCost, creditObj , false);
+		}
 		//Give the player 10 minutes to pay more maintenance before sending out new mails.
 		structure->scheduleMaintenanceTask(10 * 60);
 

@@ -271,7 +271,7 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 		StructureObject* structureObject = cast<StructureObject*>(obj.get());
 		if (structureObject != NULL) {
 			Locker sLock(obj,player);
-			structureObject->payMaintenance(maintToPay,player,true);
+			structureObject->payMaintenance(maintToPay,player->getCreditObject(),true);
 		}
 	}
 }

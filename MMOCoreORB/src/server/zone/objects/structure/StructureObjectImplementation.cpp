@@ -19,6 +19,7 @@
 #include "server/zone/managers/city/PayPropertyTaxTask.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/credit/CreditManager.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -439,24 +440,25 @@ int StructureObjectImplementation::getDecayPercentage() {
 	}
 }
 
-void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst) {
+void StructureObjectImplementation::payMaintenance(int maintenance, CreditObject* creditObj, bool cashFirst) {
 	//Pay maintenance.
+
 	int payedSoFar;
 	if (cashFirst) {
-		if (payer->getCashCredits() >= maintenance) {
-			payer->subtractCashCredits(maintenance);
+		if (creditObj->getCashCredits() >= maintenance) {
+			creditObj->subtractCashCredits(maintenance);
 		} else {
-			payedSoFar = payer->getCashCredits();
-			payer->subtractCashCredits(payedSoFar);
-			payer->subtractBankCredits(maintenance - payedSoFar);
+			payedSoFar = creditObj->getCashCredits();
+			creditObj->subtractCashCredits(payedSoFar);
+			creditObj->subtractBankCredits(maintenance - payedSoFar);
 		}
 	} else {
-		if (payer->getBankCredits() >= maintenance) {
-			payer->subtractBankCredits(maintenance);
+		if (creditObj->getBankCredits() >= maintenance) {
+			creditObj->subtractBankCredits(maintenance);
 		} else {
-			payedSoFar = payer->getBankCredits();
-			payer->subtractBankCredits(payedSoFar);
-			payer->subtractCashCredits(maintenance - payedSoFar);
+			payedSoFar = creditObj->getBankCredits();
+			creditObj->subtractBankCredits(payedSoFar);
+			creditObj->subtractCashCredits(maintenance - payedSoFar);
 		}
 	}
 	addMaintenance(maintenance);
