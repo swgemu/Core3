@@ -48,9 +48,9 @@ public:
 	void run();
 
 private:
-	void sendMailMaintenanceWithdrawnFromBank(CreatureObject* owner, StructureObject* structure);
-	void sendMailDecay(CreatureObject* owner, StructureObject* structure);
-	void sendMailCondemned(CreatureObject* owner, StructureObject* structure);
+	void sendMailMaintenanceWithdrawnFromBank(const String& creoName, StructureObject* structure);
+	void sendMailDecay(const String& creoName, StructureObject* structure);
+	void sendMailCondemned(const String& creoName, StructureObject* structure);
 
 	bool shouldBuildingBeDestroyed(StructureObject* structure);
 };
