@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/RemoveDroidStructureSuiCallback.h"
 #include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
 #include "server/zone/Zone.h"
 
 DroidMaintenanceModuleDataComponent::DroidMaintenanceModuleDataComponent() {
@@ -264,16 +265,21 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 	// we know each struct to pay and any fees applied.
 	ManagedReference<DroidObject*> droid = getDroidObject();
 
-	for(int i=0;i< assignments.size();i++) {
-		uint64 objectID = assignments.elementAt(i).getKey();
-		int maintToPay = assignments.elementAt(i).getValue();
-		ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectID);
-		StructureObject* structureObject = cast<StructureObject*>(obj.get());
-		if (structureObject != NULL) {
-			Locker sLock(obj,player);
-			structureObject->payMaintenance(maintToPay,player,true);
+	Core::getTaskManager()->executeTask([=]{
+		for(int i=0;i< assignments.size();i++) {
+			uint64 objectID = assignments.elementAt(i).getKey();
+			int maintToPay = assignments.elementAt(i).getValue();
+			ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectID);
+			StructureObject* structureObject = cast<StructureObject*>(obj.get());
+			if (structureObject != NULL) {
+				Locker locker(obj);
+				ManagedReference<CreditObject*> creditObject = player->getCreditObject();
+				Locker cross(creditObject, obj);
+
+				structureObject->payMaintenance(maintToPay, creditObject,true);
+			}
 		}
-	}
+	}, "DroidPayMaintenanceTask");
 }
 long DroidMaintenanceModuleDataComponent::calculateRunTime(const VectorMap<unsigned long long, int>& assignments, const String& localPlanet, DroidObject* droid) {
 	long duration = 0;

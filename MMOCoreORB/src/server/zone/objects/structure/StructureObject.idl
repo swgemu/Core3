@@ -13,6 +13,7 @@ include templates.SharedObjectTemplate;
 import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
 import server.zone.objects.pathfinding.NavArea;
+import server.zone.objects.creature.credits.CreditObject;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
@@ -375,7 +376,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@preLocked
 	@arg2preLocked
-	public native void payMaintenance(int maintenance, CreatureObject payer, boolean cashFirst);
+	public native void payMaintenance(int maintenance, CreditObject creditObj, boolean cashFirst);
 
 	@preLocked
 	public void setSurplusPower(int surplus) {

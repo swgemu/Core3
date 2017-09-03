@@ -14,6 +14,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/credit/CreditManager.h"
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
@@ -32,26 +34,21 @@ void StructureMaintenanceTask::run() {
 		return;
 	}
 
-	ManagedReference<CreatureObject*> owner = strongRef->getOwnerCreatureObject();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+	uint64 oid = strongRef->getOwnerObjectID();
+	String name = playerManager->getPlayerName(oid);
 
-	if (owner == NULL || !owner->isPlayerCreature()) {
-		info("Player structure has NULL owner, destroying.", true);
+	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
+
+	if (creditObj == NULL) {
+		info("Player does not have a valid credit object, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
+
 		return;
 	}
 
-	ManagedReference<PlayerObject*> ghost = owner->getPlayerObject();
-
-	if (ghost == NULL) {
+	if (name.isEmpty()) {
 		info("Player structure has NULL owner ghost, destroying.", true);
-
-		StructureManager::instance()->destroyStructure(strongRef);
-
-		return;
-	}
-
-	if (!ghost->isOwnedStructure(strongRef)) {
-		info("Removing orphaned structure.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
@@ -64,8 +61,7 @@ void StructureMaintenanceTask::run() {
 		return;
 	}
 
-	Locker _ownerLock(owner);
-	Locker _lock(strongRef, owner);
+	Locker _lock(strongRef);
 
 	//Structure is out of maintenance. Start the decaying process...
 	strongRef->updateStructureStatus();
@@ -80,14 +76,15 @@ void StructureMaintenanceTask::run() {
 		oneWeekMaintenance += city->getPropertyTax() / 100.0f * oneWeekMaintenance;
 	}
 
+	Locker locker(creditObj, strongRef);
 	//Check if owner got money in the bank and structure not decaying.
-	if (owner->getBankCredits() >= oneWeekMaintenance) {
+	if (creditObj->getBankCredits() >= oneWeekMaintenance) {
 		//Withdraw 1 week maintenance from owner bank account and add to the structure
 		//maintenance pool.
-		strongRef->payMaintenance(oneWeekMaintenance, owner, false);
+		strongRef->payMaintenance(oneWeekMaintenance, creditObj, false);
 
 		//Send email notification to owner.
-		sendMailMaintenanceWithdrawnFromBank(owner, strongRef);
+		sendMailMaintenanceWithdrawnFromBank(name, strongRef);
 
 		//Reschedule task in 1 week.
 		strongRef->scheduleMaintenanceExpirationEvent();
@@ -95,7 +92,7 @@ void StructureMaintenanceTask::run() {
 		//Start decay process.
 
 		//Notify owner about decay.
-		sendMailDecay(owner, strongRef);
+		sendMailDecay(name, strongRef);
 
 		if (!strongRef->isDecayed()) {
 			//Reschedule task in 1 day.
@@ -105,7 +102,7 @@ void StructureMaintenanceTask::run() {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
 
 				//Building is condemned since it has decayed.
-				sendMailCondemned(owner, strongRef);
+				sendMailCondemned(name, strongRef);
 
 				strongRef->info("Structure decayed, it is now condemned.");
 
@@ -119,7 +116,7 @@ void StructureMaintenanceTask::run() {
 	}
 }
 
-void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(CreatureObject* owner, StructureObject* structure) {
+void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(const String& creoName, StructureObject* structure) {
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
 	if (chatManager != NULL) {
@@ -135,11 +132,11 @@ void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(CreatureObje
 		emailBody.setTT(structure->getObjectName());
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 
-		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, creoName);
 	}
 }
 
-void StructureMaintenanceTask::sendMailDecay(CreatureObject* owner, StructureObject* structure) {
+void StructureMaintenanceTask::sendMailDecay(const String& creoName, StructureObject* structure) {
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
 	if (chatManager != NULL) {
@@ -162,11 +159,11 @@ void StructureMaintenanceTask::sendMailDecay(CreatureObject* owner, StructureObj
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(structure->getDecayPercentage());
 
-		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, creoName);
 	}
 }
 
-void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, StructureObject* structure) {
+void StructureMaintenanceTask::sendMailCondemned(const String& creoName, StructureObject* structure) {
 	//Create an email.
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
@@ -183,7 +180,7 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 		emailBody.setTT(structure->getObjectName());
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(-structure->getSurplusMaintenance());
-		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, creoName);
 	}
 }
 
