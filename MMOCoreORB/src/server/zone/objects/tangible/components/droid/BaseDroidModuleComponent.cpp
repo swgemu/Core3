@@ -81,8 +81,14 @@ void BaseDroidModuleComponent::onStore() {
 }
 
 ManagedReference<DroidObject*> BaseDroidModuleComponent::getDroidObject() {
-	ManagedReference<DroidObject*> droid = getParent()->getParentRecursively(SceneObjectType::DROIDCREATURE).castTo<DroidObject*>();
-	return droid;
+
+	ManagedReference<DroidObject*> droid = getParent();
+
+	if (droid == nullptr) {
+		return nullptr;
+	} else {
+		return droid->getParentRecursively(SceneObjectType::DROIDCREATURE).castTo<DroidObject*>();
+	}
 }
 
 void BaseDroidModuleComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
