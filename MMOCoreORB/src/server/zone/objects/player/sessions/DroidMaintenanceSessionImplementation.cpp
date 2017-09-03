@@ -163,6 +163,10 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
     // launch the task and set droid cooldown.
 	ManagedReference<CreatureObject*> creature = this->player.get();
 
+	if (creature == nullptr) {
+		return;
+	}
+
 	if (maintenance.size() == 0) {
 		creature->sendSystemMessage("@pet/droid_modules:droid_maint_empty_maint_run");
 		sendMaintanceRunBox();
@@ -171,6 +175,10 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 
 	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 	ManagedReference<DroidObject*> droid = module->getDroidObject();
+
+	if (droid == nullptr) {
+		return;
+	}
 
 	Locker locker(creature);
 	Locker droidLock(droid, creature);
