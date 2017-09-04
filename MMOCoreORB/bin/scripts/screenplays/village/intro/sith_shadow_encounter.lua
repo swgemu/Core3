@@ -55,32 +55,6 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	return 0
 end
 
-function SithShadowEncounter:onSithKilled(pSith, pKiller, nothing)
-	if (pSith == nil or pKiller == nil) then
-		return 0
-	end
-
-	local sithID = SceneObject(pSith):getObjectID()
-	local ownerID = readData(sithID .. ":ownerID")
-
-	local pOwner = getSceneObject(ownerID)
-
-	if (pOwner ~= nil) then
-		local pInventory = SceneObject(pSith):getSlottedObject("inventory")
-
-		if (pInventory == nil) then
-			deleteData(sithID .. ":ownerID")
-			return 1
-		end
-
-		SceneObject(pInventory):setContainerOwnerID(ownerID)
-		createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
-	end
-
-	deleteData(sithID .. ":ownerID")
-	return 1
-end
-
 -- Handle the event PLAYERKILLED.
 -- @param pPlayer pointer to the creature object of the killed player.
 -- @param pKiller pointer to the creature object of the killer.
@@ -114,9 +88,17 @@ function SithShadowEncounter:onEncounterSpawned(pPlayer, spawnedObjects)
 		return
 	end
 
-	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
-	writeData(SceneObject(spawnedObjects[1]):getObjectID() .. ":ownerID", SceneObject(pPlayer):getObjectID())
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onSithKilled", spawnedObjects[1])
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	local pInventory = SceneObject(spawnedObjects[1]):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	SceneObject(pInventory):setContainerOwnerID(playerID)
+	createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
+
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	FsIntro:setCurrentStep(pPlayer, 4)
