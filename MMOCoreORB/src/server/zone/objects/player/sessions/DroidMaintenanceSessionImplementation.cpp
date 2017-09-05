@@ -44,6 +44,9 @@ void DroidMaintenanceSessionImplementation::sendMaintanceRunBox(){
 
 	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 
+	if (module == nullptr)
+		return;
+
 	ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::DROID_MAINTENANCE_RUN_LIST, SuiListBox::HANDLETHREEBUTTON);
 	box->setCallback(new DroidMaintenanceSessionRunMenuSuiCallback(creature->getZoneServer()));
 	// we need to add additional text i think
@@ -113,6 +116,12 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 	}
 
 	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+
+	if (module == nullptr) {
+		cancelSession();
+		return;
+	}
+
 	// create transfer box
 	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature,SuiWindowType::DROID_ADD_STRUCTURE_AMOUNT);
 	sui->setCallback(new DroidMaintenanceSessionAddCreditsSuiCallback(creature->getZoneServer()));
@@ -174,6 +183,12 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	}
 
 	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+
+	if (module == nullptr) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<DroidObject*> droid = module->getDroidObject();
 
 	if (droid == nullptr) {
