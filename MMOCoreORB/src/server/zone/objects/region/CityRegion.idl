@@ -73,6 +73,9 @@ class CityRegion extends ManagedObject implements Logger {
 
 	protected unsigned long mayorID;
 
+	@weakReference
+	protected CreatureObject weakMayor;
+
 	protected boolean zoningEnabled;
 
 	protected boolean registered;
@@ -333,6 +336,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return mayorID;
 	}
 
+	@weakReference public CreatureObject getMayor() {
+		return weakMayor;
+	}
+
 	@dirty
 	public float getPositionX() {
 		Region aa = regions.get(0);
@@ -511,9 +518,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@preLocked
-	public void setMayorID(unsigned long id) {
-		mayorID = id;
-	}
+	public native void setMayorID(unsigned long id);
 
 	@preLocked
 	public void setRegistered(boolean val) {

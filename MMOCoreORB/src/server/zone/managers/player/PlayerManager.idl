@@ -71,6 +71,7 @@ class PlayerManager extends Observer implements Logger {
 	private ZoneServer server;
 
 	transient CharacterNameMap nameMap;
+	transient CharacterNameMap fullNameMap;
 	private float globalExpMultiplier;
 	private float groupExpMultiplier;
 
@@ -351,6 +352,9 @@ class PlayerManager extends Observer implements Logger {
 	
 	@dirty
 	public native string getPlayerName(unsigned long oid);
+
+	@dirty
+	public native string getFullPlayerName(unsigned long oid);
 	
 	@reference
 	public native CreatureObject getPlayer(final string name);

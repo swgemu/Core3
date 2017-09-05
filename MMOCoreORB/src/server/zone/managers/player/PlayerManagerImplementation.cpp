@@ -341,10 +341,13 @@ void PlayerManagerImplementation::loadNameMap() {
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
 			String firstName = res->getString(3);
+			String lastName = res->getString(4);
 
 			if (!nameMap->put(firstName.toLowerCase(), oid)) {
 				error("error coliding name:" + firstName.toLowerCase());
 			}
+
+			fullNameMap->put(firstName + " " + lastName, oid);
 		}
 
 	} catch (Exception& e) {
@@ -473,6 +476,10 @@ uint64 PlayerManagerImplementation::getObjectID(const String& name) {
 
 String PlayerManagerImplementation::getPlayerName(uint64 oid) {
 	return nameMap->get(oid);
+}
+
+String PlayerManagerImplementation::getFullPlayerName(uint64 oid) {
+	return fullNameMap->get(oid);
 }
 
 bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name) {

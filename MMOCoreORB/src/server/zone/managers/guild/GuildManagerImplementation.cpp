@@ -220,13 +220,15 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 		return;
 	}
 
+	PlayerManager *playerManager = server->getPlayerManager();
+
 	// Cleanup sponsored players list
 	for (int i = 0; i < guild->getSponsoredPlayerCount(); i++) {
 		uint64 playerID = guild->getSponsoredPlayer(i);
 
-		ManagedReference<CreatureObject*> player = server->getObject(playerID).castTo<CreatureObject*>();
+		const String& name = playerManager->getPlayerName(playerID);
 
-		if (player == NULL) {
+		if (name.isEmpty()) {
 			toRemove.add(playerID);
 
 			if (isSponsoredPlayer(playerID)) {
@@ -237,7 +239,6 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 				toRemove.add(playerID);
 			}
 		}
-
 	}
 
 	for (int i = 0; i < toRemove.size(); i++) {
@@ -302,6 +303,8 @@ void GuildManagerImplementation::processGuildElection(GuildObject* guild) {
 		oldLeaderCreo = oldLeader.castTo<CreatureObject*>();
 	}
 
+	PlayerManager *playerManager = server->getPlayerManager();
+
 	//Loop through the candidate votes.
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
@@ -314,9 +317,7 @@ void GuildManagerImplementation::processGuildElection(GuildObject* guild) {
 			continue;
 		}
 
-		ManagedReference<SceneObject*> candidateObj = server->getObject(candidateID);
-
-		if (candidateObj != NULL && candidateObj->isPlayerCreature()) {
+		if (playerManager->existsPlayerCreatureOID(candidateID)) {
 
 			if (votes > topVotes || (votes == topVotes && candidateID == oldLeaderID)) {
 				topCandidate = candidateID;
@@ -1074,6 +1075,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 	suiBox->setForceCloseDistance(32);
 
 	GuildMemberList* memberList = guild->getGuildMemberList();
+	PlayerManager *pMan = server->getPlayerManager();
 
 	for (int i = 0; i < memberList->size(); ++i) {
 		GuildMemberInfo* gmi = &memberList->get(i);
@@ -1082,13 +1084,8 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 			continue;
 
 		uint64 playerID = gmi->getPlayerID();
-		ManagedReference<SceneObject*> obj = server->getObject(playerID);
 
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* member = cast<CreatureObject*>( obj.get());
-		suiBox->addMenuItem(member->getDisplayedName(), playerID);
+		suiBox->addMenuItem(pMan->getFullPlayerName(playerID), playerID);
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
@@ -1539,17 +1536,12 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
+	PlayerManager *pMan = server->getPlayerManager();
+
 	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
 		uint64 playerID = guild->getSponsoredPlayer(i);
 
-		ManagedReference<SceneObject*> obj = server->getObject(playerID);
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* sponsoredPlayer = cast<CreatureObject*>( obj.get());
-
-		suiBox->addMenuItem(sponsoredPlayer->getDisplayedName(), playerID);
+		suiBox->addMenuItem(pMan->getFullPlayerName(playerID), playerID);
 	}
 
 	player->getPlayerObject()->addSuiBox(suiBox);
@@ -2231,19 +2223,14 @@ void GuildManagerImplementation::promptCastVote(GuildObject* guild, CreatureObje
 	suiBox->setCancelButton(true, "@cancel");
 	suiBox->addMenuItem("@city/city:null", 0); // None
 
+	PlayerManager *pMan = server->getPlayerManager();
+
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
 
 		uint64 candidateID = entry.getKey();
 
-		ManagedReference<SceneObject*> obj = server->getObject(candidateID);
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* candidateCreo = obj.castTo<CreatureObject*>();
-
-		suiBox->addMenuItem(candidateCreo->getDisplayedName(), candidateID);
+		suiBox->addMenuItem(pMan->getFullPlayerName(candidateID), candidateID);
 	}
 
 	player->getPlayerObject()->addSuiBox(suiBox);
@@ -2295,17 +2282,14 @@ void GuildManagerImplementation::viewElectionStandings(GuildObject* guild, Creat
 	listbox->setForceCloseDistance(32);
 	listbox->setCancelButton(true, "@cancel");
 
+	PlayerManager *pMan = server->getPlayerManager();
+
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int>* entry = &candidates->elementAt(i);
 
 		uint64 candidateID = entry->getKey();
 
-		ManagedReference<SceneObject*> candidate = server->getObject(candidateID);
-
-		if (candidate == NULL || !candidate->isPlayerCreature())
-			continue;
-
-		listbox->addMenuItem(candidate->getDisplayedName() + " -- Votes: " + String::valueOf(entry->getValue()));
+		listbox->addMenuItem(pMan->getFullPlayerName(candidateID) + " -- Votes: " + String::valueOf(entry->getValue()));
 	}
 
 	player->getPlayerObject()->addSuiBox(listbox);

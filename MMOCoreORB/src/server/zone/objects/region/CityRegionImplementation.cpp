@@ -844,14 +844,9 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 	if(structureManager == NULL)
 		return;
 
-	ManagedReference<SceneObject*> mayorObject = server->getObject(getMayorID());
+	ManagedReference<CreatureObject*> newMayor = weakMayor.get();
 
-	if(mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	ManagedReference<CreatureObject*> newMayor = cast<CreatureObject*>(mayorObject.get());
-
-	if(newMayor == NULL)
+	if (newMayor == NULL || !newMayor->isPlayerCreature())
 		return;
 
 	// transfer civic structures
@@ -1270,4 +1265,9 @@ void CityRegionImplementation::cleanupMissionTerminals(int limit) {
 
 uint64 CityRegionImplementation::getObjectID() {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
+}
+
+void CityRegionImplementation::setMayorID(uint64 id) {
+	mayorID = id;
+	weakMayor = Core::getObjectBroker()->lookUp(id).castTo<CreatureObject*>();
 }
