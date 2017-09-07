@@ -312,6 +312,12 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 
 	Locker clocker(campOwner, _this.getReferenceUnsafeStaticCast());
 
+	auto zone = this->zone;
+
+	if (zone == nullptr) {
+		return;
+	}
+
 	PlayerObject* ownerGhost = campOwner->getPlayerObject();
 
 	if (ownerGhost != NULL) {
