@@ -1,0 +1,10 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  namespace: kube-system
+  name: local-storage
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "false"
+  labels:
+    kubernetes.io/cluster-service: "true"
+provisioner: kubernetes.io/host-path

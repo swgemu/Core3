@@ -130,3 +130,75 @@ deleteidl:
 	$(IDLC) -delete $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 
+DB_NAMESPACE=
+DB_IMAGE=
+
+APP_NAMESPACE=swgemu
+APP_NAME=core3
+APP_IMAGE=akimaki/swgemu-core3:1.0
+
+build-docker:
+	sudo docker build -t ${APP_IMAGE} docker
+	sudo docker push ${APP_IMAGE}
+	sudo docker images | grep "<none>" | awk '{print $$3}' | xargs sudo docker rmi
+	#done
+
+init-storage:
+	kubectl create -f helm/storage-class.yaml --validate=false
+	#done
+
+init-db-helm:
+	kubectl create namespace ${DB_NAMESPACE}
+	kubectl create serviceaccount --namespace ${DB_NAMESPACE} tiller
+	kubectl create clusterrolebinding tiller-cluster-rule-${DB_NAMESPACE} --clusterrole=cluster-admin --serviceaccount=${DB_NAMESPACE}:tiller
+	helm init --service-account=tiller --tiller-namespace=nuodb
+	#done
+
+deploy-db-helm:
+	helm install helm/${DB_NAMESPACE} --tiller-namespace ${DB_NAMESPACE} --name ${DB_NAMESPACE} --namespace ${DB_NAMESPACE}
+	#done
+
+shutdown-db-helm:
+	helm delete ${DB_NAMESPACE} --tiller-namespace ${DB_NAMESPACE} --purge
+	#done
+
+init-app-helm:
+	kubectl create namespace $(APP_NAMESPACE)
+	kubectl create serviceaccount --namespace $(APP_NAMESPACE) tiller
+	kubectl create clusterrolebinding tiller-cluster-rule-$(APP_NAMESPACE) --clusterrole=cluster-admin --serviceaccount=$(APP_NAMESPACE):tiller
+	helm init --service-account=tiller --tiller-namespace=$(APP_NAMESPACE)
+	#done
+
+deploy-app-helm:
+	helm install helm/${APP_NAME} --tiller-namespace $(APP_NAMESPACE) --name $(APP_NAME) --namespace $(APP_NAMESPACE)
+	#done
+
+shutdown-app-helm:
+	helm delete $(APP_NAME) --tiller-namespace $(APP_NAMESPACE) --purge
+	#done
+
+purge-app-helm:
+	kubectl delete clusterrolebinding tiller-cluster-rule-$(APP_NAMESPACE)
+	kubectl delete serviceaccount --namespace $(APP_NAMESPACE) tiller
+	kubectl delete namespace $(APP_NAMESPACE)
+	#done
+
+status-db-helm:
+	helm ls --all --tiller-namespace ${DB_NAMESPACE}
+	kubectl get svc --namespace ${DB_NAMESPACE}
+	kubectl get po --namespace ${DB_NAMESPACE}
+	kubectl exec nuodb-sm-0 --namespace nuodb -- /opt/nuodb/bin/nuodbmgr --broker localhost --password bird --command "show domain summary"
+	#done 
+
+status-app-helm:
+	helm ls --all --tiller-namespace $(APP_NAMESPACE)
+	kubectl get svc --namespace $(APP_NAMESPACE)
+	kubectl get po --namespace $(APP_NAMESPACE)
+	#done
+
+exec-app:
+	kubectl exec core3-zone-0 -n swgemu -ti -- bash
+
+pv-nuodb:
+	kubectl get pv | grep nuodb/nuodb-var-nuodb-sm | awk '{print $$1}' | xargs -I ID kubectl describe pv ID | grep "Path:" | awk '{ print $$2 }'
+	#done
