@@ -1,0 +1,9 @@
+description: An SwgEmu cluster
+keywords:
+- swgemu
+- core3
+maintainers:
+- email: oru@swgemu.com
+  name: oru
+name: core3
+version: "1.0"

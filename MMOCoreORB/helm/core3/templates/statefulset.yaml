@@ -1,0 +1,91 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: {{template "name" .}}-zone
+  labels:
+    # The "heritage" label is used to track which tool deployed a given chart.
+    # It is useful for admins who want to see what releases a particular tool
+    # is responsible for.
+    heritage: {{ .Release.Service | quote }}
+    # This makes it easy to search for all components of a release using kubectl.
+    release: {{ .Release.Name | quote }}
+    # This makes it easy to audit chart usage.
+    chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+spec:
+  serviceName: "{{template "name" .}}"
+  replicas: {{default 1 .Values.replicas}}
+  template:
+    metadata:
+      labels:
+        app: {{template "name" .}}
+      annotations:
+        pod.alpha.kubernetes.io/initialized: "true"
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: {{template "name" .}}
+        image: {{default "akimaki/swgemu-core3" .Values.image}}:{{default "1.0" .Chart.Version}}
+        ports:
+        - containerPort: {{default 44421 .Values.zonePort}}
+          name: core3-zone
+          protocol: UDP
+        - containerPort: {{default 44422 .Values.pingPort}}
+          name: core3-ping
+          protocol: UDP
+#        - containerPort: {{default 44455 .Values.statusPort}}
+#          name: core3-status
+        env:
+        - name: MYSQL_HOST
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: host
+        - name: MYSQL_PORT
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: port
+        - name: MYSQL_NAME
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: name
+        - name: MYSQL_USER
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: user
+        - name: MYSQL_PASSWORD
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: password
+        - name: MYSQL_SECRET
+          valueFrom:
+             secretKeyRef:
+               name: mysql-secret
+               key: secret
+        volumeMounts:
+        - name: bdb-database
+          mountPath: /git/Core3/MMOCoreORB/bin/databases
+        - name: mysql-varlib
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: bdb-database
+      annotations:
+        volume.beta.kubernetes.io/storage-class: local-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 50Gi
+  - metadata:
+      name: mysql-varlib
+      annotations:
+        volume.beta.kubernetes.io/storage-class: local-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

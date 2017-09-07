@@ -1,0 +1,23 @@
+# A headless service to create DNS records
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{template "name" .}}
+  labels:
+    app: {{template "name" .}}
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+spec:
+  ports:
+  - port: {{default 44421 .Values.zonePort}}
+    name: core3-zone
+    protocol: UDP
+  - port: {{default 44422 .Values.pingPort}}
+    name: core3-ping
+    protocol: UDP
+#  - port: {{default 44455 .Values.statusPort}}
+#    name: core3-status
+  type: LoadBalancer
+  selector:
+    app: {{template "name" .}}
