@@ -70,6 +70,8 @@ spec:
           mountPath: /git/Core3/MMOCoreORB/bin/databases
         - name: mysql-varlib
           mountPath: /var/lib/mysql
+        - name: client-tres
+          mountPath: /home/swgemu/Desktop/SWGEmu
   volumeClaimTemplates:
   - metadata:
       name: bdb-database
@@ -89,3 +91,12 @@ spec:
       resources:
         requests:
           storage: 1Gi
+  - metadata:
+      name: client-tres
+      annotations:
+        volume.beta.kubernetes.io/storage-class: local-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 4Gi
