@@ -21,3 +21,20 @@ spec:
   type: LoadBalancer
   selector:
     app: {{template "name" .}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{template "name" .}}-status
+  labels:
+    app: {{template "name" .}}
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+spec:
+  ports:
+  - port: {{default 44455 .Values.statusPort}}
+    name: core3-status
+  type: LoadBalancer
+  selector:
+    app: {{template "name" .}}
