@@ -15,7 +15,6 @@ ticketGiverVelso = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverVelso",
 	faction = FACTIONIMPERIAL,
 	compensation = velsoCompensation,
-	badgeNumber = 112,--...has been recognized as an Elite Imperial Soldier, for bravery in the call of duty, eliminating a Rebel Blockade Runner.
 	menuComponent = "VelsoIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_velso_imperial_destroy:s_1be45010",  --Ok, let me type this down. What's the first lead?

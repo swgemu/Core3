@@ -15,7 +15,6 @@ ticketGiverPashna = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverPashna",
 	faction = FACTIONREBEL,
 	compensation = pashnaCompensation,
-	badgeNumber = 120, --...has been recognized by the Alliance as an elite soldier for work in eliminating key Imperial personnel on a captured Rebel Blockade Runner.
 	menuComponent = "PashnaIntelSearchMenuComponent",
 
 	first_location ="@conversation/corvette_pashna_rebel1:s_26d40ca6", --Tell me more about Fort Tusken and why any information would be there.

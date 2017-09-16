@@ -15,7 +15,6 @@ ticketGiverYondalla = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverYondalla",
 	faction = 0,
 	compensation = yondallaCompensation,
-	badgeNumber = 116, --...has been recognized by the Hutt clan for work in freeing our imprisoned friends aboard a Corellian Corvette.
 	menuComponent = "YondallaIntelSearchMenuComponent",
 
 	first_location ="@conversation/corvette_yondalla_neutral_rescue:s_f9acd930", -- Okay what's the first lead?

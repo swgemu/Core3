@@ -15,7 +15,6 @@ ticketGiverTallon = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverTallon",
 	faction = FACTIONREBEL,
 	compensation = tallonCompensation,
-	badgeNumber = 119, --...has been recognized by the Alliance as an elite soldier for work in rescuing imprisoned comrades aboard a captured Rebel Blockade Runner.
 	menuComponent = "tallonIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_tallon_rebel1:s_3410977a", --Tell me about the downed Bloodrazor vessel.

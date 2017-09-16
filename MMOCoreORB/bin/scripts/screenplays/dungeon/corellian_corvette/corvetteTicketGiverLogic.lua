@@ -4,7 +4,6 @@ local ObjectManager = require("managers.object.object_manager")
 SIT = 1
 STAND = 0
 local ticketTemplate = "object/tangible/travel/travel_ticket/dungeon_ticket.iff"
-local rewardSchematic = "object/tangible/loot/loot_schematic/corellian_corvette_landspeeder_av21_schematic.iff"
 
 local intelLocationsMap = {
 	{ 1, 2, 4 },
@@ -250,7 +249,7 @@ function CorvetteTicketGiverLogic:notifyTicketDestroyed(pTicket)
 	removeQuestStatus(ownerID .. ":activeCorvetteQuest")
 	removeQuestStatus(ownerID .. ":activeCorvetteStep")
 	removeQuestStatus(ownerID .. ":activeCorvetteQuestType")
-	
+
 	return 1
 end
 
@@ -282,25 +281,14 @@ function CorvetteTicketGiverLogic:hasDocuments(pPlayer)
 	return getContainerObjectByTemplate(pInventory, templates[1], true) or getContainerObjectByTemplate(pInventory, templates[2], true) or getContainerObjectByTemplate(pInventory, templates[3], true)
 end
 
-
 function CorvetteTicketGiverLogic:giveReward(pPlayer)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
-	if (not PlayerObject(pGhost):hasBadge(self.badgeNumber)) then
-		PlayerObject(pGhost):awardBadge(self.badgeNumber)
-	end
-
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 	if pInventory == nil then
 		return
 	end
 
-	local pItem = giveItem(pInventory, rewardSchematic, -1)
+	local pItem = giveItem(pInventory, "object/tangible/loot/loot_schematic/corellian_corvette_landspeeder_av21_schematic.iff", -1)
 
 	if pItem ~= nil then
 		SceneObject(pItem):sendTo(pPlayer)

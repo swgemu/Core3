@@ -15,7 +15,6 @@ ticketGiverSabol = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverSabol",
 	faction = FACTIONIMPERIAL,
 	compensation = sabolCompensation,
-	badgeNumber = 114, --...has been recognized as an elite Imperial soldier for work in eliminating key Rebel personnel aboard a fully functional Rebel Blockade Runner.
 	menuComponent = "sabolIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_sabol_imperial1:s_3882c2ff",	--I need more information on Dantooine's Rebel base.

@@ -15,7 +15,6 @@ ticketGiverDarkstone = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverDarkstone",
 	faction = FACTIONIMPERIAL,
 	compensation = darkstoneCompensation,
-	badgeNumber = 113, --...has been recognized for bravery in the face of danger, for rescuing Imperial Loyalists from the Rebel Menace, imprisoned on a Rebel Blockade Runner.
 	menuComponent = "DarkstoneIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_colonel_imperial1:s_458f152b",	--I need more information on the Woolamander Palace.

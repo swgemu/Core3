@@ -15,7 +15,6 @@ ticketGiverCrowley = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverCrowley",
 	faction = FACTIONREBEL,
 	compensation = crowleyCompensation,
-	badgeNumber = 118, --...has been recognized by the Alliance as an elite soldier for work in destroying a captured Rebel Blockade Runner.
 	menuComponent = "CrowleyIntelSearchMenuComponent",
 
 	first_location ="@conversation/corvette_crowley_rebel1:s_c6392194", --Tell me about the Imperial Base.

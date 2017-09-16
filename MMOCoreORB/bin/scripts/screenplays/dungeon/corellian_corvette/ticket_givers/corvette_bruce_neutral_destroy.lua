@@ -15,7 +15,6 @@ ticketGiverBruce = CorvetteTicketGiverLogic:new {
 	giverName = "ticketGiverBruce",
 	faction = 0,
 	compensation = bruceCompensation,
-	badgeNumber = 115, --...has been recognized by the Hutt clan for work in destroying Corellian Corvette.
 	menuComponent = "BruceIntelSearchMenuComponent",
 
 	first_location = "@conversation/corvette_bruce_neutral_destroy:s_d6cf9803", -- Okay, what's the first possible location?
