@@ -33,11 +33,22 @@ GoToTheater = Task:new {
 
 function GoToTheater:taskStart(pPlayer)
 	local zoneName = SceneObject(pPlayer):getZoneName()
-	local spawnPoint = getSpawnArea(zoneName, SceneObject(pPlayer):getWorldPositionX(), SceneObject(pPlayer):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 20, 10, true)
+	local posX = SceneObject(pPlayer):getWorldPositionX()
+	local posY = SceneObject(pPlayer):getWorldPositionY()
+	
+	local spawnPoint = getSpawnArea(zoneName, posX, posY, self.minimumDistance, self.maximumDistance, 20, 10, true)
 	local playerID = SceneObject(pPlayer):getObjectID()
+	local attempts = 0
+	local distDiff = 0
+
+	while (spawnPoint == nil and attempts < 20) do
+		distDiff = distDiff + 25
+		attempts = attempts + 1
+		spawnPoint = getSpawnArea(zoneName, posX, posY, self.minimumDistance, self.maximumDistance + distDiff, 20, 10, true)
+	end
 
 	if (spawnPoint == nil) then
-		printLuaError("GoToTheater:taskStart() for task " .. self.taskName .. ", getSpawnArea returned nil using coords " .. SceneObject(pPlayer):getWorldPositionX() .. " " .. SceneObject(pPlayer):getWorldPositionY()  .. " on " .. SceneObject(pPlayer):getZoneName() .. ", min dist " .. self.minimumDistance .. ", max dist " .. self.maximumDistance .. ".")
+		printLuaError("GoToTheater:taskStart() for task " .. self.taskName .. ", failed to get spawn area after 20 attempts using getSpawnArea with coords " .. SceneObject(pPlayer):getWorldPositionX() .. " " .. SceneObject(pPlayer):getWorldPositionY()  .. " on " .. SceneObject(pPlayer):getZoneName() .. ", min dist " .. self.minimumDistance .. ", max dist " .. self.maximumDistance .. ".")
 		self:callFunctionIfNotNil(self.onFailedSpawn, nil, pPlayer)
 		self:finish(pPlayer)
 		return false
@@ -48,7 +59,7 @@ function GoToTheater:taskStart(pPlayer)
 	if (pTheater == nil) then
 		return false
 	end
-	
+
 	writeData(playerID .. self.taskName .. "theaterID", SceneObject(pTheater):getObjectID())
 
 	local pActiveArea = spawnActiveArea(zoneName, "object/active_area.iff", spawnPoint[1], 0, spawnPoint[3], 250, 0)
@@ -271,7 +282,7 @@ function GoToTheater:taskFinish(pPlayer)
 	end
 
 	deleteData(playerID .. self.taskName .. "theaterID")
-	
+
 	self:callFunctionIfNotNil(self.onTheaterFinished, nil, pPlayer)
 
 	return true
