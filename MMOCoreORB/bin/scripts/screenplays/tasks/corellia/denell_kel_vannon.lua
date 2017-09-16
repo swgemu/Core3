@@ -10,80 +10,74 @@ spiceDen =
 	}
 
 denell_kel_vannon_missions =
-{
 	{
-		missionType = "retrieve",
-		primarySpawns =
 		{
-			{ npcTemplate = "shaedra_valouri", npcName = "Shaedra Valouri" }
-		},
-		secondarySpawns =	{},
-		itemSpawns =
-		{
-			{ itemTemplate = "object/tangible/mission/quest_item/denell_kelvannon_q1_needed.iff", itemName = "CorSec evidence" }
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 300 }
-		}
-	},
-	{
-		missionType = "escort",
-		primarySpawns =
-		{
-			{ npcTemplate = "mac_varley", npcName = "Captain Mac Varley" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "thug", npcName = "a thug" },
-			{ npcTemplate = "thug", npcName = "a thug" }
-		},
-		itemSpawns = {},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 400 }
-		}
-	},
-		{
-		missionType = "destroy",
-		buildingSpawn = spiceDen,
-		primarySpawns =
-		{
-			{ npcTemplate = "black_sun_initiate", npcName = "Spice Addict" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "black_sun_smuggler", npcName = "" },
-			{ npcTemplate = "black_sun_smuggler", npcName = "" },
-			{ npcTemplate = "black_sun_smuggler", npcName = "" }
-		},
-		staticObjects =
+			missionType = "retrieve",
+			primarySpawns =
 			{
-				{ objectTemplate = "object/tangible/furniture/decorative/foodcart.iff", objectName = "Spice Selector" },
-				{ objectTemplate = "object/static/structure/corellia/corl_power_transformer_s01.iff", objectName = "" },
-				{ objectTemplate = "object/static/structure/general/streetlamp_small_style_02_on.iff", objectName = "" }
+				{ npcTemplate = "shaedra_valouri", npcName = "Shaedra Valouri" }
 			},
-		itemSpawns =
-		{
-
+			secondarySpawns =	{},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/denell_kelvannon_q1_needed.iff", itemName = "CorSec evidence" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 300 }
+			}
 		},
-		rewards =
 		{
-			{ rewardType = "credits", amount = 500 }
+			missionType = "escort",
+			primarySpawns =
+			{
+				{ npcTemplate = "mac_varley", npcName = "Captain Mac Varley" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
+			},
+			itemSpawns = {},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 400 }
+			}
+		},
+		{
+			missionType = "destroy",
+			buildingSpawn = spiceDen,
+			primarySpawns =
+			{
+				{ npcTemplate = "black_sun_initiate", npcName = "Spice Addict" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "black_sun_smuggler", npcName = "" },
+				{ npcTemplate = "black_sun_smuggler", npcName = "" },
+				{ npcTemplate = "black_sun_smuggler", npcName = "" }
+			},
+			itemSpawns =
+			{
+
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 500 }
+			}
 		}
 	}
-}
 
 npcMapDenellKelVannon =
-{
 	{
-		spawnData = { npcTemplate = "denell_kelvannon", x = -3414.11, z = 74, y = 3337.52, direction = 28, cellID = 0, position = STAND },
-		worldPosition = { x = -3414, y = 3336 },
-		npcNumber = 1,
-		stfFile = "@static_npc/corellia/denell_kel_vannon",
-		missions = denell_kel_vannon_missions
+		{
+			spawnData = { npcTemplate = "denell_kelvannon", x = -3414.11, z = 74, y = 3337.52, direction = 28, cellID = 0, position = STAND },
+			worldPosition = { x = -3414, y = 3336 },
+			npcNumber = 1,
+			stfFile = "@static_npc/corellia/denell_kel_vannon",
+			missions = denell_kel_vannon_missions
+		}
 	}
-}
 
 DenellKelVannon = ThemeParkLogic:new {
 	npcMap = npcMapDenellKelVannon,
