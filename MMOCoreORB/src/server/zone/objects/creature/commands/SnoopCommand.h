@@ -99,6 +99,18 @@ public:
 
 			ghost->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
+		} else if (container == "jeditrainer") {
+			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+
+			if (targetGhost->getJediState() < 2 || !targetObj->hasSkill("force_title_jedi_rank_02")) {
+				creature->sendSystemMessage(targetObj->getFirstName() + " does not have a jedi state of 2+ or does not have the padawan skill box.");
+				return GENERALERROR;
+			}
+
+			String planet = ghost->getTrainerZoneName();
+			Vector3 coords = ghost->getTrainerCoordinates();
+
+			creature->sendSystemMessage(targetObj->getFirstName() + "'s jedi trainer is located at " + coords.toString() + " on " + planet);
 		} else if (container == "ham") {
 			return sendHam(creature, targetObj);
 		} else if (container == "lots") {
