@@ -10,64 +10,57 @@ vacationHome =
 	}
 
 venthan_chassu_missions =
-{
 	{
-		missionType = "destroy",
-		buildingSpawn = vacationHome,
-		primarySpawns =
 		{
-			{ npcTemplate = "r5", npcName = "" }
-		},
-		secondarySpawns =
-		{
-
-		},
-		staticObjects =
+			missionType = "destroy",
+			buildingSpawn = vacationHome,
+			primarySpawns =
 			{
-				{ objectTemplate = "object/tangible/furniture/decorative/foodcart.iff", objectName = "Fusion Food Fridge" },
-				{ objectTemplate = "object/tangible/furniture/decorative/corellian_flagpole.iff", objectName = "Flag of Corellia" },
-				{ objectTemplate = "object/static/structure/general/streetlamp_small_style_02_on.iff", objectName = "" }
+				{ npcTemplate = "r5", npcName = "" }
 			},
-		itemSpawns =
-		{
+			secondarySpawns =
+			{
 
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 250 }
-		}
-	},
-	{
-		missionType = "assassinate",
-		primarySpawns =
-		{
-			{ npcTemplate = "critic_quest_venthan", npcName = "Faswald Vorsuble" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "bodyguard", npcName = "" }
-		},
-		itemSpawns =
-		{
+			},
+			{
 
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 250 }
+			}
 		},
-		rewards =
 		{
-			{ rewardType = "credits", amount = 500 }
+			missionType = "assassinate",
+			primarySpawns =
+			{
+				{ npcTemplate = "critic_quest_venthan", npcName = "Faswald Vorsuble" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "bodyguard", npcName = "" }
+			},
+			itemSpawns =
+			{
+
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 500 }
+			}
 		}
 	}
-}
 
 npcMapVenthanChassu =
-{
 	{
-		spawnData = { npcTemplate = "venthan_chassu", x = -6.4, z = -0.9, y = -20.0, direction = -9, cellID = 3005702, position = STAND },
-		npcNumber = 1,
-		worldPosition = { x = -5219, y = -6433 },
-		stfFile = "@static_npc/corellia/venthan_chassu",
-		missions = venthan_chassu_missions
-	},
-}
+		{
+			spawnData = { npcTemplate = "venthan_chassu", x = -6.4, z = -0.9, y = -20.0, direction = -9, cellID = 3005702, position = STAND },
+			npcNumber = 1,
+			worldPosition = { x = -5219, y = -6433 },
+			stfFile = "@static_npc/corellia/venthan_chassu",
+			missions = venthan_chassu_missions
+		},
+	}
 
 VenthanChassu = ThemeParkLogic:new {
 	npcMap = npcMapVenthanChassu,
