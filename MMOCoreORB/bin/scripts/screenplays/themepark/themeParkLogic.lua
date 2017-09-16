@@ -515,8 +515,14 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	if (areaSpawnPoint == nil) then
 		return false
 	end
+	
+	local areaDist = 100
+	
+	if mission.missionType == "destroy" then
+		areaDist = 350
+	end
 
-	local pQuestArea = spawnActiveArea(zoneName, "object/active_area.iff", areaSpawnPoint[1], areaSpawnPoint[2], areaSpawnPoint[3], 100, 0)
+	local pQuestArea = spawnActiveArea(zoneName, "object/active_area.iff", areaSpawnPoint[1], areaSpawnPoint[2], areaSpawnPoint[3], areaDist, 0)
 
 	if pQuestArea == nil then
 		return false
