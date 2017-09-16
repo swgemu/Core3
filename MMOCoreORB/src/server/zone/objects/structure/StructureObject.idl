@@ -33,6 +33,7 @@ class StructureObject extends TangibleObject {
 
 	protected unsigned long ownerObjectID;
 	protected unsigned long deedObjectID;
+	protected unsigned long waypointID;
 
 	protected float surplusMaintenance;
 	protected float surplusPower;
@@ -49,6 +50,8 @@ class StructureObject extends TangibleObject {
 		ownerObjectID = 0;
 
 		deedObjectID = 0;
+		
+		waypointID = 0;
 
 		surplusMaintenance = 0;
 
@@ -327,6 +330,16 @@ class StructureObject extends TangibleObject {
 	public void setOwner(unsigned long objectID) {
 		ownerObjectID = objectID;
 		structurePermissionList.setOwner(objectID);
+	}
+	
+	@preLocked
+	public void setWaypointID(unsigned long objectID) {
+		waypointID = objectID;
+	}
+	
+	@read
+	public unsigned long getWaypointID() {
+		return waypointID;
 	}
 
 	@preLocked
