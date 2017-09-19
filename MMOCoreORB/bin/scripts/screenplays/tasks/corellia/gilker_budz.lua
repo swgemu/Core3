@@ -10,92 +10,87 @@ poacherHideout =
 	}
 
 gilker_budz_missions =
-{
 	{
-		missionType = "retrieve",
-		primarySpawns =
 		{
-			{ npcTemplate = "sneeroos", npcName = "Snee-Roos" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "thug", npcName = "a thug" }
-		},
-		itemSpawns =
-		{
-			{ itemTemplate = "object/tangible/mission/quest_item/gilker_budz_q1_needed.iff", itemName = "Datadisc" }
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 250 }
-		}
-	},
-	{
-		missionType = "destroy",
-		buildingSpawn = poacherHideout,
-		primarySpawns =
-		{
-			{ npcTemplate = "poacher", npcName = "a Poacher pelt-skinner" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "poacher", npcName = "" },
-			{ npcTemplate = "poacher", npcName = "" },
-			{ npcTemplate = "poacher", npcName = "" },
-			{ npcTemplate = "poacher", npcName = "" },
-			{ npcTemplate = "poacher", npcName = "" }
-		},
-		staticObjects =
+			missionType = "retrieve",
+			primarySpawns =
 			{
-				{ objectTemplate = "object/tangible/furniture/decorative/foodcart.iff", objectName = "Gronda Meat Storage" },
-				{ objectTemplate = "object/tangible/furniture/decorative/tanning_hide_s01.iff", objectName = "Gronda Hide" },
-				{ objectTemplate = "object/tangible/furniture/decorative/tanning_hide_s02.iff", objectName = "Gronda Pelt" },
-				{ objectTemplate = "object/static/structure/general/streetlamp_small_style_02_on.iff", objectName = "" }
+				{ npcTemplate = "sneeroos", npcName = "Snee-Roos" }
 			},
-		itemSpawns =
+			secondarySpawns =
+			{
+				{ npcTemplate = "thug", npcName = "a thug" }
+			},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/gilker_budz_q1_needed.iff", itemName = "Datadisc" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 250 }
+			}
+		},
 		{
+			missionType = "destroy",
+			buildingSpawn = poacherHideout,
+			primarySpawns =
+			{
+				{ npcTemplate = "poacher", npcName = "a Poacher pelt-skinner" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "poacher", npcName = "" },
+				{ npcTemplate = "poacher", npcName = "" },
+				{ npcTemplate = "poacher", npcName = "" },
+				{ npcTemplate = "poacher", npcName = "" },
+				{ npcTemplate = "poacher", npcName = "" }
+			},
+			staticObjects =
+			{},
+			itemSpawns =
+			{
 
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 500 }
+			}
 		},
-		rewards =
 		{
-			{ rewardType = "credits", amount = 500 }
-		}
-	},
-	{
-		missionType = "assassinate",
-		primarySpawns =
-		{
-			{ npcTemplate = "grassland_slice_hound", npcName = "a released slice hound" }
-		},
-		secondarySpawns =
-		{
-			{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
-			{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
-			{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
-			{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
-			{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" }
-		},
-		itemSpawns =
-		{
+			missionType = "assassinate",
+			primarySpawns =
+			{
+				{ npcTemplate = "grassland_slice_hound", npcName = "a released slice hound" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
+				{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
+				{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
+				{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" },
+				{ npcTemplate = "vicious_slice_hound", npcName = "a vicious slice hound" }
+			},
+			itemSpawns =
+			{
 
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 750 }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 750 }
+			}
 		}
 	}
-}
 
 npcMapGilkerBudz =
-{
 	{
-		spawnData = { npcTemplate = "gilker_budz", x = -3336.21, z = 72.4231, y = 2926.19, direction = 277.144, cellID = 0, position = STAND },
-		worldPosition = { x = -3336, y = 2926 },
-		npcNumber = 1,
-		stfFile = "@static_npc/corellia/gilker_budz",
-		missions = gilker_budz_missions
+		{
+			spawnData = { npcTemplate = "gilker_budz", x = -3336.21, z = 72.4231, y = 2926.19, direction = 277.144, cellID = 0, position = STAND },
+			worldPosition = { x = -3336, y = 2926 },
+			npcNumber = 1,
+			stfFile = "@static_npc/corellia/gilker_budz",
+			missions = gilker_budz_missions
+		}
 	}
-}
 
 GilkerBudz = ThemeParkLogic:new {
 	npcMap = npcMapGilkerBudz,
