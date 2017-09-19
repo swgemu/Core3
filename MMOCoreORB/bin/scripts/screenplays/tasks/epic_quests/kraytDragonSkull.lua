@@ -218,26 +218,30 @@ function KraytSkullContainerComponent:transferObject(pContainer, pObj, slot)
 	end
 
 	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt") then
-		local object = SceneObject(pObj)
-		if (object:getTemplateObjectPath() == "object/tangible/loot/quest/huff_quest_borvos_money.iff") then
+		if (SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/huff_quest_borvos_money.iff") then
 			spatialChat(pContainer, "Good")
 			CreatureObject(pPlayer):setScreenPlayState(1, "krayt_skull_epic_quest")
-			object:destroyObjectFromWorld()
-			object:destroyObjectFromDatabase()
+			
+      if (not SceneObject(pObj):isPlayerCreature()) then
+			 SceneObject(pObj):destroyObjectFromWorld()
+			 SceneObject(pObj):destroyObjectFromDatabase()
+			end
 			return 1
 		else
 			spatialChat(pContainer, "@static_npc/naboo/borvo:notit_1")
 			return 0
 		end
 	elseif (SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter") then
-		local object = SceneObject(pObj)
 		if (KraytDragonSkull:getActiveNpcNumber(pPlayer) ~= 16) then
 			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notyet")
-		elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/rifle_quest_tusken.iff") then
+		elseif (SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/rifle_quest_tusken.iff") then
 			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:good")
 			CreatureObject(pPlayer):setScreenPlayState(2, "krayt_skull_epic_quest")
-			object:destroyObjectFromWorld()
-			object:destroyObjectFromDatabase()
+			
+			if (not SceneObject(pObj):isPlayerCreature()) then
+			 SceneObject(pObj):destroyObjectFromWorld()
+			 SceneObject(pObj):destroyObjectFromDatabase()
+		  end
 			return 1
 		else
 			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notit")
