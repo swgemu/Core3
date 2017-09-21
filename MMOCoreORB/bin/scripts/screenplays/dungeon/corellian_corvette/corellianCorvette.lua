@@ -14,15 +14,15 @@ CorellianCorvette = ScreenPlay:new {
 	},
 
 	missionBadges = {
-		["imperial_destroy"] = 112, -- ...has been recognized as an Elite Imperial Soldier, for bravery in the call of duty, eliminating a Rebel Blockade Runner.
-		["imperial_rescue"] = 113, -- ...has been recognized for bravery in the face of danger, for rescuing Imperial Loyalists from the Rebel Menace, imprisoned on a Rebel Blockade Runner.
-		["imperial_assassin"] = 114, -- ...has been recognized as an elite Imperial soldier for work in eliminating key Rebel personnel aboard a fully functional Rebel Blockade Runner.
-		["neutral_destroy"] = 115, -- ...has been recognized by the Hutt clan for work in destroying Corellian Corvette.
-		["neutral_rescue"] = 116, -- ...has been recognized by the Hutt clan for work in freeing our imprisoned friends aboard a Corellian Corvette.
-		["neutral_assassin"] = 117, -- ...has been recognized by the Hutt clan for work in eliminating key personnel at the Hutt's request.
-		["rebel_destroy"] = 118, -- ...has been recognized by the Alliance as an elite soldier for work in destroying a captured Rebel Blockade Runner.
-		["rebel_rescue"] = 119, -- ...has been recognized by the Alliance as an elite soldier for work in rescuing imprisoned comrades aboard a captured Rebel Blockade Runner.
-		["rebel_assassin"] = 120, -- ...has been recognized by the Alliance as an elite soldier for work in eliminating key Imperial personnel on a captured Rebel Blockade Runner.
+		imperial_destroy = 112, -- ...has been recognized as an Elite Imperial Soldier, for bravery in the call of duty, eliminating a Rebel Blockade Runner.
+		imperial_rescue = 113, -- ...has been recognized for bravery in the face of danger, for rescuing Imperial Loyalists from the Rebel Menace, imprisoned on a Rebel Blockade Runner.
+		imperial_assassinate = 114, -- ...has been recognized as an elite Imperial soldier for work in eliminating key Rebel personnel aboard a fully functional Rebel Blockade Runner.
+		neutral_destroy = 115, -- ...has been recognized by the Hutt clan for work in destroying Corellian Corvette.
+		neutral_rescue = 116, -- ...has been recognized by the Hutt clan for work in freeing our imprisoned friends aboard a Corellian Corvette.
+		neutral_assassinate = 117, -- ...has been recognized by the Hutt clan for work in eliminating key personnel at the Hutt's request.
+		rebel_destroy = 118, -- ...has been recognized by the Alliance as an elite soldier for work in destroying a captured Rebel Blockade Runner.
+		rebel_rescue = 119, -- ...has been recognized by the Alliance as an elite soldier for work in rescuing imprisoned comrades aboard a captured Rebel Blockade Runner.
+		rebel_assassinate = 120, -- ...has been recognized by the Alliance as an elite soldier for work in eliminating key Imperial personnel on a captured Rebel Blockade Runner.
 	},
 
 	lockedRooms = { "elevator57", "meetingroom38", "armorybackroom55", "officerquarters63", "officerquarters64", "officerquarters65", "bridge66" },
@@ -1020,6 +1020,11 @@ function CorellianCorvette:giveBadgeToGroup(pCorvette)
 	local missionType = corvetteFaction .. "_" .. questType
 	local badgeNum = self.missionBadges[missionType]
 
+	if (badgeNum == nil) then
+		printLuaError("Invalid mission type " .. missionType .. " trying to get Corellian Corvette badge.")
+		return
+	end
+
 	for i = 1, 66, 1 do
 		local pCell = BuildingObject(pCorvette):getCell(i)
 
@@ -1029,8 +1034,8 @@ function CorellianCorvette:giveBadgeToGroup(pCorvette)
 				if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
 					local pGhost = CreatureObject(pObject):getPlayerObject()
 
-					if (pGhost ~= nil and not PlayerObject(pGhost):hasBadge(self.badgeNumber)) then
-						PlayerObject(pGhost):awardBadge(self.badgeNumber)
+					if (pGhost ~= nil and not PlayerObject(pGhost):hasBadge(badgeNum)) then
+						PlayerObject(pGhost):awardBadge(badgeNum)
 					end
 				end
 			end
