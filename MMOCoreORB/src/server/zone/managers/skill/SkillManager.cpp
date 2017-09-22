@@ -538,7 +538,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	return true;
 }
 
-void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient) {
+void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient, bool removeForceProgression) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	SkillList* skillList = creature->getSkillList();
@@ -553,6 +553,9 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		Skill* skill = copyOfList.get(i);
 
 		if (skill->getSkillPointsRequired() > 0) {
+			if (!removeForceProgression and skill->getSkillName().contains("force_title"))
+				continue;
+
 			removeSkillRelatedMissions(creature, skill);
 
 			creature->removeSkill(skill, notifyClient);
