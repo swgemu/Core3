@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab3e1c7_68d56342",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObject.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-09-23T12:58:51Z",
+      "side": 1,
+      "message": "no addCash/BankCredits method?",
+      "revId": "13c0a169bfed47f778225d99dea199a71f1a268c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_a8e35b32",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-09-23T12:58:51Z",
+      "side": 1,
+      "message": "we should assert here",
+      "revId": "13c0a169bfed47f778225d99dea199a71f1a268c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_48d09f53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-09-23T12:58:51Z",
+      "side": 1,
+      "message": "assert here",
+      "revId": "13c0a169bfed47f778225d99dea199a71f1a268c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
