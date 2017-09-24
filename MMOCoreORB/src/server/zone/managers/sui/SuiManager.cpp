@@ -357,7 +357,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			if (templatePath == "unlearn_all_skills") {
 
-				SkillManager::instance()->surrenderAllSkills(player);
+				SkillManager::instance()->surrenderAllSkills(player, true, false);
 				player->sendSystemMessage("All skills unlearned.");
 
 			} else if (templatePath == "cleanse_character") {
