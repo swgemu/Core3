@@ -271,7 +271,7 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 						transform[2][1] = orig[1][2];
 
 						Vector3 flipped = transform * floor;
-						return Vector3(flipped[0], flipped[2], flipped[1]);
+						return Vector3(flipped[0], flipped[2], CollisionManager::getWorldFloorCollision(flipped[0], flipped[2], getZone(), false));
 					}
 				}
 			}
