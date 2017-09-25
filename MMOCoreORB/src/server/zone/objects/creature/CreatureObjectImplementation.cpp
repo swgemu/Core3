@@ -114,8 +114,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	linkedCreature = NULL;
 	controlDevice = NULL;
 
-	bankCredits = -1;
-	cashCredits = -1;
+	bankCredits = 0;
+	cashCredits = 0;
 
 	pvpStatusBitmask = 0;
 
@@ -3488,8 +3488,8 @@ CreditObject* CreatureObjectImplementation::getCreditObject() {
 		creditObject->setBankCredits(bankCredits, false);
 		creditObject->setCashCredits(cashCredits, false);
 		creditObject->setOwner(_this.getReferenceUnsafeStaticCast());
-		cashCredits = -1;
-		bankCredits = -1;
+		cashCredits = 0;
+		bankCredits = 0;
 	}
 
 	return creditObject;
