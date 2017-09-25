@@ -7,6 +7,7 @@
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreatureFlag.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -81,6 +82,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "engine/core/TaskManager.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
@@ -91,6 +93,12 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	groupInviteCounter = 0;
 	currentWeather = 0;
 	currentWind = 0;
+
+	if (creditObject == NULL) {
+		creditObject = getCreditObject();
+	}
+
+	creditObject->setOwner(_this.getReferenceUnsafeStaticCast());
 
 	lastActionCounter = 0x40000000;
 
@@ -106,8 +114,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	linkedCreature = NULL;
 	controlDevice = NULL;
 
-	bankCredits = 0;
-	cashCredits = 0;
+	bankCredits = -1;
+	cashCredits = -1;
 
 	pvpStatusBitmask = 0;
 
@@ -1274,36 +1282,16 @@ void CreatureObjectImplementation::addEncumbrance(int type, int value,
 
 void CreatureObjectImplementation::setBankCredits(int credits,
 		bool notifyClient) {
-	if (bankCredits == credits)
-		return;
 
-	bankCredits = credits;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(
-				this);
-		delta->updateBankCredits();
-		delta->close();
-
-		sendMessage(delta);
-	}
+	Locker locker(creditObject);
+	creditObject->setBankCredits(credits, notifyClient);
 }
 
 void CreatureObjectImplementation::setCashCredits(int credits,
 		bool notifyClient) {
-	if (cashCredits == credits)
-		return;
 
-	cashCredits = credits;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(
-				this);
-		delta->updateCashCredits();
-		delta->close();
-
-		sendMessage(delta);
-	}
+	Locker locker(creditObject);
+	creditObject->setCashCredits(credits, notifyClient);
 }
 
 void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
@@ -1998,19 +1986,25 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 }
 
 void CreatureObjectImplementation::subtractBankCredits(int credits) {
-	int newCredits = bankCredits - credits;
+	Locker locker(creditObject);
 
-	assert(newCredits >= 0);
+	int newCredits = creditObject->getBankCredits() - credits;
 
-	setBankCredits(newCredits);
+	if (newCredits < 0)
+		return;
+
+	creditObject->setBankCredits(newCredits, true);
 }
 
 void CreatureObjectImplementation::subtractCashCredits(int credits) {
-	int newCredits = cashCredits - credits;
+	Locker locker(creditObject);
 
-	assert(newCredits >= 0);
+	int newCredits = creditObject->getCashCredits() - credits;
 
-	setCashCredits(newCredits);
+	if (newCredits < 0)
+		return;
+
+	creditObject->setCashCredits(newCredits, true);
 }
 
 void CreatureObjectImplementation::notifyLoadFromDatabase() {
@@ -2029,12 +2023,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	listenToID = 0;
 	watchToID = 0;
-
-	if (cashCredits < 0)
-		cashCredits = 0;
-
-	if (bankCredits < 0)
-		bankCredits = 0;
 
 	if (isIncapacitated()) {
 
@@ -3473,4 +3461,36 @@ bool CreatureObjectImplementation::isPlayerCreature() {
 		return false;
 
 	return templateObject->isPlayerCreatureTemplate();
+}
+
+CreditObject* CreatureObjectImplementation::getCreditObject() {
+	if (creditObject != NULL)
+		return creditObject;
+
+	static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
+
+	uint64 oid = ((getObjectID() & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
+
+	ManagedReference<ManagedObject*> obj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
+
+	if (obj == NULL) {
+		obj = ObjectManager::instance()->createObject("CreditObject", isPersistent() ? 3 : 0, "credits", oid);
+
+		if (obj == NULL) {
+			return NULL;
+		}
+
+		creditObject = obj.castTo<CreditObject*>();
+		if (creditObject == NULL) {
+			return NULL;
+		}
+		Locker locker(creditObject);
+		creditObject->setBankCredits(bankCredits, false);
+		creditObject->setCashCredits(cashCredits, false);
+		creditObject->setOwner(_this.getReferenceUnsafeStaticCast());
+		cashCredits = -1;
+		bankCredits = -1;
+	}
+
+	return creditObject;
 }

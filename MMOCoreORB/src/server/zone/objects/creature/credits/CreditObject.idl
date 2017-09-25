@@ -1,0 +1,85 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.creature.credits;
+
+include system.lang.ref.WeakReference;
+import engine.core.ManagedObject;
+import server.zone.objects.creature.CreatureObject;
+
+class CreditObject extends ManagedObject {
+	protected int bankCredits;
+	protected int cashCredits;
+
+	@preLocked
+	public native void notifyLoadFromDatabase();
+
+	@dereferenced
+	@rawTemplate(value = 'CreatureObject*')
+	protected transient WeakReference owner;
+
+	public CreditObject() {
+		bankCredits = 0;
+                cashCredits = 0;
+	}
+
+	@preLocked
+	public native void setBankCredits(int credits, boolean notifyClient = true);
+
+	@preLocked
+	public native void setCashCredits(int credits, boolean notifyClient = true);
+
+	public int getBankCredits() {
+		return bankCredits;
+	}
+
+	public int getCashCredits() {
+		return cashCredits;
+	}
+
+	@preLocked
+	public native void subtractBankCredits(int credits, boolean notifyClient = true);
+
+	@preLocked
+	public native void subtractCashCredits(int credits, boolean notifyClient = true);
+
+	@preLocked
+	public native void addBankCredits(int credits, boolean notifyClient = true) {
+		setBankCredits(bankCredits+credits, notifyClient);
+	}
+
+	@preLocked
+	public native void addCashCredits(int credits, boolean notifyClient = true) {
+		setCashCredits(cashCredits+credits, notifyClient);
+	}
+
+	@dirty
+	public boolean verifyCashCredits(int credits) {
+		if (credits < 0)
+			return false;
+
+		if (getCashCredits() < credits)
+			return false;
+
+		return true;
+	}
+
+	@dirty
+	public boolean verifyBankCredits(int credits) {
+		if (credits < 0)
+			return false;
+
+		if (getBankCredits() < credits)
+			return false;
+
+		return true;
+	}
+
+	@local
+	@dereferenced
+	@rawTemplate(value = 'CreatureObject*')
+	public native WeakReference getOwner();
+
+	public native void setOwner(CreatureObject obj);
+}
