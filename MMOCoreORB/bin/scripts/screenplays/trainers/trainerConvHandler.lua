@@ -139,6 +139,11 @@ function trainerConvHandler:handleLearnScreen(pConvTemplate, pPlayer, pNpc, sele
 	local skillName = skillList[skillNum]
 	local skillManager = LuaSkillManager()
 
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
+
 	local pSkill = skillManager:getSkill(skillName)
 
 	if (pSkill == nil) then
@@ -170,6 +175,11 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 	local screen = LuaConversationScreen(pConvScreen)
 	local skillName = skillList[skillNum]
 	local skillManager = LuaSkillManager()
+
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
 
 	local pSkill = skillManager:getSkill(skillName)
 
@@ -231,9 +241,9 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 		messageString:setTO(skillStringId)
 		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 		clonedConversation:setDialogTextStringId(stringTable .. "msg3_2")
-		
+
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
-		
+
 		if (pGhost ~= nil and PlayerObject(pGhost):isJediTrainer(pNpc) and not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03") and not JediTrials:isOnKnightTrials(pPlayer) and JediTrials:isEligibleForKnightTrials(pPlayer)) then
 			KnightTrials:startKnightTrials(pPlayer)
 		end
@@ -266,6 +276,12 @@ function trainerConvHandler:handleNsfSkillPointsScreen(pConvTemplate, pPlayer, p
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local skillName = skillList[skillNum]
+
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
+
 	local skillManager = LuaSkillManager()
 
 	local pSkill = skillManager:getSkill(skillName)
