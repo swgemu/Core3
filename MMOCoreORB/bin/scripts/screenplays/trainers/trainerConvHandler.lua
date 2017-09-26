@@ -136,8 +136,21 @@ function trainerConvHandler:handleLearnScreen(pConvTemplate, pPlayer, pNpc, sele
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
+	if (skillNum == nil) then
+		printLuaError("Nil skillNum sent to handleLearnScreen for trainer type " .. trainerType)
+		return pConvScreen
+	elseif (skillNum <= 0) then
+		printLuaError("Invalid skillNum (" .. skillNum .. ") sent to handleLearnScreen for trainer type " .. trainerType)
+		return pConvScreen
+	end
+
 	local skillName = skillList[skillNum]
 	local skillManager = LuaSkillManager()
+
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
 
 	local pSkill = skillManager:getSkill(skillName)
 
@@ -168,8 +181,22 @@ end
 
 function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen, trainerType, stringTable, skillList, skillNum)
 	local screen = LuaConversationScreen(pConvScreen)
+
+	if (skillNum == nil) then
+		printLuaError("Nil skillNum sent to handleConfirmLearnScreen for trainer type " .. trainerType)
+		return pConvScreen
+	elseif (skillNum <= 0) then
+		printLuaError("Invalid skillNum (" .. skillNum .. ") sent to handleConfirmLearnScreen for trainer type " .. trainerType)
+		return pConvScreen
+	end
+
 	local skillName = skillList[skillNum]
 	local skillManager = LuaSkillManager()
+
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
 
 	local pSkill = skillManager:getSkill(skillName)
 
@@ -231,9 +258,9 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 		messageString:setTO(skillStringId)
 		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 		clonedConversation:setDialogTextStringId(stringTable .. "msg3_2")
-		
+
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
-		
+
 		if (pGhost ~= nil and PlayerObject(pGhost):isJediTrainer(pNpc) and not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03") and not JediTrials:isOnKnightTrials(pPlayer) and JediTrials:isEligibleForKnightTrials(pPlayer)) then
 			KnightTrials:startKnightTrials(pPlayer)
 		end
@@ -265,7 +292,21 @@ function trainerConvHandler:handleNsfSkillPointsScreen(pConvTemplate, pPlayer, p
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
+	if (skillNum == nil) then
+		printLuaError("Nil skillNum sent to handleNsfSkillPointsScreen for trainer type " .. trainerType)
+		return pConvScreen
+	elseif (skillNum <= 0) then
+		printLuaError("Invalid skillNum (" .. skillNum .. ") sent to handleNsfSkillPointsScreen for trainer type " .. trainerType)
+		return pConvScreen
+	end
+
 	local skillName = skillList[skillNum]
+
+	if (skillName == nil or skillName == "") then
+		printLuaError(CreatureObject(pPlayer):getFirstName() .. " tried to learn a nil or empty skillName using trainer type " .. trainerType .. ", skillNum of " .. skillNum .. " with a table size of " .. #skillList)
+		return pConvScreen
+	end
+
 	local skillManager = LuaSkillManager()
 
 	local pSkill = skillManager:getSkill(skillName)
