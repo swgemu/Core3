@@ -6,6 +6,8 @@
 #include "templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -116,4 +118,43 @@ void CharacterBuilderTerminalImplementation::grantGlowyBadges(CreatureObject* pl
 	for (int i = 0; i < ids.size(); i++) {
 		ghost->awardBadge(ids.get(i));
 	}
+}
+
+void CharacterBuilderTerminalImplementation::grantJediInitiate(CreatureObject* player) {
+	if (JediManager::instance()->getJediProgressionType() != JediManager::VILLAGEJEDIPROGRESSION)
+		return;
+
+	CharacterBuilderTerminalTemplate* terminalTemplate = dynamic_cast<CharacterBuilderTerminalTemplate*>(templateObject.get());
+
+	if (terminalTemplate == NULL)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	SkillManager* skillManager = server->getSkillManager();
+
+	grantGlowyBadges(player);
+
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+	Reference<LuaFunction*> luaVillageGmCmd = lua->createFunction("FsIntro", "completeVillageIntroFrog", 0);
+	*luaVillageGmCmd << player;
+
+	luaVillageGmCmd->callFunction();
+
+	Vector<String> branches = terminalTemplate->getVillageBranchUnlocks();
+
+	for (int i = 0; i < branches.size(); i++) {
+		String branch = branches.get(i);
+		player->setScreenPlayState("VillageUnlockScreenPlay:" + branch, 2);
+		skillManager->awardSkill(branch + "_04", player, true, true, true);
+	}
+
+	luaVillageGmCmd = lua->createFunction("FsOutro", "completeVillageOutroFrog", 0);
+	*luaVillageGmCmd << player;
+
+	luaVillageGmCmd->callFunction();
 }
