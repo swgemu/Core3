@@ -7,7 +7,9 @@
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 
@@ -824,7 +826,12 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
-		if (object == NULL ||!object->isPlayerCreature())
+		if (object == NULL || !object->isPlayerCreature())
+			continue;
+
+		CreatureObject* player = object->asCreatureObject();
+
+		if (player == NULL || player->isInvisible())
 			continue;
 
 		numPlayers++;
