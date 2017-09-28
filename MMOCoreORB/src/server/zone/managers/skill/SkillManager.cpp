@@ -553,7 +553,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		Skill* skill = copyOfList.get(i);
 
 		if (skill->getSkillPointsRequired() > 0) {
-			if (!removeForceProgression and skill->getSkillName().contains("force_title"))
+			if (!removeForceProgression and skill->getSkillName().contains("force_"))
 				continue;
 
 			removeSkillRelatedMissions(creature, skill);
