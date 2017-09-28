@@ -1062,16 +1062,19 @@ function VillageGmSui:manageCounterStrikeBasesCallback(pPlayer, pSui, eventIndex
 	end
 
 	local suiPageData = LuaSuiPageData(pPageData)
-	local campNum = suiPageData:getStoredData(tostring(args))
+	local campNum = tonumber(suiPageData:getStoredData(tostring(args)))
 
-	local campInfo = FsCounterStrike.campSpawns[tonumber(campNum)]
+	local campList = FsCounterStrike:getPhaseCampList()
+	local campTable = HelperFuncs:splitString(campList, ",")
 
-	if (campInfo == nil) then
+	local campLoc = FsCounterStrike.campSpawns[campNum]
+
+	if (campTable == nil) then
 		printLuaError("Invalid camp info grabbed in VillageGmSui:manageCounterStrikeBasesCallback using camp number " .. campNum)
 		return
 	end
 
-	local campName = campInfo[1]
+	local campName = campLoc[1]
 
 	local sui = SuiListBox.new("VillageGmSui", "manageCounterStrikeBaseCallback")
 	sui.setTitle("Village CounterStrike Base - " .. campName)
