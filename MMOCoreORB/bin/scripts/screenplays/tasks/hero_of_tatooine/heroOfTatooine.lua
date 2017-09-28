@@ -1377,7 +1377,7 @@ function HeroOfTatooineScreenPlay:isMissingMark(pPlayer)
 end
 
 function HeroOfTatooineScreenPlay:giveMissingMarks(pPlayer)
-	local pInventory = player:getSlottedObject("inventory")
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 	if (pInventory == nil) then
 		return false
