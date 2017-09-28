@@ -1,3 +1,6 @@
+local ObjectManager = require("managers.object.object_manager")
+local QuestManager = require("managers.quest.quest_manager")
+
 VillageGmSui = ScreenPlay:new {
 	productionServer = true
 }
