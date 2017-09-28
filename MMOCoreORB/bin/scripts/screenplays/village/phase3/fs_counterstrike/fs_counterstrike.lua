@@ -288,6 +288,8 @@ function FsCounterStrike:despawnCamp(campNum)
 	deleteData(theaterID .. "antenna")
 	deleteData(theaterID .. ":campNum")
 	deleteData(theaterID .. ":shieldID")
+	deleteData(theaterID .. ":shieldPowerDownTime")
+	deleteData(theaterID .. ":shieldPoweredDown")
 	deleteData("VillageCounterStrikeCampID:" .. campName)
 end
 

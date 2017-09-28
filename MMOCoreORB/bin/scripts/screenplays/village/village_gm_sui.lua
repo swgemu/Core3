@@ -30,6 +30,11 @@ function VillageGmSui:showMainPage(pPlayer)
 	sui.add("Lookup player by name", "playerLookupByName")
 	sui.add("Lookup player by oid", "playerLookupByOID")
 	sui.add("List players in village", "listOnlineVillagePlayers")
+
+	if (curPhase == 3) then
+		sui.add("Manage CounterStrike Bases", "manageCounterStrikeBases")
+	end
+
 	sui.add("Output LUA os.time() (Debugging)", "getOSTime")
 
 	if (not self.productionServer) then
@@ -992,6 +997,166 @@ function VillageGmSui:branchManagementCallback(pPlayer, pSui, eventIndex, args)
 	end
 
 	VillageGmSui.branchManagement(pPlayer, targetID)
+end
+
+function VillageGmSui.manageCounterStrikeBases(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local curPhase = VillageJediManagerTownship:getCurrentPhase()
+
+	if (curPhase ~= 3) then
+		return
+	end
+
+	local sui = SuiListBox.new("VillageGmSui", "manageCounterStrikeBasesCallback")
+	sui.setTitle("Village CounterStrike Bases")
+	sui.setPrompt("Below are the currently spawned CounterStrike bases. Select a base to get more detailed information.")
+
+	local campList = FsCounterStrike:getPhaseCampList()
+	local campTable = HelperFuncs:splitString(campList, ",")
+
+	for i = 1, #campTable, 1 do
+		local campNum = tonumber(campTable[i])
+		local campLoc = FsCounterStrike.campSpawns[campNum]
+		local campName = campLoc[1]
+
+		local suiText = campName
+		local theaterID = readData("VillageCounterStrikeCampID:" .. campName)
+		local pTheater = getSceneObject(theaterID)
+
+		if (pTheater == nil) then
+			suiText = suiText .. " \\#pcontrast1 (CAMP OBJECT MISSING)"
+		else
+			if (not FsCsBaseControl:isShieldPoweredDown(pTheater)) then
+				suiText = suiText .. " \\#pcontrast1 (SHIELD UP)"
+			else
+				suiText = suiText .. " \\#pcontrast2 (SHIELD DOWN)"
+			end
+		end
+
+		sui.add(suiText, i)
+	end
+
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui:manageCounterStrikeBasesCallback(pPlayer, pSui, eventIndex, args)
+	local curPhase = VillageJediManagerTownship:getCurrentPhase()
+
+	if (curPhase ~= 3) then
+		return
+	end
+
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed or args == nil or tonumber(args) < 0) then
+		return
+	end
+
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+	local campNum = suiPageData:getStoredData(tostring(args))
+
+	local campInfo = FsCounterStrike.campSpawns[tonumber(campNum)]
+
+	if (campInfo == nil) then
+		printLuaError("Invalid camp info grabbed in VillageGmSui:manageCounterStrikeBasesCallback using camp number " .. campNum)
+		return
+	end
+
+	local campName = campInfo[1]
+
+	local sui = SuiListBox.new("VillageGmSui", "manageCounterStrikeBaseCallback")
+	sui.setTitle("Village CounterStrike Base - " .. campName)
+
+	local suiPrompt = " \\#pcontrast1 " .. "Base Name:" .. " \\#pcontrast2 " .. campName .. "\n"
+
+	local theaterID = readData("VillageCounterStrikeCampID:" .. campName)
+	local pTheater = getSceneObject(theaterID)
+
+	if (pTheater == nil) then
+		suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Theater Object:" .. " \\#pcontrast2 MISSING\n"
+		sui.setPrompt(suiPrompt)
+		sui.sendTo(pPlayer)
+	else
+		suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Theater Object:" .. " \\#pcontrast2 " .. theaterID .. "\n"
+	end
+
+	if (not FsCsBaseControl:isShieldPoweredDown(pTheater)) then
+		suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Shield Status:" .. " \\#pcontrast2 UP\n"
+	else
+		suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Shield Status:" .. " \\#pcontrast2 DOWN\n"
+
+		local powerDownTime = readData(theaterID .. ":shieldPowerDownTime")
+		local powerDownDiff = os.time() - powerDownTime
+		local diffString = self:getTimeString(powerDownDiff * 1000)
+		suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Shield Taken Down At:" .. " \\#pcontrast2 " .. os.date("%c", powerDownTime) .. " (" .. diffString ..  " ago)\n"
+		local storedAttackerID = readData(theaterID .. ":attackerID")
+
+		local pAttacker = getCreatureObject(storedAttackerID)
+
+		if (pAttacker == nil) then
+			suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Current Attacker:" .. " \\#pcontrast2 UNKNOWN\n"
+		else
+			suiPrompt = suiPrompt .. " \\#pcontrast1 " .. "Current Attacker:" .. " \\#pcontrast2 " .. CreatureObject(pAttacker):getFirstName() .. "\n"
+		end
+	end
+
+	sui.add("Reset Base", "resetCounterStrikeBase" .. theaterID)
+	sui.setPrompt(suiPrompt)
+	sui.sendTo(pPlayer)
+end
+
+function VillageGmSui:manageCounterStrikeBaseCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		return
+	end
+
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+	local menuOption =  suiPageData:getStoredData(tostring(args))
+
+	local targetID, pTheater
+	local curPhase = VillageJediManagerTownship:getCurrentPhase()
+
+	if (curPhase ~= 3) then
+		return
+	end
+
+	if (string.find(menuOption, "%d")) then
+		targetID = string.match(menuOption, '%d+')
+		menuOption = string.gsub(menuOption, targetID, "")
+
+		if (menuOption == nil) then
+			return
+		end
+
+		pTheater = getSceneObject(targetID)
+
+		if (pTheater == nil) then
+			printLuaError("Unable to find theater for VillageGmSui function " .. menuOption .. " using oid " .. targetID)
+			return
+		end
+
+		if (menuOption == "resetCounterStrikeBase") then
+			FsCsBaseControl:resetCamp(pTheater, 0, true)
+			CreatureObject(pPlayer):sendSystemMessage("Base reset.")
+		end
+	end
 end
 
 function VillageGmSui:getPhaseDuration()

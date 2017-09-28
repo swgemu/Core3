@@ -240,7 +240,7 @@ function FsCsCommander:notifyEnteredCommanderTurninArea(pArea, pCreature)
 	return 1
 end
 
-function FsCounterStrike:handleCommanderAbandoned(pPlayer)
+function FsCsCommander:handleCommanderAbandoned(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local commanderID = readData(playerID .. ":fsCounterStrike:commanderID")
 
