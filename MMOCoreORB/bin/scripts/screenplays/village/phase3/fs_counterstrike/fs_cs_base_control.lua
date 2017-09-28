@@ -261,6 +261,9 @@ function FsCsBaseControl:erectShield(pTheater)
 	end
 
 	local theaterID = SceneObject(pTheater):getObjectID()
+	local shieldID = readData(theaterID .. ":shieldID")
+
+	local pShield = getSceneObject(shieldID)
 
 	if (not self:isShieldPoweredDown(pTheater)) then
 		printLuaError("Error generating shield in FsCsBaseControl:erectShield, existing shield found.")
@@ -272,6 +275,18 @@ function FsCsBaseControl:erectShield(pTheater)
 	if pActiveArea ~= nil then
 		writeData(theaterID .. ":shieldID", SceneObject(pActiveArea):getObjectID())
 		createEvent(10000, "FsCsBaseControl", "createShieldObserver", pActiveArea, "")
+		deleteData(theaterID .. ":shieldPowerDownTime")
+		deleteData(theaterID .. ":shieldPoweredDown")
+		
+		local playerTable = SceneObject(pActiveArea):getPlayersInRange(self.shieldRadius)
+		
+		for i = 1, #playerTable, 1 do
+			local pPlayer = playerTable[i]
+			
+			if (pPlayer ~= nil) then
+				self:notifyEnteredCampShieldArea(pActiveArea, pPlayer)
+			end
+		end
 	end
 end
 
@@ -530,6 +545,7 @@ function FsCsBaseControl:resetCamp(pTheater, attackerID, override)
 		return
 	end
 
+	attackerID = tonumber(attackerID)
 	local theaterID = SceneObject(pTheater):getObjectID()
 	local storedAttackerID = readData(theaterID .. ":attackerID")
 
@@ -542,8 +558,6 @@ function FsCsBaseControl:resetCamp(pTheater, attackerID, override)
 
 	deleteData(theaterID .. ":attackerID")
 	deleteData(attackerID .. ":csTheater")
-	deleteData(theaterID .. ":shieldPowerDownTime")
-	deleteData(theaterID .. ":shieldPoweredDown")
 
 	local turret1ID = readData(theaterID .. "turret1")
 	local pTurret1 = getSceneObject(turret1ID)
