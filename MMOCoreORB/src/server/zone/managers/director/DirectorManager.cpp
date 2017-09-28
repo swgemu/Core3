@@ -254,13 +254,13 @@ uint64 DirectorManager::readSharedMemory(const String& key) {
 	return data;
 }
 
-Vector<Reference<ScreenPlayTask*> > DirectorManager::getPlayerEvents(CreatureObject* player) {
+Vector<Reference<ScreenPlayTask*> > DirectorManager::getObjectEvents(SceneObject* obj) {
 	Vector<Reference<ScreenPlayTask*> > eventList;
 
 	for (int i = 0; i < screenplayTasks.size(); i++) {
 		Reference<ScreenPlayTask*> task = screenplayTasks.get(i);
 
-		if (task->getSceneObject() == player) {
+		if (task->getSceneObject() == obj) {
 			eventList.add(task);
 		}
 	}

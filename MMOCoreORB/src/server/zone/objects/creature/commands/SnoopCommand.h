@@ -192,7 +192,7 @@ public:
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		Vector<Reference<ScreenPlayTask*> > eventList = DirectorManager::instance()->getPlayerEvents(target);
+		Vector<Reference<ScreenPlayTask*> > eventList = DirectorManager::instance()->getObjectEvents(target);
 
 		ManagedReference<SuiListBox*> box = new SuiListBox(creature, 0);
 		box->setPromptTitle("LUA Events");
