@@ -17,6 +17,7 @@ public:
 	}
 
 	void run() {
+		printf("RankMaintenanceTask run()\n");
 		ManagedReference<FrsManager*> strongRef = frsManager.get();
 
 		if (strongRef == NULL)
@@ -34,6 +35,8 @@ public:
 			reschedule(strongRef->getMaintenanceInterval());
 			return;
 		}
+
+		printf("RankMaintenanceTask iterating %i players\n", playerList.size());
 
 		int playersPerTask = 10;
 		int numTasks = ceil((float)playerList.size() / (float)playersPerTask);

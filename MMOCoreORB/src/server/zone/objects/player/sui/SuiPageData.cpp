@@ -10,6 +10,7 @@
 #include "SuiCommand.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "server/zone/packets/ui/SuiForceClosePage.h"
 #include "server/zone/packets/ui/SuiUpdatePageMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -145,9 +146,10 @@ bool SuiPageData::parseFromBinaryStream(ObjectInputStream* stream) {
 
 void SuiPageData::sendTo(CreatureObject* creo) {
 	PlayerObject* playerObject = creo->getPlayerObject();
+	auto client = creo->getClient();
 
-	if (playerObject != NULL) {
-		creo->getClient()->sendMessage(new SuiCreatePageMessage(this));
+	if (playerObject != NULL && client != NULL) {
+		client->sendMessage(new SuiCreatePageMessage(this));
 	}
 }
 
@@ -157,5 +159,14 @@ void SuiPageData::sendUpdateTo(CreatureObject* creo) {
 
 	if (playerObject != NULL && client != NULL) {
 		client->sendMessage(new SuiUpdatePageMessage(this));
+	}
+}
+
+void SuiPageData::forceClose(CreatureObject* creo) {
+	PlayerObject* playerObject = creo->getPlayerObject();
+	auto client = creo->getClient();
+
+	if (playerObject != NULL && client != NULL) {
+		client->sendMessage(new SuiForceClosePage(id));
 	}
 }

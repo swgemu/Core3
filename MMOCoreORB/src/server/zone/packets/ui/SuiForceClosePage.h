@@ -5,6 +5,8 @@
 #ifndef SUIFORCECLOSEPAGE_H_
 #define SUIFORCECLOSEPAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class SuiForceClosePage : public BaseMessage {
 public:
    SuiForceClosePage(uint32 pageID) : BaseMessage() {

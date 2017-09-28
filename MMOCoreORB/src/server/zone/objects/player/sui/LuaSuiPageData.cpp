@@ -191,6 +191,15 @@ int LuaSuiPageData::sendUpdateTo(lua_State* L) {
 	return 0;
 }
 
+int LuaSuiPageData::forceClose(lua_State* L) {
+	CreatureObject* creo = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	if (creo != NULL)
+		realObject->forceClose(creo);
+
+	return 0;
+}
+
 int LuaSuiPageData::getTargetNetworkId(lua_State* L) {
 	lua_pushinteger(L, realObject->getTargetNetworkId());
 

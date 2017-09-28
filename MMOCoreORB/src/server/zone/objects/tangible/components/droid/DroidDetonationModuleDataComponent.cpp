@@ -14,8 +14,6 @@ DroidDetonationModuleDataComponent::DroidDetonationModuleDataComponent() {
 	moduleCount = 0;
 	initialized = false;
 	started = false;
-	mseDroid = false;
-	advanced = false;
 }
 
 DroidDetonationModuleDataComponent::~DroidDetonationModuleDataComponent() {
@@ -31,10 +29,6 @@ void DroidDetonationModuleDataComponent::updateCraftingValues(CraftingValues* va
 }
 
 void DroidDetonationModuleDataComponent::initialize(DroidObject* droid) {
-	if (droid->getSpecies() == DroidObject::MSE) {
-		mseDroid = true;
-	}
-
 	// ensure state on init
 	started = false;
 	initialized = false;
@@ -64,19 +58,17 @@ void DroidDetonationModuleDataComponent::initializeTransientMembers() {
 	if (droidComponent->hasKey("species")) {
 		species = droidComponent->getAttributeValue("species");
 	}
-
-	if (species == DroidObject::MSE) {
-		mseDroid = true;
-	}
 }
 
 void DroidDetonationModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	if (mseDroid) {
-		int bonus = moduleCount * 10;
-		alm->insertAttribute("bomb_level", rating + bonus);
-	} else {
-		alm->insertAttribute( "bomb_level", rating);
-	}
+	int bonus = 0;
+
+	if (droid->getSpecies() == DroidObject::MSE)
+		bonus = 10;
+	else if (droid->getSpecies() == DroidObject::MSE_ADV)
+		bonus = 20;
+
+	alm->insertAttribute("bomb_level", rating + bonus);
 }
 
 void DroidDetonationModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -100,17 +92,18 @@ void DroidDetonationModuleDataComponent::fillObjectMenuResponse(SceneObject* dro
 }
 
 int DroidDetonationModuleDataComponent::calculateDamage(DroidObject* droid) {
-	int bonus  = 0;
-	if (droid->getSpecies() == DroidObject::MSE)
-		bonus = moduleCount * 10;
+	int bonus = 0;
 
-	// generate a damage value 150 - 200 per module 175 is mid so we calc 150 + 1..50 as damage output
+	if (droid->getSpecies() == DroidObject::MSE)
+		bonus = 10;
+	else if (droid->getSpecies() == DroidObject::MSE_ADV)
+		bonus = 20;
+
 	return (System::random(50) + 150) * (bonus + rating);
 }
 
 void DroidDetonationModuleDataComponent::setSpecies(int i) {
 	species = i;
-	mseDroid = i == DroidObject::MSE;
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	if (droidComponent != NULL) {

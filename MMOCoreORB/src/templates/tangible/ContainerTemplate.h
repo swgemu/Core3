@@ -12,10 +12,11 @@
 
 class ContainerTemplate : public SharedTangibleObjectTemplate {
 	bool lock;
+	int lockChance;
 
 public:
 	ContainerTemplate() : lock(false) {
-
+		lockChance = 0;
 	}
 
 	~ContainerTemplate() {
@@ -26,11 +27,16 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		lock = templateData->getByteField("locked");
+		lockChance = templateData->getIntField("lockChance");
 
     }
 
 	inline bool getLocked() const {
 		return lock;
+	}
+
+	inline int getLockChance() const {
+		return lockChance;
 	}
 
 };

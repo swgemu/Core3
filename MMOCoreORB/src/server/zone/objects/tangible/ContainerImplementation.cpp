@@ -23,10 +23,10 @@ void ContainerImplementation::initializeTransientMembers() {
 
 void ContainerImplementation::notifyLoadFromDatabase()
 {
-    TangibleObjectImplementation::notifyLoadFromDatabase();
-	if(getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+	TangibleObjectImplementation::notifyLoadFromDatabase();
 
-		if(System::random(100) < getLockChance()) {
+	if (getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+		if (System::random(100) < getLockChance()) {
 			setLockedStatus(true);
 			setSliceable(true);
 			setSliced(false);
@@ -48,7 +48,7 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		return;
 
 	locked = containerTemplate->getLocked();
-
+	lockChance = containerTemplate->getLockChance();
 }
 
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -167,7 +167,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 						return TransferErrorCode::CONTAINERFULL;
 					}
-				// Return if it's in a player bank that doesn't have room
+					// Return if it's in a player bank that doesn't have room
 				} else if (parentOfWearableParent == bank) {
 					if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
 						errorDescription = "@container_error_message:container03"; // This container is full.
@@ -182,7 +182,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 				WearableContainerObject* pack = cast<WearableContainerObject*>(_this.getReferenceUnsafeStaticCast());
 
 				if (pack != NULL && !pack->isEquipped()) {
-				// This is a wearable container, and it's not equipped.
+					// This is a wearable container, and it's not equipped.
 					if (playerParent != NULL ) {
 						SceneObject* inventory = playerParent->getSlottedObject("inventory");
 						SceneObject* bank = playerParent->getSlottedObject("bank");
@@ -195,7 +195,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 								return TransferErrorCode::CONTAINERFULL;
 							}
-						// Return if it's in a player bank that doesn't have room
+							// Return if it's in a player bank that doesn't have room
 						} else if (thisParent == bank) {
 							if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
 								errorDescription = "@container_error_message:container03"; // This container is full.
@@ -219,11 +219,11 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 							return TransferErrorCode::CONTAINERFULL;
 						}
-					// Return if it's in a player bank that doesn't have room
+						// Return if it's in a player bank that doesn't have room
 					} else if (thisParent == bank) {
 						if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
 							errorDescription = "@container_error_message:container03"; // This container is full.
-								return TransferErrorCode::CONTAINERFULL;
+							return TransferErrorCode::CONTAINERFULL;
 						}
 					}
 				}
@@ -255,7 +255,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 					if (hopper->getContainerVolumeLimit() < hopper->getCountableObjectsRecursive() + objectSize) {
 						errorDescription = "@container_error_message:container03"; // This container is full.
-							return TransferErrorCode::CONTAINERFULL;
+						return TransferErrorCode::CONTAINERFULL;
 					}
 				}
 			}

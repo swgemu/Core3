@@ -22,8 +22,6 @@ protected:
 	int rating;
 	int moduleCount;
 	bool started;
-	bool mseDroid;
-	bool advanced;
 public:
 	DroidDetonationModuleDataComponent();
 

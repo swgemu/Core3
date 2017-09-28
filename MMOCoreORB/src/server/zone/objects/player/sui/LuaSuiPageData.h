@@ -23,6 +23,7 @@ public:
 	int _getObject(lua_State* L);
 	int sendTo(lua_State* L);
 	int sendUpdateTo(lua_State* L);
+	int forceClose(lua_State* L);
 	int setProperty(lua_State* L);
 	int getPropertyValue(lua_State* L);
 	int setDefaultCallback(lua_State* L);

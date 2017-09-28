@@ -47,6 +47,7 @@ public:
 
 	void sendTo(CreatureObject* creo);
 	void sendUpdateTo(CreatureObject* creo);
+	void forceClose(CreatureObject* creo);
 
 	void setStoredData(const String& key, const String& value) {
 		if (storedData.contains(key))

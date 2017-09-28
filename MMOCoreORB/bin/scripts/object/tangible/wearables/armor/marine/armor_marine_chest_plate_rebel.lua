@@ -90,7 +90,7 @@ object_tangible_wearables_armor_marine_armor_marine_chest_plate_rebel = object_t
 				"object/mobile/vendor/zabrak_male.iff" },
 	
 	-- Damage types in WeaponObject
-	vulnerability = ACID + STUN + LIGHTSABER,
+	vulnerability = ACID + HEAT + STUN + LIGHTSABER,
 	
 	maxCondition = 45000,
 	
@@ -107,7 +107,7 @@ object_tangible_wearables_armor_marine_armor_marine_chest_plate_rebel = object_t
 	electricity = 30,
 	stun = 0,
 	blast = 30,
-	heat = 30,
+	heat = 0,
 	cold = 30,
 	acid = 0,
 	lightSaber = 0
