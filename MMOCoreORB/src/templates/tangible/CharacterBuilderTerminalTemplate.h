@@ -14,6 +14,7 @@
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	Reference<CharacterBuilderMenuNode*> rootNode;
 	Vector<int> glowyBadgeIds;
+	Vector<String> villageBranchUnlocks;
 
 public:
 	CharacterBuilderTerminalTemplate() : rootNode(NULL) {
@@ -37,6 +38,14 @@ public:
 
 		luaGlowyBadges.pop();
 
+		LuaObject luaBranchUnlocks = templateData->getObjectField("villageBranchUnlocks");
+
+		for (int i = 1; i <= luaBranchUnlocks.getTableSize(); ++i) {
+			villageBranchUnlocks.add(luaBranchUnlocks.getStringAt(i));
+		}
+
+		luaBranchUnlocks.pop();
+
 		LuaObject luaItemList = templateData->getObjectField("itemList");
 
 		//Ensure that the luaItemList root level is of an even order.
@@ -58,6 +67,10 @@ public:
 
     inline Vector<int> getGlowyBadgeIds() const {
         return glowyBadgeIds;
+    }
+
+    inline Vector<String> getVillageBranchUnlocks() const {
+        return villageBranchUnlocks;
     }
 };
 

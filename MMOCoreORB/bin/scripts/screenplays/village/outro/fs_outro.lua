@@ -128,3 +128,22 @@ function FsOutro:doOldManSpawn(pPlayer)
 		return
 	end
 end
+
+function FsOutro:completeVillageOutroFrog(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	QuestManager.completeQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
+	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
+
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)
+
+	PadawanTrials:doPadawanTrialsSetup(pPlayer)
+end
