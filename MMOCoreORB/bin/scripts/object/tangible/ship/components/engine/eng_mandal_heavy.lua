@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mandal_heavy = object_tangible_ship_components_engine_shared_eng_mandal_heavy:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6189.0,
+	hitpoints = 637.0,
+	armor = 324.0,
+	energyUsage = 1654.0,
+	speed = 55.0,
+	pitch = 58.0,
+	yaw = 51.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mandal_heavy, "object/tangible/ship/components/engine/eng_mandal_heavy.iff")

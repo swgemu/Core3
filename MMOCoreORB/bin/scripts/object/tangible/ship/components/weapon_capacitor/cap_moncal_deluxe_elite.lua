@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_moncal_deluxe_elite = object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56404.0,
+	hitpoints = 1816.0,
+	armor = 910.0,
+	energyUsage = 1256.0,
+	rechargeRate = 52.0,
+	rechargeRateMod = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_moncal_deluxe_elite, "object/tangible/ship/components/weapon_capacitor/cap_moncal_deluxe_elite.iff")

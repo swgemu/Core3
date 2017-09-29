@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_incom_fusialthrust = object_tangible_ship_components_engine_shared_eng_incom_fusialthrust:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4137.0,
+	hitpoints = 432.0,
+	armor = 217.0,
+	energyUsage = 1584.0,
+	speed = 59.0,
+	pitch = 61.0,
+	yaw = 63.0,
+	roll = 66.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_incom_fusialthrust, "object/tangible/ship/components/engine/eng_incom_fusialthrust.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_corellian_cruiser_grade_mk1 = object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 992.0,
+	hitpoints = 173.0,
+	armor = 92.0,
+	energyUsage = 1507.0,
+	speed = 52.0,
+	pitch = 48.0,
+	yaw = 50.0,
+	roll = 50.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_corellian_cruiser_grade_mk1, "object/tangible/ship/components/engine/eng_corellian_cruiser_grade_mk1.iff")

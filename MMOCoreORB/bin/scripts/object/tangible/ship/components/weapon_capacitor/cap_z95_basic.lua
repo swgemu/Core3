@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_z95_basic = object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1007.0,
+	hitpoints = 158.0,
+	armor = 78.0,
+	energyUsage = 1000.0,
+	rechargeRate = 29.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_z95_basic, "object/tangible/ship/components/weapon_capacitor/cap_z95_basic.iff")

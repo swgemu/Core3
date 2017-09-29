@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sfs_modified_imperial_3 = object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 10819.0,
+	hitpoints = 761.0,
+	armor = 383.0,
+	energyUsage = 1582.0,
+	speed = 70.0,
+	pitch = 65.0,
+	yaw = 71.0,
+	roll = 66.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sfs_modified_imperial_3, "object/tangible/ship/components/engine/eng_sfs_modified_imperial_3.iff")

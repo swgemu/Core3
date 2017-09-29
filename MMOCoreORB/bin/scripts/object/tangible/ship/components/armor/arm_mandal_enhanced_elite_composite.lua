@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mandal_enhanced_elite_composite = object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 41081.0,
+	hitpoints = 1517.0,
+	armor = 1519.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_enhanced_elite_composite, "object/tangible/ship/components/armor/arm_mandal_enhanced_elite_composite.iff")

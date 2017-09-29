@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kessel_rebel_novaldex_blackhole_elite = object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 52876.0,
+	hitpoints = 1377.0,
+	armor = 690.0,
+	energyUsage = 1807.0,
+	speed = 88.0,
+	pitch = 80.0,
+	yaw = 79.0,
+	roll = 77.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kessel_rebel_novaldex_blackhole_elite, "object/tangible/ship/components/engine/eng_kessel_rebel_novaldex_blackhole_elite.iff")

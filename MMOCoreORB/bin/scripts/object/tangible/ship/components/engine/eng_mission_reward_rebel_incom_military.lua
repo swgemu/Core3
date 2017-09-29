@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mission_reward_rebel_incom_military = object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 13771.0,
+	hitpoints = 1112.0,
+	armor = 557.0,
+	energyUsage = 2101.0,
+	speed = 86.0,
+	pitch = 68.0,
+	yaw = 70.0,
+	roll = 66.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mission_reward_rebel_incom_military, "object/tangible/ship/components/engine/eng_mission_reward_rebel_incom_military.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_gallofree_lt22 = object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4602.0,
+	hitpoints = 519.0,
+	armor = 266.0,
+	energyUsage = 1057.0,
+	rechargeRate = 43.0,
+	rechargeRateMod = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_gallofree_lt22, "object/tangible/ship/components/weapon_capacitor/cap_gallofree_lt22.iff")

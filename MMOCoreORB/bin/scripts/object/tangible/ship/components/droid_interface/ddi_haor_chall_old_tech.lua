@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_haor_chall_old_tech = object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 1257.0,
+	hitpoints = 352.0,
+	armor = 174.0,
+	energyUsage = 500.0,
+	droidSpeed = 32.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_haor_chall_old_tech, "object/tangible/ship/components/droid_interface/ddi_haor_chall_old_tech.iff")

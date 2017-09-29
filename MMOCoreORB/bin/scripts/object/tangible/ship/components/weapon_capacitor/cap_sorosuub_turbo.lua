@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_sorosuub_turbo = object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 5002.0,
+	hitpoints = 451.0,
+	armor = 228.0,
+	energyUsage = 808.0,
+	rechargeRate = 18.0,
+	rechargeRateMod = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sorosuub_turbo, "object/tangible/ship/components/weapon_capacitor/cap_sorosuub_turbo.iff")

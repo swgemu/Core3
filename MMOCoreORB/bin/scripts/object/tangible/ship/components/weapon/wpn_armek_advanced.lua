@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_armek_advanced = object_tangible_ship_components_weapon_shared_wpn_armek_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42910.0,
+	hitpoints = 995.0,
+	armor = 503.0,
+	energyUsage = 2403.0,
+	minDamage = 1990.0,
+	maxDamage = 3211.0,
+	refireRate = 1.0,
+	energyPerShot = 38.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_armek_advanced, "object/tangible/ship/components/weapon/wpn_armek_advanced.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_sorosuub_flash = object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 47002.0,
+	hitpoints = 1653.0,
+	armor = 832.0,
+	energyUsage = 1209.0,
+	rechargeRate = 46.0,
+	rechargeRateMod = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sorosuub_flash, "object/tangible/ship/components/weapon_capacitor/cap_sorosuub_flash.iff")

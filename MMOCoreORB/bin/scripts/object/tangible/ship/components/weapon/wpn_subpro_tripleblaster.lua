@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_subpro_tripleblaster = object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4602.0,
+	hitpoints = 438.0,
+	armor = 222.0,
+	energyUsage = 2102.0,
+	minDamage = 761.0,
+	maxDamage = 1072.0,
+	refireRate = 5.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 8.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_subpro_tripleblaster, "object/tangible/ship/components/weapon/wpn_subpro_tripleblaster.iff")

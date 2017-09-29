@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sds_imperial_2 = object_tangible_ship_components_engine_shared_eng_sds_imperial_2:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 5346.0,
+	hitpoints = 640.0,
+	armor = 322.0,
+	energyUsage = 1654.0,
+	speed = 49.0,
+	pitch = 60.0,
+	yaw = 54.0,
+	roll = 57.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sds_imperial_2, "object/tangible/ship/components/engine/eng_sds_imperial_2.iff")

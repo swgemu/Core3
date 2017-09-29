@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_subpro_corrugated_durasteel = object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9548.0,
+	hitpoints = 880.0,
+	armor = 877.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_subpro_corrugated_durasteel, "object/tangible/ship/components/armor/armor_subpro_corrugated_durasteel.iff")

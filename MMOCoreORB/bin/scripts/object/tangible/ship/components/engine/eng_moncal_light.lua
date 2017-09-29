@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_moncal_light = object_tangible_ship_components_engine_shared_eng_moncal_light:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 902.0,
+	hitpoints = 155.0,
+	armor = 82.0,
+	energyUsage = 1508.0,
+	speed = 48.0,
+	pitch = 48.0,
+	yaw = 48.0,
+	roll = 49.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_moncal_light, "object/tangible/ship/components/engine/eng_moncal_light.iff")

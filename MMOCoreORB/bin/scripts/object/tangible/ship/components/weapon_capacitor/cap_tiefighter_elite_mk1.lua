@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_tiefighter_elite_mk1 = object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2751.0,
+	hitpoints = 382.0,
+	armor = 191.0,
+	energyUsage = 1109.0,
+	rechargeRate = 28.0,
+	rechargeRateMod = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_tiefighter_elite_mk1, "object/tangible/ship/components/weapon_capacitor/cap_tiefighter_elite_mk1.iff")

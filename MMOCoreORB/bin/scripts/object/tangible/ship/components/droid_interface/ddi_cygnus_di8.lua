@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_cygnus_di8 = object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 5467.0,
+	hitpoints = 953.0,
+	armor = 484.0,
+	energyUsage = 504.0,
+	droidSpeed = 24.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_cygnus_di8, "object/tangible/ship/components/droid_interface/ddi_cygnus_di8.iff")

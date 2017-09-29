@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_z95_deepwell_k3 = object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1579.0,
+	hitpoints = 203.0,
+	armor = 105.0,
+	energyUsage = 901.0,
+	rechargeRate = 34.0,
+	rechargeRateMod = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_z95_deepwell_k3, "object/tangible/ship/components/weapon_capacitor/cap_z95_deepwell_k3.iff")

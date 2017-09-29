@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_cygnus_eradicator_1 = object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31399.0,
+	hitpoints = 1168.0,
+	armor = 593.0,
+	energyUsage = 2508.0,
+	minDamage = 2058.0,
+	maxDamage = 3175.0,
+	refireRate = 4.0,
+	energyPerShot = 36.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_cygnus_eradicator_1, "object/tangible/ship/components/weapon/wpn_cygnus_eradicator_1.iff")

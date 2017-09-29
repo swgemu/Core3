@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_tiefighter_basic = object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1005.0,
+	hitpoints = 151.0,
+	armor = 81.0,
+	energyUsage = 2002.0,
+	minDamage = 296.0,
+	maxDamage = 400.0,
+	refireRate = 4.0,
+	energyPerShot = 30.0,
+	shieldEffectiveness = 6.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_tiefighter_basic, "object/tangible/ship/components/weapon/wpn_tiefighter_basic.iff")

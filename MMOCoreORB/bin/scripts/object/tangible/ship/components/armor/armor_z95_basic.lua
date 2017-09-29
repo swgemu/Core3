@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_z95_basic = object_tangible_ship_components_armor_shared_armor_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 890.0,
+	hitpoints = 165.0,
+	armor = 172.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_z95_basic, "object/tangible/ship/components/armor/armor_z95_basic.iff")

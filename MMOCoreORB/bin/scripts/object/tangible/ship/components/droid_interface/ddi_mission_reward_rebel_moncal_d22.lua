@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_mission_reward_rebel_moncal_d22 = object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 2626.0,
+	hitpoints = 623.0,
+	armor = 314.0,
+	energyUsage = 607.0,
+	droidSpeed = 33.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mission_reward_rebel_moncal_d22, "object/tangible/ship/components/droid_interface/ddi_mission_reward_rebel_moncal_d22.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_corellian_elite = object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 61107.0,
+	hitpoints = 1573.0,
+	armor = 788.0,
+	energyUsage = 1155.0,
+	rechargeRate = 42.0,
+	rechargeRateMod = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_corellian_elite, "object/tangible/ship/components/weapon_capacitor/cap_corellian_elite.iff")

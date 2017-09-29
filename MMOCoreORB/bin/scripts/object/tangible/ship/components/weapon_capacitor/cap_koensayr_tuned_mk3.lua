@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_koensayr_tuned_mk3 = object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 12018.0,
+	hitpoints = 959.0,
+	armor = 483.0,
+	energyUsage = 1107.0,
+	rechargeRate = 41.0,
+	rechargeRateMod = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_koensayr_tuned_mk3, "object/tangible/ship/components/weapon_capacitor/cap_koensayr_tuned_mk3.iff")

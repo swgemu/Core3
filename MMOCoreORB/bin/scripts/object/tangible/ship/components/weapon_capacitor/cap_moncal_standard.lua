@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_moncal_standard = object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2628.0,
+	hitpoints = 350.0,
+	armor = 177.0,
+	energyUsage = 1051.0,
+	rechargeRate = 31.0,
+	rechargeRateMod = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_moncal_standard, "object/tangible/ship/components/weapon_capacitor/cap_moncal_standard.iff")

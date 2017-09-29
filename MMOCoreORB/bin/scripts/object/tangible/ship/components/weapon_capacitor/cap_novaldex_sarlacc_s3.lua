@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_sarlacc_s3 = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6564.0,
+	hitpoints = 642.0,
+	armor = 320.0,
+	energyUsage = 1157.0,
+	rechargeRate = 35.0,
+	rechargeRateMod = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_sarlacc_s3, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_sarlacc_s3.iff")

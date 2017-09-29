@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mission_reward_neutral_haor_chall_military = object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 34404.0,
+	hitpoints = 1642.0,
+	armor = 825.0,
+	energyUsage = 2107.0,
+	speed = 91.0,
+	pitch = 73.0,
+	yaw = 75.0,
+	roll = 74.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mission_reward_neutral_haor_chall_military, "object/tangible/ship/components/engine/eng_mission_reward_neutral_haor_chall_military.iff")

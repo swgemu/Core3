@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_sorosuub_dynamo_mk4 = object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31405.0,
+	hitpoints = 1410.0,
+	armor = 708.0,
+	energyUsage = 1157.0,
+	rechargeRate = 44.0,
+	rechargeRateMod = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sorosuub_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/cap_sorosuub_dynamo_mk4.iff")

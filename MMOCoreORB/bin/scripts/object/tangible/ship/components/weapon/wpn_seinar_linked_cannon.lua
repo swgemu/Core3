@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_seinar_linked_cannon = object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1930.0,
+	hitpoints = 215.0,
+	armor = 103.0,
+	energyUsage = 2004.0,
+	minDamage = 369.0,
+	maxDamage = 491.0,
+	refireRate = 0.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_seinar_linked_cannon, "object/tangible/ship/components/weapon/wpn_seinar_linked_cannon.iff")

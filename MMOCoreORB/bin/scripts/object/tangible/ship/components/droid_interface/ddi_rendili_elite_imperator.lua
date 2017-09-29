@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_rendili_elite_imperator = object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 19506.0,
+	hitpoints = 1105.0,
+	armor = 558.0,
+	energyUsage = 509.0,
+	droidSpeed = 17.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_rendili_elite_imperator, "object/tangible/ship/components/droid_interface/ddi_rendili_elite_imperator.iff")

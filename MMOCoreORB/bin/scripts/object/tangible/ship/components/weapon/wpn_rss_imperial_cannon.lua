@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_rss_imperial_cannon = object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 7507.0,
+	hitpoints = 703.0,
+	armor = 352.0,
+	energyUsage = 2204.0,
+	minDamage = 1079.0,
+	maxDamage = 1591.0,
+	refireRate = 10.0,
+	energyPerShot = 29.0,
+	shieldEffectiveness = 8.0,
+	armorEffectiveness = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_rss_imperial_cannon, "object/tangible/ship/components/weapon/wpn_rss_imperial_cannon.iff")

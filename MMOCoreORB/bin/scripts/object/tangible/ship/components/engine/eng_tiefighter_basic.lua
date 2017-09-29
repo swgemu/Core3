@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_tiefighter_basic = object_tangible_ship_components_engine_shared_eng_tiefighter_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 949.0,
+	hitpoints = 154.0,
+	armor = 81.0,
+	energyUsage = 1504.0,
+	speed = 43.0,
+	pitch = 47.0,
+	yaw = 51.0,
+	roll = 48.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_tiefighter_basic, "object/tangible/ship/components/engine/eng_tiefighter_basic.iff")

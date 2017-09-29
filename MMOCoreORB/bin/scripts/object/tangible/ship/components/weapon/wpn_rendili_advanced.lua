@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_rendili_advanced = object_tangible_ship_components_weapon_shared_wpn_rendili_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 50700.0,
+	hitpoints = 1213.0,
+	armor = 613.0,
+	energyUsage = 2405.0,
+	minDamage = 1984.0,
+	maxDamage = 3217.0,
+	refireRate = 5.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_rendili_advanced, "object/tangible/ship/components/weapon/wpn_rendili_advanced.iff")

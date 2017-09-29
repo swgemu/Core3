@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mandal_double_insulated_i7 = object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 24113.0,
+	hitpoints = 1290.0,
+	armor = 1293.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_double_insulated_i7, "object/tangible/ship/components/armor/arm_mandal_double_insulated_i7.iff")

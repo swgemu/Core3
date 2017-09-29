@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_nubian_221 = object_tangible_ship_components_engine_shared_engine_nubian_221:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6471.0,
+	hitpoints = 670.0,
+	armor = 343.0,
+	energyUsage = 1735.0,
+	speed = 60.0,
+	pitch = 60.0,
+	yaw = 55.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_nubian_221, "object/tangible/ship/components/engine/engine_nubian_221.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_subpro_light_plasteel = object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 4965.0,
+	hitpoints = 704.0,
+	armor = 703.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_subpro_light_plasteel, "object/tangible/ship/components/armor/armor_subpro_light_plasteel.iff")

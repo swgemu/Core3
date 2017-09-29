@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_freitek_es4_durasteel = object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2214.0,
+	hitpoints = 391.0,
+	armor = 391.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_freitek_es4_durasteel, "object/tangible/ship/components/armor/armor_freitek_es4_durasteel.iff")

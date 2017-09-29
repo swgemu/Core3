@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kse_elite = object_tangible_ship_components_engine_shared_eng_kse_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 52877.0,
+	hitpoints = 1450.0,
+	armor = 727.0,
+	energyUsage = 1878.0,
+	speed = 91.0,
+	pitch = 83.0,
+	yaw = 79.0,
+	roll = 77.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kse_elite, "object/tangible/ship/components/engine/eng_kse_elite.iff")

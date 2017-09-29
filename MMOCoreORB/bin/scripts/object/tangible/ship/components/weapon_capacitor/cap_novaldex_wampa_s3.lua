@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_wampa_s3 = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 46807.0,
+	hitpoints = 1106.0,
+	armor = 560.0,
+	energyUsage = 1201.0,
+	rechargeRate = 36.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_wampa_s3, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_wampa_s3.iff")

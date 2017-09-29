@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mandal_qv3_disruptor = object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2630.0,
+	hitpoints = 354.0,
+	armor = 178.0,
+	energyUsage = 1907.0,
+	minDamage = 554.0,
+	maxDamage = 781.0,
+	refireRate = 9.0,
+	energyPerShot = 27.0,
+	shieldEffectiveness = 10.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mandal_qv3_disruptor, "object/tangible/ship/components/weapon/wpn_mandal_qv3_disruptor.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_tiefighter_basic = object_tangible_ship_components_booster_shared_bst_tiefighter_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 801.0,
+	hitpoints = 159.0,
+	armor = 83.0,
+	energyUsage = 505.0,
+	boosterSpeed = 21.0,
+	boosterEnergy = 1004.0,
+	boosterRecharge = 26.0,
+	boosterDrain = 104.0,
+	boosterAccel = 27.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_tiefighter_basic, "object/tangible/ship/components/booster/bst_tiefighter_basic.iff")

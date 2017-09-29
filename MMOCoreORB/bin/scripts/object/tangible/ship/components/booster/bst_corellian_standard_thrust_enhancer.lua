@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_corellian_standard_thrust_enhancer = object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enhancer:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2105.0,
+	hitpoints = 348.0,
+	armor = 175.0,
+	energyUsage = 527.0,
+	boosterSpeed = 25.0,
+	boosterEnergy = 1104.0,
+	boosterRecharge = 34.0,
+	boosterDrain = 118.0,
+	boosterAccel = 30.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_corellian_standard_thrust_enhancer, "object/tangible/ship/components/booster/bst_corellian_standard_thrust_enhancer.iff")

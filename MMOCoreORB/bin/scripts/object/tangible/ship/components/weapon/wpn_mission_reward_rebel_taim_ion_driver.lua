@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_rebel_taim_ion_driver = object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5694.0,
+	hitpoints = 525.0,
+	armor = 262.0,
+	energyUsage = 2608.0,
+	minDamage = 914.0,
+	maxDamage = 1290.0,
+	refireRate = 9.0,
+	energyPerShot = 36.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_rebel_taim_ion_driver, "object/tangible/ship/components/weapon/wpn_mission_reward_rebel_taim_ion_driver.iff")

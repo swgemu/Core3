@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_sds_imperial_1 = object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1662.0,
+	hitpoints = 220.0,
+	armor = 113.0,
+	energyUsage = 950.0,
+	rechargeRate = 30.0,
+	rechargeRateMod = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sds_imperial_1, "object/tangible/ship/components/weapon_capacitor/cap_sds_imperial_1.iff")

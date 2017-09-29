@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mission_reward_neutral_sorosuub_v1 = object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9352.0,
+	hitpoints = 958.0,
+	armor = 480.0,
+	energyUsage = 1102.0,
+	rechargeRate = 43.0,
+	rechargeRateMod = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mission_reward_neutral_sorosuub_v1, "object/tangible/ship/components/weapon_capacitor/cap_mission_reward_neutral_sorosuub_v1.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_neutral_mandal_light_blaster = object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1205.0,
+	hitpoints = 182.0,
+	armor = 92.0,
+	energyUsage = 2404.0,
+	minDamage = 355.0,
+	maxDamage = 475.0,
+	refireRate = 4.0,
+	energyPerShot = 27.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_neutral_mandal_light_blaster, "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_mandal_light_blaster.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_cygnus_elite = object_tangible_ship_components_weapon_shared_wpn_cygnus_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56406.0,
+	hitpoints = 1379.0,
+	armor = 691.0,
+	energyUsage = 2401.0,
+	minDamage = 2484.0,
+	maxDamage = 4020.0,
+	refireRate = 10.0,
+	energyPerShot = 41.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_cygnus_elite, "object/tangible/ship/components/weapon/wpn_cygnus_elite.iff")

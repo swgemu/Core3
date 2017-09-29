@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_seinar_ls72 = object_tangible_ship_components_weapon_shared_wpn_seinar_ls72:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 61103.0,
+	hitpoints = 1514.0,
+	armor = 758.0,
+	energyUsage = 2407.0,
+	minDamage = 2477.0,
+	maxDamage = 4013.0,
+	refireRate = 1.0,
+	energyPerShot = 39.0,
+	shieldEffectiveness = 6.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_seinar_ls72, "object/tangible/ship/components/weapon/wpn_seinar_ls72.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_subpro_bargain_plastisteel = object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 886.0,
+	hitpoints = 127.0,
+	armor = 128.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_subpro_bargain_plastisteel, "object/tangible/ship/components/armor/arm_subpro_bargain_plastisteel.iff")

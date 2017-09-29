@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_kse_custom_manager_mk2 = object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 2196.0,
+	hitpoints = 520.0,
+	armor = 268.0,
+	energyUsage = 502.0,
+	droidSpeed = 38.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kse_custom_manager_mk2, "object/tangible/ship/components/droid_interface/ddi_kse_custom_manager_mk2.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mandal_modifier_composite_j5 = object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1550.0,
+	hitpoints = 157.0,
+	armor = 164.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_modifier_composite_j5, "object/tangible/ship/components/armor/arm_mandal_modifier_composite_j5.iff")

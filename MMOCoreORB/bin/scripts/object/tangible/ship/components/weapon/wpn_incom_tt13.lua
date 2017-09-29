@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_incom_tt13 = object_tangible_ship_components_weapon_shared_wpn_incom_tt13:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6251.0,
+	hitpoints = 576.0,
+	armor = 289.0,
+	energyUsage = 2200.0,
+	minDamage = 1078.0,
+	maxDamage = 1589.0,
+	refireRate = 3.0,
+	energyPerShot = 33.0,
+	shieldEffectiveness = 6.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_tt13, "object/tangible/ship/components/weapon/wpn_incom_tt13.iff")

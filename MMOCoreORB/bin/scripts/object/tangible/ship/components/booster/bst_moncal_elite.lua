@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_moncal_elite = object_tangible_ship_components_booster_shared_bst_moncal_elite:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37446.0,
+	hitpoints = 1101.0,
+	armor = 554.0,
+	energyUsage = 605.0,
+	boosterSpeed = 31.0,
+	boosterEnergy = 1465.0,
+	boosterRecharge = 46.0,
+	boosterDrain = 152.0,
+	boosterAccel = 29.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_moncal_elite, "object/tangible/ship/components/booster/bst_moncal_elite.iff")

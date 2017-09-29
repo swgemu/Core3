@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_rss_imperial_skyrunner_4 = object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 27030.0,
+	hitpoints = 1176.0,
+	armor = 592.0,
+	energyUsage = 1729.0,
+	speed = 78.0,
+	pitch = 70.0,
+	yaw = 70.0,
+	roll = 74.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rss_imperial_skyrunner_4, "object/tangible/ship/components/engine/eng_rss_imperial_skyrunner_4.iff")

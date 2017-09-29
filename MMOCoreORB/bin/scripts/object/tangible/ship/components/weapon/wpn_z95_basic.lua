@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_z95_basic = object_tangible_ship_components_weapon_shared_wpn_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1008.0,
+	hitpoints = 155.0,
+	armor = 76.0,
+	energyUsage = 2006.0,
+	minDamage = 299.0,
+	maxDamage = 396.0,
+	refireRate = 4.0,
+	energyPerShot = 24.0,
+	shieldEffectiveness = 2.0,
+	armorEffectiveness = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_z95_basic, "object/tangible/ship/components/weapon/wpn_z95_basic.iff")

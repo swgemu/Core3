@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sorosuub_u83r_ion_drive = object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2368.0,
+	hitpoints = 355.0,
+	armor = 178.0,
+	energyUsage = 1578.0,
+	speed = 54.0,
+	pitch = 53.0,
+	yaw = 49.0,
+	roll = 53.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sorosuub_u83r_ion_drive, "object/tangible/ship/components/engine/eng_sorosuub_u83r_ion_drive.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_moncal_improved_heavy = object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 10823.0,
+	hitpoints = 802.0,
+	armor = 406.0,
+	energyUsage = 1652.0,
+	speed = 76.0,
+	pitch = 66.0,
+	yaw = 67.0,
+	roll = 66.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_moncal_improved_heavy, "object/tangible/ship/components/engine/eng_moncal_improved_heavy.iff")

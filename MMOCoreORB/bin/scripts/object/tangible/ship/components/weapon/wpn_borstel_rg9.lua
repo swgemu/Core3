@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_borstel_rg9 = object_tangible_ship_components_weapon_shared_wpn_borstel_rg9:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 46802.0,
+	hitpoints = 1103.0,
+	armor = 550.0,
+	energyUsage = 2410.0,
+	minDamage = 1989.0,
+	maxDamage = 3215.0,
+	refireRate = 7.0,
+	energyPerShot = 36.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_borstel_rg9, "object/tangible/ship/components/weapon/wpn_borstel_rg9.iff")

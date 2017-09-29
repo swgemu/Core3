@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_koensayr_elite = object_tangible_ship_components_engine_shared_eng_koensayr_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 50767.0,
+	hitpoints = 1381.0,
+	armor = 693.0,
+	energyUsage = 1810.0,
+	speed = 84.0,
+	pitch = 77.0,
+	yaw = 71.0,
+	roll = 79.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_koensayr_elite, "object/tangible/ship/components/engine/eng_koensayr_elite.iff")

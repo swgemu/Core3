@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_z95_blaster = object_tangible_ship_components_weapon_shared_wpn_z95_blaster:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1753.0,
+	hitpoints = 197.0,
+	armor = 96.0,
+	energyUsage = 2002.0,
+	minDamage = 363.0,
+	maxDamage = 490.0,
+	refireRate = 7.0,
+	energyPerShot = 26.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_z95_blaster, "object/tangible/ship/components/weapon/wpn_z95_blaster.iff")

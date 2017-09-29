@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_moncal_rare_advanced = object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 25121.0,
+	hitpoints = 1406.0,
+	armor = 701.0,
+	energyUsage = 581.0,
+	boosterSpeed = 38.0,
+	boosterEnergy = 1997.0,
+	boosterRecharge = 52.0,
+	boosterDrain = 209.0,
+	boosterAccel = 48.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_moncal_rare_advanced, "object/tangible/ship/components/booster/bst_moncal_rare_advanced.iff")

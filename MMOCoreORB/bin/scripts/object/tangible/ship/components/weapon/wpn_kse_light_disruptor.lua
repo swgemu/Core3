@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kse_light_disruptor = object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 973.0,
+	hitpoints = 153.0,
+	armor = 83.0,
+	energyUsage = 1943.0,
+	minDamage = 294.0,
+	maxDamage = 391.0,
+	refireRate = 4.0,
+	energyPerShot = 25.0,
+	shieldEffectiveness = 8.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kse_light_disruptor, "object/tangible/ship/components/weapon/wpn_kse_light_disruptor.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_neutral_borstel_disruptor = object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 38221.0,
+	hitpoints = 1410.0,
+	armor = 709.0,
+	energyUsage = 2803.0,
+	minDamage = 2390.0,
+	maxDamage = 3697.0,
+	refireRate = 10.0,
+	energyPerShot = 24.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_neutral_borstel_disruptor, "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_borstel_disruptor.iff")

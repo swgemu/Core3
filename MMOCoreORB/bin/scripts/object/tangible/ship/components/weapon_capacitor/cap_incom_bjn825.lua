@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_incom_bjn825 = object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2627.0,
+	hitpoints = 354.0,
+	armor = 181.0,
+	energyUsage = 1158.0,
+	rechargeRate = 33.0,
+	rechargeRateMod = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_incom_bjn825, "object/tangible/ship/components/weapon_capacitor/cap_incom_bjn825.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kdy_pounder_mk1 = object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4600.0,
+	hitpoints = 434.0,
+	armor = 224.0,
+	energyUsage = 1901.0,
+	minDamage = 685.0,
+	maxDamage = 974.0,
+	refireRate = 3.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kdy_pounder_mk1, "object/tangible/ship/components/weapon/wpn_kdy_pounder_mk1.iff")

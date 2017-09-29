@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_taim_ix4 = object_tangible_ship_components_weapon_shared_wpn_taim_ix4:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4467.0,
+	hitpoints = 437.0,
+	armor = 221.0,
+	energyUsage = 2041.0,
+	minDamage = 768.0,
+	maxDamage = 1079.0,
+	refireRate = 3.0,
+	energyPerShot = 37.0,
+	shieldEffectiveness = 10.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_taim_ix4, "object/tangible/ship/components/weapon/wpn_taim_ix4.iff")

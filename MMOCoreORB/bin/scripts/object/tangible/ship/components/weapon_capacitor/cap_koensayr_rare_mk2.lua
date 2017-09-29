@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_koensayr_rare_mk2 = object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4596.0,
+	hitpoints = 518.0,
+	armor = 260.0,
+	energyUsage = 1059.0,
+	rechargeRate = 36.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_koensayr_rare_mk2, "object/tangible/ship/components/weapon_capacitor/cap_koensayr_rare_mk2.iff")

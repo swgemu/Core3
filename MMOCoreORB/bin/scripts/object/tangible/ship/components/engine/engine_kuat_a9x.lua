@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_kuat_a9x = object_tangible_ship_components_engine_shared_engine_kuat_a9x:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 15451.0,
+	hitpoints = 891.0,
+	armor = 448.0,
+	energyUsage = 1655.0,
+	speed = 63.0,
+	pitch = 60.0,
+	yaw = 63.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_kuat_a9x, "object/tangible/ship/components/engine/engine_kuat_a9x.iff")

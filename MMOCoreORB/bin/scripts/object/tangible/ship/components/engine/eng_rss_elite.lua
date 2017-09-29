@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_rss_elite = object_tangible_ship_components_engine_shared_eng_rss_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 50764.0,
+	hitpoints = 1385.0,
+	armor = 688.0,
+	energyUsage = 1805.0,
+	speed = 92.0,
+	pitch = 79.0,
+	yaw = 75.0,
+	roll = 77.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rss_elite, "object/tangible/ship/components/engine/eng_rss_elite.iff")

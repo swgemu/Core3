@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_subpro_defiant_c1 = object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 7196.0,
+	hitpoints = 703.0,
+	armor = 351.0,
+	energyUsage = 1156.0,
+	rechargeRate = 29.0,
+	rechargeRateMod = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_subpro_defiant_c1, "object/tangible/ship/components/weapon_capacitor/cap_subpro_defiant_c1.iff")

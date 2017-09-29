@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_koensayr_advanced = object_tangible_ship_components_engine_shared_eng_koensayr_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 45638.0,
+	hitpoints = 890.0,
+	armor = 446.0,
+	energyUsage = 1504.0,
+	speed = 72.0,
+	pitch = 65.0,
+	yaw = 61.0,
+	roll = 64.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_koensayr_advanced, "object/tangible/ship/components/engine/eng_koensayr_advanced.iff")
