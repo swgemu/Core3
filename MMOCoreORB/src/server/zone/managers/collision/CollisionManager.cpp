@@ -261,6 +261,61 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 	return collisions;
 }
 
+float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* zone, bool testWater) {
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return 0.f;
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	zone->getInRangeObjects(x, y, 128, &closeObjects, true, false);
+
+	float height = 0;
+
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+	//need to include exclude affectors in the terrain calcs
+	height = terrainManager->getHeight(x, y);
+
+	if (z < height)
+		return height;
+
+	if (testWater) {
+		float waterHeight;
+
+		if (terrainManager->getWaterHeight(x, y, waterHeight))
+			if (waterHeight > height)
+				height = waterHeight;
+	}
+
+	Ray ray(Vector3(x, z+2.0f, y), Vector3(0, -1, 0));
+
+	for (const auto& entry : closeObjects) {
+		SceneObject* sceno = static_cast<SceneObject*>(entry);
+
+		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
+
+		if (app != NULL) {
+			Ray ray = convertToModelSpace(ray.getOrigin(), ray.getOrigin()+ray.getDirection(), sceno);
+
+			IntersectionResults results;
+
+			app->intersects(ray, 16384 * 2, results);
+
+			if (results.size()) { // results are ordered based on intersection distance from min to max
+				float floorHeight = 16384.f - results.getUnsafe(0).getIntersectionDistance();
+
+				if (floorHeight > height)
+					height = floorHeight;
+			}
+		} else {
+			continue;
+		}
+	}
+
+	return height;
+}
+
 float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
 	SortedVector<QuadTreeEntry*> closeObjects;
 	zone->getInRangeObjects(x, y, 128, &closeObjects, true, false);
