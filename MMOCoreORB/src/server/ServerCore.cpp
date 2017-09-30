@@ -83,6 +83,9 @@ void ServerCore::initialize() {
 
 	processConfig();
 
+	Logger::setGlobalFileLogger(configManager->getLogFile());
+	Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(configManager->getLogFileLevel()));
+
 	try {
 		ObjectManager* objectManager = ObjectManager::instance();
 
@@ -477,6 +480,19 @@ void ServerCore::handleCommands() {
 					System::out << "result: " << file << endl;
 				}
 
+			} else if (command == "loglevel") {
+				int level = 0;
+				try {
+					level = UnsignedInteger::valueOf(arguments);
+				} catch (Exception& e) {
+					System::out << "invalid log level" << endl;
+				}
+
+				if (level >= Logger::NONE && level <= Logger::DEBUG) {
+					Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(level));
+
+					System::out << "log level changed to: " << level << endl;
+				}
 			} else if (command == "rev") {
 				System::out << ConfigManager::instance()->getRevision() << endl;
 			} else if (command == "broadcast") {
