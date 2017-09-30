@@ -33,7 +33,7 @@ bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = NULL;
 
 ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
-		Core("log/core3.log"), Logger("Core") {
+		Core(ConfigManager::instance()->getLogFile().toCharArray()), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
@@ -51,6 +51,8 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 
 	configManager = ConfigManager::instance();
 	metricsManager = MetricsManager::instance();
+
+	Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(configManager->getLogFileLevel()));
 
 	features = NULL;
 
@@ -477,6 +479,19 @@ void ServerCore::handleCommands() {
 					System::out << "result: " << file << endl;
 				}
 
+			} else if (command == "loglevel") {
+				int level = 0;
+				try {
+					level = UnsignedInteger::valueOf(arguments);
+				} catch (Exception& e) {
+					System::out << "invalid log level" << endl;
+				}
+
+				if (level >= Logger::NONE && level <= Logger::DEBUG) {
+					Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(level));
+
+					System::out << "log level changed to: " << level << endl;
+				}
 			} else if (command == "rev") {
 				System::out << ConfigManager::instance()->getRevision() << endl;
 			} else if (command == "broadcast") {

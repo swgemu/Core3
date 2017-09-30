@@ -210,3 +210,6 @@ MaxNavMeshJobs = 6
 DumpObjFiles = 1
 
 UnloadContainers = 1 --Whether to unload container contents from RAM after the container hasn't been accessed for a time
+
+LogFile = "log/core3.log"
+LogFileLevel = 4 -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
