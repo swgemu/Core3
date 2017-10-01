@@ -483,7 +483,7 @@ void ServerCore::handleCommands() {
 			} else if (command == "loglevel") {
 				int level = 0;
 				try {
-					level = UnsignedInteger::valueOf(arguments);
+					level = Integer::valueOf(arguments);
 				} catch (Exception& e) {
 					System::out << "invalid log level" << endl;
 				}
@@ -548,6 +548,39 @@ void ServerCore::handleCommands() {
 				DirectorManager::instance()->reloadScreenPlays();
 			} else if ( command == "clearstats" ) {
 				Core::getTaskManager()->clearWorkersTaskStats();
+#ifdef COLLECT_TASKSTATISTICS
+			} else if (command == "statsd") {
+				StringTokenizer argTokenizer(arguments);
+
+				argTokenizer.setDelimiter(" ");
+
+				String address;
+				int port = 0;
+
+				if (argTokenizer.hasMoreTokens())
+					address = argTokenizer.getStringToken();
+
+				if (argTokenizer.hasMoreTokens())
+					port = argTokenizer.getIntToken();
+
+				if (port) {
+					MetricsManager::instance()->initializeStatsDConnnection(address.toCharArray(), port);
+
+					System::out << "metrics manager connection set to" << address << ":" << port << endl;
+				} else {
+					System::out << "invalid port or address" << endl;
+				}
+			} else if (command == "samplerate") {
+				try {
+					int rate = UnsignedInteger::valueOf(arguments);
+
+					Core::getTaskManager()->setStatsDTaskSampling(rate);
+
+					System::out << "statsd sampling rate changed to " << rate << endl;
+				} catch (Exception& e) {
+					System::out << "invalid statsd sampling rate" << endl;
+				}
+#endif
 			} else {
 				System::out << "unknown command (" << command << ")\n";
 			}
