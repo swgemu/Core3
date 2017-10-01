@@ -558,13 +558,13 @@ void ServerCore::handleCommands() {
 				int port = 0;
 
 				if (argTokenizer.hasMoreTokens())
-					address = argTokenizer.getStringToken();
+					argTokenizer.getStringToken(address);
 
 				if (argTokenizer.hasMoreTokens())
 					port = argTokenizer.getIntToken();
 
 				if (port) {
-					MetricsManager::instance()->initializeStatsDConnnection(address.toCharArray(), port);
+					MetricsManager::instance()->initializeStatsDConnection(address.toCharArray(), port);
 
 					System::out << "metrics manager connection set to" << address << ":" << port << endl;
 				} else {
