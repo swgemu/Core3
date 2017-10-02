@@ -867,12 +867,12 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 		return NULL;
 	}
 
+	object->setPersistent(persistenceLevel);
+
 	if (initializeTransientMembers)
 		object->initializeTransientMembers();
 
 	if (persistenceLevel > 0) {
-		object->setPersistent(persistenceLevel);
-
 		updatePersistentObject(object);
 
 		object->queueUpdateToDatabaseTask();
@@ -901,10 +901,10 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 
 	servant->_serializationHelperMethod();
 
+	object->setPersistent(persistenceLevel);
+
 	if (initializeTransientMembers)
 		object->initializeTransientMembers();
-
-	object->setPersistent(persistenceLevel);
 
 	object->deploy();
 
