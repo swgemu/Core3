@@ -624,6 +624,7 @@ function FsCsBaseControl:resetCamp(pTheater, attackerID, override)
 						writeData(theaterID .. "campDoor1", SceneObject(pObject):getObjectID())
 						spawnedFirstDoor = true
 					end
+					createObserver(OBJECTDISABLED, "FsCsBaseControl", "notifyDestructibleDisabled", pObject)
 					TangibleObject(pObject):setOptionBit(INVULNERABLE)
 				elseif (objectData[1] == "object/installation/turret/turret_fs_cs.iff") then
 					if (spawnedFirstTurret and spawnedSecondTurret) then
@@ -637,6 +638,7 @@ function FsCsBaseControl:resetCamp(pTheater, attackerID, override)
 					end
 				elseif (objectData[1] == "object/installation/battlefield/destructible/antenna_tatt_style_1.iff") then
 					writeData(theaterID .. "antenna", SceneObject(pObject):getObjectID())
+					createObserver(OBJECTDISABLED, "FsCsBaseControl", "notifyDestructibleDisabled", pObject)
 					TangibleObject(pObject):setOptionBit(INVULNERABLE)
 				end
 			end
