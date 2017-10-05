@@ -83,7 +83,12 @@ function FsCsCommander:captureCommander(pCommander, pPlayer)
 		writeData(playerID .. ":fsCounterStrike:commanderID", commanderID)
 		CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:fs_cs_capd_commander_via_group")
 	else
-		printLuaError("ERROR in FsCsCommander:notifyCommanderCaptured(), got to end of function without matching if conditions.")
+		local errorLog = "FsCsCommander:captureCommander(), got to end of if block."
+		errorLog = errorLog .. " Captured by: " .. capturedByID .. ", pPlayerID: " .. playerID .. ". "
+		errorLog = errorLog .. " 1: " .. tostring(QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_INTRO)) .. ". "
+		errorLog = errorLog .. " 2: " .. tostring(QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_LAST_CHANCE)) .. ". "
+		errorLog = errorLog .. " 3: " .. tostring(QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ENSURE_CAPTURE)) .. ". "
+		printLuaError(errorLog)
 	end
 end
 
