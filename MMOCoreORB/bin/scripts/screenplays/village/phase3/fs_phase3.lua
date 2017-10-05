@@ -41,8 +41,8 @@ function FsPhase3:failActiveTasks(pPlayer, loggingIn)
 		end
 	end
 
-	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ESCORT_COMMANDER_PRI)) then
-		FsCounterStrike:handleCommanderAbandoned(pPlayer)
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ESCORT_COMMANDER_PRI) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_CS_ESCORT_COMMANDER_PRI)) then
+		FsCsCommander:handleCommanderAbandoned(pPlayer)
 	end
 end
 
