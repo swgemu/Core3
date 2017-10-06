@@ -1,7 +1,7 @@
 # Copyright (C) 2007 <SWGEmu>. All rights reserved.
 # Distribution of this file for usage outside of Core3 is prohibited.
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.0.2)
 
 project(core3)
 
@@ -9,8 +9,9 @@ project(core3)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake/Modules/")
 
 # Add lua includes and libraries
-include_directories(/usr/include/lua5.1)
-link_directories(/usr/local/lib)
+find_package(Lua "5.3" EXACT REQUIRED)
+include_directories(${LUA_INCLUDE_DIR})
+link_directories(${LUA_LIBRARIES})
 
 # Find mysql includes and libraries
 find_package(MySql REQUIRED)
