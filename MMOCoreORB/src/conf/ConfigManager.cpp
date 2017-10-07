@@ -131,6 +131,7 @@ bool ConfigManager::loadConfigData() {
 	webSessionTimeout = getGlobalInt("WebSessionTimeout");
 
 	metricsHost = getGlobalString("MetricsHost");
+	metricsPrefix = getGlobalString("MetricsPrefix");
 	metricsPort = getGlobalInt("MetricsPort");
 
 	progressMonitors = getGlobalBoolean("ProgressMonitors");
