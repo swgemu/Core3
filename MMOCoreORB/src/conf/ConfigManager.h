@@ -48,6 +48,7 @@ namespace conf {
 		String revision;
 
 		String metricsHost;
+		String metricsPrefix;
 		int metricsPort;
 
 		int purgeDeletedCharacters;
@@ -203,6 +204,10 @@ namespace conf {
 
 		inline const String& getMetricsHost() const {
 			return metricsHost;
+		}
+
+		inline const String& getMetricsPrefix() const {
+			return metricsPrefix;
 		}
 
 		inline int getMetricsPort() const {

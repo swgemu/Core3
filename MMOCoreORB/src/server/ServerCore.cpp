@@ -100,8 +100,13 @@ void ServerCore::initialize() {
 
 		orb->setCustomObjectManager(objectManager);
 
-		System::out << "METRICS: " << String::valueOf(configManager->shouldUseMetrics()) << " " << configManager->getMetricsHost() << " " << String::valueOf(configManager->getMetricsPort()) << endl;
+		StringBuffer metricsMsg;
+		metricsMsg << "METRICS: " << String::valueOf(configManager->shouldUseMetrics()) << " " << configManager->getMetricsHost() << " " << String::valueOf(configManager->getMetricsPort()) << endl;
+
+		info(metricsMsg, true);
+
 		if (configManager->shouldUseMetrics()) {
+			metricsManager->setGlobalPrefix(configManager->getMetricsPrefix());
 			metricsManager->initializeStatsDConnection(
 					configManager->getMetricsHost().toCharArray(),
 					configManager->getMetricsPort());

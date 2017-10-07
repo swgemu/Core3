@@ -72,6 +72,7 @@ MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 MetricsHost = "localhost"
 MetricsPort = 8125
+MetricsPrefix = ""
 
 AutoReg = 1
 
