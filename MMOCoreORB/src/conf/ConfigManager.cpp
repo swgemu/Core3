@@ -54,6 +54,7 @@ ConfigManager::ConfigManager() {
 	zoneAllowedConnections = 300;
 	zoneGalaxyID = 2;
 	zoneOnlineCharactersPerAccount = 1;
+	zonePort = 0;
 
 	statusAllowedConnections = 100;
 	statusInterval = 60;
@@ -121,6 +122,7 @@ bool ConfigManager::loadConfigData() {
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
 	zoneGalaxyID = getGlobalInt("ZoneGalaxyID");
 	zoneOnlineCharactersPerAccount = getGlobalInt("ZoneOnlineCharactersPerAccount");
+	zonePort = getGlobalInt("ZoneServerPort");
 
 	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
 	statusInterval = getGlobalInt("StatusInterval");

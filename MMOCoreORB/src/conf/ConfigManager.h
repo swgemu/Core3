@@ -63,6 +63,7 @@ namespace conf {
 		int zoneAllowedConnections;
 		int zoneGalaxyID;
 		int zoneOnlineCharactersPerAccount;
+		int zonePort;
 
 		int statusAllowedConnections;
 		unsigned int statusInterval;
@@ -288,6 +289,10 @@ namespace conf {
 
 		inline int getZoneOnlineCharactersPerAccount() const {
 			return zoneOnlineCharactersPerAccount;
+		}
+
+		inline int getZoneServerPort() const {
+			return zonePort;
 		}
 
 		const SortedVector<String>* getEnabledZones() const {

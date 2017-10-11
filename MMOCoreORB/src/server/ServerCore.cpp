@@ -141,7 +141,8 @@ void ServerCore::initialize() {
 		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
 
 		if (zoneServer != NULL) {
-			int zonePort = 44463;
+			int zonePort = configManager->getZoneServerPort();
+
 			int zoneAllowedConnections =
 					configManager->getZoneAllowedConnections();
 
@@ -156,13 +157,15 @@ void ServerCore::initialize() {
 			int galaxyID = configManager->getZoneGalaxyID();
 
 			try {
-				String query = "SELECT port FROM galaxy WHERE galaxy_id = "
-						+ String::valueOf(galaxyID);
-				Reference<ResultSet*> result =
-						database->instance()->executeQuery(query);
+				if (zonePort == 0) {
+					String query = "SELECT port FROM galaxy WHERE galaxy_id = "
+								   + String::valueOf(galaxyID);
+					Reference < ResultSet * > result =
+							database->instance()->executeQuery(query);
 
-				if (result != NULL && result->next()) {
-					zonePort = result->getInt(0);
+					if (result != NULL && result->next()) {
+						zonePort = result->getInt(0);
+					}
 				}
 
 				database->instance()->executeStatement(
@@ -170,8 +173,8 @@ void ServerCore::initialize() {
 
 				database->instance()->executeStatement(
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
-								+ String::valueOf(galaxyID));
-			} catch (DatabaseException& e) {
+						+ String::valueOf(galaxyID));
+			} catch (DatabaseException &e) {
 				error(e.getMessage());
 
 				exit(1);
