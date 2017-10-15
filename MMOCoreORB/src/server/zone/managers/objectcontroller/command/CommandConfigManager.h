@@ -8,6 +8,9 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureLocomotion.h"
+
 #include "CommandFactory.h"
 
 namespace server {
@@ -123,6 +126,9 @@ public:
 	void registerFunctions();
 	void registerGlobals();
 	void registerCommands();
+	void registerCommands2();
+	void registerCommands3();
+	void registerCommands4();
 
 	void registerSpecialCommands(CommandList* sCommands);
 
