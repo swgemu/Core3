@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/managers/collision/PathFinderManager.h"
+
 class PlayerManagerCommand {
 public:
 	static int executeCommand(CreatureObject* creature, uint64 target, const UnicodeString& arguments) {

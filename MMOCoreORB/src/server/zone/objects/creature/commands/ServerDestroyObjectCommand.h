@@ -9,6 +9,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
 
 
 class ServerDestroyObjectCommand : public QueueCommand {
