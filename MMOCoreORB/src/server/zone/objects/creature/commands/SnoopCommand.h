@@ -7,6 +7,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
