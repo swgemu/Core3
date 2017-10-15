@@ -1,12 +1,20 @@
-frsEnabled = 0
+frsEnabled = 1
 
 -- Object ID of Enclave buildings
 lightEnclaveID = 8525417
 darkEnclaveID = 3435626
 
+--[[
 petitionInterval = 86400000 -- 1 day
 votingInterval = 86400000 -- 1 day
 acceptanceInterval = 86400000 -- 1 day
+maintenanceInterval = 86400000 -- 1 day
+]]
+
+-- Testing
+petitionInterval = 43200000 -- 12 hours
+votingInterval = 43200000 -- 12 hours
+acceptanceInterval = 43200000 -- 12 hours
 maintenanceInterval = 86400000 -- 1 day
 
 requestDemotionDuration = 604800000 -- 7 days
@@ -25,32 +33,57 @@ lightFrsSkills = {}
 
 -- { rank, skillName, requiredExperience, playerCap }
 lightRankingData = {
+	--{ 0, "force_rank_light_novice", 0, -1 },
+	--{ 1, "force_rank_light_rank_01", 10000, 10 },
+	--{ 2, "force_rank_light_rank_02", 20000, 10 },
+	--{ 3, "force_rank_light_rank_03", 30000, 10 },
+	--{ 4, "force_rank_light_rank_04", 40000, 10 },
+	--{ 5, "force_rank_light_rank_05", 60000, 9 },
+	--{ 6, "force_rank_light_rank_06", 80000, 9 },
+	--{ 7, "force_rank_light_rank_07", 100000, 9 },
+	--{ 8, "force_rank_light_rank_08", 150000, 8 },
+	--{ 9, "force_rank_light_rank_09", 200000, 8 },
+	--{ 10, "force_rank_light_rank_10", 300000, 11 },
+	--{ 11, "force_rank_light_master", 500000, 1 },
+
 	{ 0, "force_rank_light_novice", 0, -1 },
-	{ 1, "force_rank_light_rank_01", 10000, 10 },
-	{ 2, "force_rank_light_rank_02", 20000, 10 },
-	{ 3, "force_rank_light_rank_03", 30000, 10 },
-	{ 4, "force_rank_light_rank_04", 40000, 10 },
-	{ 5, "force_rank_light_rank_05", 60000, 9 },
-	{ 6, "force_rank_light_rank_06", 80000, 9 },
-	{ 7, "force_rank_light_rank_07", 100000, 9 },
-	{ 8, "force_rank_light_rank_08", 150000, 8 },
-	{ 9, "force_rank_light_rank_09", 200000, 8 },
-	{ 10, "force_rank_light_rank_10", 300000, 11 },
+	{ 1, "force_rank_light_rank_01", 10000, 4 },
+	{ 2, "force_rank_light_rank_02", 20000, 4 },
+	{ 3, "force_rank_light_rank_03", 30000, 4 },
+	{ 4, "force_rank_light_rank_04", 40000, 4 },
+	{ 5, "force_rank_light_rank_05", 60000, 3 },
+	{ 6, "force_rank_light_rank_06", 80000, 3 },
+	{ 7, "force_rank_light_rank_07", 100000, 3 },
+	{ 8, "force_rank_light_rank_08", 150000, 2 },
+	{ 9, "force_rank_light_rank_09", 200000, 2 },
+	{ 10, "force_rank_light_rank_10", 300000, 4 },
 	{ 11, "force_rank_light_master", 500000, 1 },
 }
 
 darkRankingData = {
-	{ 0, "force_rank_dark_novice", 0, -1 },
-	{ 1, "force_rank_dark_rank_01", 10000, 10 },
-	{ 2, "force_rank_dark_rank_02", 20000, 10 },
-	{ 3, "force_rank_dark_rank_03", 30000, 10 },
-	{ 4, "force_rank_dark_rank_04", 40000, 10 },
-	{ 5, "force_rank_dark_rank_05", 60000, 9 },
-	{ 6, "force_rank_dark_rank_06", 80000, 9 },
-	{ 7, "force_rank_dark_rank_07", 100000, 9 },
-	{ 8, "force_rank_dark_rank_08", 150000, 8 },
-	{ 9, "force_rank_dark_rank_09", 200000, 8 },
-	{ 10, "force_rank_dark_rank_10", 300000, 11 },
+	--{ 0, "force_rank_dark_novice", 0, -1 },
+	--{ 1, "force_rank_dark_rank_01", 10000, 10 },
+	--{ 2, "force_rank_dark_rank_02", 20000, 10 },
+	--{ 3, "force_rank_dark_rank_03", 30000, 10 },
+	--{ 4, "force_rank_dark_rank_04", 40000, 10 },
+	--{ 5, "force_rank_dark_rank_05", 60000, 9 },
+	--{ 6, "force_rank_dark_rank_06", 80000, 9 },
+	--{ 7, "force_rank_dark_rank_07", 100000, 9 },
+	--{ 8, "force_rank_dark_rank_08", 150000, 8 },
+	--{ 9, "force_rank_dark_rank_09", 200000, 8 },
+	--{ 10, "force_rank_dark_rank_10", 300000, 11 },
+	--{ 11, "force_rank_dark_master", 500000, 1 },
+		{ 0, "force_rank_dark_novice", 0, -1 },
+	{ 1, "force_rank_dark_rank_01", 10000, 4 },
+	{ 2, "force_rank_dark_rank_02", 20000, 4 },
+	{ 3, "force_rank_dark_rank_03", 30000, 4 },
+	{ 4, "force_rank_dark_rank_04", 40000, 4 },
+	{ 5, "force_rank_dark_rank_05", 60000, 3 },
+	{ 6, "force_rank_dark_rank_06", 80000, 3 },
+	{ 7, "force_rank_dark_rank_07", 100000, 3 },
+	{ 8, "force_rank_dark_rank_08", 150000, 2 },
+	{ 9, "force_rank_dark_rank_09", 200000, 2 },
+	{ 10, "force_rank_dark_rank_10", 300000, 4 },
 	{ 11, "force_rank_dark_master", 500000, 1 },
 }
 
@@ -90,9 +123,9 @@ enclaveRoomRequirements = {
 	{ 3435642, 11 }, -- chamber
 }
 
-	-- Key followed by values for player rank 0 through 11
-	-- Key references the player's target
-	-- Ex: Rank 5 loses to BH, see "bh_lose" key and 6th integer value in same row
+-- Key followed by values for player rank 0 through 11
+-- Key references the player's target
+-- Ex: Rank 5 loses to BH, see "bh_lose" key and 6th integer value in same row
 frsExperienceValues = {
 	{ "nonjedi_win", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	{ "nonjedi_lose", 1000, 1250, 1759, 2250, 3000, 3750, 4750, 5500, 6750, 7750, 8750, 10000 },
