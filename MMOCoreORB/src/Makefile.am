@@ -825,6 +825,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/WaypointChatParameter.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
+		server/zone/managers/objectcontroller/command/CommandConfigManager2.cpp \
+		server/zone/managers/objectcontroller/command/CommandConfigManager3.cpp \
+		server/zone/managers/objectcontroller/command/CommandConfigManager4.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.cpp \
 		server/zone/managers/mission/spawnmaps/NpcSpawnPoint.cpp \
