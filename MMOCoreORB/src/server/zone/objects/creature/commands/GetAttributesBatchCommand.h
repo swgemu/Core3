@@ -74,8 +74,8 @@ public:
 				sendEmptyAttributes(creature, objid);
 			}
 
-			if ((incr++) > 80) {
-				creature->error("Objects attribute limit exceeded!");
+			if ((incr++) > 200) {
+				creature->info("Objects attribute limit exceeded!");
 
 				return GENERALERROR;
 			}

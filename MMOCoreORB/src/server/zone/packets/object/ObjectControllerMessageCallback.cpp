@@ -83,7 +83,7 @@ void ObjectControllerMessageCallback::run() {
 }
 
 const char* ObjectControllerMessageCallback::getTaskName() {
-	if (objectControllerCallback && (objectControllerCallback != this)) {
+	if (objectControllerCallback != NULL && (objectControllerCallback != this)) {
 		return objectControllerCallback->getTaskName();
 	} else {
 		return Task::getTaskName();
