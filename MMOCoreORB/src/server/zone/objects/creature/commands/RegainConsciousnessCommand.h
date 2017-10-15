@@ -9,6 +9,8 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
 
+#include "JediQueueCommand.h"
+
 class RegainConsciousnessCommand : public JediQueueCommand {
 public:
 
