@@ -96,7 +96,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 	float newX = spawnActiveArea->getPositionX() + (256.0f - (float) System::random(512));
 	float newY = spawnActiveArea->getPositionY() + (256.0f - (float) System::random(512));
 
-	float height = zone->getHeight(newX, newY);
+	float height = zone->isWithinBoundaries(Vector3(newX, newY, 0)) ? zone->getHeight(newX, newY) : 0;
 
 	float waterHeight;
 	PlanetManager* planetManager = zone->getPlanetManager();
@@ -111,7 +111,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 			|| CollisionManager::checkSphereCollision(position, size + 25.f , zone)) && tries < 256) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
-		height = zone->getHeight(newX, newY);
+		height = zone->isWithinBoundaries(Vector3(newX, newY, 0)) ? zone->getHeight(newX, newY) : 0;
 
 		position.set(newX, height, newY);
 
