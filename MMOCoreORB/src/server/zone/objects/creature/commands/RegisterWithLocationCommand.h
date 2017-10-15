@@ -5,6 +5,8 @@
 #ifndef REGISTERWITHLOCATIONCOMMAND_H_
 #define REGISTERWITHLOCATIONCOMMAND_H_
 
+#include "templates/building/SharedBuildingObjectTemplate.h"
+
 class RegisterWithLocationCommand : public QueueCommand {
 public:
 
