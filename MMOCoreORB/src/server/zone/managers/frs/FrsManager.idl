@@ -8,24 +8,44 @@ import engine.core.ManagedService;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.managers.frs.RankMaintenanceTask;
+import server.zone.managers.frs.VoteStatusTask;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 import system.util.Vector;
 include server.zone.managers.frs.FrsRankingData;
+include server.zone.managers.frs.FrsManagerData;
 include system.lang.ref.Reference;
+include server.chat.StringIdChatParameter;
 
+@dirty
 class FrsManager extends ManagedService implements Logger {
 	public static final short COUNCIL_LIGHT = 1;
 	public static final short COUNCIL_DARK = 2;
+	
+	public static final short SUI_VOTE_STATUS = 1;
+	public static final short SUI_VOTE_RECORD = 2;
+	public static final short SUI_VOTE_ACCEPT_PROMOTE = 3;
+	public static final short SUI_VOTE_PETITION = 4;
+	public static final short SUI_VOTE_DEMOTE = 5;
+	public static final short SUI_FORCE_PHASE_CHANGE = 6;
+
+	public static final short VOTING_CLOSED = 1;
+	public static final short PETITIONING = 2;
+	public static final short VOTING_OPEN = 3;
+	public static final short WAITING = 4;
+	
+	public static final unsigned long VOTE_STATUS_TICK = 300000; // 5 mins
+	
+	private transient FrsManagerData managerData;
 
 	private transient ZoneServer zoneServer;
 	
 	protected transient RankMaintenanceTask rankMaintenanceTask;
 	
-	@dereferenced
-	protected Time lastMaintenanceTime;
+	protected transient VoteStatusTask voteStatusTask;
 	
 	@weakReference
 	protected BuildingObject lightEnclave;
@@ -34,19 +54,10 @@ class FrsManager extends ManagedService implements Logger {
 	protected BuildingObject darkEnclave;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, int> lightRankedMembers;
-	
-	@dereferenced
 	protected transient VectorMap<unsigned int, Reference<FrsRankingData> > lightRankingData;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, int> darkRankedMembers;
-	
-	@dereferenced
 	protected transient VectorMap<unsigned int, Reference<FrsRankingData> > darkRankingData;
-	
-	@dereferenced
-	protected VectorMap<unsigned long, int> experienceDebt;
 	
 	@dereferenced
 	protected transient VectorMap<unsigned long, int> roomRequirements;
@@ -71,7 +82,7 @@ class FrsManager extends ManagedService implements Logger {
 
 	protected transient int maxPetitioners;
 	protected transient int missedVotePenalty;
-	
+
 	public FrsManager(ZoneServer zserv) {
 		Logger.setLoggingName("FrsManager");
 		Logger.setLogging(true);
@@ -98,12 +109,11 @@ class FrsManager extends ManagedService implements Logger {
 
 		maxPetitioners = 0;
 		missedVotePenalty = 0;
-		
-		experienceDebt.setNoDuplicateInsertPlan();
 	}
 	
 	public native void initialize();
 	public native void loadLuaConfig();
+	public native void loadFrsData();
 
 	public native void setupEnclaves();
 	public native void setupEnclaveRooms(BuildingObject enclaveBuilding, final string groupName);
@@ -111,6 +121,10 @@ class FrsManager extends ManagedService implements Logger {
 	@local
 	@dereferenced
 	public native Vector<unsigned long> getFullPlayerList();
+	
+	@local
+	@dereferenced
+	public native Vector<unsigned long> getPlayerListByCouncil(int councilType);
 	
 	@preLocked
 	@arg1preLocked
@@ -130,12 +144,69 @@ class FrsManager extends ManagedService implements Logger {
 	@preLocked
 	@arg1preLocked
 	public native void adjustFrsExperience(CreatureObject player, int amount);
+	
+	@preLocked
 	public native void deductMaintenanceXp(CreatureObject player);
+	
+	@preLocked
 	public native void addExperienceDebt(CreatureObject player, int amount);
 	
 	public native boolean isValidFrsBattle(CreatureObject attacker, CreatureObject victim);
 	public native int calculatePvpExperienceChange(CreatureObject attacker, CreatureObject victim, float contribution, boolean isVictim);
 	public native int getBaseExperienceGain(PlayerObject playerGhost, PlayerObject opponentGhost, boolean playerWon);
+	
+	@preLocked
+	public native int getAvailableRankSlots(FrsRank rankInfo);
+	
+	public native void sendVoteSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);
+	
+	@preLocked
+	@arg1preLocked
+	public native void handleVoteStatusSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@preLocked
+	@arg1preLocked
+	public native void sendVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@preLocked
+	@arg1preLocked
+	public native void handleVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank, int index);
+	
+	@preLocked
+	@arg1preLocked
+	public native void handleAcceptPromotionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@preLocked
+	@arg1preLocked
+	public native void handleVotePetitionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@preLocked
+	public native void forcePhaseChange(CreatureObject player, short enclaveType, int rank);
+	
+	public native int getVoteWeight(int playerRank, int voteRank);
+	
+	@arg1preLocked
+	public native boolean hasPlayerVoted(CreatureObject player, int rank);
+	
+	@preLocked
+	public native void runVotingUpdate(FrsRank rankInfo);
+	
+	@preLocked
+	public native void checkForMissedVotes(FrsRank rankInfo);
+	
+	public native short getEnclaveType(BuildingObject enclave);
+	public native boolean isEligibleForPromotion(CreatureObject player, int rank);
+	
+	@local
+	public native void sendMailToVoters(short councilType, int rank, final string sub, @dereferenced StringIdChatParameter body);
+	
+	@local
+	public native void sendMailToList(Vector<unsigned long> playerList, final string sub, @dereferenced StringIdChatParameter body);
+	
+	@local
+	public native Vector<unsigned long> getTopVotes(FrsRank rankInfo, int numWinners);
+	
+	public native string getTimeString(unsigned long timestamp);
 	
 	@arg1preLocked
 	public native void deductDebtExperience(CreatureObject player);
@@ -147,22 +218,39 @@ class FrsManager extends ManagedService implements Logger {
 		return 0;
 	}
 	
+	@read
 	public native int getMaintenanceInterval() {
 		return maintenanceInterval;
 	}
 	
-	@dirty
 	public ZoneServer getZoneServer() {
 		return zoneServer;
 	}
 	
-	@preLocked
-	public void updateLastMaintenance() {
-		lastMaintenanceTime.updateToCurrentTime();
-	}
+	@local
+	public native FrsRank getFrsRank(short councilType, int rank);
 	
 	@read
 	public boolean isFrsEnabled() {
 		return frsEnabled;
+	}
+	
+	public unsigned long getVotingInterval(short status) {
+		if (status == PETITIONING)
+			return petitionInterval;
+		else if (status == WAITING)
+			return acceptanceInterval;
+		else
+			return votingInterval;
+	}
+	
+	@preLocked
+	public void updateLastMaintenance() {
+		managerData.updateLastMaintenanceTick();
+	}
+	
+	@preLocked
+	public void updateLastVoteStatus() {
+		managerData.updateLastVoteStatusTick();
 	}
 }
