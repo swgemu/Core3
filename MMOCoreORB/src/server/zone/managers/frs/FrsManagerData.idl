@@ -1,0 +1,74 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.util.Vector;
+include server.zone.managers.frs.FrsRank;
+
+class FrsManagerData extends ManagedObject {
+	@dereferenced
+	protected Time lastVoteStatusTick;
+	
+	@dereferenced
+	protected Time lastMaintenanceTick;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> experienceDebt;
+	
+	@dereferenced
+	protected Vector<FrsRank> lightRanks;
+	
+	@dereferenced
+	protected Vector<FrsRank> darkRanks;
+
+	public FrsManagerData() {
+		experienceDebt.setNoDuplicateInsertPlan();
+	}
+	
+	@local
+	public Vector<FrsRank> getLightRanks() {
+		return lightRanks;
+	}
+	
+	@local
+	public Vector<FrsRank> getDarkRanks() {
+		return darkRanks;
+	}
+	
+	public void updateLastMaintenanceTick() {
+		lastMaintenanceTick.updateToCurrentTime();
+	}
+	
+	@local
+	public Time getLastMaintenanceTick() {
+		return lastMaintenanceTick;
+	}
+	
+	public void updateLastVoteStatusTick() {
+		lastVoteStatusTick.updateToCurrentTime();
+	}
+	
+	@local
+	public Time getLastVoteStatusTick() {
+		return lastVoteStatusTick;
+	}
+
+	public int getExperienceDebt(unsigned long playerID) {
+		if (experienceDebt.contains(playerID))
+			return experienceDebt.get(playerID);
+		
+		return 0;
+	}
+	
+	public void setExperienceDebt(unsigned long playerID, int debt) {
+		experienceDebt.put(playerID, debt);
+	}
+	
+	public void removeExperienceDebt(unsigned long playerID) {
+		experienceDebt.drop(playerID);
+	}
+}

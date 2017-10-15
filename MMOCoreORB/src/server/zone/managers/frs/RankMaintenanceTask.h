@@ -39,7 +39,7 @@ public:
 		int numTasks = ceil((float)playerList.size() / (float)playersPerTask);
 
 		for (int i = 0; i < numTasks; i++) {
-			Vector<uint> taskList;
+			Vector<uint64> taskList;
 
 			for (int j = 0; j < playersPerTask; j++) {
 				int curIndex = i * playersPerTask + j;
