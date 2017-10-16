@@ -146,7 +146,9 @@ public:
 
 					playerParent = NULL;
 				} else {
-					playerParent->transferObject(player, -1, false);
+					if (!(playerParent->isCellObject() && playerParent == root)) {
+						playerParent->transferObject(player, -1, false);
+					}
 
 					if (player->getParent() == NULL) {
 						zone->transferObject(player, -1, false);
