@@ -9,7 +9,7 @@ project(core3)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake/Modules/")
 
 # Add lua includes and libraries
-find_package(Lua "5.3" EXACT REQUIRED)
+find_package(Lua "5.3")
 include_directories(${LUA_INCLUDE_DIR})
 link_directories(${LUA_LIBRARIES})
 
