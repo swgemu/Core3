@@ -588,6 +588,16 @@ void ServerCore::handleCommands() {
 				} catch (Exception& e) {
 					System::out << "invalid statsd sampling rate" << endl;
 				}
+			} else if (command == "sampleratedb") {
+				try {
+					int rate = UnsignedInteger::valueOf(arguments);
+
+					Core::getTaskManager()->setStatsDBdbSamplingRate(rate);
+
+					System::out << "statsd berkeley db sampling rate changed to " << rate << endl;
+				} catch (Exception& e) {
+					System::out << "invalid statsd sampling rate" << endl;
+				}
 #endif
 			} else {
 				System::out << "unknown command (" << command << ")\n";
