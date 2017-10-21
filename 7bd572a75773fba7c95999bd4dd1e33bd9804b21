@@ -1,0 +1,832 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab3e1c7_2bb9a5e9",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 57
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cbcd6988",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 77
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_eb914d53",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 88
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_ebcdcd5e",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 134
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_8bda1116",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 114
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_abd7d5ec",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 59
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_ebc62d49",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 61
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cbc9e95b",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 45
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_2bb525cd",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 55
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_0bb061dc",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@preLocked\n@dirty",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 38
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_6bbb1dc5",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@preLocked\n@dirty",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_ebd94d84",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Move the duplicate code below the null check.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cbdc8977",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Move the duplicate code below the null check.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_abc0352b",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Would it be worth moving this to a map?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 3
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cb948946",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "We need some type of lock here to prevent frsData from changing.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 31
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_6be23dd7",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Personally it seems like this should be @preLocked instead of acquiring a lock within the function itself.",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 53
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_ab9b5571",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "isVictim is a bit confusing here considering you are already passing a \"victim\" pointer in. What would make more sense is \n\nCreatureObject* player, CreatureObject* target, float contribution, bool isWinner",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 614,
+        "endChar": 145
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_4b889922",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "FrsData needs to be locked one way or another to prevent rank from changing while these functions are called.",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 44
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_6b8d5d31",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "We already have a null checked ghost pointer above.",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 43
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_2b876511",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Replace this with a call to playerManager::getPlayerName to avoid forcing creo to load. If the name is not in the name map you can assume that it no longer exists. (NULL check)",
+      "range": {
+        "startLine": 847,
+        "startChar": 4,
+        "endLine": 854,
+        "endChar": 47
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cb7b2928",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Same as above with playermanager::getPlayerName",
+      "range": {
+        "startLine": 870,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 47
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_0b82a100",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "ghost",
+      "range": {
+        "startLine": 884,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 43
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_eb786d2d",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Needs a lock",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 909,
+        "endChar": 37
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_8b753134",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Also needs a lock on frsdata to prevent contents from changing while iterating.",
+      "range": {
+        "startLine": 928,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 72
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_ab727547",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "PlayerManager::getPlayerName",
+      "range": {
+        "startLine": 942,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 45
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_4b8f3924",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "ghost",
+      "range": {
+        "startLine": 954,
+        "startChar": 1,
+        "endLine": 954,
+        "endChar": 43
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_6b947d37",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "We have logic in several places that will remove entries from the petitionerlist if the player no longer exists. This will re-order the petitionerlist and completely break this logic if it ever occurs.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 79
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_0b99416e",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "You might be able to get away with this without a lock but it would be a little sketchy.",
+      "range": {
+        "startLine": 1061,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 44
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_2b9e8557",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRank.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "There currently isn\u0027t any thread safety around this class. Either the FrsRank itself or the owner of the object needs to be locked. But whatever pattern that is decided on also needs to be followed throughout the code.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_4bb659de",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRank.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_aba9157d",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRank.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_8bac518e",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRank.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cba2499a",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsRank.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "@dirty",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_2bec45c7",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/VoteStatusTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "We have a lock on FRSManager but this will not be valid when this task hits. Either frsmanager or frsrank will need to be locked.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_0be701e6",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/VoteStatusTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "For the sake of clarity I\u0027d unroll this into two separate loops. Or at least be a little more explicit as to the purpose of the outer loop.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_cbd009fa",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/SuiWindowType.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2017-10-21T21:22:15Z",
+      "side": 1,
+      "message": "Spacing (paybacks a bitch)",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "7bd572a75773fba7c95999bd4dd1e33bd9804b21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
