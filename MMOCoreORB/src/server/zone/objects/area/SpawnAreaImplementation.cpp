@@ -153,6 +153,10 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return;
 	}
 
+	if (!zone->isWithinBoundaries(randomPosition)) {
+		return;
+	}
+
 	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
 
 	randomPosition.setZ(spawnZ);
