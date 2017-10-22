@@ -960,10 +960,12 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float margin) {
 	SortedVector<ActiveArea*> activeAreas;
 
-	Vector3 targetPos(x, y, zone->getHeight(x, y));
+	Vector3 targetPos(x, y, 0);
 
 	if (!zone->isWithinBoundaries(targetPos))
 		return false;
+
+	targetPos.setZ(zone->getHeight(x, y));
 
 	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
 	zone->getInRangeActiveAreas(x, y, margin + 64.f, &activeAreas, true);
