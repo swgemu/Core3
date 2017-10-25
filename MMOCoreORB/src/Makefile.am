@@ -276,7 +276,6 @@ core3_IDLS =	autogen/server/zone/objects/creature/credits/CreditObject.cpp \
 				autogen/server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
 				autogen/server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				autogen/server/zone/objects/building/travel/TravelBuildingObject.cpp \
-				autogen/server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
 				autogen/server/zone/managers/guild/GuildManager.cpp \
 				autogen/server/chat/room/ChatRoom.cpp \
 				autogen/server/chat/ChatManager.cpp \
@@ -786,7 +785,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/LuaBuildingObject.cpp \
-		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/sessions/CitySpecializationSessionImplementation.cpp \

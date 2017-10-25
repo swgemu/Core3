@@ -50,7 +50,6 @@
 #include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
-#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
