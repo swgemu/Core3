@@ -170,7 +170,6 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::BUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::CAPITOLBUILDING);
-	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
 	objectFactory.registerObject<HospitalBuildingObject>(SceneObjectType::HOSPITALBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectType::RECREATIONBUILDING);

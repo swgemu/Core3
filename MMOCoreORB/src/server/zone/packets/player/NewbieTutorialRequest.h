@@ -12,6 +12,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 /* Valid action strings found:
  * openCharacterSheet
  * closeCharacterSheet
@@ -94,12 +95,14 @@ public:
 			player->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
 			Zone* zone = player->getZone();
-			ManagedReference<SceneObject*> par = player->getParent().get();
 
-			if (zone != NULL && par != NULL) {
-				if (par->getParent().get() != NULL && zone->getZoneName() == "tutorial") {
-					DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
-				}
+			if (zone == NULL || zone->getZoneName() != "tutorial")
+				return;
+
+			ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+
+			if (bldg != NULL && bldg->getOwnerObjectID() == player->getObjectID()) {
+				DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
 			}
 		}
 	}

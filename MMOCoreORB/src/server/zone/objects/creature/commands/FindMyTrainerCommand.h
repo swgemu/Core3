@@ -37,6 +37,14 @@ public:
 		if (planet == "") {
 			setJediTrainer(ghost);
 			planet = ghost->getTrainerZoneName();
+		} else {
+			ZoneServer* zoneServer = ServerCore::getZoneServer();
+			Zone* trainerZone = zoneServer->getZone(planet);
+
+			if (trainerZone == NULL) {
+				setJediTrainer(ghost);
+				planet = ghost->getTrainerZoneName();
+			}
 		}
 
 		uint32 planetCRC = planet.hashCode();
@@ -105,6 +113,11 @@ public:
 			if (trainerCreo == NULL)
 				continue;
 
+			Zone* trainerZone = trainerCreo->getZone();
+
+			if (trainerZone == NULL || trainerZone->getZoneName() == "tutorial")
+				continue;
+
 			if (!(trainerCreo->getOptionsBitmask() & OptionBitmask::CONVERSE))
 				continue;
 
@@ -114,7 +127,7 @@ public:
 			if (city != NULL && !city->isClientRegion())
 				continue;
 
-			zoneName = trainerCreo->getZone()->getZoneName();
+			zoneName = trainerZone->getZoneName();
 			coords = trainerCreo->getWorldPosition();
 			found = true;
 
