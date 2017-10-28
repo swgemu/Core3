@@ -2886,7 +2886,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isOnLoadScreen())
 		return false;
 
-	if (ConfigManager::instance()->getPvpMode() && isPlayerCreature())
+	if (ConfigManager::instance()->getPvpMode() && getPlayerObject() != NULL)
 		return true;
 
 	if (CombatManager::instance()->areInDuel(object, asCreatureObject()))
