@@ -2886,6 +2886,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isOnLoadScreen())
 		return false;
 
+	if (ConfigManager::instance()->getPvpMode() && isPlayerCreature())
+		return true;
+
 	if (CombatManager::instance()->areInDuel(object, asCreatureObject()))
 		return true;
 
@@ -2962,9 +2965,11 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = getPlayerObject();
-
-		if (ghost != NULL && ghost->isOnLoadScreen()) {
-			return false;
+		if (ghost != NULL) {
+			if (ghost->isOnLoadScreen())
+				return false;
+			if (ConfigManager::instance()->getPvpMode())
+				return true;
 		}
 	}
 
