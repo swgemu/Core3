@@ -17,6 +17,7 @@ namespace conf {
 		bool dumpObjFiles;
 		bool unloadContainers;
 		bool useMetrics;
+		bool pvpMode;
 
 		String orbNamingDirectoryAddress;
 		uint16 orbNamingDirectoryPort;
@@ -129,6 +130,10 @@ namespace conf {
 
 		inline bool shouldUseMetrics() const {
 			return useMetrics;
+		}
+
+		inline bool getPvpMode() const {
+			return pvpMode;
 		}
 
 		inline const String& getORBNamingDirectoryAddress() const {
