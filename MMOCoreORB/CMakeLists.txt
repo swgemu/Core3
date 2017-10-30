@@ -55,7 +55,7 @@ include_directories(${CMAKE_SOURCE_DIR}/utils/gmock-1.6.0/include)
 link_directories(${CMAKE_SOURCE_DIR}/utils/gtest-1.6.0/lib)
 
 # Define build flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native -O3")
 
 # Define sources
 add_subdirectory(src)

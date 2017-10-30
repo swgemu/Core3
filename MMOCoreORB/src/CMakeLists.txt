@@ -29,7 +29,7 @@ target_link_libraries(core3
         db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding
         -Wl,--no-whole-archive
         ${ENGINE3_LIBRARIES}
-        z pthread ${MYSQL_LIBRARIES} ${LUA_LIBRARIES} db-5.3 dl crypto ssl gtest)
+        z pthread ${MYSQL_LIBRARIES} ${LUA_LIBRARIES} db-5.3 dl crypto ssl gtest jemalloc atomic)
 
 # Install core3 binary
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/core3 DESTINATION bin)
