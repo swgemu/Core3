@@ -46,9 +46,9 @@ AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
 
-GTEST_PATH=../../../utils/gtest-1.6.0
+GTEST_PATH=../../../utils/googletest-release-1.8.0/googletest
 
-GMOCK_PATH=../../../utils/gmock-1.6.0
+GMOCK_PATH=../../../utils/googletest-release-1.8.0/googlemock
 
 AUTOGEN_PATH=../../../src/autogen
 
@@ -71,7 +71,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
-	-L$(GTEST_PATH)/lib \
+	-L$(GMOCK_PATH)/lib \
 	-lz -lengine3 -lmysqlclient -llua -ldb-5.3 -lssl -lcrypto -lgtest	
 
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
