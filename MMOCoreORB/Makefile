@@ -79,7 +79,7 @@ idl:
 	#done
 
 gtest:
-	cd utils/gtest-1.6.0 && make all
+	cd utils/googletest-release-1.8.0/googlemock && make all
 
 config:
 	aclocal
@@ -91,7 +91,7 @@ config:
 
 clean: cleanidl
 	cd build/unix && make clean
-	cd utils/gtest-1.6.0 && make clean
+	cd utils/googletest-release-1.8.0/googlemock && make clean
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done
