@@ -84,6 +84,7 @@ bool ConfigManager::loadConfigData() {
 	dumpObjFiles = getGlobalByte("DumpObjFiles");
 	unloadContainers = getGlobalByte("UnloadContainers");
 	useMetrics = getGlobalByte("UseMetrics");
+	pvpMode = getGlobalByte("PvpMode");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 	orbNamingDirectoryPort = getGlobalShort("ORBPort");

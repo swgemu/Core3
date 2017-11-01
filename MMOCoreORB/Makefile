@@ -63,18 +63,23 @@ build: idl gtest gitlog
 unittest: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
 unittest: build
 
+unittest-cmake: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
+unittest-cmake: build-cmake
+
+sanitizers-cmake: UNITTEST_DIRECTIVES = -fsanitize=address 
+sanitizers-cmake: build-cmake
+
 rebuild: clean build
 
 gitlog: 
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
-	#done
 
 idl:
 	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 
 gtest:
-	cd utils/gtest-1.6.0 && make all
+	cd utils/googletest-release-1.8.0/googlemock && make all
 
 config:
 	aclocal
@@ -86,7 +91,7 @@ config:
 
 clean: cleanidl
 	cd build/unix && make clean
-	cd utils/gtest-1.6.0 && make clean
+	cd utils/googletest-release-1.8.0/googlemock && make clean
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done
@@ -113,7 +118,7 @@ endif
 endif
 
 build-cmake: idl gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. ../.. && make -j$(CPU_CORES)
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && make -j$(CPU_CORES)
 	cd build/unix && make install
 
 clean-cmake: cleanidl-cmake

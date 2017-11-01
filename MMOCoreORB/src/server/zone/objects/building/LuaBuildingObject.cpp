@@ -17,6 +17,7 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "_setObject", &LuaBuildingObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getCell", &LuaBuildingObject::getCell },
+		{ "getTotalCellNumber", &LuaBuildingObject::getTotalCellNumber },
 		{ "getNamedCell", &LuaBuildingObject::getNamedCell },
 		{ "getOwnerID", &LuaBuildingObject::getOwnerID },
 		{ "getParent", &LuaSceneObject::getParent },
@@ -81,6 +82,12 @@ int LuaBuildingObject::getNamedCell(lua_State* L) {
 	} else {
 		lua_pushlightuserdata(L, cell);
 	}
+
+	return 1;
+}
+
+int LuaBuildingObject::getTotalCellNumber(lua_State* L) {
+	lua_pushinteger(L, realObject->getTotalCellNumber());
 
 	return 1;
 }

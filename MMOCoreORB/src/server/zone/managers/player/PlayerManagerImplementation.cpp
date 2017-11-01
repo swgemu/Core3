@@ -565,14 +565,23 @@ bool PlayerManagerImplementation::checkPlayerName(ClientCreateCharacterCallback*
 void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player) {
 	Zone* zone = server->getZone("tutorial");
 
-//	const static String cell = "object/cell/cell.iff";
+	if (zone == NULL) {
+		error("Character creation failed, tutorial zone disabled.");
+		return;
+	}
 
 	Reference<BuildingObject*> tutorial = server->createObject(STRING_HASHCODE("object/building/general/newbie_hall.iff"), 1).castTo<BuildingObject*>();
+
+	if (tutorial == NULL) {
+		error("Tutorial building creation failed.");
+		return;
+	}
 
 	Locker locker(tutorial);
 
 	tutorial->createCellObjects();
 	tutorial->setPublicStructure(true);
+	tutorial->setOwner(player->getObjectID());
 
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);

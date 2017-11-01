@@ -61,8 +61,12 @@ public:
 	}
 
 	void updateDeletedCharacters() {
-		StringBuffer query;
-		query << "UPDATE deleted_characters SET db_deleted = 1 WHERE";
+		ZoneServer* server = ServerCore::getZoneServer();
+
+		if (server == NULL)
+			return;
+
+		int galaxyid = server->getGalaxyID();
 
 		int size = deletedCharacters.size();
 
@@ -73,10 +77,8 @@ public:
 
 		info("Attempting to delete " + String::valueOf(size) + " characters from database.", true);
 
-		ZoneServer* server = ServerCore::getZoneServer();
-
-		if (server == NULL)
-			return;
+		StringBuffer query;
+		query << "UPDATE deleted_characters SET db_deleted = 1 WHERE galaxy_id = " << galaxyid << " AND (";
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -88,6 +90,8 @@ public:
 			if (i < size - 1)
 				query << " OR";
 		}
+
+		query << ")";
 
 		try {
 			ServerDatabase::instance()->executeQuery(query.toString());
