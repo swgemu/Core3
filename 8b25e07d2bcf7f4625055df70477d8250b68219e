@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab3e1c7_2eaa13d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 3503
+      },
+      "writtenOn": "2017-11-02T09:03:24Z",
+      "side": 1,
+      "message": "Instead of doing this, it would be clearer if you changed the logic like so:\n\nif (victim-\u003eisPlayerCreature() \u0026\u0026 attacker-\u003eisPlayerCreature()) {\n    strength *\u003d 0.25;\n}\n\nif (!victim-\u003eisPlayerCreature() || attacker-\u003eisPlayerCreature()) {\n    if (victim-\u003eisProne() || victim-\u003eisKnockedDown()) {\n        strength *\u003d 1.5;\n    } else if (victim-\u003eisKneeling()) {\n        strength *\u003d 1.25;\n    }\n}",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 33
+      },
+      "revId": "8b25e07d2bcf7f4625055df70477d8250b68219e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
