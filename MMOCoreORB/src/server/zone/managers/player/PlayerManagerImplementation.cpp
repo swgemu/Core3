@@ -150,6 +150,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 	lua->runFile("scripts/managers/player_manager.lua");
 
 	allowSameAccountPvpRatingCredit = lua->getGlobalInt("allowSameAccountPvpRatingCredit");
+	onlineCharactersPerAccount = lua->getGlobalInt("onlineCharactersPerAccount");
 	performanceBuff = lua->getGlobalInt("performanceBuff");
 	medicalBuff = lua->getGlobalInt("medicalBuff");
 	performanceDuration = lua->getGlobalInt("performanceDuration");
@@ -4673,7 +4674,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 		}
 	}
 
-	if (onlineCount >= MAX_CHAR_ONLINE_COUNT)
+	if (onlineCount >= onlineCharactersPerAccount)
 		return false;
 
 	clients.add(client);
