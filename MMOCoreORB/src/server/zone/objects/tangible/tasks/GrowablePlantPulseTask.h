@@ -57,7 +57,7 @@ public:
 		int nutrientDiff = abs(strongRef->getNutrientLevel() - strongRef->getIdealNutrientLevel());
 
 		if (waterDiff < 20 && nutrientDiff < 20) {
-			int healthUpdate = (((40 - (waterDiff + nutrientDiff)) * (strongRef->getWaterQuality() + strongRef->getNutrientQuality()) / 2000) / 5) * cycles;
+			int healthUpdate = (((50 - (waterDiff + nutrientDiff)) * (strongRef->getWaterQuality() + strongRef->getNutrientQuality()) / 2000) / 5) * cycles;
 
 			if (healthUpdate < 1)
 				healthUpdate = 1;
