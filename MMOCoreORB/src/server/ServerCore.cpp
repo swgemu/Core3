@@ -469,7 +469,8 @@ void ServerCore::handleCommands() {
 				}
 
 				if (num != 0) {
-					PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = num;
+					PlayerManager* pMan = zoneServer->getPlayerManager();
+					pMan->setOnlineCharactersPerAccount(num);
 
 					System::out << "changed max concurrent chars per account to: " << num << endl;
 				}

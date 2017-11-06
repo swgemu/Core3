@@ -87,8 +87,6 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 
-	public transient static int MAX_CHAR_ONLINE_COUNT;
-
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
 
@@ -505,6 +503,10 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getNumJukeboxSongs(){
 		return jukeboxSongs.size();
+	}
+	
+	public void setOnlineCharactersPerAccount(int count) {
+		onlineCharactersPerAccount = count;
 	}
 
 	@local
