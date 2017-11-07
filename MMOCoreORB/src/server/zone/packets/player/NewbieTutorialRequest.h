@@ -12,7 +12,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/TutorialBuildingObject.h"
 /* Valid action strings found:
  * openCharacterSheet
  * closeCharacterSheet
@@ -99,9 +99,9 @@ public:
 			if (zone == NULL || zone->getZoneName() != "tutorial")
 				return;
 
-			ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+			ManagedReference<TutorialBuildingObject*> bldg = player->getParentRecursively(SceneObjectType::TUTORIALBUILDING).castTo<TutorialBuildingObject*>();
 
-			if (bldg != NULL && bldg->getOwnerObjectID() == player->getObjectID()) {
+			if (bldg != NULL && bldg->getTutorialOwnerID() == player->getObjectID()) {
 				DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
 			}
 		}

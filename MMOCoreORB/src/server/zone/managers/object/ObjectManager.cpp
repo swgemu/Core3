@@ -183,6 +183,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::GARAGEBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::SALONBUILDING);
 	objectFactory.registerObject<PoiBuilding>(SceneObjectType::POIBUILDING);
+	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
 
 
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::INSTALLATION);
