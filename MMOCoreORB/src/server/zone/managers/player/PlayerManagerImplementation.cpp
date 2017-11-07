@@ -100,6 +100,7 @@
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/objects/player/badges/Badge.h"
+#include "server/zone/objects/building/TutorialBuildingObject.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 										Logger("PlayerManager") {
@@ -569,7 +570,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 		return;
 	}
 
-	Reference<BuildingObject*> tutorial = server->createObject(STRING_HASHCODE("object/building/general/newbie_hall.iff"), 1).castTo<BuildingObject*>();
+	Reference<TutorialBuildingObject*> tutorial = server->createObject(STRING_HASHCODE("object/building/general/newbie_hall.iff"), 1).castTo<TutorialBuildingObject*>();
 
 	if (tutorial == NULL) {
 		error("Tutorial building creation failed.");
@@ -580,7 +581,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	tutorial->createCellObjects();
 	tutorial->setPublicStructure(true);
-	tutorial->setOwner(player->getObjectID());
+	tutorial->setTutorialOwnerID(player->getObjectID());
 
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
