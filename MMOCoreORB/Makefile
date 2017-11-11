@@ -47,6 +47,7 @@ IDL_CLASSPATH = ../MMOEngine/include
 #IDL_DIRECTIVES = -noprelocks -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 IDL_DIRECTIVES = -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 
+
 UNITTEST_DIRECTIVES =
 
 all: #build
