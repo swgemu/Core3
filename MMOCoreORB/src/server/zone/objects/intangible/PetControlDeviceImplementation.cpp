@@ -270,9 +270,19 @@ int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* playe
 			error("null controlled object in pet control device");
 			return 1;
 		} else {
-			Locker crossLocker(pet, player);
+			Reference<AiAgent*> petReference = pet;
+			Reference<CreatureObject*> playerReference = player;
+			Reference<PetControlDevice*> thisReference = _this.getReferenceUnsafeStaticCast();
 
-			callObject(player);
+			Core::getTaskManager()->executeTask([thisReference, petReference, playerReference] () {
+				Locker locker(playerReference);
+
+				Locker crossLocker(petReference, playerReference);
+
+				Locker controlLocker(thisReference);
+
+				thisReference->callObject(playerReference);
+			}, "ControlDeviceCallLambda");
 		}
 	} else if (selectedID == 59) {
 		if (pet == NULL) {
@@ -280,13 +290,33 @@ int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* playe
 			return 1;
 		} else {
 			if (status == 1 && !ghost->hasActivePet(pet)) {
-				Locker crossLocker(pet, player);
+				Reference<AiAgent*> petReference = pet;
+				Reference<CreatureObject*> playerReference = player;
+				Reference<PetControlDevice*> thisReference = _this.getReferenceUnsafeStaticCast();
 
-				callObject(player);
+				Core::getTaskManager()->executeTask([thisReference, petReference, playerReference] () {
+					Locker locker(playerReference);
+
+					Locker crossLocker(petReference, playerReference);
+
+					Locker controlLocker(thisReference);
+
+					thisReference->callObject(playerReference);
+				}, "ControlDeviceCallLambda2");
 			} else {
-				Locker crossLocker(pet, player);
+				Reference<AiAgent*> petReference = pet;
+				Reference<CreatureObject*> playerReference = player;
+				Reference<PetControlDevice*> thisReference = _this.getReferenceUnsafeStaticCast();
 
-				storeObject(player);
+				Core::getTaskManager()->executeTask([thisReference, petReference, playerReference] () {
+					Locker locker(playerReference);
+
+					Locker crossLocker(petReference, playerReference);
+
+					Locker controlLocker(thisReference);
+
+					thisReference->storeObject(playerReference);
+				}, "ControlDeviceStoreLambda");
 			}
 		}
 	}
