@@ -146,7 +146,7 @@ dathomir_regions = {
 	-- Phase 3 camp spawns
 	{ "fs_cs_alpha", 5939, -2030, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_beta", 5313, -1145, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{ "fs_cs_gamma", 4072, 1402, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{ "fs_cs_gamma", 4072, -1402, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_delta", 3456, -1258, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_epsilon", 2960, 45, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_zeta", 3041, 787, {1, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
