@@ -9,11 +9,13 @@
 #include "server/chat/ChatManager.h"
 
 class GetObjVarsCommand : public QueueCommand {
+	Vector<uint64> databaseIDs;
 public:
 
 	GetObjVarsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-
+		ObjectDatabaseManager* dbManager =ObjectDatabaseManager::instance();
+		databaseIDs.add(dbManager->getDatabaseID("sceneobjects"));
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -47,7 +49,13 @@ public:
 			creature->sendSystemMessage("You need to target an object or specify an object id: /getobjvars <objectID> ");
 		}
 
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(objectID, false);
+		ManagedReference<SceneObject*> object = NULL;
+		if ((objectID & 0xFFFFFFFFFFFF) == objectID) {
+			// we only have the lower 48 bits of an objectID
+			object = searchOID(objectID);
+		} else {
+			object = server->getZoneServer()->getObject(objectID, false);
+		}
 
 		if ( object == NULL) {
 			creature->sendSystemMessage("ERROR GETTIGN OBJECT - NULL " + String::valueOf(objectID));
@@ -91,6 +99,16 @@ public:
 
 
 		return SUCCESS;
+	}
+
+	Reference<SceneObject* > searchOID(uint64 shortID) const {
+		for (const auto& dbID : databaseIDs) {
+			uint64 longID = (dbID << 48) | shortID;
+			Reference<SceneObject*> object = server->getZoneServer()->getObject(longID, false);
+			if (object != NULL)
+				return object;
+		}
+		return NULL;
 	}
 
 };

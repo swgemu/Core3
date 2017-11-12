@@ -278,7 +278,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	prototype->createChildObjects();
 
-	String serial = craftingManager->generateSerial();
+	String serial = craftingManager->generateSerial(prototype);
 	prototype->setSerialNumber(serial);
 	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
 	float junkMinValue = templateObject->getJunkMinValue() * junkValueModifier;

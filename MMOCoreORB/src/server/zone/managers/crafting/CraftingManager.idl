@@ -78,7 +78,7 @@ class CraftingManager extends ZoneManager {
 	
 	public native int calculateExperimentationSuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
 	
-	public native string generateSerial();
+	public native string generateSerial(SceneObject sceno);
 	
 	private native void configureLabratories();
 	

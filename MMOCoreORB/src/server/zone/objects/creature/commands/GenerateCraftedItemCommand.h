@@ -164,7 +164,7 @@ public:
 			customName << prototype->getDisplayedName() <<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
 
-			String serial = craftingManager->generateSerial();
+			String serial = craftingManager->generateSerial(prototype);
 			prototype->setSerialNumber(serial);
 
 			prototype->updateToDatabase();

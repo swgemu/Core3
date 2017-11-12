@@ -129,7 +129,7 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	prototype->setSource(deed->getTemplateName());
 	prototype->setQuality(quality);
 	prototype->setLevel(cl);
-	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
+	String serial = player->getZoneServer()->getCraftingManager()->generateSerial(prototype);
 	prototype->setSerialNumber(serial);
 	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
 	prototype->setStun(deed->getStun());
@@ -216,7 +216,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	}
 	prototype->setQuality(quality);
 	prototype->setLevel(cl);
-	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
+	String serial = player->getZoneServer()->getCraftingManager()->generateSerial(prototype);
 	prototype->setSerialNumber(serial);
 	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
 	prototype->setStun(creatureTemplate->getStun());

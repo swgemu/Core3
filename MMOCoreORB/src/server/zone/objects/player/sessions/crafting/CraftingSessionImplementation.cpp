@@ -703,7 +703,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	String name = crafter->getFirstName();
 	prototype->setCraftersName(name);
 
-	String serial = craftingManager->generateSerial();
+	String serial = craftingManager->generateSerial(prototype);
 	prototype->setSerialNumber(serial);
 
 	// Update the prototype with new values

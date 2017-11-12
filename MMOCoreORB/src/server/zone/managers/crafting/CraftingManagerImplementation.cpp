@@ -131,26 +131,16 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	return BARELYSUCCESSFUL;
 }
 
-String CraftingManagerImplementation::generateSerial() {
+String CraftingManagerImplementation::generateSerial(SceneObject *scno) {
 
 	StringBuffer ss;
 
 	char a;
 
 	ss << "(";
-
-	for (int i = 0; i < 8; ++i) {
-
-		a = (System::random(34));
-		if (a < 9) {
-			a = a + 48;
-		} else {
-			a -= 9;
-			a = a + 97;
-		}
-		ss << a;
-	}
-
+	uint64_t oid = scno->getObjectID();
+	oid = oid & 0xFFFFFFFFFFFF;
+	ss << String::hexvalueOf((int64)oid);
 	ss << ")";
 
 
