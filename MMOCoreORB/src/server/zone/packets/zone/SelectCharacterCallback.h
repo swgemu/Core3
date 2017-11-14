@@ -35,13 +35,6 @@ public:
 	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer->isServerLocked()) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
-			client->sendMessage(errMsg);
-
-			return;
-		}
-
 		if (zoneServer->isServerLoading()) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently loading", 0);
 			client->sendMessage(errMsg);
@@ -90,6 +83,12 @@ public:
 			PlayerObject* ghost = player->getPlayerObject();
 
 			if (ghost == NULL) {
+				return;
+			}
+
+			if (ghost->getAdminLevel() == 0 && zoneServer->isServerLocked()) {
+				ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
+				client->sendMessage(errMsg);
 				return;
 			}
 
