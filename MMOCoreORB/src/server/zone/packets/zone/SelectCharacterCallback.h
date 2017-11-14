@@ -44,8 +44,8 @@ public:
 			return;
 		}
 
-		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You reached the max online character count.", 0x0);
+		if (zoneServer->isServerLocked() && (ghost->getAdminLevel() == 0)) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
 			client->sendMessage(errMsg);
 
 			return;
@@ -59,6 +59,13 @@ public:
 
 		if (zone == NULL) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
+			client->sendMessage(errMsg);
+
+			return;
+		}
+
+		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You reached the max online character count.", 0x0);
 			client->sendMessage(errMsg);
 
 			return;
@@ -168,13 +175,6 @@ public:
 	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer->isServerLocked()) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
-			client->sendMessage(errMsg);
-
-			return;
-		}
-
 		if (zoneServer->isServerLoading()) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently loading", 0);
 			client->sendMessage(errMsg);
@@ -189,7 +189,7 @@ public:
 			return;
 		}
 
-		if(!client->hasCharacter(characterID, zoneServer->getGalaxyID())) {
+		if (!client->hasCharacter(characterID, zoneServer->getGalaxyID())) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are unable to login with this character\n\nIf you feel this is an error please close your client, and try again.", 0x0);
 			client->sendMessage(errMsg);
 
