@@ -735,6 +735,11 @@ function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
 
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyEnteredTargetLocSpawnArea, unable to get trial data for player " .. CreatureObject(pPlayer):getFirstName() .. " on trial " .. trialNumber)
+		return 1
+	end
+
 	local npcTemplate
 
 	if (isThirdLocation and trialData.thirdTargetNpc ~= nil) then
