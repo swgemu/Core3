@@ -28,29 +28,6 @@ void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
 	// Randomize item level and stats for existing crystals based on original quality value
 	// TODO: Remove this on a server wipe when old variables are removed
 	if (color == 31 && (minimumDamage != maximumDamage || itemLevel == 0)) {
-		ManagedReference<WeaponObject*> saber = cast<WeaponObject*>(getParent().get().get());
-		bool wasInSaber = false;
-
-		if (saber != NULL && saber->isJediWeapon()) {
-			Locker locker(saber);
-
-			wasInSaber = true;
-			saber->setAttackSpeed(saber->getAttackSpeed() - attackSpeed);
-			saber->setMinDamage(saber->getMinDamage() - minimumDamage);
-			saber->setMaxDamage(saber->getMaxDamage() - maximumDamage);
-			saber->setHealthAttackCost(saber->getHealthAttackCost() - sacHealth);
-			saber->setActionAttackCost(saber->getActionAttackCost() - sacAction);
-			saber->setMindAttackCost(saber->getMindAttackCost() - sacMind);
-			saber->setWoundsRatio(saber->getWoundsRatio() - woundChance);
-
-			if (forceCost != 0)
-				saber->setForceCost(saber->getForceCost() - forceCost);
-			else
-				saber->setForceCost(saber->getForceCost() - floatForceCost);
-
-			locker.release();
-		}
-
 		if (quality == POOR)
 			itemLevel = 1 + System::random(38); // 1-39
 		else if (quality == FAIR)
@@ -77,19 +54,6 @@ void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
 		floatForceCost = 0.0;
 
 		generateCrystalStats();
-
-		if (wasInSaber) {
-			Locker locker(saber);
-
-			saber->setAttackSpeed(saber->getAttackSpeed() + attackSpeed);
-			saber->setMinDamage(saber->getMinDamage() + minimumDamage);
-			saber->setMaxDamage(saber->getMaxDamage() + maximumDamage);
-			saber->setHealthAttackCost(saber->getHealthAttackCost() + sacHealth);
-			saber->setActionAttackCost(saber->getActionAttackCost() + sacAction);
-			saber->setMindAttackCost(saber->getMindAttackCost() + sacMind);
-			saber->setWoundsRatio(saber->getWoundsRatio() + woundChance);
-			saber->setForceCost(saber->getForceCost() + floatForceCost);
-		}
 	}
 
 	TangibleObjectImplementation::notifyLoadFromDatabase();
