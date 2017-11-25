@@ -96,10 +96,11 @@ void PlayerObjectImplementation::checkPendingMessages() {
         for (uint64 messageID : pendingMessages) {
             ManagedReference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageID).castTo<PersistentMessage*>();
 
-            if (isIgnoring(mail->getSenderName())) {
+            if (mail != NULL && isIgnoring(mail->getSenderName())) {
                 objectManager->destroyObjectFromDatabase(mail->getObjectID());
                 continue;
             }
+
             persistentMessages.put(messageID);
         }
         messageList->clearPendingMessages();
