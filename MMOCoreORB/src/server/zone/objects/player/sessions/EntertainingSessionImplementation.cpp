@@ -412,15 +412,6 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 
 	ManagedReference<GroupObject*> group = entertainer->getGroup();
 
-	if (group != NULL) {
-		if (group->getBandSong() != song) {
-
-			Locker clocker(group, entertainer);
-
-			group->setBandSong(song);
-		}
-	}
-
 	sendEntertainingUpdate(entertainer, 0.0125, instrumentAnimation, 0x07352BAC, instrid);
 	performanceName = song;
 	playingMusic = true;
@@ -439,6 +430,16 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
 	startEntertaining();
+
+	locker.release();
+
+	if (group != NULL) {
+		Locker clocker(group);
+
+		if (group->getBandSong() != song) {
+			group->setBandSong(song);
+		}
+	}
 }
 
 void EntertainingSessionImplementation::startEntertaining() {

@@ -209,6 +209,8 @@ public:
 		} else
 			instrument->setBeingUsed(true);
 
+		lockerInstr.release();
+
 		String instrumentAnimation;
 		int instrid = performanceManager->getInstrumentId(args);
 		instrid += performanceManager->getInstrumentAnimation(
