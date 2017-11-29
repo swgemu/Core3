@@ -39,7 +39,7 @@ public:
 		int numTasks = ceil((float)playerList.size() / (float)playersPerTask);
 
 		for (int i = 0; i < numTasks; i++) {
-			Vector<uint> taskList;
+			Vector<uint64> taskList;
 
 			for (int j = 0; j < playersPerTask; j++) {
 				int curIndex = i * playersPerTask + j;
@@ -54,8 +54,10 @@ public:
 				for (int i = 0; i < taskList.size(); i++) {
 					ManagedReference<CreatureObject*> player = strongRef->getZoneServer()->getObject(taskList.get(i)).castTo<CreatureObject*>();
 
-					if (player != NULL)
+					if (player != NULL) {
+						Locker locker(strongRef);
 						strongRef->deductMaintenanceXp(player);
+					}
 				}
 			}, "frsMaintenanceTask", (i + 1) * 500);
 		}

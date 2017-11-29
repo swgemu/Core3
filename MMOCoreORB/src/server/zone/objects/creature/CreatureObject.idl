@@ -35,6 +35,7 @@ import system.lang.Long;
 import engine.service.proto.BasePacket;
 import system.thread.Mutex;
 import server.zone.objects.creature.credits.CreditObject;
+import system.util.SynchronizedVectorMap;
 
 @mock
 class CreatureObject extends TangibleObject {
@@ -165,6 +166,9 @@ class CreatureObject extends TangibleObject {
 	 */
 	@dereferenced
 	private VectorMap<string, unsigned long> screenPlayStates;
+	
+	@dereferenced
+	protected SynchronizedVectorMap<unsigned long, unsigned long> personalEnemyFlags;
 
 	protected transient byte healthWoundHeal;
 	protected transient byte actionWoundHeal;
@@ -2155,4 +2159,10 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public abstract void reloadTemplate() {
 	}
+	
+	public native void addPersonalEnemyFlag(CreatureObject enemy, unsigned long duration);
+	public native void removePersonalEnemyFlag(CreatureObject enemy);
+	public native void removePersonalEnemyFlag(unsigned long enemyID);
+	public native boolean hasPersonalEnemyFlag(CreatureObject enemy);
+	public native void schedulePersonalEnemyFlagTasks();
 }

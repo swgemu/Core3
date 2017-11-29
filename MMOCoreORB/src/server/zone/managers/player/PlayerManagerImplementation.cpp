@@ -101,6 +101,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/objects/player/badges/Badge.h"
 #include "server/zone/objects/building/TutorialBuildingObject.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 										Logger("PlayerManager") {
@@ -733,14 +734,35 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 		playerCreature->sendSystemMessage(toVictim);
 
+		if (destructor->isPlayerCreature()) {
+			CreatureObject* destructorCreature = destructor->asCreatureObject();
 
-		if(destructor->isPlayerCreature()) {
-			StringIdChatParameter toKiller;
+			PlayerObject* attackerGhost = destructorCreature->getPlayerObject();
+			PlayerObject* victimGhost = playerCreature->getPlayerObject();
 
-			toKiller.setStringId("base_player", "prose_target_incap");
-			toKiller.setTT(playerCreature->getDisplayedName());
+			bool isFrsBattle = false;
 
-			destructor->asCreatureObject()->sendSystemMessage(toKiller);
+			if (attackerGhost != NULL && victimGhost != NULL) {
+				FrsData* attackerData = attackerGhost->getFrsData();
+				int attackerCouncil = attackerData->getCouncilType();
+
+				FrsData* victimData = victimGhost->getFrsData();
+				int victimCouncil = victimData->getCouncilType();
+
+				if (attackerCouncil == FrsManager::COUNCIL_DARK && victimCouncil == FrsManager::COUNCIL_DARK) {
+					FrsManager* frsMan = playerCreature->getZoneServer()->getFrsManager();
+					isFrsBattle = frsMan->handleDarkCouncilIncap(destructorCreature, playerCreature);
+				}
+			}
+
+			if (!isFrsBattle) {
+				StringIdChatParameter toKiller;
+
+				toKiller.setStringId("base_player", "prose_target_incap");
+				toKiller.setTT(playerCreature->getDisplayedName());
+
+				destructorCreature->sendSystemMessage(toKiller);
+			}
 		}
 	}
 
@@ -793,6 +815,22 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			if (attackerCreature->isPlayerCreature()) {
 				if (!CombatManager::instance()->areInDuel(attackerCreature, player)) {
 					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+				}
+
+				PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+				PlayerObject* victimGhost = player->getPlayerObject();
+
+				if (attackerGhost != NULL && victimGhost != NULL) {
+					FrsData* attackerData = attackerGhost->getFrsData();
+					int attackerCouncil = attackerData->getCouncilType();
+
+					FrsData* victimData = victimGhost->getFrsData();
+					int victimCouncil = victimData->getCouncilType();
+
+					if (attackerCouncil == FrsManager::COUNCIL_DARK && victimCouncil == FrsManager::COUNCIL_DARK) {
+						FrsManager* frsMan = player->getZoneServer()->getFrsManager();
+						frsMan->handleDarkCouncilDeath(attackerCreature, player);
+					}
 				}
 			}
 		}

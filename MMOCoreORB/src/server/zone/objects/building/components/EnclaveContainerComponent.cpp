@@ -122,3 +122,21 @@ bool EnclaveContainerComponent::checkCellPermission(SceneObject* sceneObject, Cr
 
 	return permission & allowPermissions;
 }
+
+int EnclaveContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
+	printf("notifyObjectRemoved\n");
+	CreatureObject* creo = dynamic_cast<CreatureObject*>(object);
+
+	if (creo == NULL || sceneObject->getObjectID() != FrsManager::ARENA_CELL)
+		return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
+	FrsManager* frsMan = creo->getZoneServer()->getFrsManager();
+
+	Locker locker(frsMan);
+
+	if (frsMan->isFightingInArena(creo->getObjectID())) {
+		printf("handling left arena\n");
+		frsMan->handleLeftArena(creo);
+	}
+
+	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
+}
