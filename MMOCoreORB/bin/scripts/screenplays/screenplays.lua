@@ -71,6 +71,7 @@ includeFile("trainers/trainerConvHandler.lua")
 includeFile("gcw/newsnet.lua")
 includeFile("gcw/recruiters/recruiterConvoHandler.lua")
 includeFile("gcw/recruiters/recruiterScreenplay.lua")
+includeFile("crackdown/cantina.lua")
 
 -- Quest Tasks
 includeFile("quest_tasks/task.lua")
