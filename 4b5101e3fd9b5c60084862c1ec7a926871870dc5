@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "bab3e1c7_6ec1ebe3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PlayerManagerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T13:40:05Z",
+      "side": 1,
+      "message": "this needs to be a cross lock",
+      "revId": "4b5101e3fd9b5c60084862c1ec7a926871870dc5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3e1c7_0eb62f8b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PlayerManagerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T13:40:05Z",
+      "side": 1,
+      "message": "you cant use the cov directly, you need to call safeCopyTo on it and get a copy instead",
+      "revId": "4b5101e3fd9b5c60084862c1ec7a926871870dc5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_47ff2e02",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PlayerManagerCommand.h",
         "patchSetId": 1
