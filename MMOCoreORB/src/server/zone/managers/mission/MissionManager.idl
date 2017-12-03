@@ -167,4 +167,7 @@ class MissionManager extends Observer implements Logger {
 
 	public native void deactivateMissions(CreatureObject player);
 	public native string getRandomBountyPlanet();
+	
+	@arg1preLocked
+	public native boolean sendPlayerBountyDebug(CreatureObject player, CreatureObject target);
 }
