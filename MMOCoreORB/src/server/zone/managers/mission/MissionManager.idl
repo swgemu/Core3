@@ -154,6 +154,11 @@ class MissionManager extends Observer implements Logger {
 	public boolean hasBountyHunterInPlayerBounty(unsigned long targetId, unsigned long bhId) {
 		return playerBountyList.contains(targetId) && playerBountyList.get(targetId).hasBountyHunter(bhId);
 	}
+	
+	@local
+	public PlayerBounty getPlayerBounty(unsigned long playerID) {
+		return playerBountyList.get(playerID);
+	}
 
 	@local
 	public native Vector<unsigned long> getHuntersHuntingTarget(unsigned long targetId);
