@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
@@ -173,6 +174,8 @@ public:
 			return sendLuaEvents(creature, targetObj);
 		} else if (container == "buffs") {
 			return sendBuffs(creature, targetObj);
+		} else if (container == "visibility") {
+			return sendVisibility(creature, targetObj);
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
@@ -564,6 +567,59 @@ public:
 		box->setUsingObject(target);
 		box->setForceCloseDisabled();
 
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+	}
+
+	int sendVisibility(CreatureObject* creature, CreatureObject* target) const {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+
+		if (targetGhost == NULL)
+			return GENERALERROR;
+
+		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+		Reference<PlayerBounty*> playerBounty =  missionManager->getPlayerBounty(target->getObjectID());
+
+		ManagedReference<SuiListBox*> box = new SuiListBox(creature, 0);
+		box->setPromptTitle("Jedi Visibility");
+		String promptText = "Player: " + target->getFirstName() + "\n" + "Visibility: " + String::valueOf(targetGhost->getVisibility()) + "\n";
+
+		if (playerBounty == NULL) {
+			promptText += "** No player bounty data **\n";
+		} else {
+			promptText += "-- Bounty Data --\n";
+			promptText += "Reward: " + String::valueOf(playerBounty->getReward()) + "\n";
+			String onlineStatus = playerBounty->isOnline() ? "True" : "False";
+			promptText += "Online Status: " + onlineStatus + "\n";
+			int activeCount = playerBounty->numberOfActiveMissions();
+			promptText += "Active Bounty Count: " + String::valueOf(activeCount) + "\n";
+			if (activeCount > 0) {
+				promptText += "\nPlayers holding active bounties:";
+				ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+				SortedVector<uint64>* bountyHunters = playerBounty->getBountyHunters();
+
+				for (int i = 0; i < bountyHunters->size(); i++) {
+					String name = playerManager->getPlayerName(bountyHunters->get(i));
+
+					if (name.isEmpty())
+						box->addMenuItem("Unknown player");
+					else
+						box->addMenuItem(name);
+				}
+			}
+		}
+
+		box->setPromptText(promptText);
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
 		ghost->addSuiBox(box);
 		creature->sendMessage(box->generateMessage());
 
