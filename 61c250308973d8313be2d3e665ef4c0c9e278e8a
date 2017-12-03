@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_a5193e7b",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T18:35:35Z",
+      "side": 1,
+      "message": "@reference",
+      "revId": "61c250308973d8313be2d3e665ef4c0c9e278e8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_45264abc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T18:35:35Z",
+      "side": 1,
+      "message": "Reference\u003cPlayerBounty*\u003e",
+      "revId": "61c250308973d8313be2d3e665ef4c0c9e278e8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
