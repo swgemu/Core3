@@ -16,6 +16,24 @@
       "revId": "4b5101e3fd9b5c60084862c1ec7a926871870dc5",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aade967_46ff3202",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PlayerManagerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2017-12-03T12:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_47ff2e02",
+      "revId": "4b5101e3fd9b5c60084862c1ec7a926871870dc5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
