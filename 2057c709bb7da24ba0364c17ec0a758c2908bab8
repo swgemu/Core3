@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_25730eb3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/padawan_trials.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T19:18:07Z",
+      "side": 1,
+      "message": "theres no pPlayer here",
+      "revId": "2057c709bb7da24ba0364c17ec0a758c2908bab8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
