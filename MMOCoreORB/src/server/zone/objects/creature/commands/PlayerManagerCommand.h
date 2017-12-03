@@ -49,8 +49,34 @@ public:
 			Sphere sphere(pos, 125);
 			Vector3 result;
 			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
-		}
-		if (command == "listjedi") {
+		} else if (command == "dumpcov") {
+			uint64_t oid = creature->getObjectID();
+			if (tokenizer.hasMoreTokens())
+				oid = tokenizer.getLongToken();
+
+			ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(oid);
+			if (targetObject == NULL) {
+				player->sendSystemMessage("Unable to look up character");
+				return 1;
+			}
+			Locker locker(targetObject);
+			const CloseObjectsVector *cov = targetObject->getCloseObjects();
+			StringBuffer resp;
+			for (int i=0; i<cov->size(); i++) {
+				ManagedReference<SceneObject *> obj = cov->get(i).castTo<SceneObject *>();
+
+				resp << i << ": ";
+				if (obj == NULL) {
+					resp << "NULL Object" << endl;
+				} else {
+					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName() << "  " << obj->getWorldPosition().toString() << endl;
+				}
+			}
+			ChatManager* chatManager = player->getZoneServer()->getChatManager();
+			chatManager->sendMail("System", "Dump COV" , resp.toString(), player->getFirstName());
+			player->sendSystemMessage(resp.toString());
+			return 0;
+		} else if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
 			Core::getTaskManager()->executeTask([=] () {
