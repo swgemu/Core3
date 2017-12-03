@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_65a026f5",
+        "filename": "MMOCoreORB/src/server/zone/packets/charcreation/ClientRandomNameRequest.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-03T19:19:42Z",
+      "side": 1,
+      "message": "add a limit like 20 or 50 tries",
+      "revId": "4dfc8e9fe4edb5b35b256d734569b66f4fe64ce6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
