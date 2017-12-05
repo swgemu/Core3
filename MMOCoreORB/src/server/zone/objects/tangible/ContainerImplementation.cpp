@@ -251,9 +251,9 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 					}
 				} else if (rootParent->isFactory()) {
 					FactoryObject* factory = rootParent.castTo<FactoryObject*>();
-					SceneObject* hopper = factory->getSlottedObject("ingredient_hopper");
+					Reference<SceneObject*> hopper = factory->getSlottedObject("ingredient_hopper");
 
-					if (hopper->getContainerVolumeLimit() < hopper->getCountableObjectsRecursive() + objectSize) {
+					if (hopper == NULL || hopper->getContainerVolumeLimit() < hopper->getCountableObjectsRecursive() + objectSize) {
 						errorDescription = "@container_error_message:container03"; // This container is full.
 							return TransferErrorCode::CONTAINERFULL;
 					}
