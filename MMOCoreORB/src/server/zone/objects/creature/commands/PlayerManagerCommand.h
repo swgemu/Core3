@@ -63,6 +63,10 @@ public:
 			Locker locker(targetObject, player);
 
 			CloseObjectsVector* vec = (CloseObjectsVector*)targetObject->getCloseObjects();
+			if (vec == NULL) {
+				player->sendSystemMessage("Object does not have a close object vector");
+				return 1;
+			}
 			SortedVector<QuadTreeEntry*> closeObjects;
 			vec->safeCopyTo(closeObjects);
 			locker.release();
