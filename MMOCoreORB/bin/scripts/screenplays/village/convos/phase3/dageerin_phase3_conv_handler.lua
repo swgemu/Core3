@@ -18,7 +18,7 @@ function villageDageerinPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_FINISH)) then
 		return convoTemplate:getScreen("intro_completed_quest")
-	elseif ((FsSad2:hasActiveNonReturnTask(pPlayer) or FsSad2:hasActiveReturnTask(pPlayer)) and not SuiRadiationSensor:hasSensor(pPlayer)) then
+	elseif ((FsSad2:hasActiveNonReturnTask(pPlayer) or FsSad2:hasActiveReturnTask(pPlayer))) then
 		return convoTemplate:getScreen("intro_need_new_sensor")
 	elseif (FsSad2:hasActiveNonReturnTask(pPlayer)) then
 		return convoTemplate:getScreen("intro_on_task")
