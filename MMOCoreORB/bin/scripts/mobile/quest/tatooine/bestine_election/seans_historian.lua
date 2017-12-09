@@ -24,13 +24,13 @@ seans_historian = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_seans_historian.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seansHistorianConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 
