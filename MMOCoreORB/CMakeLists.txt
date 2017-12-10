@@ -28,6 +28,9 @@ find_package(Engine3 REQUIRED)
 include_directories(${ENGINE3_INCLUDE_DIR})
 link_directories(${ENGINE3_LIBRARY})
 
+find_package(OpenSSL REQUIRED)
+include_directories(${OPENSSL_INCLUDE_DIR})
+
 # Compile idl sources
 #file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
 #set(auto_sources)
