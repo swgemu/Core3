@@ -69,6 +69,7 @@
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
 #include "server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h"
 #include "server/zone/packets/ui/DestroyClientPathMessage.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/chat/PendingMessageList.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
@@ -413,6 +414,8 @@ void PlayerObjectImplementation::notifySceneReady() {
 			weatherManager->sendWeatherTo(creature);
 		}
 	}
+
+	checkAndShowTOS();
 
 }
 
@@ -2607,5 +2610,37 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) {
 	return !name.isEmpty() && ignoreList.contains(name);
+}
+
+void PlayerObjectImplementation::checkAndShowTOS() {
+	if (getAcceptedTOSVersion() >= ConfigManager::instance()->getTermsOfServiceVersion())
+		return;
+
+	const String& tosText = ConfigManager::instance()->getTermsOfService();
+	if (tosText.length() == 0)
+		return;
+
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+	if (creature == NULL)
+		return;
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
+	box->setPromptTitle("Terms Of Service");
+	box->setPromptText(tosText);
+	box->setForceCloseDisabled();
+	box->setCancelButton(true, "@cancel");
+	box->setCallback(new LambdaSuiCallback([](server::zone::objects::creature::CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) -> void {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		if (ghost == NULL)
+			return;
+
+		if (eventIndex == 0)
+			ghost->setAcceptedTOSVersion(ConfigManager::instance()->getTermsOfServiceVersion());
+		else
+			ghost->checkAndShowTOS();
+	}, getZoneServer(), "TosCallback"));
+
+	addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
 }
 

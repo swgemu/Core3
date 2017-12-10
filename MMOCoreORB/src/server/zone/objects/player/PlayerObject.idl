@@ -85,6 +85,7 @@ class PlayerObject extends IntangibleObject {
 
 	protected boolean muted;
 	protected string mutedReason;
+	protected int tosVersionAccepted;
 
 	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
@@ -368,6 +369,8 @@ class PlayerObject extends IntangibleObject {
 		reactionFines = 0;
 		
 		lastPvpRatingUpdate.updateToCurrentTime();
+                
+                tosVersionAccepted = 0;
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -419,6 +422,18 @@ class PlayerObject extends IntangibleObject {
 			setDeclaredResidence(null);
 
 	}
+
+	@dirty
+	public int getAcceptedTOSVersion() {
+		return tosVersionAccepted;
+	}
+
+	public void setAcceptedTOSVersion(int version) {
+		tosVersionAccepted = version;
+	}
+
+	@dirty
+	public native void checkAndShowTOS();
 
 	@dirty
 	public synchronized int getTotalOwnedStructureCount() {
