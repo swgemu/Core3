@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_859e8262",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-10T10:27:18Z",
+      "side": 1,
+      "message": "need to initialize this in PlayerObject ctor",
+      "revId": "e749d71dc0431364157cd3c58f26c81d76dfb7a6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
