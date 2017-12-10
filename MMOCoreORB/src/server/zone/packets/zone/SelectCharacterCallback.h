@@ -218,7 +218,7 @@ public:
 
 				static const String lambdaName = "ConnectPlayerLambda";
 
-				player->executeOrderedTask([=] () {
+				player->executeOrderedTask([obj, characterID, player, client, zoneServer] () {
 					Locker locker(obj);
 
 					connectPlayer(obj, characterID, player, client, zoneServer);
