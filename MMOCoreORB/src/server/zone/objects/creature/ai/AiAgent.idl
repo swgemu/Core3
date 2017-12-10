@@ -355,6 +355,7 @@ class AiAgent extends CreatureObject {
 	public native void checkNewAngle();
 
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	public native void setNextPosition(float x, float z, float y, CellObject cell = null);

@@ -80,6 +80,7 @@ class Creature extends AiAgent {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@local

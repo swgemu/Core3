@@ -62,6 +62,7 @@ class MissionTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	@dirty
+	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);

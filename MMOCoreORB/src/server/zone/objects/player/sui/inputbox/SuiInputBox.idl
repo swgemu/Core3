@@ -25,6 +25,7 @@ class SuiInputBox extends SuiBox {
 		inputType = inputtype;
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public void setMaxInputSize(int size) {
