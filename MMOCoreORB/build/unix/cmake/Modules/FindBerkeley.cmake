@@ -10,7 +10,7 @@
 # DB_VERSION - set to required BerkeleyDB version, e.g. 47
 
 set(DB_ROOT_DIR /usr/local/BerkeleyDB.5.3)
-#set(DB_VERSION 5.3)
+set(DB_VERSION 5.3)
 
 # This module defines:
 # DB_FOUND - True if BerkleyDB is found
