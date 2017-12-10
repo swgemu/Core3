@@ -420,6 +420,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @return returns a new valid UpdateContainmentMessage
 	 */
 	@dirty
+	@local
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 
 	/**
@@ -613,9 +614,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param sendSelf if true the owner if this object receives the message too
 	 */
 	@dirty
+	@local
 	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
 
 	@dirty
+	@local
 	public native void broadcastMessagePrivate(BasePacket message, SceneObject selfObject, boolean lockZone);
 
 	/**
@@ -666,6 +669,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param msg BasePacket to be sent
 	 */
 	@dirty
+	@local
 	public abstract native void sendMessage(BasePacket msg);
 
 	/**

@@ -147,6 +147,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 */
 	public native void generateFooter(SuiCreatePageMessage message, int type = 0);
 
+	@local
 	public abstract BaseMessage generateMessage() {
 		return null;
 	}
@@ -155,6 +156,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * Use to close the UI object on the client.
 	 * Sends the SuiForceClosePage packet to the client.
 	 */
+	@local
 	public native BaseMessage generateCloseMessage();
 
 	/**

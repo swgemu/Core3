@@ -22,6 +22,7 @@ class SuiBoxPage extends SuiBox {
 		pageData.setPageId(super.boxID);
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public boolean isSuiBoxPage() {

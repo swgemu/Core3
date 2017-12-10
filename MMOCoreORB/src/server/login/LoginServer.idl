@@ -74,10 +74,12 @@ class LoginServer extends ManagedService implements Logger {
 	@local
 	public native LoginClient getLoginClient(ServiceClient session);
 	
+	@local
 	public LoginEnumCluster getLoginEnumClusterMessage() {
 		return (LoginEnumCluster) enumClusterMessage.clone();
 	}
 
+	@local
 	public LoginClusterStatus getLoginClusterStatusMessage() {
 		return (LoginClusterStatus) clusterStatusMessage.clone();
 	}
