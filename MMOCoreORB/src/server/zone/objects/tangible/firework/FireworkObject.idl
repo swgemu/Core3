@@ -46,6 +46,7 @@ class FireworkObject extends TangibleObject {
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects);

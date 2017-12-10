@@ -40,5 +40,6 @@ class FishingBaitObject extends TangibleObject {
 	public native int getUseCount();
 	
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

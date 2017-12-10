@@ -1008,7 +1008,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 		xpcap = 50;
 	}
 
-	if (richSampleLocation != NULL) {
+	if (richSampleLocation != NULL && richSampleLocation->getPosition() != Vector3(0, 0, 0)) {
 
 		if (player->getDistanceTo(richSampleLocation) < 10) {
 

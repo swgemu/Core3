@@ -81,6 +81,7 @@ class LightsaberCrystalComponent extends Component {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
