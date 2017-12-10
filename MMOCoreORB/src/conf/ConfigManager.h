@@ -81,6 +81,9 @@ namespace conf {
 		String logFile;
 		int logFileLevel;
 
+		String termsOfService;
+		int tosVersion;
+
 	public:
 
 		ConfigManager();
@@ -322,6 +325,14 @@ namespace conf {
 
 		inline void setProgressMonitors(bool val) {
 			progressMonitors = val;
+		}
+
+		inline const String& getTermsOfService() const {
+			return termsOfService;
+		}
+
+		inline int getTermsOfServiceVersion() const {
+			return tosVersion;
 		}
 	};
 }
