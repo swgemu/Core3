@@ -24,12 +24,21 @@ add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp ${autogen_sources} 
 add_dependencies(core3 zone3)
 
 # Add libraries
-target_link_libraries(core3
+if(APPLE)
+    target_link_libraries(core3
+            -Wl,-all_load
+            db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding
+            -Wl,-noall_load
+            ${ENGINE3_LIBRARIES}
+            z pthread ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} db-5.3 dl crypto ssl gtest)
+elseif(UNIX)
+    target_link_libraries(core3
         -Wl,--whole-archive
         db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding
         -Wl,--no-whole-archive
         ${ENGINE3_LIBRARIES}
-        z pthread ${MYSQL_LIBRARIES} ${LUA_LIBRARIES} db-5.3 dl crypto ssl gtest)
+        z pthread ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} db-5.3 dl crypto ssl gtest)
+endif()
 
 # Install core3 binary
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/core3 DESTINATION bin)
