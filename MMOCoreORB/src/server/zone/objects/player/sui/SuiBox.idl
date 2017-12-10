@@ -128,6 +128,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * the object with clearOptions()
 	 * \sa addHeader(), clearOptions()
 	 */
+	@local
 	public native void generateHeader(SuiCreatePageMessage message);
 
 	/**
@@ -137,6 +138,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * reset the object with clearOptions()
 	 * \sa addSetting(), clearOptions()
 	 */
+	@local
 	public native void generateBody(SuiCreatePageMessage message);
 
 
@@ -145,8 +147,10 @@ class SuiBox extends ManagedObject implements Logger {
 	 * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
 	 * \param type Type of footer to place into packet
 	 */
+	@local
 	public native void generateFooter(SuiCreatePageMessage message, int type = 0);
 
+	@local
 	public abstract BaseMessage generateMessage() {
 		return null;
 	}
@@ -155,6 +159,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * Use to close the UI object on the client.
 	 * Sends the SuiForceClosePage packet to the client.
 	 */
+	@local
 	public native BaseMessage generateCloseMessage();
 
 	/**
