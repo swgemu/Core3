@@ -27,6 +27,7 @@ class SuiCharacterBuilderBox extends SuiListBox {
 		currentNode = root;
 	}
 	
+	@local
 	public native BaseMessage generateMessage();
 	
 	@local

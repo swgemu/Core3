@@ -120,7 +120,10 @@ class GuildObject extends SceneObject {
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	@dirty
+	@local
 	public native void broadcastMessage(BaseMessage msg);
+	
+	@local
 	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 

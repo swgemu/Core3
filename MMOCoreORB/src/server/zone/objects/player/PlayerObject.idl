@@ -404,6 +404,7 @@ class PlayerObject extends IntangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 
 	@dirty
+	@local
 	public native void sendMessage(BasePacket msg);
 
 	public synchronized void addOwnedStructure(StructureObject obj) {
@@ -562,6 +563,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@dirty
+	@local
 	public void insertWaypointListToMessage(BaseMessage msg) {
 		waypointList.insertToMessage(msg);
 	}

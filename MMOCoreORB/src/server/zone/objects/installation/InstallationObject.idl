@@ -161,6 +161,7 @@ class InstallationObject extends StructureObject {
 	public native float getActualRate();
 
 	@dirty
+	@local
 	public native void broadcastToOperators(BasePacket packet);
 
 	@preLocked

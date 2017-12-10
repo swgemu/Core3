@@ -72,6 +72,7 @@ class SuiListBox extends SuiBox {
 		return menuItems.size();
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public void setNextBox(unsigned int boxID){
