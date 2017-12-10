@@ -40,6 +40,7 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
+
 IDLC = /usr/local/bin/idlc
 
 IDL_CLASSPATH = ../MMOEngine/include
@@ -105,37 +106,15 @@ cleardb:
 
 PLATFORM:=$(shell uname -s)
 
-ifeq ($(PLATFORM),Linux)
-	CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
-
-	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
-else
-ifeq ($(PLATFORM),Darwin)
-  	CPU_CORES:=$(sysctl hw.ncpu | awk '{print $2}')
-
-	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
-endif
-endif
-
 build-cmake: idl gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && make -j$(CPU_CORES)
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && make
 	cd build/unix && make install
 
-clean-cmake: cleanidl-cmake
-	cd build/unix && make clean && make cleanidl
-	#done
-
-IDLC_BIN:=$(ENGINE3_DIR)/bin/idlc
-
-idl-cmake:
-	#$(IDLC_BIN) -cp $(ENGINE3_DIR)/include -sd src *.idl
-
-cleanidl-cmake:
-	#$(IDLC_BIN) -rb -cp $(ENGINE3_DIR)/include -sd src *.idl
-	#done
-
-deleteidl:
-	$(IDLC) -delete $(IDL_DIRECTIVES) -sd src anyadEclipse
+clean-cmake:
+	rm -f build/unix/CMakeCache.txt
+	rm -f build/unix/cmake_install.cmake
+	rm -f build/unix/Makefile
+	rm -rf build/unix/CMakeFiles
 	#done
 
 DB_NAMESPACE=
