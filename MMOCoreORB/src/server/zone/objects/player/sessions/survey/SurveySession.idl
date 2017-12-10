@@ -25,6 +25,7 @@ class SurveySession extends Facade {
 	@weakReference
 	protected transient ResourceManager resourceManager;
 	
+	@dereferenced
 	protected transient Coordinate richSampleLocation;
 	
 	protected transient boolean doGamble;
@@ -39,7 +40,6 @@ class SurveySession extends Facade {
 		Logger.setLoggingName("CraftingSession");
 		Logger.setLogging(true);
 		
-		richSampleLocation = null;
 		doGamble = false;
 		lastResourceSampleName = "";
 		
@@ -100,7 +100,7 @@ class SurveySession extends Facade {
 	}
 	
 	public void clearRichSampleLocation() {
-		richSampleLocation = null;
+		richSampleLocation.setPosition(0, 0, 0);
 	}
 	
 	@local
