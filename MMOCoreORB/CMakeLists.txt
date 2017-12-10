@@ -11,26 +11,21 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake
 # Add lua includes and libraries
 find_package(Lua "5.3")
 include_directories(${LUA_INCLUDE_DIR})
-link_directories(${LUA_LIBRARIES})
 
 # Find mysql includes and libraries
 find_package(MySql REQUIRED)
 include_directories(${MYSQL_INCLUDE_DIR})
-link_directories(${MYSQL_LIBRARY})
 
 # Find berkeley includes and libraries
 find_package(Berkeley REQUIRED)
 include_directories(${DB_INCLUDE_DIR})
-link_directories(${DB_LIBRARIES})
 
 # Find engine3 includes and libraries
 find_package(Engine3 REQUIRED)
 include_directories(${ENGINE3_INCLUDE_DIR})
-link_directories(${ENGINE3_LIBRARY})
 
 find_package(OpenSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIR})
-link_directories(${OPENSSL_LIBRARIES})
 
 # Compile idl sources
 #file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
