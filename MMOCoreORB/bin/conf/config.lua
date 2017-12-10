@@ -220,3 +220,6 @@ local localFile = loadfile("conf/config-local.lua")
 if (localFile ~= nil) then
   localFile()
 end
+
+TermsOfServiceVersion = 0
+TermsOfService = ""

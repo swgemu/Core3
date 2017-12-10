@@ -66,6 +66,9 @@ ConfigManager::ConfigManager() {
 
 	maxNavMeshJobs = 6;
 
+	termsOfService = "";
+	tosVersion = 0;
+
 	logFileLevel = Logger::INFO;
 }
 
@@ -145,6 +148,9 @@ bool ConfigManager::loadConfigData() {
 
 	logFile = getGlobalString("LogFile");
 	logFileLevel = getGlobalInt("LogFileLevel");
+
+	termsOfService = getGlobalString("TermsOfService");
+	tosVersion = getGlobalInt("TermsOfServiceVersion");
 
 	return true;
 }
