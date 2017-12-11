@@ -9,7 +9,7 @@ project(core3)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake/Modules/")
 
 # Add lua includes and libraries
-find_package(Lua "5.3")
+find_package(Lua "5.3" REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
 
 # Find mysql includes and libraries
@@ -34,20 +34,7 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
-# Compile idl sources
-#file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
-#set(auto_sources)
-#set(auto_headers)
-#foreach(idl ${idls})
-#	string(REPLACE "src/" "src/autogen/" auto_base ${idl})
-#	string(REPLACE ".idl" ".cpp" auto_cpp ${auto_base})
-#	string(REPLACE ".idl" ".h" auto_h ${auto_base})
-#	set(auto_sources ${auto_sources} "${auto_cpp}")
-#	set(auto_headers ${auto_headers} "${auto_cpp}")
-#endforeach()
-#add_custom_target(idl ALL
-#	${IDLC_BIN_DIR}/idlc ${IDL_DIRECTIVES}
-#	COMMENT "Compiling IDL sources")
+#SET(IDL_DIRECTIVES ${IDL_DIRECTIVES} -noprelocks)
 
 #add_custom_target(cleanidl
 #	${IDLC_BIN_DIR}/idlc -rebuild ${IDL_DIRECTIVES}
