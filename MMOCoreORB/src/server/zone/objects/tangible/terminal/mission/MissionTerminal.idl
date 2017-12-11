@@ -9,6 +9,7 @@ import server.zone.objects.creature.CreatureObject;
 include templates.tangible.MissionTerminalTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 include system.util.Vector;
+include templates.SharedObjectTemplate;
 
 class MissionTerminal extends Terminal {
 	protected string terminalType;

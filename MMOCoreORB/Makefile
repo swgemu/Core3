@@ -106,9 +106,8 @@ cleardb:
 
 PLATFORM:=$(shell uname -s)
 
-build-cmake: idl gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
-	cd build/unix && ${MAKE} install
+build-cmake: gtest gitlog
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE} install
 
 clean-cmake:
 	rm -f build/unix/CMakeCache.txt

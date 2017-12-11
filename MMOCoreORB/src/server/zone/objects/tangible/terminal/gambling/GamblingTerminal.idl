@@ -13,6 +13,7 @@ import server.zone.managers.minigames.GamblingBet;
 import server.zone.managers.minigames.events.GamblingEvent;
 import server.chat.StringIdChatParameter;
 include templates.tangible.GamblingTerminalTemplate;
+include templates.SharedObjectTemplate;
 
 class GamblingTerminal extends Terminal {
 	

@@ -5,6 +5,9 @@
 package server.zone.managers.space;
 
 import server.zone.managers.planet.PlanetManager;
+import server.zone.ZoneProcessServer;
+import server.zone.Zone;
+include engine.log.Logger;
 
 class SpaceManager extends PlanetManager {
 	public SpaceManager(Zone planet, ZoneProcessServer srv) {

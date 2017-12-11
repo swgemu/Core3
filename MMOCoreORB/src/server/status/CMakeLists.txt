@@ -9,3 +9,5 @@ include_directories(../..)
 
 # Create status library
 add_library(status3 STATIC ${status3_sources})
+
+add_dependencies(status3 idlobjects)
