@@ -9,6 +9,8 @@ import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
 import server.zone.objects.tangible.tasks.LotteryDroidPulseTask;
 import system.lang.ref.Reference;
 include system.util.Vector;
+include system.lang.Time;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class LotteryDroid extends CreatureObject {	
 	@dereferenced
