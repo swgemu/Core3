@@ -9,3 +9,5 @@ include_directories(../..)
 
 # Create web library
 add_library(web3 STATIC ${web3_sources} mongoose/mongoose.c)
+
+add_dependencies(web3 idlobjects)

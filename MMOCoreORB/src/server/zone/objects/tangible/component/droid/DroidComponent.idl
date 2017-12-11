@@ -6,6 +6,8 @@ package server.zone.objects.tangible.component.droid;
 
 import server.zone.objects.tangible.component.Component;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
  
 class DroidComponent extends Component {
 

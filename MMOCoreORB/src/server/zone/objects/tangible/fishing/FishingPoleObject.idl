@@ -9,6 +9,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class FishingPoleObject extends TangibleObject {	
 	protected int quality;

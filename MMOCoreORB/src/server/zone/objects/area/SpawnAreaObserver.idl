@@ -6,7 +6,9 @@ package server.zone.objects.area;
 
 import engine.util.Observer;
 import engine.util.Observable;
-include server.zone.objects.area.SpawnArea;
+import server.zone.objects.area.SpawnArea;
+include engine.log.Logger;
+import engine.core.ManagedObject;
 
 class SpawnAreaObserver extends Observer implements Logger {
 	@weakReference
