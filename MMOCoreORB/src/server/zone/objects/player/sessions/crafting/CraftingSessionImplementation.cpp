@@ -179,7 +179,13 @@ int CraftingSessionImplementation::clearSession() {
 
 		// Remove all items that aren't the prototype
 		while (craftingTool->getContainerObjectsSize() > 1) {
-			craftingTool->getContainerObject(1)->destroyObjectFromWorld(true);
+			ManagedReference<SceneObject*> obj = craftingTool->getContainerObject(1);
+
+			if (obj != NULL) {
+				Locker slocker(obj, _this.getReferenceUnsafeStaticCast());
+
+				obj->destroyObjectFromWorld(true);
+			}
 		}
 
 		craftingTool->dropSlottedObject("crafted_components");
@@ -352,7 +358,12 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 
 	// Remove all items, incase there are any
 	while (craftingTool->getContainerObjectsSize() > 0) {
-		craftingTool->getContainerObject(0)->destroyObjectFromWorld(true);
+		ManagedReference<SceneObject*> obj = craftingTool->getContainerObject(0);
+
+		if (obj != NULL) {
+			Locker locker(obj);
+			obj->destroyObjectFromWorld(true);
+		}
 	}
 
 	prototype = (crafter->getZoneServer()->createObject(
