@@ -10,3 +10,5 @@ include_directories(../..)
 # Create chat library
 add_library(chat3 STATIC ${chat3_sources})
 #add_dependencies(chat3 idl)
+
+add_dependencies(chat3 idlobjects)

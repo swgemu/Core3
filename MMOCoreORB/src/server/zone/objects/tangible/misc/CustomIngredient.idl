@@ -7,6 +7,10 @@ package server.zone.objects.tangible.misc;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include system.util.VectorMap;
 
 @lua
 class CustomIngredient extends TangibleObject {

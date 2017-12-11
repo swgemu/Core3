@@ -9,6 +9,7 @@ import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
 
 include server.zone.objects.player.sui.listbox.SuiListBoxMenuItem;
+include system.util.Vector;
 
 class SuiListBox extends SuiBox {
 	@dereferenced
