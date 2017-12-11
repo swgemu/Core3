@@ -8,6 +8,8 @@ package server.zone.objects.area;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 
+include system.lang.Time;
+
 class SarlaccArea extends ActiveArea {
 
 	@dereferenced

@@ -6,8 +6,11 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.objects.tangible.TangibleObject;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
+include system.util.Vector;
+include system.util.VectorMap;
+include system.lang.ref.Reference;
 
 import server.zone.managers.crafting.CraftingManager;
 include templates.customization.CustomizationVariable;

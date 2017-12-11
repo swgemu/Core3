@@ -8,6 +8,9 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
 include system.lang.ref.Reference;
+include system.lang.Time;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.packets.scene.AttributeListMessage;
 
 class ShuttleBeacon extends TangibleObject {
 	@weakReference
