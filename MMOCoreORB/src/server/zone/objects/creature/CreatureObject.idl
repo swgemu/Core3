@@ -35,6 +35,9 @@ import system.lang.Long;
 import engine.service.proto.BasePacket;
 import system.thread.Mutex;
 import server.zone.objects.creature.credits.CreditObject;
+include engine.util.u3d.Vector3;
+include system.util.SortedVector;
+include engine.log.Logger;
 
 @mock
 class CreatureObject extends TangibleObject {
