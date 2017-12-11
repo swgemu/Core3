@@ -9,8 +9,11 @@ import engine.util.Observable;
 
 include server.zone.objects.creature.conversation.ConversationTemplate;
 include server.zone.objects.creature.conversation.ConversationScreen;
-include server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
+include engine.log.Logger;
+import engine.core.ManagedObject;
+include system.util.VectorMap;
 
 class ConversationObserver extends Observer implements Logger {
 

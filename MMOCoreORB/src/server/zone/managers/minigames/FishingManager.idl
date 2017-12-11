@@ -16,6 +16,7 @@ import engine.util.Observer;
 import engine.util.Observable;
 include templates.params.ObserverEventType;
 include system.util.Vector;
+include engine.core.ManagedObject;
 
 class FishingManager extends Observer implements Logger {	
 	@dereferenced
