@@ -25,7 +25,11 @@ include pathfinding.RecastNavMesh;
 import system.thread.Mutex;
 import engine.util.u3d.AABB;
 import server.zone.objects.pathfinding.NavArea;
+include engine.core.ManagedObject;
 include system.util.Vector;
+include system.util.SortedVector;
+include system.util.VectorMap;
+include engine.log.Logger;
 
 class CityRegion extends ManagedObject implements Logger {
 

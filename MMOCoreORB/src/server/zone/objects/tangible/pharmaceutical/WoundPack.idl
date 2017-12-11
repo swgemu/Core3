@@ -11,6 +11,8 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include templates.params.creature.CreatureAttribute;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.WoundPackTemplate;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class WoundPack extends PharmaceuticalObject {
 	protected float effectiveness;

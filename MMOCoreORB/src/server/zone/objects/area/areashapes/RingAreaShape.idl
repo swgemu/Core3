@@ -6,6 +6,7 @@ package server.zone.objects.area.areashapes;
 
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.area.areashapes.CircularAreaShape;
+include engine.util.u3d.Vector3;
 
 class RingAreaShape extends AreaShape {
 

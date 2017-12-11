@@ -4,8 +4,10 @@
 
 package server.zone.objects.tangible.component.dna;
 
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.component.Component;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import server.zone.packets.scene.AttributeListMessage;
  
 class DnaComponent extends Component {
 

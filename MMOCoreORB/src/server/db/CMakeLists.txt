@@ -9,3 +9,5 @@ include_directories(../..)
 
 # Create db library
 add_library(db3 STATIC ${db3_sources})
+
+add_dependencies(db3 idlobjects)

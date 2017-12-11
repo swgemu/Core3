@@ -9,3 +9,5 @@ include_directories(../..)
 
 # Create ping library
 add_library(ping3 STATIC ${ping3_sources})
+
+add_dependencies(ping3 idlobjects)

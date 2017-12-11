@@ -24,6 +24,7 @@ import engine.util.u3d.Matrix4;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
+include system.util.VectorMap;
 
 
 class BuildingObject extends StructureObject {
