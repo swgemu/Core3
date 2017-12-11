@@ -9,3 +9,5 @@ include_directories(../)
 
 # Create conf library
 add_library(core3templates STATIC ${core3templates_sources})
+
+add_dependencies(core3templates idlobjects)
