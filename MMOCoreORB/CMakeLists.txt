@@ -69,4 +69,5 @@ add_subdirectory(src/server/ping)
 add_subdirectory(src/server/login)
 add_subdirectory(src/server/zone)
 add_subdirectory(src/server/chat)
+add_subdirectory(src/client)
 

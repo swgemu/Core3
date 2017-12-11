@@ -19,22 +19,24 @@ link_directories(${CMAKE_BINARY_DIR}/src/server/chat)
 
 file(GLOB_RECURSE autogen_sources "autogen/*.cpp")
 
+add_library(idlobjects STATIC ${autogen_sources})
+
 # Create core3 binary
-add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp ${autogen_sources} main.cpp)
-add_dependencies(core3 zone3)
+add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp main.cpp)
+add_dependencies(core3 zone3 idlobjects)
 
 # Add libraries
 if(APPLE)
     target_link_libraries(core3
             -Wl,-all_load
-            db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding
+            db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
             -Wl,-noall_load
             ${ENGINE3_LIBRARIES}
             z pthread ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} dl ${OPENSSL_LIBRARIES} gtest)
 elseif(UNIX)
     target_link_libraries(core3
         -Wl,--whole-archive
-        db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding
+        db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
         -Wl,--no-whole-archive
         ${ENGINE3_LIBRARIES}
         z pthread ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} dl ${OPENSSL_LIBRARIES} gtest)
@@ -42,4 +44,5 @@ endif()
 
 # Install core3 binary
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/core3 DESTINATION bin)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/client/core3client DESTINATION bin)
 
