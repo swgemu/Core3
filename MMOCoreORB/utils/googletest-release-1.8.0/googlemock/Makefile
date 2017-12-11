@@ -14,5 +14,5 @@ clean:
 
 all:	
 		mkdir -p lib
-		make compile
+		${MAKE} compile
 		cd lib && ar -rv libgtest.a gtest-all.o gmock-all.o

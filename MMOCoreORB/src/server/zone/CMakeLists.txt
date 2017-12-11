@@ -9,4 +9,5 @@ include_directories(../..)
 
 # Create zone library
 add_library(zone3 STATIC ${zone3_sources})
-#add_dependencies(zone3 login3)
+
+add_dependencies(zone3 idlobjects)
