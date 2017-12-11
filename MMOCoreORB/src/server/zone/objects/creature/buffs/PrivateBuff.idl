@@ -5,6 +5,7 @@
 package server.zone.objects.creature.buffs;
 
 import server.zone.objects.creature.buffs.Buff;
+import server.zone.objects.creature.CreatureObject;
 
 // A private buff will only be appropriate if it only contains private_ skillmods and does not need
 // to be sent (or can't be sent) to the player.

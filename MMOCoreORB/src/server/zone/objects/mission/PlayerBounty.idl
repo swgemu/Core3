@@ -5,6 +5,7 @@
 package server.zone.objects.mission;
 
 import engine.core.ManagedObject;
+include system.util.SortedVector;
 
 class PlayerBounty extends ManagedObject {
 	protected unsigned long targetPlayerID;

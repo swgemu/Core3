@@ -8,6 +8,9 @@ import server.zone.objects.tangible.component.Component;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
+
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 @lua
 class LightsaberCrystalComponent extends Component {

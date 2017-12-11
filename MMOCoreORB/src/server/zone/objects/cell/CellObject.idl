@@ -9,6 +9,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.building.BuildingObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 include templates.SharedObjectTemplate;
+include system.thread.atomic.AtomicInteger;
+include engine.log.Logger;
 
 @lua
 class CellObject extends SceneObject {
