@@ -62,9 +62,9 @@ IF (DB_FOUND)
         MESSAGE(STATUS "Found berkeley db library: ${DB_LIBRARIES}")
     ENDIF (NOT DB_FIND_QUIETLY)
 ELSE (DB_FOUND)
-    IF (DB_FIND_REQUIRED)
+    IF (Berkeley_FIND_REQUIRED)
         MESSAGE(FATAL_ERROR "Could NOT find berkeley db 5.3 library")
-    ENDIF (DB_FIND_REQUIRED)
+    ENDIF (Berkeley_FIND_REQUIRED)
 ENDIF (DB_FOUND)
 
 MARK_AS_ADVANCED(
