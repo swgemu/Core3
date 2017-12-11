@@ -16,6 +16,7 @@ import system.lang.String;
 import system.util.SortedVector;
 include system.thread.ReadWriteLock;
 include system.lang.System;
+include system.util.VectorMap;
 
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;

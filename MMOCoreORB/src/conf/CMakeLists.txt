@@ -9,3 +9,5 @@ include_directories(../)
 
 # Create conf library
 add_library(conf3 STATIC ${conf3_sources})
+
+add_dependencies(conf3 idlobjects)

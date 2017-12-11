@@ -8,6 +8,8 @@ import server.zone.objects.tangible.Container;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
+include system.util.VectorMap;
+
 class WearableContainerObject extends Container {	
 	
 	@dereferenced

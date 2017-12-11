@@ -6,6 +6,10 @@ package server.zone.objects.installation.harvester;
 
 import server.zone.objects.installation.InstallationObject;
 import server.zone.packets.object.ObjectMenuResponse;
+include templates.SharedObjectTemplate;
+include engine.log.Logger;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
 
 class HarvesterObject extends InstallationObject {
 	

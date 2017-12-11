@@ -10,6 +10,8 @@ include system.lang.Math;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include system.lang.System;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class RevivePack extends PharmaceuticalObject {
 	protected float healthWoundHealed;

@@ -7,6 +7,7 @@ package server.zone.managers.director;
 import engine.lua.Lua;
 import engine.core.ManagedObject;
 import system.lang.String;
+include system.util.VectorMap;
 
 @lua
 class QuestVectorMap extends ManagedObject {
