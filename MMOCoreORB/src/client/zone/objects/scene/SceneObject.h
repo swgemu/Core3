@@ -2,6 +2,9 @@
 #define SCENEOBJECT_H_
 
 #include "engine/engine.h"
+
+#include "engine/util/u3d/Coordinate.h"
+
 #include "variables/StringId.h"
 
 class ZoneClient;
