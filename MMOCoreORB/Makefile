@@ -80,7 +80,7 @@ idl:
 	#done
 
 gtest:
-	cd utils/googletest-release-1.8.0/googlemock && make all
+	+cd utils/googletest-release-1.8.0/googlemock && make all
 
 config:
 	aclocal
@@ -107,7 +107,7 @@ cleardb:
 PLATFORM:=$(shell uname -s)
 
 build-cmake: idl gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && make
+	+cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && make
 	cd build/unix && make install
 
 clean-cmake:
