@@ -17,13 +17,39 @@ link_directories(${CMAKE_BINARY_DIR}/src/server/login)
 link_directories(${CMAKE_BINARY_DIR}/src/server/zone)
 link_directories(${CMAKE_BINARY_DIR}/src/server/chat)
 
-file(GLOB_RECURSE autogen_sources "autogen/*.cpp")
+file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
+
+set(autogen_sources)
+set(autogen_headers)
+foreach(idl ${idls})
+	string(REPLACE "src/" "src/autogen/" autogen_base ${idl})
+	string(REPLACE ".idl" ".cpp" autogen_cpp ${autogen_base})
+	string(REPLACE ".idl" ".h" autogen_h ${autogen_base})
+	set(autogen_sources ${autogen_sources} "${autogen_cpp}")
+	set(autogen_headers ${autogen_headers} "${autogen_h}")
+endforeach()
+
+add_custom_command(OUTPUT ${autogen_sources}
+		COMMAND ${IDLC_BIN_DIR}/idlc ${IDL_DIRECTIVES}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		COMMENT "Compiling IDL sources as command")
+
+add_custom_target(idl ALL
+		COMMAND ${IDLC_BIN_DIR}/idlc ${IDL_DIRECTIVES}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		COMMENT "Compiling IDL sources as target"
+		SOURCES ${autogen_sources})
+
 
 add_library(idlobjects STATIC ${autogen_sources})
 
+#add_dependencies(idlobjects idl)
+
+set_target_properties(idlobjects PROPERTIES LINKER_LANGUAGE CXX)
+
 # Create core3 binary
 add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp main.cpp)
-add_dependencies(core3 zone3 idlobjects)
+add_dependencies(core3 zone3)
 
 # Add libraries
 if(APPLE)
@@ -35,11 +61,11 @@ if(APPLE)
             ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gtest)
 elseif(UNIX)
     target_link_libraries(core3
-        -Wl,--whole-archive
-        db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
-        -Wl,--no-whole-archive
-        ${ENGINE3_LIBRARIES}
-        ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gtest)
+        	-Wl,--whole-archive
+        	db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
+        	-Wl,--no-whole-archive
+        	${ENGINE3_LIBRARIES}
+        	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gtest)
 endif()
 
 # Install core3 binary
