@@ -5,6 +5,7 @@
 package server.zone.managers.guild;
 
 import engine.core.ManagedService;
+import engine.log.Logger;
 import system.lang.StringBuffer;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneServer;
@@ -16,6 +17,7 @@ import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
+include system.util.VectorMap;
 
 @dirty
 class GuildManager extends ManagedService implements Logger {

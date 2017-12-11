@@ -11,6 +11,8 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.EnhancePackTemplate;
 include server.zone.objects.creature.BuffAttribute;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class EnhancePack extends PharmaceuticalObject {
 	protected float effectiveness;

@@ -12,6 +12,7 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
+import server.zone.objects.scene.SceneObject;
 import system.thread.Mutex;
 import server.zone.objects.tangible.deed.Deed;
 
@@ -22,6 +23,7 @@ include templates.ChildObject;
 include server.chat.StringIdChatParameter;
 include templates.faction.Factions;
 include system.util.Vector;
+include system.util.VectorMap;
 include system.util.HashTable;
 include system.lang.ref.Reference;
 

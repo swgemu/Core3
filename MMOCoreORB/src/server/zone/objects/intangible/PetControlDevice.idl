@@ -14,6 +14,7 @@ include server.zone.objects.creature.ai.PatrolPointsVector;
 include server.zone.objects.creature.ai.PatrolPoint;
 import server.zone.objects.intangible.PetControlObserver;
 include system.util.Vector;
+include system.lang.Time;
 
 class PetControlDevice extends ControlDevice {
 

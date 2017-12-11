@@ -13,6 +13,11 @@ include server.zone.packets.ui.SuiCreatePageMessage;
 include server.zone.objects.player.sui.SuiWindowType;
 include server.zone.objects.player.sui.SuiCallback;
 
+include engine.core.ManagedObject;
+include engine.log.Logger;
+
+include system.util.Vector;
+
 class SuiBox extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject player;
