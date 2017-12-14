@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 
-project(core3)
+project(core3 CXX C)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -55,12 +55,12 @@ include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googletest/include)
 include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googlemock/include)
-link_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googlemock/lib)
 
 # Define build flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11")
 
 # Define sources
+add_subdirectory(utils/googletest-release-1.8.0/googlemock)
 add_subdirectory(src)
 add_subdirectory(src/conf)
 add_subdirectory(src/terrain)

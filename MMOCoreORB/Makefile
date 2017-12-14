@@ -106,12 +106,12 @@ cleardb:
 
 PLATFORM:=$(shell uname -s)
 
-build-cmake: idl gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=OFF -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE} install
+build-cmake: idl gitlog
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=OFF -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
-build-cmake-with-idl: gtest gitlog
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE} install
+build-cmake-with-idl: gitlog
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
 clean-cmake:
