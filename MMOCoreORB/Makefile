@@ -107,11 +107,11 @@ cleardb:
 PLATFORM:=$(shell uname -s)
 
 build-cmake: idl
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=OFF -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd build/unix && cmake -DBUILD_IDL=OFF -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
 build-cmake-with-idl:
-	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. -DBUILD_IDL=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd build/unix && cmake -DBUILD_IDL=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
 clean-cmake:
