@@ -56,7 +56,7 @@ set_target_properties(idlobjects PROPERTIES LINKER_LANGUAGE CXX)
 
 # Create core3 binary
 add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp main.cpp)
-add_dependencies(core3 zone3)
+add_dependencies(core3 zone3 gmock)
 
 # Add libraries
 if(APPLE)
@@ -65,16 +65,19 @@ if(APPLE)
             db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
             -Wl,-noall_load
             ${ENGINE3_LIBRARIES}
-            ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gtest)
+            ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
 elseif(UNIX)
     target_link_libraries(core3
         	-Wl,--whole-archive
         	db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
         	-Wl,--no-whole-archive
         	${ENGINE3_LIBRARIES}
-        	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gtest)
+        	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
 endif()
 
-# Install core3 binary
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/core3 DESTINATION bin)
-
+# Copy core3 binary
+add_custom_command(
+	TARGET core3 POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	${CMAKE_CURRENT_BINARY_DIR}/core3
+	${CMAKE_SOURCE_DIR}/bin/)
