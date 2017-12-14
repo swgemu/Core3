@@ -8,9 +8,11 @@ import engine.core.ManagedObject;
 import system.util.VectorMap;
 import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 include server.zone.managers.auction.AuctionTerminalMap;
 include server.zone.managers.auction.TerminalListVector;
 include server.zone.managers.auction.CommoditiesLimit;
+include engine.log.Logger;
 
 class AuctionsMap extends ManagedObject {
 	

@@ -10,3 +10,5 @@ include_directories(../templates)
 
 # Create conf library
 add_library(core3terrain STATIC ${core3terrain_sources})
+
+add_dependencies(core3terrain idlobjects)

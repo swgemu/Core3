@@ -11,6 +11,8 @@ import system.lang.String;
 import system.util.Vector;
 include templates.tangible.StimPackTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class StimPack extends PharmaceuticalObject {
 	protected float effectiveness;
