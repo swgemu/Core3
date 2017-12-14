@@ -4,9 +4,10 @@
 include_directories(.)
 
 file(GLOB_RECURSE core3client_sources "*.cpp")
+file(GLOB_RECURSE core3client_headers "*.h")
 
 # Create core3client binary
-add_executable(core3client ${core3client_sources})
+add_executable(core3client ${core3client_sources} ${core3client_headers})
 
 add_dependencies(core3client idlobjects)
 

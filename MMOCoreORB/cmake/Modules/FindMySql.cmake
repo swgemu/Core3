@@ -28,6 +28,10 @@
 
 ##########################################################################
 
+IF (MYSQL_INCLUDE_DIR AND MYSQL_LIB_DIR)
+  # Already in cache, be silent
+  SET(MySql_FIND_QUIETLY TRUE)
+ENDIF (MYSQL_INCLUDE_DIR AND MYSQL_LIB_DIR)
 
 #-------------- FIND MYSQL_INCLUDE_DIR ------------------
 FIND_PATH(MYSQL_INCLUDE_DIR mysql.h
@@ -107,8 +111,15 @@ IF (MYSQL_INCLUDE_DIR AND MYSQL_LIB_DIR)
     SET(MYSQL_CLIENT_LIBS ${MYSQL_CLIENT_LIBS} ws2_32)
   ENDIF (WIN32)
 
-  MESSAGE(STATUS "MySQL Include dir: ${MYSQL_INCLUDE_DIR}  library dir: ${MYSQL_LIB_DIR}")
-  MESSAGE(STATUS "MySQL client libraries: ${MYSQL_CLIENT_LIBS}")
+  IF (NOT MySql_FIND_QUIETLY)
+    MESSAGE(STATUS "MySQL Include dir: ${MYSQL_INCLUDE_DIR}  library dir: ${MYSQL_LIB_DIR}")
+    MESSAGE(STATUS "MySQL client libraries: ${MYSQL_CLIENT_LIBS}")
+  ENDIF (NOT MySql_FIND_QUIETLY)
 ELSEIF (MySql_FIND_REQUIRED)
   MESSAGE(FATAL_ERROR "Cannot find MySQL. Include dir: ${MYSQL_INCLUDE_DIR}  library dir: ${MYSQL_LIB_DIR}")
 ENDIF (MYSQL_INCLUDE_DIR AND MYSQL_LIB_DIR)
+
+MARK_AS_ADVANCED(
+  MYSQL_LIB_DIR
+  MYSQL_INCLUDE_DIR
+)

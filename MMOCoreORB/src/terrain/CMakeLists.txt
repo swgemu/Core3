@@ -3,12 +3,13 @@
 
 # Add conf sources
 file(GLOB_RECURSE core3terrain_sources "*.cpp")
+file(GLOB_RECURSE core3terrain_headers "*.h")
 
 # Add conf includes
 include_directories(../)
 include_directories(../templates)
 
 # Create conf library
-add_library(core3terrain STATIC ${core3terrain_sources})
+add_library(core3terrain STATIC ${core3terrain_sources} ${core3terrain_headers})
 
 add_dependencies(core3terrain idlobjects)

@@ -54,22 +54,30 @@ endif()
 
 set_target_properties(idlobjects PROPERTIES LINKER_LANGUAGE CXX)
 
+#add_subdirectory(server/zone)
+
+file(GLOB_RECURSE zone3_sources "server/zone/*.cpp")
+file(GLOB_RECURSE zone3_headers "server/zone/*.h")
+
+file(GLOB_RECURSE tre3_sources "tre3/*.cpp")
+file(GLOB_RECURSE tre3_headers "tre3/*.h")
+
 # Create core3 binary
-add_executable(core3 server/ServerCore.cpp tre3/TreeFile.cpp main.cpp)
-add_dependencies(core3 zone3 gmock)
+add_executable(core3 server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers} main.cpp)
+add_dependencies(core3 gmock)
 
 # Add libraries
 if(APPLE)
     target_link_libraries(core3
             -Wl,-all_load
-            db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
+            db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
             -Wl,-noall_load
             ${ENGINE3_LIBRARIES}
             ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
 elseif(UNIX)
     target_link_libraries(core3
         	-Wl,--whole-archive
-        	db3 conf3 web3 status3 ping3 login3 zone3 chat3 core3terrain core3templates core3pathfinding idlobjects
+        	db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
         	-Wl,--no-whole-archive
         	${ENGINE3_LIBRARIES}
         	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
@@ -81,3 +89,9 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy
 	${CMAKE_CURRENT_BINARY_DIR}/core3
 	${CMAKE_SOURCE_DIR}/bin/)
+
+if(GIT_FOUND)
+    add_custom_command(
+        TARGET core3 POST_BUILD
+        COMMAND ${GIT_EXECUTABLE} log --pretty=format:'%h was %an, %ar, message: %s' -10 > ${CMAKE_SOURCE_DIR}/bin/conf/rev.txt)
+endif()

@@ -9,6 +9,8 @@ project(core3 CXX C)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 OPTION(BUILD_IDL "Generate idl c++ sources with cmake" ON) # Enabled by default
+OPTION(IDL_NOPRELOCKS "Disables all prelock annotations" OFF) # Enabled by default
+OPTION(ENABLE_CCACHE "Enables ccache search and usage" OFF) # Enabled by default
 
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)
@@ -16,7 +18,7 @@ include_directories(${LUA_INCLUDE_DIR})
 
 # Find mysql includes and libraries
 find_package(MySql REQUIRED)
-include_directories(${MYSQL_INCLUDE_DIR})
+#include_directories(${MYSQL_INCLUDE_DIR}) already included in find
 
 # Find berkeley includes and libraries
 find_package(Berkeley REQUIRED)
@@ -38,17 +40,20 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
-#find_program(CCACHE_FOUND ccache)
-#if(CCACHE_FOUND)
-#    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-#    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
-#endif(CCACHE_FOUND)
+find_package(Git QUIET)
 
-#SET(IDL_DIRECTIVES ${IDL_DIRECTIVES} -noprelocks)
+if (ENABLE_CCACHE)
+    find_program(CCACHE_FOUND ccache)
+    if(CCACHE_FOUND)
+        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+        set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+    endif(CCACHE_FOUND)
+endif(ENABLE_CCACHE)
 
-#add_custom_target(cleanidl
-#	${IDLC_BIN_DIR}/idlc -rebuild ${IDL_DIRECTIVES}
-#	COMMENT "Rebuilding IDL sources")
+
+if(IDL_NOPRELOCKS)
+    set(IDL_DIRECTIVES ${IDL_DIRECTIVES} -noprelocks)
+endif(IDL_NOPRELOCKS)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
@@ -71,7 +76,6 @@ add_subdirectory(src/server/status)
 add_subdirectory(src/server/web)
 add_subdirectory(src/server/ping)
 add_subdirectory(src/server/login)
-add_subdirectory(src/server/zone)
 add_subdirectory(src/server/chat)
 add_subdirectory(src/client)
 
