@@ -21,30 +21,32 @@ if(BUILD_IDL)
 	file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
 
 	set(autogen_sources)
-	set(autogen_headers)
+	#set(autogen_headers)
 	foreach(idl ${idls})
 		string(REPLACE "src/" "src/autogen/" autogen_base ${idl})
 		string(REPLACE ".idl" ".cpp" autogen_cpp ${autogen_base})
-		string(REPLACE ".idl" ".h" autogen_h ${autogen_base})
+	#	string(REPLACE ".idl" ".h" autogen_h ${autogen_base})
 		set(autogen_sources ${autogen_sources} "${autogen_cpp}")
-		set(autogen_headers ${autogen_headers} "${autogen_h}")
+	#	set(autogen_headers ${autogen_headers} "${autogen_h}")
 
 		string(REGEX REPLACE ".+\/src\/" "" idl_f ${idl})
 		string(CONCAT idl_b "src/" ${idl_f})
 
 		get_filename_component(idl_we ${idl} NAME_WE)
 
-		add_custom_command(OUTPUT "${autogen_cpp}" "${autogen_h}"
-			COMMAND ${Java_JAVA_EXECUTABLE} -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler ${IDL_DIRECTIVES} -silence -rebuild -sd src ${idl_f}
+		add_custom_command(OUTPUT "${autogen_cpp}" #"${autogen_h}"
+			COMMAND ${Java_JAVA_EXECUTABLE} -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler ${IDL_DIRECTIVES} -silence -rbcpp -sd src ${idl_f}
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 			DEPENDS ${idl}
 			COMMENT "Building IDL object ${idl_b}"
 			VERBATIM)
 	endforeach()
 
-	set_source_files_properties(${${autogen_sources}} ${${autogen_headers}} PROPERTIES GENERATED TRUE)
+	#set_source_files_properties(${${autogen_sources}} ${${autogen_headers}} PROPERTIES GENERATED TRUE)
+	set_source_files_properties(${${autogen_sources}}} PROPERTIES GENERATED TRUE)
 
-	add_library(idlobjects STATIC ${autogen_sources} ${autogen_headers})
+	#add_library(idlobjects STATIC ${autogen_sources} ${autogen_headers})
+	add_library(idlobjects STATIC ${autogen_sources})
 else(BUILD_IDL)
 	file(GLOB_RECURSE autogen_sources "autogen/*.cpp")
 	file(GLOB_RECURSE autogen_headers "autogen/*.h")
@@ -53,8 +55,6 @@ else(BUILD_IDL)
 endif()
 
 set_target_properties(idlobjects PROPERTIES LINKER_LANGUAGE CXX)
-
-#add_subdirectory(server/zone)
 
 file(GLOB_RECURSE zone3_sources "server/zone/*.cpp")
 file(GLOB_RECURSE zone3_headers "server/zone/*.h")
