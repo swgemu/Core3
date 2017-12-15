@@ -87,7 +87,7 @@ endif()
 add_custom_command(
 	TARGET core3 POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
-	${CMAKE_CURRENT_BINARY_DIR}/core3
+	$<TARGET_FILE:core3>
 	${CMAKE_SOURCE_DIR}/bin/)
 
 if(GIT_FOUND)

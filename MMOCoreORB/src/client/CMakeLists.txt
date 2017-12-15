@@ -16,5 +16,5 @@ target_link_libraries(core3client ${ENGINE3_LIBRARIES} ${ZLIB_LIBRARIES} Threads
 add_custom_command(
         TARGET core3client POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_BINARY_DIR}/core3client
+        $<TARGET_FILE:core3client>
         ${CMAKE_SOURCE_DIR}/bin/)
