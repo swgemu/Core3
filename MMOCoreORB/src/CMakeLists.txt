@@ -14,7 +14,7 @@ link_directories(${CMAKE_BINARY_DIR}/src/server/web)
 link_directories(${CMAKE_BINARY_DIR}/src/server/status)
 link_directories(${CMAKE_BINARY_DIR}/src/server/ping)
 link_directories(${CMAKE_BINARY_DIR}/src/server/login)
-link_directories(${CMAKE_BINARY_DIR}/src/server/zone)
+#link_directories(${CMAKE_BINARY_DIR}/src/server/zone)
 link_directories(${CMAKE_BINARY_DIR}/src/server/chat)
 
 if(BUILD_IDL)
@@ -90,8 +90,9 @@ add_custom_command(
 	$<TARGET_FILE:core3>
 	${CMAKE_SOURCE_DIR}/bin/)
 
-if(GIT_FOUND)
+if(GIT_FOUND AND RUN_GIT)
     add_custom_command(
         TARGET core3 POST_BUILD
-        COMMAND ${GIT_EXECUTABLE} log --pretty=format:'%h was %an, %ar, message: %s' -10 > ${CMAKE_SOURCE_DIR}/bin/conf/rev.txt)
+        COMMAND ${GIT_EXECUTABLE} log --pretty=format:'%h was %an, %ar, message: %s' -10 > ${CMAKE_SOURCE_DIR}/bin/conf/rev.txt
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()

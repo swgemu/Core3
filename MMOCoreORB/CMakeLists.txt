@@ -11,6 +11,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 OPTION(BUILD_IDL "Generate idl c++ sources with cmake" ON) # Enabled by default
 OPTION(IDL_NOPRELOCKS "Disables all prelock annotations" OFF) # Disabled by default
 OPTION(ENABLE_CCACHE "Enables ccache search and usage" OFF) # Disabled by default
+OPTION(RUN_GIT "Runs git log to dump last commit messages into rev.txt" OFF) # Disabled by default
 
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)
