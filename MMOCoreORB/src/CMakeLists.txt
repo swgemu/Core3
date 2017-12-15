@@ -35,7 +35,7 @@ if(BUILD_IDL)
 		get_filename_component(idl_we ${idl} NAME_WE)
 
 		add_custom_command(OUTPUT "${autogen_cpp}" #"${autogen_h}"
-			COMMAND ${Java_JAVA_EXECUTABLE} -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler ${IDL_DIRECTIVES} -silence -rbcpp -sd src ${idl_f}
+			COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -silence -rbcpp -sd src ${idl_f}
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 			DEPENDS ${idl}
 			COMMENT "Building IDL object ${idl_b}"

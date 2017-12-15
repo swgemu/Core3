@@ -111,7 +111,7 @@ build-cmake: idl
 	#done
 
 build-cmake-with-idl:
-	cd build/unix && cmake -DBUILD_IDL=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd build/unix && cmake -DBUILD_IDL=ON -DENABLE_CCACHE=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
 clean-cmake:
