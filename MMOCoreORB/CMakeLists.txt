@@ -24,7 +24,7 @@ find_package(MySql REQUIRED)
 find_package(Berkeley REQUIRED)
 include_directories(${DB_INCLUDE_DIR})
 
-find_package(Java COMPONENTS Runtime REQUIRED)
+find_package(Java 1.7 COMPONENTS Runtime REQUIRED )
 
 # Find engine3 includes and libraries
 find_package(Engine3 REQUIRED)
