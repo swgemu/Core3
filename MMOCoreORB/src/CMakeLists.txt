@@ -35,7 +35,7 @@ if(BUILD_IDL)
 		get_filename_component(idl_we ${idl} NAME_WE)
 
 		add_custom_command(OUTPUT "${autogen_cpp}" "${autogen_h}"
-			COMMAND ${Java_JAVA_EXECUTABLE} -Xmx64M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler ${IDL_DIRECTIVES} -silence -rebuild -sd src ${idl_f}
+			COMMAND ${Java_JAVA_EXECUTABLE} -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler ${IDL_DIRECTIVES} -silence -rebuild -sd src ${idl_f}
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 			DEPENDS ${idl}
 			COMMENT "Building IDL object ${idl_b}"
@@ -64,7 +64,7 @@ file(GLOB_RECURSE tre3_headers "tre3/*.h")
 
 # Create core3 binary
 add_executable(core3 server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers} main.cpp)
-add_dependencies(core3 gmock)
+add_dependencies(core3 gmock idlobjects)
 
 # Add libraries
 if(APPLE)
