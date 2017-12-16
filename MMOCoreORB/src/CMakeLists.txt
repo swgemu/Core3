@@ -14,7 +14,6 @@ link_directories(${CMAKE_BINARY_DIR}/src/server/web)
 link_directories(${CMAKE_BINARY_DIR}/src/server/status)
 link_directories(${CMAKE_BINARY_DIR}/src/server/ping)
 link_directories(${CMAKE_BINARY_DIR}/src/server/login)
-#link_directories(${CMAKE_BINARY_DIR}/src/server/zone)
 link_directories(${CMAKE_BINARY_DIR}/src/server/chat)
 
 if(BUILD_IDL)
@@ -66,22 +65,23 @@ file(GLOB_RECURSE tre3_headers "tre3/*.h")
 add_executable(core3 server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers} main.cpp)
 add_dependencies(core3 gmock idlobjects)
 
+set(whole_archive_start)
+set(whole_archive_end)
 # Add libraries
 if(APPLE)
-    target_link_libraries(core3
-            -Wl,-all_load
-            db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
-            -Wl,-noall_load
-            ${ENGINE3_LIBRARIES}
-            ${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+	set(whole_archive_start "-Wl,-all_load")
+	set(whole_archive_end "") #-Wl,-noall_load deprecated
 elseif(UNIX)
-    target_link_libraries(core3
-        	-Wl,--whole-archive
-        	db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
-        	-Wl,--no-whole-archive
-        	${ENGINE3_LIBRARIES}
-        	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+	set(whole_archive_start "-Wl,--whole-archive")
+	set(whole_archive_end "-Wl,--no-whole-archive")
 endif()
+
+target_link_libraries(core3
+	${whole_archive_start}
+	db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
+	${whole_archive_end}
+	${ENGINE3_LIBRARIES}
+	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
 
 # Copy core3 binary
 add_custom_command(
@@ -93,6 +93,7 @@ add_custom_command(
 if(GIT_FOUND AND RUN_GIT)
     add_custom_command(
         TARGET core3 POST_BUILD
-        COMMAND ${GIT_EXECUTABLE} log --pretty=format:'%h was %an, %ar, message: %s' -10 > ${CMAKE_SOURCE_DIR}/bin/conf/rev.txt
-		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+        COMMAND ${GIT_EXECUTABLE} log --pretty=format:"%h was %an, %ar, message: %s" -10 > ${CMAKE_SOURCE_DIR}/bin/conf/rev.txt
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		VERBATIM)
 endif()
