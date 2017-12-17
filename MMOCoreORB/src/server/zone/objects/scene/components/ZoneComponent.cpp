@@ -499,25 +499,26 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	}
 
 	if (closeobjects != NULL) {
-		try {
+		for (int i=0; closeobjects->size() != 0 && i<100; i++) {
 			closeobjects->safeCopyTo(closeSceneObjects);
 
 			while (closeSceneObjects.size() > 0) {
 				ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
 
-				if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL)
+				if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL) {
 					obj->removeInRangeObject(sceneObject);
+                                }
 
-				if (vectorOwner == sceneObject)
-					vectorOwner->removeInRangeObject((int) 0);
+				if (vectorOwner == sceneObject) {
+					try {
+						vectorOwner->removeInRangeObject((int) 0);
+					} catch (ArrayIndexOutOfBoundsException &e) {
+						info("oops");
+					}
+				}
 
-				closeSceneObjects.remove((int) 0);
+				closeSceneObjects.remove((int) 0); 
 			}
-
-			if (vectorOwner == sceneObject)
-				closeobjects->removeAll();
-
-		} catch (...) {
 		}
 	} else {
 #ifdef COV_DEBUG
