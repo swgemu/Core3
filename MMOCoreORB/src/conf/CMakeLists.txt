@@ -2,10 +2,13 @@
 # Distribution of this file for usage outside of Core3 is prohibited.
 
 # Add conf sources
-file(GLOB_RECURSE conf3_sources "*.cpp") 
+file(GLOB_RECURSE conf3_sources "*.cpp")
+file(GLOB_RECURSE conf3_headers "*.h")
 
 # Add conf includes
 include_directories(../)
 
 # Create conf library
-add_library(conf3 STATIC ${conf3_sources})
+add_library(conf3 STATIC ${conf3_sources} ${conf3_headers})
+
+add_dependencies(conf3 idlobjects)

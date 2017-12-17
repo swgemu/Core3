@@ -67,7 +67,21 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	attacker->clearState(CreatureState::PEACE);
 
+	if (attacker->isPlayerCreature() && !attacker->hasDefender(defender)) {
+		ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+		if (weapon != NULL && weapon->isJediWeapon())
+			VisibilityManager::instance()->increaseVisibility(attacker, 25);
+	}
+
 	Locker clocker(defender, attacker);
+
+	if (creo != NULL && creo->isPlayerCreature() && !creo->hasDefender(attacker)) {
+		ManagedReference<WeaponObject*> weapon = creo->getWeapon();
+
+		if (weapon != NULL && weapon->isJediWeapon())
+			VisibilityManager::instance()->increaseVisibility(creo, 25);
+	}
 
 	attacker->setDefender(defender);
 	defender->addDefender(attacker);

@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
@@ -173,6 +174,13 @@ public:
 			return sendLuaEvents(creature, targetObj);
 		} else if (container == "buffs") {
 			return sendBuffs(creature, targetObj);
+		} else if (container == "visibility") {
+			MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+
+			if (missionManager->sendPlayerBountyDebug(creature, targetObj))
+				return SUCCESS;
+			else
+				return GENERALERROR;
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 

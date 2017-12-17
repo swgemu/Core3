@@ -397,13 +397,16 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 }
 
 int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+	if (ingredientSlots.size() >= slot) {
+		return IngredientSlot::INVALID;
+	}
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
 
-	if(ingredientSlot == NULL)
+	if (ingredientSlot == NULL)
 		return IngredientSlot::INVALID;
 
-	if(!ingredientSlot->removeAll(player))
+	if (!ingredientSlot->removeAll(player))
 		return IngredientSlot::BADTARGETCONTAINER;
 
 	decreaseComplexity();

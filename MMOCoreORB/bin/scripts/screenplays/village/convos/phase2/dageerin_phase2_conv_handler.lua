@@ -71,6 +71,8 @@ function villageDageerinPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPla
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
 		FsSad:acceptNextTask(pPlayer)
 	elseif (screenID == "intro_on_task") then
+		SuiRadiationSensor:giveSensor(pPlayer)
+		FsSad:despawnCamp(pPlayer)
 		FsSad:recreateCampIfDespawned(pPlayer)
 	end
 

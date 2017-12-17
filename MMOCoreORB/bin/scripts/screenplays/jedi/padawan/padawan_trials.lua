@@ -192,6 +192,11 @@ function PadawanTrials:startTrial(pPlayer, trialNum, skipNotification)
 	JediTrials:setCurrentTrial(pPlayer, trialNum)
 	local trialData = padawanTrialQuests[trialNum]
 
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:startTrial, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNum)
+		return
+	end
+
 	if (trialData.trialType == TRIAL_LIGHTSABER) then
 		if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
 			awardSkill(pPlayer, "force_title_jedi_rank_01")
@@ -277,7 +282,7 @@ function PadawanTrials:startTrial(pPlayer, trialNum, skipNotification)
 				self:startTrial(pPlayer, trialNum, skipNotification)
 				writeData(playerID .. ":JediTrials:spawnPointAttempts", pointAttempts + 1)
 			else
-				printLuaError("PadawanTrials:startTrial, unable to find start point for player " .. CreatureObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNum .. " after 5 attempts.")
+				printLuaError("PadawanTrials:startTrial, unable to find start point for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial number " .. trialNum .. " after 5 attempts.")
 				deleteData(playerID .. ":JediTrials:spawnPointAttempts")
 			end
 
@@ -309,6 +314,11 @@ function PadawanTrials:notifyCraftedTrainingSaber(pPlayer, pItem)
 
 	local trialNum = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNum]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyCraftedTrainingSaber, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNum)
+		return 1
+	end
 
 	if (trialData.trialType ~= TRIAL_LIGHTSABER) then
 		return 1
@@ -344,6 +354,11 @@ function PadawanTrials:notifyTunedLightsaberCrystal(pPlayer, pItem)
 	local trialNum = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNum]
 
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyTunedLightsaberCrystal, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNum)
+		return 1
+	end
+
 	if (trialData.trialType ~= TRIAL_LIGHTSABER) then
 		return 1
 	end
@@ -368,6 +383,11 @@ function PadawanTrials:setupHuntTrial(pPlayer)
 
 	local trialData = padawanTrialQuests[trialNumber]
 
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:setupHuntTrial, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return
+	end
+
 	if (trialData.trialType ~= TRIAL_HUNT) then
 		return
 	end
@@ -387,6 +407,11 @@ function PadawanTrials:hasCompletedHunt(pPlayer)
 	end
 
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:hasCompletedHunt, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return false
+	end
 
 	if (trialData.trialType ~= TRIAL_HUNT) then
 		return false
@@ -415,6 +440,11 @@ function PadawanTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	end
 
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyKilledHuntTarget, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return 1
+	end
 
 	if (trialData.trialType ~= TRIAL_HUNT) then
 		return 1
@@ -457,6 +487,11 @@ function PadawanTrials:createMainLocation(pPlayer)
 	local trialNum = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNum]
 
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:createMainLocation, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNum)
+		return
+	end
+
 	local mainLocData = JediTrials:getTrialPlanetAndCity(pPlayer)
 	local planetName = mainLocData[1]
 	local spawnLoc = JediTrials:getTrialLocation(pPlayer)
@@ -486,6 +521,12 @@ end
 function PadawanTrials:sendSuiNotification(pPlayer)
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:sendSuiNotification, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return
+	end
+
 	local msgFinal
 
 	if (trialData.trialType == TRIAL_LIGHTSABER) then
@@ -654,6 +695,12 @@ function PadawanTrials:createTargetLocation(pPlayer, isThirdLocation)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:createTargetLocation, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return
+	end
+
 	local trialName = trialData.trialName
 	local zoneName = SceneObject(pPlayer):getZoneName()
 
@@ -734,6 +781,11 @@ function PadawanTrials:notifyEnteredTargetLocSpawnArea(pArea, pPlayer)
 
 	local trialNumber = JediTrials:getCurrentTrial(pPlayer)
 	local trialData = padawanTrialQuests[trialNumber]
+
+	if (trialData == nil) then
+		printLuaError("PadawanTrials:notifyEnteredTargetLocSpawnArea, unable to get trial data for player " .. SceneObject(pPlayer):getCustomObjectName() .. " on trial " .. trialNumber)
+		return 1
+	end
 
 	local npcTemplate
 
@@ -826,6 +878,11 @@ function PadawanTrials:notifyQuestTargetDead(pVictim, pAttacker)
 	if (readData(npcID .. ":destroyNpcOnExit") ~= 1) then
 		local trialNumber = JediTrials:getCurrentTrial(pOwner)
 		local trialData = padawanTrialQuests[trialNumber]
+
+		if (trialData == nil) then
+			printLuaError("PadawanTrials:notifyQuestTargetDead, unable to get trial data for player " .. SceneObject(pOwner):getCustomObjectName() .. " on trial " .. trialNumber)
+			return 1
+		end
 
 		if (trialData.killMessage ~= nil and trialData.killMessage ~= "") then
 			CreatureObject(pOwner):sendSystemMessage(trialData.killMessage)

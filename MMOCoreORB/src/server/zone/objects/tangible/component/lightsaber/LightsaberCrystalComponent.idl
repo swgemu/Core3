@@ -8,6 +8,9 @@ import server.zone.objects.tangible.component.Component;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
+
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 @lua
 class LightsaberCrystalComponent extends Component {
@@ -81,6 +84,7 @@ class LightsaberCrystalComponent extends Component {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);

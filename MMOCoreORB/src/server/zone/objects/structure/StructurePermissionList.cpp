@@ -149,20 +149,25 @@ void StructurePermissionList::sendTo(CreatureObject* creature, const String& lis
 
 	SortedVector<uint64>* list = &idPermissionLists.get(listName);
 	Vector<uint64> invalidIDs;
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
 	for (int i = 0; i < list->size(); ++i) {
-		Reference<SceneObject*> object = zoneServer->getObject(list->get(i));
+		uint64 objectID = list->get(i);
 
-		if (object != NULL && object->isPlayerCreature()) {
-			CreatureObject* player = object.castTo<CreatureObject*>();
-			String name = player->getFirstName();
+		String name = playerManager->getPlayerName(objectID);
+
+		if (!name.isEmpty()) {
 			listMsg->addName(name);
-		} else if (object != NULL && object->isGuildObject()) {
-			GuildObject* guild = object.castTo<GuildObject*>();
-			String name = "guild:" + guild->getGuildAbbrev();
-			listMsg->addName(name);
-		} else {
-			invalidIDs.add(list->get(i));
+		}  else {
+			Reference<SceneObject*> object = zoneServer->getObject(objectID);
+
+			if (object != NULL && object->isGuildObject()) {
+				GuildObject* guild = object.castTo<GuildObject*>();
+				String name = "guild:" + guild->getGuildAbbrev();
+				listMsg->addName(name);
+			} else {
+				invalidIDs.add(objectID);
+			}
 		}
 	}
 

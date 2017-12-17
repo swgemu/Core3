@@ -11,6 +11,7 @@ import engine.util.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
+import server.zone.managers.creature.CreatureManager;
 include terrain.manager.TerrainManager;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
@@ -18,6 +19,9 @@ include server.zone.objects.mission.PlayerBounty;
 import server.zone.managers.creature.LairSpawn;
 import system.thread.Mutex;
 include system.util.Vector;
+include system.util.VectorMap;
+include engine.log.Logger;
+include engine.util.u3d.Vector3;
 
 @dirty
 class MissionManager extends Observer implements Logger {
@@ -167,4 +171,7 @@ class MissionManager extends Observer implements Logger {
 
 	public native void deactivateMissions(CreatureObject player);
 	public native string getRandomBountyPlanet();
+	
+	@arg1preLocked
+	public native boolean sendPlayerBountyDebug(CreatureObject player, CreatureObject target);
 }

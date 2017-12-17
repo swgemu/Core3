@@ -9,6 +9,8 @@
 #define COLLISIONMANAGER_H_
 
 #include "engine/engine.h"
+#include "engine/util/u3d/CloseObjectsVector.h"
+
 #include "templates/appearance/AppearanceTemplate.h"
 
 class PathNode;

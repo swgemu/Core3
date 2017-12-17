@@ -16,14 +16,16 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.structure.StructureObject;
+import server.zone.Zone;
 include system.util.SynchronizedVector;
 import server.zone.objects.creature.ai.Creature;
 import server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
 include server.zone.objects.player.ValidatedPosition;
-import server.zone.objects.tangible.threat.ThreatMap;
-include server.zone.objects.creature.CreatureObject;
+include server.zone.objects.tangible.threat.ThreatMap;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 include server.zone.managers.player.CharacterNameMap;
 include server.zone.managers.player.PermissionLevelList;
 import server.login.account.Account;
@@ -39,6 +41,7 @@ include server.zone.objects.player.badges.Badge;
 include system.util.Vector;
 include system.lang.ref.Reference;
 include server.zone.managers.player.XpBonusList;
+import server.zone.ZoneClientSession;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -56,6 +59,7 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
 	protected boolean allowSameAccountPvpRatingCredit;
+	protected int onlineCharactersPerAccount;
 	
 	@dereferenced
 	protected XpBonusList xpBonusList;
@@ -85,8 +89,6 @@ class PlayerManager extends Observer implements Logger {
 
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
-
-	public transient static int MAX_CHAR_ONLINE_COUNT;
 
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
@@ -504,6 +506,10 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getNumJukeboxSongs(){
 		return jukeboxSongs.size();
+	}
+	
+	public void setOnlineCharactersPerAccount(int count) {
+		onlineCharactersPerAccount = count;
 	}
 
 	@local

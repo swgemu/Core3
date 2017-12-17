@@ -9,6 +9,7 @@ import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
 
 include server.zone.objects.player.sui.listbox.SuiListBoxMenuItem;
+include system.util.Vector;
 
 class SuiListBox extends SuiBox {
 	@dereferenced
@@ -72,6 +73,7 @@ class SuiListBox extends SuiBox {
 		return menuItems.size();
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public void setNextBox(unsigned int boxID){

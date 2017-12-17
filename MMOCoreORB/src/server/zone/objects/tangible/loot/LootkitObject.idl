@@ -59,5 +59,6 @@ class LootkitObject extends TangibleObject {
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

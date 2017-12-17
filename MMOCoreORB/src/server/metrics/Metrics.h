@@ -22,13 +22,13 @@ namespace metrics {
 		}
 
 	public:
-		void publish(const String& name, const String& value, const String& type) {
+		void publish(const String& name, const char* value, const char* type) {
 			if (!active) return;
 
 			MetricsManager::Result result = MetricsManager::instance()->publish(
 					String(path + "." + name).toCharArray(),
-					value.toCharArray(),
-					type.toCharArray());
+					value,
+					type);
 
 			// This is commented to allow for easy debugging. It can be quite
 			// verbose.
@@ -50,38 +50,41 @@ namespace metrics {
 		}
 
 		void publishGauge(const String& name, const String& value) {
-			publish(name, value, "g");
+			publish(name, value.toCharArray(), "g");
 		}
 
 		// TODO: Add a publish that can send a sample rate (a ratio of the
 		// number of actual samples the server will use)
 		void publishCounter(const String& name, const String& value) {
-			publish(name, value, "c");
+			publish(name, value.toCharArray(), "c");
 		}
 
 		void publishTimer(const String& name, const String& value) {
-			publish(name, value, "ms");
+			publish(name, value.toCharArray(), "ms");
 		}
 
 		void publishHist(const String& name, const String& value) {
-			publish(name, value, "h");
+			publish(name, value.toCharArray(), "h");
 		}
 
 		void publishMeter(const String& name, const String& value) {
-			publish(name, value, "m");
+			publish(name, value.toCharArray(), "m");
 		}
 
 	public:
 		Metrics() {
-			this->path = "";
 			active = ConfigManager::instance()->shouldUseMetrics();
 		}
-		Metrics(const char* path) {
-			this->path = String(path);
+
+		Metrics(const char* path) : path(path) {
 			active = ConfigManager::instance()->shouldUseMetrics();
 		}
-		Metrics(String path) {
-			this->path = path;
+
+		Metrics(String&& path) : path(std::move(path)) {
+			active = ConfigManager::instance()->shouldUseMetrics();
+		}
+
+		Metrics(const String& path) : path(path) {
 			active = ConfigManager::instance()->shouldUseMetrics();
 		}
 	};

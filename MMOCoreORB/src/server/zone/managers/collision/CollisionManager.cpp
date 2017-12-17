@@ -296,11 +296,11 @@ float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* 
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
 
 		if (app != NULL) {
-			Ray ray = convertToModelSpace(ray.getOrigin(), ray.getOrigin()+ray.getDirection(), sceno);
+			Ray rayModelSpace = convertToModelSpace(ray.getOrigin(), ray.getOrigin()+ray.getDirection(), sceno);
 
 			IntersectionResults results;
 
-			app->intersects(ray, 16384 * 2, results);
+			app->intersects(rayModelSpace, 16384 * 2, results);
 
 			if (results.size()) { // results are ordered based on intersection distance from min to max
 				float floorHeight = 16384.f - results.getUnsafe(0).getIntersectionDistance();

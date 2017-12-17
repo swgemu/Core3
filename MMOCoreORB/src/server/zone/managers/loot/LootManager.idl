@@ -20,6 +20,8 @@ include templates.LootItemTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.managers.loot.CrystalData;
 include system.lang.ref.Reference;
+include engine.log.Logger;
+include system.util.VectorMap;
 
 @dirty
 class LootManager extends ManagedService implements Logger {

@@ -84,7 +84,6 @@ PingAllowedConnections = 3000
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000
 ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
-ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
 
 --The following zones are enabled, and will be loaded with server start.
@@ -216,8 +215,12 @@ UnloadContainers = 1 --Whether to unload container contents from RAM after the c
 LogFile = "log/core3.log"
 LogFileLevel = 4 -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
 
+TermsOfServiceVersion = 0
+TermsOfService = ""
+
 local localFile = loadfile("conf/config-local.lua")
 
 if (localFile ~= nil) then
   localFile()
 end
+

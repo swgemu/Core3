@@ -2114,3 +2114,57 @@ String MissionManagerImplementation::getRandomBountyPlanet() {
 	int randomNumber = System::random(bhTargetZones.size() - 1);
 	return bhTargetZones.get(randomNumber);
 }
+
+bool MissionManagerImplementation::sendPlayerBountyDebug(CreatureObject* creature, CreatureObject* target) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return false;
+
+	ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+
+	if (targetGhost == NULL)
+		return false;
+
+	Locker listLocker(&playerBountyListMutex);
+
+	PlayerBounty* playerBounty = playerBountyList.get(target->getObjectID());
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(creature, 0);
+	box->setPromptTitle("Jedi Visibility");
+	String promptText = "Player: " + target->getFirstName() + "\n" + "Visibility: " + String::valueOf(targetGhost->getVisibility()) + "\n";
+
+	if (playerBounty == NULL) {
+		promptText += "-- No player bounty data --\n";
+	} else {
+		promptText += "-- Bounty Data --\n";
+		promptText += "Reward: " + String::valueOf(playerBounty->getReward()) + "\n";
+		String onlineStatus = playerBounty->isOnline() ? "True" : "False";
+		promptText += "Online Status: " + onlineStatus + "\n";
+		int activeCount = playerBounty->numberOfActiveMissions();
+		promptText += "Active Bounty Count: " + String::valueOf(activeCount) + "\n";
+		if (activeCount > 0) {
+			promptText += "\nPlayers holding active bounties:";
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+			SortedVector<uint64>* bountyHunters = playerBounty->getBountyHunters();
+
+			for (int i = 0; i < bountyHunters->size(); i++) {
+				String name = playerManager->getPlayerName(bountyHunters->get(i));
+
+				if (name.isEmpty())
+					box->addMenuItem("Unknown player");
+				else
+					box->addMenuItem(name);
+			}
+		}
+	}
+
+	box->setPromptText(promptText);
+	box->setUsingObject(target);
+	box->setForceCloseDisabled();
+	ghost->addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
+
+	return true;
+}

@@ -10,6 +10,8 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.ai.CreatureTemplate;
 import server.zone.Zone;
+include system.util.SortedVector;
+include engine.log.Logger;
 
 class Creature extends AiAgent {
 
@@ -80,6 +82,7 @@ class Creature extends AiAgent {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@local

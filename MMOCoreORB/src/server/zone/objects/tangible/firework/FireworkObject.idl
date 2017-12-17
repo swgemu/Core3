@@ -8,6 +8,10 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+
 
 class FireworkObject extends TangibleObject {	
 	protected string fireworkObject;
@@ -46,6 +50,7 @@ class FireworkObject extends TangibleObject {
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects);

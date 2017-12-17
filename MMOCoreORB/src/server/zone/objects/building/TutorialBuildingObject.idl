@@ -1,0 +1,27 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.building;
+
+import server.zone.objects.building.BuildingObject;
+
+class TutorialBuildingObject extends BuildingObject {
+	protected unsigned long tutorialOwnerID;
+	
+	public TutorialBuildingObject() {
+		Logger.setLoggingName("TutorialBuildingObject");
+
+		tutorialOwnerID = 0;
+	}
+	
+	@preLocked
+	public void setTutorialOwnerID(unsigned long ownerID) {
+		tutorialOwnerID = ownerID;
+	}
+	
+	@read
+	public unsigned long getTutorialOwnerID() {
+		return tutorialOwnerID;
+	}
+}

@@ -228,7 +228,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 	message.setTO(lastResourceSampleName);
 	surveyer->sendSystemMessage(message);
 
-	if (!doGamble && richSampleLocation == NULL && System::random(50) == 7) {
+	if (!doGamble && richSampleLocation.getPosition() != Vector3(0, 0, 0) && System::random(50) == 7) {
 
 		if (ghost->hasSuiBoxWindowType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME)) {
 			ghost->removeSuiBoxType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME);
@@ -289,8 +289,8 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 		return;
 	}
 
-	richSampleLocation = new Coordinate(surveyer->getPositionX(), surveyer->getPositionZ(), surveyer->getPositionY());
-	richSampleLocation->randomizePosition(50);
+	richSampleLocation = Coordinate(surveyer->getPositionX(), surveyer->getPositionZ(), surveyer->getPositionY());
+	richSampleLocation.randomizePosition(50);
 
 	ManagedReference<WaypointObject*> newwaypoint = NULL;
 
@@ -310,7 +310,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	// Update new waypoint
 	newwaypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
 	newwaypoint->setPlanetCRC(surveyer->getZone()->getZoneCRC());
-	newwaypoint->setPosition(richSampleLocation->getPositionX(), 0, richSampleLocation->getPositionY());
+	newwaypoint->setPosition(richSampleLocation.getPositionX(), 0, richSampleLocation.getPositionY());
 	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 	newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
 	newwaypoint->setActive(true);

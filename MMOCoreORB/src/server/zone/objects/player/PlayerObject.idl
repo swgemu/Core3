@@ -26,6 +26,7 @@ import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
 import system.util.SynchronizedSortedVector;
+include system.lang.Time;
 include server.login.account.GalaxyAccountInfo;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.player.badges.Badges;
@@ -85,6 +86,7 @@ class PlayerObject extends IntangibleObject {
 
 	protected boolean muted;
 	protected string mutedReason;
+	protected int tosVersionAccepted;
 
 	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
@@ -368,6 +370,8 @@ class PlayerObject extends IntangibleObject {
 		reactionFines = 0;
 		
 		lastPvpRatingUpdate.updateToCurrentTime();
+                
+                tosVersionAccepted = 0;
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -401,6 +405,7 @@ class PlayerObject extends IntangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 
 	@dirty
+	@local
 	public native void sendMessage(BasePacket msg);
 
 	public synchronized void addOwnedStructure(StructureObject obj) {
@@ -419,6 +424,18 @@ class PlayerObject extends IntangibleObject {
 			setDeclaredResidence(null);
 
 	}
+
+	@dirty
+	public int getAcceptedTOSVersion() {
+		return tosVersionAccepted;
+	}
+
+	public void setAcceptedTOSVersion(int version) {
+		tosVersionAccepted = version;
+	}
+
+	@dirty
+	public native void checkAndShowTOS();
 
 	@dirty
 	public synchronized int getTotalOwnedStructureCount() {
@@ -547,6 +564,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@dirty
+	@local
 	public void insertWaypointListToMessage(BaseMessage msg) {
 		waypointList.insertToMessage(msg);
 	}

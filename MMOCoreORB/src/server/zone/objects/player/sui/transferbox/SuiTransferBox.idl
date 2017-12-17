@@ -24,6 +24,7 @@ class SuiTransferBox extends SuiBox {
 		super(player, windowType, SuiBox.TRANSFERBOX);
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public native void addFrom(final string from, final string startingFrom, final string inputFrom, final string rFrom);
