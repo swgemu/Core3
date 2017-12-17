@@ -197,6 +197,8 @@ class CreatureObject extends TangibleObject {
 
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
+	
+	public static final int CREOCOVTYPE = 2;
 
 	public static transient float DEFAULTRUNSPEED;
 
@@ -2091,7 +2093,7 @@ class CreatureObject extends TangibleObject {
 	
 	@dirty
 	public int registerToCloseObjectsReceivers() {
-	    return isPlayerCreature();
+	    return ((int) isPlayerCreature() | CREOCOVTYPE);
 	}
 
 	@dirty
