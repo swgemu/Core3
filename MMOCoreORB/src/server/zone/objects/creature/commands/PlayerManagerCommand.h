@@ -79,7 +79,14 @@ public:
 				if (obj == NULL) {
 					resp << "NULL Object" << endl;
 				} else {
-					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName() << "  " << obj->getWorldPosition().toString() << endl;
+                    Reference<SceneObject*> parent = obj->getParent().get();
+					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName();
+                    if (parent == NULL)
+                        resp << " Parent: NULL";
+                    else
+                        resp << " Parent: " << parent->getObjectID();
+                    resp << obj->getWorldPosition().toString() << endl << "Addr: " <<  (uint64)obj.get();
+                    resp << " PrevX: " << obj->getPreviousPositionX() << " PrevY: " << obj->getPreviousPositionY() << endl;
 				}
 			}
 			ChatManager* chatManager = player->getZoneServer()->getChatManager();
