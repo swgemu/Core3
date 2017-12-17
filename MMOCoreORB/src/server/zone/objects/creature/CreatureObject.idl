@@ -2091,7 +2091,7 @@ class CreatureObject extends TangibleObject {
 	
 	@dirty
 	public int registerToCloseObjectsReceivers() {
-	    return isPlayerCreature();
+	    return ((int) isPlayerCreature() | 2);
 	}
 
 	@dirty
