@@ -776,7 +776,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		return;
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	vec->safeCopyTo(closeObjects);
+	vec->safeCopyReceiversTo(closeObjects, CreatureObject::CREOCOVTYPE);
 
 	Behavior* current = behaviors.get(currentBehaviorID);
 
@@ -3093,7 +3093,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 				zone->getInRangeObjects(aiAgent->getPositionX(), aiAgent->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
 			} else {
 				closeAiAgents.removeAll(closeobjects->size(), 10);
-				closeobjects->safeCopyTo(closeAiAgents);
+				closeobjects->safeCopyReceiversTo(closeAiAgents, CreatureObject::CREOCOVTYPE); //only creos, type 2
 			}
 		} catch (Exception& e) {
 
