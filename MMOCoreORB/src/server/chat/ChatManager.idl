@@ -350,7 +350,6 @@ class ChatManager extends ManagedService implements Logger {
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
-	@local
 	public native void broadcastChatMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int spatialChatType = 0, unsigned int moodType = 0, unsigned int chatFlags = 0, int languageID = 1);
 
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
