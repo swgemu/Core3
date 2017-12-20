@@ -1,0 +1,37 @@
+jawa_greenred = Creature:new {
+	objectName = "@mob/creature_names:jawa",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "jawa",
+	faction = "jawa",
+	level = 12,
+	chanceHit = 0.29,
+	damageMin = 130,
+	damageMax = 140,
+	baseXp = 609,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = AIENABLED,
+	diet = HERBIVORE,
+
+	templates = {"object/swgemu/christmas/mobile/jawa_greenred.iff"},
+	lootGroups = {},
+	weapons = {"jawa_warlord_weapons"},
+	conversationTemplate = "",
+	attacks = merge(brawlermid,marksmanmid)
+}
+
+CreatureTemplates:addCreatureTemplate(jawa_greenred, "jawa_greenred")
