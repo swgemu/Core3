@@ -75,6 +75,9 @@ includeFile("SharedGroupObjectTemplate.lua")
 includeFile("SharedGuildObjectTemplate.lua")
 includeFile("SharedJediManagerTemplate.lua")
 
+includeFile("swgemu/creature/npc/base/objects.lua")
+includeFile("swgemu/christmas/mobile/objects.lua")
+
 includeFile("battlefield_marker/objects.lua")
 includeFile("building/base/objects.lua")
 includeFile("building/corellia/objects.lua")

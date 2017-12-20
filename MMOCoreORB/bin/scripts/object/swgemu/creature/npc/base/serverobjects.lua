@@ -1,0 +1,1 @@
+includeFile("swgemu/creature/npc/base/gorax_base_male_grinch.lua")

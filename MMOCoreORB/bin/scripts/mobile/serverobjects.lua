@@ -4,6 +4,8 @@ includeFile("../custom_scripts/mobile/serverobjects.lua")
 -- Conversations
 includeFile("conversations.lua")
 
+includeFile("swgemu/serverobjects.lua")
+
 -- Creatures
 includeFile("corellia/serverobjects.lua")
 includeFile("dantooine/serverobjects.lua")
