@@ -36,6 +36,7 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 		for (int i = 0; i < modules.size(); i++) {
 			auto& module = modules.get(i);
+
 			if (module != NULL) {
 				module->fillAttributeList(msg, object);
 			}
@@ -77,9 +78,15 @@ void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 
 	// Allow modules to add radials
 	auto pcd = getControlDevice().get().castTo<PetControlDevice*>();
-	for (int i = 0; i < modules.size(); i++) {
-		auto& module = modules.get(i);
-		module->fillObjectMenuResponse(_this.getReferenceUnsafeStaticCast(), menuResponse, player);
+
+	try {
+		for (int i = 0; i < modules.size(); i++) {
+			auto &module = modules.get(i);
+
+			module->fillObjectMenuResponse(_this.getReferenceUnsafeStaticCast(), menuResponse, player);
+		}
+	} catch (Exception& e) {
+		warning("could not fill fill object menu response on the droid modules:" + e.getMessage());
 	}
 }
 

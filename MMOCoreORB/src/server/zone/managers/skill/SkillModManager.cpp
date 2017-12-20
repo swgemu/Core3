@@ -181,7 +181,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	}
 
 	if(!compareMods(mods, creature, WEARABLE)) {
-		error("Wearable mods don't match for " + creature->getFirstName());
+		warning("Wearable mods don't match for " + creature->getFirstName());
 	}
 }
 
@@ -228,7 +228,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 
 
 	if (!compareMods(mods, creature, STRUCTURE)) {
-		error("Structure mods don't match for " + creature->getFirstName());
+		warning("Structure mods don't match for " + creature->getFirstName());
 	}
 }
 
@@ -256,7 +256,7 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 	}
 
 	if(!compareMods(mods, creature, SKILLBOX)) {
-		error("SkillBox mods don't match for " + creature->getFirstName());
+		warning("SkillBox mods don't match for " + creature->getFirstName());
 	}
 }
 
@@ -284,7 +284,7 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 	}
 
 	if(!compareMods(mods, creature, BUFF)) {
-		error("Buff mods don't match for " + creature->getFirstName());
+		warning("Buff mods don't match for " + creature->getFirstName());
 	}
 }
 
