@@ -43,6 +43,8 @@
 -- Custom content
 includeFile("../custom_scripts/object/serverobjects.lua")
 
+includeFile("swgemu/serverobjects.lua")
+
 --Children folder includes
 includeFile("battlefield_marker/serverobjects.lua")
 includeFile("building/serverobjects.lua")
