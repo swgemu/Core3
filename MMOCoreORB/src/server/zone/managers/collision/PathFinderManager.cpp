@@ -140,7 +140,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 		float t1 = tca - thc;
 		float t2 = tca + thc;
 
-		if (abs(t1 - t2) > 0.1f && t1 > 0 && t1 < maxT)
+		if (fabs(t1 - t2) > 0.1f && t1 > 0 && t1 < maxT)
 			collisions->put(new NavCollision(start + (dir * t1), t1, area));
 
 		if (t2 > 0 && t2 < maxT)
