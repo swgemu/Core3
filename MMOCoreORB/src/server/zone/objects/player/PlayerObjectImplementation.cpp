@@ -1663,6 +1663,53 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
 	}
 
+	debug("running out of range checks");
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+
+	creature->getCloseObjects()->safeCopyTo(closeObjects);
+
+	float x = creature->getPositionX();
+	float y = creature->getPositionY();
+
+	float oldx = creature->getPreviousPositionX();
+	float oldy = creature->getPreviousPositionY();
+
+	auto currentZone = creature->getZone();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		QuadTreeEntry* o = closeObjects.getUnsafe(i);
+		QuadTreeEntry* objectToRemove = o;
+		QuadTreeEntry* rootParent = o->getRootParent();
+
+		if (rootParent != nullptr)
+			o = rootParent;
+
+		if (o != creature) {
+			float deltaX = x - o->getPositionX();
+			float deltaY = y - o->getPositionY();
+
+			//update out of range objects
+			float range1 = o->getOutOfRangeDistance();
+			float range2 = creature->getOutOfRangeDistance();
+
+			float rangesq = Math::sqr(Math::max(range1, range2));
+
+			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
+				//float oldDeltaX = oldx - o->getPositionX();
+				//float oldDeltaY = oldy - o->getPositionY();
+
+				//if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
+					if (creature->getCloseObjects() != nullptr)
+						creature->removeInRangeObject(objectToRemove);
+
+					if (objectToRemove->getCloseObjects() != nullptr)
+						objectToRemove->removeInRangeObject(creature);
+				//}
+			}
+		}
+	}
+
 	activateRecovery();
 }
 

@@ -35,7 +35,7 @@ Distribution of this file for usage outside of Core3 is prohibited.
 using namespace server::zone;
 
 QuadTreeNode::QuadTreeNode() {
-	objects.setInsertPlan(SortedVector<QuadTreeEntry*>::NO_DUPLICATE);
+	objects.setNoDuplicateInsertPlan();
 
 //  smart pointer classes automatically initialize to nullptr
 //	parentNode = nullptr;
@@ -51,7 +51,7 @@ QuadTreeNode::QuadTreeNode() {
 }
 
 QuadTreeNode::QuadTreeNode(float minx, float miny, float maxx, float maxy, QuadTreeNode *parent) {
-	objects.setInsertPlan(SortedVector<QuadTreeEntry*>::NO_DUPLICATE);
+	objects.setNoDuplicateInsertPlan();
 
 	parentNode = parent;
 //	nwNode = neNode = swNode = seNode = nullptr;
@@ -231,12 +231,6 @@ void QuadTree::insert(QuadTreeEntry *obj) {
 }
 
 bool QuadTree::update(QuadTreeEntry *obj) {
-	/*if (!isLocked()) {
-		System::out << "updating unlocked quad tree\n";
-		StackTrace::printStackTrace();
-		raise(SIGSEGV);
-	}*/
-
 	//assert(obj->getParent() == nullptr);
 
 	Locker locker(&mutex);
@@ -593,6 +587,8 @@ void QuadTree::safeInRange(QuadTreeEntry* obj, float range) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjectsCopy;
 #endif
 
+	Locker objLocker(obj);
+
 	if (closeObjectsVector != nullptr) {
 		closeObjectsCopy.removeAll(closeObjectsVector->size(), 50);
 		closeObjectsVector->safeCopyTo(closeObjectsCopy);
@@ -602,46 +598,6 @@ void QuadTree::safeInRange(QuadTreeEntry* obj, float range) {
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
-
-	float oldx = obj->getPreviousPositionX();
-	float oldy = obj->getPreviousPositionY();
-
-
-	Locker objLocker(obj);
-	//update current objects...
-
-	try {
-		for (int i = 0; i < closeObjectsCopy.size(); ++i) {
-			QuadTreeEntry* o = closeObjectsCopy.getUnsafe(i);
-			QuadTreeEntry* objectToRemove = o;
-
-			QuadTreeEntry* rootParent = o->getRootParent();
-
-			if (rootParent != nullptr)
-				o = rootParent;
-
-			if (o != obj) {
-				float deltaX = x - o->getPositionX();
-				float deltaY = y - o->getPositionY();
-
-				if (deltaX * deltaX + deltaY * deltaY > rangesq) {
-					float oldDeltaX = oldx - o->getPositionX();
-					float oldDeltaY = oldy - o->getPositionY();
-
-					if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-						obj->removeInRangeObject(objectToRemove);
-
-						CloseObjectsVector* objCloseObjects = objectToRemove->getCloseObjects();
-
-						if (objCloseObjects != nullptr)
-							objectToRemove->removeInRangeObject(obj);
-					}
-				}
-			}
-		}
-	} catch (Exception& e) {
-
-	}
 
 #ifdef NO_ENTRY_REF_COUNTING
 	SortedVector<QuadTreeEntry*> inRangeObjects(500, 250);
@@ -663,51 +619,16 @@ void QuadTree::safeInRange(QuadTreeEntry* obj, float range) {
 			float deltaY = y - o->getPositionY();
 
 			try {
-
 				if (deltaX * deltaX + deltaY * deltaY <= rangesq) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
-#ifdef WITH_STM
-					if (objCloseObjects != nullptr && !objCloseObjects->contains(o)) {
-						obj->addInRangeObject(o);
-						//obj->notifyInsert(o);
-					}
-#else
 					if (objCloseObjects != nullptr)
 						obj->addInRangeObject(o, false);
-#endif
 
 					CloseObjectsVector* oCloseObjects = o->getCloseObjects();
 
-#ifdef WITH_STM
-					if (oCloseObjects != nullptr && !oCloseObjects->contains(obj)) {
-						o->addInRangeObject(obj);
-						//o->notifyInsert(obj);
-					} else
-						o->notifyPositionUpdate(obj);
-#else
 					if (oCloseObjects != nullptr)
 						o->addInRangeObject(obj);
-#endif
-
-					/*obj->addInRangeObject(o, false);
-					o->addInRangeObject(obj);*/
-				} else {
-					float oldDeltaX = oldx - o->getPositionX();
-					float oldDeltaY = oldy - o->getPositionY();
-
-					if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-
-						CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
-						if (objCloseObjects != nullptr)
-							obj->removeInRangeObject(o);
-
-
-						CloseObjectsVector* oCloseObjects = o->getCloseObjects();
-
-						if (oCloseObjects != nullptr)
-							o->removeInRangeObject(obj);
-					}
 				}
 			} catch (...) {
 				System::out << "unreported exception caught in safeInRange()\n";

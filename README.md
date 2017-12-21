@@ -11,14 +11,14 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
 ##### Dependencies #####
   * CMake 3.1.0 or higher
   * BerkeleyDB 5.3
-  * MySQL
+  * MySQL (libmysqlclient20)
   * OpenSSL libraries
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * g++ or clang with c++11 support
+  * g++ 5+
   * engine3
-  * java
+  * java jre 1.7+
 
 ### Debian 9+ or Ubuntu 16.04+ ###
   * Install dependencies
@@ -44,7 +44,8 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
         make build-cmake -j8
 
 ### How to Run ###
-...
+    cd ~/git/Core3/MMOCoreORB/bin
+    ./core3
 
 ### License ###
     Copyright (C) 2017 SWGEmu

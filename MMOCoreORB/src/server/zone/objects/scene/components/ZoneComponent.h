@@ -101,6 +101,10 @@ public:
 	virtual void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const;
 
 	void removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const;
+
+	static void removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
+										SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
+										SceneObject *sceneObject, SceneObject *vectorOwner);
 };
 
 
