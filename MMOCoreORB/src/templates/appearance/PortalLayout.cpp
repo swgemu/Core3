@@ -218,6 +218,25 @@ void PortalLayout::parse(IffStream* iffStream) {
 		error(err);
 	}
 
+	for (auto& cell : cellProperties) {
+		for (int i=0; i<cell->getNumberOfPortals(); i++) {
+			const CellPortal* portal = cell->getPortal(i);
+			int idx = portal->getGeometryIndex();
+
+			for (auto& connected : cellProperties) {
+				if (cell == connected)
+					continue;
+
+				for (int j=0; j<connected->getNumberOfPortals(); j++) {
+					const CellPortal* connectedPortal = connected->getPortal(j);
+					if (connectedPortal->getGeometryIndex() == idx) {
+						cell->addConnectedCell(connected->getCellID());
+					}
+				}
+			}
+		}
+	}
+
 	connectFloorMeshGraphs();
 }
 
