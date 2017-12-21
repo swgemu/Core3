@@ -5,7 +5,7 @@
 package server.zone.objects.building;
 
 import server.zone.objects.structure.StructureObject;
-import engine.util.u3d.QuadTreeEntry;
+include server.zone.QuadTreeEntry;
 import system.util.SortedVector;
 import system.util.SynchronizedSortedVector;
 import system.util.Vector;
@@ -18,7 +18,7 @@ include templates.building.SignTemplate;
 import engine.util.u3d.Vector3;
 import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
-include engine.util.u3d.CloseObjectsVector;
+include server.zone.CloseObjectsVector;
 import system.thread.Mutex;
 import engine.util.u3d.Matrix4;
 include templates.appearance.MeshData;

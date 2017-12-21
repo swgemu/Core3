@@ -14,20 +14,14 @@
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
-#include "server/zone/packets/scene/GameSceneChangedMessage.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	debug("inserting to zone");
 
-	if (newZone == NULL)
+	if (newZone == nullptr)
 		return;
-
-	//newZone->transferObject(sceneObject, -1, true);
 
 	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
@@ -41,11 +35,12 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 	for (int i = 0; i < childObjects->size(); ++i) {
 		ManagedReference<SceneObject*> outdoorChild = childObjects->get(i);
 
-		if (outdoorChild == NULL)
+		if (outdoorChild == nullptr)
 			continue;
 
-		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == NULL) {
+		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == nullptr) {
 			Locker clocker(outdoorChild, sceneObject);
+			
 			zone->transferObject(outdoorChild, -1, true);
 		}
 	}
@@ -55,15 +50,15 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 	Zone* zone = sceneObject->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	Locker locker(zone);
 
 	if (parentID != 0) {
-		ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
+		Reference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-		if (newParent == NULL || !newParent->isCellObject())
+		if (newParent == nullptr || !newParent->isCellObject())
 			return;
 
 		if (newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
@@ -90,8 +85,8 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const {
 	try {
-		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
-		CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent()->getCloseObjects();
+		CloseObjectsVector* closeObjectsVector = sceneObject->getCloseObjects();
+		CloseObjectsVector* parentCloseObjectsVector = sceneObject->getRootParent()->getCloseObjects();
 
 		SortedVector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 		closeObjectsVector->safeCopyTo(closeObjects);
@@ -109,11 +104,11 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 		float oldy = sceneObject->getPreviousPositionY();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			QuadTreeEntry* o = closeObjects.get(i);
+			QuadTreeEntry* o = closeObjects.getUnsafe(i);
 			QuadTreeEntry* objectToRemove = o;
-			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
+			QuadTreeEntry* rootParent = o->getRootParent();
 
-			if (rootParent != NULL)
+			if (rootParent != nullptr)
 				o = rootParent;
 
 			if (o != sceneObject) {
@@ -125,11 +120,10 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 					float oldDeltaY = oldy - o->getPositionY();
 
 					if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-
-						if (sceneObject->getCloseObjects() != NULL)
+						if (sceneObject->getCloseObjects() != nullptr)
 							sceneObject->removeInRangeObject(objectToRemove);
 
-						if (objectToRemove->getCloseObjects() != NULL)
+						if (objectToRemove->getCloseObjects() != nullptr)
 							objectToRemove->removeInRangeObject(sceneObject);
 					}
 				}
@@ -138,12 +132,12 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const 
 
 		//insert new ones
 		for (int i = 0; i < parentCloseObjects.size(); ++i) {
-			QuadTreeEntry* o = parentCloseObjects.get(i);
+			QuadTreeEntry* o = parentCloseObjects.getUnsafe(i);
 
-			if (sceneObject->getCloseObjects() != NULL)
+			if (sceneObject->getCloseObjects() != nullptr)
 				sceneObject->addInRangeObject(o, false);
 
-			if (o->getCloseObjects() != NULL)
+			if (o->getCloseObjects() != nullptr)
 				o->addInRangeObject(sceneObject, true);
 		}
 	} catch (Exception& e) {
@@ -157,27 +151,24 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
 
-	if (zone == NULL) {
-		if (sceneObjectRootParent == NULL)
+	if (zone == nullptr) {
+		if (sceneObjectRootParent == nullptr)
 			return;
 
 		zone = sceneObjectRootParent->getZone();
 	}
 
-	if (parent != NULL && (parent->isVehicleObject() || parent->isMount()))
+	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount()))
 		sceneObject->updateVehiclePosition(sendPackets);
 
 	Locker _locker(zone);
 
 	bool zoneUnlocked = false;
 
-	if (parent != NULL && parent->isCellObject()) {
-		//parent->removeObject(sceneObject, true);
-		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
+	if (parent != nullptr && parent->isCellObject()) {
+		SceneObject* rootParent = parent->getRootParent();
 
-		ManagedReference<SceneObject*> rootParent = parent->getRootParent();
-
-		if (rootParent == NULL)
+		if (rootParent == nullptr)
 			return;
 
 		zone = rootParent->getZone();
@@ -187,7 +178,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone->unlock();
 		zoneUnlocked = true;
 	} else {
-		if (sceneObject->getLocalZone() != NULL) {
+		if (sceneObject->getLocalZone() != nullptr) {
 			zone->update(sceneObject);
 
 			zone->unlock();
@@ -199,7 +190,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 				sceneObject->error(e.getMessage());
 				e.printStackTrace();
 			}
-		} else if (parent != NULL) {
+		} else if (parent != nullptr) {
 			zone->unlock();
 			zoneUnlocked = true;
 
@@ -210,16 +201,16 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	try {
 		bool isInvis = false;
 
-		if (sceneObject->isTangibleObject()) {
-			TangibleObject* tano = sceneObject->asTangibleObject();
+		TangibleObject* tano = sceneObject->asTangibleObject();
 
+		if (tano != nullptr) {
 			zone->updateActiveAreas(tano);
 
 			if (tano->isInvisible())
 				isInvis = true;
 		}
 
-		if (!isInvis && sendPackets && (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))) {
+		if (!isInvis && sendPackets && (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount()))) {
 			if (lightUpdate) {
 				LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
 				sceneObject->broadcastMessage(message, false, true);
@@ -248,24 +239,20 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	ManagedReference<Zone*> zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> oldParent = sceneObject->getParent().get();
 
-	if (oldParent != NULL && !oldParent->isCellObject())
+	if (oldParent != nullptr && !oldParent->isCellObject())
 		return;
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		zone = newParent->getRootParent()->getZone();
 
 	Locker _locker(zone);
 
-	if (oldParent == NULL) { // we are in zone, enter cell
-		//zone->remove(sceneObject);
-
+	if (oldParent == nullptr) { // we are in zone, enter cell
 		newParent->transferObject(sceneObject, -1, true);
 
 		zone->unlock();
-		//insertToBuilding(sceneObject, dynamic_cast<BuildingObject*>(newParent->getParent()));
 	} else { // we are in cell already
 		if (oldParent != newParent) {
-			//oldParent->removeObject(sceneObject, false);
 			newParent->transferObject(sceneObject, -1, true);
 
 			zone->unlock();
@@ -273,8 +260,9 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 			zone->unlock();
 
 			try {
-				if (sceneObject->isTangibleObject()) {
-					TangibleObject* tano = sceneObject->asTangibleObject();
+				TangibleObject* tano = sceneObject->asTangibleObject();
+
+				if (tano != nullptr) {
 					zone->updateActiveAreas(tano);
 				}
 			} catch (Exception& e) {
@@ -282,37 +270,33 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 				e.printStackTrace();
 			}
 		}
-
-		//notify in range objects that i moved
 	}
 
+	//notify in range objects that i moved
 	try {
-		CloseObjectsVector* closeObjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+		CloseObjectsVector* closeObjects = sceneObject->getCloseObjects();
 
-		if (closeObjects != NULL) {
+		if (closeObjects != nullptr) {
 			SortedVector<QuadTreeEntry*> objects(closeObjects->size(), 10);
 			closeObjects->safeCopyTo(objects);
 
 			for (int i = 0; i < objects.size(); ++i) {
-				QuadTreeEntry* object = objects.get(i);
+				auto object = static_cast<SceneObject*>(objects.getUnsafe(i));
 
 				try {
 					object->notifyPositionUpdate(sceneObject);
 				} catch (Exception& e) {
-
+					object->error("exception while calling notifyPositionUpdate: " + e.getMessage());
 				}
 			}
 		}
 
-		//zoneLocker.release();
-
-		//zone->unlock();
-
 		bool isInvis = false;
 
-		if (sceneObject->isTangibleObject()) {
-			TangibleObject* tano = sceneObject->asTangibleObject();
-			if(tano->isInvisible())
+		TangibleObject* tano = sceneObject->asTangibleObject();
+
+		if (tano != nullptr) {
+			if (tano->isInvisible())
 				isInvis = true;
 		}
 
@@ -344,25 +328,22 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
-	/*if (zone == NULL)
-		return;*/
-
 	Zone* newZone = sceneObject->getZoneServer()->getZone(newTerrainName);
 
-	if (newZone == NULL) {
+	if (newZone == nullptr) {
 		sceneObject->error("attempting to switch to unkown/disabled zone " + newTerrainName);
 		return;
 	}
 
 	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
 
-	if (newParent != NULL && newParent->getZone() == NULL)
+	if (newParent != nullptr && newParent->getZone() == nullptr)
 		return;
 
-	if (newParent != NULL && !newParent->isCellObject())
-		newParent = NULL;
+	if (newParent != nullptr && !newParent->isCellObject())
+		newParent = nullptr;
 
-	if (newPositionZ == 0 && newParent == NULL) {
+	if (newPositionZ == 0 && newParent == nullptr) {
 		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
 	}
 
@@ -371,14 +352,14 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (toggleInvisibility) {
 		TangibleObject* tano = sceneObject->asTangibleObject();
 
-		if (tano != NULL) {
+		if (tano != nullptr) {
 			tano->setInvisible(!tano->isInvisible());
 		}
 	}
 
 	Locker locker(newZone);
 
-	if (newParent != NULL) {
+	if (newParent != nullptr) {
 		if (zone == newZone) {
 			if (newParent->transferObject(sceneObject, -1, false)) {
 				sceneObject->sendToOwner(true);
@@ -393,8 +374,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 				if (newParent->isCellObject()) {
 					auto rootParent = sceneObject->getRootParent();
 
-					if (rootParent != NULL)
-						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);
+					if (rootParent != nullptr)
+						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
 				}
 			}
 		}
@@ -406,10 +387,6 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 }
 
 void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
-	/*ManagedReference<SceneObject*> thisLocker = sceneObject;
-	Zone* zone = sceneObject->getZone();
-
-	zone->removeObject(sceneObject);*/
 }
 
 void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
@@ -419,34 +396,34 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
 	}
 
-	ManagedReference<Zone*> rootZone = sceneObject->getZone();
-	ManagedReference<Zone*> zone = sceneObject->getLocalZone();
+	Zone* rootZone = sceneObject->getZone();
+	Zone* zone = sceneObject->getLocalZone();
 
-	if (par != NULL) {
+	if (par != nullptr) {
 		uint64 parentID = sceneObject->getParentID();
-		par->removeObject(sceneObject, NULL, false);
+		par->removeObject(sceneObject, nullptr, false);
 
 		if (par->isCellObject()) {
 			ManagedReference<BuildingObject*> build = par->getParent().get().castTo<BuildingObject*>();
 
-			if (build != NULL) {
+			if (build != nullptr) {
 				CreatureObject* creature = sceneObject->asCreatureObject();
 
-				if (creature != NULL)
+				if (creature != nullptr)
 					build->onExit(creature, parentID);
 			}
 		}
 
 		sceneObject->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, sceneObject, 0);
-	} else if (zone != NULL) {
-		zone->removeObject(sceneObject, NULL, false);
+	} else if (zone != nullptr) {
+		zone->removeObject(sceneObject, nullptr, false);
 	}
 
 	removeObjectFromZone(sceneObject, rootZone, par);
 }
 
 void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const {
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	Locker locker(zone);
@@ -461,7 +438,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 
 	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(sceneObject->getObjectTemplate());
 
-	if (objtemplate != NULL) {
+	if (objtemplate != nullptr) {
 		String modFile = objtemplate->getTerrainModificationFile();
 
 		if (!modFile.isEmpty()) {
@@ -472,42 +449,41 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	if (sceneObject->isTheaterObject()) {
 		TheaterObject* theater = static_cast<TheaterObject*>(sceneObject);
 
-		if (theater != NULL && theater->shouldFlattenTheater()) {
+		if (theater != nullptr && theater->shouldFlattenTheater()) {
 			zone->getPlanetManager()->getTerrainManager()->removeTerrainModification(theater->getObjectID());
 		}
 	}
 
 	locker.release();
 
-
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
-	CloseObjectsVector* closeobjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+	CloseObjectsVector* closeobjects = sceneObject->getCloseObjects();
 	ManagedReference<SceneObject*> vectorOwner = sceneObject;
 
-	if (closeobjects == NULL && par != NULL) {
+	if (closeobjects == nullptr && par != nullptr) {
 		vectorOwner = par;
-		closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
+		closeobjects = vectorOwner->getCloseObjects();
 	}
 
-	while (closeobjects == NULL && vectorOwner != NULL) {
+	while (closeobjects == nullptr && vectorOwner != nullptr) {
 		vectorOwner = vectorOwner->getParent().get();
 
-		if (vectorOwner != NULL) {
-			closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
+		if (vectorOwner != nullptr) {
+			closeobjects = vectorOwner->getCloseObjects();
 		}
 	}
 
-	if (closeobjects != NULL) {
-		for (int i=0; closeobjects->size() != 0 && i<100; i++) {
+	if (closeobjects != nullptr) {
+		for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
 			closeobjects->safeCopyTo(closeSceneObjects);
 
 			while (closeSceneObjects.size() > 0) {
 				ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
 
-				if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL) {
+				if (obj != nullptr && obj != sceneObject && obj->getCloseObjects() != nullptr) {
 					obj->removeInRangeObject(sceneObject);
-                                }
+				}
 
 				if (vectorOwner == sceneObject) {
 					try {
@@ -523,7 +499,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	} else {
 #ifdef COV_DEBUG
 		String templateName = "none";
-		if (sceneObject->getObjectTemplate() != NULL)
+		if (sceneObject->getObjectTemplate() != nullptr)
 			templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
 
 		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
@@ -532,16 +508,17 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
-			QuadTreeEntry* obj = closeSceneObjects.get(i);
+			QuadTreeEntry* obj = closeSceneObjects.getUnsafe(i);
 
-			if (obj != sceneObject && obj->getCloseObjects() != NULL)
+			if (obj != sceneObject && obj->getCloseObjects() != nullptr)
 				obj->removeInRangeObject(sceneObject);
 		}
 	}
 
-	if (sceneObject->isTangibleObject()) {
-		TangibleObject* tano = sceneObject->asTangibleObject();
-		SortedVector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
+	TangibleObject* tano = sceneObject->asTangibleObject();
+
+	if (tano != nullptr) {
+		SortedVector<ManagedReference<ActiveArea*> >* activeAreas = tano->getActiveAreas();
 
 		while (activeAreas->size() > 0) {
 			Locker _alocker(sceneObject->getContainerLock());
@@ -559,10 +536,10 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
 
 		for(auto& area : objects) {
-			if(area->isNavArea()) {
-				NavArea *mesh = area->asNavArea();
+			NavArea *mesh = area->asNavArea();
 
-				if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
+			if (mesh != nullptr) {
+				if (mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
 					mesh->updateNavMesh(sceneObject, true);
 				}
 			}
