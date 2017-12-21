@@ -447,4 +447,7 @@ class BuildingObject extends StructureObject {
 	@dirty
 	@local
 	public abstract native final BaseBoundingVolume getBoundingVolume();
+
+	@read
+	public native abstract float getOutOfRangeDistance();
 }

@@ -3499,3 +3499,49 @@ CreditObject* CreatureObjectImplementation::getCreditObject() {
 
 	return obj.castTo<CreditObject*>();
 }
+
+void CreatureObjectImplementation::updateCOV() {
+	debug("running out of range checks");
+
+	CreatureObject* creature = asCreatureObject();
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	getCloseObjects()->safeCopyTo(closeObjects);
+
+	auto worldPos = getWorldPosition();
+	float x = worldPos.getX();
+	float y = worldPos.getY();
+
+	auto currentZone = getZone();
+	float range2 = getOutOfRangeDistance();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+		auto rootParent = o->getRootParent();
+
+		if (rootParent != nullptr) { //the parent should be in cov, so we can ignore the contained object
+			continue;
+		}
+
+		if (o != creature) {
+			auto objectWorldPos = o->getWorldPosition();
+
+			float deltaX = x - objectWorldPos.getX();
+			float deltaY = y - objectWorldPos.getY();
+
+			//update out of range objects
+			float range1 = o->getOutOfRangeDistance();
+
+			float rangesq = Math::sqr(Math::max(range1, range2));
+
+			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
+				if (getCloseObjects() != nullptr)
+					removeInRangeObject(o);
+
+				if (o->getCloseObjects() != nullptr)
+					o->removeInRangeObject(creature);
+			}
+		}
+	}
+}

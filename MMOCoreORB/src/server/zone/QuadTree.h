@@ -108,10 +108,9 @@ namespace server {
 		void inRange(QuadTreeEntry *obj, float range);
 
 		/**
-		 * Same as above, but does rlocks the tree and then unlocks when calling addInRangeObject/remove on the entry
+		 * Updates COV, adds new in range objects
 		 */
 		void safeInRange(QuadTreeEntry* obj, float range);
-
 
 		/**
 		 * Searches for entries that contain x, y point

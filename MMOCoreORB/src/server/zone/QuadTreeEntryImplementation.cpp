@@ -3,6 +3,7 @@ Copyright (C) 2007 <SWGEmu>. All rights reserved.
 Distribution of this file for usage outside of Core3 is prohibited.
 */
 
+#include <autogen/server/zone/ZoneServer.h>
 #include "server/zone/QuadTreeEntry.h"
 
 #include "server/zone/QuadTreeNode.h"
@@ -112,4 +113,8 @@ uint64 QuadTreeEntry::getObjectID() {
 
 uint64 QuadTreeEntryImplementation::getDirtyObjectID() {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
+}
+
+float QuadTreeEntryImplementation::getOutOfRangeDistance() const {
+	return ZoneServer::CLOSEOBJECTRANGE;
 }
