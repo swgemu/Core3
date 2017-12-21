@@ -194,12 +194,9 @@ public:
 			return;
 		}*/
 
-		ManagedReference<SceneObject*> newParent = server->getZoneServer()->getObject(parent, true);
+		ManagedReference<CellObject*> newParent = server->getZoneServer()->getObject(parent, true).castTo<CellObject*>();
 
 		if (newParent == NULL)
-			return;
-
-		if (!newParent->isCellObject())
 			return;
 
 		ManagedReference<SceneObject*> parentSceneObject = newParent->getParent().get();
@@ -216,6 +213,23 @@ public:
 
 		if (par != NULL && par->isShipObject())
 			return;
+
+		CellObject* currentCell = par.castTo<CellObject*>();
+
+		if ( par != newParent) {
+			PortalLayout *layout = building->getObjectTemplate()->getPortalLayout();
+			if (layout == NULL)
+				return;
+
+			const CellProperty *cellProperty = layout->getCellProperty(newParent->getCellNumber());
+			if (!cellProperty->hasConnectedCell(currentCell != NULL ? currentCell->getCellNumber() : 0)) {
+				StringBuffer buf;
+				buf << object->getObjectID() << " Attempted to change parents to a cell not connected to the previous parent" << endl;
+				buf << "X: " << positionX << "Y: " << positionY << "Z: " << positionZ << " parentID: " << parent;
+				object->error(buf.toString());
+				return;
+			}
+		}
 
 		/*StringBuffer posMsg;
 		posMsg << "posX: " << positionX << " posZ: " << positionZ << " posY:" << positionY;
