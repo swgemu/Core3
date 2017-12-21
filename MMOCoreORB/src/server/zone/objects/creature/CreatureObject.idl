@@ -2161,4 +2161,6 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public abstract void reloadTemplate() {
 	}
+
+	public native void updateCOV();
 }
