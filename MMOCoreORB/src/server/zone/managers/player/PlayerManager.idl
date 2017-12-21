@@ -32,7 +32,7 @@ import server.login.account.Account;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.managers.player.OnlineZoneClientMap;
 import system.thread.ReadWriteLock;
-import engine.util.u3d.CloseObjectsVector;
+import server.zone.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.managers.player.VeteranRewardList;
 include server.zone.managers.player.JukeboxSong;

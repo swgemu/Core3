@@ -4,8 +4,8 @@
 
 package server.zone;
 
-import engine.util.u3d.QuadTree;
-import engine.util.u3d.QuadTreeEntry;
+import server.zone.QuadTree;
+import server.zone.QuadTreeEntry;
 include server.chat.room.ChatRoom;
 
 import system.lang.Time;

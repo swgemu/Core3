@@ -13,6 +13,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/CloseObjectsVector.h"
 
 namespace server {
 namespace zone {
@@ -129,7 +130,7 @@ public:
 	}
 
 	bool noInterferingObjects(CreatureObject* player, const Vector3& position) {
-		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+		CloseObjectsVector* vec = player->getCloseObjects();
 
 		if (vec == NULL)
 			return true;

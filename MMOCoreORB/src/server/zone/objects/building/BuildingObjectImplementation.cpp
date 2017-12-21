@@ -1676,3 +1676,6 @@ bool BuildingObjectImplementation::isBuildingObject() {
 	return true;
 }
 
+float BuildingObjectImplementation::getOutOfRangeDistance() const {
+	return ZoneServer::CLOSEOBJECTRANGE * 4;
+}

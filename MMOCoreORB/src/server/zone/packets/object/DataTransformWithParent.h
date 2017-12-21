@@ -5,6 +5,7 @@
 #ifndef DATATRANSFORMWITHPARENT_H_
 #define DATATRANSFORMWITHPARENT_H_
 
+#include "server/zone/objects/scene/WorldCoordinates.h"
 #include "ObjectControllerMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -241,7 +242,9 @@ public:
 			}
 		}
 
-		Reference<Vector<float>* > collisionPoints = CollisionManager::getCellFloorCollision(positionX, positionY, cast<CellObject*>(newParent.get()));
+		CellObject* cell = cast<CellObject*>(newParent.get());
+
+		Reference<Vector<float>* > collisionPoints = CollisionManager::getCellFloorCollision(positionX, positionY, cell);
 
 		if (collisionPoints == NULL) {
 			bounceBack(object, pos);
@@ -276,6 +279,15 @@ public:
 
 				return;
 			}
+		}
+
+		WorldCoordinates coords(Vector3(positionX, positionY, positionZ), cell);
+		float distance = coords.getWorldPosition().squaredDistanceTo(object->getWorldPosition());
+		if (distance > 10 * 10) {
+			object->info("bouncing back with distance: " + String::valueOf(distance));
+			bounceBack(object, pos);
+
+			return;
 		}
 
 		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)

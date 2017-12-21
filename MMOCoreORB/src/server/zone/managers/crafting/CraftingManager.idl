@@ -15,6 +15,7 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include system.util.HashTable;
+include system.util.VectorMap;
 include system.lang.ref.Reference;
 
 @dirty
