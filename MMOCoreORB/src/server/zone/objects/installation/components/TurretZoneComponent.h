@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/QuadTreeEntry.h"
 
 class TurretZoneComponent : public ZoneComponent {
 

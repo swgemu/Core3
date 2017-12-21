@@ -6,7 +6,7 @@
  */
 
 #include <engine/core/ManagedReference.h>
-#include <engine/util/u3d/CloseObjectsVector.h>
+#include <server/zone/CloseObjectsVector.h>
 #include <engine/util/u3d/Vector3.h>
 #include <system/lang/IllegalArgumentException.h>
 #include <system/lang/ref/Reference.h>

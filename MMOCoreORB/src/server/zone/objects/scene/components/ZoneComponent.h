@@ -32,7 +32,7 @@ using namespace server::zone::objects::scene;
 using namespace server::zone::objects::building;
 using namespace server::zone;
 
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/QuadTreeEntry.h"
 
 class ZoneComponent : public SceneObjectComponent, public Logger {
 protected:

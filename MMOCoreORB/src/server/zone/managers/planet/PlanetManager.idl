@@ -27,7 +27,7 @@ include server.zone.objects.building.ShuttleMap;
 include server.zone.managers.planet.ClientPoiDataTable;
 include server.zone.managers.planet.TravelFare;
 import system.thread.Mutex;
-import engine.util.u3d.CloseObjectsVector;
+import server.zone.CloseObjectsVector;
 include engine.util.u3d.Vector3;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.objects.pathfinding.NavArea;

@@ -10,18 +10,18 @@
 
 #include "engine/engine.h"
 
-#include "engine/util/u3d/QuadTree.h"
+#include "server/zone/QuadTree.h"
 
 #ifdef WITH_STM
 class QuadTreeReference : public TransactionalReference<QuadTree*> {
 #else
-class QuadTreeReference : public Reference<QuadTree*> {
+class QuadTreeReference : public Reference<server::zone::QuadTree*> {
 #endif
 public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	QuadTree* operator=(QuadTree* obj);
+	server::zone::QuadTree* operator=(server::zone::QuadTree* obj);
 };
 
 
