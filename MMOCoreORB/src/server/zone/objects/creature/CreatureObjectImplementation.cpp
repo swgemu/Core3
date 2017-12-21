@@ -3506,7 +3506,12 @@ void CreatureObjectImplementation::updateCOV() {
 	CreatureObject* creature = asCreatureObject();
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	getCloseObjects()->safeCopyTo(closeObjects);
+	auto closeObjectsVector = getCloseObjects();
+
+	if (closeObjectsVector == nullptr)
+		return;
+
+	closeObjectsVector->safeCopyTo(closeObjects);
 
 	auto worldPos = getWorldPosition();
 	float x = worldPos.getX();
