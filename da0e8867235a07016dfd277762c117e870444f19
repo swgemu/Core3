@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa7f18b_c4947e46",
+        "filename": "MMOCoreORB/src/templates/appearance/CellProperty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-21T23:55:40Z",
+      "side": 1,
+      "message": "noDuplicateInsertPlan()?",
+      "revId": "da0e8867235a07016dfd277762c117e870444f19",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
