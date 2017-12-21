@@ -3499,3 +3499,45 @@ CreditObject* CreatureObjectImplementation::getCreditObject() {
 
 	return obj.castTo<CreditObject*>();
 }
+
+void CreatureObjectImplementation::updateCOV() {
+	debug("running out of range checks");
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	getCloseObjects()->safeCopyTo(closeObjects);
+
+	float x = getPositionX();
+	float y = getPositionY();
+
+	auto currentZone = getZone();
+
+	auto thisCreature = asCreatureObject();
+
+	float range2 = getOutOfRangeDistance();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		QuadTreeEntry* o = closeObjects.getUnsafe(i);
+		QuadTreeEntry* objectToRemove = o;
+		QuadTreeEntry* rootParent = o->getRootParent();
+
+		if (rootParent != nullptr)
+			o = rootParent;
+
+		if (o != thisCreature) {
+			float deltaX = x - o->getPositionX();
+			float deltaY = y - o->getPositionY();
+
+			//update out of range objects
+			float range1 = o->getOutOfRangeDistance();
+			float rangesq = Math::sqr(Math::max(range1, range2));
+
+			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
+				if (getCloseObjects() != nullptr)
+					removeInRangeObject(objectToRemove);
+
+				if (objectToRemove->getCloseObjects() != nullptr)
+					objectToRemove->removeInRangeObject(thisCreature);
+			}
+		}
+	}
+}

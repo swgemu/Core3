@@ -55,10 +55,10 @@ class QuadTreeEntry extends Observable {
 	}*/
 
 	@dirty
-	public void removeInRangeObject(QuadTreeEntry obj) {
+	public void removeInRangeObject(QuadTreeEntry obj, boolean notifyDisappear = true) {
 		//System::out << "droping in range object:" << obj << "\n";
 
-		if (closeobjects.drop(obj)) {
+		if (closeobjects.drop(obj) && notifyDisappear) {
 			notifyDissapear(obj);
 		}
 		
@@ -98,6 +98,9 @@ class QuadTreeEntry extends Observable {
 	public abstract boolean isInRange(QuadTreeEntry obj, float range) {
 		return isInRange(obj.getPositionX(), obj.getPositionY(), range);
 	}
+
+	@read
+	public native abstract float getOutOfRangeDistance();
 
 	@dirty
 	public abstract boolean isInRange(float x, float y, float range) {

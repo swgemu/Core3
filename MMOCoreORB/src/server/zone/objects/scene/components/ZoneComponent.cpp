@@ -85,50 +85,10 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const {
 	try {
-		CloseObjectsVector* closeObjectsVector = sceneObject->getCloseObjects();
 		CloseObjectsVector* parentCloseObjectsVector = sceneObject->getRootParent()->getCloseObjects();
-
-		SortedVector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
-		closeObjectsVector->safeCopyTo(closeObjects);
-
 		SortedVector<QuadTreeEntry*> parentCloseObjects(parentCloseObjectsVector->size(), 10);
+
 		parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
-
-		//remove old ones
-		float rangesq = ZoneServer::CLOSEOBJECTRANGE * ZoneServer::CLOSEOBJECTRANGE;
-
-		float x = sceneObject->getPositionX();
-		float y = sceneObject->getPositionY();
-
-		float oldx = sceneObject->getPreviousPositionX();
-		float oldy = sceneObject->getPreviousPositionY();
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			QuadTreeEntry* o = closeObjects.getUnsafe(i);
-			QuadTreeEntry* objectToRemove = o;
-			QuadTreeEntry* rootParent = o->getRootParent();
-
-			if (rootParent != nullptr)
-				o = rootParent;
-
-			if (o != sceneObject) {
-				float deltaX = x - o->getPositionX();
-				float deltaY = y - o->getPositionY();
-
-				if (deltaX * deltaX + deltaY * deltaY > rangesq) {
-					float oldDeltaX = oldx - o->getPositionX();
-					float oldDeltaY = oldy - o->getPositionY();
-
-					if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-						if (sceneObject->getCloseObjects() != nullptr)
-							sceneObject->removeInRangeObject(objectToRemove);
-
-						if (objectToRemove->getCloseObjects() != nullptr)
-							objectToRemove->removeInRangeObject(sceneObject);
-					}
-				}
-			}
-		}
 
 		//insert new ones
 		for (int i = 0; i < parentCloseObjects.size(); ++i) {
@@ -475,27 +435,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	}
 
 	if (closeobjects != nullptr) {
-		for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
-			closeobjects->safeCopyTo(closeSceneObjects);
-
-			while (closeSceneObjects.size() > 0) {
-				ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
-
-				if (obj != nullptr && obj != sceneObject && obj->getCloseObjects() != nullptr) {
-					obj->removeInRangeObject(sceneObject);
-				}
-
-				if (vectorOwner == sceneObject) {
-					try {
-						vectorOwner->removeInRangeObject((int) 0);
-					} catch (ArrayIndexOutOfBoundsException &e) {
-						info("oops");
-					}
-				}
-
-				closeSceneObjects.remove((int) 0); 
-			}
-		}
+		removeAllObjectsFromCOV(closeobjects, closeSceneObjects, sceneObject, vectorOwner);
 	} else {
 #ifdef COV_DEBUG
 		String templateName = "none";
@@ -549,4 +489,28 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 
 void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
 	sceneObject->notifySelfPositionUpdate();
+}
+
+void ZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
+											SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
+											SceneObject *sceneObject, SceneObject *vectorOwner) {
+	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
+		closeobjects->safeCopyTo(closeSceneObjects);
+
+		for (auto& obj : closeSceneObjects) {
+			if (obj != nullptr && obj != sceneObject && obj->getCloseObjects() != nullptr) {
+				obj->removeInRangeObject(sceneObject);
+			}
+
+			if (vectorOwner == sceneObject) {
+				try {
+					vectorOwner->removeInRangeObject(sceneObject, false);
+				} catch (ArrayIndexOutOfBoundsException &e) {
+					Logger::console.error("exception removing in range object: " + e.getMessage());
+				}
+			}
+		}
+
+		closeSceneObjects.removeAll();
+	}
 }

@@ -1661,6 +1661,8 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 		updateZoneWithParent(cell, false, false);
 	else
 		updateZone(false, false);
+
+	updateCOV();
 }
 
 
