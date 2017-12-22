@@ -56,6 +56,14 @@ public:
 				return TOOFAR;
 			}
 
+			if (cellParent != nullptr) {
+				Reference<Vector<float> *> collisionPoints = CollisionManager::getCellFloorCollision(x, z, cellParent);
+
+				if (collisionPoints == nullptr) {
+					return TOOFAR;
+				}
+			}
+
 			auto ghost = creature->getPlayerObject();
 
 			if (ghost != nullptr && ghost->isTeleporting()) {
