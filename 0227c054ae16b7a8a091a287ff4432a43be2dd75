@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa7f18b_e4789a2d",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/DataTransformWithParent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2017-12-22T00:15:49Z",
+      "side": 1,
+      "message": "move ValidatedPosition pos and update up so you can do bounceBack() before return",
+      "revId": "0227c054ae16b7a8a091a287ff4432a43be2dd75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
