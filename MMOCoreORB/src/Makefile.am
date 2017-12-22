@@ -379,6 +379,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
 		server/zone/QuadTree.cpp \
 		server/zone/QuadTreeEntryImplementation.cpp \
+		server/zone/CloseObjectsVector.cpp \
 		server/zone/managers/credit/CreditManager.cpp \
 		server/zone/objects/creature/credits/CreditObjectImplementation.cpp \
 		server/zone/objects/creature/variables/LuaSkill.cpp \
