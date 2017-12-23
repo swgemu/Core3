@@ -23,13 +23,13 @@ indigo_siyan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_indigo_siyan.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "indigoSiyanConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 
