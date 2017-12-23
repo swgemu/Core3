@@ -319,17 +319,16 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	Locker locker(newZone);
 
+	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
+
 	if (newParent != nullptr) {
 		if (zone == newZone) {
 			if (newParent->transferObject(sceneObject, -1, false)) {
 				sceneObject->sendToOwner(true);
-
-				sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 			}
 		} else {
 			if (newParent->transferObject(sceneObject, -1, false, false, false)) {
 				sceneObject->sendToOwner(true);
-				sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
 				if (newParent->isCellObject()) {
 					auto rootParent = sceneObject->getRootParent();
@@ -340,8 +339,6 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 			}
 		}
 	} else {
-		sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
-
 		newZone->transferObject(sceneObject, -1, true);
 	}
 }
