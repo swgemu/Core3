@@ -362,7 +362,10 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (newParent != NULL && !newParent->isCellObject())
 		newParent = NULL;
 
-	if (newPositionZ == 0 && newParent == NULL) {
+	if (newParent != NULL)
+		sceneObject->sendMessage(new GameSceneChangedMessage());
+
+	if (newPositionZ == 0 && newParent != NULL) {
 		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
 	}
 
@@ -378,20 +381,19 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	Locker locker(newZone);
 
+	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
+
 	if (newParent != NULL) {
 		if (zone == newZone) {
 			if (newParent->transferObject(sceneObject, -1, false)) {
 				sceneObject->sendToOwner(true);
-
-				sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 			}
 		} else {
 			if (newParent->transferObject(sceneObject, -1, false, false, false)) {
 				sceneObject->sendToOwner(true);
-				sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
 				if (newParent->isCellObject()) {
-					auto rootParent = sceneObject->getRootParent();
+					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
 					if (rootParent != NULL)
 						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);
@@ -399,8 +401,6 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 			}
 		}
 	} else {
-		sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
-
 		newZone->transferObject(sceneObject, -1, true);
 	}
 }

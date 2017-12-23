@@ -596,8 +596,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
-		if (selfObject != object)
-			object->sendDestroyTo(scno);
+		object->sendDestroyTo(scno);
 	}
 }
 
