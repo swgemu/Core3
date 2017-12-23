@@ -402,8 +402,7 @@ function BestineElection:hasCandidateEvidence(pPlayer, candidate)
 end
 
 function BestineElection:canVoteForCandidate(pPlayer, candidate)
-	--return self:hasJoinedCampaign(pPlayer, candidate) and self:hasCandidateEvidence(pPlayer, candidate)
-	return self:hasCandidateEvidence(pPlayer, candidate)
+	return self:hasJoinedCampaign(pPlayer, candidate) and self:hasCandidateEvidence(pPlayer, candidate)
 end
 
 function BestineElection:removeCandidateEvidence(pPlayer, candidate)

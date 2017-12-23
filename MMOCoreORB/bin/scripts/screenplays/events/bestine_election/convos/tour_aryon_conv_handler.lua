@@ -20,7 +20,7 @@ function tourAryonConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local electionNum = BestineElection:getElectionNumber()
-	local electionWinner = BestineElection:getElectionWinner(electionNum - 1)
+	local electionWinner = BestineElection:getElectionWinner(electionNum)
 
 	if (screenID == "init_not_election_phase") then
 		if (electionWinner == BestineElection.SEAN) then
