@@ -55,7 +55,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		if (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_DISK_DESTROYED) then
 			clonedConversation:addOption("@conversation/sean_trenwell:s_a3734170", "disk_dealt_with") -- I spoke to your contact about the disk from the crash site.
 		elseif (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_SENT_TO_CONTACT) then
-			clonedConversation:addOption("@conversation/sean_trenwell:s_68d96c4a", "take_it_to_contact") -- What was I supposed to do with this disk from the crash site?
+			clonedConversation:addOption("@conversation/sean_trenwell:s_49368633", "take_it_to_contact") -- What was I supposed to do with this disk from the crash site?
 		elseif (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_DISK_SCREENED and BestineElection:hasItemInInventory(pPlayer, "object/tangible/loot/quest/sean_history_disk.iff")) then
 			clonedConversation:addOption("@conversation/sean_trenwell:s_238ef4f6", "did_you_find_anything") -- I've searched the crash site.
 		elseif (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_FOUND_DISK) then
@@ -157,7 +157,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			local historyWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Historical Site", "", -758, -3907, WAYPOINT_COLOR_BLUE, true, true, 0,0)
+			local historyWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Historical Site", "", -758, -3907, WAYPOINTBLUE, true, true, 0,0)
 			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:historyWaypointID", historyWaypointID)
 		end
 	elseif (screenID == "seek_out_contact") then
@@ -166,7 +166,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, -3765, WAYPOINT_COLOR_BLUE, true, true, 0,0)
+			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, -3765, WAYPOINTBLUE, true, true, 0,0)
 			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID", contactWaypointID)
 		end
 	elseif (screenID == "speak_with_secretary") then

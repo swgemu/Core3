@@ -29,9 +29,9 @@ electionMobiles = {
 	{"sean_questp_market", -1104, 12, -3705, 20, 0, "neutral", 4, "seanQuestpMarketConvoTemplate" },
 	--{"sean_questn_university", 3.6, 1.1, -4.6, 0, 1028578, "neutral", 8, "seanQuestnUniversityConvoTemplate" },
 
-	--{"sean_contact_quest", -1448, 10, -3765, 0, 0, "neutral", 4, "seanContactConvoTemplate" },
-	--{"seans_historian", -758, 10.5, -3907, 0, 0, "neutral", 4, "seansHistorianConvoTemplate" },
-	--{"hutt_informant_quest", -1120, 12, -3639, 160, 0, "neutral", 5, "huttInformantConvoTemplate" },
+	{"sean_contact_quest", -1448, 10, -3765, 0, 0, "neutral", 4, "seanContactConvoTemplate" },
+	{"seans_historian", -758, 10.5, -3907, 0, 0, "neutral", 4, "seansHistorianConvoTemplate" },
+	{"hutt_informant_quest", -1120, 12, -3639, 160, 0, "neutral", 5, "huttInformantConvoTemplate" },
 	{"sean_trenwell", 19.5, 3.2, -36, 10, 926483, "neutral", 5, "seanTrenwellConvoTemplate" },
 	--{"victor_visalis", -26.48, 3.23, 20.29, 146, 926480, "neutral", 5, "victorVisalisConvoTemplate" },
 	{"tour_aryon", -37.31, 1.29, 0.71, -125, 926479, "neutral", 10, "tourAryonConvoTemplate" },
@@ -50,5 +50,3 @@ victorImperials = {
 	{"dark_trooper", -1133.2, 12.1958, -3614.6, 125.004, "" },
 	{"dark_trooper", -1130.9, 12.1964, -3611.6, 125.004, "" },
 }
-	
-	

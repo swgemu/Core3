@@ -49,7 +49,7 @@ init_sean_in_office = ConvoScreen:new {
 	options = {
 	--{"@conversation/sean_trenwell:s_338ea1e3", ""}, -- You said to return for a reward. For destroying that disk.
 	--{"@conversation/sean_trenwell:s_a3734170", "disk_dealt_with"} -- I spoke to your contact about the disk from the crash site.
-	--{"@conversation/sean_trenwell:s_68d96c4a", "take_it_to_contact"} -- What was I supposed to do with this disk from the crash site?
+	--{"@conversation/sean_trenwell:s_49368633", "take_it_to_contact"} -- What was I supposed to do with this disk from the crash site?
 	--{"@conversation/sean_trenwell:s_238ef4f6", "did_you_find_anything"} -- I've searched the crash site.
 	--{"@conversation/sean_trenwell:s_a068d8f2", "seek_historian"} -- Who do I let screen anything I find at the crash site?
 	--{"@conversation/sean_trenwell:s_35bc21ba", "find_anything_of_value"} -- What did you want me to do at the crash site?
@@ -202,8 +202,8 @@ brutal_attacks = ConvoScreen:new {
 	leftDialog = "@conversation/sean_trenwell:s_d485fca4", -- Yes. Anyway, lately we've experienced brutal attacks from the Sand People. My historian is having a hard time of it, and I'm not sure her efforts can continue. She doesn't possess a brawler's spirit or the skill of a marksman. She's just a scholar. It's depressing to think that our attempts to restore the Red-Sin Valon have been fruitless. Do you think you can help? You seem like an adventurer. Or am I wrong?
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_trenwell:s_1e35bbba", "just_my_luck"}, -- You're wrong.
-		{"@conversation/sean_trenwell:s_3ba540c", "disappointed_but_understand"} -- I am an adventurer!
+		{"@conversation/sean_trenwell:s_1e35bbba", "just_my_luck"}, -- I am an adventurer!
+		{"@conversation/sean_trenwell:s_3ba540c", "thats_unfortunate"} -- You're wrong.
 	}
 }
 seanTrenwellConvoTemplate:addScreen(brutal_attacks);
@@ -213,7 +213,7 @@ just_my_luck = ConvoScreen:new {
 	leftDialog = "@conversation/sean_trenwell:s_a5cd533e", -- Just my luck! I could really use your help. The Red-Sin Valon find is phenomenal in of itself, but what if there's more? I want you to bring back any information you can. There must be some sort of log of the events surrounding the early settlement attempts. I'd really like for you to find it. Do you think you can do that?
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_trenwell:s_1e35bbba", "punch_in_location"}, -- Sounds like fun. I'll do it!
+		{"@conversation/sean_trenwell:s_b45b3794", "punch_in_location"}, -- Sounds like fun. I'll do it!
 		{"@conversation/sean_trenwell:s_2ac8d04c", "maybe_later_then"} -- No, I can't.
 	}
 }
@@ -283,8 +283,8 @@ did_you_find_anything = ConvoScreen:new {
 	leftDialog = "@conversation/sean_trenwell:s_2e38174d", -- Well returned! Did you find anything?
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_trenwell:s_338ea1e3", "can_i_see_it"}, -- Yes, I did.
-		{"@conversation/sean_trenwell:s_68d96c4a", "something_out_there"} -- No, unfortunately. Nothing of use.
+		{"@conversation/sean_trenwell:s_b30bd73c", "can_i_see_it"}, -- Yes, I did.
+		{"@conversation/sean_trenwell:s_c8a36ac7", "something_out_there"} -- No, unfortunately. Nothing of use.
 	}
 }
 seanTrenwellConvoTemplate:addScreen(did_you_find_anything);
@@ -381,7 +381,7 @@ init_joined_victor = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/sean_trenwell:s_338ea1e3", "dig_up_some_dirt"}, -- I want to join your campaign.
-		{"@conversation/sean_trenwell:s_68d96c4a", "good_bye_then"} -- I gotta go.
+		{"@conversation/sean_trenwell:s_82e87c1c", "good_bye_then"} -- I gotta go.
 	}
 }
 seanTrenwellConvoTemplate:addScreen(init_joined_victor);
@@ -392,7 +392,7 @@ dig_up_some_dirt = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/sean_trenwell:s_338ea1e3", "speak_with_secretary"}, -- I'll do it!
-		{"@conversation/sean_trenwell:s_68d96c4a", "suit_yourself"} -- No, I don't think so.
+		{"@conversation/sean_trenwell:s_1e5ba263", "suit_yourself"} -- No, I don't think so.
 	}
 }
 seanTrenwellConvoTemplate:addScreen(dig_up_some_dirt);

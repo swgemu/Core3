@@ -24,12 +24,13 @@ BestineElection = ScreenPlay:new {
 	SEAN_MAIN_REWARD = 7,
 
 	SEAN_HISTORY_QUEST_ACCEPTED = 1,
-	SEAN_HISTORY_QUEST_FOUND_DISK = 2,
-	SEAN_HISTORY_QUEST_DISK_SCREENED = 3,
-	SEAN_HISTORY_QUEST_SENT_TO_CONTACT = 4,
-	SEAN_HISTORY_QUEST_DISK_DESTROYED = 5,
-	SEAN_HISTORY_QUEST_GAVE_TO_HUTT = 6,
-	SEAN_HISTORY_QUEST_RECEIVED_REWARD = 7,
+	SEAN_HISTORY_QUEST_STARTED_SEARCH = 2,
+	SEAN_HISTORY_QUEST_FOUND_DISK = 3,
+	SEAN_HISTORY_QUEST_DISK_SCREENED = 4,
+	SEAN_HISTORY_QUEST_SENT_TO_CONTACT = 5,
+	SEAN_HISTORY_QUEST_DISK_DESTROYED = 6,
+	SEAN_HISTORY_QUEST_GAVE_TO_HUTT = 7,
+	SEAN_HISTORY_QUEST_RECEIVED_REWARD = 8,
 
 	SEAN_RIVAL_QUEST_ACCEPTED = 1,
 	SEAN_RIVAL_QUEST_FOUND = 2,
@@ -121,7 +122,11 @@ function BestineElection:spawnElectionMobiles()
 					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), mobile[8], 0)
 
 					if (pActiveArea ~= nil) then
-						createObserver(ENTEREDAREA, "BestineElection", "enteredMobileArea", pActiveArea)
+						if (mobile[1] == "hutt_informant_quest") then
+							createObserver(ENTEREDAREA, "BestineElection", "enteredInformantArea", pActiveArea)
+						else
+							createObserver(ENTEREDAREA, "BestineElection", "enteredMobileArea", pActiveArea)
+						end
 						local areaID = SceneObject(pActiveArea):getObjectID()
 						local mobileID = SceneObject(pMobile):getObjectID()
 						writeData(mobileID .. ":activeArea", areaID)
@@ -231,10 +236,45 @@ function BestineElection:initTerminals()
 	end
 
 	pTerminal = getSceneObject(3195507)
-	local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pTerminal):getWorldPositionX(), SceneObject(pTerminal):getWorldPositionZ(), SceneObject(pTerminal):getWorldPositionY(), 2, 0)
-	if pActiveArea ~= nil then
-	--createObserver(ENTEREDAREA, "BestineElection", "triggerHistoryTerminal", pActiveArea)
+
+	if (pTerminal ~= nil) then
+		local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pTerminal):getWorldPositionX(), SceneObject(pTerminal):getWorldPositionZ(), SceneObject(pTerminal):getWorldPositionY(), 2, 0)
+
+		if pActiveArea ~= nil then
+			createObserver(ENTEREDAREA, "BestineElection", "enteredHistoryTerminalArea", pActiveArea)
+		end
 	end
+end
+
+function BestineElection:enteredHistoryTerminalArea(pActiveArea, pPlayer)
+	if (pPlayer == nil or pActiveArea == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+		return 0
+	end
+
+	if (self:getQuestStep(pPlayer, self.SEAN, self.SEAN_HISTORY_QUEST) == self.SEAN_HISTORY_QUEST_FOUND_DISK) then
+		CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:history_disk_found_already") -- You search the area, but find nothing else of interest.
+		return 0
+	end
+
+	if (self:getQuestStep(pPlayer, self.SEAN, self.SEAN_HISTORY_QUEST) == self.SEAN_HISTORY_QUEST_STARTED_SEARCH) then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			return 0
+		end
+
+		local pDisk = giveItem(pInventory, "object/tangible/loot/quest/sean_history_disk.iff", -1)
+
+		if (pDisk == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item:sean_history_disk.iff")
+			return 0
+		end
+
+		CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:history_disk_found") -- As you approach the terminal, you notice something sticking out of a dataslot and you take it. The object appears to be an aged datadisk, but it looks like it might still be readable
+		self:setQuestStep(pPlayer, self.SEAN, self.SEAN_HISTORY_QUEST, self.SEAN_HISTORY_QUEST_FOUND_DISK)
+	end
+
+	return 0
 end
 
 function BestineElection:determineWinner()
