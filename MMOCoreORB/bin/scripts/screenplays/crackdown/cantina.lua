@@ -57,6 +57,13 @@ function CrackdownCantina:onEnteredCantina(pCantina, pPlayer)
 	local cantinaID = SceneObject(pCantina):getObjectID()
 
 	if (readData(cantinaID .. ":crackdownInProgress") == 1) then
+		local mobileID = readData(cantinaID .. ":harasserID")
+		local pMobile = getSceneObject(mobileID)
+
+		if (pMobile == nil or CreatureObject(pMobile):isDead()) then
+			createEvent(30000, "CrackdownCantina", "doCleanup", pCantina, "")
+		end
+
 		return 0
 	end
 
@@ -440,7 +447,7 @@ function CrackdownCantina:finishHarassing(pMobile)
 			writeData(mobileID .. ":doneHarassing", 1)
 			createEvent(300000, "CrackdownCantina", "finishHarassing", pMobile, "")
 			return
-	end
+		end
 	end
 
 	local factionName = readStringData(mobileID .. ":factionName")
