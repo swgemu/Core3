@@ -19,7 +19,6 @@ IF (DB_LIBRARIES)
     SET(DB_FIND_QUIETLY_LIB TRUE)
 ENDIF (DB_LIBRARIES)
 
-
 FIND_PATH(DB_INCLUDE_DIR db.h
         /opt/local/include/db53/
         /usr/local/BerkeleyDB.5.3/include
@@ -41,6 +40,18 @@ ELSE ()
 ENDIF ()
 
 IF (DB_FOUND)
+    if(DB_INCLUDE_DIR)
+        file( STRINGS "${DB_INCLUDE_DIR}/db.h"
+                DB_H REGEX "^#define[ \t]+DB_VERSION_STRING[ \t]+\"[^\"]+\".*$" )
+        string( REGEX REPLACE
+                "^.*DB_VERSION_STRING[ \t]+\"([^\"]+)\".*$" "\\1" DB_VERSION_STRING
+                "${DB_H}" )
+    endif()
+
+    if(DB_VERSION_STRING)
+        MESSAGE(STATUS "Found berkeley db version: ${DB_VERSION_STRING}")
+    endif()
+
     IF (NOT DB_FIND_QUIETLY_INCLUDE)
         MESSAGE(STATUS "Found berkeley db includes: ${DB_INCLUDE_DIR}")
     ENDIF (NOT DB_FIND_QUIETLY_INCLUDE)
