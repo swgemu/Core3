@@ -1,12 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-MuseumCuratorConvoHandler = conv_handler:new {
-	themePark = nil
-}
-
-function MuseumCuratorConvoHandler:setThemePark(themeParkNew)
-	self.themePark = themeParkNew
-end
+MuseumCuratorConvoHandler = conv_handler:new {}
 
 function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
@@ -15,7 +9,18 @@ function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
+
 	if (screenID == "hello_no_voting") then
+		if (BestineElection:isElectionEnabled() and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.SEAN)) then
+			if (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_CURATOR_EVIDENCE)) then
+				clonedConversation:setStopConversation(false)
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "everything_prepared") -- I'm back for the testimonial for Sean Trenwell you had offered..
+			elseif (not BestineElection:hasItemInInventory(pPlayer, "object/tangible/loot/quest/sean_questp_ctestimony.iff")) then
+				clonedConversation:setStopConversation(false)
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "thanks_to_funding") -- Can you tell me anything about Sean Trenwell?
+			end
+		end
+
 		return pConvScreen
 	end
 
@@ -34,6 +39,15 @@ function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 			if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and (not BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer) or BestineMuseumScreenPlay.restrictSinglePurchase == false)) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_e649bf0a", "schematic_cost")
 			end
+
+			if (BestineElection:isElectionEnabled() and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.SEAN)) then
+				if (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_CURATOR_EVIDENCE)) then
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "everything_prepared") -- I'm back for the testimonial for Sean Trenwell you had offered..
+				elseif (not BestineElection:hasItemInInventory(pPlayer, "object/tangible/loot/quest/sean_questp_ctestimony.iff")) then
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "thanks_to_funding") -- Can you tell me anything about Sean Trenwell?
+				end
+			end
+
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "enjoy_visit_votephase")
 		elseif (screenID == "seek_out_artists" or string.find(screenID, "find_") ~= nil) then
 			for i = 1, 3, 1 do
@@ -77,6 +91,14 @@ function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_47df8332", "schematic_cost")
 			end
 
+			if (BestineElection:isElectionEnabled() and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.SEAN)) then
+				if (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_CURATOR_EVIDENCE)) then
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "everything_prepared") -- I'm back for the testimonial for Sean Trenwell you had offered..
+				elseif (not BestineElection:hasItemInInventory(pPlayer, "object/tangible/loot/quest/sean_questp_ctestimony.iff")) then
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "thanks_to_funding") -- Can you tell me anything about Sean Trenwell?
+				end
+			end
+
 			if (timeLeftInSecs <= 3600) then -- Less than an hour
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_9558d37a", "in_less_than_an_hour")
 			elseif (timeLeftInSecs <= 14400) then -- Less than 4 hours
@@ -111,10 +133,30 @@ function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		clonedConversation:addOption("@conversation/lilas_dinhint:s_3f115c47", "thanks_for_visiting")
 	elseif (screenID == "schematic_purchased") then
 		BestineMuseumScreenPlay:doSchematicPurchase(pPlayer)
+	elseif (screenID == "everything_prepared" or screenID == "quite_happy_to") then
+		if (BestineElection:hasFullInventory(pPlayer)) then
+			clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "sean_inv_full") -- Perfect, thank you!
+		else
+			clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "give_sean_testimony") -- Perfect, thank you!
+		end
+	elseif (screenID == "sean_inv_full") then
+		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_CURATOR_EVIDENCE)
+	elseif (screenID == "give_sean_testimony") then
+		BestineElection:clearInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_CURATOR_EVIDENCE)
+
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory ~= nil) then
+			local pEvidence = giveItem(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff", -1)
+
+			if (pEvidence == nil) then
+				printLuaError("Error creating Sean curator evidence for player " .. CreatureObject(pPlayer):getFirstName())
+			end
+		end
 	end
+
 	return pConvScreen
 end
-
 
 function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
