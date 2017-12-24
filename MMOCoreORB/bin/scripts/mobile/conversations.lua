@@ -34,10 +34,13 @@ includeFile("conversations/events/bestine_museum/bestine_artist06_conv.lua")
 includeFile("conversations/events/bestine_museum/museum_curator_conv.lua")
 
 -- Bestine Election
+includeFile("conversations/events/bestine_election/hutt_informant_conv.lua")
 includeFile("conversations/events/bestine_election/indigo_siyan_conv.lua")
+includeFile("conversations/events/bestine_election/sean_contact_conv.lua")
 includeFile("conversations/events/bestine_election/sean_questp_house_conv.lua")
 includeFile("conversations/events/bestine_election/sean_questp_market_conv.lua")
 includeFile("conversations/events/bestine_election/sean_trenwell_conv.lua")
+includeFile("conversations/events/bestine_election/seans_historian_conv.lua")
 includeFile("conversations/events/bestine_election/tour_aryon_conv.lua")
 
 --Life Day
