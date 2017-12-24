@@ -71,6 +71,7 @@
 #include "server/zone/packets/ui/DestroyClientPathMessage.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/chat/PendingMessageList.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1245,7 +1246,6 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 }
 
 void PlayerObjectImplementation::notifyOnline() {
-    
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (parent == nullptr)
@@ -1301,6 +1301,12 @@ void PlayerObjectImplementation::notifyOnline() {
 		}
 	}
 
+	// Screenplay login triggers
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaOnPlayerLoggedIn = lua->createFunction("PlayerTriggers", "playerLoggedIn", 0);
+	*luaOnPlayerLoggedIn << playerCreature;
+	luaOnPlayerLoggedIn->callFunction();
+
 	playerCreature->notifyObservers(ObserverEventType::LOGGEDIN);
 
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
@@ -1350,6 +1356,12 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	//Logout from jedi manager
 	JediManager::instance()->onPlayerLoggedOut(playerCreature);
+
+	// Screenplay logout triggers
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaOnPlayerLoggedOut = lua->createFunction("PlayerTriggers", "playerLoggedOut", 0);
+	*luaOnPlayerLoggedOut << playerCreature;
+	luaOnPlayerLoggedOut->callFunction();
 
 	MissionManager* missionManager = getZoneServer()->getMissionManager();
 
