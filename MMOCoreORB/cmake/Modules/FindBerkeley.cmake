@@ -48,11 +48,11 @@ IF (DB_FOUND)
                 "${DB_H}" )
     endif()
 
-    if(DB_VERSION_STRING)
-        MESSAGE(STATUS "Found berkeley db version: ${DB_VERSION_STRING}")
-    endif()
-
     IF (NOT DB_FIND_QUIETLY_INCLUDE)
+        if(DB_VERSION_STRING)
+            MESSAGE(STATUS "Found berkeley db version: ${DB_VERSION_STRING}")
+        endif()
+
         MESSAGE(STATUS "Found berkeley db includes: ${DB_INCLUDE_DIR}")
     ENDIF (NOT DB_FIND_QUIETLY_INCLUDE)
 
