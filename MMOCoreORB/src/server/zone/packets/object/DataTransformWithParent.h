@@ -296,7 +296,7 @@ public:
 
 		WorldCoordinates coords(Vector3(positionX, positionY, positionZ), cell);
 		float distance = coords.getWorldPosition().squaredDistanceTo(object->getWorldPosition());
-		if (distance > 10 * 10) {
+		if (distance > 21 * 21) {
 			object->info("bouncing back with distance: " + String::valueOf(distance));
 			bounceBack(object, pos);
 
