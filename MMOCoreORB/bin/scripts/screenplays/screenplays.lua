@@ -31,7 +31,7 @@ require("sui.custom.SuiReceiverPuzzle")
 includeFile("../custom_scripts/screenplays/screenplays.lua")
 
 includeFile("helperfuncs.lua")
-
+includeFile("playerTriggers.lua")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -266,10 +266,13 @@ includeFile("jedi/components/TrialsSearchObjectMenuComponent.lua")
 includeFile("events/bestine_election/bestineElection.lua")
 includeFile("events/bestine_election/bestineElectionMenuComponents.lua")
 includeFile("events/bestine_election/bestineElectionSpawns.lua")
+includeFile("events/bestine_election/convos/hutt_informant_conv_handler.lua")
 includeFile("events/bestine_election/convos/indigo_siyan_conv_handler.lua")
+includeFile("events/bestine_election/convos/sean_contact_conv_handler.lua")
 includeFile("events/bestine_election/convos/sean_questp_house_conv_handler.lua")
 includeFile("events/bestine_election/convos/sean_questp_market_conv_handler.lua")
 includeFile("events/bestine_election/convos/sean_trenwell_conv_handler.lua")
+includeFile("events/bestine_election/convos/seans_historian_conv_handler.lua")
 includeFile("events/bestine_election/convos/tour_aryon_conv_handler.lua")
 
 -- Events
