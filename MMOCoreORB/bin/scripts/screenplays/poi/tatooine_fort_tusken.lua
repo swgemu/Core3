@@ -40,30 +40,7 @@ function FortTuskenScreenPlay:start()
 end
 
 function FortTuskenScreenPlay:notifyDefeatedTusken(pVictim, pAttacker)
-	if pVictim == nil or pAttacker == nil or not SceneObject(pVictim):isCreatureObject() or not SceneObject(pAttacker):isCreatureObject() then
-		return 0
-	end
 
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-			return 0
-	end
-
-	if victorVisalisConvoHandler:onTuskenQuest(pAttacker) then
-		if (SceneObject(pVictim):getObjectName() == "tusken_executioner") then
-			local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
-			if (pInventory ~= nil) then
-				createLoot(pInventory, "bestine_election_tusken_head", 0, true)
-			end
-		else
-			local chance = getRandomNumber(0,300)
-			if (chance <= 100) or (chance >= 200) then
-				local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
-				if pInventory ~= nil then
-					createLoot(pInventory, "bestine_election_tusken_loot", 0, true)
-				end
-			end
-		end
-	end
 	return 0
 end
 
