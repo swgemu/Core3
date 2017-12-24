@@ -7,8 +7,10 @@ BestineElection = ScreenPlay:new {
 	ELECTION_PHASE = 1,
 	OFFICE_PHASE = 2,
 
-	seanEvidence = {"object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff"},
-	victorEvidence = {"object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff"},
+	seanEvidence = { "object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff" },
+	seanRivalEvidence = { "object/tangible/loot/quest/sean_questn_alog.iff", "object/tangible/loot/quest/sean_questn_gpapers.iff", "object/tangible/loot/quest/sean_questn_tdisk.iff" },
+	victorEvidence = { "object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff" },
+	victorRivalEvidence = { "object/tangible/loot/quest/victor_questn_dseal.iff", "object/tangible/loot/quest/victor_questn_hlist.iff", "object/tangible/loot/quest/victor_questn_journal.iff" },
 
 	-- Constants for candidates
 	NONE = 0,
@@ -21,7 +23,9 @@ BestineElection = ScreenPlay:new {
 	SEAN_HOUSE_EVIDENCE = 4,
 	SEAN_CURATOR_EVIDENCE = 5,
 	SEAN_MARKET_EVIDENCE = 6,
-	SEAN_MAIN_REWARD = 7,
+	SEAN_RIVAL_CAPITOL_EVIDENCE = 7,
+	SEAN_RIVAL_CANTINA_EVIDENCE = 8,
+	SEAN_MAIN_REWARD = 9,
 
 	SEAN_HISTORY_QUEST_ACCEPTED = 1,
 	SEAN_HISTORY_QUEST_STARTED_SEARCH = 2,
@@ -33,8 +37,22 @@ BestineElection = ScreenPlay:new {
 	SEAN_HISTORY_QUEST_RECEIVED_REWARD = 8,
 
 	SEAN_RIVAL_QUEST_ACCEPTED = 1,
-	SEAN_RIVAL_QUEST_FOUND = 2,
-	SEAN_RIVAL_QUEST_TURNED_IN = 3
+	SEAN_RIVAL_QUEST_COMPLETED = 2,
+
+	VICTOR_MAIN_QUEST = 1,
+	VICTOR_RIVAL_QUEST = 2,
+	VICTOR_TUSKEN_QUEST = 3,
+	VICTOR_MAIN_REWARD = 4,
+	VICTOR_TUSKEN_REWARD = 5,
+	VICTOR_RIVAL_UNIVERSITY_EVIDENCE = 6,
+	VICTOR_HOSPITAL_EVIDENCE = 7,
+	VICTOR_SLUMS_EVIDENCE = 8,
+
+	VICTOR_TUSKEN_QUEST_ACCEPTED = 1,
+	VICTOR_TUSKEN_QUEST_COMPLETED = 2,
+
+	VICTOR_RIVAL_QUEST_ACCEPTED = 1,
+	VICTOR_RIVAL_QUEST_COMPLETED = 2
 }
 
 registerScreenPlay("BestineElection", true)
@@ -369,7 +387,7 @@ function BestineElection:enteredInformantArea(pActiveArea, pMovingObject)
 	return 0
 end
 
-function BestineElection:hasCandidateEvidence(pPlayer, candidate)
+function BestineElection:hasCandidateEvidence(pPlayer, candidate, rivalEvidence)
 	if (pPlayer == nil) then
 		return false
 	end
@@ -383,9 +401,17 @@ function BestineElection:hasCandidateEvidence(pPlayer, candidate)
 	local templates = {}
 
 	if (candidate == self.SEAN) then
-		templates = self.seanEvidence
+		if (rivalEvidence) then
+			templates = self.victorRivalEvidence
+		else
+			templates = self.seanEvidence
+		end
 	elseif (candidate == self.VICTOR) then
-		templates = self.victorEvidence
+		if (rivalEvidence) then
+			templates = self.seanRivalEvidence
+		else
+			templates = self.victorEvidence
+		end
 	else
 		return false
 	end
@@ -473,19 +499,19 @@ function BestineElection:giveCampaignReward(pPlayer, candidate)
 		if (candidate == self.SEAN) then
 			rewardTemplate = "object/tangible/painting/bestine_quest_painting.iff"
 		else
-			rewardTemplate = ""
+			rewardTemplate = "object/weapon/melee/sword/bestine_quest_sword.iff"
 		end
 	elseif (rewardChance <= 300) then
 		if (candidate == self.SEAN) then
 			rewardTemplate = "object/tangible/furniture/modern/bestine_quest_rug.iff"
 		else
-			rewardTemplate = ""
+			rewardTemplate = "object/tangible/furniture/all/bestine_quest_imp_banner.iff"
 		end
 	else
 		if (candidate == self.SEAN) then
 			rewardTemplate = "object/tangible/furniture/all/bestine_quest_statue.iff"
 		else
-			rewardTemplate = ""
+			rewardTemplate = "object/tangible/wearables/necklace/bestine_quest_badge.iff"
 		end
 	end
 
@@ -511,7 +537,7 @@ end
 function BestineElection:getCurrentPhase()
 	local curPhase = tonumber(getQuestStatus("bestineElection:currentPhase"))
 
-	if (curPhase == nil) then
+	if (curPhase == nil or curPhase == 0) then
 		self:setCurrentPhase(1)
 		return 1
 	end
@@ -666,6 +692,12 @@ function BestineElection:joinCampaign(pPlayer, candidate)
 	if (pCampObj == nil) then
 		printLuaError("Error creating campaign disk for player " .. CreatureObject(pPlayer):getFirstName() .. " joining campaign " .. candidate)
 		return
+	end
+
+	if (candidate == self.SEAN and BestineElection:hasJoinedCampaign(pPlayer, self.VICTOR)) then
+		deleteScreenPlayData(pPlayer, "BestineElection", "joinedVictorCampaign")
+	elseif (candidate == self.VICTOR and BestineElection:hasJoinedCampaign(pPlayer, self.SEAN)) then
+		deleteScreenPlayData(pPlayer, "BestineElection", "joinedSeanCampaign")
 	end
 
 	writeScreenPlayData(pPlayer, "BestineElection", keyString, electionNum)

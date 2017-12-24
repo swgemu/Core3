@@ -17,23 +17,23 @@ electionMobiles = {
 	--{"bestine_capitol02", -23.29, 1.3, -10.39, 234, 926475, "neutral", 4, "bestineCapitol02ConvoTemplate" },
 	--{"bestine_capitol03", -3.78, 2.27, -25.85, 158, 926475, "neutral", 4, "bestineCapitol03ConvoTemplate" },
 	--{"bestine_capitol04", 2.26, 7.9, -37.38, 304, 926476, "neutral", 4, "bestineCapitol04ConvoTemplate" },
-	{"indigo_siyan", 24.64, 3.22, -30.71, 341.212, 926483, "neutral", 0, "indigoSiyanConvoTemplate" },
-	--{"keanna_likyna", -18.88, 3.22, 20.6, 214.006, 926480, "neutral", 0, "keannaLikynaConvoTemplate" },
 
-	--{"victor_questn_capitol", 6.1, 0.3, -0.49, 97, 926475, "npc_imperial", 4, "victorQuestnCapitolConvoTemplate" },
-	--{"victor_questn_cantina", 3.1, -0.9, 22.6, 179, 1028651, "npc_sitting_chair", 0, "victorQuestnCantinaConvoTemplate" },
-	--{"victor_questp_slums", -1357, 26, -3871, -108, 0, "neutral", 4, "victorQuestpSlumsConvoTemplate" },
+	{"victor_questn_capitol", 6.1, 0.3, -0.49, 97, 926475, "npc_imperial", 4, "victorQuestnCapitolConvoTemplate" },
+	{"victor_questn_cantina", 3.1, -0.9, 22.6, 179, 1028651, "npc_sitting_chair", 0, "victorQuestnCantinaConvoTemplate" },
+	{"victor_questp_slums", -1357, 26, -3871, -108, 0, "neutral", 4, "victorQuestpSlumsConvoTemplate" },
+	{"victor_questp_hospital", -1294, 12, -3500, 45, 0, "neutral", 4, "victorQuestpHospitalConvoTemplate" },
+	{"keanna_likyna", -18.88, 3.22, 20.6, 214.006, 926480, "neutral", 0, "keannaLikynaConvoTemplate" },
 
 	{"sean_questp_house", 3.0, .4, -0.2, -111, 1528397, "neutral", 4, "seanQuestpHouseConvoTemplate" },
-	--{"victor_questp_hospital", -1294, 12, -3500, 45, 0, "neutral", 4, "victorQuestpHospitalConvoTemplate" },
 	{"sean_questp_market", -1104, 12, -3705, 20, 0, "neutral", 4, "seanQuestpMarketConvoTemplate" },
-	--{"sean_questn_university", 3.6, 1.1, -4.6, 0, 1028578, "neutral", 8, "seanQuestnUniversityConvoTemplate" },
-
+	{"sean_questn_university", 3.6, 1.1, -4.6, 0, 1028578, "neutral", 8, "seanQuestnUniversityConvoTemplate" },
 	{"sean_contact_quest", -1448, 10, -3765, 0, 0, "neutral", 4, "seanContactConvoTemplate" },
 	{"seans_historian", -758, 10.5, -3907, 0, 0, "neutral", 4, "seansHistorianConvoTemplate" },
 	{"hutt_informant_quest", -1120, 12, -3639, 160, 0, "neutral", 5, "huttInformantConvoTemplate" },
+	{"indigo_siyan", 24.64, 3.22, -30.71, 341.212, 926483, "neutral", 0, "indigoSiyanConvoTemplate" },
+	
 	{"sean_trenwell", 19.5, 3.2, -36, 10, 926483, "neutral", 5, "seanTrenwellConvoTemplate" },
-	--{"victor_visalis", -26.48, 3.23, 20.29, 146, 926480, "neutral", 5, "victorVisalisConvoTemplate" },
+	{"victor_visalis", -26.48, 3.23, 20.29, 146, 926480, "neutral", 5, "victorVisalisConvoTemplate" },
 	{"tour_aryon", -37.31, 1.29, 0.71, -125, 926479, "neutral", 10, "tourAryonConvoTemplate" },
 }
 

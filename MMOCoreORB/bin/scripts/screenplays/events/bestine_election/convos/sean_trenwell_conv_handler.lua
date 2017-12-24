@@ -136,21 +136,27 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.SEAN_HISTORY_QUEST_RECEIVED_REWARD)
 	elseif (screenID == "init_on_dirt_quest") then
-		if (BestineElection:hasCandidateEvidence(pPlayer, BestineElection.VICTOR)) then
+		if (BestineElection:hasCandidateEvidence(pPlayer, BestineElection.SEAN, true)) then
 			clonedConversation:addOption("@conversation/sean_trenwell:s_338ea1e3", "so_daft") -- Yes, I did. Here you are.
 		end
 
 		clonedConversation:addOption("@conversation/sean_trenwell:s_da9a29e9", "return_when_you_do") -- No, not yet.
 	elseif (screenID == "so_daft") then
-		BestineElection:removeCandidateEvidence(pPlayer, BestineElection.VICTOR)
-
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/sean_trenwell:s_641d98d5", "disk_inv_full") -- Yes, of course!
+			clonedConversation:addOption("@conversation/sean_trenwell:s_641d98d5", "disk_inv_full_rival") -- Yes, of course!
 		else
-			clonedConversation:addOption("@conversation/sean_trenwell:s_641d98d5", "sensible_type") -- Yes, of course!
+			clonedConversation:addOption("@conversation/sean_trenwell:s_641d98d5", "sensible_type_rival") -- Yes, of course!
 		end
 
 		clonedConversation:addOption("@conversation/sean_trenwell:s_fe8dd35a", "error_of_ways") -- No, I changed my mind.
+	elseif (screenID == "sensible_type_rival") then
+		BestineElection:removeCandidateEvidence(pPlayer, BestineElection.VICTOR)
+		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST, BestineElection.SEAN_RIVAL_QUEST_COMPLETED)
+		BestineElection:joinCampaign(pPlayer, BestineElection.SEAN)
+	elseif (screenID == "disk_inv_full_rival") then
+		BestineElection:removeCandidateEvidence(pPlayer, BestineElection.VICTOR)
+		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST, BestineElection.SEAN_RIVAL_QUEST_COMPLETED)
+		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)
 	elseif (screenID == "punch_in_location") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.SEAN_HISTORY_QUEST_ACCEPTED)
 
