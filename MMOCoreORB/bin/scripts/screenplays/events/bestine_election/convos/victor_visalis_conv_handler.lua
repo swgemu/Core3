@@ -165,12 +165,21 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
+			local pHead = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/tusken_head.iff", true)
+			
+			if (pHead ~= nil) then
+				SceneObject(pHead):destroyObjectFromWorld()
+				SceneObject(pHead):destroyObjectFromDatabase()
+			end
+			
 			local pReward = giveItem(pInventory, "object/weapon/ranged/rifle/rifle_victor_tusken.iff", -1)
 		end
 
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_TUSKEN_QUEST, BestineElection.VICTOR_TUSKEN_QUEST_COMPLETED)
 	elseif (screenID == "leave_with_haste") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_TUSKEN_QUEST, BestineElection.VICTOR_TUSKEN_QUEST_ACCEPTED)
+		dropObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
+		createObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
 
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 

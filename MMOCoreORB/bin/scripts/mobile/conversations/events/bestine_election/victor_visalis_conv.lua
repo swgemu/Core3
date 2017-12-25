@@ -283,7 +283,7 @@ what_could_you_do = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_113169f8", -- You? What could you do? I-ugh. Very well. You may help us. I need for you to go to the Fortress. Our spies have witnessed a power never seen before and it lurks there. A 'brand' of Sand People never mentioned in any book. We think it may be the leading power in the Tusken community, if one could call it that. Kill it. Bring back some significant proof that you've killed it, yes?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_30e8118", "youre_a_coward"}, -- Um.. no.
+		{"@conversation/victor_visalis:s_23e4ded2", "youre_a_coward"}, -- Um.. no.
 		{"@conversation/victor_visalis:s_177e9cb7", "leave_with_haste"}, -- Yes! I will help you!
 	}
 }

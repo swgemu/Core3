@@ -531,6 +531,60 @@ function BestineElection:giveCampaignReward(pPlayer, candidate)
 	self:setReceivedElectionReward(pPlayer)
 end
 
+function BestineElection:notifyKilledCreature(pPlayer, pVictim)
+	if (pVictim == nil) then
+		return 0
+	end
+
+	if (pPlayer == nil) then
+		return 1
+	end
+
+	if (not self:isElectionEnabled()) then
+		return 1
+	end
+
+	if (self:getQuestStep(pPlayer, self.VICTOR, self.VICTOR_TUSKEN_QUEST) ~= self.VICTOR_TUSKEN_QUEST_ACCEPTED) then
+		return 1
+	end
+
+	local pVictimInv = CreatureObject(pVictim):getSlottedObject("inventory")
+
+	if (pVictimInv == nil) then
+		return 0
+	end
+
+	local victimName = SceneObject(pVictim):getObjectName()
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	if (victimName == "tusken_executioner" and not self:hasItemInInventory(pPlayer, "object/tangible/loot/quest/tusken_head.iff")) then
+		SceneObject(pVictimInv):setContainerOwnerID(playerID)
+		createLoot(pVictimInv, "bestine_election_tusken_head", 0, true)
+	end
+
+	if (victimName == "tusken_executioner" or victimName == "tusken_observer" or victimName == "tusken_witch_doctor") then
+		SceneObject(pVictimInv):setContainerOwnerID(playerID)
+		local chance = getRandomNumber(10000)
+
+		if (chance < 100) then
+			createLoot(pVictimInv, "bestine_election_carved_stone", 0, true)
+		elseif (chance < 400) then
+			createLoot(pVictimInv, "bestine_election_smooth_stone", 0, true)
+		elseif (chance < 800) then
+			createLoot(pVictimInv, "bestine_election_baton", 0, true)
+		end
+	end
+
+	return 0
+end
+
+function BestineElection:playerLoggedIn(pPlayer)
+	if (self:getQuestStep(pPlayer, self.VICTOR, self.VICTOR_TUSKEN_QUEST) == self.VICTOR_TUSKEN_QUEST_ACCEPTED) then
+		dropObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
+		createObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
+	end
+end
+
 --------------------------------------------------------------------------
 -- Functions below handle reading/writing of the main screenplay variables
 --------------------------------------------------------------------------
