@@ -152,6 +152,10 @@ function BestineElection:spawnElectionMobiles()
 					end
 				end
 
+				if (mobile[1] == "tour_aryon") then
+					SceneObject(pMobile):setContainerComponent("TourContainerComponent")
+				end
+
 				if (mobile[9] ~= "") then
 					CreatureObject(pMobile):setOptionsBitmask(136)
 					AiAgent(pMobile):setConvoTemplate(mobile[9])
@@ -926,4 +930,19 @@ function BestineElection:hasSearchedObject(pPlayer, objectName)
 	local electionNum = self:getElectionNumber()
 
 	return tonumber(readScreenPlayData(pPlayer, "BestineElection", "searched_" .. objectName)) == electionNum
+end
+
+TourContainerComponent = {}
+
+function TourContainerComponent:transferObject(pContainer, pObj, slot)
+	if (pContainer == nil) then
+		return 0
+	end
+
+	spatialChat(pContainer, "@bestine:give_governor_item") -- What's this? Please, if you wish to present evidence or whatnot, don't just thrust these things at me. Speak to me in a manner suited to civilized beings such as ourselves.
+	return 0
+end
+
+function TourContainerComponent:canAddObject(pContainer, pObj, slot)
+	return false
 end
