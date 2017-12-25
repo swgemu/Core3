@@ -34,6 +34,10 @@ includeFile("conversations/events/bestine_museum/bestine_artist06_conv.lua")
 includeFile("conversations/events/bestine_museum/museum_curator_conv.lua")
 
 -- Bestine Election
+includeFile("conversations/events/bestine_election/bestine_capitol01_conv.lua")
+includeFile("conversations/events/bestine_election/bestine_capitol02_conv.lua")
+includeFile("conversations/events/bestine_election/bestine_capitol03_conv.lua")
+includeFile("conversations/events/bestine_election/bestine_capitol04_conv.lua")
 includeFile("conversations/events/bestine_election/bestine_rumor01_conv.lua")
 includeFile("conversations/events/bestine_election/bestine_rumor02_conv.lua")
 includeFile("conversations/events/bestine_election/bestine_rumor03_conv.lua")
