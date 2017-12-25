@@ -8,6 +8,11 @@ project(core3 CXX C)
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
+# Set cpp requirements
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Set up options
 option(BUILD_IDL "Generate idl c++ sources with cmake" ON) # Enabled by default
 option(IDL_NOPRELOCKS "Disables all prelock annotations" OFF) # Disabled by default
 option(ENABLE_CCACHE "Enables ccache search and usage" OFF) # Disabled by default
@@ -37,6 +42,7 @@ include_directories(${OPENSSL_INCLUDE_DIR})
 find_package(ZLIB REQUIRED)
 include_directories(${ZLIB_INCLUDE_DIRS})
 
+# Find and set -pthreads
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
@@ -56,17 +62,25 @@ if(IDL_NOPRELOCKS)
     set(IDL_DIRECTIVES ${IDL_DIRECTIVES} -noprelocks)
 endif(IDL_NOPRELOCKS)
 
+# Include googlemock and googletest
+add_subdirectory(utils/googletest-release-1.8.0/googlemock)
+
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googletest/include)
 include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googlemock/include)
 
-# Define build flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11")
+# Define global build gcc compatible flags
+set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror")
 
-# Define sources
-add_subdirectory(utils/googletest-release-1.8.0/googlemock)
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
+endif()
+
+
+add_definitions(-DDEFAULT_DYNAMIC_CAST)
+
 add_subdirectory(src)
 add_subdirectory(src/conf)
 add_subdirectory(src/terrain)
@@ -79,4 +93,3 @@ add_subdirectory(src/server/ping)
 add_subdirectory(src/server/login)
 add_subdirectory(src/server/chat)
 add_subdirectory(src/client)
-

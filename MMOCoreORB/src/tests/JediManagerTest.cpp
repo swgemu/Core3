@@ -2,7 +2,7 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "../JediManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
