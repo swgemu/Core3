@@ -106,7 +106,7 @@ String& ValuesMap::getExperimentalPropertySubtitle(const int i) {
 	return EMPTY;
 }
 
-String& ValuesMap::getExperimentalPropertySubtitle(const String title, const int i) {
+String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const int i) {
 	Subclasses* subclasses = get(title);
 
 	if (subclasses != NULL)
@@ -128,7 +128,7 @@ int ValuesMap::getExperimentalPropertySubtitleSize() {
 	return subtitleSize;
 }
 
-int ValuesMap::getExperimentalPropertySubtitleSize(const String title) {
+int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) {
 	Subclasses* subclasses = get(title);
 
 	if (subclasses != NULL)
