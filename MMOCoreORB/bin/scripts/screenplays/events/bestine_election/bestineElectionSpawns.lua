@@ -12,11 +12,12 @@ electionMobiles = {
 	{"bestine_rumor10", -1106.31, 14, -3697.59, -177, 0, "neutral", 4, "bestineRumor10ConvoTemplate" },
 	{"bestine_rumor11", -1221, 12, -3650, -49, 0, "neutral", 4, "bestineRumor11ConvoTemplate" },
 	{"bestine_rumor12", -1291, 12, -3634, 301, 0, "neutral", 6, "bestineRumor12ConvoTemplate" },
+
 	--Capitol Building NPCs
-	--{"bestine_capitol01", -0.7, 3.22, 21.1, 187, 926474, "neutral", 4, "bestineCapitol01ConvoTemplate" },
-	--{"bestine_capitol02", -23.29, 1.3, -10.39, 234, 926475, "neutral", 4, "bestineCapitol02ConvoTemplate" },
-	--{"bestine_capitol03", -3.78, 2.27, -25.85, 158, 926475, "neutral", 4, "bestineCapitol03ConvoTemplate" },
-	--{"bestine_capitol04", 2.26, 7.9, -37.38, 304, 926476, "neutral", 4, "bestineCapitol04ConvoTemplate" },
+	{"bestine_capitol01", -0.7, 3.22, 21.1, 187, 926474, "neutral", 4, "bestineCapitol01ConvoTemplate" },
+	{"bestine_capitol02", -23.29, 1.3, -10.39, 234, 926475, "neutral", 4, "bestineCapitol02ConvoTemplate" },
+	{"bestine_capitol03", -3.78, 2.27, -25.85, 158, 926475, "neutral", 4, "bestineCapitol03ConvoTemplate" },
+	{"bestine_capitol04", 2.26, 7.9, -37.38, 304, 926476, "neutral", 4, "bestineCapitol04ConvoTemplate" },
 
 	{"victor_questn_capitol", 6.1, 0.3, -0.49, 97, 926475, "npc_imperial", 4, "victorQuestnCapitolConvoTemplate" },
 	{"victor_questn_cantina", 3.1, -0.9, 22.6, 179, 1028651, "npc_sitting_chair", 0, "victorQuestnCantinaConvoTemplate" },
