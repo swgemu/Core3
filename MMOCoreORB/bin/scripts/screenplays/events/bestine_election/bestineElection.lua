@@ -230,27 +230,31 @@ function BestineElection:initTerminals()
 	end
 
 	local pTerminal = getSceneObject(5565564) --terminal in victors office gives object/tangible/loot/quest/victor_questp_jregistry.iff
+
 	if (pTerminal ~= nil) then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionTerminalMenuComponent")
-		--writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "victor_questp_jregistry")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineEvidenceMenuComponent")
+		writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "victor_questp_jregistry")
 	end
 
 	pTerminal = getSceneObject(4475517) --4475517 victors desk - gives object/tangible/loot/quest/victor_questn_journal.iff
+
 	if (pTerminal ~= nil) then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionDeskMenuComponent")
-		--writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "victor_questn_journal")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineEvidenceMenuComponent")
+		writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "victor_questn_journal")
 	end
 
 	pTerminal = getSceneObject(5565563) --terminal in seans office gives "object/tangible/loot/quest/sean_questn_tdisk.iff"
+
 	if (pTerminal ~= nil) then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionTerminalMenuComponent")
-		--writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "sean_questn_tdisk")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineEvidenceMenuComponent")
+		writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "sean_questn_tdisk")
 	end
 
 	pTerminal = getSceneObject(5565562) --desk in seans office gives "object/tangible/loot/quest/sean_questn_alog.iff"
+
 	if (pTerminal ~= nil) then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionDeskMenuComponent")
-		--writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "sean_questn_alog")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineEvidenceMenuComponent")
+		writeStringData(SceneObject(pTerminal):getObjectID() .. ":name", "sean_questn_alog")
 	end
 
 	pTerminal = getSceneObject(3195507)
@@ -911,4 +915,15 @@ function BestineElection:getQuestStep(pPlayer, candidate, quest)
 	end
 
 	return tonumber(questStep)
+end
+
+function BestineElection:setSearchedObject(pPlayer, objectName)
+	local electionNum = self:getElectionNumber()
+	writeScreenPlayData(pPlayer, "BestineElection", "searched_" .. objectName, electionNum)
+end
+
+function BestineElection:hasSearchedObject(pPlayer, objectName)
+	local electionNum = self:getElectionNumber()
+
+	return tonumber(readScreenPlayData(pPlayer, "BestineElection", "searched_" .. objectName)) == electionNum
 end
