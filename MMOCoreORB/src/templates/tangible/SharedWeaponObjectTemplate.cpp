@@ -7,6 +7,21 @@
 
 #include "SharedWeaponObjectTemplate.h"
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "lua.h"
+#include "system/lang/Exception.h"
+
+namespace engine {
+namespace util {
+class Chunk;
+}  // namespace util
+}  // namespace engine
+
 void SharedWeaponObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
 	lua_State* state = templateData->getLuaState();
 

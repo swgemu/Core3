@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
 
 class PetHarvestCommand : public QueueCommand {

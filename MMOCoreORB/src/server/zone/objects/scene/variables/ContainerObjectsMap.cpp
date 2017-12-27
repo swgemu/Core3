@@ -6,12 +6,27 @@
  */
 
 #include "ContainerObjectsMap.h"
+
+#include <algorithm>
+
+#include "conf/ConfigManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/TaskManager.h"
+#include "engine/orb/ObjectBroker.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/UnloadContainerTask.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "conf/ConfigManager.h"
+#include "system/lang/System.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/Vector.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 ContainerObjectsMap::ContainerObjectsMap() {
 	operationMode = NORMAL_LOAD;

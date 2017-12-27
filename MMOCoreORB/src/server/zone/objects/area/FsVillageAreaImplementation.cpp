@@ -5,11 +5,18 @@
  *      Author: victor
  */
 
+#include <math.h>
+#include <stddef.h>
+
+#include "server/zone/Zone.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/FsVillageArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/player/variables/PlayerQuestData.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 	ActiveAreaImplementation::notifyEnter(player);

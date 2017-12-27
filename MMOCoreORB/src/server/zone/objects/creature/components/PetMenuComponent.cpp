@@ -1,13 +1,28 @@
 
 #include "PetMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/OptionBitmask.h"
 
 void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isPet())

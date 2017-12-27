@@ -7,6 +7,14 @@
 
 #include "MapFractal.h"
 
+#include <math.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "system/platform.h"
+#include "terrain/PerlinNoise.h"
+#include "terrain/Random.h"
+#include "terrain/TemplateVariable.h"
+
 double MapFractal::log05 = log(0.5);
 
 using namespace trn::ptat;

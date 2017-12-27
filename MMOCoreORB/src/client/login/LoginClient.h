@@ -8,10 +8,39 @@
 #ifndef LOGINCLIENT_H_
 #define LOGINCLIENT_H_
 
-#include "engine/engine.h"
+#include <stddef.h>
 
-class LoginSession;
+#include "engine/engine.h"
+#include "engine/service/MessageQueue.h"
+#include "engine/service/ServiceHandler.h"
+#include "engine/service/proto/BaseClient.h"
+#include "engine/service/proto/BasePacket.h"
+#include "engine/service/proto/StandaloneBaseMessage.h"
+#include "login/LoginSession.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+
 class LoginPacketHandler;
+class LoginSession;
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+namespace proto {
+class BasePacketHandler;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace lang {
+class Exception;
+}  // namespace lang
+namespace net {
+class Packet;
+class Socket;
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
 
 class LoginClient : public ServiceHandler {
 	Reference<BaseClient*> client;

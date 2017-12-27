@@ -1,5 +1,9 @@
 #include "CollisionMeshVolume.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/lang/Exception.h"
+
 void CollisionMeshVolume::read(IffStream *iff) {
 	try {
 		iff->openForm('0000');

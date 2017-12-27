@@ -4,6 +4,8 @@
 
 #include "StringId.h"
 
+#include "system/lang/Object.h"
+
 StringId::StringId() : Serializable() {
 	addSerializableVariables();
 }

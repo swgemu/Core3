@@ -6,11 +6,20 @@
  */
 
 #include "RingObjectMenuComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/wearables/WearableObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
 
 void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTangibleObject())

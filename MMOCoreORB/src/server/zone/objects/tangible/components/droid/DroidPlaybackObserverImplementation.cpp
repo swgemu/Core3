@@ -2,13 +2,30 @@
  * DroidPlaybackObserverImplementation.cpp
  */
 
-#include "server/zone/objects/tangible/components/droid/DroidPlaybackObserver.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/ObserverEventType.h"
-#include "server/zone/objects/player/sessions/EntertainingSession.h"
-#include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/creature/events/DroidPlaybackEvent.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackObserver.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	// check params we should have the player around here

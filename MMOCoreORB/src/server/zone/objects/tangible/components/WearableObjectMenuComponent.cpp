@@ -5,8 +5,13 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+
 #include "WearableObjectMenuComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void WearableObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
