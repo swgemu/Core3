@@ -9,7 +9,9 @@
 #define TERRAINMANAGER_H_
 
 #include "terrain/TerrainAppearance.h"
+#ifdef COMPILE_CORE3_TESTS
 #include "gmock/gmock.h"
+#endif
 #include "TerrainCache.h"
 
 class ProceduralTerrainAppearance;
@@ -101,9 +103,11 @@ public:
 	}
 };
 
+#ifdef COMPILE_CORE3_TESTS
 class MockTerrainManager : public TerrainManager {
 public:
 	MOCK_METHOD2(getHeight,float(float x, float y));
 };
+#endif
 
 #endif /* TERRAINMANAGER_H_ */
