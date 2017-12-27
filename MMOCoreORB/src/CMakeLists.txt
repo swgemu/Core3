@@ -60,7 +60,12 @@ file(GLOB_RECURSE tre3_headers "tre3/*.h")
 
 # Create core3 binary
 add_executable(core3 main.cpp server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers})
-add_dependencies(core3 gmock idlobjects)
+
+if(COMPILE_TESTS)
+	add_dependencies(core3 gmock idlobjects)
+else(COMPILE_TESTS)
+	add_dependencies(core3 idlobjects)
+endif(COMPILE_TESTS)
 
 set(whole_archive_start)
 set(whole_archive_end)
@@ -74,22 +79,33 @@ elseif(UNIX)
 	set(whole_archive_end "-Wl,--no-whole-archive")
 endif()
 
-# Define tests
-enable_testing()
+if(COMPILE_TESTS)
+	# Define tests
+	enable_testing()
 
-file(GLOB_RECURSE tests_sources "tests/*.cpp")
-file(GLOB_RECURSE tests_headers "tests/*.h")
+	file(GLOB_RECURSE tests_sources "tests/*.cpp")
+	file(GLOB_RECURSE tests_headers "tests/*.h")
 
-add_library(core3tests ${tests_headers} ${tests_sources})
+	add_library(core3tests ${tests_headers} ${tests_sources})
 
-add_dependencies(core3tests gmock idlobjects)
+	add_dependencies(core3tests gmock idlobjects)
+endif(COMPILE_TESTS)
 
-target_link_libraries(core3
-	${whole_archive_start}
-	core3tests db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
-	${whole_archive_end}
-	${ENGINE3_LIBRARIES}
-	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+if(COMPILE_TESTS)
+	target_link_libraries(core3
+		${whole_archive_start}
+		core3tests db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
+		${whole_archive_end}
+		${ENGINE3_LIBRARIES}
+		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+else(COMPILE_TESTS)
+	target_link_libraries(core3
+		${whole_archive_start}
+		db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
+		${whole_archive_end}
+		${ENGINE3_LIBRARIES}
+		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES})
+endif(COMPILE_TESTS)
 
 # Copy core3 binary
 add_custom_command(
@@ -106,9 +122,11 @@ if(GIT_FOUND AND RUN_GIT)
 		VERBATIM)
 endif()
 
-add_test(core3
+if(COMPILE_TESTS)
+	add_test(core3
 		COMMAND $<TARGET_FILE:core3> runUnitTests
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
+endif(COMPILE_TESTS)
 
 
 #add_subdirectory(tests)
