@@ -5,15 +5,35 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/tangible/Instrument.h"
-#include "server/zone/objects/tangible/InstrumentObserver.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/util/Observer.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/Zone.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/tangible/InstrumentObserver.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "templates/params/ObserverEventType.h"
 
 void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON)

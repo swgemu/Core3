@@ -6,8 +6,33 @@
 #define INFORMANTMISSIONSCREENHANDLER_H_
 
 #include "ScreenHandler.h"
-#include "server/zone/objects/mission/MissionObject.h"
 #include "engine/log/Logger.h"
+#include "server/zone/objects/mission/MissionObject.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace conversation {
+class ConversationScreen;
+}  // namespace conversation
+}  // namespace creature
+namespace mission {
+class MissionObject;
+}  // namespace mission
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 namespace server {
 namespace zone {

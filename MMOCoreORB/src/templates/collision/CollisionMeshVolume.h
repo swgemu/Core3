@@ -8,7 +8,18 @@
 #ifndef COLLISIONMESHVOLUME_H_
 #define COLLISIONMESHVOLUME_H_
 
+#include <algorithm>
+
 #include "BaseBoundingVolume.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class CollisionMeshVolume : public BaseBoundingVolume {
 protected:

@@ -5,18 +5,41 @@
  *      Author: crush
  */
 
-#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/gcw/tasks/DestroyFactionInstallationTask.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 #include "server/zone/objects/player/sui/callbacks/DestroyStructureCodeSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/DestroyStructureRequestSuiCallback.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/Zone.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
-#include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/tasks/DestroyFactionInstallationTask.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+class InstallationObject;
+}  // namespace installation
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int DestroyStructureSessionImplementation::initializeSession() {
 	//TODO: Temporary until CreatureObject* dependency removed.

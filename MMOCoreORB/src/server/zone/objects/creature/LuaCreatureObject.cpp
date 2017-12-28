@@ -6,17 +6,37 @@
  */
 
 #include "LuaCreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/player/sessions/ConversationSession.h"
+
+#include <assert.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Facade.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/objects/player/sessions/EntertainingSession.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+#include "templates/params/ObserverEventType.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 

@@ -7,9 +7,24 @@
 
 #include "PlayerZoneComponent.h"
 
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 

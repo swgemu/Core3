@@ -17,12 +17,37 @@
 //
 
 #include "RecastNavMeshBuilder.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "templates/appearance/MeshData.h"
+
+#include <assert.h>
+#include <float.h>
+#include <math.h>
+#include <string.h>
+
 #include "ChunkyTriMesh.h"
-#include "terrain/layer/boundaries/BoundaryRectangle.h"
-#include "terrain/layer/boundaries/BoundaryPolygon.h"
 #include "conf/ConfigManager.h"
+#include "engine/util/u3d/Vector3.h"
+#include "pathfinding/RecastNavMesh.h"
+#include "pathfinding/RecastPolygon.h"
+#include "pathfinding/recast/DetourAlloc.h"
+#include "pathfinding/recast/DetourNavMesh.h"
+#include "pathfinding/recast/DetourStatus.h"
+#include "pathfinding/recast/Recast.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "system/io/File.h"
+#include "system/io/FileOutputStream.h"
+#include "system/lang/Math.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/atomic/AtomicBoolean.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "templates/appearance/MeshData.h"
+#include "terrain/layer/boundaries/../../ProceduralTerrainAppearance.h"
+#include "terrain/layer/boundaries/../affectors/AffectorRiver.h"
+#include "terrain/layer/boundaries/Boundary.h"
+#include "terrain/layer/boundaries/BoundaryPolygon.h"
+#include "terrain/layer/boundaries/BoundaryRectangle.h"
+#include "terrain/manager/TerrainManager.h"
 
 //#define NAVMESH_DEBUG
 

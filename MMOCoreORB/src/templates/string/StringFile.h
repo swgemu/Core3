@@ -8,8 +8,17 @@
 #ifndef STRINGFILE_H_
 #define STRINGFILE_H_
 
-#include "system/lang.h"
 #include "engine/log/Logger.h"
+#include "system/lang.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/util/HashTable.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+}  // namespace io
+}  // namespace sys
 
 class StringFile : public Logger {
 	HashTable<String, UnicodeString> stringMap;

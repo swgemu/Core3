@@ -27,9 +27,12 @@ Distribution of this file for usage outside of Core3 is prohibited.
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#include "system/lang.h"
-
 #include "engine/log/Logger.h"
+#include "engine/stm/TransactionalMemoryManager.h"
+#include "system/lang.h"
+#include "system/lang/Object.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/ReadWriteLock.h"
 
 /**
  * A quad tree is a 2D data structure that keeps lots of objects nicely
@@ -38,12 +41,24 @@ Distribution of this file for usage outside of Core3 is prohibited.
  * fast.
  */
 
+#include "QuadTreeNode.h"
 #include "server/zone/QuadTreeEntry.h"
 
-#include "QuadTreeNode.h"
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+}  // namespace engine
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
   namespace zone {
+
+class QuadTreeEntry;
 
 	class QuadTree : public Object {
 		Reference<QuadTreeNode*> root;

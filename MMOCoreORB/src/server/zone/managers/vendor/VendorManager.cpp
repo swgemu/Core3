@@ -6,17 +6,42 @@
  */
 
 #include "VendorManager.h"
-#include "server/zone/managers/vendor/sui/DestroyVendorSuiCallback.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
-#include "server/zone/managers/vendor/sui/RegisterVendorSuiCallback.h"
+
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
+#include "server/zone/managers/auction/TerminalListVector.h"
+#include "server/zone/managers/vendor/VendorSelectionNode.h"
+#include "server/zone/managers/vendor/sui/DestroyVendorSuiCallback.h"
+#include "server/zone/managers/vendor/sui/RegisterVendorSuiCallback.h"
+#include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
+#include "server/zone/objects/auction/AuctionItem.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
-#include "server/zone/ZoneProcessServer.h"
+#include "system/lang/StringBuffer.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "templates/manager/PlanetMapCategory.h"
+#include "templates/manager/TemplateManager.h"
 
 VendorManager::VendorManager() {
 	setLoggingName("VendorManager");

@@ -8,7 +8,30 @@
 #ifndef MESHDATA_H_
 #define MESHDATA_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/Object.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+namespace u3d {
+class Matrix4;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class MeshTriangle {
 protected:

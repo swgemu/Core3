@@ -6,11 +6,24 @@
  */
 
 #include "LuaTangibleObject.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
-#include "templates/params/PaletteColorCustomizationVariable.h"
-#include "templates/customization/AssetCustomizationManagerTemplate.h"
-#include "templates/appearance/PaletteTemplate.h"
+
+#include <assert.h>
+#include <stddef.h>
+
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/appearance/PaletteTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/CustomizationVariable.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
 
 const char LuaTangibleObject::className[] = "LuaTangibleObject";
 

@@ -12,8 +12,20 @@
 #define FIXEDPOOL_H_
 
 #include "ResourcePool.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/LuaObject.h"
+#include "system/lang/String.h"
 
 class ResourceSpawner;
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+class ResourceSpawn;
+}  // namespace resource
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 /**
  * The FixedPool class represents the resource pool

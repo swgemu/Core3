@@ -4,11 +4,11 @@
 
 package server.zone.objects.area;
 
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.pathfinding.NavArea;
 include system.util.Vector;
 import server.zone.Zone;
+include server.zone.objects.scene.SceneObject;
 
 @mock
 class ActiveArea extends SceneObject {

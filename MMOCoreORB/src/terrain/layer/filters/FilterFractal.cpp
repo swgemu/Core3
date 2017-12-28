@@ -8,6 +8,13 @@
 #include "FilterFractal.h"
 
 #include "../../TerrainGenerator.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+#include "terrain/layer/filters/../../MapFractal.h"
+#include "terrain/layer/filters/../../TemplateVariable.h"
 
 
 float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect) {

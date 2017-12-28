@@ -5,9 +5,22 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void StartingLocationTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();

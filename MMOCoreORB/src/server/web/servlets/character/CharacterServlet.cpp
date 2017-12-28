@@ -6,7 +6,13 @@
  */
 
 #include "CharacterServlet.h"
-#include "../../WebServer.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 CharacterServlet::CharacterServlet(String context) :
 	Servlet(context) {

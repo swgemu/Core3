@@ -6,17 +6,32 @@
  */
 
 #include "VendorDataComponent.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/callbacks/VendorMaintSuiCallback.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+
+#include <assert.h>
+
+#include "engine/core/Core.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/auction/events/UpdateVendorTask.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/objects/auction/events/UpdateVendorTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/VendorMaintSuiCallback.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/tangible/tasks/VendorReturnToPositionTask.h"
+#include "server/zone/packets/object/SpatialChat.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent(), adBarkingMutex() {
 	ownerId = 0;

@@ -6,8 +6,23 @@
  */
 
 #include "FireHeavyWeaponMenuComponent.h"
-#include "server/zone/objects/scene/SceneObject.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void FireHeavyWeaponMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == NULL || !sceneObject->isWeaponObject() || player == NULL)

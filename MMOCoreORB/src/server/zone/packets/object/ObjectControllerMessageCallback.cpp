@@ -5,9 +5,27 @@
  *      Author: theanswer
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <algorithm>
 
 #include "ObjectControllerMessageCallback.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/service/Message.h"
+#include "server/zone/MessageCallbackFactory.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+template <typename CtorSignature, typename UniqueIdType> class MessageCallbackFactory;
+}  // namespace zone
+}  // namespace server
 
 MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = NULL;
 

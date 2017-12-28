@@ -8,7 +8,18 @@
 #ifndef SHAREDSTRUCTUREOBJECTTEMPLATE_H_
 #define SHAREDSTRUCTUREOBJECTTEMPLATE_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
 #include "templates/SharedTangibleObjectTemplate.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:

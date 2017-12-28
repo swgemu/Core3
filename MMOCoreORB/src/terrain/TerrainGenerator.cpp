@@ -6,7 +6,26 @@
  */
 
 #include "TerrainGenerator.h"
+
+#include <float.h>
+
+#include "engine/util/iffstream/IffStream.h"
 #include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "terrain/BitmapGroup.h"
+#include "terrain/EnvironmentGroup.h"
+#include "terrain/FloraGroup.h"
+#include "terrain/LayersGroup.h"
+#include "terrain/MapGroup.h"
+#include "terrain/RadialGroup.h"
+#include "terrain/ShadersGroup.h"
+#include "terrain/layer/Layer.h"
+#include "terrain/layer/boundaries/Boundary.h"
 
 void TerrainGenerator::processLayers() {
 	Vector<Layer*>* layerVector = layers.getLayers();

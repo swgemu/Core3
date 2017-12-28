@@ -6,9 +6,13 @@
  */
 
 #include "OrderedTaskExecutioner.h"
-#include "PendingTasksMap.h"
 
+#include <stddef.h>
+
+#include "PendingTasksMap.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
 
 using namespace server::zone::objects::scene::variables;
 using namespace server::zone::objects::scene;

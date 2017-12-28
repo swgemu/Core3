@@ -7,6 +7,11 @@
 
 #include "Performance.h"
 #include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
+
+class Performance;
 
 class PerformanceManager: public Logger {
 	HashTable<String, String> danceMap;

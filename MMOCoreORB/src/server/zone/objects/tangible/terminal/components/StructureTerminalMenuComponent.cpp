@@ -6,18 +6,28 @@
  */
 
 #include "StructureTerminalMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const {
 

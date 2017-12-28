@@ -5,17 +5,31 @@
 #ifndef COMMANDCONFIGMANAGER_H_
 #define COMMANDCONFIGMANAGER_H_
 
+#include "CommandFactory.h"
 #include "engine/engine.h"
-
+#include "engine/lua/Lua.h"
+#include "lua.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "system/lang/String.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreatureLocomotion.h"
 
-#include "CommandFactory.h"
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 namespace zone {
 class ZoneProcessServer;
+namespace objects {
+namespace creature {
+namespace commands {
+class QueueCommand;
+}  // namespace commands
+}  // namespace creature
+}  // namespace objects
 }
 }
 

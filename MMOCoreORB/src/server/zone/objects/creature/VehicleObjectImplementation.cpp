@@ -5,18 +5,46 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/creature/VehicleObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/objects/region/Region.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/CustomizationVariable.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

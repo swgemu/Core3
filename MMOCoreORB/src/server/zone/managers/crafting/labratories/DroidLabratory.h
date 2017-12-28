@@ -9,6 +9,17 @@
 #define DROIDLABRATORY_H_
 
 #include "ResourceLabratory.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+class ManufactureSchematic;
+}  // namespace manufactureschematic
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 namespace server {
 namespace zone {
 namespace managers {

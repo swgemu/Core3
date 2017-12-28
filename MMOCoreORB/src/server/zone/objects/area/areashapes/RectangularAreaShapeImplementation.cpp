@@ -5,9 +5,17 @@
  *      Author: loshult
  */
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/util/u3d/Segment.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/objects/area/areashapes/AreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
-#include "engine/util/u3d/Segment.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) {
 	if ((x >= (areaCenter.getX() - width / 2)) && (x <= (areaCenter.getX() + width / 2)) &&

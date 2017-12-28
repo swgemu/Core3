@@ -9,8 +9,8 @@
 #define HTTPRESPONSE_H_
 
 #include "engine/engine.h"
-#include "session/HttpSession.h"
 #include "mongoose/mongoose.h"
+#include "session/HttpSession.h"
 
 namespace server {
 namespace web {

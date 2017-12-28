@@ -5,18 +5,41 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/staticobject/StaticObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneReference.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/area/CampSiteObserver.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/area/events/CampAbandonTask.h"
 #include "server/zone/objects/area/events/CampDespawnTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "templates/TemplateReference.h"
+#include "templates/building/CampStructureTemplate.h"
+#include "templates/params/ObserverEventType.h"
 
 void CampSiteActiveAreaImplementation::initializeTransientMembers() {
 	ActiveAreaImplementation::initializeTransientMembers();

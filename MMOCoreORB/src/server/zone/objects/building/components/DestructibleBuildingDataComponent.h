@@ -8,9 +8,22 @@
 #ifndef DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
 #define DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/platform.h"
 #include "system/util/Vector.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class DestructibleBuildingDataComponent : public BuildingDataComponent, public Logger {
 

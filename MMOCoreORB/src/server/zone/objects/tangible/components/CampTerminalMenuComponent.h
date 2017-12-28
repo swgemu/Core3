@@ -10,6 +10,31 @@
 
 #include "TangibleObjectMenuComponent.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+class CampSiteActiveArea;
+}  // namespace area
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace player {
+class PlayerObject;
+}  // namespace player
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class CampTerminalMenuComponent : public TangibleObjectMenuComponent {
 public:
@@ -20,7 +45,7 @@ public:
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const;
+	virtual void fillObjectMenuResponse(server::zone::objects::scene::SceneObject* sceneObject, server::zone::packets::object::ObjectMenuResponse* menuResponse, server::zone::objects::creature::CreatureObject* player) const;
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
@@ -30,15 +55,15 @@ public:
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
+	virtual int handleObjectMenuSelect(server::zone::objects::scene::SceneObject* sceneObject, server::zone::objects::creature::CreatureObject* player, byte selectedID) const;
 
-	void disbandCamp(SceneObject* sceneObject, CreatureObject* player) const;
+	void disbandCamp(server::zone::objects::scene::SceneObject* sceneObject, server::zone::objects::creature::CreatureObject* player) const;
 
-	void assumeCampOwnership(SceneObject* sceneObject, CreatureObject* player) const;
+	void assumeCampOwnership(server::zone::objects::scene::SceneObject* sceneObject, server::zone::objects::creature::CreatureObject* player) const;
 
-	void showCampStatus(SceneObject* sceneObject, CreatureObject* player) const;
+	void showCampStatus(server::zone::objects::scene::SceneObject* sceneObject, server::zone::objects::creature::CreatureObject* player) const;
 
-	void awardCampExperience(PlayerObject* ghost, CampSiteActiveArea* campArea) const;
+	void awardCampExperience(server::zone::objects::player::PlayerObject* ghost, server::zone::objects::area::CampSiteActiveArea* campArea) const;
 };
 
 

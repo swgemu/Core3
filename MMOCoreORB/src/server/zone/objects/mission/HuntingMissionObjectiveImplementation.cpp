@@ -6,17 +6,38 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/HuntingMissionObjective.h"
+#include <stddef.h>
+#include <algorithm>
 
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
-#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/mission/HuntingMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/params/ObserverEventType.h"
+#include "terrain/manager/TerrainManager.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void HuntingMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();

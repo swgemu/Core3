@@ -8,7 +8,31 @@
 #ifndef CITYMANAGEMILITIASUICALLBACK_H_
 #define CITYMANAGEMILITIASUICALLBACK_H_
 
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace player {
+namespace sui {
+class SuiBox;
+}  // namespace sui
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace lang {
+class UnicodeString;
+}  // namespace lang
+namespace util {
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
 namespace zone {

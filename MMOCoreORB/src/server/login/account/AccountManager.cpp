@@ -5,18 +5,39 @@
  *      Author: crush
  */
 
-#include "server/login/account/Account.h"
+#include <math.h>
+#include <server/login/objects/GalaxyList.h>
+#include <time.h>
+#include <utility>
+
 #include "AccountManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/db/Database.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/db/ResultSet.h"
+#include "engine/orb/ObjectBroker.h"
+#include "engine/service/Message.h"
+#include "engine/service/ServiceClient.h"
+#include "server/ServerCore.h"
+#include "server/db/ServerDatabase.h"
 #include "server/login/LoginClient.h"
 #include "server/login/LoginServer.h"
+#include "server/login/account/Account.h"
 #include "server/login/packets/AccountVersionMessage.h"
 #include "server/login/packets/EnumerateCharacterId.h"
 #include "server/login/packets/LoginClientToken.h"
 #include "server/login/packets/LoginClusterStatus.h"
 #include "server/login/packets/LoginEnumCluster.h"
-#include "server/ServerCore.h"
-
 #include "server/zone/managers/object/ObjectManager.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/net/SocketAddress.h"
+#include "system/security/Crypto.h"
+#include "system/thread/Locker.h"
 
 AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager") {
 	loginServer = loginserv;
@@ -43,6 +64,32 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 
 AccountManager::~AccountManager() {
 
+}
+
+std::pair<LoginEnumCluster*, LoginClusterStatus*> getClusterMessages() {
+	GalaxyList galaxies;
+	uint32 galaxyCount = galaxies.size();
+
+	LoginEnumCluster* enumClusterMessage = new LoginEnumCluster(galaxyCount);
+	LoginClusterStatus* clusterStatusMessage = new LoginClusterStatus(galaxyCount);
+
+	while (galaxies.next()) {
+		uint32 galaxyID = galaxies.getGalaxyID();
+
+		String name;
+		galaxies.getGalaxyName(name);
+
+		enumClusterMessage->addGalaxy(galaxyID, name);
+
+		String address;
+		galaxies.getGalaxyAddress(address);
+
+		clusterStatusMessage->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());
+	}
+
+	enumClusterMessage->finish();
+
+	return std::make_pair(enumClusterMessage, clusterStatusMessage);
 }
 
 void AccountManager::loginAccount(LoginClient* client, Message* packet) {
@@ -88,8 +135,10 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 		client->info(e.getMessage(), true);
 	}
 
-	client->sendMessage(loginServer->getLoginEnumClusterMessage());
-	client->sendMessage(loginServer->getLoginClusterStatusMessage());
+	auto messages = getClusterMessages();
+
+	client->sendMessage(messages.first);
+	client->sendMessage(messages.second);
 
 	Message* eci = new EnumerateCharacterID(account);
 	client->sendMessage(eci);

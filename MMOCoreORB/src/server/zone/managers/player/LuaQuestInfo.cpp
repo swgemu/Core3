@@ -1,5 +1,8 @@
 #include "LuaQuestInfo.h"
 
+#include "server/zone/managers/player/QuestInfo.h"
+#include "system/lang/String.h"
+
 const char LuaQuestInfo::className[] = "LuaQuestInfo";
 
 Luna<LuaQuestInfo>::RegType LuaQuestInfo::Register[] = {

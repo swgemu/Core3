@@ -5,11 +5,23 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include <stddef.h>
+
 #include "FireworkMenuComponent.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void FireworkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

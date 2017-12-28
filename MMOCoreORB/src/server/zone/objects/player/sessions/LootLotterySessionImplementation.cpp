@@ -5,17 +5,33 @@
  *      Author: Anakis
  */
 
-#include "engine/engine.h"
-#include "server/zone/objects/player/sessions/LootLotterySession.h"
-#include "server/zone/objects/player/sessions/LootLotteryBallot.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/group/GroupManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/objects/group/tasks/LootLotteryTimeoutTask.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/group/tasks/LootLotteryTimeoutTask.h"
+#include "server/zone/objects/player/sessions/LootLotteryBallot.h"
+#include "server/zone/objects/player/sessions/LootLotterySession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 
 int LootLotterySessionImplementation::initializeSession() {
 	//This task initiates the lottery draw if a player's client does not respond with selections in time (LD).

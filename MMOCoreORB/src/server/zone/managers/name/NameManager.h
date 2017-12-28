@@ -5,9 +5,27 @@
 #ifndef NAMEMANAGER_H_
 #define NAMEMANAGER_H_
 
-#include "engine/lua/Lua.h"
+#include <algorithm>
+
 #include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/name/NameData.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/HashSet.h"
+#include "system/util/Vector.h"
+
+class NameData;
+class NameRules;
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 	namespace zone {

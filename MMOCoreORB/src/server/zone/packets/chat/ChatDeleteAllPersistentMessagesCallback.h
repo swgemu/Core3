@@ -3,6 +3,8 @@
 
 
 #include "server/zone/packets/MessageCallback.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class ChatDeleteAllPersistentMessagesCallback : public MessageCallback {
 	uint64 playerID;

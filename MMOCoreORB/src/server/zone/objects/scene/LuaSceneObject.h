@@ -9,6 +9,9 @@
 #define LUASCENEOBJECT_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+#include "lua.h"
+#include "system/lang/ref/Reference.h"
 
 #define DYNAMIC_CAST_LUAOBJECTS 1
 

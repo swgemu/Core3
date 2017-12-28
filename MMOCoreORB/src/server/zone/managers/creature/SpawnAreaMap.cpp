@@ -6,11 +6,20 @@
  */
 
 #include "SpawnAreaMap.h"
+
+#include "engine/lua/LuaObject.h"
+#include "lua.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;

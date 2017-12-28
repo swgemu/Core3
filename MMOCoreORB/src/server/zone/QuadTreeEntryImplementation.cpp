@@ -4,9 +4,17 @@ Distribution of this file for usage outside of Core3 is prohibited.
 */
 
 #include <autogen/server/zone/ZoneServer.h>
-#include "server/zone/QuadTreeEntry.h"
+#include <algorithm>
 
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Coordinate.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/QuadTreeNode.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 QuadTreeEntryImplementation::QuadTreeEntryImplementation(QuadTreeNode* n) {
 	node = n;

@@ -9,7 +9,6 @@
 #define CITYHALLZONECOMPONENT_H_
 
 #include "engine/engine.h"
-
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 
 namespace server {

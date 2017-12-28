@@ -6,8 +6,14 @@
 #define ZONEPACKETHANDLER_H_
 
 #include "engine/log/Logger.h"
+#include "system/lang/String.h"
 
 class Zone;
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class ZonePacketHandler : public Logger {
 	Zone* zone;

@@ -1,8 +1,14 @@
-#include "server/zone/objects/tangible/pharmaceutical/EnhancePack.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/tangible/pharmaceutical/EnhancePack.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 		float power = getEffectiveness();

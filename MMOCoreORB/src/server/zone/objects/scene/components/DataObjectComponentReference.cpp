@@ -5,8 +5,12 @@
  *      Author: victor
  */
 
+#include <stddef.h>
+
 #include "DataObjectComponent.h"
 #include "DataObjectComponentReference.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
 
 bool DataObjectComponentReference::toBinaryStream(ObjectOutputStream* stream) {
 	DataObjectComponent* object = Reference<DataObjectComponent*>::get();

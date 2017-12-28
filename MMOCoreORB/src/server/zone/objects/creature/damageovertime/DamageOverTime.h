@@ -9,6 +9,9 @@
 #define DAMAGEOVERTIME_H_
 
 #include "engine/engine.h"
+#include "system/io/Serializable.h"
+#include "system/lang/Time.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {

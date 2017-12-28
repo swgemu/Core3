@@ -3,12 +3,18 @@
 		See file COPYING for copying conditions.*/
 
 #include "ConversationManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/creature/conversation/ConversationTemplate.h"
 #include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
 #include "server/zone/objects/creature/conversation/InformantMissionConversationObserver.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/creature/conversation/LuaConversationObserver.h"
 #include "server/zone/objects/creature/conversation/PetTrainingConversationObserver.h"
+#include "system/lang/ref/Reference.h"
 
 ConversationManager::ConversationManager()
 	: Logger("ConversationManager") {

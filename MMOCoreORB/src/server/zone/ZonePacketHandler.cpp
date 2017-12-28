@@ -4,9 +4,14 @@
 
 #include "ZonePacketHandler.h"
 
-#include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneClientSession.h"
+#include "engine/service/Message.h"
+
+#include "server/zone/MessageCallbackFactory.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/packets/MessageCallback.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
 
 #include "packets/zone/ClientIDMessageCallback.h"
 #include "packets/zone/SelectCharacterCallback.h"

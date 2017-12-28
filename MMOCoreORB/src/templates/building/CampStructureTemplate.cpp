@@ -8,6 +8,8 @@
 
 #include "CampStructureTemplate.h"
 
+#include "engine/lua/LuaObject.h"
+
 
 void CampStructureTemplate::readObject(LuaObject* templateData) {
 	SharedBuildingObjectTemplate::readObject(templateData);

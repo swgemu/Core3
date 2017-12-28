@@ -8,8 +8,17 @@
 #ifndef LOGINSESSION_H_
 #define LOGINSESSION_H_
 
-#include "system/lang.h"
+#include <algorithm>
+
 #include "engine/log/Logger.h"
+#include "system/lang.h"
+#include "system/lang/Object.h"
+#include "system/lang/Runnable.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Condition.h"
+#include "system/thread/Mutex.h"
+#include "system/util/Vector.h"
 
 class LoginClient;
 

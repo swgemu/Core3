@@ -5,21 +5,46 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/mission/DestroyMissionObjective.h"
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/MissionObserver.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/mission/DestroyMissionLairObserver.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/area/MissionSpawnActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/scene/ObserverType.h"
+#include "server/zone/objects/tangible/LairObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/mobile/LairTemplate.h"
+#include "templates/params/ObserverEventType.h"
+#include "templates/params/creature/CreatureFlag.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(const String& sp) {
 	lairTemplate = sp;

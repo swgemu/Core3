@@ -8,10 +8,32 @@
 #ifndef VENDORMANAGER_H_
 #define VENDORMANAGER_H_
 
-#include "VendorSelectionNode.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "VendorOutfitManager.h"
+#include "VendorSelectionNode.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

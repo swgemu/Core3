@@ -5,28 +5,65 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/io/StringTokenizer.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/ComponentMap.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/scene/variables/AutoDeltaSet.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
-#include "server/zone/managers/crafting/ComponentMap.h"
-#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
-
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
-#include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+
+#include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/intangible/DraftSchematicObjectTemplate.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/ObserverEventType.h"
+#include "templates/params/RangedIntCustomizationVariable.h"
 
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
 
-#include "templates/customization/AssetCustomizationManagerTemplate.h"
-#include "templates/params/RangedIntCustomizationVariable.h"
+class SharedObjectTemplate;
 
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {

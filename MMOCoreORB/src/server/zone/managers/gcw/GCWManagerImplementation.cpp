@@ -5,44 +5,96 @@
  *      Author: root
  */
 
-#include "server/zone/managers/gcw/GCWManager.h"
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+#include <algorithm>
+
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/util/HashTable.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/ChildObject.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/faction/Factions.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/ObserverEventType.h"
+#include "templates/params/creature/CreatureFlag.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/u3d/Quaternion.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
-
-#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
-#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
-
-#include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
-#include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
-#include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
-#include "server/zone/managers/gcw/tasks/CheckGCWTask.h"
-#include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
-#include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
-#include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
-#include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
-
 #include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/ValidatedPosition.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/HQDefenseStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/JamUplinkSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/OverrideTerminalSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PowerRegulatorSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/RemoveDefenseSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/TurretControlSuiCallback.h"
-
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/ObserverType.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
+
+#include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
+#include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
+#include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
+#include "server/zone/managers/gcw/tasks/CheckGCWTask.h"
+#include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
+#include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
+#include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+class StructureObject;
+}  // namespace structure
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void GCWManagerImplementation::initialize() {
 	loadLuaConfig();

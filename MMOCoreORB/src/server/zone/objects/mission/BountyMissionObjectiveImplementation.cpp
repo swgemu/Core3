@@ -5,23 +5,55 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/BountyMissionObjective.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/MissionObserver.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/chat/ChatManager.h"
+#include "server/zone/objects/mission/BountyMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 #include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"
-#include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/mission/bountyhunter/events/CallArakydTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTaskList.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/TemplateReference.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;

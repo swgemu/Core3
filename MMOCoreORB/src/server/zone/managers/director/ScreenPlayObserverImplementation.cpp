@@ -3,9 +3,26 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/zone/managers/director/ScreenPlayObserver.h"
+#include <assert.h>
+
 #include "DirectorManager.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
 #include "engine/lua/LuaPanicException.h"
+#include "lua.h"
+#include "server/zone/managers/director/ScreenPlayObserver.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	int ret = 1;

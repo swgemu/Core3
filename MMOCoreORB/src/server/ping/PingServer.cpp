@@ -4,6 +4,34 @@
 
 #include "PingServer.h"
 
+#include <stddef.h>
+
+#include "engine/service/MessageQueue.h"
+#include "engine/service/ServiceClientMap.h"
+#include "server/ping/PingClient.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/net/Packet.h"
+#include "system/net/PacketIndexOutOfBoundsException.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace net {
+class Socket;
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
+
 PingServer::PingServer() : DatagramServiceThread("PingServer") {
 	//setLockName("PingServerLock");
 

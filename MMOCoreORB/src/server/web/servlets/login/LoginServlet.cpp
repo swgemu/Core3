@@ -6,7 +6,12 @@
  */
 
 #include "LoginServlet.h"
+
 #include "../../WebServer.h"
+#include "server/web/servlets/login/../../HttpRequest.h"
+#include "server/web/servlets/login/../../HttpResponse.h"
+#include "server/web/servlets/login/../../session/HttpSession.h"
+#include "system/lang/StringBuffer.h"
 
 LoginServlet::LoginServlet(String context) :
 	Servlet(context) {

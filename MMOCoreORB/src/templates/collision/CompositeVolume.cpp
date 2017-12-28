@@ -1,5 +1,9 @@
 #include "CompositeVolume.h"
+
 #include "BoundingVolumeFactory.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "system/platform.h"
+#include "templates/collision/BaseBoundingVolume.h"
 
 void CompositeVolume::read(IffStream *iff) {
 	iff->openForm('0000');

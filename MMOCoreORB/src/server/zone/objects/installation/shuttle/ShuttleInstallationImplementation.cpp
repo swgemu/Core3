@@ -6,7 +6,16 @@
  */
 
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObject* player) {
 	/*

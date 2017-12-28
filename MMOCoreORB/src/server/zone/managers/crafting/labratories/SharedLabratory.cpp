@@ -3,10 +3,26 @@
 		See file COPYING for copying conditions. */
 
 #include "SharedLabratory.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/managers/crafting/CraftingManager.h"
-#include "server/zone/objects/tangible/misc/CustomIngredient.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/BuffCRC.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ResourceSlot.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/misc/CustomIngredient.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
 
 SharedLabratory::SharedLabratory() : Logger("SharedLabratory"){
 }

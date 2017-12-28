@@ -6,7 +6,16 @@
 #ifndef SKILLMODMANAGER_H_
 #define SKILLMODMANAGER_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

@@ -3,9 +3,38 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidCraftingModuleDataComponent.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/ref/Reference.h"
 #include "templates/tangible/DroidCraftingModuleTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace ai {
+class DroidObject;
+}  // namespace ai
+}  // namespace creature
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 DroidCraftingModuleDataComponent::DroidCraftingModuleDataComponent() : craftingType(0) {
 	setLoggingName("DroidCraftingModule");

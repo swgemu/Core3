@@ -6,7 +6,18 @@
  */
 
 #include "CreatureTemplateReference.h"
+
+#include <stddef.h>
+
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/String.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+}  // namespace io
+}  // namespace sys
 
 bool CreatureTemplateReference::toBinaryStream(ObjectOutputStream* stream) {
 	CreatureTemplate* obj = get();

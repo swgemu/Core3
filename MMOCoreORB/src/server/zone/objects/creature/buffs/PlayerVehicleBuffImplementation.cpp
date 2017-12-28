@@ -1,11 +1,19 @@
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/creature/PetManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 
 

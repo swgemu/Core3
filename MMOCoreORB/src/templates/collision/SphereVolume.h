@@ -9,6 +9,8 @@
 #define SPHEREVOLUME_H_
 
 #include "BaseBoundingVolume.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
 
 class SphereVolume : public BaseBoundingVolume {
 protected:

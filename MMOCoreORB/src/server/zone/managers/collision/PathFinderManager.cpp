@@ -6,18 +6,56 @@
  */
 
 #include "PathFinderManager.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/cell/CellObject.h"
-#include "templates/SharedObjectTemplate.h"
-#include "templates/appearance/PortalLayout.h"
-#include "templates/appearance/FloorMesh.h"
-#include "templates/appearance/PathGraph.h"
-#include "server/zone/Zone.h"
+
+#include <float.h>
+#include <stddef.h>
+#include <algorithm>
+#include <cmath>
 
 #include "CollisionManager.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/AABB.h"
 #include "engine/util/u3d/Funnel.h"
+#include "engine/util/u3d/Matrix3.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "engine/util/u3d/Segment.h"
+#include "engine/util/u3d/Sphere.h"
+#include "engine/util/u3d/TriangulationAStarAlgorithm.h"
+#include "pathfinding/RecastNavMesh.h"
+#include "pathfinding/RecastPolygon.h"
 #include "pathfinding/recast/DetourCommon.h"
+#include "pathfinding/recast/DetourNavMesh.h"
+#include "pathfinding/recast/DetourStatus.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/mersenne/MersenneTwister.h"
+#include "system/platform.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/atomic/AtomicLong.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/PathGraph.h"
+#include "templates/appearance/PathNode.h"
+#include "templates/appearance/PortalLayout.h"
+
+namespace engine {
+namespace util {
+namespace u3d {
+class Triangle;
+class TriangleNode;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 static constexpr int MAX_QUERY_NODES = 2048 * 2;
 

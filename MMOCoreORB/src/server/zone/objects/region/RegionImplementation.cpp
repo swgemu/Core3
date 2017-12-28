@@ -5,6 +5,7 @@
  *      Author: victor
  */
 
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
 
 void RegionImplementation::notifyLoadFromDatabase() {

@@ -2,44 +2,110 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include <assert.h>
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
-#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
-#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
-#include "server/zone/packets/scene/UpdateContainmentMessage.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "engine/core/Core.h"
+#include "engine/core/LambdaFunction.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/service/proto/BasePacket.h"
+#include "engine/util/Facade.h"
+#include "engine/util/Observer.h"
+#include "engine/util/ObserverEventMap.h"
+#include "engine/util/u3d/Coordinate.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "engine/util/u3d/Quaternion.h"
+#include "engine/util/u3d/Sphere.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneReference.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/components/ComponentManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/AttributeListComponent.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/scene/components/LuaContainerComponent.h"
+#include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
+#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
+#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/scene/variables/ContainerObjectsMap.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/scene/variables/StdFunction.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/components/ComponentManager.h"
-#include "templates/manager/TemplateManager.h"
-#include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/ShowFlyText.h"
-
-#include "server/zone/ZoneClientSession.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-
-#include "variables/StringId.h"
-
-#include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/scene/ClientOpenContainerMessage.h"
+#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
+#include "server/zone/packets/scene/UpdateContainmentMessage.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "templates/ChildObject.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/appearance/AppearanceTemplate.h"
+#include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/MeshAppearanceTemplate.h"
-#include "server/zone/objects/scene/components/ZoneComponent.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
-#include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
-#include "server/zone/objects/scene/components/ContainerComponent.h"
-#include "server/zone/objects/scene/components/LuaContainerComponent.h"
+#include "templates/manager/PlanetMapCategory.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/ObserverEventType.h"
+#include "variables/StringId.h"
 //#include "PositionUpdateTask.h"
 
 #include "variables/ContainerPermissions.h"
+
+class BaseBoundingVolume;
+class MeshData;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+class AiAgent;
+}  // namespace ai
+}  // namespace creature
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();

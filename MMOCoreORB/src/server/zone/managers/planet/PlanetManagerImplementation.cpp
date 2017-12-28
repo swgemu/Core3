@@ -5,36 +5,99 @@
  *      Author: victor
  */
 
-#include "server/zone/managers/planet/PlanetManager.h"
+#include <math.h>
+#include <stdio.h>
+#include <algorithm>
 
+#include "PlanetTravelPoint.h"
+#include "conf/ConfigManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/u3d/AABBNode.h"
+#include "engine/util/u3d/Vector3.h"
+#include "lua.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
-#include "server/zone/managers/weather/WeatherManager.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/collision/IntersectionResults.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
-
-#include "engine/util/iffstream/IffStream.h"
-#include "templates/snapshot/WorldSnapshotIff.h"
-#include "templates/datatables/DataTableIff.h"
-#include "templates/datatables/DataTableRow.h"
+#include "server/zone/managers/planet/ClientPoiDataTable.h"
+#include "server/zone/managers/planet/MissionTargetMap.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/planet/PlanetTravelPointList.h"
+#include "server/zone/managers/planet/RegionMap.h"
+#include "server/zone/managers/planet/TravelFare.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/packets/player/PlanetTravelPointListResponse.h"
-#include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/ShuttleMap.h"
+#include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/packets/player/PlanetTravelPointListResponse.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/SynchronizedVectorMap.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/faction/Factions.h"
+#include "templates/manager/PlanetMapCategory.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/creature/CreaturePosture.h"
+#include "templates/snapshot/WorldSnapshotIff.h"
+#include "templates/snapshot/WorldSnapshotNode.h"
+#include "terrain/manager/TerrainManager.h"
 
-#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
-#include "conf/ConfigManager.h"
-#include "PlanetTravelPoint.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/collision/NavMeshManager.h"
+namespace server {
+namespace zone {
+class CloseObjectsVector;
+namespace objects {
+namespace cell {
+class CellObject;
+}  // namespace cell
+namespace structure {
+class StructureObject;
+}  // namespace structure
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 Mutex PlanetManagerImplementation::poiMutex;

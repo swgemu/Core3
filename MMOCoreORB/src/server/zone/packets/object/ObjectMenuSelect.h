@@ -9,6 +9,7 @@
 #define OBJECTMENUSELECT_H_
 
 #include "server/zone/packets/MessageCallback.h"
+#include "server/zone/managers/radial/RadialManager.h"
 
 class ObjectMenuSelectCallback : public MessageCallback {
 	uint64 objectID;

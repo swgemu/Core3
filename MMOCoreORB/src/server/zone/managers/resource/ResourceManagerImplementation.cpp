@@ -2,13 +2,71 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <time.h>
+#include <algorithm>
+
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/Timer.h"
+#include "system/util/Vector.h"
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/orb/ObjectBroker.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
-#include "ResourceShiftTask.h"
-#include "resourcespawner/SampleTask.h"
-#include "resourcespawner/SampleResultsTask.h"
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/resourcemap/ResourceMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "templates/params/ObserverEventType.h"
+
+#include "ResourceShiftTask.h"
+
+#include "resourcespawner/SampleResultsTask.h"
+#include "resourcespawner/SampleTask.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+class SuiListBox;
+}  // namespace listbox
+}  // namespace sui
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void ResourceManagerImplementation::initialize() {
 	if (!loadConfigData()) {

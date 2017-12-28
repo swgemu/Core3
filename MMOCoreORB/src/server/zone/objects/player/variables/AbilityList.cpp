@@ -6,11 +6,22 @@
  */
 
 #include "AbilityList.h"
-#include "Ability.h"
 
-#include "server/zone/ZoneServer.h"
+#include "Ability.h"
+#include "engine/log/Logger.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/packets/DeltaMessage.h"
+#include "system/thread/ReadLocker.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 bool AbilityList::contains(const String& element) {
 	String lowCase = element.toLowerCase();

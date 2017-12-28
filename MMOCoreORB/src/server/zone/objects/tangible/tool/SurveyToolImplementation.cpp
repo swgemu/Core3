@@ -2,20 +2,34 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/tool/SurveyToolTemplate.h"
-#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/sui/SurveyToolApproveRadioactiveSuiCallback.h"
-#include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/tangible/tool/SurveyToolTemplate.h"
 
 void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

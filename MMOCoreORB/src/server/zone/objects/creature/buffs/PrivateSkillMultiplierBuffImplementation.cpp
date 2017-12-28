@@ -5,8 +5,17 @@
  *      Author: swgemu
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
 
 void PrivateSkillMultiplierBuffImplementation::applySkillModifiers() {
 	ManagedReference<CreatureObject*> strongCreo = creature.get();

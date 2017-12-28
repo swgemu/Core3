@@ -9,6 +9,9 @@
 #define LUABEHAVIOR_H_
 
 #include "engine/engine.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 namespace server {
 namespace zone {
@@ -23,6 +26,7 @@ using namespace server::zone::objects::scene;
 namespace creature {
 namespace ai {
 class AiAgent;
+
 namespace bt {
 
 class LuaBehavior : public Object {

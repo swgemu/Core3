@@ -9,6 +9,29 @@
 #define CREATUREHABITATMENUCOMPONENT_H_
 
 #include "../TangibleObjectMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 
 class CreatureHabitatMenuComponent : public TangibleObjectMenuComponent {

@@ -1,14 +1,32 @@
-#include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/resource/InterplanetarySurvey.h"
+#include "server/zone/managers/resource/InterplanetarySurveyTask.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/scene/SessionFacadeType.h"
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
 #include "server/zone/objects/player/sessions/sui/SurveyDroidSessionSuiCallback.h"
-#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/component/Component.h"
-#include "server/zone/managers/resource/InterplanetarySurvey.h"
-#include "server/zone/managers/resource/InterplanetarySurveyTask.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 int InterplanetarySurveyDroidSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = this->player.get();

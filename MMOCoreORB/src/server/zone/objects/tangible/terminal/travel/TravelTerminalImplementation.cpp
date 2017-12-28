@@ -6,9 +6,22 @@
  *  Updated on: Thu Oct 13 08:34:42 PDT 2011 by lordkator - use getPlanetTravelPoint() instead of trying to resolve here
  */
 
+#include <stddef.h>
+
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/packets/player/EnterTicketPurchaseModeMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)

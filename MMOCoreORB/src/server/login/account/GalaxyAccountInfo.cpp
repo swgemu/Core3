@@ -1,5 +1,14 @@
 #include "server/login/account/GalaxyAccountInfo.h"
 
+#include "system/util/VectorMap.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
+
 GalaxyAccountInfo::GalaxyAccountInfo() {
 
 }

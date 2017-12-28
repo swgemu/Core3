@@ -7,9 +7,9 @@
 
 #include "FilterBitmap.h"
 
-#include "../../TerrainGenerator.h"
-
 #include "../../TargaBitmap.h"
+#include "../../TerrainGenerator.h"
+#include "terrain/layer/filters/../../BitmapGroup.h"
 
 float FilterBitmap::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect) {
 	if (map == NULL) {

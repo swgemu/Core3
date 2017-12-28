@@ -9,7 +9,9 @@
  */
 
 #include "ResourceMap.h"
+
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "system/lang/ref/Reference.h"
 
 ResourceMap::ResourceMap() {
 	setNoDuplicateInsertPlan();

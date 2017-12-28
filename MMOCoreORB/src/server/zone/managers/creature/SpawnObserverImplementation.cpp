@@ -1,6 +1,18 @@
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
 #include "server/zone/managers/creature/SpawnObserver.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SynchronizedVector.h"
+#include "system/util/Vector.h"
 
 void SpawnObserverImplementation::despawnSpawns() {
 	Vector<ManagedReference<AiAgent* > > agents;

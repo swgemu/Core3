@@ -5,8 +5,27 @@
 #ifndef BUFFLIST_H_
 #define BUFFLIST_H_
 
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
 #include "server/zone/objects/creature/buffs/Buff.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class BuffList : public Serializable {
 protected:

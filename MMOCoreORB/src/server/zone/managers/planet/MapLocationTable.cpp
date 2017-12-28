@@ -6,8 +6,12 @@
  */
 
 #include "MapLocationTable.h"
-#include "templates/manager/PlanetMapCategory.h"
+
+#include <stddef.h>
+
+#include "server/zone/managers/planet/MapLocationEntry.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "templates/manager/PlanetMapCategory.h"
 
 void MapLocationTable::transferObject(SceneObject* object) {
 	PlanetMapCategory* pmc = object->getPlanetMapSubCategory();

@@ -1,5 +1,6 @@
 #include "CommandConfigManager.h"
-
+#include "server/zone/managers/objectcontroller/command/CommandFactory.h"
+#include "system/lang/String.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 

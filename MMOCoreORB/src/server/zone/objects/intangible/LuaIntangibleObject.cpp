@@ -7,6 +7,12 @@
 
 #include "LuaIntangibleObject.h"
 
+#include <assert.h>
+#include <stddef.h>
+
+#include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+
 const char LuaIntangibleObject::className[] = "LuaIntangibleObject";
 
 Luna<LuaIntangibleObject>::RegType LuaIntangibleObject::Register[] = {

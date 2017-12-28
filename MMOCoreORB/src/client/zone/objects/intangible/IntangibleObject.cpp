@@ -7,6 +7,14 @@
 
 #include "IntangibleObject.h"
 
+#include "zone/objects/scene/SceneObject.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+
 IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(templateData) {
 	setLoggingName("IntangibleObject");
 }

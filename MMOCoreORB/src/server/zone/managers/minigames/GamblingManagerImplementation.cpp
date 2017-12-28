@@ -5,21 +5,39 @@
  *      Author: swgemu
  */
 
+#include <ctype.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/managers/minigames/GamblingBet.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/minigames/events/GamblingEvent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
-#include "server/zone/ZoneServer.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "system/util/Vector.h"
-#include "system/util/VectorMap.h"
-#include "server/zone/managers/minigames/events/GamblingEvent.h"
-#include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
-#include "server/zone/objects/player/sui/callbacks/GamblingSlotSuiCallback.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/callbacks/GamblingRouletteSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/GamblingSlotPayoutSuiCallback.h"
-#include "server/zone/managers/minigames/GamblingBet.h"
+#include "server/zone/objects/player/sui/callbacks/GamblingSlotSuiCallback.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+}  // namespace zone
+}  // namespace server
 
 void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	if (terminal == NULL || player == NULL)

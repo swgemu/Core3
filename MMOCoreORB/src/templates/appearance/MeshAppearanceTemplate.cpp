@@ -7,6 +7,12 @@
 
 #include "MeshAppearanceTemplate.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Triangle.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/String.h"
+
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	//file = iffStream->getFileName();
 

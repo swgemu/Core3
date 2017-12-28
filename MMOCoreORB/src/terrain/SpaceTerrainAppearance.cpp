@@ -7,6 +7,12 @@
 
 #include "SpaceTerrainAppearance.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "terrain/TemplateVariable.h"
+
 SpaceTerrainAppearance::SpaceTerrainAppearance() : Logger("SpaceTerrainAppearance") {
 
 }

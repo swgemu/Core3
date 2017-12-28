@@ -7,7 +7,9 @@
 
 
 #include "WaypointChatParameter.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/Object.h"
 
 WaypointChatParameter::WaypointChatParameter() {
 	addSerializableVariables();

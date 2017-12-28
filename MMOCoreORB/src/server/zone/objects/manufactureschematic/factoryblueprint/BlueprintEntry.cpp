@@ -6,10 +6,31 @@
  */
 
 #include "BlueprintEntry.h"
-#include "server/zone/objects/resource/ResourceContainer.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/installation/factory/FactoryObject.h"
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Object.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+class ResourceContainer;
+}  // namespace resource
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 BlueprintEntry::BlueprintEntry() : Serializable() {
 	serialNumber = "";

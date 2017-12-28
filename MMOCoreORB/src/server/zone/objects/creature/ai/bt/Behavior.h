@@ -8,9 +8,15 @@
 #ifndef BEHAVIOR_H_
 #define BEHAVIOR_H_
 
+#include <stddef.h>
+
 #include "engine/engine.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 namespace server {
 namespace zone {

@@ -7,6 +7,8 @@
 
 #include "SkillModMap.h"
 
+#include "system/lang/Object.h"
+
 SkillModMap::SkillModMap() {
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);

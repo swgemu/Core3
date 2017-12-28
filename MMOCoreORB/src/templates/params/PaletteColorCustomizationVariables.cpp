@@ -7,6 +7,14 @@
 
 #include "PaletteColorCustomizationVariables.h"
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/lang/StringBuffer.h"
+#include "system/platform.h"
+
 bool PaletteColorCustomizationVariables::parse(Chunk* source) {
 	//std::cout << "parsing PaletteColorCustomizationVariables\n";
 

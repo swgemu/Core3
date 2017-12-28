@@ -5,9 +5,12 @@
  *      Author: victor
  */
 
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/packets/static/StaticObjectMessage3.h"
 #include "server/zone/packets/static/StaticObjectMessage6.h"
+#include "system/lang/ref/WeakReference.h"
 
 void StaticObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* stao3 = new StaticObjectMessage3(_this.getReferenceUnsafeStaticCast());

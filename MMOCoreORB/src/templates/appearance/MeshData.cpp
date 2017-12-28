@@ -7,6 +7,9 @@
 
 #include "MeshData.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+
 AABB MeshData::buildAABB() const {
 	float minx = 100000;
 	float miny = 100000;

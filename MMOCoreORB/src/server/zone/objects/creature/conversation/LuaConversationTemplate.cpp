@@ -6,7 +6,23 @@
  */
 
 #include "LuaConversationTemplate.h"
-#include "ConversationScreen.h"
+
+#include <stddef.h>
+
+#include "server/zone/objects/creature/conversation/ConversationTemplate.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace conversation {
+class ConversationScreen;
+}  // namespace conversation
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 const char LuaConversationTemplate::className[] = "LuaConversationTemplate";
 

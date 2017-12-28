@@ -1,9 +1,23 @@
 #ifndef HEIGHTMAP_H_
 #define HEIGHTMAP_H_
 
-#include "engine/engine.h"
+#include <stddef.h>
 
 #include "HeightMapPlane.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/ArrayQueue.h"
+
+class HeightMapPlane;
+namespace sys {
+namespace io {
+class File;
+class FileInputStream;
+}  // namespace io
+}  // namespace sys
 
 class HeightMap : public ReadWriteLock, public Logger, public Object {
 	FileInputStream* reader;

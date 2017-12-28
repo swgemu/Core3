@@ -2,13 +2,35 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include <stddef.h>
 
 #include "server/zone/ZoneServer.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
+#include "templates/intangible/DraftSchematicObjectTemplate.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void DraftSchematicImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();

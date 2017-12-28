@@ -8,13 +8,34 @@
 #ifndef PORTALLAYOUT_H_
 #define PORTALLAYOUT_H_
 
+#include <algorithm>
+
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/Math.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
-#include "templates/appearance/CellProperty.h"
-#include "templates/appearance/MeshData.h"
-#include "templates/appearance/PathNode.h"
-#include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/AppearanceTemplate.h"
+#include "templates/appearance/CellProperty.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/MeshData.h"
 #include "templates/appearance/PathGraph.h"
+#include "templates/appearance/PathNode.h"
+
+class AppearanceTemplate;
+class FloorMesh;
+class PathGraph;
+class PathNode;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class PortalGeometry : public Object {
 	Reference<MeshData*> geometry;

@@ -1,7 +1,22 @@
 #include "ScavengerDroidContainerComponent.h"
-#include "server/zone/objects/tangible/eventperk/ScavengerDroid.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/tangible/eventperk/ScavengerDroid.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
 
 int ScavengerDroidContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(sceneObject);

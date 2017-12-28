@@ -6,10 +6,30 @@
  */
 
 #include "GCWBaseContainerComponent.h"
-#include "templates/params/creature/CreatureFlag.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/FactionStatus.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/params/creature/CreatureFlag.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 

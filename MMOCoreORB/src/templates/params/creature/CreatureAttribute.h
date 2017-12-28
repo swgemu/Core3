@@ -6,6 +6,8 @@
 #define CREATUREATTRIBUTE_H_
 
 #include "system/lang.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 class CreatureEncumbrance {
 public:

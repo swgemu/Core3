@@ -5,11 +5,23 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-
-#include "server/zone/packets/ui/SuiCreatePageMessage.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 #include <stdio.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");

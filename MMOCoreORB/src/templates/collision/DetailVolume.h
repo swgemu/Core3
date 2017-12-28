@@ -10,6 +10,12 @@
 
 #include "CompositeVolume.h"
 
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+
 class DetailVolume : public CompositeVolume {
 public:
 	bool isDetailVolume() { return true; }

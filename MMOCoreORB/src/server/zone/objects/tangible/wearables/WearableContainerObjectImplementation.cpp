@@ -5,10 +5,21 @@
  *      Author: loshult
  */
 
-#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
 
 void WearableContainerObjectImplementation::initializeTransientMembers() {
 	ContainerImplementation::initializeTransientMembers();

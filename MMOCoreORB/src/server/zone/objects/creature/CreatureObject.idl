@@ -4,7 +4,7 @@
 
 package server.zone.objects.creature;
 
-import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.tangible.TangibleObject;
 import server.chat.StringIdChatParameter;
 import server.zone.objects.group.GroupObject;
 import server.zone.objects.guild.GuildObject;

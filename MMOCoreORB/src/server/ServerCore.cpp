@@ -4,28 +4,60 @@
 
 #include "ServerCore.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <algorithm>
 #include <type_traits>
 
-#include "db/ServerDatabase.h"
+#include "conf/ConfigManager.h"
 #include "db/MantisDatabase.h"
-
+#include "db/ServerDatabase.h"
+#include "engine/core/MetricsManager.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "engine/db/Database.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/db/ResultSet.h"
+#include "engine/db/mysql/MySqlDatabase.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/orb/db/DistributedObjectDirectory.h"
+#include "engine/service/ServiceException.h"
+#include "features/Features.h"
+#include "mysql.h"
+#include "ping/PingServer.h"
 #include "server/chat/ChatManager.h"
 #include "server/login/LoginServer.h"
-#include "features/Features.h"
-#include "ping/PingServer.h"
-#include "status/StatusServer.h"
-#include "web/WebServer.h"
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-#include "templates/manager/TemplateManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/managers/collision/NavMeshManager.h"
-
 #include "server/zone/QuadTree.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "status/StatusServer.h"
+#include "system/io/PrintStream.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/ArrayIndexOutOfBoundsException.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Integer.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/net/NetworkInterface.h"
+#include "system/net/SocketException.h"
+#include "system/platform.h"
+#include "system/thread/Thread.h"
+#include "system/util/HashTable.h"
+#include "templates/manager/TemplateManager.h"
+#include "web/WebServer.h"
 
-#include "engine/core/MetricsManager.h"
+namespace engine {
+namespace ORB {
+class DistributedObject;
+}  // namespace ORB
+}  // namespace engine
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;

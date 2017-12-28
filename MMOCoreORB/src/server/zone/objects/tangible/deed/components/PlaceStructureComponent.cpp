@@ -6,12 +6,21 @@
  */
 
 #include "PlaceStructureComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+#include <stddef.h>
+
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "server/zone/Zone.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	Zone* zone = creature->getZone();

@@ -3,8 +3,31 @@
 
 
 #include "engine/engine.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+class BuildingObject;
+}  // namespace building
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class DestructibleBuildingMenuComponent : public ObjectMenuComponent {
 

@@ -3,6 +3,16 @@
 		See file COPYING for copying conditions.*/
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.messageBox");

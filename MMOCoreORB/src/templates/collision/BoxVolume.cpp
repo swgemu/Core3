@@ -1,5 +1,8 @@
 #include "BoxVolume.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "templates/collision/BaseBoundingVolume.h"
+
 void BoxVolume::read(IffStream *iff) {
 	iff->openForm('0001');
 	BaseBoundingVolume::read(iff);

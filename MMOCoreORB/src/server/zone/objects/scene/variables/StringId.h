@@ -5,7 +5,20 @@
 #ifndef STRINGID_H_
 #define STRINGID_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/types.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 
 namespace server {

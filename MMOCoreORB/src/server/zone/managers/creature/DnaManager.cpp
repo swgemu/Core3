@@ -6,13 +6,36 @@
  */
 
 #include "DnaManager.h"
+
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/crafting/labratories/Genetics.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
-#include "server/zone/managers/crafting/labratories/Genetics.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/Vector.h"
+#include "templates/params/creature/CreaturePosture.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
 
 AtomicInteger DnaManager::loadedDnaData;
 

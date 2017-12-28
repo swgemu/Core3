@@ -8,6 +8,9 @@
 #ifndef WEBCREDENTIALS_H_
 #define WEBCREDENTIALS_H_
 
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
 class WebCredentials {
 private:
 	String userName;

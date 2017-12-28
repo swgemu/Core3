@@ -6,16 +6,25 @@
  */
 
 #include "StructureMaintenanceTask.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/ZoneServer.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();

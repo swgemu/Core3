@@ -5,16 +5,42 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
+#include <string.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/vendor/Outfit.h"
 #include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/managers/vendor/VendorOutfitManager.h"
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
-#include "server/zone/objects/player/PlayerObject.h"
-
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/creature/VendorCreatureTemplate.h"
 
 int CreateVendorSessionImplementation::initializeSession() {

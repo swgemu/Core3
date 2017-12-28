@@ -4,6 +4,17 @@
 
 #include "StringIdChatParameter.h"
 
+#include "engine/service/Message.h"
+#include "system/lang/Object.h"
+#include "system/lang/types.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
+
 StringIdChatParameter::StringIdChatParameter() : StringId() {
 	unknownByte = 0;
 	DI = 0;

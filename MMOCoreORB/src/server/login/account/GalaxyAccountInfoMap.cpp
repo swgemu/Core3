@@ -1,5 +1,16 @@
 #include "server/login/account/GalaxyAccountInfoMap.h"
 
+#include "system/lang/String.h"
+#include "system/lang/types.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
+
 GalaxyAccountInfoMap::GalaxyAccountInfoMap() {
 
 }

@@ -5,23 +5,46 @@
  *      Author: polonel
  */
 
+#include <ctype.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "engine/util/u3d/Quaternion.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/FindSession.h"
+#include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "server/zone/packets/ui/CreateClientPathMessage.h"
-#include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
-#include "templates/building/SharedBuildingObjectTemplate.h"
-#include "templates/appearance/PortalLayout.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "templates/appearance/CellProperty.h"
+#include "templates/appearance/PortalLayout.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 
 void FindSessionImplementation::initalizeFindMenu() {
 	ManagedReference<CreatureObject* > player = this->player.get();

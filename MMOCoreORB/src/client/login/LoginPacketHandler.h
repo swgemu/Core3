@@ -8,8 +8,16 @@
 #ifndef LOGINPACKETHANDLER_H_
 #define LOGINPACKETHANDLER_H_
 
-#include "engine/engine.h"
 #include "LoginSession.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "system/lang/ref/Reference.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class LoginPacketHandler : public Logger {
 	Reference<LoginSession*> loginSession;
