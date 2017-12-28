@@ -20,13 +20,12 @@ if(BUILD_IDL)
 	file(GLOB_RECURSE idls "${CMAKE_SOURCE_DIR}/src/*.idl")
 
 	set(autogen_sources)
-	#set(autogen_headers)
+
 	foreach(idl ${idls})
 		string(REPLACE "src/" "src/autogen/" autogen_base ${idl})
 		string(REPLACE ".idl" ".cpp" autogen_cpp ${autogen_base})
-	#	string(REPLACE ".idl" ".h" autogen_h ${autogen_base})
+
 		set(autogen_sources ${autogen_sources} "${autogen_cpp}")
-	#	set(autogen_headers ${autogen_headers} "${autogen_h}")
 
 		string(REGEX REPLACE ".+\/src\/" "" idl_f ${idl})
 		string(CONCAT idl_b "src/" ${idl_f})
@@ -41,10 +40,8 @@ if(BUILD_IDL)
 			VERBATIM)
 	endforeach()
 
-	#set_source_files_properties(${${autogen_sources}} ${${autogen_headers}} PROPERTIES GENERATED TRUE)
 	set_source_files_properties(${${autogen_sources}}} PROPERTIES GENERATED TRUE)
 
-	#add_library(idlobjects STATIC ${autogen_sources} ${autogen_headers})
 	add_library(idlobjects STATIC ${autogen_sources})
 else(BUILD_IDL)
 	file(GLOB_RECURSE autogen_sources "autogen/*.cpp")
@@ -62,12 +59,18 @@ file(GLOB_RECURSE tre3_sources "tre3/*.cpp")
 file(GLOB_RECURSE tre3_headers "tre3/*.h")
 
 # Create core3 binary
-add_executable(core3 server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers} main.cpp)
-add_dependencies(core3 gmock idlobjects)
+add_executable(core3 main.cpp server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers})
+
+if(COMPILE_TESTS)
+	add_dependencies(core3 gmock idlobjects)
+else(COMPILE_TESTS)
+	add_dependencies(core3 idlobjects)
+endif(COMPILE_TESTS)
 
 set(whole_archive_start)
 set(whole_archive_end)
-# Add libraries
+
+# Add custom link options
 if(APPLE)
 	set(whole_archive_start "-Wl,-all_load")
 	set(whole_archive_end "") #-Wl,-noall_load deprecated
@@ -76,12 +79,30 @@ elseif(UNIX)
 	set(whole_archive_end "-Wl,--no-whole-archive")
 endif()
 
+set(core3tests_libs)
+set(gmock_libs)
+
+if(COMPILE_TESTS)
+	# Define tests
+	enable_testing()
+
+	file(GLOB_RECURSE tests_sources "tests/*.cpp")
+	file(GLOB_RECURSE tests_headers "tests/*.h")
+
+	add_library(core3tests ${tests_headers} ${tests_sources})
+
+	add_dependencies(core3tests gmock idlobjects)
+
+	set(core3tests_libs core3tests)
+	set(gmock_libs gmock)
+endif(COMPILE_TESTS)
+
 target_link_libraries(core3
 	${whole_archive_start}
-	db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
+	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 	${whole_archive_end}
 	${ENGINE3_LIBRARIES}
-	${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+	${gmock_libs} ${Boost_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
 
 # Copy core3 binary
 add_custom_command(
@@ -97,3 +118,12 @@ if(GIT_FOUND AND RUN_GIT)
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 		VERBATIM)
 endif()
+
+if(COMPILE_TESTS)
+	add_test(core3
+		COMMAND $<TARGET_FILE:core3> runUnitTests
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
+endif(COMPILE_TESTS)
+
+
+#add_subdirectory(tests)

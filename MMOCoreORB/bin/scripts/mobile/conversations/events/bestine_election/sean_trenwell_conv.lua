@@ -380,7 +380,7 @@ init_joined_victor = ConvoScreen:new {
 	leftDialog = "@conversation/sean_trenwell:s_68788cf5", -- I'm sorry to see that another one of Bestine's citizens prefers Defense over Commerce. I'm sure he tricked you into joining his campaign.
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_trenwell:s_338ea1e3", "dig_up_some_dirt"}, -- I want to join your campaign.
+		{"@conversation/sean_trenwell:s_b826b85a", "dig_up_some_dirt"}, -- I want to join your campaign.
 		{"@conversation/sean_trenwell:s_82e87c1c", "good_bye_then"} -- I gotta go.
 	}
 }
@@ -391,7 +391,7 @@ dig_up_some_dirt = ConvoScreen:new {
 	leftDialog = "@conversation/sean_trenwell:s_67295aa1", -- It's not so easy. You can't just join my campaign with the drop of a hat. To prove yourself, you'll need to dig up some dirt on that no-good Victor. Speak with my secretary for all the details. What do you think?
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_trenwell:s_338ea1e3", "speak_with_secretary"}, -- I'll do it!
+		{"@conversation/sean_trenwell:s_a8b339fd", "speak_with_secretary"}, -- I'll do it!
 		{"@conversation/sean_trenwell:s_1e5ba263", "suit_yourself"} -- No, I don't think so.
 	}
 }
@@ -521,6 +521,22 @@ these_things_happen = ConvoScreen:new {
 	options = {}
 }
 seanTrenwellConvoTemplate:addScreen(these_things_happen);
+
+sensible_type_rival = ConvoScreen:new {
+	id = "sensible_type_rival",
+	leftDialog = "@conversation/sean_trenwell:s_51c418fd", -- I knew you would! You seem like the sensible type. If you have questions, you can refer to the disk I just gave you. You'll need to find evidence. I can't think of anyone right now off the top of my head. I'm sure my secretary would know. Be sure to ask her on your way out.
+	stopConversation = "true",
+	options = {}
+}
+seanTrenwellConvoTemplate:addScreen(sensible_type_rival);
+
+disk_inv_full_rival = ConvoScreen:new {
+	id = "disk_inv_full_rival",
+	leftDialog = "@conversation/sean_trenwell:s_9adf6cf2", -- Thanks for the interest! I guess you don't have enough room to receive the disk, though. You'll need to come back when you do.
+	stopConversation = "true",
+	options = {}
+}
+seanTrenwellConvoTemplate:addScreen(disk_inv_full_rival);
 
 sensible_type = ConvoScreen:new {
 	id = "sensible_type",

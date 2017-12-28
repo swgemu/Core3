@@ -5,11 +5,17 @@
 #include "system/thread/ChildProcess.h"
 
 #include "server/ServerCore.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
-#include "server/zone/tests/TestCore.h"
+
+#ifdef COMPILE_CORE3_TESTS
+#include "tests/TestCore.h"
 
 #include "gtest/gtest.h"
+#endif
+
+#include "engine/orb/db/DOBObjectManager.h"
 
 class CoreProcess : public ChildProcess {
 	SortedVector<String>& arguments;
@@ -64,6 +70,7 @@ int main(int argc, char* argv[]) {
 
 				core.wait();
 			}
+#ifdef COMPILE_CORE3_TESTS
 		} else if (arguments.contains("runUnitTests")) {
 			printf("Running unit tests...\n");
 			TestCore core;
@@ -71,6 +78,7 @@ int main(int argc, char* argv[]) {
 			testing::InitGoogleTest(&argc, argv);
 
 			ret = RUN_ALL_TESTS();
+#endif
 		} else if (arguments.contains("dumpNavMeshesToFile")) {
 			printf("Dumping nav meshes to files...\n");
 

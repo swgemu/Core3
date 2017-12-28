@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
-DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native -DCOMPILE_CORE3_TESTS
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
@@ -93,18 +93,18 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
-			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
-			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
-			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
-			  	terrain/manager/tests/TerrainManagerTest.cpp \
-			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
-			  	server/zone/tests/DeadlockTestBase.cpp \
-			  	terrain/tests/BasicTerrainTest.cpp \
-			  	server/zone/tests/ZoneTest.cpp \
-			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
+core3_TESTS = 	tests/CircularAreaShapeTest.cpp \
+			  	tests/BasicScreenPlayTest.cpp \
+			  	tests/LuaMobileTest.cpp \
+			  	tests/JediManagerTest.cpp \
+			  	tests/TerrainManagerTest.cpp \
+			  	tests/BehaviorTest.cpp \
+			  	tests/RectangularAreaShapeTest.cpp \
+			  	tests/RingAreaShapeTest.cpp \
+			  	tests/DeadlockTestBase.cpp \
+			  	tests/BasicTerrainTest.cpp \
+			  	tests/ZoneTest.cpp \
+			  	tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
