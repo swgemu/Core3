@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
-DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native -DCOMPILE_CORE3_TESTS
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
