@@ -79,6 +79,9 @@ elseif(UNIX)
 	set(whole_archive_end "-Wl,--no-whole-archive")
 endif()
 
+set(core3tests_libs)
+set(gmock_libs)
+
 if(COMPILE_TESTS)
 	# Define tests
 	enable_testing()
@@ -89,23 +92,17 @@ if(COMPILE_TESTS)
 	add_library(core3tests ${tests_headers} ${tests_sources})
 
 	add_dependencies(core3tests gmock idlobjects)
+
+	set(core3tests_libs core3tests)
+	set(gmock_libs gmock)
 endif(COMPILE_TESTS)
 
-if(COMPILE_TESTS)
-	target_link_libraries(core3
-		${whole_archive_start}
-		core3tests db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
-		${whole_archive_end}
-		${ENGINE3_LIBRARIES}
-		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
-else(COMPILE_TESTS)
-	target_link_libraries(core3
-		${whole_archive_start}
-		db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
-		${whole_archive_end}
-		${ENGINE3_LIBRARIES}
-		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES})
-endif(COMPILE_TESTS)
+target_link_libraries(core3
+	${whole_archive_start}
+	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
+	${whole_archive_end}
+	${ENGINE3_LIBRARIES}
+	${gmock_libs} ${Boost_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
 
 # Copy core3 binary
 add_custom_command(

@@ -31,7 +31,7 @@ find_package(MySql REQUIRED)
 find_package(Berkeley REQUIRED)
 include_directories(${DB_INCLUDE_DIR})
 
-find_package(Java 1.7 COMPONENTS Runtime REQUIRED )
+find_package(Java 1.5 COMPONENTS Runtime REQUIRED )
 
 # Find engine3 includes and libraries
 find_package(Engine3 REQUIRED)
@@ -47,6 +47,16 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
+
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
+find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
+
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
 
 find_package(Git QUIET)
 

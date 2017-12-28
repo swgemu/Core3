@@ -93,18 +93,18 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
-			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
-			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
-			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
-			  	terrain/manager/tests/TerrainManagerTest.cpp \
-			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
-			  	server/zone/tests/DeadlockTestBase.cpp \
-			  	terrain/tests/BasicTerrainTest.cpp \
-			  	server/zone/tests/ZoneTest.cpp \
-			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
+core3_TESTS = 	server/tests/CircularAreaShapeTest.cpp \
+			  	server/tests/BasicScreenPlayTest.cpp \
+			  	server/tests/LuaMobileTest.cpp \
+			  	server/tests/JediManagerTest.cpp \
+			  	server/tests/TerrainManagerTest.cpp \
+			  	server/tests/BehaviorTest.cpp \
+			  	server/tests/RectangularAreaShapeTest.cpp \
+			  	server/tests/RingAreaShapeTest.cpp \
+			  	server/tests/DeadlockTestBase.cpp \
+			  	server/tests/BasicTerrainTest.cpp \
+			  	server/tests/ZoneTest.cpp \
+			  	server/tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
