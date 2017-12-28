@@ -6,7 +6,14 @@
  */
 
 #include "MainServlet.h"
-#include "../../WebServer.h"
+
+#include "server/web/servlets/main/../../HttpResponse.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+}  // namespace web
+}  // namespace server
 
 MainServlet::MainServlet(String context) :
 	Servlet(context) {

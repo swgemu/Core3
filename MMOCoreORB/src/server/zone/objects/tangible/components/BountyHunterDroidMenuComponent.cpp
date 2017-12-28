@@ -6,14 +6,24 @@
  */
 
 #include "BountyHunterDroidMenuComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/managers/mission/MissionManager.h"
-#include "server/zone/objects/mission/BountyMissionObjective.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/BountyMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/SharedObjectTemplate.h"
 
 void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (droidObject == NULL || !droidObject->isTangibleObject() || player == NULL) {

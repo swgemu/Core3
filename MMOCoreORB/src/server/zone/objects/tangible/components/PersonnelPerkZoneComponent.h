@@ -3,6 +3,17 @@
 
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 
+namespace server {
+namespace zone {
+class Zone;
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 class PersonnelPerkZoneComponent : public ZoneComponent {
 
 public:

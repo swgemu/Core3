@@ -8,9 +8,17 @@
 #ifndef MFRC_H_
 #define MFRC_H_
 
-#include "TemplateVariable.h"
-#include "Random.h"
+#include <stddef.h>
+
 #include "PerlinNoise.h"
+#include "Random.h"
+#include "TemplateVariable.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class MapFractal : public TemplateVariable<'MFRC'> {
 	PerlinNoise* noise;

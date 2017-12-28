@@ -8,9 +8,35 @@
 #ifndef STRUCTUREPERMISSIONLIST_H_
 #define STRUCTUREPERMISSIONLIST_H_
 
-#include "engine/engine.h"
+#include <algorithm>
 
+#include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class StructurePermissionList : public Object {
 	VectorMap<String, SortedVector<String> > permissionLists;

@@ -8,7 +8,32 @@
 #ifndef DETAILAPPEARANCETEMPLATE_H_
 #define DETAILAPPEARANCETEMPLATE_H_
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/appearance/AppearanceTemplate.h"
+
+class MeshData;
+namespace engine {
+namespace util {
+class IffStream;
+namespace u3d {
+class IntersectionResult;
+class Matrix4;
+class Ray;
+class Sphere;
+class Triangle;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+}  // namespace util
+}  // namespace sys
 
 class DetailAppearanceTemplate : public AppearanceTemplate {
 	const AppearanceTemplate* firstMesh;

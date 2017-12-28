@@ -9,6 +9,8 @@
 #define LUAOBJECTMENUCOMPONENT_H_
 
 #include "ObjectMenuComponent.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {

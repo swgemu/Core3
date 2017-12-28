@@ -3,12 +3,23 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/zone/objects/intangible/ShipControlDevice.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/creature/CreatureState.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//info("generating ship", true);

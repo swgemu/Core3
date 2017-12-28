@@ -8,8 +8,33 @@
 #ifndef MESHAPPEARANCETEMPLATE_H_
 #define MESHAPPEARANCETEMPLATE_H_
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/util/u3d/AABBTree.h"
+#include "engine/util/u3d/Sphere.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/appearance/AppearanceTemplate.h"
 #include "templates/appearance/MeshData.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+namespace u3d {
+class IntersectionResult;
+class Matrix4;
+class Ray;
+class Triangle;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+}  // namespace util
+}  // namespace sys
 
 class MeshAppearanceTemplate : public AppearanceTemplate {
 	Vector<Reference<MeshData*> > meshes;

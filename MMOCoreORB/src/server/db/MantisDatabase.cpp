@@ -8,7 +8,15 @@
 
 #include "MantisDatabase.h"
 
+#include <algorithm>
+
 #include "conf/ConfigManager.h"
+#include "engine/db/Database.h"
+#include "engine/db/mysql/MySqlDatabase.h"
+#include "engine/log/Logger.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 Vector<Database*>* MantisDatabase::databases = nullptr;
 AtomicInteger MantisDatabase::currentDB;

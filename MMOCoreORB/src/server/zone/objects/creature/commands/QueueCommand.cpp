@@ -6,11 +6,24 @@
  */
 
 #include "QueueCommand.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Integer.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
+
+namespace server {
+namespace zone {
+class ZoneProcessServer;
+}  // namespace zone
+}  // namespace server
 
 QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
 	server = serv;

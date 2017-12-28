@@ -5,9 +5,26 @@
 #ifndef MISSIONNPCSPAWNMAP_H_
 #define MISSIONNPCSPAWNMAP_H_
 
-#include "engine/util/u3d/Vector3.h"
-#include "engine/log/Logger.h"
 #include "UniverseSpawnMap.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+
+namespace engine {
+namespace util {
+namespace u3d {
+class Vector3;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
 namespace zone {
@@ -18,6 +35,8 @@ namespace spawnmaps {
 /**
  * Class implementing methods to find a suitable spawn point for mission NPC's.
  */
+class NpcSpawnPoint;
+
 class MissionNpcSpawnMap : public Mutex, Logger {
 protected:
 	/**

@@ -6,6 +6,11 @@
  */
 #include "DestructibleBuildingDataComponent.h"
 
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/System.h"
+#include "system/lang/types.h"
+
 void DestructibleBuildingDataComponent::setState(int state) {
 	if (state >= INVULNERABLE && state <= REBOOTSEQUENCE)
 		intCurrentState = state;

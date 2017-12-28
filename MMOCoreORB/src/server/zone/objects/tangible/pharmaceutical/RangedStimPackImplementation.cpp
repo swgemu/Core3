@@ -1,7 +1,23 @@
 
+#include <algorithm>
+
 #include "server/zone/objects/tangible/pharmaceutical/RangedStimPack.h"
+#include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/params/creature/CreatureAttribute.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	StimPackImplementation::fillAttributeList(msg, object);

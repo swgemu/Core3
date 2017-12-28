@@ -9,7 +9,20 @@
 #define GALAXYACCOUNTINFO_H_
 
 #include "system/lang.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 #include "system/util/SynchronizedVectorMap.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+namespace util {
+template <class K, class V> class VectorMap;
+}  // namespace util
+}  // namespace sys
 
 class GalaxyAccountInfo : public Object {
 	

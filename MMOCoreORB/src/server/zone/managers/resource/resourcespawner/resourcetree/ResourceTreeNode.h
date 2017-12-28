@@ -11,8 +11,28 @@
 #ifndef RESOURCETREENODE_H_
 #define RESOURCETREENODE_H_
 
+#include <stddef.h>
+#include <algorithm>
+
 #include "ResourceTreeEntry.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
+class ResourceTreeEntry;
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+class SuiListBox;
+}  // namespace listbox
+}  // namespace sui
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class ResourceTreeNode {
 private:

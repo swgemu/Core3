@@ -6,8 +6,23 @@
  */
 
 #include "FactionManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "FactionMap.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/managers/faction/Faction.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/Math.h"
+#include "system/platform.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/faction/FactionRank.h"
 #include "templates/manager/TemplateManager.h"
 
 FactionManager::FactionManager() {

@@ -9,7 +9,11 @@
 #define THREATMATRIX_H_
 
 
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
  namespace zone {

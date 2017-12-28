@@ -5,6 +5,10 @@
 #ifndef GALAXYBANENTRY_H_
 #define GALAXYBANENTRY_H_
 
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+
 class GalaxyBanEntry : public Object {
 private:
 	uint32 accountID;

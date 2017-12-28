@@ -5,24 +5,57 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/installation/factory/FactoryObject.h"
-#include "server/zone/objects/installation/factory/FactoryHopperObserver.h"
-#include "sui/InsertSchematicSuiCallback.h"
-#include "tasks/CreateFactoryObjectTask.h"
-#include "server/zone/ZoneProcessServer.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
-#include "server/zone/managers/object/ObjectManager.h"
+#include <algorithm>
 
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/factory/FactoryHopperObserver.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
+#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "sui/InsertSchematicSuiCallback.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "tasks/CreateFactoryObjectTask.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/installation/FactoryObjectTemplate.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	InstallationObjectImplementation::loadTemplateData(templateData);

@@ -45,6 +45,7 @@ namespace zone {
 
 class QuadTree;
 class QuadTreeEntry;
+class QuadTreeEntryImplementation;
 
 class QuadTreeNode: public Object {
 	SortedVector<Reference<QuadTreeEntry*> > objects;

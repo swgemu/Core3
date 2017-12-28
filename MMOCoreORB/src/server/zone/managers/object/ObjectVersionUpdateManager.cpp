@@ -6,16 +6,35 @@
  */
 
 #include "ObjectVersionUpdateManager.h"
-#include "system/util/SortedVector.h"
-#include "server/zone/objects/structure/StructurePermissionList.h"
-#include "server/zone/objects/player/variables/AbilityList.h"
-#include "templates/manager/TemplateManager.h"
-#include "templates/manager/TemplateCRCMap.h"
-#include "templates/SharedTangibleObjectTemplate.h"
-#include "templates/LootItemTemplate.h"
-#include "templates/TemplateReference.h"
-#include "templates/tangible/LootSchematicTemplate.h"
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <algorithm>
+
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
 #include "server/zone/managers/loot/LootGroupMap.h"
+#include "server/zone/objects/player/variables/AbilityList.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/structure/StructurePermissionList.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/io/Serializable.h"
+#include "system/io/Stream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/types.h"
+#include "system/util/HashTable.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "templates/LootItemTemplate.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/TemplateReference.h"
+#include "templates/crafting/ValuesMap.h"
+#include "templates/manager/TemplateCRCMap.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/tangible/LootSchematicTemplate.h"
 
 #define INITIAL_DATABASE_VERSION 0
 

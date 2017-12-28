@@ -4,10 +4,21 @@
 */
 
 #include "SaberInventoryContainerComponent.h"
-#include "server/zone/objects/scene/SceneObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 

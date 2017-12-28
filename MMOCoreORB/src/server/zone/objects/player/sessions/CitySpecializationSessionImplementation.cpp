@@ -5,18 +5,29 @@
  *      Author: xyborn
  */
 
-#include "server/zone/objects/player/sessions/CitySpecializationSession.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/CitySpecializationConfirmSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CitySpecializationSuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/variables/AbilityList.h"
 #include "server/zone/objects/player/variables/Ability.h"
-#include "server/zone/objects/player/sui/callbacks/CitySpecializationSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/CitySpecializationConfirmSuiCallback.h"
+#include "server/zone/objects/player/variables/AbilityList.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
 
 int CitySpecializationSessionImplementation::initializeSession() {
 	PlayerObject* ghost = creatureObject->getPlayerObject();

@@ -5,19 +5,47 @@
  *      Author: victor
  */
 
+#include <math.h>
+#include <stdlib.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
+#include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/object/WeaponRanges.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage3.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage6.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "templates/tangible/SharedWeaponObjectTemplate.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/ChildObject.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/crafting/ValuesMap.h"
 #include "templates/manager/TemplateManager.h"
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/objects/tangible/powerup/PowerupObject.h"
-#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
-#include "server/zone/packets/object/WeaponRanges.h"
-#include "server/zone/ZoneProcessServer.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
 
 
 void WeaponObjectImplementation::initializeTransientMembers() {

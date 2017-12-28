@@ -5,14 +5,34 @@
  *      Author: kyle
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "GogglesObjectMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
-#include "GogglesObjectMenuComponent.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/sui/callbacks/ColorGogglesSuiCallback.h"
-#include "server/zone/ZoneServer.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/CustomizationVariable.h"
+
+#include "server/zone/objects/player/sui/callbacks/ColorGogglesSuiCallback.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+}  // namespace zone
+}  // namespace server
 
 void GogglesObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

@@ -6,11 +6,24 @@
  */
 
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
 
 void ShuttleInstallationZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	StructureZoneComponent::notifyInsertToZone(sceneObject, zone);

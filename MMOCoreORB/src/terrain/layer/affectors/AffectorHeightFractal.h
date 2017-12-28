@@ -8,10 +8,21 @@
 #ifndef AFFECTORHEIGHTFRACTAL_H_
 #define AFFECTORHEIGHTFRACTAL_H_
 
+#include <stddef.h>
+
 #include "../ProceduralRule.h"
 #include "AffectorProceduralRule.h"
-class TerrainGenerator;
+#include "terrain/layer/affectors/../InformationHeader.h"
+#include "terrain/layer/affectors/../affectors/AffectorProceduralRule.h"
+
 class MapFractal;
+class TerrainGenerator;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+template <int version> struct Version;
 
 class AffectorHeightFractal : public ProceduralRule<'AHFR'>, public AffectorProceduralRule {
 	int fractalId; // fractal group id in MGRP

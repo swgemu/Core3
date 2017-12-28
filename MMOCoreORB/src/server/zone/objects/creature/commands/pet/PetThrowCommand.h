@@ -2,6 +2,8 @@
 #ifndef PETTHROWCOMMAND_H_
 #define PETTHROWCOMMAND_H_
 
+#include "engine/engine.h"
+
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -9,7 +11,8 @@
 #include "templates/tangible/TrapTemplate.h"
 #include "server/zone/objects/creature/events/DroidTrapTask.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
-#include "engine/engine.h"
+
+#include "server/zone/packets/object/CombatAction.h"
 
 class PetThrowCommand : public QueueCommand {
 public:

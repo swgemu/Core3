@@ -8,8 +8,21 @@
 #ifndef PLAYERCREATURETEMPLATE_H_
 #define PLAYERCREATURETEMPLATE_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 #include "templates/customization/CustomizationDataMap.h"
+
+class CustomizationData;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	CustomizationDataMap dataMap;

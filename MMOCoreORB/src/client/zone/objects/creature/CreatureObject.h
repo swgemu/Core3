@@ -2,6 +2,16 @@
 #define CREATUREOBJECT_H_
 
 #include "client/zone/objects/tangible/TangibleObject.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class CreatureObject : public TangibleObject {
 protected:

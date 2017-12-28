@@ -6,6 +6,45 @@
 #define DROIDTRAPMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
 namespace zone {

@@ -9,11 +9,21 @@
 #define FILTERBITMAP_H_
 
 
-#include "../ProceduralRule.h"
+#include <stddef.h>
 
+#include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+#include "terrain/layer/filters/../../TemplateVariable.h"
+#include "terrain/layer/filters/../InformationHeader.h"
+#include "terrain/layer/filters/../filters/FilterProceduralRule.h"
 
 class TargaBitmap;
+class TerrainGenerator;
 
 class FilterBitmap : public ProceduralRule<'FBIT'>, public FilterProceduralRule {
 	int bitmapId;

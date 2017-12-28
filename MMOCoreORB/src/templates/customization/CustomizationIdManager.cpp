@@ -6,7 +6,13 @@
  */
 
 #include "CustomizationIdManager.h"
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "templates/customization/HairAssetData.h"
+#include "templates/customization/PaletteData.h"
 #include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
 
 CustomizationIdManager::CustomizationIdManager() {
 	setLoggingName("CustomizationIdManager");

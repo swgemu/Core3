@@ -5,7 +5,20 @@
 #ifndef VISIBILITYMANAGER_H_
 #define VISIBILITYMANAGER_H_
 
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+#include "system/util/VectorMap.h"
+
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 namespace server {
 namespace zone {

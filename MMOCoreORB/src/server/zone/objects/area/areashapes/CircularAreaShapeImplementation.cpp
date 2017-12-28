@@ -5,9 +5,19 @@
  *      Author: loshult
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/objects/area/areashapes/AreaShape.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 bool CircularAreaShapeImplementation::containsPoint(float x, float y) {
 	Vector3 position;

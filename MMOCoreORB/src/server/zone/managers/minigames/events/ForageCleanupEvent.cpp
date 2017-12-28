@@ -4,8 +4,13 @@
 
 
 #include "ForageCleanupEvent.h"
-#include "server/zone/managers/minigames/ForageManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/minigames/ForageManager.h"
+#include "system/lang/ref/Reference.h"
 
 ForageCleanupEvent::ForageCleanupEvent(const String& name, ZoneProcessServer* zoneSrv) : Task() {
 	playerName = name;

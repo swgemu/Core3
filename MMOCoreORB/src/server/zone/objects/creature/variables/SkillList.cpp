@@ -8,7 +8,20 @@
 #include "SkillList.h"
 
 #include "Skill.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/packets/DeltaMessage.h"
+#include "system/lang/types.h"
+#include "system/platform.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/Vector.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 bool SkillList::containsSkill(const String& skillBox) {
 	String low = skillBox.toLowerCase();

@@ -6,7 +6,14 @@
  */
 
 #include "LogsServlet.h"
-#include "../../WebServer.h"
+
+#include "server/web/servlets/logs/../../HttpResponse.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+}  // namespace web
+}  // namespace server
 
 LogsServlet::LogsServlet(String context) :
 	Servlet(context) {

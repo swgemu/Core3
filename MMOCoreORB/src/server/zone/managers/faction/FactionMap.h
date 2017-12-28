@@ -8,7 +8,11 @@
 #ifndef FACTIONRELATIONSHIPMAP_H_
 #define FACTIONRELATIONSHIPMAP_H_
 
+#include <algorithm>
+
 #include "Faction.h"
+#include "system/lang/String.h"
+#include "system/util/VectorMap.h"
 
 class FactionMap : public VectorMap<String, Faction> {
 public:

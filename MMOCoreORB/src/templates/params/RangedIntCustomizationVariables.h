@@ -8,8 +8,20 @@
 #ifndef RANGEDINTCUSTOMIZATIONVARIABLES_H_
 #define RANGEDINTCUSTOMIZATIONVARIABLES_H_
 
+#include <algorithm>
+
 #include "engine/util/iffstream/IffStream.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+#include "templates/params/Param.h"
 #include "templates/params/RangedIntCustomizationVariable.h"
+
+namespace engine {
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class RangedIntCustomizationVariables : public Param {
 protected:

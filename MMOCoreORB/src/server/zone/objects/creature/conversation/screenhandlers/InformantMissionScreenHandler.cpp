@@ -3,7 +3,19 @@
 		See file COPYING for copying conditions.*/
 
 #include "InformantMissionScreenHandler.h"
+
+#include <stddef.h>
+
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionTypes.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 const String InformantMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 

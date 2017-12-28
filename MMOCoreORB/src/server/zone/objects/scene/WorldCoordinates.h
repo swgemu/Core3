@@ -8,8 +8,25 @@
 #ifndef WORLDCOORDINATES_H_
 #define WORLDCOORDINATES_H_
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
  namespace zone {

@@ -4,21 +4,42 @@
  */
 
 #include "SkillManager.h"
-#include "SkillModManager.h"
+
+#include <assert.h>
+#include <stddef.h>
+#include <algorithm>
+
 #include "PerformanceManager.h"
-#include "server/zone/objects/creature/variables/Skill.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/badges/Badge.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "SkillModManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/managers/jedi/JediManager.h"
-#include "templates/manager/TemplateManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/player/BadgeList.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/variables/Skill.h"
+#include "server/zone/objects/creature/variables/SkillList.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/Ability.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
-#include "server/zone/managers/mission/MissionManager.h"
+#include "templates/manager/TemplateManager.h"
+
+class Badge;
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {

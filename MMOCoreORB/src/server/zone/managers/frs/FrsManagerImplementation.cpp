@@ -1,13 +1,34 @@
-#include "server/zone/managers/frs/FrsManager.h"
+#include <stdlib.h>
+#include <sys/types.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/frs/RankMaintenanceTask.h"
+#include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/managers/frs/FrsRankingData.h"
+#include "server/zone/managers/frs/RankMaintenanceTask.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/variables/FrsData.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 void FrsManagerImplementation::initialize() {
 	loadLuaConfig();

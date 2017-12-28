@@ -8,9 +8,26 @@
 #ifndef SHAREDBUILDINGOBJECTTEMPLATE_H_
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
-#include "templates/tangible/SharedStructureObjectTemplate.h"
+#include <algorithm>
+
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
 #include "templates/ChildCreatureObject.h"
+#include "templates/ChildObject.h"
 #include "templates/building/SignTemplate.h"
+#include "templates/params/primitives/StringParam.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;

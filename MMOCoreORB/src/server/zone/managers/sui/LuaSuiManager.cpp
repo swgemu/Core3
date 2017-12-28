@@ -5,10 +5,26 @@
  *      Author: xyborn
  */
 
-#include "SuiManager.h"
 #include "LuaSuiManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/SuiPageData.h"
+#include "SuiManager.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/LuaObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+class SuiPageData;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 const char LuaSuiManager::className[] = "LuaSuiManager";
 

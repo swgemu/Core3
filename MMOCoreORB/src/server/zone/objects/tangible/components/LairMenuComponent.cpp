@@ -5,12 +5,24 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "LairMenuComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/managers/minigames/ForageManager.h"
-#include "server/zone/managers/creature/LairObserver.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/util/Observer.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/SortedVector.h"
+#include "templates/mobile/LairTemplate.h"
+#include "templates/params/ObserverEventType.h"
 
 void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

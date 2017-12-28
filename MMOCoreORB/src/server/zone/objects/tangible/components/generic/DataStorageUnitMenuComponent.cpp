@@ -5,12 +5,25 @@
  *      Author: Klivian
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "DataStorageUnitMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "DataStorageUnitMenuComponent.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/generic/../TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DataStorageUnitDataComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
 
 void DataStorageUnitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

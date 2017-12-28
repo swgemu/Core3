@@ -6,7 +6,13 @@
  */
 
 #include "StructureZoneComponent.h"
+
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/platform.h"
 
 void StructureZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);

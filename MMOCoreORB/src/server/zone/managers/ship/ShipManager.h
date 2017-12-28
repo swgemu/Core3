@@ -8,7 +8,16 @@
 #ifndef SHIPMANAGER_H_
 #define SHIPMANAGER_H_
 
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/ship/ShipComponent.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+
+class ShipComponent;
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
 	HashTable<uint32, Reference<ShipComponent*> > shipComponents;

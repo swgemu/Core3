@@ -1,13 +1,33 @@
+#include <stddef.h>
+#include <algorithm>
+
+#include "XpPurchaseMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "XpPurchaseMenuComponent.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/callbacks/XpPurchaseSuiCallback.h"
-
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
 #include "templates/tangible/XpPurchaseTemplate.h"
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace draftschematic {
+class DraftSchematic;
+}  // namespace draftschematic
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void XpPurchaseMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

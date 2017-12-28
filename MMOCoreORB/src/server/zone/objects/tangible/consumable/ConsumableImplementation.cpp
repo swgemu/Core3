@@ -5,16 +5,37 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/tangible/consumable/Consumable.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/BuffType.h"
+#include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/objects/creature/buffs/DurationBuff.h"
 #include "server/zone/objects/creature/buffs/SpiceBuff.h"
-#include "server/zone/objects/creature/buffs/DelayedBuff.h"
-#include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "templates/tangible/ConsumableTemplate.h"
-#include "server/zone/managers/player/PlayerManager.h"
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

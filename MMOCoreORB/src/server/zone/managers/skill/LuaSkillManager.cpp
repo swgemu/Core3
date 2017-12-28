@@ -1,6 +1,17 @@
-#include "SkillManager.h"
 #include "LuaSkillManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "SkillManager.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 const char LuaSkillManager::className[] = "LuaSkillManager";
 

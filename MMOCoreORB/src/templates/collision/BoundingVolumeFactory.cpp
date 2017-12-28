@@ -1,6 +1,19 @@
 #include "BoundingVolumeFactory.h"
+
+#include <stddef.h>
+
 #include "BaseBoundingVolume.h"
-#include "templates/collision/BoundingVolumes.h"
+#include "engine/log/Logger.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "templates/collision/BoxVolume.h"
+#include "templates/collision/CollisionMeshVolume.h"
+#include "templates/collision/ComponentVolume.h"
+#include "templates/collision/CompositeVolume.h"
+#include "templates/collision/CylinderVolume.h"
+#include "templates/collision/DetailVolume.h"
+#include "templates/collision/SphereVolume.h"
 
 BaseBoundingVolume* BoundingVolumeFactory::getVolume(IffStream *iff) {
 	static Logger logger("BoundingVolumeFactory");

@@ -9,6 +9,7 @@
 #define ATTIBUTELISTCOMPONENT_H_
 
 #include "SceneObjectComponent.h"
+#include "engine/log/Logger.h"
 
 namespace server {
  namespace zone {

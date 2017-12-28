@@ -1,7 +1,16 @@
 #include "BadgeList.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "conf/ConfigManager.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/objects/player/badges/Badge.h"
+#include "system/util/Vector.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/manager/DataArchiveStore.h"
+
+class DataTableRow;
 
 BadgeList::BadgeList() : Logger("BadgeList") {
 	badges.setNullValue(NULL);

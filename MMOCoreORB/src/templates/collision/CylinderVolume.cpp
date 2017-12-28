@@ -1,5 +1,7 @@
 #include "CylinderVolume.h"
 
+#include "engine/util/iffstream/IffStream.h"
+
 void CylinderVolume::read(IffStream *iff) {
 	iff->openForm('0000');
 	iff->openChunk('CYLN');

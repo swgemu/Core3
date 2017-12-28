@@ -6,14 +6,20 @@
  */
 
 #include "InstallationObjectMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
 
 void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isInstallationObject())

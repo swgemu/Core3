@@ -19,17 +19,57 @@
 #ifndef RECASTSAMPLETILEMESH_H
 #define RECASTSAMPLETILEMESH_H
 
+#include <algorithm>
+
+#include "RecastPolygon.h"
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/AABB.h"
+#include "pathfinding/RecastTileBuilder.h"
 #include "pathfinding/recast/DetourNavMesh.h"
 #include "pathfinding/recast/Recast.h"
-#include "RecastPolygon.h"
 #include "server/zone/Zone.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 #include "terrain/manager/TerrainManager.h"
-#include "pathfinding/RecastTileBuilder.h"
-
-class RecastNavMesh;
 
 class MeshData;
+class RecastNavMesh;
+class RecastPolygon;
+class TerrainManager;
+class dtNavMesh;
+class rcContext;
+namespace engine {
+namespace util {
+namespace u3d {
+class Vector3;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace server {
+namespace zone {
+class Zone;
+namespace objects {
+namespace pathfinding {
+class NavArea;
+}  // namespace pathfinding
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace thread {
+namespace atomic {
+class AtomicBoolean;
+}  // namespace atomic
+}  // namespace thread
+}  // namespace sys
+struct rcCompactHeightfield;
+struct rcContourSet;
+struct rcHeightfield;
+struct rcPolyMesh;
+struct rcPolyMeshDetail;
 
 class RecastNavMeshBuilder : public Object, Logger {
 protected:

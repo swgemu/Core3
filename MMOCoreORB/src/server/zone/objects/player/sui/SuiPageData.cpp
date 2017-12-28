@@ -7,11 +7,28 @@
 
 
 #include "SuiPageData.h"
+
+#include <stddef.h>
+
 #include "SuiCommand.h"
 #include "server/zone/ZoneClientSession.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "server/zone/packets/ui/SuiUpdatePageMessage.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/StringBuffer.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+class PlayerObject;
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void SuiPageData::setProperty(const String& widget, const String& property, const UnicodeString& value) {
 	SuiCommand* command = new SuiCommand(SuiCommand::SCT_setProperty);

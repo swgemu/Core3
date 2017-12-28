@@ -3,9 +3,25 @@
 		See file COPYING for copying conditions.*/
 
 
-#include "../objects.h"
-#include "server/login/account/Account.h"
+#include <time.h>
+
 #include "../objects/GalaxyBanEntry.h"
+#include "engine/db/Database.h"
+#include "engine/db/ResultSet.h"
+#include "server/db/ServerDatabase.h"
+#include "server/login/account/../objects/CharacterList.h"
+#include "server/login/account/Account.h"
+#include "server/login/account/GalaxyAccountInfo.h"
+#include "server/login/account/GalaxyAccountInfoMap.h"
+#include "server/login/objects/CharacterListEntry.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
 
 AccountImplementation::AccountImplementation() {
 	initializeTransientMembers();

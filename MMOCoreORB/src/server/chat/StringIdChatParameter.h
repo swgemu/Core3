@@ -6,8 +6,22 @@
 #define STRINGIDCHATPARAMETER_H_
 
 #include "server/chat/ChatParameter.h"
-#include "server/zone/objects/scene/variables/StringIdParameter.h"
 #include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/scene/variables/StringIdParameter.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
 namespace zone {

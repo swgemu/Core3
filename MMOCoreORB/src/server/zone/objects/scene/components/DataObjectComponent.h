@@ -9,6 +9,8 @@
 #define DATAOBJECTCOMPONENT_H_
 
 #include "SceneObjectComponent.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "system/io/Serializable.h"
 
 namespace server {
 namespace zone {

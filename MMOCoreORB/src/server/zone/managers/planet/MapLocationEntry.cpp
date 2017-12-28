@@ -8,15 +8,25 @@
  */
 
 #include "MapLocationEntry.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "MapLocationType.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+#include "system/lang/String.h"
 #include "templates/building/CloningBuildingObjectTemplate.h"
 #include "templates/faction/Factions.h"
+#include "templates/manager/PlanetMapCategory.h"
 
 uint64 MapLocationEntry::getObjectID() const {
 	return object->getObjectID();

@@ -8,8 +8,29 @@
 #ifndef COMPOSITEBEHAVIOR_H_
 #define COMPOSITEBEHAVIOR_H_
 
-#include "engine/engine.h"
+#include <assert.h>
+#include <algorithm>
+
 #include "Behavior.h"
+#include "engine/engine.h"
+#include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+class AiAgent;
+}  // namespace ai
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

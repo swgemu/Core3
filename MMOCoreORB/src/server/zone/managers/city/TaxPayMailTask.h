@@ -11,6 +11,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class TaxPayMailTask : public Task {
 	Vector<uint64> citizens;

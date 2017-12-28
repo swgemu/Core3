@@ -9,6 +9,20 @@
 #define HOLOCRONMENUCOMPONENT_H_
 
 #include "TangibleObjectMenuComponent.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class HolocronMenuComponent : public TangibleObjectMenuComponent {
 public:

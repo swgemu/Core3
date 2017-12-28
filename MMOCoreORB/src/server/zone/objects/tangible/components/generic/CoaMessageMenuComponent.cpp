@@ -1,10 +1,25 @@
 
 #include "CoaMessageMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/generic/../TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
 
 void CoaMessageMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);

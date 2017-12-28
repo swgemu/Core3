@@ -8,9 +8,15 @@
 #ifndef CONTAINERCOMPONENT_H_
 #define CONTAINERCOMPONENT_H_
 
-#include "engine/engine.h"
-
 #include "SceneObjectComponent.h"
+#include "engine/engine.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 namespace server {
  namespace zone {

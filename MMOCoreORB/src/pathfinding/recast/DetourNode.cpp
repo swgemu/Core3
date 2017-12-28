@@ -17,10 +17,13 @@
 //
 
 #include "DetourNode.h"
+
+#include <string.h>
+
 #include "DetourAlloc.h"
 #include "DetourAssert.h"
 #include "DetourCommon.h"
-#include <string.h>
+#include "pathfinding/recast/DetourNavMesh.h"
 
 #ifdef DT_POLYREF64
 // From Thomas Wang, https://gist.github.com/badboy/6267743

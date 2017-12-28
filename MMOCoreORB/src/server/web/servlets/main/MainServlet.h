@@ -9,6 +9,15 @@
 #define MAINSERVLET_H_
 
 #include "../Servlet.h"
+#include "server/web/servlets/main/../../servlets/Servlet.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 class MainServlet: public Servlet {
 public:

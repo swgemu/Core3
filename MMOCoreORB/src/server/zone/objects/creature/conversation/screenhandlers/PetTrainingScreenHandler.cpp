@@ -2,12 +2,29 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+
 #include "PetTrainingScreenHandler.h"
-#include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 
 const String PetTrainingScreenHandler::STARTSCREENHANDLERID = "convoscreenpetinfo";
 const String PetTrainingScreenHandler::PETCOMMANDREPAIR = "pet_repair_command";

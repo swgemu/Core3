@@ -7,11 +7,46 @@
 
 #include "ZoneContainerComponent.h"
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Facade.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/QuadTree.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "templates/building/SharedBuildingObjectTemplate.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
+#include "templates/params/ObserverEventType.h"
+#include "terrain/manager/TerrainManager.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == nullptr)

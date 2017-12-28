@@ -1,5 +1,8 @@
 #include "DetailVolume.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "templates/collision/CompositeVolume.h"
+
 void DetailVolume::read(IffStream* iff) {
 	iff->openForm('0000');
 	iff->openForm('CPST');

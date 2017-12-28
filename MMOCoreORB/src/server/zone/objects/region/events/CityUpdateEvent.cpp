@@ -5,10 +5,16 @@
  *      Author: xyborn
  */
 
-#include "server/zone/objects/region/CityRegion.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "CityUpdateEvent.h"
-#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/city/CityManager.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/events/CityUpdateEvent.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 CityUpdateEvent::CityUpdateEvent(CityRegion* city, ZoneServer* zserv) : Task() {
 	cityRegion = city;

@@ -11,7 +11,14 @@
 #ifndef RESOURCEMAP_H_
 #define RESOURCEMAP_H_
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

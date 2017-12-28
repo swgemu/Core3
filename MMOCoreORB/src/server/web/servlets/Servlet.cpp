@@ -6,8 +6,14 @@
  */
 
 #include "Servlet.h"
+
 #include "../mongoose/mongoose.h"
-#include "../WebServer.h"
+#include "server/web/servlets/../HttpRequest.h"
+#include "server/web/servlets/../HttpResponse.h"
+#include "server/web/servlets/../servlets/Servlet.h"
+#include "server/zone/ZoneServer.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
 
 Servlet::Servlet(String contxt) {
 

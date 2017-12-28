@@ -3,9 +3,17 @@
 		See file COPYING for copying conditions. */
 
 #include "PerformanceManager.h"
-#include "templates/datatables/DataTableIff.h"
-#include "templates/datatables/DataTableRow.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/managers/skill/Performance.h"
 #include "server/zone/objects/tangible/Instrument.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/manager/TemplateManager.h"
+
+class DataTableRow;
 
 PerformanceManager::PerformanceManager() :
 	Logger("PerformanceManager") {

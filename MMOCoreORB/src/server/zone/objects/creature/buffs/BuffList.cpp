@@ -3,8 +3,22 @@
 		See file COPYING for copying conditions.*/
 
 #include "BuffList.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+#include <algorithm>
+
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/creature/buffs/BuffType.h"
+#include "system/lang/Object.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 BuffList::BuffList() {
 	spiceActive = false;

@@ -8,6 +8,8 @@
 #ifndef CHILDCREATUREOBJECT_H_
 #define CHILDCREATUREOBJECT_H_
 
+#include "engine/lua/LuaObject.h"
+
 class ChildCreatureObject : public Object {
 
 	Vector3 position;

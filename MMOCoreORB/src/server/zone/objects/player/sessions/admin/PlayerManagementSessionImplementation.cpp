@@ -5,16 +5,35 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/player/sessions/admin/PlayerManagementSession.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
-#include "server/zone/ZoneServer.h"
+#include <math.h>
+#include <time.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/db/Database.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/login/account/Account.h"
+#include "server/login/objects/CharacterListEntry.h"
+#include "server/login/objects/GalaxyBanEntry.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/admin/PlayerManagementSession.h"
+#include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Integer.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 int PlayerManagementSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();

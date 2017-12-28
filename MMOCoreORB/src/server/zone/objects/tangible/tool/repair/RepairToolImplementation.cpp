@@ -5,10 +5,22 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/tangible/tool/repair/RepairTool.h"
-
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+
+class SharedObjectTemplate;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void RepairToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

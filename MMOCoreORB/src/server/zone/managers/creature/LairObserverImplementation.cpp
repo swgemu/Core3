@@ -3,19 +3,58 @@
 		See file COPYING for copying conditions.
  */
 
-#include "server/zone/managers/creature/LairObserver.h"
-#include "templates/params/ObserverEventType.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "server/zone/Zone.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "HealLairObserverEvent.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 #include "LairAggroTask.h"
-#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/log/Logger.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
+#include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/SynchronizedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/mobile/LairTemplate.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	int i = 0;

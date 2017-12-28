@@ -3,10 +3,27 @@
 		See file COPYING for copying conditions.*/
 
 #include "ForceHealQueueCommand.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "templates/params/creature/CreatureAttribute.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/commands/JediQueueCommand.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureState.h"
 
 ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 	speed = 3;

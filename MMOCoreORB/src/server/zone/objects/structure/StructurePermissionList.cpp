@@ -7,11 +7,22 @@
 
 
 #include "StructurePermissionList.h"
-#include "server/zone/packets/ui/PermissionListCreateMessage.h"
+
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/ui/PermissionListCreateMessage.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/types.h"
+#include "system/util/Vector.h"
 
 StructurePermissionList::StructurePermissionList() {
 	permissionLists.setNoDuplicateInsertPlan();

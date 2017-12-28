@@ -8,7 +8,28 @@
 #ifndef CONTAINEROBJECTSMAP_H_
 #define CONTAINEROBJECTSMAP_H_
 
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "engine/engine.h"
+#include "system/lang/Time.h"
+#include "system/lang/Variable.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/atomic/AtomicReference.h"
+#include "system/util/VectorMap.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+namespace thread {
+class ReadWriteLock;
+}  // namespace thread
+}  // namespace sys
 
 namespace server {
  namespace zone {

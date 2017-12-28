@@ -10,7 +10,8 @@
 
 
 #include "engine/engine.h"
-
+#include "engine/lua/Luna.h"
+#include "lua.h"
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 

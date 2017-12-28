@@ -8,10 +8,10 @@
 #ifndef SERVLET_H_
 #define SERVLET_H_
 
-#include "engine/engine.h"
-#include "server/zone/ZoneServer.h"
 #include "../HttpRequest.h"
 #include "../HttpResponse.h"
+#include "engine/engine.h"
+#include "server/zone/ZoneServer.h"
 
 class Servlet : protected Logger {
 private:

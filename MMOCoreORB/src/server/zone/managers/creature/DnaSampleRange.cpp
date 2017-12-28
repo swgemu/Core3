@@ -7,6 +7,10 @@
 
 #include "DnaSampleRange.h"
 
+#include "engine/lua/LuaObject.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+
 DnaSampleRange::DnaSampleRange(LuaObject& obj) {
 	// Load data from teh lua object
 	vhqMax = obj.getIntField("vhqMax");

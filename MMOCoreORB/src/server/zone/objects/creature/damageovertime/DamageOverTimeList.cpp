@@ -6,9 +6,15 @@
  */
 
 #include "DamageOverTimeList.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/damageovertime/DamageOverTime.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/thread/Locker.h"
 #include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureState.h"
 
 uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;

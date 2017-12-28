@@ -8,11 +8,28 @@
 #ifndef SHAREDTANGIBLEOBJECTTEMPLATE_H_
 #define SHAREDTANGIBLEOBJECTTEMPLATE_H_
 
-#include "templates/crafting/resourceweight/ResourceWeight.h"
+#include <algorithm>
 
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "templates/SharedObjectTemplate.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
+#include "templates/params/primitives/BoolParam.h"
 
+class ResourceWeight;
 class StructureFootprint;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SharedTangibleObjectTemplate : public SharedObjectTemplate {
 protected:

@@ -1,9 +1,32 @@
 
-#include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
-#include "templates/tangible/StimPackTemplate.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.h"
+#include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/params/creature/CreatureAttribute.h"
+#include "templates/tangible/StimPackTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 bool StimPackImplementation::isPetStimPack() {
 	return getObjectNameStringIdName().contains("pet_stimpack");

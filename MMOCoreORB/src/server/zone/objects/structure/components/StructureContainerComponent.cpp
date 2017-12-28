@@ -6,8 +6,14 @@
  */
 
 #include "StructureContainerComponent.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	StructureObject* building = dynamic_cast<StructureObject*>(sceneObject);

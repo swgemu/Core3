@@ -5,12 +5,28 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServer.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/callbacks/AdBarkingPhraseSuiCallback.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 int VendorAdBarkingSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> player = this->owner.get();

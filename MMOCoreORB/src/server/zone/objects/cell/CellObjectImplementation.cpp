@@ -5,13 +5,40 @@
  *      Author: TheAnswer
  */
 
-#include "server/zone/objects/cell/CellObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/variables/ContainerObjectsMap.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/packets/cell/CellObjectMessage3.h"
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/Zone.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+
+class SharedObjectTemplate;
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();

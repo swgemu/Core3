@@ -2,22 +2,25 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "server/zone/managers/player/creation/PlayerCreationManager.h"
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZonePacketHandler.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/holocron/HolocronManager.h"
-#include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/minigames/FishingManager.h"
-#include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/sui/SuiManager.h"
+#include "server/zone/managers/vendor/VendorManager.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {
 	zoneServer = server;

@@ -5,14 +5,24 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "LootSchematicMenuComponent.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "templates/tangible/LootSchematicTemplate.h"
+#include "LootSchematicMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/SchematicList.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/generic/../TangibleObjectMenuComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/tangible/LootSchematicTemplate.h"
 
 void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

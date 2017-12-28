@@ -5,14 +5,36 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/Creature.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/managers/creature/CreatureManager.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/Creature.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
+#include "server/zone/objects/creature/ai/variables/CreatureTemplateReference.h"
+#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
+#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/CreatureState.h"
 
 //#define DEBUG
 

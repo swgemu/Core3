@@ -5,13 +5,30 @@
  *      Author: crush
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+
 #include"server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "templates/tangible/VehicleDeedTemplate.h"
-#include "server/zone/objects/intangible/VehicleControlDevice.h"
-#include "server/zone/objects/creature/VehicleObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 
 void VehicleDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);

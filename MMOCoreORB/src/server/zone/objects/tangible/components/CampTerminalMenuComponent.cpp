@@ -5,15 +5,38 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseMessage.h"
+
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/Zone.h"
+
 #include "CampTerminalMenuComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "templates/params/creature/CreaturePosture.h"
 
 void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

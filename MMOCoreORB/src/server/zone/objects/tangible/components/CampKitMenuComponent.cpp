@@ -5,18 +5,47 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/Zone.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "CampKitMenuComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "templates/tangible/CampKitTemplate.h"
-#include "templates/building/CampStructureTemplate.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Observer.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/ObserverType.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/building/CampStructureTemplate.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/ObserverEventType.h"
+#include "templates/tangible/CampKitTemplate.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void CampKitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

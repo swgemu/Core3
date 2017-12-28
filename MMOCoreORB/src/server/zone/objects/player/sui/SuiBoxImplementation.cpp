@@ -5,10 +5,28 @@
  *      Author: victor
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/player/sui/SuiBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "server/zone/packets/ui/SuiForceClosePage.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Integer.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message) {
 	//[UI DECLARATION HEADER]

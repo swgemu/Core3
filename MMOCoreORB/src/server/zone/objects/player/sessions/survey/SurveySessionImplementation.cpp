@@ -5,19 +5,46 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/u3d/Coordinate.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "templates/params/creature/CreatureAttribute.h"
-#include "server/zone/objects/player/sessions/survey/sui/SurveyGMinigameSuiCallback.h"
-#include "server/zone/objects/player/sessions/survey/sui/SurveyCMinigameSuiCallback.h"
+#include "server/zone/managers/resource/resourcespawner/SampleResultsTask.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 #include "server/zone/managers/resource/resourcespawner/SurveyTask.h"
-#include "server/zone/managers/resource/resourcespawner/SampleResultsTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include "server/zone/objects/player/sessions/survey/sui/SurveyCMinigameSuiCallback.h"
+#include "server/zone/objects/player/sessions/survey/sui/SurveyGMinigameSuiCallback.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreaturePosture.h"
+
+class ResourceSpawner;
+class SurveyMessage;
 
 int SurveySessionImplementation::initializeSession(SurveyTool* tool) {
 	activeSurveyTool = tool;

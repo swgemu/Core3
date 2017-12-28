@@ -5,6 +5,10 @@
 
 #include "server/zone/managers/resource/InterplanetarySurvey.h"
 #include "server/zone/managers/resource/InterplanetarySurveyTask.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void InterplanetarySurveyImplementation::notifyLoadFromDatabase() {
 	if (executed)

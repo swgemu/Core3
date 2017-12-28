@@ -3,14 +3,39 @@
 		See file COPYING for copying conditions. */
 
 #include "ImageDesignManager.h"
-#include "templates/customization/CustomizationIdManager.h"
+
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/ZoneServer.h"
-#include "templates/manager/TemplateManager.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Math.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/creature/PlayerCreatureTemplate.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/customization/CustomizationData.h"
+#include "templates/customization/CustomizationDataMap.h"
+#include "templates/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationVariable.h"
+#include "templates/customization/HairAssetData.h"
+#include "templates/customization/PaletteData.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
 
 ImageDesignManager::ImageDesignManager() {
 	setLoggingName("ImageDesignManager");

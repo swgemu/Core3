@@ -10,6 +10,19 @@
 
 class TerrainGenerator;
 
+class Point2D  {
+public:
+	float x, y;
+
+	inline float getX() const {
+		return x;
+	}
+
+	inline float getY() const {
+		return y;
+	}
+};
+
 class AffectorProceduralRule {
 protected:
 	int affectorType;

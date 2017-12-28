@@ -4,6 +4,15 @@
 
 #include "Badge.h"
 
+#include <assert.h>
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableRow.h"
+
 Badge::Badge() :
 	index(-1),
 	category(-1),

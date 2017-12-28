@@ -6,10 +6,15 @@
 #define LUASTRINGIDCHATPARAMETER_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+#include "lua.h"
 #include "server/chat/StringIdChatParameter.h"
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace chat {
+
+class StringIdChatParameter;
 
 class LuaStringIdChatParameter {
 	Reference<StringIdChatParameter*> realObject;

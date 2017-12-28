@@ -19,14 +19,27 @@
 #ifndef RECASTTILEBUILDER_H_
 #define RECASTTILEBUILDER_H_
 
-#include "engine/engine.h"
-#include "pathfinding/recast/DetourNavMesh.h"
-#include "pathfinding/recast/Recast.h"
+#include <algorithm>
 
 #include "RecastPolygon.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/AABB.h"
+#include "pathfinding/recast/DetourNavMesh.h"
+#include "pathfinding/recast/Recast.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 
 class MeshData;
-
+class RecastPolygon;
+namespace engine {
+namespace util {
+namespace u3d {
+class Vector3;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 struct rcChunkyTriMesh;
 
 static const int NAVMESHSET_MAGIC = 'M'<<24 | 'S'<<16 | 'E'<<8 | 'T'; //'MSET';

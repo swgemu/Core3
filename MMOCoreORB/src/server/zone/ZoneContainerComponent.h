@@ -13,6 +13,11 @@
 namespace server {
 	namespace zone {
 		class Zone;
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
 
 		namespace objects {
 			namespace area {

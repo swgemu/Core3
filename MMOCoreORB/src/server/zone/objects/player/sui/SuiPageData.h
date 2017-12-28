@@ -8,9 +8,35 @@
 #ifndef SUIPAGEDATA_H_
 #define SUIPAGEDATA_H_
 
-#include "engine/engine.h"
+#include <algorithm>
+
 #include "SuiCommand.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class SuiPageData : public Logger, public Object {
 	int32 id;

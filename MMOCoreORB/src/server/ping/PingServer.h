@@ -6,6 +6,25 @@
 #define PINGSERVER_H_
 
 #include "PingClient.h"
+#include "engine/service/DatagramServiceThread.h"
+#include "engine/service/ServiceHandler.h"
+
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace lang {
+class Exception;
+}  // namespace lang
+namespace net {
+class Packet;
+class Socket;
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
 
 class PingServer : public DatagramServiceThread, public ServiceHandler {
 public:

@@ -2,19 +2,51 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "server/login/LoginServer.h"
-#include "server/login/LoginClient.h"
-
-#include "LoginProcessServerImplementation.h"
-
-#include "LoginMessageProcessorTask.h"
-
-#include "conf/ConfigManager.h"
-#include "server/login/account/AccountManager.h"
+#include <stddef.h>
 
 #include "LoginHandler.h"
+#include "LoginMessageProcessorTask.h"
+#include "LoginProcessServerImplementation.h"
+#include "conf/ConfigManager.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "engine/log/Logger.h"
+#include "engine/service/DatagramServiceThread.h"
+#include "engine/service/MessageQueue.h"
+#include "engine/service/proto/BaseClientProxy.h"
+#include "engine/service/proto/BasePacketHandler.h"
+#include "server/login/LoginClient.h"
+#include "server/login/LoginServer.h"
+#include "server/login/account/AccountManager.h"
+#include "server/login/objects/GalaxyList.h"
+#include "server/login/packets/LoginClusterStatus.h"
+#include "server/login/packets/LoginEnumCluster.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/net/Packet.h"
+#include "system/net/PacketIndexOutOfBoundsException.h"
+#include "system/platform.h"
 
-#include "objects.h"
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace net {
+class Socket;
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
 
 LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 		ManagedServiceImplementation(), Logger("LoginServer") {
@@ -211,4 +243,3 @@ void LoginServerImplementation::populateGalaxyList() {
 
     enumClusterMessage->finish();
 }
-

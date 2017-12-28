@@ -1,5 +1,9 @@
 #include "LuaSkill.h"
 
+#include "server/zone/objects/creature/variables/Skill.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
 const char LuaSkill::className[] = "LuaSkill";
 
 Luna<LuaSkill>::RegType LuaSkill::Register[] = {

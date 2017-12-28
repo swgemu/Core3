@@ -1,7 +1,17 @@
 #include "SarlaccMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 void SarlaccMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);

@@ -5,11 +5,20 @@
  *      Author: kyle
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "LightsaberObjectMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "LightsaberObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
 
 void LightsaberObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

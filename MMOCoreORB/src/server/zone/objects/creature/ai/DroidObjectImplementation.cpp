@@ -2,19 +2,67 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Observer.h"
+#include "engine/util/u3d/Coordinate.h"
+#include "server/zone/managers/conversation/ConversationManager.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/ai/PatrolPoint.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/packets/object/StartNpcConversation.h"
-#include "templates/customization/AssetCustomizationManagerTemplate.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
-#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/CustomizationVariable.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace server {
+namespace zone {
+class Zone;
+namespace objects {
+namespace tangible {
+namespace tool {
+class CraftingStation;
+}  // namespace tool
+}  // namespace tangible
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();

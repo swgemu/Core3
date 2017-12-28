@@ -6,10 +6,28 @@
  */
 
 #include "LuaBuildingObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+
+#include <assert.h>
+#include <stddef.h>
+
 #include "server/zone/Zone.h"
-#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace cell {
+class CellObject;
+}  // namespace cell
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 const char LuaBuildingObject::className[] = "LuaBuildingObject";
 

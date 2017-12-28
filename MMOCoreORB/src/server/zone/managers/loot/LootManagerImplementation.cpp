@@ -5,16 +5,49 @@
  *      Author: Kyle
  */
 
-#include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
-#include "templates/LootItemTemplate.h"
-#include "templates/LootGroupTemplate.h"
-#include "server/zone/ZoneServer.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
 #include "LootGroupMap.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/loot/CrystalData.h"
+#include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
+#include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
+#include "server/zone/managers/loot/lootgroup/LootGroupEntry.h"
+#include "server/zone/managers/loot/lootgroup/LootGroups.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/LootGroupTemplate.h"
+#include "templates/LootItemTemplate.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/crafting/ValuesMap.h"
 
 void LootManagerImplementation::initialize() {
 	info("Loading configuration.");

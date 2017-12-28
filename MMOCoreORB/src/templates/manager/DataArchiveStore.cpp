@@ -6,6 +6,16 @@
  */
 
 #include "DataArchiveStore.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "system/io/File.h"
+#include "system/io/FileReader.h"
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
 #include "tre3/TreeArchive.h"
 
 DataArchiveStore::DataArchiveStore() : Logger("DataArchiveStore") {

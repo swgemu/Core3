@@ -6,11 +6,25 @@
  */
 
 #include "CityManageMilitiaSuiCallback.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "system/lang/Integer.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 
 void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 	bool cancelPressed = (eventIndex == 1);

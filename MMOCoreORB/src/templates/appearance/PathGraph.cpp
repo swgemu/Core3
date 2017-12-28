@@ -6,6 +6,11 @@
  */
 
 #include "PathGraph.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "system/platform.h"
 #include "templates/appearance/FloorMesh.h"
 
 uint32 PathNode::getID() {

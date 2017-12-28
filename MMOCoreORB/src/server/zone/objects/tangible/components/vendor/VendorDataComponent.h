@@ -8,9 +8,24 @@
 #ifndef VENDORDATACOMPONENT_H_
 #define VENDORDATACOMPONENT_H_
 
+#include <time.h>
+#include <algorithm>
+
 #include "AuctionTerminalDataComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/util/Vector.h"
 
 class VendorDataComponent: public AuctionTerminalDataComponent {
 protected:

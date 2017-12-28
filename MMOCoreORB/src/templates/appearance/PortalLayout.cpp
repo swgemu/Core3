@@ -6,7 +6,17 @@
  */
 
 #include "PortalLayout.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
 #include "engine/util/u3d/AStarAlgorithm.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/PathGraph.h"
+#include "templates/appearance/PathNode.h"
 
 void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
 	portalGeometry.removeAll(numPortals);

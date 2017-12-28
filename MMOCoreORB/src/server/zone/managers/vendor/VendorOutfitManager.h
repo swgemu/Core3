@@ -7,6 +7,12 @@
 #define VENDOROUTFITMANAGER_H_
 
 #include "Outfit.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

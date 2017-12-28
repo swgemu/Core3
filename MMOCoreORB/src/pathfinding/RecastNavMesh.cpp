@@ -7,6 +7,15 @@
 
 #include "RecastNavMesh.h"
 
+#include <stdio.h>
+#include <string.h>
+
+#include "pathfinding/recast/DetourAlloc.h"
+#include "pathfinding/recast/DetourStatus.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/platform.h"
+
 bool RecastNavMesh::toBinaryStream(ObjectOutputStream* stream) {
 	saveAll(stream);
 	return true;

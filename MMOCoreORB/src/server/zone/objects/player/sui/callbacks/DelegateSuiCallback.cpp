@@ -6,9 +6,31 @@
  */
 
 #include "DelegateSuiCallback.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/commands/DelegateFactionPointsCommand.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Integer.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DelegateSuiCallback::DelegateSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 }

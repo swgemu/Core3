@@ -6,10 +6,23 @@
  */
 
 #include "PermissionsServlet.h"
-#include "../../WebServer.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
+#include "server/login/objects/CharacterList.h"
+#include "server/login/objects/CharacterListEntry.h"
+#include "server/web/servlets/permissions/../../HttpRequest.h"
+#include "server/web/servlets/permissions/../../HttpResponse.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PermissionLevelList.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 PermissionsServlet::PermissionsServlet(String context) :
 Servlet(context) {

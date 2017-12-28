@@ -6,6 +6,11 @@
  */
 
 #include "templates/datatables/DataTableIff.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
 #include "templates/datatables/DataTableCell.h"
 #include "templates/datatables/DataTableRow.h"
 

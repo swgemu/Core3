@@ -8,13 +8,57 @@
 #ifndef COMBATMANAGER_H_
 #define COMBATMANAGER_H_
 
+#include <algorithm>
+
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 
-class CreatureAttackData;
 class CombatQueueCommand;
+class CreatureAttackData;
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+class VehicleObject;
+namespace ai {
+class AiAgent;
+}  // namespace ai
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+namespace tangible {
+class TangibleObject;
+namespace weapon {
+class WeaponObject;
+}  // namespace weapon
+namespace wearables {
+class ArmorObject;
+}  // namespace wearables
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+}  // namespace util
+}  // namespace sys
 
 class CombatManager : public Singleton<CombatManager>, public Logger, public Object {
 

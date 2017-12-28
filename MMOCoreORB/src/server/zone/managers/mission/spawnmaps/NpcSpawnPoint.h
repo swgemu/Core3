@@ -5,13 +5,49 @@
 #ifndef NPCSPAWNPOINT_H_
 #define NPCSPAWNPOINT_H_
 
-#include "engine/util/u3d/Vector3.h"
-#include "engine/util/u3d/Quaternion.h"
-#include "engine/log/Logger.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/creature/CreatureManager.h"
-#include "terrain/manager/TerrainManager.h"
 #include <fstream>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/Quaternion.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "terrain/manager/TerrainManager.h"
+
+class TerrainManager;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+class CreatureManager;
+}  // namespace creature
+namespace mission {
+class MissionManager;
+}  // namespace mission
+}  // namespace managers
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
 namespace zone {

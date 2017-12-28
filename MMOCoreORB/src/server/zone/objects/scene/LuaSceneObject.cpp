@@ -6,12 +6,27 @@
  */
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/managers/director/DirectorManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Coordinate.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "templates/SharedObjectTemplate.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 

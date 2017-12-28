@@ -6,14 +6,42 @@
  */
 
 #include "PlaceCityHallComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/city/CityManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/PlaceCityHallSuiCallback.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/sui/callbacks/PlaceCityHallSuiCallback.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace deed {
+namespace structure {
+class StructureDeed;
+}  // namespace structure
+}  // namespace deed
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	PlayerObject* ghost = creature->getPlayerObject();

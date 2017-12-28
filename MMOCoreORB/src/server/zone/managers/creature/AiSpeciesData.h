@@ -2,6 +2,9 @@
 #ifndef AISPECIESDATA_H_
 #define AISPECIESDATA_H_
 
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+
 namespace server {
 namespace zone {
 namespace managers {

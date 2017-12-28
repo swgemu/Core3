@@ -6,9 +6,36 @@
  */
 
 #include "ResourceLabratory.h"
+
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/objects/tangible/component/Component.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/Component.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "system/lang/Math.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/crafting/ValuesMap.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+}  // namespace zone
+}  // namespace server
 
 ResourceLabratory::ResourceLabratory() {
 	setLoggingName("ResourceLabratory");

@@ -5,20 +5,41 @@
  *      Author: loshult
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
+#include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 #include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
 #include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/objects/tangible/consumable/Consumable.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
-#include "server/zone/Zone.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+#include "templates/faction/Factions.h"
 
 int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();

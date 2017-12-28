@@ -8,10 +8,36 @@
 #ifndef BLUEPRINTENTRY_H_
 #define BLUEPRINTENTRY_H_
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+class SuiListBox;
+}  // namespace listbox
+}  // namespace sui
+}  // namespace player
+}  // namespace objects
+namespace packets {
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

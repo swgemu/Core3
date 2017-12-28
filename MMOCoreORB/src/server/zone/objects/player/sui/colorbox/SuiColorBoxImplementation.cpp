@@ -5,7 +5,23 @@
  *      Author: victor
  */
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiColorBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.ColorPicker");

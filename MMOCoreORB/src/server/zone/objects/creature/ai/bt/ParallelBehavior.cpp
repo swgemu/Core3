@@ -7,6 +7,14 @@
 
 #include "ParallelBehavior.h"
 
+#include <stddef.h>
+
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/bt/Behavior.h"
+#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+
 ParallelBehavior::ParallelBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 	numFailed = 0;
 	numSucceeded = 0;

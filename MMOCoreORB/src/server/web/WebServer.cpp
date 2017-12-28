@@ -3,15 +3,44 @@
 		See file COPYING for copying conditions.*/
 
 #include "WebServer.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+#include <stddef.h>
+
+#include "conf/ConfigManager.h"
+#include "engine/db/Database.h"
+#include "engine/db/ResultSet.h"
+#include "engine/orb/DistributedObjectBroker.h"
+#include "server/db/ServerDatabase.h"
+#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
+#include "server/web/WebCredentials.h"
+#include "server/web/servlets/../HttpRequest.h"
+#include "server/web/servlets/admin/../Servlet.h"
+#include "server/web/session/HttpSession.h"
+#include "server/web/session/HttpSessionList.h"
+#include "servlets/account/AccountServlet.h"
+#include "servlets/admin/AdminServlet.h"
+#include "servlets/character/CharacterServlet.h"
 #include "servlets/login/LoginServlet.h"
 #include "servlets/logs/LogsServlet.h"
 #include "servlets/main/MainServlet.h"
-#include "servlets/character/CharacterServlet.h"
-#include "servlets/account/AccountServlet.h"
 #include "servlets/permissions/PermissionsServlet.h"
-#include "servlets/admin/AdminServlet.h"
+#include "system/io/File.h"
+#include "system/io/FileNotFoundException.h"
+#include "system/io/FileReader.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Integer.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/security/Crypto.h"
+
+namespace server {
+namespace login {
+class LoginClient;
+}  // namespace login
+}  // namespace server
+struct mg_context;
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;

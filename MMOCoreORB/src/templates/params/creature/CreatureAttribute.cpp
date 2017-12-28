@@ -4,6 +4,8 @@
 
 #include "CreatureAttribute.h"
 
+#include <ctype.h>
+
 const uint8 CreatureEncumbrance::HEALTH = 0;
 const uint8 CreatureEncumbrance::ACTION = 1;
 const uint8 CreatureEncumbrance::MIND = 2;

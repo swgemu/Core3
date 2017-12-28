@@ -2,18 +2,35 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/Zone.h"
-
-#include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/packets/chat/ChatOnLeaveRoom.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/packets/chat/ChatRoomList.h"
+#include "system/lang/Long.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 void ChatRoomImplementation::init(ZoneServer* serv, ChatRoom* parent, const String& roomName) {
 	server = serv;

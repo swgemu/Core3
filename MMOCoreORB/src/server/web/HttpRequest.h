@@ -8,12 +8,22 @@
 #ifndef HTTPREQUEST_H_
 #define HTTPREQUEST_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
 #include "mongoose/mongoose.h"
 #include "session/HttpSession.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace web {
+
+namespace session {
+class HttpSession;
+}  // namespace session
 
 class HttpRequest {
 private:

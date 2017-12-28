@@ -6,8 +6,27 @@
  */
 
 #include "LuaSuiCallback.h"
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
 #include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/objects/player/sui/SuiBox.h"
+#include "system/lang/UnicodeString.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace player {
+namespace sui {
+class SuiBox;
+}  // namespace sui
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void LuaSuiCallback::run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();

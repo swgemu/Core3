@@ -9,6 +9,11 @@
 #define GUILDMEMBERINFO_H_
 
 #include "engine/engine.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 namespace server {
 namespace zone {
