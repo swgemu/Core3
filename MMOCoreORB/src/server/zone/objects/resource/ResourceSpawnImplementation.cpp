@@ -2,12 +2,38 @@
  				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "server/zone/objects/resource/ResourceSpawn.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
+#include <time.h>
+#include <algorithm>
 
+#include "engine/core/ManagedReference.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/resource/SpawnDensityMap.h"
+#include "server/zone/objects/resource/SpawnMap.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 		CreatureObject* object) {

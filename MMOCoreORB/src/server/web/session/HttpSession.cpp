@@ -6,7 +6,16 @@
  */
 
 #include "HttpSession.h"
+
+#include <time.h>
+
 #include "../WebServer.h"
+#include "server/web/session/../servlets/../HttpRequest.h"
+#include "server/web/session/../servlets/../HttpResponse.h"
+#include "server/web/session/../session/HttpSession.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
 ///#include "../HttpRequest.h"
 //#include "../HttpResponse.h"
 

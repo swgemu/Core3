@@ -8,23 +8,61 @@
 #ifndef TEMPLATEMANAGER_H_
 #define TEMPLATEMANAGER_H_
 
-#include "engine/util/ObjectFactory.h"
-#include "system/util/SynchronizedVectorMap.h"
+#include <stddef.h>
 
+#include "engine/log/Logger.h"
+#include "engine/util/ObjectFactory.h"
+#include "engine/util/Singleton.h"
+#include "lua.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/HashTable.h"
+#include "system/util/SynchronizedVectorMap.h"
+#include "system/util/VectorMap.h"
 #include "templates/SharedObjectTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
-#include "templates/slots/SlotId.h"
-#include "templates/slots/SlotDescriptor.h"
-#include "templates/slots/ArrangementDescriptor.h"
-#include "templates/manager/PlanetMapCategoryList.h"
 #include "templates/manager/PlanetMapCategory.h"
+#include "templates/manager/PlanetMapCategoryList.h"
 #include "templates/manager/PortalLayoutMap.h"
+#include "templates/slots/ArrangementDescriptor.h"
+#include "templates/slots/SlotDescriptor.h"
+#include "templates/slots/SlotId.h"
 
-class TemplateCRCMap;
+class AppearanceMap;
+class AppearanceTemplate;
 class ClientTemplateCRCMap;
-
-class TreeDirectory;
+class FloorMesh;
+class FloorMeshMap;
+class InteriorLayoutTemplate;
+class InteriorMap;
 class PaletteTemplate;
+class PortalLayout;
+class PortalLayoutMap;
+class SharedObjectTemplate;
+class TemplateCRCMap;
+class TreeDirectory;
+namespace engine {
+namespace lua {
+class Lua;
+class LuaObject;
+}  // namespace lua
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+}  // namespace io
+namespace thread {
+namespace atomic {
+class AtomicInteger;
+}  // namespace atomic
+}  // namespace thread
+}  // namespace sys
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger, public Object {
 	TemplateCRCMap* templateCRCMap;

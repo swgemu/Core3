@@ -2,11 +2,11 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "server/login/LoginServer.h"
+#include <stddef.h>
 
 #include "LoginPacketHandler.h"
-
 #include "LoginProcessServerImplementation.h"
+#include "server/login/LoginServer.h"
 
 LoginProcessServerImplementation::LoginProcessServerImplementation(LoginServer* serv) {
 	server = serv;

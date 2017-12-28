@@ -5,13 +5,31 @@
  *      Author: Anakis
  */
 
-#include "server/zone/managers/minigames/ForageManager.h"
-#include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/minigames/events/ForagingEvent.h"
-#include "server/zone/objects/area/ForageAreaCollection.h"
-#include "templates/params/creature/CreatureAttribute.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/managers/minigames/events/ForagingEvent.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/objects/area/ForageAreaCollection.h"
+#include "server/zone/objects/area/ForageMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void ForageManagerImplementation::startForaging(CreatureObject* player, int forageType) {
 	if (player == NULL)

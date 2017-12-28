@@ -8,6 +8,8 @@
 
 #include "SharedStructureObjectTemplate.h"
 
+#include "engine/lua/LuaObject.h"
+
 
 void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	SharedTangibleObjectTemplate::readObject(templateData);

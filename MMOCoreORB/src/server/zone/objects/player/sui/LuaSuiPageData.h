@@ -9,7 +9,12 @@
 #define LUASUIPAGEDATA_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+#include "lua.h"
 #include "server/zone/objects/player/sui/SuiPageData.h"
+#include "system/lang/ref/Reference.h"
+
+class SuiPageData;
 
 class LuaSuiPageData {
 public:

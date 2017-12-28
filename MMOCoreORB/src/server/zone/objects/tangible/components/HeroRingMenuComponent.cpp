@@ -1,10 +1,21 @@
 #include "HeroRingMenuComponent.h"
+
+#include <stddef.h>
+
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/HeroRingDataComponent.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/tangible/components/HeroRingDataComponent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void HeroRingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

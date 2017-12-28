@@ -1,10 +1,20 @@
 
 #include "Zone.h"
-#include "ZoneClientThread.h"
 
-#include "server/zone/packets/zone/ClientIDMessage.h"
-#include "client/zone/managers/objectcontroller/ObjectController.h"
+#include <stdlib.h>
+
+#include "ZoneClientThread.h"
 #include "client/zone/managers/object/ObjectManager.h"
+#include "client/zone/managers/objectcontroller/ObjectController.h"
+#include "engine/service/proto/BaseClient.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/packets/zone/ClientIDMessage.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/System.h"
+#include "system/thread/Locker.h"
+#include "zone/ZoneClient.h"
+#include "zone/objects/player/PlayerCreature.h"
 
 int Zone::createdChar = 0;
 
@@ -61,10 +71,6 @@ void Zone::run() {
 		client->getClient()->info("sent client id message");
 
 		started = true;
-
-#ifdef WITH_STM
-	//TransactionalMemoryManager::commitPureTransaction();
-#endif
 
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";

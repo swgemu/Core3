@@ -5,12 +5,26 @@
 #ifndef ZONE_H_
 #define ZONE_H_
 
+#include <algorithm>
+
 #include "ZoneClient.h"
 #include "client/zone/objects/player/PlayerCreature.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Condition.h"
+#include "system/thread/Mutex.h"
+#include "system/thread/Thread.h"
+#include "system/util/Vector.h"
+#include "zone/objects/scene/SceneObject.h"
 
-class ZoneClientThread;
 class ObjectController;
 class ObjectManager;
+class PlayerCreature;
+class ZoneClient;
+class ZoneClientThread;
 
 class Zone : public Thread, public Mutex, public Logger {
 	//LoginSession* loginSession;

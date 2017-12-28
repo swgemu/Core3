@@ -1,5 +1,8 @@
 
 #include "server/zone/objects/region/LuaCityRegion.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/region/CityRegion.h"
 
 const char LuaCityRegion::className[] = "LuaCityRegion";

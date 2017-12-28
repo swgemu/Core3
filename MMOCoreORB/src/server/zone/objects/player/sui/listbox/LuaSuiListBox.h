@@ -3,7 +3,10 @@
 #define LUASUILISTBOX_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+#include "lua.h"
 #include "server/zone/objects/player/sui/LuaSuiBox.h"
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace zone {

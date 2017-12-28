@@ -1,10 +1,23 @@
 #include "EnclaveContainerComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/variables/FrsData.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
-#include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/FrsData.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/SortedVector.h"
 
 bool EnclaveContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	if (sceneObject->isBuildingObject())

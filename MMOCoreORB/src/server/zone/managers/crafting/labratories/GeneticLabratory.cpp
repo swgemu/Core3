@@ -6,12 +6,34 @@
  */
 
 #include "GeneticLabratory.h"
-#include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
-#include "server/zone/objects/tangible/component/dna/DnaComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "Genetics.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/dna/DnaComponent.h"
+#include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/HashTable.h"
+#include "templates/crafting/ValuesMap.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+}  // namespace zone
+}  // namespace server
 
 GeneticLabratory::GeneticLabratory() {
 }

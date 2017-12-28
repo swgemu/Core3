@@ -8,17 +8,25 @@
 #ifndef TERRAINGENERATOR_H_
 #define TERRAINGENERATOR_H_
 
-#include "TemplateVariable.h"
-#include "ShadersGroup.h"
-#include "RadialGroup.h"
-#include "FloraGroup.h"
-#include "EnvironmentGroup.h"
-#include "MapGroup.h"
-#include "LayersGroup.h"
-#include "layer/Layer.h"
 #include "BitmapGroup.h"
+#include "EnvironmentGroup.h"
+#include "FloraGroup.h"
+#include "LayersGroup.h"
+#include "MapGroup.h"
+#include "RadialGroup.h"
+#include "ShadersGroup.h"
+#include "TemplateVariable.h"
+#include "layer/Layer.h"
+#include "terrain/layer/../TemplateVariable.h"
 
+class Layer;
+class MapFractal;
 class ProceduralTerrainAppearance;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class TerrainGenerator : public TemplateVariable<'TGEN'> {
 	ProceduralTerrainAppearance* terrain;

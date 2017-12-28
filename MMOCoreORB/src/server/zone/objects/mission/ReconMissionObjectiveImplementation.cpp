@@ -5,15 +5,28 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/ReconMissionObjective.h"
-#include "server/zone/objects/area/MissionReconActiveArea.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
+#include "server/zone/objects/area/MissionReconActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/ReconMissionObjective.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "terrain/manager/TerrainManager.h"
 
 void ReconMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();

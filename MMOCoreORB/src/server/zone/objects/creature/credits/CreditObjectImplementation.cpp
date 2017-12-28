@@ -1,6 +1,12 @@
+#include <assert.h>
+#include <stddef.h>
+
+#include "engine/core/ManagedObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/credits/CreditObject.h"
 #include "server/zone/packets/DeltaMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
 
 void CreditObjectImplementation::setCashCredits(int credits, bool notifyClient) {
 	if (cashCredits == credits)

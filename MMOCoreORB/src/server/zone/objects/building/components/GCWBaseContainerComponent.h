@@ -11,6 +11,23 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+class BuildingObject;
+}  // namespace building
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class GCWBaseContainerComponent : public StructureContainerComponent {
 public:

@@ -7,6 +7,12 @@
 
 #include "StringFile.h"
 
+#include "system/io/ObjectInputStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
+
 StringFile::StringFile() {
 	setLoggingName("StringFile");
 }

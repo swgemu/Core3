@@ -5,16 +5,40 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/EntertainerMissionObjective.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/EntertainerMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/mission/events/CompleteMissionAfterCertainTimeTask.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/params/ObserverEventType.h"
+#include "terrain/manager/TerrainManager.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void EntertainerMissionObjectiveImplementation::activate() {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());

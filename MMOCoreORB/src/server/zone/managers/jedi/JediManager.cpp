@@ -3,7 +3,27 @@
 		See file COPYING for copying conditions.*/
 
 #include "JediManager.h"
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+#include "lua.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;

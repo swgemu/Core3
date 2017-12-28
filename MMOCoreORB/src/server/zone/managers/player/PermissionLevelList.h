@@ -8,7 +8,21 @@
 #ifndef PERMISSIONLEVELLIST_H_
 #define PERMISSIONLEVELLIST_H_
 
+#include <stddef.h>
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/Singleton.h"
+#include "lua.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 class PermissionLevel : public Object{
 protected:

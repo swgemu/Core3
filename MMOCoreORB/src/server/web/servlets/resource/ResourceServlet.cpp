@@ -7,6 +7,8 @@
 
 #include "ResourceServlet.h"
 
+#include "server/web/servlets/resource/../Servlet.h"
+
 ResourceServlet::ResourceServlet(String context) : Servlet(context) {
 	// TODO Auto-generated constructor stub
 

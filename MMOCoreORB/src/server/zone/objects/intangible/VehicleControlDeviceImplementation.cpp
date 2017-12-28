@@ -5,18 +5,40 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/intangible/VehicleControlDevice.h"
-#include "server/zone/objects/intangible/VehicleControlObserver.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/creature/events/VehicleDecayTask.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/Zone.h"
-#include "tasks/CallMountTask.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/intangible/VehicleControlObserver.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "tasks/CallMountTask.h"
+#include "templates/params/ObserverEventType.h"
 
 void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
 	if (player->isDead() || player->isIncapacitated())

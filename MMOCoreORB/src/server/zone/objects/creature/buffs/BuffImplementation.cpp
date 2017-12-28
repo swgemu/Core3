@@ -2,15 +2,35 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "engine/engine.h"
+#include <assert.h>
+#include <math.h>
+#include <time.h>
+#include <algorithm>
 
-#include "server/zone/objects/creature/buffs/Buff.h"
 #include "BuffDurationEvent.h"
-
-#include "templates/params/creature/CreatureAttribute.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/Buffs.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/packets/object/Buffs.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Float.h"
+#include "system/lang/Integer.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void BuffImplementation::init() {
 	attributeModifiers.setNoDuplicateInsertPlan();

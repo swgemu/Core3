@@ -5,17 +5,51 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/area/SpawnArea.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/util/Observable.h"
+#include "engine/util/u3d/Vector3.h"
+
+#include "server/ServerCore.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/LairSpawn.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
 //#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/objects/area/SpawnAreaObserver.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
-#include "server/ServerCore.h"
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "templates/params/ObserverEventType.h"
+
 #include "events/RemoveNoSpawnAreaTask.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+}  // namespace engine
 
 void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();

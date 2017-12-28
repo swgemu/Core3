@@ -9,6 +9,19 @@
 #define MANTISDATABASE_H_
 
 #include "engine/engine.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace db {
+class Database;
+}  // namespace db
+}  // namespace engine
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 namespace conf {
 	class ConfigManager;

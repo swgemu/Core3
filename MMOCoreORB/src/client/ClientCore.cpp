@@ -2,12 +2,25 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "client/zone/Zone.h"
-#include "client/zone/managers/object/ObjectManager.h"
+#include <stdio.h>
 
 #include "ClientCore.h"
-
 #include "client/login/LoginSession.h"
+#include "client/zone/Zone.h"
+#include "client/zone/managers/object/ObjectManager.h"
+#include "system/io/PrintStream.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/ArrayIndexOutOfBoundsException.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Integer.h"
+#include "system/lang/StackTrace.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/net/SocketException.h"
+#include "system/platform.h"
+#include "system/thread/Thread.h"
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
 	ClientCore::instances = instances;

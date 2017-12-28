@@ -8,10 +8,31 @@
 #ifndef ABILITYLIST_H_
 #define ABILITYLIST_H_
 
+#include <stddef.h>
+#include <algorithm>
+
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "system/lang/String.h"
+#include "system/lang/types.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 
 class Ability;
+class DeltaMessage;
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 /**
  * The ability list is just a vector of strings that award the ability to perform specific actions.

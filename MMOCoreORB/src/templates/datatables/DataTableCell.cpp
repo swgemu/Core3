@@ -7,6 +7,10 @@
 
 #include "templates/datatables/DataTableCell.h"
 
+#include "system/io/StringTokenizer.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+
 /**
  * Parses the string as a comma delimited vector into a SortedVector of Strings.
  */

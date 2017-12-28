@@ -8,10 +8,22 @@
 #ifndef RECASTNAVMESH_H_
 #define RECASTNAVMESH_H_
 
+#include <stddef.h>
+
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
 #include "pathfinding/RecastTileBuilder.h"
+#include "pathfinding/recast/DetourNavMesh.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
 
 class dtNavMesh;
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class RecastNavMesh : public Object, Logger {
 	void loadAll(ObjectInputStream* stream);

@@ -5,11 +5,21 @@
  *      Author: victor
  */
 
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/installation/HopperList.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
-#include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))

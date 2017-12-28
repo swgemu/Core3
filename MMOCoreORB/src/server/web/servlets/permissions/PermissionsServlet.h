@@ -9,6 +9,15 @@
 #define PERMISSIONSSERVLET_H_
 
 #include "../Servlet.h"
+#include "server/web/servlets/permissions/../../servlets/Servlet.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 class PermissionsServlet: public Servlet {
 public:

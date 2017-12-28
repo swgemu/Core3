@@ -3,13 +3,25 @@
 		See file COPYING for copying conditions.*/
 
 
-#include "objects.h"
+#include <algorithm>
 
 #include "LoginPacketHandler.h"
-#include "server/login/LoginServer.h"
 #include "LoginProcessServerImplementation.h"
-
 #include "account/AccountManager.h"
+#include "engine/db/Database.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ResultSet.h"
+#include "engine/service/Message.h"
+#include "server/db/ServerDatabase.h"
+#include "server/login/LoginClient.h"
+#include "server/login/LoginServer.h"
+#include "server/login/packets/DeleteCharacterReplyMessage.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv)
 		: Logger(s) {

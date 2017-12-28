@@ -8,7 +8,25 @@
 #ifndef ZONECLOSEOBJECTSVECTOR_H_
 #define ZONECLOSEOBJECTSVECTOR_H_
 
+#include <algorithm>
+
+#include "system/lang/Object.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/ReadWriteLock.h"
 #include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+}  // namespace engine
+namespace sys {
+namespace util {
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
  namespace zone {
@@ -42,11 +60,11 @@ public:
 	void safeCopyTo(Vector<server::zone::QuadTreeEntry*>& vec) const;
 
 	void safeCopyReceiversTo(Vector<server::zone::QuadTreeEntry*>& vec, uint32 receiverType) const;
-	void safeCopyReceiversTo(Vector<ManagedReference<server::zone::QuadTreeEntry*> >& vec, uint32 receiverType) const;
+	void safeCopyReceiversTo(Vector<engine::core::ManagedReference<server::zone::QuadTreeEntry*> >& vec, uint32 receiverType) const;
 
-	void safeCopyTo(Vector<ManagedReference<server::zone::QuadTreeEntry*> >& vec) const;
+	void safeCopyTo(Vector<engine::core::ManagedReference<server::zone::QuadTreeEntry*> >& vec) const;
 
-	SortedVector<ManagedReference<server::zone::QuadTreeEntry*> > getSafeCopy() const;
+	SortedVector<engine::core::ManagedReference<server::zone::QuadTreeEntry*> > getSafeCopy() const;
 
 	Reference<server::zone::QuadTreeEntry*> get(int idx) const;
 

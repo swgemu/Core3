@@ -6,13 +6,24 @@
  */
 
 #include "HolocronManager.h"
+
+#include <stddef.h>
+
+#include "BugCategory.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/db/Database.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ResultSet.h"
+#include "server/db/MantisDatabase.h"
+#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
 #include "server/zone/ZoneClientSession.h"
-#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServer.h"
 //#include "server/zone/packets/ui/CreateTicketResponseMessage.h"
 #include "server/zone/packets/ui/RequestCategoriesResponseMessage.h"
-#include "server/db/MantisDatabase.h"
-#include "server/login/account/AccountManager.h"
-#include "BugCategory.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
 
 void HolocronManager::loadBugCategories() {
 	return;

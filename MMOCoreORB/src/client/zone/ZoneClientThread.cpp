@@ -6,7 +6,11 @@
  */
 
 #include "ZoneClientThread.h"
+
+#include <stddef.h>
+
 #include "ZoneClient.h"
+#include "engine/service/proto/BaseClient.h"
 
 ZoneClientThread::ZoneClientThread(ZoneClient* zoneClient) : Thread() {
 	client = zoneClient;

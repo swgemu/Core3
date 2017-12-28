@@ -5,13 +5,23 @@
  *      Author: xyborn
  */
 
-#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "templates/tangible/StructureDeedTemplate.h"
+#include <stddef.h>
+
+#include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/manager/TemplateManager.h"
-#include "server/zone/managers/components/ComponentManager.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/tangible/StructureDeedTemplate.h"
 
 void StructureDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();

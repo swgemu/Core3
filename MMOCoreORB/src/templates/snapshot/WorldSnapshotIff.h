@@ -8,8 +8,18 @@
 #ifndef WORLDSNAPSHOTIFF_H_
 #define WORLDSNAPSHOTIFF_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
 #include "templates/snapshot/WorldSnapshotNode.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class WorldSnapshotIff : public IffTemplate {
 	Vector<WorldSnapshotNode> nodes;

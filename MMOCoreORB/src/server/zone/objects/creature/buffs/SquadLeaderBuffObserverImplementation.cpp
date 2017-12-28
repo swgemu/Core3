@@ -5,15 +5,31 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/creature/buffs/SquadLeaderBuffObserver.h"
-#include "server/zone/objects/creature/buffs/SquadLeaderBuff.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/scene/SceneObjectType.h"
-
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-
+#include "server/zone/objects/creature/buffs/SquadLeaderBuff.h"
+#include "server/zone/objects/creature/buffs/SquadLeaderBuffObserver.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType != ObserverEventType::PARENTCHANGED && eventType != ObserverEventType::BHTEFCHANGED && eventType != ObserverEventType::FACTIONCHANGED && eventType != ObserverEventType::OBJECTDESTRUCTION && eventType != ObserverEventType::CREATUREREVIVED)

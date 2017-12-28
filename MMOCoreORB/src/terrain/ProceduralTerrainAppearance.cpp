@@ -6,10 +6,24 @@
  */
 
 #include "ProceduralTerrainAppearance.h"
+
+#include <float.h>
+#include <math.h>
+#include <stddef.h>
+
 #include "TerrainGenerator.h"
 #include "TerrainMaps.h"
-#include "layer/boundaries/Boundary.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/u3d/Vector3.h"
 #include "layer/affectors/AffectorHeightConstant.h"
+#include "layer/boundaries/Boundary.h"
+#include "system/lang/Exception.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "terrain/LayersGroup.h"
+#include "terrain/layer/Layer.h"
+#include "terrain/layer/affectors/AffectorProceduralRule.h"
+#include "terrain/layer/filters/FilterProceduralRule.h"
 
 ProceduralTerrainAppearance::ProceduralTerrainAppearance() : Logger("ProceduralTerrainAppearance") {
 	terrainGenerator = new TerrainGenerator(this);

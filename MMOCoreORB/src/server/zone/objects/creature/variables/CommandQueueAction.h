@@ -5,7 +5,11 @@
 #ifndef COMMANDQUEUEACTION_H_
 #define COMMANDQUEUEACTION_H_
 
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "system/lang/Object.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {

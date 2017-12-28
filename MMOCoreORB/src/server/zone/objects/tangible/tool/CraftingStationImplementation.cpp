@@ -2,15 +2,33 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/tool/CraftingStationTemplate.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/tangible/tool/CraftingStationTemplate.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

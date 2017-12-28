@@ -1,15 +1,40 @@
-#include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+
 #include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/tangible/tasks/LotteryDroidPulseTask.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/creature/sui/LotteryDroidSuiCallback.h"
-#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
+#include "server/zone/objects/tangible/tasks/LotteryDroidPulseTask.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/util/Vector.h"
+#include "server/zone/objects/creature/sui/LotteryDroidSuiCallback.h"
+
 
 void LotteryDroidImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

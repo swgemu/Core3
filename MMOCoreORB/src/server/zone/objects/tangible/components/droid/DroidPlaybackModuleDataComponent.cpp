@@ -3,21 +3,58 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidPlaybackModuleDataComponent.h"
+
+#include <math.h>
+#include <stddef.h>
+
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/types.h"
+#include "system/thread/Locker.h"
+
+#include "engine/core/Core.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseMessage.h"
+
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/objects/player/events/RecordTrackTimeoutEvent.h"
-#include "server/zone/objects/creature/events/DroidPlaybackTask.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/SelectTrackSuiCallback.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/skill/PerformanceManager.h"
-#include "server/zone/packets/object/Flourish.h"
 #include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/events/DroidPlaybackTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/events/RecordTrackTimeoutEvent.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/packets/object/Flourish.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "templates/params/ObserverEventType.h"
 #include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreaturePosture.h"
+
+#include "server/zone/objects/player/sui/callbacks/SelectTrackSuiCallback.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidPlaybackModuleDataComponent::DroidPlaybackModuleDataComponent() {
 	active = false;

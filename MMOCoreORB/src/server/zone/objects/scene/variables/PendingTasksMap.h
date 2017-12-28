@@ -8,7 +8,14 @@
 #ifndef PENDINGTASKSMAP_H_
 #define PENDINGTASKSMAP_H_
 
+#include "engine/core/Task.h"
 #include "engine/engine.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Mutex.h"
+#include "system/util/ArrayList.h"
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

@@ -5,21 +5,40 @@
  *      Author: victor
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BasePacket.h"
+#include "engine/util/u3d/Vector3.h"
+#include "events/CompleteMissionObjectiveTask.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/statistics/StatisticsManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/MissionObjective.h"
 #include "server/zone/objects/mission/MissionObserver.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/managers/mission/MissionManager.h"
-#include "server/zone/managers/statistics/StatisticsManager.h"
-#include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
-#include "events/CompleteMissionObjectiveTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/packets/player/PlayMusicMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "templates/faction/Factions.h"
+#include "terrain/manager/TerrainManager.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {

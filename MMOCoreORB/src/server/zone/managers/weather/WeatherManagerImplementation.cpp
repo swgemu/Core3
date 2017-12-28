@@ -5,15 +5,30 @@
  *      Author: Anakis
  */
 
-#include "server/zone/managers/weather/WeatherManager.h"
-#include "server/zone/Zone.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
 #include "events/WeatherChangeEvent.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/scene/ServerWeatherMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreaturePosture.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "weathermaps/WeatherMap.h"
-#include "server/zone/packets/scene/ServerWeatherMessage.h"
 
 void WeatherManagerImplementation::initialize() {
 	//Customize the Manager's name.

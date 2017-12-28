@@ -6,7 +6,15 @@
  */
 
 #include "AffectorHeightFractal.h"
+
 #include "../../TerrainGenerator.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+#include "terrain/layer/affectors/../../MapFractal.h"
+#include "terrain/layer/affectors/../../TemplateVariable.h"
 
 void AffectorHeightFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
 	if (transformValue == 0)

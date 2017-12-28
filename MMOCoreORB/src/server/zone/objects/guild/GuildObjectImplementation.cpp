@@ -5,13 +5,36 @@
  *      Author: crush
  */
 
-#include "server/zone/objects/guild/GuildObject.h"
-#include "server/zone/ZoneServer.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
+#include "server/zone/objects/guild/GuildMemberList.h"
+#include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/guild/GuildUpdateEvent.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 #define EVENT_RANDOM_MAX_DELTA 3600 * 2 /*2 hours*/
 

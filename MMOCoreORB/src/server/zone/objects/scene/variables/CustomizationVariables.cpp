@@ -5,8 +5,19 @@
 #include "CustomizationVariables.h"
 
 #include "engine/db/BinaryData.h"
-
+#include "engine/log/Logger.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StackTrace.h"
+#include "system/lang/StringBuffer.h"
+#include "system/util/SortedVector.h"
 #include "templates/customization/CustomizationIdManager.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 CustomizationVariables::CustomizationVariables() : VectorMap<uint8, int16>(1, 1) {
 	removeAll();

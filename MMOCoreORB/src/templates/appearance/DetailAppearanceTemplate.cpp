@@ -7,6 +7,10 @@
  */
 
 #include "DetailAppearanceTemplate.h"
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/lang/String.h"
 #include "templates/manager/TemplateManager.h"
 
 void DetailAppearanceTemplate::parse(IffStream* iffStream) {

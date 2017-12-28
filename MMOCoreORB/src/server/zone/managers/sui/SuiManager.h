@@ -5,8 +5,29 @@
 #ifndef SUIMANAGER_H_
 #define SUIMANAGER_H_
 
-#include "server/zone/objects/player/sui/SuiPageData.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/player/sui/SuiPageData.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+class SuiPageData;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+namespace sys {
+namespace lang {
+class UnicodeString;
+}  // namespace lang
+namespace util {
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
  namespace zone {

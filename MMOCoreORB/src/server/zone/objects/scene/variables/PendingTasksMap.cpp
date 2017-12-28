@@ -5,9 +5,28 @@
  *      Author: TheAnswer
  */
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include <stddef.h>
 
 #include "OrderedTaskExecutioner.h"
+#include "engine/core/Task.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
+#include "system/util/ArrayList.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 using namespace server::zone::objects::scene::variables;
 using namespace server::zone::objects::scene;

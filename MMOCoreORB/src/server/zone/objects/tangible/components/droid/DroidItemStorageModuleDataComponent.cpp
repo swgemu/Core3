@@ -3,9 +3,33 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidItemStorageModuleDataComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidItemStorageModuleDataComponent::DroidItemStorageModuleDataComponent() {
 	setLoggingName("DroidItemStorageModule");

@@ -3,8 +3,25 @@
 		See file COPYING for copying conditions.*/
 
 #include "ZoneClient.h"
-#include "ZonePacketHandler.h"
+
 #include "ZoneMessageProcessorTask.h"
+#include "ZonePacketHandler.h"
+#include "engine/core/Core.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BasePacketHandler.h"
+#include "zone/objects/player/PlayerCreature.h"
+
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace net {
+class Packet;
+}  // namespace net
+}  // namespace sys
 
 ZoneClient::ZoneClient(int port) {
 	client = new BaseClient("localhost", port);

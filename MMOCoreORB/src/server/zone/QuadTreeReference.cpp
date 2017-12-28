@@ -7,6 +7,13 @@
 
 #include "QuadTreeReference.h"
 
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
+
 using namespace server::zone;
 
 bool QuadTreeReference::toBinaryStream(ObjectOutputStream* stream) {

@@ -1,12 +1,28 @@
 
 #include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
-#include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
-#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/orb/ObjectBroker.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 #include "templates/tangible/EventPerkDeedTemplate.h"
-#include "server/chat/StringIdChatParameter.h"
 
 void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);

@@ -4,6 +4,15 @@
 
 #include "ConfigManager.h"
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/LuaObject.h"
+#include "system/io/File.h"
+#include "system/io/FileNotFoundException.h"
+#include "system/io/FileReader.h"
+#include "system/lang/Exception.h"
+
 ConfigManager::ConfigManager() {
 	makeLogin = true;
 	makeZone = true;

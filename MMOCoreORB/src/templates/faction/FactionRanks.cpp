@@ -6,7 +6,11 @@
  */
 
 #include "FactionRanks.h"
+
 #include "templates/datatables/DataTableIff.h"
+#include "templates/faction/FactionRank.h"
+
+class DataTableRow;
 
 FactionRanks::FactionRanks() {
 

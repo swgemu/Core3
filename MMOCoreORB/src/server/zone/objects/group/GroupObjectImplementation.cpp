@@ -5,20 +5,50 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/packets/group/GroupObjectMessage3.h"
-#include "server/zone/packets/group/GroupObjectMessage6.h"
-#include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
-#include "server/zone/ZoneClientSession.h"
-#include "server/chat/room/ChatRoom.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/managers/group/GroupManager.h"
-#include "server/zone/objects/creature/buffs/SquadLeaderBuff.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/chat/room/ChatRoom.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/SquadLeaderBuff.h"
+#include "server/zone/objects/group/GroupList.h"
+#include "server/zone/objects/group/GroupMember.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 #include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
+#include "server/zone/packets/group/GroupObjectMessage3.h"
+#include "server/zone/packets/group/GroupObjectMessage6.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace chat {
+class StringIdChatParameter;
+}  // namespace chat
+}  // namespace server
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	auto client = player->getClient();

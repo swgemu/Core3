@@ -1,8 +1,13 @@
 #ifndef LUAQUESTINFO_H_
 #define LUAQUESTINFO_H_
 
-#include "server/zone/managers/player/QuestInfo.h"
 #include "engine/lua/Lua.h"
+#include "engine/lua/Luna.h"
+#include "lua.h"
+#include "server/zone/managers/player/QuestInfo.h"
+#include "system/lang/ref/Reference.h"
+
+class QuestInfo;
 
 namespace server {
 namespace zone {

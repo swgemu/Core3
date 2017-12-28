@@ -5,12 +5,30 @@
  *      Author: elvaron
  */
 
-#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/player/sui/callbacks/ResourceDeedSuiCallback.h"
 
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void ResourceDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();

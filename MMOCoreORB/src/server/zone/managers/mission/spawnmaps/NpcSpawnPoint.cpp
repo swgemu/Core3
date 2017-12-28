@@ -3,10 +3,31 @@
 		See file COPYING for copying conditions.*/
 
 #include "NpcSpawnPoint.h"
+
+#include <stddef.h>
+
+#include "engine/lua/LuaObject.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/mission/spawnmaps/events/DespawnMissionNpcTask.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "terrain/manager/TerrainManager.h"
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace mission {
+class MissionManager;
+}  // namespace mission
+}  // namespace managers
+}  // namespace zone
+}  // namespace server
 
 NpcSpawnPoint::NpcSpawnPoint() {
 	inUseByNumberOfMissions = 0;

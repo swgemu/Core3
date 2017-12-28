@@ -4,6 +4,8 @@
 
 #include "StringId.h"
 
+#include "system/io/StringTokenizer.h"
+
 StringId::StringId() : Object() {
 	file = "";
 	filler = 0;

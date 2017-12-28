@@ -8,9 +8,19 @@
 #ifndef DATATABLEIFF_H_
 #define DATATABLEIFF_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
 
 class DataTableRow;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class DataTableIff : public IffTemplate {
 	Vector<String> columns;

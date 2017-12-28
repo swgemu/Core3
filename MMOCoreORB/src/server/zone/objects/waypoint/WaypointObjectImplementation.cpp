@@ -5,7 +5,24 @@
  *      Author: victor
  */
 
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+
+class SharedObjectTemplate;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	IntangibleObjectImplementation::loadTemplateData(templateData);

@@ -6,10 +6,36 @@
 #define QUEUECOMMAND_H_
 
 
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+class ZoneProcessServer;
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

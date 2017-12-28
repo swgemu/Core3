@@ -9,12 +9,20 @@
  */
 
 #include "ResourceTree.h"
-#include "ResourceTreeEntry.h"
+
+#include <stddef.h>
+
 #include "ResourceAttribute.h"
-#include "templates/manager/TemplateManager.h"
+#include "ResourceTreeEntry.h"
+#include "engine/util/iffstream/IffStream.h"
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/manager/TemplateManager.h"
 
 ResourceTree::ResourceTree(ResourceSpawner* spawn) : Logger() {
 

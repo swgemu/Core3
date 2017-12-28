@@ -8,9 +8,11 @@
 #ifndef ZONECOMPONENT_H_
 #define ZONECOMPONENT_H_
 
-#include "engine/engine.h"
-
 #include "SceneObjectComponent.h"
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {
@@ -33,6 +35,23 @@ using namespace server::zone::objects::building;
 using namespace server::zone;
 
 #include "server/zone/QuadTreeEntry.h"
+
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+class CloseObjectsVector;
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+}  // namespace util
+}  // namespace sys
 
 class ZoneComponent : public SceneObjectComponent, public Logger {
 protected:

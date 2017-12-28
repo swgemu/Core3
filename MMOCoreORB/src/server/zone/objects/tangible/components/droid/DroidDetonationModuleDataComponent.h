@@ -7,6 +7,40 @@
 
 #include "BaseDroidModuleComponent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace ai {
+class DroidObject;
+}  // namespace ai
+}  // namespace creature
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

@@ -5,16 +5,35 @@
  *      Author: swgemu
  */
 
-#include "server/zone/objects/tangible/firework/FireworkObject.h"
-#include "templates/tangible/FireworkObjectTemplate.h"
-#include "FireworkRemoveEvent.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
 #include "FireworkLaunchEvent.h"
+#include "FireworkRemoveEvent.h"
 #include "FireworkShowLaunchFireworkEvent.h"
-#include "server/zone/objects/staticobject/StaticObject.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/firework/FireworkObject.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/params/creature/CreaturePosture.h"
+#include "templates/tangible/FireworkObjectTemplate.h"
 
 void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

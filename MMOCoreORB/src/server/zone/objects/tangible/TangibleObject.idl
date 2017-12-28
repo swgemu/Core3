@@ -4,10 +4,10 @@
 
 package server.zone.objects.tangible;
 
-import server.zone.objects.scene.SceneObject;
+include server.zone.objects.scene.SceneObject;
 import system.util.SortedVector;
 import engine.log.Logger;
-include server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 include templates.params.OptionBitmask;

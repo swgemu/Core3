@@ -11,7 +11,14 @@
 #ifndef NATIVEPOOL_H_
 #define NATIVEPOOL_H_
 
+#include <algorithm>
+
 #include "ResourcePool.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 class ResourceSpawner;
 

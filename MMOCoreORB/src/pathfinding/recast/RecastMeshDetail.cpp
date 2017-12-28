@@ -17,11 +17,11 @@
 //
 
 #include <float.h>
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+
 #include "Recast.h"
 #include "RecastAlloc.h"
 #include "RecastAssert.h"

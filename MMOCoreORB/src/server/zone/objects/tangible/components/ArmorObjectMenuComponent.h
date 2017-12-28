@@ -10,6 +10,25 @@
 #define ARMOROBJECTMENUCOMPONENT_H_
  
 #include "WearableObjectMenuComponent.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class ArmorObjectMenuComponent : public WearableObjectMenuComponent {
 public:

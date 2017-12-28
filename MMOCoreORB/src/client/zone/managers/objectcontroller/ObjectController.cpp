@@ -7,10 +7,18 @@
 
 #include "ObjectController.h"
 
+#include <stddef.h>
+
 #include "client/zone/Zone.h"
 #include "client/zone/objects/scene/SceneObject.h"
-
+#include "engine/service/Message.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/packets/object/ObjectControllerMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/thread/Locker.h"
+#include "zone/ZoneClient.h"
+#include "zone/objects/player/PlayerCreature.h"
 
 ObjectController::ObjectController(Zone* zn) {
 	zone = zn;

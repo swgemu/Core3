@@ -6,8 +6,13 @@
  */
 
 #include "LootGroupMap.h"
-#include "templates/LootItemTemplate.h"
+
+#include <stddef.h>
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
 #include "templates/LootGroupTemplate.h"
+#include "templates/LootItemTemplate.h"
 
 Lua* LootGroupMap::lua = NULL;
 int LootGroupMap::ERROR_CODE = NO_ERROR;

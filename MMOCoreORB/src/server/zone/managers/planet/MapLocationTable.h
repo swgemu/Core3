@@ -8,7 +8,17 @@
 #ifndef MAPLOCATIONTABLE_H_
 #define MAPLOCATIONTABLE_H_
 
+#include <algorithm>
+
 #include "MapLocationEntry.h"
+#include "engine/stm/mm/TransactionalObjectCloner.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/mm/ObjectCloner.h"
+#include "system/platform.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/SortedVector.h"
+#include "system/util/VectorMap.h"
 
 
 namespace server {

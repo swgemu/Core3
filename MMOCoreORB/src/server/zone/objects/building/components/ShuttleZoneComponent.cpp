@@ -6,8 +6,23 @@
  */
 
 #include "ShuttleZoneComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/building/tasks/ScheduleShuttleTask.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);

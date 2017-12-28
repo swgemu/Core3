@@ -5,14 +5,49 @@
 #ifndef OBJECTMANAGER_H_
 #define OBJECTMANAGER_H_
 
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
+#include <stddef.h>
 
 #include "SceneObjectFactory.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/db/LocalDatabase.h"
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/orb/db/DOBObjectManager.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/Serializable.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
 
-class TemplateManager;
 class DeleteCharactersTask;
+class TemplateManager;
+namespace engine {
+namespace ORB {
+class DistributedObject;
+class DistributedObjectStub;
+}  // namespace ORB
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace db {
+class ResultSet;
+}  // namespace db
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

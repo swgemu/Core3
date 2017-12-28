@@ -5,20 +5,38 @@
  *      Author: crush
  */
 
-#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
 #include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/footprint/StructureFootprint.h"
+#include "templates/manager/TemplateManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
-#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
-#include "server/zone/Zone.h"
 
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {

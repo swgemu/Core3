@@ -8,7 +8,28 @@
 #ifndef GENETICLABRATORY_H_
 #define GENETICLABRATORY_H_
 
+#include <math.h>
+
 #include "SharedLabratory.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace manufactureschematic {
+class ManufactureSchematic;
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

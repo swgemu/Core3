@@ -9,6 +9,17 @@
 #define CONTAINERPERMISSIONS_H_
 
 #include "engine/engine.h"
+#include "system/lang/String.h"
+#include "system/lang/Variable.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 /**
  * Permissions: highest 16 bits allow, lowest 16 bits deny

@@ -5,12 +5,15 @@
  *      Author: theanswer
  */
 
+#include <stdio.h>
+
 #include "LoginClient.h"
 #include "LoginClientThread.h"
-
-#include "server/login/packets/AccountVersionMessage.h"
-
 #include "LoginSession.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/login/packets/AccountVersionMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
 
 LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::valueOf(instance)) {
 	selectedCharacter = -1;
@@ -44,10 +47,6 @@ void LoginSession::run() {
 	}
 
 	info("connected to login server");
-
-#ifdef WITH_STM
-	//TransactionalMemoryManager::commitPureTransaction();
-#endif
 
 	char userinput[32];
 	char passwordinput[32];

@@ -3,12 +3,23 @@
 		See file COPYING for copying conditions. */
 
 
-#include "templates/params/creature/CreatureAttribute.h"
-#include "templates/params/creature/CreatureState.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "DamageOverTime.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
-#include "DamageOverTime.h"
-#include "server/zone/ZoneServer.h"
+#include "system/lang/Math.h"
+#include "system/lang/Object.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureState.h"
 
 DamageOverTime::DamageOverTime() {
 	setAttackerID(0);

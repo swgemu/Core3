@@ -5,9 +5,14 @@
 #ifndef STRINGIDPARAMETER_H_
 #define STRINGIDPARAMETER_H_
 
-#include "engine/engine.h"
+#include <algorithm>
 
 #include "StringId.h"
+#include "engine/engine.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
 
 namespace server {
 namespace chat {

@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/objects/installation/garage/GarageInstallation.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 void GarageInstallationImplementation::createChildObjects() {
 	TangibleObjectImplementation::createChildObjects();

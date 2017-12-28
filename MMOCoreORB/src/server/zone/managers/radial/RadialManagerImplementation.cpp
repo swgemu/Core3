@@ -5,11 +5,26 @@
  *      Author: victor
  */
 
-#include "server/zone/managers/radial/RadialManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/radial/RadialManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/params/ObserverEventType.h"
 
 RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : ManagedObjectImplementation(), Logger() {
 	setLoggingName("RadialManager");

@@ -9,6 +9,17 @@
 #define TANGIBLEOBJECT_H_
 
 #include "client/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class TangibleObject : public SceneObject {
 	float complexity;

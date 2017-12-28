@@ -3,6 +3,21 @@
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
+
 class ScavengerDroidContainerComponent : public ContainerComponent {
 public:
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const;

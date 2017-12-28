@@ -17,15 +17,15 @@
 //
 
 #include <float.h>
+#include <math.h>
 #include <string.h>
-#include <stdio.h>
-#include "DetourNavMesh.h"
-#include "DetourNode.h"
-#include "DetourCommon.h"
-#include "DetourMath.h"
+#include <new>
+
 #include "DetourAlloc.h"
 #include "DetourAssert.h"
-#include <new>
+#include "DetourCommon.h"
+#include "DetourNavMesh.h"
+#include "pathfinding/recast/DetourStatus.h"
 
 
 inline bool overlapSlabs(const float* amin, const float* amax,

@@ -5,6 +5,8 @@
  *      Author: crush
  */
 
+#include <stddef.h>
+
 #include "Faction.h"
 #include "FactionMap.h"
 

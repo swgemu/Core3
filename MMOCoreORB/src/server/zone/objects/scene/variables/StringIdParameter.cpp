@@ -5,6 +5,7 @@
 #include "StringIdParameter.h"
 
 #include "StringId.h"
+#include "system/lang/Object.h"
 
 StringIdParameter::StringIdParameter(const StringIdParameter& par) : Object(), Serializable() {
 	addSerializableVariables();

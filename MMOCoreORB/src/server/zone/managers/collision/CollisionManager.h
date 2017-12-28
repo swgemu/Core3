@@ -8,13 +8,39 @@
 #ifndef COLLISIONMANAGER_H_
 #define COLLISIONMANAGER_H_
 
-#include "engine/engine.h"
-#include "server/zone/CloseObjectsVector.h"
+#include <stddef.h>
 
+#include "engine/engine.h"
+#include "engine/util/Singleton.h"
+#include "engine/util/u3d/Ray.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "templates/appearance/AppearanceTemplate.h"
 
-class PathNode;
+class AppearanceTemplate;
 class FloorMesh;
+class PathNode;
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+namespace util {
+namespace u3d {
+class IntersectionResult;
+class Matrix4;
+class TriangleNode;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace server {
+namespace zone {
+class CloseObjectsVector;
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

@@ -7,12 +7,42 @@
 
 #ifndef TURRETDATACOMPONENT_H_
 #define TURRETDATACOMPONENT_H_
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
 #include "engine/engine.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "templates/installation/SharedInstallationObjectTemplate.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/Vector.h"
+#include "templates/installation/SharedInstallationObjectTemplate.h"
+
+class SharedInstallationObjectTemplate;
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+class TangibleObject;
+namespace weapon {
+class WeaponObject;
+}  // namespace weapon
+}  // namespace tangible
+}  // namespace objects
+namespace packets {
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class TurretDataComponent : public DataObjectComponent {
 

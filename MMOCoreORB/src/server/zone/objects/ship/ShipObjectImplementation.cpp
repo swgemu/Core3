@@ -3,12 +3,17 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/zone/objects/ship/ShipObject.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/ship/ShipObjectMessage1.h"
 #include "server/zone/packets/ship/ShipObjectMessage3.h"
 #include "server/zone/packets/ship/ShipObjectMessage4.h"
 #include "server/zone/packets/ship/ShipObjectMessage6.h"
+#include "system/lang/Long.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 //#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
 //#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
 

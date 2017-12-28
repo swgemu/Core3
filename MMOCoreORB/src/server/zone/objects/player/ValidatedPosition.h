@@ -9,6 +9,10 @@
 #define VALIDATEDPOSITION_H_
 
 #include "engine/engine.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/io/Serializable.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {

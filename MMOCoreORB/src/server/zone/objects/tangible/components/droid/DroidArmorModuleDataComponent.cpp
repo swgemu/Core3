@@ -3,7 +3,25 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidArmorModuleDataComponent.h"
+
+#include <stddef.h>
+
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidArmorModuleDataComponent::DroidArmorModuleDataComponent() {
 	armorModule = 0;

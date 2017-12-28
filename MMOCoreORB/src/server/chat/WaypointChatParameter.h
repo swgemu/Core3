@@ -8,7 +8,11 @@
 #ifndef WAYPOINTCHATPARAMETER_H_
 #define WAYPOINTCHATPARAMETER_H_
 
+#include "engine/service/Message.h"
 #include "server/chat/ChatParameter.h"
+#include "system/io/Serializable.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
 
 namespace server {
 namespace zone {

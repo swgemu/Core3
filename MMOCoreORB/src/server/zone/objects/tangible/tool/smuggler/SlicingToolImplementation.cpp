@@ -5,11 +5,18 @@
  *      Author: polonel
  */
 
-#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
+#include <stddef.h>
 
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/tangible/tool/SlicingToolTemplate.h"
 
 void SlicingToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

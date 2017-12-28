@@ -93,18 +93,20 @@ endif(COMPILE_TESTS)
 
 if(COMPILE_TESTS)
 	target_link_libraries(core3
+		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock
 		${whole_archive_start}
 		core3tests db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 		${whole_archive_end}
 		${ENGINE3_LIBRARIES}
-		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} gmock)
+)
 else(COMPILE_TESTS)
 	target_link_libraries(core3
+		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES}
 		${whole_archive_start}
 		db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 		${whole_archive_end}
 		${ENGINE3_LIBRARIES}
-		${ZLIB_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES})
+		)
 endif(COMPILE_TESTS)
 
 # Copy core3 binary

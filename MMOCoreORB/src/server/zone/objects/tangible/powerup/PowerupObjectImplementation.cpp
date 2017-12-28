@@ -6,10 +6,33 @@
  */
 
 
+#include <stddef.h>
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
-#include "templates/tangible/PowerupTemplate.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/tangible/powerup/PowerupStatVector.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/tangible/PowerupStat.h"
+#include "templates/tangible/PowerupTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 float PowerupObjectImplementation::MAXPRIMARY = 33.16;
 float PowerupObjectImplementation::MAXSECONDARY = 16.33;

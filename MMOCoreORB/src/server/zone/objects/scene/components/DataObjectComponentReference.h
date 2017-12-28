@@ -8,9 +8,16 @@
 #ifndef DATAOBJECCOMPONENTTREFERENCE_H_
 #define DATAOBJECCOMPONENTTREFERENCE_H_
 
-#include "engine/engine.h"
-
 #include "DataObjectComponent.h"
+#include "engine/engine.h"
+#include "system/lang/ref/Reference.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class DataObjectComponentReference : public Reference<DataObjectComponent*> {
 public:

@@ -8,12 +8,28 @@
 #ifndef CELLPROPERTY_H_
 #define CELLPROPERTY_H_
 
-#include "engine/engine.h"
+#include <algorithm>
 
+#include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
-#include "templates/collision/BaseBoundingVolume.h"
-#include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/AppearanceTemplate.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/collision/BaseBoundingVolume.h"
+
+class AppearanceTemplate;
+class FloorMesh;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class CellPortal : public Object {
 	bool solid;

@@ -5,7 +5,13 @@
 #ifndef CONVERSATIONMANAGER_H_
 #define CONVERSATIONMANAGER_H_
 
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
 
 namespace server {
 namespace zone {

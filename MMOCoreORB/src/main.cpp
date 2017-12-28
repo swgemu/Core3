@@ -2,20 +2,24 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "system/thread/ChildProcess.h"
+#include <pthread.h>
+#include <stdio.h>
+#include <algorithm>
 
 #include "server/ServerCore.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/thread/ChildProcess.h"
+#include "system/util/SortedVector.h"
 
 #ifdef COMPILE_CORE3_TESTS
-#include "tests/TestCore.h"
-
 #include "gtest/gtest.h"
+#include "tests/TestCore.h"
 #endif
-
-#include "engine/orb/db/DOBObjectManager.h"
 
 class CoreProcess : public ChildProcess {
 	SortedVector<String>& arguments;

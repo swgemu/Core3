@@ -3,7 +3,29 @@
 		See file COPYING for copying conditions.*/
 
 #include "StatusServer.h"
+
+#include <signal.h>
+#include <stddef.h>
+
 #include "StatusHandler.h"
+#include "conf/ConfigManager.h"
+#include "server/zone/ZoneServer.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/net/Packet.h"
+#include "system/net/Socket.h"
+#include "system/thread/Thread.h"
+
+namespace engine {
+namespace service {
+class ServiceClient;
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace net {
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
 
 StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 		: StreamServiceThread("StatusServer") {

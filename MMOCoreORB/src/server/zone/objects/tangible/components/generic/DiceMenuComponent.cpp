@@ -5,11 +5,23 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+
 #include "DiceMenuComponent.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/tangible/DiceTemplate.h"
 
 void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

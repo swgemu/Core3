@@ -8,6 +8,8 @@
 #ifndef COMMANDFACTORY_H_
 #define COMMANDFACTORY_H_
 
+#include "system/util/HashTable.h"
+
 namespace server {
 namespace zone {
 namespace managers {

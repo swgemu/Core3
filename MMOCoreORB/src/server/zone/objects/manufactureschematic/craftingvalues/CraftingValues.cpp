@@ -3,7 +3,16 @@
 		See file COPYING for copying conditions.*/
 
 #include "CraftingValues.h"
+
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "system/lang/Object.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/crafting/ValuesClasses.h"
 
 CraftingValues::CraftingValues() {
 	experimentalValuesMap.setNullValue(NULL);

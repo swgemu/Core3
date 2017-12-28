@@ -8,8 +8,23 @@
 #ifndef SPAWNAREAMAP_H_
 #define SPAWNAREAMAP_H_
 
-#include "server/zone/objects/area/SpawnArea.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/area/SpawnArea.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
 	Lua* lua;

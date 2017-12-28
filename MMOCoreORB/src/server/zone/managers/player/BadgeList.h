@@ -1,7 +1,15 @@
 #ifndef _H_BADGELIST_
 #define _H_BADGELIST_
 
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/player/badges/Badge.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/util/HashTable.h"
+#include "system/util/VectorMap.h"
+
+class Badge;
 
 class BadgeList : public Singleton<BadgeList>, Logger, public Object {
 	// idx to Badge

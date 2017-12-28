@@ -6,7 +6,30 @@
  */
 
 #include "FactoryBlueprint.h"
-#include "server/zone/objects/installation/factory/FactoryObject.h"
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace factory {
+class FactoryObject;
+}  // namespace factory
+}  // namespace installation
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 FactoryBlueprint::FactoryBlueprint() :  Serializable() {
 

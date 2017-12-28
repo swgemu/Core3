@@ -17,9 +17,16 @@
 //
 
 #include "RecastTileBuilder.h"
-#include "pathfinding/recast/DetourNavMeshBuilder.h"
-#include "templates/appearance/MeshData.h"
+
+#include <math.h>
+#include <string.h>
+
 #include "ChunkyTriMesh.h"
+#include "engine/util/u3d/Vector3.h"
+#include "pathfinding/RecastPolygon.h"
+#include "pathfinding/recast/DetourNavMeshBuilder.h"
+#include "pathfinding/recast/DetourStatus.h"
+#include "templates/appearance/MeshData.h"
 
 inline unsigned int nextPow2(unsigned int v) {
 	v--;

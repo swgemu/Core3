@@ -5,12 +5,23 @@
  *      Author: xyborn
  */
 
-#include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/player/sui/callbacks/CityRemoveMilitiaMemberSuiCallback.h"
 
 int CityRemoveMilitiaSessionImplementation::initializeSession() {

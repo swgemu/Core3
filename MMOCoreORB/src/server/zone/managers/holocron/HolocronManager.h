@@ -8,7 +8,16 @@
 #ifndef HOLOCRONMANAGER_H_
 #define HOLOCRONMANAGER_H_
 
+#include <algorithm>
+
 #include "BugCategory.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {

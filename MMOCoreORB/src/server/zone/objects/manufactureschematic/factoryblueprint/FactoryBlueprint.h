@@ -8,9 +8,33 @@
 #ifndef FACTORYBLUEPRINT_H_
 #define FACTORYBLUEPRINT_H_
 
-#include "engine/engine.h"
+#include <algorithm>
+
 #include "BlueprintEntry.h"
+#include "engine/engine.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "system/io/Serializable.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace factory {
+class FactoryObject;
+}  // namespace factory
+}  // namespace installation
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 class FactoryBlueprint  : public Serializable  {
 private:

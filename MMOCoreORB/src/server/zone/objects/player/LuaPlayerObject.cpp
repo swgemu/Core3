@@ -6,15 +6,45 @@
  */
 
 #include "LuaPlayerObject.h"
-#include "engine/engine.h"
-#include "server/zone/managers/frs/FrsManager.h"
+
+#include <assert.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
+#include "server/zone/objects/player/variables/FrsData.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
-#include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace draftschematic {
+class DraftSchematic;
+}  // namespace draftschematic
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 

@@ -8,9 +8,35 @@
 #ifndef SHAREDLABRATORY_H_
 #define SHAREDLABRATORY_H_
 
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/Object.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace draftschematic {
+class DraftSchematic;
+}  // namespace draftschematic
+namespace manufactureschematic {
+class ManufactureSchematic;
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

@@ -8,8 +8,18 @@
 #ifndef DATATABLECELL_H_
 #define DATATABLECELL_H_
 
-#include "system/lang.h"
 #include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/lang.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 class DataTableCell {
 public:

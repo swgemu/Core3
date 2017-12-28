@@ -1,10 +1,29 @@
-#include <cstdint>
-#include "server/zone/objects/pathfinding/NavArea.h"
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+#include "pathfinding/RecastNavMesh.h"
+#include "pathfinding/RecastTileBuilder.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneReference.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/HashSet.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/collision/BaseBoundingVolume.h"
 
 //#define NAVMESH_DEBUG
 

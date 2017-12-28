@@ -17,8 +17,11 @@
 //
 
 #include "DetourCommon.h"
-#include "DetourMath.h"
 
+#include <math.h>
+
+#include "DetourMath.h"
+#include "system/lang/Exception.h"
 #include "system/lang/StringBuffer.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////

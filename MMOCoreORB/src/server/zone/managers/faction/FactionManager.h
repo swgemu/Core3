@@ -9,8 +9,26 @@
 #define FACTIONMANAGER_H_
 
 #include "FactionMap.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/util/SortedVector.h"
 #include "templates/faction/FactionRanks.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class FactionManager : public Singleton<FactionManager>, public Logger, public Object {
 	FactionMap factionMap;

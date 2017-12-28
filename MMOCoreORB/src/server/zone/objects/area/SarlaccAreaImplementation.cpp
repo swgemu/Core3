@@ -1,7 +1,15 @@
+#include <stddef.h>
+
+#include "engine/core/Task.h"
 #include "server/zone/objects/area/SarlaccArea.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/objects/area/events/SarlaccEruptTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void SarlaccAreaImplementation::notifyEnter(SceneObject* object) {
 	if (object == NULL || !object->isPlayerCreature())

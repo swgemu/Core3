@@ -6,6 +6,16 @@
  */
 
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiInputBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.inputBox");

@@ -8,7 +8,24 @@
 #ifndef SHAREDWEAPONOBJECTTEMPLATE_H_
 #define SHAREDWEAPONOBJECTTEMPLATE_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/params/primitives/StringParam.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SharedWeaponObjectTemplate: public SharedTangibleObjectTemplate {
 protected:

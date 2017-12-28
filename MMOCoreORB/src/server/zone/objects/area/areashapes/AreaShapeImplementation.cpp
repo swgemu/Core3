@@ -5,6 +5,7 @@
  *      Author: loshult
  */
 
+#include "engine/util/u3d/Vector3.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 
 Vector3 AreaShapeImplementation::getRandomPosition() {

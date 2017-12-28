@@ -2,15 +2,37 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseClientProxy.h"
 #include "server/zone/ZoneClientSession.h"
-
 #include "server/zone/ZoneServer.h"
-
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BasePacket;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy* session)
 		:  ManagedObjectImplementation() {

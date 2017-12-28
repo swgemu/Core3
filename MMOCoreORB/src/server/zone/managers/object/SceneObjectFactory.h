@@ -8,6 +8,8 @@
 #ifndef SCENEOBJECTFACTORY_H_
 #define SCENEOBJECTFACTORY_H_
 
+#include "system/util/HashTable.h"
+
 namespace server {
  namespace zone {
   namespace managers {
