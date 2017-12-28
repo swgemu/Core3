@@ -11,7 +11,14 @@
 #ifndef RANDOMPOOL_H_
 #define RANDOMPOOL_H_
 
+#include <algorithm>
+
 #include "ResourcePool.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/LuaObject.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
 
 class ResourceSpawner;
 

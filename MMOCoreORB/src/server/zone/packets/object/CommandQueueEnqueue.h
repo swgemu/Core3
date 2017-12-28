@@ -6,7 +6,17 @@
 #define COMMANDQUEUEENQUEUE_H_
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/MessageCallback.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+
+class ObjectControllerMessageCallback;
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:

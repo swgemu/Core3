@@ -6,7 +6,25 @@
  */
 
 #include "TemplateManager.h"
+
+#include <stdio.h>
+#include <algorithm>
+
 #include "TemplateCRCMap.h"
+#include "conf/ConfigManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/Vector.h"
 
 #include "templates/appearance/AppearanceRedirect.h"
 #include "templates/appearance/ComponentAppearanceTemplate.h"
@@ -126,10 +144,6 @@
 #include "templates/SharedStaticObjectTemplate.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/SharedUniverseObjectTemplate.h"
-
-#include "conf/ConfigManager.h"
-#include "tre3/TreeArchive.h"
-
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 

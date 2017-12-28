@@ -5,8 +5,13 @@
  *      Author: victor
  */
 
-#include "engine/engine.h"
+#include <stddef.h>
+
 #include "TargaBitmap.h"
+#include "system/lang/ArrayIndexOutOfBoundsException.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 class TargaBlackPixel : public TargaPixel {
 public:

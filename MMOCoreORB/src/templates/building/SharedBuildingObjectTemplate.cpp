@@ -7,6 +7,23 @@
 
 #include "SharedBuildingObjectTemplate.h"
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+
+#include "system/lang/Exception.h"
+#include "system/platform.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+
+namespace engine {
+namespace util {
+class Chunk;
+}  // namespace util
+}  // namespace engine
+
 void SharedBuildingObjectTemplate::parseVariableData(const String& varName, Chunk* data) {
 	if (varName == "terrainModificationFileName") {
 		terrainModificationFileName.parse(data);

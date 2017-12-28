@@ -8,9 +8,45 @@
 #ifndef PATHFINDERMANAGER_H_
 #define PATHFINDERMANAGER_H_
 
-#include "server/zone/objects/scene/WorldCoordinates.h"
-#include "server/zone/objects/pathfinding/NavArea.h"
+#include <math.h>
+
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "engine/util/u3d/Vector3.h"
 #include "pathfinding/recast/DetourNavMeshQuery.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/WorldCoordinates.h"
+#include "system/lang/Object.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/ThreadLocal.h"
+
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+namespace util {
+namespace u3d {
+class Sphere;
+class Triangle;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace server {
+namespace zone {
+class Zone;
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace util {
+template <class E> class SortedVector;
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
  namespace zone {

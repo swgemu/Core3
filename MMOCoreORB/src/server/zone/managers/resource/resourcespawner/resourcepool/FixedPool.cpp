@@ -9,7 +9,17 @@
  */
 
 #include "FixedPool.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/resourcepool/ResourcePool.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
 
 FixedPool::FixedPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 	setLoggingName("FixedPool");

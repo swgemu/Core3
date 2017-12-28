@@ -8,15 +8,28 @@
 #ifndef PROCEDURALTERRAINAPPEARANCE_H_
 #define PROCEDURALTERRAINAPPEARANCE_H_
 
+#include <algorithm>
+
 #include "TemplateVariable.h"
 #include "TerrainAppearance.h"
+#include "engine/log/Logger.h"
 #include "engine/util/u3d/AABB.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
+#include "terrain/layer/../TemplateVariable.h"
 
-class TerrainGenerator;
 class Boundary;
-class TerrainMaps;
-
 class Layer;
+class TerrainGenerator;
+class TerrainMaps;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logger, public TerrainAppearance {
 	TerrainGenerator* terrainGenerator;

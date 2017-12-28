@@ -5,7 +5,20 @@
 #ifndef CUSTOMIZATIONVARIABLES_H_
 #define CUSTOMIZATIONVARIABLES_H_
 
+#include <algorithm>
+
 #include "system/lang.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class CustomizationVariables : public VectorMap<uint8, int16> {
 	uint8 unknown;

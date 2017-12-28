@@ -6,14 +6,35 @@
  */
 
 #include "MinefieldZoneComponent.h"
-#include "MinefieldDataComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+#include "engine/core/ManagedReference.h"
+
 #include "server/zone/Zone.h"
-#include "MinefieldAttackTask.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "templates/params/ObserverEventType.h"
+
+#include "MinefieldDataComponent.h"
+#include "MinefieldAttackTask.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	// if we don't have any mines, just exit

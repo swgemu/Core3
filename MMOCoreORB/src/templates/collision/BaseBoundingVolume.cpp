@@ -1,5 +1,7 @@
 #include "BaseBoundingVolume.h"
 
+#include "engine/util/iffstream/IffStream.h"
+
 void BaseBoundingVolume::read(IffStream *iff) {
 	iff->openForm('EXSP');
 	iff->openForm('0001');

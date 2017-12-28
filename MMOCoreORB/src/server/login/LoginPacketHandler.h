@@ -5,13 +5,26 @@
 #ifndef LOGINPACKETHANDLER_H_
 #define LOGINPACKETHANDLER_H_
 
+#include <stddef.h>
+
 #include "LoginClient.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "server/login/LoginServer.h"
+#include "system/lang/String.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 namespace server {
 namespace login {
 
-	class LoginServer;
 	class LoginProcessServerImplementation;
+	class LoginServer;
+class LoginClient;
 
 	class LoginPacketHandler : public Logger {
 		LoginProcessServerImplementation* processServer;

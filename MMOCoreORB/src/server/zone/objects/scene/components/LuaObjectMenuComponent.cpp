@@ -7,8 +7,12 @@
 
 #include "LuaObjectMenuComponent.h"
 
+#include <stddef.h>
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+
 #include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 
 LuaObjectMenuComponent::LuaObjectMenuComponent(const String& className) : luaClassName(className) {
 }

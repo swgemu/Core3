@@ -6,9 +6,18 @@
  */
 
 #include "ThreatMatrix.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "ThreatMap.h"
 #include "ThreatStates.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 
 ThreatMatrix::ThreatMatrix() : damageMap(1, 0), aggroMap(1, 0), healMap(1, 0) {
 	tauntThreat = NULL;

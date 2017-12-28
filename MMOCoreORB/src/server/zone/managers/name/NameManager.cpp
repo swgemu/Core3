@@ -5,8 +5,35 @@
 
 #include "NameManager.h"
 
+#include <ctype.h>
+#include <string.h>
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/name/NameData.h"
+#include "server/zone/managers/name/NameRules.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/io/File.h"
+#include "system/io/FileNotFoundException.h"
+#include "system/io/FileReader.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/UnicodeString.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+class StringId;
+}  // namespace variables
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 NameManager::NameManager() {
 	setLoggingName("NameManager");

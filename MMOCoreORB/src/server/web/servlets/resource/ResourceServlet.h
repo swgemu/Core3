@@ -9,6 +9,7 @@
 #define RESOURCESERVLET_H_
 
 #include "../Servlet.h"
+#include "system/lang/String.h"
 
 class ResourceServlet: public Servlet {
 public:

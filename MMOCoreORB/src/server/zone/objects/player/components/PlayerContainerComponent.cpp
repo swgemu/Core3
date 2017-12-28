@@ -6,14 +6,39 @@
  */
 
 #include "PlayerContainerComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace wearables {
+class ArmorObject;
+}  // namespace wearables
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);

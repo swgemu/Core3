@@ -5,8 +5,21 @@
  *      Author: crush
  */
 
+#include <stddef.h>
+
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/tangible/CharacterBuilderMenuNode.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 

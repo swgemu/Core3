@@ -6,11 +6,19 @@
  */
 
 #include "CityHallZoneComponent.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/managers/city/CityManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/city/CityManager.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
 
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();

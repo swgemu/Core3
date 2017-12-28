@@ -1,13 +1,35 @@
-#include "server/zone/Zone.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/reaction/EmoteReactionFine.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/managers/reaction/ReactionRankData.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void ReactionManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();

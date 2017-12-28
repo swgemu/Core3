@@ -9,7 +9,6 @@
 #define SHUTTLEINSTALLATIONZONECOMPONENT_H_
 
 #include "engine/engine.h"
-
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 
 namespace server {

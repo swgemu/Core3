@@ -1,9 +1,38 @@
 #include "NavMeshManager.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "engine/util/u3d/Vector3.h"
 #include "pathfinding/RecastNavMesh.h"
 #include "pathfinding/RecastNavMeshBuilder.h"
+#include "pathfinding/RecastTileBuilder.h"
+#include "pathfinding/recast/DetourNavMesh.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "terrain/manager/TerrainManager.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/Serializable.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Thread.h"
+#include "system/thread/atomic/AtomicBoolean.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "terrain/ProceduralTerrainAppearance.h"
+#include "terrain/manager/TerrainManager.h"
+
+class MeshData;
 
 // Lower thread count, used during runtime
 const String NavMeshManager::TileQueue = "NavMeshWorker";

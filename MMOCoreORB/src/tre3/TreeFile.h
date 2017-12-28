@@ -8,10 +8,22 @@
 #ifndef TREEFILE_H_
 #define TREEFILE_H_
 
-#include "TreeFileRecord.h"
+#include <algorithm>
+
 #include "TreeDataBlock.h"
+#include "TreeFileRecord.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 
 class TreeArchive;
+class TreeFileRecord;
+namespace sys {
+namespace io {
+class FileInputStream;
+}  // namespace io
+}  // namespace sys
 
 class TreeFile : public Logger {
 	TreeArchive* treeArchive;

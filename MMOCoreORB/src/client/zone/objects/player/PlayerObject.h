@@ -10,6 +10,12 @@
 
 #include "client/zone/objects/intangible/IntangibleObject.h"
 
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+
 class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject(LuaObject* templateData);

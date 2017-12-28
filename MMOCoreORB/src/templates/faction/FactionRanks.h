@@ -8,7 +8,10 @@
 #ifndef FACTIONRANKS_H_
 #define FACTIONRANKS_H_
 
+#include <algorithm>
+
 #include "FactionRank.h"
+#include "system/util/Vector.h"
 
 class DataTableIff;
 

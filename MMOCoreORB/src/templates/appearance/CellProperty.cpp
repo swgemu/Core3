@@ -1,6 +1,18 @@
 #include "CellProperty.h"
 
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "engine/util/u3d/Vector4.h"
+#include "system/lang/Byte.h"
+#include "system/lang/Exception.h"
+#include "system/platform.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/collision/BoundingVolumeFactory.h"
 #include "templates/manager/TemplateManager.h"
+
+class AppearanceTemplate;
 
 void CellPortal::readObject(IffStream* iff) {
 	Chunk* chunk = iff->openChunk();

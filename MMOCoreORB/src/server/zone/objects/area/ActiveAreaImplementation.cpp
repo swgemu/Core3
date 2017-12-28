@@ -5,9 +5,32 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/area/ActiveArea.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
 #include "events/ActiveAreaEvent.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/ZoneReference.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) {
 	if (cellObjectID != 0 && cellObjectID != cellid)

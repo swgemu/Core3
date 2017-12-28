@@ -1,10 +1,22 @@
+#include <stddef.h>
+
 #include "Zone.h"
 #include "ZonePacketHandler.h"
-#include "server/zone/packets/zone/SelectCharacter.h"
-#include "server/zone/packets/zone/CmdSceneReady.h"
 #include "client/zone/managers/object/ObjectManager.h"
 #include "client/zone/managers/objectcontroller/ObjectController.h"
+#include "engine/service/Message.h"
+#include "engine/service/proto/BaseClient.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "server/zone/packets/zone/CmdSceneReady.h"
+#include "server/zone/packets/zone/SelectCharacter.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "zone/objects/player/PlayerCreature.h"
+#include "zone/objects/scene/SceneObject.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;

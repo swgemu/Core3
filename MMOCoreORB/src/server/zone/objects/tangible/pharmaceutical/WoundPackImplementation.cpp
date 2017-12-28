@@ -1,9 +1,16 @@
 
-#include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 bool WoundPackImplementation::isDroidReconstructionKit() {
 	return getObjectNameStringIdName().contains("droid_wound_kit");

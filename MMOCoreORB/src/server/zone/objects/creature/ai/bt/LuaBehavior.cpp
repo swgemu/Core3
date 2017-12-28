@@ -6,14 +6,12 @@
  */
 
 #include "LuaBehavior.h"
-#include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/managers/creature/AiMap.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "engine/engine.h"
 
-#ifndef AI_DEBUG
-//#define AI_DEBUG
-#endif
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+
+#include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 LuaBehavior::LuaBehavior(const String& name) : Object() {
 	this->className = name;

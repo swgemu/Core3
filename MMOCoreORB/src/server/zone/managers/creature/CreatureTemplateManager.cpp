@@ -6,9 +6,25 @@
  */
 
 #include "CreatureTemplateManager.h"
+
+#include <stdio.h>
+
 #include "SpawnGroup.h"
 #include "conf/ConfigManager.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "lauxlib.h"
+#include "server/zone/managers/creature/AiSpeciesData.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/conversation/ConversationTemplate.h"
+#include "system/lang/Exception.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "templates/mobile/LairTemplate.h"
+#include "templates/mobile/MobileOutfitGroup.h"
+#include "templates/mobile/PatrolPathTemplate.h"
+#include "templates/params/OptionBitmask.h"
+#include "templates/params/creature/CreatureFlag.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 

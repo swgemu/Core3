@@ -6,7 +6,22 @@
  */
 
 #include "DraftSchematicObjectTemplate.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+
+#include "system/lang/ref/Reference.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
+#include "templates/intangible/SharedDraftSchematicObjectTemplate.h"
 #include "templates/manager/TemplateManager.h"
+
+class ResourceWeight;
 
 DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 	craftingToolTab = 0;

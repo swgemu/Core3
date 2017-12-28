@@ -6,7 +6,14 @@
  */
 
 #include "LuaActiveArea.h"
+
+#include <assert.h>
+#include <stddef.h>
+
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 const char LuaActiveArea::className[] = "LuaActiveArea";
 

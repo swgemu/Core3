@@ -5,6 +5,13 @@
 
 #include "VendorOutfitManager.h"
 
+#include <stddef.h>
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+
+#include "server/zone/managers/vendor/Outfit.h"
+
 void VendorOutfitManager::initialize() {
 
 	setLoggingName("VendorOutfitManager");

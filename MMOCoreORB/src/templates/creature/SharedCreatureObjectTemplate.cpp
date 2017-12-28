@@ -7,6 +7,22 @@
 
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+
+#include "system/lang/Exception.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace util {
+class Chunk;
+}  // namespace util
+}  // namespace engine
+
 void SharedCreatureObjectTemplate::parseVariableData(const String& varName, Chunk* data) {
 	if (varName == "gender") {
 		gender.parse(data);

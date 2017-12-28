@@ -6,11 +6,24 @@
  */
 
 #include "TerrainCache.h"
-#include "TerrainManager.h"
 
+#include <type_traits>
+
+#include "TerrainManager.h"
+#include "engine/util/u3d/QuadTreeEntryInterface.h"
+#include "system/lang/StringBuffer.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/Vector.h"
 #include "terrain/TerrainGenerator.h"
 
-#include "system/util/Vector.h"
+namespace engine {
+namespace util {
+namespace u3d {
+class BasicQuadTreeNode;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 #define CACHE_CAPACITY 1024 * 1024
 #define CACHE_MIN_ACCESS_COUNT 5

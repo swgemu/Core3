@@ -7,6 +7,12 @@
 
 #include "CreatureTemplate.h"
 
+#include <stddef.h>
+
+#include "engine/lua/LuaObject.h"
+
+#include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
+
 CreatureTemplate::CreatureTemplate() {
 	conversationTemplate = 0;
 	kinetic = 0;

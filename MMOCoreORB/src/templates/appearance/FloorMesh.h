@@ -8,10 +8,42 @@
 #ifndef FLOORMESH_H_
 #define FLOORMESH_H_
 
+#include <assert.h>
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/u3d/TriangleNode.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
-#include "templates/appearance/PathNode.h"
 #include "templates/appearance/PathGraph.h"
+#include "templates/appearance/PathNode.h"
+
+class FloorMesh;
+class PathGraph;
+class PathNode;
+namespace engine {
+namespace util {
+namespace u3d {
+class AABBTree;
+class Matrix4;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+namespace lang {
+template <class O> class Reference;
+}  // namespace lang
+}  // namespace sys
 
 //#define RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 

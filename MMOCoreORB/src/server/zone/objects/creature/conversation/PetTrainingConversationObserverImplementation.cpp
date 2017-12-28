@@ -2,7 +2,10 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/creature/conversation/PetTrainingConversationObserver.h"
+#include "server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.h"
+#include "system/platform.h"
 
 PetTrainingConversationObserverImplementation::PetTrainingConversationObserverImplementation(uint32 convoTemplateCRC) :
 	ConversationObserverImplementation(convoTemplateCRC) {

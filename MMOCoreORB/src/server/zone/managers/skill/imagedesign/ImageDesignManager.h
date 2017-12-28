@@ -8,10 +8,34 @@
 #ifndef IMAGEDESIGNMANAGER_H_
 #define IMAGEDESIGNMANAGER_H_
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/customization/CustomizationData.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"
+
+class CustomizationData;
+class CustomizationVariables;
+class PaletteColorCustomizationVariable;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, public Logger {
 	void loadCustomizationData();

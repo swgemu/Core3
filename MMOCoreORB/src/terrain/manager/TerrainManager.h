@@ -8,6 +8,11 @@
 #ifndef TERRAINMANAGER_H_
 #define TERRAINMANAGER_H_
 
+#include "engine/log/Logger.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 #include "terrain/TerrainAppearance.h"
 #ifdef COMPILE_CORE3_TESTS
 #include "gmock/gmock.h"
@@ -15,6 +20,7 @@
 #include "TerrainCache.h"
 
 class ProceduralTerrainAppearance;
+class TerrainGenerator;
 
 class TerrainManager : public Logger, public Object {
 	Reference<TerrainAppearance*> terrainData;

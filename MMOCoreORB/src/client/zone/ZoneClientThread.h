@@ -9,6 +9,8 @@
 #define ZONECLIENTTHREAD_H_
 
 #include "system/lang.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Thread.h"
 
 class ZoneClient;
 

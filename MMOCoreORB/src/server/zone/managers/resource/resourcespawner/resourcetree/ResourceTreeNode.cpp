@@ -10,6 +10,12 @@
 
 #include "ResourceTreeNode.h"
 
+#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeEntry.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+
 ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d) {
 
 	stfName = t;

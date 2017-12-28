@@ -4,6 +4,9 @@
 
 #include "LuaStringIdChatParameter.h"
 
+#include "server/chat/StringIdChatParameter.h"
+#include "system/lang/String.h"
+
 const char LuaStringIdChatParameter::className[] = "LuaStringIdChatParameter";
 
 Luna<LuaStringIdChatParameter>::RegType LuaStringIdChatParameter::Register[] = {

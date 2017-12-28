@@ -7,8 +7,12 @@
 
 #include "LuaContainerComponent.h"
 
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
 
 LuaContainerComponent::LuaContainerComponent(const String& className) : luaClassName(className) {
 }

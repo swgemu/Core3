@@ -5,9 +5,27 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/CraftingMissionObjective.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/mission/CraftingMissionObjective.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/SchematicList.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
 
 void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
 	ManagedReference<MissionObject* > mission = this->mission.get();

@@ -1,11 +1,30 @@
-#include "server/zone/objects/tangible/eventperk/FlagGame.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneReference.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureFlag.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
+#include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/objects/tangible/tasks/FlagGamePulseTask.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "templates/faction/Factions.h"
+#include "templates/params/creature/CreatureFlag.h"
 
 void FlagGameImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

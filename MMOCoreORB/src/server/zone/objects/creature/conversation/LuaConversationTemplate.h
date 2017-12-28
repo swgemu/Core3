@@ -10,8 +10,22 @@
 
 
 #include "ConversationTemplate.h"
-
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace conversation {
+class ConversationTemplate;
+}  // namespace conversation
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class LuaConversationTemplate {
 public:

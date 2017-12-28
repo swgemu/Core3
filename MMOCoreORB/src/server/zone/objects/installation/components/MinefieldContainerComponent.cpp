@@ -6,8 +6,20 @@
  */
 
 #include "MinefieldContainerComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
 #include "templates/params/creature/CreatureFlag.h"
 
 bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {

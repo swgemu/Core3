@@ -6,6 +6,23 @@
  */
 
 #include "ObjectManager.h"
+
+#include <stddef.h>
+
+#include "client/zone/objects/ObjectMap.h"
+#include "client/zone/objects/scene/SceneObject.h"
+#include "client/zone/objects/scene/variables/StringId.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/ObjectFactory.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/HashTable.h"
+
 #include "client/zone/objects/scene/SceneObject.h"
 #include "client/zone/objects/scene/variables/StringId.h"
 
@@ -13,9 +30,6 @@
 #include "client/zone/objects/player/PlayerObject.h"
 #include "client/zone/objects/creature/CreatureObject.h"
 #include "client/zone/objects/ObjectMap.h"
-
-#include "client/zone/Zone.h"
-
 ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
 Lua* ObjectManager::luaInstance = NULL;
 Mutex ObjectManager::luaMutex;

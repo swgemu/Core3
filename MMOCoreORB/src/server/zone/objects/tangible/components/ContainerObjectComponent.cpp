@@ -5,9 +5,12 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/tangible/Container.h"
+#include <stddef.h>
+
 #include "ContainerObjectComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/Container.h"
 
 bool ContainerObjectComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	//if (permission == )

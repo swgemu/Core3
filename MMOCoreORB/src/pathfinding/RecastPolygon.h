@@ -8,6 +8,8 @@
 #ifndef RECASTPOLYGON_H_
 #define RECASTPOLYGON_H_
 
+#include "system/lang/Object.h"
+
 enum SamplePolyAreas
 {
 	SAMPLE_POLYAREA_GROUND,

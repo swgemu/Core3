@@ -8,9 +8,20 @@
 #ifndef LUAINTANGIBLEOBJECT_H_
 #define LUAINTANGIBLEOBJECT_H_
 
-#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "engine/lua/Luna.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class IntangibleObject;
+}  // namespace intangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class LuaIntangibleObject : public LuaSceneObject {
 public:

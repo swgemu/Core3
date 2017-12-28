@@ -9,8 +9,26 @@
 #define LUACONVERSATIONSCREEN_H_
 
 #include "ConversationScreen.h"
-
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace conversation {
+class ConversationScreen;
+}  // namespace conversation
+}  // namespace creature
+namespace scene {
+namespace variables {
+class StringIdParameter;
+}  // namespace variables
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class LuaConversationScreen {
 public:

@@ -5,6 +5,12 @@
 
 #include "PlayerCreatureTemplate.h"
 
+#include <stddef.h>
+
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+
+
 void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
 	lua_State* state = templateData->getLuaState();
 	if (varName == "defaultLanguage")

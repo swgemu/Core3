@@ -6,6 +6,16 @@
  */
 
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "system/lang/String.h"
+
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.transfer");

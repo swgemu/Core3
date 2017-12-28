@@ -6,10 +6,33 @@
  */
 
 #include "PlaceDecorationComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/city/CityManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/managers/structure/StructureManager.h"
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace deed {
+namespace structure {
+class StructureDeed;
+}  // namespace structure
+}  // namespace deed
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	if(creature == NULL || creature->getZoneServer() == NULL)

@@ -8,13 +8,26 @@
 #ifndef ACCOUNTMANAGER_H_
 #define ACCOUNTMANAGER_H_
 
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 namespace server {
 	namespace login {
 
-		class LoginServer;
 		class LoginClient;
+		class LoginServer;
 
 		namespace account {
 

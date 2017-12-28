@@ -10,6 +10,28 @@
 
 #include "TangibleObjectMenuComponent.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace mission {
+class MissionObject;
+}  // namespace mission
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class BountyHunterDroidMenuComponent : public TangibleObjectMenuComponent {
 public:

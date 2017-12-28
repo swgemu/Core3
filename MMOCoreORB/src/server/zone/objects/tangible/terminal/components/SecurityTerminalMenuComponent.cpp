@@ -6,14 +6,24 @@
  */
 
 #include "SecurityTerminalMenuComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
 
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTangibleObject())

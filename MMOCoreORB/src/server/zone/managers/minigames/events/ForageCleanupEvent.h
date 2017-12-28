@@ -5,7 +5,10 @@
 #ifndef FORAGECLEANUPEVENT_H_
 #define FORAGECLEANUPEVENT_H_
 
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "system/lang/String.h"
 
 namespace server {
 namespace zone {

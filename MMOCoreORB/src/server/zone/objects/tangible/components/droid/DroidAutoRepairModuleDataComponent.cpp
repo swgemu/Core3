@@ -3,9 +3,37 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidAutoRepairModuleDataComponent.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/creature/events/DroidAutoRepairTask.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidAutoRepairModuleDataComponent::DroidAutoRepairModuleDataComponent() {
 	autoRepairPower = 0;

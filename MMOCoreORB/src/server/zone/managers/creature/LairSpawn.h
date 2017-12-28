@@ -8,6 +8,10 @@
 #ifndef LAIRSPAWN_H_
 #define LAIRSPAWN_H_
 
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "engine/lua/LuaObject.h"
+
 namespace server {
 namespace zone {
 namespace managers {

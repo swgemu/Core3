@@ -7,6 +7,25 @@
 
 #include "NonDeterministicBehavior.h"
 
+#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
+#include "system/lang/System.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+class AiAgent;
+namespace bt {
+class Behavior;
+}  // namespace bt
+}  // namespace ai
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 NonDeterministicBehavior::NonDeterministicBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 
 }

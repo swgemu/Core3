@@ -2,11 +2,50 @@
  				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
-#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
-#include "server/zone/managers/crafting/labratories/ResourceLabratory.h"
-#include "server/zone/managers/crafting/labratories/GeneticLabratory.h"
 #include "server/zone/managers/crafting/labratories/DroidLabratory.h"
+#include "server/zone/managers/crafting/labratories/GeneticLabratory.h"
+#include "server/zone/managers/crafting/labratories/ResourceLabratory.h"
+#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/BuffCRC.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+#include "templates/intangible/DraftSchematicObjectTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace player {
+class PlayerObject;
+}  // namespace player
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace util {
+template <class E> class Vector;
+}  // namespace util
+}  // namespace sys
 
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();

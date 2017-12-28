@@ -8,7 +8,12 @@
 #ifndef STRUCTUREMAINTENANCETASK_H_
 #define STRUCTUREMAINTENANCETASK_H_
 
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "system/lang/String.h"
 
 namespace server {
 namespace zone {

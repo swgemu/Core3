@@ -1,10 +1,21 @@
 
 
-#include "engine/engine.h"
-#include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/tangible/tool/RecycleToolTemplate.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/tangible/tool/RecycleToolTemplate.h"
 
 void RecycleToolImplementation::initializeTransientMembers() {
 

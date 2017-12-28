@@ -2,7 +2,12 @@
 #define LUASKILL_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
 #include "server/zone/objects/creature/variables/Skill.h"
+#include "system/lang/ref/Reference.h"
+
+class Skill;
 
 namespace server {
 namespace zone {

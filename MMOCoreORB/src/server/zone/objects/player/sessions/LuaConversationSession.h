@@ -9,9 +9,23 @@
 #define LUACONVERSATIONSESSION_H_
 
 
-#include "server/zone/objects/player/sessions/ConversationSession.h"
-
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
+#include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sessions {
+class ConversationSession;
+}  // namespace sessions
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class LuaConversationSession {
 public:

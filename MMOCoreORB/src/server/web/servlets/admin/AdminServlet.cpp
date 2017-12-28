@@ -1,5 +1,18 @@
 #include "AdminServlet.h"
-#include "../../WebServer.h"
+
+#include <stddef.h>
+
+#include "engine/db/Database.h"
+#include "engine/db/DatabaseException.h"
+#include "engine/db/ResultSet.h"
+#include "server/db/ServerDatabase.h"
+#include "server/web/servlets/admin/../../HttpResponse.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+}  // namespace web
+}  // namespace server
 
 AdminServlet::AdminServlet(const String& context) :
 	Servlet(context) {

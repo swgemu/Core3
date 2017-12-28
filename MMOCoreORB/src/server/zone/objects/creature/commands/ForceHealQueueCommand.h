@@ -6,6 +6,20 @@
 #define FORCEHEALQUEUECOMMAND_H_
 
 #include "JediQueueCommand.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class ZoneProcessServer;
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class ForceHealQueueCommand : public JediQueueCommand {
 public:

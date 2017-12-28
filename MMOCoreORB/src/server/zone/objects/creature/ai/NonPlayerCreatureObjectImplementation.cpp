@@ -5,6 +5,7 @@
  *      Author: victor
  */
 
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/NonPlayerCreatureObject.h"
 
 //#define DEBUG

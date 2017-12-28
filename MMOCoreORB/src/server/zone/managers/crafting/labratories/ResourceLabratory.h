@@ -8,7 +8,29 @@
 #ifndef RESOURCELABRATORY_H_
 #define RESOURCELABRATORY_H_
 
+#include <algorithm>
+
 #include "SharedLabratory.h"
+#include "system/lang/String.h"
+#include "system/util/SortedVector.h"
+
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace manufactureschematic {
+class ManufactureSchematic;
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 namespace server {
 namespace zone {
 namespace managers {

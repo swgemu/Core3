@@ -6,7 +6,21 @@
  */
 
 #include "WorldCoordinates.h"
+
+#include <math.h>
+
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Math.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 WorldCoordinates::WorldCoordinates() : Object() {
 

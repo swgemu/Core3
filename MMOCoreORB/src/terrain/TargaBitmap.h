@@ -8,6 +8,8 @@
 #ifndef TARGABITMAP_H_
 #define TARGABITMAP_H_
 
+#include "system/io/ObjectInputStream.h"
+
 class TargaHeader {
 public:
 	char  idlength;

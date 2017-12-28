@@ -1,5 +1,18 @@
 #include "HeightMap.h"
 
+#include <stdlib.h>
+#include <cmath>
+
+#include "server/zone/managers/planet/HeightMapPlane.h"
+#include "system/io/File.h"
+#include "system/io/FileInputStream.h"
+#include "system/io/FileNotFoundException.h"
+#include "system/io/FileOutputStream.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+
 HeightMap::HeightMap() : ReadWriteLock("HeightMap"), Logger() {
 	planes = (HeightMapPlane**) malloc(PLANESSIZE * PLANESSIZE * sizeof(HeightMapPlane*));
 

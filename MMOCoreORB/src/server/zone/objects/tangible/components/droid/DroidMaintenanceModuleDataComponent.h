@@ -5,7 +5,62 @@
 #ifndef DROIDMAINTENANCEMODULEDATACOMPONENT_H_
 #define DROIDMAINTENANCEMODULEDATACOMPONENT_H_
 
+#include <algorithm>
+
 #include "BaseDroidModuleComponent.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+
+namespace engine {
+namespace core {
+template <class O> class ManagedReference;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+class ZoneServer;
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace ai {
+class DroidObject;
+}  // namespace ai
+}  // namespace creature
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+namespace scene {
+class SceneObject;
+}  // namespace scene
+namespace structure {
+class StructureObject;
+}  // namespace structure
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+namespace util {
+template <class K, class V> class VectorMap;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
 namespace zone {

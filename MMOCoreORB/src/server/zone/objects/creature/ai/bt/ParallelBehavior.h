@@ -8,7 +8,24 @@
 #ifndef PARALLELBEHAVIOR_H_
 #define PARALLELBEHAVIOR_H_
 
+#include <algorithm>
+
 #include "CompositeBehavior.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+class AiAgent;
+}  // namespace ai
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {
@@ -16,6 +33,8 @@ namespace objects {
 namespace creature {
 namespace ai {
 namespace bt {
+
+class Behavior;
 
 class ParallelBehavior : public CompositeBehavior {
 protected:

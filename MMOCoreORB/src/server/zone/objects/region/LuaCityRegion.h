@@ -3,6 +3,9 @@
 #define LUACITYREGION_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
+#include "system/lang/ref/Reference.h"
 
 namespace server {
 namespace zone {

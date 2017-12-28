@@ -9,8 +9,21 @@
 #define LUAPLAYEROBJECT_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+class PlayerObject;
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class LuaPlayerObject : public LuaIntangibleObject {
 public:

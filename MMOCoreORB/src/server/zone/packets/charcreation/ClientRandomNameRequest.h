@@ -11,6 +11,7 @@
 #include "server/zone/packets/MessageCallback.h"
 #include "ClientRandomNameResponse.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class ClientRandomNameRequest : public MessageCallback {
 	String raceFile;

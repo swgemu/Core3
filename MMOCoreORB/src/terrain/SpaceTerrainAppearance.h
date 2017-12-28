@@ -10,6 +10,13 @@
 
 #include "TemplateVariable.h"
 #include "TerrainAppearance.h"
+#include "engine/log/Logger.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SpaceTerrainAppearance : public TemplateVariable<'STAT'>, public Logger, public TerrainAppearance {
 protected:

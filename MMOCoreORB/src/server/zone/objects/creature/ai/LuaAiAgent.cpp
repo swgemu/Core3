@@ -7,18 +7,43 @@
 
 #include "LuaAiAgent.h"
 
+#include <assert.h>
 #include <engine/core/ManagedReference.h>
-#include <system/lang/ref/Reference.h>
+#include <stddef.h>
 #include <system/lang/String.h>
+#include <system/lang/ref/Reference.h>
+#include <algorithm>
 
+#include "engine/core/Core.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/ZoneServer.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "server/ServerCore.h"
-
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/PatrolPoint.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Time.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/params/creature/CreatureFlag.h"
+
+namespace server {
+namespace chat {
+class StringIdChatParameter;
+}  // namespace chat
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 

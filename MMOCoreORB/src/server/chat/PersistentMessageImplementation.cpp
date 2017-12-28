@@ -6,9 +6,22 @@
  */
 
 #include "server/chat/PersistentMessage.h"
-#include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/chat/StringIdChatParameterVector.h"
+#include "server/chat/WaypointChatParameterVector.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
+#include "system/lang/Long.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace chat {
+class StringIdChatParameter;
+class WaypointChatParameter;
+}  // namespace chat
+}  // namespace server
 
 int PersistentMessageImplementation::getMailID() {
 	return Long::hashCode(_this.getReferenceUnsafeStaticCast()->_getObjectID());

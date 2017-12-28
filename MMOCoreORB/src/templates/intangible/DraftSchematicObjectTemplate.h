@@ -9,8 +9,26 @@
 #define DRAFTSCHEMATICOBJECTTEMPLATE_H_
 
 #include "SharedDraftSchematicObjectTemplate.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/crafting/draftslot/DraftSlot.h"
+
+class DraftSlot;
+class ResourceWeight;
+class SharedTangibleObjectTemplate;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+namespace sys {
+namespace lang {
+template <class O> class Reference;
+}  // namespace lang
+}  // namespace sys
 
 class DraftSchematicObjectTemplate : public SharedDraftSchematicObjectTemplate {
 protected:

@@ -8,20 +8,21 @@
 #ifndef PERLINNOISE_H_
 #define PERLINNOISE_H_
 
+#include "Random.h"
+#include <cmath>
+#include <cstdint>
+
 /* coherent noise function over 1, 2 or 3 dimensions */
 /* (copyright Ken Perlin) */
 
-#define B 0x100
-#define BM 0xff
-
-#define N 0x1000
-#define NP 12   /* 2^N */
-#define NM 0xfff
-
-#include "Random.h"
-#include <cmath>
-
 class PerlinNoise {
+	const static int B = 0x100;
+	const static int BM = 0xff;
+
+	const static int N = 0x1000;
+	const static int NP = 12;   /* 2^N */
+	const static int NM = 0xfff;
+
 	int p[B + B + 2];
 	//float g3[B + B + 2][3];
 	float g2[B + B + 2][2];

@@ -6,8 +6,13 @@
  */
 
 #include "CompositeBehavior.h"
+
+#include <stddef.h>
+
 #include "Behavior.h"
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "system/lang/StringBuffer.h"
 
 CompositeBehavior::CompositeBehavior(AiAgent* _agent, const String& className) : Behavior(_agent, className) {
 	currentPos = 0;

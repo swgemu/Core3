@@ -7,6 +7,13 @@
 
 #include "WorldSnapshotIff.h"
 
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/platform.h"
+
 WorldSnapshotIff::WorldSnapshotIff() {
 
 }

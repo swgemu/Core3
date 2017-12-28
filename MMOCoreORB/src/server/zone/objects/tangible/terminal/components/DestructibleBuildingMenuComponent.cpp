@@ -1,11 +1,24 @@
 #include "DestructibleBuildingMenuComponent.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneProcessServer.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
 #include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

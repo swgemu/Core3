@@ -11,14 +11,37 @@
 #ifndef SCHEMATICMAP_H_
 #define SCHEMATICMAP_H_
 
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
-
 #include "DraftSchematicGroup.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+class DraftSchematicGroup;
+namespace server {
+namespace zone {
+namespace managers {
+namespace object {
+class ObjectManager;
+}  // namespace object
+}  // namespace managers
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace player {
+class PlayerObject;
+}  // namespace player
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class SchematicMap : public Singleton<SchematicMap>, public Lua {
 

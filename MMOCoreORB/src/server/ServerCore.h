@@ -5,7 +5,14 @@
 #ifndef SERVERCORE_H_
 #define SERVERCORE_H_
 
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/thread/Condition.h"
+#include "system/thread/Mutex.h"
+#include "system/util/SortedVector.h"
 
 namespace server {
 	namespace zone{
@@ -17,17 +24,23 @@ using namespace server::zone;
 
 #include "server/login/LoginServer.h"
 
+namespace engine {
+namespace ORB {
+class DistributedObjectBroker;
+}  // namespace ORB
+}  // namespace engine
+
 namespace conf {
 	class ConfigManager;
 }
 
 using namespace conf;
 
-class ServerDatabase;
-class MantisDatabase;
-class StatusServer;
 class Features;
+class MantisDatabase;
 class PingServer;
+class ServerDatabase;
+class StatusServer;
 
 namespace server {
  namespace web {

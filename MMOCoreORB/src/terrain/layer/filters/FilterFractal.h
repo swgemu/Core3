@@ -9,11 +9,21 @@
 #define FILTERFRACTAL_H_
 
 
+#include <stddef.h>
+
 #include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
+#include "terrain/layer/filters/../InformationHeader.h"
+#include "terrain/layer/filters/../filters/FilterProceduralRule.h"
 
-class TerrainGenerator;
 class MapFractal;
+class TerrainGenerator;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+template <int version> struct Version;
 
 class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule {
 	int fractalId; // Fractal Group ID to modify (MGRP)

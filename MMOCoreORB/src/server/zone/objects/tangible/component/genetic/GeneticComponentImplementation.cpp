@@ -2,8 +2,28 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <math.h>
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void GeneticComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();

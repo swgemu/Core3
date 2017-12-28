@@ -8,8 +8,32 @@
 #ifndef DAMAGEOVERTIMELIST_H_
 #define DAMAGEOVERTIMELIST_H_
 
-#include "engine/engine.h"
+#include <algorithm>
+
 #include "DamageOverTime.h"
+#include "engine/engine.h"
+#include "system/lang/Long.h"
+#include "system/lang/Time.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class DamageOverTimeList : private VectorMap<uint64, Vector<DamageOverTime> > {
 protected:

@@ -9,7 +9,28 @@
 #define DICEMENUCOMPONENT_H_
 
 #include "server/zone/objects/tangible/components//TangibleObjectMenuComponent.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 #include "templates/tangible/DiceTemplate.h"
+
+class DiceTemplate;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 
 class DiceMenuComponent : public TangibleObjectMenuComponent {

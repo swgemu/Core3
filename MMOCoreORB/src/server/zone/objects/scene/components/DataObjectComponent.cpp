@@ -4,6 +4,10 @@
 */
 
 #include "DataObjectComponent.h"
+
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 DataObjectComponent::DataObjectComponent() {

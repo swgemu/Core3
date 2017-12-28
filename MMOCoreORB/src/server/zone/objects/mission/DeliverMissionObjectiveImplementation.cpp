@@ -5,17 +5,45 @@
  *      Author: dannuic
  */
 
-#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
 #include "server/ServerCore.h"
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
-#include "terrain/manager/TerrainManager.h"
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/faction/Factions.h"
+
+class TerrainManager;
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+class CreatureManager;
+}  // namespace creature
+}  // namespace managers
+}  // namespace zone
+}  // namespace server
 
 void DeliverMissionObjectiveImplementation::activate() {
 	if (activated) {

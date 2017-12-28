@@ -8,7 +8,14 @@
 #ifndef CAMPSTRUCTURETEMPLATE_H_
 #define CAMPSTRUCTURETEMPLATE_H_
 
+#include "system/platform.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 class CampStructureTemplate : public SharedBuildingObjectTemplate {
 protected:

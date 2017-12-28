@@ -9,6 +9,7 @@
 #define LUACREATUREOBJECT_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
 
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 

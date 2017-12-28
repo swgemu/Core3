@@ -6,9 +6,20 @@
  */
 
 #include "SharedObjectTemplate.h"
+
+#include <netinet/in.h>
+#include <string.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+
+#include "system/lang/Exception.h"
 #include "templates/manager/TemplateManager.h"
-#include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
+#include "templates/slots/SlotDescriptor.h"
 
 SharedObjectTemplate::SharedObjectTemplate() {
 	portalLayout = NULL;

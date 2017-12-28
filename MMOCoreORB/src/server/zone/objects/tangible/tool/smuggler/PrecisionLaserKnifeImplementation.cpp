@@ -5,14 +5,27 @@
  *      Author: polonel
  */
 
-#include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-#include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/Zone.h"
+#include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
+#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 

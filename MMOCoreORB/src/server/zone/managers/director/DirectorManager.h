@@ -8,14 +8,49 @@
 #ifndef DIRECTORMANAGER_H_
 #define DIRECTORMANAGER_H_
 
-#include "DirectorSharedMemory.h"
-#include "server/zone/managers/director/QuestStatus.h"
-#include "server/zone/managers/director/ScreenPlayTask.h"
-#include "server/zone/managers/director/QuestVectorMap.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "system/util/SynchronizedSortedVector.h"
+#include "DirectorSharedMemory.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "engine/util/u3d/Vector3.h"
+
+#include "server/zone/managers/director/QuestStatus.h"
+#include "server/zone/managers/director/QuestVectorMap.h"
+#include "server/zone/managers/director/ScreenPlayTask.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/thread/ThreadLocal.h"
+#include "system/thread/atomic/AtomicInteger.h"
 #include "system/util/SynchronizedHashTable.h"
+#include "system/util/SynchronizedSortedVector.h"
 #include "system/util/SynchronizedVectorMap.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace util {
+template <class K, class V> class SynchronizedHashTable;
+}  // namespace util
+}  // namespace sys
 
 namespace server {
 namespace zone {

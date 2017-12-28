@@ -2,13 +2,24 @@
 #define LUASKILLMANAGER_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
+
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace skill {
+class SkillManager;
+}  // namespace skill
+}  // namespace managers
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace sui {
-	class SuiManager;
-
 	class LuaSkillManager {
 	public:
 		static const char className[];
@@ -24,7 +35,7 @@ namespace sui {
 		int canLearnSkill(lua_State* L);
 
 	private:
-		Reference<SkillManager*> realObject;
+		Reference<server::zone::managers::skill::SkillManager*> realObject;
 	};
 }
 }

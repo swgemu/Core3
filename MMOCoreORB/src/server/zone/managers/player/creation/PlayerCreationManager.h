@@ -6,8 +6,34 @@
 #ifndef PLAYERCREATIONMANAGER_H_
 #define PLAYERCREATIONMANAGER_H_
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
 #include "engine/lua/Lua.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/creation/HairStyleInfo.h"
+#include "server/zone/managers/player/creation/ProfessionDefaultsInfo.h"
+#include "server/zone/managers/player/creation/RacialCreationData.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+#include "system/util/HashTable.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+class ClientCreateCharacterCallback;
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 namespace zone {
@@ -47,9 +73,9 @@ namespace managers {
 namespace player {
 namespace creation {
 
-class RacialCreationData;
 class HairStyleInfo;
 class ProfessionDefaultsInfo;
+class RacialCreationData;
 
 class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Logger, public Object {
 	ManagedReference<ZoneServer*> zoneServer;

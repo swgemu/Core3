@@ -9,6 +9,25 @@
 #define THROWGRENADEMENUCOMPONENT_H_
 
 #include "WeaponObjectMenuComponent.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 class ThrowGrenadeMenuComponent : public WeaponObjectMenuComponent {
 public:

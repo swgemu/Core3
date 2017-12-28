@@ -1,14 +1,31 @@
 #ifndef SCENEOBJECT_H_
 #define SCENEOBJECT_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
-
+#include "engine/log/Logger.h"
 #include "engine/util/u3d/Coordinate.h"
-
+#include "engine/util/u3d/Quaternion.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "variables/StringId.h"
 
-class ZoneClient;
 class Zone;
+class ZoneClient;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class SceneObject : public Coordinate, public Mutex, public Logger, public Object {
 protected:

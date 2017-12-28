@@ -9,6 +9,7 @@
 #define LUATANGIBLEOBJECT_H_
 
 #include "engine/engine.h"
+#include "engine/lua/Luna.h"
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
 

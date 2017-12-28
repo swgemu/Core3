@@ -5,8 +5,12 @@
 #ifndef STRINGID_H_
 #define STRINGID_H_
 
-#include "system/lang.h"
 #include "engine/service/Message.h"
+#include "system/io/Serializable.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
 
 class StringId : public Serializable {
 	SerializableString file;

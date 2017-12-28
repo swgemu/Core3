@@ -5,12 +5,23 @@
 #ifndef STRUCTUREMANAGER_H_
 #define STRUCTUREMANAGER_H_
 
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
+
+class SharedStructureObjectTemplate;
 
 namespace server {
 namespace zone {
 	class ZoneServer;
+
 namespace objects {
 namespace scene {
 	class SceneObject;
@@ -23,6 +34,7 @@ namespace structure {
 }
 namespace tangible {
 	class TangibleObject;
+
 namespace deed {
 namespace structure {
 	class StructureDeed;

@@ -1,5 +1,9 @@
 
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 
 String RobeObjectImplementation::getSkillRequired() {

@@ -2,8 +2,15 @@
 #define PLAYERCREATURE_H_
 
 #include "client/zone/objects/creature/CreatureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "zone/objects/scene/SceneObject.h"
 
 class Zone;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 class PlayerCreature : public CreatureObject {
 protected:

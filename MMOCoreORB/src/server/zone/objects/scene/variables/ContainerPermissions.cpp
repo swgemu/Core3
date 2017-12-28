@@ -7,6 +7,15 @@
 
 #include "ContainerPermissions.h"
 
+#include "system/lang/types.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
+
 ContainerPermissions::ContainerPermissions() : groupPermissions(3, 1), ownerID(0), inheritPermissionsFromParent(true) {
 	groupPermissions.put(STRING_HASHCODE("owner"), 0xFFFF0000);
 	groupPermissions.put(STRING_HASHCODE("admin"), 0xFFFF0000);

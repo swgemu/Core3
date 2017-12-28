@@ -5,7 +5,10 @@
 #ifndef GROUPMANAGER_H_
 #define GROUPMANAGER_H_
 
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
 
 namespace server {
  namespace zone {

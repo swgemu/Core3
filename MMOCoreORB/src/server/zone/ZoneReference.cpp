@@ -6,8 +6,21 @@
  */
 
 #include "ZoneReference.h"
-#include "server/zone/Zone.h"
+
+#include <stddef.h>
+
 #include "server/ServerCore.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+}  // namespace io
+}  // namespace sys
 
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
 	Zone* object = Reference<Zone*>::get();

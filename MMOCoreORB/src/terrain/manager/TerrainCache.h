@@ -9,12 +9,22 @@
 #define SRC_SERVER_ZONE_MANAGERS_TERRAIN_TERRAINCACHE_H_
 
 #include <utility>      // std::pair
+
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
 #include "engine/util/lru/SynchronizedLRUCache.h"
 #include "engine/util/u3d/BasicQuadTree.h"
+#include "system/platform.h"
 
-class TerrainManager;
 class TerrainGenerator;
+class TerrainManager;
+namespace engine {
+namespace util {
+namespace u3d {
+class QuadTreeEntryInterface;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 class TerrainCache : public SynchronizedLRUCache2<uint64, float, float, std::pair<QuadTreeEntryInterface*, float> >, public Logger {
 public:

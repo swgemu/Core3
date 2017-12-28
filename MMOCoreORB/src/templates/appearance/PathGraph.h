@@ -8,10 +8,20 @@
 #ifndef PATHGRAPH_H_
 #define PATHGRAPH_H_
 
-#include "templates/appearance/PathNode.h"
+#include <algorithm>
+
+#include "engine/util/u3d/Vector3.h"
+#include "system/util/Vector.h"
 #include "templates/IffTemplate.h"
+#include "templates/appearance/PathEdge.h"
+#include "templates/appearance/PathNode.h"
 
 class FloorMesh;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class PathGraph : public IffTemplate {
 	enum PathGraphType

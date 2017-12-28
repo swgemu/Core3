@@ -5,10 +5,38 @@
 #ifndef ZONECLIENT_H_
 #define ZONECLIENT_H_
 
+#include <stddef.h>
+
 #include "client/zone/objects/player/PlayerCreature.h"
+#include "engine/service/MessageQueue.h"
+#include "engine/service/ServiceHandler.h"
+#include "engine/service/proto/BaseClient.h"
+#include "engine/service/proto/BasePacket.h"
+#include "engine/service/proto/StandaloneBaseMessage.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 class Zone;
 class ZonePacketHandler;
+namespace engine {
+namespace service {
+class Message;
+class ServiceClient;
+namespace proto {
+class BasePacketHandler;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
+namespace sys {
+namespace lang {
+class Exception;
+}  // namespace lang
+namespace net {
+class Packet;
+class Socket;
+class SocketAddress;
+}  // namespace net
+}  // namespace sys
 
 class ZoneClient : public ServiceHandler {
 	Reference<BaseClient*> client;

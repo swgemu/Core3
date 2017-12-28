@@ -6,7 +6,10 @@
  */
 
 #include "LuaObjectMenuResponse.h"
+
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 const char LuaObjectMenuResponse::className[] = "LuaObjectMenuResponse";
 

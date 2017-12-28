@@ -5,14 +5,21 @@
  *      Author: Kyle
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/sui/callbacks/StructureSetAccessFeeSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureSetAccessDurationSuiCallback.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/callbacks/StructureSetAccessFeeSuiCallback.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "system/lang/ref/Reference.h"
 
 int StructureSetAccessFeeSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> player = this->player.get();

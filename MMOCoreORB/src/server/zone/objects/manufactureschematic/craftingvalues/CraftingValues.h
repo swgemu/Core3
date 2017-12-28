@@ -5,8 +5,16 @@
 #ifndef CRAFTINGVALUES_H_
 #define CRAFTINGVALUES_H_
 
-#include "templates/crafting/ValuesMap.h"
+#include <algorithm>
+
+#include "engine/core/ManagedWeakReference.h"
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/crafting/ValuesMap.h"
 
 namespace server {
  namespace zone {

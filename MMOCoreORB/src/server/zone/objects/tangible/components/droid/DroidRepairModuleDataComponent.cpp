@@ -3,9 +3,34 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidRepairModuleDataComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/OptionBitmask.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidRepairModuleDataComponent::DroidRepairModuleDataComponent() {
 	setLoggingName("DroidRepairModule");

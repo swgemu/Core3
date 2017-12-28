@@ -5,7 +5,12 @@
 #ifndef CLIENTCORE_H_
 #define CLIENTCORE_H_
 
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/log/Logger.h"
 #include "system/lang.h"
+#include "system/util/Vector.h"
 
 class Zone;
 

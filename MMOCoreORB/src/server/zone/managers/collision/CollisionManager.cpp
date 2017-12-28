@@ -6,16 +6,50 @@
  */
 
 #include "CollisionManager.h"
+
+#include <math.h>
+#include <stdio.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/AABBNode.h"
+#include "engine/util/u3d/AABBTree.h"
+#include "engine/util/u3d/Matrix3.h"
+#include "engine/util/u3d/Matrix4.h"
+#include "engine/util/u3d/Quaternion.h"
+#include "engine/util/u3d/Sphere.h"
+#include "engine/util/u3d/TriangleNode.h"
+#include "engine/util/u3d/TriangulationAStarAlgorithm.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/managers/collision/IntersectionResults.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 #include "templates/SharedObjectTemplate.h"
-#include "templates/appearance/PortalLayout.h"
+#include "templates/appearance/AppearanceTemplate.h"
 #include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/PathGraph.h"
+#include "templates/appearance/PathNode.h"
+#include "templates/appearance/PortalLayout.h"
 #include "terrain/manager/TerrainManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/ship/ShipObject.h"
+
+namespace engine {
+namespace util {
+namespace u3d {
+class Triangle;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;

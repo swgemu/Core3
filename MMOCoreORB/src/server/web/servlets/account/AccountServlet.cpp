@@ -6,7 +6,13 @@
  */
 
 #include "AccountServlet.h"
-#include "../../WebServer.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 AccountServlet::AccountServlet(String context) :
 	Servlet(context) {

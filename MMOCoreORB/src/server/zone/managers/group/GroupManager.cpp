@@ -4,27 +4,42 @@
 
 #include "GroupManager.h"
 
-#include "server/zone/ZoneServer.h"
-#include "server/zone/Zone.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/Facade.h"
 #include "server/chat/ChatManager.h"
-
 #include "server/chat/StringIdChatParameter.h"
+#include "server/chat/room/ChatRoom.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sessions/LootLotterySession.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootChangedSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootPickLooterSuiCallback.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/packets/object/OpenLotteryWindow.h"
-#include "server/zone/objects/player/sessions/LootLotterySession.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
 
 
 GroupManager::GroupManager() {

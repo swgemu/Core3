@@ -2,17 +2,33 @@
  				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/tool/CraftingToolTemplate.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/tangible/tool/CraftingToolTemplate.h"
 
 void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

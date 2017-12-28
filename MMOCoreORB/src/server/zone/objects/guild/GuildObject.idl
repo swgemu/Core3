@@ -11,7 +11,7 @@ include server.zone.objects.guild.GuildMemberList;
 include server.zone.objects.guild.GuildMemberInfo;
 import server.zone.objects.guild.GuildUpdateEvent;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.scene.SceneObject;
+include server.zone.objects.scene.SceneObject;
 import system.lang.String;
 import system.util.SortedVector;
 include system.thread.ReadWriteLock;

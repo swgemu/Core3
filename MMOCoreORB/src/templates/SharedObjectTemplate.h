@@ -8,20 +8,38 @@
 #ifndef SHAREDOBJECTTEMPLATE_H_
 #define SHAREDOBJECTTEMPLATE_H_
 
-#include "templates/LuaTemplate.h"
-#include "templates/IffTemplate.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 #include "templates/ChildObject.h"
+#include "templates/IffTemplate.h"
+#include "templates/LuaTemplate.h"
 #include "templates/manager/PlanetMapCategory.h"
-#include "templates/slots/SlotDescriptor.h"
-#include "templates/slots/ArrangementDescriptor.h"
-#include "templates/params/primitives/IntegerParam.h"
 #include "templates/params/StringIdParam.h"
-#include "templates/params/primitives/StringParam.h"
 #include "templates/params/primitives/BoolParam.h"
 #include "templates/params/primitives/FloatParam.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/params/primitives/StringParam.h"
+#include "templates/slots/ArrangementDescriptor.h"
+#include "templates/slots/SlotDescriptor.h"
 
-class PortalLayout;
 class AppearanceTemplate;
+class PortalLayout;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
 protected:

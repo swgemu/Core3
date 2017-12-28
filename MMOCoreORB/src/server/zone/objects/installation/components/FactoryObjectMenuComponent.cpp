@@ -6,10 +6,20 @@
  */
 
 #include "FactoryObjectMenuComponent.h"
+
+#include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/installation/factory/FactoryObject.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isFactory())

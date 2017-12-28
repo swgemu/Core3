@@ -1,6 +1,18 @@
-#include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
+#include <stdlib.h>
+#include <algorithm>
+#include <limits>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
 #include "server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
 
 void ChannelForceBuffImplementation::initializeTransientMembers() {
 	BuffImplementation::initializeTransientMembers();
