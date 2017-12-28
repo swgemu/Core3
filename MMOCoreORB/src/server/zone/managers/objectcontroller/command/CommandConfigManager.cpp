@@ -4,38 +4,32 @@
 
 #include "CommandConfigManager.h"
 
-#include "server/zone/ZoneProcessServer.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/Zone.h"
+#include <stddef.h>
 
-#include "server/zone/objects/intangible/PetControlDevice.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/Creature.h"
-
-#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/collision/CollisionManager.h"
+#include "CommandList.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/group/GroupManager.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/packets/object/CombatSpam.h"
-#include "server/zone/packets/object/CombatAction.h"
-
+#include "server/zone/managers/objectcontroller/command/CommandFactory.h"
 #include "server/zone/objects/creature/commands/AdminCommand.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
-#include "server/zone/objects/creature/commands/SquadLeaderCommand.h"
 #include "server/zone/objects/creature/commands/ForceHealQueueCommand.h"
 #include "server/zone/objects/creature/commands/JediQueueCommand.h"
-#include "server/zone/objects/creature/commands/effect/StateEffect.h"
-#include "server/zone/objects/creature/commands/effect/DotEffect.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/SquadLeaderCommand.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/commands/effect/DotEffect.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "system/io/StringTokenizer.h"
+#include "system/platform.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureLocomotion.h"
+#include "templates/params/creature/CreatureState.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
 
 #include "server/zone/objects/creature/commands/pet/PetAttackCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetEmoteCommand.h"
@@ -59,12 +53,6 @@
 #include "server/zone/objects/creature/commands/pet/PetPatrolCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetClearPatrolPointsCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGetPatrolPointCommand.h"
-
-#include "server/zone/objects/creature/commands/JediQueueCommand.h"
-
-#include "templates/datatables/DataTableIff.h"
-#include "templates/datatables/DataTableRow.h"
-#include "CommandList.h"
 
 CommandList* CommandConfigManager::slashCommands = NULL;
 ZoneProcessServer* CommandConfigManager::server = NULL;

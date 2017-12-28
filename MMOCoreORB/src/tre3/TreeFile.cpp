@@ -6,7 +6,15 @@
  */
 
 #include "TreeFile.h"
+
+#include <stddef.h>
+
 #include "TreeArchive.h"
+#include "system/io/File.h"
+#include "system/io/FileInputStream.h"
+#include "system/platform.h"
+#include "tre3/TreeDataBlock.h"
+#include "tre3/TreeFileRecord.h"
 
 TreeFile::TreeFile(TreeArchive* archive) : records() {
 	version = 0;

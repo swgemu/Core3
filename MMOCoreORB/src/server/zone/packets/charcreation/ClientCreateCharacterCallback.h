@@ -9,6 +9,21 @@
 #define CLIENTCREATECHARACTERCALLBACK_H_
 
 #include "server/zone/packets/MessageCallback.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
+namespace server {
+namespace zone {
+class ZoneClientSession;
+class ZoneProcessServer;
+}  // namespace zone
+}  // namespace server
 
 class ClientCreateCharacterCallback : public MessageCallback {
 	String customization;

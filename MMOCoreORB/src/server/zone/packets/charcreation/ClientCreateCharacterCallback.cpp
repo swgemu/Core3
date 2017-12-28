@@ -6,9 +6,14 @@
  */
 
 #include "ClientCreateCharacterCallback.h"
-#include "server/zone/managers/player/PlayerManager.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/service/Message.h"
+#include "server/zone/ZoneClientSession.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/Races.h"
+#include "system/lang/ref/Reference.h"
 
 void ClientCreateCharacterCallback::parse(Message* message) {
 

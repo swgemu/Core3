@@ -9,6 +9,14 @@
 #define CREATURETEMPLATEREFERENCE_H_
 
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "system/lang/ref/Reference.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 class CreatureTemplateReference : public Reference<CreatureTemplate*> {
 public:

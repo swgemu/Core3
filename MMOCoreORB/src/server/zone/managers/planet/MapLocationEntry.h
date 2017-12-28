@@ -10,8 +10,20 @@
 #define MAPLOCATIONENTRY_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 class PlanetMapCategory;
+namespace engine {
+namespace service {
+namespace proto {
+class BaseMessage;
+}  // namespace proto
+}  // namespace service
+}  // namespace engine
 
 namespace server {
 namespace zone {

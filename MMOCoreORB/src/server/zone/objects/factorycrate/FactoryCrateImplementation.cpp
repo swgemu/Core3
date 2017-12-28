@@ -5,15 +5,42 @@
  *      Author: Kyle
  */
 
-#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage6.h"
-#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+
+class SharedObjectTemplate;
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 void FactoryCrateImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

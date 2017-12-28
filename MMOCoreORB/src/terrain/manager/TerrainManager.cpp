@@ -6,10 +6,20 @@
  */
 
 #include "TerrainManager.h"
+
+#include <math.h>
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "system/lang/StackTrace.h"
+#include "system/lang/StringBuffer.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
 #include "templates/manager/TemplateManager.h"
 #include "terrain/ProceduralTerrainAppearance.h"
-#include "terrain/TerrainGenerator.h"
 #include "terrain/SpaceTerrainAppearance.h"
+#include "terrain/TerrainGenerator.h"
+#include "terrain/manager/TerrainCache.h"
 
 #define USE_CACHED_HEIGHT
 

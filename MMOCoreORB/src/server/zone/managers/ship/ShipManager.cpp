@@ -6,8 +6,15 @@
  */
 
 #include "ShipManager.h"
-#include "templates/manager/DataArchiveStore.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/objects/ship/ShipComponent.h"
 #include "templates/datatables/DataTableIff.h"
+#include "templates/manager/DataArchiveStore.h"
+
+class DataTableRow;
 
 ShipManager::ShipManager() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(

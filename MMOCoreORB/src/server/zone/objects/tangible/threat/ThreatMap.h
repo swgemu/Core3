@@ -10,11 +10,34 @@
 
 
 
-#include "engine/engine.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "ThreatMatrix.h"
-#include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/engine.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+class WeaponObject;
+}  // namespace weapon
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

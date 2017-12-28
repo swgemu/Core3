@@ -5,10 +5,32 @@
  *      Author: loshult
  */
 
-#include "BountyHunterDroid.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
+
+#include "BountyHunterDroid.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/mission/bountyhunter/events/CallArakydTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {

@@ -5,15 +5,25 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
 #include "server/zone/Zone.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/PlayerQuestData.h"
+#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void TicketCollectorImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (JediManager::instance()->getJediProgressionType() == JediManager::VILLAGEJEDIPROGRESSION) {

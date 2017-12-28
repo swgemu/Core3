@@ -8,9 +8,21 @@
 #ifndef COMPONENTMANAGER_H_
 #define COMPONENTMANAGER_H_
 
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include <stddef.h>
+
 #include "engine/util/ObjectFactory.h"
+#include "engine/util/Singleton.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/SceneObjectComponent.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/HashTable.h"
+
+class DataObjectComponent;
+class SceneObjectComponent;
 
 class ComponentManager : public Singleton<ComponentManager>, public Object, public ReadWriteLock {
 protected:

@@ -8,11 +8,16 @@
 #ifndef CITYUPDATEEVENT_H_
 #define CITYUPDATEEVENT_H_
 
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
 #include "engine/engine.h"
+#include "server/zone/ZoneServer.h"
 
 namespace server {
 namespace zone {
 	class ZoneServer;
+
 namespace objects {
 namespace region {
 	class CityRegion;

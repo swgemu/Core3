@@ -5,13 +5,32 @@
  *      Author: kyle
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "TrapMenuComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+class TangibleObject;
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

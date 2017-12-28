@@ -5,11 +5,18 @@
  *      Author: TragD
  */
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
 #include "TrainerMenuComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/managers/city/CityRemoveAmenityTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
 
 void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);

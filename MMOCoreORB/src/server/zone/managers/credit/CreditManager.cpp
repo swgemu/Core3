@@ -4,6 +4,17 @@
 
 #include "CreditManager.h"
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/orb/ObjectBroker.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+
 
 void CreditManager::addBankCredits(uint64 creatureID, int amount, bool notifyClient) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);

@@ -3,15 +3,49 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidMaintenanceModuleDataComponent.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/RemoveDroidStructureSuiCallback.h"
-#include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
-#include "server/zone/objects/creature/credits/CreditObject.h"
+
+#include <stddef.h>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/RemoveDroidStructureSuiCallback.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/types.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidMaintenanceModuleDataComponent::DroidMaintenanceModuleDataComponent() {
 	setLoggingName("DroidMaintenanceModule");

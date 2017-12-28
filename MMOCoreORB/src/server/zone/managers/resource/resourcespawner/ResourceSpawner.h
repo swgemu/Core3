@@ -11,18 +11,62 @@
 #ifndef RESOURCESPAWNER_H_
 #define RESOURCESPAWNER_H_
 
-#include "server/zone/ZoneServer.h"
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/log/Logger.h"
+#include "engine/lua/LuaObject.h"
+#include "resourcemap/ResourceMap.h"
+#include "resourcepool/FixedPool.h"
+#include "resourcepool/ManualPool.h"
+#include "resourcepool/MinimumPool.h"
+#include "resourcepool/NativePool.h"
+#include "resourcepool/RandomPool.h"
+#include "resourcetree/ResourceTree.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
-#include "resourcetree/ResourceTree.h"
-#include "resourcemap/ResourceMap.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/Vector.h"
 
-#include "resourcepool/MinimumPool.h"
-#include "resourcepool/FixedPool.h"
-#include "resourcepool/RandomPool.h"
-#include "resourcepool/NativePool.h"
-#include "resourcepool/ManualPool.h"
+class FixedPool;
+class ManualPool;
+class MinimumPool;
+class NativePool;
+class RandomPool;
+class ResourceMap;
+class ResourceTree;
+class ResourceTreeEntry;
+namespace engine {
+namespace db {
+class ObjectDatabaseManager;
+}  // namespace db
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace managers {
+namespace name {
+class NameManager;
+}  // namespace name
+namespace object {
+class ObjectManager;
+}  // namespace object
+}  // namespace managers
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace resource {
+class ResourceContainer;
+class ResourceSpawn;
+}  // namespace resource
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

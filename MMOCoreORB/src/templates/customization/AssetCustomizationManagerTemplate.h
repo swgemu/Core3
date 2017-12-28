@@ -9,8 +9,25 @@
 #define ASSETCUSTOMIZATIONMANAGERTEMPLATE_H_
 
 #include "engine/util/Singleton.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 #include "templates/IffTemplate.h"
 #include "templates/customization/CustomizationVariable.h"
+
+class CustomizationVariable;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace lang {
+template <class O> class Reference;
+}  // namespace lang
+namespace util {
+template <class K, class V> class VectorMap;
+}  // namespace util
+}  // namespace sys
 
 class AssetCustomizationManagerTemplate : public IffTemplate, public Singleton<AssetCustomizationManagerTemplate> {
 	byte* ulstTable;

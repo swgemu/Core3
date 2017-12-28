@@ -8,12 +8,35 @@
 #ifndef BOUNTYHUNTERDROID_H_
 #define BOUNTYHUNTERDROID_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/log/Logger.h"
-#include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/bountyhunter/events/CallArakydTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/ref/Reference.h"
+
+namespace engine {
+namespace core {
+class Task;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace mission {
+class MissionObject;
+}  // namespace mission
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {
@@ -24,6 +47,11 @@ namespace bountyhunter {
 /**
  * Class implementing the functionality of the bounty hunter droids.
  */
+namespace events {
+class CallArakydTask;
+class FindTargetTask;
+}  // namespace events
+
 class BountyHunterDroid : public Logger, public Object {
 public:
 

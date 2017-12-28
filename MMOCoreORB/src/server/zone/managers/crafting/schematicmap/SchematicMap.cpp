@@ -10,6 +10,36 @@
 
 #include "SchematicMap.h"
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/db/ObjectDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "lua.h"
+#include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/manager/TemplateManager.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 SchematicMap::SchematicMap() : objectManager(NULL) {
 	setLoggingName("SchematicMap");
 	info("Loading schematics...");

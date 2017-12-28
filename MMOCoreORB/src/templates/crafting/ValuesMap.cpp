@@ -4,6 +4,10 @@
 
 #include "ValuesMap.h"
 
+#include <stddef.h>
+
+#include "templates/crafting/ValuesClasses.h"
+
 float ValuesMap::VALUENOTFOUND = -999999;
 
 void ValuesMap::addExperimentalProperty(const String& title, const String& subtitle,

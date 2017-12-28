@@ -1,6 +1,15 @@
-#include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
 
 void FsCraftingComponentObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	ManagedReference<CreatureObject*> strongOwner = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();

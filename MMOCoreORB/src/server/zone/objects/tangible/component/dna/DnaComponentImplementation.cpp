@@ -2,7 +2,27 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void DnaComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();

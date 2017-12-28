@@ -5,7 +5,15 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "engine/lua/Lua.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
 
 namespace conf {
 	class ConfigManager : public Singleton<ConfigManager>, public Lua {

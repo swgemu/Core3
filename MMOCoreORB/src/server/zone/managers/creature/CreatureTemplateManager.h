@@ -8,18 +8,63 @@
 #ifndef CREATURETEMPLATEMANAGER_H_
 #define CREATURETEMPLATEMANAGER_H_
 
+#include <algorithm>
+
+#include "AiSpeciesData.h"
+#include "SpawnGroup.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "lua.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/objects/creature/conversation/ConversationTemplate.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "templates/mobile/LairTemplate.h"
-#include "templates/mobile/PatrolPathTemplate.h"
 #include "templates/mobile/MobileOutfitGroup.h"
-#include "SpawnGroup.h"
-#include "AiSpeciesData.h"
+#include "templates/mobile/PatrolPathTemplate.h"
+
+class LairTemplate;
+class MobileOutfitGroup;
+class PatrolPathTemplate;
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+class CreatureTemplate;
+}  // namespace ai
+namespace conversation {
+class ConversationTemplate;
+}  // namespace conversation
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace thread {
+namespace atomic {
+class AtomicInteger;
+}  // namespace atomic
+}  // namespace thread
+}  // namespace sys
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace creature {
+
+class AiSpeciesData;
+class SpawnGroup;
 
 class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:

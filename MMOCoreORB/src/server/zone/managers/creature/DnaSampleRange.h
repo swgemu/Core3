@@ -9,6 +9,15 @@
 #define DNASAMPLERANGE_H_
 
 #include "engine/engine.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 namespace zone {

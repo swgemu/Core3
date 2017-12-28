@@ -1,5 +1,8 @@
 #include "NavMeshJob.h"
+
 #include "NavMeshManager.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/thread/Locker.h"
 
 void NavMeshJob::addArea(const AABB& area) {
     float size = area.extents().getX() * area.extents().getZ();

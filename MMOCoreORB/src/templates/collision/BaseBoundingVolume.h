@@ -9,6 +9,19 @@
 #define BASEBOUNDINGVOLUME_H_
 
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/u3d/Sphere.h"
+#include "engine/util/u3d/Vector3.h"
+#include "system/lang/Object.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+namespace u3d {
+class AABB;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 class BaseBoundingVolume : public Object, public Logger {
 protected:

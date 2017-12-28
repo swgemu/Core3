@@ -6,11 +6,26 @@
  */
 
 #include "TurretDataComponent.h"
-#include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/objects/installation/components/TurretFireTask.h"
+
+#include <math.h>
+
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/components/TurretFireTask.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/util/SortedVector.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/installation/SharedInstallationObjectTemplate.h"
 
 void TurretDataComponent::initializeTransientMembers() {
 	ManagedReference<SceneObject*> turret = getParent();

@@ -3,11 +3,41 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidPersonalityModuleDataComponent.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "templates/tangible/DroidPersonalityModuleTemplate.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "server/chat/ChatManager.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "templates/params/ObserverEventType.h"
+#include "templates/params/OptionBitmask.h"
+#include "templates/tangible/DroidPersonalityModuleTemplate.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidPersonalityModuleDataComponent::DroidPersonalityModuleDataComponent() {
 	setLoggingName("DroidPersonalityModule");

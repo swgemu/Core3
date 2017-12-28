@@ -8,8 +8,26 @@
 #ifndef SHAREDCREATUREOBJECTTEMPLATE_H_
 #define SHAREDCREATUREOBJECTTEMPLATE_H_
 
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/params/VectorParam.h"
+#include "templates/params/primitives/BoolParam.h"
+#include "templates/params/primitives/FloatParam.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/params/primitives/StringParam.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+namespace util {
+class Chunk;
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class SharedCreatureObjectTemplate: public SharedTangibleObjectTemplate {
 protected:

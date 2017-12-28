@@ -6,8 +6,17 @@
  */
 
 #include "AssetCustomizationManagerTemplate.h"
-#include "templates/params/PaletteColorCustomizationVariable.h"
+
+#include <stdlib.h>
+
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+
+class CustomizationVariable;
 
 AssetCustomizationManagerTemplate::AssetCustomizationManagerTemplate() {
 	ulstTable = NULL;

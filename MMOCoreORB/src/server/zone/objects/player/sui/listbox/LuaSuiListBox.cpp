@@ -1,6 +1,9 @@
 
 #include "LuaSuiListBox.h"
+
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
 
 const char LuaSuiListBox::className[] = "LuaSuiListBox";
 

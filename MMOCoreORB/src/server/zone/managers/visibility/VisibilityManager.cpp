@@ -3,11 +3,26 @@
 		See file COPYING for copying conditions. */
 
 #include "VisibilityManager.h"
-#include "server/zone/managers/mission/MissionManager.h"
-#include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Task.h"
+#include "engine/lua/Lua.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Exception.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
 
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";

@@ -8,11 +8,18 @@
 #ifndef OBJECTCONTROLLER_H_
 #define OBJECTCONTROLLER_H_
 
-#include "system/lang.h"
 #include "engine/service/Message.h"
+#include "system/lang.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
 
-class Zone;
 class SceneObject;
+class Zone;
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
 
 class ObjectController {
 	Zone* zone;

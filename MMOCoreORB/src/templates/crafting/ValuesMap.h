@@ -5,7 +5,12 @@
 #ifndef VALUESMAP_H_
 #define VALUESMAP_H_
 
+#include <algorithm>
+
 #include "ValuesClasses.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/VectorMap.h"
 
 class ValuesMap : public VectorMap<String, Reference<Subclasses*> > {
 	String EMPTY = "";

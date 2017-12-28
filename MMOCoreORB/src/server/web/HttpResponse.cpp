@@ -6,7 +6,14 @@
  */
 
 #include "HttpResponse.h"
+
+#include <stddef.h>
+
 #include "WebServer.h"
+#include "server/web/servlets/../HttpResponse.h"
+#include "server/web/session/HttpSession.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
 
 HttpResponse::HttpResponse(HttpSession* session) {
 	// TODO Auto-generated constructor stub

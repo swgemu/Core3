@@ -5,21 +5,53 @@
 #ifndef WEBSERVER_H_
 #define WEBSERVER_H_
 
+#include <algorithm>
+
+#include "WebCredentials.h"
+#include "conf/ConfigManager.h"
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
-#include "server/zone/ZoneServer.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "mongoose/mongoose.h"
 #include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"
 #include "server/login/account/AccountManager.h"
-#include "conf/ConfigManager.h"
-#include "mongoose/mongoose.h"
+#include "server/web/session/../mongoose/mongoose.h"
+#include "server/zone/ZoneServer.h"
 #include "servlets/Servlet.h"
-#include "WebCredentials.h"
 #include "session/HttpSessionList.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
+
+class Servlet;
+class WebCredentials;
+namespace conf {
+class ConfigManager;
+}  // namespace conf
+namespace server {
+namespace login {
+class LoginClient;
+namespace account {
+class Account;
+}  // namespace account
+}  // namespace login
+namespace web {
+class HttpRequest;
+}  // namespace web
+}  // namespace server
+namespace sys {
+namespace lang {
+class StringBuffer;
+}  // namespace lang
+}  // namespace sys
 
 namespace server {
 namespace web {
 namespace session {
 class HttpSession;
+class HttpSessionList;
 }
 }
 }

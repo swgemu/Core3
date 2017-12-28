@@ -8,10 +8,21 @@
 #ifndef CREATUREATTACKDATA_H_
 #define CREATUREATTACKDATA_H_
 
-#include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
 
 class CombatQueueCommand;
+class DotEffect;
+class StateEffect;
+namespace sys {
+namespace util {
+template <class E> class Vector;
+template <class K, class V> class VectorMap;
+}  // namespace util
+}  // namespace sys
 
 class CreatureAttackData {
 protected:

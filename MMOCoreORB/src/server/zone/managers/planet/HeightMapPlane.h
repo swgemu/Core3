@@ -1,6 +1,9 @@
 #ifndef HEIGHTMAPPLANE_H_
 #define HEIGHTMAPPLANE_H_
 
+#include "system/platform.h"
+#include "system/lang/ArrayIndexOutOfBoundsException.h"
+
 class HeightMapPlane {
 	byte* buffer;
 

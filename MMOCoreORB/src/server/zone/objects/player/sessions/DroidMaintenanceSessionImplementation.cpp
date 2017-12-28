@@ -5,19 +5,40 @@
  *      Author: Klivian
  */
 
-#include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/thread/Locker.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+
 #include "server/zone/Zone.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/player/sessions/sui/DroidMaintenanceSessionRunMenuSuiCallback.h"
-#include "server/zone/objects/player/sessions/sui/DroidMaintenanceSessionAddCreditsSuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
-#include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
+
+#include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
+#include "server/zone/objects/player/sessions/sui/DroidMaintenanceSessionAddCreditsSuiCallback.h"
+#include "server/zone/objects/player/sessions/sui/DroidMaintenanceSessionRunMenuSuiCallback.h"
+
 #include "server/zone/objects/intangible/tasks/StorePetTask.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 
 void DroidMaintenanceSessionImplementation::initialize() {
 	ManagedReference<CreatureObject*> creature = this->player.get();

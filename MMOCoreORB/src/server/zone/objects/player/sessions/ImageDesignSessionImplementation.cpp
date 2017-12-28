@@ -5,16 +5,37 @@
  *      Author: Polonel
  */
 
-#include "engine/engine.h"
-#include "server/zone/objects/player/sessions/ImageDesignSession.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Facade.h"
+
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/object/ImageDesignMessage.h"
-#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
-#include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
-#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
+#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/ImageDesignData.h"
+#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/object/ImageDesignMessage.h"
+
+#include "templates/params/ObserverEventType.h"
+#include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();

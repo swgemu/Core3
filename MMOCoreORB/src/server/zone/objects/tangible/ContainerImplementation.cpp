@@ -2,17 +2,39 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "server/zone/objects/tangible/Container.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/Facade.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/installation/factory/FactoryObject.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
-#include "templates/tangible/ContainerTemplate.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/variables/ContainerObjectsMap.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/tangible/ContainerTemplate.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

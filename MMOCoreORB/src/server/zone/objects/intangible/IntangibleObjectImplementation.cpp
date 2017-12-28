@@ -2,13 +2,23 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
-
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/intangible/IntangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
-#include "server/zone/packets/intangible/IntangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/scene/IsFlattenedTheaterMessage.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void IntangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();

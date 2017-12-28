@@ -5,15 +5,35 @@
  *      Author: root
  */
 
-#include "server/zone/Zone.h"
-#include "PlaceGCWBaseComponent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include <stddef.h>
 
+#include "PlaceGCWBaseComponent.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+class StructureObject;
+}  // namespace structure
+namespace tangible {
+namespace deed {
+namespace structure {
+class StructureDeed;
+}  // namespace structure
+}  // namespace deed
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 

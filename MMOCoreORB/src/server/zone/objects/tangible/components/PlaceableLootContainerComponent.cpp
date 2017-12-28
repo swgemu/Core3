@@ -5,7 +5,25 @@
  *      Author: root
  */
 #include "PlaceableLootContainerComponent.h"
+
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/objects/tangible/Container.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 bool PlaceableLootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();

@@ -5,10 +5,17 @@
  *      Author: victor
  */
 
+#include <stddef.h>
+
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))

@@ -1,8 +1,22 @@
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-#include "templates/manager/TemplateManager.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
 
 void ContractCrateImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);

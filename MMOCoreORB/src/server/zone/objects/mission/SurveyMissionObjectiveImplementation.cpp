@@ -5,12 +5,33 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/mission/SurveyMissionObjective.h"
-#include "server/zone/objects/mission/MissionObserver.h"
-#include "server/zone/objects/mission/MissionObject.h"
-#include "templates/params/ObserverEventType.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 void SurveyMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();

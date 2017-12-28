@@ -7,6 +7,17 @@
 
 #include "TangibleObject.h"
 
+#include "engine/service/Message.h"
+#include "system/lang/UnicodeString.h"
+#include "zone/objects/scene/SceneObject.h"
+#include "zone/objects/scene/variables/StringId.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
+
 TangibleObject::TangibleObject(LuaObject* templateData) : SceneObject(templateData) {
 	complexity = 0;
 

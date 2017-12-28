@@ -6,9 +6,22 @@
  */
 
 #include "SharedTangibleObjectTemplate.h"
+
+#include <stddef.h>
+
+#include "engine/log/Logger.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/util/iffstream/IffStream.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "lua.h"
+#include "system/lang/Exception.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
+#include "templates/footprint/StructureFootprint.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/params/PaletteColorCustomizationVariables.h"
 #include "templates/params/RangedIntCustomizationVariables.h"
+#include "templates/params/primitives/StringParam.h"
 
 SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	numberExperimentalProperties = new Vector<short>();

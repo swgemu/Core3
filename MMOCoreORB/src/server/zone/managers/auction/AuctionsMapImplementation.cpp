@@ -5,14 +5,39 @@
  *      Author: kyle
  */
 
-#include "server/zone/managers/auction/AuctionsMap.h"
-#include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/log/Logger.h"
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/managers/auction/AuctionTerminalMap.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
+#include "server/zone/managers/auction/CommoditiesLimit.h"
+#include "server/zone/managers/auction/TerminalListVector.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/auction/AuctionItem.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/packets/auction/ItemSoldMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/SortedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
 int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item) {
 	if(vendor == NULL || vendor->getZone() == NULL)

@@ -6,11 +6,34 @@
  */
 
 #include "TurretZoneComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "TurretDataComponent.h"
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/TaskManager.h"
+#include "engine/util/Observer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "TurretDataComponent.h"
-#include "server/zone/Zone.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/SortedVector.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {
 	if (zne == NULL)

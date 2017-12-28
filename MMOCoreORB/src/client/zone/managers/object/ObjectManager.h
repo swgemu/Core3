@@ -9,10 +9,24 @@
 #define OBJECTMANAGER_H_
 
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "lua.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+#include "system/thread/Mutex.h"
 
-class SceneObject;
 class ObjectMap;
+class SceneObject;
 class Zone;
+namespace engine {
+namespace lua {
+class Lua;
+class LuaObject;
+}  // namespace lua
+namespace util {
+template <typename CtorSignature, typename UniqueIdType> class ObjectFactory;
+}  // namespace util
+}  // namespace engine
 
 class ObjectManager : public Mutex, public Logger {
 	ObjectMap* objectMap;

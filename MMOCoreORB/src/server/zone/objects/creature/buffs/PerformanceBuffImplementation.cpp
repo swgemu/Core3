@@ -5,10 +5,16 @@
  *      Author: Itac
  */
 
-#include "server/zone/objects/creature/buffs/PerformanceBuff.h"
+#include <math.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/PerformanceBuff.h"
 #include "server/zone/objects/creature/buffs/PerformanceBuffType.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void PerformanceBuffImplementation::activate(bool applyModifiers) {
 

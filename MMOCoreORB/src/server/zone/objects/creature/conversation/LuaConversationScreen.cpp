@@ -7,6 +7,26 @@
 
 #include "LuaConversationScreen.h"
 
+#include <stddef.h>
+
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
+#include "server/zone/objects/scene/variables/StringIdParameter.h"
+#include "system/lang/Exception.h"
+#include "system/lang/String.h"
+#include "system/lang/UnicodeString.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+
 const char LuaConversationScreen::className[] = "LuaConversationScreen";
 
 Luna<LuaConversationScreen>::RegType LuaConversationScreen::Register[] = {

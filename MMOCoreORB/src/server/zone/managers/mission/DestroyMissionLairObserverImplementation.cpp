@@ -1,11 +1,30 @@
 
-#include "server/zone/managers/mission/DestroyMissionLairObserver.h"
-#include "templates/mobile/LairTemplate.h"
-#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/LairAggroTask.h"
+#include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/mission/DestroyMissionLairObserver.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/thread/atomic/AtomicInteger.h"
+#include "system/util/SynchronizedVector.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
+#include "templates/mobile/LairTemplate.h"
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	if (getMobType() == LairTemplate::NPC)

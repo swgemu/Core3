@@ -16,16 +16,15 @@
 // 3. This notice may not be removed or altered from any source distribution.
 //
 
-#include <stdio.h>
+#include <float.h>
 #include <stdlib.h>
 #include <string.h>
-#include <float.h>
-#include "DetourNavMesh.h"
+
+#include "DetourAlloc.h"
 #include "DetourCommon.h"
 #include "DetourMath.h"
+#include "DetourNavMesh.h"
 #include "DetourNavMeshBuilder.h"
-#include "DetourAlloc.h"
-#include "DetourAssert.h"
 
 static unsigned short MESH_NULL_IDX = 0xffff;
 

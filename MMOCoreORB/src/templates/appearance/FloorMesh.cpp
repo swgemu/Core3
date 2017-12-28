@@ -6,7 +6,31 @@
  */
 
 #include "FloorMesh.h"
+
+#include <stddef.h>
+
+#include "engine/util/iffstream/chunks/Chunk.h"
+#include "engine/util/u3d/AABBTree.h"
+#include "engine/util/u3d/Sphere.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StackTrace.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
 #include "templates/appearance/MeshData.h"
+#include "templates/appearance/PathGraph.h"
+
+class PathNode;
+namespace engine {
+namespace util {
+namespace u3d {
+class Matrix4;
+class Triangle;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 #define BARRIER_HEIGHT 3
 

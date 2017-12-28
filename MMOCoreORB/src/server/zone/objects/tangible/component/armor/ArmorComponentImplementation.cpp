@@ -2,7 +2,13 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <math.h>
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
+#include "system/lang/String.h"
+#include "templates/crafting/ValuesMap.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
 
 void ArmorComponentImplementation::initializeTransientMembers() {

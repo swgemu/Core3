@@ -4,14 +4,30 @@
 */
 
 #include "SkillModManager.h"
+
+#include <stddef.h>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/BuffList.h"
+#include "server/zone/objects/creature/variables/Skill.h"
+#include "server/zone/objects/creature/variables/SkillList.h"
+#include "server/zone/objects/creature/variables/SkillModList.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/Mutex.h"
 
 SkillModManager::SkillModManager()
 		: Logger("SkillModManager") {

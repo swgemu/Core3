@@ -9,6 +9,15 @@
 #define ACCOUNTSERVLET_H_
 
 #include "../Servlet.h"
+#include "server/web/servlets/account/../../servlets/Servlet.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 class AccountServlet: public Servlet {
 public:

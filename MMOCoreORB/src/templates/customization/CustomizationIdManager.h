@@ -10,8 +10,20 @@
 
 #include "engine/log/Logger.h"
 #include "engine/util/Singleton.h"
-#include "templates/customization/PaletteData.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/HashTable.h"
 #include "templates/customization/HairAssetData.h"
+#include "templates/customization/PaletteData.h"
+
+class HairAssetData;
+class PaletteData;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class CustomizationIdManager : public Object, public Logger, public Singleton<CustomizationIdManager> {
 	HashTable<String, int> customizationIds;

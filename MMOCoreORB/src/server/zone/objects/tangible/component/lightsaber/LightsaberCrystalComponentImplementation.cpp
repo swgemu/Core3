@@ -4,19 +4,47 @@
  *      Author: Katherine
  */
 
-#include "engine/engine.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/callbacks/LightsaberCrystalTuneSuiCallback.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/UnicodeString.h"
+#include "system/lang/mersenne/MersenneTwister.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/loot/CrystalData.h"
 #include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/Component.h"
+#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "templates/SharedObjectTemplate.h"
+#include "templates/params/ObserverEventType.h"
+
+#include "server/zone/objects/player/sui/callbacks/LightsaberCrystalTuneSuiCallback.h"
 
 void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();

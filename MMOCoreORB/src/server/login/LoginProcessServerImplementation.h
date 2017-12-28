@@ -8,7 +8,10 @@
 #ifndef LOGINPROCESSSERVERIMPLEMENTATION_H_
 #define LOGINPROCESSSERVERIMPLEMENTATION_H_
 
+#include "engine/core/ManagedWeakReference.h"
 #include "engine/engine.h"
+#include "server/login/LoginServer.h"
+#include "system/lang/Object.h"
 
 namespace server {
 	namespace login {

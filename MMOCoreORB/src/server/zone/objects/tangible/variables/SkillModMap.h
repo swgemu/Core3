@@ -9,6 +9,10 @@
 #define SKILLMODMAP_H_
 
 #include "engine/engine.h"
+#include "system/io/Serializable.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
 
 class SkillModMap : public Serializable {
 	VectorMap<String, int64> skillMods;

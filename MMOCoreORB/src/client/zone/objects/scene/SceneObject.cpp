@@ -1,5 +1,10 @@
 #include "SceneObject.h"
 
+#include <stddef.h>
+
+#include "engine/lua/LuaObject.h"
+#include "zone/objects/scene/variables/StringId.h"
+
 SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	parent = NULL;
 

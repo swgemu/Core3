@@ -8,10 +8,22 @@
 #ifndef LOOTGROUPMAP_H_
 #define LOOTGROUPMAP_H_
 
-class LootItemTemplate;
-#include "templates/LootGroupTemplate.h"
 #include "engine/log/Logger.h"
 #include "engine/util/Singleton.h"
+#include "lua.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/util/HashTable.h"
+#include "templates/LootGroupTemplate.h"
+
+class LootGroupTemplate;
+class LootItemTemplate;
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
 
 class LootGroupMap : public Singleton<LootGroupMap>, public Object, public Logger {
 public:

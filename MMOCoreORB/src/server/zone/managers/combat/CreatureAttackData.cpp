@@ -6,7 +6,16 @@
  */
 
 #include "CreatureAttackData.h"
+
+#include <stddef.h>
+
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
+#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "system/io/StringTokenizer.h"
+#include "system/lang/Float.h"
+#include "system/lang/Integer.h"
+#include "system/util/VectorMap.h"
 
 CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base, uint64 target) {
 	targetID = target;

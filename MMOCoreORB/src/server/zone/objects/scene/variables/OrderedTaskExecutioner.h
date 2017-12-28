@@ -8,7 +8,10 @@
 #ifndef SRC_SERVER_ZONE_OBJECTS_SCENE_VARIABLES_ORDEREDTASKEXECUTIONER_H_
 #define SRC_SERVER_ZONE_OBJECTS_SCENE_VARIABLES_ORDEREDTASKEXECUTIONER_H_
 
+#include "engine/core/Task.h"
 #include "engine/engine.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/ref/WeakReference.h"
 
 
 namespace server {

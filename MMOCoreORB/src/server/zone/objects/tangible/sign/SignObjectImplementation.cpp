@@ -6,10 +6,21 @@
  */
 
 
-#include "server/zone/objects/tangible/sign/SignObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 int SignObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	switch (selectedID) {

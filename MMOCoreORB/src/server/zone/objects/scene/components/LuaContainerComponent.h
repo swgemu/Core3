@@ -9,6 +9,7 @@
 #define LUACONTAINERCOMPONENT_H_
 
 #include "ContainerComponent.h"
+#include "system/lang/String.h"
 
 namespace server {
  namespace zone {

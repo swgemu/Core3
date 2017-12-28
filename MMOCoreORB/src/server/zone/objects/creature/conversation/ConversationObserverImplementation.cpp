@@ -2,11 +2,37 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <stddef.h>
+#include <algorithm>
 #include <limits>
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
-#include "server/zone/objects/player/sessions/ConversationSession.h"
-#include "server/zone/packets/object/StopNpcConversation.h"
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/Facade.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
+#include "server/zone/objects/creature/conversation/ConversationTemplate.h"
+#include "server/zone/objects/creature/conversation/screenhandlers/ScreenHandler.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/util/VectorMap.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 ConversationObserverImplementation::ConversationObserverImplementation(uint32 convoTemplateCRC) {
 	conversationTemplateCRC = convoTemplateCRC;

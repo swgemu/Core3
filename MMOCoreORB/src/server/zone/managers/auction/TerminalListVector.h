@@ -8,6 +8,8 @@
 #ifndef TERMINALLISTVECTOR_H_
 #define TERMINALLISTVECTOR_H_
 
+#include "server/zone/objects/auction/AuctionItem.h"
+
 class TerminalItemList : public SortedVector<ManagedReference<AuctionItem*> >, public ReadWriteLock {
 protected:
 	bool searchable;

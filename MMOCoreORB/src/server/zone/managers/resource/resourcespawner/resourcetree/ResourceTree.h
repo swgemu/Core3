@@ -11,8 +11,14 @@
 #ifndef RESOURCETREE_H_
 #define RESOURCETREE_H_
 
-#include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
+#include "ResourceTreeNode.h"
+#include "engine/log/Logger.h"
+#include "system/lang/String.h"
+#include "system/util/Vector.h"
+
+class ResourceTreeEntry;
+class ResourceTreeNode;
 
 /**
  * The ResourceTree class is a representation of the

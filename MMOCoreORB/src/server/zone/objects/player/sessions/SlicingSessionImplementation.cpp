@@ -5,29 +5,44 @@
  *      Author: polonel
  */
 
-#include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/loot/LootManager.h"
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/tasks/SecuritySliceTask.h"
+#include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/RelockLootContainerEvent.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
-#include "server/zone/objects/tangible/powerup/PowerupObject.h"
-
-#include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/Zone.h"
-#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
 
 int SlicingSessionImplementation::initializeSession() {
 	firstCable = System::random(1);

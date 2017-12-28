@@ -13,20 +13,6 @@
 #include "../Road.h"
 #include "../Hdta.h"
 
-class Point2D  {
-public:
-	float x, y;
-
-	inline float getX() const {
-		return x;
-	}
-
-	inline float getY() const {
-		return y;
-	}
-};
-
-
 class AffectorRiver : public ProceduralRule<'ARIV'>, public AffectorProceduralRule {
 	Road road;
 	Hdta hdta;

@@ -5,12 +5,32 @@
  *      Author: polonel
  */
 
-#include "server/zone/objects/tangible/attachment/Attachment.h"
-#include "server/zone/ZoneServer.h"
+#include <math.h>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/ZoneProcessServer.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/attachment/Attachment.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/Math.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/util/HashTable.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void AttachmentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

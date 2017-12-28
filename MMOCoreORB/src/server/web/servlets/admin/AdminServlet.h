@@ -9,6 +9,15 @@
 #define ADMINSERVLET_H_
 
 #include "../Servlet.h"
+#include "server/web/servlets/admin/../../servlets/Servlet.h"
+#include "system/lang/String.h"
+
+namespace server {
+namespace web {
+class HttpRequest;
+class HttpResponse;
+}  // namespace web
+}  // namespace server
 
 class AdminServlet : public Servlet {
 public:

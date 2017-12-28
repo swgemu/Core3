@@ -9,6 +9,20 @@
 #define PLAYERZONECOMPONENT_H_
 
 #include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+class Zone;
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 class PlayerZoneComponent : public ZoneComponent {
 public:

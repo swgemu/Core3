@@ -6,8 +6,18 @@
  */
 
 #include "ValidatedPosition.h"
-#include "server/zone/objects/scene/SceneObject.h"
+
+#include <math.h>
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Math.h"
+#include "system/lang/ref/Reference.h"
 
 void ValidatedPosition::update(SceneObject* object) {
 	point = object->getPosition();

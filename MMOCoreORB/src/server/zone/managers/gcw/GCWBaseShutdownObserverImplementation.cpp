@@ -3,9 +3,25 @@
 		See file COPYING for copying conditions.
  */
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
-#include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
+#include "templates/params/ObserverEventType.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+namespace util {
+class Observable;
+}  // namespace util
+}  // namespace engine
 
 int GCWBaseShutdownObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(observable);

@@ -5,7 +5,30 @@
 #ifndef JEDIMANAGER_H_
 #define JEDIMANAGER_H_
 
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/thread/ReadWriteLock.h"
+
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

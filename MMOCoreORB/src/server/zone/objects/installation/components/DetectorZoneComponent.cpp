@@ -6,12 +6,27 @@
  */
 
 #include "DetectorZoneComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "DetectorDataComponent.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/Zone.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
 
 
 void DetectorZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {

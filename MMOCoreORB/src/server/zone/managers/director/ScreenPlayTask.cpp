@@ -1,5 +1,9 @@
 #include "ScreenPlayTask.h"
+
+#include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "system/thread/Locker.h"
 
 void ScreenPlayTask::run() {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();

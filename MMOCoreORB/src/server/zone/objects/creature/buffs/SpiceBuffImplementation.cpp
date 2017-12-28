@@ -5,10 +5,21 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/creature/buffs/SpiceBuff.h"
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/core/Task.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/events/SpiceDownerAnimationTask.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/SpiceBuff.h"
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
+#include "server/zone/objects/creature/events/SpiceDownerAnimationTask.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "system/util/VectorMap.h"
 
 void SpiceBuffImplementation::deactivate(bool removeModifiers) {
 	BuffImplementation::deactivate(true);

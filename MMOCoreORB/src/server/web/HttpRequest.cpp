@@ -6,7 +6,17 @@
  */
 
 #include "HttpRequest.h"
+
 #include "mongoose/mongoose.h"
+#include "system/io/StringTokenizer.h"
+
+namespace server {
+namespace web {
+namespace session {
+class HttpSession;
+}  // namespace session
+}  // namespace web
+}  // namespace server
 
 HttpRequest::HttpRequest(HttpSession* session) {
 	// TODO Auto-generated constructor stub

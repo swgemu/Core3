@@ -3,8 +3,23 @@
 		See file COPYING for copying conditions.*/
 
 #include "GarageZoneComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
 #include "GarageDataComponent.h"
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace server {
+namespace zone {
+class QuadTreeEntry;
+}  // namespace zone
+}  // namespace server
 
 void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);

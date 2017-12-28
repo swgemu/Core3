@@ -6,10 +6,21 @@
  */
 
 #include "StringIdManager.h"
+
+#include <stddef.h>
+
+#include "engine/db/LocalDatabase.h"
+#include "engine/db/ObjectDatabaseManager.h"
 #include "server/ServerCore.h"
-#include "templates/string/StringFile.h"
-#include "templates/manager/TemplateManager.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/String.h"
+#include "system/lang/types.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
 #include "templates/manager/DataArchiveStore.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/string/StringFile.h"
 #include "tre3/TreeArchive.h"
 
 void StringIdManager::populateDatabase() {

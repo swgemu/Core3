@@ -3,8 +3,24 @@
 		See file COPYING for copying conditions.*/
 
 #include "DeliverMissionScreenHandler.h"
-#include "server/zone/objects/mission/DeliverMissionObjective.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionTypes.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/String.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/thread/Locker.h"
+#include "templates/faction/Factions.h"
 
 const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 

@@ -9,9 +9,48 @@
 #ifndef DNAMANAGER_H_
 #define DNAMANAGER_H_
 
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "lua.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
+#include "system/lang/Object.h"
+#include "system/platform.h"
+#include "system/util/ArrayList.h"
+#include "system/util/HashTable.h"
+
+namespace engine {
+namespace lua {
+class Lua;
+}  // namespace lua
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace ai {
+class Creature;
+}  // namespace ai
+}  // namespace creature
+namespace tangible {
+namespace deed {
+namespace pet {
+class PetDeed;
+}  // namespace pet
+}  // namespace deed
+}  // namespace tangible
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
+namespace sys {
+namespace thread {
+namespace atomic {
+class AtomicInteger;
+}  // namespace atomic
+}  // namespace thread
+}  // namespace sys
 
 namespace server {
 namespace zone {

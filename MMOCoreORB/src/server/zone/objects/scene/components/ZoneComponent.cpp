@@ -4,18 +4,49 @@
  */
 
 #include "ZoneComponent.h"
-#include "server/zone/objects/scene/SceneObject.h"
+
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/util/u3d/Vector3.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/Zone.h"
+#include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
-#include "server/zone/packets/scene/UpdateTransformMessage.h"
-#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
+#include "system/lang/ArrayIndexOutOfBoundsException.h"
+#include "system/lang/Exception.h"
+#include "system/lang/ref/Reference.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadWriteLock.h"
+#include "system/util/SortedVector.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/intangible/TheaterObject.h"
+#include "templates/params/ObserverEventType.h"
+#include "terrain/manager/TerrainManager.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	debug("inserting to zone");

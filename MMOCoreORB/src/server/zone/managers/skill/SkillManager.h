@@ -6,10 +6,26 @@
 #ifndef SKILLMANAGER_H_
 #define SKILLMANAGER_H_
 
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "lua.h"
 #include "server/zone/objects/player/variables/Ability.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "system/util/HashTable.h"
+#include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 
-class Skill;
+class Ability;
 class PerformanceManager;
+class Skill;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 namespace zone {

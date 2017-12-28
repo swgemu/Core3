@@ -3,7 +3,25 @@
 		See file COPYING for copying conditions.*/
 
 #include "MissionNpcSpawnMap.h"
+
+#include <stddef.h>
+#include <ostream>
+
 #include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "server/zone/managers/mission/spawnmaps/CitySpawnMap.h"
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
+#include "server/zone/managers/mission/spawnmaps/PlanetSpawnMap.h"
+#include "server/zone/managers/mission/spawnmaps/UniverseSpawnMap.h"
+#include "system/lang/Exception.h"
+
+namespace engine {
+namespace util {
+namespace u3d {
+class Vector3;
+}  // namespace u3d
+}  // namespace util
+}  // namespace engine
 
 void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 	info("Loading NPC mission spawn points.", true);

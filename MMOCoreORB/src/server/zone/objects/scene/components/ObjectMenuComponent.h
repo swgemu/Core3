@@ -9,6 +9,8 @@
 #define OBJECTMENUCOMPONENT_H_
 
 #include "SceneObjectComponent.h"
+#include "engine/log/Logger.h"
+#include "system/platform.h"
 
 namespace server {
  namespace zone {

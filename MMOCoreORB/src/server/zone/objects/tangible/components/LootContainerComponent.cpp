@@ -6,8 +6,20 @@
  */
 
 #include "LootContainerComponent.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
 
 int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	if (destination != NULL) {

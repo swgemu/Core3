@@ -9,6 +9,19 @@
 #define OBJECTVERSIONUPDATEMANAGER_H_
 
 #include "engine/engine.h"
+#include "engine/log/Logger.h"
+#include "engine/util/Singleton.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+class Stream;
+}  // namespace io
+}  // namespace sys
 
 class ObjectVersionUpdateManager : public Singleton<ObjectVersionUpdateManager>, public Logger, public Object {
 

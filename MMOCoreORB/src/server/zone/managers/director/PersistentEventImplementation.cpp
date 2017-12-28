@@ -3,8 +3,17 @@
 		See file COPYING for copying conditions.
 */
 
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "system/lang/Time.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/platform.h"
 
 void PersistentEventImplementation::loadTransientTask() {
 	if (eventExecuted)

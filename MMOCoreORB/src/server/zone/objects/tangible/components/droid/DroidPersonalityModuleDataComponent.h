@@ -6,7 +6,33 @@
 #define DROIDPERSONALITYMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
+#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityObserver.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace core {
+class ManagedObject;
+}  // namespace core
+}  // namespace engine
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+namespace ai {
+class DroidObject;
+}  // namespace ai
+}  // namespace creature
+}  // namespace objects
+namespace packets {
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 namespace server {
 namespace zone {

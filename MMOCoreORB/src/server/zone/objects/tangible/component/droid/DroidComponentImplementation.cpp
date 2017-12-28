@@ -2,8 +2,33 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/lang/String.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+#include "templates/SharedObjectTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void DroidComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();

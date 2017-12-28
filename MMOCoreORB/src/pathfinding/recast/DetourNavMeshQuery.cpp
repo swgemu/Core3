@@ -18,14 +18,16 @@
 
 #include <float.h>
 #include <string.h>
-#include "DetourNavMeshQuery.h"
-#include "DetourNavMesh.h"
-#include "DetourNode.h"
-#include "DetourCommon.h"
-#include "DetourMath.h"
+#include <new>
+
 #include "DetourAlloc.h"
 #include "DetourAssert.h"
-#include <new>
+#include "DetourCommon.h"
+#include "DetourMath.h"
+#include "DetourNavMesh.h"
+#include "DetourNavMeshQuery.h"
+#include "DetourNode.h"
+#include "pathfinding/recast/DetourStatus.h"
 
 /// @class dtQueryFilter
 ///

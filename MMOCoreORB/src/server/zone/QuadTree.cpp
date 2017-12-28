@@ -24,11 +24,29 @@ Distribution of this file for usage outside of Core3 is prohibited.
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include <assert.h>
 #include <math.h>
-
-#include "server/zone/QuadTreeEntry.h"
+#include <algorithm>
 
 #include "QuadTree.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/ManagedWeakReference.h"
+#include "engine/log/Logger.h"
+#include "engine/stm/mm/TransactionalObjectCloner.h"
+#include "server/zone/CloseObjectsVector.h"
+#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/QuadTreeNode.h"
+#include "system/io/PrintStream.h"
+#include "system/lang/Exception.h"
+#include "system/lang/StackTrace.h"
+#include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/System.h"
+#include "system/lang/ref/WeakReference.h"
+#include "system/mm/ObjectCloner.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/SortedVector.h"
 
 #define NO_ENTRY_REF_COUNTING
 

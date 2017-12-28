@@ -8,11 +8,24 @@
 #ifndef CREATURETEMPLATE_H_
 #define CREATURETEMPLATE_H_
 
+#include <algorithm>
+
 #include "engine/engine.h"
+#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 #include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
+#include "system/lang/Object.h"
+#include "system/lang/String.h"
+#include "system/platform.h"
+#include "system/util/Vector.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
-#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
+
+class CreatureAttackMap;
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 namespace server {
 namespace zone {

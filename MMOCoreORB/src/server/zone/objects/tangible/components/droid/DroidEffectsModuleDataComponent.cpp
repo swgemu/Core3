@@ -3,14 +3,44 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidEffectsModuleDataComponent.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+
+#include <stddef.h>
+
+#include "engine/core/Core.h"
+#include "engine/core/ManagedReference.h"
+#include "engine/core/Task.h"
+#include "engine/core/TaskManager.h"
+#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/creature/events/DroidEffectsTask.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/DroidEffectsModuleTemplate.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/SelectDroidEffectSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/callbacks/SelectDroidEffectSuiCallback.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/io/ObjectInputStream.h"
+#include "system/io/ObjectOutputStream.h"
+#include "system/lang/ref/Reference.h"
+#include "system/lang/types.h"
+#include "system/thread/Locker.h"
+#include "templates/tangible/DroidEffectsModuleTemplate.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 DroidEffectsModuleDataComponent::DroidEffectsModuleDataComponent() {
 	active = false;

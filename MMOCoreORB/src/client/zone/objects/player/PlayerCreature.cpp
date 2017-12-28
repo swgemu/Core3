@@ -1,6 +1,18 @@
 #include "PlayerCreature.h"
-#include "client/zone/Zone.h"
+
+#include <stddef.h>
+
+#include "engine/service/proto/BaseMessage.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "server/zone/packets/object/ObjectControllerMessage.h"
+#include "zone/ZoneClient.h"
+#include "zone/objects/creature/CreatureObject.h"
+
+namespace engine {
+namespace lua {
+class LuaObject;
+}  // namespace lua
+}  // namespace engine
 
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(templateData) {
 	setLoggingName("PlayerCreature");

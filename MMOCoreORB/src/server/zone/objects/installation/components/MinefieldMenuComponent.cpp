@@ -6,11 +6,26 @@
  */
 
 #include "MinefieldMenuComponent.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/scene/SceneObject.h"
+
+#include <stddef.h>
+#include <algorithm>
+
+#include "engine/core/ManagedReference.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "system/lang/ref/Reference.h"
+#include "templates/params/ObserverEventType.h"
 #include "templates/params/creature/CreatureFlag.h"
+
+namespace server {
+namespace zone {
+class Zone;
+}  // namespace zone
+}  // namespace server
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

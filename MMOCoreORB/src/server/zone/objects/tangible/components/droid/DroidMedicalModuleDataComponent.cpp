@@ -3,7 +3,16 @@
 		See file COPYING for copying conditions. */
 
 #include "DroidMedicalModuleDataComponent.h"
+
+#include <stddef.h>
+
+#include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "system/platform.h"
 
 DroidMedicalModuleDataComponent::DroidMedicalModuleDataComponent() {
 	setLoggingName("DroidMedicalModule");

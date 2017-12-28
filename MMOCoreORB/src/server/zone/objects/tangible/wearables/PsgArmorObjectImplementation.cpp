@@ -6,8 +6,27 @@
  */
 
 #include "server/zone/objects/tangible/wearables/PsgArmorObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+}  // namespace objects
+namespace packets {
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
 
 
 void PsgArmorObjectImplementation::initializeTransientMembers() {

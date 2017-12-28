@@ -9,6 +9,14 @@
 #define BOXVOLUME_H_
 
 #include "BaseBoundingVolume.h"
+#include "engine/util/u3d/AABB.h"
+#include "engine/util/u3d/Vector3.h"
+
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
 
 class BoxVolume : public BaseBoundingVolume {
 protected:

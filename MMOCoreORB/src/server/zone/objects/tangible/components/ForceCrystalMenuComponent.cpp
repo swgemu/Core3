@@ -3,9 +3,20 @@
  */
 
 #include "ForceCrystalMenuComponent.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+class SceneObject;
+}  // namespace scene
+}  // namespace objects
+}  // namespace zone
+}  // namespace server
 
 void ForceCrystalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

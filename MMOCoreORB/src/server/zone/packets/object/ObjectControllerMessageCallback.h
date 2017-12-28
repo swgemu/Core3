@@ -8,8 +8,25 @@
 #ifndef OBJECTCONTROLLERMESSAGECALLBACK_H_
 #define OBJECTCONTROLLERMESSAGECALLBACK_H_
 
+#include <stddef.h>
+
 #include "server/zone/MessageCallbackFactory.h"
 #include "server/zone/packets/MessageCallback.h"
+#include "system/lang/ref/Reference.h"
+#include "system/platform.h"
+
+namespace engine {
+namespace service {
+class Message;
+}  // namespace service
+}  // namespace engine
+namespace server {
+namespace zone {
+class ZoneClientSession;
+class ZoneProcessServer;
+template <typename CtorSignature, typename UniqueIdType> class MessageCallbackFactory;
+}  // namespace zone
+}  // namespace server
 
 class ObjectControllerMessageCallback : public MessageCallback {
 	uint32 priority;

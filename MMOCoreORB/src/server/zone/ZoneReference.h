@@ -8,7 +8,15 @@
 #ifndef ZONEREFERENCE_H_
 #define ZONEREFERENCE_H_
 
+#include "engine/core/ManagedReference.h"
 #include "engine/engine.h"
+
+namespace sys {
+namespace io {
+class ObjectInputStream;
+class ObjectOutputStream;
+}  // namespace io
+}  // namespace sys
 
 namespace server {
 namespace zone {

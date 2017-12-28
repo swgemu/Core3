@@ -8,16 +8,34 @@
 #ifndef LAYER_H_
 #define LAYER_H_
 
+#include <stddef.h>
+#include <algorithm>
+
 #include "../TemplateVariable.h"
 #include "InformationHeader.h"
+#include "system/util/Vector.h"
 
 /*class Boundary;
 class AffectorProceduralRule;
 class FilterProceduralRule;*/
 
-#include "boundaries/Boundary.h"
 #include "affectors/AffectorProceduralRule.h"
+#include "boundaries/Boundary.h"
 #include "filters/FilterProceduralRule.h"
+
+class AffectorProceduralRule;
+class Boundary;
+class FilterProceduralRule;
+namespace engine {
+namespace util {
+class IffStream;
+}  // namespace util
+}  // namespace engine
+namespace sys {
+namespace lang {
+class String;
+}  // namespace lang
+}  // namespace sys
 
 class Layer : public TemplateVariable<'LAYR'> {
 	InformationHeader infoHeader;

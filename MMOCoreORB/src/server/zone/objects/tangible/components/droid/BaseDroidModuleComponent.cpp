@@ -4,6 +4,40 @@
 
 #include "BaseDroidModuleComponent.h"
 
+#include <algorithm>
+
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+#include "system/lang/StringBuffer.h"
+#include "system/lang/ref/Reference.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}  // namespace creature
+namespace intangible {
+class PetControlDevice;
+}  // namespace intangible
+namespace manufactureschematic {
+namespace craftingvalues {
+class CraftingValues;
+}  // namespace craftingvalues
+}  // namespace manufactureschematic
+}  // namespace objects
+namespace packets {
+namespace object {
+class ObjectMenuResponse;
+}  // namespace object
+namespace scene {
+class AttributeListMessage;
+}  // namespace scene
+}  // namespace packets
+}  // namespace zone
+}  // namespace server
+
 BaseDroidModuleComponent::BaseDroidModuleComponent() {
 	setLoggingName("DroidModuleDataComponent");
 	setLogging(false);

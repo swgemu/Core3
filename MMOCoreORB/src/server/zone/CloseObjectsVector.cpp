@@ -2,11 +2,12 @@
 // Created by Victor Popovici on 7/2/17.
 //
 
-#include "engine/core/ManagedReference.h"
-
 #include "CloseObjectsVector.h"
-
+#include "engine/core/ManagedReference.h"
 #include "server/zone/QuadTreeEntry.h"
+#include "system/thread/Locker.h"
+#include "system/thread/ReadLocker.h"
+#include "system/util/Vector.h"
 
 #define MAX_COV_RECEIVER_TYPES 4
 
