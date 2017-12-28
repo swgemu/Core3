@@ -93,18 +93,18 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = 	server/tests/CircularAreaShapeTest.cpp \
-			  	server/tests/BasicScreenPlayTest.cpp \
-			  	server/tests/LuaMobileTest.cpp \
-			  	server/tests/JediManagerTest.cpp \
-			  	server/tests/TerrainManagerTest.cpp \
-			  	server/tests/BehaviorTest.cpp \
-			  	server/tests/RectangularAreaShapeTest.cpp \
-			  	server/tests/RingAreaShapeTest.cpp \
-			  	server/tests/DeadlockTestBase.cpp \
-			  	server/tests/BasicTerrainTest.cpp \
-			  	server/tests/ZoneTest.cpp \
-			  	server/tests/CommandLuaTest.cpp
+core3_TESTS = 	tests/CircularAreaShapeTest.cpp \
+			  	tests/BasicScreenPlayTest.cpp \
+			  	tests/LuaMobileTest.cpp \
+			  	tests/JediManagerTest.cpp \
+			  	tests/TerrainManagerTest.cpp \
+			  	tests/BehaviorTest.cpp \
+			  	tests/RectangularAreaShapeTest.cpp \
+			  	tests/RingAreaShapeTest.cpp \
+			  	tests/DeadlockTestBase.cpp \
+			  	tests/BasicTerrainTest.cpp \
+			  	tests/ZoneTest.cpp \
+			  	tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
