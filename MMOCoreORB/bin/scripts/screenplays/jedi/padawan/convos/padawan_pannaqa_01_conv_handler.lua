@@ -19,7 +19,7 @@ function padawan_pannaqa_01_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTe
 
 	local trialData = padawanTrialQuests[trialNumber]
 
-	if (trialData.trialName ~= "pannaqa") then
+	if (trialData == nil or trialData.trialName ~= "pannaqa") then
 		return convoTemplate:getScreen("not_on_quest")
 	end
 
