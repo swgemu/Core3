@@ -175,6 +175,15 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, -3765, WAYPOINTBLUE, true, true, 0,0)
 			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID", contactWaypointID)
 		end
+	elseif (screenID == "disappointed_but_understand") then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID")
+			PlayerObject(pGhost):removeWaypoint(curID, true)
+		end
+		
+		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.NONE)
 	elseif (screenID == "speak_with_secretary") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST, BestineElection.SEAN_RIVAL_QUEST_ACCEPTED)
 	elseif (screenID == "init_joined_campaign") then

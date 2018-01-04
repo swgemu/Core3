@@ -40,7 +40,7 @@ would_do_anything = ConvoScreen:new {
 	leftDialog = "@conversation/victor_questp_slums:s_41330c9c", -- I will help you as well as I can. What do you need? Oh? I would do anything for Victor. I'd be happy to write my account of the happenings for you. Luckily, I know how to write. Victor funded my education as well. He's done so much for us. Give me a second..
 	stopConversation = "false",
 	options = {
-	--{"@conversation/victor_questp_slums:s_41330c9c", ""}, -- Okay.
+	--{"@conversation/victor_questp_slums:s_67e6df55", ""}, -- Okay.
 	}
 }
 victorQuestpSlumsConvoTemplate:addScreen(would_do_anything);
@@ -55,7 +55,7 @@ victorQuestpSlumsConvoTemplate:addScreen(give_evidence);
 
 inv_full = ConvoScreen:new {
 	id = "inv_full",
-	leftDialog = "@conversation/victor_questp_slums:s_22977a6d", -- Please take this written testimony--oh wait. You don't have enough room to accept it. Hmm... you should come back when you do.
+	leftDialog = "@conversation/victor_questp_slums:s_4f9d0087", -- Please take this written testimony--oh wait. You don't have enough room to accept it. Hmm... you should come back when you do.
 	stopConversation = "true",
 	options = {}
 }
@@ -63,7 +63,7 @@ victorQuestpSlumsConvoTemplate:addScreen(inv_full);
 
 init_office_phase = ConvoScreen:new {
 	id = "init_office_phase",
-	leftDialog = "@conversation/victor_questp_slums:s_4f9d0087", -- I can barely go outside anymore to do my chores. I fear for my child. I don't want him to be kidnapped again. An election should be coming up soon. I'd choose Victor Visalis. He would keep us poor citizens safe.
+	leftDialog = "@conversation/victor_questp_slums:s_f8cdce4", -- I can barely go outside anymore to do my chores. I fear for my child. I don't want him to be kidnapped again. An election should be coming up soon. I'd choose Victor Visalis. He would keep us poor citizens safe.
 	stopConversation = "true",
 	options = {}
 }
