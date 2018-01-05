@@ -33,7 +33,6 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 	processor = NULL;
 
 	enumClusterMessage = NULL;
-	clusterStatusMessage = NULL;
 
 	accountManager = NULL;
 
@@ -94,7 +93,6 @@ void LoginServerImplementation::shutdown() {
 	phandler = NULL;
 	processor = NULL;
 	enumClusterMessage = NULL;
-	clusterStatusMessage = NULL;
 
 	printInfo();
 
@@ -187,14 +185,7 @@ void LoginServerImplementation::populateGalaxyList() {
 		enumClusterMessage = NULL;
 	}
 
-	if (clusterStatusMessage != NULL) {
-		delete enumClusterMessage;
-		enumClusterMessage = NULL;
-	}
-
 	enumClusterMessage = new LoginEnumCluster(galaxyCount);
-	clusterStatusMessage = new LoginClusterStatus(galaxyCount);
-
     while (galaxies.next()) {
     	uint32 galaxyID = galaxies.getGalaxyID();
 
@@ -202,13 +193,26 @@ void LoginServerImplementation::populateGalaxyList() {
     	galaxies.getGalaxyName(name);
 
     	enumClusterMessage->addGalaxy(galaxyID, name);
-
-		String address;
-    	galaxies.getGalaxyAddress(address);
-
-    	clusterStatusMessage->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());
     }
 
     enumClusterMessage->finish();
+}
+
+LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
+	GalaxyList galaxies;
+	uint32 galaxyCount = galaxies.size();
+
+	auto clusterStatusMessage = new LoginClusterStatus(galaxyCount);
+
+	while (galaxies.next()) {
+		uint32 galaxyID = galaxies.getGalaxyID();
+
+		String address;
+		galaxies.getGalaxyAddress(address);
+
+		clusterStatusMessage->addGalaxy(galaxyID, address, galaxies.getRandomGalaxyPort(), galaxies.getGalaxyPingPort());
+	}
+
+	return clusterStatusMessage;
 }
 
