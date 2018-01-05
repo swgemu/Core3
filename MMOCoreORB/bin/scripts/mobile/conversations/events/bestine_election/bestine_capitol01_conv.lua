@@ -10,7 +10,7 @@ init_election_phase = ConvoScreen:new {
 	leftDialog = "@conversation/bestine_capitol01:s_f9dda042", -- 	You look a little lost. Or have you come to the capitol to vote in the upcoming election? Confused? You haven't heard of the changes to Bestine? I thought everyone had heard of it! Must be an outsider. Oh well! Do you want to hear about it?
 	stopConversation = "false",
 	options = {
-		{"@conversation/bestine_capitol01:s_f660c800", "appointing_someone"}, -- Yes, please.
+		{"@conversation/bestine_capitol01:s_c82e9a2f", "appointing_someone"}, -- Yes, please.
 		{"@conversation/bestine_capitol01:s_90ce1297", "a_pity"}, -- No, thank you.
 	}
 }

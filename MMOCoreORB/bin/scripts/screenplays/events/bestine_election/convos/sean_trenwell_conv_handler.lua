@@ -104,7 +104,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		end
 
 		clonedConversation:addOption("@conversation/sean_trenwell:s_5c46daeb", "always_use_vote") -- I've changed my mind.
-		clonedConversation:addOption("@conversation/sean_trenwell:s_d6a9a15d", "come_back_soon") -- I have to go.
+		clonedConversation:addOption("@conversation/sean_trenwell:s_dea56128", "come_back_soon") -- I have to go.
 	elseif (screenID == "disk_inv_full") then
 		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)
 	elseif (screenID == "sensible_type") then

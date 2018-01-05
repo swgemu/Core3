@@ -77,7 +77,7 @@ function tourAryonConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			clonedConversation:addOption("@conversation/tour_aryon:s_65a4282", "glad_youre_taking_part") -- I'd like to vote, yes.
 		end
 
-		clonedConversation:addOption("@conversation/tour_aryon:s_3001dad0", "completely_understand") -- No, I really need to go.
+		clonedConversation:addOption("@conversation/tour_aryon:s_fb124268", "completely_understand") -- No, I really need to go.
 	elseif (screenID == "only_positive_things") then
 		if (not BestineElection:hasPlayerVoted(pPlayer) and (BestineElection:canVoteForCandidate(pPlayer, BestineElection.SEAN) or BestineElection:canVoteForCandidate(pPlayer, BestineElection.VICTOR))) then
 			clonedConversation:addOption("@conversation/tour_aryon:s_e547fd1e", "glad_youre_taking_part") -- Okay. I'd like to vote.

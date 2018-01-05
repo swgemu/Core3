@@ -158,7 +158,7 @@ negative_tidbit = ConvoScreen:new {
 	options = {
 	--{"@conversation/sean_trenwell:s_ef067f71", ""}, -- Alright. I want to join your campaign.
 	--{"@conversation/sean_trenwell:s_5c46daeb", "always_use_vote"}, -- I've changed my mind.
-	--{"@conversation/sean_trenwell:s_d6a9a15d", "come_back_soon"}, -- I have to go.
+	--{"@conversation/sean_trenwell:s_dea56128", "come_back_soon"}, -- I have to go.
 	}
 }
 seanTrenwellConvoTemplate:addScreen(negative_tidbit);
@@ -173,7 +173,7 @@ seanTrenwellConvoTemplate:addScreen(always_use_vote);
 
 come_back_soon = ConvoScreen:new {
 	id = "come_back_soon",
-	leftDialog = "@conversation/sean_trenwell:s_78b31931", -- I wish you well. Come back soon!
+	leftDialog = "@conversation/sean_trenwell:s_91cc7d0", -- I wish you well. Come back soon!
 	stopConversation = "true",
 	options = {}
 }
