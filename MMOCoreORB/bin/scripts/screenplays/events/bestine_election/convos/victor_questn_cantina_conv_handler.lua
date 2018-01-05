@@ -11,7 +11,7 @@ function victorQuestnCantinaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTe
 		return convoTemplate:getScreen("init_office_phase")
 	elseif (pInventory ~= nil and getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questn_dseal.iff", true)) then
 		return convoTemplate:getScreen("init_has_evidence")
-	elseif (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.VICTOR_RIVAL_CANTINA_EVIDENCE)) then
+	elseif (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_CANTINA_EVIDENCE)) then
 		return convoTemplate:getScreen("init_inv_was_full")
 	elseif (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST) == BestineElection.SEAN_RIVAL_QUEST_ACCEPTED) then
 		return convoTemplate:getScreen("init_on_rival_quest")
@@ -48,13 +48,13 @@ function victorQuestnCantinaConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 			clonedConversation:addOption("@conversation/victor_questn_cantina:s_19d90991", "cheapskate") -- I don't have that kind of money.
 		end
 	elseif (screenID == "inv_full") then
-		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.VICTOR_RIVAL_CANTINA_EVIDENCE)
-	elseif (screenID == "good_day" or screenID == "was_full_give_evidence") then
+		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_CANTINA_EVIDENCE)
+	elseif (screenID == "give_evidence" or screenID == "was_full_give_evidence") then
 		if (CreatureObject(pPlayer):getCashCredits() >= 200) then
 			CreatureObject(pPlayer):subtractCashCredits(200)
 		end
 
-		BestineElection:clearInvFull(pPlayer, BestineElection.SEAN, BestineElection.VICTOR_RIVAL_CANTINA_EVIDENCE)
+		BestineElection:clearInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_CANTINA_EVIDENCE)
 
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 

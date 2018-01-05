@@ -70,7 +70,7 @@ get_involved_hasnt_voted = ConvoScreen:new {
 	options = {
 		{"@conversation/tour_aryon:s_bb225c00", "two_candidates"}, -- I need more information.
 	--{"@conversation/tour_aryon:s_65a4282", "glad_youre_taking_part"} -- I'd like to vote, yes.
-	--{"@conversation/tour_aryon:s_3001dad0", "completely_understand"} -- No, I really need to go.
+	--{"@conversation/tour_aryon:s_fb124268", "completely_understand"} -- No, I really need to go.
 	}
 }
 tourAryonConvoTemplate:addScreen(get_involved_hasnt_voted);
