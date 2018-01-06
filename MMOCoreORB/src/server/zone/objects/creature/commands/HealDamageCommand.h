@@ -317,7 +317,7 @@ public:
 			CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) areaCenter->getCloseObjects();
 
 			SortedVector<QuadTreeEntry*> closeObjects;
-			closeObjectsVector->safeCopyTo(closeObjects);
+			closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 			for (int i = 0; i < closeObjects.size(); i++) {
 				SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
