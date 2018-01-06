@@ -2205,7 +2205,7 @@ void PlayerObjectImplementation::updateInRangeBuildingPermissions() {
 	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	vec->safeCopyTo(closeObjects);
+	vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		BuildingObject* building = cast<BuildingObject*>(closeObjects.get(i));

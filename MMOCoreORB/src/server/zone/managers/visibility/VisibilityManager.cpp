@@ -28,7 +28,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 	if (closeObjectsVector == NULL) {
 		zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
 	} else {
-		closeObjectsVector->safeCopyTo(closeObjects);
+		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 	}
 
 	for (int i = 0; i < closeObjects.size(); ++i) {

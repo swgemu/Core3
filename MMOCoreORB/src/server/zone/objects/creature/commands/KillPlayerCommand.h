@@ -165,7 +165,7 @@ public:
 			}
 			else {
 				CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
-				closeVector->safeCopyTo(closeObjects);
+				closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 			}
 
 			int count = 0;
