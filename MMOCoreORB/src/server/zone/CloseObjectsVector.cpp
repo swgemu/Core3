@@ -8,8 +8,6 @@
 
 #include "server/zone/QuadTreeEntry.h"
 
-#define MAX_COV_RECEIVER_TYPES 4
-
 CloseObjectsVector::CloseObjectsVector() : messageReceivers() {
 	objects.setNoDuplicateInsertPlan();
 
@@ -73,7 +71,7 @@ void CloseObjectsVector::dropReceiver(QuadTreeEntry* entry) {
 	uint32 receiverTypes = entry->registerToCloseObjectsReceivers();
 
 	if (receiverTypes && messageReceivers.size()) {
-		for (int i = 0; i < MAX_COV_RECEIVER_TYPES; ++i) {
+		for (int i = 0; i < CloseObjectsVector::MAXTYPES; ++i) {
 			uint32 type = 1 << i;
 
 			if (receiverTypes & type) {
@@ -136,13 +134,36 @@ void CloseObjectsVector::safeCopyReceiversTo(Vector<ManagedReference<QuadTreeEnt
 	}
 }
 
+void CloseObjectsVector::safeAppendReceiversTo(Vector<QuadTreeEntry*>& vec, uint32 receiverType) const {
+	ReadLocker locker(&mutex);
+
+	int i = messageReceivers.find(receiverType);
+
+	if (i != -1) {
+		const auto& receivers = messageReceivers.elementAt(i).getValue();
+		vec.addAll(receivers);
+	}
+}
+
+void CloseObjectsVector::safeAppendReceiversTo(Vector<ManagedReference<QuadTreeEntry*> >& vec, uint32 receiverType) const {
+	ReadLocker locker(&mutex);
+
+	int i = messageReceivers.find(receiverType);
+
+	if (i != -1) {
+		const auto& receivers = messageReceivers.elementAt(i).getValue();
+		for (int i = 0; i < receivers.size(); ++i)
+			vec.emplace(receivers.getUnsafe(i));
+	}
+}
+
 Reference<QuadTreeEntry*> CloseObjectsVector::get(int idx) const {
 	return objects.get(idx);
 }
 
 void CloseObjectsVector::putReceiver(QuadTreeEntry* entry, uint32 receiverTypes) {
 	if (receiverTypes) {
-		for (int i = 0; i < MAX_COV_RECEIVER_TYPES; ++i) {
+		for (int i = 0; i < CloseObjectsVector::MAXTYPES; ++i) {
 			uint32 type = 1 << i;
 
 			if (receiverTypes & type) {
@@ -166,8 +187,8 @@ void CloseObjectsVector::putReceiver(QuadTreeEntry* entry, uint32 receiverTypes)
 }
 
 int CloseObjectsVector::put(const Reference<QuadTreeEntry*>& o) {
-	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
 
+	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
 	Locker locker(&mutex);
 
 	putReceiver(o.get(), receiverTypes);
@@ -177,9 +198,7 @@ int CloseObjectsVector::put(const Reference<QuadTreeEntry*>& o) {
 
 int CloseObjectsVector::put(Reference<QuadTreeEntry*>&& o) {
 	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
-
 	Locker locker(&mutex);
-
 	putReceiver(o.get(), receiverTypes);
 
 	return objects.put(std::move(o));
