@@ -14,8 +14,12 @@ import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
 import server.zone.objects.pathfinding.NavArea;
 import server.zone.objects.creature.credits.CreditObject;
+include server.zone.CloseObjectsVector;
 
 class StructureObject extends TangibleObject {
+
+    public static final int STRUCTURECOVTYPE = 4;
+
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 
 	protected NavArea navArea;
@@ -103,6 +107,12 @@ class StructureObject extends TangibleObject {
 	public void createChildObjects() {
 		super.createChildObjects();
 	}
+
+    @local
+    @dirty
+    public abstract int registerToCloseObjectsReceivers() {
+        return CloseObjectsVector.STRUCTURETYPE | super.registerToCloseObjectsReceivers();
+    }
 
 	/**
 	 * Gets called when the structure has been created;

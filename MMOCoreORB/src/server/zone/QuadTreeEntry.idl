@@ -227,6 +227,7 @@ class QuadTreeEntry extends Observable {
 	@dirty
 	public native abstract int compareTo(QuadTreeEntry obj);
 
+    @local
 	@dirty
 	public abstract int registerToCloseObjectsReceivers() {
 	    return 0;

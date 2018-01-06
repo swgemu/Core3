@@ -26,7 +26,6 @@ include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
 
-
 class BuildingObject extends StructureObject {
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
