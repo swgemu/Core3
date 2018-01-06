@@ -92,6 +92,21 @@ public:
 			chatManager->sendMail("System", "Dump COV" , resp.toString(), player->getFirstName());
 			player->sendSystemMessage(resp.toString());
 			return 0;
+		} else if (command == "bench") {
+			Reference<CreatureObject*> creo = player;
+			int iterations = 100;
+			if (tokenizer.hasMoreTokens())
+				iterations = tokenizer.getIntToken();
+
+			for (int i=0; i<iterations; i++) {
+				Core::getTaskManager()->scheduleTask([creo]{
+					Locker locker(creo);
+					creo->executeObjectControllerAction(STRING_HASHCODE("createcreature"), 0, "gorax");
+					creo->executeObjectControllerAction(STRING_HASHCODE("createcreature"), 0, "nightsister_elder");
+					creo->executeObjectControllerAction(STRING_HASHCODE("createcreature"), 0, "death_watch_wraith");
+
+				}, "spawnCreatureBenchmark", i*100);
+			}
 		} else if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
