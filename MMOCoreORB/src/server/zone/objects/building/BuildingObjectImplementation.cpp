@@ -389,7 +389,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
-	closeObjectsVector->safeCopyTo(closeObjects);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
@@ -620,7 +620,7 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) getCloseObjects();
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	closeObjectsVector->safeCopyTo(closeObjects);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		auto obj = static_cast<SceneObject*>(closeObjects.get(i));
@@ -648,7 +648,7 @@ void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
 	CloseObjectsVector* closeObjectsVector = getCloseObjects();
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	closeObjectsVector->safeCopyTo(closeObjects);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = static_cast<SceneObject*>( closeObjects.get(i));

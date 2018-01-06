@@ -51,7 +51,7 @@ Vector<CreatureObject*> TurretDataComponent::getAvailableTargets(bool aggroOnly)
 
 	SortedVector<QuadTreeEntry*> closeObjects;
 
-	vec->safeCopyTo(closeObjects);
+	vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 	int targetTotal = 0;
 
