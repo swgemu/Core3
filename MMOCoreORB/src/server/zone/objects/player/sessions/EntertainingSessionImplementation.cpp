@@ -196,22 +196,25 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
 
 	ManagedReference<GroupObject*> group = entertainer->getGroup();
-	int groupSize = group->getGroupSize();
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
-	for (int i = 0; i < groupSize; ++i) {
-		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+	for (int i = 0; i < group->getGroupSize(); ++i) {
+		try {
+			ManagedReference<CreatureObject *> groupMember = group->getGroupMember(i);
 
-		if (groupMember != NULL && groupMember->isPlayerCreature()) {
-			Locker clocker(groupMember, entertainer);
+			if (groupMember != NULL && groupMember->isPlayerCreature()) {
+				Locker clocker(groupMember, entertainer);
 
-			if (groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
+				if (groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
 					&& groupMember->hasSkill("social_entertainer_novice")) {
-				String healxptype("entertainer_healing");
+					String healxptype("entertainer_healing");
 
-				if (playerManager != NULL)
-					playerManager->awardExperience(groupMember, healxptype, xp, true);
+					if (playerManager != NULL)
+						playerManager->awardExperience(groupMember, healxptype, xp, true);
+				}
 			}
+		} catch (Exception& e) {
+			warning("exception in EntertainingSessionImplementation::addHealingXpGroup: " + e.getMessage());
 		}
 	}
 }
@@ -1063,17 +1066,21 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 			ManagedReference<GroupObject*> group = player->getGroup();
 
 			if (group != NULL) {
-				int groupSize = group->getGroupSize();
+				for (int i = 0; i < group->getGroupSize(); ++i) {
+					try {
+						ManagedReference<CreatureObject *> groupMember = group->getGroupMember(i);
 
-				for (int i = 0; i < groupSize; ++i) {
-					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+						if (groupMember != NULL && groupMember->isPlayerCreature()) {
+							Locker clocker(groupMember, player);
 
-					if (groupMember != NULL && groupMember->isPlayerCreature()) {
-						Locker clocker(groupMember, player);
-
-						if (groupMember != player && groupMember->isEntertaining() && groupMember->isInRange(player, 40.0f) && groupMember->hasSkill("social_entertainer_novice")) {
-							++groupBonusCount;
+							if (groupMember != player && groupMember->isEntertaining() &&
+								groupMember->isInRange(player, 40.0f) &&
+								groupMember->hasSkill("social_entertainer_novice")) {
+								++groupBonusCount;
+							}
 						}
+					} catch (ArrayIndexOutOfBoundsException &exc) {
+						warning("EntertainingSessionImplementation::awardEntertainerExperience " + exc.getMessage());
 					}
 				}
 			}
@@ -1139,34 +1146,41 @@ Vector<uint64> EntertainingSessionImplementation::getAudience() {
 
 int EntertainingSessionImplementation::getBandAudienceSize() {
 	Vector<uint64> audienceList = getAudience();
-	ManagedReference<CreatureObject*> player = entertainer.get();
+	ManagedReference<CreatureObject *> player = entertainer.get();
 
-	ManagedReference<GroupObject*> group = player->getGroup();
+	ManagedReference<GroupObject *> group = player->getGroup();
 
 	if (group == NULL)
 		return audienceList.size();
 
 	for (int i = 0; i < group->getGroupSize(); ++i) {
-		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+		try {
+			ManagedReference<CreatureObject *> groupMember = group->getGroupMember(i);
 
-		if (groupMember != NULL && groupMember->isPlayerCreature()) {
-			Locker clocker(groupMember, player);
+			if (groupMember != NULL && groupMember->isPlayerCreature()) {
+				Locker clocker(groupMember, player);
 
-			if (groupMember != player && groupMember->isEntertaining() && groupMember->isInRange(player, 40.0f) && groupMember->hasSkill("social_entertainer_novice")) {
-				ManagedReference<EntertainingSession*> session = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+				if (groupMember != player && groupMember->isEntertaining() &&
+					groupMember->isInRange(player, 40.0f) &&
+					groupMember->hasSkill("social_entertainer_novice")) {
+					ManagedReference<EntertainingSession *> session = groupMember->getActiveSession(
+							SessionFacadeType::ENTERTAINING).castTo<EntertainingSession *>();
 
-				if (session == NULL)
-					continue;
+					if (session == NULL)
+						continue;
 
-				Vector<uint64> memberAudienceList = session->getAudience();
+					Vector<uint64> memberAudienceList = session->getAudience();
 
-				for (int j = 0; j < memberAudienceList.size(); j++) {
-					uint64 audienceID = memberAudienceList.get(j);
+					for (int j = 0; j < memberAudienceList.size(); j++) {
+						uint64 audienceID = memberAudienceList.get(j);
 
-					if (!audienceList.contains(audienceID))
-						audienceList.add(audienceID);
+						if (!audienceList.contains(audienceID))
+							audienceList.add(audienceID);
+					}
 				}
 			}
+		} catch (Exception &e) {
+			warning("EntertainingSessionImplementation::getBandAudienceSize " + e.getMessage());
 		}
 	}
 
