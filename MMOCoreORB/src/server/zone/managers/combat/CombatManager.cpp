@@ -207,8 +207,28 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
 		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
 
-		for (int i=0; i<areaDefenders->size(); i++) {
-			damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data, &shouldGcwTef, &shouldBhTef);
+		while (areaDefenders->size() > 0) {
+			for (int i = areaDefenders->size()-1; i >= 0; i--) {
+				auto& defender = areaDefenders->get(i);
+				if (defender == attacker) {
+					areaDefenders->remove(i);
+					continue;
+				}
+
+				bool doLock = defender->isLockedByCurrentThread();
+				if (doLock)
+					if (!defender->tryWLock())
+						continue;
+
+				damage += doTargetCombatAction(attacker, weapon, defender, data, &shouldGcwTef,
+											   &shouldBhTef);
+				areaDefenders->remove(i);
+
+				if (doLock)
+					defender->unlock();
+			}
+			if (areaDefenders->size() > 0)
+				Thread::sleep(1);
 		}
 	}
 
