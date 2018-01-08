@@ -346,7 +346,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 	}
 
 	if(match == false) {
-		error(compare.toString());
+		warning(compare.toString());
 
 		if(creature->getPlayerObject() != NULL) {
 			if(creature->getPlayerObject()->getDebug()) {

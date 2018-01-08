@@ -89,7 +89,7 @@ short_and_clear = ConvoScreen:new {
 	options = {
 		{"@conversation/victor_visalis:s_1285849e", "makes_or_breaks"}, -- I've decided to vote for you.
 		{"@conversation/victor_visalis:s_1a50f0d3", "more_and_more_restless"}, -- Tell me more about the Tuskens.
-		{"@conversation/victor_visalis:s_540ac7e9", "very_well"}, -- I should go.
+		{"@conversation/victor_visalis:s_6cf7afee", "very_well"}, -- I should go.
 	}
 }
 victorVisalisConvoTemplate:addScreen(short_and_clear);

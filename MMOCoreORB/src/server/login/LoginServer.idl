@@ -30,7 +30,6 @@ class LoginServer extends ManagedService implements Logger {
 	private transient ConfigManager configManager;
 	
 	private transient LoginEnumCluster enumClusterMessage;
-	private transient LoginClusterStatus clusterStatusMessage;
 
 	private transient AccountManager accountManager;
 	
@@ -80,7 +79,5 @@ class LoginServer extends ManagedService implements Logger {
 	}
 
 	@local
-	public LoginClusterStatus getLoginClusterStatusMessage() {
-		return (LoginClusterStatus) clusterStatusMessage.clone();
-	}
+	public native LoginClusterStatus getLoginClusterStatusMessage();
 }
