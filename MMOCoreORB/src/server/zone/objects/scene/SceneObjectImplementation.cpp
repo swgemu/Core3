@@ -528,7 +528,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -579,7 +579,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -641,7 +641,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 #endif
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeNoneReference, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeNoneReference, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeNoneReference, 1);
 		}
@@ -729,7 +729,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 #ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
 #endif
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
 		}
