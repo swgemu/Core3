@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa7f18b_a772a447",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2120,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "playertype should be enough here",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_478f3024",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2530,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "this needs tanos too, not only creotype",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_87ac488e",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "playertype",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_6794ac37",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "this seems to need more than creos, notifyInsert below",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_0799386e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/BroadcastAreaCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "here playertype seems enough",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_279eb457",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/KillPlayerCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "this needs to be creotype becasue of the isPet check",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_c7a2409a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidMerchantBarkerTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2018-01-09T15:25:09Z",
+      "side": 1,
+      "message": "playertype should be enough",
+      "revId": "c3832910c8d93aeac6fc8b9d777fe6a967815696",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
