@@ -6,6 +6,7 @@ package server.zone.managers.player;
 
 import engine.log.Logger;
 import system.util.SortedVector;
+import system.util.VectorMap;
 import server.zone.ZoneProcessServer;
 include server.zone.packets.charcreation.ClientCreateCharacterCallback;
 import server.zone.objects.tangible.TangibleObject;
@@ -383,6 +384,10 @@ class PlayerManager extends Observer implements Logger {
 	public native void sendAdminJediList(CreatureObject player);
 	public native void sendAdminFRSList(CreatureObject player);	
 	public native void sendAdminList(CreatureObject player);
+
+    @dereferenced
+    @local
+	public native VectorMap<string, int> generateAdminList();
 
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
 
