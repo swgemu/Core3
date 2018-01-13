@@ -133,6 +133,19 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	}
 
 	loadNameMap();
+
+	if (ServerCore::hasArgument("listadmins")) {
+		info("generating admin list...", true);
+
+		auto admins = generateAdminList();
+
+		for (auto& entry : admins) {
+			auto name = entry.getKey();
+			auto level = entry.getValue();
+
+			info("Player: " + name + " level: " + String::valueOf(level), true);
+		}
+	}
 }
 
 bool PlayerManagerImplementation::createPlayer(ClientCreateCharacterCallback* callback) {
@@ -3940,9 +3953,7 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 	if (!onlineZoneClientMap.containsKey(accountId))
 		return;
 
-	BaseClientProxy* session = client->getSession();
-
-
+	auto session = client->getSession();
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -4635,7 +4646,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 
 	uint32 accountId = client->getAccountID();
 
-	BaseClientProxy* session = client->getSession();
+	auto session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
 		Vector<Reference<ZoneClientSession*> > clients;
@@ -5178,25 +5189,23 @@ void PlayerManagerImplementation::sendAdminFRSList(CreatureObject* player) {
 	player->sendMessage(listBox->generateMessage());
 }
 
-void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
-	Reference<ObjectManager*> objectManager = player->getZoneServer()->getObjectManager();
+VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
+	VectorMap<String, int> players;
 
 	HashTable<String, uint64> names = nameMap->getNames();
 	HashTableIterator<String, uint64> iter = names.iterator();
 
-	VectorMap<UnicodeString, int> players;
-	uint32 a = STRING_HASHCODE("SceneObject.slottedObjects");
-	uint32 b = STRING_HASHCODE("SceneObject.customName");
-	uint32 c = STRING_HASHCODE("PlayerObject.adminLevel");
+	Reference<ObjectManager*> objectManager = server->getObjectManager();
 
 	while (iter.hasNext()) {
-		uint64 creoId = iter.next();
-		VectorMap<String, uint64> slottedObjects;
-		UnicodeString playerName;
-		int state = -1;
+		uint64 oid;
+		String playerName;
+		iter.getNextKeyAndValue(playerName, oid);
 
-		objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(a, &slottedObjects, creoId);
-		objectManager->getPersistentObjectsSerializedVariable<UnicodeString>(b, &playerName, creoId);
+		VectorMap<String, uint64> slottedObjects;
+		int state = 0;
+
+		objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, oid);
 
 		uint64 ghostId = slottedObjects.get("ghost");
 
@@ -5204,12 +5213,18 @@ void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
 			continue;
 		}
 
-		objectManager->getPersistentObjectsSerializedVariable<int>(c, &state, ghostId);
+		objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
 
 		if (state != 0) {
 			players.put(playerName, state);
 		}
 	}
+
+	return players;
+}
+
+void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
+	VectorMap<String, int> players = generateAdminList();
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_LIST);
 	listBox->setPromptTitle("Admin List");
@@ -5217,7 +5232,7 @@ void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
 	listBox->setCancelButton(true, "@cancel");
 
 	for (int i = 0; i < players.size(); i++) {
-		listBox->addMenuItem(players.elementAt(i).getKey().toString() + " - " + String::valueOf(players.get(i)));
+		listBox->addMenuItem(players.elementAt(i).getKey() + " - " + String::valueOf(players.get(i)));
 	}
 
 	Locker locker(player);
