@@ -9,7 +9,6 @@
 #define ZONECLOSEOBJECTSVECTOR_H_
 
 #include "system/util/SortedVector.h"
-
 namespace server {
  namespace zone {
    class QuadTreeEntry;
@@ -27,8 +26,9 @@ class CloseObjectsVector : public Object {
 protected:
 	void dropReceiver(server::zone::QuadTreeEntry* entry);
 	void putReceiver(server::zone::QuadTreeEntry* entry, uint32 receiverTypes);
-
 public:
+	enum { PLAYERTYPE=1, CREOTYPE=2, COLLIDABLETYPE=4, STRUCTURETYPE=8, MAXTYPES=STRUCTURETYPE };
+
 	CloseObjectsVector();
 
 	Reference<server::zone::QuadTreeEntry*> remove(int index);
@@ -43,6 +43,8 @@ public:
 
 	void safeCopyReceiversTo(Vector<server::zone::QuadTreeEntry*>& vec, uint32 receiverType) const;
 	void safeCopyReceiversTo(Vector<ManagedReference<server::zone::QuadTreeEntry*> >& vec, uint32 receiverType) const;
+	void safeAppendReceiversTo(Vector<server::zone::QuadTreeEntry*>& vec, uint32 receiverType) const;
+	void safeAppendReceiversTo(Vector<ManagedReference<server::zone::QuadTreeEntry*> >& vec, uint32 receiverType) const;
 
 	void safeCopyTo(Vector<ManagedReference<server::zone::QuadTreeEntry*> >& vec) const;
 

@@ -207,8 +207,27 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
 		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
 
-		for (int i=0; i<areaDefenders->size(); i++) {
-			damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data, &shouldGcwTef, &shouldBhTef);
+		while (areaDefenders->size() > 0) {
+			for (int i = areaDefenders->size()-1; i >= 0 ; i--) {
+				TangibleObject* tano = areaDefenders->get(i);
+				if (tano == attacker ||  tano == NULL) {
+					areaDefenders->remove(i);
+					continue;
+				}
+
+				if (!tano->tryWLock()) {
+					continue;
+				}
+
+				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data, &shouldGcwTef,
+											   &shouldBhTef);
+				areaDefenders->remove(i);
+
+				tano->unlock();
+			}
+			attacker->unlock();
+			Thread::yield();
+			attacker->wlock(true);
 		}
 	}
 
@@ -265,7 +284,7 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef) {
 	int damage = 0;
-
+	
 	Locker clocker(tano, attacker);
 
 	if (!tano->isAttackableBy(attacker))
@@ -2116,7 +2135,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 
 	if (vec != NULL) {
 		closeObjects.removeAll(vec->size(), 10);
-		vec->safeCopyTo(closeObjects);
+		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 	} else {
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
