@@ -254,11 +254,11 @@ function FsVillageDefense:canAcceptSarguilloQuest(pPlayer)
 end
 
 function FsVillageDefense:canAcceptRangedQuest(pPlayer)
-	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
+	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_01) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and not VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
 end
 
 function FsVillageDefense:canAcceptMeleeQuest(pPlayer)
-	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
+	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and not VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
 end
 
 function FsVillageDefense:hasActiveSarguilloQuest(pPlayer)
