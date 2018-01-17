@@ -1679,3 +1679,22 @@ bool BuildingObjectImplementation::isBuildingObject() {
 float BuildingObjectImplementation::getOutOfRangeDistance() const {
 	return ZoneServer::CLOSEOBJECTRANGE * 4;
 }
+
+String BuildingObjectImplementation::getCellName(uint64 cellID) {
+	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
+
+	if (buildingTemplate == nullptr)
+		return "";
+
+	PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
+
+	if (portalLayout == nullptr)
+		return "";
+
+	const CellProperty* cellProperty = portalLayout->getCellProperty(cellID);
+
+	if (cellProperty == nullptr)
+		return "";
+
+	return cellProperty->getName();
+}

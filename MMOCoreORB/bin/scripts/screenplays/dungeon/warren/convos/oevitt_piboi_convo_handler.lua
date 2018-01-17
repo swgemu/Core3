@@ -6,7 +6,11 @@ function OevittPiboiConversationHandler:runScreenHandlers(pConvTemplate, pPlayer
 	local screenID = screen:getScreenID()
 
 	if (screenID == "escapee_2") then
-		WarrenScreenPlay:givePasskey1(pPlayer)
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory ~= nil) then
+			giveItem(pInventory, "object/tangible/mission/quest_item/warren_passkey_s01.iff", -1)
+		end
 	end
 
 	return pConvScreen
@@ -17,12 +21,8 @@ function OevittPiboiConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTem
 
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-	if (pInventory ~= nil) then
-		local pPasskey = getContainerObjectByTemplate(pInventory, WarrenScreenPlay.entranceKey, true)
-
-		if (pPasskey ~= nil) then
-			return convoTemplate:getScreen("escapee_haskey")
-		end
+	if (pInventory ~= nil and getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_passkey_s01.iff", true) ~= nil) then
+		return convoTemplate:getScreen("escapee_haskey")
 	end
 
 	return convoTemplate:getScreen("escapee_start")

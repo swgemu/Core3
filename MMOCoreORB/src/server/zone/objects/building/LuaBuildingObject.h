@@ -40,6 +40,8 @@ namespace building {
 		int spawnChildSceneObject(lua_State* L);
 		int destroyChildObjects(lua_State* L);
 		int initializeStaticGCWBase(lua_State* L);
+		int isPrivateStructure(lua_State* L);
+		int getCellName(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
