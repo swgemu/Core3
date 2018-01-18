@@ -98,6 +98,8 @@ void MissionManagerImplementation::loadLuaSettings() {
 			enableSameAccountBountyMissions = true;
 		}
 
+		playerBountyKillBuffer = lua->getGlobalLong("playerBountyKillBuffer");
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -1950,6 +1952,17 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (targetId == playerId)
 		return false;
 
+	if (playerBountyKillBuffer > 0) {
+		uint64 lastBountyKill = bounty->getLastBountyKill();
+
+		Time currentTime;
+		uint64 curTime = currentTime.getMiliTime();
+
+		if (lastBountyKill > 0 && (curTime - lastBountyKill) < playerBountyKillBuffer)
+			return false;
+
+	}
+
 	ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
 
 	if (creature == NULL)
@@ -1992,6 +2005,11 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 
 	if (playerBountyList.contains(targetId)) {
 		PlayerBounty* target = playerBountyList.get(targetId);
+
+		Time currentTime;
+
+		uint64 curTime = currentTime.getMiliTime();
+		target->setLastBountyKill(curTime);
 
 		Vector<uint64> activeBountyHunters;
 
