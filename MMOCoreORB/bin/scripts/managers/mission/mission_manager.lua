@@ -72,4 +72,4 @@ enable_factional_entertainer_missions = "true"
 
 enable_same_account_bounty_missions = "false"
 
-playerBountyKillBuffer = 3 * 60 * 60 * 1000 -- Buffer before player bounty can be put back on terminal after target is killed, set 0 to disable
+playerBountyKillBuffer = 30 * 60 * 1000 -- Buffer before player bounty can be put back on terminal after target is killed, set 0 to disable

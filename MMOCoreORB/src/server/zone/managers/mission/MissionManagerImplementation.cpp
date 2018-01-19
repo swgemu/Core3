@@ -2010,6 +2010,10 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 
 		uint64 curTime = currentTime.getMiliTime();
 		target->setLastBountyKill(curTime);
+		uint64 lastDebuff = target->getLastBountyDebuff();
+
+		if (curTime-lastDebuff > ConfigManager::instance()->getPlayerBountyDebuffLength())
+			target->setLastBountyDebuff(curTime);
 
 		Vector<uint64> activeBountyHunters;
 
