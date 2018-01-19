@@ -16,6 +16,8 @@ class PlayerBounty extends ManagedObject {
 	
 	protected unsigned long lastBountyKill;
 
+	protected unsigned long lastBountyDebuff;
+
 	@dereferenced
 	protected SortedVector<unsigned long> bountyHunterIDs;
 
@@ -25,6 +27,7 @@ class PlayerBounty extends ManagedObject {
 		online = true;
 		bountyHunterIDs.setNoDuplicateInsertPlan();
 		lastBountyKill = 0;
+		lastBountyDebuff = 0;
 	}
 
 	public void setReward(int amount) {
@@ -80,5 +83,14 @@ class PlayerBounty extends ManagedObject {
 	
 	public void setLastBountyKill(unsigned long newTime) {
 		lastBountyKill = newTime;
+	}
+
+	@read
+	public unsigned long getLastBountyDebuff() {
+	    return lastBountyDebuff;
+	}
+
+	public void setLastBountyDebuff(unsigned long newTime) {
+	    lastBountyDebuff = newTime;
 	}
 }
