@@ -6,7 +6,7 @@ bestineStoneMerchantConvoTemplate = ConvoTemplate:new {
 }
 
 init_default = ConvoScreen:new {
-	id = "init_election_phase",
+	id = "init_default",
 	leftDialog = "@conversation/bestine_stone_merchant:s_8762f9f", -- I'm in the business of collecting rare stones. Unfortunately, I haven't had much business lately. I guess I should find another business.
 	stopConversation = "false",
 	options = {
@@ -15,7 +15,7 @@ init_default = ConvoScreen:new {
 	--{"@conversation/bestine_stone_merchant:s_4242e25b", "keep_searching"}, -- Probably. Bye!
 	}
 }
-bestineStoneMerchantConvoTemplate:addScreen(init_election_phase);
+bestineStoneMerchantConvoTemplate:addScreen(init_default);
 
 init_return = ConvoScreen:new {
 	id = "init_return",
