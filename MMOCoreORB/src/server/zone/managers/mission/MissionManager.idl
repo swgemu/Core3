@@ -58,6 +58,7 @@ class MissionManager extends Observer implements Logger {
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	unsigned long playerBountyKillBuffer;
+	unsigned long playerBountyDebuffLength;
 
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
@@ -133,6 +134,9 @@ class MissionManager extends Observer implements Logger {
 
 	@reference
 	public native MissionObject getBountyHunterMission(CreatureObject player);
+
+	@dirty
+	public native int getRealBountyReward(CreatureObject creo, PlayerBounty bounty);
 
 	private native string getDeliveryMissionFileName(final unsigned int faction);
 	private native int getDeliverMissionNumberOfMissions(final unsigned int faction);
