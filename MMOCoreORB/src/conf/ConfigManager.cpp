@@ -69,6 +69,8 @@ ConfigManager::ConfigManager() {
 	termsOfService = "";
 	tosVersion = 0;
 
+	playerBountyDebuffLength = 3 * 24 * 60 * 60 * 1000;
+
 	logFileLevel = Logger::INFO;
 }
 
@@ -151,6 +153,7 @@ bool ConfigManager::loadConfigData() {
 
 	termsOfService = getGlobalString("TermsOfService");
 	tosVersion = getGlobalInt("TermsOfServiceVersion");
+	playerBountyDebuffLength = getGlobalLong("playerBountyDebuffLength");
 
 	return true;
 }

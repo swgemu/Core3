@@ -83,6 +83,7 @@ namespace conf {
 
 		String termsOfService;
 		int tosVersion;
+		uint64 playerBountyDebuffLength;
 
 	public:
 
@@ -333,6 +334,10 @@ namespace conf {
 
 		inline int getTermsOfServiceVersion() const {
 			return tosVersion;
+		}
+
+		inline uint64 getPlayerBountyDebuffLength() const {
+			return playerBountyDebuffLength;
 		}
 	};
 }
