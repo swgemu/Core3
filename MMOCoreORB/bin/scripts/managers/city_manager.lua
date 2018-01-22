@@ -238,7 +238,7 @@ CitySpecializations = {
 		name = "@city/city:city_spec_stronghold",
 		cost = 150000,
 		skillMods = {
-			{"private_defense", 90}
+			{"private_defense", 50}
 		}
 	},
 }
