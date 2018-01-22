@@ -7,9 +7,7 @@ function bestineStoneMerchantConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 	local curPhase = BestineElection:getCurrentPhase()
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
-	if (pInventory == nil or curPhase == BestineElection.ELECTION_PHASE) then
-		return convoTemplate:getScreen("init_default")
-	elseif (BestineElection:getQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_SMOOTH_STONE) == BestineElection.VICTOR_STONE_REWARD_RECEIVED or
+	if (BestineElection:getQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_SMOOTH_STONE) == BestineElection.VICTOR_STONE_REWARD_RECEIVED or
 		BestineElection:getQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_CARVED_STONE) == BestineElection.VICTOR_STONE_REWARD_RECEIVED) then
 		return convoTemplate:getScreen("init_return")
 	else

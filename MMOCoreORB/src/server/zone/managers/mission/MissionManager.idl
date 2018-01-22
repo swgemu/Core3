@@ -56,6 +56,8 @@ class MissionManager extends Observer implements Logger {
 	protected boolean enableSameAccountBountyMissions;
 
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
+	
+	unsigned long playerBountyKillBuffer;
 
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
@@ -67,6 +69,7 @@ class MissionManager extends Observer implements Logger {
 		enableFactionalReconMissions = false;
 		enableFactionalEntertainerMissions = false;
 		enableSameAccountBountyMissions = false;
+		playerBountyKillBuffer = 0;
 
 		Logger.setLoggingName("MissionManager");
 

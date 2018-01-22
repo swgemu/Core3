@@ -501,7 +501,7 @@ void ZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
 
 			if (vectorOwner == sceneObject) {
 				try {
-					vectorOwner->removeInRangeObject(sceneObject, false);
+					vectorOwner->removeInRangeObject(obj, false);
 				} catch (ArrayIndexOutOfBoundsException &e) {
 					Logger::console.error("exception removing in range object: " + e.getMessage());
 				}
