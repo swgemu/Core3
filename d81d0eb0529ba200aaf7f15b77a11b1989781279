@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa7f18b_67c10ce4",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2018-01-23T09:49:09Z",
+      "side": 1,
+      "message": "Looking at randomizeGenericBountyMission, the creo passed to this method is not guaranteed to be non-null. Check it before using it here.",
+      "revId": "d81d0eb0529ba200aaf7f15b77a11b1989781279",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_07b6188b",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2018-01-23T09:49:09Z",
+      "side": 1,
+      "message": "It might be useful for this debug data to show both the base reward and the real reward. Just showing one without being explicit which it is could be misleading.",
+      "revId": "d81d0eb0529ba200aaf7f15b77a11b1989781279",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa7f18b_27bb1474",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/PlayerBounty.idl",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2018-01-23T09:49:09Z",
+      "side": 1,
+      "message": "unneeded.",
+      "revId": "d81d0eb0529ba200aaf7f15b77a11b1989781279",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
