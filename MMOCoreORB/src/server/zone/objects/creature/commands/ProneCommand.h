@@ -73,11 +73,10 @@ public:
 				info("blue frog created", true);
 			}
 		} else {// TODO STOP DELETE HERE
-			if (creature->isDizzied() && System::random(100) < 85) {
+			creature->setPosture(CreaturePosture::PRONE);
+
+			if (creature->isDizzied() && System::random(100) < 85)
 				creature->queueDizzyFallEvent();
-			} else {
-				creature->setPosture(CreaturePosture::PRONE);
-			}
 		}// TODO DELETE THIS LINE
 
 		return SUCCESS;
