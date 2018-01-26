@@ -739,6 +739,9 @@ void TangibleObjectImplementation::setObjectName(StringId& stringID, bool notify
 void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
 	customName = name;
 
+	if (isClientObject())
+		setForceSend(true);
+
 	if (!notifyClient)
 		return;
 

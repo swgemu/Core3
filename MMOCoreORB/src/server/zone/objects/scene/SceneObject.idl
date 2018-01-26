@@ -98,6 +98,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	protected transient PendingTasksMap pendingTasks;
 
+	protected boolean forceSend;
 	protected boolean staticObject;
 
 	@dereferenced
@@ -1834,6 +1835,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
+	}
+	
+	public void setForceSend(boolean val) {
+		forceSend = val;
 	}
 
 	public void setClientObject(boolean val) {
