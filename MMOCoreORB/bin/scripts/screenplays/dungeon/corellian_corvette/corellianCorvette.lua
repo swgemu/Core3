@@ -153,7 +153,7 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	local corvetteFaction = self:getBuildingFaction(pCorvette)
 	local factionCRC = self:getFactionCRC(corvetteFaction)
 
-	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus())) then
 		return
 	end
 
@@ -876,6 +876,13 @@ function CorellianCorvette:transportPlayer(pPlayer)
 
 	if (pCorvette == nil) then
 		printLuaError("CorellianCorvette:transportPlayer nil corvette object using corvette id " .. corvetteID)
+		return
+	end
+
+	local corvetteFaction = self:getBuildingFaction(pCorvette)
+	local factionCRC = self:getFactionCRC(corvetteFaction)
+
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus())) then
 		return
 	end
 

@@ -13,6 +13,7 @@ ConfigManager::ConfigManager() {
 	dumpObjFiles = true;
 	unloadContainers = true;
 	useMetrics = true;
+	pvpMode = false;
 
 	orbNamingDirectoryAddress = "";
 	orbNamingDirectoryPort = 44419;
@@ -196,8 +197,8 @@ void ConfigManager::loadMOTD() {
 
 		reader->close();
 	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	}
 
 	delete reader;
@@ -221,11 +222,11 @@ void ConfigManager::loadRevision() {
 
 		reader->close();
 	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	} catch (Exception& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	}
 
 	//revision = revision.replaceAll("\n", "");

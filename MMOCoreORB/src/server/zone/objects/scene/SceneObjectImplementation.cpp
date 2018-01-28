@@ -108,6 +108,7 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	movementCounter = 0;
 
+	forceSend = false;
 	staticObject = false;
 
 	zone = NULL;
@@ -305,7 +306,7 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	if (isClientObject() || !sendToClient || player == NULL || player->getClient() == NULL)
+	if ((isClientObject() && !forceSend) || !sendToClient || player == NULL || player->getClient() == NULL)
 		return;
 
 	/*StringBuffer msgInfo;
