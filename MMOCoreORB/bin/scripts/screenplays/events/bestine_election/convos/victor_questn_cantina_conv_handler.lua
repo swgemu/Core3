@@ -40,7 +40,7 @@ function victorQuestnCantinaConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 	elseif (screenID == "init_on_rival_quest") then
 		if (CreatureObject(pPlayer):getCashCredits() >= 200) then
 			if (BestineElection:hasFullInventory(pPlayer)) then
-				clonedConversation:addOption("@conversation/victor_questn_cantina:s_51ac4991", "give_evidence") -- Hmm. Here you go.
+				clonedConversation:addOption("@conversation/victor_questn_cantina:s_51ac4991", "inv_full") -- Hmm. Here you go.
 			else
 				clonedConversation:addOption("@conversation/victor_questn_cantina:s_51ac4991", "give_evidence") -- Hmm. Here you go.
 			end
