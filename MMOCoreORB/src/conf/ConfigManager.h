@@ -82,6 +82,8 @@ namespace conf {
 		int logFileLevel;
 		bool jsonLogOutput;
 		bool syncLogOutput;
+		bool luaLogJSON;
+		bool pathfinderLogJSON;
 
 		String termsOfService;
 		int tosVersion;
@@ -343,6 +345,14 @@ namespace conf {
 
 		inline bool getSyncLogOutput() const {
 			return syncLogOutput;
+		}
+
+		inline bool getLuaLogJSON() const {
+			return luaLogJSON;
+		}
+
+		inline bool getPathfinderLogJSON() const {
+			return pathfinderLogJSON;
 		}
 	};
 }

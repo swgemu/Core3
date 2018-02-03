@@ -154,6 +154,8 @@ bool ConfigManager::loadConfigData() {
 
 	jsonLogOutput = getGlobalByte("LogJSON");
 	syncLogOutput = getGlobalByte("LogSync");
+	luaLogJSON = getGlobalByte("LuaLogJSON");
+	pathfinderLogJSON = getGlobalByte("PathfinderLogJSON");
 
 	termsOfService = getGlobalString("TermsOfService");
 	tosVersion = getGlobalInt("TermsOfServiceVersion");
