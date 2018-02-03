@@ -318,6 +318,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	StringBuffer fileName;
 	fileName << "log/lua.log";
 	luaEngine->setFileLogger(fileName.toString(), true);
+	luaEngine->setLogJSON(ConfigManager::instance()->getLuaLogJSON());
 
 	setupLuaPackagePath(luaEngine);
 

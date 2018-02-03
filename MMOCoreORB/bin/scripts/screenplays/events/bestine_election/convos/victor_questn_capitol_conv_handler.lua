@@ -31,9 +31,9 @@ function victorQuestnCapitolConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 
 	if (screenID == "init_inv_was_full") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_questn_capitol:s_51ac4991", "inv_still_full") -- Yes, I do.
+			clonedConversation:addOption("@conversation/victor_questn_capitol:s_90ec63e0", "inv_still_full") -- Yes, I do.
 		else
-			clonedConversation:addOption("@conversation/victor_questn_capitol:s_51ac4991", "was_full_give_evidence") -- Yes, I do.
+			clonedConversation:addOption("@conversation/victor_questn_capitol:s_90ec63e0", "was_full_give_evidence") -- Yes, I do.
 		end
 
 		clonedConversation:addOption("@conversation/victor_questn_capitol:s_da9a29e9", "wasting_my_time") -- No, not yet.

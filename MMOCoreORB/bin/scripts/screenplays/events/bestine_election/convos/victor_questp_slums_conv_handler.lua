@@ -31,9 +31,9 @@ function victorQuestpSlumsConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 
 	if (screenID == "init_inv_was_full") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_questp_slums:s_67a10ef6", "inv_still_full") -- I do, thank you.
+			clonedConversation:addOption("@conversation/victor_questp_slums:s_ee6997ba", "inv_still_full") -- I do, thank you.
 		else
-			clonedConversation:addOption("@conversation/victor_questp_slums:s_67a10ef6", "was_full_give_evidence") -- I do, thank you.
+			clonedConversation:addOption("@conversation/victor_questp_slums:s_ee6997ba", "was_full_give_evidence") -- I do, thank you.
 		end
 
 		clonedConversation:addOption("@conversation/victor_questp_slums:s_76cc19da", "come_back_later") -- No, I still don't have room.

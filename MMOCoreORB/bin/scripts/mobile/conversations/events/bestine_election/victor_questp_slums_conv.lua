@@ -90,7 +90,7 @@ init_inv_was_full = ConvoScreen:new {
 	leftDialog = "@conversation/victor_questp_slums:s_b6d2944c", -- I'm glad you've returned. Did you want your evidence now? I hope you have enough room.
 	stopConversation = "false",
 	options = {
-	--{"@conversation/victor_questp_slums:s_67a10ef6", "great_man"}, -- I do, thank you.
+	--{"@conversation/victor_questp_slums:s_ee6997ba", "great_man"}, -- I do, thank you.
 	--{"@conversation/victor_questp_slums:s_76cc19da", "come_back_later"}, -- No, I still don't have room.
 	}
 }
