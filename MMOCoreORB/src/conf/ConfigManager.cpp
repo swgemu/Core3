@@ -71,6 +71,8 @@ ConfigManager::ConfigManager() {
 	tosVersion = 0;
 
 	logFileLevel = Logger::INFO;
+	jsonLogOutput = false;
+	syncLogOutput = false;
 }
 
 bool ConfigManager::loadConfigData() {
@@ -149,6 +151,9 @@ bool ConfigManager::loadConfigData() {
 
 	logFile = getGlobalString("LogFile");
 	logFileLevel = getGlobalInt("LogFileLevel");
+
+	jsonLogOutput = getGlobalByte("LogJSON");
+	syncLogOutput = getGlobalByte("LogSync");
 
 	termsOfService = getGlobalString("TermsOfService");
 	tosVersion = getGlobalInt("TermsOfServiceVersion");

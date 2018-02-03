@@ -214,6 +214,8 @@ UnloadContainers = 1 --Whether to unload container contents from RAM after the c
 
 LogFile = "log/core3.log"
 LogFileLevel = 4 -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
+LogJSON = 0 -- global log output in JSON format
+LogSync = 0 -- flush global log file after each write
 
 TermsOfServiceVersion = 0
 TermsOfService = ""

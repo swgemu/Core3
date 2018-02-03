@@ -80,6 +80,8 @@ namespace conf {
 
 		String logFile;
 		int logFileLevel;
+		bool jsonLogOutput;
+		bool syncLogOutput;
 
 		String termsOfService;
 		int tosVersion;
@@ -333,6 +335,14 @@ namespace conf {
 
 		inline int getTermsOfServiceVersion() const {
 			return tosVersion;
+		}
+
+		inline bool getJsonLogOutput() const {
+			return jsonLogOutput;
+		}
+
+		inline bool getSyncLogOutput() const {
+			return syncLogOutput;
 		}
 	};
 }
