@@ -41,3 +41,16 @@ Zone* ZoneReference::operator= (Zone* obj) {
 
 	return obj;
 }
+
+String ZoneReference::toString() const {
+	Zone* object = Reference<Zone*>::get();
+
+	if (object != NULL)
+		return object->getZoneName();
+	else
+		return String();
+}
+
+void server::zone::to_json(nlohmann::json& j, const server::zone::ZoneReference& p) {
+	j = p.toString().toCharArray();
+}
