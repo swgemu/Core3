@@ -1,0 +1,26 @@
+package server.zone.objects.events;
+
+import server.zone.objects.scene.SceneObject;
+
+import server.zone.objects.events.StreamEvent;
+
+@graph(edge, label = "player_command")
+class PlayerCommandEvent extends StreamEvent {
+    protected SceneObject source;
+    protected SceneObject target;
+
+    @graph(type = "Long")
+    protected unsigned int commandCRC;
+
+    @graph(type = "String")
+    protected unicode arguments;
+
+	public PlayerCommandEvent(SceneObject source, SceneObject target, unsigned int commandCRC, final unicode arguments) {
+	    this.source = source;
+	    this.target = target;
+	    this.commandCRC = commandCRC;
+	    this.arguments = arguments;
+	}
+}
+
+

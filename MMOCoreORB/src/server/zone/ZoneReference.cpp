@@ -12,7 +12,7 @@
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
 	Zone* object = Reference<Zone*>::get();
 
-	if (object != NULL)
+	if (object != nullptr)
 		object->getZoneName().toBinaryStream(stream);
 	else
 		stream->writeShort(0);
@@ -26,8 +26,8 @@ bool ZoneReference::parseFromBinaryStream(ObjectInputStream* stream) {
 
 	Zone* obj = ServerCore::getZoneServer()->getZone(zoneName);
 
-	if (obj == NULL) {
-		updateObject(NULL);
+	if (obj == nullptr) {
+		updateObject(nullptr);
 		return false;
 	}
 
@@ -40,4 +40,18 @@ Zone* ZoneReference::operator= (Zone* obj) {
 	updateObject(obj);
 
 	return obj;
+}
+
+String ZoneReference::toString() const {
+	Zone* object = Reference<Zone*>::get();
+
+	if (object != nullptr) {
+		return object->getZoneName();
+	} else {
+		return String();
+	}
+}
+
+void server::zone::to_json(nlohmann::json& j, const server::zone::ZoneReference& p) {
+	j = p.toString().toCharArray();
 }

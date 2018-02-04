@@ -42,6 +42,7 @@ include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 
 @mock
+@graph
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
 
@@ -132,7 +133,9 @@ class AiAgent extends CreatureObject {
 	protected VectorMap<unsigned int, Behavior> behaviors;
 
 	@dereferenced
+	@graph(id)
 	protected transient string templateName;
+
 	protected unsigned int lairTemplateCRC;
 	protected unsigned int creatureBitmask;
 

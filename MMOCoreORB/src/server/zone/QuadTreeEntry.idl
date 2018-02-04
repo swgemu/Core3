@@ -20,6 +20,7 @@ import engine.util.u3d.Vector3;
 include engine.util.u3d.Coordinate;
 import server.zone.QuadTreeNode;
 
+@graph
 class QuadTreeEntry extends Observable {
 	@dereferenced
 	protected Coordinate coordinates;
@@ -30,6 +31,7 @@ class QuadTreeEntry extends Observable {
 	protected boolean bounding;
 	
 	@weakReference
+	@graph(type = "Long")
 	protected QuadTreeEntry parent;
 
 	transient protected CloseObjectsVector closeobjects;

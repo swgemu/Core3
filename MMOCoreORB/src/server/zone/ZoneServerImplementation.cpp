@@ -31,6 +31,9 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/managers/events/EventStreamManager.h"
+
+#include "server/zone/objects/events/ServerEvent.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -114,6 +117,9 @@ void ZoneServerImplementation::loadGalaxyName() {
 	setLoggingName("ZoneServer " + galaxyName);
 
 	loadLoginMessage();
+
+	ServerEvent event(galaxyName, "starting");
+	EventStreamManager::instance()->pushEvent(event);
 }
 
 void ZoneServerImplementation::initialize() {

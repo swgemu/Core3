@@ -22,6 +22,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/managers/events/EventStreamManager.h"
 
 #include "server/zone/QuadTree.h"
 
