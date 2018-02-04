@@ -9,6 +9,7 @@
 #define ZONEREFERENCE_H_
 
 #include "engine/engine.h"
+#include "engine/util/json_utils.h"
 
 namespace server {
 namespace zone {
@@ -20,7 +21,12 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 	Zone* operator=(Zone* obj);
+
+	String toString() const;
 };
+
+void to_json(nlohmann::json& j, const ZoneReference& p);
+
 
 }
 }

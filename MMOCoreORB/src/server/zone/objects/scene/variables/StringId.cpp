@@ -58,3 +58,11 @@ void StringId::setStringId(const String& fullPath) {
 	}
 }
 
+void server::zone::objects::scene::variables::to_json(nlohmann::json& j, const server::zone::objects::scene::variables::StringId& p) {
+	String str;
+	p.getFullPath(str);
+
+	j = str.toCharArray();
+}
+
+
