@@ -8,9 +8,11 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
+#include "server/zone/managers/events/EventStreamManager.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/events/PlayerCommandEvent.h"
 
 void ObjectControllerImplementation::loadCommands() {
 	configManager = new CommandConfigManager(server);
@@ -82,6 +84,15 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		object->error(msg.toString());
 
 		return 0.f;
+	}
+
+	if (object->isPlayerCreature()) {
+		auto targetObject = server->getZoneServer()->getObject(targetID);
+
+		if (targetObject != nullptr && (targetObject->isAiAgent() || targetObject->isPlayerCreature())) {
+			PlayerCommandEvent event(object, targetObject, queueCommand->getQueueCommandName(), arguments);
+			EventStreamManager::instance()->pushEvent(event);
+		}
 	}
 
 	/*StringBuffer infoMsg;

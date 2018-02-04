@@ -57,6 +57,7 @@ include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
 
 @mock
+@graph
 class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected transient ZoneProcessServer server;
 
@@ -72,6 +73,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected boolean collidable;
 
 	@dereferenced
+    @graph(type = "String")
 	protected ZoneReference zone;
 
 	@dereferenced
@@ -85,7 +87,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dereferenced
 	protected ContainerPermissions containerPermissions;
 
+    @graph(type = "Long")
 	protected unsigned int serverObjectCRC;
+
+    @graph(type = "Long")
 	protected unsigned int clientObjectCRC;
 
 	@dereferenced
@@ -94,6 +99,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected unsigned int movementCounter;
 
 	@dereferenced
+    @graph(type = "String")
 	protected StringId objectName;
 
 	protected transient PendingTasksMap pendingTasks;
@@ -110,6 +116,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected int planetMapCategory;
 	protected int planetMapSubCategory;
 
+    @graph(type = "String")
 	protected unicode customName;
 
 	@weakReference

@@ -42,6 +42,7 @@ include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 
 @mock
+@graph
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
 
@@ -81,6 +82,7 @@ class AiAgent extends CreatureObject {
 	protected transient SortedVector<unsigned long> camouflagedObjects;
 
 	@dereferenced
+    @graph(id, type = "String")
 	protected CreatureTemplateReference npcTemplate;
 
 	protected unsigned int convoTemplateCRC;
@@ -133,6 +135,7 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient string templateName;
+
 	protected unsigned int lairTemplateCRC;
 	protected unsigned int creatureBitmask;
 

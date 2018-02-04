@@ -1,0 +1,17 @@
+package server.zone.objects.events;
+
+import server.zone.objects.events.StreamEvent;
+
+@graph(edge, label = "server")
+class ServerEvent extends StreamEvent {
+    @graph(type = "String")
+    protected string command;
+
+    @graph(type = "String")
+    protected string galaxyName;
+
+	public ServerEvent(final string galaxyName, final string command) {
+	    this.command = command;
+	    this.galaxyName = galaxyName;
+	}
+}

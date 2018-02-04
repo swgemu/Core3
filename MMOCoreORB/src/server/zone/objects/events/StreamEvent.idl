@@ -1,0 +1,13 @@
+package server.zone.objects.events;
+
+include system.lang.Time;
+
+@graph(edge)
+class StreamEvent {
+    @dereferenced
+    @graph(type = "Long")
+    protected Time timestamp;
+
+	public StreamEvent() {
+	}
+}

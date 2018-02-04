@@ -6,7 +6,7 @@
 #define STRINGID_H_
 
 #include "engine/engine.h"
-
+#include "engine/util/json_utils.h"
 
 namespace server {
 namespace zone {
@@ -123,6 +123,9 @@ public:
 		return true;
 	}
 };
+
+void to_json(nlohmann::json& j, const StringId& p);
+
 
 }
 }
