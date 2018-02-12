@@ -356,8 +356,8 @@ proven_your_worth = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_7c4e7b68", -- Ahh, excellent. I am satisfied. You have proven your worth and want to join my campaign. Are you sure you want to join us?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign"}, -- Yes, I am sure.
-		{"@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return"}, -- I've changed my mind.
+		--{"@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign"}, -- Yes, I am sure.
+		--{"@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return"}, -- I've changed my mind.
 	}
 }
 victorVisalisConvoTemplate:addScreen(proven_your_worth);
@@ -399,8 +399,8 @@ init_joined_sean = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_26e91e91", -- I see that you have joined the campaign of my opponent. I am disappointed.
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_798f58f7", "prove_yourself"}, -- I want to join your campaign.
-		{"@conversation/victor_visalis:s_ee26e33e", "s_67dbab18"}, -- Sorry, I have to go.
+		{"@conversation/victor_visalis:s_b826b85a", "prove_yourself"}, -- I want to join your campaign.
+		{"@conversation/victor_visalis:s_67dbab18", "s_67dbab18"}, -- Sorry, I have to go.
 	}
 }
 victorVisalisConvoTemplate:addScreen(init_joined_sean);
