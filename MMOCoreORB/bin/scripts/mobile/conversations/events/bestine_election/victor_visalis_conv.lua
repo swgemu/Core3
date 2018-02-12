@@ -10,7 +10,7 @@ init_election_phase = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_aa1a9de6", -- Can you feel that? The Sand People are getting restless. I can sense it from here. Bestine will not be safe unless we recruit more Imperial Troopers to defend the city. If my... opponent wins the election, I am afraid of what may happen to the people of Bestine. But enough of this. How may I help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_edafb11b", "lacking_defense"}, -- What are your proposed changes for Bestine?
+		{"@conversation/victor_visalis:s_bae6b22d", "lacking_defense"}, -- What are your proposed changes for Bestine?
 		{"@conversation/victor_visalis:s_d6a9a15d", "makes_or_breaks"}, -- I'm here to vote for you.
 		{"@conversation/victor_visalis:s_1a50f0d3", "more_and_more_restless"}, -- Tell me more about the Tuskens.
 		{"@conversation/victor_visalis:s_87b97dc", "very_well"}, -- I need to go. I'm sorry.
