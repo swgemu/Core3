@@ -69,12 +69,12 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		clonedConversation:addOption("@conversation/victor_visalis:s_da9a29e9", "stop_wasting_my_time") -- No, not yet.
 	elseif (screenID == "proven_your_worth") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_641d98d5", "rival_complete_inv_full") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7", "rival_complete_inv_full") -- Yes, I am sure.
 		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_641d98d5", "rival_complete_join_campaign") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign") -- Yes, I am sure.
 		end
 
-		clonedConversation:addOption("@conversation/victor_visalis:s_fe8dd35a", "be_sure_to_return") -- No, I changed my mind.
+		clonedConversation:addOption("@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return") -- No, I changed my mind.
 	elseif (screenID == "rival_complete_join_campaign") then
 		BestineElection:removeCandidateEvidence(pPlayer, BestineElection.SEAN)
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_RIVAL_QUEST, BestineElection.VICTOR_RIVAL_QUEST_COMPLETED)
