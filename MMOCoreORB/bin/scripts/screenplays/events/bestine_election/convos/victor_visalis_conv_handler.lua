@@ -50,6 +50,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 
 		clonedConversation:addOption("@conversation/victor_visalis:s_ee26e33e", "very_well") -- No thanks!
 	elseif (screenID == "youll_need_evidence") then
+		BestineElection:clearInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)
 		BestineElection:joinCampaign(pPlayer, BestineElection.VICTOR)
 	elseif (screenID == "init_joined_campaign") then
 		if (BestineElection:getPlayerVote(pPlayer) == BestineElection.VICTOR) then
@@ -63,15 +64,15 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		clonedConversation:addOption("@conversation/victor_visalis:s_dea56128", "very_well") -- I have to go.
 	elseif (screenID == "init_on_rival_quest") then
 		if (BestineElection:hasCandidateEvidence(pPlayer, BestineElection.VICTOR, true)) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49", "proven_your_worth") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49", "proven_your_worth") -- I have it, yes.
 		end
 
 		clonedConversation:addOption("@conversation/victor_visalis:s_da9a29e9", "stop_wasting_my_time") -- No, not yet.
 	elseif (screenID == "proven_your_worth") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7", "rival_complete_inv_full") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed", "rival_complete_inv_full") -- Yes, I am sure.
 		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed", "rival_complete_join_campaign") -- Yes, I am sure.
 		end
 
 		clonedConversation:addOption("@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return") -- No, I changed my mind.
@@ -166,12 +167,12 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 
 		if (pInventory ~= nil) then
 			local pHead = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/tusken_head.iff", true)
-			
+
 			if (pHead ~= nil) then
 				SceneObject(pHead):destroyObjectFromWorld()
 				SceneObject(pHead):destroyObjectFromDatabase()
 			end
-			
+
 			local pReward = giveItem(pInventory, "object/weapon/ranged/rifle/rifle_victor_tusken.iff", -1)
 		end
 

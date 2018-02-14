@@ -108,6 +108,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 	elseif (screenID == "disk_inv_full") then
 		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)
 	elseif (screenID == "sensible_type") then
+		BestineElection:clearInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)
 		BestineElection:joinCampaign(pPlayer, BestineElection.SEAN)
 	elseif (screenID == "init_had_full_inventory") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
@@ -182,7 +183,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)
 		end
-		
+
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.NONE)
 	elseif (screenID == "speak_with_secretary") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST, BestineElection.SEAN_RIVAL_QUEST_ACCEPTED)
