@@ -14,7 +14,7 @@ function seanTrenwellConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 
 	if (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_GAVE_TO_HUTT) then
 		return convoTemplate:getScreen("init_gave_intel_to_hutt")
-	elseif (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)) then
+	elseif (curPhase == BestineElection.ELECTION_PHASE and BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_MAIN_QUEST)) then
 		return convoTemplate:getScreen("init_had_full_inventory")
 	elseif (BestineElection:getPlayerVote(pPlayer) == BestineElection.NONE and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.SEAN)) then
 		return convoTemplate:getScreen("init_joined_campaign")
