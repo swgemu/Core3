@@ -43,7 +43,7 @@ function seanQuestpHouseConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 		else
 			clonedConversation:addOption("@conversation/sean_questp_house:s_67e6df55", "come_for_dinner") -- Okay.
 		end
-	elseif (screenID == "help_but_inv_full") then
+	elseif (screenID == "inv_full") then
 		BestineElection:setInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HOUSE_EVIDENCE)
 	elseif (screenID == "here_you_are_then" or screenID == "come_for_dinner") then
 		BestineElection:clearInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HOUSE_EVIDENCE)

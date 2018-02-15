@@ -10,7 +10,7 @@ function victorQuestnCantinaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTe
 	if (curPhase == BestineElection.OFFICE_PHASE) then
 		return convoTemplate:getScreen("init_office_phase")
 	elseif (pInventory ~= nil and getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questn_dseal.iff", true)) then
-		return convoTemplate:getScreen("init_has_evidence")
+		return convoTemplate:getScreen("init_already_has_evidence")
 	elseif (BestineElection:hadInvFull(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_CANTINA_EVIDENCE)) then
 		return convoTemplate:getScreen("init_inv_was_full")
 	elseif (BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_RIVAL_QUEST) == BestineElection.SEAN_RIVAL_QUEST_ACCEPTED) then
@@ -31,9 +31,9 @@ function victorQuestnCantinaConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 
 	if (screenID == "init_inv_was_full") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_questn_cantina:s_67a10ef6", "inv_still_full") -- Yes, I do.
+			clonedConversation:addOption("@conversation/victor_questn_cantina:s_90ec63e0", "inv_still_full") -- Yes, I do.
 		else
-			clonedConversation:addOption("@conversation/victor_questn_cantina:s_67a10ef6", "was_full_give_evidence") -- Yes, I do.
+			clonedConversation:addOption("@conversation/victor_questn_cantina:s_90ec63e0", "was_full_give_evidence") -- Yes, I do.
 		end
 
 		clonedConversation:addOption("@conversation/victor_questn_cantina:s_62bf3631", "go_away_then") -- No, I haven't made room yet.
