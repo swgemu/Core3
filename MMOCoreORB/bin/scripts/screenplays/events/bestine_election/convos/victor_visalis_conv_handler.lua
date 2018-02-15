@@ -12,7 +12,7 @@ function victorVisalisConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 		electionWinner = BestineElection:getElectionWinner(electionNum - 1)
 	end
 
-	if (BestineElection:hadInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)) then
+	if (curPhase == BestineElection.ELECTION_PHASE and BestineElection:hadInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)) then
 		return convoTemplate:getScreen("init_had_no_room_to_join_campaign")
 	elseif (BestineElection:getPlayerVote(pPlayer) == BestineElection.NONE and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.VICTOR)) then
 		return convoTemplate:getScreen("init_joined_campaign")
