@@ -99,6 +99,7 @@ void MissionManagerImplementation::loadLuaSettings() {
 		}
 
 		playerBountyKillBuffer = lua->getGlobalLong("playerBountyKillBuffer");
+		playerBountyDebuffLength = lua->getGlobalLong("playerBountyDebuffLength");
 
 		delete lua;
 	}
@@ -1009,7 +1010,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			mission->setMissionTargetName(name);
 			mission->setMissionDifficulty(75);
-			mission->setRewardCredits(target->getReward());
+			mission->setRewardCredits(getRealBountyReward(creature, target));
 
 			// Set the Title, Creator, and Description of the mission.
 
@@ -2010,6 +2011,10 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 
 		uint64 curTime = currentTime.getMiliTime();
 		target->setLastBountyKill(curTime);
+		uint64 lastDebuff = target->getLastBountyDebuff();
+
+		if (curTime-lastDebuff > playerBountyDebuffLength)
+			target->setLastBountyDebuff(curTime);
 
 		Vector<uint64> activeBountyHunters;
 
@@ -2128,6 +2133,23 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 	}
 }
 
+int MissionManagerImplementation::getRealBountyReward(CreatureObject* creo, PlayerBounty* bounty)  {
+	if (creo == NULL || bounty == NULL)
+		return 0;
+
+	if (System::getMiliTime() - bounty->getLastBountyDebuff() < playerBountyDebuffLength) {
+		ManagedReference<PlayerObject*> player = creo->getPlayerObject();
+		if (player == NULL)
+			return 0;
+
+		if (player->getJediState() >= 4)
+			return 50000;
+		else
+			return 25000;
+	}
+	return bounty->getReward();
+}
+
 String MissionManagerImplementation::getRandomBountyPlanet() {
 	int randomNumber = System::random(bhTargetZones.size() - 1);
 	return bhTargetZones.get(randomNumber);
@@ -2156,7 +2178,8 @@ bool MissionManagerImplementation::sendPlayerBountyDebug(CreatureObject* creatur
 		promptText += "-- No player bounty data --\n";
 	} else {
 		promptText += "-- Bounty Data --\n";
-		promptText += "Reward: " + String::valueOf(playerBounty->getReward()) + "\n";
+		promptText += "Current Reward: " + String::valueOf(getRealBountyReward(target, playerBounty)) + "\n";
+		promptText += "Bounty Reward: " + String::valueOf(playerBounty->getReward()) + "\n";
 		String onlineStatus = playerBounty->isOnline() ? "True" : "False";
 		promptText += "Online Status: " + onlineStatus + "\n";
 		int activeCount = playerBounty->numberOfActiveMissions();

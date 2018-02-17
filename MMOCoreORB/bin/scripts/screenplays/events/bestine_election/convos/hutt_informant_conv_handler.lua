@@ -7,6 +7,11 @@ function huttInformantConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 	local electionNum = BestineElection:getElectionNumber()
 	local electionWinner = BestineElection:getElectionWinner(electionNum)
 
+	local curPhase = BestineElection:getCurrentPhase()
+	if (curPhase == BestineElection.ELECTION_PHASE) then
+		electionWinner = BestineElection:getElectionWinner(electionNum - 1)
+	end
+
 	if (electionWinner == BestineElection.SEAN and BestineElection:getQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST) == BestineElection.SEAN_HISTORY_QUEST_SENT_TO_CONTACT and BestineElection:hasItemInInventory(pPlayer, "object/tangible/loot/quest/sean_history_disk.iff")) then
 		return convoTemplate:getScreen("init_sean_in_office_has_item")
 	else

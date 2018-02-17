@@ -12,7 +12,7 @@ function victorVisalisConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 		electionWinner = BestineElection:getElectionWinner(electionNum - 1)
 	end
 
-	if (BestineElection:hadInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)) then
+	if (curPhase == BestineElection.ELECTION_PHASE and BestineElection:hadInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)) then
 		return convoTemplate:getScreen("init_had_no_room_to_join_campaign")
 	elseif (BestineElection:getPlayerVote(pPlayer) == BestineElection.NONE and BestineElection:hasJoinedCampaign(pPlayer, BestineElection.VICTOR)) then
 		return convoTemplate:getScreen("init_joined_campaign")
@@ -50,6 +50,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 
 		clonedConversation:addOption("@conversation/victor_visalis:s_ee26e33e", "very_well") -- No thanks!
 	elseif (screenID == "youll_need_evidence") then
+		BestineElection:clearInvFull(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_MAIN_QUEST)
 		BestineElection:joinCampaign(pPlayer, BestineElection.VICTOR)
 	elseif (screenID == "init_joined_campaign") then
 		if (BestineElection:getPlayerVote(pPlayer) == BestineElection.VICTOR) then
@@ -63,18 +64,18 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		clonedConversation:addOption("@conversation/victor_visalis:s_dea56128", "very_well") -- I have to go.
 	elseif (screenID == "init_on_rival_quest") then
 		if (BestineElection:hasCandidateEvidence(pPlayer, BestineElection.VICTOR, true)) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49", "proven_your_worth") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49", "proven_your_worth") -- I have it, yes.
 		end
 
 		clonedConversation:addOption("@conversation/victor_visalis:s_da9a29e9", "stop_wasting_my_time") -- No, not yet.
 	elseif (screenID == "proven_your_worth") then
 		if (BestineElection:hasFullInventory(pPlayer)) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_641d98d5", "rival_complete_inv_full") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed", "rival_complete_inv_full") -- Yes, I am sure.
 		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_641d98d5", "rival_complete_join_campaign") -- Yes, I am sure.
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed", "rival_complete_join_campaign") -- Yes, I am sure.
 		end
 
-		clonedConversation:addOption("@conversation/victor_visalis:s_fe8dd35a", "be_sure_to_return") -- No, I changed my mind.
+		clonedConversation:addOption("@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return") -- No, I changed my mind.
 	elseif (screenID == "rival_complete_join_campaign") then
 		BestineElection:removeCandidateEvidence(pPlayer, BestineElection.SEAN)
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_RIVAL_QUEST, BestineElection.VICTOR_RIVAL_QUEST_COMPLETED)
@@ -166,12 +167,12 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 
 		if (pInventory ~= nil) then
 			local pHead = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/tusken_head.iff", true)
-			
+
 			if (pHead ~= nil) then
 				SceneObject(pHead):destroyObjectFromWorld()
 				SceneObject(pHead):destroyObjectFromDatabase()
 			end
-			
+
 			local pReward = giveItem(pInventory, "object/weapon/ranged/rifle/rifle_victor_tusken.iff", -1)
 		end
 

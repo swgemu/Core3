@@ -10,7 +10,7 @@ init_election_phase = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_aa1a9de6", -- Can you feel that? The Sand People are getting restless. I can sense it from here. Bestine will not be safe unless we recruit more Imperial Troopers to defend the city. If my... opponent wins the election, I am afraid of what may happen to the people of Bestine. But enough of this. How may I help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_edafb11b", "lacking_defense"}, -- What are your proposed changes for Bestine?
+		{"@conversation/victor_visalis:s_bae6b22d", "lacking_defense"}, -- What are your proposed changes for Bestine?
 		{"@conversation/victor_visalis:s_d6a9a15d", "makes_or_breaks"}, -- I'm here to vote for you.
 		{"@conversation/victor_visalis:s_1a50f0d3", "more_and_more_restless"}, -- Tell me more about the Tuskens.
 		{"@conversation/victor_visalis:s_87b97dc", "very_well"}, -- I need to go. I'm sorry.
@@ -356,8 +356,8 @@ proven_your_worth = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_7c4e7b68", -- Ahh, excellent. I am satisfied. You have proven your worth and want to join my campaign. Are you sure you want to join us?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign"}, -- Yes, I am sure.
-		{"@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return"}, -- I've changed my mind.
+		--{"@conversation/victor_visalis:s_798f58f7", "rival_complete_join_campaign"}, -- Yes, I am sure.
+		--{"@conversation/victor_visalis:s_5c46daeb", "be_sure_to_return"}, -- I've changed my mind.
 	}
 }
 victorVisalisConvoTemplate:addScreen(proven_your_worth);
@@ -399,8 +399,8 @@ init_joined_sean = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_26e91e91", -- I see that you have joined the campaign of my opponent. I am disappointed.
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_798f58f7", "prove_yourself"}, -- I want to join your campaign.
-		{"@conversation/victor_visalis:s_ee26e33e", "s_67dbab18"}, -- Sorry, I have to go.
+		{"@conversation/victor_visalis:s_b826b85a", "prove_yourself"}, -- I want to join your campaign.
+		{"@conversation/victor_visalis:s_67dbab18", "s_67dbab18"}, -- Sorry, I have to go.
 	}
 }
 victorVisalisConvoTemplate:addScreen(init_joined_sean);

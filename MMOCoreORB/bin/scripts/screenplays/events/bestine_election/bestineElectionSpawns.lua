@@ -20,7 +20,7 @@ electionMobiles = {
 	{ "bestine_capitol04", 2.26, 7.9, -37.38, 304, 926476, "neutral", 4, "bestineCapitol04ConvoTemplate" },
 
 	{ "victor_questn_capitol", 6.1, 0.3, -0.49, 97, 926475, "npc_imperial", 4, "victorQuestnCapitolConvoTemplate" },
-	{ "victor_questn_cantina", 3.1, -0.9, 22.6, 179, 1028651, "npc_sitting_chair", 0, "victorQuestnCantinaConvoTemplate" },
+	{ "victor_questn_cantina", 3.1, -0.9, 22.6, 89, 1028651, "npc_sitting_chair", 0, "victorQuestnCantinaConvoTemplate" },
 	{ "victor_questp_slums", -1357, 26, -3871, -108, 0, "neutral", 4, "victorQuestpSlumsConvoTemplate" },
 	{ "victor_questp_hospital", -1294, 12, -3500, 45, 0, "neutral", 4, "victorQuestpHospitalConvoTemplate" },
 	{ "keanna_likyna", -18.88, 3.22, 20.6, 214.006, 926480, "neutral", 0, "keannaLikynaConvoTemplate" },
