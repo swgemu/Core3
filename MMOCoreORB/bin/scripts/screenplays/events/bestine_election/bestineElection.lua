@@ -167,6 +167,16 @@ function BestineElection:spawnElectionMobiles()
 			end
 		end
 	end
+	
+	local electionNum = self:getElectionNumber()
+	local electionWinner = self:getElectionWinner(electionNum)
+	local curPhase = BestineElection:getCurrentPhase()
+	
+	if (curPhase == BestineElection.ELECTION_PHASE) then
+		electionWinner = BestineElection:getElectionWinner(electionNum - 1)
+	end
+	
+	self:spawnCandidateMobiles(electionWinner)
 end
 
 function BestineElection:spawnCandidateMobiles(candidate)
