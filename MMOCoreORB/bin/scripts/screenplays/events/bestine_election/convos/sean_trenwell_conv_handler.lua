@@ -71,12 +71,13 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		if (currentPhase == BestineElection.ELECTION_PHASE) then
 			if (BestineElection:getPlayerVote(pPlayer) == BestineElection.SEAN) then
 				clonedConversation:addOption("@conversation/sean_trenwell:s_811e4ed1", "greatly_appreciate_it") -- I voted for you in this election.
-			end
+			else
 
-			local electionWinner = BestineElection:getElectionWinner(electionNum - 1)
+				local electionWinner = BestineElection:getElectionWinner(electionNum - 1)
 
-			if (electionWinner == BestineElection.SEAN) then
-				clonedConversation:addOption("@conversation/sean_trenwell:s_3ab76f84", "efforts_going_well") -- I hear you're up for re-election. How's the campaign going?
+				if (electionWinner == BestineElection.SEAN) then
+					clonedConversation:addOption("@conversation/sean_trenwell:s_3ab76f84", "efforts_going_well") -- I hear you're up for re-election. How's the campaign going?
+				end
 			end
 		else
 			if (BestineElection:getPlayerVote(pPlayer, electionNum) == BestineElection.SEAN) then
