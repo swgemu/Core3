@@ -271,8 +271,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 
 	spawnMobile("tatooine", "dark_trooper",400,-1453,12,-3646.95,42.076,0)
-	spawnMobile("tatooine", "dark_trooper",400,-1133.2,12.1958,-3614.6,125.004,0)
-	spawnMobile("tatooine", "dark_trooper",400,-1130.9,12.1964,-3611.6,125.004,0)
 	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1002.9,12,-3705.4,-55,0)
 	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("tatooine", "elite_sand_trooper",400,-1284,12,-3486,180,0)
