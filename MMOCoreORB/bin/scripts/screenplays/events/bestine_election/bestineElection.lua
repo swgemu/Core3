@@ -167,15 +167,15 @@ function BestineElection:spawnElectionMobiles()
 			end
 		end
 	end
-	
+
 	local electionNum = self:getElectionNumber()
 	local electionWinner = self:getElectionWinner(electionNum)
 	local curPhase = BestineElection:getCurrentPhase()
-	
+
 	if (curPhase == BestineElection.ELECTION_PHASE) then
 		electionWinner = BestineElection:getElectionWinner(electionNum - 1)
 	end
-	
+
 	self:spawnCandidateMobiles(electionWinner)
 end
 
@@ -531,13 +531,16 @@ function BestineElection:giveCampaignReward(pPlayer, candidate)
 	local rewardChance = getRandomNumber(1, 1000)
 	local rewardTemplate
 
-	if (rewardChance <= 50) then
+	-- No evidence of these rewards being given during 14.1.
+	--[[	if (rewardChance <= 50) then
 		if (candidate == self.SEAN) then
 			rewardTemplate = "object/tangible/painting/bestine_quest_painting.iff"
 		else
 			rewardTemplate = "object/weapon/melee/sword/bestine_quest_sword.iff"
 		end
-	elseif (rewardChance <= 300) then
+	else ]]
+
+	if (rewardChance <= 300) then
 		if (candidate == self.SEAN) then
 			rewardTemplate = "object/tangible/furniture/modern/bestine_quest_rug.iff"
 		else
