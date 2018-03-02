@@ -1016,30 +1016,6 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = NULL;
 }
 
-void ChatManagerImplementation::notifySpatialChatObservers(SceneObject* target, SceneObject* source, const UnicodeString& message) {
-	if (target->getObserverCount(ObserverEventType::SPATIALCHATRECEIVED)) {
-		ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
-		chatMessage->setString(message.toString());
-		ManagedReference<SceneObject*> targetObj = target;
-		uint64 sourceOID = source->getObjectID();
-
-		Core::getTaskManager()->executeTask([=] () {
-			if (targetObj == NULL)
-				return;
-
-			Locker locker(targetObj);
-
-			SortedVector<ManagedReference<Observer*> > observers = targetObj->getObservers(ObserverEventType::SPATIALCHATRECEIVED);
-			for (int oc = 0; oc < observers.size(); oc++) {
-				Observer* observer = observers.get(oc);
-				Locker clocker(observer, targetObj);
-				if (observer->notifyObserverEvent(ObserverEventType::SPATIALCHATRECEIVED, targetObj, chatMessage, sourceOID) == 1)
-					targetObj->dropObserver(ObserverEventType::SPATIALCHATRECEIVED, observer);
-			}
-		}, "NotifySpatialChatObserversLambda");
-	}
-}
-
 void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) {
 	Zone* zone = sourceCreature->getZone();
 
@@ -1052,7 +1028,6 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	bool godMode = false;
 
 	if (sourceCreature->isPlayerCreature()) {
-
 		firstName = sourceCreature->getFirstName().toLowerCase();
 		PlayerObject* myGhost = sourceCreature->getPlayerObject();
 
@@ -1062,6 +1037,27 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 			if (spatialChatTypeSkillNeeded.contains(spatialChatType) && !myGhost->hasAbility(spatialChatTypeSkillNeeded.get(spatialChatType)) && !godMode)
 				return;
+
+			if (sourceCreature->getObserverCount(ObserverEventType::SPATIALCHATSENT)) {
+				ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
+				chatMessage->setString(message.toString());
+				ManagedReference<SceneObject*> sourceObj = sourceCreature;
+
+				Core::getTaskManager()->executeTask([=] () {
+					if (sourceObj == NULL)
+						return;
+
+					Locker locker(sourceObj);
+
+					SortedVector<ManagedReference<Observer*> > observers = sourceObj->getObservers(ObserverEventType::SPATIALCHATSENT);
+					for (int oc = 0; oc < observers.size(); oc++) {
+						Observer* observer = observers.get(oc);
+						Locker clocker(observer, sourceObj);
+						if (observer->notifyObserverEvent(ObserverEventType::SPATIALCHATSENT, sourceObj, chatMessage, 0) == 1)
+							sourceObj->dropObserver(ObserverEventType::SPATIALCHATSENT, observer);
+					}
+				}, "NotifySpatialChatObserversLambda");
+			}
 		}
 	}
 
@@ -1100,9 +1096,6 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 			if (!sourceCreature->isInRange(object, range))
 				continue;
-
-			if (!object->isPlayerCreature())
-				notifySpatialChatObservers(object, sourceCreature, message);
 
 			CreatureObject* creature = cast<CreatureObject*>(object);
 
@@ -1162,7 +1155,6 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 			}
 
 			creature->sendMessage(cmsg);
-			notifySpatialChatObservers(creature, sourceCreature, message);
 		}
 
 		if (param != NULL) {
