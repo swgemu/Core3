@@ -151,6 +151,11 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	elseif (screenID == "main_reward_give") then
 		BestineElection:giveCampaignReward(pPlayer, BestineElection.VICTOR)
 	elseif (screenID == "released_from_mission") then
+		if (pGhost ~= nil) then
+			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:tuskenWaypointID")
+			PlayerObject(pGhost):removeWaypoint(curID, true)
+		end
+
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_TUSKEN_QUEST, BestineElection.NONE)
 	elseif (screenID == "target_in_fortress" or screenID == "sand_people_fortress") then
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()

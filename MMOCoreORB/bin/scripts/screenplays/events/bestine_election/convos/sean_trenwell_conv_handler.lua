@@ -163,25 +163,37 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.SEAN_HISTORY_QUEST_ACCEPTED)
 
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+		local playerID = SceneObject(pPlayer):getObjectID()
 
 		if (pGhost ~= nil) then
+			local curID = readData(playerID .. ":bestineElection:historyWaypointID")
+			PlayerObject(pGhost):removeWaypoint(curID, true)
+
 			local historyWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Historical Site", "", -758, -3907, WAYPOINTBLUE, true, true, 0,0)
-			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:historyWaypointID", historyWaypointID)
+			writeData(playerID .. ":bestineElection:historyWaypointID", historyWaypointID)
 		end
 	elseif (screenID == "seek_out_contact") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.SEAN, BestineElection.SEAN_HISTORY_QUEST, BestineElection.SEAN_HISTORY_QUEST_SENT_TO_CONTACT)
 
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+		local playerID = SceneObject(pPlayer):getObjectID()
 
 		if (pGhost ~= nil) then
+			local curID = readData(playerID .. ":bestineElection:contactWaypointID")
+			PlayerObject(pGhost):removeWaypoint(curID, true)
+
 			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, -3765, WAYPOINTBLUE, true, true, 0,0)
-			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID", contactWaypointID)
+			writeData(playerID .. ":bestineElection:contactWaypointID", contactWaypointID)
 		end
 	elseif (screenID == "disappointed_but_understand") then
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+		local playerID = SceneObject(pPlayer):getObjectID()
 
 		if (pGhost ~= nil) then
-			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:contactWaypointID")
+			local curID = readData(playerID .. ":bestineElection:contactWaypointID")
+			PlayerObject(pGhost):removeWaypoint(curID, true)
+
+			curID = readData(playerID .. ":bestineElection:historyWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)
 		end
 
