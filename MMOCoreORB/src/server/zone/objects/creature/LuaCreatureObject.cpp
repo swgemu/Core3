@@ -134,8 +134,9 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isCovert", &LuaTangibleObject::isCovert },
 		{ "setFactionStatus", &LuaTangibleObject::setFactionStatus },
 		{ "getDamageDealerList", &LuaCreatureObject::getDamageDealerList },
-		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList},
-		{ "getSkillMod", &LuaCreatureObject::getSkillMod},
+		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList },
+		{ "getSkillMod", &LuaCreatureObject::getSkillMod },
+		{ "getGender", &LuaCreatureObject::getGender },
 		{ 0, 0 }
 };
 
@@ -1043,6 +1044,13 @@ int LuaCreatureObject::getSkillMod(lua_State* L) {
 	int result = realObject->getSkillMod(skillMod);
 
 	lua_pushnumber(L, result);
+
+	return 1;
+}
+
+int LuaCreatureObject::getGender(lua_State* L) {
+
+	lua_pushnumber(L, realObject->getGender());
 
 	return 1;
 }
