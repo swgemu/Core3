@@ -144,6 +144,8 @@ includeFile("conversations/dungeon/warren/mirla_conv.lua")
 includeFile("conversations/dungeon/warren/dirk_maggin_conv.lua")
 includeFile("conversations/dungeon/warren/captain_heff_conv.lua")
 includeFile("conversations/dungeon/warren/manx_try_conv.lua")
+includeFile("conversations/dungeon/warren/phy_hudgen_conv.lua")
+includeFile("conversations/dungeon/warren/warren_worker_conv.lua")
 
 -- Geonosian Lab
 includeFile("conversations/dungeon/geonosian_lab/biogenic_assistant_convo.lua")

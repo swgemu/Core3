@@ -51,7 +51,192 @@ function Warren:start()
 		self:setupEvidenceContainers()
 		self:setupQuestContainers()
 		self:setupReactorCore()
+		self:spawnCellGuard()
+		self:spawnDoctorKnag()
+		self:spawnKitchenOfficer()
 	end
+end
+
+function Warren:spawnKitchenOfficer()
+	local mobileID = readData("warren:kitchenOfficerID")
+
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile ~= nil and not CreatureObject(pMobile):isDead()) then
+		createEvent(1800 * 1000, "Warren", "spawnKitchenOfficer", pMobile, "")
+		return
+	end
+
+	pMobile = spawnMobile("dantooine", "warren_imperial_officer", 0, -36.97, -52, -94.43, 90, 8575712)
+
+	if (pMobile == nil) then
+		return
+	end
+
+	createObserver(OBJECTDESTRUCTION, "Warren", "onKitchenOfficerKilled", pMobile)
+
+	writeData("warren:kitchenOfficerID", SceneObject(pMobile):getObjectID())
+
+	local pActiveArea = spawnActiveArea("dantooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), 15, 8575712)
+
+	if pActiveArea ~= nil then
+		createObserver(ENTEREDAREA, "Warren", "notifyEnteredKitchenOfficerArea", pActiveArea)
+	end
+end
+
+function Warren:notifyEnteredKitchenOfficerArea(pActiveArea, pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local mobileID = readData("warren:kitchenOfficerID")
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile == nil) then
+		return 1
+	end
+
+	if (CreatureObject(pPlayer):getGender() == 0) then
+		spatialChat(pMobile, "@theme_park/warren/warren:trooper_greeting_m") -- There's another one of Teraud's people... kill him!
+	else
+		spatialChat(pMobile, "@theme_park/warren/warren:trooper_greeting_f") -- There's another one of Teraud's people... kill her!
+	end
+
+	CreatureObject(pMobile):engageCombat(pPlayer)
+
+	return 1
+end
+
+function Warren:onKitchenOfficerKilled(pMobile, pPlayer)
+	createEvent(1800 * 1000, "Warren", "spawnKitchenOfficer", pMobile, "")
+
+	return 1
+end
+
+function Warren:spawnDoctorKnag()
+	local mobileID = readData("warren:doctorKnagID")
+
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile ~= nil and not CreatureObject(pMobile):isDead()) then
+		createEvent(1800 * 1000, "Warren", "spawnDoctorKnag", pMobile, "")
+		return
+	end
+
+	pMobile = spawnMobile("dantooine", "doctor_knag", 0, 77.47, -68, 38.95, 90, 8575737)
+
+	if (pMobile == nil) then
+		return
+	end
+
+	createObserver(OBJECTDESTRUCTION, "Warren", "onDoctorKnagKilled", pMobile)
+
+	writeData("warren:doctorKnagID", SceneObject(pMobile):getObjectID())
+
+	local pActiveArea = spawnActiveArea("dantooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), 10, 8575737)
+
+	if pActiveArea ~= nil then
+		createObserver(ENTEREDAREA, "Warren", "notifyEnteredDoctorKnagArea", pActiveArea)
+	end
+end
+
+function Warren:notifyEnteredDoctorKnagArea(pActiveArea, pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local mobileID = readData("warren:doctorKnagID")
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile == nil) then
+		return 1
+	end
+
+	spatialChat(pMobile, "@theme_park/warren/warren:knag_greeting") -- My children... they'll take over the facility, and kill those Stormtroopers... then Teraud will have to admit that I am smarter than he is... that I am the one that will one day rule!
+	CreatureObject(pMobile):engageCombat(pPlayer)
+
+	return 1
+end
+
+function Warren:onDoctorKnagKilled(pMobile, pPlayer)
+	createEvent(1800 * 1000, "Warren", "spawnDoctorKnag", pMobile, "")
+
+	return 1
+end
+
+function Warren:onCellGuardKilled(pMobile, pPlayer)
+	createEvent(1800 * 1000, "Warren", "spawnCellGuard", pMobile, "")
+
+	return 1
+end
+
+function Warren:spawnCellGuard()
+	local mobileID = readData("warren:cellGuardID")
+
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile ~= nil and not CreatureObject(pMobile):isDead()) then
+		createEvent(1800 * 1000, "Warren", "spawnCellGuard", pMobile, "")
+		return
+	end
+
+	pMobile = spawnMobile("dantooine", "jerrd_sonclim", 0, 27.35, -50, -149.01, -140, 8575717)
+
+	if (pMobile == nil) then
+		return
+	end
+
+	SceneObject(pMobile):setCustomObjectName("theme_park/warren/warren_system_messages", "name_jerrd")
+
+	createObserver(OBJECTDESTRUCTION, "Warren", "onCellGuardKilled", pMobile)
+
+	writeData("warren:cellGuardID", SceneObject(pMobile):getObjectID())
+
+	local pActiveArea = spawnActiveArea("dantooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), 15, 8575717)
+
+	if pActiveArea ~= nil then
+		writeData(SceneObject(pActiveArea):getObjectID() .. ":areaType", 1)
+		createObserver(ENTEREDAREA, "Warren", "notifyEnteredCellGuardArea", pActiveArea)
+	end
+
+	pActiveArea = spawnActiveArea("dantooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), 8, 8575717)
+
+	if pActiveArea ~= nil then
+		writeData(SceneObject(pActiveArea):getObjectID() .. ":areaType", 2)
+		createObserver(ENTEREDAREA, "Warren", "notifyEnteredCellGuardArea", pActiveArea)
+	end
+end
+
+function Warren:onCellGuardKilled(pMobile, pPlayer)
+	createEvent(1800 * 1000, "Warren", "spawnCellGuard", pMobile, "")
+
+	return 1
+end
+
+function Warren:notifyEnteredCellGuardArea(pActiveArea, pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local mobileID = readData("warren:cellGuardID")
+	local pMobile = getSceneObject(mobileID)
+
+	if (pMobile == nil) then
+		return 1
+	end
+
+	local areaID = SceneObject(pActiveArea):getObjectID()
+	local areaType = readData(areaID .. ":areaType")
+
+	if (areaType == 1) then
+		spatialChat(pMobile, "@theme_park/warren/warren:guard_warning") -- I'm guarding this cell so you better not come any closer. Just head back the way you came and I won't have to kill you. Go on! You can't open this cell without the password anyway, and I'm sure not going to give it to you. Now get out of here.
+	else
+		CreatureObject(pMobile):engageCombat(pPlayer)
+	end
+
+	deleteData(areaID .. ":areaType")
+
+	return 1
 end
 
 function Warren:notifyExitedWarren(pBuilding, pPlayer)
@@ -725,9 +910,13 @@ function Warren:spawnMobiles()
 	spawnMobile("dantooine", "oevitt_piboi", 1, -558, 0, -3736, 0, 0)
 	spawnMobile("dantooine", "mirla", 1, -58.56, -76, -35.24, 26, 8575725)
 	spawnMobile("dantooine", "manx_try", 1, 29.68, -54, -116.8, -62, 8575714)
-	spawnMobile("dantooine", "dirk_maggin", 1, -57.54, -28, -91.04, -140, 8575700)
-	--spawnMobile("dantooine", "phy_hudgen", 1, -7.47, -20, -61.61, -140, 8575700) smallroom9
-	--spawnMobile("dantooine", "jerrd_sonclim", 300, 29.35, -50, -149.01, -140, 8575700) smallroom46
+	local pMobile = spawnMobile("dantooine", "dirk_maggin", 1, -57.54, -28, -91.04, -140, 8575700)
+
+	if (pMobile ~= nil) then
+		CreatureObject(pMobile):setMoodString("scared")
+	end
+
+	spawnMobile("dantooine", "phy_hudgen", 1, -7.47, -20, -61.61, -140, 8575680)
 	spawnMobile("naboo", "captain_heff", 1, 7.6, 12, 84.2, -180, 1688852)
 
 	--First Room
@@ -809,7 +998,6 @@ function Warren:spawnMobiles()
 
 	--Evidence Room 1
 	spawnMobile("dantooine", "teraud_loyalist_cyborg", 300, 75.6, -68, 19.1, -2, 8575736)
-	spawnMobile("dantooine", "doctor_knag", 300, 95.7, -68, 38.8, 90, 8575737) -- TODO
 
 	--Evidence Room 2
 	spawnMobile("dantooine", "warren_imperial_officer", 300, 6.3, -60, 36.6, 58, 8575731)
