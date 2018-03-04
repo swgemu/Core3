@@ -45,8 +45,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL && !sceneObject->isPlayerCreature()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
-			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
-
+			if (buio != NULL && (buio->getOwnerObjectID() != objPlayerParent->getObjectID() || buio->isCivicStructure())) {
 				errorDescription = "@container_error_message:container28";
 				return TransferErrorCode::CANTADD;
 			}
