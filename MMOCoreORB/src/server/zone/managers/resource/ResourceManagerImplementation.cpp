@@ -273,16 +273,16 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 				if (!resourceSpawn->inShift())
 					continue;
 
-				if (type == 9){
+				if (type == SurveyTool::FUSION){
 					if (resourceSpawn->isType("radioactive"))
 						list.add(resourceSpawn);
-				}
-
-				else if (resourceSpawn->getSurveyToolType() == type) {
+				} else if (type == SurveyTool::INORGANIC) {
+					if (resourceSpawn->isType("inorganic"))
+						list.add(resourceSpawn);
+				} else if (resourceSpawn->getSurveyToolType() == type) {
 					list.add(resourceSpawn);
 				}
 			}
-
 		}
 
 	} catch (Exception& e) {
