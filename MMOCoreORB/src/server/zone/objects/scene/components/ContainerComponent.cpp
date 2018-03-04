@@ -10,6 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	if (sceneObject == object) {
@@ -45,10 +46,18 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL && !sceneObject->isPlayerCreature()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
-			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
+			if (buio != NULL) {
+				if (buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
+					errorDescription = "@container_error_message:container28";
+					return TransferErrorCode::CANTADD;
+				} else {
+					ManagedReference<CityRegion*> cityRegion = buio->getCityRegion().get();
 
-				errorDescription = "@container_error_message:container28";
-				return TransferErrorCode::CANTADD;
+					if (cityRegion != NULL && buio == cityRegion->getCityHall()) {
+						errorDescription = "@container_error_message:container28";
+						return TransferErrorCode::CANTADD;
+					}
+				}
 			}
 		}
 
