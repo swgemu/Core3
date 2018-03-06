@@ -303,7 +303,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* 
 			app->intersects(rayModelSpace, 16384 * 2, results);
 
 			if (results.size()) { // results are ordered based on intersection distance from min to max
-				float floorHeight = 16384.f - results.getUnsafe(0).getIntersectionDistance();
+				float floorHeight = ray.getOrigin().getY() - results.getUnsafe(0).getIntersectionDistance();
 
 				if (floorHeight > height)
 					height = floorHeight;
