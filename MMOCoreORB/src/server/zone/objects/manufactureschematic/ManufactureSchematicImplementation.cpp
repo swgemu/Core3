@@ -397,7 +397,7 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 }
 
 int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
-	if (ingredientSlots.size() >= slot) {
+	if (slot >= ingredientSlots.size()) {
 		return IngredientSlot::INVALID;
 	}
 

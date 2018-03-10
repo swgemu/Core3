@@ -225,10 +225,13 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 
 	-- Door Access Terminal Outside
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -18.016,-12,-8.55806, 5996315, 1, 0, 0, 0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+	end
 
 	-- Outside locked door message
 	local pActiveArea = spawnActiveArea("endor", "object/active_area.iff", -4680.6, 0.4, 4324.5, 5, 5996315)
@@ -238,30 +241,42 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	writeData(5996314 .. ":dwb:access2", spawnedSceneObject:getObjectID())
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		writeData(5996314 .. ":dwb:access2", spawnedSceneObject:getObjectID())
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
+	end
 
 	-- Door Access Terminal B
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -8.3714,-32,-95.3985,5996331,-0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	writeData(5996314 .. ":dwb:access3", spawnedSceneObject:getObjectID())
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		writeData(5996314 .. ":dwb:access3", spawnedSceneObject:getObjectID())
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
+	end
 
 	-- Door Access Terminal Mines
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", 26.1493,-64,-95.4288,5996347,0,0,1,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	writeData(5996314 .. ":dwb:access4", spawnedSceneObject:getObjectID())
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		writeData(5996314 .. ":dwb:access4", spawnedSceneObject:getObjectID())
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
+	end
 
 	-- Voice Recognition Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",74.7941,-54,-143.444,5996348,-0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Voice Control Terminal")
-	createObserver(SPATIALCHATRECEIVED, "DeathWatchBunkerScreenPlay", "voiceTerminalSpatialReceived", spawnedPointer)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Voice Control Terminal")
+		writeData("dwb:voiceControlTerminal", spawnedSceneObject:getObjectID())
+	end
 
 	-- Voice Terminal Instruction message
 	local pActiveArea = spawnActiveArea("endor", "object/active_area.iff", -4588, -41.6, 4182.3, 10, 5996348)
@@ -272,141 +287,199 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	--Blastromech
 	local spawn = deathWatchSpecialSpawns["bombdroid"]
 	local spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	CreatureObject(spawnedPointer):setPvpStatusBitmask(0)
-	CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
-	writeData("dwb:bombDroid", SceneObject(spawnedPointer):getObjectID())
-	createEvent(100, "DeathWatchBunkerScreenPlay", "setBombDroidTemplate", spawnedPointer, "")
+
+	if (spawnedPointer ~= nil) then
+		CreatureObject(spawnedPointer):setPvpStatusBitmask(0)
+		CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
+		writeData("dwb:bombDroid", SceneObject(spawnedPointer):getObjectID())
+		createEvent(100, "DeathWatchBunkerScreenPlay", "setBombDroidTemplate", spawnedPointer, "")
+	end
 
 	-- Bomb Droid Debris
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-63.7,-116.21,5996348,0.925444,0,0.378885,0)
-	writeData("dwb:bombDebris", SceneObject(spawnedPointer):getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		writeData("dwb:bombDebris", SceneObject(spawnedPointer):getObjectID())
+	end
+
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 113.134,-63.8,-149.44,5996348,0.376442,0,0.92644,0)
-	writeData("dwb:bombDebris2", SceneObject(spawnedPointer):getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		writeData("dwb:bombDebris2", SceneObject(spawnedPointer):getObjectID())
+	end
 
 	-- Armorsmith Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -232.11,-60,-219.996,5996373,0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 5)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 5)
+	end
 
 	-- Droid Engineer Crafting Room Entry Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -230.09,-60,-124.003,5996367,0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 6)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 6)
+	end
 
 	-- Master Armorsmith Crafting Droid
 	local spawn = deathWatchSpecialSpawns["armorsmithdroid"]
 
 	spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Crafting Droid")
-	spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
+	end
 
 	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
-	writeData("dwb:craftingTerminal1:terminalID", spawnedSceneObject:getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
+		writeData("dwb:craftingTerminal1:terminalID", spawnedSceneObject:getObjectID())
+	end
 
 	-- Master Droid Engineer Crafting Droid
 	spawn = deathWatchSpecialSpawns["droidengineerdroid"]
 	spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Crafting Droid")
-	spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+	end
 
 	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
-	writeData("dwb:craftingTerminal2:terminalID", spawnedSceneObject:getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+		writeData("dwb:craftingTerminal2:terminalID", spawnedSceneObject:getObjectID())
+	end
 
 	-- Master Tailor Crafting Droid
 	spawn = deathWatchSpecialSpawns["tailordroid"]
 	spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Crafting Droid")
-	spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("deathWatchCraftingDroid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+	end
 
 	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
-	writeData("dwb:craftingTerminal3:terminalID", spawnedSceneObject:getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+		writeData("dwb:craftingTerminal3:terminalID", spawnedSceneObject:getObjectID())
+	end
 
 	-- Jetpack Crafting Droid
 	spawn = deathWatchSpecialSpawns["jetpackdroid"]
 	spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Jetpack Crafting Droid")
-	spawnedSceneObject:setContainerComponent("deathWatchJetpackCraftingDroid")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Jetpack Crafting Droid")
+		spawnedSceneObject:setContainerComponent("deathWatchJetpackCraftingDroid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+	end
 
 	-- Master Artisan Crafting Terminal (Jetpack)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-265.425,-50.0002,-84.957,5996370,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
-	writeData("dwb:craftingTerminal4:terminalID", spawnedSceneObject:getObjectID())
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("deathWatchMandalorianCraftingTerminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+		writeData("dwb:craftingTerminal4:terminalID", spawnedSceneObject:getObjectID())
+	end
 
 	-- Tailor Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -151.045,-60,-98.8703,5996365,0,0,1,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 7)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 7)
+	end
 
 	-- Spawn Haldo
 	local halnum = getRandomNumber(1,3)
 	spawn = deathWatchSpecialSpawns["haldo" .. halnum]
 	spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "haldoDamage", spawnedPointer)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "haldoDamage", spawnedPointer)
+	end
 
 	-- Water Pressure Valve Control A
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",42.2316,-32,-72.5555,5996340,-0.707107,0,-0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	writeData("dwb:valve1", 1)
-	self:spawnValveEffect(1, 1)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+		writeData("dwb:valve1", 1)
+		self:spawnValveEffect(1, 1)
+	end
 
 	-- Water Pressure Valve Control B
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",56.0941,-32,-61.251,5996340,0,0,-1,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	writeData("dwb:valve2", 1)
-	self:spawnValveEffect(2, 1)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
+		writeData("dwb:valve2", 1)
+		self:spawnValveEffect(2, 1)
+	end
 
 	-- Water Pressure Valve Control C
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",73.7982,-32,-76.4291,5996340,0.707107,0,-0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	writeData("dwb:valve3", 0)
-	self:spawnValveEffect(3, 0)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
+		writeData("dwb:valve3", 0)
+		self:spawnValveEffect(3, 0)
+	end
 
 	-- Water Pressure Valve Control D
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
-	writeData("dwb:valve4", 1)
-	self:spawnValveEffect(4, 1)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
+		writeData("dwb:valve4", 1)
+		self:spawnValveEffect(4, 1)
+	end
 
 	-- Rebreather Filter Dispenser
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/filter_dispenser.iff",-12.8382,-52,-147.565,5996378,0,0,1,0)
@@ -416,26 +489,35 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 
 	-- Loot Boxes
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/general/tech_chest.iff", -3.10801,-12,36.7064,5996318,0,0,-1,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	self:setLootBoxPermissions(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Chest")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 1)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		self:setLootBoxPermissions(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Chest")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 1)
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
+		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+	end
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/coal_bin_container.iff",6.01353,-32,-102.05,5996337,0.707107,0,0.707107,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	self:setLootBoxPermissions(spawnedPointer)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 2)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		self:setLootBoxPermissions(spawnedPointer)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 2)
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
+		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+	end
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", -2.78947,-32,-27.1899,5996335,0,0,1,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	self:setLootBoxPermissions(spawnedPointer)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		self:setLootBoxPermissions(spawnedPointer)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
+		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+	end
 end
 
 function DeathWatchBunkerScreenPlay:setBombDroidTemplate(pDroid)
@@ -454,6 +536,8 @@ function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, pCreature)
 	if (not SceneObject(pCreature):isPlayerCreature()) then
 		return 0
 	end
+	
+	createObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pPlayer)
 
 	self:lockAll(pCreature)
 
@@ -468,6 +552,8 @@ function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, pCreature, long)
 	if long == self.buildingIds.outside or long == 0 then
 		self:lockAll(pCreature)
 	end
+	
+	dropObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pPlayer)
 
 	return 0
 end
@@ -689,14 +775,76 @@ function DeathWatchBunkerScreenPlay:teleportPlayer(pCreature)
 	self:lockAll(pCreature)
 end
 
-function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pChatMessage, playerID)
-	local pPlayer = getSceneObject(playerID)
+function DeathWatchBunkerScreenPlay:doBombDroidAction(pBombDroid)
+	local spatialCommand = readStringData("dwb:bombDroidHandlerLastSpatialCommand")
 
+	if (spatialCommand == "reset" and pBombDroid == nil) then
+		self:respawnBombDroid()
+		return
+	end
+
+	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
+		return
+	end
+
+	if (spatialCommand == "detonate") then
+		CreatureObject(pBombDroid):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		CreatureObject(pBombDroid):inflictDamage(pBombDroid, 0, 1000000, 1)
+		writeData("dwb:lastDroidDetonate", os.time())
+		return
+	end
+
+	local moveDistance = readData("dwb:bombDroidHandlerLastMoveDistance")
+
+	local droidLoc = { x = SceneObject(pBombDroid):getPositionX(), z = SceneObject(pBombDroid):getPositionZ(), y = SceneObject(pBombDroid):getPositionY(), cell = SceneObject(pBombDroid):getParentID() }
+
+	if (spatialCommand == "forward") then
+		droidLoc.x = droidLoc.x + moveDistance
+		if (droidLoc.x > 115) then
+			droidLoc.x = 115
+		end
+	elseif (spatialCommand == "backward") then
+		droidLoc.x = droidLoc.x - moveDistance
+		if (droidLoc.x < 76) then
+			droidLoc.x = 76
+		end
+	elseif (spatialCommand == "left") then
+		droidLoc.y = droidLoc.y + moveDistance
+		if (droidLoc.y > -114) then
+			droidLoc.y = -114
+		end
+	elseif (spatialCommand == "right") then
+		droidLoc.y = droidLoc.y - moveDistance
+		if (droidLoc.y < -152) then
+			droidLoc.y = -152
+		end
+	end
+
+	AiAgent(pBombDroid):stopWaiting()
+	AiAgent(pBombDroid):setWait(0)
+	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
+	AiAgent(pBombDroid):executeBehavior()
+end
+
+function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
+	if (not SceneObject(pPlayer):isPlayerCreature()) then
+		return 0
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:rc_mouse_instructions")
+
+	return 0
+end
+
+function DeathWatchBunkerScreenPlay:notifyTerminalChatSent(pPlayer, pChatMessage)
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
 
-	if (not SceneObject(pTerminal):isInRangeWithObject(pPlayer, 10)) then
+	local terminalID = readData("dwb:voiceControlTerminal")
+	local pTerminal = getSceneObject(terminalID)
+
+	if (pTerminal == nil or not SceneObject(pTerminal):isInRangeWithObject(pPlayer, 10)) then
 		return 0
 	elseif (not SceneObject(pTerminal):isInRangeWithObject(pPlayer, 3)) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:too_far_from_terminal")
@@ -755,65 +903,6 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	return 0
 end
 
-function DeathWatchBunkerScreenPlay:doBombDroidAction(pBombDroid)
-	local spatialCommand = readStringData("dwb:bombDroidHandlerLastSpatialCommand")
-
-	if (spatialCommand == "reset" and pBombDroid == nil) then
-		self:respawnBombDroid()
-		return
-	end
-
-	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
-		return
-	end
-
-	if (spatialCommand == "detonate") then
-		CreatureObject(pBombDroid):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		CreatureObject(pBombDroid):inflictDamage(pBombDroid, 0, 1000000, 1)
-		writeData("dwb:lastDroidDetonate", os.time())
-		return
-	end
-
-	local moveDistance = readData("dwb:bombDroidHandlerLastMoveDistance")
-
-	local droidLoc = { x = SceneObject(pBombDroid):getPositionX(), z = SceneObject(pBombDroid):getPositionZ(), y = SceneObject(pBombDroid):getPositionY(), cell = SceneObject(pBombDroid):getParentID() }
-
-	if (spatialCommand == "forward") then
-		droidLoc.x = droidLoc.x + moveDistance
-		if (droidLoc.x > 115) then
-			droidLoc.x = 115
-		end
-	elseif (spatialCommand == "backward") then
-		droidLoc.x = droidLoc.x - moveDistance
-		if (droidLoc.x < 76) then
-			droidLoc.x = 76
-		end
-	elseif (spatialCommand == "left") then
-		droidLoc.y = droidLoc.y + moveDistance
-		if (droidLoc.y > -114) then
-			droidLoc.y = -114
-		end
-	elseif (spatialCommand == "right") then
-		droidLoc.y = droidLoc.y - moveDistance
-		if (droidLoc.y < -152) then
-			droidLoc.y = -152
-		end
-	end
-
-	AiAgent(pBombDroid):stopWaiting()
-	AiAgent(pBombDroid):setWait(0)
-	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
-	AiAgent(pBombDroid):executeBehavior()
-end
-
-function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
-	if (not SceneObject(pPlayer):isPlayerCreature()) then
-		return 0
-	end
-
-	CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:rc_mouse_instructions")
-	return 0
-end
 
 function DeathWatchBunkerScreenPlay:notifyEnteredOutsideLockedDoorArea(pArea, pPlayer)
 	if (not SceneObject(pPlayer):isPlayerCreature()) then

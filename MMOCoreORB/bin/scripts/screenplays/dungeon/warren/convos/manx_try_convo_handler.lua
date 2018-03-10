@@ -5,7 +5,7 @@ ManxTryConversationHandler = conv_handler:new {}
 function ManxTryConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (readData("warren:reactor:active") == 0) then
+	if (readData("warren:reactorOverride") == 1) then
 		return convoTemplate:getScreen("researcher_2")
 	end
 

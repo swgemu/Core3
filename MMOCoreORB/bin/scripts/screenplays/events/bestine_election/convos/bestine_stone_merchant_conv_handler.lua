@@ -41,7 +41,7 @@ function bestineStoneMerchantConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_b6e7bea1", "take_off_your_hands") -- Yes, I do. I have a carved stone.
 		end
 
-		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/carved_stone.iff", true)) then
+		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/smooth_stone.iff", true)) then
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_af25c425", "take_off_your_hands") -- Yes, I do. I have a smooth stone.
 		end
 
@@ -51,7 +51,7 @@ function bestineStoneMerchantConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_b6f71f8a", "take_off_your_hands") -- I have a carved stone.
 		end
 
-		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/carved_stone.iff", true)) then
+		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/smooth_stone.iff", true)) then
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_af35650e", "take_off_your_hands") -- I have a smooth stone.
 		end
 	elseif (screenID == "take_off_your_hands") then
@@ -59,7 +59,7 @@ function bestineStoneMerchantConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_211ab5b4", "carved_guard_it") -- I'll give you the carved stone.
 		end
 
-		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/carved_stone.iff", true)) then
+		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/smooth_stone.iff", true)) then
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_38d8cf30", "smooth_guard_it") -- I'll give you the smooth stone.
 		end
 
