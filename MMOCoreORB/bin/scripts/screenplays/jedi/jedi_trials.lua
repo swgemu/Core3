@@ -69,11 +69,6 @@ function JediTrials:onPlayerLoggedIn(pPlayer)
 		writeScreenPlayData(pPlayer, "KnightTrials", "completedTrials", 1)
 	end
 
-	if (self:isOnPadawanTrials(pPlayer) or self:isOnKnightTrials(pPlayer)) then
-		dropObserver(SKILLREMOVED, "JediTrials", "droppedSkillDuringTrials", pPlayer)
-		createObserver(SKILLREMOVED, "JediTrials", "droppedSkillDuringTrials", pPlayer)
-	end
-
 	if (self:isOnPadawanTrials(pPlayer)) then
 		PadawanTrials:onPlayerLoggedIn(pPlayer)
 	end
@@ -93,7 +88,7 @@ function JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 	local droppedSkill = LuaSkill(pSkill)
 	local skillName = droppedSkill:getName()
 
-	if (self:isOnPadawanTrials(pPlayer) and string.find(skillName, "force_sensitive_") and not self:isEligibleForPadawanTrials(pPlayer)) then
+	if (self:isOnPadawanTrials(pPlayer) and not self:isEligibleForPadawanTrials(pPlayer)) then
 		local sui = SuiMessageBox.new("JediTrials", "emptyCallback")
 		sui.setTitle("@jedi_trials:padawan_trials_title")
 		sui.setPrompt("@jedi_trials:padawan_trials_no_longer_eligible")
@@ -173,7 +168,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 		jediState = 4
 		setFactionVal = FACTIONREBEL
 	elseif (councilType == self.COUNCIL_DARK) then
-		knightRobe = 'object/tangible/wearables/robe/robe_jedi_dark_s01.iff'
+		knightRobe = "object/tangible/wearables/robe/robe_jedi_dark_s01.iff"
 		unlockMusic = "sound/music_become_dark_jedi.snd"
 		unlockString = "@jedi_trials:knight_trials_completed_dark"
 		enclaveLoc = { 5079, 305, "yavin4" }

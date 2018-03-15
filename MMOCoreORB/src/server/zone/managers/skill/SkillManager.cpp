@@ -534,6 +534,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	creature->sendMessage(msg4);
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
+	JediManager::instance()->onSkillRevoked(creature, skill);
 
 	return true;
 }
@@ -579,6 +580,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 				//Remove draft schematic groups
 				auto schematicsGranted = skill->getSchematicsGranted();
 				SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+				JediManager::instance()->onSkillRevoked(creature, skill);
 			}
 		}
 	}

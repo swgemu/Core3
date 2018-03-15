@@ -1297,7 +1297,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		FrsManager* frsManager = zoneServer->getFrsManager();
 
 		if (frsManager != nullptr) {
-			frsManager->deductDebtExperience(playerCreature);
+			frsManager->playerLoggedIn(playerCreature);
 		}
 	}
 

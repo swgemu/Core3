@@ -74,6 +74,7 @@
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceDecorationComponent.h"
+#include "server/zone/objects/tangible/terminal/components/EnclaveTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
@@ -294,6 +295,8 @@ ComponentManager::ComponentManager() {
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 	components.put("PlaceDecorationComponent", new PlaceDecorationComponent());
 	components.put("CityDecorationMenuComponent", new CityDecorationMenuComponent());
+
+	components.put("EnclaveTerminalMenuComponent", new EnclaveTerminalMenuComponent());
 	components.put("EnclaveContainerComponent", new EnclaveContainerComponent());
 
 	// SE Goggles.
