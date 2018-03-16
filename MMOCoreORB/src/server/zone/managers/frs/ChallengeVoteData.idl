@@ -1,0 +1,110 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedObject;
+import system.util.Vector;
+import system.lang.Time;
+
+class ChallengeVoteData extends ManagedObject {
+	public static final short VOTING_OPEN = 1;
+	public static final short VOTING_CLOSED = 2;
+
+	@dereferenced
+	protected Time challengeVoteStart;
+	
+	unsigned long playerID;
+	int playerRank;
+	int status;
+	
+	@dereferenced
+	protected Vector<unsigned long> yesVotes;
+	
+	@dereferenced
+	protected Vector<unsigned long> noVotes;
+	
+	@dereferenced
+	protected Vector<unsigned long> missedVotes;
+
+	public ChallengeVoteData(unsigned long player, int stat, int rank) {
+		playerID = player;
+		status = stat;
+		playerRank = rank;
+		
+		challengeVoteStart.updateToCurrentTime();
+	}
+	
+	@preLocked
+	public void addYesVote(unsigned long playerID) {
+		yesVotes.add(playerID);
+	}
+	
+	@preLocked
+	public void addNoVote(unsigned long playerID) {
+		noVotes.add(playerID);
+	}
+	
+	@preLocked
+	public void addToMissedVotes(unsigned long playerID) {
+		missedVotes.add(playerID);
+	}
+	
+	@local
+	@preLocked
+	public Vector<unsigned long> getMissedVotes() {
+		return missedVotes;
+	}
+	
+	@preLocked
+	public void clearMissedVotes() {
+		missedVotes.removeAll();
+	}
+	
+	@dirty
+	@preLocked
+	public int getTotalYesVotes() {
+		return yesVotes.size();
+	}
+	
+	@dirty
+	@preLocked
+	public int getTotalNoVotes() {
+		return noVotes.size();
+	}
+	
+	@dirty
+	@preLocked
+	public boolean hasVoted(unsigned long playerID) {
+		return yesVotes.contains(playerID) || noVotes.contains(playerID);
+	}
+
+	@preLocked
+	public void updateChallengeVoteStart() {
+		challengeVoteStart.updateToCurrentTime();
+	}
+	
+	@preLocked
+	public void setStatus(int newStatus) {
+		status = newStatus;
+	}
+	
+	@read
+	@preLocked
+	public int getStatus() {
+		return status;
+	}
+	
+	@read
+	@preLocked
+	public int getPlayerRank() {
+		return playerRank;
+	}
+	
+	@local
+	@preLocked
+	public Time getChallengeVoteStart() {
+		return challengeVoteStart;
+	}
+}
