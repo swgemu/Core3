@@ -329,7 +329,7 @@ function Warren:notifyPlayerChangedCell(pPlayer)
 		local pCell = Warren:getCell("smallroom47")
 
 		if (pCell ~= nil) then
-			if (readData("warren:inquisitorUnlocked") == 1) then
+			if (readData("warren:inquisitorRoomOpened") == 1) then
 				Warren:unlockRoom(pCell)
 			else
 				Warren:lockRoom(pCell)
