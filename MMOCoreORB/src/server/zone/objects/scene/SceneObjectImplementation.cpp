@@ -126,7 +126,7 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	childObjects.setNoDuplicateInsertPlan();
 
-	collidable = false;
+	collidableObject = false;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -156,8 +156,8 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 
 	if (!isCreatureObject() && !isLairObject() && gameObjectType != SceneObjectType::FURNITURE) {
-		if (templateData->getCollisionMaterialFlags() && templateData->getCollisionMaterialBlockFlags() && !templateData->isNavUpdatesEnabled()) {
-			collidable = true;
+		if (templateData->getCollisionMaterialFlags() && templateData->getCollisionMaterialBlockFlags() && templateData->isNavUpdatesEnabled()) {
+			collidableObject = true;
 		}
 	}
 }
