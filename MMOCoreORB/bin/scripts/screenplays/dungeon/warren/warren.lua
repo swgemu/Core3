@@ -54,6 +54,31 @@ function Warren:start()
 		self:spawnCellGuard()
 		self:spawnDoctorKnag()
 		self:spawnKitchenOfficer()
+
+		self:lockAllRooms()
+	end
+end
+
+function Warren:lockAllRooms()
+	-- Command center
+	local pCell = self:getCell("plusroom84")
+
+	if (pCell ~= nil) then
+		self:lockRoom(pCell)
+	end
+
+	-- Inquisitor room
+	local pCell = self:getCell("smallroom47")
+
+	if (pCell ~= nil) then
+		self:lockRoom(pCell)
+	end
+
+	-- Reactor core
+	local pCell = self:getCell("smallroom44")
+
+	if (pCell ~= nil) then
+		self:lockRoom(pCell)
 	end
 end
 
@@ -282,6 +307,21 @@ function Warren:notifyEnteredWarren(pBuilding, pPlayer)
 			createObserver(SPATIALCHATSENT, "Warren", "notifyTerminalChatSent", pPlayer, 1)
 			dropObserver(PARENTCHANGED, "Warren", "notifyPlayerChangedCell", pPlayer)
 			createObserver(PARENTCHANGED, "Warren", "notifyPlayerChangedCell", pPlayer, 1)
+
+			local pParent = SceneObject(pPlayer):getParent()
+
+			if (pParent ~= nil) then
+				local cellNum = LuaCellObject(pParent):getCellNumber()
+				local cellName = BuildingObject(pBuilding):getCellName(cellNum)
+
+				if (cellName == "plusroom84") then
+					SceneObject(pPlayer):teleport(79.7, -60, -43.3, 8575749)
+				elseif (cellName == "smallroom47") then
+					SceneObject(pPlayer):teleport(23.4, -50, -148.9, 8575717)
+				elseif (cellName == "smallroom44") then
+					SceneObject(pPlayer):teleport(46.4, -54, -125.5, 8575714)
+				end
+			end
 		else
 			CreatureObject(pPlayer):sendSystemMessage("@theme_park/warren/warren_system_messages:access_denied") --ACCESS DENIED:  YOU DO NOT HAVE THE PROPER PASSKEY TO ENTER THIS FACILITY
 			--Kick them out to the front door.
@@ -294,7 +334,6 @@ end
 
 function Warren:notifyPlayerChangedCell(pPlayer)
 	if (pPlayer == nil or SceneObject(pPlayer):getParentID() == 0) then
-
 		return 1
 	end
 
@@ -314,35 +353,35 @@ function Warren:notifyPlayerChangedCell(pPlayer)
 
 	local cellName = BuildingObject(pWarren):getCellName(cellNum)
 
-	if (cellName == "smallroom78") then -- Command center
-		local pCell = Warren:getCell("plusroom84")
+	if (cellName == "smallroom78" or cellName == "plusroom84") then -- Command center
+		local pCell = self:getCell("plusroom84")
 
 		if (pCell ~= nil) then
 			if (readData("warren:reactorOverride") == 1) then
-				Warren:unlockRoom(pCell)
+				self:unlockRoom(pCell)
 			else
 				CreatureObject(pPlayer):sendSystemMessage("@theme_park/warren/warren_system_messages:core_warning") --WARNING: Reactor Core Overload Imminent. Control Center Lock-Down initiated.
-				Warren:lockRoom(pCell)
+				self:lockRoom(pCell)
 			end
 		end
-	elseif (cellName == "smallroom47") then -- Inquisitor room
-		local pCell = Warren:getCell("smallroom47")
+	elseif (cellName == "smallroom47" or cellName == "smallroom46") then -- Inquisitor room
+		local pCell = self:getCell("smallroom47")
 
 		if (pCell ~= nil) then
 			if (readData("warren:inquisitorRoomOpened") == 1) then
-				Warren:unlockRoom(pCell)
+				self:unlockRoom(pCell)
 			else
-				Warren:lockRoom(pCell)
+				self:lockRoom(pCell)
 			end
 		end
-	elseif (cellName == "smallroom44") then -- Reactor core
-		local pCell = Warren:getCell("smallroom44")
+	elseif (cellName == "smallroom44" or cellName == "bigroom43") then -- Reactor core
+		local pCell = self:getCell("smallroom44")
 
 		if (pCell ~= nil) then
 			if (readData("warren:reactorUnlocked") == 1) then
-				Warren:unlockRoom(pCell)
+				self:unlockRoom(pCell)
 			else
-				Warren:lockRoom(pCell)
+				self:lockRoom(pCell)
 			end
 		end
 	end
@@ -439,10 +478,10 @@ function Warren:reactorCoreUsed(pCore, pPlayer)
 	end
 
 	if (numRods > 1) then
-		local pCell = Warren:getCell("plusroom84")
+		local pCell = self:getCell("plusroom84")
 
 		if (pCell ~= nil) then
-			Warren:unlockRoom(pCell)
+			self:unlockRoom(pCell)
 		end
 
 		writeData("warren:reactorOverride", 1)
@@ -470,10 +509,10 @@ function Warren:reactivateCore(pCore)
 
 	deleteData("warren:reactorOverride")
 
-	local pCell = Warren:getCell("plusroom84")
+	local pCell = self:getCell("plusroom84")
 
 	if (pCell ~= nil) then
-		Warren:lockRoom(pCell)
+		self:lockRoom(pCell)
 	end
 end
 
@@ -660,7 +699,7 @@ function Warren:notifyTerminalChatSent(pPlayer, pChatMessage)
 	return 0
 end
 
-function Warren:relockInquisitorRoom(pTerminal)
+function Warren:relockInquisitorRoom()
 	deleteData("warren:inquisitorRoomOpened")
 
 	pCell = self:getCell("smallroom47") -- Inquisitor room
@@ -806,7 +845,7 @@ function Warren:reactorSwitchUsed(pTerminal, pPlayer)
 	if (otherSwitchDone == 1) then
 		writeData("warren:reactorUnlocked", 1)
 
-		local pCell = Warren:getCell("smallroom44") -- Reactor room
+		local pCell = self:getCell("smallroom44") -- Reactor room
 
 		if (pCell ~= nil) then
 			self:unlockRoom(pCell)
@@ -824,7 +863,7 @@ function Warren:resetReactorSwitches(pTerminal)
 	deleteData("warren:reactorSwitchOne")
 	deleteData("warren:reactorSwitchTwo")
 
-	local pCell = Warren:getCell("smallroom44") -- Reactor room
+	local pCell = self:getCell("smallroom44") -- Reactor room
 
 	if (pCell ~= nil) then
 		self:lockRoom(pCell)
@@ -1087,6 +1126,24 @@ function Warren:lockRoom(pCell)
 	end
 
 	if (pCell ~= nil) then
+		local cellNum = LuaCellObject(pCell):getCellNumber()
+
+		local cellName = BuildingObject(pWarren):getCellName(cellNum)
+
+		for j = 1, SceneObject(pCell):getContainerObjectsSize(), 1 do
+			local pObject = SceneObject(pCell):getContainerObject(j - 1)
+
+			if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
+				if (cellName == "plusroom84") then
+					SceneObject(pObject):teleport(79.7, -60, -43.3, 8575749)
+				elseif (cellName == "smallroom47") then
+					SceneObject(pObject):teleport(23.4, -50, -148.9, 8575717)
+				elseif (cellName == "smallroom44") then
+					SceneObject(pObject):teleport(46.4, -54, -125.5, 8575714)
+				end
+			end
+		end
+
 		SceneObject(pCell):setContainerInheritPermissionsFromParent(false)
 		SceneObject(pCell):clearContainerDefaultAllowPermission(WALKIN)
 
