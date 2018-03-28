@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_03b4cef0",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2018-03-28T03:19:41Z",
+      "side": 1,
+      "message": "Set this variable to transient... Since its value is set in loadTemplateData every time the object is instantiated, the variable doesn\u0027t need to be stored in the db.",
+      "revId": "151788920c0b4c054e77b3c1a00d13b83b35e125",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
