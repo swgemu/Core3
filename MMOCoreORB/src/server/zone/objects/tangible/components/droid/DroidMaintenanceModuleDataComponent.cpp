@@ -271,12 +271,15 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 			int maintToPay = assignments.elementAt(i).getValue();
 			ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectID);
 			StructureObject* structureObject = cast<StructureObject*>(obj.get());
-			if (structureObject != NULL) {
-				Locker locker(obj);
-				ManagedReference<CreditObject*> creditObject = player->getCreditObject();
-				Locker cross(creditObject, obj);
 
-				structureObject->payMaintenance(maintToPay, creditObject,true);
+			if (structureObject != NULL) {
+				Locker locker(player);
+				Locker cross(structureObject, player);
+
+				ManagedReference<CreditObject*> creditObject = player->getCreditObject();
+
+				Locker clock(creditObject);
+				structureObject->payMaintenance(maintToPay, creditObject, true);
 			}
 		}
 	}, "DroidPayMaintenanceTask");
