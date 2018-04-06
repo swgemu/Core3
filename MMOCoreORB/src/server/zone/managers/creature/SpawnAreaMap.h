@@ -35,6 +35,12 @@ public:
 		NOBUILDZONEAREA     = 0x00000100
 	};
 
+	enum {
+		CIRCLE = 1,
+		RECTANGLE,
+		RING
+	};
+
 	SpawnAreaMap() : Logger("SpawnAreaMap") {
 		lua = new Lua();
 		setAllowDuplicateInsertPlan();
