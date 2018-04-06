@@ -9,17 +9,21 @@ include engine.util.u3d.Vector3;
 
 class RectangularAreaShape extends AreaShape {
 
-	/** The height of the rectangle. */
-	protected float height;
-
-	/** The width of the rectangle. */
-	protected float width;
+	/** The bottom left corner of the rectangle. */
+	protected float blX;
+	protected float blY;
+	
+	/** The upper right corner of the rectangle. */
+	protected float urX;
+	protected float urY;
 
 	/** Constructor */
 	public RectangularAreaShape() {
 		super();
-		height = 0;
-		width = 0;
+		blX = 0;
+		blY = 0;
+		urX = 0;
+		urY = 0;
 	}
 
 	/**
@@ -28,27 +32,11 @@ class RectangularAreaShape extends AreaShape {
 	 * @param w the width of the rectangle.
 	 */
 	@preLocked
-	public void setDimensions(float h, float w) {
-		height = h;
-		width = w;
-	}
-
-	/**
-	 * Get the height of the rectangle.
-	 * @return height of the rectangle.
-	 */
-	@dirty
-	public abstract float getHeight() {
-		return height;
-	}
-
-	/**
-	 * Get the width of the rectangle.
-	 * @return width of the rectangle.
-	 */
-	@dirty
-	public abstract float getWidth() {
-		return width;
+	public void setDimensions(float x1, float y1, float x2, float y2) {
+		blX = x1;
+		blY = y1;
+		urX = x2;
+		urY = y2;
 	}
 
 	/**
@@ -129,13 +117,4 @@ class RectangularAreaShape extends AreaShape {
 	@local
 	@dirty
 	private native Vector3 getFarthestPoint(@dereferenced final Vector3 position);
-
-	/**
-	 * Get the area of the areaShape.
-	 * @return the area of the area shape.
-	 */
-	@dirty
-	public abstract float getArea() {
-		return height * width;
-	}
 }
