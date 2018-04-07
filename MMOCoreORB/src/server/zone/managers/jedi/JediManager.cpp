@@ -76,6 +76,15 @@ void JediManager::onPlayerCreated(CreatureObject* creature) {
 	luaOnPlayerCreated->callFunction();
 }
 
+void JediManager::onSkillRevoked(CreatureObject* creature, Skill* skill) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaOnSkillRevoked = lua->createFunction(getJediManagerName(), "onSkillRevoked", 0);
+	*luaOnSkillRevoked << creature;
+	*luaOnSkillRevoked << skill;
+
+	luaOnSkillRevoked->callFunction();
+}
+
 void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	Reference<LuaFunction*> luaOnPlayerLoggedIn = lua->createFunction(getJediManagerName(), "onPlayerLoggedIn", 0);

@@ -66,7 +66,7 @@ phyHudgenConvoTemplate:addScreen(elevator_locked);
 
 dead_by_elevator = ConvoScreen:new {
 	id = "dead_by_elevator",
-	leftDialog = "@theme_park/warren/warren:worker_4", -- I don't know. The only one who knew the passcode is dead by the elevator now. Oh this is hopeless!
+	leftDialog = "@theme_park/warren/warren:worker_5", -- I don't know. The only one who knew the passcode is dead by the elevator now. Oh this is hopeless!
 	stopConversation = "true",
 	options = {}
 }

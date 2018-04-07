@@ -1129,7 +1129,7 @@ function PadawanTrials:onPlayerLoggedIn(pPlayer)
 		local trialData = padawanTrialQuests[trialNumber]
 		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
-		if (trialData.trialType == TRIAL_HUNT and readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal") ~= nil) then
+		if (trialData.trialType == TRIAL_HUNT and tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")) ~= nil) then
 			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 
 			if (self:hasCompletedHunt(pPlayer) and not JediTrials:hasTrialArea(pPlayer)) then

@@ -264,19 +264,23 @@ void DroidMaintenanceModuleDataComponent::validateStructures(){
 void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, VectorMap<unsigned long long, int> assignments) {
 	// we know each struct to pay and any fees applied.
 	ManagedReference<DroidObject*> droid = getDroidObject();
+	ManagedReference<CreatureObject*> play = player->asCreatureObject();
 
 	Core::getTaskManager()->executeTask([=]{
 		for(int i=0;i< assignments.size();i++) {
 			uint64 objectID = assignments.elementAt(i).getKey();
 			int maintToPay = assignments.elementAt(i).getValue();
-			ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectID);
+			ManagedReference<SceneObject*> obj = play->getZoneServer()->getObject(objectID);
 			StructureObject* structureObject = cast<StructureObject*>(obj.get());
-			if (structureObject != NULL) {
-				Locker locker(obj);
-				ManagedReference<CreditObject*> creditObject = player->getCreditObject();
-				Locker cross(creditObject, obj);
 
-				structureObject->payMaintenance(maintToPay, creditObject,true);
+			if (structureObject != NULL) {
+				Locker locker(play);
+				Locker cross(structureObject, play);
+
+				ManagedReference<CreditObject*> creditObject = play->getCreditObject();
+
+				Locker clock(creditObject);
+				structureObject->payMaintenance(maintToPay, creditObject, true);
 			}
 		}
 	}, "DroidPayMaintenanceTask");

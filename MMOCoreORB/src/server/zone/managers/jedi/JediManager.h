@@ -83,6 +83,13 @@ public:
 	void onPlayerLoggedOut(CreatureObject* creature);
 
 	/**
+	 * On player skill revoked.
+	 * @param creature the creature/player that revoked a skill
+	 * @param skill the skill that was revoked
+	 */
+	void onSkillRevoked(CreatureObject* creature, Skill* skill);
+
+	/**
 	 * Check force status command.
 	 * Calls the checkForceStatusCommand in the lua manager.
 	 * @param creature the creature that performed the command.

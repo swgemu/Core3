@@ -54,6 +54,13 @@ function JediManager:checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end
 
+-- Default handling of the onSkillRevoked event.
+-- @param pCreatureObject pointer to the creature object that revoked a skill
+-- @param pSkill skill that was revoked
+function JediManager:onSkillRevoked(pCreatureObject, pSkill)
+	-- Default behaviour for the onPlayerLoggedOut event, do nothing.
+end
+
 -- Default handling of the useItem event.
 -- @param pSceneObject pointer to the item object.
 -- @param itemType the type of item that is used.

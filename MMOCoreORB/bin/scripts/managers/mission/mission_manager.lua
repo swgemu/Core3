@@ -74,4 +74,4 @@ enable_same_account_bounty_missions = "false"
 
 playerBountyKillBuffer = 30 * 60 * 1000 -- Buffer before player bounty can be put back on terminal after target is killed, set 0 to disable
 
-PlayerBountyDebuffLength = 3 * 24 * 60 * 60 * 1000 -- Time before their bounty resets from the minimum amount
+playerBountyDebuffLength = 3 * 24 * 60 * 60 * 1000 -- Time before their bounty resets from the minimum amount
