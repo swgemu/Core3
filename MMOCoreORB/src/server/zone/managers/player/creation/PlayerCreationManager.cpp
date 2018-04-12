@@ -28,6 +28,7 @@
 #include "templates/customization/CustomizationIdManager.h"
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -427,12 +428,13 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	if (ghost != NULL) {
 		//Set skillpoints before adding any skills.
 		ghost->setSkillPoints(skillPoints);
-		ghost->setStarterProfession(profession);
+		//ghost->setStarterProfession(profession);
 	}
 
 	addCustomization(playerCreature, customization,
 			playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
+	/*
 	if (!doTutorial) {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				false);
@@ -447,7 +449,7 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		addRacialMods(playerCreature, fileName,
 				playerTemplate->getStartingSkills(),
 				playerTemplate->getStartingItems(), true);
-	}
+	}*/
 
 	// Set starting cash and starting bank
 	playerCreature->setCashCredits(startingCash, false);
@@ -603,14 +605,104 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	//Join auction chat room
 	ghost->addChatRoom(chatManager->getAuctionRoom()->getRoomID());
 
-	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(playerCreature, SuiWindowType::NONE);
-	box->setPromptTitle("PLEASE NOTE");
-	box->setPromptText("You are limited to creating one character per hour. Attempting to create another character or deleting your character before the 1 hour timer expires will reset the timer.");
+	//ManagedReference<SuiMessageBox*> box = new SuiMessageBox(playerCreature, SuiWindowType::NONE);
+	//box->setPromptTitle("PLEASE NOTE");
+	//box->setPromptText("You are limited to creating one character per hour. Attempting to create another character or deleting your character before the 1 hour timer expires will reset the timer.");
 
-	ghost->addSuiBox(box);
-	playerCreature->sendMessage(box->generateMessage());
+	//ghost->addSuiBox(box);
+	//playerCreature->sendMessage(box->generateMessage());
+
+    Core::getTaskManager()->scheduleTask([playerCreature]{
+    	PlayerCreationManager* pcm = PlayerCreationManager::instance();
+
+    	pcm->sendFRSTestingBox(playerCreature);
+    }, "checkJobs", 1000);
 
 	return true;
+}
+
+void PlayerCreationManager::sendFRSTestingBox(CreatureObject* player) const {
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::NONE);
+	box->setPromptTitle("FRS Testing Server");
+	box->setPromptText("This server exists solely to test the Force Ranking System. Characters created here will automatically be entered into the FRS by choosing one of the buttons below. Closing this window without selecting an option will automatically select Light Side. Currently, only the Light Side voting/petitioning system is active. Dark Side systems will be added in the future.");
+	box->setForceCloseDisabled();
+	box->setCancelButton(true, "@jedi_trials:button_darkside");
+	box->setOkButton(true, "@jedi_trials:button_lightside");
+	box->setCallback(new LambdaSuiCallback([](server::zone::objects::creature::CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) -> void {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		if (ghost == nullptr)
+			return;
+
+		PlayerCreationManager* pcm = PlayerCreationManager::instance();
+
+		if (eventIndex == 0)
+			pcm->unlockFRS(player, 1);
+		else
+			pcm->unlockFRS(player, 2);
+	}, zoneServer, "FrsTestCallback"));
+
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void PlayerCreationManager::unlockFRS(CreatureObject* player, int councilType) const {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	int glowyBadgeIds[] = { 12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107 };
+
+	for (int i = 0; i < 16; i++) {
+		ghost->awardBadge(glowyBadgeIds[i]);
+	}
+
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+	Reference<LuaFunction*> luaFrsTesting = lua->createFunction("FsIntro", "completeVillageIntroFrog", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	String branches[] = {
+			"force_sensitive_combat_prowess_ranged_accuracy",
+			"force_sensitive_combat_prowess_ranged_speed",
+			"force_sensitive_combat_prowess_melee_accuracy",
+			"force_sensitive_combat_prowess_melee_speed",
+			"force_sensitive_enhanced_reflexes_ranged_defense",
+			"force_sensitive_enhanced_reflexes_melee_defense"
+		};
+
+	for (int i = 0; i < 6; i++) {
+		String branch = branches[i];
+		player->setScreenPlayState("VillageUnlockScreenPlay:" + branch, 2);
+		skillManager->awardSkill(branch + "_04", player, true, true, true);
+	}
+
+	luaFrsTesting = lua->createFunction("FsOutro", "completeVillageOutroFrog", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	luaFrsTesting = lua->createFunction("JediTrials", "completePadawanForTesting", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	skillManager->awardSkill("force_discipline_light_saber_master", player, true, true, true);
+	skillManager->awardSkill("force_discipline_enhancements_master", player, true, true, true);
+	skillManager->awardSkill("force_discipline_healing_damage_04", player, true, true, true);
+	skillManager->awardSkill("force_discipline_healing_states_04", player, true, true, true);
+
+	luaFrsTesting = lua->createFunction("JediTrials", "completeKnightForTesting", 0);
+	*luaFrsTesting << player;
+	*luaFrsTesting << councilType;
+
+	luaFrsTesting->callFunction();
 }
 
 int PlayerCreationManager::getMaximumAttributeLimit(const String& race,

@@ -143,6 +143,9 @@ public:
 	 * @param container the target container
 	 */
 	void addStartingItemsInto(CreatureObject* creature, SceneObject* container) const;
+
+	void unlockFRS(CreatureObject* player, int councilType) const;
+	void sendFRSTestingBox(CreatureObject* player) const;
 };
 
 }
