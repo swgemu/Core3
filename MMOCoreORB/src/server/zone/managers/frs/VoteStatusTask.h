@@ -19,37 +19,39 @@ public:
 	void run() {
 		ManagedReference<FrsManager*> strongRef = frsManager.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);
 
 		strongRef->updateLastVoteStatus();
 
+		locker.release();
+
 		// Iterates lightside/darkside
 		for (int j = 1; j <= 2; j++) {
 			//Iterates each rank in rank type
 			for (int i = 1; i <= 11; i++) {
-				FrsRank* rank = strongRef->getFrsRank(j, i);
+				ManagedReference<FrsRank*> rankData = strongRef->getFrsRank(j, i);
 
-				if (rank == NULL)
+				if (rankData == nullptr)
 					continue;
 
-				short voteStatus = rank->getVoteStatus();
-				uint64 tickDiff = rank->getLastUpdateTickDiff();
+				Locker locker(rankData);
+
+				short voteStatus = rankData->getVoteStatus();
+				uint64 tickDiff = rankData->getLastUpdateTickDiff();
 				uint64 interval = strongRef->getVotingInterval(voteStatus);
 
 				if (tickDiff + 30000 < interval)
 					continue;
 
-				Core::getTaskManager()->scheduleTask([strongRef, rank]{
-					Locker locker(strongRef);
-					strongRef->runVotingUpdate(rank);
+				Core::getTaskManager()->scheduleTask([strongRef, rankData]{
+					Locker locker(rankData);
+					strongRef->runVotingUpdate(rankData);
 				}, "frsVotingTask", i * j * 10);
 			}
 		}
-
-		locker.release();
 
 		reschedule(FrsManager::VOTE_STATUS_TICK);
 	}

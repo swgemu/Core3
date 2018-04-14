@@ -55,8 +55,6 @@ public:
 			return;
 
 		Locker locker(player);
-		Locker clocker(frsMan, player);
-
 
 		if (selectingRank) {
 			int selectedRank = index + 1;

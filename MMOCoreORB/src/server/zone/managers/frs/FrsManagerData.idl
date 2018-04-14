@@ -13,6 +13,7 @@ include server.zone.managers.frs.ChallengeVoteData;
 include server.zone.managers.frs.ArenaChallengeData;
 import system.lang.Time;
 
+@preLocked
 class FrsManagerData extends ManagedObject {
 	@dereferenced
 	protected Time lastVoteStatusTick;

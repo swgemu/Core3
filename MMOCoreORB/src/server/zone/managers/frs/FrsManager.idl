@@ -150,7 +150,6 @@ class FrsManager extends ManagedService implements Logger {
 	@dereferenced
 	public native Vector<unsigned long> getPlayerListByCouncil(int councilType);
 	
-	@preLocked
 	@arg1preLocked
 	public native void setPlayerRank(CreatureObject player, int rank);
 	
@@ -166,71 +165,74 @@ class FrsManager extends ManagedService implements Logger {
 	@arg1preLocked
 	public native void demotePlayer(CreatureObject player);
 	
-	@preLocked
 	@arg1preLocked
 	public native void promotePlayer(CreatureObject player);
 	
-	@preLocked
 	@arg1preLocked
 	public native void adjustFrsExperience(CreatureObject player, int amount);
 	
-	@preLocked
+	@arg1preLocked
 	public native void deductMaintenanceXp(CreatureObject player);
 
-	
-	@preLocked
+	@arg1preLocked
 	public native void addExperienceDebt(CreatureObject player, int amount);
 	
+	@arg1preLocked
+	@arg2preLocked
 	public native boolean isValidFrsBattle(CreatureObject attacker, CreatureObject victim);
+	
+	@arg1preLocked
+	@arg2preLocked
 	public native int calculatePvpExperienceChange(CreatureObject attacker, CreatureObject victim, float contribution, boolean isVictim);
 	public native int getBaseExperienceGain(PlayerObject playerGhost, PlayerObject opponentGhost, boolean playerWon);
 	
-	@preLocked
+	@arg1preLocked
 	public native int getAvailableRankSlots(FrsRank rankInfo);
 	
+	@arg1preLocked
 	public native void sendVoteSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);
 	
-	@preLocked
 	@arg1preLocked
 	public native void handleVoteStatusSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
-	@preLocked
 	@arg1preLocked
 	public native void sendVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
-	@preLocked
 	@arg1preLocked
 	public native void handleVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank, int index);
 	
-	@preLocked
 	@arg1preLocked
 	public native void handleAcceptPromotionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
-	@preLocked
 	@arg1preLocked
 	public native void handleVotePetitionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
 	public native int getVoteWeight(int playerRank, int voteRank);
 	
 	@arg1preLocked
-	public native boolean hasPlayerVoted(CreatureObject player, int rank);
+	@arg2preLocked
+	public native boolean hasPlayerVoted(CreatureObject player, FrsRank rankData);
 	
-	@preLocked
+	@arg1preLocked
 	public native void runVotingUpdate(FrsRank rankInfo);
 	
-	@preLocked
+	@arg1preLocked
 	public native void checkForMissedVotes(FrsRank rankInfo);
 	
 	public native short getEnclaveType(BuildingObject enclave);
+	
+	@arg1preLocked
 	public native boolean isEligibleForPromotion(CreatureObject player, int rank);
 	
 	@local
-	public native void sendMailToVoters(short councilType, int rank, final string sub, @dereferenced StringIdChatParameter body);
+	@arg1preLocked
+	public native void sendMailToVoters(FrsRank rankData, final string sub, @dereferenced StringIdChatParameter body);
 	
 	@local
 	public native void sendMailToList(Vector<unsigned long> playerList, final string sub, @dereferenced StringIdChatParameter body);
 	
 	@local
+	@arg1preLocked
 	public native Vector<unsigned long> getTopVotes(FrsRank rankInfo, int numWinners);
 	
 	public native string getTimeString(unsigned long timestamp);
@@ -289,6 +291,6 @@ class FrsManager extends ManagedService implements Logger {
 		return managerData.isFightingInArena(playerID);
 	}
 	
-	@preLocked
+	@arg1preLocked
 	public native void forcePhaseChange(CreatureObject player, short enclaveType, int rank);
 }

@@ -36,61 +36,74 @@ class ChallengeVoteData extends ManagedObject {
 		challengeVoteStart.updateToCurrentTime();
 	}
 	
+	@preLocked
 	public void addYesVote(unsigned long playerID) {
 		yesVotes.add(playerID);
 	}
 	
+	@preLocked
 	public void addNoVote(unsigned long playerID) {
 		noVotes.add(playerID);
 	}
 	
+	@preLocked
 	public void addToMissedVotes(unsigned long playerID) {
 		missedVotes.add(playerID);
 	}
 	
 	@local
+	@preLocked
 	public Vector<unsigned long> getMissedVotes() {
 		return missedVotes;
 	}
 	
+	@preLocked
 	public void clearMissedVotes() {
 		missedVotes.removeAll();
 	}
 	
 	@dirty
+	@preLocked
 	public int getTotalYesVotes() {
 		return yesVotes.size();
 	}
 	
 	@dirty
+	@preLocked
 	public int getTotalNoVotes() {
 		return noVotes.size();
 	}
 	
 	@dirty
+	@preLocked
 	public boolean hasVoted(unsigned long playerID) {
 		return yesVotes.contains(playerID) || noVotes.contains(playerID);
 	}
 
+	@preLocked
 	public void updateChallengeVoteStart() {
 		challengeVoteStart.updateToCurrentTime();
 	}
 	
+	@preLocked
 	public void setStatus(int newStatus) {
 		status = newStatus;
 	}
 	
 	@read
+	@preLocked
 	public int getStatus() {
 		return status;
 	}
 	
 	@read
+	@preLocked
 	public int getPlayerRank() {
 		return playerRank;
 	}
 	
 	@local
+	@preLocked
 	public Time getChallengeVoteStart() {
 		return challengeVoteStart;
 	}

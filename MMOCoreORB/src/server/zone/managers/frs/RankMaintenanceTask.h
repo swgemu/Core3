@@ -2,6 +2,7 @@
 #define RANKMAINTENANCETASK_H_
 
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -19,16 +20,16 @@ public:
 	void run() {
 		ManagedReference<FrsManager*> strongRef = frsManager.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);
 
 		strongRef->updateLastMaintenance();
 
-		Vector<uint64> playerList = strongRef->getFullPlayerList();
-
 		locker.release();
+
+		Vector<uint64> playerList = strongRef->getFullPlayerList();
 
 		if (playerList.size() == 0) {
 			reschedule(strongRef->getMaintenanceInterval());
@@ -54,8 +55,8 @@ public:
 				for (int i = 0; i < taskList.size(); i++) {
 					ManagedReference<CreatureObject*> player = strongRef->getZoneServer()->getObject(taskList.get(i)).castTo<CreatureObject*>();
 
-					if (player != NULL) {
-						Locker locker(strongRef);
+					if (player != nullptr) {
+						Locker lock(player);
 						strongRef->deductMaintenanceXp(player);
 					}
 				}

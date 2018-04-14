@@ -49,132 +49,161 @@ class FrsRank extends ManagedObject {
 	}
 	
 	@read
+	@preLocked
 	public short getRank() {
 		return rank;
 	}
 	
 	@read
+	@preLocked
 	public short getCouncilType() {
 		return type;
 	}
 
+	@preLocked
 	public void addToPlayerList(unsigned long id) {
 		playerList.put(id);
 	}
 
+	@preLocked
 	public void removeFromPlayerList(unsigned long id) {
 		playerList.drop(id);
 	}
 	
 	@dirty
+	@preLocked
 	public int getTotalPlayersInRank() {
 		return playerList.size();
 	}
 
 	@dirty
+	@preLocked
 	public boolean isOnPlayerList(unsigned long id) {
 		return playerList.contains(id);
 	}
 
 	@local
+	@preLocked
 	public SortedVector<unsigned long> getPlayerList() {
 		return playerList;
 	}
 	
 	@local
+	@preLocked
 	public VectorMap<unsigned long, int> getPetitionerList() {
 		return petitionerList;
 	}
 	
+	@preLocked
 	public void addToPetitionerList(unsigned long playerID, int votes) {
 		petitionerList.put(playerID, votes);
 	}
 	
 	@dirty
+	@preLocked
 	public boolean isOnPetitionerList(unsigned long id) {
 		return petitionerList.contains(id);
 	}
 	
 	@dirty
+	@preLocked
 	public int getTotalPetitioners() {
 		return petitionerList.size();
 	}
 	
+	@preLocked
 	public void clearPetitionerList() {
 		petitionerList.removeAll();
 	}
 	
+	@preLocked
 	public void removeFromPetitionerList(unsigned long id) {
 		petitionerList.drop(id);
 	}
 	
+	@preLocked
 	public void addToVotedList(unsigned long id) {
 		votedList.put(id);
 	}
 
+	@preLocked
 	public void removeFromVotedList(unsigned long id) {
 		votedList.drop(id);
 	}
 	
+	@preLocked
 	public void clearVotedList() {
 		votedList.removeAll();
 	}
 
 	@dirty
+	@preLocked
 	public boolean isOnVotedList(unsigned long id) {
 		return votedList.contains(id);
 	}
 
 	@local
+	@preLocked
 	public SortedVector<unsigned long> getVotedList() {
 		return votedList;
 	}
 	
+	@preLocked
 	public void addToWinnerList(unsigned long id) {
 		winnerList.put(id);
 	}
 	
+	@preLocked
 	public void removeFromWinnerList(unsigned long id) {
 		winnerList.drop(id);
 	}
 	
 	@dirty
+	@preLocked
 	public int getTotalWinners() {
 		return winnerList.size();
 	}
 	
 	@dirty
+	@preLocked
 	public boolean isOnWinnerList(unsigned long id) {
 		return winnerList.contains(id);
 	}
 	
+	@preLocked
 	public void clearWinnerList() {
 		winnerList.removeAll();
 	}
 	
 	@local
+	@preLocked
 	public SortedVector<unsigned long> getWinnerList() {
 		return winnerList;
 	}
 	
+	@preLocked
 	public void updateLastTick() {
 		lastUpdateTick.updateToCurrentTime();
 	}
 	
 	@dirty
+	@preLocked
 	public unsigned long getLastUpdateTickDiff() {
 		return lastUpdateTick.miliDifference();
 	}
 	
 	@read
+	@preLocked
 	public short getVoteStatus() {
 		return voteStatus;
 	}
 	
+	@preLocked
 	public void setVoteStatus(int newStatus) {
 		voteStatus = newStatus;
 	}
 	
+	@preLocked
 	public void resetVotingData() {
 		clearVotedList();
 		clearPetitionerList();
@@ -182,28 +211,34 @@ class FrsRank extends ManagedObject {
 	}
 	
 	@read
+	@preLocked
 	public int getArenaChallengesThisPhase() {
 		return arenaChallengesThisPhase;
 	}
 	
+	@preLocked
 	public void setArenaChallengesThisPhase(int chal) {
 		arenaChallengesThisPhase = chal;
 	}
 	
 	@read
+	@preLocked
 	public int getArenaChallengesAcceptedThisPhase() {
 		return arenaChallengesAcceptedThisPhase;
 	}
 	
+	@preLocked
 	public void setArenaChallengesAcceptedThisPhase(int chal) {
 		arenaChallengesAcceptedThisPhase = chal;
 	}
 	
 	@read
+	@preLocked
 	public int getArenaChallengeScore() {
 		return arenaChallengeScore;
 	}
 	
+	@preLocked
 	public void setArenaChallengeScore(int chal) {
 		arenaChallengeScore = chal;
 	}
