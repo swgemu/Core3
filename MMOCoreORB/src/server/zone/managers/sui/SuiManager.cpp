@@ -26,6 +26,7 @@
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = NULL;
@@ -520,6 +521,15 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "clear_dots") {
 				player->clearDots();
+
+			} else if (templatePath == "color_crystals" || templatePath == "krayt_pearls") {
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+				if (inventory == nullptr)
+					return;
+
+				LootManager* lootManager = zserv->getLootManager();
+				lootManager->createLoot(inventory, templatePath, 300, true);
 
 			} else if (templatePath == "max_xp") {
 				ghost->maximizeExperience();
