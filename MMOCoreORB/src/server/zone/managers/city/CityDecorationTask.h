@@ -83,7 +83,7 @@ public:
 
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 		// We don't want players to exploit-block entrances or exits to POI areas & buildings
-		if (!planetManager->isBuildingPermittedAt(obj->getPositionX(), obj->getPositionY(), mayor)) {
+		if (!planetManager->isBuildingPermittedAt(mayor->getWorldPositionX(), mayor->getWorldPositionY(), mayor, 0, false)) {
 			StringIdChatParameter msg;
 			msg.setStringId("@player_structure:not_permitted"); //"Building is not permitted here."
 			mayor->sendSystemMessage(msg);
