@@ -26,12 +26,15 @@ public:
 
 		if (creature->isDead() || creature->isIncapacitated()) {
 			creature->sendSystemMessage("You cannot repair the terminal in your current state. Aborting repairs...");
+			baseData->setTerminalBeingRepaired(false);
 			return;
 		} else if (creature->isInCombat()) {
 			creature->sendSystemMessage("You cannot slice the terminal while you are in combat!");
+			baseData->setTerminalBeingRepaired(false);
 			return;
 		} else if (creature->getParentID() != terminal->getParentID()) {
 			creature->sendSystemMessage("You cannot repair the terminal from that distance. Aborting repairs...");
+			baseData->setTerminalBeingRepaired(false);
 			return;
 		}
 
