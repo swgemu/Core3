@@ -1,0 +1,187 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.util.SortedVector;
+import system.util.Vector;
+include server.zone.managers.frs.FrsRank;
+include server.zone.managers.frs.ChallengeVoteData;
+include server.zone.managers.frs.ArenaChallengeData;
+import system.lang.Time;
+
+@preLocked
+class FrsManagerData extends ManagedObject {
+	@dereferenced
+	protected Time lastVoteStatusTick;
+	
+	@dereferenced
+	protected Time lastMaintenanceTick;
+	
+	@dereferenced
+	protected Time lastArenaOpenTime;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> experienceDebt;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, ChallengeVoteData> lightChallenges;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, Time> challengeTimes;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, ArenaChallengeData> arenaChallenges;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> arenaFighters;
+	
+	@dereferenced
+	protected Vector<FrsRank> lightRanks;
+	
+	@dereferenced
+	protected Vector<FrsRank> darkRanks;
+	
+	protected short arenaStatus;
+
+	public FrsManagerData() {
+		experienceDebt.setNoDuplicateInsertPlan();
+		arenaStatus = 0;
+	}
+	
+	@local
+	public Vector<FrsRank> getLightRanks() {
+		return lightRanks;
+	}
+	
+	@local
+	public Vector<FrsRank> getDarkRanks() {
+		return darkRanks;
+	}
+	
+	@local
+	public VectorMap<unsigned long, ChallengeVoteData> getLightChallenges() {
+		return lightChallenges;
+	}
+	
+	public void addLightChallenge(unsigned long playerID, ChallengeVoteData voteData) {
+		lightChallenges.put(playerID, voteData);
+	}
+	
+	public void removeLightChallenge(unsigned long playerID) {
+		if (lightChallenges.contains(playerID))
+			lightChallenges.drop(playerID);
+	}
+	
+	public boolean hasChallengedRecently(unsigned long playerID, unsigned long challengeCooldown) {
+		if (!challengeTimes.contains(playerID))
+			return false;
+		
+		return challengeTimes.get(playerID).miliDifference() < challengeCooldown;
+	}
+	
+	@local
+	public Time getChallengeTime(unsigned long playerID) {
+		return challengeTimes.get(playerID);
+	}
+	
+	public void updateChallengeTime(unsigned long playerID) {
+		if (challengeTimes.contains(playerID)) {
+			challengeTimes.get(playerID).updateToCurrentTime();
+		} else {
+			Time newTime;
+			newTime.updateToCurrentTime();
+			challengeTimes.put(playerID, newTime);
+		}
+	}
+	
+	public void removeChallengeTime(unsigned long playerID) {
+		if (challengeTimes.contains(playerID))
+			challengeTimes.drop(playerID);
+	}
+	
+	public void updateLastMaintenanceTick() {
+		lastMaintenanceTick.updateToCurrentTime();
+	}
+	
+	@local
+	public Time getLastMaintenanceTick() {
+		return lastMaintenanceTick;
+	}
+	
+	public void updateLastVoteStatusTick() {
+		lastVoteStatusTick.updateToCurrentTime();
+	}
+	
+	@local
+	public Time getLastVoteStatusTick() {
+		return lastVoteStatusTick;
+	}
+
+	public int getExperienceDebt(unsigned long playerID) {
+		if (experienceDebt.contains(playerID))
+			return experienceDebt.get(playerID);
+		
+		return 0;
+	}
+	
+	public void setExperienceDebt(unsigned long playerID, int debt) {
+		experienceDebt.put(playerID, debt);
+	}
+	
+	public void removeExperienceDebt(unsigned long playerID) {
+		experienceDebt.drop(playerID);
+	}
+	
+	@local
+	public Time getLastArenaOpenTime() {
+		return lastArenaOpenTime;
+	}
+	
+	public void updateLastArenaOpenTime() {
+		lastArenaOpenTime.updateToCurrentTime();
+	}
+	
+	@read
+	public short getArenaStatus() {
+		return arenaStatus;
+	}
+	
+	public void setArenaStatus(short status) {
+		arenaStatus = status;
+	}
+	
+	@local
+	public VectorMap<unsigned long, ArenaChallengeData> getArenaChallenges() {
+		return arenaChallenges;
+	}
+	
+	public void addArenaChallenge(unsigned long playerID, ArenaChallengeData data) {
+		arenaChallenges.put(playerID, data);
+	}
+	
+	public boolean hasOpenArenaChallenge(unsigned long playerID) {
+		return arenaChallenges.contains(playerID);
+	}
+	
+	@local
+	public ArenaChallengeData getArenaChallenge(unsigned long playerID) {
+		return arenaChallenges.get(playerID);
+	}
+	
+	public void addArenaFighter(unsigned long playerID) {
+		arenaFighters.add(playerID);
+	}
+	
+	public void removeArenaFighter(unsigned long playerID) {
+		if (arenaFighters.contains(playerID))
+			arenaFighters.drop(playerID);
+	}
+	
+	public boolean isFightingInArena(unsigned long playerID) {
+		return arenaFighters.contains(playerID);
+	}
+}
