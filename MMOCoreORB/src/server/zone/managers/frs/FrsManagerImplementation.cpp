@@ -29,6 +29,8 @@ void FrsManagerImplementation::initialize() {
 	setupEnclaves();
 	loadFrsData();
 
+	Locker locker(managerData);
+
 	Time* lastTick = managerData->getLastMaintenanceTick();
 	uint64 miliDiff = lastTick->miliDifference();
 
@@ -84,13 +86,15 @@ void FrsManagerImplementation::loadFrsData() {
 		managerData = newManagerData;
 	}
 
+	Locker locker(managerData);
+
 	Vector<ManagedReference<FrsRank*> >* rankData = managerData->getLightRanks();
 
 	if (rankData->size() == 0) {
 		short newStatus = VOTING_CLOSED;
 
 		for (int i = 1; i <= 11; i++) {
-			FrsRank* newRank = new FrsRank(COUNCIL_LIGHT, i, newStatus);
+			ManagedReference<FrsRank*> newRank = new FrsRank(COUNCIL_LIGHT, i, newStatus);
 			ObjectManager::instance()->persistObject(newRank, 1, "frsdata");
 			rankData->add(newRank);
 		}
@@ -103,7 +107,7 @@ void FrsManagerImplementation::loadFrsData() {
 		short newStatus = VOTING_CLOSED;
 
 		for (int i = 1; i <= 11; i++) {
-			FrsRank* newRank = new FrsRank(COUNCIL_DARK, i, newStatus);
+			ManagedReference<FrsRank*> newRank = new FrsRank(COUNCIL_DARK, i, newStatus);
 			ObjectManager::instance()->persistObject(newRank, 1, "frsdata");
 			rankData->add(newRank);
 		}
@@ -246,27 +250,21 @@ FrsRank* FrsManagerImplementation::getFrsRank(short councilType, int rank) {
 	if (rank < 0)
 		return nullptr;
 
+	ManagedReference<FrsRank*> frsRank = nullptr;
+
+	Locker locker(managerData);
+
 	if (councilType == COUNCIL_LIGHT) {
 		Vector<ManagedReference<FrsRank*> >* rankData = managerData->getLightRanks();
 
-		for (int i = 0; i < rankData->size(); i++) {
-			ManagedReference<FrsRank*> frsRank = rankData->get(i);
-
-			if (frsRank->getRank() == rank)
-				return frsRank;
-		}
+		frsRank = rankData->get(rank - 1);
 	} else if (councilType == COUNCIL_DARK) {
 		Vector<ManagedReference<FrsRank*> >* rankData = managerData->getDarkRanks();
 
-		for (int i = 0; i < rankData->size(); i++) {
-			ManagedReference<FrsRank*> frsRank = rankData->get(i);
-
-			if (frsRank->getRank() == rank)
-				return frsRank;
-		}
+		frsRank = rankData->get(rank - 1);
 	}
 
-	return nullptr;
+	return frsRank;
 }
 
 
