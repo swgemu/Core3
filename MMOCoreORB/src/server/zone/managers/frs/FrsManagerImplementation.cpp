@@ -29,6 +29,8 @@ void FrsManagerImplementation::initialize() {
 	setupEnclaves();
 	loadFrsData();
 
+	Locker locker(managerData);
+
 	Time* lastTick = managerData->getLastMaintenanceTick();
 	uint64 miliDiff = lastTick->miliDifference();
 
@@ -83,6 +85,8 @@ void FrsManagerImplementation::loadFrsData() {
 
 		managerData = newManagerData;
 	}
+
+	Locker locker(managerData);
 
 	Vector<ManagedReference<FrsRank*> >* rankData = managerData->getLightRanks();
 
@@ -246,11 +250,15 @@ FrsRank* FrsManagerImplementation::getFrsRank(short councilType, int rank) {
 	if (rank < 0)
 		return nullptr;
 
+	Locker locker(managerData);
+
 	if (councilType == COUNCIL_LIGHT) {
 		Vector<ManagedReference<FrsRank*> >* rankData = managerData->getLightRanks();
 
 		for (int i = 0; i < rankData->size(); i++) {
 			ManagedReference<FrsRank*> frsRank = rankData->get(i);
+
+			Locker xlock(frsRank, managerData);
 
 			if (frsRank->getRank() == rank)
 				return frsRank;
@@ -260,6 +268,8 @@ FrsRank* FrsManagerImplementation::getFrsRank(short councilType, int rank) {
 
 		for (int i = 0; i < rankData->size(); i++) {
 			ManagedReference<FrsRank*> frsRank = rankData->get(i);
+
+			Locker xlock(frsRank, managerData);
 
 			if (frsRank->getRank() == rank)
 				return frsRank;
