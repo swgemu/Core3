@@ -521,6 +521,12 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "clear_dots") {
 				player->clearDots();
+			} else if (templatePath == "frs_light_side") {
+				PlayerManager* pman = zserv->getPlayerManager();
+				pman->unlockFRSForTesting(player, 1);
+			} else if (templatePath == "frs_dark_side") {
+				PlayerManager* pman = zserv->getPlayerManager();
+				pman->unlockFRSForTesting(player, 2);
 
 			} else if (templatePath == "color_crystals" || templatePath == "krayt_pearls") {
 				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
