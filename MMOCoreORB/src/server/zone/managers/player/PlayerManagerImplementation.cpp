@@ -5455,3 +5455,63 @@ float PlayerManagerImplementation::getSpeciesXpModifier(const String& species, c
 
 	return (100.f + bonus) / 100.f;
 }
+
+void PlayerManagerImplementation::unlockFRSForTesting(CreatureObject* player, int councilType) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	int glowyBadgeIds[] = { 12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107 };
+
+	for (int i = 0; i < 16; i++) {
+		ghost->awardBadge(glowyBadgeIds[i]);
+	}
+
+	SkillManager::instance()->surrenderAllSkills(player, true, false);
+
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+	Reference<LuaFunction*> luaFrsTesting = lua->createFunction("FsIntro", "completeVillageIntroFrog", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	String branches[] = {
+			"force_sensitive_combat_prowess_ranged_accuracy",
+			"force_sensitive_combat_prowess_ranged_speed",
+			"force_sensitive_combat_prowess_melee_accuracy",
+			"force_sensitive_combat_prowess_melee_speed",
+			"force_sensitive_enhanced_reflexes_ranged_defense",
+			"force_sensitive_enhanced_reflexes_melee_defense"
+		};
+
+	for (int i = 0; i < 6; i++) {
+		String branch = branches[i];
+		player->setScreenPlayState("VillageUnlockScreenPlay:" + branch, 2);
+		skillManager->awardSkill(branch + "_04", player, true, true, true);
+	}
+
+	luaFrsTesting = lua->createFunction("FsOutro", "completeVillageOutroFrog", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	luaFrsTesting = lua->createFunction("JediTrials", "completePadawanForTesting", 0);
+	*luaFrsTesting << player;
+
+	luaFrsTesting->callFunction();
+
+	skillManager->awardSkill("force_discipline_light_saber_master", player, true, true, true);
+	skillManager->awardSkill("force_discipline_enhancements_master", player, true, true, true);
+	skillManager->awardSkill("force_discipline_healing_damage_04", player, true, true, true);
+	skillManager->awardSkill("force_discipline_healing_states_04", player, true, true, true);
+
+	luaFrsTesting = lua->createFunction("JediTrials", "completeKnightForTesting", 0);
+	*luaFrsTesting << player;
+	*luaFrsTesting << councilType;
+
+	luaFrsTesting->callFunction();
+}

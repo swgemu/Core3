@@ -523,4 +523,6 @@ class PlayerManager extends Observer implements Logger {
 	
 	private native void loadXpBonusList();
 	public native float getSpeciesXpModifier(final string species, final string xpType);
+	
+	public native void unlockFRSForTesting(CreatureObject player, int councilType);
 }

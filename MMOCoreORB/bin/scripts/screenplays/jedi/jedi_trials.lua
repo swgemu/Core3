@@ -105,7 +105,7 @@ function JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 	return 0
 end
 
-function JediTrials:unlockJediPadawan(pPlayer)
+function JediTrials:unlockJediPadawan(pPlayer, dontSendSui)
 	if (pPlayer == nil) then
 		return
 	end
@@ -116,10 +116,12 @@ function JediTrials:unlockJediPadawan(pPlayer)
 		return
 	end
 
-	local sui = SuiMessageBox.new("JediTrials", "emptyCallback") -- No callback
-	sui.setTitle("@jedi_trials:padawan_trials_title")
-	sui.setPrompt("@jedi_trials:padawan_trials_completed")
-	sui.sendTo(pPlayer)
+	if (dontSendSui == nil or dontSendSui == false) then
+		local sui = SuiMessageBox.new("JediTrials", "emptyCallback") -- No callback
+		sui.setTitle("@jedi_trials:padawan_trials_title")
+		sui.setPrompt("@jedi_trials:padawan_trials_completed")
+		sui.sendTo(pPlayer)
+	end
 
 	if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01")) then
 		awardSkill(pPlayer, "force_title_jedi_rank_01")
@@ -286,6 +288,18 @@ function JediTrials:getNearestForceShrine(pPlayer)
 	end
 
 	local planet = SceneObject(pPlayer):getZoneName()
+	local onValidPlanet = false
+
+	for i = 1, #self.shrinePlanets, 1 do
+		if (self.shrinePlanets[i] == planet) then
+			onValidPlanet = true
+		end
+	end
+
+	if (not onValidPlanet) then
+		planet = "naboo"
+	end
+
 	local pClosestShrine = nil
 	local lastDist = 128000 -- Initialize as anything higher than a SWG zone.
 
@@ -469,4 +483,29 @@ function JediTrials:getTrialNumByName(pPlayer, name)
 	end
 
 	return -1
+end
+
+function JediTrials:completePadawanForTesting(pPlayer)
+	writeScreenPlayData(pPlayer, "PadawanTrials", "startedTrials", 1)
+	self:setTrialsCompleted(pPlayer, #padawanTrialQuests)
+	self:unlockJediPadawan(pPlayer, true)
+end
+
+function JediTrials:completeKnightForTesting(pPlayer, councilType)
+	writeScreenPlayData(pPlayer, "KnightTrials", "startedTrials", 1)
+	writeScreenPlayData(pPlayer, "JediTrials", "JediCouncil", councilType)
+	self:setTrialsCompleted(pPlayer, #knightTrialQuests)
+	self:unlockJediKnight(pPlayer)
+
+	local enclaveLoc
+
+	if (isZoneEnabled("yavin4")) then
+		if (councilType == self.COUNCIL_LIGHT) then
+			enclaveLoc = { -5575, 0, 4905 }
+		else
+			enclaveLoc = { 5079, 0, 305 }
+		end
+
+		SceneObject(pPlayer):switchZone("yavin4", enclaveLoc[1], enclaveLoc[2], enclaveLoc[3], 0)
+	end
 end

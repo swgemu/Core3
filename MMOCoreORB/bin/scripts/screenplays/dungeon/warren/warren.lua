@@ -1134,7 +1134,7 @@ function Warren:lockRoom(pCell)
 			local pObject = SceneObject(pCell):getContainerObject(j - 1)
 
 			if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
-				if (cellName == "plusroom84") then
+				if (cellName == "plusroom84" or cellName == "smallroom86" or cellName == "bigroom87" or cellName == "hall85") then
 					SceneObject(pObject):teleport(79.7, -60, -43.3, 8575749)
 				elseif (cellName == "smallroom47") then
 					SceneObject(pObject):teleport(23.4, -50, -148.9, 8575717)
