@@ -5276,6 +5276,8 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		if (attackerGhost == NULL)
 			continue;
 
+		Locker crossLock(attacker, player);
+
 		if (!allowSameAccountPvpRatingCredit && ghost->getAccountID() == attackerGhost->getAccountID())
 			continue;
 
@@ -5364,8 +5366,6 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		victimRatingTotalDelta += victimRatingDelta;
 		int newRating = curAttackerRating + attackerRatingDelta;
-
-		Locker crossLock(attacker, player);
 
 		attackerGhost->setPvpRating(newRating);
 
