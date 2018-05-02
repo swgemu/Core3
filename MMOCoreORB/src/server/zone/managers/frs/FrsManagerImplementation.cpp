@@ -31,8 +31,8 @@ void FrsManagerImplementation::initialize() {
 
 	Locker locker(managerData);
 
-	Time* lastTick = managerData->getLastMaintenanceTick();
-	uint64 miliDiff = lastTick->miliDifference();
+	uint64 lastTick = managerData->getLastMaintenanceTick();
+	uint64 miliDiff = Time().getMiliTime() - lastTick;
 
 	rankMaintenanceTask = new RankMaintenanceTask(_this.getReferenceUnsafeStaticCast());
 
@@ -42,7 +42,7 @@ void FrsManagerImplementation::initialize() {
 		rankMaintenanceTask->schedule(maintenanceInterval - miliDiff);
 
 	lastTick = managerData->getLastVoteStatusTick();
-	miliDiff = lastTick->miliDifference();
+	miliDiff = Time().getMiliTime() - lastTick;
 
 	voteStatusTask = new VoteStatusTask(_this.getReferenceUnsafeStaticCast());
 
