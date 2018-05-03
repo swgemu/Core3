@@ -1041,7 +1041,7 @@ void FrsManagerImplementation::forcePhaseChange(CreatureObject* player, short en
 		return;
 	}
 
-	Locker clocker(rankData, player);
+	Locker locker(rankData);
 
 	runVotingUpdate(rankData);
 
@@ -1481,6 +1481,8 @@ void FrsManagerImplementation::checkForMissedVotes(FrsRank* rankData) {
 				ManagedReference<CreatureObject*> player = zoneServer->getObject(playerList->get(j)).castTo<CreatureObject*>();
 
 				if (player != nullptr) {
+					Locker clocker(player, rankData);
+
 					missedVoteList.add(playerID);
 					addExperienceDebt(player, votePenalty);
 

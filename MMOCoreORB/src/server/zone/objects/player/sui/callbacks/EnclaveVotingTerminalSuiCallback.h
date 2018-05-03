@@ -59,16 +59,24 @@ public:
 		if (selectingRank) {
 			int selectedRank = index + 1;
 
-			if (suiType == FrsManager::SUI_VOTE_RECORD)
+			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->sendVoteRecordSui(player, terminal, enclaveType, selectedRank);
-			else if (suiType == FrsManager::SUI_VOTE_ACCEPT_PROMOTE)
+			} else if (suiType == FrsManager::SUI_VOTE_ACCEPT_PROMOTE) {
 				frsMan->handleAcceptPromotionSui(player, terminal, enclaveType, selectedRank);
-			else if (suiType == FrsManager::SUI_VOTE_PETITION)
+			} else if (suiType == FrsManager::SUI_VOTE_PETITION) {
 				frsMan->handleVotePetitionSui(player, terminal, enclaveType, selectedRank);
-			else if (suiType == FrsManager::SUI_VOTE_STATUS)
+			} else if (suiType == FrsManager::SUI_VOTE_STATUS) {
 				frsMan->handleVoteStatusSui(player, terminal, enclaveType, selectedRank);
-			else if (suiType == FrsManager::SUI_FORCE_PHASE_CHANGE)
+			} else if (suiType == FrsManager::SUI_FORCE_PHASE_CHANGE) {
+				PlayerObject* ghost = player->getPlayerObject();
+
+				if (ghost == nullptr || !ghost->isPrivileged())
+					return;
+
+				locker.release();
+
 				frsMan->forcePhaseChange(player, enclaveType, selectedRank);
+			}
 		} else {
 			if (suiType == FrsManager::SUI_VOTE_RECORD)
 				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, index);
