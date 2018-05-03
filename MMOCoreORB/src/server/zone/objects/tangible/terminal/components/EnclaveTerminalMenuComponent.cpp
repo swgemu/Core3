@@ -153,8 +153,8 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_VOTE_PETITION, enclaveType);
 		else if (selectedID == 76 && ghost->isPrivileged())
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_FORCE_PHASE_CHANGE, enclaveType);
-		//else
-			//frsManager->recoverJediItems(player);
+		else if (selectedID == 74)
+			frsManager->recoverJediItems(player);
 	/*} else if (terminalType == LIGHT_CHALLENGE) {
 		if (selectedID == 69)
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_STATUS, enclaveType);

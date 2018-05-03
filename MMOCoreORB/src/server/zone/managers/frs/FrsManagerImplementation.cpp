@@ -176,8 +176,9 @@ void FrsManagerImplementation::loadLuaConfig() {
 			String skillName = entry.getStringAt(2);
 			int reqExp = entry.getIntAt(3);
 			int playerCap = entry.getIntAt(4);
+			String robeTemp = entry.getStringAt(5);
 
-			Reference<FrsRankingData*> data = new FrsRankingData(rank, skillName, reqExp, playerCap);
+			Reference<FrsRankingData*> data = new FrsRankingData(rank, skillName, reqExp, playerCap, robeTemp);
 
 			lightRankingData.put(rank, data);
 
@@ -197,8 +198,9 @@ void FrsManagerImplementation::loadLuaConfig() {
 			String skillName = entry.getStringAt(2);
 			int reqExp = entry.getIntAt(3);
 			int playerCap = entry.getIntAt(4);
+			String robeTemp = entry.getStringAt(5);
 
-			Reference<FrsRankingData*> data = new FrsRankingData(rank, skillName, reqExp, playerCap);
+			Reference<FrsRankingData*> data = new FrsRankingData(rank, skillName, reqExp, playerCap, robeTemp);
 
 			darkRankingData.put(rank, data);
 
@@ -1585,3 +1587,56 @@ short FrsManagerImplementation::getEnclaveType(BuildingObject* enclave) {
 	return 0;
 }
 
+void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int councilType = playerData->getCouncilType();
+	int curPlayerRank = playerData->getRank();
+
+	Reference<FrsRankingData*> rankingData = nullptr;
+
+	if (councilType == COUNCIL_LIGHT)
+		rankingData = lightRankingData.get(curPlayerRank);
+	else if (councilType == COUNCIL_DARK)
+		rankingData = darkRankingData.get(curPlayerRank);
+
+	if (rankingData == nullptr)
+		return;
+
+	String robeTemplate = rankingData->getRobeTemplate();
+	uint32 robeCRC = robeTemplate.hashCode();
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return;
+
+	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
+		ManagedReference<SceneObject*> invObj = inventory->getContainerObject(i);
+
+		if (invObj == nullptr)
+			continue;
+
+		if (invObj->getServerObjectCRC() == robeCRC)
+			return;
+	}
+
+	ManagedReference<SceneObject*> robeObj = zoneServer->createObject(robeCRC, 1);
+
+	if (robeObj == nullptr)
+		return;
+
+	if (inventory->transferObject(robeObj, -1, true)) {
+		robeObj->sendTo(player, true);
+		player->sendSystemMessage("@force_rank:items_recovered"); // You have been issued a new set of Jedi rank items from the terminal.
+	} else {
+		robeObj->destroyObjectFromDatabase(true);
+	}
+}

@@ -293,4 +293,7 @@ class FrsManager extends ManagedService implements Logger {
 	
 	@arg1preLocked
 	public native void forcePhaseChange(CreatureObject player, short enclaveType, int rank);
+	
+	@arg1preLocked
+	public native void recoverJediItems(CreatureObject player);
 }

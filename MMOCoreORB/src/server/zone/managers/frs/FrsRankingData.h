@@ -10,14 +10,15 @@ class FrsRankingData : public Object {
 
 protected:
 	int rank, requiredXp, playerCap;
-	String skillName;
+	String skillName, robeTemplate;
 
 public:
-	FrsRankingData(int frsRank, String skill, int reqExp, int cap) : Object() {
+	FrsRankingData(int frsRank, String skill, int reqExp, int cap, String robeTemp) : Object() {
 		rank = frsRank;
 		skillName = skill;
 		requiredXp = reqExp;
 		playerCap = cap;
+		robeTemplate = robeTemp;
 	}
 
 	~FrsRankingData() {
@@ -37,6 +38,10 @@ public:
 
 	const String& getSkillName() const {
 		return skillName;
+	}
+
+	const String& getRobeTemplate() const {
+		return robeTemplate;
 	}
 
 };
