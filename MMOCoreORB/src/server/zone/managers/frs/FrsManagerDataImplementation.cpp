@@ -9,7 +9,12 @@ bool FrsManagerDataImplementation::hasChallengedRecently(uint64 playerID, uint64
 	if (!challengeTimes.contains(playerID))
 		return false;
 
-	return getChallengeDuration(playerID) < challengeCooldown;
+	if (getChallengeDuration(playerID) > challengeCooldown) {
+		challengeTimes.drop(playerID);
+		return false;
+	}
+
+	return true;
 }
 
 uint64 FrsManagerDataImplementation::getChallengeTime(uint64 playerID) {
