@@ -53,6 +53,10 @@ public:
 			}
 		}
 
+		Core::getTaskManager()->scheduleTask([strongRef]{
+			strongRef->runChallengeVoteUpdate();
+		}, "frsChallengeVoteUpdateTask", 5000);
+
 		reschedule(FrsManager::VOTE_STATUS_TICK);
 	}
 };

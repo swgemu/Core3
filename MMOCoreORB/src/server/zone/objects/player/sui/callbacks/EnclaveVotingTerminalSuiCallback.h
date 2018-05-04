@@ -78,17 +78,29 @@ public:
 				frsMan->forcePhaseChange(player, enclaveType, selectedRank);
 			}
 		} else {
-			if (suiType == FrsManager::SUI_VOTE_RECORD)
+			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, index);
+			} else if (suiType == FrsManager::SUI_CHAL_VOTE_STATUS) {
+				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+				uint64 playerID = listBox->getMenuObjectID(index);
+
+				frsMan->handleChallengeVoteStatusSui(player, terminal, playerID);
+			} else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD) {
+				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+				uint64 playerID = listBox->getMenuObjectID(index);
+
+				frsMan->handleChallengeVoteRecordSui(player, terminal, playerID);
+			} else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD_CONFIRM) {
+				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+				uint64 playerID = listBox->getMenuObjectID(index);
+
+				frsMan->handleChallengeVoteRecordConfirmSui(player, terminal, index, playerID);
+			} else if (suiType == FrsManager::SUI_CHAL_VOTE_ISSUE) {
+				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+				uint64 playerID = listBox->getMenuObjectID(index);
+				frsMan->handleChallengeVoteIssueSui(player, terminal, playerID);
+			}
 			/*
-			else if (suiType == FrsManager::SUI_CHAL_VOTE_STATUS)
-				frsMan->handleChallengeVoteStatusSui(player, terminal, suiBox, index);
-			else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD)
-				frsMan->handleChallengeVoteRecordSui(player, terminal, suiBox, index);
-			else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD_CONFIRM)
-				frsMan->handleChallengeVoteRecordConfirmSui(player, terminal, suiBox, index);
-			else if (suiType == FrsManager::SUI_CHAL_VOTE_ISSUE)
-				frsMan->handleChallengeVoteIssueSui(player, terminal, suiBox, index);
 			else if (suiType == FrsManager::SUI_ARENA_CHAL_VIEW)
 				frsMan->handleArenaChallengeViewSui(player, terminal, suiBox, index);
 			else if (suiType == FrsManager::SUI_ARENA_CHAL_ISSUE)
