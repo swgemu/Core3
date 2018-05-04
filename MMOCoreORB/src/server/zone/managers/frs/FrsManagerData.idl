@@ -70,6 +70,10 @@ class FrsManagerData extends ManagedObject {
 		return lightChallenges;
 	}
 	
+	public int getTotalLightChallenges() {
+		return lightChallenges.size();
+	}
+	
 	@preLocked
 	public void addLightChallenge(unsigned long playerID, ChallengeVoteData voteData) {
 		lightChallenges.put(playerID, voteData);
@@ -79,6 +83,12 @@ class FrsManagerData extends ManagedObject {
 	public void removeLightChallenge(unsigned long playerID) {
 		if (lightChallenges.contains(playerID))
 			lightChallenges.drop(playerID);
+	}
+	
+	@local
+	@preLocked
+	public ChallengeVoteData getLightChallenge(unsigned long playerID) {
+		return lightChallenges.get(playerID);
 	}
 	
 	@preLocked
