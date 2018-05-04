@@ -43,12 +43,12 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 	FrsData* frsData = ghost->getFrsData();
 	int playerRank = frsData->getRank();
 
-	if (playerRank < 0) {
+	if (playerRank < 0 && !ghost->isPrivileged()) {
 		player->sendSystemMessage("@force_rank:insufficient_rank_vote"); // You have insufficient rank in order to vote.
 		return;
 	}
 
-	if (frsData->getCouncilType() == 0)
+	if (frsData->getCouncilType() == 0 && !ghost->isPrivileged())
 		return;
 
 	if (terminalType == VOTING) {
@@ -65,14 +65,12 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 		if (ghost->isPrivileged())
 			menuResponse->addRadialMenuItem(76, 3, "Force Phase Change");
 	} else if (terminalType == LIGHT_CHALLENGE) {
-		/*
 		menuResponse->addRadialMenuItem(69, 3, "@force_rank:challenge_vote_status"); // No-Confidence Vote Status
 
 		if (playerRank > 0) {
 			menuResponse->addRadialMenuItemToRadialID(69, 70, 3,"@force_rank:record_challenge_vote"); // Record No-Confidence Vote
 			menuResponse->addRadialMenuItemToRadialID(69, 71, 3,"@force_rank:issue_challenge_vote"); // Issue No-Confidence Vote
 		}
-		*/
 	} else if (terminalType == DARK_CHALLENGE) {
 		/*
 		menuResponse->addRadialMenuItem(69, 3, "@pvp_rating:ch_terminal_view_scores"); // View Challenge Scores
@@ -155,14 +153,14 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_FORCE_PHASE_CHANGE, enclaveType);
 		else if (selectedID == 74)
 			frsManager->recoverJediItems(player);
-	/*} else if (terminalType == LIGHT_CHALLENGE) {
+	} else if (terminalType == LIGHT_CHALLENGE) {
 		if (selectedID == 69)
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_STATUS, enclaveType);
 		else if (selectedID == 70)
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_RECORD, enclaveType);
 		else if (selectedID == 71)
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_ISSUE, enclaveType);
-	} else if (terminalType == DARK_CHALLENGE) {
+	/*} else if (terminalType == DARK_CHALLENGE) {
 		if (selectedID == 69)
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_SCORES, enclaveType);
 		else if (selectedID == 70)

@@ -161,7 +161,6 @@ class FrsManager extends ManagedService implements Logger {
 	@arg1preLocked
 	public native void updatePlayerSkills(CreatureObject player);
 	
-	@preLocked
 	@arg1preLocked
 	public native void demotePlayer(CreatureObject player);
 	
@@ -169,7 +168,7 @@ class FrsManager extends ManagedService implements Logger {
 	public native void promotePlayer(CreatureObject player);
 	
 	@arg1preLocked
-	public native void adjustFrsExperience(CreatureObject player, int amount);
+	public native void adjustFrsExperience(CreatureObject player, int amount, boolean sendSystemMessage = true);
 	
 	@arg1preLocked
 	public native void deductMaintenanceXp(CreatureObject player);
@@ -207,7 +206,24 @@ class FrsManager extends ManagedService implements Logger {
 	@arg1preLocked
 	public native void handleVotePetitionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
+	@arg1preLocked
+	public native void sendChallengeVoteSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);
+	
+	@arg1preLocked
+	public native void handleChallengeVoteIssueSui(CreatureObject player, SceneObject terminal, unsigned long challengedID);
+	
+	@arg1preLocked
+	public native void handleChallengeVoteStatusSui(CreatureObject player, SceneObject terminal, unsigned long challengedID);
+	
+	@arg1preLocked
+	public native void handleChallengeVoteRecordSui(CreatureObject player, SceneObject terminal, unsigned long challengedID);
+	
+	@arg1preLocked
+	public native void handleChallengeVoteRecordConfirmSui(CreatureObject player, SceneObject terminal, int index, unsigned long challengedID);
+	
 	public native int getVoteWeight(int playerRank, int voteRank);
+	public native int getChallengeVoteWeight(int playerRank, int challengedRank);
+	public native int getRankTier(int rank);
 	
 	@arg1preLocked
 	@arg2preLocked
@@ -215,6 +231,8 @@ class FrsManager extends ManagedService implements Logger {
 	
 	@arg1preLocked
 	public native void runVotingUpdate(FrsRank rankInfo);
+	
+	public native void runChallengeVoteUpdate();
 	
 	@arg1preLocked
 	public native void checkForMissedVotes(FrsRank rankInfo);
@@ -227,6 +245,9 @@ class FrsManager extends ManagedService implements Logger {
 	@local
 	@arg1preLocked
 	public native void sendMailToVoters(FrsRank rankData, final string sub, @dereferenced StringIdChatParameter body);
+	
+	@local
+	public native void sendChallengeVoteMail(int challengedRank, final string sub, @dereferenced StringIdChatParameter body);
 	
 	@local
 	public native void sendMailToList(Vector<unsigned long> playerList, final string sub, @dereferenced StringIdChatParameter body);
@@ -291,7 +312,6 @@ class FrsManager extends ManagedService implements Logger {
 		return managerData.isFightingInArena(playerID);
 	}
 	
-	@arg1preLocked
 	public native void forcePhaseChange(CreatureObject player, short enclaveType, int rank);
 	
 	@arg1preLocked

@@ -471,6 +471,8 @@ void FrsManagerImplementation::promotePlayer(CreatureObject* player) {
 	StringIdChatParameter param("@force_rank:rank_gained"); // You have achieved the Enclave rank of %TO.
 	param.setTO(rankString);
 	player->sendSystemMessage(param);
+
+	recoverJediItems(player);
 }
 
 void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
@@ -499,7 +501,7 @@ void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
 	player->sendSystemMessage(param);
 }
 
-void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int amount) {
+void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int amount, bool sendSystemMessage) {
 	if (player == nullptr || amount == 0)
 		return;
 
@@ -511,10 +513,12 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 	if (amount > 0) {
 		ghost->addExperience("force_rank_xp", amount, true);
 
-		StringIdChatParameter param("@force_rank:experience_granted"); // You have gained %DI Force Rank experience.
-		param.setDI(amount);
+		if (sendSystemMessage) {
+			StringIdChatParameter param("@force_rank:experience_granted"); // You have gained %DI Force Rank experience.
+			param.setDI(amount);
 
-		player->sendSystemMessage(param);
+			player->sendSystemMessage(param);
+		}
 	} else {
 		FrsData* playerData = ghost->getFrsData();
 		int rank = playerData->getRank();
@@ -528,9 +532,11 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 
 		ghost->addExperience("force_rank_xp", amount, true);
 
-		StringIdChatParameter param("@force_rank:experience_lost"); // You have lost %DI Force Rank experience.
-		param.setDI(amount * -1);
-		player->sendSystemMessage(param);
+		if (sendSystemMessage) {
+			StringIdChatParameter param("@force_rank:experience_lost"); // You have lost %DI Force Rank experience.
+			param.setDI(amount * -1);
+			player->sendSystemMessage(param);
+		}
 
 		curExperience += amount;
 
@@ -1317,6 +1323,33 @@ int FrsManagerImplementation::getVoteWeight(int playerRank, int voteRank) {
 	}
 }
 
+int FrsManagerImplementation::getRankTier(int rank) {
+	switch (rank) {
+		case 11: return 5;
+		case 10: return 4;
+		case 9:
+		case 8: return 3;
+		case 7:
+		case 6:
+		case 5: return 2;
+		case 4:
+		case 3:
+		case 2:
+		case 1: return 1;
+		default: return 0;
+	}
+}
+
+int FrsManagerImplementation::getChallengeVoteWeight(int playerRank, int challengedRank) {
+	int playerTier = getRankTier(playerRank);
+	int challengedTier = getRankTier(challengedRank);
+
+	if (playerTier <= challengedTier)
+		return 1;
+
+	return 0;
+}
+
 bool FrsManagerImplementation::hasPlayerVoted(CreatureObject* player, FrsRank* rankData) {
 	PlayerObject* ghost = player->getPlayerObject();
 
@@ -1343,6 +1376,102 @@ int FrsManagerImplementation::getAvailableRankSlots(FrsRank* rankData) {
 		return 0;
 
 	return rankInfo->getPlayerCap() - rankData->getTotalPlayersInRank();
+}
+
+void FrsManagerImplementation::runChallengeVoteUpdate() {
+	Locker locker(managerData);
+
+	VectorMap<uint64, ManagedReference<ChallengeVoteData*> >* challenges = managerData->getLightChallenges();
+
+	if (challenges->size() == 0)
+		return;
+
+	for (int i = challenges->size() - 1; i >= 0; i--) {
+		uint64 challengedID = challenges->elementAt(i).getKey();
+		ManagedReference<ChallengeVoteData*> challengeData = challenges->elementAt(i).getValue();
+
+		if (challengeData == nullptr) {
+			managerData->removeLightChallenge(challengedID);
+			continue;
+		}
+
+		uint64 challengeStart = challengeData->getChallengeVoteStart();
+		uint64 miliDiff = Time().getMiliTime() - challengeStart;
+
+		if (miliDiff < voteChallengeDuration)
+			continue;
+
+		if (challengeData->getStatus() == ChallengeVoteData::VOTING_CLOSED) {
+			managerData->removeLightChallenge(challengedID);
+			continue;
+		}
+
+		ManagedReference<CreatureObject*> challenged = zoneServer->getObject(challengedID).castTo<CreatureObject*>();
+
+		if (challenged == nullptr) {
+			managerData->removeLightChallenge(challengedID);
+			continue;
+		}
+
+		PlayerObject* ghost = challenged->getPlayerObject();
+
+		if (ghost == nullptr)
+			continue;
+
+		Locker xlock(challenged, managerData);
+
+		FrsData* playerData = ghost->getFrsData();
+		int playerRank = playerData->getRank();
+		int councilType = playerData->getCouncilType();
+
+		ManagedReference<FrsManager*> strongRef = _this.getReferenceUnsafeStaticCast();
+		String challengedName = challenged->getFirstName();
+		int challengedRank = challengeData->getPlayerRank();
+
+		if (playerRank != challengedRank || councilType != COUNCIL_LIGHT) {
+			demotePlayer(challenged);
+
+			Core::getTaskManager()->executeTask([strongRef, challengedRank, challengedName] () {
+				StringIdChatParameter mailBody("@force_rank:challenge_vote_cancelled_body"); // The no-confidence vote on %TO has been cancelled due to a change in the member's ranking.
+				mailBody.setTO(challengedName);
+
+				strongRef->sendChallengeVoteMail(challengedRank, "@force_rank:challenge_vote_cancelled_sub", mailBody);
+			}, "ChallengeVoteMailTask");
+
+			managerData->removeLightChallenge(challengedID);
+			continue;
+		}
+
+		int yesVotes = challengeData->getTotalYesVotes();
+		int noVotes = challengeData->getTotalNoVotes();
+
+		bool votePassed = yesVotes > noVotes * 2;
+
+		if (votePassed) {
+			Core::getTaskManager()->executeTask([strongRef, challengedRank, challenged, yesVotes, noVotes] () {
+				StringIdChatParameter mailBody("@force_rank:challenge_vote_success_body"); // The vote against %TT has succeeded with %TO votes for and %DI votes against.
+				mailBody.setTT(challenged->getFirstName());
+				mailBody.setTO(String::valueOf(yesVotes));
+				mailBody.setDI(noVotes);
+
+				strongRef->sendChallengeVoteMail(challengedRank, "@force_rank:challenge_vote_success_sub", mailBody);
+
+				Locker locker(challenged);
+				strongRef->demotePlayer(challenged);
+			}, "ChallengeVoteMailTask");
+		} else {
+			Core::getTaskManager()->executeTask([strongRef, challengedRank, challengedName, yesVotes, noVotes] () {
+				StringIdChatParameter mailBody("@force_rank:challenge_vote_fail_body"); // The vote against %TT has failed to pass with %TO votes for and %DI votes against. (Note that for a vote to succeed, two-thirds or more must be for it.)
+				mailBody.setTT(challengedName);
+				mailBody.setTO(String::valueOf(yesVotes));
+				mailBody.setDI(noVotes);
+
+				strongRef->sendChallengeVoteMail(challengedRank, "@force_rank:challenge_vote_fail_sub", mailBody);
+			}, "ChallengeVoteMailTask");
+		}
+
+		challengeData->setStatus(ChallengeVoteData::VOTING_CLOSED);
+	}
 }
 
 void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
@@ -1510,7 +1639,14 @@ void FrsManagerImplementation::sendMailToVoters(FrsRank* rankData, const String&
 		if (voteWeight <= 0)
 			continue;
 
-		SortedVector<uint64>* voterList = rankData->getPlayerList();
+		ManagedReference<FrsRank*> voterData = getFrsRank(rankData->getCouncilType(), i);
+
+		if (voterData == nullptr)
+			continue;
+
+		Locker xlock(voterData, rankData);
+
+		SortedVector<uint64>* voterList = voterData->getPlayerList();
 
 		sendMailToList(voterList, sub, body);
 	}
@@ -1534,6 +1670,7 @@ void FrsManagerImplementation::sendMailToList(Vector<uint64>* playerList, const 
 Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int numWinners) {
 	Vector<uint64>* winnerList = new Vector<uint64>();
 	VectorMap<uint32, uint64> reverseList;
+	reverseList.setAllowDuplicateInsertPlan();
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 
 	for (int i = 0; i < petitionerList->size(); i++) {
@@ -1550,6 +1687,376 @@ Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int num
 	}
 
 	return winnerList;
+}
+
+void FrsManagerImplementation::sendChallengeVoteSUI(CreatureObject* player, SceneObject* terminal, short suiType, short enclaveType) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
+	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, suiType, enclaveType, -1, false));
+	box->setUsingObject(terminal);
+	box->setOkButton(true, "@ok");
+	box->setForceCloseDistance(16.f);
+	box->setCancelButton(true, "@cancel");
+
+	if (suiType == SUI_CHAL_VOTE_STATUS or suiType == SUI_CHAL_VOTE_RECORD) {
+		if (suiType == SUI_CHAL_VOTE_STATUS) {
+			box->setPromptText("@force_rank:challenge_vote_status_select"); // Select a no-confidence challenge you wish to view.
+			box->setPromptTitle("@force_rank:challenge_vote_status_title"); // No-Confidence Vote Status
+		} else {
+			box->setPromptText("@force_rank:challenge_vote_record_vote"); // Select the no-confidence challenge for which you wish to vote.
+			box->setPromptTitle("@force_rank:rank_selection"); // No-Confidence Voting
+		}
+
+		Locker clocker(managerData, player);
+
+		VectorMap<uint64, ManagedReference<ChallengeVoteData*> >* challenges = managerData->getLightChallenges();
+
+		if (challenges->size() == 0) {
+			player->sendSystemMessage("@force_rank:no_challenge_votes"); // There are not any active no-confidence votes at this time.
+			return;
+		}
+
+		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+		for (int i = 0; i < challenges->size(); i++) {
+			uint64 challengedID = challenges->elementAt(i).getKey();
+
+			ManagedReference<ChallengeVoteData*> challengeData = challenges->elementAt(i).getValue();
+
+			if (challengeData == nullptr)
+				continue;
+
+			if (suiType == SUI_CHAL_VOTE_RECORD && playerRank > challengeData->getPlayerRank())
+				continue;
+
+			String playerName = playerManager->getPlayerName(challengedID);
+
+			if (playerName.isEmpty())
+				continue;
+
+			box->addMenuItem(playerName, challengedID);
+		}
+	} else if (suiType == SUI_CHAL_VOTE_ISSUE) {
+		box->setPromptText("@force_rank:challenge_vote_select_name"); // Select the name of the Jedi you wish to issue a no-confidence challenge vote. The cost of calling for such a vote is 1000 Force Rank experience per rank challenged. If successful that Jedi will be demoted one rank.
+		box->setPromptTitle("@force_rank:challenge_vote_select_name_title"); // No-Confidence Vote Selection
+
+		ManagedReference<FrsRank*> rankData = getFrsRank(COUNCIL_LIGHT, playerRank + 1);
+
+		if (rankData == nullptr)
+			return;
+
+		Locker clocker(rankData, player);
+
+		SortedVector<uint64>* rankList = rankData->getPlayerList();
+		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+		for (int j = 0; j < rankList->size(); j++) {
+			uint64 playerID = rankList->get(j);
+			String playerName = playerManager->getPlayerName(playerID);
+
+			if (playerName.isEmpty())
+				continue;
+
+			box->addMenuItem(playerName, playerID);
+		}
+
+	} else {
+		return;
+	}
+
+
+	box->setUsingObject(terminal);
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* player, SceneObject* terminal, uint64 challengedID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+
+	ManagedReference<CreatureObject*> challenged = zoneServer->getObject(challengedID).castTo<CreatureObject*>();
+
+	if (challenged == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	PlayerObject* challengedGhost = challenged->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	Locker xlock(challenged, player);
+
+	FrsData* challengedData = challengedGhost->getFrsData();
+	int challengedRank = challengedData->getRank();
+
+	xlock.release();
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	String playerName = playerManager->getPlayerName(challengedID);
+
+	if (playerName.isEmpty()) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	if (challengedRank != playerRank + 1) {
+		player->sendSystemMessage("@force_rank:vote_challenge_not_correct_rank"); // You can only issue a no-confidence challenge against one rank above your own.
+		return;
+	}
+
+	Locker clocker(managerData, player);
+
+	ManagedReference<ChallengeVoteData*> challengeData = managerData->getLightChallenge(challengedID);
+
+	if (challengeData != nullptr) {
+		StringIdChatParameter param("@force_rank:vote_challenge_already_challenged"); // %TO is already in the process of a no-confidence challenge.
+		param.setTO(playerName);
+		player->sendSystemMessage(param);
+		return;
+	}
+
+	if (managerData->getTotalLightChallenges() >= maxChallenges) {
+		player->sendSystemMessage("@force_rank:vote_challenge_too_many"); // There are already a maximum number of no-confidence challenges active.
+		return;
+	}
+
+	if (managerData->hasChallengedRecently(player->getObjectID(), voteChallengeDuration)) {
+		uint64 miliDiff = managerData->getChallengeDuration(player->getObjectID());
+		uint64 timeLeft = voteChallengeDuration - miliDiff;
+
+		StringIdChatParameter param("@force_rank:challenge_too_soon"); // You cannot issue a no-confidence challenge against another member for another %TO
+		param.setTO(getTimeString(timeLeft / 1000));
+		player->sendSystemMessage(param);
+		return;
+	}
+
+	int curExperience = ghost->getExperience("force_rank_xp");
+	int challengeCost = voteChallengeCost * challengedRank;
+
+	Reference<FrsRankingData*> rankingData = lightRankingData.get(playerRank);
+
+	if (rankingData == nullptr)
+		return;
+
+	int rankXp = rankingData->getRequiredExperience();
+	int availXp = curExperience - rankXp;
+
+	if (challengeCost > availXp) {
+		player->sendSystemMessage("@force_rank:vote_challenge_not_enough_xp"); // You do not have enough Force Rank experience to issue a no-confidence challenge. Note that you can not spend experience if it would cause you to lose rank.
+		return;
+	}
+
+	adjustFrsExperience(player, challengeCost * -1, false);
+
+	challengeData = new ChallengeVoteData(challengedID, ChallengeVoteData::VOTING_OPEN, challengedRank);
+	challengeData->updateChallengeVoteStart();
+
+	managerData->addLightChallenge(challengedID, challengeData);
+	managerData->updateChallengeTime(player->getObjectID());
+
+	StringIdChatParameter param("@force_rank:vote_challenge_initiated"); // You issue a no-confidence challenge against %TO.
+	param.setTO(playerName);
+	player->sendSystemMessage(param);
+
+	ManagedReference<FrsManager*> strongRef = _this.getReferenceUnsafeStaticCast();
+	String challengerName = player->getFirstName();
+
+	Core::getTaskManager()->executeTask([strongRef, challengedRank, playerName, challengerName] () {
+		StringIdChatParameter mailBody("@force_rank:challenge_vote_begun_body"); // %TT has initiated a no-confidence challenge vote against %TO. It is your Enclave duty to vote for or against this motion as soon as possible.
+		mailBody.setTT(challengerName);
+		mailBody.setTO(playerName);
+
+		strongRef->sendChallengeVoteMail(challengedRank, "@force_rank:challenge_vote_begun_sub", mailBody);
+	}, "ChallengeVoteMailTask");
+}
+
+void FrsManagerImplementation::handleChallengeVoteStatusSui(CreatureObject* player, SceneObject* terminal, uint64 challengedID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	Locker clocker(managerData, player);
+
+	ManagedReference<ChallengeVoteData*> challengeData = managerData->getLightChallenge(challengedID);
+
+	if (challengeData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+	String playerName = playerManager->getPlayerName(challengedID);
+
+	if (playerName.isEmpty()) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLESINGLEBUTTON);
+	box->setOkButton(true, "@ok");
+	box->setForceCloseDistance(16.f);
+	box->setPromptText("No-Confidence Challenge Status for " + playerName);
+	box->setPromptTitle("@force_rank:challenge_vote_status_title"); // No-Confidence Vote Status
+
+	uint64 startTime = challengeData->getChallengeVoteStart();
+	uint64 miliDiff = Time().getMiliTime() - startTime;
+	uint64 timeLeft = voteChallengeDuration - miliDiff;
+
+	String voteStatus = "Voting Complete";
+
+	if (challengeData->getStatus() == ChallengeVoteData::VOTING_OPEN && miliDiff < voteChallengeDuration)
+		voteStatus = "Voting Open";
+
+	box->addMenuItem("Current Stage: " + voteStatus);
+
+	String timeLeftString = "";
+
+	if (challengeData->getStatus() == ChallengeVoteData::VOTING_OPEN) {
+		if (miliDiff < voteChallengeDuration) {
+			uint64 timeLeft = voteChallengeDuration - miliDiff;
+			timeLeftString = getTimeString(timeLeft / 1000);
+		} else {
+			timeLeftString = "closed.";
+		}
+
+		box->addMenuItem("Time Remaining: " + timeLeftString);
+	}
+
+	box->addMenuItem("Votes For: " + String::valueOf(challengeData->getTotalYesVotes()));
+	box->addMenuItem("Votes Against: " + String::valueOf(challengeData->getTotalNoVotes()));
+
+	box->setUsingObject(terminal);
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void FrsManagerImplementation::handleChallengeVoteRecordSui(CreatureObject* player, SceneObject* terminal, uint64 challengedID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	Locker clocker(managerData, player);
+
+	ManagedReference<ChallengeVoteData*> challengeData = managerData->getLightChallenge(challengedID);
+
+	if (challengeData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	if (challengeData->hasVoted(player->getObjectID())) {
+		player->sendSystemMessage("@force_rank:already_voted"); // You have already voted
+		return;
+	}
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+	String playerName = playerManager->getPlayerName(challengedID);
+
+	if (playerName.isEmpty()) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
+	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, SUI_CHAL_VOTE_RECORD_CONFIRM, COUNCIL_LIGHT, -1, false));
+	box->setUsingObject(terminal);
+	box->setOkButton(true, "@ok");
+	box->setForceCloseDistance(16.f);
+	box->setCancelButton(true, "@cancel");
+
+	box->setPromptText("Do you vote for or against the removal of " + playerName + "?");
+	box->setPromptTitle("@force_rank:challenge_vote_record_vote_title"); // No-Confidence Voting
+
+	box->addMenuItem("@force_rank:vote_for", challengedID);
+	box->addMenuItem("@force_rank:vote_against", challengedID);
+
+	box->setUsingObject(terminal);
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void FrsManagerImplementation::handleChallengeVoteRecordConfirmSui(CreatureObject* player, SceneObject* terminal, int index, uint64 challengedID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	Locker clocker(managerData, player);
+
+	ManagedReference<ChallengeVoteData*> challengeData = managerData->getLightChallenge(challengedID);
+
+	if (challengeData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	if (challengeData->hasVoted(player->getObjectID())) {
+		player->sendSystemMessage("@force_rank:already_voted"); // You have already voted
+		return;
+	}
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+	String playerName = playerManager->getPlayerName(challengedID);
+
+	if (playerName.isEmpty()) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	uint64 startTime = challengeData->getChallengeVoteStart();
+	uint64 miliDiff = Time().getMiliTime() - startTime;
+
+	if (miliDiff >= voteChallengeDuration) {
+		player->sendSystemMessage("@force_rank:vote_time_expired"); // Time has expired for the voting process.
+		return;
+	}
+
+	if (index == 0) {
+		challengeData->addYesVote(player->getObjectID());
+	} else {
+		challengeData->addNoVote(player->getObjectID());
+	}
+
+	player->sendSystemMessage("@force_rank:challenge_vote_success"); // You have successfully cast your no-confidence vote.
+}
+
+void FrsManagerImplementation::sendChallengeVoteMail(int challengedRank, const String& sub, StringIdChatParameter& body) {
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	for (int i = 1; i <= 11; i++) {
+		int voteWeight = getChallengeVoteWeight(i, challengedRank);
+
+		if (voteWeight <= 0)
+			continue;
+
+		ManagedReference<FrsRank*> voterData = getFrsRank(COUNCIL_LIGHT, i);
+
+		if (voterData == nullptr)
+			continue;
+
+		Locker locker(voterData);
+
+		SortedVector<uint64>* voterList = voterData->getPlayerList();
+
+		sendMailToList(voterList, sub, body);
+	}
 }
 
 String FrsManagerImplementation::getTimeString(uint64 timestamp) {
