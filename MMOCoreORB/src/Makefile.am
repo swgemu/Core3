@@ -436,6 +436,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/DetectorZoneComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/MinefieldMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/EnclaveTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp \
@@ -856,6 +857,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/resource/InterplanetarySurveyImplementation.cpp \
 		server/zone/managers/reaction/ReactionManagerImplementation.cpp \
+		server/zone/managers/frs/FrsManagerDataImplementation.cpp \
 		server/zone/managers/frs/FrsManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/PetManagerImplementation.cpp \
