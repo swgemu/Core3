@@ -463,7 +463,14 @@ void FrsManagerImplementation::promotePlayer(CreatureObject* player) {
 		return;
 
 	int newRank = rank + 1;
-	setPlayerRank(player, newRank);
+
+	ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
+	ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+
+	Core::getTaskManager()->executeTask([strongMan, strongRef, newRank] () {
+		Locker locker(strongRef);
+		strongMan->setPlayerRank(strongRef, newRank);
+	}, "SetPlayerRankTask");
 
 	String stfRank = "@force_rank:rank" + String::valueOf(newRank);
 	String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
@@ -491,7 +498,13 @@ void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
 		return;
 
 	int newRank = rank - 1;
-	setPlayerRank(player, newRank);
+	ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
+	ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+
+	Core::getTaskManager()->executeTask([strongMan, strongRef, newRank] () {
+		Locker locker(strongRef);
+		strongMan->setPlayerRank(strongRef, newRank);
+	}, "SetPlayerRankTask");
 
 	String stfRank = "@force_rank:rank" + String::valueOf(newRank);
 	String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
@@ -838,6 +851,9 @@ void FrsManagerImplementation::sendVoteSUI(CreatureObject* player, SceneObject* 
 	} else if (suiType == SUI_VOTE_ACCEPT_PROMOTE) {
 		box->setPromptText("@force_rank:vote_promotion_select"); // Select the rank whose status you wish to view.
 		box->setPromptTitle("@force_rank:rank_selection"); // Rank Selection
+	} else if (suiType == SUI_VOTE_DEMOTE) {
+		box->setPromptText("@force_rank:demote_select_rank"); // Select the rank whose member you wish to demote.
+		box->setPromptTitle("@force_rank:rank_selection"); // Rank Selection
 	}  else if (suiType == SUI_VOTE_PETITION) {
 		box->setPromptText("@force_rank:vote_petition_select"); // Select the rank for which you wish to petition for membership.
 		box->setPromptTitle("@force_rank:rank_selection"); // Rank Selection
@@ -1056,7 +1072,7 @@ void FrsManagerImplementation::forcePhaseChange(CreatureObject* player, short en
 	player->sendSystemMessage("Rank " + String::valueOf(rank) + "'s phase has been changed.");
 }
 
-void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, SceneObject* terminal, short enclaveType, int rank, int index) {
+void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, SceneObject* terminal, short enclaveType, int rank, uint64 petitionerID) {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1095,14 +1111,6 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 		return;
 	}
 
-	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
-
-	if (petitionerList->size() <= index)
-		return;
-
-	VectorMapEntry<uint64, int>* petitionerData = &petitionerList->elementAt(index);
-
-	uint64 petitionerID = petitionerData->getKey();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 	String playerName = playerManager->getPlayerName(petitionerID);
 
@@ -1111,7 +1119,8 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 		return;
 	}
 
-	int curVotes = petitionerData->getValue();
+	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
+	int curVotes = petitionerList->get(petitionerID);
 
 	rankData->addToPetitionerList(petitionerID, curVotes + 1);
 
@@ -2058,6 +2067,219 @@ void FrsManagerImplementation::sendChallengeVoteMail(int challengedRank, const S
 		sendMailToList(voterList, sub, body);
 	}
 }
+
+void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneObject* terminal, short enclaveType, int rank) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	ManagedReference<FrsRank*> rankData = getFrsRank(enclaveType, rank);
+
+	if (rankData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_rank_selected"); // That is an invalid rank.
+		return;
+	}
+
+	Locker clocker(rankData, player);
+
+	int demoteRank = rankData->getRank();
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+
+	int demoteTier = getRankTier(demoteRank);
+	int playerTier = getRankTier(playerRank);
+
+	if (rankData->getTotalPetitioners() <= 0) {
+		player->sendSystemMessage("@force_rank:no_players_in_rank"); // There are no members in that rank.
+		return;
+	}
+
+	SortedVector<uint64>* rankList = rankData->getPlayerList();
+
+	clocker.release();
+
+	Locker xlock(managerData, player);
+
+	if (playerTier != 5 && (demoteTier + 1) >= playerTier) {
+		player->sendSystemMessage("@force_rank:demote_too_low_rank"); // You must be at least two Tiers higher than that of the rank you wish to demote. The Council Leader may demote anyone.
+		return;
+	}
+
+	if (managerData->hasDemotedRecently(player->getObjectID(), requestDemotionDuration)) {
+		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
+		uint64 timeLeft = requestDemotionDuration - miliDiff;
+
+		StringIdChatParameter param("@force_rank:demote_too_soon"); // 	You cannot demote a member for another %TO
+		param.setTO(getTimeString(timeLeft / 1000));
+		player->sendSystemMessage(param);
+		return;
+	}
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
+	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, SUI_VOTE_DEMOTE, enclaveType, rank, false));
+	box->setUsingObject(terminal);
+	box->setOkButton(true, "@ok");
+	box->setForceCloseDistance(16.f);
+	box->setCancelButton(true, "@cancel");
+
+	box->setPromptText("@force_rank:demote_select_player"); // Select the member that you wish to demote. Once you make this selection, it may not be undone.
+	box->setPromptTitle("@force_rank:demote_selection"); // Demote Selection
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int i = 0; i < rankList->size(); i++) {
+		uint64 playerID = rankList->elementAt(i);
+		String playerName = playerManager->getPlayerName(playerID);
+
+		if (playerName.isEmpty())
+			continue;
+
+		box->addMenuItem(playerName, playerID);
+	}
+
+	box->setUsingObject(terminal);
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, SceneObject* terminal, short enclaveType, int rank, uint64 playerID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	ManagedReference<CreatureObject*> playerToDemote = zoneServer->getObject(playerID).castTo<CreatureObject*>();
+
+	if (playerToDemote == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
+		return;
+	}
+
+	Locker xlock(playerToDemote, player);
+
+	PlayerObject* demoteGhost = playerToDemote->getPlayerObject();
+
+	if (demoteGhost == nullptr)
+		return;
+
+	FrsData* demotePlayerData = demoteGhost->getFrsData();
+	int demotePlayerRank = demotePlayerData->getRank();
+
+	if (demotePlayerRank != rank) {
+		player->sendSystemMessage("@force_rank:demote_player_changed_rank"); // That member's rank has changed since you have made your selection.
+		return;
+	}
+
+	xlock.release();
+
+	ManagedReference<FrsRank*> rankData = getFrsRank(enclaveType, rank);
+
+	if (rankData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_rank_selected"); // That is an invalid rank.
+		return;
+	}
+
+	Locker clocker(rankData, player);
+
+	int demoteRank = rankData->getRank();
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+	int councilType = playerData->getCouncilType();
+
+	int demoteTier = getRankTier(demoteRank);
+	int playerTier = getRankTier(playerRank);
+
+	clocker.release();
+
+	Locker crosslock(managerData, player);
+
+	if (playerTier != 5 && (demoteTier + 1) >= playerTier) {
+		player->sendSystemMessage("@force_rank:demote_too_low_rank"); // You must be at least two Tiers higher than that of the rank you wish to demote. The Council Leader may demote anyone.
+		return;
+	}
+
+	if (managerData->hasDemotedRecently(player->getObjectID(), requestDemotionDuration)) {
+		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
+		uint64 timeLeft = requestDemotionDuration - miliDiff;
+
+		StringIdChatParameter param("@force_rank:demote_too_soon"); // 	You cannot demote a member for another %TO
+		param.setTO(getTimeString(timeLeft / 1000));
+		player->sendSystemMessage(param);
+		return;
+	}
+
+	int curExperience = ghost->getExperience("force_rank_xp");
+	int demoteCost = requestDemotionCost * demotePlayerRank;
+
+	Reference<FrsRankingData*> rankingData = nullptr;
+
+	if (councilType == COUNCIL_LIGHT)
+		rankingData = lightRankingData.get(playerRank);
+	else if (councilType == COUNCIL_DARK)
+		rankingData = darkRankingData.get(playerRank);
+
+	if (rankingData == nullptr)
+		return;
+
+	int rankXp = rankingData->getRequiredExperience();
+	int availXp = curExperience - rankXp;
+
+	if (demoteCost > availXp) {
+		StringIdChatParameter param("@force_rank:insufficient_experience"); // You do not have enough experience to cover the %DI cost without losing a rank.
+		param.setDI(demoteCost);
+		player->sendSystemMessage(param);
+		return;
+	}
+
+	adjustFrsExperience(player, demoteCost * -1);
+	managerData->updateChallengeTime(player->getObjectID());
+
+	ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
+	ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+
+	Core::getTaskManager()->executeTask([strongMan, strongRef] () {
+		Locker locker(strongRef);
+		strongMan->demotePlayer(strongRef);
+	}, "DemotePlayerTask");
+
+	StringIdChatParameter param("@force_rank:demote_player_complete"); // You demote %TO.
+	param.setTO(playerToDemote->getFirstName());
+	player->sendSystemMessage(param);
+
+	Vector<uint64> memberList = getPlayerListByCouncil(councilType);
+
+	StringIdChatParameter mailBody("@force_rank:demote_request_body_rank"); // Using Rank privilege, %TU has demoted %TT by one rank.
+	mailBody.setTU(player->getFirstName());
+	mailBody.setTT(playerToDemote->getFirstName());
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int j = 0; j < memberList.size(); j++) {
+		uint64 listID = memberList.get(j);
+
+		if (listID == playerID)
+			continue;
+
+		String name = playerManager->getPlayerName(listID);
+
+		if (name.isEmpty())
+			continue;
+
+		chatManager->sendMail("Enclave Records", "@force_rank:demote_request_sub_rank", mailBody, name);
+	}
+
+	StringIdChatParameter mBody("@force_rank:demote_request_body"); // 	Using Rank privilege, %TO has demoted you one rank.
+	mBody.setTO(player->getFirstName());
+
+	String playerName = playerManager->getPlayerName(playerID);
+
+	chatManager->sendMail("Enclave Records", "@force_rank:demote_request_sub_rank", mBody, playerName);
+}
+
 
 String FrsManagerImplementation::getTimeString(uint64 timestamp) {
 	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};

@@ -198,13 +198,19 @@ class FrsManager extends ManagedService implements Logger {
 	public native void sendVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
 	@arg1preLocked
-	public native void handleVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank, int index);
+	public native void handleVoteRecordSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank, unsigned long petitionerID);
 	
 	@arg1preLocked
 	public native void handleAcceptPromotionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
 	
 	@arg1preLocked
 	public native void handleVotePetitionSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@arg1preLocked
+	public native void sendVoteDemoteSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank);
+	
+	@arg1preLocked
+	public native void handleVoteDemoteSui(CreatureObject player, SceneObject terminal, short enclaveType, int rank, unsigned long playerID);
 	
 	@arg1preLocked
 	public native void sendChallengeVoteSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);

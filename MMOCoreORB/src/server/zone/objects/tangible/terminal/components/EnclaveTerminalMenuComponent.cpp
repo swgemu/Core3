@@ -57,8 +57,8 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 		menuResponse->addRadialMenuItemToRadialID(69, 71, 3,"@force_rank:accept_promotion"); // Accept Promotion
 		menuResponse->addRadialMenuItemToRadialID(69, 73, 3,"@force_rank:petition"); // Petition
 
-		//if (playerRank > 7 && enclaveType == FrsManager::COUNCIL_LIGHT)
-		//	menuResponse->addRadialMenuItem(75, 3, "@force_rank:demote_member"); // Demote Lower Tier Member
+		if (playerRank > 7 && enclaveType == FrsManager::COUNCIL_LIGHT)
+			menuResponse->addRadialMenuItem(75, 3, "@force_rank:demote_member"); // Demote Lower Tier Member
 
 		menuResponse->addRadialMenuItem(74, 3, "@force_rank:recover_jedi_items"); // Recover Jedi Items
 
@@ -130,12 +130,12 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	FrsData* frsData = ghost->getFrsData();
 	int playerRank = frsData->getRank();
 
-	if (playerRank < 0) {
+	if (playerRank < 0 && !ghost->isPrivileged()) {
 		player->sendSystemMessage("@force_rank:insufficient_rank_vote"); // You have insufficient rank in order to vote.
 		return 1;
 	}
 
-	if (frsData->getCouncilType() == 0)
+	if (frsData->getCouncilType() == 0 && !ghost->isPrivileged())
 		return 1;
 
 	if (terminalType == VOTING) {

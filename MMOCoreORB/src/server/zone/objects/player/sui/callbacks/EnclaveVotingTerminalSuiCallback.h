@@ -61,6 +61,8 @@ public:
 
 			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->sendVoteRecordSui(player, terminal, enclaveType, selectedRank);
+			} else if (suiType == FrsManager::SUI_VOTE_DEMOTE) {
+				frsMan->sendVoteDemoteSui(player, terminal, enclaveType, selectedRank);
 			} else if (suiType == FrsManager::SUI_VOTE_ACCEPT_PROMOTE) {
 				frsMan->handleAcceptPromotionSui(player, terminal, enclaveType, selectedRank);
 			} else if (suiType == FrsManager::SUI_VOTE_PETITION) {
@@ -78,26 +80,20 @@ public:
 				frsMan->forcePhaseChange(player, enclaveType, selectedRank);
 			}
 		} else {
-			if (suiType == FrsManager::SUI_VOTE_RECORD) {
-				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, index);
-			} else if (suiType == FrsManager::SUI_CHAL_VOTE_STATUS) {
-				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-				uint64 playerID = listBox->getMenuObjectID(index);
+			SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+			uint64 playerID = listBox->getMenuObjectID(index);
 
+			if (suiType == FrsManager::SUI_VOTE_RECORD) {
+				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, playerID);
+			} if (suiType == FrsManager::SUI_VOTE_DEMOTE) {
+				frsMan->handleVoteDemoteSui(player, terminal, enclaveType, rank, playerID);
+			} else if (suiType == FrsManager::SUI_CHAL_VOTE_STATUS) {
 				frsMan->handleChallengeVoteStatusSui(player, terminal, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD) {
-				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-				uint64 playerID = listBox->getMenuObjectID(index);
-
 				frsMan->handleChallengeVoteRecordSui(player, terminal, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_RECORD_CONFIRM) {
-				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-				uint64 playerID = listBox->getMenuObjectID(index);
-
 				frsMan->handleChallengeVoteRecordConfirmSui(player, terminal, index, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_ISSUE) {
-				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-				uint64 playerID = listBox->getMenuObjectID(index);
 				frsMan->handleChallengeVoteIssueSui(player, terminal, playerID);
 			}
 			/*

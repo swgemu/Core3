@@ -18,8 +18,8 @@ arenaChallengeDuration = 3600000 -- 60 mins
 
 -- Costs are in FRS experience
 baseMaintCost = 100
-requestDemotionCost = 2500
-voteChallengeCost = 2000
+requestDemotionCost = 2000
+voteChallengeCost = 1000
 
 maxPetitioners = 11
 maxChallenges = 20
