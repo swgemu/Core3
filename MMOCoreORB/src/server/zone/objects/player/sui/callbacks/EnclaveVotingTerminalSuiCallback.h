@@ -61,6 +61,8 @@ public:
 
 			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->sendVoteRecordSui(player, terminal, enclaveType, selectedRank);
+			} else if (suiType == FrsManager::SUI_VOTE_DEMOTE) {
+				frsMan->sendVoteDemoteSui(player, terminal, enclaveType, selectedRank);
 			} else if (suiType == FrsManager::SUI_VOTE_ACCEPT_PROMOTE) {
 				frsMan->handleAcceptPromotionSui(player, terminal, enclaveType, selectedRank);
 			} else if (suiType == FrsManager::SUI_VOTE_PETITION) {
@@ -80,6 +82,11 @@ public:
 		} else {
 			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, index);
+			} if (suiType == FrsManager::SUI_VOTE_DEMOTE) {
+				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+				uint64 playerID = listBox->getMenuObjectID(index);
+
+				frsMan->handleVoteDemoteSui(player, terminal, enclaveType, rank, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_STATUS) {
 				SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 				uint64 playerID = listBox->getMenuObjectID(index);

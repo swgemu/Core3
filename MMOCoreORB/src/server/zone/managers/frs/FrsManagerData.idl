@@ -11,7 +11,7 @@ import system.util.Vector;
 include server.zone.managers.frs.FrsRank;
 include server.zone.managers.frs.ChallengeVoteData;
 include server.zone.managers.frs.ArenaChallengeData;
-include server.zone.managers.frs.ChallengeTimeMap;
+include server.zone.managers.frs.FrsTimeMap;
 include system.lang.Time;
 
 class FrsManagerData extends ManagedObject {
@@ -31,7 +31,10 @@ class FrsManagerData extends ManagedObject {
 	protected VectorMap<unsigned long, ChallengeVoteData> lightChallenges;
 	
 	@dereferenced
-	protected ChallengeTimeMap challengeTimes;
+	protected FrsTimeMap challengeTimes;
+	
+	@dereferenced
+	protected FrsTimeMap demoteTimes;
 	
 	@dereferenced
 	protected VectorMap<unsigned long, ArenaChallengeData> arenaChallenges;
@@ -108,6 +111,24 @@ class FrsManagerData extends ManagedObject {
 		if (challengeTimes.contains(playerID))
 			challengeTimes.drop(playerID);
 	}
+	
+	@preLocked
+	public void removeDemoteTime(unsigned long playerID) {
+		if (demoteTimes.contains(playerID))
+			demoteTimes.drop(playerID);
+	}
+	
+	@preLocked
+	public native boolean hasDemotedRecently(unsigned long playerID, unsigned long demoteCooldown);
+
+	@preLocked
+	public native unsigned long getDemoteTime(unsigned long playerID);
+
+	@preLocked
+	public native unsigned long getDemoteDuration(unsigned long playerID);
+
+	@preLocked
+	public native void updateDemoteTime(unsigned long playerID);
 	
 	public void updateLastMaintenanceTick() {
 		lastMaintenanceTick.updateToCurrentTime();
