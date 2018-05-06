@@ -414,6 +414,109 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 	updatePlayerSkills(player);
 }
 
+void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	uint64 playerID = player->getObjectID();
+
+	FrsData* playerData = ghost->getFrsData();
+	int curRank = playerData->getRank();
+
+	int councilType = playerData->getCouncilType();
+	String groupName = "";
+
+	if (councilType == COUNCIL_LIGHT) {
+		groupName = "LightEnclaveRank";
+	} else if (councilType == COUNCIL_DARK) {
+		groupName = "DarkEnclaveRank";
+	} else {
+		playerData->setRank(-1);
+		return;
+	}
+
+	if (curRank > 0) {
+		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
+
+		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
+
+		if (rankData != nullptr) {
+			Locker clocker(rankData, player);
+			rankData->removeFromPlayerList(playerID);
+		}
+	}
+
+	playerData->setRank(-1);
+	playerData->setCouncilType(0);
+
+	Locker clocker(managerData, player);
+	managerData->removeChallengeTime(playerID);
+	clocker.release();
+
+	updatePlayerSkills(player);
+
+	StringIdChatParameter param("@force_rank:council_left"); // You have left the %TO.
+
+	if (councilType == COUNCIL_LIGHT) {
+		param.setTO("Light Jedi Council");
+	} else if (councilType == COUNCIL_DARK) {
+		param.setTO("Dark Jedi Council");
+	}
+
+	player->sendSystemMessage(param);
+}
+
+void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const String& skillName) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+	int councilType = playerData->getCouncilType();
+
+	if (playerRank < 0 || councilType == 0)
+		return;
+
+	int skillRank = getSkillRank(skillName, councilType);
+	printf("skill %s rank %i\n", skillName.toCharArray(), skillRank);
+
+	if (skillRank < 0) {
+		return;
+	} else if (skillRank > 0) {
+		demotePlayer(player);
+	} else {
+		removeFromFrs(player);
+	}
+}
+
+int FrsManagerImplementation::getSkillRank(const String& skillName, int councilType) {
+	VectorMap<uint, Reference<FrsRankingData*> > rankingData;
+
+	if (councilType == COUNCIL_LIGHT)
+		rankingData = lightRankingData;
+	else if (councilType == COUNCIL_DARK)
+		rankingData = darkRankingData;
+	else
+		return -1;
+
+	for (int i = 0; i <= 11; i++) {
+		Reference<FrsRankingData*> rankData = rankingData.get(i);
+		String rankSkill = rankData->getSkillName();
+
+		if (rankSkill.hashCode() == skillName.hashCode())
+			return i;
+	}
+
+	return -1;
+}
+
 void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
@@ -515,6 +618,7 @@ void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
 }
 
 void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int amount, bool sendSystemMessage) {
+	printf("adjustFrsExperience adjusting %i\n", amount);
 	if (player == nullptr || amount == 0)
 		return;
 
@@ -524,6 +628,7 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 		return;
 
 	if (amount > 0) {
+		printf("amount positive\n");
 		ghost->addExperience("force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {
@@ -533,15 +638,18 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 			player->sendSystemMessage(param);
 		}
 	} else {
+		printf("amount negative\n");
 		FrsData* playerData = ghost->getFrsData();
 		int rank = playerData->getRank();
 		int councilType = playerData->getCouncilType();
 
 		int curExperience = ghost->getExperience("force_rank_xp");
+		printf("Curxp %i\n", curExperience);
 
 		// Ensure we dont go into the negatives
 		if ((amount * -1) > curExperience)
 			amount = curExperience * -1;
+		printf("adjusted amount %i\n", amount);
 
 		ghost->addExperience("force_rank_xp", amount, true);
 
@@ -564,9 +672,12 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 			return;
 
 		int reqXp = rankingData->getRequiredExperience();
+		printf("required for rank %i\n", reqXp);
 
-		if (reqXp > curExperience)
+		if (reqXp > curExperience) {
+			printf("demoting player\n");
 			demotePlayer(player);
+		}
 	}
 }
 
