@@ -414,6 +414,130 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 	updatePlayerSkills(player);
 }
 
+void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	uint64 playerID = player->getObjectID();
+
+	FrsData* playerData = ghost->getFrsData();
+	int curRank = playerData->getRank();
+
+	int councilType = playerData->getCouncilType();
+	String groupName = "";
+
+	if (councilType == COUNCIL_LIGHT) {
+		groupName = "LightEnclaveRank";
+	} else if (councilType == COUNCIL_DARK) {
+		groupName = "DarkEnclaveRank";
+	} else {
+		playerData->setRank(-1);
+		return;
+	}
+
+	if (curRank > 0) {
+		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
+
+		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
+
+		if (rankData != nullptr) {
+			Locker clocker(rankData, player);
+			rankData->removeFromPlayerList(playerID);
+		}
+	}
+
+	playerData->setRank(-1);
+	playerData->setCouncilType(0);
+
+	Locker clocker(managerData, player);
+	managerData->removeChallengeTime(playerID);
+	clocker.release();
+
+	updatePlayerSkills(player);
+
+	StringIdChatParameter param("@force_rank:council_left"); // You have left the %TO.
+
+	if (councilType == COUNCIL_LIGHT) {
+		param.setTO("Light Jedi Council");
+	} else if (councilType == COUNCIL_DARK) {
+		param.setTO("Dark Jedi Council");
+	}
+
+	player->sendSystemMessage(param);
+}
+
+void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const String& skillName) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerRank = playerData->getRank();
+	int councilType = playerData->getCouncilType();
+
+	if (playerRank < 0 || councilType == 0)
+		return;
+
+	if (skillName.hashCode() == STRING_HASHCODE("force_title_jedi_rank_03")) {
+		VectorMap<uint, Reference<FrsRankingData*> > rankingData;
+
+		if (councilType == COUNCIL_LIGHT)
+			rankingData = lightRankingData;
+		else if (councilType == COUNCIL_DARK)
+			rankingData = darkRankingData;
+
+		SkillManager* skillManager = zoneServer->getSkillManager();
+
+		for (int i = rankingData.size() -1; i >= 0; i--) {
+			Reference<FrsRankingData*> rankData = rankingData.get(i);
+			String rankSkill = rankData->getSkillName();
+
+			if (player->hasSkill(rankSkill)) {
+				skillManager->surrenderSkill(rankSkill, player, true);
+			}
+		}
+
+		return;
+	}
+
+	int skillRank = getSkillRank(skillName, councilType);
+
+	if (skillRank < 0) {
+		return;
+	} else if (skillRank > 0) {
+		demotePlayer(player);
+	} else if (skillRank == 0) {
+		removeFromFrs(player);
+	}
+}
+
+int FrsManagerImplementation::getSkillRank(const String& skillName, int councilType) {
+	VectorMap<uint, Reference<FrsRankingData*> > rankingData;
+
+	if (councilType == COUNCIL_LIGHT)
+		rankingData = lightRankingData;
+	else if (councilType == COUNCIL_DARK)
+		rankingData = darkRankingData;
+	else
+		return -1;
+
+	for (int i = 0; i <= 11; i++) {
+		Reference<FrsRankingData*> rankData = rankingData.get(i);
+		String rankSkill = rankData->getSkillName();
+
+		if (rankSkill.hashCode() == skillName.hashCode())
+			return i;
+	}
+
+	return -1;
+}
+
 void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 

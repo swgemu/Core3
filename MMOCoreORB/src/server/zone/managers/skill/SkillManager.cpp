@@ -19,6 +19,7 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -474,6 +475,12 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 		//Update maximum experience.
 		updateXpLimits(ghost);
+
+		FrsManager* frsManager = creature->getZoneServer()->getFrsManager();
+
+		if (frsManager->isFrsEnabled()) {
+			frsManager->handleSkillRevoked(creature, skillName);
+		}
 
 		/// Update Force Power Max
 		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);

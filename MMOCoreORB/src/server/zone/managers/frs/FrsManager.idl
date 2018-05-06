@@ -159,6 +159,14 @@ class FrsManager extends ManagedService implements Logger {
 	public native void validatePlayerData(CreatureObject player);
 	
 	@arg1preLocked
+	public native void removeFromFrs(CreatureObject player);
+	
+	@arg1preLocked
+	public native void handleSkillRevoked(CreatureObject player, final string skillName);
+	
+	public native int getSkillRank(final string skillName, int councilType);
+	
+	@arg1preLocked
 	public native void updatePlayerSkills(CreatureObject player);
 	
 	@arg1preLocked
