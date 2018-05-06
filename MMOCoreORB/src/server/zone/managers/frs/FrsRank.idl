@@ -68,6 +68,9 @@ class FrsRank extends ManagedObject {
 	@preLocked
 	public void removeFromPlayerList(unsigned long id) {
 		playerList.drop(id);
+		votedList.drop(id);
+		petitionerList.drop(id);
+		winnerList.drop(id);
 	}
 	
 	@dirty

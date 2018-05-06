@@ -421,3 +421,16 @@ function KnightTrials:onPlayerLoggedIn(pPlayer)
 		end
 	end
 end
+
+function KnightTrials:resetCompletedTrialsToStart(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	JediTrials:resetTrialData(pPlayer, "knight")
+	deleteScreenPlayData(pPlayer, "KnightTrials", "completedTrials")
+
+	JediTrials:setStartedTrials(pPlayer)
+	JediTrials:setTrialsCompleted(pPlayer, 0)
+	JediTrials:setCurrentTrial(pPlayer, 0)
+end

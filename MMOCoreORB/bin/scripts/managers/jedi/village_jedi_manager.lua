@@ -159,7 +159,7 @@ function VillageJediManager:onSkillRevoked(pPlayer, pSkill)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	if (JediTrials:isOnPadawanTrials(pPlayer) or JediTrials:isOnKnightTrials(pPlayer)) then
 		JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 	end
