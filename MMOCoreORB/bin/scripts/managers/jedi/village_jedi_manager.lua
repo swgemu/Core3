@@ -163,6 +163,12 @@ function VillageJediManager:onSkillRevoked(pPlayer, pSkill)
 	if (JediTrials:isOnPadawanTrials(pPlayer) or JediTrials:isOnKnightTrials(pPlayer)) then
 		JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 	end
+	
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	
+	if (pGhost ~= nil) then
+		
+	end
 end
 
 registerScreenPlay("VillageJediManager", true)
