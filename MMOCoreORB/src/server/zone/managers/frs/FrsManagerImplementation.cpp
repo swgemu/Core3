@@ -564,6 +564,11 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
 				player->addSkill(rankSkill, true);
+
+			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
+				player->addSkill("force_title_jedi_rank_04", true);
+			if (rank == 8 && !player->hasSkill("force_title_jedi_master"))
+				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
 				player->removeSkill(rankSkill, true);
@@ -2215,7 +2220,7 @@ void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneOb
 	int demoteTier = getRankTier(demoteRank);
 	int playerTier = getRankTier(playerRank);
 
-	if (rankData->getTotalPetitioners() <= 0) {
+	if (rankData->getTotalPlayersInRank() <= 0) {
 		player->sendSystemMessage("@force_rank:no_players_in_rank"); // There are no members in that rank.
 		return;
 	}
