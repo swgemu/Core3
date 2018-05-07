@@ -321,7 +321,7 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 	if (curPlayerRank == -1)
 		return;
 
-	int realPlayerRank = -1;
+	int realPlayerRank = 0;
 	uint64 playerID = player->getObjectID();
 
 	for (int i = 1; i <= 11; i++) {
@@ -338,11 +338,17 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		}
 	}
 
-	if (realPlayerRank != curPlayerRank) {
-		setPlayerRank(player, realPlayerRank);
+	if (realPlayerRank == 0) {
+		if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
+			realPlayerRank = -1;
+	}
 
-		if (realPlayerRank == -1)
-			playerData->setCouncilType(0);
+	if (realPlayerRank != curPlayerRank) {
+		if (realPlayerRank == -1) {
+			removeFromFrs(player);
+		} else {
+			setPlayerRank(player, realPlayerRank);
+		}
 	}
 
 	if (realPlayerRank >= 0) {
@@ -794,7 +800,16 @@ void FrsManagerImplementation::deductDebtExperience(CreatureObject* player) {
 	if (curDebt <= 0)
 		return;
 
-	adjustFrsExperience(player, curDebt * -1);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* frsData = ghost->getFrsData();
+	int rank = frsData->getRank();
+
+	if (rank > 0)
+		adjustFrsExperience(player, curDebt * -1);
 
 	managerData->removeExperienceDebt(playerID);
 }
