@@ -594,6 +594,7 @@ void FrsManagerImplementation::promotePlayer(CreatureObject* player) {
 	Core::getTaskManager()->executeTask([strongMan, strongRef, newRank] () {
 		Locker locker(strongRef);
 		strongMan->setPlayerRank(strongRef, newRank);
+		strongMan->recoverJediItems(strongRef);
 	}, "SetPlayerRankTask");
 
 	String stfRank = "@force_rank:rank" + String::valueOf(newRank);
@@ -602,8 +603,6 @@ void FrsManagerImplementation::promotePlayer(CreatureObject* player) {
 	StringIdChatParameter param("@force_rank:rank_gained"); // You have achieved the Enclave rank of %TO.
 	param.setTO(rankString);
 	player->sendSystemMessage(param);
-
-	recoverJediItems(player);
 }
 
 void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
@@ -1073,7 +1072,7 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 				String playerName = playerManager->getPlayerName(petitionerID);
 
 				if (playerName.isEmpty())
-					playerName = "UNKNOWN PLAYER";
+					continue;
 
 				if (voteStatus == PETITIONING)
 					box->addMenuItem("   " + playerName);
@@ -1093,7 +1092,7 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 				String playerName = playerManager->getPlayerName(winnerID);
 
 				if (playerName.isEmpty())
-					playerName = "UNKNOWN PLAYER";
+					continue;
 
 				box->addMenuItem("   " + playerName);
 			}
@@ -1166,9 +1165,9 @@ void FrsManagerImplementation::sendVoteRecordSui(CreatureObject* player, SceneOb
 		String playerName = playerManager->getPlayerName(petitionerID);
 
 		if (playerName.isEmpty())
-			playerName = "UNKNOWN PLAYER";
+			continue;
 
-		box->addMenuItem(playerName);
+		box->addMenuItem(playerName, petitionerID);
 	}
 
 	box->setUsingObject(terminal);
@@ -1240,6 +1239,7 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 
 	if (playerName.isEmpty()) {
 		player->sendSystemMessage("Unable to find that player.");
+		info("FrsManagerImplementation::handleVoteRecordSui failed to find player " + String::valueOf(playerID), true);
 		return;
 	}
 
@@ -2277,6 +2277,7 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 	ManagedReference<CreatureObject*> playerToDemote = zoneServer->getObject(playerID).castTo<CreatureObject*>();
 
 	if (playerToDemote == nullptr) {
+		info("FrsManagerImplementation::handleVoteDemoteSui failed to find player " + String::valueOf(playerID), true);
 		player->sendSystemMessage("@force_rank:invalid_selection"); // That is an invalid selection.
 		return;
 	}
@@ -2362,7 +2363,7 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 	managerData->updateChallengeTime(player->getObjectID());
 
 	ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
-	ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+	ManagedReference<CreatureObject*> strongRef = playerToDemote->asCreatureObject();
 
 	Core::getTaskManager()->executeTask([strongMan, strongRef] () {
 		Locker locker(strongRef);
