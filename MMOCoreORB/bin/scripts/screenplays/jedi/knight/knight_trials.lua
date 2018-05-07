@@ -33,6 +33,14 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 		return
 	end
 
+	local playerFaction = CreatureObject(pPlayer):getFaction()
+	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
+
+	if ((playerFaction == FACTIONIMPERIAL and playerCouncil == JediTrials.COUNCIL_LIGHT) or (playerFaction == FACTIONREBEL and playerCouncil == JediTrials.COUNCIL_DARK)) then
+		self:giveWrongFactionWarning(pPlayer, playerCouncil)
+		return
+	end
+
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 	if (trialsCompleted >= #knightTrialQuests) then
@@ -217,6 +225,14 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 		return 1
 	end
 
+	local playerFaction = CreatureObject(pPlayer):getFaction()
+	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
+
+	if ((playerFaction == FACTIONIMPERIAL and playerCouncil == JediTrials.COUNCIL_LIGHT) or (playerFaction == FACTIONREBEL and playerCouncil == JediTrials.COUNCIL_DARK)) then
+		self:giveWrongFactionWarning(pPlayer, playerCouncil)
+		return 0
+	end
+
 	local huntTarget = readScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
@@ -305,7 +321,6 @@ function KnightTrials:showCurrentTrial(pPlayer)
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 	if (trialsCompleted == trialNumber) then
-		CreatureObject(pPlayer):sendSystemMessage("You've finished all the currently completed Knight trials, please check back soon.")
 		return
 	end
 
@@ -314,6 +329,16 @@ function KnightTrials:showCurrentTrial(pPlayer)
 	if (trialData.trialType == TRIAL_COUNCIL) then
 		self:sendCouncilChoiceSui(pPlayer)
 		return
+	end
+
+	local playerFaction = CreatureObject(pPlayer):getFaction()
+	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
+
+	if (trialData.trialType == TRIAL_HUNT or trialData.trialType == TRIAL_HUNT_FACTION) then
+		if ((playerFaction == FACTIONIMPERIAL and playerCouncil == JediTrials.COUNCIL_LIGHT) or (playerFaction == FACTIONREBEL and playerCouncil == JediTrials.COUNCIL_DARK)) then
+			self:giveWrongFactionWarning(pPlayer, playerCouncil)
+			return
+		end
 	end
 
 	local huntTarget = readScreenPlayData(pPlayer, "JediTrials", "huntTarget")
@@ -420,6 +445,25 @@ function KnightTrials:onPlayerLoggedIn(pPlayer)
 			createObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 		end
 	end
+end
+
+function KnightTrials:giveWrongFactionWarning(pPlayer, councilType)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local sui = SuiMessageBox.new("KnightTrials", "noCallback")
+	sui.setTitle("@jedi_trials:knight_trials_title")
+
+	if (councilType == JediTrials.COUNCIL_LIGHT) then
+		sui.setPrompt("@jedi_trials:faction_wrong_light") -- To become a Light Jedi, you cannot be a member of the Empire. You must revoke your status as an Imperial in order to continue.
+	else
+		sui.setPrompt("@jedi_trials:faction_wrong_dark") -- To become a Dark Jedi, you cannot be a member of the Rebel Alliance. You must revoke your status as a Rebel in order to continue.
+	end
+
+	sui.setOkButtonText("@jedi_trials:button_close")
+	sui.hideCancelButton()
+	sui.sendTo(pPlayer)
 end
 
 function KnightTrials:resetCompletedTrialsToStart(pPlayer)
