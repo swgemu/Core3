@@ -9,8 +9,10 @@ votingInterval = 86400000 -- 1 day
 acceptanceInterval = 86400000 -- 1 day
 maintenanceInterval = 86400000 -- 1 day
 
-requestDemotionDuration = 604800000 -- 7 days
-voteChallengeDuration = 604800000 -- 7 days
+--requestDemotionDuration = 604800000 -- 7 days
+--voteChallengeDuration = 604800000 -- 7 days
+requestDemotionDuration = 86400000 -- 1 days
+voteChallengeDuration = 86400000 -- 1 days
 
 arenaOpenInterval = 5400000 -- 90 mins
 arenaClosedInterval = 108000000 -- 30 hours
