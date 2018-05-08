@@ -359,6 +359,11 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 
 		if (player->getFactionStatus() != FactionStatus::OVERT)
 			player->setFactionStatus(FactionStatus::OVERT);
+
+		if (realPlayerRank >= 4 && !player->hasSkill("force_title_jedi_rank_04"))
+			player->addSkill("force_title_jedi_rank_04", true);
+		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
+			player->addSkill("force_title_jedi_master", true);
 	}
 }
 
@@ -768,7 +773,7 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 	if (rank == 0)
 		return;
 
-	int maintXp = rank * 100;
+	int maintXp = baseMaintCost * rank;
 
 	ChatManager* chatManager = zoneServer->getChatManager();
 
@@ -2492,7 +2497,7 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 	if (inventory == nullptr)
 		return;
 
-	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
+	for (int i=0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<SceneObject*> invObj = inventory->getContainerObject(i);
 
 		if (invObj == nullptr)
@@ -2501,6 +2506,11 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 		if (invObj->getServerObjectCRC() == robeCRC)
 			return;
 	}
+
+	ManagedReference<SceneObject*> slot = player->getSlottedObject("cloak");
+
+	if (slot != nullptr and slot->getServerObjectCRC() == robeCRC)
+		return;
 
 	ManagedReference<SceneObject*> robeObj = zoneServer->createObject(robeCRC, 1);
 
