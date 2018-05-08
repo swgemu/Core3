@@ -455,6 +455,7 @@ function JediTrials:resetTrialData(pPlayer, trialType)
 	elseif (trialType == "knight") then
 		deleteScreenPlayData(pPlayer, "KnightTrials", "trialsCompleted")
 		deleteScreenPlayData(pPlayer, "KnightTrials", "startedTrials")
+		deleteScreenPlayData(pPlayer, "JediTrials", "JediCouncil")
 	end
 
 	deleteScreenPlayData(pPlayer, "JediTrials", "currentTrial")
