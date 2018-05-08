@@ -1293,11 +1293,11 @@ void PlayerObjectImplementation::notifyOnline() {
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
 
-	if (getFrsData()->getRank() > 0) {
+	if (getFrsData()->getRank() >= 0) {
 		FrsManager* frsManager = zoneServer->getFrsManager();
 
 		if (frsManager != nullptr) {
-			frsManager->deductDebtExperience(playerCreature);
+			frsManager->playerLoggedIn(playerCreature);
 		}
 	}
 

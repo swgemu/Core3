@@ -321,7 +321,7 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 	if (curPlayerRank == -1)
 		return;
 
-	int realPlayerRank = -1;
+	int realPlayerRank = 0;
 	uint64 playerID = player->getObjectID();
 
 	for (int i = 1; i <= 11; i++) {
@@ -338,11 +338,17 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		}
 	}
 
-	if (realPlayerRank != curPlayerRank) {
-		setPlayerRank(player, realPlayerRank);
+	if (realPlayerRank == 0) {
+		if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
+			realPlayerRank = -1;
+	}
 
-		if (realPlayerRank == -1)
-			playerData->setCouncilType(0);
+	if (realPlayerRank != curPlayerRank) {
+		if (realPlayerRank == -1) {
+			removeFromFrs(player);
+		} else {
+			setPlayerRank(player, realPlayerRank);
+		}
 	}
 
 	if (realPlayerRank >= 0) {
@@ -353,6 +359,11 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 
 		if (player->getFactionStatus() != FactionStatus::OVERT)
 			player->setFactionStatus(FactionStatus::OVERT);
+
+		if (realPlayerRank >= 4 && !player->hasSkill("force_title_jedi_rank_04"))
+			player->addSkill("force_title_jedi_rank_04", true);
+		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
+			player->addSkill("force_title_jedi_master", true);
 	}
 }
 
@@ -564,6 +575,11 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
 				player->addSkill(rankSkill, true);
+
+			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
+				player->addSkill("force_title_jedi_rank_04", true);
+			if (rank == 8 && !player->hasSkill("force_title_jedi_master"))
+				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
 				player->removeSkill(rankSkill, true);
@@ -757,7 +773,7 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 	if (rank == 0)
 		return;
 
-	int maintXp = rank * 100;
+	int maintXp = baseMaintCost * rank;
 
 	ChatManager* chatManager = zoneServer->getChatManager();
 
@@ -789,7 +805,16 @@ void FrsManagerImplementation::deductDebtExperience(CreatureObject* player) {
 	if (curDebt <= 0)
 		return;
 
-	adjustFrsExperience(player, curDebt * -1);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* frsData = ghost->getFrsData();
+	int rank = frsData->getRank();
+
+	if (rank > 0)
+		adjustFrsExperience(player, curDebt * -1);
 
 	managerData->removeExperienceDebt(playerID);
 }
@@ -2215,7 +2240,7 @@ void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneOb
 	int demoteTier = getRankTier(demoteRank);
 	int playerTier = getRankTier(playerRank);
 
-	if (rankData->getTotalPetitioners() <= 0) {
+	if (rankData->getTotalPlayersInRank() <= 0) {
 		player->sendSystemMessage("@force_rank:no_players_in_rank"); // There are no members in that rank.
 		return;
 	}
@@ -2472,7 +2497,7 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 	if (inventory == nullptr)
 		return;
 
-	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
+	for (int i=0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<SceneObject*> invObj = inventory->getContainerObject(i);
 
 		if (invObj == nullptr)
@@ -2481,6 +2506,11 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 		if (invObj->getServerObjectCRC() == robeCRC)
 			return;
 	}
+
+	ManagedReference<SceneObject*> slot = player->getSlottedObject("cloak");
+
+	if (slot != nullptr and slot->getServerObjectCRC() == robeCRC)
+		return;
 
 	ManagedReference<SceneObject*> robeObj = zoneServer->createObject(robeCRC, 1);
 
