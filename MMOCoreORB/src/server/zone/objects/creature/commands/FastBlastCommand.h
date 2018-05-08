@@ -16,15 +16,22 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+			if (!checkStateMask(creature))
+				return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+			if (!checkInvalidLocomotions(creature))
+				return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
-	}
+			float mods[3] = {0.f, 0.f, 0.f};
 
-};
+			for (int i = 0; i < 3; i++)
+				mods[System::random(2)];
+
+			UnicodeString args = "healthDamageMultiplier=0.34f;actionDamageMultiplier=0.34f;mindDamageMultiplier=0.34f;";
+
+			return doCombatAction(creature, target, args);
+		}
+
+	};
 
 #endif //FASTBLASTCOMMAND_H_
