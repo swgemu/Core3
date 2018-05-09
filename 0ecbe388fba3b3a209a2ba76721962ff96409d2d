@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_4605f4c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FastBlastCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2018-05-09T03:44:30Z",
+      "side": 1,
+      "message": "Remove these lines, they don\u0027t do anything",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "0ecbe388fba3b3a209a2ba76721962ff96409d2d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_660a70d4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FastBlastCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2018-05-09T03:44:30Z",
+      "side": 1,
+      "message": "Set these 0.33, while .02 isnt a big deal, I\u0027d rather it be below 1.0 than above it. Either that or set two of the 3 to .33 to even out at 1.0.",
+      "revId": "0ecbe388fba3b3a209a2ba76721962ff96409d2d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
