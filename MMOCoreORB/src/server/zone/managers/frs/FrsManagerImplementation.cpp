@@ -338,10 +338,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		}
 	}
 
-	if (realPlayerRank == 0) {
-		if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
-			realPlayerRank = -1;
-	}
+	if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
+		realPlayerRank = -1;
 
 	if (realPlayerRank != curPlayerRank) {
 		if (realPlayerRank == -1) {
@@ -1076,11 +1074,10 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 
 	uint64 miliDiff = rankData->getLastUpdateTickDiff();
 	uint64 interval = getVotingInterval(voteStatus);
-	uint64 timeRemaining = interval - miliDiff;
 	String timeLeft = "";
 
-	if (timeRemaining > 0)
-		timeLeft = getTimeString(timeRemaining / 1000);
+	if (miliDiff <= interval)
+		timeLeft = getTimeString((interval - miliDiff) / 1000);
 	else
 		timeLeft = "closed.";
 
@@ -2540,4 +2537,13 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 	} else {
 		robeObj->destroyObjectFromDatabase(true);
 	}
+}
+
+bool FrsManagerImplementation::isPlayerInEnclave(CreatureObject* player) {
+	if (player->getParentID() == 0)
+		return false;
+
+	ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+
+	return bldg != NULL && (bldg->getObjectID() == lightEnclave.get()->getObjectID() || bldg->getObjectID() == darkEnclave.get()->getObjectID());
 }
