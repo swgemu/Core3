@@ -181,6 +181,12 @@ public:
 				return SUCCESS;
 			else
 				return GENERALERROR;
+		} else if (container == "frs") {
+			FrsData* playerData = ghost->getFrsData();
+			int playerRank = playerData->getRank();
+			int playerCouncil = playerData->getCouncilType();
+
+			creature->sendSystemMessage(targetObj->getFirstName() + " has a FRS rank of " + String::valueOf(playerRank) + " and a council type of " + String::valueOf(playerCouncil));
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 

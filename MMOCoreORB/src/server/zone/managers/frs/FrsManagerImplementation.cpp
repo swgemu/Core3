@@ -401,6 +401,16 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 			Locker clocker(rankData, player);
 			rankData->removeFromPlayerList(playerID);
 		}
+
+		// Player is getting demoted, remove any pending petitions
+		if (curRank > rank) {
+			rankData = getFrsRank(councilType, curRank + 1);
+
+			if (rankData != nullptr) {
+				Locker clocker(rankData, player);
+				rankData->removeFromPetitionerList(playerID);
+			}
+		}
 	}
 
 	playerData->setRank(rank);
@@ -1827,21 +1837,28 @@ void FrsManagerImplementation::sendMailToList(Vector<uint64>* playerList, const 
 
 Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int numWinners) {
 	Vector<uint64>* winnerList = new Vector<uint64>();
-	VectorMap<uint32, uint64> reverseList;
-	reverseList.setAllowDuplicateInsertPlan();
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
-
-	for (int i = 0; i < petitionerList->size(); i++) {
-		VectorMapEntry<uint64, int>* entry = &petitionerList->elementAt(i);
-		uint64 petitionerID = entry->getKey();
-		uint32 petitionerVotes = entry->getValue();
-		reverseList.put(petitionerVotes, petitionerID);
-	}
+	VectorMap<uint64, int>* petitionerCopy = new VectorMap<uint64, int>(*petitionerList);
 
 	for (int i = 0; i < numWinners; i++) {
-		VectorMapEntry<uint32, uint64>* entry = &reverseList.elementAt(i);
-		uint64 petitionerID = entry->getValue();
-		winnerList->add(petitionerID);
+		uint64 highestID = 0;
+		int highestVote = 0;
+		int highestIndex = 0;
+
+		for (int j = 0; j < petitionerCopy->size(); j++) {
+			VectorMapEntry<uint64, int> entry = petitionerCopy->elementAt(j);
+			uint64 petitionerID = entry.getKey();
+			uint32 petitionerVotes = entry.getValue();
+
+			if (petitionerVotes > highestVote || (petitionerVotes == highestVote && System::random(100) > 50)) {
+				highestVote = petitionerVotes;
+				highestID = petitionerID;
+				highestIndex = j;
+			}
+		}
+
+		winnerList->add(highestID);
+		petitionerCopy->remove(highestIndex);
 	}
 
 	return winnerList;
