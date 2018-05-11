@@ -330,4 +330,6 @@ class FrsManager extends ManagedService implements Logger {
 	
 	@arg1preLocked
 	public native void recoverJediItems(CreatureObject player);
+	
+	public native boolean isPlayerInEnclave(CreatureObject player);
 }

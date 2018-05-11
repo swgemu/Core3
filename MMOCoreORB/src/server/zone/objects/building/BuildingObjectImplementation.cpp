@@ -361,7 +361,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 	EnclaveContainerComponent* encComp = containerComponent.castTo<EnclaveContainerComponent*>();
 
 	if (encComp != nullptr) {
-		return checkContainerPermission(player, ContainerPermissions::WALKIN);
+		return encComp->checkContainerPermission(asBuildingObject(), player, ContainerPermissions::WALKIN);
 	}
 
 	if (!isClientObject()) {
@@ -717,6 +717,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 			ejectObject(player);
 			return;
 		}
+	}
+
+	EnclaveContainerComponent* encComp = containerComponent.castTo<EnclaveContainerComponent*>();
+
+	if (encComp != nullptr && !encComp->checkContainerPermission(asBuildingObject(), player, ContainerPermissions::WALKIN)) {
+		ejectObject(player);
+		return;
 	}
 
 	if (accessFee > 0 && !isOnEntryList(player)) {

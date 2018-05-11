@@ -182,7 +182,8 @@ public:
 			else
 				return GENERALERROR;
 		} else if (container == "frs") {
-			FrsData* playerData = ghost->getFrsData();
+			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+			FrsData* playerData = targetGhost->getFrsData();
 			int playerRank = playerData->getRank();
 			int playerCouncil = playerData->getCouncilType();
 
