@@ -2545,5 +2545,65 @@ bool FrsManagerImplementation::isPlayerInEnclave(CreatureObject* player) {
 
 	ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
-	return bldg != NULL && (bldg->getObjectID() == lightEnclave.get()->getObjectID() || bldg->getObjectID() == darkEnclave.get()->getObjectID());
+	return bldg != nullptr && (bldg->getObjectID() == lightEnclave.get()->getObjectID() || bldg->getObjectID() == darkEnclave.get()->getObjectID());
+}
+
+void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int councilType, int rank) {
+	if (player == nullptr)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerCouncil = playerData->getCouncilType();
+	int curPlayerRank = playerData->getRank();
+
+	if (curPlayerRank < 0)
+		return;
+
+	if (playerCouncil != councilType)
+		return;
+
+	ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
+
+	if (rankData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_rank_selected"); // That is an invalid rank.
+		return;
+	}
+
+	Locker locker(rankData);
+
+	if (rankData->getTotalPlayersInRank() <= 0) {
+		player->sendSystemMessage("@force_rank:no_players_in_rank"); // There are no members in that rank.
+		return;
+	}
+
+	SortedVector<uint64>* rankList = rankData->getPlayerList();
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLESINGLEBUTTON);
+	box->setUsingObject(player);
+	box->setOkButton(true, "@ok");
+
+	String stfRank = "@force_rank:rank" + String::valueOf(rank);
+	String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
+	box->setPromptText("Members in " + rankString + ":");
+	box->setPromptTitle("Council Player List");
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int i = 0; i < rankList->size(); i++) {
+		uint64 playerID = rankList->elementAt(i);
+		String playerName = playerManager->getPlayerName(playerID);
+
+		if (playerName.isEmpty())
+			continue;
+
+		box->addMenuItem(playerName);
+	}
+
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
 }

@@ -332,4 +332,5 @@ class FrsManager extends ManagedService implements Logger {
 	public native void recoverJediItems(CreatureObject player);
 	
 	public native boolean isPlayerInEnclave(CreatureObject player);
+	public native void sendRankPlayerList(CreatureObject player, int councilType, int rank);
 }
