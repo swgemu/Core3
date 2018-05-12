@@ -25,6 +25,7 @@
 #include "tasks/StorePetTask.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
@@ -63,6 +64,13 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if (ghost->hasActivePet(pet))
 		return;
+
+	FrsManager* frsManager = server->getZoneServer()->getFrsManager();
+
+	if (frsManager->isFrsEnabled() && frsManager->isPlayerInEnclave(player)) {
+		player->sendSystemMessage("@pet/pet_menu:cant_call"); //  You cannot call this pet right now.
+		return;
+	}
 
 	if (vitality <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.

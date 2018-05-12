@@ -338,10 +338,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		}
 	}
 
-	if (realPlayerRank == 0) {
-		if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
-			realPlayerRank = -1;
-	}
+	if ((councilType == COUNCIL_LIGHT && !player->hasSkill("force_rank_light_novice")) || (councilType == COUNCIL_DARK && !player->hasSkill("force_rank_dark_novice")))
+		realPlayerRank = -1;
 
 	if (realPlayerRank != curPlayerRank) {
 		if (realPlayerRank == -1) {
@@ -1076,11 +1074,10 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 
 	uint64 miliDiff = rankData->getLastUpdateTickDiff();
 	uint64 interval = getVotingInterval(voteStatus);
-	uint64 timeRemaining = interval - miliDiff;
 	String timeLeft = "";
 
-	if (timeRemaining > 0)
-		timeLeft = getTimeString(timeRemaining / 1000);
+	if (miliDiff <= interval)
+		timeLeft = getTimeString((interval - miliDiff) / 1000);
 	else
 		timeLeft = "closed.";
 
@@ -2540,4 +2537,73 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 	} else {
 		robeObj->destroyObjectFromDatabase(true);
 	}
+}
+
+bool FrsManagerImplementation::isPlayerInEnclave(CreatureObject* player) {
+	if (player->getParentID() == 0)
+		return false;
+
+	ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+
+	return bldg != nullptr && (bldg->getObjectID() == lightEnclave.get()->getObjectID() || bldg->getObjectID() == darkEnclave.get()->getObjectID());
+}
+
+void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int councilType, int rank) {
+	if (player == nullptr)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int playerCouncil = playerData->getCouncilType();
+	int curPlayerRank = playerData->getRank();
+
+	if (curPlayerRank < 0)
+		return;
+
+	if (playerCouncil != councilType)
+		return;
+
+	ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
+
+	if (rankData == nullptr) {
+		player->sendSystemMessage("@force_rank:invalid_rank_selected"); // That is an invalid rank.
+		return;
+	}
+
+	Locker locker(rankData);
+
+	if (rankData->getTotalPlayersInRank() <= 0) {
+		player->sendSystemMessage("@force_rank:no_players_in_rank"); // There are no members in that rank.
+		return;
+	}
+
+	SortedVector<uint64>* rankList = rankData->getPlayerList();
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLESINGLEBUTTON);
+	box->setUsingObject(player);
+	box->setOkButton(true, "@ok");
+
+	String stfRank = "@force_rank:rank" + String::valueOf(rank);
+	String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
+	box->setPromptText("Members in " + rankString + ":");
+	box->setPromptTitle("Council Player List");
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int i = 0; i < rankList->size(); i++) {
+		uint64 playerID = rankList->elementAt(i);
+		String playerName = playerManager->getPlayerName(playerID);
+
+		if (playerName.isEmpty())
+			continue;
+
+		box->addMenuItem(playerName);
+	}
+
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
 }
