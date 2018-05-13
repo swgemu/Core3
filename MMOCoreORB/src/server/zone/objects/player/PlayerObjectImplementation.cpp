@@ -1325,6 +1325,8 @@ void PlayerObjectImplementation::notifyOnline() {
 			missionManager->updatePlayerBountyOnlineStatus(id, true);
 		}
 	}
+
+	playerCreature->schedulePersonalEnemyFlagTasks();
 }
 
 void PlayerObjectImplementation::notifyOffline() {
