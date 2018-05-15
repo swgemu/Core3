@@ -322,6 +322,10 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		return;
 
 	int realPlayerRank = 0;
+
+	if (curPlayerRank == 0 && !player->hasSkill("force_rank_light_novice") && !player->hasSkill("force_rank_dark_novice"))
+		realPlayerRank = -1;
+
 	uint64 playerID = player->getObjectID();
 
 	for (int i = 1; i <= 11; i++) {
@@ -1278,7 +1282,7 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	int curVotes = petitionerList->get(petitionerID);
 
-	rankData->addToPetitionerList(petitionerID, curVotes + 1);
+	rankData->addToPetitionerList(petitionerID, curVotes + voteWeight);
 
 	StringIdChatParameter voteCast("@force_rank:vote_cast"); // You cast your vote for %TO.
 	voteCast.setTO(playerName);
@@ -1835,17 +1839,19 @@ void FrsManagerImplementation::sendMailToList(Vector<uint64>* playerList, const 
 Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int numWinners) {
 	Vector<uint64>* winnerList = new Vector<uint64>();
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
-	VectorMap<uint64, int>* petitionerCopy = new VectorMap<uint64, int>(*petitionerList);
 
 	for (int i = 0; i < numWinners; i++) {
 		uint64 highestID = 0;
 		int highestVote = 0;
 		int highestIndex = 0;
 
-		for (int j = 0; j < petitionerCopy->size(); j++) {
-			VectorMapEntry<uint64, int> entry = petitionerCopy->elementAt(j);
+		for (int j = 0; j < petitionerList->size(); j++) {
+			VectorMapEntry<uint64, int> entry = petitionerList->elementAt(j);
 			uint64 petitionerID = entry.getKey();
 			uint32 petitionerVotes = entry.getValue();
+
+			if (winnerList->contains(petitionerID))
+				continue;
 
 			if (petitionerVotes > highestVote || (petitionerVotes == highestVote && System::random(100) > 50)) {
 				highestVote = petitionerVotes;
@@ -1855,7 +1861,6 @@ Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int num
 		}
 
 		winnerList->add(highestID);
-		petitionerCopy->remove(highestIndex);
 	}
 
 	return winnerList;
