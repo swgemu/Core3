@@ -39,6 +39,7 @@ include engine.util.u3d.Vector3;
 include system.util.SortedVector;
 include engine.log.Logger;
 include server.zone.CloseObjectsVector;
+import system.util.SynchronizedVectorMap;
 
 @mock
 class CreatureObject extends TangibleObject {
@@ -169,6 +170,9 @@ class CreatureObject extends TangibleObject {
 	 */
 	@dereferenced
 	private VectorMap<string, unsigned long> screenPlayStates;
+	
+	@dereferenced
+	protected SynchronizedVectorMap<unsigned long, unsigned long> personalEnemyFlags;
 
 	protected transient byte healthWoundHeal;
 	protected transient byte actionWoundHeal;
@@ -2168,4 +2172,22 @@ class CreatureObject extends TangibleObject {
 	}
 
 	public native void updateCOV();
+	
+	@preLocked
+	public native void addPersonalEnemyFlag(CreatureObject enemy, unsigned long duration);
+	
+	public unsigned long getPersonalEnemyFlagTime(unsigned long enemyID) {
+		return personalEnemyFlags.get(enemyID);
+	}
+	
+	@preLocked
+	public native void removePersonalEnemyFlag(CreatureObject enemy);
+	
+	@preLocked
+	public native void removePersonalEnemyFlag(unsigned long enemyID);
+	
+	public native boolean hasPersonalEnemyFlag(CreatureObject enemy);
+	
+	@preLocked
+	public native void schedulePersonalEnemyFlagTasks();
 }
