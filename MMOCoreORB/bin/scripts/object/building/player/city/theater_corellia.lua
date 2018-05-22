@@ -55,6 +55,7 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 		{"private_med_battle_fatigue", 5},
 		{"private_safe_logout", 1}
 	},
+	ejectionPoint = {-12, 14},
 	cityRankRequired = 4,
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
