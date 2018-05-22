@@ -55,6 +55,7 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 		{"private_med_battle_fatigue", 5},
 		{"private_safe_logout", 1}
 	},
+	ejectDistance = 1.5,
 	cityRankRequired = 4,
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
