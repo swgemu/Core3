@@ -29,10 +29,12 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 	int factionBaseType;
 
+	float ejectDistance;
+
 	Vector<SignTemplate> shopSigns;
 
 public:
-	SharedBuildingObjectTemplate() : medicalRating(0), publicStructure(false), alwaysPublic(false), factionBaseType(0) {
+	SharedBuildingObjectTemplate() : medicalRating(0), publicStructure(false), alwaysPublic(false), factionBaseType(0), ejectDistance(2.5f) {
 	}
 
 	~SharedBuildingObjectTemplate() {
@@ -99,6 +101,10 @@ public:
 
 	inline SignTemplate* getShopSign(int idx) const {
 		return &shopSigns.get(idx);
+	}
+
+	inline float getEjectDistance() const {
+		return ejectDistance;
 	}
 };
 
