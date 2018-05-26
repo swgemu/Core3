@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_66659044",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2244,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2018-05-26T06:46:05Z",
+      "side": 1,
+      "message": "This second if block isn\u0027t necessary, anything that passes this block also passes the block above it, so this block would never be used. You should get the same testing result without this added.\n\nMoving the object declaration down is correct though.",
+      "revId": "42b8e4b5c3e96f6260f44793dcbdd08a494ad521",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
