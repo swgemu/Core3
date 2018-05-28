@@ -74,6 +74,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if (vehicle->isIncapacitated())
+			return GENERALERROR;
+
 		if (vehicle->isDead())
 			return GENERALERROR;
 
