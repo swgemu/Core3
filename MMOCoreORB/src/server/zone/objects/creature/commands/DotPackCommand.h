@@ -8,6 +8,7 @@
 #ifndef DOTPACKCOMMAND_H_
 #define DOTPACKCOMMAND_H_
 
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/DotPack.h"
 #include "server/zone/ZoneServer.h"
@@ -250,6 +251,36 @@ public:
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 			return GENERALERROR;
+		}
+
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (creature->isPlayerCreature() && targetObject->getParentID() != 0 && creature->getParentID() != targetObject->getParentID()) {
+			Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
+
+			if (targetCell != nullptr) {
+				if (!targetObject->isPlayerCreature()) {
+					ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+					if (!perms->hasInheritPermissionsFromParent()) {
+						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+							creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
+							return GENERALERROR;
+						}
+					}
+				}
+
+				ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+
+				if (parentSceneObject != nullptr) {
+					BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+
+					if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
+						creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
+						return GENERALERROR;
+					}
+				}
+			}
 		}
 
 		int	range = int(dotPack->getRange() + creature->getSkillMod("healing_range") / 100 * 14);
