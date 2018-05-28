@@ -54,7 +54,7 @@ public:
 
 		Locker clocker(vehicle, creature);
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature) || vehicle->isIncapacitated())
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
@@ -73,6 +73,9 @@ public:
 			creature->sendSystemMessage("@pet/pet_menu:cant_mount_veh_disabled");
 			return GENERALERROR;
 		}
+
+		if (vehicle->isIncapacitated())
+			return INVALIDSTATE;
 
 		if (vehicle->isDead())
 			return GENERALERROR;
