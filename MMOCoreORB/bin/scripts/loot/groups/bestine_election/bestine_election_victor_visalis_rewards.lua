@@ -3,7 +3,7 @@ bestine_election_victor_visalis_rewards = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "bestine_quest_sword", weight = 100000},
+		{itemTemplate = "bestine_quest_painting", weight = 100000},
 		{itemTemplate = "bestine_quest_imp_banner", weight = 4900000},
 		{itemTemplate = "bestine_quest_badge", weight = 5000000},
 	}
