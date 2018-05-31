@@ -1607,7 +1607,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	float attackSpeed = (1.0f - ((float) speedMod / 100.0f)) * skillSpeedRatio * weapon->getAttackSpeed();
 
 	if (jediSpeed > 0)
-		attackSpeed = attackSpeed * jediSpeed;
+		attackSpeed = attackSpeed - (attackSpeed * jediSpeed);
 
 	return Math::max(attackSpeed, 1.0f);
 }
