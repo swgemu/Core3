@@ -243,7 +243,7 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 						normal.normalize();
 
 						Vector3 floor = box.center() - Vector3(0, box.extents().getY(), 0);
-						floor += normal * 2.5f;
+						floor += normal * templateData->getEjectDistance();
 
 						Matrix4 transform;
 

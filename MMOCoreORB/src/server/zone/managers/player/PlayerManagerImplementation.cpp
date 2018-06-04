@@ -2234,11 +2234,7 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	Locker locker(creature);
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
 	uint64 listenID = creature->getListenID();
-
-	if (object == NULL)
-		return;
 
 	// If the player selected "Stop listening" by using a radial menu created on a
 	// musician other than the one that they are currently listening to then change
@@ -2246,6 +2242,11 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 	if (entid != listenID && listenID != 0 && creature->isListening()) {
 		entid = listenID;
 	}
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+
+	if (object == NULL)
+		return;
 
 	if(object->isDroidObject()) {
 		creature->setMood(creature->getMoodID());
@@ -3360,7 +3361,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	account->setBanReason(reason);
 	account->setBanExpires(System::getMiliTime() + seconds*1000);
 	account->setBanAdmin(admin->getAccountID());
-	
+
 	try {
 
 		Reference<CharacterList*> characters = account->getCharacterList();
