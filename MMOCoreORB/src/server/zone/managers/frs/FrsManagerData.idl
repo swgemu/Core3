@@ -217,4 +217,10 @@ class FrsManagerData extends ManagedObject {
 	public boolean isFightingInArena(unsigned long playerID) {
 		return arenaFighters.contains(playerID);
 	}
+	
+	@preLocked
+	@local
+	public VectorMap<unsigned long, ArenaChallengeData> getArenaChallenges() {
+		return arenaChallenges;
+	}
 }

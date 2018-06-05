@@ -28,6 +28,8 @@ public:
 
 		locker.release();
 
+		strongRef->performArenaMaintenance();
+
 		// Iterates lightside/darkside
 		for (int j = 1; j <= 2; j++) {
 			//Iterates each rank in rank type

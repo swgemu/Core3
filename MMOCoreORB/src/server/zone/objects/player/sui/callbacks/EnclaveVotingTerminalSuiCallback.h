@@ -95,17 +95,14 @@ public:
 				frsMan->handleChallengeVoteRecordConfirmSui(player, terminal, index, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_ISSUE) {
 				frsMan->handleChallengeVoteIssueSui(player, terminal, playerID);
-			}
-			/*
-			else if (suiType == FrsManager::SUI_ARENA_CHAL_VIEW)
+			} else if (suiType == FrsManager::SUI_ARENA_CHAL_VIEW)
 				frsMan->handleArenaChallengeViewSui(player, terminal, suiBox, index);
 			else if (suiType == FrsManager::SUI_ARENA_CHAL_ISSUE)
 				frsMan->handleArenaChallengeIssueSui(player);
 			else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT)
 				frsMan->sendArenaChallengeSUI(player, terminal, FrsManager::SUI_ARENA_CHAL_ACCEPT_LIST, enclaveType);
 			else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT_LIST)
-				frsMan->handleArenaChallengeAcceptListSui(player, terminal, suiBox, index);
-				*/
+				frsMan->acceptArenaChallenge(player, playerID);
 		}
 	}
 };
