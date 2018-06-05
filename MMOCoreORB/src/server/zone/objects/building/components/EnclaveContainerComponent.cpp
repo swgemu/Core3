@@ -124,3 +124,18 @@ bool EnclaveContainerComponent::checkCellPermission(SceneObject* sceneObject, Cr
 
 	return permission & allowPermissions;
 }
+
+int EnclaveContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
+	CreatureObject* creo = object->asCreatureObject();
+
+	if (creo == nullptr || sceneObject->getObjectID() != FrsManager::ARENA_CELL)
+		return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
+
+	FrsManager* frsMan = creo->getZoneServer()->getFrsManager();
+
+	if (frsMan->isPlayerFightingInArena(creo->getObjectID())) {
+		frsMan->handleLeftArena(creo);
+	}
+
+	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
+}

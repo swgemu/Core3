@@ -101,6 +101,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/objects/player/badges/Badge.h"
 #include "server/zone/objects/building/TutorialBuildingObject.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 										Logger("PlayerManager") {
@@ -746,14 +747,47 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 		playerCreature->sendSystemMessage(toVictim);
 
+		if (destructor->isPlayerCreature()) {
+			ManagedReference<CreatureObject*> destructorCreature = destructor->asCreatureObject();
 
-		if(destructor->isPlayerCreature()) {
-			StringIdChatParameter toKiller;
+			PlayerObject* attackerGhost = destructorCreature->getPlayerObject();
+			PlayerObject* victimGhost = playerCreature->getPlayerObject();
 
-			toKiller.setStringId("base_player", "prose_target_incap");
-			toKiller.setTT(playerCreature->getDisplayedName());
+			if (attackerGhost != NULL && victimGhost != NULL) {
+				FrsData* attackerData = attackerGhost->getFrsData();
+				int attackerCouncil = attackerData->getCouncilType();
 
-			destructor->asCreatureObject()->sendSystemMessage(toKiller);
+				FrsData* victimData = victimGhost->getFrsData();
+				int victimCouncil = victimData->getCouncilType();
+
+				ManagedReference<FrsManager*> strongMan = playerCreature->getZoneServer()->getFrsManager();
+				ManagedReference<CreatureObject*> strongRef = playerCreature->asCreatureObject();
+
+				if (attackerCouncil == FrsManager::COUNCIL_DARK && victimCouncil == FrsManager::COUNCIL_DARK) {
+					Core::getTaskManager()->executeTask([strongRef, destructorCreature, attackerCouncil, victimCouncil, strongMan] () {
+						bool isFrsBattle = false;
+
+						if (attackerCouncil == FrsManager::COUNCIL_DARK && victimCouncil == FrsManager::COUNCIL_DARK)
+							isFrsBattle = strongMan->handleDarkCouncilIncap(destructorCreature, strongRef);
+
+						if (!isFrsBattle) {
+							StringIdChatParameter toKiller;
+
+							toKiller.setStringId("base_player", "prose_target_incap");
+							toKiller.setTT(strongRef->getDisplayedName());
+
+							destructorCreature->sendSystemMessage(toKiller);
+						}
+					}, "PvPFRSIncapTask");
+				} else {
+					StringIdChatParameter toKiller;
+
+					toKiller.setStringId("base_player", "prose_target_incap");
+					toKiller.setTT(playerCreature->getDisplayedName());
+
+					destructorCreature->sendSystemMessage(toKiller);
+				}
+			}
 		}
 	}
 
@@ -806,6 +840,27 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			if (attackerCreature->isPlayerCreature()) {
 				if (!CombatManager::instance()->areInDuel(attackerCreature, player)) {
 					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+				}
+			}
+
+			PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+			PlayerObject* victimGhost = player->getPlayerObject();
+
+			if (attackerGhost != NULL && victimGhost != NULL) {
+				FrsData* attackerData = attackerGhost->getFrsData();
+				int attackerCouncil = attackerData->getCouncilType();
+
+				FrsData* victimData = victimGhost->getFrsData();
+				int victimCouncil = victimData->getCouncilType();
+
+				if (attackerCouncil == FrsManager::COUNCIL_DARK && victimCouncil == FrsManager::COUNCIL_DARK) {
+					ManagedReference<FrsManager*> strongMan = player->getZoneServer()->getFrsManager();
+					ManagedReference<CreatureObject*> attackerStrongRef = attackerCreature->asCreatureObject();
+					ManagedReference<CreatureObject*> playerStrongRef = player->asCreatureObject();
+
+					Core::getTaskManager()->executeTask([attackerStrongRef, playerStrongRef, strongMan] () {
+						strongMan->handleDarkCouncilDeath(attackerStrongRef, playerStrongRef);
+					}, "PvPFRSKillTask");
 				}
 			}
 		}

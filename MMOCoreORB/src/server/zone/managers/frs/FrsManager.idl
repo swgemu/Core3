@@ -326,11 +326,47 @@ class FrsManager extends ManagedService implements Logger {
 		return managerData.isFightingInArena(playerID);
 	}
 	
+	public native void performArenaMaintenance();
+	
+	public native void updateArenaScores();
+	
 	public native void forcePhaseChange(CreatureObject player, short enclaveType, int rank);
 	
 	@arg1preLocked
 	public native void recoverJediItems(CreatureObject player);
 	
 	public native boolean isPlayerInEnclave(CreatureObject player);
+	public native boolean isPlayerInDarkArena(CreatureObject player);
+	public native void teleportPlayerToDarkArena(CreatureObject player);
+	
 	public native void sendRankPlayerList(CreatureObject player, int councilType, int rank);
+	
+	public native int getTotalOpenArenaChallenges(int rank);
+	public native boolean playerAbleToChallenge(CreatureObject player);
+	public native boolean hasPlayerAcceptedArenaChallenge(CreatureObject player);
+	
+	public native boolean handleDarkCouncilIncap(CreatureObject killer, CreatureObject victim);
+	public native void handleDarkCouncilDeath(CreatureObject killer, CreatureObject victim, boolean forfeit = false);
+	public native void handleLeftArena(CreatureObject player);
+	
+	public native void sendArenaChallengeSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);
+	
+	@arg1preLocked
+	public native void handleArenaChallengeViewSui(CreatureObject player, SceneObject terminal, SuiBox suiBox, int index);
+	
+	@arg1preLocked
+	public native void handleArenaChallengeIssueSui(CreatureObject player);
+	
+	public native void issueArenaChallenge(CreatureObject player, int rank);
+	public native void acceptArenaChallenge(CreatureObject player, unsigned long challengerID);
+	
+	public native boolean rankHasOpenChallenges(int rank);
+	public native boolean isArenaOpen();
+	public native void forceArenaOpen(CreatureObject player);
+	public native boolean isPlayerFightingInArena(unsigned long playerID);
+	
+	@arg1preLocked
+	public native boolean canPlayerAcceptArenaChallenge(CreatureObject player);
+	@arg1preLocked
+	public native boolean canPlayerIssueArenaChallenge(CreatureObject player);
 }

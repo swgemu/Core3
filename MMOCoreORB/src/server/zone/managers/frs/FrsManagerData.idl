@@ -204,7 +204,7 @@ class FrsManagerData extends ManagedObject {
 	
 	@preLocked
 	public void addArenaFighter(unsigned long playerID) {
-		arenaFighters.add(playerID);
+		arenaFighters.put(playerID);
 	}
 	
 	@preLocked
@@ -216,5 +216,17 @@ class FrsManagerData extends ManagedObject {
 	@preLocked
 	public boolean isFightingInArena(unsigned long playerID) {
 		return arenaFighters.contains(playerID);
+	}
+	
+	@preLocked
+	@local
+	public SortedVector<unsigned long> getArenaFighters() {
+		return arenaFighters;
+	}
+	
+	@preLocked
+	@local
+	public VectorMap<unsigned long, ArenaChallengeData> getArenaChallenges() {
+		return arenaChallenges;
 	}
 }
