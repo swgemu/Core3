@@ -26,29 +26,23 @@ class ArenaChallengeData extends ManagedObject {
 		challengeStart.updateToCurrentTime();
 	}
 	
-	@local
-	@preLocked
-	public Time getChallengeStart() {
-		return challengeStart;
+	public unsigned long getChallengeStart() {
+		return challengeStart.getMiliTime();
 	}
 	
 	@read
-	@preLocked
 	public unsigned long getChallengeAccepterID() {
 		return challengeAccepterID;
 	}
 	
-	@preLocked
 	public void setChallengeAccepterID(unsigned long newID) {
 		challengeAccepterID = newID;
 	}
 	
-	@preLocked
 	public unsigned long getChallengerID() {
 		return challengerID;
 	}
 	
-	@preLocked
 	public int getChallengeRank() {
 		return challengeRank;
 	}

@@ -80,8 +80,12 @@ public:
 				frsMan->forcePhaseChange(player, enclaveType, selectedRank);
 			}
 		} else {
+			uint64 playerID = 0;
+
 			SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-			uint64 playerID = listBox->getMenuObjectID(index);
+
+			if (listBox != nullptr)
+				playerID = listBox->getMenuObjectID(index);
 
 			if (suiType == FrsManager::SUI_VOTE_RECORD) {
 				frsMan->handleVoteRecordSui(player, terminal, enclaveType, rank, playerID);
@@ -95,17 +99,16 @@ public:
 				frsMan->handleChallengeVoteRecordConfirmSui(player, terminal, index, playerID);
 			} else if (suiType == FrsManager::SUI_CHAL_VOTE_ISSUE) {
 				frsMan->handleChallengeVoteIssueSui(player, terminal, playerID);
-			}
-			/*
-			else if (suiType == FrsManager::SUI_ARENA_CHAL_VIEW)
+			} else if (suiType == FrsManager::SUI_ARENA_CHAL_VIEW) {
 				frsMan->handleArenaChallengeViewSui(player, terminal, suiBox, index);
-			else if (suiType == FrsManager::SUI_ARENA_CHAL_ISSUE)
+			} else if (suiType == FrsManager::SUI_ARENA_CHAL_ISSUE) {
 				frsMan->handleArenaChallengeIssueSui(player);
-			else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT)
+			} else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT) {
 				frsMan->sendArenaChallengeSUI(player, terminal, FrsManager::SUI_ARENA_CHAL_ACCEPT_LIST, enclaveType);
-			else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT_LIST)
-				frsMan->handleArenaChallengeAcceptListSui(player, terminal, suiBox, index);
-				*/
+			} else if (suiType == FrsManager::SUI_ARENA_CHAL_ACCEPT_LIST) {
+				locker.release();
+				frsMan->acceptArenaChallenge(player, playerID);
+			}
 		}
 	}
 };

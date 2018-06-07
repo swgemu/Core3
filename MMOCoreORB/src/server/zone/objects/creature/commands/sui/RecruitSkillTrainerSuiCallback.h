@@ -170,6 +170,10 @@ public:
 
 			}
 
+			if(player->isSwimming() || player->isIncapacitated() || player->isDead()) {
+				return;
+			}
+
 			CreatureObject* trainer = zone->getCreatureManager()->spawnCreature(trainerTemplatePath.hashCode(),0,player->getWorldPositionX(),player->getWorldPositionZ(),player->getWorldPositionY(),0,true);
 
 			if (trainer == NULL) {
