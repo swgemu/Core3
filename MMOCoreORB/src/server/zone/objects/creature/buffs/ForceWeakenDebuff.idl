@@ -1,0 +1,60 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.creature.buffs;
+
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.buffs.ForceWeakenDebuffDurationEvent;
+import server.zone.objects.creature.buffs.Buff;
+include server.zone.objects.creature.buffs.BuffType;
+include templates.params.creature.CreatureAttribute;
+include system.util.VectorMap;
+
+
+class ForceWeakenDebuff extends Buff {
+	public static final int FORCE_WEAKEN_RAMP_SECONDS = 30; //How long the ramp up/down should run
+	public static final int FORCE_WEAKEN_TICK_COUNT = 5; //Number of ticks in each ramp up/down
+	public static final int FORCE_WEAKEN_TICK_SECONDS = 6; //Seconds between ticks (FORCE_WEAKEN_RAMP_SECONDS / FORCE_WEAKEN_TICK_COUNT)
+	public static final int FORCE_WEAKEN_RAND_SCALE = 100; //How far below the max debuff values to randomly select damage per tick
+
+	protected transient ForceWeakenDebuffDurationEvent fwBuffEvent;
+
+	protected int fwStdMaxAmount; //Standard damage ceiling 
+	protected int fwKdMaxAmount; //KD/Prone damage ceiling
+	protected int time;
+	protected int counter;
+	
+	@dereferenced
+	protected VectorMap<int, int> hamDebuffAmount;
+	
+	public ForceWeakenDebuff(CreatureObject creo, unsigned int buffCRC, int stdMaxValue, int kdMaxValue, int duration) {
+		super(creo, buffCRC, duration, BuffType.JEDI);
+		
+		fwStdMaxAmount = stdMaxValue;
+		fwKdMaxAmount = kdMaxValue;
+		time = duration * 1000;
+		counter = 0;
+		
+		hamDebuffAmount.put(CreatureAttribute.HEALTH, 0);
+		hamDebuffAmount.put(CreatureAttribute.STRENGTH, 0);
+		hamDebuffAmount.put(CreatureAttribute.CONSTITUTION, 0);
+		hamDebuffAmount.put(CreatureAttribute.ACTION, 0);
+		hamDebuffAmount.put(CreatureAttribute.QUICKNESS, 0);
+		hamDebuffAmount.put(CreatureAttribute.STAMINA, 0);
+		hamDebuffAmount.put(CreatureAttribute.MIND, 0);
+		hamDebuffAmount.put(CreatureAttribute.FOCUS, 0);
+		hamDebuffAmount.put(CreatureAttribute.WILLPOWER, 0);
+	}
+	
+	public native void initializeTransientMembers();
+
+	public native void activate(boolean applyModifiers);
+	
+	public native void deactivate(boolean removeModifiers);
+
+	public native void doHealthActionMindTick(boolean weaken);
+
+	public native void clearBuffEvent();
+}
+

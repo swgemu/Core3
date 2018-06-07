@@ -70,6 +70,7 @@ public:
 	const static int INVALIDSYNTAX = 13;
 	const static int TOOCLOSE = 14;
 	const static int NOSTACKJEDIBUFF = 15;
+	const static int ALREADYAFFECTEDJEDIPOWER = 16;
 
 
 	virtual ~QueueCommand() {
