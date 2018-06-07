@@ -89,6 +89,7 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
+#include "server/zone/objects/creature/buffs/ForceWeakenDebuff.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/ai/NonPlayerCreatureObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
@@ -3652,6 +3653,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 		attributeValues.setAllowOverwriteInsertPlan();
 
 		ManagedReference<Buff*> powerBoost;
+		ManagedReference<Buff*> forceWeaken;
 
 		//check buffs
 		for (int i = 0; i < buffs->getBuffListSize(); ++i) {
@@ -3661,6 +3663,13 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 
 			if (power != NULL) {
 				powerBoost = power;
+				continue;
+			}
+
+			ForceWeakenDebuff* debuff = dynamic_cast<ForceWeakenDebuff*>(buff.get());
+
+			if (debuff != NULL) {
+				forceWeaken = debuff;
 				continue;
 			}
 
@@ -3678,6 +3687,12 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 			Locker buffLocker(powerBoost);
 
 			player->removeBuff(powerBoost);
+		}
+
+		if (forceWeaken != NULL) {
+			Locker buffLocker(forceWeaken);
+
+			player->removeBuff(forceWeaken);
 		}
 
 		int encumbranceType = -1;
