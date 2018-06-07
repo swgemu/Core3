@@ -3599,10 +3599,14 @@ void CreatureObjectImplementation::removePersonalEnemyFlag(uint64 enemyID) {
 
 bool CreatureObjectImplementation::hasPersonalEnemyFlag(CreatureObject* enemy) {
 	uint64 enemyOID = enemy->getObjectID();
+
+	if (!personalEnemyFlags.contains(enemyOID))
+		return false;
+
 	uint64 expireTime = personalEnemyFlags.get(enemyOID);
 
 	if (expireTime == 0)
-		return false;
+		return true;
 
 	Time currentTime;
 

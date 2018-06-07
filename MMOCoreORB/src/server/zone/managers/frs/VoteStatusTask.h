@@ -55,7 +55,8 @@ public:
 
 		Core::getTaskManager()->scheduleTask([strongRef]{
 			strongRef->runChallengeVoteUpdate();
-		}, "frsChallengeVoteUpdateTask", 5000);
+			strongRef->performArenaMaintenance();
+		}, "frsUpdateTask", 5000);
 
 		reschedule(FrsManager::VOTE_STATUS_TICK);
 	}

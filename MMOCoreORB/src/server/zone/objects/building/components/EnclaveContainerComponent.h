@@ -9,6 +9,7 @@ public:
 	bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const;
 	bool checkBuildingPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const;
 	bool checkCellPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const;
+	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const;
 };
 
 #endif /* ENCLAVECONTAINERCOMPONENT_H_ */

@@ -37,7 +37,7 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	FrsData* frsData = ghost->getFrsData();
@@ -72,19 +72,20 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 			menuResponse->addRadialMenuItemToRadialID(69, 71, 3,"@force_rank:issue_challenge_vote"); // Issue No-Confidence Vote
 		}
 	} else if (terminalType == DARK_CHALLENGE) {
-		/*
 		menuResponse->addRadialMenuItem(69, 3, "@pvp_rating:ch_terminal_view_scores"); // View Challenge Scores
 		menuResponse->addRadialMenuItem(70, 3, "@pvp_rating:ch_terminal_arena_status"); // Arena Status
 
-		if (frsManager->getTotalOpenArenaChallenges(-1) > 0)
+		if (frsManager->rankHasOpenChallenges(-1))
 			menuResponse->addRadialMenuItem(71, 3, "@pvp_rating:ch_terminal_view_challenges"); // View Issued Challenges
 
-		if (playerRank > 0 && playerRank < 11 && frsManager->getArenaStatus() == FrsManager::ARENA_OPEN && frsManager->isEligibleForPromotion(player, playerRank + 1) && frsManager->canPlayerIssueArenaChallenge(player))
+		if (frsManager->canPlayerIssueArenaChallenge(player))
 			menuResponse->addRadialMenuItem(73, 3,"@pvp_rating:ch_terminal_issue_challenge"); // Issue Challenge
 
-		if (playerRank > 1 && frsManager->getTotalOpenArenaChallenges(playerRank) > 0 && !frsManager->hasPlayerAcceptedArenaChallenge(player))
+		if (frsManager->canPlayerAcceptArenaChallenge(player))
 			menuResponse->addRadialMenuItem(72, 3, "@pvp_rating:ch_terminal_accept_challenge"); // Accept a Challenge
-		*/
+
+		if (ghost->isPrivileged() && !frsManager->isArenaOpen())
+			menuResponse->addRadialMenuItem(76, 3, "(TESTING) Open Arena");
 	}
 }
 
@@ -160,7 +161,7 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_RECORD, enclaveType);
 		else if (selectedID == 71)
 			frsManager->sendChallengeVoteSUI(player, sceneObject, FrsManager::SUI_CHAL_VOTE_ISSUE, enclaveType);
-	/*} else if (terminalType == DARK_CHALLENGE) {
+	} else if (terminalType == DARK_CHALLENGE) {
 		if (selectedID == 69)
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_SCORES, enclaveType);
 		else if (selectedID == 70)
@@ -171,7 +172,8 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_ACCEPT, enclaveType);
 		else if (selectedID == 73)
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_ISSUE, enclaveType);
-			*/
+		else if (selectedID == 76 && ghost->isPrivileged())
+			frsManager->forceArenaOpen(player);
 	}
 
 	return 0;
