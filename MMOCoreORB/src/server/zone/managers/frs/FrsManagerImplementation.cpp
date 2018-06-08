@@ -2945,7 +2945,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 	ManagedReference<ArenaChallengeData*> challengeData = nullptr;
-	bool isVictimChallenger = false;
+	bool isKillerChallenger = false;
 
 	for (int i = 0; i < arenaChallenges->size(); i++) {
 		ManagedReference<ArenaChallengeData*> tempData = arenaChallenges->get(i);
@@ -2954,9 +2954,9 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 		if (killerID == challengerID && victimID == accepterID) {
 			challengeData = tempData;
+			isKillerChallenger = true;
 		} else if (killerID == accepterID && victimID == challengerID) {
 			challengeData = tempData;
-			isVictimChallenger = true;
 		}
 	}
 
@@ -2977,7 +2977,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	ManagedReference<CreatureObject*> strongKiller = killer->asCreatureObject();
 	ManagedReference<CreatureObject*> strongVictim = victim->asCreatureObject();
 
-	Core::getTaskManager()->executeTask([strongMan, strongKiller, strongVictim, killerXp, victimXp, forfeit, isVictimChallenger] () {
+	Core::getTaskManager()->executeTask([strongMan, strongKiller, strongVictim, killerXp, victimXp, forfeit, isKillerChallenger] () {
 		Locker locker(strongKiller);
 
 		if (!forfeit)
@@ -2995,7 +2995,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 		strongVictim->sendPvpStatusTo(strongKiller);
 		strongKiller->sendPvpStatusTo(strongVictim);
 
-		if (!isVictimChallenger) {
+		if (isKillerChallenger) {
 			strongMan->demotePlayer(strongVictim);
 			strongMan->promotePlayer(strongKiller);
 		}
@@ -3003,7 +3003,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	String mailString = "@pvp_rating:challenge_concluded_defender_win"; // %TU has defeated %TT during a battle for the honor of rank %DI. As a result, %TU will remain at their station in rank %DI, while %TT will live in shame for their defeat.
 
-	if (!isVictimChallenger) {
+	if (isKillerChallenger) {
 		managerData->updateChallengeTime(accepterID);
 		mailString = "@pvp_rating:challenge_concluded_challenger_won"; // %TU was defeated by %TT during a battle for the honor of rank %DI. As a result %TU has been demoted from rank %DI, while %TT has taken their place.
 	}
@@ -3018,8 +3018,14 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	SortedVector<uint64>* playerList = rankData->getPlayerList();
 
 	StringIdChatParameter mailBody(mailString);
-	mailBody.setTU(killer->getFirstName());
-	mailBody.setTT(victim->getFirstName());
+
+	if (isKillerChallenger) {
+		mailBody.setTU(killer->getFirstName());
+		mailBody.setTT(victim->getFirstName());
+	} else {
+		mailBody.setTU(victim->getFirstName());
+		mailBody.setTT(killer->getFirstName());
+	}
 	mailBody.setDI(challengeRank);
 	sendMailToList(playerList, "@pvp_rating:challenge_concluded_subject_header", mailBody);
 
@@ -3069,6 +3075,8 @@ void FrsManagerImplementation::issueArenaChallenge(CreatureObject* player, int r
 	Locker locker(rankData);
 
 	SortedVector<uint64>* playerList = rankData->getPlayerList();
+	int curChallenges = rankData->getArenaChallengesThisPhase();
+	rankData->setArenaChallengesThisPhase(curChallenges + 1);
 
 	locker.release();
 
@@ -3132,6 +3140,8 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 	Locker clocker(rankData, managerData);
 
 	SortedVector<uint64>* playerList = rankData->getPlayerList();
+	int curChallenges = rankData->getArenaChallengesAcceptedThisPhase();
+	rankData->setArenaChallengesAcceptedThisPhase(curChallenges + 1);
 
 	clocker.release();
 
@@ -3152,7 +3162,7 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 		ManagedReference<CreatureObject*> strongChallenger = challenger->asCreatureObject();
 
 		Core::getTaskManager()->executeTask([strongMan, strongPlayer, strongChallenger] () {
-			strongMan->handleDarkCouncilDeath(strongChallenger, strongPlayer, true);
+			strongMan->handleDarkCouncilDeath(strongPlayer, strongChallenger, true);
 		}, "HandleDarkCouncilDeathTask");
 
 		player->sendSystemMessage("@pvp_rating:ch_terminal_challenger_forfeit"); // The challenger has forfeit this battle by not being present and alive in the enclave to complete the duel. Honor has been restored to your rank.
@@ -3458,7 +3468,7 @@ void FrsManagerImplementation::handleArenaChallengeIssueSui(CreatureObject* play
 
 	Locker xlock(rankData, player);
 
-	if (getAvailableRankSlots(rankData) >= 1) {
+	if (getAvailableRankSlots(rankData) >= 3) {
 		player->sendSystemMessage("@pvp_rating:ch_terminal_no_need_challenge"); // You do not need to challenge the rank as there are enough open seats available. Use the Voting Terminal in the enclave to petition for one of these open slots.
 		return;
 	}
