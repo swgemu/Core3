@@ -2945,7 +2945,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 	ManagedReference<ArenaChallengeData*> challengeData = nullptr;
-	bool isKillerChallenger = false;
+	bool challengerWon = false;
 
 	for (int i = 0; i < arenaChallenges->size(); i++) {
 		ManagedReference<ArenaChallengeData*> tempData = arenaChallenges->get(i);
@@ -2954,7 +2954,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 		if (killerID == challengerID && victimID == accepterID) {
 			challengeData = tempData;
-			isKillerChallenger = true;
+			challengerWon = true;
 		} else if (killerID == accepterID && victimID == challengerID) {
 			challengeData = tempData;
 		}
@@ -2977,7 +2977,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	ManagedReference<CreatureObject*> strongKiller = killer->asCreatureObject();
 	ManagedReference<CreatureObject*> strongVictim = victim->asCreatureObject();
 
-	Core::getTaskManager()->executeTask([strongMan, strongKiller, strongVictim, killerXp, victimXp, forfeit, isKillerChallenger] () {
+	Core::getTaskManager()->executeTask([strongMan, strongKiller, strongVictim, killerXp, victimXp, forfeit, challengerWon] () {
 		Locker locker(strongKiller);
 
 		if (!forfeit)
@@ -2995,7 +2995,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 		strongVictim->sendPvpStatusTo(strongKiller);
 		strongKiller->sendPvpStatusTo(strongVictim);
 
-		if (isKillerChallenger) {
+		if (challengerWon) {
 			strongMan->demotePlayer(strongVictim);
 			strongMan->promotePlayer(strongKiller);
 		}
@@ -3003,7 +3003,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	String mailString = "@pvp_rating:challenge_concluded_defender_win"; // %TU has defeated %TT during a battle for the honor of rank %DI. As a result, %TU will remain at their station in rank %DI, while %TT will live in shame for their defeat.
 
-	if (isKillerChallenger) {
+	if (challengerWon) {
 		managerData->updateChallengeTime(accepterID);
 		mailString = "@pvp_rating:challenge_concluded_challenger_won"; // %TU was defeated by %TT during a battle for the honor of rank %DI. As a result %TU has been demoted from rank %DI, while %TT has taken their place.
 	}
@@ -3019,12 +3019,12 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	StringIdChatParameter mailBody(mailString);
 
-	if (isKillerChallenger) {
-		mailBody.setTU(killer->getFirstName());
-		mailBody.setTT(victim->getFirstName());
-	} else {
+	if (challengerWon) {
 		mailBody.setTU(victim->getFirstName());
 		mailBody.setTT(killer->getFirstName());
+	} else {
+		mailBody.setTU(killer->getFirstName());
+		mailBody.setTT(victim->getFirstName());
 	}
 	mailBody.setDI(challengeRank);
 	sendMailToList(playerList, "@pvp_rating:challenge_concluded_subject_header", mailBody);
