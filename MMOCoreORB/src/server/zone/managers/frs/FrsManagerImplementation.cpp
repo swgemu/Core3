@@ -31,6 +31,8 @@ void FrsManagerImplementation::initialize() {
 
 	Locker locker(managerData);
 
+	wipeArenaChallenges();
+
 	uint64 lastTick = managerData->getLastMaintenanceTick();
 	uint64 miliDiff = Time().getMiliTime() - lastTick;
 
@@ -2807,6 +2809,57 @@ void FrsManagerImplementation::updateArenaScores() {
 	}
 }
 
+void FrsManagerImplementation::wipeArenaChallenges() {
+	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
+	int arenaChallengeCount = arenaChallenges->size();
+
+	for (int i = arenaChallengeCount - 1; i >= 0; i--) {
+		ManagedReference<ArenaChallengeData*> challengeData = arenaChallenges->get(i);
+
+		uint64 challengerID = challengeData->getChallengerID();
+		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+		String playerName = playerManager->getPlayerName(challengerID);
+
+		if (playerName.isEmpty()) {
+			arenaChallenges->remove(i);
+			continue;
+		}
+
+		uint64 challengeAccepterID = challengeData->getChallengeAccepterID();
+
+		if (challengeAccepterID != 0) {
+			managerData->removeArenaFighter(challengerID);
+			managerData->removeArenaFighter(challengeAccepterID);
+
+			ManagedReference<CreatureObject*> player = zoneServer->getObject(challengeAccepterID).castTo<CreatureObject*>();
+
+			if (player != nullptr) {
+				Locker clocker(player, managerData);
+				player->removePersonalEnemyFlag(challengerID);
+			}
+
+			player = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
+
+			if (player != nullptr) {
+				Locker clocker(player, managerData);
+				player->removePersonalEnemyFlag(challengeAccepterID);
+			}
+		}
+
+		arenaChallenges->remove(i);
+	}
+
+	short arenaStatus = managerData->getArenaStatus();
+
+	if (arenaStatus == ARENA_CLOSED && arenaChallengeCount > 0) {
+		ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
+
+		Core::getTaskManager()->executeTask([strongMan] () {
+			strongMan->updateArenaScores();
+		}, "UpdateArenaScoresTask");
+	}
+}
+
 void FrsManagerImplementation::performArenaMaintenance() {
 	Locker locker(managerData);
 
@@ -2846,28 +2899,13 @@ void FrsManagerImplementation::performArenaMaintenance() {
 		}
 
 		if (challengeDiff >= arenaChallengeDuration) {
-			challengeEnded = true;
-
 			uint64 challengeAccepterID = challengeData->getChallengeAccepterID();
+			bool challengeCompleted = challengeData->isChallengeCompleted();
 
-			if (challengeAccepterID != 0) {
-				managerData->removeArenaFighter(challengerID);
-				managerData->removeArenaFighter(challengeAccepterID);
+			if (challengeAccepterID != 0 && !challengeCompleted)
+				continue;
 
-				ManagedReference<CreatureObject*> player = zoneServer->getObject(challengeAccepterID).castTo<CreatureObject*>();
-
-				if (player != nullptr) {
-					Locker clocker(player, managerData);
-					player->removePersonalEnemyFlag(challengerID);
-				}
-
-				player = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
-
-				if (player != nullptr) {
-					Locker clocker(player, managerData);
-					player->removePersonalEnemyFlag(challengeAccepterID);
-				}
-			} else {
+			if (challengeAccepterID == 0) {
 				int challengeRank = challengeData->getChallengeRank();
 
 				FrsRank* rankData = getFrsRank(COUNCIL_DARK, challengeRank);
@@ -2889,6 +2927,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 					challenger->sendSystemMessage(mailBody);
 			}
 
+			challengeEnded = true;
 			arenaChallenges->remove(i);
 		}
 	}
@@ -2963,6 +3002,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	uint64 challengerID = challengeData->getChallengerID();
 	uint64 accepterID = challengeData->getChallengeAccepterID();
 	int challengeRank = challengeData->getChallengeRank();
+	challengeData->setChallengeCompleted();
 
 	managerData->removeArenaFighter(challengerID);
 	managerData->removeArenaFighter(accepterID);
