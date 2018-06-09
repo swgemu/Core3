@@ -3548,7 +3548,7 @@ bool FrsManagerImplementation::canPlayerAcceptArenaChallenge(CreatureObject* pla
 	FrsData* frsData = ghost->getFrsData();
 	int playerRank = frsData->getRank();
 
-	return playerRank > 1 && getTotalOpenArenaChallenges(playerRank) > 0 && !hasPlayerAcceptedArenaChallenge(player);
+	return playerRank > 1 && getTotalOpenArenaChallenges(playerRank) > 0 && !hasPlayerAcceptedArenaChallenge(player) && !managerData->hasOpenArenaChallenge(player->getObjectID());
 }
 
 bool FrsManagerImplementation::canPlayerIssueArenaChallenge(CreatureObject* player) {
