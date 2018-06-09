@@ -2769,7 +2769,7 @@ void FrsManagerImplementation::updateArenaScores() {
 			float answeredRatio = (float)challengesAccepted / (float)challenges;
 
 			if (answeredRatio >= 0.5f) {
-				rankData->setArenaChallengeScore(0);
+				challengeScore = 0;
 			} else {
 				challengeScore -= 1;
 			}
@@ -2778,9 +2778,9 @@ void FrsManagerImplementation::updateArenaScores() {
 		if (challengeScore <= -8) {
 			Vector<uint64> memberList = getPlayerListByCouncil(COUNCIL_DARK);
 
-			StringIdChatParameter mailBody("@force_rank:ch_terminal_demote_rank_penalty"); // 	The members of rank %DI have failed to answer numerous challenges issued by the Dark Jedi of the enclave. As a result, the entire rank has been demoted to rank zero. Weakness cannot be tolerated in the Council.
+			StringIdChatParameter mailBody("@pvp_rating:ch_terminal_demote_rank_penalty"); // The members of rank %DI have failed to answer numerous challenges issued by the Dark Jedi of the enclave. As a result, the entire rank has been demoted to rank zero. Weakness cannot be tolerated in the Council.
 			mailBody.setDI(i);
-			sendMailToList(&memberList, "@force_rank:ch_terminal_demote_subject", mailBody);
+			sendMailToList(&memberList, "@pvp_rating:ch_terminal_demote_subject", mailBody);
 
 			SortedVector<uint64>* playerList = rankData->getPlayerList();
 
@@ -2826,9 +2826,6 @@ void FrsManagerImplementation::performArenaMaintenance() {
 	}
 
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
-
-	if (arenaChallenges->size() == 0)
-		return;
 
 	bool challengeEnded = false;
 
