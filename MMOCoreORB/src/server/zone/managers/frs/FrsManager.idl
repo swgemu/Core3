@@ -362,6 +362,7 @@ class FrsManager extends ManagedService implements Logger {
 	
 	public native boolean rankHasOpenChallenges(int rank);
 	public native boolean isArenaOpen();
+	public native void wipeArenaChallenges();
 	public native void forceArenaOpen(CreatureObject player);
 	public native boolean isPlayerFightingInArena(unsigned long playerID);
 	
