@@ -590,6 +590,11 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	else
 		return;
 
+	SkillManager* skillManager = zoneServer->getSkillManager();
+
+	if (skillManager == nullptr)
+		return;
+
 	for (int i = 0; i <= 11; i++) {
 		Reference<FrsRankingData*> rankData = rankingData.get(i);
 		String rankSkill = rankData->getSkillName();
@@ -597,7 +602,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
-				player->addSkill(rankSkill, true);
+				skillManager->awardSkill(rankSkill, player, true, false, false);
 
 			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
 				player->addSkill("force_title_jedi_rank_04", true);
@@ -605,7 +610,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
-				player->removeSkill(rankSkill, true);
+				skillManager->surrenderSkill(rankSkill, player, true);
 		}
 	}
 }
