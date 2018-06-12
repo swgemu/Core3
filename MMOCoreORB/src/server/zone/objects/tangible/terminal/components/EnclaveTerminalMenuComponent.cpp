@@ -51,6 +51,9 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 	if (frsData->getCouncilType() == 0 && !ghost->isPrivileged())
 		return;
 
+	if (frsManager->isPlayerFightingInArena(player->getObjectID()))
+		return;
+
 	if (terminalType == VOTING) {
 		menuResponse->addRadialMenuItem(69, 3, "@force_rank:vote_status"); // Voting Status
 		menuResponse->addRadialMenuItemToRadialID(69, 70, 3,"@force_rank:record_vote"); // Record Vote
@@ -137,6 +140,9 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	}
 
 	if (frsData->getCouncilType() == 0 && !ghost->isPrivileged())
+		return 1;
+
+	if (frsManager->isPlayerFightingInArena(player->getObjectID()))
 		return 1;
 
 	if (terminalType == VOTING) {

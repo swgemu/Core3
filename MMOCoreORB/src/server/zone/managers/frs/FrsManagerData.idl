@@ -203,6 +203,11 @@ class FrsManagerData extends ManagedObject {
 	}
 	
 	@preLocked
+	public void removeArenaChallenge(unsigned long playerID) {
+		arenaChallenges.drop(playerID);
+	}
+	
+	@preLocked
 	public void addArenaFighter(unsigned long playerID) {
 		arenaFighters.put(playerID);
 	}
