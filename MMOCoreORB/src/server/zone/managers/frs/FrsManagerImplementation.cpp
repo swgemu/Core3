@@ -409,8 +409,17 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 			rankData->removeFromPlayerList(playerID);
 		}
 
-		// Player is getting demoted, remove any pending petitions
 		if (curRank > rank) {
+			String stfRank = "@force_rank:rank" + String::valueOf(rank);
+			String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
+
+			StringIdChatParameter param("@force_rank:rank_lost"); // You have been demoted to %TO.
+			param.setTO(rankString);
+			player->sendSystemMessage(param);
+		}
+
+		// Player is getting demoted, remove any pending petitions
+		if (curRank < 11 && curRank > rank) {
 			rankData = getFrsRank(councilType, curRank + 1);
 
 			if (rankData != nullptr) {
@@ -672,13 +681,6 @@ void FrsManagerImplementation::demotePlayer(CreatureObject* player) {
 		Locker locker(strongRef);
 		strongMan->setPlayerRank(strongRef, newRank);
 	}, "SetPlayerRankTask");
-
-	String stfRank = "@force_rank:rank" + String::valueOf(newRank);
-	String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
-
-	StringIdChatParameter param("@force_rank:rank_lost"); // You have been demoted to %TO.
-	param.setTO(rankString);
-	player->sendSystemMessage(param);
 }
 
 void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int amount, bool sendSystemMessage) {
