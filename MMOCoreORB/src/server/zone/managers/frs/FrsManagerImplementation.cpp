@@ -415,7 +415,13 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 
 			if (rankData != nullptr) {
 				Locker clocker(rankData, player);
-				rankData->removeFromPetitionerList(playerID);
+
+				if (rankData->isOnPetitionerList(playerID)) {
+					if (councilType == COUNCIL_DARK)
+						modifySuddenDeathFlags(player, rankData, true);
+
+					rankData->removeFromPetitionerList(playerID);
+				}
 			}
 		}
 	}
