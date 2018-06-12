@@ -3769,6 +3769,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 			if (votesGained > 0)
 				rankData->addToPetitionerList(contribID, curVotes + votesGained);
 
+			contributor->sendSystemMessage("DEBUG Contrib Damage: " + String::valueOf(damageContrib) + ", Total: " + String::valueOf(totalContrib) + ", Percent: " + String::valueOf(contribPercent) + ", Votes: " + String::valueOf(votesGained) + "/" + String::valueOf(totalVotes));
+
 			StringIdChatParameter msgBody("@pvp_rating:dark_jedi_kill_won_votes"); // You have earned %DI votes for defeating %TT in combat.
 			msgBody.setDI(votesGained);
 			msgBody.setTT(player->getFirstName());
