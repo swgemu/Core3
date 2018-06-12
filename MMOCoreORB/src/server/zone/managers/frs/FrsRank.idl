@@ -109,6 +109,12 @@ class FrsRank extends ManagedObject {
 	
 	@dirty
 	@preLocked
+	public boolean getPetitionerVotes(unsigned long id) {
+		return petitionerList.get(id);
+	}
+	
+	@dirty
+	@preLocked
 	public int getTotalPetitioners() {
 		return petitionerList.size();
 	}
