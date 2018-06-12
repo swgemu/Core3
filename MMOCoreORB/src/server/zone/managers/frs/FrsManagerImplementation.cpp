@@ -545,7 +545,7 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 	if (skillRank < 0) {
 		return;
 	} else if (skillRank > 0) {
-		demotePlayer(player);
+		setPlayerRank(player, skillRank - 1);
 	} else if (skillRank == 0) {
 		removeFromFrs(player);
 	}
