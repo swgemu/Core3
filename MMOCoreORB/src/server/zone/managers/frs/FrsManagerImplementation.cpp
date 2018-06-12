@@ -602,7 +602,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
-				skillManager->awardSkill(rankSkill, player, true, false, false);
+				skillManager->awardSkill(rankSkill, player, true, false, true);
 
 			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
 				player->addSkill("force_title_jedi_rank_04", true);
