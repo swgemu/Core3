@@ -370,6 +370,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
 			player->addSkill("force_title_jedi_master", true);
 	}
+
+	ghost->recalculateForcePower();
 }
 
 void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
@@ -413,7 +415,13 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 
 			if (rankData != nullptr) {
 				Locker clocker(rankData, player);
-				rankData->removeFromPetitionerList(playerID);
+
+				if (rankData->isOnPetitionerList(playerID)) {
+					if (councilType == COUNCIL_DARK)
+						modifySuddenDeathFlags(player, rankData, true);
+
+					rankData->removeFromPetitionerList(playerID);
+				}
 			}
 		}
 	}
@@ -537,7 +545,7 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 	if (skillRank < 0) {
 		return;
 	} else if (skillRank > 0) {
-		demotePlayer(player);
+		setPlayerRank(player, skillRank - 1);
 	} else if (skillRank == 0) {
 		removeFromFrs(player);
 	}
@@ -582,6 +590,11 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	else
 		return;
 
+	SkillManager* skillManager = zoneServer->getSkillManager();
+
+	if (skillManager == nullptr)
+		return;
+
 	for (int i = 0; i <= 11; i++) {
 		Reference<FrsRankingData*> rankData = rankingData.get(i);
 		String rankSkill = rankData->getSkillName();
@@ -589,7 +602,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
-				player->addSkill(rankSkill, true);
+				skillManager->awardSkill(rankSkill, player, true, false, true);
 
 			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
 				player->addSkill("force_title_jedi_rank_04", true);
@@ -597,7 +610,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
-				player->removeSkill(rankSkill, true);
+				skillManager->surrenderSkill(rankSkill, player, true);
 		}
 	}
 }
@@ -3755,6 +3768,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 
 			if (votesGained > 0)
 				rankData->addToPetitionerList(contribID, curVotes + votesGained);
+
+			contributor->sendSystemMessage("DEBUG Contrib Damage: " + String::valueOf(damageContrib) + ", Total: " + String::valueOf(totalContrib) + ", Percent: " + String::valueOf(contribPercent) + ", Votes: " + String::valueOf(votesGained) + "/" + String::valueOf(totalVotes));
 
 			StringIdChatParameter msgBody("@pvp_rating:dark_jedi_kill_won_votes"); // You have earned %DI votes for defeating %TT in combat.
 			msgBody.setDI(votesGained);
