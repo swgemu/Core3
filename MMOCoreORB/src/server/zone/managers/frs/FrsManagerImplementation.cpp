@@ -369,6 +369,21 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 			player->addSkill("force_title_jedi_rank_04", true);
 		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
 			player->addSkill("force_title_jedi_master", true);
+
+		if (realPlayerRank == 0) {
+			SkillManager* skillManager = zoneServer->getSkillManager();
+
+			if (skillManager == nullptr)
+				return;
+
+			if (councilType == COUNCIL_LIGHT && player->getSkillMod("force_control_light") == 0) {
+				player->removeSkill("force_rank_light_novice", true);
+				skillManager->awardSkill("force_rank_light_novice", player, true, false, true);
+			} else if (councilType == COUNCIL_DARK && player->getSkillMod("force_control_dark") == 0) {
+				player->removeSkill("force_rank_dark_novice", true);
+				skillManager->awardSkill("force_rank_dark_novice", player, true, false, true);
+			}
+		}
 	}
 
 	ghost->recalculateForcePower();
