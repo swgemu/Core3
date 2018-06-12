@@ -824,6 +824,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		}
 	}
 
+	ThreatMap* threatMap = player->getThreatMap();
 
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature() || attacker->isPet()) {
@@ -858,8 +859,11 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 					ManagedReference<CreatureObject*> attackerStrongRef = attackerCreature->asCreatureObject();
 					ManagedReference<CreatureObject*> playerStrongRef = player->asCreatureObject();
 
-					Core::getTaskManager()->executeTask([attackerStrongRef, playerStrongRef, strongMan] () {
-						strongMan->handleDarkCouncilDeath(attackerStrongRef, playerStrongRef);
+					Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
+
+					Core::getTaskManager()->executeTask([attackerStrongRef, playerStrongRef, strongMan, copyThreatMap] () {
+						if (!strongMan->handleDarkCouncilDeath(attackerStrongRef, playerStrongRef))
+							strongMan->handleSuddenDeathLoss(playerStrongRef, copyThreatMap);
 					}, "PvPFRSKillTask");
 				}
 			}
@@ -867,8 +871,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	}
 
 	CombatManager::instance()->freeDuelList(player, false);
-
-	ThreatMap* threatMap = player->getThreatMap();
 
 	if (attacker->isPlayerCreature()) {
 		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();

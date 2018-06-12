@@ -22,6 +22,7 @@ include server.zone.managers.frs.ChallengeVoteData;
 include system.lang.ref.Reference;
 include server.chat.StringIdChatParameter;
 import server.zone.objects.player.sui.SuiBox;
+include server.zone.objects.tangible.threat.ThreatMap;
 
 @dirty
 class FrsManager extends ManagedService implements Logger {
@@ -346,7 +347,7 @@ class FrsManager extends ManagedService implements Logger {
 	public native boolean hasPlayerAcceptedArenaChallenge(CreatureObject player);
 	
 	public native boolean handleDarkCouncilIncap(CreatureObject killer, CreatureObject victim);
-	public native void handleDarkCouncilDeath(CreatureObject killer, CreatureObject victim, boolean forfeit = false);
+	public native boolean handleDarkCouncilDeath(CreatureObject killer, CreatureObject victim, boolean forfeit = false);
 	public native void handleLeftArena(CreatureObject player);
 	
 	public native void sendArenaChallengeSUI(CreatureObject player, SceneObject terminal, short suiType, short enclaveType);
@@ -370,4 +371,12 @@ class FrsManager extends ManagedService implements Logger {
 	public native boolean canPlayerAcceptArenaChallenge(CreatureObject player);
 	@arg1preLocked
 	public native boolean canPlayerIssueArenaChallenge(CreatureObject player);
+	
+	public native void setupSuddenDeath(FrsRank rankData, boolean endPhase);
+	
+	@arg2preLocked
+	public native void modifySuddenDeathFlags(CreatureObject player, FrsRank rankData, boolean doRemove);
+	
+	@local
+	public native void handleSuddenDeathLoss(CreatureObject player, ThreatMap threatMap);
 }

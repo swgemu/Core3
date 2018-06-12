@@ -134,6 +134,7 @@ void FrsManagerImplementation::loadLuaConfig() {
 	arenaOpenInterval = lua->getGlobalLong("arenaOpenInterval");
 	arenaClosedInterval = lua->getGlobalLong("arenaClosedInterval");
 	arenaChallengeDuration = lua->getGlobalLong("arenaChallengeDuration");
+	arenaChallengeCooldown = lua->getGlobalLong("arenaChallengeCooldown");
 	requestDemotionDuration = lua->getGlobalLong("requestDemotionDuration");
 	voteChallengeDuration = lua->getGlobalLong("voteChallengeDuration");
 	baseMaintCost = lua->getGlobalInt("baseMaintCost");
@@ -1709,6 +1710,9 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 				mailBody.setTT(getTimeString(votingInterval / 1000));
 
 				sendMailToVoters(rankData, "@force_rank:vote_cycle_begun_sub", mailBody);
+
+				if (rankData->getCouncilType() == COUNCIL_DARK)
+					setupSuddenDeath(rankData, false);
 			}
 		}
 	} else if (status == VOTING_OPEN) {
@@ -1718,6 +1722,8 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 			rankData->resetVotingData();
 			rankData->setVoteStatus(VOTING_CLOSED);
 		} else {
+			setupSuddenDeath(rankData, true);
+
 			if (availSlots > 0) { // Add top X (where X = available slots) winners to winner list so they can accept next phase
 				Vector<uint64>* winnerList = getTopVotes(rankData, availSlots);
 
@@ -2884,7 +2890,9 @@ void FrsManagerImplementation::performArenaMaintenance() {
 
 	// Not all challenges will end at the interval, challenges started towards the end of the interval will continue until their duration is up
 	for (int i = arenaChallenges->size() - 1; i >= 0; i--) {
-		ManagedReference<ArenaChallengeData*> challengeData = arenaChallenges->get(i);
+		VectorMapEntry<uint64, ManagedReference<ArenaChallengeData*> > entry = arenaChallenges->elementAt(i);
+		uint64 challengeKey = entry.getKey();
+		ManagedReference<ArenaChallengeData*> challengeData = entry.getValue();
 
 		uint64 startTime = challengeData->getChallengeStart();
 		uint64 challengeDiff = Time().getMiliTime() - startTime;
@@ -2895,6 +2903,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 
 		if (playerName.isEmpty()) {
 			arenaChallenges->remove(i);
+			managerData->removeArenaChallenge(challengeKey);
 			continue;
 		}
 
@@ -2911,7 +2920,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 				FrsRank* rankData = getFrsRank(COUNCIL_DARK, challengeRank);
 
 				if (rankData == nullptr)
-					return;
+					continue;
 
 				Locker clocker(rankData, managerData);
 				SortedVector<uint64>* playerList = rankData->getPlayerList();
@@ -2929,6 +2938,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 
 			challengeEnded = true;
 			arenaChallenges->remove(i);
+			managerData->removeArenaChallenge(challengeKey);
 		}
 	}
 
@@ -2970,9 +2980,9 @@ bool FrsManagerImplementation::handleDarkCouncilIncap(CreatureObject* killer, Cr
 	return false;
 }
 
-void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, CreatureObject* victim, bool forfeit) {
+bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, CreatureObject* victim, bool forfeit) {
 	if (killer == nullptr || victim == nullptr)
-		return;
+		return false;
 
 	uint64 killerID = killer->getObjectID();
 	uint64 victimID = victim->getObjectID();
@@ -2997,7 +3007,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	}
 
 	if (challengeData == nullptr)
-		return;
+		return false;
 
 	uint64 challengerID = challengeData->getChallengerID();
 	uint64 accepterID = challengeData->getChallengeAccepterID();
@@ -3048,7 +3058,7 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	FrsRank* rankData = getFrsRank(COUNCIL_DARK, challengeRank);
 
 	if (rankData == nullptr)
-		return;
+		return true;
 
 	Locker clocker(rankData, managerData);
 
@@ -3068,6 +3078,8 @@ void FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 
 	killer->sendSystemMessage(mailBody);
 	victim->sendSystemMessage(mailBody);
+
+	return true;
 }
 
 void FrsManagerImplementation::handleLeftArena(CreatureObject* player) {
@@ -3575,4 +3587,203 @@ void FrsManagerImplementation::forceArenaOpen(CreatureObject* player) {
 	managerData->updateLastArenaOpenTime();
 
 	player->sendSystemMessage("The arena has been opened.");
+}
+
+void FrsManagerImplementation::setupSuddenDeath(FrsRank* rankData, bool endPhase) {
+	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int i = 0; i < petitionerList->size(); i++) {
+		VectorMapEntry<uint64, int>* entry = &petitionerList->elementAt(i);
+		uint64 playerID = entry->getKey();
+
+		String name = playerManager->getPlayerName(playerID);
+
+		if (name.isEmpty())
+			continue;
+
+		ManagedReference<CreatureObject*> player = zoneServer->getObject(playerID).castTo<CreatureObject*>();
+
+		if (player == nullptr)
+			continue;
+
+		modifySuddenDeathFlags(player, rankData, endPhase);
+
+		if (endPhase)
+			player->sendSystemMessage("@pvp_rating:sudden_death_timeout"); // You have survied the voting period for your rank. You are no longer at war with your fellow petitioners.
+		else
+			player->sendSystemMessage("@pvp_rating:sudden_death_start"); // Voting has begun for the rank you have petitioned for. All petitioning Jedi in your rank are now at war with one another. Should you defeat a fellow petitioning Jedi, you will gain all of their accumilated votes as well knock them out of the race. Take heed, however, as the same could happen to you.
+	}
+}
+
+void FrsManagerImplementation::modifySuddenDeathFlags(CreatureObject* player, FrsRank* rankData, bool doRemove) {
+	if (player == nullptr)
+		return;
+
+	uint64 playerID = player->getObjectID();
+
+	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int i = 0; i < petitionerList->size(); i++) {
+		VectorMapEntry<uint64, int>* entry = &petitionerList->elementAt(i);
+		uint64 petitionerID = entry->getKey();
+
+		if (playerID == petitionerID)
+			continue;
+
+		String name = playerManager->getPlayerName(petitionerID);
+
+		if (name.isEmpty())
+			continue;
+
+		ManagedReference<CreatureObject*> petitioner = zoneServer->getObject(petitionerID).castTo<CreatureObject*>();
+
+		if (petitioner == nullptr)
+			continue;
+
+		ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+
+		Core::getTaskManager()->executeTask([strongRef, petitioner, doRemove] () {
+			Locker locker(strongRef);
+			Locker clocker(petitioner, strongRef);
+
+			if (doRemove) {
+				strongRef->removePersonalEnemyFlag(petitioner);
+			} else {
+				if (!strongRef->hasPersonalEnemyFlag(petitioner))
+					strongRef->addPersonalEnemyFlag(petitioner, 0);
+			}
+
+			if (doRemove) {
+				strongRef->removePersonalEnemyFlag(petitioner);
+			} else {
+				if (!petitioner->hasPersonalEnemyFlag(strongRef))
+					petitioner->addPersonalEnemyFlag(strongRef, 0);
+			}
+
+			strongRef->sendPvpStatusTo(petitioner);
+			petitioner->sendPvpStatusTo(strongRef);
+		}, "AddPersonalEnemyFlagTask");
+	}
+}
+
+void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, ThreatMap* threatMap) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	uint32 totalDamage = threatMap->getTotalDamage();
+
+	if (totalDamage == 0)
+		return;
+
+	Locker locker(player);
+
+	FrsData* playerData = ghost->getFrsData();
+	int curRank = playerData->getRank();
+
+	locker.release();
+
+	uint64 playerID = player->getObjectID();
+
+	ManagedReference<FrsRank*> rankData = getFrsRank(COUNCIL_DARK, curRank + 1);
+
+	if (rankData == nullptr)
+		return;
+
+	Locker lock(rankData);
+
+	if (!rankData->isOnPetitionerList(playerID))
+		return;
+
+	int totalVotes = rankData->getPetitionerVotes(playerID);
+
+	int totalContrib = 0;
+	auto contribList = new VectorMap<uint64, int>();
+
+	for (int i = 0; i < threatMap->size(); ++i) {
+		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
+		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+
+		if (entry == nullptr || attacker == nullptr || attacker == player || !attacker->isPlayerCreature())
+			continue;
+
+		if (!player->isAttackableBy(attacker, true))
+			continue;
+
+		PlayerObject* attackerGhost = attacker->getPlayerObject();
+
+		if (attackerGhost == nullptr)
+			continue;
+
+		//if (ghost->getAccountID() == attackerGhost->getAccountID())
+		//	continue;
+
+		if (entry->getTotalDamage() <= 0)
+			continue;
+
+		if (!rankData->isOnPetitionerList(attacker->getObjectID()))
+			continue;
+
+		if (player->getDistanceTo(attacker) > 80.f)
+			continue;
+
+		contribList->put(attacker->getObjectID(), entry->getTotalDamage());
+
+		totalContrib += entry->getTotalDamage();
+	}
+
+	if (contribList->size() == 0)
+		return;
+
+	if (totalVotes > 0) {
+		for (int i = 0; i < contribList->size(); i++) {
+			uint64 contribID = contribList->elementAt(i).getKey();
+			int damageContrib = contribList->elementAt(i).getValue();
+			float contribPercent = (float)damageContrib / (float)totalContrib;
+
+			ManagedReference<CreatureObject*> contributor = zoneServer->getObject(contribID).castTo<CreatureObject*>();
+
+			if (contributor == nullptr)
+				continue;
+
+			int curVotes = rankData->getPetitionerVotes(contribID);
+
+			int votesGained = (int)floor((float)totalVotes * contribPercent);
+
+			if (votesGained > 0)
+				rankData->addToPetitionerList(contribID, curVotes + votesGained);
+
+			StringIdChatParameter msgBody("@pvp_rating:dark_jedi_kill_won_votes"); // You have earned %DI votes for defeating %TT in combat.
+			msgBody.setDI(votesGained);
+			msgBody.setTT(player->getFirstName());
+
+			contributor->sendSystemMessage(msgBody);
+		}
+	}
+
+	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
+	StringIdChatParameter msgBody("@pvp_rating:sudden_death_death"); // %TT has fallen to a fellow rank petitioner. Any votes they may have had accumilated have been divided amongs those that took part in the slaughter of %TT. Let this be a lesson in how the Council deals with failure.
+	msgBody.setTT(player->getFirstName());
+
+	for (int i = 0; i < petitionerList->size(); i++) {
+		VectorMapEntry<uint64, int>* entry = &petitionerList->elementAt(i);
+		uint64 petitionerID = entry->getKey();
+
+		if (petitionerID == playerID)
+			continue;
+
+		ManagedReference<CreatureObject*> petitioner = zoneServer->getObject(petitionerID).castTo<CreatureObject*>();
+
+		if (petitioner == nullptr)
+			continue;
+
+		petitioner->sendSystemMessage(msgBody);
+	}
+
+	player->sendSystemMessage("@pvp_rating:dark_jedi_kill_lost_votes"); // 	For dying to another petitioning Jedi, you have lost all of your votes. You have also relinquished your rights to petition during the current voting period.
+	rankData->removeFromPetitionerList(playerID);
+	modifySuddenDeathFlags(player, rankData, true);
 }
