@@ -989,6 +989,8 @@ class PlayerObject extends IntangibleObject {
 	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
 
 	public native void doForceRegen();
+	
+	public native void recalculateForcePower();
 
 	@dirty
 	public native int getForcePowerRegen();

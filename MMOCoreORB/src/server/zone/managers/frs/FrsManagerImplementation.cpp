@@ -370,6 +370,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
 			player->addSkill("force_title_jedi_master", true);
 	}
+
+	ghost->recalculateForcePower();
 }
 
 void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
