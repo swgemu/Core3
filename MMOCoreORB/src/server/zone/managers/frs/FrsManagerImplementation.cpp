@@ -557,7 +557,7 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 			String rankSkill = rankData->getSkillName();
 
 			if (player->hasSkill(rankSkill)) {
-				skillManager->surrenderSkill(rankSkill, player, true);
+				skillManager->surrenderSkill(rankSkill, player, true, false);
 			}
 		}
 
@@ -619,14 +619,14 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	if (skillManager == nullptr)
 		return;
 
-	for (int i = 0; i <= 11; i++) {
+	for (int i = 11; i >= 0; i--) {
 		Reference<FrsRankingData*> rankData = rankingData.get(i);
 		String rankSkill = rankData->getSkillName();
 		int rank = rankData->getRank();
 
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
-				skillManager->awardSkill(rankSkill, player, true, false, true);
+				skillManager->awardSkill(rankSkill, player, true, true, true);
 
 			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
 				player->addSkill("force_title_jedi_rank_04", true);
@@ -634,7 +634,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
-				skillManager->surrenderSkill(rankSkill, player, true);
+				skillManager->surrenderSkill(rankSkill, player, true, false);
 		}
 	}
 }
