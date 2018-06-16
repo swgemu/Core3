@@ -1815,7 +1815,7 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 			forceManipulationMod = creature->getSkillMod("force_manipulation_dark");
 		}
 
-		regen += (forceControlMod + forceManipulationMod) / 100.f;
+		regen += (forceControlMod + forceManipulationMod) / 10.f;
 
 		int regenMultiplier = creature->getSkillMod("private_force_regen_multiplier");
 		int regenDivisor = creature->getSkillMod("private_force_regen_divisor");
