@@ -2802,7 +2802,7 @@ void FrsManagerImplementation::updateArenaScores() {
 		int challengeScore = rankData->getArenaChallengeScore();
 
 		if (challenges == 0) {
-			rankData->setArenaChallengeScore(0);
+			challengeScore = 0;
 		} else {
 			float answeredRatio = (float)challengesAccepted / (float)challenges;
 
