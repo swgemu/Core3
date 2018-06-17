@@ -369,6 +369,21 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 			player->addSkill("force_title_jedi_rank_04", true);
 		if (realPlayerRank >= 8 && !player->hasSkill("force_title_jedi_master"))
 			player->addSkill("force_title_jedi_master", true);
+
+		if (realPlayerRank == 0) {
+			SkillManager* skillManager = zoneServer->getSkillManager();
+
+			if (skillManager == nullptr)
+				return;
+
+			if (councilType == COUNCIL_LIGHT && player->getSkillMod("force_control_light") == 0) {
+				player->removeSkill("force_rank_light_novice", true);
+				skillManager->awardSkill("force_rank_light_novice", player, true, false, true);
+			} else if (councilType == COUNCIL_DARK && player->getSkillMod("force_control_dark") == 0) {
+				player->removeSkill("force_rank_dark_novice", true);
+				skillManager->awardSkill("force_rank_dark_novice", player, true, false, true);
+			}
+		}
 	}
 
 	ghost->recalculateForcePower();
@@ -542,7 +557,7 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 			String rankSkill = rankData->getSkillName();
 
 			if (player->hasSkill(rankSkill)) {
-				skillManager->surrenderSkill(rankSkill, player, true);
+				skillManager->surrenderSkill(rankSkill, player, true, false);
 			}
 		}
 
@@ -604,14 +619,14 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	if (skillManager == nullptr)
 		return;
 
-	for (int i = 0; i <= 11; i++) {
+	for (int i = 11; i >= 0; i--) {
 		Reference<FrsRankingData*> rankData = rankingData.get(i);
 		String rankSkill = rankData->getSkillName();
 		int rank = rankData->getRank();
 
 		if (playerRank >= rank) {
 			if (!player->hasSkill(rankSkill))
-				skillManager->awardSkill(rankSkill, player, true, false, true);
+				skillManager->awardSkill(rankSkill, player, true, true, true);
 
 			if (rank == 4 && !player->hasSkill("force_title_jedi_rank_04"))
 				player->addSkill("force_title_jedi_rank_04", true);
@@ -619,7 +634,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 				player->addSkill("force_title_jedi_master", true);
 		} else {
 			if (player->hasSkill(rankSkill))
-				skillManager->surrenderSkill(rankSkill, player, true);
+				skillManager->surrenderSkill(rankSkill, player, true, false);
 		}
 	}
 }
@@ -2787,7 +2802,7 @@ void FrsManagerImplementation::updateArenaScores() {
 		int challengeScore = rankData->getArenaChallengeScore();
 
 		if (challenges == 0) {
-			rankData->setArenaChallengeScore(0);
+			challengeScore = 0;
 		} else {
 			float answeredRatio = (float)challengesAccepted / (float)challenges;
 

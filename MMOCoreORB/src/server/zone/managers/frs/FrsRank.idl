@@ -109,7 +109,7 @@ class FrsRank extends ManagedObject {
 	
 	@dirty
 	@preLocked
-	public boolean getPetitionerVotes(unsigned long id) {
+	public int getPetitionerVotes(unsigned long id) {
 		return petitionerList.get(id);
 	}
 	
