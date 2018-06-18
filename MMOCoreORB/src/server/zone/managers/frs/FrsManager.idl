@@ -82,6 +82,9 @@ class FrsManager extends ManagedService implements Logger {
 	protected transient VectorMap<unsigned long, int> roomRequirements;
 	
 	@dereferenced
+	protected transient VectorMap<unsigned long, VectorMap<short, float> > frsBuffModifiers;
+	
+	@dereferenced
 	@rawTemplate(value = "uint64, Vector<int>")
 	protected transient VectorMap experienceValues;
 	
@@ -379,4 +382,7 @@ class FrsManager extends ManagedService implements Logger {
 	
 	@local
 	public native void handleSuddenDeathLoss(CreatureObject player, ThreatMap threatMap);
+	
+	public native float getFrsBuffModifier(unsigned long buffCRC, short councilType);
+	public native int getFrsModifiedBuffValue(CreatureObject player, unsigned long buffCRC, int amount);
 }
