@@ -8,17 +8,12 @@
 class ForceFeedback1Command : public JediQueueCommand {
 public:
 
-	ForceFeedback1Command(const String& name, ZoneProcessServer* server)
-		: JediQueueCommand(name, server) {
-
+	ForceFeedback1Command(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 		buffCRC = BuffCRC::JEDI_FORCE_FEEDBACK_1;
-
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_FEEDBACK_2);
-
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		skillMods.put("force_feedback", 65);
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
