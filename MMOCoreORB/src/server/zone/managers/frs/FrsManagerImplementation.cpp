@@ -3395,7 +3395,7 @@ void FrsManagerImplementation::sendArenaChallengeSUI(CreatureObject* player, Sce
 		Locker xlock(rankData, player);
 
 
-		if (getAvailableRankSlots(rankData) >= 1) {
+		if (getAvailableRankSlots(rankData) >= 3) {
 			player->sendSystemMessage("@pvp_rating:ch_terminal_no_need_challenge"); // You do not need to challenge the rank as there are enough open seats available. Use the Voting Terminal in the enclave to petition for one of these open slots.
 			return;
 		}
