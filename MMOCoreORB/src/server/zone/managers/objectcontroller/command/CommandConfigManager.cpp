@@ -704,6 +704,22 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			jediCommand->setClientEffect(Lua::getStringParameter(L));
 		else if (varName == "speedMod")
 			jediCommand->setSpeedMod(Lua::getFloatParameter(L));
+		else if (varName == "frsLightForceCostModifier")
+			jediCommand->setFrsLightForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkForceCostModifier")
+			jediCommand->setFrsDarkForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkExtraForceCostModifier")
+			jediCommand->setFrsDarkExtraForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightExtraForceCostModifier")
+			jediCommand->setFrsLightExtraForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightBuffModifier")
+			jediCommand->setFrsLightBuffModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkBuffModifier")
+			jediCommand->setFrsDarkBuffModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightForcePowerModifier")
+			jediCommand->setFrsLightForcePowerModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkForcePowerModifier")
+			jediCommand->setFrsDarkForcePowerModifier(Lua::getFloatParameter(L));
 		else if (jediCommand->isForceHealCommand()) {
 			ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(jediCommand);
 			if (varName == "healAmount")
