@@ -235,6 +235,28 @@ void FrsManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 
+	luaObject = lua->getGlobalObject("frsBuffModifiers");
+
+	if (luaObject.isValidTable()) {
+		for(int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject entry = luaObject.getObjectAt(i);
+
+			uint64 buffCRC = entry.getLongAt(1);
+			float lightModifier = entry.getFloatAt(2);
+			float darkModifier = entry.getFloatAt(3);
+
+			VectorMap<short, float>* modifiers = new VectorMap<short, float>();
+			modifiers->put(COUNCIL_LIGHT, lightModifier);
+			modifiers->put(COUNCIL_DARK, darkModifier);
+
+			frsBuffModifiers.put(buffCRC, modifiers);
+
+			entry.pop();
+		}
+	}
+
+	luaObject.pop();
+
 	delete lua;
 	lua = nullptr;
 }
@@ -3818,4 +3840,43 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 	player->sendSystemMessage("@pvp_rating:dark_jedi_kill_lost_votes"); // 	For dying to another petitioning Jedi, you have lost all of your votes. You have also relinquished your rights to petition during the current voting period.
 	rankData->removeFromPetitionerList(playerID);
 	modifySuddenDeathFlags(player, rankData, true);
+}
+
+float FrsManagerImplementation::getFrsBuffModifier(uint64 buffCRC, short councilType) {
+	if (!frsBuffModifiers.contains(buffCRC))
+		return 0;
+
+	VectorMap<short, float>* buffModifiers = frsBuffModifiers.get(buffCRC);
+
+	return buffModifiers->get(councilType);
+}
+
+int FrsManagerImplementation::getFrsModifiedBuffValue(CreatureObject* player, uint64 buffCRC, int amount) {
+	if (player == nullptr)
+		return amount;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return amount;
+
+	FrsData* playerData = ghost->getFrsData();
+	short councilType = playerData->getCouncilType();
+
+	float buffModifier = getFrsBuffModifier(buffCRC, councilType);
+
+	if (buffModifier == 0)
+		return amount;
+
+	int controlModifier = 0;
+
+	if (councilType == COUNCIL_LIGHT)
+		player->getSkillMod("force_control_light");
+	else if (councilType == COUNCIL_DARK)
+		player->getSkillMod("force_control_dark");
+
+	if (controlModifier == 0)
+		return amount;
+
+	return amount + (int)((controlModifier * buffModifier) + 0.5f);
 }
