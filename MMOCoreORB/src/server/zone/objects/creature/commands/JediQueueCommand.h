@@ -272,17 +272,17 @@ public:
 		float frsModifier = 0;
 
 		if (councilType == FrsManager::COUNCIL_LIGHT) {
-			creature->getSkillMod("force_manipulation_light");
+			manipulationMod = creature->getSkillMod("force_manipulation_light");
 			frsModifier = frsLightExtraForceCostModifier;
 		} else if (councilType == FrsManager::COUNCIL_DARK) {
-			creature->getSkillMod("force_manipulation_dark");
+			manipulationMod = creature->getSkillMod("force_manipulation_dark");
 			frsModifier = frsDarkExtraForceCostModifier;
 		}
 
 		if (manipulationMod == 0 || frsModifier == 0)
 			return val;
 
-		return val + (manipulationMod * frsModifier);
+		return val + ((float)manipulationMod * frsModifier);
 	}
 
 	void doForceCost(CreatureObject* creature) const {
