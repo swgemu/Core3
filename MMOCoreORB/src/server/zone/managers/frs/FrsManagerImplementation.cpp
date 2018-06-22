@@ -299,6 +299,9 @@ void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding
 }
 
 void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
+	if (!frsEnabled)
+			return;
+
 	if (player == nullptr)
 		return;
 
