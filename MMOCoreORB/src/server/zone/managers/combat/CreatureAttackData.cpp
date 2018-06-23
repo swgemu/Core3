@@ -46,6 +46,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
 	poolsToDamage = data.poolsToDamage;
+	forceCost = data.forceCost;
 
 	healthCostMultiplier = data.healthCostMultiplier;
 	actionCostMultiplier = data.actionCostMultiplier;
@@ -93,6 +94,7 @@ void CreatureAttackData::fillFromBase() {
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
 	splashDamage = baseCommand->isSplashDamage();
+	forceCost = baseCommand->getForceCost();
 
 	stateAccuracyBonus = 0;
 
