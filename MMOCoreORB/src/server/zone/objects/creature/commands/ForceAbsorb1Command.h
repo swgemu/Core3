@@ -11,7 +11,7 @@ public:
 	ForceAbsorb1Command(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 		buffCRC = BuffCRC::JEDI_FORCE_ABSORB_1;
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_2);
-		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
+		singleUseEventTypes.add(ObserverEventType::FORCEABSORB);
 
 		// Skill mods.
 		skillMods.put("force_absorb", 1);
