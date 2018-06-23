@@ -1173,17 +1173,6 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
 
-		// Force Absorb
-		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {
-			ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
-
-			if (playerObject != nullptr) {
-				playerObject->setForcePower(playerObject->getForcePower() + (damage * 0.5));
-				sendMitigationCombatSpam(defender, nullptr, (int)damage * 0.5, FORCEABSORB);
-				defender->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
-			}
-		}
-
 		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
 	}
 
