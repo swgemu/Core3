@@ -43,6 +43,12 @@ protected:
 	float forceCostMultiplier;
 	float forceCost;
 	int visMod;
+	float frsLightForceCostModifier;
+	float frsDarkForceCostModifier;
+	float frsLightMinDamageModifier;
+	float frsLightMaxDamageModifier;
+	float frsDarkMinDamageModifier;
+	float frsDarkMaxDamageModifier;
 
 	int coneRange;
 	int range;
@@ -88,6 +94,13 @@ public:
 		healthCostMultiplier = 1;
 		actionCostMultiplier = 1;
 		mindCostMultiplier = 1;
+
+		frsLightForceCostModifier = 0;
+		frsDarkForceCostModifier = 0;
+		frsLightMinDamageModifier = 0;
+		frsLightMaxDamageModifier = 0;
+		frsDarkMinDamageModifier = 0;
+		frsDarkMaxDamageModifier = 0;
 
 		// Force Power is only set in Jedi-skills.
 		forceCostMultiplier = 0;
@@ -836,6 +849,42 @@ public:
 		return visMod;
 	}
 
+	void setFrsLightForceCostModifier(float val) {
+		frsLightForceCostModifier = val;
+	}
+
+	void setFrsDarkForceCostModifier(float val) {
+		frsDarkForceCostModifier = val;
+	}
+
+	void setFrsLightMinDamageModifier(float val) {
+		frsLightMinDamageModifier = val;
+	}
+	void setFrsLightMaxDamageModifier(float val) {
+		frsLightMaxDamageModifier = val;
+	}
+	void setFrsDarkMinDamageModifier(float val) {
+		frsDarkMinDamageModifier = val;
+	}
+	void setFrsDarkMaxDamageModifier(float val) {
+		frsDarkMaxDamageModifier = val;
+	}
+
+	inline float getFrsLightMinDamageModifier() const {
+		return frsLightMinDamageModifier;
+	}
+
+	inline float getFrsLightMaxDamageModifier() const {
+		return frsLightMaxDamageModifier;
+	}
+
+	inline float getFrsDarkMinDamageModifier() const {
+		return frsDarkMinDamageModifier;
+	}
+
+	inline float getFrsDarkMaxDamageModifier() const {
+		return frsDarkMaxDamageModifier;
+	}
 };
 
 #endif /* COMBATQUEUECOMMAND_H_ */

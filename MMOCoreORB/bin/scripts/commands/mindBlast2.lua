@@ -54,38 +54,38 @@ MindBlast2Command = {
 	coneAction = true,
 
 	stateEffects = {
-	  StateEffect(
-		STUN_EFFECT,
-		{},
-		{ "jedi_state_defense" },
-		{},
-		55,
-		0,
-		10
-	  ),
+		StateEffect(
+			STUN_EFFECT,
+			{},
+			{ "jedi_state_defense" },
+			{},
+			55,
+			0,
+			10
+		),
 
-	  StateEffect(
-		BLIND_EFFECT,
-		{},
-		{ "jedi_state_defense" },
-		{},
-		55,
-		0,
-		10
-	  ),
+		StateEffect(
+			BLIND_EFFECT,
+			{},
+			{ "jedi_state_defense" },
+			{},
+			55,
+			0,
+			10
+		),
 
-	  StateEffect(
-		DIZZY_EFFECT,
-		{},
-		{ "jedi_state_defense" },
-		{},
-		55,
-		0,
-		10
-	  )
+		StateEffect(
+			DIZZY_EFFECT,
+			{},
+			{ "jedi_state_defense" },
+			{},
+			55,
+			0,
+			10
+		)
 	},
 
-	animation = "force_mind_blast_1_arc_particle_level_1", 
+	animation = "force_mind_blast_1_arc_particle_level_1",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "mindblast2",
@@ -94,6 +94,11 @@ MindBlast2Command = {
 
 	forceAttack = true,
 	damageType = LIGHTSABER_DAMAGE,
+
+	frsLightMinDamageModifier = 2,
+	frsLightMaxDamageModifier = 3,
+	frsDarkMinDamageModifier = 2,
+	frsDarkMaxDamageModifier = 3,
 
 	range = 32
 }
