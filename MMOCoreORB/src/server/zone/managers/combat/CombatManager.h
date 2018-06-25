@@ -162,7 +162,7 @@ public:
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
 
 	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
-	void getFrsModifiedForceAttackDamage(CreatureObject* attacker, float* minDmg, float* maxDmg, const CreatureAttackData& data);
+	void getFrsModifiedForceAttackDamage(CreatureObject* attacker, float& minDmg, float& maxDmg, const CreatureAttackData& data);
 
 	//all the combat math will go here
 protected:
