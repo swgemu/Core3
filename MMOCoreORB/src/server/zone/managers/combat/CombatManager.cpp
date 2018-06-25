@@ -26,6 +26,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/object/ShowFlyText.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 #define COMBAT_SPAM_RANGE 85
 
@@ -1267,11 +1268,16 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	float damage = 0;
 	int diff = 0;
 
-	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
-		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
-		damage = data.getMinDamage() * mod;
-		diff = (data.getMaxDamage() * mod) - damage;
+	if (data.getMinDamage() > 0 && data.getMaxDamage() > 0) { // this is a special attack (force, etc)
+		float minDmg = data.getMinDamage();
+		float maxDmg = data.getMaxDamage();
 
+		if (data.isForceAttack())
+			getFrsModifiedForceAttackDamage(attacker, &minDmg, &maxDmg, data);
+
+		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
+		damage = minDmg * mod;
+		diff = (maxDmg * mod) - damage;
 	} else {
 		float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 
@@ -1408,15 +1414,51 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 	}
 }
 
+void CombatManager::getFrsModifiedForceAttackDamage(CreatureObject* attacker, float* minDmg, float* maxDmg, const CreatureAttackData& data) {
+	ManagedReference<PlayerObject*> ghost = attacker->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	FrsData* playerData = ghost->getFrsData();
+	int councilType = playerData->getCouncilType();
+
+	float minMod = 0, maxMod = 0;
+	int powerModifier = 0;
+
+	if (councilType == FrsManager::COUNCIL_LIGHT) {
+		powerModifier = attacker->getSkillMod("force_power_light");
+		minMod = data.getFrsLightMinDamageModifier();
+		maxMod = data.getFrsLightMaxDamageModifier();
+	} else if (councilType == FrsManager::COUNCIL_DARK) {
+		powerModifier = attacker->getSkillMod("force_power_dark");
+		minMod = data.getFrsDarkMinDamageModifier();
+		maxMod = data.getFrsDarkMaxDamageModifier();
+	}
+
+	if (powerModifier > 0) {
+		if (minMod > 0)
+			minDmg += (int)((powerModifier * minMod) + 0.5);
+
+		if (maxMod > 0)
+			maxDmg += (int)((powerModifier * maxMod) + 0.5);
+	}
+}
+
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
 	int diff = 0;
 
-	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
-		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
-		damage = data.getMinDamage() * mod;
-		diff = (data.getMaxDamage() * mod) - damage;
+	if (data.getMinDamage() > 0 && data.getMaxDamage() > 0) { // this is a special attack (force, etc)
+		float minDmg = data.getMinDamage();
+		float maxDmg = data.getMaxDamage();
 
+		if (data.isForceAttack())
+			getFrsModifiedForceAttackDamage(attacker, &minDmg, &maxDmg, data);
+
+		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
+		damage = minDmg * mod;
+		diff = (maxDmg * mod) - damage;
 	} else {
 		diff = calculateDamageRange(attacker, defender, weapon);
 		float minDamage = weapon->getMinDamage();

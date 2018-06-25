@@ -43,6 +43,12 @@ protected:
 	float forceCostMultiplier;
 	float forceCost;
 	int visMod;
+	float frsLightForceCostModifier;
+	float frsDarkForceCostModifier;
+	float frsLightMinDamageModifier;
+	float frsLightMaxDamageModifier;
+	float frsDarkMinDamageModifier;
+	float frsDarkMaxDamageModifier;
 
 	int coneRange;
 	int range;
@@ -836,6 +842,42 @@ public:
 		return visMod;
 	}
 
+	void setFrsLightForceCostModifier(float val) {
+		frsLightForceCostModifier = val;
+	}
+
+	void setFrsDarkForceCostModifier(float val) {
+		frsDarkForceCostModifier = val;
+	}
+
+	void setFrsLightMinDamageModifier(float val) {
+		frsLightMinDamageModifier = val;
+	}
+	void setFrsLightMaxDamageModifier(float val) {
+		frsLightMaxDamageModifier = val;
+	}
+	void setFrsDarkMinDamageModifier(float val) {
+		frsDarkMinDamageModifier = val;
+	}
+	void setFrsDarkMaxDamageModifier(float val) {
+		frsDarkMaxDamageModifier = val;
+	}
+
+	inline float getFrsLightMinDamageModifier() const {
+		return frsLightMinDamageModifier;
+	}
+
+	inline float getFrsLightMaxDamageModifier() const {
+		return frsLightMaxDamageModifier;
+	}
+
+	inline float getFrsDarkMinDamageModifier() const {
+		return frsDarkMinDamageModifier;
+	}
+
+	inline float getFrsDarkMaxDamageModifier() const {
+		return frsDarkMaxDamageModifier;
+	}
 };
 
 #endif /* COMBATQUEUECOMMAND_H_ */

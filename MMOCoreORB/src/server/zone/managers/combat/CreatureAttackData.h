@@ -33,6 +33,10 @@ protected:
 	float actionCostMultiplier;
 	float mindCostMultiplier;
 	float forceCostMultiplier;
+	float frsLightMinDamageModifier;
+	float frsLightMaxDamageModifier;
+	float frsDarkMinDamageModifier;
+	float frsDarkMaxDamageModifier;
 
     int range;
     int coneRange;
@@ -180,6 +184,22 @@ public:
 
 	int getForceCost() const {
 		return forceCost;
+	}
+
+	float getFrsLightMinDamageModifier() const {
+		return frsLightMinDamageModifier;
+	}
+
+	float getFrsLightMaxDamageModifier() const {
+		return frsLightMaxDamageModifier;
+	}
+
+	float getFrsDarkMinDamageModifier() const {
+		return frsDarkMinDamageModifier;
+	}
+
+	float getFrsDarkMaxDamageModifier() const {
+		return frsDarkMaxDamageModifier;
 	}
 
 	void setForceAttack(bool forceAttack) {
