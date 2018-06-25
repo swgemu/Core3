@@ -52,15 +52,15 @@ ForceThrow2Command = {
 	accuracySkillMod = "forcethrow_accuracy",
 
 	stateEffects = {
-	  StateEffect(
-		STUN_EFFECT,
-		{},
-		{ "jedi_state_defense" },
-		{},
-		65,
-		0,
-		10
-	  )
+		StateEffect(
+			STUN_EFFECT,
+			{},
+			{ "jedi_state_defense" },
+			{},
+			65,
+			0,
+			10
+		)
 	},
 
 	animation = "force_throw_1_particle_level_1",
@@ -72,6 +72,11 @@ ForceThrow2Command = {
 
 	forceAttack = true,
 	damageType = KINETIC_DAMAGE,
+
+	frsLightMinDamageModifier = 3,
+	frsLightMaxDamageModifier = 6,
+	frsDarkMinDamageModifier = 3,
+	frsDarkMaxDamageModifier = 6,
 
 	range = 32
 }

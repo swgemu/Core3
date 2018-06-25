@@ -95,6 +95,13 @@ public:
 		actionCostMultiplier = 1;
 		mindCostMultiplier = 1;
 
+		frsLightForceCostModifier = 0;
+		frsDarkForceCostModifier = 0;
+		frsLightMinDamageModifier = 0;
+		frsLightMaxDamageModifier = 0;
+		frsDarkMinDamageModifier = 0;
+		frsDarkMaxDamageModifier = 0;
+
 		// Force Power is only set in Jedi-skills.
 		forceCostMultiplier = 0;
 		forceCost = 0;
