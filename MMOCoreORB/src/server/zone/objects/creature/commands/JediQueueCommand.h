@@ -242,10 +242,10 @@ public:
 		float frsModifier = 0;
 
 		if (councilType == FrsManager::COUNCIL_LIGHT) {
-			creature->getSkillMod("force_manipulation_light");
+			manipulationMod = creature->getSkillMod("force_manipulation_light");
 			frsModifier = frsLightForceCostModifier;
 		} else if (councilType == FrsManager::COUNCIL_DARK) {
-			creature->getSkillMod("force_manipulation_dark");
+			manipulationMod = creature->getSkillMod("force_manipulation_dark");
 			frsModifier = frsDarkForceCostModifier;
 		}
 
