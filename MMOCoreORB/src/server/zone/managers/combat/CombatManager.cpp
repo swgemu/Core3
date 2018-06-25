@@ -1271,9 +1271,12 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (data.getMinDamage() > 0 && data.getMaxDamage() > 0) { // this is a special attack (force, etc)
 		float minDmg = data.getMinDamage();
 		float maxDmg = data.getMaxDamage();
+		printf("min %f max %f\n", minDmg, maxDmg);
 
 		if (data.isForceAttack())
-			getFrsModifiedForceAttackDamage(attacker, &minDmg, &maxDmg, data);
+			getFrsModifiedForceAttackDamage(attacker, minDmg, maxDmg, data);
+
+		printf("min %f max %f\n", minDmg, maxDmg);
 
 		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		damage = minDmg * mod;
@@ -1414,7 +1417,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 	}
 }
 
-void CombatManager::getFrsModifiedForceAttackDamage(CreatureObject* attacker, float* minDmg, float* maxDmg, const CreatureAttackData& data) {
+void CombatManager::getFrsModifiedForceAttackDamage(CreatureObject* attacker, float& minDmg, float& maxDmg, const CreatureAttackData& data) {
 	ManagedReference<PlayerObject*> ghost = attacker->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1454,7 +1457,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		float maxDmg = data.getMaxDamage();
 
 		if (data.isForceAttack())
-			getFrsModifiedForceAttackDamage(attacker, &minDmg, &maxDmg, data);
+			getFrsModifiedForceAttackDamage(attacker, minDmg, maxDmg, data);
 
 		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		damage = minDmg * mod;
