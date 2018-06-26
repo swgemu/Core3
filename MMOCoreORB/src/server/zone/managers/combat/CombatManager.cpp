@@ -1272,7 +1272,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		float minDmg = data.getMinDamage();
 		float maxDmg = data.getMaxDamage();
 
-		if (data.isForceAttack())
+		if (data.isForceAttack() && attacker->isPlayerCreature())
 			getFrsModifiedForceAttackDamage(attacker, minDmg, maxDmg, data);
 
 		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
@@ -1453,7 +1453,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		float minDmg = data.getMinDamage();
 		float maxDmg = data.getMaxDamage();
 
-		if (data.isForceAttack())
+		if (data.isForceAttack() && attacker->isPlayerCreature())
 			getFrsModifiedForceAttackDamage(attacker, minDmg, maxDmg, data);
 
 		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
