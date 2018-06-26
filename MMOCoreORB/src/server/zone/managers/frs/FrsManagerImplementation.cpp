@@ -2690,6 +2690,8 @@ void FrsManagerImplementation::handleArenaChallengeViewSui(CreatureObject* playe
 
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 
+	clocker.release();
+
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLESINGLEBUTTON);
 	box->setOkButton(true, "@ok");
 	box->setForceCloseDistance(16.f);
@@ -2711,6 +2713,26 @@ void FrsManagerImplementation::handleArenaChallengeViewSui(CreatureObject* playe
 		String playerName = playerManager->getPlayerName(challengerID);
 
 		if (playerName.isEmpty())
+			continue;
+
+		ManagedReference<CreatureObject*> challenger = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
+
+		if (challenger == nullptr)
+			continue;
+
+		PlayerObject* cGhost = challenger->getPlayerObject();
+
+		if (cGhost == nullptr)
+			continue;
+
+		Locker xlck(challenger, player);
+
+		FrsData* playerData = cGhost->getFrsData();
+		int challengerRank = playerData->getRank();
+
+		xlck.release();
+
+		if (challengerRank + 1 != rank)
 			continue;
 
 		uint64 startTime = challengeData->getChallengeStart();
@@ -2929,29 +2951,72 @@ void FrsManagerImplementation::performArenaMaintenance() {
 
 		uint64 challengerID = challengeData->getChallengerID();
 		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
-		String playerName = playerManager->getPlayerName(challengerID);
 
-		if (playerName.isEmpty()) {
+		String playerName = playerManager->getPlayerName(challengerID);
+		ManagedReference<CreatureObject*> challenger = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
+
+		uint64 challengeAccepterID = challengeData->getChallengeAccepterID();
+		bool challengeCompleted = challengeData->isChallengeCompleted();
+		int challengeRank = challengeData->getChallengeRank();
+
+		FrsRank* rankData = getFrsRank(COUNCIL_DARK, challengeRank);
+
+		if (rankData == nullptr)
+			continue;
+
+		if (challenger == nullptr || playerName.isEmpty()) {
+			if (challengeAccepterID == 0) {
+				Locker xlck(rankData, managerData);
+				int chalCount = rankData->getArenaChallengesThisPhase();
+				rankData->setArenaChallengesThisPhase(chalCount - 1);
+				xlck.release();
+			}
+
+			arenaChallenges->remove(i);
+			managerData->removeArenaChallenge(challengeKey);
+			continue;
+		}
+
+		PlayerObject* cGhost = challenger->getPlayerObject();
+
+		if (cGhost == nullptr) {
+			if (challengeAccepterID == 0) {
+				Locker xlck(rankData, managerData);
+				int chalCount = rankData->getArenaChallengesThisPhase();
+				rankData->setArenaChallengesThisPhase(chalCount - 1);
+				xlck.release();
+			}
+
+			arenaChallenges->remove(i);
+			managerData->removeArenaChallenge(challengeKey);
+			continue;
+		}
+
+		Locker xlck(challenger, managerData);
+
+		FrsData* playerData = cGhost->getFrsData();
+		int challengerRank = playerData->getRank();
+
+		xlck.release();
+
+		if (challengerRank+1 != challengeRank) {
+			if (challengeAccepterID == 0) {
+				Locker xlck(rankData, managerData);
+				int chalCount = rankData->getArenaChallengesThisPhase();
+				rankData->setArenaChallengesThisPhase(chalCount - 1);
+				xlck.release();
+			}
+
 			arenaChallenges->remove(i);
 			managerData->removeArenaChallenge(challengeKey);
 			continue;
 		}
 
 		if (challengeDiff >= arenaChallengeDuration) {
-			uint64 challengeAccepterID = challengeData->getChallengeAccepterID();
-			bool challengeCompleted = challengeData->isChallengeCompleted();
-
 			if (challengeAccepterID != 0 && !challengeCompleted)
 				continue;
 
 			if (challengeAccepterID == 0) {
-				int challengeRank = challengeData->getChallengeRank();
-
-				FrsRank* rankData = getFrsRank(COUNCIL_DARK, challengeRank);
-
-				if (rankData == nullptr)
-					continue;
-
 				Locker clocker(rankData, managerData);
 				SortedVector<uint64>* playerList = rankData->getPlayerList();
 
@@ -2983,7 +3048,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 }
 
 bool FrsManagerImplementation::handleDarkCouncilIncap(CreatureObject* killer, CreatureObject* victim) {
-	if (killer == nullptr || victim == nullptr)
+	if (!frsEnabled || killer == nullptr || victim == nullptr)
 		return false;
 
 	uint64 killerID = killer->getObjectID();
@@ -3011,7 +3076,7 @@ bool FrsManagerImplementation::handleDarkCouncilIncap(CreatureObject* killer, Cr
 }
 
 bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, CreatureObject* victim, bool forfeit) {
-	if (killer == nullptr || victim == nullptr)
+	if (!frsEnabled || killer == nullptr || victim == nullptr)
 		return false;
 
 	uint64 killerID = killer->getObjectID();
@@ -3445,6 +3510,28 @@ void FrsManagerImplementation::sendArenaChallengeSUI(CreatureObject* player, Sce
 			String playerName = playerManager->getPlayerName(challengerID);
 
 			if (playerName.isEmpty())
+				continue;
+
+			clocker.release();
+
+			ManagedReference<CreatureObject*> challenger = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
+
+			if (challenger == nullptr)
+				continue;
+
+			PlayerObject* cGhost = challenger->getPlayerObject();
+
+			if (cGhost == nullptr)
+				continue;
+
+			Locker xlck(challenger, player);
+
+			FrsData* playerData = cGhost->getFrsData();
+			int challengerRank = playerData->getRank();
+
+			xlck.release();
+
+			if (challengerRank + 1 != rank)
 				continue;
 
 			uint64 startTime = challengeData->getChallengeStart();

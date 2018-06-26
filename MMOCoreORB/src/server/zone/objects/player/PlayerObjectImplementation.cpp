@@ -1811,7 +1811,7 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 			forceControlMod = creature->getSkillMod("force_control_light");
 			forceManipulationMod = creature->getSkillMod("force_manipulation_light");
 		} else if (creature->hasSkill("force_rank_dark_novice")) {
-			forceControlMod = creature->getSkillMod("force_control_dark");
+			forceControlMod = creature->getSkillMod("force_power_dark");
 			forceManipulationMod = creature->getSkillMod("force_manipulation_dark");
 		}
 

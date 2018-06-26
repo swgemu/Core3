@@ -24,11 +24,6 @@ public:
 	}
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == nullptr)
-			return GENERALERROR;
-
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
 		if (targetObject == nullptr || !targetObject->isTangibleObject() || targetObject == creature)
@@ -47,7 +42,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if (ghost->getForcePower() < getFrsModifiedForceCost(creature)) {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost != nullptr && ghost->getForcePower() < getFrsModifiedForceCost(creature)) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
 			return GENERALERROR;
 		}
@@ -64,7 +61,8 @@ public:
 				return GENERALERROR;
 			}
 
-			ghost->setForcePower(ghost->getForcePower() - getFrsModifiedForceCost(creature));
+			if (ghost != nullptr)
+				ghost->setForcePower(ghost->getForcePower() - getFrsModifiedForceCost(creature));
 
 		} catch (Exception& e) {
 			error("unreported exception caught in ForcePowersQueueCommand::doCombatAction");
@@ -73,7 +71,9 @@ public:
 		}
 
 		// Increase Visibility for Force Power.
-		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+		if (ghost != nullptr)
+			VisibilityManager::instance()->increaseVisibility(creature, visMod);
+
 		return SUCCESS;
 	}
 
