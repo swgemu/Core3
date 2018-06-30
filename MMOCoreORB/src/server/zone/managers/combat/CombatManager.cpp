@@ -337,6 +337,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 }
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef) {
+	printf("doTargetCombatAction\n");
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
@@ -1107,6 +1108,7 @@ int CombatManager::getArmorVehicleReduction(VehicleObject* defender, int damageT
 }
 
 int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int hitLocation, const CreatureAttackData& data) {
+	printf("getArmorReduction\n");
 	int damageType = 0, armorPiercing = 1;
 
 	if (!data.isForceAttack()) {
@@ -1146,7 +1148,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		int forceArmor = defender->getSkillMod("force_armor");
 		if (forceArmor > 0) {
 			float dmgAbsorbed = rawDamage - (damage *= 1.f - (forceArmor / 100.f));
-			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, dmgAbsorbed);
+			defender->notifyObservers(ObserverEventType::FORCEARMOR, attacker, dmgAbsorbed);
 			sendMitigationCombatSpam(defender, nullptr, (int)dmgAbsorbed, FORCEARMOR);
 		}
 	} else {
@@ -1157,6 +1159,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		int forceShield = defender->getSkillMod("force_shield");
 		if (forceShield > 0) {
 			jediBuffDamage = rawDamage - (damage *= 1.f - (forceShield / 100.f));
+			defender->notifyObservers(ObserverEventType::FORCESHIELD, attacker, jediBuffDamage);
 			sendMitigationCombatSpam(defender, nullptr, (int)jediBuffDamage, FORCESHIELD);
 		}
 
@@ -1171,6 +1174,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true, true, true);
 			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true, true, true);
 			broadcastCombatSpam(defender, attacker, nullptr, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
+			defender->notifyObservers(ObserverEventType::FORCEFEEDBACK, attacker, jediBuffDamage);
 			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
 
@@ -1178,8 +1182,6 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {
 			defender->notifyObservers(ObserverEventType::FORCEABSORB, attacker, data.getForceCost());
 		}
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
 	}
 
 	// PSG
@@ -1446,6 +1448,7 @@ void CombatManager::getFrsModifiedForceAttackDamage(CreatureObject* attacker, fl
 }
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
+	printf("calculateDamage\n");
 	float damage = 0;
 	int diff = 0;
 
@@ -1469,21 +1472,35 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		damage = minDamage;
 	}
 
+	printf("Damage 1: %f\n", damage);
+
 	if (diff > 0)
 		damage += System::random(diff);
 
+	printf("Damage 2: %f\n", damage);
+
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
 
+	printf("Damage 3: %f\n", damage);
+
 	damage += defender->getSkillMod("private_damage_susceptibility");
+
+	printf("Damage 4: %f\n", damage);
 
 	if (attacker->isPlayerCreature())
 		damage *= 1.5;
 
+	printf("Damage 5: %f\n", damage);
+
 	if (!data.isForceAttack() && weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		damage *= 1.25;
 
+	printf("Damage 6: %f\n", damage);
+
 	if (defender->isKnockedDown())
 		damage *= 1.5f;
+
+	printf("Damage 7: %f\n", damage);
 
 	// Toughness reduction
 	if (data.isForceAttack())
@@ -1491,10 +1508,14 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	else
 		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
+	printf("Damage 8: %f\n", damage);
+
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature()) {
 		damage *= 0.25;
 	}
+
+	printf("Damage 9: %f\n", damage);
 
 	if (damage < 1) damage = 1;
 
@@ -2053,6 +2074,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 }
 
 int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data) {
+	printf("applyDamage\n");
 	if (poolsToDamage == 0)
 		return 0;
 

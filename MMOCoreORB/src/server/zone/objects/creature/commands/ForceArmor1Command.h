@@ -13,7 +13,7 @@ public:
 	ForceArmor1Command(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 		buffCRC = BuffCRC::JEDI_FORCE_ARMOR_1;
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
-		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
+		singleUseEventTypes.add(ObserverEventType::FORCEARMOR);
 		skillMods.put("force_armor", 25);
 	}
 
