@@ -1116,7 +1116,7 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 	if (miliDiff <= interval)
 		timeLeft = getTimeString((interval - miliDiff) / 1000);
 	else
-		timeLeft = "closed.";
+		timeLeft = "closing soon.";
 
 	box->addMenuItem("Time Remaining: " + timeLeft);
 
