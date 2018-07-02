@@ -125,7 +125,7 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 
 	--in the cave, make difficulty 'scale' as player progresses into the cave, listed here from bottom to top:
 	spawnMobile("dathomir", "nightsister_sentinel",2400,-89.6414,-100.547,-149.769,54,4115626)
-	spawnMobile("dathomir", "nightsister_rancor",2400,-82.0,-99.7,-93.1,-174,4115629)
+	spawnMobile("dathomir", "grovo",2400,-82.0,-99.7,-93.1,-174,4115629)
 	spawnMobile("dathomir", "nightsister_spell_weaver",2400,-82.2,-100.0,-103.6,-161,4115629)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-28.3439,-80.1922,-151.496,7,4115628)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-22.2057,-80.5683,-151.813,2,4115628)

@@ -1146,7 +1146,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		int forceArmor = defender->getSkillMod("force_armor");
 		if (forceArmor > 0) {
 			float dmgAbsorbed = rawDamage - (damage *= 1.f - (forceArmor / 100.f));
-			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, dmgAbsorbed);
+			defender->notifyObservers(ObserverEventType::FORCEARMOR, attacker, dmgAbsorbed);
 			sendMitigationCombatSpam(defender, nullptr, (int)dmgAbsorbed, FORCEARMOR);
 		}
 	} else {
@@ -1157,6 +1157,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		int forceShield = defender->getSkillMod("force_shield");
 		if (forceShield > 0) {
 			jediBuffDamage = rawDamage - (damage *= 1.f - (forceShield / 100.f));
+			defender->notifyObservers(ObserverEventType::FORCESHIELD, attacker, jediBuffDamage);
 			sendMitigationCombatSpam(defender, nullptr, (int)jediBuffDamage, FORCESHIELD);
 		}
 
@@ -1171,6 +1172,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true, true, true);
 			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true, true, true);
 			broadcastCombatSpam(defender, attacker, nullptr, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
+			defender->notifyObservers(ObserverEventType::FORCEFEEDBACK, attacker, jediBuffDamage);
 			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
 
@@ -1178,8 +1180,6 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {
 			defender->notifyObservers(ObserverEventType::FORCEABSORB, attacker, data.getForceCost());
 		}
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
 	}
 
 	// PSG
@@ -1476,8 +1476,12 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	damage += defender->getSkillMod("private_damage_susceptibility");
 
-	if (attacker->isPlayerCreature())
-		damage *= 1.5;
+	if (attacker->isPlayerCreature()) {
+		if (data.isForceAttack() && !defender->isPlayerCreature())
+			damage *= 2 + System::random(1);
+		else if (!data.isForceAttack())
+			damage *= 1.5;
+	}
 
 	if (!data.isForceAttack() && weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		damage *= 1.25;
@@ -1492,9 +1496,8 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
 	// PvP Damage Reduction.
-	if (attacker->isPlayerCreature() && defender->isPlayerCreature()) {
+	if (attacker->isPlayerCreature() && defender->isPlayerCreature() && !data.isForceAttack())
 		damage *= 0.25;
-	}
 
 	if (damage < 1) damage = 1;
 
