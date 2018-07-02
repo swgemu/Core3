@@ -298,6 +298,47 @@ void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding
 	}
 }
 
+void FrsManagerImplementation::verifyRoomAccess(CreatureObject* player, int playerRank) {
+	if (player == nullptr)
+		return;
+
+	uint64 cellID = player->getParentID();
+
+	if (cellID == 0)
+		return;
+
+	ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+
+	if (bldg == nullptr)
+		return;
+
+	short buildingType = 0;
+
+	if (bldg->getObjectID() == lightEnclave.get()->getObjectID())
+		buildingType = COUNCIL_LIGHT;
+	else if (bldg->getObjectID() != darkEnclave.get()->getObjectID())
+		buildingType = COUNCIL_DARK;
+	else
+		return;
+
+	int roomReq = getRoomRequirement(cellID);
+
+	if (roomReq == -1)
+		return;
+
+	if (playerRank < 0) {
+		if (buildingType == COUNCIL_LIGHT)
+			player->teleport(-5575, 0, 4905, 0);
+		else
+			player->teleport(5079, 0, 305, 0);
+	} else if (playerRank < roomReq) {
+		if (buildingType == COUNCIL_LIGHT)
+			player->teleport(-0.1, -19.3, 39.9, 8525439);
+		else
+			player->teleport(0.1, -43.4, -32.2, 3435634);
+	}
+}
+
 void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 	if (!frsEnabled || player == nullptr)
 		return;
@@ -355,6 +396,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 			setPlayerRank(player, realPlayerRank);
 		}
 	}
+
+	verifyRoomAccess(player, realPlayerRank);
 
 	if (realPlayerRank >= 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
 		if (councilType == COUNCIL_LIGHT && player->getFaction() != Factions::FACTIONREBEL)
@@ -573,6 +616,8 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 	} else if (skillRank == 0) {
 		removeFromFrs(player);
 	}
+
+	verifyRoomAccess(player, skillRank - 1);
 }
 
 int FrsManagerImplementation::getSkillRank(const String& skillName, int councilType) {

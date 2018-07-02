@@ -185,6 +185,8 @@ class FrsManager extends ManagedService implements Logger {
 	@arg1preLocked
 	public native void addExperienceDebt(CreatureObject player, int amount);
 	
+	public native void verifyRoomAccess(CreatureObject player, int playerRank);
+	
 	@arg1preLocked
 	@arg2preLocked
 	public native boolean isValidFrsBattle(CreatureObject attacker, CreatureObject victim);
