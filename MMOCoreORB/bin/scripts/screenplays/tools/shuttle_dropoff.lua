@@ -326,6 +326,10 @@ end
 function ShuttleDropoff:suiShuttleDropoffSetupCallback(pPlayer, pSui, eventIndex, args)
 	local cancelPressed = (eventIndex == 1)
 
+	if (cancelPressed) then
+		return
+	end
+
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local curStep = readData(playerID .. ":ShuttleDropoff:setupStep")
 
@@ -353,11 +357,11 @@ function ShuttleDropoff:suiShuttleDropoffSetupCallback(pPlayer, pSui, eventIndex
 			if (SceneObject(pPlayer):getParentID() ~= 0) then
 				CreatureObject(pPlayer):sendSystemMessage("ERROR: You must be outside to set a landing area.")
 			else
-				writeData(playerID .. ":ShuttleDropoff:spawnPointX", SceneObject(pPlayer):getWorldPositionX())
-				writeData(playerID .. ":ShuttleDropoff:spawnPointZ", SceneObject(pPlayer):getWorldPositionZ())
-				writeData(playerID .. ":ShuttleDropoff:spawnPointY", SceneObject(pPlayer):getWorldPositionY())
+				writeData(playerID .. ":ShuttleDropoff:spawnPointX", math.floor(SceneObject(pPlayer):getWorldPositionX()))
+				writeData(playerID .. ":ShuttleDropoff:spawnPointZ", math.floor(SceneObject(pPlayer):getWorldPositionZ()))
+				writeData(playerID .. ":ShuttleDropoff:spawnPointY", math.floor(SceneObject(pPlayer):getWorldPositionY()))
 				writeStringData(playerID .. ":ShuttleDropoff:spawnPlanet", SceneObject(pPlayer):getZoneName())
-				writeData(playerID .. ":ShuttleDropoff:heading", SceneObject(pPlayer):getDirectionAngle())
+				writeData(playerID .. ":ShuttleDropoff:heading", math.floor(SceneObject(pPlayer):getDirectionAngle()))
 				writeData(playerID .. ":ShuttleDropoff:setupStep", 3)
 				CreatureObject(pPlayer):sendSystemMessage("Landing Area: Set to your current location and direction.")
 			end
