@@ -7,6 +7,7 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 	speed = 3;
@@ -375,6 +376,13 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 
 	if(!checkDistance(creature, targetCreature, range))
 		return TOOFAR;
+
+	FrsManager* frsManager = server->getZoneServer()->getFrsManager();
+
+	if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isPlayerFightingInArena(targetCreature->getObjectID())) {
+		creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
+		return GENERALERROR;
+	}
 
 	if (!targetCreature->isHealableBy(creature)) {
 		creature->sendSystemMessage("@healing:pvp_no_help"); // It would be unwise to help such a patient.
