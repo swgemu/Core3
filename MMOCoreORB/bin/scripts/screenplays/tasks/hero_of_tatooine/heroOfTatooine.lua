@@ -574,8 +574,8 @@ function HeroOfTatooineScreenPlay:despawnAltruismObjects()
 	deleteData("hero_of_tat:farmerWifeId")
 	deleteData("hero_of_tat:farmerChildId")
 	deleteData("hero_of_tat:altruismCrate")
-	writeData("hero_of_tat:altruismEscorterID", 0) -- No escorter
-	writeData("hero_of_tat:altruismEscortStatus", 0) -- No one doing escort
+	deleteData("hero_of_tat:altruismEscorterID") -- No escorter
+	deleteData("hero_of_tat:altruismEscortStatus") -- No one doing escort
 end
 
 function HeroOfTatooineScreenPlay:getCavePlayerWithQuestCount()
@@ -646,7 +646,7 @@ function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
 	if (planterId ~= 0 and pPlanter ~= nil) then
 		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
 		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
-		writeData("hero_of_tat:explosivePlanterID", 0)
+		deleteData("hero_of_tat:explosivePlanterID")
 	end
 
 	SceneObject(pCrevice):destroyObjectFromWorld()
@@ -737,7 +737,7 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		AiAgent(pWife):setAiTemplate("idlewait")
 	end
 
-	writeData("hero_of_tat:altruismEscortStatus", 0)
+	deleteData("hero_of_tat:altruismEscortStatus")
 	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_success")
 
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
@@ -996,7 +996,7 @@ function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
 	CreatureObject(pPirate1):setPvpStatusBitmask(0)
 	CreatureObject(pPirate2):setPvpStatusBitmask(0)
 
-	writeData("hero_of_tat:honor_result", 0) -- 0 = fail, 1 = success
+	deleteData("hero_of_tat:honor_result") -- 0 = fail, 1 = success
 
 	writeData("hero_of_tat:honor_pirate1", SceneObject(pPirate1):getObjectID())
 	writeData("hero_of_tat:honor_pirate1_step", 1) -- First step, spawn mobile

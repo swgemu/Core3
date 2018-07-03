@@ -466,7 +466,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 		spawnedSceneObject:_setObject(spawnedPointer)
 		spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
 		writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-		writeData("dwb:valve3", 0)
+		deleteData("dwb:valve3")
 		self:spawnValveEffect(3, 0)
 	end
 
@@ -666,7 +666,7 @@ function DeathWatchBunkerScreenPlay:refillContainer(pSceneObject)
 	end
 
 	if (SceneObject(pSceneObject):getContainerObjectsSize() == 0) then
-		writeData(SceneObject(pSceneObject):getObjectID() .. ":dwb:spawned", 0)
+		deleteData(SceneObject(pSceneObject):getObjectID() .. ":dwb:spawned")
 
 		createLoot(pSceneObject, "death_watch_bunker_lootbox", 1, false)
 		if getRandomNumber(100) > 95 then
@@ -1215,7 +1215,7 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 		spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
 		pDefender = self:spawnDefender(spawn, "klin_nif2")
 	else
-		writeData(5996314 .. ":dwb:terminalBnextSpawn", 0)
+		deleteData(5996314 .. ":dwb:terminalBnextSpawn")
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
 		self:spawnDefender(spawn, "klin_nif1")
 
@@ -1268,7 +1268,7 @@ function DeathWatchBunkerScreenPlay:spawnNextC(creatureObject)
 		spawn = deathWatchSpecialSpawns["fenri_dalso_assist2"]
 		self:spawnDefender(spawn, "fenri_dalso2")
 	else
-		writeData(5996314 .. ":dwb:terminalCnextSpawn", 0)
+		deleteData(5996314 .. ":dwb:terminalCnextSpawn")
 		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist1"]
 		self:spawnDefender(spawn, "fenri_dalso3")
 
@@ -1515,11 +1515,11 @@ function DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pCreature)
 			for i = 0, groupSize - 1, 1 do
 				local pMember = CreatureObject(pCreature):getGroupMember(i)
 				if pMember ~= nil then
-					writeData(CreatureObject(pMember):getObjectID() .. ":teleportedFromBunker", 0)
+					deleteData(CreatureObject(pMember):getObjectID() .. ":teleportedFromBunker")
 				end
 			end
 		else
-			writeData(CreatureObject(pCreature):getObjectID() .. ":teleportedFromBunker", 0)
+			deleteData(CreatureObject(pCreature):getObjectID() .. ":teleportedFromBunker")
 		end
 
 		createEvent(1000 * 60 * 5, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature, "")
@@ -1527,7 +1527,7 @@ function DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pCreature)
 		createEvent(1000 * 60 * 5.5, "DeathWatchBunkerScreenPlay", "despawnCell", pCell, "")
 	end
 
-	writeData(SceneObject(pSceneObject):getObjectID() .. ":dwb:accessEnabled", 0)
+	deleteData(SceneObject(pSceneObject):getObjectID() .. ":dwb:accessEnabled")
 	createEvent(1000 * 60 * self.doorData[doorNumber].lockTime, "DeathWatchBunkerScreenPlay", "enableAccess", pSceneObject, "")
 end
 
@@ -1642,21 +1642,21 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 
 	local target = readData(statusPrefix .. "targetitemindex")
 
-	writeData(playerID .. ":dwb:currentlycrafting", 0)
-	writeData(playerID .. ":dwb:terminal", 0)
-	writeData(statusPrefix .. "currentlycrafting", 0)
-	writeData(statusPrefix .. "stepStartTime", 0)
-	writeData(statusPrefix .. "user", 0)
-	writeData(statusPrefix .. "targetitemindex", 0)
-	writeData(statusPrefix .. "alummineral", 0)
-	writeData(statusPrefix .. "jetpackbase", 0)
-	writeData(statusPrefix .. "jetpackstabilizer", 0)
-	writeData(statusPrefix .. "ductedfan", 0)
-	writeData(statusPrefix .. "injectortank", 0)
-	writeData(statusPrefix .. "dispersionunit", 0)
-	writeData(statusPrefix .. "binary", 0)
-	writeData(statusPrefix .. "protective", 0)
-	writeData(statusPrefix .. "bharmorpart", 0)
+	deleteData(playerID .. ":dwb:currentlycrafting")
+	deleteData(playerID .. ":dwb:terminal")
+	deleteData(statusPrefix .. "currentlycrafting")
+	deleteData(statusPrefix .. "stepStartTime")
+	deleteData(statusPrefix .. "user")
+	deleteData(statusPrefix .. "targetitemindex")
+	deleteData(statusPrefix .. "alummineral")
+	deleteData(statusPrefix .. "jetpackbase")
+	deleteData(statusPrefix .. "jetpackstabilizer")
+	deleteData(statusPrefix .. "ductedfan")
+	deleteData(statusPrefix .. "injectortank")
+	deleteData(statusPrefix .. "dispersionunit")
+	deleteData(statusPrefix .. "binary")
+	deleteData(statusPrefix .. "protective")
+	deleteData(statusPrefix .. "bharmorpart")
 
 	if successful == true then
 		local pInventory = SceneObject(pCreature):getSlottedObject("inventory")
@@ -1933,12 +1933,12 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		local pStarter = getSceneObject(starterID)
 
 		SceneObject(pDroid):destroyObjectFromWorld()
-		writeData("dwb:ventDroidEffectID", 0)
-		writeData("dwb:ventDroidStep", 0)
+		deleteData("dwb:ventDroidEffectID")
+		deleteData("dwb:ventDroidStep")
 		self:sendMessageToCell(5996378, "@dungeon/death_watch:ventilation_repair")
 		self:sendMessageToCell(5996379, "@dungeon/death_watch:ventilation_repair")
-		writeData("dwb:droidEscortStatus", 0)
-		writeData("dwb:droidEscortStarter", 0)
+		deleteData("dwb:droidEscortStatus")
+		deleteData("dwb:droidEscortStarter")
 		writeData("dwb:ventsEnabled", 1)
 
 
@@ -1973,7 +1973,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 	local onCurrentPoint = readData("dwb:ventDroidCurrentPoint")
 
 	if (onCurrentPoint == patrolPointCount) then
-		writeData("dwb:ventDroidCurrentPoint", 0)
+		deleteData("dwb:ventDroidCurrentPoint")
 		writeData("dwb:ventDroidStep", curStep + 1)
 		self:doVentDroidStep(pDroid)
 		return
@@ -1990,14 +1990,14 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 end
 
 function DeathWatchBunkerScreenPlay:disableVents()
-	writeData("dwb:ventsEnabled", 0)
+	deleteData("dwb:ventsEnabled")
 end
 
 -- Not used until droid is made attackable by spawns
 function DeathWatchBunkerScreenPlay:failVentEscort(pDroid)
-	writeData("dwb:droidEscortStatus", 0)
-	writeData("dwb:droidEscortStarter", 0)
-	writeData("dwb:ventDroidAvailable", 0)
+	deleteData("dwb:droidEscortStatus")
+	deleteData("dwb:droidEscortStarter")
+	deleteData("dwb:ventDroidAvailable")
 	writeData("dwb:ventDroidStep", -1)
 	self:sendMessageToCell(5996379, "@dungeon/death_watch:repair_failed")
 	self:sendMessageToCell(5996378, "@dungeon/death_watch:repair_failed")
@@ -2006,7 +2006,7 @@ end
 
 function DeathWatchBunkerScreenPlay:createNewVentDroid()
 	writeData("dwb:ventDroidAvailable", 1)
-	writeData("dwb:ventDroidStep", 0)
+	deleteData("dwb:ventDroidStep")
 end
 
 function DeathWatchBunkerScreenPlay:sendMessageToCell(cellID, string)

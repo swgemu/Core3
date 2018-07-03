@@ -79,7 +79,7 @@ function Coa2Screenplay:spawnStaticNpcs()
 			if pNpc ~= nil then
 				writeData("coaCommanderID_" .. i, SceneObject(pNpc):getObjectID())
 			else
-				writeData("coaCommanderID_" .. i, 0)
+				deleteData("coaCommanderID_" .. i)
 			end
 		end
 	end

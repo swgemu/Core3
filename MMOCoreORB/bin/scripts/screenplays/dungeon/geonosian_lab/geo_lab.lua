@@ -264,7 +264,7 @@ function GeonosianLabScreenPlay:notifyGasValveUsed(pGasValve, pPlayer, radialSel
 
 			deleteData("geonosian_lab:gasLeakID")
 
-			writeData("geonosian_lab:gasleak", 0)
+			deleteData("geonosian_lab:gasleak")
 			createServerEvent(self.poisonShutoffDuration, "GeonosianLabScreenPlay", "restartGasLeak", "GasLeakRestart")
 		else
 			CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:gas_already_off") --The gas leak has already been repaired...
