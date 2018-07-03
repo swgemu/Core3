@@ -416,7 +416,7 @@ function TheaterManagerScreenPlay:notifyExitedAuditionArea(pActiveArea, pPlayer)
 	local areaOwnerID = readData(SceneObject(pActiveArea):getObjectID() .. ":ownerID")
 
 	if (playerID == areaOwnerID) then
-		writeData(playerID .. ":theater_manager:inAuditionArea", 0)
+		deleteData(playerID .. ":theater_manager:inAuditionArea")
 
 		if (readData(playerID .. ":theater_manager:auditionPhase") ~= 0) then
 			local controlID = readData(playerID .. ":theater_manager:controlID")
@@ -490,7 +490,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pControl)
 		end
 
 		writeData(playerID .. ":theater_manager:expectedPerformance", expectedPerformance)
-		writeData(playerID .. ":theater_manager:performanceCompleted", 0)
+		deleteData(playerID .. ":theater_manager:performanceCompleted")
 
 		performanceName = performanceName:gsub("^%l", string.upper)
 		createObserver(STARTENTERTAIN, "TheaterManagerScreenPlay", "notifyPerformanceObserver", pPlayer)
@@ -504,7 +504,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pControl)
 	elseif (phase == 2 or phase == 3 or phase == 5 or phase == 6) then
 		expectedPerformance = self:getExpectedPerformance(pPlayer, 3)
 		writeData(playerID .. ":theater_manager:expectedPerformance", expectedPerformance)
-		writeData(playerID .. ":theater_manager:performanceCompleted", 0)
+		deleteData(playerID .. ":theater_manager:performanceCompleted")
 
 		createObserver(FLOURISH, "TheaterManagerScreenPlay", "notifyFlourishObserver", pPlayer)
 		createEvent(self.auditionHeartbeat, "TheaterManagerScreenPlay", "checkPerformanceStatus", pControl, "")
@@ -535,8 +535,8 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 		currentPerformance = CreatureObject(pPlayer):getPerformanceName()
 	end
 	if (type == 1) then
-	  local count = 0;
-	  
+		local count = 0;
+
 		while performance == nil do
 			local performanceName = self.dances[getRandomNumber(#self.dances)]
 			count = count + 1;
@@ -544,26 +544,26 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 			if (PlayerObject(pGhost):hasAbility("startDance+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 				performance = self:getPerformanceKey(1, performanceName)
 			end
-			
+
 			if (count > 60) then
-			 return nil
+				return nil
 			end
 		end
 		return performance
 	elseif (type == 2) then
-	  local count = 0;
-	
+		local count = 0;
+
 		while performance == nil do
 			local performanceName = self.songs[getRandomNumber(#self.songs)]
 			count = count + 1;
-			
+
 			if (PlayerObject(pGhost):hasAbility("startMusic+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 				performance = self:getPerformanceKey(2, performanceName)
 			end
-			
+
 			if (count > 60) then
-        return nil
-      end
+				return nil
+			end
 		end
 		return performance
 	elseif (type == 3) then
@@ -1626,7 +1626,7 @@ function TheaterManagerScreenPlay:notifyExitedPerformanceArea(pActiveArea, pPlay
 	local areaOwnerID = readData(SceneObject(pActiveArea):getObjectID() .. ":ownerID")
 
 	if (playerID == areaOwnerID) then
-		writeData(playerID .. ":theater_manager:inPerformanceArea", 0)
+		deleteData(playerID .. ":theater_manager:inPerformanceArea")
 
 		if (readData(playerID .. ":theater_manager:performanceStarted") ~= 0) then
 			local controlID = readData(playerID .. ":theater_manager:controlID")
