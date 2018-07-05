@@ -316,7 +316,7 @@ void FrsManagerImplementation::verifyRoomAccess(CreatureObject* player, int play
 
 	if (bldg->getObjectID() == lightEnclave.get()->getObjectID())
 		buildingType = COUNCIL_LIGHT;
-	else if (bldg->getObjectID() != darkEnclave.get()->getObjectID())
+	else if (bldg->getObjectID() == darkEnclave.get()->getObjectID())
 		buildingType = COUNCIL_DARK;
 	else
 		return;
