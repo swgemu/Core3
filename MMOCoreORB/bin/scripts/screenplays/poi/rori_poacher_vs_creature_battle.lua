@@ -60,19 +60,19 @@ function RoriPoacherVsCreatureBattleScreenPlay:spawnMobiles()
 
 end
 
-	--hunter
+--hunter
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyHunterDead(pHunter, pKiller)
 	local val = getRandomNumber(100)
 	if (val > 66) then
 		if (readData("RoriPoacherVsCreatureBattle:savage_pugoriss") == 0) then
 			local pSavage = spawnMobile("rori", "savage_pugoriss", 0, 698.8, 95.4, -2071.2, 100, 0)
-				spawnMobile("rori", "pugoriss", 0, 695.1, 95.7, -2075.9, 98, 0)
-				spawnMobile("rori", "ikopi", 0, 706.9, 94.1, -2083.1, 98, 0)
-				spawnMobile("rori", "ikopi", 0, 713.1, 92.9, -2075.6, 98, 0)
-				spawnMobile("rori", "vrobal", 0, 743.4, 88.0, -2076.4, 112, 0)
-				spawnMobile("rori", "vrobal", 0, 741.1, 87.8, -2081.0, 112, 0)
-				spawnMobile("rori", "vrobal", 0, 738.6, 87.8, -2086.4, 112, 0)
+			spawnMobile("rori", "pugoriss", 0, 695.1, 95.7, -2075.9, 98, 0)
+			spawnMobile("rori", "ikopi", 0, 706.9, 94.1, -2083.1, 98, 0)
+			spawnMobile("rori", "ikopi", 0, 713.1, 92.9, -2075.6, 98, 0)
+			spawnMobile("rori", "vrobal", 0, 743.4, 88.0, -2076.4, 112, 0)
+			spawnMobile("rori", "vrobal", 0, 741.1, 87.8, -2081.0, 112, 0)
+			spawnMobile("rori", "vrobal", 0, 738.6, 87.8, -2086.4, 112, 0)
 
 			createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifySavageDead", pSavage)
 			writeData("RoriPoacherVsCreatureBattle:savage_pugoriss",1)
@@ -82,10 +82,10 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyHunterDead(pHunter, pKiller
 
 		if (readData("RoriPoacherVsCreatureBattle:savage_pugoriss") == 0) then
 			local pSavage = spawnMobile("rori", "savage_pugoriss", 0, 777.9, 87.6, -2108.9, -15, 0)
-				spawnMobile("rori", "pugoriss", 0, 773.8, 87.4, -2115.6, -15, 0)
-				spawnMobile("rori", "pugoriss", 0, 750.7, 87.2, -2103.5, 38, 0)
-				spawnMobile("rori", "pugoriss", 0, 734.5, 88.5, -2091.3, 71, 0)
-				spawnMobile("rori", "pugoriss", 0, 736.9, 88.3, -2084.4, 111, 0)
+			spawnMobile("rori", "pugoriss", 0, 773.8, 87.4, -2115.6, -15, 0)
+			spawnMobile("rori", "pugoriss", 0, 750.7, 87.2, -2103.5, 38, 0)
+			spawnMobile("rori", "pugoriss", 0, 734.5, 88.5, -2091.3, 71, 0)
+			spawnMobile("rori", "pugoriss", 0, 736.9, 88.3, -2084.4, 111, 0)
 
 			createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifySavageDead", pSavage)
 			writeData("RoriPoacherVsCreatureBattle:savage_pugoriss",1)
@@ -95,11 +95,11 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyHunterDead(pHunter, pKiller
 
 		if (readData("RoriPoacherVsCreatureBattle:savage_pugoriss") == 0) then
 			local pSavage = spawnMobile("rori", "savage_pugoriss", 0, 735.4, 89.3, -2073.9, 111, 0)
-				spawnMobile("rori", "hunter", 0, 793.3, 86.4, -2090.9, -65, 0)
-				spawnMobile("rori", "hunter", 0, 790.4, 86.3, -2097.1, -55, 0)
-				spawnMobile("rori", "hunter", 0, 783.5, 86.6, -2103.4, -45, 0)
-				spawnMobile("rori", "hunter", 0, 771.3, 85.3, -2057.3, 111, 0)
-				spawnMobile("rori", "hunter", 0, 772.5, 84.8, -2054.9, 61, 0)
+			spawnMobile("rori", "hunter", 0, 793.3, 86.4, -2090.9, -65, 0)
+			spawnMobile("rori", "hunter", 0, 790.4, 86.3, -2097.1, -55, 0)
+			spawnMobile("rori", "hunter", 0, 783.5, 86.6, -2103.4, -45, 0)
+			spawnMobile("rori", "hunter", 0, 771.3, 85.3, -2057.3, 111, 0)
+			spawnMobile("rori", "hunter", 0, 772.5, 84.8, -2054.9, 61, 0)
 
 			createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifySavageDead", pSavage)
 			writeData("RoriPoacherVsCreatureBattle:savage_pugoriss",1)
@@ -112,22 +112,22 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyHunterDead(pHunter, pKiller
 end
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifySavageDead(pSavage, pKiller)
-	writeData("RoriPoacherVsCreatureBattle:savage_pugoriss", 0)
+	deleteData("RoriPoacherVsCreatureBattle:savage_pugoriss")
 
 	return 1
 end
 
-	--leviasquall
+--leviasquall
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyLeviasquallDead(pLeviasquall, pKiller)
 	if (readData("RoriPoacherVsCreatureBattle:female_squall") == 0) then
 		local pFemale = spawnMobile("rori", "female_squall", 0, 767.8, 83.2, -2025.9, 131, 0)
-			spawnMobile("rori", "male_squall", 0, 765.3, 84.0, -2028.0, 131, 0)
-			spawnMobile("rori", "male_squall", 0, 777.6, 81.0, -2031.7, 145, 0)
-			spawnMobile("rori", "male_squall", 0, 781.1, 80.1, -2030.0, 141, 0)
-			spawnMobile("rori", "deranged_squall", 0, 783.1, 79.9, -2032.9, 145, 0)
-			spawnMobile("rori", "deranged_squall", 0, 778.9, 81.9, -2045.2, 170, 0)
-			spawnMobile("rori", "deranged_squall", 0, 770.3, 84.4, -2046.0, -114, 0)
+		spawnMobile("rori", "male_squall", 0, 765.3, 84.0, -2028.0, 131, 0)
+		spawnMobile("rori", "male_squall", 0, 777.6, 81.0, -2031.7, 145, 0)
+		spawnMobile("rori", "male_squall", 0, 781.1, 80.1, -2030.0, 141, 0)
+		spawnMobile("rori", "deranged_squall", 0, 783.1, 79.9, -2032.9, 145, 0)
+		spawnMobile("rori", "deranged_squall", 0, 778.9, 81.9, -2045.2, 170, 0)
+		spawnMobile("rori", "deranged_squall", 0, 770.3, 84.4, -2046.0, -114, 0)
 
 		createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifyFemaleDead", pFemale)
 		writeData("RoriPoacherVsCreatureBattle:female_squall",1)
@@ -137,20 +137,20 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyLeviasquallDead(pLeviasqual
 end
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyFemaleDead(pFemale, pKiller)
-	writeData("RoriPoacherVsCreatureBattle:female_squall", 0)
+	deleteData("RoriPoacherVsCreatureBattle:female_squall")
 
 	return 1
 end
 
-	--Prowler
+--Prowler
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyProwlerDead(pProwler, pKiller)
 	if (readData("RoriPoacherVsCreatureBattle:screaming_kai_tok") == 0) then
 		local pScreaming = spawnMobile("rori", "screaming_kai_tok", 0, 811.0, 85.4, -2091.4, -71, 0)
-			spawnMobile("rori", "female_kai_tok", 0, 809.4, 85.3, -2096.7, -71, 0)
-			spawnMobile("rori", "female_kai_tok", 0, 767.0, 88.2, -2116.1, -11, 0)
-			spawnMobile("rori", "female_kai_tok", 0, 759.4, 88.5, -2113.5, -1, 0)
-			spawnMobile("rori", "female_kai_tok", 0, 749.0, 89.2, -2109.7, 11, 0)
+		spawnMobile("rori", "female_kai_tok", 0, 809.4, 85.3, -2096.7, -71, 0)
+		spawnMobile("rori", "female_kai_tok", 0, 767.0, 88.2, -2116.1, -11, 0)
+		spawnMobile("rori", "female_kai_tok", 0, 759.4, 88.5, -2113.5, -1, 0)
+		spawnMobile("rori", "female_kai_tok", 0, 749.0, 89.2, -2109.7, 11, 0)
 
 		createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifyScreamingDead", pScreaming)
 		writeData("RoriPoacherVsCreatureBattle:screaming_kai_tok",1)
@@ -160,20 +160,20 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyProwlerDead(pProwler, pKill
 end
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyScreamingDead(pScreaming, pKiller)
-	writeData("RoriPoacherVsCreatureBattle:screaming_kai_tok", 0)
+	deleteData("RoriPoacherVsCreatureBattle:screaming_kai_tok")
 
 	return 1
 end
 
-	--Bull
+--Bull
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyBullDead(pBull, pKiller)
 	if (readData("RoriPoacherVsCreatureBattle:vrobalet") == 0) then
 		local pVrobalet = spawnMobile("rori", "vrobalet", 0, 793.4, 79.2, -2052.3, -151, 0)
-			spawnMobile("rori", "vrobal", 0, 788.2, 79.7, -2045.7, -158, 0)
-			spawnMobile("rori", "vrobal", 0, 783.3, 80.4, -2040.8, -158, 0)
-			spawnMobile("rori", "vrobal", 0, 781.4, 80.4, -2035.3, -158, 0)
-			spawnMobile("rori", "vrobal", 0, 781.2, 80.1, -2030.9, -158, 0)
+		spawnMobile("rori", "vrobal", 0, 788.2, 79.7, -2045.7, -158, 0)
+		spawnMobile("rori", "vrobal", 0, 783.3, 80.4, -2040.8, -158, 0)
+		spawnMobile("rori", "vrobal", 0, 781.4, 80.4, -2035.3, -158, 0)
+		spawnMobile("rori", "vrobal", 0, 781.2, 80.1, -2030.9, -158, 0)
 
 		createObserver(OBJECTDESTRUCTION, "RoriPoacherVsCreatureBattleScreenPlay", "notifyVrobaletDead", pVrobalet)
 		writeData("RoriPoacherVsCreatureBattle:vrobalet",1)
@@ -183,7 +183,7 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyBullDead(pBull, pKiller)
 end
 
 function RoriPoacherVsCreatureBattleScreenPlay:notifyVrobaletDead(pVrobalet, pKiller)
-	writeData("RoriPoacherVsCreatureBattle:vrobalet", 0)
+	deleteData("RoriPoacherVsCreatureBattle:vrobalet")
 
 	return 1
 end

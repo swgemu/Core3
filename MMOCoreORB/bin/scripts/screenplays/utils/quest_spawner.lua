@@ -62,7 +62,7 @@ function QuestSpawner:createQuestSpawner(screenplayName, dataTableName, spawnLis
 	if (dataTable.expireTime > 0) then
 		writeData(spawnerID .. ":expireTime", (os.time() * 1000) + dataTable.expireTime)
 	else
-		writeData(spawnerID .. ":expireTime", 0)
+		deleteData(spawnerID .. ":expireTime")
 	end
 
 	createEvent(5 * 1000, "QuestSpawner", "doQuestSpawnerPulse", pSpawner, "")

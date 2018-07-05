@@ -54,9 +54,9 @@ function CorellianCorvette:initialize()
 				printLuaError("CorellianCorvette:initialize tried using a corvette id that was nil or not a building: " .. building.buildingIds[j])
 			else
 				local corvetteID = SceneObject(pCorvette):getObjectID()
-				writeData("corvetteActive:" .. corvetteID, 0)
+				deleteData("corvetteActive:" .. corvetteID)
 				self:ejectAllPlayers(pCorvette)
-				writeData("corvettePlayerCount:" .. corvetteID, 0)
+				deleteData("corvettePlayerCount:" .. corvetteID)
 				createObserver(ENTEREDBUILDING, "CorellianCorvette", "onEnterCorvette", pCorvette)
 				createObserver(EXITEDBUILDING, "CorellianCorvette", "onExitCorvette", pCorvette)
 				num = num + 1

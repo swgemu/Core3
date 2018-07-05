@@ -114,10 +114,14 @@ end
 function FireworkEvent:suiFireworkEventSetupCallback(pPlayer, pSui, eventIndex, args)
 	local cancelPressed = (eventIndex == 1)
 
+	if (cancelPressed) then
+		return
+	end
+
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local curStep = readData(playerID .. ":FireworkEvent:setupStep")
 	local numArg = tonumber(args)
-	
+
 	if (curStep == 1) then
 		if (numArg <= 0 or numArg > 1800) then
 			CreatureObject(pPlayer):sendSystemMessage("Main event length must be greater than 0 and less than 1800 (30 minutes).")
@@ -137,8 +141,13 @@ function FireworkEvent:suiFireworkEventSetupCallback(pPlayer, pSui, eventIndex, 
 	elseif (curStep == 3) then
 		if (numArg > 300) then
 			CreatureObject(pPlayer):sendSystemMessage("Finale length must be less than 300 (10 minutes).")
-		elseif (numArg > 0) then
-			writeData(playerID .. ":FireworkEvent:setupStep", 4)
+		elseif (numArg >= 0) then
+			if (numArg == 0) then
+				writeData(playerID .. ":FireworkEvent:setupStep", 5)
+			else
+				writeData(playerID .. ":FireworkEvent:setupStep", 4)
+			end
+
 			writeData(playerID .. ":FireworkEvent:finaleLength", numArg)
 			CreatureObject(pPlayer):sendSystemMessage("Finale Length: " .. numArg .. " seconds.")
 		end
@@ -153,11 +162,11 @@ function FireworkEvent:suiFireworkEventSetupCallback(pPlayer, pSui, eventIndex, 
 			if (SceneObject(pPlayer):getParentID() ~= 0) then
 				CreatureObject(pPlayer):sendSystemMessage("ERROR: You must be outside to set a staging area.")
 			else
-				writeData(playerID .. ":FireworkEvent:spawnPointX", SceneObject(pPlayer):getWorldPositionX())
-				writeData(playerID .. ":FireworkEvent:spawnPointZ", SceneObject(pPlayer):getWorldPositionZ())
-				writeData(playerID .. ":FireworkEvent:spawnPointY", SceneObject(pPlayer):getWorldPositionY())
+				writeData(playerID .. ":FireworkEvent:spawnPointX", math.floor(SceneObject(pPlayer):getWorldPositionX()))
+				writeData(playerID .. ":FireworkEvent:spawnPointZ", math.floor(SceneObject(pPlayer):getWorldPositionZ()))
+				writeData(playerID .. ":FireworkEvent:spawnPointY", math.floor(SceneObject(pPlayer):getWorldPositionY()))
 				writeStringData(playerID .. ":FireworkEvent:spawnPlanet", SceneObject(pPlayer):getZoneName())
-				writeData(playerID .. ":FireworkEvent:heading", SceneObject(pPlayer):getDirectionAngle())
+				writeData(playerID .. ":FireworkEvent:heading", math.floor(SceneObject(pPlayer):getDirectionAngle()))
 				CreatureObject(pPlayer):sendSystemMessage("Staging Area: Set to your current location and direction.")
 				writeData(playerID .. ":FireworkEvent:setupStep", 6)
 			end
@@ -238,7 +247,7 @@ function FireworkEvent:spawnFirework(pControl)
 	local randFirework = getRandomNumber(1, #self.fireworkTemplates)
 
 	local pFirework = spawnSceneObject(planet, self.fireworkTemplates[randFirework], x, z, y, 0, heading)
-	
+
 	if (pFirework == nil) then
 		return
 	end
