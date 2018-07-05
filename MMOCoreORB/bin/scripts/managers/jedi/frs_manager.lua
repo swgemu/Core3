@@ -46,7 +46,7 @@ lightRankingData = {
 	--{ 11, "force_rank_light_master", 400000, 1, "object/tangible/wearables/robe/robe_jedi_light_s05.iff" },
 
 	{ 0, "force_rank_light_novice", 0, -1, "object/tangible/wearables/robe/robe_jedi_light_s01.iff" },
-	{ 1, "force_rank_light_rank_01", 5000, 3, "object/tangible/wearables/robe/robe_jedi_light_s02.iff" },
+	{ 1, "force_rank_light_rank_01", 5000, 10, "object/tangible/wearables/robe/robe_jedi_light_s02.iff" },
 	{ 2, "force_rank_light_rank_02", 15000, 3, "object/tangible/wearables/robe/robe_jedi_light_s02.iff" },
 	{ 3, "force_rank_light_rank_03", 25000, 3, "object/tangible/wearables/robe/robe_jedi_light_s02.iff" },
 	{ 4, "force_rank_light_rank_04", 35000, 2, "object/tangible/wearables/robe/robe_jedi_light_s02.iff" },
@@ -74,7 +74,7 @@ darkRankingData = {
 	--{ 11, "force_rank_dark_master", 400000, 1, "object/tangible/wearables/robe/robe_jedi_dark_s05.iff" },
 
 	{ 0, "force_rank_dark_novice", 0, -1, "object/tangible/wearables/robe/robe_jedi_dark_s01.iff" },
-	{ 1, "force_rank_dark_rank_01", 5000, 3, "object/tangible/wearables/robe/robe_jedi_dark_s02.iff" },
+	{ 1, "force_rank_dark_rank_01", 5000, 10, "object/tangible/wearables/robe/robe_jedi_dark_s02.iff" },
 	{ 2, "force_rank_dark_rank_02", 15000, 3, "object/tangible/wearables/robe/robe_jedi_dark_s02.iff" },
 	{ 3, "force_rank_dark_rank_03", 25000, 3, "object/tangible/wearables/robe/robe_jedi_dark_s02.iff" },
 	{ 4, "force_rank_dark_rank_04", 35000, 2, "object/tangible/wearables/robe/robe_jedi_dark_s02.iff" },
