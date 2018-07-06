@@ -457,7 +457,7 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 
 	int curRank = playerData->getRank();
 
-	if (curRank > 0) {
+	if (isFrsEnabled() && curRank > 0) {
 		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
 
 		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
@@ -495,24 +495,25 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 
 	playerData->setRank(rank);
 
-	if (rank <= 0) {
-		Locker clocker(managerData, player);
-		managerData->removeChallengeTime(playerID);
-	}
-
-	if (rank >= 0)
-		ghost->addPermissionGroup(groupName + String::valueOf(rank), true);
-
-	if (rank > 0) {
-		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
-
-		if (rankData != nullptr) {
-			Locker clocker(rankData, player);
-			rankData->addToPlayerList(playerID);
+	if (isFrsEnabled()) {
+		if (rank <= 0) {
+			Locker clocker(managerData, player);
+			managerData->removeChallengeTime(playerID);
 		}
-	}
 
-	updatePlayerSkills(player);
+		if (rank > 0) {
+			ghost->addPermissionGroup(groupName + String::valueOf(rank), true);
+
+			ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
+
+			if (rankData != nullptr) {
+				Locker clocker(rankData, player);
+				rankData->addToPlayerList(playerID);
+			}
+		}
+
+		updatePlayerSkills(player);
+	}
 }
 
 void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
