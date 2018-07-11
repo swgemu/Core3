@@ -71,35 +71,9 @@ ForceChokeCommand = {
 			-1,
 			100,
 			350,
-			35,
-			33.0,
-			0.33
-		),
-
-		DotEffect(
-			FORCECHOKE,
-			{ "", "" },
-			ACTION,
-			true,
-			-1,
+			30,
 			100,
-			350,
-			35,
-			33.0,
-			0.33
-		),
-
-		DotEffect(
-			FORCECHOKE,
-			{ "", "" },
-			MIND,
-			true,
-			-1,
-			100,
-			350,
-			35,
-			33.0,
-			0.33
+			1
 		)
 	},
 
