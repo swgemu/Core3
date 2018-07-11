@@ -323,7 +323,7 @@ void FrsManagerImplementation::verifyRoomAccess(CreatureObject* player, int play
 
 	int roomReq = getRoomRequirement(cellID);
 
-	if (roomReq == -1)
+	if (roomReq <= 0)
 		return;
 
 	if (playerRank < 0) {
@@ -345,8 +345,8 @@ void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 
 	Locker lock(player);
 
-	deductDebtExperience(player);
 	validatePlayerData(player);
+	deductDebtExperience(player);
 }
 
 void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
@@ -452,12 +452,10 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 		groupName = "LightEnclaveRank";
 	else if (councilType == COUNCIL_DARK)
 		groupName = "DarkEnclaveRank";
-	else
-		return;
 
 	int curRank = playerData->getRank();
 
-	if (isFrsEnabled() && curRank > 0) {
+	if (isFrsEnabled() && curRank > 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
 		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
 
 		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
@@ -501,7 +499,7 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 			managerData->removeChallengeTime(playerID);
 		}
 
-		if (rank > 0) {
+		if (rank > 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
 			ghost->addPermissionGroup(groupName + String::valueOf(rank), true);
 
 			ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
