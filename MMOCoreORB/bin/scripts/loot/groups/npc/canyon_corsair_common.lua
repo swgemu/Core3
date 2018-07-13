@@ -5,10 +5,11 @@ canyon_corsair_common = {
 	lootItems = {
 		{itemTemplate = "small_motor", weight = 1500000},
 		{itemTemplate = "metal_recycler_schematic", weight = 1500000},
-		{itemTemplate = "agitator_motor_schematic", weight = 3500000},
+		{itemTemplate = "agitator_motor_schematic", weight = 3000000},
 		{itemTemplate = "skill_buff_rifle_accuracy", weight = 1000000},
 		{itemTemplate = "skill_buff_rifle_speed", weight = 1000000},
-		{groupTemplate = "wearables_common", weight = 1500000}
+		{groupTemplate = "wearables_common", weight = 1500000},
+		{groupTemplate = "weapon_component", weight = 500000}
 	}
 }
 
