@@ -2070,6 +2070,17 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	if (damageMultiplier != 0)
 		damage *= damageMultiplier;
 
+	if (data.isForceAttack() && data.getCommandName().hashCode() == STRING_HASHCODE("forcechoke")) {
+		CreatureObject* creo = defender->asCreatureObject();
+
+		if (creo != nullptr) {
+			if (creo->isProne() || creo->isKnockedDown())
+				damage *= 1.5;
+			else if (creo->isKneeling())
+				damage *= 1.25;
+		}
+	}
+
 	String xpType;
 	if (data.isForceAttack())
 		xpType = "jedi_general";

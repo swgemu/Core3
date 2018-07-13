@@ -363,6 +363,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		if (forceShield > 0) {
 			jediBuffDamage = rawDamage - (chokeDam *= 1.f - (forceShield / 100.f));
 			victimRef->notifyObservers(ObserverEventType::FORCESHIELD, attackerRef, jediBuffDamage);
+			CombatManager::instance()->sendMitigationCombatSpam(victimRef, nullptr, (int)jediBuffDamage, CombatManager::FORCESHIELD);
 		}
 
 		victimRef->inflictDamage(attackerRef, attribute, chokeDam, true);
