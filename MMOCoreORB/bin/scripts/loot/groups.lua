@@ -75,6 +75,14 @@ includeFile("groups/creature/rancor_common.lua")
 includeFile("groups/creature/sharnaff_common.lua")
 includeFile("groups/creature/voritor_lizard_common.lua")
 
+-- component loot sub-folder
+
+includeFile("groups/component_loot/chemistry_component_advanced.lua")
+includeFile("groups/component_loot/weapon_component_advanced.lua")
+includeFile("groups/component_loot/chemistry_component.lua")
+includeFile("groups/component_loot/weapon_component.lua")
+
+
 -- death_watch_bunker sub-folder
 includeFile("groups/death_watch_bunker/death_watch_bunker_art.lua")
 includeFile("groups/death_watch_bunker/death_watch_bunker_battery.lua")
