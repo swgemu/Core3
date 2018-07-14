@@ -1486,8 +1486,14 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (!data.isForceAttack() && weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		damage *= 1.25;
 
-	if (defender->isKnockedDown())
+	if (defender->isKnockedDown()) {
 		damage *= 1.5f;
+	} else if (data.isForceAttack() && data.getCommandName().hashCode() == STRING_HASHCODE("forcechoke")) {
+		if  (defender->isProne())
+			damage *= 1.5f;
+		else if (defender->isKneeling())
+			damage *= 1.25f;
+	}
 
 	// Toughness reduction
 	if (data.isForceAttack())
@@ -1952,13 +1958,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (healthDamaged) {
 		static uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
 		hitLocation = bodyLocations[System::random(3)];
-
-		if (data.isForceAttack() && data.getCommandName().hashCode() == STRING_HASHCODE("forcechoke")) {
-			if (defender->isProne() || defender->isKnockedDown())
-				damage *= 1.5;
-			else if (defender->isKneeling())
-				damage *= 1.25;
-		}
 
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
 

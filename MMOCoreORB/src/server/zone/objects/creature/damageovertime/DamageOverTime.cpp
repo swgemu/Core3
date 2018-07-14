@@ -350,11 +350,6 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 		uint32 chokeDam = strength;
 
-		if (victimRef->isProne() || victimRef->isKnockedDown())
-			chokeDam *= 1.5;
-		else if (victimRef->isKneeling())
-			chokeDam *= 1.25;
-
 		float jediBuffDamage = 0;
 		float rawDamage = chokeDam;
 
