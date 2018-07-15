@@ -49,6 +49,13 @@ includeFile("groups/bestine_election/bestine_election_carved_stone.lua")
 includeFile("groups/bestine_election/bestine_election_tusken_quest.lua")
 includeFile("groups/bestine_election/bestine_election_victor_visalis_rewards.lua")
 
+-- component loot sub-folder
+
+includeFile("groups/component_loot/chemistry_component_advanced.lua")
+includeFile("groups/component_loot/weapon_component_advanced.lua")
+includeFile("groups/component_loot/chemistry_component.lua")
+includeFile("groups/component_loot/weapon_component.lua")
+
 -- corellian_corvette sub-folder
 includeFile("groups/corellian_corvette/imperial_corvette_loot.lua")
 includeFile("groups/corellian_corvette/neutral_corvette_loot.lua")
@@ -158,6 +165,21 @@ includeFile("groups/npc/tusken_common.lua")
 includeFile("groups/npc/tutorial_pirate.lua")
 includeFile("groups/npc/valarian_common.lua")
 includeFile("groups/npc/weequay_common.lua")
+
+-- npc/faction sub-folder
+
+includeFile("groups/npc/faction/imperial_common_easy.lua")
+includeFile("groups/npc/faction/imperial_common_medium.lua")
+includeFile("groups/npc/faction/imperial_stormtrooper.lua")
+includeFile("groups/npc/faction/imperial_darktrooper.lua")
+includeFile("groups/npc/faction/imperial_officer.lua")
+includeFile("groups/npc/faction/imperial_medic.lua")
+includeFile("groups/npc/faction/rebel_common_easy.lua")
+includeFile("groups/npc/faction/rebel_common_medium.lua")
+includeFile("groups/npc/faction/rebel_marshall.lua")
+includeFile("groups/npc/faction/rebel_officer.lua")
+includeFile("groups/npc/faction/rebel_medic.lua")
+
 
 -- task_loot sub-folder
 includeFile("groups/task_loot/hedon_istee_treasure.lua")
@@ -337,6 +359,12 @@ includeFile("groups/village/sivarra_reward_necklace.lua")
 includeFile("groups/village/cs_datapad.lua")
 
 -- weapon sub-folder
+includeFile("groups/weapon/ranged_weapons_easy.lua")
+includeFile("groups/weapon/ranged_weapons_medium.lua")
+includeFile("groups/weapon/ranged_weapons_rare.lua")
+includeFile("groups/weapon/melee_weapons_easy.lua")
+includeFile("groups/weapon/melee_weapons_medium.lua")
+includeFile("groups/weapon/melee_weapons_rare.lua")
 includeFile("groups/weapon/carbines.lua")
 includeFile("groups/weapon/grenades_looted.lua")
 includeFile("groups/weapon/heavy_weapons_consumable.lua")
