@@ -1,7 +1,7 @@
 heavy_weapons = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "heavy_rocket_launcher", weight = 1000000},
 		{itemTemplate = "heavy_acid_beam", weight = 1000000},

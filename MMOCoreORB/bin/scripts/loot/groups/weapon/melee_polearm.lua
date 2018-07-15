@@ -3,7 +3,7 @@
 melee_polearm = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "polearm_lance", weight = 1500000},
 		{itemTemplate = "polearm_lance_vibrolance", weight = 1000000},
