@@ -3,7 +3,7 @@
 carbines = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "carbine_cdef", weight = 3000000},
 		{itemTemplate = "carbine_dh17", weight = 1800000},

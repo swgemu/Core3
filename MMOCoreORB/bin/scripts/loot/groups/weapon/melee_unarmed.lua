@@ -3,7 +3,7 @@
 melee_unarmed = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "melee_vibroknuckler", weight = 10000000}
 	}

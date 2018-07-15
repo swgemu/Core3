@@ -3,7 +3,7 @@
 melee_two_handed = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "two_handed_sword_battleaxe", weight = 2500000},
 		{itemTemplate = "two_handed_sword_cleaver", weight = 2500000},
