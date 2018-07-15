@@ -3,7 +3,7 @@
 melee_weapons = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "axe_heavy_duty", weight = 500000},
 		{itemTemplate = "axe_vibroaxe", weight = 400000},

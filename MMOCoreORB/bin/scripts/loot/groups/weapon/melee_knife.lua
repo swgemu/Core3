@@ -3,7 +3,7 @@
 melee_knife = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "knife_dagger", weight = 3333333},
 		{itemTemplate = "knife_stone", weight = 3333333},
