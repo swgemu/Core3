@@ -49,6 +49,13 @@ includeFile("groups/bestine_election/bestine_election_carved_stone.lua")
 includeFile("groups/bestine_election/bestine_election_tusken_quest.lua")
 includeFile("groups/bestine_election/bestine_election_victor_visalis_rewards.lua")
 
+-- component loot sub-folder
+
+includeFile("groups/component_loot/chemistry_component_advanced.lua")
+includeFile("groups/component_loot/weapon_component_advanced.lua")
+includeFile("groups/component_loot/chemistry_component.lua")
+includeFile("groups/component_loot/weapon_component.lua")
+
 -- corellian_corvette sub-folder
 includeFile("groups/corellian_corvette/imperial_corvette_loot.lua")
 includeFile("groups/corellian_corvette/neutral_corvette_loot.lua")
