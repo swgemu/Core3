@@ -3,7 +3,7 @@
 rifles = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		{itemTemplate = "rifle_bowcaster", weight = 700000},
 		{itemTemplate = "rifle_cdef", weight = 1900000},
