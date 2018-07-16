@@ -58,8 +58,9 @@ FlurryShot2Command = {
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
-		{ "dizzy_defense", "resistance_states" }, 
-		{ "jedi_state_defense" }, 
+		{ "dizzy_defense" }, 
+		{ "jedi_state_defense" },
+		{ "resistance_states" },
 		100, 
 		0, 
 		30 

@@ -60,8 +60,9 @@ Melee1hDizzyHit1Command = {
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
-		{ "dizzy_defense", "resistance_states" }, 
+		{ "dizzy_defense" }, 
 		{ "jedi_state_defense" }, 
+		{ "resistance_states" },
 		100, 
 		0, 
 		30 

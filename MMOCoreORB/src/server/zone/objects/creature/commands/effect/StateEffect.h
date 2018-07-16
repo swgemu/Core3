@@ -16,6 +16,7 @@ protected:
 	Vector<String> defenderExclusionTimers;
 	Vector<String> defenderStateDefenseModifiers;
 	Vector<String> defenderJediStateDefenseModifiers;
+	Vector<String> defenderJediStateResistModifiers;
 	uint32 stateChance;
 	uint32 stateStrength;
 	uint32 stateLength;
@@ -37,6 +38,7 @@ public:
 		defenderExclusionTimers =  effect.defenderExclusionTimers;
 		defenderStateDefenseModifiers = effect.defenderStateDefenseModifiers;
 		defenderJediStateDefenseModifiers = effect.defenderJediStateDefenseModifiers;
+		defenderJediStateResistModifiers = effect.defenderJediStateResistModifiers;
 		stateChance = effect.stateChance;
 		stateStrength = effect.stateStrength;
 		stateLength = effect.stateLength;
@@ -50,6 +52,7 @@ public:
 		defenderExclusionTimers =  effect.defenderExclusionTimers;
 		defenderStateDefenseModifiers = effect.defenderStateDefenseModifiers;
 		defenderJediStateDefenseModifiers = effect.defenderJediStateDefenseModifiers;
+		defenderJediStateResistModifiers = effect.defenderJediStateResistModifiers;
 		stateChance = effect.stateChance;
 		stateStrength = effect.stateStrength;
 		stateLength = effect.stateLength;
@@ -92,10 +95,22 @@ public:
 		}
 
 		jediMods.pop();
+
+		LuaObject jediRMods = state.getObjectField("defenderJediStateResistModifiers");
+
+		for (int i = 1; i <= jediRMods.getTableSize(); ++i) {
+			defenderJediStateResistModifiers.add(jediRMods.getStringAt(i));
+		}
+
+		jediRMods.pop();
 	}
 
     const Vector<String>& getDefenderExclusionTimers() const {
         return defenderExclusionTimers;
+    }
+
+    const Vector<String>& getDefenderJediStateResistModifiers() const {
+             return defenderJediStateResistModifiers;
     }
 
     const Vector<String>& getDefenderJediStateDefenseModifiers() const {
@@ -124,6 +139,10 @@ public:
 
     void setDefenderExclusionTimers(const Vector<String>& defenderExclusionTimers) {
         this->defenderExclusionTimers = defenderExclusionTimers;
+    }
+
+    void setDefenderJediStateResistModifiers(const Vector<String>& defenderJediStateResistModifiers) {
+        this->defenderJediStateResistModifiers = defenderJediStateResistModifiers;
     }
 
     void setDefenderJediStateDefenseModifiers(const Vector<String>& defenderJediStateDefenseModifiers) {

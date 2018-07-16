@@ -56,6 +56,7 @@ SuppressionFire2Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
+		{},
 		{}, 
 		100, 
 		0, 

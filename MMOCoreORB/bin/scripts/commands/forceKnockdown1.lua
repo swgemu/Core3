@@ -56,6 +56,7 @@ ForceKnockdown1Command = {
 		{ "knockdownRecovery", "lastKnockdown" },
 		{ "force_defense" },
 		{},
+		{},
 		65,
 		0,
 		0
