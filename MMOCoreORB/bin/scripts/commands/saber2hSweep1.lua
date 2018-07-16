@@ -57,7 +57,7 @@ Saber2hSweep1Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
-		{}, 
+		{},
 		100, 
 		0, 
 		0 

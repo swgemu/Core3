@@ -60,7 +60,7 @@ Saber1hComboHit2Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
-		{}, 
+		{},
 		40, 
 		0, 
 		0 

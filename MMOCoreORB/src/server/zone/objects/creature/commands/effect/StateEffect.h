@@ -92,6 +92,7 @@ public:
 		}
 
 		jediMods.pop();
+
 	}
 
     const Vector<String>& getDefenderExclusionTimers() const {

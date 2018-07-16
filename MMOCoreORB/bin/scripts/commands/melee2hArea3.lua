@@ -55,8 +55,8 @@ Melee2hArea3Command = {
                --documentation clearly defines dizzy instead of blind
 		DIZZY_EFFECT, 
 		{}, 
-		{ "dizzy_defense", "resistance_states" }, 
-		{ "jedi_state_defense" }, 
+		{ "dizzy_defense" }, 
+		{ "jedi_state_defense", "resistance_states" },
 		30, 
 		0, 
 		30
@@ -65,7 +65,7 @@ Melee2hArea3Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
-		{}, 
+		{},
 		100, 
 		0, 
 		0 
