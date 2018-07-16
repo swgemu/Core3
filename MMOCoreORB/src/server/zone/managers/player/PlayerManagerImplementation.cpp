@@ -1166,7 +1166,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(3 * 1000);
+	task->schedule(2 * 1000);
 
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
