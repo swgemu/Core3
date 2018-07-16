@@ -1838,6 +1838,22 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				if (System::random(100) > accuracyMod - targetDefense)
 					failed = true;
 			}
+
+			// Enhancer Resistance States roll for Jedi resistance_states
+			if(!failed && targetCreature->isPlayerCreature() && targetCreature->getPlayerObject()->isJedi()) {
+				targetDefense = 0.f;
+				const Vector<String>& jediRMods = effect.getDefenderJediStateResistModifiers();
+				for (int j = 0; j < jediRMods.size(); j++)
+					targetDefense += targetCreature->getSkillMod(jediRMods.get(j));
+
+				targetDefense /= 1.5;
+				targetDefense += playerLevel;
+
+				if (System::random(100) > accuracyMod - targetDefense)
+					failed = true;
+
+			}
+
 		}
 
 		if (!failed) {

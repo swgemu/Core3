@@ -65,6 +65,7 @@ Melee1hLunge1Command = {
 		{ "postureDownRecovery" },
 		{ "posture_change_down_defense" },
 		{},
+		{},
 		100,
 		0,
 		0

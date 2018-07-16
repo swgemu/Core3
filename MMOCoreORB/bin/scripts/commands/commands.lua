@@ -1,10 +1,11 @@
 -- define an object to carry state data for combat commands
-function StateEffect(t, et, dm, jm, c, s, l) 
+function StateEffect(t, et, dm, jm, rm, c, s, l) 
   return {
 	effectType = t,
 	defenderExclusionTimers = et,
 	defenderStateDefenseModifiers = dm,
 	defenderJediStateDefenseModifiers = jm,
+	defenderJediStateResistModifiers = rm,
 	stateChance = c,
 	stateStrength = s,
 	stateLength = l

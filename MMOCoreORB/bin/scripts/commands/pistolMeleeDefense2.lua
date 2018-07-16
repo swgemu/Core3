@@ -57,6 +57,7 @@ PistolMeleeDefense2Command = {
 		{ "knockdownRecovery", "lastKnockdown" },
 		{ "knockdown_defense" },
 		{},
+		{},
 		65,
 		0,
 		0

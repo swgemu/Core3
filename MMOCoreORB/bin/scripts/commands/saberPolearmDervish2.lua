@@ -59,8 +59,9 @@ SaberPolearmDervish2Command = {
 	   StateEffect( 
 		BLIND_EFFECT, 
 		{}, 
-		{ "blind_defense", "resistance_states" }, 
-		{ "jedi_state_defense" }, 
+		{ "blind_defense" }, 
+		{ "jedi_state_defense" },
+		{ "resistance_states" }, 
 		75, 
 		0, 
 		60 
@@ -68,8 +69,9 @@ SaberPolearmDervish2Command = {
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
-		{ "dizzy_defense", "resistance_states" }, 
+		{ "dizzy_defense" }, 
 		{ "jedi_state_defense" }, 
+		{ "resistance_states" },
 		75, 
 		0, 
 		30 
@@ -77,8 +79,9 @@ SaberPolearmDervish2Command = {
 	  StateEffect( 
 		STUN_EFFECT, 
 		{}, 
-		{ "stun_defense", "resistance_states" }, 
+		{ "stun_defense" }, 
 		{ "jedi_state_defense" }, 
+		{ "resistance_states" },
 		76, 
 		0, 
 		60

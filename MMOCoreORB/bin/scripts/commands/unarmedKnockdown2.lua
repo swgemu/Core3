@@ -55,8 +55,9 @@ UnarmedKnockdown2Command = {
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
-		{ "dizzy_defense", "resistance_states" }, 
-		{ "jedi_state_defense" }, 
+		{ "dizzy_defense" }, 
+		{ "jedi_state_defense" },
+		{ "resistance_states" }, 
 		75, 
 		0, 
 		40 
@@ -65,6 +66,7 @@ UnarmedKnockdown2Command = {
 		KNOCKDOWN_EFFECT, 
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
+		{},
 		{}, 
 		100, 
 		0, 

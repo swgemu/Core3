@@ -55,6 +55,7 @@ UnderHandShotCommand = {
 		KNOCKDOWN_EFFECT, 
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
+		{},
 		{}, 
 		85, 
 		0, 
