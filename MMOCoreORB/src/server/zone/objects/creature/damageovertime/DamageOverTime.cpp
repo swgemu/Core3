@@ -350,11 +350,6 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 		uint32 chokeDam = strength;
 
-		if (victimRef->isProne() || victimRef->isKnockedDown())
-			chokeDam *= 1.5;
-		else if (victimRef->isKneeling())
-			chokeDam *= 1.25;
-
 		float jediBuffDamage = 0;
 		float rawDamage = chokeDam;
 
@@ -363,8 +358,10 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		if (forceShield > 0) {
 			jediBuffDamage = rawDamage - (chokeDam *= 1.f - (forceShield / 100.f));
 			victimRef->notifyObservers(ObserverEventType::FORCESHIELD, attackerRef, jediBuffDamage);
+			CombatManager::instance()->sendMitigationCombatSpam(victimRef, nullptr, (int)jediBuffDamage, CombatManager::FORCESHIELD);
 		}
 
+		CombatManager::instance()->broadcastCombatSpam(attackerRef, victimRef, nullptr, chokeDam, "cbt_spam", "forcechoke_hit", 1);
 		victimRef->inflictDamage(attackerRef, attribute, chokeDam, true);
 
 		if (victimRef->hasAttackDelay())

@@ -323,9 +323,6 @@ void FrsManagerImplementation::verifyRoomAccess(CreatureObject* player, int play
 
 	int roomReq = getRoomRequirement(cellID);
 
-	if (roomReq <= 0)
-		return;
-
 	if (playerRank < 0) {
 		if (buildingType == COUNCIL_LIGHT)
 			player->teleport(-5575, 0, 4905, 0);
@@ -499,14 +496,16 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 			managerData->removeChallengeTime(playerID);
 		}
 
-		if (rank > 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
+		if (rank >= 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
 			ghost->addPermissionGroup(groupName + String::valueOf(rank), true);
 
-			ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
+			if (rank > 0) {
+				ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
 
-			if (rankData != nullptr) {
-				Locker clocker(rankData, player);
-				rankData->addToPlayerList(playerID);
+				if (rankData != nullptr) {
+					Locker clocker(rankData, player);
+					rankData->addToPlayerList(playerID);
+				}
 			}
 		}
 
@@ -540,14 +539,16 @@ void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
 		return;
 	}
 
-	if (curRank > 0) {
+	if (curRank >= 0) {
 		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
 
-		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
+		if (curRank > 0) {
+			ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank);
 
-		if (rankData != nullptr) {
-			Locker clocker(rankData, player);
-			rankData->removeFromPlayerList(playerID);
+			if (rankData != nullptr) {
+				Locker clocker(rankData, player);
+				rankData->removeFromPlayerList(playerID);
+			}
 		}
 	}
 
