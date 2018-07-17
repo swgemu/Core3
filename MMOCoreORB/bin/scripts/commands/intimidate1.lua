@@ -57,7 +57,7 @@ Intimidate1Command = {
 		INTIMIDATE_EFFECT, 
 		{}, 
 		{}, 
-		{}, 
+		{},
 		100, 
 		0, 
 		30 

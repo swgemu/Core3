@@ -57,7 +57,7 @@ Intimidate2Command = {
 		INTIMIDATE_EFFECT, 
 		{}, 
 		{}, 
-		{}, 
+		{},
 		100, 
 		0, 
 		120 
