@@ -5421,8 +5421,8 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		ghost->addToKillerList(attacker->getObjectID());
 
-		int attackerRatingDelta = 20 + ((curAttackerRating - defenderPvpRating) / 25);
-		int victimRatingDelta = -20 + ((defenderPvpRating - curAttackerRating) / 25);
+		int attackerRatingDelta = 20 + ((defenderPvpRating - curAttackerRating) / 25);
+		int victimRatingDelta = -20 + ((curAttackerRating - defenderPvpRating) / 25);
 
 		if (attackerRatingDelta > 40)
 			attackerRatingDelta = 40;
