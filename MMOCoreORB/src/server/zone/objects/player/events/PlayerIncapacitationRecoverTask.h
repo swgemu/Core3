@@ -55,6 +55,8 @@ public:
 			else if (deadRecovery && !player->isDead())
 				return;
 
+			ghost->setCloning(false);
+
 			int health = player->getHAM(CreatureAttribute::HEALTH);
 
 			if (health < 0)

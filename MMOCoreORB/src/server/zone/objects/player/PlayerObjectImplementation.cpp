@@ -335,7 +335,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	sendFriendLists();
 
-	if (creature->isDead()) {
+	if (creature->isDead() && !isCloning()) {
 		//If the player is dead, see if they already have a clone box. If so, resend it.
 		ManagedReference<SuiBox*> cloneBox = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
 
