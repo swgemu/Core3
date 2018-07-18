@@ -1217,8 +1217,7 @@ void StructureManager::payMaintenance(StructureObject* structure,
 		return;
 	}
 
-	if (!creature->isInRange(structure, 16.f)
-			&& creature->getRootParent() != structure) {
+	if (creature->getRootParent() != structure && !creature->isInRange(structure, 30.f)) {
 		creature->sendSystemMessage("@player_structure:pay_out_of_range"); //You have moved out of range of your original /payMaintenance target. Aborting...
 		return;
 	}

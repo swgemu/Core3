@@ -1101,6 +1101,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	Zone* zone = player->getZone();
 
+	ghost->setCloning(true);
+
 	if (cellID == 0)
 		player->switchZone(zone->getZoneName(), cloner->getWorldPositionX() + coordinate->getPositionX(), cloner->getWorldPositionZ() + coordinate->getPositionZ(), cloner->getWorldPositionY() + coordinate->getPositionY(), 0);
 	else
@@ -5333,6 +5335,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	uint32 highDamageAmount = 0;
 	FrsManager* frsManager = server->getFrsManager();
 	int frsXpAdjustment = 0;
+	bool throttleOnly = true;
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -5398,8 +5401,6 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			toAttacker.setDI(curAttackerRating);
 
 			attacker->sendSystemMessage(toAttacker);
-
-			continue;
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
@@ -5420,44 +5421,47 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		}
 
 		ghost->addToKillerList(attacker->getObjectID());
+		throttleOnly = false;
 
-		int attackerRatingDelta = 20 + ((curAttackerRating - defenderPvpRating) / 25);
-		int victimRatingDelta = -20 + ((defenderPvpRating - curAttackerRating) / 25);
+		if (defenderPvpRating > PlayerObject::PVP_RATING_FLOOR) {
+			int attackerRatingDelta = 20 + ((defenderPvpRating - curAttackerRating) / 25);
+			int victimRatingDelta = -20 + ((curAttackerRating - defenderPvpRating) / 25);
 
-		if (attackerRatingDelta > 40)
-			attackerRatingDelta = 40;
-		else if (attackerRatingDelta < 0)
-			attackerRatingDelta = 0;
+			if (attackerRatingDelta > 40)
+				attackerRatingDelta = 40;
+			else if (attackerRatingDelta < 0)
+				attackerRatingDelta = 0;
 
-		if (victimRatingDelta < -40)
-			victimRatingDelta = -40;
-		else if (victimRatingDelta > 0)
-			victimRatingDelta = 0;
+			if (victimRatingDelta < -40)
+				victimRatingDelta = -40;
+			else if (victimRatingDelta > 0)
+				victimRatingDelta = 0;
 
-		attackerRatingDelta *= damageContribution;
-		victimRatingDelta *= damageContribution;
+			attackerRatingDelta *= damageContribution;
+			victimRatingDelta *= damageContribution;
 
-		victimRatingTotalDelta += victimRatingDelta;
-		int newRating = curAttackerRating + attackerRatingDelta;
+			victimRatingTotalDelta += victimRatingDelta;
+			int newRating = curAttackerRating + attackerRatingDelta;
 
-		attackerGhost->setPvpRating(newRating);
+			attackerGhost->setPvpRating(newRating);
 
-		crossLock.release();
+			crossLock.release();
 
-		String stringFile;
+			String stringFile;
 
-		int randNum = System::random(2) + 1;
-		if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
-			stringFile = "trandoshan_win" + String::valueOf(randNum);
-		else
-			stringFile = "win" + String::valueOf(randNum);
+			int randNum = System::random(2) + 1;
+			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+				stringFile = "trandoshan_win" + String::valueOf(randNum);
+			else
+				stringFile = "win" + String::valueOf(randNum);
 
-		StringIdChatParameter toAttacker;
-		toAttacker.setStringId("pvp_rating", stringFile);
-		toAttacker.setTT(player->getFirstName());
-		toAttacker.setDI(newRating);
+			StringIdChatParameter toAttacker;
+			toAttacker.setStringId("pvp_rating", stringFile);
+			toAttacker.setTT(player->getFirstName());
+			toAttacker.setDI(newRating);
 
-		attacker->sendSystemMessage(toAttacker);
+			attacker->sendSystemMessage(toAttacker);
+		}
 	}
 
 	if (highDamageAttacker == NULL)
@@ -5484,6 +5488,10 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		player->sendSystemMessage(toVictim);
 	} else if (victimRatingTotalDelta != 0) {
 		int newDefenderRating = defenderPvpRating + victimRatingTotalDelta;
+
+		if (newDefenderRating < PlayerObject::PVP_RATING_FLOOR)
+			newDefenderRating = PlayerObject::PVP_RATING_FLOOR;
+
 		ghost->setPvpRating(newDefenderRating);
 
 		String stringFile;
@@ -5500,7 +5508,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		toVictim.setDI(newDefenderRating);
 
 		player->sendSystemMessage(toVictim);
-	} else {
+	} else if (throttleOnly) {
 		String stringFile;
 
 		if (player->getSpecies() == CreatureObject::TRANDOSHAN)

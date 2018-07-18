@@ -423,6 +423,16 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 				player->removeSkill("force_rank_dark_novice", true);
 				skillManager->awardSkill("force_rank_dark_novice", player, true, false, true);
 			}
+		} else {
+			String groupName = "";
+
+			if (councilType == COUNCIL_LIGHT)
+				groupName = "LightEnclaveRank" + String::valueOf(realPlayerRank);
+			else if (councilType == COUNCIL_DARK)
+				groupName = "DarkEnclaveRank" + String::valueOf(realPlayerRank);
+
+			if (!ghost->hasPermissionGroup(groupName))
+				ghost->addPermissionGroup(groupName, true);
 		}
 	}
 
