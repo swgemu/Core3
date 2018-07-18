@@ -1101,6 +1101,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	Zone* zone = player->getZone();
 
+	ghost->setCloning(true);
+
 	if (cellID == 0)
 		player->switchZone(zone->getZoneName(), cloner->getWorldPositionX() + coordinate->getPositionX(), cloner->getWorldPositionZ() + coordinate->getPositionZ(), cloner->getWorldPositionY() + coordinate->getPositionY(), 0);
 	else
@@ -1166,7 +1168,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(2 * 1000);
+	task->schedule(3 * 1000);
 
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
@@ -5333,6 +5335,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	uint32 highDamageAmount = 0;
 	FrsManager* frsManager = server->getFrsManager();
 	int frsXpAdjustment = 0;
+	bool throttleOnly = true;
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -5418,6 +5421,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		}
 
 		ghost->addToKillerList(attacker->getObjectID());
+		throttleOnly = false;
 
 		if (defenderPvpRating > PlayerObject::PVP_RATING_FLOOR) {
 			int attackerRatingDelta = 20 + ((defenderPvpRating - curAttackerRating) / 25);
@@ -5484,6 +5488,10 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		player->sendSystemMessage(toVictim);
 	} else if (victimRatingTotalDelta != 0) {
 		int newDefenderRating = defenderPvpRating + victimRatingTotalDelta;
+
+		if (newDefenderRating < PlayerObject::PVP_RATING_FLOOR)
+			newDefenderRating = PlayerObject::PVP_RATING_FLOOR;
+
 		ghost->setPvpRating(newDefenderRating);
 
 		String stringFile;
@@ -5500,7 +5508,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		toVictim.setDI(newDefenderRating);
 
 		player->sendSystemMessage(toVictim);
-	} else {
+	} else if (throttleOnly) {
 		String stringFile;
 
 		if (player->getSpecies() == CreatureObject::TRANDOSHAN)
