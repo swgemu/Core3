@@ -37,16 +37,10 @@ rebel_commando = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 1200000},
-				{group = "pistols", chance = 1200000},
-				{group = "melee_weapons", chance = 1200000},
-				{group = "carbines", chance = 1200000},
-				{group = "clothing_attachments", chance = 250000},
-				{group = "armor_attachments", chance = 250000},
-				{group = "wearables_common", chance = 1000000}
-			}
+				{group = "rebel_common_standard", chance = 9500000}
+				{group = "rebel_commando", chance = 500000}
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
