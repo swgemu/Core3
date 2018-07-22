@@ -6,7 +6,8 @@ mark_of_courage = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	genSerialNumber = false
 }
 
 addLootItemTemplate("mark_of_courage", mark_of_courage)

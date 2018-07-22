@@ -22,6 +22,7 @@ protected:
 	int junkMaxValue;
 
 	ValuesMap craftingValues;
+	bool genSerialNumber;
 
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
@@ -48,6 +49,7 @@ public:
 	void readObject(LuaObject* templateData) {
 		customObjectName = templateData->getStringField("customObjectName");
 		directObjectTemplate = templateData->getStringField("directObjectTemplate");
+		genSerialNumber = templateData->getBooleanField("genSerialNumber");
 
 		junkDealerTypeNeeded = templateData->getIntField("junkDealerTypeNeeded");
 		junkMinValue = templateData->getIntField("junkMinValue");
@@ -201,6 +203,10 @@ public:
 
 	Vector<Vector<int> >* getCustomizationValues() {
 		return &customizationValues;
+	}
+
+	bool getSerialNumberGeneration() {
+		return genSerialNumber;
 	}
 
 	ValuesMap getValuesMapCopy() {
