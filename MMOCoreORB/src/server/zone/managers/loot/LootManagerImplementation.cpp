@@ -278,8 +278,12 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	prototype->createChildObjects();
 
-	String serial = craftingManager->generateSerial();
-	prototype->setSerialNumber(serial);
+	//Disable serial number generation on looted items that require no s/n
+	if (!templateObject->getSuppressSerialNumber()) {
+		String serial = craftingManager->generateSerial();
+		prototype->setSerialNumber(serial);
+	}
+
 	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
 	float junkMinValue = templateObject->getJunkMinValue() * junkValueModifier;
 	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
