@@ -278,8 +278,13 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	prototype->createChildObjects();
 
-	String serial = craftingManager->generateSerial();
-	prototype->setSerialNumber(serial);
+	const String& templateName = templateObject->getTemplateName();
+
+	if (templateName != "mark_of_courage") {
+		String serial = craftingManager->generateSerial();
+		prototype->setSerialNumber(serial);
+	}
+
 	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
 	float junkMinValue = templateObject->getJunkMinValue() * junkValueModifier;
 	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
