@@ -166,6 +166,23 @@ includeFile("groups/npc/tutorial_pirate.lua")
 includeFile("groups/npc/valarian_common.lua")
 includeFile("groups/npc/weequay_common.lua")
 
+-- npc/faction sub-folder
+
+includeFile("groups/npc/faction/imperial_commando.lua")
+includeFile("groups/npc/faction/imperial_common_weak.lua")
+includeFile("groups/npc/faction/imperial_common_standard.lua")
+includeFile("groups/npc/faction/imperial_stormtrooper.lua")
+includeFile("groups/npc/faction/imperial_darktrooper.lua")
+includeFile("groups/npc/faction/imperial_officer.lua")
+includeFile("groups/npc/faction/imperial_medic.lua")
+includeFile("groups/npc/faction/rebel_commando.lua")
+includeFile("groups/npc/faction/rebel_common_weak.lua")
+includeFile("groups/npc/faction/rebel_common_standard.lua")
+includeFile("groups/npc/faction/rebel_marshall.lua")
+includeFile("groups/npc/faction/rebel_officer.lua")
+includeFile("groups/npc/faction/rebel_medic.lua")
+
+
 -- task_loot sub-folder
 includeFile("groups/task_loot/hedon_istee_treasure.lua")
 includeFile("groups/task_loot/task_loot_ancient_lightsaber.lua")
@@ -344,6 +361,12 @@ includeFile("groups/village/sivarra_reward_necklace.lua")
 includeFile("groups/village/cs_datapad.lua")
 
 -- weapon sub-folder
+includeFile("groups/weapon/ranged_weapons_easy.lua")
+includeFile("groups/weapon/ranged_weapons_medium.lua")
+includeFile("groups/weapon/ranged_weapons_rare.lua")
+includeFile("groups/weapon/melee_weapons_easy.lua")
+includeFile("groups/weapon/melee_weapons_medium.lua")
+includeFile("groups/weapon/melee_weapons_rare.lua")
 includeFile("groups/weapon/carbines.lua")
 includeFile("groups/weapon/grenades_looted.lua")
 includeFile("groups/weapon/heavy_weapons_consumable.lua")
