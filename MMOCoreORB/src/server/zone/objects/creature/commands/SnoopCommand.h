@@ -105,6 +105,9 @@ public:
 		} else if (container == "jeditrainer") {
 			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
+			if (targetGhost == NULL)
+				return GENERALERROR;
+
 			if (targetGhost->getJediState() < 2 || !targetObj->hasSkill("force_title_jedi_rank_02")) {
 				creature->sendSystemMessage(targetObj->getFirstName() + " does not have a jedi state of 2+ or does not have the padawan skill box.");
 				return GENERALERROR;
@@ -183,6 +186,10 @@ public:
 				return GENERALERROR;
 		} else if (container == "frs") {
 			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+
+			if (targetGhost == NULL)
+				return GENERALERROR;
+
 			FrsData* playerData = targetGhost->getFrsData();
 			int playerRank = playerData->getRank();
 			int playerCouncil = playerData->getCouncilType();
