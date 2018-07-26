@@ -53,6 +53,11 @@ public:
 			targetObj = playerManager->getPlayer(targetName);
 		}
 
+		ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+
+		if (targetGhost == NULL)
+			return GENERALERROR;
+
 		if (args.hasMoreTokens())
 			args.getStringToken(container);
 
@@ -82,7 +87,6 @@ public:
 			creatureBank->sendWithoutParentTo(creature);
 			creatureBank->openContainerTo(creature);
 		} else if (container == "credits") {
-			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 			int cash = targetObj->getCashCredits();
 			int bank = targetObj->getBankCredits();
 			StringBuffer body;
@@ -90,9 +94,7 @@ public:
 			body << "Player Name:\t" << targetObj->getFirstName();
 			body << "\nCash Credits:\t" << String::valueOf(cash);
 			body << "\nBank Credits:\t" << String::valueOf(bank);
-
-			if (targetGhost != NULL)
-				body << "\nBank Location:\t" << targetGhost->getBankLocation();
+			body << "\nBank Location:\t" << targetGhost->getBankLocation();
 
 			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::ADMIN_PLAYER_CREDITS);
 			box->setPromptTitle("Player Credits");
@@ -103,8 +105,6 @@ public:
 			ghost->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
 		} else if (container == "jeditrainer") {
-			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
-
 			if (targetGhost->getJediState() < 2 || !targetObj->hasSkill("force_title_jedi_rank_02")) {
 				creature->sendSystemMessage(targetObj->getFirstName() + " does not have a jedi state of 2+ or does not have the padawan skill box.");
 				return GENERALERROR;
@@ -182,7 +182,6 @@ public:
 			else
 				return GENERALERROR;
 		} else if (container == "frs") {
-			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 			FrsData* playerData = targetGhost->getFrsData();
 			int playerRank = playerData->getRank();
 			int playerCouncil = playerData->getCouncilType();
