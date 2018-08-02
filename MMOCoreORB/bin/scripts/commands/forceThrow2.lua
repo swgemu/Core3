@@ -55,8 +55,8 @@ ForceThrow2Command = {
 		StateEffect(
 			STUN_EFFECT,
 			{},
-			{ "jedi_state_defense" },
 			{},
+			{ "jedi_state_defense" },
 			65,
 			0,
 			10

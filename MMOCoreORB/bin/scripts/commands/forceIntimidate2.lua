@@ -59,7 +59,7 @@ ForceIntimidate2Command = {
 		INTIMIDATE_EFFECT,
 		{},
 		{},
-		{ "force_defense" },
+		{ "jedi_state_defense" },
 		100,
 		0,
 		90

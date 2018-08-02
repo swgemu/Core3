@@ -56,7 +56,7 @@ ForceKnockdown2Command = {
 	  StateEffect(
 		KNOCKDOWN_EFFECT,
 		{ "knockdownRecovery", "lastKnockdown" },
-		{ "force_defense" },
+		{},
 		{},
 		65,
 		0,
