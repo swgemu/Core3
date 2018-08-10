@@ -68,19 +68,14 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/static/structure/general/tankfarm_s01.iff", x = 10.04, z = 0, y = -12, ox = 0, oy = -0.579, oz = 0, ow = 0.815, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/static/structure/general/tankfarm_s01.iff", x = -9.27, z = 0, y = -11.87, ox = 0, oy = 0.565, oz = 0, ow = 0.825, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 16.14, z = 0, y = 32.02, ox = 0, oy = 0,  oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -16.14, z = 0, y = 32.02,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18.17, z = 0, y = -2.43, ox = 0, oy = 1,  oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -18.17, z = 0, y = -2.43,  ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 14, z = 0, y = 25, ox = 0, oy = 0,  oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 14, z = 0, y = 25,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -25, z = 0, y = -9, ox = 0, oy = 1,  oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -25, z = 0, y = -9,  ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 31.7,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
-
-		{ templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x =5, z =.25, y =-4, ow =-.662, ox =0, oz = 0, oy =.749, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/security_terminal.iff", x =-5, z =-13.75, y =4.5, ox = 0, oy =.076, oz = 0, ow =1, cellid = 7, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/override_terminal.iff", x =3, z =-20.75, y = 1.5,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 4.25, z =-20.75, y =36, ox = 0, oy =1, oz = 0, ow =0, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_mission.iff", x = -11, z = -13.75, y = 7, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 7, containmentType = -1 },
 		{ templateFile = "object/tangible/terminal/terminal_bank.iff", x = 6, z = -13.75, y = 10, ow = 0, ox = 0, oz = 0, oy = 1, cellid = 7, containmentType = -1 },
