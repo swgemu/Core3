@@ -83,10 +83,6 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = -1, z = 0, y = 3, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = 3.8, z = 0, y = -0.8, ox = 0, oy = 1, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = -4, z = 0, y = -.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 1, z = 0, y = -1, ow =-.685, ox =0, oz = 0, oy =.728, cellid = 3, containmentType = -1 },
 	},
 
 	childCreatureObjects = {
