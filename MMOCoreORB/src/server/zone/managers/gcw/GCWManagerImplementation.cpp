@@ -26,6 +26,7 @@
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
+#include "server/zone/managers/gcw/TerminalSpawn.h"
 
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -165,6 +166,63 @@ void GCWManagerImplementation::loadLuaConfig() {
 	difficulties.pop();
 
 	info("Loaded " + String::valueOf(imperialStrongholds.size()) + " imperial strongholds and " + String::valueOf(rebelStrongholds.size()) + " rebel strongholds.");
+
+	LuaObject terminalSpawnTable = lua->getGlobalObject("terminalSpawns");
+
+	if (terminalSpawnTable.isValidTable()) {
+		for (int i = 1; i <= terminalSpawnTable.getTableSize(); ++i) {
+			LuaObject terminalSpawn = terminalSpawnTable.getObjectAt(i);
+
+			if (terminalSpawn.isValidTable()) {
+				String baseTemplate = terminalSpawn.getStringAt(1);
+
+				LuaObject terminalSpawnLocs = terminalSpawn.getObjectAt(2);
+
+				if (terminalSpawn.isValidTable()) {
+					Vector<Reference<TerminalSpawn*> >* spawnList = new Vector<Reference<TerminalSpawn*> >();
+
+					for (int j = 1; j <= terminalSpawnLocs.getTableSize(); ++j) {
+						LuaObject terminalLoc = terminalSpawnTable.getObjectAt(j);
+
+						if (terminalLoc.isValidTable()) {
+							float spawnX = terminalLoc.getFloatAt(1);
+							float spawnZ = terminalLoc.getFloatAt(2);
+							float spawnY = terminalLoc.getFloatAt(3);
+							float ox = terminalLoc.getFloatAt(4);
+							float oy = terminalLoc.getFloatAt(5);
+							float oz = terminalLoc.getFloatAt(6);
+							float ow = terminalLoc.getFloatAt(7);
+							int cellID = terminalLoc.getIntAt(8);
+							Quaternion termRot(ow, ox, oy, oz);
+
+							Vector3 spLoc(spawnX, spawnY, spawnZ);
+							Reference<TerminalSpawn*> termSpawn = new TerminalSpawn(baseTemplate, spLoc, cellID, termRot);
+							spawnList->add(termSpawn);
+						}
+
+						terminalLoc.pop();
+					}
+
+					terminalSpawnLocations.put(baseTemplate, spawnList);
+				}
+
+				terminalSpawnLocs.pop();
+			}
+
+			terminalSpawn.pop();
+		}
+	}
+
+	terminalSpawnTable.pop();
+
+	LuaObject termTemps = lua->getGlobalObject("terminalTemplates");
+	if (termTemps.isValidTable()) {
+		for (int i = 1; i <= termTemps.getTableSize(); ++i) {
+			terminalTemplates.add(termTemps.getStringAt(i));
+		}
+	}
+
+	termTemps.pop();
 
 	delete lua;
 	lua = NULL;
@@ -569,6 +627,7 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 		return;
 
 	verifyTurrets(building);
+	spawnBaseTerminals(building);
 	scheduleVulnerabilityEnd(building);
 	building->broadcastCellPermissions();
 }
@@ -619,6 +678,7 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 	// schedule
 	scheduleVulnerabilityStart(building);
 	verifyTurrets(building);
+	despawnBaseTerminals(building);
 	building->broadcastCellPermissions();
 }
 
@@ -707,7 +767,6 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 
 	if (!testTime.isPast()) {
 		// if we're still in a vuln period
-
 		info("Loaded while vulnerable in refresh", true);
 		baseData->setLastVulnerableTime(thisStartTime);
 
@@ -721,6 +780,7 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 		baseData->setNextVulnerableTime(nStartTime);
 
 		initializeNewVulnerability(baseData);
+		spawnBaseTerminals(building);
 		bool wasDropped = gcwStartTasks.drop(building->getObjectID());
 
 		block.release();
@@ -2516,4 +2576,97 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player);
 		contrabandScanSession->initializeSession();
 	}
+}
+
+void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
+	String baseName = bldg->getObjectTemplate()->getTemplateFileName();
+
+	if (!baseName.beginsWith("hq_"))
+		return;
+
+	baseName.replaceAll("_pvp", "");
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(bldg);
+
+	if (baseData == nullptr)
+		return;
+
+	if (baseData->getBaseTerminalCount() > 0)
+		despawnBaseTerminals(bldg);
+
+	if (!terminalSpawnLocations.contains(baseName)) {
+		error("Failed to grab terminal locations for GCW base type " + baseName);
+
+		return;
+	}
+
+	Vector<Reference<TerminalSpawn*> >* spawnLocs = terminalSpawnLocations.get(baseName);
+
+	if (spawnLocs->size() == 0)
+		return;
+
+	for (int i = 0; i < terminalTemplates.size(); i++) {
+		int randIndex = System::random(spawnLocs->size() - 1);
+		String termTemplate = terminalTemplates.get(i);
+
+		Reference<TerminalSpawn*> termLoc = spawnLocs->get(randIndex);
+
+		if (termLoc == nullptr)
+			continue;
+
+		ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(termTemplate.hashCode(), 0);
+
+		if (obj == nullptr)
+			continue;
+
+		Locker locker(obj);
+
+		Vector3* termCoords = termLoc->getSpawnLoc();
+
+		obj->initializePosition(termCoords->getX(), termCoords->getZ(), termCoords->getY());
+
+		Quaternion termRot = termLoc->getRotation();
+
+		obj->setDirection(termRot);
+
+		CellObject* cellObject = bldg->getCell(termLoc->getCellID());
+
+		if (cellObject != nullptr) {
+			if (!cellObject->transferObject(obj, -1, true)) {
+				obj->destroyObjectFromDatabase(true);
+			} else {
+				baseData->addBaseTerminal(obj);
+			}
+		} else {
+			obj->destroyObjectFromDatabase(true);
+		}
+
+		spawnLocs->removeElementAt(randIndex);
+	}
+
+	baseData->setTerminalsSpawned(true);
+}
+
+void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(bldg);
+
+	if (baseData == nullptr)
+		return;
+
+	int termCount = baseData->getBaseTerminalCount();
+
+	if (termCount == 0)
+		return;
+
+	for (int i = termCount - 1; i >= 0; i--) {
+		ManagedReference<SceneObject*> term = baseData->getBaseTerminal(i);
+
+		if (term == nullptr)
+			continue;
+
+		term->destroyObjectFromWorld(true);
+	}
+
+	baseData->clearBaseTerminals();
+	baseData->setTerminalsSpawned(false);
 }

@@ -104,12 +104,7 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 
 		{ templateFile="object/tangible/terminal/terminal_bank.iff", x = -9, z = -6.66, y = -7, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 5, containmentType = -1 },
 
-		{ templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x =.375, z = -6.75, y =-8, ow = 1, ox =0, oz = 0, oy = .7, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/security_terminal.iff", x =8, z =-6.75, y =-17.75, ox = 0, oy = 0, oz = 0, ow =1, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/override_terminal.iff", x =2.75, z =-6.75, y = .25, ox = 0, oy = 1, oz =0, ow =0, cellid = 7, containmentType = -1 },
-		{ templateFile = "object/tangible/hq_destructible/power_regulator.iff", x =-6.5, z =-13.75, y =-17, ox = 0, oy =0, oz = 0, ow =1, cellid =9, containmentType = -1 },
-
+		{ templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 	},
 
 	childCreatureObjects = {
