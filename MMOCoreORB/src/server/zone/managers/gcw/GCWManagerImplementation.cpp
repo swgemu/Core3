@@ -2636,6 +2636,7 @@ void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
 				obj->destroyObjectFromDatabase(true);
 			} else {
 				baseData->addBaseTerminal(obj);
+				bldg->addChildObject(obj);
 			}
 		} else {
 			obj->destroyObjectFromDatabase(true);
@@ -2664,6 +2665,7 @@ void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
 		if (term == nullptr)
 			continue;
 
+		bldg->removeChildObject(term);
 		term->destroyObjectFromWorld(true);
 	}
 

@@ -1989,6 +1989,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public void addChildObject(SceneObject obj) {
 		childObjects.put(obj);
 	}
+	
+	public void removeChildObject(SceneObject obj) {
+		childObjects.drop(obj);
+	}
 
 	@local
 	@dirty
