@@ -100,7 +100,7 @@ public:
 		return vulnerabilityEndTime;
 	}
 
-	Time getPlacmenetTime() {
+	Time getPlacementTime() {
 		return placementTime;
 	}
 
