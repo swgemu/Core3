@@ -632,6 +632,8 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 
 	Locker block(building);
 
+	despawnBaseTerminals(building);
+
 	Time nextTime = baseData->getNextVulnerableTime();
 
 	baseData->setLastVulnerableTime(nextTime);
@@ -661,7 +663,6 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 	// schedule
 	scheduleVulnerabilityStart(building);
 	verifyTurrets(building);
-	despawnBaseTerminals(building);
 	building->broadcastCellPermissions();
 }
 
