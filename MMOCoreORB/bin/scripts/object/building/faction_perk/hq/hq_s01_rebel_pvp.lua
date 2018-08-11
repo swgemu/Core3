@@ -78,20 +78,23 @@ object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 16.3, z = 0, y = 9.72, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -16.3, z = 0, y = 9.72, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 1, z = 0, y = -1.76, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 1, z = 0, y = -0.6, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 3, containmentType = -1 },
+
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 15.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = -1, z = 0, y = 3, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 1, containmentType = -1 },
-
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
+
+		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = 4.03, z = 0, y = -0.16, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
 	},
 
 	childCreatureObjects = {
-		{ mobile="fbase_rebel_cadet", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=4.71},
-		{ mobile="fbase_rebel_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=3.14},
-		{ mobile="fbase_rebel_squad_leader", x=-5.2, z=0, y=1, cellid=2, respawn=300, containmentType=-1, heading=0},
-		{ mobile="fbase_rebel_soldier", x=0, z=0, y=-2.4, cellid=3, respawn=300, containmentType=-1, heading=0},
-		{ mobile="fbase_rebel_guard_captain", x=5.4, z=0, y=-5.4, cellid=5, respawn=300, containmentType=-1, heading=0},
-		{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+		{ mobile = "fbase_rebel_cadet", x = 3.6, z = 0, y = 1.8, cellid = 4, respawn = 300, containmentType = -1, heading = 4.71 },
+		{ mobile = "fbase_rebel_medic", x = -3.8, z = 0, y = -2.3, cellid = 6, respawn = 300, containmentType = -1, heading = 3.14},
+		{ mobile = "fbase_rebel_squad_leader", x = -5.2, z = 0, y = 1, cellid = 2, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_soldier", x = 0, z = 0, y = -2.4, cellid = 3, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_guard_captain", x = 5.4, z = 0, y = -5.4, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "rebel_recruiter", x = -1, z = 0, y = -5.5, cellid = 3, containmentType = -1, respawn = 60, heading = 0},
 	},
 
 }

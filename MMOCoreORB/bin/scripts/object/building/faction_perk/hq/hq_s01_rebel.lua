@@ -80,37 +80,37 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 15.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = -1, z = 0, y = 3, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 1, containmentType = -1 },
-
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
+
+		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = 4.03, z = 0, y = -0.16, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
 	},
 
 	childCreatureObjects = {
-		{ mobile="fbase_rebel_corporal", x = 0, z = 0, y = 32.5, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_command_security_guard", x = -2.5, z = 0, y = 30, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_sergeant", x = 2.5, z = 0, y = 30, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_medic", x = -2.5, z = 0, y = 35, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_sharpshooter", x = 2.5, z = 0, y = 35, cellid = -1, respawn=300, containmentType = -1, heading=0},
+		{ mobile = "fbase_rebel_corporal", x = 0, z = 0, y = 32.5, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_command_security_guard", x = -2.5, z = 0, y = 30, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_sergeant", x = 2.5, z = 0, y = 30, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_medic", x = -2.5, z = 0, y = 35, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_sharpshooter", x = 2.5, z = 0, y = 35, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 
-		{ mobile="fbase_rebel_sharpshooter", x = 27, z = 0, y = 12, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_command_security_guard", x = 32, z = 0, y = 12, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_sergeant", x = 29.5, z = 0, y = 14.5, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_medic", x = 27, z = 0, y = 17, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_sharpshooter", x = 32, z = 0, y = 17, cellid = -1, respawn=300, containmentType = -1, heading=0},
+		{ mobile = "fbase_rebel_sharpshooter", x = 27, z = 0, y = 12, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_command_security_guard", x = 32, z = 0, y = 12, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_sergeant", x = 29.5, z = 0, y = 14.5, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_medic", x = 27, z = 0, y = 17, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_sharpshooter", x = 32, z = 0, y = 17, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 
-		{ mobile="fbase_rebel_sharpshooter", x = -27, z = 0, y = 12, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_master_sergeant", x = -32, z = 0, y = 12, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_sergeant", x = -29.5, z = 0, y = 14.5, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_medic", x = -27, z = 0, y = 17, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_corporal", x = -32, z = 0, y = 17, cellid = -1, respawn=300, containmentType = -1, heading=0},
+		{ mobile = "fbase_rebel_sharpshooter", x = -27, z = 0, y = 12, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_master_sergeant", x = -32, z = 0, y = 12, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_sergeant", x = -29.5, z = 0, y = 14.5, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_medic", x = -27, z = 0, y = 17, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_corporal", x = -32, z = 0, y = 17, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 
-		{ mobile="fbase_rebel_command_security_guard", x = -9, z = 0, y = 10, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_recruit", x = 9, z = 0, y = 10, cellid = -1, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_comm_operator", x = -2, z = 0, y = 10, cellid = -1, respawn=300, containmentType = -1, heading=0},
+		{ mobile = "fbase_rebel_command_security_guard", x = -9, z = 0, y = 10, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_recruit", x = 9, z = 0, y = 10, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_comm_operator", x = -2, z = 0, y = 10, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 
-		{ mobile="fbase_rebel_first_lieutenant", x = 3.6, z = 0, y = 1.8, cellid = 4, respawn=300, containmentType = -1, heading=0},
-		{ mobile="fbase_rebel_warrant_officer_ii", x = -3.8, z = 0, y = -2.3, cellid = 6, respawn=300, containmentType = -1, heading=0},
-		{ mobile="rebel_recruiter", x = -1, z = 0, y = -5.5, cellid = 3, containmentType = -1, respawn=60, heading=0},
+		{ mobile = "fbase_rebel_first_lieutenant", x = 3.6, z = 0, y = 1.8, cellid = 4, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_warrant_officer_ii", x = -3.8, z = 0, y = -2.3, cellid = 6, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "rebel_recruiter", x = -1, z = 0, y = -5.5, cellid = 3, containmentType = -1, respawn = 60, heading = 0},
 	},
 
 }

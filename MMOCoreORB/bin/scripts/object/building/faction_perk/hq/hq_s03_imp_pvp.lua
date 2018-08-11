@@ -94,48 +94,48 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 			{ templateFile = "object/static/structure/corellia/corl_power_transformer_s02.iff", x = 12, z = 0, y = 8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 			{ templateFile = "object/static/structure/corellia/corl_power_bubble_node.iff", x = 12, z = 0, y = 3, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18, z = 0, y = 33, ox = 0, oy = 0,  oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- left turret front
-			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -18, z = 0, y = 33,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -12, z = 0, y = -5, ox = 0, oy = 0,  oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- back turret left
-			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 12, z = 0, y = -5,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18, z = 0, y = 33, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- left turret front
+			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -18, z = 0, y = 33, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -12, z = 0, y = -5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- back turret left
+			{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 12, z = 0, y = -5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-			{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 38.5,  ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+			{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 38.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -5, z = .25, y = 1.5, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 2, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -5, z = .25, y = 0, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 2, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -5, z = .25, y = -1.5, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 2, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -5, z = .25, y = -3, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 2, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -4.75, z = 0, y = -2.4, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -4.75, z = 0, y = -1.2, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -4.75, z = 0, y = 0.0, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -4.75, z = 0, y = 1.2, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
 
 			{ templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
-			{ templateFile = "object/tangible/terminal/terminal_mission.iff", x = -11, z = -13.75, y = 7, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 7, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_bank.iff", x = 6, z = -20.75, y = 13, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 10, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_insurance.iff", x = -2, z = -20.75, y = 13, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 10, containmentType = -1 },
-			{ templateFile = "object/tangible/terminal/terminal_mission_imperial.iff", x = 8, z = -13.75, y = 7, ow = -.7, ox = 0, oz = 0, oy = .7, cellid = 7, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_mission.iff", x = 7.3, z = -13.75, y = 7.3, ox = 0, oy = 0.707, oz = 0, ow = -0.707, cellid = 7, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_mission_imperial.iff", x = -10.39, z = -13.75, y = 7.21, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 7, containmentType = -1 },
 
+			{ templateFile = "object/tangible/terminal/terminal_bank.iff", x = 5.62, z = -20.74, y = 13.27, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
+			{ templateFile = "object/tangible/terminal/terminal_bank.iff", x = -2.65, z = -20.74, y = 13.23, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
 		},
 
 		childCreatureObjects = {
 
-			{ mobile="fbase_dark_trooper_hard", x = -4.4, z = 0, y = -2.1, cellid = 2, respawn=300, containmentType = -1, heading=4.7},
-			{ mobile="fbase_dark_trooper_hard", x = -4.4, z = 0, y = 0.9, cellid = 2, respawn=300, containmentType = -1, heading=4.7},
-			{ mobile="fbase_stormtrooper_hard", x = 4, z = -3.25, y = 5, cellid = 4, respawn=300, containmentType = -1, heading=3.14},
-			{ mobile="fbase_imperial_exterminator_hard", x = -4, z = -10.25, y = -6, cellid = 5, respawn=300, containmentType = -1, heading=1.57},
+			{ mobile = "fbase_dark_trooper_hard", x = -4.4, z = 0, y = -2.1, cellid = 2, respawn = 300, containmentType = -1, heading = 4.7},
+			{ mobile = "fbase_dark_trooper_hard", x = -4.4, z = 0, y = 0.9, cellid = 2, respawn = 300, containmentType = -1, heading = 4.7},
+			{ mobile = "fbase_stormtrooper_hard", x = 4, z = -3.25, y = 5, cellid = 4, respawn = 300, containmentType = -1, heading = 3.14},
+			{ mobile = "fbase_imperial_exterminator_hard", x = -4, z = -10.25, y = -6, cellid = 5, respawn = 300, containmentType = -1, heading = 1.57},
 
-			{ mobile="fbase_sand_trooper_hard", x = -2.7, z = -13.75, y = 7, cellid = 7, respawn=300, containmentType = -1, heading=1.57},
-			{ mobile="fbase_stormtrooper_rifleman_hard", x = -5, z = -13.75, y = 7, cellid = 7, respawn=300, containmentType = -1, heading=1.57},
+			{ mobile = "fbase_sand_trooper_hard", x = -2.7, z = -13.75, y = 7, cellid = 7, respawn = 300, containmentType = -1, heading = 1.57},
+			{ mobile = "fbase_stormtrooper_rifleman_hard", x = -5, z = -13.75, y = 7, cellid = 7, respawn = 300, containmentType = -1, heading = 1.57},
 
-			{ mobile="fbase_stormtrooper_sniper_hard", x = 4, z = -20.75, y = 6, cellid = 9, respawn=300, containmentType = -1, heading=4.7},
-			{ mobile="fbase_stormtrooper_bombardier_hard", x = -1.5, z = -20.75, y = 6, cellid = 9, respawn=300, containmentType = -1, heading=1.57},
-			{ mobile="fbase_stormtrooper_medic_hard", x = -1.1, z = -20.75, y = 10.2, cellid = 9, respawn=300, containmentType = -1, heading=1.57},
+			{ mobile = "fbase_stormtrooper_sniper_hard", x = 4, z = -20.75, y = 6, cellid = 9, respawn = 300, containmentType = -1, heading = 4.7},
+			{ mobile = "fbase_stormtrooper_bombardier_hard", x = -1.5, z = -20.75, y = 6, cellid = 9, respawn = 300, containmentType = -1, heading = 1.57},
+			{ mobile = "fbase_stormtrooper_medic_hard", x = -1.1, z = -20.75, y = 10.2, cellid = 9, respawn = 300, containmentType = -1, heading = 1.57},
 
-			{ mobile="fbase_scout_trooper_hard", x = 4.5, z = -20.75, y = 15.8, cellid = 10, respawn=300, containmentType = -1, heading=4.7},
-			{ mobile="fbase_storm_commando_hard", x = -2, z = -20.75, y = 15.8, cellid = 10, respawn=300, containmentType = -1, heading=1.57},
-			{ mobile="fbase_storm_commando_hard", x = 1.5, z = -20.75, y = 24.7, cellid = 10, respawn=300, containmentType = -1, heading=0},
-			{ mobile="fbase_imperial_army_captain_hard", x = 5.5, z = -20.75, y = 35.5, cellid = 10, respawn=300, containmentType = -1, heading=3.14},
-			{ mobile="fbase_stormtrooper_squad_leader_hard", x = -2.3, z = -20.75, y = 35.5, cellid = 10, respawn=300, containmentType = -1, heading=3.14},
-			{ mobile="fbase_imperial_colonel_hard", x = 1.7, z = -20.75, y = 32.45, cellid = 10, respawn=300, containmentType = -1, heading=3.14},
-			{ mobile="imperial_recruiter", x = -4.9, z = -20.75, y = 31.5, cellid = 10, containmentType = -1, respawn=60, heading=1.57},
+			{ mobile = "fbase_scout_trooper_hard", x = 4.5, z = -20.75, y = 15.8, cellid = 10, respawn = 300, containmentType = -1, heading = 4.7},
+			{ mobile = "fbase_storm_commando_hard", x = -2, z = -20.75, y = 15.8, cellid = 10, respawn = 300, containmentType = -1, heading = 1.57},
+			{ mobile = "fbase_storm_commando_hard", x = 1.5, z = -20.75, y = 24.7, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
+			{ mobile = "fbase_imperial_army_captain_hard", x = 5.5, z = -20.75, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
+			{ mobile = "fbase_stormtrooper_squad_leader_hard", x = -2.3, z = -20.75, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
+			{ mobile = "fbase_imperial_colonel_hard", x = 1.7, z = -20.75, y = 32.45, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
+			{ mobile = "imperial_recruiter", x = -4.9, z = -20.75, y = 31.5, cellid = 10, containmentType = -1, respawn = 60, heading = 1.57},
 
 		},
 
