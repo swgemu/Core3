@@ -2584,7 +2584,7 @@ void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
 	if (!baseName.beginsWith("hq_"))
 		return;
 
-	baseName.replaceAll("_pvp", "");
+	baseName = baseName.replaceFirst("_pvp", "");
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(bldg);
 
@@ -2665,6 +2665,7 @@ void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
 		if (term == nullptr)
 			continue;
 
+		Locker clocker(term, bldg);
 		bldg->removeChildObject(term);
 		term->destroyObjectFromWorld(true);
 	}
