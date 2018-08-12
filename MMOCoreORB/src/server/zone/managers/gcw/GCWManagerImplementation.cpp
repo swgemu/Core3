@@ -532,10 +532,13 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
 	baseData->setPlacementTime(Time());
 	baseData->setLastVulnerableTime(Time());
 	baseData->setNextVulnerableTime(Time());
+	baseData->setVulnerabilityEndTime(Time());
 
-	Time endTime(baseData->getPlacementTime());
-	endTime.addMiliTime((vulnerabilityDuration * 1000) + (getInitialVulnerabilityDelay() * 1000));
-	baseData->setVulnerabilityEndTime(endTime);
+	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+		Time endTime(baseData->getPlacementTime());
+		endTime.addMiliTime((vulnerabilityDuration * 1000) + (getInitialVulnerabilityDelay() * 1000));
+		baseData->setVulnerabilityEndTime(endTime);
+	}
 
 	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
 }
@@ -619,12 +622,18 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 
 	verifyTurrets(building);
 	spawnBaseTerminals(building);
-	scheduleVulnerabilityEnd(building);
+
+	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT)
+		scheduleVulnerabilityEnd(building);
+
 	building->broadcastCellPermissions();
 }
 
 // changes timers and schedules nextVulnerabilityStart task
 void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
+	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if (baseData == nullptr)
@@ -708,6 +717,9 @@ void GCWManagerImplementation::scheduleVulnerabilityStart(BuildingObject* buildi
 
 // PRE:  nothing needs to be locked... building NOT locked
 void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building) {
+	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+		return;
+
 	if (!hasBase(building))
 		return;
 
@@ -730,6 +742,9 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 // only call if the last expired time has already past and we need the timers
 // back up to date.  usually after a long server down or something
 void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* building) {
+	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 	if (baseData == nullptr) {
 		error("ERROR:  could not get base data for base");
@@ -796,16 +811,18 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 		return;
 	}
 
-	Time currentTime;
-	Time vulnTime = baseData->getNextVulnerableTime();
-	Time nextEnd = baseData->getVulnerabilityEndTime();
+	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+		Time currentTime;
+		Time vulnTime = baseData->getNextVulnerableTime();
+		Time nextEnd = baseData->getVulnerabilityEndTime();
 
-	if (!vulnTime.isPast()) {
-		scheduleVulnerabilityStart(building);
-	} else if (vulnTime.isPast() && !nextEnd.isPast()) {
-		startVulnerability(building);
-	} else if (nextEnd.isPast()) {
-		refreshExpiredVulnerability(building);
+		if (!vulnTime.isPast()) {
+			scheduleVulnerabilityStart(building);
+		} else if (vulnTime.isPast() && !nextEnd.isPast()) {
+			startVulnerability(building);
+		} else if (nextEnd.isPast()) {
+			refreshExpiredVulnerability(building);
+		}
 	}
 
 	if (baseData->getState() == DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE) {
