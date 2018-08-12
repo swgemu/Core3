@@ -823,6 +823,8 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 		} else if (nextEnd.isPast()) {
 			refreshExpiredVulnerability(building);
 		}
+	} else {
+		spawnBaseTerminals(building);
 	}
 
 	if (baseData->getState() == DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE) {
