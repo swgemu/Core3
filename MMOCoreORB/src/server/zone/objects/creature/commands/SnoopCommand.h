@@ -53,6 +53,12 @@ public:
 			targetObj = playerManager->getPlayer(targetName);
 		}
 
+		if (targetObj == NULL)
+			return INVALIDTARGET;
+
+		if (!targetObj->isCreatureObject())
+			return INVALIDTARGET;
+
 		ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
 		if (targetGhost == NULL)
@@ -60,12 +66,6 @@ public:
 
 		if (args.hasMoreTokens())
 			args.getStringToken(container);
-
-		if (targetObj == NULL)
-			return INVALIDTARGET;
-
-		if (!targetObj->isCreatureObject())
-			return INVALIDTARGET;
 
 		if (container == "equipment") {
 			targetObj->sendWithoutParentTo(creature);

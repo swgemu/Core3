@@ -55,8 +55,8 @@ MindBlast1Command = {
 		StateEffect(
 			STUN_EFFECT,
 			{},
-			{ "jedi_state_defense" },
 			{},
+			{ "jedi_state_defense" },
 			55,
 			0,
 			10
@@ -65,8 +65,8 @@ MindBlast1Command = {
 		StateEffect(
 			BLIND_EFFECT,
 			{},
-			{ "jedi_state_defense" },
 			{},
+			{ "jedi_state_defense" },
 			55,
 			0,
 			10
@@ -75,8 +75,8 @@ MindBlast1Command = {
 		StateEffect(
 			DIZZY_EFFECT,
 			{},
-			{ "jedi_state_defense" },
 			{},
+			{ "jedi_state_defense" },
 			55,
 			0,
 			10

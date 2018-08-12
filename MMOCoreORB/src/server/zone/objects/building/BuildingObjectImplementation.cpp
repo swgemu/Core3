@@ -595,7 +595,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 	if (signObject != nullptr)
 		signObject->destroyObjectFromDatabase(true);
 
-	//Remove all child creature objects from database
+	//Remove all child creature objects from world
 	for (int i = 0; i < childCreatureObjects.size(); ++i) {
 		ManagedReference<CreatureObject*> child = childCreatureObjects.get(i);
 
@@ -610,7 +610,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 			ai->setRespawnTimer(0);
 		}
 
-		child->destroyObjectFromDatabase(true);
+		child->destroyObjectFromWorld(true);
 	}
 
 	//Loop through the cells and delete all objects from the database.
@@ -1488,7 +1488,7 @@ void BuildingObjectImplementation::destroyChildObjects() {
 		}
 
 		childCreatureObjects.drop(child);
-		child->destroyObjectFromDatabase(true);
+		child->destroyObjectFromWorld(true);
 	}
 }
 
