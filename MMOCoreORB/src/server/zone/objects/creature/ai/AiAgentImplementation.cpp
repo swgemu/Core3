@@ -159,6 +159,17 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		allowedWeapon = petDeed->getRanged();
 	}
 
+	if (getHueValue() == 0) {
+		int hueMax = npcTemplate->getHueMax();
+
+		if (hueMax > 0) {
+			int hueMin = npcTemplate->getHueMin();
+
+			int hueVal = hueMin + System::random(hueMax - hueMin);
+			setHue(hueVal);
+		}
+	}
+
 	Vector<String> weapons;
 
 	if (allowedWeapon) {

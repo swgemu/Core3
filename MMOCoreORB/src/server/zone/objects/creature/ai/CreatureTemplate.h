@@ -76,6 +76,9 @@ protected:
 	unsigned int creatureBitmask;
 	unsigned int diet;
 
+	int hueMin;
+	int hueMax;
+
 
 	Vector<String> templates;
 
@@ -309,6 +312,14 @@ public:
 
 	inline int getBaseHAMmax() {
 		return baseHAMmax;
+	}
+
+	inline int getHueMin() {
+		return hueMin;
+	}
+
+	inline int getHueMax() {
+		return hueMax;
 	}
 
 	inline int getAggroRadius() {

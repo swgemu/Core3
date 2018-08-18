@@ -25,7 +25,8 @@ spitting_rawl = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/fanned_rawl.iff"},
+	templates = {"object/mobile/fanned_rawl_hue.iff"},
+	hue = { 8, 15 },
 	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
 	scale = 1.4,
 	lootGroups = {},

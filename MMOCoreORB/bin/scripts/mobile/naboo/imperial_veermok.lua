@@ -26,6 +26,7 @@ imperial_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/veermok_hue.iff"},
+	hue = { 8, 15 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

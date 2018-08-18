@@ -26,6 +26,7 @@ gungan_kaadu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kaadu_hue.iff"},
+	hue = { 0, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

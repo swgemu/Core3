@@ -27,6 +27,7 @@ rogue_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/falumpaset_hue.iff"},
+	hue = { 8, 15 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

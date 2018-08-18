@@ -27,6 +27,7 @@ gualama = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gualama.iff"},
+	hue = { 8, 15 },
 	controlDeviceTemplate = "object/intangible/pet/gualama_hue.iff",
 	lootGroups = {},
 	weapons = {},

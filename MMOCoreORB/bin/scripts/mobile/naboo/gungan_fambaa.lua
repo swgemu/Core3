@@ -27,6 +27,7 @@ gungan_fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa_hue.iff"},
+	hue = { 16, 23 },
 	scale = 1.2,
 	lootGroups = {
 	 {

@@ -26,10 +26,11 @@ peko_peko_albatross = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/peko_peko_hue.iff"},
+	hue = { 16, 23 },
 	scale = 2.0,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "peko_albatross", chance = 10000000}
 			},
 			lootChance = 4100000

@@ -25,7 +25,8 @@ gnort = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gnort.iff"},
+	templates = {"object/mobile/gnort_hue.iff"},
+	hue = { 24, 31 },
 	controlDeviceTemplate = "object/intangible/pet/gnort_hue.iff",
 	lootGroups = {},
 	weapons = {},

@@ -25,8 +25,9 @@ flewt = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/flewt.iff"},
+	templates = {"object/mobile/flewt_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/flewt_hue.iff",
+	hue = { 0, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

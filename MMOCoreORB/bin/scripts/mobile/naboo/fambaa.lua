@@ -28,9 +28,10 @@ fambaa = Creature:new {
 
 	templates = {"object/mobile/fambaa.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fambaa_hue.iff",
+	hue = { 8, 15 },
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "fambaa_common", chance = 10000000}
 			},
 			lootChance = 1680000

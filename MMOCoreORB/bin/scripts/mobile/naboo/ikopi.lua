@@ -26,7 +26,8 @@ ikopi = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/ikopi.iff"},
+	templates = {"object/mobile/ikopi_hue.iff"},
+	hue = { 0, 7 },
 	controlDeviceTemplate = "object/intangible/pet/ikopi_hue.iff",
 	lootGroups = {},
 	weapons = {},

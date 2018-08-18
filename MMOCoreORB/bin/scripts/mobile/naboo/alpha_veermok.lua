@@ -27,6 +27,7 @@ alpha_veermok = Creature:new {
 
 	templates = {"object/mobile/alpha_veermok.iff"},
 	scale = 1.25,
+	hue = { 0, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

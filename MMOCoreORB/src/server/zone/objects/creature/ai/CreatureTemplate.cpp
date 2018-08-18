@@ -53,6 +53,8 @@ CreatureTemplate::CreatureTemplate() {
 	creatureBitmask = 0;
 	diet = 0;
 	optionsBitmask = 0;
+	hueMin = 0;
+	hueMax = 0;
 
 	templates.removeAll();
 
@@ -185,6 +187,14 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	}
 
 	attackList.pop();
+
+	LuaObject hues = templateData->getObjectField("hue");
+	if (hues.isValidTable()) {
+		hueMin = hues.getIntAt(1);
+		hueMax = hues.getIntAt(2);
+	}
+
+	hues.pop();
 
 	outfit = templateData->getStringField("outfit");
 

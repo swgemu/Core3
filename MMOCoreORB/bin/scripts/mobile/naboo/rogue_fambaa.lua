@@ -27,6 +27,7 @@ rogue_fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa_hue.iff"},
+	hue = { 24, 31 },
 	scale = 1.1,
 	lootGroups = {
 	 {

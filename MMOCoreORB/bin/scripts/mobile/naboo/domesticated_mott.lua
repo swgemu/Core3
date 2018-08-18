@@ -26,6 +26,7 @@ domesticated_mott = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mott_hue.iff"},
+	hue = { 24, 31 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

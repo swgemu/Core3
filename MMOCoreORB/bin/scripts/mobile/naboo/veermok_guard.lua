@@ -26,6 +26,7 @@ veermok_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/veermok_hue.iff"},
+	hue = { 24, 31 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

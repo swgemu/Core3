@@ -25,7 +25,8 @@ irate_flewt_matriarch = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/flewt.iff"},
+	templates = {"object/mobile/flewt_hue.iff"},
+	hue = { 24, 31 },
 	scale = 1.2,
 	lootGroups = {},
 	weapons = {},

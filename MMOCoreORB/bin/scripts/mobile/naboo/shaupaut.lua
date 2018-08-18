@@ -25,7 +25,8 @@ shaupaut = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/shaupaut.iff"},
+	templates = {"object/mobile/shaupaut_hue.iff"},
+	hue = { 8, 15 },
 	controlDeviceTemplate = "object/intangible/pet/shaupaut_hue.iff",
 	lootGroups = {},
 	weapons = {},

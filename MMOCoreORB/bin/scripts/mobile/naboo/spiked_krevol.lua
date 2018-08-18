@@ -26,6 +26,7 @@ spiked_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol_hue.iff"},
+	hue = { 16, 23 },
 	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,7 @@ gungan_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/falumpaset_hue.iff"},
+	hue = { 0, 7 },
 	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

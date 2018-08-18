@@ -26,6 +26,7 @@ narglatch_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/narglatch_hue.iff"},
+	hue = { 24, 31 },
 	scale = 0.85,
 	lootGroups = {},
 	weapons = {},

@@ -25,7 +25,8 @@ gungan_veermok = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/veermok.iff"},
+	templates = {"object/mobile/veermok_hue.iff"},
+	hue = { 0, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

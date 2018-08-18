@@ -25,7 +25,8 @@ swamp_stalker = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/male_swamp_tusk_cat.iff", "object/mobile/female_swamp_tusk_cat.iff"},
+	templates = {"object/mobile/tusk_cat_hue.iff"},
+	hue = { 8, 15 },
 	controlDeviceTemplate = "object/intangible/pet/tusk_cat_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

@@ -26,6 +26,7 @@ king_venom_nightspider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/king_venom_nightspider.iff"},
+	hue = { 0, 7 },
 	scale = 0.65,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

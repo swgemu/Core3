@@ -28,6 +28,7 @@ bachelor_gualama = Creature:new {
 	templates = {"object/mobile/gualama.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gualama_hue.iff",
 	scale = 0.95,
+	hue = { 0, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

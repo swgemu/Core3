@@ -26,6 +26,7 @@ spineflap_soldier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},
+	hue = { 8, 15 },
 	controlDeviceTemplate = "object/intangible/pet/capper_spineflap_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

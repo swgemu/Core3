@@ -25,7 +25,8 @@ narglatch = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/narglatch.iff"},
+	templates = {"object/mobile/narglatch_hue.iff"},
+	hue = { 0, 7 },
 	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
 	lootGroups = {},
 	weapons = {},

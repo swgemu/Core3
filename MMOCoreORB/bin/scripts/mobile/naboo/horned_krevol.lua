@@ -25,7 +25,8 @@ horned_krevol = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/horned_krevol.iff"},
+	templates = {"object/mobile/horned_krevol_hue.iff"},
+	hue = { 24, 31 },
 	scale = 0.85,
 	lootGroups = {},
 	weapons = {},

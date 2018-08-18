@@ -84,6 +84,11 @@
 #include "engine/core/TaskManager.h"
 #include "server/zone/objects/creature/credits/CreditObject.h"
 
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/appearance/PaletteTemplate.h"
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -122,6 +127,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	posture = 0;
 	factionRank = 0;
 	faction = 0;
+
+	hueValue = 0;
 
 	stateBitmask = 0;
 	terrainNegotiation = 0.0f;
@@ -3644,4 +3651,42 @@ void CreatureObjectImplementation::schedulePersonalEnemyFlagTasks() {
 			}, "PersonalEnemyFlagExpiration", timeDiff);
 		}
 	}
+}
+
+void CreatureObjectImplementation::setHue(int hueIndex) {
+	String appearanceFilename = getObjectTemplate()->getAppearanceFilename();
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+	for (int i = 0; i < variables.size(); ++i) {
+		String varName = variables.elementAt(i).getKey();
+		CustomizationVariable* customizationVariable = variables.elementAt(i).getValue().get();
+
+		if (customizationVariable == nullptr)
+			continue;
+
+		PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
+
+		if (palette == nullptr)
+			continue;
+
+		String paletteFileName = palette->getPaletteFileName();
+		PaletteTemplate* paletteTemplate = TemplateManager::instance()->getPaletteTemplate(paletteFileName);
+
+		if (paletteTemplate == nullptr)
+			continue;
+
+		int maxIndex = paletteTemplate->getColorCount();
+
+		int tempHue = hueIndex;
+
+		if (tempHue < 0)
+			tempHue = 0;
+		else if (tempHue >= maxIndex)
+			tempHue = maxIndex - 1;
+
+		setCustomizationVariable(varName, tempHue, true);
+	}
+
+	hueValue = hueIndex;
 }

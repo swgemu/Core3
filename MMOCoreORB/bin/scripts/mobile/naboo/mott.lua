@@ -25,7 +25,8 @@ mott = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mott.iff"},
+	templates = {"object/mobile/mott_hue.iff"},
+	hue = { 0, 7 },
 	controlDeviceTemplate = "object/intangible/pet/mott_hue.iff",
 	lootGroups = {},
 	weapons = {},

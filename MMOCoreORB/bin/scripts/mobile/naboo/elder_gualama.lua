@@ -27,6 +27,7 @@ elder_gualama = Creature:new {
 
 	templates = {"object/mobile/gualama_hue.iff"},
 	scale = 1.2,
+	hue = { 8, 15 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
