@@ -26,7 +26,7 @@ frightened_young_flewt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flewt_hue.iff"},
-	hue = { 16, 23 },
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 0.85,
 	lootGroups = {},
 	weapons = {},

@@ -27,7 +27,7 @@ capper_spineflap_drone = Creature:new {
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/capper_spineflap_hue.iff",
-	hue = { 24, 31 },
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.9,
 	lootGroups = {},
 	weapons = {},

@@ -26,7 +26,7 @@ mountain_ikopi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi_hue.iff"},
-	hue = { 8, 15 },
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

@@ -76,9 +76,7 @@ protected:
 	unsigned int creatureBitmask;
 	unsigned int diet;
 
-	int hueMin;
-	int hueMax;
-
+	Vector<int> hues;
 
 	Vector<String> templates;
 
@@ -314,12 +312,13 @@ public:
 		return baseHAMmax;
 	}
 
-	inline int getHueMin() {
-		return hueMin;
+	inline int getRandomHue() {
+		int randHue = System::random(hues.size() - 1);
+		return hues.get(randHue);
 	}
 
-	inline int getHueMax() {
-		return hueMax;
+	inline int getTotalHues() {
+		return hues.size();
 	}
 
 	inline int getAggroRadius() {

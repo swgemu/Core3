@@ -27,7 +27,7 @@ diseased_nuna = Creature:new {
 
 	templates = {"object/mobile/nuna_hue.iff"},
 	scale = 0.9,
-	hue = { 24, 31 },
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

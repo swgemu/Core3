@@ -26,7 +26,7 @@ rabid_shaupaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shaupaut_hue.iff"},
-	hue = { 24, 31 },
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {},

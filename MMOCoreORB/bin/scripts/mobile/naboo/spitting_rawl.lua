@@ -26,7 +26,7 @@ spitting_rawl = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fanned_rawl_hue.iff"},
-	hue = { 8, 15 },
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
 	scale = 1.4,
 	lootGroups = {},
