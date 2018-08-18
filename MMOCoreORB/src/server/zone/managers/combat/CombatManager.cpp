@@ -354,7 +354,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	damageMultiplier = 1.0f;
 
 	if (!data.isStateOnlyAttack()) {
-		hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
+		hitVal = getHitChance(attacker, defender, weapon, data, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
 		//Send Attack Combat Spam. For state-only attacks, this is sent in applyStates().
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
@@ -454,7 +454,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		damage = calculateDamage(attacker, weapon, defenderObject, data) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
-	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
+	int hitVal = getHitChance(attacker, defenderObject, weapon, data, damage, data.getAccuracyBonus());
 
 	uint8 hitLocation = 0;
 
@@ -1166,6 +1166,12 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		if (forceFeedback > 0 && (defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_1) || defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_2))) {
 			float feedbackDmg = rawDamage * (forceFeedback / 100.f);
+
+			int forceDefense = defender->getSkillMod("force_defense");
+
+			if (forceDefense > 0)
+				feedbackDmg *= 1.f / (1.f + ((float)forceDefense / 100.f));
+
 			float splitDmg = feedbackDmg / 3;
 
 			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true, true, true);
@@ -1501,6 +1507,14 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	else
 		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
+	// Force Defense skillmod damage reduction
+	if (data.isForceAttack()) {
+		int forceDefense = defender->getSkillMod("force_defense");
+
+		if (forceDefense > 0)
+			damage *= 1.f / (1.f + ((float)forceDefense / 100.f));
+	}
+
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature() && !data.isForceAttack())
 		damage *= 0.25;
@@ -1532,24 +1546,41 @@ float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* wea
 	return damage;
 }
 
-int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
+int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, const CreatureAttackData& data, int damage, int accuracyBonus) {
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
 	CreatureObject* creoAttacker = nullptr;
 
 	if (attacker->isCreatureObject()) {
 		creoAttacker = attacker->asCreatureObject();
+
+		if (creoAttacker != nullptr && data.isForceAttack()) {
+			int attackerAccuracy = creoAttacker->getSkillMod(data.getCommand()->getAccuracySkillMod());
+			int targetDefense = targetCreature->getSkillMod("force_defense");
+
+			float attackerRoll = (float)System::random(249) + 1.f;
+			float defenderRoll = (float)System::random(150) + 25.f;
+
+			float accTotal = hitChanceEquation(attackerAccuracy, attackerRoll, targetDefense, defenderRoll);
+
+			if (System::random(100) > accTotal)
+				return MISS;
+			else
+				return HIT;
+		}
 	}
 
 	//info("Calculating hit chance for " + attacker->getDisplayedName(), true);
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
+
 	weaponAccuracy = getWeaponRangeModifier(attacker->getWorldPosition().distanceTo(targetCreature->getWorldPosition()) - targetCreature->getTemplateRadius() - attacker->getTemplateRadius(), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
-	if (creoAttacker != nullptr) {
-		if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
-	}
+
+	if (creoAttacker != nullptr && weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)
+		weaponAccuracy += creoAttacker->getSkillMod("private_aim");
+
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
 	int attackerAccuracy = getAttackerAccuracyModifier(attacker, targetCreature, weapon);
@@ -1558,13 +1589,14 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	// need to also add in general attack accuracy (mostly gotten from posture and states)
 
 	int bonusAccuracy = 0;
+
 	if (creoAttacker != nullptr)
 		bonusAccuracy = getAttackerAccuracyBonus(creoAttacker, weapon);
 
 	// this is the scout/ranger creature hit bonus that only works against creatures (not NPCS)
-	if (targetCreature->isCreature() && creoAttacker != nullptr) {
+	if (targetCreature->isCreature() && creoAttacker != nullptr)
 		bonusAccuracy += creoAttacker->getSkillMod("creature_hit_bonus");
-	}
+
 	//info("Attacker total bonus is " + String::valueOf(bonusAccuracy), true);
 
 	int postureAccuracy = 0;
@@ -1578,6 +1610,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Defender defense is " + String::valueOf(targetDefense), true);
 
 	int postureDefense = calculateTargetPostureModifier(weapon, targetCreature);
+
 	//info("Defender posture defense is " + String::valueOf(postureDefense), true);
 	float attackerRoll = (float)System::random(249) + 1.f;
 	float defenderRoll = (float)System::random(150) + 25.f;
