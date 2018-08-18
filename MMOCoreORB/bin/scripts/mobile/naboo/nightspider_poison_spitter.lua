@@ -26,7 +26,7 @@ nightspider_poison_spitter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nightspider_poison_spitter.iff"},
-	hue = { 8, 15 },
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 0.6,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

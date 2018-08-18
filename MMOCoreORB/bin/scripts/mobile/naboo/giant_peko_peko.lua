@@ -26,7 +26,7 @@ giant_peko_peko = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_peko_peko.iff"},
-	hue = { 0, 7 },
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.5,
 	lootGroups = {},
 	weapons = {},

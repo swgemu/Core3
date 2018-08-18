@@ -26,7 +26,7 @@ knotted_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol_hue.iff"},
-	hue = { 24, 31 },
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
