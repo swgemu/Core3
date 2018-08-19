@@ -178,7 +178,7 @@ protected:
 	/**
 	 * @returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack, 4 - miss
 	 */
-	int getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus);
+	int getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, const CreatureAttackData& data, int damage, int accuracyBonus);
 
 	int calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon);
 	int calculateTargetPostureModifier(WeaponObject* weapon, CreatureObject* targetCreature);

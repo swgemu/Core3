@@ -28,6 +28,7 @@ carnivorous_nuna = Creature:new {
 	templates = {"object/mobile/nuna_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	scale = 1.2,
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -51,6 +51,8 @@ class CreatureObject extends TangibleObject {
     // deprectated
 	protected int bankCredits;
 	protected int cashCredits;
+	
+	protected int hueValue;
 
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
@@ -2190,4 +2192,12 @@ class CreatureObject extends TangibleObject {
 	
 	@preLocked
 	public native void schedulePersonalEnemyFlagTasks();
+	
+	@preLocked
+	public native void setHue(int hueIndex);
+	
+	@read
+	public int getHueValue() {
+		return hueValue;
+	}
 }

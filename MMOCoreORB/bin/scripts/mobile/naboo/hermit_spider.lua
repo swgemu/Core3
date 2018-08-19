@@ -25,7 +25,8 @@ hermit_spider = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/hermit_spider.iff"},
+	templates = {"object/mobile/hermit_spider_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/hermit_spider_hue.iff",
 	lootGroups = {},
 	weapons = {},

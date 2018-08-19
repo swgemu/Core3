@@ -26,6 +26,7 @@ mountain_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

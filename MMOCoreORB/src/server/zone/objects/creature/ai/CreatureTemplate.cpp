@@ -186,6 +186,15 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	attackList.pop();
 
+	LuaObject hueTable = templateData->getObjectField("hues");
+	if (hueTable.isValidTable()) {
+		for (int i = 1; i <= hueTable.getTableSize(); ++i) {
+			hues.add(hueTable.getIntAt(i));
+		}
+	}
+
+	hueTable.pop();
+
 	outfit = templateData->getStringField("outfit");
 
 	aiTemplate = templateData->getStringField("aiTemplate");

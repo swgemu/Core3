@@ -27,6 +27,7 @@ fanned_rawl = Creature:new {
 
 	templates = {"object/mobile/fanned_rawl.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

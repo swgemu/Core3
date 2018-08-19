@@ -28,6 +28,7 @@ falumpaset = Creature:new {
 
 	templates = {"object/mobile/falumpaset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
