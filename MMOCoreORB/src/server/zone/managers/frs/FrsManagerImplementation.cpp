@@ -560,6 +560,19 @@ void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
 				rankData->removeFromPlayerList(playerID);
 			}
 		}
+
+		ManagedReference<FrsRank*> rankData = getFrsRank(councilType, curRank + 1);
+
+		if (rankData != nullptr) {
+			Locker clocker(rankData, player);
+
+			if (rankData->isOnPetitionerList(playerID)) {
+				if (councilType == COUNCIL_DARK)
+					modifySuddenDeathFlags(player, rankData, true);
+
+				rankData->removeFromPetitionerList(playerID);
+			}
+		}
 	}
 
 	playerData->setRank(-1);
@@ -1807,7 +1820,8 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 			rankData->resetVotingData();
 			rankData->setVoteStatus(VOTING_CLOSED);
 		} else {
-			setupSuddenDeath(rankData, true);
+			if (rankData->getCouncilType() == COUNCIL_DARK)
+				setupSuddenDeath(rankData, true);
 
 			if (availSlots > 0) { // Add top X (where X = available slots) winners to winner list so they can accept next phase
 				Vector<uint64>* winnerList = getTopVotes(rankData, availSlots);
@@ -2133,7 +2147,7 @@ void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* playe
 
 	adjustFrsExperience(player, challengeCost * -1, false);
 
-	challengeData = new ChallengeVoteData(challengedID, ChallengeVoteData::VOTING_OPEN, challengedRank);
+	challengeData = new ChallengeVoteData(challengedID, ChallengeVoteData::VOTING_OPEN, challengedRank, player->getObjectID());
 	challengeData->updateChallengeVoteStart();
 
 	managerData->addLightChallenge(challengedID, challengeData);
@@ -2497,7 +2511,7 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 	}
 
 	adjustFrsExperience(player, demoteCost * -1);
-	managerData->updateChallengeTime(player->getObjectID());
+	managerData->updateDemoteTime(player->getObjectID());
 
 	ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
 	ManagedReference<CreatureObject*> strongRef = playerToDemote->asCreatureObject();
