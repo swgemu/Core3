@@ -2382,7 +2382,8 @@ void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneOb
 		return;
 	}
 
-	if (managerData->hasDemotedRecently(player->getObjectID(), requestDemotionDuration)) {
+	// Council leader has half the normal cooldown
+	if (managerData->hasDemotedRecently(player->getObjectID(), (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration)) {
 		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
 		uint64 timeLeft = requestDemotionDuration - miliDiff;
 
@@ -2477,7 +2478,8 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 		return;
 	}
 
-	if (managerData->hasDemotedRecently(player->getObjectID(), requestDemotionDuration)) {
+	// Council leader has half the normal cooldown
+	if (managerData->hasDemotedRecently(player->getObjectID(), (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration)) {
 		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
 		uint64 timeLeft = requestDemotionDuration - miliDiff;
 
