@@ -46,7 +46,7 @@ MakeLogin = 1
 MakeZone = 1
 MakePing = 1
 MakeStatus = 1
-MakeWeb = 0
+MakeWeb = 1
 
 ORB = ""
 ORBPort = 44419
@@ -70,10 +70,6 @@ MantisUser = "swgemu"
 MantisPass = "123456"
 MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
-MetricsHost = "localhost"
-MetricsPort = 8125
-MetricsPrefix = ""
-
 AutoReg = 1
 
 ProgressMonitors = "true"
@@ -84,7 +80,7 @@ PingAllowedConnections = 3000
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000
 ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
-
+ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
 --The following zones are enabled, and will be loaded with server start.
 --To save on RAM and CPU usage, you should only enable the zones you need.
@@ -95,20 +91,20 @@ ZonesEnabled = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
+	"corellia",
 	--"creature_test",
-	--"dantooine",
-	--"dathomir",
+	"dantooine",
+	"dathomir",
 	--"dungeon1",
-	--"endor",
+	"endor",
 	--"endor_asommers",
 	--"floratest",
 	--"godclient_test",
-	--"lok",
-	--"naboo",
+	"lok",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
-	--"rori",
+	"rori",
 	--"runtimerules",
 	--"simple",
 	--"space_09",
@@ -128,18 +124,18 @@ ZonesEnabled = {
 	--"space_tatooine_2",
 	--"space_yavin4",
 	--"taanab",
-	--"talus",
+	"talus",
 	"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	"yavin4"
 }
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/swgemu/workspace/tre"
 
 TreFiles = {
 	"default_patch.tre",
@@ -209,6 +205,7 @@ WebSessionTimeout = 600 -- Length that inactive web sessions expire
 PurgeDeletedCharacters = 10 --How often in minutes to purge deleted characters
 MaxNavMeshJobs = 6
 DumpObjFiles = 1
+<<<<<<< Updated upstream
 
 UnloadContainers = 1 --Whether to unload container contents from RAM after the container hasn't been accessed for a time
 
@@ -229,3 +226,5 @@ if (localFile ~= nil) then
   localFile()
 end
 
+=======
+>>>>>>> Stashed changes
