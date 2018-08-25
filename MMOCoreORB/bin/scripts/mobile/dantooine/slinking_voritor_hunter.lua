@@ -26,6 +26,7 @@ slinking_voritor_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/slinking_voritor_hunter.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.25,
 	lootGroups = {
 		{

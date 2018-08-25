@@ -26,6 +26,7 @@ shear_mite_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_hunter.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

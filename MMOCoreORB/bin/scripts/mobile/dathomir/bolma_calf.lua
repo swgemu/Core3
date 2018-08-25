@@ -27,6 +27,7 @@ bolma_calf = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma_calf.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 0.65,
 	lootGroups = {},
 	weapons = {},

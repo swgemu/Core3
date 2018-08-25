@@ -26,6 +26,7 @@ shear_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_queen.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

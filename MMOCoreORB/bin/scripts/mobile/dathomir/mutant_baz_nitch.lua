@@ -26,6 +26,7 @@ mutant_baz_nitch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mutant_baz_nitch.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
