@@ -25,7 +25,8 @@ craggy_bolma = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bolma.iff"},
+	templates = {"object/mobile/bolma_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	scale = 1.3,
 	lootGroups = {},

@@ -25,8 +25,9 @@ agrilat_rasp = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/flite_rasp_hue.iff"},
-	controlDeviceTemplate = "object/intangible/pet/horned_rasp_hue.iff",
+	templates = {"object/mobile/plumed_rasp_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/plumed_rasp_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {},

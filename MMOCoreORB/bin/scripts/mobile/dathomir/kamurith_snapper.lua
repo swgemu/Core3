@@ -26,6 +26,7 @@ kamurith_snapper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

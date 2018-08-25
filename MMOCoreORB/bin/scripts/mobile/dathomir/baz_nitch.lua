@@ -25,7 +25,8 @@ baz_nitch = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/baz_nitch.iff"},
+	templates = {"object/mobile/baz_nitch_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	lootGroups = {},
 	weapons = {},

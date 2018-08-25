@@ -317,6 +317,10 @@ public:
 		return hues.get(randHue);
 	}
 
+	inline int getHueCount() {
+		return hues.size();
+	}
+
 	inline int getTotalHues() {
 		return hues.size();
 	}
