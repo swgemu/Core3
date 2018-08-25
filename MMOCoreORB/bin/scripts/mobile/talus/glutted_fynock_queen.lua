@@ -26,6 +26,7 @@ glutted_fynock_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/glutted_fynock_queen.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.25,
 	lootGroups = {},
 	weapons = {},

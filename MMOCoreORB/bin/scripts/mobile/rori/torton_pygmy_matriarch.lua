@@ -26,6 +26,7 @@ torton_pygmy_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = .6,
 	lootGroups = {},
 	weapons = {},

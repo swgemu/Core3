@@ -26,6 +26,7 @@ pigmy_pugoriss = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/pigmy_pugoriss.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 0.8,
 	lootGroups = {},
 	weapons = {},

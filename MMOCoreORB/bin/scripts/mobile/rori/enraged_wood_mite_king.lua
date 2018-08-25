@@ -26,6 +26,7 @@ enraged_wood_mite_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/enraged_wood_mite_king.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
