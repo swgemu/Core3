@@ -25,7 +25,8 @@ overkreetle = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kreetle.iff"},
+	templates = {"object/mobile/tanc_mite_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 4,
 	lootGroups = {},
 	weapons = {},

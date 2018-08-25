@@ -27,6 +27,7 @@ female_tybis = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.95,
 	lootGroups = {},
 	weapons = {},

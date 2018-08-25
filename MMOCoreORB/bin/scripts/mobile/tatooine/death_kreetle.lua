@@ -25,7 +25,8 @@ death_kreetle = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kreetle.iff"},
+	templates = {"object/mobile/tanc_mite_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 2,
 	lootGroups = {},
 	weapons = {},
