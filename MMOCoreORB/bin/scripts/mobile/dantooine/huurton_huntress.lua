@@ -26,6 +26,7 @@ huurton_huntress = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/huurton_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

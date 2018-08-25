@@ -25,7 +25,8 @@ female_kwi = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kwi.iff"},
+	templates = {"object/mobile/kwi_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

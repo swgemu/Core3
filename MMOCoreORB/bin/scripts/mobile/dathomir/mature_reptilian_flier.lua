@@ -26,6 +26,7 @@ mature_reptilian_flier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/reptilian_flier_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
 	scale = 1.05,
 	lootGroups = {},

@@ -26,6 +26,7 @@ angry_baz_nitch_avenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/baz_nitch_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
