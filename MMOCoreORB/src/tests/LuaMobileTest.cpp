@@ -22,6 +22,11 @@
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 #include "templates/string/StringFile.h"
 
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/appearance/PaletteTemplate.h"
+
 class LuaMobileTest : public ::testing::Test {
 protected:
 	LootGroupMap* lootGroupMap;
@@ -362,6 +367,46 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify scale
 		float scale = creature->getScale();
 		EXPECT_TRUE( scale > 0 ) << "Scale is not a positive value on mobile: " << templateName;
+
+		// Verify mobile template has palette variables if hue is set
+		int hueCount = creature->getHueCount();
+
+		if (hueCount > 0) {
+			Vector<String> objTemps = creature->getTemplates();
+			EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << templateName << " has a hue set with no templates configured";
+
+			for (int j = 0; j < objTemps.size(); j++) {
+				bool hasPalette = false;
+				SharedObjectTemplate* templateData = templateManager->getTemplate(objTemps.get(j).hashCode());
+
+				if (templateData != NULL) {
+					String appearanceFilename = templateData->getAppearanceFilename();
+					VectorMap<String, Reference<CustomizationVariable*> > variables;
+					AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+					for (int i = 0; i < variables.size(); ++i) {
+						String varName = variables.elementAt(i).getKey();
+						CustomizationVariable* customizationVariable = variables.elementAt(i).getValue().get();
+
+						if (customizationVariable == nullptr)
+							continue;
+
+						PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
+
+						if (palette == nullptr)
+							continue;
+
+						String paletteFileName = palette->getPaletteFileName();
+						PaletteTemplate* paletteTemplate = TemplateManager::instance()->getPaletteTemplate(paletteFileName);
+
+						if (paletteTemplate != nullptr)
+							hasPalette = true;
+					}
+				}
+
+				EXPECT_TRUE( hasPalette ) << "Mobile " << templateName << " has " << hueCount << " hues set with a template that has no palette variables";
+			}
+		}
 
 		// Verify PACK mobs have a social group
 		uint32 creatureBitmask = creature->getCreatureBitmask();
