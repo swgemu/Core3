@@ -26,6 +26,7 @@ shimmering_lantern_bird = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/lantern_bird_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {},

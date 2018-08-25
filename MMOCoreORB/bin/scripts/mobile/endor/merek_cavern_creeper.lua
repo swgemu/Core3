@@ -26,6 +26,7 @@ merek_cavern_creeper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
 	scale = 0.95,
 	lootGroups = {},

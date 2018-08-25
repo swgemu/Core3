@@ -26,6 +26,7 @@ langlatch_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/langlatch_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
 	scale = 1.05,
 	lootGroups = {},

@@ -26,6 +26,7 @@ cowardly_gurreck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	scale = 0.85,
 	lootGroups = {},

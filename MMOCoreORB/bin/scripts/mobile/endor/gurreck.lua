@@ -25,7 +25,8 @@ gurreck = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gurreck.iff"},
+	templates = {"object/mobile/gurreck_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

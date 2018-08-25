@@ -26,6 +26,7 @@ giant_dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_dune_kimogila.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.3,
 	lootGroups = {
 	 {

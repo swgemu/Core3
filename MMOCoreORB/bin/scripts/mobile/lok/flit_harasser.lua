@@ -26,6 +26,7 @@ flit_harasser = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flit_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/flit_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
