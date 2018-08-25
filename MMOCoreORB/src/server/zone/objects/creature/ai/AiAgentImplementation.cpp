@@ -6,7 +6,7 @@
  */
 
 #include <engine/core/ManagedReference.h>
-#include <engine/util/u3d/CloseObjectsVector.h>
+#include <server/zone/CloseObjectsVector.h>
 #include <engine/util/u3d/Vector3.h>
 #include <system/lang/IllegalArgumentException.h>
 #include <system/lang/ref/Reference.h>
@@ -86,6 +86,8 @@
 #include "server/zone/managers/creature/SpawnObserver.h"
 #include "server/zone/managers/creature/DynamicSpawnObserver.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -155,6 +157,11 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		minDmg = petDeed->getMinDamage();
 		maxDmg = petDeed->getMaxDamage();
 		allowedWeapon = petDeed->getRanged();
+	}
+
+	if (getHueValue() == -1 && npcTemplate->getTotalHues() > 0) {
+		int randHue = npcTemplate->getRandomHue();
+		setHue(randHue);
 	}
 
 	Vector<String> weapons;
@@ -776,7 +783,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		return;
 
 	SortedVector<QuadTreeEntry*> closeObjects;
-	vec->safeCopyTo(closeObjects);
+	vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 	Behavior* current = behaviors.get(currentBehaviorID);
 
@@ -1623,7 +1630,6 @@ void AiAgentImplementation::activateRecovery() {
 void AiAgentImplementation::activatePostureRecovery() {
 	if ((isProne() || isKnockedDown() || isKneeling()) && checkPostureChangeDelay()) {
 		executeObjectControllerAction(0xA8A25C79); // stand
-
 	}
 }
 
@@ -1661,6 +1667,8 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 		updateZoneWithParent(cell, false, false);
 	else
 		updateZone(false, false);
+
+	updateCOV();
 }
 
 
@@ -2014,8 +2022,7 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	if (closeobjects != NULL) {
 		Vector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
 
-		closeobjects->safeCopyTo(closeObjects);
-
+		closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
 		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, NULL);
@@ -2088,7 +2095,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		SortedVector<QuadTreeEntry*> closeObjects;
 
 		if (closeobjects != NULL) {
-			closeobjects->safeCopyTo(closeObjects);
+			closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 		} else {
 #ifdef COV_DEBUG
 			zone->info("Null closeobjects vector in AiAgentImplementation::generatePatrol", true);
@@ -3093,7 +3100,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 				zone->getInRangeObjects(aiAgent->getPositionX(), aiAgent->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
 			} else {
 				closeAiAgents.removeAll(closeobjects->size(), 10);
-				closeobjects->safeCopyTo(closeAiAgents);
+				closeobjects->safeCopyReceiversTo(closeAiAgents, CloseObjectsVector::CREOTYPE); //only creos, type 2
 			}
 		} catch (Exception& e) {
 

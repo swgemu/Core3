@@ -20,6 +20,7 @@ protected:
 	float minDamage;
 	float maxDamage;
 	int damageType;
+	int forceCost;
 	float damageMultiplier;
 	float healthDamageMultiplier;
 	float actionDamageMultiplier;
@@ -32,6 +33,10 @@ protected:
 	float actionCostMultiplier;
 	float mindCostMultiplier;
 	float forceCostMultiplier;
+	float frsLightMinDamageModifier;
+	float frsLightMaxDamageModifier;
+	float frsDarkMinDamageModifier;
+	float frsDarkMaxDamageModifier;
 
     int range;
     int coneRange;
@@ -175,6 +180,26 @@ public:
 
 	bool isForceAttack() const {
 		return forceAttack;
+	}
+
+	int getForceCost() const {
+		return forceCost;
+	}
+
+	float getFrsLightMinDamageModifier() const {
+		return frsLightMinDamageModifier;
+	}
+
+	float getFrsLightMaxDamageModifier() const {
+		return frsLightMaxDamageModifier;
+	}
+
+	float getFrsDarkMinDamageModifier() const {
+		return frsDarkMinDamageModifier;
+	}
+
+	float getFrsDarkMaxDamageModifier() const {
+		return frsDarkMaxDamageModifier;
 	}
 
 	void setForceAttack(bool forceAttack) {

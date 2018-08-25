@@ -34,7 +34,7 @@ public:
 		try {
 			int delay = Integer::valueOf(args->get(0).toString());
 
-			if(delay > 3 && delay <= 60){
+			if(delay >= 3 && delay <= 60){
 
 				Locker dlock( module->getDroidObject(), player );
 				module->setEffect( effectName, delay, slotIndex );

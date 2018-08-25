@@ -26,6 +26,7 @@ crazed_durni = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/crazed_durni.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/durni_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

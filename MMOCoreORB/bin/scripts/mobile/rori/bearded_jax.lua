@@ -25,7 +25,8 @@ bearded_jax = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bearded_jax.iff"},
+	templates = {"object/mobile/bearded_jax_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
 	lootGroups = {},
 	weapons = {},

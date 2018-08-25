@@ -95,7 +95,7 @@ function HologrindJediManager:getNumberOfMasteredProfessions(pCreatureObject)
 		return 0
 	end
 
-	local professions = playerObject:getHologrindProfessions()
+	local professions = PlayerObject(pGhost):getHologrindProfessions()
 	local masteredNumberOfProfessions = 0
 	for i = 1, #professions, 1 do
 		if PlayerObject(pGhost):hasBadge(professions[i]) then

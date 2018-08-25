@@ -217,8 +217,15 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	if (stopped)
     		return;
 
+
     	Locker locker(area);
+
+	auto zone = area->getZone();
     	RecastNavMesh* navmesh = area->getNavMesh();
+
+	if (zone == nullptr) {
+		return;
+	}
 
     	if (initialBuild) {
     		navmesh->setName(name);
@@ -233,7 +240,9 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	navmesh->setDetourNavMesh(builder->getNavMesh());
     	navmesh->setupDetourNavMeshHeader();
     	area->_setUpdated(true);
-    	info("Done building and setting navmesh for area: " + name + " on planet: " + area->getZone()->getZoneName() + " at: " + area->getPosition().toString(), true);
+    	
+	
+	info("Done building and setting navmesh for area: " + name + " on planet: " + zone->getZoneName() + " at: " + area->getPosition().toString(), true);
     }, "setNavMeshLambda");
 
     Locker locker(&jobQueueMutex);

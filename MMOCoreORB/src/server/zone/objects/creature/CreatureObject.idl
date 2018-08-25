@@ -35,6 +35,11 @@ import system.lang.Long;
 import engine.service.proto.BasePacket;
 import system.thread.Mutex;
 import server.zone.objects.creature.credits.CreditObject;
+include engine.util.u3d.Vector3;
+include system.util.SortedVector;
+include engine.log.Logger;
+include server.zone.CloseObjectsVector;
+import system.util.SynchronizedVectorMap;
 
 @mock
 class CreatureObject extends TangibleObject {
@@ -46,6 +51,8 @@ class CreatureObject extends TangibleObject {
     // deprectated
 	protected int bankCredits;
 	protected int cashCredits;
+	
+	protected int hueValue;
 
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
@@ -165,6 +172,9 @@ class CreatureObject extends TangibleObject {
 	 */
 	@dereferenced
 	private VectorMap<string, unsigned long> screenPlayStates;
+	
+	@dereferenced
+	protected SynchronizedVectorMap<unsigned long, unsigned long> personalEnemyFlags;
 
 	protected transient byte healthWoundHeal;
 	protected transient byte actionWoundHeal;
@@ -194,6 +204,8 @@ class CreatureObject extends TangibleObject {
 
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
+	
+	public static final int CREOCOVTYPE = 2;
 
 	public static transient float DEFAULTRUNSPEED;
 
@@ -1116,6 +1128,7 @@ class CreatureObject extends TangibleObject {
 	 * @param msg BasePacket to send
 	 */
 	@dirty
+	@local
 	public native void sendMessage(BasePacket msg);
 
 	/**
@@ -2084,10 +2097,14 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public native boolean isPlayerCreature();
-	
+
 	@dirty
-	public int registerToCloseObjectsReceivers() {
-	    return isPlayerCreature();
+	public abstract int getReceiverFlags() {
+	    int type = CloseObjectsVector.CREOTYPE;
+	    if (isPlayerCreature())
+	        type = type | CloseObjectsVector.PLAYERTYPE;
+
+	    return type | super.getReceiverFlags();
 	}
 
 	@dirty
@@ -2154,5 +2171,33 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public abstract void reloadTemplate() {
+	}
+
+	public native void updateCOV();
+	
+	@preLocked
+	public native void addPersonalEnemyFlag(CreatureObject enemy, unsigned long duration);
+	
+	public unsigned long getPersonalEnemyFlagTime(unsigned long enemyID) {
+		return personalEnemyFlags.get(enemyID);
+	}
+	
+	@preLocked
+	public native void removePersonalEnemyFlag(CreatureObject enemy);
+	
+	@preLocked
+	public native void removePersonalEnemyFlag(unsigned long enemyID);
+	
+	public native boolean hasPersonalEnemyFlag(CreatureObject enemy);
+	
+	@preLocked
+	public native void schedulePersonalEnemyFlagTasks();
+	
+	@preLocked
+	public native void setHue(int hueIndex);
+	
+	@read
+	public int getHueValue() {
+		return hueValue;
 	}
 }

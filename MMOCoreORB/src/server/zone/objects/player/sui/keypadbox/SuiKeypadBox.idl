@@ -13,6 +13,7 @@ class SuiKeypadBox extends SuiBox {
 		super(player, windowType, SuiBox.KEYPAD);
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public boolean isKeypadBox() {

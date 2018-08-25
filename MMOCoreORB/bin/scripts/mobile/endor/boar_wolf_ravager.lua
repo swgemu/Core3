@@ -26,6 +26,7 @@ boar_wolf_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/boar_wolf_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/boar_wolf_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

@@ -398,7 +398,7 @@ function VillageGmSui.playerInfo(pPlayer, targetID)
 	sui.add("FS Branch Management", "branchManagement" .. targetID)
 
 	if (CreatureObject(pTarget):hasSkill("force_title_jedi_rank_03")) then
-		sui.add("Manage Player FRS", "frsManagement" .. targetID)
+		sui.add("Show Player FRS", "frsManagement" .. targetID)
 	end
 
 	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pTarget)) then
@@ -790,7 +790,7 @@ function VillageGmSui.frsManagement(pPlayer, targetID)
 	local councilRank = PlayerObject(pGhost):getFrsRank()
 
 	local sui = SuiListBox.new("VillageGmSui", "mainCallback")
-	sui.setTitle("FRS Management")
+	sui.setTitle("FRS Info")
 
 	local promptBuf = " \\#pcontrast1 " .. "Player:" .. " \\#pcontrast2 " .. SceneObject(pTarget):getCustomObjectName() .. " (" .. targetID .. ")\n"
 	promptBuf = promptBuf .. " \\#pcontrast1 " .. "Council:" .. " \\#pcontrast2 "
@@ -811,127 +811,7 @@ function VillageGmSui.frsManagement(pPlayer, targetID)
 
 	sui.setPrompt(promptBuf)
 
-	if (luaCouncil ~= councilType) then
-		sui.add("Fix Player Council Type", "fixCouncilType" .. targetID)
-	else
-		sui.add("Change Council Type", "changeCouncilType" .. targetID)
-	end
-
 	sui.sendTo(pPlayer)
-end
-
-function VillageGmSui.changeCouncilType(pPlayer, targetID)
-	local pTarget = getSceneObject(targetID)
-
-	if (pTarget == nil) then
-		return
-	end
-
-	local sui = SuiListBox.new("VillageGmSui", "changeCouncilTypeCallback")
-	sui.setTitle("Change Council Type")
-	sui.setPrompt("Choose " .. SceneObject(pTarget):getCustomObjectName() .. "'s new council type below. Note: Changing a player's council will set them back to rank 0.")
-
-	sui.add("Light Side", "lightSide" .. targetID)
-	sui.add("Dark Side", "darkSide" .. targetID)
-
-	sui.sendTo(pPlayer)
-end
-
-function VillageGmSui:changeCouncilTypeCallback(pPlayer, pSui, eventIndex, args)
-	local cancelPressed = (eventIndex == 1)
-
-	if (cancelPressed) then
-		return
-	end
-
-	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
-
-	if (pPageData == nil) then
-		return
-	end
-
-	local suiPageData = LuaSuiPageData(pPageData)
-	local menuOption = suiPageData:getStoredData(tostring(args))
-
-	local targetID = string.match(menuOption, '%d+')
-	local newType = string.gsub(menuOption, targetID, "")
-
-	local councilType = 0
-
-	if (newType == "lightSide") then
-		councilType = 1
-	elseif (newType == "darkSide") then
-		councilType = 2
-	end
-
-	if (councilType ~= JediTrials.COUNCIL_LIGHT and councilType ~= JediTrials.COUNCIL_DARK) then
-		printLuaError("Invalid council type " .. newType .. " sent to VillageGmSui:changeCouncilTypeCallback")
-		return
-	end
-
-	local pTarget = getSceneObject(targetID)
-
-	if (pTarget == nil) then
-		printLuaError("Unable to find player in VillageGmSui:changeCouncilTypeCallback using oid " .. targetID)
-		return
-	end
-
-	local pGhost = CreatureObject(pTarget):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
-	if (councilType == JediTrials.COUNCIL_LIGHT) then
-		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Light Side.")
-		CreatureObject(pTarget):setFaction(FACTIONREBEL)
-	else
-		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Dark Side.")
-		CreatureObject(pTarget):setFaction(FACTIONIMPERIAL)
-	end
-
-	PlayerObject(pGhost):setFrsRank(0)
-	PlayerObject(pGhost):setFrsCouncil(councilType)
-	JediTrials:setJediCouncil(pTarget, councilType)
-
-	VillageGmSui.frsManagement(pPlayer, targetID)
-end
-
-function VillageGmSui.fixCouncilType(pPlayer, targetID)
-	local pTarget = getSceneObject(targetID)
-
-	if (pTarget == nil) then
-		return
-	end
-
-	local pGhost = CreatureObject(pTarget):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
-	local luaCouncil = JediTrials:getJediCouncil(pTarget)
-	local frsCouncil = PlayerObject(pGhost):getFrsCouncil()
-
-	if (luaCouncil ~= JediTrials.COUNCIL_LIGHT and luaCouncil ~= JediTrials.COUNCIL_DARK and frsCouncil ~= JediTrials.COUNCIL_LIGHT and frsCouncil ~= JediTrials.COUNCIL_DARK) then
-		CreatureObject(pPlayer):sendSystemMessage("Unable to fix player council type. Player does not have a valid type stored from the knight trials.")
-		return
-	end
-
-	if (luaCouncil ~= JediTrials.COUNCIL_LIGHT and luaCouncil ~= JediTrials.COUNCIL_DARK) then
-		luaCouncil = frsCouncil
-		JediTrials:setJediCouncil(pTarget, frsCouncil)
-	else
-		PlayerObject(pGhost):setFrsCouncil(luaCouncil)
-	end
-
-	if (luaCouncil == JediTrials.COUNCIL_LIGHT) then
-		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Light Side.")
-	else
-		CreatureObject(pPlayer):sendSystemMessage("Council type has been set to Dark Side.")
-	end
-
-	VillageGmSui.frsManagement(pPlayer, targetID)
 end
 
 function VillageGmSui.branchManagement(pPlayer, targetID)

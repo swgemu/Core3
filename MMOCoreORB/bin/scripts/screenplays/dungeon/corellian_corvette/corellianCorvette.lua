@@ -54,9 +54,9 @@ function CorellianCorvette:initialize()
 				printLuaError("CorellianCorvette:initialize tried using a corvette id that was nil or not a building: " .. building.buildingIds[j])
 			else
 				local corvetteID = SceneObject(pCorvette):getObjectID()
-				writeData("corvetteActive:" .. corvetteID, 0)
+				deleteData("corvetteActive:" .. corvetteID)
 				self:ejectAllPlayers(pCorvette)
-				writeData("corvettePlayerCount:" .. corvetteID, 0)
+				deleteData("corvettePlayerCount:" .. corvetteID)
 				createObserver(ENTEREDBUILDING, "CorellianCorvette", "onEnterCorvette", pCorvette)
 				createObserver(EXITEDBUILDING, "CorellianCorvette", "onExitCorvette", pCorvette)
 				num = num + 1
@@ -153,7 +153,7 @@ function CorellianCorvette:sendAuthorizationSui(pPlayer, pLeader, pCorvette)
 	local corvetteFaction = self:getBuildingFaction(pCorvette)
 	local factionCRC = self:getFactionCRC(corvetteFaction)
 
-	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer))) then
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus())) then
 		return
 	end
 
@@ -876,6 +876,13 @@ function CorellianCorvette:transportPlayer(pPlayer)
 
 	if (pCorvette == nil) then
 		printLuaError("CorellianCorvette:transportPlayer nil corvette object using corvette id " .. corvetteID)
+		return
+	end
+
+	local corvetteFaction = self:getBuildingFaction(pCorvette)
+	local factionCRC = self:getFactionCRC(corvetteFaction)
+
+	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus())) then
 		return
 	end
 

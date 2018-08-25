@@ -26,6 +26,7 @@ spineflap_handmaiden = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/capper_spineflap_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

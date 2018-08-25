@@ -11,7 +11,7 @@ function padawan_old_musician_03_conv_handler:getInitialScreen(pPlayer, pNpc, pC
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local trialData = padawanTrialQuests[trialNumber]
 
-	if (trialData.trialName ~= "old_musician" or readData(playerID .. ":JediTrials:spokeToTarget02") == 1 or readData(playerID .. ":JediTrials:spokeToTarget01") ~= 1) then
+	if (trialData == nil or trialData.trialName ~= "old_musician" or readData(playerID .. ":JediTrials:spokeToTarget02") == 1 or readData(playerID .. ":JediTrials:spokeToTarget01") ~= 1) then
 		return convoTemplate:getScreen("not_on_quest")
 	end
 

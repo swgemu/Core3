@@ -27,6 +27,7 @@ bordok_foal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok_foal.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.75,
 	lootGroups = {},
 	weapons = {},

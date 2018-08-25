@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
-DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native -DCOMPILE_CORE3_TESTS
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
@@ -93,18 +93,18 @@ core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
-			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
-			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
-			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
-			  	terrain/manager/tests/TerrainManagerTest.cpp \
-			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
-			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
-			  	server/zone/tests/DeadlockTestBase.cpp \
-			  	terrain/tests/BasicTerrainTest.cpp \
-			  	server/zone/tests/ZoneTest.cpp \
-			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
+core3_TESTS = 	tests/CircularAreaShapeTest.cpp \
+			  	tests/BasicScreenPlayTest.cpp \
+			  	tests/LuaMobileTest.cpp \
+			  	tests/JediManagerTest.cpp \
+			  	tests/TerrainManagerTest.cpp \
+			  	tests/BehaviorTest.cpp \
+			  	tests/RectangularAreaShapeTest.cpp \
+			  	tests/RingAreaShapeTest.cpp \
+			  	tests/DeadlockTestBase.cpp \
+			  	tests/BasicTerrainTest.cpp \
+			  	tests/ZoneTest.cpp \
+			  	tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
@@ -222,6 +222,7 @@ core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SpiceBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/ForceWeakenDebuff.cpp \
 				autogen/server/zone/objects/creature/buffs/DurationBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/PerformanceBuff.cpp \
@@ -377,6 +378,9 @@ core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 
 core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
+		server/zone/QuadTree.cpp \
+		server/zone/QuadTreeEntryImplementation.cpp \
+		server/zone/CloseObjectsVector.cpp \
 		server/zone/managers/credit/CreditManager.cpp \
 		server/zone/objects/creature/credits/CreditObjectImplementation.cpp \
 		server/zone/objects/creature/variables/LuaSkill.cpp \
@@ -433,6 +437,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/DetectorZoneComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/MinefieldMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/EnclaveTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp \
@@ -705,6 +710,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PlayerVehicleBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
+		server/zone/objects/creature/buffs/ForceWeakenDebuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SingleUseBuffObserverImplementation.cpp \
 		server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp \
@@ -853,6 +859,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/resource/InterplanetarySurveyImplementation.cpp \
 		server/zone/managers/reaction/ReactionManagerImplementation.cpp \
+		server/zone/managers/frs/FrsManagerDataImplementation.cpp \
 		server/zone/managers/frs/FrsManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/PetManagerImplementation.cpp \

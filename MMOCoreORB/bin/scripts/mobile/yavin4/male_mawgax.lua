@@ -25,7 +25,8 @@ male_mawgax = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mawgax.iff"},
+	templates = {"object/mobile/mawgax_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {},

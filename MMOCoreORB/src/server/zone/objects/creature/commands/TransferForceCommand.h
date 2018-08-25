@@ -6,6 +6,7 @@
 #define TRANSFERFORCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 class TransferForceCommand : public CombatQueueCommand {
 public:
@@ -29,12 +30,12 @@ public:
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		// Fail if target is not a player...
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == nullptr || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (targetCreature == NULL || targetCreature->isDead() || targetCreature->isIncapacitated())
+		if (targetCreature == nullptr || targetCreature->isDead() || targetCreature->isIncapacitated())
 			return INVALIDTARGET;
 
 		Locker clocker(targetCreature, creature);
@@ -42,7 +43,7 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerObject*> playerGhost = creature->getPlayerObject();
 
-		if (targetGhost == NULL || playerGhost == NULL)
+		if (targetGhost == nullptr || playerGhost == nullptr)
 			return GENERALERROR;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
@@ -59,25 +60,32 @@ public:
 			return GENERALERROR;
 		}
 
-		if (targetCreature->isHealableBy(creature)) {
-			int forceSpace = targetGhost->getForcePowerMax() - targetGhost->getForcePower();
-			if (forceSpace <= 0) {
-				creature->sendSystemMessage("@jedi_spam:power_already_active"); //This target is already affected by that power.
-				return GENERALERROR;
-			}
+		FrsManager* frsManager = server->getZoneServer()->getFrsManager();
 
-			int forceTransfer = forceSpace >= maxTransfer ? maxTransfer : forceSpace;
-			targetGhost->setForcePower(targetGhost->getForcePower() + forceTransfer);
-			playerGhost->setForcePower(playerGhost->getForcePower() - forceTransfer);
-
-			uint32 animCRC = getAnimationString().hashCode();
-			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
-			CombatManager::instance()->broadcastCombatSpam(creature, targetCreature, NULL, forceTransfer, "cbt_spam", combatSpam, 0);
-
-			return SUCCESS;
+		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isPlayerFightingInArena(targetCreature->getObjectID())) {
+			creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
+			return GENERALERROR;
 		}
 
-		return GENERALERROR;
+		if (!targetCreature->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help"); // It would be unwise to help such a patient.
+			return GENERALERROR;
+		}
+
+		int forceSpace = targetGhost->getForcePowerMax() - targetGhost->getForcePower();
+		int forceTransfer = 0;
+
+		if (forceSpace > 0) {
+			forceTransfer = forceSpace >= maxTransfer ? maxTransfer : forceSpace;
+			targetGhost->setForcePower(targetGhost->getForcePower() + forceTransfer);
+			playerGhost->setForcePower(playerGhost->getForcePower() - forceTransfer);
+		}
+
+		uint32 animCRC = getAnimationString().hashCode();
+		creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
+		CombatManager::instance()->broadcastCombatSpam(creature, targetCreature, nullptr, forceTransfer, "cbt_spam", combatSpam, 0);
+
+		return SUCCESS;
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {

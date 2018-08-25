@@ -11,6 +11,7 @@ import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
 include templates.mobile.LairTemplate;
 include system.util.SynchronizedVector;
+include engine.log.Logger;
 
 class SpawnObserver extends Observer implements Logger {
 

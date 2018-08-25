@@ -63,7 +63,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
-		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
+		deleteData(playerID .. ":theater_manager:acceptedAudition")
 		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "audition_starts_in_30_dance") then
 		-- Started audition
@@ -72,7 +72,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
-		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
+		deleteData(playerID .. ":theater_manager:acceptedAudition")
 		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "go_entertain_ten") then
 		-- Accepted promo one
@@ -175,7 +175,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 	elseif (screenID == "second_audition_starts_in_30") then
 		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
-		writeData(playerID .. ":theater_manager:acceptedSecondAudition", 0)
+		deleteData(playerID .. ":theater_manager:acceptedSecondAudition")
 		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "init_hasnt_entertained_ten" or screenID == "init_hasnt_entertained_twenty" or screenID == "init_hasnt_entertained_thirty") then
 		TheaterManagerScreenPlay:recreatePromotionObservers(pPlayer)

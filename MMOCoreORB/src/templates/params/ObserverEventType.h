@@ -57,8 +57,11 @@ public:
 		WOUNDHEALINGRECEIVED,		// ManagedObject arg1 = player, long arg2 = wound heal amount
 		XPAWARDED,					// ManagedObject arg1 = player, long arg2 = xp amount
 		SPICEDOWNERACTIVATED,		// ManagedObject arg1 = player, long arg2 = 0
-		FORCEBUFFHIT,				// ManagedObject arg1 = player, long arg2 = damage amount absorbed.
-		SPATIALCHATRECEIVED,		// ManagedObject arg1 = ChatMessage containing string text, long arg2 = objectid of player speaking
+		FORCEARMOR,					// ManagedObject arg1 = player, long arg2 = damage amount absorbed.
+		FORCESHIELD,				// ManagedObject arg1 = player, long arg2 = damage amount absorbed.
+		FORCEFEEDBACK,				// ManagedObject arg1 = player, long arg2 = damage amount absorbed.
+		FORCEABSORB,				// ManagedObject arg1 = player, long arg2 = force cost of attack
+		SPATIALCHATSENT,			// ManagedObject arg1 = ChatMessage containing string text, long arg2 = 0
 		OBJECTINSERTED,				// ManagedObject arg1 = inserted object, long arg2 = 0
 		OBJECTDISAPPEARED,			// ManagedObject arg1 = disappeared object, long arg2 = 0
 		ITEMLOOTED,					// ManagedObject arg1 = looting player, long arg2 = 0

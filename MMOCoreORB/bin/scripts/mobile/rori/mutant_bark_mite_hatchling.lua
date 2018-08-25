@@ -26,6 +26,7 @@ mutant_bark_mite_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hatchling.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = .9,
 	lootGroups = {},
 	weapons = {},

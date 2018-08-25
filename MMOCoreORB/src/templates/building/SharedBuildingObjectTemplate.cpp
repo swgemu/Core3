@@ -58,6 +58,8 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 		ejectionPoint.setX(ejectPoint.getFloatAt(1));
 		ejectionPoint.setY(ejectPoint.getFloatAt(2));
 		ejectPoint.pop();
+	} else if (varName == "ejectDistance") {
+		ejectDistance = Lua::getFloatParameter(state);
 	} else if (varName == "factionBaseType") {
 		factionBaseType = Lua::getIntParameter(state);
 	} else if (varName == "shopSigns" ){

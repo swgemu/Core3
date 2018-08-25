@@ -14,6 +14,7 @@ import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
 import server.zone.objects.pathfinding.NavArea;
 import server.zone.objects.creature.credits.CreditObject;
+include server.zone.CloseObjectsVector;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
@@ -102,6 +103,11 @@ class StructureObject extends TangibleObject {
 	@preLocked
 	public void createChildObjects() {
 		super.createChildObjects();
+	}
+
+	@dirty
+	public abstract int getReceiverFlags() {
+		return CloseObjectsVector.STRUCTURETYPE | super.getReceiverFlags();
 	}
 
 	/**

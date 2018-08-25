@@ -159,7 +159,7 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	if (ghost && ghost->isJedi()) {
 
 		if (object->isRobeObject()) {
-			ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
+			ghost->recalculateForcePower();
 		} else if (object->isWeaponObject()) {
 			WeaponObject* weaponObject = cast<WeaponObject*>(object);
 			if (weaponObject->isJediWeapon()) {
@@ -220,7 +220,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	if (ghost && ghost->isJedi()) {
 		if (object->isRobeObject()) {
-			ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
+			ghost->recalculateForcePower();
 		}
 	}
 

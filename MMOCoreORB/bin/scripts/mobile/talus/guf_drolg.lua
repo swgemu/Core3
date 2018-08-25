@@ -25,7 +25,8 @@ guf_drolg = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/guf_drolg.iff"},
+	templates = {"object/mobile/guf_drolg_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/guf_drolg_hue.iff",
 	lootGroups = {},
 	weapons = {},

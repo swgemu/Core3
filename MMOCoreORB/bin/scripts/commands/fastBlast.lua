@@ -44,7 +44,7 @@
 FastBlastCommand = {
         name = "fastblast",
 
-	damageMultiplier = 4.15,
+	damageMultiplier = 6,
 	speedMultiplier = 3.05,
 	healthCostMultiplier = 1.5,
 	actionCostMultiplier = 1.5,

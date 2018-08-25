@@ -26,6 +26,7 @@ giant_fynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fynock_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 4,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

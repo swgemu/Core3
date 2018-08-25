@@ -1,0 +1,87 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedObject;
+import system.util.Vector;
+import system.lang.Time;
+
+class ChallengeVoteData extends ManagedObject {
+	public static final short VOTING_OPEN = 1;
+	public static final short VOTING_CLOSED = 2;
+
+	@dereferenced
+	protected Time challengeVoteStart;
+	
+	unsigned long playerID;
+	unsigned long challengerID;
+	int playerRank;
+	int status;
+	
+	@dereferenced
+	protected Vector<unsigned long> yesVotes;
+	
+	@dereferenced
+	protected Vector<unsigned long> noVotes;
+
+	public ChallengeVoteData(unsigned long player, int stat, int rank, int challenger) {
+		playerID = player;
+		status = stat;
+		playerRank = rank;
+		challengerID = challenger;
+		
+		challengeVoteStart.updateToCurrentTime();
+	}
+	
+	public void addYesVote(unsigned long playerID) {
+		yesVotes.add(playerID);
+	}
+	
+	public void addNoVote(unsigned long playerID) {
+		noVotes.add(playerID);
+	}
+	
+	@dirty
+	public int getTotalYesVotes() {
+		return yesVotes.size();
+	}
+	
+	@dirty
+	public int getTotalNoVotes() {
+		return noVotes.size();
+	}
+	
+	@dirty
+	public boolean hasVoted(unsigned long playerID) {
+		return yesVotes.contains(playerID) || noVotes.contains(playerID);
+	}
+
+	public void updateChallengeVoteStart() {
+		challengeVoteStart.updateToCurrentTime();
+	}
+	
+	public void setStatus(int newStatus) {
+		status = newStatus;
+	}
+	
+	@read
+	public int getStatus() {
+		return status;
+	}
+	
+	@read
+	public int getPlayerRank() {
+		return playerRank;
+	}
+	
+	@read
+	public unsigned long getChallengerID() {
+		return challengerID;
+	}
+	
+	public unsigned long getChallengeVoteStart() {
+		return challengeVoteStart.getMiliTime();
+	}
+}

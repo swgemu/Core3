@@ -42,11 +42,13 @@
 --true = 1, false = 0
 
 ForceResistStatesCommand = {
-        name = "forceresiststates",
-        forceCost = 250,
-        duration = 900,
-        --animationCRC = hashCode()
-        clientEffect = "clienteffect/pl_force_resist_states_self.cef"
+	name = "forceresiststates",
+	forceCost = 250,
+	duration = 900,
+	--animationCRC = hashCode()
+	clientEffect = "clienteffect/pl_force_resist_states_self.cef",
+	frsLightBuffModifier = 0.35,
+	frsDarkBuffModifier = 0.35,
 }
 
 AddCommand(ForceResistStatesCommand)

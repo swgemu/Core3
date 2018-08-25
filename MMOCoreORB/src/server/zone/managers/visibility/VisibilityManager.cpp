@@ -28,19 +28,19 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 	if (closeObjectsVector == NULL) {
 		zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
 	} else {
-		closeObjectsVector->safeCopyTo(closeObjects);
+		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 	}
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == NULL || !obj->isCreatureObject())
+		if (obj == NULL)
 			continue;
 
 		if (obj->getObjectID() == creature->getObjectID())
 			continue;
 
-		ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
+		CreatureObject* c = obj->asCreatureObject();
 
 		if (c == NULL || (!c->isNonPlayerCreatureObject() && !c->isPlayerCreature()))
 			continue;

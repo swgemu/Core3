@@ -7,6 +7,8 @@
 
 #include "QuadTreeReference.h"
 
+using namespace server::zone;
+
 bool QuadTreeReference::toBinaryStream(ObjectOutputStream* stream) {
 	//if ()
 	/*Vector<ManagedReference<QuadTreeEntry*> >* vector = NULL;

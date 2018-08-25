@@ -23,13 +23,13 @@ victor_visalis = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_visalis.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "victorVisalisConvoTemplate",
+	conversationTemplate = "",
 	attacks = {
 	}
 }

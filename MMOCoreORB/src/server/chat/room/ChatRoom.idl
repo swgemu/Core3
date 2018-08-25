@@ -254,9 +254,11 @@ class ChatRoom extends ManagedObject {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	@dirty
+	@local
 	public native void broadcastMessage(BaseMessage msg);
 
 	@dirty
+	@local
 	public native void broadcastMessageCheckIgnore(BaseMessage msg, final string senderName );
 
 	@dirty

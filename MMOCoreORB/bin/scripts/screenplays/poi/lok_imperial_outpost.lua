@@ -4,8 +4,8 @@ LokImperialOutpostScreenPlay = ScreenPlay:new {
 	lootContainers = {
 		2975429
 	},
-	
-	lootLevel = 32,	
+
+	lootLevel = 32,
 
 	lootGroups = {
 		{
@@ -20,9 +20,9 @@ LokImperialOutpostScreenPlay = ScreenPlay:new {
 				{group = "armor_attachments", chance = 500000}
 			},
 			lootChance = 8000000
-		}					
+		}
 	},
-	
+
 	lootContainerRespawn = 1200 -- 20 minutes
 
 }
@@ -32,7 +32,7 @@ registerScreenPlay("LokImperialOutpostScreenPlay", true)
 function LokImperialOutpostScreenPlay:start()
 	if (isZoneEnabled("lok")) then
 		self:spawnMobiles()
-		self:initializeLootContainers()		
+		self:initializeLootContainers()
 	end
 end
 
@@ -64,7 +64,7 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("lok", "dark_trooper", 300, -2035.2, 11.9, -3102.5, -90, 0)
 	spawnMobile("lok", "dark_trooper", 300, -2035.2, 11.9, -3107.5, -90, 0)
 	spawnMobile("lok", "dark_trooper", 300, -2035.2, 11.9, -3112.5, -90, 0)
-	
+
 	spawnMobile("lok", "stormtrooper_captain", 300, -2020.0, 11.9, -2997.0, 45, 0)
 	spawnMobile("lok", "stormtrooper", 300, -2018.0, 11.9, -2995.0, 45, 0)
 	spawnMobile("lok", "stormtrooper_medic", 300, -2016.0, 11.9, -2993.0, 45, 0)
@@ -216,7 +216,7 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("lok", "commoner", 300, -1869.5, 11.9, -3153.3, -55, 0)
 	spawnMobile("lok", "commoner", 300, -1871.8, 11.9, -3153.1, 0, 0)
 	spawnMobile("lok", "commoner", 300, -1873.8, 11.9, -3152.7, 45, 0)
-	
+
 	spawnMobile("lok", "at_st", 720, -1926.2, 11.8, -3142.9, 90, 0)
 
 	spawnMobile("lok", "stormtrooper_squad_leader", 300, -1885.3, 11.9, -3111.2, 90, 0)
@@ -335,10 +335,10 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("lok", "imperial_warrant_officer_i", 300, -18.1, 1.0, 21.1, 0, 8615422)
 
 	--spawnMobile("lok", "general_otto", 900, 18.7, 1.0, 21.1, -90, 8615421)
-		--later on in cu or nge general_otto became the assasination target for han solo's second mission in the rebel themepark. 
-		--when attacked he would despawn and several stormtroopers would spawn to 'deal with you'. 
-		--every other refrence to general otto indicates that at this time period he is the commanding officer of this base on lok. 
-		--he was stationed here by admiral motti to avoid the wrath of darth vader.
+	--later on in cu or nge general_otto became the assasination target for han solo's second mission in the rebel themepark.
+	--when attacked he would despawn and several stormtroopers would spawn to 'deal with you'.
+	--every other refrence to general otto indicates that at this time period he is the commanding officer of this base on lok.
+	--he was stationed here by admiral motti to avoid the wrath of darth vader.
 
 	spawnMobile("lok", "imperial_trooper", 300, 5.6, 1.0, -4.2, -90, 8615420)
 	spawnMobile("lok", "imperial_trooper", 300, 5.6, 1.0, -7.3, -90, 8615420)
@@ -348,35 +348,35 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	--General_Otto & imperial_brigadier_general
 
 	local pOtto = spawnMobile("lok", "general_otto", 900, 18.7, 1.0, 21.1, -90, 8615421)
-        createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyOttoDead", pOtto)
+	createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyOttoDead", pOtto)
 
 end
 
 function LokImperialOutpostScreenPlay:notifyOttoDead(pOtto, pKiller)
-     if (readData("lokimperialoutpost:imperial_brigadier_general") == 0) then
-          local pBrigadier = spawnMobile("lok", "imperial_brigadier_general", 0, 0.0, 2.0, 3.8, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, -3.1, 1.0, 0.3, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 0.3, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 1.0, 1.0, 0.3, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 3.1, 1.0, 0.3, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 8.1, 90, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 10.6, 90, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 2.0, 1.0, 8.1, 90, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 2.0, 1.0, 10.6, 90, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 10.0, 0, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 17.4, 1.0, 8.6, 35, 8615420)
-			spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 13.2, 0, 8615421)
-			spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 16.4, 35, 8615421)
-			spawnMobile("lok", "dark_trooper", 0, 17.4, 1.0, 14.7, -35, 8615421)
-          createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyBrigadierDead", pBrigadier)
-          writeData("lokimperialoutpost:imperial_brigadier_general",1)
-     end
-     
-     return 0
+	if (readData("lokimperialoutpost:imperial_brigadier_general") == 0) then
+		local pBrigadier = spawnMobile("lok", "imperial_brigadier_general", 0, 0.0, 2.0, 3.8, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, -3.1, 1.0, 0.3, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 0.3, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 1.0, 1.0, 0.3, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 3.1, 1.0, 0.3, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 8.1, 90, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 10.6, 90, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 2.0, 1.0, 8.1, 90, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 2.0, 1.0, 10.6, 90, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 10.0, 0, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 17.4, 1.0, 8.6, 35, 8615420)
+		spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 13.2, 0, 8615421)
+		spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 16.4, 35, 8615421)
+		spawnMobile("lok", "dark_trooper", 0, 17.4, 1.0, 14.7, -35, 8615421)
+		createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyBrigadierDead", pBrigadier)
+		writeData("lokimperialoutpost:imperial_brigadier_general",1)
+	end
+
+	return 0
 end
 
 function LokImperialOutpostScreenPlay:notifyBrigadierDead(pBrigadier, pKiller)
-     writeData("lokimperialoutpost:imperial_brigadier_general", 0)
-     
-     return 1
+	deleteData("lokimperialoutpost:imperial_brigadier_general")
+
+	return 1
 end

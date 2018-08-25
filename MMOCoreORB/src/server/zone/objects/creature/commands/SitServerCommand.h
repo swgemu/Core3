@@ -46,29 +46,33 @@ public:
 			if (z < -8192 || z > 8192)
 				z = 0;
 
-			//creature->sendSystemMessage(arguments.toString());
+			auto cellParent = creature->getParent().get().castTo<CellObject*>();
 
-			Vector3 position(x, z, y);
-			Vector3 playerPosition = creature->getPosition();
+			WorldCoordinates position(Vector3(x, z, y), cellParent);
+			WorldCoordinates current(creature);
 
-			/*if (position.squaredDistanceTo(playerPosition) > 9.f) {
-				creature->sendSystemMessage("@ui:chair_out_of_range");
+			float distance = position.getWorldPosition().squaredDistanceTo(current.getWorldPosition());
+			if (distance > 5) {
+				return TOOFAR;
+			}
+
+			if (cellParent != nullptr) {
+				Reference<Vector<float> *> collisionPoints = CollisionManager::getCellFloorCollision(x, z, cellParent);
+
+				if (collisionPoints == nullptr) {
+					return TOOFAR;
+				}
+			}
+
+			auto ghost = creature->getPlayerObject();
+
+			if (ghost != nullptr && ghost->isTeleporting()) {
 				return GENERALERROR;
-			}*/
-
-/*			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-			if (object != NULL && !object->isCreatureObject())*/
-			//creature->sendSystemMessage("Pos: " + String::valueOf(position.getX()) + " " + String::valueOf(position.getY()) + " " + String::valueOf(position.getZ()));
-			//creature->sendSystemMessage("PPos: " + String::valueOf(playerPosition.getX()) + " " + String::valueOf(playerPosition.getY()) + " " + String::valueOf(playerPosition.getZ()));
-
-			if (position.squaredDistanceTo(playerPosition) > 5.f)
-				return GENERALERROR;
+			}
 
 			creature->teleport(position.getX(), position.getZ(), position.getY(), creature->getParentID());
-			//creature->setDirection()
+
 			creature->setState(CreatureState::SITTINGONCHAIR);
-			//no longer needed: creature->setPosture(CreaturePosture::SITTING);
 		}
 
 		return SUCCESS;

@@ -31,6 +31,9 @@ public:
 		if (!ghost->hasAbility("recruitskilltrainer"))
 			return GENERALERROR;
 
+		if (creature->isIncapacitated() || creature->isDead())
+			return GENERALERROR;
+
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 		if (city == NULL)
 			return GENERALERROR;

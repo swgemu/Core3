@@ -186,8 +186,8 @@ function heraldScreenPlay:cleanUp(pPlayer, heraldNum)
 		SceneObject(pArea):destroyObjectFromWorld()
 	end
 
-	writeData(playerID .. ":heraldArea" .. heraldNum, 0)
-	writeData(playerID .. ":herald" .. heraldNum, 0)
+	deleteData(playerID .. ":heraldArea" .. heraldNum)
+	deleteData(playerID .. ":herald" .. heraldNum)
 end
 
 function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)

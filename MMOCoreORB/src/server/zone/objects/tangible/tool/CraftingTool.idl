@@ -8,10 +8,12 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
 import system.util.Vector;
 include templates.SharedObjectTemplate;
 import server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class CraftingTool extends ToolTangibleObject {
 

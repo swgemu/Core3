@@ -5,6 +5,7 @@
 package server.zone.objects.area.areashapes;
 
 import server.zone.objects.area.areashapes.AreaShape;
+include engine.util.u3d.Vector3;
 
 class CircularAreaShape extends AreaShape {
 

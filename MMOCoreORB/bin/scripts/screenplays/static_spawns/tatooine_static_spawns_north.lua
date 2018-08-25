@@ -130,7 +130,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_commoner", 300, -157.1, 155.8, 1930.2, -122, 0)
 
 	local pWarrior = spawnMobile("tatooine", "tusken_warrior", 720, -189.9, 157.6, 1930.7, -90, 0)
-        createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarriorDead", pWarrior)
+	createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarriorDead", pWarrior)
 
 	--Building Ruins, Balcony and Stairs (576,353)
 	spawnMobile("tatooine", "jawa", 300,579.1,160.5,355.3,179,0)
@@ -152,20 +152,20 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 end
 
 function TatooineStaticSpawnsNorthScreenPlay:notifyWarriorDead(pWarrior, pKiller)
-     if (readData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord") == 0) then
-          local pWarlord = spawnMobile("tatooine", "tusken_warlord", 0, -160.3, 156.1, 1923.4, 0, 0)
-			spawnMobile("tatooine", "tusken_sniper", 0, -183.2, 157.5, 1920.6, 15, 0)
-			spawnMobile("tatooine", "tusken_gore_chief", 0, -159.6, 146.6, 1941.2, -55, 0)
+	if (readData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord") == 0) then
+		local pWarlord = spawnMobile("tatooine", "tusken_warlord", 0, -160.3, 156.1, 1923.4, 0, 0)
+		spawnMobile("tatooine", "tusken_sniper", 0, -183.2, 157.5, 1920.6, 15, 0)
+		spawnMobile("tatooine", "tusken_gore_chief", 0, -159.6, 146.6, 1941.2, -55, 0)
 
-          createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarlordDead", pWarlord)
-          writeData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord",1)
-     end
+		createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarlordDead", pWarlord)
+		writeData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord",1)
+	end
 
-     return 0
+	return 0
 end
 
 function TatooineStaticSpawnsNorthScreenPlay:notifyWarlordDead(pWarlord, pKiller)
-     writeData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord", 0)
+	deleteData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord")
 
-     return 1
+	return 1
 end

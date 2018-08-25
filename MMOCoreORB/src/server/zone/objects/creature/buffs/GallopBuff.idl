@@ -7,6 +7,7 @@ package server.zone.objects.creature.buffs;
 import server.zone.objects.creature.buffs.PlayerVehicleBuff;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.buffs.BuffType;
+import server.zone.objects.scene.SceneObject;
 
 class GallopBuff extends PlayerVehicleBuff {
 	public GallopBuff(CreatureObject creo, unsigned int buffcrc, float duration) {

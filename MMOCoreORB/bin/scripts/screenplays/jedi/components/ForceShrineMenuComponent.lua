@@ -32,6 +32,10 @@ function ForceShrineMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selec
 end
 
 function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
+	if (tonumber(readScreenPlayData(pPlayer, "KnightTrials", "completedTrials")) == 1 and not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
+		KnightTrials:resetCompletedTrialsToStart(pPlayer)
+	end
+
 	if (not CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02") and CreatureObject(pPlayer):hasScreenPlayState(32, "VillageJediProgression")) then
 		local currentTrial = JediTrials:getCurrentTrial(pPlayer)
 
@@ -61,7 +65,12 @@ function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
 		local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 		if (currentTrial == 0 and trialsCompleted == 0) then
-			KnightTrials:startNextKnightTrial(pPlayer)
+			local sui = SuiMessageBox.new("KnightTrials", "startNextKnightTrial")
+			sui.setTitle("@jedi_trials:knight_trials_title")
+			sui.setPrompt("@jedi_trials:knight_trials_start_query")
+			sui.setOkButtonText("@jedi_trials:button_yes")
+			sui.setCancelButtonText("@jedi_trials:button_no")
+			sui.sendTo(pPlayer)
 		else
 			KnightTrials:showCurrentTrial(pPlayer)
 		end

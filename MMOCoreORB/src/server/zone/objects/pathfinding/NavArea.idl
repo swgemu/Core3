@@ -11,6 +11,7 @@ import engine.util.u3d.Vector3;
 import system.thread.ReadWriteLock;
 include pathfinding.RecastNavMesh;
 include system.util.HashSet;
+import server.zone.Zone;
 
 class NavArea extends ActiveArea {
 

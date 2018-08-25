@@ -36,9 +36,9 @@ doctor_knag = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = brawlermid
+	attacks = merge(brawlermaster,marksmanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(doctor_knag, "doctor_knag")

@@ -7,8 +7,11 @@ package server.zone.objects.intangible;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
 import server.zone.objects.creature.CreatureObject;
-include engine.util.u3d.CloseObjectsVector;
-include engine.util.u3d.QuadTreeEntry;
+import server.zone.objects.scene.SceneObject;
+include server.zone.CloseObjectsVector;
+import server.zone.QuadTreeEntry;
+include system.thread.atomic.AtomicInteger;
+include engine.log.Logger;
 
 class TheaterObject extends IntangibleObject {
 	@dereferenced

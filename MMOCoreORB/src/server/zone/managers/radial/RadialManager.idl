@@ -18,6 +18,8 @@ class RadialManager extends ManagedObject implements Logger {
 	public native RadialManager(ZoneServer server);
 	
 	public native void handleObjectMenuSelect(CreatureObject player, byte selectID, unsigned long objectID);
+	
+	@local
 	public native void handleObjectMenuRequest(CreatureObject player, ObjectMenuResponse defaultMenuResponse, unsigned long objectID);
 	
 }

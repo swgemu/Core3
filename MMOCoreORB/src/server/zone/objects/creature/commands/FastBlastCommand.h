@@ -16,15 +16,17 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+			if (!checkStateMask(creature))
+				return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+			if (!checkInvalidLocomotions(creature))
+				return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
-	}
+			UnicodeString args = "healthDamageMultiplier=0.33f;actionDamageMultiplier=0.33f;mindDamageMultiplier=0.33f;";
 
-};
+			return doCombatAction(creature, target, args);
+		}
+
+	};
 
 #endif //FASTBLASTCOMMAND_H_

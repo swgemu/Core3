@@ -27,6 +27,7 @@ verne_bull = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/verne_bull.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/verne_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

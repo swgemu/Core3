@@ -28,7 +28,7 @@ crackdown_stormtrooper = Creature:new {
 	scale = 1.05,
 
 	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff",
-				"object/mobile/dressed_stormtrooper_m.iff"
+		"object/mobile/dressed_stormtrooper_m.iff"
 	},
 	lootGroups = {
 		{
@@ -37,18 +37,18 @@ crackdown_stormtrooper = Creature:new {
 				{group = "junk", chance = 7550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper, "crackdown_stormtrooper")

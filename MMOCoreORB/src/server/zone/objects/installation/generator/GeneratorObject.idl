@@ -2,6 +2,9 @@ package server.zone.objects.installation;
 
 import server.zone.objects.installation.InstallationObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+include engine.log.Logger;
+
 
 class GeneratorObject extends InstallationObject {
 	public GeneratorObject() {		

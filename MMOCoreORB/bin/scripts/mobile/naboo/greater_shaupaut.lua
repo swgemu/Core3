@@ -27,6 +27,7 @@ greater_shaupaut = Creature:new {
 
 	templates = {"object/mobile/greater_shaupaut.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shaupaut_hue.iff",
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.4,
 	lootGroups = {},
 	weapons = {},

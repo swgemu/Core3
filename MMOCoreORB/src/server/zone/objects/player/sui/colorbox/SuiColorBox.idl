@@ -16,6 +16,7 @@ class SuiColorBox extends SuiBox {
 		super(player, windowType, SuiBox.COLORPICKER);
 	}
 
+	@local
 	public native BaseMessage generateMessage();
 
 	public string getColorPalette() {

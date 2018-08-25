@@ -27,6 +27,7 @@ cu_pa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/cu_pa_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/cu_pa_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

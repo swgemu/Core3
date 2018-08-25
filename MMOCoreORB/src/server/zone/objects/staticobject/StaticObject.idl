@@ -6,6 +6,7 @@ package server.zone.objects.staticobject;
 
 import server.zone.objects.scene.SceneObject;
 include templates.SharedObjectTemplate;
+import server.zone.CloseObjectsVector;
 
 class StaticObject extends SceneObject {
 	public StaticObject() {
@@ -13,7 +14,7 @@ class StaticObject extends SceneObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

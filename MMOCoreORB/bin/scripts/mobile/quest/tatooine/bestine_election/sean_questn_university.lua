@@ -23,13 +23,13 @@ sean_questn_university = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seanQuestnUniversityConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

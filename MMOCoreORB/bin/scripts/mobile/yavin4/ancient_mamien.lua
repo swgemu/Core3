@@ -26,6 +26,7 @@ ancient_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien_ancient.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.15,
 	lootGroups = {},
 	weapons = {},

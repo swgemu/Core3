@@ -27,6 +27,7 @@ fierce_huurton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

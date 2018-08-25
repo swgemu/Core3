@@ -19,6 +19,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 
@@ -144,7 +145,7 @@ LuaAiAgent::LuaAiAgent(lua_State *L) : LuaCreatureObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<AiAgent*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != NULL);
+	assert(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<AiAgent*>(lua_touserdata(L, 1));
 #endif
@@ -162,7 +163,7 @@ int LuaAiAgent::_setObject(lua_State* L) {
 	if (realObject != obj)
 		realObject = obj;
 
-	assert(!_getRealSceneObject() || realObject != NULL);
+	assert(!_getRealSceneObject() || realObject != nullptr);
 #else
 	auto obj = static_cast<AiAgent*>(lua_touserdata(L, -1));
 
@@ -209,7 +210,7 @@ int LuaAiAgent::setStalkObject(lua_State* L) {
 int LuaAiAgent::getFollowObject(lua_State* L) {
 	SceneObject* followObject = realObject->getFollowObject().get();
 
-	if (followObject == NULL)
+	if (followObject == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, followObject);
@@ -229,13 +230,13 @@ int LuaAiAgent::restoreFollowObject(lua_State* L) {
 
 int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
 	SceneObject* target = realObject->getFollowObject().get();
-	if (target == NULL || !target->isCreatureObject()) {
+	if (target == nullptr || !target->isCreatureObject()) {
 		lua_pushnil(L);
 		return 1;
 	}
 
 	CreatureObject* targetCreo = cast<CreatureObject*>(target);
-	if (targetCreo == NULL) {
+	if (targetCreo == nullptr) {
 		lua_pushnil(L);
 		return 1;
 	}
@@ -255,11 +256,11 @@ int LuaAiAgent::getFollowState(lua_State* L) {
 
 int LuaAiAgent::setNextPosition(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	if (zoneServer == NULL)
+	if (zoneServer == nullptr)
 		return 0;
 
 	uint64 cellID = lua_tointeger(L, -1);
-	CellObject* cell = NULL;
+	CellObject* cell = nullptr;
 
 	if (cellID != 0) {
 		cell = zoneServer->getObject(cellID).castTo<CellObject*>();
@@ -389,7 +390,7 @@ int LuaAiAgent::getTargetFromMap(lua_State* L) {
 
 	SceneObject* retVal = realObject->getTargetFromMap();
 
-	if (retVal == NULL)
+	if (retVal == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, retVal);
@@ -402,7 +403,7 @@ int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
 
 	SceneObject* retVal = realObject->getTargetFromDefenders();
 
-	if (retVal == NULL)
+	if (retVal == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, retVal);
@@ -415,7 +416,7 @@ int LuaAiAgent::getTargetFromTargetsDefenders(lua_State* L) {
 
 	SceneObject* retVal = realObject->getTargetFromTargetsDefenders();
 
-	if (retVal == NULL)
+	if (retVal == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, retVal);
@@ -444,7 +445,7 @@ int LuaAiAgent::validateFollow(lua_State* L) {
 int LuaAiAgent::followHasState(lua_State* L) {
 	SceneObject* follow = realObject->getFollowObject().get();
 
-	if (follow == NULL || !follow->isCreatureObject()) {
+	if (follow == nullptr || !follow->isCreatureObject()) {
 		lua_pushboolean(L, false);
 		return 1;
 	}
@@ -533,7 +534,7 @@ int LuaAiAgent::runAway(lua_State* L) {
 	float range = lua_tonumber(L, -1);
 	Reference<AiAgent*> agentObject = realObject;
 
-	if (target != NULL) {
+	if (target != nullptr) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(agentObject);
 
@@ -705,7 +706,7 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 
 	if (realObject->isRetreating())
 		retVal = false;
-	else if (target != NULL)
+	else if (target != nullptr)
 		retVal = !homeLocation->isInRange(target, range);
 	else
 		retVal = !homeLocation->isInRange(realObject, range);
@@ -792,7 +793,7 @@ int LuaAiAgent::info(lua_State* L) {
 
 int LuaAiAgent::spatialChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	if (zoneServer == NULL)
+	if (zoneServer == nullptr)
 		return 0;
 
 	ChatManager* chatManager = zoneServer->getChatManager();
@@ -800,13 +801,13 @@ int LuaAiAgent::spatialChat(lua_State* L) {
 	if (lua_islightuserdata(L, -1)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
-		if (realObject != NULL && message != NULL) {
+		if (realObject != nullptr && message != nullptr) {
 			chatManager->broadcastChatMessage(realObject, *message, 0, 0, realObject->getMoodID());
 		}
 	} else {
 		String message = lua_tostring(L, -1);
 
-		if (realObject != NULL) {
+		if (realObject != nullptr) {
 			chatManager->broadcastChatMessage(realObject, message, 0, 0, realObject->getMoodID());
 		}
 	}
@@ -836,15 +837,15 @@ int LuaAiAgent::addDefender(lua_State* L) {
 
 int LuaAiAgent::assist(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
-	if (obj == NULL || !obj->isAiAgent())
+	if (obj == nullptr || !obj->isAiAgent())
 		return 0;
 
 	AiAgent* agent = cast<AiAgent*>(obj);
-	if (agent == NULL)
+	if (agent == nullptr)
 		return 0;
 
 	SceneObject* target = agent->getFollowObject().get();
-	if (target == NULL)
+	if (target == nullptr)
 		return 0;
 
 	Locker locker(realObject);
@@ -887,7 +888,7 @@ int LuaAiAgent::getSocialGroup(lua_State* L) {
 int LuaAiAgent::getLastCommand(lua_State* L) {
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (controlDevice == NULL)
+	if (controlDevice == nullptr)
 		lua_pushinteger(L, 0);
 	else
 		lua_pushinteger(L, controlDevice->getLastCommand());
@@ -897,12 +898,12 @@ int LuaAiAgent::getLastCommand(lua_State* L) {
 
 int LuaAiAgent::getLastCommandTarget(lua_State* L) {
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
-	if (controlDevice == NULL)
+	if (controlDevice == nullptr)
 		lua_pushnil(L);
 
 	SceneObject* target = controlDevice->getLastCommandTarget().get();
 
-	if (target == NULL)
+	if (target == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, target);
@@ -914,7 +915,7 @@ int LuaAiAgent::setLastCommandTarget(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
-	if (controlDevice == NULL)
+	if (controlDevice == nullptr)
 		return 0;
 
   	Locker locker(controlDevice);
@@ -928,7 +929,7 @@ int LuaAiAgent::setAlertDuration(lua_State* L) {
 	int duration = lua_tointeger(L, -1);
 
 	Time* alert = realObject->getAlertedTime();
-	if (alert != NULL) {
+	if (alert != nullptr) {
 		alert->updateToCurrentTime();
 		alert->addMiliTime(duration);
 	}
@@ -939,7 +940,7 @@ int LuaAiAgent::setAlertDuration(lua_State* L) {
 int LuaAiAgent::alertedTimeIsPast(lua_State* L) {
 	Time* alert = realObject->getAlertedTime();
 
-	if (alert != NULL)
+	if (alert != nullptr)
 		lua_pushboolean(L, alert->isPast());
 	else
 		lua_pushboolean(L, true);
@@ -1030,7 +1031,7 @@ int LuaAiAgent::setNoAiAggro(lua_State* L) {
 int LuaAiAgent::doDespawn(lua_State* L) {
 	Zone* zone = realObject->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 0;
 
 	Locker locker(realObject);

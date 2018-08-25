@@ -105,7 +105,8 @@ void PlantObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 	else if (temp < 0)
 		temp = 0;
 
-	alm->insertAttribute("plant_health_n", "@plant_grow:health_" + String::valueOf(temp / 10));
+	int tempHealth = ceil(temp / 10.f);
+	alm->insertAttribute("plant_health_n", "@plant_grow:health_" + String::valueOf(tempHealth));
 
 	if (fruitCount > 0)
 		alm->insertAttribute("plant_fruit", fruitCount);
@@ -279,6 +280,9 @@ int PlantObjectImplementation::getCriticalAttribute(int index) {
 }
 
 void PlantObjectImplementation::startPulse() {
+	if (plantSize == 0)
+		return;
+
 	Time currentTime;
 	int timeSinceLast = currentTime.getMiliTime() - lastPulse.getMiliTime();
 

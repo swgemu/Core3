@@ -25,7 +25,8 @@ bolma_prime = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/alpha_bolma.iff"},
+	templates = {"object/mobile/bolma_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

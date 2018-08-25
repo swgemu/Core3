@@ -7,8 +7,11 @@ package server.zone.objects.tangible;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
 import server.zone.objects.creature.CreatureObject;
-include engine.util.u3d.CloseObjectsVector;
-include engine.util.u3d.QuadTreeEntry;
+include server.zone.CloseObjectsVector;
+include system.thread.atomic.AtomicInteger;
+include engine.log.Logger;
+import server.zone.objects.scene.SceneObject;
+import server.zone.QuadTreeEntry;
 
 class LairObject extends TangibleObject {
 	@dereferenced

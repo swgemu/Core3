@@ -34,6 +34,8 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "spawnChildSceneObject", &LuaBuildingObject::spawnChildSceneObject },
 		{ "destroyChildObjects", &LuaBuildingObject::destroyChildObjects },
 		{ "initializeStaticGCWBase", &LuaBuildingObject::initializeStaticGCWBase },
+		{ "isPrivateStructure", &LuaBuildingObject::isPrivateStructure },
+		{ "getCellName", &LuaBuildingObject::getCellName },
 		{ 0, 0 }
 };
 
@@ -182,4 +184,20 @@ int LuaBuildingObject::initializeStaticGCWBase(lua_State* L) {
 	gcwMan->registerGCWBase(realObject, false);
 
 	return 0;
+}
+
+int LuaBuildingObject::isPrivateStructure(lua_State* L) {
+	bool ret = realObject->isPrivateStructure();
+
+	lua_pushboolean(L, ret);
+
+	return 1;
+}
+
+int LuaBuildingObject::getCellName(lua_State* L) {
+	uint64 cellNum = lua_tointeger(L, -1);
+
+	String text = realObject->getCellName(cellNum);
+	lua_pushstring(L, text.toCharArray());
+	return 1;
 }

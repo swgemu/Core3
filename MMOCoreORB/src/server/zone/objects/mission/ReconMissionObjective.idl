@@ -8,6 +8,9 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.area.MissionReconActiveArea;
 
+include engine.util.u3d.Vector3;
+include engine.log.Logger;
+
 class ReconMissionObjective extends MissionObjective {
 	protected MissionReconActiveArea locationActiveArea;
 

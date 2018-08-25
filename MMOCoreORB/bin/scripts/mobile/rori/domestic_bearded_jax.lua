@@ -26,6 +26,7 @@ domestic_bearded_jax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bearded_jax_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

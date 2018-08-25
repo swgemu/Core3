@@ -24,17 +24,6 @@ public:
 		if (terminal == NULL || gcwManager == NULL || creature == NULL)
 			return;
 
-		if (creature->isDead() || creature->isIncapacitated()) {
-			creature->sendSystemMessage("You cannot repair the terminal in your current state. Aborting repairs...");
-			return;
-		} else if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot slice the terminal while you are in combat!");
-			return;
-		} else if (creature->getParentID() != terminal->getParentID()) {
-			creature->sendSystemMessage("You cannot repair the terminal from that distance. Aborting repairs...");
-			return;
-		}
-
 		ManagedReference<BuildingObject*> building = terminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
 		if (building == NULL)
@@ -49,6 +38,20 @@ public:
 
 		if (baseData == NULL)
 			return;
+
+		if (creature->isDead() || creature->isIncapacitated()) {
+			creature->sendSystemMessage("You cannot repair the terminal in your current state. Aborting repairs...");
+			baseData->setTerminalBeingRepaired(false);
+			return;
+		} else if (creature->isInCombat()) {
+			creature->sendSystemMessage("You cannot slice the terminal while you are in combat!");
+			baseData->setTerminalBeingRepaired(false);
+			return;
+		} else if (creature->getParentID() != terminal->getParentID()) {
+			creature->sendSystemMessage("You cannot repair the terminal from that distance. Aborting repairs...");
+			baseData->setTerminalBeingRepaired(false);
+			return;
+		}
 
 		int maxDecrease = 1;
 

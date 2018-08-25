@@ -277,5 +277,59 @@ schematic_purchased = ConvoScreen:new {
 }
 museumCuratorConvoTemplate:addScreen(schematic_purchased);
 
+everything_prepared = ConvoScreen:new {
+	id = "everything_prepared",
+	leftDialog = "@conversation/lilas_dinhint:s_7882a978", -- Ah, of course. I remember you now. I have everything prepared and loaded onto this datapad that you can show to Mrs. Aryon.
+	stopConversation = "false",
+	options = {
+		--{"@conversation/lilas_dinhint:s_b67247f1", ""}, -- Perfect, thank you!
+	}
+}
+museumCuratorConvoTemplate:addScreen(everything_prepared);
+
+give_sean_testimony = ConvoScreen:new {
+	id = "give_sean_testimony",
+	leftDialog = "@conversation/lilas_dinhint:s_1042bed3", -- Here you are. I'm glad to help Mr. Trenwell and in this small way repay his generosity to the museum.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(give_sean_testimony);
+
+sean_inv_full = ConvoScreen:new {
+	id = "sean_inv_full",
+	leftDialog = "@conversation/lilas_dinhint:s_4f010def", -- It would seem that you have no room in your inventory to hold this datapad with my testimonial. I'm afraid you'll have to make some room before I can give it to you. Please speak to me again after you've done that.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_inv_full);
+
+thanks_to_funding = ConvoScreen:new {
+	id = "thanks_to_funding",
+	leftDialog = "@conversation/lilas_dinhint:s_7c297430", -- Mr. Trenwell? Yes, of course. Many of our latest additions and newest programs have only been possible thanks to funding provided by the efforts of Mr. Trenwell. His large personal contributions - both in time and money - have been generous beyond expectations.
+	stopConversation = "false",
+	options = {
+		{"@conversation/lilas_dinhint:s_7552be07", "ah_yes_ok_then"}, -- Oh, whatever. I'm leaving.
+		{"@conversation/lilas_dinhint:s_6d1148d8", "everything_prepared"}, -- Would you be willing to put that in writing so I could share your opinion with the governor?
+	}
+}
+museumCuratorConvoTemplate:addScreen(thanks_to_funding);
+
+everything_prepared = ConvoScreen:new {
+	id = "everything_prepared",
+	leftDialog = "@conversation/lilas_dinhint:s_7b488371", -- Indeed, I would be quite happy to do exactly that. I'll load that into this datapad that you can then take to Mrs. Aryon.
+	stopConversation = "false",
+	options = {
+		--{"@conversation/lilas_dinhint:s_b67247f1", ""}, -- Perfect, thank you!
+	}
+}
+museumCuratorConvoTemplate:addScreen(everything_prepared);
+
+ah_yes_ok_then = ConvoScreen:new {
+	id = "ah_yes_ok_then",
+	leftDialog = "@conversation/lilas_dinhint:s_eb35002", -- Ah... yes. Okay than.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(ah_yes_ok_then);
 
 addConversationTemplate("museumCuratorConvoTemplate", museumCuratorConvoTemplate);

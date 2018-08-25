@@ -32,11 +32,28 @@ sola_sent_you = ConvoScreen:new {
 	leftDialog = "@conversation/padawan_spice_mom_02:s_a0730d59", -- 	Sola sent you didn't she?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_spice_mom_02:s_798612aa", "good_friend"}, -- It's not for me, Sola sent me for her weekly supplies.
-		{"@conversation/padawan_spice_mom_02:s_6168a073", "sola_sent_you"}, -- Now I'm certain I have the wrong guy.
+		{"@conversation/padawan_spice_mom_02:s_ca7eddd3", "not_going_to_argue"}, -- You leave her alone! She doesn't need a thug like you bothering her.
 	}
 }
 padawan_spice_mom_02_convo_template:addScreen(sola_sent_you);
+
+not_going_to_argue = ConvoScreen:new {
+	id = "not_going_to_argue",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_6242972e", -- Whatever you say friend. I'm not going to argue. I'll say this though... shouldn't be so quick to judge people you barely know. And believe me, Sola can take care of herself. She's willing to do what she feels needs doing.
+	stopConversation = "false",
+	options = {
+		{"@conversation/padawan_spice_mom_02:s_625ba59c", "has_her_reasons"}, -- I guess. Thought I can't imagine why she'd be dealing with you..
+	}
+}
+padawan_spice_mom_02_convo_template:addScreen(not_going_to_argue);
+
+has_her_reasons = ConvoScreen:new {
+	id = "has_her_reasons",
+	leftDialog = "@conversation/padawan_spice_mom_02:s_350fcbe3", -- She has her reasons. Miss Sola is a friend and a loyal customer.  just take this to her and tell her Evif sends his well wishes.
+	stopConversation = "true",
+	options = {}
+}
+padawan_spice_mom_02_convo_template:addScreen(has_her_reasons);
 
 good_friend = ConvoScreen:new {
 	id = "good_friend",
@@ -58,7 +75,7 @@ padawan_spice_mom_02_convo_template:addScreen(law_enforcement);
 
 quick_to_judge = ConvoScreen:new {
 	id = "quick_to_judge",
-	leftDialog = "@conversation/padawan_spice_mom_02:s_2c96cac3", -- Oh!  You should have said so before friend, and you shouldn't be so quick to judge.  
+	leftDialog = "@conversation/padawan_spice_mom_02:s_2c96cac3", -- Oh!  You should have said so before friend, and you shouldn't be so quick to judge.
 	stopConversation = "true",
 	options = {}
 }

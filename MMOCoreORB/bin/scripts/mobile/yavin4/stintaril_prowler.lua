@@ -26,6 +26,7 @@ stintaril_prowler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/stintaril_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.5,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

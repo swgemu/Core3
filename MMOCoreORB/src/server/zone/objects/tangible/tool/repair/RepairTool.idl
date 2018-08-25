@@ -7,6 +7,8 @@ package server.zone.objects.tangible.tool.repair;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class RepairTool extends TangibleObject {
 

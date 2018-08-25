@@ -28,6 +28,7 @@ female_swamp_tusk_cat = Creature:new {
 	templates = {"object/mobile/female_swamp_tusk_cat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/tusk_cat_hue.iff",
 	scale = 0.95,
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

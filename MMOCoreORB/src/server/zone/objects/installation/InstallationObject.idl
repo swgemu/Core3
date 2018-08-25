@@ -16,7 +16,7 @@ import server.zone.objects.resource.ResourceContainer;
 import system.lang.Time;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.installation.HopperList;
-include engine.util.u3d.CloseObjectsVector;
+include server.zone.CloseObjectsVector;
 
 import server.zone.objects.tangible.wearables.ArmorObject;
 
@@ -161,6 +161,7 @@ class InstallationObject extends StructureObject {
 	public native float getActualRate();
 
 	@dirty
+	@local
 	public native void broadcastToOperators(BasePacket packet);
 
 	@preLocked

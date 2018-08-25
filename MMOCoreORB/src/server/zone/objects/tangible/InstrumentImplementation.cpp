@@ -36,6 +36,23 @@ void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
+void InstrumentImplementation::notifyLoadFromDatabase() {
+	TangibleObjectImplementation::notifyLoadFromDatabase();
+
+	beingUsed = false;
+
+	Reference<SceneObject* > spawnedObject = this->spawnedObject;
+
+	if (spawnedObject != nullptr) {
+		Core::getTaskManager()->executeTask( [spawnedObject] () {
+			Locker locker(spawnedObject);
+
+			spawnedObject->destroyObjectFromWorld(false);
+		}, "DespawnInstrumentLambda");
+	}
+}
+
+
 int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON)
 		return 1;

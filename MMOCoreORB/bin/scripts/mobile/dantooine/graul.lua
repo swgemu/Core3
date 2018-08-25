@@ -25,7 +25,8 @@ graul = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/graul.iff"},
+	templates = {"object/mobile/graul_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/graul_hue.iff",
 	lootGroups = {},
 	weapons = {},

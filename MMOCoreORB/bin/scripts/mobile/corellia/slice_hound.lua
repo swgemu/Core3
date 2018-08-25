@@ -25,7 +25,8 @@ slice_hound = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/corellian_slice_hound.iff"},
+	templates = {"object/mobile/corellian_slice_hound_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/corellian_slice_hound_hue.iff",
 	lootGroups = {},
 	weapons = {},

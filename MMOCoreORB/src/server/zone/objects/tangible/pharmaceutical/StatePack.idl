@@ -10,6 +10,8 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include templates.tangible.StatePackTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.params.creature.CreatureState;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class StatePack extends PharmaceuticalObject {
 	protected unsigned long state;

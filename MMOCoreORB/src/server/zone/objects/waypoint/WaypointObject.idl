@@ -1,6 +1,7 @@
 package server.zone.objects.waypoint;
 
 import server.zone.objects.intangible.IntangibleObject;
+import server.zone.objects.creature.CreatureObject;
 import engine.service.proto.BaseMessage;
 include server.zone.packets.scene.AttributeListMessage;
 include templates.SharedObjectTemplate;

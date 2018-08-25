@@ -26,6 +26,7 @@ tempest_rill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rill.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	scale = 0.7,
 	lootGroups = {},

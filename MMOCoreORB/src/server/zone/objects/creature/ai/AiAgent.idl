@@ -14,6 +14,7 @@ import server.zone.objects.creature.ai.events.AiWaitEvent;
 import server.zone.objects.creature.ai.events.AiAwarenessEvent;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.QuadTreeEntry;
 include server.zone.objects.creature.ai.PatrolPointsVector;
 include server.zone.objects.creature.ai.PatrolPoint;
 import engine.core.ManagedObject;
@@ -35,6 +36,10 @@ import server.zone.objects.creature.ai.events.AiTrackingTask;
 import system.thread.atomic.AtomicInteger;
 include server.zone.objects.tangible.deed.pet.PetDeed;
 include server.zone.objects.cell.CellObject;
+import system.util.SortedVector;
+import server.zone.objects.scene.SceneObject;
+include system.util.VectorMap;
+include engine.util.u3d.Vector3;
 
 @mock
 class AiAgent extends CreatureObject {
@@ -355,6 +360,7 @@ class AiAgent extends CreatureObject {
 	public native void checkNewAngle();
 
 	@dirty
+	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	public native void setNextPosition(float x, float z, float y, CellObject cell = null);

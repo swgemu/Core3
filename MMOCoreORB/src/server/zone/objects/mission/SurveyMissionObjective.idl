@@ -10,7 +10,9 @@ import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.mission.MissionObject;
 import engine.core.ManagedObject;
 
-include server.zone.objects.creature.CreatureObject;
+include engine.util.u3d.Vector3;
+
+import server.zone.objects.creature.CreatureObject;
 
 class SurveyMissionObjective extends MissionObjective {
 	protected string spawnFamily;

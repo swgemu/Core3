@@ -9,6 +9,10 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 
+import engine.core.ManagedObject;
+include engine.log.Logger;
+include engine.util.u3d.Vector3;
+
 class HuntingMissionObjective extends MissionObjective {
 	private int targetsKilled;
 

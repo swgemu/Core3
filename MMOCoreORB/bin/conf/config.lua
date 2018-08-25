@@ -205,3 +205,26 @@ WebSessionTimeout = 600 -- Length that inactive web sessions expire
 PurgeDeletedCharacters = 10 --How often in minutes to purge deleted characters
 MaxNavMeshJobs = 6
 DumpObjFiles = 1
+<<<<<<< HEAD
+=======
+
+UnloadContainers = 1 --Whether to unload container contents from RAM after the container hasn't been accessed for a time
+
+LogFile = "log/core3.log"
+LogFileLevel = 4 -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
+LogJSON = 0 -- global log output in JSON format
+LogSync = 0 -- flush global log file after each write
+
+LuaLogJSON = 0
+PathfinderLogJSON = 0
+
+TermsOfServiceVersion = 0
+TermsOfService = ""
+
+local localFile = loadfile("conf/config-local.lua")
+
+if (localFile ~= nil) then
+  localFile()
+end
+
+>>>>>>> 5ef66564164098be68cc8ddeb30140219bf9208e

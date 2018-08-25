@@ -8,6 +8,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include templates.SharedObjectTemplate;
 
 class SlicingTool extends TangibleObject {
 

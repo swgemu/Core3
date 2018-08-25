@@ -13,6 +13,7 @@ ConfigManager::ConfigManager() {
 	dumpObjFiles = true;
 	unloadContainers = true;
 	useMetrics = true;
+	pvpMode = false;
 
 	orbNamingDirectoryAddress = "";
 	orbNamingDirectoryPort = 44419;
@@ -66,7 +67,14 @@ ConfigManager::ConfigManager() {
 
 	maxNavMeshJobs = 6;
 
+	termsOfService = "";
+	tosVersion = 0;
+
 	logFileLevel = Logger::INFO;
+	jsonLogOutput = false;
+	syncLogOutput = false;
+	pathfinderLogJSON = false;
+	luaLogJSON = false;
 }
 
 bool ConfigManager::loadConfigData() {
@@ -146,6 +154,14 @@ bool ConfigManager::loadConfigData() {
 	logFile = getGlobalString("LogFile");
 	logFileLevel = getGlobalInt("LogFileLevel");
 
+	jsonLogOutput = getGlobalByte("LogJSON");
+	syncLogOutput = getGlobalByte("LogSync");
+	luaLogJSON = getGlobalByte("LuaLogJSON");
+	pathfinderLogJSON = getGlobalByte("PathfinderLogJSON");
+
+	termsOfService = getGlobalString("TermsOfService");
+	tosVersion = getGlobalInt("TermsOfServiceVersion");
+
 	return true;
 }
 
@@ -190,8 +206,8 @@ void ConfigManager::loadMOTD() {
 
 		reader->close();
 	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	}
 
 	delete reader;
@@ -215,11 +231,11 @@ void ConfigManager::loadRevision() {
 
 		reader->close();
 	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	} catch (Exception& e) {
-		file = NULL;
-		reader = NULL;
+		file = nullptr;
+		reader = nullptr;
 	}
 
 	//revision = revision.replaceAll("\n", "");

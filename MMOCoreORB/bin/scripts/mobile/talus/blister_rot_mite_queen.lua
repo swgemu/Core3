@@ -26,6 +26,7 @@ blister_rot_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blister_rot_queen.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

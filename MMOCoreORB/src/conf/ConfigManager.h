@@ -80,6 +80,13 @@ namespace conf {
 
 		String logFile;
 		int logFileLevel;
+		bool jsonLogOutput;
+		bool syncLogOutput;
+		bool luaLogJSON;
+		bool pathfinderLogJSON;
+
+		String termsOfService;
+		int tosVersion;
 
 	public:
 
@@ -322,6 +329,30 @@ namespace conf {
 
 		inline void setProgressMonitors(bool val) {
 			progressMonitors = val;
+		}
+
+		inline const String& getTermsOfService() const {
+			return termsOfService;
+		}
+
+		inline int getTermsOfServiceVersion() const {
+			return tosVersion;
+		}
+
+		inline bool getJsonLogOutput() const {
+			return jsonLogOutput;
+		}
+
+		inline bool getSyncLogOutput() const {
+			return syncLogOutput;
+		}
+
+		inline bool getLuaLogJSON() const {
+			return luaLogJSON;
+		}
+
+		inline bool getPathfinderLogJSON() const {
+			return pathfinderLogJSON;
 		}
 	};
 }

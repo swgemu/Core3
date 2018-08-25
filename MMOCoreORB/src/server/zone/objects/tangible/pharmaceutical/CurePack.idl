@@ -11,6 +11,8 @@ include system.lang.Math;
 include templates.params.creature.CreatureState;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.CurePackTemplate;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class CurePack extends PharmaceuticalObject {
 	protected float effectiveness;

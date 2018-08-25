@@ -26,6 +26,7 @@ giant_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_kimogila.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.15,
 	lootGroups = {
 	    {

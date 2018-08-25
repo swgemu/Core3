@@ -98,6 +98,9 @@ void MissionManagerImplementation::loadLuaSettings() {
 			enableSameAccountBountyMissions = true;
 		}
 
+		playerBountyKillBuffer = lua->getGlobalLong("playerBountyKillBuffer");
+		playerBountyDebuffLength = lua->getGlobalLong("playerBountyDebuffLength");
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -1007,7 +1010,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			mission->setMissionTargetName(name);
 			mission->setMissionDifficulty(75);
-			mission->setRewardCredits(target->getReward());
+			mission->setRewardCredits(getRealBountyReward(creature, target));
 
 			// Set the Title, Creator, and Description of the mission.
 
@@ -1950,6 +1953,17 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (targetId == playerId)
 		return false;
 
+	if (playerBountyKillBuffer > 0) {
+		uint64 lastBountyKill = bounty->getLastBountyKill();
+
+		Time currentTime;
+		uint64 curTime = currentTime.getMiliTime();
+
+		if (lastBountyKill > 0 && (curTime - lastBountyKill) < playerBountyKillBuffer)
+			return false;
+
+	}
+
 	ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
 
 	if (creature == NULL)
@@ -1992,6 +2006,15 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 
 	if (playerBountyList.contains(targetId)) {
 		PlayerBounty* target = playerBountyList.get(targetId);
+
+		Time currentTime;
+
+		uint64 curTime = currentTime.getMiliTime();
+		target->setLastBountyKill(curTime);
+		uint64 lastDebuff = target->getLastBountyDebuff();
+
+		if (curTime-lastDebuff > playerBountyDebuffLength)
+			target->setLastBountyDebuff(curTime);
 
 		Vector<uint64> activeBountyHunters;
 
@@ -2110,7 +2133,79 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 	}
 }
 
+int MissionManagerImplementation::getRealBountyReward(CreatureObject* creo, PlayerBounty* bounty)  {
+	if (creo == NULL || bounty == NULL)
+		return 0;
+
+	if (System::getMiliTime() - bounty->getLastBountyDebuff() < playerBountyDebuffLength) {
+		ManagedReference<PlayerObject*> player = creo->getPlayerObject();
+		if (player == NULL)
+			return 0;
+
+		if (player->getJediState() >= 4)
+			return 50000;
+		else
+			return 25000;
+	}
+	return bounty->getReward();
+}
+
 String MissionManagerImplementation::getRandomBountyPlanet() {
 	int randomNumber = System::random(bhTargetZones.size() - 1);
 	return bhTargetZones.get(randomNumber);
+}
+
+bool MissionManagerImplementation::sendPlayerBountyDebug(CreatureObject* creature, CreatureObject* target) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return false;
+
+	ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+
+	if (targetGhost == NULL)
+		return false;
+
+	Locker listLocker(&playerBountyListMutex);
+
+	PlayerBounty* playerBounty = playerBountyList.get(target->getObjectID());
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(creature, 0);
+	box->setPromptTitle("Jedi Visibility");
+	String promptText = "Player: " + target->getFirstName() + "\n" + "Visibility: " + String::valueOf(targetGhost->getVisibility()) + "\n";
+
+	if (playerBounty == NULL) {
+		promptText += "-- No player bounty data --\n";
+	} else {
+		promptText += "-- Bounty Data --\n";
+		promptText += "Current Reward: " + String::valueOf(getRealBountyReward(target, playerBounty)) + "\n";
+		promptText += "Bounty Reward: " + String::valueOf(playerBounty->getReward()) + "\n";
+		String onlineStatus = playerBounty->isOnline() ? "True" : "False";
+		promptText += "Online Status: " + onlineStatus + "\n";
+		int activeCount = playerBounty->numberOfActiveMissions();
+		promptText += "Active Bounty Count: " + String::valueOf(activeCount) + "\n";
+		if (activeCount > 0) {
+			promptText += "\nPlayers holding active bounties:";
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+			SortedVector<uint64>* bountyHunters = playerBounty->getBountyHunters();
+
+			for (int i = 0; i < bountyHunters->size(); i++) {
+				String name = playerManager->getPlayerName(bountyHunters->get(i));
+
+				if (name.isEmpty())
+					box->addMenuItem("Unknown player");
+				else
+					box->addMenuItem(name);
+			}
+		}
+	}
+
+	box->setPromptText(promptText);
+	box->setUsingObject(target);
+	box->setForceCloseDisabled();
+	ghost->addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
+
+	return true;
 }

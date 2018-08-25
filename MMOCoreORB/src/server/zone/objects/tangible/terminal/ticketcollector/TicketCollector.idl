@@ -28,6 +28,8 @@ class TicketCollector extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
+	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	@dirty

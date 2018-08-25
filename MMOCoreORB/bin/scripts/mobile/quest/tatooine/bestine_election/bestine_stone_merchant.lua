@@ -36,7 +36,7 @@ bestine_stone_merchant = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "StoneMerchantConvoTemplate",
+	conversationTemplate = "bestineStoneMerchantConvoTemplate",
 	attacks = {}
 }
 

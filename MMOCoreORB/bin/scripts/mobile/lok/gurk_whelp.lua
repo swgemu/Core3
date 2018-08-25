@@ -26,6 +26,7 @@ gurk_whelp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk_whelp.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 0.8,
 	lootGroups = {},
 	weapons = {},

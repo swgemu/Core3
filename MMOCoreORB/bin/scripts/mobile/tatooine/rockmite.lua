@@ -25,7 +25,8 @@ rockmite = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/rock_mite.iff"},
+	templates = {"object/mobile/rock_mite_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
 	scale = 0.6,
 	lootGroups = {},

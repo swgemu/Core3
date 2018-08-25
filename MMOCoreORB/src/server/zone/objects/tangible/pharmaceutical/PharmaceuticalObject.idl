@@ -6,6 +6,8 @@ package server.zone.objects.tangible.pharmaceutical;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class PharmaceuticalObject extends TangibleObject {
 	protected int medicineUseRequired;

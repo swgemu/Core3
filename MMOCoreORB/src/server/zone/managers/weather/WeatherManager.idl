@@ -12,6 +12,7 @@ import server.zone.managers.weather.events.WeatherChangeEvent;
 include server.zone.managers.weather.weathermaps.WeatherMap;
 import system.util.Vector;
 
+@dirty
 class WeatherManager extends ManagedService implements Logger {
 	
 	public static final int CLEAR = 0;

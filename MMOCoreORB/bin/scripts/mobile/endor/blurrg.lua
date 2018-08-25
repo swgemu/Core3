@@ -25,7 +25,8 @@ blurrg = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/blurrg.iff"},
+	templates = {"object/mobile/blurrg_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/blurrg_hue.iff",
 	scale = 1.2,
 	lootGroups = {},

@@ -13,6 +13,7 @@ import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
 include system.util.Vector;
+include engine.util.u3d.Vector3;
 
 class SpawnArea extends ActiveArea {
 	@dereferenced

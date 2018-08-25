@@ -117,7 +117,7 @@ namespace zone {
 			server = srv;
 		}
 
-		template<typename ClassType> void getPersistentObjectsSerializedVariable(const uint32& variableHashCode, ClassType* address, uint64 objectID) {
+		template<typename ClassType> void getPersistentObjectsSerializedVariable(const uint32 variableHashCode, ClassType* address, uint64 objectID) {
 			uint16 tableID = (uint16)(objectID >> 48);
 
 			LocalDatabase* db = databaseManager->getDatabase(tableID);
@@ -132,8 +132,6 @@ namespace zone {
 			if (database->getData(objectID, &objectData)) {
 				return;
 			}
-
-			Locker _locker(this);
 
 			try {
 				if (!Serializable::getVariable<ClassType>(variableHashCode, address, &objectData)) {

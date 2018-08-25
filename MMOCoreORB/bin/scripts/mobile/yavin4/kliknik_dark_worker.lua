@@ -26,6 +26,7 @@ kliknik_dark_worker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 1.15,
 	lootGroups = {

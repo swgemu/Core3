@@ -19,6 +19,7 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -309,7 +310,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 
 		// Update Force Power Max.
-		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
+		ghost->recalculateForcePower();
 
 		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 
@@ -399,7 +400,7 @@ void SkillManager::removeSkillRelatedMissions(CreatureObject* creature, Skill* s
 	}
 }
 
-bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient) {
+bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool checkFrs) {
 	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL)
@@ -475,8 +476,14 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		//Update maximum experience.
 		updateXpLimits(ghost);
 
+		FrsManager* frsManager = creature->getZoneServer()->getFrsManager();
+
+		if (checkFrs && frsManager->isFrsEnabled()) {
+			frsManager->handleSkillRevoked(creature, skillName);
+		}
+
 		/// Update Force Power Max
-		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
+		ghost->recalculateForcePower();
 
 		SkillList* list = creature->getSkillList();
 
@@ -534,6 +541,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	creature->sendMessage(msg4);
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
+	JediManager::instance()->onSkillRevoked(creature, skill);
 
 	return true;
 }
@@ -579,6 +587,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 				//Remove draft schematic groups
 				auto schematicsGranted = skill->getSchematicsGranted();
 				SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+				JediManager::instance()->onSkillRevoked(creature, skill);
 			}
 		}
 	}
@@ -590,7 +599,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		updateXpLimits(ghost);
 
 		/// update force
-		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
+		ghost->recalculateForcePower();
 	}
 
 	ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();

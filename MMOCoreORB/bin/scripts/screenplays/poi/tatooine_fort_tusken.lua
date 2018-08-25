@@ -39,34 +39,6 @@ function FortTuskenScreenPlay:start()
 	end
 end
 
-function FortTuskenScreenPlay:notifyDefeatedTusken(pVictim, pAttacker)
-	if pVictim == nil or pAttacker == nil or not SceneObject(pVictim):isCreatureObject() or not SceneObject(pAttacker):isCreatureObject() then
-		return 0
-	end
-
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-			return 0
-	end
-
-	if victorVisalisConvoHandler:onTuskenQuest(pAttacker) then
-		if (SceneObject(pVictim):getObjectName() == "tusken_executioner") then
-			local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
-			if (pInventory ~= nil) then
-				createLoot(pInventory, "bestine_election_tusken_head", 0, true)
-			end
-		else
-			local chance = getRandomNumber(0,300)
-			if (chance <= 100) or (chance >= 200) then
-				local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
-				if pInventory ~= nil then
-					createLoot(pInventory, "bestine_election_tusken_loot", 0, true)
-				end
-			end
-		end
-	end
-	return 0
-end
-
 function FortTuskenScreenPlay:spawnMobiles()
 	--On top of Tusken Pool
 	spawnMobile("tatooine", "tusken_berserker",300,-3996.8,60,6285.7,74,0)
@@ -125,19 +97,9 @@ function FortTuskenScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_chief",300,2.0,1.3,10.0,118,1189174)
 	spawnMobile("tatooine", "tusken_warlord",300,-0.9,1.3,9.6,109,1189174)
 	spawnMobile("tatooine", "tusken_flesh_hunter",300,0.6,1.4,12.7,0,1189174)
-	local pNpc = spawnMobile("tatooine", "tusken_witch_doctor",300,1.3,1.5,-10.8,118,1189175)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-
-	pNpc = spawnMobile("tatooine", "tusken_observer",300,0.8,1.7,-7.5,-11,1189175)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-	pNpc = spawnMobile("tatooine", "tusken_executioner",300, -1.54, 1.58, 0.90,-102,1189175)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
+	spawnMobile("tatooine", "tusken_witch_doctor",300,1.3,1.5,-10.8,118,1189175)
+	spawnMobile("tatooine", "tusken_observer",300,0.8,1.7,-7.5,-11,1189175)
+	spawnMobile("tatooine", "tusken_executioner",300, -1.54, 1.58, 0.90,-102,1189175)
 	spawnMobile("tatooine", "tusken_avenger",300,-4.7,1.5,-7.0,0,1189175)
 	spawnMobile("tatooine", "tusken_warlord",300,-12.6,2.9,1.0,109,1189175)
 	spawnMobile("tatooine", "tusken_chief",300,-15.9,3.4,-2.4,118,1189176)
@@ -149,26 +111,11 @@ function FortTuskenScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_flesh_hunter",300,-10.3,6.6,-21.8,118,1189177)
 	spawnMobile("tatooine", "tusken_raid_leader",300,2.9,8.4,-28.2,-95,1189178)
 	spawnMobile("tatooine", "tusken_warlord",300,0.7,8.0,-18.9,109,1189178)
-	pNpc = spawnMobile("tatooine", "tusken_witch_doctor",300,2.17, 8.36, -32.02,118,1189178)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-	pNpc = spawnMobile("tatooine", "tusken_executioner", 300, 6.54, 8.0, -34.17, 180, 1189178)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-	pNpc = spawnMobile("tatooine", "tusken_observer",300,8.5,8.2,-33.5,0,1189178)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-	pNpc = spawnMobile("tatooine", "tusken_observer",300,1.2,8.15,-20.5,0,1189178)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-	pNpc = spawnMobile("tatooine", "tusken_observer",300,3.07, 8.31, -39.26,0,1189178)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
+	spawnMobile("tatooine", "tusken_witch_doctor",300,2.17, 8.36, -32.02,118,1189178)
+	spawnMobile("tatooine", "tusken_executioner", 300, 6.54, 8.0, -34.17, 180, 1189178)
+	spawnMobile("tatooine", "tusken_observer",300,8.5,8.2,-33.5,0,1189178)
+	spawnMobile("tatooine", "tusken_observer",300,1.2,8.15,-20.5,0,1189178)
+	spawnMobile("tatooine", "tusken_observer",300,3.07, 8.31, -39.26,0,1189178)
 	spawnMobile("tatooine", "tusken_blood_champion",300,11.5,8.0,-40.7,118,1189178)
 	spawnMobile("tatooine", "tusken_warlord",300,7.1,8.4,-44.9,109,1189178)
 	spawnMobile("tatooine", "tusken_death_hunter",300,-0.2,8.4,-33.6,118,1189178)
@@ -193,11 +140,7 @@ function FortTuskenScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_death_hunter",300,38.0,20.8,-3.6,-51,1189182)
 	spawnMobile("tatooine", "tusken_chief",300,31,21.5,-9.4,167,1189182)
 	spawnMobile("tatooine", "tusken_death_hunter",300,32.0,22.1,2.6,90,1189182)
-	pNpc = spawnMobile("tatooine", "tusken_executioner",300,20.8,22.9,-15.2,-102,1189183)
-	if (pNpc ~= nil) then
-		createObserver(OBJECTDESTRUCTION, "FortTuskenScreenPlay", "notifyDefeatedTusken", pNpc)
-	end
-
+	spawnMobile("tatooine", "tusken_executioner",300,20.8,22.9,-15.2,-102,1189183)
 	spawnMobile("tatooine", "tusken_gore_chief",300,15.1,22.8,-17.0,163,1189183)
 	spawnMobile("tatooine", "tusken_brute",300,2.5,22.9,-19.2,101,1189183)
 	spawnMobile("tatooine", "tusken_carnage_champion",300,8.7,23,-28.5,121,1189183)

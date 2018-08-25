@@ -1,0 +1,59 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedObject;
+import system.util.Vector;
+import system.lang.Time;
+
+class ArenaChallengeData extends ManagedObject {
+	@dereferenced
+	protected Time challengeStart;
+	
+	unsigned long challengerID;
+	unsigned long challengeAccepterID;
+	boolean challengeCompleted;
+	
+	int challengeRank;
+
+	public ArenaChallengeData(unsigned long player, int rank) {
+		challengerID = player;
+		challengeRank = rank;
+		challengeCompleted = false;
+		
+		challengeAccepterID = 0;
+		
+		challengeStart.updateToCurrentTime();
+	}
+	
+	public unsigned long getChallengeStart() {
+		return challengeStart.getMiliTime();
+	}
+	
+	@read
+	public unsigned long getChallengeAccepterID() {
+		return challengeAccepterID;
+	}
+	
+	public void setChallengeAccepterID(unsigned long newID) {
+		challengeAccepterID = newID;
+	}
+	
+	public unsigned long getChallengerID() {
+		return challengerID;
+	}
+	
+	public int getChallengeRank() {
+		return challengeRank;
+	}
+	
+	public boolean isChallengeCompleted() {
+		return challengeCompleted;
+	}
+	
+	public void setChallengeCompleted() {
+		challengeCompleted = true;
+	}
+}

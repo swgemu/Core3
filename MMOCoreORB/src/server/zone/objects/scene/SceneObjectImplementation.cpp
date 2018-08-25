@@ -44,6 +44,8 @@
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
+	receiverFlags = getReceiverFlags();
+
 	// FIXME: temp hack
 	if (server == NULL)
 		server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer").get();
@@ -106,6 +108,7 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	movementCounter = 0;
 
+	forceSend = false;
 	staticObject = false;
 
 	zone = NULL;
@@ -122,6 +125,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	setLoggingName("SceneObject");
 
 	childObjects.setNoDuplicateInsertPlan();
+
+	collidableObject = false;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -148,6 +153,13 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	templateObject = templateData;
 
 	dataObjectComponent = ComponentManager::instance()->getDataObjectComponent(templateData->getDataObjectComponent());
+
+
+	if (!isCreatureObject() && !isLairObject() && gameObjectType != SceneObjectType::FURNITURE) {
+		if (templateData->getCollisionMaterialFlags() && templateData->getCollisionMaterialBlockFlags() && templateData->isNavUpdatesEnabled()) {
+			collidableObject = true;
+		}
+	}
 }
 
 void SceneObjectImplementation::setZoneComponent(const String& name) {
@@ -294,7 +306,7 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	if (isClientObject() || !sendToClient || player == NULL || player->getClient() == NULL)
+	if ((isClientObject() && !forceSend) || !sendToClient || player == NULL || player->getClient() == NULL)
 		return;
 
 	/*StringBuffer msgInfo;
@@ -528,7 +540,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -579,7 +591,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -596,7 +608,8 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeSceneObjects.get(i));
 
-		object->sendDestroyTo(scno);
+		if (selfObject != object)
+			object->sendDestroyTo(scno);
 	}
 }
 
@@ -640,7 +653,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 #endif
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeNoneReference, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeNoneReference, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeNoneReference, 1);
 		}
@@ -728,7 +741,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 #ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
 #endif
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
 		}
@@ -828,6 +841,7 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	parent->incrementMovementCounter();
 
 	parent->updateZone(false, sendPackets);
+	parent->asCreatureObject()->updateCOV();
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {

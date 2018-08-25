@@ -13,6 +13,7 @@ include server.zone.managers.group.GroupManager;
 import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
 include server.chat.StringIdChatParameter;
 include system.lang.ref.Reference;
+include system.util.VectorMap;
 
 class GroupObject extends SceneObject {
 	@dereferenced
@@ -48,9 +49,11 @@ class GroupObject extends SceneObject {
 	public native void sendBaselinesTo(SceneObject player);
 
 	@dirty
+	@local
 	public native void broadcastMessage(BaseMessage msg);
 
 	@dirty
+	@local
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
 	@dirty

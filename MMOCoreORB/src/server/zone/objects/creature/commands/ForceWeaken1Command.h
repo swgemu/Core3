@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "ForcePowersQueueCommand.h"
+#include "server/zone/objects/creature/buffs/ForceWeakenDebuff.h"
 
 class ForceWeaken1Command : public ForcePowersQueueCommand {
 public:
@@ -34,28 +35,24 @@ public:
 			return INVALIDTARGET;
 		}
 
+		CreatureObject* creatureTarget = targetObject.castTo<CreatureObject*>();
+
+		if (creatureTarget->hasBuff(STRING_HASHCODE("forceweaken1")) || creatureTarget->hasBuff(STRING_HASHCODE("forceweaken2"))) {
+			return ALREADYAFFECTEDJEDIPOWER;
+		}
+
 		int res = doCombatAction(creature, target);
 
 		if (res == SUCCESS) {
+			Locker clocker(creatureTarget, creature);
 
-			// Setup debuff.
+			ManagedReference<Buff*> buff = new ForceWeakenDebuff(creatureTarget, getNameCRC(), 300, 500, 90);
 
-			ManagedReference<CreatureObject*> creatureTarget = targetObject.castTo<CreatureObject*>();
+			Locker locker(buff);
 
-			if (creatureTarget != NULL) {
-				Locker clocker(creatureTarget, creature);
+			creatureTarget->addBuff(buff);
 
-				ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 90, BuffType::JEDI);
-
-				Locker locker(buff);
-
-				buff->setAttributeModifier(System::random(2) * 3, -300);
-
-				creatureTarget->addBuff(buff);
-
-				CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
-			}
-
+			CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
 		}
 
 		return res;

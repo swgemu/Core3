@@ -4,9 +4,15 @@
 
 package server.zone.objects.tangible.powerup;
 
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.tangible.powerup.PowerupStatVector;
 import server.zone.objects.tangible.weapon.WeaponObject;
+include templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+
 
 @lua
 class PowerupObject extends TangibleObject {

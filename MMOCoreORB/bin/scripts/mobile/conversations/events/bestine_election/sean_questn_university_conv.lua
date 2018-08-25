@@ -1,108 +1,113 @@
 seanQuestnUniversityConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "bestine_election_questn_conv_handler",
+	luaClassHandler = "seanQuestnUniversityConvoHandler",
 	screens = {}
 }
 
-convo_start = ConvoScreen:new {
-	id = "convo_start",
-	leftDialog = "@conversation/sean_questn_university:s_5788afea", --  I'm in the middle of grading papers. Did you need help with something?
+init_on_rival_quest = ConvoScreen:new {
+	id = "init_on_rival_quest",
+	leftDialog = "@conversation/sean_questn_university:s_5788afea", -- I'm in the middle of grading papers. Did you need help with something?
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_questn_university:s_36904010", "convo_start_give"} -- I was told to talk to you about Sean Trenwell.
+		{"@conversation/sean_questn_university:s_36904010", "bad_student"}, -- I was told to talk to you about Sean Trenwell.
 	}
 }
-seanQuestnUniversityConvoTemplate:addScreen(convo_start);
+seanQuestnUniversityConvoTemplate:addScreen(init_on_rival_quest);
 
-convo_start_give = ConvoScreen:new {
-	id = "convo_start_give",
+bad_student = ConvoScreen:new {
+	id = "bad_student",
 	leftDialog = "@conversation/sean_questn_university:s_7c259594", -- Sean Trenwell... oh yes! I remember him. Unfortunately, he was a particularly bad student. I would always catch him trying to cheat during exams. He barely graduated from the University. In fact, he could even be considered a fake. I really don't want him representing our people in this election.
 	stopConversation = "false",
-	options = {}
+	options = {
+		{"@conversation/sean_questn_university:s_5ec23736", "use_as_evidence"}, -- Oh? I could really use your help...
+	}
 }
-seanQuestnUniversityConvoTemplate:addScreen(convo_start_give);
+seanQuestnUniversityConvoTemplate:addScreen(bad_student);
 
-no_business = ConvoScreen:new {
-	id = "no_business",
-	leftDialog = "@conversation/sean_questn_university:s_3c4a2f4", -- I'm too busy to talk right now. I'm grading papers. You seem like you'd be interested in voting at the capitol. They're holding an election.
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(no_business);
-
-no_election = ConvoScreen:new {
-	id = "no_election",
-	leftDialog = "@conversation/sean_questn_university:s_9c880546", -- I hope you've gone to school. We could really use more... educated folks nowadays.
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(no_election);
-
-give_item = ConvoScreen:new {
-	id = "give_item",
+use_as_evidence = ConvoScreen:new {
+	id = "use_as_evidence",
 	leftDialog = "@conversation/sean_questn_university:s_799ad811", -- Mmhmm--Oh really? I actually have something that might help you. I think you could use it as evidence. Yes! Here it is. I always keep the grades of my students. Here you are.
 	stopConversation = "false",
 	options = {
-		{"@conversation/sean_questn_university:s_b9b27823", "questn_end"} -- Thank you.
+	--{"@conversation/sean_questn_university:s_b9b27823", "good_day"}, -- Thank you.
 	}
 }
-seanQuestnUniversityConvoTemplate:addScreen(give_item);
+seanQuestnUniversityConvoTemplate:addScreen(use_as_evidence);
 
-already_has_evidence = ConvoScreen:new {
-	id = "already_has_evidence",
-	leftDialog = "@conversation/sean_questn_university:s_70145cf1", -- You again. I'm still quite busy, and I see you still have those papers I gave you from Mr. Trenwell's school days. How's this... you leave me to my work, and I won't ask for those back?
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(already_has_evidence);
-
-no_room = ConvoScreen:new {
-	id = "no_room",
+inv_full = ConvoScreen:new {
+	id = "inv_full",
 	leftDialog = "@conversation/sean_questn_university:s_dac635d2", -- I see that you don't have enough room to get the evidence you seek. Please come back when you have room.
 	stopConversation = "true",
 	options = {}
 }
-seanQuestnUniversityConvoTemplate:addScreen(no_room);
+seanQuestnUniversityConvoTemplate:addScreen(inv_full);
 
-noroom_returned = ConvoScreen:new {
-	id = "noroom_returned",
-	leftDialog = "@conversation/sean_questn_university:s_656e8f97", -- I see that you've returned. Do you have enough room now?
-	stopConversation = "false",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(noroom_returned);
-
-noroom_returned_noroom = ConvoScreen:new {
-	id = "noroom_returned_noroom",
-	leftDialog = "@conversation/sean_questn_university:s_99711fbf", -- Again, you still don't have enough room. Come back when you do.
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(noroom_returned_noroom);
-
-noroom_returned_reply = ConvoScreen:new {
-	id = "noroom_returned_reply",
-	leftDialog = "@conversation/sean_questn_university:s_b8a92f09", -- I see. I guess there's no hurry... just come back you have more space.
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(noroom_returned_reply);
-
-noroom_returned_giveitem = ConvoScreen:new {
-	id = "noroom_returned_giveitem",
-	leftDialog = "@conversation/sean_questn_university:s_dcf7aa7a", -- Of course. Here you are.
-	stopConversation = "true",
-	options = {}
-}
-seanQuestnUniversityConvoTemplate:addScreen(noroom_returned_giveitem);
-
-questn_end = ConvoScreen:new {
-	id = "questn_end",
+good_day = ConvoScreen:new {
+	id = "good_day",
 	leftDialog = "@conversation/sean_questn_university:s_e656ba0c", -- Good day.
 	stopConversation = "true",
 	options = {}
 }
-seanQuestnUniversityConvoTemplate:addScreen(questn_end);
+seanQuestnUniversityConvoTemplate:addScreen(good_day);
+
+init_election_phase = ConvoScreen:new {
+	id = "init_election_phase",
+	leftDialog = "@conversation/sean_questn_university:s_3c4a2f4", -- I'm too busy to talk right now. I'm grading papers. You seem like you'd be interested in voting at the capitol. They're holding an election.
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(init_election_phase);
+
+init_office_phase = ConvoScreen:new {
+	id = "init_office_phase",
+	leftDialog = "@conversation/sean_questn_university:s_9c880546", -- I hope you've gone to school. We could really use more... educated folks nowadays.
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(init_office_phase);
+
+init_has_evidence = ConvoScreen:new {
+	id = "init_has_evidence",
+	leftDialog = "@conversation/sean_questn_university:s_70145cf1", -- You again. I'm still quite busy, and I see you still have those papers I gave you from Mr. Trenwell's school days. How's this... you leave me to my work, and I won't ask for those back?
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(init_has_evidence);
+
+init_inv_was_full = ConvoScreen:new {
+	id = "init_inv_was_full",
+	leftDialog = "@conversation/sean_questn_university:s_656e8f97", -- I see that you've returned. Do you have enough room now?
+	stopConversation = "false",
+	options = {
+	--{"@conversation/sean_questn_university:s_7e78bf8f", "here_you_are_then"}, -- Yes, can I have the evidence, please?
+	--{"@conversation/sean_questn_university:s_7291fe2e", "theres_no_hurry"}, -- Not yet. I still need to make room.
+	}
+}
+seanQuestnUniversityConvoTemplate:addScreen(init_inv_was_full);
+
+theres_no_hurry = ConvoScreen:new {
+	id = "theres_no_hurry",
+	leftDialog = "@conversation/sean_questn_university:s_b8a92f09", -- I see. I guess there's no hurry... just come back you have more space.
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(theres_no_hurry);
+
+was_full_give_evidence = ConvoScreen:new {
+	id = "was_full_give_evidence",
+	leftDialog = "@conversation/sean_questn_university:s_dcf7aa7a", -- Of course. Here you are.
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(was_full_give_evidence);
+
+inv_still_full = ConvoScreen:new {
+	id = "inv_still_full",
+	leftDialog = "@conversation/sean_questn_university:s_99711fbf", -- Again, you still don't have enough room. Come back when you do.
+	stopConversation = "true",
+	options = {}
+}
+seanQuestnUniversityConvoTemplate:addScreen(inv_still_full);
 
 addConversationTemplate("seanQuestnUniversityConvoTemplate", seanQuestnUniversityConvoTemplate);

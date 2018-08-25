@@ -27,6 +27,7 @@ void destroyNavMeshQuery(void* value) {
 
 PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery(destroyNavMeshQuery) {
 	setFileLogger("log/pathfinder.log");
+	setLogJSON(ConfigManager::instance()->getPathfinderLogJSON());
 
 	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ (SAMPLE_POLYFLAGS_DISABLED));
 	m_filter.setExcludeFlags(0);
@@ -140,7 +141,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 		float t1 = tca - thc;
 		float t2 = tca + thc;
 
-		if (abs(t1 - t2) > 0.1f && t1 > 0 && t1 < maxT)
+		if (fabs(t1 - t2) > 0.1f && t1 > 0 && t1 < maxT)
 			collisions->put(new NavCollision(start + (dir * t1), t1, area));
 
 		if (t2 > 0 && t2 < maxT)

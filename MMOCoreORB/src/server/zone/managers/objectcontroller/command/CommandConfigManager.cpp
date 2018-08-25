@@ -622,6 +622,18 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "forceCost")
 			combatCommand->setForceCost(Lua::getFloatParameter(L));
+		else if (varName == "frsLightForceCostModifier")
+			combatCommand->setFrsLightForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkForceCostModifier")
+			combatCommand->setFrsDarkForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightMinDamageModifier")
+			combatCommand->setFrsLightMinDamageModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightMaxDamageModifier")
+			combatCommand->setFrsLightMaxDamageModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkMinDamageModifier")
+			combatCommand->setFrsDarkMinDamageModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkMaxDamageModifier")
+			combatCommand->setFrsDarkMaxDamageModifier(Lua::getFloatParameter(L));
 		else if (varName == "visMod")
 			combatCommand->setVisMod(Lua::getIntParameter(L));
 		else if (varName == "coneRange")
@@ -704,6 +716,22 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			jediCommand->setClientEffect(Lua::getStringParameter(L));
 		else if (varName == "speedMod")
 			jediCommand->setSpeedMod(Lua::getFloatParameter(L));
+		else if (varName == "frsLightForceCostModifier")
+			jediCommand->setFrsLightForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkForceCostModifier")
+			jediCommand->setFrsDarkForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkExtraForceCostModifier")
+			jediCommand->setFrsDarkExtraForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightExtraForceCostModifier")
+			jediCommand->setFrsLightExtraForceCostModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightBuffModifier")
+			jediCommand->setFrsLightBuffModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkBuffModifier")
+			jediCommand->setFrsDarkBuffModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsLightForcePowerModifier")
+			jediCommand->setFrsLightForcePowerModifier(Lua::getFloatParameter(L));
+		else if (varName == "frsDarkForcePowerModifier")
+			jediCommand->setFrsDarkForcePowerModifier(Lua::getFloatParameter(L));
 		else if (jediCommand->isForceHealCommand()) {
 			ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(jediCommand);
 			if (varName == "healAmount")

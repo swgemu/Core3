@@ -10,8 +10,8 @@
 
 #include "engine/engine.h"
 
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/QuadTreeEntry.h"
 
-typedef SortedVector<QuadTreeEntry*> InRangeObjectsVector;
+typedef SortedVector<server::zone::QuadTreeEntry*> InRangeObjectsVector;
 
 #endif /* SRC_SERVER_ZONE_INRANGEOBJECTSVECTOR_H_ */

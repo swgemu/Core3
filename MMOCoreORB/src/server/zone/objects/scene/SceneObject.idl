@@ -6,7 +6,7 @@ package server.zone.objects.scene;
 
 import engine.log.Logger;
 import engine.util.u3d.Coordinate;
-import engine.util.u3d.QuadTreeEntry;
+include server.zone.QuadTreeEntry;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.u3d.Quaternion;
@@ -69,6 +69,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	protected boolean sendToClient;
 
+	protected transient boolean collidableObject;
+
 	@dereferenced
 	protected ZoneReference zone;
 
@@ -96,6 +98,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	protected transient PendingTasksMap pendingTasks;
 
+	protected boolean forceSend;
 	protected boolean staticObject;
 
 	@dereferenced
@@ -187,6 +190,15 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
+
+    @dirty
+    public abstract int getReceiverFlags() {
+        int flags = super.getReceiverFlags();
+        if (collidableObject)
+            return CloseObjectsVector.COLLIDABLETYPE | flags;
+
+        return flags;
+    }
 
 	/**
 	 * Logs an info message
@@ -420,6 +432,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @return returns a new valid UpdateContainmentMessage
 	 */
 	@dirty
+	@local
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 
 	/**
@@ -613,9 +626,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param sendSelf if true the owner if this object receives the message too
 	 */
 	@dirty
+	@local
 	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
 
 	@dirty
+	@local
 	public native void broadcastMessagePrivate(BasePacket message, SceneObject selfObject, boolean lockZone);
 
 	/**
@@ -666,6 +681,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param msg BasePacket to be sent
 	 */
 	@dirty
+	@local
 	public abstract native void sendMessage(BasePacket msg);
 
 	/**
@@ -1820,6 +1836,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
 	}
+	
+	public void setForceSend(boolean val) {
+		forceSend = val;
+	}
 
 	public void setClientObject(boolean val) {
 		staticObject = val;
@@ -1968,6 +1988,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	public void addChildObject(SceneObject obj) {
 		childObjects.put(obj);
+	}
+	
+	public void removeChildObject(SceneObject obj) {
+		childObjects.drop(obj);
 	}
 
 	@local

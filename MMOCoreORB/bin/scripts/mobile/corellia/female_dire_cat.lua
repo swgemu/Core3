@@ -26,6 +26,7 @@ female_dire_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/female_dire_cat.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
 	scale = 0.9,
 	lootGroups = {},

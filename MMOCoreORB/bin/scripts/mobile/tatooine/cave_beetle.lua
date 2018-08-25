@@ -26,6 +26,7 @@ cave_beetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rock_beetle.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

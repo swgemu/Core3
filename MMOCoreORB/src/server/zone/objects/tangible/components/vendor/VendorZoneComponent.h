@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/QuadTreeEntry.h"
 
 class VendorZoneComponent : public ZoneComponent {
 

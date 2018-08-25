@@ -7,6 +7,7 @@ package server.zone.objects.creature.buffs;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
+include engine.log.Logger;
 
 class SpiceBuff extends Buff {
 	public SpiceBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {

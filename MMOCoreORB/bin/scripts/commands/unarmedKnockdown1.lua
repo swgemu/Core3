@@ -56,7 +56,7 @@ UnarmedKnockdown1Command = {
 		KNOCKDOWN_EFFECT, 
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
-		{}, 
+		{},
 		100, 
 		0, 
 		0 

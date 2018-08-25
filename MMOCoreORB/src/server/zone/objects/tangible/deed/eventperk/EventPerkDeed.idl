@@ -5,10 +5,15 @@
 package server.zone.objects.tangible.deed.eventperk;
 
 import server.zone.objects.tangible.deed.Deed;
+import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.tasks.RemoveEventPerkDeedTask;
 include system.lang.ref.Reference;
+include system.lang.Time;
+include templates.SharedObjectTemplate;
+include server.zone.packets.scene.AttributeListMessage;
 
 class EventPerkDeed extends Deed {
 

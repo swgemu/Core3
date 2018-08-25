@@ -110,7 +110,7 @@ public:
 							zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 						} else {
 							CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
-							closeVector->safeCopyTo(closeObjects);
+							closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 						}
 
 						for (int i = 0; i < closeObjects.size(); ++i) {

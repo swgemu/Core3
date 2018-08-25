@@ -31,10 +31,10 @@ public:
 
 	String& getExperimentalPropertySubtitlesTitle(const int i);
 	String& getExperimentalPropertySubtitle(const int i);
-	String& getExperimentalPropertySubtitle(const String title, const int i);
+	String& getExperimentalPropertySubtitle(const String& title, const int i);
 
 	int getExperimentalPropertySubtitleSize();
-	int getExperimentalPropertySubtitleSize(const String title);
+	int getExperimentalPropertySubtitleSize(const String& title);
 
 	bool hasProperty(const String& attribute);
 

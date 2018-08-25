@@ -27,6 +27,7 @@ domesticated_gurnaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gurnaset_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

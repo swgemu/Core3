@@ -26,6 +26,7 @@ volatile_scyk = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/scyk.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	scale = 0.9,
 	lootGroups = {},

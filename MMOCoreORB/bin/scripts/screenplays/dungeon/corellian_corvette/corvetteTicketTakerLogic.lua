@@ -42,7 +42,7 @@ function CorvetteTicketTakerLogic:checkFaction(pPlayer)
 		return true
 	end
 
-	if (not ThemeParkLogic:isInFaction(self.faction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer)) then
+	if (not ThemeParkLogic:isInFaction(self.faction, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus()) then
 		return false
 	end
 
@@ -51,7 +51,7 @@ function CorvetteTicketTakerLogic:checkFaction(pPlayer)
 
 		for i = 0, groupSize - 1, 1 do
 			local pMember = CreatureObject(pPlayer):getGroupMember(i)
-			if pMember ~= nil and (not ThemeParkLogic:isInFaction(self.faction, pMember) or ThemeParkLogic:isOnLeave(pMember)) then
+			if pMember ~= nil and (not ThemeParkLogic:isInFaction(self.faction, pMember) or ThemeParkLogic:isOnLeave(pMember) or TangibleObject(pMember):isChangingFactionStatus()) then
 				return false
 			end
 		end
@@ -75,10 +75,12 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 		return
 	end
 
+	local factionCheck = self:checkFaction(pPlayer)
+
 	local player = CreatureObject(pPlayer)
 
 	local pInventory = player:getSlottedObject("inventory")
-	if pInventory == nil then
+	if pInventory == nil or not factionCheck then
 		player:sendSystemMessageWithTO("@dungeon/space_dungeon:no_ticket", "@dungeon/space_dungeon:corvette_" .. self:getFactionString()) -- You do not have the proper authorization to access the %TO.
 		return
 	end

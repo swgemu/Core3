@@ -24,13 +24,13 @@ sean_contact_quest = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_contact_quest.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seanContactConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

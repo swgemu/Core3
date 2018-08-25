@@ -27,6 +27,7 @@ genetically_enchanced_kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	scale = 1.4,
 	lootGroups = {},

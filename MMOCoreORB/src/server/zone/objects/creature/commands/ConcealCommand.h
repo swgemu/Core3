@@ -75,7 +75,7 @@ public:
 		if (closeObjectsVector == NULL) {
 			creature->getZone()->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), 32, &objects, true);
 		} else {
-			closeObjectsVector->safeCopyTo(objects);
+			closeObjectsVector->safeCopyReceiversTo(objects, CloseObjectsVector::CREOTYPE);
 		}
 
 		for (int i = 0; i < objects.size(); ++i) {

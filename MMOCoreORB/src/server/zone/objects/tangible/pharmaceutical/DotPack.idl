@@ -12,6 +12,8 @@ include templates.params.creature.CreatureState;
 include templates.params.creature.CreatureAttribute;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.DotPackTemplate;
+include templates.SharedObjectTemplate;
+include system.lang.String;
 
 class DotPack extends PharmaceuticalObject {
 	protected float effectiveness;

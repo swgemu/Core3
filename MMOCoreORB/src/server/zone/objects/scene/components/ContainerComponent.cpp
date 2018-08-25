@@ -23,13 +23,15 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		ManagedReference<SceneObject*> containerBuildingParent = sceneObject->getParentRecursively(SceneObjectType::BUILDING);
 		ManagedReference<SceneObject*> containerFactoryParent = sceneObject->getParentRecursively(SceneObjectType::FACTORY);
 		ManagedReference<SceneObject*> objPlayerParent = object->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> objCreatureParent = object->getParentRecursively(SceneObjectType::CREATURE);
+		ManagedReference<SceneObject*> objNpcCreatureParent = object->getParentRecursively(SceneObjectType::NPCCREATURE);
 		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING);
 
 
 		if (containerFactoryParent != NULL) {
 			errorDescription = "@container_error_message:container28";
 			return TransferErrorCode::CANTADD;
-		} else if (objPlayerParent == NULL && objBuildingParent != NULL) {
+		} else if (objPlayerParent == NULL && objCreatureParent == NULL && objNpcCreatureParent == NULL && objBuildingParent != NULL) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
 
 			if (buio != NULL ) {
@@ -43,8 +45,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL && !sceneObject->isPlayerCreature()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
-			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
-
+			if (buio != NULL && (buio->getOwnerObjectID() != objPlayerParent->getObjectID() || buio->isCivicStructure())) {
 				errorDescription = "@container_error_message:container28";
 				return TransferErrorCode::CANTADD;
 			}

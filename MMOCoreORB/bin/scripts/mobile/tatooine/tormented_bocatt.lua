@@ -26,6 +26,7 @@ tormented_bocatt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bocatt_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/bocatt_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

@@ -5,6 +5,7 @@ import engine.log.Logger;
 import server.zone.objects.tangible.Container;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.scene.SceneObject;
 
 class AntiDecayKit extends Container {
 

@@ -9,6 +9,7 @@ import server.zone.objects.creature.CreatureObject;
 include templates.tangible.MissionTerminalTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 include system.util.Vector;
+include templates.SharedObjectTemplate;
 
 class MissionTerminal extends Terminal {
 	protected string terminalType;
@@ -62,6 +63,7 @@ class MissionTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	@dirty
+	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);

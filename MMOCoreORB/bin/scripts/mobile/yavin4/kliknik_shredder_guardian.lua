@@ -26,6 +26,7 @@ kliknik_shredder_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 1.15,
 	lootGroups = {

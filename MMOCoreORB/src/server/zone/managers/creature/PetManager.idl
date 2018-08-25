@@ -14,6 +14,7 @@ include server.zone.managers.creature.ValidMountScaleRange;
 include server.zone.managers.creature.MountSpeedData;
 include system.util.Vector;
 include system.lang.ref.Reference;
+include engine.log.Logger;
 
 @dirty
 class PetManager extends ManagedService implements Logger {

@@ -14,6 +14,7 @@ include templates.SharedObjectTemplate;
 include templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.objects.tangible.powerup.PowerupObject;
 import system.util.Vector;
+import system.util.VectorMap;
 import system.lang.String;
 
 class WeaponObject extends TangibleObject {

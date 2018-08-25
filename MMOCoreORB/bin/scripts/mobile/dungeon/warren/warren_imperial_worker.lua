@@ -24,7 +24,7 @@ warren_imperial_worker = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -45,7 +45,7 @@ warren_imperial_worker = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
+	conversationTemplate = "warrenWorkerConvoTemplate",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

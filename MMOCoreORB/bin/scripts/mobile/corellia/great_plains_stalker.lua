@@ -26,6 +26,7 @@ great_plains_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_sand_panther_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

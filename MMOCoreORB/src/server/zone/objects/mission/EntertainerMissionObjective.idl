@@ -9,7 +9,10 @@ import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
-include server.zone.objects.area.ActiveArea;
+import server.zone.objects.area.ActiveArea;
+import engine.core.ManagedObject;
+include engine.log.Logger;
+include engine.util.u3d.Vector3;
 
 class EntertainerMissionObjective extends MissionObjective {
 	protected boolean inMissionArea;

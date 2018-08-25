@@ -26,6 +26,7 @@ giant_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_veermok.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
 	scale = 1.4,
 	lootGroups = {},

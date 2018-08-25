@@ -23,13 +23,13 @@ bestine_capitol02 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bestine_capitol02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "bestineCapitol02ConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

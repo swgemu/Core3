@@ -27,6 +27,7 @@ flesh_eating_chuba = Creature:new {
 
 	templates = {"object/mobile/chuba_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/chuba_hue.iff",
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

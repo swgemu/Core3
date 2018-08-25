@@ -41,14 +41,14 @@ function GoToTheater:taskStart(pPlayer)
 	local attempts = 0
 	local distDiff = 0
 
-	while (spawnPoint == nil and attempts < 20) do
-		distDiff = distDiff + 25
+	while (spawnPoint == nil and attempts < 10) do
+		distDiff = distDiff + 50
 		attempts = attempts + 1
 		spawnPoint = getSpawnArea(zoneName, posX, posY, self.minimumDistance, self.maximumDistance + distDiff, 20, 10, true)
 	end
 
 	if (spawnPoint == nil) then
-		printLuaError("GoToTheater:taskStart() for task " .. self.taskName .. ", failed to get spawn area after 20 attempts using getSpawnArea with coords " .. SceneObject(pPlayer):getWorldPositionX() .. " " .. SceneObject(pPlayer):getWorldPositionY()  .. " on " .. SceneObject(pPlayer):getZoneName() .. ", min dist " .. self.minimumDistance .. ", max dist " .. self.maximumDistance .. ".")
+		printLuaError("GoToTheater:taskStart() for task " .. self.taskName .. ", failed to get spawn area after 10 attempts using getSpawnArea with coords " .. SceneObject(pPlayer):getWorldPositionX() .. " " .. SceneObject(pPlayer):getWorldPositionY()  .. " on " .. SceneObject(pPlayer):getZoneName() .. ", min dist " .. self.minimumDistance .. ", max dist " .. self.maximumDistance .. ".")
 		self:callFunctionIfNotNil(self.onFailedSpawn, nil, pPlayer)
 		self:finish(pPlayer)
 		return false

@@ -5,6 +5,8 @@
 package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.ArmorObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class PsgArmorObject extends ArmorObject {

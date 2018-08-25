@@ -25,7 +25,8 @@ dwarf_nuna = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dwarf_nuna.iff"},
+	templates = {"object/mobile/dwarf_nuna_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/dwarf_nuna_hue.iff",
 	scale = 0.65,
 	lootGroups = {},

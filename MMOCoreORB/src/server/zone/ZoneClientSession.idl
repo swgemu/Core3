@@ -41,6 +41,7 @@ class ZoneClientSession extends ManagedObject {
 	public native void disconnect(boolean doLock);
 	
 	@dirty
+	@local
 	public native void sendMessage(BasePacket msg);
 
 	public native void balancePacketCheckupTime();

@@ -8,6 +8,9 @@
 #ifndef CLONESPAWNPOINT_H_
 #define CLONESPAWNPOINT_H_
 
+#include "engine/util/u3d/Coordinate.h"
+#include "engine/util/u3d/Quaternion.h"
+
 class CloneSpawnPoint : public Object {
 	Coordinate coordinate;
 	Quaternion direction;

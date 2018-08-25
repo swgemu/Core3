@@ -160,6 +160,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 
 		break;
 
+	case ALREADYAFFECTEDJEDIPOWER:
+			creature->sendSystemMessage("@jedi_spam:power_already_active"); // This target is already affected by that power.
+			if (addToQueue)
+				creature->clearQueueAction(actioncntr);
+
+			break;
+
 	case NOPRONE:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 1, 7);

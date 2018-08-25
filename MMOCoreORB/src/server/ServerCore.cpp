@@ -23,7 +23,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 
-#include "engine/util/u3d/QuadTree.h"
+#include "server/zone/QuadTree.h"
 
 #include "engine/core/MetricsManager.h"
 
@@ -84,6 +84,8 @@ void ServerCore::initialize() {
 	processConfig();
 
 	Logger::setGlobalFileLogger(configManager->getLogFile());
+	Logger::setGlobalFileJson(configManager->getJsonLogOutput());
+	Logger::setGlobalFileLoggerSync(configManager->getSyncLogOutput());
 	Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(configManager->getLogFileLevel()));
 
 	try {
@@ -119,7 +121,7 @@ void ServerCore::initialize() {
 
 		if (configManager->getMakeZone()) {
 			ZoneServer* zoneServer = new ZoneServer(configManager);
-			zoneServer->deploy("ZoneServer");
+            zoneServer->deploy("ZoneServer");
 
 			zoneServerRef = zoneServer;
 		}

@@ -8,6 +8,8 @@ import engine.util.Observer;
 import engine.util.Observable;
 include server.zone.objects.area.CampSiteActiveArea;
 include templates.params.ObserverEventType;
+include engine.log.Logger;
+import engine.core.ManagedObject;
 
 class CampSiteObserver extends Observer implements Logger {
 	@weakReference

@@ -74,6 +74,12 @@ public:
 			return GENERALERROR;
 		}
 
+		if (vehicle->isIncapacitated())
+			return GENERALERROR;
+
+		if (vehicle->isDead())
+			return GENERALERROR;
+
 		if (vehicle->getPosture() == CreaturePosture::LYINGDOWN || vehicle->getPosture() == CreaturePosture::SITTING) {
 			vehicle->setPosture(CreaturePosture::UPRIGHT);
 		}
