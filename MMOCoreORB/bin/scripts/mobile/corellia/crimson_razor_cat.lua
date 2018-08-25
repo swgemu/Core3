@@ -26,6 +26,7 @@ crimson_razor_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/crimson_sand_panther.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

@@ -26,6 +26,7 @@ corellian_butterfly_warrior = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

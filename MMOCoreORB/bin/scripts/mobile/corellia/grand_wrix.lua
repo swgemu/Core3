@@ -26,6 +26,7 @@ grand_wrix = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/grand_wrix.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

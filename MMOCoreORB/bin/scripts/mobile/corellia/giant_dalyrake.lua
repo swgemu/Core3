@@ -26,6 +26,7 @@ giant_dalyrake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_dalyrake.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/dalyrake_hue.iff",
 	scale = 1.5,
 	lootGroups = {},

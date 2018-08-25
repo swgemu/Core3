@@ -26,6 +26,7 @@ gronda_juggernaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.4,
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,7 @@ mountain_murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_murra.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	scale = 1.2,
 	lootGroups = {},

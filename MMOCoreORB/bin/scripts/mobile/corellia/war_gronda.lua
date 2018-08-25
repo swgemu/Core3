@@ -26,6 +26,7 @@ war_gronda = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/war_gronda.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

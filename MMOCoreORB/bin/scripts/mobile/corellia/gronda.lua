@@ -25,7 +25,8 @@ gronda = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gronda.iff"},
+	templates = {"object/mobile/gronda_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	lootGroups = {},
 	weapons = {},

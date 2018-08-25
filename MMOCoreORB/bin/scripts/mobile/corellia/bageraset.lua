@@ -26,7 +26,8 @@ bageraset = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bageraset.iff"},
+	templates = {"object/mobile/bageraset_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/bageraset_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
