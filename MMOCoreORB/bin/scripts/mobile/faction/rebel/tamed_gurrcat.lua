@@ -25,7 +25,8 @@ tamed_gurrcat = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gurrcat.iff"},
+	templates = {"object/mobile/gurrcat_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

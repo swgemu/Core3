@@ -1,4 +1,4 @@
-dine_lizard = Creature:new {
+dune_lizard = Creature:new {
 	objectName = "@mob/creature_names:dune_lizard",
 	socialGroup = "dune_lizard",
 	faction = "",
@@ -25,7 +25,8 @@ dine_lizard = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dune_lizard.iff"},
+	templates = {"object/mobile/dune_lizard_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +35,4 @@ dine_lizard = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(dine_lizard, "dine_lizard")
+CreatureTemplates:addCreatureTemplate(dune_lizard, "dune_lizard")

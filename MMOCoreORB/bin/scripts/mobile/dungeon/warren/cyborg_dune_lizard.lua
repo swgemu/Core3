@@ -26,6 +26,7 @@ cyborg_dune_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/warren_cyborg_dunelizard.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
