@@ -26,6 +26,7 @@ gackle_bat_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gackle_bat_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

@@ -25,7 +25,8 @@ stormtrooper_dewback = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dewback.iff"},
+	templates = {"object/mobile/dewback_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.2,
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,7 @@ kai_tok_slayer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
 	scale = 1.05,
 	lootGroups = {},

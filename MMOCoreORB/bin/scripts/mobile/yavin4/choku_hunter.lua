@@ -26,6 +26,7 @@ choku_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/choku_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/choku_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

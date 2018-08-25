@@ -25,7 +25,8 @@ sandreaver = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dewback.iff"},
+	templates = {"object/mobile/dewback_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

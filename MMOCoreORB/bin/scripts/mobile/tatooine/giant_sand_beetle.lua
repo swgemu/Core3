@@ -26,6 +26,7 @@ giant_sand_beetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 4,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

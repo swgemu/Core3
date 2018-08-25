@@ -27,6 +27,7 @@ desert_squill = Creature:new {
 	scale = 1.15,
 
 	templates = {"object/mobile/squill_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	lootGroups = {},
 	weapons = {},

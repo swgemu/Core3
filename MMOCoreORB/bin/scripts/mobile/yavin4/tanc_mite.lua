@@ -25,7 +25,8 @@ tanc_mite = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/tanc_mite.iff"},
+	templates = {"object/mobile/tanc_mite_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/tanc_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},

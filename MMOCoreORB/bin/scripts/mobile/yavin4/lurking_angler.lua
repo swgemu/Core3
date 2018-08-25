@@ -26,6 +26,7 @@ lurking_angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

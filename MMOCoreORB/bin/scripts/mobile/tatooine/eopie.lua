@@ -26,7 +26,8 @@ eopie = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/eopie.iff"},
+	templates = {"object/mobile/eopie_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/eopie_hue.iff",
 	lootGroups = {},
 	weapons = {},
