@@ -26,6 +26,7 @@ mound_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mound_mite.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
 	scale = 0.8,
 	lootGroups = {},

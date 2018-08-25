@@ -26,6 +26,7 @@ festering_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squill_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	scale = 1.2,
 	lootGroups = {},

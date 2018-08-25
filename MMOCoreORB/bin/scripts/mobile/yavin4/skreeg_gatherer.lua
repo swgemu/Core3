@@ -26,6 +26,7 @@ skreeg_gatherer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
 	scale = 0.9,
 	lootGroups = {},

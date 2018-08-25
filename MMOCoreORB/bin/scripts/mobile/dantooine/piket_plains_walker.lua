@@ -27,6 +27,7 @@ piket_plains_walker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/piket_plains_walker.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	scale = 1.05,
 	lootGroups = {},

@@ -26,6 +26,7 @@ huf_dun_bull = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huf_dun_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

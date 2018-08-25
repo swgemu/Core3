@@ -16,6 +16,7 @@ class ChallengeVoteData extends ManagedObject {
 	protected Time challengeVoteStart;
 	
 	unsigned long playerID;
+	unsigned long challengerID;
 	int playerRank;
 	int status;
 	
@@ -25,10 +26,11 @@ class ChallengeVoteData extends ManagedObject {
 	@dereferenced
 	protected Vector<unsigned long> noVotes;
 
-	public ChallengeVoteData(unsigned long player, int stat, int rank) {
+	public ChallengeVoteData(unsigned long player, int stat, int rank, int challenger) {
 		playerID = player;
 		status = stat;
 		playerRank = rank;
+		challengerID = challenger;
 		
 		challengeVoteStart.updateToCurrentTime();
 	}
@@ -72,6 +74,11 @@ class ChallengeVoteData extends ManagedObject {
 	@read
 	public int getPlayerRank() {
 		return playerRank;
+	}
+	
+	@read
+	public unsigned long getChallengerID() {
+		return challengerID;
 	}
 	
 	public unsigned long getChallengeVoteStart() {

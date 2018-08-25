@@ -25,7 +25,8 @@ deranged_mantigrue = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mantigrue_night_stalker.iff"},
+	templates = {"object/mobile/condor_dragon_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {},

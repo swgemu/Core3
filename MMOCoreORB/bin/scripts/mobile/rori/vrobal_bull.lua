@@ -27,6 +27,7 @@ vrobal_bull = Creature:new {
 	scale = 1.15,
 
 	templates = {"object/mobile/vrobal_bull.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

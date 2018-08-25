@@ -26,6 +26,7 @@ kusak_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/kusak_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

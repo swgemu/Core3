@@ -25,7 +25,8 @@ tamed_slice_hound = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/corellian_slice_hound.iff"},
+	templates = {"object/mobile/corellian_slice_hound_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

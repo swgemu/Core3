@@ -26,6 +26,7 @@ dashing_vir_vur = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/vir_vur_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/vir_vur_hue.iff",
 	scale = 1.05,
 	lootGroups = {},

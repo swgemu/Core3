@@ -26,6 +26,7 @@ blurrg_raptor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.35,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

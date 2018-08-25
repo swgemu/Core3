@@ -26,6 +26,7 @@ woolamander_harrower = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/woolamander_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.25,
 	lootGroups = {
 		{

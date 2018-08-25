@@ -26,6 +26,7 @@ greater_desert_womp_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/greater_desert_womp_rat.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

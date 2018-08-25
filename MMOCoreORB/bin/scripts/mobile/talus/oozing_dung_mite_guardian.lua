@@ -26,6 +26,7 @@ oozing_dung_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dung_mite.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

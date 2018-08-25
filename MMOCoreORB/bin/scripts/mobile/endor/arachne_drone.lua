@@ -26,6 +26,7 @@ arachne_drone = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.9,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

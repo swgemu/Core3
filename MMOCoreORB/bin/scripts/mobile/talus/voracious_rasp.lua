@@ -25,7 +25,8 @@ voracious_rasp = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/plumed_rasp.iff"},
+	templates = {"object/mobile/horned_rasp_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.35,
 	lootGroups = {},
 	weapons = {},

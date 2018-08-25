@@ -26,6 +26,7 @@ shear_mite_broodling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_broodling.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	scale = 0.75,
 	lootGroups = {},

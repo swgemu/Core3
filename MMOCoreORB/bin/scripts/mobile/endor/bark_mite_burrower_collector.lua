@@ -26,6 +26,7 @@ bark_mite_burrower_collector = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},

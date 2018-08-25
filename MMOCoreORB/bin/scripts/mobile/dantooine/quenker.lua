@@ -25,7 +25,8 @@ quenker = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/quenker.iff"},
+	templates = {"object/mobile/quenker_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/quenker_hue.iff",
 	lootGroups = {},
 	weapons = {},

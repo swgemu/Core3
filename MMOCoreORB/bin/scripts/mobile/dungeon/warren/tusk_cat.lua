@@ -25,7 +25,8 @@ tusk_cat = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/tusk_cat.iff"},
+	templates = {"object/mobile/tusk_cat_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

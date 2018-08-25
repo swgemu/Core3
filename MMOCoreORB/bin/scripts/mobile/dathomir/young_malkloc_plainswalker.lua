@@ -26,6 +26,7 @@ young_malkloc_plainswalker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/young_malkloc.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 0.9,
 	lootGroups = {},
 	weapons = {},

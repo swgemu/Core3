@@ -26,6 +26,7 @@ rancid_remmer_warrior = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/remmer_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

@@ -26,6 +26,7 @@ mamien_jungle_lord = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	scale = 1.25,
 	lootGroups = {},

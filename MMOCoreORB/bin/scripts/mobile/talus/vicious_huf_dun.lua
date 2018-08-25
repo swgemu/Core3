@@ -25,7 +25,8 @@ vicious_huf_dun = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/huf_dun.iff"},
+	templates = {"object/mobile/huf_dun_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/huf_dun_hue.iff",
 	scale = 0.9,
 	lootGroups = {},

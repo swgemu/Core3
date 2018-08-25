@@ -26,6 +26,7 @@ purbole_scout = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/purbole_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
 	scale = 0.95,
 	lootGroups = {},

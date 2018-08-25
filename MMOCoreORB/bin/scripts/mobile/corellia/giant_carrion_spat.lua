@@ -27,6 +27,7 @@ giant_carrion_spat = Creature:new {
 	scale = 2.0,
 
 	templates = {"object/mobile/giant_carrion_spat.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
 	lootGroups = {},
 	weapons = {},

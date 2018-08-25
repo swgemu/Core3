@@ -26,7 +26,8 @@ piket = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/piket.iff"},
+	templates = {"object/mobile/piket_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	lootGroups = {},
 	weapons = {},

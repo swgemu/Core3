@@ -25,7 +25,8 @@ dune_lizard = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dune_lizard.iff"},
+	templates = {"object/mobile/dune_lizard_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

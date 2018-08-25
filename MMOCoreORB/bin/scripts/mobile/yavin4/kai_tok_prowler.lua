@@ -26,6 +26,7 @@ kai_tok_prowler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
 	scale = 0.9,
 	lootGroups = {},

@@ -25,7 +25,8 @@ durni = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/durni.iff"},
+	templates = {"object/mobile/durni_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/durni_hue.iff",
 	lootGroups = {},
 	weapons = {},

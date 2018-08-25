@@ -26,6 +26,7 @@ mutated_kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mutated_kahmurra.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	scale = 1.2,
 	lootGroups = {},

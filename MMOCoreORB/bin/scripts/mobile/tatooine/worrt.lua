@@ -26,6 +26,7 @@ worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/worrt_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
 	lootGroups = {},
 	weapons = {},

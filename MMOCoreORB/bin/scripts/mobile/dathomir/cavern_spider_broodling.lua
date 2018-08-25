@@ -26,6 +26,7 @@ cavern_spider_broodling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_broodling.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 0.85,
 	lootGroups = {},
 	weapons = {},

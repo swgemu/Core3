@@ -27,7 +27,8 @@ dim_u_bantha = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bantha.iff"},
+	templates = {"object/mobile/bantha_hue.iff"},
+	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 0.95,
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,7 @@ puny_gackle_bat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/puny_gackle_bat.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.6,
 	lootGroups = {},
 	weapons = {},

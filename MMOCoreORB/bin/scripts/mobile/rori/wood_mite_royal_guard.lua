@@ -26,6 +26,7 @@ wood_mite_royal_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	scale = 1.05,
 	lootGroups = {},

@@ -25,7 +25,8 @@ male_mamien = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mamien.iff"},
+	templates = {"object/mobile/mamien_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	lootGroups = {},
 	weapons = {},

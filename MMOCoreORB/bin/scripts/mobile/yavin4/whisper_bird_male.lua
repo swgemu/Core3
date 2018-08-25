@@ -25,7 +25,8 @@ whisper_bird_male = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/whisper_bird.iff"},
+	templates = {"object/mobile/whisper_bird_hue.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.05,
 	lootGroups = {},
 	weapons = {},

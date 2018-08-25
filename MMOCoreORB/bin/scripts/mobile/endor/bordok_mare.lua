@@ -26,7 +26,8 @@ bordok_mare = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bordok.iff"},
+	templates = {"object/mobile/bordok_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

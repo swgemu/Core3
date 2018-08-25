@@ -26,6 +26,7 @@ noxious_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squill_hue.iff"},
+	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	scale = 1.1,
 	lootGroups = {},

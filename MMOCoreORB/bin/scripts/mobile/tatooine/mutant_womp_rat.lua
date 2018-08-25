@@ -25,7 +25,8 @@ mutant_womp_rat = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/womp_rat.iff"},
+	templates = {"object/mobile/womp_rat_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
 	scale = 1.15,
 	lootGroups = {},

@@ -25,7 +25,8 @@ angler = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/angler.iff"},
+	templates = {"object/mobile/angler_hue.iff"},
+	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/angler_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},
