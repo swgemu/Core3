@@ -106,7 +106,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/creature/credits/CreditObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
+				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
 				autogen/server/zone/objects/mission/PlayerBounty.cpp \
 				autogen/server/chat/PendingMessageList.cpp \
 				autogen/server/zone/managers/frs/FrsManager.cpp \
