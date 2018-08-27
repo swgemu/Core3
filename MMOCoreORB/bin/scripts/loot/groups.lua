@@ -113,6 +113,7 @@ includeFile("groups/geonosian_lab/geo_kliknik.lua")
 includeFile("groups/geonosian_lab/geonosian_common.lua")
 includeFile("groups/geonosian_lab/geonosian_cubes.lua")
 includeFile("groups/geonosian_lab/geonosian_hard.lua")
+includeFile("groups/geonosian_lab/geonosian_loot_container.lua")
 includeFile("groups/geonosian_lab/geonosian_relic.lua")
 
 -- hero_of_tatooine sub-folder

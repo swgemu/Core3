@@ -15,6 +15,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -78,6 +79,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setFrsRank", &LuaPlayerObject::setFrsRank },
 		{ "getFrsRank", &LuaPlayerObject::getFrsRank },
 		{ "getFrsCouncil", &LuaPlayerObject::getFrsCouncil },
+		{ "startSlicingSession", &LuaPlayerObject::startSlicingSession },
+		{ "setVisibility", &LuaPlayerObject::setVisibility },
 		{ 0, 0 }
 };
 
@@ -665,6 +668,15 @@ int LuaPlayerObject::setFrsCouncil(lua_State* L) {
 	return 0;
 }
 
+int LuaPlayerObject::setVisibility(lua_State* L) {
+	int visValue = lua_tointeger(L, -1);
+
+	realObject->setVisibility(visValue);
+
+	return 0;
+}
+
+
 int LuaPlayerObject::setFrsRank(lua_State* L) {
 	int rank = lua_tointeger(L, -1);
 
@@ -695,4 +707,24 @@ int LuaPlayerObject::getFrsCouncil(lua_State* L) {
 	lua_pushinteger(L, frsData->getCouncilType());
 
 	return 1;
+}
+
+int LuaPlayerObject::startSlicingSession(lua_State* L) {
+	TangibleObject* objToSlice = (TangibleObject*) lua_touserdata(L, -1);
+
+	ManagedReference<CreatureObject*> player = realObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (player == nullptr)
+		return 0;
+
+	if (player->containsActiveSession(SessionFacadeType::SLICING)) {
+		player->sendSystemMessage("@slicing/slicing:already_slicing");
+		return 0;
+	}
+
+	//Create Session
+	ManagedReference<SlicingSession*> session = new SlicingSession(player);
+	session->initalizeSlicingMenu(player, objToSlice);
+
+	return 0;
 }

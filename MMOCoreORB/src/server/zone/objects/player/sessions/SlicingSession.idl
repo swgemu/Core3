@@ -35,6 +35,7 @@ class SlicingSession extends Facade {
 	protected boolean usedClamp;
 
 	protected boolean baseSlice;
+	protected boolean keypadSlice;
 
 	public SlicingSession(CreatureObject parent) {
 		Logger.setLoggingName("SlicingSession");
@@ -70,6 +71,8 @@ class SlicingSession extends Facade {
 			return "terminal_";
 		else if (isBaseSlice())
 			return "hq_security_";
+		else if (isKeypadSlice())
+			return "keypad_";
 		else if (obj.isWeaponObject())
 			return "weapon_";
 		else if (obj.isArmorObject())
@@ -86,6 +89,14 @@ class SlicingSession extends Facade {
 
 	public native boolean isBaseSlice() {
 		return baseSlice;
+	}
+	
+	public native boolean isKeypadSlice() {
+		return keypadSlice;
+	}
+	
+	public native void setKeypadSlice(boolean val){
+		keypadSlice = val;
 	}
 
 	public native void setBaseSlice(boolean val){
