@@ -3686,6 +3686,8 @@ void CreatureObjectImplementation::setHue(int hueIndex) {
 			tempHue = maxIndex - 1;
 
 		setCustomizationVariable(varName, tempHue, true);
+
+		delete(paletteTemplate);
 	}
 
 	hueValue = hueIndex;
