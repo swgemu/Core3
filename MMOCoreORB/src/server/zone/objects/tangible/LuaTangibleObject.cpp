@@ -125,6 +125,9 @@ int LuaTangibleObject::getPaletteColorCount(lua_State* L) {
 					continue;
 
 				colors = paletteTemplate->getColorCount();
+
+				delete(paletteTemplate);
+
 				break;
 			}
 		}
