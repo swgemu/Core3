@@ -86,6 +86,8 @@ namespace player {
 		int setFrsRank(lua_State* L);
 		int getFrsRank(lua_State* L);
 		int getFrsCouncil(lua_State* L);
+		int startSlicingSession(lua_State* L);
+		int setVisibility(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
