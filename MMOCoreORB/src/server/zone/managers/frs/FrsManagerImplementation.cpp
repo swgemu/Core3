@@ -1833,6 +1833,8 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 				StringIdChatParameter mailBody("@force_rank:vote_win_body"); // Your Enclave peers have decided that you are worthy of a promotion within the hierarchy. You should return to your Enclave as soon as possible and select "Accept Promotion" at the voting terminal.
 				sendMailToList(winnerList, "@force_rank:vote_win_sub", mailBody);
 
+				delete(winnerList);
+
 				rankData->setVoteStatus(WAITING);
 			} else { // No available slot, top winner will be auto promoted next time a slot opens
 				Vector<uint64>* winnerList = getTopVotes(rankData, 1);
@@ -1840,6 +1842,8 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 
 				StringIdChatParameter mailBody("@force_rank:vote_win_no_slot_body"); // You have won the vote by your Enclave peers in order to achieve a higher ranking. Unforuntately, there are no longer any open seats for you to fill. As a result, you will be offered a chance to accept an open seat the next time one becomes available.
 				sendMailToList(winnerList, "@force_rank:vote_win_sub", mailBody);
+
+				delete(winnerList);
 
 				rankData->setVoteStatus(VOTING_CLOSED); // Set status to closed without resetting voting data so that the winner will auto take the next available slot
 			}
@@ -3944,8 +3948,6 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 			if (votesGained > 0)
 				rankData->addToPetitionerList(contribID, curVotes + votesGained);
 
-			contributor->sendSystemMessage("DEBUG Contrib Damage: " + String::valueOf(damageContrib) + ", Total: " + String::valueOf(totalContrib) + ", Percent: " + String::valueOf(contribPercent) + ", Votes: " + String::valueOf(votesGained) + "/" + String::valueOf(totalVotes));
-
 			StringIdChatParameter msgBody("@pvp_rating:dark_jedi_kill_won_votes"); // You have earned %DI votes for defeating %TT in combat.
 			msgBody.setDI(votesGained);
 			msgBody.setTT(player->getFirstName());
@@ -3953,6 +3955,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 			contributor->sendSystemMessage(msgBody);
 		}
 	}
+
+	delete(contribList);
 
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	StringIdChatParameter msgBody("@pvp_rating:sudden_death_death"); // %TT has fallen to a fellow rank petitioner. Any votes they may have had accumilated have been divided amongs those that took part in the slaughter of %TT. Let this be a lesson in how the Council deals with failure.
