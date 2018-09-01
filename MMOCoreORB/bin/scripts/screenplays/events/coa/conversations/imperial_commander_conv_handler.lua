@@ -9,19 +9,19 @@ function imperialCommanderConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemp
 
 	if TangibleObject(pPlayer):isRebel() then
 		return convoTemplate:getScreen("begin_wrong_faction")
-	elseif state == nil or state < 9 then
+	elseif state == nil or state < Coa2Screenplay.M3_4_ACTIVE then
 		return convoTemplate:getScreen("m4_finish_incomplete")
-	elseif state == 9 then
+	elseif state == Coa2Screenplay.M3_4_ACTIVE then
 		return convoTemplate:getScreen("m4_finish")
-	elseif state == 10 or state == 11 then
+	elseif state == Coa2Screenplay.M3_4_COMPLETE or state == Coa2Screenplay.M5_REFUSED then
 		if TangibleObject(pPlayer):isNeutral() then
 			return convoTemplate:getScreen("m5_begin_undeclared")
 		else
 			return convoTemplate:getScreen("m5_begin_declared")
 		end
-	elseif state == 12 then
+	elseif state == Coa2Screenplay.M5_ACTIVE then
 		return convoTemplate:getScreen("m5_active")
-	elseif state > 12 then
+	elseif state > Coa2Screenplay.M5_ACTIVE then
 		return convoTemplate:getScreen("m5_finish")
 	end
 
@@ -37,7 +37,7 @@ function imperialCommanderConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	elseif screenID == "m5_begin_yes" then
 		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "imperial")
 	elseif screenID == "m5_active_abort" then
-		writeScreenPlayData(pPlayer, "imperial_coa2", "state", 11)
+		writeScreenPlayData(pPlayer, "imperial_coa2", "state", Coa2Screenplay.M5_REFUSED)
 		Coa2Screenplay:cleanupMission(pPlayer, "imperial")
 	elseif screenID == "m5_active_restart" then
 		Coa2Screenplay:cleanupMission(pPlayer, "imperial")

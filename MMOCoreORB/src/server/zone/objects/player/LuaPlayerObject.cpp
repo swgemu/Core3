@@ -710,7 +710,11 @@ int LuaPlayerObject::getFrsCouncil(lua_State* L) {
 }
 
 int LuaPlayerObject::startSlicingSession(lua_State* L) {
-	TangibleObject* objToSlice = (TangibleObject*) lua_touserdata(L, -1);
+	TangibleObject* objToSlice = (TangibleObject*) lua_touserdata(L, -2);
+	bool isKeypadSlice = lua_toboolean(L, -1);
+
+	if (objToSlice == nullptr)
+		return 0;
 
 	ManagedReference<CreatureObject*> player = realObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
@@ -724,6 +728,7 @@ int LuaPlayerObject::startSlicingSession(lua_State* L) {
 
 	//Create Session
 	ManagedReference<SlicingSession*> session = new SlicingSession(player);
+	session->setKeypadSlice(isKeypadSlice);
 	session->initalizeSlicingMenu(player, objToSlice);
 
 	return 0;

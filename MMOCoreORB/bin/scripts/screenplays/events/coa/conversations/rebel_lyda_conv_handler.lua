@@ -11,7 +11,7 @@ function rebelLydaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	if playersNpcID == npcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
-		if state == 7 then
+		if state == Coa2Screenplay.M2_RETURN then
 			return convoTemplate:getScreen("m2_lydasaved_done")
 		else
 			return convoTemplate:getScreen("m2_lydasaved")
@@ -28,7 +28,7 @@ function rebelLydaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 	if screenID == "m2_lydasaved_done" then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
-		if state == 6 then
+		if state == Coa2Screenplay.M2_ACTIVE then
 			Coa2Screenplay:progressMissionTwo(pPlayer, "rebel")
 		end
 	end

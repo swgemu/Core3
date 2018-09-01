@@ -11,7 +11,7 @@ function rebelSympathizerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 	if npcID == playersNpcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
-		if state == 3 then
+		if state == Coa2Screenplay.M1_RETURN then
 			return convoTemplate:getScreen("m1_sympathizer_complete")
 		else
 			return convoTemplate:getScreen("m1_sympathizer_greeting")

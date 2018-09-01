@@ -41,7 +41,7 @@ function GeoLabTrapTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pP
 	end
 
 	deleteData("geoLab:trapEnabled:" .. trapIndex)
-	local trapTimer = 7000
+	local trapTimer = 10000
 
 	if (trapIndex == 3) then
 		trapTimer = 27000

@@ -9,25 +9,25 @@ function rebelCommanderConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplat
 
 	if TangibleObject(pPlayer):isImperial() then
 		return convoTemplate:getScreen("begin_wrong_faction")
-	elseif state == nil or state < 9 then
+	elseif state == nil or state < Coa2Screenplay.M3_4_ACTIVE then
 		return convoTemplate:getScreen("m4_finish_incomplete")
-	elseif state == 9 then
+	elseif state == Coa2Screenplay.M3_4_ACTIVE then
 		return convoTemplate:getScreen("m4_finish")
-	elseif state == 10 then
+	elseif state == Coa2Screenplay.M3_4_COMPLETE then
 		if TangibleObject(pPlayer):isNeutral() then
 			return convoTemplate:getScreen("m5_begin_undeclared")
 		else
 			return convoTemplate:getScreen("m5_begin")
 		end
-	elseif state == 11 then
+	elseif state == Coa2Screenplay.M5_REFUSED then
 		if TangibleObject(pPlayer):isNeutral() then
 			return convoTemplate:getScreen("m5_begin_undeclared")
 		else
 			return convoTemplate:getScreen("m5_refused")
 		end
-	elseif state == 12 then
+	elseif state == Coa2Screenplay.M5_ACTIVE then
 		return convoTemplate:getScreen("m5_active")
-	elseif state > 12 then
+	elseif state > Coa2Screenplay.M5_ACTIVE then
 		return convoTemplate:getScreen("m5_finish")
 	end
 
@@ -41,11 +41,11 @@ function rebelCommanderConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 	if screenID == "m4_finish" then
 		Coa2Screenplay:finishMissionFour(pPlayer, "rebel")
 	elseif screenID == "m5_begin_no" then
-		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 11)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", Coa2Screenplay.M5_REFUSED)
 	elseif screenID == "m5_begin_yes" or screenID == "m5_refused_yes" then
 		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "rebel")
 	elseif screenID == "m5_active_abort" then
-		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 11)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", Coa2Screenplay.M5_REFUSED)
 		Coa2Screenplay:cleanupMission(pPlayer, "rebel")
 	elseif screenID == "m5_active_restart" then
 		Coa2Screenplay:cleanupMission(pPlayer, "rebel")
