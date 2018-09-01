@@ -1,47 +1,17 @@
-
---[[
-Quest states:
-1 - m1 refused/aborted
-2 - m1 active
-3 - m1 return
-4 - m1 complete
-5 - m2 refused/aborted
-6 - m2 active
-7 - m2 return
-8 - m2 complete
-9 - m3/4 active
-10 - m3/4 complete
-11 - m5 refused/aborted
-12 - m5 active
-13 - m5 complete
-]]
-
 Coa2Screenplay = ScreenPlay:new {
-	numberOfActs = 1,
-	screenplayName = "Coa2Screenplay",
-
-	staticNpcs = {
-		{"coa2_imperial_coordinator", "naboo", 5144, -192, 6674, 50},
-		{"coa2_imperial_coordinator", "naboo", -5431.7, 6, 4168.5, 173},
-		{"coa2_imperial_coordinator", "rori", -5255.8, 80, -2254.5, -99},
-		{"coa2_imperial_coordinator", "rori", 5347.5, 80, 5617.5, -8},
-		{"coa2_imperial_coordinator", "tatooine", -1131.2, 12, -3661.2, -36},
-		{"coa2_rebel_coordinator", "corellia", -5218.1, 21, -2602.6, -11},
-		{"coa2_rebel_coordinator", "corellia", 95.3, 28, -4519.1, -91},
-		{"coa2_rebel_coordinator", "talus", 4065.1, 2, 5289.5, 130},
-		{"coa2_rebel_coordinator", "tatooine", 3286.3, 5, -4524.8, -48},
-		{"coa2_rebel_coordinator", "tatooine", -2927.5, 5, 2574.3, 131},
-		{"imperial_recruiter", "dantooine", 2503.7, 14, -2049, 179},
-		{"imperial_recruiter", "dathomir", -6306, 122.9, -532.5, -34},
-		{"imperial_recruiter", "endor", -1950.7, 146.6, 1051.8, -54},
-		{"imperial_recruiter", "lok", -2572.2, 21.7, -862.5, 101},
-		{"imperial_recruiter", "yavin4", 1588.7, 50.5, -3538.5, 38},
-		{"rebel_recruiter", "dantooine", 6876.7, 60, -2258.4, -78},
-		{"rebel_recruiter", "dathomir", -48.3, 142.1, 88.1, -139},
-		{"rebel_recruiter", "endor", 4018.8, 7.4, 2966.2, -53},
-		{"rebel_recruiter", "lok", -4749, 4, 3525.5, 113},
-		{"rebel_recruiter", "yavin4", -4237, 183, 2284.1, -165},
-	},
+	M1_REFUSED = 1,
+	M1_ACTIVE = 2,
+	M1_RETURN = 3,
+	M1_COMPLETE = 4,
+	M2_REFUSED = 5,
+	M2_ACTIVE = 6,
+	M2_RETURN = 7,
+	M2_COMPLETE = 8,
+	M3_4_ACTIVE = 9,
+	M3_4_COMPLETE = 10,
+	M5_REFUSED = 11,
+	M5_ACTIVE = 12,
+	M5_COMPLETE = 13,
 
 	commanders = {
 		{"coa2_imperial_commander", "dantooine", 2505.7, 14, -2053.4, -139},
@@ -64,14 +34,7 @@ function Coa2Screenplay:start()
 end
 
 function Coa2Screenplay:spawnStaticNpcs()
-	for i = 1, # self.staticNpcs do
-		local npc = self.staticNpcs[i]
-		if isZoneEnabled(npc[2]) then
-			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
-		end
-	end
-
-	for i = 1, # self.commanders do
+	for i = 1, #self.commanders do
 		local npc = self.commanders[i]
 		if isZoneEnabled(npc[2]) then
 			local pNpc = spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
@@ -226,7 +189,7 @@ function Coa2Screenplay:startMissionOne(pPlayer, conversingNPC, faction)
 
 	writeData(playerID .. ":coaCoordinatorID", SceneObject(conversingNPC):getObjectID())
 	writeData(playerID .. ":coaWayID", wayID)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 2)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M1_ACTIVE)
 
 	SceneObject(pPlayer):addPendingTask(1800000, "Coa2Screenplay", "timeoutMission")
 end
@@ -280,7 +243,7 @@ function Coa2Screenplay:progressMissionOne(pPlayer, faction)
 	end
 
 	writeData(playerID .. ":coaWayID", wayID)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 3)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M1_RETURN)
 end
 
 function Coa2Screenplay:finishMissionOne(pPlayer, faction)
@@ -294,7 +257,7 @@ function Coa2Screenplay:finishMissionOne(pPlayer, faction)
 
 	PlayerObject(pGhost):addRewardedSchematic("object/draft_schematic/item/theme_park/alderaan/act2/dead_eye_decoder.iff", 2, 1, true)
 
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 4)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M1_COMPLETE)
 end
 
 function Coa2Screenplay:startMissionTwo(pPlayer, conversingNPC, faction)
@@ -352,7 +315,7 @@ function Coa2Screenplay:startMissionTwo(pPlayer, conversingNPC, faction)
 	end
 
 	writeData(playerID .. ":coaCoordinatorID", SceneObject(conversingNPC):getObjectID())
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 6)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M2_ACTIVE)
 
 	SceneObject(pPlayer):addPendingTask(1800000, "Coa2Screenplay", "timeoutMission")
 end
@@ -379,7 +342,7 @@ function Coa2Screenplay:notifyImperialTargetDefeated(pNpc, pAttacker)
 
 	local state = tonumber(readScreenPlayData(pOwner, "imperial_coa2", "state"))
 
-	if state == 6 then
+	if state == self.M2_ACTIVE then
 		CreatureObject(pNpc):setLootRights(pOwner)
 
 		local pInventory = CreatureObject(pNpc):getSlottedObject("inventory")
@@ -404,7 +367,7 @@ function Coa2Screenplay:notifyImperialTargetDefeated(pNpc, pAttacker)
 			end
 		end
 
-	elseif state == 12 then
+	elseif state == self.M5_ACTIVE then
 		local count = tonumber(readData(ownerID .. ":coaDrallKilled"))
 
 		if count == nil then
@@ -446,7 +409,7 @@ function Coa2Screenplay:notifyRebelTargetDefeated(pNpc, pAttacker)
 
 	local state = tonumber(readScreenPlayData(pOwner, "rebel_coa2", "state"))
 
-	if state == 12 then
+	if state == self.M5_ACTIVE then
 		CreatureObject(pOwner):sendSystemMessage("@theme_park/alderaan/act2/shared_rebel_missions:access_key_received")
 		writeData(ownerID .. ":coaHasPassKey", 1)
 	end
@@ -493,7 +456,7 @@ function Coa2Screenplay:progressMissionTwo(pPlayer, faction)
 	end
 
 	writeData(playerID .. ":coaWayID", wayID)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 7)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M2_RETURN)
 end
 
 function Coa2Screenplay:startMissionThree(pPlayer, conversingNPC, faction)
@@ -519,7 +482,7 @@ function Coa2Screenplay:startMissionThree(pPlayer, conversingNPC, faction)
 		return
 	end
 
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 9)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M3_4_ACTIVE)
 end
 
 function Coa2Screenplay:finishMissionFour(pPlayer, faction)
@@ -535,7 +498,7 @@ function Coa2Screenplay:finishMissionFour(pPlayer, faction)
 
 	PlayerObject(pGhost):increaseFactionStanding(faction, 250)
 
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 10)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M3_4_COMPLETE)
 end
 
 function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
@@ -664,7 +627,7 @@ function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
 		end
 	end
 
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 12)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M5_ACTIVE)
 
 	SceneObject(pPlayer):addPendingTask(3600000, "Coa2Screenplay", "timeoutMission")
 end
@@ -720,7 +683,7 @@ function Coa2Screenplay:completeMissionFive(pPlayer, faction)
 		PlayerObject(pGhost):awardBadge(EVENT_COA2_REBEL)
 	end
 
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 13)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M5_COMPLETE)
 
 	SceneObject(pPlayer):cancelPendingTask("Coa2Screenplay", "timeoutMission")
 
@@ -745,11 +708,11 @@ function Coa2Screenplay:timeoutMission(pPlayer)
 	if state ~= nil then
 		local mission = 0
 
-		if state == 2 then
+		if state == self.M1_ACTIVE then
 			mission = 1
-		elseif state == 6 then
+		elseif state == self.M2_ACTIVE then
 			mission = 3
-		elseif state == 12 then
+		elseif state == self.M5_ACTIVE then
 			mission = 5
 		end
 
@@ -834,7 +797,7 @@ function CoaRelayStationTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
-		if pTerminalParent ~= nil and pTerminalParent == pPlayerParent and pInterfaceDevice ~= nil and state == 12 then
+		if pTerminalParent ~= nil and pTerminalParent == pPlayerParent and pInterfaceDevice ~= nil and state == self.M5_ACTIVE then
 			CreatureObject(pPlayer):sendSystemMessage("@theme_park/alderaan/act2/shared_rebel_missions:message_sent")
 			Coa2Screenplay:completeMissionFive(pPlayer, "rebel")
 			SceneObject(pInterfaceDevice):destroyObjectFromWorld()
