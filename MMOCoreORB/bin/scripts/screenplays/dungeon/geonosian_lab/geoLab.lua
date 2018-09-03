@@ -442,14 +442,14 @@ function GeonosianLab:keypadSuiCallback(pPlayer, pSui, eventIndex, code, pressed
 	local enteredCode = 0
 
 	if (code ~= nil and code ~= "") then
-		enteredCode = tonumber(args)
+		enteredCode = tonumber(code)
 	end
 
 	local keypadIndex = readData(keypadID .. ":geonosianLab:keypadIndex")
 	local keypadCode = self.keypadCodes[keypadIndex]
 
 	if (pressedButton == "enter") then
-		if (tonumber(enteredCode) == keypadCode) then
+		if (enteredCode == keypadCode) then
 			CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:right_code") --You have successfully entered the code for this door.
 			self:givePermission(pPlayer, "GeoLabKeypad" .. keypadIndex)
 		else
