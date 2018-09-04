@@ -9,7 +9,7 @@ function BiogenicAssistantConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	if screenID == "init_talk" then
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":geo_assistant_talked", 1)
 	elseif screenID == "really_fantastic" then
-		GeonosianLabScreenPlay:giveGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
+		GeonosianLab:giveGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
 	end
 	return pConvScreen
 end
@@ -20,7 +20,7 @@ function BiogenicAssistantConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemp
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, "geonosian_lab_datapad_delivered")) then
 		return convoTemplate:getScreen("thanks_for_delivering")
-	elseif (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
+	elseif (GeonosianLab:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 		return convoTemplate:getScreen("please_deliver_codes")
 	elseif (hasTalked ~= nil and hasTalked == 1) then
 		return convoTemplate:getScreen("back_ask_favor")

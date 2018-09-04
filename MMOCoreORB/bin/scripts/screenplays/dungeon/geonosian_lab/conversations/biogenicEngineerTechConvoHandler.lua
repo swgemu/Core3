@@ -11,7 +11,7 @@ function BiogenicEngineerTechConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 	local screenID = screen:getScreenID()
 
 	if screenID == "init_talk" then
-		if (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
+		if (GeonosianLab:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_a7b6a9c7", "oh_yes_codes")
 		end
 		clonedConversation:addOption("@conversation/biogenic_engineertech:s_56fde3ca", "could_use_help")
@@ -21,13 +21,13 @@ function BiogenicEngineerTechConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 	elseif screenID == "come_back_with_codes" or screenID == "come_back_when_find" then
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":geo_engineertech_talked", 1)
 	elseif screenID == "return_init" then
-		if (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
+		if (GeonosianLab:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_da5959ed", "yes_here_are_codes")
 		end
 		clonedConversation:addOption("@conversation/biogenic_engineertech:s_27707b65", "come_back_when_find")
-	elseif (screenID == "yes_here_are_codes" or screenID == "oh_yes_codes") and GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff") then
-		GeonosianLabScreenPlay:removeGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
-		GeonosianLabScreenPlay:giveGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")
+	elseif (screenID == "yes_here_are_codes" or screenID == "oh_yes_codes") and GeonosianLab:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff") then
+		GeonosianLab:removeGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
+		GeonosianLab:giveGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")
 		CreatureObject(pPlayer):setScreenPlayState(1, "geonosian_lab_datapad_delivered");
 	end
 	return pConvScreen

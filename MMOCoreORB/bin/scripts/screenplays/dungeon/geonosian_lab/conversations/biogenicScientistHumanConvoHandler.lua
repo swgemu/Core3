@@ -8,7 +8,7 @@ function BiogenicScientistHumanConvoHandler:runScreenHandlers(pConvTemplate, pPl
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if screenID == "since_youre_here" or screenID == "i_hope_so" then
 		CreatureObject(pPlayer):setScreenPlayState(1, "geonosian_lab_tenloss");
-		GeonosianLabScreenPlay:giveGeoItem(pPlayer, "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff")
+		GeonosianLab:giveGeoItem(pPlayer, "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff")
 	end
 
 	return pConvScreen

@@ -49,6 +49,8 @@ function GeoLabTrapTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pP
 	elseif (trapIndex == 4) then
 		trapTimer = 20000
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:power_off") -- You have shut off the power.
+		SceneObject(pTrap):clearContainerDefaultDenyPermission(OPEN + MOVEOUT)
+		SceneObject(pTrap):setContainerDefaultAllowPermission(OPEN + MOVEOUT)
 	else
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:gas_off") -- You have shut off the gas leak.
 		SceneObject(pTrap):playEffect("clienteffect/item_gas_leak_trap_off.cef", "")
@@ -77,7 +79,7 @@ function GeoLabTrashContainerMenuComponent:handleObjectMenuSelect(pSceneObject, 
 	if (trapEnabled == 1) then
 		CreatureObject(pPlayer):inflictDamage(pPlayer, 0, getRandomNumber(300, 700), 1)
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:electric_trash") -- You were electrified by the trash heap!
-		playClientEffectLoc(CreatureObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", "yavin4", CreatureObject(pSceneObject):getPositionX(), CreatureObject(pSceneObject):getPositionZ(), CreatureObject(pSceneObject):getPositionY(), CreatureObject(pSceneObject):getParentID())
+		playClientEffectLoc(CreatureObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", "yavin4", SceneObject(pSceneObject):getPositionX(), SceneObject(pSceneObject):getPositionZ(), SceneObject(pSceneObject):getPositionY(), SceneObject(pSceneObject):getParentID())
 	else
 		if (readData("geoLab:trashContainerLoot") == 1) then
 			createLoot(pSceneObject, "geonosian_loot_container", 1, false)

@@ -112,8 +112,8 @@ function GeonosianLab:setupTrap()
 
 		if (trapLoc[1] == "object/tangible/dungeon/trash_container.iff") then
 			SceneObject(pTrap):setContainerInheritPermissionsFromParent(false)
-			SceneObject(pTrap):setContainerDefaultDenyPermission(MOVEOUT)
-			SceneObject(pTrap):setContainerAllowPermission("GeoLabTrashContainer", MOVEOUT)
+			SceneObject(pTrap):clearContainerDefaultAllowPermission(OPEN + MOVEOUT)
+			SceneObject(pTrap):setContainerDefaultDenyPermission(OPEN + MOVEOUT)
 			SceneObject(pTrap):setObjectMenuComponent("GeoLabTrashContainerMenuComponent")
 			writeData("geoLab:trashContainerLoot", 1)
 		end
@@ -318,6 +318,11 @@ function GeonosianLab:turnOnTrap(pTrap)
 
 	if (trapIndex < 3) then
 		SceneObject(pTrap):playEffect("clienteffect/item_gas_leak_trap_on.cef", "")
+	end
+
+	if (trapIndex == 4) then
+		SceneObject(pTrap):clearContainerDefaultAllowPermission(OPEN + MOVEOUT)
+		SceneObject(pTrap):setContainerDefaultDenyPermission(OPEN + MOVEOUT)
 	end
 
 	createEvent(2000, "GeonosianLab", "spawnTrapEffect", pTrap, "")
