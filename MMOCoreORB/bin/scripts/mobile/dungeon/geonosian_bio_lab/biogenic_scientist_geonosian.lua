@@ -22,7 +22,7 @@ biogenic_scientist_geonosian = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + INTERESTING + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
