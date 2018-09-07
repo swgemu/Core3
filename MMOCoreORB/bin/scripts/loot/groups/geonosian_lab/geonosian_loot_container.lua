@@ -6,15 +6,10 @@ geonosian_loot_container = {
 	maximumLevel = 0,
 	lootItems = {
 		{itemTemplate = "geo_passkey", weight = 2000000},
-		{itemTemplate = "geo_relic_honey_carafe", weight = 1500000},
-		{itemTemplate = "geo_relic_ration_kit", weight = 1500000},
-		{itemTemplate = "geo_relic_small_ball", weight = 1500000},
-		{itemTemplate = "mandalorian_rebreather", weight = 1000000},
-		{itemTemplate = "geo_power_cube_green", weight = 250000},
-		{itemTemplate = "geo_power_cube_red", weight = 250000},
-		{itemTemplate = "geo_power_cube_white", weight = 250000},
-		{itemTemplate = "geo_power_cube_yellow", weight = 250000},
-		{itemTemplate = "geo_solidifying_agent", weight = 1500000},
+		{itemTemplate = "geo_relic_honey_carafe", weight = 2000000},
+		{itemTemplate = "geo_relic_ration_kit", weight = 2000000},
+		{itemTemplate = "geo_relic_small_ball", weight = 2000000},
+		{itemTemplate = "mandalorian_rebreather", weight = 2000000},
 	}
 }
 

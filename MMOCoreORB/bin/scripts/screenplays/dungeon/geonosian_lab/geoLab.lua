@@ -52,6 +52,16 @@ GeonosianLab = ScreenPlay:new {
 		{ worldX = -6181.5, worldZ = 48.3, worldY = -196.5, cell = 1627822 },
 	},
 
+	-- { x, z, y, cell, rot, overrideLootTemplate }
+	lootContainers = {
+		{ -53.2, -18, 1627785, -36.6, 0, "" },
+		{ -44.55, -18, 1627785, -43, -90, "" },
+		{ -43, -18, -55.7, 1627785, 0, "" },
+		{ -74.8, -22, -152.4, 1627805, 180, "" },
+		{ -70.15, -34, -262.5, 1627812, 180, "" },
+		{ -140.1, -34, -201.5, 1627815, 0, "object/tangible/dungeon/poison_stabilizer.iff" }
+	},
+
 	debrisLocs = {
 		{ template = "object/static/destructible/destructible_cave_wall_damprock.iff", x = -102, z = -31.4, y = -368, rot = 0, cell = 1627818 }, -- cavecages3
 		{ template = "object/static/destructible/destructible_tato_drum_dented.iff", x = 37.8, z = -34, y = -333.5, rot = 0, cell = 1627822 }, -- grandcageroom
@@ -85,6 +95,7 @@ function GeonosianLab:start()
 			self:spawnSceneObjects()
 			self:spawnMobiles()
 			self:setupPermissionGroups()
+			self:setupLootContainers()
 		end
 	end
 end
@@ -99,6 +110,52 @@ function GeonosianLab:setupBuilding()
 	createObserver(EXITEDBUILDING, "GeonosianLab", "notifyExitedBunker", pBuilding)
 
 	return true
+end
+
+function GeonosianLab:setupLootContainers()
+	for i = 1, #self.lootContainers, 1 do
+		local lootInfo = self.lootContainers[i]
+
+		local pContainer = spawnSceneObject("yavin4", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", lootInfo[1], lootInfo[2], lootInfo[3], lootInfo[4], lootInfo[5])
+
+		if (pContainer ~= nil) then
+			writeData(SceneObject(pContainer):getObjectID() .. ":containerNum", i)
+			self:createContainerLoot(pContainer)
+		end
+	end
+end
+
+function GeonosianLab:createContainerLoot(pContainer)
+	if (pContainer == nil) then
+		return
+	end
+
+	local containerNum = readData(SceneObject(pContainer):getObjectID() .. ":containerNum")
+
+	if (containerNum == 0) then
+		return
+	end
+
+	local lootInfo = self.lootContainers[containerNum]
+	local lootTemplate = lootInfo[6]
+
+	if (lootTemplate == "") then
+		createLoot(pContainer, "geonosian_loot_container", 200, true)
+	else
+		giveItem(pContainer, lootTemplate, -1)
+	end
+
+	createObserver(CONTAINERCONTENTSCHANGED, "GeonosianLab", "notifyContainerLooted", pContainer)
+end
+
+function GeonosianLab:notifyContainerLooted(pContainer, pLooter)
+	if pItem == nil or pLooter == nil or not SceneObject(pLooter):isCreatureObject() then
+		return 1
+	end
+
+	createEvent(600 * 1000, "GeonosianLab", "createContainerLoot", pContainer, "")
+
+	return 1
 end
 
 function GeonosianLab:setupTrap()
@@ -182,7 +239,7 @@ function GeonosianLab:spawnSceneObjects()
 	for i = 1, #self.debrisLocs, 1 do
 		local debrisData = self.debrisLocs[i]
 
-		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, 1, 0, 0, 0)
+		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, debrisData.rot)
 
 		if (pDebris ~= nil) then
 			writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", i)
