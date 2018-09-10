@@ -20,25 +20,18 @@ geonosian_scientist = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
 		"object/mobile/dressed_geonosian_scientist_01.iff",
 		"object/mobile/dressed_geonosian_scientist_02.iff"},
-	lootGroups = {
-		{
-			groups = {
-				{group = "geonosian_common", chance = 5000000},
-				{group = "geonosian_relic", chance = 5000000}
-			}
-		}
-	},
-	weapons = {"geonosian_weapons"},
-	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster)
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "biogenicRandomConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_scientist, "geonosian_scientist")

@@ -2387,9 +2387,10 @@ void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneOb
 	}
 
 	// Council leader has half the normal cooldown
-	if (managerData->hasDemotedRecently(player->getObjectID(), (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration)) {
+	uint64 demoteDur = (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration;
+	if (managerData->hasDemotedRecently(player->getObjectID(), demoteDur)) {
 		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
-		uint64 timeLeft = requestDemotionDuration - miliDiff;
+		uint64 timeLeft = demoteDur - miliDiff;
 
 		StringIdChatParameter param("@force_rank:demote_too_soon"); // 	You cannot demote a member for another %TO
 		param.setTO(getTimeString(timeLeft / 1000));
@@ -2483,9 +2484,10 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 	}
 
 	// Council leader has half the normal cooldown
-	if (managerData->hasDemotedRecently(player->getObjectID(), (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration)) {
+	uint64 demoteDur = (playerTier == 5) ? (requestDemotionDuration / 2) : requestDemotionDuration;
+	if (managerData->hasDemotedRecently(player->getObjectID(), demoteDur)) {
 		uint64 miliDiff = managerData->getDemoteDuration(player->getObjectID());
-		uint64 timeLeft = requestDemotionDuration - miliDiff;
+		uint64 timeLeft = demoteDur - miliDiff;
 
 		StringIdChatParameter param("@force_rank:demote_too_soon"); // 	You cannot demote a member for another %TO
 		param.setTO(getTimeString(timeLeft / 1000));

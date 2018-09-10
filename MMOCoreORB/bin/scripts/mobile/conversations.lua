@@ -155,6 +155,7 @@ includeFile("conversations/dungeon/geonosian_lab/biogenic_engineer_tech_convo.lu
 includeFile("conversations/dungeon/geonosian_lab/biogenic_herald_02.lua")
 includeFile("conversations/dungeon/geonosian_lab/biogenic_herald_03.lua")
 includeFile("conversations/dungeon/geonosian_lab/biogenic_herald_dealer.lua")
+includeFile("conversations/dungeon/geonosian_lab/biogenic_random_conv.lua")
 includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_generic_01_convo.lua")
 includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_generic_02_convo.lua")
 includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_generic_03_convo.lua")
