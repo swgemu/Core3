@@ -27,10 +27,10 @@ coa2_m1_begin = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m1_begin", -- A rebel agent stole some very important documents concerning the Dead Eye project. We would like to stop this information from falling into the wrong hands. Would you like to help?
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info1", "m1_begin_info1"}, -- Who is this agent?
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info2", "m1_begin_info2"}, -- What is the Dead Eye Project?
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "m1_begin_yes"}, -- I would like to help.
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "m1_begin_no"}, -- No thanks.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info1", "coa2_m1_begin_info1"}, -- Who is this agent?
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info2", "coa2_m1_begin_info2"}, -- What is the Dead Eye Project?
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "coa2_m1_begin_yes"}, -- I would like to help.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "coa2_m1_begin_no"}, -- No thanks.
 	}
 }
 imperialCoordinatorConvoTemplate:addScreen(coa2_m1_begin);
@@ -40,9 +40,9 @@ coa2_m1_begin_info1 = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m1_begin_info1_response", -- Her codename is Skimmer. Her whereabouts are unknown. She joined the rebellion after both her father and brother were killed during earlier campaigns waged against the Empire.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info2", "m1_begin_info2"}, -- What is the Dead Eye Project?
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "m1_begin_yes"}, -- I would like to help.
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "m1_begin_no"}, -- No thanks.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info2", "coa2_m1_begin_info2"}, -- What is the Dead Eye Project?
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "coa2_m1_begin_yes"}, -- I would like to help.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "coa2_m1_begin_no"}, -- No thanks.
 	}
 }
 imperialCoordinatorConvoTemplate:addScreen(coa2_m1_begin_info1);
@@ -52,9 +52,9 @@ coa2_m1_begin_info2 = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m1_begin_info2_response", -- That information is need-to-know only and you don't need to know. Be assured that success of project Dead Eye is extremely important to the Empire.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info1", "m1_begin_info1"}, -- Who is this agent?
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "m1_begin_yes"}, -- I would like to help.
-		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "m1_begin_no"}, -- No thanks.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_info1", "coa2_m1_begin_info1"}, -- Who is this agent?
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_yes", "coa2_m1_begin_yes"}, -- I would like to help.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_begin_no", "coa2_m1_begin_no"}, -- No thanks.
 	}
 }
 imperialCoordinatorConvoTemplate:addScreen(coa2_m1_begin_info2);
@@ -80,9 +80,9 @@ coa2_m1_active = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m1_active", -- Have you spoken with the informant yet? This information is vital to the Empire.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m1_active_working", "m1_active_working"}, -- I'll speak with the informant immediately.
-		{"@theme_park/alderaan/act2/imperial_missions:m1_active_restart", "m1_active_restart"}, -- Are you sure those coordinates were correct?
-		{"@theme_park/alderaan/act2/imperial_missions:m1_active_abort", "m1_active_abort"}, -- I don't have time for this right now.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_active_working", "coa2_m1_active_working"}, -- I'll speak with the informant immediately.
+		{"@theme_park/alderaan/act2/imperial_missions:m1_active_restart", "coa2_m1_active_restart"}, -- Are you sure those coordinates were correct?
+		{"@theme_park/alderaan/act2/imperial_missions:m1_active_abort", "coa2_m1_active_abort"}, -- I don't have time for this right now.
 	}
 }
 imperialCoordinatorConvoTemplate:addScreen(coa2_m1_active);
@@ -118,9 +118,9 @@ coa2_m2_begin = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m2_begin", -- We need to prevent that encoded message from being transmitted and retrieve it. Are you ready to get your hands dirty?
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_info1", "m2_begin_info1"}, -- Get my hands dirty?
-		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_yes", "m2_begin_yes"}, -- I'll do what is necessary.
-		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_no", "m2_begin_no"}, -- I'm not so sure I'm up to this.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_info1", "coa2_m2_begin_info1"}, -- Get my hands dirty?
+		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_yes", "coa2_m2_begin_yes"}, -- I'll do what is necessary.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_no", "coa2_m2_begin_no"}, -- I'm not so sure I'm up to this.
 	}
 }
 
@@ -131,8 +131,8 @@ coa2_m2_begin_info1 = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m2_begin_info1_response", -- That's just an expression. Lethal force is authorized considering the sensitive nature of this case. You don't need to worry about any legal repercussions.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_yes", "m2_begin_yes"}, -- I'll do what is necessary.
-		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_no", "m2_begin_no"}, -- I'm not so sure I'm up to this.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_yes", "coa2_m2_begin_yes"}, -- I'll do what is necessary.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_begin_no", "coa2_m2_begin_no"}, -- I'm not so sure I'm up to this.
 	}
 }
 
@@ -161,9 +161,9 @@ coa2_m2_active = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m2_active", -- Back again? Don't tell me you're getting cold feet. We have to stop that slicer and intercept that message before he's able to transmit it.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m2_active_working", "m2_active_working"}, -- I'll stop the slicer and get the encoded message.
-		{"@theme_park/alderaan/act2/imperial_missions:m2_active_restart", "m2_active_restart"}, -- I was unable to locate the slicer.
-		{"@theme_park/alderaan/act2/imperial_missions:m2_active_abort", "m2_active_abort"}, -- I can't do this right now.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_active_working", "coa2_m2_active_working"}, -- I'll stop the slicer and get the encoded message.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_active_restart", "coa2_m2_active_restart"}, -- I was unable to locate the slicer.
+		{"@theme_park/alderaan/act2/imperial_missions:m2_active_abort", "coa2_m2_active_abort"}, -- I can't do this right now.
 	}
 }
 
@@ -201,8 +201,8 @@ coa2_m3_begin = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m3_begin", -- We need to get that encoded message to the commander. Would you be willing to make the delivery?
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m3_begin_yes", "m3_begin_yes"}, -- I will make the delivery.
-		{"@theme_park/alderaan/act2/imperial_missions:m3_begin_no", "m3_begin_no"}, -- I don't have time for this right now.
+		{"@theme_park/alderaan/act2/imperial_missions:m3_begin_yes", "coa2_m3_begin_yes"}, -- I will make the delivery.
+		{"@theme_park/alderaan/act2/imperial_missions:m3_begin_no", "coa2_m3_begin_no"}, -- I don't have time for this right now.
 	}
 }
 
@@ -231,9 +231,9 @@ coa2_m3_active = ConvoScreen:new {
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:m3_active", -- You're still here? I've already contacted the Commander so he's expecting you. He's not the type of man you want to keep waiting.
 	stopConversation = "false",
 	options = {
-		{"@theme_park/alderaan/act2/imperial_missions:m3_active_working", "m3_active_working"}, -- I'm leaving on the next flight out.
-		{"@theme_park/alderaan/act2/imperial_missions:m3_active_restart", "m3_active_restart"}, -- I seem to have lost the Commander's location.
-		{"@theme_park/alderaan/act2/imperial_missions:m3_active_abort", "m3_active_abort"}, -- I need to do something else right now.
+		{"@theme_park/alderaan/act2/imperial_missions:m3_active_working", "coa2_m3_active_working"}, -- I'm leaving on the next flight out.
+		{"@theme_park/alderaan/act2/imperial_missions:m3_active_restart", "coa2_m3_active_restart"}, -- I seem to have lost the Commander's location.
+		{"@theme_park/alderaan/act2/imperial_missions:m3_active_abort", "coa2_m3_active_abort"}, -- I need to do something else right now.
 	}
 }
 
