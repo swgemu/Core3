@@ -8,8 +8,9 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/RelockLootContainerEvent.h"
 #include "server/zone/managers/mission/MissionManager.h"
-
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
@@ -35,12 +36,15 @@ public:
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		StringTokenizer args(arguments.toString());
 		String targetName = "";
 		String container = "";
+		bool nonCreatureTarget = false;
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		ManagedReference<CreatureObject*> targetObj = NULL;
+		ManagedReference<SceneObject*> nonCreatureObj = NULL;
+
+		StringTokenizer args(arguments.toString());
 
 		if (creature->getTargetID() != 0) {
 			targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
@@ -53,151 +57,211 @@ public:
 			targetObj = playerManager->getPlayer(targetName);
 		}
 
-		if (targetObj == NULL)
-			return INVALIDTARGET;
+		if (targetObj == NULL) {
+			nonCreatureTarget = true;
+			nonCreatureObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<SceneObject*>();
 
-		if (!targetObj->isCreatureObject())
-			return INVALIDTARGET;
+			if (nonCreatureObj == NULL)
+				return INVALIDTARGET;
 
-		ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+			//info("targetObj == NULL ; nonCreatureObj == " + String::valueOf(nonCreatureObj) + " ; proceeding to 'chest' argument block...", true);
+		}
 
-		if (targetGhost == NULL)
-			return GENERALERROR;
+		/*if (!targetObj->isCreatureObject())
+			return INVALIDTARGET;*/
 
 		if (args.hasMoreTokens())
 			args.getStringToken(container);
 
-		if (container == "equipment") {
-			targetObj->sendWithoutParentTo(creature);
-			targetObj->openContainerTo(creature);
-		} else if (container == "datapad") {
-			SceneObject* creatureDatapad = targetObj->getSlottedObject("datapad");
+		if (!nonCreatureTarget) {
+			if (container == "equipment") {
+				ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
-			if (creatureDatapad == NULL)
-				return GENERALERROR;
+				if (targetGhost == NULL)
+					return GENERALERROR;
 
-			creatureDatapad->sendWithoutParentTo(creature);
-			creatureDatapad->openContainerTo(creature);
-		}  else if (container == "bank") {
-			SceneObject* creatureBank = targetObj->getSlottedObject("bank");
+				targetGhost->sendWithoutParentTo(creature);
+				targetGhost->openContainerTo(creature);
+			} else if (container == "datapad") {
+				SceneObject* creatureDatapad = targetObj->getSlottedObject("datapad");
 
-			if (creatureBank == NULL)
-				return GENERALERROR;
+				if (creatureDatapad == NULL)
+					return GENERALERROR;
 
-			creatureBank->sendWithoutParentTo(creature);
-			creatureBank->openContainerTo(creature);
-		} else if (container == "credits") {
-			int cash = targetObj->getCashCredits();
-			int bank = targetObj->getBankCredits();
-			StringBuffer body;
+				creatureDatapad->sendWithoutParentTo(creature);
+				creatureDatapad->openContainerTo(creature);
+			}  else if (container == "bank") {
+				SceneObject* creatureBank = targetObj->getSlottedObject("bank");
 
-			body << "Player Name:\t" << targetObj->getFirstName();
-			body << "\nCash Credits:\t" << String::valueOf(cash);
-			body << "\nBank Credits:\t" << String::valueOf(bank);
-			body << "\nBank Location:\t" << targetGhost->getBankLocation();
+				if (creatureBank == NULL)
+					return GENERALERROR;
 
-			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::ADMIN_PLAYER_CREDITS);
-			box->setPromptTitle("Player Credits");
-			box->setPromptText(body.toString());
-			box->setUsingObject(targetObj);
-			box->setForceCloseDisabled();
+				creatureBank->sendWithoutParentTo(creature);
+				creatureBank->openContainerTo(creature);
+			} else if (container == "credits") {
+				ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
-			ghost->addSuiBox(box);
-			creature->sendMessage(box->generateMessage());
-		} else if (container == "jeditrainer") {
-			if (targetGhost->getJediState() < 2 || !targetObj->hasSkill("force_title_jedi_rank_02")) {
-				creature->sendSystemMessage(targetObj->getFirstName() + " does not have a jedi state of 2+ or does not have the padawan skill box.");
-				return GENERALERROR;
-			}
+				if (targetGhost == NULL)
+					return GENERALERROR;
 
-			String planet = ghost->getTrainerZoneName();
-			Vector3 coords = ghost->getTrainerCoordinates();
+				int cash = targetObj->getCashCredits();
+				int bank = targetObj->getBankCredits();
+				StringBuffer body;
 
-			creature->sendSystemMessage(targetObj->getFirstName() + "'s jedi trainer is located at " + coords.toString() + " on " + planet);
-		} else if (container == "ham") {
-			return sendHam(creature, targetObj);
-		} else if (container == "lots") {
-			return sendLots(creature, targetObj);
-		} else if (container == "vendors") {
-			return sendVendorInfo(creature, targetObj);
-		} else if (container == "veteranrewards") {
-			return sendVeteranRewardInfo(creature, targetObj);
-		} else if(container == "faction") {
-			return sendFactionInfo(creature, targetObj);
-		} else if (container == "screenplaydata") {
-			if (!args.hasMoreTokens()) {
-				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
-				return INVALIDPARAMETERS;
-			}
+				body << "Player Name:\t" << targetObj->getFirstName();
+				body << "\nCash Credits:\t" << String::valueOf(cash);
+				body << "\nBank Credits:\t" << String::valueOf(bank);
+				body << "\nBank Location:\t" << targetGhost->getBankLocation();
 
-			String playName, varName;
-			args.getStringToken(playName);
+				ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::ADMIN_PLAYER_CREDITS);
+				box->setPromptTitle("Player Credits");
+				box->setPromptText(body.toString());
+				box->setUsingObject(targetObj);
+				box->setForceCloseDisabled();
 
-			if (!args.hasMoreTokens()) {
-				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
-				return INVALIDPARAMETERS;
-			}
+				ghost->addSuiBox(box);
+				creature->sendMessage(box->generateMessage());
+			} else if (container == "jeditrainer") {
+				ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
-			args.getStringToken(varName);
+				if (targetGhost == NULL)
+					return GENERALERROR;
 
-			PlayerObject* targetGhost = targetObj->getPlayerObject();
+				if (targetGhost->getJediState() < 2 || !targetObj->hasSkill("force_title_jedi_rank_02")) {
+					creature->sendSystemMessage(targetObj->getFirstName() + " does not have a jedi state of 2+ or does not have the padawan skill box.");
+					return GENERALERROR;
+				}
 
-			if (targetGhost == NULL)
-				return GENERALERROR;
+				String planet = ghost->getTrainerZoneName();
+				Vector3 coords = ghost->getTrainerCoordinates();
 
-			String result = targetGhost->getScreenPlayData(playName, varName);
+				creature->sendSystemMessage(targetObj->getFirstName() + "'s jedi trainer is located at " + coords.toString() + " on " + planet);
+			} else if (container == "ham") {
+				return sendHam(creature, targetObj);
+			} else if (container == "lots") {
+				return sendLots(creature, targetObj);
+			} else if (container == "vendors") {
+				return sendVendorInfo(creature, targetObj);
+			} else if (container == "veteranrewards") {
+				return sendVeteranRewardInfo(creature, targetObj);
+			} else if(container == "faction") {
+				return sendFactionInfo(creature, targetObj);
+			} else if (container == "screenplaydata") {
+				if (!args.hasMoreTokens()) {
+					creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
+					return INVALIDPARAMETERS;
+				}
 
-			creature->sendSystemMessage(targetObj->getFirstName() + "'s screenplay data value for screenplay " + playName + " and variable " + varName + " is: " + result);
-		} else if (container == "screenplaystate") {
-			if (!args.hasMoreTokens()) {
-				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaystate <stateName> [state]");
-				return INVALIDPARAMETERS;
-			}
-			String stateName;
-			args.getStringToken(stateName);
+				String playName, varName;
+				args.getStringToken(playName);
 
-			uint64 state = targetObj->getScreenPlayState(stateName);
-			if (args.hasMoreTokens()) {
-				uint64 stateToCheck = args.getIntToken();
-				if (state & stateToCheck)
-					creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': TRUE.");
+				if (!args.hasMoreTokens()) {
+					creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaydata <screenplay> [variable]");
+					return INVALIDPARAMETERS;
+				}
+
+				args.getStringToken(varName);
+
+				ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+
+				if (targetGhost == NULL)
+					return GENERALERROR;
+
+				String result = targetGhost->getScreenPlayData(playName, varName);
+
+				creature->sendSystemMessage(targetObj->getFirstName() + "'s screenplay data value for screenplay " + playName + " and variable " + varName + " is: " + result);
+			} else if (container == "screenplaystate") {
+				if (!args.hasMoreTokens()) {
+					creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaystate <stateName> [state]");
+					return INVALIDPARAMETERS;
+				}
+				String stateName;
+				args.getStringToken(stateName);
+
+				uint64 state = targetObj->getScreenPlayState(stateName);
+				if (args.hasMoreTokens()) {
+					uint64 stateToCheck = args.getIntToken();
+					if (state & stateToCheck)
+						creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': TRUE.");
+					else
+						creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': FALSE.");
+				} else {
+					creature->sendSystemMessage(targetObj->getFirstName() + " state check for screenplayState '" + stateName + "': " + String::valueOf(state) + ".");
+				}
+			} else if (container == "activescreenplay") {
+				String key = String::valueOf(targetObj->getObjectID()) + ":activeScreenPlay";
+				String data = DirectorManager::instance()->getStringSharedMemory(key);
+				creature->sendSystemMessage(targetObj->getFirstName() + " active screenplay: " + data);
+			} else if (container == "luaevents") {
+				return sendLuaEvents(creature, targetObj);
+			} else if (container == "buffs") {
+				return sendBuffs(creature, targetObj);
+			} else if (container == "visibility") {
+				MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+
+				if (missionManager->sendPlayerBountyDebug(creature, targetObj))
+					return SUCCESS;
 				else
-					creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': FALSE.");
+					return GENERALERROR;
+			} else if (container == "frs") {
+				ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
+
+				if (targetGhost == NULL)
+					return GENERALERROR;
+
+				FrsData* playerData = targetGhost->getFrsData();
+				int playerRank = playerData->getRank();
+				int playerCouncil = playerData->getCouncilType();
+
+				creature->sendSystemMessage(targetObj->getFirstName() + " has a FRS rank of " + String::valueOf(playerRank) + " and a council type of " + String::valueOf(playerCouncil));
 			} else {
-				creature->sendSystemMessage(targetObj->getFirstName() + " state check for screenplayState '" + stateName + "': " + String::valueOf(state) + ".");
+				SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
+
+				if (creatureInventory == NULL)
+					return GENERALERROR;
+
+				creatureInventory->sendWithoutParentTo(creature);
+				creatureInventory->openContainerTo(creature);
 			}
-		} else if (container == "activescreenplay") {
-			String key = String::valueOf(targetObj->getObjectID()) + ":activeScreenPlay";
-			String data = DirectorManager::instance()->getStringSharedMemory(key);
-			creature->sendSystemMessage(targetObj->getFirstName() + " active screenplay: " + data);
-		} else if (container == "luaevents") {
-			return sendLuaEvents(creature, targetObj);
-		} else if (container == "buffs") {
-			return sendBuffs(creature, targetObj);
-		} else if (container == "visibility") {
-			MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
-
-			if (missionManager->sendPlayerBountyDebug(creature, targetObj))
-				return SUCCESS;
-			else
-				return GENERALERROR;
-		} else if (container == "frs") {
-			FrsData* playerData = targetGhost->getFrsData();
-			int playerRank = playerData->getRank();
-			int playerCouncil = playerData->getCouncilType();
-
-			creature->sendSystemMessage(targetObj->getFirstName() + " has a FRS rank of " + String::valueOf(playerRank) + " and a council type of " + String::valueOf(playerCouncil));
 		} else {
-			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
+				if (container == "chest") {
+					/// This is weird, when you select a schematic and the crafting station has a
+					/// Hopper the client requests to open the hopper container to the player
+					/// Which isn't supposed to happen (carried fwd from OpenContainerCommand.h)
+					if(nonCreatureObj->getParent() != NULL && nonCreatureObj->getParent().get()->isCraftingStation())
+						return GENERALERROR;
 
-			if (creatureInventory == NULL)
-				return GENERALERROR;
+					Locker clocker(nonCreatureObj, creature);
 
-			creatureInventory->sendWithoutParentTo(creature);
-			creatureInventory->openContainerTo(creature);
-		}
+					ManagedReference<Container*> targetContainer = nonCreatureObj.castTo<Container*>();
 
+					/*if (targetContainer == NULL)
+					creature->sendSystemMessage("targetContainer == NULL");
+						return GENERALERROR;*/
 
+					if(targetContainer != NULL && targetContainer->isContainerLocked()) {
+						creature->sendSystemMessage("@slicing/slicing:locked");
+						return SUCCESS;
+					}
+
+					if (nonCreatureObj->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
+
+						if(nonCreatureObj->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+							if(targetContainer != NULL && targetContainer->isRelocking() == false) {
+								Reference<RelockLootContainerEvent*> relockEvent = new RelockLootContainerEvent(targetContainer);
+								relockEvent->schedule(targetContainer->getLockTime());
+							}
+						}
+
+						nonCreatureObj->openContainerTo(creature);
+
+						nonCreatureObj->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
+					} else {
+						//You do not have permission to access this container.
+						creature->sendSystemMessage("@error_message:perm_no_open");
+					}
+				}
+			}
 
 		return SUCCESS;
 	}

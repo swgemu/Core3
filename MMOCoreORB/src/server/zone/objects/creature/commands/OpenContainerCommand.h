@@ -19,6 +19,10 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
+		return GENERALERROR;
+
+		/* Deprecated and moved to SnoopCommand.h
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -50,7 +54,7 @@ public:
 			return GENERALERROR;
 
 		Locker clocker(objectToOpen, creature);
-
+*/
 /*
 		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 
@@ -73,6 +77,8 @@ public:
 		}
 
 */
+
+		/* Deprecated and moved to SnoopCommand.h
 
 		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
 		if(container != NULL && container->isContainerLocked()) {
@@ -99,6 +105,7 @@ public:
 		}
 
 		return SUCCESS;
+		*/
 	}
 
 };
