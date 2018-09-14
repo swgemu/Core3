@@ -75,13 +75,13 @@ includeFile("conversations/events/life_day/life_day_radrrl_conv.lua")
 includeFile("conversations/events/life_day/life_day_tebeurra_conv.lua")
 
 --Coa2
-includeFile("conversations/events/coa_2/imperial_commander_conv.lua")
-includeFile("conversations/events/coa_2/imperial_coordinator_conv.lua")
-includeFile("conversations/events/coa_2/imperial_informant_conv.lua")
-includeFile("conversations/events/coa_2/rebel_commander_conv.lua")
-includeFile("conversations/events/coa_2/rebel_coordinator_conv.lua")
-includeFile("conversations/events/coa_2/rebel_lyda_conv.lua")
-includeFile("conversations/events/coa_2/rebel_sympathizer_conv.lua")
+includeFile("conversations/events/coa/imperial_commander_conv.lua")
+includeFile("conversations/events/coa/imperial_coordinator_conv.lua")
+includeFile("conversations/events/coa/imperial_informant_conv.lua")
+includeFile("conversations/events/coa/rebel_commander_conv.lua")
+includeFile("conversations/events/coa/rebel_coordinator_conv.lua")
+includeFile("conversations/events/coa/rebel_lyda_conv.lua")
+includeFile("conversations/events/coa/rebel_sympathizer_conv.lua")
 
 -- Hero of Tat
 includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
