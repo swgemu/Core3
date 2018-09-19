@@ -116,7 +116,7 @@ function GeonosianLab:setupLootContainers()
 	for i = 1, #self.lootContainers, 1 do
 		local lootInfo = self.lootContainers[i]
 
-		local pContainer = spawnSceneObject("yavin4", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", lootInfo[1], lootInfo[2], lootInfo[3], lootInfo[4], lootInfo[5])
+		local pContainer = spawnSceneObject("yavin4", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", lootInfo[1], lootInfo[2], lootInfo[3], lootInfo[4], math.rad(lootInfo[5]))
 
 		if (pContainer ~= nil) then
 			writeData(SceneObject(pContainer):getObjectID() .. ":containerNum", i)
@@ -239,7 +239,7 @@ function GeonosianLab:spawnSceneObjects()
 	for i = 1, #self.debrisLocs, 1 do
 		local debrisData = self.debrisLocs[i]
 
-		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, debrisData.rot)
+		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
 
 		if (pDebris ~= nil) then
 			writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", i)
@@ -543,7 +543,7 @@ function GeonosianLab:enteredTrapArea(pActiveArea, pMovingObject)
 		CreatureObject(pMovingObject):inflictDamage(pMovingObject, 0, getRandomNumber(300, 700), 1)
 		CreatureObject(pMovingObject):sendSystemMessage("@dungeon/geonosian_madbio:shock") --You feel electricity coursing through your body!
 		playClientEffectLoc(CreatureObject(pMovingObject):getObjectID(), "clienteffect/trap_electric_01.cef", "yavin4", CreatureObject(pMovingObject):getPositionX(), CreatureObject(pMovingObject):getPositionZ(), CreatureObject(pMovingObject):getPositionY(), CreatureObject(pMovingObject):getParentID())
-	else
+	elseif (trapIndex == 1 or trapIndex == 2) then
 		if (self:hasRebreather(pMovingObject)) then
 			CreatureObject(pMovingObject):sendSystemMessage("@dungeon/geonosian_madbio:gasmask") --Your gasmask diffuses the poison gas and you are able to breathe with no difficulty.
 		else
@@ -745,7 +745,8 @@ function GeonosianLab:notifyLockedDoorArea(pArea, pPlayer)
 		return 0
 	end
 
-	local areaDoor = readData(SceneObject(pArea):getObjectID() .. ":GeoLabKeypad")
+	local areaDoor = readData(SceneObject(pArea):getObjectID() .. ":geonosianLab:keypadIndex")
+
 	if not self:hasPermission(pPlayer, "GeoLabKeypad" .. areaDoor) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:door_locked") -- This door is locked.
 	end
