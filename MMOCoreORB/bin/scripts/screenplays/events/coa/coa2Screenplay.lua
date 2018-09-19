@@ -578,7 +578,7 @@ function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
 		cellID = SceneObject(pCell):getObjectID()
 		writeData(playerID .. ":coaTowerCellID", cellID)
 
-		local pTerminal = spawnSceneObject(SceneObject(pTower):getZoneName(), "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff", 0, 3.6, 0.2, cellID, 0, 1, 0, 0)
+		local pTerminal = spawnSceneObject(SceneObject(pTower):getZoneName(), "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff", 0, 3.6, 0.2, cellID, 0)
 
 		if pTerminal == nil then
 			CreatureObject(pPlayer):sendSystemMessage(file .. ":m5_init_failure")
@@ -797,7 +797,7 @@ function CoaRelayStationTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
-		if pTerminalParent ~= nil and pTerminalParent == pPlayerParent and pInterfaceDevice ~= nil and state == self.M5_ACTIVE then
+		if pTerminalParent ~= nil and pTerminalParent == pPlayerParent and pInterfaceDevice ~= nil and state == Coa2Screenplay.M5_ACTIVE then
 			CreatureObject(pPlayer):sendSystemMessage("@theme_park/alderaan/act2/shared_rebel_missions:message_sent")
 			Coa2Screenplay:completeMissionFive(pPlayer, "rebel")
 			SceneObject(pInterfaceDevice):destroyObjectFromWorld()
