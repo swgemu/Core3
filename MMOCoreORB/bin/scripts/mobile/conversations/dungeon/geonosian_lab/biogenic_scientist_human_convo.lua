@@ -35,11 +35,23 @@ no_i_insist = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_scientist_human:s_e2c55073", -- No, no, I insist. A long time ago, we had plans to build weapons in case our experiments ever got out of control. We never got around to building them, and I guess now it's too late. Someone like yourself should be able to make use of this.
 	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_scientist_human:s_4136c2df", "no_problem_at_all"}, -- Thank you very much.
 		{"@conversation/biogenic_scientist_human:s_e79d7d15", "i_hope_so"} -- Sure, it might come in handy.
 	}
 }
 
 biogenicScientistHumanConvoTemplate:addScreen(no_i_insist);
+
+no_problem_at_all = ConvoScreen:new {
+	id = "no_problem_at_all",
+	leftDialog = "@conversation/biogenic_scientist_human:s_5044c295", -- No problem at all. If you can, please check on my colleagues in Genetics Lab One. If they were still in there when the doors locked down they might be in trouble. You can unlock the door with the code 86332 if necessary.
+	stopConversation = "false",
+	options = {
+		{"@conversation/biogenic_scientist_human:s_259e4732", "thanks_appreciate"}, -- I'll make sure they're OK.
+		{"@conversation/biogenic_scientist_human:s_a2a14f83", "alright_may_be_trouble"} -- We'll see if I get a chance.
+	}
+}
+biogenicScientistHumanConvoTemplate:addScreen(no_problem_at_all);
 
 well_yes = ConvoScreen:new {
 	id = "well_yes",
@@ -58,6 +70,7 @@ here_it_is = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_scientist_human:s_ce30b8e3", -- Oh, yes, here it is. A long time ago, we had plans to build weapons in case our experiments ever got out of control. We never got around to building them, and I guess now it's too late. Someone like yourself should be able to make use of this.
 	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_scientist_human:s_4136c2df", "no_problem_at_all"}, -- Thank you very much.
 		{"@conversation/biogenic_scientist_human:s_e79d7d15", "i_hope_so"} -- Sure, it might come in handy.
 	}
 }
@@ -69,6 +82,7 @@ no_youre_right = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_scientist_human:s_91b03aa5", -- No, you're right. Here we go. A long time ago, we had plans to build weapons in case our experiments ever got out of control. We never got around to building them, and I guess now it's too late. Someone like yourself should be able to make use of this.
 	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_scientist_human:s_4136c2df", "no_problem_at_all"}, -- Thank you very much.
 		{"@conversation/biogenic_scientist_human:s_e79d7d15", "i_hope_so"} -- Sure, it might come in handy.
 	}
 }
@@ -158,7 +172,8 @@ no_i_want_you_to = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_scientist_human:s_a643bebd", -- No, I want you to have it. A long time ago, we had plans to build weapons in case our experiments ever got out of control. We never got around to building them, and I guess now it's too late. Someone like yourself should be able to make use of this.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_scientist_human:s_4136c2df", "since_youre_here"} -- Thank you very much.
+		{"@conversation/biogenic_scientist_human:s_4136c2df", "no_problem_at_all"}, -- Thank you very much.
+		{"@conversation/biogenic_scientist_human:s_e79d7d15", "i_hope_so"} -- Sure, it might come in handy.
 	}
 }
 
