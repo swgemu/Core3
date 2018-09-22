@@ -1,7 +1,7 @@
 GeoLabChemicalStorageComponent = {}
 
 function GeoLabChemicalStorageComponent:canAddObject(pContainer, pObj, slot)
-	return -1
+	return true
 end
 
 function GeoLabChemicalStorageComponent:transferObject(pContainer, pObj, slot)
