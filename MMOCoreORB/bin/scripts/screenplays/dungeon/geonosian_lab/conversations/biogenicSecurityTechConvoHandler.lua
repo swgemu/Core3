@@ -6,18 +6,24 @@ function BiogenicSecurityTechConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-	if screenID == "init_firsttalk" then
-		writeData(CreatureObject(pPlayer):getObjectID() .. ":geo_security_tech_talked", 1)
+	if screenID == "sith_spit" or screenID == "seismic_event" or screenID == "forget_you_saw" then
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":geoSecurityTechState", 1)
+	elseif screenID == "first_need_code" or screenID == "could_use_help" or screenid == "your_funeral" then
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":geoSecurityTechState", 2)
 	end
 	return pConvScreen
 end
 
 function BiogenicSecurityTechConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-	local hasTalked = readData(CreatureObject(pPlayer):getObjectID() .. ":geo_security_tech_talked")
-	if (hasTalked ~= nil and hasTalked == 1) then
-		return convoTemplate:getScreen("im_very_busy")
-	else
+	local techState = readData(CreatureObject(pPlayer):getObjectID() .. ":geoSecurityTechState")
+	if (techState == nil or techState == 0) then
 		return convoTemplate:getScreen("init_firsttalk")
+	elseif (techState == 1) then
+		return convoTemplate:getScreen("im_very_busy")
+	elseif (techState == 2) then
+		return convoTemplate:getScreen("init_anything_else")
 	end
+
+	return convoTemplate:getScreen("init_firsttalk")
 end
