@@ -77,7 +77,7 @@ public:
 				object->setCustomObjectName(customName.toString(), false);
 
 				String serial = craftingManager->generateSerial();
-				object->setSerialNumber(serial);
+				object->setSerialNumber("abcde");
 
 				int quantity = 1;
 

@@ -73,6 +73,8 @@ namespace conf {
 
 		int maxNavMeshJobs;
 
+		bool databaseSavesEnabled;
+
 		String messageOfTheDay;
 
 		Vector<String> treFiles;
@@ -353,6 +355,10 @@ namespace conf {
 
 		inline bool getPathfinderLogJSON() const {
 			return pathfinderLogJSON;
+		}
+
+		inline bool areDatabaseSavesEnabled() const {
+			return databaseSavesEnabled;
 		}
 	};
 }

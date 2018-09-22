@@ -213,12 +213,14 @@ void ServerCore::initialize() {
 			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
+		if (configManager->areDatabaseSavesEnabled()) {
 #ifndef WITH_STM
-		ObjectManager::instance()->scheduleUpdateToDatabase();
+			ObjectManager::instance()->scheduleUpdateToDatabase();
 #else
-		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(10000, 10000);
+			Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
+			statiscticsTask->schedulePeriodic(10000, 10000);
 #endif
+		}
 
 		info("initialized", true);
 		

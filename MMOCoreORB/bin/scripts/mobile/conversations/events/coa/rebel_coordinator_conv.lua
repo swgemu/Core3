@@ -5,6 +5,73 @@ rebelCoordinatorConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+coa3_init_has_disk = ConvoScreen:new {
+	id = "coa3_init_has_disk",
+	leftDialog = "@conversation/coa3wcoordinator:s_fec795", -- Excellent work! To be honest, I didn't think you could pull it off. You must have done some real smooth talking! I'll start analyzing the disk right away but it is going to take some time. Why don't you go and speak with the Tactical Officer, I believe he has something for you to do. You can find him in the Combat Guild of this city.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_has_disk);
+
+coa3_init_go_to_princess = ConvoScreen:new {
+	id = "coa3_init_go_to_princess",
+	leftDialog = "@conversation/coa3wcoordinator:s_c9282e23", -- Have you been to see the Princess yet? You probably don't want to keep her waiting. Anyway, was there something I can help you with right now?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- Nothing for right now, thanks.
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- Are you sure that waypoint was correct?
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- I can't make it there right now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_princess);
+
+coa3_init_complete = ConvoScreen:new {
+	id = "coa3_init_complete",
+	leftDialog = "@conversation/coa3wcoordinator:s_e2c3d142", -- Good to see you again. Thanks to your efforts we stand a good chance of finding an alternative source of flora for Dead Eye. You're to be commended. I don't have anything else I need from you right now, but you might ask our Tactical Officer at the Combat Guild if he still needs helping tracking down and destroying those warehouses.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_complete);
+
+coa3_init_go_to_info = ConvoScreen:new {
+	id = "coa3_init_go_to_info",
+	leftDialog = "@conversation/coa3wcoordinator:s_6837ec87", -- Oh it's you again! I didn't expect to see you so soon. Unfortunately, I'm still crunching some data right now. Why don't you go and speak with our Information Officer. You can find him in the Commerce Guild in this city. Get all details from him about our current situation and by the time you're done with that, I should be done analyzing this data.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_info);
+
+coa3_init_go_to_tact = ConvoScreen:new {
+	id = "coa3_init_go_to_tact",
+	leftDialog = "@conversation/coa3wcoordinator:s_19d54dc3", -- Back so soon? I'm still trying to break the encryption on this disk. It's going to take me some time. In the mean time, go and speak with the Tactical Officer. You can find him in the Combat Guild in this city. I'm sure he has plenty that needs to be done.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_tact);
+
+coa3_init_completed_tact = ConvoScreen:new {
+	id = "coa3_init_completed_tact",
+	leftDialog = "@conversation/coa3wcoordinator:s_fa0fdb09", -- Great to see you again. Those disks you acquired have been of great help to our Tactical Officer. He'll be able to assign as many assault missions as you can take, but there is something of more importance if you're up for it.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- I'm up for anything.
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- I'm not able to do this now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_completed_tact);
+
+coa3_init_completed_info = ConvoScreen:new {
+	id = "coa3_init_completed_info",
+	leftDialog = "@conversation/coa3wcoordinator:s_4ba81cc8", -- Ah good, you're back! I've finished analyzing the data from our most recent intelligence and it looks pretty promising. I think we are ready to proceed with our plan. I'll need you to go undercover. If you're successful you probably won't need to fire a single shot. If you fail, that's a different story and we're back to square one. Do you have any questions?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- What are the details of this mission?
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- I can't do this right now.
+		{"@conversation/coa3wcoordinator:m1_begin_info1", "m1_begin_info1"}, -- Enough details, I'm ready to go.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_completed_info);
+
 generic_response = ConvoScreen:new {
 	id = "generic_response",
 	leftDialog = "@recruiting/rebel_recruit:rr13", -- Hello friend. What can I do for you?

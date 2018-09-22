@@ -70,6 +70,8 @@ ConfigManager::ConfigManager() {
 	termsOfService = "";
 	tosVersion = 0;
 
+	databaseSavesEnabled = true;
+
 	logFileLevel = Logger::INFO;
 	jsonLogOutput = false;
 	syncLogOutput = false;
@@ -161,6 +163,8 @@ bool ConfigManager::loadConfigData() {
 
 	termsOfService = getGlobalString("TermsOfService");
 	tosVersion = getGlobalInt("TermsOfServiceVersion");
+
+	databaseSavesEnabled = getGlobalByte("DatabaseSavesEnabled");
 
 	return true;
 }

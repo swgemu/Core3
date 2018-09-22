@@ -31,6 +31,8 @@ class Consumable extends TangibleObject {
 	protected int nutritionMax;
 	protected int quantityMin;
 	protected int quantityMax;
+	protected float floatNutritionMin;
+	protected float floatNutritionMax;
 
 	@dereferenced
 	protected VectorMap<string, float> modifiers;
@@ -72,6 +74,8 @@ class Consumable extends TangibleObject {
 		nutritionMax = 1;
 		quantityMin = 1;
 		quantityMax = 1;
+		floatNutritionMin = 1;
+		floatNutritionMax = 1;
 
 		modifiers.setNoDuplicateInsertPlan();
 		modifiers.setNullValue(0);

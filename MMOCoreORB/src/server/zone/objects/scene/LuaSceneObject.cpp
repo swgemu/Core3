@@ -88,6 +88,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "info", &LuaSceneObject::info },
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
 		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
+		{ "closeContainerTo", &LuaSceneObject::closeContainerTo },
 		{ 0, 0 }
 
 };
@@ -848,4 +849,19 @@ int LuaSceneObject::isInNavMesh(lua_State* L) {
 	lua_pushboolean(L, val);
 
 	return 1;
+}
+
+int LuaSceneObject::closeContainerTo(lua_State* L) {
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (player == nullptr)
+		return 0;
+
+	Locker locker(realObject);
+	Locker clocker(player, realObject);
+
+	realObject->closeContainerTo(player, false);
+	realObject->notifyCloseContainer(player);
+
+	return 0;
 }

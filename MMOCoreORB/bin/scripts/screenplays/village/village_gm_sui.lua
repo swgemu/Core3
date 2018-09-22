@@ -748,6 +748,7 @@ function VillageGmSui.manageVisibility(pPlayer, targetID)
 		return
 	end
 
+PlayerObject(pGhost):setVisibility(4000)
 	includeFile("../managers/jedi/visibility_manager.lua")
 
 	local sui = SuiListBox.new("VillageGmSui", "manageVisibilityCallback")
@@ -1043,7 +1044,7 @@ function VillageGmSui:getPhaseDuration()
 	local eventID = getServerEventID("VillagePhaseChange")
 
 	if (eventID == nil) then
-		return
+		return 0
 	end
 
 	return self:getTimeString(getServerEventTimeLeft(eventID))

@@ -105,7 +105,7 @@ ZonesEnabled = {
 	--"floratest",
 	--"godclient_test",
 	--"lok",
-	--"naboo",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
 	--"rori",
@@ -129,12 +129,12 @@ ZonesEnabled = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	"yavin4"
 }
 
 
