@@ -1,7 +1,7 @@
 biogenicRandomConvoTemplate = ConvoTemplate:new {
 	initialScreen = "init",
 	templateType = "Lua",
-	luaClassHandler = "biogenicRandomConvoHandler",
+	luaClassHandler = "BiogenicRandomConvoHandler",
 	screens = {}
 }
 

@@ -108,6 +108,7 @@ function GeonosianLab:setupBuilding()
 	end
 
 	createObserver(EXITEDBUILDING, "GeonosianLab", "notifyExitedBunker", pBuilding)
+	createObserver(ENTEREDBUILDING, "GeonosianLab", "notifyEnteredBunker", pBuilding)
 
 	return true
 end
@@ -116,7 +117,7 @@ function GeonosianLab:setupLootContainers()
 	for i = 1, #self.lootContainers, 1 do
 		local lootInfo = self.lootContainers[i]
 
-		local pContainer = spawnSceneObject("yavin4", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", lootInfo[1], lootInfo[2], lootInfo[3], lootInfo[4], lootInfo[5])
+		local pContainer = spawnSceneObject("yavin4", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", lootInfo[1], lootInfo[2], lootInfo[3], lootInfo[4], math.rad(lootInfo[5]))
 
 		if (pContainer ~= nil) then
 			writeData(SceneObject(pContainer):getObjectID() .. ":containerNum", i)
@@ -200,6 +201,9 @@ function GeonosianLab:setupTrap()
 
 			if (termLoc[1] == "object/tangible/dungeon/chemical_storage.iff") then
 				SceneObject(pTerminal):setContainerComponent("GeoLabChemicalStorageComponent")
+				SceneObject(pTerminal):setContainerInheritPermissionsFromParent(false)
+				SceneObject(pTerminal):clearContainerDefaultDenyPermission(OPEN)
+				SceneObject(pTerminal):setContainerDefaultAllowPermission(MOVEIN + OPEN)
 			else
 				SceneObject(pTerminal):setObjectMenuComponent("GeoLabTrapTerminalMenuComponent")
 
@@ -239,7 +243,7 @@ function GeonosianLab:spawnSceneObjects()
 	for i = 1, #self.debrisLocs, 1 do
 		local debrisData = self.debrisLocs[i]
 
-		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, debrisData.rot)
+		local pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
 
 		if (pDebris ~= nil) then
 			writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", i)
@@ -543,7 +547,7 @@ function GeonosianLab:enteredTrapArea(pActiveArea, pMovingObject)
 		CreatureObject(pMovingObject):inflictDamage(pMovingObject, 0, getRandomNumber(300, 700), 1)
 		CreatureObject(pMovingObject):sendSystemMessage("@dungeon/geonosian_madbio:shock") --You feel electricity coursing through your body!
 		playClientEffectLoc(CreatureObject(pMovingObject):getObjectID(), "clienteffect/trap_electric_01.cef", "yavin4", CreatureObject(pMovingObject):getPositionX(), CreatureObject(pMovingObject):getPositionZ(), CreatureObject(pMovingObject):getPositionY(), CreatureObject(pMovingObject):getParentID())
-	else
+	elseif (trapIndex == 1 or trapIndex == 2) then
 		if (self:hasRebreather(pMovingObject)) then
 			CreatureObject(pMovingObject):sendSystemMessage("@dungeon/geonosian_madbio:gasmask") --Your gasmask diffuses the poison gas and you are able to breathe with no difficulty.
 		else
@@ -646,6 +650,18 @@ function GeonosianLab:getObjOwner(pObj)
 	return nil
 end
 
+function GeonosianLab:notifyEnteredBunker(pBuilding, pPlayer)
+	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return 0
+	end
+
+	for i = 1, #self.lockedCells, 1 do
+		BuildingObject(pBuilding):broadcastSpecificCellPermissions(self.lockedCells[i])
+	end
+
+	return 0
+end
+
 function GeonosianLab:notifyExitedBunker(pBuilding, pPlayer)
 	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
 		return 0
@@ -657,10 +673,9 @@ function GeonosianLab:notifyExitedBunker(pBuilding, pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	deleteData(playerID .. ":geo_engineertech_talked")
-	deleteData(playerID .. ":geo_assistant_talked")
+	deleteData(playerID .. ":geoEngineerState")
+	deleteData(playerID .. ":geoAssistantState")
 	deleteData(playerID .. ":geo_security_tech_talked")
-	CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_datapad_delivered")
 	CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_tenloss")
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
@@ -728,12 +743,18 @@ function GeonosianLab:notifyDebrisDestroyed(pDebris, pPlayer)
 
 	local index = readData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex")
 
+	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "yavin4", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
+	createEvent(1000, "Warren", "destroySceneObject", pDebris, "")
 	createEvent(180000, "GeonosianLab", "respawnDebris", pDebris, tostring(index))
-	SceneObject(pDebris):destroyObjectFromWorld()
-
 	CreatureObject(pPlayer):clearCombatState(1)
 
 	return 1
+end
+
+function GeonosianLab:destroySceneObject(pObject)
+	if (pObject ~= nil) then
+		SceneObject(pObject):destroyObjectFromWorld()
+	end
 end
 
 function GeonosianLab:notifyLockedDoorArea(pArea, pPlayer)
@@ -745,7 +766,8 @@ function GeonosianLab:notifyLockedDoorArea(pArea, pPlayer)
 		return 0
 	end
 
-	local areaDoor = readData(SceneObject(pArea):getObjectID() .. ":GeoLabKeypad")
+	local areaDoor = readData(SceneObject(pArea):getObjectID() .. ":geonosianLab:keypadIndex")
+
 	if not self:hasPermission(pPlayer, "GeoLabKeypad" .. areaDoor) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:door_locked") -- This door is locked.
 	end

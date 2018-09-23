@@ -134,7 +134,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 		alm->insertAttribute("ferocity", (int) getFerocity());
 	}
 
-	if (creaKnowledge >= 50)
+	if (creaKnowledge >= 45)
 		alm->insertAttribute("challenge_level", getAdultLevel());
 
 	//int skillNum = skillCommands.size();
