@@ -1,8 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BiogenicContructionConvoHandler = conv_handler:new {}
+BiogenicConstructionConvoHandler = conv_handler:new {}
 
-function BiogenicContructionConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+function BiogenicConstructionConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
@@ -21,7 +21,7 @@ function BiogenicContructionConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 	return pConvScreen
 end
 
-function BiogenicContructionConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+function BiogenicConstructionConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local hasTalked = readData(CreatureObject(pPlayer):getObjectID() .. ":geo_construction_talked")
 

@@ -18,17 +18,38 @@ init_firsttalk = ConvoScreen:new {
 
 biogenicSecurityTechConvoTemplate:addScreen(init_firsttalk);
 
+init_dont_recommend = ConvoScreen:new {
+	id = "init_dont_recommend",
+	leftDialog = "@conversation/biogenic_securitytech:s_7397bf4e", -- Remember, I don't recommend it. But if you want to get through the security door, punch in the code 12872.
+	stopConversation = "true",
+	options = {
+	}
+}
+biogenicSecurityTechConvoTemplate:addScreen(init_dont_recommend);
+
 sith_spit = ConvoScreen:new {
 	id = "sith_spit",
 	leftDialog = "@conversation/biogenic_securitytech:s_5b2ec95c", -- Sith spit. That must mean the holo-generator is offline. Add one more thing to the list of what's gone wrong.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_securitytech:s_2ba5e1a3","seismic_event"}, -- I'm sorry. What seems to be going on here?
+		{"@conversation/biogenic_securitytech:s_2ba5e1a3","catastrophic_failure"}, -- I'm sorry. What seems to be going on here?
 		{"@conversation/biogenic_securitytech:s_db64ccb5","stay_out_of_way"} -- Sound like you have your hands full. I'll leave you alone.
 	}
 }
 
 biogenicSecurityTechConvoTemplate:addScreen(sith_spit);
+
+catastrophic_failure = ConvoScreen:new {
+	id = "catastrophic_failure",
+	leftDialog = "@conversation/biogenic_securitytech:s_f6349bd9", -- The security in our facility here has suffered a catastrophic failure. We're doing our best to get it under control.
+	stopConversation = "false",
+	options = {
+		{"@conversation/biogenic_securitytech:s_c9c438be","mutating_creatures"}, -- What of those creatures you mentioned earlier?
+		{"@conversation/biogenic_securitytech:s_bdace841","seismic_event"}, -- What kind of failure exactly?
+		{"@conversation/biogenic_securitytech:s_db64ccb5","stay_out_of_way"} -- Sound like you have your hands full. I'll leave you alone.
+	}
+}
+biogenicSecurityTechConvoTemplate:addScreen(catastrophic_failure);
 
 seismic_event = ConvoScreen:new {
 	id = "seismic_event",
@@ -36,24 +57,32 @@ seismic_event = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/biogenic_securitytech:s_77c97efc","could_use_help"}, -- Do you need a hand in getting it under control?
-		{"@conversation/biogenic_securitytech:s_db64ccb5","stay_out_of_way"}, -- Sound like you have your hands full. I'll leave you alone.
-		{"@conversation/biogenic_securitytech:s_28594fa2","your_funeral"}, -- I'd like to see more of this complex. Is there anything I should know?
-		{"@conversation/biogenic_securitytech:s_c9c438be","mutating_creatures"}, -- What of those creatures you mentioned earlier?
-		{"@conversation/biogenic_securitytech:s_db64ccb5","stay_out_of_way"} -- Sound like you have your hands full. I'll leave you alone.
+		{"@conversation/biogenic_securitytech:s_3f226fbc","your_funeral"} -- I'd better go in and check on things. Good-bye.
 	}
 }
 
 biogenicSecurityTechConvoTemplate:addScreen(seismic_event);
+
+init_anything_else = ConvoScreen:new {
+	id = "im_very_busy",
+	leftDialog = "@conversation/biogenic_securitytech:s_71d4af18", -- Oh, yes. Is there anything else that I can do for you?
+	stopConversation = "false",
+	options = {
+		{"@conversation/biogenic_securitytech:s_1ea74b0a","creatures_modified"}, -- Can you tell me about the escaped creatures again?
+		{"@conversation/biogenic_securitytech:s_8cd04dbf","sentry_droids"}, -- Can you tell me about the sentry droids again?
+		{"@conversation/biogenic_securitytech:s_a57fff7e","just_punch_code"}, -- What was the code to get through the security door again?
+		{"@conversation/biogenic_securitytech:s_5147321f","no_problem"} -- No, I was just leaving. Thanks for your help.
+	}
+}
+biogenicSecurityTechConvoTemplate:addScreen(im_very_busy);
 
 im_very_busy = ConvoScreen:new {
 	id = "im_very_busy",
 	leftDialog = "@conversation/biogenic_securitytech:s_9749167c", -- I'm sorry, but I am very busy. What do you need?
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_securitytech:s_8cd04dbf","sentry_droids"},
-		{"@conversation/biogenic_securitytech:s_1ea74b0a","creatures_modified"},
-		{"@conversation/biogenic_securitytech:s_a57fff7e","just_punch_code"},
-		{"@conversation/biogenic_securitytech:s_e8b00610","dont_come_back"}
+		{"@conversation/biogenic_securitytech:s_28594fa2","first_need_code"}, -- I'd like to see more of this complex. Is there anything I should know?
+		{"@conversation/biogenic_securitytech:s_5147321f","leave_me_alone"} -- Sorry to bother you.
 	}
 }
 
@@ -84,14 +113,11 @@ first_thing = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_securitytech:s_7cb640f8", -- The first thing that we need to do is to kill any of those mutant creatures that might have escaped. Then we'll have a good chance of getting this place back under control.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_securitytech:s_4a0eda9c","no_problem"}, -- OK. I'll be on my way then. Thank you.
 		{"@conversation/biogenic_securitytech:s_e32d6faf","staying_here"}, -- Are you coming with me?
-		{"@conversation/biogenic_securitytech:s_6c0c46c5","fine_stay_out_of_way"} -- On second thought, I'd better just leave it to you.
+		{"@conversation/biogenic_securitytech:s_2ea369ee","best_of_luck"} -- Alright. I'll do my best.
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(first_thing);
-
 
 no_problem = ConvoScreen:new {
 	id = "no_problem",
@@ -100,7 +126,6 @@ no_problem = ConvoScreen:new {
 	options = {
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(no_problem);
 
 staying_here = ConvoScreen:new {
@@ -112,18 +137,28 @@ staying_here = ConvoScreen:new {
 		{"@conversation/biogenic_securitytech:s_6c0c46c5","fine_stay_out_of_way"} -- On second thought, I'd better just leave it to you.
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(staying_here);
+
+first_need_code = ConvoScreen:new {
+	id = "first_need_code",
+	leftDialog = "@conversation/biogenic_securitytech:s_b49b50a8", -- Well, firstly you'll need a code to get through that security door. Punch in the code 12872 and you can get through. Once you get in, there are some things you should watch out for though.
+	stopConversation = "false",
+	options = {
+		{"@conversation/biogenic_securitytech:s_83dc19a","aware_sentry_droids"}, -- What kind of things do I need to watch out for?
+		{"@conversation/biogenic_securitytech:s_6c0c46c5","fine_stay_out_of_way"} -- On second thought, I'd better just leave it to you.
+	}
+}
+biogenicSecurityTechConvoTemplate:addScreen(first_need_code);
 
 could_use_help = ConvoScreen:new {
 	id = "could_use_help",
 	leftDialog = "@conversation/biogenic_securitytech:s_2066c897", -- Actually, I could use some help, but if you're going further into the compound, you'll need a code to get through that security door. Punch in the code 12872 and you can get through. There are some things you should watch out for though.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_securitytech:s_83dc19a","aware_sentry_droids"} -- What kind of things do I need to watch out for?
+		{"@conversation/biogenic_securitytech:s_83dc19a","aware_sentry_droids"}, -- What kind of things do I need to watch out for?
+		{"@conversation/biogenic_securitytech:s_6c0c46c5","fine_stay_out_of_way"} -- On second thought, I'd better just leave it to you.
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(could_use_help);
 
 dont_come_back = ConvoScreen:new {
@@ -150,8 +185,7 @@ your_funeral = ConvoScreen:new {
 	id = "your_funeral",
 	leftDialog = "@conversation/biogenic_securitytech:s_e4c5332b", -- It's your funeral. You'll need to punch in the code 12872 to get through that security door. Just make sure none of those creatures gets in here before I get security back online.
 	stopConversation = "true",
-	options = {
-	}
+	options = {}
 }
 
 biogenicSecurityTechConvoTemplate:addScreen(your_funeral);
@@ -159,8 +193,11 @@ biogenicSecurityTechConvoTemplate:addScreen(your_funeral);
 creatures_modified = ConvoScreen:new {
 	id = "creatures_modified",
 	leftDialog = "@conversation/biogenic_securitytech:s_54c04cd6", -- These creatures have been modified to become very powerful. When the earthquake hit, our containment system went down, and now they are able to leave their cages and roam the halls. That is about all I know.
-	stopConversation = "true",
+	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_securitytech:s_8cd04dbf","sentry_droids"}, -- 	Can you tell me more about the sentry droids?
+		{"@conversation/biogenic_securitytech:s_6e7f3aa6","first_thing"}, -- OK. What would you like for me to do?
+		{"@conversation/biogenic_securitytech:s_2ea369ee","best_of_luck"} -- Alright. I'll do my best.
 	}
 }
 
@@ -169,8 +206,11 @@ biogenicSecurityTechConvoTemplate:addScreen(creatures_modified);
 sentry_droids = ConvoScreen:new {
 	id = "sentry_droids",
 	leftDialog = "@conversation/biogenic_securitytech:s_8913cdec", -- With our security system down, the droids' targeting protocol will be offline. They are likely to shoot at anything and everything that moves. They are positioned in halls throughout the complex.
-	stopConversation = "true",
+	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_securitytech:s_1ea74b0a","creatures_modified"}, -- Can you tell me more about the escaped creatures?
+		{"@conversation/biogenic_securitytech:s_6e7f3aa6","first_thing"}, -- OK. What would you like for me to do?
+		{"@conversation/biogenic_securitytech:s_2ea369ee","best_of_luck"} -- Alright. I'll do my best.
 	}
 }
 
@@ -181,6 +221,8 @@ aware_sentry_droids = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_securitytech:s_914ffdda", -- Specifically, you will need to be aware of the sentry droids, and any creatures that might have escaped from their cages.
 	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_securitytech:s_1ea74b0a","creatures_modified"}, -- Can you tell me more about the escaped creatures?
+		{"@conversation/biogenic_securitytech:s_8cd04dbf","sentry_droids"}, -- 	Can you tell me more about the sentry droids?
 		{"@conversation/biogenic_securitytech:s_6e7f3aa6","first_thing"}, -- OK. What would you like for me to do?
 		{"@conversation/biogenic_securitytech:s_6c0c46c5","fine_stay_out_of_way"} -- On second thought, I'd better just leave it to you.
 	}
@@ -205,7 +247,6 @@ best_of_luck = ConvoScreen:new {
 	options = {
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(best_of_luck);
 
 stay_out_of_way = ConvoScreen:new {
@@ -215,8 +256,16 @@ stay_out_of_way = ConvoScreen:new {
 	options = {
 	}
 }
-
 biogenicSecurityTechConvoTemplate:addScreen(stay_out_of_way);
+
+leave_me_alone = ConvoScreen:new {
+	id = "leave_me_alone",
+	leftDialog = "@conversation/biogenic_securitytech:s_9d06ecb3", -- Leave me alone.
+	stopConversation = "true",
+	options = {
+	}
+}
+biogenicSecurityTechConvoTemplate:addScreen(leave_me_alone);
 
 mutating_creatures = ConvoScreen:new {
 	id = "mutating_creatures",
@@ -224,7 +273,7 @@ mutating_creatures = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/biogenic_securitytech:s_77c97efc","could_use_help"}, -- Do you need a hand in getting it under control?
-		{"@conversation/biogenic_securitytech:s_db64ccb5","stay_out_of_way"} -- Sound like you have your hands full. I'll leave you alone.
+		{"@conversation/biogenic_securitytech:s_3f226fbc","your_funeral"} -- I'd better go in and check on things. Good-bye.
 	}
 }
 
