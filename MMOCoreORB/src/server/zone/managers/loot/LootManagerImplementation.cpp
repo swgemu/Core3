@@ -322,6 +322,13 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		prototype->addMagicBit(false);
 
 		exceptionalLooted.increment();
+	} 	else if (System::random(yellowChance) >= yellowChance - adjustment) {
+
+		excMod = yellowModifier;
+
+		prototype->addMagicBit(false);
+
+		yellowLooted.increment();
 	}
 
 	if (prototype->isLightsaberCrystalObject()) {
@@ -344,12 +351,24 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		float min = craftingValues->getMinValue(subtitle);
 		float max = craftingValues->getMaxValue(subtitle);
 
-		if (min == max)
+		if (subtitle == "color")
 			continue;
 
-		float percentage = System::random(10000) / 10000.f;
+		float difference = max - min;
+		float ratio = 100 / difference;
 
-		craftingValues->setCurrentPercentage(subtitle, percentage);
+		int difficulty = level / 10;
+		int offset = 100 - difficulty;
+
+		float intPercentage = ratio * System::random(difference) / 100.f;
+		float fltPercentage = System::random(100) / 100.f;
+		float excPercentage = (System::random(offset) + difficulty) / 100.f;
+
+		if (difference > 0) {
+		craftingValues->setCurrentPercentage(subtitle, intPercentage);
+		} else {
+			craftingValues->setCurrentPercentage(subtitle, fltPercentage);
+		}
 
 		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "forcecost") {
 			continue;
@@ -359,77 +378,23 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			continue;
 		}
 
-		if (subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
-			float minMod = (max > min) ? 2000.f : -2000.f;
-			float maxMod = (max > min) ? 500.f : -500.f;
+		if (excMod > 1 && subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
 
-			if (max > min && min >= 0) { // Both max and min non-negative, max is higher
-				min = ((min * level / minMod) + min) * excMod;
-				max = ((max * level / maxMod) + max) * excMod;
-
-			} else if (max > min && max <= 0) { // Both max and min are non-positive, max is higher
-				minMod *= -1;
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) / excMod;
-
-			} else if (max > min) { // max is positive, min is negative
-				minMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) * excMod;
-
-			} else if (max < min && max >= 0) { // Both max and min are non-negative, min is higher
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) / excMod;
-
-			} else if (max < min && min <= 0) { // Both max and min are non-positive, min is higher
-				minMod *= -1;
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) * excMod;
-				max = ((max * level / maxMod) + max) * excMod;
-
-			} else { // max is negative, min is positive
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) * excMod;
+			if (subtitle == "attackspeed"){
+				craftingValues->setPrecision("attackspeed", 4);
 			}
 
-		} else if (excMod != 1.0) {
-			min *= yellowModifier;
-			max *= yellowModifier;
-		}
-
-		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
-			if (max > min && min >= 0) {
-				min *= yellowModifier;
-				max *= yellowModifier;
-			} else if (max > min && max <= 0) {
-				min /= yellowModifier;
-				max /= yellowModifier;
-			} else if (max > min) {
-				min /= yellowModifier;
-				max *= yellowModifier;
-			} else if (max < min && max >= 0) {
-				min /= yellowModifier;
-				max /= yellowModifier;
-			} else if (max < min && min <= 0) {
-				min *= yellowModifier;
-				max *= yellowModifier;
+			if (min > max && max >= 0 ){
+				craftingValues->setMaxValue(subtitle, max / excMod);
 			} else {
-				min /= yellowModifier;
-				max *= yellowModifier;
+				craftingValues->setMaxValue(subtitle, max * excMod);
+				craftingValues->setCurrentPercentage(subtitle, excPercentage);
 			}
-
-			yellow = true;
-
-			yellowLooted.increment();
 		}
-
-		craftingValues->setMinValue(subtitle, min);
-		craftingValues->setMaxValue(subtitle, max);
 	}
 
-	if (yellow) {
+	if (excMod == yellowModifier) {
+		yellow = true;
 		prototype->addMagicBit(false);
 		prototype->setJunkValue((int)(fJunkValue * 1.25));
 	} else {
