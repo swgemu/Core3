@@ -196,7 +196,7 @@ well_alright = ConvoScreen:new {
 biogenicEngineerTechConvoTemplate:addScreen(well_alright);
 
 find_my_assistant = ConvoScreen:new {
-	id = "assistant_codes",
+	id = "find_my_assistant",
 	leftDialog = "@conversation/biogenic_engineertech:s_aa71d09d", -- I need to you to find my assistant, and bring his datapad back here to me. If you can get me those codes, I'll see if I can wire you a key that will let you through the first security door.
 	stopConversation = "false",
 	options = {
@@ -205,7 +205,7 @@ find_my_assistant = ConvoScreen:new {
 	--{"@conversation/biogenic_engineertech:s_d7f1b726", "thanks_anyway"} -- I'll see what I can do, but I'm not making any promises.
 	}
 }
-biogenicEngineerTechConvoTemplate:addScreen(assistant_codes);
+biogenicEngineerTechConvoTemplate:addScreen(find_my_assistant);
 
 assistant_codes = ConvoScreen:new {
 	id = "assistant_codes",

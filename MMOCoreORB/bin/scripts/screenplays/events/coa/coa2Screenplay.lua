@@ -578,7 +578,7 @@ function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
 		cellID = SceneObject(pCell):getObjectID()
 		writeData(playerID .. ":coaTowerCellID", cellID)
 
-		local pTerminal = spawnSceneObject(SceneObject(pTower):getZoneName(), "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff", 0, 0, 0, cellID, math.rad(180))
+		local pTerminal = spawnSceneObject(SceneObject(pTower):getZoneName(), "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff", 0, 0.2, 0, cellID, math.rad(180))
 
 		if pTerminal == nil then
 			CreatureObject(pPlayer):sendSystemMessage(file .. ":m5_init_failure")
@@ -686,6 +686,7 @@ function Coa2Screenplay:completeMissionFive(pPlayer, faction)
 	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M5_COMPLETE)
 
 	SceneObject(pPlayer):cancelPendingTask("Coa2Screenplay", "timeoutMission")
+	self:removeWaypoint(pPlayer)
 
 	createEvent(600000, "Coa2Screenplay", "cleanupMission", pPlayer, "")
 end
