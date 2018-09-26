@@ -283,7 +283,9 @@ void PlayerObjectImplementation::unload() {
 
 int PlayerObjectImplementation::calculateBhReward() {
 	int minReward = 25000; // Minimum reward for a player bounty
-	int maxReward = 250000; // Maximum reward for a player bounty
+
+	if (getJediState() >= 4) // Minimum if player is knight
+		minReward = 50000;
 
 	int reward = minReward;
 
@@ -291,10 +293,13 @@ int PlayerObjectImplementation::calculateBhReward() {
 
 	reward = skillPoints * 1000;
 
+	int frsRank = getFrsData()->getRank();
+
+	if (frsRank > 0)
+	reward += frsRank * 100000; // +100k per frs rank
+
 	if (reward < minReward)
 		reward = minReward;
-	else if (reward > maxReward)
-		reward = maxReward;
 
 	return reward;
 }
