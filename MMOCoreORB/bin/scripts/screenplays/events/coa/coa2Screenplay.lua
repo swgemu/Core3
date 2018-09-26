@@ -482,7 +482,7 @@ function Coa2Screenplay:startMissionThree(pPlayer, conversingNPC, faction)
 		return
 	end
 	
-	writeData(playerID .. ":coaWayID", wayID)
+	writeData(SceneObject(pPlayer):getObjectID() .. ":coaWayID", wayID)
 
 	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", self.M3_4_ACTIVE)
 end

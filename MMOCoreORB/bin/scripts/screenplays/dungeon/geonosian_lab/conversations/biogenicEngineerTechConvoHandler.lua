@@ -67,10 +67,10 @@ function BiogenicEngineerTechConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 		return convoTemplate:getScreen("init_talk")
 	elseif (engineerState == 1) then
 		return convoTemplate:getScreen("return_didnt_accept")
+	elseif (engineerState == 2) then
+		return convoTemplate:getScreen("return_init")
 	elseif (engineerState == 3) then
 		return convoTemplate:getScreen("things_under_control")
-	elseif (engineerState ~= nil and engineerState == 1) then
-		return convoTemplate:getScreen("return_init")
 	end
 
 	return convoTemplate:getScreen("init_talk")

@@ -10,8 +10,10 @@ BiogenicAssistantConvoHandler = conv_handler:new {}
 
 function BiogenicAssistantConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConvTemplate)
+
 	local engineerState = readData(CreatureObject(pPlayer):getObjectID() .. ":geoEngineerState")
 
 	if screenID == "i_have_these_codes" or screenID == "dont_know_much" then
