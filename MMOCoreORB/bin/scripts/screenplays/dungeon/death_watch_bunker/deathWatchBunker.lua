@@ -537,7 +537,7 @@ function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, pCreature)
 		return 0
 	end
 	
-	createObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pPlayer)
+	createObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pCreature)
 
 	self:lockAll(pCreature)
 
@@ -553,7 +553,7 @@ function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, pCreature, long)
 		self:lockAll(pCreature)
 	end
 	
-	dropObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pPlayer)
+	dropObserver(SPATIALCHATSENT, "DeathWatchBunkerScreenPlay", "notifyTerminalChatSent", pCreature)
 
 	return 0
 end
