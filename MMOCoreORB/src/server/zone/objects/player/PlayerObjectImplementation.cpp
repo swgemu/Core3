@@ -293,7 +293,7 @@ int PlayerObjectImplementation::calculateBhReward() {
 	int frsRank = getFrsData()->getRank();
 
 	if (frsRank > 0)
-	reward += frsRank * 100000; // +100k per frs rank
+		reward += frsRank * 100000; // +100k per frs rank
 
 	if (reward < minReward)
 		reward = minReward;
@@ -1324,6 +1324,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		if (!missionManager->hasPlayerBountyTargetInList(id))
 			missionManager->addPlayerToBountyList(id, calculateBhReward());
 		else {
+			missionManager->updatePlayerBountyReward(id, calculateBhReward());
 			missionManager->updatePlayerBountyOnlineStatus(id, true);
 		}
 	}
