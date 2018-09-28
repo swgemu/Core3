@@ -183,6 +183,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	if(!compareMods(mods, creature, WEARABLE)) {
 		warning("Wearable mods don't match for " + creature->getFirstName());
 	}
+	creature->updateSpeedAndAccelerationMods();
+	creature->updateTerrainNegotiation();
 }
 
 void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
