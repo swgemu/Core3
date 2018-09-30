@@ -10,9 +10,15 @@ void PersistentEventImplementation::loadTransientTask() {
 	if (eventExecuted)
 		return;
 
+	// Converting old int variable to uint64
+	if (timeStamp != 0 && miliDiff == 0) {
+		miliDiff = timeStamp;
+		timeStamp = 0;
+	}
+
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime();
-	int64 remTime = (timeStamp + curTime) - currentTime;
+	uint64 remTime = (timeStamp + curTime) - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj.get(), key, play, args);
 	task->setPersistentEvent(_this.getReferenceUnsafeStaticCast());
