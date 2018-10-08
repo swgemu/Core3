@@ -18,7 +18,7 @@ void PersistentEventImplementation::loadTransientTask() {
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime();
-	uint64 remTime = (timeStamp + curTime) - currentTime;
+	uint64 remTime = (miliDiff + curTime) - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj.get(), key, play, args);
 	task->setPersistentEvent(_this.getReferenceUnsafeStaticCast());
