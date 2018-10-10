@@ -100,12 +100,12 @@ ZonesEnabled = {
 	--"dantooine",
 	--"dathomir",
 	--"dungeon1",
-	--"endor",
+	"endor",
 	--"endor_asommers",
 	--"floratest",
 	--"godclient_test",
 	--"lok",
-	--"naboo",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
 	--"rori",
@@ -129,12 +129,12 @@ ZonesEnabled = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	"yavin4"
 }
 
 
@@ -208,6 +208,7 @@ WebSessionTimeout = 600 -- Length that inactive web sessions expire
 
 PurgeDeletedCharacters = 10 --How often in minutes to purge deleted characters
 MaxNavMeshJobs = 6
+MaxAuctionSearchJobs = 1
 DumpObjFiles = 1
 
 UnloadContainers = 1 --Whether to unload container contents from RAM after the container hasn't been accessed for a time
