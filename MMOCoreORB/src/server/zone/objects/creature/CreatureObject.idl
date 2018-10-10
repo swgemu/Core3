@@ -40,6 +40,7 @@ include system.util.SortedVector;
 include engine.log.Logger;
 include server.zone.CloseObjectsVector;
 import system.util.SynchronizedVectorMap;
+import server.zone.managers.auction.AuctionSearchTask;
 
 @mock
 class CreatureObject extends TangibleObject {
@@ -79,6 +80,9 @@ class CreatureObject extends TangibleObject {
 
 	@dereferenced
 	protected WearablesDeltaVector wearablesVector;
+	
+	@weakReference
+	protected transient AuctionSearchTask auctionSearch;
 
 	protected float accelerationMultiplierBase;
 	protected float accelerationMultiplierMod;
@@ -2199,5 +2203,17 @@ class CreatureObject extends TangibleObject {
 	@read
 	public int getHueValue() {
 		return hueValue;
+	}
+	
+	@local
+	@weakReference
+	public AuctionSearchTask getAuctionSearchTask() {
+		return auctionSearch;
+	}
+	
+	@preLocked
+	@local
+	public void setAuctionSearchTask(AuctionSearchTask task) {
+		auctionSearch = task;
 	}
 }

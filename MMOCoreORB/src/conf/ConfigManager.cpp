@@ -66,6 +66,7 @@ ConfigManager::ConfigManager() {
 	purgeDeletedCharacters = 10; //Default is 10 minutes.
 
 	maxNavMeshJobs = 6;
+	maxAuctionSearchJobs = 1;
 
 	termsOfService = "";
 	tosVersion = 0;
@@ -150,6 +151,7 @@ bool ConfigManager::loadConfigData() {
 	purgeDeletedCharacters = getGlobalInt("PurgeDeletedCharacters");
 
 	maxNavMeshJobs = getGlobalInt("MaxNavMeshJobs");
+	maxAuctionSearchJobs = getGlobalInt("MaxAuctionSearchJobs");
 
 	logFile = getGlobalString("LogFile");
 	logFileLevel = getGlobalInt("LogFileLevel");
