@@ -41,6 +41,8 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public final static int VENDOREXPIREPERIOD = 2592000; // Seconds
 	public final static int COMMODITYEXPIREPERIOD = 604800; 
+	
+	private transient int maxConcurrentJobs;
 
 	private boolean marketEnabled;
 
@@ -67,10 +69,10 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	public native void getItemAttributes(CreatureObject player, unsigned long objectid);
 
-	public native void getData(CreatureObject player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, int count, int offset);	
+	public native void getData(CreatureObject player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);	
 
 	@local
-	public native void getAuctionData(CreatureObject player, SceneObject usedVendor, final string planet, final string region, SceneObject vendor, int screen, unsigned int category, int count, int offset);
+	public native void getAuctionData(CreatureObject player, SceneObject usedVendor, final string planet, final string region, SceneObject vendor, int screen, unsigned int category, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);
 
 	private native void refundAuction(AuctionItem item);
 
@@ -88,7 +90,7 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void cancelItem(CreatureObject player, unsigned long objectID);
 	
 	@local
-	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, SceneObject vendor, TerminalListVector terminalList, int screen, unsigned int category, int count, int offset);
+	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, SceneObject vendor, TerminalListVector terminalList, int screen, unsigned int category, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);
 
 	public AuctionsMap getAuctionMap() {
 		return auctionMap;
