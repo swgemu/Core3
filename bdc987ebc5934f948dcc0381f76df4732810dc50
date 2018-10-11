@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_9f64b3e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/OpenContainerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2018-10-11T09:47:10Z",
+      "side": 1,
+      "message": "Can we return an error string so the user knows it\u0027s not working anymore?",
+      "revId": "bdc987ebc5934f948dcc0381f76df4732810dc50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_ff617fd4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2018-10-11T09:47:10Z",
+      "side": 1,
+      "message": "IMHO delete stuff that is commented and useless.",
+      "revId": "bdc987ebc5934f948dcc0381f76df4732810dc50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_1fa0a3f3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2018-10-11T09:47:10Z",
+      "side": 1,
+      "message": "Not sure I would bother with nonCreatureTarget bool, why not just get the container arg and decide to check for \"chest\" and fall out if it\u0027s not there.  Meanwhile, if it\u0027s a creature target then let the old code stay unchanged?",
+      "revId": "bdc987ebc5934f948dcc0381f76df4732810dc50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_df5e3b12",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2018-10-11T09:47:10Z",
+      "side": 1,
+      "message": "Again delete if it\u0027s not used.",
+      "revId": "bdc987ebc5934f948dcc0381f76df4732810dc50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_3f9be7ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2018-10-11T09:47:10Z",
+      "side": 1,
+      "message": "Feels backwards to me, you had to change a ton of code to get this one else in? Why not detect higher in the code and leave all the other code basically untouched?  Since this is an \"exception\".",
+      "revId": "bdc987ebc5934f948dcc0381f76df4732810dc50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
