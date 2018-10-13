@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a42497e_3eff6903",
+        "filename": "MMOCoreORB/src/server/zone/managers/auction/AuctionManager.idl",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3542
+      },
+      "writtenOn": "2018-10-13T15:28:15Z",
+      "side": 1,
+      "message": "This isn\u0027t used as far as I can tell. Just kill it.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "bc05c20b172092af0ee0b32101853eeea8c6dc66",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a42497e_7e09f12b",
+        "filename": "MMOCoreORB/src/server/zone/managers/auction/AuctionManagerImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 3542
+      },
+      "writtenOn": "2018-10-13T15:28:15Z",
+      "side": 1,
+      "message": "If this returns a weakref then you need to do a .get() to see if it\u0027s actually null.",
+      "range": {
+        "startLine": 1275,
+        "startChar": 5,
+        "endLine": 1275,
+        "endChar": 35
+      },
+      "revId": "bc05c20b172092af0ee0b32101853eeea8c6dc66",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
