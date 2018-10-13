@@ -402,7 +402,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 						if (paletteTemplate != nullptr)
 							hasPalette = true;
 
-						delete(paletteTemplate);
+						delete paletteTemplate;
 					}
 				}
 
