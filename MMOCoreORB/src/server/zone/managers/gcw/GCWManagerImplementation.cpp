@@ -233,6 +233,15 @@ void GCWManagerImplementation::stop() {
 	gcwStartTasks.removeAll();
 	gcwEndTasks.removeAll();
 	gcwDestroyTasks.removeAll();
+
+	for (int i = terminalSpawnLocations.size() - 1; i >= 0; i--) {
+		auto spawnList = terminalSpawnLocations.get(i);
+
+		if (spawnList != nullptr) {
+			spawnList->removeAll();
+			delete spawnList;
+		}
+	}
 }
 
 void GCWManagerImplementation::performGCWTasks(bool initial) {
