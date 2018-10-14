@@ -8,6 +8,8 @@
 #ifndef LAIRSPAWN_H_
 #define LAIRSPAWN_H_
 
+#include "engine/engine.h"
+
 namespace server {
 namespace zone {
 namespace managers {

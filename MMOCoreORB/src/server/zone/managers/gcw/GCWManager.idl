@@ -95,11 +95,11 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int initialVulnerabilityDelay;
 
 	public transient boolean racialPenaltyEnabled;
-	
+
 	@dereferenced
 	@local
-	protected transient VectorMap<string, Vector<Reference<TerminalSpawn> > > terminalSpawnLocations;
-	
+	protected transient VectorMap<string, Reference<Vector<Reference<TerminalSpawn> > > > terminalSpawnLocations;
+
 	@dereferenced
 	protected transient Vector<string> terminalTemplates;
 
@@ -258,7 +258,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native float getGCWDiscount(CreatureObject creature);
 
 	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
-	
+
 	private native void spawnBaseTerminals(BuildingObject building);
 	private native void despawnBaseTerminals(BuildingObject building);
 

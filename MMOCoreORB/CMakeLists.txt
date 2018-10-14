@@ -11,14 +11,17 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 # Set cpp requirements
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set up options
-option(BUILD_IDL "Generate idl c++ sources with cmake" ON) # Enabled by default
-option(IDL_NOPRELOCKS "Disables all prelock annotations" OFF) # Disabled by default
-option(ENABLE_CCACHE "Enables ccache search and usage" OFF) # Disabled by default
-option(RUN_GIT "Runs git log to dump last commit messages into rev.txt" OFF) # Disabled by default
-option(COMPILE_TESTS "Enables mock generation in idlc and test compiling" ON) # Enabled by default
-option(LOGIN_SERVER_EXTRA_PORTS "Enables login server with extra ports config" OFF) # Disabled by default
+option(BUILD_IDL "Generate idl c++ sources with cmake" ON)
+option(IDL_NOPRELOCKS "Disables all prelock annotations" OFF)
+option(ENABLE_CCACHE "Enables ccache search and usage" ON)
+option(RUN_GIT "Runs git log to dump last commit messages into rev.txt" OFF)
+option(COMPILE_TESTS "Enables mock generation in idlc and test compiling" ON)
+option(LOGIN_SERVER_EXTRA_PORTS "Enables login server with extra ports config" OFF)
+option(ENABLE_ASAN "Enables address sanitizer compiling" OFF)
+option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)
@@ -95,10 +98,23 @@ include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 
 # Define global build gcc compatible flags
-set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -ggdb")
+set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror" )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
+
+    if (ENABLE_ASAN)
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=address")
+    endif(ENABLE_ASAN)
+
+    if (ENABLE_NATIVE)
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+    endif(ENABLE_NATIVE)
+
+    if (CMAKE_BUILD_TYPE EQUAL "DEBUG")
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
+    endif()
 endif()
 
 

@@ -217,31 +217,21 @@ void ConfigManager::loadMOTD() {
 }
 
 void ConfigManager::loadRevision() {
-	File* file;
-	FileReader* reader;
-
 	revision = "";
 
 	try {
-		file = new File("conf/rev.txt");
-		reader = new FileReader(file);
+		File file("conf/rev.txt");
+		FileReader reader(&file);
 
 		String line;
 
-		while (reader->readLine(line))
+		while (reader.readLine(line))
 			revision += line;
 
-		reader->close();
+		reader.close();
 	} catch (FileNotFoundException& e) {
-		file = nullptr;
-		reader = nullptr;
 	} catch (Exception& e) {
-		file = nullptr;
-		reader = nullptr;
 	}
 
 	//revision = revision.replaceAll("\n", "");
-
-	delete reader;
-	delete file;
 }

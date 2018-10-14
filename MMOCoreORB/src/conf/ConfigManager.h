@@ -90,7 +90,6 @@ namespace conf {
 		int tosVersion;
 
 	public:
-
 		ConfigManager();
 
 		~ConfigManager() {
@@ -107,7 +106,6 @@ namespace conf {
 		void loadEnabledZones();
 
 		//getters
-
 		inline bool getMakeLogin() const {
 			return makeLogin;
 		}
