@@ -42,10 +42,10 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 NameManager::~NameManager() {
 	delete lua;
 
-	delete(profaneNames);
-	delete(developerNames);
-	delete(reservedNames);
-	delete(fictionNames);
+	delete profaneNames;
+	delete developerNames;
+	delete reservedNames;
+	delete fictionNames;
 
 	delete bothanData;
 	delete humanData;

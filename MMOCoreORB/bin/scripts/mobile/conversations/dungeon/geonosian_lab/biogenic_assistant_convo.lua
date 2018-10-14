@@ -21,11 +21,8 @@ biogenicAssistantConvoTemplate:addScreen(init_talk);
 really_take_back_datapad = ConvoScreen:new {
 	id = "really_take_back_datapad",
 	leftDialog = "@conversation/biogenic_assistant:s_b856cb2e", -- Really? Would you take them back to him? They are on this datapad. Thank you so much.
-	stopConversation = "false",
-	options = {
-		{"@conversation/biogenic_assistant:s_33eb85b5","really_fantastic"}, -- Sure, I will take the codes to the engineer.
-		{"@conversation/biogenic_assistant:s_eeaf9e0b","ok_i_understand"} -- Sorry, I don't have time right now.
-	}
+	stopConversation = "true",
+	options = {}
 }
 
 biogenicAssistantConvoTemplate:addScreen(really_take_back_datapad);

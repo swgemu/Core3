@@ -7,7 +7,7 @@ biogenicEngineerTechConvoTemplate = ConvoTemplate:new {
 
 return_didnt_accept = ConvoScreen:new {
 	id = "return_didnt_accept",
-	leftDialog = "@conversation/biogenic_engineertech:s_235c610d", -- Oh, you're back. We're still trying to get the reactor back online. Not much progress yet, I'm afraid.
+	leftDialog = "@conversation/biogenic_engineertech:s_d4b22fda", -- Oh, you're back. We're still trying to get the reactor back online. Not much progress yet, I'm afraid.
 	stopConversation = "false",
 	options = {
 	--{"@conversation/biogenic_engineertech:s_a7b6a9c7", "oh_yes_codes"}, -- I'm supposed to give this datapad to you.
@@ -57,7 +57,7 @@ security_door_lock = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_engineertech:s_f8f36834", -- All of the security doors have different locking algorithms. I've had to work on that first door before, so I'm pretty familiar with how it works. However, once you're though there, you're on your own.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_engineertech:s_bf0dd8c0", "and_thank_you"} -- I see. Thank you for your help.
+		{"@conversation/biogenic_engineertech:s_884784be", "and_thank_you"} -- I see. Thank you for your help.
 	}
 }
 
@@ -69,7 +69,7 @@ yes_here_are_codes = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/biogenic_engineertech:s_df0aaba0", "security_door_lock"}, -- Only the first door?
-		{"@conversation/biogenic_engineertech:s_df0aaba0", "thanks_again_for_help"}, -- Thank you for the key.
+		{"@conversation/biogenic_engineertech:s_cd2b08bc", "thanks_again_for_help"}, -- Thank you for the key.
 	}
 }
 
@@ -81,7 +81,7 @@ oh_yes_codes = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/biogenic_engineertech:s_df0aaba0", "security_door_lock"}, -- Only the first door?
-		{"@conversation/biogenic_engineertech:s_df0aaba0", "thanks_again_for_help"}, -- Thank you for the key.
+		{"@conversation/biogenic_engineertech:s_cd2b08bc", "thanks_again_for_help"}, -- Thank you for the key.
 	}
 }
 
@@ -196,7 +196,7 @@ well_alright = ConvoScreen:new {
 biogenicEngineerTechConvoTemplate:addScreen(well_alright);
 
 find_my_assistant = ConvoScreen:new {
-	id = "assistant_codes",
+	id = "find_my_assistant",
 	leftDialog = "@conversation/biogenic_engineertech:s_aa71d09d", -- I need to you to find my assistant, and bring his datapad back here to me. If you can get me those codes, I'll see if I can wire you a key that will let you through the first security door.
 	stopConversation = "false",
 	options = {
@@ -205,7 +205,7 @@ find_my_assistant = ConvoScreen:new {
 	--{"@conversation/biogenic_engineertech:s_d7f1b726", "thanks_anyway"} -- I'll see what I can do, but I'm not making any promises.
 	}
 }
-biogenicEngineerTechConvoTemplate:addScreen(assistant_codes);
+biogenicEngineerTechConvoTemplate:addScreen(find_my_assistant);
 
 assistant_codes = ConvoScreen:new {
 	id = "assistant_codes",

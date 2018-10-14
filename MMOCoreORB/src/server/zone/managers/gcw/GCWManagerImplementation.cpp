@@ -2606,8 +2606,10 @@ void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
 	Vector<Reference<TerminalSpawn*> >* spawnLocs = terminalSpawnLocations.get(baseName);
 	Vector<Reference<TerminalSpawn*> >* copySpawnLocs = new Vector<Reference<TerminalSpawn*> >(*spawnLocs);
 
-	if (copySpawnLocs->size() == 0)
+	if (copySpawnLocs->size() == 0) {
+		delete copySpawnLocs;
 		return;
+	}
 
 	for (int i = 0; i < terminalTemplates.size(); i++) {
 		int randIndex = System::random(copySpawnLocs->size() - 1);
@@ -2649,7 +2651,7 @@ void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
 		copySpawnLocs->removeElementAt(randIndex);
 	}
 
-	delete(copySpawnLocs);
+	delete copySpawnLocs;
 
 	baseData->setTerminalsSpawned(true);
 }

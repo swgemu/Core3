@@ -40,7 +40,10 @@ function BiogenicEngineerTechConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 		clonedConversation:addOption("@conversation/biogenic_engineertech:s_99c2fa91", "wandered_bad_spot")
 		clonedConversation:addOption("@conversation/biogenic_engineertech:s_9d6ccb86", "thanks_for_stopping")
 	elseif screenID == "knocked_out_power" or screenID == "could_use_help" or screenID == "wandered_bad_spot" then
-		writeData(CreatureObject(pPlayer):getObjectID() .. ":geoEngineerState", 1)
+		local techState = readData(CreatureObject(pPlayer):getObjectID() .. ":geoEngineerState")
+		if (techState == nil or techState == 0) then
+			writeData(CreatureObject(pPlayer):getObjectID() .. ":geoEngineerState", 1)
+		end
 	elseif screenID == "return_init" then
 		if (GeonosianLab:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_da5959ed", "yes_here_are_codes")
@@ -64,10 +67,10 @@ function BiogenicEngineerTechConvoHandler:getInitialScreen(pPlayer, pNpc, pConvT
 		return convoTemplate:getScreen("init_talk")
 	elseif (engineerState == 1) then
 		return convoTemplate:getScreen("return_didnt_accept")
+	elseif (engineerState == 2) then
+		return convoTemplate:getScreen("return_init")
 	elseif (engineerState == 3) then
 		return convoTemplate:getScreen("things_under_control")
-	elseif (engineerState ~= nil and engineerState == 1) then
-		return convoTemplate:getScreen("return_init")
 	end
 
 	return convoTemplate:getScreen("init_talk")

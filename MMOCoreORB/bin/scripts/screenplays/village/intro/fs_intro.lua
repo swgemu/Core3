@@ -148,7 +148,7 @@ function FsIntro:onLoggedIn(pPlayer)
 		curStep = self.SITHWAIT
 	end
 
-	if (curStep ~= self.OLDMANWAIT and curStep ~= self.OLDMANMEET and not OldManIntroEncounter:hasForceCrystal(pPlayer)) then
+	if (curStep ~= self.OLDMANWAIT and curStep ~= self.OLDMANMEET and not OldManIntroEncounter:hasForceCrystal(pPlayer) and not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)) then
 		if (SithShadowIntroTheater:hasTaskStarted(pPlayer)) then
 			SithShadowIntroTheater:finish(pPlayer)
 		end

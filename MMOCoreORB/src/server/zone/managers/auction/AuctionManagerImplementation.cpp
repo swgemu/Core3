@@ -32,10 +32,13 @@
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
+#include "AuctionSearchTask.h"
 
 void AuctionManagerImplementation::initialize() {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	Core::getTaskManager()->initializeCustomQueue("AuctionSearchQueue", ConfigManager::instance()->getMaxAuctionSearchJobs(), false);
 
 	auctionMap = new AuctionsMap();
 
@@ -1105,7 +1108,7 @@ bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* 
 
 	return false;
 }
-AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, uint32 category, int clientcounter, int offset) {
+AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, uint32 category, const UnicodeString& filterText, int minPrice, int maxPrice, bool includeEntranceFee, int clientcounter, int offset) {
 	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, clientcounter, player);
 
 	String pname = player->getFirstName().toLowerCase();
@@ -1156,6 +1159,39 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					if (item->getStatus() == AuctionItem::FORSALE) {
 						if(checkItemCategory(category, item)) {
 							if (displaying >= offset) {
+								if (minPrice != 0 || maxPrice != 0) {
+									int itemPrice = item->getPrice();
+
+									if (includeEntranceFee) {
+										ManagedReference<SceneObject*> itemVendor = player->getZoneServer()->getObject(item->getVendorID());
+
+										if (itemVendor != nullptr && itemVendor->isVendor()) {
+											int accessFee = 0;
+											ManagedReference<SceneObject*> parent = itemVendor->getRootParent();
+
+											if(parent != nullptr && parent->isBuildingObject()) {
+												BuildingObject* building = cast<BuildingObject*>(parent.get());
+
+												if(building != nullptr)
+													accessFee = building->getAccessFee();
+											}
+
+											itemPrice += accessFee;
+										}
+									}
+
+									if ((minPrice != 0 && itemPrice < minPrice) || (maxPrice != 0 && itemPrice > maxPrice))
+										continue;
+								}
+
+								if (!filterText.isEmpty()) {
+									String lowerFilter = filterText.toString().toLowerCase();
+									String itemName = item->getItemName().toLowerCase();
+
+									if (itemName.indexOf(lowerFilter) == -1)
+										continue;
+								}
+
 								reply->addItemToList(item);
 							}
 							displaying++;
@@ -1235,7 +1271,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 	return reply;
 }
 
-void AuctionManagerImplementation::getData(CreatureObject* player, int extent, uint64 vendorObjectID, int screen, unsigned int category, int clientcounter, int offset) {
+void AuctionManagerImplementation::getData(CreatureObject* player, int extent, uint64 vendorObjectID, int screen, unsigned int category, const UnicodeString& filterText, int minPrice, int maxPrice, bool includeEntranceFee, int clientcounter, int offset) {
+	if (player->getAuctionSearchTask().get() != nullptr)
+		return;
+
 	ManagedReference<TangibleObject*> vendorInUse = (zoneServer->getObject(vendorObjectID)).castTo<TangibleObject*>();
 
 	if (vendorInUse == NULL || (!vendorInUse->isVendor() && !vendorInUse->isBazaarTerminal())) {
@@ -1297,11 +1336,13 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 		break;
 	}
 
-	getAuctionData(player, vendorInUse, planet, region, vendor, screen, category, clientcounter, offset);
 
+	AuctionSearchTask* task = new AuctionSearchTask(_this.getReferenceUnsafeStaticCast(), player, vendorInUse, planet, region, vendor, screen, category, filterText, minPrice, maxPrice, includeEntranceFee, clientcounter, offset);
+	player->setAuctionSearchTask(task);
+	task->schedule(100);
 }
 
-void AuctionManagerImplementation::getAuctionData(CreatureObject* player, SceneObject* usedVendor, const String& planet, const String& region, SceneObject* vendor, int screen, uint32 category, int clientcounter, int offset) {
+void AuctionManagerImplementation::getAuctionData(CreatureObject* player, SceneObject* usedVendor, const String& planet, const String& region, SceneObject* vendor, int screen, uint32 category, const UnicodeString& filterText, int minPrice, int maxPrice, bool includeEntranceFee, int clientcounter, int offset) {
 
 	TerminalListVector terminalList;
 
@@ -1311,7 +1352,7 @@ void AuctionManagerImplementation::getAuctionData(CreatureObject* player, SceneO
 		terminalList = auctionMap->getVendorTerminalData(planet, region, vendor);
 	}
 
-	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, usedVendor, &terminalList, screen, category, clientcounter, offset);
+	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, usedVendor, &terminalList, screen, category, filterText, minPrice, maxPrice, includeEntranceFee, clientcounter, offset);
 	player->sendMessage(msg);
 }
 

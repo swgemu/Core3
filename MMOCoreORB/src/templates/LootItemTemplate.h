@@ -44,6 +44,7 @@ public:
 		junkDealerTypeNeeded = 0;
 		junkMinValue = 0;
 		junkMaxValue = 0;
+		suppressSerialNumber = false;
 	}
 
 	void readObject(LuaObject* templateData) {

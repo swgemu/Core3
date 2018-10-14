@@ -10,6 +10,7 @@ import server.zone.managers.director.ScreenPlayTask;
 
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
+	protected unsigned long miliDiff;
 	protected unsigned long curTime;
 	protected string key;
 	protected string play;
@@ -25,6 +26,9 @@ class PersistentEvent extends ManagedObject {
 
 	public PersistentEvent() {
 		eventExecuted = false;
+		timeStamp = 0;
+		miliDiff = 0;
+		curTime = 0;
 	}
 	
 	@local
@@ -40,8 +44,8 @@ class PersistentEvent extends ManagedObject {
 	}
 
 	@read
-	public int getTimeStamp() {
-		return timeStamp;
+	public unsigned long getMiliDiff() {
+		return miliDiff;
 	}
 
 	@read
@@ -83,8 +87,8 @@ class PersistentEvent extends ManagedObject {
 		curTime = time;
 	}
 
-	public void setTimeStamp(int stamp) {
-		timeStamp = stamp;
+	public void setMiliDiff(unsigned long mdiff) {
+		miliDiff = mdiff;
 	}
 
 	public void setKey(final string k) {
