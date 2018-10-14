@@ -9,53 +9,45 @@
 #include "tre3/TreeArchive.h"
 
 DataArchiveStore::DataArchiveStore() : Logger("DataArchiveStore") {
-	treeDirectory = NULL;
+	treeDirectory = nullptr;
 }
 
 DataArchiveStore::~DataArchiveStore() {
 	delete treeDirectory;
-	treeDirectory = NULL;
+	treeDirectory = nullptr;
 }
 
 byte* DataArchiveStore::getData(const String& path, int& size) {
-	ReadLocker locker(this);
 	//read from local dir else from tres
-	File* file = new File(path);
-	byte* data = NULL;
+	File file(path);
+	byte* data = nullptr;
 	size = 0;
 
 	try {
-		Reference<FileReader*> test = new FileReader(file);
+		FileReader test(&file);
 
-		if (file->exists()) {
-			size = file->size();
-
+		if (file.exists()) {
+			size = file.size();
 			data = new byte[size];
 
-			test->read((char*)data, size);
-
-			test->close();
-
-			test = NULL;
-
-			delete file;
+			test.read((char*)data, size);
+			test.close();
 
 			return data;
 		}
 	} catch (Exception& e) {
-
 	}
 
-	delete file;
+	ReadLocker locker(this);
 
-	if (treeDirectory == NULL)
-		return NULL;
+	if (treeDirectory == nullptr)
+		return nullptr;
 
 	data = treeDirectory->getBytes(path, size);
 
 	if (size == 0) {
 		delete [] data;
-		return NULL;
+		return nullptr;
 	}
 
 	return data;
@@ -64,7 +56,7 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 int DataArchiveStore::loadTres(const String& path, const Vector<String>& treFilesToLoad) {
 	Locker locker(this);
 
-	if (treeDirectory != NULL) {
+	if (treeDirectory != nullptr) {
 		//error("tree directory already loaded");
 
 		return 0;
@@ -97,28 +89,28 @@ int DataArchiveStore::loadTres(const String& path, const Vector<String>& treFile
 
 IffStream* DataArchiveStore::openIffFile(const String& fileName) {
 	if (fileName.isEmpty())
-		return NULL;
+		return nullptr;
 
-	IffStream* iffStream = NULL;
+	IffStream* iffStream = nullptr;
 
 	int size = 0;
 
 	byte* data = getData(fileName, size);
 
 	if (size == 0)
-		return NULL;
+		return nullptr;
 
 	iffStream = new IffStream();
 
-	if (iffStream != NULL) {
+	if (iffStream != nullptr) {
 		try {
 			if (!iffStream->parseChunks(data, size, fileName)) {
 				delete iffStream;
-				iffStream = NULL;
+				iffStream = nullptr;
 			}
 		} catch (Exception& e) {
 			delete iffStream;
-			iffStream = NULL;
+			iffStream = nullptr;
 		}
 	}
 

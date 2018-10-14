@@ -2,8 +2,6 @@
 // Created by Victor Popovici on 7/2/17.
 //
 
-#include "engine/core/ManagedReference.h"
-
 #include "CloseObjectsVector.h"
 
 #include "server/zone/QuadTreeEntry.h"
@@ -157,7 +155,7 @@ void CloseObjectsVector::safeAppendReceiversTo(Vector<ManagedReference<QuadTreeE
 	}
 }
 
-Reference<QuadTreeEntry*> CloseObjectsVector::get(int idx) const {
+const Reference<QuadTreeEntry*>& CloseObjectsVector::get(int idx) const {
 	return objects.get(idx);
 }
 
@@ -187,8 +185,8 @@ void CloseObjectsVector::putReceiver(QuadTreeEntry* entry, uint32 receiverTypes)
 }
 
 int CloseObjectsVector::put(const Reference<QuadTreeEntry*>& o) {
-
 	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
+
 	Locker locker(&mutex);
 
 	putReceiver(o.get(), receiverTypes);
@@ -198,6 +196,7 @@ int CloseObjectsVector::put(const Reference<QuadTreeEntry*>& o) {
 
 int CloseObjectsVector::put(Reference<QuadTreeEntry*>&& o) {
 	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
+
 	Locker locker(&mutex);
 	putReceiver(o.get(), receiverTypes);
 

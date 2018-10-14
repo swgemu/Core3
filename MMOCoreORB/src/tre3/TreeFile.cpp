@@ -25,21 +25,17 @@ void TreeFile::read(const String& path) {
 
 	filePath = path;
 
-	File* file = new File(path);
+	File file(path);
+	FileInputStream fileStream(&file);
 
-	FileInputStream fileStream(file);
-
-	if (!file->exists()) {
+	if (!file.exists()) {
 		error("File does not exist.");
-		delete file;
 		return;
 	}
 
 	readHeader(&fileStream);
 
 	fileStream.close();
-
-	delete file;
 }
 
 void TreeFile::readHeader(FileInputStream* fileStream) {
@@ -105,7 +101,7 @@ void TreeFile::readFileBlock(FileInputStream* fileStream) {
 		tfr->setTreeFilePath(filePath);
 		bufferOffset += tfr->readFromBuffer(uncompressedData + bufferOffset);
 
-		records.add(tfr);
+		records.emplace(std::move(tfr));
 	}
 
 	delete [] uncompressedData;
@@ -117,7 +113,7 @@ void TreeFile::readNameBlock(FileInputStream* fileStream) {
 	for (int i = 0; i < totalRecords; ++i) {
 		TreeFileRecord* record = records.get(i);
 
-		if (treeArchive != NULL)
+		if (treeArchive != nullptr)
 			treeArchive->addRecord(((char*) uncompressedData) + record->getNameOffset(), record);
 	}
 

@@ -6,7 +6,6 @@
 #define ZONEHANDLER_H_
 
 #include "server/zone/ZoneServer.h"
-
 #include "server/zone/ZoneClientSession.h"
 
 namespace server {

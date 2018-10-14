@@ -31,6 +31,7 @@
 
 //#ifdef WITH_STM
 #include "engine/stm/TransactionalReference.h"
+#include "engine/stm/TransactionalMemoryManager.h"
 //#endif
 
 /**
@@ -45,6 +46,7 @@ namespace zone {
 
 class QuadTree;
 class QuadTreeEntry;
+class QuadTreeEntryImplementation;
 
 class QuadTreeNode: public Object {
 	SortedVector<Reference<QuadTreeEntry*> > objects;

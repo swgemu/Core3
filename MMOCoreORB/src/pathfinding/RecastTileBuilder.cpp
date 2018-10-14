@@ -135,7 +135,6 @@ void RecastTileBuilder::cleanup() {
 }
 
 unsigned char* RecastTileBuilder::build(float x, float y, const AABB& lastTileBounds, int& dataSize) {
-
 	int gw = 0, gh = 0;
 
 	float bmin[3];
