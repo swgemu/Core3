@@ -320,7 +320,7 @@ class ZoneServer extends ManagedService implements Logger {
 	public ReactionManager getReactionManager() {
 		return reactionManager;
 	}
-	
+
 	@dirty
 	public FrsManager getFrsManager() {
 		return frsManager;

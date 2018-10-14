@@ -9,13 +9,14 @@
 #define MANTISDATABASE_H_
 
 #include "engine/engine.h"
+#include "system/lang/ref/UniqueReference.h"
 
 namespace conf {
 	class ConfigManager;
 }
 
 class MantisDatabase {
-	static Vector<Database*>* databases;
+	static UniqueReference<ArrayList<UniqueReference<Database*> >* > databases;
 	static AtomicInteger currentDB;
 
 	static String tablePrefix;
@@ -34,7 +35,7 @@ public:
 
 		currentDB.increment();
 
-		return databases->get(i);
+		return databases->get(i).get();
 	}
 
 	static const String& getTablePrefix() {

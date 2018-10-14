@@ -50,9 +50,8 @@ IDL_DIRECTIVES = -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 
 UNITTEST_DIRECTIVES =
 
-all: #build
-	#cd build/unix && cmake ../.. && make
-	#cp build/unix/src/core3 bin
+all: build-cmake-with-idl
+	#done
 
 build: idl gtest gitlog
 	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
@@ -67,12 +66,12 @@ unittest: build
 unittest-cmake: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
 unittest-cmake: build-cmake
 
-sanitizers-cmake: UNITTEST_DIRECTIVES = -fsanitize=address 
+sanitizers-cmake: UNITTEST_DIRECTIVES = -fsanitize=address
 sanitizers-cmake: build-cmake
 
 rebuild: clean build
 
-gitlog: 
+gitlog:
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
 
 idl:
@@ -114,12 +113,40 @@ build-cmake-with-idl:
 	cd build/unix && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
 
+build-ninja:
+	mkdir build/unix/ninja || true
+	cd build/unix/ninja && cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
+	#done
+
+clean-ninja:
+	rm -rf build/unix/ninja
+	#done
+
+build-ninja-debug:
+	mkdir build/unix/ninja-debug || true
+	cd build/unix/ninja-debug && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
+	#done
+
+clean-ninja-debug:
+	rm -rf build/unix/ninja-debug
+	#done
+
+build-ninja-debugoptimized:
+	mkdir build/unix/ninja-debugoptimized || true
+	cd build/unix/ninja-debugoptimized && cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
+	#done
+
+clean-ninja-debugoptimized:
+	rm -rf build/unix/ninja-debugoptimized
+	#done
+
 clean-cmake:
 	rm -f build/unix/CMakeCache.txt
 	rm -f build/unix/cmake_install.cmake
 	rm -f build/unix/Makefile
 	rm -rf build/unix/CMakeFiles
 	#done
+
 
 DB_NAMESPACE=
 DB_IMAGE=
@@ -179,7 +206,7 @@ status-db-helm:
 	kubectl get svc --namespace ${DB_NAMESPACE}
 	kubectl get po --namespace ${DB_NAMESPACE}
 	kubectl exec nuodb-sm-0 --namespace nuodb -- /opt/nuodb/bin/nuodbmgr --broker localhost --password bird --command "show domain summary"
-	#done 
+	#done
 
 status-app-helm:
 	helm ls --all --tiller-namespace $(APP_NAMESPACE)

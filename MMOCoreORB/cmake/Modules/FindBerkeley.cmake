@@ -22,7 +22,6 @@ ENDIF (DB_LIBRARIES)
 FIND_PATH(DB_INCLUDE_DIR db.h
         /opt/local/include/db53/
         /usr/local/BerkeleyDB.5.3/include
-        /usr/include/
         NO_DEFAULT_PATH
         )
 
