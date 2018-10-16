@@ -121,7 +121,7 @@ public:
 					heading = args.getFloatToken();
 
 				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
-				if (serverTemplate != NULL) {
+				if (serverTemplate != NULL && serverTemplate->getGameObjectType() != SceneObjectType::STATICOBJECT) {
 					if (creature->getParent() != NULL) {
 						creature->sendSystemMessage("You need to be outside and unmounted to spawn a structure");
 						return GENERALERROR;
