@@ -1247,3 +1247,62 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int s
 
 	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
 }
+
+int PlanetManagerImplementation::destroyEventObject(uint64 objectID) {
+	if (spawnedEventObjects.contains(objectID)) {
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(objectID);
+
+		if (object == nullptr) {
+			spawnedEventObjects.drop(objectID);
+			return 0;
+		}
+
+		Core::getTaskManager()->executeTask([object] () {
+			Locker locker(object);
+
+			if (object->isPersistent())
+				object->destroyObjectFromDatabase(true);
+
+			object->destroyObjectFromWorld(true);
+
+		}, "DestroyEventObjectLambda");
+
+		spawnedEventObjects.drop(objectID);
+
+		return 1;
+	} else if (spawnedEventStructures.contains(objectID)) {
+		ManagedReference<StructureObject*> structure = server->getZoneServer()->getObject(objectID).castTo<StructureObject*>();
+
+		if (structure == nullptr) {
+			spawnedEventStructures.drop(objectID);
+			return 0;
+		}
+
+		StructureManager::instance()->destroyStructure(structure);
+		spawnedEventStructures.drop(objectID);
+		return 1;
+	}
+
+	return 0;
+}
+
+int PlanetManagerImplementation::destroyAllEventObjects() {
+	int counter = 0;
+	SynchronizedSortedVector<uint64> objects(spawnedEventObjects);
+	int size = objects.size();
+
+	for (int i = 0; i < size; i++) {
+		uint64 objectID = objects.get(i);
+		counter += destroyEventObject(objectID);
+	}
+
+	SynchronizedSortedVector<uint64> structures(spawnedEventStructures);
+	size = structures.size();
+
+	for (int i = 0; i < size; i++) {
+		uint64 objectID = structures.get(i);
+		counter += destroyEventObject(objectID);
+	}
+
+	return counter;
+}
