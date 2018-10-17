@@ -102,7 +102,7 @@ target_link_libraries(core3
 	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 	${whole_archive_end}
 	${ENGINE3_LIBRARIES}
-	${gmock_libs} ${Boost_LIBRARIES} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
+	${gmock_libs} ${Boost_LIBRARIES} ${GCCLIBATOMIC_LIBRARY} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
 
 # Copy core3 binary
 add_custom_command(
@@ -125,5 +125,9 @@ if(COMPILE_TESTS)
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
 endif(COMPILE_TESTS)
 
+add_custom_target(idl
+	COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -sd src anyadEclipse
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Building idl sources"
+        VERBATIM)
 
-#add_subdirectory(tests)

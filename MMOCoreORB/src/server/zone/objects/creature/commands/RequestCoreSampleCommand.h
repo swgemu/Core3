@@ -40,7 +40,7 @@ public:
 
 			// If the sample task exists, we can't sample again
 			if (sampletask != NULL) {
-				Time nextExecutionTime;
+				AtomicTime nextExecutionTime;
 				Core::getTaskManager()->getNextExecutionTime(sampletask, nextExecutionTime);
 				int seconds = (int) ((nextExecutionTime.getMiliTime() - Time().getMiliTime()) / 1000.0f);
 				if(seconds < 1)

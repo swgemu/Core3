@@ -63,6 +63,8 @@ void CloseObjectsVector::removeAll(int newSize, int newIncrement) {
 	objects.removeAll(newSize, newIncrement);
 
 	messageReceivers.removeAll(newSize, newIncrement);
+
+	count = 0;
 }
 
 void CloseObjectsVector::dropReceiver(QuadTreeEntry* entry) {
@@ -92,7 +94,11 @@ Reference<QuadTreeEntry*> CloseObjectsVector::remove(int index) {
 
 	dropReceiver(ref);
 
-	return objects.remove(index);
+	auto obj = objects.remove(index);
+
+	count = objects.size();
+
+	return obj;
 }
 
 bool CloseObjectsVector::drop(const Reference<QuadTreeEntry*>& o) {
@@ -100,7 +106,11 @@ bool CloseObjectsVector::drop(const Reference<QuadTreeEntry*>& o) {
 
 	dropReceiver(o);
 
-	return objects.drop(o);
+	auto res = objects.drop(o);
+
+	count = objects.size();
+
+	return res;
 }
 
 void CloseObjectsVector::safeCopyReceiversTo(Vector<QuadTreeEntry*>& vec, uint32 receiverType) const {
@@ -191,7 +201,11 @@ int CloseObjectsVector::put(const Reference<QuadTreeEntry*>& o) {
 
 	putReceiver(o.get(), receiverTypes);
 
-	return objects.put(o);
+	auto res = objects.put(o);
+
+	count = objects.size();
+
+	return res;
 }
 
 int CloseObjectsVector::put(Reference<QuadTreeEntry*>&& o) {
@@ -200,5 +214,9 @@ int CloseObjectsVector::put(Reference<QuadTreeEntry*>&& o) {
 	Locker locker(&mutex);
 	putReceiver(o.get(), receiverTypes);
 
-	return objects.put(std::move(o));
+	auto res = objects.put(std::move(o));
+
+	count = objects.size();
+
+	return res;
 }

@@ -23,6 +23,8 @@ class CloseObjectsVector : public Object {
 
 	VectorMap<uint32, SortedVector<server::zone::QuadTreeEntry*> > messageReceivers;
 
+	AtomicInteger count;
+
 #ifdef CXX11_COMPILER
 	static_assert(sizeof(server::zone::QuadTreeEntry*) == sizeof(Reference<server::zone::QuadTreeEntry*>), "Reference<> size is not the size of a pointer");
 #endif
@@ -59,8 +61,8 @@ public:
 	int put(const Reference<server::zone::QuadTreeEntry*>& o);
 	int put(Reference<server::zone::QuadTreeEntry*>&& o);
 
-	inline int size() const {
-		return objects.size();
+	int size() const NO_THREAD_SAFETY_ANALYSIS {
+		return count;
 	}
 
 	void setNoDuplicateInsertPlan() {

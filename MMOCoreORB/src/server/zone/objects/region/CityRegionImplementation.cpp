@@ -159,7 +159,10 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 
 	cityUpdateEvent->schedule(seconds * 1000);
 
-	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, nextUpdateTime);
+	AtomicTime next;
+	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, next);
+
+	nextUpdateTime = next.getTimeObject();
 }
 
 void CityRegionImplementation::scheduleCitizenAssessment(uint32 seconds) {
@@ -173,7 +176,10 @@ void CityRegionImplementation::scheduleCitizenAssessment(uint32 seconds) {
 
 	citizenAssessmentEvent->schedule(seconds * 1000);
 
-	Core::getTaskManager()->getNextExecutionTime(citizenAssessmentEvent, nextCitizenAssessment);
+	AtomicTime next;
+	Core::getTaskManager()->getNextExecutionTime(citizenAssessmentEvent, next);
+
+	nextCitizenAssessment = next.getTimeObject();
 }
 
 int CityRegionImplementation::getTimeToUpdate() {

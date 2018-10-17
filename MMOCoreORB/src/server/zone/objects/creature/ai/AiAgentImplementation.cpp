@@ -1601,7 +1601,11 @@ void AiAgentImplementation::activateAwarenessEvent(uint64 delay) {
 
 	if (awarenessEvent == NULL) {
 		awarenessEvent = new AiAwarenessEvent(asAiAgent());
+		auto zone = getZone();
 
+		if (zone != nullptr) {
+			awarenessEvent->setCustomTaskQueue(zone->getZoneName());
+		}
 #ifdef DEBUG
 		info("Creating new Awareness Event", true);
 #endif

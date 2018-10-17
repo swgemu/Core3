@@ -21,6 +21,7 @@ option(RUN_GIT "Runs git log to dump last commit messages into rev.txt" OFF)
 option(COMPILE_TESTS "Enables mock generation in idlc and test compiling" ON)
 option(LOGIN_SERVER_EXTRA_PORTS "Enables login server with extra ports config" OFF)
 option(ENABLE_ASAN "Enables address sanitizer compiling" OFF)
+option(ENABLE_TSAN "Enables thread sanitizer compiling" OFF)
 option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 
 # Add lua includes and libraries
@@ -58,6 +59,10 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+	find_package(GccAtomic REQUIRED)
+endif()
+
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
@@ -70,6 +75,8 @@ if(ENABLE_CCACHE)
     if(CCACHE_FOUND)
         set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
         set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+
+	message(STATUS "Using ccache")
     endif(CCACHE_FOUND)
 endif(ENABLE_CCACHE)
 
@@ -98,7 +105,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 
 # Define global build gcc compatible flags
-set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror" )
+set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror")
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
@@ -106,7 +113,14 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
     if (ENABLE_ASAN)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=address")
+	   message(STATUS "Adress sanitizer enabled")
     endif(ENABLE_ASAN)
+
+    if (ENABLE_TSAN)
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
+	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=thread")
+	   message(STATUS "Thread sanitizer enabled")
+    endif(ENABLE_TSAN)
 
     if (ENABLE_NATIVE)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
@@ -116,7 +130,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
     endif()
 endif()
-
 
 add_definitions(-DDEFAULT_DYNAMIC_CAST)
 

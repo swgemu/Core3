@@ -205,7 +205,7 @@ float ResourceSpawnImplementation::getDensityAt(const String& zoneName, float x,
 
 String ResourceSpawnImplementation::getSpawnMapZone(int i) {
 	if (spawnMaps.size() > i)
-		return spawnMaps.elementAt(i).getKey();
+		return spawnMaps.getKey(i);
 	else
 		return "";
 }
@@ -291,7 +291,7 @@ void ResourceSpawnImplementation::print() {
 	}
 
 	for (int i = 0; i < spawnMaps.size(); ++i) {
-		info(spawnMaps.elementAt(i).getKey());
+		info(spawnMaps.getKey(i));
 		spawnMaps.get(i).print();
 	}
 
