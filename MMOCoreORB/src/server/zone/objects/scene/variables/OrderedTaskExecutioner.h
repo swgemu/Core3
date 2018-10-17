@@ -1,3 +1,4 @@
+
 /*
  * OrderedTask.h
  *
@@ -28,9 +29,9 @@ namespace server {
     public:
     	OrderedTaskExecutioner(SceneObject* sceneObject);
 
-    	void run();
+    	void run() final;
 
-    	const char* getTaskName();
+    	const char* getTaskName() final;
     };
 
     }

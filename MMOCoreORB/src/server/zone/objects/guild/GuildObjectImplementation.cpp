@@ -34,7 +34,10 @@ void GuildObjectImplementation::rescheduleUpdateEvent(uint32 seconds) {
 
 	guildUpdateEvent->schedule(seconds * 1000);
 
-	Core::getTaskManager()->getNextExecutionTime(guildUpdateEvent, nextUpdateTime);
+	AtomicTime next;
+	Core::getTaskManager()->getNextExecutionTime(guildUpdateEvent, next);
+
+	nextUpdateTime = next.getTimeObject();
 }
 
 void GuildObjectImplementation::sendBaselinesTo(SceneObject* player) {

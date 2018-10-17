@@ -23,6 +23,8 @@ void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) 
 	if (newZone == nullptr)
 		return;
 
+	Locker locker(sceneObject);
+
 	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
 	insertChildObjectsToZone(sceneObject, newZone);
@@ -40,7 +42,7 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 
 		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == nullptr) {
 			Locker clocker(outdoorChild, sceneObject);
-			
+
 			zone->transferObject(outdoorChild, -1, true);
 		}
 	}

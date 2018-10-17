@@ -11,15 +11,15 @@
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/Zone.h"
 
-class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
+class SpawnAreaMap : public SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
 	Lua* lua;
 protected:
 
 	ManagedReference<Zone*> zone;
 
-	Vector<ManagedReference<SpawnArea*> > noSpawnAreas;
+	SynchronizedVector<ManagedReference<SpawnArea*> > noSpawnAreas;
 
-	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
+	SynchronizedVector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
 	void readAreaObject(LuaObject& areaObj);
 	void loadRegions();
@@ -40,7 +40,7 @@ public:
 		setAllowDuplicateInsertPlan();
 	}
 
-	SpawnAreaMap(const SpawnAreaMap& l) : VectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap"),
+	SpawnAreaMap(const SpawnAreaMap& l) : SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap"),
 			zone(l.zone), noSpawnAreas(l.noSpawnAreas), worldSpawnAreas(l.worldSpawnAreas) {
 
 		lua = l.lua;
@@ -57,7 +57,7 @@ public:
 
 	void unloadMap();
 
-	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
+	SynchronizedVector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
 	}
 

@@ -22,29 +22,31 @@ FIND_PATH(IDLC_BIN_DIR idlc.jar
   /opt/engine3pub/bin
   ../MMOEngine/lib
   ../MMOEngine/bin
+  ../../engine3/MMOEngine/lib
+  ../../engine3/MMOEngine/bin
   NO_DEFAULT_PATH
 )
 
 FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
   /opt/engine3/include
   /opt/engine3pub/include
-  ../MMOEngine/include
   ../MMOEngine/src
+  ../MMOEngine/include
+  ../../engine3/MMOEngine/src
+  ../../engine3/MMOEngine/include
   NO_DEFAULT_PATH
 )
 
 SET(ENGINE3_NAMES engine3)
 IF(APPLE)
   FIND_LIBRARY(ENGINE3_LIBRARY
-          NAMES ${ENGINE3_NAMES}
-          PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/osx ../MMOEngine/lib/unix)
+	NAMES ${ENGINE3_NAMES}
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/osx ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
 ELSE ()
-FIND_LIBRARY(ENGINE3_LIBRARY
-  NAMES ${ENGINE3_NAMES}
-  PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix
-)
+  FIND_LIBRARY(ENGINE3_LIBRARY
+  	NAMES ${ENGINE3_NAMES}
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix)
 ENDIF(APPLE)
-
 
 IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY)
   SET(ENGINE3_FOUND TRUE)
@@ -67,7 +69,7 @@ IF (ENGINE3_FOUND)
   ENDIF (NOT ENGINE3_FIND_QUIETLY_LIB)
 
   IF (NOT ENGINE3_FIND_QUIETLY_IDLC_BIN)
-    MESSAGE(STATUS "Found idlc ${IDLC_BIN_DIR}")
+    MESSAGE(STATUS "Found idlc.jar in: ${IDLC_BIN_DIR}")
   ENDIF(NOT ENGINE3_FIND_QUIETLY_IDLC_BIN)
 
 ELSE (ENGINE3_FOUND)

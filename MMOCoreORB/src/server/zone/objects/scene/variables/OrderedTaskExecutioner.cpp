@@ -20,7 +20,7 @@ OrderedTaskExecutioner::OrderedTaskExecutioner(SceneObject* sceneObject) : scene
 void OrderedTaskExecutioner::run() {
 	Reference<SceneObject*> strongReference = sceneObject.get();
 
-	if (strongReference == NULL)
+	if (strongReference == nullptr)
 		return;
 
 	//no lock on getPendingTasks() is safe due to using the container lock
@@ -29,7 +29,7 @@ void OrderedTaskExecutioner::run() {
 
 	Reference<Task*> task = pendingTasks->getNextOrderedTask();
 
-	if (task != NULL) {
+	if (task != nullptr) {
 		try {
 			task->run();
 		} catch (Exception& exc) {
@@ -43,7 +43,7 @@ void OrderedTaskExecutioner::run() {
 
 		pendingTasks->runMoreOrderedTasks(strongReference);
 
-		taskName = task->getTaskName();
+		//taskName = task->getTaskName();
 	}
 }
 

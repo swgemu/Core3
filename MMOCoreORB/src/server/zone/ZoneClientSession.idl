@@ -11,43 +11,45 @@ import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import system.util.VectorMap;
 
+include system.util.SynchronizedVectorMap;
+
 //@nonTransactional
 class ZoneClientSession extends ManagedObject {
 	transient protected BaseClientProxy session;
-	
+
 	@dereferenced
-	protected VectorMap<unsigned int, unsigned long> characters;
-	
+	protected SynchronizedVectorMap<unsigned int, unsigned long> characters;
+
 	@dereferenced
-	protected VectorMap<unsigned int, unsigned long> bannedCharacters;
-	
+	protected SynchronizedVectorMap<unsigned int, unsigned long> bannedCharacters;
+
 	@weakReference
 	protected CreatureObject player;
 
 	protected unsigned int sessionID;
 
 	protected unsigned int accountID;
-	
+
 	boolean disconnecting;
-	
+
 	@dereferenced
 	protected Time commandSpamCooldown;
-	
+
 	protected int commandCount;
-	
+
 	public native ZoneClientSession(BaseClientProxy session);
-			
+
 	public native void disconnect();
 	public native void disconnect(boolean doLock);
-	
+
 	@dirty
 	@local
 	public native void sendMessage(BasePacket msg);
 
 	public native void balancePacketCheckupTime();
-	
+
 	public native void resetPacketCheckupTime();
-	
+
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 
 	public native void info(final string msg, boolean force = false);
@@ -55,7 +57,7 @@ class ZoneClientSession extends ManagedObject {
 	public native void error(final string msg);
 
 	public native string getAddress();
-	
+
 	// setters and getters
 	public native void setPlayer(CreatureObject playerCreature);
 
@@ -66,19 +68,19 @@ class ZoneClientSession extends ManagedObject {
 	public void setAccountID(unsigned int acc) {
 		accountID = acc;
 	}
-	
+
 	public int getCommandCount() {
 		return commandCount;
 	}
-	 
+
 	public void increaseCommandCount() {
 		commandCount = commandCount + 1;
 	}
-	
+
 	public void resetCommandCount() {
 		commandCount = 0;
 	}
-	
+
 	@local
 	public Time getCommandSpamCooldown() {
 		return commandSpamCooldown;
@@ -86,7 +88,7 @@ class ZoneClientSession extends ManagedObject {
 
 	@local
 	public native BaseClientProxy getSession();
-	
+
 	@reference
 	@dirty
 	public native CreatureObject getPlayer();
@@ -94,7 +96,7 @@ class ZoneClientSession extends ManagedObject {
 	public unsigned int getSessionID() {
 		return sessionID;
 	}
-	
+
 	public unsigned int getAccountID() {
 		return accountID;
 	}
@@ -102,19 +104,19 @@ class ZoneClientSession extends ManagedObject {
 	public native boolean hasCharacter(unsigned long cid, unsigned int galaxyId);
 
 	public void addCharacter(unsigned long cid, unsigned int galaxyId) {
-		characters.put(galaxyId, cid);	
+		characters.put(galaxyId, cid);
 	}
-	
+
 	public void addBannedCharacter(unsigned long cid, unsigned int galaxyId) {
 		bannedCharacters.put(galaxyId, cid);
 	}
-	
+
 	public int getCharacterCount() {
 		return characters.size() + bannedCharacters.size();
 	}
-	
+
 	public native int getCharacterCount(int galaxyId);
-	
+
 	public void resetCharacters() {
 		characters.removeAll();
 		bannedCharacters.removeAll();
