@@ -5,6 +5,7 @@
 #include "ServerDatabase.h"
 
 #include "conf/ConfigManager.h"
+#include "MySqlDatabase.h"
 
 Vector<Database*>* ServerDatabase::databases = NULL;
 AtomicInteger ServerDatabase::currentDB;
@@ -19,7 +20,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 	databases = new Vector<Database*>();
 
 	for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
-		Database* db = new engine::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
+		Database* db = new server::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
 		db->connect(dbName, dbUser, dbPass, dbPort);
 
 		databases->add(db);

@@ -25,7 +25,7 @@ int LootLotterySessionImplementation::initializeSession() {
 	//Make sure corpse doesn't despawn during lottery.
 	Reference<DespawnCreatureTask*> despawnTask = corpse->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 	if (despawnTask != NULL) {
-		Time despawnTime;
+		AtomicTime despawnTime;
 		Core::getTaskManager()->getNextExecutionTime(despawnTask, despawnTime);
 		if (despawnTime.miliDifference() > -120000) { //Less than 2 minutes to despawn.
 			despawnTask->cancel();

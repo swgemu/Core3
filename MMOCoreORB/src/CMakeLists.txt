@@ -125,5 +125,9 @@ if(COMPILE_TESTS)
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
 endif(COMPILE_TESTS)
 
+add_custom_target(idl
+	COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -sd src anyadEclipse
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Building idl sources"
+        VERBATIM)
 
-#add_subdirectory(tests)
