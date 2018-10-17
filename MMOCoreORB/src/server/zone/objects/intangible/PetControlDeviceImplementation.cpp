@@ -107,7 +107,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if(player->getPendingTask("call_pet") != NULL) {
 		StringIdChatParameter waitTime("pet/pet_menu", "call_delay_finish_pet"); // Already calling a Pet: Call will be finished in %DI seconds.
-		Time nextExecution;
+		AtomicTime nextExecution;
 		Core::getTaskManager()->getNextExecutionTime(player->getPendingTask("call_pet"), nextExecution);
 		int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
 		waitTime.setDI(timeLeft);
@@ -506,7 +506,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 			pet->addPendingTask("store_pet", task, 60 * 1000);
 		}
 		else {
-			Time nextExecution;
+			AtomicTime nextExecution;
 			Core::getTaskManager()->getNextExecutionTime(pet->getPendingTask("store_pet"), nextExecution);
 			int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
 			player->sendSystemMessage( "Pet will store in " + String::valueOf(timeLeft) + " seconds." );

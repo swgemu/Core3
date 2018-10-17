@@ -15,7 +15,7 @@
 #include "SpawnDensityMap.h"
 
 
-class SpawnMap : public VectorMap<String, SpawnDensityMap> {
+class SpawnMap : public SynchronizedVectorMap<String, SpawnDensityMap> {
 
 public:
 	SpawnMap() {

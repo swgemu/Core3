@@ -103,8 +103,6 @@ cleardb:
 	cd bin/databases && rm -rf *.*
 	#done
 
-PLATFORM:=$(shell uname -s)
-
 build-cmake: idl
 	cd build/unix && cmake -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 	#done
