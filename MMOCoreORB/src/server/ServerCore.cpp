@@ -6,6 +6,7 @@
 
 #include <type_traits>
 
+#include "db/MySqlDatabase.h"
 #include "db/ServerDatabase.h"
 #include "db/MantisDatabase.h"
 
@@ -69,6 +70,31 @@ public:
 		zoneServer->printInfo();
 	}
 };
+
+void ServerCore::finalizeContext() {
+	Core::finalizeContext();
+
+	server::db::mysql::MySqlDatabase::finalizeLibrary();
+}
+
+void ServerCore::initializeContext(int logLevel) {
+	server::db::mysql::MySqlDatabase::initializeLibrary();
+
+	class ThreadHook : public ThreadInitializer {
+	public:
+		void onThreadStart(Thread* thread) final {
+			server::db::mysql::MySqlDatabase::onThreadStart();
+		}
+
+		void onThreadEnd(Thread* thread) final {
+			server::db::mysql::MySqlDatabase::onThreadEnd();
+		}
+	};
+
+	Thread::setThreadInitializer(new ThreadHook());
+
+	Core::initializeContext(logLevel);
+}
 
 void ServerCore::signalShutdown() {
 	shutdownBlockMutex.lock();
@@ -367,7 +393,7 @@ void ServerCore::shutdown() {
 	}
 
 	mysql_thread_end();
-	engine::db::mysql::MySqlDatabase::finalizeLibrary();
+	server::db::mysql::MySqlDatabase::finalizeLibrary();
 
 	NetworkInterface::finalize();
 

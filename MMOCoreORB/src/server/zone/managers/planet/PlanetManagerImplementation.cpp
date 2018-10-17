@@ -643,7 +643,7 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(cons
 	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
 
 	for (int i = 0; i < planetTravelPointList->size(); ++i) {
-		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
+		const auto& ptp = planetTravelPointList->get(i);
 
 		float dist = position.distanceTo(ptp->getDeparturePosition());
 

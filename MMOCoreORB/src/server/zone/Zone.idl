@@ -30,6 +30,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
+include system.thread.atomic.AtomicBoolean;
 
 @mock
 class Zone extends SceneObject {
@@ -67,7 +68,8 @@ class Zone extends SceneObject {
 	@dereferenced
 	protected AtomicInteger spawnedAiAgents;
 
-	private transient boolean managersStarted;
+	@dereferenced
+	private transient AtomicBoolean managersStarted;
 	private transient boolean zoneCleared;
 
 	public native Zone(ZoneProcessServer processor, final string zoneName);
@@ -181,8 +183,9 @@ class Zone extends SceneObject {
 		return galacticTime.miliDifference() / 1000;
 	}
 
+	@dirty
 	public boolean hasManagersStarted() {
-		return managersStarted;
+		return managersStarted.get();
 	}
 
 	public boolean isZoneCleared() {
