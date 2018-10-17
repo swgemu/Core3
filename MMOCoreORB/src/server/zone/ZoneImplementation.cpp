@@ -508,7 +508,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, Sor
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
 	//_this.getReferenceUnsafeStaticCast()->rlock(readlock);
-	
+
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
 	try {
@@ -517,7 +517,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, Sor
 		thisZone->rlock(readlock);
 
 		regionTree->inRange(x, y, range, entryObjects);
-		
+
 		thisZone->runlock(readlock);
 
 		for (int i = 0; i < entryObjects.size(); ++i) {
@@ -622,7 +622,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 		// update world areas
 		if (creatureManager != NULL) {
-			Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
+			auto worldAreas = creatureManager->getWorldSpawnAreas();
 
 			if (worldAreas != NULL) {
 				for (int i = 0; i < worldAreas->size(); ++i) {
@@ -878,7 +878,7 @@ void ZoneImplementation::updateCityRegions() {
 
 		unregisterObjectWithPlanetaryMap(region);
 		registerObjectWithPlanetaryMap(region);
-		
+
 		for(int i = 0; i < city->getStructuresCount(); i++){
 			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 			unregisterObjectWithPlanetaryMap(structure);

@@ -97,6 +97,7 @@ if(COMPILE_TESTS)
 	set(gmock_libs gmock)
 endif(COMPILE_TESTS)
 
+
 target_link_libraries(core3
 	${whole_archive_start}
 	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
@@ -125,5 +126,9 @@ if(COMPILE_TESTS)
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
 endif(COMPILE_TESTS)
 
+add_custom_target(idl
+	COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -sd src anyadEclipse
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Building idl sources"
+        VERBATIM)
 
-#add_subdirectory(tests)

@@ -13543,8 +13543,16 @@ INSERT INTO `swgemu`.`world_server_static_spawns` VALUES  (9481,9,0,'object/mobi
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `world_server_static_spawns` ENABLE KEYS */;
 
+CREATE TABLE  `swgemu`.`account_ips` (
+  `idaccount_ips` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(10) unsigned NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `logout` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idaccount_ips`)
+) ENGINE=MyISAM AUTO_INCREMENT=1099 DEFAULT CHARSET=latin1
 
-
+ALTER TABLE `swgemu`.`deleted_characters` ADD COLUMN `db_deleted` BOOLEAN  NOT NULL DEFAULT 0 AFTER `creation_date`;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

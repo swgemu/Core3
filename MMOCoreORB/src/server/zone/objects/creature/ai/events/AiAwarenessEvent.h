@@ -23,6 +23,8 @@ class AiAwarenessEvent : public Task {
 	uint64 mtime;
 	float avgSpeed;
 
+	Mutex guard;
+
 public:
 	AiAwarenessEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
@@ -31,16 +33,16 @@ public:
 		AiMap::instance()->activeAwarenessEvents.increment();
 	}
 
-	virtual ~AiAwarenessEvent() {
+	~AiAwarenessEvent() {
 		AiMap::instance()->activeAwarenessEvents.decrement();
 	}
 
-	void run() {
+	void run() final {
 		AiMap::instance()->scheduledAwarenessEvents.decrement();
 
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);
@@ -52,14 +54,6 @@ public:
 		AiMap::instance()->scheduledAwarenessEvents.increment();
 
 		mtime = delay;
-
-		ManagedReference<AiAgent*> strongRef = creature.get();
-
-		auto zone = strongRef->getZone();
-
-		if (zone != nullptr) {
-			setCustomTaskQueue(zone->getZoneName());
-		}
 
 		try {
 			Task::schedule(delay);
