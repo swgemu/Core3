@@ -245,7 +245,10 @@ String BuffImplementation::getSkillModifierString() {
 void BuffImplementation::scheduleBuffEvent() {
 	buffEvent = new BuffDurationEvent(creature.get(), _this.getReferenceUnsafeStaticCast());
 	buffEvent->schedule((int) (buffDuration * 1000));
-	Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
+	AtomicTime time;
+	Core::getTaskManager()->getNextExecutionTime(buffEvent, time);
+
+	nextExecutionTime = time.getTimeObject();
 }
 
 float BuffImplementation::getTimeLeft() {
@@ -254,11 +257,11 @@ float BuffImplementation::getTimeLeft() {
 		return 0.0f;
 	}
 
-	Time next;
+	AtomicTime next;
 
 	Core::getTaskManager()->getNextExecutionTime(buffEvent, next);
 
-	float timeleft = round(Time().miliDifference(next) / 1000.0f);
+	float timeleft = round(Time().miliDifference(next.getTimeObject()) / 1000.0f);
 
 	//info("timeLeft = " + String::valueOf(timeleft), true);
 

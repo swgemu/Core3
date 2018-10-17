@@ -95,7 +95,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			closeConnection(true, true);
 		}
 	}
-	
+
 
 	/*info("references left " + String::valueOf(_this.getReferenceUnsafeStaticCast()->getReferenceCount()), true);
 	_this.getReferenceUnsafeStaticCast()->printReferenceHolders();*/
@@ -190,12 +190,12 @@ int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
 	int count = 0;
 
 	for (int i = 0; i < characters.size(); ++i) {
-		if (characters.elementAt(i).getKey() == galaxyId)
+		if (characters.getKey(i) == galaxyId)
 			++count;
 	}
 
 	for (int i = 0; i < bannedCharacters.size(); ++i) {
-		if (bannedCharacters.elementAt(i).getKey() == galaxyId)
+		if (bannedCharacters.getKey(i) == galaxyId)
 			++count;
 	}
 
@@ -215,15 +215,15 @@ bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int gala
 		if (characters.elementAt(i).getValue() == cid)
 			return true;
 	}
-	
+
 	*/
-	
+
 	for (int i = 0; i < characters.size(); ++i) {
-		if (characters.elementAt(i).getKey() == galaxyId && 
-			characters.elementAt(i).getValue() == cid)
+		if (characters.getKey(i) == galaxyId &&
+			characters.get(i) == cid)
 			return true;
 	}
-	
+
 
 	return false;
 }

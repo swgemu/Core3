@@ -58,7 +58,7 @@ public:
 			Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
 
 			if (ptp != NULL) {
-				CreatureObject* oldShuttle = ptp->getShuttle();
+				auto oldShuttle = ptp->getShuttle();
 
 				if (oldShuttle == NULL) {
 					if (ptp->isInterplanetary())
