@@ -13550,7 +13550,7 @@ CREATE TABLE  `swgemu`.`account_ips` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `logout` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idaccount_ips`)
-) ENGINE=MyISAM AUTO_INCREMENT=1099 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=1099 DEFAULT CHARSET=latin1;
 
 ALTER TABLE `swgemu`.`deleted_characters` ADD COLUMN `db_deleted` BOOLEAN  NOT NULL DEFAULT 0 AFTER `creation_date`;
 
