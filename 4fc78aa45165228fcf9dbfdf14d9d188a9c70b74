@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a42497e_be71b979",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DiagnoseCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3542
+      },
+      "writtenOn": "2018-10-18T02:04:17Z",
+      "side": 1,
+      "message": "all playercreatures and pets are creos. The end of that check becomes a bit redundant.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "4fc78aa45165228fcf9dbfdf14d9d188a9c70b74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
