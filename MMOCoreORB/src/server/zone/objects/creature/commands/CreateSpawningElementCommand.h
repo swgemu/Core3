@@ -23,8 +23,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const
-	{
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -35,30 +34,34 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+		ZoneServer* zserv = server->getZoneServer();
+
+		ManagedReference<SceneObject* > object = zserv->getObject(target);
 
 		StringTokenizer args(arguments.toString());
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
-
-		if (player == NULL)
+		if (player == nullptr)
 			return GENERALERROR;
 
 		if (!args.hasMoreTokens()) {
-			creature->sendSystemMessage("Spawn: /createSpawningElement spawn IffObjectPath [x z y heading]");
-			creature->sendSystemMessage("Spawn: /createSpawningElement lair lairTemplate [level]");
-			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
+			creature->sendSystemMessage("Spawn Object/Building: /createSpawningElement spawn IffObjectPath [x z y heading]");
+			creature->sendSystemMessage("Spawn Lair: /createSpawningElement lair lairTemplate [level]");
+			creature->sendSystemMessage("Delete Object/Building: /createSpawningElement delete oid");
+			creature->sendSystemMessage("Delete All: /createSpawningElement deleteall");
 			return INVALIDPARAMETERS;
 		}
 
 		String action;
 		args.getStringToken(action);
 
-		ZoneServer* zserv = server->getZoneServer();
+		Zone* zone = creature->getZone();
 
-		if (creature->getZone() == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
+
+		PlanetManager* planet = zone->getPlanetManager();
 
 		try {
 			if (action.toLowerCase() == "lair") {
@@ -70,14 +73,14 @@ public:
 
 				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(objectTemplate.hashCode());
 
-				if (lair != NULL) {
-					if (creature->getParent() != NULL) {
+				if (lair != nullptr) {
+					if (creature->getParent() != nullptr) {
 						creature->sendSystemMessage("You need to be outside and unmounted to spawn that");
 
 						return GENERALERROR;
 					}
 
-					CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
+					CreatureManager* creatureManager = zone->getCreatureManager();
 
 					int level = 10;
 					if (args.hasMoreTokens()) {
@@ -91,7 +94,7 @@ public:
 
 					SceneObject* sceno = creatureManager->spawn(objectTemplate.hashCode(), level, 2, x, z, y, 25);
 
-					if (sceno != NULL) {
+					if (sceno != nullptr) {
 						creature->sendSystemMessage("lair spawned");
 						return SUCCESS;
 					} else {
@@ -120,46 +123,50 @@ public:
 				if (args.hasMoreTokens())
 					heading = args.getFloatToken();
 
+				ManagedReference<SceneObject*> parent = creature->getParent().get();
 				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
-				if (serverTemplate != NULL) {
-					if (creature->getParent() != NULL) {
+
+				if (serverTemplate != nullptr && serverTemplate->getGameObjectType() != SceneObjectType::STATICOBJECT) {
+					if (parent != nullptr) {
 						creature->sendSystemMessage("You need to be outside and unmounted to spawn a structure");
 						return GENERALERROR;
 					}
 
 					StructureObject* structure = StructureManager::instance()->placeStructure(creature, objectTemplate, x, y, heading, 0);
 
-					if (structure == NULL)
+					if (structure == nullptr)
 						return GENERALERROR;
 
-					creature->sendSystemMessage("oid: " + String::valueOf(structure->getObjectID()));
+					uint64 objectID = structure->getObjectID();
+					creature->sendSystemMessage("oid: " + String::valueOf(objectID));
+					planet->addEventStructure(objectID);
 					return SUCCESS;
 				}
 
 				ManagedReference<SceneObject*> object =  zserv->createObject(objectTemplate.hashCode(), 0);
 
-				if (object == NULL)
+				if (object == nullptr)
 					return GENERALERROR;
 
 				if (object->isIntangibleObject())
 					return GENERALERROR;
 
-				ManagedReference<SceneObject*> parent = creature->getParent().get();
-
 				Locker clocker(object, creature);
 
 				object->initializePosition(x, z, y);
-				object->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+				object->setDirection(heading);
 
-				if (parent != NULL && parent->isCellObject())
+				if (parent != nullptr && parent->isCellObject())
 					parent->transferObject(object, -1);
 				else
-					creature->getZone()->transferObject(object, -1, true);
+					zone->transferObject(object, -1, true);
 
 				object->createChildObjects();
 
 				uint64 objectID = object->getObjectID();
 				creature->sendSystemMessage("oid: " + String::valueOf(objectID));
+
+				planet->addEventObject(objectID);
 
 			} else if (action.toLowerCase() == "delete") {
 
@@ -167,35 +174,16 @@ public:
 				args.getStringToken(chatObjectID);
 				uint64 oid = UnsignedLong::valueOf(chatObjectID);
 
-				ManagedReference<SceneObject*> object = zserv->getObject(oid);
+				int result = planet->destroyEventObject(oid);
 
-				if (object == NULL) {
-					creature->sendSystemMessage("Error: Trying to delete invalid oid.");
-					return GENERALERROR;
-				}
+				if (result)
+					creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
+				else
+					creature->sendSystemMessage("Could not delete object " + chatObjectID + ".");
 
-				for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
-					const Vector<String>* descriptors = object->getArrangementDescriptor(i);
-
-					for (int j = 0; j < descriptors->size(); ++j) {
-						const String& descriptor = descriptors->get(j);
-
-						if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-							|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
-						return GENERALERROR;
-					}
-				}
-
-				Locker clocker(object, creature);
-
-				object->destroyObjectFromWorld(true);
-
-				if (object->isPersistent()) {
-					object->destroyObjectFromDatabase(true);
-				}
-
-				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
-
+			} else if (action.toLowerCase() == "deleteall") {
+				int result = planet->destroyAllEventObjects();
+				creature->sendSystemMessage("Deleted " + String::valueOf(result) + " event objects.");
 			}
 		} catch (Exception& e) {
 			creature->sendSystemMessage("Spawn: /createSpawningElement spawn IffObjectPath [x z y heading]");

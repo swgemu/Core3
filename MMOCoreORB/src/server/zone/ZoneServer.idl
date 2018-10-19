@@ -100,7 +100,8 @@ class ZoneServer extends ManagedService implements Logger {
 	@dereferenced
 	private AtomicInteger totalDeletedPlayers;
 
-	private int serverState;
+	@dereferenced
+	private AtomicInteger serverState;
 
 	private string galaxyName;
 	private string loginMessage;
@@ -238,27 +239,27 @@ class ZoneServer extends ManagedService implements Logger {
 
 	@dirty
 	public boolean isServerLocked() {
-		return serverState == LOCKED;
+		return serverState.get() == LOCKED;
 	}
 
 	@dirty
 	public boolean isServerOnline() {
-		return serverState == ONLINE;
+		return serverState.get() == ONLINE;
 	}
 
 	@dirty
 	public boolean isServerOffline() {
-		return serverState == OFFLINE;
+		return serverState.get() == OFFLINE;
 	}
 
 	@dirty
 	public boolean isServerLoading() {
-		return serverState == LOADING;
+		return serverState.get() == LOADING;
 	}
 
 	@dirty
 	public boolean isServerShuttingDown() {
-		return serverState == SHUTTINGDOWN;
+		return serverState.get() == SHUTTINGDOWN;
 	}
 
 	public int getServerCap() {
@@ -267,7 +268,7 @@ class ZoneServer extends ManagedService implements Logger {
 
 	@dirty
 	public int getServerState() {
-		return serverState;
+		return serverState.get();
 	}
 
 	@dirty
@@ -320,7 +321,7 @@ class ZoneServer extends ManagedService implements Logger {
 	public ReactionManager getReactionManager() {
 		return reactionManager;
 	}
-	
+
 	@dirty
 	public FrsManager getFrsManager() {
 		return frsManager;
@@ -398,7 +399,7 @@ class ZoneServer extends ManagedService implements Logger {
 	}
 
 	public void setServerState(int state) {
-		serverState = state;
+		serverState.set(state);
 	}
 
 	public void setShouldDeleteNavAreas(boolean b) {

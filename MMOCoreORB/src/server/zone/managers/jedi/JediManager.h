@@ -20,34 +20,36 @@ private:
 	/**
 	 * The Jedi progression type currently configured.
 	 */
-	int jediProgressionType;
+	AtomicInteger jediProgressionType;
 
 	/**
 	 * The name of the jedi manager class in Lua.
 	 */
 	String jediManagerName;
 
+	AtomicBoolean loaded{false};
+
 	/**
 	 * Setup Lua global values.
 	 * @param luaEngine the lua instance.
 	 */
-	void setupLuaValues(Lua* luaEngine);
+	static void setupLuaValues(Lua* luaEngine);
 
 public:
-	
+
 	enum {
 		NOJEDIPROGRESSION,         // Jedi progression not available.
 		HOLOGRINDJEDIPROGRESSION,  // Jedi progression through the hologrind system, i.e. master five random professions.
 		VILLAGEJEDIPROGRESSION,    // Jedi progression through the village system.
 		CUSTOMJEDIPROGRESSION      // Custom defined jedi progression system.
 	};
-	
+
 	enum {
 		ITEMHOLOCRON,         // Item type holocron.
 		ITEMWAYPOINTDATAPAD,  // Item type waypoint datapad.
 		ITEMTHEATERDATAPAD    // ITEMTHEATERDATAPAD
 	};
-	
+
 	/**
 	 * Constructor for the Jedi Manager.
 	 */

@@ -1078,6 +1078,7 @@ int DirectorManager::createEvent(lua_State* L) {
 	//System::out << "scheduling task with mili:" << mili << endl;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play, args);
+	DirectorManager::instance()->screenplayTasks.put(task);
 
 	if (numberOfArguments == 6) {
 		bool save = lua_toboolean(L, -6);
@@ -1117,7 +1118,6 @@ int DirectorManager::createEvent(lua_State* L) {
 		task->schedule(mili);
 	}
 
-	DirectorManager::instance()->screenplayTasks.put(task);
 	return 0;
 }
 
@@ -1142,9 +1142,9 @@ int DirectorManager::createEventActualTime(lua_State* L) {
 	if (actualTime.getMiliTime()<= dModifier){
 		interval =(24*60*60000) - (dModifier - actualTime.getMiliTime());
 	}
-	task->schedule(interval);
-
 	DirectorManager::instance()->screenplayTasks.put(task);
+
+	task->schedule(interval);
 
 	return 0;
 }

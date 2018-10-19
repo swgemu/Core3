@@ -10,6 +10,7 @@ import server.zone.ZoneProcessServer;
 import engine.log.Logger;
 import system.util.VectorMap;
 import system.util.SynchronizedVectorMap;
+import system.util.SynchronizedSortedVector;
 import server.zone.objects.region.CityRegion;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.gcw.GCWManager;
@@ -80,6 +81,12 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient SynchronizedVectorMap<string, NavArea> navMeshAreas;
 
+	@dereferenced
+	protected transient SynchronizedSortedVector<unsigned long> spawnedEventObjects;
+
+	@dereferenced
+	protected transient SynchronizedSortedVector<unsigned long> spawnedEventStructures;
+
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
@@ -114,6 +121,9 @@ class PlanetManager extends ManagedService implements Logger {
 		travelFares.setNoDuplicateInsertPlan();
 
 		planetTravelPointList = new PlanetTravelPointList();
+
+		spawnedEventObjects.setNoDuplicateInsertPlan();
+		spawnedEventStructures.setNoDuplicateInsertPlan();
 	}
 
 	@local
@@ -350,4 +360,16 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);
 
 	public native void removePlayerCityTravelPoint(final string cityName);
+
+	public void addEventObject(unsigned long objectID) {
+		spawnedEventObjects.put(objectID);
+	}
+
+	public void addEventStructure(unsigned long objectID) {
+		spawnedEventStructures.put(objectID);
+	}
+
+	public native int destroyEventObject(unsigned long objectID);
+
+	public native int destroyAllEventObjects();
 }

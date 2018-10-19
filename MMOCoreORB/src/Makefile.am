@@ -63,7 +63,7 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(GTEST_PATH)/include \
 	    -I$(GMOCK_PATH)/include \
 	    -I$(AUTOGEN_PATH)
-			
+
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
@@ -72,7 +72,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-L$(GMOCK_PATH)/lib \
-	-lz -lengine3 -lmysqlclient -llua -ldb-5.3 -lssl -lcrypto -lgtest	
+	-lz -lengine3 -lmysqlclient -llua -ldb-5.3 -lssl -lcrypto -lgtest -latomic
 
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
@@ -106,7 +106,12 @@ core3_TESTS = 	tests/CircularAreaShapeTest.cpp \
 			  	tests/ZoneTest.cpp \
 			  	tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
+core3_IDLS =	autogen/server/zone/managers/frs/ArenaChallengeData.cpp \
+				autogen/server/zone/managers/frs/FrsManagerData.cpp \
+				autogen/server/zone/managers/frs/FrsRank.cpp \
+				autogen/server/zone/managers/frs/ChallengeVoteData.cpp \
+				autogen/server/zone/QuadTreeEntry.cpp \
+				autogen/server/zone/objects/building/TutorialBuildingObject.cpp \
 				autogen/server/zone/objects/creature/credits/CreditObject.cpp \
 				autogen/server/zone/objects/mission/PlayerBounty.cpp \
 				autogen/server/chat/PendingMessageList.cpp \
@@ -542,6 +547,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		conf/ConfigManager.cpp \
 		server/features/Features.cpp \
 		server/db/ServerDatabase.cpp \
+		server/db/MySqlDatabase.cpp \
 		server/db/MantisDatabase.cpp \
 		server/login/LoginProcessServerImplementation.cpp \
 		server/login/LoginPacketHandler.cpp \

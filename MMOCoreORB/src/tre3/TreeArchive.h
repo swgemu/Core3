@@ -19,15 +19,14 @@ public:
 		setLoggingName("TreeArchive");
 		setLogging(true);
 
-		nodeMap.setNullValue(NULL);
+		nodeMap.setNullValue(nullptr);
 
 		//nodeMap.setNoDuplicateInsertPlan();
 	}
 
 	void unpackFile(const String& file) {
-		TreeFile* treeFile = new TreeFile(this);
-		treeFile->read(file);
-		delete treeFile;
+		TreeFile treeFile(this);
+		treeFile.read(file);
 	}
 
 	void addRecord(const String& path, TreeFileRecord* record) {
@@ -39,14 +38,16 @@ public:
 
 			record->setRecordName(fileName);
 
-			if (nodeMap.containsKey(dir)) {
-				Reference<TreeDirectory*> records = nodeMap.get(dir);
+			auto entry = nodeMap.getEntry(dir);
+
+			if (entry != nullptr) {
+				auto& records = entry->getValue();
 				records->put(record);
 			} else {
 				Reference<TreeDirectory*> records = new TreeDirectory();
 				records->put(record);
 
-				nodeMap.put(dir, records);
+				nodeMap.put(std::move(dir), std::move(records));
 			}
 		} catch (Exception& e) {
 			error("Invalid path: " + path);
@@ -66,27 +67,28 @@ public:
 
 		//Only folders are allowed at the root level of TRE directories.
 		if (pos == -1)
-			return NULL;
+			return nullptr;
 
 		String dir = recordPath.subString(0, pos);
-		String fileName = recordPath.subString(pos+1, recordPath.length());
+		String fileName = recordPath.subString(pos + 1, recordPath.length());
 
-		TreeDirectory* treeDir = nodeMap.get(dir);
+		TreeDirectory* treeDir = nodeMap.get(dir).get();
 
 		size = 0;
 
-		if (treeDir == NULL)
-			return NULL;
+		if (treeDir == nullptr)
+			return nullptr;
 
 		int idx = treeDir->find(fileName);
 
 		if (idx == -1) {
 			error("Did not find fileName: " + fileName);
-			return NULL;
+			return nullptr;
 		}
 
-		Reference<TreeFileRecord*> record = treeDir->get(idx);
+		const Reference<TreeFileRecord*>& record = treeDir->get(idx);
 		size = record->getUncompressedSize();
+
 		return record->getBytes();
 	}
 
@@ -96,7 +98,7 @@ public:
 
 	Vector<String>* getFilesAndSubDirectoryFiles(const String& directory) {
 		HashTableIterator<String, Reference<TreeDirectory*> > iterator = nodeMap.iterator();
-		Vector<String>* files = NULL;
+		Vector<String>* files = nullptr;
 
 		while (iterator.hasNext()) {
 			//String directoryName = iterator.getNextKey();
@@ -105,7 +107,7 @@ public:
 			iterator.getNextKeyAndValue(directoryName, directoryEntry);
 
 			if (directoryName.contains(directory)) {
-				if (files == NULL)
+				if (files == nullptr)
 					files = new Vector<String>();
 
 				for (int i = 0; i < directoryEntry->size(); ++i) {
