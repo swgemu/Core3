@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 
 project(core3 CXX C)
 
+include(CheckCXXSourceCompiles)
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
@@ -13,7 +14,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-include(CheckCXXSourceCompiles)
+if (CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.4)
+	message(FATAL_ERROR "Only GCC 5.4 or greater is supported")
+endif()
 
 # Set up options
 option(BUILD_IDL "Generate idl c++ sources with cmake" ON)
