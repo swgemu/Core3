@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 project(core3 CXX C)
 
 include(CheckCXXSourceCompiles)
+include(CheckCXXCompilerFlag)
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
@@ -134,6 +135,12 @@ set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -W
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
+
+    CHECK_CXX_COMPILER_FLAG(-Wno-return-std-move HAVE_NO_STD_MOVE_RETURN)
+
+    if (HAVE_NO_STD_MOVE_RETURN)
+	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-return-std-move")
+    endif(HAVE_NO_STD_MOVE_RETURN)
 
     if (ENABLE_ASAN)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
