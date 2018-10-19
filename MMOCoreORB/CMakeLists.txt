@@ -7,8 +7,6 @@ project(core3 CXX C)
 
 include(CheckCXXSourceCompiles)
 include(CheckCXXCompilerFlag)
-# Set cmake paths
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 # Set cpp requirements
 set(CMAKE_CXX_STANDARD 11)
@@ -30,6 +28,9 @@ option(ENABLE_ASAN "Enables address sanitizer compiling" OFF)
 option(ENABLE_TSAN "Enables thread sanitizer compiling" OFF)
 option(ENABLE_UBSAN "Enables undefined behavior sanitizer compiling" OFF)
 option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
+
+# Set cmake paths
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)

@@ -38,19 +38,34 @@ FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
 )
 
 SET(ENGINE3_NAMES engine3)
-IF(APPLE)
-  FIND_LIBRARY(ENGINE3_LIBRARY
-	NAMES ${ENGINE3_NAMES}
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/osx ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
-ELSE ()
-  FIND_LIBRARY(ENGINE3_LIBRARY
-  	NAMES ${ENGINE3_NAMES}
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
-ENDIF(APPLE)
 
-IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY)
+FIND_LIBRARY(ENGINE3_LIBRARY
+	NAMES ${ENGINE3_NAMES}
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix ../MMOEngine/lib/osx)
+
+FIND_LIBRARY(ENGINE3_ASAN_LIBRARY
+	NAMES engine3-asan
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+
+FIND_LIBRARY(ENGINE3_TSAN_LIBRARY
+	NAMES engine3-tsan
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+
+FIND_LIBRARY(ENGINE3_UBSAN_LIBRARY
+	NAMES engine3-ubsan
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+
+IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY AND ENGINE3_ASAN_LIBRARY AND ENGINE3_TSAN_LIBRARY AND ENGINE3_UBSAN_LIBRARY)
+  IF (ENABLE_ASAN)
+	  SET(ENGINE3_LIBRARIES ${ENGINE3_ASAN_LIBRARY})
+  ELSEIF (ENABLE_TSAN)
+	  SET(ENGINE3_LIBRARIES ${ENGINE3_TSAN_LIBRARY})
+  ELSEIF (ENABLE_UBSAN)
+	  SET(ENGINE3_LIBRARIES ${ENGINE3_UBSAN_LIBRARY})
+  ELSE ()
+  	  SET(ENGINE3_LIBRARIES ${ENGINE3_LIBRARY})
+  ENDIF()
   SET(ENGINE3_FOUND TRUE)
-  SET(ENGINE3_LIBRARIES ${ENGINE3_LIBRARY})
   SET(IDL_DIRECTIVES -outdir autogen -cp ${ENGINE3_INCLUDE_DIR})
   SET(IDLC_JAVA_ARGS -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -client -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler)
 ELSE ()
@@ -65,7 +80,7 @@ IF (ENGINE3_FOUND)
   ENDIF (NOT ENGINE3_FIND_QUIETLY_INCLUDE)
 
   IF (NOT ENGINE3_FIND_QUIETLY_LIB)
-    MESSAGE(STATUS "Found engine3 library: ${ENGINE3_LIBRARY}")
+    MESSAGE(STATUS "Found engine3 library: ${ENGINE3_LIBRARIES}")
   ENDIF (NOT ENGINE3_FIND_QUIETLY_LIB)
 
   IF (NOT ENGINE3_FIND_QUIETLY_IDLC_BIN)
