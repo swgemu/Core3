@@ -59,7 +59,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+if (NOT APPLE)
 	find_package(GccAtomic REQUIRED)
 endif()
 
