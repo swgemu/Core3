@@ -6,18 +6,26 @@
 #define FEATURES_H_
 
 #include "system/lang.h"
+#include "system/util/HashTable.h"
 
-class Features : public HashTable<String, String> {
+namespace server {
+ namespace features {
+
+class Features {
+protected:
+	HashTable<String, String> options;
 
 public:
 	Features();
-	~Features();
 
 	bool loadFeatures();
 
 	inline bool hasFeature(const String& key) {
-		return containsKey(key);
+		return options.containsKey(key);
 	}
 };
+
+}
+}
 
 #endif /* FEATURES_H_ */
