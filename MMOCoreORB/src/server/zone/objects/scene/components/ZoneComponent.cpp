@@ -23,7 +23,7 @@ void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) 
 	if (newZone == nullptr)
 		return;
 
-	Locker locker(sceneObject);
+	//Locker locker(sceneObject);
 
 	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
