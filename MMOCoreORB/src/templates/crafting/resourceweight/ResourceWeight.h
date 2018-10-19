@@ -66,7 +66,7 @@ public:
 
 		for (int i = 0; i < weights.size(); i++) {
 			float weight = weights.get(i);
-			percentages.add(weight / denominator);
+			percentages.add(weight / (denominator ? denominator : 1));
 		}
 	}
 

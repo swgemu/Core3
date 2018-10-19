@@ -12,7 +12,6 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/login/LoginServer.h"
-#include "features/Features.h"
 #include "ping/PingServer.h"
 #include "status/StatusServer.h"
 #include "web/WebServer.h"

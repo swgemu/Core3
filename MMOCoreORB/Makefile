@@ -112,7 +112,7 @@ build-cmake-with-idl:
 	#done
 
 build-ninja:
-	mkdir build/unix/ninja || true
+	mkdir -p build/unix/ninja
 	cd build/unix/ninja && cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
 	#done
 
@@ -121,7 +121,7 @@ clean-ninja:
 	#done
 
 build-ninja-debug:
-	mkdir build/unix/ninja-debug || true
+	mkdir -p build/unix/ninja-debug
 	cd build/unix/ninja-debug && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
 	#done
 
@@ -130,7 +130,7 @@ clean-ninja-debug:
 	#done
 
 build-ninja-debugoptimized:
-	mkdir build/unix/ninja-debugoptimized || true
+	mkdir -p build/unix/ninja-debugoptimized
 	cd build/unix/ninja-debugoptimized && cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
 	#done
 
