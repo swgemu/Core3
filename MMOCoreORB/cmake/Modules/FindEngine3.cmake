@@ -45,7 +45,7 @@ IF(APPLE)
 ELSE ()
   FIND_LIBRARY(ENGINE3_LIBRARY
   	NAMES ${ENGINE3_NAMES}
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix)
+	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
 ENDIF(APPLE)
 
 IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY)

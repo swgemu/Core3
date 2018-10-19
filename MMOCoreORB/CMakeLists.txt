@@ -13,6 +13,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(CheckCXXSourceCompiles)
+
 # Set up options
 option(BUILD_IDL "Generate idl c++ sources with cmake" ON)
 option(IDL_NOPRELOCKS "Disables all prelock annotations" OFF)
@@ -59,7 +61,26 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+function(check_working_cxx_atomics varname)
+	set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
+	set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+	CHECK_CXX_SOURCE_COMPILES("
+	#include <atomic>
+	struct test_type { float x[3]; };
+	std::atomic<test_type> atom;
+	test_type old;
+	test_type newval;
+	int main() {
+	newval.x[2] = 3;
+	return atom.compare_exchange_strong(old, newval);
+	}
+	" ${varname})
+	set(CMAKE_REQUIRED_FLAGS ${OLD_CMAKE_REQUIRED_FLAGS})
+endfunction(check_working_cxx_atomics)
+
+check_working_cxx_atomics(HAVE_CXX_ATOMICS_WITHOUT_LIB)
+
+if (NOT HAVE_CXX_ATOMICS_WITHOUT_LIB)
 	find_package(GccAtomic REQUIRED)
 endif()
 
