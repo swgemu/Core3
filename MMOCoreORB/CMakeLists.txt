@@ -27,6 +27,7 @@ option(COMPILE_TESTS "Enables mock generation in idlc and test compiling" ON)
 option(LOGIN_SERVER_EXTRA_PORTS "Enables login server with extra ports config" OFF)
 option(ENABLE_ASAN "Enables address sanitizer compiling" OFF)
 option(ENABLE_TSAN "Enables thread sanitizer compiling" OFF)
+option(ENABLE_UBSAN "Enables undefined behavior sanitizer compiling" OFF)
 option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 
 # Add lua includes and libraries
@@ -145,6 +146,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
 	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=thread")
 	   message(STATUS "Thread sanitizer enabled")
     endif(ENABLE_TSAN)
+
+    if (ENABLE_UBSAN)
+	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined")
+	    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=undefined")
+	    message(STATUS "Undefined behavior sanitizer sanitizer enabled")
+    endif(ENABLE_UBSAN)
 
     if (ENABLE_NATIVE)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
