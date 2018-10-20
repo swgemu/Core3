@@ -86,6 +86,8 @@ namespace conf {
 		bool luaLogJSON;
 		bool pathfinderLogJSON;
 
+		int cleanupMailCount = 25000;
+
 		String termsOfService;
 		int tosVersion;
 
@@ -356,6 +358,10 @@ namespace conf {
 
 		inline bool getPathfinderLogJSON() const {
 			return pathfinderLogJSON;
+		}
+
+		inline int getCleanupMailCount() const {
+			return cleanupMailCount;
 		}
 	};
 }

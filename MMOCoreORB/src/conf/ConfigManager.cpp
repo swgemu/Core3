@@ -161,6 +161,8 @@ bool ConfigManager::loadConfigData() {
 	luaLogJSON = getGlobalByte("LuaLogJSON");
 	pathfinderLogJSON = getGlobalByte("PathfinderLogJSON");
 
+	cleanupMailCount = getGlobalInt("CleanupMailCount");
+
 	termsOfService = getGlobalString("TermsOfService");
 	tosVersion = getGlobalInt("TermsOfServiceVersion");
 
