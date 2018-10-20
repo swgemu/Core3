@@ -95,33 +95,30 @@ void ChatManagerImplementation::loadMailDatabase() {
 
 		uint64 objectID;
 		uint32 timeStamp, currentTime = System::getTime();
-		ObjectInputStream* objectData = new ObjectInputStream(2000);
+		ObjectInputStream objectData(2000);
 
-		while (i < 25000 && iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<uint32>(STRING_HASHCODE("PersistentMessage.timeStamp"), &timeStamp, objectData)) {
-				objectData->clear();
+		const auto limit = ConfigManager::instance()->getCleanupMailCount();
+
+		while (i < limit && iterator.getNextKeyAndValue(objectID, &objectData)) {
+			if (!Serializable::getVariable<uint32>(STRING_HASHCODE("PersistentMessage.timeStamp"), &timeStamp, &objectData)) {
+				objectData.clear();
 				continue;
 			}
 
 			j++;
 
-			if (currentTime - timeStamp > PM_LIFESPAN) {
-				Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentMessage*>();
+			if ((currentTime - timeStamp) > PM_LIFESPAN) {
+				i++;
 
-				if (mail != NULL) {
-					i++;
-
-					ObjectManager::instance()->destroyObjectFromDatabase(objectID);
-				}
+				ObjectManager::instance()->destroyObjectFromDatabase(objectID);
 			}
 
 			if (ConfigManager::instance()->isProgressMonitorActivated())
 				printf("\r\tChecking mail for expiration [%d] / [?]\t", j);
 
-			objectData->clear();
+			objectData.clear();
 		}
 
-		delete objectData;
 	} catch (DatabaseException& e) {
 		error("Database exception in ChatManager::loadMailDatabase(): " + e.getMessage());
 	}
@@ -1821,7 +1818,7 @@ void ChatManagerImplementation::loadMail(CreatureObject* player) {
 	Locker _locker(player);
 
 	PlayerObject* ghost = player->getPlayerObject();
-    
+
 	ghost->checkPendingMessages();
 
 	SortedVector<uint64>* messages = ghost->getPersistentMessages();
