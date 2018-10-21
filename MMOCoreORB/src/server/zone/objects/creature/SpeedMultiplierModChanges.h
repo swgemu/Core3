@@ -8,7 +8,9 @@
 #ifndef SPEEDMULTIPLIERMODCHANGES_H_
 #define SPEEDMULTIPLIERMODCHANGES_H_
 
-class SpeedModChange : public Object {
+#include "system/util/ArrayList.h"
+
+class SpeedModChange {
 	float newSpeed;
 	Time timeStamp;
 
@@ -27,7 +29,7 @@ public:
 		timeStamp = tm;
 	}
 
-	SpeedModChange(const SpeedModChange& a) : Object() {
+	SpeedModChange(const SpeedModChange& a) {
 		newSpeed = a.newSpeed;
 		timeStamp = a.timeStamp;
 	}
@@ -46,9 +48,17 @@ public:
 	inline Time& getTimeStamp() {
 		return timeStamp;
 	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return true;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return true;
+	}
 };
 
-class SpeedMultiplierModChanges : public Vector<SpeedModChange> {
+class SpeedMultiplierModChanges : public ArrayList<SpeedModChange> {
 
 };
 

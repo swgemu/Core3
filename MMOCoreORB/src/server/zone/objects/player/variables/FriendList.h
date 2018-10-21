@@ -16,14 +16,70 @@ protected:
 
 public:
 	FriendList() {
-		addSerializableVariable("reverseTable", &reverseTable);
 	}
 
-	FriendList(const FriendList& list) : Object(), PlayerList<7>(list) {
+	FriendList(const FriendList& list) : PlayerList<7>(list) {
 		reverseTable = list.reverseTable;
-
-		addSerializableVariable("reverseTable", &reverseTable);
 	}
+
+	bool readObjectMember(ObjectInputStream* stream, const String& name) {
+		if (name == "reverseTable") {
+			TypeInfo<Vector<String>>::parseFromBinaryStream(&reverseTable, stream);
+
+			return true;
+		}
+
+		return PlayerList<7>::readObjectMember(stream, name);
+	}
+
+	int writeObjectMembers(ObjectOutputStream* stream) {
+		static String _name = "reverseTable";
+		int _offset;
+		uint32 _totalSize;
+
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo<Vector<String>>::toBinaryStream(&reverseTable, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
+		return 1 + PlayerList<7>::writeObjectMembers(stream);
+	}
+
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		int _currentOffset = stream->getOffset();
+		stream->writeShort(0);
+		int _varCount = writeObjectMembers(stream);
+		stream->writeShort(_currentOffset, _varCount);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		uint16 _varCount = stream->readShort();
+
+		for (int i = 0; i < _varCount; ++i) {
+			String _name;
+			_name.parseFromBinaryStream(stream);
+
+			uint32 _varSize = stream->readInt();
+
+			int _currentOffset = stream->getOffset();
+
+			if(readObjectMember(stream, _name)) {
+			}
+
+			stream->setOffset(_currentOffset + _varSize);
+		}
+
+		return true;
+	}
+
+
+
+
 
 	void addReversePlayer(const String& name) {
 		Locker locker(getLock());

@@ -19,7 +19,7 @@ public:
 	DeltaBitArray(int initsize, int incr) : DeltaVector<byte>(initsize, incr) {
 	}
 
-	DeltaBitArray(const DeltaBitArray& v) : Object(), DeltaVector<byte>(v) {
+	DeltaBitArray(const DeltaBitArray& v) : DeltaVector<byte>(v) {
 	}
 
 	DeltaBitArray& operator=(const DeltaBitArray& v) {

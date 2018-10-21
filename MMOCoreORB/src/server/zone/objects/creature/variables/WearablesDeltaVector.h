@@ -24,7 +24,62 @@ public:
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
 		protectionArmorMap.setAllowOverwriteInsertPlan();
 
-		addSerializableVariable("protectionArmorMap", &protectionArmorMap);
+		//addSerializableVariable("protectionArmorMap", &protectionArmorMap);
+	}
+
+	bool readObjectMember(ObjectInputStream* stream, const String& name) {
+		if (name == "protectionArmorMap") {
+			TypeInfo<VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > >>::parseFromBinaryStream(&protectionArmorMap, stream);
+
+			return true;
+		}
+
+		return DeltaVector<ManagedReference<TangibleObject*> >::readObjectMember(stream, name);
+	}
+
+	int writeObjectMembers(ObjectOutputStream* stream) {
+		static String _name = "protectionArmorMap";
+		int _offset;
+		uint32 _totalSize;
+
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo<VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > >>::toBinaryStream(&protectionArmorMap, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
+		return 1 + DeltaVector<ManagedReference<TangibleObject*> >::writeObjectMembers(stream);
+	}
+
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		int _currentOffset = stream->getOffset();
+		stream->writeShort(0);
+		int _varCount = writeObjectMembers(stream);
+		stream->writeShort(_currentOffset, _varCount);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		uint16 _varCount = stream->readShort();
+
+		for (int i = 0; i < _varCount; ++i) {
+			String _name;
+			_name.parseFromBinaryStream(stream);
+
+			uint32 _varSize = stream->readInt();
+
+			int _currentOffset = stream->getOffset();
+
+			if(readObjectMember(stream, _name)) {
+			}
+
+			stream->setOffset(_currentOffset + _varSize);
+		}
+
+		return true;
 	}
 
 	void insertItemToMessage(ManagedReference<TangibleObject*>* item, BaseMessage* msg) {
