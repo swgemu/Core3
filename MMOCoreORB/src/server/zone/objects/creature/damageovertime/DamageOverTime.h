@@ -30,9 +30,9 @@ protected:
 	uint32 strength;
 	uint32 duration;
 
-	Time applied;
-	Time expires;
-	Time nextTick;
+	SerializableTime applied;
+	SerializableTime expires;
+	SerializableTime nextTick;
 	int secondaryStrength;
 
 public:

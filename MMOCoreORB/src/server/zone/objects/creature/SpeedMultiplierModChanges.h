@@ -50,11 +50,11 @@ public:
 	}
 
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
-		return true;
+		return false;
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
-		return true;
+		return false;
 	}
 };
 

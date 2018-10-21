@@ -23,17 +23,17 @@ protected:
 	bool disabled;
 	bool registered;
 
-	Time lastSuccessfulUpdate;
+	SerializableTime lastSuccessfulUpdate;
 
 	int maintAmount;
 
-	Time lastXpAward;
+	SerializableTime lastXpAward;
 	int awardUsageXP;
 
 	bool adBarking;
 
-	Time emptyTimer;
-	Time inactiveTimer;
+	SerializableTime emptyTimer;
+	SerializableTime inactiveTimer;
 
 	bool mail1Sent;
 
