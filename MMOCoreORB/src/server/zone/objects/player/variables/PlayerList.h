@@ -20,7 +20,7 @@ public:
 
 	}
 
-	PlayerList(const PlayerList& list) : Object(), DeltaVector<String>(list) {
+	PlayerList(const PlayerList& list) : DeltaVector<String>(list) {
 
 	}
 

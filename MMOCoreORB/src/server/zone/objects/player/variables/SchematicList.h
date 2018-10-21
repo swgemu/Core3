@@ -26,7 +26,7 @@ public:
 		rewardedSchematics.setNoDuplicateInsertPlan();
 	}
 
-	SchematicList(const SchematicList& list) : Object(), DeltaVector<ManagedReference<DraftSchematic* > >(list) {
+	SchematicList(const SchematicList& list) : DeltaVector<ManagedReference<DraftSchematic* > >(list) {
 		rewardedSchematics.setNoDuplicateInsertPlan();
 		rewardedSchematics = list.rewardedSchematics;
 	}

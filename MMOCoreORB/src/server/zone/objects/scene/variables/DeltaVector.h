@@ -17,44 +17,24 @@ namespace objects {
 namespace scene {
 namespace variables {
 
-template <class E> class DeltaVector : public Serializable {
+template <class E> class DeltaVector : public Variable {
 protected:
-	Vector<E> vector;
+	ArrayList<E> vector;
 	uint32 updateCounter;
 
-	ReadWriteLock* mutex;
+	mutable UniqueReference<ReadWriteLock*> mutex;
 
 public:
-	DeltaVector() : Serializable(), vector(1, 1) {
-		updateCounter = 1;
-
-		mutex = NULL;
-
-		addSerializableVariables();
+	DeltaVector() : vector(1, 1), updateCounter(1), mutex(nullptr) {
 	}
 
-	DeltaVector(int initsize, int incr) : Serializable(), vector(initsize, incr) {
-		updateCounter = 1;
-
-		mutex = NULL;
-
-		addSerializableVariables();
+	DeltaVector(int initsize, int incr) : vector(initsize, incr), updateCounter(1), mutex(nullptr) {
 	}
 
-	DeltaVector(const DeltaVector& v) : Object(), Serializable() {
-		vector = v.vector;
-		updateCounter = v.updateCounter;
-
-		mutex = NULL;
-
-		addSerializableVariables();
+	DeltaVector(const DeltaVector& v) : vector(v.vector), updateCounter(v.updateCounter), mutex(nullptr) {
 	}
 
 	~DeltaVector() {
-		if (mutex) {
-			delete mutex;
-			mutex = NULL;
-		}
 	}
 
 	DeltaVector& operator=(const DeltaVector& v) {
@@ -65,24 +45,95 @@ public:
 		updateCounter = v.updateCounter;
 
 		if (mutex) {
-			delete mutex;
-			mutex = NULL;
+			mutex = nullptr;
 		}
 
 		return *this;
 	}
 
-	inline void addSerializableVariables() {
-		addSerializableVariable("vector", &vector);
-		addSerializableVariable("updateCounter", &updateCounter);
+	bool readObjectMember(ObjectInputStream* stream, const String& name) {
+		if (name == "vector") {
+			TypeInfo<ArrayList<E> >::parseFromBinaryStream(&vector, stream);
+
+			return true;
+		} else if (name == "updateCounter") {
+			TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
+
+			return true;
+		}
+
+		return false;
 	}
 
-	virtual E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
+	int writeObjectMembers(ObjectOutputStream* stream) {
+		String _name;
+		int _offset;
+		uint32 _totalSize;
+
+		_name = "vector";
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo<ArrayList<E>>::toBinaryStream(&vector, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
+		_name = "updateCounter";
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
+		String emptyName; // making it serialize the same way as Serializable so bas doesnt have to update all the objects
+
+		_name = "_className";
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo<String>::toBinaryStream(&emptyName, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
+		return 3;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		int _currentOffset = stream->getOffset();
+		stream->writeShort(0);
+		int _varCount = writeObjectMembers(stream);
+		stream->writeShort(_currentOffset, _varCount);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		uint16 _varCount = stream->readShort();
+
+		for (int i = 0; i < _varCount; ++i) {
+			String _name;
+			_name.parseFromBinaryStream(stream);
+
+			uint32 _varSize = stream->readInt();
+
+			int _currentOffset = stream->getOffset();
+
+			if(readObjectMember(stream, _name)) {
+			}
+
+			stream->setOffset(_currentOffset + _varSize);
+		}
+
+		return true;
+	}
+
+	virtual E set(int idx, const E& newValue, DeltaMessage* message = nullptr, int updates = 1) {
 		Locker locker(getLock());
 
 		E object = vector.set(idx, newValue);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
@@ -96,12 +147,12 @@ public:
 		return object;
 	}
 
-	virtual bool add(const E& element, DeltaMessage* message = NULL, int updates = 1) {
+	virtual bool add(const E& element, DeltaMessage* message = nullptr, int updates = 1) {
 		Locker locker(getLock());
 
 		bool val = vector.add(element);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
@@ -127,12 +178,12 @@ public:
 		return obj;
 	}
 
-	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {
+	E remove(int index, DeltaMessage* message = nullptr, int updates = 1) {
 		Locker locker(getLock());
 
 		E object = vector.remove(index);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
@@ -143,12 +194,12 @@ public:
 		return object;
 	}
 
-	void removeAll(DeltaMessage* message = NULL) {
+	void removeAll(DeltaMessage* message = nullptr) {
 		Locker locker(getLock());
 
 		vector.removeAll();
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			message->startList(1, ++updateCounter);
 			message->insertByte(4);
 		}
@@ -199,12 +250,12 @@ public:
 		updateCounter = 0;
 	}
 
-	inline int size() {
+	inline int size() const {
 		return vector.size();
 	}
 
 	inline ReadWriteLock* getLock() {
-		if (mutex == NULL) {
+		if (mutex == nullptr) {
 			mutex = new ReadWriteLock();
 		}
 
