@@ -14,8 +14,8 @@ class PatrolPoint : public Serializable {
 	WorldCoordinates position;
 
 	bool reached;
-	
-	Time estimatedTimeOfArrival;
+
+	SerializableTime estimatedTimeOfArrival;
 
 public:
 	PatrolPoint() {
@@ -35,7 +35,7 @@ public:
 
 		addSerializableVariables();
 	}
-	
+
 	PatrolPoint(const PatrolPoint& point) : Object(), Serializable() {
 		position = point.position;
 
@@ -112,19 +112,19 @@ public:
 	inline float getPositionX() {
 		return position.getX();
 	}
-	
+
 	inline float getPositionY() {
 		return position.getY();
 	}
-	
+
 	inline float getPositionZ() {
 		return position.getZ();
 	}
-	
+
 	inline CellObject* getCell() {
 		return position.getCell();
 	}
-	
+
 	inline Time* getEstimatedTimeOfArrival() {
 		return &estimatedTimeOfArrival;
 	}
@@ -132,7 +132,7 @@ public:
 	inline bool isReached() {
 		return reached;
 	}
-	
+
 	inline bool isPastTimeOfArrival() {
 		return estimatedTimeOfArrival.isPast() || estimatedTimeOfArrival.isPresent();
 	}
@@ -141,23 +141,23 @@ public:
 	inline void setPosition(float x, float z, float y) {
 		position.setCoordinates(Vector3(x, y, z));
 	}
-	
+
 	inline void setPositionX(float x) {
 		position.setX(x);
 	}
-	
+
 	inline void setPositionZ(float z) {
 		position.setZ(z);
 	}
-	
+
 	inline void setPositionY(float y) {
 		position.setY(y);
 	}
-	
+
 	inline void setCell(CellObject* cell) {
 		position.setCell(cell);
 	}
-	
+
 	inline void setReached(bool value) {
 		reached = value;
 	}
