@@ -26,8 +26,8 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
         sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libssl-dev
   * Clone core3 repository somewhere  (~/git)
 
-	mkdir -p ~/git
-	cd ~/git
+        mkdir -p ~/git
+        cd ~/git
         git clone http://review.swgemu.com/Core3
   * Clone engine3 repository somewhere (~/git)
 
@@ -46,7 +46,7 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
         make -j8
   * Import sql database
 
-	mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
+        mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
 
 ### How to Run ###
     cd ~/git/Core3/MMOCoreORB/bin
