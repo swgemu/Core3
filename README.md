@@ -11,7 +11,7 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
 ##### Dependencies #####
   * CMake 3.1.0 or higher
   * BerkeleyDB 5.3
-  * MySQL (libmysqlclient20)
+  * MySQL Client and Server
   * OpenSSL libraries
   * pthreads
   * Lua 5.3 libraries
@@ -26,6 +26,8 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
         sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libssl-dev
   * Clone core3 repository somewhere  (~/git)
 
+	mkdir -p ~/git
+	cd ~/git
         git clone http://review.swgemu.com/Core3
   * Clone engine3 repository somewhere (~/git)
 
@@ -41,7 +43,10 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
 
         cd MMOCoreORB
         git checkout origin/unstable
-        make build-cmake -j8
+        make -j8
+  * Import sql database
+
+	mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
 
 ### How to Run ###
     cd ~/git/Core3/MMOCoreORB/bin
