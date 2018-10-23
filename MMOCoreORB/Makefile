@@ -50,16 +50,21 @@ IDL_DIRECTIVES = -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 
 UNITTEST_DIRECTIVES =
 
+BUILD_PATH = build/unix
+DEFAULT_BUILD_TYPE = RelWithDebInfo
+
 all: build-cmake-with-idl
+
+asan: build-cmake-with-idl-asan
+
+build: build-cmake #idl gitlog
+	#cd $(BUILD_PATH) && ${MAKE} UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
+	#cp $(BUILD_PATH)/src/core3* bin
+	#rm $(BUILD_PATH)/src/core3
+	#rm $(BUILD_PATH)/src/core3client
 	#done
 
-build: idl gtest gitlog
-	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
-	cp build/unix/src/core3* bin
-	rm build/unix/src/core3
-	rm build/unix/src/core3client
-	#done
-
+#deprecated
 unittest: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
 unittest: build
 
@@ -69,7 +74,8 @@ unittest-cmake: build-cmake
 sanitizers-cmake: UNITTEST_DIRECTIVES = -fsanitize=address
 sanitizers-cmake: build-cmake
 
-rebuild: clean build
+rebuild: clean
+	${MAKE} build
 
 gitlog:
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
@@ -78,72 +84,68 @@ idl:
 	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 
-gtest:
-	cd utils/googletest-release-1.8.0/googlemock && ${MAKE} all
-
 config:
 	aclocal
 	automake --add-missing
 	autoreconf --force --install
-	cd build/unix && ../../configure
+	cd $(BUILD_PATH) && ../../configure
 	#cd ../MMOEngine/external/ptmalloc3 && make
-	#done
 
-clean: cleanidl
-	cd build/unix && ${MAKE} clean
-	cd utils/googletest-release-1.8.0/googlemock && ${MAKE} clean
-	#cd build/unix/src && rm *
-	#cd build/unix/src/.deps && rm *
-	#done
+clean: cleanidl clean-cmake
+	#cd $(BUILD_PATH) && ${MAKE} clean
+	#cd utils/googletest-release-1.8.0/googlemock && ${MAKE} clean
+	#cd $(BUILD_PATH)/src && rm *
+	#cd $(BUILD_PATH)/src/.deps && rm *
 
 cleanidl:
 	$(IDLC) -rebuild $(IDL_DIRECTIVES) -sd src anyadEclipse
 
 cleardb:
 	cd bin/databases && rm -rf *.*
-	#done
 
 build-cmake: idl
-	cd build/unix && cmake -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
-	#done
+	mkdir -p $(BUILD_PATH)
+	cd $(BUILD_PATH) && cmake -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+
+build-cmake-with-idl-asan: clean-cmake
+	mkdir -p $(BUILD_PATH)
+	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_ASAN=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-with-idl:
-	cd build/unix && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
-	#done
+	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+
+build-cmake-tags:
+	cd $(BUILD_PATH) && ${MAKE} tags
+
+build-cmake-compdb:
+	cd $(BUILD_PATH) && ${MAKE} compdb
 
 build-ninja:
-	mkdir -p build/unix/ninja
-	cd build/unix/ninja && cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
-	#done
+	mkdir -p $(BUILD_PATH)/ninja
+	cd $(BUILD_PATH)/ninja && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
 
 clean-ninja:
-	rm -rf build/unix/ninja
-	#done
+	rm -rf $(BUILD_PATH)/ninja
 
 build-ninja-debug:
-	mkdir -p build/unix/ninja-debug
-	cd build/unix/ninja-debug && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
-	#done
+	mkdir -p $(BUILD_PATH)/ninja-debug
+	cd $(BUILD_PATH)/ninja-debug && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
 
 clean-ninja-debug:
-	rm -rf build/unix/ninja-debug
-	#done
+	rm -rf $(BUILD_PATH)/ninja-debug
 
 build-ninja-debugoptimized:
-	mkdir -p build/unix/ninja-debugoptimized
-	cd build/unix/ninja-debugoptimized && cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
-	#done
+	mkdir -p $(BUILD_PATH)/ninja-debugoptimized
+	cd $(BUILD_PATH)/ninja-debugoptimized && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
 
 clean-ninja-debugoptimized:
-	rm -rf build/unix/ninja-debugoptimized
-	#done
+	rm -rf $(BUILD_PATH)/ninja-debugoptimized
 
 clean-cmake:
-	rm -f build/unix/CMakeCache.txt
-	rm -f build/unix/cmake_install.cmake
-	rm -f build/unix/Makefile
-	rm -rf build/unix/CMakeFiles
-	#done
+	rm -f $(BUILD_PATH)/CMakeCache.txt
+	rm -f $(BUILD_PATH)/cmake_install.cmake
+	rm -f $(BUILD_PATH)/Makefile
+	rm -rf $(BUILD_PATH)/CMakeFiles
 
 
 DB_NAMESPACE=

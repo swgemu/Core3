@@ -184,3 +184,13 @@ add_subdirectory(src/server/ping)
 add_subdirectory(src/server/login)
 add_subdirectory(src/server/chat)
 add_subdirectory(src/client)
+
+set_source_files_properties(tags PROPERTIES GENERATED true)
+add_custom_target(tags
+	COMMAND ctags -R --fields=+iaS --extra=+q src/
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+set_source_files_properties(compile_commands.json PROPERTIES GENERATED true)
+add_custom_target(compdb
+	COMMAND compdb -p ${CMAKE_BINARY_DIR} list > compile_commands.json
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
