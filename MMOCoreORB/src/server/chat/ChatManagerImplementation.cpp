@@ -110,7 +110,7 @@ void ChatManagerImplementation::loadMailDatabase() {
 			if ((currentTime - timeStamp) > PM_LIFESPAN) {
 				i++;
 
-				ObjectManager::instance()->destroyObjectFromDatabase(objectID);
+				playerMailDatabase->deleteData(objectID);
 			}
 
 			if (ConfigManager::instance()->isProgressMonitorActivated())
