@@ -24,6 +24,7 @@ FIND_PATH(IDLC_BIN_DIR idlc.jar
   ../MMOEngine/bin
   ../../engine3/MMOEngine/lib
   ../../engine3/MMOEngine/bin
+  ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/include
   NO_DEFAULT_PATH
 )
 
@@ -34,6 +35,7 @@ FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
   ../MMOEngine/include
   ../../engine3/MMOEngine/src
   ../../engine3/MMOEngine/include
+  ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/include
   NO_DEFAULT_PATH
 )
 
@@ -41,19 +43,19 @@ SET(ENGINE3_NAMES engine3)
 
 FIND_LIBRARY(ENGINE3_LIBRARY
 	NAMES ${ENGINE3_NAMES}
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix ../MMOEngine/lib/osx)
+	PATHS ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix ../MMOEngine/lib/osx)
 
 FIND_LIBRARY(ENGINE3_ASAN_LIBRARY
 	NAMES engine3-asan
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
 
 FIND_LIBRARY(ENGINE3_TSAN_LIBRARY
 	NAMES engine3-tsan
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
 
 FIND_LIBRARY(ENGINE3_UBSAN_LIBRARY
 	NAMES engine3-ubsan
-	PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
 
 IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY AND ENGINE3_ASAN_LIBRARY AND ENGINE3_TSAN_LIBRARY AND ENGINE3_UBSAN_LIBRARY)
   IF (ENABLE_ASAN)
@@ -67,12 +69,13 @@ IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY AND ENGINE3_ASAN_LI
   ENDIF()
   SET(ENGINE3_FOUND TRUE)
   SET(IDL_DIRECTIVES -outdir autogen -cp ${ENGINE3_INCLUDE_DIR})
-  SET(IDLC_JAVA_ARGS -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -client -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler)
 ELSE ()
   SET(ENGINE3_FOUND FALSE)
   SET(ENGINE3_LIBRARIES)
   SET(IDL_DIRECTIVES)
 ENDIF ()
+
+SET(ENGINE3_DOWNLOAD FALSE)
 
 IF (ENGINE3_FOUND)
   IF (NOT ENGINE3_FIND_QUIETLY_INCLUDE)
@@ -89,12 +92,62 @@ IF (ENGINE3_FOUND)
 
 ELSE (ENGINE3_FOUND)
   IF (Engine3_FIND_REQUIRED)
-    MESSAGE(STATUS "Looked for engine3 libraries named ${ENGINE3_NAMES}.")
-    MESSAGE(FATAL_ERROR "Could NOT find engine3 library")
+
+    IF (NOT GIT_FOUND)
+  	MESAGE(FATAL_ERROR "Could not find engine3 library")
+    ENDIF()
+
+    MESSAGE(STATUS "Using engine3 git submodule")
+
+    IF (NOT EXISTS "${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/lib/linux64/libengine3.a")
+        MESSAGE(STATUS "Initializing git submodules")
+
+        EXECUTE_PROCESS(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		    RESULT_VARIABLE GIT_RESULT)
+    ENDIF()
+
+    IF (GIT_RESULT)
+	    MESSAGE(FATAL_ERROR "Could NOT download engine3 git submodule")
+    ENDIF()
+
+    SET(OLD_CMAKE_SOURCE_DIR ${CMAKE_SOURCE_DIR})
+    SET(CMAKE_SOURCE_DIR ${OLD_CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine)
+
+    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/utils/engine3/MMOEngine)
+
+    SET(CMAKE_SOURCE_DIR ${OLD_CMAKE_SOURCE_DIR})
+
+    SET(ENGINE3_UBSAN_LIBRARY ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3-ubsan.a)
+    SET(ENGINE3_TSAN_LIBRARY ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3-tsan.a)
+    SET(ENGINE3_ASAN_LIBRARY ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3-asan.a)
+    SET(ENGINE3_LIBRARY ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3.a)
+    SET(ENGINE3_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/include)
+    SET(IDLC_BIN_DIR ${CMAKE_SOURCE_DIR}/utils/engine3/MMOEngine/bin)
+
+    IF (ENABLE_ASAN)
+	    SET(ENGINE3_LIBRARIES ${ENGINE3_ASAN_LIBRARY})
+    ELSEIF (ENABLE_TSAN)
+	    SET(ENGINE3_LIBRARIES ${ENGINE3_TSAN_LIBRARY})
+    ELSEIF (ENABLE_UBSAN)
+	    SET(ENGINE3_LIBRARIES ${ENGINE3_UBSAN_LIBRARY})
+    ELSE ()
+	    SET(ENGINE3_LIBRARIES ${ENGINE3_LIBRARY})
+    ENDIF()
+
+    SET(IDL_DIRECTIVES -outdir autogen -cp ${ENGINE3_INCLUDE_DIR})
+
+    SET(ENGINE3_DOWNLOAD TRUE)
+    SET(ENGINE3_FOUND TRUE)
+
   ENDIF (Engine3_FIND_REQUIRED)
 ENDIF (ENGINE3_FOUND)
+
+SET(IDLC_JAVA_ARGS -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -client -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler)
 
 MARK_AS_ADVANCED(
   ENGINE3_LIBRARY
   ENGINE3_INCLUDE_DIR
 )
+
+

@@ -134,6 +134,6 @@ add_custom_target(idl
 add_custom_target(rebuild-idl
 	COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -rb -sd src anyadEclipse
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        COMMENT "Building idl sources"
+	COMMENT "Rebuilding idl sources"
         VERBATIM)
 
