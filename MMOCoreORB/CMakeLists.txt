@@ -32,6 +32,8 @@ option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
+find_package(Git QUIET)
+
 # Add lua includes and libraries
 find_package(Lua "5.3" REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
@@ -93,8 +95,6 @@ endif()
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
-
-find_package(Git QUIET)
 
 if(ENABLE_CCACHE)
     find_program(CCACHE_FOUND ccache)
@@ -168,6 +168,10 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
     if (CMAKE_BUILD_TYPE EQUAL "DEBUG")
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
     endif()
+
+    if (CMAKE_GENERATOR STREQUAL "Ninja")
+	   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
+    endif()
 endif()
 
 add_definitions(-DDEFAULT_DYNAMIC_CAST)
@@ -193,4 +197,8 @@ add_custom_target(tags
 set_source_files_properties(compile_commands.json PROPERTIES GENERATED true)
 add_custom_target(compdb
 	COMMAND compdb -p ${CMAKE_BINARY_DIR} list > compile_commands.json
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+add_custom_target(update-engine3
+	COMMAND ${GIT_EXECUTABLE} submodule update --recursive --remote
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
