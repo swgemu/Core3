@@ -67,6 +67,8 @@ else(COMPILE_TESTS)
 	add_dependencies(core3 idlobjects)
 endif(COMPILE_TESTS)
 
+add_dependencies(core3 engine3)
+
 set(whole_archive_start)
 set(whole_archive_end)
 

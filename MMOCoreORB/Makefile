@@ -91,7 +91,7 @@ config:
 	cd $(BUILD_PATH) && ../../configure
 	#cd ../MMOEngine/external/ptmalloc3 && make
 
-clean: cleanidl clean-cmake
+clean: clean-cmake
 	#cd $(BUILD_PATH) && ${MAKE} clean
 	#cd utils/googletest-release-1.8.0/googlemock && ${MAKE} clean
 	#cd $(BUILD_PATH)/src && rm *
