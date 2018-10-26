@@ -5,16 +5,24 @@ cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 
 project(core3 CXX C)
 
-include(CheckCXXSourceCompiles)
-include(CheckCXXCompilerFlag)
-
 # Set cpp requirements
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if (CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.4)
-	message(FATAL_ERROR "Only GCC 5.4 or greater is supported")
+include(CheckCXXSourceCompiles)
+include(CheckCXXCompilerFlag)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.4)
+	message(FATAL_ERROR "GCC version myst be at least 5.4!")
+    endif()
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.4)
+        message(FATAL_ERROR "Clang version must be at least 3.4!")
+    endif()
+else()
+    message(WARNING "You are using an unsupported compiler! Compilation has only been tested with Clang and GCC.")
 endif()
 
 # Set up options
@@ -28,6 +36,8 @@ option(ENABLE_ASAN "Enables address sanitizer compiling" OFF)
 option(ENABLE_TSAN "Enables thread sanitizer compiling" OFF)
 option(ENABLE_UBSAN "Enables undefined behavior sanitizer compiling" OFF)
 option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
+option(ENABLE_OMIT_FRAMEPOINTER "Enables -fno-omit-frame-pointer compiler option" ON)
+option(ENABLE_ERROR_ON_WARNINGS "Enables -Werror compiler option" ON)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -131,52 +141,67 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 
-# Define global build gcc compatible flags
-set(GCCEXTRAFLAGS "-Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror")
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    # Define global build gcc compatible flags to check and add if available
+    set(GCCEXTRAFLAGS -Wall
+	-Wextra
+	-Wno-unused
+	-Wno-sign-compare
+	-Wno-multichar
+	-Wno-unused-parameter
+	-Wno-overloaded-virtual
+	-Wno-missing-declarations
+	-Wno-return-std-move
+	-Wno-implicit-fallthrough
+	-fcolor-diagnostics)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
+    foreach(flag_comp ${GCCEXTRAFLAGS})
+	CHECK_CXX_COMPILER_FLAG(${flag_comp} CxxFlag${flag_comp})
 
-    CHECK_CXX_COMPILER_FLAG(-Wno-return-std-move HAVE_NO_STD_MOVE_RETURN)
-    CHECK_CXX_COMPILER_FLAG(-fcolor-diagnostics HAVE_COLOR_DIAGNOSTICS)
-    CHECK_CXX_COMPILER_FLAG(-Wno-implicit-fallthrough HAVE_NO_FALLTHROUGH)
+	if (CxxFlag${flag_comp})
+		set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag_comp}")
+	endif()
+    endforeach(flag_comp)
 
-    if (HAVE_NO_STD_MOVE_RETURN)
-	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-return-std-move")
-    endif(HAVE_NO_STD_MOVE_RETURN)
-
-    if (HAVE_NO_FALLTHROUGH)
-	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-implicit-fallthrough")
-    endif(HAVE_NO_FALLTHROUGH)
+    if (ENABLE_ERROR_ON_WARNINGS)
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+    endif(ENABLE_ERROR_ON_WARNINGS)
 
     if (ENABLE_ASAN)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=address")
+
 	   message(STATUS "Adress sanitizer enabled")
     endif(ENABLE_ASAN)
 
     if (ENABLE_TSAN)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
 	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=thread")
+
 	   message(STATUS "Thread sanitizer enabled")
     endif(ENABLE_TSAN)
 
     if (ENABLE_UBSAN)
-	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined")
-	    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=undefined")
-	    message(STATUS "Undefined behavior sanitizer sanitizer enabled")
+	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined")
+	   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} -fsanitize=undefined")
+
+	   message(STATUS "Undefined behavior sanitizer sanitizer enabled")
     endif(ENABLE_UBSAN)
 
     if (ENABLE_NATIVE)
-	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+	   CHECK_CXX_COMPILER_FLAG(-march=native CxxFlagMnative)
+
+	   if (CxxFlagMnative)
+	        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+	   endif (CxxFlagMnative)
     endif(ENABLE_NATIVE)
 
-    if (CMAKE_BUILD_TYPE EQUAL "DEBUG")
-	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
-    endif()
+    if (ENABLE_OMIT_FRAMEPOINTER)
+	   CHECK_CXX_COMPILER_FLAG(-fno-omit-frame-pointer CxxFlagFramePointer)
 
-    if (CMAKE_GENERATOR STREQUAL "Ninja" AND HAVE_COLOR_DIAGNOSTICS)
-	   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
+	   if (CxxFlagFramePointer)
+           	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
+	   endif (CxxFlagFramePointer)
     endif()
 endif()
 
@@ -208,3 +233,12 @@ add_custom_target(compdb
 add_custom_target(update-engine3
 	COMMAND ${GIT_EXECUTABLE} submodule update --recursive --remote
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+
+message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
+#message(STATUS "Compiler flags:" ${CMAKE_CXX_COMPILE_FLAGS})
+message(STATUS "Compiler cxx release with debug flags:" ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
+message(STATUS "Compiler cxx debug flags:" ${CMAKE_CXX_FLAGS_DEBUG})
+message(STATUS "Compiler cxx release flags:" ${CMAKE_CXX_FLAGS_RELEASE})
+message(STATUS "Compiler cxx min size flags:" ${CMAKE_CXX_FLAGS_MINSIZEREL})
+message(STATUS "Compiler cxx flags:" ${CMAKE_CXX_FLAGS})
