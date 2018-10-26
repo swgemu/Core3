@@ -50,7 +50,7 @@ public:
 			return GENERALERROR;
 		}
 
-		for (int i = 1; i < building->getTotalCellNumber(); ++i) {
+		for (int i = 1; i <= building->getTotalCellNumber(); ++i) {
 			ManagedReference<CellObject*> cell = building->getCell(i);
 
 			if(cell == NULL)
