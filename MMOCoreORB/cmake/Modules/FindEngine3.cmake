@@ -145,7 +145,7 @@ ELSE (ENGINE3_FOUND)
   ENDIF (Engine3_FIND_REQUIRED)
 ENDIF (ENGINE3_FOUND)
 
-SET(IDLC_JAVA_ARGS -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -client -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler)
+SET(IDLC_JAVA_ARGS -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+CMSClassUnloadingEnabled -client -Xmx128M -cp ${IDLC_BIN_DIR}/idlc.jar org.sr.idlc.compiler.Compiler)
 
 MARK_AS_ADVANCED(
   ENGINE3_LIBRARY

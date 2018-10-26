@@ -138,10 +138,16 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${GCCEXTRAFLAGS})
 
     CHECK_CXX_COMPILER_FLAG(-Wno-return-std-move HAVE_NO_STD_MOVE_RETURN)
+    CHECK_CXX_COMPILER_FLAG(-fcolor-diagnostics HAVE_COLOR_DIAGNOSTICS)
+    CHECK_CXX_COMPILER_FLAG(-Wno-implicit-fallthrough HAVE_NO_FALLTHROUGH)
 
     if (HAVE_NO_STD_MOVE_RETURN)
 	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-return-std-move")
     endif(HAVE_NO_STD_MOVE_RETURN)
+
+    if (HAVE_NO_FALLTHROUGH)
+	    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-implicit-fallthrough")
+    endif(HAVE_NO_FALLTHROUGH)
 
     if (ENABLE_ASAN)
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
@@ -169,7 +175,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
 	   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer")
     endif()
 
-    if (CMAKE_GENERATOR STREQUAL "Ninja")
+    if (CMAKE_GENERATOR STREQUAL "Ninja" AND HAVE_COLOR_DIAGNOSTICS)
 	   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
     endif()
 endif()
