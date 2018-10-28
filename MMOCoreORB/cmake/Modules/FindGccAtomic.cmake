@@ -20,3 +20,5 @@ ELSE ()
     MESSAGE(STATUS "GCC's libatomic.so not found.")
     MESSAGE(STATUS "Try: 'sudo yum install libatomic' or 'sudo apt-get install libatomic1')")
 ENDIF ()
+
+MARK_AS_ADVANCED (GCCLIBATOMIC_LIBRARY)
