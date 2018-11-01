@@ -246,7 +246,7 @@ ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, bool for
 
 			return nullptr;
 		}
-	} else if (!forceSqlUpdate && !accObj->isSqlLoaded()) {
+	} else if (!forceSqlUpdate && accObj->isSqlLoaded()) {
 		return accObj;
 	}
 
@@ -307,7 +307,7 @@ ManagedReference<Account*> AccountManager::getAccount(String query, String& pass
 
 				return nullptr;
 			}
-		} else if (!forceSqlUpdate && !account->isSqlLoaded()) {
+		} else if (!forceSqlUpdate && account->isSqlLoaded()) {
 			return account;
 		}
 
