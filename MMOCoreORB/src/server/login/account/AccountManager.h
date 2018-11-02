@@ -31,6 +31,8 @@ namespace server {
 
 				String dbSecret;
 
+				static ReadWriteLock mutex;
+
 			public:
 				AccountManager(LoginServer* loginserv);
 				~AccountManager();
@@ -78,8 +80,8 @@ namespace server {
 				inline bool isAutoRegistrationEnabled() {
 					return autoRegistration;
 				}
-				
-				
+
+
 
 				static ManagedReference<Account*> getAccount(uint32 accountID, bool forceSqlUpdate = false);
 

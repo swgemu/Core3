@@ -91,7 +91,7 @@ config:
 	cd $(BUILD_PATH) && ../../configure
 	#cd ../MMOEngine/external/ptmalloc3 && make
 
-clean: cleanidl clean-cmake
+clean: clean-cmake
 	#cd $(BUILD_PATH) && ${MAKE} clean
 	#cd utils/googletest-release-1.8.0/googlemock && ${MAKE} clean
 	#cd $(BUILD_PATH)/src && rm *
@@ -103,6 +103,9 @@ cleanidl:
 cleardb:
 	cd bin/databases && rm -rf *.*
 
+update-engine3:
+	cd $(BUILD_PATH) && ${MAKE} update-engine3
+
 build-cmake: idl
 	mkdir -p $(BUILD_PATH)
 	cd $(BUILD_PATH) && cmake -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
@@ -112,6 +115,7 @@ build-cmake-with-idl-asan: clean-cmake
 	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_ASAN=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-with-idl:
+	mkdir -p $(BUILD_PATH)
 	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-tags:
