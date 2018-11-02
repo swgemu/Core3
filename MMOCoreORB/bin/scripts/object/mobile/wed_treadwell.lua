@@ -43,6 +43,8 @@
 
 object_mobile_wed_treadwell = object_mobile_shared_wed_treadwell:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_wed_treadwell, "object/mobile/wed_treadwell.iff")

@@ -43,6 +43,8 @@
 
 object_mobile_21b_surgical_droid = object_mobile_shared_21b_surgical_droid:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_21b_surgical_droid, "object/mobile/21b_surgical_droid.iff")
