@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_3p0_basic = object_tangible_deed_pet_deed_sha
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/3po_protocol_droid_crafted.iff",
-	generatedObjectTemplate = "object/creature/npc/droid/crafted/3po_droid.iff",
+	generatedObjectTemplate = "object/mobile/3po_protocol_droid_crafted.iff",
 	mobileTemplate = "c3p0_crafted",
 	species = 217,
 	

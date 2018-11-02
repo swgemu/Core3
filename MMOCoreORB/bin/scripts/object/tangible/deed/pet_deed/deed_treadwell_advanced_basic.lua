@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_treadwell_advanced_basic = object_tangible_de
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/wed_treadwell.iff",
-	generatedObjectTemplate = "object/creature/npc/droid/crafted/wed_treadwell_droid_advanced.iff",
+	generatedObjectTemplate = "object/mobile/wed_treadwell_crafted.iff",
 	mobileTemplate = "wed_treadwell_crafted_advanced",
 	species = 223,
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

@@ -41,10 +41,10 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_mobile_r3_crafted = object_mobile_shared_r3_crafted:new {
+object_mobile_dz70_fugitive_tracker_droid_crafted = object_mobile_shared_dz70_fugitive_tracker_droid:new {
 
 	gameObjectType = 1026
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_r3_crafted, "object/mobile/r3_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_dz70_fugitive_tracker_droid, "object/mobile/dz70_fugitive_tracker_droid_crafted.iff")

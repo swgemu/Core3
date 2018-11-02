@@ -43,6 +43,8 @@
 
 object_mobile_mouse_droid_crafted = object_mobile_shared_mouse_droid_crafted:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_mouse_droid_crafted, "object/mobile/mouse_droid_crafted.iff")

@@ -41,10 +41,10 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_mobile_r3_crafted = object_mobile_shared_r3_crafted:new {
+object_mobile_probot_crafted = object_mobile_shared_probot:new {
 
 	gameObjectType = 1026
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_r3_crafted, "object/mobile/r3_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_probot_crafted, "object/mobile/probot_crafted.iff")

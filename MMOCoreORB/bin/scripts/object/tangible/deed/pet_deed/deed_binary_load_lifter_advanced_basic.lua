@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_binary_load_lifter_advanced_basic = object_ta
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/cll8_binary_load_lifter.iff",
-	generatedObjectTemplate = "object/creature/npc/droid/crafted/cll_8_binary_load_lifter_advanced.iff",
+	generatedObjectTemplate = "object/mobile/cll8_binary_load_lifter_crafted.iff",
 	mobileTemplate = "cll8_binary_load_lifter_crafted_advanced",
 	species = 213,
 
