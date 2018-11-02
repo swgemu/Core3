@@ -43,6 +43,8 @@
 
 object_mobile_le_repair_droid = object_mobile_shared_le_repair_droid:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_le_repair_droid, "object/mobile/le_repair_droid.iff")

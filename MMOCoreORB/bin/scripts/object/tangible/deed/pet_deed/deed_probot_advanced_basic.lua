@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_probot_advanced_basic = object_tangible_deed_
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/probot.iff",
-	generatedObjectTemplate = "object/creature/npc/droid/crafted/imperial_probot_advanced.iff",
+	generatedObjectTemplate = "object/mobile/probot_crafted.iff",
 	mobileTemplate = "probot_crafted_advanced",
 	species = 216,
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
