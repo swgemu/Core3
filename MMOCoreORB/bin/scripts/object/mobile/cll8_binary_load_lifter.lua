@@ -43,6 +43,8 @@
 
 object_mobile_cll8_binary_load_lifter = object_mobile_shared_cll8_binary_load_lifter:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_cll8_binary_load_lifter, "object/mobile/cll8_binary_load_lifter.iff")

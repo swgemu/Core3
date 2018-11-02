@@ -43,6 +43,8 @@
 
 object_mobile_eg6_power_droid_crafted = object_mobile_shared_eg6_power_droid_crafted:new {
 
+	gameObjectType = 1026
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_eg6_power_droid_crafted, "object/mobile/eg6_power_droid_crafted.iff")
