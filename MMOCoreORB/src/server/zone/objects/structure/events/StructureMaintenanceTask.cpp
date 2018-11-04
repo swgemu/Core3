@@ -20,12 +20,12 @@
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
 
-	if (strongRef == NULL)
+	if (strongRef == nullptr)
 		return;
 
 	ZoneServer* zoneServer = strongRef->getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerShuttingDown())
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown())
 		return;
 
 	if (zoneServer->isServerLoading()) {
@@ -40,7 +40,7 @@ void StructureMaintenanceTask::run() {
 
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
-	if (creditObj == NULL) {
+	if (creditObj == nullptr) {
 		info("Player does not have a valid credit object, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 
@@ -48,7 +48,7 @@ void StructureMaintenanceTask::run() {
 	}
 
 	if (name.isEmpty()) {
-		info("Player structure has NULL owner ghost, destroying.", true);
+		info("Player structure has nullptr owner ghost, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
@@ -62,6 +62,7 @@ void StructureMaintenanceTask::run() {
 	}
 
 	Locker _lock(strongRef);
+	Locker locker(creditObj, strongRef);
 
 	//Structure is out of maintenance. Start the decaying process...
 	strongRef->updateStructureStatus();
@@ -69,19 +70,29 @@ void StructureMaintenanceTask::run() {
 	//Calculate one week of maintenance +- any existing maintenance/decay.
 	int oneWeekMaintenance = 7 * 24 * strongRef->getMaintenanceRate() - strongRef->getSurplusMaintenance();
 
-
 	// add city tax to the week maintenance
 	ManagedReference<CityRegion*> city = strongRef->getCityRegion().get();
-	if(strongRef->isBuildingObject() && city != NULL){
+	if(strongRef->isBuildingObject() && city != nullptr){
 		oneWeekMaintenance += city->getPropertyTax() / 100.0f * oneWeekMaintenance;
 	}
 
-	Locker locker(creditObj, strongRef);
+	int uncondemnCost = -strongRef->getSurplusMaintenance();
+
+	if (uncondemnCost > 0)
+		oneWeekMaintenance += uncondemnCost;
+
 	//Check if owner got money in the bank and structure not decaying.
 	if (creditObj->getBankCredits() >= oneWeekMaintenance) {
 		//Withdraw 1 week maintenance from owner bank account and add to the structure
 		//maintenance pool.
 		strongRef->payMaintenance(oneWeekMaintenance, creditObj, false);
+
+		if (strongRef->isDecayed() && strongRef->isBuildingObject()) {
+			BuildingObject* building = strongRef.castTo<BuildingObject*>();
+
+			if (building != nullptr)
+				building->updateSignName(true);
+		}
 
 		//Send email notification to owner.
 		sendMailMaintenanceWithdrawnFromBank(name, strongRef);
@@ -107,6 +118,7 @@ void StructureMaintenanceTask::run() {
 				strongRef->info("Structure decayed, it is now condemned.");
 
 				building->updateSignName(true);
+				reschedule(oneDayTime);
 			} else {
 				strongRef->info("Structure decayed, destroying it.");
 
@@ -119,11 +131,11 @@ void StructureMaintenanceTask::run() {
 void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(const String& creoName, StructureObject* structure) {
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
-	if (chatManager != NULL) {
+	if (chatManager != nullptr) {
 		UnicodeString subject = "@player_structure:structure_maintenance_empty_subject";
 
 		String zoneName = "the void";
-		if (structure->getZone() != NULL) {
+		if (structure->getZone() != nullptr) {
 			zoneName = structure->getZone()->getZoneName();
 		}
 
@@ -139,7 +151,7 @@ void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(const String
 void StructureMaintenanceTask::sendMailDecay(const String& creoName, StructureObject* structure) {
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
-	if (chatManager != NULL) {
+	if (chatManager != nullptr) {
 		UnicodeString subject = "@player_structure:mail_structure_damage_sub";
 
 		//Your %TT %TO is currently at %DI percent condition. It will be destroyed if it reaches 0. If you wish to keep this structure, you should immediately add maintenance.
@@ -150,7 +162,7 @@ void StructureMaintenanceTask::sendMailDecay(const String& creoName, StructureOb
 		}
 
 		String zoneName = "the void";
-		if (structure->getZone() != NULL) {
+		if (structure->getZone() != nullptr) {
 			zoneName = structure->getZone()->getZoneName();
 		}
 
@@ -167,11 +179,11 @@ void StructureMaintenanceTask::sendMailCondemned(const String& creoName, Structu
 	//Create an email.
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
-	if (chatManager != NULL) {
+	if (chatManager != nullptr) {
 		UnicodeString subject = "@player_structure:structure_condemned_subject";
 
 		String zoneName = "the void";
-		if (structure->getZone() != NULL) {
+		if (structure->getZone() != nullptr) {
 			zoneName = structure->getZone()->getZoneName();
 		}
 
