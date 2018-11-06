@@ -47,4 +47,4 @@ object_mobile_cll8_binary_load_lifter_crafted = object_mobile_shared_cll8_binary
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_cll8_binary_load_lifter, "object/mobile/cll8_binary_load_lifter_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_cll8_binary_load_lifter_crafted, "object/mobile/cll8_binary_load_lifter_crafted.iff")

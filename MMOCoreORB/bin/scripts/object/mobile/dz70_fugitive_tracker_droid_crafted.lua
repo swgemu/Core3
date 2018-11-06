@@ -47,4 +47,4 @@ object_mobile_dz70_fugitive_tracker_droid_crafted = object_mobile_shared_dz70_fu
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_dz70_fugitive_tracker_droid, "object/mobile/dz70_fugitive_tracker_droid_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_dz70_fugitive_tracker_droid_crafted, "object/mobile/dz70_fugitive_tracker_droid_crafted.iff")

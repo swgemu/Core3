@@ -47,4 +47,4 @@ object_mobile_21b_surgical_droid_crafted = object_mobile_shared_21b_surgical_dro
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_21b_surgical_droid, "object/mobile/21b_surgical_droid_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_21b_surgical_droid_crafted, "object/mobile/21b_surgical_droid_crafted.iff")

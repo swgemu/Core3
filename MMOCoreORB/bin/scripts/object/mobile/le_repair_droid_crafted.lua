@@ -47,4 +47,4 @@ object_mobile_le_repair_droid_crafted = object_mobile_shared_le_repair_droid:new
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_le_repair_droid, "object/mobile/le_repair_droid_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_le_repair_droid_crafted, "object/mobile/le_repair_droid_crafted.iff")

@@ -47,4 +47,4 @@ object_mobile_wed_treadwell_crafted = object_mobile_shared_wed_treadwell:new {
 	
 }
 
-ObjectTemplates:addTemplate(object_mobile_wed_treadwell, "object/mobile/wed_treadwell_crafted.iff")
+ObjectTemplates:addTemplate(object_mobile_wed_treadwell_crafted, "object/mobile/wed_treadwell_crafted.iff")
