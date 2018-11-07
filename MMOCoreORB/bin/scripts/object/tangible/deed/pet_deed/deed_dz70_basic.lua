@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_dz70_basic = object_tangible_deed_pet_deed_sh
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/dz70_fugitive_tracker_droid.iff",
-	generatedObjectTemplate = "object/creature/npc/droid/crafted/dz_70_fugitive_tracker_droid.iff",
+	generatedObjectTemplate = "object/mobile/dz70_fugitive_tracker_droid_crafted.iff",
 	mobileTemplate = "dz70_crafted",
 	species = 222,
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
