@@ -57,6 +57,7 @@ public:
 
 					if (player != nullptr) {
 						Locker lock(player);
+						strongRef->validatePlayerData(player);
 						strongRef->deductMaintenanceXp(player);
 					}
 				}
