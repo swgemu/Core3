@@ -1748,6 +1748,30 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 	short councilType = rankData->getCouncilType();
 	int rank = rankData->getRank();
 
+	SortedVector<uint64>* rankList = rankData->getPlayerList();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int j = rankList->size() - 1; j >= 0; j--) {
+		uint64 playerID = rankList->get(j);
+		String playerName = playerManager->getPlayerName(playerID);
+
+		bool removePlayer = false;
+		ManagedReference<CreatureObject*> player = nullptr;
+
+		if (playerName.isEmpty()) {
+			removePlayer = true;
+		} else {
+			player = zoneServer->getObject(rankList->get(j)).castTo<CreatureObject*>();
+
+			if (player == nullptr)
+				removePlayer = true;
+		}
+
+		if (removePlayer) {
+			rankData->removeFromPlayerList(playerID);
+		}
+	}
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	short status = rankData->getVoteStatus();
@@ -2720,6 +2744,9 @@ void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int co
 
 		if (playerName.isEmpty())
 			continue;
+
+		if (ghost->isPrivileged())
+			playerName += " (" + String::valueOf(playerID) + ")";
 
 		box->addMenuItem(playerName);
 	}
