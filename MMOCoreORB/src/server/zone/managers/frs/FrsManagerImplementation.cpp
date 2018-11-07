@@ -1748,6 +1748,49 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 	short councilType = rankData->getCouncilType();
 	int rank = rankData->getRank();
 
+	SortedVector<uint64>* rankList = rankData->getPlayerList();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	for (int j = rankList->size() - 1; j >= 0; j--) {
+		uint64 playerID = rankList->get(j);
+		String playerName = playerManager->getPlayerName(playerID);
+
+		if (playerName.isEmpty()) {
+			rankData->removeFromPlayerList(playerID);
+			continue;
+		}
+
+		ManagedReference<CreatureObject*> player = zoneServer->getObject(rankList->get(j)).castTo<CreatureObject*>();
+
+		if (player == nullptr) {
+			rankData->removeFromPlayerList(playerID);
+			continue;
+		}
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == nullptr) {
+			rankData->removeFromPlayerList(playerID);
+			continue;
+		}
+
+		FrsData* playerData = ghost->getFrsData();
+		int playerRank = playerData->getRank();
+		int playerCouncil = playerData->getRank();
+
+		if (playerCouncil != councilType) {
+			rankData->removeFromPlayerList(playerID);
+		} else if (playerRank != rank) {
+			ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
+			ManagedReference<CreatureObject*> strongRef = player->asCreatureObject();
+
+			Core::getTaskManager()->executeTask([strongMan, strongRef] () {
+				Locker locker(strongRef);
+				strongMan->validatePlayerData(strongRef);
+			}, "ValidatePlayerTask");
+		}
+	}
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	short status = rankData->getVoteStatus();
@@ -2720,6 +2763,9 @@ void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int co
 
 		if (playerName.isEmpty())
 			continue;
+
+		if (ghost->isPrivileged())
+			playerName += " (" + String::valueOf(playerID) + ")";
 
 		box->addMenuItem(playerName);
 	}
