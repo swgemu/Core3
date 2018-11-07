@@ -27,9 +27,9 @@ public:
 
 		strongRef->updateLastMaintenance();
 
-		locker.release();
-
 		Vector<uint64> playerList = strongRef->getFullPlayerList();
+
+		locker.release();
 
 		if (playerList.size() == 0) {
 			reschedule(strongRef->getMaintenanceInterval());
@@ -57,6 +57,7 @@ public:
 
 					if (player != nullptr) {
 						Locker lock(player);
+						strongRef->validatePlayerData(player);
 						strongRef->deductMaintenanceXp(player);
 					}
 				}
