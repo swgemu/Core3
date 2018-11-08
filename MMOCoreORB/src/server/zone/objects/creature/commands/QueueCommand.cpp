@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
 	server = serv;
@@ -234,6 +235,18 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 	}
 
 	return SUCCESS;
+}
+
+bool QueueCommand::checkForArenaDuel(CreatureObject* target) const {
+	FrsManager* frsManager = server->getZoneServer()->getFrsManager();
+
+	if (frsManager == nullptr)
+		return false;
+
+	if (!frsManager->isFrsEnabled())
+		return false;
+
+	return frsManager->isPlayerFightingInArena(target->getObjectID());
 }
 
 void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) const {

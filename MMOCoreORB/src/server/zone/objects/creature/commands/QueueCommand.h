@@ -84,6 +84,8 @@ public:
 	void onStateFail(CreatureObject* creature, uint32 actioncntr) const;
 	void onLocomotionFail(CreatureObject* creature, uint32 actioncntr) const;
 
+	bool checkForArenaDuel(CreatureObject* target) const;
+
 	/**
 	 * Gets a string describing this commands syntax usage.
 	 */
