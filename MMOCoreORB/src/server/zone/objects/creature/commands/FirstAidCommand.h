@@ -111,6 +111,11 @@ public:
 		if(!checkDistance(creature, creatureTarget, range))
 			return TOOFAR;
 
+		if (creature != creatureTarget && checkForArenaDuel(creatureTarget)) {
+			creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
+			return GENERALERROR;
+		}
+
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;

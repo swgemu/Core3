@@ -204,6 +204,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (checkForArenaDuel(targetPlayer)) {
+			creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
+			return GENERALERROR;
+		}
+
 		if (!targetPlayer->isHealableBy(creature)) {
 			player->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
