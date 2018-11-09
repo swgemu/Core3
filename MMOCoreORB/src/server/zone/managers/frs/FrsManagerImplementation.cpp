@@ -1776,7 +1776,7 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 
 		FrsData* playerData = ghost->getFrsData();
 		int playerRank = playerData->getRank();
-		int playerCouncil = playerData->getRank();
+		int playerCouncil = playerData->getCouncilType();
 
 		if (playerCouncil != councilType) {
 			rankData->removeFromPlayerList(playerID);
@@ -2768,6 +2768,12 @@ void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int co
 			playerName += " (" + String::valueOf(playerID) + ")";
 
 		box->addMenuItem(playerName);
+	}
+
+	int availSlots = getAvailableRankSlots(rankData);
+
+	for (int i = 0; i < availSlots; i++) {
+		box->addMenuItem("Open Seat");
 	}
 
 	ghost->addSuiBox(box);
