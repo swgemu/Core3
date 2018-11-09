@@ -1776,7 +1776,7 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 
 		FrsData* playerData = ghost->getFrsData();
 		int playerRank = playerData->getRank();
-		int playerCouncil = playerData->getRank();
+		int playerCouncil = playerData->getCouncilType();
 
 		if (playerCouncil != councilType) {
 			rankData->removeFromPlayerList(playerID);
