@@ -178,6 +178,9 @@ public:
 			return false;
 		}
 
+		if (creature != creatureTarget && checkForArenaDuel(creatureTarget))
+			return false;
+
 		if (!creatureTarget->isHealableBy(creature)) {
 			return false;
 		}

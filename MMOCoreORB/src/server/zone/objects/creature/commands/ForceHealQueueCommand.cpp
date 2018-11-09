@@ -377,9 +377,7 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 	if(!checkDistance(creature, targetCreature, range))
 		return TOOFAR;
 
-	FrsManager* frsManager = server->getZoneServer()->getFrsManager();
-
-	if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isPlayerFightingInArena(targetCreature->getObjectID())) {
+	if (checkForArenaDuel(targetCreature)) {
 		creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
 		return GENERALERROR;
 	}
