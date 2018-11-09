@@ -5536,6 +5536,11 @@ void PlayerManagerImplementation::unlockFRSForTesting(CreatureObject* player, in
 	if (ghost == nullptr)
 		return;
 
+	if (player->hasSkill("force_rank_light_novice") || player->hasSkill("force_rank_dark_novice")) {
+		player->sendSystemMessage("You already have FRS skills. You must drop them before using this feature again.");
+		return;
+	}
+
 	SkillManager* skillManager = SkillManager::instance();
 
 	int glowyBadgeIds[] = { 12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107 };
