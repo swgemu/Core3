@@ -98,8 +98,10 @@ void RESTServer::start() {
 void RESTServer::stop() {
 	doRun.set(false);
 
-	restListener->close().wait();
-	restListener = nullptr;
+	if (restListener != nullptr) {
+		restListener->close().wait();
+		restListener = nullptr;
+	}
 }
 
 #else
