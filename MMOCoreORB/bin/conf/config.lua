@@ -226,6 +226,8 @@ TermsOfService = ""
 
 CleanupMailCount = 25000
 
+RESTServerPort = 0
+
 local localFile = loadfile("conf/config-local.lua")
 
 if (localFile ~= nil) then

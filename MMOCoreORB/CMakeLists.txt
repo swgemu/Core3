@@ -38,6 +38,7 @@ option(ENABLE_UBSAN "Enables undefined behavior sanitizer compiling" OFF)
 option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 option(ENABLE_OMIT_FRAMEPOINTER "Enables -fno-omit-frame-pointer compiler option" ON)
 option(ENABLE_ERROR_ON_WARNINGS "Enables -Werror compiler option" ON)
+option(ENABLE_REST_SERVER "Enables RESTServer if cpprestsdk is found" OFF)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -237,9 +238,14 @@ add_custom_target(update-engine3
 
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 #message(STATUS "Compiler flags:" ${CMAKE_CXX_COMPILE_FLAGS})
-message(STATUS "Compiler cxx release with debug flags:" ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
-message(STATUS "Compiler cxx debug flags:" ${CMAKE_CXX_FLAGS_DEBUG})
-message(STATUS "Compiler cxx release flags:" ${CMAKE_CXX_FLAGS_RELEASE})
-message(STATUS "Compiler cxx min size flags:" ${CMAKE_CXX_FLAGS_MINSIZEREL})
-message(STATUS "Compiler cxx flags:" ${CMAKE_CXX_FLAGS})
-message(STATUS "Targets: tags compdb update-engine3 core3 idl rebuild-idl")
+
+if (${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebInfo")
+	message(STATUS "Compiler cxx release with debug flags: " ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
+elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+	message(STATUS "Compiler cxx release flags: " ${CMAKE_CXX_FLAGS_RELEASE})
+elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+	message(STATUS "Compiler cxx debug flags: " ${CMAKE_CXX_FLAGS_DEBUG})
+endif ()
+#message(STATUS "Compiler cxx min size flags:" ${CMAKE_CXX_FLAGS_MINSIZEREL})
+message(STATUS "Compiler extra cxx flags:" ${CMAKE_CXX_FLAGS})
+message(STATUS "Available targets: tags compdb update-engine3 core3 idl rebuild-idl")

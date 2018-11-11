@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 class PlayerQuestData : public Object {
 	uint64 ownerId;
 	uint16 activeStepBitmask;
@@ -205,7 +207,7 @@ public:
 		FS_DEFEND_wAIT_01                 = 193,
 		FS_DEFEND_wAIT_02                 = 194,
 		FS_CRAFTING4_QUEST_FINISH         = 195,
-		FS_CRAFT_PUZZLE_QUEST_04          = 196	
+		FS_CRAFT_PUZZLE_QUEST_04          = 196
 	};
 
 public:
@@ -228,6 +230,14 @@ public:
 		initialize(data);
 
 		return *this;
+	}
+
+	friend void to_json(nlohmann::json& j, const PlayerQuestData& d) {
+		j["ownerId"] = d.ownerId;
+		j["activeStepBitmask"] = d.activeStepBitmask;
+		j["completedStepBitmask"] = d.completedStepBitmask;
+		j["completedFlag"] = d.completedFlag;
+		j["questCounter"] = d.questCounter;
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {

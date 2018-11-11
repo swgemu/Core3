@@ -39,6 +39,13 @@ bool StructurePermissionList::toBinaryStream(ObjectOutputStream* stream) {
 	return true;
 }
 
+void to_json(nlohmann::json& j, const StructurePermissionList& p) {
+	j["permissionLists"] = p.permissionLists;
+	j["idPermissionLists"] = p.idPermissionLists;
+	j["ownerName"] = p.ownerName;
+	j["ownerID"] = p.ownerID;
+}
+
 int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset, varCount = 0;
@@ -136,23 +143,24 @@ bool StructurePermissionList::parseFromBinaryStream(ObjectInputStream* stream) {
 	return true;
 }
 
-void StructurePermissionList::sendTo(CreatureObject* creature, const String& listName) {
+void StructurePermissionList::sendTo(CreatureObject* creature, const String& listName) /*const TODO: THIS SHOULD BE CONST but there is hack modifying lists...*/ {
 	ZoneServer* zoneServer = creature->getZoneServer();
 
 	ReadLocker locker(&lock);
 
-	if (!idPermissionLists.contains(listName)) {
+	int pos = idPermissionLists.find(listName);
+
+	if (pos == -1)
 		return;
-	}
 
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
 
-	SortedVector<uint64>* list = &idPermissionLists.get(listName);
+	const SortedVector<uint64>& list = idPermissionLists.get(pos);
 	Vector<uint64> invalidIDs;
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
-	for (int i = 0; i < list->size(); ++i) {
-		uint64 objectID = list->get(i);
+	for (int i = 0; i < list.size(); ++i) {
+		uint64 objectID = list.get(i);
 
 		String name = playerManager->getPlayerName(objectID);
 
@@ -171,12 +179,25 @@ void StructurePermissionList::sendTo(CreatureObject* creature, const String& lis
 		}
 	}
 
-	for (int i = 0; i < invalidIDs.size(); i++) {
-		list->drop(invalidIDs.get(i));
-	}
+	locker.release();
 
 	listMsg->generateMessage();
 	creature->sendMessage(listMsg);
+
+	if (invalidIDs.isEmpty())
+		return;
+
+	Locker writeLock(&lock);
+
+	if (!idPermissionLists.contains(listName)) {
+		return;
+	}
+
+	SortedVector<uint64>& updateList = idPermissionLists.get(listName);
+
+	for (int i = 0; i < invalidIDs.size(); i++) {
+		updateList.drop(invalidIDs.get(i));
+	}
 }
 
 int StructurePermissionList::togglePermission(const String& listName, const uint64 objectID) {
@@ -271,7 +292,7 @@ void StructurePermissionList::migrateLists(ZoneServer* zoneServer, uint64 ownerO
 		String listName = permissionLists.elementAt(i).getKey();
 		addList(listName);
 
-		SortedVector<String>* list = &permissionLists.get(i);
+		const SortedVector<String>* list = &permissionLists.get(i);
 
 		for (int j = 0; j < list->size(); j++) {
 			const String& name = list->get(j);
@@ -311,3 +332,34 @@ void StructurePermissionList::migrateLists(ZoneServer* zoneServer, uint64 ownerO
 
 	permissionLists.removeAll();
 }
+
+bool StructurePermissionList::isOnPermissionList(const String& listName, const uint64 objectID) const {
+	ReadLocker locker(&lock);
+
+	if (listName != "BAN" && objectID == ownerID)
+		return true;
+
+	int pos = idPermissionLists.find(listName);
+
+	if (pos == -1)
+		return false;
+
+	const SortedVector<uint64>& list = idPermissionLists.get(pos);
+
+	return list.contains(objectID);
+}
+
+bool StructurePermissionList::isListFull(const String& listName) const {
+	ReadLocker locker(&lock);
+
+	int pos = idPermissionLists.find(listName);
+
+	if (pos == -1)
+		return true;
+
+	const SortedVector<uint64>& list = idPermissionLists.get(pos);
+
+	return list.size() >= MAX_ENTRIES;
+}
+
+

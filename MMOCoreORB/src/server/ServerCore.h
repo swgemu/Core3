@@ -33,6 +33,10 @@ namespace server {
  namespace web {
  	 class WebServer;
  }
+
+ namespace web3 {
+ 	class RESTServer;
+ }
 }
 
 namespace engine {
@@ -63,6 +67,8 @@ class ServerCore : public Core, public Logger {
 	WebServer* webServer;
 
 	MetricsManager* metricsManager;
+
+	server::web3::RESTServer* restServer;
 
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
