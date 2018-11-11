@@ -6,6 +6,9 @@
 #define PATROLPOINT_H_
 
 #include "system/lang.h"
+
+#include "engine/util/json_utils.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
@@ -86,6 +89,12 @@ public:
 		addSerializableVariable("estimatedTimeOfArrival", &estimatedTimeOfArrival);
 	}
 
+	friend void to_json(nlohmann::json& j, const PatrolPoint& p) {
+		j["position"] = p.position;
+		j["reached"] = p.reached;
+		j["estimatedTimeOfArrival"] = p.estimatedTimeOfArrival;
+	}
+
 	Vector3 getWorldPosition() {
 		return position.getWorldPosition();
 	}
@@ -104,24 +113,24 @@ public:
 		return thisWorldPos.squaredDistanceTo(objWorldPos) <= (range * range);
 	}
 
-	inline WorldCoordinates getCoordinates() {
+	inline const WorldCoordinates& getCoordinates() const {
 		return position;
 	}
 
 	//getters
-	inline float getPositionX() {
+	inline float getPositionX() const {
 		return position.getX();
 	}
 
-	inline float getPositionY() {
+	inline float getPositionY() const {
 		return position.getY();
 	}
 
-	inline float getPositionZ() {
+	inline float getPositionZ() const {
 		return position.getZ();
 	}
 
-	inline CellObject* getCell() {
+	inline CellObject* getCell() const {
 		return position.getCell();
 	}
 
@@ -129,7 +138,7 @@ public:
 		return &estimatedTimeOfArrival;
 	}
 
-	inline bool isReached() {
+	inline bool isReached() const {
 		return reached;
 	}
 
@@ -170,7 +179,7 @@ public:
 	/**
 	 * Returns the string representation of the vector in (x, y, z) format plus the cellID.
 	 */
-	inline String toString() {
+	inline String toString() const {
 		return position.toString();
 	}
 };

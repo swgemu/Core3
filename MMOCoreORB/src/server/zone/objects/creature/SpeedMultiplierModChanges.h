@@ -10,6 +10,8 @@
 
 #include "system/util/ArrayList.h"
 
+#include "engine/util/json_utils.h"
+
 class SpeedModChange {
 	float newSpeed;
 	Time timeStamp;
@@ -50,11 +52,19 @@ public:
 	}
 
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		TypeInfo<float>::parseFromBinaryStream(&newSpeed, stream);
+
+
 		return false;
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return false;
+	}
+
+	friend void to_json(nlohmann::json& j, const SpeedModChange& v) {
+		j["newSpeed"] = v.newSpeed;
+		j["timeStamp"] = v.timeStamp;
 	}
 };
 

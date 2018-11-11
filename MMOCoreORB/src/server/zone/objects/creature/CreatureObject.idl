@@ -43,6 +43,7 @@ import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
 
 @mock
+@json
 class CreatureObject extends TangibleObject {
 	@weakReference
 	protected transient ZoneClientSession owner;
@@ -154,7 +155,7 @@ class CreatureObject extends TangibleObject {
 	protected Time nextAction;
 
 	@transactional
-	protected CooldownTimerMap cooldownTimerMap;
+	protected transient CooldownTimerMap cooldownTimerMap;
 
 	@dereferenced
 	protected BuffList creatureBuffs;

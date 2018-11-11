@@ -6,13 +6,15 @@
 #define BUFFLIST_H_
 
 #include "engine/engine.h"
+#include "engine/util/json_utils.h"
+
 #include "server/zone/objects/creature/buffs/Buff.h"
 
 class BuffList : public Serializable {
 protected:
 	bool spiceActive;
 	VectorMap<uint32, ManagedReference<Buff*> > buffList;
-	Mutex mutex;
+	mutable Mutex mutex;
 
 public:
 	BuffList();
@@ -33,12 +35,14 @@ public:
 
 	String getDurationString(bool showhours = true, bool showminutes = true) const;
 
+	friend void to_json(nlohmann::json& j, const BuffList& l);
+
 	//Getters
 	inline int getBuffListSize() const {
 		return buffList.size();
 	}
 
-	Buff* getBuffByIndex(int index) {
+	Buff* getBuffByIndex(int index) const {
 		Locker guard(&mutex);
 
 		if (index < 0 || index >= buffList.size())
@@ -49,7 +53,7 @@ public:
 		return buffList.elementAt(index).getValue();
 	}
 
-	Buff* getBuffByCRC(uint32 buffcrc) {
+	Buff* getBuffByCRC(uint32 buffcrc) const {
 		Locker guard(&mutex);
 
 		if (buffList.contains(buffcrc))
@@ -58,7 +62,7 @@ public:
 		return NULL;
 	}
 
-	long long getModifierByName(const String& skillMod) {
+	long long getModifierByName(const String& skillMod) const {
 		Locker guard(&mutex);
 
 		int mod = 0;
@@ -71,13 +75,13 @@ public:
 		return mod;
 	}
 
-	bool hasBuff(uint32 buffcrc) {
+	bool hasBuff(uint32 buffcrc) const {
 		Locker guard(&mutex);
 
 		return buffList.contains(buffcrc);
 	}
 
-	inline bool hasSpice() {
+	inline bool hasSpice() const {
 		return spiceActive;
 	}
 };
