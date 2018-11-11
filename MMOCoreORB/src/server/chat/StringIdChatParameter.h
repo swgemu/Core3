@@ -59,6 +59,9 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	friend void to_json(nlohmann::json& j, const StringIdChatParameter& p) {
+		const StringId& id = p;
+
+		j["stringID"] = p;
 		j["TT"] = p.TT;
 		j["TU"] = p.TU;
 		j["TO"] = p.TO;

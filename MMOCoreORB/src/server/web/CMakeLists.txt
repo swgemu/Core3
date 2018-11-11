@@ -17,6 +17,8 @@ if (ENABLE_REST_SERVER)
 		target_link_libraries(web3 PRIVATE cpprestsdk::cpprest)
 
 		add_definitions(-DCOMPILE_CORE3_REST)
+
+		message(STATUS "Compiling with cpprestsdk")
 	else ()
 		find_path(CUST_CPPREST_INCLUDE_DIR
 			NAMES
@@ -70,6 +72,8 @@ if (ENABLE_REST_SERVER)
 			target_link_libraries(web3 PRIVATE ${CUST_CPPREST_LIBRARY})
 
 			add_definitions(-DCOMPILE_CORE3_REST)
+
+			message(STATUS "Compiling with cpprestsdk")
 		endif()
 	endif()
 endif()
