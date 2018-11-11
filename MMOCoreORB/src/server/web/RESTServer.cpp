@@ -66,7 +66,7 @@ void handle_get(http_request request) {
 	if (responses.empty()) {
 		request.reply(status_codes::NotFound);
 	} else {
-		request.reply(status_codes::OK, json::value(responses.dump(2), false));
+		request.reply(status_codes::OK, json::value::parse(responses.dump()));
 	}
 }
 
