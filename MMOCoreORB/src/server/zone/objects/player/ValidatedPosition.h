@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 namespace server {
  namespace zone {
   class ZoneServer;
@@ -53,15 +55,20 @@ public:
 		return *this;
 	}
 
+	friend void to_json(nlohmann::json& j, const ValidatedPosition& pos) {
+		j["point"] = pos.point;
+		j["parent"] = pos.parent;
+	}
+
 	Vector3 getWorldPosition(server::zone::ZoneServer* zoneServer);
 
 	void update(server::zone::objects::scene::SceneObject* object);
 
-	inline uint64 getParent() {
+	inline uint64 getParent() const {
 		return parent;
 	}
 
-	inline Vector3 getPosition() {
+	inline const Vector3& getPosition() const {
 		return point;
 	}
 
@@ -77,6 +84,7 @@ public:
 		point.set(x, z, y);
 	}
 
+private:
 	inline void addSerVariables() {
 		addSerializableVariable("point", &point);
 		addSerializableVariable("parent", &parent);

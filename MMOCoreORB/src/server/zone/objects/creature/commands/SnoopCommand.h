@@ -59,6 +59,8 @@ public:
 		if (!targetObj->isCreatureObject())
 			return INVALIDTARGET;
 
+		Locker guard(targetObj, creature);
+
 		ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
 		if (targetGhost == NULL)

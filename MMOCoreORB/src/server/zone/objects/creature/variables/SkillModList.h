@@ -69,6 +69,14 @@ public:
 		addSerializableVariable("mods", &mods);
 	}
 
+	friend void to_json(nlohmann::json& j, const SkillModList& map) {
+		j["mods"] = map.mods;
+
+		const DeltaVectorMap<String, SkillModEntry>& vm = map;
+
+		to_json(j, vm);
+	}
+
 	bool add(const uint32 modType, const String& skillMod, int value) {
 		if (!mods.contains(modType)) {
 			SkillModGroup newgroup;

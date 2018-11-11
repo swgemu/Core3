@@ -41,3 +41,13 @@ CreatureTemplate* CreatureTemplateReference::operator=(CreatureTemplate* obj) {
 
 	return obj;
 }
+
+void to_json(nlohmann::json& j, const CreatureTemplateReference& r) {
+	CreatureTemplate* obj = r.get();
+
+	if (obj != NULL) {
+		j = obj->getTemplateName();
+	} else
+		j = "";
+
+}

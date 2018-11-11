@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 class CooldownTimer : public Variable {
 	Time timeStamp;
 
@@ -59,6 +61,10 @@ public:
 		timeStamp.toBinaryStream(stream);
 
 		return true;
+	}
+
+	friend void to_json(nlohmann::json& j, const CooldownTimer& t) {
+		j["timeStamp"] = t.timeStamp;
 	}
 
 	bool parseFromBinaryStream(ObjectInputStream* stream) {

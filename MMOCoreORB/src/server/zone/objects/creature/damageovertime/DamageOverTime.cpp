@@ -89,6 +89,18 @@ void DamageOverTime::addSerializableVariables() {
 
 }
 
+void to_json(nlohmann::json& j, const DamageOverTime& t) {
+	j["attackerID"] = t.attackerID;
+	j["type"] = t.type;
+	j["attribute"] = t.attribute;
+	j["strength"] = t.strength;
+	j["duration"] = t.duration;
+	j["applied"] = t.applied;
+	j["expires"] = t.expires;
+	j["nextTick"] = t.nextTick;
+	j["secondaryStrength"] = t.secondaryStrength;
+}
+
 void DamageOverTime::activate() {
 	expires.updateToCurrentTime();
 	expires.addMiliTime(duration * 1000);
