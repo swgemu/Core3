@@ -24,6 +24,7 @@ include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 include system.thread.atomic.AtomicInteger;
 
+@json
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
 
@@ -873,7 +874,7 @@ class TangibleObject extends SceneObject {
 	public string getLuaStringData(final string key) {
 		return luaStringData.get(key);
 	}
-	
+
 	public native void setDisabled(boolean disabled);
 	public native boolean isDisabled();
 

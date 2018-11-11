@@ -300,3 +300,12 @@ void ContainerObjectsMap::cancelUnloadTask() {
 		unloadTask = NULL;
 	}
 }
+
+void server::zone::objects::scene::to_json(nlohmann::json& j, const server::zone::objects::scene::ContainerObjectsMap& map) {
+	auto oids = map.getOids();
+
+	if (oids != NULL)
+		j = *oids;
+	else
+		j = *map.getContainerObjects();
+}

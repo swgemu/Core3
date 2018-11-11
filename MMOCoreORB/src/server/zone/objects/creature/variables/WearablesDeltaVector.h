@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
@@ -50,6 +52,14 @@ public:
 		stream->writeInt(_offset, _totalSize);
 
 		return 1 + DeltaVector<ManagedReference<TangibleObject*> >::writeObjectMembers(stream);
+	}
+
+	friend void to_json(nlohmann::json& j, const WearablesDeltaVector& vec) {
+		j["protectionArmorMap"] = vec.protectionArmorMap;
+
+		const DeltaVector<ManagedReference<TangibleObject*> >& dv = vec;
+
+		to_json(j, dv);
 	}
 
 

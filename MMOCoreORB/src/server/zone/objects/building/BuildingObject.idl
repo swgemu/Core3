@@ -26,6 +26,7 @@ include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
 
+@json
 class BuildingObject extends StructureObject {
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
@@ -41,7 +42,7 @@ class BuildingObject extends StructureObject {
 	protected transient unsigned int lastAccessFeeChange;
 
 	@dereferenced
-	protected transient Mutex paidAccessListMutex; 
+	protected transient Mutex paidAccessListMutex;
 
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> paidAccessList;
@@ -53,31 +54,31 @@ class BuildingObject extends StructureObject {
 	protected transient SynchronizedSortedVector<unsigned long> registeredPlayerIdList;
 
 	public boolean publicStructure;
-	
+
 	public static final int MAXPLAYERITEMS = 400;
 
 	protected unicode signName;
-		
+
 	protected boolean isOwnerResidence;
 
 	protected int factionBaseType;
 
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
-		
+
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 
 		super.staticObject = false;
-						
+
 		totalCellNumber = 0;
-		
+
 		accessFee = 0;
 		accessDuration = 0;
 		lastAccessFeeChange = 0;
-		
+
 		deedObjectID = 0;
-		
+
 		publicStructure = true;
 
 		signName = "";
@@ -113,7 +114,7 @@ class BuildingObject extends StructureObject {
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the container objects }
-	 * @param player SceneObject that will receive the objects 
+	 * @param player SceneObject that will receive the objects
 	 */
 	@dirty
 	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
@@ -234,10 +235,10 @@ class BuildingObject extends StructureObject {
 	public CellObject getCell(unsigned int idx) {
 		if (idx == 0) {
 			super.error("trying to get Cell with id = 0");
-			
+
 			StackTrace.printStackTrace();
 		}
-			
+
 		return cells.get(idx);
 	}
 
@@ -366,7 +367,7 @@ class BuildingObject extends StructureObject {
 			updatePaidAccessList();
 		}
 	}
-	
+
 	@dirty
 	@nativeStub
 	@local
@@ -433,7 +434,7 @@ class BuildingObject extends StructureObject {
 	 * Adds the desired sign as a child object, removing any current sign
 	 * @param SignTemplate sign config from structure lua
 	 * @pre structure object is locked
-	 * @post structure object is locked 
+	 * @post structure object is locked
 	 */
 	@local
 	@preLocked
@@ -449,6 +450,6 @@ class BuildingObject extends StructureObject {
 
 	@read
 	public native abstract float getOutOfRangeDistance();
-	
+
 	public native string getCellName(unsigned long cellID);
 }

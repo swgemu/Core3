@@ -6,6 +6,8 @@
 #define WAYPOINTLIST_H_
 
 #include "engine/engine.h"
+#include "engine/util/json_utils.h"
+
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
@@ -26,6 +28,12 @@ public:
 		}
 
 		return pos;
+	}
+
+	friend void to_json(nlohmann::json& j, const WaypointList& w) {
+		const DeltaVectorMap<uint64, ManagedReference<WaypointObject*> >& vm = w;
+
+		to_json(j, vm);
 	}
 
 	bool drop(const uint64& key, DeltaMessage* message = NULL, int updates = 1) {

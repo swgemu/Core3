@@ -38,7 +38,7 @@ public:
 		return abilityName.compareTo(a.abilityName);
 	}
 
-	String& getAbilityName() {
+	const String& getAbilityName() const {
 		return abilityName;
 	}
 
