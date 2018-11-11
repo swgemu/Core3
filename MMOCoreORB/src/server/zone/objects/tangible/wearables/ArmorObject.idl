@@ -12,12 +12,12 @@ include engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 
-
+@json
 class ArmorObject extends WearableObject {
 	protected int healthEncumbrance;
 	protected int actionEncumbrance;
 	protected int mindEncumbrance;
-	
+
 	protected int rating;
 
 	protected float kinetic;
@@ -32,7 +32,7 @@ class ArmorObject extends WearableObject {
 
 	protected int specialResists;
 	protected int vulnerabilites;
-	
+
 	protected unsigned byte hitLocation;
 
 	protected float baseProtection;
@@ -45,11 +45,11 @@ class ArmorObject extends WearableObject {
 	public static final int MEDIUM = 0x2;
 	public static final int HEAVY = 0x3;
 
-	public ArmorObject() {		
+	public ArmorObject() {
 		healthEncumbrance = 100;
 		actionEncumbrance = 100;
 		mindEncumbrance = 100;
-		
+
 		rating = LIGHT;
 
 		kinetic = 0;
@@ -63,7 +63,7 @@ class ArmorObject extends WearableObject {
 		lightSaber = 0;
 		effectivenessSlice = 1;
 		encumbranceSlice = 1;
-		
+
 		baseProtection = 0;
 		specialProtection = 0;
 		specialResists = 0;
@@ -71,14 +71,14 @@ class ArmorObject extends WearableObject {
 		hitLocation = 0;
 
 		setSliceable(true);
-		
+
 		Logger.setLoggingName("ArmorObject");
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	public native void notifyLoadFromDatabase();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -87,7 +87,7 @@ class ArmorObject extends WearableObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -98,7 +98,7 @@ class ArmorObject extends WearableObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -111,32 +111,32 @@ class ArmorObject extends WearableObject {
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	private native void calculateSpecialProtection(CraftingValues values);
-	
+
 	@dirty
 	native string getStringType(int type);
 
 	private native void setProtectionValue(int type, float value);
-	
+
 	@dirty
 	public boolean isSpecial(int type) {
 		return specialResists & type;
 	}
-	
+
 	@dirty
 	public native boolean isVulnerable(int type);
-	
+
 	@dirty
 	public boolean isArmorObject() {
 		return true;
 	}
-	
+
 	public void setRating(int rate) {
 		rating = rate;
 	}
-	
+
 	@dirty
 	public int getRating() {
 		return rating;
@@ -144,7 +144,7 @@ class ArmorObject extends WearableObject {
 
 	@dirty
 	private native float getTypeValue(int type, float value);
-	
+
 	@dirty
 	@local
 	public native float getKinetic();
@@ -216,39 +216,39 @@ class ArmorObject extends WearableObject {
 	public void setLightSaber(float value) {
 		lightSaber = value;
 	}
-	
+
 	@dirty
 	public int getHealthEncumbrance() {
 		if(healthEncumbrance < 0)
 			return healthEncumbrance * (2 - encumbranceSlice);
-			
+
 		return healthEncumbrance * encumbranceSlice;
 	}
-	
+
 	public void setHealthEncumbrance(int encumber) {
 		healthEncumbrance = encumber;
 	}
-	
+
 	@dirty
 	public int getActionEncumbrance() {
 		if(actionEncumbrance < 0)
 			return actionEncumbrance * (2 - encumbranceSlice);
-			
+
 		return actionEncumbrance * encumbranceSlice;
 	}
-	
+
 	public void setActionEncumbrance(int encumber) {
 		actionEncumbrance = encumber;
 	}
-	
+
 	@dirty
-	public int getMindEncumbrance() {	
+	public int getMindEncumbrance() {
 		if(mindEncumbrance < 0)
 			return mindEncumbrance * (2 - encumbranceSlice);
-			
+
 		return mindEncumbrance * encumbranceSlice;
 	}
-	
+
 	public void setMindEncumbrance(int encumber) {
 		mindEncumbrance = encumber;
 	}
@@ -264,12 +264,12 @@ class ArmorObject extends WearableObject {
 			return;
 		encumbranceSlice = 1 - value;
 	}
-	
+
 	@dirty
 	public unsigned byte getHitLocation() {
 		return hitLocation;
 	}
-	
+
 	public void setHitLocation(unsigned byte h) {
 		hitLocation = h;
 	}

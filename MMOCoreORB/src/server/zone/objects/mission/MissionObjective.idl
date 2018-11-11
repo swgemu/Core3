@@ -15,6 +15,7 @@ import server.zone.objects.mission.events.FailMissionAfterCertainTimeTask;
 import engine.util.u3d.Vector3;
 include system.lang.Time;
 
+@json
 class MissionObjective extends ManagedObject implements Logger {
 	@dereferenced
 	private SortedVector<MissionObserver> observers;
@@ -27,7 +28,7 @@ class MissionObjective extends ManagedObject implements Logger {
 	@dereferenced
 	protected Time missionStartTime;
 
-	protected FailMissionAfterCertainTimeTask failTask;
+	protected transient FailMissionAfterCertainTimeTask failTask;
 
 	protected transient boolean activated;
 

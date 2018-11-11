@@ -7,18 +7,18 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 
+@json
 class AntiDecayKit extends Container {
-
-	boolean used;
+	protected boolean used;
 
 	public AntiDecayKit() {
 		used = false;
 
 		Logger.setLoggingName("AntiDecayKit");
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);

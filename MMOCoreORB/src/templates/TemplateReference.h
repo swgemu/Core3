@@ -10,6 +10,8 @@
 
 #include "templates/manager/TemplateManager.h"
 
+#include "engine/util/json_utils.h"
+
 template<class O> class TemplateReference : public Reference<O> {
 public:
 	TemplateReference() : Reference<O>() {
@@ -41,13 +43,20 @@ public:
 		return Reference<O>::get() == ref;
 	}
 
-	bool toString(String& str) {
+	bool toString(String& str) const {
 		if (Reference<O>::get() != NULL)
 			str = String::valueOf((Reference<O>::get())->getServerObjectCRC());
 		else
 			str = String::valueOf(0);
 
 		return true;
+	}
+
+	friend void to_json(nlohmann::json& j, const TemplateReference& r) {
+		String str;
+		r.toString(str);
+
+		j = str;
 	}
 
 	bool parseFromString(const String& str, int version = 0) {
