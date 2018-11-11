@@ -31,8 +31,8 @@ include system.util.SortedVector;
 include system.util.VectorMap;
 include engine.log.Logger;
 
+@json
 class CityRegion extends ManagedObject implements Logger {
-
 	@weakReference
 	protected NavArea navMesh;
 

@@ -89,6 +89,14 @@ bool StringIdChatParameter::toBinaryStream(ObjectOutputStream* stream) {
 			TypeInfo<float >::toBinaryStream(&DF, stream);
 }
 
+void server::chat::to_json(nlohmann::json& j, const server::chat::StringIdChatParameter& p) {
+	j["TT"] = p.TT;
+	j["TU"] = p.TU;
+	j["TO"] = p.TO;
+	j["DI"] = p.DI;
+	j["DF"] = p.DF;
+}
+
 bool StringIdChatParameter::parseFromBinaryStream(ObjectInputStream* stream) {
 
 	StringId::parseFromBinaryStream(stream);

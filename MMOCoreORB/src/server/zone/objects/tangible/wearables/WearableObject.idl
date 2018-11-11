@@ -12,22 +12,22 @@ import server.zone.objects.creature.CreatureObject;
 
 include system.util.VectorMap;
 
-class WearableObject extends TangibleObject {	
-
+@json
+class WearableObject extends TangibleObject {
 	protected int socketCount;
 	protected boolean socketsGenerated;
-	
+
 	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
 	protected boolean objectCreatedPreUsedSocketCountFix;
 	protected int usedSocketCount;
-	
+
 	protected int modsNotInSockets;
-	
+
 	public static final int MAXSOCKETS = 4;
-	
+
 	@dereferenced
 	protected VectorMap<string, int> wearableSkillMods;
-	
+
 	public WearableObject() {
 		socketsGenerated = false;
 		socketCount = 0;
@@ -37,9 +37,9 @@ class WearableObject extends TangibleObject {
 		wearableSkillMods.setAllowOverwriteInsertPlan();
 		Logger.setLoggingName("WearableObject");
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -50,32 +50,32 @@ class WearableObject extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean initialUpdate);
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
-	
+
 	public abstract native void applySkillModsTo(CreatureObject creature);
-	
+
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
-	
+
 	@dirty
 	public boolean isWearableObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public native boolean isEquipped();
-	
+
 	@dirty
 	public int getMaxSockets() {
 		return socketCount;
 	}
-	
+
 	@dirty
 	public native int socketsUsed();
-	
+
 	@dirty
 	public int socketsLeft() {
 		return getMaxSockets() - socketsUsed();
@@ -84,19 +84,19 @@ class WearableObject extends TangibleObject {
 	private native void generateSockets(CraftingValues craftingValues);
 
 	public native string repairAttempt(int repairChance);
-	
+
 	@local
 	public VectorMap<string, int> getWearableSkillMods() {
 		return wearableSkillMods;
 	}
-	
+
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
 		if (wearableSkillMods.size() <= 6) {
 			wearableSkillMods.put(skillMod, value);
 			modsNotInSockets++;
 		}
 	}
-	
+
 	public void setMaxSockets(int maxSockets) {
 		if (maxSockets < 0) {
 			maxSockets = 0;
