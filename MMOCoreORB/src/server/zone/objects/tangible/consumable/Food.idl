@@ -6,19 +6,20 @@ package server.zone.objects.tangible.consumable;
 
 import server.zone.objects.tangible.consumable.Consumable;
 
+@json
 class Food extends Consumable {
-	public Food() {		
+	public Food() {
 		Logger.setLoggingName("Food");
-		
+
 		initializePrivateData();
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("Food");
 	}
-	
+
 	public void initializePrivateData() {
 		super.consumableType = super.FOOD;
 	}

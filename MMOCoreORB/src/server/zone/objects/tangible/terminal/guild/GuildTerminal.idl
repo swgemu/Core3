@@ -8,15 +8,15 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@json
 class GuildTerminal extends Terminal {
-
 	public GuildTerminal() {
 		Logger.setLoggingName("GuildTerminal");
 	}
 
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("GuildTerminal");
 	}
 

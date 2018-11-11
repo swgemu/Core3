@@ -8,19 +8,20 @@ import server.zone.objects.tangible.component.Component;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
- 
-class DroidComponent extends Component {
 
+@json
+class DroidComponent extends Component {
 	protected float quality;
 	protected float durability;
 	protected boolean surveyDroid;
+
 	public DroidComponent() {
 		Logger.setLoggingName("DroidComponent");
 		quality = 0;
 		durability = 0;
 		surveyDroid = false;
 	}
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
@@ -34,9 +35,9 @@ class DroidComponent extends Component {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@local
 	public native boolean isSocketCluster();
-	
-		
+
+
 }

@@ -8,6 +8,7 @@ include templates.SharedObjectTemplate;
 include system.lang.String;
 
 @lua
+@json
 class WaypointObject extends IntangibleObject {
 	protected unsigned int cellID; //?
 
@@ -18,7 +19,7 @@ class WaypointObject extends IntangibleObject {
 
 	protected byte color;
 	protected byte active;
-	
+
 	protected string questDetails;
 
 	protected int specialTypeID;
@@ -51,7 +52,7 @@ class WaypointObject extends IntangibleObject {
 
 	@local
 	public native void insertToMessage(BaseMessage msg);
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
@@ -118,7 +119,7 @@ class WaypointObject extends IntangibleObject {
 	public void setDetailedDescription(final string desc) {
 		detailedDescription = desc;
 	}
-	
+
 	@preLocked
 	public void setQuestDetails(final string detail) {
 		questDetails = detail;

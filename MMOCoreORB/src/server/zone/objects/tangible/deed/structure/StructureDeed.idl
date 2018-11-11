@@ -11,86 +11,87 @@ include server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.tangible.deed.components.PlaceStructureComponent;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
+@json
 class StructureDeed extends Deed {
 	protected unsigned int surplusMaintenance;
 	protected unsigned int surplusPower;
 	protected float extractionRate;
 	protected float hopperSizeMax;
-	
+
 	protected transient PlaceStructureComponent placeStructureComponent;
-	
-	public StructureDeed() {	
+
+	public StructureDeed() {
 		Logger.setLoggingName("StructureDeed");
-		
+
 		surplusMaintenance = 0;
 		surplusPower = 0;
 		extractionRate = 0;
 		hopperSizeMax = 0;
 	}
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
-	
+
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate = false);
-	
+
 	public int placeStructure(CreatureObject creature, float x, float y, int angle) {
 		if (placeStructureComponent != null) {
-			return placeStructureComponent.placeStructure(this, creature, x, y, angle);	
+			return placeStructureComponent.placeStructure(this, creature, x, y, angle);
 		}
-		
+
 		return 1;
 	}
-	
+
 	public int notifyStructurePlaced(CreatureObject creature, StructureObject structure) {
 		if (placeStructureComponent != null) {
 			return placeStructureComponent.notifyStructurePlaced(this, creature, structure);
 		}
-		
+
 		return 1;
 	}
-	
+
 	public void setSurplusMaintenance(unsigned int maint) {
 		surplusMaintenance = maint;
 	}
-	
+
 	public void setSurplusPower(unsigned int power) {
 		surplusPower = power;
 	}
-	
+
 	public void setExtractionRate(float rate) {
 		extractionRate = rate;
 	}
-	
+
 	public void setHopperSize(float size) {
 		hopperSizeMax = size;
 	}
-	
+
 	@read
 	public unsigned int getSurplusMaintenance() {
 		return surplusMaintenance;
 	}
-	
+
 	@read
 	public unsigned int getSurplusPower() {
 		return surplusPower;
 	}
-	
+
 	@read
 	public float getExtractionRate() {
 		return extractionRate;
 	}
-	
+
 	@read
 	public float getHopperSize() {
 		return hopperSizeMax;
 	}
-	
+
 	@dirty
 	public boolean isStructureDeed() {
 		return true;

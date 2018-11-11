@@ -13,6 +13,7 @@ import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.SessionFacadeType;
 include templates.tangible.SharedStructureObjectTemplate;
 
+@json
 class PlaceStructureSession extends Facade {
 	@weakReference
 	protected CreatureObject creatureObject;
@@ -36,43 +37,43 @@ class PlaceStructureSession extends Facade {
 	public PlaceStructureSession(CreatureObject creature, StructureDeed deed) {
 		Logger.setLoggingName("PlaceStructureSession");
 		Logger.setLogging(true);
-		
+
 		creatureObject = creature;
 		deedObject = deed;
-		
+
 		zone = creature.getZone();
-		
+
 		positionX = 0;
 		positionY = 0;
-		
+
 		directionAngle = 0;
-		
+
 		constructionBarricade = null;
-		
+
 		temporaryNoBuildZone = null;
 	}
 
 	public int initializeSession() {
 		return 0;
 	}
-	
+
 	@local
 	public native void placeTemporaryNoBuildZone(SharedStructureObjectTemplate serverTemplate);
 	public native void removeTemporaryNoBuildZone();
-	
+
 	public native int constructStructure(float x, float y, int angle);
-	
+
 	public native int completeSession();
-	
+
 	public int cancelSession() {
 		CreatureObject creature = creatureObject;
 
 		if (creature != null)
 			creature.dropActiveSession(SessionFacadeType.PLACESTRUCTURE);
-		
+
 		return 0;
 	}
-	
+
 	public int clearSession() {
 		return 0;
 	}

@@ -11,6 +11,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.scene.SceneObject;
 
+@json
 class ResourceContainer extends TangibleObject {
 
 	protected ResourceSpawn spawnObject;
@@ -38,7 +39,7 @@ class ResourceContainer extends TangibleObject {
 	 */
 	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-        
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -77,7 +78,7 @@ class ResourceContainer extends TangibleObject {
 	}
 
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
-	
+
 	public native void decreaseUseCount(unsigned int decrement=1, boolean notifyClient = true) {
 		setUseCount(stackQuantity-decrement, notifyClient);
 	}

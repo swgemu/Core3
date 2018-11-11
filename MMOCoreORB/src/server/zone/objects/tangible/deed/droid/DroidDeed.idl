@@ -15,26 +15,26 @@ import server.zone.objects.tangible.component.droid.DroidComponent;
 include server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include templates.SharedObjectTemplate;
 
+@json
 class DroidDeed extends Deed {
-
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
 	protected int species;
 	protected float overallQuality;
 	@dereferenced
-	protected HashTable<string,DroidComponent> modules;
+	protected transient HashTable<string,DroidComponent> modules;
 	protected int combatRating;
-	
+
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");
-		combatRating = 0;	
-		overallQuality = 0;	
+		combatRating = 0;
+		overallQuality = 0;
 	}
 
 	public abstract native void onCloneObject(SceneObject objectToClone);
 
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -43,15 +43,15 @@ class DroidDeed extends Deed {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -61,10 +61,10 @@ class DroidDeed extends Deed {
 	@preLocked
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	public boolean isDroidDeedObject() {
 		return true;
@@ -73,12 +73,12 @@ class DroidDeed extends Deed {
 	@local
 	@dirty
 	protected native void processModule(BaseDroidModuleComponent module, unsigned int crc);
-        
+
 	@local
 	public HashTable<string,DroidComponent> getModules() {
 		return modules;
 	}
 
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
 }

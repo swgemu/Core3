@@ -16,6 +16,7 @@ import engine.util.Observable;
 include templates.params.ObserverEventType;
 import server.zone.objects.installation.factory.FactoryObject;
 
+@json
 class FactoryHopperObserver extends Observer {
 	@weakReference
 	protected FactoryObject factory;

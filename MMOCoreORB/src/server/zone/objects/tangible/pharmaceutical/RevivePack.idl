@@ -13,6 +13,7 @@ include system.lang.System;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class RevivePack extends PharmaceuticalObject {
 	protected float healthWoundHealed;
 	protected float healthHealed;
@@ -21,10 +22,10 @@ class RevivePack extends PharmaceuticalObject {
 	protected float mindWoundHealed;
 	protected float mindHealed;
 	//protected float effectiveness;
-	
+
 	public RevivePack() {
 		setLoggingName("RevivePack");
-		
+
 		healthWoundHealed = 100;
 		healthHealed = 100;
 		actionWoundHealed = 100;
@@ -32,34 +33,34 @@ class RevivePack extends PharmaceuticalObject {
 		mindWoundHealed = 100;
 		mindHealed = 100;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		float effectiveness = values.getCurrentValue("power");
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
-		
+
 		values.setHidden("power");
-		
+
 		float health = 2 * effectiveness;
 		healthWoundHealed = health;
 		healthHealed = 2 * effectiveness - health;
-		
+
 		float action = 2 * effectiveness;
 		action = System.random(action / 4);
 		action = action + effectiveness / 2;
-		
+
 		actionWoundHealed = action;
 		actionHealed = 2 * effectiveness - action;
-		
+
 		float mind = 1.5 * effectiveness;
 		mind = System.random(mind / 4);
 		mind = mind + effectiveness / 2;
-		
+
 		mindWoundHealed = mind;
 		mindHealed = 1.5 * effectiveness - mind;
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -71,19 +72,19 @@ class RevivePack extends PharmaceuticalObject {
 	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-	
+
 		msg.insertAttribute("examine_heal_wound_health", Math.getPrecision(healthWoundHealed, 0));
 		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(healthHealed, 0));
-		
+
 		msg.insertAttribute("examine_heal_wound_mind", Math.getPrecision(mindWoundHealed, 0));
 		msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(mindHealed, 0));
-		
+
 		msg.insertAttribute("examine_heal_wound_action", Math.getPrecision(actionWoundHealed, 0));
 		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(actionHealed, 0));
-				
+
 		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -95,52 +96,52 @@ class RevivePack extends PharmaceuticalObject {
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		if (!isASubChildOf(player))
 			return 0;
-		
+
 		if (selectedID != 20)
 			return 1;
 
 		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand("reviveplayer", String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
 
 	}
-	
+
 	@dirty
 	public float getHealthWoundHealed() {
 		return healthWoundHealed;
 	}
-	
+
 	@dirty
 	public float getHealthHealed() {
 		return healthHealed;
 	}
-	
+
 	@dirty
 	public float getActionWoundHealed() {
 		return actionWoundHealed;
 	}
-	
+
 	@dirty
 	public float getActionHealed() {
 		return actionHealed;
 	}
-	
+
 	@dirty
 	public float getMindWoundHealed() {
 		return mindWoundHealed;
 	}
-	
+
 	@dirty
 	public float getMindHealed() {
 		return mindHealed;
 	}
-	
+
 	@dirty
 	public boolean isRevivePack() {
 		return true;

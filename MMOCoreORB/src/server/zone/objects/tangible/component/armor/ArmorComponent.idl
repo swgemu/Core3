@@ -6,9 +6,9 @@ package server.zone.objects.tangible.component.armor;
 
 import server.zone.objects.tangible.component.Component;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
- 
-class ArmorComponent extends Component {
 
+@json
+class ArmorComponent extends Component {
 	protected float kinetic;
 	protected float energy;
 	protected float electricity;
@@ -31,7 +31,7 @@ class ArmorComponent extends Component {
 		acid = 0;
 		lightSaber = 0;
 	}
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
@@ -43,7 +43,7 @@ class ArmorComponent extends Component {
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	private native void calculateSpecialProtection(CraftingValues values);
-	
+
 	@dirty
 	private native string getStringType(int type);
 

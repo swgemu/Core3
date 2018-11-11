@@ -13,10 +13,11 @@ include engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.QuadTreeEntry;
 
+@json
 class LairObject extends TangibleObject {
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
-	
+
 	protected boolean despawnOnNoPlayersInRange;
 
 	protected transient DespawnLairOnPlayerDisappear despawnEvent;
@@ -82,7 +83,7 @@ class LairObject extends TangibleObject {
 			return;
 
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
-		despawnEvent.schedule(300000);		
+		despawnEvent.schedule(300000);
 	}
 
 	public void clearDespawnEvent() {

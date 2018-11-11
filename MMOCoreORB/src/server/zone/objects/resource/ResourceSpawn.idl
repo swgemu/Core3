@@ -17,6 +17,7 @@ include server.zone.objects.resource.SpawnMap;
 import server.zone.objects.scene.SceneObject;
 
 @lua
+@json
 class ResourceSpawn extends SceneObject {
 
 	protected string spawnType;

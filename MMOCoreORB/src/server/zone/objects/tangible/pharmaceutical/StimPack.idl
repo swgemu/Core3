@@ -14,6 +14,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class StimPack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected int medicineClass;

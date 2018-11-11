@@ -10,14 +10,14 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
+@json
 class RepairTool extends TangibleObject {
-
 	protected float quality;
-	
+
 	public RepairTool() {
 		setLoggingName("RepairTool");
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -26,7 +26,7 @@ class RepairTool extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -37,10 +37,10 @@ class RepairTool extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	public float getQuality() {
 		return quality;

@@ -14,31 +14,32 @@ include templates.tangible.CurePackTemplate;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class CurePack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected float area;
 	protected unsigned long state;
 	protected string commandToExecute;
-	
+
 	public CurePack() {
 		setLoggingName("CurePack");
-		
+
 		effectiveness = 0;
 		area = 0;
 		state = 0;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		effectiveness = values.getCurrentValue("power");
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
-		
+
 		if (values.hasProperty("area")) {
 			area = values.getCurrentValue("area");
 		}
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -60,7 +61,7 @@ class CurePack extends PharmaceuticalObject {
 		state = curePackTemplate.getState();
 		commandToExecute = curePackTemplate.getCommandToExecute();
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -79,16 +80,16 @@ class CurePack extends PharmaceuticalObject {
 
 		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand(commandToExecute, String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
 
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -100,12 +101,12 @@ class CurePack extends PharmaceuticalObject {
 	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-		
-		string eff = "@obj_attr_n:dot_type_"; 
+
+		string eff = "@obj_attr_n:dot_type_";
 		msg.insertAttribute("examine_dot_cure", eff + CreatureState.instance().getSpecialName(state));
 
 		msg.insertAttribute("examine_dot_cure_power", effectiveness);
-		
+
 		if (isArea()) {
 			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
 			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
@@ -126,27 +127,27 @@ class CurePack extends PharmaceuticalObject {
 		float modSkill = (float) creature.getSkillMod("healing_wound_treatment");
 		return ((100 + modSkill) / 100 * effectiveness);
 	}
-	
+
 	@dirty
 	public boolean isArea() {
 		return area != 0;
 	}
-	
+
 	@dirty
 	public float getArea() {
 		return area;
 	}
-	
+
 	@dirty
 	public unsigned long getState() {
 		return state;
 	}
-	
+
 	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
-	
+
 	@dirty
 	public boolean isCurePack() {
 		return true;

@@ -10,6 +10,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class GeneticComponent extends Component {
 
 	protected int cleverness;
@@ -36,28 +37,28 @@ class GeneticComponent extends Component {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
-	
+
 	// Extra non visible stats
 	protected int level;
-	
+
 	protected int health;
 	protected int action;
 	protected int mind;
-	
+
 	protected int willPower;
 	protected int constitution;
 	protected int stamina;
-	
+
 	protected int strength;
 	protected int focus;
-	protected int quickness; 
-	
+	protected int quickness;
+
 	protected float hit;
 	protected float speed;
 	protected int minDam;
 	protected int maxDam;
 	protected int specialResists;
-	
+
 	public GeneticComponent() {
 		Logger.setLoggingName("GeneticComponent");
 		cleverness = 0;
@@ -76,7 +77,7 @@ class GeneticComponent extends Component {
 		strength = 0;
 		focus = 0;
 		quickness = 0;
-		
+
 		special1 = "none";
 		special2 = "none";
 		ranged = false;
@@ -89,7 +90,7 @@ class GeneticComponent extends Component {
 		heatResist = 0;
 		elecResist = 0;
 		acidResist = 0;
-		stunResist = 0;	
+		stunResist = 0;
 		saberResist = -1;
 		level = 1;
 		health = 10;
@@ -101,15 +102,15 @@ class GeneticComponent extends Component {
 		maxDam = 1;
 		specialResists = 0;
 	}
-	
+
 	@dirty
 	public native void setSpecialResist(int type);
-	
+
 	@dirty
 	public native boolean isSpecialResist(int type);
-	
-	public void setStats(int cle, int end, int fie, int pow, 
-						    int ite, int cou, int dep, int dex, 
+
+	public void setStats(int cle, int end, int fie, int pow,
+						    int ite, int cou, int dep, int dex,
 						    int frt, int har){
 		cleverness = cle;
 		endurance = end;
@@ -122,163 +123,163 @@ class GeneticComponent extends Component {
 		hardiness = har;
 		dexterity = dex;
 	}
-	
+
 	@dirty
-	public int getCleverness() { 
-		return cleverness; 
+	public int getCleverness() {
+		return cleverness;
 	}
-	
+
 	@dirty
-	public int getEndurance() { 
-		return endurance; 
+	public int getEndurance() {
+		return endurance;
 	}
-	
+
 	@dirty
-	public int getFierceness() { 
-		return fierceness; 
+	public int getFierceness() {
+		return fierceness;
 	}
-	
+
 	@dirty
-	public int getPower() { 
-		return power; 
+	public int getPower() {
+		return power;
 	}
-	
+
 	@dirty
-	public int getIntelligence() { 
-		return intelligence; 
+	public int getIntelligence() {
+		return intelligence;
 	}
-	
+
 	@dirty
-	public int getCourage() { 
-		return courage; 
+	public int getCourage() {
+		return courage;
 	}
-	
+
 	@dirty
-	public int getDependency() { 
-		return dependency; 
+	public int getDependency() {
+		return dependency;
 	}
-	
+
 	@dirty
-	public int getDexterity() { 
-		return dexterity; 
+	public int getDexterity() {
+		return dexterity;
 	}
-	
+
 	@dirty
-	public int getFortitude() { 
-		return fortitude; 
+	public int getFortitude() {
+		return fortitude;
 	}
-	
+
 	@dirty
-	public int getHardiness() { 
-		return hardiness; 
+	public int getHardiness() {
+		return hardiness;
 	}
-	
+
 	public void setLevel(int value) {
 		level = value;
 	}
-	
+
 	@dirty
-	public float getKinetic() { 
-		return kinResist; 
+	public float getKinetic() {
+		return kinResist;
 	}
-	
+
 	@dirty
-	public float getEnergy() { 
-		return energyResist; 
+	public float getEnergy() {
+		return energyResist;
 	}
-	
+
 	@dirty
-	public float getBlast() { 
-		return blastResist; 
+	public float getBlast() {
+		return blastResist;
 	}
-	
+
 	@dirty
-	public float getCold() { 
-		return coldResist; 
+	public float getCold() {
+		return coldResist;
 	}
-	
+
 	@dirty
-	public float getHeat() { 
-		return heatResist; 
+	public float getHeat() {
+		return heatResist;
 	}
-	
+
 	@dirty
-	public float getElectrical() { 
-		return elecResist; 
+	public float getElectrical() {
+		return elecResist;
 	}
-	
+
 	@dirty
-	public float getAcid() { 
-		return acidResist; 
+	public float getAcid() {
+		return acidResist;
 	}
-	
+
 	@dirty
-	public float getStun() { 
-		return stunResist; 
+	public float getStun() {
+		return stunResist;
 	}
-	
+
 	@dirty
-	public float getSaber() { 
-		return saberResist; 
+	public float getSaber() {
+		return saberResist;
 	}
-	
+
 	@dirty
-	public string getSpecial1() { 
-		return special1; 
+	public string getSpecial1() {
+		return special1;
 	}
-	
+
 	@dirty
-	public string getSpecial2() { 
-		return special2; 
+	public string getSpecial2() {
+		return special2;
 	}
-	
+
 	@dirty
 	public int getArmor() {
 		return armorRating;
 	}
-	
+
 	@dirty
 	public float getHit() {
 		return hit;
 	}
-	
+
 	@dirty
 	public float getSpeed() {
 		return speed;
 	}
-	
-	@dirty 
+
+	@dirty
 	public int getMinDamage() {
 		return minDam;
 	}
-	
-	@dirty 
+
+	@dirty
 	public int getMaxDamage() {
 		return maxDam;
 	}
-	
+
 	@dirty
 	public int getHealth(){
 		return health;
 	}
-	
+
 	@dirty
 	public int getMind() {
 		return mind;
 	}
-	
+
 	@dirty
 	public int getAction() {
 		return action;
 	}
-	
+
 	@dirty
-	public int getLevel() { 
+	public int getLevel() {
 		return level;
 	}
 
 	@dirty
-	public boolean getRanged() { 
+	public boolean getRanged() {
 		return ranged;
 	}
 
@@ -286,7 +287,7 @@ class GeneticComponent extends Component {
 	public int getFocus() {
 		return focus;
 	}
-	
+
 	@dirty
 	public int getWillPower() {
 		return willPower;
@@ -296,17 +297,17 @@ class GeneticComponent extends Component {
 	public int getStrength() {
 		return strength;
 	}
-	
+
 	@dirty
 	public int getConstitution() {
 		return constitution;
 	}
-	
+
 	@dirty
 	public int getQuickness() {
 		return quickness;
 	}
-	
+
 	@dirty
 	public int getStamina() {
 		return stamina;
@@ -330,19 +331,19 @@ class GeneticComponent extends Component {
 	public void setConstitution(int value) {
 		constitution = value;
 	}
-	
+
 	public void setCleverness(int value) {
 		cleverness = value;
 	}
-	
+
 	public void setEndurance(int value) {
 		endurance = value;
 	}
-	
+
 	public void setFierceness(int value) {
 		fierceness = value;
 	}
-	
+
 	public void setPower(int value) {
 		power = value;
 	}
@@ -350,83 +351,83 @@ class GeneticComponent extends Component {
 	public void setIntellect(int value) {
 		intelligence = value;
 	}
-	
+
 	public void setCourage(int value) {
 		courage = value;
 	}
-	
+
 	public void setDependency(int value) {
 		dependency = value;
 	}
-	
+
 	public void setDexterity(int value) {
 		dexterity = value;
 	}
-	
+
 	public void setFortitude(int value) {
 		fortitude = value;
 	}
-	
+
 	public void setHardiness(int value) {
 		hardiness = value;
 	}
-	
+
 	public void setEnergy(float value){
 		energyResist = value;
 	}
-	
+
 	public void setBlast(float value) {
 		blastResist = value;
 	}
-	
+
 	public void setCold(float value) {
 		coldResist = value;
 	}
-	
+
 	public void setHeat(float value) {
 		heatResist = value;
 	}
-	
+
 	public void setElectric(float value) {
 		elecResist = value;
 	}
-	
+
 	public void setAcid(float value) {
 		acidResist = value;
 	}
-	
+
 	public void setStun(float value) {
 		stunResist = value;
 	}
-	
+
 	public void setSaber(float value) {
 		saberResist = value;
 	}
-			
+
 	public void setArmorRating(int rating) {
-		armorRating = rating;	
+		armorRating = rating;
 	}
-	
+
 	public void setKinetic(float value) {
-		kinResist = value;	
+		kinResist = value;
 	}
-	
+
 	public void setSpecialAttackOne(final string atk) {
-		special1 = atk;	
+		special1 = atk;
 	}
-	
+
 	public void setSpecialAttackTwo(final string atk) {
-		special2 = atk;	
+		special2 = atk;
 	}
-	
+
 	public void setRanged(boolean b) {
-		ranged = b;	
+		ranged = b;
 	}
-	
+
 	public void setQuality(int qual) {
-		quality = qual;		
+		quality = qual;
 	}
-	
+
 	@dirty
 	public int getQuality() {
 		return quality;
@@ -440,20 +441,20 @@ class GeneticComponent extends Component {
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@dirty
 	public native string convertSpecialAttack(string attackName);
 
 	@dirty
 	public native string resistValue(float input);
-	
+
 	@local
-	public native void resetResists(CraftingValues values);	
-	
+	public native void resetResists(CraftingValues values);
+
 	@local
 	public native int getEffectiveArmor();
 }
