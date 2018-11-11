@@ -11,7 +11,7 @@ import server.zone.objects.creature.buffs.PowerBoostBuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 
-
+@json
 class PowerBoostBuff extends Buff {
 	protected transient PowerBoostBuffDurationEvent pbBuffEvent;
 
@@ -21,13 +21,13 @@ class PowerBoostBuff extends Buff {
 	protected int counter;
 	protected int haBuffAmount;
 	protected int mindBuffAmount;
-	
+
 	@dereferenced
-	protected Time nextTickTime; 
-	
+	protected Time nextTickTime;
+
 	public PowerBoostBuff(CreatureObject creo, final string name, unsigned int buffCRC, int value, int duration) {
 		super(creo, buffCRC, duration, BuffType.SKILL);
-		
+
 		super.buffName = name;
 		pbBonus = value;
 		pbTick = value/20;
@@ -36,11 +36,11 @@ class PowerBoostBuff extends Buff {
 		haBuffAmount=0;
 		mindBuffAmount=0;
 	}
-	
+
 	public native void initializeTransientMembers();
 
 	public native void activate(boolean applyModifiers);
-	
+
 	public native void deactivate(boolean removeModifiers);
 
 	public native void doHealthAndActionTick(boolean up);

@@ -8,6 +8,8 @@
 #ifndef GROUPMEMBER_H_
 #define GROUPMEMBER_H_
 
+#include "engine/util/json_utils.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class GroupMember : public Variable {
@@ -56,6 +58,18 @@ public:
 
 	bool parseFromString(const String& str, int version = 0) {
 		return creature.parseFromString(str, version);
+	}
+
+	friend void to_json(nlohmann::json& j, const GroupMember& m) {
+		String name;
+
+		j["creature"] = m.creature;
+
+		if (m.creature != NULL) {
+			name = m.creature->getCustomObjectName().toString();
+		}
+
+		j["name"] = name;
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {

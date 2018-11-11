@@ -10,6 +10,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.ai.AiAgent;
 
+@json
 class DeliverMissionObjective extends MissionObjective {
 	protected TangibleObject item;
 
