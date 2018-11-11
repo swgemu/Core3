@@ -154,3 +154,9 @@ bool ContainerPermissions::parseFromBinaryStream(ObjectInputStream* stream) {
 
 	return true;
 }
+
+void server::zone::objects::scene::variables::to_json(nlohmann::json& j, const server::zone::objects::scene::variables::ContainerPermissions& perms) {
+	j["groupPermissions"] = *perms.getGroupPermissions();
+	j["ownerID"] = perms.getOwnerID();
+	j["inheritPermissionsFromParent"] = perms.hasInheritPermissionsFromParent();
+}

@@ -57,6 +57,13 @@ public:
 		return true;
 	}
 
+	friend void to_json(nlohmann::json& j, const FriendList& l) {
+		const DeltaVector<String>& dv = l;
+
+		j["reverseTable"] = l.reverseTable;
+		j["players"] = dv;
+	}
+
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		uint16 _varCount = stream->readShort();
 

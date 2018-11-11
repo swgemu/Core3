@@ -6,13 +6,14 @@
  */
 
 #include "ZoneReference.h"
+
 #include "server/zone/Zone.h"
 #include "server/ServerCore.h"
 
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
 	Zone* object = Reference<Zone*>::get();
 
-	if (object != NULL)
+	if (object != nullptr)
 		object->getZoneName().toBinaryStream(stream);
 	else
 		stream->writeShort(0);
@@ -26,8 +27,8 @@ bool ZoneReference::parseFromBinaryStream(ObjectInputStream* stream) {
 
 	Zone* obj = ServerCore::getZoneServer()->getZone(zoneName);
 
-	if (obj == NULL) {
-		updateObject(NULL);
+	if (obj == nullptr) {
+		updateObject(nullptr);
 		return false;
 	}
 
@@ -41,3 +42,14 @@ Zone* ZoneReference::operator= (Zone* obj) {
 
 	return obj;
 }
+
+void server::zone::to_json(nlohmann::json& j, const ZoneReference& p) {
+	Zone* object = p.get();
+
+	if (object != nullptr)
+		j = object->getZoneName();
+	else
+		j = "";
+
+}
+

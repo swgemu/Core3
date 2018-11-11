@@ -64,14 +64,14 @@ void CustomizationVariables::setVariable(const String& type, int16 value) {
 	setVariable(id, value);
 }
 
-void CustomizationVariables::getVariable(int idx, uint8& type, int16& value) {
+void CustomizationVariables::getVariable(int idx, uint8& type, int16& value) const {
 	VectorMapEntry<uint8, int16> entry = SortedVector<VectorMapEntry<uint8, int16> >::get(idx);
 
 	type = entry.getKey();
 	value = entry.getValue();
 }
 
-void CustomizationVariables::getData(String& ascii) {
+void CustomizationVariables::getData(String& ascii) const {
 	ascii = "";
 
 	if (isEmpty())
@@ -255,4 +255,16 @@ bool CustomizationVariables::parseFromBinaryStream(ObjectInputStream* stream) {
 	*this = str;
 
 	return true;
+}
+
+void to_json(nlohmann::json& j, const CustomizationVariables& vars) {
+	String binData;
+	vars.getData(binData);
+
+	BinaryData cust(binData);
+
+	String ascii;
+	cust.encode(ascii);
+
+	j = ascii;
 }
