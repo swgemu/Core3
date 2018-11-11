@@ -1,8 +1,6 @@
 # Copyright (C) 2007 <SWGEmu>. All rights reserved.
 # Distribution of this file for usage outside of Core3 is prohibited.
 
-cmake_minimum_required(VERSION 3.7)
-
 # Add web sources
 file(GLOB_RECURSE web3_sources "*.cpp")
 file(GLOB_RECURSE web3_headers "*.h")
