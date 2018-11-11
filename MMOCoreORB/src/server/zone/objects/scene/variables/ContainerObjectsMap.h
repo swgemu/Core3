@@ -101,7 +101,19 @@ namespace server {
    		}
 
    		void cancelUnloadTask();
+
+		VectorMap<uint64, uint64>* getOids() const {
+			return oids.get();
+		}
+
+		const VectorMap<uint64, ManagedReference<SceneObject*> >* getContainerObjects() const {
+			return &containerObjects;
+		}
+
+
    	};
+
+	void to_json(nlohmann::json& k, const server::zone::objects::scene::ContainerObjectsMap& map);
    }
   }
  }

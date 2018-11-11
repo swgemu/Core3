@@ -108,6 +108,11 @@ public:
 		return true;
 	}
 
+	friend void to_json(nlohmann::json& j, const DeltaVector<E>& vec) {
+		j["vector"] = vec.vector;
+		j["updateCounter"] = vec.updateCounter;
+	}
+
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		uint16 _varCount = stream->readShort();
 
