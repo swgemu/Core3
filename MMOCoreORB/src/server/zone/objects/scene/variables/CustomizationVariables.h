@@ -7,6 +7,8 @@
 
 #include "system/lang.h"
 
+#include "engine/util/json_utils.h"
+
 class CustomizationVariables : public VectorMap<uint8, int16> {
 	uint8 unknown;
 
@@ -26,23 +28,23 @@ public:
 
 	void setVariable(const String& type, int16 value);
 
-	int16 getVariable(uint8 type) {
+	int16 getVariable(uint8 type) const {
 		return get(type);
 	}
 
-	int16 getVariable(int idx) {
+	int16 getVariable(int idx) const {
 		return get(idx);
 	}
 
-	void getVariable(int idx, uint8& type, int16& value);
+	void getVariable(int idx, uint8& type, int16& value) const;
 
-	int getSize() {
+	int getSize() const {
 		return size();
 	}
 
 	void parseFromClientString(const String& custString);
 
-	void getData(String& ascii);
+	void getData(String& ascii) const;
 
 	bool toString(String& ascii);
 
@@ -50,6 +52,8 @@ public:
 
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
+
+	friend void to_json(nlohmann::json& j, const CustomizationVariables& vars);
 
 };
 

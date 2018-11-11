@@ -12,6 +12,7 @@
 #include "system/util/HashSet.h"
 
 #include "server/zone/packets/DeltaMessage.h"
+#include "engine/util/json_utils.h"
 
 template <class K>
 class AutoDeltaSet : public Variable {
@@ -42,6 +43,11 @@ public:
 		updateCounter = stream->readInt();
 
 		return set.parseFromBinaryStream(stream);
+	}
+
+	friend void to_json(nlohmann::json& j, const AutoDeltaSet<K>& set) {
+		j["set"] = set.set;
+		j["updateCounter"] = set.updateCounter;
 	}
 
 	virtual void add(const K& key, DeltaMessage* message = NULL, int updates = 1) {

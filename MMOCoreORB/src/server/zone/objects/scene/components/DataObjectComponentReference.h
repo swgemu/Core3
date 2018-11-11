@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 #include "DataObjectComponent.h"
 
 class DataObjectComponentReference : public Reference<DataObjectComponent*> {
@@ -20,5 +22,6 @@ public:
 
 };
 
+void to_json(nlohmann::json& j, const DataObjectComponentReference& ref);
 
 #endif /* DATAOBJECTREFERENCE_H_ */

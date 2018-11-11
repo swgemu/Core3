@@ -38,9 +38,9 @@ bool SkillList::containsSkill(const String& skillBox) {
 	return false;
 }
 
-void SkillList::getStringList(Vector<String>& skills) {
+void SkillList::getStringList(Vector<String>& skills) const {
 	for (int i = 0; i < vector.size(); ++i) {
-		const Reference<Skill*>& skill = vector.get(i);
+		const Reference<Skill*>& skill = vector.getUnsafe(i);
 
 		if (skill == NULL)
 			continue;
@@ -59,6 +59,13 @@ bool SkillList::toBinaryStream(ObjectOutputStream* stream) {
 	names.toBinaryStream(stream);
 
 	return true;
+}
+
+void to_json(nlohmann::json& j, const SkillList& s) {
+	Vector<String> names;
+	s.getStringList(names);
+
+	j = names;
 }
 
 bool SkillList::parseFromBinaryStream(ObjectInputStream* stream) {
