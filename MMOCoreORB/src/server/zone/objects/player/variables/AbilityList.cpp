@@ -53,13 +53,21 @@ bool AbilityList::toBinaryStream(ObjectOutputStream* stream) {
 	return true;
 }
 
-void AbilityList::getStringList(Vector<String>& abilities) {
+void to_json(nlohmann::json& j, const AbilityList& l) {
+	Vector<String> names;
+	l.getStringList(names);
+
+	j["updateCounter"] = l.updateCounter;
+	j["names"] = names;
+}
+
+void AbilityList::getStringList(Vector<String>& abilities) const {
 	for (int i = 0; i < vector.size(); ++i) {
-		Ability* ability = vector.get(i);
+		Ability* ability = vector.getUnsafe(i);
 
-		String name = ability->getAbilityName();
+		const auto& name = ability->getAbilityName();
 
-		abilities.add(name);
+		abilities.emplace(name);
 	}
 }
 

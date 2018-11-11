@@ -9,6 +9,8 @@
 #define DELTAVECTORMAP_H_
 
 #include "engine/engine.h"
+#include "engine/util/json_utils.h"
+
 #include "server/zone/packets/DeltaMessage.h"
 
 template <class K, class V> class DeltaVectorMap : public Serializable {
@@ -44,6 +46,11 @@ public:
 	inline void addSerializableVariables() {
 		addSerializableVariable("vectorMap", &vectorMap);
 		addSerializableVariable("updateCounter", &updateCounter);
+	}
+
+	friend void to_json(nlohmann::json& j, const DeltaVectorMap<K, V>& map) {
+		j["vectorMap"] = map.vectorMap;
+		j["updateCounter"] = map.updateCounter;
 	}
 
 	virtual int set(const K& key, const V& value, DeltaMessage* message = NULL, int updates = 1) {

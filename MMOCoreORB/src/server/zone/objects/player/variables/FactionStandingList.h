@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 class FactionStandingList : public Serializable {
 	SerializableString factionRank;
 	int rebelPoints;
@@ -59,11 +61,18 @@ public:
 		addSerializableVariable("factions", &factions);
 	}
 
+	friend void to_json(nlohmann::json& j, const FactionStandingList& l) {
+		j["factionRank"] = l.factionRank;
+		j["rebelPoints"] = l.rebelPoints;
+		j["imperialPoints"] = l.imperialPoints;
+		j["factions"] = l.factions.getMapUnsafe();
+	}
+
 	float get(const String& faction) {
 		return getFactionStanding(faction);
 	}
 
-	int size() {
+	int size() const {
 		return factions.size();
 	}
 

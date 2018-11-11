@@ -13,6 +13,7 @@ include system.thread.atomic.AtomicInteger;
 include engine.log.Logger;
 
 @lua
+@json
 class CellObject extends SceneObject {
 	protected int cellNumber;
 

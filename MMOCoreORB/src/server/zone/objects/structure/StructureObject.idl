@@ -16,6 +16,7 @@ import server.zone.objects.pathfinding.NavArea;
 import server.zone.objects.creature.credits.CreditObject;
 include server.zone.CloseObjectsVector;
 
+@json
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 
@@ -52,7 +53,7 @@ class StructureObject extends TangibleObject {
 		ownerObjectID = 0;
 
 		deedObjectID = 0;
-		
+
 		waypointID = 0;
 
 		surplusMaintenance = 0;
@@ -281,7 +282,7 @@ class StructureObject extends TangibleObject {
 	}
 
 	@dirty
-	public native CreatureObject getOwnerCreatureObject(); 
+	public native CreatureObject getOwnerCreatureObject();
 
 	@read
 	public unsigned long getOwnerObjectID() {
@@ -338,12 +339,12 @@ class StructureObject extends TangibleObject {
 		ownerObjectID = objectID;
 		structurePermissionList.setOwner(objectID);
 	}
-	
+
 	@preLocked
 	public void setWaypointID(unsigned long objectID) {
 		waypointID = objectID;
 	}
-	
+
 	@read
 	public unsigned long getWaypointID() {
 		return waypointID;
