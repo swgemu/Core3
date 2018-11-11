@@ -52,6 +52,10 @@ public:
 		vectorData.add(data);
 	}
 
+	void removeAll() {
+		vectorData.removeAll();
+	}
+
 	String toString() {
 		//String var;
 		StringBuffer stream;

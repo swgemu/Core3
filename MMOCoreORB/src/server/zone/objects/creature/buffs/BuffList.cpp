@@ -24,6 +24,11 @@ BuffList::BuffList(const BuffList& bf) : Object(), Serializable(), mutex() {
 	addSerializableVariable("buffList", &buffList);
 }
 
+void to_json(nlohmann::json& j, const BuffList& l) {
+	j["spiceActive"] = l.spiceActive;
+	j["buffList"] = l.buffList;
+}
+
 void BuffList::updateBuffsToDatabase() {
 	Locker guard(&mutex);
 

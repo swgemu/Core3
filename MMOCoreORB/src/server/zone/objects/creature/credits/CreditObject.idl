@@ -8,6 +8,7 @@ include system.lang.ref.WeakReference;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class CreditObject extends ManagedObject {
 	protected int bankCredits;
 	protected int cashCredits;

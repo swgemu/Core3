@@ -7,6 +7,7 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
 
 namespace server {
 namespace zone {
@@ -100,6 +101,10 @@ public:
 		return false;
 	}
 
+	inline int getFiller() const {
+		return filler;
+	}
+
 
 	void setStringId(const String& fullPath);
 
@@ -123,6 +128,8 @@ public:
 		return true;
 	}
 };
+
+void to_json(nlohmann::json& k, const server::zone::objects::scene::variables::StringId& str);
 
 }
 }
