@@ -91,6 +91,8 @@ namespace conf {
 		String termsOfService;
 		int tosVersion;
 
+		int restPort = 0;
+
 	public:
 		ConfigManager();
 
@@ -362,6 +364,10 @@ namespace conf {
 
 		inline int getCleanupMailCount() const {
 			return cleanupMailCount;
+		}
+
+		inline int getRESTPort() const {
+			return restPort;
 		}
 	};
 }

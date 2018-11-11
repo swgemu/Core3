@@ -8,6 +8,10 @@
 #ifndef PLAYERLIST_H_
 #define PLAYERLIST_H_
 
+#include "engine/util/json_utils.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 template <int DeltaUpdate>
 class PlayerList : public DeltaVector<String> {
 
@@ -22,6 +26,12 @@ public:
 
 	PlayerList(const PlayerList& list) : DeltaVector<String>(list) {
 
+	}
+
+	friend void to_json(nlohmann::json& j, const PlayerList& l) {
+		const DeltaVector<String>& dv = l;
+
+		to_json(j, dv);
 	}
 
 	bool addPlayer(const String& player) {
@@ -75,7 +85,7 @@ public:
 		}
 	}
 
-	inline bool canAddMorePlayers() {
+	inline bool canAddMorePlayers() const {
 		return size() < MAXSIZE;
 	}
 
