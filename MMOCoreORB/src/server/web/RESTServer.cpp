@@ -25,6 +25,7 @@ RESTServer::~RESTServer() {
 #include <set>
 #include <string>
 #include <memory>
+#include <chrono>
 
 #include "engine/engine.h"
 
@@ -35,6 +36,8 @@ using namespace web::http::experimental::listener;
 using namespace std;
 
 void handle_get(http_request request) {
+	auto start = chrono::steady_clock::now();
+
 	const auto& uri = request.relative_uri();
 
 	auto fragments = uri::split_path(uri.to_string());
@@ -73,6 +76,11 @@ void handle_get(http_request request) {
 
 		response.set_body(json::value::parse(responses.dump()));
 	}
+
+	auto end = chrono::steady_clock::now();
+	auto diff = end - start;
+
+	response.headers()[U("ms")] = String::valueOf(chrono::duration <double, milli> (diff).count()).toCharArray();
 
 	request.reply(response);
 }

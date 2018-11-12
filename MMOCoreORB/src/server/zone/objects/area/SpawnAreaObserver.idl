@@ -10,16 +10,17 @@ import server.zone.objects.area.SpawnArea;
 include engine.log.Logger;
 import engine.core.ManagedObject;
 
+@json
 class SpawnAreaObserver extends Observer implements Logger {
 	@weakReference
 	protected SpawnArea spawnArea;
-	
+
 	public SpawnAreaObserver(SpawnArea area) {
 		spawnArea = area;
-		
+
 		Logger.setLoggingName("SpawnAreaObserver");
 	}
-	
+
 	@dirty
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		SpawnArea area = spawnArea;

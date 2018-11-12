@@ -8,28 +8,29 @@ import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 
+@json
 class ScreenPlayObserver extends Observer {
 	protected string play;
 	protected string key;
-	
+
 	public ScreenPlayObserver() {
 		play = "";
 	}
-	
+
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	public void setScreenPlay(final string screen) {
 		play = screen;
 	}
-	
+
 	public void setScreenKey(final string screenKey) {
 		key = screenKey;
 	}
-	
+
 	public string getScreenPlay() {
 		return play;
 	}
-	
+
 	public string getScreenKey() {
 		return key;
 	}
