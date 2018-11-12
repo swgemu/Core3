@@ -63,11 +63,18 @@ void handle_get(http_request request) {
 		}
 	}
 
+	http_response response(status_codes::Accepted);
+	response.headers()[U("Access-Control-Allow-Origin")] = U("*");
+
 	if (responses.empty()) {
-		request.reply(status_codes::NotFound);
+		response.set_status_code(status_codes::NotFound);
 	} else {
-		request.reply(status_codes::OK, json::value::parse(responses.dump()));
+		response.set_status_code(status_codes::OK);
+
+		response.set_body(json::value::parse(responses.dump()));
 	}
+
+	request.reply(response);
 }
 
 UniqueReference<http_listener*> restListener;
