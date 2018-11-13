@@ -153,7 +153,7 @@ public:
 
 		if (creature != creatureTarget && checkForArenaDuel(creatureTarget)) {
 			creature->sendSystemMessage("@jedi_spam:no_help_target"); // You are not permitted to help that target.
-			return GENERALERROR;
+			return false;
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
