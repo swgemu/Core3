@@ -317,6 +317,9 @@ public:
 			return false;
 		}
 
+		if (creature != creatureTarget && checkForArenaDuel(creatureTarget))
+			return false;
+
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return false;
