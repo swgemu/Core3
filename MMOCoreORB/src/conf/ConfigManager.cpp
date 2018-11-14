@@ -78,6 +78,8 @@ ConfigManager::ConfigManager() {
 	luaLogJSON = false;
 
 	restPort = 0;
+
+	Logger::setLoggingName("ConfigManager");
 }
 
 bool ConfigManager::loadConfigData() {
@@ -170,6 +172,8 @@ bool ConfigManager::loadConfigData() {
 
 	restPort = getGlobalInt("RESTServerPort");
 
+	loadTweaks();
+
 	return true;
 }
 
@@ -240,4 +244,104 @@ void ConfigManager::loadRevision() {
 	}
 
 	//revision = revision.replaceAll("\n", "");
+}
+
+// Tweak functions
+void ConfigManager::loadTweaks() {
+	LuaObject tweaks = getGlobalObject("tweaks");
+
+	if(!tweaks.isValidTable()) {
+		info("Error initializing tweaks: not a valid table", true);
+		tweaks.pop();
+		return;
+	}
+
+	tweaksTable.removeAll();
+
+	lua_State* L = getLuaState();
+
+	lua_pushnil(L); // First key
+
+	for (int i = 0; lua_next(L, -2) != 0; ++i) {
+		// -2 = key -1 = value
+
+		// Keys must be strings for tweaks
+		if (lua_type(L, -2) != LUA_TSTRING) {
+			info("Error initializing tweaks: key for row #" + String::valueOf(i) + " is not a string.", true);
+			lua_pop(L, 1);
+			continue;
+		}
+
+		TweakValueItem itm;
+		String key = lua_tostring(L, -2);
+		int luaType = lua_type(L, -1);
+
+		switch (luaType) {
+		case LUA_TBOOLEAN:
+			itm.setBool(lua_toboolean(L, -1));
+			break;
+		case LUA_TNUMBER:
+			itm.setNumber(lua_tonumber(L, -1));
+			break;
+		case LUA_TSTRING:
+			itm.setString(lua_tostring(L, -1));
+			break;
+		default:
+			info("loadTweaks: row #" + String::valueOf(i) + " " + key + " type: " + lua_typename(L, luaType) + " is no supported", true);
+			lua_pop(L, 1);
+			continue;
+		}
+
+		lua_pop(L, 1);
+
+		tweaksTable.put(key, itm);
+
+		info("tweaks[" + key + "] = [" + itm.toString() + "]", true);
+	}
+
+	tweaks.pop();
+}
+
+int ConfigManager::getTweakInt(const String& name, int defaultValue) {
+	int pos = tweaksTable.find(name);
+
+	if (pos != -1) {
+		TweakValueItem itm = tweaksTable.get(pos);
+		return itm.getInt(defaultValue);
+	}
+
+	return defaultValue;
+}
+
+bool ConfigManager::getTweakBool(const String& name, bool defaultValue) {
+	int pos = tweaksTable.find(name);
+
+	if (pos != -1) {
+		TweakValueItem itm = tweaksTable.get(pos);
+		return itm.getBool(defaultValue);
+	}
+
+	return defaultValue;
+}
+
+float ConfigManager::getTweakFloat(const String& name, float defaultValue) {
+	int pos = tweaksTable.find(name);
+
+	if (pos != -1) {
+		TweakValueItem itm = tweaksTable.get(pos);
+		return itm.getFloat(defaultValue);
+	}
+
+    return defaultValue;
+}
+
+const String ConfigManager::getTweakString(const String& name, const String& defaultValue) {
+	int pos = tweaksTable.find(name);
+
+	if (pos != -1) {
+		TweakValueItem itm = tweaksTable.get(pos);
+		return itm.getString(defaultValue);
+	}
+
+    return defaultValue;
 }

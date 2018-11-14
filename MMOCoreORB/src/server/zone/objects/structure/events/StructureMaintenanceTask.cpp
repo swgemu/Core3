@@ -17,6 +17,8 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/credit/CreditManager.h"
 
+#include "conf/ConfigManager.h"
+
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
 
@@ -41,14 +43,14 @@ void StructureMaintenanceTask::run() {
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
 	if (creditObj == nullptr) {
-		info("Player does not have a valid credit object, destroying.", true);
+		strongRef->info("Player does not have a valid credit object, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 
 		return;
 	}
 
 	if (name.isEmpty()) {
-		info("Player structure has nullptr owner ghost, destroying.", true);
+		strongRef->info("Player structure has nullptr owner ghost, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
@@ -105,9 +107,11 @@ void StructureMaintenanceTask::run() {
 		//Notify owner about decay.
 		sendMailDecay(name, strongRef);
 
+		int decay_cycle_seconds = ConfigManager::instance()->getTweakInt("structure.decay_cycle_seconds", 24 * 60 * 60);
+
 		if (!strongRef->isDecayed()) {
-			//Reschedule task in 1 day.
-			reschedule(oneDayTime);
+			// Reschedule task
+			reschedule(decay_cycle_seconds * 1000);
 		} else {
 			if (strongRef->isBuildingObject() && !shouldBuildingBeDestroyed(strongRef)) {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
@@ -115,12 +119,17 @@ void StructureMaintenanceTask::run() {
 				//Building is condemned since it has decayed.
 				sendMailCondemned(name, strongRef);
 
-				strongRef->info("Structure decayed, it is now condemned.");
+				strongRef->info("Structure decayed, it is now condemned.", true);
 
 				building->updateSignName(true);
-				reschedule(oneDayTime);
+				reschedule(decay_cycle_seconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it.");
+				if (!ConfigManager::instance()->getTweakBool("structure.delete_condemed", true)) {
+					strongRef->info("Structure decayed, should destroy it but tweaks['structure.delete_condemed'] is false.", true);
+					return;
+				}
+
+				strongRef->info("Structure decayed, destroying it.", true);
 
 				StructureManager::instance()->destroyStructure(strongRef);
 			}
@@ -197,11 +206,12 @@ void StructureMaintenanceTask::sendMailCondemned(const String& creoName, Structu
 }
 
 bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
-	int threeMonthsOfMaintenance = 30 * 24 * structure->getMaintenanceRate();
+	int destroy_delay_hours = ConfigManager::instance()->getTweakInt("structure.destroy_delay_hours", 30 * 24);
 
-	if (threeMonthsOfMaintenance + structure->getSurplusMaintenance() < 0) {
-		return true;
-	} else {
+	// Still not negative enough to destroy?
+	if ((destroy_delay_hours * structure->getMaintenanceRate()) + structure->getSurplusMaintenance() > 0) {
 		return false;
 	}
+
+	return true;
 }

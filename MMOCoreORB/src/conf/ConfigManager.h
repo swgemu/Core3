@@ -93,6 +93,96 @@ namespace conf {
 
 		int restPort = 0;
 
+		class TweakValueItem {
+			enum TweakValueType { UNSUPPORTED = 0, BOOL, NUMBER, STRING };
+			TweakValueType valueType;
+			bool valueBool;
+			lua_Number valueNumber;
+			String valueString;
+
+		public:
+			void setBool(bool value) {
+				valueType = TweakValueType::BOOL;
+				valueBool = value;
+			}
+
+			void setNumber(lua_Number value) {
+				valueType = TweakValueType::NUMBER;
+				valueNumber = value;
+			}
+
+			void setString(const String& value) {
+				valueType = TweakValueType::STRING;
+				valueString = value;
+			}
+
+			bool getBool(bool defaultValue) {
+				if (valueType == TweakValueType::BOOL)
+					return valueBool;
+
+				if (valueType == TweakValueType::NUMBER)
+					return (bool)valueNumber;
+
+				if (valueType == TweakValueType::STRING)
+					return valueString == "0" ? false : true;
+
+				return defaultValue;
+			}
+
+			float getFloat(float defaultValue) {
+				if (valueType == TweakValueType::BOOL)
+					return valueBool ? 1.0f : 0.0f;
+
+				if (valueType == TweakValueType::NUMBER)
+					return (float)valueNumber;
+
+				if (valueType == TweakValueType::STRING)
+					return (float)atof(valueString.toCharArray());
+
+				return defaultValue;
+			}
+
+			int getInt(int defaultValue) {
+				if (valueType == TweakValueType::BOOL)
+					return valueBool ? 1 : 0;
+
+				if (valueType == TweakValueType::NUMBER)
+					return (int)valueNumber;
+
+				if (valueType == TweakValueType::STRING)
+					return atoi(valueString.toCharArray());
+
+				return defaultValue;
+			}
+
+			const String getString(const String& defaultValue) const {
+				if (valueType == TweakValueType::BOOL)
+					return valueBool ? "1" : "0";
+
+				if (valueType == TweakValueType::NUMBER)
+					return String::valueOf(valueNumber);
+
+				if (valueType == TweakValueType::STRING)
+					return valueString;
+
+				return defaultValue;
+			}
+
+			String toString() {
+				return String(getString("<unset value>"));
+			}
+
+			bool toBinaryStream(ObjectOutputStream* stream) {
+				return false;
+			}
+
+			bool parseFromBinaryStream(ObjectInputStream* stream) {
+				return false;
+			}
+		};
+
+		VectorMap<String, TweakValueItem> tweaksTable;
+
 	public:
 		ConfigManager();
 
@@ -108,6 +198,13 @@ namespace conf {
 		void loadRevision();
 		void loadTreFileList();
 		void loadEnabledZones();
+
+		// tweaks
+		void loadTweaks();
+		int getTweakInt(const String& name, int defaultValue);
+		bool getTweakBool(const String& name, bool defaultValue);
+		float getTweakFloat(const String& name, float defaultValue);
+		const String getTweakString(const String& name, const String& defaultValue);
 
 		//getters
 		inline bool getMakeLogin() const {

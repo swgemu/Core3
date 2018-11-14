@@ -78,6 +78,14 @@ void BuildingObjectImplementation::createContainerComponent() {
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
+	setLoggingName(getLoggingName()
+		+ " owner:" + String::valueOf(getOwnerObjectID())
+		+ " " + String::valueOf((int)getPositionX()) + " " + String::valueOf((int)getPositionY())
+		+ " " + zone->getZoneName()
+		+ " " + String::valueOf((int)getPositionZ())
+		+ " name: " + getCustomObjectName().toString()
+	);
+
 	StructureObjectImplementation::notifyInsertToZone(zone);
 
 	Locker locker(zone);
@@ -601,7 +609,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 
 		if (child == nullptr)
 			continue;
-          
+
 		Locker locker(child);
 
 		AiAgent* ai = child->asAiAgent();
