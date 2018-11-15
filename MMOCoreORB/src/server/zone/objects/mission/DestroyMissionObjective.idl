@@ -15,6 +15,7 @@ include engine.util.u3d.Vector3;
 include engine.log.Logger;
 import engine.core.ManagedObject;
 
+@json
 class DestroyMissionObjective extends MissionObjective {
 	@dereferenced
 	protected string lairTemplate;

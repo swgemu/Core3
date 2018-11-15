@@ -14,17 +14,18 @@ include templates.tangible.WoundPackTemplate;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class WoundPack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected byte attribute;
-	
+
 	public WoundPack() {
 		setLoggingName("WoundPack");
-		
+
 		effectiveness = 0;
 		attribute = 0;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		effectiveness = values.getCurrentValue("power");
@@ -55,7 +56,7 @@ class WoundPack extends PharmaceuticalObject {
 		super.medicineUseRequired = woundPackTemplate.getMedicineUse();
 		attribute = woundPackTemplate.getAttribute();
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -75,7 +76,7 @@ class WoundPack extends PharmaceuticalObject {
 			msg.insertAttribute("healing_ability", super.medicineUseRequired);
 		}
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -85,7 +86,7 @@ class WoundPack extends PharmaceuticalObject {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		
+
 		if (!isASubChildOf(player))
 			return 0;
 
@@ -94,33 +95,33 @@ class WoundPack extends PharmaceuticalObject {
 
 		if (isDroidReconstructionKit()) {
 			player.sendCommand("healdroidwound", String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		} else if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand("healwound", CreatureAttribute.getName(attribute) + "|" + String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
 
 	}
-	
+
 	@dirty
 	public native unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true);
-	
+
 	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
-	
+
 	@dirty
 	public boolean isWoundPack() {
 		return true;
 	}
-	
+
 	@dirty
 	public byte getAttribute() {
 		return attribute;

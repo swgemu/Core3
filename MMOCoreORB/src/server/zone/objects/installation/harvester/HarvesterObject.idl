@@ -11,25 +11,26 @@ include engine.log.Logger;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class HarvesterObject extends InstallationObject {
-	
+
 	protected boolean selfPowered;
-	
+
 	public HarvesterObject() {
 		Logger.setLoggingName("HarvesterObject");
 		selfPowered = false;
 	}
-	
+
 	@preLocked
 	public void setSelfPowered(boolean isSelfPowered) {
 		selfPowered = isSelfPowered;
 	}
-	
+
 	@dirty
 	public boolean isSelfPowered() {
 		return selfPowered;
 	}
-	
+
 	@dirty
 	public abstract int getBasePowerRate() {
 		if(isSelfPowered())
@@ -80,7 +81,7 @@ class HarvesterObject extends InstallationObject {
 	 */
 	@preLocked
 	public native void synchronizedUIListen(CreatureObject player, int value);
-	
+
 	/**
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -100,7 +101,7 @@ class HarvesterObject extends InstallationObject {
 
 	@dirty
 	public native string getRedeedMessage();
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }

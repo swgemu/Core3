@@ -9,6 +9,7 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.tangible.Instrument;
 
+@json
 class InstrumentObserver extends Observer {
 	@weakReference
 	protected Instrument instrument;

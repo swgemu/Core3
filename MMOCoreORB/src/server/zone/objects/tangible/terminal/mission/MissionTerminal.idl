@@ -11,16 +11,17 @@ import server.zone.packets.object.ObjectMenuResponse;
 include system.util.Vector;
 include templates.SharedObjectTemplate;
 
+@json
 class MissionTerminal extends Terminal {
 	protected string terminalType;
-	
+
 	@dereferenced
 	protected transient Vector<CreatureObject> slicers;
-	
+
 	public MissionTerminal() {
 		Logger.setLoggingName("MissionTerminal");
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -30,12 +31,12 @@ class MissionTerminal extends Terminal {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isMissionTerminalTemplate())
 			return;
-		
+
 		MissionTerminalTemplate templ = (MissionTerminalTemplate) templateData;
-		
+
 		terminalType = templ.getMissionTerminalType();
 
 		boolean sliceTempFix = true; // Temporary Hack.
@@ -47,10 +48,10 @@ class MissionTerminal extends Terminal {
 		}
 
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("MissionTerminal");
 	}
 
@@ -65,57 +66,57 @@ class MissionTerminal extends Terminal {
 	@dirty
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@dirty
 	public native string getTerminalName();
-		
+
 	@dirty
 	public boolean isMissionTerminal() {
 		return true;
 	}
-	
+
 	@dirty
 	public boolean isArtisanTerminal() {
 		return terminalType == "artisan";
 	}
-	
+
 	@dirty
 	public boolean isGeneralTerminal() {
 		return terminalType == "general";
 	}
-	
+
 	@dirty
 	public boolean isBountyTerminal(){
 		return terminalType == "bounty";
 	}
-	
+
 	@dirty
 	public boolean isEntertainerTerminal() {
 		return terminalType == "entertainer";
 	}
-	
+
 	@dirty
 	public boolean isImperialTerminal() {
 		return terminalType == "imperial";
 	}
-	
+
 	@dirty
 	public boolean isNewbieTerminal() {
 		return terminalType == "newbie";
 	}
-	
+
 	@dirty
 	public boolean isRebelTerminal() {
 		return terminalType == "rebel";
 	}
-	
+
 	@dirty
 	public boolean isScoutTerminal() {
 		return terminalType == "scout";
 	}
-	
+
 	@dirty
 	public boolean isStatueTerminal() {
 		return terminalType == "statue";

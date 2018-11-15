@@ -15,6 +15,7 @@ import system.lang.Time;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 
+@json
 class SpawnArea extends ActiveArea {
 	@dereferenced
 	@rawTemplate(value = "Reference<LairSpawn*>")

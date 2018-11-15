@@ -8,6 +8,7 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.SceneObject;
 
+@json
 class Region extends ActiveArea {
 	@weakReference
 	protected CityRegion cityRegion;

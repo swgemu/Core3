@@ -9,16 +9,16 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
+@json
 class PrecisionLaserKnife extends SlicingTool {
-
 	protected int charges;
 
 	public PrecisionLaserKnife() {
 		setLoggingName("SlicingTool");
-		
+
 		charges = 10;
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -28,7 +28,7 @@ class PrecisionLaserKnife extends SlicingTool {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -63,5 +63,5 @@ class PrecisionLaserKnife extends SlicingTool {
 	public int getCharges() {
 		return charges;
 	}
-	
+
 }

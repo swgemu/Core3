@@ -15,6 +15,7 @@ include templates.tangible.DotPackTemplate;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class DotPack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected float range;
@@ -27,7 +28,7 @@ class DotPack extends PharmaceuticalObject {
 	protected unsigned int duration;
 	protected unsigned int pool;
 	protected unsigned int dotType;
-	
+
 	public DotPack() {
 		area = 0;
 		range = 0;
@@ -38,22 +39,22 @@ class DotPack extends PharmaceuticalObject {
 		dotType = 0;
 		effectiveness = 0;
 		hasArea = false;
-		
+
 		setLoggingName("DotPack");
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		effectiveness = values.getCurrentValue("power");
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
-		
+
 		range = values.getCurrentValue("range");
 		area = values.getCurrentValue("area");
 		potency = values.getCurrentValue("potency");
 		duration = values.getCurrentValue("duration");
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -81,7 +82,7 @@ class DotPack extends PharmaceuticalObject {
 		potency = dotPackTemplate.getPotency();
 		commandToExecute = dotPackTemplate.getCommandToExecute();
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -93,7 +94,7 @@ class DotPack extends PharmaceuticalObject {
 	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-		
+
 		msg.insertAttribute("examine_dot_attribute", CreatureAttribute.getName(pool, true));
 
 		msg.insertAttribute("examine_dot_apply_power", Math.getPrecision(effectiveness, 0));
@@ -103,7 +104,7 @@ class DotPack extends PharmaceuticalObject {
 		} else {
 			msg.insertAttribute("examine_dot_apply", "Diseased");
 		}
-		
+
 		msg.insertAttribute("examine_dot_potency", Math.getPrecision(potency, 0));
 
 		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
@@ -121,7 +122,7 @@ class DotPack extends PharmaceuticalObject {
 			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
 		}
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -131,7 +132,7 @@ class DotPack extends PharmaceuticalObject {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		
+
 		if (!isASubChildOf(player))
 			return 0;
 
@@ -140,11 +141,11 @@ class DotPack extends PharmaceuticalObject {
 
 		if (player.getSkillMod("combat_healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand(commandToExecute, String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
 
@@ -167,52 +168,52 @@ class DotPack extends PharmaceuticalObject {
 	public boolean isPoisonDeliveryUnit() {
 		return dotType == CreatureState.POISONED;
 	}
-	
+
 	@dirty
 	public boolean isDiseaseDeliveryUnit() {
 		return dotType == CreatureState.DISEASED;
 	}
-	
+
 	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
-	
+
 	@dirty
 	public float getRange() {
 		return range;
 	}
-	
+
 	@dirty
 	public float getArea() {
 		return area;
 	}
-	
+
 	@dirty
 	public float getRangeMod() {
 		return rangeMod;
 	}
-	
+
 	@dirty
 	public float getPotency() {
 		return potency;
 	}
-	
+
 	@dirty
 	public unsigned int getDuration() {
 		return duration;
 	}
-	
+
 	@dirty
 	public boolean isArea() {
 		return hasArea;
 	}
-	
+
 	@dirty
 	public unsigned int getPool() {
 		return pool;
 	}
-	
+
 	@dirty
 	public unsigned int getDotType() {
 		return dotType;

@@ -11,6 +11,7 @@ include server.zone.managers.object.ObjectManager;
 import server.zone.objects.tangible.consumable.DelayedBuffObserver;
 include system.util.Vector;
 
+@json
 class DelayedBuff extends Buff {
 	protected int usesRemaining;
 	protected CreatureObject player;

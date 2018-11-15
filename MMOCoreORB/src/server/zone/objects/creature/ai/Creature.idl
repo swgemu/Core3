@@ -13,8 +13,8 @@ import server.zone.Zone;
 include system.util.SortedVector;
 include engine.log.Logger;
 
+@json
 class Creature extends AiAgent {
-
 	@dereferenced
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
@@ -88,7 +88,7 @@ class Creature extends AiAgent {
 	@local
 	public native void loadTemplateDataForBaby(CreatureTemplate templateData);
 
-	public native void scheduleDespawn(); 
+	public native void scheduleDespawn();
 
 	public native boolean hasOrganics();
 
@@ -231,7 +231,7 @@ class Creature extends AiAgent {
 	public int getAdultLevel() {
 		if (super.petDeed != null) {
 			return super.petDeed.getLevel();
-		}	
+		}
 		if (super.npcTemplate == null)
 			return super.getLevel();
 

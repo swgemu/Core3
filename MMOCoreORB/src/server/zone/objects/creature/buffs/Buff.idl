@@ -14,6 +14,7 @@ include server.zone.objects.creature.buffs.BuffType;
 include server.chat.StringIdChatParameter;
 include system.util.Vector;
 
+@json
 class Buff extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject creature;
@@ -158,7 +159,7 @@ class Buff extends ManagedObject implements Logger {
 	public native void scheduleBuffEvent();
 
 	/*
-	 * This updates the duration event for this buff only  
+	 * This updates the duration event for this buff only
 	 * Does not affect secondaryBuffs or update the client
 	 * You should probably use the CreatureObject::renewBuff() instead
 	 */

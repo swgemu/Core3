@@ -11,30 +11,31 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class VitalityPack extends PharmaceuticalObject {
 	protected int effectiveness;
-	
+
 	public VitalityPack() {
-		setLoggingName("VitalityPack");		
+		setLoggingName("VitalityPack");
 		effectiveness = 0;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		effectiveness = values.getCurrentValue("strength");
 		setUseCount(1);
 	}
-	
+
 	@dirty
 	public int getEffectiveness() {
 		return effectiveness;
 	}
-	
+
 	@dirty
 	public boolean isVitalityPack() {
 		return true;
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -45,7 +46,7 @@ class VitalityPack extends PharmaceuticalObject {
 	 */
 	@local
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -56,5 +57,5 @@ class VitalityPack extends PharmaceuticalObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 }

@@ -10,17 +10,17 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 
+@json
 class SurveyTool extends ToolTangibleObject {
-	
 	protected int range;
 	protected int points;
-	
+
 	protected int type;
-	
+
 	protected string surveyType;
 	protected string surveyAnimation;
 	protected string sampleAnimation;
-	
+
 	protected boolean radioactiveOk;
 
 	public static final int SOLAR = 1;
@@ -33,9 +33,9 @@ class SurveyTool extends ToolTangibleObject {
 	public static final int WIND = 8;
 	public static final int FUSION = 9;
 	public static final int INORGANIC = 10;
-	
+
 	public static final int NOTYPE = -1;
-	
+
 	public SurveyTool() {
 		Logger.setLoggingName("SurveyTool");
 		radioactiveOk = false;
@@ -43,20 +43,20 @@ class SurveyTool extends ToolTangibleObject {
 		points = 0;
 		points = 0;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 
 		Logger.setLoggingName("SurveyTool");
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -64,45 +64,45 @@ class SurveyTool extends ToolTangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
-	
+
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		
+
 	}
-	
+
 	/**
 	 * Set the surveying range on tool
 	 * Values should be:
 	 * 64, 128, 256, 512
 	 */
 	public native void setRange(int r);
-	
+
 	public native void sendRangeSui(CreatureObject player);
-	
+
 	@dirty
 	public native int getRange(CreatureObject player);
-	
+
 	@dirty
 	public int getPoints() {
 		return points;
 	}
-	
+
 	@dirty
 	public int getToolType() {
 		return type;
 	}
-	
+
 	@dirty
 	public string getSurveyType() {
 		return surveyType;
 	}
-	
+
 	@dirty
 	public string getSurveyAnimation() {
 		return surveyAnimation;
 	}
-	
+
 	@dirty
 	public string getSampleAnimation() {
 		return sampleAnimation;
@@ -110,12 +110,12 @@ class SurveyTool extends ToolTangibleObject {
 
 	@dirty
 	private native int getSkillBasedRange(int skillLevel);
-	
+
 	@dirty
 	public boolean canSampleRadioactive() {
 		return radioactiveOk;
 	}
-	
+
 	@dirty
 	public native void sendRadioactiveWarning(CreatureObject player);
 

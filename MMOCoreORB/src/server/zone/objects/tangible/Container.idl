@@ -10,8 +10,8 @@ include templates.SharedObjectTemplate;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@json
 class Container extends TangibleObject {
-
 	protected boolean locked;
 
 	protected transient boolean relocking;
@@ -21,11 +21,11 @@ class Container extends TangibleObject {
 
 		locked = false;
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	public native void initializeTransientMembers();
-	
+
 	@local
 	public native void notifyLoadFromDatabase();
 	/**
@@ -37,7 +37,7 @@ class Container extends TangibleObject {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -72,24 +72,24 @@ class Container extends TangibleObject {
 	public void setLockedStatus(boolean lock) {
 		locked = lock;
 	}
-	
+
 	@dirty
 	public int getLockChance() {
-		return 15;	
+		return 15;
 	}
 
 	@dirty
 	public long getLockTime() {
-		return 60*30*1000;	
+		return 60*30*1000;
 	}
-	
+
 	@read
 	public boolean isRelocking() {
-		return relocking;	
+		return relocking;
 	}
 
 	public boolean setRelockingStatus(boolean relock) {
-		return relocking = relock;	
+		return relocking = relock;
 	}
 
 }

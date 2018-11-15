@@ -15,12 +15,13 @@ include server.chat.StringIdChatParameter;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
 
+@json
 class GroupObject extends SceneObject {
 	@dereferenced
 	GroupList groupMembers;
 
 	@dereferenced
-	VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
+	transient VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
 
 	ChatRoom chatRoom;
 

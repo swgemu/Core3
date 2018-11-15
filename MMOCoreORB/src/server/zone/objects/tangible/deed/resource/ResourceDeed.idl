@@ -8,15 +8,15 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@json
 class ResourceDeed extends Deed {
-	
-	public ResourceDeed() {		
+	public ResourceDeed() {
 		Logger.setLoggingName("ResourceDeed");
-		
+
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -26,7 +26,7 @@ class ResourceDeed extends Deed {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -34,9 +34,9 @@ class ResourceDeed extends Deed {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	public native int useObject(CreatureObject player);
-	 
+
 	/**
 	 * Removes this object from parent container
 	 * @pre { this object is locked, player is locked }

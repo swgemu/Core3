@@ -8,6 +8,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 
+@json
 class RecycleTool extends Container {
 
 	protected int toolType;
@@ -61,16 +62,16 @@ class RecycleTool extends Container {
 		selectedResource = -1;
 		selectedTypeName = "";
 	}
-	
+
 	public native void initializeTransientMembers();
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -82,14 +83,14 @@ class RecycleTool extends Container {
 
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		
+
 	}
 
 	@dirty
 	public int getToolType() {
 		return toolType;
 	}
-	
+
 	@dirty
 	public int getSelectedResource() {
 		return selectedResource;
@@ -98,7 +99,7 @@ class RecycleTool extends Container {
 	public void setSelectedResource(int res) {
 		selectedResource = res;
 	}
-	
+
 	public string getSelectedTypeName() {
 		return selectedTypeName;
 	}

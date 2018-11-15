@@ -10,6 +10,8 @@
 
 #include "SceneObjectComponent.h"
 
+#include "engine/util/json_utils.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -123,6 +125,8 @@ public:
 	}
 
 };
+
+void to_json(nlohmann::json& j, const DataObjectComponent& comp);
 
 
 #endif /* DATAOBJECTCOMPONENT_H_ */

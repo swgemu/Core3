@@ -11,17 +11,18 @@ include templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 @lua
+@json
 class Deed extends TangibleObject {
 	protected string generatedObjectTemplate;
 	protected boolean generated;
-	
+
 	public Deed() {
 		Logger.setLoggingName("Deed");
 		generated = false;
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -30,16 +31,16 @@ class Deed extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
-	
+
 	@local
 	public abstract void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		error("Unhandled updateCraftingValues for this object type");
 	}
-	
+
 	/**
 	 * Sets the object template path for the object which is generated from this deed being used.
 	 * @param templ The string template path that is to be created when this deed is used.
@@ -47,7 +48,7 @@ class Deed extends TangibleObject {
 	public void setGeneratedObjectTemplate(final string templ) {
 		generatedObjectTemplate = templ;
 	}
-	
+
 	/**
 	 * Gets the object template path for the object which is generated from this deed being used.
 	 */
@@ -64,7 +65,7 @@ class Deed extends TangibleObject {
 	public boolean isDeedObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public boolean isGenerated() {
 		return generated;

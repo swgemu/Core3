@@ -11,6 +11,7 @@ include system.util.Vector;
 import server.zone.Zone;
 
 @mock
+@json
 class ActiveArea extends SceneObject {
 	protected boolean noBuildArea;
 
@@ -53,7 +54,7 @@ class ActiveArea extends SceneObject {
 	 */
 	@dirty
 	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true) {
-		
+
 	}
 
 	@mock

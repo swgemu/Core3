@@ -10,6 +10,8 @@
 
 #include "server/chat/ChatParameter.h"
 
+#include "engine/util/json_utils.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -62,6 +64,19 @@ public:
 	WaypointChatParameter();
 	WaypointChatParameter(WaypointObject* waypoint);
 	WaypointChatParameter(const WaypointChatParameter& custom);
+
+	friend void to_json(nlohmann::json& j, const WaypointChatParameter& p) {
+		j["waypointName"] = p.waypointName;
+		j["pointerParameter"] = p.pointerParameter;
+		j["cellID"] = p.cellID;
+		j["planetCRC"] = p.planetCRC;
+		j["unknownInt"] = p.unknownInt;
+		j["positionX"] = p.positionX;
+		j["positionY"] = p.positionY;
+		j["positionZ"] = p.positionZ;
+		j["color"] = p.color;
+		j["active"] = p.active;
+       	}
 
 	WaypointChatParameter& operator=(const WaypointChatParameter& par) {
 		if (this == &par)

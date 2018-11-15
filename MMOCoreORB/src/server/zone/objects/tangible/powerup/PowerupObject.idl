@@ -15,48 +15,48 @@ include server.zone.packets.scene.AttributeListMessage;
 
 
 @lua
+@json
 class PowerupObject extends TangibleObject {
-
 	public transient static float MAXPRIMARY;
 	public transient static float MAXSECONDARY;
-	
+
 	@dereferenced
 	protected PowerupStatVector modifiers;
-	
+
 	protected int uses;
-	
+
 	protected string type;
-	
+
 	public PowerupObject() {
 		uses = 0;
-		
+
 		Logger.setLoggingName("PowerupObject");
 	}
-	
+
 	@dirty
 	public boolean isRanged() {
 		return type == "ranged";
 	}
-	
+
 	@dirty
 	public boolean isMelee() {
 		return type == "melee";
 	}
-	
+
 	@dirty
 	public boolean isThrown() {
 		return type == "thrown";
 	}
-	
+
 	@dirty
 	public boolean isMine() {
 		return type == "mine";
 	}
-	
+
 	public void decreaseUses() {
 		uses = uses - 1;
 	}
-	
+
 	@dirty
 	public int getUses() {
 		return uses;
@@ -69,10 +69,10 @@ class PowerupObject extends TangibleObject {
 	public void setType(final string t) {
 		type = t;
 	}
-	
+
 	@dirty
 	public native float getPowerupStat(final string stat);
-	
+
 	public native void addPowerupStat(final string attributeToMod, final string name, final string pupAttrib, float value);
 
 	/**
@@ -85,11 +85,11 @@ class PowerupObject extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
-	
+
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@local
 	@dirty
 	public native void fillWeaponAttributeList(AttributeListMessage alm, WeaponObject weapon);
@@ -97,5 +97,5 @@ class PowerupObject extends TangibleObject {
 	@dirty
 	private native float getWeaponStat(final string attrib, WeaponObject weapon, boolean withPup);
 
-	
+
 }

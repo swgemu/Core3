@@ -12,8 +12,8 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.SceneObjectType;
 import system.util.HashTable;
 
+@json
 class Attachment extends TangibleObject {
-
 	protected int attachmentType;
 
 	@dereferenced
@@ -21,17 +21,17 @@ class Attachment extends TangibleObject {
 
 	protected static final int CLOTHINGTYPE = 1;
 	protected static final int ARMORTYPE = 2;
-	
+
 	public Attachment() {
 		Logger.setLoggingName("Attachment");
 
 		skillModMap.setNullValue(0);
-				
+
 		//generateSkillMods();
 	}
 
 	public native void initializeTransientMembers();
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
@@ -46,10 +46,10 @@ class Attachment extends TangibleObject {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		initializeMembers();
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -63,22 +63,22 @@ class Attachment extends TangibleObject {
 
 	@dirty
 	public boolean isAttachment() {
-		return true; 
-	}        
+		return true;
+	}
 
 	@dirty
 	public boolean isArmorAttachment() {
 		return super.gameObjectType == SceneObjectType.ARMORATTACHMENT;
-	}          
+	}
 
 	@dirty
 	public boolean isClothingAttachment() {
 		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
-	} 
-	
+	}
+
 	@local
 	public HashTable<string, int> getSkillMods() {
 		return skillModMap;
 	}
-	
+
 }

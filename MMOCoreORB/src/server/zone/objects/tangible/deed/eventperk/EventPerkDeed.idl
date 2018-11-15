@@ -15,8 +15,8 @@ include system.lang.Time;
 include templates.SharedObjectTemplate;
 include server.zone.packets.scene.AttributeListMessage;
 
+@json
 class EventPerkDeed extends Deed {
-
 	protected int perkType;
 
 	protected unsigned long generatedTimeToLive;

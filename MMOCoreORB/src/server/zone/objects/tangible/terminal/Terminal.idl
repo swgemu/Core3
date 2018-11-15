@@ -7,37 +7,38 @@ package server.zone.objects.tangible.terminal;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 
+@json
 class Terminal extends TangibleObject {
 	//@weakReference
 	protected SceneObject controlledObject;
-	
-	public Terminal() {		
+
+	public Terminal() {
 		Logger.setLoggingName("Terminal");
-		
+
 		controlledObject = null;
 	}
-	
+
 	public native void initializeTransientMembers();
 
 	@dirty
 	public boolean isTerminal() {
 		return true;
 	}
-	
+
 	@dirty
 	public abstract boolean isGuildTerminal() {
 		return false;
 	}
-	
+
 	public void setControlledObject(SceneObject obj) {
 		controlledObject = obj;
 	}
-	
+
 	@dirty
 	public SceneObject getControlledObject() {
 		return controlledObject;
 	}
-	
+
 	@dirty
 	public abstract boolean isElevatorTerminal() {
 		return false;
@@ -52,7 +53,7 @@ class Terminal extends TangibleObject {
 	public abstract boolean isBazaarTerminal() {
 		return false;
 	}
-	
+
 	public void initializeChildObject(SceneObject controllerObject) {
 		setControlledObject(controllerObject);
 	}

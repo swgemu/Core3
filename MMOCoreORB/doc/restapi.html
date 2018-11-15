@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>SWGEmu REST API object explorer</h2>
+
+</body>
+
+<script type="text/javascript" language="javascript">
+
+var defaultHost = 'localhost'
+var defaultPort = '17632'
+
+function getUrlVars() {
+	var vars = {};
+
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+
+	return vars;
+}
+
+function getUrlParam(parameter, defaultvalue){
+	var urlparameter = defaultvalue;
+
+	if (window.location.href.indexOf(parameter) > -1) {
+		urlparameter = getUrlVars()[parameter];
+	}
+
+	return urlparameter;
+}
+
+var oid = getUrlParam('id', '86');
+var host = getUrlParam('host', defaultHost) + ':' + getUrlParam('port', defaultPort);
+
+var getJSON = function(url, callback) {
+	try {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url, true);
+		xhr.responseType = 'json';
+
+		xhr.onreadystatechange = function() {
+			var status = xhr.status;
+			var readyState = xhr.readyState;
+
+			if (readyState === XMLHttpRequest.DONE) {
+				if (status === 200) {
+					callback(null, xhr.response);
+				} else {
+					callback(status, xhr.response);
+				}
+			}
+		};
+
+		xhr.send();
+	} catch (e) {
+		alert(e);
+	}
+};
+
+var jsonCallback = function(err, data) {
+	if (err !== null) {
+		alert('Something went wrong: ' + err);
+	} else {
+		var str = JSON.stringify(data, undefined, 4);
+
+		var oldHeight = document.body.scrollHeight;
+
+		output(syntaxHighlight(str));
+
+		window.scrollTo(0, oldHeight + 10);
+	}
+}
+
+function output(inp) {
+	document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+}
+
+function syntaxHighlight(json) {
+	json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+	return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+		var cls = 'number';
+		if (/^"/.test(match)) {
+			if (/:$/.test(match)) {
+				cls = 'key';
+			} else {
+				cls = 'string';
+			}
+		} else if (/true|false/.test(match)) {
+			cls = 'boolean';
+		} else if (/null/.test(match)) {
+			cls = 'null';
+		}
+
+		if (cls.localeCompare('number') === 0) {
+			return '<span onclick="getJSON(\'http://' + host +  '/object/' + match +'\', jsonCallback);" class="' + cls + '">' + match + '<\/span>';
+		} else {
+			return '<span class="' + cls + '">' + match + '<\/span>';
+		}
+	});
+}
+
+function requestData() {
+	var newoid = document.getElementById("oid").value;
+
+	if (newoid != 0) {
+		oid = newoid;
+
+		getJSON('http://' + host + '/object/' + oid, jsonCallback);
+	}
+}
+
+</script>
+
+<!-- 	<label for="host">Host:</label>
+	<input type="text" id="host" name="host" size="20"/>
+-->
+	<label for="oid">ObjectID:</label>
+	<input type="number" id="oid" name="oid" size="32"/>
+
+	<button type="button" id="press" name="press" onclick="requestData()">Get object!</button>
+
+<script type="text/javascript" language="javascript">
+	//document.getElementById("host").value = host;
+	document.getElementById("oid").value = oid;
+
+	var input = document.getElementById("oid");
+
+	input.addEventListener("keyup", function(event) {
+		event.preventDefault();
+
+		if (event.keyCode === 13) {
+			document.getElementById("press").click();
+		}
+	});
+</script>
+
+<style>
+body {background-color: white;}
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+
+.string { color: green; }
+.number { color: darkorange;}
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+.number:hover {text-decoration: underline; cursor: pointer;}
+</style>
+
+</html>

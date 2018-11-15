@@ -13,6 +13,7 @@ import system.util.VectorMap;
 include templates.SharedObjectTemplate;
 include system.util.Vector;
 
+@json
 class Consumable extends TangibleObject {
 	protected int duration;
 	protected int filling;

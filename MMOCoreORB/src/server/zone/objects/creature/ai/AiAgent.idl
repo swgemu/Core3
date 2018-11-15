@@ -42,6 +42,7 @@ include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 
 @mock
+@json
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
 
@@ -74,8 +75,8 @@ class AiAgent extends CreatureObject {
 
 	protected WeaponObject readyWeapon;
 
-	protected CreatureAttackMap attackMap;
-	protected CreatureAttackMap defaultAttackMap;
+	protected transient CreatureAttackMap attackMap;
+	protected transient CreatureAttackMap defaultAttackMap;
 
 	@dereferenced
 	protected transient SortedVector<unsigned long> camouflagedObjects;
@@ -129,7 +130,7 @@ class AiAgent extends CreatureObject {
 	// AI bit
 	protected unsigned int currentBehaviorID;
 	@dereferenced
-	protected VectorMap<unsigned int, Behavior> behaviors;
+	protected transient VectorMap<unsigned int, Behavior> behaviors;
 
 	@dereferenced
 	protected transient string templateName;
@@ -197,7 +198,7 @@ class AiAgent extends CreatureObject {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
@@ -729,7 +730,7 @@ class AiAgent extends CreatureObject {
 			int oldState = followState;
 			clearPatrolPoints();
 			followState = state;
-			
+
 			if (oldState == LEASHING || state == LEASHING)
 				broadcastPvpStatusBitmask();
 		}

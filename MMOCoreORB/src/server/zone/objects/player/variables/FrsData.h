@@ -7,6 +7,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/json_utils.h"
+
 class FrsData : public Object {
 	int councilType;
 	int rank;
@@ -32,7 +34,12 @@ public:
 		return *this;
 	}
 
-	bool operator==(FrsData data) {
+	friend void to_json(nlohmann::json& j, const FrsData& f) {
+		j["councilType"] = f.councilType;
+		j["rank"] = f.rank;
+	}
+
+	bool operator==(const FrsData& data) const {
 		return
 			councilType == data.councilType &&
 			rank == data.rank;
@@ -42,7 +49,7 @@ public:
 		councilType = type;
 	}
 
-	int getCouncilType() {
+	int getCouncilType() const {
 		return councilType;
 	}
 
@@ -50,7 +57,7 @@ public:
 		rank = newRank;
 	}
 
-	int getRank() {
+	int getRank() const {
 		return rank;
 	}
 

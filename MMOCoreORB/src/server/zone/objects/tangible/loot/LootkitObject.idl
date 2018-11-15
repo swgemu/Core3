@@ -12,52 +12,52 @@ import system.util.VectorMap;
 import system.util.Vector;
 include templates.SharedObjectTemplate;
 
-class LootkitObject extends TangibleObject {	
-	
+@json
+class LootkitObject extends TangibleObject {
 	@dereferenced
 	protected VectorMap<unsigned int, boolean> components;
-		
+
 	@dereferenced
 	protected VectorMap<unsigned int, string> attributes;
-	
+
 	@dereferenced
 	protected Vector<unsigned int> comps;
-	
+
 	@dereferenced
 	protected Vector<unsigned int> reward;
-	
+
 	protected boolean deleteComponents;
-	
+
 	public LootkitObject() {
 		Logger.setLoggingName("LootKitObject");
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("LootKitObject");
 	}
 
 	@dirty
-	public native int canAddObject(SceneObject object, int containmentType, string errorDescription); 
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 
 	public native int notifyObjectInserted(SceneObject object);
 
 	public native int notifyObjectRemoved(SceneObject object);
-	
+
 	protected native void createItem();
 
 	@reference
 	@dirty
 	public native CreatureObject getPlayer();
-	
+
 	protected native void addToKit(SceneObject object);
 
 	protected native void removeFromKit(SceneObject object);
-	
+
 	@local
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@dirty
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);

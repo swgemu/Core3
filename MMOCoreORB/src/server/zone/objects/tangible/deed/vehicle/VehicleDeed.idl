@@ -11,17 +11,18 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
+@json
 class VehicleDeed extends Deed {
 	protected int hitPoints;
 	protected string controlDeviceObjectTemplate;
-	
+
 	public VehicleDeed() {
 		Logger.setLoggingName("VehicleDeed");
 		hitPoints = 1500;
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -30,15 +31,15 @@ class VehicleDeed extends Deed {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -48,10 +49,10 @@ class VehicleDeed extends Deed {
 	@preLocked
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	public boolean isVehicleDeedObject() {
 		return true;

@@ -7,26 +7,27 @@ package server.zone.objects.creature.ai;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 
+@json
 class NonPlayerCreatureObject extends AiAgent {
-	
+
 	public NonPlayerCreatureObject() {
 		Logger.setLoggingName("NonPlayerCreatureObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	@dirty
 	public boolean isNonPlayerCreatureObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isAggressiveTo(target) && isConcealed(target);

@@ -18,7 +18,7 @@ include server.zone.objects.mission.MissionTypes;
 include server.zone.packets.scene.AttributeListMessage;
 include templates.faction.Factions;
 
-
+@json
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
 
@@ -70,7 +70,7 @@ class MissionObject extends IntangibleObject {
 
 	public MissionObject() {
 		typeCRC = MissionTypes.SURVEY;
-                
+
 		refreshCounter = 0;
 
 		//targetTemplateCRC = 2640304325;
@@ -104,7 +104,7 @@ class MissionObject extends IntangibleObject {
 
 		Logger.setLoggingName("MissionObject");
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -267,7 +267,7 @@ class MissionObject extends IntangibleObject {
 	public string getEndPlanet() {
 		return endPlanet;
 	}
-	
+
 	@preLocked
 	public void setEndPlanet(final string newEndPlanet) {
 		endPlanet = newEndPlanet;

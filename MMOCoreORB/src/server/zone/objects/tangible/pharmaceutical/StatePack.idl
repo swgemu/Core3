@@ -13,24 +13,25 @@ include templates.params.creature.CreatureState;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@json
 class StatePack extends PharmaceuticalObject {
 	protected unsigned long state;
-	
+
 	public StatePack() {
 		setLoggingName("StatePack");
-		
+
 		state = 0;
 	}
-	
+
 	@local
-	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {		
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		values.setHidden("power");
 		values.setHidden("range");
-		
+
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -40,16 +41,16 @@ class StatePack extends PharmaceuticalObject {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isStatePackTemplate())
 			return;
-		
+
 		StatePackTemplate statePackTemplate = (StatePackTemplate) templateData;
-		
+
 		state = statePackTemplate.getState();
 		super.medicineUseRequired = statePackTemplate.getMedicineUse();
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -59,7 +60,7 @@ class StatePack extends PharmaceuticalObject {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		
+
 		if (!isASubChildOf(player))
 			return 0;
 
@@ -68,16 +69,16 @@ class StatePack extends PharmaceuticalObject {
 
 		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand("healstate", CreatureState.instance().getName(state) + "|" + String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
 
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -89,20 +90,20 @@ class StatePack extends PharmaceuticalObject {
 	@local
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-		
+
 		string attributeName = CreatureState.instance().getName(state);
 		string enhace = "@obj_attr_n:state_type_" + attributeName;
-		
+
 		msg.insertAttribute("examine_heal_state", enhace);
-		
+
 		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	}
-	
+
 	@dirty
 	public unsigned long getState() {
 		return state;
 	}
-	
+
 	@dirty
 	public boolean isStatePack() {
 		return true;

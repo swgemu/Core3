@@ -10,11 +10,12 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.ReconMissionObjective;
 include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 
+@json
 class MissionReconActiveArea extends ActiveArea {
 	@weakReference
 	protected ReconMissionObjective missionObjective;
 
-	protected CompleteMissionAfterCertainTimeTask completeTask;
+	protected transient CompleteMissionAfterCertainTimeTask completeTask;
 
 	public MissionReconActiveArea() {
 		missionObjective = null;

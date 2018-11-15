@@ -8,19 +8,20 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class SignObject extends TangibleObject {
 	@weakReference
 	public SceneObject attachedObject;
-	
-	public SignObject() {		
+
+	public SignObject() {
 		Logger.setLoggingName("SignObject");
 	}
 
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@dirty
 	public native void sendSignNameTo(CreatureObject player);
-	
+
 	@dirty
 	public boolean isSignObject() {
 		return true;

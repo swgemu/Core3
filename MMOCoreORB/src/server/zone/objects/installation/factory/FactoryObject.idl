@@ -14,6 +14,7 @@ include system.util.Vector;
 include templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 
+@json
 class FactoryObject extends InstallationObject {
 	@dereferenced
 	protected Vector<int> craftingTabsSupported;
@@ -85,14 +86,14 @@ class FactoryObject extends InstallationObject {
 	public native void closeHopper(Observable observable, ManagedObject arg1);
 
 	/**
-	 * Handles inputting the schematic to the 
+	 * Handles inputting the schematic to the
 	 * factory
 	 */
 	@preLocked
 	public native void handleInsertFactorySchem(CreatureObject player, ManufactureSchematic schematic);
 
 	/**
-	 * Handles inputting the schematic to the 
+	 * Handles inputting the schematic to the
 	 * factory
 	 */
 	@preLocked
@@ -102,7 +103,7 @@ class FactoryObject extends InstallationObject {
 	public native void handleOperateToggle(CreatureObject player);
 
 	@preLocked
-	private native boolean startFactory(); 
+	private native boolean startFactory();
 
 	private native void stopFactory(final string message, final string tt, final string to, final int di);
 

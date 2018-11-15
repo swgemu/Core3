@@ -18,6 +18,7 @@ include system.thread.ReadWriteLock;
 include system.lang.System;
 include system.util.VectorMap;
 
+@json
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;
 
@@ -123,7 +124,7 @@ class GuildObject extends SceneObject {
 	@dirty
 	@local
 	public native void broadcastMessage(BaseMessage msg);
-	
+
 	@local
 	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
