@@ -48,6 +48,12 @@ public:
 int main(int argc, char* argv[]) {
 	setbuf(stdout, 0);
 
+	if (argc) {
+		StackTrace::setBinaryName(argv[0]);
+	} else {
+		Logger::console.warning("empty argv list");
+	}
+
 	static int ret = 0;
 
 	try {
