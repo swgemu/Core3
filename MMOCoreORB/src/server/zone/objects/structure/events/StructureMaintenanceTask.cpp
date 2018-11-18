@@ -41,14 +41,14 @@ void StructureMaintenanceTask::run() {
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
 	if (creditObj == nullptr) {
-		info("Player does not have a valid credit object, destroying.", true);
+		strongRef->info("Player does not have a valid credit object, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 
 		return;
 	}
 
 	if (name.isEmpty()) {
-		info("Player structure has nullptr owner ghost, destroying.", true);
+		strongRef->info("Player structure has nullptr owner ghost, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
@@ -105,9 +105,15 @@ void StructureMaintenanceTask::run() {
 		//Notify owner about decay.
 		sendMailDecay(name, strongRef);
 
+		int decayCycleSeconds = 24 * 60 * 60; // Default to daily schedule
+
+#if DEBUG_STRUCTURE_MAINT
+		decayCycleSeconds = 60; // Every minute for debugging
+#endif // DEBUG_STRUCTURE_MAINT
+
 		if (!strongRef->isDecayed()) {
-			//Reschedule task in 1 day.
-			reschedule(oneDayTime);
+			// Reschedule task
+			reschedule(decayCycleSeconds * 1000);
 		} else {
 			if (strongRef->isBuildingObject() && !shouldBuildingBeDestroyed(strongRef)) {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
@@ -115,12 +121,12 @@ void StructureMaintenanceTask::run() {
 				//Building is condemned since it has decayed.
 				sendMailCondemned(name, strongRef);
 
-				strongRef->info("Structure decayed, it is now condemned.");
+				strongRef->info("Structure decayed, it is now condemned.", true);
 
 				building->updateSignName(true);
-				reschedule(oneDayTime);
+				reschedule(decayCycleSeconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it.");
+				strongRef->info("Structure decayed, destroying it.", true);
 
 				StructureManager::instance()->destroyStructure(strongRef);
 			}
@@ -197,11 +203,16 @@ void StructureMaintenanceTask::sendMailCondemned(const String& creoName, Structu
 }
 
 bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
-	int threeMonthsOfMaintenance = 30 * 24 * structure->getMaintenanceRate();
+	int delayDestroyHours = 30 * 24; // By default delay destruction by 30 days
 
-	if (threeMonthsOfMaintenance + structure->getSurplusMaintenance() < 0) {
-		return true;
-	} else {
+#if DEBUG_STRUCTURE_MAINT
+	delayDestroyHours = 1; // Delay destruction by 1 hour in debug mode
+#endif // DEBUG_STRUCTURE_MAINT
+
+	// Still not negative enough to destroy?
+	if ((delayDestroyHours * structure->getMaintenanceRate()) + structure->getSurplusMaintenance() > 0) {
 		return false;
 	}
+
+	return true;
 }
