@@ -36,8 +36,6 @@ class StructureMaintenanceTask : public Task, public Logger {
 protected:
 	ManagedWeakReference<StructureObject*> structureObject;
 
-	const static int oneDayTime = 24 * 60 * 60 * 1000;
-
 public:
 	StructureMaintenanceTask(StructureObject* structure) : Task(), Logger("StructureMaintenanceTask") {
 		structureObject = structure;
