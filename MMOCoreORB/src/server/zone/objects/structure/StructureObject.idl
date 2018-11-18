@@ -314,6 +314,9 @@ class StructureObject extends TangibleObject {
 	@dirty
 	public abstract native int getBasePowerRate();
 
+	@dirty
+	public native float getDelayDestroyHours();
+
 	@read
 	public int getSurplusMaintenance() {
 		return surplusMaintenance;
