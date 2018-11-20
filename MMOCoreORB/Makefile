@@ -50,6 +50,8 @@ IDL_DIRECTIVES = -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 
 UNITTEST_DIRECTIVES =
 
+CMAKE_ARGS =
+
 BUILD_PATH = build/unix
 DEFAULT_BUILD_TYPE = RelWithDebInfo
 
@@ -108,15 +110,15 @@ update-engine3:
 
 build-cmake: idl
 	mkdir -p $(BUILD_PATH)
-	cd $(BUILD_PATH) && cmake -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd $(BUILD_PATH) && cmake $(CMAKE_ARGS) -DBUILD_IDL=OFF -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-with-idl-asan: clean-cmake
 	mkdir -p $(BUILD_PATH)
-	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_ASAN=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd $(BUILD_PATH) && cmake $(CMAKE_ARGS) -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_ASAN=ON -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-with-idl:
 	mkdir -p $(BUILD_PATH)
-	cd $(BUILD_PATH) && cmake -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
+	cd $(BUILD_PATH) && cmake $(CMAKE_ARGS) -DBUILD_IDL=ON -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=$(DEFAULT_BUILD_TYPE) -DCMAKE_CXX_FLAGS="$(UNITTEST_DIRECTIVES)" ../.. && ${MAKE}
 
 build-cmake-tags:
 	cd $(BUILD_PATH) && ${MAKE} tags
@@ -126,21 +128,21 @@ build-cmake-compdb:
 
 build-ninja:
 	mkdir -p $(BUILD_PATH)/ninja
-	cd $(BUILD_PATH)/ninja && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
+	cd $(BUILD_PATH)/ninja && cmake $(CMAKE_ARGS) -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Release ../../.. && ninja
 
 clean-ninja:
 	rm -rf $(BUILD_PATH)/ninja
 
 build-ninja-debug:
 	mkdir -p $(BUILD_PATH)/ninja-debug
-	cd $(BUILD_PATH)/ninja-debug && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
+	cd $(BUILD_PATH)/ninja-debug && cmake $(CMAKE_ARGS) -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=Debug ../../.. && ninja
 
 clean-ninja-debug:
 	rm -rf $(BUILD_PATH)/ninja-debug
 
 build-ninja-debugoptimized:
 	mkdir -p $(BUILD_PATH)/ninja-debugoptimized
-	cd $(BUILD_PATH)/ninja-debugoptimized && cmake -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
+	cd $(BUILD_PATH)/ninja-debugoptimized && cmake $(CMAKE_ARGS) -G Ninja -DRUN_GIT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ../../.. && ninja
 
 clean-ninja-debugoptimized:
 	rm -rf $(BUILD_PATH)/ninja-debugoptimized
