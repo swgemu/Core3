@@ -146,6 +146,11 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
+#if DEBUG_STRUCTURE_MAINT
+	if (!staticObject && isBuildingObject())
+		info("notifyInsertToZone", true);
+#endif // DEBUG_STRUCTURE_MAINT
+
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 
 	if (isCivicStructure()) {
@@ -187,22 +192,28 @@ int StructureObjectImplementation::getLotSize() {
 }
 
 CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() {
- 	//Get the owner of the structure
- 	ManagedReference<SceneObject*> owner = getZoneServer()->getObject(getOwnerObjectID());
+	//Get the owner of the structure
+	ManagedReference<SceneObject*> owner = getZoneServer()->getObject(getOwnerObjectID());
 
- 	if (owner != NULL && owner->isCreatureObject()) {
- 		return cast<CreatureObject* >(owner.get());
- 	} else {
- 		return NULL;
- 	}
+	if (owner != NULL && owner->isCreatureObject()) {
+		return cast<CreatureObject* >(owner.get());
+	} else {
+		return NULL;
+	}
 }
 
 float StructureObjectImplementation::getMaintenanceRate() {
+	float rate = getBaseMaintenanceRate();
+
+#if DEBUG_STRUCTURE_RAPID_DECAY
+	rate *= 10000.0f; // Make structures really expensive
+#endif // DEBUG_STRUCTURE_RAPID_DECAY
+
 	if (maintenanceReduced) {
-		return (int)((float)getBaseMaintenanceRate() * 0.8f);
+		rate *= 0.8f;
 	}
 
-	return getBaseMaintenanceRate();
+	return (float)((int)rate); // Round to nearest int
 }
 
 String StructureObjectImplementation::getMaintenanceMods() {
@@ -243,12 +254,18 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 		return;
 	}
 
-	int timeRemaining;
+#if DEBUG_STRUCTURE_MAINT
+	info("scheduleMaintenanceExpirationEvent: surplusMaintenance = " + String::valueOf(surplusMaintenance)
+		+ " maintenanceRate = " + String::valueOf(getMaintenanceRate())
+	, true);
+#endif // DEBUG_STRUCTURE_MAINT
+
+	int secondsRemaining;
 
 	if (structureMaintenanceTask != NULL) {
 		updateStructureStatus();
 
-		float cityTax = 0.f;
+		float cityTax = 0.0f;
 
 		ManagedReference<CityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion().get();
 
@@ -256,57 +273,68 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 			cityTax = city->getPropertyTax();
 		}
 
-		timeRemaining = (int) (surplusMaintenance * 3600.f / (getMaintenanceRate() + (getMaintenanceRate() * cityTax / 100) ));
+		secondsRemaining = (int) (surplusMaintenance * 3600.0f / (getMaintenanceRate() + (getMaintenanceRate() * cityTax / 100) ));
 
-		if (timeRemaining <= 0) {
+		if (secondsRemaining <= 0) {
 			//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
 			//any further rescheduling.
-			timeRemaining = 1;
-		} else if (timeRemaining > 24 * 60 * 60) {
+			secondsRemaining = 1;
+		} else if (secondsRemaining > 24 * 60 * 60) {
 			//Run maintenance task at least one time every day but randomized to spread it out.
-			timeRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);
+			secondsRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);
 		}
 
+#if DEBUG_STRUCTURE_MAINT
+	    info("scheduleMaintenanceExpirationEvent: secondsRemaining = " + String::valueOf(secondsRemaining), true);
+#endif // DEBUG_STRUCTURE_MAINT
 		maintenanceExpires.updateToCurrentTime();
-		maintenanceExpires.addMiliTime((uint64)timeRemaining * 1000);
+		maintenanceExpires.addMiliTime((uint64)secondsRemaining * 1000);
 	}
 	else
 	{
 		updateStructureStatus();
 
-		timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
+		secondsRemaining = (int) (surplusMaintenance * 3600.0f / getMaintenanceRate());
 
-		if (timeRemaining <= 0) {
+		if (secondsRemaining <= 0) {
 			//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
 			//any further rescheduling.
 
 			//Randomize maintenance tasks over the first hour after server restart.
-			timeRemaining = System::random(60 * 60);
-		} else if (timeRemaining > 24 * 60 * 60) {
+			secondsRemaining = System::random(60 * 60);
+		} else if (secondsRemaining > 24 * 60 * 60) {
 			//Run maintenance task at least one time every day but randomized to spread it out.
-			timeRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);
+			secondsRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);
 		}
 
+#if DEBUG_STRUCTURE_MAINT
+	    info("scheduleMaintenanceExpirationEvent: secondsRemaining = " + String::valueOf(secondsRemaining), true);
+#endif // DEBUG_STRUCTURE_MAINT
+
 		maintenanceExpires.updateToCurrentTime();
-		maintenanceExpires.addMiliTime((uint64)timeRemaining * 1000);
+		maintenanceExpires.addMiliTime((uint64)secondsRemaining * 1000);
 	}
 
-	scheduleMaintenanceTask(timeRemaining);
+	scheduleMaintenanceTask(secondsRemaining);
 }
 
-void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
+void StructureObjectImplementation::scheduleMaintenanceTask(int secondsFromNow) {
 	if(getBaseMaintenanceRate() == 0) {
 		return;
 	}
+
+#if DEBUG_STRUCTURE_RAPID_DECAY
+	secondsFromNow = secondsFromNow * 0.001f; // Accelerate scheduling of tasks
+#endif // DEBUG_STRUCTURE_RAPID_DECAY
 
 	if (structureMaintenanceTask == NULL) {
 		structureMaintenanceTask = new StructureMaintenanceTask(_this.getReferenceUnsafeStaticCast());
 	}
 
 	if (structureMaintenanceTask->isScheduled()) {
-		structureMaintenanceTask->reschedule((uint64)timeFromNow * 1000);
+		structureMaintenanceTask->reschedule((uint64)secondsFromNow * 1000);
 	} else {
-		structureMaintenanceTask->schedule((uint64)timeFromNow * 1000);
+		structureMaintenanceTask->schedule((uint64)secondsFromNow * 1000);
 	}
 }
 
@@ -378,11 +406,23 @@ void StructureObjectImplementation::updateStructureStatus() {
 	if(isCivicStructure())
 		return;
 
-	float timeDiff = ((float) lastMaintenanceTime.miliDifference()) / 1000.f;
-	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
-	float cityTaxDue = 0;
+#if DEBUG_STRUCTURE_MAINT
+	info("updateStructureStatus: surplusMaintenance = " + String::valueOf(surplusMaintenance)
+		+ " maintenanceRate = " + String::valueOf(getMaintenanceRate())
+	, true);
+#endif // DEBUG_STRUCTURE_MAINT
 
-	if (maintenanceDue > 0) {
+	float timeDiff = ((float) lastMaintenanceTime.miliDifference()) / 1000.0f;
+	float maintenanceDue = (getMaintenanceRate() / 3600.0f) * timeDiff;
+	float cityTaxDue = 0.0f;
+
+#if DEBUG_STRUCTURE_MAINT
+	info("updateStructureStatus: timeDiff = " + String::valueOf(timeDiff)
+		+ " maintenanceDue = " + String::valueOf(maintenanceDue)
+	, true);
+#endif // DEBUG_STRUCTURE_MAINT
+
+	if (maintenanceDue > 0.0f) {
 		//Only update last time if we actually progressed to get correct consumption.
 		lastMaintenanceTime.updateToCurrentTime();
 	}
@@ -393,15 +433,25 @@ void StructureObjectImplementation::updateStructureStatus() {
 		cityTaxDue = city->getPropertyTax() / 100.0f * maintenanceDue;
 
 		// sometimes a creature and building will be locked here
-		if(cityTaxDue > 0){
+		if(cityTaxDue > 0.0f){
 			Reference<PayPropertyTaxTask*> taxTask = new PayPropertyTaxTask(city, cityTaxDue);
 			taxTask->execute();
 		}
 
 	}
 
+#if DEBUG_STRUCTURE_MAINT
+	info("updateStructureStatus: maintenanceDue = " + String::valueOf(maintenanceDue)
+		+ " cityTaxDue = " + String::valueOf(cityTaxDue)
+	, true);
+#endif // DEBUG_STRUCTURE_MAINT
+
 	//Maintenance is used as decay as well so let it go below 0.
 	surplusMaintenance -= ( maintenanceDue + cityTaxDue );
+
+#if DEBUG_STRUCTURE_MAINT
+	info("updateStructureStatus: surplusMaintenance = " + String::valueOf(surplusMaintenance), true);
+#endif // DEBUG_STRUCTURE_MAINT
 
 	//Update structure condition.
 	if (surplusMaintenance < 0) {
@@ -416,28 +466,34 @@ bool StructureObjectImplementation::isDecayed() {
 }
 
 int StructureObjectImplementation::getDecayPercentage() {
-	//Update structure status.
+	int percentage = 100;
+
+	// Update structure status.
 	updateStructureStatus();
 
-	//Calculate decay.
-	int decayedBelowMaintenance = getMaxCondition();
+	// Calculate decay (if any)
+	int maxCond = getMaxCondition();
 
-	if (decayedBelowMaintenance != 0) {
-		int percentage = (decayedBelowMaintenance - getConditionDamage()) * 100 / decayedBelowMaintenance;
+	if (maxCond != 0) {
+		percentage = (maxCond - getConditionDamage()) * 100 / maxCond;
 
-		//Calculation above truncates the percentage value but we want to round it upwards.
+		// Calculation above truncates the percentage value but we want to round it upwards.
 		percentage += 1;
 		if (percentage < 0) {
 			percentage = 0;
 		} else if (percentage > 100) {
 			percentage = 100;
 		}
-
-		return percentage;
 	} else {
-		//Structure has 0 in max condition, i.e. it cannot decay. Condition is therefore always 100 %.
-		return 100;
+		// Structure has 0 in max condition, i.e. it cannot decay. Condition is therefore always 100 %.
+		percentage = 100;
 	}
+
+#if DEBUG_STRUCTURE_MAINT
+	info("getDecayPercentage() = " + String::valueOf(percentage), true);
+#endif // DEBUG_STRUCTURE_MAINT
+
+	return percentage;
 }
 
 void StructureObjectImplementation::payMaintenance(int maintenance, CreditObject* creditObj, bool cashFirst) {
@@ -560,6 +616,10 @@ int StructureObjectImplementation::getBasePowerRate(){
 		return 0;
 
 	return tmpl->getBasePowerRate();
+}
+
+float StructureObjectImplementation::getDelayDestroyHours() {
+    return 30.0f * 24.0f; // Destroy after 30 days in the hole on maintenance
 }
 
 bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {

@@ -16,6 +16,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
@@ -41,14 +42,14 @@ void StructureMaintenanceTask::run() {
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
 	if (creditObj == nullptr) {
-		info("Player does not have a valid credit object, destroying.", true);
+		strongRef->info("Player does not have a valid credit object, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 
 		return;
 	}
 
 	if (name.isEmpty()) {
-		info("Player structure has nullptr owner ghost, destroying.", true);
+		strongRef->info("Player structure has nullptr owner ghost, destroying.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
@@ -105,9 +106,15 @@ void StructureMaintenanceTask::run() {
 		//Notify owner about decay.
 		sendMailDecay(name, strongRef);
 
+		int decayCycleSeconds = 24 * 60 * 60; // Default to daily schedule
+
+#if DEBUG_STRUCTURE_RAPID_DECAY
+		decayCycleSeconds = 15; // Every 15 seconds for debugging.
+#endif // DEBUG_STRUCTURE_RAPID_DECAY
+
 		if (!strongRef->isDecayed()) {
-			//Reschedule task in 1 day.
-			reschedule(oneDayTime);
+			// Reschedule task
+			reschedule(decayCycleSeconds * 1000);
 		} else {
 			if (strongRef->isBuildingObject() && !shouldBuildingBeDestroyed(strongRef)) {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
@@ -115,12 +122,15 @@ void StructureMaintenanceTask::run() {
 				//Building is condemned since it has decayed.
 				sendMailCondemned(name, strongRef);
 
-				strongRef->info("Structure decayed, it is now condemned.");
+				strongRef->info("Structure decayed, it is now condemned.", true);
 
 				building->updateSignName(true);
-				reschedule(oneDayTime);
+
+				reschedule(decayCycleSeconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it.");
+				strongRef->info("Structure decayed, destroying it.", true);
+
+				sendMailDestroy(name, strongRef);
 
 				StructureManager::instance()->destroyStructure(strongRef);
 			}
@@ -196,12 +206,57 @@ void StructureMaintenanceTask::sendMailCondemned(const String& creoName, Structu
 	}
 }
 
-bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
-	int threeMonthsOfMaintenance = 30 * 24 * structure->getMaintenanceRate();
+void StructureMaintenanceTask::sendMailDestroy(const String& creoName, StructureObject* structure) {
+	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
 
-	if (threeMonthsOfMaintenance + structure->getSurplusMaintenance() < 0) {
-		return true;
+	if (chatManager == nullptr)
+	    return;
+
+	UnicodeString subject = "Structure Destoryed!";
+
+	String zoneName = "the void";
+	if (structure->getZone() != nullptr) {
+		zoneName = structure->getZone()->getZoneName();
+	}
+
+	String structureName = StringIdManager::instance()->getStringId(structure->getObjectName()->getFullPath().hashCode()).toString();
+
+	int outOfMaintenanceTime = abs(structure->getSurplusMaintenance()) / structure->getMaintenanceRate();
+
+	StringBuffer body;
+
+	body << "Your " << structureName;
+	body << " (" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")";
+	body << " was destroyed after being out of maintenance for more than ";
+
+	if (outOfMaintenanceTime > 24) {
+		body << String::valueOf(outOfMaintenanceTime / 24) << " days.";
 	} else {
+		body << String::valueOf(outOfMaintenanceTime) << " hours.";
+	}
+
+	body << endl << endl << "All items in the building were also destroyed." << endl;
+
+#if DEBUG_STRUCTURE_MAINT
+	structure->info("Sending destroy email To: " + creoName + " Body: " + body.toString().replaceAll("\n", "\\n"), true);
+#endif // DEBUG_STRUCTURE_MAINT
+
+	chatManager->sendMail("@player_structure:your_structure_prefix", subject, body.toString(), creoName);
+}
+
+bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
+	float delayDestroyHours = structure->getDelayDestroyHours();
+
+#if DEBUG_STRUCTURE_RAPID_DECAY
+	delayDestroyHours = 0.1f; // Delay destruction by 6 minutes in rapid decay mode
+#endif // DEBUG_STRUCTURE_RAPID_DECAY
+
+	int maxBackMaintenance = (int)(delayDestroyHours * (float)structure->getMaintenanceRate());
+
+	// Still not negative enough to destroy?
+	if (maxBackMaintenance + structure->getSurplusMaintenance() > 0) {
 		return false;
 	}
+
+	return true;
 }
