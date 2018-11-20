@@ -214,7 +214,7 @@ void StructureMaintenanceTask::sendMailDestroy(const String& creoName, Structure
 	if (chatManager == nullptr)
 	    return;
 
-	UnicodeString subject = "Structure Destoryed!";
+	UnicodeString subject = "Structure Destroyed!";
 
 	String zoneName = "the void";
 	if (structure->getZone() != nullptr) {
