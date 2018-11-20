@@ -116,19 +116,21 @@ void StructureMaintenanceTask::run() {
 			// Reschedule task
 			reschedule(decayCycleSeconds * 1000);
 		} else {
+			int outOfMaintenanceHrs = abs(strongRef->getSurplusMaintenance()) / strongRef->getMaintenanceRate();
+
 			if (strongRef->isBuildingObject() && !shouldBuildingBeDestroyed(strongRef)) {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
 
 				//Building is condemned since it has decayed.
 				sendMailCondemned(name, strongRef);
 
-				strongRef->info("Structure decayed, it is now condemned.", true);
+				strongRef->info("Structure decayed, it is now condemned, out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).", true);
 
 				building->updateSignName(true);
 
 				reschedule(decayCycleSeconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it.", true);
+				strongRef->info("Structure decayed, destroying it after out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).", true);
 
 				sendMailDestroy(name, strongRef);
 
@@ -237,9 +239,7 @@ void StructureMaintenanceTask::sendMailDestroy(const String& creoName, Structure
 
 	body << endl << endl << "All items in the building were also destroyed." << endl;
 
-#if DEBUG_STRUCTURE_MAINT
 	structure->info("Sending destroy email To: " + creoName + " Body: " + body.toString().replaceAll("\n", "\\n"), true);
-#endif // DEBUG_STRUCTURE_MAINT
 
 	chatManager->sendMail("@player_structure:your_structure_prefix", subject, body.toString(), creoName);
 }
