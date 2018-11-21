@@ -103,9 +103,6 @@ void StructureMaintenanceTask::run() {
 	} else {
 		//Start decay process.
 
-		//Notify owner about decay.
-		sendMailDecay(name, strongRef);
-
 		int decayCycleSeconds = 24 * 60 * 60; // Default to daily schedule
 
 #if DEBUG_STRUCTURE_RAPID_DECAY
@@ -113,6 +110,11 @@ void StructureMaintenanceTask::run() {
 #endif // DEBUG_STRUCTURE_RAPID_DECAY
 
 		if (!strongRef->isDecayed()) {
+			// Notify owner about decay.
+			if (strongRef->getDecayPercentage() != 100) {
+				sendMailDecay(name, strongRef);
+			}
+
 			// Reschedule task
 			reschedule(decayCycleSeconds * 1000);
 		} else {
