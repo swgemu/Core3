@@ -42,15 +42,12 @@ void StructureMaintenanceTask::run() {
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
 	if (creditObj == nullptr) {
-		strongRef->info("Player does not have a valid credit object, destroying.", true);
-		StructureManager::instance()->destroyStructure(strongRef);
-
+		destroyStructureWithReason(strongRef, "player does not have a valid credit object.");
 		return;
 	}
 
 	if (name.isEmpty()) {
-		strongRef->info("Player structure has nullptr owner ghost, destroying.", true);
-		StructureManager::instance()->destroyStructure(strongRef);
+		destroyStructureWithReason(strongRef, "player structure has nullptr owner ghost.");
 		return;
 	}
 
@@ -132,14 +129,21 @@ void StructureMaintenanceTask::run() {
 
 				reschedule(decayCycleSeconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it after out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).", true);
-
 				sendMailDestroy(name, strongRef);
 
-				StructureManager::instance()->destroyStructure(strongRef);
+				destroyStructureWithReason(strongRef, "decayed, out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).");
 			}
 		}
 	}
+}
+
+void StructureMaintenanceTask::destroyStructureWithReason(StructureObject* structure, const String& reason) {
+#if DEBUG_STRUCTURE_TASK_NO_DESTROY
+	structure->info("Will not be destroyed because DEBUG_STRUCTURE_TASK_NO_DESTROY is set, should destroy because " + reason, true);
+#else // DEBUG_STRUCTURE_TASK_NO_DESTROY
+	structure->info("Destroying because " + reason);
+	StructureManager::instance()->destroyStructure(structure);
+#endif // DEBUG_STRUCTURE_TASK_NO_DESTROY
 }
 
 void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(const String& creoName, StructureObject* structure) {
@@ -239,7 +243,9 @@ void StructureMaintenanceTask::sendMailDestroy(const String& creoName, Structure
 		body << String::valueOf(outOfMaintenanceTime) << " hours.";
 	}
 
-	body << endl << endl << "All items in the building were also destroyed." << endl;
+	if (structure->isBuildingObject()) {
+		body << endl << endl << "All items in the building were also destroyed." << endl;
+	}
 
 	structure->info("Sending destroy email To: " + creoName + " Body: " + body.toString().replaceAll("\n", "\\n"), true);
 

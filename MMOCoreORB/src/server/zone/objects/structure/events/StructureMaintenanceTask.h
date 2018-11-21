@@ -50,6 +50,7 @@ private:
 	void sendMailDecay(const String& creoName, StructureObject* structure);
 	void sendMailCondemned(const String& creoName, StructureObject* structure);
 	void sendMailDestroy(const String& creoName, StructureObject* structure);
+	void destroyStructureWithReason(StructureObject* structure, const String& reason);
 
 	bool shouldBuildingBeDestroyed(StructureObject* structure);
 };
