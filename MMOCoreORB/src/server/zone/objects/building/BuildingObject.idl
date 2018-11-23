@@ -452,4 +452,7 @@ class BuildingObject extends StructureObject {
 	public native abstract float getOutOfRangeDistance();
 
 	public native string getCellName(unsigned long cellID);
+
+	@dirty
+	public native string exportJSON(final string exportNote);
 }

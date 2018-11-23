@@ -24,7 +24,6 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
-
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 #include "tasks/EjectObjectEvent.h"
@@ -36,6 +35,8 @@
 
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
+
+#include <fstream>
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -99,6 +100,11 @@ void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 		cell->onBuildingInsertedToZone(asBuildingObject());
 	}
+
+#if ENABLE_STRUCTURE_JSON_EXPORT
+	if (getOwnerObjectID() != 0)
+		info("Exported to " + exportJSON("notifyInsertToZone"), true);
+#endif // DEBUG_STRUCTURE_MAINT
 }
 
 int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {
@@ -1716,4 +1722,96 @@ String BuildingObjectImplementation::getCellName(uint64 cellID) {
 		return "";
 
 	return cellProperty->getName();
+}
+
+String BuildingObjectImplementation::exportJSON(const String& exportNote) {
+	std::function<void(nlohmann::json& jsonData, SceneObject* obj)> exportRecursive = [&exportRecursive](nlohmann::json& jsonData, SceneObject* obj) {
+		if (obj == nullptr) {
+			return;
+		}
+
+		nlohmann::json objJSON;
+		obj->writeJSON(objJSON);
+		jsonData[String::valueOf(obj->getObjectID()).toCharArray()] = objJSON;
+
+		for (int i = 0; i < obj->getContainerObjectsSize(); ++i) {
+			auto nextObj = obj->getContainerObject(i);
+
+			exportRecursive(jsonData, nextObj);
+		}
+	};
+
+	uint64 oid = getObjectID();
+
+	nlohmann::json exportedObjects = nlohmann::json::object();
+
+	// Parent object
+	nlohmann::json structureJSON;
+	writeJSON(structureJSON);
+	exportedObjects[String::valueOf(oid).toCharArray()] = structureJSON;
+
+	// Dump Cells
+	for (int i = 1; i <= getMapCellSize(); ++i) {
+		auto cell = getCell(i);
+
+		if (cell != nullptr) {
+			try {
+				ReadLocker rlocker(cell->getContainerLock());
+				exportRecursive(exportedObjects, cell);
+			} catch (...) {
+				info("Failed to export cell[" + String::valueOf(i) + "]", true);
+			}
+		}
+	}
+
+	// Dump childObjects
+	auto childObjects = getChildObjects();
+
+	for (int i = 0;i < childObjects->size(); ++i) {
+		try {
+			exportRecursive(exportedObjects, childObjects->get(i));
+		} catch (...) {
+			info("Failed to export childObject[" + String::valueOf(i) + "]", true);
+		}
+	}
+
+	// Metadata
+	Time now;
+	nlohmann::json metaData = nlohmann::json::object();
+	metaData["exportTime"] = now.getFormattedTimeFull();
+	metaData["exportNote"] = exportNote;
+	metaData["rootObjectID"] = oid;
+	metaData["rootObjectClassName"] = _className;
+	metaData["ownerObjectID"] = getOwnerObjectID();
+
+	// Root object is meta "exportObject"
+	nlohmann::json exportObject;
+	exportObject["metadata"] = metaData;
+	exportObject["objects"] = exportedObjects;
+
+	// Save to file...
+	StringBuffer fileNameBuf;
+
+	// Spread the files out across directories
+	fileNameBuf << "exports";
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000000000FFFFFF) >> 10));
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::valueOf(oid) << ".json";
+
+	String fileName = fileNameBuf.toString();
+
+	std::ofstream jsonFile(fileName.toCharArray());
+	jsonFile << std::setw(4) << exportObject << std::endl;
+	jsonFile.close();
+
+	return fileName;
 }
