@@ -17,7 +17,7 @@ protected:
 	uint64 nextExplodeTime;
 	int attackSpeed;
 	const static int CAPACITY = 20;
-	Vector<WeaponObject*> mines;
+	Vector<ManagedReference<WeaponObject*>> mines;
 	SharedInstallationObjectTemplate* templateData;
 	int maxRange;
 public:
@@ -32,6 +32,12 @@ public:
 
 	~MinefieldDataComponent(){
 
+	}
+
+	void writeJSON(nlohmann::json& j) const {
+		DataObjectComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(mines);
 	}
 
 	void initializeTransientMembers(){
