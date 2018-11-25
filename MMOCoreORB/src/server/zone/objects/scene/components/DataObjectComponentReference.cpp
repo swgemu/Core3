@@ -40,7 +40,7 @@ void to_json(nlohmann::json& j, const DataObjectComponentReference& ref) {
 	auto object = ref.get();
 
 	if (object != nullptr)
-		j = *object;
+		object->writeJSON(j);
 	else
 		j = {};
 

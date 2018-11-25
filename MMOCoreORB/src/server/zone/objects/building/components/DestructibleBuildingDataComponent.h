@@ -72,6 +72,8 @@ public:
 
 	}
 
+	void writeJSON(nlohmann::json& j) const;
+
 	bool toBinaryStream(ObjectOutputStream* stream);
 
 	bool parseFromBinaryStream(ObjectInputStream* stream);

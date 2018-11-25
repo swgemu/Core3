@@ -11,6 +11,33 @@ void DestructibleBuildingDataComponent::setState(int state) {
 		intCurrentState = state;
 }
 
+void DestructibleBuildingDataComponent::writeJSON(nlohmann::json& j) const {
+	BuildingDataComponent::writeJSON(j);
+
+	SERIALIZE_JSON_MEMBER(dnaStrand);
+	SERIALIZE_JSON_MEMBER(dnaLocks);
+	SERIALIZE_JSON_MEMBER(currentDnaChain);
+	SERIALIZE_JSON_MEMBER(powerSwitchRules);
+	SERIALIZE_JSON_MEMBER(powerSwitchStates);
+	SERIALIZE_JSON_MEMBER(intCurrentState);
+	SERIALIZE_JSON_MEMBER(terminalDamaged);
+	SERIALIZE_JSON_MEMBER(inRepair);
+	SERIALIZE_JSON_MEMBER(turretSlots);
+	SERIALIZE_JSON_MEMBER(minefieldSlots);
+	SERIALIZE_JSON_MEMBER(scannerSlots);
+	SERIALIZE_JSON_MEMBER(lastVulnerableTime);
+	SERIALIZE_JSON_MEMBER(nextVulnerableTime);
+	SERIALIZE_JSON_MEMBER(vulnerabilityEndTime);
+	SERIALIZE_JSON_MEMBER(placementTime);
+	SERIALIZE_JSON_MEMBER(lastResetTime);
+	SERIALIZE_JSON_MEMBER(uplinkBand);
+	SERIALIZE_JSON_MEMBER(activeDefenses);
+	SERIALIZE_JSON_MEMBER(defenseAddedThisVuln);
+	SERIALIZE_JSON_MEMBER(terminalsSpawned);
+	SERIALIZE_JSON_MEMBER(baseTerminals);
+}
+
+
 void DestructibleBuildingDataComponent::initializeTransientMembers() {
 	uplinkBand = System::random(0x9);
 }

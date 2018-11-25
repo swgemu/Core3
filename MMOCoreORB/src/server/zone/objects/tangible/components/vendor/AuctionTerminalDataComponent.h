@@ -29,6 +29,12 @@ public:
 
 	}
 
+	void writeJSON(nlohmann::json& j) const {
+		DataObjectComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(uid);
+	}
+
 	void initializeTransientMembers() {
 		ManagedReference<SceneObject*> strongParent = parent.get();
 		if(strongParent != NULL && strongParent->getZoneServer() != NULL) {

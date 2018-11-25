@@ -20,6 +20,10 @@ public:
 
 	}
 
+	void writeJSON(nlohmann::json& j) const {
+		SERIALIZE_JSON_MEMBER(fireworkList);
+	}
+
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		int _currentOffset = stream->getOffset();
 		stream->writeShort(0);

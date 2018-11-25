@@ -25,7 +25,13 @@ public:
 
 	}
 
-	byte getId() {
+	void writeJSON(nlohmann::json& j) const {
+		DataObjectComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(id);
+	}
+
+	byte getId() const {
 		return id;
 	}
 

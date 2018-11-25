@@ -25,6 +25,13 @@ public:
 
 	}
 
+	void writeJSON(nlohmann::json& j) const {
+		DataObjectComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(bank)
+		SERIALIZE_JSON_MEMBER(game);
+	}
+
 	/**
 	 * Set the game for this terminal
 	 */
