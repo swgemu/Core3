@@ -46,6 +46,14 @@ public:
 	void getStructureList(Vector<ManagedReference<StructureObject* > >* list, ZoneServer* srv,uint32 planet);
 	void payStructures(CreatureObject* player,VectorMap<unsigned long long, int> assignments);
 	long calculateRunTime(const VectorMap<unsigned long long, int>& assignments, const String& localPlanet, DroidObject* droid);
+
+	void writeJSON(nlohmann::json& j) const {
+		BaseDroidModuleComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(moduleRating);
+		SERIALIZE_JSON_MEMBER(maxStructures);
+		SERIALIZE_JSON_MEMBER(assignedStructures);
+	}
 private:
 	void validateStructures();
 	bool isValidStructure(uint64 objectID);

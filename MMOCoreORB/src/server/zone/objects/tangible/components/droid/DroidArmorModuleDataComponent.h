@@ -36,7 +36,7 @@ public:
 
 	String toString();
 
-    bool isStackable() { return true; }
+    	bool isStackable() { return true; }
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 

@@ -51,6 +51,16 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
+	void writeJSON(nlohmann::json& j) const {
+		BaseDroidModuleComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(active);
+		SERIALIZE_JSON_MEMBER(installedEffects);
+		SERIALIZE_JSON_MEMBER(configuredEffects);
+		SERIALIZE_JSON_MEMBER(configuredDelays);
+		SERIALIZE_JSON_MEMBER(currentEffectIndex);
+	}
+
 private:
 
 	int writeObjectMembers(ObjectOutputStream* stream);
