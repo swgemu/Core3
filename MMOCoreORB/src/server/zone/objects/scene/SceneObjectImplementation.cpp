@@ -1911,16 +1911,20 @@ int SceneObjectImplementation::compareTo(SceneObject* obj) {
 	return asSceneObject()->compareTo(obj);
 }
 
-void SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
+int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
+	int count = 0;
+
 	JSONSerializationType thisObject;
 	writeJSON(thisObject);
 	j[String::valueOf(getObjectID()).toCharArray()] = thisObject;
+
+	count++;
 
 	for (int i = 0; i < getContainerObjectsSize(); ++i) {
 		auto obj = getContainerObject(i);
 
 		if (obj != nullptr)
-			obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j);
 	}
 
 	auto childObjects = getChildObjects();
@@ -1929,15 +1933,17 @@ void SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 		auto obj = childObjects->get(i);
 
 		if (obj != nullptr)
-			obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j);
 	}
 
 	for (int i = 0;i < getSlottedObjectsSize(); ++i) {
 		auto obj =  getSlottedObject(i);
 
 		if (obj != nullptr)
-			obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j);
 	}
+
+	return count;
 }
 
 String SceneObjectImplementation::exportJSON(const String& exportNote) {
@@ -1946,8 +1952,10 @@ String SceneObjectImplementation::exportJSON(const String& exportNote) {
 	// Collect object and all children
 	nlohmann::json exportedObjects = nlohmann::json::object();
 
+	int count = 0;
+
 	try {
-		writeRecursiveJSON(exportedObjects);
+		count = writeRecursiveJSON(exportedObjects);
 	} catch (Exception& e) {
 		info("SceneObjectImplementation::writeRecursiveJSON(): failed:" + e.getMessage(), true);
 	}
@@ -1959,6 +1967,7 @@ String SceneObjectImplementation::exportJSON(const String& exportNote) {
 	metaData["exportNote"] = exportNote;
 	metaData["rootObjectID"] = oid;
 	metaData["rootObjectClassName"] = _className;
+	metaData["objectCount"] = count;
 
 	// Root object is meta "exportObject"
 	nlohmann::json exportObject;
