@@ -1725,54 +1725,15 @@ String BuildingObjectImplementation::getCellName(uint64 cellID) {
 }
 
 String BuildingObjectImplementation::exportJSON(const String& exportNote) {
-	std::function<void(nlohmann::json& jsonData, SceneObject* obj)> exportRecursive = [&exportRecursive](nlohmann::json& jsonData, SceneObject* obj) {
-		if (obj == nullptr) {
-			return;
-		}
-
-		nlohmann::json objJSON;
-		obj->writeJSON(objJSON);
-		jsonData[String::valueOf(obj->getObjectID()).toCharArray()] = objJSON;
-
-		for (int i = 0; i < obj->getContainerObjectsSize(); ++i) {
-			auto nextObj = obj->getContainerObject(i);
-
-			exportRecursive(jsonData, nextObj);
-		}
-	};
-
 	uint64 oid = getObjectID();
 
+	// Collect object and all children
 	nlohmann::json exportedObjects = nlohmann::json::object();
 
-	// Parent object
-	nlohmann::json structureJSON;
-	writeJSON(structureJSON);
-	exportedObjects[String::valueOf(oid).toCharArray()] = structureJSON;
-
-	// Dump Cells
-	for (int i = 1; i <= getMapCellSize(); ++i) {
-		auto cell = getCell(i);
-
-		if (cell != nullptr) {
-			try {
-				ReadLocker rlocker(cell->getContainerLock());
-				exportRecursive(exportedObjects, cell);
-			} catch (...) {
-				info("Failed to export cell[" + String::valueOf(i) + "]", true);
-			}
-		}
-	}
-
-	// Dump childObjects
-	auto childObjects = getChildObjects();
-
-	for (int i = 0;i < childObjects->size(); ++i) {
-		try {
-			exportRecursive(exportedObjects, childObjects->get(i));
-		} catch (...) {
-			info("Failed to export childObject[" + String::valueOf(i) + "]", true);
-		}
+	try {
+		StructureObjectImplementation::writeRecursiveJSON(exportedObjects);
+	} catch (Exception& e) {
+		info("StructureObjectImplementation::writeRecursiveJSON(): failed:" + e.getMessage(), true);
 	}
 
 	// Metadata

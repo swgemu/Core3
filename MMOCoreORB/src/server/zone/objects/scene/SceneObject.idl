@@ -56,6 +56,8 @@ include templates.collision.BaseBoundingVolume;
 include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
 
+include engine.util.JSONSerializationType;
+
 @mock
 @json
 class SceneObject extends QuadTreeEntry implements Logger, Metrics {
@@ -2081,5 +2083,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	public abstract native boolean isInNavMesh();
+
+	@dirty
+	@local
+	public native void writeRecursiveJSON(@dereferenced JSONSerializationType j);
 }
 

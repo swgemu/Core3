@@ -1908,3 +1908,32 @@ int SceneObject::compareTo(SceneObject* obj) {
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
 	return asSceneObject()->compareTo(obj);
 }
+
+void SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
+	JSONSerializationType thisObject;
+	writeJSON(thisObject);
+	j[String::valueOf(getObjectID()).toCharArray()] = thisObject;
+
+	for (int i = 0; i < getContainerObjectsSize(); ++i) {
+		auto obj = getContainerObject(i);
+
+		if (obj != nullptr)
+			obj->writeRecursiveJSON(j);
+	}
+
+	auto childObjects = getChildObjects();
+
+	for (int i = 0;i < childObjects->size(); ++i) {
+		auto obj = childObjects->get(i);
+
+		if (obj != nullptr)
+			obj->writeRecursiveJSON(j);
+	}
+
+	for (int i = 0;i < getSlottedObjectsSize(); ++i) {
+		auto obj =  getSlottedObject(i);
+
+		if (obj != nullptr)
+			obj->writeRecursiveJSON(j);
+	}
+}
