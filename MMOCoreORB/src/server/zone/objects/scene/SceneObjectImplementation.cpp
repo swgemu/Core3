@@ -1923,8 +1923,11 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 	for (int i = 0; i < getContainerObjectsSize(); ++i) {
 		auto obj = getContainerObject(i);
 
-		if (obj != nullptr)
+		if (obj != nullptr) {
+			ReadLocker locker(obj);
+
 			count += obj->writeRecursiveJSON(j);
+		}
 	}
 
 	auto childObjects = getChildObjects();
@@ -1932,15 +1935,21 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 	for (int i = 0;i < childObjects->size(); ++i) {
 		auto obj = childObjects->get(i);
 
-		if (obj != nullptr)
+		if (obj != nullptr) {
+			ReadLocker locker(obj);
+
 			count += obj->writeRecursiveJSON(j);
+		}
 	}
 
 	for (int i = 0;i < getSlottedObjectsSize(); ++i) {
 		auto obj =  getSlottedObject(i);
 
-		if (obj != nullptr)
+		if (obj != nullptr) {
+			ReadLocker locker(obj);
+
 			count += obj->writeRecursiveJSON(j);
+		}
 	}
 
 	return count;
