@@ -41,6 +41,8 @@
 
 #include "variables/ContainerPermissions.h"
 
+#include <fstream>
+
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
@@ -1936,4 +1938,53 @@ void SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 		if (obj != nullptr)
 			obj->writeRecursiveJSON(j);
 	}
+}
+
+String SceneObjectImplementation::exportJSON(const String& exportNote) {
+	uint64 oid = getObjectID();
+
+	// Collect object and all children
+	nlohmann::json exportedObjects = nlohmann::json::object();
+
+	try {
+		writeRecursiveJSON(exportedObjects);
+	} catch (Exception& e) {
+		info("SceneObjectImplementation::writeRecursiveJSON(): failed:" + e.getMessage(), true);
+	}
+
+	// Metadata
+	Time now;
+	nlohmann::json metaData = nlohmann::json::object();
+	metaData["exportTime"] = now.getFormattedTimeFull();
+	metaData["exportNote"] = exportNote;
+	metaData["rootObjectID"] = oid;
+	metaData["rootObjectClassName"] = _className;
+
+	// Root object is meta "exportObject"
+	nlohmann::json exportObject;
+	exportObject["metadata"] = metaData;
+	exportObject["objects"] = exportedObjects;
+
+	// Save to file...
+	StringBuffer fileNameBuf;
+
+	// Spread the files out across directories
+	fileNameBuf << "exports";
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
+	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+
+	fileNameBuf << "/" << String::valueOf(oid) << ".json";
+
+	String fileName = fileNameBuf.toString();
+
+	std::ofstream jsonFile(fileName.toCharArray());
+	jsonFile << std::setw(4) << exportObject << std::endl;
+	jsonFile.close();
+
+	return fileName;
 }
