@@ -5,6 +5,296 @@ rebelCoordinatorConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+coa3_init_has_disk = ConvoScreen:new {
+	id = "coa3_init_has_disk",
+	leftDialog = "@conversation/coa3wcoordinator:s_fec795", -- Excellent work! To be honest, I didn't think you could pull it off. You must have done some real smooth talking! I'll start analyzing the disk right away but it is going to take some time. Why don't you go and speak with the Tactical Officer, I believe he has something for you to do. You can find him in the Combat Guild of this city.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_has_disk);
+
+coa3_init_go_to_princess = ConvoScreen:new {
+	id = "coa3_init_go_to_princess",
+	leftDialog = "@conversation/coa3wcoordinator:s_c9282e23", -- Have you been to see the Princess yet? You probably don't want to keep her waiting. Anyway, was there something I can help you with right now?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_bc0e9972", "coa3_leave_soon"}, -- Nothing for right now, thanks.
+		{"@conversation/coa3wcoordinator:s_52cc7bda", "coa3_thought_was_correct"}, -- Are you sure that waypoint was correct?
+		{"@conversation/coa3wcoordinator:s_315ff574", "coa3_thats_a_shame"}, -- I can't make it there right now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_princess);
+
+coa3_leave_soon = ConvoScreen:new {
+	id = "coa3_leave_soon",
+	leftDialog = "@conversation/coa3wcoordinator:s_ecae16e7", -- Ok, carry on. You should probably leave soon though.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_leave_soon);
+
+coa3_thought_was_correct = ConvoScreen:new {
+	id = "coa3_thought_was_correct",
+	leftDialog = "@conversation/coa3wcoordinator:s_cd603241", -- I thought that it was correct. I'll update your datapad again just to be safe.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_thought_was_correct);
+
+coa3_thats_a_shame = ConvoScreen:new {
+	id = "coa3_thats_a_shame",
+	leftDialog = "@conversation/coa3wcoordinator:s_45cbfb7d", -- Well that's a shame. If you change your mind, please let me know.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_thats_a_shame);
+
+coa3_init_has_lookout = ConvoScreen:new {
+	id = "coa3_init_has_lookout",
+	leftDialog = "@conversation/coa3wcoordinator:s_882bc6e0", -- Well, how did things go?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_a6f2327f", "coa3_cornered_market_reminder"}, -- What were the details of the mission again?
+		{"@conversation/coa3wcoordinator:s_7b9e2f5e", "coa3_ran_into_trouble"}, -- Can I have another waypoint?
+		{"@conversation/coa3wcoordinator:s_75565d5a", "coa3_friendly_first"}, -- Any hints?
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_later"}, -- I can't do this right now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_has_lookout);
+
+coa3_ran_into_trouble = ConvoScreen:new {
+	id = "coa3_ran_into_trouble",
+	leftDialog = "@conversation/coa3wcoordinator:s_8ee9343e", -- Ran into trouble did you? Well there are plenty of lookouts out there still. Here is the location of another one. Come back as soon as you find any sort of hard data about that caravan and maybe we can determine where it was heading. Good luck to you!
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_ran_into_trouble);
+
+coa3_friendly_first = ConvoScreen:new {
+	id = "coa3_friendly_first",
+	leftDialog = "@conversation/coa3wcoordinator:s_cf35e3d5", -- A direct approach might get you killed. You'll need to get friendly with them first and then maybe they will trust you and open up. Think like a thug. Thugs are generally greedy, selfish, out for themselves. They like things like drinking, gambling, cheating, carousing; that sort of thing.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_friendly_first);
+
+coa3_come_back_later = ConvoScreen:new {
+	id = "coa3_come_back_later",
+	leftDialog = "@conversation/coa3wcoordinator:s_a3ea7bf6", -- I'm sorry to hear that. Come back later if you change your mind.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_come_back_later);
+
+coa3_init_complete = ConvoScreen:new {
+	id = "coa3_init_complete",
+	leftDialog = "@conversation/coa3wcoordinator:s_e2c3d142", -- Good to see you again. Thanks to your efforts we stand a good chance of finding an alternative source of flora for Dead Eye. You're to be commended. I don't have anything else I need from you right now, but you might ask our Tactical Officer at the Combat Guild if he still needs helping tracking down and destroying those warehouses.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_complete);
+
+coa3_init_go_to_info = ConvoScreen:new {
+	id = "coa3_init_go_to_info",
+	leftDialog = "@conversation/coa3wcoordinator:s_6837ec87", -- Oh it's you again! I didn't expect to see you so soon. Unfortunately, I'm still crunching some data right now. Why don't you go and speak with our Information Officer. You can find him in the Commerce Guild in this city. Get all details from him about our current situation and by the time you're done with that, I should be done analyzing this data.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_info);
+
+coa3_init_go_to_tact = ConvoScreen:new {
+	id = "coa3_init_go_to_tact",
+	leftDialog = "@conversation/coa3wcoordinator:s_19d54dc3", -- Back so soon? I'm still trying to break the encryption on this disk. It's going to take me some time. In the mean time, go and speak with the Tactical Officer. You can find him in the Combat Guild in this city. I'm sure he has plenty that needs to be done.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_tact);
+
+coa3_init_completed_tact = ConvoScreen:new {
+	id = "coa3_init_completed_tact",
+	leftDialog = "@conversation/coa3wcoordinator:s_fa0fdb09", -- Great to see you again. Those disks you acquired have been of great help to our Tactical Officer. He'll be able to assign as many assault missions as you can take, but there is something of more importance if you're up for it.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_f35aaa26", "coa3_big_impression"}, -- I'm up for anything.
+		{"@conversation/coa3wcoordinator:s_d819b34e", "coa3_count_on_support"}, -- I'm not able to do this now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_completed_tact);
+
+coa3_big_impression = ConvoScreen:new {
+	id = "coa3_big_impression",
+	leftDialog = "@conversation/coa3wcoordinator:s_a97e415d", -- I thought you'd say that. You've made a big impression and the Princess has decided to oversee the operation herself. She said she wanted to speak with you personally about it. I've added a waypoint to your datapad with the location of the off-world headquarters. I'd head there at once so you don't keep her waiting.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_big_impression);
+
+coa3_count_on_support = ConvoScreen:new {
+	id = "coa3_count_on_support",
+	leftDialog = "@conversation/coa3wcoordinator:s_740fcda6", -- That's too bad, I was hoping I could count on your support with this. The offer still stands if you change your mind.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_count_on_support);
+
+coa3_init_completed_info = ConvoScreen:new {
+	id = "coa3_init_completed_info",
+	leftDialog = "@conversation/coa3wcoordinator:s_4ba81cc8", -- Ah good, you're back! I've finished analyzing the data from our most recent intelligence and it looks pretty promising. I think we are ready to proceed with our plan. I'll need you to go undercover. If you're successful you probably won't need to fire a single shot. If you fail, that's a different story and we're back to square one. Do you have any questions?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_b4f92479", "coa3_cornered_market"}, -- What are the details of this mission?
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
+		{"@conversation/coa3wcoordinator:s_28de3a91", "coa3_pose_as_them"}, -- Enough details, I'm ready to go.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init_completed_info);
+
+coa3_cornered_market = ConvoScreen:new {
+	id = "coa3_cornered_market",
+	leftDialog = "@conversation/coa3wcoordinator:s_ad11a99b", -- As I'm sure you know various underworld organizations have all but cornered the market on this Alderaanian Flora. As to be expected, Jabba the Hutt has come out ahead in this game and he seems to be the one doing the most business. This flora is enormously valuable so obviously Jabba's rivals are taking every opportunity to hijack any shipments they come across. Knowing this, Jabba is using a decentralized system of storage and transport to cut down on losses.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_efdb954e", "coa3_traffic_flora"}, -- Ok, go on.
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
+		{"@conversation/coa3wcoordinator:s_28de3a91", "coa3_pose_as_them"}, -- Enough details, I'm ready to go.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_cornered_market);
+
+coa3_cornered_market_reminder = ConvoScreen:new {
+	id = "coa3_cornered_market_reminder",
+	leftDialog = "@conversation/coa3wcoordinator:s_ad11a99b", -- As I'm sure you know various underworld organizations have all but cornered the market on this Alderaanian Flora. As to be expected, Jabba the Hutt has come out ahead in this game and he seems to be the one doing the most business. This flora is enormously valuable so obviously Jabba's rivals are taking every opportunity to hijack any shipments they come across. Knowing this, Jabba is using a decentralized system of storage and transport to cut down on losses.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_efdb954e", "coa3_traffic_flora_reminder"}, -- Ok, go on.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_cornered_market_reminder);
+
+coa3_traffic_flora = ConvoScreen:new {
+	id = "coa3_traffic_flora",
+	leftDialog = "@conversation/coa3wcoordinator:s_4724fd7d", -- He's using land vehicles to traffic the flora to and from the storehouses with a complex system of lookouts scattered along the routes. If any trouble is spotted, the caravans are alerted and they use a different route. It's all very organized. The intelligence I just analyzed reveals the location of all the lookouts on the planet and it indicates a caravan is to make a delivery today. Predicting the caravan's destination is simply impossible. This is where you come in.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_19d2e135", "coa3_gather_information"}, -- Interesting. Please continue.
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
+		{"@conversation/coa3wcoordinator:s_28de3a91", "coa3_pose_as_them"}, -- Enough details, I'm ready to go.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_traffic_flora);
+
+coa3_traffic_flora_reminder = ConvoScreen:new {
+	id = "coa3_traffic_flora_reminder",
+	leftDialog = "@conversation/coa3wcoordinator:s_4724fd7d", -- He's using land vehicles to traffic the flora to and from the storehouses with a complex system of lookouts scattered along the routes. If any trouble is spotted, the caravans are alerted and they use a different route. It's all very organized. The intelligence I just analyzed reveals the location of all the lookouts on the planet and it indicates a caravan is to make a delivery today. Predicting the caravan's destination is simply impossible. This is where you come in.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_19d2e135", "coa3_gather_information_reminder"}, -- Interesting. Please continue.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_traffic_flora_reminder);
+
+coa3_gather_information = ConvoScreen:new {
+	id = "coa3_gather_information",
+	leftDialog = "@conversation/coa3wcoordinator:s_1fd11fc5", -- They are so cautious that caravans have been known to zig zag and circle for hours before finally heading to their destination unless things are completely safe. Simple observation won't tell us anything, so we need you to pose as a member of their organization and try to gather information about where that caravan is headed. We need hard information; disks, papers, whatever you can find. As you can imagine, this will be dangerous.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_4ca03ddb", "coa3_incredibly_suspicious"}, -- How so?
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
+		{"@conversation/coa3wcoordinator:s_28de3a91", "coa3_pose_as_them"}, -- Enough details, I'm ready to go.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_gather_information);
+
+coa3_gather_information_reminder = ConvoScreen:new {
+	id = "coa3_gather_information_reminder",
+	leftDialog = "@conversation/coa3wcoordinator:s_1fd11fc5", -- They are so cautious that caravans have been known to zig zag and circle for hours before finally heading to their destination unless things are completely safe. Simple observation won't tell us anything, so we need you to pose as a member of their organization and try to gather information about where that caravan is headed. We need hard information; disks, papers, whatever you can find. As you can imagine, this will be dangerous.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_4ca03ddb", "coa3_incredibly_suspicious_reminder"}, -- How so?
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_gather_information_reminder);
+
+coa3_incredibly_suspicious = ConvoScreen:new {
+	id = "coa3_incredibly_suspicious",
+	leftDialog = "@conversation/coa3wcoordinator:s_1f81bc3c", -- These people are incredibly suspicious so you'll need to be very convincing. If they suspect you they won't hesitate to attack. If that happens, then I'm afraid we'll have to start over and try it again. Are you prepared to take on this task?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_d55f2579", "coa3_uploaded_lookout_location"}, -- I'm ready to go.
+		{"@conversation/coa3wcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_incredibly_suspicious);
+
+coa3_incredibly_suspicious_reminder = ConvoScreen:new {
+	id = "coa3_incredibly_suspicious_reminder",
+	leftDialog = "@conversation/coa3wcoordinator:s_1f81bc3c", -- These people are incredibly suspicious so you'll need to be very convincing. If they suspect you they won't hesitate to attack. If that happens, then I'm afraid we'll have to start over and try it again. Are you prepared to take on this task?
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_incredibly_suspicious_reminder);
+
+coa3_uploaded_lookout_location = ConvoScreen:new {
+	id = "coa3_uploaded_lookout_location",
+	leftDialog = "@conversation/coa3wcoordinator:s_eae61031", -- Great! I've uploaded the location of one of their lookouts to your datapad. Pose as one of them and do whatever you can to get your hands on some hard data about that caravan. Things like papers, manifests or disks. Come back as soon as you find something. Be careful and remember to think like a thug. If things go bad, you'll have no choice but to fight. Should that happen, come back and we can try it again.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_uploaded_lookout_location);
+
+coa3_pose_as_them = ConvoScreen:new {
+	id = "coa3_pose_as_them",
+	leftDialog = "@conversation/coa3wcoordinator:s_26b400f9", -- Pose as one of them and do whatever you can to get your hands on some hard data about that caravan. Things like papers, manifests or disks. Come back as soon as you find something. Be careful and remember to think like a thug. If things go bad, you'll have no choice but to fight. Should that happen, come back and we can try it again.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_pose_as_them);
+
+coa3_come_back_when_ready = ConvoScreen:new {
+	id = "coa3_come_back_when_ready",
+	leftDialog = "@conversation/coa3wcoordinator:s_37281366", -- I understand. I wouldn't want you to take on this mission unless you are completely prepared. Come back when you are ready.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_come_back_when_ready);
+
+coa3_init = ConvoScreen:new {
+	id = "coa3_init",
+	leftDialog = "@conversation/coa3wcoordinator:s_8d99c71a", -- I see you're back. Good job. Everyone's talking about how you were able to break into that relay station and send the Princess' message. Quite a feat. I haven't been fully briefed yet, but I hear Vacca's made his decision. Whichever side he picks, things are going to get interesting. You want to stick around and help? We could use you.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_afc313e6", "coa3_come_out_on_top"}, -- I'll do what I can to help.
+		{"@conversation/coa3wcoordinator:s_20eec74a", "coa3_must_be_very_busy"}, -- I need to do something else right now.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_init);
+
+coa3_come_out_on_top = ConvoScreen:new {
+	id = "coa3_come_out_on_top",
+	leftDialog = "@conversation/coa3wcoordinator:s_e0227bd9", -- Excellent! If you do as well as last time, we will definitely come out on top. I haven't been briefed on the details so you'll have to go speak with the Information Officer, he'll fill you in. You can find him in the Commerce Guild Hall in this city.
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoordinator:s_f595b0cb", "coa3_give_you_report"}, -- Ok, I'll go see what he has to say.
+	}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_come_out_on_top);
+
+coa3_give_you_report = ConvoScreen:new {
+	id = "coa3_give_you_report",
+	leftDialog = "@conversation/coa3wcoordinator:s_4f6ac618", -- Good. He'll give you a status report. By the time you return from the Commerce Guild Hall I should have updated intel on our next move. See you soon.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_give_you_report);
+
+coa3_must_be_very_busy = ConvoScreen:new {
+	id = "coa3_must_be_very_busy",
+	leftDialog = "@conversation/coa3wcoordinator:s_fb75278f", -- I understand. You must be a very busy person. We haven't forgotten about what you did for us last time and we don't want to put you out. We really could use your help though. Come back if you change your mind and see me. I'm sure we can use your talents.
+	stopConversation = "true",
+	options = {}
+}
+rebelCoordinatorConvoTemplate:addScreen(coa3_must_be_very_busy);
+
 generic_response = ConvoScreen:new {
 	id = "generic_response",
 	leftDialog = "@recruiting/rebel_recruit:rr13", -- Hello friend. What can I do for you?
