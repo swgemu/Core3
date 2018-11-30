@@ -42,6 +42,7 @@
 #include "variables/ContainerPermissions.h"
 
 #include <fstream>
+#include <sys/stat.h>
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
