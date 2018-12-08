@@ -5363,7 +5363,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			highDamageAttacker = attacker;
 		}
 
-		if (ghost->hasOnKillerList(attacker->getObjectID())) {
+		if (attackerGhost->hasOnVictimList(player->getObjectID())) {
 			String stringFile;
 
 			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
@@ -5413,7 +5413,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			}
 		}
 
-		ghost->addToKillerList(attacker->getObjectID());
+		attackerGhost->addToVictimList(player->getObjectID());
 		throttleOnly = false;
 
 		if (defenderPvpRating > PlayerObject::PVP_RATING_FLOOR) {
