@@ -151,7 +151,7 @@ class PlayerObject extends IntangibleObject {
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 
 	@dereferenced
-	protected Vector<unsigned long> newKillerList;
+	protected Vector<unsigned long> victimList;
 
 	protected unsigned long declaredResidence;
 
@@ -1831,25 +1831,25 @@ class PlayerObject extends IntangibleObject {
 
 	public native void doFieldFactionChange(int newStatus);
 
-	public void addToKillerList(unsigned int playerID) {
-		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && newKillerList.size() > 0)
-			newKillerList.removeAll();
+	public void addToVictimList(unsigned int playerID) {
+		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && victimList.size() > 0)
+			victimList.removeAll();
 
-		newKillerList.add(0, playerID);
+		victimList.add(0, playerID);
 
-		if (newKillerList.size() > 20)
-			newKillerList.remove(newKillerList.size() - 1);
+		if (victimList.size() > 20)
+			victimList.remove(victimList.size() - 1);
 
 		lastPvpRatingUpdate.updateToCurrentTime();
 	}
 
-	public boolean hasOnKillerList(unsigned int playerID) {
-		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && newKillerList.size() > 0) {
-			newKillerList.removeAll();
+	public boolean hasOnVictimList(unsigned int playerID) {
+		if (lastPvpRatingUpdate.miliDifference() >= PVP_RESET_TIME && victimList.size() > 0) {
+			victimList.removeAll();
 			return false;
 		}
 
-		return newKillerList.contains(playerID);
+		return victimList.contains(playerID);
 	}
 
 	@read
