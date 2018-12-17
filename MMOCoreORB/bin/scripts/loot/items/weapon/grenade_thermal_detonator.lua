@@ -7,7 +7,7 @@ grenade_thermal_detonator = {
 		{"mindamage",570,870,0},
 		{"maxdamage",1334,1690,0},
 		{"attackspeed",5.4,2.4,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-16,14,0},
 		{"maxrange",64,64,0},

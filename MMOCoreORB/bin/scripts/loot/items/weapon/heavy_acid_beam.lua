@@ -7,7 +7,7 @@ heavy_acid_beam = {
 		{"mindamage",833,1057,0},
 		{"maxdamage",1500,3700,0},
 		{"attackspeed",8.7,4.4,1},
-		{"woundchance",19,35,0},
+		{"woundchance",19,35,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",0,10,0},
 		{"maxrange",64,64,0},

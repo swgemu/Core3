@@ -7,7 +7,7 @@ mine_xg = {
 		{"mindamage",70,130,0},
 		{"maxdamage",280,520,0},
 		{"attackspeed",7,4,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",0,0,0},
 		{"maxrange",32,32,0},

@@ -8,8 +8,8 @@ rifle_spraystick = {
 	craftingValues = {
 		{"mindamage",6,12,0},
 		{"maxdamage",73,138,0},
-		{"attackspeed",3.6,2.4,0},
-		{"woundchance",9,19,0},
+		{"attackspeed",3.6,2.4,1},
+		{"woundchance",9,19,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",18,7,0},
 		{"attackactioncost",52,28,0},

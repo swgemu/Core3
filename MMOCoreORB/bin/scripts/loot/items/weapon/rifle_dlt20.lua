@@ -8,8 +8,8 @@ rifle_dlt20 = {
 	craftingValues = {
 		{"mindamage",61,87,0},
 		{"maxdamage",94,149,0},
-		{"attackspeed",8.4,6.1,0},
-		{"woundchance",4.3,11.2,0},
+		{"attackspeed",8.4,6.1,1},
+		{"woundchance",4.3,11.2,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",22,14,0},
 		{"attackactioncost",43,23,0},

@@ -8,7 +8,7 @@ bh_armor_chest_plate = {
 	craftingValues = {
 		{"armor_rating",1,1,0},
 		{"armor_special_type",0,0,0},
-		{"armor_effectiveness",10,50,10},
+		{"armor_effectiveness",10,50,0},
 		{"armor_integrity",20000,70000,0},
 		{"armor_health_encumbrance",250,150,0},
 		{"armor_action_encumbrance",66,39,0},

@@ -7,7 +7,7 @@ mine_drx55 = {
 		{"mindamage",35,65,0},
 		{"maxdamage",105,195,0},
 		{"attackspeed",5,3,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",0,0,0},
 		{"maxrange",32,32,0},

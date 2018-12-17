@@ -7,9 +7,9 @@ voritor_lizard_hide_segment = {
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_bone_voritor_lizard.iff",
 	craftingValues = {
 		{"armor_special_type",0,0,0},
-		{"armor_effectiveness",2,14,10},
-		{"energyeffectiveness",2,14,10},
-		{"kineticeffectiveness",2,14,10},
+		{"armor_effectiveness",2,14,0},
+		{"energyeffectiveness",2,14,0},
+		{"kineticeffectiveness",2,14,0},
 		{"armor_action_encumbrance",13,-2,0},
 		{"armor_mind_encumbrance",7,-6,0},
 		{"useCount",1,10,0},

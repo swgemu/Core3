@@ -7,7 +7,7 @@ heavy_particle_beam = {
 		{"mindamage",1860,2000,0},
 		{"maxdamage",2700,3700,0},
 		{"attackspeed",9.1,4.0,1},
-		{"woundchance",10,20,0},
+		{"woundchance",10,20,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-125,-95,0},
 		{"maxrange",64,64,0},

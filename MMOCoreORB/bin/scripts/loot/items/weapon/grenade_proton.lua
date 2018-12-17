@@ -7,7 +7,7 @@ grenade_proton = {
 		{"mindamage",923,1534,0},
 		{"maxdamage",2300,2900,0},
 		{"attackspeed",9,4.5,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-16,14,0},
 		{"maxrange",64,64,0},

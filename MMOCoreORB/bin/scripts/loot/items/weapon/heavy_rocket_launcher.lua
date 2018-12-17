@@ -7,7 +7,7 @@ heavy_rocket_launcher = {
 		{"mindamage",900,1350,0},
 		{"maxdamage",1550,4500,0},
 		{"attackspeed",12.0,7.0,1},
-		{"woundchance",17,31,0},
+		{"woundchance",17,31,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-120,-90,0},
 		{"maxrange",64,64,0},
