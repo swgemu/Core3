@@ -7,7 +7,7 @@ grenade_imperial_detonator = {
 		{"mindamage",645,989,0},
 		{"maxdamage",1300,2000,0},
 		{"attackspeed",6,2.5,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-16,14,0},
 		{"maxrange",64,64,0},

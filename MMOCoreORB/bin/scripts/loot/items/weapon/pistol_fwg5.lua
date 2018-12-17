@@ -9,7 +9,7 @@ pistol_fwg5 = {
 		{"mindamage",11,21,0},
 		{"maxdamage",58,112,0},
 		{"attackspeed",5.3,3.8,1},
-		{"woundchance",5,11,0},
+		{"woundchance",5,11,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",17,8,0},
 		{"attackactioncost",44,27,0},

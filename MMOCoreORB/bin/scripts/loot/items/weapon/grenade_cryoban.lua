@@ -7,7 +7,7 @@ grenade_cryoban = {
 		{"mindamage",190,270,0},
 		{"maxdamage",320,650,0},
 		{"attackspeed",6.5,3,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-14,16,0},
 		{"maxrange",64,64,0},

@@ -7,7 +7,7 @@ heavy_lightning_beam = {
 		{"mindamage",936,1340,0},
 		{"maxdamage",1550,3400,0},
 		{"attackspeed",9.6,5.4,1},
-		{"woundchance",13,23,0},
+		{"woundchance",13,23,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-45,-35,0},
 		{"maxrange",64,64,0},

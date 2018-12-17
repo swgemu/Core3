@@ -8,9 +8,9 @@ two_handed_sword_katana = {
 	craftingValues = {
 		{"mindamage",11,20,0},
 		{"maxdamage",112,208,0},
-		{"attackspeed",4.6,3.1,0},
-		{"woundchance",15,27,0},
-		{"hitpoints",750,1500,0},
+		{"attackspeed",4.6,3.1,1},
+		{"woundchance",15,27,1},
+		{"hitpoints",750,750,0},
 		{"zerorangemod",-4,6,0},
 		{"maxrangemod",-4,6,0},
 		{"midrange",3,3,0},

@@ -8,8 +8,8 @@ rifle_e11 = {
 	craftingValues = {
 		{"mindamage",36,73,0},
 		{"maxdamage",76,144,0},
-		{"attackspeed",7.4,5.1,0},
-		{"woundchance",14,36,0},
+		{"attackspeed",7.4,5.1,1},
+		{"woundchance",14,36,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",19,12,0},
 		{"attackactioncost",31,23,0},

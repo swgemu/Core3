@@ -8,8 +8,8 @@ rifle_jawa_ion = {
 	craftingValues = {
 		{"mindamage",47,96,0},
 		{"maxdamage",100,188,0},
-		{"attackspeed",9.1,6.3,0},
-		{"woundchance",2.4,4.2,0},
+		{"attackspeed",9.1,6.3,1},
+		{"woundchance",2.4,4.2,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",23,14,0},
 		{"attackactioncost",47,28,0},

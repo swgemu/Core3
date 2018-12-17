@@ -9,7 +9,7 @@ rifle_tenloss_dxr6_disruptor = {
 		{"mindamage",40,150,0},
 		{"maxdamage",80,320,0},
 		{"attackspeed",9.4,6.7,1},
-		{"woundchance",4.8,12.3,0},
+		{"woundchance",4.8,12.3,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",21,12,0},
 		{"attackactioncost",32,19,0},

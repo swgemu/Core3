@@ -7,7 +7,7 @@ grenade_fragmentation_light = {
 		{"mindamage",130,170,0},
 		{"maxdamage",220,760,0},
 		{"attackspeed",5.5,2.5,1},
-		{"woundchance",7,13,0},
+		{"woundchance",7,13,1},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-16,14,0},
 		{"maxrange",64,64,0},

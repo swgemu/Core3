@@ -6,12 +6,12 @@ lightsaber_vader = {
 	customObjectName = "Darth Vader's Lightsaber",
 	directObjectTemplate = "object/weapon/melee/sword/sword_lightsaber_vader.iff",
 	craftingValues = {
-		{"mindamage",500,1000},
-		{"maxdamage",1000,2000},
-		{"attackspeed",5,2},
-		{"attackhealthcost",50,20},
-		{"attackactioncost",50,20},
-		{"attackmindcost",50,20},
+		{"mindamage",500,1000,0},
+		{"maxdamage",1000,2000,0},
+		{"attackspeed",5,2,1},
+		{"attackhealthcost",50,20,0},
+		{"attackactioncost",50,20,0},
+		{"attackmindcost",50,20,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

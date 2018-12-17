@@ -5,8 +5,8 @@ kashyyykian_ceremonial_armor_bracer_l = {
 	directObjectTemplate = "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_l.iff",
 	craftingValues = {
 		{"armor_rating",1,1,0},
-		{"kineticeffectiveness",10,40,10},
-		{"armor_effectiveness",4,24,10},
+		{"kineticeffectiveness",10,40,0},
+		{"armor_effectiveness",4,24,0},
 		{"armor_integrity",15000, 25000,0},
 		{"armor_health_encumbrance",23,18,0},
 		{"armor_action_encumbrance",23,18,0},
