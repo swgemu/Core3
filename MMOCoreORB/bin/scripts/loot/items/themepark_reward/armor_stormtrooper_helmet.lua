@@ -7,7 +7,7 @@ armor_stormtrooper_helmet = {
 	directObjectTemplate = "object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_helmet_quest.iff",
 	craftingValues = {
 		{"armor_rating",1,1,0},
-	        {"armor_effectiveness",30,30,10},
+	        {"armor_effectiveness",30,30,0},
 	        {"armor_integrity",45000,45000,0},
 	        {"armor_health_encumbrance",15,15,0},
 	        {"armor_action_encumbrance",16,16,0},

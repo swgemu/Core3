@@ -5,9 +5,9 @@ mabari_armor_chest_plate = {
 	directObjectTemplate = "object/tangible/wearables/armor/zam/armor_zam_wesell_chest_plate.iff",
 	craftingValues = {
 		{"armor_rating",1,1,0},
-		{"heateffectiveness",10,40,10},
-		{"blasteffectiveness",10,40,10},
-		{"armor_effectiveness",4,19,10},
+		{"heateffectiveness",10,40,0},
+		{"blasteffectiveness",10,40,0},
+		{"armor_effectiveness",4,19,0},
 		{"armor_integrity",18750, 31250,0},
 		{"armor_health_encumbrance",75,45,0},
 		{"armor_action_encumbrance",11,7,0},

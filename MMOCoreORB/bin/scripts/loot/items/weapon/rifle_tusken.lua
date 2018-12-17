@@ -8,8 +8,8 @@ rifle_tusken = {
 	craftingValues = {
 		{"mindamage",64,123,0},
 		{"maxdamage",124,188,0},
-		{"attackspeed",9.6,6.7,0},
-		{"woundchance",5.4,11.7,0},
+		{"attackspeed",9.6,6.7,1},
+		{"woundchance",5.4,11.7,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",17,9,0},
 		{"attackactioncost",27,16,0},

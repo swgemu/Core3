@@ -9,7 +9,7 @@ pistol_dx2 = {
 		{"mindamage",35,71,0},
 		{"maxdamage",73,103,0},
 		{"attackspeed",5.2,3.8,1},
-		{"woundchance",6.8,14.7,0},
+		{"woundchance",6.8,14.7,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",32,17,0},
 		{"attackactioncost",51,29,0},

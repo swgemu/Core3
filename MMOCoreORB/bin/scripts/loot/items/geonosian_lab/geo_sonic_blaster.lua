@@ -8,8 +8,8 @@ geo_sonic_blaster = {
 	craftingValues = {
 		{"mindamage",11,100,0},
 		{"maxdamage",63,224,0},
-		{"attackspeed",5.3,3.4,0},
-		{"woundchance",4.2,8.6,0},
+		{"attackspeed",5.3,3.4,1},
+		{"woundchance",4.2,8.6,1},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",20,11,0},
 		{"attackactioncost",46,25,0},

@@ -7,8 +7,8 @@ voritor_lizard_scales = {
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_enhancement_voritor_lizard.iff",
 	craftingValues = {
 		{"armor_special_type",0,0,0},
-		{"energyeffectiveness",1,6,10},
-		{"kineticeffectiveness",1,7,10},
+		{"energyeffectiveness",1,6,0},
+		{"kineticeffectiveness",1,7,0},
 		{"armor_action_encumbrance",4,0,0},
 		{"armor_mind_encumbrance",4,0,0},
 		{"useCount",1,10,0},

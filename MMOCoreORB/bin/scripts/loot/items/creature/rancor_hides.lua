@@ -7,7 +7,7 @@ rancor_hides = {
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_enhancement_rancor.iff",
 	craftingValues = {
 		{"armor_special_type",0,0,0},
-		{"armor_effectiveness",1,5,10},
+		{"armor_effectiveness",1,5,0},
 		{"armor_integrity",1500,3000,0},		
 		{"heateffectiveness",1,6,10},
 		{"coldeffectiveness",1,6,10},
