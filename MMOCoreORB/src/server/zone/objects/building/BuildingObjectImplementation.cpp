@@ -24,7 +24,6 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
-
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 #include "tasks/EjectObjectEvent.h"
@@ -99,6 +98,11 @@ void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 		cell->onBuildingInsertedToZone(asBuildingObject());
 	}
+
+#if ENABLE_STRUCTURE_JSON_EXPORT
+	if (getOwnerObjectID() != 0)
+		info("Exported to " + exportJSON("notifyInsertToZone"), true);
+#endif // DEBUG_STRUCTURE_MAINT
 }
 
 int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {

@@ -42,15 +42,12 @@ void StructureMaintenanceTask::run() {
 	ManagedReference<CreditObject*> creditObj = CreditManager::getCreditObject(oid);
 
 	if (creditObj == nullptr) {
-		strongRef->info("Player does not have a valid credit object, destroying.", true);
-		StructureManager::instance()->destroyStructure(strongRef);
-
+		destroyStructureWithReason(strongRef, "player does not have a valid credit object.");
 		return;
 	}
 
 	if (name.isEmpty()) {
-		strongRef->info("Player structure has nullptr owner ghost, destroying.", true);
-		StructureManager::instance()->destroyStructure(strongRef);
+		destroyStructureWithReason(strongRef, "player structure has nullptr owner ghost.");
 		return;
 	}
 
@@ -82,8 +79,8 @@ void StructureMaintenanceTask::run() {
 	if (uncondemnCost > 0)
 		oneWeekMaintenance += uncondemnCost;
 
-	//Check if owner got money in the bank and structure not decaying.
-	if (creditObj->getBankCredits() >= oneWeekMaintenance) {
+	// Check if owner has money in the bank and structure not decaying.
+	if (oneWeekMaintenance > 0 && creditObj->getBankCredits() >= oneWeekMaintenance) {
 		//Withdraw 1 week maintenance from owner bank account and add to the structure
 		//maintenance pool.
 		strongRef->payMaintenance(oneWeekMaintenance, creditObj, false);
@@ -103,9 +100,6 @@ void StructureMaintenanceTask::run() {
 	} else {
 		//Start decay process.
 
-		//Notify owner about decay.
-		sendMailDecay(name, strongRef);
-
 		int decayCycleSeconds = 24 * 60 * 60; // Default to daily schedule
 
 #if DEBUG_STRUCTURE_RAPID_DECAY
@@ -113,6 +107,11 @@ void StructureMaintenanceTask::run() {
 #endif // DEBUG_STRUCTURE_RAPID_DECAY
 
 		if (!strongRef->isDecayed()) {
+			// Notify owner about decay.
+			if (strongRef->getDecayPercentage() != 100) {
+				sendMailDecay(name, strongRef);
+			}
+
 			// Reschedule task
 			reschedule(decayCycleSeconds * 1000);
 		} else {
@@ -130,14 +129,21 @@ void StructureMaintenanceTask::run() {
 
 				reschedule(decayCycleSeconds * 1000);
 			} else {
-				strongRef->info("Structure decayed, destroying it after out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).", true);
-
 				sendMailDestroy(name, strongRef);
 
-				StructureManager::instance()->destroyStructure(strongRef);
+				destroyStructureWithReason(strongRef, "decayed, out of maintenance for " + String::valueOf(outOfMaintenanceHrs) + " hour(s).");
 			}
 		}
 	}
+}
+
+void StructureMaintenanceTask::destroyStructureWithReason(StructureObject* structure, const String& reason) {
+#if DEBUG_STRUCTURE_TASK_NO_DESTROY
+	structure->info("Will not be destroyed because DEBUG_STRUCTURE_TASK_NO_DESTROY is set, should destroy because " + reason, true);
+#else // DEBUG_STRUCTURE_TASK_NO_DESTROY
+	structure->info("Destroying because " + reason);
+	StructureManager::instance()->destroyStructure(structure);
+#endif // DEBUG_STRUCTURE_TASK_NO_DESTROY
 }
 
 void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(const String& creoName, StructureObject* structure) {
@@ -237,7 +243,9 @@ void StructureMaintenanceTask::sendMailDestroy(const String& creoName, Structure
 		body << String::valueOf(outOfMaintenanceTime) << " hours.";
 	}
 
-	body << endl << endl << "All items in the building were also destroyed." << endl;
+	if (structure->isBuildingObject()) {
+		body << endl << endl << "All items in the building were also destroyed." << endl;
+	}
 
 	structure->info("Sending destroy email To: " + creoName + " Body: " + body.toString().replaceAll("\n", "\\n"), true);
 

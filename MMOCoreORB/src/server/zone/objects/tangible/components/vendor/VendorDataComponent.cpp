@@ -54,6 +54,27 @@ void VendorDataComponent::addSerializableVariables() {
 	addSerializableVariable("originalDirection", &originalDirection);
 }
 
+void VendorDataComponent::writeJSON(nlohmann::json& j) const {
+	AuctionTerminalDataComponent::writeJSON(j);
+
+	SERIALIZE_JSON_MEMBER(ownerId);
+	SERIALIZE_JSON_MEMBER(initialized);
+	SERIALIZE_JSON_MEMBER(vendorSearchEnabled);
+	SERIALIZE_JSON_MEMBER(disabled);
+	SERIALIZE_JSON_MEMBER(registered);
+	SERIALIZE_JSON_MEMBER(maintAmount);
+	SERIALIZE_JSON_MEMBER(lastXpAward);
+	SERIALIZE_JSON_MEMBER(awardUsageXP);
+	SERIALIZE_JSON_MEMBER(lastSuccessfulUpdate);
+	SERIALIZE_JSON_MEMBER(adBarking);
+	SERIALIZE_JSON_MEMBER(mail1Sent);
+	SERIALIZE_JSON_MEMBER(emptyTimer);
+	SERIALIZE_JSON_MEMBER(barkMessage);
+	SERIALIZE_JSON_MEMBER(barkMood);
+	SERIALIZE_JSON_MEMBER(barkAnimation);
+	SERIALIZE_JSON_MEMBER(originalDirection);
+}
+
 void VendorDataComponent::initializeTransientMembers() {
 
 	AuctionTerminalDataComponent::initializeTransientMembers();

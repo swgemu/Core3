@@ -25,11 +25,17 @@ public:
 
 	}
 
+	void writeJSON(nlohmann::json& j) const {
+		DataObjectComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(turretIndex);
+	}
+
 	bool isTurretControlTerminalData() {
 		return true;
 	}
 
-	int getTurrteIndex(){
+	int getTurrteIndex() const {
 		return turretIndex;
 	}
 
@@ -41,7 +47,7 @@ public:
 		suiBoxID = id;
 	}
 
-	unsigned int getSuiBoxID(){
+	unsigned int getSuiBoxID() const {
 		return suiBoxID;
 	}
 

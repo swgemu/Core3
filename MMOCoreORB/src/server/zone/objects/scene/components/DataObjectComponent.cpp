@@ -31,5 +31,5 @@ SceneObject* DataObjectComponent::getParent() {
 }
 
 void to_json(nlohmann::json& j, const DataObjectComponent& comp) {
-
+	comp.writeJSON(j);
 }

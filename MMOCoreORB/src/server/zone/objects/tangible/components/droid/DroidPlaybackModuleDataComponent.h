@@ -69,6 +69,22 @@ public:
 	bool trackEmpty(int index);
 	void stopTimer();
 	void doFlourish(int number);
+
+	void writeJSON(nlohmann::json& j) const {
+		BaseDroidModuleComponent::writeJSON(j);
+
+		SERIALIZE_JSON_MEMBER(active);
+		SERIALIZE_JSON_MEMBER(recording);
+		SERIALIZE_JSON_MEMBER(recordingTrack);
+		SERIALIZE_JSON_MEMBER(recordingSong);
+		SERIALIZE_JSON_MEMBER(recordingInstrument);
+		SERIALIZE_JSON_MEMBER(totalTracks);
+		SERIALIZE_JSON_MEMBER(selectedIndex);
+		SERIALIZE_JSON_MEMBER(tracks);
+		SERIALIZE_JSON_MEMBER(instruments);
+		SERIALIZE_JSON_MEMBER(observer);
+
+	}
 private:
 	void stopRecording(CreatureObject* player, bool success);
 	int writeObjectMembers(ObjectOutputStream* stream);

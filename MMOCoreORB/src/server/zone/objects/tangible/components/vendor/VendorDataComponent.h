@@ -77,6 +77,8 @@ public:
 
 	void runVendorUpdate();
 
+	void writeJSON(nlohmann::json& j) const;
+
 	void setOwnerId(uint64 id) {
 		ownerId = id;
 	}
