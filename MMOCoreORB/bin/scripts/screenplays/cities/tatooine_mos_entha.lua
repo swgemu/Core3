@@ -225,10 +225,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "probot",120,15.2,1.0,7.4,-131,1154000)
 	self:setMoodString(pNpc, "default")
 
-	--rooftop
-	pNpc = spawnMobile(self.planet, "farmer_rancher",60,1390.4,21.5,3134.8,-4,0)
-	self:setMoodString(pNpc, "fishing")
-
 	--north Tavern a
 	pNpc = spawnMobile(self.planet, "commoner_fat",60,1.7,1.0,9.5,61,1157654)
 	self:setMoodString(pNpc, "npc_standing_drinking")
