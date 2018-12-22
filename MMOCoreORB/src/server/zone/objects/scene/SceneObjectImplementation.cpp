@@ -1182,11 +1182,23 @@ void SceneObjectImplementation::rotate(int degrees) {
 }
 
 void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	return objectMenuComponent->fillObjectMenuResponse(asSceneObject(), menuResponse, player);
+	if (objectMenuComponent == nullptr) {
+		error("no object menu component set for " + templateObject->getTemplateFileName());
+
+		return;
+	} else {
+		return objectMenuComponent->fillObjectMenuResponse(asSceneObject(), menuResponse, player);
+	}
 }
 
 int SceneObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return objectMenuComponent->handleObjectMenuSelect(asSceneObject(), player, selectedID);
+	if (objectMenuComponent == nullptr) {
+		error("no object menu component set for " + templateObject->getTemplateFileName());
+
+		return 1;
+	} else {
+		return objectMenuComponent->handleObjectMenuSelect(asSceneObject(), player, selectedID);
+	}
 }
 
 void SceneObjectImplementation::setObjectName(StringId& stringID, bool notifyClient) {
