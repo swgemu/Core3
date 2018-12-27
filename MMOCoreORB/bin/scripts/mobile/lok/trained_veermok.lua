@@ -1,7 +1,7 @@
 trained_veermok = Creature:new {
 	objectName = "",
 	customName = "a trained veermok",
-	socialGroup = "veermok",
+	socialGroup = "pirate",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,
