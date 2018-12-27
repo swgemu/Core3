@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4c51b2_5f118fab",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2018-12-27T22:55:02Z",
+      "side": 1,
+      "message": "Use +\u003d here, that way it uses your existing variable value, and makes it easier for people to add additional buffs down the line if they choose.\n\nbuffMultiplier +\u003d player-\u003egetSkillModFromBuffs(\"xp_increase\") / 100.f;",
+      "revId": "0ff73e610cb3360fe3d9f0650c378c936042dc57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
