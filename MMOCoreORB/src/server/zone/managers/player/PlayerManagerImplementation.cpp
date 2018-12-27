@@ -4809,30 +4809,34 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
-
+	printf("shouldRescheduleCorpseDestruction\n");
 	if (player == NULL || ai == NULL)
 		return false;
-
+	printf("shouldRescheduleCorpseDestruction 2\n");
 	if (!player->isPlayerCreature()) {
 		return true;
 	}
-
+	printf("shouldRescheduleCorpseDestruction 3\n");
 	if (ai->isNonPlayerCreatureObject()) {
+		printf("shouldRescheduleCorpseDestruction 4a\n");
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);
 
 		if (!npc->hasLoot() && npc->getCashCredits() < 1 && npc->getBankCredits() < 1) {
+			printf("shouldRescheduleCorpseDestruction 4b\n");
 			return true;
 		}
 	} else if (ai->isCreature()) {
+		printf("shouldRescheduleCorpseDestruction 5a\n");
 		Creature * creature = dynamic_cast<Creature*>(ai);
 
 		if (creature->hasLoot() || creature->getCashCredits() > 0 || creature->getBankCredits() > 0)
 			return false;
+		printf("shouldRescheduleCorpseDestruction 5b\n");
 
 		return !(creature->hasSkillToHarvestMe(player) || canGroupMemberHarvestCorpse(player, creature));
 
 	}
-
+	printf("shouldRescheduleCorpseDestruction 6\n");
 	return false;
 }
 
@@ -5067,8 +5071,19 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	}
 
 	float hamReduction = 1.f - hamModifier;
-	hamCost *= hamReduction;
-	int newHamCost = (int) hamCost;
+
+	int healthCost = (int) (creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, hamCost) * hamReduction);
+	int actionCost = (int) (creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, hamCost) * hamReduction);
+	int mindCost = (int) (creature->calculateCostAdjustment(CreatureAttribute::FOCUS, hamCost) * hamReduction);
+
+	if (player->getHAM(CreatureAttribute::HEALTH) <= healthCost || player->getHAM(CreatureAttribute::ACTION) <= actionCost || player->getHAM(CreatureAttribute::MIND) <= mindCost) {
+		player->sendSystemMessage("@combat_effects:burst_run_wait"); // You are too tired to Burst Run.
+		return false;
+	}
+
+	player->inflictDamage(player, CreatureAttribute::HEALTH, healthCost, true);
+	player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, true);
+	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, true);
 
 	if (cooldownModifier > 1.0f) {
 		cooldownModifier = 1.0f;
@@ -5077,15 +5092,6 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	float coodownReduction = 1.f - cooldownModifier;
 	cooldown *= coodownReduction;
 	int newCooldown = (int) cooldown;
-
-	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {
-		player->sendSystemMessage("@combat_effects:burst_run_wait"); // You are too tired to Burst Run.
-		return false;
-	}
-
-	player->inflictDamage(player, CreatureAttribute::HEALTH, newHamCost, true);
-	player->inflictDamage(player, CreatureAttribute::ACTION, newHamCost, true);
-	player->inflictDamage(player, CreatureAttribute::MIND, newHamCost, true);
 
 	StringIdChatParameter startStringId("cbt_spam", "burstrun_start_single");
 	StringIdChatParameter modifiedStartStringId("combat_effects", "instant_burst_run");
