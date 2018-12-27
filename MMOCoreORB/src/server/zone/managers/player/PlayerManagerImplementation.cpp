@@ -5072,8 +5072,19 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	}
 
 	float hamReduction = 1.f - hamModifier;
-	hamCost *= hamReduction;
-	int newHamCost = (int) hamCost;
+
+	int healthCost = (int) (player->calculateCostAdjustment(CreatureAttribute::STRENGTH, hamCost) * hamReduction);
+	int actionCost = (int) (player->calculateCostAdjustment(CreatureAttribute::QUICKNESS, hamCost) * hamReduction);
+	int mindCost = (int) (player->calculateCostAdjustment(CreatureAttribute::FOCUS, hamCost) * hamReduction);
+
+	if (player->getHAM(CreatureAttribute::HEALTH) <= healthCost || player->getHAM(CreatureAttribute::ACTION) <= actionCost || player->getHAM(CreatureAttribute::MIND) <= mindCost) {
+		player->sendSystemMessage("@combat_effects:burst_run_wait"); // You are too tired to Burst Run.
+		return false;
+	}
+
+	player->inflictDamage(player, CreatureAttribute::HEALTH, healthCost, true);
+	player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, true);
+	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, true);
 
 	if (cooldownModifier > 1.0f) {
 		cooldownModifier = 1.0f;
@@ -5082,15 +5093,6 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	float coodownReduction = 1.f - cooldownModifier;
 	cooldown *= coodownReduction;
 	int newCooldown = (int) cooldown;
-
-	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {
-		player->sendSystemMessage("@combat_effects:burst_run_wait"); // You are too tired to Burst Run.
-		return false;
-	}
-
-	player->inflictDamage(player, CreatureAttribute::HEALTH, newHamCost, true);
-	player->inflictDamage(player, CreatureAttribute::ACTION, newHamCost, true);
-	player->inflictDamage(player, CreatureAttribute::MIND, newHamCost, true);
 
 	StringIdChatParameter startStringId("cbt_spam", "burstrun_start_single");
 	StringIdChatParameter modifiedStartStringId("combat_effects", "instant_burst_run");
