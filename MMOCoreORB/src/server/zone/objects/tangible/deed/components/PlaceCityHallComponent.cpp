@@ -77,7 +77,7 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 
 			locker.release();
 
-			StructureManager::instance()->declareResidence(creature, structure);
+			StructureManager::instance()->declareResidence(creature, structure, true);
 		}
 	}
 
