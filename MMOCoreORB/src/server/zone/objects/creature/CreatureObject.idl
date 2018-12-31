@@ -152,7 +152,10 @@ class CreatureObject extends TangibleObject {
 	protected transient unsigned int lastActionCounter;
 
 	@dereferenced
-	protected Time nextAction;
+	protected transient Time nextAction;
+
+	@dereferenced
+	protected transient Time nextImmediateAction;
 
 	@transactional
 	protected transient CooldownTimerMap cooldownTimerMap;
