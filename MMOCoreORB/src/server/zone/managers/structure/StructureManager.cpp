@@ -520,7 +520,7 @@ String StructureManager::getTimeString(uint32 timestamp) {
 	return "(" + str.toString() + ")";
 }
 
-int StructureManager::declareResidence(CreatureObject* player, StructureObject* structureObject) {
+int StructureManager::declareResidence(CreatureObject* player, StructureObject* structureObject, bool isCityHall) {
 	if (!structureObject->isBuildingObject()) {
 		player->sendSystemMessage("@player_structure:residence_must_be_building"); //Your declared residence must be a building.
 		return 1;
@@ -528,7 +528,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (!player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
+	if (!isCityHall && !player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
 		Time* timeremaining = player->getCooldownTime("declare_residence");
 		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
 		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / -3600000.f)));
