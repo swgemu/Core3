@@ -1849,19 +1849,18 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	Reference<CommandQueueAction*> action = nullptr;
 
 	if (priority == QueueCommand::IMMEDIATE) {
-#ifndef WITH_STM
-		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount,
-				targetID, arguments);
-#else
 		action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
 
 		immediateQueue->put(action.get());
 
 		if (immediateQueue->size() == 1) {
 			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
-			Core::getTaskManager()->executeTask(ev);
+			if (nextImmediateAction.isFuture()) {
+				ev->schedule(nextImmediateAction);
+			} else {
+				Core::getTaskManager()->executeTask(ev);
+			}
 		}
-#endif
 
 		return;
 	}
@@ -1935,10 +1934,22 @@ void CreatureObjectImplementation::activateImmediateAction() {
 			action->getActionCounter(), action->getTarget(),
 			action->getArguments());
 
+	nextAction.updateToCurrentTime();
+	nextImmediateAction.updateToCurrentTime();
+
+	if (time > 0) {
+		nextAction.addMiliTime((uint32)(time * 1000));
+		nextImmediateAction.addMiliTime((uint32)(time * 1000));
+	}
+
 	if (immediateQueue->size() > 0) {
 		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(
 				asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
-		Core::getTaskManager()->executeTask(ev);
+		if (nextImmediateAction.isFuture()) {
+			ev->schedule(nextImmediateAction);
+		} else {
+			Core::getTaskManager()->executeTask(ev);
+		}
 	}
 }
 

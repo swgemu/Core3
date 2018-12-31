@@ -152,7 +152,10 @@ class CreatureObject extends TangibleObject {
 	protected transient unsigned int lastActionCounter;
 
 	@dereferenced
-	protected Time nextAction;
+	protected transient Time nextAction;
+
+	@dereferenced
+	protected transient Time nextImmediateAction;
 
 	@transactional
 	protected transient CooldownTimerMap cooldownTimerMap;
@@ -1912,7 +1915,7 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public boolean isNextActionPast() {
-		return nextAction.isPast();
+		return nextAction.isPast() && nextImmediateAction.isPast();
 	}
 
 	@read
