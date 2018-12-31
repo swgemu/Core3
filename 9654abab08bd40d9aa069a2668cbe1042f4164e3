@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4c51b2_df8f5fcb",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2018-12-31T04:01:21Z",
+      "side": 1,
+      "message": "missing a ! here",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 15
+      },
+      "revId": "9654abab08bd40d9aa069a2668cbe1042f4164e3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
