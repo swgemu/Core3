@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4c51b2_1f4f0794",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2019-01-02T12:04:54Z",
+      "side": 0,
+      "message": "this change is not a trivial performance hit, need to rething this imo",
+      "revId": "c8872ec05aae83066271cc7226c0eb6899b936e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
