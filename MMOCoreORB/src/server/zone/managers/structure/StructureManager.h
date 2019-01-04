@@ -85,7 +85,7 @@ public:
 	 */
 	int redeedStructure(CreatureObject* creature);
 
-	int declareResidence(CreatureObject* player, StructureObject* structureObject);
+	int declareResidence(CreatureObject* player, StructureObject* structureObject, bool isCityHall = false);
 
 	/**
 	 * Converts seconds remaining into days, hours, minutes timestamp
