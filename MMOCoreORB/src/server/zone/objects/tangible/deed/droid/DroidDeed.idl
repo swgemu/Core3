@@ -22,7 +22,7 @@ class DroidDeed extends Deed {
 	protected int species;
 	protected float overallQuality;
 	@dereferenced
-	protected transient HashTable<string,DroidComponent> modules;
+	protected HashTable<string,DroidComponent> modules;
 	protected int combatRating;
 
 	public DroidDeed() {
