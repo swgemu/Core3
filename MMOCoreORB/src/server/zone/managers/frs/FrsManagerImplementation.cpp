@@ -314,9 +314,12 @@ void FrsManagerImplementation::verifyRoomAccess(CreatureObject* player, int play
 
 	short buildingType = 0;
 
-	if (bldg->getObjectID() == lightEnclave.get()->getObjectID())
+	ManagedReference<BuildingObject*> lightBldg = lightEnclave.get();
+	ManagedReference<BuildingObject*> darkBldg = darkEnclave.get();
+
+	if (lightBldg != nullptr && bldg->getObjectID() == lightBldg->getObjectID())
 		buildingType = COUNCIL_LIGHT;
-	else if (bldg->getObjectID() == darkEnclave.get()->getObjectID())
+	else if (darkBldg != nullptr && bldg->getObjectID() == darkBldg->getObjectID())
 		buildingType = COUNCIL_DARK;
 	else
 		return;
@@ -2703,12 +2706,14 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 }
 
 bool FrsManagerImplementation::isPlayerInEnclave(CreatureObject* player) {
-	if (player->getParentID() == 0)
+	if (!frsEnabled || player->getParentID() == 0)
 		return false;
 
 	ManagedReference<BuildingObject*> bldg = player->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
+	ManagedReference<BuildingObject*> lightBldg = lightEnclave.get();
+	ManagedReference<BuildingObject*> darkBldg = darkEnclave.get();
 
-	return bldg != nullptr && (bldg->getObjectID() == lightEnclave.get()->getObjectID() || bldg->getObjectID() == darkEnclave.get()->getObjectID());
+	return bldg != nullptr && ((lightBldg != nullptr && bldg->getObjectID() == lightBldg->getObjectID()) || (darkBldg != nullptr && bldg->getObjectID() == darkBldg->getObjectID()));
 }
 
 void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int councilType, int rank) {
