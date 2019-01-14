@@ -21,7 +21,7 @@ public:
 	void run() {
 		ManagedReference<PlantObject*> strongRef = plant.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		if (strongRef->getZoneServer()->isServerLoading()) {
@@ -31,12 +31,10 @@ public:
 
 		Locker locker(strongRef);
 
-		Time currentTime;
-
 		Time* lastPulse = strongRef->getLastPulse();
 
 		// Cycles handles multiple pulses if server was offline during task trigger
-		int cycles = (currentTime.getMiliTime() - lastPulse->getMiliTime()) / (PlantObject::PULSERATE * 1000);
+		int cycles = lastPulse->miliDifference() / (PlantObject::PULSERATE * 1000);
 
 		if (cycles < 1)
 			cycles = 1;
@@ -48,8 +46,8 @@ public:
 
 		strongRef->updateLastPulse();
 
-		if (parent == NULL || rootParent == NULL || !rootParent->isBuildingObject() || !parent->isCellObject()) {
-			this->reschedule(PlantObject::PULSERATE * 1000);
+		if (parent == nullptr || rootParent == nullptr || !rootParent->isBuildingObject() || !parent->isCellObject()) {
+			reschedule(PlantObject::PULSERATE * 1000);
 			return;
 		}
 
@@ -133,7 +131,7 @@ public:
 			}
 		}
 
-		this->reschedule(PlantObject::PULSERATE * 1000);
+		reschedule(PlantObject::PULSERATE * 1000);
 	}
 };
 
