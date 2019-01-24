@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4c51b2_8220de9c",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/creature/rancor_bile.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2019-01-24T00:58:14Z",
+      "side": 1,
+      "message": "Why -- tst?",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "1c370d243919d0f48d549d9f67bb6e954ab0e2d9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
