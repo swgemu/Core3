@@ -64,8 +64,14 @@ public:
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->lootAll(creature, ai);
 			} else {
-				ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
-				lootContainer->openContainerTo(creature);
+				//Check if the corpse's inventory contains any items.
+				if (lootContainer->getContainerObjectsSize() < 1) {
+  					creature->sendSystemMessage("@error_message:corpse_empty"); //"You find nothing else of value on the selected corpse."
+  					creature->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(creature, ai);
+  				} else {
+					ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
+					lootContainer->openContainerTo(creature);
+				}
 			}
 
 			return SUCCESS;
