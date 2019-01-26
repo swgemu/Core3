@@ -265,7 +265,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		craftingValues->setMaxValue(title,1000);
 
 		// using assembly to accoutn for a 1 +% increase
-		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+		//currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+		currentPercentage = (( initialValue* (0.000015f * initialValue + .015f)) *0.023f) *modifier
 
 		//craftingValues->setMaxPercentage(title, maxPercentage);
 		craftingValues->setCurrentPercentage(title, currentPercentage);
