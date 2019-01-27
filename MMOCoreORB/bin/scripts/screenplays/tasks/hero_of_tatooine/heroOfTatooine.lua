@@ -173,7 +173,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	end
 
 	-- Reschedule respawn if boar is in combat or dead
-	if (pCourageMob ~= nil and (AiAgent(pCourageMob):isInCombat() or CreatureObject(pCourageMob):isDead())) then
+	if (pCourageMob ~= nil and AiAgent(pCourageMob):isInCombat()) then
 		self:createCourageEvent("life")
 		return 0
 	elseif (pCourageMob ~= nil) then
