@@ -138,5 +138,5 @@ naboo_regions = {
 	{"weapon_development_facility", -6510, -3280, {1, 200}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"wreckage", 6314, 4248, {1, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"western_forest", 0, 0, {1, 0}, UNDEFINEDAREA},
-	{"world_spawner", 0, 0, {1, -1}, SPAWNAREA + WORLDSPAWNAREA, {"naboo_world", "global"}, 2048}
+	{"world_spawner", 0, 0, {1, -1}, SPAWNAREA + WORLDSPAWNAREA, {"naboo_world", "global", "global_hard"}, 2048}
 }

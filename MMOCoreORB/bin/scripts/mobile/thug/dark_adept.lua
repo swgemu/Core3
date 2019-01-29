@@ -27,7 +27,12 @@ dark_adept = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
+	templates = {
+	"object/mobile/dressed_dark_jedi_human_male_01.iff",
+	"object/mobile/dressed_dark_side_savage.iff",
+	"object/mobile/dressed_forsaken_force_drifter.iff",
+	"object/mobile/dressed_force_trained_archaist.iff",
+	"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},
 	lootGroups = {
 		{
 			groups = {
