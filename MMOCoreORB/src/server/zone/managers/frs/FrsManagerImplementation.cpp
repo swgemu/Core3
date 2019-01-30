@@ -26,6 +26,14 @@ void FrsManagerImplementation::initialize() {
 	if (!frsEnabled)
 		return;
 
+	Zone* zone = zoneServer->getZone("yavin4");
+
+	if (zone == nullptr) {
+		error("Unable to initialize frs manager, yavin4 disabled.");
+		frsEnabled = false;
+		return;
+	}
+
 	setupEnclaves();
 	loadFrsData();
 
