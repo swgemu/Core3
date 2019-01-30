@@ -378,8 +378,18 @@ int CreatureTemplateManager::addDressGroup(lua_State* L) {
 	if (obj.isValidTable()) {
 		Vector<String> dressGroup;
 
-		for (int i = 1; i <= obj.getTableSize(); ++i)
-			dressGroup.add(obj.getStringAt(i));
+		for (int i = 1; i <= obj.getTableSize(); ++i) {
+			String templ = obj.getStringAt(i);
+
+			SharedObjectTemplate* dressTemplate = TemplateManager::instance()->getTemplate(templ.hashCode());
+
+			if (dressTemplate == nullptr) {
+				instance()->error("Unable to add " + templ + " to dress group " + ascii + ", invalid template.");
+				continue;
+			}
+
+			dressGroup.add(templ);
+		}
 
 		CreatureTemplateManager::instance()->dressMap.put(crc, dressGroup);
 	}
