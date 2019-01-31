@@ -9,6 +9,7 @@
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/crafting/ComponentMap.h"
+#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 
 
 class ObjectCommand : public QueueCommand {
@@ -199,17 +200,46 @@ public:
 				creature->sendSystemMessage("Number of Legendaries Looted: " + String::valueOf(lootManager->getLegendaryLooted()));
 				creature->sendSystemMessage("Number of Exceptionals Looted: " + String::valueOf(lootManager->getExceptionalLooted()));
 				creature->sendSystemMessage("Number of Magical Looted: " + String::valueOf(lootManager->getYellowLooted()));
+
+			} else if (commandType.beginsWith("characterbuilder")) {
+				ZoneServer* zserv = server->getZoneServer();
+
+				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
+				ManagedReference<CharacterBuilderTerminal*> blueFrog = ( zserv->createObject(blueFrogTemplate.hashCode(), 0)).castTo<CharacterBuilderTerminal*>();
+
+				if (blueFrog == NULL)
+					return GENERALERROR;
+
+				Locker clocker(blueFrog, creature);
+
+				float x = creature->getPositionX();
+				float y = creature->getPositionY();
+				float z = creature->getPositionZ();
+
+				ManagedReference<SceneObject*> parent = creature->getParent().get();
+
+				blueFrog->initializePosition(x, z, y);
+					blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+
+				if (parent != NULL && parent->isCellObject())
+					parent->transferObject(blueFrog, -1);
+				else
+					creature->getZone()->transferObject(blueFrog, -1, true);
+
+				info("blue frog created", true);
+
 			}
+
 		} catch (Exception& e) {
 			creature->sendSystemMessage("SYNTAX: /object createitem <objectTemplatePath> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createloot <loottemplate> [<level>]");
 			creature->sendSystemMessage("SYNTAX: /object createarealoot <loottemplate> [<range>] [<level>]");
 			creature->sendSystemMessage("SYNTAX: /object checklooted");
-
+			creature->sendSystemMessage("SYNTAX: /object characterbuilder");
+                  
 			return INVALIDPARAMETERS;
 		}
-
 
 		return SUCCESS;
 	}
