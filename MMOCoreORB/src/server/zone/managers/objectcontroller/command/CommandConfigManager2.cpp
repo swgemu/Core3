@@ -318,7 +318,7 @@
 #include "server/zone/objects/creature/commands/HarvesterHarvestCommand.h"
 #include "server/zone/objects/creature/commands/HarvesterMakeCrateCommand.h"
 #include "server/zone/objects/creature/commands/HarvesterSelectResourceCommand.h"
-#include "server/zone/objects/creature/commands/HarvesterTakeSurvey Command.h"
+#include "server/zone/objects/creature/commands/HarvesterTakeSurveyCommand.h"
 #include "server/zone/objects/creature/commands/HasVeteranRewardCommand.h"
 #include "server/zone/objects/creature/commands/HaveconsentCommand.h"
 #include "server/zone/objects/creature/commands/HeadShot1Command.h"
