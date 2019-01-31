@@ -27,7 +27,7 @@ dark_adept = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "dark_jedi" },
+	templates = { "dark_jedi", "noble" },
 	lootGroups = {
 		{
 			groups = {
