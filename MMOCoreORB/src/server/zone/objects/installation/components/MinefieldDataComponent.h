@@ -20,6 +20,7 @@ protected:
 	Vector<ManagedReference<WeaponObject*>> mines;
 	SharedInstallationObjectTemplate* templateData;
 	int maxRange;
+	SynchronizedSortedVector<uint64> notifiedPlayers;
 public:
 	MinefieldDataComponent() {
 		attackSpeed = 5;
@@ -95,7 +96,17 @@ public:
 		return maxRange;
 	}
 
+	bool hasNotifiedPlayer(const uint64 oid) {
+		return notifiedPlayers.contains(oid);
+	}
 
+	void addNotifiedPlayer(const uint64 oid) {
+		notifiedPlayers.put(oid);
+	}
+
+	void removeNotifiedPlayer(const uint64 oid) {
+		notifiedPlayers.drop(oid);
+	}
 
 
 

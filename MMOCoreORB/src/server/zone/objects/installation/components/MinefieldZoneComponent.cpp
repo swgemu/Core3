@@ -16,9 +16,6 @@
 #include "server/zone/objects/installation/components/TurretObserver.h"
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
-	// if we don't have any mines, just exit
-	if(sceneObject->getContainerObjectsSize() == 0 )
-		return;
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
@@ -34,26 +31,44 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 
 	MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(ref->get());
 
-	if(mineData == NULL || !mineData->canExplode())
+	if (mineData == NULL)
 		return;
 
 	try {
-		if (target->isPlayerCreature() && sceneObject->isInRange(target,mineData->getMaxRange())){
+		if (target->isPlayerCreature()) {
+
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 
 			if(player == NULL)
 				return;
+
+			uint64 playerObjID = player->getObjectID();
 
 			ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
 			if(tano == NULL)
 				return;
 
-			if(!player->isAttackableBy(tano))
+			if(!player->isAttackableBy(tano) && !mineData->hasNotifiedPlayer(playerObjID))
 				return;
 
-			Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
-			task->execute();
+			if (sceneObject->isInRange(target, mineData->getMaxRange())) {
+
+				if (mineData->canExplode() && sceneObject->getContainerObjectsSize() > 0) {
+					Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
+					task->execute();
+				}
+
+				if (!mineData->hasNotifiedPlayer(playerObjID)) {
+					mineData->addNotifiedPlayer(playerObjID);
+					player->sendSystemMessage("@faction_perk:minefield_near"); //You have breached the perimeter of an enemy minefield.
+				}
+			}
+			else if (mineData->hasNotifiedPlayer(playerObjID)) {
+				player->sendSystemMessage("@faction_perk:minefield_exit"); //You have left the perimeter of an enemy minefield.
+				mineData->removeNotifiedPlayer(playerObjID);
+			}
+
 		}
 	} catch (Exception& e) {
 
@@ -84,5 +99,23 @@ void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* 
 				installation->setPvpStatusBitmask(building->getPvpStatusBitmask() | 1);
 			}
 		}
+	}
+}
+
+void MinefieldZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+
+	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
+
+	if (player == NULL || !player->isPlayerCreature())
+		return;
+
+	MinefieldDataComponent* data = cast<MinefieldDataComponent*>(sceneObject->getDataObjectComponent()->get());
+
+	if (data == NULL)
+		return;
+
+	if (data->hasNotifiedPlayer(player->getObjectID())) {
+		data->removeNotifiedPlayer(player->getObjectID());
+		player->sendSystemMessage("@faction_perk:minefield_exit"); //You have left the perimeter of an enemy minefield.
 	}
 }
