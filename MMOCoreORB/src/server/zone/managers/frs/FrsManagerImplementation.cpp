@@ -1710,8 +1710,6 @@ void FrsManagerImplementation::runChallengeVoteUpdate() {
 		int challengedRank = challengeData->getPlayerRank();
 
 		if (playerRank != challengedRank || councilType != COUNCIL_LIGHT) {
-			demotePlayer(challenged);
-
 			Core::getTaskManager()->executeTask([strongRef, challengedRank, challengedName] () {
 				StringIdChatParameter mailBody("@force_rank:challenge_vote_cancelled_body"); // The no-confidence vote on %TO has been cancelled due to a change in the member's ranking.
 				mailBody.setTO(challengedName);
