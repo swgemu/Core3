@@ -27,9 +27,7 @@ dark_jedi_master = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_dark_jedi_human_male_01.iff",
-		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
+	templates = { "dark_jedi" },
 	lootGroups = {
 		{
 			groups = {
