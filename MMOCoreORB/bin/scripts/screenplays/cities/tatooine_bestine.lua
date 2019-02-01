@@ -128,6 +128,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "info_broker",60,-1.05454,0.408271,-4.40312,180.006,1028491)
 	self:setMoodString(pNpc, "conversation")
+	spawnMobile("tatooine", "trainer_chef",0,-9.4,1.0,7.1,85,1028492)
 
 	--Hotel
 	pNpc = spawnMobile("tatooine", "crix_yarrow",60,7.39833,1.00001,-7.63485,360.011,1223849)

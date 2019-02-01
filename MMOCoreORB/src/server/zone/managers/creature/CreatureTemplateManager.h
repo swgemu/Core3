@@ -24,6 +24,7 @@ namespace creature {
 class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
+	VectorMap<uint32, Vector<String> > dressMap;
 	Vector<Reference<AiSpeciesData*> > aiSpeciesData;
 	Reference<Lua*> lua;
 	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
@@ -57,6 +58,7 @@ public:
 	static int addLairTemplate(lua_State* L);
 	static int addPatrolPathTemplate(lua_State* L);
 	static int addOutfitGroup(lua_State* L);
+	static int addDressGroup(lua_State* L);
 
 	static int checkArgumentCount(lua_State* L, int args);
 
@@ -126,6 +128,14 @@ public:
 
 	AiSpeciesData* getAiSpeciesData(uint32 speciesID) {
 		return aiSpeciesData.get(speciesID);
+	}
+
+	const Vector<String>& getDressGroup(uint32 crc) {
+		return dressMap.get(crc);
+	}
+
+	const Vector<String>& getDressGroup(const String& ascii) {
+		return dressMap.get(ascii.hashCode());
 	}
 
 };

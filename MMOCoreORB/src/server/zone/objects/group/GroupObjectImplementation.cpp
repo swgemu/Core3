@@ -331,9 +331,6 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	if (!leader->isPlayerCreature())
 		return;
 
-	if (leader == player)
-		return;
-
 	int duration = 300;
 
 	String action = "squadleader";
@@ -364,9 +361,6 @@ void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 		return;
 
 	if (!leader->isPlayerCreature())
-		return;
-
-	if (leader == player)
 		return;
 
 	Locker clocker(player, _this.getReferenceUnsafeStaticCast());

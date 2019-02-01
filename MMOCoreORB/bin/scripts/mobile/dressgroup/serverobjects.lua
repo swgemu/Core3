@@ -1,0 +1,7 @@
+includeFile("dressgroup/commoner.lua")
+includeFile("dressgroup/commoner_male.lua")
+includeFile("dressgroup/commoner_female.lua")
+includeFile("dressgroup/dark_jedi.lua")
+includeFile("dressgroup/noble.lua")
+includeFile("dressgroup/noble_male.lua")
+includeFile("dressgroup/noble_female.lua")

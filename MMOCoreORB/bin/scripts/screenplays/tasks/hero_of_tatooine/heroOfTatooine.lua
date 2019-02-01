@@ -121,34 +121,42 @@ function HeroOfTatooineScreenPlay:validateAltruismCave()
 end
 
 function HeroOfTatooineScreenPlay:initEvents()
-	if (not hasServerEvent("HeroOfTatCourage")) then
-		self:createCourageEvent("initial")
-	end
-	if (not hasServerEvent("HeroOfTatAltruism")) then
-		self:createAltruismEvent("initial")
-	end
-	if (not hasServerEvent("HeroOfTatIntellect")) then
-		self:createIntellectEvent("initial")
-	end
-	if (not hasServerEvent("HeroOfTatHonor")) then
-		self:createHonorEvent("initial")
-	end
+	self:createCourageEvent("initial")
+	self:createAltruismEvent("initial")
+	self:createIntellectEvent("initial")
+	self:createHonorEvent("initial")
 end
 
 function HeroOfTatooineScreenPlay:createCourageEvent(event)
-	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
+	if (hasServerEvent("HeroOfTatCourage")) then
+		rescheduleServerEvent("HeroOfTatCourage", self:getEventTimer(event))
+	else
+		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
+	end
 end
 
 function HeroOfTatooineScreenPlay:createAltruismEvent(event)
-	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
+	if (hasServerEvent("HeroOfTatAltruism")) then
+		rescheduleServerEvent("HeroOfTatAltruism", self:getEventTimer(event))
+	else
+		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
+	end
 end
 
 function HeroOfTatooineScreenPlay:createIntellectEvent(event)
-	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
+	if (hasServerEvent("HeroOfTatIntellect")) then
+		rescheduleServerEvent("HeroOfTatIntellect", self:getEventTimer(event))
+	else
+		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
+	end
 end
 
 function HeroOfTatooineScreenPlay:createHonorEvent(event)
-	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
+	if (hasServerEvent("HeroOfTatHonor")) then
+		rescheduleServerEvent("HeroOfTatHonor", self:getEventTimer(event))
+	else
+		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
+	end
 end
 
 function HeroOfTatooineScreenPlay:doCourageChange()
@@ -173,7 +181,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	end
 
 	-- Reschedule respawn if boar is in combat or dead
-	if (pCourageMob ~= nil and (AiAgent(pCourageMob):isInCombat() or CreatureObject(pCourageMob):isDead())) then
+	if (pCourageMob ~= nil and AiAgent(pCourageMob):isInCombat()) then
 		self:createCourageEvent("life")
 		return 0
 	elseif (pCourageMob ~= nil) then
