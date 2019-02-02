@@ -81,7 +81,7 @@ public:
 		sui->addMenuItem("Free For All"); //No string in client?
 		sui->addMenuItem("Master Looter"); //No string in client?
 		sui->addMenuItem("@ui_lottery:title"); //"Lottery"
-		sui->addMenuItem("@ui:random"); //"Random"
+		sui->addMenuItem("@group:random"); //"Random"
 
 		//Send group leader the SUI box.
 		ghost->addSuiBox(sui);
