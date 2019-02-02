@@ -111,7 +111,14 @@ public:
 			gclocker.release();
 			Locker lootlocker(player, corpse);
 			corpse->notifyObservers(ObserverEventType::LOOTCREATURE, player, 0);
-			lootContainer->openContainerTo(player);
+
+			if (lootContainer->getContainerObjectsSize() < 1) {
+				StringIdChatParameter msg("group","corpse_empty"); //"This corpse has no items in its inventory."
+				player->sendSystemMessage(msg);
+				return;
+			} else {
+				lootContainer->openContainerTo(player);
+			}
 		}
 
 	}

@@ -66,8 +66,7 @@ public:
 			} else {
 				//Check if the corpse's inventory contains any items.
 				if (lootContainer->getContainerObjectsSize() < 1) {
-  					StringIdChatParameter noItems("error_message", "corpse_empty");
-  					creature->sendSystemMessage(noItems); //"You find nothing else of value on the selected corpse."
+  					creature->sendSystemMessage("@error_message:corpse_empty"); //"You find nothing else of value on the selected corpse."
   					creature->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(creature, ai);
   				} else {
 					ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
