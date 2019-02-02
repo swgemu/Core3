@@ -111,7 +111,12 @@ public:
 			gclocker.release();
 			Locker lootlocker(player, corpse);
 			corpse->notifyObservers(ObserverEventType::LOOTCREATURE, player, 0);
-			lootContainer->openContainerTo(player);
+
+			if (lootContainer->getContainerObjectsSize() < 1) {
+				return;
+			} else {
+				lootContainer->openContainerTo(player);
+			}
 		}
 
 	}
