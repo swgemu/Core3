@@ -170,6 +170,9 @@ bool ConfigManager::loadConfigData() {
 
 	restPort = getGlobalInt("RESTServerPort");
 
+	inactiveAccountTitle = getGlobalString("InactiveAccountTitle");
+	inactiveAccountText = getGlobalString("InactiveAccountText");
+
 	return true;
 }
 
