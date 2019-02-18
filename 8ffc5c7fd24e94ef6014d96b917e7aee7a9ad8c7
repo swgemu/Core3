@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a494da4_9b368be6",
+        "filename": "MMOCoreORB/bin/scripts/commands/drainForce.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-02-18T06:23:58Z",
+      "side": 1,
+      "message": "I know you didnt do it originally, but fix the formatting in this file for me",
+      "revId": "8ffc5c7fd24e94ef6014d96b917e7aee7a9ad8c7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a494da4_5b2523aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DrainForceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-02-18T06:23:58Z",
+      "side": 1,
+      "message": "Don\u0027t you mean \"or doesn\u0027t have enough force for the cost\"?",
+      "revId": "8ffc5c7fd24e94ef6014d96b917e7aee7a9ad8c7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a494da4_bb39c7da",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DrainForceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-02-18T06:23:58Z",
+      "side": 1,
+      "message": "Combine these, no reason to set to 0 and then set to the rand.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "8ffc5c7fd24e94ef6014d96b917e7aee7a9ad8c7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
