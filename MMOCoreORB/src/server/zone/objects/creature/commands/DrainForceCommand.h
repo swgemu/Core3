@@ -63,10 +63,17 @@ public:
 
 		if (manager->startCombat(creature, targetCreature, false)) { //lockDefender = false because already locked above.
 			int forceSpace = playerGhost->getForcePowerMax() - playerGhost->getForcePower();
-			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
+			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force or has enough Force for the cost.
 				return GENERALERROR;
 
-			int maxDrain = minDamage; //Value set in command lua.
+			if (playerGhost->getForcePower() < forceCost) {
+				creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have sufficient Force power to perform that action.
+				return GENERALERROR;
+			}
+
+			int drain = 0;
+
+			drain = System::random(maxDamage);
 
 			int targetForce = targetGhost->getForcePower();
 			if (targetForce <= 0) {
@@ -74,18 +81,21 @@ public:
 				return GENERALERROR;
 			}
 
-			int forceDrain = targetForce >= maxDrain ? maxDrain : targetForce; //Drain whatever Force the target has, up to max.
+			int forceDrain = targetForce >= drain ? drain : targetForce; //Drain whatever Force the target has, up to max.
 			if (forceDrain > forceSpace)
 				forceDrain = forceSpace; //Drain only what attacker can hold in their own Force pool.
 
-			playerGhost->setForcePower(playerGhost->getForcePower() + forceDrain);
+			playerGhost->setForcePower(playerGhost->getForcePower() + (forceDrain - forceCost));
 			targetGhost->setForcePower(targetGhost->getForcePower() - forceDrain);
 
 			uint32 animCRC = getAnimationString().hashCode();
 			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
 			manager->broadcastCombatSpam(creature, targetCreature, NULL, forceDrain, "cbt_spam", combatSpam, 1);
 
+			VisibilityManager::instance()->increaseVisibility(creature, visMod);
+
 			return SUCCESS;
+
 		}
 
 		return GENERALERROR;
