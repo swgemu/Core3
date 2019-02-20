@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a494da4_db47734a",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupLootTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-02-20T17:05:13Z",
+      "side": 1,
+      "message": "put these above the if. This observer is used by lua to add loot (like quest items) to a mob, and would break that functionality on any mobs that don\u0027t have loot on them already.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 72
+      },
+      "revId": "67e121d5b9479cdc6c47a1332a64b74c010cef63",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
