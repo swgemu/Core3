@@ -100,8 +100,15 @@ public:
 
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		return defaultTime * 3.0;
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
+		float baseDuration = defaultTime * 3.0;
+	    float combatHaste = object->getSkillMod("combat_haste");
+
+	    if (combatHaste > 0) {
+	    	return baseDuration * (1.f - (combatHaste / 100.f));
+	    } else {
+	    	return baseDuration;
+	    }
 	}
 
 };
