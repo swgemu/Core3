@@ -31,12 +31,11 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		// Bonus is in between 200-300.
-		int rand = System::random(10);
-		int forceBonus = 200 + (rand * 10); // Needs to be divisible by amount of ticks.
+		// Bonus is in between 250-350.
+		int forceRandom = System::random(100);
+		int forceBonus = 250 + (forceRandom);
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
 		if (playerObject == NULL)
 			return GENERALERROR;
 
