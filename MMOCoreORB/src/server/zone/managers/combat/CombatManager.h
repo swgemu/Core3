@@ -24,7 +24,7 @@ public:
 	const static int HIT = 0x01;
 	const static int BLOCK = 0x02;
 	const static int DODGE = 0x03;
-	const static int COUNTER = 0x05;
+	const static int COUNTER = 0x04;
 	const static int RICOCHET = 0x07;
 	const static int REFLECT = 0x08;
 	const static int REFLECT_TO_TARGET = 0x09;

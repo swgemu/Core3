@@ -1660,9 +1660,9 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 		if (targetDefense > 50 + attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) { // successful secondary defense, return type of defense
 
 			//info("Secondaries defenses prevailed", true);
-			// this means use defensive acuity, which mean random 1, 2, or 3
+			// this means use defensive acuity, which mean random 2(BLOCK), 3(DODGE) or 4(COUNTER)
 			if (targetWeapon == nullptr)
-				return System::random(2) + 1;
+				return System::random(2) + 2;
 
 			if (def == "block")
 				return BLOCK;
@@ -1671,7 +1671,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 			else if (def == "counterattack")
 				return COUNTER;
 			else if (def == "unarmed_passive_defense")
-				return System::random(2) + 1;
+				return System::random(2) + 2;
 			else // shouldn't get here
 				return HIT; // no secondary defenses available on this weapon
 		}
