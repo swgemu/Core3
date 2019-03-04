@@ -60,8 +60,8 @@ TotalHealSelfCommand = {
 	healBattleFatigue = -1,
 	healWoundAmount = -1,
 	forceCostMultiplier = 0.05,
-	speed = 4
-
+	speed = 3,
+	defaultTime = 1,
 }
 
 AddCommand(TotalHealSelfCommand)

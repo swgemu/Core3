@@ -173,9 +173,6 @@ public:
 		allowedTarget = t;
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		return defaultTime * 3.0;
-	}
 };
 
 #endif /* FORCEHEALQUEUECOMMAND_H_ */
