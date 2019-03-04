@@ -54,7 +54,6 @@ object_building_yavin_dark_enclave = object_building_yavin_shared_dark_enclave:n
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_dark_enclave_voting.iff", x = -2.5, z = -43.42, y = -56.14, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 17, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_dark_enclave_challenge.iff", x = 2.5, z = -43.42, y = -56.14, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 17, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", x = 0.5, z = -43.42, y = -44.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 17, containmentType = -1}
 	},
 }
 

@@ -3975,8 +3975,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 		if (attackerGhost == nullptr)
 			continue;
 
-		//if (ghost->getAccountID() == attackerGhost->getAccountID())
-		//	continue;
+		if (ghost->getAccountID() == attackerGhost->getAccountID())
+			continue;
 
 		if (entry->getTotalDamage() <= 0)
 			continue;

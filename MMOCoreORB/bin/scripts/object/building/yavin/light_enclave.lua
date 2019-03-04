@@ -54,7 +54,6 @@ object_building_yavin_light_enclave = object_building_yavin_shared_light_enclave
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_light_enclave_voting.iff", x =	0, z = -15.1, y = 23, ow = -1, ox = 0, oy = 0, oz = 0, cellid = 1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_light_enclave_challenge.iff", x = -7, z = -15.1, y = 21.8, ow = -0.991, ox = 0, oy = 0.131, oz = 0, cellid = 1, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", x = 0.06, z = -19.25, y = 37.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 22, containmentType = -1}
 	},
 }
 
