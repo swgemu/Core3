@@ -11,8 +11,11 @@ class ForceCurePoisonCommand : public ForceHealQueueCommand {
 public:
 
 	ForceCurePoisonCommand(const String& name, ZoneProcessServer* server)
-	: ForceHealQueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
+	}
 
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return defaultTime * speed;
 	}
 
 };

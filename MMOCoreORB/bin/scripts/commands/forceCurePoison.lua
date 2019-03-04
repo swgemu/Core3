@@ -44,9 +44,11 @@
 ForceCurePoisonCommand = {
 	name = "forcecurepoison",
 	healPoisonCost = 75,
-	range = 32,
 	forceCost = 0,
 	allowedTarget = FORCE_HEAL_TARGET_SELF + FORCE_HEAL_TARGET_OTHER,
+	speed = 2,
+	defaultTime = 1,
+	range = 32,
 }
 
 AddCommand(ForceCurePoisonCommand)

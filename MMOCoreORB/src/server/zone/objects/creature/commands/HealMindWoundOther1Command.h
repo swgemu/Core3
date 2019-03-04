@@ -13,6 +13,10 @@ public:
 		: ForceHealQueueCommand(name, server) {
 	}
 
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return defaultTime * speed;
+	}
+
 };
 
 #endif /* HEALMINDWOUNDOTHER1COMMAND_H_ */

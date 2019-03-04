@@ -10,7 +10,13 @@
 
 class HealHealthSelf1Command : public ForceHealQueueCommand {
 public:
-	HealHealthSelf1Command(const String& name, ZoneProcessServer* server) : ForceHealQueueCommand(name, server) {}
+	HealHealthSelf1Command(const String& name, ZoneProcessServer* server)
+		: ForceHealQueueCommand(name, server) {
+	}
+
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return defaultTime * speed;
+	}
 
 };
 

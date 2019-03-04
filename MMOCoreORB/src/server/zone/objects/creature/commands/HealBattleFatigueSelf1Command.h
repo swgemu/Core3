@@ -12,9 +12,11 @@ public:
 
 	HealBattleFatigueSelf1Command(const String& name, ZoneProcessServer* server)
 		: ForceHealQueueCommand(name, server) {
-
 	}
 
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return defaultTime * speed;
+	}
 
 };
 

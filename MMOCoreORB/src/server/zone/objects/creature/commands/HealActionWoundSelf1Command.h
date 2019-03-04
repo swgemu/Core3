@@ -12,8 +12,12 @@ public:
 
 	HealActionWoundSelf1Command(const String& name, ZoneProcessServer* server)
 		: ForceHealQueueCommand(name, server) {
-
 	}
+
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return defaultTime * speed;
+	}
+
 };
 
 #endif //HEALACTIONWOUNDSELF1COMMAND_H_
