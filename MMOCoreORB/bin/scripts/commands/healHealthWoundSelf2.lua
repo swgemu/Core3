@@ -44,9 +44,10 @@
 HealHealthWoundSelf2Command = {
 	name = "healhealthwoundself2",
 	healWoundAmount = 500,
-	forceCostMultiplier = 0.05,
-	woundAttributesToHeal = HEALTH_ATTRIBUTE,
 	forceCost = 50,
+	forceCostMultiplier = 0.05,
+	defaultTime = 6,
+	woundAttributesToHeal = HEALTH_ATTRIBUTE,
 }
 
 AddCommand(HealHealthWoundSelf2Command)

@@ -43,9 +43,10 @@
 
 HealAllOther2Command = {
 	name = "healallother2",
-	forceCost = 700,
 	healAmount = 750,
+	forceCost = 700,
 	forceCostMultiplier = 0.1,
+	defaultTime = 6,
 	attributesToHeal = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
 	range = 32,
 }
