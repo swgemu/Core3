@@ -59,7 +59,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("questdata", true);
 	databaseManager->loadObjectDatabase("surveys", true);
 	databaseManager->loadObjectDatabase("accounts", true);
-    databaseManager->loadObjectDatabase("pendingmail", true);
+	databaseManager->loadObjectDatabase("pendingmail", true);
 	databaseManager->loadObjectDatabase("credits", true);
 	databaseManager->loadObjectDatabase("navareas", true, 0xFFFF, false);
 	databaseManager->loadObjectDatabase("frsdata", true);
@@ -555,7 +555,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 }*/
 
 SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient) {
-	
+
 	ObjectOutputStream objectData(500);
 
 	(cast<ManagedObject*>(object))->writeObject(&objectData);
@@ -596,7 +596,7 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 	clonedObject->readObject(&objectInput);
 	clonedObject->createComponents();
 	clonedObject->setParent(NULL);
-    
+
 	VectorMap<String, ManagedReference<SceneObject*> > slottedObjects;
 	clonedObject->getSlottedObjects(slottedObjects);
 
@@ -627,7 +627,7 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 
 		clonedObject->transferObject(clonedChild, -1, false);
 	}
-	
+
 	clonedObject->onCloneObject(object);
 
 	if (clonedObject->isPersistent())
