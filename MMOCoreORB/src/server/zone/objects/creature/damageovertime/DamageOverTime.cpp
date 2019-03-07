@@ -363,6 +363,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		uint32 chokeDam = strength;
 
 		float jediBuffDamage = 0;
+		float shieldDamage = 0;
 		float rawDamage = chokeDam;
 
 		// Force Shield
@@ -371,6 +372,20 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 			jediBuffDamage = rawDamage - (chokeDam *= 1.f - (forceShield / 100.f));
 			victimRef->notifyObservers(ObserverEventType::FORCESHIELD, attackerRef, jediBuffDamage);
 			CombatManager::instance()->sendMitigationCombatSpam(victimRef, nullptr, (int)jediBuffDamage, CombatManager::FORCESHIELD);
+		}
+
+		ManagedReference<ArmorObject*> psg = CombatManager::instance()->getPSGArmor(victimRef);
+		if (psg != nullptr && !psg->isVulnerable(SharedWeaponObjectTemplate::LIGHTSABER)) {
+			float armorReduction =  CombatManager::instance()->getArmorObjectReduction(psg, SharedWeaponObjectTemplate::LIGHTSABER);
+			float dmgAbsorbed = chokeDam;
+
+	        if (armorReduction > 0) dmgAbsorbed = rawDamage - (chokeDam *= 1.f - (armorReduction / 100.f));
+
+			if (dmgAbsorbed > 0)
+			CombatManager::instance()->sendMitigationCombatSpam(victimRef, psg, (int)dmgAbsorbed, CombatManager::PSG);
+
+			Locker plocker(psg);
+			psg->TangibleObject::inflictDamage(psg, 0, chokeDam * 0.1, true, true);
 		}
 
 		CombatManager::instance()->broadcastCombatSpam(attackerRef, victimRef, nullptr, chokeDam, "cbt_spam", "forcechoke_hit", 1);

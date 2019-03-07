@@ -163,7 +163,7 @@ public:
 
 	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
 	void getFrsModifiedForceAttackDamage(CreatureObject* attacker, float& minDmg, float& maxDmg, const CreatureAttackData& data);
-
+	friend class DamageOverTime;
 	//all the combat math will go here
 protected:
 
