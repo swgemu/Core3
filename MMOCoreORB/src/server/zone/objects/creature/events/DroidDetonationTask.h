@@ -5,6 +5,7 @@
 #ifndef DROIDEFFECTSTASK_H_
 #define DROIDEFFECTSTASK_H_
 
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidDetonationModuleDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -127,6 +128,30 @@ public:
 
 					if (creo->isIncapacitated() && !creo->isFeigningDeath()) {
 						continue;
+					}
+
+					if (player->isPlayerCreature() && object->getParentID() != 0 && player->getParentID() != object->getParentID()) {
+						Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
+
+						if (targetCell != nullptr) {
+							if (!object->isPlayerCreature()) {
+								ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+								if (!perms->hasInheritPermissionsFromParent()) {
+									if (targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN))
+										continue;
+								}
+							}
+
+							ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+
+							if (parentSceneObject != nullptr) {
+								BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+
+								if (buildingObject != nullptr && !buildingObject->isAllowedEntry(player))
+									continue;
+							}
+						}
 					}
 
 					try {
