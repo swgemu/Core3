@@ -14,6 +14,8 @@
 #include "server/zone/managers/crafting/labratories/Genetics.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
+
+
 AtomicInteger DnaManager::loadedDnaData;
 
 DnaManager::DnaManager() : Logger("DnaManager") {
@@ -285,18 +287,30 @@ int DnaManager::levelForScore(int type, float value) {
 	int rc = 0;
 	switch(type) {
 		case HIT_LEVEL:
-			for (int i=0;i<dnaHit.size();i++) {
-				float lvminus = 0, lvplus = 3;
+			for (int i=0; i<dnaHit.size(); i++) {
 
-				if (i > 0)
-					lvminus = dnaHit.get(i - 1);
+				float lvminus = 0, lvplus = 0;
 
-				if (i < (dnaHit.size() - 1))
-					lvplus = dnaHit.get(i + 1);
+
+				if (i > 0)	lvminus = dnaHit.get(i - 1);
+
+
+				if (i < (dnaHit.size() - 1)) lvplus = dnaHit.get(i + 1);
+
 
 				float lv = dnaHit.get(i);
+				 // return is not consistent  with the proper level for value , ok now
+				if (value == lv) {
+					rc = i;
+					break;
+				}
+				if (value < lvplus && value > lv){
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+					rc = i;
+					break;
+				}
+				if (value < lvplus && value > lvminus) {
+
 					rc = i;
 					break;
 				}
@@ -379,3 +393,4 @@ int DnaManager::levelForScore(int type, float value) {
 	}
 	return rc;
 }
+

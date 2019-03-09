@@ -202,10 +202,13 @@ int PetDeedImplementation::calculatePetLevel() {
 	int effective = (int)(((fortitude - (armor * 500)) / 50) * 5);
 	int dps = ((damageMax + damageMin) / 2.0f) / attackSpeed;
 	int avgHam = (health + action + mind) / 3;
-	if (regen == 0) {
-		regen = avgHam / 10;
-	}
-	return Genetics::calculateAgentLevel(avgHam, dps, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
+	int stamina = (dexterity*15)     + (endurance * 3);
+	int willPower = (intelligence * 15) + (cleverness * 3);
+	int constitution = (hardiness * 15)    + (fortitude * 3);
+	int regen = ((willPower + stamina + constitution) /10)/ 3;
+
+
+	return Genetics::calculateAgentLevel(fortitude,avgHam, dps, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
 }
 
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -433,6 +436,9 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			}
 		}
 
+
+
+
 		// All checks complete, lets setup the control device and do it.
 		ManagedReference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 
@@ -584,3 +590,4 @@ bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 	player->sendSystemMessage("@bio_engineer:pet_sui_stats_fixed");
 	return true;
 }
+

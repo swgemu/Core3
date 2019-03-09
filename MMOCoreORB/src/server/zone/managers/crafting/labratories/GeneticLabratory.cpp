@@ -264,10 +264,9 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
 		craftingValues->setMaxValue(title,1000);
 
-		// using assembly to accoutn for a 1 +% increase
-		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+		// use live style initial combine values
+		currentPercentage = (initialValue/1000) * modifier;
 
-		//craftingValues->setMaxPercentage(title, maxPercentage);
 		craftingValues->setCurrentPercentage(title, currentPercentage);
 
 		if (title == "fortitude") {
@@ -343,54 +342,79 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 	// TODO:
 	// Step 1. Perform normal experimentiton run
 	// Step 2. Recalculate armor base, and effective resist based on armor base. (armor base is fort)
-	// Step 3. Profit.
-	// RULES: AMAZING + 15% (+5% if lucky), GREAT: 1% GOOD: 0.5% MODERATE: 0.25% SUCCESS: 0.15% MARGINAL: 0% OK: -0.5% BARELY: -1% CRITICAL FAILURE: -1% + random state reduced by 10%
-	// use normal line mechanics, just add the extra in.
-	float modifier = 0, newValue = 0;
-	String title, subtitle, subtitlesTitle, screwedTitle;
+	// mar/2019  changed to live formula  - removed Emu success values
+	// hardiness = (fortitude /(fortitude + hardiness) * 140  ( great success) (normal exp values * 2)
+	// fort = (hard /(fort + hard) * modifier
+	float modifier = 0, newValue = 0 , newValue2 = 0, stat1 = 0 , stat2 = 0;
+	int filled = 0;
+	String title, subtitle,subtitle2, subtitlesTitle, screwedTitle;
 	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
 		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+		// need the pair of values  for each line to use.
 		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+			if ( filled == 0 ) {
+				subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+				filled = 2;
+			    }
+			if ( filled == 2 ) {
+				subtitle2= craftingValues->getExperimentalPropertySubtitle(i);
+				 }
+		}
+	}
+	    // now grab the modifier only  need it once.
+	    // use normal crafting success result  values.
 			if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-				modifier = 0.15f * (float)pointsAttempted; //
+				modifier = 0.08f * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GREATSUCCESS)
-				modifier = 0.10 * (float)pointsAttempted; //
+				modifier = 0.07 * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GOODSUCCESS)
-				modifier = 0.05 * (float)pointsAttempted;
+				modifier = 0.055 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MODERATESUCCESS)
-				modifier = 0.025 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::SUCCESS)
 				modifier = 0.015 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::SUCCESS)
+				modifier = 0.01 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MARGINALSUCCESS)
 				modifier = 0.0;
 			if (experimentationResult == CraftingManager::OK)
-				modifier = -0.05 * (float)pointsAttempted;
+				modifier = -0.04 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
-				modifier = -0.1 * (float)pointsAttempted;
+				modifier = -0.07 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::CRITICALFAILURE) {
-				modifier = -0.1 * (float)pointsAttempted;
+				modifier = -0.08 * (float)pointsAttempted;
 				// pick a random attribute
 				int which = System::random(10);
+				int i = System::random(10);
 				while(which != i) {
 					which = System::random(10);
 				}
 				screwedTitle = craftingValues->getExperimentalPropertySubtitle(which);
 				float current = craftingValues->getCurrentPercentage(which);
 				craftingValues->setCurrentPercentage(screwedTitle,current * (-0.1)); // reduce a random attribute by 10%
+
 			}
-			//modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
 
-			if (newValue < 0)
-				newValue = 0;
+			// fix up modifier
+			modifier = modifier * 2 ;
+			// figure out how much to add to each of the two stats, its not a plain percent of the value
+			stat1 = craftingValues->getCurrentPercentage(subtitle);
+			stat2 = craftingValues->getCurrentPercentage(subtitle2);
+			newValue =  (stat2 / (stat1 + stat2)) * modifier;
+			newValue2 = (stat1 / (stat1 + stat2)) * modifier;
+			stat1 = stat1 + newValue;
+			stat2 = stat2 + newValue2;
+			//make sure did not go over max
+			if (stat1 > craftingValues->getMaxPercentage(subtitle))
+				stat1 = craftingValues->getMaxPercentage(subtitle);
+			if (stat2 > craftingValues->getMaxPercentage(subtitle2))
+				stat2 = craftingValues->getMaxPercentage(subtitle2);
 
-			craftingValues->setCurrentPercentage(subtitle, newValue);
-		}
-	}
+			// check make sure its not below 0
+			if (stat1 < 0) stat1 = 0;
+			if (stat2 < 0) stat2 = 0;
+
+			craftingValues->setCurrentPercentage(subtitle, stat1);
+			craftingValues->setCurrentPercentage(subtitle2, stat2);
 
 	craftingValues->recalculateValues(false);
 	float currentFort = craftingValues->getCurrentValue("fortitude");
@@ -410,3 +434,4 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		}
 	}
 }
+
