@@ -2409,7 +2409,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		Locker blocker(multBuff);
 
 		multBuff->setSkillModifier("private_damage_divisor", 2);
-	
+
 		addBuff(multBuff);
 	}
 }
@@ -2591,11 +2591,18 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 
 void CreatureObjectImplementation::updateGroupMFDPositions() {
 	Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
+	auto group = this->group;
 
 	if (group != nullptr) {
 		GroupList* list = group->getGroupList();
 		if (list != nullptr) {
-			ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(creo);
+			auto zone = getZone();
+
+			if (zone == nullptr) {
+				return;
+			}
+
+			ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(creo, zone->getZoneName());
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 			Reference<BasePacket*> pack = msg;
@@ -2603,7 +2610,7 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 
 			for (int i = 0; i < list->size(); i++) {
 
-				Reference<CreatureObject*> member = list->get(i).get();
+				Reference<CreatureObject*> member = list->getSafe(i).get();
 
 				if (member == nullptr || creo == member || !member->isPlayerCreature())
 					continue;
@@ -2639,13 +2646,13 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 
 			if (terrainManager != nullptr) {
 				float waterHeight;
-				
+
 				CreatureObject* creature = asCreatureObject();
-				
+
 				if (parent == nullptr && terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
 					if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
 						Reference<CreatureObject*> strongRef = asCreatureObject();
-						
+
 						Core::getTaskManager()->executeTask([strongRef] () {
 							Locker locker(strongRef);
 

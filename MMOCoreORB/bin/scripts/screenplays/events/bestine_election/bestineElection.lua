@@ -1,8 +1,8 @@
 BestineElection = ScreenPlay:new {
 	electionEnabled = true,
 
-	electionDuration = 24 * 60 * 60 * 1000, -- Duration of the election phase
-	timeTilNextElection = 24 * 60 * 60 * 1000, -- Time until next election, starts immediately after an election ends
+	electionDuration = 30 * 24 * 60 * 60 * 1000, -- Duration of the election phase
+	timeTilNextElection = 30 * 24 * 60 * 60 * 1000, -- Time until next election, starts immediately after an election ends
 
 	ELECTION_PHASE = 1,
 	OFFICE_PHASE = 2,

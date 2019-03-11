@@ -1046,11 +1046,11 @@ Reference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 g
 		return NULL;
 
 	if (temp->getGameObjectType() == gameObjectType)
-		return temp;
+		return std::move(temp);
 
 	while ((temp = temp->getParent().get()) != NULL && temp != asSceneObject()) {
 		if (temp->getGameObjectType() == gameObjectType) {
-			return temp;
+			return std::move(temp);
 		}
 	}
 
@@ -1662,7 +1662,7 @@ bool SceneObjectImplementation::isDecoration() {
 }
 
 Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(uint64 oid) {
-	ManagedReference<SceneObject*> obj = containerObjects.get(oid);
+	Reference<SceneObject*> obj = containerObjects.get(oid);
 
 	if (obj != NULL)
 		return obj;
@@ -1764,7 +1764,7 @@ Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel()
 		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
 	}
 
-	return craftingComponentsSatchel;
+	return std::move(craftingComponentsSatchel);
 }
 
 int SceneObjectImplementation::getArrangementDescriptorSize() {

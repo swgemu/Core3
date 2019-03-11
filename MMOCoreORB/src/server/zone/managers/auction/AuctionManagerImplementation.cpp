@@ -33,6 +33,7 @@
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "AuctionSearchTask.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 void AuctionManagerImplementation::initialize() {
 
@@ -512,6 +513,20 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	item->setVendorID(vendor->getObjectID());
 	item->setItemName(name);
 	item->setItemDescription(description.toString());
+
+	if (objectToSell->isFactoryCrate()) {
+		ManagedReference<FactoryCrate*> crate = cast<FactoryCrate*>(objectToSell);
+
+		if (crate != nullptr) {
+			ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+
+			if (prototype != nullptr) {
+				item->setFactoryCrate(true);
+				item->setCratedItemType(prototype->getClientGameObjectType());
+			}
+		}
+	}
+
 	item->setItemType(objectToSell->getClientGameObjectType());
 	item->setPrice(price);
 	item->setAuction(auction);
@@ -1093,14 +1108,17 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 	}
 }
 bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* item) {
+	int itemType = item->getItemType();
+	bool isCrate = item->isFactoryCrate();
+	int cratedItemType = item->getCratedItemType();
+
 	if (category & 255) { // Searching a sub category
-		if (item->getItemType() == category) {
+		if (itemType == category || (isCrate && cratedItemType == category)) {
 			return true;
 		}
-	} else if (item->getItemType() & category) {
+	} else if ((itemType & category) || (isCrate && (cratedItemType & category))) {
 		return true;
-
-	} else if ((category == 8192) && (item->getItemType() < 256)) {
+	} else if ((category == 8192) && (itemType < 256 || (isCrate && cratedItemType < 256))) {
 		return true;
 	} else if (category == 0) { // Searching all items
 		return true;

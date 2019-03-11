@@ -6,6 +6,8 @@
  */
 
 #include "server/zone/managers/player/PlayerManager.h"
+#include <utility>
+#include <mutex>
 
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
@@ -5273,30 +5275,61 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 	HashTable<String, uint64> names = nameMap->getNames();
 	HashTableIterator<String, uint64> iter = names.iterator();
 
-	Reference<ObjectManager*> objectManager = server->getObjectManager();
+	auto objectManager = server->getObjectManager();
+
+	constexpr int objectsPerTask = 100;
+
+	SynchronizedVectorMap<String, int> sharedMap;
+	AtomicInteger totalObjects = names.size();
+
+	int count = 0;
+	static int startThreads = [] () mutable { Core::getTaskManager()->initializeCustomQueue("AdminListThreads", 10); return 10; } (); //only once
+
+	Vector<VectorMapEntry<String, uint64>> currentObjects;
 
 	while (iter.hasNext()) {
 		uint64 oid;
 		String playerName;
 		iter.getNextKeyAndValue(playerName, oid);
+		++count;
 
-		VectorMap<String, uint64> slottedObjects;
-		int state = 0;
+		currentObjects.emplace(std::move(playerName), std::move(oid));
 
-		objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, oid);
+		if (currentObjects.size() >= objectsPerTask || count >= names.size()) {
+			Core::getTaskManager()->executeTask([currentObjects, &totalObjects, objectManager, &sharedMap]() {
+						for (const auto& obj : currentObjects) {
+							totalObjects.decrement();
 
-		uint64 ghostId = slottedObjects.get("ghost");
+							VectorMap<String, uint64> slottedObjects;
+							int state = 0;
 
-		if (ghostId == 0) {
-			continue;
+							objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, obj.getValue());
+
+							uint64 ghostId = slottedObjects.get("ghost");
+
+							if (ghostId == 0) {
+								continue;
+							}
+
+							objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
+
+							if (state != 0) {
+								sharedMap.put(obj.getKey(), state);
+							}
+						}
+
+					}, "GetAdminPlayerObjectTask", "AdminListThreads");
+
+			currentObjects.removeAll(100, 50);
 		}
 
-		objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
-
-		if (state != 0) {
-			players.put(playerName, state);
-		}
 	}
+
+	while (totalObjects > 0) {
+		Thread::sleep(100);
+	}
+
+	players = sharedMap.getMapUnsafe();
 
 	return players;
 }

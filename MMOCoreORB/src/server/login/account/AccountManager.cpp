@@ -118,8 +118,15 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 
 	if(!account->isActive()) {
 
-		if(client != nullptr)
-			client->sendErrorMessage("Account Disabled", "The server administrators have disabled your account.");
+		if(client != nullptr) {
+			const String& inactTitle = ConfigManager::instance()->getInactiveAccountTitle();
+			const String& inactText = ConfigManager::instance()->getInactiveAccountText();
+
+			client->sendErrorMessage(
+				inactTitle.length() == 0 ? "Account Disabled" : inactTitle,
+				inactText.length() == 0 ? "The server administrators have disabled your account." : inactText
+			);
+		}
 
 		return nullptr;
 	}

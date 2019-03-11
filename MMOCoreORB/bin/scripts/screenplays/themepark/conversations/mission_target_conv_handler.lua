@@ -22,7 +22,7 @@ function mission_target_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
 
 	local ownerID = readData(SceneObject(pNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
-	
+
 	if pOwner == nil then
 		return conversationTemplate:getScreen("dontknowyou_n")
 	end
@@ -441,7 +441,11 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConvTemplate, pPla
 	elseif self.themePark:isValidConvoString(stfFile, ":escortother") then
 		clonedScreen:setDialogTextStringId(stfFile .. ":escortother")
 	else
-		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
+		if self.themePark:isValidConvoString(stfFile, ":dontknowyou_" .. missionNumber) then
+			clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
+		else
+			clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou")
+		end
 	end
 
 	return pConvScreen

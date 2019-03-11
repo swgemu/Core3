@@ -182,7 +182,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
 
-			if (creatureTemplate != NULL) {
+			if (creatureTemplate != NULL && creature->getFaction() != 0) {
 				String templateFaction = creatureTemplate->getFaction();
 
 				if (!templateFaction.isEmpty() && factionStatus == FactionStatus::ONLEAVE) {
@@ -403,7 +403,7 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 		addDefender(defender);
 
 	temp = defenderList.get(0);
-	
+
 	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(asTangibleObject());
 	dtano6->startUpdate(0x01);
 
