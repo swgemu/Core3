@@ -20,6 +20,9 @@ class Ability;
  */
 class AbilityList : public DeltaVector<Ability*> {
 private:
+#ifdef ODB_SERIALIZATION
+	Vector<String> abilities;
+#endif
 	void getStringList(Vector<String>& abilities) const;
 	void loadFromNames(Vector<String>& abilities);
 
