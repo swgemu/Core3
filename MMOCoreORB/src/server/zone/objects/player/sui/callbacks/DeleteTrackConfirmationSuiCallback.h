@@ -12,7 +12,7 @@
 
 class DeleteTrackConfirmationSuiCallback : public SuiCallback {
 public:
-	ManagedReference<DroidPlaybackModuleDataComponent*> module;
+	Reference<DroidPlaybackModuleDataComponent*> module;
 	int track;
 	DeleteTrackConfirmationSuiCallback(ZoneServer* server, DroidPlaybackModuleDataComponent* m, int index)
 		: SuiCallback(server) {

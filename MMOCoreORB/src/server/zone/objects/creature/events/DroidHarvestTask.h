@@ -19,7 +19,7 @@ namespace events {
 
 class DroidHarvestTask : public Task {
 
-	ManagedReference<DroidHarvestModuleDataComponent*> module;
+	Reference<DroidHarvestModuleDataComponent*> module;
 
 public:
 	DroidHarvestTask(DroidHarvestModuleDataComponent* module) : Task() {

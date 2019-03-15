@@ -14,7 +14,7 @@
 
 class SelectDroidEffectDelaySuiCallback : public SuiCallback, public Logger {
 
-	ManagedReference<DroidEffectsModuleDataComponent*> module;
+	Reference<DroidEffectsModuleDataComponent*> module;
 	String effectName;
 	int slotIndex;
 

@@ -17,7 +17,7 @@ namespace events {
 
 class DroidAutoRepairTask : public Task {
 
-	ManagedReference<DroidAutoRepairModuleDataComponent*> module;
+	Reference<DroidAutoRepairModuleDataComponent*> module;
 
 public:
 	DroidAutoRepairTask(DroidAutoRepairModuleDataComponent* module) : Task() {
