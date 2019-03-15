@@ -18,7 +18,7 @@ namespace events {
 
 class DroidMerchantBarkerTask : public Task, public Logger {
 
-	ManagedReference<DroidMerchantModuleDataComponent*> module;
+	Reference<DroidMerchantModuleDataComponent*> module;
 
 public:
 	DroidMerchantBarkerTask(DroidMerchantModuleDataComponent* module) : Task() {

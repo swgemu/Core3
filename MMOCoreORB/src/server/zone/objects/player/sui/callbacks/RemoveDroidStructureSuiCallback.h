@@ -14,7 +14,7 @@
 
 class RemoveDroidStructureSuiCallback : public SuiCallback, public Logger {
 
-	ManagedReference<DroidMaintenanceModuleDataComponent*> module;
+	Reference<DroidMaintenanceModuleDataComponent*> module;
 
 public:
 	RemoveDroidStructureSuiCallback(ZoneServer* serv, DroidMaintenanceModuleDataComponent* module) : SuiCallback(serv) {

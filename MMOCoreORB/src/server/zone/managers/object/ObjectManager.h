@@ -31,7 +31,7 @@ namespace zone {
 		AtomicInteger saveCounter;
 
 		Reference<DeleteCharactersTask*> deleteCharactersTask;
-		
+
 		static uint32 serverObjectCrcHashCode;
 		static uint32 _classNameHashCode;
 
@@ -54,7 +54,7 @@ namespace zone {
 
 
 	public:
-		ObjectManager();
+		ObjectManager(bool initializeTemplates = true);
 		~ObjectManager();
 
 		bool contains(uint32 objectCRC) {

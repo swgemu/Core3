@@ -15,7 +15,7 @@
 #include "server/zone/ZoneServer.h"
 
 class FireworkShowLaunchFireworkEvent : public Task {
-	ManagedReference<FireworkShowDataComponent*> fireworkShowData;
+	Reference<FireworkShowDataComponent*> fireworkShowData;
 	ManagedReference<FireworkObject*> fireworkShow;
 	ManagedWeakReference<CreatureObject*> player;
 	ManagedReference<StaticObject*> worldFireworkShow;

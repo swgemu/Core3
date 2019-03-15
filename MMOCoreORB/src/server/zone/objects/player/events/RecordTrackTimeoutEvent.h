@@ -14,7 +14,7 @@ namespace player {
 namespace events {
 
 class RecordTrackTimeoutEvent: public Task {
-	ManagedReference<DroidPlaybackModuleDataComponent*> module;
+	Reference<DroidPlaybackModuleDataComponent*> module;
 	ManagedReference<CreatureObject*> player;
 	int recordingState;
 public:
