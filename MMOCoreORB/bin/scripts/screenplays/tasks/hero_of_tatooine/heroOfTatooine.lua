@@ -805,7 +805,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	end
 
 	-- Reschedule respawn if leader or pirates are in combat
-	if ((pLeader ~= nil and AiAgent(pLeader):isInCombat()) or (pPirate1 ~= nil and AiAgent(pPirate1):isInCombat()) or (pPirate2 ~= nil and AiAgent(pPirate2):isInCombat())) then
+	if (pLeader ~= nil and AiAgent(pLeader):isInCombat()) then
 		self:createHonorEvent("life")
 		return
 	end
