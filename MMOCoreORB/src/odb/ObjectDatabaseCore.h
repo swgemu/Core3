@@ -5,6 +5,8 @@
 #ifndef OBJECTDATABASECORE_H_
 #define OBJECTDATABASECORE_H_
 
+#include <ostream>
+
 #include "engine/engine.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -14,7 +16,7 @@ protected:
 	Vector<String> arguments;
 
 public:
-	ObjectDatabaseCore(Vector<String> arguments);
+	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
 
 	void initialize();
 
@@ -27,7 +29,7 @@ public:
 
 	static ObjectDatabase* getDatabase(uint64_t objectID);
 
-	static bool getJSONString(uint64 oid, ObjectDatabase* database, String& returnData);
+	static bool getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
 
 	uint64_t getLongArgument(int index, uint64_t defaultValue = 0) const {
 		if (index >= arguments.size()) {
@@ -53,7 +55,7 @@ public:
 		return arguments.get(index);
 	}
 
-	void dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database);
+	void dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database, int maxWriterThreads);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/

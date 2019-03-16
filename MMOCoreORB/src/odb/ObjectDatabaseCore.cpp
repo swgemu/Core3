@@ -7,7 +7,7 @@
 #include "ObjectDatabaseCore.h"
 #include <fstream>
 
-ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments) : Core("log/odb3.log", LogLevel::LOG),
+ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
 
 	setLogLevel(LogLevel::LOG);
@@ -15,6 +15,7 @@ ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments) : Core("log/odb
 
 void ObjectDatabaseCore::initialize() {
 	info("starting up ObjectDatabase..");
+	Core::initializeProperties("ODB3");
 
 	Core::MANAGED_REFERENCE_LOAD = false;
 
@@ -24,7 +25,9 @@ void ObjectDatabaseCore::initialize() {
 	//orb->setCustomObjectManager(new ObjectManager(false));
 }
 
-bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, String& returnData) {
+bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
+	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
+
 	ObjectInputStream objectData(1024);
 
 	if (!database->getData(oid, &objectData)) {
@@ -34,7 +37,8 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, Str
 			UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
 
 			if (pod == nullptr) {
-				Logger::console.error("could not create pod object for class name " + className);
+				if (reportError)
+					Logger::console.error("could not create pod object for class name " + className);
 
 				return false;
 			}
@@ -48,12 +52,11 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, Str
 				nlohmann::json thisObject;
 				thisObject[String::valueOf(oid).toCharArray()] = j;
 
-				std::stringstream fullStream;
-				fullStream << thisObject.dump() << "\n";
-
-				returnData = fullStream.str().c_str();
+				returnData << thisObject.dump();
 			} catch (Exception& e) {
-				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+				if (reportError)
+					Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+
 				return false;
 			}
 
@@ -64,26 +67,46 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, Str
 	return false;
 }
 
-void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database) {
+void dispatchWriterTask(std::stringstream* data, const String& fileName, int writerThread) {
+	 Core::getTaskManager()->executeTask([data, fileName]() {
+		UniqueReference<std::stringstream*> guard(data);
+
+		std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
+
+		jsonFile << data->str();
+
+		jsonFile.close();
+	 }, "WriteJSONTask", ("Writer" + String::valueOf(writerThread)).toCharArray());
+}
+
+void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database, int maxWriterThreads) {
 	const static String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
 
-	Core::getTaskManager()->executeTask([currentObjects, &pushedObjects, database]() {
-			std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
+	static AtomicInteger taskCount;
+
+	int writerThread = taskCount.increment() % maxWriterThreads;
+	const String file = fileName + String::valueOf(writerThread);
+
+	Core::getTaskManager()->executeTask([currentObjects, &pushedObjects, database, file, writerThread]() {
+			std::stringstream* buffer(new std::stringstream());
+			int count = 0;
 
 			for (const auto& oid : currentObjects) {
 				pushedObjects.decrement();
 
-				String jsonString;
+				if (getJSONString(oid, database, *buffer)) {
+					*buffer << "\n";
 
-				if (getJSONString(oid, database, jsonString)) {
-					//std::cout << jsonString.toCharArray();
-					jsonFile << jsonString.toCharArray();
-					jsonFile.flush();
+					++count;
 				}
 			}
 
-			jsonFile.close();
-	}, "DumpJSONTask", "ODBThreads");
+			if (count) {
+				dispatchWriterTask(buffer, file, writerThread);
+			} else {
+				delete buffer;
+			}
+	}, "DumpJSONTask", "ODBReaderThreads");
 }
 
 void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
@@ -98,7 +121,14 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		return;
 	}
 
-	Core::getTaskManager()->initializeCustomQueue("ODBThreads", getIntArgument(2, 4));
+	int readerThreads = getIntArgument(2, 4);
+	int writerThreads = readerThreads / 2 + 1;
+
+	Core::getTaskManager()->initializeCustomQueue("ODBReaderThreads", readerThreads);
+
+	for (int i = 0; i < writerThreads; ++i) {
+		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
+	}
 
 	ObjectDatabaseIterator iterator(database);
 	uint64 oid = 0;
@@ -114,7 +144,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		if (currentObjects.size() >= objectsPerTask) {
 			pushedObjects.add(currentObjects.size());
 
-			dispatchTask(currentObjects, pushedObjects, database);
+			dispatchTask(currentObjects, pushedObjects, database, writerThreads);
 
 			currentObjects.removeAll(100, 100);
 		}
@@ -123,7 +153,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	if (currentObjects.size()) {
 		pushedObjects.add(currentObjects.size());
 
-		dispatchTask(currentObjects, pushedObjects, database);
+		dispatchTask(currentObjects, pushedObjects, database, writerThreads);
 	}
 
 	while (pushedObjects > 0) {
@@ -157,9 +187,9 @@ void ObjectDatabaseCore::dumpObjectToJSON(uint64_t objectID) {
 		return;
 	}
 
-	String json;
+	std::stringstream json;
 	if (getJSONString(objectID, database, json)) {
-		std::cout << json.toCharArray();
+		std::cout << json.str() << std::endl;
 	}
 }
 
@@ -191,9 +221,7 @@ int main(int argc, char* argv[]) {
 			arguments.add(argv[i]);
 		}
 
-		StackTrace::setBinaryName("odb3");
-
-		ObjectDatabaseCore core(std::move(arguments));
+		ObjectDatabaseCore core(std::move(arguments), "odb3");
 
 		core.start();
 	} catch (Exception& e) {
