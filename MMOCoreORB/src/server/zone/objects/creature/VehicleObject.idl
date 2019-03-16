@@ -4,6 +4,7 @@
 
 package server.zone.objects.creature;
 
+import engine.service.proto.BasePacket;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
@@ -18,7 +19,7 @@ class VehicleObject extends CreatureObject {
 	protected int paintCount;
 
 	/*
-	In October 21, 2004 :Jump to Lightspeed Expansion Publish Part 1: 
+	In October 21, 2004 :Jump to Lightspeed Expansion Publish Part 1:
 	 was 2000 but get a good cut in a successive patch
 	*/
 	public static final int PAINTCHARGES = 999;
@@ -39,6 +40,17 @@ class VehicleObject extends CreatureObject {
 		super.pvpStatusBitmask = 0;
 	}
 
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { }
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
+	@dirty
+	@local
+	public native void sendMessage(BasePacket msg);
+
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
@@ -52,7 +64,7 @@ class VehicleObject extends CreatureObject {
 	 */
 	@local
 	@dirty
-	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);	
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	@dirty
 	public native boolean checkInRangeGarage();
@@ -136,7 +148,7 @@ class VehicleObject extends CreatureObject {
 	@dirty
 	@preLocked
 	public void addDefender(SceneObject defender) {
-		
+
 	}
 
 	/**
@@ -148,7 +160,7 @@ class VehicleObject extends CreatureObject {
 	@dirty
 	@preLocked
 	public void removeDefender(SceneObject defender) {
-		
+
 	}
 
 	/**
@@ -160,14 +172,14 @@ class VehicleObject extends CreatureObject {
 	@dirty
 	@preLocked
 	public void setDefender(SceneObject defender) {
-		
+
 	}
 
 	/**
 	 * Evaluates if this object can be attacked by the passed creature object
 	 * @pre { }
 	 * @post { }
-	 * @return returns true if the creature object can attack this 
+	 * @return returns true if the creature object can attack this
 	 */
 	@dirty
 	public boolean isAttackableBy(CreatureObject object) {
@@ -222,10 +234,10 @@ class VehicleObject extends CreatureObject {
 	@preLocked
 	public void refreshPaint() {
 		paintCount = PAINTCHARGES;
-	}	
+	}
 
 	@read
-	public int getPaintCount(){
+	public int getPaintCount() {
 		return paintCount;
 	}
 

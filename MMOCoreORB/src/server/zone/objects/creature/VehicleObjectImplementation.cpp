@@ -153,17 +153,30 @@ int VehicleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	return 0;
 }
 
+void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+
+	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
+		linkedCreature->sendMessage(msg);
+	else {
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+		if (!msg->getReferenceCount())
+#endif
+			delete msg;
+	}
+}
+
 void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged()) {
 		//Need to check if they are city banned.
-		
+
 		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion()) {
 			Region* region = cast<Region*>( activeArea.get());
 
 			ManagedReference<CityRegion*> gb = region->getCityRegion().get();
-			
+
 			if (gb == NULL)
 				return;
 
@@ -171,7 +184,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
 				return;
 			}
-		
+
 
 		if (getConditionDamage() == 0) {
 			player->sendSystemMessage("@pet/pet_menu:undamaged_vehicle"); //The targeted vehicle does not require any repairs at the moment.
@@ -188,7 +201,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 			return;
 			}
 		}
-	}	
+	}
 	sendRepairConfirmTo(player);
 }
 
