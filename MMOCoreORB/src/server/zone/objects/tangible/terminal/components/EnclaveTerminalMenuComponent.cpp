@@ -64,9 +64,10 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 			menuResponse->addRadialMenuItem(75, 3, "@force_rank:demote_member"); // Demote Lower Tier Member
 
 		menuResponse->addRadialMenuItem(74, 3, "@force_rank:recover_jedi_items"); // Recover Jedi Items
-
+#if FRS_TESTING
 		if (ghost->isPrivileged())
 			menuResponse->addRadialMenuItem(76, 3, "Force Phase Change");
+#endif
 	} else if (terminalType == LIGHT_CHALLENGE) {
 		menuResponse->addRadialMenuItem(69, 3, "@force_rank:challenge_vote_status"); // No-Confidence Vote Status
 
@@ -86,9 +87,10 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 
 		if (frsManager->canPlayerAcceptArenaChallenge(player))
 			menuResponse->addRadialMenuItem(72, 3, "@pvp_rating:ch_terminal_accept_challenge"); // Accept a Challenge
-
+#if FRS_TESTING
 		if (ghost->isPrivileged() && !frsManager->isArenaOpen())
 			menuResponse->addRadialMenuItem(76, 3, "(TESTING) Open Arena");
+#endif
 	}
 }
 
@@ -156,8 +158,10 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_VOTE_DEMOTE, enclaveType);
 		else if (selectedID == 73)
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_VOTE_PETITION, enclaveType);
+#if FRS_TESTING
 		else if (selectedID == 76 && ghost->isPrivileged())
 			frsManager->sendVoteSUI(player, sceneObject, FrsManager::SUI_FORCE_PHASE_CHANGE, enclaveType);
+#endif
 		else if (selectedID == 74)
 			frsManager->recoverJediItems(player);
 	} else if (terminalType == LIGHT_CHALLENGE) {
@@ -178,8 +182,10 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_ACCEPT, enclaveType);
 		else if (selectedID == 73)
 			frsManager->sendArenaChallengeSUI(player, sceneObject, FrsManager::SUI_ARENA_CHAL_ISSUE, enclaveType);
+#if FRS_TESTING
 		else if (selectedID == 76 && ghost->isPrivileged())
 			frsManager->forceArenaOpen(player);
+#endif
 	}
 
 	return 0;
