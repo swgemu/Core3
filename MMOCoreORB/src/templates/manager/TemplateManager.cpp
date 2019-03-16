@@ -138,6 +138,7 @@ AtomicInteger TemplateManager::loadedTemplatesCount;
 int TemplateManager::ERROR_CODE = NO_ERROR;
 
 TemplateManager::TemplateManager() {
+	raise(SIGSEGV);
 	setLogging(false);
 	setGlobalLogging(true);
 	setLoggingName("TemplateManager");
@@ -376,12 +377,12 @@ void TemplateManager::loadPlanetMapCategories() {
 }
 
 void TemplateManager::loadLuaTemplates() {
-	
+
 	if( loadedTemplatesCount > 0 ) {
 		error("Templates already loaded");
 		return;
 	}
-	
+
 	info("Loading object templates", true);
 
 	try {
@@ -398,7 +399,7 @@ void TemplateManager::loadLuaTemplates() {
 
 	printf("\n");
 	info("Finished loading object templates", true);
-	
+
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);
