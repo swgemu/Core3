@@ -5,6 +5,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 #include "ObjectDatabaseCore.h"
+#include <fstream>
 
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments) : Core("log/odb3.log", LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
@@ -38,18 +39,23 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, Str
 				return false;
 			}
 
-			pod->readObject(&objectData);
+			try {
+				pod->readObject(&objectData);
 
-			nlohmann::json j;
-			pod->writeJSON(j);
+				nlohmann::json j;
+				pod->writeJSON(j);
 
-			nlohmann::json thisObject;
-			thisObject[String::valueOf(oid).toCharArray()] = j;
+				nlohmann::json thisObject;
+				thisObject[String::valueOf(oid).toCharArray()] = j;
 
-			std::stringstream fullStream;
-			fullStream << thisObject.dump() << "\n";
+				std::stringstream fullStream;
+				fullStream << thisObject.dump() << "\n";
 
-			returnData = fullStream.str().c_str();
+				returnData = fullStream.str().c_str();
+			} catch (Exception& e) {
+				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+				return false;
+			}
 
 			return true;
 		}
@@ -59,16 +65,24 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, Str
 }
 
 void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database) {
+	const static String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
+
 	Core::getTaskManager()->executeTask([currentObjects, &pushedObjects, database]() {
+			std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
+
 			for (const auto& oid : currentObjects) {
 				pushedObjects.decrement();
 
 				String jsonString;
 
 				if (getJSONString(oid, database, jsonString)) {
-					std::cout << jsonString.toCharArray();
+					//std::cout << jsonString.toCharArray();
+					jsonFile << jsonString.toCharArray();
+					jsonFile.flush();
 				}
 			}
+
+			jsonFile.close();
 	}, "DumpJSONTask", "ODBThreads");
 }
 
@@ -92,7 +106,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	AtomicInteger pushedObjects = 0;
 
 	Vector<uint64> currentObjects;
-	constexpr static const int objectsPerTask = 5;
+	constexpr static const int objectsPerTask = 15;
 
 	while (iterator.getNextKey(oid)) {
 		currentObjects.emplace(oid);
