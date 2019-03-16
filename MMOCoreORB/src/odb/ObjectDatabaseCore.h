@@ -53,7 +53,7 @@ public:
 		return arguments.get(index);
 	}
 
-	static void dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database);
+	void dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/
