@@ -8,8 +8,6 @@
 #include <fstream>
 #include <thread>
 
-#define OBJECTS_PER_TASK 15
-
 AtomicInteger ObjectDatabaseCore::dbReadCount;
 AtomicInteger ObjectDatabaseCore::dbReadNotFoundCount;
 ParsedObjectsHashTable ObjectDatabaseCore::parsedObjects;
@@ -110,6 +108,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 void dispatchWriterTask(std::stringstream* data, const String& fileName, int writerThread) {
 	 Core::getTaskManager()->executeTask([data, fileName]() {
 		UniqueReference<std::stringstream*> guard(data);
+
 		std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
 
 		jsonFile << data->str();
@@ -128,12 +127,6 @@ void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, Obje
 			int count = 0;
 
 			for (const auto& oid : currentObjects) {
-				if (dispatcher == 2) {
-					backPushedObjects.decrement();
-				} else {
-					pushedObjects.decrement();
-				}
-
 				try {
 					if (getJSONString(oid, database, *buffer)) {
 						*buffer << "\n";
@@ -141,6 +134,12 @@ void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, Obje
 						++count;
 					}
 				} catch (...) {
+				}
+
+				if (dispatcher == 2) {
+					backPushedObjects.decrement();
+				} else {
+					pushedObjects.decrement();
 				}
 			}
 
@@ -156,7 +155,9 @@ void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
 	auto currentCount = dbReadCount.get(std::memory_order_seq_cst);
 
 	StringBuffer buff;
-	buff << "total db read count: " << currentCount << " speed: " << (currentCount - previousCount)  << " reads in " << deltaMs / 1000 << "s";
+	buff << "total db read count: " << currentCount << " speed: " << (currentCount - previousCount)
+		<< " reads in " << deltaMs / 1000 << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
+		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst);
 	staticLogger.info(buff, true);
 }
 
@@ -179,7 +180,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 		Vector<uint64> currentObjects;
 		int pushedCount = 0;
 
-		constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
+		static const int objectsPerTask = Core::getIntProperty("ODB3.objectsPerTask", 15);
 
 		if (!iterator.getLastKey(oid)) {
 			return; //no last key
@@ -237,9 +238,6 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 			int count = 0;
 
 			for (const auto& entry : currentObjects) {
-				pushedObjects.decrement();
-				dbReadCount.increment();
-
 				try {
 					ObjectInputStream uncompressed;
 
@@ -256,6 +254,9 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 				}
 
 				delete entry.data;
+
+				pushedObjects.decrement();
+				dbReadCount.increment();
 			}
 
 			if (count) {
@@ -278,6 +279,8 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 		return;
 	}
 
+	info("starting version 2 reader", true);
+
 	int readerThreads = getIntArgument(2, 4);
 	int writerThreads = readerThreads / 2 + 1;
 
@@ -292,7 +295,6 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 
 
 	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
-	startBackIteratorTask(database, fileName, writerThreads);
 
 	berkley::CursorConfig config;
 	config.setReadUncommitted(true);
@@ -302,7 +304,7 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 	uint64 oid = 0;
 
 	Vector<ODB3WorkerData> currentObjects;
-	constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
+	static const int objectsPerTask = Core::getIntProperty("ODB3.objectsPerTask", 15);
 
 	Time lastStatsShow;
 	lastStatsShow.updateToCurrentTime();
@@ -406,7 +408,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	uint64 oid = 0;
 
 	Vector<uint64> currentObjects;
-	constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
+	static const int objectsPerTask = Core::getIntProperty("ODB3.objectsPerTask", 15);
 
 	Time lastStatsShow;
 	lastStatsShow.updateToCurrentTime();
