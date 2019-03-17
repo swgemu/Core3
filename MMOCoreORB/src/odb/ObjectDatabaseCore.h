@@ -50,6 +50,7 @@ protected:
 
 	static ParsedObjectsHashTable parsedObjects;
 	static AtomicInteger dbReadCount;
+	static AtomicInteger dbReadNotFoundCount;
 	static AtomicInteger pushedObjects;
 	static AtomicInteger backPushedObjects;
 	static Logger staticLogger;

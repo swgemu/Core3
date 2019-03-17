@@ -11,6 +11,7 @@
 #define OBJECTS_PER_TASK 15
 
 AtomicInteger ObjectDatabaseCore::dbReadCount;
+AtomicInteger ObjectDatabaseCore::dbReadNotFoundCount;
 ParsedObjectsHashTable ObjectDatabaseCore::parsedObjects;
 AtomicInteger ObjectDatabaseCore::pushedObjects;
 AtomicInteger ObjectDatabaseCore::backPushedObjects;
@@ -42,6 +43,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 		ObjectInputStream objectData(1024);
 
 		if (database->getData(oid, &objectData)) {
+			dbReadNotFoundCount.increment();
 			return false;
 		}
 
@@ -169,6 +171,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 		uint64 oid = 0;
 
 		Vector<uint64> currentObjects;
+		int pushedCount = 0;
 
 		constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
 
@@ -199,6 +202,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 
 			if (currentObjects.size() >= objectsPerTask) {
 				backPushedObjects.add(currentObjects.size());
+				pushedCount += (currentObjects.size());
 
 				dispatchTask(currentObjects, database, fileName, writerThreads, 2);
 
@@ -208,11 +212,12 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 
 		if (currentObjects.size()) {
 			backPushedObjects.add(currentObjects.size());
+			pushedCount += (currentObjects.size());
 
 			dispatchTask(currentObjects, database, fileName, writerThreads, 2);
 		}
 
-		staticLogger.info("back iterator finished dispatching tasks", true);
+		staticLogger.info("back iterator finished dispatching " + String::valueOf(pushedCount) + " tasks", true);
 	}, "BackIteratorTask", "BackIteratorThread");
 }
 
@@ -256,9 +261,12 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	Time lastStatsShow;
 	lastStatsShow.updateToCurrentTime();
 	uint32 previousCount = dbReadCount.get();
+	int pushedCount = 0;
+
+	const bool backIteratorEnabled = Core::getIntProperty("ODB3.enableBackIterator", 1);
 
 	while (iterator.getNextKey(oid)) {
-		if (this->parsedObjects.put(oid, 1)) {
+		if (backIteratorEnabled && this->parsedObjects.put(oid, 1)) {
 			break;
 		}
 
@@ -266,6 +274,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 
 		if (currentObjects.size() >= objectsPerTask) {
 			pushedObjects.add(currentObjects.size());
+			pushedCount += (currentObjects.size());
 
 			dispatchTask(currentObjects,  database, fileName, writerThreads, 1);
 
@@ -284,13 +293,14 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 
 	if (currentObjects.size()) {
 		pushedObjects.add(currentObjects.size());
+		pushedCount += (currentObjects.size());
 
 		dispatchTask(currentObjects, database, fileName, writerThreads, 1);
 	}
 
-	staticLogger.info("front iterator finished dispatching tasks", true);
+	staticLogger.info("front iterator finished dispatching " + String::valueOf(pushedCount) + " tasks", true);
 
-	while (backPushedObjects && pushedObjects) {
+	while (backPushedObjects.get(std::memory_order_seq_cst) && pushedObjects.get(std::memory_order_seq_cst)) {
 		Thread::sleep(100);
 
 		auto diff = lastStatsShow.miliDifference();
@@ -302,8 +312,6 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 			previousCount = dbReadCount.get();
 		}
 	}
-
-	info("finished parsing " + String::valueOf(parsedObjects.size()), true);
 }
 
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
