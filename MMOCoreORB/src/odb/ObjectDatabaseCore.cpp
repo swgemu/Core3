@@ -271,15 +271,13 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 
 			currentObjects.removeRange(0, currentObjects.size());
 
-			if (lastStatsShow.miliDifference() > 1000) {
-				auto diff = lastStatsShow.miliDifference();
+			auto diff = lastStatsShow.miliDifference();
 
-				if (diff > 1000) {
-					showStats(previousCount, diff);
+			if (diff > 1000) {
+				showStats(previousCount, diff);
 
-					lastStatsShow.updateToCurrentTime();
-					previousCount = dbReadCount.get();
-				}
+				lastStatsShow.updateToCurrentTime();
+				previousCount = dbReadCount.get();
 			}
 		}
 	}
@@ -295,17 +293,14 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	while (backPushedObjects && pushedObjects) {
 		Thread::sleep(100);
 
-		if (lastStatsShow.miliDifference() > 1000) {
-			auto diff = lastStatsShow.miliDifference();
+		auto diff = lastStatsShow.miliDifference();
 
-			if (diff > 1000) {
-				showStats(previousCount, diff);
+		if (diff > 1000) {
+			showStats(previousCount, diff);
 
-				lastStatsShow.updateToCurrentTime();
-				previousCount = dbReadCount.get();
-			}
+			lastStatsShow.updateToCurrentTime();
+			previousCount = dbReadCount.get();
 		}
-
 	}
 
 	info("finished parsing " + String::valueOf(parsedObjects.size()), true);
