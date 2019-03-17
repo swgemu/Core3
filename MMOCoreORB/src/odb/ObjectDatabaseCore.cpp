@@ -36,6 +36,55 @@ void ObjectDatabaseCore::initialize() {
 	//orb->setCustomObjectManager(new ObjectManager(false));
 }
 
+bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData) {
+	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
+	String className;
+
+	if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
+		return false;
+	}
+
+	UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
+
+	if (pod == nullptr) {
+		if (reportError)
+			staticLogger.error("could not create pod object for class name " + className);
+
+		return false;
+	}
+
+	try {
+		pod->readObject(&objectData);
+
+		nlohmann::json j;
+		pod->writeJSON(j);
+
+		nlohmann::json thisObject;
+		thisObject[String::valueOf(oid).toCharArray()] = j;
+
+		returnData << thisObject.dump();
+	} catch (const Exception& e) {
+		if (reportError)
+			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+
+		return false;
+	} catch (const std::exception& e) {
+		if (reportError)
+			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
+
+		return false;
+	} catch (...) {
+		if (reportError)
+			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
+
+
+		return false;
+	}
+
+	return true;
+
+}
+
 bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
 	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
 
@@ -49,50 +98,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 
 		ObjectDatabaseCore::dbReadCount.increment();
 
-		String className;
-
-		if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
-			return false;
-		}
-
-		UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
-
-		if (pod == nullptr) {
-			if (reportError)
-				staticLogger.error("could not create pod object for class name " + className);
-
-			return false;
-		}
-
-		try {
-			pod->readObject(&objectData);
-
-			nlohmann::json j;
-			pod->writeJSON(j);
-
-			nlohmann::json thisObject;
-			thisObject[String::valueOf(oid).toCharArray()] = j;
-
-			returnData << thisObject.dump();
-		} catch (const Exception& e) {
-			if (reportError)
-				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
-
-			return false;
-		} catch (const std::exception& e) {
-			if (reportError)
-				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
-
-			return false;
-		} catch (...) {
-			if (reportError)
-				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
-
-
-			return false;
-		}
-
-		return true;
+		return getJSONString(oid, objectData, returnData);
 	} catch (...) {
 		if (reportError)
 			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
@@ -221,7 +227,151 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 	}, "BackIteratorTask", "BackIteratorThread");
 }
 
+void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher) {
+	static AtomicInteger taskCount;
+	int writerThread = taskCount.increment() % maxWriterThreads;
+
+	Core::getTaskManager()->executeTask([fileName, dispatcher, currentObjects, database, writerThread]() {
+			const String file = fileName + String::valueOf(writerThread);
+			std::stringstream* buffer(new std::stringstream());
+			int count = 0;
+
+			for (const auto& entry : currentObjects) {
+				pushedObjects.decrement();
+				dbReadCount.increment();
+
+				try {
+					ObjectInputStream uncompressed;
+
+					LocalDatabase::uncompress(entry.data->begin(), entry.data->size(), &uncompressed);
+
+					uncompressed.reset();
+
+					if (getJSONString(entry.oid, uncompressed, *buffer)) {
+						*buffer << "\n";
+
+						++count;
+					}
+				} catch (...) {
+				}
+
+				delete entry.data;
+			}
+
+			if (count) {
+				dispatchWriterTask(buffer, file, writerThread);
+			} else {
+				delete buffer;
+			}
+	}, "DumpJSONTask", "ODBReaderThreads");
+}
+
+void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
+	auto databaseManager  = ObjectDatabaseManager::instance();
+	auto database = databaseManager->loadObjectDatabase(databaseName, false);
+
+	if (!database) {
+		error("invalid database " + databaseName);
+
+		showHelp();
+
+		return;
+	}
+
+	int readerThreads = getIntArgument(2, 4);
+	int writerThreads = readerThreads / 2 + 1;
+
+	auto taskManager = Core::getTaskManager();
+
+	taskManager->initializeCustomQueue("ODBReaderThreads", readerThreads);
+	taskManager->initializeCustomQueue("BackIteratorThread", 1);
+
+	for (int i = 0; i < writerThreads; ++i) {
+		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
+	}
+
+
+	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
+	startBackIteratorTask(database, fileName, writerThreads);
+
+	berkley::CursorConfig config;
+	config.setReadUncommitted(true);
+
+	//forward iterator
+	ObjectDatabaseIterator iterator(database, config);
+	uint64 oid = 0;
+
+	Vector<ODB3WorkerData> currentObjects;
+	constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
+
+	Time lastStatsShow;
+	lastStatsShow.updateToCurrentTime();
+	uint32 previousCount = dbReadCount.get();
+	int pushedCount = 0;
+
+	ObjectInputStream* data = new ObjectInputStream();
+
+	while (iterator.getNextKeyAndValue(oid, data)) {
+		ODB3WorkerData val;
+		val.oid = oid;
+		val.data = data;
+
+		currentObjects.emplace(val);
+
+		if (currentObjects.size() >= objectsPerTask) {
+			pushedObjects.add(currentObjects.size());
+			pushedCount += (currentObjects.size());
+
+			dispatchWorkerTask(currentObjects,  database, fileName, writerThreads, 1);
+
+			currentObjects.removeRange(0, currentObjects.size());
+
+			auto diff = lastStatsShow.miliDifference();
+
+			if (diff > 1000) {
+				showStats(previousCount, diff);
+
+				lastStatsShow.updateToCurrentTime();
+				previousCount = dbReadCount.get();
+			}
+		}
+
+		data = new ObjectInputStream();
+	}
+
+	delete data;
+	data = nullptr;
+
+	if (currentObjects.size()) {
+		pushedObjects.add(currentObjects.size());
+		pushedCount += (currentObjects.size());
+
+		dispatchWorkerTask(currentObjects, database, fileName, writerThreads, 1);
+	}
+
+	staticLogger.info("iterator finished dispatching " + String::valueOf(pushedCount) + " tasks", true);
+
+	while (pushedObjects.get(std::memory_order_seq_cst)) {
+		Thread::sleep(100);
+
+		auto diff = lastStatsShow.miliDifference();
+
+		if (diff > 1000) {
+			showStats(previousCount, diff);
+
+			lastStatsShow.updateToCurrentTime();
+			previousCount = dbReadCount.get();
+		}
+	}
+}
+
 void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
+	if (Core::getIntProperty("ODB3.version", 0) == 2) {
+		dumpDatabaseVersion2(databaseName);
+
+		return;
+	}
+
 	auto databaseManager  = ObjectDatabaseManager::instance();
 	auto database = databaseManager->loadObjectDatabase(databaseName, false);
 
