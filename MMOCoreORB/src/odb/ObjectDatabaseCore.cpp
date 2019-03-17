@@ -165,7 +165,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 	if (Core::getIntProperty("ODB3.enableBackIterator", 1) == 0)
 		return;
 
-	staticLogger.info("back iterator enabled", true);
+	staticLogger.info("back iterator2 enabled", true);
 
 	berkley::CursorConfig config;
 	config.setReadUncommitted(true);
@@ -239,16 +239,25 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 
 			for (const auto& entry : currentObjects) {
 				try {
-					ObjectInputStream uncompressed;
 
-					LocalDatabase::uncompress(entry.data->begin(), entry.data->size(), &uncompressed);
+					if (database->hasCompressionEnabled()) {
+						ObjectInputStream uncompressed(entry.data->size() * 2);
 
-					uncompressed.reset();
+						LocalDatabase::uncompress(entry.data->begin(), entry.data->size(), &uncompressed);
 
-					if (getJSONString(entry.oid, uncompressed, *buffer)) {
+						uncompressed.reset();
+
+						if (getJSONString(entry.oid, uncompressed, *buffer)) {
 						*buffer << "\n";
 
 						++count;
+						}
+					} else {
+						if (getJSONString(entry.oid, *entry.data, *buffer)) {
+							*buffer << "\n";
+
+							++count;
+						}
 					}
 				} catch (...) {
 				}
@@ -311,38 +320,73 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 	uint32 previousCount = dbReadCount.get();
 	int pushedCount = 0;
 
-	ObjectInputStream* data = new ObjectInputStream();
+	//5MB buffer
+	int buffersize = Core::getIntProperty("ODB3.bulkBuffer", 5 * 1024 * 1024); //5MB
+	ArrayList<char> buffer(buffersize, buffersize / 2);
 
-	while (iterator.getNextKeyAndValue(oid, data)) {
-		ODB3WorkerData val;
-		val.oid = oid;
-		val.data = data;
+	berkley::DatabaseEntry dataEntry;
+	dataEntry.setData(buffer.begin(), buffersize);
 
-		currentObjects.emplace(val);
+	size_t retklen, retdlen;
+	unsigned char *retkey, *retdata;
+	void *p;
 
-		if (currentObjects.size() >= objectsPerTask) {
-			pushedObjects.add(currentObjects.size());
-			pushedCount += (currentObjects.size());
+	int queryRes = 0;
 
-			dispatchWorkerTask(currentObjects,  database, fileName, writerThreads, 1);
+	do {
+		if (queryRes == DB_BUFFER_SMALL) {
+			staticLogger.info("resizing bulk buffer to " + String::valueOf(buffersize * 2), true);
 
-			currentObjects.removeRange(0, currentObjects.size());
+			buffersize *= 2;
 
-			auto diff = lastStatsShow.miliDifference();
-
-			if (diff > 1000) {
-				showStats(previousCount, diff);
-
-				lastStatsShow.updateToCurrentTime();
-				previousCount = dbReadCount.get();
-			}
+			buffer.removeAll(buffersize, 5);
+			dataEntry.setData(buffer.begin(), buffersize);
 		}
 
-		data = new ObjectInputStream();
-	}
+		queryRes = iterator.getNextKeyAndValueMultiple(dataEntry);
 
-	delete data;
-	data = nullptr;
+		if (!queryRes) {
+			for (DB_MULTIPLE_INIT(p, dataEntry.getDBT());;) {
+				DB_MULTIPLE_KEY_NEXT(p,
+						dataEntry.getDBT(), retkey, retklen, retdata, retdlen);
+				if (p == NULL)
+					break;
+
+				ObjectInputStream* data = new ObjectInputStream(retdlen);
+				data->writeStream((const char*)retdata, retdlen);
+
+				oid = *reinterpret_cast<uint64*>(retkey);
+
+				ODB3WorkerData val;
+				val.oid = oid;
+				val.data = data;
+
+				currentObjects.emplace(val);
+
+				if (currentObjects.size() >= objectsPerTask) {
+					pushedObjects.add(currentObjects.size());
+					pushedCount += (currentObjects.size());
+
+					dispatchWorkerTask(currentObjects, database, fileName, writerThreads, 1);
+
+					currentObjects.removeRange(0, currentObjects.size());
+
+					auto diff = lastStatsShow.miliDifference();
+
+					if (diff > 1000) {
+						showStats(previousCount, diff);
+
+						lastStatsShow.updateToCurrentTime();
+						previousCount = dbReadCount.get();
+					}
+				}
+			}
+		}
+	} while (queryRes == 0 || queryRes == DB_BUFFER_SMALL);
+
+	if (queryRes) {
+		staticLogger.info("iterator finished with result: " + String::valueOf(queryRes) + db_strerror(queryRes), true);
+	}
 
 	if (currentObjects.size()) {
 		pushedObjects.add(currentObjects.size());
@@ -354,7 +398,7 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 	staticLogger.info("iterator finished dispatching " + String::valueOf(pushedCount) + " tasks", true);
 
 	while (pushedObjects.get(std::memory_order_seq_cst)) {
-		Thread::sleep(100);
+		Thread::sleep(500);
 
 		auto diff = lastStatsShow.miliDifference();
 
