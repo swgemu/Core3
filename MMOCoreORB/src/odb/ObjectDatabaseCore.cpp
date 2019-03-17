@@ -42,7 +42,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 	try {
 		ObjectInputStream objectData(1024);
 
-		if (database->getData(oid, &objectData)) {
+		if (database->getDataNoTx(oid, &objectData)) {
 			dbReadNotFoundCount.increment();
 			return false;
 		}
