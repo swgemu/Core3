@@ -8,12 +8,13 @@
 #include <fstream>
 #include <thread>
 
-#define BACK_ITER_T
+#define OBJECTS_PER_TASK 15
 
-AtomicInteger ObjectDatabaseCore::dispatchedTasks;
+AtomicInteger ObjectDatabaseCore::dbReadCount;
 ParsedObjectsHashTable ObjectDatabaseCore::parsedObjects;
 AtomicInteger ObjectDatabaseCore::pushedObjects;
 AtomicInteger ObjectDatabaseCore::backPushedObjects;
+Logger ObjectDatabaseCore::staticLogger("ObjectDatabaseCore");
 
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
@@ -44,7 +45,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 			return false;
 		}
 
-		ObjectDatabaseCore::dispatchedTasks.increment();
+		ObjectDatabaseCore::dbReadCount.increment();
 
 		String className;
 
@@ -56,7 +57,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 
 		if (pod == nullptr) {
 			if (reportError)
-				Logger::console.error("could not create pod object for class name " + className);
+				staticLogger.error("could not create pod object for class name " + className);
 
 			return false;
 		}
@@ -73,17 +74,17 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 			returnData << thisObject.dump();
 		} catch (const Exception& e) {
 			if (reportError)
-				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
 
 			return false;
 		} catch (const std::exception& e) {
 			if (reportError)
-				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
+				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
 
 			return false;
 		} catch (...) {
 			if (reportError)
-				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid));
+				staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
 
 
 			return false;
@@ -92,7 +93,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 		return true;
 	} catch (...) {
 		if (reportError)
-			Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid));
+			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
 	}
 
 	return false;
@@ -143,8 +144,20 @@ void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, Obje
 	}, "DumpJSONTask", "ODBReaderThreads");
 }
 
+void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
+	auto currentCount = dbReadCount.get(std::memory_order_seq_cst);
+
+	StringBuffer buff;
+	buff << "total db read count: " << currentCount << " speed: " << (currentCount - previousCount)  << " reads in " << deltaMs / 1000 << "s";
+	staticLogger.info(buff, true);
+}
+
 void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads) {
-#ifdef BACK_ITER_T
+	if (Core::getIntProperty("ODB3.enableBackIterator", 1) == 0)
+		return;
+
+	staticLogger.info("back iterator enabled", true);
+
 	berkley::CursorConfig config;
 	config.setReadUncommitted(true);
 
@@ -157,7 +170,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 
 		Vector<uint64> currentObjects;
 
-		constexpr static const int objectsPerTask = 15;
+		constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
 
 		if (!iterator.getLastKey(oid)) {
 			return; //no last key
@@ -166,7 +179,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 		ObjectInputStream data;
 
 		if (!iterator.getSearchKey(oid, &data)) {
-			Logger::console.error("false search key");
+			staticLogger.error("false search key");
 
 			return;
 		}
@@ -198,8 +211,9 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 
 			dispatchTask(currentObjects, database, fileName, writerThreads, 2);
 		}
+
+		staticLogger.info("back iterator finished dispatching tasks", true);
 	}, "BackIteratorTask", "BackIteratorThread");
-#endif
 }
 
 void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
@@ -237,7 +251,11 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	uint64 oid = 0;
 
 	Vector<uint64> currentObjects;
-	constexpr static const int objectsPerTask = 15;
+	constexpr static const int objectsPerTask = OBJECTS_PER_TASK;
+
+	Time lastStatsShow;
+	lastStatsShow.updateToCurrentTime();
+	uint32 previousCount = dbReadCount.get();
 
 	while (iterator.getNextKey(oid)) {
 		if (this->parsedObjects.put(oid, 1)) {
@@ -252,6 +270,17 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 			dispatchTask(currentObjects,  database, fileName, writerThreads, 1);
 
 			currentObjects.removeRange(0, currentObjects.size());
+
+			if (lastStatsShow.miliDifference() > 1000) {
+				auto diff = lastStatsShow.miliDifference();
+
+				if (diff > 1000) {
+					showStats(previousCount, diff);
+
+					lastStatsShow.updateToCurrentTime();
+					previousCount = dbReadCount.get();
+				}
+			}
 		}
 	}
 
@@ -261,11 +290,25 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		dispatchTask(currentObjects, database, fileName, writerThreads, 1);
 	}
 
+	staticLogger.info("front iterator finished dispatching tasks", true);
+
 	while (backPushedObjects && pushedObjects) {
 		Thread::sleep(100);
+
+		if (lastStatsShow.miliDifference() > 1000) {
+			auto diff = lastStatsShow.miliDifference();
+
+			if (diff > 1000) {
+				showStats(previousCount, diff);
+
+				lastStatsShow.updateToCurrentTime();
+				previousCount = dbReadCount.get();
+			}
+		}
+
 	}
 
-	info("finished main iterator " + String::valueOf(parsedObjects.size()), true);
+	info("finished parsing " + String::valueOf(parsedObjects.size()), true);
 }
 
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
@@ -301,7 +344,7 @@ void ObjectDatabaseCore::dumpObjectToJSON(uint64_t objectID) {
 
 void ObjectDatabaseCore::showHelp() {
 	info("Arguments: \n"
-		"\todb3 dumpdb <database> <threads> \n"
+		"\todb3 dumpdb <database> <threads> <filename>\n"
 		"\todb3 dumpobj <objectid>\n"
 		, true);
 }
