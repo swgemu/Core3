@@ -118,6 +118,7 @@ public:
 	static void dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 	static void dispatchWorkerTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 	static void startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads);
+	static void startBackIteratorTask2(ObjectDatabase* database, const String& fileName, int writerThreads);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/
