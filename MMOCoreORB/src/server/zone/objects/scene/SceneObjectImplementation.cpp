@@ -43,6 +43,7 @@
 
 #include <fstream>
 #include <sys/stat.h>
+#include <iomanip>
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();

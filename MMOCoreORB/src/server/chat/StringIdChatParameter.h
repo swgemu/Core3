@@ -58,18 +58,9 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	friend void to_json(nlohmann::json& j, const StringIdChatParameter& p) {
-		const StringId& id = p;
+	friend void to_json(nlohmann::json& j, const StringIdChatParameter& p);
 
-		j["stringID"] = p;
-		j["TT"] = p.TT;
-		j["TU"] = p.TU;
-		j["TO"] = p.TO;
-		j["DI"] = p.DI;
-		j["DF"] = p.DF;
-	}
-
-	virtual String toString() {
+	virtual String toString() const {
 		return StringId::getFullPath();
 	}
 

@@ -6,8 +6,14 @@
 
 #include "ObjectDatabaseCore.h"
 #include <fstream>
+#include <thread>
 
+#define BACK_ITER_T
+
+AtomicInteger ObjectDatabaseCore::dispatchedTasks;
+ParsedObjectsHashTable ObjectDatabaseCore::parsedObjects;
 AtomicInteger ObjectDatabaseCore::pushedObjects;
+AtomicInteger ObjectDatabaseCore::backPushedObjects;
 
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
@@ -17,6 +23,7 @@ ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* eng
 
 void ObjectDatabaseCore::initialize() {
 	info("starting up ObjectDatabase..");
+
 	Core::initializeProperties("ODB3");
 
 	Core::MANAGED_REFERENCE_LOAD = false;
@@ -30,40 +37,62 @@ void ObjectDatabaseCore::initialize() {
 bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
 	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
 
-	ObjectInputStream objectData(1024);
+	try {
+		ObjectInputStream objectData(1024);
 
-	if (!database->getData(oid, &objectData)) {
+		if (database->getData(oid, &objectData)) {
+			return false;
+		}
+
+		ObjectDatabaseCore::dispatchedTasks.increment();
+
 		String className;
 
-		if (Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
-			UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
-
-			if (pod == nullptr) {
-				if (reportError)
-					Logger::console.error("could not create pod object for class name " + className);
-
-				return false;
-			}
-
-			try {
-				pod->readObject(&objectData);
-
-				nlohmann::json j;
-				pod->writeJSON(j);
-
-				nlohmann::json thisObject;
-				thisObject[String::valueOf(oid).toCharArray()] = j;
-
-				returnData << thisObject.dump();
-			} catch (Exception& e) {
-				if (reportError)
-					Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
-
-				return false;
-			}
-
-			return true;
+		if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
+			return false;
 		}
+
+		UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
+
+		if (pod == nullptr) {
+			if (reportError)
+				Logger::console.error("could not create pod object for class name " + className);
+
+			return false;
+		}
+
+		try {
+			pod->readObject(&objectData);
+
+			nlohmann::json j;
+			pod->writeJSON(j);
+
+			nlohmann::json thisObject;
+			thisObject[String::valueOf(oid).toCharArray()] = j;
+
+			returnData << thisObject.dump();
+		} catch (const Exception& e) {
+			if (reportError)
+				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
+
+			return false;
+		} catch (const std::exception& e) {
+			if (reportError)
+				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
+
+			return false;
+		} catch (...) {
+			if (reportError)
+				Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid));
+
+
+			return false;
+		}
+
+		return true;
+	} catch (...) {
+		if (reportError)
+			Logger::console.error("parsing data for object 0x:" + String::hexvalueOf(oid));
 	}
 
 	return false;
@@ -72,7 +101,6 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 void dispatchWriterTask(std::stringstream* data, const String& fileName, int writerThread) {
 	 Core::getTaskManager()->executeTask([data, fileName]() {
 		UniqueReference<std::stringstream*> guard(data);
-
 		std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
 
 		jsonFile << data->str();
@@ -81,24 +109,29 @@ void dispatchWriterTask(std::stringstream* data, const String& fileName, int wri
 	 }, "WriteJSONTask", ("Writer" + String::valueOf(writerThread)).toCharArray());
 }
 
-void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, int maxWriterThreads) {
-	const static String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
-
+void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher) {
 	static AtomicInteger taskCount;
 	int writerThread = taskCount.increment() % maxWriterThreads;
 
-	Core::getTaskManager()->executeTask([currentObjects, database, writerThread]() {
+	Core::getTaskManager()->executeTask([fileName, dispatcher, currentObjects, database, writerThread]() {
 			const String file = fileName + String::valueOf(writerThread);
 			std::stringstream* buffer(new std::stringstream());
 			int count = 0;
 
 			for (const auto& oid : currentObjects) {
-				pushedObjects.decrement();
+				if (dispatcher == 2) {
+					backPushedObjects.decrement();
+				} else {
+					pushedObjects.decrement();
+				}
 
-				if (getJSONString(oid, database, *buffer)) {
-					*buffer << "\n";
+				try {
+					if (getJSONString(oid, database, *buffer)) {
+						*buffer << "\n";
 
-					++count;
+						++count;
+					}
+				} catch (...) {
 				}
 			}
 
@@ -110,9 +143,68 @@ void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, Obje
 	}, "DumpJSONTask", "ODBReaderThreads");
 }
 
+void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads) {
+#ifdef BACK_ITER_T
+	berkley::CursorConfig config;
+	config.setReadUncommitted(true);
+
+	auto taskManager = Core::getTaskManager();
+
+	//back iterator
+	taskManager->executeTask([database, writerThreads, fileName, config]() mutable {
+		ObjectDatabaseIterator iterator(database, config);
+		uint64 oid = 0;
+
+		Vector<uint64> currentObjects;
+
+		constexpr static const int objectsPerTask = 15;
+
+		if (!iterator.getLastKey(oid)) {
+			return; //no last key
+		}
+
+		ObjectInputStream data;
+
+		if (!iterator.getSearchKey(oid, &data)) {
+			Logger::console.error("false search key");
+
+			return;
+		}
+
+		if (parsedObjects.put(oid, 2)) {
+			return;
+		}
+
+		currentObjects.add(oid);
+
+		while (iterator.getPrevKey(oid)) {
+			if (parsedObjects.put(oid, 2)) {
+				break;
+			}
+
+			currentObjects.add(oid);
+
+			if (currentObjects.size() >= objectsPerTask) {
+				backPushedObjects.add(currentObjects.size());
+
+				dispatchTask(currentObjects, database, fileName, writerThreads, 2);
+
+				currentObjects.removeRange(0, currentObjects.size());
+			}
+		}
+
+		if (currentObjects.size()) {
+			backPushedObjects.add(currentObjects.size());
+
+			dispatchTask(currentObjects, database, fileName, writerThreads, 2);
+		}
+	}, "BackIteratorTask", "BackIteratorThread");
+#endif
+}
+
 void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
-	auto databases = ObjectDatabaseManager::instance();
-	auto database = databases->loadObjectDatabase(databaseName, false);
+	auto databaseManager  = ObjectDatabaseManager::instance();
+	auto database = databaseManager->loadObjectDatabase(databaseName, false);
 
 	if (!database) {
 		error("invalid database " + databaseName);
@@ -125,25 +217,39 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	int readerThreads = getIntArgument(2, 4);
 	int writerThreads = readerThreads / 2 + 1;
 
-	Core::getTaskManager()->initializeCustomQueue("ODBReaderThreads", readerThreads);
+	auto taskManager = Core::getTaskManager();
+
+	taskManager->initializeCustomQueue("ODBReaderThreads", readerThreads);
+	taskManager->initializeCustomQueue("BackIteratorThread", 1);
 
 	for (int i = 0; i < writerThreads; ++i) {
 		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
 	}
 
-	ObjectDatabaseIterator iterator(database);
+	berkley::CursorConfig config;
+	config.setReadUncommitted(true);
+
+	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
+	startBackIteratorTask(database, fileName, writerThreads);
+
+	//forward iterator
+	ObjectDatabaseIterator iterator(database, config);
 	uint64 oid = 0;
 
 	Vector<uint64> currentObjects;
 	constexpr static const int objectsPerTask = 15;
 
 	while (iterator.getNextKey(oid)) {
-		currentObjects.emplace(oid);
+		if (this->parsedObjects.put(oid, 1)) {
+			break;
+		}
+
+		currentObjects.add(oid);
 
 		if (currentObjects.size() >= objectsPerTask) {
 			pushedObjects.add(currentObjects.size());
 
-			dispatchTask(currentObjects, database, writerThreads);
+			dispatchTask(currentObjects,  database, fileName, writerThreads, 1);
 
 			currentObjects.removeRange(0, currentObjects.size());
 		}
@@ -152,12 +258,14 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	if (currentObjects.size()) {
 		pushedObjects.add(currentObjects.size());
 
-		dispatchTask(currentObjects, database, writerThreads);
+		dispatchTask(currentObjects, database, fileName, writerThreads, 1);
 	}
 
-	while (pushedObjects.get() > 0) {
+	while (backPushedObjects && pushedObjects) {
 		Thread::sleep(100);
 	}
+
+	info("finished main iterator " + String::valueOf(parsedObjects.size()), true);
 }
 
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
