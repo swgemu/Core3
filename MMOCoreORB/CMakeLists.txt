@@ -39,7 +39,7 @@ option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 option(ENABLE_OMIT_FRAMEPOINTER "Enables -fno-omit-frame-pointer compiler option" ON)
 option(ENABLE_ERROR_ON_WARNINGS "Enables -Werror compiler option" ON)
 option(ENABLE_REST_SERVER "Enables RESTServer if cpprestsdk is found" OFF)
-option(ENABLE_ODB "Enables odb3 compiling" OFF)
+option(ENABLE_ODB "Enables odb3 compiling" ON)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 
 # Set cmake paths

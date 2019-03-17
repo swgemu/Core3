@@ -9,14 +9,49 @@
 
 #include "engine/engine.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "system/util/SynchronizedHashTable.h"
+
+class ParsedObjectsHashTable : protected HashTable<uint64, int> {
+public:
+	ParsedObjectsHashTable() : HashTable<uint64, int>(1000000) {
+		setNullValue(0);
+	}
+
+	int put(uint64 key, int val) {
+		Locker locker(&guard);
+
+		return HashTable<uint64, int>::put(key, val);
+	}
+
+	int size() {
+		return HashTable<uint64, int>::size();
+	}
+
+protected:
+	int hash(const uint64& keyValue) const {
+		uint64 key = keyValue;
+
+		key = (~key) + (key << 18);
+		key =   key  ^ (key >> 31);
+		key = key * 21;
+		key = key ^ (key >> 11);
+		key = key + (key << 6);
+		key = key ^ (key >> 22);
+		return (int) key;
+	}
+
+	Mutex guard;
+};
 
 class ObjectDatabaseCore : public Core, public Logger {
 protected:
 	Reference<ObjectManager*> objectManager;
 	Vector<String> arguments;
 
-public:
+	static ParsedObjectsHashTable parsedObjects;
+	static AtomicInteger dispatchedTasks;
 	static AtomicInteger pushedObjects;
+	static AtomicInteger backPushedObjects;
 
 public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
@@ -58,7 +93,8 @@ public:
 		return arguments.get(index);
 	}
 
-	void dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, int maxWriterThreads);
+	static void dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
+	static void startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/
