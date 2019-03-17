@@ -16,6 +16,9 @@ protected:
 	Vector<String> arguments;
 
 public:
+	static AtomicInteger pushedObjects;
+
+public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
 
 	void initialize();
@@ -55,7 +58,7 @@ public:
 		return arguments.get(index);
 	}
 
-	void dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database, int maxWriterThreads);
+	void dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, int maxWriterThreads);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/

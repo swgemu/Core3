@@ -7,6 +7,8 @@
 #include "ObjectDatabaseCore.h"
 #include <fstream>
 
+AtomicInteger ObjectDatabaseCore::pushedObjects;
+
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
 
@@ -79,15 +81,14 @@ void dispatchWriterTask(std::stringstream* data, const String& fileName, int wri
 	 }, "WriteJSONTask", ("Writer" + String::valueOf(writerThread)).toCharArray());
 }
 
-void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, AtomicInteger& pushedObjects, ObjectDatabase* database, int maxWriterThreads) {
+void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, int maxWriterThreads) {
 	const static String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
 
 	static AtomicInteger taskCount;
-
 	int writerThread = taskCount.increment() % maxWriterThreads;
-	const String file = fileName + String::valueOf(writerThread);
 
-	Core::getTaskManager()->executeTask([currentObjects, &pushedObjects, database, file, writerThread]() {
+	Core::getTaskManager()->executeTask([currentObjects, database, writerThread]() {
+			const String file = fileName + String::valueOf(writerThread);
 			std::stringstream* buffer(new std::stringstream());
 			int count = 0;
 
@@ -133,8 +134,6 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	ObjectDatabaseIterator iterator(database);
 	uint64 oid = 0;
 
-	AtomicInteger pushedObjects = 0;
-
 	Vector<uint64> currentObjects;
 	constexpr static const int objectsPerTask = 15;
 
@@ -144,22 +143,21 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		if (currentObjects.size() >= objectsPerTask) {
 			pushedObjects.add(currentObjects.size());
 
-			dispatchTask(currentObjects, pushedObjects, database, writerThreads);
+			dispatchTask(currentObjects, database, writerThreads);
 
-			currentObjects.removeAll(100, 100);
+			currentObjects.removeRange(0, currentObjects.size());
 		}
 	}
 
 	if (currentObjects.size()) {
 		pushedObjects.add(currentObjects.size());
 
-		dispatchTask(currentObjects, pushedObjects, database, writerThreads);
+		dispatchTask(currentObjects, database, writerThreads);
 	}
 
-	while (pushedObjects > 0) {
+	while (pushedObjects.get() > 0) {
 		Thread::sleep(100);
 	}
-
 }
 
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
