@@ -6,6 +6,7 @@
 #define OBJECTDATABASECORE_H_
 
 #include <ostream>
+#include <utility>
 
 #include "engine/engine.h"
 #include "server/zone/managers/object/ObjectManager.h"
@@ -43,6 +44,20 @@ protected:
 	Mutex guard;
 };
 
+class ODB3WorkerData {
+public:
+	uint64 oid;
+	ObjectInputStream* data;
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+};
+
 class ObjectDatabaseCore : public Core, public Logger {
 protected:
 	Reference<ObjectManager*> objectManager;
@@ -65,6 +80,8 @@ public:
 	void dumpDatabaseToJSON(const String& database);
 	void dumpObjectToJSON(uint64_t oid);
 
+	void dumpDatabaseVersion2(const String& database);
+
 	void showHelp();
 
 	static void showStats(uint32 previousCount, int deltaMs);
@@ -72,6 +89,7 @@ public:
 	static ObjectDatabase* getDatabase(uint64_t objectID);
 
 	static bool getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
+	static bool getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData);
 
 	uint64_t getLongArgument(int index, uint64_t defaultValue = 0) const {
 		if (index >= arguments.size()) {
@@ -98,6 +116,7 @@ public:
 	}
 
 	static void dispatchTask(const Vector<uint64>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
+	static void dispatchWorkerTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 	static void startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads);
 };
 
