@@ -49,9 +49,10 @@ protected:
 	Vector<String> arguments;
 
 	static ParsedObjectsHashTable parsedObjects;
-	static AtomicInteger dispatchedTasks;
+	static AtomicInteger dbReadCount;
 	static AtomicInteger pushedObjects;
 	static AtomicInteger backPushedObjects;
+	static Logger staticLogger;
 
 public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
@@ -64,6 +65,8 @@ public:
 	void dumpObjectToJSON(uint64_t oid);
 
 	void showHelp();
+
+	static void showStats(uint32 previousCount, int deltaMs);
 
 	static ObjectDatabase* getDatabase(uint64_t objectID);
 
