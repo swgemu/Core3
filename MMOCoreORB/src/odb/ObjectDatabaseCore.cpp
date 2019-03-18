@@ -45,21 +45,21 @@ void ObjectDatabaseCore::initialize() {
 }
 
 VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
-	VectorMap<uint64, String> players;
+	VectorMap<uint64, String> players(500000, 500000 / 2);
 	players.setNoDuplicateInsertPlan();
 
 	staticLogger.info("loading characters from mysql", true);
 
 	try {
-		String query = "SELECT * FROM characters where galaxy_id = " + String::valueOf(galaxyID);
+		String query = "SELECT character_oid, firstname FROM characters where galaxy_id = " + String::valueOf(galaxyID);
 
 		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
-			String firstName = res->getString(3);
+			String firstName = res->getString(1);
 
-			if (players.put(oid, firstName.toLowerCase()) == -1) {
+			if (players.put(std::move(oid), std::move(firstName)) == -1) {
 				staticLogger.warning("error coliding name:" + firstName.toLowerCase());
 			}
 		}
