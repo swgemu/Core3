@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "system/util/SynchronizedHashTable.h"
+#include "server/db/ServerDatabase.h"
 
 class ParsedObjectsHashTable : protected HashTable<uint64, int> {
 public:
@@ -44,6 +45,8 @@ protected:
 	Mutex guard;
 };
 
+class ServerDatabase;
+
 class ODB3WorkerData {
 public:
 	uint64 oid;
@@ -62,6 +65,7 @@ class ObjectDatabaseCore : public Core, public Logger {
 protected:
 	Reference<ObjectManager*> objectManager;
 	Vector<String> arguments;
+	UniqueReference<ServerDatabase*> mysql;
 
 	static ParsedObjectsHashTable parsedObjects;
 	static AtomicInteger dbReadCount;
@@ -69,6 +73,7 @@ protected:
 	static AtomicInteger pushedObjects;
 	static AtomicInteger backPushedObjects;
 	static Logger staticLogger;
+	static SynchronizedVectorMap<String, int> adminList;
 
 public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
@@ -81,8 +86,10 @@ public:
 	void dumpObjectToJSON(uint64_t oid);
 
 	void dumpDatabaseVersion2(const String& database);
+	static VectorMap<uint64, String> loadPlayers(int galaxyID);
 
 	void showHelp();
+	void dumpAdmins();
 
 	static void showStats(uint32 previousCount, int deltaMs);
 
@@ -90,6 +97,7 @@ public:
 
 	static bool getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
 	static bool getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData);
+	//static std::function<void()> getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 
 	uint64_t getLongArgument(int index, uint64_t defaultValue = 0) const {
 		if (index >= arguments.size()) {
@@ -119,6 +127,7 @@ public:
 	static void dispatchWorkerTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 	static void startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads);
 	static void startBackIteratorTask2(ObjectDatabase* database, const String& fileName, int writerThreads);
+	static void dispatchAdminTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/

@@ -5,6 +5,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 #include "ObjectDatabaseCore.h"
+#include "conf/ConfigManager.h"
 #include <fstream>
 #include <thread>
 
@@ -14,6 +15,7 @@ ParsedObjectsHashTable ObjectDatabaseCore::parsedObjects;
 AtomicInteger ObjectDatabaseCore::pushedObjects;
 AtomicInteger ObjectDatabaseCore::backPushedObjects;
 Logger ObjectDatabaseCore::staticLogger("ObjectDatabaseCore");
+SynchronizedVectorMap<String, int> ObjectDatabaseCore::adminList;
 
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
@@ -29,9 +31,44 @@ void ObjectDatabaseCore::initialize() {
 	Core::MANAGED_REFERENCE_LOAD = false;
 
 	objectManager = new ObjectManager(false); //initialize databases but not the templates
+	auto configManager = ConfigManager::instance();
+	if (!configManager->loadConfigData()) {
+		warning("could not load core3 config");
+	}
 
 	//DistributedObjectBroker* orb = DistributedObjectBroker::initialize("", 44230);
 	//orb->setCustomObjectManager(new ObjectManager(false));
+}
+
+VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
+	VectorMap<uint64, String> players;
+	players.setNoDuplicateInsertPlan();
+
+	staticLogger.info("loading characters from mysql", true);
+
+	try {
+		String query = "SELECT * FROM characters where galaxy_id = " + String::valueOf(galaxyID);
+
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			uint64 oid = res->getUnsignedLong(0);
+			String firstName = res->getString(3);
+
+			if (players.put(oid, firstName.toLowerCase()) == -1) {
+				staticLogger.warning("error coliding name:" + firstName.toLowerCase());
+			}
+		}
+
+	} catch (Exception& e) {
+		staticLogger.error(e.getMessage());
+	}
+
+	StringBuffer msg;
+	msg << "loaded " << players.size() << " character names in memory";
+	staticLogger.info(msg.toString(), true);
+
+	return players;
 }
 
 bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData) {
@@ -82,6 +119,9 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData
 	return true;
 
 }
+
+//std::function<void()> ObjectDatabaseCore::getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher) {
+//}
 
 bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
 	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
@@ -155,7 +195,7 @@ void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
 	auto currentCount = dbReadCount.get(std::memory_order_seq_cst);
 
 	StringBuffer buff;
-	buff << "total db read count: " << currentCount << " speed: " << (currentCount - previousCount)
+	buff << "total db read count: " << currentCount << " not found:  " << dbReadNotFoundCount.get(std::memory_order_seq_cst) << " speed: " << (currentCount - previousCount)
 		<< " reads in " << deltaMs / 1000 << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
 		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst);
 	staticLogger.info(buff, true);
@@ -248,9 +288,9 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 						uncompressed.reset();
 
 						if (getJSONString(entry.oid, uncompressed, *buffer)) {
-						*buffer << "\n";
+							*buffer << "\n";
 
-						++count;
+							++count;
 						}
 					} else {
 						if (getJSONString(entry.oid, *entry.data, *buffer)) {
@@ -274,6 +314,116 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 				delete buffer;
 			}
 	}, "DumpJSONTask", "ODBReaderThreads");
+}
+
+void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects) {
+	Core::getTaskManager()->executeTask([currentObjects]() {
+		for (const auto& obj : currentObjects) {
+			try {
+				VectorMap<String, uint64> slottedObjects;
+				int state = 0;
+				auto objectID = obj.getValue();
+
+				auto database = getDatabase(objectID);
+
+				if (!database) {
+					pushedObjects.decrement();
+					continue;
+				}
+
+				ObjectInputStream objectData(1024);
+
+				if (database->getDataNoTx(objectID, &objectData)) {
+					dbReadNotFoundCount.increment();
+					pushedObjects.decrement();
+					continue;
+				}
+
+				dbReadCount.increment();
+
+				if (!Serializable::getVariable(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, &objectData)) {
+					pushedObjects.decrement();
+					continue;
+				}
+
+				uint64 ghostId = slottedObjects.get("ghost");
+
+				if (ghostId == 0) {
+					pushedObjects.decrement();
+					continue;
+				}
+
+				ObjectInputStream ghostData(1024);
+
+				if (database->getDataNoTx(ghostId, &ghostData)) {
+					dbReadNotFoundCount.increment();
+					pushedObjects.decrement();
+					continue;
+				}
+
+				dbReadCount.increment();
+
+				if (!Serializable::getVariable(STRING_HASHCODE("PlayerObject.adminLevel"), &state, &ghostData)) {
+					pushedObjects.decrement();
+					continue;
+				}
+
+				if (state != 0) {
+					adminList.put(obj.getKey(), state);
+				}
+			} catch (...) {
+			}
+
+			pushedObjects.decrement();
+		}
+
+	}, "GetAdminPlayerObjectTask", "AdminListThreads");
+}
+
+void ObjectDatabaseCore::dumpAdmins() {
+	mysql = new ServerDatabase(ConfigManager::instance());
+
+	auto players = loadPlayers(getIntArgument(1, 2));
+
+	int objectsPerTask = Core::getIntProperty("ODB3.adminPlayersPerTask", 100);
+
+	int count = 0;
+	Core::getTaskManager()->initializeCustomQueue("AdminListThreads", getIntArgument(2, 10));
+
+	Vector<VectorMapEntry<String, uint64>> currentObjects;
+
+	info("starting workers", true);
+
+	for (const auto& entry : players) {
+		const auto& oid = entry.getKey();
+		const auto& playerName = entry.getValue();
+		++count;
+
+		currentObjects.emplace(playerName, oid);
+		pushedObjects.increment();
+
+		if (currentObjects.size() >= objectsPerTask || count >= players.size()) {
+			dispatchAdminTask(currentObjects);
+
+			currentObjects.removeAll(objectsPerTask, 50);
+		}
+	}
+
+	auto previousCount = dbReadCount.get();
+
+	while (pushedObjects > 0) {
+		Thread::sleep(1000);
+
+		showStats(previousCount, 1000);
+
+		previousCount = dbReadCount.get();
+	}
+
+	for (int i = 0; i < adminList.size(); ++i) {
+		info(adminList.getKey(i) + ": " + adminList.get(i), true);
+	}
+
+	info("finished querying " + String::valueOf(players.size()) + " characters", true);
 }
 
 void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
@@ -301,7 +451,6 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 	for (int i = 0; i < writerThreads; ++i) {
 		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
 	}
-
 
 	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
 
@@ -545,6 +694,7 @@ void ObjectDatabaseCore::showHelp() {
 	info("Arguments: \n"
 		"\todb3 dumpdb <database> <threads> <filename>\n"
 		"\todb3 dumpobj <objectid>\n"
+		"\todb3 dumpadmins <galaxyid> <threads>\n"
 		, true);
 }
 
@@ -557,6 +707,8 @@ void ObjectDatabaseCore::run() {
 		dumpDatabaseToJSON(getArgument(1));
 	} else if (operation == "dumpobj") {
 		dumpObjectToJSON(getLongArgument(1));
+	} else if (operation == "dumpadmins") {
+		dumpAdmins();
 	} else {
 		showHelp();
 	}
