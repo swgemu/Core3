@@ -16,6 +16,10 @@ AtomicInteger ObjectDatabaseCore::pushedObjects;
 AtomicInteger ObjectDatabaseCore::backPushedObjects;
 Logger ObjectDatabaseCore::staticLogger("ObjectDatabaseCore");
 SynchronizedVectorMap<String, int> ObjectDatabaseCore::adminList;
+AtomicLong ObjectDatabaseCore::creoReadSize;
+AtomicLong ObjectDatabaseCore::ghostReadSize;
+AtomicLong ObjectDatabaseCore::globalDBReadSize;
+AtomicLong ObjectDatabaseCore::compressedCreoReadSize;
 
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
@@ -135,6 +139,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std
 		}
 
 		ObjectDatabaseCore::dbReadCount.increment();
+		globalDBReadSize.add(objectData.size());
 
 		return getJSONString(oid, objectData, returnData);
 	} catch (...) {
@@ -197,7 +202,8 @@ void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
 	StringBuffer buff;
 	buff << "total db read count: " << currentCount << " not found:  " << dbReadNotFoundCount.get(std::memory_order_seq_cst) << " speed: " << (currentCount - previousCount)
 		<< " reads in " << deltaMs / 1000 << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
-		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst);
+		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst)
+		<< " global db read size: " << globalDBReadSize.get() << " creo read size: " << creoReadSize.get() << " creo compressed read size: " << compressedCreoReadSize.get() << " ghost read size: " << ghostReadSize;
 	staticLogger.info(buff, true);
 }
 
@@ -340,6 +346,10 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 						dbReadNotFoundCount.increment();
 					} else {
 						dbReadCount.increment();
+
+						compressedCreoReadSize.add(objectData.size());
+
+						globalDBReadSize.add(objectData.size());
 					}
 
 					pushedObjects.decrement();
@@ -353,6 +363,9 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 					continue;
 				}
+
+				creoReadSize.add(objectData.size());
+				globalDBReadSize.add(objectData.size());
 
 				dbReadCount.increment();
 
@@ -380,6 +393,9 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 					continue;
 				}
+
+				ghostReadSize.add(ghostData.size());
+				globalDBReadSize.add(ghostData.size());
 
 				dbReadCount.increment();
 
@@ -443,6 +459,8 @@ void ObjectDatabaseCore::dumpAdmins() {
 	for (int i = 0; i < adminList.size(); ++i) {
 		info(adminList.getKey(i) + ": " + adminList.get(i), true);
 	}
+
+	showStats(dbReadCount.get(), 1);
 
 	info("finished querying " + String::valueOf(players.size()) + " characters", true);
 }
@@ -524,6 +542,7 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 
 				ObjectInputStream* data = new ObjectInputStream(retdlen);
 				data->writeStream((const char*)retdata, retdlen);
+				globalDBReadSize.add(retdlen);
 
 				oid = *reinterpret_cast<uint64*>(retkey);
 

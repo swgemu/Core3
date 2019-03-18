@@ -74,6 +74,10 @@ protected:
 	static AtomicInteger backPushedObjects;
 	static Logger staticLogger;
 	static SynchronizedVectorMap<String, int> adminList;
+	static AtomicLong creoReadSize;
+	static AtomicLong compressedCreoReadSize;
+	static AtomicLong ghostReadSize;
+	static AtomicLong globalDBReadSize;
 
 public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
