@@ -317,10 +317,11 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 }
 
 void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects) {
+	static const bool readRAWTest = Core::getIntProperty("ODB3.adminReadRAWTest", 0);
+
 	Core::getTaskManager()->executeTask([currentObjects]() {
 		for (const auto& obj : currentObjects) {
 			try {
-				VectorMap<String, uint64> slottedObjects;
 				int state = 0;
 				auto objectID = obj.getValue();
 
@@ -328,21 +329,38 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 				if (!database) {
 					pushedObjects.decrement();
+
 					continue;
 				}
 
 				ObjectInputStream objectData(1024);
 
+				if (readRAWTest) {
+					if (database->getDataNoTx(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, true)) {
+						dbReadNotFoundCount.increment();
+					} else {
+						dbReadCount.increment();
+					}
+
+					pushedObjects.decrement();
+
+					continue;
+				}
+
 				if (database->getDataNoTx(objectID, &objectData)) {
 					dbReadNotFoundCount.increment();
 					pushedObjects.decrement();
+
 					continue;
 				}
 
 				dbReadCount.increment();
 
+				VectorMap<String, uint64> slottedObjects;
+
 				if (!Serializable::getVariable(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, &objectData)) {
 					pushedObjects.decrement();
+
 					continue;
 				}
 
@@ -350,6 +368,7 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 				if (ghostId == 0) {
 					pushedObjects.decrement();
+
 					continue;
 				}
 
@@ -358,6 +377,7 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 				if (database->getDataNoTx(ghostId, &ghostData)) {
 					dbReadNotFoundCount.increment();
 					pushedObjects.decrement();
+
 					continue;
 				}
 
@@ -365,6 +385,7 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 				if (!Serializable::getVariable(STRING_HASHCODE("PlayerObject.adminLevel"), &state, &ghostData)) {
 					pushedObjects.decrement();
+
 					continue;
 				}
 
