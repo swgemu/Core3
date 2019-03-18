@@ -20,7 +20,7 @@ namespace events {
 
 class DroidPlaybackTask : public Task {
 
-	ManagedReference<DroidPlaybackModuleDataComponent*> module;
+	Reference<DroidPlaybackModuleDataComponent*> module;
 	bool playing;
 public:
 	DroidPlaybackTask(DroidPlaybackModuleDataComponent* module) : Task() {

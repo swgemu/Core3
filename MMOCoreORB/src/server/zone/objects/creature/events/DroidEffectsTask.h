@@ -16,7 +16,7 @@ namespace events {
 
 class DroidEffectsTask : public Task, public Logger {
 
-	ManagedReference<DroidEffectsModuleDataComponent*> module;
+	Reference<DroidEffectsModuleDataComponent*> module;
 
 public:
 	DroidEffectsTask(DroidEffectsModuleDataComponent* module) : Task() {

@@ -17,7 +17,7 @@
 
 class SelectDroidEffectSuiCallback : public SuiCallback, public Logger {
 
-	ManagedReference<DroidEffectsModuleDataComponent*> module;
+	Reference<DroidEffectsModuleDataComponent*> module;
 	int slotIndex;
 
 public:

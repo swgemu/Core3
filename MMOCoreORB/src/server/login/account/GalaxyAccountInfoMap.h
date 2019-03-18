@@ -15,6 +15,9 @@ public:
 	GalaxyAccountInfoMap();
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
+
+
+	friend void to_json(nlohmann::json& j, const GalaxyAccountInfoMap& p);
 };
 
 #endif /* #define GALAXYACCOUNTINFOMAP_H_ */

@@ -31,16 +31,13 @@ using namespace engine::db;
 uint32 ObjectManager::serverObjectCrcHashCode = STRING_HASHCODE("SceneObject.serverObjectCRC");
 uint32 ObjectManager::_classNameHashCode = STRING_HASHCODE("_className");
 
-ObjectManager::ObjectManager() : DOBObjectManager() {
+ObjectManager::ObjectManager(bool initializeTemplates) : DOBObjectManager() {
 	server = NULL;
 
 	deleteCharactersTask = new DeleteCharactersTask();
 
 	databaseManager = ObjectDatabaseManager::instance();
 	databaseManager->loadDatabases(ServerCore::truncateDatabases());
-
-	templateManager = TemplateManager::instance();
-	templateManager->loadLuaTemplates();
 
 	registerObjectTypes();
 
@@ -73,6 +70,11 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	if (initializeTemplates) {
+		templateManager = TemplateManager::instance();
+		templateManager->loadLuaTemplates();
+	}
 }
 
 ObjectManager::~ObjectManager() {

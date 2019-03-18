@@ -4,6 +4,7 @@
 
 package server.zone.objects.creature.ai;
 
+import engine.service.proto.BasePacket;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -227,6 +228,10 @@ class Creature extends AiAgent {
 	}
 
 	public native boolean isMount();
+
+	@dirty
+	@local
+	public native void sendMessage(BasePacket msg);
 
 	public int getAdultLevel() {
 		if (super.petDeed != null) {

@@ -44,11 +44,15 @@ void AbilityList::insertToMessage(BaseMessage* msg) {
 }
 
 bool AbilityList::toBinaryStream(ObjectOutputStream* stream) {
+#ifdef ODB_SERIALIZATION
+	abilities.toBinaryStream(stream);
+#else
 	Vector<String> names;
 	getStringList(names);
 
 	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
 	names.toBinaryStream(stream);
+#endif
 
 	return true;
 }
@@ -62,6 +66,9 @@ void to_json(nlohmann::json& j, const AbilityList& l) {
 }
 
 void AbilityList::getStringList(Vector<String>& abilities) const {
+#ifdef ODB_SERIALIZATION
+	abilities = this->abilities;
+#else
 	for (int i = 0; i < vector.size(); ++i) {
 		Ability* ability = vector.getUnsafe(i);
 
@@ -69,15 +76,20 @@ void AbilityList::getStringList(Vector<String>& abilities) const {
 
 		abilities.emplace(name);
 	}
+#endif
 }
 
 bool AbilityList::parseFromBinaryStream(ObjectInputStream* stream) {
+#ifdef ODB_SERIALIZATION
+	abilities.parseFromBinaryStream(stream);
+#else
 	Vector<String> abilities;
 
 	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
 	abilities.parseFromBinaryStream(stream);
 
 	loadFromNames(abilities);
+#endif
 
 	return true;
 }

@@ -34,7 +34,7 @@ bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
 
 ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
-		Core("log/core3.log"), Logger("Core") {
+		Core("log/core3.log", "core3engine", LogLevel::LOG), Logger("Core") {
 	orb = nullptr;
 
 	loginServer = nullptr;

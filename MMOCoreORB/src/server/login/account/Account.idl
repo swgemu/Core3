@@ -10,6 +10,7 @@ include server.login.account.GalaxyAccountInfo;
 include server.login.account.GalaxyAccountInfoMap;
 import system.lang.ref.Reference;
 
+@json
 class Account extends ManagedObject implements Logger {
 
 	protected transient boolean active;

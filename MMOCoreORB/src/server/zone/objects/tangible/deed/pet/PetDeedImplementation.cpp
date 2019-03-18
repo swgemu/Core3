@@ -204,7 +204,7 @@ int PetDeedImplementation::calculatePetLevel() {
 	// Regenerate the LEvel
 	// code to allow for 10k cl 10
      int avgHam = 0;
-     int  value1 =0, value2 = 0, value3 = 0, value4 =0;
+     int  value1 = 0, value2 = 0, value3 = 0, value4 = 0;
 	// need to find the min and max
 	value1 = Math::min(health,action);
 	value2 = Math::min(value1,mind);
@@ -224,6 +224,7 @@ int PetDeedImplementation::calculatePetLevel() {
 	int stamina = (dexterity*15)     + (endurance * 3);
 	int willPower = (intelligence * 15) + (cleverness * 3);
 	int constitution = (hardiness * 15)    + (fortitude * 3);
+
 	int regen =0;
 	value1 = Math::min(stamina,willPower);
 	value2 = Math::min(value1,constitution);

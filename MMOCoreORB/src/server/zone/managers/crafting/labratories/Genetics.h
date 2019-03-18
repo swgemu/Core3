@@ -9,8 +9,7 @@
 #include "templates/params/creature/CreatureFlag.h"
 #include "system/lang.h"
 
-#include "engine/log/Logger.h"
-//remove after testing
+
 
 namespace server {
 namespace zone {
@@ -366,7 +365,8 @@ public:
 	}
 	/*static int generateArmorBaseLevel(int generatedArmorLevel) {
 		return DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,generatedArmorLevel);
-	}
+	}		sprintf(str,"Pet ArmorLevel Passed %d",armorLevel);
+		Logger::console.info(str,true);
 	static int generateBaseLevel(int statLevel, int damageLevel, int armorLevel, int regenLevel, int hitLevel) {
 		return ((statLevel) + (damageLevel) + (regenLevel) + (hitLevel)) ;
 	} */
@@ -468,16 +468,6 @@ public:
                 	  regen = floor(((pet->getWillPower() + pet->getStamina() + pet->getConstitution()) /10)/ 3);
  		if (regen < 7) regen =7;
 
-		char str[50];
-		sprintf(str,"Pet regen Passed %d",regen);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet AvgHam Passed %d",avgHam);
-		Logger::console.info(str,true);
-
-
-
-
-
 
 		int statLevel = DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam);
 		int dps = ((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed();
@@ -485,15 +475,6 @@ public:
 		int hitLevel = DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHit());
 	    int regenerationLevel =  DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, regen);
 		// this will get us to level 60 armor , need to figure out how to do the resists
-
-		sprintf(str,"Pet DamageLevel Passed %d",damageLevel);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet HitLevel Passed %d",hitLevel);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet regenLevel Passed %d",regenerationLevel);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet StatLevel Passed %d",statLevel);
-		Logger::console.info(str,true);
 
 
 		int tarmor = 0;
@@ -531,14 +512,6 @@ public:
 		resistValue = pet->getStun();
 		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
 
-		sprintf(str,"Pet Psum1 Passed %f",Psum);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet Nsum1 Passed %f",Nsum);
-		Logger::console.info(str,true);
-
-		sprintf(str,"Pet tarmor1 Passed %d",tarmor);
-		Logger::console.info(str,true);
-
 		//Only returns -1 for vulnerables , have to pick something like -50 for each slot x remaining fortitude
 		float modifier = rfort/8;
 		//modifier = -0.99f * modifier;
@@ -546,19 +519,8 @@ public:
 		tarmor = tarmor + Psum;
 		Nsum  = (Nsum / 100)* modifier;
 
-
-		sprintf(str,"Pet Psum Passed %f",Psum);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet Nsum Passed %f",Nsum);
-		Logger::console.info(str,true);
-		sprintf(str,"Pet tarmor2 Passed %d",tarmor);
-		Logger::console.info(str,true);
-
         int parmor = 0;
         parmor = tarmor + Nsum;
-
-		sprintf(str,"Pet parmor Passed %d",parmor);
-		Logger::console.info(str,true);
 
 		if ( parmor >1) tarmor = tarmor + Nsum;
 		// data table will return cl 14 if the armor is below 50  set it to 2
@@ -574,11 +536,6 @@ public:
 			armorLevel = 0;
 
 		}
-		sprintf(str,"Pet ArmorLevel Passed %d",armorLevel);
-		Logger::console.info(str,true);
-
-
-
 
 		int level = (statLevel + damageLevel + hitLevel  + armorLevel + regenerationLevel )/5;
 

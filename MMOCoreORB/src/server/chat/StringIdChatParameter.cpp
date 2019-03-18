@@ -102,3 +102,20 @@ bool StringIdChatParameter::parseFromBinaryStream(ObjectInputStream* stream) {
 	return true;
 }
 
+namespace server {
+	namespace chat {
+		void to_json(nlohmann::json& j, const StringIdChatParameter& p) {
+			j["file"] = p.getFile();
+			j["filler"] = p.getFiller();
+			j["stringID"] = p.getStringID();
+			j["TT"] = p.TT;
+			j["TU"] = p.TU;
+			j["TO"] = p.TO;
+			j["DI"] = p.DI;
+			j["DF"] = p.DF;
+		}
+
+
+	}
+}
+

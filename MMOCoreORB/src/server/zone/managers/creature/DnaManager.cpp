@@ -292,12 +292,9 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lvminus = 0, lvplus = 0;
 
-
 				if (i > 0)	lvminus = dnaHit.get(i - 1);
 
-
 				if (i < (dnaHit.size() - 1)) lvplus = dnaHit.get(i + 1);
-
 
 				float lv = dnaHit.get(i);
 				 // return is not consistent  with the proper level for value , ok now
