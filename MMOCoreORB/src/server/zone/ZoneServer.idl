@@ -56,7 +56,7 @@ class ZoneServer extends ManagedService implements Logger {
 
 	private transient ZoneProcessServer processor;
 
-	private VectorMap<string, Zone> zones;
+	private transient VectorMap<string, Zone> zones;
 
 	private transient ObjectManager objectManager;
 	private PlayerManager playerManager;

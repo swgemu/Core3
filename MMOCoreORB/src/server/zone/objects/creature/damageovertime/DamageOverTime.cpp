@@ -23,11 +23,11 @@ DamageOverTime::DamageOverTime() {
 }
 
 DamageOverTime::DamageOverTime(CreatureObject* attacker,
-							   uint64 tp,
-							   uint8 attrib,
-							   uint32 str,
-							   uint32 dur,
-							   int secondaryStrength) {
+		uint64 tp,
+		uint8 attrib,
+		uint32 str,
+		uint32 dur,
+		int secondaryStrength) {
 
 	if (attacker != NULL)
 		setAttackerID(attacker->getObjectID());

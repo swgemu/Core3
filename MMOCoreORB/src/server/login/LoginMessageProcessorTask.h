@@ -9,9 +9,9 @@
 
 namespace server {
 	namespace login {
-	
+
 		class LoginMessageProcessorTask : public Task {
-			ManagedReference<Message*> message;
+			Reference<Message*> message;
 
 			LoginPacketHandler* packetHandler;
 

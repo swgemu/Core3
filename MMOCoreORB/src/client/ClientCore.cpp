@@ -9,7 +9,7 @@
 
 #include "client/login/LoginSession.h"
 
-ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
+ClientCore::ClientCore(int instances) : Core("log/core3client.log", "client3"), Logger("CoreClient") {
 	ClientCore::instances = instances;
 
 	setInfoLogLevel();

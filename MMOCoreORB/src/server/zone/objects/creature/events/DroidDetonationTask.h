@@ -25,7 +25,7 @@ namespace events {
 class DroidDetonationTask : public Task, public Logger {
 
 private:
-	ManagedReference<DroidDetonationModuleDataComponent*> module;
+	Reference<DroidDetonationModuleDataComponent*> module;
 	ManagedReference<CreatureObject*> player;
 	int detonationStep;
 public:
