@@ -5297,32 +5297,35 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 
 		if (currentObjects.size() >= objectsPerTask || count >= names.size()) {
 			Core::getTaskManager()->executeTask([currentObjects, &totalObjects, objectManager, &sharedMap]() {
-						for (const auto& obj : currentObjects) {
+				for (const auto& obj : currentObjects) {
+					try {
+						VectorMap<String, uint64> slottedObjects;
+						int state = 0;
+
+						objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, obj.getValue());
+
+						uint64 ghostId = slottedObjects.get("ghost");
+
+						if (ghostId == 0) {
 							totalObjects.decrement();
-
-							VectorMap<String, uint64> slottedObjects;
-							int state = 0;
-
-							objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, obj.getValue());
-
-							uint64 ghostId = slottedObjects.get("ghost");
-
-							if (ghostId == 0) {
-								continue;
-							}
-
-							objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
-
-							if (state != 0) {
-								sharedMap.put(obj.getKey(), state);
-							}
+							continue;
 						}
 
-					}, "GetAdminPlayerObjectTask", "AdminListThreads");
+						objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
+
+						if (state != 0) {
+							sharedMap.put(obj.getKey(), state);
+						}
+					} catch (...) {
+					}
+
+					totalObjects.decrement();
+				}
+
+			}, "GetAdminPlayerObjectTask", "AdminListThreads");
 
 			currentObjects.removeAll(100, 50);
 		}
-
 	}
 
 	while (totalObjects > 0) {

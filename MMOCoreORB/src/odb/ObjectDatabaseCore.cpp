@@ -59,9 +59,7 @@ VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
 			uint64 oid = res->getUnsignedLong(0);
 			String firstName = res->getString(1);
 
-			if (players.put(std::move(oid), std::move(firstName)) == -1) {
-				staticLogger.warning("error coliding name:" + firstName.toLowerCase());
-			}
+			players.emplace(std::move(oid), std::move(firstName));
 		}
 
 	} catch (Exception& e) {
