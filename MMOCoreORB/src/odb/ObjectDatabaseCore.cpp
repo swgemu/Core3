@@ -23,15 +23,6 @@ AtomicLong ObjectDatabaseCore::ghostReadSize;
 AtomicLong ObjectDatabaseCore::globalDBReadSize;
 AtomicLong ObjectDatabaseCore::compressedCreoReadSize;
 
-SignalCallbackTranslator<ODB3SignalHandler<SIGSEGV>> segException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGABRT>> abortException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGKILL>> killException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGINT>> intException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGILL>> illException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGHUP>> hupException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGQUIT>> quitException;
-SignalCallbackTranslator<ODB3SignalHandler<SIGBUS>> busException;
-
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
 
@@ -46,6 +37,15 @@ void ObjectDatabaseCore::initialize() {
 	Core::MANAGED_REFERENCE_LOAD = false;
 
 	objectManager = new ObjectManager(false); //initialize databases but not the templates
+
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGSEGV>> segException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGABRT>> abortException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGKILL>> killException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGINT>> intException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGILL>> illException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGHUP>> hupException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGQUIT>> quitException;
+	static SignalCallbackTranslator<ODB3SignalHandler<SIGBUS>> busException;
 
 	auto configManager = ConfigManager::instance();
 
