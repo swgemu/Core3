@@ -1195,19 +1195,17 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		float armorReduction =  getArmorObjectReduction(psg, damageType);
 		float dmgAbsorbed = damage;
 
+		damage *= getArmorPiercing(psg, armorPiercing);
+
         if (armorReduction > 0) damage *= 1.f - (armorReduction / 100.f);
 
 		dmgAbsorbed -= damage;
 		if (dmgAbsorbed > 0)
 			sendMitigationCombatSpam(defender, psg, (int)dmgAbsorbed, PSG);
 
-		// inflict condition damage
-		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
-		// it can be fixed by doing condition damage after all damage reductions
-
 		Locker plocker(psg);
 
-		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
+		psg->inflictDamage(psg, 0, damage * 0.2, true, true);
 
 	}
 
