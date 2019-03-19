@@ -8,6 +8,7 @@ import engine.core.ManagedObject;
 import system.lang.System;
 import system.util.Vector;
 
+@json
 class PendingMessageList extends ManagedObject {
 
     @dereferenced
