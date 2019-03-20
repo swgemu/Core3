@@ -51,6 +51,10 @@ void StructureMaintenanceTask::run() {
 		return;
 	}
 
+	StringBuffer taskName;
+	taskName << "StructureMaintenanceTask " << strongRef->getLoggingName() << " of owner " << name;
+	setTaskName(taskName.toString().toCharArray());
+
 	if (strongRef->getSurplusMaintenance() > 0) {
 		//Incorrect scheduling, reschedule.
 		Locker locker(strongRef);

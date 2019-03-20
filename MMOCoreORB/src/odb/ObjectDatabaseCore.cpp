@@ -23,6 +23,24 @@ AtomicLong ObjectDatabaseCore::ghostReadSize;
 AtomicLong ObjectDatabaseCore::globalDBReadSize;
 AtomicLong ObjectDatabaseCore::compressedCreoReadSize;
 
+int main(int argc, char* argv[]) {
+	try {
+		Vector<String> arguments;
+		for (int i = 1; i < argc; ++i) {
+			arguments.add(argv[i]);
+		}
+
+		ObjectDatabaseCore core(std::move(arguments), "odb3");
+
+		core.start();
+	} catch (Exception& e) {
+		System::out << e.getMessage() << "\n";
+		e.printStackTrace();
+	}
+
+	return 0;
+}
+
 ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* engine) : Core("log/odb3.log", engine, LogLevel::LOG),
 	Logger("ObjectDatabaseCore"), arguments(std::move(arguments)) {
 
@@ -55,6 +73,31 @@ void ObjectDatabaseCore::initialize() {
 
 	//DistributedObjectBroker* orb = DistributedObjectBroker::initialize("", 44230);
 	//orb->setCustomObjectManager(new ObjectManager(false));
+}
+
+
+void ObjectDatabaseCore::showHelp() {
+	info("Arguments: \n"
+		"\todb3 dumpdb <database> <threads> <filename>\n"
+		"\todb3 dumpobj <objectid>\n"
+		"\todb3 dumpadmins <galaxyid> <threads>\n"
+		, true);
+}
+
+void ObjectDatabaseCore::run() {
+	info("initialized");
+
+	const String& operation = getArgument(0, "none");
+
+	if (operation == "dumpdb") {
+		dumpDatabaseToJSON(getArgument(1));
+	} else if (operation == "dumpobj") {
+		dumpObjectToJSON(getLongArgument(1));
+	} else if (operation == "dumpadmins") {
+		dumpAdmins();
+	} else {
+		showHelp();
+	}
 }
 
 VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
@@ -476,7 +519,7 @@ void ObjectDatabaseCore::dumpAdmins() {
 	info("finished querying " + String::valueOf(players.size()) + " characters", true);
 }
 
-void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
+void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	auto databaseManager  = ObjectDatabaseManager::instance();
 	auto database = databaseManager->loadObjectDatabase(databaseName, false);
 
@@ -531,6 +574,8 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 	void *p;
 
 	int queryRes = 0;
+
+	static const int dumpDbThottle = Core::getIntProperty("ODB3.maxTasksQueued" , -1);
 
 	do {
 		if (queryRes == DB_BUFFER_SMALL) {
@@ -610,106 +655,6 @@ void ObjectDatabaseCore::dumpDatabaseVersion2(const String& databaseName) {
 		}
 	}
 }
-
-void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
-	if (Core::getIntProperty("ODB3.version", 0) == 2) {
-		dumpDatabaseVersion2(databaseName);
-
-		return;
-	}
-
-	auto databaseManager  = ObjectDatabaseManager::instance();
-	auto database = databaseManager->loadObjectDatabase(databaseName, false);
-
-	if (!database) {
-		error("invalid database " + databaseName);
-
-		showHelp();
-
-		return;
-	}
-
-	int readerThreads = getIntArgument(2, 4);
-	int writerThreads = readerThreads / 2 + 1;
-
-	auto taskManager = Core::getTaskManager();
-
-	taskManager->initializeCustomQueue("ODBReaderThreads", readerThreads);
-	taskManager->initializeCustomQueue("BackIteratorThread", 1);
-
-	for (int i = 0; i < writerThreads; ++i) {
-		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
-	}
-
-	berkley::CursorConfig config;
-	config.setReadUncommitted(true);
-
-	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
-	startBackIteratorTask(database, fileName, writerThreads);
-
-	//forward iterator
-	ObjectDatabaseIterator iterator(database, config);
-	uint64 oid = 0;
-
-	Vector<uint64> currentObjects;
-	static const int objectsPerTask = Core::getIntProperty("ODB3.objectsPerTask", 15);
-
-	Time lastStatsShow;
-	lastStatsShow.updateToCurrentTime();
-	uint32 previousCount = dbReadCount.get();
-	int pushedCount = 0;
-
-	const bool backIteratorEnabled = Core::getIntProperty("ODB3.enableBackIterator", 1);
-
-	while (iterator.getNextKey(oid)) {
-		if (backIteratorEnabled && this->parsedObjects.put(oid, 1)) {
-			break;
-		}
-
-		currentObjects.add(oid);
-
-		if (currentObjects.size() >= objectsPerTask) {
-			pushedObjects.add(currentObjects.size());
-			pushedCount += (currentObjects.size());
-
-			dispatchTask(currentObjects,  database, fileName, writerThreads, 1);
-
-			currentObjects.removeRange(0, currentObjects.size());
-
-			auto diff = lastStatsShow.miliDifference();
-
-			if (diff > 1000) {
-				showStats(previousCount, diff);
-
-				lastStatsShow.updateToCurrentTime();
-				previousCount = dbReadCount.get();
-			}
-		}
-	}
-
-	if (currentObjects.size()) {
-		pushedObjects.add(currentObjects.size());
-		pushedCount += (currentObjects.size());
-
-		dispatchTask(currentObjects, database, fileName, writerThreads, 1);
-	}
-
-	staticLogger.info("front iterator finished dispatching " + String::valueOf(pushedCount) + " tasks", true);
-
-	while (backPushedObjects.get(std::memory_order_seq_cst) && pushedObjects.get(std::memory_order_seq_cst)) {
-		Thread::sleep(100);
-
-		auto diff = lastStatsShow.miliDifference();
-
-		if (diff > 1000) {
-			showStats(previousCount, diff);
-
-			lastStatsShow.updateToCurrentTime();
-			previousCount = dbReadCount.get();
-		}
-	}
-}
-
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
 	auto databaseManager = ObjectDatabaseManager::instance();
 	uint16 tableID = (uint16)(objectID >> 48);
@@ -741,44 +686,3 @@ void ObjectDatabaseCore::dumpObjectToJSON(uint64_t objectID) {
 	}
 }
 
-void ObjectDatabaseCore::showHelp() {
-	info("Arguments: \n"
-		"\todb3 dumpdb <database> <threads> <filename>\n"
-		"\todb3 dumpobj <objectid>\n"
-		"\todb3 dumpadmins <galaxyid> <threads>\n"
-		, true);
-}
-
-void ObjectDatabaseCore::run() {
-	info("initialized");
-
-	const String& operation = getArgument(0, "none");
-
-	if (operation == "dumpdb") {
-		dumpDatabaseToJSON(getArgument(1));
-	} else if (operation == "dumpobj") {
-		dumpObjectToJSON(getLongArgument(1));
-	} else if (operation == "dumpadmins") {
-		dumpAdmins();
-	} else {
-		showHelp();
-	}
-}
-
-int main(int argc, char* argv[]) {
-	try {
-		Vector<String> arguments;
-		for (int i = 1; i < argc; ++i) {
-			arguments.add(argv[i]);
-		}
-
-		ObjectDatabaseCore core(std::move(arguments), "odb3");
-
-		core.start();
-	} catch (Exception& e) {
-		System::out << e.getMessage() << "\n";
-		e.printStackTrace();
-	}
-
-	return 0;
-}

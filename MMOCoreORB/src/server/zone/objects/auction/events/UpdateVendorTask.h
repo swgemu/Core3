@@ -45,6 +45,8 @@ public:
 			return;
 		}
 
+		setTaskName((strongRef->getLoggingName() + " ran UpdateVendorTask of owner 0x" + String::hexvalueOf(vendorData->getOwnerId())).toCharArray());
+
 		vendorData->runVendorUpdate();
 	}
 
