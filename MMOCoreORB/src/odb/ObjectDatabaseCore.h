@@ -86,10 +86,9 @@ public:
 
 	void run();
 
-	void dumpDatabaseToJSON(const String& database);
 	void dumpObjectToJSON(uint64_t oid);
+	void dumpDatabaseToJSON(const String& database);
 
-	void dumpDatabaseVersion2(const String& database);
 	static VectorMap<uint64, String> loadPlayers(int galaxyID);
 
 	void showHelp();

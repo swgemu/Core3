@@ -83,6 +83,7 @@ void ContainerObjectsMap::loadObjects() {
 		return;
 
 	VectorMap<uint64, uint64> oidsCopy = *oids;
+	const auto size = oidsCopy.size();
 
 	for (int i = 0; i < oidsCopy.size(); ++i) {
 		uint64 oid = oidsCopy.elementAt(i).getKey();
@@ -103,12 +104,14 @@ void ContainerObjectsMap::loadObjects() {
 	ManagedReference<SceneObject*> sceno = container.get();
 
 	if (sceno != NULL) {
+		const auto name = sceno->getLoggingName() + " OnContainerLoadedLambda" + String::valueOf(size);
+
 		Core::getTaskManager()->executeTask([sceno] () {
 			if (sceno->getZoneServer()->isServerShuttingDown())
 				return;
 
 			sceno->onContainerLoaded();
-		}, "OnContainerLoadedLambda");
+		}, name.toCharArray());
 	}
 }
 
