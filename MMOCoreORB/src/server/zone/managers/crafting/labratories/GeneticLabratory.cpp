@@ -409,9 +409,9 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 			if (stat2 > craftingValues->getMaxPercentage(subtitle2))
 				stat2 = craftingValues->getMaxPercentage(subtitle2);
 
-			// check make sure its not below 0
-			if (stat1 < 0) stat1 = 0;
-			if (stat2 < 0) stat2 = 0;
+			// check make sure its not below 0 resest to 1
+			if (stat1 < 0) stat1 = 1;
+			if (stat2 < 0) stat2 = 1;
 
 			craftingValues->setCurrentPercentage(subtitle, stat1);
 			craftingValues->setCurrentPercentage(subtitle2, stat2);
