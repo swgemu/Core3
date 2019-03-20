@@ -376,26 +376,22 @@ public:
 
 		int pfort = fortitude , tarmor = 0,rfort = 0 ;
 		float Psum = 0 , Nsum = 0;
-		if ( pfort >= 500) {
+		if ( pfort >= 500) 	rfort = pfort - 500;
 
-			tarmor = 500;
-			rfort = pfort - 500;
-		}
 		else
-			if (pfort < 500)  {
-				tarmor = pfort;
-				rfort = pfort;
-			}
+			if (pfort < 500) rfort = pfort;
 
+		tarmor= (int)(((fortitude - (armor * 500)) / 50) * 5);
+		if (armor==1)tarmor = tarmor + 500;
 
-		if (kin  >= 0) Psum = Psum + kin;  else Nsum = Nsum + kin;
-		if (eng  >= 0) Psum = Psum + eng;  else Nsum = Nsum + eng;
-		if (bla  >= 0) Psum = Psum + bla;  else Nsum = Nsum + bla;
-		if (heat >= 0) Psum = Psum + heat; else Nsum = Nsum + heat;
-		if (cold >= 0) Psum = Psum + cold; else Nsum = Nsum + cold;
-		if (elec >= 0) Psum = Psum + elec; else Nsum = Nsum + elec;
-		if (acid >= 0) Psum = Psum + acid; else Nsum = Nsum + acid;
-		if (stun >= 0) Psum = Psum + stun; else Nsum = Nsum + stun;
+		if (kin  >= 0) Psum = Psum + kin;  else if(kin  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + kin;
+		if (eng  >= 0) Psum = Psum + eng;  else if(eng  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + eng;
+		if (bla  >= 0) Psum = Psum + bla;  else if(bla  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + bla;
+		if (heat >= 0) Psum = Psum + heat; else if(heat >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + heat;
+		if (cold >= 0) Psum = Psum + cold; else if(cold >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + cold;
+		if (elec >= 0) Psum = Psum + elec; else if(elec >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + elec;
+		if (acid >= 0) Psum = Psum + acid; else if(acid >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + acid;
+		if (stun >= 0) Psum = Psum + stun; else if(stun >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + stun;
 
 			float modifier = rfort/8;
 			Psum  = modifier * (Psum /100);
@@ -405,16 +401,16 @@ public:
 	        int parmor = 0;
 	        parmor = tarmor + Nsum;
 
-			if ( parmor >1) tarmor = tarmor + Nsum;
+			if ( parmor >1) tarmor = tarmor + Nsum; else tarmor = 0;
 			// data table will return cl 14 if the armor is below 50  set it to 2
 	        int armorLevel = 2;
 	        // already have armor send 0 .
-	        if (tarmor >= 50){
+	        if (tarmor >= 3){
 			 armorLevel =  generteArmorLevel(0,tarmor);
 			}
 			else
-				if (tarmor < 50) {
-					if (Nsum < -99) armorLevel= -3;
+				if (tarmor < 3) {
+					if (Nsum < -300) armorLevel= -3;
 					else
 					armorLevel = 0;
 				}
@@ -432,9 +428,11 @@ public:
 	// Calculate the creatures overall level as a pet.
 	static int calculatePetLevel(GeneticComponent* pet) {
 		// code to allow for 10k cl 10
-                int avgHam = 0;
-                int health = 0 ,action = 0 , mind = 0;
-                int value1 = 0, value2 = 0, value3 = 0, value4 =0;
+
+
+		int avgHam = 0;
+        int health = 0 ,action = 0 , mind = 0;
+        int value1 = 0, value2 = 0, value3 = 0, value4 =0;
 		health =pet->getHealth(); action = pet->getAction(); mind = pet->getMind();
                 // need to find the min and max	
 		value1 = Math::min(health,action);
@@ -477,40 +475,48 @@ public:
 		// this will get us to level 60 armor , need to figure out how to do the resists
 
 
+
+
+
+
+
+
 		int tarmor = 0;
 		int  rfort = 0;
 		int pfort = 0;
 		pfort = pet->getFortitude();
-		if ( pfort >= 500) {
+		if ( pfort >= 500) 	rfort = pfort - 500;
 
-			tarmor = 500;
-			rfort = pfort - 500;
-		}
 		else
-			if (pfort < 500)  {
-				tarmor = pfort;
-				rfort = pfort;
-			}
+			if (pfort < 500)  rfort = pfort;
+
+
+		tarmor= (int)(((pfort - (pet->getArmor() * 500)) / 50) * 5);
+		if (pet->getArmor()==1)tarmor = tarmor + 500;
+
 		// get resists and split into positive or negative values
 		int resistValue = 0;
 		float Psum = 0;
 		float Nsum = 0;
 		resistValue = pet->getKinetic();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getEnergy();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getBlast();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getHeat();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getElectrical();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getCold();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getAcid();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
 		resistValue = pet->getStun();
-		if (resistValue >= 0) Psum = Psum + resistValue; else Nsum = Nsum + resistValue;
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+
+
+
 
 		//Only returns -1 for vulnerables , have to pick something like -50 for each slot x remaining fortitude
 		float modifier = rfort/8;
@@ -519,23 +525,36 @@ public:
 		tarmor = tarmor + Psum;
 		Nsum  = (Nsum / 100)* modifier;
 
+
+
+
+
         int parmor = 0;
         parmor = tarmor + Nsum;
 
-		if ( parmor >1) tarmor = tarmor + Nsum;
+
+
+
+
+		if ( parmor >1) tarmor = tarmor + Nsum; else tarmor = 0;
+
+
+
 		// data table will return cl 14 if the armor is below 50  set it to 2
         int armorLevel = 2;
-        if (tarmor >= 50){
+        if (tarmor >= 3){
 		 armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, tarmor );
 		}
 		else
 			// need to drive armorlevel negative for low cl pets.
-		if (tarmor < 50) {
-			if (Nsum < -99) armorLevel= -3;
+		if (tarmor < 3) {
+			if (Nsum < -300) armorLevel= -3;
 			else
 			armorLevel = 0;
 
 		}
+
+
 
 		int level = (statLevel + damageLevel + hitLevel  + armorLevel + regenerationLevel )/5;
 
@@ -543,10 +562,13 @@ public:
 
 	}
 
+
+
 	// Calculate the input creature levels
 	static int levelForCreature(Creature* creature) {
 		return creature->getLevel();
 	}
+
 };
 
 }
