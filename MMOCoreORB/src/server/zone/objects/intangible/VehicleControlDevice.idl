@@ -11,6 +11,7 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.intangible.VehicleControlObserver;
 
+@json
 class VehicleControlDevice extends ControlDevice {
 
 	VehicleControlObserver vehicleControlObserver;

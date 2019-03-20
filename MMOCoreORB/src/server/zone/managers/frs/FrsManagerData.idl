@@ -14,86 +14,87 @@ include server.zone.managers.frs.ArenaChallengeData;
 include server.zone.managers.frs.FrsTimeMap;
 include system.lang.Time;
 
+@json
 class FrsManagerData extends ManagedObject {
 	@dereferenced
 	protected Time lastVoteStatusTick;
-	
+
 	@dereferenced
 	protected Time lastMaintenanceTick;
-	
+
 	@dereferenced
 	protected Time lastArenaOpenTime;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, int> experienceDebt;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, ChallengeVoteData> lightChallenges;
-	
+
 	@dereferenced
 	protected FrsTimeMap challengeTimes;
-	
+
 	@dereferenced
 	protected FrsTimeMap demoteTimes;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, ArenaChallengeData> arenaChallenges;
-	
+
 	@dereferenced
 	protected SortedVector<unsigned long> arenaFighters;
-	
+
 	@dereferenced
 	protected Vector<FrsRank> lightRanks;
-	
+
 	@dereferenced
 	protected Vector<FrsRank> darkRanks;
-	
+
 	protected short arenaStatus;
 
 	public FrsManagerData() {
 		experienceDebt.setNoDuplicateInsertPlan();
 		arenaStatus = 0;
 	}
-	
+
 	@local
 	@preLocked
 	public Vector<FrsRank> getLightRanks() {
 		return lightRanks;
 	}
-	
+
 	@local
 	@preLocked
 	public Vector<FrsRank> getDarkRanks() {
 		return darkRanks;
 	}
-	
+
 	@local
 	@preLocked
 	public VectorMap<unsigned long, ChallengeVoteData> getLightChallenges() {
 		return lightChallenges;
 	}
-	
+
 	public int getTotalLightChallenges() {
 		return lightChallenges.size();
 	}
-	
+
 	@preLocked
 	public void addLightChallenge(unsigned long playerID, ChallengeVoteData voteData) {
 		lightChallenges.put(playerID, voteData);
 	}
-	
+
 	@preLocked
 	public void removeLightChallenge(unsigned long playerID) {
 		if (lightChallenges.contains(playerID))
 			lightChallenges.drop(playerID);
 	}
-	
+
 	@local
 	@preLocked
 	public ChallengeVoteData getLightChallenge(unsigned long playerID) {
 		return lightChallenges.get(playerID);
 	}
-	
+
 	@preLocked
 	public native boolean hasChallengedRecently(unsigned long playerID, unsigned long challengeCooldown);
 
@@ -105,19 +106,19 @@ class FrsManagerData extends ManagedObject {
 
 	@preLocked
 	public native void updateChallengeTime(unsigned long playerID);
-	
+
 	@preLocked
 	public void removeChallengeTime(unsigned long playerID) {
 		if (challengeTimes.contains(playerID))
 			challengeTimes.drop(playerID);
 	}
-	
+
 	@preLocked
 	public void removeDemoteTime(unsigned long playerID) {
 		if (demoteTimes.contains(playerID))
 			demoteTimes.drop(playerID);
 	}
-	
+
 	@preLocked
 	public native boolean hasDemotedRecently(unsigned long playerID, unsigned long demoteCooldown);
 
@@ -129,7 +130,7 @@ class FrsManagerData extends ManagedObject {
 
 	@preLocked
 	public native void updateDemoteTime(unsigned long playerID);
-	
+
 	public void updateLastMaintenanceTick() {
 		lastMaintenanceTick.updateToCurrentTime();
 	}
@@ -138,7 +139,7 @@ class FrsManagerData extends ManagedObject {
 	public unsigned long getLastMaintenanceTick() {
 		return lastMaintenanceTick.getMiliTime();
 	}
-	
+
 	public void updateLastVoteStatusTick() {
 		lastVoteStatusTick.updateToCurrentTime();
 	}
@@ -152,15 +153,15 @@ class FrsManagerData extends ManagedObject {
 	public int getExperienceDebt(unsigned long playerID) {
 		if (experienceDebt.contains(playerID))
 			return experienceDebt.get(playerID);
-		
+
 		return 0;
 	}
-	
+
 	@preLocked
 	public void setExperienceDebt(unsigned long playerID, int debt) {
 		experienceDebt.put(playerID, debt);
 	}
-	
+
 	@preLocked
 	public void removeExperienceDebt(unsigned long playerID) {
 		experienceDebt.drop(playerID);
@@ -170,28 +171,28 @@ class FrsManagerData extends ManagedObject {
 	public unsigned long getLastArenaOpenTime() {
 		return lastArenaOpenTime.getMiliTime();
 	}
-	
+
 	@preLocked
 	public void updateLastArenaOpenTime() {
 		lastArenaOpenTime.updateToCurrentTime();
 	}
-	
+
 	@read
 	@preLocked
 	public short getArenaStatus() {
 		return arenaStatus;
 	}
-	
+
 	@preLocked
 	public void setArenaStatus(short status) {
 		arenaStatus = status;
 	}
-	
+
 	@preLocked
 	public void addArenaChallenge(unsigned long playerID, ArenaChallengeData data) {
 		arenaChallenges.put(playerID, data);
 	}
-	
+
 	@preLocked
 	public boolean hasOpenArenaChallenge(unsigned long playerID) {
 		return arenaChallenges.contains(playerID);
@@ -201,34 +202,34 @@ class FrsManagerData extends ManagedObject {
 	public ArenaChallengeData getArenaChallenge(unsigned long playerID) {
 		return arenaChallenges.get(playerID);
 	}
-	
+
 	@preLocked
 	public void removeArenaChallenge(unsigned long playerID) {
 		arenaChallenges.drop(playerID);
 	}
-	
+
 	@preLocked
 	public void addArenaFighter(unsigned long playerID) {
 		arenaFighters.put(playerID);
 	}
-	
+
 	@preLocked
 	public void removeArenaFighter(unsigned long playerID) {
 		if (arenaFighters.contains(playerID))
 			arenaFighters.drop(playerID);
 	}
-	
+
 	@preLocked
 	public boolean isFightingInArena(unsigned long playerID) {
 		return arenaFighters.contains(playerID);
 	}
-	
+
 	@preLocked
 	@local
 	public SortedVector<unsigned long> getArenaFighters() {
 		return arenaFighters;
 	}
-	
+
 	@preLocked
 	@local
 	public VectorMap<unsigned long, ArenaChallengeData> getArenaChallenges() {

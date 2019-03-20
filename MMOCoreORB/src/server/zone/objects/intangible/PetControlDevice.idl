@@ -16,6 +16,7 @@ import server.zone.objects.intangible.PetControlObserver;
 include system.util.Vector;
 include system.lang.Time;
 
+@json
 class PetControlDevice extends ControlDevice {
 
 	PetControlObserver petControlObserver;
@@ -164,7 +165,7 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	@preLocked
-	public native void setDefaultCommands();	
+	public native void setDefaultCommands();
 
 	/**
 	 * Sets default trained commands and command strings for the pet
@@ -329,15 +330,15 @@ class PetControlDevice extends ControlDevice {
 	public void toggleUseRanged() {
 		useRanged = !useRanged;
 	}
-	
+
 	public void setVitalityHealthPenalty(float value) {
 		vitalityHealthPenalty = value;
 	}
-	
+
 	public void setVitalityActionPenalty(float value) {
 		vitalityActionPenalty = value;
 	}
-	
+
 	public void setVitalityMindPenalty(float value) {
 		vitalityMindPenalty = value;
 	}

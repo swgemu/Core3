@@ -14,6 +14,7 @@ import server.zone.Zone;
 include server.zone.objects.scene.SceneObjectType;
 include templates.SharedObjectTemplate;
 
+@json
 class VehicleObject extends CreatureObject {
 	protected int vehicleType;
 	protected int paintCount;

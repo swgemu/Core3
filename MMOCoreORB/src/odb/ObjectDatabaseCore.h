@@ -98,7 +98,7 @@ public:
 
 	static ObjectDatabase* getDatabase(uint64_t objectID);
 
-	static bool getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
+	static int getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
 	static bool getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData);
 	//static std::function<void()> getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 

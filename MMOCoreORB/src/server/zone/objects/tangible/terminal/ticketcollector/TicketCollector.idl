@@ -8,18 +8,19 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@json
 class TicketCollector extends Terminal {
-	public TicketCollector() {		
+	public TicketCollector() {
 		Logger.setLoggingName("TicketCollector");
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("TicketCollector");
 	}
-	
-	
+
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -31,7 +32,7 @@ class TicketCollector extends Terminal {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	@dirty
 	public boolean isTicketCollector() {
 		return true;

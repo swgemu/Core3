@@ -12,13 +12,14 @@ include system.util.Vector;
 include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
 
-class LotteryDroid extends CreatureObject {	
+@json
+class LotteryDroid extends CreatureObject {
 	@dereferenced
 	protected Time purchaseTime;
 
 	@dereferenced
 	protected Time gameStartTime;
-	
+
 	protected int gameStatus;
 	protected int ticketPrice;
 	protected float payoutPercent;
@@ -41,7 +42,7 @@ class LotteryDroid extends CreatureObject {
 	protected transient Vector<unsigned int> payoutPercentChoices;
 
 	@dereferenced
-	protected Reference<LotteryDroidPulseTask> gamePulse;
+	protected transient Reference<LotteryDroidPulseTask> gamePulse;
 
 	@dereferenced
 	protected transient Reference<RemoveEventPerkItemTask> removeEventPerkItemTask;
@@ -60,7 +61,7 @@ class LotteryDroid extends CreatureObject {
 	}
 
 	public native void initializeTransientMembers();
-	
+
 	public void notifyLoadFromDatabase() {
 		super.notifyLoadFromDatabase();
 
@@ -84,15 +85,15 @@ class LotteryDroid extends CreatureObject {
 	public native void startLottery(CreatureObject player);
 
 	public native void sendDurationSUI(CreatureObject player);
-	
+
 	public native void sendPayoutSUI(CreatureObject player);
 
 	public native void sendTicketCostSUI(CreatureObject player);
-	
+
 	public native void sendAddCreditsSUI(CreatureObject player);
 
 	public native void sendLotteryInstructionsSUI(CreatureObject player);
-	
+
 	public native void sendRegistrationSUI(CreatureObject player);
 
 	public native void sendLotteryInfoSUI(CreatureObject player);

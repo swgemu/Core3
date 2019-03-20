@@ -14,52 +14,54 @@ import server.zone.managers.minigames.events.GamblingEvent;
 import server.chat.StringIdChatParameter;
 include templates.tangible.GamblingTerminalTemplate;
 include templates.SharedObjectTemplate;
+include system.lang.ref.Reference;
 
+@json
 class GamblingTerminal extends Terminal {
-	
+
 	protected string gamblingRegion;
-	
+
 	protected int machineType;
-	
+
 	// Used to store/close SUI windows
 	@dereferenced
 	protected VectorMap<CreatureObject, unsigned int> playersWindows;
-	
+
 	protected transient GamblingEvent event;
-	
+
 	@dereferenced
 	protected VectorMap<CreatureObject, int> winnings;
-	
+
 	protected int gameCount;
-	
+
 	protected int first;
 	protected int second;
 	protected int third;
-	
+
 	protected int minBet;
 	protected int maxBet;
-	
+
 	protected int state;
 	/*
 	 * Slot Machine: 0 - Waiting, 1-3 number of wheels spinned, 4: end of game
 	 * Roulette Machine: 0 - Waiting, 1 - 120 secs left was just sent, 2 - 90 secs left was just sent, 3 - 60 seconds was just sent,
-	 * 4 - 30 seconds was sent, 5 - 20, 6 - 15, 7 - 10, 8 - 5/already the wheels begin to spin, 9 -slow down,10 - appears the number will be..., 
-	 * 11 -final decision, 12 game end    
+	 * 4 - 30 seconds was sent, 5 - 20, 6 - 15, 7 - 10, 8 - 5/already the wheels begin to spin, 9 -slow down,10 - appears the number will be...,
+	 * 11 -final decision, 12 game end
 	 */
-	
+
 	@dereferenced
-	protected Vector<GamblingBet> bets;
-	
+	protected transient Vector<Reference<GamblingBet> > bets;
+
 	// Machine Types
 	public static final int ROULETTEMACHINE = 0;
 	public static final int SLOTMACHINE = 1;
-	
+
 	//public static final int SABACC = 2;
-	
+
 	// Events
 	public static final int JOINTERMINAL = 20;
 	public static final int LEAVETERMINAL = 21;
-	
+
 	// States
 	public static final int NOGAMERUNNING = 0;
 	public static final int GAMESTARTING = 1;
@@ -68,7 +70,7 @@ class GamblingTerminal extends Terminal {
 	public static final int ONELEFT = 4;
 	public static final int END = 5;
 	public static final int SLOTGAMEENDED = 6;
-	
+
 	public static final int NINETY = 2;
 	public static final int SIXTY = 3;
 	public static final int THIRTY = 4;
@@ -81,8 +83,8 @@ class GamblingTerminal extends Terminal {
 	public static final int WHEELSLOW = 11;
 	public static final int WHEELSTOP = 12;
 	public static final int WHEELPAYOUT = 12;
-		
-	public GamblingTerminal() {		
+
+	public GamblingTerminal() {
 		state = NOGAMERUNNING;
 		first = 0;
 		second = 0;
@@ -92,13 +94,13 @@ class GamblingTerminal extends Terminal {
 		maxBet = 10000;
 		Logger.setLoggingName("GamblingTerminal");
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("GamblingTerminal");
 	}
-	
+
 	public void reset() {
 		state = NOGAMERUNNING;
 		first = 0;
@@ -108,97 +110,97 @@ class GamblingTerminal extends Terminal {
 		winnings.removeAll();
 		bets.removeAll();
 	}
-	
+
 	@local
-	public Vector<GamblingBet> getBets() {
+	public Vector<Reference<GamblingBet> > getBets() {
 		return bets;
 	}
-	
+
 	@local
 	public VectorMap<CreatureObject, unsigned int> getPlayersWindows() {
 		return playersWindows;
 	}
-	
+
 	@local
 	public VectorMap<CreatureObject, int> getWinnings() {
 		return winnings;
 	}
-	
+
 	@dirty
 	public int getFirst() {
 		return first;
 	}
-	
+
 	@dirty
 	public int getSecond() {
 		return second;
 	}
-	
+
 	@dirty
 	public int getThird() {
 		return third;
 	}
-	
+
 	public void setFirst(int value) {
 		first = value;
 	}
-	
+
 	public void setSecond(int value) {
 		second = value;
 	}
-	
+
 	public void setThird(int value) {
 		third = value;
 	}
-	
+
 	@dirty
 	public int getMinBet() {
 		return minBet;
 	}
-	
+
 	@dirty
 	public int getMaxBet() {
 		return maxBet;
 	}
-	
+
 	@dirty
 	public int getState() {
 		return state;
 	}
-	
+
 	public void setState(int value) {
 		state = value;
 	}
-	
+
 	@dirty
 	public int getMachineType() {
 		return machineType;
 	}
-	
+
 	@local
 	public GamblingEvent getEvent() {
 		return event;
 	}
-	
+
 	@local
 	public native void setEvent(GamblingEvent event);
-	
+
 	public void incGameCount() {
 		gameCount = gameCount + 1;
 	}
-	
+
 	@dirty
 	public int getGameCount() {
 		return gameCount;
 	}
-	
+
 	@dirty
 	public boolean isGoneEmpty() {
 		if (playersWindows.size() == 0)
 			return true;
 		return false;
 	}
-	
+
 	@dirty
 	public string getMachineTypeText() {
 		if (machineType == ROULETTEMACHINE)
@@ -208,7 +210,7 @@ class GamblingTerminal extends Terminal {
 		else
 			return "Sabacc";
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -218,27 +220,27 @@ class GamblingTerminal extends Terminal {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isGamblingTerminalTemplate()) {
 			error("critical error");
 			return;
 		}
-		
+
 		GamblingTerminalTemplate templ = (GamblingTerminalTemplate) templateData;
-		
+
 		machineType = templ.getMachineType();
-		
+
 		if (machineType == SLOTMACHINE) {
 			maxBet = 3;
 		}
 	}
-	
+
 	/**
 	 * Returns stf string for Radial Menu
 	 * Based on whether the player is joined to the station this method returns the stf string to fill in the Radial menu
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param player CreatureObject for which to check whether joined 
+	 * @param player CreatureObject for which to check whether joined
 	 * @return { String of stf }
 	 */
 	@dirty
@@ -247,7 +249,7 @@ class GamblingTerminal extends Terminal {
 			return "@gambling/default_interface:mnu_leave";
 		return "@gambling/default_interface:mnu_join";
 	}
-	
+
 	/**
 	 * Fills the radial options
 	 * @pre { this object is locked }
@@ -260,7 +262,7 @@ class GamblingTerminal extends Terminal {
 		string text = getText(player);
 		menuResponse.addRadialMenuItem(245, 3, text); //Join Station or Leave Station
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -268,60 +270,60 @@ class GamblingTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	public void setGamblingRegion(final string region) {
 		gamblingRegion = region;
 	}
-	
+
 	@dirty
 	public string getGamblingRegion() {
 		return gamblingRegion;
 	}
-	
+
 	@dirty
 	public boolean gameRunning() {
 		return state != NOGAMERUNNING;
 	}
-	
+
 	/**
 	 * Notifies other Players
 	 * This method sends the argument text to every Player joined to the Terminal except the Player provided
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player CreatureObject who won't receive the text
-	 * @param text Message to send to players 
+	 * @param text Message to send to players
 	 */
 	@local
 	public native void notifyOthers(CreatureObject player, StringIdChatParameter text);
-	
+
 	/**
 	 * Notifies all Players
 	 * This method sends the argument text to every Player joined to the Terminal
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param text Message to send to players 
+	 * @param text Message to send to players
 	 */
 	@local
 	public native void notifyAll(StringIdChatParameter text);
-	
+
 	/**
 	 * Checks whether Player is allowed to join
 	 * This method checks for certain conditions depending on machineType
 	 * and sends a SystemMessage to the Player in case he cannot join describing the reason.
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param player CreatureObject for which to check whether he can join 
+	 * @param player CreatureObject for which to check whether he can join
 	 * @return { true if Player may join }
 	 */
 	public native boolean checkJoin(CreatureObject player);
-	
+
 	/**
 	 * Join Terminal
 	 * This method handles the radial command to join a Terminal, creating Windows and adding the Player
 	 * to playersWindows if checkJoin returns true. Whether the game is being started already depends on the machineType
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param player CreatureObject who wants to join the Terminal 
+	 * @param player CreatureObject who wants to join the Terminal
 	 */
 	public native void joinTerminal(CreatureObject player);
 
@@ -330,46 +332,46 @@ class GamblingTerminal extends Terminal {
 	 * This method handles the radial command to leave a Terminal, closing Windows and stopping running games.
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param player CreatureObject who wants to leave the Terminal 
+	 * @param player CreatureObject who wants to leave the Terminal
 	 */
 	public native void leaveTerminal(CreatureObject player);
-	
+
 	/**
 	 * Close a Menu
 	 * This method closes a menu, but won't drop it from playersWindows, so the list of players remains intact if further needed
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player CreatureObject who wants to join the Terminal
-	 * @param payout If true, the SuiSlotMachineBox's payoutBoxID reference is called and that menu closed aswell to clean the player's screen. 
+	 * @param payout If true, the SuiSlotMachineBox's payoutBoxID reference is called and that menu closed aswell to clean the player's screen.
 	 */
 	public native void closeMenu(CreatureObject player, boolean payout);
-	
+
 	/**
 	 * Close all Menus
 	 * This method closes all players' menus, but won't drop it from playersWindows, so the list of players remains intact if further needed
 	 * @pre { this object is locked }
-	 * @post { this object is locked } 
+	 * @post { this object is locked }
 	 */
 	public native void closeAllMenus();
-	
+
 	/**
 	 * Notifiy Players of the current status
 	 * This method handles all game-related messages based on the event that is happening
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player Protagonist of the event, may be set to NULL for a variety of events
-	 * @param event The switch argument to decide what needs to be sent 
+	 * @param event The switch argument to decide what needs to be sent
 	 */
 	public native void statusUpdate(CreatureObject player, int event);
-	
+
 	/**
 	 * Calls statusUpdate for the Players
 	 * This method calls statusUpdate(player,event); for each Player joined to the Terminal
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param event The switch argument to decide what needs to be sent in statusUpdate(player,event) 
+	 * @param event The switch argument to decide what needs to be sent in statusUpdate(player,event)
 	 */
 	public native void statusUpdate(int event);
-	
+
 	protected native boolean invalidPosture(CreatureObject player);
 }

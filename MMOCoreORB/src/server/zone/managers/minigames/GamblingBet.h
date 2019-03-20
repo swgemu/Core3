@@ -13,8 +13,8 @@ namespace zone {
 namespace managers {
 namespace minigames {
 
-class GamblingBet {
-	ManagedReference<CreatureObject*> player;
+class GamblingBet : public Object {
+	ManagedWeakReference<CreatureObject*> player;
 	int amount;
 	String target;
 
@@ -31,16 +31,16 @@ public:
 		target = "slot";
 	}
 
-	int getAmount() {
+	int getAmount() const {
 		return amount;
 	}
 
-	String getTarget() {
+	const String& getTarget() const {
 		return target;
 	}
 
 	CreatureObject* getPlayer() {
-		return player;
+		return player.get();
 	}
 
 };

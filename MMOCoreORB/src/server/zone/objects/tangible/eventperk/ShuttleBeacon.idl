@@ -12,6 +12,7 @@ include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 
+@json
 class ShuttleBeacon extends TangibleObject {
 	@weakReference
 	protected CreatureObject owner;

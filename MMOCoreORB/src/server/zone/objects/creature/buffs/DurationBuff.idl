@@ -8,16 +8,16 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 
-
+@json
 class DurationBuff extends Buff {
 	public DurationBuff(CreatureObject creo, unsigned int buffcrc, float duration) {
 		super(creo, buffcrc, duration, BuffType.FOOD);
 	}
-	
+
 	public void activate(boolean applyModifiers) {
 		super.activate(true);
 	}
-	
+
 	public void deactivate(boolean applyModifiers) {
 		super.deactivate(true);
 	}

@@ -30,8 +30,6 @@ void OrderedTaskExecutioner::run() {
 	Reference<Task*> task = pendingTasks->getNextOrderedTask();
 
 	if (task != nullptr) {
-		taskName = task->getTaskName();
-
 		try {
 			task->run();
 		} catch (Exception& exc) {
@@ -43,9 +41,9 @@ void OrderedTaskExecutioner::run() {
 			strongReference->error("uncaught exception in OrderedTaskExecutioner::run");
 		}
 
-		pendingTasks->runMoreOrderedTasks(strongReference);
+		taskName = task->getTaskName();
 
-		//taskName = task->getTaskName();
+		pendingTasks->runMoreOrderedTasks(strongReference);
 	}
 }
 

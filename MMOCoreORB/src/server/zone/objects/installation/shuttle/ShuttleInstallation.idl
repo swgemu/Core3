@@ -7,15 +7,16 @@ package server.zone.objects.installation.shuttle;
 import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class ShuttleInstallation extends InstallationObject {
-	
+
 	public ShuttleInstallation() {
 		setLoggingName("ShuttleInstallation");
 	}
-	
+
 	public native boolean checkRequisitesForPlacement(CreatureObject player);
-	
-		
+
+
 	public boolean isShuttleInstallation(){
 		return true;
 	}

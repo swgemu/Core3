@@ -9,17 +9,18 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
+@json
 class PsgArmorObject extends ArmorObject {
-	public PsgArmorObject() {		
+	public PsgArmorObject() {
 		Logger.setLoggingName("PsgArmorObject");
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	public boolean isPsgArmorObject() {
 		return true;
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -30,9 +31,9 @@ class PsgArmorObject extends ArmorObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues schematic, boolean firstUpdate);
-	
+
 
 }

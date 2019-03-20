@@ -9,6 +9,7 @@ import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 include engine.log.Logger;
 
+@json
 class SpiceBuff extends Buff {
 	public SpiceBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
 		super(creo, buffCRC, duration, BuffType.SPICE);

@@ -15,10 +15,11 @@ import server.zone.objects.creature.CreatureObject;
 import server.chat.ChatManager;
 include system.thread.ReadWriteLock;
 
+@json
 class ChatRoom extends ManagedObject {
 	protected transient ZoneServer server;
 	protected transient ChatManager manager;
-	
+
 	protected string name;
 	protected string fullPath;
 
@@ -49,7 +50,7 @@ class ChatRoom extends ManagedObject {
 	@dereferenced
 	protected transient ReadWriteLock subRoomsMutex;
 
-	@dereferenced 
+	@dereferenced
 	protected transient VectorMap<string, CreatureObject> playerList;
 
 	@dereferenced
@@ -103,7 +104,7 @@ class ChatRoom extends ManagedObject {
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //                              SubRoom Management
-	
+
 	public void addSubRoom(final string name, unsigned int roomID) {
 		synchronized (subRoomsMutex) {
 			subRooms.put(name, roomID);
@@ -153,7 +154,7 @@ class ChatRoom extends ManagedObject {
 	public int getPlayerSize() {
 		return playerList.size();
 	}
-	
+
 	@dirty
 	public native CreatureObject getPlayer(int idx);
 
@@ -161,7 +162,7 @@ class ChatRoom extends ManagedObject {
 	public synchronized boolean hasPlayer(CreatureObject player) {
 		return playerList.contains(player.getFirstName());
 	}
-	
+
 	@dirty
 	public synchronized boolean hasPlayer(final string name) {
 		return playerList.contains(name);
@@ -189,7 +190,7 @@ class ChatRoom extends ManagedObject {
 
 	@dirty
 	public native string getModeratorName(int idx);
-		
+
 	@dirty
 	public synchronized boolean hasModerator(CreatureObject player) {
 		return moderatorList.contains(player.getObjectID());
@@ -308,7 +309,7 @@ class ChatRoom extends ManagedObject {
 	public void setAllowSubrooms(boolean value) {
 		allowSubrooms = value;
 	}
-	
+
 	@read
 	public boolean isModerated() {
 		return moderated;
@@ -370,7 +371,7 @@ class ChatRoom extends ManagedObject {
 	public unicode getTitle() {
 		return title;
 	}
-	
+
 	@dirty
 	public unsigned int getLastJoinTime() {
 		return lastJoin.miliDifference();

@@ -12,13 +12,14 @@ import system.lang.Time;
 include system.lang.System;
 
 @lua
+@json
 class FsCsObject extends TangibleObject {
 	@dereferenced
 	protected Time createdTime;
 
 	// TODO: Remove this after a wipe
 	protected int phaseDuration;
-	
+
 	protected unsigned long newPhaseDuration;
 
 	public FsCsObject() {
@@ -27,10 +28,10 @@ class FsCsObject extends TangibleObject {
 
 		// Remove after wipe
 		phaseDuration = 0;
-		
+
 		newPhaseDuration = 1814400000; // 3 week default
 	}
-	
+
 	// Not needed after a wipe
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
@@ -56,7 +57,7 @@ class FsCsObject extends TangibleObject {
 		string decayStr = String.valueOf(decay) + "%";
 
 		msg.insertAttribute("fs_p3_item_decay_rate", decayStr);
-		
+
 		if (decay == 100) {
 			msg.insertAttribute("fs_p3_item_decay_in", "Already Decayed");
 			return;
@@ -83,7 +84,7 @@ class FsCsObject extends TangibleObject {
 	public int getDecayPercent() {
 		if (isDisabled())
 			return 100;
-		
+
 		unsigned long itemAge = System.getMiliTime() - createdTime.getMiliTime();
 		int decay = (int)((itemAge * 100) / newPhaseDuration);
 

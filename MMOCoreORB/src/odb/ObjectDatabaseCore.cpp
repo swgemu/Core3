@@ -181,27 +181,34 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData
 //std::function<void()> ObjectDatabaseCore::getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher) {
 //}
 
-bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
+int ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& returnData) {
 	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
+	int res = 0;
 
 	try {
 		ObjectInputStream objectData(1024);
 
-		if (database->getDataNoTx(oid, &objectData)) {
+		res = database->getDataNoTx(oid, &objectData);
+
+		if (res == DB_NOTFOUND){
 			dbReadNotFoundCount.increment();
-			return false;
+
+			return res;
+		} else if (res == 0) {
+			ObjectDatabaseCore::dbReadCount.increment();
+			globalDBReadSize.add(objectData.size());
+
+			bool parsed = getJSONString(oid, objectData, returnData);
+
+			if (!parsed)
+				return -1;
 		}
-
-		ObjectDatabaseCore::dbReadCount.increment();
-		globalDBReadSize.add(objectData.size());
-
-		return getJSONString(oid, objectData, returnData);
 	} catch (...) {
 		if (reportError)
 			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
 	}
 
-	return false;
+	return res;
 }
 
 void dispatchWriterTask(std::stringstream* data, const String& fileName, int writerThread) {
@@ -227,7 +234,7 @@ void ObjectDatabaseCore::dispatchTask(const Vector<uint64>& currentObjects, Obje
 
 			for (const auto& oid : currentObjects) {
 				try {
-					if (getJSONString(oid, database, *buffer)) {
+					if (!getJSONString(oid, database, *buffer)) {
 						*buffer << "\n";
 
 						++count;
@@ -655,6 +662,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		}
 	}
 }
+
 ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
 	auto databaseManager = ObjectDatabaseManager::instance();
 	uint16 tableID = (uint16)(objectID >> 48);
@@ -681,8 +689,18 @@ void ObjectDatabaseCore::dumpObjectToJSON(uint64_t objectID) {
 	}
 
 	std::stringstream json;
-	if (getJSONString(objectID, database, json)) {
+	int res = 0;
+
+	res = getJSONString(objectID, database, json);
+
+	if (!res) {
 		std::cout << json.str() << std::endl;
+	} else {
+		if (res == -1) {
+			staticLogger.info("could not parse object");
+		} else {
+			staticLogger.info("could not get object with result: " + String(db_strerror(res)));
+		}
 	}
 }
 

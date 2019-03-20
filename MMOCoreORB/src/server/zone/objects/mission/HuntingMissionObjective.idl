@@ -13,6 +13,7 @@ import engine.core.ManagedObject;
 include engine.log.Logger;
 include engine.util.u3d.Vector3;
 
+@json
 class HuntingMissionObjective extends MissionObjective {
 	private int targetsKilled;
 

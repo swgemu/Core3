@@ -11,30 +11,31 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
-class FishingPoleObject extends TangibleObject {	
+@json
+class FishingPoleObject extends TangibleObject {
 	protected int quality;
-	
+
 	public FishingPoleObject() {
 		Logger.setLoggingName("FishingPoleObject");
 		quality = 50;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("FishingPoleObject");
 	}
-	
+
 	@read
 	public int getQuality() {
 		return quality;
 	}
-	
+
 	public void setQuality(int value) {
 		if ((value > -1) && (value < 101))
 			quality = value;
 	}
-	
+
 	/**
 	 * Fills the radial options
 	 * @pre { this object is locked }
@@ -44,7 +45,7 @@ class FishingPoleObject extends TangibleObject {
 	@dirty
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -52,21 +53,21 @@ class FishingPoleObject extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
-	
+
 	@dirty
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	public native void doFishing(CreatureObject player);
-	
+
 	@dirty
-	public native string getText(CreatureObject player); 
-	
+	public native string getText(CreatureObject player);
+
 	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
 }

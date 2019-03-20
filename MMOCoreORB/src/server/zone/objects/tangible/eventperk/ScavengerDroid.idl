@@ -10,6 +10,7 @@ include system.util.Vector;
 include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
 
+@json
 class ScavengerDroid extends CreatureObject {
 	@dereferenced
 	protected Time gameStartTime;

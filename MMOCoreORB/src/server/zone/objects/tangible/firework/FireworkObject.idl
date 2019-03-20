@@ -12,31 +12,31 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 
-
-class FireworkObject extends TangibleObject {	
+@json
+class FireworkObject extends TangibleObject {
 	protected string fireworkObject;
 	protected int delay;
-	
+
 	protected boolean isShow;
 	protected int capacity;
-	
+
 	public FireworkObject() {
 		Logger.setLoggingName("FireworkObject");
 
 		fireworkObject = "object/static/firework/fx_01.iff";
-		
+
 		delay = 0;
 		capacity = 2;
 
 		isShow = false;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("FireworkObject");
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -45,29 +45,29 @@ class FireworkObject extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-	
+
 	@dirty
 	@local
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects);
-	
+
 	public native void launch(CreatureObject player, int removeTime = 30);
-	 
+
 	public native void completeLaunch(CreatureObject player, int removeDelay);
 
 	public native void beginShowLaunch(CreatureObject player);
-	
+
 	@dirty
 	public native int getDisplayedUseCount();
-	
+
 	public void setDelay(int d) {
 		delay = d;
 	}
-	
+
 	@read
 	public int getDelay() {
 		return delay;
@@ -77,12 +77,12 @@ class FireworkObject extends TangibleObject {
 	public int getCapacity() {
 		return capacity;
 	}
-	
+
 	@read
 	public string getFireworkObjectPath() {
 		return fireworkObject;
 	}
-	
+
 	@dirty
 	public boolean isFireworkObject() {
 		return true;
