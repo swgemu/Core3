@@ -215,8 +215,8 @@ int PetDeedImplementation::calculatePetLevel() {
 	if ( value4 < value3) {
              avgHam = value2 /3;
             }
-             else
-            	  avgHam = (health + action + mind) / 3;
+        else
+       avgHam = (health + action + mind) / 3;
 	if (avgHam < 75 )avgHam = 75;
 
 	int effective = (int)(((fortitude - (armor * 500)) / 50) * 5);
@@ -235,8 +235,8 @@ int PetDeedImplementation::calculatePetLevel() {
 	if ( value4 < value3) {
              regen = (value2 /10)/3;
             }
-             else
-	          regen = ((willPower + stamina + constitution) /10)/ 3;
+       else
+	     regen = ((willPower + stamina + constitution) /10)/ 3;
 	if (regen < 7 ) regen = 7;
 
 

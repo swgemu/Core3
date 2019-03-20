@@ -199,7 +199,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	quickness = (dexterity * 15)    + (dependency * 3);
 	// mar /2019
 	// order of formulas wrong  , going to use live values and order
-		hit = 0.19 + ((float)cleverness/1525.0f);
+	hit = 0.19 + ((float)cleverness/1525.0f);
 	speed = 2.5 - ((float)courage/1000.0f);
 	minDam = ((float)power * 0.8f);
 	// round up to nearest 10

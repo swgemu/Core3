@@ -303,7 +303,6 @@ int DnaManager::levelForScore(int type, float value) {
 					break;
 				}
 				if (value < lvplus && value > lv){
-
 					rc = i;
 					break;
 				}
