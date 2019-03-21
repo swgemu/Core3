@@ -38,6 +38,9 @@ int main(int argc, char* argv[]) {
 		e.printStackTrace();
 	}
 
+
+	pthread_exit(0);
+
 	return 0;
 }
 
@@ -98,6 +101,13 @@ void ObjectDatabaseCore::run() {
 	} else {
 		showHelp();
 	}
+
+	objectManager->cancelDeleteCharactersTask();
+	objectManager->cancelUpdateModifiedObjectsTask();
+
+	objectManager->shutdown();
+
+	Core::shutdownTaskManager();
 }
 
 VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
@@ -188,7 +198,7 @@ int ObjectDatabaseCore::getJSONString(uint64 oid, ObjectDatabase* database, std:
 	try {
 		ObjectInputStream objectData(1024);
 
-		res = database->getDataNoTx(oid, &objectData);
+		res = database->getData(oid, &objectData);
 
 		if (res == DB_NOTFOUND){
 			dbReadNotFoundCount.increment();
@@ -400,10 +410,10 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 					continue;
 				}
 
-				ObjectInputStream objectData(1024);
+				ObjectInputStream objectData(Core::getIntProperty("BerkeleyDB.zlibChunkSize", 2048 * 2));
 
 				if (readRAWTest) {
-					if (database->getDataNoTx(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, true)) {
+					if (database->getData(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, true)) {
 						dbReadNotFoundCount.increment();
 					} else {
 						dbReadCount.increment();
@@ -418,7 +428,7 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 					continue;
 				}
 
-				if (database->getDataNoTx(objectID, &objectData)) {
+				if (database->getData(objectID, &objectData)) {
 					dbReadNotFoundCount.increment();
 					pushedObjects.decrement();
 
@@ -448,7 +458,7 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 				ObjectInputStream ghostData(1024);
 
-				if (database->getDataNoTx(ghostId, &ghostData)) {
+				if (database->getData(ghostId, &ghostData)) {
 					dbReadNotFoundCount.increment();
 					pushedObjects.decrement();
 
@@ -552,7 +562,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 		Core::getTaskManager()->initializeCustomQueue("Writer" + String::valueOf(i), 1);
 	}
 
-	const String fileName = getArgument(3, database->getDatabaseFileName() + ".json");
+	const String& fileName = getArgument(3, database->getDatabaseFileName() + ".json");
 
 	berkley::CursorConfig config;
 	config.setReadUncommitted(true);
