@@ -60,7 +60,7 @@ class FrsManager extends ManagedService implements Logger {
 
 	private transient FrsManagerData managerData;
 
-	@pointer
+	@weakReference
 	private transient ZoneServer zoneServer;
 
 	protected transient RankMaintenanceTask rankMaintenanceTask;
@@ -291,9 +291,8 @@ class FrsManager extends ManagedService implements Logger {
 		return maintenanceInterval;
 	}
 
-	public ZoneServer getZoneServer() {
-		return zoneServer;
-	}
+	@dirty
+	public native ZoneServer getZoneServer();
 
 	@local
 	public native FrsRank getFrsRank(short councilType, int rank);

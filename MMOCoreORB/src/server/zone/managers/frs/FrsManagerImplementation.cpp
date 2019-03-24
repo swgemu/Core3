@@ -21,6 +21,8 @@
 #include "server/zone/managers/player/PlayerMap.h"
 
 void FrsManagerImplementation::initialize() {
+	auto zoneServer = this->zoneServer.get();
+
 	loadLuaConfig();
 
 	if (!frsEnabled)
@@ -133,6 +135,8 @@ void FrsManagerImplementation::loadLuaConfig() {
 		delete lua;
 		return;
 	}
+
+	auto zoneServer = this->zoneServer.get();
 
 	frsEnabled = lua->getGlobalInt("frsEnabled");
 	petitionInterval = lua->getGlobalLong("petitionInterval");
@@ -422,6 +426,8 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 			player->addSkill("force_title_jedi_master", true);
 
 		if (realPlayerRank == 0) {
+			auto zoneServer = this->zoneServer.get();
+
 			SkillManager* skillManager = zoneServer->getSkillManager();
 
 			if (skillManager == nullptr)
@@ -627,6 +633,7 @@ void FrsManagerImplementation::handleSkillRevoked(CreatureObject* player, const 
 		else if (councilType == COUNCIL_DARK)
 			rankingData = darkRankingData;
 
+		auto zoneServer = this->zoneServer.get();
 		SkillManager* skillManager = zoneServer->getSkillManager();
 
 		for (int i = rankingData.size() -1; i >= 0; i--) {
@@ -693,6 +700,7 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 	else
 		return;
 
+	auto zoneServer = this->zoneServer.get();
 	SkillManager* skillManager = zoneServer->getSkillManager();
 
 	if (skillManager == nullptr)
@@ -899,6 +907,7 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 
 	int maintXp = baseMaintCost * rank;
 
+	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	StringIdChatParameter mailBody("@force_rank:xp_maintenance_body"); // You have lost %DI Force Rank experience. All members of Rank 1 or higher must pay experience each day to remain in their current positions. (Note: This loss may not take effect until your next login.)
@@ -1087,6 +1096,8 @@ void FrsManagerImplementation::sendVoteSUI(CreatureObject* player, SceneObject* 
 		elementList.add(stfRank);
 	}
 
+	auto zoneServer = this->zoneServer.get();
+
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
 	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, suiType, enclaveType, -1, true));
 	box->setUsingObject(terminal);
@@ -1202,6 +1213,8 @@ void FrsManagerImplementation::handleVoteStatusSui(CreatureObject* player, Scene
 	if (voteStatus != VOTING_CLOSED)
 		box->addMenuItem("");
 
+	auto zoneServer = this->zoneServer.get();
+
 	if (voteStatus == PETITIONING || voteStatus == VOTING_OPEN) {
 
 		VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
@@ -1296,6 +1309,8 @@ void FrsManagerImplementation::sendVoteRecordSui(CreatureObject* player, SceneOb
 
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 
+	auto zoneServer = this->zoneServer.get();
+
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
 	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, SUI_VOTE_RECORD, enclaveType, rank, false));
 	box->setUsingObject(terminal);
@@ -1381,6 +1396,8 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 		player->sendSystemMessage("@force_rank:already_voted"); // You have already voted
 		return;
 	}
+
+	auto zoneServer = this->zoneServer.get();
 
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 	String playerName = playerManager->getPlayerName(petitionerID);
@@ -1565,6 +1582,8 @@ bool FrsManagerImplementation::isEligibleForPromotion(CreatureObject* player, in
 	Reference<FrsRankingData*> rankData = rankingData.get(rank);
 	String rankSkill = rankData->getSkillName();
 
+	auto zoneServer = this->zoneServer.get();
+
 	SkillManager* skillManager = zoneServer->getSkillManager();
 
 	if (skillManager == nullptr)
@@ -1667,6 +1686,8 @@ void FrsManagerImplementation::runChallengeVoteUpdate() {
 	if (challenges->size() == 0)
 		return;
 
+	auto zoneServer = this->zoneServer.get();
+
 	for (int i = challenges->size() - 1; i >= 0; i--) {
 		uint64 challengedID = challenges->elementAt(i).getKey();
 		ManagedReference<ChallengeVoteData*> challengeData = challenges->elementAt(i).getValue();
@@ -1756,6 +1777,7 @@ void FrsManagerImplementation::runChallengeVoteUpdate() {
 void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 	short councilType = rankData->getCouncilType();
 	int rank = rankData->getRank();
+	auto zoneServer = this->zoneServer.get();
 
 	SortedVector<uint64>* rankList = rankData->getPlayerList();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
@@ -1921,6 +1943,7 @@ void FrsManagerImplementation::runVotingUpdate(FrsRank* rankData) {
 }
 
 void FrsManagerImplementation::checkForMissedVotes(FrsRank* rankData) {
+	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
 	short councilType = rankData->getCouncilType();
 	int rank = rankData->getRank();
@@ -1962,6 +1985,7 @@ void FrsManagerImplementation::checkForMissedVotes(FrsRank* rankData) {
 }
 
 void FrsManagerImplementation::sendMailToVoters(FrsRank* rankData, const String& sub, StringIdChatParameter& body) {
+	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
 	int rank = rankData->getRank();
 
@@ -1985,6 +2009,7 @@ void FrsManagerImplementation::sendMailToVoters(FrsRank* rankData, const String&
 }
 
 void FrsManagerImplementation::sendMailToList(Vector<uint64>* playerList, const String& sub, StringIdChatParameter& body) {
+	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
@@ -2037,6 +2062,7 @@ void FrsManagerImplementation::sendChallengeVoteSUI(CreatureObject* player, Scen
 
 	FrsData* playerData = ghost->getFrsData();
 	int playerRank = playerData->getRank();
+	auto zoneServer = this->zoneServer.get();
 
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
 	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, suiType, enclaveType, -1, false));
@@ -2125,6 +2151,7 @@ void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* playe
 
 	FrsData* playerData = ghost->getFrsData();
 	int playerRank = playerData->getRank();
+	auto zoneServer = this->zoneServer.get();
 
 	ManagedReference<CreatureObject*> challenged = zoneServer->getObject(challengedID).castTo<CreatureObject*>();
 
@@ -2240,6 +2267,7 @@ void FrsManagerImplementation::handleChallengeVoteStatusSui(CreatureObject* play
 		return;
 	}
 
+	auto zoneServer = this->zoneServer.get();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 	String playerName = playerManager->getPlayerName(challengedID);
 
@@ -2306,6 +2334,7 @@ void FrsManagerImplementation::handleChallengeVoteRecordSui(CreatureObject* play
 		return;
 	}
 
+	auto zoneServer = this->zoneServer.get();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 	String playerName = playerManager->getPlayerName(challengedID);
 
@@ -2352,6 +2381,7 @@ void FrsManagerImplementation::handleChallengeVoteRecordConfirmSui(CreatureObjec
 		return;
 	}
 
+	auto zoneServer = this->zoneServer.get();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 	String playerName = playerManager->getPlayerName(challengedID);
 
@@ -2378,6 +2408,7 @@ void FrsManagerImplementation::handleChallengeVoteRecordConfirmSui(CreatureObjec
 }
 
 void FrsManagerImplementation::sendChallengeVoteMail(int challengedRank, const String& sub, StringIdChatParameter& body) {
+	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	for (int i = 1; i <= 11; i++) {
@@ -2450,6 +2481,8 @@ void FrsManagerImplementation::sendVoteDemoteSui(CreatureObject* player, SceneOb
 		return;
 	}
 
+	auto zoneServer = this->zoneServer.get();
+
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
 	box->setCallback(new EnclaveVotingTerminalSuiCallback(zoneServer, SUI_VOTE_DEMOTE, enclaveType, rank, false));
 	box->setUsingObject(terminal);
@@ -2482,6 +2515,8 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 
 	if (ghost == nullptr)
 		return;
+
+	auto zoneServer = this->zoneServer.get();
 
 	ManagedReference<CreatureObject*> playerToDemote = zoneServer->getObject(playerID).castTo<CreatureObject*>();
 
@@ -2698,6 +2733,7 @@ void FrsManagerImplementation::recoverJediItems(CreatureObject* player) {
 	if (slot != nullptr and slot->getServerObjectCRC() == robeCRC)
 		return;
 
+	auto zoneServer = this->zoneServer.get();
 	ManagedReference<SceneObject*> robeObj = zoneServer->createObject(robeCRC, 1);
 
 	if (robeObj == nullptr)
@@ -2766,6 +2802,7 @@ void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int co
 	box->setPromptText("Members in " + rankString + ":");
 	box->setPromptTitle("Council Player List");
 
+	auto zoneServer = this->zoneServer.get();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
 	for (int i = 0; i < rankList->size(); i++) {
@@ -2837,6 +2874,8 @@ void FrsManagerImplementation::handleArenaChallengeViewSui(CreatureObject* playe
 	box->setForceCloseDistance(16.f);
 	box->setPromptText("@pvp_rating:ch_terminal_pending"); // Pending challenges for selected rank:
 	box->setPromptTitle("@pvp_rating:ch_terminal_view_challenges"); // View Issued Challenges
+
+	auto zoneServer = this->zoneServer.get();
 
 	for (int i = 0; i < arenaChallenges->size(); i++) {
 		ManagedReference<ArenaChallengeData*> challengeData = arenaChallenges->get(i);
@@ -2950,6 +2989,7 @@ bool FrsManagerImplementation::hasPlayerAcceptedArenaChallenge(CreatureObject* p
 
 void FrsManagerImplementation::updateArenaScores() {
 	Locker locker(managerData);
+	auto zoneServer = this->zoneServer.get();
 
 	for (int i = 1; i <= 11; i++) {
 		FrsRank* rankData = getFrsRank(COUNCIL_DARK, i);
@@ -3010,6 +3050,7 @@ void FrsManagerImplementation::updateArenaScores() {
 void FrsManagerImplementation::wipeArenaChallenges() {
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 	int arenaChallengeCount = arenaChallenges->size();
+	auto zoneServer = this->zoneServer.get();
 
 	for (int i = arenaChallengeCount - 1; i >= 0; i--) {
 		ManagedReference<ArenaChallengeData*> challengeData = arenaChallenges->get(i);
@@ -3079,6 +3120,7 @@ void FrsManagerImplementation::performArenaMaintenance() {
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 
 	bool challengeEnded = false;
+	auto zoneServer = this->zoneServer.get();
 
 	// Not all challenges will end at the interval, challenges started towards the end of the interval will continue until their duration is up
 	for (int i = arenaChallenges->size() - 1; i >= 0; i--) {
@@ -3323,6 +3365,7 @@ void FrsManagerImplementation::handleLeftArena(CreatureObject* player) {
 	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 	ManagedReference<CreatureObject*> opponent = nullptr;
 	uint64 playerID = player->getObjectID();
+	auto zoneServer = this->zoneServer.get();
 
 	for (int i = 0; i < arenaChallenges->size(); i++) {
 		ManagedReference<ArenaChallengeData*> tempData = arenaChallenges->get(i);
@@ -3384,6 +3427,8 @@ void FrsManagerImplementation::issueArenaChallenge(CreatureObject* player, int r
 
 	sendMailToList(playerList, "@pvp_rating:challenge_issued_subject_header", mailBody);
 
+	auto zoneServer = this->zoneServer.get();
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 	Locker clocker(chatManager, managerData);
 
@@ -3428,6 +3473,8 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 	rankData->setArenaChallengesAcceptedThisPhase(curChallenges + 1);
 
 	clocker.release();
+
+	auto zoneServer = this->zoneServer.get();
 
 	ManagedReference<CreatureObject*> challenger = zoneServer->getObject(challengerID).castTo<CreatureObject*>();
 
@@ -3529,6 +3576,7 @@ void FrsManagerImplementation::sendArenaChallengeSUI(CreatureObject* player, Sce
 
 	FrsData* playerData = ghost->getFrsData();
 	int rank = playerData->getRank();
+	auto zoneServer = this->zoneServer.get();
 
 	Locker clocker(managerData, player);
 
@@ -3847,6 +3895,7 @@ void FrsManagerImplementation::forceArenaOpen(CreatureObject* player) {
 }
 
 void FrsManagerImplementation::setupSuddenDeath(FrsRank* rankData, bool endPhase) {
+	auto zoneServer = this->zoneServer.get();
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
@@ -3878,6 +3927,7 @@ void FrsManagerImplementation::modifySuddenDeathFlags(CreatureObject* player, Fr
 		return;
 
 	uint64 playerID = player->getObjectID();
+	auto zoneServer = this->zoneServer.get();
 
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
@@ -3995,6 +4045,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 	if (contribList->size() == 0)
 		return;
 
+	auto zoneServer = this->zoneServer.get();
+
 	if (totalVotes > 0) {
 		for (int i = 0; i < contribList->size(); i++) {
 			uint64 contribID = contribList->elementAt(i).getKey();
@@ -4046,3 +4098,8 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 	rankData->removeFromPetitionerList(playerID);
 	modifySuddenDeathFlags(player, rankData, true);
 }
+
+ZoneServer* FrsManagerImplementation::getZoneServer() {
+	return zoneServer.get();
+}
+
