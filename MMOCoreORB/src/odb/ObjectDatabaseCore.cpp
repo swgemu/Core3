@@ -279,7 +279,7 @@ void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
 
 	StringBuffer buff;
 	buff << "total db read count: " << currentCount << " not found:  " << dbReadNotFoundCount.get(std::memory_order_seq_cst) << " speed: " << (currentCount - previousCount)
-		<< " reads in " << deltaMs / 1000 << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
+		<< " reads in " << deltaMs / 1000.f << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
 		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst)
 		<< " global db read size: " << globalDBReadSize.get() << " creo read size: " << creoReadSize.get() << " creo compressed read size: " << compressedCreoReadSize.get() << " ghost read size: " << ghostReadSize;
 	staticLogger.info(buff, true);
@@ -497,13 +497,14 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 
 void ObjectDatabaseCore::dumpAdmins() {
 	mysql = new ServerDatabase(ConfigManager::instance());
+	auto taskManager = Core::getTaskManager();
 
 	auto players = loadPlayers(getIntArgument(1, 2));
 
 	int objectsPerTask = Core::getIntProperty("ODB3.adminPlayersPerTask", 100);
 
 	int count = 0;
-	Core::getTaskManager()->initializeCustomQueue("AdminListThreads", getIntArgument(2, 10));
+	auto queue = taskManager->initializeCustomQueue("AdminListThreads", getIntArgument(2, 10));
 
 	Vector<VectorMapEntry<String, uint64>> currentObjects;
 
@@ -526,13 +527,15 @@ void ObjectDatabaseCore::dumpAdmins() {
 
 	auto previousCount = dbReadCount.get();
 
-	while (pushedObjects > 0) {
+	while (queue->size() > 0) {
 		Thread::sleep(1000);
 
 		showStats(previousCount, 1000);
 
 		previousCount = dbReadCount.get();
 	}
+
+	taskManager->waitForQueueToFinish("AdminListThreads");
 
 	for (int i = 0; i < adminList.size(); ++i) {
 		info(adminList.getKey(i) + ": " + adminList.get(i), true);

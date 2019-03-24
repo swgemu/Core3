@@ -5270,22 +5270,29 @@ void PlayerManagerImplementation::sendAdminFRSList(CreatureObject* player) {
 }
 
 VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
+	static Mutex guard; //only one thread cann run this
+
+	Locker locker(&guard);
+
 	VectorMap<String, int> players;
 
 	HashTable<String, uint64> names = nameMap->getNames();
 	HashTableIterator<String, uint64> iter = names.iterator();
 
 	auto objectManager = server->getObjectManager();
+	auto taskManager = Core::getTaskManager();
 
-	constexpr int objectsPerTask = 100;
+	constexpr const int objectsPerTask = 500;
 
-	SynchronizedVectorMap<String, int> sharedMap;
-	AtomicInteger totalObjects = names.size();
+	static SynchronizedVectorMap<String, int> sharedMap;
+	static AtomicInteger totalObjects;
 
-	int count = 0;
-	static int startThreads = [] () mutable { Core::getTaskManager()->initializeCustomQueue("AdminListThreads", 20); return 10; } (); //only once
+	totalObjects = names.size();
 
 	Vector<VectorMapEntry<String, uint64>> currentObjects;
+
+	int count = 0;
+	static TaskQueue* customQueue = [taskManager] () { return taskManager->initializeCustomQueue("AdminListThreads", 10); } (); //only once
 
 	while (iter.hasNext()) {
 		uint64 oid;
@@ -5296,7 +5303,7 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 		currentObjects.emplace(std::move(playerName), std::move(oid));
 
 		if (currentObjects.size() >= objectsPerTask || count >= names.size()) {
-			Core::getTaskManager()->executeTask([currentObjects, &totalObjects, objectManager, &sharedMap]() {
+			taskManager->executeTask([currentObjects, objectManager]() {
 				for (const auto& obj : currentObjects) {
 					try {
 						VectorMap<String, uint64> slottedObjects;
@@ -5317,6 +5324,7 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 							sharedMap.put(obj.getKey(), state);
 						}
 					} catch (...) {
+						Logger::console.error("unreported exception caught in GetAdminPlayerObjectTask");
 					}
 
 					totalObjects.decrement();
@@ -5324,15 +5332,16 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 
 			}, "GetAdminPlayerObjectTask", "AdminListThreads");
 
-			currentObjects.removeAll(100, 50);
+			currentObjects.removeAll(objectsPerTask, 50);
 		}
 	}
 
-	while (totalObjects > 0) {
-		Thread::sleep(100);
-	}
+	taskManager->waitForQueueToFinish("AdminListThreads");
 
 	players = sharedMap.getMapUnsafe();
+
+	sharedMap.removeAll();
+	totalObjects = 0;
 
 	return players;
 }
