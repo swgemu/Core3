@@ -61,6 +61,8 @@ public:
 	AtomicInteger activeRecoveryEvents;
 	AtomicInteger activeWaitEvents;
 
+	Mutex guard;
+
 	AiMap() : Logger("AiMap") {
 		aiMap.setNullValue(NULL);
 		behaviors.setNullValue(NULL);
@@ -101,8 +103,6 @@ public:
 
 		lua->runFile("scripts/ai/templates/templates.lua");
 
-		static Mutex guard;
-
 		Locker locker(&guard);
 
 		if (loaded) {
@@ -116,19 +116,21 @@ public:
 		loaded = true;
 	}
 
-	bool isLoaded() {
+	bool isLoaded() const {
 		return loaded;
 	}
 
-	int getTemplateSize() {
+	int getTemplateSize() const{
 		return aiMap.size();
 	}
 
-	int getBehaviorSize() {
+	int getBehaviorSize() const {
 		return behaviors.size();
 	}
 
 	void putTemplate(const String& name, Reference<AiTemplate*> ait) {
+		Locker locker(&guard);
+
 		aiMap.put(name, ait);
 	}
 
@@ -140,6 +142,8 @@ public:
 	}
 
 	void putBehavior(const String& name, Reference<LuaBehavior*> b) {
+		Locker locker(&guard);
+
 		behaviors.put(name, b);
 	}
 
@@ -244,8 +248,8 @@ private:
 		}
 	}
 
-	Reference<AiTemplate*> getTemplate(unsigned int bitMask, HashTable<unsigned int, Reference<AiTemplate*> > table) {
-		HashTableIterator<unsigned int, Reference<AiTemplate*> > iter = table.iterator();
+	static Reference<AiTemplate*> getTemplate(unsigned int bitMask, const HashTable<unsigned int, Reference<AiTemplate*> >& table) {
+		auto iter = table.iterator();
 
 		unsigned int finalKey = CreatureFlag::NONE;
 

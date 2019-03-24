@@ -537,7 +537,7 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 
 	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getZoneName() + ".ws");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		info("Snapshot wasn't found.", true);
 		return;
 	}
@@ -546,13 +546,15 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 	wsiff->readObject(iffStream);
 
 	int totalObjects = 0;
+	Vector<SceneObject*> objects;
 
 	for (int i = 0; i < wsiff->getNodeCount(); ++i) {
 		auto node = wsiff->getNode(i);
 
-		if (node == NULL)
+		if (node == nullptr)
 			continue;
 
+#ifdef PARALLEL_SNAPSHOT_LOADING
 		++totalObjects;
 
 		Core::getTaskManager()->executeTask([this, node, wsiff, totalObjects]() mutable {
@@ -565,7 +567,24 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 			}
 		}, "LoadSnapshotObjectLambda");
 
+#else
+		auto sceno = loadSnapshotObject(node, wsiff, totalObjects);
+
+		if (sceno != nullptr) {
+			objects.emplace(sceno);
+		}
+#endif
 	}
+
+#ifndef PARALLEL_SNAPSHOT_LOADING
+	for (int i = 0; i < objects.size(); ++i) {
+		SceneObject* sceno = objects.get(i);
+
+		Locker locker(sceno);
+
+		sceno->createChildObjects();
+	}
+#endif
 
 	delete iffStream;
 
