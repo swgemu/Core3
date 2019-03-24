@@ -5283,7 +5283,7 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 	AtomicInteger totalObjects = names.size();
 
 	int count = 0;
-	static int startThreads = [] () mutable { Core::getTaskManager()->initializeCustomQueue("AdminListThreads", 10); return 10; } (); //only once
+	static int startThreads = [] () mutable { Core::getTaskManager()->initializeCustomQueue("AdminListThreads", 20); return 10; } (); //only once
 
 	Vector<VectorMapEntry<String, uint64>> currentObjects;
 

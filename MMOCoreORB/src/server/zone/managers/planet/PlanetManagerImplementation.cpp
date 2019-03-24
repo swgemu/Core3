@@ -542,31 +542,29 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		return;
 	}
 
-	WorldSnapshotIff wsiff;
-	wsiff.readObject(iffStream);
+	Reference<WorldSnapshotIff*> wsiff = new WorldSnapshotIff();
+	wsiff->readObject(iffStream);
 
 	int totalObjects = 0;
 
-	Vector<SceneObject*> objects(1000, 1000);
-
-	for (int i = 0; i < wsiff.getNodeCount(); ++i) {
-		WorldSnapshotNode* node = wsiff.getNode(i);
+	for (int i = 0; i < wsiff->getNodeCount(); ++i) {
+		auto node = wsiff->getNode(i);
 
 		if (node == NULL)
 			continue;
 
-		SceneObject* object = loadSnapshotObject(node, &wsiff, totalObjects);
+		++totalObjects;
 
-		if (object != NULL)
-			objects.add(object);
-	}
+		Core::getTaskManager()->executeTask([this, node, wsiff, totalObjects]() mutable {
+			auto sceno = loadSnapshotObject(node, wsiff, totalObjects);
 
-	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* sceno = objects.get(i);
+			if (sceno != nullptr) {
+				Locker locker(sceno);
 
-		Locker locker(sceno);
+				sceno->createChildObjects();
+			}
+		}, "LoadSnapshotObjectLambda");
 
-		sceno->createChildObjects();
 	}
 
 	delete iffStream;

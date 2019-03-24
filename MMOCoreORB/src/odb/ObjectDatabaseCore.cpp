@@ -225,11 +225,18 @@ void dispatchWriterTask(std::stringstream* data, const String& fileName, int wri
 	 Core::getTaskManager()->executeTask([data, fileName]() {
 		UniqueReference<std::stringstream*> guard(data);
 
-		std::ofstream jsonFile(fileName.toCharArray(), std::fstream::out | std::fstream::app);
+		static ThreadLocal<std::ofstream*> jsonFile;
 
-		jsonFile << data->str();
+		auto file = jsonFile.get();
 
-		jsonFile.close();
+		if (file == nullptr) {
+			file = new std::ofstream(fileName.toCharArray(), std::fstream::out);
+
+			jsonFile.set(file);
+		}
+
+		*file << data->str();
+		file->flush();
 	 }, "WriteJSONTask", ("Writer" + String::valueOf(writerThread)).toCharArray());
 }
 

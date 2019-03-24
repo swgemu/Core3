@@ -46,7 +46,6 @@
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 
 void StructureManager::loadPlayerStructures(const String& zoneName) {
-
 	info("Loading player structures from playerstructures.db for zone: " + zoneName);
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
@@ -57,61 +56,99 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 		return;
 	}
 
+	berkley::CursorConfig config;
+	config.setReadUncommitted(true);
+
+	ObjectDatabaseIterator iterator(playerStructuresDatabase, config);
+
+	//5MB buffer
+	int buffersize = 10 * 1024 * 1024;//10MB
+	ArrayList<char> buffer(buffersize, buffersize / 2);
+
+	berkley::DatabaseEntry dataEntry;
+	dataEntry.setData(buffer.begin(), buffersize);
+
+	size_t retklen, retdlen;
+	unsigned char *retkey, *retdata;
+	void *p;
+
+	int queryRes = 0;
 	int i = 0;
 
-	try {
-		ObjectDatabaseIterator iterator(playerStructuresDatabase);
+	do {
+		if (queryRes == DB_BUFFER_SMALL) {
+			info("resizing player bulk buffer to " + String::valueOf(buffersize * 2), true);
 
-		uint64 objectID;
-		ObjectInputStream* objectData = new ObjectInputStream(2000);
+			buffersize *= 2;
 
-		String zoneReference;
-
-		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<String>(STRING_HASHCODE("SceneObject.zone"),
-					&zoneReference, objectData)) {
-				objectData->clear();
-				continue;
-			}
-
-			if (zoneName != zoneReference) {
-				objectData->clear();
-				continue;
-			}
-
-			Reference<SceneObject*> object = server->getObject(objectID);
-
-			if (object != NULL) {
-				++i;
-
-				if (object->isGCWBase()) {
-					Zone* zone = object->getZone();
-
-					if (zone != NULL) {
-						GCWManager* gcwMan = zone->getGCWManager();
-
-						if (gcwMan != NULL) {
-							gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()), false);
-						}
-					}
-				}
-
-				if (ConfigManager::instance()->isProgressMonitorActivated())
-					printf("\r\tLoading player structures [%d] / [?]\t", i);
-			} else {
-				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
-			}
-
-			objectData->clear();
+			buffer.removeAll(buffersize, 5);
+			dataEntry.setData(buffer.begin(), buffersize);
 		}
 
-		delete objectData;
-	} catch (DatabaseException& e) {
-		error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
-	}
+		queryRes = iterator.getNextKeyAndValueMultiple(dataEntry);
 
-	bool log = i > 0;
-	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".", log);
+		if (queryRes) {
+			continue;
+		}
+
+		String zoneReference;
+		ObjectInputStream data(8192);
+
+		for (DB_MULTIPLE_INIT(p, dataEntry.getDBT());;) {
+			DB_MULTIPLE_KEY_NEXT(p,
+					dataEntry.getDBT(), retkey, retklen, retdata, retdlen);
+			if (p == NULL)
+				break;
+
+			data.reset();
+
+			auto objectID = *reinterpret_cast<uint64*>(retkey);
+
+			try {
+				LocalDatabase::uncompress(retdata, retdlen, &data);
+
+				if (!Serializable::getVariable<String>(STRING_HASHCODE("SceneObject.zone"),
+							&zoneReference, &data)) {
+					data.reset();
+					continue;
+				}
+
+				if (zoneName != zoneReference) {
+					data.reset();
+					continue;
+				}
+
+				Reference<SceneObject*> object = server->getObject(objectID);
+
+				if (object != NULL) {
+					++i;
+
+					if (object->isGCWBase()) {
+						Zone* zone = object->getZone();
+
+						if (zone != NULL) {
+							GCWManager* gcwMan = zone->getGCWManager();
+
+							if (gcwMan != NULL) {
+								gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()), false);
+							}
+						}
+					}
+
+					if (ConfigManager::instance()->isProgressMonitorActivated())
+						printf("\r\tLoading player structures [%d] / [?]\t", i);
+				} else {
+					error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
+				}
+
+			} catch (Exception& e) {
+				error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
+			}
+
+		}
+	} while (queryRes == 0 || queryRes == DB_BUFFER_SMALL);
+
+	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".", i > 0);
 }
 
 int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {

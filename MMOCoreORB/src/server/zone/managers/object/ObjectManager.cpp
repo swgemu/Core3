@@ -64,6 +64,7 @@ ObjectManager::ObjectManager(bool initializeTemplates) : DOBObjectManager() {
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
+	Core::getTaskManager()->initalizeDatabaseHandles();
 	Core::getTaskManager()->initializeCustomQueue("slowQueue", SLOW_QUEUES_COUNT, true);
 
 	loadLastUsedObjectID();

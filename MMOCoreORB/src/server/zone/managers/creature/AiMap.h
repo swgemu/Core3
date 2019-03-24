@@ -101,6 +101,14 @@ public:
 
 		lua->runFile("scripts/ai/templates/templates.lua");
 
+		static Mutex guard;
+
+		Locker locker(&guard);
+
+		if (loaded) {
+			return;
+		}
+
 		putTemplate(lua, "getTarget", &getTargets);
 		putTemplate(lua, "selectAttack", &selectAttacks);
 		putTemplate(lua, "combatMove", &combatMoves);
