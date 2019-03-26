@@ -1,16 +1,23 @@
 #ifndef GENETICS_H_
 #define GENETICS_H_
 
+
+
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "templates/params/creature/CreatureFlag.h"
+#include "system/lang.h"
+
+
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace crafting {
 namespace labratories {
+
+
 
 class Genetics {
 private:
@@ -19,9 +26,12 @@ private:
 	const static short MENTAL = 2;
 	const static short AGRESSION = 3;
 	const static short PHYSCHOLOGICAL = 4;
+	// added for Testing  Mar 2019
+
 public:
 	Genetics();
 	virtual ~Genetics();
+
 
 	static float physiqueFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.4) + (b *0.25) + (c * 0.05) + (d * 0.05) + (e * 0.25));
@@ -48,56 +58,6 @@ public:
 		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
-	static float experimentFormula(float a, float b) {
-		float multiplier = 140.0;
-		return (round( (a/(a+b)*multiplier)));
-	}
-
-	static float determineMaxExperimentation(float min, float max) {
-		return ceil((max / 10.0f) * .01f); // deterine max percentage. we will lock the stats each round after experimentation to handle adjustment our selves.
-	}
-
-	/**
-	 * Genetic experiments differently, we have know formula increase per point spent.
-	 * so we can calculate the max points possible for any given stat they arent as linear as resource items are.
-	 */
-	// demo 2,342,14
-	static float maxExperimentationPercentage(float a, float b, float aMax, float bMax) {
-		int count = 1;
-		float workingA = a;
-		float workingB = b;
-		int aCount = 0;
-		int bCount = 0;
-		// max possible points in a given row is 10 i.e. 100%
-		while( (workingA < aMax || workingB < bMax) && count < 11) {
-			float wa = workingA;
-			float wb = workingB;
-			workingA += experimentFormula(wb,wa);
-			workingB += experimentFormula(wa,wb);
-			if (workingB > bMax) {
-				bCount = count;
-				workingB = bMax;
-			}
-			if (workingA > aMax) {
-				aCount = count;
-				workingA = aMax;
-			}
-			if (workingA == aMax && workingB == bMax){
-				count = 11;
-			}
-			count++;
-		}
-		// We know the min and max of each one, cal the % diff, and pick highest
-		//float maxApercent = 100.00/(aMax/a);
-		//float maxBpercent = 100.0/(bMax/b);
-		// However each exp point will move it up by a chunk. soooooo good = 1 point in the given formula
-		// we should now have the run to the max for both a and b, so determine the highest
-		// if we say 14 rounds needed the max percentage would be: 14/10 = 1.4 or 140% or 100% normalized
-		float maxACount = aCount/10.0f;
-		float maxBCount = bCount/10.0f;
-		float maxCount = maxACount > maxBCount ? maxACount : maxBCount;
-		return maxCount > 1 ? 1 : maxCount;
-	}
 
 	/**
 	 * Any special in the line
@@ -223,7 +183,7 @@ public:
 	}
 	static int randomizeValue(int value, int quality) {
 		int wQuality = 8 - quality; // reverse range this is not the first time.
-		int min = (value) + ((wQuality-5) * 5);
+		int min = (value) ; //+ ((wQuality-5) * 5); // loose the added part to min
 		int max = (value) + ((wQuality-3) * 5);
 		return (int) (System::random(max-min) + min);
 	}
@@ -238,13 +198,13 @@ public:
 
 	// convert creature damage range to power score
 	static int damageToValue(float dps, int quality) {
-		int base = round(((dps-15.0)/(725.0))*1000.0);
+		int base = round(((dps-15.0)/ 780.0)*1000.0); // was 725.0
 		return randomizeValue(base,quality);
 	}
 
 	// convert ham value to score
 	static int hamToValue(float ham, int quality) {
-		int base = round(((ham-50.0)/(17950)) * 1000.0);
+		int base = round(((ham-50.0)/(18500)) * 1000.0); // was 17950
 		return randomizeValue(base,quality);
 	}
 
@@ -284,8 +244,14 @@ public:
 	}
 
 	// convert resistance to value
-	static float resistanceToValue(float effective, int armor,int quality) {
+	static float resistanceToValue(float effective, int armor,int quality,int hardiness) {
 		// find effective resist
+		// add some fortitude to creatures with no resists
+		if (effective <= 0.0) {
+			if (hardiness > 1500) effective = hardiness * 0.02;
+			else effective = hardiness * 0.01;
+		}
+
 		int base = effective * 10;
 		int rand = randomizeValue(base,quality);
 		if (rand < 0)
@@ -383,64 +349,188 @@ public:
 
 	}
 	static int generateStatLevel(int health) {
-		return (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, health)+1) * 6;
+		return DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, health);
 	}
 	static int generateDamageLevel(float dps) {
-		return DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, dps) * 10;
+		return DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, dps);
 	}
 	static int generateHitLevel(float hitChance) {
-		return (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL,hitChance) + 1) * 1;
+		return DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL,hitChance);
 	}
-	static int generateRegenLevel(int hamRegen) {
-		return (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,hamRegen/10) + 1)* 2;
+	static int generateRegenLevel(int Regen) {
+		return DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,Regen);
 	}
 	static int generteArmorLevel(int armor, float effectResist) {
-		return DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (armor * 500) + (( effectResist) * 10.0)  );
+		return DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (armor * 500) +  effectResist  );
 	}
-	static int generateArmorBaseLevel(int generatedArmorLevel) {
+	/*static int generateArmorBaseLevel(int generatedArmorLevel) {
 		return DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,generatedArmorLevel);
-	}
+	}		sprintf(str,"Pet ArmorLevel Passed %d",armorLevel);
+		Logger::console.info(str,true);
 	static int generateBaseLevel(int statLevel, int damageLevel, int armorLevel, int regenLevel, int hitLevel) {
-		return (((statLevel) + (damageLevel) + (regenLevel) + (hitLevel)) / 19.0) + 0.5;
-	}
-	static int calculateAgentLevel(int health, float dps, float hit, int regen, int armor, float effective, float kin, float eng, float bla, float heat, float cold, float elec, float acid, float stun) {
+		return ((statLevel) + (damageLevel) + (regenLevel) + (hitLevel)) ;
+	} */
+	static int calculateAgentLevel(int fortitude, int health, float dps, float hit, int regen, int armor, float effective, float kin, float eng, float bla, float heat, float cold, float elec, float acid, float stun) {
+		//   Added proper regen formula to petdeedimplementation
+		// added fortitude variable. wont use effective
+
+		int pfort = fortitude , tarmor = 0,rfort = 0 ;
+		float Psum = 0 , Nsum = 0;
+		if ( pfort >= 500) 	rfort = pfort - 500;
+		else
+			if (pfort < 500) rfort = pfort;
+
+		tarmor= (int)(((fortitude - (armor * 500)) / 50) * 5);
+		if (armor==1)tarmor = tarmor + 500;
+
+		if (kin  >= 0) Psum = Psum + kin;  else if(kin  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + kin;
+		if (eng  >= 0) Psum = Psum + eng;  else if(eng  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + eng;
+		if (bla  >= 0) Psum = Psum + bla;  else if(bla  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + bla;
+		if (heat >= 0) Psum = Psum + heat; else if(heat >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + heat;
+		if (cold >= 0) Psum = Psum + cold; else if(cold >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + cold;
+		if (elec >= 0) Psum = Psum + elec; else if(elec >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + elec;
+		if (acid >= 0) Psum = Psum + acid; else if(acid >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + acid;
+		if (stun >= 0) Psum = Psum + stun; else if(stun >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + stun;
+
+			float modifier = rfort/8;
+			Psum  = modifier * (Psum /100);
+			tarmor = tarmor + Psum;
+			Nsum  = (Nsum / 100)* modifier;
+
+	        int parmor = 0;
+	        parmor = tarmor + Nsum;
+
+			if ( parmor >1) tarmor = tarmor + Nsum; else tarmor = 0;
+			// data table will return cl 14 if the armor is below 50  set it to 2
+	        int armorLevel = 2;
+	        // already have armor send 0 .
+	        if (tarmor >= 3){
+			 armorLevel =  generteArmorLevel(0,tarmor);
+			}
+			else
+				if (tarmor < 3) {
+					if (Nsum < -300) armorLevel= -3;
+					else
+					armorLevel = 0;
+				}
+
+
 		int statLevel = generateStatLevel(health);
 		int damageLevel = generateDamageLevel(dps);
 		int hitLevel = generateHitLevel(hit);
-		int defenseLevel = hitLevel;
 		int regenerationLevel =  generateRegenLevel(regen);
-		int armorLevel = generteArmorLevel(armor,effective);
-		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,armorLevel);
-		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
-		int armorLevel2 = calcArmorLevelByStats(armor,armorLevel,baseLevel,armorBase, kin,eng, bla,heat,cold,elec,acid,stun) * 2;
-		if (defenseLevel < baseLevel)
-			defenseLevel = baseLevel;
-		int level = round((((float)(statLevel + damageLevel + hitLevel + defenseLevel + armorLevel + regenerationLevel ))/22.0) + 0.5);
+		int level = (statLevel + damageLevel + hitLevel  + armorLevel + regenerationLevel )/5;
 		return level;
+
 	}
+
 	// Calculate the creatures overall level as a pet.
 	static int calculatePetLevel(GeneticComponent* pet) {
-		// reverse the values out.
-		int avgHam = (pet->getHealth() + pet->getAction() + pet->getMind()) / 3;
-		int statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam) + 1) * 6;
-		int damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, ((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed()) * 10;
-		int hitLevel = (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHit()) + 1) * 1;
-		int defenseLevel = hitLevel;
-		int regenerationLevel =  (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, avgHam / 10) + 1)* 2;
-		int armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (pet->getArmor() * 500) + (( pet->getEffectiveArmor()) * 10.0)  );
-		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, armorLevel);
-		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
-		int armorLevel2 = calculateArmorValue(pet, armorLevel, baseLevel, armorBase) * 2;
-		if (defenseLevel < baseLevel)
-			defenseLevel = baseLevel;
-		int level = round((((float)(statLevel + damageLevel + hitLevel + defenseLevel + armorLevel + regenerationLevel ))/22.0) + 0.5);
+		// code to allow for 10k cl 10
+		int avgHam = 0;
+        int health = 0 ,action = 0 , mind = 0;
+        int value1 = 0, value2 = 0, value3 = 0, value4 = 0;
+		health =pet->getHealth(); action = pet->getAction(); mind = pet->getMind();
+        // need to find the min and max	
+		value1 = Math::min(health,action);
+		value2 = Math::min(value1,mind);
+		value1 = Math::max(health,action);
+		value3 = Math::max(value1,mind);
+		value4 = (value2 /3 ) + value2;
+		//if the min /3 + min  is less than max use the mmin /3
+		if ( value4 < value3) {
+                 avgHam = value2 /3;
+                }
+                 else
+                 avgHam = (pet->getHealth() + pet->getAction() + pet->getMind()) / 3;
+		if (avgHam <75) avgHam = 75;
+
+		// do the same for regen
+        int regen =0;
+        int will = 0 , stam = 0, cons = 0;
+        will = pet->getWillPower(); stam = pet->getStamina(); cons =pet->getConstitution();
+		value1 = Math::min(will,stam);
+ 		value2 = Math::min(value1,cons);
+ 		value1 = Math::max(will,stam);
+ 		value3 = Math::max(value1,cons);
+ 		value4 = (value2 /3 ) + value2;
+ 		//if the min /3 + min  is less than max use the mmin /3
+ 		if ( value4 < value3) {
+                  regen = (value2/10) /3;
+                 }
+                  else
+                	  regen = floor(((pet->getWillPower() + pet->getStamina() + pet->getConstitution()) /10)/ 3);
+ 		if (regen < 7) regen =7;
+
+
+		int statLevel = DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam);
+		int dps = ((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed();
+		int damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, dps) ;
+		int hitLevel = DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHit());
+	    int regenerationLevel =  DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, regen);
+		// this will get us to level 60 armor , need to figure out how to do the resists
+		int tarmor = 0;
+		int  rfort = 0;
+		int pfort = 0;
+		pfort = pet->getFortitude();
+		if ( pfort >= 500) 	rfort = pfort - 500;
+		else
+			if (pfort < 500)  rfort = pfort;
+		tarmor= (int)(((pfort - (pet->getArmor() * 500)) / 50) * 5);
+		if (pet->getArmor()==1)tarmor = tarmor + 500;
+
+		// get resists and split into positive or negative values
+		int resistValue = 0;
+		float Psum = 0;
+		float Nsum = 0;
+		resistValue = pet->getKinetic();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getEnergy();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getBlast();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getHeat();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getElectrical();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getCold();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getAcid();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		resistValue = pet->getStun();
+		if (resistValue >= 0) Psum = Psum + resistValue; else if(resistValue  >= -2) Nsum = Nsum + -99; else   Nsum = Nsum + resistValue;
+		//Only returns -1 for vulnerables , have to pick something like -50 for each slot x remaining fortitude
+		float modifier = rfort/8;
+		//modifier = -0.99f * modifier;
+		Psum  = modifier * (Psum /100);
+		tarmor = tarmor + Psum;
+		Nsum  = (Nsum / 100)* modifier;
+		int parmor = 0;
+        parmor = tarmor + Nsum;
+		if ( parmor >1) tarmor = tarmor + Nsum; else tarmor = 0;
+		// data table will return cl 14 if the armor is below 50  set it to 2
+        int armorLevel = 2;
+        if (tarmor >= 3){
+		 armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, tarmor );
+		}
+		else
+			// need to drive armorlevel negative for low cl pets.
+		if (tarmor < 3) {
+			if (Nsum < -300) armorLevel= -3;
+			else
+			armorLevel = 0;
+		}
+		int level = (statLevel + damageLevel + hitLevel  + armorLevel + regenerationLevel )/5;
 		return level;
 	}
+
+
 
 	// Calculate the input creature levels
 	static int levelForCreature(Creature* creature) {
 		return creature->getLevel();
 	}
+
 };
 
 }
@@ -452,3 +542,6 @@ public:
 using namespace server::zone::managers::crafting::labratories;
 
 #endif /* GENETICS_H_ */
+
+
+
