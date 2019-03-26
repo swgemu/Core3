@@ -188,7 +188,6 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	// Focus: int, dep
 	// Strength: har,dep
 	// Quickness: dex,dep
-
 	health = (hardiness * 15)    + (dexterity * 3);
 	action = (dexterity * 15)    + (intelligence * 3);
 	mind   = (intelligence * 15) + (hardiness * 3);
@@ -198,16 +197,16 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	focus = (intelligence * 15) + (dependency * 3);
 	strength = (hardiness * 15)    + (dependency * 3);
 	quickness = (dexterity * 15)    + (dependency * 3);
-	hit = 0.19 + (0.55 * ((float)cleverness/1000.0));
-	// dps of pet use to determien min and max value.
-	int dps = ceil((ceil(15.0 + (775.0 * ( ((float)power)/1000.0))))/3.5);
-	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
-	maxDam = round(((float)dps * speed) * 1.5);
-	//minDam = round(((float)dps * speed) * 0.5);
-  	// round maxDam down to the closest multiple of 5
-	maxDam = maxDam - (maxDam % 5);
-  	// subtract either 5 or 10 from maxDam to get the minDam
-	minDam = maxDam - ((System::random(1) + 1) * 5);
+	// mar /2019
+	// order of formulas wrong  , going to use live values and order
+	hit = 0.19 + ((float)cleverness/1525.0f);
+	speed = 2.5 - ((float)courage/1000.0f);
+	minDam = ((float)power * 0.8f);
+	// round up to nearest 10
+	minDam = minDam + (10 -(minDam % 10));
+	// add random 5 or 10 to max dmg
+	maxDam = minDam +((System::random(1) + 1) * 5);
+
 }
 
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
@@ -310,3 +309,5 @@ int GeneticComponentImplementation::getEffectiveArmor() {
 		return 0;
 	return fortitude/50;
 }
+
+

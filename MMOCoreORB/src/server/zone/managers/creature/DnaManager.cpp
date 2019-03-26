@@ -14,6 +14,8 @@
 #include "server/zone/managers/crafting/labratories/Genetics.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
+
+
 AtomicInteger DnaManager::loadedDnaData;
 
 DnaManager::DnaManager() : Logger("DnaManager") {
@@ -179,6 +181,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	Locker lock(creature,player);
 	CreatureTemplate* creatureTemplate = dynamic_cast<CreatureTemplate*>(creature->getCreatureTemplate());
 
+
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
 	int cle = Genetics::hitChanceToValue(creature->getChanceHit(),quality);
@@ -187,8 +190,8 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	int dex = Genetics::hamToValue(creature->getMaxHAM(3),quality);
 	int end = Genetics::accelerationToValue(creature->getWalkAcceleration(),quality);
 	int fie = Genetics::ferocityToValue(ferocity,quality);
-	int frt = Genetics::resistanceToValue(creature->getEffectiveResist(),creature->getArmor(),quality);
 	int har = Genetics::hamToValue(creature->getMaxHAM(0),quality);
+	int frt = Genetics::resistanceToValue(creature->getEffectiveResist(),creature->getArmor(),quality,har);
 	int ite = Genetics::hamToValue(creature->getMaxHAM(6),quality);
 	int pow = Genetics::damageToValue((creature->getDamageMax() + creature->getDamageMin())/2,quality);
 
@@ -285,18 +288,26 @@ int DnaManager::levelForScore(int type, float value) {
 	int rc = 0;
 	switch(type) {
 		case HIT_LEVEL:
-			for (int i=0;i<dnaHit.size();i++) {
-				float lvminus = 0, lvplus = 3;
+			for (int i=0; i<dnaHit.size(); i++) {
 
-				if (i > 0)
-					lvminus = dnaHit.get(i - 1);
+				float lvminus = 0, lvplus = 0;
 
-				if (i < (dnaHit.size() - 1))
-					lvplus = dnaHit.get(i + 1);
+				if (i > 0)	lvminus = dnaHit.get(i - 1);
+
+				if (i < (dnaHit.size() - 1)) lvplus = dnaHit.get(i + 1);
 
 				float lv = dnaHit.get(i);
+				 // return is not consistent  with the proper level for value , ok now
+				if (value == lv) {
+					rc = i;
+					break;
+				}
+				if (value < lvplus && value > lv){
+					rc = i;
+					break;
+				}
+				if (value < lvplus && value > lvminus) {
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
 					break;
 				}
@@ -379,3 +390,5 @@ int DnaManager::levelForScore(int type, float value) {
 	}
 	return rc;
 }
+
+
