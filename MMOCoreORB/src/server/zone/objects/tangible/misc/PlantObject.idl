@@ -12,9 +12,10 @@ import server.zone.objects.tangible.tasks.GrowablePlantPulseTask;
 include system.lang.ref.Reference;
 include system.lang.Time;
 
+@json
 class PlantObject extends TangibleObject {
 	public static final int PULSERATE = 21600;
-	
+
 	protected int waterLevel;
 	protected int nutrientLevel;
 	protected int idealWaterLevel;
@@ -34,7 +35,7 @@ class PlantObject extends TangibleObject {
 
 	@dereferenced
 	protected transient Reference<GrowablePlantPulseTask> pulseTask;
-	
+
 	public PlantObject() {
 		Logger.setLoggingName("PlantObject");
 
@@ -54,7 +55,7 @@ class PlantObject extends TangibleObject {
 
 		initializePlant(1);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		startPulse();
@@ -70,7 +71,7 @@ class PlantObject extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@preLocked
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
@@ -173,7 +174,7 @@ class PlantObject extends TangibleObject {
 	public void setWaterQuality(int qual) {
 		waterQuality = qual;
 	}
-	
+
 	@preLocked
 	public void setPlantHealth(int hp) {
 		health = hp;

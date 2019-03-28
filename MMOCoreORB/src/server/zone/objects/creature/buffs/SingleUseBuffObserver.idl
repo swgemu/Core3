@@ -10,14 +10,15 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.buffs.SingleUseBuff;
 
+@json
 class SingleUseBuffObserver extends Observer {
 	@weakReference
 	protected SingleUseBuff buff;
-	
+
 	public SingleUseBuffObserver(SingleUseBuff b) {
 		buff = b;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 }

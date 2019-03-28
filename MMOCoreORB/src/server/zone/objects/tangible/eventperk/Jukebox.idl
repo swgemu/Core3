@@ -12,13 +12,13 @@ import system.lang.ref.Reference;
 include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
 
-
-class Jukebox extends Terminal {	
+@json
+class Jukebox extends Terminal {
 	@weakReference
 	protected CreatureObject owner;
 
 	protected float radius;
-	
+
 	protected string curSong;
 
 	protected boolean isPlaying;

@@ -13,6 +13,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 
 @lua
+@json
 class ContractCrate extends TangibleObject {
 	protected string requiredItem;
 	protected string xpType;
@@ -22,10 +23,10 @@ class ContractCrate extends TangibleObject {
 	protected int currentAmount;
 	protected int xpAmount;
 	protected int crateDifficulty;
-	
+
 	public ContractCrate() {
 		setLoggingName("ContractCrate");
-		
+
 		requiredItem = "";
 		xpType = "";
 		itemName = "";
@@ -39,19 +40,19 @@ class ContractCrate extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject player);
-	
+
 	@dirty
-	public native int canAddObject(SceneObject object, int containmentType, string errorDescription); 
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 
 	public native int notifyObjectInserted(SceneObject object);
-	
+
 	public native int notifyObjectRemoved(SceneObject object);
-	
+
 	public native byte checkContainerPermission(CreatureObject player, unsigned short permission);
-	
+
 	@preLocked
 	public native void parseDraftSchematic(final string schematic);
-	
+
 	@preLocked
 	public void setRequiredItem(final string item) {
 		requiredItem = item;
@@ -61,37 +62,37 @@ class ContractCrate extends TangibleObject {
 	public void setAmountNeeded(int amt) {
 		amountNeeded = amt;
 	}
-	
+
 	@read
 	public int getCrateDifficulty() {
 		return crateDifficulty;
 	}
-	
+
 	@read
 	public int getAmountNeeded() {
 		return amountNeeded;
 	}
-	
+
 	@preLocked
 	public void setCrateDifficulty(int diff) {
 		crateDifficulty = diff;
 	}
-	
+
 	@preLocked
 	public void setXpType(final string type) {
 		xpType = type;
 	}
-	
+
 	@read
 	public string getXpType() {
 		return xpType;
 	}
-	
+
 	@read
 	public int getXpAmount() {
 		return xpAmount;
 	}
-	
+
 	public boolean isCompleted() {
 		return currentAmount == amountNeeded;
 	}

@@ -14,24 +14,25 @@ import server.zone.Zone;
 import server.zone.managers.planet.PlanetManager;
 include server.zone.managers.planet.PlanetTravelPoint;
 
-class TravelTerminal extends Terminal {	
+@json
+class TravelTerminal extends Terminal {
 	@local
 	private transient PlanetTravelPoint planetTravelPoint;
-	
-	public TravelTerminal() {		
+
+	public TravelTerminal() {
 		Logger.setLoggingName("TravelTerminal");
-		
+
 		planetTravelPoint == null;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("TravelTerminal");
 	}
 
 	public native void notifyInsertToZone(Zone zone);
-	
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -39,7 +40,7 @@ class TravelTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Return the planetTravelPoint for this Travel Terminal
 	 *
@@ -50,9 +51,9 @@ class TravelTerminal extends Terminal {
 	public PlanetTravelPoint getPlanetTravelPoint() {
 		if(planetTravelPoint != null)
 		    return planetTravelPoint;
-	
+
 		Zone zone = getZone();
-		
+
 		if (zone != null) {
 			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
 		}

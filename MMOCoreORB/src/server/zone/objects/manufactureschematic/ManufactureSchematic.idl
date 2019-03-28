@@ -23,6 +23,7 @@ include server.zone.objects.manufactureschematic.variables.StringIdDeltaVector;
 include server.zone.objects.manufactureschematic.variables.Uint64VectorDeltaVector;
 include server.zone.objects.manufactureschematic.variables.IntVectorDeltaVector;
 
+@json
 class ManufactureSchematic extends IntangibleObject {
 
 	protected DraftSchematic draftSchematic;

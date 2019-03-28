@@ -17,13 +17,13 @@ registerObserver(ObserverEventType::CREATUREREVIVED, new LambdaObserver(
 	return 1;
 }, "TestObserver")));
 */
-  
+
 class LambdaObserverFunction : public Object {
 	LambdaFunction<std::function<int(uint32, Observable*, ManagedObject*, uint64)> > function;
 
 public:
 	template<class L>
-	LambdaObserverFunction(L&& l, const char* name) : function(std::forward<L>(l), name) {
+	LambdaObserverFunction(L&& l, const char* name) : function(std::forward<L>(l)) {
 
 	}
 

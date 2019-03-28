@@ -13,6 +13,7 @@ import server.zone.QuadTreeEntry;
 include system.thread.atomic.AtomicInteger;
 include engine.log.Logger;
 
+@json
 class TheaterObject extends IntangibleObject {
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
@@ -30,7 +31,7 @@ class TheaterObject extends IntangibleObject {
 		despawnOnNoPlayersInRange = false;
 		shouldFlatten = false;
 	}
-	
+
 	@dirty
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange.get();
@@ -55,7 +56,7 @@ class TheaterObject extends IntangibleObject {
 	public void setShouldFlatten(boolean b) {
 		shouldFlatten = b;
 	}
-	
+
 	public void notifyInsert(QuadTreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 

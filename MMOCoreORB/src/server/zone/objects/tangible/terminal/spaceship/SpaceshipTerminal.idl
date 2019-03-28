@@ -8,10 +8,11 @@ package server.zone.objects.tangible.terminal.spaceship;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class SpaceshipTerminal extends Terminal {
 	public SpaceshipTerminal() {
 		Logger.setLoggingName("SpaceshipTerminal");
 	}
-	
+
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 }

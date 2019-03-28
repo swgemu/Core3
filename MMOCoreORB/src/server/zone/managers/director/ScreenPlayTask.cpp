@@ -22,4 +22,6 @@ void ScreenPlayTask::run() {
 	} else {
 		DirectorManager::instance()->activateEvent(this);
 	}
+
+	setTaskName(String("ScreenPlayTask " + screenPlay + ":" + taskKey + ":" + args).toCharArray());
 }

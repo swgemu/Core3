@@ -13,6 +13,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include system.util.VectorMap;
 
 @lua
+@json
 class CustomIngredient extends TangibleObject {
 	@dereferenced
 	protected VectorMap<string, int> objectAttributes;
@@ -21,7 +22,7 @@ class CustomIngredient extends TangibleObject {
 	public CustomIngredient() {
 		objectAttributes.setAllowOverwriteInsertPlan();
 		setLoggingName("CustomIngredient");
-		
+
 		isBaseIngredient = false;
 	}
 
@@ -33,7 +34,7 @@ class CustomIngredient extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -46,7 +47,7 @@ class CustomIngredient extends TangibleObject {
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	public native void addAttribute(final string attribute, int value);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 

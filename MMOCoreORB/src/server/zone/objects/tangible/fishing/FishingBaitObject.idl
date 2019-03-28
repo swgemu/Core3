@@ -9,38 +9,38 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.packets.scene.AttributeListMessage;
 
-
-class FishingBaitObject extends TangibleObject {	
+@json
+class FishingBaitObject extends TangibleObject {
 	protected int freshness;
-	
+
 	public FishingBaitObject() {
 		Logger.setLoggingName("FishingBaitObject");
 		freshness = 0;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("FishingBaitObject");
 	}
-	
+
 	@read
 	public int getFreshness() {
 		return freshness;
 	}
-	
+
 	public void setFreshness(int value) {
 		if ((value > -1) && (value < 10)) // 10 being a reasonable upper bound since that would never be usable in fishing
 			freshness = value;
 	}
-	
+
 	public void lessFresh() {
 		freshness += 1;
 	}
-	
+
 	@dirty
 	public native int getUseCount();
-	
+
 	@dirty
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);

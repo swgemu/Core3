@@ -577,7 +577,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 				VectorMap<ManagedReference<CreatureObject*>, int>* winnings = terminal->getWinnings();
 
-				Vector<GamblingBet*>* bets = terminal->getBets();
+				auto bets = terminal->getBets();
 
 				int tempReward;
 				String tempTarget;

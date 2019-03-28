@@ -9,33 +9,34 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 
-class FishObject extends TangibleObject {	
-		
+@json
+class FishObject extends TangibleObject {
+
 	protected string player;
 	protected string zoneName;
 	protected string timeCaught;
 	protected float length;
-	
+
 	public FishObject() {
 		Logger.setLoggingName("FishObject");
-		
+
 		length = 0.0;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("FishObject");
 	}
-	
-	
+
+
 	public void setAttributes(final string playerName, final string terrainN, string timestamp, float fishLength) {
 		player = playerName;
 		zoneName = terrainN;
 		timeCaught = timestamp;
 		length = fishLength;
 	}
-	
+
 	/**
 	 * Fills the radial options
 	 * @pre { this object is locked }
@@ -44,8 +45,8 @@ class FishObject extends TangibleObject {
 	 */
 	@dirty
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player); 
-	
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
 	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
@@ -53,11 +54,11 @@ class FishObject extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-		
+
 	@dirty
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	/**
 	 * Filet a fish
 	 * Takes objects in the Container and sends them to the player invenvotry
@@ -66,5 +67,5 @@ class FishObject extends TangibleObject {
 	 * @param player The player to whom to send the items
 	 */
 	public native void filet(CreatureObject player);
-	 
+
 }

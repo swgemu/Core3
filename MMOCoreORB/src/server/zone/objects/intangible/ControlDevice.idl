@@ -10,6 +10,7 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 
 @lua
+@json
 class ControlDevice extends IntangibleObject {
 	@weakReference
 	protected TangibleObject controlledObject;

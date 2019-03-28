@@ -35,7 +35,9 @@ public:
 			return GENERALERROR;
 
 		if (creature->isAiAgent()) {
-			if (creature->isInCombat()) {
+			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
+				creature->queueDizzyFallEvent();
+			} else if (creature->isInCombat()) {
 				creature->setPosture(CreaturePosture::UPRIGHT, false, true);
 				creature->doCombatAnimation(STRING_HASHCODE("change_posture"));
 			} else {

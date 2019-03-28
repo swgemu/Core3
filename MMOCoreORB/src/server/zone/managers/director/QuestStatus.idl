@@ -7,27 +7,28 @@ package server.zone.managers.director;
 import engine.core.ManagedObject;
 import system.lang.String;
 
+@json
 class QuestStatus extends ManagedObject {
 	protected string key;
 	protected string status;
-	
+
 	public QuestStatus() {
 		key = "";
 		status = "";
 	}
-	
+
 	public string getKey() {
 		return key;
 	}
-	
+
 	public void setKey(final string k) {
 		key = k;
 	}
-	
+
 	public string getStatus() {
 		return status;
 	}
-	
+
 	public void setStatus(final string s) {
 		status = s;
 	}

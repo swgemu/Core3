@@ -351,13 +351,13 @@ void PlayerManagerImplementation::loadNameMap() {
 	info("loading character names");
 
 	try {
-		String query = "SELECT * FROM characters where character_oid > 16777216 and galaxy_id = " + String::valueOf(server->getGalaxyID()) + " order by character_oid asc";
+		String query = "SELECT character_oid, firstname FROM characters where character_oid > 16777216 and galaxy_id = " + String::valueOf(server->getGalaxyID()) + " order by character_oid asc";
 
 		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
-			String firstName = res->getString(3);
+			String firstName = res->getString(1);
 
 			if (!nameMap->put(firstName.toLowerCase(), oid)) {
 				error("error coliding name:" + firstName.toLowerCase());
@@ -5270,22 +5270,29 @@ void PlayerManagerImplementation::sendAdminFRSList(CreatureObject* player) {
 }
 
 VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
+	static Mutex guard; //only one thread cann run this
+
+	Locker locker(&guard);
+
 	VectorMap<String, int> players;
 
 	HashTable<String, uint64> names = nameMap->getNames();
 	HashTableIterator<String, uint64> iter = names.iterator();
 
 	auto objectManager = server->getObjectManager();
+	auto taskManager = Core::getTaskManager();
 
-	constexpr int objectsPerTask = 100;
+	constexpr const int objectsPerTask = 500;
 
-	SynchronizedVectorMap<String, int> sharedMap;
-	AtomicInteger totalObjects = names.size();
+	static SynchronizedVectorMap<String, int> sharedMap;
+	static AtomicInteger totalObjects;
 
-	int count = 0;
-	static int startThreads = [] () mutable { Core::getTaskManager()->initializeCustomQueue("AdminListThreads", 10); return 10; } (); //only once
+	totalObjects = names.size();
 
 	Vector<VectorMapEntry<String, uint64>> currentObjects;
+
+	int count = 0;
+	static TaskQueue* customQueue = [taskManager] () { return taskManager->initializeCustomQueue("AdminListThreads", 10); } (); //only once
 
 	while (iter.hasNext()) {
 		uint64 oid;
@@ -5296,40 +5303,45 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 		currentObjects.emplace(std::move(playerName), std::move(oid));
 
 		if (currentObjects.size() >= objectsPerTask || count >= names.size()) {
-			Core::getTaskManager()->executeTask([currentObjects, &totalObjects, objectManager, &sharedMap]() {
-						for (const auto& obj : currentObjects) {
+			taskManager->executeTask([currentObjects, objectManager]() {
+				for (const auto& obj : currentObjects) {
+					try {
+						VectorMap<String, uint64> slottedObjects;
+						int state = 0;
+
+						objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, obj.getValue());
+
+						uint64 ghostId = slottedObjects.get("ghost");
+
+						if (ghostId == 0) {
 							totalObjects.decrement();
-
-							VectorMap<String, uint64> slottedObjects;
-							int state = 0;
-
-							objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, obj.getValue());
-
-							uint64 ghostId = slottedObjects.get("ghost");
-
-							if (ghostId == 0) {
-								continue;
-							}
-
-							objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
-
-							if (state != 0) {
-								sharedMap.put(obj.getKey(), state);
-							}
+							continue;
 						}
 
-					}, "GetAdminPlayerObjectTask", "AdminListThreads");
+						objectManager->getPersistentObjectsSerializedVariable<int>(STRING_HASHCODE("PlayerObject.adminLevel"), &state, ghostId);
 
-			currentObjects.removeAll(100, 50);
+						if (state != 0) {
+							sharedMap.put(obj.getKey(), state);
+						}
+					} catch (...) {
+						Logger::console.error("unreported exception caught in GetAdminPlayerObjectTask");
+					}
+
+					totalObjects.decrement();
+				}
+
+			}, "GetAdminPlayerObjectTask", "AdminListThreads");
+
+			currentObjects.removeAll(objectsPerTask, 50);
 		}
-
 	}
 
-	while (totalObjects > 0) {
-		Thread::sleep(100);
-	}
+	taskManager->waitForQueueToFinish("AdminListThreads");
 
 	players = sharedMap.getMapUnsafe();
+
+	sharedMap.removeAll();
+	totalObjects = 0;
 
 	return players;
 }

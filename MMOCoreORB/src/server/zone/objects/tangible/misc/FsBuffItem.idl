@@ -15,12 +15,13 @@ include templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 
 @lua
+@json
 class FsBuffItem extends TangibleObject {
 	protected unsigned int reuseTime;
 	protected int buffAttribute;
 	protected int buffValue;
 	protected unsigned int buffDuration;
-	
+
 	public FsBuffItem() {
 		setLoggingName("FsBuffItem");
 

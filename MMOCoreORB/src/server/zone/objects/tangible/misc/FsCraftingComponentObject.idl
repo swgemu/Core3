@@ -9,12 +9,13 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
 @lua
+@json
 class FsCraftingComponentObject extends TangibleObject {
 	protected int status;
 
 	public FsCraftingComponentObject() {
 		setLoggingName("FsCraftingComponentObject");
-		
+
 		status = 0;
 	}
 

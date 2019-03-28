@@ -14,23 +14,24 @@ include server.zone.managers.auction.TerminalListVector;
 include server.zone.managers.auction.CommoditiesLimit;
 include engine.log.Logger;
 
+@json
 class AuctionsMap extends ManagedObject {
-	
+
 	@dereferenced
 	protected transient AuctionTerminalMap vendorItemsForSale;
-	
+
 	@dereferenced
 	protected transient AuctionTerminalMap bazaarItemsForSale;
 
 	@dereferenced
 	protected transient VectorMap<unsigned long, AuctionItem> allItems;
-	
+
 	@dereferenced
 	CommoditiesLimit commoditiesLimit;
-	
+
 	@dereferenced
 	protected transient Logger logger;
-	
+
 	public AuctionsMap() {
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
@@ -50,11 +51,11 @@ class AuctionsMap extends ManagedObject {
 	private native void removeVendorItem(SceneObject vendor, AuctionItem item);
 	private native void removeBazaarItem(SceneObject vendor, AuctionItem item);
 
-	
+
 	public synchronized AuctionItem getItem(unsigned long id) {
 		return allItems.get(id);
 	}
-	
+
 	public synchronized boolean containsItem(unsigned long id) {
 		return allItems.contains(id);
 	}
@@ -62,7 +63,7 @@ class AuctionsMap extends ManagedObject {
 	@local
 	@dereferenced
 	public native TerminalListVector getVendorTerminalData(final string planet, final string region, SceneObject vendor);
-	
+
 	@local
 	@dereferenced
 	public native TerminalListVector getBazaarTerminalData(final string planet, final string region, SceneObject vendor);
@@ -70,27 +71,27 @@ class AuctionsMap extends ManagedObject {
 	public native int getPlayerItemCount(CreatureObject player);
 
 	public native int getVendorItemCount(SceneObject vendor, boolean forSaleOnly = false);
-	
+
 	public native void deleteTerminalItems(SceneObject vendor);
-	
+
 	public native int getCommodityCount(CreatureObject player);
-	
+
 	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);
 
 	public native void updateVendorSearch(SceneObject vendor, boolean enabled);
 
 	public native void addToCommodityLimit(AuctionItem item);
-	
+
 	public native void removeFromCommodityLimit(AuctionItem item);
-	
+
 	public synchronized int getBazaarCount() {
 		return bazaarItemsForSale.size();
 	}
-	
+
 	public int getVendorCount() {
 		return vendorItemsForSale.size();
 	}
-	
+
 	public int getTotalItemCount() {
 		return allItems.size();
 	}

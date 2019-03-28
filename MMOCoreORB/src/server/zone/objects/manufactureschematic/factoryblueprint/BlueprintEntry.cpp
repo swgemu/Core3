@@ -203,3 +203,14 @@ void BlueprintEntry::print() {
 
 	System::out << "*******************" << endl;
 }
+
+void to_json(nlohmann::json& j, const BlueprintEntry& entry) {
+	j["type"] = entry.type;
+	j["key"] = entry.key;
+	j["displayedName"] = entry.displayedName;
+	j["serialNumber"] = entry.serialNumber;
+	j["identical"] = entry.identical;
+	j["quantity"] = entry.quantity;
+	j["inputHopper"] = entry.inputHopper;
+	j["matchingHoppperItems"] = entry.matchingHopperItems;
+}

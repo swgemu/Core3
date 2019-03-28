@@ -25,7 +25,7 @@ namespace server {
     protected:
     	WeakReference<server::zone::objects::scene::SceneObject*> sceneObject;
 
-    	const char* taskName;
+    	String taskName;
     public:
     	OrderedTaskExecutioner(SceneObject* sceneObject);
 

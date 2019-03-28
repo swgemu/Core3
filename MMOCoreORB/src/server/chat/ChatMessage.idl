@@ -6,17 +6,18 @@ package server.chat;
 
 import engine.core.ManagedObject;
 
+@json
 class ChatMessage extends ManagedObject {
 	protected string message;
-	
+
 	public ChatMessage() {
 		message = "";
 	}
-	
+
 	public void setString(final string msg) {
 		message = msg;
 	}
-	
+
 	public string toString() {
 		return message;
 	}

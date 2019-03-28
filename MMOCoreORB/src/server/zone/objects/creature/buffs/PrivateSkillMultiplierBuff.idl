@@ -9,11 +9,12 @@ import server.zone.objects.creature.CreatureObject;
 
 // A private buff will only be appropriate if it only contains private_ skillmods and does not need
 // to be sent (or can't be sent) to the player.
+@json
 class PrivateSkillMultiplierBuff extends PrivateBuff {
 	public PrivateSkillMultiplierBuff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype) {
 		super(creo, buffcrc, duration, bufftype);
 	}
-	
+
 	public native void applySkillModifiers();
 	public native void removeSkillModifiers();
 }

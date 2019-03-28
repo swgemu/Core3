@@ -7,6 +7,7 @@ package server.zone.objects.tangible.eventperk;
 import server.zone.objects.tangible.Container;
 import system.util.Vector;
 
+@json
 class ScavengerChest extends Container {
 	@dereferenced
 	protected Vector<unsigned long> lootedList;

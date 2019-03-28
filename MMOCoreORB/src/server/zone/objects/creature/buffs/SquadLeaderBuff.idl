@@ -14,6 +14,7 @@ include server.zone.objects.creature.buffs.BuffType;
 include templates.params.ObserverEventType;
 include server.zone.objects.scene.SceneObjectType;
 
+@json
 class SquadLeaderBuff extends Buff {
 	protected SquadLeaderBuffObserver playerObserver;
 	protected SquadLeaderBuffObserver leaderObserver;

@@ -6,6 +6,7 @@ package server.zone.objects.building.travel;
 
 import server.zone.objects.building.BuildingObject;
 
+@json
 class TravelBuildingObject extends BuildingObject {
 
 	public TravelBuildingObject() {

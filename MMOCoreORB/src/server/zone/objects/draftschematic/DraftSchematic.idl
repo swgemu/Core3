@@ -14,6 +14,7 @@ include templates.crafting.resourceweight.ResourceWeight;
 include templates.SharedObjectTemplate;
 import server.zone.objects.creature.CreatureObject;
 
+@json
 class DraftSchematic extends IntangibleObject {
 
 	/// Name of schematic group this belongs to

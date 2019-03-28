@@ -9,6 +9,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.DestroyMissionObjective;
 
+@json
 class MissionSpawnActiveArea extends ActiveArea {
 	@weakReference
 	protected DestroyMissionObjective destroyMissionObjective;
@@ -26,7 +27,7 @@ class MissionSpawnActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
-			DestroyMissionObjective objective = destroyMissionObjective; 
+			DestroyMissionObjective objective = destroyMissionObjective;
 
 			if (objective != null) {
 				//Logger.info("objective not null", true);

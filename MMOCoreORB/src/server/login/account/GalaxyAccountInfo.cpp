@@ -1,5 +1,7 @@
 #include "server/login/account/GalaxyAccountInfo.h"
 
+#include "engine/util/json_utils.h"
+
 GalaxyAccountInfo::GalaxyAccountInfo() {
 
 }
@@ -7,7 +9,7 @@ GalaxyAccountInfo::GalaxyAccountInfo() {
 void GalaxyAccountInfo::updateVetRewardsFromPlayer(const VectorMap<unsigned int, String>& newRewards) {
 
 	if (chosenVeteranRewards.size() == 0) {
-		
+
 		for (const auto& element : newRewards) {
 			chosenVeteranRewards.put(element.getKey(), element.getValue());
 		}
@@ -45,3 +47,9 @@ bool GalaxyAccountInfo::parseFromBinaryStream(ObjectInputStream* stream) {
 bool GalaxyAccountInfo::toBinaryStream(ObjectOutputStream* stream) {
 	return chosenVeteranRewards.toBinaryStream(stream);
 }
+
+void to_json(nlohmann::json& j, const GalaxyAccountInfo& p) {
+	j["chosenVeteranRewards"] = p.chosenVeteranRewards.getMapUnsafe();
+}
+
+

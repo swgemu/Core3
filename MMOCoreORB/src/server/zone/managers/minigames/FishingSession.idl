@@ -10,16 +10,17 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.minigames.events.FishingEvent;
 
+@json
 class FishingSession extends Facade {
-	protected transient FishingEvent event; 
+	protected transient FishingEvent event;
 	protected SceneObject marker;
-	
+
 	protected int nextAction;
 	protected int fish;
 	protected unsigned int  boxID;
 	protected int fishingState;
 	protected string mood;
-	
+
 	public FishingSession(FishingEvent event, SceneObject marker, int nextAction, int fish, unsigned int boxID, int fishingState, final string mood) {
 		setEvent(event);
 		setMarker(marker);
@@ -34,7 +35,7 @@ class FishingSession extends Facade {
 	public void setEvent(FishingEvent ev) {
 		event = ev;
 	}
-	
+
 	public void setMood(final string m) {
 		mood = m;
 	}

@@ -11,6 +11,7 @@ include server.zone.objects.creature.buffs.BuffType;
 include server.zone.objects.creature.buffs.BuffCRC;
 include templates.params.ObserverEventType;
 
+@json
 class SpiceDownerBuff extends Buff {
 	public SpiceDownerBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
 		super(creo, buffCRC, duration, BuffType.SPICE);

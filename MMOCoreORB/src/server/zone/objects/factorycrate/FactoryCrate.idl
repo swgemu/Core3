@@ -12,6 +12,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 include templates.SharedObjectTemplate;
 import server.zone.objects.scene.variables.ContainerPermissions;
 
+@json
 class FactoryCrate extends TangibleObject {
 
 	protected int maxCapacity;

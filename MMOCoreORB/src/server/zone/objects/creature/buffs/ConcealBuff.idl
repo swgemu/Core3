@@ -8,6 +8,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 
+@json
 class ConcealBuff extends Buff {
 	@weakReference
 	protected CreatureObject buffGiver;

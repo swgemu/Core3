@@ -56,7 +56,7 @@ registerObserver(ObserverEventType::CREATUREREVIVED, new LambdaObserver(
 
 	public:
 		template<class L>
-		LambdaSuiCallback(L&& l, ZoneServer* zserver, const char* name) : SuiCallback(zserver), function(std::forward<L>(l), name) {
+		LambdaSuiCallback(L&& l, ZoneServer* zserver, const char* name) : SuiCallback(zserver), function(std::forward<L>(l)) {
 
 		}
 

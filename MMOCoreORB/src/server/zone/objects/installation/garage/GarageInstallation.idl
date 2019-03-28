@@ -6,6 +6,7 @@ package server.zone.objects.installation.garage;
 
 import server.zone.objects.installation.InstallationObject;
 
+@json
 class GarageInstallation extends InstallationObject {
 
 	public GarageInstallation() {

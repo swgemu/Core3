@@ -8,6 +8,7 @@ import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.CreatureObject;
 
 // This buff is intended for mounts and vehicles. It's start and end messages are sent to it's rider
+@json
 class PlayerVehicleBuff extends Buff {
 	public PlayerVehicleBuff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype) {
 		super(creo, buffcrc, duration, bufftype);
@@ -16,9 +17,9 @@ class PlayerVehicleBuff extends Buff {
 	public native abstract void applyAllModifiers();
 
 	public native abstract void removeAllModifiers();
-	
+
 	public native abstract void activate(boolean applyModifiers);
-	
+
 	public native abstract void deactivate(boolean removeModifiers);
 	public native void updateRiderSpeeds();
 }

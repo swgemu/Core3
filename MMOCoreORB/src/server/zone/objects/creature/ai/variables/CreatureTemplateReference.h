@@ -13,6 +13,9 @@
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 
 class CreatureTemplateReference : public Reference<CreatureTemplate*> {
+#ifdef ODB_SERIALIZATION
+	String templateString;
+#endif
 public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);

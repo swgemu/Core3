@@ -8,6 +8,7 @@ import engine.core.ManagedObject;
 include server.zone.objects.scene.SceneObject;
 import server.zone.managers.director.ScreenPlayTask;
 
+@json
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
 	protected unsigned long miliDiff;
@@ -17,9 +18,9 @@ class PersistentEvent extends ManagedObject {
 	protected string args;
 	protected string eventName;
 	protected boolean eventExecuted;
-	
+
 	@weakReference
-	protected ScreenPlayTask screenplayTask;
+	transient protected ScreenPlayTask screenplayTask;
 
 	@weakReference
 	protected SceneObject obj;
@@ -30,7 +31,7 @@ class PersistentEvent extends ManagedObject {
 		miliDiff = 0;
 		curTime = 0;
 	}
-	
+
 	@local
 	public void setScreenplayTask(ScreenPlayTask task) {
 		screenplayTask = task;

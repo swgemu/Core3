@@ -43,6 +43,8 @@ public:
 	void addSerializableVariables();
 
 	void print();
+
+	friend void to_json(nlohmann::json& j, const FactoryBlueprint& p);
 };
 
 #endif /* FACTORYBLUEPRINT_H_ */

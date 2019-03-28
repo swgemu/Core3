@@ -624,21 +624,24 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 		if (creatureManager != nullptr) {
 			auto worldAreas = creatureManager->getWorldSpawnAreas();
 
-			if (worldAreas != nullptr) {
-				for (int i = 0; i < worldAreas->size(); ++i) {
-					ActiveArea* activeArea = worldAreas->get(i).get();
-					Locker lockerO(tano);
+			if (worldAreas != nullptr && worldAreas->size()) {
+				Reference<TangibleObject*> tanoStrong = tano;
 
-					//			Locker locker(activeArea, object);
+				Core::getTaskManager()->executeTask([worldAreas, tanoStrong] () {
+					Locker lockerO(tanoStrong);
 
-					if (!tano->hasActiveArea(activeArea)) {
-						tano->addActiveArea(activeArea);
-						//activeArea->enqueueEnterEvent(object);
-						activeArea->notifyEnter(tano);
-					} else {
-						activeArea->notifyPositionUpdate(tano);
+					for (int i = 0; i < worldAreas->size(); ++i) {
+						auto activeArea = worldAreas->get(i);
+
+						if (!tanoStrong->hasActiveArea(activeArea)) {
+							tanoStrong->addActiveArea(activeArea);
+							//activeArea->enqueueEnterEvent(object);
+							activeArea->notifyEnter(tanoStrong);
+						} else {
+							activeArea->notifyPositionUpdate(tanoStrong);
+						}
 					}
-				}
+				}, "UpdateWorldActiveAreas");
 			}
 		}
 	} catch (...) {
