@@ -114,7 +114,9 @@ public:
 
 		float newpercentage;
 
-		if (maxValue > minValue)
+		if (maxValue == minValue) {
+			newpercentage = (value - minValue);
+		} if (maxValue > minValue)
 			newpercentage = (value - minValue) / (maxValue - minValue);
 		else
 			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));

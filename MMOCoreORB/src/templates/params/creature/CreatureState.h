@@ -76,7 +76,7 @@ public:
 			row->getValue(1, value);
 
 			if (value >= 0)
-				states.put(name.toLowerCase(), 1 << value);
+				states.put(name.toLowerCase(), 1ull << value);
 			else
 				states.put(name.toLowerCase(), 0x00);
 		}

@@ -111,7 +111,7 @@ void ContainerObjectsMap::loadObjects() {
 				return;
 
 			sceno->onContainerLoaded();
-		}, name.toCharArray());
+		}, name.toCharArray(), "slowQueue");
 	}
 }
 
@@ -182,7 +182,9 @@ void ContainerObjectsMap::notifyLoadFromDatabase() {
 }
 
 bool ContainerObjectsMap::toBinaryStream(ObjectOutputStream* stream) {
+#ifndef ODB_SERIALIZATION
 	Locker locker(containerLock);
+#endif
 
 	if (oids != NULL)
 		return oids->toBinaryStream(stream);

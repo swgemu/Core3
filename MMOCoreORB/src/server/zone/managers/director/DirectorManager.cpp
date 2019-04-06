@@ -1133,7 +1133,7 @@ int DirectorManager::createEventActualTime(lua_State* L) {
 	String key = lua_tostring(L, -1);
 	String play = lua_tostring(L, -2);
 	uint32 timeInMinutes = lua_tonumber(L, -3);
-	ManagedReference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play, "");
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play, "");
 	Time actualTime = Time(timeInMinutes);
 	Time now;
 	uint64 days=now.getMiliTime()/(24*60*60000);

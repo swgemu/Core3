@@ -14,7 +14,7 @@
 
 class SelectWaypointSuiCallback : public SuiCallback, public Logger {
 
-	ManagedReference<DroidMerchantModuleDataComponent*> module;
+	Reference<DroidMerchantModuleDataComponent*> module;
 	int slotIndex;
 
 public:
