@@ -70,7 +70,7 @@ public:
 		if (planetManager == NULL)
 			return GENERALERROR;
 
-		ManagedReference<TerrainManager*> terrainManager = planetManager->getTerrainManager();
+		TerrainManager* terrainManager = planetManager->getTerrainManager();
 
 		if (terrainManager == NULL)
 			return GENERALERROR;

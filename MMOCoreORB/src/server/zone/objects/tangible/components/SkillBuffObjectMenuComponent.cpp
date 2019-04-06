@@ -41,7 +41,7 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
-	ManagedReference<SkillBuffTemplate*> skillBuff = cast<SkillBuffTemplate*>(sceneObject->getObjectTemplate());
+	Reference<SkillBuffTemplate*> skillBuff = cast<SkillBuffTemplate*>(sceneObject->getObjectTemplate());
 	if (skillBuff == NULL) {
 		error("No SkillBuffTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return 1;

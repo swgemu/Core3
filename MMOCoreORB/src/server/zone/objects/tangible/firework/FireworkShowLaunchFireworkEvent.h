@@ -31,7 +31,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<FireworkShowDataComponent*> fireworkShowData = this->fireworkShowData.get();
+		Reference<FireworkShowDataComponent*> fireworkShowData = this->fireworkShowData.get();
 		ManagedReference<CreatureObject*> player = this->player.get();
 		ManagedReference<StaticObject*> worldFireworkShow = this->worldFireworkShow.get();
 		ManagedReference<FireworkObject*> fireworkShow = this->fireworkShow.get();

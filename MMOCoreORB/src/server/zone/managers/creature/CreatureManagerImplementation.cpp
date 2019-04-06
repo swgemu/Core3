@@ -1056,7 +1056,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		agent->activateLoad("wait");
 	}
 
-	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
+	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
 
 	player->addPendingTask("tame_pet", task, 10000);
 }
@@ -1081,7 +1081,7 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 
 	creature->setMilkState(BEINGMILKED);
 
-	ManagedReference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);
+	Reference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);
 
 	task->schedule(10000);
 }
@@ -1114,7 +1114,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 
 	Locker clocker(creature);
 
-	ManagedReference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
+	Reference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
 	player->addPendingTask("sampledna",task,0);
 
 }

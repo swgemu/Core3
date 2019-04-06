@@ -2458,7 +2458,7 @@ void PlayerObjectImplementation::activateQuest(int questID) {
 	if (playerManager == nullptr)
 		return;
 
-	ManagedReference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
+	Reference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
 
 	if (questInfo == nullptr)
 		return;
@@ -2497,7 +2497,7 @@ void PlayerObjectImplementation::completeQuest(int questID) {
 	if (playerManager == nullptr)
 		return;
 
-	ManagedReference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
+	Reference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
 
 	if (questInfo == nullptr)
 		return;
