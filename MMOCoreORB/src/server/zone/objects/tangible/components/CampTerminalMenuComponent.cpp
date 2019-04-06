@@ -242,7 +242,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 
 	if(area == NULL) {
 
-		ManagedReference<StructureManager*> structureManager = StructureManager::instance();
+		Reference<StructureManager*> structureManager = StructureManager::instance();
 		if (structureManager == NULL) {
 			error("Unable to get StructureManager in CampTerminalMenuComponent::showCampStatus");
 			return;

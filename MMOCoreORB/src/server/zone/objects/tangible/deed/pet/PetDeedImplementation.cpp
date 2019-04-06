@@ -122,7 +122,7 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 		alm->insertAttribute("spec_atk_2", "---");
 
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 	bool allowRanged = false;
 	if (petTemplate != NULL) {
 		if (petTemplate->getWeapons().size() > 0) {
@@ -189,7 +189,7 @@ CreatureAttackMap* PetDeedImplementation::getAttacks() {
 
 String PetDeedImplementation::getTemplateName() {
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 	if (petTemplate == NULL) {
 		return "";
 	}
@@ -287,7 +287,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		}
 	}
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 	if (petTemplate != NULL) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
@@ -333,7 +333,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		Locker clocker(_this.getReferenceUnsafeStaticCast());
 
-		ManagedReference<SampleDeedTask*> task = new SampleDeedTask(_this.getReferenceUnsafeStaticCast(), player);
+		Reference<SampleDeedTask*> task = new SampleDeedTask(_this.getReferenceUnsafeStaticCast(), player);
 		player->addPendingTask("sampledeed",task,0);
 		return 0;
 	}
@@ -412,7 +412,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		}
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-		ManagedReference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+		Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 
 		if (petTemplate == NULL) {
 			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );

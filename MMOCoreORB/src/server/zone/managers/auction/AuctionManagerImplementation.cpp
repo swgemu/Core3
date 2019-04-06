@@ -165,7 +165,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	for (int i = 0; i < items->size(); ++i) {
-		Reference<TerminalItemList*> list = items->get(i);
+		Reference<TerminalItemList*>& list = items->get(i);
 		if (list == NULL)
 			continue;
 

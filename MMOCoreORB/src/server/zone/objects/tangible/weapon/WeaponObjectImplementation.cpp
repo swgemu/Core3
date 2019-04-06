@@ -227,7 +227,7 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		alm->insertAttribute("count", usesRemaining);*/
 
 	for(int i = 0; i < wearableSkillMods.size(); ++i) {
-		String key = wearableSkillMods.elementAt(i).getKey();
+		const String& key = wearableSkillMods.elementAt(i).getKey();
 		String statname = "cat_skill_mod_bonus.@stat_n:" + key;
 		int value = wearableSkillMods.get(key);
 

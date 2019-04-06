@@ -725,7 +725,7 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 
 	ObjectInputStream objectData(500);
 
-	if (database->getData(objectID, &objectData)) {
+	if (database->getData(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, false, true)) {
 		return NULL;
 	}
 
