@@ -110,7 +110,7 @@ void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* ite
 
 void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-		
+
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
 	if(vendorItems == NULL)
@@ -126,7 +126,7 @@ void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionIte
 
 void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-		
+
 	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.get(vendor->getObjectID());
 
 	if(bazaarItems == NULL)
@@ -141,13 +141,13 @@ void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIt
 
 TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
 int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
@@ -170,7 +170,7 @@ int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor, bool forSaleOnly) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	if(vendor == NULL) {
 		logger.error("null vendor in AuctionsMapImplementation::getVendorItemCount");
 		return 0;
@@ -228,14 +228,15 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 				allItems.drop(oid);
 				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
 
-				ManagedReference<SceneObject*> sceno = zserv->getObject(oid);
+				Core::getTaskManager()->executeTask([zserv, oid] () {
+					ManagedReference<SceneObject*> sceno = zserv->getObject(oid);
 
-				if (sceno != NULL) {
-					Core::getTaskManager()->executeTask([=] () {
+					if (sceno != nullptr) {
 						Locker locker(sceno);
+
 						sceno->destroyObjectFromDatabase(true);
-					}, "DeleteTerminalItemLambda");
-				}
+					}
+				}, "DeleteTerminalItemLambda", "slowQueue");
 			}
 		}
 	}
@@ -245,7 +246,7 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	if (vendor == NULL) {
 		logger.error("NULL vendor while updating UID");
 		return;
@@ -273,7 +274,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 
 void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	if (vendor == NULL)
 		return;
 
