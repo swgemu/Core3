@@ -158,11 +158,14 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	dataObjectComponent = ComponentManager::instance()->getDataObjectComponent(templateData->getDataObjectComponent());
 
-
 	if (!isCreatureObject() && !isLairObject() && gameObjectType != SceneObjectType::FURNITURE) {
 		if (templateData->getCollisionMaterialFlags() && templateData->getCollisionMaterialBlockFlags() && templateData->isNavUpdatesEnabled()) {
 			collidableObject = true;
 		}
+	}
+
+	if (templateObject->getDelayedContainerLoad()) {
+		containerObjects.setDelayedLoadOperationMode();
 	}
 }
 
