@@ -669,3 +669,5 @@ includeFile("record_keepers/record_keepers.lua")
 --Tests
 includeFile("tests/tests.lua")
 
+-- Server Event Automation
+includeFile("events/ServerEventAutomation.lua")
