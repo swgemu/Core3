@@ -1677,6 +1677,8 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 				cooldownTimerMap->updateToCurrentAndAddMili("weatherEvent", 3000);
 			}
 		}
+
+		miliSecsPlayed += latency;
 	}
 
 	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
@@ -2699,4 +2701,37 @@ void PlayerObjectImplementation::recalculateForcePower() {
 	maxForce += (forcePowerMod + forceControlMod) * 10;
 
 	setForcePowerMax(maxForce, true);
+}
+
+String PlayerObjectImplementation::getPlayedTimeString() {
+	uint64 ss = miliSecsPlayed / 1000;
+
+	int dd = ss / 86400;
+	ss = ss - (dd * 86400);
+
+	int hh = ss / 3600;
+	ss = ss - (hh * 3600);
+
+	int mm = ss / 60;
+	ss = ss - (mm * 60);
+
+	StringBuffer buf;
+
+	buf << "You have played this character a total of";
+
+	if (dd > 0) {
+		buf << " " << dd << (dd == 1 ? " day," : " days,");
+	}
+
+	if (dd > 0 || hh > 0) {
+		buf << " " << hh << (hh == 1 ? " hour," : " hours,");
+	}
+
+	if (dd > 0 || hh > 0 || mm > 0) {
+		buf << " " << mm << (mm == 1 ? " minute," : " minutes,");
+	}
+
+	buf << " " << ss << (ss == 1 ? " second." : " seconds.");
+
+	return buf.toString();
 }

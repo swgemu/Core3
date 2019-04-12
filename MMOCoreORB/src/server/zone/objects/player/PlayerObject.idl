@@ -274,6 +274,8 @@ class PlayerObject extends IntangibleObject {
 	@rawTemplate(value = "uint32, PlayerQuestData")
 	protected DeltaVectorMap playerQuestsData;
 
+	protected unsigned long miliSecsPlayed;
+
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -374,7 +376,9 @@ class PlayerObject extends IntangibleObject {
 
 		lastPvpRatingUpdate.updateToCurrentTime();
 
-                tosVersionAccepted = 0;
+		tosVersionAccepted = 0;
+
+		miliSecsPlayed = 0;
 
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1874,4 +1878,12 @@ class PlayerObject extends IntangibleObject {
 	public void setCloning(boolean val) {
 		isPlayerCloning = val;
 	}
+
+	@read
+	public unsigned long getPlayedMiliSecs() {
+		return miliSecsPlayed;
+	}
+
+	@dirty
+	public native string getPlayedTimeString();
 }
