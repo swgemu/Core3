@@ -149,6 +149,10 @@ namespace conf {
 			return pvpMode;
 		}
 
+		inline void setPvpMode(bool val) {
+			pvpMode = val;
+		}
+
 		inline const String& getORBNamingDirectoryAddress() const {
 			return orbNamingDirectoryAddress;
 		}

@@ -496,8 +496,10 @@ void ServerCore::handleCommands() {
 				ObjectManager::instance()->createBackup();
 				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
-				System::out << "available commands:\n";
-				System::out << "\texit, logQuadTree, info, lock, unlock, icap, dcap, fixQueue, save, chars, lookupcrc, rev, broadcast, shutdown.\n";
+				System::out << "available commands:" << endl
+					<< "\texit, logQuadTree, info, lock, unlock, icap, dcap, fixQueue, save, chars, lookupcrc, rev, broadcast, shutdown, "
+					<< "setpvpmode, getpvpmode"
+					<< endl;
 			} else if (command == "chars") {
 				uint32 num = 0;
 
@@ -639,6 +641,33 @@ void ServerCore::handleCommands() {
 					System::out << "invalid statsd sampling rate" << endl;
 				}
 #endif
+			} else if (command == "getpvpmode" || command == "getpvp") {
+				System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl;
+			} else if (command == "setpvpmode" || command == "setpvp") {
+				int num;
+
+				try {
+					if (arguments == "on") {
+						num = 1;
+					} else if (arguments == "off") {
+						num = 0;
+					} else {
+						num = UnsignedInteger::valueOf(arguments);
+					}
+
+					if (num == 1) {
+						ConfigManager::instance()->setPvpMode(true);
+					} else {
+						ConfigManager::instance()->setPvpMode(false);
+					}
+
+					StringBuffer msg;
+					msg << "console set new PvpMode = " << ConfigManager::instance()->getPvpMode();
+
+					info(msg.toString(), true);
+				} catch (Exception& e) {
+					System::out << "invalid PvpMode: (0=off; 1=on)" << endl;
+				}
 			} else {
 				System::out << "unknown command (" << command << ")\n";
 			}
