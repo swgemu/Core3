@@ -78,6 +78,8 @@ ConfigManager::ConfigManager() {
 	luaLogJSON = false;
 
 	restPort = 0;
+
+	characterBuilderEnabled = true;
 }
 
 bool ConfigManager::loadConfigData() {
@@ -172,6 +174,8 @@ bool ConfigManager::loadConfigData() {
 
 	inactiveAccountTitle = getGlobalString("InactiveAccountTitle");
 	inactiveAccountText = getGlobalString("InactiveAccountText");
+
+	characterBuilderEnabled = getGlobalBoolean("CharacterBuilderEnabled");
 
 	return true;
 }

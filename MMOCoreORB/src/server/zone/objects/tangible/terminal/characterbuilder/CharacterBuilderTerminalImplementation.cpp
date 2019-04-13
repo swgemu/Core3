@@ -29,6 +29,9 @@ void CharacterBuilderTerminalImplementation::initializeTransientMembers() {
 }
 
 int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (!ConfigManager::instance()->getCharacterBuilderEnabled())
+		return 1;
+
 	//info("entering start terminal radial call", true);
 
 	if (selectedID != 20) // not use object
@@ -40,6 +43,9 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(CreatureObjec
 }
 
 void CharacterBuilderTerminalImplementation::sendInitialChoices(CreatureObject* player) {
+	if (!ConfigManager::instance()->getCharacterBuilderEnabled())
+		return;
+
 	//info("entering sendInitialChoices", true);
 
 	if (rootNode == NULL) {

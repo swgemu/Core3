@@ -285,6 +285,9 @@ void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uin
 }
 
 void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!ConfigManager::instance()->getCharacterBuilderEnabled())
+		return;
+
 	ZoneServer* zserv = player->getZoneServer();
 
 	if (args->size() < 1)
