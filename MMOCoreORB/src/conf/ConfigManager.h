@@ -63,7 +63,6 @@ namespace conf {
 		int zoneProcessingThreads;
 		int zoneAllowedConnections;
 		int zoneGalaxyID;
-		int zoneOnlineCharactersPerAccount;
 		int zonePort;
 
 		int statusAllowedConnections;
@@ -309,10 +308,6 @@ namespace conf {
 
 		inline int getZoneGalaxyID() const {
 			return zoneGalaxyID;
-		}
-
-		inline int getZoneOnlineCharactersPerAccount() const {
-			return zoneOnlineCharactersPerAccount;
 		}
 
 		inline int getZoneServerPort() const {

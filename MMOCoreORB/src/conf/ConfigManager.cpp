@@ -54,7 +54,6 @@ ConfigManager::ConfigManager() {
 	zoneProcessingThreads = 10;
 	zoneAllowedConnections = 300;
 	zoneGalaxyID = 2;
-	zoneOnlineCharactersPerAccount = 1;
 	zonePort = 0;
 
 	statusAllowedConnections = 100;
@@ -135,7 +134,6 @@ bool ConfigManager::loadConfigData() {
 	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
 	zoneGalaxyID = getGlobalInt("ZoneGalaxyID");
-	zoneOnlineCharactersPerAccount = getGlobalInt("ZoneOnlineCharactersPerAccount");
 	zonePort = getGlobalInt("ZoneServerPort");
 
 	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
