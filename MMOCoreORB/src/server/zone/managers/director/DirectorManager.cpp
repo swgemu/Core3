@@ -917,14 +917,19 @@ int DirectorManager::includeFile(lua_State* L) {
 
 	int oldError = ERROR_CODE;
 
-	bool ret = Lua::runFile("scripts/screenplays/" + filename, L);
+	String filePath = "custom_scripts/screenplays/" + filename;
+
+	if (access(filePath.toCharArray(), 0) != 0)
+		filePath = "scripts/screenplays/" + filename;
+
+	bool ret = Lua::runFile(filePath, L);
 
 	if (!ret) {
 		ERROR_CODE = GENERAL_ERROR;
 
-		DirectorManager::instance()->error("running file: scripts/screenplays/" + filename);
+		DirectorManager::instance()->error("running file: " + filePath);
 	} else if (!oldError && ERROR_CODE) {
-		DirectorManager::instance()->error("running file: scripts/screenplays/" + filename);
+		DirectorManager::instance()->error("running file: " + filePath);
 	}
 
 	return 0;
