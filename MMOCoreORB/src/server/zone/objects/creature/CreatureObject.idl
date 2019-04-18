@@ -1219,8 +1219,14 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native string getFirstName();
 
+	public native string setFirstName(final string newFirstName);
+
 	@dirty
 	public native string getLastName();
+
+	public native string setLastName(final string newLastName, boolean skipVerify);
+
+	public native string setLastName(final string newLastName);
 
 	@dirty
 	public boolean isOnline() {

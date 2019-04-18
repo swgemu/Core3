@@ -83,6 +83,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
 		{ "teleport", &LuaSceneObject::teleport},
 		{ "getFirstName", &LuaCreatureObject::getFirstName},
+		{ "getLastName", &LuaCreatureObject::getLastName},
+		{ "setLastName", &LuaCreatureObject::setLastName},
 		{ "isAiAgent", &LuaCreatureObject::isAiAgent},
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
@@ -176,6 +178,40 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 int LuaCreatureObject::getFirstName(lua_State* L) {
 	String text = realObject->getFirstName();
 	lua_pushstring(L, text.toCharArray());
+	return 1;
+}
+
+int LuaCreatureObject::getLastName(lua_State* L) {
+	String text = realObject->getLastName();
+	lua_pushstring(L, text.toCharArray());
+	return 1;
+}
+
+int LuaCreatureObject::setLastName(lua_State* L) {
+	int argc = lua_gettop(L) - 1;
+
+	if (argc < 1 || argc > 2) {
+		Logger::console.error("incorrect number of arguments for LuaCreatureObject::setLastName");
+		return 0;
+	}
+
+	String newLastName;
+	bool skipVerify;
+
+	if (argc == 1) {
+		newLastName = lua_tostring(L, -1);
+		skipVerify = false;
+	} else {
+		newLastName = lua_tostring(L, -2);
+		skipVerify = lua_toboolean(L, -1);
+	}
+
+	Locker locker(realObject);
+
+	auto errmsg = realObject->setLastName(newLastName, skipVerify);
+
+	lua_pushstring(L, errmsg.toCharArray());
+
 	return 1;
 }
 
