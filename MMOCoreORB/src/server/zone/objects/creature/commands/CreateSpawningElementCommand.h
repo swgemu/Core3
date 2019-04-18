@@ -154,7 +154,7 @@ public:
 				Locker clocker(object, creature);
 
 				object->initializePosition(x, z, y);
-				object->setDirection(heading);
+				object->rotate(heading);
 
 				if (parent != nullptr && parent->isCellObject())
 					parent->transferObject(object, -1);
@@ -189,6 +189,7 @@ public:
 			creature->sendSystemMessage("Spawn: /createSpawningElement spawn IffObjectPath [x z y heading]");
 			creature->sendSystemMessage("Spawn: /createSpawningElement lair lairTemplate [level]");
 			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
+			creature->sendSystemMessage("Delete All: /createSpawningElement deleteall");
 		}
 
 		return SUCCESS;
