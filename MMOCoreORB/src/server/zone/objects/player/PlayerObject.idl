@@ -275,6 +275,7 @@ class PlayerObject extends IntangibleObject {
 	protected DeltaVectorMap playerQuestsData;
 
 	protected unsigned long miliSecsPlayed;
+	protected unsigned long miliSecsSession;
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -1884,6 +1885,14 @@ class PlayerObject extends IntangibleObject {
 		return miliSecsPlayed;
 	}
 
+	@read
+	public unsigned long getSessionMiliSecs() {
+		return miliSecsSession;
+	}
+
 	@dirty
-	public native string getPlayedTimeString();
+	public native string getMiliSecsTimeString(unsigned long miliSecs, boolean verbose = false);
+
+	@dirty
+	public native string getPlayedTimeString(boolean verbose = false);
 }

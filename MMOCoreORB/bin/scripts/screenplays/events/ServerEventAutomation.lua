@@ -150,10 +150,12 @@ end
 
 function ServerEventAutomation:logPlayerEvent(pPlayer, what)
     local creature = CreatureObject(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
     self:logEvent(string.format(
-        "playerEvent %s (oid: %d) on %s at %s %s - %s",
+        "playerEvent %s (oid: %d, %s) on %s at %s %s - %s",
         creature:getFirstName(),
         creature:getObjectID(),
+		PlayerObject(pGhost):getPlayedTimeString(),
         creature:getZoneName(),
         math.floor(creature:getWorldPositionX()),
         math.floor(creature:getWorldPositionY()),

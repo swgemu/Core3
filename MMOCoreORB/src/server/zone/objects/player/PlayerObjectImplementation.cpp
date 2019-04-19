@@ -1257,6 +1257,8 @@ void PlayerObjectImplementation::notifyOnline() {
 	if (playerCreature == nullptr)
 		return;
 
+	miliSecsSession = 0;
+
 	ChatManager* chatManager = server->getChatManager();
 	ZoneServer* zoneServer = server->getZoneServer();
 
@@ -1679,6 +1681,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		}
 
 		miliSecsPlayed += latency;
+		miliSecsSession += latency;
 	}
 
 	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
@@ -2703,8 +2706,8 @@ void PlayerObjectImplementation::recalculateForcePower() {
 	setForcePowerMax(maxForce, true);
 }
 
-String PlayerObjectImplementation::getPlayedTimeString() {
-	uint64 ss = miliSecsPlayed / 1000;
+String PlayerObjectImplementation::getMiliSecsTimeString(uint64 miliSecs, bool verbose) {
+	uint64 ss = miliSecs / 1000;
 
 	int dd = ss / 86400;
 	ss = ss - (dd * 86400);
@@ -2717,21 +2720,48 @@ String PlayerObjectImplementation::getPlayedTimeString() {
 
 	StringBuffer buf;
 
-	buf << "You have played this character a total of";
+	if (verbose) {
+		if (dd > 0)
+			buf << " " << dd << (dd == 1 ? " day," : " days,");
 
-	if (dd > 0) {
-		buf << " " << dd << (dd == 1 ? " day," : " days,");
+		if (dd > 0 || hh > 0)
+			buf << " " << hh << (hh == 1 ? " hour," : " hours,");
+
+		if (dd > 0 || hh > 0 || mm > 0)
+			buf << " " << mm << (mm == 1 ? " minute," : " minutes,");
+
+		buf << " " << ss << (ss == 1 ? " second" : " seconds");
+	} else {
+		if (dd > 0)
+			buf << " " << dd << "d";
+
+		if (dd > 0 || hh > 0)
+			buf << " " << hh << "h";
+
+		if (dd > 0 || hh > 0 || mm > 0)
+			buf << " " << mm << "m";
+
+		buf << " " << ss << "s";
 	}
 
-	if (dd > 0 || hh > 0) {
-		buf << " " << hh << (hh == 1 ? " hour," : " hours,");
-	}
+	return buf.toString();
+}
 
-	if (dd > 0 || hh > 0 || mm > 0) {
-		buf << " " << mm << (mm == 1 ? " minute," : " minutes,");
-	}
+String PlayerObjectImplementation::getPlayedTimeString(bool verbose) {
+	StringBuffer buf;
 
-	buf << " " << ss << (ss == 1 ? " second." : " seconds.");
+	if (verbose) {
+		buf << "You have played this character a total of";
+		buf << getMiliSecsTimeString(miliSecsPlayed, true);
+		buf << ", and ";
+		buf << getMiliSecsTimeString(miliSecsSession, true);
+		buf << " this session.";
+	} else {
+		buf << "played:";
+		buf << getMiliSecsTimeString(miliSecsPlayed, false);
+		buf << ", session:";
+		buf << getMiliSecsTimeString(miliSecsSession, false);
+	}
 
 	return buf.toString();
 }
