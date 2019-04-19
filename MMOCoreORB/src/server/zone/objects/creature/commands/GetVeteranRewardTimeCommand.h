@@ -64,7 +64,7 @@ public:
 		}
 
 		// Send character played time
-		player->sendSystemMessage(playerGhost->getPlayedTimeString());
+		player->sendSystemMessage(playerGhost->getPlayedTimeString(true));
 
 		return SUCCESS;
 	}

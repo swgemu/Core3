@@ -41,139 +41,141 @@
 --which carries forward this exception.
 
 ServerEventAutomation = Object:new {
-    vebose = false,
+	vebose = false,
 	config = nil
 }
 
 function ServerEventAutomation:playerLoggedIn(pPlayer)
-    if (pPlayer == nil) then
-        return
-    end
-    self:logPlayerEvent(pPlayer, "playerLoggedIn")
+	if (pPlayer == nil) then
+		return
+	end
+	self:logPlayerEvent(pPlayer, "playerLoggedIn")
 
-    -- Are we configured?
-    if self.config == nil then
-        return
-    end
+	-- Are we configured?
+	if self.config == nil then
+		return
+	end
 
-    self:sendEventEmails(pPlayer, "playerLoggedIn")
+	self:sendEventEmails(pPlayer, "playerLoggedIn")
 end
 
 function ServerEventAutomation:playerLoggedOut(pPlayer)
-    if (pPlayer == nil) then
-        return
-    end
-    self:logPlayerEvent(pPlayer, "playerLoggedOut")
+	if (pPlayer == nil) then
+		return
+	end
+	self:logPlayerEvent(pPlayer, "playerLoggedOut")
 end
 
 function ServerEventAutomation:sendEventEmails(pPlayer, source_event)
-    if (pPlayer == nil) then
-        return
-    end
+	if (pPlayer == nil) then
+		return
+	end
 
-    -- Is email configured?
-    if self.config.emails == nil then
-        return
-    end
+	-- Is email configured?
+	if self.config.emails == nil then
+		return
+	end
 
-    local now = getTimestamp()
+	local now = getTimestamp()
 
-    for email_id, email in pairs(self.config.emails) do
-        email.id = email_id
+	for email_id, email in pairs(self.config.emails) do
+		email.id = email_id
 
-        if (email.start_time == nil or now >= email.start_time) and (email.end_time == nil or now <= email.end_time) then
-            if not self:getSent(pPlayer, email) then
-                self:sendEventEmail(pPlayer, email)
-                self:logPlayerEvent(pPlayer, "sentEventEmail:" .. email_id)
-                self:setSent(pPlayer, email)
-            else
-                if self.verbose then
-                    self:logPlayerEvent(pPlayer, "emailAlreadySent:" .. email_id)
-                end
-            end
-        else
-            if self.verbose then
-                self:logEvent("email " .. email_id .. " is not eligible to send, now = " .. now .. " email.start_time = " .. email.start_time .. " email.end_time = " .. email.end_time)
-            end
-        end
-    end
+		if (email.start_time == nil or now >= email.start_time) and (email.end_time == nil or now <= email.end_time) then
+			if not self:getSent(pPlayer, email) then
+				self:sendEventEmail(pPlayer, email)
+				self:logPlayerEvent(pPlayer, "sentEventEmail:" .. email_id)
+				self:setSent(pPlayer, email)
+			else
+				if self.verbose then
+					self:logPlayerEvent(pPlayer, "emailAlreadySent:" .. email_id)
+				end
+			end
+		else
+			if self.verbose then
+				self:logEvent("email " .. email_id .. " is not eligible to send, now = " .. now .. " email.start_time = " .. email.start_time .. " email.end_time = " .. email.end_time)
+			end
+		end
+	end
 end
 
 function ServerEventAutomation:sendEventEmail(pPlayer, email)
-    local firstName = CreatureObject(pPlayer):getFirstName()
-    local from = email.sender
-    local subject = email.subject
-    local body = email.body
+	local firstName = CreatureObject(pPlayer):getFirstName()
+	local from = email.sender
+	local subject = email.subject
+	local body = email.body
 
-    if from == nil then
-        from = "Server Event System"
-    end
+	if from == nil then
+		from = "Server Event System"
+	end
 
-    if subject == nil then
-        subject = "New Server Event"
-    end
+	if subject == nil then
+		subject = "New Server Event"
+	end
 
-    if body == nil then
-        self:logPlayerEvent(pPlayer, "invalidConfiguration, body missing")
-        return
-    end
+	if body == nil then
+		self:logPlayerEvent(pPlayer, "invalidConfiguration, body missing")
+		return
+	end
 
-    body = string.gsub(body, "%%firstname%%", firstName)
+	body = string.gsub(body, "%%firstname%%", firstName)
 
-    sendMail(from, subject, body, firstName)
+	sendMail(from, subject, body, firstName)
 end
 
 function ServerEventAutomation:getSentKey(pPlayer, email)
-    return CreatureObject(pPlayer):getObjectID() .. ":ServerEventAutomation:email:" .. email.id
+	return CreatureObject(pPlayer):getObjectID() .. ":ServerEventAutomation:email:" .. email.id
 end
 
 function ServerEventAutomation:setSent(pPlayer, email)
-    setQuestStatus(self:getSentKey(pPlayer, email), getTimestamp())
+	setQuestStatus(self:getSentKey(pPlayer, email), getTimestamp())
 end
 
 function ServerEventAutomation:getSent(pPlayer, email)
-    local when = getQuestStatus(self:getSentKey(pPlayer, email))
+	local when = getQuestStatus(self:getSentKey(pPlayer, email))
 
-    if when == nil then
-        return false
-    end
+	if when == nil then
+		return false
+	end
 
-    return true
+	return true
 end
 
 function ServerEventAutomation:logEvent(what)
-    local fh = io.open("log/ServerEventAutomation.log", "a+")
-    fh:write(string.format("%s [ServerEventAutomation] %s\n", getFormattedTime(), what))
-    fh:flush()
-    fh:close()
+	local fh = io.open("log/ServerEventAutomation.log", "a+")
+	fh:write(string.format("%s [ServerEventAutomation] %s\n", getFormattedTime(), what))
+	fh:flush()
+	fh:close()
 end
 
 function ServerEventAutomation:logPlayerEvent(pPlayer, what)
-    local creature = CreatureObject(pPlayer)
-    self:logEvent(string.format(
-        "playerEvent %s (oid: %d) on %s at %s %s - %s",
-        creature:getFirstName(),
-        creature:getObjectID(),
-        creature:getZoneName(),
-        math.floor(creature:getWorldPositionX()),
-        math.floor(creature:getWorldPositionY()),
-        what
-    ))
+	local creature = CreatureObject(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	self:logEvent(string.format(
+		"playerEvent %s (oid: %d, %s) on %s at %s %s - %s",
+		creature:getFirstName(),
+		creature:getObjectID(),
+		PlayerObject(pGhost):getPlayedTimeString(),
+		creature:getZoneName(),
+		math.floor(creature:getWorldPositionX()),
+		math.floor(creature:getWorldPositionY()),
+		what
+	))
 end
 
 function ServerEventAutomation:init(config_file)
-    local seaconfig = loadfile(config_file)
+	local seaconfig = loadfile(config_file)
 
-    if seaconfig == nil then
-        return
-    end
+	if seaconfig == nil then
+		return
+	end
 
-    seaconfig()
+	seaconfig()
 
-    if self.config.verbose ~= nil and self.config.verbose then
-        self.verbose = true
+	if self.config.verbose ~= nil and self.config.verbose then
+		self.verbose = true
 		self:logEvent("Loaded config from " .. config_file)
-    end
+	end
 end
 
 ServerEventAutomation:init("conf/ServerEventAutomationConfig.lua")
