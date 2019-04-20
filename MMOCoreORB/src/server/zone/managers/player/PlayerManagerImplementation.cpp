@@ -5826,3 +5826,29 @@ void PlayerManagerImplementation::unlockFRSForTesting(CreatureObject* player, in
 
 	luaFrsTesting->callFunction();
 }
+
+Vector<uint64> PlayerManagerImplementation::getOnlinePlayerList() {
+	Vector<uint64> playerList;
+
+	Locker locker(&onlineMapMutex);
+
+	HashTableIterator<uint32, Vector<Reference<ZoneClientSession*> > > iter = onlineZoneClientMap.iterator();
+
+	while (iter.hasNext()) {
+		Vector<Reference<ZoneClientSession*> > clients = iter.next();
+
+		for (int i = 0; i < clients.size(); i++) {
+			ZoneClientSession* session = clients.get(i);
+
+			if (session != NULL) {
+				CreatureObject* player = session->getPlayer();
+
+				if (player != NULL) {
+					playerList.add(player->getObjectID());
+				}
+			}
+		}
+	}
+
+	return playerList;
+}

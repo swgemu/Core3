@@ -529,4 +529,8 @@ class PlayerManager extends Observer implements Logger {
 	public native float getSpeciesXpModifier(final string species, final string xpType);
 	
 	public native void unlockFRSForTesting(CreatureObject player, int councilType);
+
+	@local
+	@dereferenced
+	public native Vector<unsigned long> getOnlinePlayerList();
 }
