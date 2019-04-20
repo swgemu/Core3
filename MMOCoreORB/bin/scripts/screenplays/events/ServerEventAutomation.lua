@@ -40,6 +40,14 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+-- Support quick check of syntax from cmd line
+if Object == nil and arg ~= nil then
+		Object = { }
+		function Object:new(init)
+				return init
+		end
+end
+
 ServerEventAutomation = Object:new {
 	vebose = false,
 	config = nil
@@ -83,9 +91,16 @@ function ServerEventAutomation:sendEventEmails(pPlayer, source_event)
 
 		if (email.start_time == nil or now >= email.start_time) and (email.end_time == nil or now <= email.end_time) then
 			if not self:getSent(pPlayer, email) then
-				self:sendEventEmail(pPlayer, email)
-				self:logPlayerEvent(pPlayer, "sentEventEmail:" .. email_id)
-				self:setSent(pPlayer, email)
+				if email.target == nil or email.target(self, pPlayer, email) then
+						self:sendEventEmail(pPlayer, email)
+						self:logPlayerEvent(pPlayer, "sentEventEmail:" .. email_id)
+						if email.after_send ~= nil then
+								email.after_send(self, pPlayer, email)
+						end
+						self:setSent(pPlayer, email)
+				else
+						self:logPlayerEvent(pPlayer, "filteredFromEventEmail:" .. email_id)
+				end
 			else
 				if self.verbose then
 					self:logPlayerEvent(pPlayer, "emailAlreadySent:" .. email_id)
