@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da5c1566_f976b705",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2019-04-20T20:49:21Z",
+      "side": 1,
+      "message": "Should be Reference",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 18
+      },
+      "revId": "f8e1cb7d69e5c8603da19a3c6eb68906d10e014f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_d973f313",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2019-04-20T20:49:21Z",
+      "side": 1,
+      "message": "Will this break the droid thing we ran into on TC-Prime?",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 55
+      },
+      "revId": "f8e1cb7d69e5c8603da19a3c6eb68906d10e014f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
