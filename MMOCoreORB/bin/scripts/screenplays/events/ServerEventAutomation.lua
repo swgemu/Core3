@@ -50,6 +50,7 @@ end
 
 ServerEventAutomation = Object:new {
 	vebose = false,
+	syntax_version = 2,
 	config = nil
 }
 
@@ -186,6 +187,18 @@ function ServerEventAutomation:init(config_file)
 	end
 
 	seaconfig()
+
+	if self.config == nil then
+		self:logEvent("WARNING: Configuration error, didn't set ServerEventAutomation.config")
+		return
+	end
+
+	-- Check to see if the config is compatiable with the code
+	if self.config.syntax_version == nil or self.config.syntax_version > self.syntax_version then
+		self:logEvent("WARNING: Configuartion syntax_version doesn't match code syntax_version, please verify feature support.")
+		self.config = nil
+		return
+	end
 
 	if self.config.verbose ~= nil and self.config.verbose then
 		self.verbose = true
