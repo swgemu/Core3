@@ -41,6 +41,24 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public final static int VENDOREXPIREPERIOD = 2592000; // Seconds
 	public final static int COMMODITYEXPIREPERIOD = 604800; 
+	
+	// Location Types
+	public final static int LT_GALAXY = 0;
+	public final static int LT_PLANET = 1;
+	public final static int LT_REGION = 2;
+	public final static int LT_MARKET = 3;
+
+	// Search Types
+	public final static int ST_CATEGORY = 0;
+	public final static int ST_LOCATION = 1;
+	public final static int ST_ALL = 2;
+	public final static int ST_PLAYER_SALES = 3;
+	public final static int ST_PLAYER_BIDS = 4;
+	public final static int ST_PLAYER_STOCKROOM = 5;
+	public final static int ST_VENDOR_OFFERS = 6;
+	public final static int ST_VENDOR_SELLING = 7;
+	public final static int ST_VENDOR_STOCKROOM = 8;
+	public final static int ST_PLAYER_OFFERS_TO_VENDOR = 9;
 
 	private boolean marketEnabled;
 
@@ -67,7 +85,7 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	public native void getItemAttributes(CreatureObject player, unsigned long objectid);
 
-	public native void getData(CreatureObject player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);	
+	public native void getData(CreatureObject player, int locationType, unsigned long vendorObjectID, int searchType, unsigned int itemCategory, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);	
 
 	@local
 	public native void getAuctionData(CreatureObject player, SceneObject usedVendor, final string planet, final string region, SceneObject vendor, int screen, unsigned int category, final unicode filterText, int minPrice, int maxPrice, boolean includeEntranceFee, int count, int offset);
