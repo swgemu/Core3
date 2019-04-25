@@ -124,6 +124,10 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native boolean checkPlayerName(ClientCreateCharacterCallback callback);
 
+	public native string setFirstName(CreatureObject creature, final string newFirstName);
+
+	public native string setLastName(CreatureObject creature, final string newLastName, boolean skipVerify = false);
+
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
 	/**
@@ -525,4 +529,8 @@ class PlayerManager extends Observer implements Logger {
 	public native float getSpeciesXpModifier(final string species, final string xpType);
 	
 	public native void unlockFRSForTesting(CreatureObject player, int councilType);
+
+	@local
+	@dereferenced
+	public native Vector<unsigned long> getOnlinePlayerList();
 }

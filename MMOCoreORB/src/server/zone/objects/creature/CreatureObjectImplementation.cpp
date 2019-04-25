@@ -2867,6 +2867,13 @@ String CreatureObjectImplementation::getFirstName() {
 	}
 }
 
+String CreatureObjectImplementation::setFirstName(const String& newFirstName) {
+	if (!isPlayerCreature())
+		return "Can only set FirstName on players.";
+
+	return getZoneServer()->getPlayerManager()->setFirstName(asCreatureObject(), newFirstName);
+}
+
 String CreatureObjectImplementation::getLastName() {
 	UnicodeString lastName;
 
@@ -2880,6 +2887,17 @@ String CreatureObjectImplementation::getLastName() {
 		tokenizer.getUnicodeToken(lastName);
 
 	return lastName.toString();
+}
+
+String CreatureObjectImplementation::setLastName(const String& newLastName, bool skipVerify) {
+	if (!isPlayerCreature())
+		return "Can only set LastName on players.";
+
+	return getZoneServer()->getPlayerManager()->setLastName(asCreatureObject(), newLastName, skipVerify);
+}
+
+String CreatureObjectImplementation::setLastName(const String& newLastName) {
+	return setLastName(newLastName, false);
 }
 
 void CreatureObjectImplementation::sendExecuteConsoleCommand(

@@ -80,7 +80,7 @@ protected:
 	String zoneComponent, attributeListComponent;
 	String containerComponent;
 	String objectMenuComponent;
-	
+
 	String dataObjectComponent;
 
 	bool inheritPermissionsFromParent;
@@ -90,6 +90,7 @@ protected:
 
 	bool noTrade;
 	bool updatesNavMesh;
+	bool delayedContainerLoad;
 
 public:
 	const static int SHOT = 'SHOT';
@@ -408,19 +409,19 @@ public:
 		return planetMapSubCategory;
 	}
 
-	inline bool isAutoRegistering() {
+	inline bool isAutoRegistering() const {
 		return autoRegisterWithPlanetMap;
 	}
 
-	inline int getChildObjectsSize() {
+	inline int getChildObjectsSize() const {
 		return childObjects.size();
 	}
 
-	inline ChildObject* getChildObject(int idx) {
+	inline ChildObject* getChildObject(int idx) const {
 		return &childObjects.get(idx);
 	}
 
-	bool hasInheritPermissionsFromParent() {
+	bool hasInheritPermissionsFromParent() const {
 		return inheritPermissionsFromParent;
 	}
 
@@ -428,7 +429,7 @@ public:
 		return &groupPermissions;
 	}
 
-	bool hasArrangementDescriptor(const String& s) {
+	bool hasArrangementDescriptor(const String& s) const {
 		bool foundIt = false;
 
 		const Vector < Vector <String> >* hAD = getArrangementDescriptors();
@@ -440,6 +441,10 @@ public:
 		}
 
 		return foundIt;
+	}
+
+	bool getDelayedContainerLoad() const {
+		return delayedContainerLoad;
 	}
 
 public:
@@ -685,12 +690,12 @@ public:
 	}
 
 	virtual bool isShipChassisTemplate() {
-    	return false;
-    }
+		return false;
+	}
 
 	virtual bool isShipDeedTemplate() {
-    	return false;
-    }
+		return false;
+	}
 
 	virtual bool isRecycleToolTemplate() {
 	    	return false;

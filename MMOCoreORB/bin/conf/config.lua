@@ -231,6 +231,8 @@ RESTServerPort = 0
 InactiveAccountTitle = "Account Disabled"
 InactiveAccountText = "The server administrators have disabled your account."
 
+CharacterBuilderEnabled = "true" -- Enable character builder terminals by default
+
 local localFile = loadfile("conf/config-local.lua")
 
 if (localFile ~= nil) then

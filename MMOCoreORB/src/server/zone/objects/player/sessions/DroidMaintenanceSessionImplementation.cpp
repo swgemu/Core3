@@ -21,7 +21,7 @@
 
 void DroidMaintenanceSessionImplementation::initialize() {
 	ManagedReference<CreatureObject*> creature = this->player.get();
-	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 	// get the total credits this guy has right now!
 	availableCredits = creature->getCashCredits() + creature->getBankCredits();
 	module->getStructureList(&structures, creature->getZoneServer(),creature->getZone()->getZoneCRC());
@@ -42,7 +42,7 @@ void DroidMaintenanceSessionImplementation::sendMaintanceRunBox(){
 		return;
 	}
 
-	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 
 	if (module == nullptr)
 		return;
@@ -115,7 +115,7 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 		return;
 	}
 
-	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 
 	if (module == nullptr) {
 		cancelSession();

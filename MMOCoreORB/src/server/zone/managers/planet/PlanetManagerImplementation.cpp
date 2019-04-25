@@ -215,6 +215,11 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		String templateFile = planetObject.getStringField("templateFile");
 
+		// Don't spawn character builder terminals if they're not enabled
+		if (templateFile == "object/tangible/terminal/terminal_character_builder.iff" && !ConfigManager::instance()->getCharacterBuilderEnabled()) {
+			continue;
+		}
+
 		ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
 
 		if (obj != NULL) {

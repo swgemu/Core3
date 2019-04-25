@@ -70,7 +70,6 @@ void LoginServerImplementation::startManagers() {
 	accountManager = new AccountManager(_this.getReferenceUnsafeStaticCast());
 	accountManager->setAutoRegistrationEnabled(configManager->getAutoReg());
 	accountManager->setRequiredVersion(configManager->getLoginRequiredVersion());
-	accountManager->setMaxOnlineCharacters(configManager->getZoneOnlineCharactersPerAccount());
 	accountManager->setDBSecret(configManager->getDBSecret());
 }
 

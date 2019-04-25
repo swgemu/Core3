@@ -159,6 +159,76 @@ public:
 				return 0;
 			}
 		}
+		else if (recipient == "@online") {
+			auto ghost = player->getPlayerObject();
+
+			if (ghost == NULL)
+				return 0;
+
+			if (!ghost->hasGodMode()) {
+				player->sendSystemMessage("@error_message:insufficient_permissions");
+				return 0;
+			}
+
+			String newBody = body.toString();
+
+			// Allow for special first line of: From: {sender}
+			String tmpBody = body.toString();
+			StringTokenizer bodyParts(tmpBody);
+			bodyParts.setDelimiter(":");
+
+			String from = player->getFirstName();
+
+			if (bodyParts.hasMoreTokens()) {
+				String part;
+				bodyParts.getStringToken(part);
+
+				if (part.toLowerCase() == "from") {
+					bodyParts.setDelimiter("\n");
+					if (bodyParts.hasMoreTokens()) {
+						bodyParts.getStringToken(from);
+						bodyParts.finalToken(newBody);
+
+						from = from.trim();
+
+						// Make sure they're not spoofing an existing player's name to avoid confusion and griefing
+						if (playerManager->containsPlayer(from)) {
+							StringBuffer msg;
+							msg << "Can't spoof email from an existing player name: \"" << from << "\"";
+							player->sendSystemMessage(msg.toString());
+							return 0;
+						}
+					}
+				}
+			}
+
+			body = UnicodeString(newBody.trim());
+
+			Vector<uint64> playerList = playerManager->getOnlinePlayerList();
+			int countSent = 0;
+			auto chatManager = server->getChatManager();
+
+			for (int i = 0; i < playerList.size(); i++) {
+				uint64 playerID = playerList.get(i);
+
+				auto playerName = playerManager->getPlayerName(playerID);
+
+				if (playerName.isEmpty())
+					continue;
+
+				if (chatManager->sendMail(from, header, body, playerName, &stringIdParameters, &waypointParameters) == ChatManager::IM_SUCCESS)
+					countSent++;
+			}
+
+			StringBuffer msg;
+
+			msg << "Sent email to " << countSent << " player(s) from " << from;
+
+			player->info(msg.toString(), true);
+			player->sendSystemMessage(msg.toString());
+
+			return 0;
+		}
 
 		return sendMailToPlayer(player, recipient);
 	}

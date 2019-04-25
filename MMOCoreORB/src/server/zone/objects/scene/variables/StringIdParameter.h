@@ -29,7 +29,7 @@ namespace variables {
 
 class StringIdParameter : public Serializable {
 protected:
-	uint64 pointerParameter;
+	uint64 pointerParameter = 0;
 	StringId stringID;
 	UnicodeString customName;
 

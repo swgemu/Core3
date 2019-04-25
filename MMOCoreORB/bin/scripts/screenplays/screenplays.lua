@@ -27,9 +27,6 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
--- Custom content
-includeFile("../custom_scripts/screenplays/screenplays.lua")
-
 includeFile("helperfuncs.lua")
 includeFile("playerTriggers.lua")
 
@@ -669,3 +666,8 @@ includeFile("record_keepers/record_keepers.lua")
 --Tests
 includeFile("tests/tests.lua")
 
+-- Server Event Automation
+includeFile("events/ServerEventAutomation.lua")
+
+-- Custom content - Loads last to allow for overrides
+includeFile("../custom_scripts/screenplays/screenplays.lua")

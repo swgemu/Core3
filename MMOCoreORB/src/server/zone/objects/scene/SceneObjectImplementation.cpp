@@ -158,11 +158,14 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	dataObjectComponent = ComponentManager::instance()->getDataObjectComponent(templateData->getDataObjectComponent());
 
-
 	if (!isCreatureObject() && !isLairObject() && gameObjectType != SceneObjectType::FURNITURE) {
 		if (templateData->getCollisionMaterialFlags() && templateData->getCollisionMaterialBlockFlags() && templateData->isNavUpdatesEnabled()) {
 			collidableObject = true;
 		}
+	}
+
+	if (templateObject->getDelayedContainerLoad()) {
+		containerObjects.setDelayedLoadOperationMode();
 	}
 }
 
@@ -459,13 +462,13 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	VectorMap<String, ManagedReference<SceneObject* > > slotted;
 	getSlottedObjects(slotted);
 
-	SortedVector<SceneObject*> objects(slotted.size(), slotted.size());
+	SortedVector<uint64> objects(slotted.size(), slotted.size());
 	objects.setNoDuplicateInsertPlan();
 
 	for (int i = 0; i < slotted.size(); ++i) {
 		SceneObject* object = slotted.get(i);
 
-		if (objects.put(object) != -1) {
+		if (objects.put(object->getObjectID()) != -1) {
 			if (object->isInQuadTree()) {
 				notifyInsert(object);
 			} else {

@@ -21,7 +21,7 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	containerVolumeLimit = 0;
 
 	totalCellNumber = 0;
-	
+
 	collisionMaterialFlags = 0;
 	collisionMaterialPassFlags = 0;
 	collisionMaterialBlockFlags = 0;
@@ -45,6 +45,7 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	inheritPermissionsFromParent = false;
 
 	noTrade = false;
+	delayedContainerLoad = false;
 }
 
 void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
@@ -196,6 +197,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		obj.pop();
 	} else if (varName == "enableNavMeshUpdates") {
 		updatesNavMesh = Lua::getBooleanParameter(state);
+	} else if (varName == "delayedContainerLoad") {
+		delayedContainerLoad = Lua::getBooleanParameter(state);
 	} else {
 		//Logger::console.error("unknown variable " + varName);
 		templateData->pop();
@@ -226,7 +229,7 @@ void SharedObjectTemplate::parseVariableData(const String& varName, Chunk* data)
 			slotDescriptors = templateManager->getSlotDescriptor(slotDescriptorFilename.get());
 	} else if (varName == "arrangementDescriptorFilename") {
 		StringParam arrangementDescriptorFilename;
-		
+
 		if (arrangementDescriptorFilename.parse(data))
 			arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename.get());
 	} else if (varName == "appearanceFilename") {
@@ -408,10 +411,10 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	//int tablePos = lua_gettop(L);
 
 	//lua_pushvalue(L, -1); //push table again
-	
-	lua_pushnil(L);  
+
+	lua_pushnil(L);
 	while (lua_next(L, -2) != 0) {
-		// 'key' is at index -2 and 'value' at index -1 
+		// 'key' is at index -2 and 'value' at index -1
 		//printf("%s - %s\n",
 		//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
 
@@ -424,13 +427,13 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 			parseVariableData(varName, templateData);
 		} else
 			lua_pop(L, 1);
-		
+
 
 		++i;
 	}
 
 	clientTemplateFileName = templateData->getStringField("clientTemplateFileName");
-	
+
 	return;
 }
 

@@ -46,6 +46,9 @@ public:
 		if (targetGhost == nullptr || playerGhost == nullptr)
 			return GENERALERROR;
 
+		if (targetGhost == playerGhost)
+			return GENERALERROR;
+
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
 			creature->sendSystemMessage("@cbt_spam:los_fail");// You lost sight of your target.
 			return GENERALERROR;
@@ -54,11 +57,7 @@ public:
 		if (!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
 
-		int maxTransfer = minDamage; //Value set in command lua
-		if (playerGhost->getForcePower() < maxTransfer) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
-			return GENERALERROR;
-		}
+		int transfer = System::random(75) + minDamage; //Value set in command lua
 
 		FrsManager* frsManager = server->getZoneServer()->getFrsManager();
 
@@ -72,24 +71,34 @@ public:
 			return GENERALERROR;
 		}
 
+		if (playerGhost->getForcePower() < forceCost) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
+			return GENERALERROR;
+		}
+
 		int forceSpace = targetGhost->getForcePowerMax() - targetGhost->getForcePower();
 		int forceTransfer = 0;
 
-		if (forceSpace > 0) {
-			forceTransfer = forceSpace >= maxTransfer ? maxTransfer : forceSpace;
-			targetGhost->setForcePower(targetGhost->getForcePower() + forceTransfer);
-			playerGhost->setForcePower(playerGhost->getForcePower() - forceTransfer);
+		if (forceSpace > 0) { //Only allows amount to be transfered that the target can hold and fails if target has full Force.
+			forceTransfer = forceSpace >= transfer ? transfer : forceSpace;
+		} else {
+			return GENERALERROR;
 		}
+
+		targetGhost->setForcePower(targetGhost->getForcePower() + forceTransfer);
+		playerGhost->setForcePower(playerGhost->getForcePower() - forceCost);
 
 		uint32 animCRC = getAnimationString().hashCode();
 		creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
 		CombatManager::instance()->broadcastCombatSpam(creature, targetCreature, nullptr, forceTransfer, "cbt_spam", combatSpam, 0);
 
+		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+
 		return SUCCESS;
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		return defaultTime * 3.0;
+		return defaultTime;
 	}
 
 };

@@ -50,14 +50,6 @@ namespace server {
 				//Account* lookupAccount(uint64 characterID);
 				//Account* lookupAccount(const String& username);
 
-				inline void setMaxOnlineCharacters(uint32 maxonline) {
-					maxOnlineCharacters = maxonline;
-				}
-
-				inline uint32 getMaxOnlineCharacters() {
-					return maxOnlineCharacters;
-				}
-
 				inline void setRequiredVersion(const String& version) {
 					requiredVersion = version;
 				}
@@ -81,8 +73,6 @@ namespace server {
 					return autoRegistration;
 				}
 
-
-
 				static ManagedReference<Account*> getAccount(uint32 accountID, bool forceSqlUpdate = false);
 
 				static ManagedReference<Account*> getAccount(const String& accountName, bool forceSqlUpdate = false);
@@ -90,9 +80,7 @@ namespace server {
 				static ManagedReference<Account*> getAccount(uint32 accountID, String& passwordStored, bool forceSqlUpdate = false);
 
 			private:
-
 				static ManagedReference<Account*> getAccount(String query, String& passwordStored, bool forceSqlUpdate = false);
-
 			};
 		}
 	}

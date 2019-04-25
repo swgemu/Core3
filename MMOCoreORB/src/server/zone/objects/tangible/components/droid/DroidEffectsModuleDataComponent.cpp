@@ -39,7 +39,7 @@ void DroidEffectsModuleDataComponent::initializeTransientMembers() {
 		return;
 	}
 
-	ManagedReference<DroidEffectsModuleTemplate*> moduleTemplate = cast<DroidEffectsModuleTemplate*>(droidComponent->getObjectTemplate());
+	Reference<DroidEffectsModuleTemplate*> moduleTemplate = cast<DroidEffectsModuleTemplate*>(droidComponent->getObjectTemplate());
 	if (moduleTemplate == NULL){
 		info("Module was null");
 		return;
@@ -274,7 +274,7 @@ void DroidEffectsModuleDataComponent::addToStack(BaseDroidModuleComponent* other
 		return;
 	}
 
-	ManagedReference<DroidEffectsModuleTemplate*> moduleTemplate = cast<DroidEffectsModuleTemplate*>(droidComponent->getObjectTemplate());
+	Reference<DroidEffectsModuleTemplate*> moduleTemplate = cast<DroidEffectsModuleTemplate*>(droidComponent->getObjectTemplate());
 	if (moduleTemplate == NULL){
 		info("Module was null");
 		return;

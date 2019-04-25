@@ -579,6 +579,186 @@ bool PlayerManagerImplementation::checkPlayerName(ClientCreateCharacterCallback*
 	return true;
 }
 
+String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const String& newFirstName) {
+    if (creature == nullptr)
+		return "nullptr creature specified";
+
+	if (!creature->isPlayerCreature())
+		return "Can only set FirstName on players.";
+
+	auto ghost = creature->getPlayerObject();
+
+	if (ghost == nullptr)
+		return "missing ghost";
+
+	if (newFirstName.isEmpty())
+		return "Empty first name is now allowed";
+
+	if (existsName(newFirstName))
+		return "That name is already in use";
+
+	Locker locker(creature, ghost);
+
+	auto nameManager = processor->getNameManager();
+
+	int result = nameManager->validateName(newFirstName, creature->getSpecies());
+
+	switch (result) {
+	case NameManagerResult::ACCEPTED:
+		break;
+	case NameManagerResult::DECLINED_EMPTY:
+		return "First names may not be empty.";
+		break;
+	case NameManagerResult::DECLINED_RACE_INAPP:
+		return "That name is inappropriate for the player's species.";
+		break;
+	case NameManagerResult::DECLINED_PROFANE:
+		return "That name is profane.";
+		break;
+	case NameManagerResult::DECLINED_DEVELOPER:
+		return "That is a developer's name.";
+		break;
+	case NameManagerResult::DECLINED_FICT_RESERVED:
+		return "That name is a reserved fictional name.";
+		break;
+	case NameManagerResult::DECLINED_RESERVED:
+		return "That name is reserved.";
+		break;
+	case NameManagerResult::DECLINED_SYNTAX:
+		return "That name contains invalid syntax.";
+		break;
+	}
+
+	String oldFirstName = creature->getFirstName();
+	String oldLastName = creature->getLastName();
+	String newFullName = newFirstName;
+
+	if (!oldLastName.isEmpty())
+		newFullName = newFirstName + " " + oldLastName;
+
+	creature->setCustomObjectName(newFullName, true);
+
+	// If staff fix their staff tags
+	if (ghost->hasGodMode())
+		updatePermissionName(creature, ghost->getAdminLevel());
+
+	auto chatManager = server->getChatManager();
+	chatManager->removePlayer(oldFirstName);
+	chatManager->addPlayer(creature);
+
+	removePlayer(oldFirstName);
+	addPlayer(creature);
+
+	// Remove the old name from other people's friends lists
+	ghost->removeAllReverseFriends(oldFirstName);
+
+	// Update mysql characters table
+	String characterFirstName = creature->getFirstName();
+	Database::escapeString(characterFirstName);
+
+	int galaxyID = server->getGalaxyID();
+
+	StringBuffer charDirtyQuery;
+	charDirtyQuery
+			<< "UPDATE `characters_dirty` SET `firstname` = '"  << characterFirstName
+			<< "' WHERE `character_oid` = '" << creature->getObjectID()
+			<< "' AND `galaxy_id` = '" << galaxyID << "'";
+
+	ServerDatabase::instance()->executeStatement(charDirtyQuery);
+
+	StringBuffer charQuery;
+	charQuery
+			<< "UPDATE `characters` SET `firstname` = '"  << characterFirstName
+			<< "' WHERE `character_oid` = '" << creature->getObjectID()
+			<< "' AND `galaxy_id` = '" << galaxyID << "'";
+
+	ServerDatabase::instance()->executeStatement(charQuery);
+
+	// Success, return empty string
+	return "";
+}
+
+String PlayerManagerImplementation::setLastName(CreatureObject* creature, const String& newLastName, bool skipVerify) {
+    if (creature == nullptr)
+		return "nullptr creature specified";
+
+	if (!creature->isPlayerCreature())
+		return "Can only set LastName on players.";
+
+	auto ghost = creature->getPlayerObject();
+
+	if (ghost == nullptr)
+		return "missing ghost";
+
+	Locker locker(creature, ghost);
+
+	String oldFirstName = creature->getFirstName();
+	String newFullName = oldFirstName;
+
+	if (!newLastName.isEmpty())
+		newFullName = oldFirstName + " " + newLastName;
+
+	if (!skipVerify) {
+		auto nameManager = processor->getNameManager();
+
+		int result = nameManager->validateName(newFullName, creature->getSpecies());
+
+		switch (result) {
+		case NameManagerResult::ACCEPTED:
+			break;
+		case NameManagerResult::DECLINED_RACE_INAPP:
+			return "That name is inappropriate for the player's species.";
+			break;
+		case NameManagerResult::DECLINED_PROFANE:
+			return "That name is profane.";
+			break;
+		case NameManagerResult::DECLINED_DEVELOPER:
+			return "That is a developer's name.";
+			break;
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+			return "That name is a reserved fictional name.";
+			break;
+		case NameManagerResult::DECLINED_RESERVED:
+			return "That name is reserved.";
+			break;
+		case NameManagerResult::DECLINED_SYNTAX:
+			return "That name contains invalid syntax.";
+			break;
+		}
+	}
+
+	creature->setCustomObjectName(newFullName, true);
+
+	// If staff fix their staff tags
+	if (ghost->hasGodMode())
+		updatePermissionName(creature, ghost->getAdminLevel());
+
+	// Update mysql characters table
+	String characterLastName = creature->getLastName();
+	Database::escapeString(characterLastName);
+
+	int galaxyID = server->getGalaxyID();
+
+	StringBuffer charDirtyQuery;
+	charDirtyQuery
+			<< "UPDATE `characters_dirty` SET `surname` = '"  << characterLastName
+			<< "' WHERE `character_oid` = '" << creature->getObjectID()
+			<< "' AND `galaxy_id` = '" << galaxyID << "'";
+
+	ServerDatabase::instance()->executeStatement(charDirtyQuery);
+
+	StringBuffer charQuery;
+	charQuery
+			<< "UPDATE `characters` SET `surname` = '"  << characterLastName
+			<< "' WHERE `character_oid` = '" << creature->getObjectID()
+			<< "' AND `galaxy_id` = '" << galaxyID << "'";
+
+	ServerDatabase::instance()->executeStatement(charQuery);
+
+	// Success, return empty string
+	return "";
+}
+
 void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player) {
 	Zone* zone = server->getZone("tutorial");
 
@@ -5645,4 +5825,30 @@ void PlayerManagerImplementation::unlockFRSForTesting(CreatureObject* player, in
 	*luaFrsTesting << councilType;
 
 	luaFrsTesting->callFunction();
+}
+
+Vector<uint64> PlayerManagerImplementation::getOnlinePlayerList() {
+	Vector<uint64> playerList;
+
+	Locker locker(&onlineMapMutex);
+
+	HashTableIterator<uint32, Vector<Reference<ZoneClientSession*> > > iter = onlineZoneClientMap.iterator();
+
+	while (iter.hasNext()) {
+		Vector<Reference<ZoneClientSession*> > clients = iter.next();
+
+		for (int i = 0; i < clients.size(); i++) {
+			ZoneClientSession* session = clients.get(i);
+
+			if (session != NULL) {
+				CreatureObject* player = session->getPlayer();
+
+				if (player != NULL) {
+					playerList.add(player->getObjectID());
+				}
+			}
+		}
+	}
+
+	return playerList;
 }

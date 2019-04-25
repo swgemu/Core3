@@ -17,7 +17,7 @@ class LockMockSceneObject : public MockSceneObject {
 };
 
 
-class GeneralDeadlockTestBase : public ::testing::Test {
+class DISABLED_GeneralDeadlockTestBase : public ::testing::Test {
 public:
 	Reference<LockMockSceneObject*> sceneObject1;
 	Reference<LockMockSceneObject*> sceneObject2;
@@ -26,11 +26,11 @@ public:
 
 	Reference<LockMockSceneObject*> monitor;
 
-	GeneralDeadlockTestBase() {
+	DISABLED_GeneralDeadlockTestBase() {
 		// Perform creation setup here.
 	}
 
-	~GeneralDeadlockTestBase() {
+	~DISABLED_GeneralDeadlockTestBase() {
 		// Clean up.
 	}
 
@@ -57,7 +57,7 @@ public:
 	}
 };
 
-TEST_F(GeneralDeadlockTestBase, CrossLockTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, CrossLockTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -73,7 +73,7 @@ TEST_F(GeneralDeadlockTestBase, CrossLockTest) {
 	FAIL() << "Cross lock deadlock not detected!";
 }
 /*
-TEST_F(GeneralDeadlockTestBase, CrossLockToNullTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, CrossLockToNullTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -88,7 +88,7 @@ TEST_F(GeneralDeadlockTestBase, CrossLockToNullTest) {
 	FAIL() << "Cross lock to null lockable not detected!";
 }
 
-TEST_F(GeneralDeadlockTestBase, CrossLockToUnlockedTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, CrossLockToUnlockedTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -103,7 +103,7 @@ TEST_F(GeneralDeadlockTestBase, CrossLockToUnlockedTest) {
 	FAIL() << "Cross lock to non-locked lockable not detected!";
 }
 */
-TEST_F(GeneralDeadlockTestBase, ThreeLocksTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, ThreeLocksTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -120,7 +120,7 @@ TEST_F(GeneralDeadlockTestBase, ThreeLocksTest) {
 	FAIL() << "Could not detect a 3 way deadlock!";
 }
 
-TEST_F(GeneralDeadlockTestBase, MonitorLockTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, MonitorLockTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	Locker locker(sceneObject1);
@@ -132,7 +132,7 @@ TEST_F(GeneralDeadlockTestBase, MonitorLockTest) {
 	EXPECT_TOTAL_LOCKED(3);
 }
 
-TEST_F(GeneralDeadlockTestBase, MultipleLocksTest) {
+TEST_F(DISABLED_GeneralDeadlockTestBase, MultipleLocksTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	Locker locker(sceneObject1);

@@ -189,6 +189,17 @@ public:
 			int playerCouncil = playerData->getCouncilType();
 
 			creature->sendSystemMessage(targetObj->getFirstName() + " has a FRS rank of " + String::valueOf(playerRank) + " and a council type of " + String::valueOf(playerCouncil));
+		} else if (container == "export") {
+			StringBuffer reason = "/snoop " + targetObj->getFirstName() + " export by " + creature->getFirstName();
+
+			if (args.hasMoreTokens()) {
+				String note;
+				args.finalToken(note);
+				reason << "; Admin Note: " << note;
+			}
+
+			String exportFile = targetObj->exportJSON(reason.toString());
+			creature->sendSystemMessage(targetObj->getFirstName() + " exported to " + exportFile + " ask a server admin to review the file for you.");
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
