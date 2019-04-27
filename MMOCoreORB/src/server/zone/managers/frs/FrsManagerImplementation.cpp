@@ -2231,6 +2231,7 @@ void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* playe
 	adjustFrsExperience(player, challengeCost * -1, false);
 
 	challengeData = new ChallengeVoteData(challengedID, ChallengeVoteData::VOTING_OPEN, challengedRank, player->getObjectID());
+	ObjectManager::instance()->persistObject(challengeData, 1, "frsdata");
 	challengeData->updateChallengeVoteStart();
 
 	managerData->addLightChallenge(challengedID, challengeData);
