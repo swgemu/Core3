@@ -260,6 +260,36 @@ void CreatureObjectImplementation::finalize() {
 
 }
 
+void CreatureObjectImplementation::info(const String& msg, bool force) {
+	if (isPlayerCreature()) {
+		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::INFO);
+		return;
+	}
+
+	Logger::info(msg, force);
+	return;
+}
+
+void CreatureObjectImplementation::debug(const String& msg) {
+	if (isPlayerCreature()) {
+		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::DEBUG);
+		return;
+	}
+
+	Logger::debug(msg);
+	return;
+}
+
+void CreatureObjectImplementation::error(const String& msg) {
+	if (isPlayerCreature()) {
+		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::ERROR);
+		return;
+	}
+
+	Logger::error(msg);
+	return;
+}
+
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	auto owner = this->owner.get();
 

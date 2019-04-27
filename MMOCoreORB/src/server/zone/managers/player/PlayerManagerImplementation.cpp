@@ -108,6 +108,12 @@
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 										Logger("PlayerManager") {
+
+	playerLoggerFilename = "log/player.log";
+	playerLoggerLines = ConfigManager::instance()->getMaxLogLines();
+	playerLogger.setLoggingName("PlayerLogger");
+	playerLogger.setFileLogger(playerLoggerFilename, true);
+
 	server = zoneServer;
 	processor = impl;
 
@@ -371,6 +377,109 @@ void PlayerManagerImplementation::loadNameMap() {
 	StringBuffer msg;
 	msg << "loaded " << nameMap->size() << " character names in memory";
 	info(msg.toString(), true);
+}
+
+void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& logEntry) {
+	FileWriter* logFile = playerLogger.getFileLogger();
+	StringBuffer logLine;
+
+	logLine << logEntry.dump().c_str() << "\n";
+
+	Locker lock(&playerLoggerMutex);
+
+	(*logFile) << logLine;
+
+	logFile->flush();
+
+	// Check for log rotation
+	if (--playerLoggerLines <= 0) {
+		playerLoggerLines = ConfigManager::instance()->getMaxLogLines();
+
+		Time now;
+		StringBuffer archiveFilename;
+		archiveFilename << "log/players-" << now.getMiliTime() << ".log";
+
+		// If the rename failed its ok because we open with append below
+		int err = std::rename(playerLoggerFilename.toCharArray(), archiveFilename.toString().toCharArray());
+
+		// report failure if any
+		if (err != 0) {
+			Logger::info("Failed to archive player log to " + archiveFilename.toString() + " err = " + err);
+		}
+
+		playerLogger.setFileLogger(playerLoggerFilename, true);
+	}
+}
+
+JSONSerializationType PlayerManagerImplementation::basePlayerLogEntry(CreatureObject* creature, PlayerObject* ghost) {
+	JSONSerializationType logEntry;
+	Time time;
+
+	logEntry["@timestamp"] = time.getFormattedTimeFull().toCharArray();
+	logEntry["time_msecs"] = time.getMiliTime();
+
+	Thread* currentThread = Thread::getCurrentThread();
+
+	if (currentThread != nullptr)
+		logEntry["thread"] = currentThread->getName();
+
+	if (creature != nullptr) {
+		Locker locker(creature);
+		logEntry["oid"] = creature->getObjectID();
+		logEntry["first_name"] = creature->getFirstName();
+	} else {
+		logEntry["oid"] = ghost != nullptr ? ghost->getObjectID() : 0;
+		logEntry["first_name"] = "-ghost-";
+	}
+
+	if (ghost != nullptr) {
+		Locker locker(ghost);
+		logEntry["account_id"] = ghost->getAccountID();
+		logEntry["played_ms"] = ghost->getPlayedMiliSecs();
+		logEntry["session_ms"] = ghost->getSessionMiliSecs();
+	}
+
+	logEntry["uptime_secs"] = playerLogger.getElapsedTime();
+
+	return logEntry;
+}
+
+void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, PlayerObject* ghost, const String& msg, int logLevelType) {
+	if (logLevelType > ghost->getLogLevel())
+		return;
+
+	JSONSerializationType logEntry = basePlayerLogEntry(creature, ghost);
+
+	logEntry["type"] = "log";
+	logEntry["log"] = msg;
+	logEntry["log_level"] = playerLogger.getLogType((Logger::LogLevel)logLevelType);
+	logEntry["log_tag"] = playerLogger.getLoggingName();
+
+	writePlayerLogEntry(logEntry);
+}
+
+void PlayerManagerImplementation::writePlayerLog(PlayerObject* ghost, const String& msg, int logLevelType) {
+	if (ghost == nullptr)
+		return;
+
+	Reference<CreatureObject*> creature = ghost->getParent().get()->asCreatureObject();
+
+	if (creature == nullptr)
+		return;
+
+	PlayerManagerImplementation::writePlayerLog(creature, ghost, msg, logLevelType);
+}
+
+void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, const String& msg, int logLevelType) {
+	if (creature == nullptr)
+		return;
+
+	Reference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	PlayerManagerImplementation::writePlayerLog(creature, ghost, msg, logLevelType);
 }
 
 int PlayerManagerImplementation::getPlayerQuestID(const String& name) {

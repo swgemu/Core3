@@ -4,6 +4,7 @@
 
 package server.zone.objects.player;
 
+import engine.log.Logger;
 import engine.service.proto.BaseMessage;
 import engine.service.proto.BasePacket;
 import engine.util.u3d.Vector3;
@@ -47,6 +48,8 @@ include server.zone.objects.scene.variables.DeltaBitArray;
 
 @json
 class PlayerObject extends IntangibleObject {
+	protected int playerLogLevel;
+
 	protected unsigned int characterBitmask;
 	protected string title;
 
@@ -296,6 +299,8 @@ class PlayerObject extends IntangibleObject {
 	public static final unsigned long PVP_RESET_TIME = 259200000; // 3 days
 
 	public PlayerObject() {
+		playerLogLevel = 4; // INFO
+
 		characterBitmask = 0;
 
 		commandMessageStrings.setNoDuplicateInsertPlan();
@@ -381,12 +386,29 @@ class PlayerObject extends IntangibleObject {
 
 		miliSecsPlayed = 0;
 
-		Logger.setLoggingName("PlayerObject");
+		Logger.setLoggingName("PlayerObjectBase");
 	}
 
 	public void finalize() {
 
 	}
+
+    @dirty
+    @nativeStub
+    @local
+    public native PlayerObject asPlayerObject();
+
+	public void setLogLevel(int newLevel) {
+		playerLogLevel = newLevel;
+	}
+
+	public int getLogLevel() {
+		return playerLogLevel;
+	}
+
+    public native void info(final string msg, boolean force = false);
+    public native void debug(final string msg);
+    public native void error(final string msg);
 
 	public void setClientPathWaypoint(SceneObject obj) {
 		currentClientPathWaypoint = obj;
