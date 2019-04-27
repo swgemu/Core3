@@ -91,7 +91,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	const String& characterAbility = queueCommand->getCharacterAbility();
 
 	if (characterAbility.length() > 1) {
-		object->info("activating characterAbility " + characterAbility);
+		object->debug("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
 			Reference<PlayerObject*> playerObject =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
