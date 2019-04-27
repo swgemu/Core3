@@ -43,10 +43,21 @@ include system.util.Vector;
 include system.lang.ref.Reference;
 include server.zone.managers.player.XpBonusList;
 import server.zone.ZoneClientSession;
+import system.thread.Mutex;
+include engine.util.JSONSerializationType;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
+
+	@dereferenced
+	private transient Logger playerLogger;
+
+	private transient string playerLoggerFilename;
+
+	@dereferenced
+	protected transient Mutex playerLoggerMutex;
+	protected transient int playerLoggerLines = 0;
 
 	// Used for frog/gm buffs
 	protected int performanceBuff;
@@ -414,6 +425,22 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void fixHAM(CreatureObject player);
 	public native void fixBuffSkillMods(CreatureObject player);
+
+	@local
+	@dereferenced
+	public native JSONSerializationType basePlayerLogEntry(CreatureObject creature, PlayerObject ghost);
+
+	@local
+	public native void writePlayerLogEntry(@dereferenced JSONSerializationType logEntry);
+
+	@local
+	public native void writePlayerLog(CreatureObject creature, PlayerObject ghost, final string msg, int logLevelType);
+
+	@local
+	public native void writePlayerLog(PlayerObject ghost, final string msg, int logLevelType);
+
+	@local
+	public native void writePlayerLog(CreatureObject creature, final string msg, int logLevelType);
 
 	public native int getPlayerQuestID(final string name);
 	public native string getPlayerQuestParent(int questID);
