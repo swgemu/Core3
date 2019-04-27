@@ -1596,7 +1596,9 @@ void PlayerObjectImplementation::logout(bool doLock) {
 
 			Reference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
-			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast(), true);
+			int isInSafeArea = creature->getSkillMod("private_safe_logout");
+
+			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast(), isInSafeArea);
 
 			if (isLoggingOut()) {
 				disconnectEvent->schedule(10);
