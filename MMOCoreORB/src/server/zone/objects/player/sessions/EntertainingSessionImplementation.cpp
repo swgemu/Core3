@@ -238,7 +238,7 @@ void EntertainingSessionImplementation::activateAction() {
 
 	startTickTask();
 
-	entertainer->info("EntertainerEvent completed.");
+	// entertainer->info("EntertainerEvent completed.");
 }
 
 void EntertainingSessionImplementation::startTickTask() {

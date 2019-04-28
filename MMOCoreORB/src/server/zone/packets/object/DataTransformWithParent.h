@@ -168,7 +168,7 @@ public:
 
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;
-			msg << "position out of bounds cell:[" << parent << "]";
+			msg << "position out of bounds cell:[" << parent << "] " << positionX << " " << positionY;
 			object->error(msg.toString());
 
 			return;
@@ -244,8 +244,9 @@ public:
 			const CellProperty *cellProperty = layout->getCellProperty(newParent->getCellNumber());
 			if (!cellProperty->hasConnectedCell(currentCell != NULL ? currentCell->getCellNumber() : 0)) {
 				StringBuffer buf;
-				buf << object->getObjectID() << " Attempted to change parents to a cell not connected to the previous parent" << endl;
-				buf << "X: " << positionX << "Y: " << positionY << "Z: " << positionZ << " parentID: " << parent;
+				String zoneName = object->getZone()->getZoneName();
+				buf << object->getObjectID() << " Attempted to change parents to a cell not connected to the previous parent: ";
+				buf << "X: " << positionX << " Y: " << positionY << " Z: " << positionZ << " zone:" << zoneName << " parentID: " << parent;
 //				for (int i : cellProperty->getConnectedCells()) {
 //					buf << "ConnectedCell: " << i << endl;
 //				}

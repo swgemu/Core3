@@ -111,9 +111,11 @@ public:
 			return;
 
 		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f) {
+			/*
 			StringBuffer msg;
 			msg << "position out of bounds";
 			object->error(msg.toString());
+			*/
 
 			return;
 		}

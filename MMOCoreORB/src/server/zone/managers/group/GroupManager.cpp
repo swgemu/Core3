@@ -171,7 +171,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		return;
     }
 
-	player->info("joining group");
+	player->debug("joining group");
 
 	player->updateGroup(group);
 	group->addMember(player);
@@ -344,7 +344,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		if (player->isPlayerCreature())
 			group->sendDestroyTo(player);
 
-		player->info("leaving group");
+		player->debug("leaving group");
 
 		if (group->getGroupSize() < 2) {
 			group->disband();
