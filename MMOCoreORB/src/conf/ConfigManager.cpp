@@ -175,6 +175,9 @@ bool ConfigManager::loadConfigData() {
 
 	characterBuilderEnabled = getGlobalBoolean("CharacterBuilderEnabled");
 
+	playerLogLevel = getGlobalInt("PlayerLogLevel");
+	maxLogLines = getGlobalInt("MaxLogLines");
+
 	return true;
 }
 

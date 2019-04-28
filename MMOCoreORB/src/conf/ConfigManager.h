@@ -97,6 +97,9 @@ namespace conf {
 
 		bool characterBuilderEnabled = true;
 
+		int playerLogLevel = 4;
+		int maxLogLines = 1000000;
+
 	public:
 		ConfigManager();
 
@@ -384,6 +387,14 @@ namespace conf {
 
 		inline bool getCharacterBuilderEnabled() const {
 			return characterBuilderEnabled;
+		}
+
+		inline int getPlayerLogLevel() const {
+			return playerLogLevel;
+		}
+
+		inline int getMaxLogLines() const {
+			return maxLogLines;
 		}
 	};
 }

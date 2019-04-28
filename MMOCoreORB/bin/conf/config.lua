@@ -233,6 +233,9 @@ InactiveAccountText = "The server administrators have disabled your account."
 
 CharacterBuilderEnabled = "true" -- Enable character builder terminals by default
 
+PlayerLogLevel = 4 -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
+MaxLogLines = 1000000 -- how often to rotate log (currently only log/player.log rotates)
+
 local localFile = loadfile("conf/config-local.lua")
 
 if (localFile ~= nil) then

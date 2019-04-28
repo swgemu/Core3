@@ -74,7 +74,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 		/*if (!selectedObject->checkContainerPermission(player, ContainerPermissions::USE))
 			return;*/
 
-		selectedObject->info("entering radial call " + String::valueOf(selectID));
+		selectedObject->debug("entering radial call " + String::valueOf(selectID));
 		selectedObject->handleObjectMenuSelect(player, selectID);
 
 		selectedObject->notifyObservers(ObserverEventType::OBJECTRADIALUSED, player, selectID);

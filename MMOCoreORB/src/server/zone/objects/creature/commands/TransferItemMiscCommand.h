@@ -26,9 +26,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		/*
 		creature->info("transfer item misc");
 
-		/*
 		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
 		creature->info(infoMsg.toString(), true); */
@@ -145,7 +145,7 @@ public:
 			if (errorDescription.length() > 1)
 				creature->sendSystemMessage(errorDescription);
 			else
-				creature->error("cannot add objectToTransfer to destinationObject " + String::valueOf(errorNumber));
+				creature->error("cannot add objectToTransfer to destinationObject: errorNumber: " + String::valueOf(errorNumber) + " destinationID: " + String::valueOf(destinationID));
 			return GENERALERROR;
 		}
 
