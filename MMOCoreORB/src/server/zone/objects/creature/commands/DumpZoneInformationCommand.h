@@ -103,6 +103,21 @@ public:
 		creature->sendSystemMessage(msg.toString());
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+
+		// Dump first 10 active areas
+		SortedVector<ManagedReference<ActiveArea*>> areas = *player->getActiveAreas();
+
+		if (areas.size() > 0) {
+			msg << endl << "-- active area detail (max 10) --" << endl << endl;
+
+			for (int i = 0; i < Math::min(areas.size(), 10); ++i) {
+					ManagedReference<ActiveArea*>& area = areas.get(i);
+					JSONSerializationType areaJSON;
+					area->writeJSON(areaJSON);
+					msg << areaJSON.dump().c_str() << endl << endl;
+			}
+		}
+
 		chatManager->sendMail("System", "dumpZoneInformation", msg.toString(), player->getFirstName());
 
 		return SUCCESS;
