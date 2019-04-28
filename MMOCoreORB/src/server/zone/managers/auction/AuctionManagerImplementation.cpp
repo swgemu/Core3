@@ -1196,45 +1196,48 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					}
 				case ST_ALL: // All Auctions (Bazaar)
 					if (item->getStatus() == AuctionItem::FORSALE) {
-						if(checkItemCategory(itemCategory, item)) {
-							if (displaying >= offset) {
-								if (minPrice != 0 || maxPrice != 0) {
-									int itemPrice = item->getPrice();
+						if (!checkItemCategory(itemCategory, item))
+							continue;
 
-									if (includeEntranceFee) {
-										ManagedReference<SceneObject*> itemVendor = player->getZoneServer()->getObject(item->getVendorID());
+						if (minPrice != 0 || maxPrice != 0) {
+							int itemPrice = item->getPrice();
 
-										if (itemVendor != nullptr && itemVendor->isVendor()) {
-											int accessFee = 0;
-											ManagedReference<SceneObject*> parent = itemVendor->getRootParent();
+							if (includeEntranceFee) {
+								ManagedReference<SceneObject*> itemVendor = player->getZoneServer()->getObject(item->getVendorID());
 
-											if(parent != nullptr && parent->isBuildingObject()) {
-												BuildingObject* building = cast<BuildingObject*>(parent.get());
+								if (itemVendor != nullptr && itemVendor->isVendor()) {
+									int accessFee = 0;
+									ManagedReference<SceneObject*> parent = itemVendor->getRootParent();
 
-												if(building != nullptr)
-													accessFee = building->getAccessFee();
-											}
+									if(parent != nullptr && parent->isBuildingObject()) {
+										BuildingObject* building = cast<BuildingObject*>(parent.get());
 
-											itemPrice += accessFee;
-										}
+										if(building != nullptr)
+											accessFee = building->getAccessFee();
 									}
 
-									if ((minPrice != 0 && itemPrice < minPrice) || (maxPrice != 0 && itemPrice > maxPrice))
-										continue;
+									itemPrice += accessFee;
 								}
-
-								if (!filterText.isEmpty()) {
-									String lowerFilter = filterText.toString().toLowerCase();
-									String itemName = item->getItemName().toLowerCase();
-
-									if (itemName.indexOf(lowerFilter) == -1)
-										continue;
-								}
-
-								reply->addItemToList(item);
 							}
-							displaying++;
+
+							if ((minPrice != 0 && itemPrice < minPrice) || (maxPrice != 0 && itemPrice > maxPrice))
+								continue;
 						}
+
+						if (!filterText.isEmpty()) {
+							String lowerFilter = filterText.toString().toLowerCase();
+							String itemName = item->getItemName().toLowerCase();
+
+							if (itemName.indexOf(lowerFilter) == -1)
+								continue;
+						}
+
+
+						if (displaying >= offset) {
+							reply->addItemToList(item);
+						}
+
+						displaying++;
 					}
 					break;
 				case ST_PLAYER_SALES: // My auctions/sales
