@@ -455,6 +455,14 @@ void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, Playe
 	logEntry["log_level"] = playerLogger.getLogType((Logger::LogLevel)logLevelType);
 	logEntry["log_tag"] = playerLogger.getLoggingName();
 
+	// Add additional info on error
+	if (logLevelType == Logger::LogLevel::ERROR) {
+		logEntry["worldPositionX"] = (int)creature->getWorldPositionX();
+		logEntry["worldPositionZ"] = (int)creature->getWorldPositionZ();
+		logEntry["worldPositionY"] = (int)creature->getWorldPositionY();
+		logEntry["zone"] = creature->getZone()->getZoneName();
+	}
+
 	writePlayerLogEntry(logEntry);
 }
 

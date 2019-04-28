@@ -75,7 +75,7 @@ public:
 			}
 
 			if ((incr++) > 200) {
-				creature->info("GetAttributesBatchCommand: Objects attribute limit exceeded: arguments: " + arguments.toString());
+				creature->error("GetAttributesBatchCommand: Objects attribute limit exceeded: arguments: " + arguments.toString());
 
 				return GENERALERROR;
 			}
