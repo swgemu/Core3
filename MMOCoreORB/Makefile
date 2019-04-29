@@ -80,7 +80,7 @@ rebuild: clean
 	${MAKE} build
 
 gitlog:
-	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
+	cd bin/conf && git log --no-merges --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
 
 idl:
 	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
