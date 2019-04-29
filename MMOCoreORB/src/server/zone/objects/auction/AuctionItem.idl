@@ -71,7 +71,7 @@ class AuctionItem extends ManagedObject {
 
 		onBazaar = false;
 		
-		isCrate = 0;
+		isCrate = false;
 		cratedItemType = 0;
 
 		buyerID = 0;
