@@ -1134,10 +1134,10 @@ bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* 
 	int cratedItemType = item->getCratedItemType();
 
 	if (category & 255) { // Searching a sub category
-		if (itemType == category || (isCrate && cratedItemType == category)) {
+		if (itemType == category || (isCrate && cratedItemType > 0 && cratedItemType == category)) {
 			return true;
 		}
-	} else if ((itemType & category) || (isCrate && (cratedItemType & category))) {
+	} else if ((itemType & category) || (isCrate && cratedItemType > 0 && (cratedItemType & category))) { // Searching main category
 		return true;
 	} else if ((category == 8192) && (itemType < 256 || (isCrate && cratedItemType < 256))) {
 		return true;
@@ -1419,6 +1419,18 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 		object->getAttributeListComponent()->fillAttributeList(msg, player, object);
 	} else
 		object->fillAttributeList(msg, player);
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isPrivileged()) {
+		msg->insertAttribute("Item Type", auctionItem->getItemType());
+		bool isCrate = auctionItem->isFactoryCrate();
+		msg->insertAttribute("Is Factory Crate:", isCrate);
+
+		if (isCrate) {
+			msg->insertAttribute("Crated Item Type:", auctionItem->getCratedItemType());
+		}
+	}
 
 	//msg->insertInt(0);
 	String templateFile = TemplateManager::instance()->getTemplateFile(object->getClientObjectCRC());
