@@ -217,6 +217,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		// Don't spawn character builder terminals if they're not enabled
 		if (templateFile == "object/tangible/terminal/terminal_character_builder.iff" && !ConfigManager::instance()->getCharacterBuilderEnabled()) {
+			planetObject.pop();
 			continue;
 		}
 
@@ -258,10 +259,8 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 }
 
 void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
-	if (!badges->isValidTable()) {
-		info("No badgeAreas", true);
+	if (!badges->isValidTable())
 		return;
-	}
 
 	uint32 hashCode = STRING_HASHCODE("object/badge_area.iff");
 
@@ -291,14 +290,7 @@ void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
 
 		zone->transferObject(obj, -1, false);
 		objLocker.release();
-		info("Loaded badgeArea " + badgeName, true);
 		badge.pop();
-	}
-
-	if (badges->getTableSize() >= 1) {
-		info("Loaded " + String::valueOf(badges->getTableSize()) + " badge area(s)", true);
-	} else {
-		info("No badge areas to load.");
 	}
 }
 
