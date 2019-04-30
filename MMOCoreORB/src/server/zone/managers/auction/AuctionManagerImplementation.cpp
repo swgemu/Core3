@@ -174,13 +174,14 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
+	int count_total = 0;
+	int count_updated = 0;
+
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*>& list = items->get(i);
 
 		if (list == nullptr || list->size() == 0)
 			continue;
-
-		info(logTag + " (" + String::valueOf(i+1) + " of " + String::valueOf(items->size()) + ") Checking " + String::valueOf(list->size()) + " auction item(s)", true);
 
 		for (int j = 0; j < list->size(); ++j) {
 			ManagedReference<AuctionItem*> item = list->get(j);
@@ -189,6 +190,8 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				continue;
 
 			Locker locker(item);
+
+			count_total++;
 
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
@@ -236,26 +239,26 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 							if (prototype != nullptr) {
 								item->setFactoryCrate(true);
 								item->setCratedItemType(prototype->getClientGameObjectType());
-								sellingItem->info("setFactoryCrate(true)", true);
 							}
 						}
 					} else {
 						if (item->isFactoryCrate()) {
 							item->setFactoryCrate(false);
-							sellingItem->info("setFactoryCrate(false)", true);
 						}
 
 						if (item->getCratedItemType() != 0) {
 							item->setCratedItemType(0);
-							sellingItem->info("setCratedItemType(0)", true);
 						}
 					}
 				}
 
 				item->setUpdated(true);
+				count_updated++;
 			}
 		}
 	}
+
+	info(logTag + " Checked " + String::valueOf(count_total) + " auction item(s) and updated " + String::valueOf(count_updated) + " item(s)", true);
 }
 
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, SceneObject* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
