@@ -139,35 +139,48 @@ void AuctionManagerImplementation::initialize() {
 }
 
 void AuctionManagerImplementation::checkVendorItems() {
+    Timer timer(Time::MONOTONIC_TIME);
 
+	timer.start();
 	TerminalListVector items = auctionMap->getVendorTerminalData("", "", 0);
 
 	info("Checking " + String::valueOf(items.size()) + " vendor terminals", true);
 
-	doAuctionMaint(&items);
+	doAuctionMaint(&items, "vendor");
+
+	auto elapsed = timer.stopMs();
+
+	info("Vendor terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
 void AuctionManagerImplementation::checkAuctions() {
-
 	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
+    Timer timer(Time::MONOTONIC_TIME);
+	timer.start();
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
 
 	info("Checking " + String::valueOf(items.size()) + " bazaar terminals", true);
 
-	doAuctionMaint(&items);
+	doAuctionMaint(&items, "bazaar");
+
+	auto elapsed = timer.stopMs();
+
+	info("Bazaar terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
-void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
+void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, const String& logTag) {
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*>& list = items->get(i);
 
-		if (list == nullptr)
+		if (list == nullptr || list->size() == 0)
 			continue;
+
+		info(logTag + " (" + String::valueOf(i+1) + " of " + String::valueOf(items->size()) + ") Checking " + String::valueOf(list->size()) + " auction item(s)", true);
 
 		for (int j = 0; j < list->size(); ++j) {
 			ManagedReference<AuctionItem*> item = list->get(j);
@@ -224,14 +237,19 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 							if (prototype != nullptr) {
 								item->setFactoryCrate(true);
 								item->setCratedItemType(prototype->getClientGameObjectType());
+								sellingItem->info("setFactoryCrate(true)", true);
 							}
 						}
 					} else {
-						if (item->isFactoryCrate())
+						if (item->isFactoryCrate()) {
 							item->setFactoryCrate(false);
+							sellingItem->info("setFactoryCrate(false)", true);
+						}
 
-						if (item->getCratedItemType() != 0)
+						if (item->getCratedItemType() != 0) {
 							item->setCratedItemType(0);
+							sellingItem->info("setCratedItemType(0)", true);
+						}
 					}
 				}
 			}, "UpdateAuctionItemLambda", "slowQueue");
