@@ -165,67 +165,76 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*>& list = items->get(i);
+
 		if (list == nullptr)
 			continue;
 
 		for (int j = 0; j < list->size(); ++j) {
 			ManagedReference<AuctionItem*> item = list->get(j);
+
 			if (item == nullptr)
 				continue;
 
 			Locker locker(item);
 
-			ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(item->getAuctionedItemObjectID());
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
 			if(vendor == nullptr || vendor->getZone() == nullptr) {
+				uint64 sellingId = item->getAuctionedItemObjectID();
 				auctionMap->deleteItem(vendor, item);
 
-				if (sellingItem != nullptr) {
-					Core::getTaskManager()->executeTask([this, sellingItem] () {
-							Locker locker(sellingItem);
-							sellingItem->destroyObjectFromDatabase(true);
-						}, "DeleteAuctionItemLambda", "slowQueue");
-				}
+				Core::getTaskManager()->executeTask([this, sellingId] () {
+						ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
+
+						if (sceno != nullptr) {
+							Locker locker(sceno);
+
+							sceno->destroyObjectFromDatabase(true);
+						}
+					}, "DeleteAuctionItemLambda", "slowQueue");
 
 				continue;
-			}
-
-			if (sellingItem == nullptr) {
-				auctionMap->deleteItem(vendor, item);
-				continue;
-			}
-
-			if (sellingItem->isFactoryCrate()) {
-				Locker clocker(sellingItem, item);
-				Reference<FactoryCrate*> crate = sellingItem.castTo<FactoryCrate*>();
-
-				if (crate != nullptr) {
-					ManagedReference<TangibleObject*> prototype = crate->getPrototype();
-
-					if (prototype != nullptr) {
-						item->setFactoryCrate(true);
-						item->setCratedItemType(prototype->getClientGameObjectType());
-					}
-				}
-			} else {
-				if (item->isFactoryCrate())
-					item->setFactoryCrate(false);
-
-				if (item->getCratedItemType() != 0)
-					item->setCratedItemType(0);
 			}
 
 			if (item->getExpireTime() <= currentTime) {
 				if (item->getStatus() == AuctionItem::EXPIRED) {
 					expireSale(item);
+					continue;
 				}
 			}
 
 			if (item->getStatus() == AuctionItem::RETRIEVED) {
-
 				auctionMap->deleteItem(vendor, item);
+				continue;
 			}
+
+			Core::getTaskManager()->executeTask([this, item] () {
+				Locker locker(item);
+				uint64 sellingId = item->getAuctionedItemObjectID();
+				ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(sellingId);
+
+				if (sellingItem != nullptr) {
+					if (sellingItem->isFactoryCrate()) {
+						Locker clocker(sellingItem, item);
+						Reference<FactoryCrate*> crate = sellingItem.castTo<FactoryCrate*>();
+
+						if (crate != nullptr) {
+							ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+
+							if (prototype != nullptr) {
+								item->setFactoryCrate(true);
+								item->setCratedItemType(prototype->getClientGameObjectType());
+							}
+						}
+					} else {
+						if (item->isFactoryCrate())
+							item->setFactoryCrate(false);
+
+						if (item->getCratedItemType() != 0)
+							item->setCratedItemType(0);
+					}
+				}
+			}, "UpdateAuctionItemLambda", "slowQueue");
 		}
 	}
 }
