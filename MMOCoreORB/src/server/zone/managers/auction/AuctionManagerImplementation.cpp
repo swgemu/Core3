@@ -175,43 +175,45 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 
 			Locker locker(item);
 
+			ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(item->getAuctionedItemObjectID());
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
 			if(vendor == nullptr || vendor->getZone() == nullptr) {
-				uint64 objectId = item->getAuctionedItemObjectID();
-
 				auctionMap->deleteItem(vendor, item);
 
-				Core::getTaskManager()->executeTask([this, objectId] () {
-						ManagedReference<SceneObject*> sceno = zoneServer->getObject(objectId);
-
-				if (sceno != nullptr) {
-							Locker locker(sceno);
-
-							sceno->destroyObjectFromDatabase(true);
-						}
-					}, "DeleteAuctionItemLambda", "slowQueue");
+				if (sellingItem != nullptr) {
+					Core::getTaskManager()->executeTask([this, sellingItem] () {
+							Locker locker(sellingItem);
+							sellingItem->destroyObjectFromDatabase(true);
+						}, "DeleteAuctionItemLambda", "slowQueue");
+				}
 
 				continue;
 			}
 
-			if (!item->isFactoryCrate()) {
-				uint64 objectId = item->getAuctionedItemObjectID();
-				ManagedReference<SceneObject*> sceno = zoneServer->getObject(objectId);
+			if (sellingItem == nullptr) {
+				auctionMap->deleteItem(vendor, item);
+				continue;
+			}
 
-				if (sceno != nullptr && sceno->isFactoryCrate()) {
-					Locker clocker(sceno, item);
-					Reference<FactoryCrate*> crate = sceno.castTo<FactoryCrate*>();
+			if (sellingItem->isFactoryCrate()) {
+				Locker clocker(sellingItem, item);
+				Reference<FactoryCrate*> crate = sellingItem.castTo<FactoryCrate*>();
 
-					if (crate != nullptr) {
-						ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+				if (crate != nullptr) {
+					ManagedReference<TangibleObject*> prototype = crate->getPrototype();
 
-						if (prototype != nullptr) {
-							item->setFactoryCrate(true);
-							item->setCratedItemType(prototype->getClientGameObjectType());
-						}
+					if (prototype != nullptr) {
+						item->setFactoryCrate(true);
+						item->setCratedItemType(prototype->getClientGameObjectType());
 					}
 				}
+			} else {
+				if (item->isFactoryCrate())
+					item->setFactoryCrate(false);
+
+				if (item->getCratedItemType() != 0)
+					item->setCratedItemType(0);
 			}
 
 			if (item->getExpireTime() <= currentTime) {
