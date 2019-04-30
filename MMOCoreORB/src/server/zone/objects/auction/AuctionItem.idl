@@ -330,4 +330,14 @@ class AuctionItem extends ManagedObject {
 	public void setFactoryCrate(boolean crate) {
 		isCrate = crate;
 	}
+	
+	@preLocked
+	public void setUpdated(boolean val) {
+		updated = val;
+	}
+
+	@read
+	public boolean isUpdated() {
+		return updated;
+	}
 }

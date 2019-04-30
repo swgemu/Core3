@@ -113,12 +113,12 @@ class AuctionManager extends ManagedService implements Logger {
 		return auctionMap;
 	}
 	
-	public native void checkVendorItems();
+	public native void checkVendorItems(boolean startupTask = false);
 	
-	public native void checkAuctions();
+	public native void checkAuctions(boolean startupTask = false);
 	
 	@local
-	private native void doAuctionMaint(TerminalListVector items, final string logTag);
+	private native void doAuctionMaint(TerminalListVector items, final string logTag, boolean startupTask);
 
 	public native string getVendorUID(SceneObject vendor);
 	

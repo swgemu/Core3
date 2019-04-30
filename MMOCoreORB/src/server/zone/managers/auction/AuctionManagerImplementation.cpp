@@ -130,15 +130,15 @@ void AuctionManagerImplementation::initialize() {
 
 	locker.release();
 
-	checkAuctions();
-	checkVendorItems();
+	checkAuctions(true);
+	checkVendorItems(true);
 
 	info("loaded auctionsMap of size: " + String::valueOf(auctionMap->getTotalItemCount()), true);
 
 	marketEnabled = true;
 }
 
-void AuctionManagerImplementation::checkVendorItems() {
+void AuctionManagerImplementation::checkVendorItems(bool startupTask) {
     Timer timer(Time::MONOTONIC_TIME);
 
 	timer.start();
@@ -146,14 +146,14 @@ void AuctionManagerImplementation::checkVendorItems() {
 
 	info("Checking " + String::valueOf(items.size()) + " vendor terminals", true);
 
-	doAuctionMaint(&items, "vendor");
+	doAuctionMaint(&items, "vendor", startupTask);
 
 	auto elapsed = timer.stopMs();
 
 	info("Vendor terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
-void AuctionManagerImplementation::checkAuctions() {
+void AuctionManagerImplementation::checkAuctions(bool startupTask) {
 	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
@@ -163,14 +163,14 @@ void AuctionManagerImplementation::checkAuctions() {
 
 	info("Checking " + String::valueOf(items.size()) + " bazaar terminals", true);
 
-	doAuctionMaint(&items, "bazaar");
+	doAuctionMaint(&items, "bazaar", startupTask);
 
 	auto elapsed = timer.stopMs();
 
 	info("Bazaar terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
-void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, const String& logTag) {
+void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, const String& logTag, bool startupTask) {
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
@@ -221,8 +221,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				continue;
 			}
 
-			Core::getTaskManager()->executeTask([this, item] () {
-				Locker locker(item);
+			if (startupTask && !item->isUpdated()) {
 				uint64 sellingId = item->getAuctionedItemObjectID();
 				ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(sellingId);
 
@@ -252,7 +251,9 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 						}
 					}
 				}
-			}, "UpdateAuctionItemLambda", "slowQueue");
+
+				item->setUpdated(true);
+			}
 		}
 	}
 }
