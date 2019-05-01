@@ -2041,7 +2041,7 @@ Vector<uint64>* FrsManagerImplementation::getTopVotes(FrsRank* rankData, int num
 			if (winnerList->contains(petitionerID))
 				continue;
 
-			if (petitionerVotes > highestVote || (petitionerVotes == highestVote && System::random(100) > 50)) {
+			if (highestID == 0 || petitionerVotes > highestVote || (petitionerVotes == highestVote && System::random(100) > 50)) {
 				highestVote = petitionerVotes;
 				highestID = petitionerID;
 				highestIndex = j;
