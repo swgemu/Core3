@@ -2313,7 +2313,7 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 		return;
 	}
 
-	player->info("requesting duel with " + targetPlayer->getObjectID());
+	player->info("requesting duel with " + String::valueOf(targetPlayer->getObjectID()));
 
 	ghost->addToDuelList(targetPlayer);
 
@@ -2389,7 +2389,7 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 		return;
 	}
 
-	player->info("ending duel with " + targetPlayer->getObjectID());
+	player->info("ending duel with " + String::valueOf(targetPlayer->getObjectID()));
 
 	ghost->removeFromDuelList(targetPlayer);
 	player->removeDefender(targetPlayer);
@@ -2553,7 +2553,7 @@ void CombatManager::declineDuel(CreatureObject* player, CreatureObject* targetPl
 		stringId2.setTT(player->getObjectID());
 		targetPlayer->sendSystemMessage(stringId2);
 
-		player->info("declined duel with " + targetPlayer->getObjectID());
+		player->info("declined duel with " + String::valueOf(targetPlayer->getObjectID()));
 	}
 }
 

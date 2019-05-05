@@ -16,6 +16,7 @@ import system.util.VectorMap;
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 include server.zone.managers.auction.TerminalListVector;
 include server.zone.managers.auction.AuctionEventsMap;
+include system.util.SynchronizedVectorMap;
 
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
@@ -112,12 +113,12 @@ class AuctionManager extends ManagedService implements Logger {
 		return auctionMap;
 	}
 	
-	public native void checkVendorItems();
+	public native void checkVendorItems(boolean startupTask = false);
 	
-	public native void checkAuctions();
+	public native void checkAuctions(boolean startupTask = false);
 	
 	@local
-	private native void doAuctionMaint(TerminalListVector items);
+	private native void doAuctionMaint(TerminalListVector items, final string logTag, boolean startupTask);
 
 	public native string getVendorUID(SceneObject vendor);
 	

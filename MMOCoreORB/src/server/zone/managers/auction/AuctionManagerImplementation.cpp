@@ -130,62 +130,79 @@ void AuctionManagerImplementation::initialize() {
 
 	locker.release();
 
-	checkAuctions();
-	checkVendorItems();
+	checkAuctions(true);
+	checkVendorItems(true);
 
 	info("loaded auctionsMap of size: " + String::valueOf(auctionMap->getTotalItemCount()), true);
 
 	marketEnabled = true;
 }
 
-void AuctionManagerImplementation::checkVendorItems() {
+void AuctionManagerImplementation::checkVendorItems(bool startupTask) {
+    Timer timer(Time::MONOTONIC_TIME);
 
+	timer.start();
 	TerminalListVector items = auctionMap->getVendorTerminalData("", "", 0);
 
 	info("Checking " + String::valueOf(items.size()) + " vendor terminals", true);
 
-	doAuctionMaint(&items);
+	doAuctionMaint(&items, "vendor", startupTask);
+
+	auto elapsed = timer.stopMs();
+
+	info("Vendor terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
-void AuctionManagerImplementation::checkAuctions() {
-
+void AuctionManagerImplementation::checkAuctions(bool startupTask) {
 	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
+    Timer timer(Time::MONOTONIC_TIME);
+	timer.start();
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
 
 	info("Checking " + String::valueOf(items.size()) + " bazaar terminals", true);
 
-	doAuctionMaint(&items);
+	doAuctionMaint(&items, "bazaar", startupTask);
+
+	auto elapsed = timer.stopMs();
+
+	info("Bazaar terminal checks completed in " + String::valueOf(elapsed) + "ms", true);
 }
 
-void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
+void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, const String& logTag, bool startupTask) {
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
+	int count_total = 0;
+	int count_updated = 0;
+
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*>& list = items->get(i);
-		if (list == nullptr)
+
+		if (list == nullptr || list->size() == 0)
 			continue;
 
 		for (int j = 0; j < list->size(); ++j) {
 			ManagedReference<AuctionItem*> item = list->get(j);
+
 			if (item == nullptr)
 				continue;
 
 			Locker locker(item);
 
+			count_total++;
+
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
 			if(vendor == nullptr || vendor->getZone() == nullptr) {
-				uint64 objectId = item->getAuctionedItemObjectID();
-
+				uint64 sellingId = item->getAuctionedItemObjectID();
 				auctionMap->deleteItem(vendor, item);
 
-				Core::getTaskManager()->executeTask([this, objectId] () {
-						ManagedReference<SceneObject*> sceno = zoneServer->getObject(objectId);
+				Core::getTaskManager()->executeTask([this, sellingId] () {
+						ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
 
-				if (sceno != nullptr) {
+						if (sceno != nullptr) {
 							Locker locker(sceno);
 
 							sceno->destroyObjectFromDatabase(true);
@@ -195,37 +212,53 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 				continue;
 			}
 
-			if (!item->isFactoryCrate()) {
-				uint64 objectId = item->getAuctionedItemObjectID();
-				ManagedReference<SceneObject*> sceno = zoneServer->getObject(objectId);
-
-				if (sceno != nullptr && sceno->isFactoryCrate()) {
-					Locker clocker(sceno, item);
-					Reference<FactoryCrate*> crate = sceno.castTo<FactoryCrate*>();
-
-					if (crate != nullptr) {
-						ManagedReference<TangibleObject*> prototype = crate->getPrototype();
-
-						if (prototype != nullptr) {
-							item->setFactoryCrate(true);
-							item->setCratedItemType(prototype->getClientGameObjectType());
-						}
-					}
-				}
-			}
-
 			if (item->getExpireTime() <= currentTime) {
 				if (item->getStatus() == AuctionItem::EXPIRED) {
 					expireSale(item);
+					continue;
 				}
 			}
 
 			if (item->getStatus() == AuctionItem::RETRIEVED) {
-
 				auctionMap->deleteItem(vendor, item);
+				continue;
+			}
+
+			if (startupTask && !item->isUpdated()) {
+				uint64 sellingId = item->getAuctionedItemObjectID();
+				ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(sellingId);
+
+				if (sellingItem != nullptr) {
+					if (sellingItem->isFactoryCrate()) {
+						Locker clocker(sellingItem, item);
+						Reference<FactoryCrate*> crate = sellingItem.castTo<FactoryCrate*>();
+
+						if (crate != nullptr) {
+							ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+
+							if (prototype != nullptr) {
+								item->setFactoryCrate(true);
+								item->setCratedItemType(prototype->getClientGameObjectType());
+							}
+						}
+					} else {
+						if (item->isFactoryCrate()) {
+							item->setFactoryCrate(false);
+						}
+
+						if (item->getCratedItemType() != 0) {
+							item->setCratedItemType(0);
+						}
+					}
+				}
+
+				item->setUpdated(true);
+				count_updated++;
 			}
 		}
 	}
+
+	info(logTag + " Checked " + String::valueOf(count_total) + " auction item(s) and updated " + String::valueOf(count_updated) + " item(s)", true);
 }
 
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, SceneObject* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
@@ -1134,10 +1167,10 @@ bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* 
 	int cratedItemType = item->getCratedItemType();
 
 	if (category & 255) { // Searching a sub category
-		if (itemType == category || (isCrate && cratedItemType == category)) {
+		if (itemType == category || (isCrate && cratedItemType > 0 && cratedItemType == category)) {
 			return true;
 		}
-	} else if ((itemType & category) || (isCrate && (cratedItemType & category))) {
+	} else if ((itemType & category) || (isCrate && cratedItemType > 0 && (cratedItemType & category))) { // Searching main category
 		return true;
 	} else if ((category == 8192) && (itemType < 256 || (isCrate && cratedItemType < 256))) {
 		return true;
@@ -1196,45 +1229,48 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					}
 				case ST_ALL: // All Auctions (Bazaar)
 					if (item->getStatus() == AuctionItem::FORSALE) {
-						if(checkItemCategory(itemCategory, item)) {
-							if (displaying >= offset) {
-								if (minPrice != 0 || maxPrice != 0) {
-									int itemPrice = item->getPrice();
+						if (!checkItemCategory(itemCategory, item))
+							continue;
 
-									if (includeEntranceFee) {
-										ManagedReference<SceneObject*> itemVendor = player->getZoneServer()->getObject(item->getVendorID());
+						if (minPrice != 0 || maxPrice != 0) {
+							int itemPrice = item->getPrice();
 
-										if (itemVendor != nullptr && itemVendor->isVendor()) {
-											int accessFee = 0;
-											ManagedReference<SceneObject*> parent = itemVendor->getRootParent();
+							if (includeEntranceFee) {
+								ManagedReference<SceneObject*> itemVendor = player->getZoneServer()->getObject(item->getVendorID());
 
-											if(parent != nullptr && parent->isBuildingObject()) {
-												BuildingObject* building = cast<BuildingObject*>(parent.get());
+								if (itemVendor != nullptr && itemVendor->isVendor()) {
+									int accessFee = 0;
+									ManagedReference<SceneObject*> parent = itemVendor->getRootParent();
 
-												if(building != nullptr)
-													accessFee = building->getAccessFee();
-											}
+									if(parent != nullptr && parent->isBuildingObject()) {
+										BuildingObject* building = cast<BuildingObject*>(parent.get());
 
-											itemPrice += accessFee;
-										}
+										if(building != nullptr)
+											accessFee = building->getAccessFee();
 									}
 
-									if ((minPrice != 0 && itemPrice < minPrice) || (maxPrice != 0 && itemPrice > maxPrice))
-										continue;
+									itemPrice += accessFee;
 								}
-
-								if (!filterText.isEmpty()) {
-									String lowerFilter = filterText.toString().toLowerCase();
-									String itemName = item->getItemName().toLowerCase();
-
-									if (itemName.indexOf(lowerFilter) == -1)
-										continue;
-								}
-
-								reply->addItemToList(item);
 							}
-							displaying++;
+
+							if ((minPrice != 0 && itemPrice < minPrice) || (maxPrice != 0 && itemPrice > maxPrice))
+								continue;
 						}
+
+						if (!filterText.isEmpty()) {
+							String lowerFilter = filterText.toString().toLowerCase();
+							String itemName = item->getItemName().toLowerCase();
+
+							if (itemName.indexOf(lowerFilter) == -1)
+								continue;
+						}
+
+
+						if (displaying >= offset) {
+							reply->addItemToList(item);
+						}
+
+						displaying++;
 					}
 					break;
 				case ST_PLAYER_SALES: // My auctions/sales
@@ -1416,6 +1452,18 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 		object->getAttributeListComponent()->fillAttributeList(msg, player, object);
 	} else
 		object->fillAttributeList(msg, player);
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isPrivileged()) {
+		msg->insertAttribute("Item Type", auctionItem->getItemType());
+		bool isCrate = auctionItem->isFactoryCrate();
+		msg->insertAttribute("Is Factory Crate:", isCrate);
+
+		if (isCrate) {
+			msg->insertAttribute("Crated Item Type:", auctionItem->getCratedItemType());
+		}
+	}
 
 	//msg->insertInt(0);
 	String templateFile = TemplateManager::instance()->getTemplateFile(object->getClientObjectCRC());

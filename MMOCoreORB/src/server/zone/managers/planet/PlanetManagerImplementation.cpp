@@ -217,6 +217,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		// Don't spawn character builder terminals if they're not enabled
 		if (templateFile == "object/tangible/terminal/terminal_character_builder.iff" && !ConfigManager::instance()->getCharacterBuilderEnabled()) {
+			planetObject.pop();
 			continue;
 		}
 

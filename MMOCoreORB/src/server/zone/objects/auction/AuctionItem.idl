@@ -71,7 +71,7 @@ class AuctionItem extends ManagedObject {
 
 		onBazaar = false;
 		
-		isCrate = 0;
+		isCrate = false;
 		cratedItemType = 0;
 
 		buyerID = 0;
@@ -329,5 +329,15 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setFactoryCrate(boolean crate) {
 		isCrate = crate;
+	}
+	
+	@preLocked
+	public void setUpdated(boolean val) {
+		updated = val;
+	}
+
+	@read
+	public boolean isUpdated() {
+		return updated;
 	}
 }
