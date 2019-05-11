@@ -668,6 +668,8 @@ void ServerCore::handleCommands() {
 				} catch (Exception& e) {
 					System::out << "invalid PvpMode: (0=off; 1=on)" << endl;
 				}
+			} else if (command == "dumpcfg" || command == "dumpconfig") {
+				ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
 			} else {
 				System::out << "unknown command (" << command << ")\n";
 			}

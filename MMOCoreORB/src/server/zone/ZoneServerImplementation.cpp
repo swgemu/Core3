@@ -199,8 +199,8 @@ void ZoneServerImplementation::startZones() {
 	StructureManager* structureManager = StructureManager::instance();
 	structureManager->setZoneServer(_this.getReferenceUnsafeStaticCast());
 
-	for (int i = 0; i < enabledZones->size(); ++i) {
-		String zoneName = enabledZones->get(i);
+	for (int i = 0; i < enabledZones.size(); ++i) {
+		String zoneName = enabledZones.get(i);
 
 		info("Loading zone " + zoneName + ".");
 
