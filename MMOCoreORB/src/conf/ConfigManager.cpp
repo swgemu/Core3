@@ -163,7 +163,7 @@ bool ConfigManager::testConfig(ConfigManager* configManager) {
 
 	auto enabledZones = configManager->getEnabledZones();
 
-	info("ZonesEnabled:");
+	info("ZonesEnabled:", true);
 
 	for (int i = 0; i < enabledZones.size(); ++i) {
 		String zoneName = enabledZones.get(i);
@@ -172,12 +172,16 @@ bool ConfigManager::testConfig(ConfigManager* configManager) {
 
 	Vector<String> treFilesToLoad = configManager->getTreFiles();
 
-	info("TreFiles:");
+	info("TreFiles:", true);
 
 	for (int i = 0; i < treFilesToLoad.size(); ++i) {
 		String zoneName = treFilesToLoad.get(i);
 		info("    '" + zoneName + "'", true);
 	}
+
+	const uint16& dbPort = configManager->getDBPort();
+
+	info("DBPort = " + String::valueOf(dbPort), true);
 
 	info("testConfig: END", true);
 

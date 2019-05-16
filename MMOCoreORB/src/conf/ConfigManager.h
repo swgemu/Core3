@@ -220,8 +220,7 @@ namespace conf {
 		}
 
 		inline const uint16& getDBPort() {
-			const uint16& ret { (uint16)getInt("Core3.DBPort", 3306) };
-			return ret;
+			return *(new uint16(getInt("Core3.DBPort", 3306)));
 		}
 
 		inline const String& getDBName() {
@@ -245,8 +244,7 @@ namespace conf {
 		}
 
 		inline const uint16& getMantisPort() {
-			const uint16& ret { (uint16)getInt("Core3.MantisPort", 3306) };
-			return ret;
+			return *(new uint16(getInt("Core3.MantisPort", 3306)));
 		}
 
 		inline const Vector<String>& getTreFiles() {
