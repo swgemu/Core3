@@ -208,13 +208,21 @@ function DeathWatchBunkerScreenPlay:hasPermission(pPlayer, permissionGroup)
 	return PlayerObject(pGhost):hasPermissionGroup(permissionGroup)
 end
 
-function DeathWatchBunkerScreenPlay:spawnMobiles()
+function DeathWatchBunker:spawnMobiles()
 	for i,v in ipairs(deathWatchStaticSpawns) do
-		spawnMobile("endor", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+		local pMobile = spawnMobile("endor", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+
+		if (pMobile ~= nil) then
+			writeData("dwb:staticMobile" .. i, SceneObject(pMobile):getObjectID())
+		end
 	end
 	for i,v in ipairs(deathWatchQuestNpcs) do
 		if (isZoneEnabled(v[8])) then
-			spawnMobile(v[8], v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+			local pMobile = spawnMobile(v[8], v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+
+			if (pMobile ~= nil) then
+				writeData("dwb:questMobile" .. i, SceneObject(pMobile):getObjectID())
+			end
 		end
 	end
 end
