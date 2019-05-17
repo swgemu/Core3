@@ -10,12 +10,7 @@
 #include "engine/util/u3d/Segment.h"
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) {
-	if ((x >= (areaCenter.getX() - width / 2)) && (x <= (areaCenter.getX() + width / 2)) &&
-		(y >= (areaCenter.getY() - height / 2)) && (y <= (areaCenter.getY() + height / 2))) {
-		return true;
-	} else {
-		return false;
-	}
+	return (x >= blX) && (x <= urX) && (y >= blY) && (y <= urY);
 }
 
 bool RectangularAreaShapeImplementation::containsPoint(const Vector3& point) {
@@ -23,11 +18,13 @@ bool RectangularAreaShapeImplementation::containsPoint(const Vector3& point) {
 }
 
 Vector3 RectangularAreaShapeImplementation::getRandomPosition() {
-	int x = System::random(width) - width / 2;
-	int y = System::random(height) - height / 2;
+	float width = getWidth();
+	float height = getHeight();
+	int x = System::random(width);
+	int y = System::random(height);
 	Vector3 position;
 
-	position.set(areaCenter.getX() + x, 0, areaCenter.getY() + y);
+	position.set(blX + x, 0, blY + y);
 
 	return position;
 }
@@ -69,10 +66,10 @@ bool RectangularAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
 Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& position) {
 	// Calculate corners.
 	Vector3 topLeft, topRight, bottomLeft, bottomRight;
-	topLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() - height / 2);
-	topRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() - height / 2);
-	bottomLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() + height / 2);
-	bottomRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() + height / 2);
+	topLeft.set(blX, 0, urY);
+	topRight.set(urX, 0, urY);
+	bottomLeft.set(blX, 0, blY);
+	bottomRight.set(urX, 0, blY);
 
 	// Find closest point on each side.
 	Segment topSegment(topLeft, topRight);
@@ -104,10 +101,10 @@ Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& posit
 Vector3 RectangularAreaShapeImplementation::getFarthestPoint(const Vector3& position) {
 	// Calculate corners.
 	Vector3 topLeft, topRight, bottomLeft, bottomRight;
-	topLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() - height / 2);
-	topRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() - height / 2);
-	bottomLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() + height / 2);
-	bottomRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() + height / 2);
+	topLeft.set(blX, 0, urY);
+	topRight.set(urX, 0, urY);
+	bottomLeft.set(blX, 0, blY);
+	bottomRight.set(urX, 0, blY);
 
 	// Find the farthest of the four corners.
 	Vector3 point = topLeft;

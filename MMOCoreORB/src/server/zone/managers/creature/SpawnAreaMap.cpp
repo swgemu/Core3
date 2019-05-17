@@ -83,19 +83,19 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		return;
 
 	float radius = 0;
-	float width = 0;
-	float height = 0;
+	float x2 = 0;
+	float y2 = 0;
 	float innerRadius = 0;
 	float outerRadius = 0;
 
     LuaObject areaShapeObject = areaObj.getObjectAt(4);
     if (areaShapeObject.isValidTable()) {
-        if (areaShapeObject.getIntAt(1) == 1) {
+        if (areaShapeObject.getIntAt(1) == CIRCLE) {
             radius = areaShapeObject.getFloatAt(2);
-        } else if (areaShapeObject.getIntAt(1) == 2) {
-            width = areaShapeObject.getFloatAt(2);
-            height = areaShapeObject.getFloatAt(3);
-        } else if (areaShapeObject.getIntAt(1) == 3) {
+        } else if (areaShapeObject.getIntAt(1) == RECTANGLE) {
+            x2 = areaShapeObject.getFloatAt(2);
+            y2 = areaShapeObject.getFloatAt(3);
+        } else if (areaShapeObject.getIntAt(1) == RING) {
         	innerRadius = areaShapeObject.getFloatAt(2);
         	outerRadius = areaShapeObject.getFloatAt(3);
         }
@@ -103,11 +103,11 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
     } else {
     	areaShapeObject.pop();
         radius = areaObj.getFloatAt(4);
-        width = 0;
-        height = 0;
+        x2 = 0;
+        y2 = 0;
     }
 
-	if (radius == 0 && width == 0 && height == 0 && innerRadius == 0 && outerRadius == 0)
+    if (radius == 0 && x2 == 0 && y2 == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
 	static const uint32 crc = STRING_HASHCODE("object/spawn_area.iff");
@@ -122,11 +122,13 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setObjectName(nameID, false);
 
-	if (height > 0 && width > 0) {
+	if (x2 > 0 && y2 > 0) {
 		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();
 		Locker shapeLocker(rectangularAreaShape);
-		rectangularAreaShape->setAreaCenter(x, y);
-		rectangularAreaShape->setDimensions(height, width);
+		rectangularAreaShape->setDimensions(x, y, x2, y2);
+		float centerX = x + ((x2 - x) / 2);
+		float centerY = y + ((y2 - y) / 2);
+		rectangularAreaShape->setAreaCenter(centerX, centerY);
 		area->setAreaShape(rectangularAreaShape);
 	} else if (radius > 0) {
 		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
