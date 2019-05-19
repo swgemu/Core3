@@ -15,7 +15,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 	const String& dbUser = configManager->getDBUser();
 	const String& dbPass = configManager->getDBPass();
 	const String& dbName = configManager->getDBName();
-	const uint16& dbPort = configManager->getDBPort();
+	const int     dbPort = configManager->getDBPort();
 
 	databases = new Vector<Database*>();
 

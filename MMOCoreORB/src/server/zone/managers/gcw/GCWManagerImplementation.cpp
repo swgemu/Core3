@@ -2168,10 +2168,11 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
 		child = baseServerTemplate->getChildObject(i);
 		minefieldTemplate = nullptr;
-		if (child != nullptr) {
 
+		if (child != nullptr) {
 			minefieldTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-			if (minefieldTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
+
+			if (minefieldTemplate != nullptr && minefieldTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
 				if (currentMinefieldIndex == nextAvailableMinefield) {
 					break;
 				} else {
@@ -2242,15 +2243,18 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
 		child = baseServerTemplate->getChildObject(i);
 		turretTemplate = nullptr;
-		if (child != nullptr) {
 
+		if (child != nullptr) {
 			turretTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-			if (turretTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
+
+			if (turretTemplate != nullptr && turretTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
 				if (currentTurretIndex == nextAvailableTurret) {
 					break;
 				} else {
 					currentTurretIndex++;
 				}
+			} else {
+				error("Invalid turret template: " + child->getTemplateFile());
 			}
 		}
 	}

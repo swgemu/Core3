@@ -5,400 +5,468 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
+// #define DEBUG_CONFIGMANAGER
+
 #include "engine/engine.h"
 
 namespace conf {
+	using namespace sys::thread;
+
+	class ConfigDataItem {
+		bool asBool;
+		String asString;
+		lua_Number asNumber;
+		Vector <ConfigDataItem *>* asVector = nullptr;
+		Vector <String>* asStringVector = nullptr;
+		SortedVector <String>* asSortedStringVector = nullptr;
+		int usageCounter = 0;
+
+	public:
+		ConfigDataItem(lua_Number value);
+		ConfigDataItem(int value);
+		ConfigDataItem(bool value);
+		ConfigDataItem(float value);
+		ConfigDataItem(const String& value);
+		ConfigDataItem(Vector <ConfigDataItem *>* value);
+		~ConfigDataItem();
+
+		inline bool getBool() {
+			usageCounter++;
+			return asBool;
+		}
+
+		inline float getFloat() {
+			usageCounter++;
+			return (float)asNumber;
+		}
+
+		inline int getInt() {
+			usageCounter++;
+			return (int)asNumber;
+		}
+
+		inline const String& getString() {
+			usageCounter++;
+			return asString;
+		}
+
+		inline const Vector<String>& getStringVector() {
+			if (asStringVector == nullptr) {
+				asStringVector = new Vector<String>();
+
+				if (asStringVector == nullptr)
+					throw Exception("Failed to allocate Vector<String> in getStringVector()");
+
+				if (asVector == nullptr) {
+					asStringVector->add(getString());
+				} else {
+					for (int i = 0;i < asVector->size(); i++) {
+						ConfigDataItem *curItem = asVector->get(i);
+
+						if (curItem == nullptr)
+							continue;
+
+						asStringVector->add(curItem->getString());
+					}
+				}
+			}
+
+			return *asStringVector;
+		}
+
+		inline const SortedVector<String>& getSortedStringVector() {
+			if (asSortedStringVector == nullptr) {
+				asSortedStringVector = new SortedVector<String>();
+				auto entries = getStringVector();
+
+				for (int i = 0;i < entries.size(); i++) {
+					asSortedStringVector->add(entries.get(i));
+				}
+			}
+
+			return *asSortedStringVector;
+		}
+
+		inline String toString() {
+			usageCounter++;
+
+			if (asVector == nullptr)
+				return String(asString);
+
+			Vector<String> elements = getStringVector();
+
+			StringBuffer buf;
+
+			buf << asString << " = {";
+
+			for (int i = 0; i < elements.size(); ++i) {
+				buf << (i == 0 ? " " : ", ")
+					<< elements.get(i);
+			}
+
+			buf << " }";
+
+			return buf.toString();
+		}
+
+		inline int getUsageCounter() {
+			return usageCounter;
+		}
+
+		inline int resetUsageCounter() {
+			int prevCount = usageCounter;
+			usageCounter = 0;
+			return prevCount;
+		}
+
+#ifdef DEBUG_CONFIGMANAGER
+	private:
+		String debugTag;
+
+	public:
+		inline void setDebugTag(const String& tag) {
+			debugTag = String(tag);
+		}
+#endif // DEBUG_CONFIGMANAGER
+	};
+
 	class ConfigManager : public Singleton<ConfigManager>, public Lua {
-		bool makeLogin;
-		bool makeZone;
-		bool makePing;
-		bool makeStatus;
-		bool makeWeb;
-		bool dumpObjFiles;
-		bool unloadContainers;
-		bool useMetrics;
-		bool pvpMode;
+		Timer configStartTime;
+		VectorMap<String, ConfigDataItem *> configData;
 
-		String orbNamingDirectoryAddress;
-		uint16 orbNamingDirectoryPort;
-
-		String dBHost;
-		uint16 dBPort;
-		String dBName;
-		String dBUser;
-		String dBPass;
-		String dBSecret;
-
-		String mantisHost;
-		uint16 mantisPort;
-		String mantisName;
-		String mantisUser;
-		String mantisPass;
-		String mantisPrfx;
-
-		String trePath;
-
-		uint16 statusPort;
-		uint16 loginPort;
-		uint16 pingPort;
-
-		String webPorts;
-		String webAccessLog;
-		String webErrorLog;
-		int webSessionTimeout;
-		String revision;
-
-		String metricsHost;
-		String metricsPrefix;
-		int metricsPort;
-
-		int purgeDeletedCharacters;
-
-		String loginRequiredVersion;
-		int loginProcessingThreads;
-		int loginAllowedConnections;
-		bool autoReg;
-		bool progressMonitors;
-
-		int zoneProcessingThreads;
-		int zoneAllowedConnections;
-		int zoneGalaxyID;
-		int zonePort;
-
-		int statusAllowedConnections;
-		unsigned int statusInterval;
-
-		int pingAllowedConnections;
-
-		int maxNavMeshJobs;
-		int maxAuctionSearchJobs;
-
-		String messageOfTheDay;
-
-		Vector<String> treFiles;
-		SortedVector<String> enabledZones;
-
-		String logFile;
-		int logFileLevel;
-		bool jsonLogOutput;
-		bool syncLogOutput;
-		bool luaLogJSON;
-		bool pathfinderLogJSON;
-
-		int cleanupMailCount = 25000;
-
-		String termsOfService;
-		int tosVersion;
-
-		int restPort = 0;
-
-		String inactiveAccountTitle;
-		String inactiveAccountText;
-
-		bool characterBuilderEnabled = true;
-
-		int playerLogLevel = 4;
-		int maxLogLines = 1000000;
+		// Cached values
+		bool cache_PvpMode;
+		bool cache_ProgressMonitors;
+		bool cache_UnloadContainers;
 
 	public:
 		ConfigManager();
-
-		~ConfigManager() {
-		}
-
-		bool loadConfigFile() {
-			return runFile("conf/config.lua");
-		}
+		~ConfigManager();
 
 		bool loadConfigData();
-		void loadMOTD();
-		void loadRevision();
-		void loadTreFileList();
-		void loadEnabledZones();
+		void clearConfigData();
+		bool parseConfigData(const String& prefix, bool isGlobal = false, int maxDepth = 5);
+		void cacheHotItems();
+		void dumpConfig(bool includeSecure = false);
+		bool testConfig(ConfigManager* configManager);
 
-		//getters
-		inline bool getMakeLogin() const {
-			return makeLogin;
+		uint64 getConfigDataAgeMs() {
+			return configStartTime.elapsedMs();
 		}
 
-		inline bool getMakeZone() const {
-			return makeZone;
+		// General config functions
+		ConfigDataItem* findItem(const String& name);
+		int getInt(const String& name, int defaultValue);
+		bool getBool(const String& name, bool defaultValue);
+		float getFloat(const String& name, float defaultValue);
+		const String& getString(const String& name, const String& defaultValue);
+		const Vector<String>& getStringVector(const String& name);
+		const SortedVector<String>& getSortedStringVector(const String& name);
+
+		bool updateItem(const String& name, ConfigDataItem* newItem);
+		bool setNumber(const String& name, lua_Number newValue);
+		bool setInt(const String& name, int newValue);
+		bool setBool(const String& name, bool newValue);
+		bool setFloat(const String& name, float newValue);
+		bool setString(const String& name, const String& newValue);
+		bool setStringFromFile(const String& name, const String& fileName);
+
+		// Legacy getters
+		inline bool getMakeLogin() {
+			return getBool("Core3.MakeLogin", true);
 		}
 
-		inline bool getMakePing() const {
-			return makePing;
+		inline bool getMakeZone() {
+			return getBool("Core3.MakeZone", true);;
 		}
 
-		inline bool getMakeStatus() const {
-			return makeStatus;
+		inline bool getMakePing() {
+			return getBool("Core3.MakePing", true);
 		}
 
-		inline bool getMakeWeb() const {
-			return makeWeb;
+		inline bool getMakeStatus() {
+			return getBool("Core3.MakeStatus", true);
 		}
 
-		inline bool getDumpObjFiles() const {
-			return dumpObjFiles;
+		inline bool getMakeWeb() {
+			return getBool("Core3.MakeWeb", true);
 		}
 
-		inline bool shouldUnloadContainers() const {
-			return unloadContainers;
+		inline bool getDumpObjFiles() {
+			return getBool("Core3.DumpObjFiles", true);
 		}
 
-		inline bool shouldUseMetrics() const {
-			return useMetrics;
+		inline bool shouldUnloadContainers() {
+			// Use cached value as this is called often
+			return cache_UnloadContainers;
 		}
 
-		inline bool getPvpMode() const {
-			return pvpMode;
+		inline bool shouldUseMetrics() {
+			return getBool("Core3.UseMetrics", false);
 		}
 
-		inline void setPvpMode(bool val) {
-			pvpMode = val;
+		inline bool getPvpMode() {
+			// Use cached value as this is a hot item called in:
+			//   CreatureObjectImplementation::isAttackableBy
+			//   CreatureObjectImplementation::isAggressiveTo
+			return cache_PvpMode;
 		}
 
-		inline const String& getORBNamingDirectoryAddress() const {
-			return orbNamingDirectoryAddress;
+		inline bool setPvpMode(bool val) {
+			if (!setBool("Core3.PvpMode", val))
+				return false;
+
+			// Updated cached value
+			cache_PvpMode = getBool("Core3.PvpMode", val);
+
+			return true;
 		}
 
-		inline uint16 getORBNamingDirectoryPort() const {
-			return orbNamingDirectoryPort;
+		inline const String& getORBNamingDirectoryAddress() {
+			return getString("Core3.ORB", "");
 		}
 
-		inline const String& getDBHost() const {
-			return dBHost;
+		inline uint16 getORBNamingDirectoryPort() {
+			return getInt("Core3.ORBPort", 44419);
+		}
+
+		inline const String& getDBHost() {
+			return getString("Core3.DBHost", "127.0.0.1");
 		}
 
 		inline bool isProgressMonitorActivated() {
-			return progressMonitors;
+			// Use cached value as this a hot item called in lots of loops
+			return cache_ProgressMonitors;
 		}
 
-		inline const uint16& getDBPort() const {
-			return dBPort;
+		inline int getDBPort() {
+			return getInt("Core3.DBPort", 3306);
 		}
 
-		inline const String& getDBName() const {
-			return dBName;
+		inline const String& getDBName() {
+			return getString("Core3.DBName", "swgemu");
 		}
 
-		inline const String& getDBUser() const {
-			return dBUser;
+		inline const String& getDBUser() {
+			return getString("Core3.DBUser", "root");
 		}
 
-		inline const String& getDBPass() const {
-			return dBPass;
+		inline const String& getDBPass() {
+			return getString("Core3.DBPass", "Gemeni1");
 		}
 
-		inline const String& getDBSecret() const {
-			return dBSecret;
+		inline const String& getDBSecret() {
+			return getString("Core3.DBSecret", "swgemusecret");
 		}
 
-		inline const String& getMantisHost() const {
-			return mantisHost;
+		inline const String& getMantisHost() {
+			return getString("Core3.MantisHost", "127.0.0.1");
 		}
 
-		inline const uint16& getMantisPort() const {
-			return mantisPort;
+		inline int getMantisPort() {
+			return getInt("Core3.MantisPort", 3306);
 		}
 
-		inline const Vector<String>& getTreFiles() const {
-			return treFiles;
+		inline const Vector<String>& getTreFiles() {
+			return getStringVector("Core3.TreFiles");
 		}
 
-		inline const String& getMantisName() const {
-			return mantisName;
+		inline const String& getMantisName() {
+			return getString("Core3.MantisName", "swgemu");
 		}
 
-		inline const String& getMantisUser() const {
-			return mantisUser;
+		inline const String& getMantisUser() {
+			return getString("Core3.MantisUser", "root");
 		}
 
-		inline const String& getMantisPass() const {
-			return mantisPass;
+		inline const String& getMantisPass() {
+			return getString("Core3.MantisPass", "Gemeni1");
 		}
 
-		inline const String& getMantisPrefix() const {
-			return mantisPrfx;
+		inline const String& getMantisPrefix() {
+			return getString("Core3.MantisPrfx", "");
 		}
 
-		inline const String& getMessageOfTheDay() const {
-			return messageOfTheDay;
+		inline const String& getMessageOfTheDay() {
+			return getString("Core3.MOTD", "Welcome to SWGEmu!");
 		}
 
-		inline const String& getRevision() const {
-			return revision;
+		inline const String& getRevision() {
+			return getString("Core3.Revision", "");
 		}
 
-		inline const String& getMetricsHost() const {
-			return metricsHost;
+		inline const String& getMetricsHost() {
+			return getString("Core3.MetricsHost", "127.0.0.1");
 		}
 
-		inline const String& getMetricsPrefix() const {
-			return metricsPrefix;
+		inline const String& getMetricsPrefix() {
+			return getString("Core3.MetricsPrefix", "");
 		}
 
-		inline int getMetricsPort() const {
-			return metricsPort;
+		inline int getMetricsPort() {
+			return getInt("Core3.MetricsPort", 8125);
 		}
 
-		inline const String& getTrePath() const {
-			return trePath;
+		inline const String& getTrePath() {
+			return getString("Core3.TrePath", "tre");
 		}
 
-		inline uint16 getLoginPort() const {
-			return loginPort;
+		inline uint16 getLoginPort() {
+			return getInt("Core3.LoginPort", 44453);
 		}
 
-		inline uint16 getStatusPort() const {
-			return statusPort;
+		inline uint16 getStatusPort() {
+			return getInt("Core3.StatusPort", 44455);
 		}
 
-		inline uint16 getPingPort() const {
-			return pingPort;
+		inline uint16 getPingPort() {
+			return getInt("Core3.PingPort", 44462);
 		}
 
-		inline const String& getWebPorts() const {
-			return webPorts;
+		inline const String& getWebPorts() {
+			return getString("Core3.WebPorts", "44460");
 		}
 
-		inline const String& getWebAccessLog() const {
-			return webAccessLog;
+		inline const String& getWebAccessLog() {
+			return getString("Core3.WebAccessLog", "log/web_access.log");
 		}
 
-		inline const String& getWebErrorLog() const {
-			return webErrorLog;
+		inline const String& getWebErrorLog() {
+			return getString("Core3.WebErrorLog", "log/web_error.log");
 		}
 
-		inline int getWebSessionTimeout() const {
-			return webSessionTimeout;
+		inline int getWebSessionTimeout() {
+			return getInt("Core3.WebAccessLog", 600);
 		}
 
-		inline const String& getLoginRequiredVersion() const {
-			return loginRequiredVersion;
+		inline const String& getLoginRequiredVersion() {
+			return getString("Core3.LoginRequiredVersion", "20050408-18:00");
 		}
 
-		inline int getLoginProcessingThreads() const {
-			return loginProcessingThreads;
+		inline int getLoginProcessingThreads() {
+			return getInt("Core3.LoginProcessingThreads", 1);
 		}
 
-		inline int getLoginAllowedConnections() const {
-			return loginAllowedConnections;
+		inline int getLoginAllowedConnections() {
+			return getInt("Core3.LoginAllowedConnections", 30);
 		}
 
-		inline int getStatusAllowedConnections() const {
-			return statusAllowedConnections;
+		inline int getStatusAllowedConnections() {
+			return getInt("Core3.StatusAllowedConnections", 100);
 		}
 
-		inline int getPingAllowedConnections() const {
-			return pingAllowedConnections;
+		inline int getPingAllowedConnections() {
+			return getInt("Core3.PingAllowedConnections", 3000);
 		}
 
-		inline int getStatusInterval() const {
-			return statusInterval;
+		inline int getStatusInterval() {
+			return getInt("Core3.StatusInterval", 60);
 		}
 
-		inline int getAutoReg() const {
-			return autoReg;
+		inline int getAutoReg() {
+			return getBool("Core3.AutoReg", true);
 		}
 
-		inline int getZoneProcessingThreads() const {
-			return zoneProcessingThreads;
+		inline int getZoneProcessingThreads() {
+			return getInt("Core3.ZoneProcessingThreads", 10);
 		}
 
-		inline int getZoneAllowedConnections() const {
-			return zoneAllowedConnections;
+		inline int getZoneAllowedConnections() {
+			return getInt("Core3.ZoneAllowedConnections", 300);
 		}
 
-		inline int getZoneGalaxyID() const {
-			return zoneGalaxyID;
+		inline int getZoneGalaxyID() {
+			return getInt("Core3.ZoneGalaxyID", 2);
 		}
 
-		inline int getZoneServerPort() const {
-			return zonePort;
+		inline int getZoneServerPort() {
+			return getInt("Core3.ZoneServerPort", 0);
 		}
 
-		const SortedVector<String>* getEnabledZones() const {
-			return &enabledZones;
+		const SortedVector<String>& getEnabledZones() {
+			return getSortedStringVector("Core3.ZonesEnabled");
 		}
 
-		inline int getPurgeDeletedCharacters() const {
-			return purgeDeletedCharacters;
+		inline int getPurgeDeletedCharacters() {
+			return getInt("Core3.PurgeDeletedCharacters", 10); // In minutes
 		}
 
-		inline int getMaxNavMeshJobs() const {
-			return maxNavMeshJobs;
+		inline int getMaxNavMeshJobs() {
+			return getInt("Core3.MaxNavMeshJobs", 6);
 		}
 
-		inline int getMaxAuctionSearchJobs() const {
-			return maxAuctionSearchJobs;
+		inline int getMaxAuctionSearchJobs() {
+			return getInt("Core3.MaxAuctionSearchJobs", 1);
 		}
 
-		inline const String& getLogFile() const {
-			return logFile;
+		inline const String& getLogFile() {
+			return getString("Core3.LogFile", "log/core3.log");
 		}
 
-		inline int getLogFileLevel() const {
-			return logFileLevel;
+		inline int getLogFileLevel() {
+			return getInt("Core3.LogFileLevel", Logger::INFO);
 		}
 
 		inline void setProgressMonitors(bool val) {
-			progressMonitors = val;
+			setBool("Core3.ProgressMonitors", val);
+
+			// Updated cached value
+			cache_ProgressMonitors = getBool("Core3.ProgressMonitors", val);
 		}
 
-		inline const String& getTermsOfService() const {
-			return termsOfService;
+		inline const String& getTermsOfService() {
+			return getString("Core3.TermsOfService", "");
 		}
 
-		inline int getTermsOfServiceVersion() const {
-			return tosVersion;
+		inline int getTermsOfServiceVersion() {
+			return getInt("Core3.TermsOfServiceVersion", 0);
 		}
 
-		inline bool getJsonLogOutput() const {
-			return jsonLogOutput;
+		inline bool getJsonLogOutput() {
+			return getBool("Core3.LogJSON", false);
 		}
 
-		inline bool getSyncLogOutput() const {
-			return syncLogOutput;
+		inline bool getSyncLogOutput() {
+			return getBool("Core3.LogSync", false);
 		}
 
-		inline bool getLuaLogJSON() const {
-			return luaLogJSON;
+		inline bool getLuaLogJSON() {
+			return getBool("Core3.LuaLogJSON", false);
 		}
 
-		inline bool getPathfinderLogJSON() const {
-			return pathfinderLogJSON;
+		inline bool getPathfinderLogJSON() {
+			return getBool("Core3.PathfinderLogJSON", false);
 		}
 
-		inline int getCleanupMailCount() const {
-			return cleanupMailCount;
+		inline int getCleanupMailCount() {
+			return getInt("Core3.CleanupMailCount", 25000);
 		}
 
-		inline int getRESTPort() const {
-			return restPort;
+		inline int getRESTPort() {
+			return getInt("Core3.RESTServerPort", 0);
 		}
 
-		inline const String& getInactiveAccountTitle() const {
-			return inactiveAccountTitle;
+		inline const String& getInactiveAccountTitle() {
+			return getString("Core3.InactiveAccountTitle", "Account Disabled");
 		}
 
-		inline const String& getInactiveAccountText() const {
-			return inactiveAccountText;
+		inline const String& getInactiveAccountText() {
+			return getString("Core3.InactiveAccountText", "The server administrators have disabled your account.");
 		}
 
-		inline bool getCharacterBuilderEnabled() const {
-			return characterBuilderEnabled;
+		inline bool getCharacterBuilderEnabled() {
+			return getBool("Core3.CharacterBuilderEnabled", false);
 		}
 
-		inline int getPlayerLogLevel() const {
-			return playerLogLevel;
+		inline int getPlayerLogLevel() {
+			return getInt("Core3.PlayerLogLevel", Logger::INFO);
 		}
 
-		inline int getMaxLogLines() const {
-			return maxLogLines;
+		inline int getMaxLogLines() {
+			return getInt("Core3.MaxLogLines", 1000000);
 		}
 	};
 }
-
 
 using namespace conf;
 
