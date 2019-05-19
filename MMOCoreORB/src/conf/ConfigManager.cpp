@@ -13,7 +13,14 @@ ConfigManager::ConfigManager() {
 #endif // DEBUG_CONFIGMANAGER
 }
 
+ConfigManager::~ConfigManager() {
+	clearConfigData();
+}
+
 bool ConfigManager::loadConfigData() {
+	if (configStartTime.getStartTime() != 0)
+		configStartTime.stop();
+
 	configStartTime.start();
 
 	if (!runFile("conf/config.lua")) {
@@ -38,8 +45,7 @@ bool ConfigManager::loadConfigData() {
 
 	bool result_global, result_core3;
 
-	configData.removeAll();
-	configData.setNoDuplicateInsertPlan();
+	clearConfigData();
 
 	// Load new-style "Core3.value" settings
 	LuaObject core3 = getGlobalObject("Core3");
@@ -77,6 +83,21 @@ bool ConfigManager::loadConfigData() {
 #endif // DEBUG_CONFIGMANAGER
 
 	return result_global || result_core3;
+}
+
+void ConfigManager::clearConfigData() {
+	for (int i = 0; i < configData.size(); ++i) {
+		auto entry = configData.get(i);
+		delete entry;
+	}
+
+	configData.removeAll();
+	configData.setNoDuplicateInsertPlan();
+
+	// Clear any cached values below
+	cache_PvpMode = false;
+	cache_ProgressMonitors = false;
+	cache_UnloadContainers = false;
 }
 
 void ConfigManager::cacheHotItems() {
@@ -381,26 +402,22 @@ const String& ConfigManager::getString(const String& name, const String& default
 	return itm->getString();
 }
 
-Vector<String>& ConfigManager::getStringVector(const String& name) {
+const Vector<String>& ConfigManager::getStringVector(const String& name) {
 	ConfigDataItem* itm = findItem(name);
 
-	if (itm == nullptr) {
-		Vector<String>* empty = new Vector<String>();
-		return *empty;
-	}
+	if (itm == nullptr)
+		throw Exception("ConfigManager::getStringVector(" + name + ") not found");
 
 	return itm->getStringVector();
 }
 
-SortedVector<String>& ConfigManager::getSortedStringVector(const String& name) {
-	Vector<String> found = getStringVector(name);
-	SortedVector<String>* sorted = new SortedVector<String>();
+const SortedVector<String>& ConfigManager::getSortedStringVector(const String& name) {
+	ConfigDataItem* itm = findItem(name);
 
-	for (int i = 0; i < found.size(); ++i) {
-		sorted->add(found.get(i));
-	}
+	if (itm == nullptr)
+		throw Exception("ConfigManager::getSortedStringVector(" + name + ") not found");
 
-	return *sorted;
+	return itm->getSortedStringVector();
 }
 
 bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
@@ -469,7 +486,7 @@ bool ConfigManager::setStringFromFile(const String& name, const String& fileName
 }
 
 /*
-** ConfigDataItem ctor's
+** ConfigDataItem
 */
 
 ConfigDataItem::ConfigDataItem(lua_Number value) {
@@ -477,6 +494,8 @@ ConfigDataItem::ConfigDataItem(lua_Number value) {
 	asBool   = (bool)asNumber;
 	asString = String::valueOf(value);
 	asVector = nullptr;
+	asStringVector = nullptr;
+	asSortedStringVector = nullptr;
 	usageCounter = 0;
 }
 
@@ -484,24 +503,18 @@ ConfigDataItem::ConfigDataItem(int value) {
 	asNumber = (lua_Number)value;
 	asBool   = (bool)asNumber;
 	asString = String::valueOf(value);
-	asVector = nullptr;
-	usageCounter = 0;
 }
 
 ConfigDataItem::ConfigDataItem(bool value) {
 	asNumber = value ? 1.0f : 0.0f;
 	asBool   = value;
 	asString = String(value ? "true" : "false");
-	asVector = nullptr;
-	usageCounter = 0;
 }
 
 ConfigDataItem::ConfigDataItem(float value) {
 	asNumber = (lua_Number)value;
 	asBool   = (bool)asNumber;
 	asString = String::valueOf(value);
-	asVector = nullptr;
-	usageCounter = 0;
 }
 
 ConfigDataItem::ConfigDataItem(const String& value) {
@@ -516,8 +529,6 @@ ConfigDataItem::ConfigDataItem(const String& value) {
 		asBool = asNumber != 0.0 ? true : false;
 	}
 	asString = String(value);
-	asVector = nullptr;
-	usageCounter = 0;
 }
 
 ConfigDataItem::ConfigDataItem(Vector <ConfigDataItem *>* value) {
@@ -525,11 +536,30 @@ ConfigDataItem::ConfigDataItem(Vector <ConfigDataItem *>* value) {
 	asNumber = value->size();
 	asString = String("<Vector " + String::valueOf((int)asNumber) + ">");
 	asVector = value;
-	usageCounter = 0;
 }
 
-#ifdef DEBUG_CONFIGMANAGER
 ConfigDataItem::~ConfigDataItem() {
+#ifdef DEBUG_CONFIGMANAGER
 	std::cout << "ConfigDataItem destroyed " << debugTag.toCharArray() << " usageCounter = " << usageCounter << std::endl << std::flush;
-}
 #endif // DEBUG_CONFIGMANAGER
+
+	if (asVector != nullptr) {
+		for (int i = 0;i < asVector->size(); ++i) {
+			auto element = asVector->get(i);
+			delete element;
+		}
+
+		delete asVector;
+		asVector = nullptr;
+	}
+
+	if (asStringVector != nullptr) {
+		delete asStringVector;
+		asStringVector = nullptr;
+	}
+
+	if (asSortedStringVector != nullptr) {
+		delete asSortedStringVector;
+		asSortedStringVector = nullptr;
+	}
+}

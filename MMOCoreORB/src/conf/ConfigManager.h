@@ -16,7 +16,9 @@ namespace conf {
 		bool asBool;
 		String asString;
 		lua_Number asNumber;
-		Vector <ConfigDataItem *>* asVector;
+		Vector <ConfigDataItem *>* asVector = nullptr;
+		Vector <String>* asStringVector = nullptr;
+		SortedVector <String>* asSortedStringVector = nullptr;
 		int usageCounter = 0;
 
 	public:
@@ -26,6 +28,7 @@ namespace conf {
 		ConfigDataItem(float value);
 		ConfigDataItem(const String& value);
 		ConfigDataItem(Vector <ConfigDataItem *>* value);
+		~ConfigDataItem();
 
 		inline bool getBool() {
 			usageCounter++;
@@ -47,22 +50,41 @@ namespace conf {
 			return asString;
 		}
 
-		inline Vector<String>& getStringVector() {
-			Vector<String>* elements = new Vector<String>();
+		inline const Vector<String>& getStringVector() {
+			if (asStringVector == nullptr) {
+				asStringVector = new Vector<String>();
 
-			if (asVector == nullptr)
-				return *elements;
+				if (asStringVector == nullptr)
+					throw Exception("Failed to allocate Vector<String> in getStringVector()");
 
-			for (int i = 0;i < asVector->size(); i++) {
-				ConfigDataItem *curItem = asVector->get(i);
+				if (asVector == nullptr) {
+					asStringVector->add(getString());
+				} else {
+					for (int i = 0;i < asVector->size(); i++) {
+						ConfigDataItem *curItem = asVector->get(i);
 
-				if (curItem == nullptr)
-					continue;
+						if (curItem == nullptr)
+							continue;
 
-				elements->add(curItem->getString());
+						asStringVector->add(curItem->getString());
+					}
+				}
 			}
 
-			return *elements;
+			return *asStringVector;
+		}
+
+		inline const SortedVector<String>& getSortedStringVector() {
+			if (asSortedStringVector == nullptr) {
+				asSortedStringVector = new SortedVector<String>();
+				auto entries = getStringVector();
+
+				for (int i = 0;i < entries.size(); i++) {
+					asSortedStringVector->add(entries.get(i));
+				}
+			}
+
+			return *asSortedStringVector;
 		}
 
 		inline String toString() {
@@ -102,7 +124,6 @@ namespace conf {
 		String debugTag;
 
 	public:
-		~ConfigDataItem();
 		inline void setDebugTag(const String& tag) {
 			debugTag = String(tag);
 		}
@@ -120,11 +141,10 @@ namespace conf {
 
 	public:
 		ConfigManager();
-
-		~ConfigManager() {
-		}
+		~ConfigManager();
 
 		bool loadConfigData();
+		void clearConfigData();
 		bool parseConfigData(const String& prefix, bool isGlobal = false, int maxDepth = 5);
 		void cacheHotItems();
 		void dumpConfig(bool includeSecure = false);
@@ -140,8 +160,8 @@ namespace conf {
 		bool getBool(const String& name, bool defaultValue);
 		float getFloat(const String& name, float defaultValue);
 		const String& getString(const String& name, const String& defaultValue);
-		Vector<String>& getStringVector(const String& name);
-		SortedVector<String>& getSortedStringVector(const String& name);
+		const Vector<String>& getStringVector(const String& name);
+		const SortedVector<String>& getSortedStringVector(const String& name);
 
 		bool updateItem(const String& name, ConfigDataItem* newItem);
 		bool setNumber(const String& name, lua_Number newValue);
@@ -219,8 +239,8 @@ namespace conf {
 			return cache_ProgressMonitors;
 		}
 
-		inline const uint16& getDBPort() {
-			return *(new uint16(getInt("Core3.DBPort", 3306)));
+		inline int getDBPort() {
+			return getInt("Core3.DBPort", 3306);
 		}
 
 		inline const String& getDBName() {
@@ -243,8 +263,8 @@ namespace conf {
 			return getString("Core3.MantisHost", "127.0.0.1");
 		}
 
-		inline const uint16& getMantisPort() {
-			return *(new uint16(getInt("Core3.MantisPort", 3306)));
+		inline int getMantisPort() {
+			return getInt("Core3.MantisPort", 3306);
 		}
 
 		inline const Vector<String>& getTreFiles() {

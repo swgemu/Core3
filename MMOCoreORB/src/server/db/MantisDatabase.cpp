@@ -20,7 +20,7 @@ MantisDatabase::MantisDatabase(ConfigManager* configManager) {
 	const String& dbPass = configManager->getMantisPass();
 	const String& dbName = configManager->getMantisName();
 	tablePrefix = configManager->getMantisPrefix();
-	const uint16& dbPort = configManager->getMantisPort();
+	const int     dbPort = configManager->getMantisPort();
 
 	databases = new ArrayList<UniqueReference<Database*>>();
 
