@@ -420,6 +420,15 @@ const SortedVector<String>& ConfigManager::getSortedStringVector(const String& n
 	return itm->getSortedStringVector();
 }
 
+const Vector<int>& ConfigManager::getIntVector(const String& name) {
+	ConfigDataItem* itm = findItem(name);
+
+	if (itm == nullptr)
+		throw Exception("ConfigManager::getIntVector(" + name + ") not found");
+
+	return itm->getIntVector();
+}
+
 bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 	if (newItem == nullptr || name.isEmpty())
 		return false;
@@ -561,5 +570,10 @@ ConfigDataItem::~ConfigDataItem() {
 	if (asSortedStringVector != nullptr) {
 		delete asSortedStringVector;
 		asSortedStringVector = nullptr;
+	}
+
+	if (asIntVector != nullptr) {
+		delete asIntVector;
+		asIntVector = nullptr;
 	}
 }
