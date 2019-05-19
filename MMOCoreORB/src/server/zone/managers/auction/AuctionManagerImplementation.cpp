@@ -130,8 +130,10 @@ void AuctionManagerImplementation::initialize() {
 
 	locker.release();
 
-	checkAuctions(true);
-	checkVendorItems(true);
+	Core::getTaskManager()->executeTask([=] () {
+		checkAuctions(true);
+		checkVendorItems(true);
+	}, "StartupAuctionManagerCheck", "slowQueue");
 
 	info("loaded auctionsMap of size: " + String::valueOf(auctionMap->getTotalItemCount()), true);
 
@@ -139,6 +141,9 @@ void AuctionManagerImplementation::initialize() {
 }
 
 void AuctionManagerImplementation::checkVendorItems(bool startupTask) {
+	if (startupTask)
+		info("checkVendorItems initial startup task", true);
+
     Timer timer(Time::MONOTONIC_TIME);
 
 	timer.start();
@@ -154,6 +159,9 @@ void AuctionManagerImplementation::checkVendorItems(bool startupTask) {
 }
 
 void AuctionManagerImplementation::checkAuctions(bool startupTask) {
+	if (startupTask)
+		info("checkAuctions initial startup task", true);
+
 	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
