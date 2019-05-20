@@ -585,6 +585,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 			if (prototype != nullptr) {
 				item->setFactoryCrate(true);
 				item->setCratedItemType(prototype->getClientGameObjectType());
+				item->setUpdated(true);
 			}
 		}
 	}
