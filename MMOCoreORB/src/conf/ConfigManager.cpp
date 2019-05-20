@@ -396,8 +396,11 @@ float ConfigManager::getFloat(const String& name, float defaultValue) {
 const String& ConfigManager::getString(const String& name, const String& defaultValue) {
 	ConfigDataItem* itm = findItem(name);
 
-	if (itm == nullptr)
-		return defaultValue;
+	if (itm == nullptr) {
+		itm = new ConfigDataItem(defaultValue);
+		if (itm == nullptr || !updateItem(name, itm))
+			throw Exception("ConfigManager::getString(" + name + ") failed to set default value: [" + defaultValue + "]");
+	}
 
 	return itm->getString();
 }
