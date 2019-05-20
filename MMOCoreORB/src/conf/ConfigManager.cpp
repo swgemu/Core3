@@ -98,6 +98,7 @@ void ConfigManager::clearConfigData() {
 	cache_PvpMode = false;
 	cache_ProgressMonitors = false;
 	cache_UnloadContainers = false;
+	cache_UseMetrics = false;
 }
 
 void ConfigManager::cacheHotItems() {
@@ -105,12 +106,13 @@ void ConfigManager::cacheHotItems() {
 	cache_PvpMode = getBool("Core3.PvpMode", false);
 	cache_ProgressMonitors = getBool("Core3.ProgressMonitors", false);
 	cache_UnloadContainers = getBool("Core3.UnloadContainers", true);
+	cache_UseMetrics = getBool("Core3.UseMetrics", false);
 }
 
 void ConfigManager::dumpConfig(bool includeSecure) {
-	uint64 age = getConfigDataAgeMs();
+	uint64 age = getConfigDataAgeMs() / 1000;
 
-	info("dumpConfig: START (Config Age: " + String::valueOf(age) + "ms)", true);
+	info("dumpConfig: START (Config Age: " + String::valueOf(age) + " s)", true);
 
 	String hottestKey;
 	int maxPS = 0;
@@ -127,7 +129,7 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 			stringVal = "*******";
 
 		StringBuffer msg;
-		int ps = age > 0 ? itm->getUsageCounter() / age / 1000 : 0;
+		int ps = age > 0 ? itm->getUsageCounter() / age : 0;
 
 		if (ps > maxPS || itm->getUsageCounter() > maxUsageCounter) {
 			hottestKey = String(key);

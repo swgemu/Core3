@@ -163,6 +163,7 @@ namespace conf {
 		bool cache_PvpMode;
 		bool cache_ProgressMonitors;
 		bool cache_UnloadContainers;
+		bool cache_UseMetrics;
 
 	public:
 		ConfigManager();
@@ -228,7 +229,8 @@ namespace conf {
 		}
 
 		inline bool shouldUseMetrics() {
-			return getBool("Core3.UseMetrics", false);
+			// On Basilisk this is called 400/s
+			return cache_UseMetrics;
 		}
 
 		inline bool getPvpMode() {
