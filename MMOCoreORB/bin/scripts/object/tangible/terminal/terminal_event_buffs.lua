@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_event_buffs = object_tangible_terminal_shared_terminal_skill:new {
-	customName = "Buffs",
+	customName = "Event Buff and Heal Terminal",
 	objectMenuComponent = "buffTerminalMenuComponent",
 }
 
