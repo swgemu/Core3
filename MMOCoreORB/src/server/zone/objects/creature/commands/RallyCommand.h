@@ -131,7 +131,7 @@ public:
 		//Send to group members if they are on the same planet.
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
-			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
+			if (member == NULL || !member->isPlayerCreature() || !member->isInRange(leader, 85))
 				continue;
 
 			CombatSpam* spam = new CombatSpam(leader, leader->getWeapon(), member, NULL, 0, "cbt_spam", stringName, color);
@@ -148,12 +148,12 @@ public:
 #ifdef COV_DEBUG
 			info("Null closeobjects vector in RallyCommand::sendRallyCombatSpam", true);
 #endif
-			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 70, &closeObjects, true);
+			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 85, &closeObjects, true);
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
-			if (object == NULL || !object->isPlayerCreature() || !checkDistance(leader, object, 70) || group->hasMember(object->getObjectID()))
+			if (object == NULL || !object->isPlayerCreature() || object->isInRange(leader, 85) || group->hasMember(object->getObjectID()))
 				continue;
 
 			CreatureObject* receiver = cast<CreatureObject*>( object); //in range player who isn't in group.

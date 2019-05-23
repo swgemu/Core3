@@ -2237,7 +2237,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
 
-		if (object->isPlayerCreature() && attacker->isInRange(object, COMBAT_SPAM_RANGE)) {
+		if (object->isPlayerCreature() && object->isInRange(attacker, COMBAT_SPAM_RANGE)) {
 			CreatureObject* receiver = static_cast<CreatureObject*>( object);
 			CombatSpam* spam = new CombatSpam(attacker, defender, receiver, item, damage, file, stringName, color);
 			receiver->sendMessage(spam);
