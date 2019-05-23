@@ -59,12 +59,6 @@ class PlayerManager extends Observer implements Logger {
 	protected transient Mutex playerLoggerMutex;
 	protected transient int playerLoggerLines = 0;
 
-	// Used for frog/gm buffs
-	protected int performanceBuff;
-	protected int medicalBuff;
-	protected int performanceDuration;
-	protected int medicalDuration;
-
 	protected int baseStoredCreaturePets;
 	protected int baseStoredFactionPets;
 	protected int baseStoredDroids;
@@ -496,7 +490,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre { player is locked }
 	 * @post { player is locked }
 	 */
-	public native void enhanceCharacter(CreatureObject player);
+	public native void enhanceCharacter(CreatureObject player, int medicalBuff, int medicalDuration, int performanceBuff, int performanceSecondaryBuff, int performanceDuration, int resistanceBuff, int resistanceDuration);
 
 	/**
 	 * Creates and adds buff to Player

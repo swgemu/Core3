@@ -60,10 +60,10 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(CreatureObject* 
 	player->getPlayerObject()->addSuiBox(sui);
 }
 
-void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* player) {
+void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* player, int medicalBuff, int medicalDuration, int performanceBuff, int performanceSecondaryBuff, int performanceDuration, int resistanceBuff, int resistanceDuration) {
 	PlayerManager* pm = player->getZoneServer()->getPlayerManager();
 
-	pm->enhanceCharacter(player);
+	pm->enhanceCharacter(player, 2400, 7200, 1200, 800, 7200, 225, 2700);
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
@@ -76,7 +76,7 @@ void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* pl
 		if (pet != NULL) {
 			Locker crossLocker(pet, player);
 
-			pm->enhanceCharacter(pet);
+			pm->enhanceCharacter(pet, 2400, 7200, 1200, 800, 7200, 225, 2700);
 		}
 	}
 }
