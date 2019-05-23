@@ -2,7 +2,7 @@ buffTerminalMenuComponent = {  }
 
 function buffTerminalMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local response = LuaObjectMenuResponse(pMenuResponse)
-	response:addRadialMenuItem(20, 3, "Get Buffs")
+	response:addRadialMenuItem(20, 3, "Get Buffs - This will overwrite existing Buffs")
 	response:addRadialMenuItem(21, 3, "Clear Wounds")
 end
 
@@ -33,7 +33,7 @@ function buffTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer,
 	end
 
 	if selectedID == 20 then
-		CreatureObject(pPlayer):enhanceCharacter()
+		CreatureObject(pPlayer):enhanceCharacter(pPlayer, 2400, 7200, 1200, 800, 7200, 225, 2700, 10)
 		buffTerminalMenuComponent:logUsage(pPlayer, "enhanceCharacter")
 	elseif selectedID == 21 then
 		for i = 0, 8 do

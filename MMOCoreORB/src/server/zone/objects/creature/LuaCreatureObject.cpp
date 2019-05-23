@@ -988,7 +988,18 @@ int LuaCreatureObject::getGroupID(lua_State* L) {
 
 int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
-	playerManager->enhanceCharacter(realObject);
+
+	int absorption =  lua_tointeger(L, -1);
+	int resistanceDuration = lua_tointeger(L, -2);
+	int resistanceBuff = lua_tointeger(L, -3);
+	int performanceDuration = lua_tointeger(L, -4);
+	int performanceSecondaryBuff = lua_tointeger(L, -5);
+	int performanceBuff = lua_tointeger(L, -6);
+	int medicalDuration = lua_tointeger(L, -7);
+	int medicalBuff = lua_tointeger(L, -8);
+	CreatureObject* realObject = (CreatureObject*)lua_touserdata(L, -9);
+
+	playerManager->enhanceCharacter(realObject, medicalBuff, medicalDuration, performanceBuff, performanceSecondaryBuff, performanceDuration, resistanceBuff, resistanceDuration, absorption);
 
 	return 0;
 }
