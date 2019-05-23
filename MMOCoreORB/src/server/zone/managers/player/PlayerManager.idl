@@ -61,9 +61,14 @@ class PlayerManager extends Observer implements Logger {
 
 	// Used for frog/gm buffs
 	protected int performanceBuff;
+	protected int performanceEventBuff;
+	protected int performanceSecondaryEventBuff;
 	protected int medicalBuff;
+	protected int medicalEventBuff;
+	protected int resistanceEventBuff;
 	protected int performanceDuration;
 	protected int medicalDuration;
+	protected int resistanceEventDuration;
 
 	protected int baseStoredCreaturePets;
 	protected int baseStoredFactionPets;
@@ -497,6 +502,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post { player is locked }
 	 */
 	public native void enhanceCharacter(CreatureObject player);
+	public native void eventEnhanceCharacter(CreatureObject player);
 
 	/**
 	 * Creates and adds buff to Player
@@ -506,6 +512,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
 	 */
 	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
+	private native boolean doEventEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
 
 	public int getBaseStoredCreaturePets() {
 		return baseStoredCreaturePets;

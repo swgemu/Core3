@@ -174,9 +174,14 @@ void PlayerManagerImplementation::loadLuaConfig() {
 	allowSameAccountPvpRatingCredit = lua->getGlobalInt("allowSameAccountPvpRatingCredit");
 	onlineCharactersPerAccount = lua->getGlobalInt("onlineCharactersPerAccount");
 	performanceBuff = lua->getGlobalInt("performanceBuff");
+	performanceEventBuff = lua->getGlobalInt("performanceEventBuff");
+	performanceSecondaryEventBuff = lua->getGlobalInt("performanceSecondaryEventBuff");
 	medicalBuff = lua->getGlobalInt("medicalBuff");
+	medicalEventBuff = lua->getGlobalInt("medicalEventBuff");
+	resistanceEventBuff = lua->getGlobalInt("restistanceEventBuff");
 	performanceDuration = lua->getGlobalInt("performanceDuration");
 	medicalDuration = lua->getGlobalInt("medicalDuration");
+	resistanceEventDuration = lua->getGlobalInt("resistanceEventDuration");
 
 	groupExpMultiplier = lua->getGlobalFloat("groupExpMultiplier");
 
@@ -5428,7 +5433,7 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 }
 
 bool PlayerManagerImplementation::doEnhanceCharacter(uint32 crc, CreatureObject* player, int amount, int duration, int buffType, uint8 attribute) {
-	if (player == NULL)
+	if (player == nullptr)
 		return false;
 
 	if (player->hasBuff(crc))
@@ -5444,8 +5449,27 @@ bool PlayerManagerImplementation::doEnhanceCharacter(uint32 crc, CreatureObject*
 	return true;
 }
 
+bool PlayerManagerImplementation::doEventEnhanceCharacter(uint32 crc, CreatureObject* player, int amount, int duration, int buffType, uint8 attribute) {
+	if (player == nullptr)
+		return false;
+
+	/*if (player->hasPvpTef() || player->hasBhTef()) {
+		player->sendSystemMessage("You cannot reapply Buffs while under duress of a Temporary Enemy Flag.");
+		return false;
+	}*/
+
+	ManagedReference<Buff*> buff = new Buff(player, crc, duration, buffType);
+
+	Locker locker(buff);
+
+	buff->setAttributeModifier(attribute, amount);
+	player->addBuff(buff);
+
+	return true;
+}
+
 void PlayerManagerImplementation::enhanceCharacter(CreatureObject* player) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	bool message = true;
@@ -5460,6 +5484,30 @@ void PlayerManagerImplementation::enhanceCharacter(CreatureObject* player) {
 	message = message && doEnhanceCharacter(0x11C1772E, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 6); // performance_enhance_dance_mind
 	message = message && doEnhanceCharacter(0x2E77F586, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 7); // performance_enhance_music_focus
 	message = message && doEnhanceCharacter(0x3EC6FCB6, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 8); // performance_enhance_music_willpower
+
+	if (message && player->isPlayerCreature())
+		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+}
+
+void PlayerManagerImplementation::eventEnhanceCharacter(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	bool message = true;
+
+	message = message && doEventEnhanceCharacter(0x98321369, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 0); // medical_enhance_health
+	message = message && doEventEnhanceCharacter(0x815D85C5, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 1); // medical_enhance_strength
+	message = message && doEventEnhanceCharacter(0x7F86D2C6, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 2); // medical_enhance_constitution
+	message = message && doEventEnhanceCharacter(0x4BF616E2, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 3); // medical_enhance_action
+	message = message && doEventEnhanceCharacter(0x71B5C842, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 4); // medical_enhance_quickness
+	message = message && doEventEnhanceCharacter(0xED0040D9, player, medicalEventBuff, medicalDuration, BuffType::MEDICAL, 5); // medical_enhance_stamina
+
+	message = message && doEventEnhanceCharacter(0x11C1772E, player, performanceEventBuff, performanceDuration, BuffType::PERFORMANCE, 6); // performance_enhance_dance_mind
+	message = message && doEventEnhanceCharacter(0x2E77F586, player, performanceSecondaryEventBuff, performanceDuration, BuffType::PERFORMANCE, 7); // performance_enhance_music_focus
+	message = message && doEventEnhanceCharacter(0x3EC6FCB6, player, performanceSecondaryEventBuff, performanceDuration, BuffType::PERFORMANCE, 8); // performance_enhance_music_willpower
+
+	message = message && doEventEnhanceCharacter(0x391AC375, player, resistanceEventBuff, resistanceEventDuration, BuffType::MEDICAL, 9); // medical_enhance_poison
+	message = message && doEventEnhanceCharacter(0x3595876, player, resistanceEventBuff, resistanceEventDuration, BuffType::MEDICAL, 10); //medical_enhance_disease
 
 	if (message && player->isPlayerCreature())
 		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
