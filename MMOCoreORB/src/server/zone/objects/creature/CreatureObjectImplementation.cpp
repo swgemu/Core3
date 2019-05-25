@@ -3593,6 +3593,11 @@ void CreatureObjectImplementation::updateCOV() {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
+		auto rootParent = o->getRootParent();
+
+		if (rootParent != nullptr && !rootParent->isVehicleObject() && !rootParent->isMount())
+			continue;
+
 		if (o != creature) {
 			auto objectWorldPos = o->getWorldPosition();
 
