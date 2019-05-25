@@ -50,9 +50,21 @@ public:
 			Vector3 result;
 			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
 		} else if (command == "dumpcov") {
+			bool all = false;
 			uint64_t oid = creature->getObjectID();
+
+			if (tokenizer.hasMoreTokens()) {
+				String arg;
+				tokenizer.getStringToken(arg);
+
+				if (arg == "all")
+					all = true;
+				else
+					oid = Long::valueOf(arg);
+			}
+
 			if (tokenizer.hasMoreTokens())
-				oid = tokenizer.getLongToken();
+				all = true;
 
 			ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(oid);
 			if (targetObject == NULL) {
@@ -72,8 +84,15 @@ public:
 			locker.release();
 
 			StringBuffer resp;
+
+			resp << "Total COV objects: " << vec->size() << endl << endl;
+
 			for (int i=0; i<vec->size(); i++) {
 				ManagedReference<SceneObject *> obj = vec->get(i).castTo<SceneObject *>();
+
+				if (!all && !obj->isPlayerCreature() && !obj->isVehicleObject() && !obj->isMount())
+					continue;
+
 				resp << i << ": ";
 				if (obj == NULL) {
 					resp << "NULL Object" << endl;
@@ -81,9 +100,9 @@ public:
 					Reference<SceneObject*> parent = obj->getParent().get();
 					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName();
 					if (parent == NULL)
-						resp << " Parent: NULL";
+						resp << " Parent: NULL ";
 					else
-						resp << " Parent: " << parent->getObjectID();
+						resp << " Parent: " << parent->getObjectID() << " ";
 					resp << obj->getWorldPosition().toString() << endl << "Addr: " <<  (uint64)obj.get();
 					resp << " PrevX: " << obj->getPreviousPositionX() << " PrevY: " << obj->getPreviousPositionY() << endl;
 				}
