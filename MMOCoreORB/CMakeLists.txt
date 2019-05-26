@@ -41,6 +41,7 @@ option(ENABLE_ERROR_ON_WARNINGS "Enables -Werror compiler option" ON)
 option(ENABLE_REST_SERVER "Enables RESTServer if cpprestsdk is found" OFF)
 option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
+option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -225,7 +226,10 @@ add_subdirectory(src/server/web)
 add_subdirectory(src/server/ping)
 add_subdirectory(src/server/login)
 add_subdirectory(src/server/chat)
-add_subdirectory(src/client)
+
+if (ENABLE_BUILD_CLIENT)
+	add_subdirectory(src/client)
+endif()
 
 set_source_files_properties(tags PROPERTIES GENERATED true)
 add_custom_target(tags
