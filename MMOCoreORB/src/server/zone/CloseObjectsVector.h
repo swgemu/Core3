@@ -68,6 +68,43 @@ public:
 	void setNoDuplicateInsertPlan() {
 		objects.setNoDuplicateInsertPlan();
 	}
+
+	static String receiverFlagsToString(int flags) {
+		StringBuffer buf;
+		String sep = "";
+
+		if (flags & PLAYERTYPE) {
+			flags = flags & ~PLAYERTYPE;
+			buf << sep << "PLAYER";
+			sep = ", ";
+		}
+
+		if (flags & CREOTYPE) {
+			flags = flags & ~CREOTYPE;
+			buf << sep << "CREO";
+			sep = ", ";
+		}
+
+		if (flags & COLLIDABLETYPE) {
+			flags = flags & ~COLLIDABLETYPE;
+			buf << sep << "COLLIDABLE";
+			sep = ", ";
+		}
+
+		if (flags & STRUCTURETYPE) {
+			flags = flags & ~STRUCTURETYPE;
+			buf << sep << "STRUCTURE";
+			sep = ", ";
+		}
+
+		if (flags)
+			buf << sep << "<unexpected flags: " << flags << ">";
+
+		if (buf.length() == 0)
+			buf << "<no flags>";
+
+		return buf.toString();
+	}
 };
 
  }

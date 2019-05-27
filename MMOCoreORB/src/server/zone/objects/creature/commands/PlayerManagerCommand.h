@@ -50,7 +50,7 @@ public:
 			Vector3 result;
 			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
 		} else if (command == "dumpcov") {
-			bool all = false;
+			bool showAll = false;
 			uint64_t oid = creature->getObjectID();
 
 			if (tokenizer.hasMoreTokens()) {
@@ -58,13 +58,13 @@ public:
 				tokenizer.getStringToken(arg);
 
 				if (arg == "all")
-					all = true;
+					showAll = true;
 				else
 					oid = Long::valueOf(arg);
 			}
 
 			if (tokenizer.hasMoreTokens())
-				all = true;
+				showAll = true;
 
 			ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(oid);
 			if (targetObject == NULL) {
@@ -90,7 +90,7 @@ public:
 			for (int i=0; i<vec->size(); i++) {
 				ManagedReference<SceneObject *> obj = vec->get(i).castTo<SceneObject *>();
 
-				if (!all && !obj->isPlayerCreature() && !obj->isVehicleObject() && !obj->isMount())
+				if (!showAll && !obj->isPlayerCreature() && !obj->isVehicleObject() && !obj->isMount())
 					continue;
 
 				resp << i << ": ";
@@ -99,12 +99,16 @@ public:
 				} else {
 					Reference<SceneObject*> parent = obj->getParent().get();
 					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName();
-					if (parent == NULL)
-						resp << " Parent: NULL ";
+					if (parent == nullptr)
+						resp << " Parent: <none>";
 					else
-						resp << " Parent: " << parent->getObjectID() << " ";
-					resp << obj->getWorldPosition().toString() << endl << "Addr: " <<  (uint64)obj.get();
-					resp << " PrevX: " << obj->getPreviousPositionX() << " PrevY: " << obj->getPreviousPositionY() << endl;
+						resp << " Parent: " << parent->getObjectID();
+					resp << " Receivers: " << CloseObjectsVector::receiverFlagsToString(obj->getReceiverFlags());
+					resp << endl;
+					resp << "    Current: " << obj->getWorldPosition().toString();
+					resp << endl;
+					resp << "    Previous: (x:" << obj->getPreviousPositionX() << ", y:" << obj->getPreviousPositionY() << ", z:" << obj->getPreviousPositionZ() << ")";
+					resp << endl;
 				}
 			}
 			ChatManager* chatManager = player->getZoneServer()->getChatManager();
