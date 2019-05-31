@@ -460,7 +460,14 @@ void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, Playe
 		logEntry["worldPositionX"] = (int)creature->getWorldPositionX();
 		logEntry["worldPositionZ"] = (int)creature->getWorldPositionZ();
 		logEntry["worldPositionY"] = (int)creature->getWorldPositionY();
-		logEntry["zone"] = creature->getZone()->getZoneName();
+
+		Zone* zone = creature->getZone();
+
+		if (zone == nullptr)
+			logEntry["zone"] = "null";
+		else
+			logEntry["zone"] = zone->getZoneName();
+
 	}
 
 	writePlayerLogEntry(logEntry);
