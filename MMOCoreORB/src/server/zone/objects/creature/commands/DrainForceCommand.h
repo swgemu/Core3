@@ -35,12 +35,12 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == nullptr || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (targetCreature == NULL || targetCreature->isDead() || (targetCreature->isIncapacitated() && !targetCreature->isFeigningDeath()) || !targetCreature->isAttackableBy(creature))
+		if (targetCreature == nullptr || targetCreature->isDead() || (targetCreature->isIncapacitated() && !targetCreature->isFeigningDeath()) || !targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
 		if(!checkDistance(creature, targetCreature, range))
@@ -56,7 +56,7 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerObject*> playerGhost = creature->getPlayerObject();
 
-		if (targetGhost == NULL || playerGhost == NULL)
+		if (targetGhost == nullptr || playerGhost == nullptr)
 			return GENERALERROR;
 
 		CombatManager* manager = CombatManager::instance();
@@ -88,7 +88,11 @@ public:
 
 			uint32 animCRC = getAnimationString().hashCode();
 			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
-			manager->broadcastCombatSpam(creature, targetCreature, NULL, forceDrain, "cbt_spam", combatSpam, 1);
+			manager->broadcastCombatSpam(creature, targetCreature, nullptr, forceDrain, "cbt_spam", combatSpam, 1);
+
+			if (targetCreature->getSkillMod("force_absorb") > 0) {
+				targetCreature->notifyObservers(ObserverEventType::FORCEABSORB, targetCreature, forceDrain);
+			}
 
 			VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
