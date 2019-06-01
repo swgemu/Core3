@@ -80,8 +80,10 @@ public:
 			}
 
 			int forceDrain = targetForce >= drain ? drain : targetForce; //Drain whatever Force the target has, up to max.
-			if (forceDrain > forceSpace)
+
+			if (forceDrain > forceSpace) {
 				forceDrain = forceSpace; //Drain only what attacker can hold in their own Force pool.
+			}
 
 			playerGhost->setForcePower(playerGhost->getForcePower() + (forceDrain - forceCost));
 			targetGhost->setForcePower(targetGhost->getForcePower() - forceDrain);
@@ -89,6 +91,12 @@ public:
 			uint32 animCRC = getAnimationString().hashCode();
 			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
 			manager->broadcastCombatSpam(creature, targetCreature, nullptr, forceDrain, "cbt_spam", combatSpam, 1);
+
+			if (targetCreature->getSkillMod("force_absorb") > 0) {
+				float drainAbsorb = forceDrain * 0.4f;
+				targetCreature->notifyObservers(ObserverEventType::FORCEABSORB, targetCreature, drainAbsorb);
+				manager->sendMitigationCombatSpam(targetCreature, nullptr, drainAbsorb, 0x04); // FORCEABSORB
+			}
 
 			VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
