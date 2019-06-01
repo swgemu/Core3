@@ -90,6 +90,10 @@ public:
 			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
 			manager->broadcastCombatSpam(creature, targetCreature, nullptr, forceDrain, "cbt_spam", combatSpam, 1);
 
+			if (targetCreature->getSkillMod("force_absorb") > 0) {
+				targetCreature->notifyObservers(ObserverEventType::FORCEABSORB, targetCreature, forceDrain);
+			}
+
 			VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
 			return SUCCESS;

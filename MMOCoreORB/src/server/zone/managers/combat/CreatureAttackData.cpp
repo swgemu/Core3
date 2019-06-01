@@ -46,7 +46,6 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
 	poolsToDamage = data.poolsToDamage;
-	forceCost = data.forceCost;
 	frsLightMinDamageModifier = data.frsLightMinDamageModifier;
 	frsLightMaxDamageModifier = data.frsLightMaxDamageModifier;
 	frsDarkMinDamageModifier = data.frsDarkMinDamageModifier;
@@ -98,7 +97,6 @@ void CreatureAttackData::fillFromBase() {
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
 	splashDamage = baseCommand->isSplashDamage();
-	forceCost = baseCommand->getForceCost();
 	frsLightMinDamageModifier = baseCommand->getFrsLightMinDamageModifier();
 	frsLightMaxDamageModifier = baseCommand->getFrsLightMaxDamageModifier();
 	frsDarkMinDamageModifier = baseCommand->getFrsDarkMinDamageModifier();
