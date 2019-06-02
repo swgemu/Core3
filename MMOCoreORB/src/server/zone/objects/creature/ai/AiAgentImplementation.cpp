@@ -1336,6 +1336,8 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
+	CreatureObjectImplementation::notifyInsert(entry);
+
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == asAiAgent())
@@ -1530,6 +1532,8 @@ void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
+	CreatureObjectImplementation::notifyDissapear(entry);
+
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == asAiAgent())
@@ -1672,7 +1676,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	else
 		updateZone(false, false);
 
-	updateCOV();
+	removeOutOfRangeObjects();
 }
 
 

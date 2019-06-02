@@ -85,29 +85,6 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 	}
 }
 
-void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const {
-	try {
-		CloseObjectsVector* parentCloseObjectsVector = sceneObject->getRootParent()->getCloseObjects();
-		SortedVector<QuadTreeEntry*> parentCloseObjects(parentCloseObjectsVector->size(), 10);
-
-		parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
-
-		//insert new ones
-		for (int i = 0; i < parentCloseObjects.size(); ++i) {
-			QuadTreeEntry* o = parentCloseObjects.getUnsafe(i);
-
-			if (sceneObject->getCloseObjects() != nullptr)
-				sceneObject->addInRangeObject(o, false);
-
-			if (o->getCloseObjects() != nullptr)
-				o->addInRangeObject(sceneObject, true);
-		}
-	} catch (Exception& e) {
-		sceneObject->error(e.getMessage());
-		e.printStackTrace();
-	}
-}
-
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	Zone* zone = sceneObject->getZone();
@@ -152,11 +129,6 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 				sceneObject->error(e.getMessage());
 				e.printStackTrace();
 			}
-		} else if (parent != nullptr) {
-			zone->unlock();
-			zoneUnlocked = true;
-
-			updateInRangeObjectsOnMount(sceneObject);
 		}
 	}
 

@@ -92,6 +92,8 @@ public:
 
 			return GENERALERROR;
 		}
+
+		creature->synchronizeCloseObjects();
 		creature->setState(CreatureState::RIDINGMOUNT);
 		creature->clearState(CreatureState::SWIMMING);
 
@@ -176,7 +178,6 @@ public:
 		creature->setTurnScale(newTurn, true);
 		creature->setAccelerationMultiplierMod(newAccel, true);
 		creature->addMountedCombatSlow();
-		creature->updateVehiclePosition(true);
 
 		return SUCCESS;
 	}

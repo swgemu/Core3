@@ -1627,7 +1627,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		return;
 
 	if (!isTeleporting()) {
-		creature->updateCOV();
+		creature->removeOutOfRangeObjects();
 	}
 
 	ZoneServer* zoneServer = creature->getZoneServer();
