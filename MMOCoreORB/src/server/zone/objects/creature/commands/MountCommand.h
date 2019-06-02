@@ -92,6 +92,8 @@ public:
 
 			return GENERALERROR;
 		}
+
+		creature->synchronizeCloseObjects();
 		creature->setState(CreatureState::RIDINGMOUNT);
 		creature->clearState(CreatureState::SWIMMING);
 
@@ -179,7 +181,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //MOUNTCOMMAND_H_

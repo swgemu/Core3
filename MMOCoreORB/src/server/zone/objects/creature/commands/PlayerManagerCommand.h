@@ -22,13 +22,13 @@ public:
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost == NULL || ghost->getAdminLevel() < 15) {
+		if (ghost == nullptr || ghost->getAdminLevel() < 15) {
 			return 1;
 		}
 
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
-		if (playerManager == NULL) {
+		if (playerManager == nullptr) {
 			creature->sendSystemMessage("playerManager not found");
 			return 0;
 		}
@@ -50,47 +50,26 @@ public:
 			Vector3 result;
 			PathFinderManager::instance()->getSpawnPointInArea(sphere, creature->getZone(), result);
 		} else if (command == "dumpcov") {
-			uint64_t oid = creature->getObjectID();
+			bool showAll = false;
+			uint64 oid = creature->getObjectID();
+
+			if (tokenizer.hasMoreTokens()) {
+				String arg;
+				tokenizer.getStringToken(arg);
+
+				if (arg == "all")
+					showAll = true;
+				else
+					oid = Long::valueOf(arg);
+			}
+
 			if (tokenizer.hasMoreTokens())
-				oid = tokenizer.getLongToken();
+				showAll = true;
 
-			ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(oid);
-			if (targetObject == NULL) {
-				player->sendSystemMessage("Unable to look up character");
-				return 1;
-			}
-
-			Locker locker(targetObject, player);
-
-			CloseObjectsVector* vec = (CloseObjectsVector*)targetObject->getCloseObjects();
-			if (vec == NULL) {
-				player->sendSystemMessage("Object does not have a close object vector");
-				return 1;
-			}
-			SortedVector<QuadTreeEntry*> closeObjects;
-			vec->safeCopyTo(closeObjects);
-			locker.release();
-
-			StringBuffer resp;
-			for (int i=0; i<vec->size(); i++) {
-				ManagedReference<SceneObject *> obj = vec->get(i).castTo<SceneObject *>();
-				resp << i << ": ";
-				if (obj == NULL) {
-					resp << "NULL Object" << endl;
-				} else {
-					Reference<SceneObject*> parent = obj->getParent().get();
-					resp << obj->getObjectID() << ":" << obj->getObjectTemplate()->getTemplateFileName();
-					if (parent == NULL)
-						resp << " Parent: NULL";
-					else
-						resp << " Parent: " << parent->getObjectID();
-					resp << obj->getWorldPosition().toString() << endl << "Addr: " <<  (uint64)obj.get();
-					resp << " PrevX: " << obj->getPreviousPositionX() << " PrevY: " << obj->getPreviousPositionY() << endl;
-				}
-			}
+			auto resp = dumpCOV(player->getZoneServer(), oid, showAll);
 			ChatManager* chatManager = player->getZoneServer()->getChatManager();
-			chatManager->sendMail("System", "Dump COV" , resp.toString(), player->getFirstName());
-			player->sendSystemMessage(resp.toString());
+			chatManager->sendMail("System", "Dump COV" , resp, player->getFirstName());
+			player->sendSystemMessage(resp);
 			return 0;
 		} else if (command == "bench") {
 			Reference<CreatureObject*> creo = player;
@@ -159,12 +138,165 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* player) {
-		if (player != NULL) {
+		if (player != nullptr) {
 			player->sendSystemMessage("Syntax: /server playermanager [setxpmodifier] [value]");
 			player->sendSystemMessage("Syntax: /server playermanager [listjedi]");
 			player->sendSystemMessage("Syntax: /server playermanager [list_frsjedi]");
 			player->sendSystemMessage("Syntax: /server playermanager [listadmins]");
 		}
+	}
+
+	static String dumpCOV(ZoneServer* zoneServer, uint64 oid, bool showAll) {
+		StringBuffer resp;
+
+		if (zoneServer == nullptr) {
+			resp << "oid: " << oid << " zoneServer == nullptr";
+			return resp.toString();
+		}
+
+		auto targetObject = zoneServer->getObject(oid);
+
+		if (targetObject == nullptr) {
+			resp << "oid: " << oid << " getObject() failed.";
+			return resp.toString();
+		}
+
+		Locker locker(targetObject);
+
+		auto vec = (CloseObjectsVector*)targetObject->getCloseObjects();
+
+		if (vec == nullptr) {
+			resp << "oid: " << oid << " does not have a close objects vector.";
+			return resp.toString();
+		}
+
+		SortedVector<QuadTreeEntry*> closeObjects;
+		vec->safeCopyTo(closeObjects);
+		vec = nullptr;
+		locker.release();
+
+		resp << "Total COV objects: " << closeObjects.size() << " for " << targetObject->getDisplayedName() << " (" << targetObject->getObjectID() << ")";
+		resp << endl;
+		resp << endl;
+
+		auto ourPosition = targetObject->getWorldPosition();
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			auto obj = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+			if (obj == nullptr) {
+				resp << i << ": " << "nullptr Object" << endl;
+				continue;
+			}
+
+			if (!showAll && !obj->isPlayerCreature() && !obj->isVehicleObject() && !obj->isMount())
+				continue;
+
+			resp << i << ": ";
+
+			auto parent = obj->getParent().get();
+
+			resp << obj->getObjectID() << ": " << obj->getDisplayedName() << " (" << obj->getObjectTemplate()->getTemplateFileName() << ")";
+
+			if (parent == nullptr)
+				resp << " Parent: <none>";
+			else
+				resp << " Parent: " << parent->getObjectID();
+
+			resp << " Receivers: " << CloseObjectsVector::receiverFlagsToString(obj->getReceiverFlags());
+			resp << endl;
+			resp << "    @ " << obj->getWorldPosition().toString() << " " << ourPosition.distanceTo(obj->getWorldPosition()) << "m";
+
+			float delta = obj->getWorldPosition().distanceTo(obj->getPreviousPosition());
+
+			if (delta != 0.0f)
+				resp << " previous: " << obj->getPreviousPosition().toString() << " delta: " << delta;
+
+			resp << endl;
+		}
+
+		auto parent = targetObject->getParent().get();
+
+		if (parent != nullptr) {
+			resp << endl << ">> Parent " << dumpCOV(zoneServer, parent->getObjectID(), showAll);
+
+			// Compare and report differences with parent
+			Locker locker(parent);
+
+			auto vec = (CloseObjectsVector*)parent->getCloseObjects();
+
+			if (vec != nullptr) {
+				SortedVector<QuadTreeEntry*> parentCloseObjects;
+				vec->safeCopyTo(parentCloseObjects);
+				vec = nullptr;
+				locker.release();
+
+				VectorMap<uint64, uint8> diff;
+
+				for (int i = 0; i < closeObjects.size(); ++i) {
+					auto obj = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+					if (obj == nullptr)
+						continue;
+
+					diff.put(obj->getObjectID(), 1);
+				}
+
+				for (int i = 0; i < parentCloseObjects.size(); ++i) {
+					auto obj = static_cast<SceneObject*>(parentCloseObjects.getUnsafe(i));
+
+					if (obj == nullptr)
+						continue;
+
+					uint8 flags = 0;
+					int found = diff.find(obj->getObjectID());
+
+					if (found != -1)
+						flags = diff.elementAt(found).getValue();
+
+					diff.put(obj->getObjectID(), flags | 2);
+				}
+
+				resp << endl << ">> COV Differences found:";
+
+				int count_diff = 0;
+
+				for (int i = 0; i < diff.size(); ++i) {
+					auto element = diff.elementAt(i);
+					auto oid = element.getKey();
+					auto flags = element.getValue();
+
+					// Skip if in both lists
+					if (flags == 3)
+						continue;
+
+					count_diff++;
+
+					resp << endl << "    ";
+
+					if (flags == 1) {
+						resp << "Child Only: ";
+					} else if(flags == 2) {
+						resp << "Parent Only: ";
+					}
+					auto obj = zoneServer->getObject(oid);
+
+					if (obj == nullptr) {
+						resp << oid << ": getObject() failed";
+					} else {
+						resp << obj->getObjectID() << ": " << obj->getDisplayedName() << " (" << obj->getObjectTemplate()->getTemplateFileName() << ")";
+						resp << " @ " << obj->getWorldPosition().toString() << " " << ourPosition.distanceTo(obj->getWorldPosition()) << "m";
+					}
+				}
+
+				if (count_diff == 0)
+					resp << " NONE";
+
+				resp << endl;
+			}
+		}
+
+		return resp.toString();
 	}
 };
 

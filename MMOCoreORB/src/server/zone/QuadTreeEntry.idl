@@ -214,6 +214,13 @@ class QuadTreeEntry extends Observable {
 	@local
 	@dereferenced
 	@read
+	public Vector3 getPreviousPosition() {
+		return coordinates.getPreviousPosition();
+	}
+
+	@local
+	@dereferenced
+	@read
 	public Vector3 getPosition() {
 		return coordinates.getPosition();
 	}

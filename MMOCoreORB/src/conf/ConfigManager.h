@@ -19,6 +19,7 @@ namespace conf {
 		Vector <ConfigDataItem *>* asVector = nullptr;
 		Vector <String>* asStringVector = nullptr;
 		SortedVector <String>* asSortedStringVector = nullptr;
+		Vector <int>* asIntVector = nullptr;
 		int usageCounter = 0;
 
 	public:
@@ -87,6 +88,30 @@ namespace conf {
 			return *asSortedStringVector;
 		}
 
+		inline const Vector<int>& getIntVector() {
+			if (asIntVector == nullptr) {
+				asIntVector = new Vector<int>();
+
+				if (asIntVector == nullptr)
+					throw Exception("Failed to allocate Vector<int> in getIntVector()");
+
+				if (asVector == nullptr) {
+					asIntVector->add(getInt());
+				} else {
+					for (int i = 0;i < asVector->size(); i++) {
+						ConfigDataItem *curItem = asVector->get(i);
+
+						if (curItem == nullptr)
+							continue;
+
+						asIntVector->add(curItem->getInt());
+					}
+				}
+			}
+
+			return *asIntVector;
+		}
+
 		inline String toString() {
 			usageCounter++;
 
@@ -138,6 +163,7 @@ namespace conf {
 		bool cache_PvpMode;
 		bool cache_ProgressMonitors;
 		bool cache_UnloadContainers;
+		bool cache_UseMetrics;
 
 	public:
 		ConfigManager();
@@ -162,6 +188,7 @@ namespace conf {
 		const String& getString(const String& name, const String& defaultValue);
 		const Vector<String>& getStringVector(const String& name);
 		const SortedVector<String>& getSortedStringVector(const String& name);
+		const Vector<int>& getIntVector(const String& name);
 
 		bool updateItem(const String& name, ConfigDataItem* newItem);
 		bool setNumber(const String& name, lua_Number newValue);
@@ -202,7 +229,8 @@ namespace conf {
 		}
 
 		inline bool shouldUseMetrics() {
-			return getBool("Core3.UseMetrics", false);
+			// On Basilisk this is called 400/s
+			return cache_UseMetrics;
 		}
 
 		inline bool getPvpMode() {

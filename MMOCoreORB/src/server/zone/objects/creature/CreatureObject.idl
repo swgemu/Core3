@@ -39,6 +39,7 @@ include engine.util.u3d.Vector3;
 include system.util.SortedVector;
 include engine.log.Logger;
 include server.zone.CloseObjectsVector;
+include server.zone.QuadTreeEntry;
 import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
 
@@ -1204,6 +1205,16 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void notifyLoadFromDatabase();
 
+	@local
+	public native void notifyInsert(QuadTreeEntry obj);
+
+	@local
+	public native void notifyDissapear(QuadTreeEntry obj);
+
+	@dirty
+	@local
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
@@ -2188,7 +2199,11 @@ class CreatureObject extends TangibleObject {
 	public abstract void reloadTemplate() {
 	}
 
-	public native void updateCOV();
+	@preLocked
+	public native void removeOutOfRangeObjects();
+
+	@preLocked
+	public native void synchronizeCloseObjects();
 
 	@preLocked
 	public native void addPersonalEnemyFlag(CreatureObject enemy, unsigned long duration);

@@ -866,7 +866,6 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	parent->incrementMovementCounter();
 
 	parent->updateZone(false, sendPackets);
-	parent->asCreatureObject()->updateCOV();
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
