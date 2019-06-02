@@ -53,7 +53,10 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		SkillManager* skillManager = server->getSkillManager();
-		ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
+		ManagedReference<CreatureObject*> targetPlayer = creature;
+
+		if (targetName.toLowerCase() != "self")
+			targetPlayer = playerManager->getPlayer(targetName);
 
 		if (targetPlayer == NULL)
 			return GENERALERROR;
@@ -68,6 +71,7 @@ public:
 				return INSUFFICIENTPERMISSION;
 
 			if (param == "on" && targetPermissionLevel > 0) {
+				skillManager->removeAbility(targetGhost, "admin");
 				skillManager->addAbility(targetGhost, "admin");
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
 			} else if (param == "off" && targetPermissionLevel > 0) {
