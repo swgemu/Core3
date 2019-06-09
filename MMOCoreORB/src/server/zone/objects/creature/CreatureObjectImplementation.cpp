@@ -823,7 +823,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {
-						closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
+						closeobjects->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 						maxInRangeObjects = closeSceneObjects.size();
 					}
 
@@ -2140,8 +2140,14 @@ void CreatureObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		if (linkedCreature->getCloseObjects() != nullptr)
 			linkedCreature->addInRangeObject(obj);
 
-		if (obj->getCloseObjects() != nullptr)
+		if (obj->getCloseObjects() != nullptr) {
 			obj->addInRangeObject(linkedCreature, false);
+
+			auto scno = dynamic_cast<SceneObject*>(obj);
+
+			if (scno != nullptr)
+				scno->sendTo(linkedCreature, true, false);
+		}
 
 		linkedCreature->notifyInsert(obj);
 	}
@@ -3660,7 +3666,7 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 
 		auto rootParent = o->getRootParent();
 
-		if (rootParent != nullptr && !rootParent->isVehicleObject() && !rootParent->isMount())
+		if (rootParent != nullptr)
 			continue;
 
 		if (o != creature) {
