@@ -23,6 +23,7 @@ using ::testing::An;
 
 class ZoneTest : public ::testing::Test {
 protected:
+	ServerDatabase* database;
 	Reference<ZoneServer*> zoneServer;
 	Reference<Zone*> zone;
 	Reference<ZoneProcessServer*> processServer;
@@ -80,7 +81,10 @@ public:
 		// Perform setup of common constructs here.
 		ConfigManager::instance()->loadConfigData();
 		ConfigManager::instance()->setProgressMonitors(false);
-		zoneServer = new ZoneServer(ConfigManager::instance());
+		auto configManager = ConfigManager::instance();
+
+		database = new ServerDatabase(configManager);
+		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
 		zone = new Zone(processServer, "test_zone");
 		zone->createContainerComponent();
