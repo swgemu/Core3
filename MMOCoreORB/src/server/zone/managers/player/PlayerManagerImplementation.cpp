@@ -371,7 +371,7 @@ void PlayerManagerImplementation::loadNameMap() {
 		}
 
 	} catch (Exception& e) {
-		error(e.getMessage());
+		fatal(e.getMessage());
 	}
 
 	StringBuffer msg;
