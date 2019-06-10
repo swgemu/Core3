@@ -8,6 +8,8 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include "server/db/MySqlDatabase.h"
+#include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
@@ -93,14 +95,22 @@ public:
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
-		if (playerManager != NULL) {
-			playerManager->finalize();
-			playerManager = NULL;
+		if (database != nullptr) {
+			delete database;
+			database = nullptr;
 		}
 
-		zone = NULL;
-		processServer = NULL;
-		zoneServer = NULL;
+		mysql_thread_end();
+		server::db::mysql::MySqlDatabase::finalizeLibrary();
+
+		if (playerManager != nullptr) {
+			playerManager->finalize();
+			playerManager = nullptr;
+		}
+
+		zone = nullptr;
+		processServer = nullptr;
+		zoneServer = nullptr;
 	}
 };
 
@@ -175,7 +185,7 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	zone->transferObject(scene, -1);
 
-	ASSERT_TRUE(scene->getZone() != NULL);
+	ASSERT_TRUE(scene->getZone() != nullptr);
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
 
