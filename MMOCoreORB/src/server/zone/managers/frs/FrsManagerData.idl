@@ -52,7 +52,8 @@ class FrsManagerData extends ManagedObject {
 	protected short arenaStatus;
 
 	public FrsManagerData() {
-		experienceDebt.setNoDuplicateInsertPlan();
+		experienceDebt.setAllowOverwriteInsertPlan();
+		experienceDebt.setNullValue(0);
 		arenaStatus = 0;
 	}
 
