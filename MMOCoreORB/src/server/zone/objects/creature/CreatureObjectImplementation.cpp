@@ -2142,20 +2142,6 @@ void CreatureObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 		if (obj->getCloseObjects() != nullptr)
 			obj->addInRangeObject(linkedCreature);
-	} else if(isPlayerCreature() || isPet()) {
-		auto rootParent = getRootParent();
-
-		if (rootParent != nullptr && rootParent->isBuildingObject()) {
-			auto building = dynamic_cast<BuildingObject*>(rootParent);
-
-			// If we're in a building and visible we need to sendTo so client sees us
-			if (building != nullptr && (building->isPublicStructure() || building->isStaticBuilding())) {
-				auto scno = static_cast<SceneObject*>(obj);
-
-				if (scno != nullptr && scno->isPlayerCreature())
-					sendTo(scno, true);
-			}
-		}
 	}
 
 	TangibleObjectImplementation::notifyInsert(obj);
