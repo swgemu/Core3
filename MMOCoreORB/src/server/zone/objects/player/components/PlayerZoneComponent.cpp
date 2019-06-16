@@ -38,9 +38,8 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 
 	ManagedReference<SceneObject*> parent = scno->getParent().get();
 
-	if (parent != NULL /*&& parent->isCellObject()*/) {
+	if (parent != nullptr && !parent->isCellObject())
 		return;
-	}
 
 	scno->sendTo(sceneObject, true, false);
 }
