@@ -823,7 +823,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {
-						closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
+						closeobjects->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 						maxInRangeObjects = closeSceneObjects.size();
 					}
 
@@ -2141,9 +2141,21 @@ void CreatureObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 			linkedCreature->addInRangeObject(obj);
 
 		if (obj->getCloseObjects() != nullptr)
-			obj->addInRangeObject(linkedCreature, false);
+			obj->addInRangeObject(linkedCreature);
+	} else if(isPlayerCreature() || isPet()) {
+		auto rootParent = getRootParent();
 
-		linkedCreature->notifyInsert(obj);
+		if (rootParent != nullptr && rootParent->isBuildingObject()) {
+			auto building = dynamic_cast<BuildingObject*>(rootParent);
+
+			// If we're in a building and visible we need to sendTo so client sees us
+			if (building != nullptr && (building->isPublicStructure() || building->isStaticBuilding())) {
+				auto scno = static_cast<SceneObject*>(obj);
+
+				if (scno != nullptr && scno->isPlayerCreature())
+					sendTo(scno, true);
+			}
+		}
 	}
 
 	TangibleObjectImplementation::notifyInsert(obj);
@@ -2161,8 +2173,6 @@ void CreatureObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 		if (obj->getCloseObjects() != nullptr)
 			obj->removeInRangeObject(linkedCreature);
-
-		linkedCreature->notifyDissapear(obj);
 	}
 
 	TangibleObjectImplementation::notifyDissapear(obj);
@@ -2176,12 +2186,10 @@ void CreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		linkedCreature->info("proxy notifyPositionUpdate(" + String::valueOf(entry->getObjectID()) + ")");
 #endif // DEBUG_COV
 		if (linkedCreature->getCloseObjects() != nullptr)
-			linkedCreature->addInRangeObject(entry, false);
+			linkedCreature->addInRangeObject(entry);
 
 		if (entry->getCloseObjects() != nullptr)
-			entry->addInRangeObject(linkedCreature, false);
-
-		linkedCreature->notifyPositionUpdate(entry);
+			entry->addInRangeObject(linkedCreature);
 	}
 
 	TangibleObjectImplementation::notifyPositionUpdate(entry);
@@ -3660,7 +3668,7 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 
 		auto rootParent = o->getRootParent();
 
-		if (rootParent != nullptr && !rootParent->isVehicleObject() && !rootParent->isMount())
+		if (rootParent != nullptr && !rootParent->isBuildingObject())
 			continue;
 
 		if (o != creature) {

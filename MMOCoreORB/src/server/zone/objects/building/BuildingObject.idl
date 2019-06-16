@@ -198,6 +198,10 @@ class BuildingObject extends StructureObject {
 	@local
 	public native void notifyDissapear(QuadTreeEntry obj);
 
+	@dirty
+	@local
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+
 	public native void notifyObjectInsertedToZone(SceneObject object);
 
 	@local

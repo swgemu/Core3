@@ -572,7 +572,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		CloseObjectsVector* vec = (CloseObjectsVector*) closeobjects;
 		closeSceneObjects.removeAll(vec->size(), 10);
 
-		vec->safeCopyReceiversTo(closeSceneObjects, 1);
+		vec->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 
 		maxInRangeObjectCount = closeSceneObjects.size(); //closeobjects->size();
 	}
@@ -624,7 +624,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 		CloseObjectsVector* vec = (CloseObjectsVector*) closeobjects;
 		closeSceneObjects.removeAll(vec->size(), 10);
 
-		vec->safeCopyReceiversTo(closeSceneObjects, 1);
+		vec->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 
@@ -680,7 +680,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #endif
 			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeNoneReference, true);
 		} else {
-			closeobjects->safeCopyReceiversTo(closeNoneReference, 1);
+			closeobjects->safeCopyReceiversTo(closeNoneReference, CloseObjectsVector::PLAYERTYPE);
 		}
 
 	} catch (Exception& e) {
@@ -768,7 +768,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 #endif
 			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 		} else {
-			closeobjects->safeCopyReceiversTo(closeSceneObjects, 1);
+			closeobjects->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 		}
 
 	} catch (Exception& e) {

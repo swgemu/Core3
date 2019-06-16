@@ -448,11 +448,18 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
-	//info("BuildingObjectImplementation::notifyInsert");
-	//remove when done
-	//return;
+#if DEBUG_COV
+	if (getObjectID() == 88) { // Theed Cantina
+		info("BuildingObjectImplementation::notifyInsert(" + String::valueOf(obj->getObjectID()) + ")", true);
 
-	SceneObject* scno = static_cast<SceneObject*>(obj);
+		auto c = static_cast<CreatureObject*>(obj);
+
+		if (c != nullptr)
+			c->info("BuildingObjectImplementation::notifyInsert into " + String::valueOf(getObjectID()), true);
+	}
+#endif // DEBUG_COV
+
+	auto scno = static_cast<SceneObject*>(obj);
 
 	bool objectInThisBuilding = scno->getRootParent() == asBuildingObject();
 
@@ -468,22 +475,15 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 				if (child != obj && child != nullptr) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
-						//if (is)
-
 						if (child->getCloseObjects() != nullptr)
-							child->addInRangeObject(obj, false);
+							child->addInRangeObject(obj);
 						else
 							child->notifyInsert(obj);
 
-						child->sendTo(scno, true, false);//sendTo because notifyInsert doesnt send objects with parent
-
 						if (scno->getCloseObjects() != nullptr)
-							scno->addInRangeObject(child, false);
+							scno->addInRangeObject(child);
 						else
 							scno->notifyInsert(child);
-
-						if (scno->getParent() != nullptr)
-							scno->sendTo(child, true, false);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
 						obj->notifyInsert(child);
@@ -498,6 +498,17 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
+#if DEBUG_COV
+	if (getObjectID() == 88) { // Theed Cantina
+		info("BuildingObjectImplementation::notifyDissapear(" + String::valueOf(obj->getObjectID()) + ")", true);
+
+		auto c = static_cast<CreatureObject*>(obj);
+
+		if (c != nullptr)
+			c->info("BuildingObjectImplementation::notifyDissapear from " + String::valueOf(getObjectID()), true);
+	}
+#endif // DEBUG_COV
+
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
@@ -512,9 +523,63 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 			if (child->getCloseObjects() != nullptr)
 				child->removeInRangeObject(obj);
+			else
+				child->notifyDissapear(obj);
 
 			if (obj->getCloseObjects() != nullptr)
 				obj->removeInRangeObject(child);
+			else
+				obj->notifyDissapear(child);
+		}
+	}
+}
+
+void BuildingObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+#if DEBUG_COV_VERBOSE
+	if (getObjectID() == 88) { // Theed Cantina
+		info("BuildingObjectImplementation::notifyPositionUpdate(" + String::valueOf(entry->getObjectID()) + ")", true);
+
+		auto c = static_cast<CreatureObject*>(entry);
+
+		if (c != nullptr)
+			c->info("BuildingObjectImplementation::notifyPositionUpdate to " + String::valueOf(getObjectID()), true);
+	}
+#endif // DEBUG_COV_VERBOSE
+
+	auto scno = static_cast<SceneObject*>(entry);
+
+	bool objectInThisBuilding = scno->getRootParent() == asBuildingObject();
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (!cell->isContainerLoaded())
+			continue;
+
+		try {
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
+
+				if (child != entry && child != nullptr) {
+					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
+						if (child->getCloseObjects() != nullptr)
+							child->addInRangeObject(entry);
+						else
+							child->notifyPositionUpdate(entry);
+
+						if (entry->getCloseObjects() != nullptr)
+							entry->addInRangeObject(child);
+						else
+							entry->notifyPositionUpdate(child);
+					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
+						child->notifyPositionUpdate(entry);
+						entry->notifyPositionUpdate(child);
+					}
+				}
+			}
+		} catch (Exception& e) {
+			warning(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
