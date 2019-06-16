@@ -475,22 +475,15 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 				if (child != obj && child != nullptr) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
-						//if (is)
-
 						if (child->getCloseObjects() != nullptr)
-							child->addInRangeObject(obj, false);
-
-						child->notifyInsert(obj);
-
-						child->sendTo(scno, true, false);//sendTo because notifyInsert doesnt send objects with parent
+							child->addInRangeObject(obj);
+						else
+							child->notifyInsert(obj);
 
 						if (scno->getCloseObjects() != nullptr)
-							scno->addInRangeObject(child, false);
-
-						scno->notifyInsert(child);
-
-						if (scno->getParent() != nullptr)
-							scno->sendTo(child, true, false);
+							scno->addInRangeObject(child);
+						else
+							scno->notifyInsert(child);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
 						obj->notifyInsert(child);
@@ -516,8 +509,6 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	}
 #endif // DEBUG_COV
 
-	auto scno = static_cast<SceneObject*>(obj);
-
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
@@ -532,13 +523,13 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 			if (child->getCloseObjects() != nullptr)
 				child->removeInRangeObject(obj);
-
-			child->notifyDissapear(obj);
+			else
+				child->notifyDissapear(obj);
 
 			if (obj->getCloseObjects() != nullptr)
 				obj->removeInRangeObject(child);
-
-			scno->notifyDissapear(obj);
+			else
+				obj->notifyDissapear(child);
 		}
 	}
 }
@@ -572,19 +563,14 @@ void BuildingObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 				if (child != entry && child != nullptr) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
 						if (child->getCloseObjects() != nullptr)
-							child->addInRangeObject(entry, false);
+							child->addInRangeObject(entry);
+						else
+							child->notifyPositionUpdate(entry);
 
-						child->notifyPositionUpdate(entry);
-
-						child->sendTo(scno, true, false);
-
-						if (scno->getCloseObjects() != nullptr)
-							scno->addInRangeObject(child, false);
-
-						scno->notifyPositionUpdate(child);
-
-						if (scno->getParent() != nullptr)
-							scno->sendTo(child, true, false);
+						if (entry->getCloseObjects() != nullptr)
+							entry->addInRangeObject(child);
+						else
+							entry->notifyPositionUpdate(child);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyPositionUpdate(entry);
 						entry->notifyPositionUpdate(child);
