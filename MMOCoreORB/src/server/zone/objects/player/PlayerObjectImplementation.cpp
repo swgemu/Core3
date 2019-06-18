@@ -1592,11 +1592,14 @@ void PlayerObjectImplementation::logout(bool doLock) {
 
 	try {
 		if (disconnectEvent == nullptr) {
-			info("creating disconnect event");
-
 			Reference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
+			if (creature == nullptr)
+				return;
+
 			int isInSafeArea = creature->getSkillMod("private_safe_logout") || ConfigManager::instance()->getBool("Core3.Tweaks.PlayerObject.AlwaysSafeLogout", false);
+
+			info("creating disconnect event: isInSafeArea=" + String::valueOf(isInSafeArea), true);
 
 			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast(), isInSafeArea);
 
