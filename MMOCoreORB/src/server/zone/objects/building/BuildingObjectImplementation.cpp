@@ -535,6 +535,10 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+#if ! COV_BUILDING_QUAD_RANGE
+	StructureObjectImplementation::notifyPositionUpdate(entry);
+	return;
+#else // COV_BUILDING_QUAD_RANGE
 #if DEBUG_COV_VERBOSE
 	if (getObjectID() == 88) { // Theed Cantina
 		info("BuildingObjectImplementation::notifyPositionUpdate(" + String::valueOf(entry->getObjectID()) + ")", true);
@@ -582,6 +586,7 @@ void BuildingObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 			e.printStackTrace();
 		}
 	}
+#endif // COV_BUILDING_QUAD_RANGE
 }
 
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
@@ -1765,7 +1770,11 @@ bool BuildingObjectImplementation::isBuildingObject() {
 }
 
 float BuildingObjectImplementation::getOutOfRangeDistance() const {
+#ifdef COV_BUILDING_QUAD_RANGE
 	return ZoneServer::CLOSEOBJECTRANGE * 4;
+#else // COV_BUILDING_QUAD_RANGE
+	return ZoneServer::CLOSEOBJECTRANGE;
+#endif // COV_BUILDING_QUAD_RANGE
 }
 
 String BuildingObjectImplementation::getCellName(uint64 cellID) {
