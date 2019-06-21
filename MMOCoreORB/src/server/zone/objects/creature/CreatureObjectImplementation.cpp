@@ -3654,7 +3654,7 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 
 		auto rootParent = o->getRootParent();
 
-		if (rootParent != nullptr && !rootParent->isBuildingObject())
+		if (rootParent != nullptr)
 			continue;
 
 		if (o != creature) {
