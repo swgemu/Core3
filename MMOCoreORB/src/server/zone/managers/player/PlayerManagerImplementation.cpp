@@ -397,7 +397,7 @@ void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& log
 
 		Time now;
 		StringBuffer archiveFilename;
-		archiveFilename << "log/players-" << now.getMiliTime() << ".log";
+		archiveFilename << "log/player-" << now.getMiliTime() << ".log";
 
 		// If the rename failed its ok because we open with append below
 		int err = std::rename(playerLoggerFilename.toCharArray(), archiveFilename.toString().toCharArray());
@@ -461,13 +461,23 @@ void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, Playe
 		logEntry["worldPositionZ"] = (int)creature->getWorldPositionZ();
 		logEntry["worldPositionY"] = (int)creature->getWorldPositionY();
 
-		Zone* zone = creature->getZone();
+		if (creature != nullptr) {
+			auto parent = creature->getParent().get();
 
-		if (zone == nullptr)
-			logEntry["zone"] = "null";
-		else
-			logEntry["zone"] = zone->getZoneName();
+			if (parent != nullptr) {
+				logEntry["parentOID"] = parent->getObjectID();
 
+				if (parent->isCellObject()) {
+					logEntry["positionX"] = (int)creature->getPositionX();
+					logEntry["positionZ"] = (int)creature->getPositionZ();
+					logEntry["positionY"] = (int)creature->getPositionY();
+				}
+			}
+
+			auto zone = creature->getZone();
+
+			logEntry["zone"] = zone != nullptr ? zone->getZoneName() : "null";
+		}
 	}
 
 	writePlayerLogEntry(logEntry);
