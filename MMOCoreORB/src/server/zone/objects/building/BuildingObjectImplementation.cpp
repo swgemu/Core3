@@ -476,14 +476,19 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 				if (child != obj && child != nullptr) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
 						if (child->getCloseObjects() != nullptr)
-							child->addInRangeObject(obj);
+							child->addInRangeObject(obj, false);
 						else
 							child->notifyInsert(obj);
 
+						child->sendTo(scno, true, false);
+
 						if (scno->getCloseObjects() != nullptr)
-							scno->addInRangeObject(child);
+							scno->addInRangeObject(child, false);
 						else
 							scno->notifyInsert(child);
+
+						if (scno->getParent() != nullptr)
+							scno->sendTo(child, true, false);
 					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
 						obj->notifyInsert(child);
