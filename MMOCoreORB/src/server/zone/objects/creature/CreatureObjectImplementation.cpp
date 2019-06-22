@@ -3623,8 +3623,6 @@ CreditObject* CreatureObjectImplementation::getCreditObject() {
 }
 
 void CreatureObjectImplementation::removeOutOfRangeObjects() {
-	// debug("removeOutOfRangeObjects");
-
 	CreatureObject* creature = asCreatureObject();
 
 	if (creature == nullptr)
@@ -3644,37 +3642,61 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 	closeObjectsVector->safeCopyTo(closeObjects);
 
 	auto worldPos = getWorldPosition();
-	float x = worldPos.getX();
-	float y = worldPos.getY();
+	float ourX = worldPos.getX();
+	float ourY = worldPos.getY();
 
-	float range2 = creature->getOutOfRangeDistance();
+	float ourRange = creature->getOutOfRangeDistance();
+
+	auto creatureRootObject = creature->getRootParent();
+
+	int countChecked = 0;
+	int countCov = closeObjects.size();
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
+		// Don't remove ourselves
+		if (o == nullptr || o == creature)
+			continue;
+
+		// Don't remove things in the same parent as us (e.g. Geo Caves are massive)
+		if (creatureRootObject != nullptr && o == creatureRootObject)
+			continue;
+
+		// Check for objects inside another object
 		auto rootParent = o->getRootParent();
 
+		// They should be managed by the parent
 		if (rootParent != nullptr)
 			continue;
 
-		if (o != creature) {
-			auto objectWorldPos = o->getWorldPosition();
+		countChecked++;
 
-			float deltaX = x - objectWorldPos.getX();
-			float deltaY = y - objectWorldPos.getY();
+		auto objectWorldPos = o->getWorldPosition();
+		float deltaX = ourX - objectWorldPos.getX();
+		float deltaY = ourY - objectWorldPos.getY();
 
-			//update out of range objects
-			float range1 = o->getOutOfRangeDistance();
+		float outOfRangeSqr = Math::sqr(Math::max(ourRange, o->getOutOfRangeDistance()));
 
-			float rangesq = Math::sqr(Math::max(range1, range2));
+		// Check for out of range
+		if (deltaX * deltaX + deltaY * deltaY > outOfRangeSqr) {
+			countCov--;
 
-			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
-				if (getCloseObjects() != nullptr)
-					creature->removeInRangeObject(o);
+			if (getCloseObjects() != nullptr)
+				creature->removeInRangeObject(o);
 
-				if (o->getCloseObjects() != nullptr)
-					o->removeInRangeObject(creature);
-			}
+			if (o->getCloseObjects() != nullptr)
+				o->removeInRangeObject(creature);
+		}
+	}
+
+	if (creature->isPlayerCreature()) {
+		auto ghost = creature->getPlayerObject();
+
+		// Cov count reporting
+		if (ghost != nullptr && countCov > ghost->getCountMaxCov()) {
+			creature->error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+			ghost->setCountMaxCov(countCov);
 		}
 	}
 }
