@@ -61,7 +61,7 @@ public:
 					if (!reason.isEmpty())
 						msg << "; reason: " << reason;
 
-					String path = structure->exportJSON(msg.toString(), 1);
+					String path = structure->exportJSON(msg.toString());
 
 					structure->info(msg.toString() + "; exported to " + path, true);
 
