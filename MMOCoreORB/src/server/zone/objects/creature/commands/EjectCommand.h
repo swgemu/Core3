@@ -23,6 +23,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->checkCooldownRecovery("eject")) {
+			creature->error("tried /eject before cooldown completed " + arguments.toString());
+			creature->sendSystemMessage("You must wait more than 60 seconds between /eject attempts.");
+			creature->getCooldownTimerMap()->updateToCurrentAndAddMili("eject", 60000); // Make them wait more (macro much?)
+			return GENERALERROR;
+		}
+
+		creature->getCooldownTimerMap()->updateToCurrentAndAddMili("eject", 60000); // 60 Seconds
+
 		creature->sendSystemMessage("@error_message:sys_eject_request"); //Processing eject request...
 
 		/*
@@ -77,6 +86,9 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 			creature->sendSystemMessage("@error_message:sys_eject_fail_proximity"); //The eject attempt failed because there isn't a building nearby.
 			return GENERALERROR;
 		}
+
+		if (creature != nullptr)
+			creature->error("used /eject " + arguments.toString());
 
 		closestBuilding->ejectObject(creature);
 		creature->sendSystemMessage("@error_message:sys_eject_success"); //You have been moved to the nearest building's ejection point.
