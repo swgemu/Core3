@@ -3690,9 +3690,15 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 		}
 	}
 
-	// Report bloated cov lists
-	if (countCov > 360)
-		creature->error("COV Count = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+	if (creature->isPlayerCreature()) {
+		auto ghost = creature->getPlayerObject();
+
+		// Cov count reporting
+		if (ghost != nullptr && countCov > ghost->getCountMaxCov()) {
+			creature->error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+			ghost->setCountMaxCov(countCov);
+		}
+	}
 }
 
 // The player may still have buildings and other far away objects in COV
