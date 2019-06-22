@@ -1927,11 +1927,15 @@ int SceneObjectImplementation::compareTo(SceneObject* obj) {
 	return asSceneObject()->compareTo(obj);
 }
 
-int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
+int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int maxDepth) {
+	if (maxDepth <= 0)
+		return 0;
+
 	int count = 0;
 
 	JSONSerializationType thisObject;
 	writeJSON(thisObject);
+	thisObject["_maxDepth"] = maxDepth;
 	j[String::valueOf(getObjectID()).toCharArray()] = thisObject;
 
 	count++;
@@ -1942,7 +1946,7 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 		if (obj != nullptr) {
 			ReadLocker locker(obj);
 
-			count += obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j, maxDepth - 1);
 		}
 	}
 
@@ -1954,7 +1958,7 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 		if (obj != nullptr) {
 			ReadLocker locker(obj);
 
-			count += obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j, maxDepth - 1);
 		}
 	}
 
@@ -1964,23 +1968,26 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j) {
 		if (obj != nullptr) {
 			ReadLocker locker(obj);
 
-			count += obj->writeRecursiveJSON(j);
+			count += obj->writeRecursiveJSON(j, maxDepth - 1);
 		}
 	}
 
 	return count;
 }
 
-String SceneObjectImplementation::exportJSON(const String& exportNote) {
+String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDepth) {
 	uint64 oid = getObjectID();
 
-	// Collect object and all children
+	// Collect object and all children to maxDepth
 	nlohmann::json exportedObjects = nlohmann::json::object();
+
+	if (maxDepth <= 0)
+		maxDepth = 1000;
 
 	int count = 0;
 
 	try {
-		count = writeRecursiveJSON(exportedObjects);
+		count = writeRecursiveJSON(exportedObjects, maxDepth);
 	} catch (Exception& e) {
 		info("SceneObjectImplementation::writeRecursiveJSON(): failed:" + e.getMessage(), true);
 	}
@@ -1993,6 +2000,7 @@ String SceneObjectImplementation::exportJSON(const String& exportNote) {
 	metaData["rootObjectID"] = oid;
 	metaData["rootObjectClassName"] = _className;
 	metaData["objectCount"] = count;
+	metaData["maxDepth"] = maxDepth;
 
 	// Root object is meta "exportObject"
 	nlohmann::json exportObject;
@@ -2012,7 +2020,7 @@ String SceneObjectImplementation::exportJSON(const String& exportNote) {
 	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
 	mkdir(fileNameBuf.toString().toCharArray(), 0770);
 
-	fileNameBuf << "/" << String::valueOf(oid) << ".json";
+	fileNameBuf << "/" << String::valueOf(oid) << "-" << now.getMiliTime() << ".json";
 
 	String fileName = fileNameBuf.toString();
 
