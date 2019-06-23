@@ -38,6 +38,42 @@ public:
 
 		StructureManager::instance()->reportStructureStatus(creature, structure);
 
+		// Check for admin doing export: /structurestatus export [reason for export]
+		auto ghost = creature->getPlayerObject();
+
+		if (structure != nullptr && ghost != nullptr && ghost->isStaff()) {
+			StringTokenizer args(arguments.toString());
+
+			if (args.hasMoreTokens()) {
+				String arg1;
+				args.getStringToken(arg1);
+
+				if (arg1.toLowerCase() == "export") {
+					String reason = "";
+
+					if (args.hasMoreTokens())
+						args.finalToken(reason);
+
+					StringBuffer msg;
+
+					msg << "/structurestatus export by " << creature->getFirstName();
+
+					if (!reason.isEmpty())
+						msg << "; reason: " << reason;
+
+					String path = structure->exportJSON(msg.toString());
+
+					structure->info(msg.toString() + "; exported to " + path, true);
+
+					msg << endl << "Exported to " << path;
+
+					creature->sendSystemMessage(msg.toString());
+				} else {
+					creature->sendSystemMessage("Usage: /structurestatus export [reason for export]");
+				}
+			}
+		}
+
 		return SUCCESS;
 	}
 

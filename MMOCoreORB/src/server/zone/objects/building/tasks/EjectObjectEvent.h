@@ -23,6 +23,25 @@ public:
 	void run() {
 		Locker locker(object);
 
+		if (object->isCreatureObject()) {
+			StringBuffer msg;
+			msg << "EjectObjectEvent("
+				<< object->getObjectID()
+				<< ", x:" << x
+				<< ", z:" << z
+				<< ", y:" << y
+				<< ")"
+				<< " from " << object->getWorldPosition().toString();
+				;
+
+			auto creo = object->asCreatureObject();
+
+			if (creo != nullptr)
+				creo->error(msg.toString());
+			else
+				object->error(msg.toString());
+		}
+
 		object->teleport(x, z, y);
 	}
 };
