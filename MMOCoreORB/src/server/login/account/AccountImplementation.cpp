@@ -67,7 +67,7 @@ void AccountImplementation::updateAccount() {
 }
 
 void AccountImplementation::updateCharacters() {
-	characterList = new CharacterList(getAccountID());
+	characterList = new CharacterList(getAccountID(), getUsername());
 }
 
 void AccountImplementation::updateGalaxyBans() {

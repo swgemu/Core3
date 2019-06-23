@@ -16,6 +16,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "conf/ConfigManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/login/objects/GalaxyList.h"
 
 using ::testing::_;
 using ::testing::Return;
@@ -113,6 +114,23 @@ public:
 		zoneServer = nullptr;
 	}
 };
+
+TEST_F(ZoneTest, GalaxyList) {
+	auto galaxies = GalaxyList("admin");
+
+	while(galaxies.next()) {
+		std::cerr << "[>>>>>>>>>>] " << galaxies.toString().toCharArray() << std::endl;
+
+#ifdef USE_RANDOM_EXTRA_PORTS
+		// Make a couple calls to getRandomPort()
+		std::cerr << "[>>>>>>>>>>] getRandomPort " << galaxies.getRandomPort();
+		for (int i = 0; i < 3;i++) {
+			std::cerr << " " << galaxies.getRandomPort();
+		}
+		std::cerr<< std::endl;
+#endif // USE_RANDOM_EXTRA_PORTS
+	}
+}
 
 TEST_F(ZoneTest, PlayerManager) {
 	playerManager = new PlayerManager( zoneServer, processServer );

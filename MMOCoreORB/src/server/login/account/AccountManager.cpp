@@ -90,8 +90,8 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 		client->info(e.getMessage(), true);
 	}
 
-	client->sendMessage(loginServer->getLoginEnumClusterMessage());
-	client->sendMessage(loginServer->getLoginClusterStatusMessage());
+	client->sendMessage(loginServer->getLoginEnumClusterMessage(account));
+	client->sendMessage(loginServer->getLoginClusterStatusMessage(account));
 
 	Message* eci = new EnumerateCharacterID(account);
 	client->sendMessage(eci);
