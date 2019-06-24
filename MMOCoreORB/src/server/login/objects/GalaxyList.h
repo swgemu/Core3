@@ -6,90 +6,219 @@
 #define GALAXYLIST_H_
 
 #include "server/db/ServerDatabase.h"
+#include "conf/ConfigManager.h"
 
-//#define USE_RANDOM_EXTRA_PORTS
+// #define USE_RANDOM_EXTRA_PORTS
+
+class Galaxy {
+	uint32 id;
+	String name;
+	String address;
+	uint32 port;
+	uint32 pingPort;
+	uint32 population;
+#ifdef USE_RANDOM_EXTRA_PORTS
+	Vector<uint32> extraPorts;
+#endif // USE_RANDOM_EXTRA_PORTS
+public:
+	Galaxy() {
+		id = 0;
+		name = "";
+		address = "";
+		port = 0;
+		pingPort = 0;
+		population = 0;
+	}
+
+	Galaxy(ResultSet *result) {
+		id = result->getUnsignedInt(0);
+		name = result->getString(1);
+		address = result->getString(2);
+		port = result->getUnsignedInt(3);
+		pingPort = result->getUnsignedInt(4);
+		population = result->getUnsignedInt(5);
+#ifdef USE_RANDOM_EXTRA_PORTS
+		extraPorts.add(port);
+
+		try {
+			String extraPortStrings = result->getString(6);
+
+			if (!extraPortStrings.isEmpty()) {
+				StringTokenizer tokenizer(extraPortStrings);
+				tokenizer.setDelimiter(",");
+
+				while (tokenizer.hasMoreTokens() && extraPorts.size() < 256) {
+					try {
+						uint32 newPort = tokenizer.getIntToken();
+
+						if (newPort != 0)
+							extraPorts.add(newPort);
+					} catch (Exception e) {
+						// Do nothing
+					}
+				}
+			}
+		} catch (Exception e) {
+			// Do Nothing
+		}
+#endif // USE_RANDOM_EXTRA_PORTS
+	}
+
+	uint32 getID() {
+		return id;
+	}
+
+	String& getName() {
+		return name;
+	}
+
+	String& getAddress() {
+		return address;
+	}
+
+	uint32 getPort() {
+		return port;
+	}
+
+	uint32 getPingPort() {
+		return pingPort;
+	}
+
+	uint32 getPopulation() {
+		return population;
+	}
+
+	uint16 getRandomPort() {
+#ifdef USE_RANDOM_EXTRA_PORTS
+		return (uint16) extraPorts.get(System::random(extraPorts.size() - 1));
+#else // USE_RANDOM_EXTRA_PORTS
+		return port;
+#endif // USE_RANDOM_EXTRA_PORTS
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return false;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return false;
+	}
+
+	String toString() {
+		StringBuffer buf;
+
+		buf << "Galaxy("
+			<< "id: " << id
+			<< ", name: " << name
+			<< ", address: " << address
+			<< ", port: " << port
+			<< ", pingPort: " << pingPort
+			<< ", population: " << population
+		;
+#ifdef USE_RANDOM_EXTRA_PORTS
+
+		buf << ", extraPorts:";
+
+		for (auto port : extraPorts)
+			buf << " " << port;
+#endif
+		buf << ")";
+
+		return buf.toString();
+	}
+};
 
 class GalaxyList {
-	ResultSet* galaxies;
+	Vector<Galaxy> galaxies;
+	Galaxy current;
+	int curIdx = 0;
 
 public:
-	GalaxyList() {
+	GalaxyList(String username) {
 		StringBuffer query;
 		query << "SELECT * FROM galaxy";
 
-		galaxies = ServerDatabase::instance()->executeQuery(query);
-	}
+		Reference<ResultSet*> results = ServerDatabase::instance()->executeQuery(query);
 
-	~GalaxyList() {
-		if (galaxies != NULL)
-			delete galaxies;
+		if (results == nullptr)
+			return;
+
+		while(results->next()) {
+			auto galaxy = Galaxy(results);
+
+			Vector<String> galaxyAccessList;
+
+			try {
+				galaxyAccessList = ConfigManager::instance()->getStringVector("Core3.GalaxyAccess." + galaxy.getName());
+			} catch (Exception& e) {
+				// Do nothing on error (key miss)
+			}
+
+			if (galaxyAccessList.size() > 0) {
+				for (auto& access_username : galaxyAccessList) {
+					if (access_username == username)
+						galaxies.add(galaxy);
+				}
+			} else
+				galaxies.add(galaxy);
+		}
+
+		curIdx = 0;
 	}
 
 	bool next() {
-		return galaxies->next();
-	}
-
-	uint32 getGalaxyID() {
-		return galaxies->getUnsignedInt(0);
-	}
-
-	void getGalaxyName(String& name) {
-		name = galaxies->getString(1);
-	}
-
-	void getGalaxyAddress(String& address) {
-		address = galaxies->getString(2);
-	}
-
-	uint16 getGalaxyPort() {
-		return galaxies->getUnsignedInt(3);
-	}
-
-	uint16 getRandomGalaxyPort() {
-#ifndef USE_RANDOM_EXTRA_PORTS
-		return getGalaxyPort();
-#else
-		auto mainPort = getGalaxyPort();
-		auto extraPorts = getExtraPorts();
-
-		int ports[256];
-		ports[0] = mainPort;
-
-		int count = 1;
-
-		StringTokenizer tokenizer(extraPorts);
-		tokenizer.setDelimiter(",");
-
-		while (tokenizer.hasMoreTokens() && count < 256) {
-			ports[count++] = tokenizer.getIntToken();
+		if (curIdx < galaxies.size()) {
+			current = galaxies.get(curIdx++);
+			return true;
 		}
 
-		uint16 port = (uint16) ports[System::random(count - 1)];
-
-		return port;
-#endif
+		return false;
 	}
 
-	uint16 getGalaxyPingPort() {
-		return galaxies->getUnsignedInt(4);
+	bool isAllowed(uint32 galaxyID) {
+		for (auto& galaxy : galaxies) {
+			if (galaxy.getID() == galaxyID)
+				return true;
+		}
+
+		return false;
 	}
 
-	uint32 getGalaxyPopulation() {
-		return galaxies->getUnsignedInt(5);
+	uint32 getID() {
+		return current.getID();
 	}
 
-	String getExtraPorts() {
-#ifdef USE_RANDOM_EXTRA_PORTS
-		return galaxies->getString(6);
-#else
-		return "";
-#endif
+	String& getName() {
+		return current.getName();
+	}
+
+	String& getAddress() {
+		return current.getAddress();
+	}
+
+	uint16 getPort() {
+		return current.getPort();
+	}
+
+	uint16 getRandomPort() {
+		return current.getRandomPort();
+	}
+
+	uint16 getPingPort() {
+		return current.getPingPort();
+	}
+
+	uint32 getPopulation() {
+		return current.getPopulation();
+	}
+
+	String toString() {
+		return current.toString();
 	}
 
 	inline int size() {
-		return galaxies->size();
-	} 
-	
+		return galaxies.size();
+	}
 };
 
 #endif /*GALAXYLIST_H_*/

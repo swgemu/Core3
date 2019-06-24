@@ -10,6 +10,7 @@ import conf.ConfigManager;
 import server.login.LoginClient;
 import server.login.LoginProcessServerImplementation;
 import server.login.LoginHandler;
+import server.login.account.Account;
 import server.login.account.AccountManager;
 import server.login.packets.LoginClusterStatus;
 import server.login.packets.LoginEnumCluster;
@@ -20,38 +21,36 @@ import system.net.Packet;
 
 class LoginServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
-	
+
 	private transient BasePacketHandler phandler;
-	
+
 	private transient LoginHandler loginHandler;
-	
+
 	private transient LoginProcessServerImplementation processor;
-	
+
 	private transient ConfigManager configManager;
-	
-	private transient LoginEnumCluster enumClusterMessage;
 
 	private transient AccountManager accountManager;
-	
+
 	public native LoginServer(ConfigManager config);
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@local
 	public native LoginClient createConnection(Socket sock, @dereferenced SocketAddress addr);
-	
+
 	public native void initialize();
-	
+
 	public native void shutdown();
 
 	public native void startManagers();
 
 	public native void stopManagers();
-	
+
 	public native void start(int p, int mconn = 10);
-	
+
 	public native void stop();
-	
+
 	@local
 	public native void handleMessage(LoginClient client, Packet message);
 
@@ -60,11 +59,9 @@ class LoginServer extends ManagedService implements Logger {
 
 	@local
 	public native boolean handleError(ServiceClient client, @dereferenced Exception e);
-	
+
 	public native void printInfo();
-	
-	public native void populateGalaxyList();
-	
+
 	@local
 	public AccountManager getAccountManager() {
 		return accountManager;
@@ -72,12 +69,10 @@ class LoginServer extends ManagedService implements Logger {
 
 	@local
 	public native LoginClient getLoginClient(ServiceClient session);
-	
-	@local
-	public LoginEnumCluster getLoginEnumClusterMessage() {
-		return (LoginEnumCluster) enumClusterMessage.clone();
-	}
 
 	@local
-	public native LoginClusterStatus getLoginClusterStatusMessage();
+	public native LoginEnumCluster getLoginEnumClusterMessage(Account account);
+
+	@local
+	public native LoginClusterStatus getLoginClusterStatusMessage(Account account);
 }

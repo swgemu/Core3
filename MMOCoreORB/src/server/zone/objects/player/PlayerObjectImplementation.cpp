@@ -78,7 +78,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 
 	IntangibleObjectImplementation::initializeTransientMembers();
 
-	countMaxCov = 0;
+	countMaxCov = 4500; // Only report very large lists
 	foodFillingMax = 100;
 	drinkFillingMax = 100;
 

@@ -6,15 +6,18 @@
 #define CHARACTERLIST_H_
 
 #include "server/db/ServerDatabase.h"
+#include "../objects/GalaxyList.h"
 #include "CharacterListEntry.h"
 
 class CharacterList : public Vector<CharacterListEntry> {
 
 	uint32 accountid;
+	String username;
 
 public:
-	CharacterList(uint32 id) {
+	CharacterList(uint32 id, String user) {
 		accountid = id;
+		username = user;
 		update();
 	}
 
@@ -56,7 +59,13 @@ public:
 		if (characters == NULL)
 			return;
 
+		auto galaxies = GalaxyList(username);
+
 		while(characters->next()) {
+			uint32 galaxyID = characters->getInt(2);
+
+			if (!galaxies.isAllowed(galaxyID))
+				continue;
 
 			CharacterListEntry newEntry;
 			newEntry.setObjectID(characters->getUnsignedLong(0));
