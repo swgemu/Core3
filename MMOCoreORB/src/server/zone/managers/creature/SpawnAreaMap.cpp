@@ -126,6 +126,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 				return;
 			}
 		}
+	} else {
+		error("Invalid area type of " + String::valueOf(areaType) + " for spawn region " + name);
+		return;
 	}
 
 	areaShapeObject.pop();
@@ -157,7 +160,12 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
 		Locker shapeLocker(circularAreaShape);
 		circularAreaShape->setAreaCenter(x, y);
-		circularAreaShape->setRadius(radius);
+
+		if (radius > 0)
+			circularAreaShape->setRadius(radius);
+		else
+			circularAreaShape->setRadius(zone->getBoundingRadius());
+
 		area->setAreaShape(circularAreaShape);
 	} else if (areaType == RING) {
 		ManagedReference<RingAreaShape*> ringAreaShape = new RingAreaShape();
@@ -166,12 +174,6 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		ringAreaShape->setInnerRadius(innerRadius);
 		ringAreaShape->setOuterRadius(outerRadius);
 		area->setAreaShape(ringAreaShape);
-	} else {
-		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
-		Locker shapeLocker(circularAreaShape);
-		circularAreaShape->setAreaCenter(x, y);
-		circularAreaShape->setRadius(zone->getBoundingRadius());
-		area->setAreaShape(circularAreaShape);
 	}
 
 	area->setTier(tier);
