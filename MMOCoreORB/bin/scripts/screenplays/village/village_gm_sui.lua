@@ -1,5 +1,5 @@
 VillageGmSui = ScreenPlay:new {
-	productionServer = true
+	productionServer = false
 }
 
 function VillageGmSui:showMainPage(pPlayer)
