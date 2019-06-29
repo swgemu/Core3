@@ -84,6 +84,8 @@ void AuctionManagerImplementation::initialize() {
 		String ownerName = playerManager->getPlayerName(auctionItem->getOwnerID());
 
 		if (ownerName.isEmpty()) {
+			error("Auction for item " + String::valueOf(auctionItem->getAuctionedItemObjectID()) + " had invalid owner, oid: " + String::valueOf(auctionItem->getOwnerID()) + ", deleting item.");
+
 			uint64 sellingId = auctionItem->getAuctionedItemObjectID();
 			auctionMap->deleteItem(vendor, auctionItem);
 
@@ -244,6 +246,9 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			if(vendor == nullptr || vendor->getZone() == nullptr || ownerName.isEmpty()) {
 				uint64 sellingId = item->getAuctionedItemObjectID();
 				auctionMap->deleteItem(vendor, item);
+
+				if (ownerName.isEmpty())
+					error("Auction for item " + String::valueOf(item->getAuctionedItemObjectID()) + " had invalid owner, oid: " + String::valueOf(item->getOwnerID()) + ", deleting item.");
 
 				Core::getTaskManager()->executeTask([this, sellingId] () {
 						ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
