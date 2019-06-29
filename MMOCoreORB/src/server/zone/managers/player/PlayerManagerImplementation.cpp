@@ -4345,11 +4345,14 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 	Locker locker(&onlineMapMutex);
 
 	uint32 accountId = client->getAccountID();
-
-	if (!onlineZoneClientMap.containsKey(accountId))
-		return;
-
 	auto session = client->getSession();
+
+	if (!onlineZoneClientMap.containsKey(accountId)) {
+		if (session != nullptr)
+			onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+
+		return;
+	}
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -4360,16 +4363,15 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 			break;
 		}
 
-	if (clients.size() == 0)
+	if (clients.size() == 0) {
 		onlineZoneClientMap.remove(accountId);
-	else
+
+		if (session != nullptr)
+			onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+	} else
 		onlineZoneClientMap.put(accountId, clients);
 
 	locker.release();
-
-	if (session != NULL) {
-		onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
-	}
 }
 
 void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, CreatureObject* respondingPlayer, SceneObject* askingPlayerRing) {
@@ -5048,11 +5050,8 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 
 		locker.release();
 
-		if (session != NULL) {
-			String ip = session->getIPAddress();
-
-			onlineZoneClientMap.addAccount(ip, accountId);
-		}
+		if (session != nullptr)
+			onlineZoneClientMap.addAccount(session->getIPAddress(), accountId);
 
 		return true;
 	}
@@ -5084,12 +5083,6 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	onlineZoneClientMap.put(accountId, clients);
 
 	locker.release();
-
-	if (session != NULL) {
-		String ip = session->getIPAddress();
-
-		onlineZoneClientMap.addAccount(ip, accountId);
-	}
 
 	return true;
 }
