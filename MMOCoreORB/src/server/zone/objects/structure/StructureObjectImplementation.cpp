@@ -20,6 +20,10 @@
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -150,6 +154,17 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	if (!staticObject && isBuildingObject())
 		info("notifyInsertToZone", true);
 #endif // DEBUG_STRUCTURE_MAINT
+	StringBuffer logName;
+
+	logName << getLoggingName()
+		// << " 0x" << String::hexvalueOf((int64)getObjectID())
+		<< " owner: " << String::valueOf(getOwnerObjectID())
+		<< " " << String::valueOf((int)getPositionX()) << " " << String::valueOf((int)getPositionY())
+		<< " " << zone->getZoneName()
+		<< " " << String::valueOf((int)getPositionZ())
+		<< " " << getObjectName()->getFullPath();
+
+	setLoggingName(logName.toString());
 
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 
@@ -175,11 +190,61 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 		maxCondition = getBaseMaintenanceRate() * 24 * 7 * 4;
 
 		scheduleMaintenanceExpirationEvent();
+	} else if(getOwnerObjectID() != 0 && getCityRegion().get() == nullptr && !isTurret() && !isMinefield()) {
+		auto ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+
+		if (ssot == nullptr)
+			error("SharedStructureObjectTemplate is null?");
+		else if (ssot->getCityRankRequired() > 0 || ssot->isCivicStructure())
+			destroyOrphanCivicStructure();
 	}
 
 	if (isGCWBase() && !isClientObject()) {
 		createNavMesh();
 	}
+}
+
+void StructureObjectImplementation::destroyOrphanCivicStructure() {
+	error("Civic structure but not in a city!");
+
+	if (!ConfigManager::instance()->getBool("Core3.Tweaks.StructureObject.DestoryOrphans", false))
+		return;
+
+	auto chatManager = getZoneServer()->getChatManager();
+	auto structureManager = StructureManager::instance();
+
+	if (chatManager == nullptr || structureManager == nullptr) {
+		error("destroyOrphanCivicStructure failed to get chat or struture manager.");
+		return;
+	}
+
+	auto name = getZoneServer()->getPlayerManager()->getPlayerName(getOwnerObjectID());
+
+	if (!name.isEmpty()) {
+		UnicodeString subject = "Orphaned city structure destroyed!";
+
+		StringBuffer msg;
+
+		msg << name << "," << endl << endl;
+		msg << "You are the last known mayor releated to a " << StringIdManager::instance()->getStringId(getObjectName()->getFullPath().hashCode()).toString();
+		msg << " at " << (int)getPositionX() << ", " << (int)getPositionY() << " on " << getZone()->getZoneName() << "." << endl;
+		msg << endl;
+		msg << "This structre has been destroyed because it did not belong to an active city." << endl;
+		msg << endl;
+		msg << "-- The Planetary Civic Authority" << endl;
+
+		UnicodeString body = msg.toString();
+
+		chatManager->sendMail("@city/city:new_city_from", subject, body, name);
+	} else {
+		error("destroyOrphanCivicStructure: Unable to find owner oid: " + String::valueOf(getOwnerObjectID()) + ", destruction email not sent.");
+	}
+
+	String path = exportJSON("Destroyed by destroyOrphanCivicStructure");
+
+	error("Destroyed orphan civic structure and exported to " + path);
+
+	structureManager->destroyStructure(_this.getReferenceUnsafeStaticCast());
 }
 
 int StructureObjectImplementation::getLotSize() {
@@ -250,7 +315,13 @@ String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 //Only gets called when maintenance has been changed by an outside source
 void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 	if (getMaintenanceRate() <= 0) {
-		//No maintenance cost, structure maintenance cannot expire.
+		if (getOwnerObjectID() == 0)
+			return;
+
+		if (getCityRegion().get() == nullptr && !isTurret() && !isMinefield())
+			error("scheduleMaintenanceExpirationEvent: getMaintenanceRate() <= 0 but not in a city!");
+
+		// No maintenance cost, structure maintenance cannot expire.
 		return;
 	}
 
@@ -320,6 +391,12 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 void StructureObjectImplementation::scheduleMaintenanceTask(int secondsFromNow) {
 	if(getBaseMaintenanceRate() == 0) {
+		if (getOwnerObjectID() == 0)
+			return;
+
+		if (getCityRegion().get() == nullptr && !isTurret() && !isMinefield())
+			error("scheduleMaintenanceTask: getMaintenanceRate() <= 0 but not in a city!");
+
 		return;
 	}
 
@@ -403,8 +480,12 @@ void StructureObjectImplementation::updateStructureStatus() {
 	 * Any time the maintenance or power surplus is changed by a hand other than this method.
 	 */
 
-	if(isCivicStructure())
+	if(isCivicStructure()) {
+		if (getCityRegion().get() == nullptr && !isTurret() && !isMinefield())
+			error("updateStructureStatus: isCivicStructure() but not in a city!");
+
 		return;
+	}
 
 #if DEBUG_STRUCTURE_MAINT
 	info("updateStructureStatus: surplusMaintenance = " + String::valueOf(surplusMaintenance)
@@ -459,6 +540,43 @@ void StructureObjectImplementation::updateStructureStatus() {
 	} else {
 		setConditionDamage(0, true);
 	}
+}
+
+// Basic checks to see if structure is running tasks etc.
+String StructureObjectImplementation::getDebugStructureStatus() {
+	StringBuffer status;
+
+	if (structureMaintenanceTask != nullptr) {
+		int ss = (int) (structureMaintenanceTask->getNextExecutionTime().miliDifference() / 1000.f * -1) + 1;
+		int dd = (int)(ss / 86400);
+		ss -= dd * 86400;
+		int hh = (int)(ss / 3600);
+		ss -= hh * 3600;
+		int mm = (int)(ss / 60);
+		ss -= mm * 60;
+		status << "Next maintenance check in";
+
+        if (dd > 0)
+            status << " " << dd << "d";
+
+        if (dd > 0 || hh > 0)
+            status << " " << hh << "h";
+
+        if (dd > 0 || hh > 0 || mm > 0)
+            status << " " << mm << "m";
+
+        status << " " << ss << "s";
+	} else {
+		if (getBaseMaintenanceRate() > 0) {
+			status << "WARNING: No maintenance task running on this structure";
+			error("getDebugStructureStatus: structureMaintenanceTask == nullptr");
+		} else if (getOwnerObjectID() != 0 && getCityRegion().get() == nullptr && !isTurret() && !isMinefield()) {
+			status << "WARNING: City object without a city!";
+			error("getDebugStructureStatus: City structure but not in a city!");
+		}
+	}
+
+	return status.toString();
 }
 
 bool StructureObjectImplementation::isDecayed() {

@@ -935,6 +935,9 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 						+ " @player_structure:units_per_hour");
 	}
 
+	if (ghost->isPrivileged())
+		status->addMenuItem(structure->getDebugStructureStatus());
+
 	if (structure->isBuildingObject()) {
 		BuildingObject* building = cast<BuildingObject*>(structure);
 
@@ -953,6 +956,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 				"@player_structure:items_in_building_prompt "
 						+ String::valueOf(
 								building->getCurrentNumberOfPlayerItems())); //Number of Items in Building:
+
 #if ENABLE_STRUCTURE_JSON_EXPORT
 		if (creature->hasSkill("admin_base")) {
 			String exportNote = "Exported: " + building->exportJSON("reportStructureStatus");
