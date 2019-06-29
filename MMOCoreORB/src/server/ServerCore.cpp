@@ -142,6 +142,7 @@ void ServerCore::initialize() {
 		if (configManager->getMakeLogin()) {
 			loginServer = new LoginServer(configManager);
 			loginServer->deploy("LoginServer");
+			database->instance()->executeStatement("TRUNCATE TABLE sessions");
 		}
 
 		if (configManager->getMakeZone()) {
@@ -194,9 +195,6 @@ void ServerCore::initialize() {
 						zonePort = result->getInt(0);
 					}
 				}
-
-				database->instance()->executeStatement(
-						"TRUNCATE TABLE sessions");
 
 				database->instance()->executeStatement(
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
