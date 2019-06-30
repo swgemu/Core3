@@ -698,3 +698,10 @@ void ServerCore::processConfig() {
 	//if (!features->loadFeatures())
 	//info("Problem occurred trying to load features.lua");
 }
+
+int ServerCore::getSchemaVersion() {
+	if (instance != nullptr && instance->database != nullptr)
+		return instance->database->getSchemaVersion();
+
+	return -1;
+}

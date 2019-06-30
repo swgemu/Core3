@@ -10,33 +10,16 @@
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/db/ServerDatabase.h"
+#include "server/ServerCore.h"
 
 class OnlineZoneClientMap : public HashTable<uint32, Vector<Reference<ZoneClientSession*> > >, Logger {
 protected:
 	HashTable<String, Reference<SortedVector<uint32>*> > ip_list;
 	ReadWriteLock mutex;
-	int dbVersion;
 
 public:
 	OnlineZoneClientMap() {
 		setLoggingName("OnlineZoneClientMap");
-
-		dbVersion = 1;
-
-		try {
-			String query =
-			   "SELECT COUNT(*)"
-			   " FROM information_schema.COLUMNS"
-			   " WHERE TABLE_NAME = 'account_ips'"
-			   " AND COLUMN_NAME = 'online_count'";
-
-			Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
-
-			if (result != nullptr && result->next())
-				dbVersion = result->getInt(0) == 0 ? 1 : 2;
-		} catch(DatabaseException& e) {
-			error("Unable to determine dbatase version, assuming v" + String::valueOf(dbVersion));
-		}
 	}
 
 	void accountLoggedIn(const String& ip, uint32 accountId, int galaxyId) {
@@ -113,7 +96,7 @@ private:
 	void insertLogEntry(uint32 accountId, int galaxyId, const String& ipAddress, int logout, int onlineCount) {
 		StringBuffer query;
 
-		if (dbVersion >= 2)
+		if (ServerCore::getSchemaVersion() >= 1001)
 			query << "insert into account_ips (account_id, galaxy_id, ip, logout, online_count) values"
 				<< "(" << accountId
 				<< ", " << galaxyId
