@@ -52,6 +52,7 @@ void AuctionManagerImplementation::initialize() {
 
 	Vector<ManagedReference<AuctionItem*> > orphanedBazaarItems;
 	ManagedReference<SceneObject*> defaultBazaar = nullptr;
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
 	while (iterator.getNextKey(objectID)) {
 		Reference<AuctionItem*> auctionItem = Core::getObjectBroker()->lookUp(objectID).castTo<AuctionItem*>();
@@ -80,10 +81,47 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
+		String ownerName = playerManager->getPlayerName(auctionItem->getOwnerID());
+
+		if (ownerName.isEmpty()) {
+			error("Auction for item " + String::valueOf(auctionItem->getAuctionedItemObjectID()) + " had invalid owner, oid: " + String::valueOf(auctionItem->getOwnerID()) + ", deleting item.");
+
+			uint64 sellingId = auctionItem->getAuctionedItemObjectID();
+			auctionMap->deleteItem(vendor, auctionItem);
+
+			Core::getTaskManager()->executeTask([this, sellingId] () {
+					ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
+
+					if (sceno != nullptr) {
+						Locker locker(sceno);
+
+						sceno->destroyObjectFromDatabase(true);
+					}
+				}, "DeleteAuctionItemLambda", "slowQueue");
+
+			continue;
+		}
+
+		uint64 vendorExpire = time(0) + AuctionManager::VENDOREXPIREPERIOD;
+		uint64 commodityExpire = time(0) + AuctionManager::COMMODITYEXPIREPERIOD;
+		uint64 oldExpire = 0;
+
+		if (auctionItem->getStatus() == AuctionItem::FORSALE && auctionItem->getExpireTime() > vendorExpire) {
+			oldExpire = auctionItem->getExpireTime();
+			auctionItem->setExpireTime(vendorExpire);
+			error("Auction for item " + String::valueOf(auctionItem->getAuctionedItemObjectID()) + " had invalid expiration time. Old: " + String::valueOf(oldExpire) + ", new: " + String::valueOf(auctionItem->getExpireTime()) + ", owner: " + ownerName);
+		}
+
+		if (auctionItem->getStatus() == AuctionItem::OFFERED && auctionItem->getExpireTime() > commodityExpire) {
+			oldExpire = auctionItem->getExpireTime();
+			auctionItem->setExpireTime(commodityExpire);
+			error("Auction for item " + String::valueOf(auctionItem->getAuctionedItemObjectID()) + " had invalid expiration time. Old: " + String::valueOf(oldExpire) + ", new: " + String::valueOf(auctionItem->getExpireTime()) + ", owner: " + ownerName);
+		}
+
 		if(vendor->isBazaarTerminal() && defaultBazaar == nullptr)
 			defaultBazaar = vendor;
 
-		auctionMap->addItem(NULL, vendor, auctionItem);
+		auctionMap->addItem(nullptr, vendor, auctionItem);
 
 		if(auctionItem->isOnBazaar() || auctionItem->getStatus() == AuctionItem::OFFERED)
 			auctionMap->addToCommodityLimit(auctionItem);
@@ -202,10 +240,15 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			count_total++;
 
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+			ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+			String ownerName = playerManager->getPlayerName(item->getOwnerID());
 
-			if(vendor == nullptr || vendor->getZone() == nullptr) {
+			if(vendor == nullptr || vendor->getZone() == nullptr || ownerName.isEmpty()) {
 				uint64 sellingId = item->getAuctionedItemObjectID();
 				auctionMap->deleteItem(vendor, item);
+
+				if (ownerName.isEmpty())
+					error("Auction for item " + String::valueOf(item->getAuctionedItemObjectID()) + " had invalid owner, oid: " + String::valueOf(item->getOwnerID()) + ", deleting item.");
 
 				Core::getTaskManager()->executeTask([this, sellingId] () {
 						ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
@@ -218,6 +261,34 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 					}, "DeleteAuctionItemLambda", "slowQueue");
 
 				continue;
+			}
+
+			uint64 vendorExpire = time(0) + AuctionManager::VENDOREXPIREPERIOD;
+			uint64 commodityExpire = time(0) + AuctionManager::COMMODITYEXPIREPERIOD;
+			bool updatedExpire = false;
+			uint64 oldExpire = 0;
+
+			if (item->getStatus() == AuctionItem::FORSALE && item->getExpireTime() > vendorExpire) {
+				oldExpire = item->getExpireTime();
+				item->setExpireTime(vendorExpire);
+				updatedExpire = true;
+			}
+
+			if (item->getStatus() == AuctionItem::OFFERED && item->getExpireTime() > commodityExpire) {
+				oldExpire = item->getExpireTime();
+				item->setExpireTime(commodityExpire);
+				updatedExpire = true;
+			}
+
+			if (updatedExpire) {
+				if(item->isAuction() && auctionEvents.contains(item->getAuctionedItemObjectID())) {
+					Reference<Task*> newTask = auctionEvents.get(item->getAuctionedItemObjectID());
+
+					if(newTask != nullptr)
+						newTask->reschedule((item->getExpireTime() - time(0)) * 1000);
+				}
+
+				error("Auction for item " + String::valueOf(item->getAuctionedItemObjectID()) + " had invalid expiration time. Old: " + String::valueOf(oldExpire) + ", new: " + String::valueOf(item->getExpireTime()) + ", owner: " + ownerName);
 			}
 
 			if (item->getExpireTime() <= currentTime) {
