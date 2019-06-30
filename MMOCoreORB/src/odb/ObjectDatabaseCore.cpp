@@ -9,6 +9,9 @@
 #include <fstream>
 #include <thread>
 
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "ObjectDatabaseCoreSignals.h"
 
 AtomicInteger ObjectDatabaseCore::dbReadCount;
@@ -22,6 +25,8 @@ AtomicLong ObjectDatabaseCore::creoReadSize;
 AtomicLong ObjectDatabaseCore::ghostReadSize;
 AtomicLong ObjectDatabaseCore::globalDBReadSize;
 AtomicLong ObjectDatabaseCore::compressedCreoReadSize;
+AtomicLong ObjectDatabaseCore::creoCompactSize;
+AtomicLong ObjectDatabaseCore::ghostCompactSize;
 
 int main(int argc, char* argv[]) {
 	try {
@@ -84,6 +89,7 @@ void ObjectDatabaseCore::showHelp() {
 		"\todb3 dumpdb <database> <threads> <filename>\n"
 		"\todb3 dumpobj <objectid>\n"
 		"\todb3 dumpadmins <galaxyid> <threads>\n"
+		"\todb3 dumpplayers <galaxyid> <threads>\n"
 		, true);
 }
 
@@ -96,8 +102,8 @@ void ObjectDatabaseCore::run() {
 		dumpDatabaseToJSON(getArgument(1));
 	} else if (operation == "dumpobj") {
 		dumpObjectToJSON(getLongArgument(1));
-	} else if (operation == "dumpadmins") {
-		dumpAdmins();
+	} else if (operation == "dumpplayers") {
+		dumpPlayers();
 	} else {
 		showHelp();
 	}
@@ -114,7 +120,7 @@ VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
 	VectorMap<uint64, String> players(500000, 500000 / 2);
 	players.setNoDuplicateInsertPlan();
 
-	staticLogger.info("loading characters from mysql", true);
+	staticLogger.info("loading characters from mysql for galaxy " + String::valueOf(galaxyID), true);
 
 	try {
 		String query = "SELECT character_oid, firstname FROM characters where galaxy_id = " + String::valueOf(galaxyID);
@@ -133,18 +139,19 @@ VectorMap<uint64, String> ObjectDatabaseCore::loadPlayers(int galaxyID) {
 	}
 
 	StringBuffer msg;
-	msg << "loaded " << players.size() << " character names in memory";
+	msg << "Loaded " << players.size() << " characters into memory";
 	staticLogger.info(msg.toString(), true);
 
 	return players;
 }
 
-bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData) {
-	static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
+UniqueReference<DistributedObjectPOD*> ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData) {
+	UniqueReference<DistributedObjectPOD*> nullUniqueReference(nullptr);
+	const static bool reportError = Core::getIntProperty("ODB3.reportParsingErrors", 1);
 	String className;
 
 	if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
-		return false;
+		return nullUniqueReference;
 	}
 
 	UniqueReference<DistributedObjectPOD*> pod(Core::getObjectBroker()->createObjectPOD(className));
@@ -153,7 +160,7 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData
 		if (reportError)
 			staticLogger.error("could not create pod object for class name " + className);
 
-		return false;
+		return pod;
 	}
 
 	try {
@@ -170,22 +177,20 @@ bool ObjectDatabaseCore::getJSONString(uint64 oid, ObjectInputStream& objectData
 		if (reportError)
 			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.getMessage());
 
-		return false;
+		return nullUniqueReference;
 	} catch (const std::exception& e) {
 		if (reportError)
 			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid) + " " + e.what());
 
-		return false;
+		return nullUniqueReference;
 	} catch (...) {
 		if (reportError)
 			staticLogger.error("parsing data for object 0x:" + String::hexvalueOf(oid));
 
-
-		return false;
+		return nullUniqueReference;
 	}
 
-	return true;
-
+	return pod;
 }
 
 //std::function<void()> ObjectDatabaseCore::getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher) {
@@ -281,7 +286,8 @@ void ObjectDatabaseCore::showStats(uint32 previousCount, int deltaMs) {
 	buff << "total db read count: " << currentCount << " not found:  " << dbReadNotFoundCount.get(std::memory_order_seq_cst) << " speed: " << (currentCount - previousCount)
 		<< " reads in " << deltaMs / 1000.f << "s front queued: " << pushedObjects.get(std::memory_order_seq_cst)
 		<< " back queued: " << backPushedObjects.get(std::memory_order_seq_cst)
-		<< " global db read size: " << globalDBReadSize.get() << " creo read size: " << creoReadSize.get() << " creo compressed read size: " << compressedCreoReadSize.get() << " ghost read size: " << ghostReadSize;
+		<< " global db read size: " << globalDBReadSize.get() << " creo read size: " << creoReadSize.get() << " creo compressed read size: " << compressedCreoReadSize.get() << " ghost read size: " << ghostReadSize
+		<< " creo compact size: " << creoCompactSize.get();
 	staticLogger.info(buff, true);
 }
 
@@ -400,13 +406,24 @@ void ObjectDatabaseCore::dispatchWorkerTask(const Vector<ODB3WorkerData>& curren
 	}, "DumpJSONTask", "ODBReaderThreads");
 }
 
-void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects) {
+void ObjectDatabaseCore::dispatchPlayerTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects, const String& fileName) {
 	static const bool readRAWTest = Core::getIntProperty("ODB3.adminReadRAWTest", 0);
 
-	Core::getTaskManager()->executeTask([currentObjects]() {
+	Core::getTaskManager()->executeTask([currentObjects, fileName]() {
+		static AtomicInteger fileCount;
+		static ThreadLocal<std::ofstream*> jsonFile;
+
+		auto file = jsonFile.get();
+
+		if (file == nullptr) {
+			String name = fileName + String::valueOf(fileCount.increment());
+			file = new std::ofstream(name.toCharArray(), std::fstream::out);
+
+			jsonFile.set(file);
+		}
+
 		for (const auto& obj : currentObjects) {
 			try {
-				int state = 0;
 				auto objectID = obj.getValue();
 
 				auto database = getDatabase(objectID);
@@ -417,45 +434,42 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 					continue;
 				}
 
-				ObjectInputStream objectData(Core::getIntProperty("BerkeleyDB.zlibChunkSize", 2048 * 2));
+				ObjectInputStream objectData(1024 * 4);
 
-				if (readRAWTest) {
-					if (database->getData(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, true)) {
-						dbReadNotFoundCount.increment();
-					} else {
-						dbReadCount.increment();
+				auto res = database->getData(objectID, &objectData);
 
-						compressedCreoReadSize.add(objectData.size());
-
-						globalDBReadSize.add(objectData.size());
-					}
-
-					pushedObjects.decrement();
-
-					continue;
-				}
-
-				if (database->getData(objectID, &objectData)) {
+				if (res == DB_NOTFOUND){
 					dbReadNotFoundCount.increment();
-					pushedObjects.decrement();
 
 					continue;
+				} else if (res != 0) {
+					continue;
 				}
-
-				creoReadSize.add(objectData.size());
-				globalDBReadSize.add(objectData.size());
 
 				dbReadCount.increment();
+				globalDBReadSize.add(objectData.size());
 
-				VectorMap<String, uint64> slottedObjects;
+				auto object = getJSONString(objectID, objectData, *file);
 
-				if (!Serializable::getVariable(STRING_HASHCODE("SceneObject.slottedObjects"), &slottedObjects, &objectData)) {
-					pushedObjects.decrement();
-
+				if (!object) {
 					continue;
 				}
 
-				uint64 ghostId = slottedObjects.get("ghost");
+				*file << "\n";
+
+				auto creo = dynamic_cast<CreatureObjectPOD*>(object.get());
+
+				if (!creo) {
+					continue;
+				}
+
+				auto entry = creo->slottedObjects->find("ghost");
+
+				if (entry == -1) {
+					continue;
+				}
+
+				uint64 ghostId = creo->slottedObjects->elementAt(entry).getValue().getObjectID();
 
 				if (ghostId == 0) {
 					pushedObjects.decrement();
@@ -463,48 +477,56 @@ void ObjectDatabaseCore::dispatchAdminTask(const Vector<VectorMapEntry<String, u
 					continue;
 				}
 
-				ObjectInputStream ghostData(1024);
+				objectData.clear();
 
-				if (database->getData(ghostId, &ghostData)) {
+				if (database->getData(ghostId, &objectData)) {
 					dbReadNotFoundCount.increment();
-					pushedObjects.decrement();
 
 					continue;
 				}
 
-				ghostReadSize.add(ghostData.size());
-				globalDBReadSize.add(ghostData.size());
+				ghostReadSize.add(objectData.size());
+				globalDBReadSize.add(objectData.size());
 
 				dbReadCount.increment();
 
-				if (!Serializable::getVariable(STRING_HASHCODE("PlayerObject.adminLevel"), &state, &ghostData)) {
-					pushedObjects.decrement();
+				auto ghostPOD = getJSONString(ghostId, objectData, *file);
 
+				if (!ghostPOD) {
 					continue;
 				}
+
+				*file << "\n";
+
+				auto ghost = dynamic_cast<PlayerObjectPOD*>(ghostPOD.get());
+
+				if (!ghost) {
+					continue;
+				}
+
+				int state = ghost->adminLevel.value();
 
 				if (state != 0) {
 					adminList.put(obj.getKey(), state);
 				}
 			} catch (...) {
 			}
-
-			pushedObjects.decrement();
 		}
-
-	}, "GetAdminPlayerObjectTask", "AdminListThreads");
+	}, "GetPlayerObjectTask", "PlayerListThreads");
 }
 
-void ObjectDatabaseCore::dumpAdmins() {
+void ObjectDatabaseCore::dumpPlayers() {
 	mysql = new ServerDatabase(ConfigManager::instance());
 	auto taskManager = Core::getTaskManager();
 
 	auto players = loadPlayers(getIntArgument(1, 2));
 
-	int objectsPerTask = Core::getIntProperty("ODB3.adminPlayersPerTask", 100);
+	const String& fileName = getArgument(3, "players");
+
+	int objectsPerTask = Core::getIntProperty("ODB3.PlayersPerTask", 500);
 
 	int count = 0;
-	auto queue = taskManager->initializeCustomQueue("AdminListThreads", getIntArgument(2, 10));
+	auto queue = taskManager->initializeCustomQueue("PlayerListThreads", getIntArgument(2, 10));
 
 	Vector<VectorMapEntry<String, uint64>> currentObjects;
 
@@ -519,7 +541,7 @@ void ObjectDatabaseCore::dumpAdmins() {
 		pushedObjects.increment();
 
 		if (currentObjects.size() >= objectsPerTask || count >= players.size()) {
-			dispatchAdminTask(currentObjects);
+			dispatchPlayerTask(currentObjects, fileName);
 
 			currentObjects.removeAll(objectsPerTask, 50);
 		}
@@ -535,7 +557,9 @@ void ObjectDatabaseCore::dumpAdmins() {
 		previousCount = dbReadCount.get();
 	}
 
-	taskManager->waitForQueueToFinish("AdminListThreads");
+	taskManager->waitForQueueToFinish("PlayerListThreads");
+
+	info("Admin List:", true);
 
 	for (int i = 0; i < adminList.size(); ++i) {
 		info(adminList.getKey(i) + ": " + adminList.get(i), true);

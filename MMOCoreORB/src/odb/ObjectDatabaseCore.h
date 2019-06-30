@@ -79,6 +79,9 @@ protected:
 	static AtomicLong ghostReadSize;
 	static AtomicLong globalDBReadSize;
 
+	static AtomicLong creoCompactSize;
+	static AtomicLong ghostCompactSize;
+
 public:
 	ObjectDatabaseCore(Vector<String> arguments, const char* engine);
 
@@ -92,14 +95,14 @@ public:
 	static VectorMap<uint64, String> loadPlayers(int galaxyID);
 
 	void showHelp();
-	void dumpAdmins();
+	void dumpPlayers();
 
 	static void showStats(uint32 previousCount, int deltaMs);
 
 	static ObjectDatabase* getDatabase(uint64_t objectID);
 
 	static int getJSONString(uint64 oid, ObjectDatabase* database, std::ostream& writeStream);
-	static bool getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData);
+	static UniqueReference<DistributedObjectPOD*> getJSONString(uint64 oid, ObjectInputStream& objectData, std::ostream& returnData);
 	//static std::function<void()> getReadTestTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 
 	uint64_t getLongArgument(int index, uint64_t defaultValue = 0) const {
@@ -130,7 +133,7 @@ public:
 	static void dispatchWorkerTask(const Vector<ODB3WorkerData>& currentObjects, ObjectDatabase* database, const String& fileName, int maxWriterThreads, int dispatcher);
 	static void startBackIteratorTask(ObjectDatabase* database, const String& fileName, int writerThreads);
 	static void startBackIteratorTask2(ObjectDatabase* database, const String& fileName, int writerThreads);
-	static void dispatchAdminTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects);
+	static void dispatchPlayerTask(const Vector<VectorMapEntry<String, uint64>>& currentObjects, const String& fileName);
 };
 
 #endif /*OBJECTDATABASECORE_H_*/
