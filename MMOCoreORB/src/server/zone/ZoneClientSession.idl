@@ -17,6 +17,8 @@ include system.util.SynchronizedVectorMap;
 class ZoneClientSession extends ManagedObject {
 	transient protected BaseClientProxy session;
 
+	string ipAddress;
+
 	@dereferenced
 	protected SynchronizedVectorMap<unsigned int, unsigned long> characters;
 
@@ -57,6 +59,8 @@ class ZoneClientSession extends ManagedObject {
 	public native void error(final string msg);
 
 	public native string getAddress();
+
+	public native string getIPAddress();
 
 	// setters and getters
 	public native void setPlayer(CreatureObject playerCreature);

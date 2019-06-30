@@ -16,6 +16,8 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 		:  ManagedObjectImplementation() {
 	ZoneClientSessionImplementation::session = session;
 
+	ipAddress = session != nullptr ? session->getIPAddress() : "";
+
 	player = NULL;
 	sessionID = 0;
 
@@ -180,6 +182,10 @@ void ZoneClientSessionImplementation::error(const String& msg) {
 
 String ZoneClientSessionImplementation::getAddress() {
 	return session->getAddress();
+}
+
+String ZoneClientSessionImplementation::getIPAddress() {
+	return ipAddress.isEmpty() ? "0.0.0.0" : ipAddress;
 }
 
 BaseClientProxy* ZoneClientSessionImplementation::getSession() {
