@@ -10,6 +10,7 @@
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/db/ServerDatabase.h"
+#include "server/ServerCore.h"
 
 class OnlineZoneClientMap : public HashTable<uint32, Vector<Reference<ZoneClientSession*> > >, Logger {
 protected:
@@ -21,7 +22,7 @@ public:
 		setLoggingName("OnlineZoneClientMap");
 	}
 
-	void addAccount(const String& ip, uint32 accountId) {
+	void accountLoggedIn(const String& ip, uint32 accountId, int galaxyId) {
 		int onlineCount = -1;
 
 		Locker locker(&mutex);
@@ -39,19 +40,7 @@ public:
 			onlineCount = account_list->size();
 		}
 
-		try {
-			StringBuffer query;
-			query << "insert into account_ips (account_id, ip, online_count) values(" << accountId << ", '" << ip << "', " << onlineCount << ");";
-			ServerDatabase::instance()->executeStatement(query);
-		} catch(DatabaseException& e) {
-			try {
-				StringBuffer query;
-				query << "insert into account_ips (account_id, ip) values(" << accountId << ", '" << ip << "');";
-				ServerDatabase::instance()->executeStatement(query);
-			} catch(DatabaseException& e) {
-				error(e.getMessage());
-			}
-		}
+		insertLogEntry(accountId, galaxyId, ip, 0, onlineCount);
 
 		if (onlineCount >= ConfigManager::instance()->getInt("Core3.LogOnlineCount", 3)) {
 			String delim = " ";
@@ -68,7 +57,7 @@ public:
 		}
 	}
 
-	void accountLoggedOut(const String& ip, uint32 accountId) {
+	void accountLoggedOut(const String& ip, uint32 accountId, int galaxyId) {
 		int onlineCount = -1;
 
 		Locker locker(&mutex);
@@ -79,19 +68,7 @@ public:
 			onlineCount = account_list->size();
 		}
 
-		try {
-			StringBuffer query;
-			query << "insert into account_ips (account_id, ip, logout, online_count) values(" << accountId << ", '" << ip << "', " << 1 << ", " << onlineCount << ");";
-			ServerDatabase::instance()->executeStatement(query);
-		} catch(DatabaseException& e) {
-			try {
-				StringBuffer query;
-				query << "insert into account_ips (account_id, ip, logout) values(" << accountId << ", '" << ip << "', " << 1 << ");";
-				ServerDatabase::instance()->executeStatement(query);
-			} catch(DatabaseException& e) {
-				error(e.getMessage());
-			}
-		}
+		insertLogEntry(accountId, galaxyId, ip, 1, onlineCount);
 
 		if (account_list != nullptr && account_list->size() == 0)
 			ip_list.remove(ip);
@@ -113,6 +90,32 @@ public:
 
 	int getDistinctIps() {
 		return ip_list.size();
+	}
+
+private:
+	void insertLogEntry(uint32 accountId, int galaxyId, const String& ipAddress, int logout, int onlineCount) {
+		StringBuffer query;
+
+		if (ServerCore::getSchemaVersion() >= 1001)
+			query << "insert into account_ips (account_id, galaxy_id, ip, logout, online_count) values"
+				<< "(" << accountId
+				<< ", " << galaxyId
+				<< ", '" << ipAddress << "'"
+				<< ", " << logout
+				<< ", " << onlineCount
+				<< ");";
+		else
+			query << "insert into account_ips (account_id, ip, logout) values"
+				<< "(" << accountId
+				<< ", '" << ipAddress << "'"
+				<< ", " << logout
+				<< ");";
+
+		try {
+			ServerDatabase::instance()->executeStatement(query);
+		} catch(DatabaseException& e) {
+			error(e.getMessage());
+		}
 	}
 };
 

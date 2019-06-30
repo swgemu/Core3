@@ -119,6 +119,7 @@ public:
 		return arguments.contains(arg);
 	}
 
+	static int getSchemaVersion();
 };
 
 #endif /*SERVERCORE_H_*/

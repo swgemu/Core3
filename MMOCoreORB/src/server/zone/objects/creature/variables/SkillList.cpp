@@ -52,13 +52,14 @@ void SkillList::getStringList(Vector<String>& skills) const {
 }
 
 bool SkillList::toBinaryStream(ObjectOutputStream* stream) {
+	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
+
 #ifdef ODB_SERIALIZATION
 	skills.toBinaryStream(stream);
 #else
 	Vector<String> names;
 	getStringList(names);
 
-	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
 	names.toBinaryStream(stream);
 #endif
 	return true;
@@ -76,12 +77,12 @@ void to_json(nlohmann::json& j, const SkillList& s) {
 }
 
 bool SkillList::parseFromBinaryStream(ObjectInputStream* stream) {
+	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
+
 #ifdef ODB_SERIALIZATION
 	skills.parseFromBinaryStream(stream);
 #else
 	Vector<String> skills;
-
-	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
 	skills.parseFromBinaryStream(stream);
 
 	loadFromNames(skills);

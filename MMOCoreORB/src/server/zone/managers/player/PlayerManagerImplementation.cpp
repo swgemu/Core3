@@ -4344,13 +4344,12 @@ SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObj
 void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
+	auto server = ServerCore::getZoneServer();
 	uint32 accountId = client->getAccountID();
-	auto session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
-		if (session != nullptr)
-			onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
-
+		error("decreaseOnlineCharCount missing account " + String::valueOf(accountId) + " in onlineZoneClientMap");
+		onlineZoneClientMap.accountLoggedOut(client->getIPAddress(), accountId, server != nullptr ? server->getGalaxyID() : 0);
 		return;
 	}
 
@@ -4365,9 +4364,7 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 
 	if (clients.size() == 0) {
 		onlineZoneClientMap.remove(accountId);
-
-		if (session != nullptr)
-			onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+		onlineZoneClientMap.accountLoggedOut(client->getIPAddress(), accountId, server != nullptr ? server->getGalaxyID() : 0);
 	} else
 		onlineZoneClientMap.put(accountId, clients);
 
@@ -5038,9 +5035,8 @@ int PlayerManagerImplementation::getFirstIneligibleMilestone(PlayerObject *playe
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
+	auto server = ServerCore::getZoneServer();
 	uint32 accountId = client->getAccountID();
-
-	auto session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
 		Vector<Reference<ZoneClientSession*> > clients;
@@ -5050,8 +5046,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 
 		locker.release();
 
-		if (session != nullptr)
-			onlineZoneClientMap.addAccount(session->getIPAddress(), accountId);
+		onlineZoneClientMap.accountLoggedIn(client->getIPAddress(), accountId, server != nullptr ? server->getGalaxyID() : 0);
 
 		return true;
 	}
@@ -5062,6 +5057,9 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 
 	for (int i = 0; i < clients.size(); ++i) {
 		ZoneClientSession* session = clients.get(i);
+
+		if (session == nullptr)
+			continue;
 
 		ManagedReference<CreatureObject*> player = session->getPlayer();
 

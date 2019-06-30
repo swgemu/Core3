@@ -44,13 +44,14 @@ void AbilityList::insertToMessage(BaseMessage* msg) {
 }
 
 bool AbilityList::toBinaryStream(ObjectOutputStream* stream) {
+	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
+
 #ifdef ODB_SERIALIZATION
 	abilities.toBinaryStream(stream);
 #else
 	Vector<String> names;
 	getStringList(names);
 
-	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
 	names.toBinaryStream(stream);
 #endif
 
@@ -80,12 +81,12 @@ void AbilityList::getStringList(Vector<String>& abilities) const {
 }
 
 bool AbilityList::parseFromBinaryStream(ObjectInputStream* stream) {
+	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
+
 #ifdef ODB_SERIALIZATION
 	abilities.parseFromBinaryStream(stream);
 #else
 	Vector<String> abilities;
-
-	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
 	abilities.parseFromBinaryStream(stream);
 
 	loadFromNames(abilities);

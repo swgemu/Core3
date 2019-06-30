@@ -122,9 +122,9 @@ public:
 			}
 		}
 
-		structureObject->destroyObjectFromDatabase(true);
 		structureObject->destroyObjectFromWorld(true);
 		structureObject->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, structureObject, 0);
+		structureObject->destroyObjectFromDatabase(true);
 	}
 };
 
