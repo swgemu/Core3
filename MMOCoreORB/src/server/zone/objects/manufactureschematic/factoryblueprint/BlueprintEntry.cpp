@@ -153,7 +153,7 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 		if(useCount < amountNeeded) {
 			count += useCount;
 			matchingHopperItems.removeElement(object);
-			object->decreaseUseCount(useCount);
+			object->decreaseUseCount(useCount,false);
 			continue;
 		}
 

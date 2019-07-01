@@ -588,6 +588,8 @@ void FactoryObjectImplementation::createNewObject() {
 
 		if (newItem == nullptr)
 			return;
+		Locker clocker(newItem, _this.getReferenceUnsafeStaticCast());
+		newItem->setUseCount(1,false);
 	}
 
 	Locker clocker(schematic, _this.getReferenceUnsafeStaticCast());
