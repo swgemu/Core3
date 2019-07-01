@@ -161,6 +161,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU
 	-Wno-missing-declarations
 	-Wno-return-std-move
 	-Wno-implicit-fallthrough
+        -Wno-class-memaccess
 	-fcolor-diagnostics)
 
     foreach(flag_comp ${GCCEXTRAFLAGS})
