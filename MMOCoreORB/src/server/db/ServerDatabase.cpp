@@ -38,7 +38,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 
 		String createTable = "CREATE TABLE `db_metadata` AS SELECT 1000 as `schema_version`;";
 		try {
-			instance()->executeQuery(createTable);
+			Reference<ResultSet*> result = instance()->executeQuery(createTable);
 			updateDatabaseSchema();
 		} catch (Exception& e) {
 			error("Failed to create db_metadata table, please manually create in mysql: " + createTable);
@@ -66,10 +66,13 @@ void ServerDatabase::alterDatabase(int nextSchemaVersion, const String& alterSql
 	String updateVersionSql = "UPDATE `db_metadata` SET `schema_version` = " + String::valueOf(nextSchemaVersion);
 
 	try {
-		instance()->executeQuery(alterSql);
-		instance()->executeQuery(updateVersionSql);
-		dbSchemaVersion = nextSchemaVersion;
-		info("Upgraded mysql database schema to version " + String::valueOf(dbSchemaVersion), true);
+		Reference<ResultSet*> result = instance()->executeQuery(alterSql);
+
+		if (result != nullptr) {
+			result = instance()->executeQuery(updateVersionSql);
+			dbSchemaVersion = nextSchemaVersion;
+			info("Upgraded mysql database schema to version " + String::valueOf(dbSchemaVersion), true);
+		}
 	} catch (Exception& e) {
 		error(e.getMessage());
 		error("Failed to update database schema, please manually execute: " + alterSql + "; " + updateVersionSql);
