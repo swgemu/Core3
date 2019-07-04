@@ -57,6 +57,37 @@ public:
 			else {
 				promptText << "OFFLINE. Last On: " << ghost->getLastLogout()->getFormattedTime() << endl;
 			}
+
+			if (ghost->isOnline()) {
+				auto zone = targetObject->getZone();
+
+				promptText << "Current Location: " << targetObject->getWorldPosition().toString()
+					<< " zone: " << (zone != nullptr ? zone->getZoneName() : "<nullZone>")
+					<< endl;
+			} else {
+				auto loginPos = targetObject->getWorldPosition();
+
+				Reference<SceneObject*> playerParent = creature->getZoneServer()->getObject(ghost->getSavedParentID(), true);
+
+				if (playerParent == nullptr)
+					playerParent = targetObject->getParent().get();
+
+				if (playerParent != nullptr && playerParent->isCellObject()) {
+					Reference<SceneObject*> root = playerParent->getRootParent();
+
+					if (root != nullptr && root->isBuildingObject()) {
+						float length = Math::sqrt(targetObject->getPositionX() * targetObject->getPositionX() + targetObject->getPositionY() * targetObject->getPositionY());
+						float angle = root->getDirection()->getRadians() + atan2(targetObject->getPositionX(), targetObject->getPositionY());
+						float posX = root->getPositionX() + (sin(angle) * length);
+						float posY = root->getPositionY() + (cos(angle) * length);
+						float posZ = root->getPositionZ() + targetObject->getPositionZ();
+
+						loginPos = Vector3(posX, posY, posZ);
+					}
+				}
+
+				promptText << "Login Location: " << loginPos.toString() << " zone: " << ghost->getSavedTerrainName() << endl;
+			}
 		}
 
 		promptText << endl << "SkillMods:" << endl;
