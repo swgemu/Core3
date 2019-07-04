@@ -72,6 +72,8 @@ public:
 		String firstName = "";
 		int tablevel = 0;
 
+		StringBuffer argsString;
+
 		if (index != -1) {
 			SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
@@ -110,6 +112,20 @@ public:
 
 				galaxyID = getPlayerGalaxyID(player, listBox, index, galaxyName);
 				playerName = firstName;
+			}
+
+			if (tablevel == 3) {
+				String accountId;
+				StringTokenizer tokenizer(listString);
+				tokenizer.setDelimiter(":");
+				while(tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(accountId);
+				}
+
+				if (!accountId.isEmpty()) {
+					session->cancelSession();
+					player->sendCommand(STRING_HASHCODE("getaccountinfo"), "-a " + accountId);
+				}
 			}
 
 			if (otherPressed) {
