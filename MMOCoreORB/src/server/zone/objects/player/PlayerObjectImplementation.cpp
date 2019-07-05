@@ -72,6 +72,8 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/chat/PendingMessageList.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/db/ServerDatabase.h"
+#include "server/ServerCore.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	playerLogLevel = ConfigManager::instance()->getPlayerLogLevel();
@@ -88,6 +90,13 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	setLoggingName("PlayerObject");
 
 	initializeAccount();
+
+	sessionStatsMiliSecs = 0;
+	sessionStatsLastCredits = 0;
+	sessionStatsLastSkillPoints = 0;
+	sessionStatsActivityXP = 0;
+	sessionStatsActivityMovement = 0;
+	sessionStatsIPAddress = "";
 }
 
 PlayerObject* PlayerObjectImplementation::asPlayerObject() {
@@ -551,6 +560,9 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 	int valueToAdd = xp;
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	if (xp > 0)
+		sessionStatsActivityXP += xp; // Count all xp as we're looking for activity not caps etc.
 
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
@@ -1282,6 +1294,8 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	miliSecsSession = 0;
 
+	resetSessionStats(true);
+
 	ChatManager* chatManager = server->getChatManager();
 	ZoneServer* zoneServer = server->getZoneServer();
 
@@ -1398,6 +1412,128 @@ void PlayerObjectImplementation::notifyOffline() {
 	if (missionManager != nullptr && playerCreature->hasSkill("force_title_jedi_rank_02")) {
 		missionManager->updatePlayerBountyOnlineStatus(playerCreature->getObjectID(), false);
 	}
+
+	logSessionStats(true);
+}
+
+void PlayerObjectImplementation::incrementSessionMovement(float moveDelta) {
+	sessionStatsActivityMovement += (int)moveDelta;
+}
+
+void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
+	sessionStatsActivityXP = 0;
+	sessionStatsActivityMovement = 0;
+	sessionStatsLastSkillPoints = skillPoints;
+
+	Reference<SceneObject*> parent = getParent().get();
+
+	if (parent != nullptr) {
+		CreatureObject* playerCreature = parent->asCreatureObject();
+
+		if (playerCreature != nullptr) {
+			sessionStatsLastCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
+
+			if (sessionStatsIPAddress.isEmpty()) {
+				auto client = playerCreature->getClient();
+
+				if (client != nullptr)
+					sessionStatsIPAddress = client->getIPAddress();
+			}
+		}
+	} else
+		error("parent == nullptr in resetSessionStats");
+
+	sessionStatsMiliSecs = 0;
+}
+
+void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
+	// Wait for stable state before logging
+	if (sessionStatsMiliSecs == 0 || sessionStatsIPAddress.isEmpty())
+		return;
+
+	int galaxyID = 0;
+	uint64 objectID = 0;
+	int64 currentCredits = sessionStatsLastCredits;
+
+	Reference<SceneObject*> parent = getParent().get();
+
+	if (parent != nullptr) {
+		objectID = parent->getObjectID();
+
+		CreatureObject* playerCreature = parent->asCreatureObject();
+
+		if (playerCreature != nullptr) {
+			currentCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
+			galaxyID = playerCreature->getZoneServer()->getGalaxyID();
+		} else {
+			error("playerCreature == nullptr in logSessionStats");
+		}
+	} else {
+		error("parent == nullptr in logSessionStats");
+	}
+
+	int skillPointDelta = skillPoints - sessionStatsLastSkillPoints;
+	int64 creditsDelta = (int64)currentCredits - (int64)sessionStatsLastCredits;
+
+	int ipAccountCount = 0;
+
+	if (!sessionStatsIPAddress.isEmpty()) {
+		SortedVector<uint32> loggedInAccounts = getZoneServer()->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(sessionStatsIPAddress);
+		ipAccountCount = loggedInAccounts.size();
+	}
+
+	// Need the session_stats table to log to database
+	if (ServerCore::getSchemaVersion() >= 1002) {
+		StringBuffer query;
+
+		query << "INSERT INTO `session_stats` ("
+			<< "`account_id`, `galaxy_id`, `character_oid`, `ip`, `session_end`"
+			<< ", `session_seconds`, `delta_seconds`, `delta_credits`, `delta_skillpoints`"
+			<< ", `activity_xp`, `activity_movement`, `current_credits`, `ip_account_count`"
+			<< ") VALUES"
+			<< " (" << getAccountID()
+			<< ", " << galaxyID
+			<< ", " << objectID
+			<< ", '" << sessionStatsIPAddress << "'"
+			<< ", " << isSessionEnd
+			<< ", " << (int)(miliSecsSession / 1000.0f)
+			<< ", " << (int)(sessionStatsMiliSecs / 1000.0f)
+			<< ", " << creditsDelta
+			<< ", " << skillPointDelta
+			<< ", " << sessionStatsActivityXP
+			<< ", " << sessionStatsActivityMovement
+			<< ", " << currentCredits
+			<< ", " << ipAccountCount
+			<< ");"
+			;
+
+		Core::getTaskManager()->executeTask([=] () {
+			try {
+				ServerDatabase::instance()->executeStatement(query);
+			} catch(DatabaseException& e) {
+				error(e.getMessage());
+			}
+		}, "logSessionStats");
+	} else {
+		StringBuffer logMsg;
+
+		logMsg << "SessionStats:"
+			<< " isSessionEnd: " << isSessionEnd
+			<< " sessionSeconds: " << (int)(miliSecsSession / 1000.0f)
+			<< " logSeconds: " << (int)(sessionStatsMiliSecs / 1000.0f)
+			<< " creditsDelta: " << creditsDelta
+			<< " skillPointDelta: " << skillPointDelta
+			<< " activityXP: " << sessionStatsActivityXP
+			<< " activityMovement: " << sessionStatsActivityMovement
+			<< " ip: " << sessionStatsIPAddress
+			<< " ipAccountCount: " << ipAccountCount
+			<< " currentCredits: " << currentCredits
+			;
+
+		info(logMsg.toString(), true);
+	}
+
+	resetSessionStats(false);
 }
 
 void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {
@@ -1708,6 +1844,10 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 		miliSecsPlayed += latency;
 		miliSecsSession += latency;
+		sessionStatsMiliSecs += latency;
+
+		if (sessionStatsMiliSecs >= ConfigManager::instance()->getSessionStatsSeconds() * 1000)
+			logSessionStats(false);
 	}
 
 	if (cooldownTimerMap->isPast("spawnCheckTimer")) {

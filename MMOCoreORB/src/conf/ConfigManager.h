@@ -164,6 +164,7 @@ namespace conf {
 		bool cache_ProgressMonitors;
 		bool cache_UnloadContainers;
 		bool cache_UseMetrics;
+		int cache_SessionStatsSeconds;
 
 	public:
 		ConfigManager();
@@ -492,6 +493,10 @@ namespace conf {
 
 		inline int getMaxLogLines() {
 			return getInt("Core3.MaxLogLines", 1000000);
+		}
+
+		inline int getSessionStatsSeconds() {
+			return cache_SessionStatsSeconds;
 		}
 	};
 }
