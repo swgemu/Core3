@@ -159,11 +159,14 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 		}
 	}
 
-	int logSecs = ConfigManager::instance()->getOnlineLogSeconds();
-	int logSize = ConfigManager::instance()->getOnlineLogSize();
+	Core::getTaskManager()->executeTask([=] () {
+		int logSecs = ConfigManager::instance()->getOnlineLogSeconds();
+		int logSize = ConfigManager::instance()->getOnlineLogSize();
 
-	onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast(), logSize);
-	onlinePlayerLogTask->schedulePeriodic(logSecs * 1000, logSecs * 1000);
+		onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast(), logSize);
+		onlinePlayerLogTask->execute();
+		onlinePlayerLogTask->schedulePeriodic(logSecs * 1000, logSecs * 1000);
+	}, "startOnlinePlayerLogTask");
 }
 
 bool PlayerManagerImplementation::createPlayer(ClientCreateCharacterCallback* callback) {

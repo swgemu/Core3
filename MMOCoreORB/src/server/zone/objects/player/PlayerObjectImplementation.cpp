@@ -1419,7 +1419,7 @@ void PlayerObjectImplementation::notifyOffline() {
 }
 
 void PlayerObjectImplementation::incrementSessionMovement(float moveDelta) {
-	if (moveDelta < 10.0f)
+	if (moveDelta < 1.0f)
 		return;
 
 	sessionStatsActivityMovement += (int)moveDelta;
