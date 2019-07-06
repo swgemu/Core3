@@ -76,7 +76,7 @@ void ServerDatabase::alterDatabase(int nextSchemaVersion, const String& alterSql
 		}
 	} catch (Exception& e) {
 		error(e.getMessage());
-		error("Failed to update database schema, please manually execute: " + alterSql + "; " + updateVersionSql);
+		error("Failed to update database schema, please manually execute: " + alterSql + " " + updateVersionSql);
 	}
 }
 
@@ -107,5 +107,10 @@ void ServerDatabase::updateDatabaseSchema() {
 		",KEY `idx_ip` (`ip`)"
 		",KEY `idx_galaxy_ip` (`galaxy_id`,`ip`,`account_id`,`character_oid`)"
 		") ENGINE=MyISAM DEFAULT CHARSET=latin1;"
+	);
+
+	alterDatabase(1003,
+		"ALTER TABLE `session_stats`"
+		" ADD COLUMN `uptime` INT(11) DEFAULT '-1' AFTER `timestamp`;"
 	);
 }
