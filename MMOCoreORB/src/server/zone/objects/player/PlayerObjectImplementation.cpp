@@ -97,6 +97,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	sessionStatsActivityXP = 0;
 	sessionStatsActivityMovement = 0;
 	sessionStatsIPAddress = "";
+	miliSecsSession = 0;
 }
 
 PlayerObject* PlayerObjectImplementation::asPlayerObject() {
@@ -1452,6 +1453,14 @@ void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
 }
 
 void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
+	if (isSessionEnd
+	&& sessionStatsActivityXP == 0
+	&& sessionStatsActivityMovement == 0
+	&& sessionStatsLastSkillPoints == skillPoints
+	&& sessionStatsMiliSecs <= 2)
+		return;
+
+	int64 uptime = -1;
 	int galaxyID = 0;
 	uint64 objectID = 0;
 	int64 currentCredits = sessionStatsLastCredits;
@@ -1471,6 +1480,9 @@ void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
 
 			if (client != nullptr)
 				sessionStatsIPAddress = client->getIPAddress();
+
+			Time now;
+			uptime = playerCreature->getZoneServer()->getStartTimestamp()->miliDifference(now);
 		} else {
 			error("playerCreature == nullptr in logSessionStats");
 		}
@@ -1492,15 +1504,16 @@ void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
 	}
 
 	// Need the session_stats table to log to database
-	if (ServerCore::getSchemaVersion() >= 1002) {
+	if (ServerCore::getSchemaVersion() >= 1003) {
 		StringBuffer query;
 
 		query << "INSERT INTO `session_stats` ("
-			<< "`account_id`, `galaxy_id`, `character_oid`, `ip`, `session_end`"
+			<< "`uptime`, `account_id`, `galaxy_id`, `character_oid`, `ip`, `session_end`"
 			<< ", `session_seconds`, `delta_seconds`, `delta_credits`, `delta_skillpoints`"
 			<< ", `activity_xp`, `activity_movement`, `current_credits`, `ip_account_count`"
 			<< ") VALUES"
-			<< " (" << getAccountID()
+			<< " (" << (int)(uptime / 1000.0f)
+			<< ", " << getAccountID()
 			<< ", " << galaxyID
 			<< ", " << objectID
 			<< ", '" << sessionStatsIPAddress << "'"
