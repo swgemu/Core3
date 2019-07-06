@@ -10,6 +10,12 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
 class OnlinePlayerLogTask : public Task {
 	Reference<PlayerManager*> playerManager;
 	int logMaxSize;
@@ -27,5 +33,13 @@ class OnlinePlayerLogTask : public Task {
 		playerManager->logOnlinePlayers(logMaxSize);
 	}
 };
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::player::events;
 
 #endif /* ONLINEPLAYERLOGTASK_H_ */

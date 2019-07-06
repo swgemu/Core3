@@ -45,6 +45,7 @@ include server.zone.managers.player.XpBonusList;
 import server.zone.ZoneClientSession;
 import system.thread.Mutex;
 include engine.util.JSONSerializationType;
+import server.zone.objects.player.events.OnlinePlayerLogTask;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -58,6 +59,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	protected transient Mutex playerLoggerMutex;
 	protected transient int playerLoggerLines = 0;
+	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
 
 	// Used for frog/gm buffs
 	protected int performanceBuff;

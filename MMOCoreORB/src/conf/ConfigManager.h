@@ -498,6 +498,14 @@ namespace conf {
 		inline int getSessionStatsSeconds() {
 			return cache_SessionStatsSeconds;
 		}
+
+		inline int getOnlineLogSeconds() {
+			return getInt("Core3.OnlineLogSeconds", 300);
+		}
+
+		inline int getOnlineLogSize() {
+			return getInt("Core3.OnlineLogSize", 100000000);
+		}
 	};
 }
 

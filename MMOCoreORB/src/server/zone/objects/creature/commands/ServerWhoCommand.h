@@ -19,7 +19,7 @@ public:
 
 		Reference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 
-		int logSize = ConfigManager::instance()->getInt("Core3.OnlineLogSize", 100000000);
+		int logSize = ConfigManager::instance()->getOnlineLogSize();
 
 		playerManager->logOnlinePlayers(logSize);
 

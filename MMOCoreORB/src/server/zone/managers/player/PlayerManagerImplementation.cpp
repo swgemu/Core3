@@ -159,15 +159,11 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 		}
 	}
 
-	Core::getTaskManager()->executeTask([=] () {
-		int logSecs = ConfigManager::instance()->getInt("Core3.OnlineLogSeconds", 300);
-		int logSize = ConfigManager::instance()->getInt("Core3.OnlineLogSize", 100000000);
+	int logSecs = ConfigManager::instance()->getOnlineLogSeconds();
+	int logSize = ConfigManager::instance()->getOnlineLogSize();
 
-		logOnlinePlayers(logSize);
-
-		Reference<Task*> onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast(), logSize);
-		onlinePlayerLogTask->schedulePeriodic(logSecs * 1000, logSecs * 1000);
-	}, "startOnlinePlayerLogTask");
+	onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast(), logSize);
+	onlinePlayerLogTask->schedulePeriodic(logSecs * 1000, logSecs * 1000);
 }
 
 bool PlayerManagerImplementation::createPlayer(ClientCreateCharacterCallback* callback) {
@@ -415,9 +411,8 @@ void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& log
 		int err = std::rename(playerLoggerFilename.toCharArray(), archiveFilename.toString().toCharArray());
 
 		// report failure if any
-		if (err != 0) {
-			Logger::info("Failed to archive player log to " + archiveFilename.toString() + " err = " + err);
-		}
+		if (err != 0)
+			error("Failed to archive player log to " + archiveFilename.toString() + " err = " + String::valueOf(err));
 
 		playerLogger.setFileLogger(playerLoggerFilename, true);
 	}
@@ -6129,7 +6124,7 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 			int err = std::rename(fileName.toCharArray(), archiveFilename.toString().toCharArray());
 
 			if (err != 0)
-				error("Failed to archive online-players to " + archiveFilename.toString() + " err = " + err);
+				error("Failed to archive online-players to " + archiveFilename.toString() + " err = " + String::valueOf(err));
 		}
 	}
 
@@ -6156,7 +6151,7 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 		int err = std::rename("log/who.json.next", "log/who.json");
 
 		if (err != 0)
-			info("Failed to update log/online-players.json err = " + err);
+			error("Failed to update log/online-players.json err = " + String::valueOf(err));
 
 		if (countOnline > 0 || countNULLClient > 0 || countNULLCreature > 0 || countNULLGhost > 0) {
 			StringBuffer logMsg;
