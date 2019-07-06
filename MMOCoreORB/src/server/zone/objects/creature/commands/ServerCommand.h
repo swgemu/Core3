@@ -17,6 +17,7 @@
 #include "ServerStatisticsCommand.h"
 #include "PathFindCommand.h"
 #include "SpawnPointInAreaCommand.h"
+#include "ServerWhoCommand.h"
 
 class ServerCommand : public QueueCommand {
 	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
@@ -37,6 +38,7 @@ public:
 		methodFactory.registerMethod<ServerStatisticsCommand>("statistics");
 		methodFactory.registerMethod<PathFindCommand>("pathfind");
 		methodFactory.registerMethod<SpawnPointInAreaCommand>("spawnpointinarea");
+		methodFactory.registerMethod<ServerWhoCommand>("who");
 }
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {

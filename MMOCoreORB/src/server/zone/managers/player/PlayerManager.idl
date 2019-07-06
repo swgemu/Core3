@@ -560,4 +560,7 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	@dereferenced
 	public native Vector<unsigned long> getOnlinePlayerList();
+
+	@local
+	public native void logOnlinePlayers(int logMaxSize);
 }
