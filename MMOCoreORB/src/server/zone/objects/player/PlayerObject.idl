@@ -282,7 +282,7 @@ class PlayerObject extends IntangibleObject {
 	protected unsigned long miliSecsPlayed;
 	protected unsigned long miliSecsSession;
 	protected unsigned long sessionStatsMiliSecs;
-	protected transient unsigned long sessionStatsLastCredits;
+	protected transient long sessionStatsLastCredits;
 	protected transient int sessionStatsLastSkillPoints;
 	protected transient unsigned long sessionStatsActivityXP;
 	protected transient unsigned long sessionStatsActivityMovement;

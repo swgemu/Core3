@@ -92,8 +92,8 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	initializeAccount();
 
 	sessionStatsMiliSecs = 0;
-	sessionStatsLastCredits = 0;
-	sessionStatsLastSkillPoints = 0;
+	sessionStatsLastCredits = -1;
+	sessionStatsLastSkillPoints = skillPoints;
 	sessionStatsActivityXP = 0;
 	sessionStatsActivityMovement = 0;
 	sessionStatsIPAddress = "";
@@ -1421,36 +1421,37 @@ void PlayerObjectImplementation::incrementSessionMovement(float moveDelta) {
 }
 
 void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
+	Reference<SceneObject*> parent = getParent().get();
+	CreatureObject* playerCreature = nullptr;
+
+	if (parent != nullptr)
+		playerCreature = parent->asCreatureObject();
+
+	if (playerCreature != nullptr) {
+		auto client = playerCreature->getClient();
+
+		if (client != nullptr && (isSessionStart || sessionStatsIPAddress.isEmpty()))
+			sessionStatsIPAddress = client->getIPAddress();
+	}
+
+	if (isSessionStart) {
+		if (sessionStatsLastCredits == -1 && playerCreature != nullptr)
+			sessionStatsLastCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
+
+		logSessionStats(false);
+		return;
+	}
+
+	if (playerCreature != nullptr)
+		sessionStatsLastCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
+
 	sessionStatsActivityXP = 0;
 	sessionStatsActivityMovement = 0;
 	sessionStatsLastSkillPoints = skillPoints;
-
-	Reference<SceneObject*> parent = getParent().get();
-
-	if (parent != nullptr) {
-		CreatureObject* playerCreature = parent->asCreatureObject();
-
-		if (playerCreature != nullptr) {
-			sessionStatsLastCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
-
-			if (sessionStatsIPAddress.isEmpty()) {
-				auto client = playerCreature->getClient();
-
-				if (client != nullptr)
-					sessionStatsIPAddress = client->getIPAddress();
-			}
-		}
-	} else
-		error("parent == nullptr in resetSessionStats");
-
 	sessionStatsMiliSecs = 0;
 }
 
 void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
-	// Wait for stable state before logging
-	if (sessionStatsMiliSecs == 0 || sessionStatsIPAddress.isEmpty())
-		return;
-
 	int galaxyID = 0;
 	uint64 objectID = 0;
 	int64 currentCredits = sessionStatsLastCredits;
@@ -1465,12 +1466,20 @@ void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
 		if (playerCreature != nullptr) {
 			currentCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
 			galaxyID = playerCreature->getZoneServer()->getGalaxyID();
+
+			auto client = playerCreature->getClient();
+
+			if (client != nullptr)
+				sessionStatsIPAddress = client->getIPAddress();
 		} else {
 			error("playerCreature == nullptr in logSessionStats");
 		}
 	} else {
 		error("parent == nullptr in logSessionStats");
 	}
+
+	if (sessionStatsLastCredits == -1)
+		sessionStatsLastCredits = currentCredits;
 
 	int skillPointDelta = skillPoints - sessionStatsLastSkillPoints;
 	int64 creditsDelta = (int64)currentCredits - (int64)sessionStatsLastCredits;
