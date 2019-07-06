@@ -281,6 +281,12 @@ class PlayerObject extends IntangibleObject {
 
 	protected unsigned long miliSecsPlayed;
 	protected unsigned long miliSecsSession;
+	protected unsigned long sessionStatsMiliSecs;
+	protected transient long sessionStatsLastCredits;
+	protected transient int sessionStatsLastSkillPoints;
+	protected transient unsigned long sessionStatsActivityXP;
+	protected transient unsigned long sessionStatsActivityMovement;
+	protected transient string sessionStatsIPAddress;
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -1199,6 +1205,10 @@ class PlayerObject extends IntangibleObject {
 	 * @post { }
 	 */
 	public native void notifyOffline();
+
+	public native void resetSessionStats(boolean isSessionStart);
+	public native void incrementSessionMovement(float moveDelta);
+	public native void logSessionStats(boolean isSessionEnd);
 
 	public void setBadge(unsigned int badge) {
 		badges.setBadge(badge);
