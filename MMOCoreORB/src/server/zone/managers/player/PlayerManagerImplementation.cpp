@@ -160,13 +160,36 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	}
 
 	Core::getTaskManager()->executeTask([=] () {
-		int logSecs = ConfigManager::instance()->getOnlineLogSeconds();
-		int logSize = ConfigManager::instance()->getOnlineLogSize();
-
-		onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast(), logSize);
-		onlinePlayerLogTask->execute();
-		onlinePlayerLogTask->schedulePeriodic(logSecs * 1000, logSecs * 1000);
+	    rescheduleOnlinePlayerLogTask(ConfigManager::instance()->getOnlineLogSeconds());
 	}, "startOnlinePlayerLogTask");
+}
+
+bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
+	if (logSecs <= -1) {
+		if (onlinePlayerLogTask != nullptr) {
+			onlinePlayerLogTask->cancel();
+			onlinePlayerLogTask = nullptr;
+		}
+		info("Loging online players disabled.", true);
+		return true;
+	}
+
+	if (logSecs < 10) {
+		error("rescheduleOnlinePlayerLogTask: attempt to set log schedule too low: " + String::valueOf(logSecs));
+		return false;
+	}
+
+	if (onlinePlayerLogTask == nullptr) {
+		onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast());
+	} else {
+		onlinePlayerLogTask->cancel();
+	}
+
+	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
+
+	info("Loging online players every " + String::valueOf(logSecs) + " seconds.", true);
+
+	return true;
 }
 
 bool PlayerManagerImplementation::createPlayer(ClientCreateCharacterCallback* callback) {
@@ -5990,7 +6013,7 @@ Vector<uint64> PlayerManagerImplementation::getOnlinePlayerList() {
 	return playerList;
 }
 
-void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
+void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 	int countOnline = 0;
 	int countAccounts = 0;
 	int countPlayers = 0;
@@ -6100,6 +6123,7 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 
 	logEntry["countAccounts"] = countAccounts;
 	logEntry["countPlayers"] = countPlayers;
+	logEntry["countDistinctIPs"] = onlineZoneClientMap.getDistinctIps();
 
 	if (countOnline != countPlayers)
 		logEntry["countOnline"] = countOnline;
@@ -6113,13 +6137,40 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 	if (countNULLGhost > 0)
 		logEntry["countNULLGhost"] = countNULLGhost;
 
+	StringBuffer logLine;
+
+	logLine << logEntry.dump().c_str() << "\n";
+
+	// Write who file
+	try {
+		// Write a new "current status" file
+		FileWriter* logFile = new FileWriter(new File("log/who.json.next"), false);
+
+		(*logFile) << logLine;
+
+		logFile->close();
+
+		// Update current status file
+		int err = std::rename("log/who.json.next", "log/who.json");
+
+		if (err != 0)
+			error("Failed to update log/online-players.json err = " + String::valueOf(err));
+	} catch (Exception& e) {
+		error("logOnlinePlayers failed to write log/who.json: " + e.getMessage());
+	}
+
+	if (onlyWho)
+		return;
+
+	Locker logfileLock(&onlinePlayerLogMutext);
+
 	String fileName = "log/online-players.log";
 
 	struct stat st_log;
 
 	// Check for rollover
 	if (stat(fileName.toCharArray(), &st_log) == 0) {
-		if (st_log.st_size >= logMaxSize) {
+		if (st_log.st_size >= ConfigManager::instance()->getOnlineLogSize()) {
 			StringBuffer archiveFilename;
 			archiveFilename << "log/online-players-" << now.getMiliTime() << ".log";
 
@@ -6135,26 +6186,11 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 		// Append log file with this entry
 		FileWriter* logFile = new FileWriter(new File(fileName), true);
 
-		StringBuffer logLine;
-
-		logLine << logEntry.dump().c_str() << "\n";
-
 		(*logFile) << logLine;
 
 		logFile->close();
 
-		// Write a new "current status" file
-		logFile = new FileWriter(new File("log/who.json.next"), false);
-
-		(*logFile) << logLine;
-
-		logFile->close();
-
-		// Update current status file
-		int err = std::rename("log/who.json.next", "log/who.json");
-
-		if (err != 0)
-			error("Failed to update log/online-players.json err = " + String::valueOf(err));
+		logfileLock.release();
 
 		if (countOnline > 0 || countNULLClient > 0 || countNULLCreature > 0 || countNULLGhost > 0) {
 			StringBuffer logMsg;
@@ -6175,6 +6211,6 @@ void PlayerManagerImplementation::logOnlinePlayers(int logMaxSize) {
 			info(logMsg.toString(), true);
 		}
 	} catch (Exception& e) {
-		error("logOnlinePlayers failed: " + e.getMessage());
+		error("logOnlinePlayers failed to write " + fileName + ": " + e.getMessage());
 	}
 }

@@ -59,6 +59,9 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	protected transient Mutex playerLoggerMutex;
 	protected transient int playerLoggerLines = 0;
+
+	@dereferenced
+	protected transient Mutex onlinePlayerLogMutext;
 	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
 
 	// Used for frog/gm buffs
@@ -564,5 +567,13 @@ class PlayerManager extends Observer implements Logger {
 	public native Vector<unsigned long> getOnlinePlayerList();
 
 	@local
-	public native void logOnlinePlayers(int logMaxSize);
+	public native void logOnlinePlayers(boolean onlyWho);
+
+	@local
+	public native boolean rescheduleOnlinePlayerLogTask(int logSeconds);
+
+	public void updateOnlinePlayers() {
+		// Update just the log/who.json file
+		logOnlinePlayers(true);
+	}
 }

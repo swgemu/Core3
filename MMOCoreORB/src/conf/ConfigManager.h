@@ -165,6 +165,7 @@ namespace conf {
 		bool cache_UnloadContainers;
 		bool cache_UseMetrics;
 		int cache_SessionStatsSeconds;
+		int cache_OnlineLogSize;
 
 	public:
 		ConfigManager();
@@ -504,7 +505,7 @@ namespace conf {
 		}
 
 		inline int getOnlineLogSize() {
-			return getInt("Core3.OnlineLogSize", 100000000);
+			return cache_OnlineLogSize;
 		}
 	};
 }
