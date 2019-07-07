@@ -18,19 +18,17 @@ namespace events {
 
 class OnlinePlayerLogTask : public Task {
 	Reference<PlayerManager*> playerManager;
-	int logMaxSize;
 
 	public:
-	OnlinePlayerLogTask(PlayerManager* mgr, int logSize) : Task() {
+	OnlinePlayerLogTask(PlayerManager* mgr) : Task() {
 		playerManager = mgr;
-		logMaxSize = logSize;
 	}
 
 	void run() {
 		if (playerManager == nullptr)
 			return;
 
-		playerManager->logOnlinePlayers(logMaxSize);
+		playerManager->logOnlinePlayers(false);
 	}
 };
 

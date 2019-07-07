@@ -1441,6 +1441,8 @@ void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
 	}
 
 	if (isSessionStart) {
+		getZoneServer()->getPlayerManager()->updateOnlinePlayers();
+
 		if (sessionStatsLastCredits == -1 && playerCreature != nullptr)
 			sessionStatsLastCredits = playerCreature->getCashCredits() + playerCreature->getBankCredits();
 
@@ -1459,6 +1461,9 @@ void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
 }
 
 void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
+	if (isSessionEnd)
+		getZoneServer()->getPlayerManager()->updateOnlinePlayers();
+
 	if (isSessionEnd
 	&& sessionStatsActivityXP == 0
 	&& sessionStatsActivityMovement == 0
