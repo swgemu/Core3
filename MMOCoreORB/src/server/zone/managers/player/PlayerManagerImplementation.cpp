@@ -185,6 +185,8 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 		onlinePlayerLogTask->cancel();
 	}
 
+	onlinePlayersLogOnSessionChange = ConfigManager::instance()->getBool("Core3.LogOnlineOnSessionChange", true);
+
 	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
 
 	info("Loging online players every " + String::valueOf(logSecs) + " seconds.", true);
