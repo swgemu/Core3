@@ -63,6 +63,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	protected transient Mutex onlinePlayerLogMutext;
 	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
+	protected boolean onlinePlayersLogOnSessionChange;
 
 	// Used for frog/gm buffs
 	protected int performanceBuff;
@@ -573,7 +574,7 @@ class PlayerManager extends Observer implements Logger {
 	public native boolean rescheduleOnlinePlayerLogTask(int logSeconds);
 
 	public void updateOnlinePlayers() {
-		// Update just the log/who.json file
-		logOnlinePlayers(true);
+		// Update just the log/who.json file based on Core3.LogOnlineOnSessionChange (default: true)
+		logOnlinePlayers(!onlinePlayersLogOnSessionChange);
 	}
 }
