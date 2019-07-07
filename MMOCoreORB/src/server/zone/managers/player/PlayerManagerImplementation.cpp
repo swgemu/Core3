@@ -6123,6 +6123,7 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 
 	logEntry["countAccounts"] = countAccounts;
 	logEntry["countPlayers"] = countPlayers;
+	logEntry["countDistinctIPs"] = onlineZoneClientMap.getDistinctIps();
 
 	if (countOnline != countPlayers)
 		logEntry["countOnline"] = countOnline;
