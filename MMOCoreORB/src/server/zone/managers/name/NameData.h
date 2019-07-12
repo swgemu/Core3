@@ -3,6 +3,7 @@
 
 #include "server/zone/managers/name/NameRules.h"
 #include "server/zone/managers/name/NameUnique.h"
+#include "engine/lua/Lua.h"
 
 class NameData: public Object {
 	NameRules* firstNameRules;
@@ -22,8 +23,8 @@ class NameData: public Object {
 
 public:
 	NameData() {
-		firstNameRules = NULL;
-		lastNameRules = NULL;
+		firstNameRules = nullptr;
+		lastNameRules = nullptr;
 
 		beginningConsonantOdds = 0;
 		middleConsonantOdds = 0;

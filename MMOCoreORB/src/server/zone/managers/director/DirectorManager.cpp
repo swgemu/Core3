@@ -2950,8 +2950,13 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 }
 
 int DirectorManager::makeCreatureName(lua_State* L) {
-	NameManager* nameManager = NameManager::instance();
-	String name = nameManager->makeCreatureName();
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	String name = "";
+	if (zoneServer != nullptr) {
+		NameManager* nameManager = zoneServer->getNameManager();
+		name = nameManager->makeCreatureName();
+	}
 
 	lua_pushstring(L, name.toCharArray());
 	return 1;
