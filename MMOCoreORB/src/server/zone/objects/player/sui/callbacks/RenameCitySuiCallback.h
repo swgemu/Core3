@@ -45,7 +45,8 @@ public:
 
 		String cityName = args->get(0).toString();
 
-		NameManager* nameManager = NameManager::instance();
+		ZoneProcessServer* zps = creature->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
 
 		int result = nameManager->validateCityName(cityName);
 

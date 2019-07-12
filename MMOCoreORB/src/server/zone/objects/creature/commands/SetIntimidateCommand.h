@@ -45,7 +45,11 @@ public:
 			player->sendSystemMessage("Your Intimidate message can only be up to 128 characters long.");
 			return GENERALERROR;
 		}
-		if (NameManager::instance()->isProfane(message)){
+
+		ZoneProcessServer* zps = player->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
+
+		if (nameManager->isProfane(message)){
 			player->sendSystemMessage("Your Intimidate message has failed the profanity filter.");
 			return GENERALERROR;
 		}
