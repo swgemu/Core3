@@ -16,6 +16,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneProcessServer.h"
 
 class PlaceCityHallSuiCallback : public SuiCallback {
 	ManagedWeakReference<Zone*> zone;
@@ -52,7 +53,8 @@ public:
 
 		String cityName = args->get(0).toString();
 
-		NameManager* nameManager = NameManager::instance();
+		ZoneProcessServer* zps = creature->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
 
 		int nameResult = nameManager->validateCityName(cityName);
 
