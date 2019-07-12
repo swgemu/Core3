@@ -46,7 +46,11 @@ public:
 			player->sendSystemMessage("Your Warcry message can only be up to 128 characters long.");
 			return GENERALERROR;
 		}
-		if (NameManager::instance()->isProfane(message)){
+
+		ZoneProcessServer* zps = player->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
+
+		if (nameManager->isProfane(message)){
 			player->sendSystemMessage("Your Warcry message has failed the profanity filter.");
 			return GENERALERROR;
 		}

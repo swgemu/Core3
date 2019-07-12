@@ -105,7 +105,7 @@ Core3 = {
 	--"floratest",
 	--"godclient_test",
 	--"lok",
-	--"naboo",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
 	--"rori",
@@ -129,9 +129,9 @@ Core3 = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
-	"tutorial",
+	--"tutorial",
 	--"umbra",
 	--"watertabletest",
 	--"yavin4"
@@ -236,6 +236,7 @@ Core3 = {
 
 	PlayerLogLevel = 4, -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
 	MaxLogLines = 1000000, -- how often to rotate log (currently only log/player.log rotates)
+	"yavin4"
 }
 
 -- NOTE: conf/config-local.lua is parsed after this file if it exists

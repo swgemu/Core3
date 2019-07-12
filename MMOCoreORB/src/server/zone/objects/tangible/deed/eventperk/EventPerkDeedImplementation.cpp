@@ -300,7 +300,8 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 			} else if (child->getServerObjectCRC() == 0xCF9AC86C) { // object/mobile/bantha_saddle.iff
 				child->setCustomObjectName("a bantha mount", true);
 			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1 && perkType != EventPerkDeedTemplate::RECRUITER) {
-				NameManager* nameManager = NameManager::instance();
+				ZoneProcessServer* zps = parent->getZoneProcessServer();
+				NameManager* nameManager = zps->getNameManager();
 				String name = "";
 				if (child->getServerObjectCRC() == 0xA87E2035) { // object/mobile/cll8_binary_load_lifter.iff
 					name = "a CLL-8 binary load lifter";

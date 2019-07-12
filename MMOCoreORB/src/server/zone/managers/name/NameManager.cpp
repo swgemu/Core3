@@ -4,6 +4,8 @@
 
 
 #include "NameManager.h"
+#include "engine/lua/Lua.h"
+#include <regex>
 
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -13,13 +15,6 @@ NameManager::NameManager() {
 
 	initialize();
 
-	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
-	developerNames = new BannedNameSet();
-	reservedNames = new BannedNameSet();
-	fictionNames = new BannedNameSet();
-
-	fillNames();
-
 	setLogging(false);
 }
 
@@ -28,25 +23,10 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 
 	initialize();
 
-	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
-	developerNames = new BannedNameSet();
-	reservedNames = new BannedNameSet();
-	fictionNames = new BannedNameSet();
-
-	fillNames();
-
 	setLogging(false);
-
 }
 
 NameManager::~NameManager() {
-	delete lua;
-
-	delete profaneNames;
-	delete developerNames;
-	delete reservedNames;
-	delete fictionNames;
-
 	delete bothanData;
 	delete humanData;
 	delete ithorianData;
@@ -65,28 +45,43 @@ NameManager::~NameManager() {
 }
 
 void NameManager::initialize() {
-	lua = new Lua();
+	loadConfigData();
+}
+
+void NameManager::loadConfigData(bool reload) {
+	Lua* lua = new Lua();
 	lua->init();
 
-	info("loading configuration");
-	if(!loadConfigData()) {
-
-		loadDefaultConfig();
-
-		error("Configuration error(s), using defaults");
+	if (!lua->runFile("scripts/managers/name/name_manager.lua")) {
+		error("Unable to load NameManager data.");
+		delete lua;
+		return;
 	}
 
-	info("initialized");
+	if (reload) {
+		delete bothanData;
+		delete humanData;
+		delete ithorianData;
+		delete monCalData;
+		delete rodianData;
+		delete sullustanData;
+		delete trandoshanData;
+		delete twilekData;
+		delete wookieeData;
+		delete zabrakData;
 
-}
+		delete energyResourceData;
+		delete mineralResourceData;
+		delete plainResourceData;
+		delete reactiveGasResourceData;
 
-bool NameManager::loadConfigFile() {
-	return lua->runFile("scripts/managers/name/name_manager.lua");
-}
+		reservedNames.removeAll();
+		stormtrooperPrefixes.removeAll();
+		scouttrooperPrefixes.removeAll();
+		darktrooperPrefixes.removeAll();
+		swamptrooperPrefixes.removeAll();
+	}
 
-bool NameManager::loadConfigData() {
-	if (!loadConfigFile())
-		return false;
 
 	LuaObject luaObject = lua->getGlobalObject("nameManagerBothan");
 	bothanData = new NameData();
@@ -158,139 +153,85 @@ bool NameManager::loadConfigData() {
 	reactiveGasResourceData->readObject(&luaObject);
 	luaObject.pop();
 
-	LuaObject stormtrooperPrefixesObject = lua->getGlobalObject("stormtrooperPrefixes");
-	for (int i = 1; i <= stormtrooperPrefixesObject.getTableSize(); ++i)
-		stormtrooperPrefixes.add(stormtrooperPrefixesObject.getStringAt(i));
+	luaObject = lua->getGlobalObject("stormtrooperPrefixes");
+	for (int i = 1; i <= luaObject.getTableSize(); ++i)
+		stormtrooperPrefixes.add(luaObject.getStringAt(i));
 
-	stormtrooperPrefixesObject.pop();
+	luaObject.pop();
 
-	LuaObject scouttrooperPrefixesObject = lua->getGlobalObject("scouttrooperPrefixes");
-	for (int i = 1; i <= scouttrooperPrefixesObject.getTableSize(); ++i)
-		scouttrooperPrefixes.add(scouttrooperPrefixesObject.getStringAt(i));
+	luaObject = lua->getGlobalObject("scouttrooperPrefixes");
+	for (int i = 1; i <= luaObject.getTableSize(); ++i)
+		scouttrooperPrefixes.add(luaObject.getStringAt(i));
 
-	scouttrooperPrefixesObject.pop();
+	luaObject.pop();
 
-	LuaObject darktrooperPrefixesObject = lua->getGlobalObject("darktrooperPrefixes");
-	for (int i = 1; i <= darktrooperPrefixesObject.getTableSize(); ++i)
-		darktrooperPrefixes.add(darktrooperPrefixesObject.getStringAt(i));
+	luaObject = lua->getGlobalObject("darktrooperPrefixes");
+	for (int i = 1; i <= luaObject.getTableSize(); ++i)
+		darktrooperPrefixes.add(luaObject.getStringAt(i));
 
-	darktrooperPrefixesObject.pop();
+	luaObject.pop();
 
-	LuaObject swamptrooperPrefixesObject = lua->getGlobalObject("swamptrooperPrefixes");
-	for (int i = 1; i <= swamptrooperPrefixesObject.getTableSize(); ++i)
-		swamptrooperPrefixes.add(swamptrooperPrefixesObject.getStringAt(i));
+	luaObject = lua->getGlobalObject("swamptrooperPrefixes");
+	for (int i = 1; i <= luaObject.getTableSize(); ++i)
+		swamptrooperPrefixes.add(luaObject.getStringAt(i));
 
-	swamptrooperPrefixesObject.pop();
+	luaObject.pop();
 
-	//test();
+	luaObject = lua->getGlobalObject("reservedNames");
 
-	return true;
-}
+	if (luaObject.isValidTable()) {
+		for(int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject entry = luaObject.getObjectAt(i);
 
-void NameManager::loadDefaultConfig() {
+			String regexEntry = entry.getStringAt(1);
+			int reason = entry.getIntAt(2);
 
+			reservedNames.put(regexEntry, reason);
 
-}
-
-void NameManager::fillNames() {
-	File* restrictedFile = new File("conf/restrictednames.lst");
-
-	try {
-		FileReader restrictedReader(restrictedFile);
-
-		info("parsing restricted names list: restrictednames.lst", true);
-
-		BannedNameSet* setp = NULL;
-
-		String line;
-		bool isset = false;
-
-		while (restrictedReader.readLine(line)) {
-			String name = line.trim().toLowerCase();
-
-			if ((name.length() >= 2 && name.subString(0, 2).compareTo("--") == 0)
-					|| name == "") {
-				continue; //skip it
-			} else if (name.indexOf("[profane]") != -1) {
-				isset = false;
-				continue;
-			} else if (name.indexOf("[developer]") != -1) {
-				isset = true;
-				setp = developerNames;
-				continue;
-			} else if (name.indexOf("[fiction]") != -1) {
-				isset = true;
-				setp = fictionNames;
-				continue;
-			} else if (name.indexOf("[reserved]") != -1) {
-				isset = true;
-				setp = reservedNames;
-				continue;
-			} else if (isset) {
-				setp->add(name);
-				continue;
-			} else {
-				profaneNames->add(name);
-				continue;
-			}
+			entry.pop();
 		}
-
-		restrictedReader.close();
-
-	} catch (FileNotFoundException&e ) {
 	}
 
-	delete restrictedFile;
-}
+	info("Loaded " + String::valueOf(reservedNames.size()) + " reserved name patterns.", true);
 
+	luaObject.pop();
+
+	delete lua;
+	lua = nullptr;
+}
 
 bool NameManager::isProfane(String name) {
-	uint16 i;
-
-	name = name.toLowerCase();
-
-	for (i = 0; i < profaneNames->size(); i++) {
-		if (name.indexOf(profaneNames->get(i)) != -1)
-			return true;
-	}
-
-	return false;
+	return validateReservedNames(name, NameManagerResult::DECLINED_PROFANE) != NameManagerResult::ACCEPTED;
 }
 
-inline bool NameManager::isDeveloper(String name) {
-	name = name.toLowerCase();
-
-	HashSetIterator<String> iter = developerNames->iterator();
-	while (iter.hasNext()) {
-		if (name.indexOf(iter.next()) != -1)
-			return true;
-	}
-
-	return false;
+bool NameManager::isDeveloper(String name) {
+	return validateReservedNames(name, NameManagerResult::DECLINED_DEVELOPER) != NameManagerResult::ACCEPTED;
 }
 
-inline bool NameManager::isFiction(String name) {
-	name = name.toLowerCase();
-
-	HashSetIterator<String> iter = fictionNames->iterator();
-	while (iter.hasNext()) {
-		if (name.indexOf(iter.next()) != -1)
-			return true;
-	}
-
-	return false;
+bool NameManager::isFiction(String name) {
+	return validateReservedNames(name, NameManagerResult::DECLINED_FICT_RESERVED) != NameManagerResult::ACCEPTED;
 }
 
-inline bool NameManager::isReserved(String name) {
-	name = name.toLowerCase();
+bool NameManager::isReserved(String name) {
+	return validateReservedNames(name, NameManagerResult::DECLINED_RESERVED) != NameManagerResult::ACCEPTED;
+}
 
-	HashSetIterator<String> iter = reservedNames->iterator();
-	while (iter.hasNext()) {
-		if (name.indexOf(iter.next()) != -1)
-			return true;
+int NameManager::validateReservedNames(const String& name, int resultType) {
+	for (int i = 0; i < reservedNames.size(); i++) {
+		VectorMapEntry<String, int> entry = reservedNames.elementAt(i);
+
+		std::regex regexCheck(entry.getKey().toCharArray());
+		int reservedReason = entry.getValue();
+
+		if (resultType > 0 && resultType != reservedReason)
+			continue;
+
+		if (std::regex_search(name.toCharArray(), regexCheck)) {
+			//error("Name " + name + " failed check against regex " + entry.getKey() + " , reason: " + reservedReason);
+			return reservedReason;
+		}
 	}
-
-	return false;
+	return NameManagerResult::ACCEPTED;
 }
 
 int NameManager::validateName(CreatureObject* obj) {
@@ -342,18 +283,6 @@ int NameManager::validateName(const String& name, int species) {
 		lastName = "";
 	}
 
-	if (isProfane(name))
-		return NameManagerResult::DECLINED_PROFANE;
-
-	if (isDeveloper(name))
-		return NameManagerResult::DECLINED_DEVELOPER;
-
-	if (isFiction(name))
-		return NameManagerResult::DECLINED_FICT_RESERVED;
-
-	if (isReserved(name) || isReserved(firstName) )
-		return NameManagerResult::DECLINED_RESERVED;
-
 	if (firstName.length() < firstNameRules->getMinChars() || firstName.length() > firstNameRules->getMaxChars())
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
@@ -393,7 +322,7 @@ int NameManager::validateName(const String& name, int species) {
 			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
 
-	return NameManagerResult::ACCEPTED;
+	return validateReservedNames(name);
 }
 
 int NameManager::validateGuildName(const String& name, int type) {
@@ -406,18 +335,6 @@ int NameManager::validateGuildName(const String& name, int type) {
 	if (type == NameManagerType::GUILD_ABBREV && name.length() > 5)
 		return NameManagerResult::DECLINED_GUILD_LENGTH;
 
-	if (isProfane(name))
-		return NameManagerResult::DECLINED_PROFANE;
-
-	if (isDeveloper(name))
-		return NameManagerResult::DECLINED_DEVELOPER;
-
-	if (isFiction(name))
-		return NameManagerResult::DECLINED_FICT_RESERVED;
-
-	if (isReserved(name))
-		return NameManagerResult::DECLINED_RESERVED;
-
 	// Guilds allowed multiple spaces
 	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
@@ -429,7 +346,7 @@ int NameManager::validateGuildName(const String& name, int type) {
 	if (name.contains("\\") || name.contains("\n") || name.contains("\r") || name.contains("#"))
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return NameManagerResult::ACCEPTED;
+	return validateReservedNames(name);
 }
 
 int NameManager::validateCityName(const String& name) {
@@ -439,18 +356,6 @@ int NameManager::validateCityName(const String& name) {
 	if (name.length() > 40)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	if (isProfane(name))
-		return NameManagerResult::DECLINED_PROFANE;
-
-	if (isDeveloper(name))
-		return NameManagerResult::DECLINED_DEVELOPER;
-
-	if (isFiction(name))
-		return NameManagerResult::DECLINED_FICT_RESERVED;
-
-	if (isReserved(name))
-		return NameManagerResult::DECLINED_RESERVED;
-
 	// Cities allowed multiple spaces
 	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
@@ -459,7 +364,7 @@ int NameManager::validateCityName(const String& name) {
 	if (name.indexOf("  ") != -1)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return NameManagerResult::ACCEPTED;
+	return validateReservedNames(name);
 }
 
 int NameManager::validateVendorName(const String& name) {
@@ -469,18 +374,6 @@ int NameManager::validateVendorName(const String& name) {
 	if (name.length() > 40)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	if (isProfane(name))
-		return NameManagerResult::DECLINED_PROFANE;
-
-	if (isDeveloper(name))
-		return NameManagerResult::DECLINED_DEVELOPER;
-
-	if (isFiction(name))
-		return NameManagerResult::DECLINED_FICT_RESERVED;
-
-	if (isReserved(name))
-		return NameManagerResult::DECLINED_RESERVED;
-
 	// Vendors allowed to have spaces
 	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
@@ -489,7 +382,7 @@ int NameManager::validateVendorName(const String& name) {
 	if (name.indexOf("  ") != -1)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return NameManagerResult::ACCEPTED;
+	return validateReservedNames(name);
 }
 
 int NameManager::validateChatRoomName(const String& name) {

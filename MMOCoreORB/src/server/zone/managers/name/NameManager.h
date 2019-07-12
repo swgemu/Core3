@@ -5,7 +5,6 @@
 #ifndef NAMEMANAGER_H_
 #define NAMEMANAGER_H_
 
-#include "engine/lua/Lua.h"
 #include "engine/core/ManagedReference.h"
 #include "server/zone/managers/name/NameData.h"
 
@@ -31,16 +30,6 @@ namespace server {
 }
 
 using namespace server::zone::objects::creature;
-
-class BannedNameSet : public HashSet<String> {
-	int hash(const String& str) const {
-		return str.hashCode();
-	}
-
-public:
-	BannedNameSet() : HashSet<String>() {
-	}
-};
 
 class NameManagerResult {
 public:
@@ -96,8 +85,6 @@ namespace server {
 class NameManager : public Singleton<NameManager>, public Logger, public Object {
 	ManagedReference<ZoneProcessServer*> server;
 
-	Lua* lua;
-
 	NameData* bothanData;
 	NameData* humanData;
 	NameData* ithorianData;
@@ -114,10 +101,7 @@ class NameManager : public Singleton<NameManager>, public Logger, public Object 
 	NameData* plainResourceData;
 	NameData* reactiveGasResourceData;
 
-	Vector<String>* profaneNames;
-	BannedNameSet* developerNames;
-	BannedNameSet* fictionNames;
-	BannedNameSet* reservedNames;
+	VectorMap<String, int> reservedNames;
 
 	Vector<String> stormtrooperPrefixes;
 	Vector<String> scouttrooperPrefixes;
@@ -128,15 +112,6 @@ class NameManager : public Singleton<NameManager>, public Logger, public Object 
 private:
 
 	void initialize();
-
-	bool loadConfigFile();
-
-	bool loadConfigData();
-
-	void loadDefaultConfig();
-
-	void fillNames();
-
 	char chooseNextLetter(const char, const char);
 
 	inline bool isReserved(String);
@@ -160,6 +135,7 @@ public:
 	void test();
 
 	bool isProfane(String name);
+	void loadConfigData(bool reload = false);
 
 	int validateName(CreatureObject * obj);
 	int validateName(const String& name, int species = -1);
@@ -167,6 +143,7 @@ public:
 	int validateCityName(const String& name);
 	int validateVendorName(const String& name);
 	int validateChatRoomName(const String& name);
+	int validateReservedNames(const String& name, int resultType = -1);
 
 	const String makeCreatureName(int type = 1, int species = 0);
 
