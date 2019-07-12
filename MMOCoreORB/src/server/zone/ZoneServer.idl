@@ -43,6 +43,7 @@ import server.zone.managers.creature.DnaManager;
 import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
+import server.zone.managers.name.NameManager;
 
 @dirty
 class ZoneServer extends ManagedService implements Logger {
@@ -386,6 +387,12 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public SkillManager getSkillManager() {
 		return processor.getSkillManager();
+	}
+	
+	@local
+	@dirty
+	public NameManager getNameManager() {
+		return processor.getNameManager();
 	}
 
 	@local
