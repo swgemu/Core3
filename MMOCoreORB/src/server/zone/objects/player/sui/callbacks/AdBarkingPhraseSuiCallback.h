@@ -72,7 +72,10 @@ public:
 
 		String message = args->get(0).toString();
 
-		if(NameManager::instance()->isProfane(message)) {
+		ZoneProcessServer* zps = creature->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
+
+		if(nameManager->isProfane(message)) {
 			session->sendPhraseOptions();
 			creature->sendSystemMessage("Phrase rejected by filter, please try again");
 			return;

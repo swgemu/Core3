@@ -39,7 +39,10 @@ public:
 			return false;
 		}	
 		
-		if (NameManager::instance()->isProfane(message)){
+		ZoneProcessServer* zps = player->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
+
+		if (nameManager->isProfane(message)){
 			player->sendSystemMessage("Your Steadyaim message has failed the profanity filter.");
 			return false;				
 		}

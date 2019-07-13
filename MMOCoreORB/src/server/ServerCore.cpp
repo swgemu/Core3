@@ -23,6 +23,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/managers/name/NameManager.h"
 
 #include "server/zone/QuadTree.h"
 
@@ -594,6 +595,15 @@ void ServerCore::handleCommands() {
 				func->callFunction();
 			} else if ( command == "reloadscreenplays" ) {
 				DirectorManager::instance()->reloadScreenPlays();
+			} else if ( command == "reloadmanager" ) {
+				if (arguments == "name") {
+					ZoneServer* server = zoneServerRef.get();
+
+					if(server != nullptr)
+						server->getNameManager()->loadConfigData(true);
+				} else {
+					System::out << "Invalid manager. Reloadable managers: name" << endl;
+				}
 			} else if ( command == "clearstats" ) {
 				Core::getTaskManager()->clearWorkersTaskStats();
 #ifdef COLLECT_TASKSTATISTICS
