@@ -109,6 +109,8 @@ void ServerCore::signalShutdown() {
 void ServerCore::initialize() {
 	info("starting up server..");
 
+	info("Server start, pid: " + String::valueOf(getpid()) + ", time: " + Time().getFormattedTime(), true);
+
 	processConfig();
 
 	Logger::setGlobalFileLogger(configManager->getLogFile());

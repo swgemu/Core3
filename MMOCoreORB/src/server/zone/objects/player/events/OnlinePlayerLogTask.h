@@ -8,6 +8,7 @@
 #ifndef ONLINEPLAYERLOGTASK_H_
 #define ONLINEPLAYERLOGTASK_H_
 
+#include "server/ServerCore.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 namespace server {
@@ -17,14 +18,18 @@ namespace player {
 namespace events {
 
 class OnlinePlayerLogTask : public Task {
-	Reference<PlayerManager*> playerManager;
-
 	public:
-	OnlinePlayerLogTask(PlayerManager* mgr) : Task() {
-		playerManager = mgr;
+	OnlinePlayerLogTask() : Task() {
 	}
 
 	void run() {
+		auto server = ServerCore::getZoneServer();
+
+		if (server == nullptr)
+				return;
+
+		Reference<PlayerManager*> playerManager = server->getPlayerManager();
+
 		if (playerManager == nullptr)
 			return;
 
