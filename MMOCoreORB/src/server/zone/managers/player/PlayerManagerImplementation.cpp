@@ -159,9 +159,15 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 		}
 	}
 
-	Core::getTaskManager()->executeTask([=] () {
-	    rescheduleOnlinePlayerLogTask(ConfigManager::instance()->getOnlineLogSeconds());
-	}, "startOnlinePlayerLogTask");
+	int onlineLogSeconds = ConfigManager::instance()->getOnlineLogSeconds();
+
+	if (onlineLogSeconds > 0) {
+		onlinePlayerLogSum = 0;
+
+		Core::getTaskManager()->executeTask([=] () {
+			rescheduleOnlinePlayerLogTask(onlineLogSeconds);
+		}, "startOnlinePlayerLogTask");
+	}
 }
 
 bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
@@ -180,7 +186,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 	}
 
 	if (onlinePlayerLogTask == nullptr) {
-		onlinePlayerLogTask = new OnlinePlayerLogTask(_this.getReferenceUnsafeStaticCast());
+		onlinePlayerLogTask = new OnlinePlayerLogTask();
 	} else {
 		onlinePlayerLogTask->cancel();
 	}
@@ -379,6 +385,9 @@ void PlayerManagerImplementation::loadPermissionLevels() {
 }
 
 void PlayerManagerImplementation::finalize() {
+	if (onlinePlayerLogTask != nullptr)
+		onlinePlayerLogTask->cancel();
+
 	nameMap = NULL;
 
 	permissionLevelList->removeAll();
@@ -6027,6 +6036,8 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 
 	Locker locker(&onlineMapMutex);
 
+	int countDistinctIPs = onlineZoneClientMap.getDistinctIps();
+
 	auto iter = onlineZoneClientMap.iterator();
 
 	while (iter.hasNext()) {
@@ -6094,6 +6105,9 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 				}
 			} else {
 				countNULLCreature++;
+				logClient["isNullCreature"] = true;
+				logClient["isNullSession"] = client->getSession() == nullptr;
+				// TODO - Periodic cleanup of these?
 			}
 
 			logClients.push_back(logClient);
@@ -6108,6 +6122,7 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 	logEntry["@timestamp"] = now.getFormattedTimeFull().toCharArray();
 	logEntry["timeMSecs"] = now.getMiliTime();
 	logEntry["clients"] = logClients.size() > 0 ? logClients : nlohmann::json::array();
+	logEntry["uptime_secs"] = Logger::getElapsedTime();
 
 	auto server = ServerCore::getZoneServer();
 
@@ -6126,7 +6141,7 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 
 	logEntry["countAccounts"] = countAccounts;
 	logEntry["countPlayers"] = countPlayers;
-	logEntry["countDistinctIPs"] = onlineZoneClientMap.getDistinctIps();
+	logEntry["countDistinctIPs"] = countDistinctIPs;
 
 	if (countOnline != countPlayers)
 		logEntry["countOnline"] = countOnline;
@@ -6153,11 +6168,14 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 
 		logFile->close();
 
+		delete logFile->getFile();
+		delete logFile;
+
 		// Update current status file
 		int err = std::rename("log/who.json.next", "log/who.json");
 
 		if (err != 0)
-			error("Failed to update log/online-players.json err = " + String::valueOf(err));
+			error("Failed to rename log/who.json.next to log/who.json err = " + String::valueOf(err));
 	} catch (Exception& e) {
 		error("logOnlinePlayers failed to write log/who.json: " + e.getMessage());
 	}
@@ -6193,12 +6211,18 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 
 		logFile->close();
 
+		delete logFile->getFile();
+		delete logFile;
+
 		logfileLock.release();
 
-		if (countOnline > 0 || countNULLClient > 0 || countNULLCreature > 0 || countNULLGhost > 0) {
+		int LogSum = countOnline + countAccounts + countPlayers + countNULLClient + countNULLCreature + countNULLGhost + countDistinctIPs;
+
+		// Throttle to no more often than once per 5s and only if something to report
+		if (lastOnlinePlayerLogMsg.miliDifference() >= 5000 && LogSum != onlinePlayerLogSum) {
 			StringBuffer logMsg;
 
-			logMsg << "Logged " << countOnline << " players (" << countAccounts << " accounts) to " << fileName;
+			logMsg << "Logged " << countOnline << " players (" << countAccounts << " accounts, " << countDistinctIPs << " distinct IPs) to " << fileName;
 
 			if (countNULLClient > 0)
 				logMsg << "; " << countNULLClient << " null clients";
@@ -6212,6 +6236,8 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 			logMsg << ".";
 
 			info(logMsg.toString(), true);
+			lastOnlinePlayerLogMsg.updateToCurrentTime();
+			onlinePlayerLogSum = LogSum;
 		}
 	} catch (Exception& e) {
 		error("logOnlinePlayers failed to write " + fileName + ": " + e.getMessage());

@@ -53,7 +53,7 @@ public:
 				delim = ", ";
 			}
 
-			error(msg.toString());
+			info(msg.toString(), true);
 		}
 	}
 

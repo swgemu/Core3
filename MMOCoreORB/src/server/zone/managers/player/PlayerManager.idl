@@ -46,6 +46,7 @@ import server.zone.ZoneClientSession;
 import system.thread.Mutex;
 include engine.util.JSONSerializationType;
 import server.zone.objects.player.events.OnlinePlayerLogTask;
+import system.lang.Time;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -62,8 +63,13 @@ class PlayerManager extends Observer implements Logger {
 
 	@dereferenced
 	protected transient Mutex onlinePlayerLogMutext;
+
 	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
-	protected boolean onlinePlayersLogOnSessionChange;
+	protected transient int onlinePlayerLogSum;
+	protected transient boolean onlinePlayersLogOnSessionChange;
+
+	@dereferenced
+	protected transient Time lastOnlinePlayerLogMsg;
 
 	// Used for frog/gm buffs
 	protected int performanceBuff;
