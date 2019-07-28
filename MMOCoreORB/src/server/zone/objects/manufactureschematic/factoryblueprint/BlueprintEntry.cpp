@@ -137,13 +137,23 @@ bool BlueprintEntry::hasEnoughResources() {
 
 void BlueprintEntry::removeResources(FactoryObject* factory) {
 	int count = 0;
+    int OmuCRC = 494485339;    //ore mining unit
+	int useCount = -2;
+	int partCRC  = -2;
 
-	while(matchingHopperItems.size() > 0) {
+   	while(matchingHopperItems.size() > 0) {
 		TangibleObject* object = matchingHopperItems.get(0);
 
 		Locker locker(object);
 
-		int useCount = object->getUseCount();
+		useCount = object->getUseCount();
+
+	    partCRC = object->getClientObjectCRC();
+
+        if (partCRC == OmuCRC){
+           if(useCount == -1)
+     		useCount = 1;
+       }
 
 		if(useCount == 0)
 			useCount = 1;
@@ -153,11 +163,12 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 		if(useCount < amountNeeded) {
 			count += useCount;
 			matchingHopperItems.removeElement(object);
-			object->decreaseUseCount(useCount);
+			object->decreaseUseCount(useCount,false);
 			continue;
 		}
 
 		object->decreaseUseCount(amountNeeded, false);
+
 
 		if(!object->isResourceContainer()) {
 			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(object);
@@ -178,9 +189,8 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 			factory->broadcastToOperators(rcnod3);
 		}
 
-		if(object->getUseCount() == 0)
+		if((object->getUseCount() == 0)||(object->getUseCount()== -1))
 			matchingHopperItems.removeElement(object);
-
 		break;
 	}
 }
