@@ -178,7 +178,7 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 			factory->broadcastToOperators(rcnod3);
 		}
 
-		if(object->getUseCount() == 0)
+		if(object->getUseCount() <= 0)
 			matchingHopperItems.removeElement(object);
 
 		break;
