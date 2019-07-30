@@ -171,6 +171,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 }
 
 bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
+	auto onlinePlayerLogTask = this->onlinePlayerLogTask.get();
+
 	if (logSecs <= -1) {
 		if (onlinePlayerLogTask != nullptr) {
 			onlinePlayerLogTask->cancel();
@@ -186,7 +188,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 	}
 
 	if (onlinePlayerLogTask == nullptr) {
-		onlinePlayerLogTask = new OnlinePlayerLogTask();
+		this->onlinePlayerLogTask = onlinePlayerLogTask = new OnlinePlayerLogTask();
 	} else {
 		onlinePlayerLogTask->cancel();
 	}
@@ -385,6 +387,8 @@ void PlayerManagerImplementation::loadPermissionLevels() {
 }
 
 void PlayerManagerImplementation::finalize() {
+	auto onlinePlayerLogTask = this->onlinePlayerLogTask.get();
+
 	if (onlinePlayerLogTask != nullptr)
 		onlinePlayerLogTask->cancel();
 
