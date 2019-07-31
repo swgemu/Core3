@@ -50,8 +50,8 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	galaxyName = "Core3";
 
 	processor = NULL;
-	
-	
+
+
 	serverCap = 3000;
 
 	phandler = NULL;
@@ -377,6 +377,7 @@ void ZoneServerImplementation::stopManagers() {
 	}
 
 	if (playerManager != NULL) {
+		playerManager->stopOnlinePlayerLogTask();
 		playerManager->finalize();
 		playerManager = NULL;
 	}
