@@ -338,7 +338,13 @@ void ZoneServerImplementation::stopManagers() {
 	auctionManager = NULL;
 	petManager = NULL;
 	reactionManager = NULL;
-	frsManager = NULL;
+
+	if (frsManager != NULL) {
+		frsManager->cancelTasks();
+
+		frsManager = NULL;
+	}
+
 	creatureTemplateManager = NULL;
 	dnaManager = NULL;
 	stringIdManager = NULL;
