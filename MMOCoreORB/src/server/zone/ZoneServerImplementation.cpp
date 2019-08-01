@@ -338,7 +338,11 @@ void ZoneServerImplementation::stopManagers() {
 	auctionManager = NULL;
 	petManager = NULL;
 	reactionManager = NULL;
-	frsManager = NULL;
+
+	if (frsManager != NULL) {
+		frsManager = NULL;
+	}
+
 	creatureTemplateManager = NULL;
 	dnaManager = NULL;
 	stringIdManager = NULL;
@@ -377,7 +381,6 @@ void ZoneServerImplementation::stopManagers() {
 	}
 
 	if (playerManager != NULL) {
-		playerManager->stopOnlinePlayerLogTask();
 		playerManager->finalize();
 		playerManager = NULL;
 	}

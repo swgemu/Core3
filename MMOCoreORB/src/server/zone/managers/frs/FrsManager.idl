@@ -381,4 +381,6 @@ class FrsManager extends ManagedService implements Logger {
 
 	@local
 	public native void handleSuddenDeathLoss(CreatureObject player, ThreatMap threatMap);
+
+	public native void cancelTasks();
 }

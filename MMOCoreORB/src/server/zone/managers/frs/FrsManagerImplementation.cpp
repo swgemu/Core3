@@ -64,6 +64,12 @@ void FrsManagerImplementation::initialize() {
 		voteStatusTask->schedule(VOTE_STATUS_TICK - miliDiff);
 }
 
+void FrsManagerImplementation::cancelTasks() {
+	voteStatusTask->cancel();
+
+	rankMaintenanceTask->cancel();
+}
+
 void FrsManagerImplementation::loadFrsData() {
 	info("Loading frs manager data from frsmanager.db");
 
