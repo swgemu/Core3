@@ -24,6 +24,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 #include "server/zone/QuadTree.h"
 
@@ -323,6 +324,14 @@ void ServerCore::shutdown() {
 		}
 
 		info("All players disconnected", true);
+
+		playerManager->stopOnlinePlayerLogTask();
+
+		auto frsManager = zoneServer->getFrsManager();
+
+		if (frsManager != nullptr) {
+			frsManager->cancelTasks();
+		}
 	}
 
 	if (pingServer != nullptr) {
