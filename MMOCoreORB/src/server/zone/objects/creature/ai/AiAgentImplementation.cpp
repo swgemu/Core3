@@ -3065,7 +3065,7 @@ void AiAgentImplementation::resetBehaviorList() {
 
 void AiAgentImplementation::clearBehaviorList() {
 	for (int i = 0; i < behaviors.size(); i++) {
-		Behavior* b = behaviors.get(i);
+		Behavior* b = behaviors.getUnsafe(i).getValue();
 		if (b != NULL) {
 			delete b;
 			b = NULL;

@@ -87,8 +87,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 			return GENERALERROR;
 		}
 
-		if (creature != nullptr)
-			creature->error("used /eject " + arguments.toString());
+		creature->error("used /eject " + arguments.toString());
 
 		closestBuilding->ejectObject(creature);
 		creature->sendSystemMessage("@error_message:sys_eject_success"); //You have been moved to the nearest building's ejection point.

@@ -87,7 +87,7 @@ bool ConfigManager::loadConfigData() {
 
 void ConfigManager::clearConfigData() {
 	for (int i = 0; i < configData.size(); ++i) {
-		auto entry = configData.get(i);
+		auto entry = configData.getUnsafe(i).getValue();
 		delete entry;
 	}
 
@@ -563,7 +563,7 @@ ConfigDataItem::~ConfigDataItem() {
 
 	if (asVector != nullptr) {
 		for (int i = 0;i < asVector->size(); ++i) {
-			auto element = asVector->get(i);
+			auto element = asVector->getUnsafe(i);
 			delete element;
 		}
 
