@@ -150,7 +150,7 @@ String PerformanceManager::getInstrument(int instrumentType) {
 PerformanceManager::~PerformanceManager() {
 	if (performances != NULL) {
 		for (int i = 0; i < performances->size(); ++i)
-			delete performances->get(i);
+			delete performances->getUnsafe(i);
 
 		delete performances;
 

@@ -2166,7 +2166,7 @@ void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* playe
 
 	PlayerObject* challengedGhost = challenged->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (challengedGhost == nullptr)
 		return;
 
 	Locker xlock(challenged, player);
@@ -4013,7 +4013,7 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 	int totalVotes = rankData->getPetitionerVotes(playerID);
 
 	int totalContrib = 0;
-	auto contribList = new VectorMap<uint64, int>();
+	VectorMap<uint64, int> contribList;
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -4042,20 +4042,20 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 		if (player->getDistanceTo(attacker) > 80.f)
 			continue;
 
-		contribList->put(attacker->getObjectID(), entry->getTotalDamage());
+		contribList.put(attacker->getObjectID(), entry->getTotalDamage());
 
 		totalContrib += entry->getTotalDamage();
 	}
 
-	if (contribList->size() == 0)
+	if (contribList.size() == 0)
 		return;
 
 	auto zoneServer = this->zoneServer.get();
 
-	if (totalVotes > 0) {
-		for (int i = 0; i < contribList->size(); i++) {
-			uint64 contribID = contribList->elementAt(i).getKey();
-			int damageContrib = contribList->elementAt(i).getValue();
+	if (totalContrib && (totalVotes > 0)) {
+		for (int i = 0; i < contribList.size(); i++) {
+			uint64 contribID = contribList.elementAt(i).getKey();
+			int damageContrib = contribList.elementAt(i).getValue();
 			float contribPercent = (float)damageContrib / (float)totalContrib;
 
 			ManagedReference<CreatureObject*> contributor = zoneServer->getObject(contribID).castTo<CreatureObject*>();
@@ -4077,8 +4077,6 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 			contributor->sendSystemMessage(msgBody);
 		}
 	}
-
-	delete contribList;
 
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	StringIdChatParameter msgBody("@pvp_rating:sudden_death_death"); // %TT has fallen to a fellow rank petitioner. Any votes they may have had accumilated have been divided amongs those that took part in the slaughter of %TT. Let this be a lesson in how the Council deals with failure.

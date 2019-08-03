@@ -128,7 +128,7 @@ void PlayerObjectImplementation::checkPendingMessages() {
     if (messageList != nullptr) {
         Locker locker(messageList);
         Vector<uint64>& pendingMessages = *messageList->getPendingMessages();
-        
+
         for (uint64 messageID : pendingMessages) {
             ManagedReference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageID).castTo<PersistentMessage*>();
 
@@ -163,9 +163,9 @@ void PlayerObjectImplementation::initializeAccount() {
 	if (account != nullptr && galaxyAccountInfo == nullptr) {
 
 		Locker locker(account);
-		
+
 		galaxyAccountInfo = account->getGalaxyAccountInfo(getZoneServer()->getGalaxyName());
-		
+
 		if (chosenVeteranRewards.size() > 0) {
 			//galaxyAccountInfo->updateVetRewardsFromPlayer(chosenVeteranRewards);
 			chosenVeteranRewards.removeAll();
@@ -1846,8 +1846,8 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (isOnline()) {
 		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && 
-			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) && 
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() &&
+			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) &&
 			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
 			cooldownTimerMap->isPast("autoAttackDelay")) {
 
@@ -1879,7 +1879,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		miliSecsSession += latency;
 		sessionStatsMiliSecs += latency;
 
-		if (sessionStatsMiliSecs >= ConfigManager::instance()->getSessionStatsSeconds() * 1000)
+		if (sessionStatsMiliSecs >= ConfigManager::instance()->getSessionStatsSeconds() * 1000ull)
 			logSessionStats(false);
 	}
 
@@ -2231,9 +2231,9 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 	if(fp == getForcePower())
 		return;
 
-	// Set forcepower back to 0 incase player goes below	
+	// Set forcepower back to 0 incase player goes below
 	if (fp < 0)
-		fp = 0;	
+		fp = 0;
 
 	// Set force back to max incase player goes over
 	if (fp > getForcePowerMax())
@@ -2245,7 +2245,7 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 		activateForcePowerRegen();
 	}
 
-	forcePower = fp;			
+	forcePower = fp;
 
 	if (notifyClient == true){
 		// Update the force power bar.
