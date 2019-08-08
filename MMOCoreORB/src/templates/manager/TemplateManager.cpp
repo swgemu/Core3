@@ -484,7 +484,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 	if (!clientTemplateFile.isEmpty())
 		templateObject->addDerivedFile(clientTemplateFile);
 
-	info("loaded " + fullName);
+	debug("loaded " + fullName);
 
 	if (templateCRCMap->put(key, templateObject) != NULL) {
 		//error("duplicate template for " + fullName);
@@ -847,9 +847,9 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 
 				floorMesh->readObject(iffStream);
 
-				info("parsed " + fileName);
+				debug("parsed " + fileName);
 			} catch (Exception& e) {
-				info("could not parse " + fileName);
+				warning("could not parse " + fileName);
 
 				delete floorMesh;
 				floorMesh = NULL;
@@ -949,9 +949,9 @@ PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
 
 				portalLayout->readObject(iffStream);
 
-				info("parsed " + fileName);
+				debug("parsed " + fileName);
 			} catch (Exception& e) {
-				info("could not parse " + fileName);
+				warning("could not parse " + fileName);
 
 				delete portalLayout;
 				portalLayout = NULL;
