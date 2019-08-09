@@ -6,6 +6,7 @@
  */
 
 #include "StructureManager.h"
+#include "engine/db/IndexDatabase.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "conf/ConfigManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -45,110 +46,129 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 
+namespace StorageManagerNamespace {
+	 int indexCallback(DB *secondary, const DBT *key, const DBT *data, DBT *result) {
+		memset(result, 0, sizeof(DBT));
+
+		ObjectInputStream objectData;
+
+		LocalDatabase::uncompress(data->data, data->size, &objectData);
+
+		String zoneReference;
+
+		if (!Serializable::getVariable<String>(STRING_HASHCODE("SceneObject.zone"),
+						&zoneReference, &objectData)) {
+			return DB_DONOTINDEX;
+		} else {
+			auto data = (uint64*) malloc(sizeof(uint64)); //same size as an oid
+			*data = zoneReference.hashCode();
+
+			result->data = data;
+			result->size = sizeof(uint64);
+
+			result->flags = DB_DBT_APPMALLOC;
+
+			//Logger::console.info("setting new key " + String::valueOf(*data) + " in associate callback", true);
+		}
+
+		return 0;
+	 }
+
+}
+
+StructureManager::StructureManager() : Logger("StructureManager") {
+	server = NULL;
+	templateManager = TemplateManager::instance();
+
+	setGlobalLogging(true);
+	setLogging(false);
+}
+
+IndexDatabase* StructureManager::createSubIndex() {
+	static auto initialized = [this] () -> IndexDatabase* { //this needs to run only once
+		auto dbManager = ObjectDatabaseManager::instance();
+
+		auto playerStructuresDatabase = dbManager->loadObjectDatabase("playerstructures", true);
+		auto playerStructuresDatabaseIndex = dbManager->loadIndexDatabase("playerstructuresindex", true);
+
+		fatal(playerStructuresDatabase && playerStructuresDatabaseIndex, "Could not load the player structures databases.");
+
+		info("creating player structures index association", true);
+
+		playerStructuresDatabase->associate(playerStructuresDatabaseIndex, StorageManagerNamespace::indexCallback);
+
+		return playerStructuresDatabaseIndex;
+	} ();
+
+	fatal(initialized, "Could not initialize player structures sub index.");
+
+	initialized->reloadParentAssociation(); //makes sure the thread local db handle reloads the association if needed
+
+	return initialized;
+}
+
 void StructureManager::loadPlayerStructures(const String& zoneName) {
-	info("Loading player structures from playerstructures.db for zone: " + zoneName);
+	info("Loading player structures for zone: " + zoneName);
 
-	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	ObjectDatabase* playerStructuresDatabase = dbManager->loadObjectDatabase("playerstructures", true);
-
-	if (playerStructuresDatabase == NULL) {
-		error("Could not load the player structures database.");
-		return;
-	}
+	auto playerStructuresDatabaseIndex = createSubIndex();
 
 	berkley::CursorConfig config;
 	config.setReadUncommitted(true);
+	uint64 zoneHash = zoneName.hashCode();
 
-	ObjectDatabaseIterator iterator(playerStructuresDatabase, config);
+	IndexDatabaseIterator iterator(playerStructuresDatabaseIndex, config);
 
-	//5MB buffer
-	int buffersize = 10 * 1024 * 1024;//10MB
-	ArrayList<char> buffer(buffersize, buffersize / 2);
-
-	berkley::DatabaseEntry dataEntry;
-	dataEntry.setData(buffer.begin(), buffersize);
-
-	size_t retklen, retdlen;
-	unsigned char *retkey, *retdata;
-	void *p;
-
-	int queryRes = 0;
 	int i = 0;
 
-	do {
-		if (queryRes == DB_BUFFER_SMALL) {
-			info("resizing player bulk buffer to " + String::valueOf(buffersize * 2), true);
+	uint64 objectID;
 
-			buffersize *= 2;
+	auto loadFunction = [this] (int& i, uint64 objectID, uint64 planet) {
+		//debug("loading 0x" + String::hexvalueOf(objectID) + " for planet 0x" + String::hexvalueOf(planet), true);
 
-			buffer.removeAll(buffersize, 5);
-			dataEntry.setData(buffer.begin(), buffersize);
-		}
+		try {
+			auto object = server->getObject(objectID);
 
-		queryRes = iterator.getNextKeyAndValueMultiple(dataEntry);
+			if (object == nullptr) {
+				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
 
-		if (queryRes) {
-			continue;
-		}
-
-		String zoneReference;
-		ObjectInputStream data(8192);
-
-		for (DB_MULTIPLE_INIT(p, dataEntry.getDBT());;) {
-			DB_MULTIPLE_KEY_NEXT(p,
-					dataEntry.getDBT(), retkey, retklen, retdata, retdlen);
-			if (p == NULL)
-				break;
-
-			data.reset();
-
-			auto objectID = *reinterpret_cast<uint64*>(retkey);
-
-			try {
-				LocalDatabase::uncompress(retdata, retdlen, &data);
-
-				if (!Serializable::getVariable<String>(STRING_HASHCODE("SceneObject.zone"),
-							&zoneReference, &data)) {
-					data.reset();
-					continue;
-				}
-
-				if (zoneName != zoneReference) {
-					data.reset();
-					continue;
-				}
-
-				Reference<SceneObject*> object = server->getObject(objectID);
-
-				if (object != NULL) {
-					++i;
-
-					if (object->isGCWBase()) {
-						Zone* zone = object->getZone();
-
-						if (zone != NULL) {
-							GCWManager* gcwMan = zone->getGCWManager();
-
-							if (gcwMan != NULL) {
-								gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()), false);
-							}
-						}
-					}
-
-					if (ConfigManager::instance()->isProgressMonitorActivated())
-						printf("\r\tLoading player structures [%d] / [?]\t", i);
-				} else {
-					error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
-				}
-
-			} catch (Exception& e) {
-				error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
+				return;
 			}
 
-		}
-	} while (queryRes == 0 || queryRes == DB_BUFFER_SMALL);
+			++i;
 
-	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".", i > 0);
+			if (object->isGCWBase()) {
+				Zone* zone = object->getZone();
+
+				if (zone != nullptr) {
+					GCWManager* gcwMan = zone->getGCWManager();
+
+					if (gcwMan != nullptr) {
+						gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()), false);
+					}
+				}
+			}
+
+			if (ConfigManager::instance()->isProgressMonitorActivated())
+				printf("\r\tLoading player structures [%d] / [?]\t", i);
+		} catch (Exception& e) {
+			error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
+		}
+	};
+
+	Timer loadTimer;
+	loadTimer.start();
+
+	if (iterator.setKeyAndGetValue(zoneHash, objectID, nullptr)) {
+		loadFunction(i, objectID, zoneHash);
+
+		while (iterator.getNextKeyAndValue(zoneHash, objectID, nullptr)) {
+			loadFunction(i, objectID, zoneHash);
+		}
+	}
+
+	auto elapsedMs = loadTimer.stopMs();
+
+	info(String::valueOf(i) + " player structures loaded for " + zoneName + " in " + String::valueOf(elapsedMs) + " ms.", i > 0);
 }
 
 int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {

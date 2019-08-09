@@ -45,17 +45,13 @@ class StructureManager : public Singleton<StructureManager>, public Logger, publ
 	TemplateManager* templateManager;
 
 public:
-	StructureManager() : Logger("StructureManager") {
-		server = NULL;
-		templateManager = TemplateManager::instance();
-
-		setGlobalLogging(true);
-		setLogging(false);
-	}
+	StructureManager();
 
 	void setZoneServer(ZoneServer* zoneServer) {
 		server = zoneServer;
 	}
+
+	IndexDatabase* createSubIndex();
 
 	void loadPlayerStructures(const String& zoneName);
 

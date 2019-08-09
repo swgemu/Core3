@@ -307,8 +307,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE)
 		setLogging(true);
 
-	if (!DEBUG_MODE)
-		info("initializeLuaEngine");
+	debug("initializeLuaEngine started");
 
 	luaEngine->init();
 	luaEngine->setLoggingName("DirectorManagerLuaInstance");
@@ -616,10 +615,16 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
+	Timer loadTimer;
+	loadTimer.start();
+
 	bool res = luaEngine->runFile("scripts/screenplays/screenplays.lua");
 
-	if (!DEBUG_MODE)
-		info("Loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays.", true);
+	if (!DEBUG_MODE) {
+		auto elapsed = loadTimer.stopMs();
+
+		info(Thread::getCurrentThread()->getName() + " loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays in " + String::valueOf(elapsed) + " ms.", true);
+	}
 
 	if (!res)
 		return 1;
