@@ -42,6 +42,7 @@ option(ENABLE_REST_SERVER "Enables RESTServer if cpprestsdk is found" OFF)
 option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
+option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -82,6 +83,8 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
+
+find_package(JEMALLOC QUIET)
 
 function(check_working_cxx_atomics varname)
 	set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})

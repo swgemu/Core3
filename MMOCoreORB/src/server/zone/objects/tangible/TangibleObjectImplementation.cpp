@@ -1107,15 +1107,15 @@ void TangibleObjectImplementation::sendTo(SceneObject* player, bool doClose, boo
 	SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
 
-bool TangibleObjectImplementation::isCityStreetLamp(){
+bool TangibleObjectImplementation::isCityStreetLamp() const {
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/streetlamp"));
 }
 
-bool TangibleObjectImplementation::isCityStatue(){
+bool TangibleObjectImplementation::isCityStatue() const {
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/statue"));
 }
 
-bool TangibleObjectImplementation::isCityFountain(){
+bool TangibleObjectImplementation::isCityFountain() const {
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/fountain"));
 }
 
@@ -1138,7 +1138,7 @@ void TangibleObjectImplementation::setDisabled(bool disabled) {
 		clearOptionBit(OptionBitmask::DISABLED, true);
 }
 
-bool TangibleObjectImplementation::isDisabled() {
+bool TangibleObjectImplementation::isDisabled() const {
 	return getOptionsBitmask() & OptionBitmask::DISABLED;
 }
 

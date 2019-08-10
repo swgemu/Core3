@@ -85,12 +85,13 @@ class ServerCore : public Core, public Logger {
 
 public:
 	ServerCore(bool truncateDatabases, SortedVector<String>& args);
+	~ServerCore();
 
 	void initialize() override;
 
 	void finalizeContext() override;
 
-	void initializeContext(int logLevel) override;
+	void initializeCoreContext();
 
 	void run() override;
 

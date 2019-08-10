@@ -98,7 +98,6 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 }
 
 void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
-
 	if (isJediWeapon()) {
 
 		ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
@@ -116,36 +115,35 @@ void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
 
 void WeaponObjectImplementation::createChildObjects() {
 	// Create any child objects in a weapon.
-
 	ZoneServer* zoneServer = server->getZoneServer();
 
-		for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
-			ChildObject* child = templateObject->getChildObject(i);
+	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
+		ChildObject* child = templateObject->getChildObject(i);
 
-			if (child == NULL)
-				continue;
+		if (child == NULL)
+			continue;
 
-			ManagedReference<SceneObject*> obj = zoneServer->createObject(
-					child->getTemplateFile().hashCode(), getPersistenceLevel());
+		ManagedReference<SceneObject*> obj = zoneServer->createObject(
+				child->getTemplateFile().hashCode(), getPersistenceLevel());
 
-			if (obj == NULL)
-				continue;
+		if (obj == NULL)
+			continue;
 
-			ContainerPermissions* permissions = obj->getContainerPermissions();
-			permissions->setOwner(getObjectID());
-			permissions->setInheritPermissionsFromParent(true);
-			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
-			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+		ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
+		permissions->setOwner(getObjectID());
+		permissions->setInheritPermissionsFromParent(true);
+		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
-			if (!transferObject(obj, child->getContainmentType())) {
-				obj->destroyObjectFromDatabase(true);
-				continue;
-			}
-
-			childObjects.put(obj);
-
-			obj->initializeChildObject(_this.getReferenceUnsafeStaticCast());
+		if (!transferObject(obj, child->getContainmentType())) {
+			obj->destroyObjectFromDatabase(true);
+			continue;
 		}
+
+		childObjects.put(obj);
+
+		obj->initializeChildObject(_this.getReferenceUnsafeStaticCast());
+	}
 
 }
 

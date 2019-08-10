@@ -205,7 +205,7 @@ public:
 
 			if (targetCell != nullptr) {
 				if (!creatureTarget->isPlayerCreature()) {
-					ContainerPermissions* perms = targetCell->getContainerPermissions();
+					auto perms = targetCell->getContainerPermissions();
 
 					if (!perms->hasInheritPermissionsFromParent()) {
 						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {

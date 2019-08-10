@@ -311,7 +311,7 @@ public:
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma, float range) const {
 
 		// TODO: Replace this with a CombatManager::getAreaTargets() call
-		
+
 		Zone* zone = creature->getZone();
 
 		if (zone == NULL)
@@ -350,7 +350,7 @@ public:
 
 					if (targetCell != nullptr) {
 						if (object->isPlayerCreature()) {
-							ContainerPermissions* perms = targetCell->getContainerPermissions();
+							auto perms = targetCell->getContainerPermissions();
 
 							if (!perms->hasInheritPermissionsFromParent()) {
 								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
@@ -413,7 +413,7 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
-					creature->sendSystemMessage("@healing_response:healing_response_62"); //Target must be a player or a creature pet in order to heal damage. 
+					creature->sendSystemMessage("@healing_response:healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
 					return GENERALERROR;
 				}
 			}
@@ -472,7 +472,7 @@ public:
 
 			if (targetCell != nullptr) {
 				if (!targetCreature->isPlayerCreature()) {
-					ContainerPermissions* perms = targetCell->getContainerPermissions();
+					auto perms = targetCell->getContainerPermissions();
 
 					if (!perms->hasInheritPermissionsFromParent()) {
 						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {

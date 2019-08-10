@@ -508,23 +508,23 @@ bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) 
 		return false;
 }
 
-bool PlayerObjectImplementation::isAnonymous()  {
+bool PlayerObjectImplementation::isAnonymous() const {
 	return (characterBitmask & ((uint32)ANONYMOUS)) != 0;
 }
 
-bool PlayerObjectImplementation::isAFK()  {
+bool PlayerObjectImplementation::isAFK() const {
 	return (characterBitmask & ((uint32)AFK)) != 0;
 }
 
-bool PlayerObjectImplementation::isRoleplayer()  {
+bool PlayerObjectImplementation::isRoleplayer() const {
 	return (characterBitmask & ((uint32)ROLEPLAYER)) != 0;
 }
 
-bool PlayerObjectImplementation::isNewbieHelper()  {
+bool PlayerObjectImplementation::isNewbieHelper() const {
 	return (characterBitmask & ((uint32)NEWBIEHELPER)) != 0;
 }
 
-bool PlayerObjectImplementation::isLFG()  {
+bool PlayerObjectImplementation::isLFG() const {
 	return (characterBitmask & ((uint32)LFG)) != 0;
 }
 
@@ -2341,11 +2341,11 @@ void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
 	updateLastPvpCombatActionTimestamp(true, false);
 }
 
-bool PlayerObjectImplementation::hasPvpTef() {
+bool PlayerObjectImplementation::hasPvpTef() const {
 	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
 }
 
-bool PlayerObjectImplementation::hasBhTef() {
+bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
@@ -2795,7 +2795,7 @@ int PlayerObjectImplementation::getCharacterAgeInDays() {
 	return days;
 }
 
-bool PlayerObjectImplementation::hasEventPerk(const String& templatePath) {
+bool PlayerObjectImplementation::hasEventPerk(const String& templatePath) const {
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<SceneObject*> eventPerk = nullptr;
 
@@ -2843,7 +2843,7 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 	parent->sendMessage(inputbox->generateMessage());
 }
 
-bool PlayerObjectImplementation::isIgnoring(const String& name) {
+bool PlayerObjectImplementation::isIgnoring(const String& name) const {
 	return !name.isEmpty() && ignoreList.contains(name);
 }
 
