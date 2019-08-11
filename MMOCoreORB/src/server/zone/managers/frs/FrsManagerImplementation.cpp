@@ -303,7 +303,7 @@ void FrsManagerImplementation::setupEnclaveRooms(BuildingObject* enclaveBuilding
 			if (roomReq == -1)
 				continue;
 
-			ContainerPermissions* permissions = cell->getContainerPermissions();
+			ContainerPermissions* permissions = cell->getContainerPermissionsForUpdate();
 
 			permissions->setInheritPermissionsFromParent(false);
 			permissions->clearDefaultAllowPermission(ContainerPermissions::WALKIN);

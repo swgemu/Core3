@@ -2787,7 +2787,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		Reference<CellObject*> curCell = getParent().get().castTo<CellObject*>();
 
 		if (curCell != NULL) {
-			ContainerPermissions* perms = curCell->getContainerPermissions();
+			auto perms = curCell->getContainerPermissions();
 
 			if (!perms->hasInheritPermissionsFromParent()) {
 				if (!curCell->checkContainerPermission(target, ContainerPermissions::WALKIN)) {

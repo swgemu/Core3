@@ -1240,11 +1240,12 @@ class PlayerObject extends IntangibleObject {
 		return friendList.contains(name);
 	}
 
-	@dirty
+	@read
 	public int getFriendListSize() {
 		return friendList.size();
 	}
 
+	@read
 	public native boolean isIgnoring(final string name);
 
 	public void addReverseFriend(final string name) {
@@ -1255,6 +1256,7 @@ class PlayerObject extends IntangibleObject {
 		friendList.removeReversePlayer(name);
 	}
 
+	@dirty
 	public native void sendFriendLists();
 
 	/**
@@ -1263,7 +1265,7 @@ class PlayerObject extends IntangibleObject {
 	 * @return True if the player has the ability.
 	 */
 	@local
-	@dirty
+	@read
 	public boolean hasAbility(final string ability) {
 		return abilityList.contains(ability);
 	}
@@ -1305,22 +1307,22 @@ class PlayerObject extends IntangibleObject {
 		biography = bio;
 	}
 
-	@dirty
+	@read
 	public boolean hasGodMode() {
 		return (adminLevel > 0 && hasAbility("admin"));
 	}
 
-	@dirty
+	@read
 	public boolean isPrivileged() {
 		return (adminLevel > 6 && hasAbility("admin"));
 	}
 
-	@dirty
+	@read
 	public boolean isStaff() {
 		return (adminLevel > 10 && hasAbility("admin"));
 	}
 
-	@dirty
+	@read
 	public boolean isAdmin() {
 		return (adminLevel == 15 && hasAbility("admin"));
 	}
@@ -1335,12 +1337,21 @@ class PlayerObject extends IntangibleObject {
 	/**
 	 * is the player AFK
 	 */
-	@dirty
+	@read
 	public native boolean isLFG();
+
+	@read
 	public native boolean isAFK();
+
+	@read
 	public native boolean isAnonymous();
+
+	@read
 	public native boolean isRoleplayer();
+
+	@read
 	public native boolean isNewbieHelper();
+
 	@local
 	@dirty
 	public VectorMap<string, int> getXpTypeCapList() {
@@ -1552,6 +1563,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@local
+	@read
 	public int getDaysSinceLastLogout() {
 		return (int)(logoutTimeStamp.miliDifference() / 1000 / 60 / 60 / 24);
 	}
@@ -1693,8 +1705,10 @@ class PlayerObject extends IntangibleObject {
 
 	public native void updateLastGcwPvpCombatActionTimestamp();
 
+	@read
 	public native boolean hasPvpTef();
 
+	@read
 	public native boolean hasBhTef();
 
 	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
@@ -1729,10 +1743,12 @@ class PlayerObject extends IntangibleObject {
 		return jediState >= 2; //TODO: Implement jedi constants.
 	}
 
+	@read
 	public boolean isJediLight() {
 		return jediState == 4; // Light FRS.
 	}
 
+	@read
 	public boolean isJediDark() {
 		return jediState == 8; // Dark FRS.
 	}
@@ -1827,10 +1843,12 @@ class PlayerObject extends IntangibleObject {
 		currentEventPerks.drop(deed.getObjectID());
 	}
 
+	@read
 	public int getEventPerkCount() {
 		return currentEventPerks.size();
 	}
 
+	@dirty
 	public native int getCharacterAgeInDays();
 
 	public void addToReactionFines(int fine) {
@@ -1863,6 +1881,7 @@ class PlayerObject extends IntangibleObject {
 		return reactionFineMailTimestamp;
 	}
 
+	@read
 	public int getXpCap(final string type) {
 		return xpTypeCapList.get(type);
 	}
@@ -1875,6 +1894,7 @@ class PlayerObject extends IntangibleObject {
 		return schematicList.contains(schematic);
 	}
 
+	@read
 	public native boolean hasEventPerk(final string templatePath);
 
 	public native void doFieldFactionChange(int newStatus);
@@ -1915,6 +1935,7 @@ class PlayerObject extends IntangibleObject {
 		pvpRating = rating;
 	}
 
+	@read
 	public boolean isCloning() {
 		return isPlayerCloning;
 	}
@@ -1933,6 +1954,7 @@ class PlayerObject extends IntangibleObject {
 		return miliSecsSession;
 	}
 
+	@read
 	public unsigned long getSessionTotalMovement() {
 		return sessionStatsTotalMovement;
 	}

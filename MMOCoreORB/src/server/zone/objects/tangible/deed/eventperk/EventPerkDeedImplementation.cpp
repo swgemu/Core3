@@ -278,7 +278,7 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 		if (child != NULL)	{
 			Locker cLock(child, parent);
 
-			ContainerPermissions* permissions = child->getContainerPermissions();
+			ContainerPermissions* permissions = child->getContainerPermissionsForUpdate();
 			permissions->setOwner(parent->getObjectID());
 			permissions->setInheritPermissionsFromParent(false);
 			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);

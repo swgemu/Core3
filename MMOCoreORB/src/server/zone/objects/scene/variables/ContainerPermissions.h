@@ -36,18 +36,18 @@ namespace server {
 
     	ContainerPermissions();
 
-    	bool hasPermission(const String& group, uint16 permission);
+    	bool hasPermission(const String& group, uint16 permission) const;
 
-    	uint16 getAllowPermissions(const String& group);
-    	uint16 getDenyPermissions(const String& group);
+    	uint16 getAllowPermissions(const String& group) const;
+    	uint16 getDenyPermissions(const String& group) const;
 
     	void setAllowPermission(const String& group, uint16 permission);
     	void setDenyPermission(const String& group, uint16 permission);
     	void clearAllowPermission(const String& group, uint16 permission);
     	void clearDenyPermission(const String& group, uint16 permission);
 
-    	bool hasPermission(uint32 group, uint16 permission);
-    	bool hasOwnerPermission(uint16 permission);
+    	bool hasPermission(uint32 group, uint16 permission) const;
+    	bool hasOwnerPermission(uint16 permission) const;
 
     	void setAllowPermission(uint32 group, uint16 permission);
     	void setDenyPermission(uint32 group, uint16 permission);

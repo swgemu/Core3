@@ -28,7 +28,7 @@ private:
 
 public:
 	bool add(Ability* ability, DeltaMessage* message = NULL, int updates = 1);
-	bool contains(const String& element);
+	bool contains(const String& element) const;
 
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);

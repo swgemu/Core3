@@ -194,14 +194,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native void notifyLoadFromDatabase();
 
-    @dirty
-    public abstract int getReceiverFlags() {
-        int flags = super.getReceiverFlags();
-        if (collidableObject)
-            return CloseObjectsVector.COLLIDABLETYPE | flags;
+	@dirty
+	public abstract int getReceiverFlags() {
+        	int flags = super.getReceiverFlags();
+	        if (collidableObject)
+        	    return CloseObjectsVector.COLLIDABLETYPE | flags;
 
-        return flags;
-    }
+	        return flags;
+	}
 
 	/**
 	 * Logs an info message
@@ -369,14 +369,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param startTask if true, queues a new update task
 	 */
 	@dirty
-	 public native void updateToDatabase();
+	public native void updateToDatabase();
 
 	 /**
 	  * Updates only this object to database without updating children
 	  * WARNING use only when necessary
 	  */
 	@dirty
-	 public native void updateToDatabaseWithoutChildren();
+	public native void updateToDatabaseWithoutChildren();
 
 	/**
 	 * Updates this object and childre objects to database
@@ -555,6 +555,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public abstract native void openContainerTo(CreatureObject player);
 
 	@local
+	@dirty
 	public abstract byte checkContainerPermission(CreatureObject player, unsigned short permission) {
 		return containerComponent.checkContainerPermission(this, player, permission);
 	}
@@ -729,6 +730,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param task Task to add
 	 */
 	@local
+	@dirty
 	public void addPendingTask(final string name, Task task, int miliseconds) {
 		synchronized (containerLock) {
 			if (getPendingTasks().put(name, task) > -1) {
@@ -745,6 +747,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param task Task to add
 	 */
 	@local
+	@dirty
 	public void executeOrderedTask(Task task) {
 		synchronized (containerLock) {
 			getPendingTasks().putOrdered(task, this);
@@ -760,6 +763,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param name Name of the task
 	 */
 	@local
+	@dirty
 	public native void executeOrderedTask(@dereferenced final StdFunction function, final string name);
 
 	/**
@@ -769,6 +773,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param name Name of the task to drop
 	 */
 	@local
+	@dirty
 	public void removePendingTask(final string name) {
 		synchronized (containerLock) {
 			if (pendingTasks == null)
@@ -784,6 +789,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
+	@dirty
 	public PendingTasksMap getPendingTasks() {
 		synchronized (containerLock) {
 			if (pendingTasks == null) {
@@ -825,10 +831,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public native void showFlyText(final string file, final string aux, byte red, byte green, byte blue, boolean isPrivate = false);
 
+	@dirty
 	public native int getContainedObjectsRecursive();
 
+	@dirty
 	public abstract native int getCountableObjectsRecursive();
 
+	@dirty
 	public abstract native int getSizeOnVendorRecursive();
 
 	/**
@@ -1025,12 +1034,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return;
 	}
 
+	@read
 	public native int getArrangementDescriptorSize();
 
 	@local
+	@read
 	public native final Vector<string> getArrangementDescriptor(int idx);
 
-	@dirty
+	@read
 	public string getSlotDescriptor(int idx) {
 		return templateObject.getSlotDescriptors().get(idx);
 	}
@@ -1742,7 +1753,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	public ContainerPermissions getContainerPermissions() {
+	@read
+	public final ContainerPermissions getContainerPermissions() {
+		return containerPermissions;
+	}
+
+	@local
+	public ContainerPermissions getContainerPermissionsForUpdate() {
 		return containerPermissions;
 	}
 
@@ -1804,6 +1821,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
+	@read
 	public ZoneProcessServer getZoneProcessServer() {
 		return server;
 	}
@@ -1981,6 +1999,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	@local
 	@dereferenced
+	@read
 	public native SortedVector<Observer> getObservers(unsigned int eventType);
 
 	@preLocked
@@ -2071,10 +2090,12 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public native boolean isDataPad();
 
+	@dirty
 	public native abstract float getTemplateRadius();
 
 	@local
 	@dereferenced
+	@read
 	public abstract native Vector<Reference<MeshData> > getTransformedMeshData(final Matrix4 parentTransform);
 
 	@dirty

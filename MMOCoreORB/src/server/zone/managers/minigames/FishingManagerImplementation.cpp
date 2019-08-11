@@ -514,7 +514,7 @@ void FishingManagerImplementation::sendReward(CreatureObject* player, SceneObjec
 
 		Locker markerLocker(marker);
 
-		ContainerPermissions* permissions = marker->getContainerPermissions();
+		ContainerPermissions* permissions = marker->getContainerPermissionsForUpdate();
 		permissions->setOwner(player->getObjectID());
 
 		if (marker->transferObject(loot, -1, true)) {

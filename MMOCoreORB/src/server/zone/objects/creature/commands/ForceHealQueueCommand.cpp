@@ -398,7 +398,7 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 
 		if (targetCell != nullptr) {
 			if (!targetCreature->isPlayerCreature()) {
-				ContainerPermissions* perms = targetCell->getContainerPermissions();
+				auto perms = targetCell->getContainerPermissions();
 
 				if (!perms->hasInheritPermissionsFromParent()) {
 					if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {

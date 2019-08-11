@@ -41,7 +41,7 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 
 
 bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
-	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+	auto permissions = sceneObject->getContainerPermissions();
 	if(permission == ContainerPermissions::MOVEIN)
 		return false;
 	else if (permission == ContainerPermissions::MOVEOUT ){
@@ -57,7 +57,7 @@ int LootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* 
 		errorDescription = "@error_message:remove_only_corpse"; //You cannot place items into a corpse.
 		 return TransferErrorCode::INVALIDTYPE;
 	}
-	
+
 	return 1;
 }
 

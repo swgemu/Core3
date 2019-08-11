@@ -365,39 +365,39 @@ public:
 		return clientTemplateFileName.hashCode();
 	}
 
-	inline const String& getClientTemplateFileName() {
+	inline const String& getClientTemplateFileName() const {
 		return clientTemplateFileName;
 	}
 
-	inline uint32 getServerObjectCRC() {
+	inline uint32 getServerObjectCRC() const {
 		return fullTemplateString.hashCode();
 	}
 
-	inline const String& getFullTemplateString() {
+	inline const String& getFullTemplateString() const {
 		return fullTemplateString;
 	}
 
-	inline const String& getDataObjectComponent() {
+	inline const String& getDataObjectComponent() const {
 		return dataObjectComponent;
 	}
 
-	inline const String& getTemplateFileName() {
+	inline const String& getTemplateFileName() const {
 		return templateFileName;
 	}
 
-	inline const String& getContainerComponent() {
+	inline const String& getContainerComponent() const {
 		return containerComponent;
 	}
 
-	inline const String& getZoneComponent() {
+	inline const String& getZoneComponent() const {
 		return zoneComponent;
 	}
 
-	inline const String& getObjectMenuComponent() {
+	inline const String& getObjectMenuComponent() const {
 		return objectMenuComponent;
 	}
 
-	inline const String& getAttributeListComponent() {
+	inline const String& getAttributeListComponent() const {
 		return attributeListComponent;
 	}
 

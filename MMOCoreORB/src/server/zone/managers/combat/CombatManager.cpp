@@ -285,7 +285,7 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef) {
 	int damage = 0;
-	
+
 	Locker clocker(tano, attacker);
 
 	if (!tano->isAttackableBy(attacker))
@@ -2671,7 +2671,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 
 				if (targetCell != nullptr) {
 					if (!object->isPlayerCreature()) {
-						ContainerPermissions* perms = targetCell->getContainerPermissions();
+						auto perms = targetCell->getContainerPermissions();
 
 						if (!perms->hasInheritPermissionsFromParent()) {
 							if (targetCell->checkContainerPermission(aggressor, ContainerPermissions::WALKIN))
