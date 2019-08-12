@@ -59,6 +59,12 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 	features = nullptr;
 
 	handleCmds = true;
+
+	initializeCoreContext();
+}
+
+ServerCore::~ServerCore() {
+	finalizeContext();
 }
 
 class ZoneStatisticsTask: public Task {
@@ -75,12 +81,10 @@ public:
 };
 
 void ServerCore::finalizeContext() {
-	Core::finalizeContext();
-
 	server::db::mysql::MySqlDatabase::finalizeLibrary();
 }
 
-void ServerCore::initializeContext(int logLevel) {
+void ServerCore::initializeCoreContext() {
 	server::db::mysql::MySqlDatabase::initializeLibrary();
 
 	class ThreadHook : public ThreadInitializer {
@@ -95,8 +99,6 @@ void ServerCore::initializeContext(int logLevel) {
 	};
 
 	Thread::setThreadInitializer(new ThreadHook());
-
-	Core::initializeContext(logLevel);
 }
 
 void ServerCore::signalShutdown() {
@@ -411,9 +413,6 @@ void ServerCore::shutdown() {
 		delete features;
 		features = nullptr;
 	}
-
-	mysql_thread_end();
-	server::db::mysql::MySqlDatabase::finalizeLibrary();
 
 	NetworkInterface::finalize();
 

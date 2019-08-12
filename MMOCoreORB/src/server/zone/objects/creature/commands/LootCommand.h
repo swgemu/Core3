@@ -134,7 +134,7 @@ public:
 		int totalItems = lootContainer->getContainerObjectsSize();
 		if (totalItems < 1) return NOPICKUPITEMS;
 
-		ContainerPermissions* contPerms = lootContainer->getContainerPermissions();
+		ContainerPermissions* contPerms = lootContainer->getContainerPermissionsForUpdate();
 		if (contPerms == NULL) return NOPICKUPITEMS;
 
 		SceneObject* playerInventory = creature->getSlottedObject("inventory");
@@ -145,7 +145,7 @@ public:
 			SceneObject* object = lootContainer->getContainerObject(i);
 			if (object == NULL) continue;
 
-			ContainerPermissions* itemPerms = object->getContainerPermissions();
+			ContainerPermissions* itemPerms = object->getContainerPermissionsForUpdate();
 			if (itemPerms == NULL) continue;
 
 			//Check if player owns the loot item.

@@ -22,9 +22,9 @@ class ControlDevice extends IntangibleObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
-		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+		ContainerPermissions permissions = super.getContainerPermissionsForUpdate();
 
-		ContainerPermissions permissions = super.getContainerPermissions();
+		permissions.setInheritPermissionsFromParent(true);
 		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
 		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
 	}

@@ -101,9 +101,6 @@ public:
 			database = nullptr;
 		}
 
-		mysql_thread_end();
-		server::db::mysql::MySqlDatabase::finalizeLibrary();
-
 		if (playerManager != nullptr) {
 			playerManager->finalize();
 			playerManager = nullptr;

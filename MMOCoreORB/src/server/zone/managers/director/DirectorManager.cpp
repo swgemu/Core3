@@ -133,6 +133,8 @@ void DirectorManager::loadPersistentEvents() {
 
 		while (iterator.getNextKey(objectID)) {
 			Reference<PersistentEvent*> event = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
+			Locker locker(event);
+
 			++i;
 
 			Reference<PersistentEvent*> oldEvent = persistentEvents.put(event->getEventName().hashCode(), event);

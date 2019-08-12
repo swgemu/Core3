@@ -226,11 +226,11 @@ public:
 		TypeInfo<E>::toBinaryStream(item, msg);
 	}
 
-	virtual bool contains(const E& element) {
+	virtual bool contains(const E& element) const {
 		return find(element) != -1;
 	}
 
-	int find(const E& element) {
+	int find(const E& element) const {
 		for (int i = 0; i < size(); ++i) {
 			if (element == get(i))
 				return i;

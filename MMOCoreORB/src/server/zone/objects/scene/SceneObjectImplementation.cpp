@@ -1389,7 +1389,7 @@ void SceneObjectImplementation::createChildObjects() {
 		}
 
 		//childObjects.put(obj);
-		ContainerPermissions* permissions = obj->getContainerPermissions();
+		ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
 		permissions->setOwner(getObjectID());
 		permissions->setInheritPermissionsFromParent(false);
 		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
@@ -1565,7 +1565,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
 	return this->parent.staticCastToWeak<SceneObject*>();
 }
 
-SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObservers(unsigned int eventType) {
+SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObservers(unsigned int eventType) const {
 	return observerEventMap.getObservers(eventType);
 }
 
@@ -1682,7 +1682,7 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 	return obj;
 }
 
-const Vector<String>* SceneObjectImplementation::getArrangementDescriptor(int idx) {
+const Vector<String>* SceneObjectImplementation::getArrangementDescriptor(int idx) const {
 	return &templateObject->getArrangementDescriptors()->get(idx);
 }
 
@@ -1770,7 +1770,7 @@ Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel()
 	return std::move(craftingComponentsSatchel);
 }
 
-int SceneObjectImplementation::getArrangementDescriptorSize() {
+int SceneObjectImplementation::getArrangementDescriptorSize() const {
 	return templateObject->getArrangementDescriptors()->size();
 }
 
@@ -1863,7 +1863,7 @@ CreatureObject* SceneObject::asCreatureObject() {
 	return nullptr;
 }
 
-Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {
+Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {
 	const AppearanceTemplate *appearance = getObjectTemplate()->getAppearanceTemplate();
 	if(appearance == NULL) {
 		Vector<Reference<MeshData*> > emptyData;

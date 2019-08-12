@@ -12,7 +12,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/skill/SkillManager.h"
 
-bool AbilityList::contains(const String& element) {
+bool AbilityList::contains(const String& element) const {
 	String lowCase = element.toLowerCase();
 
 	for (int i = 0; i < vector.size(); ++i) {

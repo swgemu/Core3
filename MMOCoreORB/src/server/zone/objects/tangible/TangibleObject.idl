@@ -453,7 +453,7 @@ class TangibleObject extends SceneObject {
 	@preLocked
 	public native void dropFromDefenderLists();
 
-	@dirty
+	@read
 	public byte getObjectVisible() {
 		return objectVisible;
 	}
@@ -494,24 +494,24 @@ class TangibleObject extends SceneObject {
 		return customizationVariables;
 	}
 
-	@dirty
+	@read
 	public abstract int getUseCount() {
 		return useCount;
 	}
 
-	@dirty
+	@read
 	public int getMaxCondition() {
 		return maxCondition;
 	}
 
 	public native void setMaxCondition(int maxCond, boolean notifyClient = true);
 
-	@dirty
+	@read
 	public int getConditionDamage() {
 		return (int)conditionDamage;
 	}
 
-	@dirty
+	@read
 	public int getVolume() {
 		return volume;
 	}
@@ -520,12 +520,12 @@ class TangibleObject extends SceneObject {
 		complexity = value;
 	}
 
-	@dirty
+	@read
 	public float getComplexity() {
 		return complexity;
 	}
 
-	@dirty
+	@read
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
 	}
@@ -540,17 +540,17 @@ class TangibleObject extends SceneObject {
 			clearOptionBit(OptionBitmask.YELLOW, notifyClient);
 	}
 
-	@dirty
+	@read
 	public int getLevel() {
 		return level;
 	}
 
-	@dirty
+	@read
 	public boolean getIsCraftedEnhancedItem() {
 		return isCraftedEnhancedItem;
 	}
 
-	@dirty
+	@read
 	public unsigned int getPvpStatusBitmask() {
 		return pvpStatusBitmask;
 	}
@@ -560,7 +560,7 @@ class TangibleObject extends SceneObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public void getCustomizationString(string variables) {
 		customizationVariables.getData(variables);
 	}
@@ -573,6 +573,7 @@ class TangibleObject extends SceneObject {
 	}
 
 	@local
+	@dirty
 	public AutoDeltaSet<int> getVisibleComponents() {
 		return visibleComponents;
 	}
@@ -720,20 +721,22 @@ class TangibleObject extends SceneObject {
 	@reference
 	public native FactoryCrate createFactoryCrate(int maxSize, boolean insertSelf = false);
 
+	@dirty
 	public native boolean canRepair(CreatureObject player);
 
 	public native void repair(CreatureObject player);
 
+	@dirty
 	public abstract string repairAttempt(int repairChance) {
 		return "Repairing is not implemented for this item";
 	}
 
-	@dirty
+	@read
 	public boolean isBroken() {
 		return maxCondition < 2 || getConditionDamage() >= getMaxCondition();
 	}
 
-	@dirty
+	@read
 	protected float getConditionReduction(float value) {
 		if(isBroken())
 			return 0.5 * value;
@@ -812,6 +815,7 @@ class TangibleObject extends SceneObject {
 		return null;
 	}
 
+	@read
 	public boolean hasAntiDecayKit() {
 		return antiDecayKitObject != null;
 	}
@@ -838,8 +842,13 @@ class TangibleObject extends SceneObject {
 		return null;
 	}
 
+	@read
 	public native boolean isCityStreetLamp();
+
+	@read
 	public native boolean isCityStatue();
+
+	@read
 	public native boolean isCityFountain();
 
 	@read
@@ -876,6 +885,8 @@ class TangibleObject extends SceneObject {
 	}
 
 	public native void setDisabled(boolean disabled);
+
+	@read
 	public native boolean isDisabled();
 
 	@dirty
