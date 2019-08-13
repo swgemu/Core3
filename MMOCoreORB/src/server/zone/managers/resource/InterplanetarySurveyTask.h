@@ -30,43 +30,47 @@ public:
 		// format email and send
 		ManagedReference<ResourceSpawn*> resourceSpawn;
 		// We need to sort this by family name
-		HashTable<String, Vector<String>* > mapped;
-		HashTable<String, Vector<String>* > typeMap;
-		for(int i=0;i<resources.size();i++) {
+		HashTable<String, Reference<Vector<String>*> > mapped;
+		HashTable<String, Reference<Vector<String>*> > typeMap;
+
+		for(int i = 0; i < resources.size(); i++) {
 			resourceSpawn = resources.get(i);
 			String family = resourceSpawn->getFamilyName();
 			String type = resourceSpawn->getFinalClass();
 			String name = resourceSpawn->getName();
 			// map type to family
-			Vector<String>* list = typeMap.get(family);
+			auto list = typeMap.get(family);
 			if (list != NULL) {
 				if (!list->contains(type))
 					list->add(type);
 			} else {
 				list = new Vector<String>();
 				list->add(type);
-				typeMap.put(family,list);
+				typeMap.put(family, list);
 			}
 
 			// map type to spawn name
-			Vector<String>* mlist = mapped.get(type);
+			auto mlist = mapped.get(type);
 			if (mlist != NULL) {
 				if (!mlist->contains(name))
 					mlist->add(name);
 			} else {
 				mlist = new Vector<String>();
 				mlist->add(name);
-				mapped.put(type,mlist);
+				mapped.put(type, mlist);
 			}
 		}
 		// Create Email:
 		StringBuffer body;
 
 		String sender = "interplanetary survey droid";
-		Reference<StringIdManager* > stringIdManager = StringIdManager::instance();
+		auto stringIdManager = StringIdManager::instance();
 
 		String planetName = surveyData->getPlanet();
-		planetName[0] = toupper(planetName[0]);
+
+		if (!planetName.isEmpty()) {
+			planetName[0] = toupper(planetName[0]);
+		}
 
 		String sType = surveyData->getSurveyType();
 		// Some override for untranslated names
@@ -79,27 +83,40 @@ public:
 		if (sType == "energy_renewable_unlimited_wind") {
 			sType = "Wind";
 		}
+
 		StringBuffer tBuff;
-		char tmp = sType.charAt(0);
+		char tmp = 0;
+
+		if (!sType.isEmpty()) {
+			tmp = sType.charAt(0);
+		}
+
 		tmp = toupper(tmp);
 		tBuff.append(tmp);
-		tBuff.append(sType.subString(1));
+
+		if (sType.length() > 1) {
+			tBuff.append(sType.subString(1));
+		}
+
 		String surveyType = tBuff.toString();
 		UnicodeString subject(String("Interplanetary Survey: " + planetName  + " - " + surveyType));
 		body << "Incoming planetary survey report...\n\n";
 		body << "\\#pcontrast3 Planet: \\#pcontrast1 " << planetName <<"\n";
 		body << "\\#pcontrast3 Resource Class: \\#pcontrast1 " << surveyType << "\n\n";
 		body << "\\#pcontrast3 Resources located...\\#.\n\n";
-		HashTableIterator<String, Vector<String>* > familyit = typeMap.iterator();
+		auto familyit = typeMap.iterator();
+
 		while(familyit.hasNext()) {
 			String family = familyit.getNextKey();
-			Vector<String>* tValues = typeMap.get(family);
+			auto tValues = typeMap.get(family);
 			body << family << "\n";
-			for(int i=0;i<tValues->size();i++) {
+
+			for(int i = 0; i < tValues->size(); i++) {
 				String sType = tValues->get(i);
 				body << "\t" << sType << "\n";
-				Vector<String>* values = mapped.get(sType);
-				for(int j=0;j<values->size();j++) {
+				auto values = mapped.get(sType);
+
+				for(int j = 0; j < values->size(); j++) {
 					body << "\t\t\\#pcontrast1 " << values->get(j) << "\\#.\n";
 				}
 			}

@@ -14,48 +14,71 @@ class InterplanetarySurvey extends ManagedObject {
 	protected string surveyType;
 	protected int surveyToolType;
 	protected boolean executed;
-	
+
 	public InterplanetarySurvey() {
+		timeStamp = 0;
+		curTime = 0;
 		executed = false;
+		surveyToolType = 0;
 	}
+
+	@read
 	public int getTimeStamp() {
 		return timeStamp;
 	}
+
 	public void setTimeStamp(int stamp) {
 		timeStamp = stamp;
 	}
+
+	@read
 	public int getCurTime() {
 		return curTime;
 	}
+
 	public void setCurTime(int time) {
 		curTime = time;
 	}
+
+	@read
 	public final string getRequestor() {
 		return requestor;
 	}
+
 	public void setRequestor(final string player) {
 		requestor = player;
 	}
+
+	@read
 	public final string getPlanet() {
 		return planet;
 	}
+
 	public void setPlanet(final string en) {
 		planet = en;
 	}
+
+	@read
 	public final string getSurveyType() {
 		return surveyType;
 	}
+
 	public void setSurveyType(final string en) {
 		surveyType = en;
 	}
+
 	public void setSurveyToolType(int toolType) {
 		surveyToolType = toolType;
 	}
+
+	@read
 	public int getSurveyToolType() {
 		return surveyToolType;
 	}
+
 	public void setExecuted(boolean val) {
 		executed = val;
 	}
+
 	public native void notifyLoadFromDatabase();
 }
