@@ -115,7 +115,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 
-	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl, boolean trackOnlineUsers);
 	public native void loadNameMap();
 
 	private native void loadLuaConfig();

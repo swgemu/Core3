@@ -151,7 +151,7 @@ void ZoneServerImplementation::initialize() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	playerManager = new PlayerManager(_this.getReferenceUnsafeStaticCast(), processor);
+	playerManager = new PlayerManager(_this.getReferenceUnsafeStaticCast(), processor, true);
 	playerManager->deploy("PlayerManager");
 
 	chatManager->setPlayerManager(playerManager);

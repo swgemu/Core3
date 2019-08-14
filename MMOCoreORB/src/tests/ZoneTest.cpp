@@ -130,7 +130,7 @@ TEST_F(ZoneTest, GalaxyList) {
 }
 
 TEST_F(ZoneTest, PlayerManager) {
-	playerManager = new PlayerManager( zoneServer, processServer );
+	playerManager = new PlayerManager( zoneServer, processServer, false);
 }
 
 TEST_F(ZoneTest, TreLoad) {
