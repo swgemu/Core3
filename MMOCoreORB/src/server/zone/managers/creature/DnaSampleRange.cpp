@@ -38,10 +38,11 @@ String DnaSampleRange::toString() {
 	buffer.append("VLQ ").append("[").append(vlqMax).append("-").append(vlqMin).append("]\n");
 	return buffer.toString();
 }
-bool DnaSampleRange::inRange(int amount) {
+bool DnaSampleRange::inRange(int amount) const {
 	return amount >= vlqMin && amount <= vhqMax;
 }
-int DnaSampleRange::generateValue(int quality){
+
+int DnaSampleRange::generateValue(int quality) const {
 	uint32 max,min;
 	switch(quality) {
 		case VHQ: {
@@ -83,7 +84,9 @@ int DnaSampleRange::generateValue(int quality){
 			return 0;
 		}
 	}
+
 	if (max > 1000)
 		max = 1000;
+
 	return (int)(System::random(max-min) + min);
 }

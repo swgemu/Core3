@@ -21,6 +21,8 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 
 	databases = new Vector<Database*>();
 
+	const static int DEFAULT_SERVERDATABASE_INSTANCES = configManager->getInt("Core3.DBInstances", 8);
+
 	for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
 		Database* db = new server::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
 		db->connect(dbName, dbUser, dbPass, dbPort);
