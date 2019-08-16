@@ -158,17 +158,36 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 	Timer loadTimer;
 	loadTimer.start();
 
+	Timer initialQueryPerf;
+	initialQueryPerf.start();
+
+	Timer iteratorPerf;
+
 	if (iterator.setKeyAndGetValue(zoneHash, objectID, nullptr)) {
+		initialQueryPerf.stop();
+
 		loadFunction(i, objectID, zoneHash);
 
+		iteratorPerf.start();
+
 		while (iterator.getNextKeyAndValue(zoneHash, objectID, nullptr)) {
+			iteratorPerf.stop();
+
 			loadFunction(i, objectID, zoneHash);
+
+			iteratorPerf.start();
 		}
+
+		iteratorPerf.stop();
 	}
 
 	auto elapsedMs = loadTimer.stopMs();
 
-	info(String::valueOf(i) + " player structures loaded for " + zoneName + " in " + String::valueOf(elapsedMs) + " ms.", i > 0);
+	info(String::valueOf(i) + " player structures loaded for "
+			+ zoneName + " in "
+			+ String::valueOf(elapsedMs) + "ms "
+			+ "where the initial query took " + String::valueOf(initialQueryPerf.getTotalTimeMs()) + "ms "
+			+ "and iterator took " + String::valueOf(iteratorPerf.getTotalTimeMs()) + "ms.", i > 0);
 }
 
 int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {

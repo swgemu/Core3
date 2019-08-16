@@ -45,9 +45,10 @@ public:
 		LQ  = 6,
 		VLQ = 7
 	};
-	int generateValue(int quality);
+
+	int generateValue(int quality) const;
 	String toString();
-	bool inRange(int amount);
+	bool inRange(int amount) const;
 };
 
 }

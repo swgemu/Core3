@@ -20,8 +20,6 @@ public:
 	ServerDatabase(conf::ConfigManager* configManager);
 	~ServerDatabase();
 
-	const static int DEFAULT_SERVERDATABASE_INSTANCES = 8;
-
 	inline static Database* instance() {
 		if (databases == nullptr)
 			throw DatabaseException("No Server Database initiated");
@@ -33,7 +31,7 @@ public:
 		return databases->get(i);
 	}
 
-	inline int getSchemaVersion() {
+	inline int getSchemaVersion() const {
 		return dbSchemaVersion;
 	}
 private:
