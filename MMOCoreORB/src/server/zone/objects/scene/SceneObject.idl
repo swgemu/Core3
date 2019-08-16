@@ -151,6 +151,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	public native void initializePrivateData();
 
+	@dirty
 	public void initializeContainerObjectsMap() {
 		containerObjects.setContainer(asSceneObject());
 	}
@@ -162,6 +163,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
 	 */
 	@local
+	@dirty
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
 
 	/**
@@ -176,6 +178,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		//TODO: Move container clone and other sceno cases here
 	}
 
+	@dirty
 	public abstract native void createComponents();
 	public abstract native void createContainerComponent();
 	public abstract native void createObjectMenuComponent();
@@ -1131,6 +1134,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return containerObjects.contains(objectID);
 	}
 
+	@dirty
 	public native boolean hasObjectInSlottedContainer(SceneObject object) ;
 
 	@dirty
@@ -1151,6 +1155,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		containerObjects.removeElementAt(index);
 	}
 
+	@read
 	public long getLastContainerAccess() {
 		return containerObjects.getLastAccess().miliDifference();
 	}
@@ -1159,11 +1164,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		containerObjects.unloadObjects();
 	}
 
+	@dirty
 	public boolean isContainerLoaded() {
 		return containerObjects.isLoaded();
 	}
 
 	// Gets called when delayed-load containerObjects is loaded
+	@dirty
 	public native abstract void onContainerLoaded();
 
 	public void setContainerVolumeLimit(int lim) {
@@ -1245,8 +1252,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@weakReference
 	public native SceneObject getParent();
 
+	@dirty
 	public native void setParent(QuadTreeEntry entry);
 
+	@dirty
 	public native void setParent(QuadTreeEntry entry, boolean updateRecursively);
 
 	@read
@@ -1803,19 +1812,23 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		containerPermissions.setDenyPermission(group, perm);
 	}
 
+	@dirty
 	public void setGameObjectType(unsigned int type) {
 		gameObjectType = type;
 	}
 
+	@dirty
 	public void setClientObjectCRC(unsigned int objCRC) {
 		clientObjectCRC = objCRC;
 	}
 
+	@dirty
 	public void setServerObjectCRC(unsigned int objCRC) {
 		serverObjectCRC = objCRC;
 	}
 
 	@local
+	@dirty
 	public void setZoneProcessServer(ZoneProcessServer srv) {
 		server = srv;
 	}
@@ -1854,6 +1867,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		containmentType = type;
 	}
 
+	@dirty
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
 	}

@@ -92,7 +92,7 @@ namespace server {
    			}
    		}
 
-   		AtomicTime* getLastAccess() {
+   		const AtomicTime* getLastAccess() const {
    			return &lastAccess;
    		}
 
