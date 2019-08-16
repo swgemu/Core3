@@ -405,6 +405,8 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 				Locker locker(obj);
 
 				zone->transferObject(obj, -1, true);
+
+				obj->_setUpdated(false);
 			}
 		};
 

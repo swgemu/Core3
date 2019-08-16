@@ -687,6 +687,10 @@ void ServerCore::handleCommands() {
 				}
 			} else if (command == "dumpcfg" || command == "dumpconfig") {
 				ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
+			} else if (command == "toggleModifiedObjectsDump") {
+				DOBObjectManager::setDumpLastModifiedTraces(!DOBObjectManager::getDumpLastModifiedTraces());
+
+				System::out << "dump last modified traces set to " << DOBObjectManager::getDumpLastModifiedTraces();
 			} else {
 				System::out << "unknown command (" << command << ")\n";
 			}
