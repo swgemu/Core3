@@ -2870,7 +2870,7 @@ void FrsManagerImplementation::handleArenaChallengeViewSui(CreatureObject* playe
 	if (getTotalOpenArenaChallenges(rank) <= 0)
 		return;
 
-	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
+	const VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 
 	clocker.release();
 
@@ -2943,7 +2943,7 @@ void FrsManagerImplementation::handleArenaChallengeViewSui(CreatureObject* playe
 }
 
 int FrsManagerImplementation::getTotalOpenArenaChallenges(int rank) {
-	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
+	const VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 
 	if (arenaChallenges->size() == 0)
 		return 0;
@@ -2977,7 +2977,7 @@ bool FrsManagerImplementation::playerAbleToChallenge(CreatureObject* player) {
 
 bool FrsManagerImplementation::hasPlayerAcceptedArenaChallenge(CreatureObject* player) {
 	uint64 playerID = player->getObjectID();
-	VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
+	const VectorMap<uint64, ManagedReference<ArenaChallengeData*> >* arenaChallenges = managerData->getArenaChallenges();
 
 	if (arenaChallenges->size() == 0)
 		return false;

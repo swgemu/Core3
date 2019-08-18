@@ -73,6 +73,33 @@ include_directories(${OPENSSL_INCLUDE_DIR})
 find_package(ZLIB REQUIRED)
 include_directories(${ZLIB_INCLUDE_DIRS})
 
+macro(check_cxx_linker_flag _Flag _Var)
+	set(old_link_libs "${CMAKE_REQUIRED_LIBRARIES}")
+	set(CMAKE_REQUIRED_LIBRARIES ${old_link_libs} "${_Flag}")
+	check_cxx_compiler_flag("${_Flag}" ${_Var})
+	set(CMAKE_REQUIRED_LIBRARIES "${old_link_libs}")
+endmacro()
+
+check_cxx_linker_flag("-fuse-ld=lld" LLD_LINKER_SUPPORTED)
+check_cxx_linker_flag("-fuse-ld=gold" GOLD_LINKER_SUPPORTED)
+check_cxx_compiler_flag("-Wl,-z,defs" WL_ZDEFS_SUPPORTED)
+
+if(LLD_LINKER_SUPPORTED)
+	set(LINKER_IS_LLD 1 CACHE INTERNAL "use lld linker")
+elseif(GOLD_LINKER_SUPPORTED)
+	set(LINKER_IS_GOLD 1 CACHE INTERNAL "use gold linker")
+endif()
+
+if(LINKER_IS_GOLD)
+	check_cxx_linker_flag("-fuse-ld=gold -Wl,--threads -Wl,--thread-count,2" LINKER_THREADS_SUPPORTED)
+	check_cxx_linker_flag("-fuse-ld=gold -Wl,--gdb-index" GDB_INDEX_SUPPORTED)
+elseif(LINKER_IS_LLD)
+	check_cxx_linker_flag("-fuse-ld=lld -Wl,--threads" LINKER_THREADS_SUPPORTED)
+	check_cxx_linker_flag("-fuse-ld=lld -Wl,--gdb-index" GDB_INDEX_SUPPORTED)
+endif()
+
+include(UseGold)
+
 # Find and set -pthreads
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
