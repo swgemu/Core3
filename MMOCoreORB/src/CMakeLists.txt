@@ -131,7 +131,9 @@ if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND 
 	target_link_libraries(core3 ${JEMALLOC_LIBRARIES})
 endif()
 
-use_gold(core3)
+if(ENABLE_MULTITHREADED_LINKER)
+	use_gold(core3)
+endif(ENABLE_MULTITHREADED_LINKER)
 
 if(ENABLE_ODB)
 target_link_libraries(odb3
