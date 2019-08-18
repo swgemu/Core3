@@ -218,11 +218,11 @@ void TemplateManager::loadSlotDefinitions() {
 
 	delete iffStream;
 
-	info("Loaded " + String::valueOf(slotDefinitions.size()) + " slot definitions.", true);
+	info("Loaded " + String::valueOf(slotDefinitions.size()) + " slot definitions.");
 }
 
 void TemplateManager::loadAssetCustomizationManager() {
-	info("loading asset customization manager", true);
+	info("loading asset customization manager");
 
 	IffStream* iffStream = openIffFile("customization/asset_customization_manager.iff");
 
@@ -373,12 +373,11 @@ void TemplateManager::loadPlanetMapCategories() {
 		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
 	}
 
-	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories.", true);
+	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories.");
 }
 
 void TemplateManager::loadLuaTemplates() {
-
-	if( loadedTemplatesCount > 0 ) {
+	if (loadedTemplatesCount > 0) {
 		error("Templates already loaded");
 		return;
 	}
@@ -400,9 +399,9 @@ void TemplateManager::loadLuaTemplates() {
 	printf("\n");
 	info("Finished loading object templates", true);
 
-	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
-	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
-	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);
+	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded");
+	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded");
+	info(String::valueOf(structureFootprints.size()) + " structure footprints.");
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
