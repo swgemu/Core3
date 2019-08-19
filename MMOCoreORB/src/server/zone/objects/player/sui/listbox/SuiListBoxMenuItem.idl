@@ -8,18 +8,20 @@ import engine.core.ManagedObject;
 
 class SuiListBoxMenuItem extends ManagedObject {
 	protected string optionName;
-	
+
 	protected unsigned long objectID;
-	
+
 	public SuiListBoxMenuItem(final string name, unsigned long oid = 0) {
 		optionName = name;
 		objectID = oid;
 	}
-	
+
+	@read
 	public unsigned long getObjectID() {
 		return objectID;
 	}
-	
+
+	@read
 	public string getOptionName() {
 		return optionName;
 	}

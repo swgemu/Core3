@@ -38,50 +38,50 @@ public:
 
 	void run();
 
-	inline void getRaceFile(String& file) {
+	inline void getRaceFile(String& file) const {
 		file = racefile;
 	}
 
-	inline void getCustomizationString(String& customizationString) {
+	inline void getCustomizationString(String& customizationString) const {
 		customizationString = customization;
 	}
 
-	inline void getLocation(String& location) {
+	inline void getLocation(String& location) const {
 		location = ClientCreateCharacterCallback::location;
 	}
 
-	inline void getHairObject(String& hair) {
+	inline void getHairObject(String& hair) const {
 		hair = hairobj;
 	}
 
-	inline void getHairCustomization(String& hairCustomization) {
+	inline void getHairCustomization(String& hairCustomization) const {
 		hairCustomization = haircust;
 	}
 
-	inline void getSkill(String& profession) {
+	inline void getSkill(String& profession) const {
 		profession = this->profession;
 	}
 
-	inline float getHeight() {
+	inline float getHeight() const {
 		return height;
 	}
 
-	inline void getBiography(UnicodeString& biography) {
+	inline void getBiography(UnicodeString& biography) const {
 		biography = bio;
 	}
 
-	inline bool getTutorialFlag() {
+	inline bool getTutorialFlag() const {
 		if (tutflag)
 			return true;
 		else
 			return false;
 	}
 
-	inline void getCharacterName(UnicodeString& name) {
+	inline void getCharacterName(UnicodeString& name) const {
 		name = characterName;
 	}
 
-	inline int getSpecies() {
+	inline int getSpecies() const {
 		return species;
 	}
 };

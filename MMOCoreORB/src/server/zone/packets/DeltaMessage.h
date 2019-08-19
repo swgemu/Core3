@@ -10,7 +10,7 @@
 
 class DeltaMessage : public BaseMessage {
 	int updateCount;
-	
+
 public:
 	DeltaMessage(uint64 oid, uint32 name, uint8 type) {
 		insertShort(0x05);
@@ -21,7 +21,7 @@ public:
 		insertInt(0);
 
 		setCompression(true);
-	
+
 		updateCount = 0;
 		insertShort(updateCount);
 	}
@@ -74,13 +74,13 @@ public:
 		startUpdate(type);
 		insertFloat(value);
 	}
-	
+
 	inline void addAsciiUpdate(uint16 type, const String& val) {
 		startUpdate(type);
 		insertAscii(val.toCharArray());
 	}
 
-	inline void addStringIdUpdate(uint16 type, StringId& val) {
+	inline void addStringIdUpdate(uint16 type, const StringId& val) {
 		startUpdate(type);
 		insertAscii(val.getFile());
 		insertInt(0);
@@ -108,7 +108,7 @@ public:
 		insertShort(index);
 		insertInt(value);
 	}
-	
+
 	inline void addListFloatElement(uint16 index, float value) {
 		insertByte(0x01);
 		insertShort(index);
@@ -131,7 +131,7 @@ public:
 		insertShort(index);
 		insertInt(value);
 	}
-	
+
 	inline void removeListFloatElement(uint16 index, float value) {
 		insertByte(0x02);
 		insertShort(index);
@@ -158,7 +158,7 @@ public:
 		insertInt(23, size() - 27);
 		insertShort(27, updateCount);
 	}
-	
+
 };
 
 #endif /*DELTAMESSAGE_H_*/

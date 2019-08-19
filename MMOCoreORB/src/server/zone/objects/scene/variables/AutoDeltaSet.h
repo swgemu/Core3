@@ -92,7 +92,7 @@ public:
 		}
 	}
 
-	virtual void insertToMessage(BaseMessage* msg) {
+	virtual void insertToMessage(BaseMessage* msg) const {
 		msg->insertInt(size());
 		msg->insertInt(getUpdateCounter());
 
@@ -105,19 +105,19 @@ public:
 		}
 	}
 
-	inline bool contains(const K& key) {
+	inline bool contains(const K& key) const {
 		return set.contains(key);
 	}
 
-	inline int size() {
+	inline int size() const {
 		return set.size();
 	}
 
-	inline uint32 getUpdateCounter() {
+	inline uint32 getUpdateCounter() const {
 		return updateCounter;
 	}
 
-	inline HashSetIterator<K> getIterator() {
+	inline HashSetIterator<K> getIterator() const {
 		return set.iterator();
 	}
 };

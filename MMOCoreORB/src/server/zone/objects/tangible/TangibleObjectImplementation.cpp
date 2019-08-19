@@ -723,7 +723,7 @@ int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageT
 	return returnValue;
 }
 
-void TangibleObjectImplementation::setObjectName(StringId& stringID, bool notifyClient) {
+void TangibleObjectImplementation::setObjectName(const StringId& stringID, bool notifyClient) {
 	objectName = stringID;
 
 	if (!notifyClient)

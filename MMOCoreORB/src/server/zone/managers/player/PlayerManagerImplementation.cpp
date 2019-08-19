@@ -1081,7 +1081,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	ghost->addIncapacitationTime();
 
-	DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
+	const DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
 
 	bool isDefender = false;
 

@@ -27,7 +27,7 @@ public:
 		insertInt(23, size() - 27);
 	}
 
-	inline void insertStringId(StringId* id) {
+	inline void insertStringId(const StringId* id) {
 		insertAscii(id->getFile());
 		insertInt(0);
 		insertAscii(id->getStringID());

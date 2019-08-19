@@ -2286,7 +2286,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, ChildObject* child, CreatureObject* creature, Deed* deed) {
 	Vector3 position = building->getPosition();
 
-	Quaternion* direction = building->getDirection();
+	const Quaternion* direction = building->getDirection();
 	Vector3 childPosition = child->getPosition();
 	float angle = direction->getRadians();
 

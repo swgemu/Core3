@@ -11,10 +11,10 @@
 
 class SceneObjectCreateMessage : public BaseMessage {
 public:
-	SceneObjectCreateMessage(SceneObject* scno) : BaseMessage() {
+	SceneObjectCreateMessage(const SceneObject* scno) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xFE89DDEA);  // CRC
-		insertLong(scno->getObjectID());  // ObjectID
+		insertLong(const_cast<SceneObject*>(scno)->getObjectID());  // ObjectID
 		insertFloat(scno->getDirectionX());
 		insertFloat(scno->getDirectionY());
 		insertFloat(scno->getDirectionZ());

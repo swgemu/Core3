@@ -194,7 +194,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this locked }
 	 */
 	@local
-	public native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);
+	public native void setObjectName(@dereferenced final StringId stringID, boolean notifyClient);
 
 	/**
 	 * Updates the custom name of the object
@@ -566,15 +566,15 @@ class TangibleObject extends SceneObject {
 	}
 
 	@local
-	@dirty
+	@read
 	@preLocked
-	public DeltaVector<SceneObject> getDefenderList() {
+	public final DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
 	}
 
 	@local
-	@dirty
-	public AutoDeltaSet<int> getVisibleComponents() {
+	@read
+	public final AutoDeltaSet<int> getVisibleComponents() {
 		return visibleComponents;
 	}
 

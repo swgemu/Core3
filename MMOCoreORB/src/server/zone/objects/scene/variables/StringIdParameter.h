@@ -81,8 +81,8 @@ public:
 		j["customName"] = p.customName;
 	}
 
-	void set(StringId* sid);
-	void set(StringId& sid);
+	void set(const StringId* sid);
+	void set(const StringId& sid);
 
 	void clear() {
 		stringID.clear();
@@ -127,7 +127,7 @@ public:
 		return pointerParameter;
 	}
 
-	inline UnicodeString& getUnicodeParameter() {
+	inline const UnicodeString& getUnicodeParameter() const {
 		return customName;
 	}
 
@@ -139,11 +139,11 @@ public:
 		}
 	}
 
-	inline String getFileParameter() const {
+	inline const String& getFileParameter() const {
 		return stringID.getFile();
 	}
 
-	inline String getStringIDParameter() const {
+	inline const String& getStringIDParameter() const {
 		return stringID.getStringID();
 	}
 

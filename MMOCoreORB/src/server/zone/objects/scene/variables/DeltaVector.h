@@ -175,7 +175,7 @@ public:
 		return vector.get(index);
 	}
 
-	E getSafe(int index) {
+	E getSafe(int index) const {
 		ReadLocker locker(getLock());
 
 		E obj = vector.get(index);

@@ -1278,6 +1278,6 @@ void CityRegionImplementation::cleanupMissionTerminals(int limit) {
 	}
 }
 
-uint64 CityRegionImplementation::getObjectID() {
+uint64 CityRegionImplementation::getObjectID() const {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }

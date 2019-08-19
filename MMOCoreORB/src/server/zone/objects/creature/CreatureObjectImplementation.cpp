@@ -3544,8 +3544,8 @@ bool CreatureObjectImplementation::hasDotImmunity(uint32 dotType) {
 	return false;
 }
 
-int CreatureObjectImplementation::getSpecies() {
-	SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
+int CreatureObjectImplementation::getSpecies() const {
+	const SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
 
 	if (creoData == nullptr)
 		return -1;

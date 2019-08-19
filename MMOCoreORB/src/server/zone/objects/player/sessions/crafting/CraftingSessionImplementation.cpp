@@ -5,6 +5,7 @@
  *      Author: Kyle
  */
 
+#include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -1065,10 +1066,12 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	UnicodeString customName(newName);
 	prototype->setCustomObjectName(customName, false);
 
-	/// Set Name
-	manufactureSchematic->getObjectName()->setStringId(
+	auto newObjectName = server::zone::objects::scene::variables::StringId(
 			prototype->getObjectNameStringIdFile(),
 			prototype->getObjectNameStringIdName());
+
+	/// Set Name
+	manufactureSchematic->setObjectName(newObjectName, false);
 
 	/// Set Manufacture Schematic Custom name
 	if (!newName.isEmpty())

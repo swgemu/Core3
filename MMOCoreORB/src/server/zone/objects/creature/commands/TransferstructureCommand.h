@@ -107,7 +107,7 @@ public:
 
 		PlayerObject* ghost = targetCreature->getPlayerObject();
 
-		String& abilityRequired = tmpl->getAbilityRequired();
+		const String& abilityRequired = tmpl->getAbilityRequired();
 
 		if (abilityRequired != "" && !ghost->hasAbility(abilityRequired)) {
 			StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
