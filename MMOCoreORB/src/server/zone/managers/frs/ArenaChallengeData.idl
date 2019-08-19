@@ -29,6 +29,7 @@ class ArenaChallengeData extends ManagedObject {
 		challengeStart.updateToCurrentTime();
 	}
 
+	@read
 	public unsigned long getChallengeStart() {
 		return challengeStart.getMiliTime();
 	}
@@ -42,14 +43,17 @@ class ArenaChallengeData extends ManagedObject {
 		challengeAccepterID = newID;
 	}
 
+	@read
 	public unsigned long getChallengerID() {
 		return challengerID;
 	}
 
+	@read
 	public int getChallengeRank() {
 		return challengeRank;
 	}
 
+	@read
 	public boolean isChallengeCompleted() {
 		return challengeCompleted;
 	}

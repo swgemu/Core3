@@ -131,6 +131,10 @@ if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND 
 	target_link_libraries(core3 ${JEMALLOC_LIBRARIES})
 endif()
 
+if(ENABLE_MULTITHREADED_LINKER)
+	use_gold(core3)
+endif(ENABLE_MULTITHREADED_LINKER)
+
 if(ENABLE_ODB)
 target_link_libraries(odb3
 	${ENGINE3_LIBRARIES}
@@ -139,6 +143,10 @@ target_link_libraries(odb3
 if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND AND ENABLE_JEMALLOC_LINK)
 	target_link_libraries(odb3 ${JEMALLOC_LIBRARIES})
 endif()
+
+if(ENABLE_MULTITHREADED_LINKER)
+	use_gold(odb3)
+endif(ENABLE_MULTITHREADED_LINKER)
 
 # Copy core3 binary
 add_custom_command(

@@ -229,6 +229,7 @@ class QuadTreeEntry extends Observable {
 		coordinates.setPosition(x, z, y);
 	}
 
+	@dirty
 	public void initializePosition(float x, float z, float y) {
 		coordinates.initializePosition(x, z, y);
 	}
@@ -303,6 +304,7 @@ class QuadTreeEntry extends Observable {
 		bounding = false;
 	}
 
+	@dirty
 	public abstract void setParent(QuadTreeEntry par) {
 		parent = par;
 	}

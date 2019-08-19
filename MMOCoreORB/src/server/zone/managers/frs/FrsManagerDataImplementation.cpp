@@ -17,11 +17,11 @@ bool FrsManagerDataImplementation::hasChallengedRecently(uint64 playerID, uint64
 	return true;
 }
 
-uint64 FrsManagerDataImplementation::getChallengeTime(uint64 playerID) {
+uint64 FrsManagerDataImplementation::getChallengeTime(uint64 playerID) const {
 	return challengeTimes.get(playerID).getMiliTime();
 }
 
-uint64 FrsManagerDataImplementation::getChallengeDuration(uint64 playerID) {
+uint64 FrsManagerDataImplementation::getChallengeDuration(uint64 playerID) const {
 	return (Time().getMiliTime() - getChallengeTime(playerID));
 }
 
@@ -42,11 +42,11 @@ bool FrsManagerDataImplementation::hasDemotedRecently(uint64 playerID, uint64 de
 	return true;
 }
 
-uint64 FrsManagerDataImplementation::getDemoteTime(uint64 playerID) {
+uint64 FrsManagerDataImplementation::getDemoteTime(uint64 playerID) const {
 	return demoteTimes.get(playerID).getMiliTime();
 }
 
-uint64 FrsManagerDataImplementation::getDemoteDuration(uint64 playerID) {
+uint64 FrsManagerDataImplementation::getDemoteDuration(uint64 playerID) const {
 	return (Time().getMiliTime() - getDemoteTime(playerID));
 }
 

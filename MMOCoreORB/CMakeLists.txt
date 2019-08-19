@@ -43,9 +43,12 @@ option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
+option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" ON)
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
+include(UseGold)
 
 find_package(Git QUIET)
 
@@ -72,6 +75,33 @@ include_directories(${OPENSSL_INCLUDE_DIR})
 
 find_package(ZLIB REQUIRED)
 include_directories(${ZLIB_INCLUDE_DIRS})
+
+if(ENABLE_MULTITHREADED_LINKER)
+	macro(check_cxx_linker_flag _Flag _Var)
+		set(old_link_libs "${CMAKE_REQUIRED_LIBRARIES}")
+		set(CMAKE_REQUIRED_LIBRARIES ${old_link_libs} "${_Flag}")
+		check_cxx_compiler_flag("${_Flag}" ${_Var})
+		set(CMAKE_REQUIRED_LIBRARIES "${old_link_libs}")
+	endmacro()
+
+	check_cxx_linker_flag("-fuse-ld=lld" LLD_LINKER_SUPPORTED)
+	check_cxx_linker_flag("-fuse-ld=gold" GOLD_LINKER_SUPPORTED)
+	check_cxx_compiler_flag("-Wl,-z,defs" WL_ZDEFS_SUPPORTED)
+
+	if(LLD_LINKER_SUPPORTED)
+		set(LINKER_IS_LLD 1 CACHE INTERNAL "use lld linker")
+	elseif(GOLD_LINKER_SUPPORTED)
+		set(LINKER_IS_GOLD 1 CACHE INTERNAL "use gold linker")
+	endif()
+
+	if(LINKER_IS_GOLD)
+		check_cxx_linker_flag("-fuse-ld=gold -Wl,--threads -Wl,--thread-count,2" LINKER_THREADS_SUPPORTED)
+		check_cxx_linker_flag("-fuse-ld=gold -Wl,--gdb-index" GDB_INDEX_SUPPORTED)
+	elseif(LINKER_IS_LLD)
+		check_cxx_linker_flag("-fuse-ld=lld -Wl,--threads" LINKER_THREADS_SUPPORTED)
+		check_cxx_linker_flag("-fuse-ld=lld -Wl,--gdb-index" GDB_INDEX_SUPPORTED)
+	endif()
+endif(ENABLE_MULTITHREADED_LINKER)
 
 # Find and set -pthreads
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
