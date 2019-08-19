@@ -43,16 +43,16 @@ public:
 	void removeRewardedSchematic(DraftSchematic* schematic);
 	bool decreaseSchematicUseCount(DraftSchematic* schematic);
 
-	bool contains(DraftSchematic* schematic);
-	bool contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
-	DraftSchematic* searchForDuplicate(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
+	bool contains(DraftSchematic* schematic) const;
+	bool contains(const Vector<ManagedReference<DraftSchematic*>>& filteredschematics, DraftSchematic* schematic) const;
+	DraftSchematic* searchForDuplicate(const Vector<ManagedReference<DraftSchematic*>>& filteredschematics, DraftSchematic* schematic) const;
 
-	bool toBinaryStream(ObjectOutputStream* stream);
-	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool toBinaryStream(ObjectOutputStream* stream) override;
+	bool parseFromBinaryStream(ObjectInputStream* stream) override;
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel);
+	Vector<ManagedReference<DraftSchematic*>> filterSchematicList(CreatureObject* player, const Vector<uint32>* enabledTabs, int complexityLevel) const;
 
-	void insertToMessage(BaseMessage* msg);
+	void insertToMessage(BaseMessage* msg) const override;
 };
 
 

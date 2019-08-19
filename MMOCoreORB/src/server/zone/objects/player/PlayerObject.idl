@@ -442,6 +442,7 @@ class PlayerObject extends IntangibleObject {
 
 	public native void unload();
 
+	@dirty
 	public native int calculateBhReward();
 
 	@local
@@ -596,21 +597,23 @@ class PlayerObject extends IntangibleObject {
 	 * Gets the first waypoint of a special type from this player
 	 * @param specialTypeID id of special type to find
 	 */
-	@dirty
+	@read
 	public native WaypointObject getWaypointBySpecialType(int specialTypeID);
 
-	@dirty
+	@read
 	public native WaypointObject getSurveyWaypoint();
 
+	@read
 	public boolean hasWaypoint(unsigned long objectID) {
 		return waypointList.contains(objectID);
 	}
 
+	@read
 	public WaypointObject getWaypointAt(float x, float y, string planet) {
 		return waypointList.getWaypointAt(x, y, planet);
 	}
 
-	@dirty
+	@read
 	@local
 	public void insertWaypointListToMessage(BaseMessage msg) {
 		waypointList.insertToMessage(msg);
@@ -828,7 +831,7 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native PlayerQuestData getQuestData(unsigned int questHashCode);
 
-	@dirty
+	@read
 	public boolean hasQuestData(unsigned int questHashCode) {
 		return playerQuestsData.contains(questHashCode);
 	}
@@ -854,17 +857,17 @@ class PlayerObject extends IntangibleObject {
 		lastNpcConvoMessage = mess;
 	}
 
-	@dirty
+	@read
 	public string getLastNpcConvStr() {
 		return lastNpcConvo;
 	}
 
-	@dirty
+	@read
 	public string getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
 	}
 
-	@dirty
+	@read
 	public string getLastNpcConvOption(int idx) {
 		return lastNpcConvoOptions.get(idx);
 	}
@@ -873,7 +876,7 @@ class PlayerObject extends IntangibleObject {
 		lastNpcConvoOptions.add(option);
 	}
 
-	@dirty
+	@read
 	public int countLastNpcConvOptions() {
 		return lastNpcConvoOptions.size();
 	}
@@ -889,7 +892,7 @@ class PlayerObject extends IntangibleObject {
 			conversatingCreature = creature.getObjectID();
 	}
 
-	@dirty
+	@read
 	public unsigned long getConversatingCreature() {
 		return conversatingCreature;
 	}
@@ -906,7 +909,7 @@ class PlayerObject extends IntangibleObject {
 		trainerZoneName = zoneName;
 	}
 
-	@dirty
+	@read
 	public string getTrainerZoneName() {
 		return trainerZoneName;
 	}
@@ -934,6 +937,7 @@ class PlayerObject extends IntangibleObject {
 		consentList.put(name);
 	}
 
+	@read
 	public boolean hasInConsentList(final string name) {
 		return consentList.contains(name);
 	}
@@ -942,23 +946,22 @@ class PlayerObject extends IntangibleObject {
 		consentList.drop(name);
 	}
 
-	@dirty
+	@read
 	public string getConsentName(int i) {
 		return consentList.get(i);
 	}
 
-	@dirty
+	@read
 	public int getConsentListSize() {
 		return consentList.size();
 	}
 
-	@dirty
+	@read
 	public int getReactionFines() {
 		return reactionFines;
 	}
 
-	@local
-	@dirty
+	@read
 	public string getFactionRank() {
 		return factionStandingList.getFactionRank();
 	}
@@ -1050,7 +1053,7 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native unsigned int getNewSuiBoxID(unsigned int type);
 
-	@dirty
+	@read
 	public boolean hasSuiBox(unsigned int boxID) {
 		return suiBoxes.contains(boxID);
 	}
@@ -1161,12 +1164,12 @@ class PlayerObject extends IntangibleObject {
 		return duelList.contains(targetPlayer);
 	}
 
-	@dirty
+	@read
 	public boolean isDuelListEmpty() {
 		return duelList.isEmpty();
 	}
 
-	@dirty
+	@read
 	public int getDuelListSize() {
 		return duelList.size();
 	}
@@ -1185,12 +1188,12 @@ class PlayerObject extends IntangibleObject {
 		return activePets.get(index);
 	}
 
-	@dirty
+	@read
 	public boolean hasActivePet(AiAgent pet) {
 		return activePets.contains(pet);
 	}
 
-	@dirty
+	@read
 	public int getActivePetsSize() {
 		return activePets.size();
 	}
@@ -1235,7 +1238,7 @@ class PlayerObject extends IntangibleObject {
 		return badges.getTypeCount(type);
 	}
 
-	@dirty
+	@read
 	public boolean hasFriend(final string name) {
 		return friendList.contains(name);
 	}
@@ -1270,7 +1273,7 @@ class PlayerObject extends IntangibleObject {
 		return abilityList.contains(ability);
 	}
 
-	@dirty
+	@read
 	public boolean hasCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.contains(actionCRC);
 	}
@@ -1411,13 +1414,14 @@ class PlayerObject extends IntangibleObject {
 		return schematicList;
 	}
 
-	@dirty
+	@read
 	public DraftSchematic getSchematic(int i) {
 		return schematicList.get(i);
 	}
 
 	@local
 	@dereferenced
+	@dirty
 	public native Vector<DraftSchematic> filterSchematicList(CreatureObject player, Vector<unsigned int> enabledTabs, int complexityLevel);
 
 	@read
@@ -1499,7 +1503,7 @@ class PlayerObject extends IntangibleObject {
 		return ignoreList;
 	}
 
-	@dirty
+	@read
 	public int getExperience(final string xp) {
 		if (experienceList.contains(xp)) {
 			return experienceList.get(xp);
@@ -1582,6 +1586,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@local
+	@dirty
 	public ValidatedPosition getLastValidatedPosition() {
 		return lastValidatedPosition;
 	}
@@ -1689,14 +1694,17 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	@local
+	@read
 	public native Time getLastVisibilityUpdateTimestamp();
 
 	@dereferenced
 	@local
+	@read
 	public native Time getLastBhPvpCombatActionTimestamp();
 
 	@dereferenced
 	@local
+	@read
 	public native Time getLastGcwPvpCombatActionTimestamp();
 
 	public native void updateLastPvpCombatActionTimestamp(boolean updateGcwAction, boolean updateBhAction);
@@ -1889,7 +1897,7 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native int getSpentJediSkillPoints();
 
-	@dirty
+	@read
 	public native boolean hasSchematic(DraftSchematic schematic) {
 		return schematicList.contains(schematic);
 	}
@@ -1959,9 +1967,9 @@ class PlayerObject extends IntangibleObject {
 		return sessionStatsTotalMovement;
 	}
 
-	@dirty
+	@read
 	public native string getMiliSecsTimeString(unsigned long miliSecs, boolean verbose = false);
 
-	@dirty
+	@read
 	public native string getPlayedTimeString(boolean verbose = false);
 }
