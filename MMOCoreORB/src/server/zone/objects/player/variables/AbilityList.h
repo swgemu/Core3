@@ -27,15 +27,15 @@ private:
 	void loadFromNames(Vector<String>& abilities);
 
 public:
-	bool add(Ability* ability, DeltaMessage* message = NULL, int updates = 1);
+	bool add(Ability* const& ability, DeltaMessage* message = NULL, int updates = 1) override;
 	bool contains(const String& element) const;
 
-	bool toBinaryStream(ObjectOutputStream* stream);
-	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool toBinaryStream(ObjectOutputStream* stream) override;
+	bool parseFromBinaryStream(ObjectInputStream* stream) override;
 
 	friend void to_json(nlohmann::json& j, const AbilityList& l);
 
-	void insertToMessage(BaseMessage* msg);
+	void insertToMessage(BaseMessage* msg) const override;
 };
 
 

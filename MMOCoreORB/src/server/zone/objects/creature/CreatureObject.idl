@@ -720,8 +720,8 @@ class CreatureObject extends TangibleObject {
 	public native void removeWearableObject(TangibleObject object, boolean notifyClient = true);
 
 	@local
-	@dirty
-	public WearablesDeltaVector getWearablesDeltaVector() {
+	@read
+	public final WearablesDeltaVector getWearablesDeltaVector() {
 		return wearablesVector;
 	}
 
@@ -1522,52 +1522,52 @@ class CreatureObject extends TangibleObject {
 		return creditObject.getCashCredits();
 	}
 
-	@dirty
+	@read
 	public int getBaseHAM(int idx) {
 		return baseHAM.get(idx);
 	}
 
-	@dirty
+	@read
 	public int getWounds(int idx) {
 		return wounds.get(idx);
 	}
 
 	@local
-	@dirty
-	public DeltaVector<int> getWounds() {
+	@read
+	public final DeltaVector<int> getWounds() {
 		return wounds;
 	}
 
-	@dirty
+	@read
 	public int getHAM(int idx) {
 		return hamList.get(idx);
 	}
 
-	@dirty
+	@read
 	@local
-	public DeltaVector<int> getHAM() {
+	public final DeltaVector<int> getHAM() {
 		return hamList;
 	}
 
-	@dirty
+	@read
 	public int getMaxHAM(int idx) {
 		return maxHamList.get(idx);
 	}
 
 	@local
-	@dirty
-	public DeltaVector<int> getMaxHAM() {
+	@read
+	public final DeltaVector<int> getMaxHAM() {
 		return maxHamList;
 	}
 
-	@dirty
+	@read
 	public int getEncumbrance(int idx) {
 		return encumbrances.get(idx);
 	}
 
 	@local
-	@dirty
-	public DeltaVector<int> getEncumbrances() {
+	@read
+	public final DeltaVector<int> getEncumbrances() {
 		return encumbrances;
 	}
 
@@ -1855,8 +1855,10 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native boolean hasDotImmunity(unsigned int dotType);
 
+	@dirty
 	public abstract native int getSpecies();
 
+	@dirty
 	public string getSpeciesName() {
 		int species = getSpecies();
 		if(species == 0)
@@ -1883,17 +1885,18 @@ class CreatureObject extends TangibleObject {
 			return "";
 	}
 
+	@read
 	public native int getGender();
 
 	@local
-	@dirty
-	public DeltaVector<int> getBaseHAM() {
+	@read
+	public final DeltaVector<int> getBaseHAM() {
 		return baseHAM;
 	}
 
 	@local
-	@dirty
-	public SkillList getSkillList() {
+	@read
+	public final SkillList getSkillList() {
 		return skillList;
 	}
 
@@ -1905,14 +1908,19 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 
-	@dirty
+	@read
 	public boolean hasSkill(final string skill) {
 		return skillList.containsSkill(skill);
 	}
 
 	@local
-	@dirty
 	public SkillModList getSkillModList() {
+		return skillModList;
+	}
+
+	@local
+	@read
+	public final SkillModList getSkillModList() {
 		return skillModList;
 	}
 

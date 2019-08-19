@@ -1442,6 +1442,7 @@ void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, b
 
 int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
 	Locker locker(&skillModMutex);
+
 	return skillModList.getSkillMod(skillmod);
 }
 
@@ -1844,9 +1845,11 @@ void CreatureObjectImplementation::updateTerrainNegotiation()
 }
 
 float CreatureObjectImplementation::getTerrainNegotiation() {
-    float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
-	if(slopeMod > 1)
+	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
+
+	if (slopeMod > 1)
 		slopeMod = 1;
+
 	return slopeMod;
 }
 
@@ -2101,7 +2104,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = SkillManager::instance();
 
-	SkillList* playerSkillList = getSkillList();
+	const SkillList* playerSkillList = getSkillList();
 
 	int totalSkillPointsWasted = 250;
 
@@ -3550,8 +3553,8 @@ int CreatureObjectImplementation::getSpecies() {
 	return creoData->getSpecies();
 }
 
-int CreatureObjectImplementation::getGender() {
-	SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
+int CreatureObjectImplementation::getGender() const {
+	const SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
 
 	if (creoData == nullptr)
 		return -1;

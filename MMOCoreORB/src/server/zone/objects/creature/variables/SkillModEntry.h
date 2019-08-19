@@ -46,7 +46,7 @@ public:
 		skillMod = mod;
 	}
 
-	int getSkillMod() {
+	int getSkillMod() const {
 		return skillMod;
 	}
 
@@ -54,11 +54,11 @@ public:
 		skillBonus = bonus;
 	}
 
-	int getSkillBonus() {
+	int getSkillBonus() const {
 		return skillBonus;
 	}
 
-	int getTotalSkill() {
+	int getTotalSkill() const {
 		return getSkillMod() + getSkillBonus();
 	}
 
