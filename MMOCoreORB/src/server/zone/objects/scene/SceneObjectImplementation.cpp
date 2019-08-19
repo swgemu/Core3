@@ -1085,8 +1085,8 @@ Zone* SceneObjectImplementation::getZone() {
 }
 
 
-Zone* SceneObjectImplementation::getZoneUnsafe() {
-	auto root = getRootParentUnsafe();
+Zone* SceneObjectImplementation::getZoneUnsafe() const {
+	auto root = const_cast<SceneObjectImplementation*>(this)->getRootParentUnsafe();
 
 	if (root != NULL) {
 		return root->getZoneUnsafe();
@@ -1277,7 +1277,7 @@ float SceneObjectImplementation::getWorldPositionZ() {
 	return root->getPositionZ() + getPositionZ();
 }
 
-uint32 SceneObjectImplementation::getPlanetCRC() {
+uint32 SceneObjectImplementation::getPlanetCRC() const {
 	if (getZoneUnsafe() == NULL)
 		return 0;
 

@@ -67,12 +67,12 @@ class ResourceContainer extends TangibleObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public int getQuantity() {
 		return stackQuantity;
 	}
 
-	@dirty
+	@read
 	public int getUseCount() {
 		return getQuantity();
 	}

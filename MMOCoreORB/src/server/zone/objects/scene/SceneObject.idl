@@ -939,7 +939,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public native Zone getZone();
 
-	@dirty
+	@read
 	public native Zone getZoneUnsafe();
 
 	@read
@@ -1884,7 +1884,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		staticObject = val;
 	}
 
-	@dirty
+	@read
 	public abstract native unsigned int getPlanetCRC();
 
 	@read
