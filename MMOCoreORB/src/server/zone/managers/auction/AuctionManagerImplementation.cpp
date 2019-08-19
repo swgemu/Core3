@@ -39,7 +39,7 @@ void AuctionManagerImplementation::initialize() {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	Core::getTaskManager()->initializeCustomQueue("AuctionSearchQueue", ConfigManager::instance()->getMaxAuctionSearchJobs(), false);
+	Core::getTaskManager()->initializeCustomQueue("AuctionSearchQueue", ConfigManager::instance()->getMaxAuctionSearchJobs(), true);
 
 	auctionMap = new AuctionsMap();
 
