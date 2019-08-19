@@ -3820,7 +3820,7 @@ void CreatureObjectImplementation::removePersonalEnemyFlag(uint64 enemyID) {
 		sendPvpStatusTo(enemy);
 }
 
-bool CreatureObjectImplementation::hasPersonalEnemyFlag(CreatureObject* enemy) {
+bool CreatureObjectImplementation::hasPersonalEnemyFlag(CreatureObject* enemy) const {
 	uint64 enemyOID = enemy->getObjectID();
 
 	if (!personalEnemyFlags.contains(enemyOID))

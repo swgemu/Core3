@@ -15,6 +15,7 @@ include server.zone.managers.auction.CommoditiesLimit;
 include engine.log.Logger;
 
 @json
+@dirty
 class AuctionsMap extends ManagedObject {
 
 	@dereferenced
@@ -51,11 +52,12 @@ class AuctionsMap extends ManagedObject {
 	private native void removeVendorItem(SceneObject vendor, AuctionItem item);
 	private native void removeBazaarItem(SceneObject vendor, AuctionItem item);
 
-
+	@dirty
 	public synchronized AuctionItem getItem(unsigned long id) {
 		return allItems.get(id);
 	}
 
+	@dirty
 	public synchronized boolean containsItem(unsigned long id) {
 		return allItems.contains(id);
 	}
@@ -88,10 +90,12 @@ class AuctionsMap extends ManagedObject {
 		return bazaarItemsForSale.size();
 	}
 
+	@read
 	public int getVendorCount() {
 		return vendorItemsForSale.size();
 	}
 
+	@read
 	public int getTotalItemCount() {
 		return allItems.size();
 	}

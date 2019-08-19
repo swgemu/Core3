@@ -2165,6 +2165,7 @@ class CreatureObject extends TangibleObject {
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
+	@read
 	public string getAlternateAppearance() {
 		return alternateAppearance;
 	}
@@ -2193,6 +2194,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public abstract native void destroyPlayerCreatureFromDatabase(boolean destroyContainedObjects = false);
 
+	@dirty
 	public native float getTemplateRadius();
 
 	@preLocked
@@ -2208,6 +2210,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void addPersonalEnemyFlag(CreatureObject enemy, unsigned long duration);
 
+	@read
 	public unsigned long getPersonalEnemyFlagTime(unsigned long enemyID) {
 		return personalEnemyFlags.get(enemyID);
 	}
@@ -2218,6 +2221,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void removePersonalEnemyFlag(unsigned long enemyID);
 
+	@read
 	public native boolean hasPersonalEnemyFlag(CreatureObject enemy);
 
 	@preLocked
@@ -2233,12 +2237,14 @@ class CreatureObject extends TangibleObject {
 
 	@local
 	@weakReference
+	@read
 	public AuctionSearchTask getAuctionSearchTask() {
 		return auctionSearch;
 	}
 
 	@preLocked
 	@local
+	@dirty
 	public void setAuctionSearchTask(AuctionSearchTask task) {
 		auctionSearch = task;
 	}
