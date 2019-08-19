@@ -183,7 +183,7 @@ public:
 		return obj;
 	}
 
-	E remove(int index, DeltaMessage* message = nullptr, int updates = 1) {
+	virtual E remove(int index, DeltaMessage* message = nullptr, int updates = 1) {
 		Locker locker(getLock());
 
 		E object = vector.remove(index);
@@ -210,7 +210,7 @@ public:
 		}
 	}
 
-	virtual void insertToMessage(BaseMessage* msg) {
+	virtual void insertToMessage(BaseMessage* msg) const {
 		ReadLocker locker(getLock());
 
 		msg->insertInt(size());
@@ -222,7 +222,7 @@ public:
 		}
 	}
 
-	virtual void insertItemToMessage(E* item, BaseMessage* msg) {
+	virtual void insertItemToMessage(E* item, BaseMessage* msg) const {
 		TypeInfo<E>::toBinaryStream(item, msg);
 	}
 
@@ -239,7 +239,7 @@ public:
 		return -1;
 	}
 
-	inline uint32 getUpdateCounter() {
+	inline uint32 getUpdateCounter() const {
 		return updateCounter;
 	}
 
@@ -259,7 +259,7 @@ public:
 		return vector.size();
 	}
 
-	inline ReadWriteLock* getLock() {
+	inline ReadWriteLock* getLock() const {
 		if (mutex == nullptr) {
 			mutex = new ReadWriteLock();
 		}

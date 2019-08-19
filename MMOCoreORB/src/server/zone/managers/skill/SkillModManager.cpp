@@ -79,7 +79,6 @@ void SkillModManager::init() {
 }
 
 void SkillModManager::setDefaults() {
-
 	skillModMin.put(WEARABLE, -25);
 	skillModMax.put(WEARABLE, 25);
 
@@ -94,12 +93,11 @@ void SkillModManager::setDefaults() {
 
 	skillModMin.put(DROID, -110);
 	skillModMax.put(DROID, 110);
-
 }
 
 void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
-
 	Locker locker(creature);
+
 	VectorMap<String, int> mods;
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
@@ -233,13 +231,13 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 }
 
 void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
-
 	Locker locker(creature);
+
 	VectorMap<String, int> mods;
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	SkillList* skillList = creature->getSkillList();
+	const SkillList* skillList = creature->getSkillList();
 	for(int i = 0; i < skillList->size(); ++i) {
 		Reference<Skill*> skill = skillList->get(i);
 		auto skillMods = skill->getSkillModifiers();
@@ -261,13 +259,13 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 }
 
 void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
-
 	Locker locker(creature);
+
 	VectorMap<String, int> mods;
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	BuffList* buffList = creature->getBuffList();
+	const BuffList* buffList = creature->getBuffList();
 	for(int i = 0; i < buffList->getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = buffList->getBuffByIndex(i);
 		VectorMap<String, int>* skillMods = buff->getSkillModifiers();
@@ -292,7 +290,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
-	
+
 	Mutex* skillModMutex = creature->getSkillModMutex();
 
 	Locker skillModLocker(skillModMutex);
@@ -304,7 +302,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 		return false;
 	}
 
-	SkillModGroup* group = skillModList->getSkillModGroup(type);
+	const SkillModGroup* group = skillModList->getSkillModGroup(type);
 
 	if(group == NULL){
 		error("NULL SkillModGroup for " + creature->getFirstName());

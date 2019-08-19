@@ -43,7 +43,7 @@ public:
 
 		Locker smodLocker(targetObject->getSkillModMutex());
 
-		SkillModList* skillModList = targetObject->getSkillModList();
+		const SkillModList* skillModList = targetObject->getSkillModList();
 
 		StringBuffer promptText;
 		promptText << "Name: " << targetObject->getCustomObjectName().toString()  << endl;
@@ -96,7 +96,7 @@ public:
 		smodLocker.release();
 
 		promptText << "Skills:" << endl;
-		SkillList* list = targetObject->getSkillList();
+		const SkillList* list = targetObject->getSkillList();
 
 		int totalSkillPointsWasted = 0;
 

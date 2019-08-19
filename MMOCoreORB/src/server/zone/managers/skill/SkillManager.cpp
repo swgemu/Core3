@@ -328,7 +328,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 			}
 		}
 
-		SkillList* list = creature->getSkillList();
+		const SkillList* list = creature->getSkillList();
 
 		int totalSkillPointsWasted = 250;
 
@@ -412,7 +412,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	if (!creature->hasSkill(skill->getSkillName()))
 		return true;
 
-	SkillList* skillList = creature->getSkillList();
+	const SkillList* skillList = creature->getSkillList();
 
 	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* checkSkill = skillList->get(i);
@@ -485,7 +485,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		/// Update Force Power Max
 		ghost->recalculateForcePower();
 
-		SkillList* list = creature->getSkillList();
+		const SkillList* list = creature->getSkillList();
 
 		int totalSkillPointsWasted = 250;
 
@@ -549,7 +549,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient, bool removeForceProgression) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	SkillList* skillList = creature->getSkillList();
+	const SkillList* skillList = creature->getSkillList();
 
 	Vector<String> listOfNames;
 	skillList->getStringList(listOfNames);
@@ -655,7 +655,7 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	if(player == NULL)
 		return;
 
-	SkillList* playerSkillBoxList = player->getSkillList();
+	const SkillList* playerSkillBoxList = player->getSkillList();
 
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
@@ -795,7 +795,7 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 }
 
 int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool includeNoviceMasterBoxes) {
-	SkillList* skills =  creature->getSkillList();
+	const SkillList* skills =  creature->getSkillList();
 	int forceSensitiveSkillCount = 0;
 
 	for (int i = 0; i < skills->size(); ++i) {
@@ -809,7 +809,7 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 }
 
 bool SkillManager::villageKnightPrereqsMet(CreatureObject* creature, const String& skillToDrop) {
-	SkillList* skillList = creature->getSkillList();
+	const SkillList* skillList = creature->getSkillList();
 
 	int fullTrees = 0;
 	int totalJediPoints = 0;

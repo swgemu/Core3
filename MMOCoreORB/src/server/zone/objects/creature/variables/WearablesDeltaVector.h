@@ -63,7 +63,7 @@ public:
 	}
 
 
-	bool toBinaryStream(ObjectOutputStream* stream) {
+	bool toBinaryStream(ObjectOutputStream* stream) override {
 		int _currentOffset = stream->getOffset();
 		stream->writeShort(0);
 		int _varCount = writeObjectMembers(stream);
@@ -72,7 +72,7 @@ public:
 		return true;
 	}
 
-	bool parseFromBinaryStream(ObjectInputStream* stream) {
+	bool parseFromBinaryStream(ObjectInputStream* stream) override {
 		uint16 _varCount = stream->readShort();
 
 		for (int i = 0; i < _varCount; ++i) {
@@ -92,7 +92,7 @@ public:
 		return true;
 	}
 
-	void insertItemToMessage(ManagedReference<TangibleObject*>* item, BaseMessage* msg) {
+	void insertItemToMessage(ManagedReference<TangibleObject*>* item, BaseMessage* msg) const override {
 		TangibleObject* object = item->get();
 
 		String custString;
@@ -104,7 +104,7 @@ public:
 		msg->insertInt(object->getClientObjectCRC()); //CRC of the object
 	}
 
-	bool add(ManagedReference<TangibleObject*> element, DeltaMessage* message = NULL, int updates = 1) {
+	bool add(const ManagedReference<TangibleObject*>& element, DeltaMessage* message = NULL, int updates = 1) override {
 		if (element->isArmorObject()) {
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
@@ -125,7 +125,7 @@ public:
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
 	}
 
-	bool remove(int index, DeltaMessage* message = NULL, int updates = 1) {
+	ManagedReference<TangibleObject*> remove(int index, DeltaMessage* message = NULL, int updates = 1) override {
 		ManagedReference<TangibleObject*> element = get(index);
 
 		if (element->isArmorObject()) {
@@ -149,7 +149,7 @@ public:
 	}
 
 
-	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) {
+	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) const {
 
 		// TODO: Migrate and remove this when the object versioning and migration system is in place
 
@@ -195,8 +195,6 @@ public:
 
 		return protectionArmorMap.get((uint8)ArmorObjectTemplate::NOLOCATION);
 	}
-
-
 
 	void addArmor(uint8 hitLocation, ManagedReference<ArmorObject*> armor) {
 		Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);

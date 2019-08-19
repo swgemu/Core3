@@ -17,11 +17,11 @@ public:
 		insertFloat(creo->getAccelerationMultiplierMod());
 
 		//Encumbrances
-		DeltaVector<int>* encumbrances = creo->getEncumbrances();
+		const DeltaVector<int>* encumbrances = creo->getEncumbrances();
 		encumbrances->insertToMessage(this);
 
 		// skill mods
-		SkillModList* skillMods = creo->getSkillModList();
+		const SkillModList* skillMods = creo->getSkillModList();
 		skillMods->insertToMessage(this);
 
 		//
