@@ -94,17 +94,18 @@ public:
 		return true;
 	}
 
-	virtual void insertToMessage(BaseMessage* msg) {
+	virtual void insertToMessage(BaseMessage* msg) const {
 		msg->insertInt(size());
 		msg->insertInt(getUpdateCounter());
 
 		for (int i = 0; i < size(); ++i) {
-			K& key = getKeyAt(i);
-			V& value = getValueAt(i);
+			const K& key = getKeyAt(i);
+			const V& value = getValueAt(i);
 
 			msg->insertByte(0);
-			TypeInfo<K>::toBinaryStream(&key, msg);
-			TypeInfo<V>::toBinaryStream(&value, msg);
+
+			TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), msg);
+			TypeInfo<V>::toBinaryStream(const_cast<V*>(&value), msg);
 		}
 	}
 
@@ -116,19 +117,31 @@ public:
 		return vectorMap.elementAt(index).getKey();
 	}
 
+	inline const V& getValueAt(int index) const {
+		return vectorMap.elementAt(index).getValue();
+	}
+
+	inline const K& getKeyAt(int index) const {
+		return vectorMap.elementAt(index).getKey();
+	}
+
 	inline V& get(const K& key) {
 		return vectorMap.get(key);
 	}
 
-	inline bool contains(const K& key) {
+	inline const V& get(const K& key) const {
+		return vectorMap.get(key);
+	}
+
+	inline bool contains(const K& key) const {
 		return vectorMap.contains(key);
 	}
 
-	inline int size() {
+	inline int size() const {
 		return vectorMap.size();
 	}
 
-	inline uint32 getUpdateCounter() {
+	inline uint32 getUpdateCounter() const {
 		return updateCounter;
 	}
 

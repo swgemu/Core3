@@ -93,7 +93,6 @@ bool SchematicList::decreaseSchematicUseCount(DraftSchematic* schematic) {
 }
 
 bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int updates) {
-
 	bool val = vector.add(schematic);
 
 	if (val && message != NULL) {
@@ -110,10 +109,8 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	return val;
 }
 
-bool SchematicList::contains(DraftSchematic* schematic) {
-
+bool SchematicList::contains(DraftSchematic* schematic) const {
 	for(int i = 0; i < size(); ++i) {
-
 		DraftSchematic* existingSchematic = get(i);
 
 		if(existingSchematic == NULL)
@@ -128,10 +125,8 @@ bool SchematicList::contains(DraftSchematic* schematic) {
 	return false;
 }
 
-bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic) {
-
+bool SchematicList::contains(const Vector<ManagedReference<DraftSchematic*>>& filteredschematics, DraftSchematic* schematic) const {
 	for(int i = 0; i < filteredschematics.size(); ++i) {
-
 		DraftSchematic* existingSchematic = filteredschematics.get(i);
 
 		if(existingSchematic == NULL)
@@ -157,7 +152,7 @@ bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filtere
  */
 
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
-		CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel) {
+		CreatureObject* player, const Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Vector<ManagedReference<DraftSchematic* > > filteredschematics;
 
@@ -177,13 +172,12 @@ Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 	return filteredschematics;
 }
 
-void SchematicList::insertToMessage(BaseMessage* msg) {
-
+void SchematicList::insertToMessage(BaseMessage* msg) const {
 	msg->insertInt(size());
 	msg->insertInt(updateCounter);
 
 	for (int i = 0; i < size(); ++i) {
-		DraftSchematic* schematic = get(i);
+		const DraftSchematic* schematic = get(i);
 
 		msg->insertInt(schematic->getClientObjectCRC());
 		msg->insertInt(schematic->getClientObjectCRC());  /// Must be client CRC

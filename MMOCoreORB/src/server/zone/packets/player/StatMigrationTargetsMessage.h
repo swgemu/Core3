@@ -13,7 +13,7 @@ public:
 		insertShort(0x09);
 		insertInt(0xEFAC38C4);  // CRC
 
-		DeltaVector<int>* baseHam = creo->getBaseHAM();
+		const DeltaVector<int>* baseHam = creo->getBaseHAM();
 
 		for (int i = 0; i < 9; ++i) {
 			insertInt(baseHam->get(i));
