@@ -235,7 +235,7 @@ int NameManager::validateReservedNames(const String& name, int resultType) {
 }
 
 int NameManager::validateName(CreatureObject* obj) {
-	StringId* objectName = obj->getObjectName();
+	const StringId* objectName = obj->getObjectName();
 	UnicodeString name = obj->getCustomObjectName();
 	int species = obj->getSpecies();
 

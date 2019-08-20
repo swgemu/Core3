@@ -56,7 +56,6 @@ public:
 	}
 #endif
 
-
 	bool operator==(const StringId& id) const {
 		if (&id == this)
 			return true;
@@ -82,11 +81,11 @@ public:
 		return "@" + file + ":" + stringID;
 	}
 
-	inline String getFile() const {
+	inline const String& getFile() const {
 		return file;
 	}
 
-	inline String getStringID() const {
+	inline const String& getStringID() const {
 		return stringID;
 	}
 
@@ -104,7 +103,6 @@ public:
 	inline int getFiller() const {
 		return filler;
 	}
-
 
 	void setStringId(const String& fullPath);
 

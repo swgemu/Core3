@@ -980,7 +980,7 @@ SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
 
 	Locker clocker(followCopy, asAiAgent());
 
-	DeltaVector<ManagedReference<SceneObject*> >* defenders = followCopy->getDefenderList();
+	const DeltaVector<ManagedReference<SceneObject*> >* defenders = followCopy->getDefenderList();
 
 	if (defenders->size() > 0) {
 		for (int i = 0; i < defenders->size(); ++i) {

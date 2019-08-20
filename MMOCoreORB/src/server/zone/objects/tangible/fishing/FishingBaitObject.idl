@@ -38,7 +38,7 @@ class FishingBaitObject extends TangibleObject {
 		freshness += 1;
 	}
 
-	@dirty
+	@read
 	public native int getUseCount();
 
 	@dirty

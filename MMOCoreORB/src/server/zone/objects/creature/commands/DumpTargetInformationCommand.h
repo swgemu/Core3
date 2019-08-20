@@ -51,7 +51,7 @@ public:
 		StringBuffer msg;
 
 		float posX = obj->getPositionX(), posZ = obj->getPositionZ(), posY = obj->getPositionY();
-		Quaternion* direction = obj->getDirection();
+		const Quaternion* direction = obj->getDirection();
 
 		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
 				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()

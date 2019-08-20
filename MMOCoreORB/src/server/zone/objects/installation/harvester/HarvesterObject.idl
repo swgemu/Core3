@@ -26,13 +26,13 @@ class HarvesterObject extends InstallationObject {
 		selfPowered = isSelfPowered;
 	}
 
-	@dirty
+	@read
 	public boolean isSelfPowered() {
 		return selfPowered;
 	}
 
-	@dirty
-	public abstract int getBasePowerRate() {
+	@read
+	public int getBasePowerRate() {
 		if(isSelfPowered())
 			return 0;
 		else

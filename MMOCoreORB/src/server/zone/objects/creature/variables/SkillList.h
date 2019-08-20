@@ -20,15 +20,15 @@ public:
 	bool add(Skill* skill, DeltaMessage* message = NULL);
 	void remove(Skill* skill, DeltaMessage* message = NULL);
 
-	bool containsSkill(const String& skill);
+	bool containsSkill(const String& skill) const;
 
-	bool toBinaryStream(ObjectOutputStream* stream);
-	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool toBinaryStream(ObjectOutputStream* stream) override;
+	bool parseFromBinaryStream(ObjectInputStream* stream) override;
 
 	void getStringList(Vector<String>& skills) const;
 	void loadFromNames(Vector<String>& skills);
 
-	void insertToMessage(BaseMessage* msg);
+	void insertToMessage(BaseMessage* msg) const override;
 
 	friend void to_json(nlohmann::json& j, const SkillList& s);
 };

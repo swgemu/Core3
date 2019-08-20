@@ -14,7 +14,7 @@ int PersistentMessageImplementation::getMailID() {
 	return Long::hashCode(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 }
 
-uint64 PersistentMessageImplementation::getObjectID() {
+uint64 PersistentMessageImplementation::getObjectID() const {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 

@@ -17,10 +17,10 @@ public:
 		insertInt(creo->getCashCredits());
 
 		// Base HAM
-		DeltaVector<int>* baseHam = creo->getBaseHAM();
+		const DeltaVector<int>* baseHam = creo->getBaseHAM();
 		baseHam->insertToMessage(this);
 
-		SkillList* skillList = creo->getSkillList();
+		const SkillList* skillList = creo->getSkillList();
 		skillList->insertToMessage(this);
 
 		setSize();

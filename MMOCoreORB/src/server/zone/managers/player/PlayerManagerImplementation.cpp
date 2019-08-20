@@ -1081,7 +1081,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	ghost->addIncapacitationTime();
 
-	DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
+	const DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
 
 	bool isDefender = false;
 
@@ -4381,14 +4381,14 @@ SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObj
 	SortedVector<String> skills;
 	skills.setNoDuplicateInsertPlan();
 
-	SkillList* skillList = teacher->getSkillList();
+	const SkillList* skillList = teacher->getSkillList();
 
 	SkillManager* skillManager = SkillManager::instance();
 
 	for (int i = 0; i < skillList->size(); ++i) {
-		Skill* skill = skillList->get(i);
+		const Skill* skill = skillList->get(i);
 
-		String skillName = skill->getSkillName();
+		const auto& skillName = skill->getSkillName();
 
 		if (!(skillName.contains("novice") || skillName.contains("force_sensitive") || skillName.contains("force_rank") || skillName.contains("force_title") || skillName.contains("admin_")) && skillManager->canLearnSkill(skillName, student, false))
 			skills.put(skillName);

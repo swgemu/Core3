@@ -1705,7 +1705,7 @@ BuildingObject* BuildingObjectImplementation::asBuildingObject() {
 	return _this.getReferenceUnsafeStaticCast();
 }
 
-Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {
+Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {
 	Vector<Reference<MeshData*> > data;
 
 	Quaternion directionRecast(direction.getW(), direction.getX(), direction.getY(), -direction.getZ());

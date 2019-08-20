@@ -20,8 +20,8 @@ public:
 		setSize();
 	}
 
-	void insertDefenders(TangibleObject* tano) {
-		DeltaVector<ManagedReference<SceneObject*> >* defenderList = tano->getDefenderList();
+	void insertDefenders(const TangibleObject* tano) {
+		const DeltaVector<ManagedReference<SceneObject*> >* defenderList = tano->getDefenderList();
 		defenderList->insertToMessage(this);
 	}
 

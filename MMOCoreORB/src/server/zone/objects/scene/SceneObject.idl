@@ -213,7 +213,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param msg message to print
 	 * @param forced if true, always prints the message to console
 	 */
-	@dirty
+	@read
 	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
 	}
@@ -224,7 +224,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @post {error message has been printed to console and file }
 	 * @param msg error message to print
 	 */
-	@dirty
+	@read
 	public void error(final string msg) {
 		Logger.error(msg);
 	}
@@ -235,7 +235,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @post {debug message has been printed to console and file }
 	 * @param msg debug message to print
 	 */
-	@dirty
+	@read
 	public void debug(final string msg) {
 		Logger.debug(msg);
 	}
@@ -372,14 +372,16 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param startTask if true, queues a new update task
 	 */
 	@dirty
-	public native void updateToDatabase();
+	public void updateToDatabase() {
+	}
 
 	 /**
 	  * Updates only this object to database without updating children
 	  * WARNING use only when necessary
 	  */
 	@dirty
-	public native void updateToDatabaseWithoutChildren();
+	public void updateToDatabaseWithoutChildren() {
+	}
 
 	/**
 	 * Updates this object and childre objects to database
@@ -388,7 +390,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param startTask if true, queues a new update task
 	 */
 	@dirty
-	public native void updateToDatabaseAllObjects(boolean startTask);
+	public abstract void updateToDatabaseAllObjects(boolean startTask) {
+	}
 
 	/**
 	 * Destroys this object from database
@@ -936,7 +939,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public native Zone getZone();
 
-	@dirty
+	@read
 	public native Zone getZoneUnsafe();
 
 	@read
@@ -994,7 +997,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	@local
-	public native Quaternion getDirection();
+	@read
+	public native final Quaternion getDirection();
 
 	@read
 	public unsigned int getClientObjectCRC() {
@@ -1012,8 +1016,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	@dirty
-	public StringId getObjectName() {
+	@read
+	public final StringId getObjectName() {
 		return objectName;
 	}
 
@@ -1842,7 +1846,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public abstract native void setZone(Zone zone);
 
 	@local
-	public abstract native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);
+	public abstract native void setObjectName(@dereferenced final StringId stringID, boolean notifyClient);
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
@@ -1880,7 +1884,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		staticObject = val;
 	}
 
-	@dirty
+	@read
 	public abstract native unsigned int getPlanetCRC();
 
 	@read

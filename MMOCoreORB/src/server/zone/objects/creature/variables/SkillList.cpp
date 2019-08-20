@@ -10,13 +10,13 @@
 #include "Skill.h"
 #include "server/zone/managers/skill/SkillManager.h"
 
-bool SkillList::containsSkill(const String& skillBox) {
+bool SkillList::containsSkill(const String& skillBox) const {
 	String low = skillBox.toLowerCase();
 
 	ReadLocker readLocker(getLock());
 
 	for (int i = 0; i < vector.size(); ++i) {
-		Reference<Skill*> skill = vector.get(i);
+		const auto& skill = vector.get(i);
 
 		if (skill == NULL)
 			continue;
@@ -137,7 +137,7 @@ void SkillList::remove(Skill* skill, DeltaMessage* message) {
 	}
 }
 
-void SkillList::insertToMessage(BaseMessage* msg) {
+void SkillList::insertToMessage(BaseMessage* msg) const {
 	msg->insertInt(vector.size());
 	msg->insertInt(updateCounter);
 

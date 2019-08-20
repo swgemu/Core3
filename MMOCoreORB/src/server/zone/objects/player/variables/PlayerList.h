@@ -75,7 +75,7 @@ public:
 	}
 
 
-	void insertToListMessage(Message* message) {
+	void insertToListMessage(Message* message) const {
 		message->insertInt(size());
 
 		for (int i = 0; i < size(); ++i) {

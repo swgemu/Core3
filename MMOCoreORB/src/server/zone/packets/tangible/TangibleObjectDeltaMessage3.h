@@ -30,8 +30,7 @@ public:
 		addFloatUpdate(0, tano->getComplexity());
 	}
 
-	void updateObjectName(StringId& name) {
-
+	void updateObjectName(const StringId& name) {
 		addStringIdUpdate(1, name);
 	}
 

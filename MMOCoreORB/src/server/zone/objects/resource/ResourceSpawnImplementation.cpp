@@ -203,14 +203,14 @@ float ResourceSpawnImplementation::getDensityAt(const String& zoneName, float x,
 	return map.getDensityAt(x, y);
 }
 
-String ResourceSpawnImplementation::getSpawnMapZone(int i) {
+String ResourceSpawnImplementation::getSpawnMapZone(int i) const {
 	if (spawnMaps.size() > i)
 		return spawnMaps.getKey(i);
 	else
 		return "";
 }
 
-uint32 ResourceSpawnImplementation::getPlanetCRC() {
+uint32 ResourceSpawnImplementation::getPlanetCRC() const {
 	String zoneName = getSpawnMapZone(0);
 
 	if (zoneName == "")

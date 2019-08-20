@@ -19,7 +19,7 @@ public:
 			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
 		insertFloat(tano->getComplexity());
 
-		StringId* stringId = tano->getObjectName();
+		const StringId* stringId = tano->getObjectName();
 
 		insertStringId(stringId);
 

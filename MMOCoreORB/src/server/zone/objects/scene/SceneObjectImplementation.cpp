@@ -234,16 +234,6 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
 }
 
-//deprecated methods, updates are automatic now
-void SceneObjectImplementation::updateToDatabase() {
-}
-
-void SceneObjectImplementation::updateToDatabaseWithoutChildren() {
-}
-
-void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
-}
-
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	//info("deleting from database", true);
 
@@ -1095,8 +1085,8 @@ Zone* SceneObjectImplementation::getZone() {
 }
 
 
-Zone* SceneObjectImplementation::getZoneUnsafe() {
-	auto root = getRootParentUnsafe();
+Zone* SceneObjectImplementation::getZoneUnsafe() const {
+	auto root = const_cast<SceneObjectImplementation*>(this)->getRootParentUnsafe();
 
 	if (root != NULL) {
 		return root->getZoneUnsafe();
@@ -1171,7 +1161,7 @@ float SceneObjectImplementation::getDistanceTo(Coordinate* coordinate) {
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-Quaternion* SceneObjectImplementation::getDirection() {
+const Quaternion* SceneObjectImplementation::getDirection() const {
 	return &direction;
 }
 
@@ -1204,7 +1194,7 @@ int SceneObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	}
 }
 
-void SceneObjectImplementation::setObjectName(StringId& stringID, bool notifyClient) {
+void SceneObjectImplementation::setObjectName(const StringId& stringID, bool notifyClient) {
 	objectName = stringID;
 }
 
@@ -1287,7 +1277,7 @@ float SceneObjectImplementation::getWorldPositionZ() {
 	return root->getPositionZ() + getPositionZ();
 }
 
-uint32 SceneObjectImplementation::getPlanetCRC() {
+uint32 SceneObjectImplementation::getPlanetCRC() const {
 	if (getZoneUnsafe() == NULL)
 		return 0;
 

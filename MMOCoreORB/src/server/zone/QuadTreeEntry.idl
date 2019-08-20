@@ -118,7 +118,7 @@ class QuadTreeEntry extends Observable {
 			return false;
 	}
 
-	@dirty
+	@read
 	public float getDistanceTo(QuadTreeEntry obj) {
 		float x = obj.getPositionX();
 		float y = obj.getPositionY();

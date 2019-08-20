@@ -208,7 +208,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	}
 	Locker clocker(prototype);
 	// Check Here for unique npcs
-	StringId* nameId = creature->getObjectName();
+	const StringId* nameId = creature->getObjectName();
 	if (nameId->getFile().isEmpty() || nameId->getStringID().isEmpty()) {
 		prototype->setSource(creature->getCreatureName().toString());
 	} else {

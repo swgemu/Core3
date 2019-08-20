@@ -111,7 +111,7 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 
 	if (structurePermissionList.getOwner() != getOwnerObjectID()) {
 		structurePermissionList.setOwner(getOwnerObjectID());
-	} 
+	}
 
 	if (permissionsFixed == false) {
 
@@ -247,8 +247,8 @@ void StructureObjectImplementation::destroyOrphanCivicStructure() {
 	structureManager->destroyStructure(_this.getReferenceUnsafeStaticCast());
 }
 
-int StructureObjectImplementation::getLotSize() {
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+int StructureObjectImplementation::getLotSize() const {
+	const SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 	if (ssot == NULL)
 		return 0;
@@ -718,8 +718,8 @@ bool StructureObjectImplementation::isGuildHall() {
 	return false;
 }
 
-int StructureObjectImplementation::getBaseMaintenanceRate(){
-	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
+int StructureObjectImplementation::getBaseMaintenanceRate() const {
+	const SharedStructureObjectTemplate* tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
 
 	if(tmpl == NULL)
 		return 0;
@@ -727,8 +727,8 @@ int StructureObjectImplementation::getBaseMaintenanceRate(){
 	return tmpl->getBaseMaintenanceRate();
 }
 
-int StructureObjectImplementation::getBasePowerRate(){
-	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
+int StructureObjectImplementation::getBasePowerRate() const {
+	const SharedStructureObjectTemplate* tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
 
 	if(tmpl == NULL)
 		return 0;
@@ -736,11 +736,11 @@ int StructureObjectImplementation::getBasePowerRate(){
 	return tmpl->getBasePowerRate();
 }
 
-float StructureObjectImplementation::getDelayDestroyHours() {
+float StructureObjectImplementation::getDelayDestroyHours() const {
     return 30.0f * 24.0f; // Destroy after 30 days in the hole on maintenance
 }
 
-bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
+bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) const {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL && ghost->isPrivileged())
