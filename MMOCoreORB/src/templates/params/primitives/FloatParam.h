@@ -40,7 +40,7 @@ public:
 		max = m;
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer in;
 
 		if (min != 0 || max != 0) {
@@ -103,11 +103,11 @@ public:
 		return false;
 	}
 
-	inline float getMin() {
+	inline float getMin() const {
 		return min;
 	}
 
-	inline float getMax() {
+	inline float getMax() const {
 		return max;
 	}
 };

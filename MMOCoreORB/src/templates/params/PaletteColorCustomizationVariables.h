@@ -36,9 +36,9 @@ public:
 		//std::cout << "DELETING PaletteColorCustomizationVariables\n";
 	}
 
-	String toString();
+	String toString() const;
 
-	void toString(String& str) {
+	void toString(String& str) const {
 		//std::cout << "entering void toString(QString& str)\n";
 		//str = test;
 	}

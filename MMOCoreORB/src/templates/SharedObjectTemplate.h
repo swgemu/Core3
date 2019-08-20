@@ -215,16 +215,16 @@ public:
 
 	static String getType(int type);
 
-	inline String getAppearanceFilename() const {
-		return appearanceFilename;
+	inline const String& getAppearanceFilename() const {
+		return appearanceFilename.get();
 	}
 
 	inline float getClearFloraRadius() const {
 		return clearFloraRadius;
 	}
 
-	inline String getClientDataFile() const {
-		return clientDataFile;
+	inline const String& getClientDataFile() const {
+		return clientDataFile.get();
 	}
 
 	inline int getCollisionActionBlockFlags() const {
@@ -259,7 +259,7 @@ public:
 		return containerVolumeLimit;
 	}
 
-	inline String getDetailedDescription() {
+	inline String getDetailedDescription() const {
 		return detailedDescription.getFullString();
 	}
 
@@ -295,8 +295,8 @@ public:
 		return onlyVisibleInTools;
 	}
 
-	inline String getPortalLayoutFilename() const {
-		return portalLayoutFilename;
+	inline const String& getPortalLayoutFilename() const {
+		return portalLayoutFilename.get();
 	}
 
 	PortalLayout* getPortalLayout();
@@ -318,15 +318,15 @@ public:
 		loadedDerivedFiles.put(name);
 	}
 
-	inline float getMinScale() {
+	inline float getMinScale() const {
 		return scale.getMin();
 	}
 
-	inline float getMaxScale() {
+	inline float getMaxScale() const {
 		return scale.getMax();
 	}
 
-	inline bool isNoTrade() {
+	inline bool isNoTrade() const {
 		return noTrade;
 	}
 
@@ -338,7 +338,7 @@ public:
 		return sendToClient;
 	}
 
-	inline Vector<String>* getSlotDescriptors() {
+	inline const Vector<String>* getSlotDescriptors() const {
 		if (slotDescriptors == NULL)
 			return NULL;
 		else
@@ -353,8 +353,8 @@ public:
 		return surfaceType;
 	}
 
-	inline String getTintPallete() const {
-		return tintPallete;
+	inline const String& getTintPallete() const {
+		return tintPallete.get();
 	}
 
 	inline int getTotalCellNumber() const {
@@ -425,7 +425,7 @@ public:
 		return inheritPermissionsFromParent;
 	}
 
-	HashTable<uint32, uint32>* getGroupPermissions() {
+	const HashTable<uint32, uint32>* getGroupPermissions() const {
 		return &groupPermissions;
 	}
 

@@ -27,7 +27,7 @@ public:
 		return *this;
 	}
 
-	String toString() {
+	String toString() const {
 		return String::valueOf(get());
 	}
 

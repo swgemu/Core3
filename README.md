@@ -16,14 +16,14 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * g++ 5+
+  * g++ 5+ or compatible
   * engine3
   * java jre 1.7+
 
 ### Debian 9+ or Ubuntu 16.04+ ###
   * Install dependencies
 
-        sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libssl-dev git
+        sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libssl-dev
   * Clone core3 repository somewhere  (~/git)
 
         mkdir -p ~/git
@@ -42,13 +42,17 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
     ./core3
 
 ### License ###
-    Copyright (C) 2017 SWGEmu
+    Copyright (C) 2019 SWGEmu
 
     This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+    it under the terms of the GNU Affero General Public License as published by the Free Software Foundation,
+    either version 3 of the License, or (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU Affero General Public License for more details.
 
-    You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU Affero General Public License along with this program.
+    If not, see <http://www.gnu.org/licenses/>.
 
 For more information, see https://review.swgemu.com.

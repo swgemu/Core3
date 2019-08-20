@@ -695,7 +695,7 @@ void ObjectManager::persistSceneObjectsRecursively(SceneObject* object, int pers
 			persistSceneObjectsRecursively(slottedObject, persistenceLevel);
 	}
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects = object->getContainerObjects();
+	const VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects = object->getContainerObjects();
 
 	for (int i = 0; i < containerObjects->size(); i++) {
 		SceneObject* containerObject = containerObjects->get(i).get();

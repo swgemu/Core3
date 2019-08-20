@@ -1406,7 +1406,7 @@ void SceneObjectImplementation::destroyChildObjects() {
 	}
 }
 
-bool SceneObjectImplementation::isFacingObject(SceneObject* obj) {
+bool SceneObjectImplementation::isFacingObject(SceneObject* obj) const {
 	Vector3 thisPos = getPosition();
 	Vector3 targetPos = obj->getPosition();
 
@@ -1648,7 +1648,7 @@ int SceneObjectImplementation::getSizeOnVendorRecursive() {
 	return count;
 }
 
-bool SceneObjectImplementation::isDecoration() {
+bool SceneObjectImplementation::isDecoration() const {
 	return (templateObject != NULL &&
 			(templateObject->getFullTemplateString().contains("object/tangible/furniture/city") ||
 					templateObject->getFullTemplateString().contains("object/building/player/city/garden")));

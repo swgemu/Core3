@@ -24,7 +24,7 @@ public:
 		setType(STRING);
 	}
 
-	virtual String toString() {
+	virtual String toString() const {
 		//return get();
 		StringBuffer stream;
 

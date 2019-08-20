@@ -116,21 +116,21 @@ public:
 		return useCount;
 	}
 
-    inline uint16 getPlayerUseMask() const {
+	inline uint16 getPlayerUseMask() const {
 		return playerUseMask;
 	}
 
-    inline unsigned int getFaction() const {
-    	return faction;
-    }
+	inline unsigned int getFaction() const {
+		return faction;
+	}
 
-    inline int getJunkDealerNeeded() const {
-    	return junkDealerNeeded;
-    }
+	inline int getJunkDealerNeeded() const {
+		return junkDealerNeeded;
+	}
 
-    inline int getJunkValue() const {
-    	return junkValue;
-    }
+	inline int getJunkValue() const {
+		return junkValue;
+	}
 
 	inline StructureFootprint* getStructureFootprint() const {
 		return structureFootprint;
@@ -156,57 +156,57 @@ public:
 		return sliceable;
 	}
 
-    Vector<short >* getNumberExperimentalProperties() {
-        return numberExperimentalProperties;
-    }
+	const Vector<short >* getNumberExperimentalProperties() const {
+		return numberExperimentalProperties;
+	}
 
-    Vector<String>* getExperimentalProperties() {
-        return experimentalProperties;
-    }
+	const Vector<String>* getExperimentalProperties() const {
+		return experimentalProperties;
+	}
 
-    Vector<short >* getExperimentalWeights() {
-        return experimentalWeights;
-    }
+	const Vector<short >* getExperimentalWeights() const {
+		return experimentalWeights;
+	}
 
-    Vector<String>* getExperimentalGroupTitles() {
-        return experimentalGroupTitles;
-    }
+	const Vector<String>* getExperimentalGroupTitles() const {
+		return experimentalGroupTitles;
+	}
 
-    Vector<String>* getExperimentalSubGroupTitles() {
-        return experimentalSubGroupTitles;
-    }
+	const Vector<String>* getExperimentalSubGroupTitles() const {
+		return experimentalSubGroupTitles;
+	}
 
-    Vector<float>* getExperimentalMin() {
-        return experimentalMin;
-    }
+	const Vector<float>* getExperimentalMin() const {
+		return experimentalMin;
+	}
 
-    Vector<float>* getExperimentalMax() {
-        return experimentalMax;
-    }
+	const Vector<float>* getExperimentalMax() const {
+		return experimentalMax;
+	}
 
-    Vector<short >* getExperimentalPrecision() {
-        return experimentalPrecision;
-    }
+	const Vector<short >* getExperimentalPrecision() const {
+		return experimentalPrecision;
+	}
 
-    Vector<uint32>* getPlayerRaces() {
-    	return playerRaces;
-    }
+	const Vector<uint32>* getPlayerRaces() const {
+		return playerRaces;
+	}
 
-    Vector<Reference<ResourceWeight* > >* getResourceWeights() {
-    	return resourceWeights;
-    }
+	const Vector<Reference<ResourceWeight* > >* getResourceWeights() const {
+		return resourceWeights;
+	}
 
-    VectorMap<String, int>* getSkillMods() {
-    	return &skillMods;
-    }
+	const VectorMap<String, int>* getSkillMods() const {
+		return &skillMods;
+	}
 
-    int getSkillMod(const String& mod) {
-    	return skillMods.get(mod);
-    }
+	int getSkillMod(const String& mod) const {
+		return skillMods.get(mod);
+	}
 
-    bool isSharedTangibleObjectTemplate() {
-    	return true;
-    }
+	bool isSharedTangibleObjectTemplate() {
+		return true;
+	}
 };
 
 

@@ -76,7 +76,7 @@ public:
 	~StringIdParam() {
 	}
 
-	String toString() {
+	String toString() const {
 		return getFullString();
 	}
 
@@ -115,7 +115,7 @@ public:
 		if (stringId.isEmpty())
 			return file;
 
-		else return "@" + file + ":" + stringId + ""; 
+		else return "@" + file + ":" + stringId + "";
 	}*/
 
 	StringIdParam& operator= (const StringIdParamData& custom) {

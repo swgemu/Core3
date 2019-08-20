@@ -46,7 +46,7 @@ public:
 		slots.clone(copyVec);
 	}
 
-	Vector<String>* getSlots() {
+	const Vector<String>* getSlots() const {
 		return &slots;
 	}
 };

@@ -287,7 +287,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			}
 
 
-			Vector<String>* subGroups = tanotmp->getExperimentalSubGroupTitles();
+			const Vector<String>* subGroups = tanotmp->getExperimentalSubGroupTitles();
 
 			for(int i=0; i<subGroups->size(); i++) {
 				String subGroupTitle = subGroups->get(i).toLowerCase();

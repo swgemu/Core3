@@ -47,11 +47,11 @@ public:
 	~RangedIntCustomizationVariable() {
 	}
 
-	inline int getDefaultValue() {
+	inline int getDefaultValue() const {
 		return defaultValue;
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer stream;
 		/*stream << "variableName" << " = " << variableName.toString() << "\n";
 		stream << "minValueInclusive" << " = " << minValueInclusive.toString() << "\n";
@@ -108,7 +108,7 @@ public:
 		return true;
 	}
 
-	String getVariableName() {
+	const String& getVariableName() const {
 		return variableName.get();
 	}
 

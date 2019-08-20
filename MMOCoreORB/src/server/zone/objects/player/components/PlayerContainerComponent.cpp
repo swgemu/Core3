@@ -28,7 +28,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
 
 		if (tanoData != NULL) {
-			Vector<uint32>* races = tanoData->getPlayerRaces();
+			const auto races = tanoData->getPlayerRaces();
 			String race = creo->getObjectTemplate()->getFullTemplateString();
 
 			if (!races->contains(race.hashCode())) {

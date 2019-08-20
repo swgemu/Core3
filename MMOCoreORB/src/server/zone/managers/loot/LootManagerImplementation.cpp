@@ -199,11 +199,11 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
 
 	if (tanoTemplate != NULL) {
-		Vector<String>* titles = tanoTemplate->getExperimentalGroupTitles();
-		Vector<String>* props = tanoTemplate->getExperimentalSubGroupTitles();
-		Vector<float>* mins = tanoTemplate->getExperimentalMin();
-		Vector<float>* maxs = tanoTemplate->getExperimentalMax();
-		Vector<short>* prec = tanoTemplate->getExperimentalPrecision();
+		const auto titles = tanoTemplate->getExperimentalGroupTitles();
+		const auto props = tanoTemplate->getExperimentalSubGroupTitles();
+		const auto mins = tanoTemplate->getExperimentalMin();
+		const auto  maxs = tanoTemplate->getExperimentalMax();
+		const auto prec = tanoTemplate->getExperimentalPrecision();
 
 		for (int i = 0; i < props->size(); ++i) {
 			const String& title = titles->get(i);

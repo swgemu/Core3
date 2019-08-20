@@ -90,7 +90,7 @@ void PaletteColorCustomizationVariables::parseType1(IffStream* iffStream) {
 
 }
 
-String PaletteColorCustomizationVariables::toString() {
+String PaletteColorCustomizationVariables::toString() const {
 	StringBuffer stream;
 
 	stream << "{";

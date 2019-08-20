@@ -56,7 +56,7 @@ public:
 		vectorData.removeAll();
 	}
 
-	String toString() {
+	String toString() const {
 		//String var;
 		StringBuffer stream;
 
