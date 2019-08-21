@@ -37,7 +37,7 @@ public:
 
 	virtual bool parse(engine::util::Chunk* source) = 0;
 
-	virtual String toString() = 0;
+	virtual String toString() const = 0;
 
 	inline uint32 getType() {
 		return type;

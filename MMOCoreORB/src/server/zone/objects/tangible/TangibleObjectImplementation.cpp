@@ -875,7 +875,7 @@ void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetOb
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int>* mods = tano->getSkillMods();
+	const VectorMap<String, int>* mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
 		VectorMapEntry<String, int> entry = mods->elementAt(i);
@@ -890,7 +890,7 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int>* mods = tano->getSkillMods();
+	const VectorMap<String, int>* mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
 		VectorMapEntry<String, int> entry = mods->elementAt(i);
@@ -899,7 +899,7 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 	}
 }
 
-VectorMap<String, int>* TangibleObjectImplementation::getTemplateSkillMods() {
+const VectorMap<String, int>* TangibleObjectImplementation::getTemplateSkillMods() const {
 	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)

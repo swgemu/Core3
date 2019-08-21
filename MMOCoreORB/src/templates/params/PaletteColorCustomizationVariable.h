@@ -46,7 +46,7 @@ public:
 		return *this;
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer stream;
 		/*stream << "variableName" << " = " << variableName.toString() << "\n";
 		stream << "palettePathName" << " = " << palettePathName.toString() << "\n";

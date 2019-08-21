@@ -235,7 +235,7 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	}
 }
 
-Vector<Reference<ResourceWeight*> >* DraftSchematicObjectTemplate::getResourceWeights() {
+const Vector<Reference<ResourceWeight*> >* DraftSchematicObjectTemplate::getResourceWeights() {
 
 	try {
 		if (tangibleTemplate == NULL)

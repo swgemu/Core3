@@ -1073,11 +1073,17 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return slottedObjects;
 	}
 
+	@local
+	@read
+	public final VectorMap<string, SceneObject> getSlottedObjects() {
+		return slottedObjects;
+	}
+
 	@dirty
 	@reference
 	public native SceneObject getSlottedObject(final string slot);
 
-	@dirty
+	@read
 	public int getSlotDescriptorSize() {
 		if (templateObject.getSlotDescriptors() != null)
 			return templateObject.getSlotDescriptors().size();
@@ -1129,11 +1135,17 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
+	@read
+	public final VectorMap<unsigned long, SceneObject> getContainerObjects() {
+		return containerObjects.getContainerObjects();
+	}
+
+	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects.getContainerObjects();
 	}
 
-	@dirty
+	@read
 	public boolean hasObjectInContainer(unsigned long objectID) {
 		return containerObjects.contains(objectID);
 	}
@@ -1168,7 +1180,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		containerObjects.unloadObjects();
 	}
 
-	@dirty
+	@read
 	public boolean isContainerLoaded() {
 		return containerObjects.isLoaded();
 	}
@@ -1235,6 +1247,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native void faceObject(SceneObject obj, boolean notifyClient = false);
 
+	@read
 	public native boolean isFacingObject(SceneObject obj);
 
 	public native abstract void notifySelfPositionUpdate();
@@ -1414,6 +1427,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return dataObjectComponent;
 	}
 
+	@read
 	public native boolean isDecoration();
 
 	@local
@@ -1423,6 +1437,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native void setContainerComponent(final string name);
 	public native void setZoneComponent(final string name);
 
+	@read
 	public boolean isNoTrade() {
 		return templateObject.isNoTrade();
 	}

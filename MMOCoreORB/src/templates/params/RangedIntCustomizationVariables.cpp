@@ -90,7 +90,7 @@ void RangedIntCustomizationVariables::parseType1(IffStream* iffStream) {
 
 }
 
-String RangedIntCustomizationVariables::toString() {
+String RangedIntCustomizationVariables::toString() const {
 	StringBuffer stream;
 
 	/*for (int i = 0; i < variables.size(); ++i) {

@@ -80,11 +80,19 @@ public:
 		return value;
 	}
 
-	virtual V getValue() const {
+	virtual V getValue() {
 		return value;
 	}
 
-	virtual V get() const {
+	virtual const V& getValue() const {
+		return value;
+	}
+
+	virtual V& get() {
+		return value;
+	}
+
+	virtual const V& get() const {
 		return value;
 	}
 

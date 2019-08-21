@@ -651,10 +651,10 @@ void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetO
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int>* mods = tano->getSkillMods();
+	const auto mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int> entry = mods->elementAt(i);
+		const auto& entry = mods->elementAt(i);
 
 		targetObject->addSkillMod(SkillModManager::STRUCTURE, entry.getKey(), entry.getValue());
 	}
@@ -671,10 +671,10 @@ void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targ
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int>* mods = tano->getSkillMods();
+	const auto mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int> entry = mods->elementAt(i);
+		const auto& entry = mods->elementAt(i);
 
 		targetObject->removeSkillMod(SkillModManager::STRUCTURE, entry.getKey(), entry.getValue());
 	}

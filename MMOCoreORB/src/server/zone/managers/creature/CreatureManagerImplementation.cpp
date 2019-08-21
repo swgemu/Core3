@@ -1130,7 +1130,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	if (tanoData == NULL || chatMan == NULL)
 		return false;
 
-	Vector<uint32>* races = tanoData->getPlayerRaces();
+	const Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
 	if (clothing->isWearableObject()) {

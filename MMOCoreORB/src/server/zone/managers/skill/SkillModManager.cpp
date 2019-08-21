@@ -209,7 +209,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	if (parent != NULL && parent->isStructureObject()) {
 		StructureObject* structure = parent.castTo<StructureObject*>();
 
-		VectorMap<String, int>* templateMods = structure->getTemplateSkillMods();
+		const auto templateMods = structure->getTemplateSkillMods();
 
 		for (int i = 0; i < templateMods->size(); ++i) {
 

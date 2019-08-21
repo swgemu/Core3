@@ -270,7 +270,7 @@ int ContainerObjectsMap::size() {
 	return containerObjects.size();
 }
 
-bool ContainerObjectsMap::contains(uint64 oid) {
+bool ContainerObjectsMap::contains(uint64 oid) const {
 	ReadLocker locker(containerLock);
 
 	if (oids != NULL)
