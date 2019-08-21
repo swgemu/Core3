@@ -90,6 +90,12 @@ class WearableObject extends TangibleObject {
 		return wearableSkillMods;
 	}
 
+	@local
+	@read
+	public final VectorMap<string, int> getWearableSkillMods() {
+		return wearableSkillMods;
+	}
+
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
 		if (wearableSkillMods.size() <= 6) {
 			wearableSkillMods.put(skillMod, value);

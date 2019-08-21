@@ -114,7 +114,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			WearableObject* wearable = cast<WearableObject*>(object.get());
 			if(wearable != NULL) {
 
-				VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
+				const VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();
@@ -135,7 +135,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			WearableContainerObject* wearable = cast<WearableContainerObject*>(object.get());
 			if(wearable != NULL) {
 
-				VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
+				const VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();
@@ -156,7 +156,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			WeaponObject* weapon = cast<WeaponObject*>(object.get());
 			if(weapon != NULL) {
 
-				VectorMap<String, int>* wearableSkillMods = weapon->getWearableSkillMods();
+				const VectorMap<String, int>* wearableSkillMods = weapon->getWearableSkillMods();
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();

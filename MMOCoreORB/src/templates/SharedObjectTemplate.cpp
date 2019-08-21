@@ -473,8 +473,7 @@ AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
 	return appearanceTemplate;
 }
 
-bool SharedObjectTemplate::isDerivedFrom(const String& iffPath, bool includeSelf) {
-
+bool SharedObjectTemplate::isDerivedFrom(const String& iffPath, bool includeSelf) const {
 	if(includeSelf && iffPath == fullTemplateString) {
 		return true;
 	}
@@ -485,3 +484,4 @@ bool SharedObjectTemplate::isDerivedFrom(const String& iffPath, bool includeSelf
 
 	return false;
 }
+

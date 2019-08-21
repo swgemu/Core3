@@ -184,7 +184,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						precision = component->getAttributePrecision(property);
 						int preciseValue = Math::getPrecision(currentvalue, precision);
 						WearableObject* clothing = cast<WearableObject*>(prototype);
-						VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
+						const VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
 
 						int existingValue = 0;
 						if(clothingMods->contains(key)) {

@@ -23,7 +23,7 @@ class Region extends ActiveArea {
 	}
 
 	@weakReference
-	@dirty
+	@read
 	public CityRegion getCityRegion() {
 		return cityRegion;
 	}

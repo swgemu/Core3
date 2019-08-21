@@ -199,7 +199,7 @@ bool BuildingObjectImplementation::hasTemplateEjectionPoint() {
 		return true;
 }
 
-Vector3 BuildingObjectImplementation::getTemplateEjectionPoint() {
+Vector3 BuildingObjectImplementation::getTemplateEjectionPoint() const {
 	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
 
 	return buildingTemplate->getEjectionPoint();
@@ -1538,7 +1538,7 @@ void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respaw
 	childCreatureObjects.put(creature);
 }
 
-bool BuildingObjectImplementation::hasTemplateChildCreatures() {
+bool BuildingObjectImplementation::hasTemplateChildCreatures() const {
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 	if (buildingTemplate == nullptr)
@@ -1782,7 +1782,7 @@ float BuildingObjectImplementation::getOutOfRangeDistance() const {
 #endif // COV_BUILDING_QUAD_RANGE
 }
 
-String BuildingObjectImplementation::getCellName(uint64 cellID) {
+String BuildingObjectImplementation::getCellName(uint64 cellID) const {
 	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
 
 	if (buildingTemplate == nullptr)

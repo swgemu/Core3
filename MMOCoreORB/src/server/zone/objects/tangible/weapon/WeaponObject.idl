@@ -161,48 +161,48 @@ class WeaponObject extends TangibleObject {
 	 * @post { }
 	 * @param object player object to check against
 	 */
-	@dirty
+	@read
 	public native boolean isCertifiedFor(CreatureObject object);
 
 	@local
-	@dirty
-	public Vector<string> getDamageModifiers() {
+	@read
+	public final Vector<string> getDamageModifiers() {
 		return weaponTemplate.getDamageModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getSpeedModifiers() {
+	@read
+	public final Vector<string> getSpeedModifiers() {
 		return weaponTemplate.getSpeedModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getCreatureAccuracyModifiers() {
+	@read
+	public final Vector<string> getCreatureAccuracyModifiers() {
 		return weaponTemplate.getCreatureAccuracyModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getCreatureAimModifiers() {
+	@read
+	public final Vector<string> getCreatureAimModifiers() {
 		return weaponTemplate.getCreatureAimModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getDefenderDefenseModifiers() {
+	@read
+	public final Vector<string> getDefenderDefenseModifiers() {
 		return weaponTemplate.getDefenderDefenseModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getDefenderSecondaryDefenseModifiers() {
+	@read
+	public final Vector<string> getDefenderSecondaryDefenseModifiers() {
 		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
 	}
 
 	@local
-	@dirty
-	public Vector<string> getDefenderToughnessModifiers() {
+	@read
+	public final Vector<string> getDefenderToughnessModifiers() {
 		return weaponTemplate.getDefenderToughnessModifiers();
 	}
 
@@ -210,7 +210,7 @@ class WeaponObject extends TangibleObject {
 		certified = cert;
 	}
 
-	@dirty
+	@read
 	public int getAttackType() {
 		return attackType;
 	}
@@ -219,7 +219,7 @@ class WeaponObject extends TangibleObject {
 		attackType = a;
 	}
 
-	@dirty
+	@read
 	public boolean isCertified() {
 		return certified;
 	}
@@ -227,106 +227,106 @@ class WeaponObject extends TangibleObject {
 	@dirty
 	public native boolean isEquipped();
 
-	@dirty
+	@read
 	public native int getPointBlankAccuracy(boolean withPup = true);
 
 	public void setPointBlankAccuracy(int value) {
 		pointBlankAccuracy = value;
 	}
 
-	@dirty
+	@read
 	public native int getPointBlankRange(boolean withPup = true);
 
-	@dirty
+	@read
 	public native int getIdealRange(boolean withPup = true);
 
 	public void setIdealRange(int value) {
 		idealRange = value;
 	}
 
-	@dirty
+	@read
 	public native int getMaxRange(boolean withPup = true);
 
 	public void setMaxRange(int value) {
 		maxRange = value;
 	}
 
-	@dirty
+	@read
 	public native int getIdealAccuracy(boolean withPup = true);
 
 	public void setIdealAccuracy(int value) {
 		idealAccuracy = value;
 	}
 
-	@dirty
+	@read
 	public int getArmorPiercing() {
 		return armorPiercing;
 	}
 
-	@dirty
+	@read
 	public native int getMaxRangeAccuracy(boolean withPup = true);
 
 	public void setMaxRangeAccuracy(int value) {
 		maxRangeAccuracy = value;
 	}
 
-	@dirty
+	@read
 	public native float getAttackSpeed(boolean withPup = true);
 
 	public void setAttackSpeed(float value) {
 		attackSpeed = value;
 	}
 
-	@dirty
+	@read
 	public native float getMaxDamage(boolean withPup = true);
 
 	public void setMaxDamage(float value) {
 		maxDamage = value;
 	}
 
-	@dirty
+	@read
 	public native float getMinDamage(boolean withPup = true);
 
 	public void setMinDamage(float value) {
 		minDamage = value;
 	}
 
-	@dirty
+	@read
 	public native float getWoundsRatio(boolean withPup = true);
 
 	public void setWoundsRatio(float value) {
 		woundsRatio = value;
 	}
 
-	@dirty
+	@read
 	public native float getDamageRadius(boolean withPup = true);
 
 	public void setDamageRadius(float value) {
 		damageRadius = value;
 	}
 
-	@dirty
+	@read
 	public native int getHealthAttackCost(boolean withPup = true);
 
 	public void setHealthAttackCost(int value) {
 		healthAttackCost = value;
 	}
 
-	@dirty
+	@read
 	public native int getActionAttackCost(boolean withPup = true);
 
 	public void setActionAttackCost(int value) {
 		actionAttackCost = value;
 	}
 
-	@dirty
+	@read
 	public native int getMindAttackCost(boolean withPup = true);
 
 	public void setMindAttackCost(int value) {
 		mindAttackCost = value;
 	}
 
-	@dirty
+	@read
 	public float getForceCost() {
 		return saberForceCost;
 	}
@@ -335,7 +335,7 @@ class WeaponObject extends TangibleObject {
 		saberForceCost = value;
 	}
 
-	@dirty
+	@read
 	public int getBladeColor() {
 		return bladeColor;
 	}
@@ -344,47 +344,47 @@ class WeaponObject extends TangibleObject {
 		bladeColor = value;
 	}
 
-	@dirty
+	@read
 	public int getDamageType() {
 		return damageType;
 	}
 
-	@dirty
+	@read
 	public string getXpType() {
 		return weaponTemplate.getXpType();
 	}
 
-	@dirty
+	@read
 	public int getNumberOfDots() {
 		return dotType.size();
 	}
 
-	@dirty
+	@read
 	public int getDotType(int index) {
 		return dotType.elementAt(index);
 	}
 
-	@dirty
+	@read
 	public int getDotAttribute(int index) {
 		return dotAttribute.elementAt(index);
 	}
 
-	@dirty
+	@read
 	public int getDotStrength(int index) {
 		return dotStrength.elementAt(index);
 	}
 
-	@dirty
+	@read
 	public int getDotDuration(int index) {
 		return dotDuration.elementAt(index);
 	}
 
-	@dirty
+	@read
 	public int getDotPotency(int index) {
 		return dotPotency.elementAt(index);
 	}
 
-	@dirty
+	@read
 	public int getDotUses(int index) {
 		return dotUses.elementAt(index);
 	}
@@ -420,107 +420,107 @@ class WeaponObject extends TangibleObject {
 	@dirty
 	public native string getWeaponType();
 
-	@dirty
+	@read
 	public boolean isUnarmedWeapon() {
 		return super.gameObjectType == SceneObjectType.WEAPON || super.gameObjectType == SceneObjectType.MELEEWEAPON;
 	}
 
-	@dirty
+	@read
 	public boolean isMeleeWeapon() {
 		return attackType == SharedWeaponObjectTemplate.MELEEATTACK;
 	}
 
-	@dirty
+	@read
 	public boolean isRangedWeapon() {
 		return attackType == SharedWeaponObjectTemplate.RANGEDATTACK;
 	}
 
-	@dirty
+	@read
 	public boolean isRifleWeapon() {
 		return super.gameObjectType == SceneObjectType.RIFLE;
 	}
 
-	@dirty
+	@read
 	public boolean isThrownWeapon() {
 		return super.gameObjectType == SceneObjectType.THROWNWEAPON;
 	}
 
-	@dirty
+	@read
 	public boolean isHeavyWeapon() {
 		return super.gameObjectType == SceneObjectType.HEAVYWEAPON;
 	}
 
-	@dirty
+	@read
 	public boolean isSpecialHeavyWeapon() {
 		return super.gameObjectType == SceneObjectType.SPECIALHEAVYWEAPON;
 	}
 
-	@dirty
+	@read
 	public boolean isLightningRifle() {
 		return weaponTemplate.getServerObjectCRC() == 397924793; // String("object/weapon/ranged/rifle/rifle_lightning.iff").hashCode()
 	}
 
-	@dirty
+	@read
 	public boolean isFlameThrower() {
 		return weaponTemplate.isDerivedFrom("object/weapon/ranged/rifle/rifle_flame_thrower.iff");
 	}
 
-	@dirty
+	@read
 	public boolean isHeavyAcidRifle() {
 		return weaponTemplate.isDerivedFrom("object/weapon/ranged/rifle/rifle_acid_beam.iff");
 	}
 
-	@dirty
+	@read
 	public boolean isCarbineWeapon() {
 		return super.gameObjectType == SceneObjectType.CARBINE;
 	}
 
-	@dirty
+	@read
 	public boolean isPistolWeapon() {
 		return super.gameObjectType == SceneObjectType.PISTOL;
 	}
 
-	@dirty
+	@read
 	public boolean isOneHandMeleeWeapon() {
 		return (super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON && !isJediOneHandedWeapon());
 	}
 
-	@dirty
+	@read
 	public boolean isPolearmWeaponObject() {
 		return (super.gameObjectType == SceneObjectType.POLEARM && !isJediPolearmWeapon());
 	}
 
-	@dirty
+	@read
 	public boolean isTwoHandMeleeWeapon() {
 		return (super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON && !isJediTwoHandedWeapon());
 	}
 
-	@dirty
+	@read
 	public boolean isMineWeapon() {
 		return super.gameObjectType == SceneObjectType.MINE;
 	}
 
-	@dirty
+	@read
 	public boolean isJediWeapon() {
 		return isJediOneHandedWeapon() || isJediTwoHandedWeapon() || isJediPolearmWeapon();
 	}
 
-	@dirty
+	@read
 	public boolean isJediOneHandedWeapon() {
 		return weaponTemplate.isDerivedFrom("object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff");
 	}
 
-	@dirty
+	@read
 	public boolean isJediTwoHandedWeapon() {
 		return weaponTemplate.isDerivedFrom("object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff");
 	}
 
-	@dirty
+	@read
 	public boolean isJediPolearmWeapon() {
 		return weaponTemplate.isDerivedFrom("object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff");
 	}
 
-	@dirty
+	@read
 	public unsigned int getWeaponBitmask() {
 		return weaponTemplate.getWeaponType();
 	}
@@ -530,7 +530,7 @@ class WeaponObject extends TangibleObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public boolean hasPowerup() {
 		return powerupObject != null;
 	}
@@ -557,8 +557,10 @@ class WeaponObject extends TangibleObject {
 		speedSlice = 1 - value;
 	}
 
+	@dirty
 	public abstract native void applySkillModsTo(CreatureObject creature);
 
+	@dirty
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
 
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
@@ -566,8 +568,8 @@ class WeaponObject extends TangibleObject {
 	}
 
 	@local
-	@dirty
-	public VectorMap<string, int> getWearableSkillMods() {
+	@read
+	public final VectorMap<string, int> getWearableSkillMods() {
 		return wearableSkillMods;
 	}
 }

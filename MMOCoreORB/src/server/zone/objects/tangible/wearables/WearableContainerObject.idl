@@ -43,7 +43,8 @@ class WearableContainerObject extends Container {
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
 
 	@local
-	public VectorMap<string, int> getWearableSkillMods() {
+	@read
+	public final VectorMap<string, int> getWearableSkillMods() {
 		return wearableSkillMods;
 	}
 

@@ -289,7 +289,7 @@ String StructureObjectImplementation::getMaintenanceMods() {
 	return "-";
 }
 
-String StructureObjectImplementation::getTimeString(uint32 timestamp) {
+String StructureObjectImplementation::getTimeString(uint32 timestamp) const {
 	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
 
 	int intervals[4] = {1, 60, 3600, 86400};
@@ -543,7 +543,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 }
 
 // Basic checks to see if structure is running tasks etc.
-String StructureObjectImplementation::getDebugStructureStatus() {
+String StructureObjectImplementation::getDebugStructureStatus() const {
 	StringBuffer status;
 
 	if (structureMaintenanceTask != nullptr) {
@@ -556,16 +556,16 @@ String StructureObjectImplementation::getDebugStructureStatus() {
 		ss -= mm * 60;
 		status << "Next maintenance check in";
 
-        if (dd > 0)
-            status << " " << dd << "d";
+		if (dd > 0)
+			status << " " << dd << "d";
 
-        if (dd > 0 || hh > 0)
-            status << " " << hh << "h";
+		if (dd > 0 || hh > 0)
+			status << " " << hh << "h";
 
-        if (dd > 0 || hh > 0 || mm > 0)
-            status << " " << mm << "m";
+		if (dd > 0 || hh > 0 || mm > 0)
+			status << " " << mm << "m";
 
-        status << " " << ss << "s";
+		status << " " << ss << "s";
 	} else {
 		if (getBaseMaintenanceRate() > 0) {
 			status << "WARNING: No maintenance task running on this structure";
@@ -682,8 +682,8 @@ void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targ
 	SkillModManager::instance()->verifyStructureSkillMods(targetObject);
 }
 
-bool StructureObjectImplementation::isCivicStructure() {
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+bool StructureObjectImplementation::isCivicStructure() const {
+	const SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 	if (ssot == NULL)
 		return false;
@@ -696,7 +696,7 @@ bool StructureObjectImplementation::isCityHall() {
 	return dynamic_cast<CityHallZoneComponent*>(getZoneComponent()) != NULL;
 }
 
-bool StructureObjectImplementation::isCommercialStructure() {
+bool StructureObjectImplementation::isCommercialStructure() const {
 	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 	if (ssot == NULL)
@@ -706,7 +706,7 @@ bool StructureObjectImplementation::isCommercialStructure() {
 	return ssot->isCommercialStructure();
 }
 
-bool StructureObjectImplementation::isGuildHall() {
+bool StructureObjectImplementation::isGuildHall() const {
 	for (int i = 0; i < childObjects.size(); i++) {
 		GuildTerminal* child = childObjects.get(i).castTo<GuildTerminal*>();
 

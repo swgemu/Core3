@@ -125,7 +125,7 @@ class StructureObject extends TangibleObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public native string getTimeString(unsigned int timestamp);
 
 	/**
@@ -151,6 +151,7 @@ class StructureObject extends TangibleObject {
 
 	@prelocked
 	@dirty
+	@read
 	public native string getDebugStructureStatus();
 
 	/**
@@ -464,16 +465,16 @@ class StructureObject extends TangibleObject {
 		return "";
 	}
 
-	@dirty
+	@read
 	public native boolean isCivicStructure();
 
 	@dirty
 	public native boolean isCityHall();
 
-	@dirty
+	@read
 	public native boolean isCommercialStructure();
 
-	@dirty
+	@read
 	public native boolean isGuildHall();
 
 	@preLocked
@@ -482,12 +483,12 @@ class StructureObject extends TangibleObject {
 		permissionsFixed = true;
 	}
 
-	@dirty
+	@read
 	public NavArea getNavArea() {
 		return navArea;
 	}
 
-	@dirty
+	@read
 	public boolean hasNavmesh() {
 		return navArea != null;
 	}
