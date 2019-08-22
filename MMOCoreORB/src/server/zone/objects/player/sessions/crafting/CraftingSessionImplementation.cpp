@@ -1311,7 +1311,7 @@ void CraftingSessionImplementation::addSkillMods() {
 	const VectorMap<String, int>* skillMods = draftSchematic->getDraftSchematicTemplate()->getSkillMods();
 
 	for (int i = 0; i < skillMods->size(); i++) {
-		VectorMapEntry<String, int> mod = skillMods->elementAt(i);
+		const auto& mod = skillMods->elementAt(i);
 
 		if (prototype->isWearableObject()) {
 			WearableObject* wearable = prototype.castTo<WearableObject*>();
@@ -1347,10 +1347,10 @@ void CraftingSessionImplementation::addWeaponDots() {
 	const Vector<VectorMap<String, int> >* weaponDots = draftSchematic->getDraftSchematicTemplate()->getWeaponDots();
 
 	for (int i = 0; i < weaponDots->size(); i++) {
-		VectorMap<String, int> dot = weaponDots->elementAt(i);
+		const auto& dot = weaponDots->elementAt(i);
 
 		for (int j = 0; j < dot.size(); j++) {
-			String property = dot.elementAt(j).getKey();
+			const String& property = dot.elementAt(j).getKey();
 			int value = dot.elementAt(j).getValue();
 
 			if (property == "type")

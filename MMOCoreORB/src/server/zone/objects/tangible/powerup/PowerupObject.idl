@@ -13,7 +13,6 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 
-
 @lua
 @json
 class PowerupObject extends TangibleObject {
@@ -33,22 +32,22 @@ class PowerupObject extends TangibleObject {
 		Logger.setLoggingName("PowerupObject");
 	}
 
-	@dirty
+	@read
 	public boolean isRanged() {
 		return type == "ranged";
 	}
 
-	@dirty
+	@read
 	public boolean isMelee() {
 		return type == "melee";
 	}
 
-	@dirty
+	@read
 	public boolean isThrown() {
 		return type == "thrown";
 	}
 
-	@dirty
+	@read
 	public boolean isMine() {
 		return type == "mine";
 	}
@@ -57,7 +56,7 @@ class PowerupObject extends TangibleObject {
 		uses = uses - 1;
 	}
 
-	@dirty
+	@read
 	public int getUses() {
 		return uses;
 	}
@@ -70,7 +69,7 @@ class PowerupObject extends TangibleObject {
 		type = t;
 	}
 
-	@dirty
+	@read
 	public native float getPowerupStat(final string stat);
 
 	public native void addPowerupStat(final string attributeToMod, final string name, final string pupAttrib, float value);
@@ -94,7 +93,7 @@ class PowerupObject extends TangibleObject {
 	@dirty
 	public native void fillWeaponAttributeList(AttributeListMessage alm, WeaponObject weapon);
 
-	@dirty
+	@read
 	private native float getWeaponStat(final string attrib, WeaponObject weapon, boolean withPup);
 
 

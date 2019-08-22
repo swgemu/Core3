@@ -78,19 +78,19 @@ public:
 		addSerializableVariable("value", &value);
 	}
 
-	String getAttributeToModify() {
+	const String& getAttributeToModify() const {
 		return attributeToModify;
 	}
 
-	String getName() {
+	const String& getName() const {
 		return name;
 	}
 
-	String getPupAttribute() {
+	const String& getPupAttribute() const {
 		return pupAttribute;
 	}
 
-	float getValue() {
+	float getValue() const {
 		return value;
 	}
 

@@ -582,7 +582,7 @@ class TangibleObject extends SceneObject {
 		return visibleComponents;
 	}
 
-	@dirty
+	@read
 	public SceneObject getMainDefender() {
 		if(defenderList.size() > 0)
 			return defenderList.get(0);
@@ -883,7 +883,7 @@ class TangibleObject extends SceneObject {
 		luaStringData.drop(key);
 	}
 
-	@dirty
+	@read
 	public string getLuaStringData(final string key) {
 		return luaStringData.get(key);
 	}

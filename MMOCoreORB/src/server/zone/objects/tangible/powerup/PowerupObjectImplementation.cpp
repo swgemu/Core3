@@ -51,7 +51,7 @@ void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* 
 	}
 }
 
-float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon, bool withPup) {
+float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon, bool withPup) const {
 	if (attrib == "pointBlankAccuracy")
 		return weapon->getPointBlankAccuracy(withPup);
 	else if (attrib == "idealRange")
@@ -174,10 +174,10 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 	}
 }
 
-float PowerupObjectImplementation::getPowerupStat(const String& attribName) {
+float PowerupObjectImplementation::getPowerupStat(const String& attribName) const {
 
 	for(int i = 0; i < modifiers.size(); ++i) {
-		PowerupStat* stat = &modifiers.get(i);
+		const PowerupStat* stat = &modifiers.get(i);
 
 		if(attribName.toLowerCase() ==
 				stat->getAttributeToModify().toLowerCase()) {

@@ -211,7 +211,7 @@ public:
 	void loadDerv(IffStream* iffStream);
 	void parseFileData(IffStream* iffStream);
 
-	bool isDerivedFrom(const String& iffPath, bool includeSelf = true);
+	bool isDerivedFrom(const String& iffPath, bool includeSelf = true) const;
 
 	static String getType(int type);
 

@@ -174,7 +174,7 @@ class BuildingObject extends StructureObject {
 	*/
 	@local
 	@dereferenced
-	@dirty
+	@read
 	public native Vector3 getTemplateEjectionPoint();
 
 	@local
@@ -226,7 +226,7 @@ class BuildingObject extends StructureObject {
 	@preLocked
 	public native void addCell(CellObject cell, unsigned int cellNumber);
 
-	@dirty
+	@read
 	public boolean isStaticBuilding() {
 		return super.staticObject;
 	}
@@ -297,16 +297,17 @@ class BuildingObject extends StructureObject {
 		signObject = sign;
 	}
 
+	@read
 	public SignObject getSignObject() {
 		return signObject;
 	}
 
-	@dirty
+	@read
 	public boolean isPublicStructure() {
 		return publicStructure;
 	}
 
-	@dirty
+	@read
 	public boolean isPrivateStructure() {
 		return !publicStructure;
 	}
@@ -397,6 +398,7 @@ class BuildingObject extends StructureObject {
 	@dirty
 	public native boolean canPlayerRegisterWithin();
 
+	@read
 	public boolean isPlayerRegisteredWithin(unsigned long id) {
 		return registeredPlayerIdList.contains(id);
 	}
@@ -414,12 +416,13 @@ class BuildingObject extends StructureObject {
 	@preLocked
 	public native void spawnChildCreature(string mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long cellID);
 
+	@read
 	public native boolean hasTemplateChildCreatures();
 
 	@preLocked
 	public native void destroyChildObjects();
 
-	@dirty
+	@read
 	public boolean isResidence(){
 		return isOwnerResidence;
 	}
@@ -456,5 +459,6 @@ class BuildingObject extends StructureObject {
 	@read
 	public native abstract float getOutOfRangeDistance();
 
+	@read
 	public native string getCellName(unsigned long cellID);
 }

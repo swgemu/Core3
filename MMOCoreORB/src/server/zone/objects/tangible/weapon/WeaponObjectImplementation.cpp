@@ -445,40 +445,35 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 }
 
-int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) {
-
+int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return pointBlankAccuracy + (abs(pointBlankAccuracy) * powerupObject->getPowerupStat("pointBlankAccuracy"));
 
 	return pointBlankAccuracy;
 }
 
-int WeaponObjectImplementation::getPointBlankRange(bool withPup) {
-
+int WeaponObjectImplementation::getPointBlankRange(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return pointBlankRange + (abs(pointBlankRange) * powerupObject->getPowerupStat("pointBlankRange"));
 
 	return pointBlankRange;
 }
 
-int WeaponObjectImplementation::getIdealRange(bool withPup) {
-
+int WeaponObjectImplementation::getIdealRange(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return idealRange + (abs(idealRange) * powerupObject->getPowerupStat("idealRange"));
 
 	return idealRange;
 }
 
-int WeaponObjectImplementation::getMaxRange(bool withPup) {
-
+int WeaponObjectImplementation::getMaxRange(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return maxRange + (abs(maxRange) * powerupObject->getPowerupStat("maxRange"));
 
 	return maxRange;
 }
 
-int WeaponObjectImplementation::getIdealAccuracy(bool withPup) {
-
+int WeaponObjectImplementation::getIdealAccuracy(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return idealAccuracy + (abs(idealAccuracy) * powerupObject->getPowerupStat("idealAccuracy"));
 
@@ -486,16 +481,14 @@ int WeaponObjectImplementation::getIdealAccuracy(bool withPup) {
 }
 
 
-int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) {
-
+int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return maxRangeAccuracy + (abs(maxRangeAccuracy) * powerupObject->getPowerupStat("maxRangeAccuracy"));
 
 	return maxRangeAccuracy;
 }
 
-float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
-
+float WeaponObjectImplementation::getAttackSpeed(bool withPup) const {
 	float speed = attackSpeed;
 
 	if(sliced)
@@ -513,8 +506,7 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 }
 
 
-float WeaponObjectImplementation::getMaxDamage(bool withPup) {
-
+float WeaponObjectImplementation::getMaxDamage(bool withPup) const {
 	float damage = maxDamage;
 
 	if(sliced)
@@ -528,8 +520,7 @@ float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 	return damage - getConditionReduction(damage);
 }
 
-float WeaponObjectImplementation::getMinDamage(bool withPup) {
-
+float WeaponObjectImplementation::getMinDamage(bool withPup) const {
 	float damage = minDamage;
 
 	if(sliced)
@@ -543,16 +534,14 @@ float WeaponObjectImplementation::getMinDamage(bool withPup) {
 	return damage - getConditionReduction(damage);
 }
 
-float WeaponObjectImplementation::getWoundsRatio(bool withPup) {
-
+float WeaponObjectImplementation::getWoundsRatio(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return woundsRatio + (woundsRatio * powerupObject->getPowerupStat("woundsRatio"));
 
 	return woundsRatio;
 }
 
-float WeaponObjectImplementation::getDamageRadius(bool withPup) {
-
+float WeaponObjectImplementation::getDamageRadius(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return damageRadius + (damageRadius * powerupObject->getPowerupStat("damageRadius"));
 
@@ -560,24 +549,21 @@ float WeaponObjectImplementation::getDamageRadius(bool withPup) {
 }
 
 
-int WeaponObjectImplementation::getHealthAttackCost(bool withPup) {
-
+int WeaponObjectImplementation::getHealthAttackCost(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return healthAttackCost - (abs(healthAttackCost) * powerupObject->getPowerupStat("healthAttackCost"));
 
 	return healthAttackCost;
 }
 
-int WeaponObjectImplementation::getActionAttackCost(bool withPup) {
-
+int WeaponObjectImplementation::getActionAttackCost(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return actionAttackCost - (abs(actionAttackCost) * powerupObject->getPowerupStat("actionAttackCost"));
 
 	return actionAttackCost;
 }
 
-int WeaponObjectImplementation::getMindAttackCost(bool withPup) {
-
+int WeaponObjectImplementation::getMindAttackCost(bool withPup) const {
 	if(powerupObject != NULL && withPup)
 		return mindAttackCost - (abs(mindAttackCost) * powerupObject->getPowerupStat("mindAttackCost"));
 
@@ -656,13 +642,13 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 	setConditionDamage(0);
 }
 
-bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
+bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) const {
 	ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
 
 	if (ghost == NULL)
 		return false;
 
-	Vector<String>* certificationsRequired = weaponTemplate->getCertificationsRequired();
+	const auto certificationsRequired = weaponTemplate->getCertificationsRequired();
 
 	for (int i = 0; i < certificationsRequired->size(); ++i) {
 		const String& cert = certificationsRequired->get(i);
@@ -698,7 +684,6 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 }
 
 String WeaponObjectImplementation::repairAttempt(int repairChance) {
-
 	String message = "@error_message:";
 
 	if(repairChance < 25) {
@@ -775,7 +760,7 @@ void WeaponObjectImplementation::applySkillModsTo(CreatureObject* creature) {
 	}
 
 	for (int i = 0; i < wearableSkillMods.size(); ++i) {
-		String name = wearableSkillMods.elementAt(i).getKey();
+		const String& name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
@@ -791,7 +776,7 @@ void WeaponObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
 	}
 
 	for (int i = 0; i < wearableSkillMods.size(); ++i) {
-		String name = wearableSkillMods.elementAt(i).getKey();
+		const String& name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
 		if (!SkillModManager::instance()->isWearableModDisabled(name))

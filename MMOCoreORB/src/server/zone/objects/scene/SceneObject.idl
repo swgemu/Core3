@@ -924,7 +924,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return 0;
 	}
 
-	@dirty
+	@read
 	@local
 	@weakReference
 	public abstract CityRegion getCityRegion() {
