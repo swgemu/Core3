@@ -571,7 +571,6 @@ class TangibleObject extends SceneObject {
 
 	@local
 	@read
-	@preLocked
 	public final DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
 	}
