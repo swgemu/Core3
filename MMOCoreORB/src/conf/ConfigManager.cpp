@@ -116,7 +116,7 @@ void ConfigManager::cacheHotItems() {
 void ConfigManager::dumpConfig(bool includeSecure) {
 	uint64 age = getConfigDataAgeMs() / 1000;
 
-	info("dumpConfig: START (Config Age: " + String::valueOf(age) + " s)", true);
+	info(true) << "dumpConfig: START (Config Age: " << age << " s)";
 
 	String hottestKey;
 	int maxPS = 0;
@@ -132,7 +132,8 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 		if (!includeSecure && (key.toLowerCase().contains("pass") || key.toLowerCase().contains("secret")))
 			stringVal = "*******";
 
-		StringBuffer msg;
+		auto msg = info(true);
+
 		int ps = age > 0 ? itm->getUsageCounter() / age : 0;
 
 		if (ps > maxPS || itm->getUsageCounter() > maxUsageCounter) {
@@ -144,18 +145,18 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 		msg << key
 			<< " usageCounter: " << itm->getUsageCounter()
 			<< " (" << ps << "/s)"
-		    << " bool: " << itm->getBool()
+			<< " bool: " << itm->getBool()
 			<< " int: " << itm->getInt()
-		    << " float: " << itm->getFloat()
+			<< " float: " << itm->getFloat()
 			<< " str: '" << stringVal.escapeString()
-			<< "'"
-			;
+			<< "'";
 
-		info(msg, true);
+		msg.flush();
 	}
 
 	if (!hottestKey.isEmpty()) {
-		info("Hottest key: " + hottestKey + " usageCounter: " + String::valueOf(maxUsageCounter) + " (" + String::valueOf(maxPS) + "/s)", true);
+		info(true) << "Hottest key: " <<
+		       	hottestKey << " usageCounter: " << maxUsageCounter << " (" << maxPS << "/s)";
 	}
 
 #ifdef DEBUG_CONFIGMANAGER

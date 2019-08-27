@@ -178,7 +178,7 @@ class StructureObject extends TangibleObject {
 	 * @param player The creo of the player to check for entry permission.
 	 * @return Returns true if the player has entry permissions.
 	 */
-	@dirty
+	@read
 	public native boolean isOnEntryList(CreatureObject player);
 
 	/**
@@ -186,7 +186,7 @@ class StructureObject extends TangibleObject {
 	 * @param player The creo of the player to check for ban permission.
 	 * @return Returns true if the player has ban permissions.
 	 */
-	@dirty
+	@read
 	public native boolean isOnBanList(CreatureObject player);
 
 	/**
@@ -195,7 +195,7 @@ class StructureObject extends TangibleObject {
 	 * @param objectID The oid of the player/guild to check for ban permission.
 	 * @return Returns true if the player/guild has ban permissions.
 	 */
-	@dirty
+	@read
 	public boolean isOnBanList(final unsigned long objectID) {
 		return structurePermissionList.isOnPermissionList("BAN", objectID);
 	}
@@ -205,7 +205,7 @@ class StructureObject extends TangibleObject {
 	 * @param player The creo of the player to check for hopper permission.
 	 * @return Returns true if the player has hopper permissions.
 	 */
-	@dirty
+	@read
 	public native boolean isOnHopperList(CreatureObject player);
 
 	/**
@@ -214,7 +214,7 @@ class StructureObject extends TangibleObject {
 	 * @param player The creo of the player to check.
 	 * @return Returns true if the player was found on the list.
 	 */
-	@dirty
+	@read
 	public native boolean isOnPermissionList(final string listName, CreatureObject player);
 
 	/**
@@ -224,22 +224,23 @@ class StructureObject extends TangibleObject {
 	 * @param objectID The oid of the player/guild to check.
 	 * @return Returns true if the player/guild was found on the list.
 	 */
-	@dirty
+	@read
 	public boolean isOnPermissionList(final string listName, final unsigned long objectID) {
 		return structurePermissionList.isOnPermissionList(listName, objectID);
 	}
 
-	@dirty
+	@read
 	public native boolean isOwnerOf(SceneObject obj);
-	@dirty
+
+	@read
 	public native boolean isOwnerOf(unsigned long oid);
 
-	@dirty
+	@read
 	public boolean isOnAccessList(SceneObject obj) {
 		return false;
 	}
 
-	@dirty
+	@read
 	public boolean isOnAccessList(unsigned long oid) {
 		return false;
 	}
@@ -249,12 +250,12 @@ class StructureObject extends TangibleObject {
 		structurePermissionList.sendTo(creature, listName);
 	}
 
-	@dirty
+	@read
 	public boolean hasPermissionList(final string listName) {
 		return structurePermissionList.containsList(listName);
 	}
 
-	@dirty
+	@read
 	public boolean isPermissionListFull(final string listName) {
 		return structurePermissionList.isListFull(listName);
 	}
@@ -288,7 +289,7 @@ class StructureObject extends TangibleObject {
 		return (getBaseMaintenanceRate() * 50);
 	}
 
-	@dirty
+	@read
 	public native CreatureObject getOwnerCreatureObject();
 
 	@read
@@ -309,10 +310,10 @@ class StructureObject extends TangibleObject {
 		maintenanceReduced = value;
 	}
 
-	@dirty
+	@read
 	public native float getMaintenanceRate();
 
-	@dirty
+	@read
 	public native string getMaintenanceMods();
 
 	@read
@@ -405,7 +406,7 @@ class StructureObject extends TangibleObject {
 		surplusPower += add;
 	}
 
-	@dirty
+	@read
 	public boolean isDecaying() {
 		return (surplusMaintenance < 0);
 	}
@@ -430,7 +431,7 @@ class StructureObject extends TangibleObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public native boolean isCampStructure();
 
 	@dirty
@@ -447,7 +448,7 @@ class StructureObject extends TangibleObject {
 	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
 	 */
 	@local
-	@dirty
+	@read
 	@arg1preLocked
 	public native void addTemplateSkillMods(TangibleObject targetObject);
 
@@ -456,7 +457,7 @@ class StructureObject extends TangibleObject {
 	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
 	 */
 	@local
-	@dirty
+	@read
 	@arg1preLocked
 	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
 
