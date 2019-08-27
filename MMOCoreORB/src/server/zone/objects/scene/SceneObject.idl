@@ -1787,7 +1787,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return gameObjectType == SceneObjectType.CAMPKIT;
 	}
 
-	@dirty
+	@read
 	public abstract boolean isCampStructure() {
 		return false;
 	}

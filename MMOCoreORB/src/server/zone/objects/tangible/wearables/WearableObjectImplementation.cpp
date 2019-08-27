@@ -166,7 +166,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		if (wearableSkillMods.size() < 6) {
 			HashTable<String, int>* mods = attachment->getSkillMods();
 			HashTableIterator<String, int> iterator = mods->iterator();
-			
+
 			String statName;
 			int newValue;
 
@@ -206,7 +206,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 	}
 }
 
-void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) {
+void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) const {
 	if (creature == NULL) {
 		return;
 	}

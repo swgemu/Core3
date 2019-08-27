@@ -869,7 +869,7 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int ma
 	return crate;
 }
 
-void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) {
+void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) const {
 	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)

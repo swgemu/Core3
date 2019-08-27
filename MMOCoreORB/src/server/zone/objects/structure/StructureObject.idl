@@ -335,12 +335,12 @@ class StructureObject extends TangibleObject {
 		return surplusPower;
 	}
 
-	@dirty
+	@read
 	public abstract boolean isPublicStructure() {
 		return false;
 	}
 
-	@dirty
+	@read
 	public abstract boolean isPrivateStructure() {
 		return false;
 	}
