@@ -242,7 +242,7 @@ void StructureObjectImplementation::destroyOrphanCivicStructure() {
 
 	String path = exportJSON("Destroyed by destroyOrphanCivicStructure");
 
-	error("Destroyed orphan civic structure and exported to " + path);
+	error() << "Destroyed orphan civic structure and exported to " << path;
 
 	structureManager->destroyStructure(_this.getReferenceUnsafeStaticCast());
 }
@@ -256,7 +256,7 @@ int StructureObjectImplementation::getLotSize() const {
 	return ssot->getLotSize();
 }
 
-CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() {
+CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() const {
 	//Get the owner of the structure
 	ManagedReference<SceneObject*> owner = getZoneServer()->getObject(getOwnerObjectID());
 
@@ -267,7 +267,7 @@ CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() {
 	}
 }
 
-float StructureObjectImplementation::getMaintenanceRate() {
+float StructureObjectImplementation::getMaintenanceRate() const {
 	float rate = getBaseMaintenanceRate();
 
 #if DEBUG_STRUCTURE_RAPID_DECAY
@@ -281,7 +281,7 @@ float StructureObjectImplementation::getMaintenanceRate() {
 	return (float)((int)rate); // Round to nearest int
 }
 
-String StructureObjectImplementation::getMaintenanceMods() {
+String StructureObjectImplementation::getMaintenanceMods() const {
 	if (maintenanceReduced) {
 			return "-20%";
 	}
@@ -290,7 +290,7 @@ String StructureObjectImplementation::getMaintenanceMods() {
 }
 
 String StructureObjectImplementation::getTimeString(uint32 timestamp) const {
-	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
+	const static String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
 
 	int intervals[4] = {1, 60, 3600, 86400};
 	int values[4] = {0, 0, 0, 0};
@@ -442,7 +442,7 @@ void StructureObjectImplementation::destroyObjectFromDatabase(bool destroyContai
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
+bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) const {
 	if (obj == NULL || !obj->isPlayerCreature()) {
 		return false;
 	}
@@ -455,7 +455,7 @@ bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
 	return obj->getObjectID() == ownerObjectID;
 }
 
-bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
+bool StructureObjectImplementation::isOwnerOf(uint64 objid) const {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objid);
 
 	if (obj == NULL || !obj->isPlayerCreature()) {
@@ -638,15 +638,15 @@ void StructureObjectImplementation::payMaintenance(int maintenance, CreditObject
 	addMaintenance(maintenance);
 }
 
-bool StructureObjectImplementation::isCampStructure() {
+bool StructureObjectImplementation::isCampStructure() const {
 	return templateObject->isCampStructureTemplate();
 }
 
-void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) {
+void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) const {
 	if(!targetObject->isPlayerCreature())
 		return;
 
-	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+	const SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)
 		return;
@@ -662,11 +662,11 @@ void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetO
 	SkillModManager::instance()->verifyStructureSkillMods(targetObject);
 }
 
-void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) {
+void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) const {
 	if(!targetObject->isPlayerCreature())
 		return;
 
-	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+	const SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)
 		return;
@@ -757,7 +757,7 @@ bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) const 
 	return false;
 }
 
-bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
+bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) const {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL && ghost->hasGodMode())
@@ -778,7 +778,7 @@ bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
 	return false;
 }
 
-bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
+bool StructureObjectImplementation::isOnBanList(CreatureObject* player) const {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL && ghost->hasGodMode())
@@ -795,7 +795,7 @@ bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
 	return false;
 }
 
-bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
+bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) const {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL && ghost->isPrivileged())
@@ -814,7 +814,7 @@ bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
 	return false;
 }
 
-bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) {
+bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) const {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL && ghost->isPrivileged()) {

@@ -69,7 +69,7 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 		setJediManagerName(managerName);
 	}
 
-	info("Loaded.");
+	info() << Thread::getCurrentThread()->getName() <<  " loaded.";
 }
 
 void JediManager::onPlayerCreated(CreatureObject* creature) {

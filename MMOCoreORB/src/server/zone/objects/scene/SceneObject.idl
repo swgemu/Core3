@@ -16,6 +16,7 @@ import system.util.SortedVector;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.u3d.Vector3;
+include engine.log.LoggerHelperStream;
 include engine.util.Facade;
 include templates.params.ObserverEventType;
 include server.zone.ZoneReference;
@@ -218,6 +219,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		Logger.info(msg, forced);
 	}
 
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream info(boolean forced = false)  {
+		return Logger.info(forced);
+	}
+
 	/**
 	 * Logs an error message
 	 * @pre {}
@@ -229,6 +237,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		Logger.error(msg);
 	}
 
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream error()  {
+		return Logger.error();
+	}
+
 	/**
 	 * Logs a debug message
 	 * @pre {}
@@ -238,6 +253,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@read
 	public void debug(final string msg) {
 		Logger.debug(msg);
+	}
+
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream debug()  {
+		return Logger.debug();
 	}
 
 	/**
@@ -1765,7 +1787,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return gameObjectType == SceneObjectType.CAMPKIT;
 	}
 
-	@dirty
+	@read
 	public abstract boolean isCampStructure() {
 		return false;
 	}

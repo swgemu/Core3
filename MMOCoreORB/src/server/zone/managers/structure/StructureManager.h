@@ -86,7 +86,7 @@ public:
 	/**
 	 * Converts seconds remaining into days, hours, minutes timestamp
 	 */
-	String getTimeString(uint32 timestamp);
+	static String getTimeString(uint32 timestamp);
 
 	/**
 	 * Returns the closest parking garage to the obj, or NULL if one can't be found within the required radius.

@@ -29,7 +29,7 @@ void WearableContainerObjectImplementation::fillAttributeList(AttributeListMessa
 	}
 }
 
-void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature) {
+void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature) const {
 	if (creature == NULL) {
 		return;
 	}

@@ -557,7 +557,7 @@ class WeaponObject extends TangibleObject {
 		speedSlice = 1 - value;
 	}
 
-	@dirty
+	@read
 	public abstract native void applySkillModsTo(CreatureObject creature);
 
 	@dirty
