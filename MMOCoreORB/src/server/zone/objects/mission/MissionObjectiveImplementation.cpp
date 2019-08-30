@@ -84,7 +84,7 @@ void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool
 
 	if (makePersistent) {
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
-	} else if (!observer->isDeplyoed())
+	} else if (!observer->isDeployed())
 		observer->deploy();
 
 	observers.put(observer);

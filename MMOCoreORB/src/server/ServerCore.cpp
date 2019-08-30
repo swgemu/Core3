@@ -110,9 +110,8 @@ void ServerCore::signalShutdown() {
 }
 
 void ServerCore::initialize() {
-	info("starting up server..");
-
-	info("Server start, pid: " + String::valueOf(getpid()) + ", time: " + Time().getFormattedTime(), true);
+	info(true) << "Server start, pid: "
+		<< Thread::getProcessID() << ", time: " << Time().getFormattedTime();
 
 	processConfig();
 
@@ -134,9 +133,10 @@ void ServerCore::initialize() {
 
 		orb->setCustomObjectManager(objectManager);
 
-		StringBuffer metricsMsg;
-		metricsMsg << "MetricsServer: " << String::valueOf(configManager->shouldUseMetrics()) << " " << configManager->getMetricsHost() << " " << String::valueOf(configManager->getMetricsPort());
-		info(metricsMsg, true);
+		auto metricsMsg = info(true);
+		metricsMsg << "MetricsServer: " << configManager->shouldUseMetrics()
+			<< " " << configManager->getMetricsHost() << " " << configManager->getMetricsPort();
+		metricsMsg.flush();
 
 		if (configManager->shouldUseMetrics()) {
 			metricsManager->setGlobalPrefix(configManager->getMetricsPrefix());
@@ -284,7 +284,7 @@ void ServerCore::run() {
 }
 
 void ServerCore::shutdown() {
-	info("shutting down server..", true);
+	info(true) << "shutting down server..";
 
 	if (restServer) {
 		restServer->stop();

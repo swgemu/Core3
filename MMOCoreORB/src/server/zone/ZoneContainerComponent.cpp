@@ -17,7 +17,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	if (newZone == nullptr)
 		return false;
 
-	if (!activeArea->isDeplyoed())
+	if (!activeArea->isDeployed())
 		activeArea->deploy();
 
 	Zone* zone = activeArea->getZone();
@@ -275,7 +275,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			parent->removeObject(object, nullptr, false);
 		} else
 			zone->remove(object);
-			
+
 		Zone* oldZone = zone;
 
 		auto closeObjects = object->getCloseObjects();

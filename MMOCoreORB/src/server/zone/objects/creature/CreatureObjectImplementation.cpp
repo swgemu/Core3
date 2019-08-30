@@ -256,10 +256,8 @@ void CreatureObjectImplementation::loadTemplateData(
 	auto zoneServer = ServerCore::getZoneServer();
 
 	if (zoneServer && isPlayerCreature()) {
-		auto creo = asCreatureObject();
-		WeakReference<PlayerManager*> manager = zoneServer->getPlayerManager();
-
-		setLoggerCallback([creo, manager](Logger::LogLevel level, const char* msg) -> int {
+		setLoggerCallback([creo = asCreatureObject(), manager = WeakReference<PlayerManager*>(zoneServer->getPlayerManager())]
+				(Logger::LogLevel level, const char* msg) -> int {
 			auto playerManager = manager.get();
 
 			if (playerManager != nullptr) {
