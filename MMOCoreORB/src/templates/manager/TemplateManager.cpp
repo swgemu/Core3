@@ -236,7 +236,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	delete iffStream;
 
-	info("loading customization id manager", true);
+	info(true) << "loading customization id manager";
 
 	iffStream = openIffFile("customization/customization_id_manager.iff");
 
@@ -382,7 +382,7 @@ void TemplateManager::loadLuaTemplates() {
 		return;
 	}
 
-	info("Loading object templates", true);
+	info(true) << "Loading object templates";
 
 	try {
 		bool val = luaTemplatesInstance->runFile("scripts/object/main.lua");
