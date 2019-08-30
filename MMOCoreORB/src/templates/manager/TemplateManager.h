@@ -40,9 +40,9 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 
 	SynchronizedVectorMap<String, Reference<StructureFootprint*> > structureFootprints;
 
-	VectorMap<String, Reference<SlotId*> > slotDefinitions;
-	VectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;
-	VectorMap<String, Reference<ArrangementDescriptor*> > arrangementDescriptors;
+	SynchronizedVectorMap<String, Reference<SlotId*> > slotDefinitions;
+	SynchronizedVectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;
+	SynchronizedVectorMap<String, Reference<ArrangementDescriptor*> > arrangementDescriptors;
 
 	ReadWriteLock appearanceMapLock;
 

@@ -99,6 +99,23 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	sessionStatsTotalMovement = 0;
 	sessionStatsIPAddress = "";
 	miliSecsSession = 0;
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer != nullptr) {
+		auto playerObject = asPlayerObject();
+		WeakReference<PlayerManager*> manager = zoneServer->getPlayerManager();
+
+		setLoggerCallback([playerObject, manager] (Logger::LogLevel level, const char* msg) -> int {
+			auto playerManager = manager.get();
+
+			if (playerManager != nullptr) {
+				playerManager->writePlayerLog(playerObject, msg, level);
+			}
+
+			return 0;
+		});
+	}
 }
 
 PlayerObject* PlayerObjectImplementation::asPlayerObject() {
@@ -107,18 +124,6 @@ PlayerObject* PlayerObjectImplementation::asPlayerObject() {
 
 PlayerObject* PlayerObject::asPlayerObject() {
 	    return this;
-}
-
-void PlayerObjectImplementation::info(const String& msg, bool force) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::INFO);
-}
-
-void PlayerObjectImplementation::debug(const String& msg) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::DEBUG);
-}
-
-void PlayerObjectImplementation::error(const String& msg) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::ERROR);
 }
 
 void PlayerObjectImplementation::checkPendingMessages() {

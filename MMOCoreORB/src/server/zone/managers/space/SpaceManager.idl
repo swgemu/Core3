@@ -9,10 +9,11 @@ import server.zone.ZoneProcessServer;
 import server.zone.Zone;
 include engine.log.Logger;
 
+@dirty
 class SpaceManager extends PlanetManager {
 	public SpaceManager(Zone planet, ZoneProcessServer srv) {
 		super(planet, srv);
-		
+
 		Logger.setLoggingName("SpaceManager " + planet.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);

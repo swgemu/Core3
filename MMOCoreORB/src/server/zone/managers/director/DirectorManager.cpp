@@ -154,7 +154,7 @@ void DirectorManager::loadPersistentEvents() {
 		error("Database exception in DirectorManager::loadPersistentEvents(): "	+ e.getMessage());
 	}
 
-	info(String::valueOf(i) + " persistent events loaded.", true);
+	info(true) << i << " persistent events loaded.";
 }
 
 void DirectorManager::loadPersistentStatus() {
@@ -190,7 +190,7 @@ void DirectorManager::loadPersistentStatus() {
 		error("Database exception in DirectorManager::loadPersistentStatus(): "	+ e.getMessage());
 	}
 
-	info(String::valueOf(questStatuses.size() + questVectorMaps.size()) + " persistent statuses loaded.", true);
+	info(true) << questStatuses.size() + questVectorMaps.size() << " persistent statuses loaded.";
 }
 
 void DirectorManager::setQuestStatus(const String& keyString, const String& valString) {
@@ -565,7 +565,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalLong("FACTIONREBEL", Factions::FACTIONREBEL);
 
 	// Badges
-	VectorMap<unsigned int, const Badge*>* badges = BadgeList::instance()->getMap();
+	const auto badges = BadgeList::instance()->getMap();
 	const int vectorSize = badges->size();
 	for (int i = 0; i < vectorSize;i++) {
 		const Badge* badge = badges->get(i);
@@ -625,7 +625,12 @@ int DirectorManager::loadScreenPlays(Lua* luaEngine) {
 	if (!DEBUG_MODE) {
 		auto elapsed = loadTimer.stopMs();
 
-		info(Thread::getCurrentThread()->getName() + " loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays in " + String::valueOf(elapsed) + " ms.", true);
+		info() << Thread::getCurrentThread()->getName()
+			<< " loaded "
+			<< instance()->screenPlays.size()
+			<< " screenplays in "
+			<< elapsed
+			<< " ms.";
 	}
 
 	if (!res)
@@ -1601,7 +1606,6 @@ int DirectorManager::updateCellPermission(lua_State* L) {
 		obj->info("Cell NULL", true);
 		return 0;
 	}
-
 
 	if (!sco->isCellObject()) {
 		sco->info("Unknown entity error: Cell", true);
@@ -3661,7 +3665,7 @@ int DirectorManager::getBadgeListByType(lua_State* L) {
 
 	int count = 0;
 
-	VectorMap<unsigned int, const Badge*>* badgeList = BadgeList::instance()->getMap();
+	const VectorMap<unsigned int, const Badge*>* badgeList = BadgeList::instance()->getMap();
 
 	for (int i = 0; i < badgeList->size(); i++) {
 		const Badge* badge = badgeList->get(i);

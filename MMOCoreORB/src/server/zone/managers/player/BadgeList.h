@@ -6,7 +6,7 @@
 class BadgeList : public Singleton<BadgeList>, Logger, public Object {
 	// idx to Badge
 	VectorMap<unsigned int, const Badge*> badges;
-	
+
 	// Name to badge
 	HashTable<String, const Badge*> names;
 
@@ -39,7 +39,7 @@ public:
 	/*
 	 * Returns the (idx, Badge*) vector map
 	 */
-	inline VectorMap<unsigned int, const Badge*>* getMap() {
+	inline const VectorMap<unsigned int, const Badge*>* getMap() const {
 		return &badges;
 	}
 

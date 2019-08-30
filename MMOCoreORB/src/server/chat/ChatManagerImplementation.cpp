@@ -267,7 +267,7 @@ void ChatManagerImplementation::loadMoodTypes() {
 
 			if (stringFile.load(stream)) {
 
-				HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
+				const HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
 
 				HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
 

@@ -423,11 +423,7 @@ class PlayerObject extends IntangibleObject {
 		countMaxCov = newMaxCov;
 	}
 
-    public native void info(final string msg, boolean force = false);
-    public native void debug(final string msg);
-    public native void error(final string msg);
-
-	public void setClientPathWaypoint(SceneObject obj) {
+  	public void setClientPathWaypoint(SceneObject obj) {
 		currentClientPathWaypoint = obj;
 	}
 
