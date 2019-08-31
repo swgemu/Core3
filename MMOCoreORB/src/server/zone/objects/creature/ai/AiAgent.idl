@@ -1051,7 +1051,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getDiet();
 	}
 
-	@dirty
+	@read
 	public unsigned int getTemplateLevel() {
 		if (petDeed != null) {
 			return petDeed.getLevel();
@@ -1063,7 +1063,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getLevel();
 	}
 
-	@dirty
+	@read
 	public float getTame() {
 		if (petDeed != null) {
 			return 1;
@@ -1076,7 +1076,8 @@ class AiAgent extends CreatureObject {
 	}
 
 	@local
-	public CreatureAttackMap getAttackMap() {
+	@dirty
+	public final CreatureAttackMap getAttackMap() {
 		if (getWeapon() == readyWeapon) {
 			return attackMap;
 		} else {
@@ -1086,7 +1087,7 @@ class AiAgent extends CreatureObject {
 
 	@local
 	@dirty
-	public LootGroupCollection getLootGroups() {
+	public final LootGroupCollection getLootGroups() {
 		if (npcTemplate.get() == null || isEventMob())
 			return null;
 
@@ -1133,8 +1134,8 @@ class AiAgent extends CreatureObject {
 	public native AiAgent asAiAgent();
 
 	@local
-	@dirty
-	public CreatureTemplate getCreatureTemplate() {
+	@read
+	public final CreatureTemplate getCreatureTemplate() {
 		return npcTemplate.get();
 	}
 
@@ -1149,7 +1150,7 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native boolean isEventMob();
 
-	@dirty
+	@read
 	public boolean isPet() {
 		return (getControlDevice() != null);
 	}
@@ -1263,7 +1264,7 @@ class AiAgent extends CreatureObject {
 		homeObject = home;
 	}
 
-	@dirty
+	@read
 	@local
 	@weakReference
 	public SceneObject getHomeObject() {
@@ -1278,7 +1279,7 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native void setCombatState();
 
-	@dirty
+	@read
 	public int getCreatureBitmask() {
 		return creatureBitmask;
 	}
@@ -1325,6 +1326,7 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native boolean hasRangedWeapon();
 
+	@dirty
 	public native boolean getUseRanged();
 
 	@dirty
@@ -1335,11 +1337,12 @@ class AiAgent extends CreatureObject {
 		petDeed = deed;
 	}
 
+	@read
 	public boolean hasPetDeed() {
 		return petDeed != null;
 	}
 
-	@dirty
+	@read
 	public PetDeed getPetDeed() {
 		return petDeed;
 	}
@@ -1347,11 +1350,13 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native void sendReactionChat(int type, int state = 0, boolean force = false);
 
+	@dirty
 	public abstract boolean hasReactionChatMessages() {
 		return getReactionStf() != "";
 	}
 
 	@local
+	@dirty
 	public native float getEffectiveResist();
 
 	@dirty
@@ -1367,11 +1372,12 @@ class AiAgent extends CreatureObject {
 		reactionRank = rank;
 	}
 
-	@dirty
+	@read
 	public int getHamMaximum() {
 		return npcTemplate.get().getBaseHAMmax();
 	}
-	@dirty
+
+	@read
 	public int getHamBase() {
 		return npcTemplate.get().getBaseHAM();
 	}

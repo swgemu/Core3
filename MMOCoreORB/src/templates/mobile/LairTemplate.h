@@ -49,11 +49,11 @@ public:
 	virtual ~LairTemplate() {
 	}
 
-	String getBuilding(uint32 difficulty) {
+	String getBuilding(uint32 difficulty) const {
 		if (buildingType == NONE)
 			return String();
 
-		Vector<String>* objects = NULL;
+		const Vector<String>* objects = NULL;
 
 		objects = buildings.get(difficulty);
 
@@ -69,14 +69,14 @@ public:
 			return String();
 	}
 
-	String getMissionBuilding(uint32 difficulty) {
+	String getMissionBuilding(uint32 difficulty) const {
 		if (!missionBuilding.isEmpty() || difficulty > VERYHARD)
 			return missionBuilding;
 
 		return getBuilding(difficulty);
 	}
 
-	Vector<String>* getBuildings( int difficulty ){
+	const Vector<String>* getBuildings(int difficulty) const {
 		return buildings.get((uint32)difficulty);
 	}
 
@@ -223,23 +223,23 @@ public:
 		}
 	}
 
-	int getSpawnLimit() {
+	int getSpawnLimit() const {
 		return spawnLimit;
 	}
 
-	VectorMap<String, int>* getMobiles() {
+	const VectorMap<String, int>* getMobiles() const {
 		return &mobiles;
 	}
 
-	Vector<String>* getWeightedMobiles() {
+	const Vector<String>* getWeightedMobiles() const {
 		return &weightedMobiles;
 	}
 
-	VectorMap<String, int>* getBossMobiles() {
+	const VectorMap<String, int>* getBossMobiles() const {
 		return &bossMobiles;
 	}
 
-	bool hasBossMobs() {
+	bool hasBossMobs() const {
 		return bossMobiles.size() > 0;
 	}
 
@@ -247,19 +247,19 @@ public:
 		return true;
 	}
 
-	String& getName() {
+	const String& getName() const {
 		return name;
 	}
 
-	unsigned int getFaction() {
+	unsigned int getFaction() const {
 		return faction;
 	}
 
-	MobType getMobType() {
+	MobType getMobType() const {
 		return mobType;
 	}
 
-	BuildingType getBuildingType() {
+	BuildingType getBuildingType() const {
 		return buildingType;
 	}
 };

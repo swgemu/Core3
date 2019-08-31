@@ -88,67 +88,67 @@ public:
 		maxWoundChance = luaObject->getIntField("maxWoundChance");
 	}
 
-	inline int getMinDamage() {
+	inline int getMinDamage() const {
 		return minDamage;
 	}
 
-	inline int getMaxDamage() {
+	inline int getMaxDamage() const {
 		return maxDamage;
 	}
 
-	inline int getMinHitpoints() {
+	inline int getMinHitpoints() const {
 		return minHitpoints;
 	}
 
-	inline int getMaxHitpoints() {
+	inline int getMaxHitpoints() const {
 		return maxHitpoints;
 	}
 
-	inline int getMinHealthSac() {
+	inline int getMinHealthSac() const {
 		return minHealthSac;
 	}
 
-	inline int getMaxHealthSac() {
+	inline int getMaxHealthSac() const {
 		return maxHealthSac;
 	}
 
-	inline int getMinActionSac() {
+	inline int getMinActionSac() const {
 		return minActionSac;
 	}
 
-	inline int getMaxActionSac() {
+	inline int getMaxActionSac() const {
 		return maxActionSac;
 	}
 
-	inline int getMinMindSac() {
+	inline int getMinMindSac() const {
 		return minMindSac;
 	}
 
-	inline int getMaxMindSac() {
+	inline int getMaxMindSac() const {
 		return maxMindSac;
 	}
 
-	inline int getMinWoundChance() {
+	inline int getMinWoundChance() const {
 		return minWoundChance;
 	}
 
-	inline float getMinAttackSpeed() {
+	inline float getMinAttackSpeed() const {
 		return minAttackSpeed;
 	}
 
-	inline float getMaxAttackSpeed() {
+	inline float getMaxAttackSpeed() const {
 		return maxAttackSpeed;
 	}
 
-	inline float getMinForceCost() {
+	inline float getMinForceCost() const {
 		return minForceCost;
 	}
 
-	inline float getMaxForceCost() {
+	inline float getMaxForceCost() const {
 		return maxForceCost;
 	}
 
-	inline int getMaxWoundChance() {
+	inline int getMaxWoundChance() const {
 		return maxWoundChance;
 	}
 

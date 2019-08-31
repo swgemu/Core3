@@ -55,31 +55,31 @@ public:
 		values.removeAll();
 	}
 
-	inline float getPercentage() {
+	inline float getPercentage() const {
 		return values.get("currentPercentage");
 	}
 
-	inline float getValue() {
+	inline float getValue() const {
 		return values.get("currentValue");
 	}
 
-	inline float getMaxPercentage() {
+	inline float getMaxPercentage() const {
 		return values.get("maxPercentage");
 	}
 
-	inline float getMinValue() {
+	inline float getMinValue() const {
 		return minValue;
 	}
 
-	inline float getMaxValue() {
+	inline float getMaxValue() const {
 		return maxValue;
 	}
 
-	inline int getPrecision() {
+	inline int getPrecision() const {
 		return precision;
 	}
 
-	inline bool isFiller() {
+	inline bool isFiller() const {
 		return experimentalProperties;
 	}
 
@@ -87,11 +87,11 @@ public:
 		experimentalProperties = in;
 	}
 
-	inline String& getName() {
+	inline const String& getName() const {
 		return name;
 	}
 
-	inline short getCombineType() {
+	inline short getCombineType() const {
 		return combineType;
 	}
 
@@ -270,7 +270,11 @@ public:
 		valueList.put(s, values);
 	}
 
-	inline Values* get(const int i){
+	inline const Values* get(const int i) const {
+		return valueList.get(i);
+	}
+
+	inline Values* get(const int i) {
 		return valueList.get(i);
 	}
 
@@ -278,36 +282,39 @@ public:
 		return valueList.get(subTitle);
 	}
 
-	inline int size(){
+	inline const Values* get(const String& subTitle) const {
+		return valueList.get(subTitle);
+	}
+
+	inline int size() const {
 		return valueList.size();
 	}
 
-	inline bool isClassHidden(){
+	inline bool isClassHidden() const {
 		return hidden;
 	}
 
-	inline bool hasAllHiddenItems() {
-
+	inline bool hasAllHiddenItems() const {
 		for(int i = 0; i < valueList.size(); ++i) {
-			Values* values = valueList.get(i);
+			auto values = valueList.get(i);
 			if(!values->isFiller() && values->getMaxValue() != values->getMinValue())
 				return false;
 		}
 		return true;
 	}
 
-	inline float getPercentage(const String& subTitle) {
-		Values* values = valueList.get(subTitle);
+	inline float getPercentage(const String& subTitle) const {
+		auto values = valueList.get(subTitle);
 		return values->getPercentage();
 	}
 
-	inline float getMaxPercentage(const String& subTitle) {
-		Values* values = valueList.get(subTitle);
+	inline float getMaxPercentage(const String& subTitle) const {
+		auto values = valueList.get(subTitle);
 		return values->getMaxPercentage();
 	}
 
-	inline float getValue(const String& subTitle) {
-		Values* values = valueList.get(subTitle);
+	inline float getValue(const String& subTitle) const {
+		auto values = valueList.get(subTitle);
 		return values->getValue();
 	}
 
@@ -315,7 +322,7 @@ public:
 	//	return name;
 	//}
 
-	inline String& getClassTitle() {
+	inline const String& getClassTitle() const {
 		return classTitle;
 	}
 

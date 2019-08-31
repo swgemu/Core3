@@ -37,13 +37,13 @@ public:
 		}
 	}
 
-	inline int count() {
+	inline int count() const {
 		return entries.size();
 	}
 
-	LootGroupCollectionEntry* get(int i) {
+	const LootGroupCollectionEntry* get(int i) const {
 		if (i < 0 || i >= entries.size())
-			return NULL;
+			return nullptr;
 
 		return &entries.get(i);
 	}

@@ -149,7 +149,6 @@ void PlayerObjectImplementation::initializeAccount() {
 		account = AccountManager::getAccount(accountID);
 
 	if (account != nullptr && galaxyAccountInfo == nullptr) {
-
 		Locker locker(account);
 
 		galaxyAccountInfo = account->getGalaxyAccountInfo(getZoneServer()->getGalaxyName());
@@ -240,7 +239,7 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 		}
 	}
 
-	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creo, childrenToStore);
+	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creo, std::move(childrenToStore));
 	task->execute();
 }
 
