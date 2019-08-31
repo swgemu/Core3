@@ -138,7 +138,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 		alm->insertAttribute("challenge_level", getAdultLevel());
 
 	//int skillNum = skillCommands.size();
-	CreatureAttackMap* attackMap = getAttackMap();
+	const CreatureAttackMap* attackMap = getAttackMap();
 	int skillNum = 0;
 	if (attackMap != NULL)
 		skillNum = attackMap->size();

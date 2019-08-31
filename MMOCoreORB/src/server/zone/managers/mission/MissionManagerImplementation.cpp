@@ -1428,7 +1428,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
-	VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
+	const VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
 
 	if (mobiles->size() == 0) {
 		return;
@@ -1442,7 +1442,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
-	Vector<String>& templatesNames = creatureTemplate->getTemplates();
+	const Vector<String>& templatesNames = creatureTemplate->getTemplates();
 
 	if (templatesNames.size() == 0) {
 		return;

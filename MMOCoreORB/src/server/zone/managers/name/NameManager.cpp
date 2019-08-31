@@ -449,7 +449,7 @@ String NameManager::makeImperialTrooperName(int type) {
 }
 
 String NameManager::makeDroidName(int type) {
-	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const static char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	String name = "";
 
 	if (type >= NameManagerType::R2 && type <= NameManagerType::R5) {
