@@ -31,10 +31,12 @@ class CreditObject extends ManagedObject {
 	@preLocked
 	public native void setCashCredits(int credits, boolean notifyClient = true);
 
+	@read
 	public int getBankCredits() {
 		return bankCredits;
 	}
 
+	@read
 	public int getCashCredits() {
 		return cashCredits;
 	}
@@ -46,12 +48,12 @@ class CreditObject extends ManagedObject {
 	public native void subtractCashCredits(int credits, boolean notifyClient = true);
 
 	@preLocked
-	public native void addBankCredits(int credits, boolean notifyClient = true) {
+	public void addBankCredits(int credits, boolean notifyClient = true) {
 		setBankCredits(bankCredits+credits, notifyClient);
 	}
 
 	@preLocked
-	public native void addCashCredits(int credits, boolean notifyClient = true) {
+	public void addCashCredits(int credits, boolean notifyClient = true) {
 		setCashCredits(cashCredits+credits, notifyClient);
 	}
 
@@ -80,6 +82,7 @@ class CreditObject extends ManagedObject {
 	@local
 	@dereferenced
 	@rawTemplate(value = 'CreatureObject*')
+	@dirty
 	public native WeakReference getOwner();
 
 	public native void setOwner(CreatureObject obj);

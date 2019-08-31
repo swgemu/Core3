@@ -51,7 +51,7 @@ void StringIdManager::populateDatabase() {
 				file = file.replaceFirst("string/en/","");
 				file = file.replaceFirst(".stf","");
 
-				HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
+				const HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
 
 				HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
 

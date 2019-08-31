@@ -16,7 +16,7 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * g++ 5+ or compatible
+  * g++ 5.4+ or compatible
   * engine3
   * java jre 1.7+
 

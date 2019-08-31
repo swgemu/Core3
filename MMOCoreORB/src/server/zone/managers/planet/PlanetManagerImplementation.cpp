@@ -483,8 +483,8 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 
 	++totalObjects;
 
-	if (ConfigManager::instance()->isProgressMonitorActivated())
-		printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);
+	/*if (ConfigManager::instance()->isProgressMonitorActivated())
+		printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);*/
 
 	//Object already exists, exit.
 	if (object != NULL)

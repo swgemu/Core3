@@ -20,11 +20,11 @@ public:
 
 	bool load(ObjectInputStream* inputFile);
 
-	HashTable<String, UnicodeString>* getStringMap() {
+	const HashTable<String, UnicodeString>* getStringMap() const {
 		return &stringMap;
 	}
 
-	UnicodeString getValue(const String& id) {
+	UnicodeString getValue(const String& id) const {
 		return stringMap.get(id);
 	}
 

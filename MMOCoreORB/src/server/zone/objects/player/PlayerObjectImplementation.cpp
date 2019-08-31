@@ -106,45 +106,33 @@ PlayerObject* PlayerObjectImplementation::asPlayerObject() {
 }
 
 PlayerObject* PlayerObject::asPlayerObject() {
-	    return this;
-}
-
-void PlayerObjectImplementation::info(const String& msg, bool force) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::INFO);
-}
-
-void PlayerObjectImplementation::debug(const String& msg) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::DEBUG);
-}
-
-void PlayerObjectImplementation::error(const String& msg) {
-	getZoneServer()->getPlayerManager()->writePlayerLog(asPlayerObject(), msg, Logger::LogLevel::ERROR);
+	return this;
 }
 
 void PlayerObjectImplementation::checkPendingMessages() {
-    ObjectManager *objectManager = ObjectManager::instance();
-    ManagedReference<PendingMessageList*> messageList = getZoneServer()->getChatManager()->getPendingMessages(parent.getSavedObjectID());
+	ObjectManager *objectManager = ObjectManager::instance();
+	ManagedReference<PendingMessageList*> messageList = getZoneServer()->getChatManager()->getPendingMessages(parent.getSavedObjectID());
 
-    if (messageList != nullptr) {
-        Locker locker(messageList);
-        Vector<uint64>& pendingMessages = *messageList->getPendingMessages();
+	if (messageList != nullptr) {
+		Locker locker(messageList);
+		Vector<uint64>& pendingMessages = *messageList->getPendingMessages();
 
-        for (uint64 messageID : pendingMessages) {
-            ManagedReference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageID).castTo<PersistentMessage*>();
+		for (uint64 messageID : pendingMessages) {
+			ManagedReference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageID).castTo<PersistentMessage*>();
 
-            if (mail != nullptr && isIgnoring(mail->getSenderName())) {
-                objectManager->destroyObjectFromDatabase(mail->getObjectID());
-                continue;
-            }
+			if (mail != nullptr && isIgnoring(mail->getSenderName())) {
+				objectManager->destroyObjectFromDatabase(mail->getObjectID());
+				continue;
+			}
 
-            persistentMessages.put(messageID);
-        }
-        messageList->clearPendingMessages();
-    }
+			persistentMessages.put(messageID);
+		}
+
+		messageList->clearPendingMessages();
+	}
 }
 
 void PlayerObjectImplementation::initializeAccount() {
-
 	if (accountID == 0) {
 		CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
@@ -204,6 +192,21 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	experienceList.setNullValue(0);
 
 	permissionGroups = *(sply->getPlayerDefaultGroupPermissions());
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer != nullptr) {
+		setLoggerCallback([playerObject = asPlayerObject(), manager = WeakReference<PlayerManager*>(zoneServer->getPlayerManager())]
+				(Logger::LogLevel level, const char* msg) -> int {
+			auto playerManager = manager.get();
+
+			if (playerManager != nullptr) {
+				playerManager->writePlayerLog(playerObject, msg, level);
+			}
+
+			return 0;
+		});
+	}
 }
 
 void PlayerObjectImplementation::notifyLoadFromDatabase() {
@@ -240,7 +243,6 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creo, childrenToStore);
 	task->execute();
 }
-
 
 void PlayerObjectImplementation::unload() {
 	info("unloading player");

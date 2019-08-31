@@ -36,7 +36,6 @@
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 void AuctionManagerImplementation::initialize() {
-
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	Core::getTaskManager()->initializeCustomQueue("AuctionSearchQueue", ConfigManager::instance()->getMaxAuctionSearchJobs(), true);

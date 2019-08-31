@@ -111,12 +111,10 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setContainerOwnerID(getObjectID());
 	setMood(moodID);
 
-
 	setLoggingName("CreatureObject");
 }
 
 void CreatureObjectImplementation::initializeMembers() {
-
 	linkedCreature = nullptr;
 	controlDevice = nullptr;
 
@@ -254,40 +252,25 @@ void CreatureObjectImplementation::loadTemplateData(
 		runSpeed = 0;
 		walkSpeed = 0;
 	}
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer && isPlayerCreature()) {
+		setLoggerCallback([creo = asCreatureObject(), manager = WeakReference<PlayerManager*>(zoneServer->getPlayerManager())]
+				(Logger::LogLevel level, const char* msg) -> int {
+			auto playerManager = manager.get();
+
+			if (playerManager != nullptr) {
+				playerManager->writePlayerLog(creo, msg, level);
+			}
+
+			return 0;
+		});
+	}
 }
 
 void CreatureObjectImplementation::finalize() {
 
-}
-
-void CreatureObjectImplementation::info(const String& msg, bool force) {
-	if (isPlayerCreature()) {
-		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::INFO);
-		return;
-	}
-
-	Logger::info(msg, force);
-	return;
-}
-
-void CreatureObjectImplementation::debug(const String& msg) {
-	if (isPlayerCreature()) {
-		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::DEBUG);
-		return;
-	}
-
-	Logger::debug(msg);
-	return;
-}
-
-void CreatureObjectImplementation::error(const String& msg) {
-	if (isPlayerCreature()) {
-		getZoneServer()->getPlayerManager()->writePlayerLog(asCreatureObject(), msg, Logger::LogLevel::ERROR);
-		return;
-	}
-
-	Logger::error(msg);
-	return;
 }
 
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
@@ -3819,7 +3802,7 @@ void CreatureObjectImplementation::removePersonalEnemyFlag(uint64 enemyID) {
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<CreatureObject*> enemy = zoneServer->getObject(enemyID).castTo<CreatureObject*>();
 
-	if (enemy != NULL)
+	if (enemy != nullptr)
 		sendPvpStatusTo(enemy);
 }
 
