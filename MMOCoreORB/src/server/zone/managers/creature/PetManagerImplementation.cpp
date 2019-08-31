@@ -51,13 +51,13 @@ void PetManagerImplementation::loadLuaConfig() {
 	info("Loaded " + String::valueOf(mountSpeedData.size()) + " mount speeds.", true);
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 void PetManagerImplementation::loadValidMountScaleRanges() {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/mount/valid_scale_range.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		error("Could not load valid mount scales.");
 		return;
 	}
@@ -83,7 +83,7 @@ short PetManagerImplementation::isValidMountScale(const String& appearanceFilena
 	for (int i = 0; i < validMountScaleRanges.size(); i++) {
 		ValidMountScaleRange* range = validMountScaleRanges.get(i);
 
-		if (range == NULL)
+		if (range == nullptr)
 			continue;
 
 		if (appearanceFilename == range->getAppearanceFilename() && saddleCapacity == range->getSaddleCapacity()) {
@@ -102,11 +102,11 @@ short PetManagerImplementation::isValidMountScale(const String& appearanceFilena
 
 short PetManagerImplementation::checkMountEligibility(PetControlDevice* petControlDevice, float height) {
 	ManagedReference<TangibleObject*> controlledObject = petControlDevice->getControlledObject();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
+	if (controlledObject == nullptr || !controlledObject->isAiAgent())
 		return PetManager::INVALIDCREATURE;
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
+	if( pet == nullptr )
 		return PetManager::INVALIDCREATURE;
 
 	//Check if the pet's species is able to be trained as a mount
@@ -114,7 +114,7 @@ short PetManagerImplementation::checkMountEligibility(PetControlDevice* petContr
 		return PetManager::INVALIDCREATURE;
 
 	SharedObjectTemplate* objectTemplate = petControlDevice->getObjectTemplate();
-	if (objectTemplate == NULL)
+	if (objectTemplate == nullptr)
 		return PetManager::INVALIDCREATURE;
 
 	short result;
@@ -135,7 +135,7 @@ MountSpeedData* PetManagerImplementation::getMountSpeedData(const String& appear
 			return data;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 float PetManagerImplementation::getMountedRunSpeed(CreatureObject* mount) {
@@ -144,13 +144,13 @@ float PetManagerImplementation::getMountedRunSpeed(CreatureObject* mount) {
 
 	ManagedReference<PetControlDevice*> pcd = mount->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (pcd != NULL) {
+	if (pcd != nullptr) {
 		SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
 
-		if (objectTemplate != NULL) {
+		if (objectTemplate != nullptr) {
 			MountSpeedData* mountSpeedData = getMountSpeedData(objectTemplate->getAppearanceFilename());
 
-			if (mountSpeedData != NULL)
+			if (mountSpeedData != nullptr)
 				return mountSpeedData->getRunSpeed();
 		}
 	}
@@ -159,7 +159,7 @@ float PetManagerImplementation::getMountedRunSpeed(CreatureObject* mount) {
 }
 
 void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet, const String& message){
-	if( speaker == NULL || pet == NULL )
+	if( speaker == nullptr || pet == nullptr )
 		return;
 
 	if( message.isEmpty() )
@@ -170,7 +170,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 
 	ManagedReference<PetControlDevice*> pcd = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if( pcd == NULL )
+	if( pcd == nullptr )
 		return;
 
 	// Handle command training
@@ -185,7 +185,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	}
 
 	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
-	if( linkedCreature == NULL )
+	if( linkedCreature == nullptr )
 		return;
 
 	// Check if speaker has permission to command pet
@@ -196,7 +196,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	ManagedReference<SceneObject*> petParent = pet->getRootParent();
 
 	// If speaker is mounted, pet must be outdoors
-	if( speaker->isRidingMount() && petParent != NULL )
+	if( speaker->isRidingMount() && petParent != nullptr )
 		return;
 
 	// If speaker is unmounted, pet and speaker must both be outdoors or inside same building
@@ -269,7 +269,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	if( pcd->getPetType() == PetManager::DROIDPET ){
 
 		DroidObject* droidObject = cast<DroidObject*>(pet);
-		if( droidObject != NULL ){
+		if( droidObject != nullptr ){
 			droidObject->handleChat(speaker, message);
 		}
 	}
@@ -306,14 +306,14 @@ bool PetManagerImplementation::isTrainedCommand( PetControlDevice* petControlDev
 
 bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, AiAgent* pet, const String& message){
 
-	if( speaker == NULL || pet == NULL )
+	if( speaker == nullptr || pet == nullptr )
 		return false;
 
 	if( message.isEmpty() )
 		return false;
 
 	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
-	if( linkedCreature == NULL )
+	if( linkedCreature == nullptr )
 		return false;
 
 	// Only owner may train
@@ -322,7 +322,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 
 	ManagedReference<PetControlDevice*> pcd = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if( pcd == NULL )
+	if( pcd == nullptr )
 		return false;
 
 	if( pcd->hasTrainedCommandString(message) ){
@@ -352,7 +352,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 			bool success = false;
 			Creature* petCreature = cast<Creature*>(pet);
 
-			if (petCreature == NULL)
+			if (petCreature == nullptr)
 				return false;
 
 			int skill = speaker->getSkillMod("tame_level");
@@ -375,9 +375,9 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
 
 		if (!alreadyTrained) {
-			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+			auto creatureTemplate = pet->getCreatureTemplate();
 
-			if (creatureTemplate == NULL)
+			if (creatureTemplate == nullptr)
 				return true;
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
@@ -477,7 +477,7 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 
 void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player, AiAgent* pet, uint32 command, const String& args){
 	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
-	if( linkedCreature == NULL )
+	if( linkedCreature == nullptr )
 		return;
 
 	// Player must be pet's owner
@@ -496,7 +496,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 	if (destructedObject->isMount() && destructedObject->hasRidingCreature()) {
 		Reference<CreatureObject*> rider = destructedObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
-		if (rider != NULL) {
+		if (rider != nullptr) {
 			Locker locker(rider);
 			rider->updateCooldownTimer("mount_dismount", 0);
 			rider->executeObjectControllerAction(STRING_HASHCODE("dismount"));
@@ -507,7 +507,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 	ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (!destructor->isKiller() && petControlDevice != NULL && petControlDevice->getPetType() == CREATUREPET) {
+	if (!destructor->isKiller() && petControlDevice != nullptr && petControlDevice->getPetType() == CREATUREPET) {
 		destructedObject->setCurrentSpeed(0);
 		destructedObject->setPosture(CreaturePosture::INCAPACITATED, false);
 		destructedObject->updateLocomotion();
@@ -516,7 +516,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 		Reference<Task*> oldTask = destructedObject->getPendingTask("incapacitationRecovery");
 
-		if (oldTask != NULL && oldTask->isScheduled()) {
+		if (oldTask != nullptr && oldTask->isScheduled()) {
 			oldTask->cancel();
 			destructedObject->removePendingTask("incapacitationRecovery");
 		}
@@ -581,16 +581,16 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet, b
 
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (petControlDevice != NULL) {
+	if (petControlDevice != nullptr) {
 		Locker locker(petControlDevice);
 
-		petControlDevice->setLastCommandTarget(NULL);
+		petControlDevice->setLastCommandTarget(nullptr);
 		petControlDevice->setLastCommand(PetManager::FOLLOW);
 
 		if (petControlDevice->getPetType() == FACTIONPET) {
 			ManagedReference<CreatureObject*> owner = zoneServer->getObject(pet->getCreatureLinkID()).castTo<CreatureObject*>();
 
-			if (owner != NULL) {
+			if (owner != nullptr) {
 				Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
 				task->execute();
 			}
@@ -600,7 +600,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet, b
 
 		} else if (!attacker->isPlayerCreature() && !attacker->isPet()) {
 
-			if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
+			if (pet->getCooldownTimerMap() != nullptr && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
 
 				petControlDevice->setVitality(petControlDevice->getVitality() - 2);
 				pet->getCooldownTimerMap()->updateToCurrentAndAddMili("vitalityLossCooldown", 300000);

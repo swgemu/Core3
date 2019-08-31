@@ -133,10 +133,8 @@ void ServerCore::initialize() {
 
 		orb->setCustomObjectManager(objectManager);
 
-		auto metricsMsg = info(true);
-		metricsMsg << "MetricsServer: " << configManager->shouldUseMetrics()
+		info() << "MetricsServer: " << configManager->shouldUseMetrics()
 			<< " " << configManager->getMetricsHost() << " " << configManager->getMetricsPort();
-		metricsMsg.flush();
 
 		if (configManager->shouldUseMetrics()) {
 			metricsManager->setGlobalPrefix(configManager->getMetricsPrefix());
@@ -271,9 +269,7 @@ void ServerCore::initialize() {
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
-		info(e.getMessage());
-
-		exit(1);
+		fatal(e.getMessage());
 	}
 }
 

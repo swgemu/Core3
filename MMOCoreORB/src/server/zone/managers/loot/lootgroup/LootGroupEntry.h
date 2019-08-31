@@ -51,11 +51,11 @@ public:
 
 	}
 
-	inline String& getLootGroupName() {
+	inline const String& getLootGroupName() const {
 		return templateName;
 	}
 
-	inline int getLootChance() {
+	inline int getLootChance() const {
 		return lootChance;
 	}
 };

@@ -109,255 +109,255 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-	inline float getKinetic() {
+	inline float getKinetic() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::KINETIC))
 			return kinetic - 100;
 		else
 			return kinetic;
 	}
 
-	inline float getEnergy() {
+	inline float getEnergy() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::ENERGY))
 			return energy - 100;
 		else
 			return energy;
 	}
 
-	inline float getElectricity() {
+	inline float getElectricity() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY))
 			return electricity - 100;
 		else
 			return electricity;
 	}
 
-	inline float getStun() {
+	inline float getStun() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::STUN))
 			return stun - 100;
 		else
 			return stun;
 	}
 
-	inline float getBlast() {
+	inline float getBlast() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::BLAST))
 			return blast - 100;
 		else
 			return blast;
 	}
 
-	inline float getHeat() {
+	inline float getHeat() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::HEAT))
 			return heat - 100;
 		else
 			return heat;
 	}
 
-	inline float getCold() {
+	inline float getCold() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::COLD))
 			return cold - 100;
 		else
 			return cold;
 	}
 
-	inline float getAcid() {
+	inline float getAcid() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::ACID))
 			return acid - 100;
 		else
 			return acid;
 	}
 
-	inline float getLightSaber() {
+	inline float getLightSaber() const {
 		if (isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER))
 			return lightSaber - 100;
 		else
 			return lightSaber;
 	}
 
-	inline bool isStalker() {
+	inline bool isStalker() const {
 		return creatureBitmask & CreatureFlag::STALKER;
 	}
 
-	inline bool isBaby() {
+	inline bool isBaby() const {
 		return creatureBitmask & CreatureFlag::BABY;
 	}
 
-	inline bool isKiller() {
+	inline bool isKiller() const {
 		return creatureBitmask & CreatureFlag::KILLER;
 	}
 
-	inline bool isPack() {
+	inline bool isPack() const {
 		return creatureBitmask & CreatureFlag::PACK;
 	}
 
-	inline bool isHerd() {
+	inline bool isHerd() const {
 		return creatureBitmask & CreatureFlag::HERD;
 	}
 
-	inline float getTame() {
+	inline float getTame() const {
 		return tamingChance;
 	}
 
-	inline String& getMeatType() {
+	inline const String& getMeatType() const {
 		return meatType;
 	}
 
-	inline String& getBoneType() {
+	inline const String& getBoneType() const {
 		return boneType;
 	}
 
-	inline String& getHideType() {
+	inline const String& getHideType() const {
 		return hideType;
 	}
 
-	inline String& getMilkType() {
+	inline const String& getMilkType() const {
 		return milkType;
 	}
 
-	inline String& getCustomName() {
+	inline const String& getCustomName() const {
 		return customName;
 	}
 
-	inline float getMilk() {
+	inline float getMilk() const {
 		return milk;
 	}
 
-	inline float getHideMax() {
+	inline float getHideMax() const {
 		return hideAmount;
 	}
 
-	inline float getBoneMax() {
+	inline float getBoneMax() const {
 		return boneAmount;
 	}
 
-	inline float getMeatMax() {
+	inline float getMeatMax() const {
 		return meatAmount;
 	}
 
-	inline unsigned int getFerocity() {
+	inline unsigned int getFerocity() const {
 		return ferocity;
 	}
 
-	inline unsigned int getArmor() {
+	inline unsigned int getArmor() const {
 		return armor;
 	}
 
-	inline String getObjectName() {
+	inline const String& getObjectName() const {
 		return objectName;
 	}
 
-	inline uint32 getPlanetMapCategory() {
+	inline uint32 getPlanetMapCategory() const {
 		return planetMapCategory;
 	}
 
-	inline int getRandomNameType() {
+	inline int getRandomNameType() const {
 		return randomNameType;
 	}
 
-	inline bool getRandomNameTag() {
+	inline bool getRandomNameTag() const {
 		return randomNameTag;
 	}
 
-	inline String getSocialGroup() {
+	inline const String& getSocialGroup() const {
 		return socialGroup;
 	}
 
-	inline uint32 getConversationTemplate() {
+	inline uint32 getConversationTemplate() const {
 		return conversationTemplate;
 	}
 
-	inline uint32 getOptionsBitmask() {
+	inline uint32 getOptionsBitmask() const {
 		return optionsBitmask;
 	}
 
-	inline String getFaction() {
+	inline const String& getFaction() const {
 		return faction;
 	}
 
-	inline int getLevel() {
+	inline int getLevel() const {
 		return level;
 	}
 
-	inline float getChanceHit() {
+	inline float getChanceHit() const {
 		return chanceHit;
 	}
 
-	inline float getScale() {
+	inline float getScale() const {
 		return scale;
 	}
 
-	inline int getDamageMin() {
+	inline int getDamageMin() const {
 		return damageMin;
 	}
 
-	inline int getDamageMax() {
+	inline int getDamageMax() const {
 		return damageMax;
 	}
 
-	inline float getSpecialDamageMult() {
+	inline float getSpecialDamageMult() const {
 		return specialDamageMult;
 	}
 
-	inline int getRange() {
+	inline int getRange() const {
 		return range;
 	}
 
-	inline int getBaseXp() {
+	inline int getBaseXp() const {
 		return baseXp;
 	}
 
-	inline int getBaseHAM() {
+	inline int getBaseHAM() const {
 		return baseHAM;
 	}
 
-	inline int getBaseHAMmax() {
+	inline int getBaseHAMmax() const {
 		return baseHAMmax;
 	}
 
-	inline int getRandomHue() {
+	inline int getRandomHue() const {
 		int randHue = System::random(hues.size() - 1);
 		return hues.get(randHue);
 	}
 
-	inline int getHueCount() {
+	inline int getHueCount() const {
 		return hues.size();
 	}
 
-	inline int getTotalHues() {
+	inline int getTotalHues() const {
 		return hues.size();
 	}
 
-	inline int getAggroRadius() {
+	inline int getAggroRadius() const {
 		return aggroRadius;
 	}
 
-	inline uint32 getPvpBitmask() {
+	inline uint32 getPvpBitmask() const {
 		return pvpBitmask;
 	}
 
-	inline uint32 getCreatureBitmask() {
+	inline uint32 getCreatureBitmask() const {
 		return creatureBitmask;
 	}
 
-	inline uint32 getDiet() {
+	inline uint32 getDiet() const {
 		return diet;
 	}
 
-	inline Vector<String>& getTemplates() {
+	inline const Vector<String>& getTemplates() const {
 		return templates;
 	}
 
-	inline LootGroupCollection* getLootGroups() {
+	inline const LootGroupCollection* getLootGroups() const {
 		return &lootgroups;
 	}
 
-	inline Vector<String>& getWeapons() {
+	inline const Vector<String>& getWeapons() const {
 		return weapons;
 	}
 
-	inline CreatureAttackMap* getAttacks() {
+	inline const CreatureAttackMap* getAttacks() const {
 		return attacks;
 	}
 
-	inline String getPatrolPathTemplate() {
+	inline const String& getPatrolPathTemplate() const {
 		return patrolPathTemplate;
 	}
 
@@ -365,47 +365,51 @@ public:
 		templateName = t;
 	}
 
-	inline String getTemplateName() {
+	inline const String& getTemplateName() const {
 		return templateName;
 	}
 
-	inline bool hasPatrolPathTemplate() {
+	inline String& getTemplateName() {
+		return templateName;
+	}
+
+	inline bool hasPatrolPathTemplate() const {
 		return !patrolPathTemplate.isEmpty();
 	}
 
-	inline String getOutfit() {
+	inline const String& getOutfit() const {
 		return outfit;
 	}
 
-	inline String getAiTemplate() {
+	inline const String& getAiTemplate() const {
 		return aiTemplate;
 	}
 
-	inline String getDefaultWeapon(){
+	inline const String& getDefaultWeapon() const {
 		return defaultWeapon;
 	}
 
-	inline String getDefaultAttack(){
+	inline const String& getDefaultAttack() const {
 		return defaultAttack;
 	}
 
-	inline String getControlDeviceTemplate() {
+	inline const String& getControlDeviceTemplate() const {
 		return controlDeviceTemplate;
 	}
 
-	inline String getContainerComponentTemplate() {
+	inline const String& getContainerComponentTemplate() const {
 		return containerComponentTemplate;
 	}
 
-	inline String getReactionStf() {
+	inline const String& getReactionStf() const {
 		return reactionStf;
 	}
 
-	inline String getPersonalityStf() {
+	inline const String& getPersonalityStf() const {
 		return personalityStf;
 	}
 
-	inline bool isSpecialProtection(int resistType) {
+	inline bool isSpecialProtection(int resistType) const {
 		switch (resistType) {
 		case SharedWeaponObjectTemplate::KINETIC:
 			return kinetic > 100;

@@ -32,7 +32,7 @@ public:
 
 		if (pet->containsPendingTask("droid_power"))
 			pet->removePendingTask( "droid_power" );
-          
+
 		if (pet->containsPendingTask("droid_skill_mod"))
 			pet->removePendingTask( "droid_skill_mod" );
 
@@ -70,7 +70,7 @@ public:
 		}
 
 
-		CreatureTemplate* creoTemp = pet->getCreatureTemplate();
+		const CreatureTemplate* creoTemp = pet->getCreatureTemplate();
 
 		if (creoTemp != NULL) {
 			pet->setFaction(creoTemp->getFaction().hashCode());

@@ -11,8 +11,8 @@
 
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";
-const unsigned int VisibilityManager::factionRebel = factionStringRebel.hashCode();
-const unsigned int VisibilityManager::factionImperial = factionStringImperial.hashCode();
+const unsigned int VisibilityManager::factionRebel = STRING_HASHCODE("rebel");
+const unsigned int VisibilityManager::factionImperial = STRING_HASHCODE("imperial");
 
 float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 	Zone* zone = creature->getZone();
