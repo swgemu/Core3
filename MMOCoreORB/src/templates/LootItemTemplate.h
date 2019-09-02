@@ -186,60 +186,63 @@ public:
 
 	}
 
-	String& getTemplateName() {
+	const String& getTemplateName() const {
 		return templateName;
 	}
 
-	String& getDirectObjectTemplate() {
+	const String& getDirectObjectTemplate() const {
 		return directObjectTemplate;
 	}
 
-	String& getCustomObjectName() {
+	const String& getCustomObjectName() const {
 		return customObjectName;
 	}
 
-	Vector<String>* getCustomizationStringNames() {
+	const Vector<String>* getCustomizationStringNames() const {
 		return &customizationStringNames;
 	}
 
-	Vector<Vector<int> >* getCustomizationValues() {
+	const Vector<Vector<int> >* getCustomizationValues() const {
 		return &customizationValues;
 	}
 
-	bool getSuppressSerialNumber() {
+	bool getSuppressSerialNumber() const {
 		return suppressSerialNumber;
 	}
 
-	ValuesMap getValuesMapCopy() {
+	ValuesMap getValuesMapCopy() const {
 		return craftingValues;
 	}
 
-	VectorMap<String, int>* getSkillMods() {
+	const VectorMap<String, int>* getSkillMods() const {
 		return &skillMods;
 	}
 
-	float getRandomDotChance() {
+	float getRandomDotChance() const {
 		return randomDotChance;
 	}
 
-	float getStaticDotChance() {
+	float getStaticDotChance() const {
 		return staticDotChance;
 	}
 
-	int getStaticDotType() {
+	int getStaticDotType() const {
 		return staticDotType;
 	}
 
-	int getJunkDealerTypeNeeded() {
+	int getJunkDealerTypeNeeded() const {
 		return junkDealerTypeNeeded;
 	}
-	int getJunkMinValue() {
+
+	int getJunkMinValue() const {
 		return junkMinValue;
 	}
-	int getJunkMaxValue() {
+
+	int getJunkMaxValue() const {
 		return junkMaxValue;
 	}
-	VectorMap<String, SortedVector<int> >* getStaticDotValues() {
+
+	const VectorMap<String, SortedVector<int> >* getStaticDotValues() const {
 		return &staticDotValues;
 	}
 };

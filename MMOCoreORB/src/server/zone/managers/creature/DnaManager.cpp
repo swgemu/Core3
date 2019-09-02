@@ -176,8 +176,9 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	if (quality < 0 || quality > 7) {
 		return;
 	}
-	Locker lock(creature,player);
-	CreatureTemplate* creatureTemplate = dynamic_cast<CreatureTemplate*>(creature->getCreatureTemplate());
+
+	Locker lock(creature, player);
+	auto creatureTemplate = dynamic_cast<const CreatureTemplate*>(creature->getCreatureTemplate());
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
@@ -250,7 +251,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER))
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
-	CreatureAttackMap* attackMap = creatureTemplate->getAttacks();
+	auto attackMap = creatureTemplate->getAttacks();
 	if (attackMap->size() > 0) {
 		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
 		if(attackMap->size() > 1) {

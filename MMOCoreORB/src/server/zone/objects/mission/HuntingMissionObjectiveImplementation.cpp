@@ -81,7 +81,7 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 		if (!agent->isInRange(player, 128.0f))
 			return 0;
 
-		CreatureTemplate* creatureTemplate = agent->getCreatureTemplate();
+		const CreatureTemplate* creatureTemplate = agent->getCreatureTemplate();
 
 		if (creatureTemplate == NULL)
 			return 0;

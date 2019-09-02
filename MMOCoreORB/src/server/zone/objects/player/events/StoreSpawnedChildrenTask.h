@@ -8,8 +8,9 @@ class StoreSpawnedChildrenTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
 	Vector<ManagedReference<CreatureObject*> > children;
 public:
-	StoreSpawnedChildrenTask(CreatureObject* creo, Vector<ManagedReference<CreatureObject*> >& ch) :
-		play(creo), children(ch) {
+	StoreSpawnedChildrenTask(CreatureObject* creo,
+			Vector<ManagedReference<CreatureObject*> >&& ch) :
+		play(creo), children(std::move(ch)) {
 
 	}
 

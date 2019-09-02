@@ -107,10 +107,10 @@ class PetDeed extends Deed {
 	@dirty
 	public native void setSpecialResist(int type);
 
-	@dirty
+	@read
 	public native boolean isSpecialResist(int type);
 
-	@dirty
+	@read
 	public int getSampleCount() {
 		return sampleCount;
 	}
@@ -118,107 +118,109 @@ class PetDeed extends Deed {
 	public void incrementSampleCount() {
 		sampleCount += 1;
 	}
+
 	public native void initializeTransientMembers();
 
+	@read
 	@local
-	public native CreatureAttackMap getAttacks();
+	public native final CreatureAttackMap getAttacks();
 
-	@dirty
+	@read
 	public int getQuality() {
 		return quality;
 	}
 
-	@dirty
+	@read
 	public int getLevel() {
 		return level;
 	}
 
-	@dirty
+	@read
 	public float getAttackSpeed() {
 		return attackSpeed;
 	}
 
-	@dirty
+	@read
 	public float getHitChance() {
 		return chanceHit;
 	}
 
-	@dirty
+	@read
 	public int getHealth() {
 		return health;
 	}
 
-	@dirty
+	@read
 	public int getAction() {
 		return action;
 	}
 
-	@dirty
+	@read
 	public int getMind() {
 		return mind;
 	}
 
-	@dirty
+	@read
 	public int getMinDamage() {
 		return damageMin;
 	}
 
-	@dirty
+	@read
 	public int getMaxDamage() {
 		return damageMax;
 	}
 
-	@dirty
+	@read
 	public float getKinetic() {
 		return kinResist;
 	}
 
-	@dirty
+	@read
 	public float getEnergy() {
 		return energyResist;
 	}
 
-	@dirty
+	@read
 	public float getBlast() {
 		return blastResist;
 	}
 
-	@dirty
+	@read
 	public float getCold() {
 		return coldResist;
 	}
 
-	@dirty
+	@read
 	public float getHeat() {
 		return heatResist;
 	}
 
-	@dirty
+	@read
 	public float getElectric() {
 		return elecResist;
 	}
 
-	@dirty
+	@read
 	public float getAcid() {
 		return acidResist;
 	}
 
-	@dirty
+	@read
 	public float getStun() {
 		return stunResist;
 	}
 
-	@dirty
+	@read
 	public float getSaber() {
 		return saberResist;
 	}
 
-	@dirty
+	@read
 	public boolean getRanged() {
 		return ranged;
 	}
 
-	@dirty
+	@read
 	public int getArmor() {
 		return armor;
 	}
@@ -258,66 +260,67 @@ class PetDeed extends Deed {
 		return true;
 	}
 
-	@dirty
+	@read
 	public string getSpecial1() {
 		return special1;
 	}
-	@dirty
+
+	@read
 	public string getSpecial2() {
 		return special2;
 	}
 
-	@dirty
+	@read
 	public int getCleverness() {
 		return cleverness;
 	}
 
-	@dirty
+	@read
 	public int getEndurance() {
 		return endurance;
 	}
 
-	@dirty
+	@read
 	public int getFierceness() {
 		return fierceness;
 	}
 
-	@dirty
+	@read
 	public int getPower() {
 		return power;
 	}
 
-	@dirty
+	@read
 	public int getIntelligence() {
 		return intelligence;
 	}
 
-	@dirty
+	@read
 	public int getCourage() {
 		return courage;
 	}
 
-	@dirty
+	@read
 	public int getDependency() {
 		return dependency;
 	}
 
-	@dirty
+	@read
 	public int getDexterity() {
 		return dexterity;
 	}
 
-	@dirty
+	@read
 	public int getFortitude() {
 		return fortitude;
 	}
 
-	@dirty
+	@read
 	public int getHardiness() {
 		return hardiness;
 	}
 
-	@dirty
+	@read
 	@local
 	public native string getTemplateName();
 

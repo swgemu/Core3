@@ -65,7 +65,7 @@ void LightsaberCrystalComponentImplementation::generateCrystalStats() {
 	if (lootManager == NULL)
 		return;
 
-	CrystalData* crystalData = lootManager->getCrystalData(getObjectTemplate()->getTemplateFileName());
+	const CrystalData* crystalData = lootManager->getCrystalData(getObjectTemplate()->getTemplateFileName());
 
 	if (crystalData == NULL) {
 		error("Unable to find crystal stats for " + getObjectTemplate()->getTemplateFileName());
@@ -123,7 +123,7 @@ void LightsaberCrystalComponentImplementation::validateCrystalStats() {
 	if (lootManager == NULL)
 		return;
 
-	CrystalData* crystalData = lootManager->getCrystalData(getObjectTemplate()->getTemplateFileName());
+	const CrystalData* crystalData = lootManager->getCrystalData(getObjectTemplate()->getTemplateFileName());
 
 	if (crystalData == NULL) {
 		error("Unable to find crystal stats for " + getObjectTemplate()->getTemplateFileName());

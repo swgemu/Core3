@@ -2107,7 +2107,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		sendToClient = val;
 	}
 
-	@dirty
+	@read
 	public abstract boolean isPet() {
 		return false;
 	}

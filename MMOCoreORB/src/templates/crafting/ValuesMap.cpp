@@ -5,6 +5,7 @@
 #include "ValuesMap.h"
 
 float ValuesMap::VALUENOTFOUND = -999999;
+const String ValuesMap::EMPTY;
 
 void ValuesMap::addExperimentalProperty(const String& title, const String& subtitle,
 		const float min, const float max, const int precision, const bool filler, const int combine) {
@@ -21,7 +22,7 @@ void ValuesMap::addExperimentalProperty(const String& title, const String& subti
 	}
 }
 
-String& ValuesMap::getExperimentalPropertyTitle(const String& subtitle) {
+const String& ValuesMap::getExperimentalPropertyTitle(const String& subtitle) const {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -40,8 +41,8 @@ String& ValuesMap::getExperimentalPropertyTitle(const String& subtitle) {
 	return EMPTY;
 }
 
-String& ValuesMap::getExperimentalPropertyTitle(const int i) {
-	Subclasses* subclasses = get(i);
+const String& ValuesMap::getExperimentalPropertyTitle(const int i) const {
+	auto subclasses = get(i);
 
 	if (subclasses != NULL) {
 		return subclasses->getClassTitle();
@@ -50,8 +51,8 @@ String& ValuesMap::getExperimentalPropertyTitle(const int i) {
 	return EMPTY;
 }
 
-String& ValuesMap::getVisibleExperimentalPropertyTitle(const int i) {
-	Subclasses* subclasses;
+const String& ValuesMap::getVisibleExperimentalPropertyTitle(const int i) const {
+	const Subclasses* subclasses;
 	int counter = -1;
 	String title;
 
@@ -68,8 +69,8 @@ String& ValuesMap::getVisibleExperimentalPropertyTitle(const int i) {
 	return EMPTY;
 }
 
-String& ValuesMap::getExperimentalPropertySubtitlesTitle(const int i) {
-	Subclasses* subclasses;
+const String& ValuesMap::getExperimentalPropertySubtitlesTitle(const int i) const {
+	const Subclasses* subclasses;
 	int count = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -85,8 +86,8 @@ String& ValuesMap::getExperimentalPropertySubtitlesTitle(const int i) {
 	return EMPTY;
 }
 
-String& ValuesMap::getExperimentalPropertySubtitle(const int i) {
-	Subclasses* subclasses;
+const String& ValuesMap::getExperimentalPropertySubtitle(const int i) const {
+	const Subclasses* subclasses;
 	int count = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -97,7 +98,7 @@ String& ValuesMap::getExperimentalPropertySubtitle(const int i) {
 		} else {
 			count = i - count;
 
-			Values* values = subclasses->get(count);
+			const Values* values = subclasses->get(count);
 
 			return values->getName();
 		}
@@ -106,8 +107,8 @@ String& ValuesMap::getExperimentalPropertySubtitle(const int i) {
 	return EMPTY;
 }
 
-String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const int i) {
-	Subclasses* subclasses = get(title);
+const String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const int i) const {
+	const Subclasses* subclasses = get(title);
 
 	if (subclasses != NULL)
 		return subclasses->get(i)->getName();
@@ -115,8 +116,8 @@ String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const in
 		return EMPTY;
 }
 
-int ValuesMap::getExperimentalPropertySubtitleSize() {
-	Subclasses* subclasses;
+int ValuesMap::getExperimentalPropertySubtitleSize() const {
+	const Subclasses* subclasses;
 	int subtitleSize = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -128,8 +129,8 @@ int ValuesMap::getExperimentalPropertySubtitleSize() {
 	return subtitleSize;
 }
 
-int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) {
-	Subclasses* subclasses = get(title);
+int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) const {
+	const Subclasses* subclasses = get(title);
 
 	if (subclasses != NULL)
 		return subclasses->size();
@@ -137,9 +138,9 @@ int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) {
 	return (int)VALUENOTFOUND;
 }
 
-bool ValuesMap::hasProperty(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+bool ValuesMap::hasProperty(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -156,9 +157,9 @@ bool ValuesMap::hasProperty(const String& attribute) {
 	return false;
 }
 
-bool ValuesMap::isHidden(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+bool ValuesMap::isHidden(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -209,9 +210,9 @@ void ValuesMap::unsetHidden(const String& attribute) {
 	}
 }
 
-short ValuesMap::getCombineType(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+short ValuesMap::getCombineType(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -267,9 +268,9 @@ void ValuesMap::setCurrentValue(const String& attribute, const float value, cons
 	}
 }
 
-float ValuesMap::getCurrentValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+float ValuesMap::getCurrentValue(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -286,8 +287,8 @@ float ValuesMap::getCurrentValue(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getCurrentValue(const int i) {
-	Subclasses* subclasses;
+float ValuesMap::getCurrentValue(const int i) const {
+	const Subclasses* subclasses;
 	int count = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -298,7 +299,7 @@ float ValuesMap::getCurrentValue(const int i) {
 		} else {
 			count = i - count;
 
-			Values* values = subclasses->get(count);
+			const Values* values = subclasses->get(count);
 
 			return values->getValue();
 		}
@@ -411,9 +412,9 @@ void ValuesMap::setCurrentPercentage(const String& subtitle, float value, float 
 	}
 }
 
-float ValuesMap::getCurrentPercentage(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+float ValuesMap::getCurrentPercentage(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -430,8 +431,8 @@ float ValuesMap::getCurrentPercentage(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getCurrentPercentage(const int i) {
-	Subclasses* subclasses;
+float ValuesMap::getCurrentPercentage(const int i) const {
+	const Subclasses* subclasses;
 	int count = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -442,7 +443,7 @@ float ValuesMap::getCurrentPercentage(const int i) {
 		} else {
 			count = i - count;
 
-			Values* values = subclasses->get(count);
+			const Values* values = subclasses->get(count);
 
 			return values->getPercentage();
 		}
@@ -451,13 +452,13 @@ float ValuesMap::getCurrentPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getCurrentVisiblePercentage(const String title) {
-	Subclasses* subclasses = get(title);
+float ValuesMap::getCurrentVisiblePercentage(const String title) const {
+	const Subclasses* subclasses = get(title);
 
 	if (subclasses == NULL)
 		return -1;
 
-	Values* values;
+	const Values* values;
 	float value = 0;
 
 	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
@@ -498,9 +499,9 @@ void ValuesMap::setMaxPercentage(const String& attribute, float value) {
 	}
 }
 
-float ValuesMap::getMaxPercentage(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+float ValuesMap::getMaxPercentage(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -517,8 +518,8 @@ float ValuesMap::getMaxPercentage(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getMaxPercentage(const int i) {
-	Subclasses* subclasses;
+float ValuesMap::getMaxPercentage(const int i) const {
+	const Subclasses* subclasses;
 	int count = 0;
 
 	for (int j = 0; j < size(); ++j) {
@@ -529,7 +530,7 @@ float ValuesMap::getMaxPercentage(const int i) {
 		} else {
 			count = i - count;
 
-			Values* values = subclasses->get(count);
+			const Values* values = subclasses->get(count);
 
 			return values->getMaxPercentage();
 		}
@@ -538,10 +539,10 @@ float ValuesMap::getMaxPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getMaxVisiblePercentage(const int i) {
+float ValuesMap::getMaxVisiblePercentage(const int i) const {
 	String title = getVisibleExperimentalPropertyTitle(i);
-	Subclasses* subclasses = get(title);
-	Values* values;
+	const Subclasses* subclasses = get(title);
+	const Values* values;
 
 	float value = 0;
 	float count = 0;
@@ -560,9 +561,9 @@ float ValuesMap::getMaxVisiblePercentage(const int i) {
 	return value;
 }
 
-float ValuesMap::getMinValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+float ValuesMap::getMinValue(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -579,9 +580,9 @@ float ValuesMap::getMinValue(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-float ValuesMap::getMaxValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+float ValuesMap::getMaxValue(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);
@@ -632,9 +633,9 @@ void ValuesMap::setMaxValue(const String& attribute, const float value) {
 	}
 }
 
-int ValuesMap::getPrecision(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+int ValuesMap::getPrecision(const String& attribute) const {
+	const Subclasses* subclasses;
+	const Values* values;
 
 	for (int j = 0; j < size(); ++j) {
 		subclasses = get(j);

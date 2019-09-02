@@ -247,14 +247,14 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		if (System::random(100) > 9)
 			return false;
 
-		VectorMap<String, int>* mobs = lairTemplate->getBossMobiles();
+		const VectorMap<String, int>* mobs = lairTemplate->getBossMobiles();
 
 		for (int i = 0; i < mobs->size(); i++) {
 			objectsToSpawn.put(mobs->elementAt(i).getKey(), mobs->elementAt(i).getValue());
 		}
 
 	} else {
-		Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
+		const Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
 		int amountToSpawn = 0;
 
 		if (getMobType() == LairTemplate::CREATURE) {

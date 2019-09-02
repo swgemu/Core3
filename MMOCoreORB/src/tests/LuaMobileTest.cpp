@@ -141,7 +141,7 @@ public:
 
 		if (lootGroupMap->lootGroupExists(entryName)) {
 
-			LootGroupTemplate* lootGroupTemplate = lootGroupMap->getLootGroupTemplate(entryName);
+			const LootGroupTemplate* lootGroupTemplate = lootGroupMap->getLootGroupTemplate(entryName);
 
 			for (int j = 0; j < lootGroupTemplate->size(); j++) {
 
@@ -153,7 +153,7 @@ public:
 			}
 
 		} else {
-			Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( entryName );
+			Reference<const LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( entryName );
 			EXPECT_TRUE( itemTemplate != NULL ) << "Item template " << std::string(entryName.toCharArray()) << " from " << std::string(parentGroups->get(parentGroups->size() - 1).toCharArray()) << " was not found in LootGroupMap";
 		}
 	}
@@ -418,24 +418,21 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 
 		// Verify loot group percentages
-		LootGroupCollection* groupCollection = creature->getLootGroups();
+		auto groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){
-
-
 			for( int i = 0; i < groupCollection->count(); i++ ){
-
-				LootGroupCollectionEntry* collectionEntry = groupCollection->get(i);
-				LootGroups* groups = collectionEntry->getLootGroups();
+				auto collectionEntry = groupCollection->get(i);
+				auto groups = collectionEntry->getLootGroups();
 				if( groups->count() > 0){
 
 					int totalChance = 0;
 					for( int j = 0; j < groups->count(); j++ ){
 
-						LootGroupEntry* lootGroup = groups->get(j);
+						auto lootGroup = groups->get(j);
 						totalChance += lootGroup->getLootChance();
 
 						// Verify loot group is configured correctly
-						LootGroupTemplate* foundGroup = lootGroupMap->getLootGroupTemplate( lootGroup->getLootGroupName() );
+						const LootGroupTemplate* foundGroup = lootGroupMap->getLootGroupTemplate( lootGroup->getLootGroupName() );
 						std::string groupName( lootGroup->getLootGroupName().toCharArray() );
 						EXPECT_TRUE( foundGroup != NULL ) << "Loot group " << groupName << " from " << templateName << " was not found in LootGroupMap";
 
@@ -476,9 +473,9 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 
 		// Verify attacks are valid commands
-		CreatureAttackMap* cam = creature->getAttacks();
+		auto cam = creature->getAttacks();
 		for (int i = 0; i < cam->size(); i++) {
-			String commandName = cam->getCommand(i);
+			const auto& commandName = cam->getCommand(i);
 
 			EXPECT_TRUE( commandName.isEmpty() || commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
 		}
@@ -498,7 +495,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		std::string templateName( lair->getName().toCharArray() );
 
 		// Verify that mobiles exist and that their weighting is positive
-		VectorMap<String, int>* mobiles = lair->getMobiles();
+		const VectorMap<String, int>* mobiles = lair->getMobiles();
 		for (int i = 0; i < mobiles->size(); i++) {
 			int weighting = mobiles->elementAt(i).getValue();
 			String mobile = mobiles->elementAt(i).getKey();
@@ -508,7 +505,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 
 		// Verify that boss mobiles exist and that their count is positive
-		VectorMap<String, int>* bossMobiles = lair->getBossMobiles();
+		const VectorMap<String, int>* bossMobiles = lair->getBossMobiles();
 		for (int i = 0; i < bossMobiles->size(); i++) {
 			int count = bossMobiles->elementAt(i).getValue();
 			String bossMob = bossMobiles->elementAt(i).getKey();
@@ -523,9 +520,9 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 
 		// Verify any configured buildings exist
 		int buildingCount = 0;
-		for(int i=0; i<=4; i++){
 
-			Vector<String>* buildings = lair->getBuildings( i );
+		for(int i=0; i<=4; i++){
+			const Vector<String>* buildings = lair->getBuildings( i );
 			if( buildings == NULL )
 				continue;
 

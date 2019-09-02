@@ -178,7 +178,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			if (pet == nullptr)
 				continue;
 
-			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+			const CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
 
 			if (creatureTemplate != nullptr && creature->getFaction() != 0) {
 				String templateFaction = creatureTemplate->getFaction();
@@ -191,7 +191,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			}
 		}
 
-		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, petsToStore);
+		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, std::move(petsToStore));
 		task->execute();
 
 		ghost->updateInRangeBuildingPermissions();
