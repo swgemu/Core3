@@ -8,6 +8,8 @@
 #ifndef SHAREDOBJECTTEMPLATE_H_
 #define SHAREDOBJECTTEMPLATE_H_
 
+#include "engine/lua/Lua.h"
+
 #include "templates/LuaTemplate.h"
 #include "templates/IffTemplate.h"
 #include "templates/ChildObject.h"

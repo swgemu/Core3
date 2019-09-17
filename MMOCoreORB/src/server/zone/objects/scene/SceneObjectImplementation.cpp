@@ -1975,7 +1975,7 @@ String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDe
 	try {
 		count = writeRecursiveJSON(exportedObjects, maxDepth);
 	} catch (Exception& e) {
-		info("SceneObjectImplementation::writeRecursiveJSON(): failed:" + e.getMessage(), true);
+		error() << "SceneObjectImplementation::writeRecursiveJSON(): failed:" << e.getMessage();
 	}
 
 	// Metadata

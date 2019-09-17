@@ -204,9 +204,7 @@ void ServerCore::initialize() {
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
 						+ String::valueOf(galaxyID));
 			} catch (DatabaseException &e) {
-				error(e.getMessage());
-
-				exit(1);
+				fatal(e.getMessage());
 			}
 
 			zoneServer->start(zonePort, zoneAllowedConnections);

@@ -309,7 +309,7 @@ QueueCommand* CommandConfigManager::createCommand(const String& name) {
 
 	slashCommands->put(command);
 
-	info("created command " + name);
+	debug() << "created command " << name;
 
 	return command;
 }
@@ -367,9 +367,9 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 
 void CommandConfigManager::registerFunctions() {
 	//lua generic
-	lua_register(getLuaState(), "RunSlashCommandsFile", runSlashCommandsFile);
-	lua_register(getLuaState(), "AddCommand", addCommand);
-	lua_register(getLuaState(), "hashCode", hashCode);
+	registerFunction("RunSlashCommandsFile", runSlashCommandsFile);
+	registerFunction("AddCommand", addCommand);
+	registerFunction("hashCode", hashCode);
 }
 
 void CommandConfigManager::registerGlobals() {
@@ -508,11 +508,11 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("COLD_DAMAGE", SharedWeaponObjectTemplate::COLD);
 	setGlobalInt("ACID_DAMAGE", SharedWeaponObjectTemplate::ACID);
 	setGlobalInt("ELECTRICITY_DAMAGE", SharedWeaponObjectTemplate::ELECTRICITY);
-    
+
 	// JediQueueCommand buff types
 	setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);
 	setGlobalInt("SINGLE_USE_BUFF", JediQueueCommand::SINGLE_USE_BUFF);
-    
+
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);
@@ -736,7 +736,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(jediCommand);
 			if (varName == "healAmount")
 				healCommand->setHealAmount(Lua::getIntParameter(L));
-			else if (varName == "healWoundAmount") 
+			else if (varName == "healWoundAmount")
 				healCommand->setHealWoundAmount(Lua::getIntParameter(L));
 			else if (varName == "attributesToHeal")
 				healCommand->setAttributesToHeal(Lua::getUnsignedIntParameter(L));

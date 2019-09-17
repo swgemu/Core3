@@ -27,9 +27,7 @@ public:
 	void put(QueueCommand* value) {
 		uint32 crc = value->getNameCRC();
 
-		StringBuffer infoMsg;
-		infoMsg << "adding queueCommand 0x" << hex << crc << " " << value->getQueueCommandName();
-		info(infoMsg);
+		debug() << "adding queueCommand 0x" << hex << crc << " " << value->getQueueCommandName();
 
 		commands.put(crc, value);
 	}
@@ -37,9 +35,7 @@ public:
 	void put(const String& name, QueueCommand* value) {
 		uint32 crc = name.hashCode();
 
-		StringBuffer infoMsg;
-		infoMsg << "adding queueCommand 0x" << hex << crc << " " << name;
-		info(infoMsg);
+		debug() << "adding queueCommand 0x" << hex << crc << " " << name;
 
 		commands.put(crc, value);
 	}

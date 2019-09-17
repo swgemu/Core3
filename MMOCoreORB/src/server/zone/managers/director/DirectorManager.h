@@ -91,7 +91,7 @@ namespace server {
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		void setQuestStatus(const String& keyString, const String& valString);
-		String getQuestStatus(const String& keyString);
+		String getQuestStatus(const String& keyString) const;
 		void removeQuestStatus(const String& key);
 
 		String readStringSharedMemory(const String& key);
@@ -101,8 +101,8 @@ namespace server {
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
 		void removeQuestVectorMap(const String& keyString);
 
-		Vector<Reference<ScreenPlayTask*> > getObjectEvents(SceneObject* obj);
-		String getStringSharedMemory(const String& key);
+		Vector<Reference<ScreenPlayTask*> > getObjectEvents(SceneObject* obj) const;
+		String getStringSharedMemory(const String& key) const;
 
 		virtual Lua* getLuaInstance();
 		int runScreenPlays();

@@ -80,8 +80,8 @@ public:
 
 	static void loadLevels() {
 		lua.init();
-		lua_register(lua.getLuaState(), "includeFile", &includeFile);
-		lua_register(lua.getLuaState(), "addLevel", &addLevel);
+		lua.registerFunction("includeFile", &includeFile);
+		lua.registerFunction("addLevel", &addLevel);
 		lua.runFile("scripts/staff/levels/serverobjects.lua");
 	}
 

@@ -100,7 +100,6 @@ void ObjectManager::registerObjectTypes() {
 
 }
 
-
 SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 	Locker _locker(this);
 
@@ -206,12 +205,11 @@ uint32 ObjectManager::getObjectMapSize() {
 	return objectMap->size();
 }
 
-
 void ObjectManager::registerFunctions() {
 	//lua generic
-	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
-	lua_register(luaInstance->getLuaState(), "crcString", crcString);
-	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+	luaInstance->registerFunction("includeFile", includeFile);
+	luaInstance->registerFunction("crcString", crcString);
+	luaInstance->registerFunction("addTemplateCRC", addTemplateCRC);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
