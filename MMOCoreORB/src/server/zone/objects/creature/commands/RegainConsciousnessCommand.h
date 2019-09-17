@@ -7,6 +7,7 @@
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
 
@@ -69,7 +70,7 @@ public:
 			creature->sendSystemMessage(message);
 
 			// Revive user by setting posture to standing.
-			
+
 			creature->removeFeignedDeath();
 
 			creature->setPosture(CreaturePosture::UPRIGHT);

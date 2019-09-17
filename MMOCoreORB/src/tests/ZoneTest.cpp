@@ -146,6 +146,12 @@ TEST_F(ZoneTest, TreLoad) {
 
 TEST_F(ZoneTest, ActiveAreaTest) {
 	Reference<MockActiveArea*> activeArea = createActiveArea(true).castTo<MockActiveArea*>();
+	ON_CALL(*activeArea, getZone()).WillByDefault(Return(zone));
+	ON_CALL(*activeArea, getZoneUnsafe()).WillByDefault(Return(zone));
+	ON_CALL(*activeArea, getParent()).WillByDefault(Return(ManagedWeakReference<SceneObject*>(NULL)));
+	EXPECT_CALL(*activeArea, getZone()).Times(AnyNumber());
+	EXPECT_CALL(*activeArea, getZoneUnsafe()).Times(AnyNumber());
+	EXPECT_CALL(*activeArea, getParent()).Times(AnyNumber());
 	EXPECT_CALL(*activeArea, enqueueEnterEvent(_)).Times(AnyNumber());
 	EXPECT_CALL(*activeArea, enqueueExitEvent(_)).Times(AnyNumber());
 

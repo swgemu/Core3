@@ -54,6 +54,7 @@ CreatureTemplate::CreatureTemplate() {
 	creatureBitmask = 0;
 	diet = 0;
 	optionsBitmask = 0;
+	customAiMap = 0;
 
 	templates.removeAll();
 
@@ -118,6 +119,9 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	if(!templateData->getStringField("defaultAttack").isEmpty())
 		defaultAttack = templateData->getStringField("defaultAttack");
+
+	if(!templateData->getStringField("customAiMap").isEmpty())
+		customAiMap = templateData->getStringField("customAiMap").hashCode();
 
 	scale = templateData->getFloatField("scale");
 
