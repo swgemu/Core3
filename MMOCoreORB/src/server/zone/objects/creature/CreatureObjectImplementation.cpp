@@ -181,7 +181,7 @@ void CreatureObjectImplementation::loadTemplateData(
 		SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	SharedCreatureObjectTemplate* creoData =
+	const SharedCreatureObjectTemplate* creoData =
 			dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
 	if (creoData == nullptr)
@@ -209,7 +209,7 @@ void CreatureObjectImplementation::loadTemplateData(
 		encumbrances.add(0);
 	}
 
-	Vector<int> base = creoData->getBaseHAM();
+	const auto& base = creoData->getBaseHAM();
 
 	baseHAM.removeAll();
 
@@ -233,7 +233,7 @@ void CreatureObjectImplementation::loadTemplateData(
 
 	frozen = 0;
 
-	Vector<FloatParam> accel = creoData->getAcceleration();
+	const auto& accel = creoData->getAcceleration();
 
 	if (accel.size() > 0) {
 		runAcceleration = accel.get(0);
@@ -243,7 +243,7 @@ void CreatureObjectImplementation::loadTemplateData(
 		walkAcceleration = 0;
 	}
 
-	const Vector<FloatParam>& speedTempl = creoData->getSpeed();
+	const auto& speedTempl = creoData->getSpeed();
 
 	if (speedTempl.size() > 0) {
 		runSpeed = speedTempl.get(0);

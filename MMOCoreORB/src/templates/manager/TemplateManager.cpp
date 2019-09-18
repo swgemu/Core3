@@ -579,10 +579,10 @@ void TemplateManager::registerTemplateObjects() {
 
 void TemplateManager::registerFunctions() {
 	//lua generic
-	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
-	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
-	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
-	lua_register(luaTemplatesInstance->getLuaState(), "addClientTemplate", addClientTemplate);
+	luaTemplatesInstance->registerFunction("includeFile", includeFile);
+	luaTemplatesInstance->registerFunction("crcString", crcString);
+	luaTemplatesInstance->registerFunction("addTemplateCRC", addTemplateCRC);
+	luaTemplatesInstance->registerFunction("addClientTemplate", addClientTemplate);
 }
 
 void TemplateManager::registerGlobals() {

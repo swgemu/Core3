@@ -171,9 +171,9 @@ private:
 	static const bool DEBUG_MODE = false;
 
 	void registerFunctions(Lua* lua) {
-		lua_register(lua->getLuaState(), "addAiTemplate", addAiTemplate);
-		lua_register(lua->getLuaState(), "addAiBehavior", addAiBehavior);
-		lua_register(lua->getLuaState(), "includeAiFile", includeFile);
+		lua->registerFunction("addAiTemplate", addAiTemplate);
+		lua->registerFunction("addAiBehavior", addAiBehavior);
+		lua->registerFunction("includeAiFile", includeFile);
 	}
 
 	void registerGlobals(Lua* lua) {

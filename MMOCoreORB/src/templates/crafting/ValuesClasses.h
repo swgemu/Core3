@@ -23,6 +23,8 @@ class Values : public Object {
 	bool experimentalProperties;
 
 public:
+	Values() = delete;
+
 	Values(const String& n, const float& tempmin, const float& tempmax, const int& prec, const bool& filler, const int& combine) {
 		name = n;
 
@@ -51,8 +53,14 @@ public:
 		combineType = val.combineType;
 	}
 
+	Values(Values&& val) : Object(), values(std::move(val.values)),
+					  name(std::move(val.name)), minValue(val.minValue),
+					  maxValue(val.maxValue), precision(val.precision),
+	      				  combineType(val.combineType), locked(val.locked),
+					  experimentalProperties(val.experimentalProperties) {
+	}
+
 	~Values(){
-		values.removeAll();
 	}
 
 	inline float getPercentage() const {
@@ -114,7 +122,7 @@ public:
 
 		float newpercentage;
 
-		if (maxValue == minValue) {
+		if (Float::areAlmostEqualRelative(maxValue, minValue)) {
 			newpercentage = (value - minValue);
 		} if (maxValue > minValue)
 			newpercentage = (value - minValue) / (maxValue - minValue);
@@ -217,6 +225,8 @@ class Subclasses : public Object {
 	bool hidden;
 
 public:
+	Subclasses() = delete;
+
 	Subclasses(const String& title, const String& subtitle, const float
 			min, const float max, const int precision, const bool filler, const int combine) {
 
@@ -244,7 +254,7 @@ public:
 		avePercentage = sub.avePercentage;
 
 		for (int i = 0; i < sub.valueList.size(); ++i) {
-			VectorMapEntry<String, Reference<Values*> > entry = sub.valueList.elementAt(i);
+			const auto& entry = sub.valueList.elementAt(i);
 
 			Values* values = entry.getValue();
 
@@ -254,8 +264,12 @@ public:
 		}
 	}
 
+	Subclasses(Subclasses&& sub) : Object(), valueList(std::move(sub.valueList)),
+					avePercentage(sub.avePercentage), name(std::move(sub.name)),
+					classTitle(std::move(sub.classTitle)), hidden(sub.hidden) {
+	}
+
 	~Subclasses(){
-		valueList.removeAll();
 	}
 
 	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler, const int combine) {

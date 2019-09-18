@@ -128,8 +128,8 @@ void SkillManager::loadClientData() {
 void SkillManager::loadFromLua() {
 	Lua* lua = new Lua();
 	lua->init();
-	lua_register(lua->getLuaState(), "includeFile", &includeFile);
-	lua_register(lua->getLuaState(), "addSkill", &addSkill);
+	lua->registerFunction("includeFile", &includeFile);
+	lua->registerFunction("addSkill", &addSkill);
 
 	lua->runFile("scripts/skills/serverobjects.lua");
 

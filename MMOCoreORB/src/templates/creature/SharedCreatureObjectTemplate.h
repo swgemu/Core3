@@ -11,6 +11,8 @@
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/params/VectorParam.h"
 
+#include "engine/lua/Lua.h"
+
 class SharedCreatureObjectTemplate: public SharedTangibleObjectTemplate {
 protected:
 	IntegerParam gender;
@@ -61,15 +63,15 @@ public:
 	void parseVariableData(const String& varName, Chunk* data);
 	void parseFileData(IffStream* iffStream);
 
-	inline Vector<FloatParam> getAcceleration() const {
+	inline const Vector<FloatParam>& getAcceleration() const {
 		return acceleration.get();
 	}
 
-	inline String getAnimationMapFilename() const {
-		return animationMapFilename;
+	inline const String& getAnimationMapFilename() const {
+		return animationMapFilename.getValue();
 	}
 
-	inline Vector<int> getBaseHAM() const {
+	inline const Vector<int>& getBaseHAM() const {
 		return baseHAM;
 	}
 
@@ -101,15 +103,15 @@ public:
 		return gender;
 	}
 
-	inline String getMovementDatatable() const {
-		return movementDatatable;
+	inline const String& getMovementDatatable() const {
+		return movementDatatable.getValue();
 	}
 
 	inline int getNiche() const {
 		return niche;
 	}
 
-	inline Vector<BoolParam> getPostureAlignToTerrain() const {
+	inline const Vector<BoolParam>& getPostureAlignToTerrain() const {
 		return postureAlignToTerrain.get();
 	}
 
@@ -141,7 +143,7 @@ public:
 		return swimHeight;
 	}
 
-	inline Vector<FloatParam> getTurnRate() const {
+	inline const Vector<FloatParam>& getTurnRate() const {
 		return turnRate.get();
 	}
 

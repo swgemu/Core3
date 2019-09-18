@@ -19,7 +19,7 @@ AtomicInteger DnaManager::loadedDnaData;
 DnaManager::DnaManager() : Logger("DnaManager") {
 	lua = new Lua();
 	lua->init();
-	lua_register(lua->getLuaState(), "addQualityTemplate", addQualityTemplate);
+	lua->registerFunction("addQualityTemplate", addQualityTemplate);
 
 	lua->setGlobalInt("FORTITUDE", DnaManager::FORTITUDE);
 	lua->setGlobalInt("ENDURANCE", DnaManager::ENDURANCE);

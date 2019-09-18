@@ -45,9 +45,9 @@ int LootGroupMap::initialize() {
 }
 
 void LootGroupMap::registerFunctions() {
-	lua_register(lua->getLuaState(), "addLootGroupTemplate", addLootGroupTemplate);
-	lua_register(lua->getLuaState(), "addLootItemTemplate", addLootItemTemplate);
-	lua_register(lua->getLuaState(), "includeFile", includeFile);
+	lua->registerFunction("addLootGroupTemplate", addLootGroupTemplate);
+	lua->registerFunction("addLootItemTemplate", addLootItemTemplate);
+	lua->registerFunction("includeFile", includeFile);
 }
 
 void LootGroupMap::registerGlobals() {

@@ -207,7 +207,7 @@ void DirectorManager::setQuestStatus(const String& keyString, const String& valS
 	status->setStatus(valString);
 }
 
-String DirectorManager::getQuestStatus(const String& keyString) {
+String DirectorManager::getQuestStatus(const String& keyString) const {
 	String str = "";
 
 	Reference<QuestStatus*> status = questStatuses.get(keyString);
@@ -256,14 +256,14 @@ uint64 DirectorManager::readSharedMemory(const String& key) {
 	return data;
 }
 
-Vector<Reference<ScreenPlayTask*> > DirectorManager::getObjectEvents(SceneObject* obj) {
+Vector<Reference<ScreenPlayTask*> > DirectorManager::getObjectEvents(SceneObject* obj) const {
 	Vector<Reference<ScreenPlayTask*> > eventList;
 
 	for (int i = 0; i < screenplayTasks.size(); i++) {
 		Reference<ScreenPlayTask*> task = screenplayTasks.get(i);
 
 		if (task->getSceneObject() == obj) {
-			eventList.add(task);
+			eventList.emplace(std::move(task));
 		}
 	}
 
@@ -277,7 +277,7 @@ void DirectorManager::printTraceError(lua_State* L, const String& error) {
 	lua->error(trace);
 }
 
-String DirectorManager::getStringSharedMemory(const String& key) {
+String DirectorManager::getStringSharedMemory(const String& key) const {
 	return sharedMemory->getString(key);
 }
 
@@ -323,106 +323,104 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	setupLuaPackagePath(luaEngine);
 
-	lua_register(luaEngine->getLuaState(), "includeFile", includeFile);
-	lua_register(luaEngine->getLuaState(), "createEvent", createEvent);
-	lua_register(luaEngine->getLuaState(), "createEventActualTime", createEventActualTime);
-	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
-	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
-	lua_register(luaEngine->getLuaState(), "rescheduleServerEvent", rescheduleServerEvent);
-	lua_register(luaEngine->getLuaState(), "getServerEventID", getServerEventID);
-	lua_register(luaEngine->getLuaState(), "getServerEventTimeLeft", getServerEventTimeLeft);
-	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
-	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
-	lua_register(luaEngine->getLuaState(), "hasObserver", hasObserver);
-	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
-	lua_register(luaEngine->getLuaState(), "spawnEventMobile", spawnEventMobile);
-	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
-	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
-
-	lua_register(luaEngine->getLuaState(), "getRandomNumber", getRandomNumber);
-
-	lua_register(luaEngine->getLuaState(), "forcePeace", forcePeace);
-
-	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
-	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
-	lua_register(luaEngine->getLuaState(), "deleteSharedMemory", deleteSharedMemory);
-	lua_register(luaEngine->getLuaState(), "readStringSharedMemory", readStringSharedMemory);
-	lua_register(luaEngine->getLuaState(), "writeStringSharedMemory", writeStringSharedMemory);
-	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
-	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
-	lua_register(luaEngine->getLuaState(), "spawnActiveArea", spawnActiveArea);
-	lua_register(luaEngine->getLuaState(), "spawnBuilding", spawnBuilding);
-	lua_register(luaEngine->getLuaState(), "destroyBuilding", destroyBuilding);
-	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
-	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
-	lua_register(luaEngine->getLuaState(), "addStartingItemsInto", addStartingItemsInto);
-	lua_register(luaEngine->getLuaState(), "addStartingWeaponsInto", addStartingWeaponsInto);
-	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
-	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
-	lua_register(luaEngine->getLuaState(), "giveControlDevice", giveControlDevice);
-	lua_register(luaEngine->getLuaState(), "checkTooManyHirelings", checkTooManyHirelings);
-	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
-	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
-	lua_register(luaEngine->getLuaState(), "getStringId", getStringId);
-	lua_register(luaEngine->getLuaState(), "getRankName", getRankName);
-	lua_register(luaEngine->getLuaState(), "getRankCost", getRankCost);
-	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioFrom", getRankDelegateRatioFrom);
-	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioTo", getRankDelegateRatioTo);
-	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
-	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
-	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
-	lua_register(luaEngine->getLuaState(), "getZoneByName", getZoneByName);
-	lua_register(luaEngine->getLuaState(), "isZoneEnabled", isZoneEnabled);
-	lua_register(luaEngine->getLuaState(), "getContainerObjectByTemplate", getContainerObjectByTemplate);
-	lua_register(luaEngine->getLuaState(), "updateCellPermission", updateCellPermission);
-	lua_register(luaEngine->getLuaState(), "updateCellPermissionGroup", updateCellPermissionGroup);
-	lua_register(luaEngine->getLuaState(), "getQuestInfo", getQuestInfo);
-	lua_register(luaEngine->getLuaState(), "getPlayerQuestID", getPlayerQuestID);
+	//luaEngine->registerFunction("includeFile", includeFile);
+	luaEngine->registerFunction("includeFile", includeFile);
+	luaEngine->registerFunction("createEvent", createEvent);
+	luaEngine->registerFunction("createEventActualTime", createEventActualTime);
+	luaEngine->registerFunction("createServerEvent", createServerEvent);
+	luaEngine->registerFunction("hasServerEvent", hasServerEvent);
+	luaEngine->registerFunction("rescheduleServerEvent", rescheduleServerEvent);
+	luaEngine->registerFunction("getServerEventID", getServerEventID);
+	luaEngine->registerFunction("getServerEventTimeLeft", getServerEventTimeLeft);
+	luaEngine->registerFunction("createObserver", createObserver);
+	luaEngine->registerFunction("dropObserver", dropObserver);
+	luaEngine->registerFunction("hasObserver", hasObserver);
+	luaEngine->registerFunction("spawnMobile", spawnMobile);
+	luaEngine->registerFunction("spawnEventMobile", spawnEventMobile);
+	luaEngine->registerFunction("spatialChat", spatialChat);
+	luaEngine->registerFunction("spatialMoodChat", spatialMoodChat);
+	luaEngine->registerFunction("getRandomNumber", getRandomNumber);
+	luaEngine->registerFunction("forcePeace", forcePeace);
+	luaEngine->registerFunction("readSharedMemory", readSharedMemory);
+	luaEngine->registerFunction("writeSharedMemory", writeSharedMemory);
+	luaEngine->registerFunction("deleteSharedMemory", deleteSharedMemory);
+	luaEngine->registerFunction("readStringSharedMemory", readStringSharedMemory);
+	luaEngine->registerFunction("writeStringSharedMemory", writeStringSharedMemory);
+	luaEngine->registerFunction("deleteStringSharedMemory", deleteStringSharedMemory);
+	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
+	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
+	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
+	luaEngine->registerFunction("destroyBuilding", destroyBuilding);
+	luaEngine->registerFunction("getSceneObject", getSceneObject);
+	luaEngine->registerFunction("getCreatureObject", getCreatureObject);
+	luaEngine->registerFunction("addStartingItemsInto", addStartingItemsInto);
+	luaEngine->registerFunction("addStartingWeaponsInto", addStartingWeaponsInto);
+	luaEngine->registerFunction("setAuthorizationState", setAuthorizationState);
+	luaEngine->registerFunction("giveItem", giveItem);
+	luaEngine->registerFunction("giveControlDevice", giveControlDevice);
+	luaEngine->registerFunction("checkTooManyHirelings", checkTooManyHirelings);
+	luaEngine->registerFunction("checkInt64Lua", checkInt64Lua);
+	luaEngine->registerFunction("getChatMessage", getChatMessage);
+	luaEngine->registerFunction("getStringId", getStringId);
+	luaEngine->registerFunction("getRankName", getRankName);
+	luaEngine->registerFunction("getRankCost", getRankCost);
+	luaEngine->registerFunction("getRankDelegateRatioFrom", getRankDelegateRatioFrom);
+	luaEngine->registerFunction("getRankDelegateRatioTo", getRankDelegateRatioTo);
+	luaEngine->registerFunction("isHighestRank", isHighestRank);
+	luaEngine->registerFunction("getFactionPointsCap", getFactionPointsCap);
+	luaEngine->registerFunction("registerScreenPlay", registerScreenPlay);
+	luaEngine->registerFunction("getZoneByName", getZoneByName);
+	luaEngine->registerFunction("isZoneEnabled", isZoneEnabled);
+	luaEngine->registerFunction("getContainerObjectByTemplate", getContainerObjectByTemplate);
+	luaEngine->registerFunction("updateCellPermission", updateCellPermission);
+	luaEngine->registerFunction("updateCellPermissionGroup", updateCellPermissionGroup);
+	luaEngine->registerFunction("getQuestInfo", getQuestInfo);
+	luaEngine->registerFunction("getPlayerQuestID", getPlayerQuestID);
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
-	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
-	lua_register(luaEngine->getLuaState(), "createLootSet", createLootSet);
-	lua_register(luaEngine->getLuaState(), "createLootFromCollection", createLootFromCollection);
+	luaEngine->registerFunction("createLoot", createLoot);
+	luaEngine->registerFunction("createLootSet", createLootSet);
+	luaEngine->registerFunction("createLootFromCollection", createLootFromCollection);
 
-	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
-	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
-	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
-	lua_register(luaEngine->getLuaState(), "deleteScreenPlayData", deleteScreenPlayData);
-	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
-	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
-	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
-	lua_register(luaEngine->getLuaState(), "getTimestampMilli", getTimestampMilli);
-	lua_register(luaEngine->getLuaState(), "getFormattedTime", getFormattedTime);
-	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
-	lua_register(luaEngine->getLuaState(), "getSpawnPointInArea", getSpawnPointInArea);
-	lua_register(luaEngine->getLuaState(), "getSpawnArea", getSpawnArea);
-	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
-	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
-	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);
-	lua_register(luaEngine->getLuaState(), "awardSkill", awardSkill);
-	lua_register(luaEngine->getLuaState(), "getCityRegionAt", getCityRegionAt);
-	lua_register(luaEngine->getLuaState(), "setDungeonTicketAttributes", setDungeonTicketAttributes);
-	lua_register(luaEngine->getLuaState(), "setQuestStatus", setQuestStatus);
-	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
-	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
-	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
-	lua_register(luaEngine->getLuaState(), "getImperialScore", getImperialScore);
-	lua_register(luaEngine->getLuaState(), "getRebelScore", getRebelScore);
-	lua_register(luaEngine->getLuaState(), "getWinningFactionDifficultyScaling", getWinningFactionDifficultyScaling);
-	lua_register(luaEngine->getLuaState(), "playClientEffectLoc", playClientEffectLoc);
-	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
-	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
-	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
-	lua_register(luaEngine->getLuaState(), "creatureTemplateExists", creatureTemplateExists);
-	lua_register(luaEngine->getLuaState(), "printLuaError", printLuaError);
-	lua_register(luaEngine->getLuaState(), "getPlayerByName", getPlayerByName);
-	lua_register(luaEngine->getLuaState(), "sendMail", sendMail);
-	lua_register(luaEngine->getLuaState(), "spawnTheaterObject", spawnTheaterObject);
-	lua_register(luaEngine->getLuaState(), "getSchematicItemName", getSchematicItemName);
-	lua_register(luaEngine->getLuaState(), "getBadgeListByType", getBadgeListByType);
+	luaEngine->registerFunction("getRegion", getRegion);
+	luaEngine->registerFunction("writeScreenPlayData", writeScreenPlayData);
+	luaEngine->registerFunction("readScreenPlayData", readScreenPlayData);
+	luaEngine->registerFunction("deleteScreenPlayData", deleteScreenPlayData);
+	luaEngine->registerFunction("clearScreenPlayData", clearScreenPlayData);
+	luaEngine->registerFunction("getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
+	luaEngine->registerFunction("getTimestamp", getTimestamp);
+	luaEngine->registerFunction("getTimestampMilli", getTimestampMilli);
+	luaEngine->registerFunction("getFormattedTime", getFormattedTime);
+	luaEngine->registerFunction("getSpawnPoint", getSpawnPoint);
+	luaEngine->registerFunction("getSpawnPointInArea", getSpawnPointInArea);
+	luaEngine->registerFunction("getSpawnArea", getSpawnArea);
+	luaEngine->registerFunction("makeCreatureName", makeCreatureName);
+	luaEngine->registerFunction("getGCWDiscount", getGCWDiscount);
+	luaEngine->registerFunction("getTerrainHeight", getTerrainHeight);
+	luaEngine->registerFunction("awardSkill", awardSkill);
+	luaEngine->registerFunction("getCityRegionAt", getCityRegionAt);
+	luaEngine->registerFunction("setDungeonTicketAttributes", setDungeonTicketAttributes);
+	luaEngine->registerFunction("setQuestStatus", setQuestStatus);
+	luaEngine->registerFunction("getQuestStatus", getQuestStatus);
+	luaEngine->registerFunction("removeQuestStatus", removeQuestStatus);
+	luaEngine->registerFunction("getControllingFaction", getControllingFaction);
+	luaEngine->registerFunction("getImperialScore", getImperialScore);
+	luaEngine->registerFunction("getRebelScore", getRebelScore);
+	luaEngine->registerFunction("getWinningFactionDifficultyScaling", getWinningFactionDifficultyScaling);
+	luaEngine->registerFunction("playClientEffectLoc", playClientEffectLoc);
+	luaEngine->registerFunction("getQuestVectorMap", getQuestVectorMap);
+	luaEngine->registerFunction("createQuestVectorMap", createQuestVectorMap);
+	luaEngine->registerFunction("removeQuestVectorMap", removeQuestVectorMap);
+	luaEngine->registerFunction("creatureTemplateExists", creatureTemplateExists);
+	luaEngine->registerFunction("printLuaError", printLuaError);
+	luaEngine->registerFunction("getPlayerByName", getPlayerByName);
+	luaEngine->registerFunction("sendMail", sendMail);
+	luaEngine->registerFunction("spawnTheaterObject", spawnTheaterObject);
+	luaEngine->registerFunction("getSchematicItemName", getSchematicItemName);
+	luaEngine->registerFunction("getBadgeListByType", getBadgeListByType);
 
 	//Navigation Mesh Management
-	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
+	luaEngine->registerFunction("createNavMesh", createNavMesh);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -899,18 +897,14 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 		return 0;
 	}
 
-	instance()->info("Lua version: " + String::valueOf(*lua_version(L)), true);
+	instance()->info(true) << "Lua version: " << *lua_version(L);
 
 	uint64 data = lua_tointeger(L, -1);
 
 	uint64 bigNumber = 0x01000000;
 	bigNumber += bigNumber << 32;
 
-	if (data < bigNumber) {
-		instance()->error("Lua not using lnum patch with 64 bit integers, please patch lua!!");
-	} else {
-		instance()->info("Lua reads int64", true);
-	}
+	instance()->fatal(data >= bigNumber, "Lua not using lnum patch with 64 bit integers, please patch lua!!");
 
 	lua_pop(L, 1);
 
@@ -1005,8 +999,6 @@ int DirectorManager::writeSharedMemory(lua_State* L) {
 
 	return 0;
 }
-
-
 
 int DirectorManager::readStringSharedMemory(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
