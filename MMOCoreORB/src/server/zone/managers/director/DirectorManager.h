@@ -204,7 +204,7 @@ namespace server {
 		static int getBadgeListByType(lua_State* L);
 
 	private:
-		void setupLuaPackagePath(Lua* luaEngine);
+		static void setupLuaPackagePath(Lua* luaEngine);
 		static void printTraceError(lua_State* L, const String& error);
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);

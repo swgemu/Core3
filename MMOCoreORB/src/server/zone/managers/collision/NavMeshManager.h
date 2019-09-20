@@ -12,7 +12,7 @@
 #include "engine/util/u3d/AABB.h"
 #include "server/zone/managers/collision/NavMeshJob.h"
 
-class NavMeshManager : public Singleton<NavMeshManager>, public Logger, public Object{
+class NavMeshManager : public Singleton<NavMeshManager>, public Logger, public Object {
 
 protected:
 	int maxConcurrentJobs;
@@ -24,7 +24,7 @@ protected:
 
 
 	void startJob(Reference<NavMeshJob*> job);
-    void checkJobs();
+    	void checkJobs();
 
 public:
 	NavMeshManager();
@@ -37,19 +37,19 @@ public:
 	void cancelAllJobs();
 	void stop();
 
-	bool isStopped() {
+	bool isStopped() const {
 		return stopped;
 	}
 
 	void dumpMeshesToFiles();
 
-    static bool AABBEncompasessAABB(const AABB& lhs, const AABB& rhs);
+	static bool AABBEncompasessAABB(const AABB& lhs, const AABB& rhs);
 
-    // Lower thread count, used during runtime
-    static const String TileQueue; //"NavMeshWorker";
+	// Lower thread count, used during runtime
+	static const String TileQueue; //"NavMeshWorker";
 
-    // Higher thread count, used for building large static cities during initialization
-    static const String MeshQueue; //"NavMeshBuilder";
+	// Higher thread count, used for building large static cities during initialization
+	static const String MeshQueue; //"NavMeshBuilder";
 
 };
 #endif
