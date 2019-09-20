@@ -19,7 +19,7 @@
 #include "engine/util/u3d/Segment.h"
 #include "pathfinding/recast/DetourCommon.h"
 
-static constexpr int MAX_QUERY_NODES = 2048 * 2;
+const static constexpr int MAX_QUERY_NODES = 2048 * 2;
 
 void destroyNavMeshQuery(void* value) {
 	dtFreeNavMeshQuery(reinterpret_cast<dtNavMeshQuery*>(value));
@@ -47,21 +47,21 @@ PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery
 
 Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone) {
 	if (std::isnan(pointA.getX()) || std::isnan(pointA.getY()) || std::isnan(pointA.getZ()))
-		return NULL;
+		return nullptr;
 
 	if (std::isnan(pointB.getX()) || std::isnan(pointB.getY()) || std::isnan(pointB.getZ()))
-		return NULL;
+		return nullptr;
 
 	CellObject* cellA = pointA.getCell();
 	CellObject* cellB = pointB.getCell();
 
-	if (cellA == NULL && cellB == NULL) { // world -> world
+	if (cellA == nullptr && cellB == nullptr) { // world -> world
 		return findPathFromWorldToWorld(pointA, pointB, zone);
-	} else if (cellA != NULL && cellB == NULL) { // cell -> world
+	} else if (cellA != nullptr && cellB == nullptr) { // cell -> world
 		return findPathFromCellToWorld(pointA, pointB, zone);
-	} else if (cellA == NULL && cellB != NULL) { // world -> cell
+	} else if (cellA == nullptr && cellB != nullptr) { // world -> cell
 		return findPathFromWorldToCell(pointA, pointB, zone);
-	} else /* if (cellA != NULL && cellB != NULL) */ { // cell -> cell, the only left option
+	} else /* if (cellA != nullptr && cellB != nullptr) */ { // cell -> cell, the only left option
 		return findPathFromCellToCell(pointA, pointB);
 	}
 }
@@ -152,7 +152,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 dtNavMeshQuery* PathFinderManager::getNavQuery() {
 	dtNavMeshQuery* query = m_navQuery.get();
 
-	if (query == NULL) {
+	if (query == nullptr) {
 		query = dtAllocNavMeshQuery();
 		m_navQuery.set(query);
 	}
@@ -183,7 +183,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 
 	RecastNavMesh* navMesh = area->getNavMesh();
 
-	if (navMesh == NULL || !navMesh->isLoaded())
+	if (navMesh == nullptr || !navMesh->isLoaded())
 		return false;
 
 	// We need to flip the Y/Z axis and negate Z to put it in recasts model space
@@ -241,7 +241,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 
 			status = query->findStraightPath(polyStart.toFloatArray(), polyEnd.toFloatArray(),
 									polyPath, numPolys,
-									(float*) pathPoints, NULL, NULL,
+									(float*) pathPoints, nullptr, nullptr,
 									&numPoints, MAX_PATH_POINTS, pathOptions);
 #ifdef DEBUG_PATHING
 			info("findStraightPath result: 0x" + String::hexvalueOf(status), true);
@@ -251,7 +251,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 					//info("PathFind Point : " + point.toString(), true);
 					len += pathPoints[i][0] * pathPoints[i][0] + pathPoints[i][2] * pathPoints[i][2];
 					path->add(WorldCoordinates(Vector3(pathPoints[i][0], -pathPoints[i][2], pathPoints[i][1]),
-											   NULL));
+											   nullptr));
 				}
 			}
 		}
@@ -260,7 +260,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	return true;
 }
 
-Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const WorldCoordinates& pointA, Vector<WorldCoordinates>& endPoints, Zone* zone, bool allowPartial) {
+Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const WorldCoordinates& pointA, const Vector<WorldCoordinates>& endPoints, Zone* zone, bool allowPartial) {
 	Vector<WorldCoordinates>* finalpath = new Vector<WorldCoordinates>();
 	float finalLengthSq = FLT_MAX;
 
@@ -298,7 +298,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 				if (area->containsPoint(startTemp.getX(), startTemp.getY())) {
 					if (!getRecastPath(startTemp, position, area, path, len, allowPartial)) { // exiting navmesh
 						delete collision;
-						if (path != NULL) delete path;
+						if (path != nullptr) delete path;
 						continue;
 					}
 
@@ -309,7 +309,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 					if (!getRecastPath(position, targetTemp, area, path, len, allowPartial)) { // entering navmesh
 						delete collision;
-						if (path != NULL) delete path;
+						if (path != nullptr) delete path;
 						continue;
 					}
 				}
@@ -320,7 +320,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 					finalLengthSq = len;
 					finalpath = path;
-					path = NULL;
+					path = nullptr;
 				}
 			} else if (collisionSize == 0) { // we're already inside a navmesh (or there are no navmeshes around)
 				for (int i = 0; i < areas.size(); i++) {
@@ -354,7 +354,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 					if (!getRecastPath(position1, position2, area1, path, len, allowPartial)) {
 						delete collision1;
 						delete collision2;
-						if (path != NULL) delete path;
+						if (path != nullptr) delete path;
 						continue;
 					}
 
@@ -366,7 +366,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 						finalLengthSq = len;
 						finalpath = path;
-						path = NULL;
+						path = nullptr;
 					}
 				} else { // TODO: handle multiple meshes
 
@@ -383,7 +383,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 			}
 
 			delete path;
-			path = NULL;
+			path = nullptr;
 		}
 
 		for (int i=collisions.size()-1; i>=0; i--) {
@@ -391,7 +391,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 			delete collision;
 		}
 
-		if (path != NULL)
+		if (path != nullptr)
 			delete path;
 	}
 
@@ -418,31 +418,31 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone) {
 	CellObject* targetCell = pointB.getCell();
 
-	if (targetCell == NULL)
-		return NULL;
+	if (targetCell == nullptr)
+		return nullptr;
 
 	ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(targetCell->getParent().get().get());
 
-	if (building == NULL) {
-		error("building == NULL in PathFinderManager::findPathFromWorldToCell");
-		return NULL;
+	if (building == nullptr) {
+		error("building == nullptr in PathFinderManager::findPathFromWorldToCell");
+		return nullptr;
 	}
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
 
-	if (templateObject == NULL)
-		return NULL;
+	if (templateObject == nullptr)
+		return nullptr;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL)
-		return NULL;
+	if (portalLayout == nullptr)
+		return nullptr;
 
 	//find nearest entrance
 	FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
 
-	if (exteriorFloorMesh == NULL)
-		return NULL;
+	if (exteriorFloorMesh == nullptr)
+		return nullptr;
 
 	PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
 
@@ -456,24 +456,24 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 	PathNode* nearestEntranceNode = exteriorPathGraph->findNearestNode(transformedPosition);
 
-	if (nearestEntranceNode == NULL) {
-		error("NULL entrance node for building " + templateObject->getFullTemplateString());
+	if (nearestEntranceNode == nullptr) {
+		error("nullptr entrance node for building " + templateObject->getFullTemplateString());
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 	//PathNode* nearestTargetNode = targetPathGraph->findNearestNode(pointB.getPoint());
 	TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), targetFloorMesh);
 
-	if (nearestTargetNodeTriangle == NULL) {
+	if (nearestTargetNodeTriangle == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathNode* nearestTargetNode = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, targetFloorMesh, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
-	if (nearestTargetNode == NULL) {
+	if (nearestTargetNode == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	/*if (nearestEntranceNode == nearestTargetNode)
@@ -482,10 +482,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	//find graph from outside to appropriate cell
 	Vector<PathNode*>* pathToCell = portalLayout->getPath(nearestEntranceNode, nearestTargetNode);
 
-	if (pathToCell == NULL) {
-		error("pathToCell = portalLayout->getPath(nearestEntranceNode, nearestTargetNode); == NULL");
+	if (pathToCell == nullptr) {
+		error("pathToCell = portalLayout->getPath(nearestEntranceNode, nearestTargetNode); == nullptr");
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	for (int i = 0; i < pathToCell->size(); ++i) {
@@ -501,7 +501,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 		if (cellID == 0) { // we are still outside
 			WorldCoordinates coord(pathNode->getPosition(), targetCell);
 
-			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
+			path->add(WorldCoordinates(coord.getWorldPosition(), nullptr));
 		} else { // we are inside the building
 			CellObject* pathCell = building->getCell(cellID);
 
@@ -515,17 +515,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	}
 
 	delete pathToCell;
-	pathToCell = NULL;
+	pathToCell = nullptr;
 
 	// path from cell path node to destination point
-	Vector<Triangle*>* trianglePath = NULL;
+	Vector<Triangle*>* trianglePath = nullptr;
 
 	int res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), targetFloorMesh, trianglePath);
 
-	if (res != -1 && trianglePath != NULL)
+	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointB.getPoint(), trianglePath, path, targetCell);
 
-	if (trianglePath != NULL)
+	if (trianglePath != nullptr)
 		delete trianglePath;
 
 	path->add(pointB);
@@ -538,14 +538,14 @@ FloorMesh* PathFinderManager::getFloorMesh(CellObject* cell) {
 
     SharedObjectTemplate* templateObject = building1->getObjectTemplate();
 
-    if (templateObject == NULL) {
-    	return NULL;
+    if (templateObject == nullptr) {
+    	return nullptr;
     }
 
     PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-    if (portalLayout == NULL) {
-    	return NULL;
+    if (portalLayout == nullptr) {
+    	return nullptr;
     }
 
     FloorMesh* floorMesh1 = portalLayout->getFloorMesh(cell->getCellNumber());
@@ -582,16 +582,16 @@ int PathFinderManager::getFloorPath(const Vector3& pointA, const Vector3& pointB
 	targetFoorBar << "nearest target floor point x:" << targetFloorVector.getX() << " z:" << targetFloorVector.getY() << " y:" << targetFloorVector.getZ();
 	info(targetFoorBar.toString(), true);*/
 
-	nodes = NULL;
+	nodes = nullptr;
 
 	if (objectFloor == targetFloor) { // we are on the same triangle, returning pointB
 		return -1;
-	} else if (objectFloor == NULL || targetFloor == NULL)
+	} else if (objectFloor == nullptr || targetFloor == nullptr)
 		return 1;
 
 	nodes = TriangulationAStarAlgorithm::search(pointA, pointB, objectFloor, targetFloor);
 
-	if (nodes == NULL)
+	if (nodes == nullptr)
 		return 1;
 
 	return 0;
@@ -630,8 +630,8 @@ Vector3 PathFinderManager::transformToModelSpace(const Vector3& point, SceneObje
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone) {
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
 
-	if (path == NULL)
-		return NULL;
+	if (path == nullptr)
+		return nullptr;
 
 	path->add(pointA);
 
@@ -640,44 +640,44 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	int ourCellID = ourCell->getCellNumber();
 	SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
 
-	if (templateObject == NULL) {
+	if (templateObject == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL) {
+	if (portalLayout == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	FloorMesh* sourceFloorMesh = portalLayout->getFloorMesh(ourCellID);
 
-	if (sourceFloorMesh == NULL) {
+	if (sourceFloorMesh == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathGraph* sourcePathGraph = sourceFloorMesh->getPathGraph();
 
-	if (sourcePathGraph == NULL) {
+	if (sourcePathGraph == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0);
 
-	if (exteriorFloorMesh == NULL) {
+	if (exteriorFloorMesh == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
 
-	if (exteriorPathGraph == NULL) {
+	if (exteriorPathGraph == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	// we need to move world position into model space
@@ -687,44 +687,44 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	//PathNode* exitNode = sourcePathGraph->findNearestNode(pointA.getPoint());
 	TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointA.getPoint(), sourceFloorMesh);
 
-	if (nearestTargetNodeTriangle == NULL) {
+	if (nearestTargetNodeTriangle == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathNode* exitNode = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, sourceFloorMesh, transformedPosition);//targetPathGraph->findNearestNode(pointB.getPoint());
 
-	if (exitNode == NULL) {
+	if (exitNode == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	//find exterior node
 	PathNode* exteriorNode = exteriorPathGraph->findNearestGlobalNode(transformedPosition);
 
-	if (exteriorNode == NULL) {
+	if (exteriorNode == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	//find path to the exit
 	Vector<PathNode*>* exitPath = portalLayout->getPath(exitNode, exteriorNode);
 
-	if (exitPath == NULL) {
-		error("exitPath == NULL");
+	if (exitPath == nullptr) {
+		error("exitPath == nullptr");
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	//find triangle path to exitNode
-	Vector<Triangle*>* trianglePath = NULL;
+	Vector<Triangle*>* trianglePath = nullptr;
 
 	int res = getFloorPath(pointA.getPoint(), exitNode->getPosition(), sourceFloorMesh, trianglePath);
 
-	if (res != -1 && trianglePath != NULL)
+	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(pointA.getPoint(), exitNode->getPosition(), trianglePath, path, ourCell);
 
-	if (trianglePath != NULL)
+	if (trianglePath != nullptr)
 		delete trianglePath;
 
 	path->add(WorldCoordinates(exitNode->getPosition(), ourCell));
@@ -741,7 +741,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 		if (cellID == 0) { // we are outside
 			WorldCoordinates coord(pathNode->getPosition(), ourCell);
 
-			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
+			path->add(WorldCoordinates(coord.getWorldPosition(), nullptr));
 		} else { // we are inside the building
 			CellObject* pathCell = building->getCell(cellID);
 
@@ -750,8 +750,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	}
 
 	delete exitPath;
-	exitPath = NULL;
-	
+	exitPath = nullptr;
+
 	if (path->size()) {
 		Vector<WorldCoordinates>* newPath = findPathFromWorldToWorld(path->get(path->size()-1), pointB, zone);
 		if (newPath) {
@@ -832,17 +832,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	ManagedReference<BuildingObject*> building2 = cast<BuildingObject*>( targetCell->getParent().get().get());
 
 	if (building1 != building2) // TODO: implement path finding between 2 buildings
-		return NULL;
+		return nullptr;
 
 	SharedObjectTemplate* templateObject = building1->getObjectTemplate();
 
-	if (templateObject == NULL)
-		return NULL;
+	if (templateObject == nullptr)
+		return nullptr;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL)
-		return NULL;
+	if (portalLayout == nullptr)
+		return nullptr;
 
 	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
 	FloorMesh* floorMesh2 = portalLayout->getFloorMesh(targetCellID);
@@ -861,45 +861,42 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	//PathNode* source = pathGraph1->findNearestNode(pointA.getPoint());
 	TriangleNode* nearestSourceNodeTriangle = CollisionManager::getTriangle(pointA.getPoint(), floorMesh1);
 
-	if (nearestSourceNodeTriangle == NULL) {
+	if (nearestSourceNodeTriangle == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
-	if (source == NULL) {
+	if (source == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	//PathNode* target = pathGraph2->findNearestNode(pointB.getPoint());
 	TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), floorMesh2);
 
-	if (nearestTargetNodeTriangle == NULL) {
+	if (nearestTargetNodeTriangle == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, floorMesh2, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
-	if (target == NULL) {
+	if (target == nullptr) {
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	Vector<PathNode*>* nodes = portalLayout->getPath(source, target);
 
-	if (nodes == NULL) {
-		StringBuffer str;
-		str << "Could not find path from node: " << source->getID()
+	if (nodes == nullptr) {
+		log() << "Could not find path from node: " << source->getID()
 				<< " to node: " << target->getID() << " in building: "
 				<< templateObject->getFullTemplateString();
 
-		log(str.toString());
-
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	// FIXME (dannuic): Sometimes nodes only have one entry.... why?
@@ -907,20 +904,20 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		error("Only one node");
 
 		delete path;
-		return NULL;
+		return nullptr;
 	}
 
 	// path from our position to path node
-	Vector<Triangle*>* trianglePath = NULL;
+	Vector<Triangle*>* trianglePath = nullptr;
 
 	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
 
-	if (res != -1 && trianglePath != NULL)
+	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(pointA.getPoint(), nodes->get(1)->getPosition(), trianglePath, path, ourCell);
 
-	if (trianglePath != NULL) {
+	if (trianglePath != nullptr) {
 		delete trianglePath;
-		trianglePath = NULL;
+		trianglePath = nullptr;
 	}
 
 	path->add(WorldCoordinates(source->getPosition(), ourCell));
@@ -938,7 +935,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 			//info("cellID == 0", true);
 			WorldCoordinates coord(pathNode->getPosition(), ourCell);
 
-			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
+			path->add(WorldCoordinates(coord.getWorldPosition(), nullptr));
 		} else {
 			CellObject* pathCell = building1->getCell(cellID);
 
@@ -950,9 +947,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 			if (i == nodes->size() - 1) {
 				if (pathNode != target) {
-					StringBuffer msg;
-					msg << "pathNode != target pathNode: " << pathNode->getID() << " target:" << target->getID();
-					error(msg.toString());
+					error() << "pathNode != target pathNode: " << pathNode->getID() << " target:" << target->getID();
 				}
 
 				if (pathCell != targetCell) {
@@ -963,17 +958,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	}
 
 	delete nodes;
-	nodes = NULL;
+	nodes = nullptr;
 
 	// path from cell entrance to destination point
-	trianglePath = NULL;
+	trianglePath = nullptr;
 
 	res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), floorMesh2, trianglePath);
 
-	if (res != -1 && trianglePath != NULL)
+	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointB.getPoint(), trianglePath, path, targetCell);
 
-	if (trianglePath != NULL)
+	if (trianglePath != nullptr)
 		delete trianglePath;
 
 	path->add(pointB);
@@ -994,13 +989,13 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
 
-	if (templateObject == NULL)
-		return NULL;
+	if (templateObject == nullptr)
+		return nullptr;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL)
-		return NULL;
+	if (portalLayout == nullptr)
+		return nullptr;
 
 	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
 	PathGraph* pathGraph1 = floorMesh1->getPathGraph();
@@ -1010,7 +1005,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	//info("same cell... trying to calculate triangle path", true);
 
-	Vector<Triangle*>* trianglePath = NULL;
+	Vector<Triangle*>* trianglePath = nullptr;
 
 	//info("searching floorMesh for cellID " + String::valueOf(ourCellID), true);
 
@@ -1022,8 +1017,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 		return path;
 	}
 
-	if (trianglePath == NULL) { // returning NULL, no path found
-		//error("path NULL");
+	if (trianglePath == nullptr) { // returning nullptr, no path found
+		//error("path nullptr");
 		delete path;
 
 		return findPathFromCellToDifferentCell(pointA, pointB);
@@ -1056,7 +1051,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 	dtNavMeshQuery* query = getNavQuery();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	zone->getInRangeNavMeshes(center.getX(), center.getY(), &areas, true);
@@ -1077,13 +1072,13 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 		float pt[3];
 
 		RecastNavMesh *mesh = navArea->getNavMesh();
-		if (mesh == NULL)
+		if (mesh == nullptr)
 			continue;
 
 		ReadLocker rLocker(navArea);
 
 		dtNavMesh *dtNavMesh = mesh->getNavMesh();
-		if (dtNavMesh == NULL)
+		if (dtNavMesh == nullptr)
 			continue;
 
 		query->init(dtNavMesh, MAX_QUERY_NODES);

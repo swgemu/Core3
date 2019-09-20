@@ -53,7 +53,7 @@ namespace server {
 
 #ifdef CXX11_COMPILER
 		//async
-		void executeQuery(const char* query, std::function<void(engine::db::ResultSet*)>&& callback);
+		void executeQuery(const char* query, Function<void(engine::db::ResultSet*)>&& callback);
 #endif
 
 		void commit();

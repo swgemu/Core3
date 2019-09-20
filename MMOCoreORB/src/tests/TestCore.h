@@ -12,9 +12,9 @@
 
 #include "server/db/MySqlDatabase.h"
 
-class TestCore : public Core {
+class TestCore : public Core, public Logger {
 public:
-	TestCore() : Core(0) {
+	TestCore() : Core(0), Logger("TestCore") {
 
 	}
 

@@ -27,12 +27,12 @@ protected:
 
 public:
 	SpaceTerrainAppearance();
-	bool load(engine::util::IffStream* iffStream);
+	bool load(engine::util::IffStream* iffStream) override;
 
-	void parseFromIffStream(engine::util::IffStream* iffStream);
+	void parseFromIffStream(engine::util::IffStream* iffStream) override;
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>);
 
-	float getSize() {
+	float getSize() const override {
 		return 16384 * 16384;
 	}
 

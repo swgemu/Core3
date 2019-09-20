@@ -33,10 +33,10 @@ public:
 
 class MysqlCallback : public Task {
 	engine::db::ResultSet* result;
-	std::function<void(engine::db::ResultSet*)> callback;
+	Function<void(engine::db::ResultSet*)> callback;
 
 public:
-	MysqlCallback(engine::db::ResultSet* res, std::function<void(engine::db::ResultSet*)>&& f)
+	MysqlCallback(engine::db::ResultSet* res, Function<void(engine::db::ResultSet*)>&& f)
 			: result(res), callback(std::move(f)) {
 	}
 
@@ -48,11 +48,11 @@ public:
 class MysqlLambda : public Task {
 	MySqlDatabase* database;
 	String query;
-	std::function<void(engine::db::ResultSet*)> function;
+	Function<void(engine::db::ResultSet*)> function;
 
 public:
 	MysqlLambda(MySqlDatabase* db, const char* q,
-				std::function<void(engine::db::ResultSet*)>&& f): database(db), query(q), function(std::move(f)) {
+				Function<void(engine::db::ResultSet*)>&& f): database(db), query(q), function(std::move(f)) {
 	}
 
 	void run() {
@@ -184,7 +184,7 @@ void MySqlDatabase::executeStatement(const StringBuffer& statement) {
 	executeStatement(statement.toString().toCharArray());
 }
 
-void MySqlDatabase::executeQuery(const char* query, std::function<void(engine::db::ResultSet*)>&& function) {
+void MySqlDatabase::executeQuery(const char* query, Function<void(engine::db::ResultSet*)>&& function) {
 	Reference<MysqlLambda*> lambda = new MysqlLambda(this, query, std::move(function));
 	lambda->setCustomTaskQueue(mysqlThreadName);
 

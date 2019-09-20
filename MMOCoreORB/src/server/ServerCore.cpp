@@ -60,7 +60,391 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 
 	handleCmds = true;
 
+	registerConsoleCommmands();
+
 	initializeCoreContext();
+}
+
+void ServerCore::registerConsoleCommmands() {
+	debug() << "registering console commands...";
+
+	consoleCommands.put("exit", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr) {
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->broadcastGalaxy(nullptr,
+					"Server is shutting down NOW!");
+		}
+
+		return SHUTDOWN;
+	});
+
+	consoleCommands.put("logQuadTree", [this](const String& arguments) -> CommandResult {
+		QuadTree::setLogging(!QuadTree::doLog());
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("info", [this](const String& arguments) -> CommandResult {
+		//TaskManager::instance()->printInfo();
+
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (loginServer != nullptr)
+			loginServer->printInfo();
+
+		if (zoneServer != nullptr)
+			zoneServer->printInfo();
+
+		if (pingServer != nullptr)
+			pingServer->printInfo();
+
+		return SUCCESS;
+
+	});
+
+	consoleCommands.put("lock", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr)
+			zoneServer->setServerStateLocked();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("unlock", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr)
+			zoneServer->setServerStateOnline();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("icap", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr)
+			zoneServer->changeUserCap(50);
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("dcap", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr)
+			zoneServer->changeUserCap(-50);
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("fixQueue", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServer != nullptr)
+			zoneServer->fixScheduler();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("save", [this](const String& arguments) -> CommandResult {
+		ObjectManager::instance()->createBackup();
+		//ObjectDatabaseManager::instance()->checkpoint();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("help", [this](const String& arguments) -> CommandResult {
+		System::out << "available commands: ";
+
+		for (const auto& entry : consoleCommands) {
+			System::out << entry.getKey() << "  ";
+		}
+
+		System::out << endl << flush;
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("chars", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+		uint32 num = 0;
+
+		try {
+			num = UnsignedInteger::valueOf(arguments);
+		} catch (const Exception& e) {
+			System::out << "invalid noumber of concurrent chars per account specified" << endl;
+
+			return ERROR;
+		}
+
+		if (num != 0) {
+			PlayerManager* pMan = zoneServer->getPlayerManager();
+			pMan->setOnlineCharactersPerAccount(num);
+
+			System::out << "changed max concurrent chars per account to: " << num << endl;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("lookupcrc", [this](const String& arguments) -> CommandResult {
+		uint32 crc = 0;
+		try {
+			crc = UnsignedInteger::valueOf(arguments);
+		} catch (const Exception& e) {
+			System::out << "invoalid crc number expected dec";
+
+			return ERROR;
+		}
+
+		if (crc != 0) {
+			String file = TemplateManager::instance()->getTemplateFile(
+					crc);
+
+			System::out << "result: " << file << endl << flush;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("loglevel", [this](const String& arguments) -> CommandResult {
+		int level = 0;
+		try {
+			level = Integer::valueOf(arguments);
+		} catch (const Exception& e) {
+			System::out << "invalid log level" << endl;
+
+			return ERROR;
+		}
+
+		if (level >= Logger::NONE && level <= Logger::DEBUG) {
+			Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(level));
+
+			System::out << "global log level changed to: " << level << endl << flush;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("rev", [this](const String& arguments) -> CommandResult {
+		System::out << ConfigManager::instance()->getRevision() << endl << flush;
+
+		return SUCCESS;
+	});
+
+
+	consoleCommands.put("broadcast", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		ChatManager* chatManager = zoneServer->getChatManager();
+		chatManager->broadcastGalaxy(nullptr, arguments);
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("shutdown", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+		int minutes = 1;
+
+		try {
+			minutes = UnsignedInteger::valueOf(arguments);
+		} catch (const Exception& e) {
+			System::out << "invalid minutes number expected dec";
+		}
+
+		if (zoneServer != nullptr) {
+			zoneServer->timedShutdown(minutes);
+
+			shutdownBlockMutex.lock();
+
+			waitCondition.wait(&shutdownBlockMutex);
+
+			shutdownBlockMutex.unlock();
+		}
+
+		return SHUTDOWN;
+	});
+
+	consoleCommands.put("playercleanup", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServerRef != nullptr) {
+			ZoneServer* server = zoneServerRef.get();
+
+			if (server != nullptr)
+				server->getPlayerManager()->cleanupCharacters();
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("playercleanupstats", [this](const String& arguments) -> CommandResult {
+		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+
+		if (zoneServerRef != nullptr) {
+			ZoneServer* server = zoneServerRef.get();
+
+			if (server != nullptr)
+				server->getPlayerManager()->getCleanupCharacterCount();
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("test", [this](const String& arguments) -> CommandResult {
+		Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+		// create the lua function
+		UniqueReference<LuaFunction*> func(lua->createFunction("Tests", arguments, 0));
+		func->callFunction();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("reloadscreenplays", [this](const String& arguments) -> CommandResult {
+		DirectorManager::instance()->reloadScreenPlays();
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("reloadmanager", [this](const String& arguments) -> CommandResult {
+		if (arguments == "name") {
+			ZoneServer* server = zoneServerRef.get();
+
+			if(server != nullptr)
+				server->getNameManager()->loadConfigData(true);
+		} else {
+			System::out << "Invalid manager. Reloadable managers: name" << endl;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("clearstats", [this](const String& arguments) -> CommandResult {
+		Core::getTaskManager()->clearWorkersTaskStats();
+
+		return SUCCESS;
+	});
+
+#ifdef COLLECT_TASKSTATISTICS
+	consoleCommands.put("statsd", [this](const String& arguments) -> CommandResult {
+		StringTokenizer argTokenizer(arguments);
+
+		argTokenizer.setDelimiter(" ");
+
+		String address;
+		int port = 0;
+
+		if (argTokenizer.hasMoreTokens())
+			argTokenizer.getStringToken(address);
+
+		if (argTokenizer.hasMoreTokens())
+			port = argTokenizer.getIntToken();
+
+		if (port) {
+			MetricsManager::instance()->initializeStatsDConnection(address.toCharArray(), port);
+
+			System::out << "metrics manager connection set to" << address << ":" << port << endl << flush;
+		} else {
+			System::out << "invalid port or address" << endl;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("samplerate", [this](const String& arguments) -> CommandResult {
+		try {
+			int rate = UnsignedInteger::valueOf(arguments);
+
+			Core::getTaskManager()->setStatsDTaskSampling(rate);
+
+			System::out << "statsd sampling rate changed to " << rate << endl;
+		} catch (const Exception& e) {
+			System::out << "invalid statsd sampling rate" << endl;
+
+			return ERROR;
+		}
+
+		return SUCCESS;
+	});
+
+	consoleCommands.put("sampleratedb", [this](const String& arguments) -> CommandResult {
+		try {
+			int rate = UnsignedInteger::valueOf(arguments);
+
+			Core::getTaskManager()->setStatsDBdbSamplingRate(rate);
+
+			System::out << "statsd berkeley db sampling rate changed to " << rate << endl;
+		} catch (const Exception& e) {
+			System::out << "invalid statsd sampling rate" << endl;
+
+			return ERROR;
+		}
+
+		return SUCCESS;
+	});
+#endif
+	const auto pvpModeLambda =  [this](const String& arguments) -> CommandResult {
+		System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl << flush;
+
+		return SUCCESS;
+	};
+
+	consoleCommands.put("getpvpmode", pvpModeLambda);
+	consoleCommands.put("getpvp", pvpModeLambda);
+
+	const auto setPvpModeLambda =  [this](const String& arguments) -> CommandResult {
+		int num;
+
+		try {
+			if (arguments == "on") {
+				num = 1;
+			} else if (arguments == "off") {
+				num = 0;
+			} else {
+				num = UnsignedInteger::valueOf(arguments);
+			}
+
+			if (num == 1) {
+				ConfigManager::instance()->setPvpMode(true);
+			} else {
+				ConfigManager::instance()->setPvpMode(false);
+			}
+
+			info(true) << "console set new PvpMode = " << ConfigManager::instance()->getPvpMode();
+		} catch (const Exception& e) {
+			System::out << "invalid PvpMode: (0=off; 1=on)" << endl;
+
+			return ERROR;
+		}
+
+		return SUCCESS;
+	};
+
+	consoleCommands.put("setpvpmode", setPvpModeLambda);
+	consoleCommands.put("setpvp", setPvpModeLambda);
+
+	const auto dumpConfigLambda =  [this](const String& arguments) -> CommandResult {
+		ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
+
+		return SUCCESS;
+	};
+
+	consoleCommands.put("dumpcfg", dumpConfigLambda);
+	consoleCommands.put("dumpconfig", dumpConfigLambda);
+
+	consoleCommands.put("toggleModifiedObjectsDump", [this](const String& arguments) -> CommandResult {
+		DOBObjectManager::setDumpLastModifiedTraces(!DOBObjectManager::getDumpLastModifiedTraces());
+
+		System::out << "dump last modified traces set to " << DOBObjectManager::getDumpLastModifiedTraces();
+
+		return SUCCESS;
+	});
+
+	info() << "registered " << consoleCommands.size() << " commands.";
 }
 
 ServerCore::~ServerCore() {
@@ -68,7 +452,7 @@ ServerCore::~ServerCore() {
 }
 
 class ZoneStatisticsTask: public Task {
-	ManagedReference<ZoneServer*> zoneServer;
+	Reference<ZoneServer*> zoneServer;
 
 public:
 	ZoneStatisticsTask(ZoneServer* server) {
@@ -190,7 +574,7 @@ void ServerCore::initialize() {
 
 			try {
 				if (zonePort == 0) {
-					String query = "SELECT port FROM galaxy WHERE galaxy_id = "
+					const String query = "SELECT port FROM galaxy WHERE galaxy_id = "
 								   + String::valueOf(galaxyID);
 					Reference < ResultSet * > result =
 							database->instance()->executeQuery(query);
@@ -450,249 +834,25 @@ void ServerCore::handleCommands() {
 			if (tokenizer.hasMoreTokens())
 				tokenizer.finalToken(arguments);
 
-			ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+			auto it = consoleCommands.find(command);
 
-			if (command == "exit") {
-				if (zoneServer != nullptr) {
-					ChatManager* chatManager = zoneServer->getChatManager();
-					chatManager->broadcastGalaxy(nullptr,
-							"Server is shutting down NOW!");
-				}
+			if (it != consoleCommands.npos) {
+				int result = consoleCommands.get(it)(arguments);
 
-				return;
-			} else if (command == "dumpmem") {
-#ifdef DEBUG_MEMORY
-				DumpUnfreed(TRUE);
-#endif
-			} else if (command == "logQuadTree") {
-				QuadTree::setLogging(!QuadTree::doLog());
-			} else if (command == "info") {
-				//TaskManager::instance()->printInfo();
-
-				if (loginServer != nullptr)
-					loginServer->printInfo();
-
-				if (zoneServer != nullptr)
-					zoneServer->printInfo();
-
-				if (pingServer != nullptr)
-					pingServer->printInfo();
-			} else if (command == "lock") {
-				if (zoneServer != nullptr)
-					zoneServer->setServerStateLocked();
-			} else if (command == "unlock") {
-				if (zoneServer != nullptr)
-					zoneServer->setServerStateOnline();
-			} else if (command == "icap") {
-				if (zoneServer != nullptr)
-					zoneServer->changeUserCap(50);
-			} else if (command == "dcap") {
-				if (zoneServer != nullptr)
-					zoneServer->changeUserCap(-50);
-			} else if (command == "fixQueue") {
-				if (zoneServer != nullptr)
-					zoneServer->fixScheduler();
-			} else if (command == "save") {
-				ObjectManager::instance()->createBackup();
-				//ObjectDatabaseManager::instance()->checkpoint();
-			} else if (command == "help") {
-				System::out << "available commands:" << endl
-					<< "\texit, logQuadTree, info, lock, unlock, icap, dcap, fixQueue, save, chars, lookupcrc, rev, broadcast, shutdown, "
-					<< "setpvpmode, getpvpmode"
-					<< endl;
-			} else if (command == "chars") {
-				uint32 num = 0;
-
-				try {
-					num = UnsignedInteger::valueOf(arguments);
-				} catch (Exception& e) {
-					System::out << "invalid number of concurrent chars per account specified";
-				}
-
-				if (num != 0) {
-					PlayerManager* pMan = zoneServer->getPlayerManager();
-					pMan->setOnlineCharactersPerAccount(num);
-
-					System::out << "changed max concurrent chars per account to: " << num << endl;
-				}
-			} else if (command == "lookupcrc") {
-				uint32 crc = 0;
-				try {
-					crc = UnsignedInteger::valueOf(arguments);
-				} catch (Exception& e) {
-					System::out << "invalid crc number expected dec";
-				}
-
-				if (crc != 0) {
-					String file = TemplateManager::instance()->getTemplateFile(
-							crc);
-
-					System::out << "result: " << file << endl;
-				}
-
-			} else if (command == "loglevel") {
-				int level = 0;
-				try {
-					level = Integer::valueOf(arguments);
-				} catch (Exception& e) {
-					System::out << "invalid log level" << endl;
-				}
-
-				if (level >= Logger::NONE && level <= Logger::DEBUG) {
-					Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(level));
-
-					System::out << "log level changed to: " << level << endl;
-				}
-			} else if (command == "rev") {
-				System::out << ConfigManager::instance()->getRevision() << endl;
-			} else if (command == "broadcast") {
-				ChatManager* chatManager = zoneServer->getChatManager();
-				chatManager->broadcastGalaxy(nullptr, arguments);
-			} else if (command == "shutdown") {
-				int minutes = 1;
-
-				try {
-					minutes = UnsignedInteger::valueOf(arguments);
-				} catch (Exception& e) {
-					System::out << "invalid minutes number expected dec";
-				}
-
-				if (zoneServer != nullptr) {
-					zoneServer->timedShutdown(minutes);
-
-					shutdownBlockMutex.lock();
-
-					waitCondition.wait(&shutdownBlockMutex);
-
-					shutdownBlockMutex.unlock();
-				}
-
-				return;
-			} else if ( command == "playercleanup" ) {
-
-				if(zoneServerRef != nullptr){
-					ZoneServer* server = zoneServerRef.get();
-
-					if(server != nullptr)
-						server->getPlayerManager()->cleanupCharacters();
-				}
-
-			} else if ( command == "playercleanupstats" ) {
-
-				if(zoneServerRef != nullptr){
-
-					ZoneServer* server = zoneServerRef.get();
-
-					if(server != nullptr)
-						server->getPlayerManager()->getCleanupCharacterCount();
-				}
-
-			} else if ( command == "test" ) {
-				// get lua
-				Lua* lua = DirectorManager::instance()->getLuaInstance();
-
-				// create the lua function
-				Reference<LuaFunction*> func = lua->createFunction("Tests", arguments, 0);
-				func->callFunction();
-			} else if ( command == "reloadscreenplays" ) {
-				DirectorManager::instance()->reloadScreenPlays();
-			} else if ( command == "reloadmanager" ) {
-				if (arguments == "name") {
-					ZoneServer* server = zoneServerRef.get();
-
-					if(server != nullptr)
-						server->getNameManager()->loadConfigData(true);
-				} else {
-					System::out << "Invalid manager. Reloadable managers: name" << endl;
-				}
-			} else if ( command == "clearstats" ) {
-				Core::getTaskManager()->clearWorkersTaskStats();
-#ifdef COLLECT_TASKSTATISTICS
-			} else if (command == "statsd") {
-				StringTokenizer argTokenizer(arguments);
-
-				argTokenizer.setDelimiter(" ");
-
-				String address;
-				int port = 0;
-
-				if (argTokenizer.hasMoreTokens())
-					argTokenizer.getStringToken(address);
-
-				if (argTokenizer.hasMoreTokens())
-					port = argTokenizer.getIntToken();
-
-				if (port) {
-					MetricsManager::instance()->initializeStatsDConnection(address.toCharArray(), port);
-
-					System::out << "metrics manager connection set to" << address << ":" << port << endl;
-				} else {
-					System::out << "invalid port or address" << endl;
-				}
-			} else if (command == "samplerate") {
-				try {
-					int rate = UnsignedInteger::valueOf(arguments);
-
-					Core::getTaskManager()->setStatsDTaskSampling(rate);
-
-					System::out << "statsd sampling rate changed to " << rate << endl;
-				} catch (Exception& e) {
-					System::out << "invalid statsd sampling rate" << endl;
-				}
-			} else if (command == "sampleratedb") {
-				try {
-					int rate = UnsignedInteger::valueOf(arguments);
-
-					Core::getTaskManager()->setStatsDBdbSamplingRate(rate);
-
-					System::out << "statsd berkeley db sampling rate changed to " << rate << endl;
-				} catch (Exception& e) {
-					System::out << "invalid statsd sampling rate" << endl;
-				}
-#endif
-			} else if (command == "getpvpmode" || command == "getpvp") {
-				System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl;
-			} else if (command == "setpvpmode" || command == "setpvp") {
-				int num;
-
-				try {
-					if (arguments == "on") {
-						num = 1;
-					} else if (arguments == "off") {
-						num = 0;
-					} else {
-						num = UnsignedInteger::valueOf(arguments);
-					}
-
-					if (num == 1) {
-						ConfigManager::instance()->setPvpMode(true);
-					} else {
-						ConfigManager::instance()->setPvpMode(false);
-					}
-
-					StringBuffer msg;
-					msg << "console set new PvpMode = " << ConfigManager::instance()->getPvpMode();
-
-					info(msg.toString(), true);
-				} catch (Exception& e) {
-					System::out << "invalid PvpMode: (0=off; 1=on)" << endl;
-				}
-			} else if (command == "dumpcfg" || command == "dumpconfig") {
-				ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
-			} else if (command == "toggleModifiedObjectsDump") {
-				DOBObjectManager::setDumpLastModifiedTraces(!DOBObjectManager::getDumpLastModifiedTraces());
-
-				System::out << "dump last modified traces set to " << DOBObjectManager::getDumpLastModifiedTraces();
+				if (result == SHUTDOWN)
+					return;
 			} else {
-				System::out << "unknown command (" << command << ")\n";
+				System::out << "unknown command (" << command << ")\n" << flush;
 			}
-		} catch (SocketException& e) {
+		} catch (const SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();
-		} catch (ArrayIndexOutOfBoundsException& e) {
+		} catch (const ArrayIndexOutOfBoundsException& e) {
 			System::out << "[ServerCore] " << e.getMessage() << "\n";
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
+
+		System::out << flush;
 
 #ifdef WITH_STM
 		try {

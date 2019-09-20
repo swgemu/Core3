@@ -33,7 +33,7 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 
-	if (portalLayout == NULL)
+	if (portalLayout == nullptr)
 		return true;
 
 	//we are in model space... in cells
@@ -50,12 +50,12 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 	float intersectionDistance;
 
 	Ray ray(rayOrigin, direction);
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	// we check interior cells
 	for (int i = 1; i < portalLayout->getAppearanceTemplatesSize(); ++i) {
 		const AppearanceTemplate *tmpl = portalLayout->getAppearanceTemplate(i);
-		if(tmpl == NULL)
+		if(tmpl == nullptr)
 			continue;
 
 		if(tmpl->intersects(ray, distance, intersectionDistance, triangle, true))
@@ -67,15 +67,15 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 const AppearanceTemplate* CollisionManager::getCollisionAppearance(SceneObject* scno, int collisionBlockFlags) {
 	SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
-	if (templateObject == NULL)
-		return NULL;
+	if (templateObject == nullptr)
+		return nullptr;
 
 	if (!(templateObject->getCollisionActionBlockFlags() & collisionBlockFlags))
-		return NULL;
+		return nullptr;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	return (portalLayout != NULL) ? portalLayout->getAppearanceTemplate(0) : templateObject->getAppearanceTemplate();
+	return (portalLayout != nullptr) ? portalLayout->getAppearanceTemplate(0) : templateObject->getAppearanceTemplate();
 }
 
 bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius, Zone* zone) {
@@ -91,7 +91,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 		try {
 			SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
-			if (templateObject == NULL)
+			if (templateObject == nullptr)
 				continue;
 
 			if (!(templateObject->getCollisionActionBlockFlags() & 255))
@@ -100,7 +100,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 			Sphere sphere(convertToModelSpace(sphereOrigin, scno), radius);
 
 			PortalLayout* portalLayout = templateObject->getPortalLayout();
-			if (portalLayout != NULL) {
+			if (portalLayout != nullptr) {
 				if(portalLayout->getAppearanceTemplate(0)->testCollide(sphere))
 					return true;
 			} else {
@@ -123,13 +123,13 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
 	ManagedReference<SceneObject*> building = cellObject->getParent().get();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return true;
 
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 
-	if (portalLayout == NULL)
+	if (portalLayout == nullptr)
 		return true;
 
 	Ray ray = convertToModelSpace(rayOrigin, rayEnd, building);
@@ -139,7 +139,7 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 
 	const AppearanceTemplate* app = portalLayout->getAppearanceTemplate(cellObject->getCellNumber());
 	float intersectionDistance;
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	if (app->intersects(ray, distance, intersectionDistance, triangle, true))
 		return false;
@@ -179,12 +179,12 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
 
-		if (object == NULL)
+		if (object == nullptr)
 			continue;
 
 		const AppearanceTemplate* appearance = getCollisionAppearance(object, 255);
 
-		if (appearance == NULL)
+		if (appearance == nullptr)
 			continue;
 
 		Ray ray = convertToModelSpace(rayStart, rayEnd, object);
@@ -208,32 +208,32 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 }
 
 Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObject* cellObject) {
-	Vector<float>* collisions = NULL;
+	Vector<float>* collisions = nullptr;
 
 	ManagedReference<SceneObject*> rootObject = cellObject->getRootParent();
 
-	if (rootObject == NULL)
-		return NULL;
+	if (rootObject == nullptr)
+		return nullptr;
 
 	SharedObjectTemplate* templateObject = rootObject->getObjectTemplate();
 
-	if (templateObject == NULL)
-		return NULL;
+	if (templateObject == nullptr)
+		return nullptr;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL)
-		return NULL;
+	if (portalLayout == nullptr)
+		return nullptr;
 
 	FloorMesh* mesh = portalLayout->getFloorMesh(cellObject->getCellNumber());
 
-	if (mesh == NULL)
-		return NULL;
+	if (mesh == nullptr)
+		return nullptr;
 
 	AABBTree* tree = mesh->getAABBTree();
 
-	if (tree == NULL)
-		return NULL;
+	if (tree == nullptr)
+		return nullptr;
 
 	Vector3 rayStart(x, 16384.f, y);
 	Vector3 rayEnd(x, -16384.f, y);
@@ -248,7 +248,7 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 	tree->intersects(ray, 16384 * 2, results);
 
 	if (results.size() == 0)
-		return NULL;
+		return nullptr;
 
 	collisions = new Vector<float>(results.size(), 1);
 
@@ -264,7 +264,7 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* zone, bool testWater) {
 	PlanetManager* planetManager = zone->getPlanetManager();
 
-	if (planetManager == NULL)
+	if (planetManager == nullptr)
 		return 0.f;
 
 	SortedVector<QuadTreeEntry*> closeObjects;
@@ -295,7 +295,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* 
 
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
 
-		if (app != NULL) {
+		if (app != nullptr) {
 			Ray rayModelSpace = convertToModelSpace(ray.getOrigin(), ray.getOrigin()+ray.getDirection(), sceno);
 
 			IntersectionResults results;
@@ -322,7 +322,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
-	if (planetManager == NULL)
+	if (planetManager == nullptr)
 		return 0.f;
 
 	float height = 0;
@@ -348,7 +348,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
 
-		if (app != NULL) {
+		if (app != nullptr) {
 			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
 
 			IntersectionResults results;
@@ -370,7 +370,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 }
 
 void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector) {
-	if (closeObjectsVector != NULL) {
+	if (closeObjectsVector != nullptr) {
 		Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 
@@ -395,7 +395,7 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i).get());
 
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
-		if (app != NULL) {
+		if (app != nullptr) {
 			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
 
 			app->intersects(ray, 16384 * 2, *result);
@@ -410,7 +410,7 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i));
 		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
-		if (app != NULL) {
+		if (app != nullptr) {
 			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
 
 			app->intersects(ray, 16384 * 2, *result);
@@ -422,7 +422,7 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	if (object2->getZone() != zone)
@@ -431,7 +431,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (object1->isAiAgent() || object2->isAiAgent()) {
 		//Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
 
-//		if (path == NULL)
+//		if (path == nullptr)
 //			return false;
 //		else
 //			delete path;
@@ -440,10 +440,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
 	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
 
-	if (rootParent1 != NULL || rootParent2 != NULL) {
+	if (rootParent1 != nullptr || rootParent2 != nullptr) {
 		if (rootParent1 == rootParent2) {
 			return CollisionManager::checkLineOfSightInBuilding(object1, object2, rootParent1);
-		} else if (rootParent1 != NULL && rootParent2 != NULL)
+		} else if (rootParent1 != nullptr && rootParent2 != nullptr)
 			return false; //different buildings
 	}
 
@@ -453,12 +453,12 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightOrigin = 1.f;
 	float heightEnd = 1.f;
 
-	Reference<SortedVector<QuadTreeEntry*>* > closeObjectsNonReference = NULL;/* new SortedVector<QuadTreeEntry* >();*/
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = NULL;/*new SortedVector<ManagedReference<QuadTreeEntry*> >();*/
+	Reference<SortedVector<QuadTreeEntry*>* > closeObjectsNonReference = nullptr;/* new SortedVector<QuadTreeEntry* >();*/
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = nullptr;/*new SortedVector<ManagedReference<QuadTreeEntry*> >();*/
 
 	int maxInRangeObjectCount = 0;
 
-	if (object1->getCloseObjects() == NULL) {
+	if (object1->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 		object1->info("Null closeobjects vector in CollisionManager::checkLineOfSight for " + object1->getDisplayedName(), true);
 #endif
@@ -485,15 +485,15 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	float dist = rayEnd.distanceTo(rayOrigin);
 	float intersectionDistance;
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	try {
-		for (int i = 0; i < (closeObjects != NULL ? closeObjects->size() : closeObjectsNonReference->size()); ++i) {
-			const AppearanceTemplate* app = NULL;
+		for (int i = 0; i < (closeObjects != nullptr ? closeObjects->size() : closeObjectsNonReference->size()); ++i) {
+			const AppearanceTemplate* app = nullptr;
 
 			SceneObject* scno;
 
-			if (closeObjects != NULL) {
+			if (closeObjects != nullptr) {
 				scno = static_cast<SceneObject*>(closeObjects->get(i).get());
 			} else {
 				scno = static_cast<SceneObject*>(closeObjectsNonReference->get(i));
@@ -505,14 +505,14 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 			try {
 				app = getCollisionAppearance(scno, 255);
 
-				if (app == NULL)
+				if (app == nullptr)
 					continue;
 
 			} catch (Exception& e) {
-				app = NULL;
+				app = nullptr;
 			}
 
-			if (app != NULL) {
+			if (app != nullptr) {
 				//moving ray to model space
 				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
 
@@ -533,16 +533,16 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	ManagedReference<SceneObject*> parent1 = object1->getParent().get();
 	ManagedReference<SceneObject*> parent2 = object2->getParent().get();
 
-	if (parent1 != NULL || parent2 != NULL) {
-		CellObject* cell = NULL;
+	if (parent1 != nullptr || parent2 != nullptr) {
+		CellObject* cell = nullptr;
 
-		if (parent1 != NULL && parent1->isCellObject()) {
+		if (parent1 != nullptr && parent1->isCellObject()) {
 			cell = cast<CellObject*>(parent1.get());
-		} else if (parent2 != NULL && parent2->isCellObject()) {
+		} else if (parent2 != nullptr && parent2->isCellObject()) {
 			cell = cast<CellObject*>(parent2.get());
 		}
 
-		if (cell != NULL) {
+		if (cell != nullptr) {
 			return checkLineOfSightWorldToCell(rayOrigin, rayEnd, dist, cell);
 		}
 	}
@@ -566,12 +566,12 @@ TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* flo
 	Ray ray(rayOrigin, direction);
 
 	float intersectionDistance = 0;
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	aabbTree->intersects(ray, 4, intersectionDistance, triangle, true);
 
-	if (triangle == NULL) {
-		//System::out << "CollisionManager::getTriangle triangleNode NULL" << endl;
+	if (triangle == nullptr) {
+		//System::out << "CollisionManager::getTriangle triangleNode nullptr" << endl;
 
 		return floor->findNearestTriangle(rayOrigin);
 	}
@@ -595,7 +595,7 @@ Reference<Matrix4*> CollisionManager::getTransformMatrix(SceneObject* model) {
 
 	Reference<Matrix4*> modelMatrix = model->getTransformForCollisionMatrix();
 
-	if (modelMatrix == NULL) {
+	if (modelMatrix == nullptr) {
 		//modelMatrix = new Matrix4();
 
 		Matrix4 translationMatrix;
@@ -641,12 +641,12 @@ Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector
 bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint) {
 	Zone* zone = ship->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
-	if (terrainManager->getProceduralTerrainAppearance() != NULL) {
+	if (terrainManager->getProceduralTerrainAppearance() != nullptr) {
 		float height = terrainManager->getHeight(targetPosition.getX(), targetPosition.getY());
 
 		float waterHeight = -16368.f;
@@ -671,29 +671,29 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 
 	float dist = rayEnd.distanceTo(rayOrigin);
 	float intersectionDistance;
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
 	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects, true, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		const AppearanceTemplate *app = NULL;
+		const AppearanceTemplate *app = nullptr;
 
 		SceneObject* scno = static_cast<SceneObject*>(objects.get(i).get());
 
 		try {
 			app = getCollisionAppearance(scno, -1);
 
-			if (app == NULL)
+			if (app == nullptr)
 				continue;
 
 		} catch (Exception& e) {
-			app = NULL;
+			app = nullptr;
 		} catch (...) {
 			throw;
 		}
 
-		if (app != NULL) {
+		if (app != nullptr) {
 			//moving ray to model space
 
 			try {
@@ -730,12 +730,12 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 	// this is overkill TODO: find something faster
 	PathGraph* graph = floor->getPathGraph();
 
-	if (graph == NULL)
-		return NULL;
+	if (graph == nullptr)
+		return nullptr;
 
 	Vector<PathNode*>* pathNodes = graph->getPathNodes();
 
-	PathNode* returnNode = NULL;
+	PathNode* returnNode = nullptr;
 	float distance = 16000;
 	Vector3 trianglePos(triangle->getBarycenter());
 	//trianglePos.set(trianglePos.getX(), trianglePos.getY(), trianglePos.getZ());*/
@@ -747,7 +747,7 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 
 		Vector<Triangle*>* path = TriangulationAStarAlgorithm::search(trianglePos, triangleOfPathNode->getBarycenter(), triangle, triangleOfPathNode);
 
-		if (path == NULL)
+		if (path == nullptr)
 			continue;
 		else {
 			delete path;
@@ -767,16 +767,16 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint) {
 	ManagedReference<SceneObject*> parent = object->getParent().get();
 
-	if (parent == NULL || !parent->isCellObject())
+	if (parent == nullptr || !parent->isCellObject())
 		return true;
 
 	CellObject* cell = cast<CellObject*>( parent.get());
 
 	SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
-	const AppearanceTemplate* appearanceMesh = NULL;
+	const AppearanceTemplate* appearanceMesh = nullptr;
 
-	if (portalLayout == NULL)
+	if (portalLayout == nullptr)
 		return true;
 
 	try {
@@ -785,7 +785,7 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 		return true;
 	}
 
-	if (appearanceMesh == NULL) {
+	if (appearanceMesh == nullptr) {
 		//info("null appearance mesh ");
 		return true;
 	}
@@ -804,7 +804,7 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 
 	Ray ray(startPoint, dir);
 
-	Triangle* triangle = NULL;
+	Triangle* triangle = nullptr;
 
 	//nothing in the middle
 	if (appearanceMesh->intersects(ray, distance, intersectionDistance, triangle, true))
