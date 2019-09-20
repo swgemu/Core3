@@ -185,7 +185,7 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 	// TODO: some other stuff down here for version 0015 (everything else is the same)
 }
 
-bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight) {
+bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight) const {
 	ReadLocker locker(&guard);
 
 	for (int i = 0; i < waterBoundaries.size(); ++i) {
@@ -205,7 +205,7 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 	return false;
 }
 
-Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* rootParent) {
+Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* rootParent) const {
 	Layer* returnLayer = NULL;
 
 	Vector<Boundary*>* boundaries = rootParent->getBoundaries();
@@ -231,7 +231,7 @@ Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* r
 	return returnLayer;
 }
 
-Layer* ProceduralTerrainAppearance::getLayer(float x, float y) {
+Layer* ProceduralTerrainAppearance::getLayer(float x, float y) const {
 	Layer* returnLayer = NULL;
 
 	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
@@ -254,7 +254,7 @@ Layer* ProceduralTerrainAppearance::getLayer(float x, float y) {
 	return returnLayer;
 }
 
-float ProceduralTerrainAppearance::calculateFeathering(float value, int featheringType) {
+float ProceduralTerrainAppearance::calculateFeathering(float value, int featheringType) const {
 	/* 1: x^2
 	 * 2: sqrt(x)
 	 * 3: x^2 * (3 - 2x)
@@ -284,7 +284,7 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 	return result;
 }
 
-float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) {
+float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const {
 	Vector<Boundary*>* boundaries = layer->getBoundaries();
 	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
 	Vector<FilterProceduralRule*>* filters = layer->getFilters();
@@ -393,7 +393,7 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 	return transformValue;
 }
 
-int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) {
+int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) const {
 	ReadLocker locker(&guard);
 
 	float affectorTransform = 1.0;
@@ -422,7 +422,7 @@ int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) {
 	return fullTraverse;
 }
 
-float ProceduralTerrainAppearance::getHeight(float x, float y) {
+float ProceduralTerrainAppearance::getHeight(float x, float y) const {
 	ReadLocker locker(&guard);
 
 	float affectorTransform = 1.0;

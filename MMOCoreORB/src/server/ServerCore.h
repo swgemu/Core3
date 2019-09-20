@@ -6,6 +6,8 @@
 #define SERVERCORE_H_
 
 #include "engine/engine.h"
+#include "system/lang/Function.h"
+
 #include "server/features/Features.h"
 
 namespace server {
@@ -73,6 +75,14 @@ class ServerCore : public Core, public Logger {
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
 
+	enum CommandResult {
+		SUCCESS = 0,
+		ERROR = 1,
+		SHUTDOWN
+	};
+
+	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
+
 	static SortedVector<String> arguments;
 
 	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
@@ -82,6 +92,8 @@ class ServerCore : public Core, public Logger {
 	static ServerCore* instance;
 
 	bool handleCmds;
+
+	void registerConsoleCommmands();
 
 public:
 	ServerCore(bool truncateDatabases, SortedVector<String>& args);
@@ -114,6 +126,10 @@ public:
 
 	static ServerCore* getInstance() {
 		return instance;
+	}
+
+	static Logger& logger() {
+		return *instance;
 	}
 
 	static bool hasArgument(const String& arg) {

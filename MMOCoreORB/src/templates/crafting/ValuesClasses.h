@@ -6,6 +6,7 @@
 #define VALUESCLASSES_H_
 
 #include "system/lang.h"
+#include "engine/log/Logger.h"
 
 /*
  * The Values class is just a container for values calculated in crafting
@@ -124,15 +125,20 @@ public:
 
 		if (Float::areAlmostEqualRelative(maxValue, minValue)) {
 			newpercentage = (value - minValue);
-		} if (maxValue > minValue)
-			newpercentage = (value - minValue) / (maxValue - minValue);
-		else
-			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));
 
-		if(newpercentage > values.get("maxPercentage"))
+			const static Logger logger("ValuesClasses");
+
+			logger.warning() << name << " value class has the same maxValue and minValue that are equal to: " << maxValue;
+		} else if (maxValue > minValue) {
+			newpercentage = (value - minValue) / (maxValue - minValue);
+		} else {
+			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));
+		}
+
+		if (newpercentage > values.get("maxPercentage"))
 			newpercentage = values.get("maxPercentage");
 
-		if(newpercentage < 0)
+		if (newpercentage < 0)
 			newpercentage = 0;
 
 		if (values.contains("currentValue")) {
@@ -234,9 +240,9 @@ public:
 
 		name = subtitle;
 
-		Values* values = new Values(subtitle ,min, max, precision, filler, combine);
+		Values* values = new Values(subtitle, min, max, precision, filler, combine);
 
-		valueList.setNullValue(NULL);
+		valueList.setNullValue(nullptr);
 		valueList.put(subtitle, values);
 
 		if (classTitle == "null" || classTitle == "" || (name == "")) {

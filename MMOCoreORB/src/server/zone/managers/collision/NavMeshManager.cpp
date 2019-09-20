@@ -16,7 +16,7 @@ const String NavMeshManager::MeshQueue = "NavMeshBuilder";
 NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
     maxConcurrentJobs = 4;
     stopped = false;
-    zoneServer = NULL;
+    zoneServer = nullptr;
 }
 
 void NavMeshManager::initialize(int numThreads, ZoneServer* server) {
@@ -53,7 +53,7 @@ void NavMeshManager::enqueueJob(NavArea* area, AABB areaToBuild, const RecastSet
     }
 
     job = jobs.get(name);
-    if (job == NULL) {
+    if (job == nullptr) {
         job = new NavMeshJob(area, recastConfig, queue);
 #ifdef NAVMESH_DEBUG
         info("Creating new job for " + name);
@@ -78,7 +78,7 @@ void NavMeshManager::enqueueJob(NavArea* area, AABB areaToBuild, const RecastSet
 }
 
 void NavMeshManager::checkJobs() {
-	if (stopped || zoneServer == NULL)
+	if (stopped || zoneServer == nullptr)
 		return;
 
 	while (zoneServer->isServerLoading())
@@ -93,7 +93,7 @@ void NavMeshManager::checkJobs() {
         Reference<NavMeshJob*> job = jobs.get(0);
         Reference<NavArea*> area = job->getNavArea();
 
-        if (area == NULL) {
+        if (area == nullptr) {
         	jobs.drop(jobs.elementAt(0).getKey());
         	continue;
         }
@@ -123,19 +123,19 @@ void NavMeshManager::checkJobs() {
 }
 
 void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
-    if (stopped || job == NULL) {
+    if (stopped || job == nullptr) {
         return;
     }
 
     ManagedReference<NavArea*> area = job->getNavArea();
 
-    if (area == NULL) {
+    if (area == nullptr) {
     	return;
     }
 
     Reference<Zone*> zone = area->getZone();
 
-    if (zone == NULL) {
+    if (zone == nullptr) {
         return;
     }
 
@@ -152,9 +152,11 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     String name = area->getMeshName();
 
-	info("Starting building navmesh for area: " + name + " on planet: " + zone->getZoneName() + " at: " + area->getPosition().toString(), true);
+    info(true) << "Starting building navmesh for area: " << name
+	    << " on planet: " << zone->getZoneName() << " at: "
+	    << area->getPosition().toString();
 
-	SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
+    SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
     zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
 
     Vector <Reference<MeshData *>> meshData;
@@ -175,7 +177,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         }
     }
 
-    Reference<RecastNavMeshBuilder*> builder = NULL;
+    Reference<RecastNavMeshBuilder*> builder = nullptr;
 
     const AtomicBoolean* running = job->getJobStatus();
     builder = new RecastNavMeshBuilder(zone, name, running);
@@ -217,7 +219,6 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	if (stopped)
     		return;
 
-
     	Locker locker(area);
 
 	auto zone = area->getZone();
@@ -240,9 +241,10 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	navmesh->setDetourNavMesh(builder->getNavMesh());
     	navmesh->setupDetourNavMeshHeader();
     	area->_setUpdated(true);
-    	
-	
-	info("Done building and setting navmesh for area: " + name + " on planet: " + zone->getZoneName() + " at: " + area->getPosition().toString(), true);
+
+	info(true) <<
+		"Done building and setting navmesh for area: " << name << " on planet: "
+		<< zone->getZoneName() << " at: " << area->getPosition().toString();
     }, "setNavMeshLambda");
 
     Locker locker(&jobQueueMutex);
@@ -323,7 +325,7 @@ void NavMeshManager::dumpMeshesToFiles() {
 	dbManager->loadDatabases(false);
 	ObjectDatabase* navAreasDatabase = dbManager->loadObjectDatabase("navareas", false, 0xFFFF, false);
 
-	if (navAreasDatabase != NULL) {
+	if (navAreasDatabase != nullptr) {
 		int i = 0;
 
 		try {

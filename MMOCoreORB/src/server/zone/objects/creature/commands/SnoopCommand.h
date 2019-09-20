@@ -32,7 +32,7 @@ public:
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		StringTokenizer args(arguments.toString());
@@ -40,7 +40,7 @@ public:
 		String container = "";
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		ManagedReference<CreatureObject*> targetObj = NULL;
+		ManagedReference<CreatureObject*> targetObj = nullptr;
 
 		if (creature->getTargetID() != 0) {
 			targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
@@ -53,7 +53,7 @@ public:
 			targetObj = playerManager->getPlayer(targetName);
 		}
 
-		if (targetObj == NULL)
+		if (targetObj == nullptr)
 			return INVALIDTARGET;
 
 		if (!targetObj->isCreatureObject())
@@ -63,7 +63,7 @@ public:
 
 		ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 
-		if (targetGhost == NULL)
+		if (targetGhost == nullptr)
 			return GENERALERROR;
 
 		if (args.hasMoreTokens())
@@ -75,7 +75,7 @@ public:
 		} else if (container == "datapad") {
 			SceneObject* creatureDatapad = targetObj->getSlottedObject("datapad");
 
-			if (creatureDatapad == NULL)
+			if (creatureDatapad == nullptr)
 				return GENERALERROR;
 
 			creatureDatapad->sendWithoutParentTo(creature);
@@ -83,7 +83,7 @@ public:
 		}  else if (container == "bank") {
 			SceneObject* creatureBank = targetObj->getSlottedObject("bank");
 
-			if (creatureBank == NULL)
+			if (creatureBank == nullptr)
 				return GENERALERROR;
 
 			creatureBank->sendWithoutParentTo(creature);
@@ -144,7 +144,7 @@ public:
 
 			PlayerObject* targetGhost = targetObj->getPlayerObject();
 
-			if (targetGhost == NULL)
+			if (targetGhost == nullptr)
 				return GENERALERROR;
 
 			String result = targetGhost->getScreenPlayData(playName, varName);
@@ -203,7 +203,7 @@ public:
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
-			if (creatureInventory == NULL)
+			if (creatureInventory == nullptr)
 				return GENERALERROR;
 
 			creatureInventory->sendWithoutParentTo(creature);
@@ -218,7 +218,7 @@ public:
 	int sendLuaEvents(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		Vector<Reference<ScreenPlayTask*> > eventList = DirectorManager::instance()->getObjectEvents(target);
@@ -233,7 +233,7 @@ public:
 		for (int i = 0; i < eventList.size(); i++) {
 			Reference<ScreenPlayTask*> task = eventList.get(i);
 
-			if (task == NULL)
+			if (task == nullptr)
 				continue;
 
 			String buffer = task->getScreenPlay() + ":" + task->getTaskKey();
@@ -285,7 +285,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		if (targetGhost == NULL || ghost == NULL || playerManager == NULL)
+		if (targetGhost == nullptr || ghost == nullptr || playerManager == nullptr)
 			return GENERALERROR;
 
 		StringBuffer body;
@@ -322,7 +322,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		if (targetGhost == NULL || ghost == NULL || playerManager == NULL)
+		if (targetGhost == nullptr || ghost == nullptr || playerManager == nullptr)
 			return GENERALERROR;
 
 		StringBuffer body;
@@ -371,11 +371,11 @@ public:
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
 
-		if (targetGhost == NULL || ghost == NULL || auctionManager == NULL)
+		if (targetGhost == nullptr || ghost == nullptr || auctionManager == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
-		if(auctionsMap == NULL)
+		if(auctionsMap == nullptr)
 			return GENERALERROR;
 
 		StringBuffer body;
@@ -392,22 +392,22 @@ public:
 			int num = i + 1;
 			body << endl << String::valueOf(num) << ". ";
 
-			if (vendor == NULL) {
-				body << "NULL Vendor" << endl << endl;
+			if (vendor == nullptr) {
+				body << "nullptr Vendor" << endl << endl;
 				continue;
 			}
 
 			body << "VendorID:\t" << vendor->getObjectID() << endl;
 
 			DataObjectComponentReference* data = vendor->getDataObjectComponent();
-			if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
-				body << "    NULL Data Component" << endl << endl;
+			if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
+				body << "    nullptr Data Component" << endl << endl;
 				continue;
 			}
 
 			VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-			if(vendorData == NULL) {
-				body << "    NULL Vendor Data Component" << endl << endl;
+			if(vendorData == nullptr) {
+				body << "    nullptr Vendor Data Component" << endl << endl;
 				continue;
 			}
 
@@ -421,16 +421,16 @@ public:
 			body << "    ParentID:\t";
 
 			ManagedReference<SceneObject*> parent = vendor->getParent().get();
-			if (parent == NULL)
-				body << "NULL" << endl;
+			if (parent == nullptr)
+				body << "nullptr" << endl;
 			else
 				body << parent->getObjectID() << endl;
 
 			body << "    Zone:\t";
 
 			Zone* zone = vendor->getZone();
-			if (zone == NULL) {
-				body << "NULL" << endl;
+			if (zone == nullptr) {
+				body << "nullptr" << endl;
 			} else {
 				body << zone->getZoneName() << endl;
 				body << "    World Position:\t" << vendor->getWorldPositionX() << ", " << vendor->getWorldPositionY() << endl;
@@ -455,7 +455,7 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (targetGhost == NULL || ghost == NULL)
+		if (targetGhost == nullptr || ghost == nullptr)
 			return GENERALERROR;
 
 		int lotsRemaining = targetGhost->getLotsRemaining();
@@ -472,8 +472,8 @@ public:
 			int num = i + 1;
 			body << endl << String::valueOf(num) << ". ";
 
-			if (structure == NULL) {
-				body << "NULL Structure" << endl << endl;
+			if (structure == nullptr) {
+				body << "nullptr Structure" << endl << endl;
 				continue;
 			}
 
@@ -484,8 +484,8 @@ public:
 
 			body << "    Zone:\t";
 			Zone* zone = structure->getZone();
-			if (zone == NULL) {
-				body << "NULL" << endl;
+			if (zone == nullptr) {
+				body << "nullptr" << endl;
 			} else {
 				body << zone->getZoneName() << endl;
 				body << "    World Position:\t" << structure->getWorldPositionX() << ", " << structure->getWorldPositionY() << endl;
@@ -508,7 +508,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -535,7 +535,7 @@ public:
 			}
 		}
 
-		if(targetGhost != NULL) { // if we're not a PlayerObject, we don't hold force values
+		if(targetGhost != nullptr) { // if we're not a PlayerObject, we don't hold force values
 			body << "Force Power:\t" << targetGhost->getForcePower() << " / " << targetGhost->getForcePowerMax() << endl;
 			body << "Force Regen:\t" << target->getSkillMod("jedi_force_power_regen") << endl;
 		}
@@ -554,12 +554,12 @@ public:
 	int sendBuffs(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return GENERALERROR;
 		}
 
 		BuffList* bList = target->getBuffList();
-		if (bList == NULL || bList->getBuffListSize() == 0) {
+		if (bList == nullptr || bList->getBuffListSize() == 0) {
 			creature->sendSystemMessage("No Buffs to Display.");
 			return SUCCESS;
 		}
@@ -572,7 +572,7 @@ public:
 			buffText << "\tCRC: 0x" << hex << buff->getBuffCRC() << endl;
 
 			Vector<uint64>* secondaryCRCs = buff->getSecondaryBuffCRCs();
-			if (secondaryCRCs != NULL && secondaryCRCs->size() > 0) {
+			if (secondaryCRCs != nullptr && secondaryCRCs->size() > 0) {
 				buffText << "\tSecondary CRCs: "<< endl;
 				for (int j = 0; j < secondaryCRCs->size(); j++) {
 					buffText << "\t\t 0x" << hex << buff->getSecondaryBuffCRCs() << endl;
