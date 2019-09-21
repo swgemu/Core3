@@ -51,25 +51,15 @@ using namespace server::web;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager* configManager;
-
 	ServerDatabase* database;
-
 	MantisDatabase* mantisDatabase;
-
 	DistributedObjectBroker* orb;
-
 	ManagedReference<server::login::LoginServer*> loginServer;
-
 	Reference<StatusServer*> statusServer;
-
 	server::features::Features* features;
-
 	Reference<PingServer*> pingServer;
-
 	WebServer* webServer;
-
 	MetricsManager* metricsManager;
-
 	server::web3::RESTServer* restServer;
 
 	Mutex shutdownBlockMutex;
@@ -83,36 +73,29 @@ class ServerCore : public Core, public Logger {
 
 	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
 
-	static SortedVector<String> arguments;
-
-	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
-
-	static bool truncateAllData;
-
-	static ServerCore* instance;
-
 	bool handleCmds;
+
+	static SortedVector<String> arguments;
+	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
+	static bool truncateAllData;
+	static ServerCore* instance;
 
 	void registerConsoleCommmands();
 
 public:
-	ServerCore(bool truncateDatabases, SortedVector<String>& args);
+	ServerCore(bool truncateDatabases, const SortedVector<String>& args);
 	~ServerCore();
 
 	void initialize() override;
+	void initializeCoreContext();
 
 	void finalizeContext() override;
-
-	void initializeCoreContext();
 
 	void run() override;
 
 	void shutdown();
-
 	void handleCommands();
-
 	void processConfig();
-
 	void signalShutdown();
 
 	// getters

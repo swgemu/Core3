@@ -35,20 +35,20 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 
 		if (result != nullptr && result->next())
 			dbSchemaVersion = result->getInt(0);
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		dbSchemaVersion = 1000;
 
 		String createTable = "CREATE TABLE `db_metadata` AS SELECT 1000 as `schema_version`;";
 		try {
 			Reference<ResultSet*> result = instance()->executeQuery(createTable);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			error("Failed to create db_metadata table, please manually create in mysql: " + createTable);
 		}
 	}
 
 	updateDatabaseSchema();
 
-	info("schema_version = " + String::valueOf(dbSchemaVersion), true);
+	info(true) << "schema_version = " << dbSchemaVersion;
 }
 
 ServerDatabase::~ServerDatabase() {

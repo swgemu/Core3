@@ -113,6 +113,9 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	masterScreenPlayVersion.set(0);
 }
 
+DirectorManager::~DirectorManager() {
+}
+
 void DirectorManager::loadPersistentEvents() {
 	info("Loading persistent events from events.db");
 
@@ -565,7 +568,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	for (const auto& entry : *badges) {
 		const auto badge = entry.getValue();
 
-		String val = badge->getKey().toUpperCase();
+		const String val = badge->getKey().toUpperCase();
 
 		luaEngine->setGlobalInt(val, badge->getIndex());
 	}

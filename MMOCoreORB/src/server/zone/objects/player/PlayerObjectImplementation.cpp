@@ -203,7 +203,7 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 				playerManager->writePlayerLog(playerObject, msg, level);
 			}
 
-			return 0;
+			return Logger::SUCCESS;
 		});
 	}
 }

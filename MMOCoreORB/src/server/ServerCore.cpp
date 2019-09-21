@@ -35,7 +35,7 @@ SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
 
-ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
+ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args) :
 		Core("log/core3.log", "core3engine", LogLevel::LOG), Logger("Core") {
 	orb = nullptr;
 
@@ -53,6 +53,8 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 
 	instance = this;
 
+	setLogLevel(Logger::INFO);
+
 	configManager = ConfigManager::instance();
 	metricsManager = MetricsManager::instance();
 
@@ -60,13 +62,13 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 
 	handleCmds = true;
 
-	registerConsoleCommmands();
-
 	initializeCoreContext();
 }
 
 void ServerCore::registerConsoleCommmands() {
 	debug() << "registering console commands...";
+
+	consoleCommands.setNoDuplicateInsertPlan();
 
 	consoleCommands.put("exit", [this](const String& arguments) -> CommandResult {
 		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
@@ -101,7 +103,6 @@ void ServerCore::registerConsoleCommmands() {
 			pingServer->printInfo();
 
 		return SUCCESS;
-
 	});
 
 	consoleCommands.put("lock", [this](const String& arguments) -> CommandResult {
@@ -163,7 +164,7 @@ void ServerCore::registerConsoleCommmands() {
 			System::out << entry.getKey() << "  ";
 		}
 
-		System::out << endl << flush;
+		System::out << endl;
 
 		return SUCCESS;
 	});
@@ -204,7 +205,7 @@ void ServerCore::registerConsoleCommmands() {
 			String file = TemplateManager::instance()->getTemplateFile(
 					crc);
 
-			System::out << "result: " << file << endl << flush;
+			System::out << "result: " << file << endl;
 		}
 
 		return SUCCESS;
@@ -223,24 +224,25 @@ void ServerCore::registerConsoleCommmands() {
 		if (level >= Logger::NONE && level <= Logger::DEBUG) {
 			Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(level));
 
-			System::out << "global log level changed to: " << level << endl << flush;
+			System::out << "global log level changed to: " << level << endl;
 		}
 
 		return SUCCESS;
 	});
 
 	consoleCommands.put("rev", [this](const String& arguments) -> CommandResult {
-		System::out << ConfigManager::instance()->getRevision() << endl << flush;
+		System::out << ConfigManager::instance()->getRevision() << endl;
 
 		return SUCCESS;
 	});
 
-
 	consoleCommands.put("broadcast", [this](const String& arguments) -> CommandResult {
 		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
 
-		ChatManager* chatManager = zoneServer->getChatManager();
-		chatManager->broadcastGalaxy(nullptr, arguments);
+		if (zoneServer != nullptr) {
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->broadcastGalaxy(nullptr, arguments);
+		}
 
 		return SUCCESS;
 	});
@@ -253,6 +255,8 @@ void ServerCore::registerConsoleCommmands() {
 			minutes = UnsignedInteger::valueOf(arguments);
 		} catch (const Exception& e) {
 			System::out << "invalid minutes number expected dec";
+
+			return ERROR;
 		}
 
 		if (zoneServer != nullptr) {
@@ -387,7 +391,7 @@ void ServerCore::registerConsoleCommmands() {
 		return SUCCESS;
 	});
 #endif
-	const auto pvpModeLambda =  [this](const String& arguments) -> CommandResult {
+	const auto pvpModeLambda = [this](const String& arguments) -> CommandResult {
 		System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl << flush;
 
 		return SUCCESS;
@@ -396,7 +400,7 @@ void ServerCore::registerConsoleCommmands() {
 	consoleCommands.put("getpvpmode", pvpModeLambda);
 	consoleCommands.put("getpvp", pvpModeLambda);
 
-	const auto setPvpModeLambda =  [this](const String& arguments) -> CommandResult {
+	const auto setPvpModeLambda = [this](const String& arguments) -> CommandResult {
 		int num;
 
 		try {
@@ -427,7 +431,7 @@ void ServerCore::registerConsoleCommmands() {
 	consoleCommands.put("setpvpmode", setPvpModeLambda);
 	consoleCommands.put("setpvp", setPvpModeLambda);
 
-	const auto dumpConfigLambda =  [this](const String& arguments) -> CommandResult {
+	const auto dumpConfigLambda = [this](const String& arguments) -> CommandResult {
 		ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
 
 		return SUCCESS;
@@ -444,7 +448,7 @@ void ServerCore::registerConsoleCommmands() {
 		return SUCCESS;
 	});
 
-	info() << "registered " << consoleCommands.size() << " commands.";
+	debug() << "registered " << consoleCommands.size() << " console commands.";
 }
 
 ServerCore::~ServerCore() {
@@ -503,6 +507,8 @@ void ServerCore::initialize() {
 	Logger::setGlobalFileJson(configManager->getJsonLogOutput());
 	Logger::setGlobalFileLoggerSync(configManager->getSyncLogOutput());
 	Logger::setGlobalFileLogLevel(static_cast<Logger::LogLevel>(configManager->getLogFileLevel()));
+
+	registerConsoleCommmands();
 
 	try {
 		ObjectManager* objectManager = ObjectManager::instance();
@@ -635,6 +641,8 @@ void ServerCore::initialize() {
 		}
 
 		info("initialized", true);
+
+		System::flushStreams();
 
 		if (arguments.contains("playercleanup") && zoneServer != nullptr) {
 			zoneServer->getPlayerManager()->cleanupCharacters();
@@ -813,7 +821,7 @@ void ServerCore::handleCommands() {
 
 			Thread::sleep(500);
 
-			System::out << "> ";
+			System::out << "> " << flush;
 
 			char line[256];
 			auto res = fgets(line, sizeof(line), stdin);
@@ -822,7 +830,7 @@ void ServerCore::handleCommands() {
 				continue;
 
 			fullCommand = line;
-			fullCommand = fullCommand.replaceFirst("\n", "");
+			fullCommand = fullCommand.trim();
 
 			StringTokenizer tokenizer(fullCommand);
 
@@ -832,7 +840,7 @@ void ServerCore::handleCommands() {
 				tokenizer.getStringToken(command);
 
 			if (tokenizer.hasMoreTokens())
-				tokenizer.finalToken(arguments);
+				arguments = tokenizer.getRemainingString();
 
 			auto it = consoleCommands.find(command);
 
@@ -842,18 +850,17 @@ void ServerCore::handleCommands() {
 				if (result == SHUTDOWN)
 					return;
 			} else {
-				System::out << "unknown command (" << command << ")\n" << flush;
+				System::out << "unknown command (" << command << ")\n";
 			}
 		} catch (const SocketException& e) {
-			System::out << "[ServerCore] " << e.getMessage();
+			error() << e.getMessage();
 		} catch (const ArrayIndexOutOfBoundsException& e) {
-			System::out << "[ServerCore] " << e.getMessage() << "\n";
+			error() << e.getMessage();
 		} catch (const Exception& e) {
-			System::out << "[ServerCore] unreported Exception caught\n";
+			error() << "unreported Exception caught";
 		}
 
-		System::out << flush;
-
+		System::flushStreams();
 #ifdef WITH_STM
 		try {
 			TransactionalMemoryManager::commitPureTransaction(transaction);

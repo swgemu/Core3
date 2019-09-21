@@ -47,7 +47,7 @@ namespace server {
 
 	class QuadTree : public Object {
 		Reference<QuadTreeNode*> root;
-	
+
 		static bool logTree;
 
 		mutable ReadWriteLock mutex;
@@ -136,10 +136,10 @@ namespace server {
 		bool update(QuadTreeEntry *obj);
 
 	private:
-		void _insert(Reference<QuadTreeNode*>& node, QuadTreeEntry *obj);
-		bool _update(Reference<QuadTreeNode*>& node, QuadTreeEntry *obj);
+		void _insert(const Reference<QuadTreeNode*>& node, QuadTreeEntry *obj);
+		bool _update(const Reference<QuadTreeNode*>& node, QuadTreeEntry *obj);
 
-		void _inRange(Reference<QuadTreeNode*>& node, QuadTreeEntry *obj, float range);
+		void _inRange(const Reference<QuadTreeNode*>& node, QuadTreeEntry *obj, float range);
 		int _inRange(const Reference<QuadTreeNode*>& node, float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >& objects) const;
 		int _inRange(const Reference<QuadTreeNode*>& node, float x, float y, float range, SortedVector<QuadTreeEntry* >& objects) const;
 		int _inRange(const Reference<QuadTreeNode*>& node, float x, float y, SortedVector<ManagedReference<QuadTreeEntry*> >& objects) const;

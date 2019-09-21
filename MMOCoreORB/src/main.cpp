@@ -18,10 +18,10 @@
 #include "engine/orb/db/DOBObjectManager.h"
 
 class CoreProcess : public ChildProcess {
-	SortedVector<String>& arguments;
+	const SortedVector<String>& arguments;
 
 public:
-	CoreProcess(SortedVector<String>& args) : arguments(args) {
+	CoreProcess(const SortedVector<String>& args) : arguments(args) {
 	}
 
 	void run() {

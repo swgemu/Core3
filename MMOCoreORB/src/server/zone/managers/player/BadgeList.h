@@ -3,7 +3,7 @@
 
 #include "server/zone/objects/player/badges/Badge.h"
 
-class BadgeList : public Singleton<BadgeList>, Logger, public Object {
+class BadgeList : public Singleton<BadgeList>, public Logger, public Object {
 	// idx to Badge
 	VectorMap<unsigned int, const Badge*> badges;
 

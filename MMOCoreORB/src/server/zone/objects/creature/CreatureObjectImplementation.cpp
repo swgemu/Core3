@@ -264,7 +264,7 @@ void CreatureObjectImplementation::loadTemplateData(
 				playerManager->writePlayerLog(creo, msg, level);
 			}
 
-			return 0;
+			return Logger::SUCCESS;
 		});
 	}
 }
