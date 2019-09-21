@@ -13,7 +13,7 @@
 
 class dtNavMesh;
 
-class RecastNavMesh : public Object, Logger {
+class RecastNavMesh : public Object, public Logger {
 	void loadAll(ObjectInputStream* stream);
 	void saveAll(ObjectOutputStream* stream);
 

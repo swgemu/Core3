@@ -14,13 +14,13 @@
 class TerrainAppearance : public Object {
 public:
 	virtual bool load(engine::util::IffStream* iffStream) = 0;
-	virtual float getSize() = 0;
+	virtual float getSize() const = 0;
 
-	virtual float getHeight(float x, float y) {
+	virtual float getHeight(float x, float y) const {
 		return 0;
 	}
 
-	virtual bool getWater(float x, float y, float& waterHeight) {
+	virtual bool getWater(float x, float y, float& waterHeight) const {
 		return false;
 	}
 };

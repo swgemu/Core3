@@ -70,10 +70,10 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 	Vector<TerrainGenerator*> customTerrain;
 
 protected:
-	float calculateFeathering(float value, int featheringType);
-	float processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType);
-	Layer* getLayerRecursive(float x, float y, Layer* rootParent);
-	Layer* getLayer(float x, float y);
+	float calculateFeathering(float value, int featheringType) const;
+	float processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const;
+	Layer* getLayerRecursive(float x, float y, Layer* rootParent) const;
+	Layer* getLayer(float x, float y) const;
 
 	void translateBoundaries(Layer* layer, float x, float y);
 	void setHeight(Layer* layer, float height);
@@ -82,9 +82,9 @@ public:
 	ProceduralTerrainAppearance();
 	~ProceduralTerrainAppearance();
 
-	bool load(engine::util::IffStream* iffStream);
+	bool load(engine::util::IffStream* iffStream) override;
 
-	void parseFromIffStream(engine::util::IffStream* iffStream);
+	void parseFromIffStream(engine::util::IffStream* iffStream) override;
 	void parseFromIffStream(engine::util::IffStream* iffStream, uint32 version);
 
 	void insertWaterBoundary(Boundary* boundary) {
@@ -97,26 +97,31 @@ public:
 	 * Returns the size of the terrain.
 	 * @return float The size of the terrain.
 	 */
-	float getSize() {
+	float getSize() const override {
 		return size;
 	}
 
-	bool getWater(float x, float y, float& waterHeight);
-	float getHeight(float x, float y);
-	int getEnvironmentID(float x, float y);
+	bool getWater(float x, float y, float& waterHeight) const override;
+	float getHeight(float x, float y) const override;
+	int getEnvironmentID(float x, float y) const;
 
-	float getGlobalWaterTableHeight() {
+	float getGlobalWaterTableHeight() const {
 		return globalWaterTableHeight;
 	}
 
-	bool getUseGlobalWaterTable() {
+	bool getUseGlobalWaterTable() const {
 		return useGlobalWaterTable;
 	}
+
+	const ReadWriteLock* getGuard() const {
+		return &guard;
+	}
+
 	ReadWriteLock* getGuard() {
 		return &guard;
 	}
 
-	float getDistanceBetweenPoles() {
+	float getDistanceBetweenPoles() const {
 		return chunkSize / (tilesPerChunk * 2.0f);
 	}
 
