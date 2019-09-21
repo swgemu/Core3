@@ -75,14 +75,17 @@ const char* MySqlDatabase::mysqlThreadName = "mysqlThread";
 MySqlDatabase::MySqlDatabase(const String& s) : Mutex("MYSQL DB"), Logger(s) {
 	queryTimeout = 5;
 	writeQueryTimeout = queryTimeout * 10;
+
+	memset(&mysql, 0, sizeof(mysql));
 }
 
 MySqlDatabase::MySqlDatabase(const String& s, const String& host) : Mutex("MYSQL DB"), Logger(s) {
 	MySqlDatabase::host = host;
 
+	memset(&mysql, 0, sizeof(mysql));
+
 	queryTimeout = 5;
 	writeQueryTimeout = queryTimeout * 1000;
-
 
 	setLockTracing(false);
 }

@@ -26,7 +26,7 @@ using ::testing::An;
 
 class ZoneTest : public ::testing::Test {
 protected:
-	ServerDatabase* database;
+	ServerDatabase* database = nullptr;
 	Reference<ZoneServer*> zoneServer;
 	Reference<Zone*> zone;
 	Reference<ZoneProcessServer*> processServer;

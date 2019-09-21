@@ -118,59 +118,59 @@ public:
 		return true;
 	}
 
-	inline uint32 getInstallationType() {
+	inline uint32 getInstallationType() const {
 		return installationType;
 	}
 
-	inline unsigned int getArmorRating() {
+	inline unsigned int getArmorRating() const {
 		return armorRating;
 	}
 
-	inline float getKinetic() {
-			return kinetic;
+	inline float getKinetic() const {
+		return kinetic;
 	}
 
-	inline float getEnergy() {
-			return energy;
+	inline float getEnergy() const {
+		return energy;
 	}
 
-	inline float getElectricity() {
-			return electricity;
+	inline float getElectricity() const {
+		return electricity;
 	}
 
-	inline float getStun() {
-			return stun;
+	inline float getStun() const {
+		return stun;
 	}
 
-	inline float getBlast() {
-			return blast;
+	inline float getBlast() const {
+		return blast;
 	}
 
-	inline float getHeat() {
-			return heat;
+	inline float getHeat() const {
+		return heat;
 	}
 
-	inline float getCold() {
+	inline float getCold() const {
 		return cold;
 	}
 
-	inline float getAcid() {
+	inline float getAcid() const {
 		return acid;
 	}
 
-	inline float getLightSaber() {
+	inline float getLightSaber() const {
 		return lightSaber;
 	}
 
-	inline const String& getWeapon() {
+	inline const String& getWeapon() const {
 		return weapon;
 	}
 
-	inline float getChanceHit() {
+	inline float getChanceHit() const {
 		return chanceHit;
 	}
 
-	inline const String& getFactionString() {
+	inline const String& getFactionString() const {
 		return factionString;
 	}
 };
