@@ -297,7 +297,7 @@ void ObjectDatabaseCore::startBackIteratorTask(ObjectDatabase* database, const S
 
 	staticLogger.info("back iterator2 enabled", true);
 
-	berkley::CursorConfig config;
+	berkeley::CursorConfig config;
 	config.setReadUncommitted(true);
 
 	auto taskManager = Core::getTaskManager();
@@ -598,7 +598,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 
 	const String& fileName = getArgument(3, database->getDatabaseFileName() + ".json");
 
-	berkley::CursorConfig config;
+	berkeley::CursorConfig config;
 	config.setReadUncommitted(true);
 
 	//forward iterator
@@ -617,7 +617,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 	int buffersize = Core::getIntProperty("ODB3.bulkBuffer", 5 * 1024 * 1024); //5MB
 	ArrayList<char> buffer(buffersize, buffersize / 2);
 
-	berkley::DatabaseEntry dataEntry;
+	berkeley::DatabaseEntry dataEntry;
 	dataEntry.setData(buffer.begin(), buffersize);
 
 	size_t retklen, retdlen;

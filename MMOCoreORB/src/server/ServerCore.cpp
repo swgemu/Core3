@@ -254,7 +254,7 @@ void ServerCore::registerConsoleCommmands() {
 		try {
 			minutes = UnsignedInteger::valueOf(arguments);
 		} catch (const Exception& e) {
-			System::out << "invalid minutes number expected dec";
+			System::out << "invalid minutes number expected dec" << endl;
 
 			return ERROR;
 		}
@@ -351,7 +351,7 @@ void ServerCore::registerConsoleCommmands() {
 		if (port) {
 			MetricsManager::instance()->initializeStatsDConnection(address.toCharArray(), port);
 
-			System::out << "metrics manager connection set to" << address << ":" << port << endl << flush;
+			System::out << "metrics manager connection set to" << address << ":" << port << endl;
 		} else {
 			System::out << "invalid port or address" << endl;
 		}
@@ -392,7 +392,7 @@ void ServerCore::registerConsoleCommmands() {
 	});
 #endif
 	const auto pvpModeLambda = [this](const String& arguments) -> CommandResult {
-		System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl << flush;
+		System::out << "PvpMode = " << ConfigManager::instance()->getPvpMode() << endl;
 
 		return SUCCESS;
 	};

@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/PersistentMessage.h"
 
 class SendMailTask : public Task {
@@ -24,7 +25,7 @@ public:
 		senderName = sender;
 	}
 
-	void run() {
+	void run() final {
 		Locker locker(receiver);
 
 		PlayerObject* ghost = receiver->getPlayerObject();

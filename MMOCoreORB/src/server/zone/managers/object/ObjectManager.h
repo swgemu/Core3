@@ -129,7 +129,7 @@ namespace zone {
 
 			ObjectInputStream objectData(500);
 
-			if (database->getData(objectID, &objectData, berkley::LockMode::READ_UNCOMMITED, false, true)) {
+			if (database->getData(objectID, &objectData, berkeley::LockMode::READ_UNCOMMITED, false, true)) {
 				return;
 			}
 

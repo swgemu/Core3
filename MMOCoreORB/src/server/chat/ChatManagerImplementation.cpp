@@ -927,8 +927,7 @@ CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
 		String lName = name.toLowerCase();
 
 		player = playerMap->get(lName, false);
-	} catch (Exception& e) {
-		System::out << e.getMessage();
+	} catch (const Exception& e) {
 		e.printStackTrace();
 	}
 
@@ -969,6 +968,8 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 	StringBuffer fullMessage;
 	fullMessage << "[" << firstName << "] " << message;
 
+	const auto stringMessage = fullMessage.toString();
+
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 	//playerMap->lock();
 
@@ -977,7 +978,7 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 	while (playerMap->hasNext(false)) {
 		ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
 
-		playerObject->sendSystemMessage(fullMessage.toString());
+		playerObject->sendSystemMessage(stringMessage);
 	}
 }
 
@@ -1011,7 +1012,8 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = nullptr;
 }
 
-void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) {
+void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message,
+		uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
 	Zone* zone = sourceCreature->getZone();
 
 	if (zone == nullptr)

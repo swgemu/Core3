@@ -361,6 +361,8 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 	@local
 	public native void broadcastMessage(BaseMessage message);
+
+	@read
 	public native void broadcastChatMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int spatialChatType = 0, unsigned int moodType = 0, unsigned int chatFlags = 0, int languageID = 1);
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
@@ -405,11 +407,11 @@ class ChatManager extends ManagedService implements Logger {
 		return gameRooms.get(game);
 	}
 
-	@dirty
+	@read
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
-	
+
 	@dirty
 	public ZoneServer getZoneServer() {
 		return server;
@@ -448,7 +450,7 @@ class ChatManager extends ManagedService implements Logger {
 		return systemRoom;
 	}
 
-	@dirty
+	@read
 	public string getSocialType(unsigned int id) {
 		return socialTypes.get(id);
 	}

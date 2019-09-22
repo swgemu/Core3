@@ -15,9 +15,9 @@ namespace chat {
 
 class ChatParameter : public virtual Object {
 protected:
-	virtual void addToPacketStream(Message* packet) = 0;
+	virtual void addToPacketStream(Message* packet) const = 0;
 
-	virtual void insertHeaderToMessage(Message* message) {
+	virtual void insertHeaderToMessage(Message* message) const {
 		message->insertByte(TYPE_STRINGID);
 		message->insertInt(STRINGID);
 	}
@@ -39,7 +39,7 @@ public:
 		return *this;
 	}
 
-	void insertToMessage(Message* message);
+	void insertToMessage(Message* message) const;
 	virtual void parse(Message* message) = 0;
 
 	inline bool isStringIdParameter() {

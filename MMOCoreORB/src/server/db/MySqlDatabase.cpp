@@ -21,7 +21,7 @@ public:
 	MysqlTask(MySqlDatabase* db, const String& q) : database(db), query(q) {
 	}
 
-	void run() {
+	void run() final {
 		try {
 			database->doExecuteStatement(query);
 		} catch (Exception& e) {
@@ -55,14 +55,13 @@ public:
 				Function<void(engine::db::ResultSet*)>&& f): database(db), query(q), function(std::move(f)) {
 	}
 
-	void run() {
+	void run() final {
 		try {
 			engine::db::ResultSet* res = database->executeQuery(query);
 
 			MysqlCallback* callback = new MysqlCallback(res, std::move(function));
 			callback->execute();
-
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			database->error(e.getMessage().toCharArray());
 		}
 	}
@@ -105,10 +104,11 @@ void MySqlDatabase::connect(const String& dbname, const String& user, const Stri
 
 	Locker locker(this);
 
-	msg << "connecting to " << host << "...";
-	info(msg, true);
+	info(true) << "connecting to " << host << "...";
 
 	static int databaseThread = createDatabaseThread();
+
+	fatal(!databaseThread) << "could not create mysql database thread";
 
 	if (!mysql_init(&mysql))
 		error();
@@ -122,9 +122,7 @@ void MySqlDatabase::connect(const String& dbname, const String& user, const Stri
 		error();
 	}
 
-	msg.deleteAll();
-	msg << "connected to " << host;
-	info(msg, true);
+	info(true) << "connected to " << host;
 
 #ifdef WITH_STM
 	autocommit(false);
@@ -149,7 +147,7 @@ void MySqlDatabase::doExecuteStatement(const String& statement) {
 			error(statement.toCharArray());
 			break;
 		} else
-			info(String("Warning mysql lock wait timeout on statement: ") + statement);
+			info() << "Warning mysql lock wait timeout on statement: " << statement;
 	}
 
 #ifdef WITH_STM
@@ -215,7 +213,7 @@ engine::db::ResultSet* MySqlDatabase::executeQuery(const char* statement) {
 			error(statement);
 			break;
 		} else
-			info(String("Warning mysql lock wait timeout on statement: ") + statement);
+			info() << "Warning mysql lock wait timeout on statement: " << statement;
 	}
 
 	MYSQL_RES* result = mysql_store_result(&mysql);
