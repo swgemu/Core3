@@ -277,7 +277,7 @@ void InstallationObjectImplementation::updateInstallationWork() {
 bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	Time now;
-	
+
 	int currentTime = time(0);
 	int lastTime = lastMaintenanceTime.getTime();
 
@@ -335,7 +335,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
-	
+
 	if (getZone() == NULL)
 		return;
 
@@ -796,11 +796,11 @@ void InstallationObjectImplementation::createChildObjects() {
 	}
 }
 
-float InstallationObjectImplementation::getHitChance() {
-		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
+float InstallationObjectImplementation::getHitChance() const {
+	const SharedInstallationObjectTemplate* inso = dynamic_cast<const SharedInstallationObjectTemplate*>(getObjectTemplate());
 
-		if (inso == NULL)
-			return 0;
+	if (inso == NULL)
+		return 0;
 
-		return inso->getChanceHit();
+	return inso->getChanceHit();
 }

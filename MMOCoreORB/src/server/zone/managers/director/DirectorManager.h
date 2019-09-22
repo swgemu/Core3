@@ -49,8 +49,8 @@ namespace server {
  namespace zone {
   namespace managers {
    namespace director {
-   class PersistentEvent;
-   class ScreenPlayTask;
+   	class PersistentEvent;
+   	class ScreenPlayTask;
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
@@ -75,10 +75,7 @@ namespace server {
 
 	public:
 		DirectorManager();
-
-		~DirectorManager() {
-			sharedMemory = NULL;
-		}
+		~DirectorManager();
 
 		void loadPersistentEvents();
 		void loadPersistentStatus();
@@ -132,7 +129,6 @@ namespace server {
 		static int createLoot(lua_State* L);
 		static int createLootSet(lua_State* L);
 		static int createLootFromCollection(lua_State* L);
-
 		static int getRandomNumber(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int spatialMoodChat(lua_State* L);

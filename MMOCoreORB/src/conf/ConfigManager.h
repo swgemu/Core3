@@ -160,12 +160,12 @@ namespace conf {
 		VectorMap<String, ConfigDataItem *> configData;
 
 		// Cached values
-		bool cache_PvpMode;
-		bool cache_ProgressMonitors;
-		bool cache_UnloadContainers;
-		bool cache_UseMetrics;
-		int cache_SessionStatsSeconds;
-		int cache_OnlineLogSize;
+		bool cache_PvpMode = false;
+		bool cache_ProgressMonitors = false;
+		bool cache_UnloadContainers = false;
+		bool cache_UseMetrics = false;
+		int cache_SessionStatsSeconds = 1;
+		int cache_OnlineLogSize = 0;
 
 	public:
 		ConfigManager();

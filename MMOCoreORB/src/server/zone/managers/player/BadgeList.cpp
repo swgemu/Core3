@@ -4,25 +4,26 @@
 #include "templates/manager/DataArchiveStore.h"
 
 BadgeList::BadgeList() : Logger("BadgeList") {
-	badges.setNullValue(NULL);
-	names.setNullValue(NULL);
+	setLogLevel(Logger::INFO);
+
+	badges.setNullValue(nullptr);
+	names.setNullValue(nullptr);
+
 	loadData();
 }
 BadgeList::~BadgeList() {
 	for (int i = 0; i < badges.size(); i++) {
 		const Badge* badge = badges.get(i);
-		if (badge != NULL) {
+		if (badge != nullptr) {
 			delete badge;
 		}
 	}
 }
 
 void BadgeList::loadData() {
-	info("Loading badges.");
+	debug("Loading badges.");
 
-
-
-	// previsouly I was hopeing to use the Templatemanager 
+	// previsouly I was hopeing to use the Templatemanager
 	// but that ends up to be a cyclic dependncy with DirectorManager being involed..
 	// so I had to duplicate a bit of code here.
 	//ConfigManager::instance()->loadConfigData();
@@ -42,10 +43,10 @@ void BadgeList::loadData() {
 
 	DataArchiveStore::instance()->loadTres(path, treFilesToLoad);
 
-	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/badge/badge_map.iff");
+	UniqueReference<IffStream*> iffStream(DataArchiveStore::instance()->openIffFile("datatables/badge/badge_map.iff"));
 
-	if (iffStream == NULL) {
-		info("Couldn't load badge map.", true);
+	if (iffStream == nullptr) {
+		error() << "Couldn't load badge map.";
 		return;
 	}
 
@@ -54,22 +55,22 @@ void BadgeList::loadData() {
 
 	int i;
 	for (i = 0; i < dtiff.getTotalRows(); ++i) {
-
 		Badge* badge = new Badge();
 		DataTableRow* row = dtiff.getRow(i);
 
 		badge->readFromRow(row);
-		info("Adding badge " + badge->getKey() + " " + String::valueOf(badge->getIndex()));
+
+		debug() << "Adding badge " <<
+			badge->getKey() << " " << badge->getIndex();
+
 		add(badge);
 	}
 
-	info("Loaded " + String::valueOf(i) + " badges.", true);
-
-	delete iffStream;
+	info(true) << "Loaded " << i << " badges.";
 }
 
 void BadgeList::add(Badge* badge) {
-	if (badge == NULL) return;
+	if (badge == nullptr) return;
 
 	badges.put(badge->getIndex(), badge);
 	names.put(badge->getKey(), badge);

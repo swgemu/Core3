@@ -195,6 +195,18 @@ public:
 	StringIdParameter* getTO() {
 		return &TO;
 	}
+
+	const StringIdParameter* getTT() const {
+		return &TT;
+	}
+
+	const StringIdParameter* getTU() const {
+		return &TU;
+	}
+
+	const StringIdParameter* getTO() const {
+		return &TO;
+	}
 };
 
 }

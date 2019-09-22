@@ -181,7 +181,7 @@ void AuctionManagerImplementation::checkVendorItems(bool startupTask) {
 	if (startupTask)
 		info("checkVendorItems initial startup task", true);
 
-    Timer timer(Time::MONOTONIC_TIME);
+    	Timer timer(Time::MONOTONIC_TIME);
 
 	timer.start();
 	TerminalListVector items = auctionMap->getVendorTerminalData("", "", 0);
@@ -542,7 +542,7 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium, bool stockroomSale) {
 
 	if (vendor == nullptr) {
-		error("NULL Vendor");
+		error("nullptr Vendor");
 		return ItemSoldMessage::UNKNOWNERROR;
 	}
 
@@ -1061,9 +1061,7 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 
 		doAuctionBid(player, item, price1, price2);
 	}
-
 }
-
 
 int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 objectIdToRetrieve, SceneObject* vendor) {
     // Check both Bazaar and Vendors
@@ -1201,7 +1199,7 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectid);
 	if (item == nullptr) {
-		error("NULL item in retrieveItem()");
+		error("nullptr item in retrieveItem()");
 		return;
 	}
 
