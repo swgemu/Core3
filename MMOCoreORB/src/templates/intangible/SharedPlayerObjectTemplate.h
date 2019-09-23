@@ -49,7 +49,7 @@ public:
 
 		try {
 			//parseFileData(iffStream);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			String msg;
 			msg += "exception caught parsing file data ->";
 			msg += e.getMessage();
@@ -112,7 +112,7 @@ public:
 		}
 	}
 
-	SortedVector<String>* getPlayerDefaultGroupPermissions() {
+	const SortedVector<String>* getPlayerDefaultGroupPermissions() const {
 		return &playerDefaultGroupPermissions;
 	}
 

@@ -37,15 +37,13 @@ public:
 };
 
 TEST_F(BasicTerrainTest, LoadTestTerrainTest) {
-	IffStream* stream = DataArchiveStore::instance()->openIffFile("terrain/test_terrain.trn");
+	UniqueReference<IffStream*> stream(DataArchiveStore::instance()->openIffFile("terrain/test_terrain.trn"));
 
 	ASSERT_TRUE(stream != NULL);
 
 	ProceduralTerrainAppearance terrain;
 
 	terrain.readObject(stream);
-
-	delete stream;
 
 	float x = -238;
 	float y = -166;
@@ -61,13 +59,11 @@ TEST_F(BasicTerrainTest, LoadTestTerrainTest) {
 }
 
 TEST_F(BasicTerrainTest, LoadTestSpaceTerrain) {
-	IffStream* stream = DataArchiveStore::instance()->openIffFile("terrain/space_corellia.trn");
+	UniqueReference<IffStream*> stream(DataArchiveStore::instance()->openIffFile("terrain/space_corellia.trn"));
 
 	ASSERT_TRUE(stream != NULL);
 
 	SpaceTerrainAppearance terrain;
 
 	terrain.readObject(stream);
-
-	delete stream;
 }

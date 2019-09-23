@@ -564,8 +564,7 @@ bool QuadTree::_update(const Reference<QuadTreeNode*>& node, QuadTreeEntry *obj)
 	// Here is the right spot for the object, so lets drop it in.
 	// May result in another squaring frenzy.
 	if (cur != nullptr) {
-		Reference<QuadTreeNode*> c = cur;
-		_insert(c, obj);
+		_insert(cur, obj);
 	}
 #ifdef OUTPUTQTERRORS
 	else

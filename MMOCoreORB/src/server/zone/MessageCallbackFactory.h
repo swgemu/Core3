@@ -7,8 +7,6 @@
 
 #ifndef MESSAGECALLBACKFACTORY_H_
 #define MESSAGECALLBACKFACTORY_H_
-
-
 #include "engine/engine.h"
 
 namespace server {
@@ -17,7 +15,7 @@ namespace server {
  template <typename TypeId, typename Value>
  class ObjectCreatorMap : public HashTable<TypeId, Value> {
 	 int hash(const TypeId& k) const {
-		 int32 a = k;
+		 uint32 a = k;
 		 a = (a+0x7ed55d16) + (a<<12);
 		 a = (a^0xc761c23c) ^ (a>>19);
 		 a = (a+0x165667b1) + (a<<5);
