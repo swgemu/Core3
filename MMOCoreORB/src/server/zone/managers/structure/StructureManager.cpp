@@ -112,7 +112,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 	auto playerStructuresDatabaseIndex = createSubIndex();
 
-	berkley::CursorConfig config;
+	berkeley::CursorConfig config;
 	config.setReadUncommitted(true);
 	uint64 zoneHash = zoneName.hashCode();
 

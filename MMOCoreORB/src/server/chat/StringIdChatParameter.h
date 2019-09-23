@@ -45,7 +45,7 @@ protected:
 	* @post { data is inserted into packet }
 	* @param packet Message that data is to be inserted into
 	*/
-	void addToPacketStream(Message* packet);
+	void addToPacketStream(Message* packet) const override;
 
 public:
 	StringIdChatParameter();
@@ -55,8 +55,8 @@ public:
 	StringIdChatParameter(const String& fil, const String& stringId);
 	StringIdChatParameter(const StringIdChatParameter& custom);
 
-	bool toBinaryStream(ObjectOutputStream* stream);
-	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool toBinaryStream(ObjectOutputStream* stream) override;
+	bool parseFromBinaryStream(ObjectInputStream* stream) override;
 
 	friend void to_json(nlohmann::json& j, const StringIdChatParameter& p);
 
@@ -83,7 +83,7 @@ public:
 		return *this;
 	}
 
-	void parse(Message* message);
+	void parse(Message* message) override;
 
 	/**
 	* Sets the TT variable

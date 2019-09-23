@@ -49,7 +49,8 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderID, uint64 targetID, uint64 chatTargetID, StringIdChatParameter& stringid, uint16 volume, uint16 spatialChatType, uint16 moodType, uint32 chatFlags, uint8 languageID) :
+	SpatialChat(uint64 senderID, uint64 targetID, uint64 chatTargetID, const StringIdChatParameter& stringid,
+			uint16 volume, uint16 spatialChatType, uint16 moodType, uint32 chatFlags, uint8 languageID) :
 		ObjectControllerMessage(targetID, 0x0B, 0xF4) {
 
 		insertLong(senderID);
