@@ -100,8 +100,6 @@ int MySqlDatabase::createDatabaseThread() {
 }
 
 void MySqlDatabase::connect(const String& dbname, const String& user, const String& passw, int port) {
-	StringBuffer msg;
-
 	Locker locker(this);
 
 	info(true) << "connecting to " << host << "...";
@@ -147,7 +145,7 @@ void MySqlDatabase::doExecuteStatement(const String& statement) {
 			error(statement.toCharArray());
 			break;
 		} else
-			info() << "Warning mysql lock wait timeout on statement: " << statement;
+			warning() << "Warning mysql lock wait timeout on statement: " << statement;
 	}
 
 #ifdef WITH_STM
