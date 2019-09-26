@@ -102,7 +102,7 @@ public:
 	}
 
 
-	inline String getPaletteFileName() {
+	inline const String& getPaletteFileName() const {
 		return palettePathName.get();
 	}
 
@@ -110,7 +110,7 @@ public:
 		return address->parseFromString(value, version);
 	}*/
 
-	String getVariableName() {
+	const String& getVariableName() const {
 		return variableName.get();
 	}
 

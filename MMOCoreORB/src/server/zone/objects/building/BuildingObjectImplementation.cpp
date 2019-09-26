@@ -1024,7 +1024,7 @@ bool BuildingObjectImplementation::isInPlayerCity() {
 }
 
 bool BuildingObjectImplementation::canPlayerRegisterWithin() {
-	PlanetMapCategory* pmc = getPlanetMapSubCategory();
+	const PlanetMapCategory* pmc = getPlanetMapSubCategory();
 
 	if (pmc == nullptr)
 		pmc = getPlanetMapCategory();
@@ -1674,7 +1674,7 @@ void BuildingObjectImplementation::changeSign(SignTemplate* signConfig) {
 bool BuildingObjectImplementation::togglePrivacy() {
 	// If the building is a cantina then we need to add/remove it from the planet's
 	// mission map for performance locations.
-	PlanetMapCategory* planetMapCategory = getPlanetMapCategory();
+	const PlanetMapCategory* planetMapCategory = getPlanetMapCategory();
 	if (planetMapCategory != nullptr) {
 		String planetMapCategoryName = planetMapCategory->getName();
 		if (planetMapCategoryName == "cantina") {

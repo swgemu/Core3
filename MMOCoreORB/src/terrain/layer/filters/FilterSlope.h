@@ -14,7 +14,7 @@
 
 #define defaultValue 1.5707964
 
-class FilterSlope : public ProceduralRule<'FSLP'>, public FilterProceduralRule {
+class FilterSlope : public FilterProceduralRule {
 	float minAngle; // +32
 	float max; // +40
 	float maxAngle; // +28
@@ -23,7 +23,7 @@ class FilterSlope : public ProceduralRule<'FSLP'>, public FilterProceduralRule {
 	//const static float defaultValue = 1.5707964;
 
 public:
-	FilterSlope() : FilterProceduralRule(2), minAngle(0), max(0), maxAngle(0), min(0) {
+	FilterSlope() : FilterProceduralRule(2, 'FSLP'), minAngle(0), max(0), maxAngle(0), min(0) {
 		filterType = HEIGHTTYPE;
 	}
 
@@ -118,9 +118,6 @@ public:
 		return result;
 	}
 
-	bool isEnabled() {
-		return informationHeader.isEnabled();
-	}
 };
 
 #endif /* FILTERSLOPE_H_ */

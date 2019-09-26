@@ -190,7 +190,7 @@ void SceneObjectImplementation::createComponents() {
 		//zoneComponent->initialize(_this.getReferenceUnsafe());
 
 		if (zoneComponent == nullptr) {
-			info("zone component null " + zoneComponentClassName + " in " + templateObject->getFullTemplateString());
+			info("zone component null \'" + zoneComponentClassName + "\' in " + templateObject->getFullTemplateString());
 		}
 
 		createObjectMenuComponent();

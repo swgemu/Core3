@@ -15,7 +15,7 @@
 class TerrainGenerator;
 class MapFractal;
 
-class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule {
+class FilterFractal : public FilterProceduralRule {
 	int fractalId; // Fractal Group ID to modify (MGRP)
 	float min;
 	float max; // Scale/Stepping?
@@ -23,7 +23,7 @@ class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule
 	MapFractal* mfrc;
 
 public:
-	FilterFractal() : FilterProceduralRule(1), fractalId(0), min(0), max(0), var6(0), mfrc(NULL) {
+	FilterFractal() : FilterProceduralRule(1, 'FFRA'), fractalId(0), min(0), max(0), var6(0), mfrc(NULL) {
 		filterType = HEIGHTTYPE;
 	}
 
@@ -31,10 +31,6 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>);
 
 	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect);
-
-	bool isEnabled() {
-		return informationHeader.isEnabled();
-	}
 };
 
 #endif /* FILTERFRACTAL_H_ */

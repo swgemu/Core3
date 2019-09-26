@@ -11,14 +11,12 @@
 namespace server {
   namespace zone {
 
-	class ZoneSessionMap : public HashTable<uint64, Reference<ZoneClientSession*> >,
-			public HashTableIterator<uint64, Reference<ZoneClientSession*> > {
+	class ZoneSessionMap : public HashTable<uint64, Reference<ZoneClientSession*> > {
 
 		int maxConnections;
 
 	public:
-		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<ZoneClientSession*> >((int) (maxconn * 1.25f)),
-				HashTableIterator<uint64, Reference<ZoneClientSession*> >(this) {
+		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<ZoneClientSession*> >((int) (maxconn * 1.25f)) {
 			maxConnections = maxconn;
 		}
 

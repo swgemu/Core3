@@ -29,7 +29,7 @@ public:
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(player->getRootParent());
 
 		// If outside don't bother doing anything ...
-		if (building == NULL) {
+		if (building == nullptr) {
 			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_support"); // This location does not support active/inactive registration status.
 			return GENERALERROR;
 		}
@@ -83,12 +83,12 @@ public:
 	}
 
 	bool isInMedicalBuilding(CreatureObject* player, BuildingObject* building) const {
-		PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
+		const PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
 
-		if (pmc == NULL)
+		if (pmc == nullptr)
 			pmc = building->getPlanetMapCategory();
 
-		if (pmc == NULL)
+		if (pmc == nullptr)
 			return false;
 
 		String categoryName = pmc->getName();
@@ -96,9 +96,9 @@ public:
 			return true;
 
 		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
-			SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
+			const SharedBuildingObjectTemplate* buildingTemplate = cast<const SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
-			if (buildingTemplate != NULL && buildingTemplate->getSkillMod("private_medical_rating") > 0) {
+			if (buildingTemplate != nullptr && buildingTemplate->getSkillMod("private_medical_rating") > 0) {
 				return true;
 			}
 		}
@@ -107,12 +107,12 @@ public:
 	}
 
 	bool isInEntertainingBuilding(CreatureObject* player, BuildingObject* building) const {
-		PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
+		const PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
 
-		if (pmc == NULL)
+		if (pmc == nullptr)
 			pmc = building->getPlanetMapCategory();
 
-		if (pmc == NULL)
+		if (pmc == nullptr)
 			return false;
 
 		String categoryName = pmc->getName();
@@ -120,9 +120,9 @@ public:
 			return true;
 
 		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
-			SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
+			const SharedBuildingObjectTemplate* buildingTemplate = cast<const SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
-			if (buildingTemplate != NULL && buildingTemplate->getSkillMod("private_med_battle_fatigue") > 0) {
+			if (buildingTemplate != nullptr && buildingTemplate->getSkillMod("private_med_battle_fatigue") > 0) {
 				return true;
 			}
 		}

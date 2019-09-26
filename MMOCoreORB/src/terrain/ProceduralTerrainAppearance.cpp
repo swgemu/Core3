@@ -54,10 +54,10 @@ ProceduralTerrainAppearance::ProceduralTerrainAppearance() : Logger("ProceduralT
 
 ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 	delete terrainGenerator;
-	terrainGenerator = NULL;
+	terrainGenerator = nullptr;
 
 	delete terrainMaps;
-	terrainMaps = NULL;
+	terrainMaps = nullptr;
 
 	for (int i = customTerrain.size() - 1; i >= 0; --i) {
 		delete customTerrain.get(i);
@@ -189,7 +189,7 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 	ReadLocker locker(&guard);
 
 	for (int i = 0; i < waterBoundaries.size(); ++i) {
-		Boundary* boundary = waterBoundaries.get(i);
+		const Boundary* boundary = waterBoundaries.get(i);
 
 		if (boundary->containsPoint(x, y)) {
 			waterHeight = boundary->getLocalWaterTableHeight();
@@ -206,7 +206,7 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 }
 
 Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* rootParent) const {
-	Layer* returnLayer = NULL;
+	Layer* returnLayer = nullptr;
 
 	Vector<Boundary*>* boundaries = rootParent->getBoundaries();
 
@@ -224,7 +224,7 @@ Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* r
 
 		returnLayer = getLayerRecursive(x, y, layer);
 
-		if (returnLayer != NULL)
+		if (returnLayer != nullptr)
 			return returnLayer;
 	}
 
@@ -232,7 +232,7 @@ Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* r
 }
 
 Layer* ProceduralTerrainAppearance::getLayer(float x, float y) const {
-	Layer* returnLayer = NULL;
+	Layer* returnLayer = nullptr;
 
 	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
 
@@ -246,7 +246,7 @@ Layer* ProceduralTerrainAppearance::getLayer(float x, float y) const {
 
 		returnLayer = getLayerRecursive(x, y, layer);
 
-		if (returnLayer != NULL)
+		if (returnLayer != nullptr)
 			return returnLayer;
 		//Vector<TerrainRule*>* rules = layer->getRules();
 	}
@@ -254,7 +254,7 @@ Layer* ProceduralTerrainAppearance::getLayer(float x, float y) const {
 	return returnLayer;
 }
 
-float ProceduralTerrainAppearance::calculateFeathering(float value, int featheringType) const {
+float ProceduralTerrainAppearance::calculateFeathering(float value, int featheringType) {
 	/* 1: x^2
 	 * 2: sqrt(x)
 	 * 3: x^2 * (3 - 2x)
@@ -284,10 +284,10 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 	return result;
 }
 
-float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const {
-	Vector<Boundary*>* boundaries = layer->getBoundaries();
-	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
-	Vector<FilterProceduralRule*>* filters = layer->getFilters();
+float ProceduralTerrainAppearance::processTerrain(const Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const {
+	const Vector<Boundary*>* boundaries = layer->getBoundaries();
+	const Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
+	const Vector<FilterProceduralRule*>* filters = layer->getFilters();
 
 	float transformValue = 0;
 
@@ -297,7 +297,7 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 	rect.minX = FLT_MAX, rect.maxX = -FLT_MAX, rect.minY = FLT_MAX, rect.maxY = -FLT_MAX;
 
 	for (int i = 0; i < boundaries->size(); ++i) {
-		Boundary* boundary = boundaries->get(i);
+		const Boundary* boundary = boundaries->get(i);
 
 		if (!boundary->isEnabled()) {
 			continue;
@@ -375,11 +375,10 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 					affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
 			}
 
-
-			Vector<Layer*>* children = layer->getChildren();
+			const Vector<Layer*>* children = layer->getChildren();
 
 			for (int i = 0; i < children->size(); ++i) {
-				Layer* layer = children->get(i);
+				const Layer* layer = children->get(i);
 
 				if (layer->isEnabled()) {
 					processTerrain(layer, x, y, baseValue, affectorTransformValue * transformValue, affectorType);
@@ -431,15 +430,15 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) const {
 	float fullTraverse = 0;
 
 	int count = 0;
-	TerrainGenerator* terrain = terrainGenerator;
+	const TerrainGenerator* terrain = terrainGenerator;
 
 	do {
-		LayersGroup* layersGroup = terrain->getLayersGroup();
+		const LayersGroup* layersGroup = terrain->getLayersGroup();
 
-		Vector<Layer*>* layers = layersGroup->getLayers();
+		const Vector<Layer*>* layers = layersGroup->getLayers();
 
 		for (int i = 0; i < layers->size(); ++i) {
-			Layer* layer = layers->get(i);
+			const Layer* layer = layers->get(i);
 
 			if (layer->isEnabled())
 				transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::HEIGHTTYPE);
@@ -479,7 +478,7 @@ void ProceduralTerrainAppearance::setHeight(Layer* layer, float height) {
 
 		AffectorHeightConstant* heightAffector = dynamic_cast<AffectorHeightConstant*>(affector);
 
-		if (heightAffector != NULL && (heightAffector->getHeight() == 0) && (heightAffector->getOperationType() == 0)) {
+		if (heightAffector != nullptr && (heightAffector->getHeight() == 0) && (heightAffector->getOperationType() == 0)) {
 			heightAffector->setHeight(height);
 		}
 	}
@@ -504,7 +503,7 @@ TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::ut
 		error("could not deserialize terrain modification iff file");
 		error(e.getMessage());
 		delete terrain;
-		return NULL;
+		return nullptr;
 	}
 
 	Vector<Layer*>* layers = terrain->getLayersGroup()->getLayers();
@@ -526,7 +525,7 @@ TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::ut
 	TerrainGenerator* oldLayer = terrainModifications.put(objectid, terrain);
 	customTerrain.add(terrain);
 
-	if (oldLayer != NULL) {
+	if (oldLayer != nullptr) {
 		customTerrain.removeElement(oldLayer);
 		delete oldLayer;
 	}
@@ -539,8 +538,8 @@ TerrainGenerator* ProceduralTerrainAppearance::removeTerrainModification(uint64 
 
 	TerrainGenerator* layer = terrainModifications.remove(objectid);
 
-	if (layer == NULL)
-		return NULL;
+	if (layer == nullptr)
+		return nullptr;
 
 	customTerrain.removeElement(layer);
 

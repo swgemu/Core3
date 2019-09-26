@@ -154,7 +154,7 @@ ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
 	return dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
 }
 
-float TerrainManager::getUnCachedHeight(float x, float y) {
+float TerrainManager::getUnCachedHeight(float x, float y) const {
 	return terrainData->getHeight(x, y);
 }
 

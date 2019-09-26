@@ -72,7 +72,7 @@ void SharedTangibleObjectTemplate::parseFileData(IffStream* iffStream) {
 	for (int i = 0; i < variableCount; ++i) {
 		Chunk* chunk = iffStream->openChunk();
 
-		if (chunk == NULL)
+		if (chunk == nullptr)
 			continue;
 
 		if (chunk->getChunkID() == 'XXXX') {
@@ -261,7 +261,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, Chun
 		}*/
 	} else if (varName == "socketDestinations") {
 //		socketDestinations.parse(data);
-	} else if (varName == "structureFootprintFileName") {		
+	} else if (varName == "structureFootprintFileName") {
 		StringParam structureFootprintFileName;
 
 		if (structureFootprintFileName.parse(data))
@@ -336,10 +336,10 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 		return;
 
 	int i = 0;
-	
-	lua_pushnil(L);  
+
+	lua_pushnil(L);
 	while (lua_next(L, -2) != 0) {
-		// 'key' is at index -2 and 'value' at index -1 
+		// 'key' is at index -2 and 'value' at index -1
 		//printf("%s - %s\n",
 		//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
 
@@ -352,7 +352,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 			parseVariableData(varName, templateData);
 		} else
 			lua_pop(L, 1);
-		
+
 
 		++i;
 	}

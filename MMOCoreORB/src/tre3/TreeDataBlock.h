@@ -97,11 +97,11 @@ public:
 		uncompressedSize = value;
 	}
 
-	inline uint32 getCompressedSize() {
+	inline uint32 getCompressedSize() const {
 		return compressedSize;
 	}
 
-	inline uint32 getUncompressedSize() {
+	inline uint32 getUncompressedSize() const {
 		return uncompressedSize;
 	}
 };

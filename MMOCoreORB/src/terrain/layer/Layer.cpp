@@ -69,15 +69,15 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 	for (int i = 0; i < number; ++i) {
 		bool result = false;
 
-		IffTemplateVariable* rule = parseBoundary(iffStream);
+		auto boundary = parseBoundary(iffStream);
 
-		if (rule == NULL) {
-			rule = parseFilter(iffStream);
+		if (boundary == nullptr) {
+			auto filter = parseFilter(iffStream);
 
-			if (rule == NULL) {
-				rule = parseAffector(iffStream);
+			if (filter == nullptr) {
+				auto rule = parseAffector(iffStream);
 
-				if (rule == NULL) {
+				if (rule == nullptr) {
 					uint32 type = iffStream->getNextFormType();
 
 					if (type != 'LAYR') {
@@ -88,39 +88,32 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 						layer->readObject(iffStream);
 						children.add(layer);
 					}
+				} else {
+					AffectorProceduralRule* affector = dynamic_cast<AffectorProceduralRule*>(rule);
+
+					if (affector != nullptr) {
+						affectors.add(affector);
+
+						/*if (affector->isEnabled()) {
+
+						  if (affector->isHeightTypeAffector())
+						  heightAffectors.add(affector);
+						  else if (affector->is)
+						  }*/
+					}
 				}
 
-			}
-
-		}
-
-		if (rule != NULL) {
-			Boundary* boundary = dynamic_cast<Boundary*>(rule);
-			FilterProceduralRule* filter = dynamic_cast<FilterProceduralRule*>(rule);
-			AffectorProceduralRule* affector = dynamic_cast<AffectorProceduralRule*>(rule);
-
-			if (filter != NULL)
+			} else {
 				filters.add(filter);
-
-			if (boundary != NULL)
-				boundaries.add(boundary);
-
-			if (affector != NULL) {
-				affectors.add(affector);
-
-				/*if (affector->isEnabled()) {
-
-					if (affector->isHeightTypeAffector())
-						heightAffectors.add(affector);
-					else if (affector->is)
-				}*/
 			}
+		} else {
+			boundaries.add(boundary);
 		}
 	}
 }
 
 IffTemplateVariable* Layer::parseAffector(IffStream* iffStream) {
-	IffTemplateVariable* res = NULL;
+	IffTemplateVariable* res = nullptr;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {
@@ -216,18 +209,18 @@ IffTemplateVariable* Layer::parseAffector(IffStream* iffStream) {
 		break;
 	}
 	default:
-		res = NULL;
+		res = nullptr;
 		break;
 	}
 
-	if (res != NULL)
+	if (res != nullptr)
 		res->readObject(iffStream);
 
 	return res;
 }
 
-IffTemplateVariable* Layer::parseBoundary(IffStream* iffStream) {
-	IffTemplateVariable* res = NULL;
+Boundary* Layer::parseBoundary(IffStream* iffStream) {
+	Boundary* res = nullptr;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {
@@ -254,18 +247,18 @@ IffTemplateVariable* Layer::parseBoundary(IffStream* iffStream) {
 		iffStream->skipChunks();
 		break;
 	default:
-		res = NULL;
+		res = nullptr;
 		break;
 	}
 
-	if (res != NULL)
+	if (res != nullptr)
 		res->readObject(iffStream);
 
 	return res;
 }
 
-IffTemplateVariable* Layer::parseFilter(IffStream* iffStream) {
-	IffTemplateVariable* res = NULL;
+FilterProceduralRule* Layer::parseFilter(IffStream* iffStream) {
+	FilterProceduralRule* res = nullptr;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {
@@ -294,11 +287,11 @@ IffTemplateVariable* Layer::parseFilter(IffStream* iffStream) {
 		break;
 	}
 	default:
-		res = NULL;
+		res = nullptr;
 		break;
 	}
 
-	if (res != NULL)
+	if (res != nullptr)
 		res->readObject(iffStream);
 
 	return res;

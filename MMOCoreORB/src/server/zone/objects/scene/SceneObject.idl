@@ -2006,7 +2006,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	public void setPlanetMapCategory(PlanetMapCategory pmc) {
+	public void setPlanetMapCategory(final PlanetMapCategory pmc) {
 		if (pmc == null)
 			planetMapCategory = 0;
 		else
@@ -2014,20 +2014,20 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	public void setPlanetMapSubCategory(PlanetMapCategory pmc)  {
+	public void setPlanetMapSubCategory(final PlanetMapCategory pmc)  {
 		planetMapSubCategory = pmc.getCrc();
 	}
 
 	@local
 	@read
-	public PlanetMapCategory getPlanetMapCategory() {
+	public final PlanetMapCategory getPlanetMapCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
 	}
 
 	@local
 	@read
-	public PlanetMapCategory getPlanetMapSubCategory() {
+	public final PlanetMapCategory getPlanetMapSubCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
 	}

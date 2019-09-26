@@ -29,18 +29,17 @@ public:
 	}
 
 	virtual void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
-
 	}
 
-	inline bool isHeightTypeAffector() {
+	inline bool isHeightTypeAffector() const {
 		return affectorType & HEIGHTTYPE;
 	}
 
-	inline bool isEnvoronmentTypeAffector() {
+	inline bool isEnvoronmentTypeAffector() const {
 		return affectorType & ENVIRONMENT;
 	}
 
-	inline int getAffectorType() {
+	inline int getAffectorType() const {
 		return affectorType;
 	}
 
