@@ -45,11 +45,15 @@ public:
 		iffStream->closeChunk('DATA');
 	}
 
-	inline bool isEnabled() {
+	inline bool isEnabled() const {
 		return var1 != 0;
 	}
 
 	inline String& getDescription() {
+		return description;
+	}
+
+	inline const String& getDescription() const {
 		return description;
 	}
 };

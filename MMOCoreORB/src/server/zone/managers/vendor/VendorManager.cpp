@@ -20,8 +20,8 @@
 
 VendorManager::VendorManager() {
 	setLoggingName("VendorManager");
-	server = NULL;
-	nameManager = NULL;
+	server = nullptr;
+	nameManager = nullptr;
 }
 
 void VendorManager::initialize(ZoneProcessServer* zserv) {
@@ -48,16 +48,16 @@ void VendorManager::loadLuaVendors() {
 	menu.pop();
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 bool VendorManager::isValidVendorName(const String& name) {
 
-	if(nameManager == NULL)
+	if(nameManager == nullptr)
 		nameManager = server->getNameManager();
 
-	if(nameManager == NULL) {
-		error("Name manager is NULL");
+	if(nameManager == nullptr) {
+		error("Name manager is nullptr");
 		return false;
 	}
 
@@ -66,19 +66,19 @@ bool VendorManager::isValidVendorName(const String& name) {
 
 void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* vendor) {
 
-	if(vendor->getZone() == NULL) {
-		error("NULL zone in VendorManager::handleDisplayStatus");
+	if(vendor->getZone() == nullptr) {
+		error("nullptr zone in VendorManager::handleDisplayStatus");
 		return;
 	}
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}
@@ -91,8 +91,8 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	ManagedReference<CreatureObject*> owner = server->getZoneServer()->getObject(vendorData->getOwnerId()).castTo<CreatureObject*>();
 	String ownerName;
 
-	if (owner == NULL)
-		ownerName = "NULL";
+	if (owner == nullptr)
+		ownerName = "nullptr";
 	else
 		ownerName = owner->getFirstName();
 
@@ -112,12 +112,12 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	statusBox->addMenuItem("Maintenance Rate: " + String::valueOf((int)vendorData->getMaintenanceRate()) + " cr/hr");
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
-	if(auctionManager == NULL) {
+	if(auctionManager == nullptr) {
 		error("null auction manager");
 		return;
 	}
 	ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
-	if(auctionsMap == NULL) {
+	if(auctionsMap == nullptr) {
 		error("null auctionsMap");
 		return;
 	}
@@ -127,7 +127,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 
 
 	ManagedReference<CityRegion*> regionObject = vendor->getCityRegion().get();
-	if(regionObject != NULL)
+	if(regionObject != nullptr)
 		region = regionObject->getRegionName();
 
 	TerminalListVector vendorList = auctionsMap->getVendorTerminalData(planet, region, vendor);
@@ -137,12 +137,12 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	if(vendorList.size() > 0) {
 
 		Reference<TerminalItemList*> list = vendorList.get(0);
-		if (list != NULL) {
+		if (list != nullptr) {
 			ReadLocker rlocker(list);
 
 			for (int j = 0; j < list->size(); ++j) {
 				ManagedReference<AuctionItem*> item = list->get(j);
-				if (item == NULL)
+				if (item == nullptr)
 					continue;
 
 				int itemSize = item->getSize();
@@ -205,13 +205,13 @@ String VendorManager::getTimeString(uint32 timestamp) {
 void VendorManager::promptDestroyVendor(CreatureObject* player, TangibleObject* vendor) {
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}
@@ -246,30 +246,30 @@ void VendorManager::promptRenameVendorTo(CreatureObject* player, TangibleObject*
 
 void VendorManager::destroyVendor(TangibleObject* vendor) {
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if (data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if (data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if (vendorData == NULL) {
+	if (vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
-	if (auctionManager == NULL) {
+	if (auctionManager == nullptr) {
 		error("null auctionManager when deleting vendor");
 		return;
 	}
 
 	ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
-	if (auctionsMap == NULL) {
+	if (auctionsMap == nullptr) {
 		error("null auctionsMap");
 		return;
 	}
 
-	if (vendorData->isRegistered() && vendor->getZone() != NULL) {
+	if (vendorData->isRegistered() && vendor->getZone() != nullptr) {
 		vendor->getZone()->unregisterObjectWithPlanetaryMap(vendor);
 	}
 
@@ -317,17 +317,17 @@ void VendorManager::handleRegisterVendorCallback(CreatureObject* player, Tangibl
 
 	Zone* zone = vendor->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}
@@ -337,10 +337,10 @@ void VendorManager::handleRegisterVendorCallback(CreatureObject* player, Tangibl
 		return;
 	}
 
-	Reference<PlanetMapCategory*> planetMapCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor");
-	Reference<PlanetMapCategory*> planetMapSubCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor_" + planetMapCategoryName);
+	Reference<const PlanetMapCategory*> planetMapCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor");
+	Reference<const PlanetMapCategory*> planetMapSubCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor_" + planetMapCategoryName);
 
-	if (planetMapCategory == NULL || planetMapSubCategory == NULL)
+	if (planetMapCategory == nullptr || planetMapSubCategory == nullptr)
 		return;
 
 	Locker locker(vendor);
@@ -356,22 +356,22 @@ void VendorManager::handleRegisterVendorCallback(CreatureObject* player, Tangibl
 }
 
 void VendorManager::handleUnregisterVendor(CreatureObject* player, TangibleObject* vendor) {
-	if (vendor == NULL)
+	if (vendor == nullptr)
 		return;
 
 	Zone* zone = vendor->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}
@@ -386,12 +386,12 @@ void VendorManager::handleUnregisterVendor(CreatureObject* player, TangibleObjec
 }
 
 void VendorManager::handleRenameVendor(CreatureObject* player, TangibleObject* vendor, String& name) {
-	if (vendor == NULL)
+	if (vendor == nullptr)
 		return;
 
 	Zone* zone = vendor->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	if (!isValidVendorName(name)) {
@@ -402,13 +402,13 @@ void VendorManager::handleRenameVendor(CreatureObject* player, TangibleObject* v
 
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		error("Vendor has wrong data component");
 		return;
 	}

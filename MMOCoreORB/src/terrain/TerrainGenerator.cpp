@@ -16,8 +16,8 @@ void TerrainGenerator::processLayers() {
 	}
 }
 
-bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, float& radius) {
-	Vector<Layer*>* layerVector = layers.getLayers();
+bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, float& radius) const {
+	const Vector<Layer*>* layerVector = layers.getLayers();
 
 	float minX = FLT_MAX;
 	float minY = minX;
@@ -26,7 +26,7 @@ bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, flo
 	float maxY = maxX;
 
 	for (int i = 0; i < layerVector->size(); ++i) {
-		Layer* layer = layerVector->get(i);
+		const Layer* layer = layerVector->get(i);
 
 		if (layer->isEnabled()) {
 			getFullBoundaryCircle(layer, minX, minY, maxX, maxY);
@@ -51,8 +51,8 @@ bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, flo
 	return true;
 }
 
-void TerrainGenerator::getFullBoundaryCircle(Layer* layer, float& minX, float& minY, float& maxX, float& maxY) {
-	Vector<Boundary*>* boundaries = layer->getBoundaries();
+void TerrainGenerator::getFullBoundaryCircle(const Layer* layer, float& minX, float& minY, float& maxX, float& maxY) const {
+	const Vector<Boundary*>* boundaries = layer->getBoundaries();
 
 	for (int i = 0; i < boundaries->size(); ++i) {
 		Boundary* boundary = boundaries->get(i);
@@ -79,7 +79,7 @@ void TerrainGenerator::getFullBoundaryCircle(Layer* layer, float& minX, float& m
 			maxY = boundaryMaxY;
 	}
 
-	Vector<Layer*>* childrenLayers = layer->getChildren();
+	const Vector<Layer*>* childrenLayers = layer->getChildren();
 
 	for (int i = 0; i < childrenLayers->size(); ++i) {
 		Layer* child = childrenLayers->get(i);

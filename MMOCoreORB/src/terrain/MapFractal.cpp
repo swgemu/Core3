@@ -366,8 +366,5 @@ void MapFractal::setSeed(int seed) {
 	rand->setSeed(seed);
 
 	noise = new PerlinNoise(rand);
-	double coord[2];
-	coord[0] = 0, coord[1] = 0;
-
-	noise->noise2(coord); //initialize
+	noise->init();
 }

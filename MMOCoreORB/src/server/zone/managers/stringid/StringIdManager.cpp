@@ -16,7 +16,7 @@ void StringIdManager::populateDatabase() {
 	int count = 0;
 
 	TemplateManager::instance();
-	TreeArchive* treeArchive = DataArchiveStore::instance()->getTreeArchive();
+	const TreeArchive* treeArchive = DataArchiveStore::instance()->getTreeArchive();
 
 	Vector<String>* files = treeArchive->getFilesAndSubDirectoryFiles("string/en");
 

@@ -54,7 +54,7 @@ public:
 		}
 	}
 
-	TreeDirectory* getTreeDirectory(const String& path) {
+	const TreeDirectory* getTreeDirectory(const String& path) const {
 		return nodeMap.get(path);
 	}
 
@@ -62,7 +62,7 @@ public:
 	 * Gets a byte buffer from the specified path.
 	 * Don't forget to delete the pointer when finished.
 	 */
-	byte* getBytes(const String& recordPath, int& size) {
+	byte* getBytes(const String& recordPath, int& size) const {
 		int pos = recordPath.lastIndexOf("/");
 
 		//Only folders are allowed at the root level of TRE directories.
@@ -72,7 +72,7 @@ public:
 		String dir = recordPath.subString(0, pos);
 		String fileName = recordPath.subString(pos + 1, recordPath.length());
 
-		TreeDirectory* treeDir = nodeMap.get(dir).get();
+		const TreeDirectory* treeDir = nodeMap.get(dir).get();
 
 		size = 0;
 
@@ -92,28 +92,28 @@ public:
 		return record->getBytes();
 	}
 
-	TreeDirectory* getDirectory(const String& path) {
+	const TreeDirectory* getDirectory(const String& path) const {
 		return nodeMap.get(path);
 	}
 
-	Vector<String>* getFilesAndSubDirectoryFiles(const String& directory) {
+	Vector<String>* getFilesAndSubDirectoryFiles(const String& directory) const {
 		HashTableIterator<String, Reference<TreeDirectory*> > iterator = nodeMap.iterator();
 		Vector<String>* files = nullptr;
 
 		while (iterator.hasNext()) {
 			//String directoryName = iterator.getNextKey();
-			String directoryName;
-			Reference<TreeDirectory*> directoryEntry;
+			String* directoryName;
+			Reference<TreeDirectory*>* directoryEntry;
 			iterator.getNextKeyAndValue(directoryName, directoryEntry);
 
-			if (directoryName.contains(directory)) {
+			if (directoryName->contains(directory)) {
 				if (files == nullptr)
 					files = new Vector<String>();
 
-				for (int i = 0; i < directoryEntry->size(); ++i) {
-					TreeFileRecord* fileRecord = directoryEntry->get(i);
+				for (int i = 0; i < directoryEntry->get()->size(); ++i) {
+					const TreeFileRecord* fileRecord = directoryEntry->get()->get(i);
 
-					files->add(directoryName + "/" + fileRecord->getRecordName());
+					files->add(*directoryName + "/" + fileRecord->getRecordName());
 				}
 			}
 		}

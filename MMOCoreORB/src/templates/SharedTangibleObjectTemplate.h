@@ -21,7 +21,7 @@ protected:
 
 	SocketDestinations socketDestinations;*/
 
-	Reference<StructureFootprint*> structureFootprint;
+	Reference<const StructureFootprint*> structureFootprint;
 
 	BoolParam targetable;
 
@@ -132,7 +132,7 @@ public:
 		return junkValue;
 	}
 
-	inline StructureFootprint* getStructureFootprint() const {
+	inline const StructureFootprint* getStructureFootprint() const {
 		return structureFootprint;
 	}
 

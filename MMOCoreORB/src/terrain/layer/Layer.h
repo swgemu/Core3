@@ -38,7 +38,7 @@ class Layer : public TemplateVariable<'LAYR'> {
 	int filterFlag;
 
 public:
-	Layer(Layer* par = NULL) {
+	Layer(Layer* par = nullptr) {
 		parent = par;
 		boundariesFlag = 0;
 		filterFlag = 0;
@@ -50,8 +50,8 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>);
 
 	IffTemplateVariable* parseAffector(IffStream* iffStream);
-	IffTemplateVariable* parseBoundary(IffStream* iffStream);
-	IffTemplateVariable* parseFilter(IffStream* iffStream);
+	Boundary* parseBoundary(IffStream* iffStream);
+	FilterProceduralRule* parseFilter(IffStream* iffStream);
 
 	Vector<Layer*>* getChildren() {
 		return &children;
@@ -65,11 +65,23 @@ public:
 		return &affectors;
 	}
 
-	/*Vector<AffectorProceduralRule*>* getHeightAffectors() {
-		return &heightAffectors;
-	}*/
-
 	Vector<FilterProceduralRule*>* getFilters() {
+		return &filters;
+	}
+
+	const Vector<Layer*>* getChildren() const {
+		return &children;
+	}
+
+	const Vector<Boundary*>* getBoundaries() const {
+		return &boundaries;
+	}
+
+	const Vector<AffectorProceduralRule*>* getAffectors() const {
+		return &affectors;
+	}
+
+	const Vector<FilterProceduralRule*>* getFilters() const {
 		return &filters;
 	}
 
@@ -77,19 +89,23 @@ public:
 		return parent;
 	}
 
-	inline bool invertBoundaries() {
+	inline const Layer* getParent() const {
+		return parent;
+	}
+
+	inline bool invertBoundaries() const {
 		return boundariesFlag != 0;
 	}
 
-	inline bool invertFilters() {
+	inline bool invertFilters() const {
 		return filterFlag != 0;
 	}
 
-	inline bool isEnabled() {
+	inline bool isEnabled() const {
 		return infoHeader.isEnabled();
 	}
 
-	inline String& getDescription() {
+	inline const String& getDescription() const {
 		return infoHeader.getDescription();
 	}
 };

@@ -10,7 +10,7 @@
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
 
-SharedObjectTemplate::SharedObjectTemplate() {
+SharedObjectTemplate::SharedObjectTemplate() : Logger("SharedObjectTemplate") {
 	portalLayout = NULL;
 	appearanceTemplate = NULL;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
@@ -323,7 +323,7 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 		delete dervStream;
 	} else {
-		Logger::console.warning("could not open derv: " + file);
+		warning() << "could not open derv: " << file;
 	}
 
 	// now server lua
@@ -341,7 +341,7 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 		delete luaObject;
 	} else {
-		Logger::console.warning("could not open lua derv: " + serverTemplate);
+		warning() << "could not open lua derv: " << serverTemplate;
 	}
 
 	stream->closeChunk();
@@ -356,14 +356,14 @@ String SharedObjectTemplate::getType(int type) {
 	memcpy(chars, &reversed, 4);
 	chars[4] = 0;
 
-	return String(chars);
+	return String(chars, 4);
 }
 
 void SharedObjectTemplate::readObject(IffStream* iffStream) {
 	uint32 nextType = iffStream->getNextFormType();
 
 	if (nextType != 'SHOT') {
-		Logger::console.warning("expecting SHOT got " + getType(nextType) + " in file: " + iffStream->getFileName());
+		warning() << "expecting SHOT got " << getType(nextType) << " in file: " << iffStream->getFileName();
 
 		iffStream->openForm(nextType);
 		iffStream->closeForm(nextType);
@@ -389,7 +389,7 @@ void SharedObjectTemplate::readObject(IffStream* iffStream) {
 		msg += "exception caught parsing file data ->";
 		msg += e.getMessage();
 
-		Logger::console.error(msg);
+		error(msg);
 	}
 
 	iffStream->closeForm(derv);

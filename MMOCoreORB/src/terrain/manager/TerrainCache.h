@@ -8,17 +8,19 @@
 #ifndef SRC_SERVER_ZONE_MANAGERS_TERRAIN_TERRAINCACHE_H_
 #define SRC_SERVER_ZONE_MANAGERS_TERRAIN_TERRAINCACHE_H_
 
-#include <utility>      // std::pair
 #include "engine/engine.h"
 #include "engine/util/lru/SynchronizedLRUCache.h"
 #include "engine/util/u3d/BasicQuadTree.h"
 
+#include "system/lang/Pair.h"
+
 class TerrainManager;
 class TerrainGenerator;
 
-class TerrainCache : public SynchronizedLRUCache2<uint64, float, float, std::pair<QuadTreeEntryInterface*, float> >, public Logger {
+class TerrainCache : public SynchronizedLRUCache2<uint64, float, float,
+	Pair<QuadTreeEntryInterface*, float> >, public Logger {
 public:
-	typedef std::pair<QuadTreeEntryInterface*, float> lru_value_t;
+	typedef Pair<QuadTreeEntryInterface*, float> lru_value_t;
 	typedef SynchronizedLRUCache2<uint64, float, float, lru_value_t > lru_cache_t;
 
 protected:
@@ -36,9 +38,9 @@ public:
 	~TerrainCache();
 
 private:
-	bool insert(const float& k, const float& k2, const lru_value_t& v);
+	bool insert(const float& k, const float& k2, const lru_value_t& v) override;
 
-	lru_value_t evict();
+	lru_value_t evict() override;
 
 public:
 	void clear(TerrainGenerator* layers);

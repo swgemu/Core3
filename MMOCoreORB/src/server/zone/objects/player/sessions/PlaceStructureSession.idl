@@ -58,7 +58,7 @@ class PlaceStructureSession extends Facade {
 	}
 
 	@local
-	public native void placeTemporaryNoBuildZone(SharedStructureObjectTemplate serverTemplate);
+	public native void placeTemporaryNoBuildZone(final SharedStructureObjectTemplate serverTemplate);
 	public native void removeTemporaryNoBuildZone();
 
 	public native int constructStructure(float x, float y, int angle);

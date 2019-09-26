@@ -5,8 +5,9 @@
  *      Author: crush
  */
 
-#ifndef SLOTID_H_
-#define SLOTID_H_
+#pragma once
+
+#include "system/lang/Object.h"
 
 class SlotId : public Object {
 	String slotName;
@@ -64,7 +65,7 @@ public:
 		unk6 = chunk->readByte();
 	}
 
-	void writeHtmlTableRow(StringBuffer& str) {
+	void writeHtmlTableRow(StringBuffer& str) const {
 		str << "<tr>";
 		str << "<td>" << slotName << "</td>";
 		str << "<td>" << unk1 << "</td>";
@@ -77,9 +78,8 @@ public:
 		str << "</tr>";
 	}
 
-	inline String& getSlotName() {
+	inline const String& getSlotName() const {
 		return slotName;
 	}
 };
 
-#endif /* SLOTID_H_ */

@@ -196,7 +196,7 @@ void ServerCore::registerConsoleCommmands() {
 		try {
 			crc = UnsignedInteger::valueOf(arguments);
 		} catch (const Exception& e) {
-			System::out << "invoalid crc number expected dec";
+			System::out << "invalid crc number expected dec";
 
 			return ERROR;
 		}
@@ -656,9 +656,9 @@ void ServerCore::initialize() {
 			handleCmds = false;
 		}
 
-	} catch (ServiceException& e) {
+	} catch (const ServiceException& e) {
 		shutdown();
-	} catch (DatabaseException& e) {
+	} catch (const DatabaseException& e) {
 		fatal(e.getMessage());
 	}
 }

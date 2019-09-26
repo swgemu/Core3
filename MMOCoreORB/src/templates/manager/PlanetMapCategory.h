@@ -11,7 +11,6 @@
 #include "templates/datatables/DataTableRow.h"
 
 class PlanetMapCategory : public Object {
-
 	String name;
 	int nameCRC;
 	int index;
@@ -83,35 +82,35 @@ public:
 
 	}
 
-	inline String& getName() {
+	inline const String& getName() const {
 		return name;
 	}
 
-	inline int getCrc() {
+	inline int getCrc() const {
 		return nameCRC;
 	}
 
-	inline int getIndex() {
+	inline int getIndex() const {
 		return index;
 	}
 
-	inline bool isCategory() {
+	inline bool isCategory() const {
 		return category;
 	}
 
-	inline bool isSubCategory() {
+	inline bool isSubCategory() const {
 		return subCategory;
 	}
 
-	inline bool canBeActive() {
+	inline bool canBeActive() const {
 		return activatable;
 	}
 
-	inline String& getFaction() {
+	inline const String& getFaction() const {
 		return faction;
 	}
 
-	inline bool isFactionVisibleOnly() {
+	inline bool isFactionVisibleOnly() const {
 		return factionVisibleOnly;
 	}
 

@@ -5,45 +5,56 @@
  *      Author: victor
  */
 
-#ifndef BOUNDARY_H_
-#define BOUNDARY_H_
+#pragma once
 
 class ProceduralTerrainAppearance;
 
+#include "../ProceduralRule.h"
+
 class Boundary {
 protected:
-	int featheringType;
-	float featheringAmount;
+	InformationHeader informationHeader;
+
+	int featheringType = 0;
+	float featheringAmount = 0;
+
+	const uint32 formType;
 
 public:
+	Boundary(uint32 formType) : formType(formType) {
+	}
+
 	virtual ~Boundary() {
-		featheringType = 0;
 	}
 
 	virtual void executeRule(ProceduralTerrainAppearance* generator) {
 
 	}
 
-	virtual bool containsPoint(float x, float y) {
-		return false;
+	void readObject(engine::util::IffStream* iffStream) {
+		if (iffStream->openForm(formType) == nullptr)
+			throw Exception("Incorrect form type " + String::valueOf(formType));
+
+		parseFromIffStream(iffStream);
+
+		iffStream->closeForm(formType);
 	}
 
-	virtual float checkInfluence(float x, float y) = 0;
+	virtual void parseFromIffStream(engine::util::IffStream* iffStream) = 0;
+
+
+	virtual bool containsPoint(float x, float y) const = 0;
+
+	virtual float checkInfluence(float x, float y) const = 0;
 
 	virtual float getLocalWaterTableHeight() const {
 		return -16000;
 	}
 
-	virtual float process(float x, float y) {
-		return 0;
-	}
+	virtual float process(float x, float y) const = 0;
 
-	inline int getFeatheringType() {
+	inline int getFeatheringType() const {
 		return featheringType;
-	}
-
-	virtual bool isEnabled() {
-		return false;
 	}
 
 	virtual float getMinX() const = 0;
@@ -52,7 +63,9 @@ public:
 	virtual float getMaxY() const = 0;
 
 	virtual void translateBoundary(float x, float y) = 0;
+
+	inline bool isEnabled() const {
+		return informationHeader.isEnabled();
+	}
 };
 
-
-#endif /* BOUNDARY_H_ */

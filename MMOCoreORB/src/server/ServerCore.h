@@ -54,7 +54,7 @@ class ServerCore : public Core, public Logger {
 	ServerDatabase* database;
 	MantisDatabase* mantisDatabase;
 	DistributedObjectBroker* orb;
-	ManagedReference<server::login::LoginServer*> loginServer;
+	Reference<server::login::LoginServer*> loginServer;
 	Reference<StatusServer*> statusServer;
 	server::features::Features* features;
 	Reference<PingServer*> pingServer;

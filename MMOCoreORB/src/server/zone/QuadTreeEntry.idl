@@ -9,7 +9,6 @@ include system.lang.ref.Reference;
 include system.lang.Math;
 include system.util.SortedVector;
 
-include engine.stm.TransactionalReference;
 include server.zone.CloseObjectsVector;
 
 import engine.core.ManagedObject;
@@ -25,7 +24,6 @@ class QuadTreeEntry extends Observable {
 	@dereferenced
 	protected Coordinate coordinates;
 
-	@transactional
 	transient protected QuadTreeNode node;
 
 	protected boolean bounding;
@@ -258,10 +256,10 @@ class QuadTreeEntry extends Observable {
 		return closeobjects.size();
 	}*/
 
-	@local
-	@dereferenced
+	@reference
 	@read
-	public TransactionalReference<QuadTreeNode> getNode() {
+	@local
+	public QuadTreeNode getNode() {
 		return node;
 	}
 

@@ -792,7 +792,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_IMPERIAL", CloningBuildingObjectTemplate::FACTION_IMPERIAL);
 }
 
-String TemplateManager::getTemplateFile(uint32 key) {
+String TemplateManager::getTemplateFile(uint32 key) const {
 	SharedObjectTemplate* templateData = templateCRCMap->get(key);
 
 	if (templateData == nullptr) {
@@ -993,11 +993,11 @@ InteriorLayoutTemplate* TemplateManager::getInteriorLayout(const String& fileNam
 	return interior;
 }
 
-SharedObjectTemplate* TemplateManager::getTemplate(uint32 key) {
+SharedObjectTemplate* TemplateManager::getTemplate(uint32 key) const {
 	return templateCRCMap->get(key);
 }
 
-bool TemplateManager::existsTemplate(uint32 key) {
+bool TemplateManager::existsTemplate(uint32 key) const {
 	return templateCRCMap->containsKey(key);
 }
 
@@ -1085,7 +1085,7 @@ void TemplateManager::addClientTemplate(uint32 crc, const String& name) {
 	clientTemplateCRCMap->put(crc, name);
 }
 
-StructureFootprint* TemplateManager::loadStructureFootprint(const String& filePath) {
+const StructureFootprint* TemplateManager::loadStructureFootprint(const String& filePath) {
 	if (filePath.isEmpty())
 		return nullptr;
 

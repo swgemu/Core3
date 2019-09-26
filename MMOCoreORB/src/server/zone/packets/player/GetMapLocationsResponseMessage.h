@@ -11,15 +11,13 @@
 
 class GetMapLocationsResponseMessage : public BaseMessage {
 public:
-	GetMapLocationsResponseMessage(const String& planet, MapLocationTable* mapLocations, CreatureObject* player) : BaseMessage() {
+	GetMapLocationsResponseMessage(const String& planet, const MapLocationTable* mapLocations, CreatureObject* player) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x9F80464C);  //GetMapLocationsResponseMessage
 
 		insertAscii(planet);
 
-#ifndef WITH_STM
-		mapLocations->rlock();
-#endif
+		ReadLocker guard(mapLocations);
 
 		insertInt(0);
 
@@ -27,7 +25,7 @@ public:
 
 		try {
 			for (int i = 0; i < mapLocations->size(); ++i) {
-				SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
+				const SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
 
 				for (int j = 0; j < sortedVector.size(); ++j) {
 					if (sortedVector.elementAt(j).insertToMessage(this, player))
@@ -40,9 +38,7 @@ public:
 			e.printStackTrace();
 		}
 
-#ifndef WITH_STM
-		mapLocations->runlock();
-#endif
+		guard.release();
 
 		insertInt(12 + planet.length(), totalEntries);
 
