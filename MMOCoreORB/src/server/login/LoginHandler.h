@@ -14,13 +14,11 @@
 namespace server {
   namespace login {
 
-	class LoginSessionMap : private HashTable<uint64, Reference<LoginClient*> >,
-			public HashTableIterator<uint64, Reference<LoginClient*> > {
-
+	class LoginSessionMap : private HashTable<uint64, Reference<LoginClient*> > {
 		int maxConnections;
+
 	public:
-		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<LoginClient*> >((int) (maxconn * 1.25f)),
-				HashTableIterator<uint64, Reference<LoginClient*> >(this) {
+		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<LoginClient*> >((int) (maxconn * 1.25f)) {
 			maxConnections = maxconn;
 		}
 

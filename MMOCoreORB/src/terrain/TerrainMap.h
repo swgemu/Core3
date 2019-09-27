@@ -39,7 +39,7 @@ public:
 		iffStream->closeChunk(chunkType);
 	}
 
-	byte* getMap() {
+	const byte* getMap() const {
 		return rawMap;
 	}
 };

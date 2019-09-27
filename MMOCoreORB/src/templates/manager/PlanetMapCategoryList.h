@@ -8,35 +8,36 @@
 #ifndef PLANETMAPCATEGORYLIST_H_
 #define PLANETMAPCATEGORYLIST_H_
 
+#include "engine/engine.h"
+
+#include "system/util/HashTable.h"
+
 class PlanetMapCategory;
 
-class PlanetMapCategoryList : public HashTable<int, Reference<PlanetMapCategory*> >, public HashTableIterator<int, Reference<PlanetMapCategory*> > {
-	int hash(const int& key) const {
-		return Integer::hashCode(key);
+class PlanetMapCategoryList : public HashTable<int, Reference<PlanetMapCategory*> > {
+	int hash(const int& key) const override {
+		return key; //this is the string crc so no need to rehash
 	}
 
-	int hash(const String& key) {
+	int hash(const String& key) const {
 		return key.hashCode();
 	}
 
 public:
-	PlanetMapCategoryList() :
-			HashTable<int, Reference<PlanetMapCategory*> >(256),
-			HashTableIterator<int, Reference<PlanetMapCategory*> >(this) {
-
-		setNullValue(NULL);
+	PlanetMapCategoryList() : HashTable<int, Reference<PlanetMapCategory*> >(256) {
+		setNullValue(nullptr);
 	}
 
-	bool containsKey(const String& key) {
+	bool containsKey(const String& key) const {
 		return HashTable<int, Reference<PlanetMapCategory*> >::containsKey(key.hashCode());
 	}
 
-	Reference<PlanetMapCategory*>& get(const String& key) {
+	const Reference<PlanetMapCategory*>& get(const String& key) const {
 		return HashTable<int, Reference<PlanetMapCategory*> >::get(key.hashCode());
 	}
 
-	Reference<PlanetMapCategory*>& get(const int& key) {
-		return HashTable<int, Reference<PlanetMapCategory*> >::get(Integer::hashCode(key));
+	const Reference<PlanetMapCategory*>& get(const int& key) const {
+		return HashTable<int, Reference<PlanetMapCategory*> >::get(key);
 	}
 
 	Reference<PlanetMapCategory*> put(const String& key, const Reference<PlanetMapCategory*>& value) {

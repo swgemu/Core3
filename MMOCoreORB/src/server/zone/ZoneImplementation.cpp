@@ -123,7 +123,7 @@ void ZoneImplementation::clearZone() {
 
 	zonelocker.release();
 
-	HashTableIterator<uint64, ManagedReference<SceneObject*> > iterator = tbl.iterator();
+	auto iterator = tbl.iterator();
 
 	while (iterator.hasNext()) {
 		ManagedReference<SceneObject*> sceno = iterator.getNextValue();
@@ -719,7 +719,7 @@ bool ZoneImplementation::objectIsValidPlanetaryMapPerformanceLocation(SceneObjec
 
 	bool hasPerformanceLocationCategory = false;
 
-	PlanetMapCategory* planetMapCategory = object->getPlanetMapCategory();
+	const PlanetMapCategory* planetMapCategory = object->getPlanetMapCategory();
 	if (planetMapCategory != nullptr) {
 		String category = planetMapCategory->getName();
 		if (category == "cantina" || category == "hotel") {
@@ -782,7 +782,7 @@ Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObjec
 	ReadLocker rlocker(mapLocations);
 #endif
 
-	SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapObjectLocationType);
+	const SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapObjectLocationType);
 
 	float distance = 16000.f;
 
@@ -808,7 +808,7 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	ReadLocker rlocker(mapLocations);
 #endif
 
-	SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
+	const SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
 
 	for (int i = 0; i < entryVector.size(); ++i) {
 		const MapLocationEntry& entry = entryVector.getUnsafe(i);

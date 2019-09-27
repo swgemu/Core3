@@ -108,7 +108,7 @@ void PlanetManagerImplementation::initialize() {
 }
 
 void PlanetManagerImplementation::start() {
-	if (gcwManager != NULL)
+	if (gcwManager != nullptr)
 		gcwManager->start();
 }
 
@@ -200,7 +200,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	rLock.release();
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
@@ -223,7 +223,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
 
-		if (obj != NULL) {
+		if (obj != nullptr) {
 			Locker objLocker(obj);
 
 			float x = planetObject.getFloatField("x");
@@ -246,7 +246,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 			ManagedReference<SceneObject*> parent = zone->getZoneServer()->getObject(parentID);
 
-			if (parent != NULL)
+			if (parent != nullptr)
 				parent->transferObject(obj, -1, true);
 			else
 				zone->transferObject(obj, -1, true);
@@ -322,7 +322,7 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	ObjectDatabase* navAreasDatabase = dbManager->loadObjectDatabase("navareas", true, 0xFFFF, false);
 
-	if (navAreasDatabase != NULL) {
+	if (navAreasDatabase != nullptr) {
 		int i = 0;
 
 		try {
@@ -346,10 +346,10 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 
 				Reference<SceneObject*> object = server->getZoneServer()->getObject(objectID);
 
-				if (object != NULL) {
+				if (object != nullptr) {
 					NavArea* navArea = object.castTo<NavArea*>();
 
-					if (navArea != NULL) {
+					if (navArea != nullptr) {
 						++i;
 						navMeshAreas.put(navArea->getMeshName(), navArea);
 					}
@@ -391,7 +391,7 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 		if (destroy) {
 			ManagedReference<NavArea*> area = navMeshAreas.get(name);
 
-			if (area != NULL) {
+			if (area != nullptr) {
 				navMeshAreas.drop(name);
 
 				Core::getTaskManager()->executeTask([area] {
@@ -418,7 +418,7 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 		} else {
 			NavArea* area = navMeshAreas.get(name);
 
-			if (area != NULL && !area->isNavMeshLoaded()) {
+			if (area != nullptr && !area->isNavMeshLoaded()) {
 				area->updateNavMesh(area->getBoundingBox());
 			}
 		}
@@ -430,7 +430,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 
 	IffStream* iffStream = templateManager->openIffFile("datatables/travel/travel.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		warning("Travel fares could not be found.");
 		return;
 	}
@@ -487,8 +487,8 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 		printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);*/
 
 	//Object already exists, exit.
-	if (object != NULL)
-		return NULL;
+	if (object != nullptr)
+		return nullptr;
 
 	Reference<SceneObject*> parentObject = zoneServer->getObject(node->getParentID());
 
@@ -502,7 +502,7 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 	object->initializePosition(position.getX(), position.getZ(), position.getY());
 	object->setDirection(node->getDirection());
 
-	if (parentObject != NULL && parentObject->isBuildingObject() && object->isCellObject()) {
+	if (parentObject != nullptr && parentObject->isBuildingObject() && object->isCellObject()) {
 		CellObject* cell = cast<CellObject*>(object.get());
 		BuildingObject* building = cast<BuildingObject*>(parentObject.get());
 
@@ -511,12 +511,12 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 		building->addCell(cell, node->getCellID());
 	}
 
-	if (parentObject != NULL)
+	if (parentObject != nullptr)
 		parentObject->transferObject(object, -1);
 	else if (node->getParentID() != 0)
 		error("parent id " + String::valueOf(node->getParentID()));
 
-	if (parentObject == NULL) {
+	if (parentObject == nullptr) {
 		//object->insertToZone(zone);
 		Locker clocker(object);
 
@@ -527,7 +527,7 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 	for (int i = 0; i < node->getNodeCount(); ++i) {
 		WorldSnapshotNode* childNode = node->getNode(i);
 
-		if (childNode == NULL)
+		if (childNode == nullptr)
 			continue;
 
 		loadSnapshotObject(childNode, wsiff, totalObjects);
@@ -606,7 +606,7 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 	//Check to see that the arrival planet exists.
 	ManagedReference<Zone*> arrivalZone = zone->getZoneServer()->getZone(arrivalPlanet);
 
-	if (arrivalZone == NULL)
+	if (arrivalZone == nullptr)
 		return false;
 
 	PlanetManager* arrivalPlanetManager = arrivalZone->getPlanetManager();
@@ -652,7 +652,7 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 
 #if DEBUG_TRAVEL
 
-	if(planetTravelPoint == NULL)
+	if(planetTravelPoint == nullptr)
 		callDesc << ": DID NOT FIND POINT IN RANGE";
 	else
 		callDesc << ": returning: " << planetTravelPoint->toString();
@@ -663,7 +663,7 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 }
 
 PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(const Vector3& position, float range) {
-	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
+	Reference<PlanetTravelPoint*> planetTravelPoint = nullptr;
 
 	for (int i = 0; i < planetTravelPointList->size(); ++i) {
 		const auto& ptp = planetTravelPointList->get(i);
@@ -701,7 +701,7 @@ void PlanetManagerImplementation::loadClientPoiData() {
 
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/clientpoi/clientpoi.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		error("ClientPoiData not found");
 		return;
 	}
@@ -744,9 +744,9 @@ void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
 
 	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
 
-	Reference<PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+	Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		info("No client regions found.");
 		return;
 	}
@@ -773,7 +773,7 @@ void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
 
 		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 
-		if (cityRegion == NULL) {
+		if (cityRegion == nullptr) {
 			cityRegion = new CityRegion();
 
 			Locker locker(cityRegion);
@@ -790,7 +790,7 @@ void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
 
 		locker.release();
 
-		if (region != NULL) {
+		if (region != nullptr) {
 			Locker rlocker(region);
 
 			if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
@@ -800,9 +800,9 @@ void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
 
 			region->setMunicipalZone(true);
 
-			ManagedReference<SceneObject*> scenery = NULL;
+			ManagedReference<SceneObject*> scenery = nullptr;
 
-			if (gcwManager != NULL) {
+			if (gcwManager != nullptr) {
 				int strongholdFaction = gcwManager->isStrongholdCity(regionName);
 
 				if (strongholdFaction == Factions::FACTIONIMPERIAL || regionName.contains("imperial")) {
@@ -910,16 +910,16 @@ void PlanetManagerImplementation::initializeTransientMembers() {
 
 
 void PlanetManagerImplementation::finalize() {
-	terrainManager = NULL;
-	weatherManager = NULL;
-	planetTravelPointList = NULL;
-	performanceLocations = NULL;
-	zone = NULL;
-	server = NULL;
+	terrainManager = nullptr;
+	weatherManager = nullptr;
+	planetTravelPointList = nullptr;
+	performanceLocations = nullptr;
+	zone = nullptr;
+	server = nullptr;
 
-	if (gcwManager != NULL) {
+	if (gcwManager != nullptr) {
 		gcwManager->stop();
-		gcwManager = NULL;
+		gcwManager = nullptr;
 	}
 }
 
@@ -953,7 +953,7 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
-		if (objectTemplate != NULL) {
+		if (objectTemplate != nullptr) {
 			float radius = objectTemplate->getNoBuildRadius();
 
 			// Only check objects with an actual NoBuildRadius
@@ -1094,7 +1094,7 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 
 		ManagedReference<SceneObject*> obj = cast<SceneObject*>(closeObjects.get(i).get());
 
-		if(obj == NULL || obj->isCreatureObject() || obj->getObjectTemplate() == NULL)
+		if(obj == nullptr || obj->isCreatureObject() || obj->getObjectTemplate() == nullptr)
 			continue;
 
 		Vector3 objVec(obj->getPositionX(), obj->getPositionY(),0);
@@ -1110,7 +1110,7 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 		}
 	}
 
-	return NULL;
+	return nullptr;
 
 }
 
@@ -1118,19 +1118,19 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 Reference<SceneObject*> PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(STRING_HASHCODE("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff"), 1);
 
-	if (obj == NULL)
-		return NULL;
+	if (obj == nullptr)
+		return nullptr;
 
 	if (!obj->isTangibleObject()) {
 		obj->destroyObjectFromDatabase(true);
-		return NULL;
+		return nullptr;
 	}
 
 	TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
 	if (!tano->isTicketObject()) {
 		tano->destroyObjectFromDatabase(true);
-		return NULL;
+		return nullptr;
 	}
 
 	TicketObject* ticket = cast<TicketObject*>( tano);
@@ -1147,7 +1147,7 @@ bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, C
 
 	Reference<ShuttleDepartureTask*> task = shuttleMap.get(shuttle->getObjectID());
 
-	if (task == NULL)
+	if (task == nullptr)
 		return false;
 
 	int seconds = task->getSecondsRemaining();
@@ -1199,7 +1199,7 @@ float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float
 
 	Reference<IntersectionResults*> ref;
 
-    if (intersections == NULL) {
+    if (intersections == nullptr) {
     	ref = intersections = new IntersectionResults();
     	CollisionManager::getWorldFloorCollisions(x, y, zone, intersections, closeObjects);
     }

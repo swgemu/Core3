@@ -48,7 +48,7 @@ public:
 		return posture == entry.posture; // only need posture here because I am sure that these are unique to entries
 	}
 
-	bool toString(String& str) {
+	bool toString(String& str) const {
 		return posture.toString(str) && stationary.toString(str) && slow.toString(str) && fast.toString(str) && movementScale.toString(str) && accelerationScale.toString(str) && turnScale.toString(str) && canSeeHeightMod.toString(str);
 	}
 
@@ -85,7 +85,7 @@ public:
 
 class CreaturePosture : public Singleton<CreaturePosture>, public Object, public Logger {
 public:
-	
+
 	enum {
 		INVALID        = 0xFF,
 		UPRIGHT        = 0,
@@ -211,8 +211,8 @@ public:
 
 	~CreaturePosture() {}
 
-	uint8 getLocomotion(uint8 pos, uint8 speed) {
-		CreatureMovementEntry* move = &movementTable.get(pos);
+	uint8 getLocomotion(uint8 pos, uint8 speed) const {
+		const CreatureMovementEntry* move = &movementTable.get(pos);
 
 		switch (speed) {
 		case CreatureLocomotion::STATIONARY:
@@ -231,8 +231,8 @@ public:
 		return CreatureLocomotion::INVALID;
 	}
 
-	uint8 getSpeed(uint8 pos, uint8 loc) {
-		CreatureMovementEntry* move = &movementTable.get(pos);
+	uint8 getSpeed(uint8 pos, uint8 loc) const {
+		const CreatureMovementEntry* move = &movementTable.get(pos);
 
 		if (loc == move->stationary)
 			return CreatureLocomotion::STATIONARY;
@@ -246,34 +246,32 @@ public:
 		return CreatureLocomotion::INVALID;
 	}
 
-	float getMovementScale(uint8 pos) {
+	float getMovementScale(uint8 pos) const {
 		return movementTable.get(pos).movementScale;
 	}
 
-	float getAccelerationScale(uint8 pos) {
+	float getAccelerationScale(uint8 pos) const {
 		return movementTable.get(pos).accelerationScale;
 	}
 
-	float getTurnScale(uint8 pos) {
+	float getTurnScale(uint8 pos) const {
 		return movementTable.get(pos).turnScale;
 	}
 
-	float getCanSeeHeightMod(uint8 pos) {
+	float getCanSeeHeightMod(uint8 pos) const {
 		return movementTable.get(pos).canSeeHeightMod;
 	}
 
 	void loadMovementData() {
-		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/movement/movement_human.iff");
+		UniqueReference<IffStream*> iffStream(TemplateManager::instance()->openIffFile("datatables/movement/movement_human.iff"));
 
-		if (iffStream == NULL) {
+		if (iffStream == nullptr) {
 			error("Could not load movement data.");
 			return;
 		}
 
 		DataTableIff dtiff;
 		dtiff.readObject(iffStream);
-
-		delete iffStream;
 
 		for (int i = 0; i < dtiff.getTotalRows(); i++) {
 			DataTableRow* row = dtiff.getRow(i);
@@ -310,19 +308,19 @@ public:
 		}
 	}
 
-	int getRangedAttackMod(uint8 loc) {
+	int getRangedAttackMod(uint8 loc) const {
 		return rangedAttackMod.get(loc);
 	}
 
-	int getRangedDefenseMod(uint8 loc) {
+	int getRangedDefenseMod(uint8 loc) const {
 		return rangedDefenseMod.get(loc);
 	}
 
-	int getMeleeAttackMod(uint8 loc) {
+	int getMeleeAttackMod(uint8 loc) const {
 		return meleeAttackMod.get(loc);
 	}
 
-	int getMeleeDefenseMod(uint8 loc) {
+	int getMeleeDefenseMod(uint8 loc) const {
 		return meleeDefenseMod.get(loc);
 	}
 };

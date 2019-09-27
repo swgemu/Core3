@@ -70,8 +70,8 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 	Vector<TerrainGenerator*> customTerrain;
 
 protected:
-	float calculateFeathering(float value, int featheringType) const;
-	float processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const;
+	static float calculateFeathering(float value, int featheringType);
+	float processTerrain(const Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) const;
 	Layer* getLayerRecursive(float x, float y, Layer* rootParent) const;
 	Layer* getLayer(float x, float y) const;
 

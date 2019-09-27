@@ -13,7 +13,7 @@
 #include "Boundary.h"
 #include "../../ProceduralTerrainAppearance.h"
 
-class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
+class BoundaryRectangle : public Boundary {
 	float x0;
 	float y0;
 	float x1;
@@ -24,7 +24,7 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
 	float shaderSize;
 	String shaderName;
 
-    float newX0, newX1, newY0, newY1;
+	float newX0, newX1, newY0, newY1;
 
     /*
      * result of process() is modified based on this feathering types and then multiplied by the affectors
@@ -35,12 +35,12 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
      */
 
 public:
-	BoundaryRectangle() : x0(0), y0(0), x1(0), y1(0), var7(0), localWaterTableEnabled(0), localWaterTableHeight(0),
+	BoundaryRectangle() : Boundary('BREC'), x0(0), y0(0), x1(0), y1(0), var7(0), localWaterTableEnabled(0), localWaterTableHeight(0),
 		shaderSize(0), newX0(0), newX1(0), newY0(0), newY1(0) {
 		//ruleType = BOUNDARYRECTANGLE;
 	}
 
-	BoundaryRectangle(float x0, float y0, float x1, float y1) : var7(0), localWaterTableEnabled(0), localWaterTableHeight(0),
+	BoundaryRectangle(float x0, float y0, float x1, float y1) : Boundary('BREC'), var7(0), localWaterTableEnabled(0), localWaterTableHeight(0),
 			shaderSize(0), newX0(0), newX1(0), newY0(0), newY1(0)  {
 		this->x0 = x0;
 		this->x1 = x1;
@@ -52,12 +52,12 @@ public:
 
 	}
 
-	void executeRule(ProceduralTerrainAppearance* generator) {
+	void executeRule(ProceduralTerrainAppearance* generator) final {
 		if (localWaterTableEnabled != 0)
 			generator->insertWaterBoundary(this);
 	}
 
-	bool containsPoint(float X, float Y) {
+	bool containsPoint(float X, float Y) const final {
 		//System::out << "checking in rectangle if contains point" << endl;
 		float w = fabs(x1 - x0);
 		float h = fabs(y1 - y0);
@@ -77,7 +77,7 @@ public:
 		return ((w < x0 || w > X) && (h < y0 || h > Y));
 	}
 
-	void parseFromIffStream(engine::util::IffStream* iffStream) {
+	void parseFromIffStream(engine::util::IffStream* iffStream) final {
 		uint32 version = iffStream->getNextFormType();
 
 		iffStream->openForm(version);
@@ -147,15 +147,15 @@ public:
 		initialize();
 	}
 
-	float getLocalWaterTableHeight() const {
+	float getLocalWaterTableHeight() const final {
 		return localWaterTableHeight;
 	}
 
-	float checkInfluence(float x, float y) {
+	float checkInfluence(float x, float y) const final {
 		return 0;
 	}
 
-	float process(float x, float y) {
+	float process(float x, float y) const final {
 		/*v3 = this;
 		  if ( *(_BYTE *)(this + 60) ) initialized to 0
 		  {
@@ -208,7 +208,7 @@ public:
 		return v29 / v30;
 	}
 
-	void translateBoundary(float x, float y) {
+	void translateBoundary(float x, float y)  {
 		x0 += x;
 		x1 += x;
 
@@ -244,25 +244,22 @@ public:
 		newY1 = y1 - v7;
 	}
 
-	float getMinX() const {
+	float getMinX() const final {
 		return x0;
 	}
 
-	float getMaxX() const {
+	float getMaxX() const final {
 		return x1;
 	}
 
-	float getMinY() const {
+	float getMinY() const final {
 		return y0;
 	}
 
-	float getMaxY() const {
+	float getMaxY() const final {
 		return y1;
 	}
 
-	bool isEnabled() {
-		return informationHeader.isEnabled();
-	}
 };
 
 

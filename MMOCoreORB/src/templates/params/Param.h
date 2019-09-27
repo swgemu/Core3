@@ -39,7 +39,7 @@ public:
 
 	virtual String toString() const = 0;
 
-	inline uint32 getType() {
+	inline uint32 getType() const {
 		return type;
 	}
 
@@ -47,23 +47,23 @@ public:
 		type = tp;
 	}
 
-	inline bool isBool() {
+	inline bool isBool() const {
 		return type == BOOL;
 	}
 
-	inline bool isFloat() {
+	inline bool isFloat() const {
 		return type == FLOAT;
 	}
 
-	inline bool isInteger() {
+	inline bool isInteger() const {
 		return type == INTEGER;
 	}
 
-	inline bool isString() {
+	inline bool isString() const {
 		return type == STRING;
 	}
 
-	inline bool isStringId() {
+	inline bool isStringId() const {
 		return type == STRINGID;
 	}
 };

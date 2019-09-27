@@ -17,7 +17,7 @@ DataArchiveStore::~DataArchiveStore() {
 	treeDirectory = nullptr;
 }
 
-byte* DataArchiveStore::getData(const String& path, int& size) {
+byte* DataArchiveStore::getData(const String& path, int& size) const {
 	//read from local dir else from tres
 	File file(path);
 	byte* data = nullptr;
@@ -35,7 +35,7 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 
 			return data;
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 	}
 
 	ReadLocker locker(this);
@@ -68,7 +68,7 @@ int DataArchiveStore::loadTres(const String& path, const Vector<String>& treFile
 	if (treFilesToLoad.size() == 0)
 		return 3;
 
-	info("Loading TRE archives...");
+	debug("Loading TRE archives...");
 
 	treeDirectory = new TreeArchive();
 
@@ -82,14 +82,16 @@ int DataArchiveStore::loadTres(const String& path, const Vector<String>& treFile
 		treeDirectory->unpackFile(fullPath);
 	}
 
-	info("Finished loading TRE archives.");
+	debug("Finished loading TRE archives.");
 
 	return 0;
 }
 
-IffStream* DataArchiveStore::openIffFile(const String& fileName) {
+IffStream* DataArchiveStore::openIffFile(const String& fileName) const {
 	if (fileName.isEmpty())
 		return nullptr;
+
+	debug() << "requesting iff file: " << fileName;
 
 	IffStream* iffStream = nullptr;
 
@@ -108,9 +110,11 @@ IffStream* DataArchiveStore::openIffFile(const String& fileName) {
 				delete iffStream;
 				iffStream = nullptr;
 			}
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			delete iffStream;
 			iffStream = nullptr;
+
+			error() << "could not parse into iffStream " << fileName << "  " << e.getMessage();
 		}
 	}
 

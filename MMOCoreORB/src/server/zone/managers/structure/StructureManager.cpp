@@ -194,7 +194,7 @@ int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objec
 	if (objectTemplate == nullptr)
 		return 1;
 
-	StructureFootprint* structureFootprint = objectTemplate->getStructureFootprint();
+	const StructureFootprint* structureFootprint = objectTemplate->getStructureFootprint();
 
 	if (structureFootprint == nullptr)
 		return 1;
@@ -473,7 +473,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	float floraRadius = serverTemplate->getClearFloraRadius();
 	bool snapToTerrain = serverTemplate->getSnapToTerrain();
 
-	Reference<StructureFootprint*> structureFootprint =
+	Reference<const StructureFootprint*> structureFootprint =
 			serverTemplate->getStructureFootprint();
 
 	float w0 = -5; //Along the x axis.

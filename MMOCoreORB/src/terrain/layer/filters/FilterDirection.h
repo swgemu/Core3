@@ -11,14 +11,14 @@
 #include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
 
-class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRule {
+class FilterDirection : public FilterProceduralRule {
 	float minDegree;//+20h
 	float min;//+28h
 	float maxDegree; // +1ch
 	float max; // +24h
 
 public:
-	FilterDirection()  : FilterProceduralRule(3), minDegree(0), min(0), maxDegree(0), max(0) {
+	FilterDirection()  : FilterProceduralRule(3, 'FDIR'), minDegree(0), min(0), maxDegree(0), max(0) {
 		filterType = 0;
 	}
 

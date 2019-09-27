@@ -12,11 +12,11 @@
 #include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
 
-class FilterShader : public ProceduralRule<'FSHD'>, public FilterProceduralRule {
+class FilterShader : public FilterProceduralRule {
 	int shaderId;
 
 public:
-	FilterShader() : FilterProceduralRule(4), shaderId(0) {
+	FilterShader() : FilterProceduralRule(4, 'FSHD'), shaderId(0) {
 
 	}
 

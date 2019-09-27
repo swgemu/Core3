@@ -48,7 +48,7 @@ public:
 		return vectorData.get(i);
 	}
 
-	void add(Data data) {
+	void add(const Data& data) {
 		vectorData.add(data);
 	}
 

@@ -242,14 +242,15 @@ bool QuadTree::update(QuadTreeEntry *obj) {
 					<< ", " << obj->getPositionY() << ")\n";
 		}
 
-		if (obj->getNode() == nullptr) {
+		auto node = obj->getNode();
+
+		if (node == nullptr) {
 #ifdef OUTPUTQTERRORS
 			System::out << hex << "object [" << obj->getObjectID() <<  "] updating error\n";
 #endif
 			return false;
 		}
 
-		Reference<QuadTreeNode*> node = obj->getNode();
 		bool res = _update(node, obj);
 
 		if (QuadTree::doLog())
@@ -375,7 +376,7 @@ void QuadTree::remove(QuadTreeEntry *obj) {
 	if (QuadTree::doLog())
 		System::out << hex << "object [" << obj->getObjectID() <<  "] removing\n";
 
-	Reference<QuadTreeNode*> node = obj->getNode();
+	auto node = obj->getNode();
 
 	if (node != nullptr) {
 		if (!node->validateNode()) {

@@ -25,7 +25,7 @@
 class PortalLayout;
 class AppearanceTemplate;
 
-class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
+class SharedObjectTemplate : public LuaTemplate, public IffTemplate, public Logger {
 protected:
 	StringIdParam objectName;
 	StringIdParam detailedDescription;
@@ -65,8 +65,8 @@ protected:
 	//uint32 clientObjectCRC;
 	String clientTemplateFileName;
 
-	Reference<PlanetMapCategory*> planetMapCategory;
-	Reference<PlanetMapCategory*> planetMapSubCategory;
+	Reference<const PlanetMapCategory*> planetMapCategory;
+	Reference<const PlanetMapCategory*> planetMapSubCategory;
 	bool autoRegisterWithPlanetMap;
 
 	String fullTemplateString;
@@ -403,11 +403,11 @@ public:
 		return attributeListComponent;
 	}
 
-	inline PlanetMapCategory* getPlanetMapCategory() const {
+	inline const PlanetMapCategory* getPlanetMapCategory() const {
 		return planetMapCategory;
 	}
 
-	inline PlanetMapCategory* getPlanetMapSubCategory() const {
+	inline const PlanetMapCategory* getPlanetMapSubCategory() const {
 		return planetMapSubCategory;
 	}
 
@@ -568,6 +568,8 @@ public:
 
 	void setTemplateFileName(const String& str) {
 		templateFileName = str;
+
+		Logger::setLoggingName("SharedObjectTemplate " + templateFileName);
 	}
 
 public:

@@ -15,7 +15,7 @@
 
 class TargaBitmap;
 
-class FilterBitmap : public ProceduralRule<'FBIT'>, public FilterProceduralRule {
+class FilterBitmap : public FilterProceduralRule {
 	int bitmapId;
 	//int featharingType;
 	//float featheringAmount;
@@ -25,7 +25,7 @@ class FilterBitmap : public ProceduralRule<'FBIT'>, public FilterProceduralRule 
 	TargaBitmap* map;
 
 public:
-	FilterBitmap() : FilterProceduralRule(5), bitmapId(0), min(0), max(0), map(NULL) { //magic numbers from the client
+	FilterBitmap() : FilterProceduralRule(5, 'FBIT'), bitmapId(0), min(0), max(0), map(NULL) { //magic numbers from the client
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
@@ -65,10 +65,6 @@ public:
 	}
 
 	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect);
-
-	bool isEnabled() {
-		return informationHeader.isEnabled();
-	}
 };
 
 

@@ -87,7 +87,7 @@ ObjectManager::~ObjectManager() {
 }
 
 void ObjectManager::registerObjectTypes() {
-	info("registering object types");
+	debug("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(6);
 	objectFactory.registerObject<LairObject>(SceneObjectType::LAIR);
@@ -353,14 +353,13 @@ void ObjectManager::loadLastUsedObjectID() {
 	uint64 storedID = databaseManager->getLastUsedObjectID();
 
 	if (!ServerCore::truncateDatabases() && storedID != 0) {
-		info("loading stored id..");
 		nextObjectID = storedID + 1;
 
-		info("done loading last used object id 0x" + String::hexvalueOf((int64)nextObjectID).toUpperCase());
+		info() << "done loading stored id as last used object id 0x" << hex << uppercase << nextObjectID;
 		return;
 	}
 
-	info("loading bruteforce id..");
+	info("loading bruteforce last used id..");
 
 	uint64 maxObjectID = 0;
 	uint64 objectID;
@@ -376,8 +375,7 @@ void ObjectManager::loadLastUsedObjectID() {
 
 		ObjectDatabase* db = cast<ObjectDatabase*>(database);
 
-		String dbName;
-		db->getDatabaseName(dbName);
+		String dbName =	db->getDatabaseName();
 
 		ObjectDatabaseIterator iterator(db);
 
@@ -392,7 +390,7 @@ void ObjectManager::loadLastUsedObjectID() {
 	if (nextObjectID < maxObjectID + 1)
 		nextObjectID = maxObjectID + 1;
 
-	info("done loading last used object id 0x" + String::hexvalueOf((int64)nextObjectID).toUpperCase());
+	info() << "done loading last used object id 0x" << hex << uppercase << nextObjectID;
 }
 
 void ObjectManager::loadStaticObjects() {
@@ -477,7 +475,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		object->initializeContainerObjectsMap();
 		object->loadTemplateData(templateData);
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
 		error(e.getMessage());
 
@@ -809,7 +807,7 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid,
 	String logName = object->getLoggingName();
 
 	StringBuffer newLogName;
-	newLogName << logName << " 0x" << hex << oid;
+	newLogName << logName << " 0x" << hex << uppercase << oid;
 
 	object->setLoggingName(newLogName.toString());
 
@@ -831,9 +829,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 	object = instantiateSceneObject(objectCRC, oid, true);
 
 	if (object == nullptr) {
-		StringBuffer msg;
-		msg << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
-		error(msg.toString());
+		error() << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
 		return nullptr;
 	}
 
@@ -956,10 +952,9 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Reference<DistributedObject*> obj = getObject(objectID);
 
 	if (obj == nullptr)
-		loadPersistentObject(objectID);
+		obj = loadPersistentObject(objectID);
 
-	if (obj != nullptr)
-	{
+	if (obj != nullptr) {
 		//setLogging(true);
 		//info("Marking " + String::valueOf(objectID) + " for deletion deletion", true);
 	//	setLogging(false);
@@ -971,9 +966,7 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 }
 
 void ObjectManager::printInfo() {
-	StringBuffer msg;
-	msg << "total objects in map " << localObjectDirectory.getSize();
-	info(msg.toString(), true);
+	info(true) << "total objects in map " << localObjectDirectory.getSize();
 }
 
 String ObjectManager::getInfo() {

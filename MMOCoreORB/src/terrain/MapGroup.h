@@ -59,6 +59,11 @@ public:
 		return mfrcs.get((uint32)index);
 	}
 
+	inline const MapFractal* getMfrc(int index) const {
+		return mfrcs.get((uint32)index);
+	}
+
+
 };
 
 
