@@ -48,7 +48,7 @@ protected:
 	 * @return true if the spawn fulfills spawn type, distance and is free, false otherwise.
 	 */
 	bool fulfillsRequirements(NpcSpawnPoint* npc, const Vector3* position, const float minDistance, const float maxDistance, int spawnType) {
-		if (npc != NULL) {
+		if (npc != nullptr) {
 			if (((npc->getSpawnType() & spawnType) == spawnType)) {
 				float squaredDistance = npc->getPosition()->squaredDistanceTo(*position);
 				if ((squaredDistance <= maxDistance * maxDistance) &&
@@ -89,11 +89,11 @@ public:
 	 * @param spawnType the spawn type bit mask needed on the spawn point.
 	 * @param minDistance minimum distance between the spawn point and the given position.
 	 * @param maxDistance maximum distance between the spawn point and the given position.
-	 * @return random spawn point matching the requirements or NULL if none can be found.
+	 * @return random spawn point matching the requirements or nullptr if none can be found.
 	 */
 	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const float minDistance = 0.0, const float maxDistance = 100000.0) {
 		if (npcSpawnMap.size() == 0) {
-			return NULL;
+			return nullptr;
 		}
 
 		//Try 100 random npc spawn points, return the first that fulfills the requirements.
@@ -120,7 +120,7 @@ public:
 		}
 
 		//No npc matches the requirements.
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public:
 	 */
 	NpcSpawnPoint* getNearestNpcSpawnPoint(Vector3* position) {
 		float minimumSquaredDistance = 100000.0f * 100000.0f;
-		NpcSpawnPoint* nearestNpcSpawnPoint = NULL;
+		NpcSpawnPoint* nearestNpcSpawnPoint = nullptr;
 		//Iterate over all spawn points.
 		for (int i = 0; i < npcSpawnMap.size(); i++) {
 			//Calculate distance between spawn point and supplied position and store the smallest distance.
@@ -155,7 +155,7 @@ public:
 	/**
 	 * Finds a spawn point on a certain location.
 	 * @param position the position to search.
-	 * @return the spawn point on the position or NULL if none exist.
+	 * @return the spawn point on the position or nullptr if none exist.
 	 */
 	NpcSpawnPoint* findSpawnAt(Vector3* position) {
 		for (int i = 0; i < npcSpawnMap.size(); i++) {
@@ -164,7 +164,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	/**

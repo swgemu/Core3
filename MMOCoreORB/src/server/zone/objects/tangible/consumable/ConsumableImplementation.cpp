@@ -21,7 +21,7 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	ConsumableTemplate* consumable = dynamic_cast<ConsumableTemplate*>(templateData);
 
-	if (consumable == NULL)
+	if (consumable == nullptr)
 		return;
 
 	duration = consumable->getDuration();
@@ -144,7 +144,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	int availfill = 0;
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return 1;
 
 	if (isFood())
@@ -164,7 +164,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 
-	ManagedReference<Buff*> buff = NULL;
+	ManagedReference<Buff*> buff = nullptr;
 
 	switch (effectType) {
 	case EFFECT_ATTRIBUTE: {
@@ -316,7 +316,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 	}
 
-	if (buff != NULL) {
+	if (buff != nullptr) {
 		Locker locker(buff);
 
 		player->addBuff(buff);

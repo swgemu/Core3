@@ -23,15 +23,15 @@ public:
 	RecycleResourceTask(RecycleTool* reco, TangibleObject* tano) : Task() {
 		recycler = reco;
 		insertedItem = tano;
-		resource = NULL;
-		player = NULL;
-		inventory = NULL;
+		resource = nullptr;
+		player = nullptr;
+		inventory = nullptr;
 		resourceRecycleType = -1;
 	}
 
 	void run() {
 		ManagedReference<SceneObject* > sceno = recycler->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-		if (!sceno->isPlayerCreature() || sceno == NULL) {
+		if (!sceno->isPlayerCreature() || sceno == nullptr) {
 			return;
 		} else {
 			player = cast <CreatureObject*>(sceno.get());
@@ -41,7 +41,7 @@ public:
 
 		inventory = player->getSlottedObject("inventory");
 
-		if (inventory == NULL) {
+		if (inventory == nullptr) {
 			return;
 		}
 
@@ -53,21 +53,21 @@ public:
 
 		ResourceContainer* resCon = cast<ResourceContainer*>(insertedItem.get());
 
-		if(resCon == NULL) {
+		if(resCon == nullptr) {
 			removeFromRecycler();
 			return;
 		}
 
 		resource = resCon->getSpawnObject();
 
-		if(resource == NULL) {
+		if(resource == nullptr) {
 			removeFromRecycler();
 			return;
 		}
 
 		ResourceManager* manager = player->getZoneServer()->getResourceManager();
 
-		if(manager == NULL) {
+		if(manager == nullptr) {
 			removeFromRecycler();
 			return;
 		}

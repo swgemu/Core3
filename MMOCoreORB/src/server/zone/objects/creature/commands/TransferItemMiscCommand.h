@@ -43,14 +43,14 @@ public:
 
 		ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-		if (tradeContainer != NULL) {
+		if (tradeContainer != nullptr) {
 			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
 		}
 
 		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
 
-		if (objectToTransfer == NULL) {
-			creature->error("objectToTransfer NULL in transferItemMisc command");
+		if (objectToTransfer == nullptr) {
+			creature->error("objectToTransfer nullptr in transferItemMisc command");
 			return GENERALERROR;
 		}
 
@@ -67,7 +67,7 @@ public:
 
 		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent().get();
 
-		if (objectsParent == NULL) {
+		if (objectsParent == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -93,7 +93,7 @@ public:
 
 		Zone* zoneObject = objectToTransfer->getZone();
 
-		if (zoneObject != NULL) {
+		if (zoneObject != nullptr) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
 
 			float maxDistance = 12.5;
@@ -103,14 +103,14 @@ public:
 					return TOOFAR;
 				}
 			} else {
-				ManagedReference<SceneObject*> par = NULL;
+				ManagedReference<SceneObject*> par = nullptr;
 				ManagedReference<SceneObject*> obj = objectToTransfer;
 
 				if (rootParent->containsChildObject(objectToTransfer)){
 					return INVALIDTARGET;
 				}
 
-				while ((par = obj->getParent().get()) != NULL) {
+				while ((par = obj->getParent().get()) != nullptr) {
 					if (par->isCellObject()) {
 						if (obj->getDistanceTo(creature) > maxDistance) {
 							return TOOFAR;
@@ -129,8 +129,8 @@ public:
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
-		if (destinationObject == NULL) {
-			creature->error("destinationObject NULL in tansferItemMisc command");
+		if (destinationObject == nullptr) {
+			creature->error("destinationObject nullptr in tansferItemMisc command");
 			return GENERALERROR;
 		}
 
@@ -181,9 +181,9 @@ public:
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent().get());
 
-		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != NULL || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != NULL);
+		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != nullptr || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != nullptr);
 
-		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != NULL);
+		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != nullptr);
 
 		Locker clocker(objectsParent, creature);
 
@@ -192,13 +192,13 @@ public:
 		}
 
 		if (clearWeapon) {
-			creature->setWeapon(NULL, true);
+			creature->setWeapon(nullptr, true);
 
 			if (creature->hasBuff(STRING_HASHCODE("centerofbeing")))
 				creature->removeBuff(STRING_HASHCODE("centerofbeing"));
 
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
-			if (playerManager != NULL) {
+			if (playerManager != nullptr) {
 				creature->setLevel(playerManager->calculatePlayerLevel(creature));
 			}
 		}

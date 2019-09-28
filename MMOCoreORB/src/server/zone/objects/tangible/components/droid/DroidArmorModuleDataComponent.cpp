@@ -22,7 +22,7 @@ void DroidArmorModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -91,14 +91,14 @@ void DroidArmorModuleDataComponent::updateCraftingValues(CraftingValues* values,
 void DroidArmorModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 
 	DroidArmorModuleDataComponent* otherModule = cast<DroidArmorModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	armorModule = armorModule + otherModule->armorModule;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	// Attribute should have already been created in copy method
@@ -111,14 +111,14 @@ void DroidArmorModuleDataComponent::addToStack(BaseDroidModuleComponent* other) 
 void DroidArmorModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 
 	DroidArmorModuleDataComponent* otherModule = cast<DroidArmorModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	armorModule = otherModule->armorModule;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	droidComponent->addProperty("armor_module", armorModule, 0, "exp_effectiveness");

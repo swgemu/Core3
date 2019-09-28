@@ -88,7 +88,7 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 	/// effect 1-100
 
 	Reference<PowerupTemplate*> pup = cast<PowerupTemplate*>(templateObject.get());
-	if(pup == NULL) {
+	if(pup == nullptr) {
 		return;
 	}
 

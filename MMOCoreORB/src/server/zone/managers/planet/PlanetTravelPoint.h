@@ -31,7 +31,7 @@ public:
 		arrivalVector.set(0.f, 0.f, 0.f);
 		interplanetaryTravelAllowed = false;
 		incomingTravelAllowed = true;
-		shuttleObject = NULL;
+		shuttleObject = nullptr;
 	}
 
 	PlanetTravelPoint(const String& zoneName, const String& cityName, Vector3 arrVector, Vector3 departVector, CreatureObject* shuttle) {
@@ -181,8 +181,8 @@ public:
 			<< " Arrival: " << arrivalVector.toString()
 			<< " shuttle = ";
 
-		if(shuttleObject == NULL) {
-			buf << "NULL";
+		if(shuttleObject == nullptr) {
+			buf << "nullptr";
 		} else {
 			buf << "[oid:" << shuttleObject.get()->getObjectID()
 				<< " " << shuttleObject.get()->getObjectNameStringIdName()

@@ -37,7 +37,7 @@ void ObjectController::handleSpatialChat(SceneObject* object, Message* pack) {
 
 	SceneObject* senderObject = zone->getObject(sender);
 
-	if (senderObject != NULL)
+	if (senderObject != nullptr)
 		senderObject->info("says " + message.toString(), true);
 }
 

@@ -28,7 +28,7 @@ public:
 
 			ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
-			if(object == NULL || !object->isFactoryCrate()) {
+			if(object == nullptr || !object->isFactoryCrate()) {
 				creature->sendSystemMessage("Trying to 'ExtractObjectCommand' on item that isn't a factory crate");
 				return GENERALERROR;
 			}

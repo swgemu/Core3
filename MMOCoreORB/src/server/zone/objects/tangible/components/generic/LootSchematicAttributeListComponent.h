@@ -23,7 +23,7 @@ public:
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) const {
 
 		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*> (object->getObjectTemplate());
-		if (schematicData == NULL) {
+		if (schematicData == nullptr) {
 			return;
 		}
 

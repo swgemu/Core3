@@ -25,7 +25,7 @@ class ProfessionDefaultsInfo : public Object {
 
 public:
 	ProfessionDefaultsInfo() : Object() {
-		skill = NULL;
+		skill = nullptr;
 
 		professionItems.setNoDuplicateInsertPlan();
 		professionMods.setNoDuplicateInsertPlan();
@@ -90,7 +90,7 @@ public:
 
 	const SortedVector<String>* getProfessionItems(const String& clientTemplate) const {
 		if (!professionItems.contains(clientTemplate))
-			return NULL;
+			return nullptr;
 
 		return &professionItems.get(clientTemplate);
 	}

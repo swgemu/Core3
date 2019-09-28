@@ -36,7 +36,7 @@ public:
 				return;
 
 
-			if (fmeditateTask != NULL)
+			if (fmeditateTask != nullptr)
 				fmeditateTask->reschedule(5000);
 
 		} catch (Exception& e) {

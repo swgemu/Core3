@@ -26,7 +26,7 @@ public:
 
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::DROIDMAINTENANCERUN);
 		ManagedReference<DroidMaintenanceSession*> session = dynamic_cast<DroidMaintenanceSession*>(facade.get());
-		if (session == NULL) {
+		if (session == nullptr) {
 			player->dropActiveSession(SessionFacadeType::DROIDMAINTENANCERUN);
 			return;
 		}

@@ -22,7 +22,7 @@ class CommandCreatorMap : public HashTable<id, val> {
 
 public:
 	 CommandCreatorMap() {
-		 HashTable<id, val>::setNullValue(NULL);
+		 HashTable<id, val>::setNullValue(nullptr);
 	 }
 };
 
@@ -41,7 +41,7 @@ protected:
 public:
 	 BaseClassType createCommand(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) {
 		 if (!commandCreator.containsKey(uniqueID))
-			 return NULL;
+			 return nullptr;
 
 		 return commandCreator.get(uniqueID)(param1, param2);
 	 }

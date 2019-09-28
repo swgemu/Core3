@@ -17,7 +17,7 @@ public:
 
 		Zone* zone = spawn->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		spawn->destroyObjectFromWorld(true);

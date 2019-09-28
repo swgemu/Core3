@@ -38,12 +38,12 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		if (guildManager == NULL)
+		if (guildManager == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isTerminal())
+		if (obj == nullptr || !obj->isTerminal())
 			return;
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
@@ -55,12 +55,12 @@ public:
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
-		if (guild == NULL)
+		if (guild == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> playObj = server->getObject(memberID);
 
-		if (playObj == NULL || !playObj->isPlayerCreature())
+		if (playObj == nullptr || !playObj->isPlayerCreature())
 			return;
 
 		CreatureObject* target = cast<CreatureObject*>( playObj.get());

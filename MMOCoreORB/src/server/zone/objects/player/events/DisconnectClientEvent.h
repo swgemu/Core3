@@ -28,7 +28,7 @@ public:
 	}
 
 	void run() {
-		if (player == NULL || client == NULL)
+		if (player == nullptr || client == nullptr)
 			return;
 
 		Locker _locker(player);

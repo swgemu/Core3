@@ -43,7 +43,7 @@ public:
 
 			auto creo = chatManager->getPlayer(memberName);
 
-			if (creo == NULL || !creo->isPlayerCreature())
+			if (creo == nullptr || !creo->isPlayerCreature())
 				continue;
 
 			onlineMembers1.put(creo);
@@ -56,7 +56,7 @@ public:
 
 			auto creo2 = chatManager->getPlayer(member2Name);
 
-			if (creo2 == NULL || !creo2->isPlayerCreature())
+			if (creo2 == nullptr || !creo2->isPlayerCreature())
 				continue;
 
 			onlineMembers2.put(creo2);

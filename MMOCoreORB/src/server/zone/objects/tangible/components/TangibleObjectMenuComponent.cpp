@@ -41,16 +41,16 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 	}
 
-	if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+	if(player->getPlayerObject() != nullptr && player->getPlayerObject()->isPrivileged()) {
 		/// Viewing components used to craft item, for admins
 		ManagedReference<SceneObject*> container = tano->getSlottedObject("crafted_components");
-		if(container != NULL) {
+		if(container != nullptr) {
 
 			if(container->getContainerObjectsSize() > 0) {
 
 				SceneObject* satchel = container->getContainerObject(0);
 
-				if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
+				if(satchel != nullptr && satchel->getContainerObjectsSize() > 0) {
 					menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
 				}
 			}
@@ -58,7 +58,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	}
 
 	ManagedReference<SceneObject*> parent = tano->getParent().get();
-	if (parent != NULL && parent->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+	if (parent != nullptr && parent->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
 		menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
 	}
 }
@@ -82,16 +82,16 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 		return 0;
 	} else if (selectedID == 79) { // See components (admin)
-		if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+		if(player->getPlayerObject() != nullptr && player->getPlayerObject()->isPrivileged()) {
 
 			SceneObject* container = tano->getSlottedObject("crafted_components");
-			if(container != NULL) {
+			if(container != nullptr) {
 
 				if(container->getContainerObjectsSize() > 0) {
 
 					SceneObject* satchel = container->getContainerObject(0);
 
-					if(satchel != NULL) {
+					if(satchel != nullptr) {
 
 						satchel->sendWithoutContainerObjectsTo(player);
 						satchel->openContainerTo(player);

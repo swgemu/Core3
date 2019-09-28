@@ -193,7 +193,7 @@ public:
 			insertByte(0x01);
 			insertShort(i);
 			RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(vars->get(i).get());
-			if(var == NULL)
+			if(var == nullptr)
 				insertAscii("");
 			else
 				insertAscii(vars->elementAt(i).getKey());
@@ -212,7 +212,7 @@ public:
 			insertByte(0x01);
 			insertShort(i);
 			RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(vars->get(i).get());
-			if(var == NULL)
+			if(var == nullptr)
 				insertInt(0);
 			else
 				insertInt(var->getDefaultValue());
@@ -260,7 +260,7 @@ public:
 	void update13(ManufactureSchematic* manufactureSchematic){
 
 		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
-		if(draftSchematic == NULL)
+		if(draftSchematic == nullptr)
 			return;
 
 		startUpdate(0x13);

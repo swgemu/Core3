@@ -18,7 +18,7 @@ void StructureDeedImplementation::initializeTransientMembers() {
 
 	StructureDeedTemplate* templ = dynamic_cast<StructureDeedTemplate*>(templateObject.get());
 
-	if (templ != NULL)
+	if (templ != nullptr)
 		placeStructureComponent = ComponentManager::instance()->getComponent<PlaceStructureComponent*>(templ->getStructurePlacementComponent());
 
 	setLoggingName("StructureDeed");
@@ -48,7 +48,7 @@ void StructureDeedImplementation::fillAttributeList(AttributeListMessage* alm, C
 
 	SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureCRC));
 
-	if (structureTemplate == NULL)
+	if (structureTemplate == nullptr)
 		return;
 
 	//Base Maintenance Rate

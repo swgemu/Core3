@@ -19,7 +19,7 @@ void HolocronManager::loadBugCategories() {
 
 	String query = "SELECT `category` FROM `" + MantisDatabase::getTablePrefix() + "project_category_table` WHERE project_id = 1;";
 
-	Reference<ResultSet*> result = NULL;
+	Reference<ResultSet*> result = nullptr;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query);
@@ -37,8 +37,8 @@ void HolocronManager::loadBugCategories() {
 		info(e.getMessage(), true);
 	}
 
-	if (result != NULL) {
-		result = NULL;
+	if (result != nullptr) {
+		result = nullptr;
 	}
 }
 
@@ -59,7 +59,7 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 	StringBuffer query;
 	query << "INSERT INTO `" << MantisDatabase::getTablePrefix() << "bug_text_table` (`description`, `steps_to_reproduce`, `additional_information`) VALUES ('" << sanitizedBody << "', '', '" << summary << "');";
 
-	Reference<ResultSet*> result = NULL;
+	Reference<ResultSet*> result = nullptr;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query.toString());
@@ -85,8 +85,8 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 		info(e.getMessage(), true);
 	}
 
-	if (result != NULL) {
-		result = NULL;
+	if (result != nullptr) {
+		result = nullptr;
 	}
 
 	//TODO: Find out why this is causing a crash!
@@ -96,12 +96,12 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 
 uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 
-	if(processor->getZoneServer() == NULL)
+	if(processor->getZoneServer() == nullptr)
 		return 0;
 
 	ManagedReference<Account*> account = AccountManager::getAccount(client->getAccountID());
 
-	if (account == NULL)
+	if (account == nullptr)
 		return 0;
 
 	uint32 reporterId = 0;
@@ -109,7 +109,7 @@ uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 	StringBuffer query;
 	query << "SELECT `id` FROM `" << MantisDatabase::getTablePrefix() << "user_table` WHERE `username` = '" << account->getUsername() << "' LIMIT 1;";
 
-	Reference<ResultSet*> result = NULL;
+	Reference<ResultSet*> result = nullptr;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query.toString());
@@ -121,8 +121,8 @@ uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 		info(e.getMessage(), true);
 	}
 
-	if (result != NULL) {
-		result = NULL;
+	if (result != nullptr) {
+		result = nullptr;
 	}
 
 	return reporterId;

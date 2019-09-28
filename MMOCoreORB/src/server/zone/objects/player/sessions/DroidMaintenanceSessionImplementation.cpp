@@ -32,7 +32,7 @@ void DroidMaintenanceSessionImplementation::initialize() {
 
 void DroidMaintenanceSessionImplementation::sendMaintanceRunBox(){
 	// main ui
-	selectedStructure = NULL;
+	selectedStructure = nullptr;
 
 	ManagedReference<CreatureObject*> creature = this->player.get();
 
@@ -64,7 +64,7 @@ void DroidMaintenanceSessionImplementation::sendMaintanceRunBox(){
 		ManagedReference<StructureObject*> obj = structures.elementAt(i);
 		StringBuffer buff;
 		String zoneName = "the void";
-		if (obj->getZone() != NULL) {
+		if (obj->getZone() != nullptr) {
 			zoneName = obj->getZone()->getZoneName();
 		}
 		// assume 30 chars per section, 3 sections so 90 chars.
@@ -104,13 +104,13 @@ void DroidMaintenanceSessionImplementation::sendMaintanceRunBox(){
 
 void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 	// add result
-	if (selectedStructure == NULL) {
+	if (selectedStructure == nullptr) {
 		cancelSession();
 		return;
 	}
 	ManagedReference<CreatureObject*> creature = this->player.get();
 
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -142,7 +142,7 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 	selectedFees = 0;
 	if (offplanet) {
 		PlanetManager* planetManager = zoneCreature->getPlanetManager();
-		if (planetManager == NULL) {
+		if (planetManager == nullptr) {
 			cancelSession();
 			return;
 		}
@@ -159,7 +159,7 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 }
 void DroidMaintenanceSessionImplementation::addCreditsToCurrentStructure(int amount) {
 	// WE know the current structure add it to our pay list.
-	if (selectedStructure == NULL) {
+	if (selectedStructure == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -200,7 +200,7 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 
 	Zone* zone = droid->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	// pay all structures
@@ -274,7 +274,7 @@ int DroidMaintenanceSessionImplementation::cancelSession() {
 	if (strongPlayeRef != nullptr)
 		strongPlayeRef->dropActiveSession(SessionFacadeType::DROIDMAINTENANCERUN);
 
-	selectedStructure = NULL;
+	selectedStructure = nullptr;
 	structures.removeAll();
 	maintenance.removeAll();
 	return 0;

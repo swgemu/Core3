@@ -27,7 +27,7 @@ public:
 		}
 
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
-		if (object == NULL || !object->isStructureObject())
+		if (object == nullptr || !object->isStructureObject())
 			return;
 
 		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
@@ -36,13 +36,13 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>(object.get());
 		ManagedReference<Zone*> zone = structure->getZone();
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 		// fetch the module object by id
 		Reference<DroidObject*> droid = zone->getZoneServer()->getObject(itemId).castTo<DroidObject*>();
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).
 
-		if (droid == NULL)
+		if (droid == nullptr)
 			return;
 
 		Locker _lock(droid, player);

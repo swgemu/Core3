@@ -34,7 +34,7 @@ public:
 	void run() {
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);
@@ -43,7 +43,7 @@ public:
 
 		Zone* zone = strongRef->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		if (!strongRef->getDespawnOnNoPlayerInRange())

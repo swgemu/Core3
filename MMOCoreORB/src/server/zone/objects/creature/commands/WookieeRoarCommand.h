@@ -31,7 +31,7 @@ public:
 
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target).castTo<TangibleObject*>();
 
-		if (targetObject == NULL || !targetObject->isCreatureObject())
+		if (targetObject == nullptr || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
 		Locker locker(targetObject, creature);
@@ -60,7 +60,7 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR) {
-			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "wookiee_roar_out_of_range", 0);
+			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, nullptr, 0, "cbt_spam", "wookiee_roar_out_of_range", 0);
 			return TOOFAR;
 		}
 

@@ -46,7 +46,7 @@ public:
 
 		ManagedReference<CreatureObject*> droidOwner = droid->getLinkedCreature().get();
 
-		if (droidOwner != NULL && droidOwner != creature) {
+		if (droidOwner != nullptr && droidOwner != creature) {
 			StringIdChatParameter stringId("healing", "droid_repair_wound_other"); // %TT has repaired %TO and healed a total of %DI wounds.
 			stringId.setTT(creature->getObjectID());
 			stringId.setTO(droid->getObjectID());
@@ -61,7 +61,7 @@ public:
 			return false;
 		}
 
-		if (woundPack == NULL) {
+		if (woundPack == nullptr) {
 			creature->sendSystemMessage("@error_message:droid_repair_no_wound_kit"); //No valid droid wound repair kit was found in your inventory.
 			return false;
 		}
@@ -73,7 +73,7 @@ public:
 		} else {
 			// are we in a cantina? we have a private medical rating so either thats from a droid or camp or hospital
 			ManagedReference<SceneObject*> root = creature->getRootParent();
-			if (root != NULL && root->isClientObject()) {
+			if (root != nullptr && root->isClientObject()) {
 				uint32 gameObjectType = root->getGameObjectType();
 				switch (gameObjectType) {
 						case SceneObjectType::RECREATIONBUILDING:
@@ -137,7 +137,7 @@ public:
 	WoundPack* findWoundPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -154,7 +154,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -171,7 +171,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			creature->sendSystemMessage("@error_message:droid_repair_no_target"); //You must target a droid pet to use these tools.
 			return GENERALERROR;
 		} else if (!object->isDroidObject()) {
@@ -202,12 +202,12 @@ public:
 
 		parseModifier(arguments.toString(), objectId);
 
-		ManagedReference<WoundPack*> woundPack = NULL;
+		ManagedReference<WoundPack*> woundPack = nullptr;
 
 		if (objectId != 0) {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
 			}
 		} else {

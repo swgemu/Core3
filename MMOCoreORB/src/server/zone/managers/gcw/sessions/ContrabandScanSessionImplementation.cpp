@@ -30,7 +30,7 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	checkIfPlayerIsSmuggler(player);
 
-	if (contrabandScanTask == NULL) {
+	if (contrabandScanTask == nullptr) {
 		contrabandScanTask = new ContrabandScanTask(player);
 	}
 	if (!contrabandScanTask->isScheduled()) {
@@ -40,7 +40,7 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 	player->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 
-	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != NULL) {
+	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
 	}
 	player->addActiveSession(SessionFacadeType::CONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
@@ -51,11 +51,11 @@ int ContrabandScanSessionImplementation::initializeSession() {
 int ContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
-	if(player != NULL) {
+	if(player != nullptr) {
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
 	}
 
-	if (contrabandScanTask != NULL) {
+	if (contrabandScanTask != nullptr) {
 		contrabandScanTask->cancel();
 	}
 
@@ -79,7 +79,7 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 
 	ManagedReference<Zone* > zone = scanner->getZone();
 
-	if (zone == NULL) {
+	if (zone == nullptr) {
 		cancelSession();
 	}
 
@@ -150,7 +150,7 @@ void ContrabandScanSessionImplementation::sendSystemMessage(AiAgent* scanner, Cr
 }
 
 bool ContrabandScanSessionImplementation::scanPrerequisitesMet(AiAgent* scanner, CreatureObject* player) {
-	return scanner != NULL && player != NULL && player->isPlayerCreature() && !scanner->isDead() && !player->isDead()
+	return scanner != nullptr && player != nullptr && player->isPlayerCreature() && !scanner->isDead() && !player->isDead()
 			&& !player->isFeigningDeath() && !player->isIncapacitated() && !scanner->isInCombat() && !player->isInCombat();
 }
 

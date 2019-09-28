@@ -20,7 +20,7 @@ void StringIdManager::populateDatabase() {
 
 	Vector<String>* files = treeArchive->getFilesAndSubDirectoryFiles("string/en");
 
-	if (files == NULL) {
+	if (files == nullptr) {
 		error("string/en directory missing");
 
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
@@ -32,7 +32,7 @@ void StringIdManager::populateDatabase() {
 
 		ObjectInputStream* stream = TemplateManager::instance()->openTreFile(files->get(i));
 
-		if (stream == NULL) {
+		if (stream == nullptr) {
 			//error("could not open file " + files->get(i));
 
 			continue;

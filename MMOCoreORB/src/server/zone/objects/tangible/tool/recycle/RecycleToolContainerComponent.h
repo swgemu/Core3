@@ -12,10 +12,10 @@ public:
 
 		TangibleObject* tano = cast <TangibleObject* >(object);
 
-		if (recycler != NULL && tano != NULL) {
+		if (recycler != nullptr && tano != nullptr) {
 			RecycleResourceTask* task = new RecycleResourceTask(recycler, tano);
 
-			if (task != NULL) {
+			if (task != nullptr) {
 				task->run();
 			}
 		}
@@ -31,7 +31,7 @@ public:
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		if (parent == NULL)
+		if (parent == nullptr)
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
 		if (parent != object->getParentRecursively(SceneObjectType::PLAYERCREATURE))

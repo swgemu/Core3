@@ -36,7 +36,7 @@ public:
 		// Send Survey Results
 		playerCreature->sendMessage(surveyMessage);
 
-		if (waypoint != NULL) {
+		if (waypoint != nullptr) {
 			playerCreature->getPlayerObject()->addWaypoint(waypoint, false, true);
 
 			// Send Waypoint System Message

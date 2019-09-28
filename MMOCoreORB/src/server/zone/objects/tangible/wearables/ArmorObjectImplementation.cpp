@@ -62,7 +62,7 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 void ArmorObjectImplementation::notifyLoadFromDatabase() {
 	WearableObjectImplementation::notifyLoadFromDatabase();
 
-	if (templateObject == NULL)
+	if (templateObject == nullptr)
 		return;
 
 	if (rating != LIGHT && templateObject->getClientTemplateFileName().contains("armor_bounty_hunter_"))
@@ -292,7 +292,7 @@ int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
-		if (session != NULL) {
+		if (session != nullptr) {
 			player->sendSystemMessage("@slicing/slicing:already_slicing");
 			return 0;
 		}

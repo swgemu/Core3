@@ -29,7 +29,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		//object->info("received target update");
@@ -50,7 +50,7 @@ public:
 			throw;
 		}
 
-		if (scene != NULL)
+		if (scene != nullptr)
 			object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, scene);
 	}
 };

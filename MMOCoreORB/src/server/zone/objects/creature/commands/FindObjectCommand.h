@@ -30,13 +30,13 @@ public:
 		try {
 			StringTokenizer tokenizer(arguments.toString());
 
-			Reference<SceneObject*> targetObject = NULL;
+			Reference<SceneObject*> targetObject = nullptr;
 			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 			if (!tokenizer.hasMoreTokens()) {
 				targetObject = server->getZoneServer()->getObject(creature->getTargetID());
 
-				if (targetObject != NULL) {
+				if (targetObject != nullptr) {
 					Locker crossLocker(targetObject, creature);
 
 					Vector3 worldPosition = targetObject->getWorldPosition();
@@ -55,7 +55,7 @@ public:
 			}
 
 			Zone* zone = creature->getZone();
-			if(zone == NULL)
+			if(zone == nullptr)
 				return GENERALERROR;
 
 			String objectFilter;
@@ -82,7 +82,7 @@ public:
 			for (int i = 0; i < objects.size(); ++i) {
 				ManagedReference<SceneObject*> object = cast<SceneObject*>(objects.get(i).get());
 
-				if (object == NULL)
+				if (object == nullptr)
 					continue;
 
 				if (object == creature)

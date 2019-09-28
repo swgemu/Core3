@@ -19,12 +19,12 @@ void ReconMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	if (mission == NULL)
+	if (mission == nullptr)
 		return;
 
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
-	if (locationActiveArea == NULL) {
+	if (locationActiveArea == nullptr) {
 		locationActiveArea = ( zoneServer->createObject(STRING_HASHCODE("object/mission_recon_area.iff"), 1)).castTo<MissionReconActiveArea*>();
 		Locker locker(locationActiveArea);
 		locationActiveArea->setMissionObjective(_this.getReferenceUnsafeStaticCast());
@@ -44,7 +44,7 @@ void ReconMissionObjectiveImplementation::activate() {
 				area->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 				area->setRadius(32.f);
 
-				if (zone != NULL) {
+				if (zone != nullptr) {
 					zone->transferObject(area, -1, true);
 				} else {
 					error("Failed to insert recon location to zone.");
@@ -69,7 +69,7 @@ void ReconMissionObjectiveImplementation::activate() {
 void ReconMissionObjectiveImplementation::abort() {
 	MissionObjectiveImplementation::abort();
 
-	if (locationActiveArea != NULL) {
+	if (locationActiveArea != nullptr) {
 		Reference<MissionReconActiveArea* > area = locationActiveArea;
 
 		Core::getTaskManager()->executeTask([=] () {
@@ -98,7 +98,7 @@ Vector3 ReconMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
-	if(mission == NULL)
+	if(mission == nullptr)
 		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
@@ -106,7 +106,7 @@ Vector3 ReconMissionObjectiveImplementation::getEndPosition() {
 
 	Zone* zone =  getPlayerOwner()->getZone();
 
-	if (zone != NULL) {
+	if (zone != nullptr) {
 		TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();
 		missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 	}

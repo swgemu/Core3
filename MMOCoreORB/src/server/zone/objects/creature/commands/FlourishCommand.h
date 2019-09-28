@@ -29,7 +29,7 @@ public:
 		ManagedReference<EntertainingSession*> session =
 				dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
@@ -65,7 +65,7 @@ public:
 		ManagedReference<EntertainingSession*> session =
 				dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session == NULL)
+		if (session == nullptr)
 			return 0.0f;
 
 		int knowledgeSkillMod = 0;

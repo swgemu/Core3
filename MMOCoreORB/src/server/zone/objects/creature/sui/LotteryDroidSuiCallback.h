@@ -31,12 +31,12 @@ public:
 
 		ManagedReference<SceneObject*> droid = suiBox->getUsingObject().get();
 
-		if (droid == NULL)
+		if (droid == nullptr)
 			return;
 
 		ManagedReference<LotteryDroid*> lotteryDroid = cast<LotteryDroid*>(droid.get());
 
-		if (lotteryDroid == NULL)
+		if (lotteryDroid == nullptr)
 			return;
 
 		Locker lotteryDroidGuard(lotteryDroid, player);
@@ -82,7 +82,7 @@ public:
 			} else {
 				PlayerObject* ghost = player->getPlayerObject();
 
-				if (ghost == NULL)
+				if (ghost == nullptr)
 					return;
 
 				ManagedReference<SuiMessageBox*> confirmBox = new SuiMessageBox(player, SuiWindowType::LOTTERY_ADD_CREDITS_CONFIRM);

@@ -34,14 +34,14 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		Locker locker(player);
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-		if (auctionManager != NULL) {
+		if (auctionManager != nullptr) {
 			Locker clocker(auctionManager, player);
 
 			auctionManager->buyItem(player, objectid, price1, price2);

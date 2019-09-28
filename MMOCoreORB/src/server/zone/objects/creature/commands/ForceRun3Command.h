@@ -39,7 +39,7 @@ public:
 
 		// need to apply the damage reduction in a separate buff so that the multiplication and division applies right
 		Buff* buff = creature->getBuff(BuffCRC::JEDI_FORCE_RUN_3);
-		if (buff == NULL)
+		if (buff == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(creature, name.hashCode(), duration, BuffType::JEDI);

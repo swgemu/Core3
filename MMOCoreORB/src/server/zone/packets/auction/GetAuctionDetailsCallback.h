@@ -28,12 +28,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-		if (auctionManager != NULL)
+		if (auctionManager != nullptr)
 			auctionManager->getItemAttributes(player, objectid);
 	}
 

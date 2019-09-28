@@ -39,7 +39,7 @@ public:
 
 		ManagedReference<SceneObject*> mount = creature->getParent().get();
 
-		if (mount == NULL || !mount->isCreatureObject()) {
+		if (mount == nullptr || !mount->isCreatureObject()) {
 			creature->clearState(CreatureState::RIDINGMOUNT);
 			return GENERALERROR;
 		}
@@ -62,17 +62,17 @@ public:
 		if (vehicle != creature->getParent().get())
 			return GENERALERROR;
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		if (planetManager == NULL)
+		if (planetManager == nullptr)
 			return GENERALERROR;
 
 		TerrainManager* terrainManager = planetManager->getTerrainManager();
 
-		if (terrainManager == NULL)
+		if (terrainManager == nullptr)
 			return GENERALERROR;
 
 		zone->transferObject(creature, -1, false);
@@ -92,7 +92,7 @@ public:
 
 			if (creature->hasBuff(buffCRC)) {
 				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
-				if(buff != NULL) {
+				if(buff != nullptr) {
 					Locker lock(buff, creature);
 					buff->applyAllModifiers();
 				}
@@ -118,7 +118,7 @@ public:
 
 		ManagedReference<ControlDevice*> device = vehicle->getControlDevice().get();
 
-		if (device != NULL && vehicle->getServerObjectCRC() == 0x32F87A54) { // Auto-store jetpack on dismount.
+		if (device != nullptr && vehicle->getServerObjectCRC() == 0x32F87A54) { // Auto-store jetpack on dismount.
 			device->storeObject(creature);
 			creature->sendSystemMessage("@pet/pet_menu:jetpack_dismount"); // "You have been dismounted from the jetpack, and it has been stored."
 		}
@@ -128,7 +128,7 @@ public:
 		SharedObjectTemplate* templateData = creature->getObjectTemplate();
 		SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
-		if (playerTemplate != NULL) {
+		if (playerTemplate != nullptr) {
 			Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
 			creature->setRunSpeed(speedTempl.get(0));
 			creature->updateSpeedAndAccelerationMods(); // Reset Force Sensitive control mods to default.
@@ -140,7 +140,7 @@ public:
 
 		if (vehicle->hasBuff(gallopCRC)) {
 			ManagedReference<Buff*> buff = vehicle->getBuff(gallopCRC);
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				Core::getTaskManager()->executeTask([=] () {
 					Locker lock(vehicle);
 					Locker buffLocker(buff, vehicle);

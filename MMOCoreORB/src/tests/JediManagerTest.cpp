@@ -26,7 +26,7 @@ class JediManagerTest : public ::testing::Test, public Logger {
 public:
 	JediManager* jediManager;
 
-	JediManagerTest() : Logger("JediManagerTest"), jediManager(NULL) {
+	JediManagerTest() : Logger("JediManagerTest"), jediManager(nullptr) {
 		// Perform creation setup here.
 	}
 

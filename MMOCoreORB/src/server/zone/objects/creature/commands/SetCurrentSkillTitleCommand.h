@@ -23,7 +23,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		String titleSkill = arguments.toString().toLowerCase();

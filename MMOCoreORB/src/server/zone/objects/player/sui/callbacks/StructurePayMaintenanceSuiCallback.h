@@ -32,7 +32,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:invalid_target"); // "Your original structure target is no longer valid. Aborting..."
 			return;
 		}
@@ -42,7 +42,7 @@ public:
 
 		ManagedReference<Zone*> zone = structure->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).

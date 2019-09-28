@@ -19,7 +19,7 @@ public:
 
 		ManagedReference<GuildObject*> guild = creo->getGuildObject().get();
 		
-		if (guild == NULL)
+		if (guild == nullptr)
 			insertAscii("");
 		else
 			insertAscii(guild->getGuildName());

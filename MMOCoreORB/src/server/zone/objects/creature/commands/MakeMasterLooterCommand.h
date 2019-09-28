@@ -26,7 +26,7 @@ public:
 
 		//Check is in a group.
 		ManagedReference<GroupObject*> group = creature->getGroup();
-		if (group == NULL) {
+		if (group == nullptr) {
 			StringIdChatParameter groupOnly("group","group_only"); //You can only set or check group looting options if you are in a group."
 			creature->sendSystemMessage(groupOnly);
 			return GENERALERROR;
@@ -45,7 +45,7 @@ public:
 
 		//Check if current target is valid to be Master Looter. If not, send the list of potential Master Looters.
 		ManagedReference<CreatureObject*> object = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
-		if (object != NULL && object->isPlayerCreature() && group->hasMember(object)) {
+		if (object != nullptr && object->isPlayerCreature() && group->hasMember(object)) {
 			manager->changeMasterLooter(group, object, true);
 			return SUCCESS;
 		} else

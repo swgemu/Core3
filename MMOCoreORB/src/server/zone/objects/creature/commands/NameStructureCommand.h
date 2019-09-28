@@ -31,7 +31,7 @@ public:
 		uint64 targetid = creature->getTargetID();
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
 			return INVALIDTARGET;
 		}
@@ -66,7 +66,7 @@ public:
 
 		structure->setCustomObjectName(name, true);
 
-		if (structure->isBuildingObject() && (cast<BuildingObject*>(structure))->getSignObject() != NULL) {
+		if (structure->isBuildingObject() && (cast<BuildingObject*>(structure))->getSignObject() != nullptr) {
 			StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
 			params.setTO(name);
 			creature->sendSystemMessage(params);

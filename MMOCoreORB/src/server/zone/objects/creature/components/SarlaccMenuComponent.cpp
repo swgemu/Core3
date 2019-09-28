@@ -20,10 +20,10 @@ int SarlaccMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 			return 0;
 		}
 
-		SceneObject* sco = NULL;
+		SceneObject* sco = nullptr;
 		for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
 			sco = inventory->getContainerObject(i);
-			if (sco == NULL)
+			if (sco == nullptr)
 				continue;
 			if (sco->getServerObjectCRC() == STRING_HASHCODE("object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff")) {
 				player->sendSystemMessage("@mob/sarlacc:bile_already"); // You already have a good sample of bile. It probably isn't wise to risk getting more.
@@ -33,7 +33,7 @@ int SarlaccMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 				for (int j=0; j < sco->getContainerObjectsSize(); j++) {
 					SceneObject* child = sco->getContainerObject(j);
 
-					if (child == NULL)
+					if (child == nullptr)
 						continue;
 
 					if (child->getServerObjectCRC() == STRING_HASHCODE("object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff")) {
@@ -50,7 +50,7 @@ int SarlaccMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 		}
 
 		Reference<SceneObject*> bileSceno = player->getZoneServer()->createObject(STRING_HASHCODE("object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff"), 1);
-		if (bileSceno == NULL)
+		if (bileSceno == nullptr)
 			return 1;
 
 		if (inventory->transferObject(bileSceno, -1)) {

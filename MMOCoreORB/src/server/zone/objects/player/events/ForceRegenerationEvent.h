@@ -24,12 +24,12 @@ public:
 	void run() {
 		ManagedReference<PlayerObject*> play = player.get();
 
-		if (play == NULL)
+		if (play == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> strongParent = play->getParent().get();
 
-		if (strongParent == NULL)
+		if (strongParent == nullptr)
 			return;
 
 		Locker _locker(strongParent);

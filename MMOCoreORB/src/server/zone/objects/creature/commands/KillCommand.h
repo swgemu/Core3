@@ -29,11 +29,11 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CreatureObject*> targetCreature = NULL;
-		ManagedReference<TangibleObject*> targetLair = NULL;
+		ManagedReference<CreatureObject*> targetCreature = nullptr;
+		ManagedReference<TangibleObject*> targetLair = nullptr;
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject != NULL) {
+		if (targetObject != nullptr) {
 			if (targetObject->isCreatureObject())
 				targetCreature = cast<CreatureObject*>(targetObject.get());
 			else if (targetObject->isTangibleObject())
@@ -142,7 +142,7 @@ public:
 			SortedVector<QuadTreeEntry*> closeObjects;
 			Zone* zone = creature->getZone();
 
-			if (creature->getCloseObjects() == NULL) {
+			if (creature->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 				creature->info("Null closeobjects vector in KillCommand::doQueueCommand", true);
 #endif
@@ -173,7 +173,7 @@ public:
 		//Deal damage to selected target
 		else {
 			//Deal damage if target is not a player or pet
-			if (targetCreature != NULL) {
+			if (targetCreature != nullptr) {
 				if (!targetCreature->isPlayerCreature() && !targetObject->isPet()) {
 					Locker locker(targetCreature, creature);
 
@@ -184,7 +184,7 @@ public:
 				}
 			}
 			//Deal damage if target is a lair
-			else if (targetLair != NULL) {
+			else if (targetLair != nullptr) {
 				Locker locker(targetLair, creature);
 
 				targetLair->inflictDamage(creature, 0, healthDamage, true, true);

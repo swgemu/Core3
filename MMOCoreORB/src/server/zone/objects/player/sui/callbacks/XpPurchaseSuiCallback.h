@@ -18,7 +18,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isMessageBox() || player == NULL || cancelPressed)
+		if (!suiBox->isMessageBox() || player == nullptr || cancelPressed)
 			return;
 
 		if(player->isDead() || player->isIncapacitated())
@@ -26,17 +26,17 @@ public:
 
 		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if(obj == NULL)
+		if(obj == nullptr)
 			return;
 
 		XpPurchaseTemplate* templateData = cast<XpPurchaseTemplate*>(obj->getObjectTemplate());
 
-		if (templateData == NULL) {
+		if (templateData == nullptr) {
 			player->error("No XpPurchaseTemplate for: " + String::valueOf(obj->getServerObjectCRC()));
 			return;
 		}
@@ -92,7 +92,7 @@ public:
 			SkillManager* skillManager = SkillManager::instance();
 			Ability* grantAbility = skillManager->getAbility(grantName);
 
-			if (grantAbility == NULL) {
+			if (grantAbility == nullptr) {
 				player->error("Unable to learn ability: " + grantName);
 				return;
 			}
@@ -108,7 +108,7 @@ public:
 		} else if (grantType == "schematic") {
 			ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(grantName.hashCode());
 
-			if (schematic == NULL) {
+			if (schematic == nullptr) {
 				player->error("Unable to learn schematic: " + grantName);
 				return;
 			}

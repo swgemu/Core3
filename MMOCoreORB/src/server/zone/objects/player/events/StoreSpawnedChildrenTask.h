@@ -17,7 +17,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = play.get();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		Locker locker(player);
@@ -25,14 +25,14 @@ public:
 		for (int i = 0; i < children.size(); ++i) {
 			CreatureObject* child = children.get(i);
 
-			if (child == NULL)
+			if (child == nullptr)
 				continue;
 
 			Locker clocker(child, player);
 
 			ManagedReference<ControlDevice*> controlDevice = child->getControlDevice().get();
 
-			if (controlDevice != NULL) {
+			if (controlDevice != nullptr) {
 				Locker deviceLocker(controlDevice);
 				controlDevice->storeObject(player, true);
 			}

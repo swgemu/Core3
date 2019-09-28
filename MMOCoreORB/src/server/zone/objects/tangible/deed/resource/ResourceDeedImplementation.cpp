@@ -28,14 +28,14 @@ int ResourceDeedImplementation::handleObjectMenuSelect(CreatureObject* player, b
 	if (selectedID != 20) // not use object
 		return 1;
 
-	if (player != NULL)
+	if (player != nullptr)
 		useObject(player);
 
 	return 0;
 }
 
 int ResourceDeedImplementation::useObject(CreatureObject* creature) {
-	if (creature == NULL)
+	if (creature == nullptr)
 		return 0;
 
 	if (!isASubChildOf(creature))
@@ -43,7 +43,7 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FREE_RESOURCE)) {
+	if (ghost == nullptr || ghost->hasSuiBoxWindowType(SuiWindowType::FREE_RESOURCE)) {
 		//ghost->closeSuiWindowType(SuiWindowType::FREE_RESOURCE);
 		ghost->removeSuiBoxType(SuiWindowType::FREE_RESOURCE);
 
@@ -70,7 +70,7 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 }
 
 void ResourceDeedImplementation::destroyDeed() {
-	if (parent.get() != NULL) {
+	if (parent.get() != nullptr) {
 		destroyObjectFromWorld(true);
 	}
 

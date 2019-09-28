@@ -39,7 +39,7 @@ public:
 TEST_F(BasicTerrainTest, LoadTestTerrainTest) {
 	UniqueReference<IffStream*> stream(DataArchiveStore::instance()->openIffFile("terrain/test_terrain.trn"));
 
-	ASSERT_TRUE(stream != NULL);
+	ASSERT_TRUE(stream != nullptr);
 
 	ProceduralTerrainAppearance terrain;
 
@@ -61,7 +61,7 @@ TEST_F(BasicTerrainTest, LoadTestTerrainTest) {
 TEST_F(BasicTerrainTest, LoadTestSpaceTerrain) {
 	UniqueReference<IffStream*> stream(DataArchiveStore::instance()->openIffFile("terrain/space_corellia.trn"));
 
-	ASSERT_TRUE(stream != NULL);
+	ASSERT_TRUE(stream != nullptr);
 
 	SpaceTerrainAppearance terrain;
 

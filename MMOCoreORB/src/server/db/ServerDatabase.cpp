@@ -7,7 +7,7 @@
 #include "conf/ConfigManager.h"
 #include "MySqlDatabase.h"
 
-Vector<Database*>* ServerDatabase::databases = NULL;
+Vector<Database*>* ServerDatabase::databases = nullptr;
 AtomicInteger ServerDatabase::currentDB;
 
 ServerDatabase::ServerDatabase(ConfigManager* configManager) {
@@ -91,20 +91,20 @@ void ServerDatabase::updateDatabaseSchema() {
 
 	alterDatabase(1002,
 		"CREATE TABLE `session_stats` ("
-		"`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP"
-		",`ip` char(15) NOT NULL"
+		"`timestamp` timestamp NOT nullptr DEFAULT CURRENT_TIMESTAMP"
+		",`ip` char(15) NOT nullptr"
 		",`galaxy_id` int(5) DEFAULT '-1'"
-		",`account_id` int(10) unsigned NOT NULL"
-		",`character_oid` bigint(20) NOT NULL"
-		",`session_seconds` int(10) unsigned NOT NULL"
-		",`delta_seconds` int(10) unsigned NOT NULL"
-		",`delta_credits` int(11) NOT NULL"
-		",`delta_skillpoints` int(3) NOT NULL"
-		",`activity_xp` int(10) unsigned NOT NULL"
-		",`activity_movement` int(5) unsigned NOT NULL"
-		",`current_credits` int(11) unsigned NOT NULL"
-		",`ip_account_count` int(2) unsigned NOT NULL"
-		",`session_end` int(1) unsigned NOT NULL"
+		",`account_id` int(10) unsigned NOT nullptr"
+		",`character_oid` bigint(20) NOT nullptr"
+		",`session_seconds` int(10) unsigned NOT nullptr"
+		",`delta_seconds` int(10) unsigned NOT nullptr"
+		",`delta_credits` int(11) NOT nullptr"
+		",`delta_skillpoints` int(3) NOT nullptr"
+		",`activity_xp` int(10) unsigned NOT nullptr"
+		",`activity_movement` int(5) unsigned NOT nullptr"
+		",`current_credits` int(11) unsigned NOT nullptr"
+		",`ip_account_count` int(2) unsigned NOT nullptr"
+		",`session_end` int(1) unsigned NOT nullptr"
 		",KEY `idx_timestamp` (`timestamp`)"
 		",KEY `idx_ip` (`ip`)"
 		",KEY `idx_galaxy_ip` (`galaxy_id`,`ip`,`account_id`,`character_oid`)"

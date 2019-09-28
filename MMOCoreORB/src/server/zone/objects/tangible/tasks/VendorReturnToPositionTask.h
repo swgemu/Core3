@@ -23,7 +23,7 @@ public:
 
 		ManagedReference<CreatureObject*> strongref = vendor.get();
 
-		if(strongref == NULL)
+		if(strongref == nullptr)
 			return;
 
 		Locker locker(strongref);

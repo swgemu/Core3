@@ -32,10 +32,10 @@ public:
 		maxRange = 80;
 		attackSpeed = 1;
 		nextAutoFireTime = Time();
-		templateData = NULL;
-		controller = NULL;
-		manualTarget = NULL;
-		turretFireTask = NULL;
+		templateData = nullptr;
+		controller = nullptr;
+		manualTarget = nullptr;
+		turretFireTask = nullptr;
 	}
 
 	~TurretDataComponent() {

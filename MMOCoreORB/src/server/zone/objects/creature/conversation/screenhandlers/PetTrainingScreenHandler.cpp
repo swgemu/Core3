@@ -29,15 +29,15 @@ const String PetTrainingScreenHandler::PETRELEASECOMMAND = "pet_release_command"
 ConversationScreen* PetTrainingScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 
 	ManagedReference<PetControlDevice*> controller = conversingNPC->getControlDevice().get().castTo<PetControlDevice*>();
-	if (controller == NULL) {
-		return NULL;
+	if (controller == nullptr) {
+		return nullptr;
 	}
 
 	if (conversationScreen->getScreenID() == "convoscreenpetinfo") {
 		if(conversingNPC->isDroidObject()) {
 			// we can technically just re-add the 4 options from base hireling
 			DroidObject* droid = cast<DroidObject*>(conversingNPC);
-			if (droid->getModule("repair_module") != NULL) {
+			if (droid->getModule("repair_module") != nullptr) {
 				conversationScreen->addOption("@hireling/hireling:menu_repair_other","pet_repair_command");
 			}
 		}
@@ -47,73 +47,73 @@ ConversationScreen* PetTrainingScreenHandler::handleScreen(CreatureObject* conve
 
 	if (conversationScreen->getScreenID() == "pet_repair_command") {
 		controller->setTrainingCommand(PetManager::REPAIR);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_formation_1_command") {
 		controller->setTrainingCommand(PetManager::FORMATION1);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_formation_2_command") {
 		controller->setTrainingCommand(PetManager::FORMATION2);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_attack_command") {
 		controller->setTrainingCommand(PetManager::ATTACK);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_guard_command") {
 		controller->setTrainingCommand(PetManager::GUARD);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_friend_command") {
 		controller->setTrainingCommand(PetManager::FRIEND);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_transfer_command") {
 		controller->setTrainingCommand(PetManager::TRANSFER);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_clear_patrol_points_command") {
 		controller->setTrainingCommand(PetManager::CLEARPATROLPOINTS);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_get_patrol_point_command") {
 		controller->setTrainingCommand(PetManager::GETPATROLPOINT);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_patrol_command") {
 		controller->setTrainingCommand(PetManager::PATROL);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_stay_command") {
 		controller->setTrainingCommand(PetManager::STAY);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_follow_command") {
 		controller->setTrainingCommand(PetManager::FOLLOW);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_follow_other_command") {
 		controller->setTrainingCommand(PetManager::FOLLOWOTHER);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_group_command") {
 		controller->setTrainingCommand(PetManager::GROUP);
-		return NULL;
+		return nullptr;
 	}
 	if (conversationScreen->getScreenID() == "pet_release_command") {
 		controller->setTrainingCommand(PetManager::STORE);
-		return NULL;
+		return nullptr;
 	}
 
 	locker.release();
 
 	if (conversationScreen->getScreenID() == "pet_leave_group_command") {
 		GroupObject* g = conversingNPC->getGroup();
-		if (g != NULL) {
+		if (g != nullptr) {
 			g->removeMember(conversingNPC);
 		}
-		return NULL;
+		return nullptr;
 	}
 
 

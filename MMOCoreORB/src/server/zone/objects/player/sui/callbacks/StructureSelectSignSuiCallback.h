@@ -29,7 +29,7 @@ public:
 			return;
 
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
-		if (object == NULL || !object->isBuildingObject())
+		if (object == nullptr || !object->isBuildingObject())
 			return;
 
 		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
@@ -42,7 +42,7 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>(object.get());
 		ManagedReference<Zone*> zone = structure->getZone();
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).

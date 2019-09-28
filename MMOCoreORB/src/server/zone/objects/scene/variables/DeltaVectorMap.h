@@ -53,10 +53,10 @@ public:
 		j["updateCounter"] = map.updateCounter;
 	}
 
-	virtual int set(const K& key, const V& value, DeltaMessage* message = NULL, int updates = 1) {
+	virtual int set(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
@@ -71,7 +71,7 @@ public:
 		return pos;
 	}
 
-	virtual bool drop(const K& key, DeltaMessage* message = NULL, int updates = 1) {
+	virtual bool drop(const K& key, DeltaMessage* message = nullptr, int updates = 1) {
 		if (!vectorMap.contains(key))
 			return false;
 
@@ -79,7 +79,7 @@ public:
 
 		vectorMap.drop(key);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 

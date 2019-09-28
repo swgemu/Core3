@@ -29,11 +29,11 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		try {
-			Reference<SceneObject*> targetObject = NULL;
+			Reference<SceneObject*> targetObject = nullptr;
 
 			StringTokenizer tokenizer(arguments.toString());
 			String filter;

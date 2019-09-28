@@ -41,7 +41,7 @@ public:
 	}
 
 	void run() {
-		if (player == NULL || target == NULL)
+		if (player == nullptr || target == nullptr)
 			return;
 
 		Locker locker2(player);
@@ -57,7 +57,7 @@ public:
 
 		if(hit) {
 
-			if(buff != NULL) {
+			if(buff != nullptr) {
 				Locker buffLocker(buff);
 
 				target->addBuff(buff);
@@ -68,7 +68,7 @@ public:
 			//Not sure on exact xp value, estimate now and update later
 			int xp = target->getLevel() * 15;
 			ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
-			if(playerManager != NULL)
+			if(playerManager != nullptr)
 				playerManager->awardExperience(player, "trapping", xp, true);
 		}
 

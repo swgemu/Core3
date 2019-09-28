@@ -38,15 +38,15 @@ void ObjectControllerImplementation::loadCommands() {
 }
 
 void ObjectControllerImplementation::finalize() {
-	configManager = NULL;
-	queueCommands = NULL;
+	configManager = nullptr;
+	queueCommands = nullptr;
 }
 
 bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient, bool allowOverflow) {
 	ManagedReference<SceneObject*> parent = objectToTransfer->getParent().get();
 
-	if (parent == NULL) {
-		error("objectToTransfer parent is NULL in ObjectManager::transferObject");
+	if (parent == nullptr) {
+		error("objectToTransfer parent is nullptr in ObjectManager::transferObject");
 		return false;
 	}
 
@@ -76,7 +76,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	float durationTime = 0.f;
 
-	if (queueCommand == NULL) {
+	if (queueCommand == nullptr) {
 		StringBuffer msg;
 		msg << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
 		object->error(msg.toString());
@@ -121,7 +121,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			if(object->isPlayerCreature()) {
 				Reference<PlayerObject*> ghost =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-				if (ghost == NULL || !ghost->hasGodMode() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
+				if (ghost == nullptr || !ghost->hasGodMode() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
 					StringBuffer logEntry;
 					logEntry << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
 							<< "' command without permissions";
@@ -186,7 +186,7 @@ void ObjectControllerImplementation::logAdminCommand(SceneObject* object, const 
 
 	Reference<SceneObject*> targetObject = Core::getObjectBroker()->lookUp(targetID).castTo<SceneObject*>();
 
-	if(targetObject != NULL) {
+	if(targetObject != nullptr) {
 		name = targetObject->getDisplayedName();
 
 		if(targetObject->isPlayerCreature())

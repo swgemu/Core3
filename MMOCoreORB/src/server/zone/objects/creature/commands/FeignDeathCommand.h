@@ -48,7 +48,7 @@ public:
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
 		ManagedReference<CreatureObject*> creo = creature->asCreatureObject();
 
-		if(creo == NULL)
+		if(creo == nullptr)
 			return;
 
 		Locker lock(creo);

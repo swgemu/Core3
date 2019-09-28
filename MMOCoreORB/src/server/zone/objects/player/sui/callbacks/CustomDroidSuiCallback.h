@@ -34,10 +34,10 @@ public:
 			return;
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if(obj == NULL)
+		if(obj == nullptr)
 			return;
 
-		if( customizationKit == NULL )
+		if( customizationKit == nullptr )
 			return;
 
 		ManagedReference<TangibleObject*> target = cast<TangibleObject*>(obj.get());
@@ -49,9 +49,9 @@ public:
 			if(index < 0 || index > 3)
 				return;
 
-			if(server != NULL) {
+			if(server != nullptr) {
 
-				if (target == NULL || !target->isDroidObject()) {
+				if (target == nullptr || !target->isDroidObject()) {
 					creature->sendSystemMessage("You can only use this tool to customize droids");
 					return;
 				}

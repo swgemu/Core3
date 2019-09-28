@@ -18,7 +18,7 @@ void RecycleToolImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	RecycleToolTemplate* recycleToolData = dynamic_cast<RecycleToolTemplate*>(templateData);
 
-	if (recycleToolData == NULL) {
+	if (recycleToolData == nullptr) {
 		throw Exception("invalid template for RecycleTool");
 	}
 
@@ -35,14 +35,14 @@ void RecycleToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 
 	SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(_this.getReferenceUnsafeStaticCast()->getServerObjectCRC());
 
-	if (templateData == NULL) {
+	if (templateData == nullptr) {
 		error("No template data for: " + String::valueOf(_this.getReferenceUnsafeStaticCast()->getServerObjectCRC()));
 		return;
 	}
 
 	RecycleToolTemplate* recycleToolData = dynamic_cast<RecycleToolTemplate*>(templateData);
 
-	if (recycleToolData == NULL) {
+	if (recycleToolData == nullptr) {
 		error("No RecycleToolTemplate for: " + String::valueOf(_this.getReferenceUnsafeStaticCast()->getServerObjectCRC()));
 		return;
 	}
@@ -58,7 +58,7 @@ int RecycleToolImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	if (isASubChildOf(player)) {
 		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(_this.getReferenceUnsafeStaticCast()->getServerObjectCRC());
 
-		if (templateData == NULL || !templateData->isRecycleToolTemplate())
+		if (templateData == nullptr || !templateData->isRecycleToolTemplate())
 			return 1;
 
 		RecycleToolTemplate* recycleToolData = dynamic_cast<RecycleToolTemplate*>(templateData);

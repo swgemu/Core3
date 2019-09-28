@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:no_valid_structurestatus"); //Your /structureStatus target is no longer valid. Cancelling refresh.
 			return;
 		}

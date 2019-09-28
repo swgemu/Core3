@@ -25,7 +25,7 @@ public:
 		bool cancelPressed = (eventIndex == 1);
 
 		ManagedReference<VendorAdBarkingSession*> session = creature->getActiveSession(SessionFacadeType::VENDORADBARKING).castTo<VendorAdBarkingSession*>();
-		if(session == NULL)
+		if(session == nullptr)
 			return;
 
 		if(sui->getWindowType() == SuiWindowType::VENDOR_PHRASES)
@@ -46,7 +46,7 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>(sui);
 		int index = Integer::valueOf(args->get(0).toString());
 
-		if(cancelPressed || listBox == NULL || (index < 0 || index > 14)) {
+		if(cancelPressed || listBox == nullptr || (index < 0 || index > 14)) {
 			session->cancelSession();
 			return;
 		}
@@ -65,7 +65,7 @@ public:
 	void handleCustomMessage(VendorAdBarkingSession* session, CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
 		SuiInputBox* inputBox = cast<SuiInputBox*>(sui);
 
-		if(cancelPressed || inputBox == NULL) {
+		if(cancelPressed || inputBox == nullptr) {
 			session->sendPhraseOptions();
 			return;
 		}
@@ -89,7 +89,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		if(cancelPressed || listBox == NULL || (index < 0 || index > 16)) {
+		if(cancelPressed || listBox == nullptr || (index < 0 || index > 16)) {
 			session->sendPhraseOptions();
 			return;
 		}
@@ -103,7 +103,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		if(cancelPressed || listBox == NULL || (index < 0 || index > 16)) {
+		if(cancelPressed || listBox == nullptr || (index < 0 || index > 16)) {
 			session->sendPhraseOptions();
 			return;
 		}

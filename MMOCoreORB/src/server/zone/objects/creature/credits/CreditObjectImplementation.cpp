@@ -12,7 +12,7 @@ void CreditObjectImplementation::setCashCredits(int credits, bool notifyClient) 
 
 	if (notifyClient) {
 		Reference<CreatureObject*> creo = owner.get();
-		if (creo == NULL)
+		if (creo == nullptr)
 			return;
 
 		DeltaMessage *msg = new DeltaMessage(creo->getObjectID(), 'CREO', 1);
@@ -41,7 +41,7 @@ void CreditObjectImplementation::setBankCredits(int credits, bool notifyClient) 
 
 	if (notifyClient) {
 		Reference<CreatureObject*> creo = owner.get();
-		if (creo == NULL)
+		if (creo == nullptr)
 			return;
 
 		DeltaMessage *msg = new DeltaMessage(creo->getObjectID(), 'CREO', 1);

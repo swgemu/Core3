@@ -19,7 +19,7 @@ uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, Creatur
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(healer->getRootParent());
 
-		if (building != NULL && factionPerk > 0 && building->isPlayerRegisteredWithin(healer->getObjectID())) {
+		if (building != nullptr && factionPerk > 0 && building->isPlayerRegisteredWithin(healer->getObjectID())) {
 			unsigned int buildingFaction = building->getFaction();
 			unsigned int healerFaction = healer->getFaction();
 

@@ -29,7 +29,7 @@ public:
 	}
 
 	void run() {
-		if (group == NULL || player == NULL || corpse == NULL)
+		if (group == nullptr || player == nullptr || corpse == nullptr)
 			return;
 
 		Locker clocker(corpse);
@@ -37,7 +37,7 @@ public:
 
 		//Get the corpse's inventory.
 		SceneObject* lootContainer = corpse->getSlottedObject("inventory");
-		if (lootContainer == NULL)
+		if (lootContainer == nullptr)
 			return;
 
 		switch (group->getLootRule()) {
@@ -60,7 +60,7 @@ public:
 			//Stop player looting corpse if lottery in progress, otherwise open corpse to player.
 			if (corpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY)) {
 				ManagedReference<LootLotterySession*> session = cast<LootLotterySession*>(corpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).get());
-				if (session == NULL) {
+				if (session == nullptr) {
 					corpse->dropActiveSession(SessionFacadeType::LOOTLOTTERY);
 				} else if (!session->isLotteryFinished()) {
 					StringIdChatParameter msg("group","still_waiting"); //"Still waiting for your group members..."
@@ -143,7 +143,7 @@ public:
 		Vector<CreatureObject*> payees;
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			ManagedReference<CreatureObject*> object = group->getGroupMember(i);
-			if (object == NULL || !object->isPlayerCreature())
+			if (object == nullptr || !object->isPlayerCreature())
 				continue;
 
 			if (!object->isInRange(corpse, 128.f))
@@ -216,7 +216,7 @@ public:
 	bool membersInRange() {
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
-			if (member == NULL || !member->isPlayerCreature())
+			if (member == nullptr || !member->isPlayerCreature())
 				continue;
 
 			if (member != player && member->isInRange(corpse, 128.f))

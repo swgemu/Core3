@@ -19,7 +19,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL || ghost->getAdminLevel() < 15) {
+		if (ghost == nullptr || ghost->getAdminLevel() < 15) {
 			return 1;
 		}
 
@@ -50,7 +50,7 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* player) {
-		if (player != NULL)
+		if (player != nullptr)
 			player->sendSystemMessage("Syntax: /server market [enable/disable/info]");
 	}
 

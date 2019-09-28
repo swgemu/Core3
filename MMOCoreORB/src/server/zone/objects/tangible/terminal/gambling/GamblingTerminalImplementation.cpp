@@ -203,13 +203,13 @@ void GamblingTerminalImplementation::closeMenu(CreatureObject* player, bool payo
 			uint32 payoutBoxID = box->getPayoutBoxID();
 
 			ManagedReference<SuiBox*> sui = ghost->getSuiBox(payoutBoxID);
-			if (sui != NULL) {
+			if (sui != nullptr) {
 				player->sendMessage(sui->generateCloseMessage());
 				ghost->removeSuiBox(payoutBoxID);
 			}
 		}
 
-		if (box != NULL)
+		if (box != nullptr)
 			player->sendMessage(box->generateCloseMessage());
 
 		ghost->removeSuiBox(boxID);
@@ -284,7 +284,7 @@ void GamblingTerminalImplementation::statusUpdate(int event) {
 		}
 		case ROULETTEMACHINE: {
 
-			statusUpdate(NULL, event);
+			statusUpdate(nullptr, event);
 
 			break;
 		}
@@ -298,7 +298,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 			switch (event) {
 				case JOINTERMINAL: {
 
-					if (player != NULL) {
+					if (player != nullptr) {
 
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_join");
 						textPlayer.setTO(getMachineTypeText());
@@ -309,7 +309,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case LEAVETERMINAL: {
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_leave");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
@@ -319,7 +319,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case GAMESTARTED: {
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						player->sendSystemMessage("@gambling/default_interface:wheel_spin");
 					}
 
@@ -329,7 +329,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					//Locker _locker(_this.getReferenceUnsafeStaticCast()); Unnecessary, called from continue which locks
 					first = System::random(7);
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
 						player->sendSystemMessage("-- | " + String::valueOf(first) + " | | Rolling... | | Rolling... | --");
 					}
@@ -340,7 +340,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 					second = System::random(7);
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
 						player->sendSystemMessage("-- | " + String::valueOf(first) + " | | " + String::valueOf(second) + " | | Rolling... | --");
 					}
@@ -351,7 +351,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 					third = System::random(7);
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
 						player->sendSystemMessage("-- | " + String::valueOf(first) + " | | " + String::valueOf(second) + " | | " + String::valueOf(third) + "| --");
 					}
@@ -369,7 +369,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					StringIdChatParameter textOthers("gambling/default_interface","prose_player_join_other");
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_join");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
@@ -385,7 +385,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					StringIdChatParameter textOthers("gambling/default_interface","prose_player_leave_other");
 
-					if (player != NULL) {
+					if (player != nullptr) {
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_leave");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
@@ -559,7 +559,7 @@ void GamblingTerminalImplementation::notifyAll(StringIdChatParameter* text) {
 }
 
 void GamblingTerminalImplementation::notifyOthers(CreatureObject* player, StringIdChatParameter* text) {
-	if (player != NULL) {
+	if (player != nullptr) {
 		for (int i = 0; i < playersWindows.size(); ++i) {
 			if (playersWindows.elementAt(i).getKey() != player) {
 				playersWindows.elementAt(i).getKey()->sendSystemMessage(*text);

@@ -23,7 +23,7 @@ public:
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-			if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
+			if (targetObject == nullptr || !targetObject->isTangibleObject() || targetObject == creature)
 				return INVALIDTARGET;
 
 			if (creature->isProne())

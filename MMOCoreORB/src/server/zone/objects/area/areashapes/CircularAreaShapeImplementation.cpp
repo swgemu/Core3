@@ -50,7 +50,7 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin
 }
 
 bool CircularAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
-	if (areaShape == NULL) {
+	if (areaShape == nullptr) {
 		return false;
 	}
 

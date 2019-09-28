@@ -16,7 +16,7 @@ ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d
 	name = n;
 	depth = d;
 
-	parentNode = NULL;
+	parentNode = nullptr;
 
 	maxtype = mintype = maxpool = minpool = 0;
 }
@@ -28,14 +28,14 @@ ResourceTreeNode::~ResourceTreeNode() {
 	while (entries.size() > 0)
 		delete entries.remove(0);
 
-	parentNode = NULL;
+	parentNode = nullptr;
 }
 
-String ResourceTreeNode::getName() {
+String ResourceTreeNode::getName() const {
 	return name;
 }
 
-String ResourceTreeNode::getStfName() {
+String ResourceTreeNode::getStfName() const {
 	return stfName;
 }
 
@@ -44,6 +44,10 @@ void ResourceTreeNode::setParentNode(ResourceTreeNode* parent) {
 }
 
 ResourceTreeNode* ResourceTreeNode::getParentNode() {
+	return parentNode;
+}
+
+const ResourceTreeNode* ResourceTreeNode::getParentNode() const {
 	return parentNode;
 }
 
@@ -88,8 +92,27 @@ void ResourceTreeNode::add(ResourceTreeEntry* entry) {
 	}
 }
 
+const ResourceTreeEntry* ResourceTreeNode::find(const String& type, const ResourceTreeEntry* entry) const {
+	if (entry != nullptr)
+		return entry;
+
+	for(int i = 0; i < entries.size(); ++i) {
+		const ResourceTreeEntry* ent = entries.get(i);
+
+		if(ent->getType() == type || ent->getFinalClass() == type) {
+			return ent;
+		}
+	}
+
+	for(int i = 0; i < nodes.size(); ++i) {
+		const ResourceTreeNode* node = nodes.get(i);
+		entry = node->find(type, entry);
+	}
+	return entry;
+}
+
 ResourceTreeEntry* ResourceTreeNode::find(const String& type, ResourceTreeEntry* entry) {
-	if (entry != NULL)
+	if (entry != nullptr)
 		return entry;
 
 	for(int i = 0; i < entries.size(); ++i) {
@@ -107,8 +130,24 @@ ResourceTreeEntry* ResourceTreeNode::find(const String& type, ResourceTreeEntry*
 	return entry;
 }
 
+const ResourceTreeNode* ResourceTreeNode::findNode(const String& type, const ResourceTreeNode* node) const {
+	if (node != nullptr)
+		return node;
+
+	for (int i = 0; i < nodes.size(); ++i) {
+		const ResourceTreeNode* n = nodes.get(i);
+
+		if (n->getStfName() == type || n->getName() == type)
+			return n;
+
+		node = n->findNode(type, node);
+	}
+
+	return node;
+}
+
 ResourceTreeNode* ResourceTreeNode::findNode(const String& type, ResourceTreeNode* node) {
-	if (node != NULL)
+	if (node != nullptr)
 		return node;
 
 	for (int i = 0; i < nodes.size(); ++i) {
@@ -123,24 +162,24 @@ ResourceTreeNode* ResourceTreeNode::findNode(const String& type, ResourceTreeNod
 	return node;
 }
 
-ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
-		const Vector<String>& excludes, const String& zoneName) {
+const ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
+		const Vector<String>& excludes, const String& zoneName) const {
 
-	ResourceTreeEntry* entry = NULL;
+	const ResourceTreeEntry* entry = nullptr;
 	entry = find(type, entry);
 
-	if(entry == NULL)
-		return NULL;
+	if(entry == nullptr)
+		return nullptr;
 
 	// If the entry has no childen, it means
 	// that a specific resource was requested
 	if(!entry->hasChildren())
 		return entry;
 
-	 ResourceTreeNode* node = entry->getMyNode()->findNode(type);
+	auto node = entry->getMyNode()->findNode(type);
 
-	if(node == NULL)
-		return NULL;
+	if(node == nullptr)
+		return nullptr;
 
 	if (zoneName != "") {
 
@@ -153,7 +192,7 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 		node->getEntryPool(candidates, excludes);
 
 		if(candidates.size() == 0)
-			return NULL;
+			return nullptr;
 
 		int random = System::random(candidates.size() - 1);
 
@@ -161,20 +200,19 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 	}
 }
 
-ResourceTreeEntry* ResourceTreeNode::getPlanetSpecificEntry(const String& planet) {
+const ResourceTreeEntry* ResourceTreeNode::getPlanetSpecificEntry(const String& planet) const {
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
 		if(ent->getType().indexOf(planet) != -1) {
 			return ent;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
-		const Vector<String> excludes) {
+		const Vector<String> excludes) const {
 	for(int i = 0; i < entries.size(); ++i) {
-
 		ResourceTreeEntry* ent = entries.get(i);
 		bool valid = true;
 
@@ -205,7 +243,7 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 		ResourceTreeEntry* ent = entries.get(i);
 		ResourceTreeNode* node = ent->getMyNode();
 		ent->addClass(ent->getType());
-		while(node->getParentNode() != NULL) {
+		while(node->getParentNode() != nullptr) {
 			ent->addClass(node->getName());
 			node = node->getParentNode();
 		}
@@ -218,11 +256,11 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 	}
 }*/
 
-void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) {
+void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) const {
 	suil->setPromptTitle("@veteran:resource_title"); //Resources
 
 	for(int i = 0; i < nodes.size(); ++i) {
-		if (parentNode != NULL)
+		if (parentNode != nullptr)
 			suil->setPromptText("@veteran:choose_sub_class"); //Chose resource class from
 		else
 			suil->setPromptText("@veteran:choose_class"); //Choose resource class
@@ -238,7 +276,7 @@ void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) {
 	}
 }
 
-void ResourceTreeNode::toString() {
+void ResourceTreeNode::toString() const {
 	System::out << "--- Node " << depth << " : " << name << "---" << stfName << endl;
 
 	System::out << "NODES" << endl;

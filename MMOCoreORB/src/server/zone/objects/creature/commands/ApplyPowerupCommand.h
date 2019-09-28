@@ -29,7 +29,7 @@ public:
 
 		ManagedReference<PowerupObject*> pup = server->getZoneServer()->getObject(target).castTo<PowerupObject*>();
 
-		if (pup == NULL)
+		if (pup == nullptr)
 			return GENERALERROR;
 
 		if (!args.hasMoreTokens())
@@ -39,7 +39,7 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = server->getZoneServer()->getObject(targetObjectID).castTo<WeaponObject*>();
 
-		if (weapon == NULL)
+		if (weapon == nullptr)
 			return GENERALERROR;
 
 		if (!pup->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
@@ -50,7 +50,7 @@ public:
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-		if (inventory == NULL)
+		if (inventory == nullptr)
 			return GENERALERROR;
 
 		if (!inventory->hasObjectInContainer(weapon->getObjectID()) && weapon->getParent().get() != creature)

@@ -31,7 +31,7 @@ public:
 		/* TODO: Better method of this.
 		ManagedReference<ActiveArea*> region = terminal->getActiveRegion();
 
-		if (region != NULL && region->isRegion())
+		if (region != nullptr && region->isRegion())
 			insertAscii(region->getDisplayedName());
 		else
 			insertAscii(terminal->getZone()->getZoneName());
@@ -48,7 +48,7 @@ public:
 			if (datapadObject->getGameObjectType() == SceneObjectType::SHIPCONTROLDEVICE) {
 				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
 
-				if (shipControlDevice->getControlledObject() != NULL) {
+				if (shipControlDevice->getControlledObject() != nullptr) {
 					ManagedReference<ShipObject*> ship = cast<ShipObject*>( shipControlDevice->getControlledObject());
 
 					insertLong(ship->getObjectID());

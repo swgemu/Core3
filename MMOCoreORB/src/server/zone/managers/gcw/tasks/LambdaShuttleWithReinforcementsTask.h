@@ -73,7 +73,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		float y = lambdaShuttle->getPositionY() + yOffset;
 		float z = zone->getHeight(x, y);
 		CreatureObject* npc = zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false);
-		if (npc != NULL) {
+		if (npc != nullptr) {
 			containmentTeam.add(npc);
 		}
 	}
@@ -129,7 +129,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
 			ManagedReference<CreatureObject*> npc = containmentTeam.get(i).get();
-			if (npc != NULL) {
+			if (npc != nullptr) {
 				Locker npcLock(npc);
 				if (npc->isInCombat()) {
 					rescheduleTask = true;
@@ -152,11 +152,11 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	SceneObject* getLambdaShuttle(CreatureObject* player) {
 		ManagedReference<SceneObject*> lambdaShuttle = weakLambdaShuttle.get();
 
-		if (lambdaShuttle == NULL) {
+		if (lambdaShuttle == nullptr) {
 			ZoneServer* zoneServer = player->getZoneServer();
 
-			if (zoneServer == NULL) {
-				return NULL;
+			if (zoneServer == nullptr) {
+				return nullptr;
 			}
 
 			weakLambdaShuttle = zoneServer->createObject(LAMBDATEMPLATE.hashCode(), 0);
@@ -188,13 +188,13 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = weakPlayer.get();
 
-		if (player == NULL) {
+		if (player == nullptr) {
 			return;
 		}
 
 		ManagedReference<SceneObject*> lambdaShuttle = getLambdaShuttle(player);
 
-		if (lambdaShuttle == NULL) {
+		if (lambdaShuttle == nullptr) {
 			return;
 		}
 

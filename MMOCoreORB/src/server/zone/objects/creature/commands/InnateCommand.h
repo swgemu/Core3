@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			return GENERALERROR;
 
 		if (!ghost->hasAbility(innateCommand)) {

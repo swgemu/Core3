@@ -44,7 +44,7 @@ const String& ValuesMap::getExperimentalPropertyTitle(const String& subtitle) co
 const String& ValuesMap::getExperimentalPropertyTitle(const int i) const {
 	auto subclasses = get(i);
 
-	if (subclasses != NULL) {
+	if (subclasses != nullptr) {
 		return subclasses->getClassTitle();
 	}
 
@@ -110,7 +110,7 @@ const String& ValuesMap::getExperimentalPropertySubtitle(const int i) const {
 const String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const int i) const {
 	const Subclasses* subclasses = get(title);
 
-	if (subclasses != NULL)
+	if (subclasses != nullptr)
 		return subclasses->get(i)->getName();
 	else
 		return EMPTY;
@@ -132,7 +132,7 @@ int ValuesMap::getExperimentalPropertySubtitleSize() const {
 int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) const {
 	const Subclasses* subclasses = get(title);
 
-	if (subclasses != NULL)
+	if (subclasses != nullptr)
 		return subclasses->size();
 
 	return (int)VALUENOTFOUND;
@@ -455,7 +455,7 @@ float ValuesMap::getCurrentPercentage(const int i) const {
 float ValuesMap::getCurrentVisiblePercentage(const String title) const {
 	const Subclasses* subclasses = get(title);
 
-	if (subclasses == NULL)
+	if (subclasses == nullptr)
 		return -1;
 
 	const Values* values;

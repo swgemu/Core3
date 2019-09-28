@@ -19,12 +19,12 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (controlDevice == NULL)
+		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
 
-		if (pet == NULL)
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -34,7 +34,7 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
-		if (targetObject == NULL || !targetObject->isCreatureObject() ) { // pets should be able to follow other mobiles as a command. i found multiple references to this. -- washu
+		if (targetObject == nullptr || !targetObject->isCreatureObject() ) { // pets should be able to follow other mobiles as a command. i found multiple references to this. -- washu
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
@@ -48,12 +48,12 @@ public:
 
 		ManagedReference<CreatureObject*> player = server->getZoneServer()->getObject(playerID, true).castTo<CreatureObject*>();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return GENERALERROR;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		if (targetCreature == NULL)
+		if (targetCreature == nullptr)
 			return GENERALERROR;
 
 		if (targetCreature != player && targetCreature->isAttackableBy(creature) && !CollisionManager::checkLineOfSight(player, targetObject)) {
@@ -63,7 +63,7 @@ public:
 
 		Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
 
-		if (targetCell != NULL) {
+		if (targetCell != nullptr) {
 			auto perms = targetCell->getContainerPermissions();
 
 			if (!perms->hasInheritPermissionsFromParent()) {
@@ -77,7 +77,7 @@ public:
 		// Check if droid has power
 		if( controlDevice->getPetType() == PetManager::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == NULL )
+			if( droidPet == nullptr )
 				return GENERALERROR;
 
 			if( !droidPet->hasPower() ){

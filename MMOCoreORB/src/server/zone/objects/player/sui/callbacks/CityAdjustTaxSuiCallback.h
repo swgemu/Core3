@@ -42,7 +42,7 @@ public:
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL || !suiBox->isListBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (city == nullptr || !suiBox->isListBox() || player == nullptr || cancelPressed || args->size() <= 0) {
 			return;
 		}
 

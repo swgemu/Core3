@@ -33,12 +33,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
-		if (playerObject == NULL)
+		if (playerObject == nullptr)
 			return;
 
 		bool godMode = false;
@@ -48,7 +48,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == player) {
+		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == player) {
 			//player->error("invalid target to trade " + String::valueOf(targetToTrade));
 			return;
 		}
@@ -60,10 +60,10 @@ public:
 
 		ManagedReference<TradeSession*> playerTradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-		if (player->isInCombat() || (playerTradeContainer != NULL && playerTradeContainer->getTradeTargetPlayer() == targetToTrade))
+		if (player->isInCombat() || (playerTradeContainer != nullptr && playerTradeContainer->getTradeTargetPlayer() == targetToTrade))
 			return;
 
-		if (playerTradeContainer == NULL) {
+		if (playerTradeContainer == nullptr) {
 			playerTradeContainer = new TradeSession();
 			player->addActiveSession(SessionFacadeType::TRADE, playerTradeContainer);
 		}
@@ -74,7 +74,7 @@ public:
 
 		ManagedReference<TradeSession*> targetTradeContainer = targetPlayer->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-		if (targetTradeContainer != NULL && targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
+		if (targetTradeContainer != nullptr && targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
 			BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());
 			player->sendMessage(msg);
 

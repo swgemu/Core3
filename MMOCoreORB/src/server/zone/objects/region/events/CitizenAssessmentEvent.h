@@ -19,7 +19,7 @@ public:
 	void run() {
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL)
+		if (city == nullptr)
 			return;
 
 		CityManager* cityManager = zoneServer->getCityManager();

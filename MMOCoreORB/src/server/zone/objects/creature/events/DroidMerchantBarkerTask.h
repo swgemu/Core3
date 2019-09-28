@@ -27,13 +27,13 @@ public:
 
 	void run() {
 
-		if (module == NULL) {
+		if (module == nullptr) {
 			return;
 		}
 
 		ManagedReference<DroidObject*> droid = module->getDroidObject();
 
-		if (droid == NULL) {
+		if (droid == nullptr) {
 			return;
 		}
 
@@ -42,10 +42,10 @@ public:
 		droid->removePendingTask("barking");
 
 		// Check if droid is spawned
-		if (droid->getLocalZone() == NULL) {  // Not outdoors
+		if (droid->getLocalZone() == nullptr) {  // Not outdoors
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
 
-			if (parent == NULL || !parent.get()->isCellObject()) { // Not indoors either
+			if (parent == nullptr || !parent.get()->isCellObject()) { // Not indoors either
 				module->deactivate();
 				return;
 			}
@@ -74,7 +74,7 @@ public:
 		}
 
 		Zone* zone = droid->getZone();
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			return;
 		}
 
@@ -83,7 +83,7 @@ public:
 		// Get nearby people and bark
 		CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
 		SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
-		if (vec != NULL) {
+		if (vec != nullptr) {
 			vec->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
 		} else {
 #ifdef COV_DEBUG

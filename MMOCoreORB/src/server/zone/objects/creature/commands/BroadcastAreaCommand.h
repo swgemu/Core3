@@ -68,7 +68,7 @@ public:
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
-		if (creature->getCloseObjects() == NULL || range > ZoneServer::CLOSEOBJECTRANGE) {
+		if (creature->getCloseObjects() == nullptr || range > ZoneServer::CLOSEOBJECTRANGE) {
 #ifdef COV_DEBUG
 			creature->info("Null closeobjects vector in BroadcastAreaCommand::doQueueCommand", true);
 #endif

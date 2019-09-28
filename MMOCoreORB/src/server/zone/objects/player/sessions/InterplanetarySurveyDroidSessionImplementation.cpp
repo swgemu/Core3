@@ -12,7 +12,7 @@
 
 int InterplanetarySurveyDroidSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = this->player.get();
-	if (player != NULL) {
+	if (player != nullptr) {
 		player->dropActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
 		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::SURVERY_DROID_MENU);
 	}
@@ -25,12 +25,12 @@ int InterplanetarySurveyDroidSessionImplementation::cancelSession() {
 bool InterplanetarySurveyDroidSessionImplementation::hasSurveyTool() {
 	ManagedReference<CreatureObject*> player = this->player.get();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return false;
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory == NULL)
+	if (inventory == nullptr)
 		return false;
 
 	Locker inventoryLocker(inventory);
@@ -60,7 +60,7 @@ void InterplanetarySurveyDroidSessionImplementation::initalizeDroid(TangibleObje
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory == NULL) {
+	if (inventory == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -93,7 +93,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 	ManagedReference<CreatureObject*> player = this->player.get();
 	ManagedReference<TangibleObject*> tangibleObject = this->droidObject.get();
 
-	if (tangibleObject == NULL || player == NULL || player != pl)
+	if (tangibleObject == nullptr || player == nullptr || player != pl)
 		return;
 
 	// which did he pick? first or second callback?
@@ -102,7 +102,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		uint64 chosen = droidSuiBox->getMenuObjectID(menuID);
 		ManagedReference<SceneObject*> obj = pl->getZoneServer()->getObject(chosen);
 
-		if (obj == NULL) {
+		if (obj == nullptr) {
 			player->sendSystemMessage("@pet/droid_modules:survey_no_survey_tools");
 			cancelSession();
 			return;
@@ -112,7 +112,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 
 		SurveyTool* tool = cast<SurveyTool*>(obj.get());
 
-		if (tool == NULL) {
+		if (tool == nullptr) {
 			player->sendSystemMessage("@pet/droid_modules:survey_no_survey_tools");
 			cancelSession();
 			return;
@@ -134,7 +134,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		// picked planet let rock and roll.
 		ManagedReference<SurveyTool*> tool = this->toolObject.get();
 
-		if (tool == NULL) {
+		if (tool == nullptr) {
 			cancelSession();
 			return;
 		}
@@ -144,7 +144,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 
 		Component* component = dynamic_cast<Component*>(tangibleObject.get());
 
-		if (component == NULL) {
+		if (component == nullptr) {
 			cancelSession();
 			return;
 		}

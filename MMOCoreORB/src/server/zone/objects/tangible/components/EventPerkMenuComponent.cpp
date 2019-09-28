@@ -13,28 +13,28 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == NULL) {
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == nullptr) {
 		auto permissions = sceneObject->getContainerPermissions();
 		uint64 objectID = permissions->getOwnerID();
 
 		Reference<SceneObject*> owner = Core::getObjectBroker()->lookUp(objectID).castTo<SceneObject*>();
 
-		if (owner == NULL) {
-			player->sendSystemMessage("Error: perk parent object is NULL.");
+		if (owner == nullptr) {
+			player->sendSystemMessage("Error: perk parent object is nullptr.");
 			return;
 		}
 		data = cast<EventPerkDataComponent*>(owner->getDataObjectComponent()->get());
 	}
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return;
 	}
 
 	EventPerkDeed* deed = data->getDeed();
 
-	if (deed == NULL) {
-		player->sendSystemMessage("Error: deed is NULL.");
+	if (deed == nullptr) {
+		player->sendSystemMessage("Error: deed is nullptr.");
 		return;
 	}
 
@@ -49,7 +49,7 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 			menuResponse->addRadialMenuItemToRadialID(51, 52, 3, "@event_perk:mnu_rot_left"); // Rotate Left
 			menuResponse->addRadialMenuItemToRadialID(51, 53, 3, "@event_perk:mnu_rot_right"); // Rotate Right
 		}
-	} else if (player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+	} else if (player->getPlayerObject() != nullptr && player->getPlayerObject()->isPrivileged()) {
 		menuResponse->addRadialMenuItem(132, 3, "@event_perk:mnu_show_exp_time"); // Show Expiration Time
 	}
 }
@@ -57,7 +57,7 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == NULL) {
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == nullptr) {
 		auto permissions = sceneObject->getContainerPermissions();
 		uint64 objectID = permissions->getOwnerID();
 
@@ -66,21 +66,21 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		data = cast<EventPerkDataComponent*>(owner->getDataObjectComponent()->get());
 	}
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return 1;
 	}
 
 	EventPerkDeed* deed = data->getDeed();
 
-	if (deed == NULL) {
-		player->sendSystemMessage("Error: deed is NULL.");
+	if (deed == nullptr) {
+		player->sendSystemMessage("Error: deed is nullptr.");
 		return 1;
 	}
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL) {
+	if (ghost == nullptr) {
 		return 1;
 	}
 
@@ -113,12 +113,12 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (inventory == NULL || inventory->isContainerFullRecursive()) {
+		if (inventory == nullptr || inventory->isContainerFullRecursive()) {
 			player->sendSystemMessage("@event_perk:redeed_failed"); // The rental could not be re-deeded.
 			return 1;
 		}
 
-		if (ghost == NULL || (!ghost->isPrivileged() && ghost->getEventPerkCount() > 5)) {
+		if (ghost == nullptr || (!ghost->isPrivileged() && ghost->getEventPerkCount() > 5)) {
 			player->sendSystemMessage("@event_perk:redeed_too_many_deeds"); // You have too many rental deeds in your possession and cannot redeed this rental.
 			return 1;
 		}
@@ -129,7 +129,7 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 
 		ManagedReference<TangibleObject*> perk = deed->getGeneratedObject().get();
 
-		if (perk != NULL) {
+		if (perk != nullptr) {
 			Locker perkLock(perk);
 			perk->destroyChildObjects();
 			perk->destroyObjectFromWorld(true);

@@ -1,11 +1,11 @@
 #include "SceneObject.h"
 
 SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
-	parent = NULL;
+	parent = nullptr;
 
 	objectID = 0;
 
-	slottedObjects.setNullValue(NULL);
+	slottedObjects.setNullValue(nullptr);
 	objectName.setStringId(String(templateData->getStringField("objectName")));
 
 	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
@@ -45,15 +45,15 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	String fullPath;
 	objectName.getFullPath(fullPath);
 
-	client = NULL;
-	zone = NULL;
+	client = nullptr;
+	zone = nullptr;
 
 	info("created " + fullPath);
 }
 
 SceneObject::~SceneObject() {
-	/*if (parent != NULL) {
-		error("DELETING OBJECT WITH PARENT NOT NULL");
+	/*if (parent != nullptr) {
+		error("DELETING OBJECT WITH PARENT NOT nullptr");
 	}*/
 	info("destroying object");
 
@@ -68,7 +68,7 @@ SceneObject::~SceneObject() {
 
 		removeObject(object);
 
-		object->setParent(NULL);
+		object->setParent(nullptr);
 
 		zone->getObjectManager()->destroyObject(object->getObjectID());
 	}
@@ -76,7 +76,7 @@ SceneObject::~SceneObject() {
 
 	while (containerObjects.size() > 0) {
 		SceneObject* object = containerObjects.get(0);
-		object->setParent(NULL);
+		object->setParent(nullptr);
 
 		containerObjects.drop(object->getObjectID());
 
@@ -142,7 +142,7 @@ bool SceneObject::removeObject(SceneObject* object) {
 		return false;
 	}
 
-	object->setParent(NULL);
+	object->setParent(nullptr);
 
 	/*if (notifyClient)
 		broadcastMessage(object->link(0, 0xFFFFFFFF));*/

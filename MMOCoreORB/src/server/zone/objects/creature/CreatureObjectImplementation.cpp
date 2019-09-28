@@ -1423,8 +1423,8 @@ void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, b
 	}
 }
 
-int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
-	Locker locker(&skillModMutex);
+int CreatureObjectImplementation::getSkillMod(const String& skillmod) const {
+	ReadLocker locker(&skillModMutex);
 
 	return skillModList.getSkillMod(skillmod);
 }
@@ -1827,7 +1827,7 @@ void CreatureObjectImplementation::updateTerrainNegotiation()
 	sendMessage(codm4);
 }
 
-float CreatureObjectImplementation::getTerrainNegotiation() {
+float CreatureObjectImplementation::getTerrainNegotiation() const {
 	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
 
 	if (slopeMod > 1)

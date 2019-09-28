@@ -91,12 +91,12 @@ void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
 
 }
 void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	if (manufactureSchematic == NULL)
+	if (manufactureSchematic == nullptr)
 		return;
 
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
 
-	if (draftSchematic == NULL)
+	if (draftSchematic == nullptr)
 		return;
 
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
@@ -118,7 +118,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 	GeneticComponent* genetic = cast<GeneticComponent*>(prototype);
 
-	if (genetic == NULL)
+	if (genetic == nullptr)
 		return;
 
 	HashTable<String, ManagedReference<DnaComponent*> > slots;
@@ -128,17 +128,17 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		Reference<IngredientSlot* > iSlot = manufactureSchematic->getSlot(i);
 		ComponentSlot* cSlot = iSlot.castTo<ComponentSlot*>();
 
-		if (cSlot == NULL)
+		if (cSlot == nullptr)
 			continue;
 
 		ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
 
-		if (tano == NULL)
+		if (tano == nullptr)
 			continue;
 
 		ManagedReference<DnaComponent*> component = tano.castTo<DnaComponent*>();
 
-		if (component == NULL)
+		if (component == nullptr)
 			continue;
 
 		slots.put(cSlot->getSlotName(), component);
@@ -151,7 +151,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	DnaComponent* psy = slots.get("psychological_profile").get();
 	DnaComponent* agr = slots.get("aggression_profile").get();
 
-	if (phy == NULL || pro == NULL || men == NULL || psy == NULL || agr == NULL)
+	if (phy == nullptr || pro == nullptr || men == nullptr || psy == nullptr || agr == nullptr)
 		return;
 
 	// REVAMP FROM HERE DOWN.

@@ -16,13 +16,13 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 
 	SceneObject* creature = cast<SceneObject*>(observable);
 
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		return 0;
 	}
 
 	ManagedReference<Instrument* > instrument = this->instrument.get();
 
-	if (instrument == NULL || instrument->getZone() == NULL) {
+	if (instrument == nullptr || instrument->getZone() == nullptr) {
 		if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 			creature->dropObserver(ObserverEventType::POSITIONCHANGED, _this.getReferenceUnsafeStaticCast());
 		} else if (eventType == ObserverEventType::POSITIONCHANGED) {

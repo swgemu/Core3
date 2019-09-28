@@ -23,7 +23,7 @@ void WeatherManagerImplementation::initialize() {
 	setLogging(true);
 
 	weatherEnabled = true;
-	weatherChangeEvent = NULL;
+	weatherChangeEvent = nullptr;
 
 	//Load weather configuration from the luas.
 	//info("Loading configuration from Lua.");
@@ -83,7 +83,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 	return true;
 }
 
@@ -119,7 +119,7 @@ void WeatherManagerImplementation::createNewWeatherPattern() {
 	int duration = (System::random(averageWeatherDuration) + (averageWeatherDuration / 2)) / (baseWeather + 1);
 	currentMap = new WeatherMap(weatherStability, zone->getMinX(), zone->getMaxX(), zone->getMinY(), zone->getMaxY(), duration);
 
-	if(weatherChangeEvent != NULL) {
+	if(weatherChangeEvent != nullptr) {
 		if(weatherChangeEvent->isScheduled())
 			weatherChangeEvent->cancel();
 	} else {
@@ -133,7 +133,7 @@ void WeatherManagerImplementation::sendWeatherTo(CreatureObject* player) {
 
 	byte currentWeather = 0;
 
-	if(currentMap != NULL)
+	if(currentMap != nullptr)
 		currentWeather = currentMap->getWeatherAt(player->getPositionX(), player->getPositionY()) + baseWeather;
 	else
 		currentWeather = baseWeather;
@@ -169,7 +169,7 @@ void WeatherManagerImplementation::sendWeatherTo(CreatureObject* player) {
 }
 
 void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	PlayerObject* ghost = player->getPlayerObject();
@@ -179,7 +179,7 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 		return;
 
 	//Check if player is in a shelter.
-	if ((!player->isRidingMount() && player->getParentID() != 0) || player->getCurrentCamp() != NULL)
+	if ((!player->isRidingMount() && player->getParentID() != 0) || player->getCurrentCamp() != nullptr)
 		return;
 
 	//Blind player
@@ -191,9 +191,9 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 	//Apply wounds.
 	int applicableDamage = sandstormDamage - totalCoverings;
 	if (applicableDamage > 0) {
-		player->inflictDamage(NULL, CreatureAttribute::HEALTH, applicableDamage, true, true);
-		player->inflictDamage(NULL, CreatureAttribute::ACTION, applicableDamage, true, true);
-		player->inflictDamage(NULL, CreatureAttribute::MIND, applicableDamage, true, true);
+		player->inflictDamage(nullptr, CreatureAttribute::HEALTH, applicableDamage, true, true);
+		player->inflictDamage(nullptr, CreatureAttribute::ACTION, applicableDamage, true, true);
+		player->inflictDamage(nullptr, CreatureAttribute::MIND, applicableDamage, true, true);
 	}
 
 	//Apply knockdown.
@@ -210,7 +210,7 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 }
 
 int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* player) {
-	if (player == NULL)
+	if (player == nullptr)
 		return 0;
 
 	int protection = 0;
@@ -218,7 +218,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 
 	//Check for protective head gear.
 	ManagedReference<SceneObject*> hat = player->getSlottedObject("hat");
-	if (hat != NULL) {
+	if (hat != nullptr) {
 		crc = hat->getServerObjectCRC();
 		if (crc == 0x612f992f || crc == 0xba3831b8 || crc == 0xdc8d2e72 || crc == 0x754b6f93) //Tusken Raider helmets, Swoop helmet, Large Headwrap.
 			protection += 1;
@@ -229,7 +229,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 	//Check for protective chest covering.
 	bool tuskenRobe = false;
 	ManagedReference<SceneObject*> robe = player->getSlottedObject("chest2");
-	if (robe != NULL) {
+	if (robe != nullptr) {
 		crc = robe->getServerObjectCRC();
 		if (crc == 0xc20d81d9 || crc == 0x191a294e) { //Tusken Robes.
 			tuskenRobe = true;
@@ -245,7 +245,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 	//Check for protective pants.
 	if (!tuskenRobe) {
 		ManagedReference<SceneObject*> pants = player->getSlottedObject("pants1");
-		if (pants != NULL) {
+		if (pants != nullptr) {
 			crc = pants->getServerObjectCRC();
 			if (crc == 0x9488cb5f || crc == 0x10369d36 || crc == 0x9c6cabd4) //Paramilitary Camos, Basic Camos, Reinforced Pants.
 				protection += 1;
@@ -254,7 +254,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 		}
 
 		ManagedReference<SceneObject*> pants2 = player->getSlottedObject("pants2");
-		if (pants2 != NULL) {
+		if (pants2 != nullptr) {
 			if (pants2->isArmorObject())
 				protection += 1;
 		}
@@ -262,7 +262,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 
 	//Check for protective gloves.
 	ManagedReference<SceneObject*> gloves = player->getSlottedObject("gloves");
-	if (gloves != NULL) {
+	if (gloves != nullptr) {
 		crc = gloves->getServerObjectCRC();
 		if (crc == 0x29fc844 || crc == 0x41ba6c29 || crc == 0x614eefaa) //Tusken gloves, Link-Steel Reinforced Gloves, Heavy Gloves.
 			protection += 1;
@@ -272,7 +272,7 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 
 	//Check for protective boots.
 	ManagedReference<SceneObject*> boots = player->getSlottedObject("shoes");
-	if (boots != NULL) {
+	if (boots != nullptr) {
 		crc = boots->getServerObjectCRC();
 		if (crc == 0xbcc9eaac || crc == 0x873644ed) //Tusken boots, Sturdy boots
 			protection += 1;
@@ -289,26 +289,26 @@ void WeatherManagerImplementation::enableWeather(CreatureObject* player) {
 
 	initialize();
 
-	if (player != NULL)
+	if (player != nullptr)
 		player->sendSystemMessage("The weather on this planet will now change automatically.");
 }
 
 void WeatherManagerImplementation::disableWeather(CreatureObject* player) {
 
-	if (player == NULL || !weatherEnabled)
+	if (player == nullptr || !weatherEnabled)
 		return;
 
 	Locker weatherManagerLocker(_this.getReferenceUnsafeStaticCast());
 	weatherEnabled = false;
 
-	if (weatherChangeEvent != NULL) {
+	if (weatherChangeEvent != nullptr) {
 		if (weatherChangeEvent->isScheduled())
 			weatherChangeEvent->cancel();
 
-		weatherChangeEvent = NULL;
+		weatherChangeEvent = nullptr;
 	}
 
-	currentMap = NULL;
+	currentMap = nullptr;
 
 	player->sendSystemMessage("The weather on this planet will no longer change automatically.");
 }
@@ -328,7 +328,7 @@ void WeatherManagerImplementation::changeWeather(CreatureObject* player, int new
 
 void WeatherManagerImplementation::printInfo(CreatureObject* player) {
 
-	if(currentMap == NULL) {
+	if(currentMap == nullptr) {
 		player->sendSystemMessage("The weather currently is " + String::valueOf(baseWeather));
 		return;
 	}

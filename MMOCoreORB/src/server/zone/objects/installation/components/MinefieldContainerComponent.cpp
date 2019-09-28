@@ -11,12 +11,12 @@
 #include "templates/params/creature/CreatureFlag.h"
 
 bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
-	if (sceneObject == NULL || !sceneObject->isTangibleObject())
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject())
 		return false;
 
 	InstallationObject* minefield = cast<InstallationObject*>(sceneObject);
 
-	if (creature == NULL || minefield == NULL)
+	if (creature == nullptr || minefield == nullptr)
 		return false;
 
 	if (creature->getFaction() == 0 || minefield->getFaction() == 0)
@@ -60,7 +60,7 @@ int MinefieldContainerComponent::canAddObject(SceneObject* sceneObject, SceneObj
  */
 int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
-	if (installation == NULL)
+	if (installation == nullptr)
 		return 1;
 
 	// mine isn't attackable if it has mines
@@ -77,11 +77,11 @@ int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, 
  * @param object object that has been inserted
  */
 int MinefieldContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
-	if (sceneObject == NULL || object == NULL)
+	if (sceneObject == nullptr || object == nullptr)
 		return 1;
 
 	ManagedReference<TangibleObject*> installation = cast<TangibleObject*>(sceneObject);
-	if (installation == NULL)
+	if (installation == nullptr)
 		return 1;
 
 	if (installation->getContainerObjectsSize() == 0 && !(installation->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {

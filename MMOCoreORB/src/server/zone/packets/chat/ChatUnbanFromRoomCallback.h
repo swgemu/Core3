@@ -38,11 +38,11 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> unbanner = client->getPlayer();
 
-		if (unbanner == NULL)
+		if (unbanner == nullptr)
 			return;
 
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
-		if (chatManager != NULL)
+		if (chatManager != nullptr)
 			chatManager->handleChatUnbanPlayer(unbanner, unbaneeName, roomPath, requestID);
 	}
 

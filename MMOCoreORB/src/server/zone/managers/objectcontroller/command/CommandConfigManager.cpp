@@ -66,8 +66,8 @@
 #include "templates/datatables/DataTableRow.h"
 #include "CommandList.h"
 
-CommandList* CommandConfigManager::slashCommands = NULL;
-ZoneProcessServer* CommandConfigManager::server = NULL;
+CommandList* CommandConfigManager::slashCommands = nullptr;
+ZoneProcessServer* CommandConfigManager::server = nullptr;
 int CommandConfigManager::ERROR_CODE = 0;
 
 CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
@@ -84,8 +84,8 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 }
 
 CommandConfigManager::~CommandConfigManager() {
-	server = NULL;
-	slashCommands = NULL;
+	server = nullptr;
+	slashCommands = nullptr;
 
 	ERROR_CODE = 0;
 }
@@ -95,7 +95,7 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 
 	IffStream* metatable = TemplateManager::instance()->openIffFile(filename);
 
-	if (metatable == NULL) {
+	if (metatable == nullptr) {
 		error("Could not load command table " + filename + ".");
 		return;
 	}
@@ -113,7 +113,7 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 
 		IffStream* iffStream = TemplateManager::instance()->openIffFile(tableName);
 
-		if (iffStream == NULL) {
+		if (iffStream == nullptr) {
 			error("Could not load commands from " + tableName + ".");
 			return;
 		} else
@@ -144,7 +144,7 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			row->getValue(CommandConfigManager::COMMANDNAME, name);
 			slashCommand = createCommand(name.trim().toLowerCase());
 
-			if (slashCommand == NULL) {
+			if (slashCommand == nullptr) {
 				error("Could not create command " + name);
 				continue;
 			}
@@ -300,11 +300,11 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 }
 
 QueueCommand* CommandConfigManager::createCommand(const String& name) {
-	QueueCommand* command = NULL;
+	QueueCommand* command = nullptr;
 
 	command = commandFactory.createCommand(name, name, server);
 
-	if (command == NULL)
+	if (command == nullptr)
 		return command;
 
 	slashCommands->put(command);
@@ -323,7 +323,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	// Meanwhile the client sends this to the server as part of the /logout command sequence
 	QueueCommand* slashCommand = createCommand(String("logout").toLowerCase());
 
-	if (slashCommand == NULL) {
+	if (slashCommand == nullptr) {
 		error("Could not create command /logout");
 	}
 
@@ -814,7 +814,7 @@ int CommandConfigManager::addCommand(lua_State* L) {
 	// get object from map, then overwrite/fill in variables
 	String name = slashcommand.getStringField("name");
 	QueueCommand* command = slashCommands->getSlashCommand(name);
-	if (command == NULL)
+	if (command == nullptr)
 		return 0;
 
 	parseOptions(slashcommand, command);

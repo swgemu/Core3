@@ -14,7 +14,7 @@
 int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<TangibleObject*> strongRef = self.get();
 
-	if (strongRef == NULL)
+	if (strongRef == nullptr)
 		return 1;
 
 	if (eventType != ObserverEventType::HEALINGRECEIVED)
@@ -22,12 +22,12 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 
 	Reference<CreatureObject*> healTarget = cast<CreatureObject*>(observable);
 
-	if (healTarget == NULL)
+	if (healTarget == nullptr)
 		return 0;
 
 	Reference<CreatureObject*> healer = cast<CreatureObject*>(arg1);
 
-	if (healer == NULL)
+	if (healer == nullptr)
 		return 0;
 
 	Core::getTaskManager()->executeTask([=]{
@@ -35,7 +35,7 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 
 		ThreatMap* threatMap = strongRef->getThreatMap();
 
-		if (threatMap != NULL) {
+		if (threatMap != nullptr) {
 			int targetIndex = threatMap->find(healTarget);
 			int healerIndex = threatMap->find(healer);
 

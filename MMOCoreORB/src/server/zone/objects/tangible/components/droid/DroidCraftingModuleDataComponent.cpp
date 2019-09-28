@@ -33,14 +33,14 @@ String DroidCraftingModuleDataComponent::getModuleName() {
 void DroidCraftingModuleDataComponent::initializeTransientMembers() {
 	// load template data here
 	SceneObject* craftedModule = getParent();
-	if (craftedModule == NULL) {
+	if (craftedModule == nullptr) {
 		return;
 	}
 
-	craftingStation = NULL;
+	craftingStation = nullptr;
 
 	Reference<DroidCraftingModuleTemplate*> moduleTemplate = cast<DroidCraftingModuleTemplate*>(craftedModule->getObjectTemplate());
-	if (moduleTemplate == NULL) {
+	if (moduleTemplate == nullptr) {
 		info("Module was null");
 		return;
 	}
@@ -131,7 +131,7 @@ bool DroidCraftingModuleDataComponent::validCraftingType(int type) {
 void DroidCraftingModuleDataComponent::onCall() {
 	SceneObject* craftedModule = getParent();
 	Reference<DroidCraftingModuleTemplate*> moduleTemplate = cast<DroidCraftingModuleTemplate*>(craftedModule->getObjectTemplate());
-	if (craftingStation == NULL) {
+	if (craftingStation == nullptr) {
 		String stationTemplate = moduleTemplate->getCraftingStationTemplate();
 		craftingStation = (craftedModule->getZoneServer()->createObject(stationTemplate.hashCode(), 0)).castTo<CraftingStation*>();
 		craftingStation->setEffectiveness(25);
@@ -139,7 +139,7 @@ void DroidCraftingModuleDataComponent::onCall() {
 }
 
 void DroidCraftingModuleDataComponent::onStore() {
-	craftingStation = NULL;
+	craftingStation = nullptr;
 }
 
 void DroidCraftingModuleDataComponent::copy(BaseDroidModuleComponent* other) {

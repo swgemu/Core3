@@ -52,7 +52,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	auto zone = getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 0;
 
 	if (!(_this.getReferenceUnsafeStaticCast()->isDead())) {
@@ -140,7 +140,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	//int skillNum = skillCommands.size();
 	const CreatureAttackMap* attackMap = getAttackMap();
 	int skillNum = 0;
-	if (attackMap != NULL)
+	if (attackMap != nullptr)
 		skillNum = attackMap->size();
 	if (creaKnowledge >= 70) {
 		String skillname = "";
@@ -185,7 +185,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 }
 
 void CreatureImplementation::scheduleDespawn() {
-	if (getPendingTask("despawn") != NULL)
+	if (getPendingTask("despawn") != nullptr)
 		return;
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this.getReferenceUnsafeStaticCast());
@@ -256,7 +256,7 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 
 	SceneObject* creatureInventory = getSlottedObject("inventory");
 
-	if (creatureInventory == NULL)
+	if (creatureInventory == nullptr)
 		return false;
 
 	uint64 lootOwnerID = creatureInventory->getContainerPermissions()->getOwnerID();
@@ -288,7 +288,7 @@ bool CreatureImplementation::canDroidHarvestMe(CreatureObject* player,CreatureOb
 
 	SceneObject* creatureInventory = getSlottedObject("inventory");
 
-	if (creatureInventory == NULL) {
+	if (creatureInventory == nullptr) {
 		return false;
 	}
 
@@ -426,7 +426,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 	CreatureObjectImplementation::setLevel(newLevel);
 
-	if (getCreatureTemplate() == NULL) {
+	if (getCreatureTemplate() == nullptr) {
 		return;
 	}
 
@@ -443,14 +443,14 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	minDmg *= ratio;
 	maxDmg *= ratio;
 
-	if (readyWeapon != NULL) {
+	if (readyWeapon != nullptr) {
 		float mod = 1.f - 0.1f*float(readyWeapon->getArmorPiercing());
 
 		readyWeapon->setMinDamage(minDmg * mod);
 		readyWeapon->setMaxDamage(maxDmg * mod);
 	}
 
-	if (defaultWeapon != NULL) {
+	if (defaultWeapon != nullptr) {
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
 	}
@@ -479,7 +479,7 @@ bool CreatureImplementation::isMount() {
 		return false;
 
 	ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
-	if (pcd == NULL)
+	if (pcd == nullptr)
 		return false;
 
 	if (pcd->isTrainedAsMount())
@@ -499,7 +499,7 @@ void CreatureImplementation::sendMessage(BasePacket* msg) {
 
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
-	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
+	if (linkedCreature != nullptr && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
 		linkedCreature->sendMessage(msg);
 	else {
 #ifdef LOCKFREE_BCLIENT_BUFFERS

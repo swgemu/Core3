@@ -110,7 +110,7 @@ public:
 
 		ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneName());
 
-		if (resourceSpawn == NULL) {
+		if (resourceSpawn == nullptr) {
 			player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
 			return;
 		}

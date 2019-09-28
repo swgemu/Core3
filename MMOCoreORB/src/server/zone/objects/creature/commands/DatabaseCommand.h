@@ -90,7 +90,7 @@ private:
 			}
 			ObjectDatabase* thisDatabase = cast<ObjectDatabase*>(ObjectDatabaseManager::instance()->getDatabase(id));
 
-			if(thisDatabase == NULL || !thisDatabase->isObjectDatabase()) {
+			if(thisDatabase == nullptr || !thisDatabase->isObjectDatabase()) {
 				creature->sendSystemMessage("Error retrieving " + db + " database.");
 				return;
 			}
@@ -133,7 +133,7 @@ private:
 			selectStatement << "SELECT * FROM " << db << " WHERE character_oid = " << objectID;
 			Reference<ResultSet*> queryResults = ServerDatabase::instance()->executeQuery(selectStatement);
 
-			if(queryResults == NULL || queryResults.get()->getRowsAffected() == 0){
+			if(queryResults == nullptr || queryResults.get()->getRowsAffected() == 0){
 
 				msg << endl << "No results for " << selectStatement.toString();
 

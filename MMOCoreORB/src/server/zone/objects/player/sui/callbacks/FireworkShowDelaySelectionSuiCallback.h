@@ -27,12 +27,12 @@ public:
 
 		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject().get();
 
-		if (fireworkShow == NULL || !fireworkShow->isFireworkObject())
+		if (fireworkShow == nullptr || !fireworkShow->isFireworkObject())
 			return;
 
 		DataObjectComponent* data = fireworkShow->getDataObjectComponent()->get();
 
-		if(data == NULL || !data->isFireworkShowData())
+		if(data == nullptr || !data->isFireworkShowData())
 			return;
 
 		FireworkShowDataComponent* fireworkShowData = cast<FireworkShowDataComponent*>(data);

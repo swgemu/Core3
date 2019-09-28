@@ -192,18 +192,15 @@ public:
 		return triangleID;
 	}
 
-	inline uint32 getID() {
-		return triangleID;
-	}
-
 	const Edge* getEdges() const {
 		return edges;
 	}
+
 	inline void addNeighbor(TriangleNode* node) {
 		neighbors.add(node);
 	}
 
-	inline Vector<TriangleNode*>* getNeighbors() {
+	inline const Vector<TriangleNode*>* getNeighbors() const {
 		return &neighbors;
 	}
 
@@ -244,35 +241,39 @@ public:
 
 	Vector <Reference<MeshData*>> getTransformedMeshData(const Matrix4& parentTransform) const;
 
-	Vector<TriangleNode*>* getNeighbors(uint32 triangleID);
+	const Vector<TriangleNode*>* getNeighbors(uint32 triangleID) const;
 
-	TriangleNode* findNearestTriangle(const Vector3& point);
+	const TriangleNode* findNearestTriangle(const Vector3& point) const;
 
-	bool testCollide(float x, float z, float y, float radius);
+	bool testCollide(float x, float z, float y, float radius) const;
 
-	PathNode* getGlobalNode(int globalID);
+	const PathNode* getGlobalNode(int globalID) const;
+
+	inline const PathGraph* getPathGraph() const {
+		return pathGraph;
+	}
 
 	inline PathGraph* getPathGraph() {
 		return pathGraph;
 	}
 
-	inline FloorMeshTriangleNode* getTriangle(int tri) {
+	inline const FloorMeshTriangleNode* getTriangle(int tri) const {
 		return tris.get(tri);
 	}
 
-	inline int getTriangleCount() {
+	inline int getTriangleCount() const {
 		return tris.size();
 	}
 
-	inline AABBTree* getAABBTree() {
+	inline const AABBTree* getAABBTree() const {
 		return aabbTree;
 	}
 
-	inline Vector3* getVertex(int vert) {
+	inline const Vector3* getVertex(int vert) const {
 		return &vertices.get(vert);
 	}
 
-	inline int getCellID() {
+	inline int getCellID() const {
 		return cellID;
 	}
 
@@ -280,7 +281,7 @@ public:
 		cellID = id;
 	}
 
-	float calculateManhattanDistance(TriangleNode* node1, TriangleNode* node2) {
+	float calculateManhattanDistance(const TriangleNode* node1, const TriangleNode* node2) const {
 		Vector3 bary = node1->getBarycenter();
 		Vector3 bary2 = node2->getBarycenter();
 

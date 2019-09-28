@@ -32,7 +32,7 @@ public:
 		if (tokenizer.hasMoreTokens())
 			value = tokenizer.getIntToken();
 
-		if (object != NULL && creature->isPlayerCreature()) {
+		if (object != nullptr && creature->isPlayerCreature()) {
 			try {
 				Locker clocker(object, creature);
 

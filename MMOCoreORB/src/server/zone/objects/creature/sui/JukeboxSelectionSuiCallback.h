@@ -22,17 +22,17 @@ public:
 
 		ManagedReference<SceneObject*> terminal = listBox->getUsingObject().get();
 
-		if (terminal == NULL)
+		if (terminal == nullptr)
 			return;
 
 		ManagedReference<Jukebox*> jukebox = cast<Jukebox*>(terminal.get());
 
-		if (jukebox == NULL)
+		if (jukebox == nullptr)
 			return;
 
 		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
 
-		if (playerManager == NULL)
+		if (playerManager == nullptr)
 			return;
 
 		if (args->size() < 1)

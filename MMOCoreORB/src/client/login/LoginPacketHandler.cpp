@@ -77,7 +77,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 
 	uint32 characters = pack->parseInt();
 
-	if (loginSession == NULL)
+	if (loginSession == nullptr)
 		return;
 
 	if (characters == 0) {

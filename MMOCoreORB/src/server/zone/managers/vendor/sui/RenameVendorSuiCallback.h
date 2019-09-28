@@ -34,12 +34,12 @@ public:
 
 		ManagedReference<SceneObject*> strong = suiBox->getUsingObject().get();
 
-		if (strong == NULL)
+		if (strong == nullptr)
 			return;
 
 		TangibleObject* vendor = cast<TangibleObject*>(strong.get());
 
-		if (vendor == NULL)
+		if (vendor == nullptr)
 			return;
 
 		VendorManager::instance()->handleRenameVendor(player, vendor, name);

@@ -11,7 +11,7 @@
 NpcSpawnPoint::NpcSpawnPoint() {
 	inUseByNumberOfMissions = 0;
 	spawnType = 0;
-	despawnMissionNpcTask = NULL;
+	despawnMissionNpcTask = nullptr;
 	npcSpawned = false;
 }
 
@@ -39,7 +39,7 @@ NpcSpawnPoint::NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
 	position.setY(player->getPosition().getY());
 	direction.setHeadingDirection(player->getDirection()->getRadians());
 	inUseByNumberOfMissions = 0;
-	despawnMissionNpcTask = NULL;
+	despawnMissionNpcTask = nullptr;
 	npcSpawned = false;
 }
 
@@ -53,7 +53,7 @@ void NpcSpawnPoint::readObject(LuaObject* luaObject) {
 	position.setZ(0);
 	direction.setHeadingDirection(radians);
 	inUseByNumberOfMissions = 0;
-	despawnMissionNpcTask = NULL;
+	despawnMissionNpcTask = nullptr;
 	npcSpawned = false;
 }
 
@@ -79,7 +79,7 @@ void NpcSpawnPoint::allocateNpc(TerrainManager* terrainManager, CreatureManager*
 	inUseByNumberOfMissions++;
 
 	if (inUseByNumberOfMissions > 0) {
-		if (despawnMissionNpcTask != NULL && despawnMissionNpcTask->isScheduled()) {
+		if (despawnMissionNpcTask != nullptr && despawnMissionNpcTask->isScheduled()) {
 			despawnMissionNpcTask->cancel();
 		}
 
@@ -88,7 +88,7 @@ void NpcSpawnPoint::allocateNpc(TerrainManager* terrainManager, CreatureManager*
 			String deliverNpc = "deliver_npc";
 			float z = terrainManager->getHeight(position.getX(), position.getY());
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, position.getX(), z, position.getY(), 0));
-			if (npc != NULL) {
+			if (npc != nullptr) {
 				npc->updateDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
 				//Set the name of the NPC.
 				NameManager* nm = npc->getZoneProcessServer()->getNameManager();
@@ -105,7 +105,7 @@ void NpcSpawnPoint::freeNpc(Reference<MissionManager*> missionManager) {
 	inUseByNumberOfMissions--;
 
 	if (inUseByNumberOfMissions == 0) {
-		if (despawnMissionNpcTask == NULL) {
+		if (despawnMissionNpcTask == nullptr) {
 			despawnMissionNpcTask = new DespawnMissionNpcTask(missionManager, this);
 		}
 
@@ -120,10 +120,10 @@ void NpcSpawnPoint::freeNpc(Reference<MissionManager*> missionManager) {
 
 void NpcSpawnPoint::despawnNpc() {
 	npcSpawned = false;
-	if (npc != NULL) {
+	if (npc != nullptr) {
 		Locker locker(npc);
 
 		npc->scheduleDespawn(1);
-		npc = NULL;
+		npc = nullptr;
 	}
 }

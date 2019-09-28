@@ -23,7 +23,7 @@ public:
 
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (controlDevice == NULL)
+		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		// Creature specific command
@@ -35,11 +35,11 @@ public:
 
 		// Target is the player commanding pet to perform the trick
 		ManagedReference<SceneObject*> commandTarget = server->getZoneServer()->getObject(target);
-		if (commandTarget == NULL || !commandTarget->isPlayerCreature())
+		if (commandTarget == nullptr || !commandTarget->isPlayerCreature())
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(commandTarget.get());
-		if( player == NULL )
+		if( player == nullptr )
 			return GENERALERROR;
 
 		StringTokenizer tokenizer(arguments.toString());
@@ -50,10 +50,10 @@ public:
 		int trickNumber = tokenizer.getIntToken();
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == NULL )
+		if( pet == nullptr )
 			return GENERALERROR;
 
-		if( pet->getCooldownTimerMap() == NULL )
+		if( pet->getCooldownTimerMap() == nullptr )
 			return GENERALERROR;
 
 		// Check pet states

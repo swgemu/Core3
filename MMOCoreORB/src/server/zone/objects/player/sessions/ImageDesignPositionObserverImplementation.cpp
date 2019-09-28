@@ -11,7 +11,7 @@
 int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<ImageDesignSession*> strongRef = session.get();
 
-	if (strongRef == NULL)
+	if (strongRef == nullptr)
 		return 1;
 
 	if (eventType != ObserverEventType::POSITIONCHANGED)
@@ -19,10 +19,10 @@ int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventT
 
 	SceneObject* scene = dynamic_cast<SceneObject*>(observable);
 
-	if (scene == NULL)
+	if (scene == nullptr)
 		return 1;
 
-	if (scene->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL) {
+	if (scene->getParentRecursively(SceneObjectType::SALONBUILDING) == nullptr) {
 		//queue the timeout
 		strongRef->queueIdTimeoutEvent();
 	} else {

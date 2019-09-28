@@ -31,7 +31,7 @@ public:
 
 		Logger::console.info(str, true);
 
-		zoneServer->getChatManager()->broadcastGalaxy(NULL, str);
+		zoneServer->getChatManager()->broadcastGalaxy(nullptr, str);
 
 		if (minutesRemaining <= 0) {
 			ServerCore::getInstance()->signalShutdown();

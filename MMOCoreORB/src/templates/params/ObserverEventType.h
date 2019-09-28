@@ -13,7 +13,7 @@ public:
 	enum {
 		POSITIONCHANGED,			// ManagedObject arg1 = null, long arg2 = 0
 		CLOSECONTAINER,				// ManagedObject arg1 = player that closes the container, long arg2 = 0
-		POSTURECHANGED,				// ManagedObject arg1 = NULL, long arg2 = new posture
+		POSTURECHANGED,				// ManagedObject arg1 = nullptr, long arg2 = new posture
 		OBJECTDESTRUCTION,			// ManagedObject arg1 = attacker, long arg2 = condition used when a certain object is destroyed
 		OBJECTDISABLED,				// ManagedObject arg1 = attacker, long arg2 = 0
 		SAMPLE,						// ManagedObject arg1 = ResourceSpawn, long arg2 = density

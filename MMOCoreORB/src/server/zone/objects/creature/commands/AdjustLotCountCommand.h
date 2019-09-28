@@ -25,14 +25,14 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject())
+		if (targetObject == nullptr || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( targetObject.get());
 
 		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return INVALIDPARAMETERS;
 
 		Locker _lock(targetCreature);

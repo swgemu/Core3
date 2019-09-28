@@ -19,7 +19,7 @@ void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*> (templateData);
 
-	if (craftingToolData == NULL) {
+	if (craftingToolData == nullptr) {
 		throw Exception("invalid template for CraftingTool");
 	}
 
@@ -46,7 +46,7 @@ Reference<TangibleObject*> CraftingToolImplementation::getPrototype() {
 	if (getContainerObjectsSize() > 0)
 		return getContainerObject(0).castTo<TangibleObject*> ();
 	else
-		return NULL;
+		return nullptr;
 }
 
 int CraftingToolImplementation::handleObjectMenuSelect(
@@ -68,7 +68,7 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 			ManagedReference<TangibleObject *> prototype = getPrototype();
 			ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
 
-			if (prototype == NULL) {
+			if (prototype == nullptr) {
 				while (getContainerObjectsSize() > 0) {
 					getContainerObject(0)->destroyObjectFromWorld(true);
 				}
@@ -78,7 +78,7 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 				return 1;
 			}
 
-			if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
+			if (inventory != nullptr && inventory->getContainerObjectsSize() < 80) {
 				playerCreature->sendSystemMessage("@system_msg:prototype_transferred");
 				inventory->transferObject(prototype, -1, true);
 				status = "@crafting:tool_status_ready";
@@ -106,7 +106,7 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertAttribute("@crafting:crit_experiment", forceCriticalExperiment);
 
 	Reference<CraftingSession*> session = object->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-	if(session == NULL && getParent() != NULL) {
+	if(session == nullptr && getParent() != nullptr) {
 		disperseItems();
 	}
 }
@@ -145,24 +145,24 @@ void CraftingToolImplementation::disperseItems() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<SceneObject*> craftedComponents = getSlottedObject("crafted_components");
-	ManagedReference<SceneObject*> prototype = NULL;
+	ManagedReference<SceneObject*> prototype = nullptr;
 
 	if(getContainerObjectsSize() > 0)
 		 prototype = getContainerObject(0);
 
-	if(craftedComponents == NULL) {
+	if(craftedComponents == nullptr) {
 
-		if(prototype == NULL)
+		if(prototype == nullptr)
 			return;
 
 		craftedComponents = prototype->getSlottedObject("crafted_components");
 	}
 
-	if(craftedComponents != NULL  && craftedComponents->getContainerObjectsSize() > 0) {
+	if(craftedComponents != nullptr  && craftedComponents->getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
 		ManagedReference<SceneObject*> inventory = getParent().get();
 
-		if(satchel != NULL && inventory != NULL) {
+		if(satchel != nullptr && inventory != nullptr) {
 			while(satchel->getContainerObjectsSize() > 0) {
 				ManagedReference<SceneObject*> object = satchel->getContainerObject(0);
 				inventory->transferObject(object, -1, false);
@@ -171,12 +171,12 @@ void CraftingToolImplementation::disperseItems() {
 		}
 	}
 
-	if(craftedComponents != NULL) {
+	if(craftedComponents != nullptr) {
 		Locker clocker(craftedComponents, _this.getReferenceUnsafeStaticCast());
 		craftedComponents->destroyObjectFromWorld(true);
 	}
 
-	if(prototype != NULL) {
+	if(prototype != nullptr) {
 		Locker clocker(prototype, _this.getReferenceUnsafeStaticCast());
 		prototype->destroyObjectFromWorld(true);
 	}

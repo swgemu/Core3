@@ -28,7 +28,7 @@ public:
 		for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 			DataTableRow* row = dtiff.getRow(i);
 
-			if (row == NULL)
+			if (row == nullptr)
 				continue;
 
 			StartingLocation loc;

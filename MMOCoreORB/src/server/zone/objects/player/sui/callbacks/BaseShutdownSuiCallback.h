@@ -14,22 +14,22 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isMessageBox() || cancelPressed || player == NULL)
+		if (!suiBox->isMessageBox() || cancelPressed || player == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			return;
 
 		ManagedReference<BuildingObject*> building = obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-		if (building == NULL)
+		if (building == nullptr)
 			return;
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
-		if (gcwMan == NULL)
+		if (gcwMan == nullptr)
 			return;
 
 		if (!player->checkCooldownRecovery("declare_overt_cooldown")) {

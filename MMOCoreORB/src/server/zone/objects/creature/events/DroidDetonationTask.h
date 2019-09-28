@@ -36,13 +36,13 @@ public:
 	}
 
 	void run() {
-		if (module == NULL || player == NULL) {
+		if (module == nullptr || player == nullptr) {
 			return;
 		}
 
 		ManagedReference<DroidObject*> droid = module->getDroidObject();
 
-		if (droid == NULL) {
+		if (droid == nullptr) {
 			return;
 		}
 
@@ -50,9 +50,9 @@ public:
 		Locker crossLocker(player, droid);
 
 		// Check if droid is spawned
-		if (droid->getLocalZone() == NULL) {  // Not outdoors
+		if (droid->getLocalZone() == nullptr) {  // Not outdoors
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
-			if (parent == NULL || !parent->isCellObject()) { // Not indoors either
+			if (parent == nullptr || !parent->isCellObject()) { // Not indoors either
 				droid->removePendingTask("droid_detonation");
 				return;
 			}
@@ -98,7 +98,7 @@ public:
 				CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
 				SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
-				if (vec != NULL) {
+				if (vec != nullptr) {
 					closeObjects.removeAll(vec->size(), 10);
 					vec->safeCopyTo(closeObjects);
 				} else {
@@ -122,7 +122,7 @@ public:
 
 					CreatureObject* creo = object->asCreatureObject();
 
-					if (creo == NULL || creo->isDead() || !creo->isAttackableBy(droid) || !droid->isInRange(object, 17)) {
+					if (creo == nullptr || creo->isDead() || !creo->isAttackableBy(droid) || !droid->isInRange(object, 17)) {
 						continue;
 					}
 
@@ -193,7 +193,7 @@ public:
 
 				// nuke the droid from the world
 				ManagedReference<PetControlDevice*> petControlDevice = droid->getControlDevice().get().castTo<PetControlDevice*>();
-				if (petControlDevice != NULL) {
+				if (petControlDevice != nullptr) {
 					Locker deviceLocker(petControlDevice);
 
 					petControlDevice->storeObject(player, true);
@@ -206,7 +206,7 @@ public:
 				if (shouldGcwTef || shouldBhTef) {
 					PlayerObject* ghost = player->getPlayerObject();
 
-					if (ghost != NULL) {
+					if (ghost != nullptr) {
 						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
 					}
 				}

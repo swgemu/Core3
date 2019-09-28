@@ -34,9 +34,9 @@ DnaManager::DnaManager() : Logger("DnaManager") {
 }
 
 DnaManager::~DnaManager() {
-	if (lua != NULL) {
+	if (lua != nullptr) {
 		delete lua;
-		lua = NULL;
+		lua = nullptr;
 	}
 }
 
@@ -74,7 +74,7 @@ void DnaManager::loadSampleData() {
 	}
 	info("Loaded " + String::valueOf(dnaDPS.size()) + " dna stats.", true);
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 int DnaManager::generateXp(int creatureLevel) {
@@ -121,7 +121,7 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 
 	// calculate rest of stats here
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
-	if (prototype == NULL) {
+	if (prototype == nullptr) {
 		return;
 	}
 	Locker clocker(prototype);
@@ -204,7 +204,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	// We should now have enough to generate a sample
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
-	if (prototype == NULL) {
+	if (prototype == nullptr) {
 		return;
 	}
 	Locker clocker(prototype);

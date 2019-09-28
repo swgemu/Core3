@@ -21,18 +21,18 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
-		if (controlDevice == NULL)
+		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		if (!creature->isAiAgent())
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == NULL )
+		if( pet == nullptr )
 			return GENERALERROR;
 
 		ManagedReference< CreatureObject*> player = pet->getLinkedCreature().get();
-		if( player == NULL )
+		if( player == nullptr )
 			return GENERALERROR;
 
 		Locker crossLocker(player, pet);

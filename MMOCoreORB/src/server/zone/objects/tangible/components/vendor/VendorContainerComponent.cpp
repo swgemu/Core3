@@ -16,11 +16,11 @@ bool VendorContainerComponent::checkContainerPermission(SceneObject* sceneObject
 		return false;
 
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData())
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData())
 		return false;
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL)
+	if(vendorData == nullptr)
 		return false;
 
 	if (vendorData->getOwnerId() != creature->getObjectID()) {

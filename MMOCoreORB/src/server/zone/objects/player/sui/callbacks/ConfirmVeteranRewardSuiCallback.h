@@ -22,7 +22,7 @@ public:
 		bool cancelPressed = (eventIndex == 1);
 
 		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
-		if( !suiBox->isMessageBox() || playerManager == NULL )
+		if( !suiBox->isMessageBox() || playerManager == nullptr )
 			return;
 
 		if( cancelPressed ){

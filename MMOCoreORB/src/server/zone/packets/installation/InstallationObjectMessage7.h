@@ -21,7 +21,7 @@ public:
 			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
 			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneName(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
 
-			if (list == NULL)
+			if (list == nullptr)
 				System::out << "list was null!" << endl;
 
 			insertByte(1); // ResourcePoolUpdateFlag ?

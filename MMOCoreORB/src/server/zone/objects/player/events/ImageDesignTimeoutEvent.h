@@ -30,7 +30,7 @@ public:
 	void run() {
 		ManagedReference<ImageDesignSession*> session = idSession.get();
 
-		if (session == NULL)
+		if (session == nullptr)
 			return;
 
 		session->sessionTimeout();

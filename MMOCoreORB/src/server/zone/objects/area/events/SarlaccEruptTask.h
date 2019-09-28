@@ -21,7 +21,7 @@ public:
 	}
 
 	void run() {
-		if (sarlaccArea == NULL)
+		if (sarlaccArea == nullptr)
 			return;
 
 		Zone* zone = sarlaccArea->getZone();
@@ -32,10 +32,10 @@ public:
 		for (int i = 0; i < closeObjects->size(); ++i) {
 			SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
 
-			if (scno != NULL && scno->isPlayerCreature()) {
+			if (scno != nullptr && scno->isPlayerCreature()) {
 				ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(scno);
 
-				if (playerCreature == NULL)
+				if (playerCreature == nullptr)
 					continue;
 
 				Locker locker(playerCreature);

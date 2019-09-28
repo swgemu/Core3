@@ -18,12 +18,12 @@ CityUpdateEvent::CityUpdateEvent(CityRegion* city, ZoneServer* zserv) : Task() {
 }
 
 void CityUpdateEvent::run() {
-	if (zoneServer == NULL || zoneServer->isServerShuttingDown())
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown())
 		return;
 
 	ManagedReference<CityRegion*> city = cityRegion.get();
 
-	if (city == NULL)
+	if (city == nullptr)
 		return;
 
 	Locker locker(city);

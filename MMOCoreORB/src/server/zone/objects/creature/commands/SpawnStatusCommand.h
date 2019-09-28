@@ -25,7 +25,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<AiAgent*> targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
-		if (targetObj == NULL)
+		if (targetObj == nullptr)
 			return GENERALERROR;
 
 		targetObj->outputLuaTimes(creature);

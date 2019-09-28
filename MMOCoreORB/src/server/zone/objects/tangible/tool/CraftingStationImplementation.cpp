@@ -29,8 +29,8 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 	/*ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
 
-	if(building != NULL && !isASubChildOf(player)) {
-		if(building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != NULL) {
+	if(building != nullptr && !isASubChildOf(player)) {
+		if(building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != nullptr) {
 			menuResponse->addRadialMenuItem(68, 3, "@ui_radial:craft_hopper_input"); //Open
 		}
 	}*/
@@ -38,11 +38,11 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
-	/*if (selectedID == 68 && getSlottedObject("ingredient_hopper") != NULL) { // use object
+	/*if (selectedID == 68 && getSlottedObject("ingredient_hopper") != nullptr) { // use object
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
 
-		if(building != NULL && !isASubChildOf(player)) {
+		if(building != nullptr && !isASubChildOf(player)) {
 			if(building->isOnAdminList(player))
 				sendInputHopper(player);
 		}
@@ -61,7 +61,7 @@ void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
 
 	/*ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 
-	if(inputHopper == NULL) {
+	if(inputHopper == nullptr) {
 		return;
 	}
 
@@ -77,13 +77,13 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
 			"inventory");
 	Locker inventoryLocker(inventory);
-	SceneObject* craftingTool = NULL;
+	SceneObject* craftingTool = nullptr;
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 
 		SceneObject* object = inventory->getContainerObject(i);
 
-		if (object != NULL && object->isCraftingTool()) {
+		if (object != nullptr && object->isCraftingTool()) {
 
 			CraftingTool* tool = cast<CraftingTool*>( object);
 

@@ -23,7 +23,7 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		if (playerManager != NULL)
+		if (playerManager != nullptr)
 			playerManager->resendLoginMessageToAll();
 
 		return SUCCESS;

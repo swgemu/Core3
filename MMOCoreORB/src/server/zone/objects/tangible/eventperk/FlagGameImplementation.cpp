@@ -37,19 +37,19 @@ void FlagGameImplementation::changeFlag(uint32 faction) {
 
 	ManagedReference<ZoneServer*> zoneServer = getZoneServer();
 
-	if (zoneServer == NULL)
+	if (zoneServer == nullptr)
 		return;
 
 	ManagedReference<TangibleObject*> flag = zoneServer->createObject(getFlagTemplate(faction), "playerstructures", 1).castTo<TangibleObject*>();
 
-	if (flag == NULL)
+	if (flag == nullptr)
 		return;
 
 	Locker locker(flag);
 
 	FlagGameDataComponent* data = cast<FlagGameDataComponent*>(flag->getDataObjectComponent()->get());
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		error("No dataObjectComponent.");
 		flag->destroyObjectFromDatabase(true);
 		return;
@@ -69,7 +69,7 @@ void FlagGameImplementation::changeFlag(uint32 faction) {
 void FlagGameImplementation::removeCurFlag() {
 	ManagedReference<TangibleObject*> flag = curFlag.get();
 
-	if (flag != NULL) {
+	if (flag != nullptr) {
 		Locker locker(flag);
 		flag->destroyObjectFromWorld(true);
 		flag->destroyObjectFromDatabase();
@@ -138,7 +138,7 @@ void FlagGameImplementation::endGame() {
 }
 
 void FlagGameImplementation::activateGamePulse() {
-	if (gamePulse == NULL) {
+	if (gamePulse == nullptr) {
 		gamePulse = new FlagGamePulseTask(_this.getReferenceUnsafeStaticCast());
 		gamePulse->reschedule(15 * 1000); // 15 second pulse
 	} else {
@@ -152,10 +152,10 @@ void FlagGameImplementation::announceToPlayers(const String& message) {
 
 	for (int i = 0; i < closeObjects.size(); i++) {
 		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-		if (targetObject != NULL && targetObject->isPlayerCreature()) {
+		if (targetObject != nullptr && targetObject->isPlayerCreature()) {
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 
-			if (player != NULL)
+			if (player != nullptr)
 				player->sendSystemMessage("@event_perk:" + message);
 		}
 	}
@@ -181,10 +181,10 @@ void FlagGameImplementation::doVictoryEffects(uint32 faction) {
 
 	for (int i = 0; i < closeObjects.size(); i++) {
 		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-		if (targetObject != NULL && targetObject->isPlayerCreature()) {
+		if (targetObject != nullptr && targetObject->isPlayerCreature()) {
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 
-			if (player != NULL && player->getFaction() == faction && (player->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+			if (player != nullptr && player->getFaction() == faction && (player->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 				if (player->getFaction() == Factions::FACTIONREBEL) {
 					player->playEffect("clienteffect/holoemote_rebel.cef", "head");
 				} else if (player->getFaction() == Factions::FACTIONIMPERIAL) {
