@@ -712,10 +712,13 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
+	static const auto clearMessages = [](auto messages) {
+		messages->forEach([](auto message) { delete message; });
+		messages->removeAll();
+	};
+
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
-		while (!messages->isEmpty()) {
-			delete messages->remove(0);
-		}
+		clearMessages(messages);
 
 		return;
 	}
@@ -728,23 +731,17 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 
 			return;
 		} else {
-			while (!messages->isEmpty()) {
-				delete messages->remove(0);
-			}
+			clearMessages(messages);
 
 			return;
 		}
 	}
 
 	if (zone == nullptr) {
-		while (!messages->isEmpty()) {
-			delete messages->remove(0);
-		}
+		clearMessages(messages);
 
 		return;
 	}
-
-	bool readlock = !zone->isLockedByCurrentThread();
 
 	SortedVector<QuadTreeEntry*> closeSceneObjects;
 
@@ -752,21 +749,21 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 
 		if (closeobjects == nullptr) {
 #ifdef COV_DEBUG
-			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
+			info(true) << getObjectID() << " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate";
 #endif
 			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 		}
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 	for (int j = 0; j < messages->size(); ++j) {
-		BasePacket* msg = messages->get(j);
+		BasePacket* msg = messages->getUnsafe(j);
 		msg->acquire();
 	}
 #endif
@@ -778,7 +775,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 			continue;
 
 		for (int j = 0; j < messages->size(); ++j) {
-			BasePacket* msg = messages->get(j);
+			BasePacket* msg = messages->getUnsafe(j);
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 			scno->sendMessage(msg);
 #else
@@ -787,13 +784,16 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		}
 	}
 
-	while (!messages->isEmpty()) {
+	for (int j = 0; j < messages->size(); ++j) {
+		auto message = messages->getUnsafe(j);
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-		messages->remove(0)->release();
+		message->release();
 #else
-		delete messages->remove(0);
+		delete message;
 #endif
 	}
+
+	messages->removeAll();
 }
 
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {

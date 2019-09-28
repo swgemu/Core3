@@ -84,7 +84,7 @@ public:
 		if (recipient == "guild") {
 			ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
-			if (guild == NULL)
+			if (guild == nullptr)
 				return 0;
 
 			if (!guild->hasMailPermission(player->getObjectID())) {
@@ -116,25 +116,25 @@ public:
 		}
 		else if (recipient == "citizens") {
 			PlayerObject* ghost = player->getPlayerObject();
-			if (ghost == NULL)
+			if (ghost == nullptr)
 				return 0;
 
 			// Pull the player's residence
 			uint64 declaredOidResidence = ghost->getDeclaredResidence();
 			ManagedReference<BuildingObject*> declaredResidence = player->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
-			if (declaredResidence == NULL){
+			if (declaredResidence == nullptr){
 				player->sendSystemMessage("@error_message:insufficient_permissions");
 				return 0;
 			}
 
 			// Player must be the mayor of the city where he resides
 			ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion().get();
-			if (declaredCity != NULL && declaredCity->isMayor(player->getObjectID())) {
+			if (declaredCity != nullptr && declaredCity->isMayor(player->getObjectID())) {
 
 				Locker cityLocker(declaredCity);
 
 				CitizenList* citizenList = declaredCity->getCitizenList();
-				if (citizenList == NULL)
+				if (citizenList == nullptr)
 					return 0;
 
 				Vector<String> players;
@@ -162,7 +162,7 @@ public:
 		else if (recipient == "@online") {
 			auto ghost = player->getPlayerObject();
 
-			if (ghost == NULL)
+			if (ghost == nullptr)
 				return 0;
 
 			if (!ghost->hasGodMode()) {
@@ -251,7 +251,7 @@ public:
 		/*ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
 		ManagedReference<PlayerObject*> sender = player->getPlayerObject();
 
-		if (receiver == NULL || !receiver->isPlayerCreature() || sender == NULL)
+		if (receiver == nullptr || !receiver->isPlayerCreature() || sender == nullptr)
 			return 0;
 
 		bool godMode = false;
@@ -264,7 +264,7 @@ public:
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)) {
+		if (ghost == nullptr || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)) {
 			StringIdChatParameter err("ui_pm", "recipient_ignored_prose"); // "Your Mail Message has not been delivered to '%TT' because the recipient has chosen not to receive mail from you at this time."
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
@@ -278,7 +278,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		int result = 0;

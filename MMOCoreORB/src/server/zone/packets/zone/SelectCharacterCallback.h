@@ -35,7 +35,7 @@ public:
 	static void connectPlayer(SceneObject* obj, uint64_t characterID, CreatureObject* player, ZoneClientSession* client, ZoneServer* zoneServer) {
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return;
 		}
 
@@ -57,7 +57,7 @@ public:
 		String zoneName = ghost->getSavedTerrainName();
 		Zone* zone = zoneServer->getZone(zoneName);
 
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
@@ -75,7 +75,7 @@ public:
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
 
-		if (player->getZone() == NULL) {
+		if (player->getZone() == nullptr) {
 			ghost->setOnLoadScreen(true);
 		}
 
@@ -83,29 +83,29 @@ public:
 		ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 		ManagedReference<SceneObject*> currentParent = player->getParent().get();
 
-		if ((playerParent != NULL && currentParent == NULL) || (currentParent != NULL && currentParent->isCellObject())) {
-			playerParent = playerParent == NULL ? currentParent : playerParent;
+		if ((playerParent != nullptr && currentParent == nullptr) || (currentParent != nullptr && currentParent->isCellObject())) {
+			playerParent = playerParent == nullptr ? currentParent : playerParent;
 
 			ManagedReference<SceneObject*> root = playerParent->getRootParent();
 
-			root = root == NULL ? playerParent : root;
+			root = root == nullptr ? playerParent : root;
 
 			//ghost->updateLastValidatedPosition();
 
-			if (root->getZone() == NULL && root->isStructureObject()) {
+			if (root->getZone() == nullptr && root->isStructureObject()) {
 				player->initializePosition(root->getPositionX(), root->getPositionZ(), root->getPositionY());
 
 				zone->transferObject(player, -1, true);
 
-				playerParent = NULL;
+				playerParent = nullptr;
 			} else {
 				if (!(playerParent->isCellObject() && playerParent == root)) {
 					playerParent->transferObject(player, -1, false);
 				}
 
-				if (player->getParent() == NULL) {
+				if (player->getParent() == nullptr) {
 					zone->transferObject(player, -1, false);
-				} else if (root->getZone() == NULL) {
+				} else if (root->getZone() == nullptr) {
 					Locker clocker(root, player);
 					zone->transferObject(root, -1, false);
 				}
@@ -113,14 +113,14 @@ public:
 				player->sendToOwner(true);
 			}
 
-		} else if (currentParent == NULL) {
+		} else if (currentParent == nullptr) {
 			player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
 			zone->transferObject(player, -1, true);
 		} else {
-			if (player->getZone() == NULL) {
-				ManagedReference<SceneObject*> objectToInsert = currentParent != NULL ? player->getRootParent() : player;
+			if (player->getZone() == nullptr) {
+				ManagedReference<SceneObject*> objectToInsert = currentParent != nullptr ? player->getRootParent() : player;
 
-				if (objectToInsert == NULL)
+				if (objectToInsert == nullptr)
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
@@ -130,7 +130,7 @@ public:
 			player->sendToOwner(true);
 		}
 
-		if (playerParent == NULL)
+		if (playerParent == nullptr)
 			ghost->setSavedParentID(0);
 
 		ghost->setOnline();
@@ -201,14 +201,14 @@ public:
 
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
-		if (obj != NULL && obj->isPlayerCreature()) {
+		if (obj != nullptr && obj->isPlayerCreature()) {
 			CreatureObject* player = obj->asCreatureObject();
 
 			Locker _locker(player);
 
 			ManagedReference<ZoneClientSession*> oldClient = player->getClient();
 
-			if (oldClient != NULL && client != oldClient) {
+			if (oldClient != nullptr && client != oldClient) {
 				_locker.release();
 
 				oldClient->disconnect();
@@ -232,7 +232,7 @@ public:
 
 			connectPlayer(obj, characterID, player, client, zoneServer);
 		} else {
-			if (obj != NULL)
+			if (obj != nullptr)
 				client->error("could get from zone server character id " + String::valueOf(characterID) + " but is not a player creature");
 			else
 				client->error("could not get from zone server character id " + String::valueOf(characterID));

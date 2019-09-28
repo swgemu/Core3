@@ -29,13 +29,13 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || (!object->isPlayerCreature() && !object->isPet()))
+		if (object == nullptr || (!object->isPlayerCreature() && !object->isPet()))
 			return GENERALERROR;
 
 		CreatureObject* targetObject = cast<CreatureObject*>( object.get());
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
-		if (group == NULL)
+		if (group == nullptr)
 			return GENERALERROR;
 
 		groupManager->kickFromGroup(group.get(), creature, targetObject);

@@ -31,7 +31,7 @@ public:
 		// determine target is name or targetted
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL) {
+		if (object != nullptr) {
 			if (object->isDroidObject()) {
 				DroidObject* droid = cast<DroidObject*>(object.get());
 				Reference<Task*> task = new DroidStimpackTask( droid,creature,droid->getDisplayedName());
@@ -52,9 +52,9 @@ public:
 						// find it in 20 meter range
 						String search = droidName.subString(1,droidName.length()-1);
 						GroupObject* group = creature->getGroup();
-						DroidObject* targetDroid = NULL;
+						DroidObject* targetDroid = nullptr;
 
-						if (group != NULL) {
+						if (group != nullptr) {
 							// find it in the group
 							Locker locker(group);
 
@@ -73,7 +73,7 @@ public:
 										if (agent->isDroidObject() && agent->getDisplayedName() == search) {
 											targetDroid = cast<DroidObject*>(agent);
 
-											if (targetDroid != NULL ) {
+											if (targetDroid != nullptr ) {
 												Reference<Task*> task = new DroidStimpackTask( targetDroid,creature,targetDroid->getDisplayedName());
 												targetDroid->addPendingTask("droid_request_stimpack", task, 1);
 												return SUCCESS;
@@ -102,7 +102,7 @@ public:
 								if (agent->isDroidObject() && agent->getDisplayedName() == search) {
 									targetDroid = cast<DroidObject*>(agent);
 
-									if (targetDroid != NULL ) {
+									if (targetDroid != nullptr ) {
 										Reference<Task*> task = new DroidStimpackTask( targetDroid,creature,targetDroid->getDisplayedName());
 										targetDroid->addPendingTask("droid_request_stimpack", task, 1);
 										return SUCCESS;

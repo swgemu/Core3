@@ -40,13 +40,13 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::IMAGEDESIGN);
 		ManagedReference<ImageDesignSession*> session = dynamic_cast<ImageDesignSession*>(facade.get());
 
-		if (session == NULL)
+		if (session == nullptr)
 			return;
 
 		session->cancelImageDesign(designer, target, tent, type, data);

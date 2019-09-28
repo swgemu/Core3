@@ -35,7 +35,7 @@ public:
 		int size = 0 ;
 		byte* data = DataArchiveStore::instance()->getData(file, size);
 
-		if (data != NULL) {
+		if (data != nullptr) {
 			ObjectInputStream stream((char*)data, size);
 
 			try {

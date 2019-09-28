@@ -21,12 +21,7 @@ void DataTableIff::clearDataTable() {
 	columns.removeAll();
 	columnTypes.removeAll();
 
-	while (rows.size() > 0) {
-		DataTableRow* row = rows.remove(0);
-
-		delete row;
-		row = NULL;
-	}
+	rows.forEach([](auto row) { delete row; });
 }
 
 void DataTableIff::readObject(IffStream* iffStream) {
@@ -69,7 +64,7 @@ void DataTableIff::readObject(IffStream* iffStream) {
 		for (int j = 0; j < totalColumns; ++j) {
 			byte type = columnTypes.get(j);
 
-			DataTableCell* cell = NULL;
+			DataTableCell* cell = nullptr;
 
 			switch (type) {
 			case 'f':
@@ -113,11 +108,11 @@ void DataTableIff::readObject(IffStream* iffStream) {
 	iffStream->closeForm('DTII');
 }
 
-Vector<DataTableRow*> DataTableIff::getRowsByColumn(int columnIdx, const String& columnValue) {
-	Vector<DataTableRow*> retRows;
+Vector<const DataTableRow*> DataTableIff::getRowsByColumn(int columnIdx, const String& columnValue) const {
+	Vector<const DataTableRow*> retRows;
 
 	for (int i = 0; i < rows.size(); ++i) {
-		DataTableRow* row = rows.get(i);
+		const DataTableRow* row = rows.get(i);
 
 		if (row->getCell(columnIdx)->toString() == columnValue)
 			retRows.add(row);

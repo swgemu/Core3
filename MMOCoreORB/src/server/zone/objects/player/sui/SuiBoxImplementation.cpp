@@ -113,7 +113,7 @@ void SuiBoxImplementation::addHeader(const String& variable, const String& type)
 
 void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
 	ManagedReference<SceneObject*> usingObject = this->usingObject.get();
-	if(usingObject != NULL)
+	if(usingObject != nullptr)
 		message->insertFooter(usingObject->getObjectID(), forceCloseDistance, type);
 	else
 		message->insertFooter(0, 0, type);

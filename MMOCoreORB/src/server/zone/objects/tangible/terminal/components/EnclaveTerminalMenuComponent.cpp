@@ -12,17 +12,17 @@
 void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL || player->isDead() || player->isIncapacitated())
+	if (building == nullptr || player->isDead() || player->isIncapacitated())
 		return;
 
 	ZoneServer* zServ = building->getZoneServer();
 
-	if (zServ == NULL)
+	if (zServ == nullptr)
 		return;
 
 	FrsManager* frsManager = zServ->getFrsManager();
 
-	if (frsManager == NULL)
+	if (frsManager == nullptr)
 		return;
 
 	int enclaveType = frsManager->getEnclaveType(building);
@@ -95,7 +95,7 @@ void EnclaveTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 }
 
 int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL || player->isDead() || player->isIncapacitated())
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject() || player == nullptr || player->isDead() || player->isIncapacitated())
 		return 0;
 
 	if (player->getDistanceTo(sceneObject) > 15) {
@@ -105,17 +105,17 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return 1;
 
 	ZoneServer* zServ = building->getZoneServer();
 
-	if (zServ == NULL)
+	if (zServ == nullptr)
 		return 1;
 
 	FrsManager* frsManager = zServ->getFrsManager();
 
-	if (frsManager == NULL)
+	if (frsManager == nullptr)
 		return 1;
 
 	int enclaveType = frsManager->getEnclaveType(building);
@@ -130,7 +130,7 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return 1;
 
 	FrsData* frsData = ghost->getFrsData();
@@ -192,7 +192,7 @@ int EnclaveTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 }
 
 int EnclaveTerminalMenuComponent::getTerminalType(SceneObject* terminal) const {
-	if (terminal == NULL)
+	if (terminal == nullptr)
 		return 0;
 
 	uint64 terminalCRC = terminal->getServerObjectCRC();

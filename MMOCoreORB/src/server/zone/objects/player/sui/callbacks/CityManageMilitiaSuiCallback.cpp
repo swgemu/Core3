@@ -15,12 +15,12 @@
 void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 	bool cancelPressed = (eventIndex == 1);
 
-	if (!suiBox->isListBox() || player == NULL || cancelPressed || args->size() <= 0)
+	if (!suiBox->isListBox() || player == nullptr || cancelPressed || args->size() <= 0)
 		return;
 
 	ManagedReference<CityRegion*> city = cityRegion.get();
 
-	if (city == NULL)
+	if (city == nullptr)
 		return;
 
 	int index = Integer::valueOf(args->get(0).toString());

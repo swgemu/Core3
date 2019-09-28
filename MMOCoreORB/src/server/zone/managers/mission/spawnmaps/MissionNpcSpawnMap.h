@@ -49,7 +49,7 @@ public:
 	 * @param spawnType the spawn type bitmask required for the spawn.
 	 * @param minDistance the minimum distance between the spawn point and the position supplied.
 	 * @param minDistance the maximum distance between the spawn point and the position supplied.
-	 * @return random npc matching requirements or NULL if none could be found.
+	 * @return random npc matching requirements or nullptr if none could be found.
 	 */
 	NpcSpawnPoint* getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance);
 
@@ -73,7 +73,7 @@ public:
 	 * Finds a spawn point on a certain location.
 	 * @param planetCRC the CRC of the planet name.
 	 * @param position the position to search.
-	 * @return the spawn point on the position or NULL if none exist.
+	 * @return the spawn point on the position or nullptr if none exist.
 	 */
 	NpcSpawnPoint* findSpawnAt(uint32 planetCRC, Vector3* position);
 

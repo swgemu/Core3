@@ -18,7 +18,7 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	PlayerObject* ghost = player->getPlayerObject();
 	PlayerObject* targetGhost = creature->getPlayerObject();
 
-	if (group != NULL) {
+	if (group != nullptr) {
 		if (group->hasMember(player))
 			menuResponse->addRadialMenuItem(51, 3, "@sui:teach");
 	}
@@ -36,7 +36,7 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	}
 
 	// Allow admins to grant divorce to married players
-	if (targetGhost != NULL && targetGhost->isMarried() && ghost != NULL && ghost->isPrivileged()) {
+	if (targetGhost != nullptr && targetGhost->isMarried() && ghost != nullptr && ghost->isPrivileged()) {
 		menuResponse->addRadialMenuItem(117, 3, "@unity:mnu_divorce"); // "Divorce"
 	}
 }
@@ -62,7 +62,7 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		player->executeObjectControllerAction(0x5041F83A, sceneObject->getObjectID(), ""); // teach
 		break;
 	case 117:
-		if (ghost != NULL && ghost->isPrivileged()) {
+		if (ghost != nullptr && ghost->isPrivileged()) {
 			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
 
 			Core::getTaskManager()->executeTask([=] () {

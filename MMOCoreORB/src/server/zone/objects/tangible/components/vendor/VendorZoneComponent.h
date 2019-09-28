@@ -18,12 +18,12 @@ public:
 	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 		ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
-		if (target == NULL || !target->isPlayerCreature())
+		if (target == nullptr || !target->isPlayerCreature())
 			return;
 
 		VendorDataComponent* data = cast<VendorDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-		if (data == NULL || !data->isAdBarkingEnabled())
+		if (data == nullptr || !data->isAdBarkingEnabled())
 			return;
 
 		if (data->hasBarkTarget(target))

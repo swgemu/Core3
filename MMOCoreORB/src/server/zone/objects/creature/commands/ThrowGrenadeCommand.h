@@ -31,7 +31,7 @@ public:
 
 			uint64 weaponID = tokenizer.getLongToken();
 			Reference<WeaponObject*> grenade = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
-			if (grenade == NULL)
+			if (grenade == nullptr)
 				return INVALIDPARAMETERS;
 
 			if (!grenade->isThrownWeapon())
@@ -41,7 +41,7 @@ public:
 				return GENERALERROR;
 
 			ManagedReference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target).castTo<TangibleObject*>();
-			if (targetObject == NULL)
+			if (targetObject == nullptr)
 				return GENERALERROR;
 
 			if (!(targetObject->isAttackableBy(creature)))
@@ -49,12 +49,12 @@ public:
 
 			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(grenade->getServerObjectCRC());
 
-			if (templateData == NULL)
+			if (templateData == nullptr)
 				return GENERALERROR;
 
 			SharedWeaponObjectTemplate* grenadeData = cast<SharedWeaponObjectTemplate*>(templateData);
 
-			if (grenadeData == NULL)
+			if (grenadeData == nullptr)
 				return GENERALERROR;
 
 			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";";
@@ -83,7 +83,7 @@ public:
 	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
 		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(weapon->getObjectTemplate());
 
-		if (weaponData == NULL) {
+		if (weaponData == nullptr) {
 			warning("Null weaponData in ThrowGrenadeCommand::getAnimation");
 			return "";
 		}
@@ -112,7 +112,7 @@ public:
 
 		Reference<WeaponObject*> grenade = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
 
-		if (grenade != NULL)
+		if (grenade != nullptr)
 			return CombatManager::instance()->calculateWeaponAttackSpeed(object, grenade, speedMultiplier);
 		else
 			return defaultTime * speedMultiplier;

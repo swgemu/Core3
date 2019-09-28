@@ -17,7 +17,7 @@ public:
 	void run() {
 		ManagedReference<TangibleObject*> controlledObject = pet->getControlledObject();
 
-		if (controlledObject == NULL || !controlledObject->isAiAgent())
+		if (controlledObject == nullptr || !controlledObject->isAiAgent())
 			return;
 
 		Locker locker(player);

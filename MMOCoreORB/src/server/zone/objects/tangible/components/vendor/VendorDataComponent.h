@@ -96,7 +96,7 @@ public:
 		updateUID();
 
 		ManagedReference<SceneObject*> strongParent = parent.get();
-		if (strongParent == NULL)
+		if (strongParent == nullptr)
 			return;
 
 		originalDirection = strongParent->getDirectionAngle();
@@ -172,12 +172,12 @@ public:
 	inline bool isEmpty() {
 		ManagedReference<AuctionManager*> auctionManager = auctionMan.get();
 
-		if (auctionManager == NULL)
+		if (auctionManager == nullptr)
 			return false;
 
 		ManagedReference<AuctionsMap*> auctionsMap =
 				auctionManager->getAuctionMap();
-		if (auctionsMap == NULL) {
+		if (auctionsMap == nullptr) {
 			return false;
 		}
 

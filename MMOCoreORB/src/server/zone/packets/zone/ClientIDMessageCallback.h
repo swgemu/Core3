@@ -53,10 +53,10 @@ public:
 
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
-		if (result != NULL && result->next()) {
+		if (result != nullptr && result->next()) {
 			uint32 sesskey = result->getUnsignedInt(0);
 
-			result = NULL;
+			result = nullptr;
 
 			if (sesskey == sessionID) {
 				client->setSessionID(sessionID);
@@ -84,7 +84,7 @@ public:
 					//account->addZoneSession(client);
 
 					ManagedReference<Account*> account = AccountManager::getAccount(accountID, true);
-					if (account == NULL)
+					if (account == nullptr)
 						return;
 
 					Locker alocker(account);
@@ -94,7 +94,7 @@ public:
 					Reference<CharacterList*> characters = account->getCharacterList();
 					GalaxyBanEntry* galaxyBan = account->getGalaxyBan(server->getZoneServer()->getGalaxyID());
 
-					if(galaxyBan != NULL) {
+					if(galaxyBan != nullptr) {
 						ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
 						client->sendMessage(errMsg);
 						return;

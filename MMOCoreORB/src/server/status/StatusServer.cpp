@@ -57,7 +57,7 @@ ServiceClient* StatusServer::createConnection(Socket* sock, SocketAddress& addr)
 
 	Thread::sleep(100);
 
-	return NULL;
+	return nullptr;
 }
 
 Packet* StatusServer::getStatusXMLPacket() {
@@ -91,7 +91,7 @@ Packet* StatusServer::getStatusXMLPacket() {
 }
 
 bool StatusServer::testZone() {
-	if (zoneServer == NULL)
+	if (zoneServer == nullptr)
 		return false;
 
 	if (timestamp.miliDifference() < (statusInterval * 1000)) {

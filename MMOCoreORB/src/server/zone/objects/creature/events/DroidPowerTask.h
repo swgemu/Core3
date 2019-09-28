@@ -25,7 +25,7 @@ public:
 	void run() {
 		ManagedReference<DroidObject*> strongDroid = droid.get();
 
-		if( strongDroid == NULL )
+		if( strongDroid == nullptr )
 			return;
 
 		Locker locker(strongDroid);
@@ -33,10 +33,10 @@ public:
 		strongDroid->removePendingTask("droid_power");
 
 		// Check if droid is spawned
-		if( strongDroid->getLocalZone() == NULL ){  // Not outdoors
+		if( strongDroid->getLocalZone() == nullptr ){  // Not outdoors
 
 			ManagedReference<SceneObject*> parent = strongDroid->getParent().get();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			if( parent == nullptr || !parent.get()->isCellObject() ){ // Not indoors either
 				return;
 			}
 		}

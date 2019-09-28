@@ -26,7 +26,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<SceneObject*> object = creature->getRootParent();
-		if (object == NULL || !object->isBuildingObject()) {
+		if (object == nullptr || !object->isBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 			return INVALIDTARGET;
 		}
@@ -41,14 +41,14 @@ public:
 
 		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING);
 		ManagedReference<SceneObject*> tobj = creature->getParentRecursively(SceneObjectType::THEATERBUILDING);
-		if ( obj == NULL || !obj->isStructureObject() ){
+		if ( obj == nullptr || !obj->isStructureObject() ){
 			// wasn't a building. Is it a theater, as theater has different object flag
-			if (tobj == NULL || !tobj->isStructureObject()) {
+			if (tobj == nullptr || !tobj->isStructureObject()) {
 				return INVALIDPARAMETERS;
 			}
 		}
 
-		if (obj != NULL) {
+		if (obj != nullptr) {
 			StructureObject* structure = cast<StructureObject*>(obj.get());
 			StructureManager::instance()->declareResidence(creature, structure);
 		} else {

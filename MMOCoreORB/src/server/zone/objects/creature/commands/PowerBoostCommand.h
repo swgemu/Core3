@@ -36,7 +36,7 @@ public:
 		// check if user is FORCE meditating as Jedi instead of just regular TK meditate.
 		Reference<ForceMeditateTask*> medTask = creature->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>();
 
-		if (medTask != NULL) {
+		if (medTask != nullptr) {
 			creature->sendSystemMessage("@error_message:wrong_state"); // You cannot complete that action while in your current state.
 			return GENERALERROR;
 		}

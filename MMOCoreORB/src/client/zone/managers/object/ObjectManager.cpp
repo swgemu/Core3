@@ -17,13 +17,13 @@
 #include "client/zone/Zone.h"
 
 ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
-Lua* ObjectManager::luaInstance = NULL;
+Lua* ObjectManager::luaInstance = nullptr;
 Mutex ObjectManager::luaMutex;
 
 ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager") {
 	luaMutex.lock();
 
-	if (luaInstance == NULL) {
+	if (luaInstance == nullptr) {
 		luaInstance = new Lua();
 		luaInstance->init();
 
@@ -38,15 +38,15 @@ ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager")
 
 	objectMap = new ObjectMap();
 
-	zone = NULL;
+	zone = nullptr;
 }
 
 ObjectManager::~ObjectManager() {
 	/*delete luaInstance;
-	luaInstance = NULL;*/
+	luaInstance = nullptr;*/
 
 	delete objectMap;
-	objectMap = NULL;
+	objectMap = nullptr;
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -103,7 +103,7 @@ void ObjectManager::registerObjectTypes() {
 SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 	Locker _locker(this);
 
-	SceneObject* object = NULL;
+	SceneObject* object = nullptr;
 
 	try {
 		luaMutex.lock();
@@ -116,7 +116,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 
 		if (!result.isValidTable()) {
 			luaMutex.unlock();
-			return NULL;
+			return nullptr;
 		}
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
@@ -125,7 +125,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 
 		luaMutex.unlock();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return object;
 
 		object->setObjectID(objectID);
@@ -168,7 +168,7 @@ SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 			return object;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void ObjectManager::destroyObject(uint64 objectID) {
@@ -176,7 +176,7 @@ void ObjectManager::destroyObject(uint64 objectID) {
 
 	Reference<SceneObject*> object = objectMap->remove(objectID);
 
-	if (object != NULL) {
+	if (object != nullptr) {
 		object->info("finalizing object");
 
 		while (object->getSlottedObjectsSize() > 0) {

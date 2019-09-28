@@ -23,12 +23,12 @@ public:
 	void run() {
 		ManagedReference<AuctionManager*> strongRef = auctionManager.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		ZoneServer* server = strongRef->getZoneServer();
 
-		if (server == NULL || server->isServerShuttingDown())
+		if (server == nullptr || server->isServerShuttingDown())
 			return;
 
 		strongRef->checkAuctions();

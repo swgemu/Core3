@@ -18,7 +18,7 @@ class TemplateCRCMap : public HashTable<uint32, TemplateReference<SharedObjectTe
 
 public:
 	TemplateCRCMap() : HashTable<uint32, TemplateReference<SharedObjectTemplate*> >(16000) {
-		setNullValue(NULL);
+		setNullValue(nullptr);
 	}
 };
 

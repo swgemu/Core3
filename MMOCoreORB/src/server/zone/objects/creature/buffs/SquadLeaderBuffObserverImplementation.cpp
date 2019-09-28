@@ -21,16 +21,16 @@ int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int even
 
 	ManagedReference<SquadLeaderBuff* > strongBuff = buff.get();
 
-	if (strongBuff == NULL)
+	if (strongBuff == nullptr)
 		return 1;
 
 	ManagedReference<CreatureObject*> player = strongBuff->getPlayer();
-	if (player == NULL)
+	if (player == nullptr)
 		return 1;
 
 	ManagedReference<CreatureObject*> leader = strongBuff->getLeader();
 
-	if (leader == NULL || player->getGroup() == NULL || player->getGroup()->getLeader() != leader) {
+	if (leader == nullptr || player->getGroup() == nullptr || player->getGroup()->getLeader() != leader) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(player);
 			Locker clocker(strongBuff, player);

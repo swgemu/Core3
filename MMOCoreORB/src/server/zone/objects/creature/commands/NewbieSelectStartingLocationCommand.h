@@ -32,12 +32,12 @@ public:
 
 		Zone* zone = player->getZone();
 
-		if (zone == NULL || zone->getZoneName() != "tutorial")
+		if (zone == nullptr || zone->getZoneName() != "tutorial")
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> cell = creature->getParent().get();
 
-		if (cell == NULL)
+		if (cell == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> tutorial = cell->getParent().get();
@@ -46,14 +46,14 @@ public:
 
 		StartingLocation* startingLocation = server->getPlayerManager()->getStartingLocation(city);
 
-		if (startingLocation == NULL) {
+		if (startingLocation == nullptr) {
 			player->info("Attempted to start at invalid starting location: " + city + ".", true);
 			return GENERALERROR;
 		}
 
 		zone = server->getZoneServer()->getZone(startingLocation->getZoneName());
 
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			player->sendSystemMessage("This starting location is disabled, please select a different one");
 			return GENERALERROR;
 		}
@@ -63,14 +63,14 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost != NULL) {
-			ghost->setCloningFacility(NULL);
+		if (ghost != nullptr) {
+			ghost->setCloningFacility(nullptr);
 			if (ghost->getBankLocation() != "")
 				ghost->setBankLocation(startingLocation->getZoneName());
 		}
 
 
-		if (tutorial != NULL)
+		if (tutorial != nullptr)
 			StructureManager::instance()->destroyStructure(tutorial->asBuildingObject(), false);
 
 		return SUCCESS;

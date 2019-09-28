@@ -14,27 +14,27 @@ void FlagGameMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 
 	FlagGameDataComponent* data = cast<FlagGameDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return;
 	}
 
 	FlagGame* flagGame = data->getFlagGame();
 
-	if (flagGame == NULL)
+	if (flagGame == nullptr)
 		return;
 
 	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(flagGame->getDataObjectComponent()->get());
 
-	if (gameData == NULL) {
+	if (gameData == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return;
 	}
 
 	EventPerkDeed* deed = gameData->getDeed();
 
-	if (deed == NULL) {
-		player->sendSystemMessage("Error: deed is NULL.");
+	if (deed == nullptr) {
+		player->sendSystemMessage("Error: deed is nullptr.");
 		return;
 	}
 
@@ -45,7 +45,7 @@ void FlagGameMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 			menuResponse->addRadialMenuItem(75, 3, "@event_perk:flag_game_capture_flag");
 		}
 	} else {
-		if (owner != NULL && owner == player) {
+		if (owner != nullptr && owner == player) {
 			menuResponse->addRadialMenuItem(68, 3, "@event_perk:flag_game_set_time_root");
 			menuResponse->addRadialMenuItemToRadialID(68, 69, 3, "@event_perk:flag_game_set_time_10");
 			menuResponse->addRadialMenuItemToRadialID(68, 70, 3, "@event_perk:flag_game_set_time_20");
@@ -66,27 +66,27 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 
 	FlagGameDataComponent* data = cast<FlagGameDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return 1;
 	}
 
 	FlagGame* flagGame = data->getFlagGame();
 
-	if (flagGame == NULL)
+	if (flagGame == nullptr)
 		return 1;
 
 	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(flagGame->getDataObjectComponent()->get());
 
-	if (gameData == NULL) {
+	if (gameData == nullptr) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return 1;
 	}
 
 	EventPerkDeed* deed = gameData->getDeed();
 
-	if (deed == NULL) {
-		player->sendSystemMessage("Error: deed is NULL.");
+	if (deed == nullptr) {
+		player->sendSystemMessage("Error: deed is nullptr.");
 		return 1;
 	}
 
@@ -143,12 +143,12 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (inventory == NULL || inventory->isContainerFullRecursive()) {
+		if (inventory == nullptr || inventory->isContainerFullRecursive()) {
 			player->sendSystemMessage("@event_perk:redeed_failed"); // The rental could not be re-deeded.
 			return 1;
 		}
 
-		if (ghost == NULL || ghost->getEventPerkCount() > 5) {
+		if (ghost == nullptr || ghost->getEventPerkCount() > 5) {
 			player->sendSystemMessage("@event_perk:redeed_too_many_deeds"); // You have too many rental deeds in your possession and cannot redeed this rental.
 			return 1;
 		}

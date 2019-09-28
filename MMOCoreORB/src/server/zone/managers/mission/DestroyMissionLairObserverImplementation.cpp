@@ -17,7 +17,7 @@ void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair
 bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	Zone* zone = lair->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	int spawnLimitAdjustment = 0;
@@ -125,7 +125,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
 
-		if (creatureTemplate == NULL)
+		if (creatureTemplate == nullptr)
 			continue;
 
 		float tamingChance = creatureTemplate->getTame();
@@ -133,24 +133,24 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
 		for (int j = 0; j < numberToSpawn; j++) {
-			if (lair->getZone() == NULL)
+			if (lair->getZone() == nullptr)
 				break;
 
 			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
 			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
 			float z = zone->getHeight(x, y);
 
-			ManagedReference<CreatureObject*> creo = NULL;
+			ManagedReference<CreatureObject*> creo = nullptr;
 
 			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 1000)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
 			}
 
-			if (creo == NULL)
+			if (creo == nullptr)
 				creo = creatureManager->spawnCreatureWithAi(templateToSpawn.hashCode(), x, z, y);
 
-			if (creo == NULL)
+			if (creo == nullptr)
 				continue;
 
 			if (!creo->isAiAgent()) {

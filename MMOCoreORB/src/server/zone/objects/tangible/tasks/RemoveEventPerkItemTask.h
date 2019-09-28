@@ -22,7 +22,7 @@ public:
 	void run() {
 		Reference<TangibleObject*> tano = this->tano.get();
 
-		if (tano == NULL) {
+		if (tano == nullptr) {
 			return;
 		}
 
@@ -31,7 +31,7 @@ public:
 		if (tano->getServerObjectCRC() == 0x46BD798B) { // Jukebox
 			Jukebox* jbox = tano.castTo<Jukebox*>();
 
-			if (jbox != NULL)
+			if (jbox != nullptr)
 				jbox->stopPlaying();
 		}
 

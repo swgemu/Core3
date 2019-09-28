@@ -39,7 +39,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -108,7 +108,7 @@ public:
 			return false;
 		}
 
-		if (statePack == NULL) {
+		if (statePack == nullptr) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -136,7 +136,7 @@ public:
 
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -154,7 +154,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	void parseModifier(const String& modifier, uint64& state, uint64& objectId) const {
@@ -185,11 +185,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL) {
+		if (object != nullptr) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+				if (tangibleObject != nullptr && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_73"); //Target must be a player or a creature pet in order to heal a state.
@@ -214,14 +214,14 @@ public:
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		ManagedReference<StatePack*> statePack = NULL;
+		ManagedReference<StatePack*> statePack = nullptr;
 
 		if(state != CreatureState::INVALID || objectId != 0) {
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				statePack = inventory->getContainerObject(objectId).castTo<StatePack*>();
 			}
 
-			if (statePack == NULL)
+			if (statePack == nullptr)
 				statePack = findStatePack(creature, state);
 		}else {
 			uint64 targetStateBitmask = creatureTarget->getStateBitmask();
@@ -236,13 +236,13 @@ public:
 				state = healableState;
 				statePack = findStatePack(creature, healableState);
 
-				if(statePack != NULL) {
+				if(statePack != nullptr) {
 					break;
 				}
 			}
 
 			//if state is INVALID they had no healable states
-			//if it is valid but statePack is NULL they had no valid medicine for *any* state and will error in canPerformSkill
+			//if it is valid but statePack is nullptr they had no valid medicine for *any* state and will error in canPerformSkill
 			if(state == CreatureState::INVALID) {
 				StringIdChatParameter stringId("healing", "no_state_to_heal"); // %TT has no state that you can heal.
 				stringId.setTT(creatureTarget->getDisplayedName());
@@ -319,7 +319,7 @@ public:
 
 		deactivateStateTreatment(creature);
 
-		if (statePack != NULL) {
+		if (statePack != nullptr) {
 			Locker locker(statePack);
 			statePack->decreaseUseCount();
 		}

@@ -30,7 +30,7 @@ void ShuttleBeaconImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	ManagedReference<CreatureObject*> perkOwner = owner.get();
 	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-	if (perkOwner == NULL || beaconParent == NULL || perkOwner != beaconParent)
+	if (perkOwner == nullptr || beaconParent == nullptr || perkOwner != beaconParent)
 		return;
 
 	if (shuttleStatus == 0)
@@ -43,13 +43,13 @@ int ShuttleBeaconImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	ManagedReference<CreatureObject*> perkOwner = owner.get();
 	ManagedReference<SceneObject*> beaconParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-	if (perkOwner == NULL || beaconParent == NULL || perkOwner != beaconParent || selectedID != 20)
+	if (perkOwner == nullptr || beaconParent == nullptr || perkOwner != beaconParent || selectedID != 20)
 		return 0;
 
 	if (shuttleStatus == 0) {
 		ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-		if (strongShuttle != NULL && strongShuttle->getZone() != NULL) {
+		if (strongShuttle != nullptr && strongShuttle->getZone() != nullptr) {
 			player->sendSystemMessage("@event_perk:already_have_shuttle"); // You already have a shuttle deployed.
 			return 0;
 		}
@@ -64,7 +64,7 @@ int ShuttleBeaconImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
 		Reference<CreatureObject*> creo = player;
 		Core::getTaskManager()->scheduleTask([tempBeacon, creo]{
-			if(tempBeacon != NULL) {
+			if(tempBeacon != nullptr) {
 				Locker locker(tempBeacon);
 				tempBeacon->dismissShuttle(creo);
 			}
@@ -77,12 +77,12 @@ int ShuttleBeaconImplementation::handleObjectMenuSelect(CreatureObject* player, 
 void ShuttleBeaconImplementation::callShuttle(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (shuttleStatus == 1 && strongShuttle != NULL && strongShuttle->getZone() != NULL)
+	if (shuttleStatus == 1 && strongShuttle != nullptr && strongShuttle->getZone() != nullptr)
 		return;
 
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::SHUTTLE_BEACON))
@@ -108,12 +108,12 @@ void ShuttleBeaconImplementation::callShuttle(CreatureObject* player) {
 void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type) {
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (player == NULL || (strongShuttle != NULL && strongShuttle->getZone() != NULL))
+	if (player == nullptr || (strongShuttle != nullptr && strongShuttle->getZone() != nullptr))
 		return;
 
 	ManagedReference<ZoneServer*> zoneServer = getZoneServer();
 
-	if (zoneServer == NULL)
+	if (zoneServer == nullptr)
 		return;
 
 	if (!canSpawnShuttle(player)) {
@@ -135,12 +135,12 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 
 	ManagedReference<SceneObject*> object = zoneServer->createObject(shuttleTemplate, 0);
 
-	if (object == NULL)
+	if (object == nullptr)
 		return;
 
 	CreatureObject* newShuttle = cast<CreatureObject*>( object.get());
 
-	if (newShuttle == NULL)
+	if (newShuttle == nullptr)
 		return;
 
 	Locker locker(newShuttle);
@@ -164,7 +164,7 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 
 	ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
 
-	if (tempBeacon == NULL)
+	if (tempBeacon == nullptr)
 		return;
 
 	Reference<CreatureObject*> creo = player;
@@ -177,12 +177,12 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (strongShuttle == NULL)
+	if (strongShuttle == nullptr)
 		return;
 
 	ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
 
-	if (tempBeacon == NULL)
+	if (tempBeacon == nullptr)
 		return;
 
 	Locker clocker(strongShuttle, _this.getReferenceUnsafeStaticCast());
@@ -213,12 +213,12 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (strongShuttle == NULL || player == NULL)
+	if (strongShuttle == nullptr || player == nullptr)
 		return;
 
 	ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
 
-	if (tempBeacon == NULL)
+	if (tempBeacon == nullptr)
 		return;
 
 	if (!readyToTakeOff) {
@@ -248,26 +248,26 @@ void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
 void ShuttleBeaconImplementation::destroyShuttle(CreatureObject* player) {
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (strongShuttle == NULL)
+	if (strongShuttle == nullptr)
 		return;
 
 	Locker locker(strongShuttle, _this.getReferenceUnsafeStaticCast());
 
 	strongShuttle->destroyObjectFromWorld(true);
 
-	if (player != NULL)
+	if (player != nullptr)
 		player->sendSystemMessage("@event_perk:shuttle_next_is_ready"); // Shuttle Beacon: You may now call another shuttle.
 }
 
 bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 	Zone* zone = player->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
-	if (planetManager == NULL)
+	if (planetManager == nullptr)
 		return false;
 
 	if (zone->getZoneName().contains("space_"))
@@ -278,7 +278,7 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 
 	ManagedReference<SceneObject*> parent = player->getParent().get();
 
-	if (parent != NULL && parent->isCellObject())
+	if (parent != nullptr && parent->isCellObject())
 		return false;
 
 	if (player->isInCombat())
@@ -289,7 +289,7 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 
 	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-	if (city != NULL) {
+	if (city != nullptr) {
 		if (city->isClientRegion())
 			return false;
 
@@ -303,7 +303,7 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
-	if (vec == NULL)
+	if (vec == nullptr)
 		return false;
 
 	SortedVector<QuadTreeEntry*> closeObjects;
@@ -312,12 +312,12 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			continue;
 
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
-		if (objectTemplate == NULL)
+		if (objectTemplate == nullptr)
 			continue;
 
 		float radius = objectTemplate->getNoBuildRadius();
@@ -351,16 +351,16 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 }
 
 void ShuttleBeaconImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	destroyShuttle(NULL);
+	destroyShuttle(nullptr);
 
 	ManagedReference<CreatureObject*> strongOwner = owner.get();
 
-	if (strongOwner != NULL) {
+	if (strongOwner != nullptr) {
 		Locker clocker(strongOwner, _this.getReferenceUnsafeStaticCast());
 
 		PlayerObject* ghost = strongOwner->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			ghost->removeEventPerk(_this.getReferenceUnsafeStaticCast());
 		}
 	}
@@ -369,7 +369,7 @@ void ShuttleBeaconImplementation::destroyObjectFromDatabase(bool destroyContaine
 }
 
 void ShuttleBeaconImplementation::activateRemoveEvent(bool immediate) {
-	if (removeEventPerkItemTask == NULL) {
+	if (removeEventPerkItemTask == nullptr) {
 		removeEventPerkItemTask = new RemoveEventPerkItemTask(_this.getReferenceUnsafeStaticCast());
 
 		Time currentTime;

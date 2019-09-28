@@ -22,7 +22,7 @@ public:
 	}
 
 	void run() {
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		if (zone->hasManagersStarted())

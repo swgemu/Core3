@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(targetID);
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			return INVALIDTARGET;
 
 		ManagedReference<CellObject*> cell = obj->getParent().get().castTo<CellObject*>();
@@ -42,7 +42,7 @@ public:
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
 
-		if (cell != NULL) {
+		if (cell != nullptr) {
 			cellid = cell->getCellNumber();
 			ManagedReference<SceneObject*> building = cell->getParent().get();
 			buildingTemplate = building->getServerObjectCRC();
@@ -64,10 +64,10 @@ public:
 			AiAgent* objCreo = obj.castTo<AiAgent*>();
 
 			PatrolPoint* home = objCreo->getHomeLocation();
-			if (home != NULL) {
+			if (home != nullptr) {
 				cell = home->getCell();
 
-				if (cell != NULL) {
+				if (cell != nullptr) {
 					cellid = cell->getCellNumber();
 					ManagedReference<SceneObject*> building = cell->getParent().get();
 					buildingTemplate = building->getServerObjectCRC();
@@ -84,7 +84,7 @@ public:
 				PatrolPoint nextPosition = objCreo->getNextPosition();
 				cell = nextPosition.getCell();
 
-				if (cell != NULL) {
+				if (cell != nullptr) {
 					cellid = cell->getCellNumber();
 					ManagedReference<SceneObject*> building = cell->getParent().get();
 					buildingTemplate = building->getServerObjectCRC();

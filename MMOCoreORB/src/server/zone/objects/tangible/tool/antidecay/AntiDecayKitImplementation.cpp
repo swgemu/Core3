@@ -40,7 +40,7 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 {
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if(inventory == NULL || getContainerObjectsSize() < 1)
+	if(inventory == nullptr || getContainerObjectsSize() < 1)
 		return;
 
 	if(getContainerObjectsSize() > 1){
@@ -49,7 +49,7 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 	}
 
 	ManagedReference<TangibleObject*> tano = getContainerObject(0).castTo<TangibleObject*>();
-	if(tano == NULL){
+	if(tano == nullptr){
 		player->sendSystemMessage("@veteran_new:failed_item_not_made_anti_decay"); // The Anti Decay Kit failed to apply Anti Decay to this item.
 		return;
 	}
@@ -76,7 +76,7 @@ void AntiDecayKitImplementation::doRetrieveItem(CreatureObject* player)
 {
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if(inventory == NULL || getContainerObjectsSize() < 1)
+	if(inventory == nullptr || getContainerObjectsSize() < 1)
 		return;
 
 	if(inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + getCountableObjectsRecursive())){
@@ -86,7 +86,7 @@ void AntiDecayKitImplementation::doRetrieveItem(CreatureObject* player)
 
 	for (int i = 0; i < getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = getContainerObject(i);
-		if(object != NULL){
+		if(object != nullptr){
 			inventory->transferObject(object, -1, false);
 			object->sendTo(player, true);
 		}
@@ -101,13 +101,13 @@ int AntiDecayKitImplementation::canAddObject(SceneObject* object, int containmen
 
 	ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-	if (parent == NULL){
+	if (parent == nullptr){
 		errorDescription = "@veteran_new:error_kit_not_in_player_inventory"; // This Anti Decay Kit can only be used when it is in your inventory.
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
 
 	SceneObject* inventory = parent->getSlottedObject("inventory");
-	if (inventory == NULL || !inventory->hasObjectInContainer(getObjectID())){
+	if (inventory == nullptr || !inventory->hasObjectInContainer(getObjectID())){
 		errorDescription = "@veteran_new:error_kit_not_in_player_inventory"; // This Anti Decay Kit can only be used when it is in your inventory.
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}

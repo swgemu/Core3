@@ -71,7 +71,7 @@ public:
 	}
 
 	void parseFromDataTableRow(DataTableRow* row) {
-		if (row == NULL)
+		if (row == nullptr)
 			return;
 
 		try {

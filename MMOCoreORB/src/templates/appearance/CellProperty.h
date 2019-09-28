@@ -97,7 +97,11 @@ public:
 		return connectedCells.contains(cellID);
 	}
 
-	FloorMesh* getFloorMesh() const {
+	const FloorMesh* getFloorMesh() const {
+		return floorMesh;
+	}
+
+	FloorMesh* getFloorMesh() {
 		return floorMesh;
 	}
 

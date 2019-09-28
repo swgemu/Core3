@@ -29,7 +29,7 @@ public:
 
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreature()) {
+		if (object == nullptr || !object->isCreature()) {
 			creature->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
 			return INVALIDTARGET;
 		}
@@ -53,7 +53,7 @@ public:
 			if (creature->isPlayerCreature()) {
 				PlayerObject* ghost = creature->getPlayerObject();
 
-				if (ghost == NULL)
+				if (ghost == nullptr)
 					return GENERALERROR;
 
 				if (ghost->hasAbility("admin")) {

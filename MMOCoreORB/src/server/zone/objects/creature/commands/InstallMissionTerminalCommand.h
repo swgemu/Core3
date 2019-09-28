@@ -25,7 +25,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		PlayerObject* ghost = creature->getPlayerObject();
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		if (!ghost->hasAbility("installmissionterminal"))
@@ -33,7 +33,7 @@ public:
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
-		if (city == NULL)
+		if (city == nullptr)
 			return GENERALERROR;
 
 		if (!city->isMayor(creature->getObjectID()))

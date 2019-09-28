@@ -18,7 +18,7 @@ public:
 	}
 
 	DetailAppearanceTemplate() {
-		firstMesh = NULL;
+		firstMesh = nullptr;
 	}
 
 	~DetailAppearanceTemplate() {
@@ -51,7 +51,7 @@ public:
 
 	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
 		Vector<Reference<MeshData* > > meshes;
-		if(firstMesh != NULL)
+		if(firstMesh != nullptr)
 			meshes.addAll(firstMesh->getTransformedMeshData(parentTransform));
 		return meshes;
 	}

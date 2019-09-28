@@ -15,7 +15,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject);
 
-	if (building == NULL)
+	if (building == nullptr)
 		return false;
 
 	return checkContainerPermission(building, creature, permission, false);
@@ -23,7 +23,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 
 bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	if (permission == ContainerPermissions::WALKIN) {
-		if (building == NULL) {
+		if (building == nullptr) {
 			return false;
 		}
 
@@ -42,7 +42,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* buildin
 
 bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	PlayerObject* player = creature->getPlayerObject();
-	if (player == NULL) {
+	if (player == nullptr) {
 		return false;
 	}
 
@@ -65,13 +65,13 @@ bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, Cre
 	}
 
 	DataObjectComponentReference* data = building->getDataObjectComponent();
-	DestructibleBuildingDataComponent* baseData = NULL;
+	DestructibleBuildingDataComponent* baseData = nullptr;
 
-	if (data != NULL) {
+	if (data != nullptr) {
 		baseData = cast<DestructibleBuildingDataComponent*>(data->get());
 	}
 
-	if (baseData == NULL)
+	if (baseData == nullptr)
 		return false;
 
 	if (!baseData->hasDefense()) {
@@ -87,7 +87,7 @@ bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, Cre
 bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	PlayerObject* player = creature->getPlayerObject();
 
-	if (player == NULL) {
+	if (player == nullptr) {
 		return false;
 	}
 
@@ -110,14 +110,14 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 	}
 
 	DataObjectComponentReference* data = building->getDataObjectComponent();
-	DestructibleBuildingDataComponent* baseData = NULL;
+	DestructibleBuildingDataComponent* baseData = nullptr;
 
 
-	if (data != NULL) {
+	if (data != nullptr) {
 		baseData = cast<DestructibleBuildingDataComponent*>(data->get());
 	}
 
-	if (baseData != NULL) {
+	if (baseData != nullptr) {
 		if (!baseData->hasDefense()) {
 			return true;
 		} else {

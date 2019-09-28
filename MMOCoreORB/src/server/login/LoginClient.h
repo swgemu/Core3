@@ -26,7 +26,7 @@ namespace login {
 		}
 		
 		void disconnect(bool doLock = true) {
-			if (session == NULL)
+			if (session == nullptr)
 				return;
 
 			if (session->isDisconnected())

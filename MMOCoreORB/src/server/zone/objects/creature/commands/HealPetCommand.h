@@ -38,7 +38,7 @@ public:
 	StimPack* findStimPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* item = inventory->getContainerObject(i);
 
@@ -55,7 +55,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* pet, StimPack* stimPack, int mindCostNew) const {
@@ -64,7 +64,7 @@ public:
 			return false;
 		}
 
-		if (stimPack == NULL) {
+		if (stimPack == nullptr) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -136,7 +136,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreature()) {
+		if (object == nullptr || !object->isCreature()) {
 			creature->sendSystemMessage("Invalid Target.");
 			return GENERALERROR;
 		}
@@ -151,7 +151,7 @@ public:
 		}
 
 		PetControlDevice* pcd = pet->getControlDevice().get().castTo<PetControlDevice*>();
-		if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
+		if (pcd == nullptr || pcd->getPetType() != PetManager::CREATUREPET) {
 			creature->sendSystemMessage("Invalid Target.");
 			return GENERALERROR;
 		}
@@ -168,14 +168,14 @@ public:
 
 		}
 
-		ManagedReference<StimPack*> stimPack = NULL;
+		ManagedReference<StimPack*> stimPack = nullptr;
 
 		if (objectID == 0) {
 			stimPack = findStimPack(creature);
 		} else {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				stimPack = inventory->getContainerObject(objectID).castTo<StimPack*>();
 			}
 		}

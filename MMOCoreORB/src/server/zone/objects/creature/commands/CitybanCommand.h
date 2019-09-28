@@ -27,7 +27,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature) {
+		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature) {
 			return INVALIDTARGET;
 		}
 
@@ -35,7 +35,7 @@ public:
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
-		if (city == NULL || city != targetObject->getCityRegion().get()) {
+		if (city == nullptr || city != targetObject->getCityRegion().get()) {
 			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}
@@ -52,7 +52,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
 
-		if (ghost != NULL && ghost->hasGodMode()) {
+		if (ghost != nullptr && ghost->hasGodMode()) {
 			//Can't ban a CSR
 			creature->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
 

@@ -49,11 +49,11 @@ public:
 		// Perform clean up of common constructs here.
 		CLEAR_LOCK_TRACE();
 
-		sceneObject1 = NULL;
-		sceneObject2 = NULL;
-		sceneObject3 = NULL;
-		sceneObject4 = NULL;
-		monitor = NULL;
+		sceneObject1 = nullptr;
+		sceneObject2 = nullptr;
+		sceneObject3 = nullptr;
+		sceneObject4 = nullptr;
+		monitor = nullptr;
 	}
 };
 
@@ -77,7 +77,7 @@ TEST_F(DISABLED_GeneralDeadlockTestBase, CrossLockToNullTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
-		Locker locker2(sceneObject2, NULL);
+		Locker locker2(sceneObject2, nullptr);
 
 	} catch (DeadlockException& e) {
 		SUCCEED();
@@ -173,8 +173,8 @@ void DeadlockDetector::detectDeadlock() {
 		LockableTrace* lock = &trace->get(i);
 
 		if (lock->locked) {
-			Lockable* lastLockable = locked.size() > 0 ? locked.get(locked.size() - 1) : NULL;
-			LockableTrace* lastTrace = NULL;
+			Lockable* lastLockable = locked.size() > 0 ? locked.get(locked.size() - 1) : nullptr;
+			LockableTrace* lastTrace = nullptr;
 			// find last lock with lastLockable
 
 			for (int j = i - 1; j >= 0 && !lastTrace; --j) {
@@ -187,8 +187,8 @@ void DeadlockDetector::detectDeadlock() {
 				}
 			}
 
-			if (lastLockable != NULL) {
-				if (lastTrace != NULL && lastTrace->monitorLike)
+			if (lastLockable != nullptr) {
+				if (lastTrace != nullptr && lastTrace->monitorLike)
 					throw DeadlockException(lock->lockable, "Monitor trying to perform a lock!");
 
 				//ASSERT_FALSE(lastTrace->monitorLike) << "Monitor trying to perform a lock!";

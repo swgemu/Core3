@@ -36,10 +36,10 @@ public:
 		//return SUCCESS;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-		CreatureObject* playerTarget = NULL;
+		CreatureObject* playerTarget = nullptr;
 		CreatureObject* designer = cast<CreatureObject*>( creature);
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == nullptr || !object->isPlayerCreature())
 			playerTarget = designer;
 		else
 			playerTarget = cast<CreatureObject*>( object.get());
@@ -71,9 +71,9 @@ public:
 
 		/*BuildingObject* buildingObj = cast<BuildingObject*>( designer->getParentRecursively(SceneObject::SALONBUILDING));
 
-		if (buildingObj == NULL) {
+		if (buildingObj == nullptr) {
 			designer->sendSystemMessage("You must be inside an Image Design tent in order to perform that action.");
-			if(buildingObj != NULL) {
+			if(buildingObj != nullptr) {
 				int i = buildingObj->getGameObjectType();
 				System::out << String::valueOf(i) << endl;
 			}
@@ -82,7 +82,7 @@ public:
 
 		buildingObj = cast<BuildingObject*>( playerTarget->getRootParent());
 
-		if (buildingObj == NULL || buildingObj->getGameObjectType() != BuildingObject::SALONBUILDING) {
+		if (buildingObj == nullptr || buildingObj->getGameObjectType() != BuildingObject::SALONBUILDING) {
 			playerTarget->sendSystemMessage("You must be inside an Image Design tent in order to be Image Designed.");
 			designer->sendSystemMessage("Your current target is not currently inside a valid Image Design tent.");
 			return GENERALERROR;
@@ -101,7 +101,7 @@ public:
 		ManagedReference<Facade*> facade = designer->getActiveSession(SessionFacadeType::IMAGEDESIGN);
 		ManagedReference<ImageDesignSession*> session = dynamic_cast<ImageDesignSession*>(facade.get());
 
-		if (session != NULL) {
+		if (session != nullptr) {
 			designer->sendSystemMessage("@image_designer:already_image_designing");
 			return GENERALERROR;
 		}

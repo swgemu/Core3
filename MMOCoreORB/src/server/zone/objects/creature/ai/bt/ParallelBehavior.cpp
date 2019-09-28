@@ -37,9 +37,9 @@ void ParallelBehavior::doAction(bool directlyExecuted) {
 	for (int i = 0; i < children.size(); i++) {
 		Behavior* currentChild = children.get(i);
 
-		if (currentChild == NULL) { // this shouldn't happen. Bail.
+		if (currentChild == nullptr) { // this shouldn't happen. Bail.
 			Reference<AiAgent*> agent = this->agent.get();
-			agent->error("NULL child or empty children list in ParallelBehavior");
+			agent->error("nullptr child or empty children list in ParallelBehavior");
 			endWithError();
 			Behavior::doAction(directlyExecuted);
 			return;

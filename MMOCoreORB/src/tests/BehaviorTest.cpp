@@ -89,7 +89,7 @@ TEST_F(BehaviorTest, testAbort) {
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(0));
 	EXPECT_CALL(mock,update(_)).Times(AtLeast(0));
 	tree.start(&mock,actor);
-	tree.tick(NULL);
+	tree.tick(nullptr);
 
 }
 TEST_F(BehaviorTest, testSingleNodeTreePassAndFail) {

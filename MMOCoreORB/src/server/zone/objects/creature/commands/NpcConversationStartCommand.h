@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && object->isCreatureObject()) {
+		if (object != nullptr && object->isCreatureObject()) {
 			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
 
 			try {

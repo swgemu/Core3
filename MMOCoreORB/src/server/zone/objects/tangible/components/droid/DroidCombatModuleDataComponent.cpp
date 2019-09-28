@@ -21,7 +21,7 @@ String DroidCombatModuleDataComponent::getModuleName() {
 
 void DroidCombatModuleDataComponent::initializeTransientMembers() {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -41,7 +41,7 @@ void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm
 
 	// Should insert Base Stuff for hit/min/max/speed values
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		return;
 	}
 
@@ -68,25 +68,25 @@ String DroidCombatModuleDataComponent::toString() {
 
 void DroidCombatModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidCombatModuleDataComponent* otherModule = cast<DroidCombatModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	rating = rating + otherModule->rating;
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL)
+	if (droidComponent != nullptr)
 		droidComponent->changeAttributeValue("cmbt_module", (float)rating);
 }
 
 void DroidCombatModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	DroidCombatModuleDataComponent* otherModule = cast<DroidCombatModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	rating = otherModule->rating;
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL)
+	if (droidComponent != nullptr)
 		droidComponent->addProperty("cmbt_module", (float)rating, 0, "exp_effectiveness");
 }
 

@@ -33,7 +33,7 @@ public:
 
 	void run() {
 		Reference<GroupObject*> group = groupRef.get();
-		if (group == NULL) {
+		if (group == nullptr) {
 			return;
 		}
 
@@ -44,10 +44,10 @@ public:
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-			if (groupMember != NULL && groupMember->isPlayerCreature()) {
+			if (groupMember != nullptr && groupMember->isPlayerCreature()) {
 				Zone* zone = groupMember->getZone();
 
-				if (zone != NULL && zone->getZoneCRC() == planetCRC) {
+				if (zone != nullptr && zone->getZoneCRC() == planetCRC) {
 					groupMembersOnPlanet.add(groupMember);
 				}
 			}
@@ -63,7 +63,7 @@ public:
 		float totalZ = 0;
 
 		for (int i = 0; i < groupMembersOnPlanet.size(); i++) {
-			if (groupMembersOnPlanet.get(i) != NULL) {
+			if (groupMembersOnPlanet.get(i) != nullptr) {
 				CreatureObject* groupMember = groupMembersOnPlanet.get(i);
 				Vector3 groupMemberPostion = groupMember->getWorldPosition();
 				totalX += groupMemberPostion.getX();
@@ -80,9 +80,9 @@ public:
 		for (int i = 0; i < groupMembersOnPlanet.size(); i++) {
 			CreatureObject* groupMember = groupMembersOnPlanet.get(i);
 
-			if (groupMember != NULL) {
+			if (groupMember != nullptr) {
 				SceneObject* datapad = groupMember->getSlottedObject("datapad");
-				if (datapad == NULL) {
+				if (datapad == nullptr) {
 					continue;
 				}
 
@@ -91,11 +91,11 @@ public:
 				Locker clocker(groupMember, group);
 
 				for (int k = 0; k < datapad->getContainerObjectsSize(); k++) {
-					if (datapad->getContainerObject(k) != NULL && datapad->getContainerObject(k)->isMissionObject()) {
+					if (datapad->getContainerObject(k) != nullptr && datapad->getContainerObject(k)->isMissionObject()) {
 						numberOfMissionsForMember++;
 						Reference<MissionObject*> mission = datapad->getContainerObject(k).castTo<MissionObject*>();
 
-						if (mission->getWaypointToMission() != NULL && mission->getWaypointToMission()->getPlanetCRC() == planetCRC) {
+						if (mission->getWaypointToMission() != nullptr && mission->getWaypointToMission()->getPlanetCRC() == planetCRC) {
 							missionsOnPlanet.add(mission);
 						}
 					}
@@ -108,7 +108,7 @@ public:
 		}
 
 		// Finally find the closest mission.
-		Reference<MissionObject*> nearestMission = NULL;
+		Reference<MissionObject*> nearestMission = nullptr;
 		if (missionsOnPlanet.size() == 1) {
 			nearestMission = missionsOnPlanet.get(0);
 		} else {
@@ -131,7 +131,7 @@ public:
 
 			Locker clocker(groupMember, group);
 
-			if (groupMember->getPlayerObject() != NULL) {
+			if (groupMember->getPlayerObject() != nullptr) {
 				PlayerObject* ghost = groupMember->getPlayerObject();
 
 				setPlayersNearestMissionForGroupWaypoint(ghost, nearestMission);
@@ -144,7 +144,7 @@ private:
 		// The Manhattan distance will give us a "good enough" value for comparing the relative distance
 		// to two missions.  It can fail if two missions are very close to each other but that's fine for
 		// the purposes of this waypoint.
-		if (mission == NULL || mission->getWaypointToMission() == NULL) {
+		if (mission == nullptr || mission->getWaypointToMission() == nullptr) {
 			return std::numeric_limits<float>::max();
 		}
 
@@ -153,18 +153,18 @@ private:
 	}
 
 	void setPlayersNearestMissionForGroupWaypoint(PlayerObject* ghost, MissionObject* nearestMissionForGroup) {
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return;
 		}
 
-		if (nearestMissionForGroup == NULL) {
+		if (nearestMissionForGroup == nullptr) {
 			ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
 		} else {
 			Zone* zone = nearestMissionForGroup->getZone();
 			uint32 crc = zone ? zone->getZoneCRC() : 0;
 
 			ManagedReference<WaypointObject*> waypoint = ghost->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
-			if (waypoint == NULL) {
+			if (waypoint == nullptr) {
 				ZoneServer* zoneServer = ghost->getZoneServer();
 				waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 			}

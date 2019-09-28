@@ -11,15 +11,15 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
-	if (droidObject == NULL || player == NULL || mission == NULL) {
-		if (player != NULL) {
+	if (droidObject == nullptr || player == nullptr || mission == nullptr) {
+		if (player != nullptr) {
 			player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
-	Reference<Task*> task = NULL;
+	Reference<Task*> task = nullptr;
 
 	Locker playerLock(player);
 
@@ -48,19 +48,19 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 	if (mission->getMissionLevel() < 2 ||
 			(mission->getMissionLevel() < 3 && track)) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
-		return NULL;
+		return nullptr;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
-	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
+	if (objective == nullptr || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
-		return NULL;
+		return nullptr;
 	}
 
 	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
-		return NULL;
+		return nullptr;
 	}
 
 	ManagedReference<AiAgent*> droid = cast<AiAgent*>(player->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("seeker"), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0));
@@ -72,7 +72,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 	Locker locker(droidObject);
 
 	TangibleObject* tano = cast<TangibleObject*>(droidObject);
-	if(tano != NULL){
+	if(tano != nullptr){
 		tano->decreaseUseCount();
 	} else {
 		droidObject->destroyObjectFromWorld(true);
@@ -85,37 +85,37 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (mission->getMissionLevel() < 2) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
-		return NULL;
+		return nullptr;
 	}
 
-	if (mission->getMissionObjective() == NULL) {
+	if (mission->getMissionObjective() == nullptr) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_mission"); // You must accept a bounty mission before you can use a probe droid.
-		return NULL;
+		return nullptr;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
-	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
+	if (objective == nullptr || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
-		return NULL;
+		return nullptr;
 	}
 
-	if (objective->getArakydDroid() != NULL) {
+	if (objective->getArakydDroid() != nullptr) {
 		player->sendSystemMessage("@mission/mission_generic:probe_droid_too_many"); // You cannot launch another probe droid.
-		return NULL;
+		return nullptr;
 	}
 
 	SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
 		if (areas->get(i)->isMunicipalZone()) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location"); // You must move to a different area to call down a probe droid from orbit.
-			return NULL;
+			return nullptr;
 		}
 	}
 
 	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
-		return NULL;
+		return nullptr;
 	}
 
 	Reference<CallArakydTask*> task = new CallArakydTask(player, cast<BountyMissionObjective*>(mission->getMissionObjective()));
@@ -134,7 +134,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	TangibleObject* tano = cast<TangibleObject*>(droidObject);
 
-	if(tano != NULL){
+	if(tano != nullptr){
 		tano->decreaseUseCount();
 	} else {
 		droidObject->destroyObjectFromWorld(true);
@@ -147,24 +147,24 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (mission->getMissionLevel() < 2) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
-		return NULL;
+		return nullptr;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
-	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
+	if (objective == nullptr || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature"); // You must go speak with your informant before you can track your target.
-		return NULL;
+		return nullptr;
 	}
 
 	if (objective->hasArakydFindTask()) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_already_tracking"); // You are already tracking your target.
-		return NULL;
+		return nullptr;
 	}
 
 	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
-		return NULL;
+		return nullptr;
 	}
 
 	objective->cancelCallArakydTask();

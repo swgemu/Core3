@@ -17,7 +17,7 @@ class CooldownTimer : public Variable {
 
 public:
 	CooldownTimer() : Variable() {
-		//timeStamp = NULL;
+		//timeStamp = nullptr;
 	}
 
 	CooldownTimer(const Time& timestamp) : Variable() {
@@ -173,7 +173,7 @@ public:
 		Locker locker(&cooldownMutex);
 
 		if (!timers.containsKey(cooldownName))
-			return NULL;
+			return nullptr;
 
 		Time* cooldown = timers.get(cooldownName).getTime();
 

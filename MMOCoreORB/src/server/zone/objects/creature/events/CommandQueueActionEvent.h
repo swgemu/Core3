@@ -22,12 +22,12 @@ public:
 
 	void run() {
 		//TODO: FIXME
-		/*if (creature == NULL)
+		/*if (creature == nullptr)
 			return;*/
 			
 		ManagedReference<CreatureObject*> creature = this->creature.get();
 		
-		if (creature == NULL)
+		if (creature == nullptr)
 			return;
 
 		try {
@@ -46,12 +46,12 @@ public:
 			creature->error(e.getMessage());
 			e.printStackTrace();
 		} catch (...) {
-			//creature = NULL;
+			//creature = nullptr;
 
 			throw;
 		}
 		
-		//creature = NULL;
+		//creature = nullptr;
 		
 	}
 

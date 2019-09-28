@@ -22,9 +22,9 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = weakPlayer.get();
 
-		if (player != NULL) {
+		if (player != nullptr) {
 			ManagedReference<ContrabandScanSession*> scanSession = player->getActiveSession(SessionFacadeType::CONTRABANDSCAN).castTo<ContrabandScanSession*>();
-			if (scanSession != NULL) {
+			if (scanSession != nullptr) {
 				scanSession->runContrabandScan();
 			}
 		}

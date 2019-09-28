@@ -33,7 +33,7 @@ public:
 		else
 			creature->sendSystemMessage("@ui_who:anonymous_true");
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->toggleCharacterBit(PlayerObject::ANONYMOUS);
 
 

@@ -24,7 +24,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isInputBox() || player == NULL || args->size() <= 0 || cancelPressed)
+		if (!suiBox->isInputBox() || player == nullptr || args->size() <= 0 || cancelPressed)
 			return;
 
 		String value = args->get(0).toString();

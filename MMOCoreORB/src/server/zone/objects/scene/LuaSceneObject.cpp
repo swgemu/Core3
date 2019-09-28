@@ -100,7 +100,7 @@ LuaSceneObject::~LuaSceneObject(){
 }
 
 int LuaSceneObject::_getObject(lua_State* L) {
-	if (realObject == NULL)
+	if (realObject == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, realObject.get());
@@ -167,7 +167,7 @@ int LuaSceneObject::switchZone(lua_State* L) {
 }
 
 int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
-	if (realObject != NULL) {
+	if (realObject != nullptr) {
 		String tempPath = realObject->getObjectTemplate()->getFullTemplateString();
 
 		lua_pushstring(L, tempPath.toCharArray());
@@ -194,7 +194,7 @@ int LuaSceneObject::getZoneName(lua_State* L) {
 
 	String name = "";
 
-	if (zone != NULL) {
+	if (zone != nullptr) {
 		name = zone->getZoneName();
 	}
 
@@ -323,7 +323,7 @@ int LuaSceneObject::faceObject(lua_State* L) {
 int LuaSceneObject::isFacingObject(lua_State* L) {
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
 
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		lua_pushboolean(L, false);
 
 		return 1;
@@ -361,7 +361,7 @@ int LuaSceneObject::isInRangeWithObject3d(lua_State* L) {
 int LuaSceneObject::getParent(lua_State* L) {
 	SceneObject* obj = realObject->getParent().get().get();
 
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -376,7 +376,7 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getContainerObject(idx);
 
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -391,7 +391,7 @@ int LuaSceneObject::getContainerObjectById(lua_State* L) {
 
 	SceneObject* obj = realObject->getContainerObject(objectID);
 
-	if (obj != NULL) {
+	if (obj != nullptr) {
 		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	} else {
@@ -445,7 +445,7 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	String slot = lua_tostring(L, -1);
 
 	SceneObject* obj = realObject->getSlottedObject(slot);
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -767,7 +767,7 @@ int LuaSceneObject::cancelPendingTask(lua_State* L) {
 	if (realObject->containsPendingTask(name)) {
 		Reference<ScreenPlayTask*> task = realObject->getPendingTask(name).castTo<ScreenPlayTask*>();
 
-		if (task != NULL && task->isScheduled()) {
+		if (task != nullptr && task->isScheduled()) {
 			task->cancel();
 		}
 
@@ -782,7 +782,7 @@ int LuaSceneObject::getChildObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getChildObjects()->get(index);
 
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -812,7 +812,7 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	Zone* thisZone = realObject->getZone();
 
-	if (thisZone == NULL) {
+	if (thisZone == nullptr) {
 		lua_pushnil(L);
 		return 1;
 	}
@@ -826,12 +826,12 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == nullptr || !object->isPlayerCreature())
 			continue;
 
 		CreatureObject* player = object->asCreatureObject();
 
-		if (player == NULL || player->isInvisible())
+		if (player == nullptr || player->isInvisible())
 			continue;
 
 		numPlayers++;

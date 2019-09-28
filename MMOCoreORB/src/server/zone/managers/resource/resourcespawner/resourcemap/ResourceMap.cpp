@@ -13,12 +13,12 @@
 
 ResourceMap::ResourceMap() {
 	setNoDuplicateInsertPlan();
-	setNullValue(NULL);
+	setNullValue(nullptr);
 
 	zoneResourceMap.setNoDuplicateInsertPlan();
-	zoneResourceMap.setNullValue(NULL);
+	zoneResourceMap.setNullValue(nullptr);
 
-	typeResourceMap.setNullValue(NULL);
+	typeResourceMap.setNullValue(nullptr);
 }
 
 ResourceMap::~ResourceMap() {
@@ -37,8 +37,8 @@ ResourceMap::~ResourceMap() {
 	}
 }
 
-float ResourceMap::getDensityAt(const String& resourcename, String zoneName, float x, float y) {
-	ManagedReference<ResourceSpawn* > resourceSpawn = get(resourcename.toLowerCase());
+float ResourceMap::getDensityAt(const String& resourcename, String zoneName, float x, float y) const {
+	const auto& resourceSpawn = get(resourcename.toLowerCase());
 	return resourceSpawn->getDensityAt(zoneName, x, y);
 }
 
@@ -47,7 +47,7 @@ void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > r
 
 	/// Index the resources by type, for resource deeds
 	TypeResourceMap* typemap = typeResourceMap.get(resourceSpawn->getFinalClass());
-	if(typemap == NULL) {
+	if(typemap == nullptr) {
 		typemap = new TypeResourceMap();
 		typeResourceMap.put(resourceSpawn->getFinalClass(), typemap);
 	}
@@ -59,7 +59,7 @@ void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > r
 		if (zoneName != "") {
 			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
-			if(map == NULL) {
+			if(map == nullptr) {
 				map = new ZoneResourceMap();
 				zoneResourceMap.put(zoneName, map);
 			}
@@ -81,7 +81,7 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
 		if (zoneName != "") {
 			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
-			if (map != NULL)
+			if (map != nullptr)
 				map->drop(resourceSpawn->getName().toLowerCase());
 		}
 	}
@@ -90,7 +90,7 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
 void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, String zoneName) {
 	ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
-	if (map != NULL)
+	if (map != nullptr)
 		map->drop(resourceSpawn->getName().toLowerCase());
 }
 
@@ -98,7 +98,7 @@ void ResourceMap::addToSuiListBox(SuiListBox* suil, const String& name) {
 
 	TypeResourceMap* typemap = typeResourceMap.get(name);
 
-	if(typemap == NULL) {
+	if(typemap == nullptr) {
 		suil->addMenuItem("No resources to display");
 		return;
 	}
@@ -106,7 +106,7 @@ void ResourceMap::addToSuiListBox(SuiListBox* suil, const String& name) {
 	for(int i = 0; i < typemap->size(); ++i) {
 		ManagedReference<ResourceSpawn*> spawn = typemap->get(i);
 
-		if(spawn == NULL)
+		if(spawn == nullptr)
 			continue;
 
 		suil->addMenuItem(spawn->getName(), spawn->getObjectID());
@@ -117,7 +117,7 @@ void ResourceMap::addToSuiListBox(SuiListBox* suil, const String& name) {
 void ResourceMap::getTypeSubset(ResourceMap& subMap, const String& typeName) {
 	for (int i = 0; i < size(); i++) {
 		ManagedReference<ResourceSpawn*> spawn = get(i);
-		if (spawn == NULL)
+		if (spawn == nullptr)
 			continue;
 
 		for (int j = 0; j < 8; j++) {
@@ -134,7 +134,7 @@ void ResourceMap::getTypeSubset(ResourceMap& subMap, const String& typeName) {
 void ResourceMap::getAttributeSubset(ResourceMap& subMap, const String& attributeName) {
 	for (int i = 0; i < size(); i++) {
 		ManagedReference<ResourceSpawn*> spawn = get(i);
-		if (spawn == NULL)
+		if (spawn == nullptr)
 			continue;
 
 		for (int j = 0; j < 12; j++) {

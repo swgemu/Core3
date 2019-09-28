@@ -28,7 +28,7 @@ void ResourceManagerImplementation::loadSurveyData() {
 	info("Loading survey data form surveys.db");
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	ObjectDatabase* surveyDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("surveys", true);
-	if (surveyDatabase == NULL) {
+	if (surveyDatabase == nullptr) {
 		error("Could not load the survey database.");
 		return;
 	}
@@ -52,7 +52,7 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);
 
-		if (creature == NULL) {
+		if (creature == nullptr) {
 			return 0;
 		}
 
@@ -60,12 +60,12 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 		Reference<SampleTask*> task = creature->getPendingTask("sample").castTo<SampleTask*>( );
 		Reference<SampleResultsTask*> sampleResultsTask = creature->getPendingTask("sampleresults").castTo<SampleResultsTask*>( );
 
-		if (task != NULL) {
+		if (task != nullptr) {
 
 			task->stopSampling();
 			//creature->removePendingTask("sample");
 
-			if(sampleResultsTask != NULL) {
+			if(sampleResultsTask != nullptr) {
 				sampleResultsTask->cancel();
 				creature->removePendingTask("sampleresults");
 			}
@@ -162,9 +162,9 @@ void ResourceManagerImplementation::loadDefaultConfig() {
 }
 
 void ResourceManagerImplementation::stop() {
-	processor = NULL;
-	zoneServer = NULL;
-	resourceSpawner = NULL;
+	processor = nullptr;
+	zoneServer = nullptr;
+	resourceSpawner = nullptr;
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
@@ -227,7 +227,7 @@ void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCr
 
 	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(playerCreature, args);
 
-	if (resourceSpawn != NULL) {
+	if (resourceSpawn != nullptr) {
 		StringBuffer buffer;
 		buffer << "Spawned " << resourceSpawn->getName() << " of type " << resourceSpawn->getType();
 
@@ -239,7 +239,7 @@ void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCr
 }
 
 ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spawnName) {
-	ResourceSpawn* spawn = NULL;
+	ResourceSpawn* spawn = nullptr;
 
 	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
@@ -266,7 +266,7 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 
 		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneName);
 
-		if (zoneMap != NULL) {
+		if (zoneMap != nullptr) {
 			for (int i = 0; i < zoneMap->size(); ++i) {
 				resourceSpawn = zoneMap->get(i);
 
@@ -298,13 +298,13 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		Reference<SceneObject*> obj =  inventory->getContainerObject(i).castTo<SceneObject*>();
 
-		if (obj == NULL || !obj->isResourceContainer())
+		if (obj == nullptr || !obj->isResourceContainer())
 			continue;
 
 		ResourceContainer* rcno = cast<ResourceContainer*>( obj.get());
 		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
-		if (spawn == NULL || !spawn->isEnergy())
+		if (spawn == nullptr || !spawn->isEnergy())
 			continue;
 
 		int quantity = rcno->getQuantity();
@@ -329,7 +329,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 	for (int i = inventory->getContainerObjectsSize() - 1; i >= 0 && power > 0; --i) {
 		ManagedReference<SceneObject*> obj = inventory->getContainerObject(i);
 
-		if (obj == NULL || !obj->isResourceContainer())
+		if (obj == nullptr || !obj->isResourceContainer())
 			continue;
 
 		ResourceContainer* rcno = cast<ResourceContainer*>( obj.get());
@@ -338,7 +338,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 
 		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
-		if (spawn == NULL || !spawn->isEnergy())
+		if (spawn == nullptr || !spawn->isEnergy())
 			continue;
 
 		int quantity = rcno->getQuantity();
@@ -368,19 +368,19 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity) {
 	ManagedReference<ResourceSpawn* > spawn = getResourceSpawn(restype);
 
-	if(spawn == NULL) {
+	if(spawn == nullptr) {
 		playerCreature->sendSystemMessage("Selected spawn does not exist.");
 		return;
 	}
 
 	ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
 
-	if(inventory != NULL && !inventory->isContainerFullRecursive()) {
+	if(inventory != nullptr && !inventory->isContainerFullRecursive()) {
 		Locker locker(spawn);
 
 		Reference<ResourceContainer*> newResource = spawn->createResource(quantity);
 
-		if(newResource != NULL) {
+		if(newResource != nullptr) {
 			spawn->extractResource("", quantity);
 
 			Locker rlocker(newResource);
@@ -436,7 +436,7 @@ String ResourceManagerImplementation::dumpResources() {
 String ResourceManagerImplementation::despawnResource(String& resourceName) {
 
 	ManagedReference<ResourceSpawn*> spawn = getResourceSpawn(resourceName);
-	if(spawn == NULL) {
+	if(spawn == nullptr) {
 		return "Spawn not Found";
 	}
 

@@ -77,7 +77,7 @@ public:
 		for (int i = 0; i < children.size(); ++i) {
 			BugCategory* category = &children.get(i);
 
-			if (category == NULL)
+			if (category == nullptr)
 				continue;
 
 			category->insertToMessage(message);

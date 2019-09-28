@@ -19,12 +19,12 @@
 int PlayerManagementSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL)
+	if (admin == nullptr)
 		return cancelSession();
 
 	playerManager = admin->getZoneServer()->getPlayerManager();
 
-	if (targetAccount == NULL)
+	if (targetAccount == nullptr)
 		return cancelSession();
 
 	return 0;
@@ -33,42 +33,42 @@ int PlayerManagementSessionImplementation::initializeSession() {
 int PlayerManagementSessionImplementation::clearSession() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin != NULL) {
+	if (admin != nullptr) {
 		Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-		if (ghost != NULL) {
-			if (accountBox != NULL) {
+		if (ghost != nullptr) {
+			if (accountBox != nullptr) {
 				if (ghost->hasSuiBox(accountBox->getBoxID())) {
 					admin->sendMessage(accountBox->generateCloseMessage());
 				}
 			}
 
-			if (durationBox != NULL) {
+			if (durationBox != nullptr) {
 				if (ghost->hasSuiBox(durationBox->getBoxID())) {
 					admin->sendMessage(durationBox->generateCloseMessage());
 				}
 			}
 
-			if (reasonBox != NULL) {
+			if (reasonBox != nullptr) {
 				if (ghost->hasSuiBox(reasonBox->getBoxID())) {
 					admin->sendMessage(reasonBox->generateCloseMessage());
 				}
 			}
 
-			if (summaryBox != NULL) {
+			if (summaryBox != nullptr) {
 				if (ghost->hasSuiBox(summaryBox->getBoxID())) {
 					admin->sendMessage(summaryBox->generateCloseMessage());
 				}
 			}
 
-			if (unbanSummaryBox != NULL) {
+			if (unbanSummaryBox != nullptr) {
 				if (ghost->hasSuiBox(unbanSummaryBox->getBoxID())) {
 					admin->sendMessage(unbanSummaryBox->generateCloseMessage());
 				}
 			}
 		}
 
-		this->admin = NULL;
+		this->admin = nullptr;
 	}
 
 	return 0;
@@ -106,7 +106,7 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 			banMode = GALAXY;
 			galaxyID = galaxy;
 			GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxy);
-			if (galaxyBan != NULL) {
+			if (galaxyBan != nullptr) {
 				sendBanReason(true);
 				banType = UNBAN;
 			}
@@ -123,7 +123,7 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 			galaxyID = galaxy;
 			targetName = name;
 			CharacterListEntry* entry = targetAccount->getCharacterBan(galaxy, name);
-			if(entry != NULL) {
+			if(entry != nullptr) {
 				sendBanReason(true);
 				banType = UNBAN;
 			} else {
@@ -137,7 +137,7 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 void PlayerManagementSessionImplementation::getPlayerInfo(const int tablevel, const String& firstName) {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL)
+	if (admin == nullptr)
 		return;
 
 	sendAccountInfo();
@@ -146,12 +146,12 @@ void PlayerManagementSessionImplementation::getPlayerInfo(const int tablevel, co
 	if (tablevel != 2)
 		return;
 
-	ManagedReference<CreatureObject*> targetPlayer = NULL;
+	ManagedReference<CreatureObject*> targetPlayer = nullptr;
 
 	if (!firstName.isEmpty())
 		targetPlayer = playerManager->getPlayer(firstName);
 
-	if (targetPlayer == NULL) {
+	if (targetPlayer == nullptr) {
 		return;
 	}
 
@@ -161,12 +161,12 @@ void PlayerManagementSessionImplementation::getPlayerInfo(const int tablevel, co
 void PlayerManagementSessionImplementation::sendAccountInfo() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL || accountBox == NULL)
+	if (admin == nullptr || accountBox == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	admin->sendMessage(accountBox->generateCloseMessage());
@@ -177,18 +177,18 @@ void PlayerManagementSessionImplementation::sendAccountInfo() {
 void PlayerManagementSessionImplementation::sendBanDuration() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL || accountBox == NULL)
+	if (admin == nullptr || accountBox == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	if (!ghost->hasSuiBox(accountBox->getBoxID()))
 		sendAccountInfo();
 
-	if (durationBox == NULL) {
+	if (durationBox == nullptr) {
 		durationBox = new SuiInputBox(admin, SuiWindowType::ADMIN_BAN_DURATION);
 		durationBox->setPromptTitle("ENTER BAN DURATION");
 		durationBox->setPromptText("Enter the duration of ban in years, months, days, hours, minutes\n\nEx: 1y 2m 3d 4h 5M");
@@ -258,18 +258,18 @@ void PlayerManagementSessionImplementation::parseBanDuration(const String& durat
 void PlayerManagementSessionImplementation::sendBanReason(bool unban) {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL || accountBox == NULL)
+	if (admin == nullptr || accountBox == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	if (!ghost->hasSuiBox(accountBox->getBoxID()))
 		sendAccountInfo();
 
-	if (reasonBox == NULL) {
+	if (reasonBox == nullptr) {
 		reasonBox = new SuiInputBox(admin, SuiWindowType::ADMIN_BAN_REASON);
 		reasonBox->setUsingObject(admin);
 		reasonBox->setCallback(new PlayerManagementSessionSuiCallback(admin->getZoneServer()));
@@ -307,17 +307,17 @@ void PlayerManagementSessionImplementation::setBanReason(const String& reason) {
 void PlayerManagementSessionImplementation::showBanSummary() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL)
+	if (admin == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	Locker alocker(targetAccount);
 
-	if (summaryBox == NULL) {
+	if (summaryBox == nullptr) {
 		summaryBox = new SuiListBox(admin, SuiWindowType::ADMIN_BAN_SUMMARY);
 
 		summaryBox->setOkButton(true, "@ok");
@@ -335,7 +335,7 @@ void PlayerManagementSessionImplementation::showBanSummary() {
 
 	StringBuffer summary;
 	summary << "Banning ";
-	if (banMode == ACCOUNT && targetAccount != NULL)
+	if (banMode == ACCOUNT && targetAccount != nullptr)
 		summary << " Account: " << targetAccount->getUsername() <<  endl;
 	else if (banMode == GALAXY && galaxyID != 0)
 		summary << " From " << galaxyName << " Galaxy" <<  endl;
@@ -353,17 +353,17 @@ void PlayerManagementSessionImplementation::showBanSummary() {
 void PlayerManagementSessionImplementation::showUnbanSummary() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL)
+	if (admin == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	Locker alocker(targetAccount);
 
-	if (unbanSummaryBox == NULL) {
+	if (unbanSummaryBox == nullptr) {
 		unbanSummaryBox = new SuiMessageBox(admin, SuiWindowType::ADMIN_UNBAN_SUMMARY);
 
 		unbanSummaryBox->setOkButton(true, "@ok");
@@ -377,19 +377,19 @@ void PlayerManagementSessionImplementation::showUnbanSummary() {
 
 	StringBuffer summary;
 	summary << "Unbanning ";
-	if (banMode == ACCOUNT && targetAccount != NULL) {
+	if (banMode == ACCOUNT && targetAccount != nullptr) {
 		summary << " Account: " << targetAccount->getUsername() <<  endl;
 		banExpiration = targetAccount->getBanExpires();
 	} else if (banMode == GALAXY && galaxyID != 0) {
 		GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
-		if (galaxyBan != NULL) {
+		if (galaxyBan != nullptr) {
 			banExpiration = galaxyBan->getBanExpiration();
 		}
 		summary << " From " << galaxyName << " Galaxy" <<  endl;
 	} else if (banMode == CHARACTER && !targetName.isEmpty()) {
 		summary << " Character: " << targetName <<  endl;
 		CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
-		if (entry != NULL) {
+		if (entry != nullptr) {
 			banExpiration = entry->getBanExpiration();
 		}
 	}
@@ -406,12 +406,12 @@ void PlayerManagementSessionImplementation::showUnbanSummary() {
 void PlayerManagementSessionImplementation::completeBan() {
 	ManagedReference<CreatureObject*> admin = this->admin.get();
 
-	if (admin == NULL)
+	if (admin == nullptr)
 		return;
 
 	Reference<PlayerObject*> ghost = admin->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	String message = "";
@@ -445,8 +445,8 @@ void PlayerManagementSessionImplementation::completeBan() {
 		GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
 
 		/// Check for galaxy ban status changes
-		if ((banType == BAN && galaxyBan != NULL) ||
-				(banType == UNBAN && galaxyBan == NULL)) {
+		if ((banType == BAN && galaxyBan != nullptr) ||
+				(banType == UNBAN && galaxyBan == nullptr)) {
 
 			admin->sendSystemMessage("This account has been changed since you started modifying it, please check changes and try again");
 
@@ -455,7 +455,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 			return;
 		}
 
-		if (galaxyBan != NULL) {
+		if (galaxyBan != nullptr) {
 			StringBuffer reason;
 			reason << galaxyBan->getBanAdmin() << "=" << galaxyBan->getBanReason() << "|" << ghost->getAccountID() << "=" << banReason;
 			message = playerManager->unbanFromGalaxy(ghost, targetAccount, galaxyID, reason.toString());
@@ -467,8 +467,8 @@ void PlayerManagementSessionImplementation::completeBan() {
 		CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
 
 		/// Check for player ban status changes
-		if ((banType == BAN && entry != NULL) ||
-				(banType == UNBAN && entry == NULL)) {
+		if ((banType == BAN && entry != nullptr) ||
+				(banType == UNBAN && entry == nullptr)) {
 
 			admin->sendSystemMessage("This account has been changed since you started modifying it, please check changes and try again");
 
@@ -477,7 +477,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 			return;
 		}
 
-		if (entry != NULL) {
+		if (entry != nullptr) {
 			StringBuffer reason;
 			reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << ghost->getAccountID() << "=" << banReason;
 			message = playerManager->unbanCharacter(ghost, targetAccount, targetName, galaxyID, reason.toString());

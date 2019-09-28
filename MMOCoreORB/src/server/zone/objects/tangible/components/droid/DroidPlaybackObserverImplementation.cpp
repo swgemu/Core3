@@ -13,7 +13,7 @@
 int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	// check params we should have the player around here
 	SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
-	if (sceno == NULL) {
+	if (sceno == nullptr) {
 		return 1;
 	}
 
@@ -22,7 +22,7 @@ int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventT
 	}
 
 	CreatureObject* player = dynamic_cast<CreatureObject*>(sceno);
-	if (player == NULL) {
+	if (player == nullptr) {
 		return 1;
 	}
 
@@ -30,7 +30,7 @@ int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventT
 
 	if (eventType == ObserverEventType::STARTENTERTAIN) {
 		ManagedReference<EntertainingSession*> playingSession = player->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
-		if(playingSession == NULL) {
+		if(playingSession == nullptr) {
 			return 1;
 		}
 

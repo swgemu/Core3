@@ -13,7 +13,7 @@ ShipManager::ShipManager() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(
 			"datatables/space/ship_components.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		fatal("datatables/space/ship_components.iff could not be found.");
 		return;
 	}

@@ -23,7 +23,7 @@ public:
 	}
 
 	void run() {
-		if (session != NULL)
+		if (session != nullptr)
 			session->doLotteryDraw();
 	}
 

@@ -40,7 +40,7 @@ public:
 	}
 
 	uint32 getRandomTemplate(int planetID) {
-		Vector<uint32>* lairs = NULL;
+		Vector<uint32>* lairs = nullptr;
 
 		if (planetID == -1)
 			lairs = &elementAt(System::random(size() -1)).getValue();

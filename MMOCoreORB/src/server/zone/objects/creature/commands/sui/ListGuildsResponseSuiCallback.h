@@ -40,7 +40,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = server->getObject(guildObjectID);
 
-		if (obj == NULL || !obj->isGuildObject())
+		if (obj == nullptr || !obj->isGuildObject())
 			return;
 
 		GuildObject* guild = cast<GuildObject*>( obj.get());

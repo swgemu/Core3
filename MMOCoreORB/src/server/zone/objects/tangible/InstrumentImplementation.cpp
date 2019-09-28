@@ -22,10 +22,10 @@ void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 	if (canDropInstrument()) {
 		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		if (parent != NULL && parent == player->asSceneObject())
+		if (parent != nullptr && parent == player->asSceneObject())
 			menuResponse->addRadialMenuItem(20, 3, "@ui_radial:item_use");
 	} else {
-		if (spawnerPlayer != NULL && spawnerPlayer == player) {
+		if (spawnerPlayer != nullptr && spawnerPlayer == player) {
 			if (!player->isPlayingMusic())
 				menuResponse->addRadialMenuItem(20, 3, "@radial_performance:play_instrument");
 			else
@@ -63,7 +63,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	if (canDropInstrument()) {
 		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		if (parent == NULL || parent != player->asSceneObject())
+		if (parent == nullptr || parent != player->asSceneObject())
 			return 1;
 
 		if (player->isSkillAnimating()) {
@@ -76,10 +76,10 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		for (int i = 0; i < observers.size(); ++i) {
 			InstrumentObserver* observer = dynamic_cast<InstrumentObserver*>(observers.get(i).get());
 
-			if (observer != NULL) {
+			if (observer != nullptr) {
 				ManagedReference<Instrument*> oldInstrument = observer->getInstrument().get();
 
-				if (oldInstrument != NULL) {
+				if (oldInstrument != nullptr) {
 					Locker locker(oldInstrument);
 					oldInstrument->destroyObjectFromWorld(true);
 					player->dropObserver(ObserverEventType::POSITIONCHANGED, observer);
@@ -90,7 +90,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		ManagedReference<SceneObject*> playerParent = player->getParent().get();
 
-		if (playerParent != NULL) {
+		if (playerParent != nullptr) {
 			if (!playerParent->isCellObject()) {
 				return 1;
 			} else {
@@ -98,7 +98,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 				StructureObject* structureObject = dynamic_cast<StructureObject*>(cell->getParent().get().get());
 
-				if (structureObject == NULL)
+				if (structureObject == nullptr)
 					return 1;
 
 				if (!structureObject->isOnAdminList(player))
@@ -111,10 +111,10 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			spawnNonAdmin(player);
 		}
 	} else {
-		if (getZone() == NULL)
+		if (getZone() == nullptr)
 			return 1;
 
-		if (spawnerPlayer == NULL || spawnerPlayer != player)
+		if (spawnerPlayer == nullptr || spawnerPlayer != player)
 			return 1;
 
 		if (player->isPlayingMusic()) {
@@ -123,14 +123,14 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 			Reference<Instrument*> instrument = player->getSlottedObject("hold_r").castTo<Instrument*>();
 
-			if (instrument != NULL) {
+			if (instrument != nullptr) {
 				player->sendSystemMessage("@performance:music_must_unequip");
 				return 1;
 			}
 
 			Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-			if (ghost == NULL)
+			if (ghost == nullptr)
 				return 1;
 
 			if (!ghost->hasAbility("startmusic")) {
@@ -151,21 +151,21 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 bool InstrumentImplementation::canDropInstrument() {
 	ManagedReference<SceneObject*> parent = getParent().get();
 
-	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
+	if (isInQuadTree() || (parent != nullptr && parent->isCellObject()))
 		return false;
 
 	return true;
 }
 
 void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
-	if (spawnedObject == NULL) {
+	if (spawnedObject == nullptr) {
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 	}
 
-	if (spawnedObject->getZone() == NULL) {
+	if (spawnedObject->getZone() == nullptr) {
 		Instrument* instrument = spawnedObject.castTo<Instrument*>();
 
-		if (instrument == NULL)
+		if (instrument == nullptr)
 			return;
 
 		Locker locker(instrument);
@@ -176,9 +176,9 @@ void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
 		ManagedReference<SceneObject*> parent = player->getParent().get();
 		Zone* zone = player->getZone();
 
-		if (parent != NULL) {
+		if (parent != nullptr) {
 			parent->transferObject(instrument, -1);
-		} else if (zone != NULL) {
+		} else if (zone != nullptr) {
 			zone->transferObject(instrument, -1, true);
 		} else {
 			return;
@@ -202,11 +202,11 @@ void InstrumentImplementation::spawnInAdminCell(CreatureObject* player) {
 
 	player->executeObjectControllerAction(STRING_HASHCODE("transferitemmisc"), _this.getReferenceUnsafeStaticCast()->getObjectID(), uni);
 
-	spawnerPlayer = NULL;
+	spawnerPlayer = nullptr;
 
-	if (spawnedObject != NULL) {
+	if (spawnedObject != nullptr) {
 		Locker locker(spawnedObject);
 		spawnedObject->destroyObjectFromWorld(true);
-		spawnedObject = NULL;
+		spawnedObject = nullptr;
 	}
 }

@@ -20,7 +20,7 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		if (creature->isRidingMount()) {
@@ -35,21 +35,21 @@ public:
 			return INVALIDLOCOMOTION;
 
 
-		if (creature->getParent() != NULL) {
+		if (creature->getParent() != nullptr) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 			return GENERALERROR;
 		}
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
-		if (city != NULL && city->isClientRegion()) {
+		if (city != nullptr && city->isClientRegion()) {
 			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 			return INVALIDPARAMETERS;
 		}
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == NULL || !obj->isDeedObject()) {
+		if (obj == nullptr || !obj->isDeedObject()) {
 			creature->sendSystemMessage("@player_structure:not_a_deed"); //That is not a deed.
 			return INVALIDTARGET;
 		}
@@ -64,7 +64,7 @@ public:
 		String serverTemplatePath = deed->getGeneratedObjectTemplate();
 		Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
-		if (serverTemplate == NULL)
+		if (serverTemplate == nullptr)
 			return GENERALERROR; //Template is unknown.
 
 		int lots = serverTemplate->getLotSize();

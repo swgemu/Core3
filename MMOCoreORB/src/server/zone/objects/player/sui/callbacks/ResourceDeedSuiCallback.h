@@ -29,22 +29,22 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			return;
 
 		ResourceDeed* deed = cast<ResourceDeed*>( obj.get());
 
-		if (deed == NULL)
+		if (deed == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-		if (inventory == NULL || !deed->isASubChildOf(inventory)) //No longer in inventory.
+		if (inventory == nullptr || !deed->isASubChildOf(inventory)) //No longer in inventory.
 			return;
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		bool backPressed = false;
@@ -78,7 +78,7 @@ public:
 			ManagedReference<ResourceSpawn*> spawn = resourceManager->getResourceSpawn(nodeName);
 
 			//They chose the resource, eat the deed and give them what they want...fuck it.
-			if (spawn != NULL) {
+			if (spawn != nullptr) {
 				Locker clocker(deed, creature);
 				deed->destroyDeed();
 				clocker.release();
@@ -94,7 +94,7 @@ public:
 				listBox->removeAllMenuItems();
 
 				spawn = resourceManager->getResourceSpawn(nodeName); //Check again, this means they are looking at stats.
-				if (spawn != NULL) {
+				if (spawn != nullptr) {
 					spawn->addStatsToDeedListBox(listBox);
 				} else {
 					resourceManager->addNodeToListBox(listBox, nodeName);

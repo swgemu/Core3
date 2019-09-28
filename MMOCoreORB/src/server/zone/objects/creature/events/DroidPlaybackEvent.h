@@ -35,19 +35,19 @@ public:
 	}
 
 	void run() {
-		if (module == NULL)
+		if (module == nullptr)
 			return;
 
 		DroidObject* droid = module->getDroidObject();
-		if (droid == NULL)
+		if (droid == nullptr)
 			return;
 
 		Locker locker(droid);
 
-		if( droid->getLocalZone() == NULL ){  // Not outdoors
+		if( droid->getLocalZone() == nullptr ){  // Not outdoors
 
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
-			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
+			if( parent == nullptr || !parent->isCellObject() ){ // Not indoors either
 				module->deactivate();
 				droid->removePendingTask("droid_playback_event");
 				return;

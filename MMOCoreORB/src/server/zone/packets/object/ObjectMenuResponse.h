@@ -92,7 +92,7 @@ public:
 	void addRadialMenuItem(uint8 parentid, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
 		RadialMenuItem* parent = getRadialItem(parentid);
 
-		if (parent == NULL) {
+		if (parent == nullptr) {
 			throw Exception("error: null parent radial menu (id = " + String::valueOf(parentid) + ") specified. radialid = " + String::valueOf(radialid));
 		}
 
@@ -105,7 +105,7 @@ public:
 	void addRadialMenuItemToRadialID(uint8 parentRadialID, uint8 newRadialID, uint8 callback, const UnicodeString& text = "") {
 		RadialMenuItem* parent = getRadialItemByRadialID(parentRadialID);
 
-		if (parent == NULL) {
+		if (parent == nullptr) {
 			throw Exception("error: parent radial id (" + String::valueOf(parentRadialID) + ") menu item null. newRadialID = " + String::valueOf(newRadialID));
 		}
 

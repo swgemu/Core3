@@ -23,7 +23,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject* > targetCreature = NULL;
+		ManagedReference<CreatureObject* > targetCreature = nullptr;
 
 		StringTokenizer args(arguments.toString());
 
@@ -40,7 +40,7 @@ public:
 
 		}
 
-		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
+		if(targetCreature == nullptr || !targetCreature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		creature->sendSystemMessage("PlayerId for " + targetCreature->getFirstName()

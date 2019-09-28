@@ -58,7 +58,7 @@ public:
 
 /*
 
-if (list == NULL)
+if (list == nullptr)
 	System::out << "list was null!" << endl;
 */
 

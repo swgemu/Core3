@@ -13,10 +13,10 @@
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 
-	if (sceneObject->isPlayerCreature() && newZone != NULL) {
+	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
 		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->setSavedTerrainName(newZone->getZoneName());
 	}
 
@@ -38,7 +38,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 
 	ManagedReference<SceneObject*> parent = scno->getParent().get();
 
-	if (parent != NULL /*&& parent->isCellObject()*/) {
+	if (parent != nullptr /*&& parent->isCellObject()*/) {
 		return;
 	}
 
@@ -61,11 +61,11 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 
 		ManagedReference<SceneObject*> par = sceneObject->getParent().get();
 
-		if (par != NULL && (par->isVehicleObject() || par->isMount())) {
+		if (par != nullptr && (par->isVehicleObject() || par->isMount())) {
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			ghost->setSavedParentID(0);
 
 			ghost->setTeleporting(true);
@@ -85,7 +85,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
-	CreatureObject* player = NULL;
+	CreatureObject* player = nullptr;
 
 	if (sceneObject->isPlayerCreature()) {
 		player = sceneObject->asCreatureObject();
@@ -93,7 +93,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 
 	ManagedReference<SceneObject*> par = sceneObject->getParent().get();
 
-	if (player != NULL && par != NULL && parentID != 0) {
+	if (player != nullptr && par != nullptr && parentID != 0) {
 
 		if (par->isVehicleObject() || par->isMount()) {
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
@@ -102,10 +102,10 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 
 	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
-	if (player != NULL) {
+	if (player != nullptr) {
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			ghost->setTeleporting(true);
 			ghost->updateLastValidatedPosition();
 			ghost->setClientLastMovementStamp(0);
@@ -128,7 +128,7 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->setSavedParentID(0);
 	}
 }
@@ -136,11 +136,11 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
 	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
-	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
+	if (sceneObject->getParent() != nullptr && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->setSavedParentID(sceneObject->getParentID());
 	}
 }

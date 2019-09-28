@@ -39,12 +39,12 @@ public:
 
 
 			DataObjectComponentReference* data = vendor->getDataObjectComponent();
-			if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+			if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 				return;
 			}
 
 			VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-			if(vendorData == NULL) {
+			if(vendorData == nullptr) {
 				return;
 			}
 

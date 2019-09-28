@@ -9,7 +9,7 @@
 BuffList::BuffList() {
 	spiceActive = false;
 
-	buffList.setNullValue(NULL);
+	buffList.setNullValue(nullptr);
 	buffList.setAllowDuplicateInsertPlan();
 
 	addSerializableVariable("spiceActive", &spiceActive);
@@ -63,7 +63,7 @@ void BuffList::sendDestroyTo(CreatureObject* player) const {
 }
 
 void BuffList::addBuff(Buff* buff) {
-	if (buff == NULL)
+	if (buff == nullptr)
 		return;
 
 	Locker guard(&mutex);
@@ -110,7 +110,7 @@ bool BuffList::removeBuff(uint32 buffcrc) {
 }
 
 void BuffList::removeBuff(Buff* buff) {
-	if (buff == NULL)
+	if (buff == nullptr)
 		return;
 
 	Locker guard(&mutex);

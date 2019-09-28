@@ -24,7 +24,7 @@ protected:
 public:
 	MinefieldDataComponent() {
 		attackSpeed = 5;
-		templateData = NULL;
+		templateData = nullptr;
 		nextExplodeTime = time(0);
 		maxRange = 5;
 		addSerializableVariables();
@@ -44,7 +44,7 @@ public:
 	void initializeTransientMembers(){
 		//Logger::Logger tlog("minefieldata");
 		//tlog.info("initializing minefield transients",true);
-		if(getParent() != NULL){
+		if(getParent() != nullptr){
 			templateData = dynamic_cast<SharedInstallationObjectTemplate*>(getParent()->getObjectTemplate());
 			attackSpeed = 5;
 		}

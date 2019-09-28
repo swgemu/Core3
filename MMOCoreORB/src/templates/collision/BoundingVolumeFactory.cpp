@@ -5,13 +5,13 @@
 BaseBoundingVolume* BoundingVolumeFactory::getVolume(IffStream *iff) {
 	static Logger logger("BoundingVolumeFactory");
 
-	BaseBoundingVolume *volume = NULL;
+	BaseBoundingVolume *volume = nullptr;
 	uint32 type = iff->getNextFormType();
 	switch(type) {
 		case 'NULL':
 			iff->openForm('NULL');
 			iff->closeForm('NULL');
-			return NULL;
+			return nullptr;
 		case 'EXBX':
 			volume = new BoxVolume();
 			break;
@@ -38,7 +38,7 @@ BaseBoundingVolume* BoundingVolumeFactory::getVolume(IffStream *iff) {
 			logger.error(iff->getFileName() + " - INVALID VOLUME TYPE " + String::hexvalueOf((int64)type));
 			iff->openForm(type);
 			iff->closeForm(type);
-			return NULL;
+			return nullptr;
 		}
 	}
 	iff->openForm(type);

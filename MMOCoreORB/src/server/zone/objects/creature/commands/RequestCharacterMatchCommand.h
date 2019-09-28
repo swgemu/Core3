@@ -40,11 +40,11 @@ public:
 
 		ManagedReference<Zone*> zone = creature->getZone();
 
-		if (zone != NULL) {
+		if (zone != nullptr) {
 			SortedVector<QuadTreeEntry*> closeObjects;
 			CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
 
-			if (actualCloseObjects != NULL) {
+			if (actualCloseObjects != nullptr) {
 				actualCloseObjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 			} else {
 				zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeObjects, true);
@@ -57,11 +57,11 @@ public:
 				String guildName, charName;
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
-					if (obj != NULL && (obj->isPlayerCreature() || (obj->isMount() || obj->isVehicleObject()))) {
+					if (obj != nullptr && (obj->isPlayerCreature() || (obj->isMount() || obj->isVehicleObject()))) {
 						ManagedReference<CreatureObject*> playerCreature;
 						if (obj->isMount() || obj->isVehicleObject()) {
 							SceneObject* rider = obj->getSlottedObject("rider");
-							if (rider == NULL)
+							if (rider == nullptr)
 								continue;
 
 							playerCreature = cast<CreatureObject*>(rider);
@@ -70,7 +70,7 @@ public:
 
 						PlayerObject* ghost = playerCreature->getPlayerObject();
 
-						if (ghost == NULL || ghost->isAnonymous())
+						if (ghost == nullptr || ghost->isAnonymous())
 							continue;
 
 						guildName = "";

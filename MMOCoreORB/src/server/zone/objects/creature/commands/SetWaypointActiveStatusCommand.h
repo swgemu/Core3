@@ -25,12 +25,12 @@ public:
 
 		ManagedReference<SceneObject*> wp = server->getZoneServer()->getObject(target);
 
-		if (wp == NULL || !wp->isWaypointObject())
+		if (wp == nullptr || !wp->isWaypointObject())
 			return INVALIDPARAMETERS;
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		WaypointObject* waypoint = cast<WaypointObject*>( wp.get());

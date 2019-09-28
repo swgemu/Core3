@@ -24,12 +24,12 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
+		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
-		if (city == NULL || city != targetObject->getCityRegion().get()) {
+		if (city == nullptr || city != targetObject->getCityRegion().get()) {
 			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}

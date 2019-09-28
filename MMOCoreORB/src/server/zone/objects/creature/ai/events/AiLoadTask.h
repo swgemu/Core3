@@ -40,7 +40,7 @@ public:
 	void run() {
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);
@@ -48,7 +48,7 @@ public:
 		strongRef->clearBehaviorList();
 
 		if (aiTemp.isEmpty()) {
-			if (strongRef->getParentID() != 0 || ((CloseObjectsVector*) strongRef->getCloseObjects()) == NULL)
+			if (strongRef->getParentID() != 0 || ((CloseObjectsVector*) strongRef->getCloseObjects()) == nullptr)
 				strongRef->setCreatureBitmask(strongRef->getCreatureBitmask() | CreatureFlag::STATIC);
 			strongRef->setupBehaviorTree();
 		} else

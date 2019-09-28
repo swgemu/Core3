@@ -36,7 +36,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isTerminal())
+		if (obj == nullptr || !obj->isTerminal())
 			return;
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
@@ -51,7 +51,7 @@ public:
 		uint64 memberID = listBox->getMenuObjectID(index);
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
-		if (guild == NULL)
+		if (guild == nullptr)
 			return;
 
 		if (!guild->hasMember(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()) {

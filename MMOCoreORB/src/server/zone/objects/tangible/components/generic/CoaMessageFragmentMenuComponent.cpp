@@ -24,12 +24,12 @@ int CoaMessageFragmentMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 	}
 
 	TangibleObject* fragment = cast<TangibleObject*>(sceneObject);
-	if (fragment == NULL) {
+	if (fragment == nullptr) {
 		return 0;
 	}
 
 	PlayerObject* ghost = player->getPlayerObject();
-	if (ghost == NULL) {
+	if (ghost == nullptr) {
 		return 0;
 	}
 

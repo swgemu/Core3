@@ -28,28 +28,28 @@ public:
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject().get();
-		if (usingObject == NULL)
+		if (usingObject == nullptr)
 			return;
 
 		Terminal* terminal = usingObject.castTo<Terminal*>();
-		if (terminal == NULL || !terminal->isGuildTerminal())
+		if (terminal == nullptr || !terminal->isGuildTerminal())
 			return;
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-		if (guildTerminal == NULL)
+		if (guildTerminal == nullptr)
 			return;
 
 		ManagedReference<BuildingObject*> buildingObject = guildTerminal->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
-		if (buildingObject == NULL)
+		if (buildingObject == nullptr)
 			return;
 
 		ManagedReference<CreatureObject*> owner = buildingObject->getOwnerCreatureObject();
-		if (owner == NULL || !owner->isPlayerCreature())
+		if (owner == nullptr || !owner->isPlayerCreature())
 			return;
 
 		ManagedReference<PlayerObject*> ownerGhost = owner->getPlayerObject().get();
 		ManagedReference<GuildObject*> guildObject = owner->getGuildObject().get();
-		if (ownerGhost == NULL || guildObject == NULL)
+		if (ownerGhost == nullptr || guildObject == nullptr)
 			return;
 
 		if (player->getPlayerObject()->getLotsRemaining() < 5) {

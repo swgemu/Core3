@@ -25,7 +25,7 @@ public:
 			return GENERALERROR;
 
 		PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
-		if( playerManager == NULL )
+		if( playerManager == nullptr )
 			return GENERALERROR;
 
 		playerManager->claimVeteranRewards( creature );

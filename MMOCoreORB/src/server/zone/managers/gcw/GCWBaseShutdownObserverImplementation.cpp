@@ -10,7 +10,7 @@
 int GCWBaseShutdownObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(observable);
 
-	if (player == NULL) {
+	if (player == nullptr) {
 		return 1;
 	}
 

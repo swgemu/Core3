@@ -53,7 +53,7 @@ public:
 #ifdef AI_DEBUG
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		for (int i = 0; i < callsToList.size(); i++) {
@@ -111,7 +111,7 @@ public:
 	void outputTimes(CreatureObject* caller) {
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		ManagedReference<SuiMessageBox*> list = new SuiMessageBox(caller, 0);

@@ -17,13 +17,13 @@ class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	Vector<String> villageBranchUnlocks;
 
 public:
-	CharacterBuilderTerminalTemplate() : rootNode(NULL) {
+	CharacterBuilderTerminalTemplate() : rootNode(nullptr) {
 	}
 
 	~CharacterBuilderTerminalTemplate() {
-		if (rootNode != NULL) {
+		if (rootNode != nullptr) {
 			//delete rootNode;
-			rootNode = NULL;
+			rootNode = nullptr;
 		}
 	}
 

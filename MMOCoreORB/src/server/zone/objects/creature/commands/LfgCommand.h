@@ -28,7 +28,7 @@ public:
 
 		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->toggleCharacterBit(PlayerObject::LFG);
 
 		return SUCCESS;

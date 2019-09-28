@@ -27,7 +27,7 @@ public:
 
 		Reference<SceneObject*> targetObj = zoneServer->getObject(target);
 
-		if(targetObj == NULL || !targetObj->isPlayerCreature()) {
+		if(targetObj == nullptr || !targetObj->isPlayerCreature()) {
 			creature->sendSystemMessage("Invalid target. This command only works on players");
 			return INVALIDTARGET;
 		}

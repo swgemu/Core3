@@ -40,12 +40,12 @@ public:
 
 		ManagedReference<CityRemoveMilitiaSession*> session = player->getActiveSession(SessionFacadeType::CITYMILITIA).castTo<CityRemoveMilitiaSession*>();
 
-		if (session == NULL)
+		if (session == nullptr)
 			return;
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL || cancelPressed) {
+		if (city == nullptr || cancelPressed) {
 			session->cancelSession();
 			return;
 		}

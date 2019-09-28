@@ -57,7 +57,7 @@ LuaTangibleObject::LuaTangibleObject(lua_State *L) : LuaSceneObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<TangibleObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != NULL);
+	assert(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<TangibleObject*>(lua_touserdata(L, 1));
 #endif
@@ -75,7 +75,7 @@ int LuaTangibleObject::_setObject(lua_State* L) {
 	if (realObject != obj)
 		realObject = obj;
 
-	assert(!_getRealSceneObject() || realObject != NULL);
+	assert(!_getRealSceneObject() || realObject != nullptr);
 #else
 	auto obj = static_cast<TangibleObject*>(lua_touserdata(L, -1));
 
@@ -112,16 +112,16 @@ int LuaTangibleObject::getPaletteColorCount(lua_State* L) {
 		if (varkey.contains(variableName)) {
 			CustomizationVariable* customizationVariable = variables.get(varkey).get();
 
-			if (customizationVariable == NULL)
+			if (customizationVariable == nullptr)
 				continue;
 
 			PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
 
-			if (palette != NULL) {
+			if (palette != nullptr) {
 				String paletteFileName = palette->getPaletteFileName();
 				PaletteTemplate* paletteTemplate = TemplateManager::instance()->getPaletteTemplate(paletteFileName);
 
-				if (paletteTemplate == NULL)
+				if (paletteTemplate == nullptr)
 					continue;
 
 				colors = paletteTemplate->getColorCount();

@@ -22,12 +22,12 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (cancelPressed || !suiBox->isListBox() || player == NULL)
+		if (cancelPressed || !suiBox->isListBox() || player == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isBuildingObject())
+		if (obj == nullptr || !obj->isBuildingObject())
 			return;
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
@@ -40,7 +40,7 @@ public:
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
-		if (gcwMan == NULL)
+		if (gcwMan == nullptr)
 			return;
 
 		gcwMan->performDefenseDonation(building, player, objectid);

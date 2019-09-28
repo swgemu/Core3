@@ -18,7 +18,7 @@ void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* al
 	alm->insertAttribute("resource_name", getSpawnName());
 	alm->insertAttribute("resource_contents", ssQuantity);
 
-	if (spawnObject != NULL)
+	if (spawnObject != nullptr)
 		spawnObject->fillAttributeList(alm, object);
 	else
 		object->sendSystemMessage("error resource container has no spawn object");
@@ -45,7 +45,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 	if (stackQuantity < 1) {
 
-		if (parent != NULL) {
+		if (parent != nullptr) {
 			destroyObjectFromWorld(true);
 		}
 
@@ -62,7 +62,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 	}
 
 	if (newStackSize > 0) {
-		if (parent != NULL) {
+		if (parent != nullptr) {
 
 			Locker locker(spawnObject);
 
@@ -101,7 +101,7 @@ void ResourceContainerImplementation::split(int newStackSize) {
 
 	ManagedReference<SceneObject*> sceneParent = cast<SceneObject*>(parent.get().get());
 
-	if (sceneParent == NULL)
+	if (sceneParent == nullptr)
 		return;
 
 	Locker locker(spawnObject);
@@ -110,12 +110,12 @@ void ResourceContainerImplementation::split(int newStackSize) {
 
 	locker.release();
 
-	if(newResource == NULL)
+	if(newResource == nullptr)
 		return;
 
 	Locker rlocker(newResource);
 
-	if (newResource->getSpawnObject() == NULL) {
+	if (newResource->getSpawnObject() == nullptr) {
 		newResource->destroyObjectFromDatabase(true);
 		return;
 	}
@@ -137,7 +137,7 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory == NULL)
+	if (inventory == nullptr)
 		return;
 
 	Locker locker(spawnObject);
@@ -146,12 +146,12 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 
 	locker.release();
 
-	if (newResource == NULL)
+	if (newResource == nullptr)
 		return;
 
 	Locker rlocker(newResource);
 
-	if (newResource->getSpawnObject() == NULL) {
+	if (newResource->getSpawnObject() == nullptr) {
 		newResource->destroyObjectFromDatabase(true);
 		return;
 	}
@@ -180,6 +180,6 @@ void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) 
 void ResourceContainerImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
-	if (spawnObject != NULL)
+	if (spawnObject != nullptr)
 		spawnObject->decreaseContainerReferenceCount();
 }

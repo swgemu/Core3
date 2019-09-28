@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<CityRegion*> strongRefCity = cityObject.get();
 
-		if (strongRefCity == NULL)
+		if (strongRefCity == nullptr)
 			return;
 
 		Locker lock(strongRefCity);

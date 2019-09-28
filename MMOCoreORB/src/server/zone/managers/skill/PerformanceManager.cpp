@@ -148,13 +148,13 @@ String PerformanceManager::getInstrument(int instrumentType) {
 }
 
 PerformanceManager::~PerformanceManager() {
-	if (performances != NULL) {
+	if (performances != nullptr) {
 		for (int i = 0; i < performances->size(); ++i)
 			delete performances->getUnsafe(i);
 
 		delete performances;
 
-		performances = NULL;
+		performances = nullptr;
 	}
 }
 
@@ -163,7 +163,7 @@ void PerformanceManager::loadPerformances() {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile(
 			"datatables/performance/performance.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		error("Could not open performances datatable.");
 		return;
 	}
@@ -194,7 +194,7 @@ Vector<Performance*> PerformanceManager::getPerformanceListFromMod(
 
 	Vector<Performance*> performanceList;
 
-	if (performances != NULL) {
+	if (performances != nullptr) {
 
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* perform = performances->get(i);
@@ -218,7 +218,7 @@ Vector<Performance*> PerformanceManager::getPerformanceListFromMod(
 }
 
 Performance* PerformanceManager::getDance(const String& name) {
-	if (performances != NULL) {
+	if (performances != nullptr) {
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* ret = performances->get(i);
 
@@ -227,11 +227,11 @@ Performance* PerformanceManager::getDance(const String& name) {
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 Performance* PerformanceManager::getSong(const String& name, int instrumentType) {
-	if (performances != NULL) {
+	if (performances != nullptr) {
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* ret = performances->get(i);
 
@@ -240,5 +240,5 @@ Performance* PerformanceManager::getSong(const String& name, int instrumentType)
 				return ret;
 		}
 	}
-	return NULL;
+	return nullptr;
 }

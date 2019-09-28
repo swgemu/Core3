@@ -89,14 +89,14 @@ public:
 		StringIdChatParameter params("@cmd_err:target_type_prose"); // Your target for %TO was invalid.
 		params.setTO("Delegate Faction");
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
 		}
 
 		CreatureObject* targetCreature = dynamic_cast<CreatureObject*>(object.get());
 
-		if (targetCreature == NULL) {
+		if (targetCreature == nullptr) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
 		}
@@ -106,10 +106,10 @@ public:
 		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
 		PlayerObject* targetPlayerObject = targetCreature->getPlayerObject();
 
-		if (targetPlayerObject == NULL) {
+		if (targetPlayerObject == nullptr) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
-		} else if (delegator == NULL)
+		} else if (delegator == nullptr)
 			return GENERALERROR;
 
 		uint64 delegatorID = creature->getObjectID();

@@ -32,7 +32,7 @@ void SignObjectImplementation::sendSignNameTo(CreatureObject* player) {
 }
 
 void SignObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
-	if (controllerObject == NULL)
+	if (controllerObject == nullptr)
 		return;
 
 	attachedObject = controllerObject;

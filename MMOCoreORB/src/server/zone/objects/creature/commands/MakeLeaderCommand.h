@@ -31,14 +31,14 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == nullptr || !object->isPlayerCreature())
 			return GENERALERROR;
 
 		CreatureObject* targetObject = cast<CreatureObject*>( object.get());
 
 		GroupObject* group = creature->getGroup();
 
-		if (group == NULL)
+		if (group == nullptr)
 			return GENERALERROR;
 
 		groupManager->makeLeader(group, creature, targetObject);

@@ -21,7 +21,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isMessageBox() || cancelPressed || player == NULL)
+		if (!suiBox->isMessageBox() || cancelPressed || player == nullptr)
 			return;
 
 		int bank = player->getBankCredits();
@@ -31,7 +31,7 @@ public:
 
 		ManagedReference<SceneObject*> term = suiBox->getUsingObject().get();
 
-		if (term == NULL) {
+		if (term == nullptr) {
 			StringIdChatParameter params;
 			params.setStringId("@ui:action_target_not_found_prose");
 			params.setTT("@terminal_name:terminal_cloning");
@@ -50,7 +50,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return;
 		}
 
@@ -75,13 +75,13 @@ public:
 
 		ManagedReference<SceneObject*> building = term->getRootParent();
 
-		if (building == NULL || !building->isBuildingObject()) {
+		if (building == nullptr || !building->isBuildingObject()) {
 			return;
 		}
 
 		ManagedReference<BuildingObject*> buildingObject = dynamic_cast<BuildingObject*>(building.get());
 
-		if (buildingObject != NULL) {
+		if (buildingObject != nullptr) {
 			ghost->setCloningFacility(buildingObject);
 		}
 

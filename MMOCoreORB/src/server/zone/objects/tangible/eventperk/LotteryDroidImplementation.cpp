@@ -35,7 +35,7 @@ void LotteryDroidImplementation::initializeTransientMembers() {
 void LotteryDroidImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<CreatureObject*> perkOwner = getDeedOwner();
 
-	if (perkOwner == NULL)
+	if (perkOwner == nullptr)
 		return;
 
 	if (gameStatus == GAMESETUP && perkOwner == player) {
@@ -60,7 +60,7 @@ void LotteryDroidImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 int LotteryDroidImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ManagedReference<CreatureObject*> perkOwner = getDeedOwner();
 
-	bool isOwner = perkOwner != NULL && player == perkOwner;
+	bool isOwner = perkOwner != nullptr && player == perkOwner;
 
 
 	if (selectedID == 132) { // Lottery Setup
@@ -99,7 +99,7 @@ int LotteryDroidImplementation::handleObjectMenuSelect(CreatureObject* player, b
 
 		ManagedReference<CreatureObject*> winner = server->getZoneServer()->getObject(winnerID).castTo<CreatureObject*>();
 
-		if (winner != NULL) {
+		if (winner != nullptr) {
 			StringIdManager* sMan = StringIdManager::instance();
 
 			String resultMsg = sMan->getStringId(STRING_HASHCODE("@event_perk:lottery_complete_show_winner")).toString() + " " + winner->getCustomObjectName().toString() + ".";
@@ -113,7 +113,7 @@ int LotteryDroidImplementation::handleObjectMenuSelect(CreatureObject* player, b
 void LotteryDroidImplementation::sendDurationSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::LOTTERY_DURATION_SETUP);
@@ -136,7 +136,7 @@ void LotteryDroidImplementation::sendDurationSUI(CreatureObject* player) {
 void LotteryDroidImplementation::sendPayoutSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::LOTTERY_PAYOUT_SETUP);
@@ -159,7 +159,7 @@ void LotteryDroidImplementation::sendPayoutSUI(CreatureObject* player) {
 void LotteryDroidImplementation::sendTicketCostSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(player, SuiWindowType::LOTTERY_COST_SETUP);
@@ -177,7 +177,7 @@ void LotteryDroidImplementation::sendTicketCostSUI(CreatureObject* player) {
 void LotteryDroidImplementation::sendAddCreditsSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(player, SuiWindowType::LOTTERY_ADD_CREDITS);
@@ -195,7 +195,7 @@ void LotteryDroidImplementation::sendAddCreditsSUI(CreatureObject* player) {
 void LotteryDroidImplementation::sendLotteryInstructionsSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	ManagedReference<SuiMessageBox*> msgBox = new SuiMessageBox(player, SuiWindowType::LOTTERY_INFO);
@@ -213,7 +213,7 @@ void LotteryDroidImplementation::sendLotteryInstructionsSUI(CreatureObject* play
 void LotteryDroidImplementation::sendRegistrationSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	if (isCurrentPlayer(player->getObjectID())) {
@@ -246,7 +246,7 @@ void LotteryDroidImplementation::sendRegistrationSUI(CreatureObject* player) {
 void LotteryDroidImplementation::sendLotteryInfoSUI(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	int payout = creditPool * payoutPercent;
@@ -297,7 +297,7 @@ void LotteryDroidImplementation::activateGamePulse() {
 	uint64 timeDelta = currentTime.getMiliTime() - gameStartTime.getMiliTime();
 	uint64 duration = (uint64)gameDuration * 60 * 60 * 1000;
 
-	if (gamePulse == NULL) {
+	if (gamePulse == nullptr) {
 		gamePulse = new LotteryDroidPulseTask(_this.getReferenceUnsafeStaticCast());
 
 		if (duration <= timeDelta)
@@ -321,7 +321,7 @@ void LotteryDroidImplementation::endGame() {
 
 		ManagedReference<CreatureObject*> winner = server->getZoneServer()->getObject(winnerID).castTo<CreatureObject*>();
 
-		if (winner != NULL) {
+		if (winner != nullptr) {
 			Locker crossLocker(winner, _this.get());
 
 			winner->addBankCredits(winnerPayout, true);
@@ -331,12 +331,12 @@ void LotteryDroidImplementation::endGame() {
 			StringIdChatParameter params("event_perk", "lottery_mail_winner_body");
 			params.setDI(winnerPayout);
 
-			chatManager->sendMail("@event_perk:pro_lottery_droid_game", "@event_perk:lottery_mail_winner_sub", params, winner->getFirstName(), NULL);
+			chatManager->sendMail("@event_perk:pro_lottery_droid_game", "@event_perk:lottery_mail_winner_sub", params, winner->getFirstName(), nullptr);
 		}
 
 		ManagedReference<CreatureObject*> perkOwner = getDeedOwner();
 
-		if (perkOwner != NULL) {
+		if (perkOwner != nullptr) {
 			Locker crossLocker(perkOwner, _this.get());
 
 			perkOwner->addBankCredits(ownerPayout, true);
@@ -346,7 +346,7 @@ void LotteryDroidImplementation::endGame() {
 			StringIdChatParameter params("event_perk", "lottery_mail_owner_body");
 			params.setDI(ownerPayout);
 
-			chatManager->sendMail("@event_perk:pro_lottery_droid_game", "@event_perk:lottery_mail_owner_sub", params, perkOwner->getFirstName(), NULL);
+			chatManager->sendMail("@event_perk:pro_lottery_droid_game", "@event_perk:lottery_mail_owner_sub", params, perkOwner->getFirstName(), nullptr);
 		}
 	}
 }
@@ -354,14 +354,14 @@ void LotteryDroidImplementation::endGame() {
 CreatureObject* LotteryDroidImplementation::getDeedOwner() {
 	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(getDataObjectComponent()->get());
 
-	if (gameData == NULL) {
-		return NULL;
+	if (gameData == nullptr) {
+		return nullptr;
 	}
 
 	EventPerkDeed* deed = gameData->getDeed();
 
-	if (deed == NULL) {
-		return NULL;
+	if (deed == nullptr) {
+		return nullptr;
 	}
 
 	ManagedReference<CreatureObject*> owner = deed->getOwner().get();

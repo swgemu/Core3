@@ -15,18 +15,18 @@
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerShuttingDown()) {
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 		ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
 		return;
 	}
 
 	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion().get();
 
-	if (cityRegion != NULL ) {
+	if (cityRegion != nullptr ) {
 		Locker clocker(cityRegion, sceneObject);
 
 		if (cityRegion->getCityHall() == sceneObject) {
-			cityRegion->setCityHall(NULL);
+			cityRegion->setCityHall(nullptr);
 		}
 
 		clocker.release();

@@ -36,20 +36,20 @@ public:
 		return pack;
 	}
 
-	void addGalaxy(uint32 gid, String& address, uint16 port, uint16 pingport) {
-	    insertInt(gid); //Zone Server ID
-		
-    	insertAscii(address); //IP Address
-		
-	    insertShort(port); //Zone Server Port
-    	insertShort(pingport); //Ping Server Port
+	void addGalaxy(uint32 gid, const String& address, uint16 port, uint16 pingport) {
+		insertInt(gid); //Zone Server ID
 
-    	insertInt(100); //Population
-    	insertInt(0x00000CB2);
-    	insertInt(0x00000008);
-    	insertInt(0xFFFF8F80);
-    	insertInt(0x00000002); //status
-    	insertByte(0);
+		insertAscii(address); //IP Address
+
+		insertShort(port); //Zone Server Port
+		insertShort(pingport); //Ping Server Port
+
+		insertInt(100); //Population
+		insertInt(0x00000CB2);
+		insertInt(0x00000008);
+		insertInt(0xFFFF8F80);
+		insertInt(0x00000002); //status
+		insertByte(0);
 	}
 
 	static void parse(Packet* pack) {

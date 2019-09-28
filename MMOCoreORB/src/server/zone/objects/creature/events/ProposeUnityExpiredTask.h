@@ -25,14 +25,14 @@ public:
 
 	void run() {
 
-		if( player == NULL )
+		if( player == nullptr )
 			return;
 
 		Locker locker(player);
 		player->removePendingTask("propose_unity");
 
 		ManagedReference<ProposeUnitySession*> proposeUnitySession = player->getActiveSession(SessionFacadeType::PROPOSEUNITY).castTo<ProposeUnitySession*>();
-		if(proposeUnitySession != NULL) {
+		if(proposeUnitySession != nullptr) {
 
 			if( player->getObjectID() == proposeUnitySession->getAskingPlayer() ){
 				player->sendSystemMessage("@unity:expire_player"); // "The unity proposal you extended has expired."

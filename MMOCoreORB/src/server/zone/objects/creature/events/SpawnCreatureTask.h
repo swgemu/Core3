@@ -36,7 +36,7 @@ public:
 		ZoneServer* zoneServer = ServerCore::getZoneServer();
 		Zone* zone = zoneServer->getZone(zoneName);
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		CreatureObject* creature = zone->getCreatureManager()->spawnCreature(templateCRC, 0, x, z, y, parentID);

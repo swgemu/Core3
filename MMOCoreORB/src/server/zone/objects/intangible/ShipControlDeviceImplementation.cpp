@@ -35,7 +35,7 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost != NULL)
+	if (ghost != nullptr)
 		ghost->setTeleporting(true);
 }
 
@@ -44,7 +44,7 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == NULL)
+	if (controlledObject == nullptr)
 		return;
 
 	Locker clocker(controlledObject, player);
@@ -54,7 +54,7 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	Zone* zone = player->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	zone->transferObject(player, -1, false);
@@ -81,7 +81,7 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
 	ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
 
-	if (datapad == NULL)
+	if (datapad == nullptr)
 		return false;
 
 	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
@@ -92,7 +92,7 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
-		if (obj != NULL && obj->isShipControlDevice() ){
+		if (obj != nullptr && obj->isShipControlDevice() ){
 			shipsInDatapad++;
 		}
 	}

@@ -142,7 +142,7 @@ protected:
 public:
 	ThreatMap(TangibleObject* me) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(1, 0) {
 		self = me;
-		currentThreat = NULL;
+		currentThreat = nullptr;
 		setNoDuplicateInsertPlan();
 	}
 

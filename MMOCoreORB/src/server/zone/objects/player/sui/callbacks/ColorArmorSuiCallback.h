@@ -34,12 +34,12 @@ public:
 
 		ManagedReference<SceneObject*> armorRehue = cBox->getUsingObject().get();
 
-		if (armorRehue == NULL)
+		if (armorRehue == nullptr)
 			return;
 
 		ManagedReference<TangibleObject*> armorRehueTano = armorRehue->asTangibleObject();
 
-		if (armorRehueTano != NULL) {
+		if (armorRehueTano != nullptr) {
 			Locker locker(armorRehueTano, creature);
 
 			armorRehueTano->setCustomizationVariable(palette, index, true);

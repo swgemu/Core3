@@ -39,27 +39,27 @@ public:
 				args.getStringToken(objectTemplate);
 
 				ManagedReference<CraftingManager*> craftingManager = creature->getZoneServer()->getCraftingManager();
-				if(craftingManager == NULL) {
+				if(craftingManager == nullptr) {
 					return GENERALERROR;
 				}
 
 				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
 
-				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
+				if (shot == nullptr || !shot->isSharedTangibleObjectTemplate()) {
 					creature->sendSystemMessage("Templates must be tangible objects, or descendants of tangible objects, only.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == NULL || inventory->isContainerFullRecursive()) {
+				if (inventory == nullptr || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<TangibleObject*> object = (server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1)).castTo<TangibleObject*>();
 
-				if (object == NULL) {
+				if (object == nullptr) {
 					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
 					return INVALIDPARAMETERS;
 				}
@@ -117,14 +117,14 @@ public:
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == NULL || inventory->isContainerFullRecursive()) {
+				if (inventory == nullptr || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
 
-				if (lootManager == NULL)
+				if (lootManager == nullptr)
 					return INVALIDPARAMETERS;
 
 				lootManager->createLoot(inventory, lootGroup, level);
@@ -158,17 +158,17 @@ public:
 					level = args.getIntToken();
 
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
-				if (lootManager == NULL)
+				if (lootManager == nullptr)
 					return INVALIDPARAMETERS;
 
 				Zone* zone = creature->getZone();
-				if (zone == NULL)
+				if (zone == nullptr)
 					return GENERALERROR;
 
 				// Find all objects in range
 				SortedVector<QuadTreeEntry*> closeObjects;
 				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
-				if (closeObjectsVector == NULL) {
+				if (closeObjectsVector == nullptr) {
 					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 				} else {
 					closeObjectsVector->safeCopyTo(closeObjects);
@@ -184,7 +184,7 @@ public:
 						Locker tlock( targetPlayer, creature );
 
 						ManagedReference<SceneObject*> inventory = targetPlayer->getSlottedObject("inventory");
-						if (inventory != NULL) {
+						if (inventory != nullptr) {
 							if( lootManager->createLoot(inventory, lootGroup, level) )
 								targetPlayer->sendSystemMessage( "You have received a loot item!");
 						}
@@ -194,7 +194,7 @@ public:
 				}
 			} else if (commandType.beginsWith("checklooted")) {
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
-				if (lootManager == NULL)
+				if (lootManager == nullptr)
 					return INVALIDPARAMETERS;
 
 				creature->sendSystemMessage("Number of Legendaries Looted: " + String::valueOf(lootManager->getLegendaryLooted()));
@@ -207,7 +207,7 @@ public:
 				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
 				ManagedReference<CharacterBuilderTerminal*> blueFrog = ( zserv->createObject(blueFrogTemplate.hashCode(), 0)).castTo<CharacterBuilderTerminal*>();
 
-				if (blueFrog == NULL)
+				if (blueFrog == nullptr)
 					return GENERALERROR;
 
 				Locker clocker(blueFrog, creature);
@@ -221,7 +221,7 @@ public:
 				blueFrog->initializePosition(x, z, y);
 					blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
 
-				if (parent != NULL && parent->isCellObject())
+				if (parent != nullptr && parent->isCellObject())
 					parent->transferObject(blueFrog, -1);
 				else
 					creature->getZone()->transferObject(blueFrog, -1, true);

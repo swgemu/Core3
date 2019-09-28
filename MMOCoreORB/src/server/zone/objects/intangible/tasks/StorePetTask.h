@@ -24,7 +24,7 @@ public:
 		ManagedReference<CreatureObject*> player = play.get();
 		ManagedReference<AiAgent*> pet = pt.get();
 
-		if (player == NULL || pet == NULL)
+		if (player == nullptr || pet == nullptr)
 			return;
 
 		Locker locker(player);
@@ -52,27 +52,27 @@ public:
 		pet->storeFollowObject();
 		if (pet->isDroidObject()) {
 			DroidObject* droid = cast<DroidObject*>(pet.get());
-			if( droid != NULL ) {
+			if( droid != nullptr ) {
 				droid->onStore();
 				droid->unloadSkillMods(player);
 			}
 		}
 
 		pet->destroyObjectFromWorld(true);
-		pet->setCreatureLink(NULL);
+		pet->setCreatureLink(nullptr);
 
 		ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
-		if( controlDevice != NULL ) {
+		if( controlDevice != nullptr ) {
 			Locker deviceLocker(controlDevice);
 			controlDevice->updateStatus(0);
-			controlDevice->setLastCommandTarget(NULL);
+			controlDevice->setLastCommandTarget(nullptr);
 			controlDevice->setLastCommand(PetManager::FOLLOW);
 		}
 
 
 		const CreatureTemplate* creoTemp = pet->getCreatureTemplate();
 
-		if (creoTemp != NULL) {
+		if (creoTemp != nullptr) {
 			pet->setFaction(creoTemp->getFaction().hashCode());
 			pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
 		} else {
@@ -87,7 +87,7 @@ public:
 
 		locker.release();
 
-		if (group != NULL)
+		if (group != nullptr)
 			GroupManager::instance()->leaveGroup(group, pet);
 
 	}

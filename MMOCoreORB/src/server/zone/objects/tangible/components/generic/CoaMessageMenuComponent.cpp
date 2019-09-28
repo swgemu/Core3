@@ -24,19 +24,19 @@ int CoaMessageMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 	}
 
 	TangibleObject* disk = cast<TangibleObject*>(sceneObject);
-	if (disk == NULL) {
+	if (disk == nullptr) {
 		return 0;
 	}
 
 	PlayerObject* ghost = player->getPlayerObject();
-	if (ghost == NULL) {
+	if (ghost == nullptr) {
 		return 0;
 	}
 
 	if (selectedID == 20) {
 		CoaMessageDataComponent* data = cast<CoaMessageDataComponent*>(disk->getDataObjectComponent()->get());
 
-		if (data == NULL) {
+		if (data == nullptr) {
 			return 0;
 		}
 

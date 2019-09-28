@@ -18,7 +18,7 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
-	if (thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
+	if (thisPlayer == nullptr || building == nullptr || player->isDead() || player->isIncapacitated())
 		return;
 
 	if (player->getFaction() == 0) {
@@ -28,12 +28,12 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return;
 
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))
@@ -45,26 +45,26 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 }
 
 int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL)
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject() || player == nullptr)
 		return 0;
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return 1;
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return 1;
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return 1;
 
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))

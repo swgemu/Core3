@@ -29,7 +29,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			creature->sendMessage(sui->generateMessage());
 			ghost->addSuiBox(sui);
 		}

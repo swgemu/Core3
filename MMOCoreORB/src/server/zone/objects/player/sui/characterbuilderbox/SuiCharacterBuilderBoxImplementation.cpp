@@ -49,7 +49,7 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 	for (int i = 0; i < currentNode->getChildNodeSize(); ++i) {
 		CharacterBuilderMenuNode* node = currentNode->getChildNodeAt(i);
 
-		if (node == NULL)
+		if (node == nullptr)
 			continue;
 
 		addSetting("4", "List.dataList", "Name", String::valueOf(i));

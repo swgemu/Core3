@@ -4,7 +4,7 @@
 
 void ChannelForceBuffImplementation::initializeTransientMembers() {
 	BuffImplementation::initializeTransientMembers();
-	cfBuffEvent = NULL;
+	cfBuffEvent = nullptr;
 }
 
 void ChannelForceBuffImplementation::activate(bool applyModifiers) {
@@ -15,14 +15,14 @@ void ChannelForceBuffImplementation::activate(bool applyModifiers) {
 void ChannelForceBuffImplementation::deactivate(bool removeModifiers) {
 	BuffImplementation::deactivate(removeModifiers);
 
-	if (cfBuffEvent != NULL) {
+	if (cfBuffEvent != nullptr) {
 		cfBuffEvent->cancel();
-		cfBuffEvent = NULL;
+		cfBuffEvent = nullptr;
 	}
 }
 
 void ChannelForceBuffImplementation::activateRegenTick() {
-	if (cfBuffEvent == NULL)
+	if (cfBuffEvent == nullptr)
 		cfBuffEvent = new ChannelForceBuffTickEvent(_this.getReferenceUnsafeStaticCast());
 
 	auto delay = FORCE_CHANNEL_TICK_DELAY_SECONDS * 1000;
@@ -34,7 +34,7 @@ void ChannelForceBuffImplementation::activateRegenTick() {
 
 void ChannelForceBuffImplementation::doHamTick() {
   	ManagedReference<CreatureObject*> creo = creature.get();
-	if (creo == NULL)
+	if (creo == nullptr)
 		return;
 
 	float timeLeft = getTimeLeft();

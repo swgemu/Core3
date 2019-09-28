@@ -15,7 +15,7 @@
 int VendorAdBarkingSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return 0;
 
 	advertisingMod = player->getSkillMod("advertising");
@@ -31,7 +31,7 @@ void VendorAdBarkingSessionImplementation::sendPhraseOptions() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 	ManagedReference<SceneObject*> vendor = this->vendor.get();
 
-	if (player == NULL || vendor == NULL) {
+	if (player == nullptr || vendor == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -69,7 +69,7 @@ void VendorAdBarkingSessionImplementation::sendCustomMessageInput() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 	ManagedReference<SceneObject*> vendor = this->vendor.get();
 
-	if (player == NULL || vendor == NULL) {
+	if (player == nullptr || vendor == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -90,7 +90,7 @@ void VendorAdBarkingSessionImplementation::sendMoodSelect() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 	ManagedReference<SceneObject*> vendor = this->vendor.get();
 
-	if (player == NULL || vendor == NULL) {
+	if (player == nullptr || vendor == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -129,7 +129,7 @@ void VendorAdBarkingSessionImplementation::sendAnimationSelect() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 	ManagedReference<SceneObject*> vendor = this->vendor.get();
 
-	if (player == NULL || vendor == NULL) {
+	if (player == nullptr || vendor == nullptr) {
 		cancelSession();
 		return;
 	}
@@ -162,19 +162,19 @@ void VendorAdBarkingSessionImplementation::completeSession() {
 	ManagedReference<CreatureObject*> player = this->owner.get();
 	ManagedReference<SceneObject*> vendor = this->vendor.get();
 
-	if (player == NULL || vendor == NULL) {
+	if (player == nullptr || vendor == nullptr) {
 		cancelSession();
 		return;
 	}
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		cancelSession();
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		cancelSession();
 		return;
 	}

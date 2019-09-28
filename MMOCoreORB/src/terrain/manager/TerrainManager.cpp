@@ -14,7 +14,7 @@
 #define USE_CACHED_HEIGHT
 
 TerrainManager::TerrainManager() : Logger("TerrainManager") {
-	heightCache = NULL;
+	heightCache = nullptr;
 
 	min = max = 0;
 }
@@ -26,7 +26,7 @@ TerrainManager::~TerrainManager() {
 bool TerrainManager::initialize(const String& terrainFile) {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile(terrainFile);
 
-	if (iffStream == NULL)
+	if (iffStream == nullptr)
 		return false;
 
 	if (iffStream->getNextFormType() == 'PTAT') {
@@ -39,7 +39,7 @@ bool TerrainManager::initialize(const String& terrainFile) {
 
 	delete iffStream;
 
-	if (heightCache != NULL) {
+	if (heightCache != nullptr) {
 		delete heightCache;
 	}
 
@@ -101,12 +101,12 @@ float TerrainManager::getHighestHeightDifference(float x0, float y0, float x1, f
 void TerrainManager::addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid) {
 	ProceduralTerrainAppearance* ptat = dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
 
-	if (ptat == NULL)
+	if (ptat == nullptr)
 		return;
 
 	IffStream* stream = TemplateManager::instance()->openIffFile(terrainModificationFilename);
 
-	if (stream == NULL) {
+	if (stream == nullptr) {
 		error("could not find custom terrain file: " + terrainModificationFilename);
 		return;
 	}
@@ -115,7 +115,7 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 	Locker locker(ptat->getGuard());
 
 	TerrainGenerator* generator = ptat->addTerrainModification(stream, x, y, objectid);
-	if (generator == NULL) {
+	if (generator == nullptr) {
 		error("could not add custom terrain file: " + terrainModificationFilename);
 
 		return;
@@ -138,12 +138,12 @@ void TerrainManager::clearCache(TerrainGenerator* generator) {
 void TerrainManager::removeTerrainModification(uint64 objectid) {
 	ProceduralTerrainAppearance* ptat = dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
 
-	if (ptat == NULL)
+	if (ptat == nullptr)
 		return;
 
 	TerrainGenerator* generator = ptat->removeTerrainModification(objectid);
 
-	if (generator != NULL) {
+	if (generator != nullptr) {
 		clearCache(generator);
 
 		delete generator;

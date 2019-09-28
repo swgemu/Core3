@@ -25,7 +25,7 @@ public:
 
 	void run() {
 
-		if( module == NULL || module->getDroidObject() == NULL ){
+		if( module == nullptr || module->getDroidObject() == nullptr ){
 			return;
 		}
 
@@ -40,10 +40,10 @@ public:
 		}
 
 		// Check if droid is spawned
-		if( droid->getLocalZone() == NULL ){  // Not outdoors
+		if( droid->getLocalZone() == nullptr ){  // Not outdoors
 
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
-			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
+			if( parent == nullptr || !parent->isCellObject() ){ // Not indoors either
 				droid->removePendingTask("droid_effects");
 				return;
 			}

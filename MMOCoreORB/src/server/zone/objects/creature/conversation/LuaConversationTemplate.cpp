@@ -32,15 +32,15 @@ int LuaConversationTemplate::_setObject(lua_State* L) {
 
 int LuaConversationTemplate::getScreen(lua_State* L) {
 	const char* str = lua_tostring(L, -1);
-	ConversationScreen* screen = NULL;
+	ConversationScreen* screen = nullptr;
 
-	if (str != NULL) {
+	if (str != nullptr) {
 		String text(str);
 
 		screen = realObject->getScreen(text);
 	}
 
-	if (screen != NULL)
+	if (screen != nullptr)
 		lua_pushlightuserdata(L, screen);
 	else
 		lua_pushnil(L);
@@ -52,7 +52,7 @@ int LuaConversationTemplate::getScreen(lua_State* L) {
 int LuaConversationTemplate::getInitialScreen(lua_State* L) {
 	ConversationScreen* screen = realObject->getInitialScreen();
 
-	if (screen != NULL)
+	if (screen != nullptr)
 		lua_pushlightuserdata(L, screen);
 	else
 		lua_pushnil(L);

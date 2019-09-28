@@ -30,12 +30,12 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == NULL || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
+		if (obj == nullptr || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
 			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 			return GENERALERROR;
 		}
@@ -43,7 +43,7 @@ public:
 		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
 
-		if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
+		if (creatureParent == nullptr || !creatureParent->isBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 			return GENERALERROR;
 		}
@@ -55,7 +55,7 @@ public:
 
 		BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
 
-		if (buildingObject == NULL || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
+		if (buildingObject == nullptr || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
 			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 			return GENERALERROR;
 		}
@@ -132,7 +132,7 @@ public:
 		obj->incrementMovementCounter();
 
 		ManagedReference<SceneObject*> objParent = obj->getParent().get();
-		if (objParent != NULL)
+		if (objParent != nullptr)
 			obj->teleport(x, z, y, objParent->getObjectID());
 		else
 			obj->teleport(x, z, y);

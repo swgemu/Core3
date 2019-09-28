@@ -12,7 +12,7 @@
 bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	StructureObject* building = dynamic_cast<StructureObject*>(sceneObject);
 
-	if (building != NULL) {
+	if (building != nullptr) {
 		if (permission == ContainerPermissions::MOVEVENDOR) {
 			if (building->isPublicStructure() && (building->isOnPermissionList("VENDOR", creature) || building->isOnAdminList(creature)))
 				return true;

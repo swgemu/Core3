@@ -27,7 +27,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
 		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			session = new MigrateStatsSession(creature);
 
 			const DeltaVector<int>* baseHam = creature->getBaseHAM();

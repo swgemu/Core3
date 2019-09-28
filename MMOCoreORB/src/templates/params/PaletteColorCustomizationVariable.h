@@ -70,7 +70,7 @@ public:
 
 		Chunk* chunk = iffStream->openChunk('PCNT');
 
-		if (chunk == NULL) {
+		if (chunk == nullptr) {
 			//std::cout << "could not open pcnt\n";
 			return false;
 		}

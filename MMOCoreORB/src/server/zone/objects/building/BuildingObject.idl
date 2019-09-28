@@ -445,7 +445,7 @@ class BuildingObject extends StructureObject {
 	 */
 	@local
 	@preLocked
-	public native void changeSign( SignTemplate signConfig );
+	public native void changeSign(final SignTemplate signConfig );
 
 	@local
 	@dereferenced
