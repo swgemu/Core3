@@ -28,7 +28,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
+		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
 
 		if(!checkDistance(creature, targetObject, 25.0f))

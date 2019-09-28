@@ -19,12 +19,12 @@ void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	Zone* playerZone = sceneObject->getZone();
 
-	if (playerZone == NULL)
+	if (playerZone == nullptr)
 		return;
 
 	String location = ghost->getBankLocation();
@@ -64,7 +64,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	Zone* playerZone = creature->getZone();
 
-	if (playerZone == NULL)
+	if (playerZone == nullptr)
 		return 0;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -73,7 +73,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
 
-	if (region != NULL) {
+	if (region != nullptr) {
 		if (region->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
 				return 0;
@@ -122,7 +122,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		if (bank->getContainerObjectsSize() == 0) {
 
-			//creature->removeObject(bank, NULL, true);
+			//creature->removeObject(bank, nullptr, true);
 			bank->sendDestroyTo(creature);
 
 			// QUIT BANK

@@ -30,14 +30,14 @@ public:
 		//make sure that the target is a player
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == NULL || !obj->isPlayerCreature() ) {
+		if (obj == nullptr || !obj->isPlayerCreature() ) {
 			sendInvalidParameterMessage(creature);
 			return INVALIDTARGET;
 		}
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 
-		if ( targetCreature == NULL ) {
+		if ( targetCreature == nullptr ) {
 			sendInvalidParameterMessage(creature);
 			return GENERALERROR;
 		}
@@ -79,7 +79,7 @@ public:
 
 		PlayerObject* targetPlayer = targetCreature->getPlayerObject();
 
-		if ( targetPlayer == NULL )
+		if ( targetPlayer == nullptr )
 			return GENERALERROR;
 
 		int intCurrentFaction = targetPlayer->getFactionStanding(faction);

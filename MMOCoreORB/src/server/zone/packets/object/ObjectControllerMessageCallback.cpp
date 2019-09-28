@@ -9,7 +9,7 @@
 
 #include "ObjectControllerMessageCallback.h"
 
-MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = NULL;
+MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = nullptr;
 
 void ObjectControllerMessageCallback::parse(Message* message) {
 	priority = message->parseInt();
@@ -21,7 +21,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
-	if (client != NULL) {
+	if (client != nullptr) {
 		StringBuffer objectCtrl;
 		objectCtrl << "parsing objc type 0x" << hex << type;
 		client->debug(objectCtrl.toString());
@@ -29,7 +29,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 
-	if (objectControllerCallback == NULL) {
+	if (objectControllerCallback == nullptr) {
 		StringBuffer msg;
 		msg << "unregistered 0x" << hex << type << " object controller message received";
 
@@ -61,12 +61,12 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 }
 
 void ObjectControllerMessageCallback::run() {
-	if (client == NULL)
+	if (client == nullptr)
 		return;
 
 	ManagedReference<CreatureObject*> player = client->getPlayer();
 
-	if (player == NULL || objectControllerCallback == NULL)
+	if (player == nullptr || objectControllerCallback == nullptr)
 		return;
 
 	Locker _locker(player);
@@ -83,7 +83,7 @@ void ObjectControllerMessageCallback::run() {
 }
 
 const char* ObjectControllerMessageCallback::getTaskName() {
-	if (objectControllerCallback != NULL && (objectControllerCallback != this)) {
+	if (objectControllerCallback != nullptr && (objectControllerCallback != this)) {
 		return objectControllerCallback->getTaskName();
 	} else {
 		return Task::getTaskName();

@@ -40,7 +40,7 @@ public:
 	}
 
 	void run() {
-		if (player == NULL || target == NULL || droid == NULL)
+		if (player == nullptr || target == nullptr || droid == nullptr)
 			return;
 
 		Locker locker2(droid);
@@ -50,7 +50,7 @@ public:
 		if(hit) {
 			Locker locker(target, droid);
 
-			if(buff != NULL) {
+			if(buff != nullptr) {
 				Locker locker(buff);
 				target->addBuff(buff);
 			}
@@ -62,7 +62,7 @@ public:
 			// i learn towards the offical forum posts
 			int xp = target->getLevel() * 15;
 			ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
-			if(playerManager != NULL) {
+			if(playerManager != nullptr) {
 				locker.release(); // release the target
 				Locker clock(player,droid);
 				playerManager->awardExperience(player, "trapping", xp, true);

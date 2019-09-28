@@ -23,7 +23,7 @@ public:
 
 		ManagedReference<CitySpecializationSession*> session = player->getActiveSession(SessionFacadeType::CITYSPEC).castTo<CitySpecializationSession*>();
 
-		if (session == NULL)
+		if (session == nullptr)
 			return;
 
 		if (!suiBox->isListBox() || cancelPressed || args->size() <= 0) {

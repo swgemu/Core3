@@ -18,7 +18,7 @@ void VehicleDeedImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	VehicleDeedTemplate* deedData = dynamic_cast<VehicleDeedTemplate*>(templateData);
 
-	if (deedData == NULL)
+	if (deedData == nullptr)
 		return;
 
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
@@ -60,14 +60,14 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		if (generated || !isASubChildOf(player))
 			return 1;
 
-		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
+		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != nullptr) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); //You can only unpack vehicles while Outside and not in Combat.
 			return 1;
 		}
 
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
-		if (datapad == NULL) {
+		if (datapad == nullptr) {
 			player->sendSystemMessage("Datapad doesn't exist when trying to create vehicle");
 			return 1;
 		}
@@ -81,7 +81,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
-			if (obj != NULL && obj->isVehicleControlDevice() )
+			if (obj != nullptr && obj->isVehicleControlDevice() )
 				vehiclesInDatapad++;
 
 		}
@@ -93,7 +93,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 
 		Reference<VehicleControlDevice*> vehicleControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<VehicleControlDevice*>();
 
-		if (vehicleControlDevice == NULL) {
+		if (vehicleControlDevice == nullptr) {
 			player->sendSystemMessage("wrong vehicle control device object template " + controlDeviceObjectTemplate);
 			return 1;
 		}
@@ -102,7 +102,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 
 		Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
 
-		if (vehicle == NULL) {
+		if (vehicle == nullptr) {
 			vehicleControlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);
 			return 1;

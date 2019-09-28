@@ -33,7 +33,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == NULL || !obj->isTangibleObject())
+		if (obj == nullptr || !obj->isTangibleObject())
 			return INVALIDTARGET;
 
 		TangibleObject* tano = cast<TangibleObject*>( obj.get());
@@ -43,9 +43,9 @@ public:
 		uint32 intFaction = tano->getFaction();
 
 		ManagedReference<CreatureObject*> pobj = cast<CreatureObject*>( obj.get());
-		ManagedReference<PlayerObject*> targetPlayerObject = NULL;
+		ManagedReference<PlayerObject*> targetPlayerObject = nullptr;
 
-		if (pobj != NULL)
+		if (pobj != nullptr)
 			targetPlayerObject = pobj->getPlayerObject();
 
 		//First, check if they passed a name with the command.
@@ -77,7 +77,7 @@ public:
 		if (faction == "neutral") {
 			tano->setFaction(0);
 
-			if (pobj != NULL) {
+			if (pobj != nullptr) {
 				pobj->setFactionRank(0);
 			}
 		}
@@ -91,7 +91,7 @@ public:
 			String status;
 			tokenizer.getStringToken(status);
 
-			if (targetPlayerObject != NULL) {
+			if (targetPlayerObject != nullptr) {
 				if ( status == "overt") {
 					tano->setFactionStatus(FactionStatus::OVERT);
 				} else  if (status == "covert"){
@@ -121,16 +121,16 @@ public:
 			else if (rank > 15)
 				rank = 15;
 
-			if (pobj != NULL)
+			if (pobj != nullptr)
 				pobj->setFactionRank(rank);
 
 		} else {
-			if (pobj != NULL && faction.hashCode() != intFaction) {
+			if (pobj != nullptr && faction.hashCode() != intFaction) {
 				pobj->setFactionRank(0);
 			}
 		}
 
-		if (targetPlayerObject != NULL) { // Cap off points to new caps
+		if (targetPlayerObject != nullptr) { // Cap off points to new caps
 			targetPlayerObject->increaseFactionStanding("imperial", 0);
 			targetPlayerObject->increaseFactionStanding("rebel", 0);
 		}

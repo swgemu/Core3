@@ -50,19 +50,19 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			warning("Trying to experiment when no session exists");
 			return;
 		}
 
 		ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-		if (tradeContainer != NULL) {
+		if (tradeContainer != nullptr) {
 			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 		}
 

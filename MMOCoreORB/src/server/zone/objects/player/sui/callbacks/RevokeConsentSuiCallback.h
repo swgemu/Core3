@@ -19,14 +19,14 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (cancelPressed || !suiBox->isListBox() || player == NULL || args->size() <= 0 )
+		if (cancelPressed || !suiBox->isListBox() || player == nullptr || args->size() <= 0 )
 			return;
 
 		int index = Integer::valueOf(args->get(0).toString());
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost == NULL || index < 0 || index >= ghost->getConsentListSize())
+		if (ghost == nullptr || index < 0 || index >= ghost->getConsentListSize())
 			return;
 
 		String entryName = ghost->getConsentName(index);
@@ -40,7 +40,7 @@ public:
 			PlayerManager* playerManager = server->getPlayerManager();
 			Reference<CreatureObject*> targetPlayer = playerManager->getPlayer(entryName);
 
-			if (targetPlayer != NULL) {
+			if (targetPlayer != nullptr) {
 				StringIdChatParameter stringId2("base_player", "prose_lost_consent"); //%TO no longer consents you.
 				stringId2.setTO(player->getFirstName());
 				targetPlayer->sendSystemMessage(stringId2);

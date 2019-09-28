@@ -32,7 +32,7 @@ public:
 
 		ManagedReference<PetControlDevice*> device = controlDevice.get();
 
-		if (device == NULL || cancelPressed)
+		if (device == nullptr || cancelPressed)
 			return;
 
 		if (args->size() < 1)
@@ -42,7 +42,7 @@ public:
 
 		ManagedReference<TangibleObject*> controlledObject = device->getControlledObject();
 
-		if (controlledObject == NULL || !controlledObject->isCreature())
+		if (controlledObject == nullptr || !controlledObject->isCreature())
 			return;
 
 		ManagedReference<Creature*> pet = cast<Creature*>(controlledObject.get());

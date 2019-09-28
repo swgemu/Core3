@@ -27,11 +27,11 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ChatManager* chatManager = server->getChatManager();
-		if (chatManager != NULL)
+		if (chatManager != nullptr)
 			chatManager->deletePersistentMessage(player, mailid);
 	}
 

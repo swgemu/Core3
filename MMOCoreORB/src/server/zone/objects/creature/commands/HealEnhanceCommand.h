@@ -36,7 +36,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -56,7 +56,7 @@ public:
 
 		int medicineUse = enhancer->getSkillMod("healing_ability");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -74,7 +74,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack, int mindCostNew) const {
@@ -86,7 +86,7 @@ public:
 			return false;
 		}
 
-		if (enhancePack == NULL) {
+		if (enhancePack == nullptr) {
 			enhancer->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -98,7 +98,7 @@ public:
 		}else {
 			// are we in a cantina? we have a private medical rating so either thats form a droid or camp or hospital
 			ManagedReference<SceneObject*> root = enhancer->getRootParent();
-			if (root != NULL && root->isClientObject()) {
+			if (root != nullptr && root->isClientObject()) {
 				uint32 gameObjectType = root->getGameObjectType();
 				switch (gameObjectType) {
 						case SceneObjectType::RECREATIONBUILDING:
@@ -247,7 +247,7 @@ public:
 
 	uint32 getBuffStrength(Buff* existingbuff, int attribute) const {
 
-		if (existingbuff != NULL) {
+		if (existingbuff != nullptr) {
 
 			if (BuffAttribute::isProtection(attribute))
 				return existingbuff->getSkillModifierValue(BuffAttribute::getProtectionString(attribute));
@@ -292,11 +292,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL) {
+		if (object != nullptr) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+				if (tangibleObject != nullptr && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
@@ -321,16 +321,16 @@ public:
 
 		Locker clocker(patient, creature);
 
-		ManagedReference<EnhancePack*> enhancePack = NULL;
+		ManagedReference<EnhancePack*> enhancePack = nullptr;
 
 		if (objectId != 0) {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				enhancePack = inventory->getContainerObject(objectId).castTo<EnhancePack*>();
 			}
 
-			if (enhancePack == NULL) {
+			if (enhancePack == nullptr) {
 				enhancer->sendSystemMessage("@healing_response:healing_response_76"); // That item does not provide attribute enhancement.
 				return false;
 			}
@@ -362,12 +362,12 @@ public:
 
 					attribute = i;
 					enhancePack = findEnhancePack(creature, i);
-					if(enhancePack != NULL)
+					if(enhancePack != nullptr)
 						break;
 				}
 
 
-				if(enhancePack == NULL) {
+				if(enhancePack == nullptr) {
 
 					// We couldn't find any enhance packs for non-applied buffs.
 					// Loop through the applied buffs and see if one matches our criteria
@@ -377,12 +377,12 @@ public:
 
 						attribute = attributeMap.get(buff);
 						enhancePack = findEnhancePack(creature, attribute);
-						if(enhancePack != NULL) {
+						if(enhancePack != nullptr) {
 							uint32 currentBuff = getBuffStrength(buff, attribute);
 							uint32 newBuff = getEnhancePackStrength(enhancePack, enhancer, patient);
 
 							if(newBuff < currentBuff) {
-								enhancePack = NULL;
+								enhancePack = nullptr;
 								attribute = BuffAttribute::UNKNOWN;
 							} else {
 								break;
@@ -447,7 +447,7 @@ public:
 
 		deactivateWoundTreatment(enhancer);
 
-		if (enhancePack != NULL) {
+		if (enhancePack != nullptr) {
 			Locker locker(enhancePack);
 			enhancePack->decreaseUseCount();
 		}

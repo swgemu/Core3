@@ -18,7 +18,7 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-	if (city != NULL && city->isMayor(player->getObjectID()) && getParent().get() == NULL) {
+	if (city != nullptr && city->isMayor(player->getObjectID()) && getParent().get() == nullptr) {
 
 		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); // Remove
 
@@ -37,7 +37,7 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		if (isBountyTerminal())
 			return 0;
 
-		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 			return 0;
 		}
@@ -63,7 +63,7 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	} else if (selectedID == 72) {
 
-		if (city != NULL && city->isMayor(player->getObjectID())) {
+		if (city != nullptr && city->isMayor(player->getObjectID())) {
 			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(_this.getReferenceUnsafeStaticCast(), city);
 			task->execute();
 

@@ -1235,8 +1235,7 @@ void StructureManager::promptSelectSign(StructureObject* structure, CreatureObje
 
 	// Loop over all configured signs and add them to the list
 	for( int i=0; i < buildingTemplate->getShopSignsSize(); i++ ){
-
-		SignTemplate* signTemplate = buildingTemplate->getShopSign(i);
+		const SignTemplate* signTemplate = buildingTemplate->getShopSign(i);
 
 		// suiItem string can't be empty
 		if( signTemplate->getSuiItem().isEmpty() ){
@@ -1282,8 +1281,8 @@ void StructureManager::setSign(StructureObject* structure, CreatureObject* playe
 
 	// Find matching sign in the template and change sign
 	for( int i=0; i < buildingTemplate->getShopSignsSize(); i++){
+		const SignTemplate* signTemplate =  buildingTemplate->getShopSign(i);
 
-		SignTemplate* signTemplate =  buildingTemplate->getShopSign(i);
 		if( signTemplate->getSuiItem() == signSuiItem ){
 			building->changeSign( signTemplate );
 			return;

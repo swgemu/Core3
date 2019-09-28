@@ -22,7 +22,7 @@ public:
 	    	CharacterListEntry* entry = &characters->get(i);
 			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyID());
 	    	String name = entry->getFullName();
-	    	if(galaxyBan != NULL)
+	    	if(galaxyBan != nullptr)
 	    		name += " \\#FF0000(GALAXY BAN)";
 	    	else if(entry->isBanned())
 	    		name += " \\#FF0000(BANNED)";

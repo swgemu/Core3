@@ -40,12 +40,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
 
-		if (terminal == NULL) {
+		if (terminal == nullptr) {
 			player->sendSystemMessage("@skill_teacher:skill_terminal_disabled");
 			return;
 		}
@@ -55,7 +55,7 @@ public:
 
 		ManagedReference<SceneObject*> mission = server->getZoneServer()->getObject(missionObjectID);
 
-		if (mission == NULL)
+		if (mission == nullptr)
 			return;
 
 		if (!mission->isMissionObject())
@@ -63,12 +63,12 @@ public:
 
 		MissionObject* missionObject = cast<MissionObject*>( mission.get());
 
-		if (missionObject == NULL)
+		if (missionObject == nullptr)
 			return;
 
 		MissionTerminal* missionTerminal = cast<MissionTerminal*>( terminal.get());
 
-		if (missionTerminal == NULL)
+		if (missionTerminal == nullptr)
 			return;
 
 		Locker clocker(missionObject, player);

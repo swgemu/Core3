@@ -29,11 +29,11 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-	if(datapad != NULL) {
+	if(datapad != nullptr) {
 		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-			if (object != NULL && object->isPetControlDevice()) {
+			if (object != nullptr && object->isPetControlDevice()) {
 				PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
 				if (device->getPetType() == PetManager::DROIDPET) {
@@ -63,7 +63,7 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 
 	ManagedReference<Zone*> zone = installation->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	if (!installation->isOnAdminList(player))

@@ -103,7 +103,7 @@ public:
 	}
 
 
-	float getDensityAt(float x, float y) {
+	float getDensityAt(float x, float y) const {
 		x -= minX;
 		y = maxY - y;
 		float value = SimplexNoise::noise(x * modifier, y * modifier, seed * modifier);

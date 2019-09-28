@@ -24,12 +24,12 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		String searchTerm = arguments.toString().toLowerCase();
@@ -55,7 +55,7 @@ public:
 				for (int i = 0; i < numWaypoints; i++) {
 					WaypointObject* wp = ghost->getWaypoint(i);
 
-					if (wp == NULL)
+					if (wp == nullptr)
 						continue;
 
 					Locker crlocker(wp, creature);
@@ -139,13 +139,13 @@ private:
 		// TODO Make a quick lookup map for planetCRC to name
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer == NULL || zoneServer->isServerLoading())
+		if (zoneServer == nullptr || zoneServer->isServerLoading())
 			return "";
 
 		for (int i = 0; i < zoneServer->getZoneCount(); ++i) {
 			Zone* zone = zoneServer->getZone(i);
 
-			if (zone == NULL)
+			if (zone == nullptr)
 				continue;
 
 			if (zone->getZoneName().hashCode() == planetCRC)
@@ -156,17 +156,17 @@ private:
 	}
 
 	float calculateWaypointManhattanDistance(CreatureObject* creature, WaypointObject* wp) const {
-		if(creature == NULL || wp == NULL)
+		if(creature == nullptr || wp == nullptr)
 			return std::numeric_limits<float>::max();
 
 		Zone* creatureZone = creature->getZone();
 
-		if (creatureZone == NULL)
+		if (creatureZone == nullptr)
 			return std::numeric_limits<float>::max();
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer == NULL || zoneServer->isServerLoading())
+		if (zoneServer == nullptr || zoneServer->isServerLoading())
 			return std::numeric_limits<float>::max();
 
 		uint32 planetCRC = wp->getPlanetCRC();
@@ -180,7 +180,7 @@ private:
 
 				Zone* zone = zoneServer->getZone(i);
 
-				if (zone == NULL)
+				if (zone == nullptr)
 					continue;
 
 				if (zone->getZoneName().hashCode() == planetCRC)

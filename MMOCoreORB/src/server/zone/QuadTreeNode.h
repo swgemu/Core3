@@ -114,8 +114,8 @@ public:
 
 	// Check if this node has children nodes
 	inline bool hasSubNodes() const {
-		return nwNode != NULL || neNode != NULL || swNode != NULL || seNode
-				!= NULL;
+		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode
+				!= nullptr;
 	}
 
 	// Test if the point is inside this node

@@ -40,7 +40,7 @@ public:
 			String name = resourceSpawn->getName();
 			// map type to family
 			auto list = typeMap.get(family);
-			if (list != NULL) {
+			if (list != nullptr) {
 				if (!list->contains(type))
 					list->add(type);
 			} else {
@@ -51,7 +51,7 @@ public:
 
 			// map type to spawn name
 			auto mlist = mapped.get(type);
-			if (mlist != NULL) {
+			if (mlist != nullptr) {
 				if (!mlist->contains(name))
 					mlist->add(name);
 			} else {

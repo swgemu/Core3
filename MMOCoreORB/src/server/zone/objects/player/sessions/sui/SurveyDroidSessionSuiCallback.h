@@ -28,9 +28,9 @@ public:
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
 		ManagedReference<InterplanetarySurveyDroidSession*> session = dynamic_cast<InterplanetarySurveyDroidSession*>(facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject().get().get());
-			if (obj != NULL) {
+			if (obj != nullptr) {
 				Locker crosslock(obj, player);
 				obj->dropActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
 			}

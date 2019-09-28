@@ -27,12 +27,12 @@ public:
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
-		if (player == NULL)
+		if (player == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<GroupObject*> group = player->getGroup();
@@ -64,14 +64,14 @@ public:
 	}
 
 	bool doFormUp(CreatureObject* leader, GroupObject* group) const {
-		if (leader == NULL || group == NULL)
+		if (leader == nullptr || group == nullptr)
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || !member->isPlayerCreature())
+			if (member == nullptr || !member->isPlayerCreature())
 				continue;
 
 			if (!isValidGroupAbilityTarget(leader, member, false))

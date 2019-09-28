@@ -19,18 +19,18 @@ int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* c
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return 1;
 
 	Zone* zone = creature->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	//Check the gcwmanager to make sure more are allowed on this planet
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return 1;
 
 	if (gcwMan->isPlanetCapped()) {
@@ -56,15 +56,15 @@ int PlaceGCWBaseComponent::notifyStructurePlaced(StructureDeed* deed, CreatureOb
 
 	Zone* zone = creature->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	BuildingObject* buildingObject = cast<BuildingObject*>(structure);
 
-	if (buildingObject != NULL && buildingObject->isGCWBase()) {
+	if (buildingObject != nullptr && buildingObject->isGCWBase()) {
 		GCWManager* gcwManager = zone->getGCWManager();
 
-		if (gcwManager != NULL) {
+		if (gcwManager != nullptr) {
 			gcwManager->registerGCWBase(buildingObject, true);
 
 			int baseCount = gcwManager->getBaseCount(creature);

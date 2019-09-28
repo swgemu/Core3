@@ -23,7 +23,7 @@ public:
 	}
 
 	void run() {
-		if (campSite == NULL)
+		if (campSite == nullptr)
 			return;
 
 		Locker locker(campSite);

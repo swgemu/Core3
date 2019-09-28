@@ -6,32 +6,32 @@
 int ScavengerDroidContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(sceneObject);
 
-	if (creature == NULL)
+	if (creature == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	ManagedReference<ScavengerDroid*> droid = cast<ScavengerDroid*>(creature.get());
 
-	if (droid == NULL)
+	if (droid == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(droid->getDataObjectComponent()->get());
 
-	if (gameData == NULL)
+	if (gameData == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	EventPerkDeed* deed = gameData->getDeed();
 
-	if (deed == NULL)
+	if (deed == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
 
-	if (owner == NULL)
+	if (owner == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	int gameStatus = droid->getGameStatus();
@@ -64,17 +64,17 @@ int ScavengerDroidContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 bool ScavengerDroidContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return false;
 
 	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(sceneObject);
 
-	if (creature == NULL)
+	if (creature == nullptr)
 		return false;
 
 	ManagedReference<ScavengerDroid*> droid = cast<ScavengerDroid*>(creature.get());
 
-	if (droid == NULL)
+	if (droid == nullptr)
 		return false;
 
 	String itemTemplate = object->getObjectTemplate()->getFullTemplateString();

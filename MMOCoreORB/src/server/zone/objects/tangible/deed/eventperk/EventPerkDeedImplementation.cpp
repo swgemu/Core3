@@ -26,7 +26,7 @@ void EventPerkDeedImplementation::loadTemplateData(SharedObjectTemplate* templat
 	DeedImplementation::loadTemplateData(templateData);
 	EventPerkDeedTemplate* deedData = dynamic_cast<EventPerkDeedTemplate*>(templateData);
 
-	if (deedData == NULL)
+	if (deedData == nullptr)
 		return;
 
 	generatedTimeToLive = deedData->getGeneratedTimeToLive();
@@ -56,17 +56,17 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		Zone* zone = player->getZone();
 
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			return 1;
 		}
 
 		PlanetManager* planetManager = zone->getPlanetManager();
-		if (planetManager == NULL) {
+		if (planetManager == nullptr) {
 			return 1;
 		}
 
 		EventPerkDeedTemplate* deedTemplate = cast<EventPerkDeedTemplate*>(getObjectTemplate());
-		if (deedTemplate == NULL) {
+		if (deedTemplate == nullptr) {
 			return 1;
 		}
 
@@ -87,7 +87,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		ManagedReference<SceneObject*> parent = player->getParent().get();
 
-		if (parent != NULL && parent->isCellObject()) {
+		if (parent != nullptr && parent->isCellObject()) {
 			player->sendSystemMessage("@event_perk:not_inside"); // You cannot deploy a Rental indoors. You must move outside.
 			return 1;
 		}
@@ -104,7 +104,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-		if (city != NULL) {
+		if (city != nullptr) {
 			if (city->isClientRegion()) {
 				player->sendSystemMessage("@event_perk:not_in_municipal_zone"); // You may not place a Rental in a municipal zone.
 				return 1;
@@ -121,16 +121,16 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		int nearbyPerks = 0;
 
 		TerrainManager* terrainManager = planetManager->getTerrainManager();
-		if ( terrainManager == NULL || terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0) {
+		if ( terrainManager == nullptr || terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0) {
 			player->sendSystemMessage("@event_perk:bad_area"); // This rental could not be deployed due to the surrounding terrain. Please move to another area and try again.
 			return 1;
 		}
 
 		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
-		if (vec == NULL) {
+		if (vec == nullptr) {
 #ifdef COV_DEBUG
-			error("Player has NULL closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
+			error("Player has nullptr closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
 #endif
 			return 1;
 		}
@@ -141,12 +141,12 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-			if (obj == NULL) {
+			if (obj == nullptr) {
 				continue;
 			}
 
 			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
-			if (objectTemplate == NULL) {
+			if (objectTemplate == nullptr) {
 				continue;
 			}
 
@@ -199,10 +199,10 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			object = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), "playerstructures", 1)).castTo<TangibleObject*>();
 
-			if (object == NULL) {
+			if (object == nullptr) {
 				player->sendSystemMessage("Error generating object. Wrong generatedObjectTemplate or is not a tangible object.");
 				return 1;
 			}
@@ -214,7 +214,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(object->getDataObjectComponent()->get());
 
-		if (data == NULL) {
+		if (data == nullptr) {
 			player->sendSystemMessage("Error: no dataObjectComponent.");
 			object->destroyObjectFromDatabase(true);
 			return 1;
@@ -239,7 +239,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		generated = true;
 
-		if (removeEventPerkDeedTask != NULL && generatedTimeToLive > 0) {
+		if (removeEventPerkDeedTask != nullptr && generatedTimeToLive > 0) {
 			Time currentTime;
 			uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 
@@ -260,12 +260,12 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parent->getDataObjectComponent()->get());
 
-	if (data == NULL)
+	if (data == nullptr)
 		return;
 
 	EventPerkDeed* deed = data->getDeed();
 
-	if (deed == NULL)
+	if (deed == nullptr)
 		return;
 
 	int perkType = getPerkType();
@@ -275,7 +275,7 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 	for (int j = 0; j < children->size(); j++) {
 		SceneObject* child = children->get(j);
 
-		if (child != NULL)	{
+		if (child != nullptr)	{
 			Locker cLock(child, parent);
 
 			ContainerPermissions* permissions = child->getContainerPermissionsForUpdate();
@@ -341,12 +341,12 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	ManagedReference<CreatureObject*> strongOwner = owner.get();
 
-	if (strongOwner != NULL) {
+	if (strongOwner != nullptr) {
 		Locker clocker(strongOwner, _this.getReferenceUnsafeStaticCast());
 
 		PlayerObject* ghost = strongOwner->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			ghost->removeEventPerk(_this.getReferenceUnsafeStaticCast());
 		}
 	}
@@ -360,7 +360,7 @@ void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
 	if (generated && generatedTimeToLive > 0)
 		timeToLive = generatedTimeToLive;
 
-	if (removeEventPerkDeedTask == NULL) {
+	if (removeEventPerkDeedTask == nullptr) {
 		removeEventPerkDeedTask = new RemoveEventPerkDeedTask(_this.getReferenceUnsafeStaticCast());
 
 		Time currentTime;

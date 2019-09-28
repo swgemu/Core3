@@ -23,7 +23,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isTransferBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isTransferBox() || player == nullptr || cancelPressed || args->size() <= 0) {
 			return;
 		}
 
@@ -31,7 +31,7 @@ public:
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL)
+		if (city == nullptr)
 			return;
 
 		Locker lock(city, player);

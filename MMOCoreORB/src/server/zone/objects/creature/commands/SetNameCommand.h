@@ -27,7 +27,7 @@ public:
 
 		Reference<SceneObject*> targetObj = zoneServer->getObject(target);
 
-		if(targetObj == NULL) {
+		if(targetObj == nullptr) {
 			creature->sendSystemMessage("Invalid Target.");
 			return INVALIDTARGET;
 		}

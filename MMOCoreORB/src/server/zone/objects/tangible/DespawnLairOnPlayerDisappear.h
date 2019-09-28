@@ -36,12 +36,12 @@ public:
 	void run() {
 		ManagedReference<SceneObject*> strongRef = lair.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Zone* zone = strongRef->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		if (strongRef->isLairObject()) {

@@ -30,7 +30,7 @@ public:
 	void run() {
 		ManagedReference<TangibleObject*> strongRef = lair.get();
 
-		if (strongRef == NULL)
+		if (strongRef == nullptr)
 			return;
 
 		Locker locker(strongRef);

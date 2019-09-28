@@ -26,7 +26,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		String dir;
@@ -55,20 +55,20 @@ public:
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
+		if (obj == nullptr || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? cast<BuildingObject*>( rootParent.get()) : NULL) : NULL;
+		BuildingObject* buildingObject = rootParent != nullptr ? (rootParent->isBuildingObject() ? cast<BuildingObject*>( rootParent.get()) : nullptr) : nullptr;
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(obj->getDataObjectComponent()->get());
 
-		if (data != NULL) {
+		if (data != nullptr) {
 			EventPerkDeed* deed = data->getDeed();
 
-			if (deed == NULL) {
+			if (deed == nullptr) {
 				return GENERALERROR;
 			}
 
@@ -78,7 +78,7 @@ public:
 				return GENERALERROR;
 			}
 
-		} else if (buildingObject == NULL) {
+		} else if (buildingObject == nullptr) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 			return GENERALERROR;
 
@@ -111,7 +111,7 @@ public:
 		obj->incrementMovementCounter();
 
 		ManagedReference<SceneObject*> objParent = obj->getParent().get();
-		if (objParent != NULL)
+		if (objParent != nullptr)
 			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), objParent->getObjectID());
 		else
 			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY());

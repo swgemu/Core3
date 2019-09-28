@@ -14,7 +14,7 @@ public:
 	UpdateContainmentMessage(SceneObject* object, SceneObject* container, uint32 type) : BaseMessage(30) {
 		uint64 parId = 0;
 
-		if (container != NULL)
+		if (container != nullptr)
 			parId = container->getObjectID();
 
 		insertShort(0x04);

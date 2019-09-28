@@ -10,7 +10,6 @@
 #include "CharacterListEntry.h"
 
 class CharacterList : public Vector<CharacterListEntry> {
-
 	uint32 accountid;
 	String username;
 
@@ -26,7 +25,6 @@ public:
 	}
 
 	void update() {
-
 		removeAll();
 
 		Reference<ResultSet*> characters;
@@ -49,14 +47,14 @@ public:
 
 		try {
 			characters = ServerDatabase::instance()->executeQuery(query);
-		} catch (DatabaseException& e) {
+		} catch (const DatabaseException& e) {
 			System::out << "exception caught in ChracterList query" << endl;
 			System::out << e.getMessage();
 		} catch (...) {
 			System::out << "unknown exception caught in ChracterList query" << endl;
 		}
 
-		if (characters == NULL)
+		if (characters == nullptr)
 			return;
 
 		auto galaxies = GalaxyList(username);

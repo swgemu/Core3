@@ -11,10 +11,10 @@
 
 
 float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect) {
-	if (mfrc == NULL) {
+	if (mfrc == nullptr) {
 		mfrc = terrainGenerator->getMfrc(fractalId);
 
-		if (mfrc == NULL) {
+		if (mfrc == nullptr) {
 			System::out << "error out of bounds fractal id for filter " << informationHeader.getDescription() << endl;
 
 			return 1;

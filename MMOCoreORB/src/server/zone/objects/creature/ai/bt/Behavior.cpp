@@ -11,11 +11,11 @@
 Behavior::Behavior(AiAgent* _agent, const String& className) {
 	agent = _agent;
 	result = AiMap::SUSPEND;
-	parent = NULL;
+	parent = nullptr;
 	interface = AiMap::instance()->getBehavior(className);
 	id = 0;
 
-	if (interface == NULL) {
+	if (interface == nullptr) {
 		_agent->error("Null interface in Behavior: " + className);
 	}
 }
@@ -28,7 +28,7 @@ void Behavior::start() {
 
 	result = AiMap::RUNNING;
 
-	if (interface != NULL) {
+	if (interface != nullptr) {
 		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
 
 		interface->start(strongReference);
@@ -36,7 +36,7 @@ void Behavior::start() {
 }
 
 void Behavior::end() {
-	if (interface != NULL) {
+	if (interface != nullptr) {
 		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
 
 		interface->end(strongReference);
@@ -46,8 +46,8 @@ void Behavior::end() {
 void Behavior::doAction(bool directlyExecuted) {
 	AiAgent* agent = this->agent.getReferenceUnsafeStaticCast();
 
-	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
-		agent->setFollowObject(NULL);
+	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == nullptr)) {
+		agent->setFollowObject(nullptr);
 		return;
 	}
 
@@ -62,7 +62,7 @@ void Behavior::doAction(bool directlyExecuted) {
 	agent = this->agent.getReferenceUnsafeStaticCast();
 
 	if (finished()) {
-		if (parent == NULL) {
+		if (parent == nullptr) {
 			this->end();
 			result = AiMap::SUSPEND;
 			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
@@ -75,7 +75,7 @@ void Behavior::doAction(bool directlyExecuted) {
 	}
 
 	int res = AiMap::INVALID;
-	if (interface != NULL)
+	if (interface != nullptr)
 		res = interface->doAction(agent);
 
 	switch(res) {
@@ -86,19 +86,19 @@ void Behavior::doAction(bool directlyExecuted) {
 		endWithFailure();
 		break;
 	case AiMap::INVALID:
-		if (agent == NULL)
+		if (agent == nullptr)
 			return;
 
 		agent->resetBehaviorList();
 		break;
 	default:
-		if (agent == NULL)
+		if (agent == nullptr)
 			return;
 
 		break;
 	}
 
-	if (!finished() || parent == NULL)
+	if (!finished() || parent == nullptr)
 		agent->activateMovementEvent();
 	else if (directlyExecuted) {
 		agent->setCurrentBehavior(parent->id);

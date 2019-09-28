@@ -17,7 +17,7 @@ void SequenceBehavior::childSucceeded() {
 	else {
 		currentPos++;
 		Behavior* currentChild = children.get(currentPos);
-		if (currentChild == NULL || !currentChild->checkConditions())
+		if (currentChild == nullptr || !currentChild->checkConditions())
 			endWithFailure();
 	}
 }

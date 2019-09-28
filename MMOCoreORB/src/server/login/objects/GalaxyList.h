@@ -64,31 +64,31 @@ public:
 #endif // USE_RANDOM_EXTRA_PORTS
 	}
 
-	uint32 getID() {
+	uint32 getID() const {
 		return id;
 	}
 
-	String& getName() {
+	const String& getName() const {
 		return name;
 	}
 
-	String& getAddress() {
+	const String& getAddress() const {
 		return address;
 	}
 
-	uint32 getPort() {
+	uint32 getPort() const {
 		return port;
 	}
 
-	uint32 getPingPort() {
+	uint32 getPingPort() const {
 		return pingPort;
 	}
 
-	uint32 getPopulation() {
+	uint32 getPopulation() const {
 		return population;
 	}
 
-	uint16 getRandomPort() {
+	uint16 getRandomPort() const {
 #ifdef USE_RANDOM_EXTRA_PORTS
 		return (uint16) extraPorts.get(System::random(extraPorts.size() - 1));
 #else // USE_RANDOM_EXTRA_PORTS
@@ -104,7 +104,7 @@ public:
 		return false;
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer buf;
 
 		buf << "Galaxy("
@@ -175,7 +175,7 @@ public:
 		return false;
 	}
 
-	bool isAllowed(uint32 galaxyID) {
+	bool isAllowed(uint32 galaxyID) const {
 		for (auto& galaxy : galaxies) {
 			if (galaxy.getID() == galaxyID)
 				return true;
@@ -184,39 +184,39 @@ public:
 		return false;
 	}
 
-	uint32 getID() {
+	uint32 getID() const {
 		return current.getID();
 	}
 
-	String& getName() {
+	const String& getName() const {
 		return current.getName();
 	}
 
-	String& getAddress() {
+	const String& getAddress() const {
 		return current.getAddress();
 	}
 
-	uint16 getPort() {
+	uint16 getPort() const {
 		return current.getPort();
 	}
 
-	uint16 getRandomPort() {
+	uint16 getRandomPort() const {
 		return current.getRandomPort();
 	}
 
-	uint16 getPingPort() {
+	uint16 getPingPort() const {
 		return current.getPingPort();
 	}
 
-	uint32 getPopulation() {
+	uint32 getPopulation() const {
 		return current.getPopulation();
 	}
 
-	String toString() {
+	String toString() const {
 		return current.toString();
 	}
 
-	inline int size() {
+	inline int size() const {
 		return galaxies.size();
 	}
 };

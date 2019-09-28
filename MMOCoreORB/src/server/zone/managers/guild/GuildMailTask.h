@@ -27,13 +27,13 @@ public:
 
 		GuildMemberList* memberList = guild->getGuildMemberList();
 
-		if (memberList == NULL)
+		if (memberList == nullptr)
 			return;
 
 		for (int i = 0; i < memberList->size(); ++i) {
 			GuildMemberInfo* gmi = &memberList->get(i);
 
-			if (gmi == NULL)
+			if (gmi == nullptr)
 				continue;
 
 			members.add(gmi->getPlayerID());

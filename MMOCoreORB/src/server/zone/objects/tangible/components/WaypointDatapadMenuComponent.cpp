@@ -10,7 +10,7 @@
 #include "server/zone/managers/jedi/JediManager.h"
 
 void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL) {
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject() || player == nullptr) {
 		return;
 	}
 

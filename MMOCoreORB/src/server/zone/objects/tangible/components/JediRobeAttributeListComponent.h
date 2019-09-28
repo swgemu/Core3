@@ -17,7 +17,7 @@ public:
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) const {
 
 		ManagedReference<RobeObject*> robe = cast<RobeObject*> (object);
-		if (robe == NULL) {
+		if (robe == nullptr) {
 			return;
 		}
 

@@ -30,7 +30,7 @@ int ArtCrateMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	if (selectedID == 20) {
 		ManagedReference<LootManager*> lootManager = sceneObject->getZone()->getZoneServer()->getLootManager();
 
-		if (lootManager == NULL)
+		if (lootManager == nullptr)
 			return 0;
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");

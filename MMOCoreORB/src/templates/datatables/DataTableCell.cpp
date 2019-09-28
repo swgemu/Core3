@@ -10,7 +10,7 @@
 /**
  * Parses the string as a comma delimited vector into a SortedVector of Strings.
  */
-void DataTableCellString::getValue(SortedVector<String>& out) {
+void DataTableCellString::getValue(SortedVector<String>& out) const {
 	String tokenizedString;
 	getValue(tokenizedString);
 
@@ -25,7 +25,7 @@ void DataTableCellString::getValue(SortedVector<String>& out) {
 	}
 }
 
-void DataTableCellString::getValue(Vector<String>& out) {
+void DataTableCellString::getValue(Vector<String>& out) const {
 	String tokenizedString;
 	getValue(tokenizedString);
 

@@ -18,7 +18,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> creature = creo.get();
 
-		if (creature == NULL)
+		if (creature == nullptr)
 			return;
 
 		Locker locker(creature);

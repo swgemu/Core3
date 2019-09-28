@@ -16,7 +16,7 @@ public:
 
 	PlanetTravelPointList() : VectorMap<String, Reference<PlanetTravelPoint*> >() {
 		setNoDuplicateInsertPlan();
-		setNullValue(NULL);
+		setNullValue(nullptr);
 	}
 
 	Reference<PlanetTravelPoint*> get(int index) {
@@ -73,14 +73,14 @@ public:
 			if (incomingAllowed[i]) {
 				Reference<PlanetTravelPoint*> ptp = VectorMap<String, Reference<PlanetTravelPoint*> >::get(i);
 				ManagedReference<CreatureObject*> shuttle = ptp->getShuttle();
-				if(shuttle == NULL){
+				if(shuttle == nullptr){
 					message->insertInt(0);
 					continue;
 				}
 
 				ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
 
-				if(city == NULL) {
+				if(city == nullptr) {
 					message->insertInt(0);
 					continue;
 				}

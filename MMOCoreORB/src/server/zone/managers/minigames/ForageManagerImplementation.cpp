@@ -14,7 +14,7 @@
 #include "server/zone/Zone.h"
 
 void ForageManagerImplementation::startForaging(CreatureObject* player, int forageType) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	Locker playerLocker(player);
@@ -25,7 +25,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 
 	//Check if already foraging.
 	Reference<Task*> pendingForage = player->getPendingTask("foraging");
-	if (pendingForage != NULL) {
+	if (pendingForage != nullptr) {
 
 		if (forageType == ForageManager::SHELLFISH)
 			player->sendSystemMessage("@harvesting:busy");
@@ -98,7 +98,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	//Queue the foraging task.
 	Zone* zone = player->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, zone->getZoneName());
@@ -115,7 +115,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 }
 
 void ForageManagerImplementation::finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& zoneName) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	Locker playerLocker(player);
@@ -123,7 +123,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 
 	player->removePendingTask("foraging");
 
-	if (player->getZone() == NULL)
+	if (player->getZone() == nullptr)
 		return;
 
 	//Check if player moved.
@@ -146,7 +146,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 
 		Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
 
-		if (forageAreaCollection != NULL) { //Player has foraged before.
+		if (forageAreaCollection != nullptr) { //Player has foraged before.
 			if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName, forageType)) {
 				if( forageType == LAIR ){
 					player->sendSystemMessage("There is nothing of interest remaining in the lair.");
@@ -206,7 +206,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 }
 
 bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet) {
-	if (player == NULL)
+	if (player == nullptr)
 		return false;
 
 	Locker playerLocker(player);
@@ -214,7 +214,7 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 	ManagedReference<LootManager*> lootManager = player->getZoneServer()->getLootManager();
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (lootManager == NULL || inventory == NULL) {
+	if (lootManager == nullptr || inventory == nullptr) {
 		player->sendSystemMessage("@skl_use:sys_forage_fail");
 		return false;
 	}
@@ -348,15 +348,15 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 }
 
 bool ForageManagerImplementation::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType) {
-	if (player == NULL)
+	if (player == nullptr)
 		return false;
 
 	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
-	if (resourceManager == NULL)
+	if (resourceManager == nullptr)
 		return false;
 
-	ManagedReference<ResourceSpawn*> resource = NULL;
+	ManagedReference<ResourceSpawn*> resource = nullptr;
 
 	if(resType.isEmpty()) {
 		//Get a list of the flora on the planet.
@@ -378,13 +378,13 @@ bool ForageManagerImplementation::forageGiveResource(CreatureObject* player, flo
 			}
 		}
 	} else {
-		if(player->getZone() == NULL)
+		if(player->getZone() == nullptr)
 			return false;
 
 		resType = resType + "_" + player->getZone()->getZoneName();
 		resource = resourceManager->getCurrentSpawn(resType, player->getZone()->getZoneName());
 
-		if(resource == NULL) {
+		if(resource == nullptr) {
 			StringBuffer message;
 			message << "Resource type not available: " << resType << " on " << player->getZone()->getZoneName();
 			warning(message.toString());

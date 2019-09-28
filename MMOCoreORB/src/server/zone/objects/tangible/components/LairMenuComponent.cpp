@@ -18,16 +18,16 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
-	ManagedReference<LairObserver*> lairObserver = NULL;
+	ManagedReference<LairObserver*> lairObserver = nullptr;
 	SortedVector<ManagedReference<Observer*> > observers = tano->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 
 	for (int i = 0; i < observers.size(); i++) {
 		lairObserver = cast<LairObserver*>(observers.get(i).get());
 
-		if (lairObserver != NULL)
+		if (lairObserver != nullptr)
 			break;
 	}
 

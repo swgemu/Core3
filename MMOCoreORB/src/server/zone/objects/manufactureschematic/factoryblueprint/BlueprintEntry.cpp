@@ -107,7 +107,7 @@ void BlueprintEntry::clearMatches() {
 
 bool BlueprintEntry::hasEnoughResources() {
 
-	if(inputHopper == NULL)
+	if(inputHopper == nullptr)
 		return false;
 
 	int count = 0;
@@ -115,7 +115,7 @@ bool BlueprintEntry::hasEnoughResources() {
 	for(int i = 0; i < matchingHopperItems.size(); ++i) {
 		TangibleObject* object = matchingHopperItems.get(i);
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			matchingHopperItems.remove(i);
 			--i;
 			continue;

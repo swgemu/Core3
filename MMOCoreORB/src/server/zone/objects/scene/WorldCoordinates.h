@@ -120,7 +120,7 @@ public:
 	inline String toString() const {
 		StringBuffer sb;
 		sb << point.toString();
-		sb << " in " << String::valueOf(cell != NULL ? cell->getCellNumber() : 0) << ".";
+		sb << " in " << String::valueOf(cell != nullptr ? cell->getCellNumber() : 0) << ".";
 		return sb.toString();
 	}
 };

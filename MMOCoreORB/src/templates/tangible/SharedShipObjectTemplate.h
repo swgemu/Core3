@@ -51,7 +51,7 @@ public:
 			//while (iffStream->getRemainingSubChunksNumber() > 0) {
 			Chunk* chunk = iffStream->openChunk('XXXX');
 
-			if (chunk == NULL)
+			if (chunk == nullptr)
 				continue;
 
 			String varName;

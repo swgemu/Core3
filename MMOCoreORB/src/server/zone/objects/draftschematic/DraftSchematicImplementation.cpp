@@ -94,9 +94,9 @@ Reference<SceneObject*> DraftSchematicImplementation::createManufactureSchematic
 	Reference<ManufactureSchematic*> manuSchematic =
 			 (getZoneServer()->createObject(0xF75E04C2, 0)).castTo<ManufactureSchematic* >();
 
-	if(manuSchematic == NULL) {
+	if(manuSchematic == nullptr) {
 		error("Could not create ManufactureSchematic for " + getObjectNameStringIdName());
-		return NULL;
+		return nullptr;
 	}
 
 	Locker locker(manuSchematic);

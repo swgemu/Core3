@@ -8,14 +8,14 @@
 const String InformantMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
 MissionObject* InformantMissionScreenHandler::getBountyMissionObject(CreatureObject* player) {
-	if (player == NULL) {
-		return NULL;
+	if (player == nullptr) {
+		return nullptr;
 	}
 
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
-	if (datapad == NULL) {
-		return NULL;
+	if (datapad == nullptr) {
+		return nullptr;
 	}
 
 	int datapadSize = datapad->getContainerObjectsSize();
@@ -24,9 +24,9 @@ MissionObject* InformantMissionScreenHandler::getBountyMissionObject(CreatureObj
 		if (datapad->getContainerObject(i)->isMissionObject()) {
 			Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
-			if (mission != NULL && mission->getTypeCRC() == MissionTypes::BOUNTY) {
+			if (mission != nullptr && mission->getTypeCRC() == MissionTypes::BOUNTY) {
 				BountyMissionObjective* objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
-				if (objective != NULL) {
+				if (objective != nullptr) {
 					return mission;
 				}
 			}
@@ -34,7 +34,7 @@ MissionObject* InformantMissionScreenHandler::getBountyMissionObject(CreatureObj
 	}
 
 	//No relevant mission found.
-	return NULL;
+	return nullptr;
 }
 
 ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
@@ -48,7 +48,7 @@ ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* 
 		informantLevel = 3;
 	} else {
 		error("Informant level incorrect.");
-		return NULL;
+		return nullptr;
 	}
 
 	//Check if player is bounty hunter.
@@ -58,7 +58,7 @@ ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* 
 		//Get bounty mission object if it exists.
 		MissionObject* mission = getBountyMissionObject(conversingPlayer);
 
-		if (mission == NULL) {
+		if (mission == nullptr) {
 			//Player has no bounty mission.
 			conversationScreen->setDialogText(String("@mission/mission_generic:informant_no_bounty_mission"));
 		} else {
@@ -72,7 +72,7 @@ ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* 
 			} else {
 				//Player has bounty mission.
 				BountyMissionObjective* objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
-				if (objective != NULL) {
+				if (objective != nullptr) {
 					//Run mission logic.
 					if (objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
 						objective->updateMissionStatus(informantLevel);

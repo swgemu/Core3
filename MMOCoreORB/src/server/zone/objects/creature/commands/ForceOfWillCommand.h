@@ -49,7 +49,7 @@ public:
 
 		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
 
-		if (!creature->isIncapacitated() || incapTask == NULL || !incapTask->isScheduled()) {
+		if (!creature->isIncapacitated() || incapTask == nullptr || !incapTask->isScheduled()) {
 			creature->sendSystemMessage("@teraskasi:forceofwill_fail"); //You must be incapacitated to perform that command.
 			return GENERALERROR;
 		}

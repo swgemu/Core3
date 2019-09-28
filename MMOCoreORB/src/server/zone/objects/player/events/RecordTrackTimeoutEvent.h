@@ -25,7 +25,7 @@ public:
 	}
 
 	void run() {
-		if (module == NULL)
+		if (module == nullptr)
 			return;
 		Locker plock(player);
 		module->sessionTimeout(player,recordingState);

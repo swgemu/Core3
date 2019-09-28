@@ -64,12 +64,12 @@ public:
 	Mutex guard;
 
 	AiMap() : Logger("AiMap") {
-		aiMap.setNullValue(NULL);
-		behaviors.setNullValue(NULL);
-		getTargets.setNullValue(NULL);
-		selectAttacks.setNullValue(NULL);
-		combatMoves.setNullValue(NULL);
-		idles.setNullValue(NULL);
+		aiMap.setNullValue(nullptr);
+		behaviors.setNullValue(nullptr);
+		getTargets.setNullValue(nullptr);
+		selectAttacks.setNullValue(nullptr);
+		combatMoves.setNullValue(nullptr);
+		idles.setNullValue(nullptr);
 
 		loaded = false;
 	}
@@ -78,7 +78,7 @@ public:
 	}
 
 	void initialize(Lua* lua) {
-		if (lua == NULL) {
+		if (lua == nullptr) {
 			error("Could not get lua AiMap::instance from DirectorManager");
 			return;
 		}
@@ -93,7 +93,7 @@ public:
 	}
 
 	void loadTemplates(Lua* lua) {
-		if (lua == NULL) {
+		if (lua == nullptr) {
 			error("Could not get lua AiMap::instance from DirectorManager");
 			return;
 		}
@@ -136,7 +136,7 @@ public:
 
 	Reference<AiTemplate*> getTemplate(const String& name) {
 		if (name == "none")
-			return NULL;
+			return nullptr;
 
 		return aiMap.get(name);
 	}

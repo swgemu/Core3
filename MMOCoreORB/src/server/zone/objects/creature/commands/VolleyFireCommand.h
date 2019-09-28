@@ -51,14 +51,14 @@ public:
 	}
 
 	bool attemptVolleyFire(CreatureObject* player, uint64* target, int skillMod) const {
-		if (player == NULL)
+		if (player == nullptr)
 			return false;
 
 		ManagedReference<WeaponObject*> weapon = player->getWeapon();
 
 		String skillCRC;
 
-		if (weapon != NULL) {
+		if (weapon != nullptr) {
 			if (!weapon->getCreatureAccuracyModifiers()->isEmpty()) {
 				skillCRC = weapon->getCreatureAccuracyModifiers()->get(0);
 
@@ -75,7 +75,7 @@ public:
 	}
 
 	bool doVolleyFire(CreatureObject* leader, GroupObject* group, uint64* target) const {
-		if (leader == NULL || group == NULL)
+		if (leader == nullptr || group == nullptr)
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {

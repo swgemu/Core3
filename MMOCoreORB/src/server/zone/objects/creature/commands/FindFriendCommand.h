@@ -41,7 +41,7 @@ public:
 
 		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(name);
 
-		if (targetPlayer == NULL) {
+		if (targetPlayer == nullptr) {
 			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
 			message.setTU(name);
 
@@ -62,7 +62,7 @@ public:
 
 		Zone* zone = targetPlayer->getZone();
 
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
 			message.setTU(name);
 
@@ -76,7 +76,7 @@ public:
 
 		ManagedReference<SceneObject*> parent = targetPlayer->getParent().get();
 
-		if (parent != NULL && parent->isCellObject()) {
+		if (parent != nullptr && parent->isCellObject()) {
 			ManagedReference<SceneObject*> building = parent->getParent().get();
 
 			x = building->getPositionX();

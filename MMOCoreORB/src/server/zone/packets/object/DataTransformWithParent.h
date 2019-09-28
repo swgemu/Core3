@@ -21,7 +21,7 @@
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
 	DataTransformWithParent(SceneObject* creo)
-: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF1) {
+		: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF1) {
 
 		insertInt(creo->getMovementCounter());
 
@@ -70,10 +70,10 @@ public:
 
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player != NULL) {
+		if (player != nullptr) {
 			Zone* zone = player->getZone();
 
-			if (zone != NULL) {
+			if (zone != nullptr) {
 				String zoneName = zone->getZoneName();
 
 				setCustomTaskQueue(zoneName);
@@ -109,9 +109,9 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> object = client->getPlayer().get();
+		Reference<CreatureObject*> object = client->getPlayer().get();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		int posture = object->getPosture();
@@ -140,7 +140,7 @@ public:
 				ManagedReference<SceneObject*> currentParent = object->getParent().get();
 				bool light = objectControllerMain->getPriority() != 0x23;
 
-				if (currentParent != NULL)
+				if (currentParent != nullptr)
 					object->updateZoneWithParent(currentParent, light);
 				else
 					object->updateZone(light);
@@ -151,7 +151,7 @@ public:
 	void updatePosition(CreatureObject* object) {
 		PlayerObject* ghost = object->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ))
@@ -174,7 +174,7 @@ public:
 			return;
 		}
 
-		if (object->getZone() == NULL)
+		if (object->getZone() == nullptr)
 			return;
 
 		if (object->isRidingMount()) {
@@ -194,29 +194,29 @@ public:
 			return;
 		}*/
 
-		ManagedReference<CellObject*> newParent = server->getZoneServer()->getObject(parent, true).castTo<CellObject*>();
+		Reference<CellObject*> newParent = server->getZoneServer()->getObject(parent, true).castTo<CellObject*>();
 
-		if (newParent == NULL)
+		if (newParent == nullptr)
 			return;
 
-		ManagedReference<SceneObject*> parentSceneObject = newParent->getParent().get();
+		Reference<SceneObject*> parentSceneObject = newParent->getParent().get();
 
-		if (parentSceneObject == NULL)
+		if (parentSceneObject == nullptr)
 			return;
 
 		BuildingObject* building = parentSceneObject->asBuildingObject();
 
-		if (building == NULL)
+		if (building == nullptr)
 			return;
 
-		ManagedReference<SceneObject*> par = object->getParent().get();
+		Reference<SceneObject*> par = object->getParent().get();
 
-		if (par != NULL && par->isShipObject())
+		if (par != nullptr && par->isShipObject())
 			return;
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		if (playerManager == NULL)
+		if (playerManager == nullptr)
 			return;
 
 		ValidatedPosition pos;
@@ -225,7 +225,7 @@ public:
 		if (!ghost->hasGodMode()) {
 			SceneObject* inventory = object->getSlottedObject("inventory");
 
-			if (inventory != NULL && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+			if (inventory != nullptr && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
 				object->sendSystemMessage("Inventory Overloaded - Cannot Move");
 				bounceBack(object, pos);
 				return;
@@ -237,20 +237,20 @@ public:
 
 		if ( par != newParent) {
 			CellObject* currentCell = par.castTo<CellObject*>();
-			PortalLayout *layout = building->getObjectTemplate()->getPortalLayout();
-			if (layout == NULL)
+			const PortalLayout *layout = building->getObjectTemplate()->getPortalLayout();
+			if (layout == nullptr)
 				return;
 
 			const CellProperty *cellProperty = layout->getCellProperty(newParent->getCellNumber());
-			if (!cellProperty->hasConnectedCell(currentCell != NULL ? currentCell->getCellNumber() : 0)) {
-				StringBuffer buf;
+			if (!cellProperty->hasConnectedCell(currentCell != nullptr ? currentCell->getCellNumber() : 0)) {
 				String zoneName = object->getZone()->getZoneName();
-				buf << object->getObjectID() << " Attempted to change parents to a cell not connected to the previous parent: ";
-				buf << "X: " << positionX << " Y: " << positionY << " Z: " << positionZ << " zone:" << zoneName << " parentID: " << parent;
+
+				object->error() << object->getObjectID() << " Attempted to change parents to a cell not connected to the previous parent: "
+					<< "X: " << positionX << " Y: " << positionY << " Z: " << positionZ << " zone:" << zoneName << " parentID: " << parent;
 //				for (int i : cellProperty->getConnectedCells()) {
 //					buf << "ConnectedCell: " << i << endl;
 //				}
-				object->error(buf.toString());
+
 				bounceBack(object, pos);
 				return;
 			}
@@ -258,9 +258,9 @@ public:
 
 		CellObject* cell = newParent;
 
-		Reference<Vector<float>* > collisionPoints = CollisionManager::getCellFloorCollision(positionX, positionY, cell);
+		UniqueReference<Vector<float>*> collisionPoints(CollisionManager::getCellFloorCollision(positionX, positionY, cell));
 
-		if (collisionPoints == NULL) {
+		if (collisionPoints == nullptr) {
 			bounceBack(object, pos);
 			return;
 		}

@@ -12,21 +12,21 @@
 void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	if(mission == NULL)
+	if(mission == nullptr)
 		return;
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-	if (inventory == NULL) {
+	if (inventory == nullptr) {
 		return;
 	}
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (ghost == NULL) {
+	if (ghost == nullptr) {
 		return;
 	}
 
 	DraftSchematic* schematic = SchematicMap::instance()->get(mission->getTemplateString1().hashCode());
-	if (schematic == NULL) {
+	if (schematic == nullptr) {
 		return;
 	}
 
@@ -40,7 +40,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 		//Create components for schematic and give them to the player.
 		for (int i = 0; i < schematic->getDraftSlotCount(); i++) {
 			ManagedReference<TangibleObject*> item = ( player->getZoneServer()->createObject(schematic->getDraftSlot(i)->getResourceType().replaceFirst("/shared_", "/").hashCode(), 2)).castTo<TangibleObject*>();
-			if (item != NULL) {
+			if (item != nullptr) {
 				Locker locker(item);
 
 				if (inventory->transferObject(item, -1, true)) {
@@ -64,7 +64,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 
 			Locker locker(item);
 
-			if (item != NULL && item->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
+			if (item != nullptr && item->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
 				//Delete the item.
 				item->destroyObjectFromWorld(true);
 				item->destroyObjectFromDatabase(true);
@@ -85,13 +85,13 @@ void CraftingMissionObjectiveImplementation::abort() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-	if (player != NULL && mission != NULL) {
+	if (player != nullptr && mission != nullptr) {
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			DraftSchematic* schematic = SchematicMap::instance()->get(mission->getTemplateString1().hashCode());
 
-			if (schematic != NULL) {
+			if (schematic != nullptr) {
 				ghost->removeRewardedSchematic(schematic, true);
 			}
 		}

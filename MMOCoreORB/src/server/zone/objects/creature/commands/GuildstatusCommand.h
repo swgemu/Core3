@@ -32,7 +32,7 @@ public:
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject*> obj = NULL;
+		ManagedReference<SceneObject*> obj = nullptr;
 
 		UnicodeTokenizer tokenizer(arguments);
 		tokenizer.setDelimeter(" ");
@@ -48,10 +48,10 @@ public:
 			obj = zoneServer->getObject(targetPlayerID);
 		}
 
-		if (obj == NULL || !obj->isCreatureObject())
+		if (obj == nullptr || !obj->isCreatureObject())
 			obj = zoneServer->getObject(target);
 
-		if (obj == NULL || !obj->isPlayerCreature()) {
+		if (obj == nullptr || !obj->isPlayerCreature()) {
 			player->sendSystemMessage("@base_player:guildstatus_not_player"); //You may only check the guild status of players.
 			return GENERALERROR;
 		}
@@ -70,7 +70,7 @@ public:
 		ManagedReference<GuildObject*> guild = targetCreature->getGuildObject().get();
 		uint64 objid = targetCreature->getObjectID();
 
-		if (guild == NULL)
+		if (guild == nullptr)
 			return GENERALERROR;
 
 		if (!guild->hasMember(objid))

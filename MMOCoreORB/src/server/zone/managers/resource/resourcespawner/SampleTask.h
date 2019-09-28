@@ -31,11 +31,11 @@ public:
 	void run() {
 		Locker playerLocker(playerCreature);
 
-		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
+		if (!cancelled && playerCreature->getPendingTask("sample") != nullptr) {
 			playerCreature->removePendingTask("sample");
 
 			ManagedReference<SurveySession*> session = playerCreature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
-			if(session != NULL) {
+			if(session != nullptr) {
 				session->reSample();
 			}
 			return;

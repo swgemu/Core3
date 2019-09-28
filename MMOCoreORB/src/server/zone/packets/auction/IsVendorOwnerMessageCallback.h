@@ -31,17 +31,17 @@ public:
 	void run() {
 		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(oid);
 
-		if (sceno == NULL)
+		if (sceno == nullptr)
 			return;
 
 		Zone* zone = sceno->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		String planetString = zone->getZoneName();
@@ -49,7 +49,7 @@ public:
 
 
 		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion().get();
-		if (cityRegion != NULL)
+		if (cityRegion != nullptr)
 			vendorRegion = cityRegion->getRegionName();
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion);

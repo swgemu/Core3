@@ -91,7 +91,7 @@ public:
 
 		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/crafting/component.iff");
 
-		if (iffStream == NULL) {
+		if (iffStream == nullptr) {
 			Logger::info("Could not open datatables/crafting/component.iff", true);
 			return;
 		}

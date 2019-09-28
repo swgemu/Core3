@@ -29,12 +29,12 @@ public:
 		CreatureObject* playerCreature = cast<CreatureObject*>( creature);
 		PlayerObject* ghost = playerCreature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isWaypointObject())
+		if (object == nullptr || !object->isWaypointObject())
 			return INVALIDTARGET;
 
 		if (arguments.isEmpty() || arguments.length() > 150)

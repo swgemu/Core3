@@ -32,7 +32,7 @@ void DroidMaintenanceModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -61,14 +61,14 @@ void DroidMaintenanceModuleDataComponent::fillObjectMenuResponse(SceneObject* dr
 int DroidMaintenanceModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		info( "Droid is null");
 		return 0;
 	}
 
 	Locker dlock( droid, player );
 
-	if (player->getZone() == NULL)
+	if (player->getZone() == nullptr)
 		return 0;
 
 	// Perform Maintenance Run
@@ -107,9 +107,9 @@ int DroidMaintenanceModuleDataComponent::handleObjectMenuSelect(CreatureObject* 
 
 			uint64 objectId = assignedStructures.elementAt(i);
 			ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectId);
-			if( obj != NULL && obj->isStructureObject() ){
+			if( obj != nullptr && obj->isStructureObject() ){
 				StructureObject* structureObject = cast<StructureObject*>(obj.get());
-				if( structureObject != NULL ){
+				if( structureObject != nullptr ){
 					box->addMenuItem( structureObject->getDisplayedName(), objectId );
 				}
 			}
@@ -131,13 +131,13 @@ void DroidMaintenanceModuleDataComponent::getStructureList(Vector<ManagedReferen
 	for (int i = 0; i < assignedStructures.size(); i++) {
 		uint64 objectId = assignedStructures.elementAt(i);
 		ManagedReference<SceneObject*> obj = srv->getObject(objectId);
-		if( obj != NULL && obj->isStructureObject() ){
+		if( obj != nullptr && obj->isStructureObject() ){
 			StructureObject* structureObject = cast<StructureObject*>(obj.get());
-			if( structureObject != NULL ){
+			if( structureObject != nullptr ){
 				// is it on this planet?
 				Zone* zone = structureObject->getZone();
 
-				if (zone == NULL) {
+				if (zone == nullptr) {
 					continue;
 				}
 
@@ -155,14 +155,14 @@ void DroidMaintenanceModuleDataComponent::getStructureList(Vector<ManagedReferen
 void DroidMaintenanceModuleDataComponent::copy(BaseDroidModuleComponent* other){
 
 	DroidMaintenanceModuleDataComponent* otherModule = cast<DroidMaintenanceModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	moduleRating = otherModule->moduleRating;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	droidComponent->addProperty("struct_module", moduleRating, 0, "exp_effectiveness");
@@ -181,7 +181,7 @@ void DroidMaintenanceModuleDataComponent::copy(BaseDroidModuleComponent* other){
 void DroidMaintenanceModuleDataComponent::addToStack(BaseDroidModuleComponent* other){
 
 	DroidMaintenanceModuleDataComponent* otherModule = cast<DroidMaintenanceModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	// Maintenance modules do not stack.  Just keep the highest rated module
@@ -190,7 +190,7 @@ void DroidMaintenanceModuleDataComponent::addToStack(BaseDroidModuleComponent* o
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	// Attribute should have already been created in copy method
@@ -273,7 +273,7 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 			ManagedReference<SceneObject*> obj = play->getZoneServer()->getObject(objectID);
 			StructureObject* structureObject = cast<StructureObject*>(obj.get());
 
-			if (structureObject != NULL) {
+			if (structureObject != nullptr) {
 				Locker locker(play);
 				Locker cross(structureObject, play);
 
@@ -296,7 +296,7 @@ long DroidMaintenanceModuleDataComponent::calculateRunTime(const VectorMap<unsig
 				duration += 6033000; // 1 hr 40 minutes and 33 seconds
 			}else {
 				// same planet
-				if (primeStructure == NULL) {
+				if (primeStructure == nullptr) {
 					primeStructure = obj;
 				}
 				if (obj == primeStructure) {
@@ -325,12 +325,12 @@ long DroidMaintenanceModuleDataComponent::calculateRunTime(const VectorMap<unsig
 bool DroidMaintenanceModuleDataComponent::isValidStructure(uint64 objectID){
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ) {
+	if( droid == nullptr ) {
 		return false;
 	}
 
 	ManagedReference<SceneObject*> obj = droid->getZoneServer()->getObject(objectID);
-	if( obj == NULL ) {
+	if( obj == nullptr ) {
 		return false;
 	}
 
@@ -339,12 +339,12 @@ bool DroidMaintenanceModuleDataComponent::isValidStructure(uint64 objectID){
 	}
 	// we need to check for more than structure we need to check for factories and harvestors as well.
 	StructureObject* structureObject = cast<StructureObject*>(obj.get());
-	if( structureObject == NULL ) {
+	if( structureObject == nullptr ) {
 		return false;
 	}
 
 	ManagedReference< CreatureObject*> linkedCreature = droid->getLinkedCreature().get();
-	if( linkedCreature == NULL ) {
+	if( linkedCreature == nullptr ) {
 		return false;
 	}
 
@@ -352,7 +352,7 @@ bool DroidMaintenanceModuleDataComponent::isValidStructure(uint64 objectID){
 		return false;
 	}
 
-	if( structureObject->getZone() == NULL ) {
+	if( structureObject->getZone() == nullptr ) {
 		return false;
 	}
 

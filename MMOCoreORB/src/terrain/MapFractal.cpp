@@ -12,8 +12,8 @@ double MapFractal::log05 = log(0.5);
 using namespace trn::ptat;
 
 MapFractal::MapFractal() {
-	noise = NULL;
-	rand = NULL;
+	noise = nullptr;
+	rand = nullptr;
 
 	bias = 0;
 	biasValue = 0.5;

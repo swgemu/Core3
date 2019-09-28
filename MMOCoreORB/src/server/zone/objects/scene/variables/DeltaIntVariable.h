@@ -13,7 +13,7 @@
 template<int BaselineName, uint8 Type, int DeltaID>
 class DeltaIntVariable : public DeltaBasicVariable<int> {
 public:
-	void update(int newValue, bool broadcastStandalone = false, SceneObject* obj = NULL) {
+	void update(int newValue, bool broadcastStandalone = false, SceneObject* obj = nullptr) {
 		set(newValue);
 
 		if (broadcastStandalone) {

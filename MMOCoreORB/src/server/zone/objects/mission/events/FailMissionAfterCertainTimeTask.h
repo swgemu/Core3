@@ -24,13 +24,13 @@ public:
 	void run() {
 		ManagedReference<MissionObject*> objectRef = object.get();
 
-		if (objectRef != NULL) {
+		if (objectRef != nullptr) {
 			ManagedReference<MissionObjective*> objectiveRef = objectRef->getMissionObjective();
 
-			if (objectiveRef != NULL) {
+			if (objectiveRef != nullptr) {
 				//Fail mission.
 				ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner();
-				if (owner != NULL) {
+				if (owner != nullptr) {
 					Locker locker(owner);
 
 					owner->sendSystemMessage("Mission expired");

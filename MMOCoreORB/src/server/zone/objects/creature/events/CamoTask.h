@@ -36,7 +36,7 @@ public:
 
 		ManagedReference<CreatureObject*> ai = mob.get();
 		ManagedReference<CreatureObject*> player = play.get();
-		if (ai == NULL || player == NULL)
+		if (ai == nullptr || player == nullptr)
 			return;
 
 		Locker locker(ai);
@@ -67,12 +67,12 @@ public:
 			playerManager->awardExperience(player, "scout", (ai->getLevel() * 2), true);
 		} else {
 			Reference<ConcealBuff*> buff = cast<ConcealBuff*>(player->getBuff(crc));
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				clocker.release();
 				locker.release();
 
 				ManagedReference<CreatureObject*> buffGiver = buff->getBuffGiver();
-				if (buffGiver != NULL) {
+				if (buffGiver != nullptr) {
 					Locker buffGiverlocker(buffGiver);
 					if (buffGiver->hasSkill("outdoors_ranger_novice")) {
 						playerManager->awardExperience(buffGiver, "scout", (ai->getLevel() * 2), true);

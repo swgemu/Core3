@@ -11,7 +11,6 @@
 #include "templates/ChildObject.h"
 
 class SignTemplate : public ChildObject {
-
 	String requiredSkill;
 	String suiItem;
 
@@ -46,11 +45,11 @@ public:
 		suiItem = luaObject->getStringField("suiItem");
 	}
 
-	inline String& getSuiItem() {
+	inline const String& getSuiItem() const {
 		return suiItem;
 	}
 
-	inline String& getRequiredSkill() {
+	inline const String& getRequiredSkill() const {
 		return requiredSkill;
 	}
 

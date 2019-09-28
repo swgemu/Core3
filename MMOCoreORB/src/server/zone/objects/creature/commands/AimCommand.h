@@ -33,9 +33,9 @@ public:
 
 		//Send combat spam.
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-		if (targetObject != NULL && targetObject->isTangibleObject() && creature != targetObject) {
+		if (targetObject != nullptr && targetObject->isTangibleObject() && creature != targetObject) {
 			TangibleObject* defender = cast<TangibleObject*>( targetObject.get());
-			CombatManager::instance()->broadcastCombatSpam(creature, defender, NULL, 0, "cbt_spam", combatSpam, 0);
+			CombatManager::instance()->broadcastCombatSpam(creature, defender, nullptr, 0, "cbt_spam", combatSpam, 0);
 		}
 
 		return SUCCESS;

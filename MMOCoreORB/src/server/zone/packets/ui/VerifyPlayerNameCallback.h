@@ -32,7 +32,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> playerCreature = client->getPlayer();
 
-		if (playerCreature == NULL)
+		if (playerCreature == nullptr)
 			return;
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();

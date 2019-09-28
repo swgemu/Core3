@@ -18,7 +18,7 @@ int WebServer::sessionTimeout;
 
 WebServer::WebServer() {
 
-	configManager = NULL;
+	configManager = nullptr;
 
 	// Lookup zone to have access to playerobjects
 	zoneServer = DistributedObjectBroker::instance()->lookUp("ZoneServer").castTo<ZoneServer*>().get();
@@ -86,7 +86,7 @@ void WebServer::whitelistInit() {
 
 	info("Parsing access whitelist 'conf/webusers.lst'", true);
 
-	if(zoneServer == NULL) {
+	if(zoneServer == nullptr) {
 		error("Zone server lookup failed, unable to verify users for access");
 		return;
 	}
@@ -163,12 +163,12 @@ void WebServer::mongooseMgrInit() {
 		"listening_ports", ports.toCharArray(),
 		"enable_directory_listing", "no",
 		"document_root", "../doc/www",
-		NULL
+		nullptr
 	};
 
-	ctx = mg_start(&uriHandler, NULL, options);
+	ctx = mg_start(&uriHandler, nullptr, options);
 
-	if(ctx == NULL)
+	if(ctx == nullptr)
 		info("Failed to initialize", true);
 	else
 		info("Initialized", true);
@@ -213,7 +213,7 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
 	Servlet* servlet = contexts.get(context);
 
 	/// If the session isn't valid, only the login servlet is Accessable
-	if((servlet == NULL || servlet->getContext() != "login") && !session->isAuthenticated()) {
+	if((servlet == nullptr || servlet->getContext() != "login") && !session->isAuthenticated()) {
 		session->debug("NOT Authenticated forwarding to /login");
 		forward(conn, "/login", session->getRequest());
 		return (void*)1;
@@ -225,16 +225,16 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
 			return (void*)1;
 		}*/
 
-		if(servlet != NULL && servlet->getContext() == "login") {
+		if(servlet != nullptr && servlet->getContext() == "login") {
 			forward(conn, "/main", session->getRequest());
 			return (void*)1;
 		}
 
-		if(servlet != NULL)
+		if(servlet != nullptr)
 			session->debug("Authenticated for /" + servlet->getContext());
 	}
 
-	if(servlet != NULL) {
+	if(servlet != nullptr) {
 
 		servlet->handleRequest(conn, session->getRequest(), session->getResponse());
 
@@ -250,7 +250,7 @@ void WebServer::dispatch(String location, HttpSession* session) {
 
 	Servlet* servlet = contexts.get(location);
 
-	if(servlet != NULL) {
+	if(servlet != nullptr) {
 
 		servlet->handleGet(session->getRequest(), session->getResponse());
 	}
@@ -279,8 +279,8 @@ void WebServer::forward(struct mg_connection *conn, String context, HttpRequest*
  */
 HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
-	HttpSessionList* sessionList = NULL;
-	HttpSession* session = NULL;
+	HttpSessionList* sessionList = nullptr;
+	HttpSession* session = nullptr;
 	bool foundSession = false;
 
 	if(activeSessions.contains(request_info->remote_ip)) {
@@ -289,7 +289,7 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 		for(int i = 0; i < sessionList->size(); ++i) {
 			session = sessionList->get(i);
 
-			if(session == NULL)
+			if(session == nullptr)
 				continue;
 
 			String sessionId = session->getSessionId();
@@ -300,32 +300,32 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 				break;
 			}
 
-			session = NULL;
+			session = nullptr;
 		}
 
-		if(session != NULL && session->hasExpired()) {
+		if(session != nullptr && session->hasExpired()) {
 			sessionList->drop(session->getSessionId());
 			delete session;
-			session = NULL;
+			session = nullptr;
 
 			if(sessionList->isEmpty()) {
 				activeSessions.drop(request_info->remote_ip);
 				delete sessionList;
 			}
-		} else if (session != NULL) {
+		} else if (session != nullptr) {
 			session->update(conn, request_info);
 		}
 
 	}
 
-	if (session == NULL) {
+	if (session == nullptr) {
 
 		session = new HttpSession();
 		session->update(conn, request_info);
 		session->setSessionIp(request_info->remote_ip);
 
 		sessionList = activeSessions.get((uint64) request_info->remote_ip);
-		if (sessionList == NULL) {
+		if (sessionList == nullptr) {
 			sessionList = new HttpSessionList();
 			activeSessions.put(request_info->remote_ip, sessionList);
 		}
@@ -409,13 +409,13 @@ void WebServer::displayLogin(StringBuffer* out) {
 
 bool WebServer::authorize(HttpSession* session) {
 
-	ManagedReference<Account*> account = validateAccountCredentials(NULL,
+	ManagedReference<Account*> account = validateAccountCredentials(nullptr,
 			session->getUserName(), session->getPassword());
 
 	/// Remove Password
 	session->setPassword("");
 
-	if(account == NULL) {
+	if(account == nullptr) {
 		return false;
 	}
 
@@ -446,8 +446,8 @@ ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* cl
 
 	ManagedReference<Account*> account = AccountManager::getAccount(username, true);
 
-	if(account == NULL)
-		return NULL;
+	if(account == nullptr)
+		return nullptr;
 
 	StringBuffer query;
 	query << "SELECT a.password, a.salt FROM accounts a WHERE a.username = '" << username << " 'LIMIT 1;";
@@ -461,7 +461,7 @@ ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* cl
 		dbPassword = result->getString(0);
 		dbSalt = result->getString(1);
 	} else {
-		return NULL;
+		return nullptr;
 	}
 
 	String inputtedPassword = Crypto::SHA256Hash(configManager->getDBSecret() + password + dbSalt);
@@ -471,7 +471,7 @@ ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* cl
 	}
 
 	error("Invalid Password");
-	return NULL;
+	return nullptr;
 }
 
 bool WebServer::isLocalHost(String address) {

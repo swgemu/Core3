@@ -30,7 +30,7 @@ public:
 		uint64 conversationCreatureOid = ghost->getConversatingCreature();
 		ManagedReference<CreatureObject*> object = (server->getZoneServer()->getObject(conversationCreatureOid)).castTo<CreatureObject*>();
 
-		if (object != NULL) {
+		if (object != nullptr) {
 
 			try {
 				Locker clocker(object, creature);

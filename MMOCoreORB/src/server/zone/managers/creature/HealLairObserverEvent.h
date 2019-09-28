@@ -31,13 +31,13 @@ namespace server {
 	   void run() {
 		   ManagedReference<TangibleObject*> strongRef = lair.get();
 
-		   if (strongRef == NULL)
+		   if (strongRef == nullptr)
 			   return;
 
 		   ManagedReference<TangibleObject*> strongAttackerRef = attacker.get();
 		   ManagedReference<LairObserver*> strongObserver = observer.get();
 
-		   if (strongObserver == NULL)
+		   if (strongObserver == nullptr)
 			   return;
 
 		   Locker locker(strongRef);

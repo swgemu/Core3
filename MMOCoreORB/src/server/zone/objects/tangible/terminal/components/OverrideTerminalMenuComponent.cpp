@@ -17,20 +17,20 @@ void OverrideTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return;
 
-	if (player  == NULL || player->isDead() || player->isIncapacitated())
+	if (player  == nullptr || player->isDead() || player->isIncapacitated())
 			return;
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return;
 
 	if (!gcwMan->isBaseVulnerable(building))
@@ -47,17 +47,17 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 	ManagedReference<TangibleObject*> overrideTerminal = cast<TangibleObject*>(sceneObject);
 
-	if (building == NULL)
+	if (building == nullptr)
 		return 1;
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return 1;
 
 	if (!gcwMan->isBaseVulnerable(building))

@@ -21,14 +21,14 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:invalid_target"); // "Your original structure target is no longer valid. Aborting..."
 			return;
 		}
 
 		StructureObject* structure = cast<StructureObject*>(obj.get());
 
-		if (structure == NULL) {
+		if (structure == nullptr) {
 			creature->sendSystemMessage("@player_structure:invalid_target"); // "Your original structure target is no longer valid. Aborting..."
 			return;
 		}
@@ -56,7 +56,7 @@ public:
 		if (structure->isBuildingObject()) {
 			BuildingObject* building = cast<BuildingObject* >(structure);
 
-			if (building != NULL) {
+			if (building != nullptr) {
 				//Remove ***** Condemned Structure ***** sign name.
 				building->updateSignName(true);
 			}

@@ -25,7 +25,7 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(sceneObject->getObjectTemplate());
 
-	if (schematicData == NULL) {
+	if (schematicData == nullptr) {
 		error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
@@ -57,7 +57,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(sceneObject->getObjectTemplate());
 
-		if (schematicData == NULL) {
+		if (schematicData == nullptr) {
 			error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
@@ -73,7 +73,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(schematicData->getTargetDraftSchematic().hashCode());
 
-		if (schematic == NULL) {
+		if (schematic == nullptr) {
 			player->sendSystemMessage("Error learning schematic, try again later");
 			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());
 			return 0;
@@ -82,7 +82,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		if(ghost->addRewardedSchematic(schematic, SchematicList::LOOT, schematicData->getTargetUseCount(), true)) {
 
 			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-			if(tano != NULL)
+			if(tano != nullptr)
 				tano->decreaseUseCount();
 			player->sendSystemMessage("@loot_schematic:schematic_learned"); // You acquire a new crafting schematic!
 		}

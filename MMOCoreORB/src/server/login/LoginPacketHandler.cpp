@@ -25,36 +25,34 @@ LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplem
 void LoginPacketHandler::handleMessage(Message* pack) {
 	Reference<LoginClient*> client = server->getLoginClient(pack->getClient());
 
-	if (client == NULL)
+	if (client == nullptr)
 		return;
 
-	StringBuffer msg;
-	msg << "parsing " << pack->toStringData();
-	//info(msg);
+	debug() << "parsing " << *pack;
 
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
 	switch (opcount) {
-	case 01:
+	case 1:
 		break;
-	case 02:
+	case 2:
 		break;
-	case 03:
+	case 3:
 		switch (opcode) {
 			case 0xE87AD031:
 			handleDeleteCharacterMessage(client, pack);
 			break;
 		}
 		break;
-	case 04:
+	case 4:
 		switch (opcode) {
 		case 0x41131F96: //LoginClientID CLIENT VERSION BUILD DATE AND LOGIN INFO
 			handleLoginClientID(client, pack);
 			break;
 		}
 		break;
-	case 05:
+	case 5:
 		break;
 	default:
 		break;
@@ -99,7 +97,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     	Reference<ResultSet*> moveResults = ServerDatabase::instance()->executeQuery(moveStatement.toString());
 
-    	if(moveResults == NULL || moveResults.get()->getRowsAffected() == 0){
+    	if(moveResults == nullptr || moveResults.get()->getRowsAffected() == 0){
     		dbDelete = 1;
     		StringBuffer errMsg;
     		errMsg << "ERROR: Could not move character to deleted_characters table. " << endl;
@@ -110,7 +108,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     	Reference<ResultSet*> verifyResults  = ServerDatabase::instance()->executeQuery(verifyStatement.toString());
 
-    	if(verifyResults == NULL || verifyResults.get()->getRowsAffected() == 0){
+    	if(verifyResults == nullptr || verifyResults.get()->getRowsAffected() == 0){
     		dbDelete = 1;
     		StringBuffer errMsg;
         	errMsg << "ERROR: Could not verify character was moved to deleted_characters " << endl;
@@ -130,7 +128,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
     	try {
     		Reference<ResultSet*> deleteResults = ServerDatabase::instance()->executeQuery(deleteStatement);
 
-    		if(deleteResults == NULL || deleteResults.get()->getRowsAffected() == 0){
+    		if(deleteResults == nullptr || deleteResults.get()->getRowsAffected() == 0){
     			StringBuffer errMsg;
     			errMsg << "ERROR: Unable to delete character from character table. " << endl;
     			errMsg << "QUERY: " << deleteStatement.toString();

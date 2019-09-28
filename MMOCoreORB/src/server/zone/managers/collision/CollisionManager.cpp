@@ -31,7 +31,7 @@ float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 
 bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
-	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+	const PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 
 	if (portalLayout == nullptr)
 		return true;
@@ -73,7 +73,7 @@ const AppearanceTemplate* CollisionManager::getCollisionAppearance(SceneObject* 
 	if (!(templateObject->getCollisionActionBlockFlags() & collisionBlockFlags))
 		return nullptr;
 
-	PortalLayout* portalLayout = templateObject->getPortalLayout();
+	const PortalLayout* portalLayout = templateObject->getPortalLayout();
 
 	return (portalLayout != nullptr) ? portalLayout->getAppearanceTemplate(0) : templateObject->getAppearanceTemplate();
 }
@@ -99,7 +99,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 
 			Sphere sphere(convertToModelSpace(sphereOrigin, scno), radius);
 
-			PortalLayout* portalLayout = templateObject->getPortalLayout();
+			const PortalLayout* portalLayout = templateObject->getPortalLayout();
 			if (portalLayout != nullptr) {
 				if(portalLayout->getAppearanceTemplate(0)->testCollide(sphere))
 					return true;
@@ -127,7 +127,7 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 		return true;
 
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
-	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+	const PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 
 	if (portalLayout == nullptr)
 		return true;
@@ -220,17 +220,17 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 	if (templateObject == nullptr)
 		return nullptr;
 
-	PortalLayout* portalLayout = templateObject->getPortalLayout();
+	const PortalLayout* portalLayout = templateObject->getPortalLayout();
 
 	if (portalLayout == nullptr)
 		return nullptr;
 
-	FloorMesh* mesh = portalLayout->getFloorMesh(cellObject->getCellNumber());
+	const FloorMesh* mesh = portalLayout->getFloorMesh(cellObject->getCellNumber());
 
 	if (mesh == nullptr)
 		return nullptr;
 
-	AABBTree* tree = mesh->getAABBTree();
+	const AABBTree* tree = mesh->getAABBTree();
 
 	if (tree == nullptr)
 		return nullptr;
@@ -550,12 +550,11 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	return true;
 }
 
-
-TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* floor) {
+const TriangleNode* CollisionManager::getTriangle(const Vector3& point, const FloorMesh* floor) {
 	/*PathGraph* graph = node->getPathGraph();
 	FloorMesh* floor = graph->getFloorMesh();*/
 
-	AABBTree* aabbTree = floor->getAABBTree();
+	const AABBTree* aabbTree = floor->getAABBTree();
 
 	//Vector3 nodePosition = node->getPosition();
 
@@ -726,14 +725,14 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	return false;
 }
 
-PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMesh* floor, const Vector3& finalTarget) {
+const PathNode* CollisionManager::findNearestPathNode(const TriangleNode* triangle, const FloorMesh* floor, const Vector3& finalTarget) {
 	// this is overkill TODO: find something faster
-	PathGraph* graph = floor->getPathGraph();
+	const PathGraph* graph = floor->getPathGraph();
 
 	if (graph == nullptr)
 		return nullptr;
 
-	Vector<PathNode*>* pathNodes = graph->getPathNodes();
+	const Vector<PathNode*>* pathNodes = graph->getPathNodes();
 
 	PathNode* returnNode = nullptr;
 	float distance = 16000;
@@ -743,9 +742,9 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 	for (int i = 0; i < pathNodes->size(); ++i) {
 		PathNode* node = pathNodes->get(i);
 
-		TriangleNode* triangleOfPathNode = getTriangle(node->getPosition(), floor);
+		const TriangleNode* triangleOfPathNode = getTriangle(node->getPosition(), floor);
 
-		Vector<Triangle*>* path = TriangulationAStarAlgorithm::search(trianglePos, triangleOfPathNode->getBarycenter(), triangle, triangleOfPathNode);
+		Vector<const Triangle*>* path = TriangulationAStarAlgorithm::search(trianglePos, triangleOfPathNode->getBarycenter(), triangle, triangleOfPathNode);
 
 		if (path == nullptr)
 			continue;
@@ -773,7 +772,7 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 	CellObject* cell = cast<CellObject*>( parent.get());
 
 	SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
-	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+	const PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 	const AppearanceTemplate* appearanceMesh = nullptr;
 
 	if (portalLayout == nullptr)

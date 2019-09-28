@@ -25,7 +25,7 @@ public:
 
 		SuiColorBox* cBox = cast<SuiColorBox*>( sui);
 
-		if (cBox == NULL)
+		if (cBox == nullptr)
 			return;
 
 		if(!creature->isPlayerCreature())
@@ -39,7 +39,7 @@ public:
 
 			ManagedReference<TangibleObject*> target = cBox->getUsingObject().get().castTo<TangibleObject*>();
 
-			if (target == NULL)
+			if (target == nullptr)
 				return;
 
 			Locker clocker(target, creature);
@@ -48,7 +48,7 @@ public:
 
 			clocker.release();
 
-			if (customizationKit != NULL) {
+			if (customizationKit != nullptr) {
 				Locker clocker2(customizationKit, creature);
 				customizationKit->decreaseUseCount();
 			}

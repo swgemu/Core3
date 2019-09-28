@@ -40,7 +40,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL)
+		if (object == nullptr)
 			return GENERALERROR;
 
 

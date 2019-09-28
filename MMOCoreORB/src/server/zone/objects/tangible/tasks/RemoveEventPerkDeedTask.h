@@ -23,7 +23,7 @@ public:
 	void run() {
 		auto deed = this->deed.get();
 
-		if (deed == NULL) {
+		if (deed == nullptr) {
 			return;
 		}
 
@@ -34,13 +34,13 @@ public:
 		ManagedReference<TangibleObject*> genOb = deed->getGeneratedObject().get();
 		ManagedReference<CreatureObject*> player = deed->getOwner().get();
 
-		if (genOb != NULL) {
+		if (genOb != nullptr) {
 			Locker clocker(genOb, deed);
 
 			genOb->destroyChildObjects();
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
-		} else if (player != NULL) {
+		} else if (player != nullptr) {
 			player->sendSystemMessage("@event_perk:deed_expired"); // Your unused Rental Deed expired and has been removed from your inventory.
 		}
 

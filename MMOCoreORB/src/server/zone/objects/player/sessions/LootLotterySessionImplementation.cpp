@@ -24,7 +24,7 @@ int LootLotterySessionImplementation::initializeSession() {
 
 	//Make sure corpse doesn't despawn during lottery.
 	Reference<DespawnCreatureTask*> despawnTask = corpse->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
-	if (despawnTask != NULL) {
+	if (despawnTask != nullptr) {
 		AtomicTime despawnTime;
 		Core::getTaskManager()->getNextExecutionTime(despawnTask, despawnTime);
 		if (despawnTime.miliDifference() > -120000) { //Less than 2 minutes to despawn.
@@ -49,28 +49,28 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 
 	//Cancel the timeout task if it's running.
 	Reference<LootLotteryTimeoutTask*> task = corpse->getPendingTask("lottery").castTo<LootLotteryTimeoutTask*>();
-	if (task != NULL) {
+	if (task != nullptr) {
 		if (task->isScheduled())
 		task->cancel();
 	}
 
 	//Get the corpse's inventory and container permissions.
 	SceneObject* lootContainer = corpse.get()->getSlottedObject("inventory");
-	if (lootContainer == NULL)
+	if (lootContainer == nullptr)
 		return;
 
 	ContainerPermissions* contPerms = lootContainer->getContainerPermissionsForUpdate();
 
 	//Check if the group that owns the corpse is still active or not.
 	ManagedReference<GroupObject*> group = corpse->getZoneServer()->getObject(groupID).castTo<GroupObject*>();
-	bool stillGrouped = (group != NULL) && (group->getGroupSize() > 1); //GroupObject can still exist when disbanded, so check group size too.
+	bool stillGrouped = (group != nullptr) && (group->getGroupSize() > 1); //GroupObject can still exist when disbanded, so check group size too.
 
 	//Loop through each loot item, pick a winner and attempt to transfer it to them.
 	int totalItems = lootContainer->getContainerObjectsSize();
 	for (int i = totalItems - 1; i >= 0; --i) {
 		//Get the loot item.
 		SceneObject* object = lootContainer->getContainerObject(i);
-			if (object == NULL)
+			if (object == nullptr)
 				continue;
 		uint64 objectID = object->getObjectID();
 
@@ -80,7 +80,7 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 			LootLotteryBallot* ballot = playerSelections.get(j);
 			if (ballot->hasSelection(objectID)) {
 				CreatureObject* player = ballot->getPlayer();
-				if (player == NULL)
+				if (player == nullptr)
 					continue;
 				candidates.add(ballot->getPlayer());
 			}
@@ -94,7 +94,7 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 				group->sendSystemMessage(noTakers);
 			}
 			ContainerPermissions* itemPerms = object->getContainerPermissionsForUpdate();
-			if (itemPerms == NULL)
+			if (itemPerms == nullptr)
 				continue;
 
 			itemPerms->clearDenyPermission("player", ContainerPermissions::MOVECONTAINER);
@@ -103,7 +103,7 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 
 		//Pick a winner for the item.
 		ManagedReference<CreatureObject*> winner = candidates.get(System::random(candidates.size() - 1));
-		if (winner == NULL)
+		if (winner == nullptr)
 			continue;
 		uint64 winnerID = winner->getObjectID();
 
@@ -124,7 +124,7 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 	if (stillGrouped) {
 		ManagedReference<CreatureObject*> leader = group->getLeader();
 
-		if (leader != NULL) {
+		if (leader != nullptr) {
 			Locker lclocker(leader, corpse);
 			leader->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(leader, corpse);
 			return;

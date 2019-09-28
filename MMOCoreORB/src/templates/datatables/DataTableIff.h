@@ -31,7 +31,7 @@ public:
 	 * @param columnValue What value should be compared.
 	 * @return Returns a collection of DataTableRow objects.
 	 */
-	Vector<DataTableRow*> getRowsByColumn(int columnIdx, const String& columnValue);
+	Vector<const DataTableRow*> getRowsByColumn(int columnIdx, const String& columnValue) const;
 
 	/**
 	 * Returns the column header name based on the column index.
@@ -47,7 +47,7 @@ public:
 	 * @param name The name of the column header to retrieve the index of.
 	 * @return The index of the column, or -1 if it wasn't found.
 	 */
-	int getColumnIndexByName(const String& name) {
+	int getColumnIndexByName(const String& name) const {
 		for (int i = 0; i < columns.size(); ++i) {
 			if (columns.get(i) == name)
 				return i;
@@ -56,15 +56,19 @@ public:
 		return -1;
 	}
 
+	inline const DataTableRow* getRow(int idx) const {
+		return rows.get(idx);
+	}
+
 	inline DataTableRow* getRow(int idx) {
 		return rows.get(idx);
 	}
 
-	inline int getTotalRows() {
+	inline int getTotalRows() const {
 		return rows.size();
 	}
 
-	inline int getTotalColumns() {
+	inline int getTotalColumns() const {
 		return columns.size();
 	}
 };

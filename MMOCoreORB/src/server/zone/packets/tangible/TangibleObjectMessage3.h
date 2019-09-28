@@ -16,7 +16,7 @@
 class TangibleObjectMessage3 : public BaseLineMessage {
 public:
 	TangibleObjectMessage3(TangibleObject* tano, uint32 objType = 0x54414E4F, uint16 opcnt = 0x0B)
-			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
+			: BaseLineMessage(tano, objType, 3, opcnt) {
 		insertFloat(tano->getComplexity());
 
 		const StringId* stringId = tano->getObjectName();
@@ -26,7 +26,7 @@ public:
 		if (tano->isPlayerCreature()) {
 			auto ghost = (static_cast<CreatureObject*>(tano))->getPlayerObject();
 
-			if (ghost != NULL && ghost->hasGodMode()) {
+			if (ghost != nullptr && ghost->hasGodMode()) {
 				UnicodeString name = tano->getCustomObjectName();
 				UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
 				insertUnicode(name + " \\#ffff00[" + tag + "]\\#.");

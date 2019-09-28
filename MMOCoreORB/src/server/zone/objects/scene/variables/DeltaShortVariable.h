@@ -13,7 +13,7 @@
 template<int BaselineName, uint8 Type, int DeltaID>
 class DeltaShortVariable : public DeltaBasicVariable<uint64> {
 public:
-	void update(int newValue, bool broadcastStandalone = false, server::zone::objects::scene::SceneObject* obj = NULL) {
+	void update(int newValue, bool broadcastStandalone = false, server::zone::objects::scene::SceneObject* obj = nullptr) {
 		set(newValue);
 
 		if (broadcastStandalone) {

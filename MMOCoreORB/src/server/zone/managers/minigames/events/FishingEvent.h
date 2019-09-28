@@ -29,7 +29,7 @@ public:
 		// FIXME
 		ManagedReference<CreatureObject*> strong = player.get();
 
-		if (strong == NULL)
+		if (strong == nullptr)
 			return;
 
 		try {
@@ -43,7 +43,7 @@ public:
 			if (fishingState != FishingManagerImplementation::NOTFISHING) {
 				manager->fishingStep(strong);
 
-			} /*else if (marker != NULL) {
+			} /*else if (marker != nullptr) {
 					// new event
 				manager->createFishingEvent(player, nextAction, zoneServer, marker, fish, boxID, fishingState, mood);
 
@@ -57,12 +57,12 @@ public:
 
 
 		} catch (...) {
-			//player = NULL;
+			//player = nullptr;
 
 			throw;
 		}
 
-		//player = NULL;
+		//player = nullptr;
 	}
 };
 

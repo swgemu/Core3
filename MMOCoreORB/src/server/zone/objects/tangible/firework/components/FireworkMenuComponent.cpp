@@ -30,14 +30,14 @@ int FireworkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!player->isPlayerCreature())
 		return 0;
 
-	if (player->getZone() == NULL)
+	if (player->getZone() == nullptr)
 		return 0;
 
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
 
 	if (selectedID == 20) {
-		if (player->getParent() != NULL)
+		if (player->getParent() != nullptr)
 			return 0;
 
 		FireworkObject* firework = cast<FireworkObject*>(sceneObject);

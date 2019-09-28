@@ -30,12 +30,12 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CreatureObject*> targetPlayer = NULL;
+		ManagedReference<CreatureObject*> targetPlayer = nullptr;
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		if (targetObject != NULL) {
+		if (targetObject != nullptr) {
 			if (targetObject->isPlayerCreature() || targetObject->isPet())
 				targetPlayer = cast<CreatureObject*>(targetObject.get());
 			else {
@@ -65,7 +65,7 @@ public:
 
 			//If first argument is player name, break loop and kill player
 			ManagedReference<CreatureObject*>findPlayer = playerManager->getPlayer(arg);
-			if (findPlayer != NULL) {
+			if (findPlayer != nullptr) {
 				targetPlayer = findPlayer;
 				break;
 			}
@@ -157,7 +157,7 @@ public:
 			SortedVector<QuadTreeEntry*> closeObjects;
 			Zone* zone = creature->getZone();
 
-			if (creature->getCloseObjects() == NULL) {
+			if (creature->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 				creature->info("Null closeobjects vector in KillPlayerCommand::doQueueCommand", true);
 #endif
@@ -224,7 +224,7 @@ public:
 						} else if (targetPlayer->isPet()) {
 							AiAgent* pet = cast<AiAgent*>(targetPlayer.get());
 
-							if (pet != NULL) {
+							if (pet != nullptr) {
 								Locker locker(pet, creature);
 
 								PetManager* petManager = server->getZoneServer()->getPetManager();
@@ -243,7 +243,7 @@ public:
 
 		//Deal damage to single target
 		else if (damage) {
-			if (targetPlayer != NULL) {
+			if (targetPlayer != nullptr) {
 				if (targetPlayer->isPlayerCreature() || targetPlayer->isPet()) {
 					Locker locker(targetPlayer, creature);
 
@@ -279,7 +279,7 @@ public:
 
 		//Kill single target
 		else {
-			if (targetPlayer != NULL) {
+			if (targetPlayer != nullptr) {
 				if (targetPlayer->isPlayerCreature()) {
 					Locker locker(targetPlayer, creature);
 
@@ -288,7 +288,7 @@ public:
 				} else if (targetPlayer->isPet()) {
 					AiAgent* pet = cast<AiAgent*>(targetPlayer.get());
 
-					if (pet != NULL) {
+					if (pet != nullptr) {
 						Locker locker(pet, creature);
 
 						PetManager* petManager = server->getZoneServer()->getPetManager();

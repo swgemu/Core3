@@ -61,7 +61,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 bool PingServer::handleError(ServiceClient* client, Exception& e) {
 	PingClient* lclient = cast<PingClient*>(client);
 
-	if (lclient != NULL) {
+	if (lclient != nullptr) {
 		lclient->setError();
 
 		lclient->disconnect();

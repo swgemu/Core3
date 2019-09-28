@@ -12,12 +12,12 @@ void HeroRingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 
 	TangibleObject* ring = cast<TangibleObject*>(sceneObject);
 
-	if (ring == NULL)
+	if (ring == nullptr)
 		return;
 
 	HeroRingDataComponent* data = cast<HeroRingDataComponent*>(ring->getDataObjectComponent()->get());
 
-	if (data == NULL || !data->isHeroRingData())
+	if (data == nullptr || !data->isHeroRingData())
 		return;
 
 	if (data->getCharges() > 0)
@@ -34,12 +34,12 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 
 		WearableObject* wearable = cast<WearableObject*>(sceneObject);
 
-		if (wearable == NULL)
+		if (wearable == nullptr)
 			return 0;
 
 		HeroRingDataComponent* data = cast<HeroRingDataComponent*>(wearable->getDataObjectComponent()->get());
 
-		if (data == NULL || !data->isHeroRingData())
+		if (data == nullptr || !data->isHeroRingData())
 			return 0;
 
 		int charges = data->getCharges();
@@ -75,9 +75,9 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 
 		String hardpoint = "";
 
-		if (player->getSlottedObject("ring_r") != NULL && player->getSlottedObject("ring_r")->getObjectID() == sceneObject->getObjectID())
+		if (player->getSlottedObject("ring_r") != nullptr && player->getSlottedObject("ring_r")->getObjectID() == sceneObject->getObjectID())
 			hardpoint = "hold_r";
-		else if (player->getSlottedObject("ring_l") != NULL && player->getSlottedObject("ring_l")->getObjectID() == sceneObject->getObjectID())
+		else if (player->getSlottedObject("ring_l") != nullptr && player->getSlottedObject("ring_l")->getObjectID() == sceneObject->getObjectID())
 			hardpoint = "hold_l";
 
 		PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(player, "clienteffect/item_ring_hero_mark.cef", hardpoint);

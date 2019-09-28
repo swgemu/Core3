@@ -15,7 +15,7 @@ class ShuttleMap : public VectorMap<uint64, Reference<ShuttleDepartureTask*> > {
 public:
 	ShuttleMap() : VectorMap<uint64, Reference<ShuttleDepartureTask*> >() {
 		setNoDuplicateInsertPlan();
-		setNullValue(NULL);
+		setNullValue(nullptr);
 	}
 };
 

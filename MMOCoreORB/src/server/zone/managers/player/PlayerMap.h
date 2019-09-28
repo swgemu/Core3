@@ -36,7 +36,7 @@ public:
 	}
 
 	CreatureObject* get(const String& name, bool doLock = true) {
-		CreatureObject* player = NULL;
+		CreatureObject* player = nullptr;
 
 		lock(doLock);
 
@@ -59,7 +59,7 @@ public:
 	}
 
 	CreatureObject* remove(const String& name, bool doLock = true) {
-		CreatureObject* player = NULL;
+		CreatureObject* player = nullptr;
 
 		lock(doLock);
 
@@ -82,7 +82,7 @@ public:
 	}
 
 	CreatureObject* getNextValue(bool doLock = true) {
-		CreatureObject* player = NULL;
+		CreatureObject* player = nullptr;
 
 		lock(doLock);
 

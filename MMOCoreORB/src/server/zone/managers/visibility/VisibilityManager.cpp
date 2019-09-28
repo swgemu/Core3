@@ -19,13 +19,13 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 	float visibilityIncrease = 0;
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return visibilityIncrease;
 
 
 	SortedVector<QuadTreeEntry*> closeObjects;
 	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
-	if (closeObjectsVector == NULL) {
+	if (closeObjectsVector == nullptr) {
 		zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
 	} else {
 		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
@@ -34,7 +34,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			continue;
 
 		if (obj->getObjectID() == creature->getObjectID())
@@ -42,7 +42,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 		CreatureObject* c = obj->asCreatureObject();
 
-		if (c == NULL || (!c->isNonPlayerCreatureObject() && !c->isPlayerCreature()))
+		if (c == nullptr || (!c->isNonPlayerCreatureObject() && !c->isPlayerCreature()))
 			continue;
 
 		if (c->isDead() || c->isIncapacitated() || (c->isPlayerCreature() && c->getPlayerObject()->hasGodMode()))
@@ -74,7 +74,7 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL) {
+	if (ghost != nullptr) {
 		Locker locker(ghost);
 		if (ghost->getVisibility() > 0)
 		{
@@ -103,7 +103,7 @@ void VisibilityManager::addToVisibilityList(CreatureObject* creature) {
 	//info("Logging in " + creature->getFirstName(), true);
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL) {
+	if (ghost != nullptr) {
 		decreaseVisibility(creature);
 
 		Locker locker(&visibilityListLock);
@@ -135,7 +135,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature, int visibil
 	//info("Increasing visibility for " + creature->getFirstName(), true);
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL  && !ghost->hasGodMode()) {
+	if (ghost != nullptr  && !ghost->hasGodMode()) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
 
@@ -154,7 +154,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature, int visibil
 void VisibilityManager::clearVisibility(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL  && !ghost->hasGodMode()) {
+	if (ghost != nullptr  && !ghost->hasGodMode()) {
 		//info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
 
 		Locker locker(ghost);

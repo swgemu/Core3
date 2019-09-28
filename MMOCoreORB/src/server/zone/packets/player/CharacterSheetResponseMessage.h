@@ -23,7 +23,7 @@ public:
 		uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 		ManagedReference<SceneObject*> cloningFacility = player->getZoneServer()->getObject(preDesignatedFacilityOid);
 
-		if (cloningFacility != NULL && cloningFacility->getZone() != NULL) {
+		if (cloningFacility != nullptr && cloningFacility->getZone() != nullptr) {
 			insertFloat(cloningFacility->getPositionX());
 			insertFloat(cloningFacility->getPositionZ());
 			insertFloat(cloningFacility->getPositionY());
@@ -44,7 +44,7 @@ public:
 
 		ManagedReference<SceneObject*> declaredResidence = player->getZoneServer()->getObject(declaredOidResidence);
 
-		if (declaredResidence != NULL && declaredResidence->getZone() != NULL) {
+		if (declaredResidence != nullptr && declaredResidence->getZone() != nullptr) {
 			insertFloat(declaredResidence->getPositionX()); //Home Location X
 			insertFloat(declaredResidence->getPositionZ()); //Home Location Z
 			insertFloat(declaredResidence->getPositionY()); //Home Location Y

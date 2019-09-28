@@ -94,7 +94,7 @@ void ReactionManagerImplementation::loadLuaConfig() {
 	info("Loaded " + String::valueOf(emoteReactionFines.size()) + " emote reaction records.", true);
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state, bool force) {
@@ -205,12 +205,12 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 }
 
 void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiAgent* emoteTarget, int emoteid) {
-	if (emoteUser == NULL || emoteTarget == NULL)
+	if (emoteUser == nullptr || emoteTarget == nullptr)
 		return;
 
 	Zone* zone = emoteUser->getZone();
 
-	if (zone == NULL || zone->getZoneName() == "tutorial")
+	if (zone == nullptr || zone->getZoneName() == "tutorial")
 		return;
 
 	if (emoteTarget->isIncapacitated() || emoteTarget->isDead() || emoteTarget->isInCombat())
@@ -223,7 +223,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	ChatManager* chatManager = zoneServer->getChatManager();
 	PlayerObject* playerObject = emoteUser->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerObject == nullptr)
 		return;
 
 	if (emoteTarget->getDistanceTo(emoteUser) > 16.f)
@@ -257,7 +257,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	EmoteReactionFine* reactionFine = getEmoteReactionFine(emoteUser, emoteTarget, reactionLevel);
 
 	// No reaction if there is no fine data
-	if (reactionFine == NULL)
+	if (reactionFine == nullptr)
 		return;
 
 	int randomQuip = reactionFine->getRandomQuip();
@@ -299,8 +299,8 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 }
 
 EmoteReactionFine* ReactionManagerImplementation::getEmoteReactionFine(CreatureObject* emoteUser, AiAgent* emoteTarget, int level) {
-	if (emoteUser == NULL)
-		return NULL;
+	if (emoteUser == nullptr)
+		return nullptr;
 
 	int rankCompare = 0;
 
@@ -311,14 +311,14 @@ EmoteReactionFine* ReactionManagerImplementation::getEmoteReactionFine(CreatureO
 		if (targetReactionRank == 0) {
 			Reference<ReactionRankData*> rankData = getReactionRankData(emoteTarget->getCreatureTemplate()->getTemplateName());
 
-			if (rankData == NULL)
-				return NULL;
+			if (rankData == nullptr)
+				return nullptr;
 
 			targetReactionRank = rankData->getRandomRank();
 
 			// No reaction if the target has no reaction rank
 			if (targetReactionRank == 0)
-				return NULL;
+				return nullptr;
 
 			// Set rank to creature object so that it isnt randomized on every emote
 			emoteTarget->setReactionRank(targetReactionRank);
@@ -350,7 +350,7 @@ EmoteReactionFine* ReactionManagerImplementation::getEmoteReactionFine(CreatureO
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 ReactionRankData* ReactionManagerImplementation::getReactionRankData(const String& name) {
@@ -361,7 +361,7 @@ ReactionRankData* ReactionManagerImplementation::getReactionRankData(const Strin
 			return data;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 String ReactionManagerImplementation::getReactionQuip(int num) {
@@ -381,7 +381,7 @@ void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent*
 
 	WeaponObject* weapon = attacker->getWeapon();
 
-	if (weapon != NULL && weapon->isRangedWeapon())
+	if (weapon != nullptr && weapon->isRangedWeapon())
 		knockdownAnim = "ranged_melee_light";
 	else
 		knockdownAnim = "attack_high_center_light_0";
@@ -396,17 +396,17 @@ void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent*
 }
 
 void ReactionManagerImplementation::doReactionFineMailCheck(CreatureObject* player) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerObject == nullptr)
 		return;
 
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	if (chatManager == NULL)
+	if (chatManager == nullptr)
 		return;
 
 	if (playerObject->getReactionFines() == 0)

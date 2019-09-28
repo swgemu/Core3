@@ -38,12 +38,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
 
-		if (terminal == NULL) {
+		if (terminal == nullptr) {
 			player->sendSystemMessage("@skill_teacher:skill_terminal_disabled");
 			return;
 		}

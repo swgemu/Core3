@@ -21,14 +21,14 @@ namespace server {
 		}
 
 		bool add(ZoneClientSession* client) {
-			if (HashTable<uint64, Reference<ZoneClientSession*> >::put(client->getSession()->getNetworkID(), client) == NULL) {
+			if (HashTable<uint64, Reference<ZoneClientSession*> >::put(client->getSession()->getNetworkID(), client) == nullptr) {
 				return true;
 			} else
 				return false;
 		}
 
 		bool remove(ZoneClientSession* client) {
-			if (HashTable<uint64, Reference<ZoneClientSession*> >::remove(client->getSession()->getNetworkID()) != NULL) {
+			if (HashTable<uint64, Reference<ZoneClientSession*> >::remove(client->getSession()->getNetworkID()) != nullptr) {
 				return true;
 			} else
 				return false;
@@ -84,7 +84,7 @@ namespace server {
 
 			ManagedReference<ZoneClientSession*> client = getClientSession(session);
 
-			if (client != NULL)
+			if (client != nullptr)
 				server->handleMessage(client, message);
 		}
 

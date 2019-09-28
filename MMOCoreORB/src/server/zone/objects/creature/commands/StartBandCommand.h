@@ -27,21 +27,21 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == NULL) {
+		if (group == nullptr) {
 			creature->sendSystemMessage("You must be the leader of a band to use that command.");
 			return GENERALERROR;
 		}
 
 		Reference<CreatureObject*> leader = group->getLeader();
 
-		if (leader == NULL || creature != leader) {
+		if (leader == nullptr || creature != leader) {
 			creature->sendSystemMessage("You must be the band leader to start the band playing.");
 			return GENERALERROR;
 		}
 
 		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session != NULL) {
+		if (session != nullptr) {
 			if (session->isDancing()) {
 				session->stopDancing();
 			}
@@ -105,14 +105,14 @@ public:
 			for (int i = 0; i < group->getGroupSize(); ++i) {
 				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == NULL)
+				if (groupMember == nullptr)
 					continue;
 
 				Locker clocker(groupMember, group);
 
 				ManagedReference<EntertainingSession*> groupMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-				if (groupMemberSession != NULL)
+				if (groupMemberSession != nullptr)
 					continue;
 
 				if (!canPlayInstrument(groupMember, groupMember->getTargetID())) {
@@ -130,13 +130,13 @@ public:
 				Reference<Instrument*> instrument = groupMember->getSlottedObject("hold_r").castTo<Instrument*> ();
 				bool targetedInstrument = false;
 
-				if (instrument == NULL) {
+				if (instrument == nullptr) {
 					ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(groupMember->getTargetID());
 					instrument = cast<Instrument*> (nala.get());
 					targetedInstrument = true;
 				}
 
-				if (instrument == NULL)
+				if (instrument == nullptr)
 					continue;
 
 				Locker lockerInstr(instrument);
@@ -148,7 +148,7 @@ public:
 					instrument->setBeingUsed(true);
 				}
 
-				if (targetedInstrument && (instrument->getParent() != NULL  || instrument->getSpawnerPlayer() != NULL)) {
+				if (targetedInstrument && (instrument->getParent() != nullptr  || instrument->getSpawnerPlayer() != nullptr)) {
 					instrument->setDirection(*groupMember->getDirection());
 					instrument->teleport(groupMember->getPositionX(), groupMember->getPositionZ(), groupMember->getPositionY(), groupMember->getParentID());
 				}
@@ -201,15 +201,15 @@ public:
 
 		Reference<Instrument*> instrument = creature->getSlottedObject("hold_r").castTo<Instrument*> ();
 
-		if (instrument == NULL) {
+		if (instrument == nullptr) {
 			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
 
-			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
+			if (nala != nullptr && dynamic_cast<Instrument*> (nala.get())) {
 				instrument = cast<Instrument*> (nala.get());
 				ManagedReference<SceneObject*> creatureParent = creature->getParent().get();
 
 				if (!checkDistance(creature, nala, 3) || nala->getZone()
-						== NULL || (creatureParent == NULL && NULL
+						== nullptr || (creatureParent == nullptr && nullptr
 						!= nala->getParent().get())) {
 					creature->sendSystemMessage("@elevator_text:too_far"); // You are too far away to use that.
 
@@ -217,7 +217,7 @@ public:
 				}
 
 				ManagedReference<CreatureObject*> spawnerPlayer = instrument->getSpawnerPlayer().get();
-				if (spawnerPlayer != NULL && spawnerPlayer != creature) {
+				if (spawnerPlayer != nullptr && spawnerPlayer != creature) {
 					creature->sendSystemMessage("You must be the owner of the instrument");
 
 					return false;

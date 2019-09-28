@@ -21,7 +21,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isMessageBox() || cancelPressed || player == NULL)
+		if (!suiBox->isMessageBox() || cancelPressed || player == nullptr)
 			return;
 
 		ZoneServer* zoneServer = player->getZoneServer();
@@ -33,7 +33,7 @@ public:
 
 		ManagedReference<SceneObject*> term = suiBox->getUsingObject().get();
 
-		if (term == NULL) {
+		if (term == nullptr) {
 			StringIdChatParameter params;
 			params.setStringId("@ui:action_target_not_found_prose");
 			params.setTT("@terminal_name:terminal_insurance");
@@ -74,7 +74,7 @@ public:
 				break;
 			}
 
-			if (obj != NULL && obj->isTangibleObject()) {
+			if (obj != nullptr && obj->isTangibleObject()) {
 				j++;
 				TangibleObject* item = cast<TangibleObject*>( obj);
 

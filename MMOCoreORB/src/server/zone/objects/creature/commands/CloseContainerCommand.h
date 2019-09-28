@@ -31,7 +31,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> container = NULL;
+		ManagedReference<SceneObject*> container = nullptr;
 
 		StringTokenizer args(arguments.toString());
 
@@ -43,7 +43,7 @@ public:
 		} else {
 			container = server->getZoneServer()->getObject(target);
 		}
-		if (container == NULL)
+		if (container == nullptr)
 			return GENERALERROR;
 
 		Locker clocker(container, creature);

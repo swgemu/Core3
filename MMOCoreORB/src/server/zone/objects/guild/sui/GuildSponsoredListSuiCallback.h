@@ -34,12 +34,12 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		if (guildManager == NULL)
+		if (guildManager == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isTerminal())
+		if (obj == nullptr || !obj->isTerminal())
 			return;
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
@@ -51,7 +51,7 @@ public:
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
-		if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
+		if (guild == nullptr || !guild->hasAcceptPermission(player->getObjectID())) {
 			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 			return;
 		}

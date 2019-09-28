@@ -36,7 +36,7 @@ public:
 			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
 			ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
 
-			if (session == NULL) {
+			if (session == nullptr) {
 				session = new FindSession(player);
 			}
 

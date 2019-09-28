@@ -42,7 +42,7 @@ void DroidPlaybackModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -66,7 +66,7 @@ String DroidPlaybackModuleDataComponent::getCurrentTrack() {
 
 void DroidPlaybackModuleDataComponent::doFlourish(int number) {
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		info("Droid is null");
 		return;
 	}
@@ -83,11 +83,11 @@ void DroidPlaybackModuleDataComponent::doFlourish(int number) {
 	}
 
 	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
-	Performance* performance = NULL;
-	if (performanceManager != NULL)
+	Performance* performance = nullptr;
+	if (performanceManager != nullptr)
 		performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
 
-	if (performance == NULL) {
+	if (performance == nullptr) {
 		return;
 	}
 
@@ -127,7 +127,7 @@ void DroidPlaybackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 }
 
 void DroidPlaybackModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	// Novice Musician required to utilize this module
@@ -142,7 +142,7 @@ int DroidPlaybackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		deactivate();
 	} else if (selectedID == PLAYBACK_ACCESS_MENU) {
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if (droid == NULL) {
+		if (droid == nullptr) {
 			info("Droid is null");
 			return 0;
 		}
@@ -211,7 +211,7 @@ void DroidPlaybackModuleDataComponent::playSong(CreatureObject* player, int inde
 	if (index >= 0 && index <= tracks.size()) {
 		Reference<Task*> task = new DroidPlaybackTask(this);
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if (droid == NULL) {
+		if (droid == nullptr) {
 			info("Droid is null");
 			return;
 		}
@@ -247,12 +247,12 @@ void DroidPlaybackModuleDataComponent::sessionTimeout(CreatureObject* player, in
 
 void DroidPlaybackModuleDataComponent::stopTimer() {
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid != NULL) {
+	if (droid != nullptr) {
 		Locker dlock(droid);
 
 		Task* ptask = droid->getPendingTask("droid_recording");
 
-		if (ptask != NULL) {
+		if (ptask != nullptr) {
 			Core::getTaskManager()->cancelTask(ptask);
 			droid->removePendingTask("droid_recording");
 		}
@@ -279,7 +279,7 @@ void DroidPlaybackModuleDataComponent::startRecordingSession(CreatureObject* ent
 		return;
 	}
 
-	if (observer == NULL) {
+	if (observer == nullptr) {
 		observer = new DroidPlaybackObserver(this);
 		observer->deploy();
 	}
@@ -288,7 +288,7 @@ void DroidPlaybackModuleDataComponent::startRecordingSession(CreatureObject* ent
 	recordingTrack = index;
 	ManagedReference<DroidObject*> droid = getDroidObject();
 
-	if (droid != NULL) {
+	if (droid != nullptr) {
 		Locker dlock(droid);
 
 		stopTimer();
@@ -329,7 +329,7 @@ void DroidPlaybackModuleDataComponent::setTrack( CreatureObject* player, String 
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
 
-		if (droid != NULL) {
+		if (droid != nullptr) {
 			Locker dlock(droid);
 
 			Reference<Task*> task = new RecordTrackTimeoutEvent(this, player, STATE_RECORDING_TRACK);
@@ -354,7 +354,7 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 	active = false;
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		info("Droid is null");
 		return;
 	}
@@ -368,18 +368,18 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 
 	// Cancel playback task if it hasnt launched yet
 	Task* task = droid->getPendingTask( "droid_playback" );
-	if (task != NULL) {
+	if (task != nullptr) {
 		Core::getTaskManager()->cancelTask(task);
 		droid->removePendingTask("droid_playback");
 	}
 
 	ManagedReference<PlayerManager*> playerManager = droid->getZoneServer()->getPlayerManager();
 
-	if (playerManager != NULL) {
+	if (playerManager != nullptr) {
 		for (int i = 0; i < listeners.size(); i++) {
 			ManagedReference<CreatureObject*> object = droid->getZoneServer()->getObject(listeners.get(i)).castTo<CreatureObject*>();
 
-			if (object != NULL) {
+			if (object != nullptr) {
 				Locker clock(object, droid);
 
 				if (object->getListenID() == droid->getObjectID()) // stop all listeners and send packets and force it so mood gets fixed
@@ -390,10 +390,10 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 
 	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
 
-	if (skillManager != NULL) {
+	if (skillManager != nullptr) {
 		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
 
-		if (performanceManager != NULL) {
+		if (performanceManager != nullptr) {
 			String instrumentAnimation;
 			int instrid = performanceManager->getInstrumentId(performance);
 			instrid += performanceManager->getInstrumentAnimation(getCurrentInstrument(), instrumentAnimation);
@@ -433,7 +433,7 @@ void DroidPlaybackModuleDataComponent::onStore() {
 
 void DroidPlaybackModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -450,7 +450,7 @@ void DroidPlaybackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	totalTracks = 1;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 
-	if (droidComponent != NULL) {
+	if (droidComponent != nullptr) {
 		droidComponent->addProperty("module_count",(float)totalTracks,0,"hidden",true);
 	}
 

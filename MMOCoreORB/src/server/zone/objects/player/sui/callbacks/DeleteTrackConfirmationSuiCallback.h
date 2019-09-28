@@ -29,17 +29,17 @@ public:
 		SuiMessageBox* listBox = cast<SuiMessageBox*>( suiBox);
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			return;
 		}
 
 		DroidObject* droid = cast<DroidObject*>(object.get());
-		if (droid == NULL){
+		if (droid == nullptr){
 			return;
 		}
 		// should be locked before hand
 
-		if(module == NULL) {
+		if(module == nullptr) {
 			return;
 		}
 

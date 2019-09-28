@@ -39,10 +39,10 @@ public:
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL)
+		if (city == nullptr)
 			return;
 
-		if (!suiBox->isInputBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isInputBox() || player == nullptr || cancelPressed || args->size() <= 0) {
 			return;
 		}
 

@@ -30,7 +30,7 @@ void WearableContainerObjectImplementation::fillAttributeList(AttributeListMessa
 }
 
 void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature) const {
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		return;
 	}
 
@@ -46,7 +46,7 @@ void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* cre
 }
 
 void WearableContainerObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		return;
 	}
 
@@ -63,7 +63,7 @@ void WearableContainerObjectImplementation::removeSkillModsFrom(CreatureObject* 
 
 bool WearableContainerObjectImplementation::isEquipped() {
 	ManagedReference<SceneObject*> parent = getParent().get();
-	if (parent != NULL && parent->isPlayerCreature())
+	if (parent != nullptr && parent->isPlayerCreature())
 		return true;
 
 	return false;

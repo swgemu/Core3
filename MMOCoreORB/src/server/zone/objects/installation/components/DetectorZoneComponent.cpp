@@ -16,31 +16,31 @@
 
 void DetectorZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-	if(!sceneObject->isTangibleObject() || target == NULL){
+	if(!sceneObject->isTangibleObject() || target == nullptr){
 		return;
 	}
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
 	DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
-	if(ref == NULL){
+	if(ref == nullptr){
 		info("data is null",true);
 		return;
 	}
 
 	DetectorDataComponent* scannerData = cast<DetectorDataComponent*>(ref->get());
 
-	if(scannerData == NULL || !scannerData->canScan())
+	if(scannerData == nullptr || !scannerData->canScan())
 		return;
 
 	if(sceneObject->isDetector() && target->isPlayerCreature() && sceneObject->isInRange(target,65)){
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
-		if(player == NULL)
+		if(player == nullptr)
 			return;
 
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
-		if(playerObject == NULL)
+		if(playerObject == nullptr)
 			return;
 
 		if(tano->getFaction() != player->getFaction() && player->getFaction() != 0 ){

@@ -26,7 +26,7 @@ public:
 
 		ManagedReference<GuildObject*> guild = guildObject.get();
 
-		if (guild == NULL)
+		if (guild == nullptr)
 			return;
 
 		if (!guild->hasNamePermission(playerID) && !player->getPlayerObject()->isPrivileged()) {
@@ -36,7 +36,7 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		if (guildManager != NULL) {
+		if (guildManager != nullptr) {
 			guildManager->sendGuildChangeNameTo(player, guild);
 		}
 	}

@@ -95,7 +95,7 @@ private:
 	/**
 	 * Returns a bounty hunter mission object if the player has one.
 	 * @param player the player.
-	 * @return bounty hunter mission object if the player has one otherwise NULL.
+	 * @return bounty hunter mission object if the player has one otherwise nullptr.
 	 */
 	MissionObject* getBountyHunterMission(CreatureObject* player) const;
 };

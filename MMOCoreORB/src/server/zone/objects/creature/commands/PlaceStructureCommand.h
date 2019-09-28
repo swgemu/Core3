@@ -28,7 +28,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->getParent() != NULL) {
+		if (creature->getParent() != nullptr) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 			return GENERALERROR;
 		}
@@ -48,7 +48,7 @@ public:
 			// Validate player position -vs- attempted placement
 			Zone* zone = creature->getZone();
 
-			if (zone == NULL)
+			if (zone == nullptr)
 				return GENERALERROR;
 
 			Vector3 position(x, y, zone->getHeight(x, y));
@@ -83,7 +83,7 @@ public:
 		//We want to begin the session here.
 		ManagedReference<StructureDeed*> deed = server->getZoneServer()->getObject(deedID).castTo<StructureDeed*>();
 
-		if (deed != NULL)
+		if (deed != nullptr)
 			deed->placeStructure(creature, x, y, angle);
 
 		return SUCCESS;
