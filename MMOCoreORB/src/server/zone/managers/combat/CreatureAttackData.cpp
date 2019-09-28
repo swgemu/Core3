@@ -196,7 +196,7 @@ uint32 CreatureAttackData::getCommandCRC() const {
 }
 
 bool CreatureAttackData::changesDefenderPosture() const {
-	if(stateEffects == NULL)
+	if(stateEffects == nullptr)
 		return false;
 
 	for(int i=0; i<stateEffects->size(); i++) {
@@ -212,7 +212,7 @@ bool CreatureAttackData::changesDefenderPosture() const {
 }
 
 bool CreatureAttackData::changesAttackerPosture() const {
-	if(stateEffects == NULL)
+	if(stateEffects == nullptr)
 		return false;
 
 	for(int i=0; i<stateEffects->size(); i++) {

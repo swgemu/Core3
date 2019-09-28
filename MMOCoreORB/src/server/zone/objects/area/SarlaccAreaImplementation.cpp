@@ -4,12 +4,12 @@
 #include "server/zone/objects/area/events/SarlaccEruptTask.h"
 
 void SarlaccAreaImplementation::notifyEnter(SceneObject* object) {
-	if (object == NULL || !object->isPlayerCreature())
+	if (object == nullptr || !object->isPlayerCreature())
 		return;
 
 	CreatureObject* player = cast<CreatureObject*>(object);
 
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	if (getRadius() == 60) {

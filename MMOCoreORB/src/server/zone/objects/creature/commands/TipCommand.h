@@ -58,7 +58,7 @@ private:
 			int amount) const {
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			player->sendSystemMessage("@base_player:tip_error"); // There was an error processing your /tip request. Please try again.
 			return GENERALERROR;
 		}
@@ -106,7 +106,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> targetPlayer = NULL;
+		ManagedReference<CreatureObject*> targetPlayer = nullptr;
 		int amount = 0;
 		bool isBank = false;
 
@@ -135,7 +135,7 @@ public:
 				if(amount == 0)
 					throw NumberFormatException();
 
-				if (targetPlayer == NULL) {
+				if (targetPlayer == nullptr) {
 					StringIdChatParameter ptip("base_player", "prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.
 					ptip.setTO(amountOrPlayer);
 					creature->sendSystemMessage(ptip);
@@ -154,13 +154,13 @@ public:
 			syntaxError = true;
 		}
 
-		if (!syntaxError && targetPlayer == NULL) { // No target argument, check look-at target
+		if (!syntaxError && targetPlayer == nullptr) { // No target argument, check look-at target
 			ManagedReference<SceneObject*> object =
 					server->getZoneServer()->getObject(target);
 
-			if (object != NULL && object->isPlayerCreature()) {
+			if (object != nullptr && object->isPlayerCreature()) {
 				targetPlayer = object->asCreatureObject();
-			} else if (object != NULL) {
+			} else if (object != nullptr) {
 				StringIdChatParameter ptip("base_player",
 						"prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.
 				ptip.setTO(object->getObjectID());

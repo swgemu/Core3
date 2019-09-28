@@ -71,11 +71,11 @@ public:
 		return accountID;
 	}
 
-	Time getCreationDate() const {
+	const Time& getCreationDate() const {
 		return creationDate;
 	}
 
-	String getFirstName() const {
+	const String& getFirstName() const {
 		return firstName;
 	}
 
@@ -83,7 +83,7 @@ public:
 		return galaxyID;
 	}
 
-	String getGalaxyName() const {
+	const String& getGalaxyName() const {
 		return galaxyName;
 	}
 
@@ -99,7 +99,7 @@ public:
 		return race;
 	}
 
-	String getSurName() const {
+	const String& getSurName() const {
 		return surName;
 	}
 
@@ -139,7 +139,7 @@ public:
 		this->surName = surName;
 	}
 
-	String getFullName() {
+	String getFullName() const {
 		StringBuffer fullName;
 		fullName << firstName;
 		if(!surName.isEmpty())
@@ -148,15 +148,15 @@ public:
 	}
 
 
-	bool isBanned() {
+	bool isBanned() const {
 		return !banExpiration.isPast();
 	}
 
-	void setBanReason(String banReason) {
+	void setBanReason(const String& banReason) {
 		this->banReason = banReason;
 	}
 
-	String getBanReason() const {
+	const String& getBanReason() const {
 		return banReason;
 	}
 
@@ -164,7 +164,7 @@ public:
 		this->banExpiration = banExpiration;
 	}
 
-	uint32 getBanExpiration() {
+	uint32 getBanExpiration() const {
 		return banExpiration.getTime();
 	}
 

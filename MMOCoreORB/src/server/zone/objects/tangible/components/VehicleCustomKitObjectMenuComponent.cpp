@@ -21,7 +21,7 @@ void VehicleCustomKitObjectMenuComponent::fillObjectMenuResponse(SceneObject* sc
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -29,7 +29,7 @@ void VehicleCustomKitObjectMenuComponent::fillObjectMenuResponse(SceneObject* sc
 
 int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
-	if (player == NULL)
+	if (player == nullptr)
 		return 0;
 
 	if (!sceneObject->isASubChildOf(player))
@@ -42,16 +42,16 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 		return 0;
 
 	ManagedReference<TangibleObject*> kitTano = cast<TangibleObject*>(sceneObject);
-	if(kitTano == NULL)
+	if(kitTano == nullptr)
 		return 0;
 
 	uint64 targetID = player->getTargetID();
 	ZoneServer* server = player->getZoneServer();
-	if (server == NULL)
+	if (server == nullptr)
 		return 0;
 
 	ManagedReference<TangibleObject*> target = server->getObject(targetID, true).castTo<TangibleObject*>();
-	if (target == NULL || !target->isVehicleObject()) {
+	if (target == nullptr || !target->isVehicleObject()) {
 		player->sendSystemMessage("You can only use this tool to customize vehicle");
 		return 0;
 	}
@@ -63,7 +63,7 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 		bool hasConsent = false;
 
 		ManagedReference<CreatureObject*> targetOwner = server->getObject(ownerID, true).castTo<CreatureObject*>();
-		if (targetOwner != NULL)
+		if (targetOwner != nullptr)
 		{
 			Locker crossLock(targetOwner, player);
 			ManagedReference<PlayerObject*> ghostOwner = targetOwner->getPlayerObject();
@@ -104,7 +104,7 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 	}
 
 	VehicleObject* painted = cast<VehicleObject*>(vehicle);
-	if (painted != NULL){
+	if (painted != nullptr){
 		painted->refreshPaint();
 	}
 

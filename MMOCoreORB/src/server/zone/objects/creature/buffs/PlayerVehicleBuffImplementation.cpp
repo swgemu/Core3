@@ -40,7 +40,7 @@ void PlayerVehicleBuffImplementation::activate(bool applyModifiers) {
 
 			ManagedReference<CreatureObject*> rider = creature.get()->getSlottedObject("rider").castTo<CreatureObject*>();
 
-			if(rider != NULL) {
+			if(rider != nullptr) {
 				rider->sendSystemMessage(startMessage);
 			}
 		}
@@ -54,7 +54,7 @@ void PlayerVehicleBuffImplementation::deactivate(bool removeModifiers) {
 
 			ManagedReference<CreatureObject*> rider = creature.get()->getSlottedObject("rider").castTo<CreatureObject*>();
 
-			if(rider != NULL) {
+			if(rider != nullptr) {
 				rider->sendSystemMessage(endMessage);
 			}
 		}
@@ -66,7 +66,7 @@ void PlayerVehicleBuffImplementation::updateRiderSpeeds() {
 	ManagedReference<CreatureObject*> vehicle = creature.get();
 	ManagedReference<CreatureObject*> rider = vehicle->getSlottedObject("rider").castTo<CreatureObject*>();
 
-	if (rider == NULL) // Our rider is gone
+	if (rider == nullptr) // Our rider is gone
 		return;
 
 	Core::getTaskManager()->executeTask([=] () {
@@ -92,7 +92,7 @@ void PlayerVehicleBuffImplementation::updateRiderSpeeds() {
 		if (vehicle->isMount()) {
 			PetManager* petManager = vehicle->getZoneServer()->getPetManager();
 
-			if (petManager != NULL) {
+			if (petManager != nullptr) {
 				newSpeed = petManager->getMountedRunSpeed(vehicle);
 			}
 		}

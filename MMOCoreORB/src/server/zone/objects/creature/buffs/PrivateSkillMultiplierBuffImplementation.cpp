@@ -10,7 +10,7 @@
 
 void PrivateSkillMultiplierBuffImplementation::applySkillModifiers() {
 	ManagedReference<CreatureObject*> strongCreo = creature.get();
-	if (strongCreo == NULL)
+	if (strongCreo == nullptr)
 		return;
 
 	int size = skillModifiers.size();
@@ -34,7 +34,7 @@ void PrivateSkillMultiplierBuffImplementation::applySkillModifiers() {
 
 void PrivateSkillMultiplierBuffImplementation::removeSkillModifiers() {
 	ManagedReference<CreatureObject*> strongCreo = creature.get();
-	if (strongCreo == NULL)
+	if (strongCreo == nullptr)
 		return;
 
 	int size = skillModifiers.size();

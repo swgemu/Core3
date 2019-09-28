@@ -12,7 +12,7 @@
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
-	if (sceneObject == NULL || !sceneObject->isCreatureObject())
+	if (sceneObject == nullptr || !sceneObject->isCreatureObject())
 		return;
 
 	CreatureObject* shuttle = cast<CreatureObject*>( sceneObject);

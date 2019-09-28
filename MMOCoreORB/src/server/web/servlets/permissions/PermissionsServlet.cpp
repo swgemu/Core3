@@ -62,7 +62,7 @@ void PermissionsServlet::handlePost(HttpRequest* request, HttpResponse* response
 		applyToAll = true;
 
 	ManagedReference<Account*> account = AccountManager::getAccount(accountName);
-	if(account == NULL) {
+	if(account == nullptr) {
 		response->println("HTTP/1.1 200 OK\r\n");
 		response->println("Content-Type: text/html\r\n\r\n");
 		response->println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN " "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
@@ -88,7 +88,7 @@ void PermissionsServlet::handlePost(HttpRequest* request, HttpResponse* response
 	if(applyToAll == true) {
 		Reference<CharacterList*> characterList = account->getCharacterList();
 		for(int i = 0; i < characterList->size(); ++i) {
-			ManagedReference<CreatureObject* > targetCreature = NULL;
+			ManagedReference<CreatureObject* > targetCreature = nullptr;
 			CharacterListEntry* entry = &characterList->get(i);
 
 			targetCreature = playerManager->getPlayer(entry->getFirstName());

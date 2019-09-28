@@ -12,7 +12,7 @@
 #include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
 
 void SurveyDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	if (droidObject == NULL || !droidObject->isTangibleObject() || player == NULL) {
+	if (droidObject == nullptr || !droidObject->isTangibleObject() || player == nullptr) {
 		return;
 	}
 
@@ -32,7 +32,7 @@ int SurveyDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObject, C
 	if (selectedID == 20) { // Use radial menu
 		// check for inventory
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		if (inventory == NULL)
+		if (inventory == nullptr)
 			return 0;
 		PlayerObject* playerObject = player->getPlayerObject();
 		// Check for appropiate skill (survey)

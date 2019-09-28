@@ -17,7 +17,7 @@ LuaObjectMenuComponent::~LuaObjectMenuComponent(){
 }
 
 void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	if (sceneObject == NULL)
+	if (sceneObject == nullptr)
 		return;
 
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
@@ -32,7 +32,7 @@ void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 
 int LuaObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (sceneObject == NULL)
+	if (sceneObject == nullptr)
 		return 0;
 
 	Lua* lua = DirectorManager::instance()->getLuaInstance();

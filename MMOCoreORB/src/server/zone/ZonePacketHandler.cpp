@@ -208,8 +208,8 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) {
 	//info("parsing " + pack->toStringData(), true);
 
-	if (client == NULL)
-		return NULL;
+	if (client == nullptr)
+		return nullptr;
 
 	try {
 		uint16 opcount = pack->parseShort();
@@ -223,19 +223,19 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 
 		MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 
-		if (messageCallback == NULL) {
+		if (messageCallback == nullptr) {
 			StringBuffer msg;
 			msg << "unknown opcode 0x" << hex << opcode;
 			info(msg, true);
 
 			//System::out << pack->toStringData() << endl;
 
-			return NULL;
+			return nullptr;
 		}
 
 		if (!messageCallback->parseMessage(pack)) {
 			delete messageCallback;
-			return NULL;
+			return nullptr;
 		} else
 			return messageCallback;
 
@@ -243,5 +243,5 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 		error("unreported exception caught creating message task");
 	}
 
-	return NULL;
+	return nullptr;
 }

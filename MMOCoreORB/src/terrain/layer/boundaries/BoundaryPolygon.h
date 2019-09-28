@@ -96,7 +96,7 @@ public:
 	}
 
 	float checkInfluence(float x, float y) const final {
-		Point2D* lastPoint = NULL;
+		Point2D* lastPoint = nullptr;
 
 		float result = 0;
 

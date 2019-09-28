@@ -37,7 +37,7 @@ class FindTargetTask : public Task, public Logger {
 		Locker locker(player);
 		Locker clocker(droid, player);
 
-		if (droid->getZone() == NULL)
+		if (droid->getZone() == nullptr)
 			return;
 
 		droid->setPosture(CreaturePosture::SITTING, true);
@@ -80,7 +80,7 @@ class FindTargetTask : public Task, public Logger {
 
 		if (arakyd) {
 			Locker locker(objective);
-			objective->setArakydDroid(NULL);
+			objective->setArakydDroid(nullptr);
 		}
 		state = Completed;
 	}
@@ -97,7 +97,7 @@ class FindTargetTask : public Task, public Logger {
 					player->sendSystemMessage("@mission/mission_generic:target_track_lost");
 					if (arakyd) {
 						Locker locker(objective);
-						objective->setArakydDroid(NULL);
+						objective->setArakydDroid(nullptr);
 					}
 					state = Completed;
 				}
@@ -109,7 +109,7 @@ class FindTargetTask : public Task, public Logger {
 			player->sendSystemMessage("@mission/mission_generic:target_not_found_" + String::valueOf(randomNumber));
 			if (arakyd) {
 				Locker locker(objective);
-				objective->setArakydDroid(NULL);
+				objective->setArakydDroid(nullptr);
 			}
 			state = Completed;
 		}
@@ -118,7 +118,7 @@ class FindTargetTask : public Task, public Logger {
 	bool findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		Locker locker(player);
 
-		if (objective->getPlayerOwner() == NULL) {
+		if (objective->getPlayerOwner() == nullptr) {
 			return false;
 		}
 
@@ -199,7 +199,7 @@ class FindTargetTask : public Task, public Logger {
 		if (targetTemplateName != "") {
 			CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(targetTemplateName.hashCode());
 
-			if (creoTempl != NULL) {
+			if (creoTempl != nullptr) {
 				return creoTempl->getLevel();
 			} else {
 				error("Could not find template for target.");
@@ -208,7 +208,7 @@ class FindTargetTask : public Task, public Logger {
 		} else {
 			ManagedReference<CreatureObject*> target = player->getZoneServer()->getObject(strong->getTargetObjectId()).castTo<CreatureObject*>();
 
-			if (target != NULL) {
+			if (target != nullptr) {
 				//TODO: modify this to better suit the calculation.
 				return player->getZoneServer()->getPlayerManager()->calculatePlayerLevel(target);
 			}
@@ -308,24 +308,24 @@ public:
 		ManagedReference<CreatureObject*> player = weakPlayer.get();
 		ManagedReference<BountyMissionObjective*> objective = weakObjective.get();
 
-		if (player == NULL || objective == NULL) {
+		if (player == nullptr || objective == nullptr) {
 			return;
 		}
 
-		if (state != Init && !arakyd && player->getZone() != NULL && player->getZone()->getZoneName() != zoneName) {
+		if (state != Init && !arakyd && player->getZone() != nullptr && player->getZone()->getZoneName() != zoneName) {
 			//Fail seekers if player leaves zone.
 			success = false;
 		}
 
 		switch(state) {
 		case Init:
-			if (droid == NULL || droid->getZone() == NULL) {
+			if (droid == nullptr || droid->getZone() == nullptr) {
 				return;
 			}
 			init(player, droid);
 			break;
 		case DroidSent:
-			if (droid == NULL) {
+			if (droid == nullptr) {
 				return;
 			}
 			droidSent(droid);

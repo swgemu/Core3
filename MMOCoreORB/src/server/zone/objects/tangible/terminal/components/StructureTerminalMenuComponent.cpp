@@ -28,16 +28,16 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 		return;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-	if( ghost == NULL )
+	if( ghost == nullptr )
 		return;
 
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
-	if(terminal == NULL)
+	if(terminal == nullptr)
 		return;
 
 	ManagedReference<StructureObject*> structureObject = cast<StructureObject*>(terminal->getControlledObject());
 
-	if (structureObject == NULL)
+	if (structureObject == nullptr)
 		return;
 
 	if (structureObject->isCivicStructure()) {
@@ -53,7 +53,7 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 
 				// Not all civic buildings have signs.  Check to see if build already has one before allowing a change
 				BuildingObject* building = cast<BuildingObject*>(structureObject.get());
-				if( building != NULL && building->getSignObject() != NULL )
+				if( building != nullptr && building->getSignObject() != nullptr )
 					menuResponse->addRadialMenuItemToRadialID(118, 69, 3, "@player_structure:management_change_sign"); //Change Sign
 			}
 		}
@@ -74,11 +74,11 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 		menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
 
 		ManagedReference<SceneObject*> datapad = creature->getSlottedObject("datapad");
-		if(datapad != NULL) {
+		if(datapad != nullptr) {
 			for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 				ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-				if (object != NULL && object->isPetControlDevice()) {
+				if (object != nullptr && object->isPetControlDevice()) {
 					PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
 					if (device->getPetType() == PetManager::DROIDPET) {
@@ -129,24 +129,24 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 
 int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
-	if(terminal == NULL)
+	if(terminal == nullptr)
 		return 1;
 
 	if(!creature->isPlayerCreature())
 		return 1;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-	if( ghost == NULL )
+	if( ghost == nullptr )
 		return 1;
 
 	ManagedReference<StructureObject*> structureObject = cast<StructureObject*>(terminal->getControlledObject());
 
-	if (structureObject == NULL)
+	if (structureObject == nullptr)
 		return 1;
 
 	ManagedReference<Zone*> zone = structureObject->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	if (structureObject->isCivicStructure()) {
@@ -166,7 +166,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 				creature->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
 				break;
 			case 50:
-				structureManager->promptNameStructure(creature, structureObject, NULL);
+				structureManager->promptNameStructure(creature, structureObject, nullptr);
 				break;
 			case 124:
 				creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
@@ -247,7 +247,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 			}
 			break;
 		case 50:
-			structureManager->promptNameStructure(creature, structureObject, NULL);
+			structureManager->promptNameStructure(creature, structureObject, nullptr);
 			//creature->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
 			break;
 		case 69:

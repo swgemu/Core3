@@ -27,13 +27,13 @@ public:
 		addSerializableVariables();
 	}
 
-	PatrolPoint(const Vector3& pos, CellObject* cell = NULL) : position(pos, cell) {
+	PatrolPoint(const Vector3& pos, CellObject* cell = nullptr) : position(pos, cell) {
 		reached = false;
 
 		addSerializableVariables();
 	}
 
-	PatrolPoint(float posX, float posZ, float posY, CellObject* cell = NULL) : position(Vector3(posX, posY, posZ), cell) {
+	PatrolPoint(float posX, float posZ, float posY, CellObject* cell = nullptr) : position(Vector3(posX, posY, posZ), cell) {
 		reached = false;
 
 		addSerializableVariables();

@@ -99,7 +99,7 @@ public:
 		return shopSigns.size();
 	}
 
-	inline SignTemplate* getShopSign(int idx) const {
+	inline const SignTemplate* getShopSign(int idx) const {
 		return &shopSigns.get(idx);
 	}
 

@@ -17,7 +17,7 @@ bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) 
 }
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
-	if (areaShape == NULL) {
+	if (areaShape == nullptr) {
 		return QuadTreeEntryImplementation::containsPoint(px, py);
 	}
 
@@ -87,7 +87,7 @@ void ActiveAreaImplementation::setZone(Zone* zone) {
 }
 
 bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
-	if (areaShape == NULL) {
+	if (areaShape == nullptr) {
 		return false;
 	}
 
@@ -97,7 +97,7 @@ bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
 void ActiveAreaImplementation::initializeChildObject(SceneObject* controllerObject) {
 	ManagedReference<SceneObject*> objectParent = controllerObject->getParent().get();
 
-	if (objectParent != NULL && objectParent->isCellObject()) {
+	if (objectParent != nullptr && objectParent->isCellObject()) {
 		setCellObjectID(objectParent->getObjectID());
 	}
 }

@@ -86,9 +86,9 @@ namespace server {
    			if (readLock) {
    				ReadLocker locker(containerLock);
 
-   				return operationMode == NORMAL_LOAD || oids == NULL;
+   				return operationMode == NORMAL_LOAD || oids == nullptr;
    			} else {
-   				return operationMode == NORMAL_LOAD || oids == NULL;
+   				return operationMode == NORMAL_LOAD || oids == nullptr;
    			}
    		}
 

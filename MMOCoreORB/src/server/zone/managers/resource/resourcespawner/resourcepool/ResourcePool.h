@@ -54,7 +54,7 @@ public:
 	   */
 	ResourcePool(ResourceSpawner* spawner) : Logger("ResourcePool") {
 		resourceSpawner = spawner;
-		includedResources.setNullValue(NULL);
+		includedResources.setNullValue(nullptr);
 		includedResources.setAllowDuplicateInsertPlan();
 		setGlobalLogging(true);
 		setLogging(true);
@@ -63,7 +63,7 @@ public:
 	 * Deconstructor
 	 */
 	virtual ~ResourcePool() {
-		resourceSpawner = NULL;
+		resourceSpawner = nullptr;
 		includedResources.removeAll();
 		excludedResources.removeAll();
 	}
@@ -78,7 +78,7 @@ public:
 		String token;
 		while (includeTokens.hasMoreTokens()) {
 			includeTokens.getStringToken(token);
-			includedResources.put(token, NULL);
+			includedResources.put(token, nullptr);
 		}
 
 		StringTokenizer excludeTokens(excludes);
@@ -105,7 +105,7 @@ public:
 				int number = includes.getIntAt(2);
 
 				for (unsigned int j = 1; j <= number; j++) {
-					includedResources.put(name, NULL);
+					includedResources.put(name, nullptr);
 				}
 			}
 
@@ -130,7 +130,7 @@ public:
 
 			StringBuffer msg;
 
-			if (spawn != NULL) {
+			if (spawn != nullptr) {
 				msg << spawn->getName() << " : " << spawn->getType() << endl;
 			} else {
 				msg << "EMPTY : " << includedResources.elementAt(i).getKey() << endl;

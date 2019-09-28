@@ -14,7 +14,7 @@ int TurretObserverImplementation::notifyObserverEvent(uint32 eventType, Observab
 	if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
 		ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(observable);
 
-		if (installation != NULL) {
+		if (installation != nullptr) {
 			DestroyFactionInstallationTask* task = new DestroyFactionInstallationTask(installation);
 			task->execute();
 		}

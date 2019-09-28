@@ -44,7 +44,7 @@ Vector3 RingAreaShapeImplementation::getRandomPosition(const Vector3& origin, fl
 }
 
 bool RingAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
-	if (areaShape == NULL) {
+	if (areaShape == nullptr) {
 		return false;
 	}
 

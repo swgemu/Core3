@@ -32,7 +32,7 @@ public:
 		uint64 targetid = creature->getTargetID();
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
 			return INVALIDPARAMETERS;
 		}
@@ -65,13 +65,13 @@ public:
 			for (int i = 1; i <= building->getTotalCellNumber(); ++i) {
 				ManagedReference<CellObject*> cell = building->getCell(i);
 
-				if(cell == NULL)
+				if(cell == nullptr)
 					continue;
 
 				for(int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 					ManagedReference<SceneObject*> obj = cell->getContainerObject(j);
 
-					if(obj == NULL)
+					if(obj == nullptr)
 						continue;
 
 					if((obj->isNoTrade() || obj->containsNoTradeObjectRecursive()) && !obj->isVendor()) {
@@ -86,7 +86,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject() || !targetObject->isPlayerCreature()) {
+		if (targetObject == nullptr || !targetObject->isCreatureObject() || !targetObject->isPlayerCreature()) {
 			creature->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
 			return INVALIDTARGET;
 		}
@@ -121,22 +121,22 @@ public:
 	}
 
 	// pre: creature, targetCreature, and structure are not locked
-	// bForceTransfer = whether or not to force the transfer. This means do the transfer even if the target is offline or out of range, or if the old owner is NULL
+	// bForceTransfer = whether or not to force the transfer. This means do the transfer even if the target is offline or out of range, or if the old owner is nullptr
 	static int doTransferStructure(CreatureObject* creature, CreatureObject* targetCreature, StructureObject* structure, bool bForceTransfer = false){
-		if (targetCreature == NULL || structure == NULL)
+		if (targetCreature == nullptr || structure == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
-		if (targetGhost == NULL)
+		if (targetGhost == nullptr)
 			return GENERALERROR;
 
-		ManagedReference<PlayerObject*> ghost = NULL;
+		ManagedReference<PlayerObject*> ghost = nullptr;
 
-		if (creature != NULL) {
+		if (creature != nullptr) {
 			ghost = creature->getPlayerObject().get();
 		}
 
-		if (!bForceTransfer && (creature == NULL || ghost == NULL)) {
+		if (!bForceTransfer && (creature == nullptr || ghost == nullptr)) {
 			return GENERALERROR;
 		}
 
@@ -169,7 +169,7 @@ public:
 
 		ManagedReference<CityRegion*> region = structure->getCityRegion().get();
 
-		if (region != NULL && ghost != NULL) {
+		if (region != nullptr && ghost != nullptr) {
 			Locker locker(region);
 
 			if (region->isBanned(targetCreature->getObjectID())) {
@@ -191,7 +191,7 @@ public:
 			locker.release();
 		}
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			Locker lock(creature);
 
 			ghost->removeOwnedStructure(structure);
@@ -211,7 +211,7 @@ public:
 
 		structure->setOwner(targetCreature->getObjectID());
 
-		if (creature != NULL)
+		if (creature != nullptr)
 			structure->revokePermission("ADMIN", creature->getObjectID());
 
 		//Update the cell permissions if the structure is private and a building.
@@ -223,12 +223,12 @@ public:
 			if (!structure->isPublicStructure()) {
 				buildingObject->updateCellPermissionsTo(targetCreature);
 
-				if (creature != NULL)
+				if (creature != nullptr)
 					buildingObject->updateCellPermissionsTo(creature);
 			}
 		}
 
-		if (creature != NULL && !bForceTransfer) {
+		if (creature != nullptr && !bForceTransfer) {
 			StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
 			params.setTT(creature->getFirstName());
 			targetCreature->sendSystemMessage(params);

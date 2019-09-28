@@ -3033,7 +3033,7 @@ void FrsManagerImplementation::updateArenaScores() {
 				uint64 playerID = playerList->get(j);
 				ManagedReference<CreatureObject*> player = zoneServer->getObject(playerList->get(j)).castTo<CreatureObject*>();
 
-				if (player != NULL) {
+				if (player != nullptr) {
 					ManagedReference<FrsManager*> strongMan = _this.getReferenceUnsafeStaticCast();
 
 					Core::getTaskManager()->executeTask([strongMan, player] () {
@@ -3447,7 +3447,7 @@ void FrsManagerImplementation::issueArenaChallenge(CreatureObject* player, int r
 
 		ManagedReference<CreatureObject*> rankMember = playerMap->get(playerName);
 
-		if (rankMember != NULL && rankMember->isOnline()) {
+		if (rankMember != nullptr && rankMember->isOnline()) {
 			rankMember->sendSystemMessage(mailBody);
 		}
 	}
@@ -3532,7 +3532,7 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 
 		ManagedReference<CreatureObject*> rankMember = playerMap->get(playerName);
 
-		if (rankMember != NULL && rankMember->isOnline()) {
+		if (rankMember != nullptr && rankMember->isOnline()) {
 			rankMember->sendSystemMessage(mailBody);
 		}
 	}

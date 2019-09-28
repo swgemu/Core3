@@ -11,13 +11,13 @@
 
 class TangibleObjectMessage7 : public BaseLineMessage {
 public:
-	TangibleObjectMessage7(TangibleObject* tano) 
-			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 7, 0x02) {
+	TangibleObjectMessage7(const TangibleObject* tano)
+			: BaseLineMessage(tano, 0x54414E4F, 7, 0x02) {
 		insertLong(0);
 		insertLong(0);
 
 		setSize();
 	}
-	
+
 };
 #endif /*TANGIBLEOBJECTMESSAGE7_H_*/

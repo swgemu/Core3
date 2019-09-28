@@ -19,7 +19,7 @@ namespace account {
 	public:
 		AccountMap() : VectorMap<uint32, ManagedReference<Account*> >(), ReadWriteLock("AccountMap") {
 			setInsertPlan(VectorMap<uint32, ManagedReference<Account*> >::NO_DUPLICATE);
-			setNullValue(NULL);
+			setNullValue(nullptr);
 		}
 	};
 

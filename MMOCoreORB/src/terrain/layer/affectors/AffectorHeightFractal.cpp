@@ -12,10 +12,10 @@ void AffectorHeightFractal::process(float x, float y, float transformValue, floa
 	if (transformValue == 0)
 		return;
 
-	if (mfrc == NULL) {
+	if (mfrc == nullptr) {
 		mfrc = terrainGenerator->getMfrc(fractalId);
 
-		if (mfrc == NULL) {
+		if (mfrc == nullptr) {
 			System::out << "error out of bounds fractal id for affector " << informationHeader.getDescription() << endl;
 
 			return;

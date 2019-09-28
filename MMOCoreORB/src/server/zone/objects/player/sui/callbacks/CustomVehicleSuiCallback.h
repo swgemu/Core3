@@ -37,10 +37,10 @@ public:
 			return;
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if(obj == NULL)
+		if(obj == nullptr)
 			return;
 
-		if( customizationKit == NULL )
+		if( customizationKit == nullptr )
 			return;
 
 		ManagedReference<TangibleObject*> target = cast<TangibleObject*>(obj.get());
@@ -52,8 +52,8 @@ public:
 			if(index < 0 || index > 3)
 				return;
 
-			if(server != NULL) {
-				if (target == NULL || !target->isVehicleObject()) {
+			if(server != nullptr) {
+				if (target == nullptr || !target->isVehicleObject()) {
 					creature->sendSystemMessage("You can only use this tool to customize vehicle");
 					return;
 				}

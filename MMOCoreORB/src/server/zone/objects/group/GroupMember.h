@@ -17,7 +17,7 @@ class GroupMember : public Variable {
 
 public:
 	GroupMember() {
-		creature = NULL;
+		creature = nullptr;
 	}
 
 	GroupMember(const GroupMember& obj) : Variable() {
@@ -65,7 +65,7 @@ public:
 
 		j["creature"] = m.creature;
 
-		if (m.creature != NULL) {
+		if (m.creature != nullptr) {
 			name = m.creature->getCustomObjectName().toString();
 		}
 
@@ -77,7 +77,7 @@ public:
 
 		creature.toBinaryStream(stream);
 
-		if (creature != NULL) {
+		if (creature != nullptr) {
 			name = creature->getCustomObjectName().toString();
 		}
 
@@ -89,7 +89,7 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		creature.parseFromBinaryStream(stream);
 
-		if (creature == NULL)
+		if (creature == nullptr)
 			return false;
 
 		String name;

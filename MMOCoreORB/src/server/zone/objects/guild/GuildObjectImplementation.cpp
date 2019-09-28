@@ -24,7 +24,7 @@ void GuildObjectImplementation::initializeTransientMembers() {
 void GuildObjectImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (guildUpdateEvent == NULL) {
+	if (guildUpdateEvent == nullptr) {
 		guildUpdateEvent = new GuildUpdateEvent(_this.getReferenceUnsafeStaticCast(), ServerCore::getZoneServer());
 	} else if (guildUpdateEvent->isScheduled()) {
 		guildUpdateEvent->cancel();
@@ -89,7 +89,7 @@ GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
 
 void GuildObjectImplementation::setGuildMemberTitle(uint64 playerID, const String& title) {
 	GuildMemberInfo* gmi = getMember(playerID);
-	if (gmi == NULL)
+	if (gmi == nullptr)
 		return;
 
 	gmi->setGuildTitle(title);
@@ -99,7 +99,7 @@ String GuildObjectImplementation::getGuildMemberTitle(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	GuildMemberInfo* gmi = getMember(playerID);
-	if (gmi == NULL)
+	if (gmi == nullptr)
 		return "";
 
 	return gmi->getGuildTitle();
@@ -108,7 +108,7 @@ String GuildObjectImplementation::getGuildMemberTitle(uint64 playerID) {
 bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
 	ManagedReference<GuildObject*> attackerGuild = creature->getGuildObject().get();
 
-	if (attackerGuild != NULL) {
+	if (attackerGuild != nullptr) {
 
 		try {
 			if (isAtWarWith(attackerGuild->getObjectID())) {
@@ -223,7 +223,7 @@ bool GuildObjectImplementation::hasWarPermission(uint64 playerID) {
 
 void GuildObjectImplementation::toggleMemberPermission(uint64 playerID, uint8 permission) {
 	GuildMemberInfo* gmi = getMember(playerID);
-	if (gmi == NULL)
+	if (gmi == nullptr)
 		return;
 
 	gmi->togglePermission(permission);
@@ -247,7 +247,7 @@ uint64 GuildObjectImplementation::getMemberWithHighestPermission() {
 	for (int i = 0; i < guildMembers.size(); i++) {
 		GuildMemberInfo* gmi = &guildMembers.get(i);
 
-		if (gmi == NULL)
+		if (gmi == nullptr)
 			continue;
 
 		uint8 perm = gmi->getPermissions();

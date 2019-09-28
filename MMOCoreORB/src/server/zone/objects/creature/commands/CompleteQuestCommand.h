@@ -31,13 +31,13 @@ public:
 
 			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-			if (obj == NULL || !obj->isCreatureObject()) {
+			if (obj == nullptr || !obj->isCreatureObject()) {
 				return INVALIDTARGET;
 			}
 
 			CreatureObject* targetCreature = cast<CreatureObject*>(obj.get());
 
-			if (targetCreature == NULL) {
+			if (targetCreature == nullptr) {
 				return INVALIDTARGET;
 			}
 
@@ -55,7 +55,7 @@ public:
 			} else if (commandType.beginsWith("quest")) {
 				PlayerObject* ghost = targetCreature->getPlayerObject();
 
-				if (ghost == NULL)
+				if (ghost == nullptr)
 					return INVALIDTARGET;
 
 				int quest = args.getIntToken();

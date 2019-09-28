@@ -40,7 +40,7 @@ public:
 
 		Reference<Task*> logoutTask = creature->getPendingTask("logout");
 
-		if (logoutTask != NULL) {
+		if (logoutTask != nullptr) {
 			creature->error("WARNING: LogoutServer command called while logout task already pending!");
 			return GENERALERROR;
 		}

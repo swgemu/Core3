@@ -20,7 +20,7 @@ void SurveyMissionObjectiveImplementation::activate() {
 	}
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
-	if (player != NULL) {
+	if (player != nullptr) {
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 		addObserver(observer, true);
 
@@ -37,7 +37,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 	ManagedReference<MissionObserver*> observer = getObserver(0);
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
-	if (player != NULL) {
+	if (player != nullptr) {
 		player->dropObserver(ObserverEventType::SURVEY, observer);
 
 		dropObserver(observer, true);
@@ -53,13 +53,13 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		ManagedReference<CreatureObject*> player = getPlayerOwner();
 		ManagedReference<MissionObject*> mission = this->mission.get();
 
-		if (player == NULL || mission == NULL) {
+		if (player == nullptr || mission == nullptr) {
 			return 0;
 		}
 
 		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
-		if (sampledSpawn == NULL) {
+		if (sampledSpawn == nullptr) {
 			return 0;
 		}
 

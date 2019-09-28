@@ -29,7 +29,7 @@ public:
 
 		Reference<TangibleObject*> proto = crate->getPrototype();
 
-		if(proto == NULL)
+		if(proto == nullptr)
 			insertInt(crate->getOptionsBitmask());
 		else
 			insertInt(proto->getOptionsBitmask());

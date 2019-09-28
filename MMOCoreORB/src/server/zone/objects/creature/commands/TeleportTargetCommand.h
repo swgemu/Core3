@@ -26,13 +26,13 @@ public:
 
 		ManagedReference<Zone*> targetZone = creature->getZone();
 
-		if (targetZone == NULL)
+		if (targetZone == nullptr)
 			return GENERALERROR; //Creature must be in a valid zone to use the command...
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == creature)
-			obj = NULL; //In case the player has himself targeted with the command.
+			obj = nullptr; //In case the player has himself targeted with the command.
 
 		String targetName = "";
 		String planetName = targetZone->getZoneName();
@@ -41,7 +41,7 @@ public:
 		float z = creature->getPositionZ();
 		uint64 parentID = creature->getParentID();
 
-		ManagedReference<CreatureObject*> targetCreature = NULL;
+		ManagedReference<CreatureObject*> targetCreature = nullptr;
 		UnicodeTokenizer tokenizer(arguments);
 
 		try {
@@ -64,7 +64,7 @@ public:
 
 				targetZone = targetZone->getZoneServer()->getZone(planetName);
 
-				if (targetZone == NULL)
+				if (targetZone == nullptr)
 					throw Exception();
 
 				z = targetZone->getHeight(x, y);
@@ -87,7 +87,7 @@ public:
 			targetCreature = playerManager->getPlayer(targetName);
 		}
 
-		if (targetCreature == NULL) {
+		if (targetCreature == nullptr) {
 			creature->sendSystemMessage("The specified player does not exist.");
 			return GENERALERROR;
 		}

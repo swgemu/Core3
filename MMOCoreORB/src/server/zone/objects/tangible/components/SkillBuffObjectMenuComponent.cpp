@@ -17,7 +17,7 @@ void SkillBuffObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -42,7 +42,7 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
 	Reference<SkillBuffTemplate*> skillBuff = cast<SkillBuffTemplate*>(sceneObject->getObjectTemplate());
-	if (skillBuff == NULL) {
+	if (skillBuff == nullptr) {
 		error("No SkillBuffTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return 1;
 	}
@@ -69,7 +69,7 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	}
 
 	// Submit buff
-	if (buff != NULL){
+	if (buff != nullptr){
 		player->addBuff(buff);
 	}
 

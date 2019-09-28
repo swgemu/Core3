@@ -30,7 +30,7 @@ public:
 
 		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
 
-		if(craftingManager == NULL || !creature->isPlayerCreature())
+		if(craftingManager == nullptr || !creature->isPlayerCreature())
 			return GENERALERROR;
 
 		StringTokenizer tokenizer(arguments.toString());

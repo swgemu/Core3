@@ -18,7 +18,7 @@ public:
 	LoginEnumCluster(uint32 galcnt) : BaseMessage(100) {
 		insertShort(0x02);
 		insertInt(0xC11C63B9);
-		
+
 		insertInt(galcnt); //Galaxy count
 
 		galaxyCount = galcnt;
@@ -36,12 +36,12 @@ public:
 		return pack;
 	}
 
-	void addGalaxy(uint32 gid, String& name) {
-	    insertInt(gid); //Zone Server ID
+	void addGalaxy(uint32 gid, const String& name) {
+		insertInt(gid); //Zone Server ID
 
-    	insertAscii(name); //IP Address
+		insertAscii(name); //IP Address
 
-    	insertInt(0xFFFF8F80);
+		insertInt(0xFFFF8F80);
 	}
 
 	void finish() {
@@ -51,7 +51,7 @@ public:
 	static void parse(Packet* pack) {
 		uint16 ackSequence = pack->parseShort();
 	}
-	
+
 };
 
 }

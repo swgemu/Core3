@@ -7,7 +7,7 @@ void ForceWeakenDebuffImplementation::initializeTransientMembers() {
 }
 
 void ForceWeakenDebuffImplementation::activate(bool applyModifiers) {
-	if (creature.get() != NULL) {
+	if (creature.get() != nullptr) {
 		Locker locker(creature.get());
 		Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 
@@ -24,7 +24,7 @@ void ForceWeakenDebuffImplementation::activate(bool applyModifiers) {
 
 			Reference<ForceWeakenDebuffDurationEvent*> weakenCheck = creature.get()->getPendingTask("forceWeakenTick").castTo<ForceWeakenDebuffDurationEvent*>();
 
-			if (weakenCheck == NULL) {
+			if (weakenCheck == nullptr) {
 				fwBuffEvent = new ForceWeakenDebuffDurationEvent(creature.get(), _this.getReferenceUnsafeStaticCast());
 				creature.get()->addPendingTask("forceWeakenTick", fwBuffEvent, FORCE_WEAKEN_TICK_SECONDS * 1000);
 			}
@@ -35,7 +35,7 @@ void ForceWeakenDebuffImplementation::activate(bool applyModifiers) {
 
 			Reference<ForceWeakenDebuffDurationEvent*> weakenCheck = creature.get()->getPendingTask("forceWeakenTick").castTo<ForceWeakenDebuffDurationEvent*>();
 
-			if (weakenCheck != NULL) {
+			if (weakenCheck != nullptr) {
 				weakenCheck->reschedule(FORCE_WEAKEN_TICK_SECONDS * 1000);
 			}
 		} else if (counter == FORCE_WEAKEN_TICK_COUNT) {
@@ -43,7 +43,7 @@ void ForceWeakenDebuffImplementation::activate(bool applyModifiers) {
 
 			Reference<ForceWeakenDebuffDurationEvent*> weakenCheck = creature.get()->getPendingTask("forceWeakenTick").castTo<ForceWeakenDebuffDurationEvent*>();
 
-			if (weakenCheck != NULL) {
+			if (weakenCheck != nullptr) {
 				//Schedule for start of ramp down period, considering time already taken
 				weakenCheck->reschedule(time - (FORCE_WEAKEN_RAMP_SECONDS * 1000) - (FORCE_WEAKEN_TICK_COUNT * FORCE_WEAKEN_TICK_SECONDS * 1000));
 			}
@@ -54,7 +54,7 @@ void ForceWeakenDebuffImplementation::activate(bool applyModifiers) {
 
 			Reference<ForceWeakenDebuffDurationEvent*> weakenCheck = creature.get()->getPendingTask("forceWeakenTick").castTo<ForceWeakenDebuffDurationEvent*>();
 
-			if (weakenCheck != NULL) {
+			if (weakenCheck != nullptr) {
 				weakenCheck->reschedule(FORCE_WEAKEN_TICK_SECONDS * 1000);
 			}
 		}
@@ -113,7 +113,7 @@ void ForceWeakenDebuffImplementation::clearBuffEvent() {
 	Locker locker(creature.get());
 	Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 
-	if (fwBuffEvent != NULL) {
+	if (fwBuffEvent != nullptr) {
 		creature.get()->removePendingTask("forceWeakenTick");
 
 		if (fwBuffEvent->isScheduled())

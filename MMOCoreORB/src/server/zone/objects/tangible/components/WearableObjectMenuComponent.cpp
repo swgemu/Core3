@@ -15,7 +15,7 @@ void WearableObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
 	if(tano->getConditionDamage() > 0 && tano->canRepair(player)) {
@@ -36,7 +36,7 @@ int WearableObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 			return 0;
 
 		TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-		if(tano == NULL)
+		if(tano == nullptr)
 			return 0;
 
 		tano->repair(player);

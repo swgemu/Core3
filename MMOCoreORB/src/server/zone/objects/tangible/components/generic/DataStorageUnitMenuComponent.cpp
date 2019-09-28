@@ -19,7 +19,7 @@ void DataStorageUnitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
 	menuResponse->addRadialMenuItem(18, 3, "@ui_radial:item_activate"); // Activate
@@ -43,11 +43,11 @@ int DataStorageUnitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 		return 0;
 
 	DataObjectComponent* data = tano->getDataObjectComponent()->get();
-	if(data == NULL || !data->isDataStorageUnitData())
+	if(data == nullptr || !data->isDataStorageUnitData())
 		return 0;
 
 	DataStorageUnitDataComponent* dsuData = cast<DataStorageUnitDataComponent*>(data);
-	if( dsuData == NULL )
+	if( dsuData == nullptr )
 		return 0;
 
 	// ID is an integer from 1 to 12

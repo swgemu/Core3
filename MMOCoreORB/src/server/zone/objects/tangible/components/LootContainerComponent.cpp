@@ -10,16 +10,16 @@
 #include "server/zone/objects/group/GroupObject.h"
 
 int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
-	if (destination != NULL) {
+	if (destination != nullptr) {
 		ManagedReference<SceneObject*> rootParent = destination->getParent().get();
 
-		if (rootParent != NULL && rootParent->isCreatureObject()) {
+		if (rootParent != nullptr && rootParent->isCreatureObject()) {
 			CreatureObject* creature = cast<CreatureObject*>(rootParent.get());
 
-			if (creature != NULL) {
+			if (creature != nullptr) {
 				ManagedReference<GroupObject*> group = creature->getGroup();
 
-				if (group != NULL) {
+				if (group != nullptr) {
 					StringIdChatParameter params("group", "notify_single_loot"); //[GROUP] %TU looted %TO from %TT.
 					params.setTO(object->getDisplayedName());
 					params.setTU(creature->getDisplayedName());

@@ -22,7 +22,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			return false;
 		}
 
@@ -62,12 +62,12 @@ public:
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
-		if (player == NULL)
+		if (player == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<GroupObject*> group = player->getGroup();
@@ -87,7 +87,7 @@ public:
 		for (int i = 1; i < group->getGroupSize(); ++i) {
 			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || !member->isPlayerCreature())
+			if (member == nullptr || !member->isPlayerCreature())
 				continue;
 
 			if (!isValidGroupAbilityTarget(creature, member, false))
@@ -112,7 +112,7 @@ public:
 
 
 	void doRetreat(CreatureObject* player) const {
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		if (!checkRetreat(player))

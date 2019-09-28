@@ -122,7 +122,7 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 		int attackType = -1;
 
-		if (weapon != NULL) {
+		if (weapon != nullptr) {
 			attackType = weapon->getAttackType();
 		}
 
@@ -254,24 +254,24 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		return;
 
 	PlayerObject* ghost = creature->getPlayerObject().get();
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
 		if (!CombatManager::instance()->areInDuel(creature, target)
-				&& targetGhost != NULL && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
+				&& targetGhost != nullptr && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
 			ghost->updateLastGcwPvpCombatActionTimestamp();
 		}
 	} else if (target->isPet()) {
 		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
 
-		if (owner != NULL && owner->isPlayerCreature()) {
+		if (owner != nullptr && owner->isPlayerCreature()) {
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
 			if (!CombatManager::instance()->areInDuel(creature, owner)
-					&& ownerGhost != NULL && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
+					&& ownerGhost != nullptr && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
 				ghost->updateLastGcwPvpCombatActionTimestamp();
 			}
 		}

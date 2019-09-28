@@ -24,7 +24,7 @@ void FactionManager::loadData() {
 void FactionManager::loadFactionRanks() {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/faction/rank.iff");
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		warning("Faction ranks could not be found.");
 		return;
 	}
@@ -79,7 +79,7 @@ void FactionManager::loadLuaConfig() {
 	luaObject.pop();
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 
 FactionMap* FactionManager::getFactionMap() {
@@ -87,7 +87,7 @@ FactionMap* FactionManager::getFactionMap() {
 }
 
 void FactionManager::awardFactionStanding(CreatureObject* player, const String& factionName, int level) {
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();

@@ -301,11 +301,11 @@ public:
 		return portalLayoutFilename.get();
 	}
 
-	PortalLayout* getPortalLayout();
+	const PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
 	const Vector < Vector<String> >* getArrangementDescriptors() const {
-		if (arrangementDescriptors == NULL) {
+		if (arrangementDescriptors == nullptr) {
 			const static Vector < Vector<String> > EMPTY_DESCRIPTORS;
 			return &EMPTY_DESCRIPTORS;
 		} else
@@ -341,8 +341,8 @@ public:
 	}
 
 	inline const Vector<String>* getSlotDescriptors() const {
-		if (slotDescriptors == NULL)
-			return NULL;
+		if (slotDescriptors == nullptr)
+			return nullptr;
 		else
 			return slotDescriptors->getSlots();
 	}
@@ -506,7 +506,7 @@ public:
 		this->locationReservationRadius = locationReservationRadius;
 	}
 
-	void setLookAtText(String lookAtText) {
+	void setLookAtText(const String& lookAtText) {
 		this->lookAtText = lookAtText;
 	}
 
@@ -522,7 +522,7 @@ public:
 		this->onlyVisibleInTools = onlyVisibleInTools;
 	}
 
-	void setPortalLayoutFilename(String portalLayoutFilename) {
+	void setPortalLayoutFilename(const String& portalLayoutFilename) {
 		this->portalLayoutFilename = portalLayoutFilename;
 	}
 

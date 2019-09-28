@@ -62,7 +62,7 @@ void BuildingObjectImplementation::loadTemplateData(
 
 	totalCellNumber = buildingData->getTotalCellNumber();
 
-	PortalLayout* portalLayout = templateData->getPortalLayout();
+	const PortalLayout* portalLayout = templateData->getPortalLayout();
 
 	if (portalLayout != nullptr)
 		totalCellNumber = portalLayout->getFloorMeshNumber() - 1; //remove the exterior floor
@@ -228,7 +228,7 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 
 		if (shot != nullptr && shot->isSharedBuildingObjectTemplate()) {
 			SharedBuildingObjectTemplate *templateData = static_cast<SharedBuildingObjectTemplate*>(shot);
-			PortalLayout* portalLayout = templateData->getPortalLayout();
+			const PortalLayout* portalLayout = templateData->getPortalLayout();
 
 			if (portalLayout != nullptr) {
 				const Vector<Reference<CellProperty*> >& cells = portalLayout->getCellProperties();
@@ -632,7 +632,7 @@ CellObject* BuildingObjectImplementation::getCell(const String& cellName) {
 	if (buildingTemplate == nullptr)
 		return nullptr;
 
-	PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
+	const PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
 
 	if (portalLayout == nullptr)
 		return nullptr;
@@ -1583,7 +1583,7 @@ void BuildingObjectImplementation::destroyChildObjects() {
 	}
 }
 
-void BuildingObjectImplementation::changeSign(SignTemplate* signConfig) {
+void BuildingObjectImplementation::changeSign(const SignTemplate* signConfig) {
 	if (signConfig == nullptr)
 		return;
 
@@ -1716,11 +1716,11 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 
 	const auto fullTransform = transform * *parentTransform;
 
-	PortalLayout *pl = getObjectTemplate()->getPortalLayout();
+	const PortalLayout *pl = getObjectTemplate()->getPortalLayout();
 	if(pl) {
 		if(pl->getCellTotalNumber() > 0) {
-			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
-			FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appr->getFloorMesh());
+			const AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+			const FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appr->getFloorMesh());
 
 			if (floor == nullptr) {
 				floor = pl->getFloorMesh(0);
@@ -1752,11 +1752,11 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 }
 
 const BaseBoundingVolume* BuildingObjectImplementation::getBoundingVolume() {
-	PortalLayout *pl = getObjectTemplate()->getPortalLayout();
+	const PortalLayout *pl = getObjectTemplate()->getPortalLayout();
 
 	if(pl) {
 		if(pl->getCellTotalNumber() > 0) {
-			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+			const AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
 			return appr->getBoundingVolume();
 		}
 	} else {
@@ -1788,7 +1788,7 @@ String BuildingObjectImplementation::getCellName(uint64 cellID) const {
 	if (buildingTemplate == nullptr)
 		return "";
 
-	PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
+	const PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
 
 	if (portalLayout == nullptr)
 		return "";

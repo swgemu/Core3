@@ -18,7 +18,7 @@ void XpPurchaseMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 
 	XpPurchaseTemplate* templateData = cast<XpPurchaseTemplate*>(sceneObject->getObjectTemplate());
 
-	if (templateData == NULL) {
+	if (templateData == nullptr) {
 		error("No XpPurchaseTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
@@ -41,12 +41,12 @@ int XpPurchaseMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 
 		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return 0;
 
 		XpPurchaseTemplate* templateData = cast<XpPurchaseTemplate*>(sceneObject->getObjectTemplate());
 
-		if (templateData == NULL) {
+		if (templateData == nullptr) {
 			error("No XpPurchaseTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}

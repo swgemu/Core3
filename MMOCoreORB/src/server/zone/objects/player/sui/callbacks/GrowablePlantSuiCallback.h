@@ -31,12 +31,12 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			return;
 
 		ManagedReference<PlantObject*> plant = cast<PlantObject*>(obj.get());
 
-		if (plant == NULL)
+		if (plant == nullptr)
 			return;
 
 		Locker clocker(plant, player);
@@ -45,12 +45,12 @@ public:
 
 		ManagedReference<ResourceContainer*> resource = (server->getObject(resourceID)).castTo<ResourceContainer*>();
 
-		if (resource == NULL)
+		if (resource == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> playerParent = resource->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		if (playerParent == NULL)
+		if (playerParent == nullptr)
 			return;
 
 		int quantity = resource->getQuantity();
@@ -64,7 +64,7 @@ public:
 
 		ManagedReference<ResourceSpawn*> spawn = resource->getSpawnObject();
 
-		if (spawn == NULL)
+		if (spawn == nullptr)
 			return;
 
 		if (!spawn->isType("organic") && !spawn->isType("water"))

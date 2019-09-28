@@ -36,7 +36,7 @@ public:
 	}
 
 	SceneObject* getRandomTarget(SceneObject* origin, int diff) {
-		SceneObject* result = NULL;
+		SceneObject* result = nullptr;
 		Zone* zone = origin->getZone();
 
 		float distance = 16000.f;
@@ -57,7 +57,7 @@ public:
 		try {
 			for (int i = 0; i < missions.size(); ++i) {
 				SceneObject* vectorObject = missions.get(i);
-				if (vectorObject == NULL)
+				if (vectorObject == nullptr)
 					continue;
 
 				float objDistance = vectorObject->getDistanceTo(&coord);

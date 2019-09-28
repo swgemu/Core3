@@ -26,7 +26,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player != NULL) {
+		if (player != nullptr) {
 			StringBuffer msg;
 			msg << "ClientInactivityMessage with flag " << hex << flag << " received";
 			player->info(msg.toString());

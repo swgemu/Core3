@@ -26,7 +26,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 		StructureObject* structureObject = cast<StructureObject*>(sceneObject);
 		ManagedReference<Zone*> zone = sceneObject->getZone();
 
-		if (zone != NULL && structureObject->isInstallationObject()) {
+		if (zone != nullptr && structureObject->isInstallationObject()) {
 
 			ManagedReference<InstallationObject*> installationObject = cast<InstallationObject*>(structureObject);
 
@@ -35,7 +35,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 				ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion().get();
 				ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-				if (cityRegion != NULL) {
+				if (cityRegion != nullptr) {
 
 					planetManager->removePlayerCityTravelPoint(cityRegion->getRegionName());
 
@@ -46,7 +46,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 
 				SortedVector < ManagedReference<SceneObject*> > *childObjects = structureObject->getChildObjects();
 
-				ManagedReference<CreatureObject*> shuttle = NULL;
+				ManagedReference<CreatureObject*> shuttle = nullptr;
 
 				for (int i = 0; i < childObjects->size(); ++i) {
 
@@ -56,7 +56,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 					}
 				}
 
-				if (shuttle != NULL)
+				if (shuttle != nullptr)
 					planetManager->removeShuttle(shuttle);
 
 			}

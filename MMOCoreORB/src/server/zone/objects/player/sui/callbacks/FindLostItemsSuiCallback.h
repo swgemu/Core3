@@ -25,12 +25,12 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL || !obj->isBuildingObject())
+		if (obj == nullptr || !obj->isBuildingObject())
 			return;
 
 		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
-		if (building->getZone() == NULL)
+		if (building->getZone() == nullptr)
 			return;
 
 		StructureManager::instance()->moveFirstItemTo(creature, building);

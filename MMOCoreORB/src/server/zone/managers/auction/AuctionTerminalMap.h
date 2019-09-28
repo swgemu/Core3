@@ -18,11 +18,11 @@ class AuctionTerminalMap : public VectorMap<uint64, Reference<TerminalItemList*>
 
 public:
 	AuctionTerminalMap() {
-		setNullValue(NULL);
+		setNullValue(nullptr);
 		setNoDuplicateInsertPlan();
 
 		galaxyListing.setNoDuplicateInsertPlan();
-		galaxyListing.setNullValue(NULL);
+		galaxyListing.setNullValue(nullptr);
 
 		setLoggingName("AuctionTerminalMap");
 	}
@@ -32,8 +32,8 @@ public:
 		//Locker locker(this);
 		//Locker glocker(&galaxyListing);
 
-		if(vendor == NULL) {
-			warning("unable to create NULL vendor");
+		if(vendor == nullptr) {
+			warning("unable to create nullptr vendor");
 			return false;
 		}
 
@@ -44,7 +44,7 @@ public:
 
 
 		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
-		if(planetList == NULL || (!planetList->contains(region) && !addRegionListing(planetList, region))) {
+		if(planetList == nullptr || (!planetList->contains(region) && !addRegionListing(planetList, region))) {
 			error("unable to create region listing");
 			return false;
 		}
@@ -54,18 +54,18 @@ public:
 
 		if(!targetRegion->contains(vendor->getObjectID()) || !contains(vendor->getObjectID())) {
 
-			Reference<TerminalItemList*> itemList = NULL;
+			Reference<TerminalItemList*> itemList = nullptr;
 
-			if(existingRegion != NULL) {
+			if(existingRegion != nullptr) {
 				itemList = existingRegion->get(vendor->getObjectID());
 
 				existingRegion->drop(vendor->getObjectID());
 			}
 
-			if(itemList == NULL)
+			if(itemList == nullptr)
 				itemList = get(vendor->getObjectID());
 
-			if(itemList == NULL) {
+			if(itemList == nullptr) {
 				itemList = new TerminalItemList();
 				itemList->setNoDuplicateInsertPlan();
 			}
@@ -78,8 +78,8 @@ public:
 
 	bool dropTerminalListing(SceneObject* vendor) {
 
-		if(vendor == NULL) {
-			warning("unable to drop NULL vendor");
+		if(vendor == nullptr) {
+			warning("unable to drop nullptr vendor");
 			return false;
 		}
 
@@ -87,7 +87,7 @@ public:
 		//Locker glocker(&galaxyListing);
 
 		Reference<TerminalRegionList*> existingRegion = getVendorRegion(vendor);
-		if(existingRegion == NULL)
+		if(existingRegion == nullptr)
 			return drop(vendor->getObjectID());
 
 		if(existingRegion->drop(vendor->getObjectID()))
@@ -106,7 +106,7 @@ public:
 
 		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
 
-		if(itemList == NULL)
+		if(itemList == nullptr)
 			return false;
 
 		if(itemList->isEmpty())
@@ -115,7 +115,7 @@ public:
 		//Locker locker(itemList);
 		for(int i = 0; i < itemList->size(); ++i) {
 			ManagedReference<AuctionItem* > item = itemList->get(i);
-			if(item == NULL)
+			if(item == nullptr)
 				continue;
 
 			Locker locker(item);
@@ -128,12 +128,12 @@ public:
 
 	void updateTerminalSearch(SceneObject* vendor, bool enabled) {
 
-		if(vendor == NULL || vendor->isBazaarTerminal())
+		if(vendor == nullptr || vendor->isBazaarTerminal())
 			return;
 
 		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
 
-		if(itemList == NULL)
+		if(itemList == nullptr)
 			return;
 
 		//Locker locker(itemList);
@@ -148,13 +148,13 @@ public:
 		if(region.isEmpty())
 			return getPlanetListing(planet);
 
-		if(vendor == NULL)
+		if(vendor == nullptr)
 			return getRegionListing(planet, region);
 
 		TerminalListVector terminals;
 
 		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
-		if(itemList != NULL)
+		if(itemList != nullptr)
 			terminals.add(itemList);
 
 		return terminals;
@@ -170,7 +170,7 @@ public:
 
 			Reference<TerminalItemList*> itemList = get(i);
 
-			if(itemList == NULL)
+			if(itemList == nullptr)
 				continue;
 
 			terminals.add(itemList);
@@ -188,7 +188,7 @@ public:
 
 		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
 
-		if(planetList != NULL)
+		if(planetList != nullptr)
 			getPlanetListing(&terminals, planetList);
 
 		return terminals;
@@ -201,10 +201,10 @@ public:
 
 		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
 
-		if(planetList != NULL) {
+		if(planetList != nullptr) {
 			Reference<TerminalRegionList*> regionList = planetList->get(region);
 
-			if(regionList != NULL)
+			if(regionList != nullptr)
 				getRegionListing(&terminals, regionList);
 		}
 
@@ -219,7 +219,7 @@ private:
 
 		Reference<TerminalPlanetList*> newPlanet = new TerminalPlanetList();
 		newPlanet->setNoDuplicateInsertPlan();
-		newPlanet->setNullValue(NULL);
+		newPlanet->setNullValue(nullptr);
 
 		return (galaxyListing.put(planet, newPlanet) != -1);
 	}
@@ -239,7 +239,7 @@ private:
 
 		Reference<TerminalRegionList*> newRegion = new TerminalRegionList();
 		newRegion->setNoDuplicateInsertPlan();
-		newRegion->setNullValue(NULL);
+		newRegion->setNullValue(nullptr);
 
 		return (planetList->put(region, newRegion) != -1);
 	}
@@ -258,13 +258,13 @@ private:
 		for(int i = 0; i < galaxyListing.size(); ++i) {
 
 			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
-			if(planetList != NULL) {
+			if(planetList != nullptr) {
 
 				for(int j = 0; j < planetList->size(); ++j) {
 
 					Reference<TerminalRegionList*> regionList = planetList->get(j);
 
-					if(regionList != NULL) {
+					if(regionList != nullptr) {
 
 						for(int k = 0; k < regionList->size(); ++k) {
 							if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
@@ -275,19 +275,19 @@ private:
 				}
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	void getPlanetListing(TerminalListVector* terminals, TerminalPlanetList* planetList) {
 
-		if(planetList != NULL) {
+		if(planetList != nullptr) {
 			//ReadLocker rlocker(planetList);
 
 			for(int j = 0; j < planetList->size(); ++j) {
 
 				Reference<TerminalRegionList*> regionList = planetList->get(j);
 
-				if(regionList != NULL)
+				if(regionList != nullptr)
 					getRegionListing(terminals, regionList);
 			}
 
@@ -296,14 +296,14 @@ private:
 
 	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
 
-		if(regionList != NULL) {
+		if(regionList != nullptr) {
 			//ReadLocker rlocker(regionList);
 
 			for(int i = 0; i < regionList->size(); ++i) {
 
 				Reference<TerminalItemList*> itemList = regionList->get(i);
 
-				if(itemList == NULL)
+				if(itemList == nullptr)
 					continue;
 
 				terminals->add(itemList);

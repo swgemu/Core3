@@ -155,14 +155,14 @@ void PortalLayout::readPortalGeometry0004(IffStream *iff, int numPortals) {
 }
 
 PortalLayout::PortalLayout() {
-	pathGraph = NULL;
+	pathGraph = nullptr;
 
 	setLoggingName("PortalLayout");
 }
 
 PortalLayout::~PortalLayout() {
 	delete pathGraph;
-	pathGraph = NULL;
+	pathGraph = nullptr;
 }
 
 void PortalLayout::parse(IffStream* iffStream) {
@@ -205,7 +205,7 @@ void PortalLayout::parse(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
 		if (nextType == 'PGRF') {
-			pathGraph = new PathGraph(NULL);
+			pathGraph = new PathGraph(nullptr);
 			pathGraph->readObject(iffStream);
 		}
 
@@ -240,7 +240,7 @@ void PortalLayout::parse(IffStream* iffStream) {
 	connectFloorMeshGraphs();
 }
 
-int PortalLayout::getCellID(const String& cellName) {
+int PortalLayout::getCellID(const String& cellName) const {
 	for (int i = 0; i < cellProperties.size(); ++i) {
 		CellProperty* cell = cellProperties.get(i);
 
@@ -255,12 +255,12 @@ void PortalLayout::connectFloorMeshGraphs() {
 	for (int i = 0; i < cellProperties.size(); ++i) {
 		FloorMesh* floorMesh = getFloorMesh(i);
 
-		if (floorMesh == NULL)
+		if (floorMesh == nullptr)
 			continue;
 
 		PathGraph* pathGraph = floorMesh->getPathGraph();
 
-		if (pathGraph == NULL)
+		if (pathGraph == nullptr)
 			continue;
 
 		Vector<PathNode*> globalNodes = pathGraph->getGlobalNodes();
@@ -274,10 +274,10 @@ void PortalLayout::connectFloorMeshGraphs() {
 				if (i != k) {
 					FloorMesh* newMesh = getFloorMesh(k);
 
-					if (newMesh != NULL) {
+					if (newMesh != nullptr) {
 						PathGraph* newPathGraph = newMesh->getPathGraph();
 
-						if (newPathGraph != NULL) {
+						if (newPathGraph != nullptr) {
 							Vector<PathNode*> newGlobalNodes = newPathGraph->getGlobalNodes();
 
 							for (int l = 0; l < newGlobalNodes.size(); ++l) {
@@ -296,15 +296,15 @@ void PortalLayout::connectFloorMeshGraphs() {
 	}
 }
 
-int PortalLayout::getFloorMeshID(int globalNodeID, int floorMeshToExclude) {
+int PortalLayout::getFloorMeshID(int globalNodeID, int floorMeshToExclude) const {
 	for (int i = 0; i < cellProperties.size(); ++i) {
 		if (i == floorMeshToExclude)
 			continue;
 
-		FloorMesh* floorMesh = getFloorMesh(i);
-		PathNode* node = floorMesh->getGlobalNode(globalNodeID);
+		const FloorMesh* floorMesh = getFloorMesh(i);
+		const PathNode* node = floorMesh->getGlobalNode(globalNodeID);
 
-		if (node != NULL)
+		if (node != nullptr)
 			return i;
 	}
 
@@ -334,7 +334,7 @@ void PortalLayout::parseCELSForm(IffStream* iffStream, int numCells) {
 	}
 }
 
-Vector<PathNode*>* PortalLayout::getPath(PathNode* node1, PathNode* node2) {
+Vector<const PathNode*>* PortalLayout::getPath(const PathNode* node1, const PathNode* node2) const {
 	return AStarAlgorithm<PathGraph, PathNode>::search<uint32>(node1->getPathGraph(), node1, node2);
 }
 
@@ -346,13 +346,13 @@ uint32 PortalLayout::loadCRC(IffStream* iffStream) {
 		iffStream->openForm(type);
 
 		Chunk *chunk = iffStream->openChunk();
-		while (chunk != NULL && chunk->getChunkID() != 'CRC ') // Yes the space is intentional
+		while (chunk != nullptr && chunk->getChunkID() != 'CRC ') // Yes the space is intentional
 		{
 			iffStream->closeChunk();
 			chunk = iffStream->openChunk();
 		}
 
-		if (chunk != NULL && chunk->getChunkID() == 'CRC ')
+		if (chunk != nullptr && chunk->getChunkID() == 'CRC ')
 			crc = iffStream->getUnsignedInt();
 
 		iffStream->closeChunk('CRC ');

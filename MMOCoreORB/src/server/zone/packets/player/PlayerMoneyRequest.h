@@ -24,7 +24,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		PlayerMoneyResponseMessage* reply = new  PlayerMoneyResponseMessage(player);

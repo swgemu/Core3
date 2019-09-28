@@ -8,8 +8,7 @@
  * \date 5-03-10
  */
 
-#ifndef RESOURCETREE_H_
-#define RESOURCETREE_H_
+#pragma once
 
 #include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
@@ -47,17 +46,21 @@ public:
 	 * \param Excludes Vector of items that can't be chosen
 	 * \param zoneid If the resource is tied to a certain zone
 	 */
-	ResourceTreeEntry* getEntry(const String& type,
-			const Vector<String>& excludes = 0,  const String& zoneName = "");
+	const ResourceTreeEntry* getEntry(const String& type,
+			const Vector<String>& excludes = 0,  const String& zoneName = "") const;
 
 	ResourceTreeNode* getBaseNode() {
+		return baseNode;
+	}
+
+	const ResourceTreeNode* getBaseNode() const {
 		return baseNode;
 	}
 
 	/**
 	 * Prints the tree
 	 */
-	void toString();
+	void toString() const;
 
 private:
 	/*
@@ -87,4 +90,3 @@ private:
 
 };
 
-#endif /* RESOURCETREE_H_ */

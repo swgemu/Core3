@@ -42,7 +42,7 @@ public:
 			ManagedReference<TangibleObject*> trap =
 					server->getZoneServer()->getObject(trapId).castTo<TangibleObject*>();
 
-			if (trap == NULL)
+			if (trap == nullptr)
 				return INVALIDPARAMETERS;
 
 			if (!trap->isTrapObject())
@@ -54,7 +54,7 @@ public:
 			ManagedReference<CreatureObject*> targetCreature =
 					server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
-			if (targetCreature == NULL || !targetCreature->isCreature()) {
+			if (targetCreature == nullptr || !targetCreature->isCreature()) {
 				creature->sendSystemMessage("@trap/trap:sys_creatures_only");
 				return GENERALERROR;
 			}
@@ -67,13 +67,13 @@ public:
 			SharedObjectTemplate* templateData =
 					TemplateManager::instance()->getTemplate(
 							trap->getServerObjectCRC());
-			if (templateData == NULL) {
+			if (templateData == nullptr) {
 				error("No template for: " + String::valueOf(trap->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
 			TrapTemplate* trapData = cast<TrapTemplate*> (templateData);
-			if (trapData == NULL) {
+			if (trapData == nullptr) {
 				error("No TrapTemplate for: " + String::valueOf(trap->getServerObjectCRC()));
 				return GENERALERROR;
 			}
@@ -105,8 +105,8 @@ public:
 
 			int targetDefense = targetCreature->getSkillMod(trapData->getDefenseMod());
 			Time* cooldown = creature->getCooldownTime("throwtrap");
-			if((cooldown != NULL && !cooldown->isPast()) ||
-					creature->getPendingTask("throwtrap") != NULL) {
+			if((cooldown != nullptr && !cooldown->isPast()) ||
+					creature->getPendingTask("throwtrap") != nullptr) {
 				creature->sendSystemMessage("@trap/trap:sys_not_ready");
 				return GENERALERROR;
 			}
@@ -133,7 +133,7 @@ public:
 			trap->decreaseUseCount();
 
 			StringIdChatParameter message;
-			ManagedReference<Buff*> buff = NULL;
+			ManagedReference<Buff*> buff = nullptr;
 			int damage = 0;
 
 			if (hit) {

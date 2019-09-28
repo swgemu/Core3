@@ -20,9 +20,9 @@
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	int i = 0;
 
-	Reference<LairAggroTask*> task = NULL;
+	Reference<LairAggroTask*> task = nullptr;
 	SceneObject* sourceObject = cast<SceneObject*>(arg1);
-	AiAgent* agent = NULL;
+	AiAgent* agent = nullptr;
 	ManagedReference<LairObserver*> lairObserver = _this.getReferenceUnsafeStaticCast();
 	ManagedReference<TangibleObject*> lair = cast<TangibleObject*>(observable);
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
@@ -55,14 +55,14 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 		break;
 	case ObserverEventType::AIMESSAGE:
-		if (sourceObject == NULL) {
+		if (sourceObject == nullptr) {
 			Logger::console.error("LairObserverImplemenation::notifyObserverEvent does not have a source object");
 			return 1;
 		}
 
 		for (i = 0; i < spawnedCreatures.size(); i++) {
 			agent = cast<AiAgent*>(spawnedCreatures.get(i).get());
-			if (agent == NULL)
+			if (agent == nullptr)
 				continue;
 
 			agent->activateInterrupt(sourceObject, arg2);
@@ -83,7 +83,7 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
 
-	if (lair->getZone() == NULL) {
+	if (lair->getZone() == nullptr) {
 		spawnedCreatures.removeAll();
 		return;
 	}
@@ -109,7 +109,7 @@ int LairObserverImplementation::getLivingCreatureCount() {
 			continue;
 		}
 
-		if(!cr->isDead() && cr->getZone() != NULL)
+		if(!cr->isDead() && cr->getZone() != nullptr)
 			alive++;
 	}
 
@@ -126,10 +126,10 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 			CreatureObject* creo = spawnedCreatures.get(i);
 
-			if (creo->isDead() || creo->getZone() == NULL)
+			if (creo->isDead() || creo->getZone() == nullptr)
 				continue;
 
-			if (creo->isAiAgent() && attacker != NULL && (allAttack || (System::random(1) == 1))) {
+			if (creo->isAiAgent() && attacker != nullptr && (allAttack || (System::random(1) == 1))) {
 				// TODO: only set defender if needed
 				AiAgent* ai = cast<AiAgent*>( creo);
 				Locker clocker(creo, lair);
@@ -146,19 +146,19 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 	if (!(getLivingCreatureCount() > 0 && lair->getConditionDamage() > 0))
 		return;
 
-	if (healLairEvent == NULL) {
+	if (healLairEvent == nullptr) {
 		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.getReferenceUnsafeStaticCast());
 		healLairEvent->schedule(1000);
 	} else if (!healLairEvent->isScheduled()) {
 		healLairEvent->schedule(1000);
-	} else if (attacker != NULL)
+	} else if (attacker != nullptr)
 		healLairEvent->setAttacker(attacker);
 }
 
 void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* attacker){
 	Locker locker(lair);
 
-	if (lair->getZone() == NULL)
+	if (lair->getZone() == nullptr)
 		return;
 
 	int damageToHeal = 0;
@@ -167,7 +167,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 		CreatureObject* creo = spawnedCreatures.get(i);
 
-		if (creo->isDead() || creo->getZone() == NULL)
+		if (creo->isDead() || creo->getZone() == nullptr)
 			continue;
 
 		//  TODO: Range check
@@ -178,7 +178,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	if (damageToHeal == 0)
 		return;
 
-	if (lair->getZone() == NULL)
+	if (lair->getZone() == nullptr)
 		return;
 
 	lair->healDamage(lair, 0, damageToHeal, true);
@@ -196,7 +196,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	Zone* zone = lair->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return false;
 
 	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit() && !lairTemplate->hasBossMobs())
@@ -292,7 +292,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 
 		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
 
-		if (creatureTemplate == NULL)
+		if (creatureTemplate == nullptr)
 			continue;
 
 		float tamingChance = creatureTemplate->getTame();
@@ -305,17 +305,17 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
 			float z = zone->getHeight(x, y);
 
-			ManagedReference<CreatureObject*> creo = NULL;
+			ManagedReference<CreatureObject*> creo = nullptr;
 
 			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 500)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
 			}
 
-			if (creo == NULL)
+			if (creo == nullptr)
 				creo = creatureManager->spawnCreatureWithAi(templateToSpawn.hashCode(), x, z, y);
 
-			if (creo == NULL)
+			if (creo == nullptr)
 				continue;
 
 			if (!creo->isAiAgent()) {

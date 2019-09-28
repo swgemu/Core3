@@ -28,7 +28,7 @@ public:
 
 		Reference<CraftingSession*> session = creature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
-		if(session == NULL) {
+		if(session == nullptr) {
 			return GENERALERROR;
 		}
 

@@ -36,7 +36,7 @@ void ResourceLabratory::initialize(ZoneServer* server) {
 }
 void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 
-	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+	if(manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return;
 
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
@@ -130,7 +130,7 @@ int ResourceLabratory::getCreationCount(ManufactureSchematic* manufactureSchemat
 
 bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic) {
 
-	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+	if(manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return false;
 
 	float max, min, currentvalue, propertyvalue;
@@ -149,17 +149,17 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
 
-		if(ingredientSlot == NULL || !ingredientSlot->isComponentSlot() || !ingredientSlot->isFull())
+		if(ingredientSlot == nullptr || !ingredientSlot->isComponentSlot() || !ingredientSlot->isFull())
 			continue;
 
 		ComponentSlot* compSlot = cast<ComponentSlot*>(ingredientSlot.get());
 
-		if(compSlot == NULL)
+		if(compSlot == nullptr)
 			continue;
 
 		ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
 
-		if (tano == NULL || !tano->isComponent())
+		if (tano == nullptr || !tano->isComponent())
 			continue;
 
 		ManagedReference<Component*> component = cast<Component*>( tano.get());

@@ -20,7 +20,7 @@
 LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 		ManagedServiceImplementation(), Logger("LoginServer") {
 
-	phandler = NULL;
+	phandler = nullptr;
 
 	datagramService = new DatagramServiceThread("LoginDatagramService");
 	datagramService->setLogging(false);
@@ -31,17 +31,17 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 
 	configManager = configMan;
 
-	processor = NULL;
+	processor = nullptr;
 
-	accountManager = NULL;
+	accountManager = nullptr;
 
 	setLogging(false);
 }
 
 void LoginServerImplementation::initializeTransientMembers() {
-	phandler = NULL;
+	phandler = nullptr;
 
-	processor = NULL;
+	processor = nullptr;
 
 	ManagedObjectImplementation::initializeTransientMembers();
 }
@@ -80,14 +80,14 @@ void LoginServerImplementation::stop() {
 	shutdown();
 
 	datagramService->stop();
-	datagramService = NULL;
+	datagramService = nullptr;
 }
 
 void LoginServerImplementation::shutdown() {
 	stopManagers();
-	loginHandler = NULL;
-	phandler = NULL;
-	processor = NULL;
+	loginHandler = nullptr;
+	phandler = nullptr;
+	processor = nullptr;
 
 	printInfo();
 
@@ -95,8 +95,8 @@ void LoginServerImplementation::shutdown() {
 }
 
 void LoginServerImplementation::stopManagers() {
-	accountManager = NULL;
-	configManager = NULL;
+	accountManager = nullptr;
+	configManager = nullptr;
 
 	info("managers stopped", true);
 }
@@ -117,13 +117,13 @@ LoginClient* LoginServerImplementation::createConnection(Socket* sock, SocketAdd
 }
 
 void LoginServerImplementation::handleMessage(LoginClient* client, Packet* message) {
-	if (phandler == NULL)
+	if (phandler == nullptr)
 		return;
 
 	BaseClientProxy* session = cast<BaseClientProxy*>(client->getSession());
 
 	try {
-		if (session != NULL && session->isAvailable())
+		if (session != nullptr && session->isAvailable())
 			phandler->handlePacket(session, message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {
@@ -150,7 +150,7 @@ LoginClient* LoginServerImplementation::getLoginClient(ServiceClient* session) {
 bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
 	BaseClientProxy* bclient = cast<BaseClientProxy*>(client);
 
-	if (bclient != NULL) {
+	if (bclient != nullptr) {
 		bclient->setError();
 
 		bclient->disconnect();

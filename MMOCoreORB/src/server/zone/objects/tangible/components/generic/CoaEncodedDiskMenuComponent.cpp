@@ -11,7 +11,7 @@ void CoaEncodedDiskMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	TangibleObject* disk = cast<TangibleObject*>(sceneObject);
-	if (disk == NULL) {
+	if (disk == nullptr) {
 		return;
 	}
 
@@ -35,7 +35,7 @@ int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	}
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	if (inventory == NULL) {
+	if (inventory == nullptr) {
 		return 0;
 	}
 
@@ -45,12 +45,12 @@ int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	}
 
 	TangibleObject* disk = cast<TangibleObject*>(sceneObject);
-	if (disk == NULL) {
+	if (disk == nullptr) {
 		return 0;
 	}
 
 	PlayerObject* ghost = player->getPlayerObject();
-	if (ghost == NULL) {
+	if (ghost == nullptr) {
 		return 0;
 	}
 

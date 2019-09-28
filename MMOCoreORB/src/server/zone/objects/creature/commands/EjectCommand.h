@@ -38,14 +38,14 @@ public:
 string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed because you moved.
 		 */
 
-		if (creature->getParent() != NULL) {
+		if (creature->getParent() != nullptr) {
 			creature->sendSystemMessage("@error_message:sys_eject_fail_contained"); //The ejection attempt failed because you are inside a building.
 			return GENERALERROR;
 		}
 
 		ManagedReference<Zone*> zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		float x = creature->getPositionX();
@@ -60,7 +60,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 		Locker _lock(zone);
 
 		//Find nearest building.
-		ManagedReference<BuildingObject*> closestBuilding = NULL;
+		ManagedReference<BuildingObject*> closestBuilding = nullptr;
 		float minRange = 16000.f;
 
 		CloseObjectsVector* vec = (CloseObjectsVector*) creature->getCloseObjects();
@@ -71,7 +71,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects.get(i));
 
-			if (obj == NULL || !obj->isBuildingObject())
+			if (obj == nullptr || !obj->isBuildingObject())
 				continue;
 
 			float objRange = obj->getDistanceTo(creature);
@@ -82,7 +82,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 			}
 		}
 
-		if (closestBuilding == NULL) {
+		if (closestBuilding == nullptr) {
 			creature->sendSystemMessage("@error_message:sys_eject_fail_proximity"); //The eject attempt failed because there isn't a building nearby.
 			return GENERALERROR;
 		}

@@ -5,11 +5,11 @@
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(templateData) {
 	setLoggingName("PlayerCreature");
 
-	follow = NULL;
+	follow = nullptr;
 }
 
 void PlayerCreature::updatePosition(float x, float z, float y) {
-	if (client == NULL)
+	if (client == nullptr)
 		return;
 
 	setPosition(x, z, y);
@@ -43,7 +43,7 @@ void PlayerCreature::activatePositionUpdate() {
 		 << getPositionZ() << ", " << getPositionY() << ")\n";*/
 
 	/*ZoneClient * client = zone->getZoneClient ( );
-	if  ( client != NULL ) {
+	if  ( client != nullptr ) {
 		Message * dataupd = new DataTransformMessage ( this );
 		client->sendMessage ( dataupd );
 

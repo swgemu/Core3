@@ -18,11 +18,11 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
-		if (controlDevice == NULL)
+		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == NULL )
+		if( pet == nullptr )
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -34,7 +34,7 @@ public:
 		// Check if droid has power
 		if( controlDevice->getPetType() == PetManager::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == NULL )
+			if( droidPet == nullptr )
 				return GENERALERROR;
 
 			if( !droidPet->hasPower() ){
@@ -44,7 +44,7 @@ public:
 		}
 
 		Reference<CreatureObject*> player = server->getZoneServer()->getObject(target, true).castTo<CreatureObject*>();
-		if (player == NULL || player->isAttackableBy(pet)) {
+		if (player == nullptr || player->isAttackableBy(pet)) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
@@ -53,7 +53,7 @@ public:
 		uint64 playersTargetID = player->getTargetID();
 
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(playersTargetID, true).castTo<TangibleObject*>();
-		if (targetObject == NULL || !targetObject->isCreatureObject() || targetObject->isAttackableBy(pet)) {
+		if (targetObject == nullptr || !targetObject->isCreatureObject() || targetObject->isAttackableBy(pet)) {
 			targetObject = player->asTangibleObject();
 		}
 

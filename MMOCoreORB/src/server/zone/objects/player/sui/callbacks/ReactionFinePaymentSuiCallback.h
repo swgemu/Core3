@@ -15,7 +15,7 @@ public:
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!sui->isMessageBox() || creature == NULL)
+		if (!sui->isMessageBox() || creature == nullptr)
 			return;
 
 		if(!creature->isPlayerCreature())
@@ -24,12 +24,12 @@ public:
 		ManagedReference<SceneObject*> object = sui->getUsingObject().get();
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-		if (object == NULL || playerObject == NULL)
+		if (object == nullptr || playerObject == nullptr)
 			return;
 
 		ManagedReference<CreatureObject*> emoteTarget = (object).castTo<CreatureObject*>();
 
-		if (emoteTarget == NULL)
+		if (emoteTarget == nullptr)
 			return;
 
 		int playerCredits = creature->getCashCredits();
@@ -38,7 +38,7 @@ public:
 		ChatManager* chatManager = server->getChatManager();
 		ReactionManager* reactionManager = server->getReactionManager();
 
-		if (chatManager == NULL || reactionManager == NULL)
+		if (chatManager == nullptr || reactionManager == nullptr)
 			return;
 
 		Locker clocker(emoteTarget, creature);

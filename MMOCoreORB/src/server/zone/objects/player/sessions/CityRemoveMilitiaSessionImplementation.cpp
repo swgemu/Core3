@@ -17,12 +17,12 @@ int CityRemoveMilitiaSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> creature = creatureObject.get();
 	ManagedReference<CityRegion*> city = cityRegion.get();
 
-	if (creature == NULL || city == NULL)
+	if (creature == nullptr || city == nullptr)
 		return cancelSession();
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return cancelSession();
 
 	if (!city->isMayor(creature->getObjectID()) && !ghost->isAdmin())
@@ -30,7 +30,7 @@ int CityRemoveMilitiaSessionImplementation::initializeSession() {
 
 	ManagedReference<SceneObject*> militiaMember = creature->getZoneServer()->getObject(militiaID);
 
-	if (militiaMember == NULL)
+	if (militiaMember == nullptr)
 		return cancelSession();
 
 	StringBuffer text;

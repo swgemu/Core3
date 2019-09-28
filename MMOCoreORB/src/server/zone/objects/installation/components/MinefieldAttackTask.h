@@ -25,7 +25,7 @@ public:
 	}
 
 	void run() {
-		if(sceneObject == NULL)
+		if(sceneObject == nullptr)
 			return;
 
 		Locker locker(sceneObject);
@@ -34,13 +34,13 @@ public:
 			return;
 
 		DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
-		if(ref == NULL){
+		if(ref == nullptr){
 			return;
 		}
 
 		MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(ref->get());
 
-		if(mineData == NULL || !mineData->canExplode()){
+		if(mineData == nullptr || !mineData->canExplode()){
 			return;
 		}
 
@@ -48,21 +48,21 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = sceneObject->getContainerObject(0).castTo<WeaponObject*>();
 
-		if (weapon == NULL || sceneObject->getZone() == NULL)
+		if (weapon == nullptr || sceneObject->getZone() == nullptr)
 			return;
 
 		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", sceneObject->getZone()->getZoneName(), sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
 		sceneObject->broadcastMessage(explodeLoc, false);
 
-		sceneObject->removeObject(weapon,NULL,true);
+		sceneObject->removeObject(weapon,nullptr,true);
 
-		if(sceneObject->getZoneServer() != NULL){
+		if(sceneObject->getZoneServer() != nullptr){
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
 			QueueCommand* command = objectController->getQueueCommand(STRING_HASHCODE("minefieldattack"));
 
-			if(command != NULL){
+			if(command != nullptr){
 				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
-				if(combatCommand != NULL){
+				if(combatCommand != nullptr){
 					CombatManager::instance()->doCombatAction(sceneObject.castTo<TangibleObject*>(), weapon, player, combatCommand);
 				}
 			}
@@ -74,7 +74,7 @@ public:
 
 		if(sceneObject->getContainerObjectsSize() <= 0){
 			TangibleObject* tano = sceneObject.castTo<TangibleObject*>();
-			if(tano == NULL)
+			if(tano == nullptr)
 				return;
 
 			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE);

@@ -18,7 +18,7 @@ void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 
 	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
-	if (diceTemplate == NULL) {
+	if (diceTemplate == nullptr) {
 		error("No DiceTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
@@ -58,27 +58,27 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 
 	TangibleObject* dice = cast<TangibleObject*>(sceneObject);
-	if (dice == NULL)
+	if (dice == nullptr)
 		return 0;
 
 	if (!player->isPlayerCreature())
 		return 0;
 
-	if (player->getZone() == NULL)
+	if (player->getZone() == nullptr)
 		return 0;
 
 	/// Get Dice Template
 	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
-	if (diceTemplate == NULL) {
+	if (diceTemplate == nullptr) {
 		error("No DiceTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return 0;
 	}
 
-	DiceDataComponent* diceData = NULL;
+	DiceDataComponent* diceData = nullptr;
 	/// Get sides count
 	byte sides = diceTemplate->getSides();
 	DataObjectComponent* data = dice->getDataObjectComponent()->get();
-	if(data != NULL && data->isDiceData()) {
+	if(data != nullptr && data->isDiceData()) {
 		diceData = cast<DiceDataComponent*>(data);
 		sides = diceData->getSides();
 	}
@@ -107,37 +107,37 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		break;
 	case 171:
 		/// 8 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(8);
 		break;
 	case 170:
 		/// 7 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(7);
 		break;
 	case 169:
 		/// 6 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(6);
 		break;
 	case 168:
 		/// 5 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(5);
 		break;
 	case 167:
 		/// 4 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(4);
 		break;
 	case 166:
 		/// 3 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(3);
 		break;
 	case 165:
 		/// 2 sides
-		if(diceData != NULL)
+		if(diceData != nullptr)
 			diceData->setSides(2);
 		break;
 	default:

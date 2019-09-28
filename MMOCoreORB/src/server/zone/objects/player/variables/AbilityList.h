@@ -27,7 +27,7 @@ private:
 	void loadFromNames(Vector<String>& abilities);
 
 public:
-	bool add(Ability* const& ability, DeltaMessage* message = NULL, int updates = 1) override;
+	bool add(Ability* const& ability, DeltaMessage* message = nullptr, int updates = 1) override;
 	bool contains(const String& element) const;
 
 	bool toBinaryStream(ObjectOutputStream* stream) override;

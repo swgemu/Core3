@@ -28,7 +28,7 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == NULL)
+		if (group == nullptr)
 			return GENERALERROR;
 
 		//If player not is leader, he will leave the group instead.

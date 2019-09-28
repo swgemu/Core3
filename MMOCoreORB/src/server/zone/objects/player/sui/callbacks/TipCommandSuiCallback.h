@@ -61,7 +61,7 @@ public:
 
 		ManagedReference<ChatManager*> cman =
 				player->getZoneServer()->getChatManager();
-		if (cman == NULL)
+		if (cman == nullptr)
 			return;
 
 		UnicodeString subject("@base_player:wire_mail_subject"); // Bank Transfer Complete...

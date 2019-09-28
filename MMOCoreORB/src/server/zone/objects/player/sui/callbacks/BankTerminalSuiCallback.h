@@ -18,7 +18,7 @@ public:
 	void run(CreatureObject* player, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!sui->isBankTransferBox() || player == NULL || cancelPressed) {
+		if (!sui->isBankTransferBox() || player == nullptr || cancelPressed) {
 			return;
 		}
 
@@ -35,7 +35,7 @@ public:
 
 		ManagedReference<SceneObject*> bankObject = suiBank->getBank();
 
-		if (bankObject == NULL)
+		if (bankObject == nullptr)
 			return;
 
 		if (!player->isInRange(bankObject, 8)){

@@ -31,14 +31,14 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isInstallationObject())
+		if (object == nullptr || !object->isInstallationObject())
 			return GENERALERROR;
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
 		auto zone = inso->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		try {

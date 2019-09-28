@@ -31,7 +31,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	ZoneServer* zs = player->getZoneServer();
 	ManagedReference<TangibleObject*> target = zs->getObject(targetID, true).castTo<TangibleObject*>();
 
-	if (target == NULL || (!target->isSliceable() && !target->isSecurityTerminal())) {
+	if (target == nullptr || (!target->isSliceable() && !target->isSecurityTerminal())) {
 		player->sendSystemMessage("You cannot slice that.");
 		return 0;
 	}
@@ -43,11 +43,11 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 
 		MissionTerminal* terminal = target.castTo<MissionTerminal*>();
 
-		if (terminal == NULL || terminal->isBountyTerminal())
+		if (terminal == nullptr || terminal->isBountyTerminal())
 			return 0;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
-		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 			return 0;
 		}
@@ -66,11 +66,11 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		return 0;
 	} else if (target->isSecurityTerminal()) {
 		Zone* zone = target->getZone();
-		if (zone == NULL)
+		if (zone == nullptr)
 			return 0;
 
 		GCWManager* gcwMan = zone->getGCWManager();
-		if (gcwMan == NULL)
+		if (gcwMan == nullptr)
 			return 0;
 
 		if (!gcwMan->canStartSlice(player, target))

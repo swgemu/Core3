@@ -33,17 +33,17 @@ public:
 	void run() {
 		ManagedReference<TangibleObject*> turret = turretObject.get();
 
-		if (turret == NULL)
+		if (turret == nullptr)
 			return;
 
 		TurretDataComponent* turretData = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
 
-		if (turretData == NULL)
+		if (turretData == nullptr)
 			return;
 
 		Locker lock(turret);
 
-		ManagedReference<CreatureObject*> target = NULL;
+		ManagedReference<CreatureObject*> target = nullptr;
 
 		if (isManual) {
 			target = turretData->getManualTarget();
@@ -55,14 +55,14 @@ public:
 		} else {
 			ManagedReference<CreatureObject*> controller = turretData->getController();
 
-			if (controller != NULL) {
+			if (controller != nullptr) {
 				closeControls(controller);
-				turretData->setController(NULL);
+				turretData->setController(nullptr);
 			}
 
 			target = turretData->selectTarget();
 
-			if (target == NULL) {
+			if (target == nullptr) {
 				turretData->rescheduleFireTask(false, false);
 				return;
 			}
@@ -73,7 +73,7 @@ public:
 		CombatQueueCommand* command = cast<CombatQueueCommand*>(objectController->getQueueCommand(STRING_HASHCODE("turretfire")));
 		ManagedReference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
-		if (command != NULL && weapon != NULL) {
+		if (command != nullptr && weapon != nullptr) {
 			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
 
 			if (isManual) {
@@ -91,17 +91,17 @@ public:
 		ManagedReference<CreatureObject*> attacker = cast<CreatureObject*>(turretData->getController());
 		ManagedReference<TangibleObject*> terminal = terminalObject.get();
 
-		if (attacker == NULL || terminal == NULL)
+		if (attacker == nullptr || terminal == nullptr)
 			return false;
 
 		PlayerObject* ghost = attacker->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return false;
 
 		TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(terminal->getDataObjectComponent()->get());
 
-		if (controlData == NULL)
+		if (controlData == nullptr)
 			return false;
 
 		if (!ghost->hasSuiBox(controlData->getSuiBoxID()))
@@ -111,23 +111,23 @@ public:
 	}
 
 	void closeControls(CreatureObject* controllerCharacter) {
-		if (controllerCharacter == NULL)
+		if (controllerCharacter == nullptr)
 			return;
 
 		PlayerObject* ghost = controllerCharacter->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			ghost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
 		}
 	}
 
 	bool checkTarget(TangibleObject* turret, CreatureObject* target) {
-		if (target == NULL || turret == NULL)
+		if (target == nullptr || turret == nullptr)
 			return false;
 
 		TurretDataComponent* turretData = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
 
-		if (turretData == NULL)
+		if (turretData == nullptr)
 			return false;
 
 		ManagedReference<CreatureObject*> attacker = turretData->getController();

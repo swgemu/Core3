@@ -23,10 +23,10 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
-	if (parent != NULL && parent->isCellObject()) {
+	if (parent != nullptr && parent->isCellObject()) {
 		ManagedReference<SceneObject*> obj = parent->getParent().get();
 
-		if (obj != NULL && obj->isBuildingObject()) {
+		if (obj != nullptr && obj->isBuildingObject()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
 
 			if (!buio->isOnAdminList(player))
@@ -51,7 +51,7 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		
 		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	
-		if (parent == NULL)
+		if (parent == nullptr)
 			return 0;
 	
 		if (parent->isPlayerCreature()) {
@@ -62,7 +62,7 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		if (parent->isCellObject()) {
 			ManagedReference<SceneObject*> obj = parent->getParent().get();
 
-			if (obj != NULL && obj->isBuildingObject()) {
+			if (obj != nullptr && obj->isBuildingObject()) {
 				ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
 
 				if (!buio->isOnAdminList(player))
@@ -77,7 +77,7 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 		ZoneServer* server = player->getZoneServer();
 
-		if (server != NULL) {		
+		if (server != nullptr) {		
 
 		// The color index.
 		String appearanceFilename = sceneObject->getObjectTemplate()->getAppearanceFilename();

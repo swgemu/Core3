@@ -36,7 +36,7 @@ public:
 		ManagedReference<StaticObject*> worldFireworkShow = this->worldFireworkShow.get();
 		ManagedReference<FireworkObject*> fireworkShow = this->fireworkShow.get();
 
-		if (player == NULL || worldFireworkShow == NULL || fireworkShowData == NULL || fireworkShow == NULL)
+		if (player == nullptr || worldFireworkShow == nullptr || fireworkShowData == nullptr || fireworkShow == nullptr)
 			return;
 
 		if (fireworkShowData->getTotalFireworkCount() == 0)
@@ -47,12 +47,12 @@ public:
 
 			ManagedReference<FireworkObject*> firework = fireworkShowData->getFirework(0);
 
-			if (firework == NULL)
+			if (firework == nullptr)
 				return;
 
 			ManagedReference<StaticObject*> fireworkObject = (player->getZoneServer()->createObject(firework->getFireworkObjectPath().hashCode(), 0)).castTo<StaticObject*>();
 
-			if (fireworkObject == NULL)
+			if (fireworkObject == nullptr)
 				return;
 			Locker fireworkObjectLocker(fireworkObject);
 

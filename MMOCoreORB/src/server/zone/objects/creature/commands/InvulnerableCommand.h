@@ -40,7 +40,7 @@ public:
 			if (subCmd.toLowerCase().beginsWith("invis")) {
 				Reference<Task*> task = creature->getPendingTask("invisibledelayevent");
 
-				if (task != NULL) {
+				if (task != nullptr) {
 					if (!task->isScheduled()) {
 						creature->playEffect("clienteffect/pl_force_resist_disease_self.cef");
 						task->schedule(1600);

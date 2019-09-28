@@ -27,14 +27,14 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		Locker _locker(object);
 
 		PlayerObject* ghost = object->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->notifySceneReady();
 	}
 };

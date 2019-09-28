@@ -38,11 +38,11 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> oper = client->getPlayer();
 
-		if (oper == NULL)
+		if (oper == nullptr)
 			return;
 
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
-		if (chatManager != NULL)
+		if (chatManager != nullptr)
 			chatManager->handleChatAddModerator(oper, opeeName, roomPath, requestID);
 	}
 

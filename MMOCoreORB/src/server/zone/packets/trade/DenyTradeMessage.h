@@ -29,13 +29,13 @@ public:
 	void run() {
 		Reference<CreatureObject*> object = client->getPlayer();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		Locker _locker(object);
 		Reference<TradeSession*> tradeContainer = object->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-		if (tradeContainer == NULL) {
+		if (tradeContainer == nullptr) {
 			object->error("DenyTradeMessage without TradeSession");
 			return;
                 }
@@ -43,11 +43,11 @@ public:
 		uint64 targetID = tradeContainer->getTradeTargetPlayer();
 
 		Reference<ZoneServer*> zone = getServer()->getZoneServer();
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		Reference<CreatureObject*> target = zone->getObject(targetID).castTo<CreatureObject*>();
-		if (target != NULL)
+		if (target != nullptr)
 			target->sendMessage(new DenyTradeMessage());
 	}
 };

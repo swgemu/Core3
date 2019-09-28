@@ -40,7 +40,7 @@ public:
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!sui->isInputBox() || cancelPressed || creature == NULL)
+		if (!sui->isInputBox() || cancelPressed || creature == nullptr)
 			return;
 
 		if (args->size() < 0)
@@ -48,7 +48,7 @@ public:
 
 		ManagedReference<Zone*> zone = this->zone.get();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		String cityName = args->get(0).toString();

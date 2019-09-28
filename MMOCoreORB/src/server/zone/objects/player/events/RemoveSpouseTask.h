@@ -13,13 +13,13 @@ public:
 	}
 
 	void run() {
-		if (creature == NULL)
+		if (creature == nullptr)
 			return;
 
 		Locker locker(creature);
 
 		PlayerObject* ghost = creature->getPlayerObject().get();
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		ghost->removeSpouse();

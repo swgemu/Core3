@@ -44,7 +44,7 @@ public:
 			throw;
 		}
 
-		//gamblingTerminal = NULL; <- ?
+		//gamblingTerminal = nullptr; <- ?
 
 	}
 

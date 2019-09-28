@@ -30,7 +30,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
 
-		if (strongReference == NULL) {
+		if (strongReference == nullptr) {
 			return;
 		}
 
@@ -54,7 +54,7 @@ public:
 	bool isLanded() {
 		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
 
-		if (strongReference == NULL) {
+		if (strongReference == nullptr) {
 			return false;
 		}
 
@@ -71,7 +71,7 @@ public:
 	bool isLanding() {
 		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
 
-		if (strongReference == NULL) {
+		if (strongReference == nullptr) {
 			return false;
 		}
 

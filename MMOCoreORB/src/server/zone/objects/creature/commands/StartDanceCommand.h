@@ -25,7 +25,7 @@ public:
 		ManagedReference<EntertainingSession*> session =
 				dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			session = new EntertainingSession(creature);
 			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
 		}
@@ -81,7 +81,7 @@ public:
 		ManagedReference<EntertainingSession*> session =
 				dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session != NULL) {
+		if (session != nullptr) {
 			if (session->isPlayingMusic()) {
 				session->stopPlayingMusic();
 			}
@@ -98,7 +98,7 @@ public:
 				creature->getSlottedObject(
 						"ghost").castTo<PlayerObject*> ();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		String args = arguments.toString();

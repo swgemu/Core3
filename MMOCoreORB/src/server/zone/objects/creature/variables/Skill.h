@@ -76,7 +76,7 @@ public:
 		searchable = false;
 		skillsRequiredCount = 0;
 		pointsRequired = 0;
-		parentNode = NULL;
+		parentNode = nullptr;
 	}
 
 	~Skill() {

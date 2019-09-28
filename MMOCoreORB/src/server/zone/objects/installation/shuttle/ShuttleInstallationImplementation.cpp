@@ -13,7 +13,7 @@ bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObje
 	ManagedReference<ActiveArea*> playerArea = player->getActiveRegion();
 
 	//TODO: Check to make sure the player is the mayor of the city.
-	if (playerArea == NULL || !playerArea->isRegion()) {
+	if (playerArea == nullptr || !playerArea->isRegion()) {
 		player->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
 		return false;
 	}
@@ -22,7 +22,7 @@ bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObje
 	/*
 	Region* region = cast<Region*>( playerArea.get());
 
-	if (region->getShuttle() != NULL) {
+	if (region->getShuttle() != nullptr) {
 		player->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.
 		return false;
 	}

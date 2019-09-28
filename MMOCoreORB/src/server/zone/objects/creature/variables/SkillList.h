@@ -17,8 +17,8 @@ class SkillList : public DeltaVector<Reference<Skill*> > {
 	Vector<String> skills;
 #endif
 public:
-	bool add(Skill* skill, DeltaMessage* message = NULL);
-	void remove(Skill* skill, DeltaMessage* message = NULL);
+	bool add(Skill* skill, DeltaMessage* message = nullptr);
+	void remove(Skill* skill, DeltaMessage* message = nullptr);
 
 	bool containsSkill(const String& skill) const;
 

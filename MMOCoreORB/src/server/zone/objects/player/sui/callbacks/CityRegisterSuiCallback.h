@@ -42,7 +42,7 @@ public:
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL || cancelPressed)
+		if (city == nullptr || cancelPressed)
 			return;
 
 		Locker lock(city, player);

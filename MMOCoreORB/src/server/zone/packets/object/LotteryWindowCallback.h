@@ -39,12 +39,12 @@ public:
 		//Get the player sending the loot selections.
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		//Get the corpse the lottery is for.
 		ManagedReference<AiAgent*> corpse = server->getZoneServer()->getObject(containerID)->getParent().get().castTo<AiAgent*>();
-		if (corpse == NULL)
+		if (corpse == nullptr)
 			return;
 
 		Locker locker(corpse);
@@ -52,7 +52,7 @@ public:
 		//Make sure there is an active lottery in progress.
 		if (corpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY)) {
 			Reference<LootLotterySession*> session = corpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).castTo<LootLotterySession*>();
-			if (session == NULL || session->isLotteryFinished())
+			if (session == nullptr || session->isLotteryFinished())
 				return;
 
 			if (!session->containsEligiblePlayer(player))

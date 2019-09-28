@@ -51,7 +51,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isTerminal()) {
+		if (obj == nullptr || !obj->isTerminal()) {
 			guildManager->removePendingGuild(playerID);
 			return;
 		}

@@ -37,7 +37,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (parent == NULL || !parent->isBuildingObject()) {
+		if (parent == nullptr || !parent->isBuildingObject()) {
 			player->sendSystemMessage("@player_structure:must_be_in_building");
 			return GENERALERROR;
 		}

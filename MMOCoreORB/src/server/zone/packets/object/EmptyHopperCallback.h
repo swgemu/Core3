@@ -39,12 +39,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(harvesterId);
 
-		if (object == NULL || !object->isInstallationObject()) {
+		if (object == nullptr || !object->isInstallationObject()) {
 			//player->error("not parsing right");
 			return;
 		}
@@ -54,7 +54,7 @@ public:
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
 		
-		if (inso == NULL)
+		if (inso == nullptr)
 			return;
 
 		/*if (!inso->isHarvesterObject())
@@ -78,14 +78,14 @@ public:
 
 			ManagedReference<ResourceSpawn*> resourceSpawn = server->getZoneServer()->getObject(resourceId).castTo<ResourceSpawn*>();
 
-			if (resourceSpawn == NULL) {
+			if (resourceSpawn == nullptr) {
 				player->error("wrong spawn id");
 				return;
 			}
 
 			ManagedReference<ResourceContainer*> container = inso->getContainerFromHopper(resourceSpawn);
 
-			if (container == NULL) {
+			if (container == nullptr) {
 				player->error("null container");
 				return;
 			}

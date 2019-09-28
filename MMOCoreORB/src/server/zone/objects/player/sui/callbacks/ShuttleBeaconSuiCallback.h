@@ -21,12 +21,12 @@ public:
 
 		ManagedReference<SceneObject*> beacon = listBox->getUsingObject().get();
 
-		if (beacon == NULL)
+		if (beacon == nullptr)
 			return;
 
 		ManagedReference<ShuttleBeacon*> shuttleBeacon = cast<ShuttleBeacon*>(beacon.get());
 
-		if (shuttleBeacon == NULL)
+		if (shuttleBeacon == nullptr)
 			return;
 
 		if (args->size() < 1)

@@ -30,12 +30,12 @@ public:
 
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
-		ManagedReference<CreatureObject* > targetPlayer = NULL;
+		ManagedReference<CreatureObject* > targetPlayer = nullptr;
 		CreatureObject* player = cast<CreatureObject*>(creature);
 		StringTokenizer args(arguments.toString());
 		StringBuffer fullReason;
 
-		if (object == NULL || !object->isPlayerCreature()) {
+		if (object == nullptr || !object->isPlayerCreature()) {
 
 			String firstName;
 			if (args.hasMoreTokens()) {
@@ -47,14 +47,14 @@ public:
 			targetPlayer = cast<CreatureObject*>( object.get());
 		}
 
-		if (targetPlayer == NULL) {
+		if (targetPlayer == nullptr) {
 			player->sendSystemMessage(syntaxerror);
 			return INVALIDPARAMETERS;
 		}
 
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
 
-		if (targetGhost == NULL) {
+		if (targetGhost == nullptr) {
 			player->sendSystemMessage(syntaxerror);
 			return INVALIDPARAMETERS;
 		}

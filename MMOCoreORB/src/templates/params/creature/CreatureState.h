@@ -55,7 +55,7 @@ public:
 	void loadStateData() {
 		UniqueReference<IffStream*> iffStream(TemplateManager::instance()->openIffFile("datatables/include/state.iff"));
 
-		if (iffStream == NULL) {
+		if (iffStream == nullptr) {
 			error("Could not load states.");
 			return;
 		}

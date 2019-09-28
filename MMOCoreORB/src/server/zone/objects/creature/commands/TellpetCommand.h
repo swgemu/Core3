@@ -26,14 +26,14 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
-		if( player == NULL )
+		if( player == nullptr )
 			return GENERALERROR;
 
 		// Send message to all player's pets within range
 		for (int i = 0; i < player->getActivePetsSize(); ++i) {
 
 			ManagedReference<AiAgent*> pet = player->getActivePet(i);
-			if (pet != NULL) {
+			if (pet != nullptr) {
 
 				if( creature->isInRange( pet, 150.0 ) ){
 

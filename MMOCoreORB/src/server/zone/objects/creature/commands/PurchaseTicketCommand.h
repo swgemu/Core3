@@ -33,7 +33,7 @@ public:
 
 		for (int i = 0; i < closeObjects.size(); i++) {
 			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
-			if (object != NULL && object->getGameObjectType() == SceneObjectType::TRAVELTERMINAL && checkDistance(creature, object, 8)) {
+			if (object != nullptr && object->getGameObjectType() == SceneObjectType::TRAVELTERMINAL && checkDistance(creature, object, 8)) {
 				nearTravelTerminal = true;
 				break;
 			}
@@ -48,7 +48,7 @@ public:
 		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
 
 		int departureTax = 0;
-		if (currentCity != NULL){
+		if (currentCity != nullptr){
 			if (currentCity->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
 				return GENERALERROR;
@@ -59,7 +59,7 @@ public:
 		}
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-		if (inventory == NULL)
+		if (inventory == nullptr)
 			return GENERALERROR;
 
 		String departurePlanet, departurePoint, arrivalPlanet, arrivalPoint, type;
@@ -90,10 +90,10 @@ public:
 		ManagedReference<Zone*> departureZone = server->getZoneServer()->getZone(departurePlanet);
 		ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
 
-		if (departureZone == NULL)
+		if (departureZone == nullptr)
 			return GENERALERROR;
 
-		if (arrivalZone == NULL)
+		if (arrivalZone == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<PlanetManager*> pmDeparture = departureZone->getPlanetManager();
@@ -111,18 +111,18 @@ public:
 
 		Reference<PlanetTravelPoint*>  destPoint = pmArrival->getPlanetTravelPoint(arrivalPoint);
 
-		if (destPoint == NULL)
+		if (destPoint == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> arrivalShuttle = destPoint->getShuttle();
 
-		if (arrivalShuttle == NULL)
+		if (arrivalShuttle == nullptr)
 			return GENERALERROR;
 
 
 		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion().get();
 
-		if (destCity != NULL){
+		if (destCity != nullptr){
 			if (destCity.get()->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
 				return GENERALERROR;
@@ -188,7 +188,7 @@ public:
 		creature->sendSystemMessage(params);
 
 		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
-		if (ticket1 == NULL) {
+		if (ticket1 == nullptr) {
 			creature->sendSystemMessage("Error creating travel ticket.");
 			return GENERALERROR;
 		}
@@ -214,7 +214,7 @@ public:
 		}
 		_lock.release();
 
-		if(currentCity != NULL && !currentCity->isClientRegion() && departureTax > 0) {
+		if(currentCity != nullptr && !currentCity->isClientRegion() && departureTax > 0) {
 			Locker clocker(currentCity, creature);
 			int taxPaid = departureTax + (roundTrip * departureTax);
 			currentCity->addToCityTreasury(taxPaid);

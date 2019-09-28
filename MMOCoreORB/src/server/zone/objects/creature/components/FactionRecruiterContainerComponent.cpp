@@ -26,14 +26,14 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 
 	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL) {
+	if (player == nullptr) {
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
 
 	if (object->getObjectTemplate()->getFullTemplateString() == "object/tangible/encoded_disk/message_assembled_base.iff") {
 		CoaMessageDataComponent* data = object->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
-		if (data != NULL) {
+		if (data != nullptr) {
 			String faction = data->getFaction().toLowerCase();
 			if (faction == "imperial" || faction == "rebel") {
 				return TransferErrorCode::SUCCESS;
@@ -47,20 +47,20 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	CoaMessageDataComponent* data = object->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		return false;
 	}
 
 	ManagedReference<CreatureObject*> player = object->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL) {
+	if (player == nullptr) {
 		return false;
 	}
 
 	ZoneServer* zoneServer = player->getZoneServer();
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (zoneServer == NULL || ghost == NULL) {
+	if (zoneServer == nullptr || ghost == nullptr) {
 		return false;
 	}
 
@@ -74,7 +74,7 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 	
 	const Badge* badge = BadgeList::instance()->get("event_project_dead_eye_1");
 
-	if (badge == NULL)
+	if (badge == nullptr)
 		return false;
 
 	bool hasBadge = ghost->hasBadge(badge->getIndex());
@@ -95,7 +95,7 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	if (chatManager == NULL) {
+	if (chatManager == nullptr) {
 		return false;
 	}
 

@@ -26,7 +26,7 @@ public:
 		PermissionLevelList* permissionLevelList = PermissionLevelList::instance();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -58,13 +58,13 @@ public:
 		if (targetName.toLowerCase() != "self")
 			targetPlayer = playerManager->getPlayer(targetName);
 
-		if (targetPlayer == NULL)
+		if (targetPlayer == nullptr)
 			return GENERALERROR;
 
 		Locker clocker(targetPlayer, creature);
 
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
-		if (targetGhost != NULL) {
+		if (targetGhost != nullptr) {
 			int targetPermissionLevel = targetGhost->getAdminLevel();
 
 			if (targetPermissionLevel > ghostPermissionLevel)

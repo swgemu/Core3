@@ -20,9 +20,9 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	}
 
 	DataObjectComponentReference* data = getDataObjectComponent();
-	if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+	if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
 		BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
-		if( module != NULL ){
+		if( module != nullptr ){
 			module->updateCraftingValues( values, firstUpdate );
 		}
 	}
@@ -39,20 +39,20 @@ void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, 
 		// if this is a cluster module, add the cluter items
 		if (isSocketCluster()) {
 			ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
-			if(craftingComponents != NULL) {
+			if(craftingComponents != nullptr) {
 				SceneObject* satchel = craftingComponents->getContainerObject(0);
 				// remove all items form satchel and add int he new items
 				for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
 					ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
 					// if its a droid componet and a data module add it.
 					ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
-					if (sub != NULL) {
+					if (sub != nullptr) {
 						DataObjectComponentReference* data = sub->getDataObjectComponent();
-						BaseDroidModuleComponent* module = NULL;
-						if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+						BaseDroidModuleComponent* module = nullptr;
+						if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
 							module = cast<BaseDroidModuleComponent*>(data->get());
 						}
-						if (module == NULL) {
+						if (module == nullptr) {
 							continue;
 						}
 						module->fillAttributeList(alm,object);

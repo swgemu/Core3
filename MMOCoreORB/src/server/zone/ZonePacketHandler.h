@@ -27,7 +27,7 @@ namespace zone {
 
 	public:
 		ZonePacketHandler() : Logger() {
-			server = NULL;
+			server = nullptr;
 		}
 
 		ZonePacketHandler(const String& s, ZoneProcessServer* serv);

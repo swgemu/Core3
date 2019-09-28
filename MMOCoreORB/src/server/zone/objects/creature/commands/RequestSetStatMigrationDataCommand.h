@@ -47,7 +47,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
 		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -85,7 +85,7 @@ public:
 		//Player is in the tutorial zone and is allowed to migrate stats.
 		Zone* zone = creature->getZone();
 
-		if (zone != NULL && zone->getZoneName() == "tutorial")
+		if (zone != nullptr && zone->getZoneName() == "tutorial")
 			session->migrateStats();
 
 

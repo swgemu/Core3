@@ -28,11 +28,11 @@ public:
 			ManagedReference<SceneObject* > object =
 					server->getZoneServer()->getObject(target);
 
-			ManagedReference<CreatureObject*> player = NULL;
+			ManagedReference<CreatureObject*> player = nullptr;
 
 			StringTokenizer args(arguments.toString());
 
-			if(object == NULL || !object->isPlayerCreature()) {
+			if(object == nullptr || !object->isPlayerCreature()) {
 
 				String firstName;
 				if(args.hasMoreTokens()) {
@@ -44,7 +44,7 @@ public:
 				player = cast<CreatureObject*>( object.get());
 			}
 
-			if (player == NULL) {
+			if (player == nullptr) {
 				creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
 				return GENERALERROR;
 			}

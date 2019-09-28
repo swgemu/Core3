@@ -19,7 +19,7 @@ void ContractCrateImplementation::fillAttributeList(AttributeListMessage* alm, C
 int ContractCrateImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	ManagedReference<CreatureObject*>  player = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
 	String itemTemplate = object->getObjectTemplate()->getFullTemplateString();
@@ -31,7 +31,7 @@ int ContractCrateImplementation::canAddObject(SceneObject* object, int containme
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
 
-	if (tano == NULL)
+	if (tano == nullptr)
 		return TransferErrorCode::INVALIDTYPE;
 
 	if (tano->getCraftersName() == "") {
@@ -55,7 +55,7 @@ int ContractCrateImplementation::canAddObject(SceneObject* object, int containme
 int ContractCrateImplementation::notifyObjectInserted(SceneObject* object) {
 	ManagedReference<CreatureObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return 0;
 
 	currentAmount++;
@@ -92,7 +92,7 @@ byte ContractCrateImplementation::checkContainerPermission(CreatureObject* playe
 void ContractCrateImplementation::parseDraftSchematic(const String& schematic) {
 	DraftSchematic* schematicTemplate = SchematicMap::instance()->get(schematic.hashCode());
 
-	if (schematicTemplate == NULL)
+	if (schematicTemplate == nullptr)
 		return;
 
 	xpType = schematicTemplate->getXpType();

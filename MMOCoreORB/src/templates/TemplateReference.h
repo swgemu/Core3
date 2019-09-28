@@ -62,7 +62,7 @@ public:
 
 		return true;
 #else
-		if (Reference<O>::get() != NULL)
+		if (Reference<O>::get() != nullptr)
 			str = String::valueOf((Reference<O>::get())->getServerObjectCRC());
 		else
 			str = String::valueOf(0);
@@ -81,8 +81,8 @@ public:
 	bool parseFromString(const String& str, int version = 0) {
 		SharedObjectTemplate* obj = TemplateManager::instance()->getTemplate(UnsignedLong::valueOf(str));
 
-		if (obj == NULL) {
-			Reference<O>::updateObject(NULL);
+		if (obj == nullptr) {
+			Reference<O>::updateObject(nullptr);
 			return false;
 		}
 
@@ -99,7 +99,7 @@ public:
 #else
 		O object = Reference<O>::get();
 
-		if (object != NULL)
+		if (object != nullptr)
 			stream->writeInt(object->getServerObjectCRC());
 		else
 			stream->writeInt(0);
@@ -119,8 +119,8 @@ public:
 
 		SharedObjectTemplate* obj = TemplateManager::instance()->getTemplate(oid);
 
-		if (obj == NULL) {
-			Reference<O>::updateObject(NULL);
+		if (obj == nullptr) {
+			Reference<O>::updateObject(nullptr);
 			return false;
 		}
 

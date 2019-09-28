@@ -54,7 +54,7 @@ void AdminServlet::handleGet(HttpRequest* request, HttpResponse* response) {
 	}
 
 	delete result;
-	result = NULL;
+	result = nullptr;
 
 	response->println("	</body>");
 	response->println("</html>");

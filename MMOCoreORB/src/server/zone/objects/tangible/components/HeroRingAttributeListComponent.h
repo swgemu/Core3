@@ -21,7 +21,7 @@ public:
 
 		HeroRingDataComponent* data = cast<HeroRingDataComponent*>(tano->getDataObjectComponent()->get());
 
-		if (data == NULL || !data->isHeroRingData())
+		if (data == nullptr || !data->isHeroRingData())
 			return;
 
 		int charges = data->getCharges();

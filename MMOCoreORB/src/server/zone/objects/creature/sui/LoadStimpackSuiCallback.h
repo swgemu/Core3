@@ -35,21 +35,21 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		ManagedReference<StimPack*> stimpack = server->getObject(listBox->getMenuObjectID(index)).castTo<StimPack*>();
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
-		if(stimpack == NULL) {
+		if(stimpack == nullptr) {
 			player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
 			return;
 		}
-		if (object == NULL) {
+		if (object == nullptr) {
 			return;
 		}
 
 		DroidObject* droid = cast<DroidObject*>(object.get());
-		if (droid == NULL){
+		if (droid == nullptr){
 			return;
 		}
 
 		auto module = droid->getModule("stimpack_module").castTo<DroidStimpackModuleDataComponent*>();
-		if(module == NULL) {
+		if(module == nullptr) {
 			return;
 		}
 

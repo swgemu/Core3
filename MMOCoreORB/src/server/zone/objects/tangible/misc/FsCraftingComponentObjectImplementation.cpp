@@ -5,10 +5,10 @@
 void FsCraftingComponentObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	ManagedReference<CreatureObject*> strongOwner = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
 
-	if (strongOwner != NULL) {
+	if (strongOwner != nullptr) {
 		PlayerObject* ghost = strongOwner->getPlayerObject();
 
-		if (ghost != NULL) {
+		if (ghost != nullptr) {
 			uint32 objCRC = getServerObjectCRC();
 			int index = 0;
 

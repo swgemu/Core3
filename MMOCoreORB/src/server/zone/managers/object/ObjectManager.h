@@ -122,7 +122,7 @@ namespace zone {
 
 			LocalDatabase* db = databaseManager->getDatabase(tableID);
 
-			if (db == NULL || !db->isObjectDatabase())
+			if (db == nullptr || !db->isObjectDatabase())
 				return;
 
 			ObjectDatabase* database = cast<ObjectDatabase*>( db);

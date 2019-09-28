@@ -27,7 +27,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
@@ -64,7 +64,7 @@ public:
 				for (int i = 0; i < server->getZoneCount(); ++i) {
 					Zone* zone = server->getZone(i);
 
-					if (zone == NULL)
+					if (zone == nullptr)
 						continue;
 
 					int num = zone->getSpawnedAiAgents();
@@ -154,7 +154,7 @@ public:
 		uint32 templ = tempName.hashCode();
 		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;
 
-		AiAgent* npc = NULL;
+		AiAgent* npc = nullptr;
 		if (baby)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
 		else if (event)
@@ -163,14 +163,14 @@ public:
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, parID));
 		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
-			if (npc != NULL)
+			if (npc != nullptr)
 				npc->activateLoad("");
 		}
 
-		if (baby && npc == NULL) {
+		if (baby && npc == nullptr) {
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
 			return GENERALERROR;
-		} else if (npc == NULL) {
+		} else if (npc == nullptr) {
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 			return GENERALERROR;
 		}

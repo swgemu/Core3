@@ -101,7 +101,7 @@ int LuaConversationScreen::getScreenID(lua_State* L) {
 
 	String text;
 
-	if (realObject != NULL)
+	if (realObject != nullptr)
 		text = realObject->getScreenID();
 
 	lua_pushstring(L, text.toCharArray());
@@ -155,13 +155,13 @@ void LuaConversationScreen::setDialogText(StringIdParameter* param, lua_State* L
 
 	} else {
 		const char* str1 = lua_tostring(L, -1);
-		const char* str2 = NULL;
+		const char* str2 = nullptr;
 
 		if (lua_gettop(L) > 1 && lua_isstring(L, -2)) {
 			str2 = lua_tostring(L, -2);
 		}
 
-		if (str2 != NULL) {
+		if (str2 != nullptr) {
 			param->set(str2, str1);
 		} else {
 			param->set(str1);

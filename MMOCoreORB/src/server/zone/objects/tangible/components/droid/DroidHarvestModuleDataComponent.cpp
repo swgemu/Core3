@@ -29,7 +29,7 @@ void DroidHarvestModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -92,7 +92,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 
 	if (selectedID == HARVEST_SET_INTEREST) {
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if( droid == NULL ){
+		if( droid == nullptr ){
 			info( "Droid is null");
 			return 0;
 		}
@@ -120,7 +120,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 		return 0;
 
 	} else if (selectedID == HARVEST_PROGRAM_COMMAND) { // Handle toggle on/off
-		if( controller == NULL )
+		if( controller == nullptr )
 			return 0;
 
 		Locker locker(controller);
@@ -131,7 +131,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 	} else if ( selectedID == HARVEST_TOGGLE ) {
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if( droid == NULL ){
+		if( droid == nullptr ){
 			info( "Droid is null");
 			return 0;
 		}
@@ -158,7 +158,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 			// Ensure we don't accidentally have another task outstanding
 			deactivate();
 			player->sendSystemMessage("@pet/droid_modules:auto_harvest_on");  // You turn on auto-repair
-			if (observer == NULL) {
+			if (observer == nullptr) {
 				observer = new DroidHarvestObserver(this);
 				observer->deploy();
 			}
@@ -185,7 +185,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	active = false;
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		info( "Droid is null" );
 		return;
 	}
@@ -195,7 +195,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	// remove observer
 	ManagedReference<CreatureObject*> player = droid->getLinkedCreature().get();
 
-	if (player != NULL) {
+	if (player != nullptr) {
 		Locker clock(player, droid);
 		player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
 		droid->dropObserver(ObserverEventType::DESTINATIONREACHED, observer);
@@ -213,11 +213,11 @@ String DroidHarvestModuleDataComponent::toString(){
 void DroidHarvestModuleDataComponent::onCall(){
 	deactivate();
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		info( "Droid is null");
 		return;
 	}
-	if (observer == NULL) {
+	if (observer == nullptr) {
 		observer = new DroidHarvestObserver(this);
 		observer->deploy();
 	}
@@ -235,14 +235,14 @@ void DroidHarvestModuleDataComponent::onStore(){
 void DroidHarvestModuleDataComponent::addToStack(BaseDroidModuleComponent* other){
 
 	DroidHarvestModuleDataComponent* otherModule = cast<DroidHarvestModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	harvestBonus = harvestBonus + otherModule->harvestBonus;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 	droidComponent->changeAttributeValue( "harvest_power", harvestBonus);
 
@@ -251,31 +251,31 @@ void DroidHarvestModuleDataComponent::addToStack(BaseDroidModuleComponent* other
 void DroidHarvestModuleDataComponent::copy(BaseDroidModuleComponent* other){
 
 	DroidHarvestModuleDataComponent* otherModule = cast<DroidHarvestModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	harvestBonus = otherModule->harvestBonus;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 	droidComponent->addProperty("harvest_power", harvestBonus, 0, "exp_effectiveness");
 }
 void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker){
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		return;
 	}
 
 	ManagedReference<PetControlDevice*> pcd = droid->getControlDevice().get().castTo<PetControlDevice*>();
-	if( pcd == NULL ) {
+	if( pcd == nullptr ) {
 		return;
 	}
 
 	PetManager* petManager = droid->getZoneServer()->getPetManager();
-	if( petManager == NULL ) {
+	if( petManager == nullptr ) {
 		return;
 	}
 
@@ -289,7 +289,7 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 		uint64 targetID = speaker->getTargetID();
 		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
 
-		if (target != NULL) {
+		if (target != nullptr) {
 			// this check should occur in the pet speaking handling.
 			if(!target->isInRange(droid,64)) {
 				speaker->sendSystemMessage("@pet/droid_modules:corpse_too_far");
@@ -309,10 +309,10 @@ void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* targe
 	if(!active)
 		return;
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL){
+	if( droid == nullptr){
 		return;
 	}
-	if(target == NULL) {
+	if(target == nullptr) {
 		return;
 	}
 	if(!target->isCreature()) {

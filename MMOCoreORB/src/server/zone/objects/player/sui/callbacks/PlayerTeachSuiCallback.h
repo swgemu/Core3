@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<SceneObject*> usingObject = listBox->getUsingObject().get();
 
-		if (usingObject == NULL || !usingObject->isCreatureObject())
+		if (usingObject == nullptr || !usingObject->isCreatureObject())
 			return;
 
 		CreatureObject* student = cast<CreatureObject*>(usingObject.get());

@@ -8,8 +8,7 @@
  * \date 5-03-10
  */
 
-#ifndef RESOURCETREENODE_H_
-#define RESOURCETREENODE_H_
+#pragma once
 
 #include "ResourceTreeEntry.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -30,32 +29,34 @@ public:
 	ResourceTreeNode(const String& t, const String& n, const int d);
 	~ResourceTreeNode();
 
-	String getName();
-	String getStfName();
+	String getName() const;
+	String getStfName() const;
 
 	void setParentNode(ResourceTreeNode* parent);
 	ResourceTreeNode* getParentNode();
+	const ResourceTreeNode* getParentNode() const;
 
 	void add(ResourceTreeEntry* entry);
 
-	ResourceTreeEntry* getEntry(const String& type, const Vector<String>& excludes = 0, const String& zoneName = "");
+	const ResourceTreeEntry* getEntry(const String& type, const Vector<String>& excludes = 0, const String& zoneName = "") const;
 
-	ResourceTreeEntry* find(const String& type, ResourceTreeEntry* entry = NULL);
-	ResourceTreeNode* findNode(const String& type, ResourceTreeNode* node = NULL);
+	const ResourceTreeEntry* find(const String& type, const ResourceTreeEntry* entry = nullptr) const;
+	ResourceTreeEntry* find(const String& type, ResourceTreeEntry* entry = nullptr);
+	const ResourceTreeNode* findNode(const String& type, const ResourceTreeNode* node = nullptr) const;
+	ResourceTreeNode* findNode(const String& type, ResourceTreeNode* node = nullptr);
 
-	ResourceTreeEntry* getPlanetSpecificEntry(const String& planet);
+	const ResourceTreeEntry* getPlanetSpecificEntry(const String& planet) const;
 
-	void addToSuiListBox(SuiListBox* suil);
+	void addToSuiListBox(SuiListBox* suil) const;
 
 	//void updateEntries();
 
-	void toString();
+	void toString() const;
 
 private:
 
 	void getEntryPool(Vector<ResourceTreeEntry*>& candidates,
-			const Vector<String> excludes);
+			const Vector<String> excludes) const;
 
 };
 
-#endif /* RESOURCETREENODE_H_ */

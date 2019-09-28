@@ -21,13 +21,13 @@ public:
 	void run() {
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(targetID);
 
-		if (obj == NULL || !obj->isPlayerCreature())
+		if (obj == nullptr || !obj->isPlayerCreature())
 			return;
 
 		CreatureObject* creature = cast<CreatureObject*>( obj.get());
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (creature == NULL || player == NULL)
+		if (creature == nullptr || player == nullptr)
 			return;
 
 		if (creature != player) {
@@ -42,7 +42,7 @@ public:
 		StringIdChatParameter emptyPass("ui_pm", "delete_all_mail_success"); //	You have successfully emptied the mailbox of %TT.
 		emptyPass.setTT(player->getDisplayedName());
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		Locker locker(player);

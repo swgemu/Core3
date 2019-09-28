@@ -58,7 +58,7 @@ class SimplexNoise {
                               int px, int py, int pz, int pw );
 
   private:
-    static unsigned char perm[];
+    static const unsigned char perm[];
     static float  grad( int hash, float x );
     static float  grad( int hash, float x, float y );
     static float  grad( int hash, float x, float y , float z );

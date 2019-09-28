@@ -73,7 +73,7 @@ osg::ref_ptr<osg::Node> CollisionMeshVolume::draw() const {
 	osg::ElementBufferObject* ebo = new osg::ElementBufferObject;
 	drawElements->setElementBufferObject( ebo );
 
-	geometry->setUseVertexBufferObjects( ( NULL != vbo ) );
+	geometry->setUseVertexBufferObjects( ( nullptr != vbo ) );
 	osg::Vec4Array* colors( new osg::Vec4Array() );
 
 	colors->push_back(osg::Vec4(0, 100, 100, 50));

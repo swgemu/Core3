@@ -28,7 +28,7 @@ namespace server {
 
  public:
 	 ObjectCreatorMap() {
-		 HashTable<TypeId, Value>::setNullValue(NULL);
+		 HashTable<TypeId, Value>::setNullValue(nullptr);
 	 }
  };
 
@@ -47,7 +47,7 @@ namespace server {
  public:
 	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1) {
 		 if (!objectCreator.containsKey(uniqueID))
-			 return NULL;
+			 return nullptr;
 
 		 return objectCreator.get(uniqueID)(param1);
 	 }
@@ -87,10 +87,10 @@ namespace server {
 	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) {
 		 CreateObjectFunc func = objectCreator.get(uniqueID);
 
-		 if (func != NULL)
+		 if (func != nullptr)
 			 return func(param1, param2);
 		 else
-			 return NULL;
+			 return nullptr;
 	 }
 
 	 template<typename ClassType> bool registerObject(UniqueIdType uniqueID) {

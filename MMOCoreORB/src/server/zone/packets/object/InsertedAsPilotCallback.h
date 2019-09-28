@@ -27,12 +27,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost != nullptr)
 			ghost->setTeleporting(false);
 	}
 };

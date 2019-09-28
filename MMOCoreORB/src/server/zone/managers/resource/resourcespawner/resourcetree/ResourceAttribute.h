@@ -8,9 +8,7 @@
  * \date 5-03-10
  */
 
-#ifndef RESOURCEATTRIBUTE_H_
-#define RESOURCEATTRIBUTE_H_
-
+#pragma once
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 /**
@@ -47,8 +45,7 @@ public:
 
 	}
 
-	void setIndex(String name) {
-
+	void setIndex(const String& name) {
 		if(name == "res_decay_resist")
 			index = CraftingManager::DR;
 		else if(name == "res_quality")
@@ -74,28 +71,27 @@ public:
 	/**
 	 * Returns the name of the Attribute
 	 */
-	String getName() {
+	const String& getName() const {
 		return name;
 	}
 
 	/**
 	 * Returns the minimum value of the Attribute
 	 */
-	int getMinimum() {
+	int getMinimum() const {
 		return minimum;
 	}
 
 	/**
 	 * Returns the maximum value of the Attribute
 	 */
-	int getMaximum() {
+	int getMaximum() const {
 		return maximum;
 	}
 
-	int getIndex() {
+	int getIndex() const {
 		return index;
 	}
 };
 
 
-#endif /* RESOURCEATTRIBUTE_H_ */

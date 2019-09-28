@@ -26,7 +26,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if (obj == NULL || !obj->isStructureObject())
+		if (obj == nullptr || !obj->isStructureObject())
 			return;
 
 		//Withdraw the maintenance
@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<Zone*> zone = structure->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).

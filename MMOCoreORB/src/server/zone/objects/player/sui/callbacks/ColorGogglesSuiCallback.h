@@ -35,12 +35,12 @@ public:
 
 		ManagedReference<SceneObject*> goggles = cBox->getUsingObject().get();
 
-		if (goggles == NULL)
+		if (goggles == nullptr)
 			return;
 
 		ManagedReference<TangibleObject*> gogglesTano = goggles->asTangibleObject();
 
-		if (gogglesTano != NULL) {
+		if (gogglesTano != nullptr) {
 			Locker locker(gogglesTano, creature);
 
 			gogglesTano->setCustomizationVariable(palette, index, true);

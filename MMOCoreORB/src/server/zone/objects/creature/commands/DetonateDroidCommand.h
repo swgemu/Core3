@@ -28,21 +28,21 @@ public:
 		// we must have a target
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			creature->sendSystemMessage("@pet/droid_modules:invalid_droid_bomb");
 			return INVALIDTARGET;
 		}
 
 		DroidObject* droid = cast<DroidObject*>(object.get());
 
-		if (droid == NULL) {
+		if (droid == nullptr) {
 			creature->sendSystemMessage("@pet/droid_modules:invalid_droid_bomb");
 			return INVALIDTARGET;
 		}
 
 		auto module = droid->getModule("detonation_module").castTo<DroidDetonationModuleDataComponent*>();
 
-		if (module == NULL) {
+		if (module == nullptr) {
 			creature->sendSystemMessage("@pet/droid_modules:no_bomb_module");
 			return INVALIDTARGET;
 		}
@@ -72,7 +72,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (droid->getPendingTask("droid_detonation") != NULL) {
+		if (droid->getPendingTask("droid_detonation") != nullptr) {
 			creature->sendSystemMessage("@pet/droid_modules:countdown_already_started");
 			return GENERALERROR;
 		}
