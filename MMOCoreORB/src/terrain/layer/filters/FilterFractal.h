@@ -23,7 +23,7 @@ class FilterFractal : public FilterProceduralRule {
 	MapFractal* mfrc;
 
 public:
-	FilterFractal() : FilterProceduralRule(1, 'FFRA'), fractalId(0), min(0), max(0), var6(0), mfrc(NULL) {
+	FilterFractal() : FilterProceduralRule(1, 'FFRA'), fractalId(0), min(0), max(0), var6(0), mfrc(nullptr) {
 		filterType = HEIGHTTYPE;
 	}
 

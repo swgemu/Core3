@@ -30,7 +30,7 @@ String DroidStimpackModuleDataComponent::getModuleName() {
 
 void DroidStimpackModuleDataComponent::initializeTransientMembers() {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -64,7 +64,7 @@ void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 	if (loaded > 0) {
 		StimPack* sp = findStimPack();
 
-		if (sp != NULL)
+		if (sp != nullptr)
 			power = sp->getEffectiveness();
 	}
 
@@ -77,7 +77,7 @@ String DroidStimpackModuleDataComponent::toString() {
 
 void DroidStimpackModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidStimpackModuleDataComponent* otherModule = cast<DroidStimpackModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	speed = speed + otherModule->speed;
@@ -85,7 +85,7 @@ void DroidStimpackModuleDataComponent::addToStack(BaseDroidModuleComponent* othe
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 
-	if (droidComponent != NULL) {
+	if (droidComponent != nullptr) {
 		droidComponent->changeAttributeValue("stimpack_capacity", (float)capacity);
 		droidComponent->changeAttributeValue("stimpack_speed", (float)speed);
 	}
@@ -93,7 +93,7 @@ void DroidStimpackModuleDataComponent::addToStack(BaseDroidModuleComponent* othe
 
 void DroidStimpackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	DroidStimpackModuleDataComponent* otherModule = cast<DroidStimpackModuleDataComponent*>(other);
-	if (otherModule == NULL)
+	if (otherModule == nullptr)
 		return;
 
 	speed = speed + otherModule->speed;
@@ -101,7 +101,7 @@ void DroidStimpackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 
-	if (droidComponent != NULL) {
+	if (droidComponent != nullptr) {
 		droidComponent->addProperty("stimpack_speed", (float)speed, 0, "exp_effectiveness");
 		droidComponent->addProperty("stimpack_capacity", (float)capacity, 0, "exp_durability");
 	}
@@ -120,24 +120,24 @@ void DroidStimpackModuleDataComponent::onCall() {
 
 StimPack* DroidStimpackModuleDataComponent::compatibleStimpack(float power) {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
-		return NULL;
+		return nullptr;
 	}
 
 	DroidObject* droid = getDroidObject();
-	if (droid == NULL) {
-		return NULL;
+	if (droid == nullptr) {
+		return nullptr;
 	}
 
 	Locker dlock(droid);
 
 	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
 
-	if (craftingComponents != NULL) {
+	if (craftingComponents != nullptr) {
 		SceneObject* satchel = craftingComponents->getContainerObject(0);
-		if (satchel == NULL) {
-			return NULL;
+		if (satchel == nullptr) {
+			return nullptr;
 		}
 
 		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
@@ -157,30 +157,30 @@ StimPack* DroidStimpackModuleDataComponent::compatibleStimpack(float power) {
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void DroidStimpackModuleDataComponent::countUses() {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
 
 	DroidObject* droid = getDroidObject();
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		return ;
 	}
 
 	Locker dlock(droid);
 
 	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
-	if (craftingComponents == NULL) {
+	if (craftingComponents == nullptr) {
 		return;
 	}
 
 	SceneObject* satchel = craftingComponents->getContainerObject(0);
-	if (satchel == NULL) {
+	if (satchel == nullptr) {
 		return;
 	}
 
@@ -209,7 +209,7 @@ void DroidStimpackModuleDataComponent::onStore() {
 void DroidStimpackModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	menuResponse->addRadialMenuItem(REQUEST_STIMPACK, 3, "@pet/droid_modules:request_stimpack" );
 
-	if (player != NULL && player->hasSkill("science_medic_ability_04"))
+	if (player != nullptr && player->hasSkill("science_medic_ability_04"))
 		menuResponse->addRadialMenuItemToRadialID(REQUEST_STIMPACK, LOAD_STIMPACK, 3, "@pet/droid_modules:load_stimpack" );
 }
 
@@ -217,14 +217,14 @@ void DroidStimpackModuleDataComponent::initialize(DroidObject* droid) {
 	// grab the crafted components in this module and remove then
 	// then change capacity to the new capacity so we store the stims directly in the component.
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
 	
 	//This will instantiate the crafted_components slotted container and satchel if they do not exist
 	ManagedReference<SceneObject*> satchel = droidComponent->getCraftedComponentsSatchel();
-	if (satchel != NULL) {
+	if (satchel != nullptr) {
 		satchel->setContainerVolumeLimit(capacity);
 	}
 
@@ -234,7 +234,7 @@ void DroidStimpackModuleDataComponent::initialize(DroidObject* droid) {
 int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 	ManagedReference<DroidObject*> droid = getDroidObject();
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droid == NULL || droidComponent == NULL) {
+	if (droid == nullptr || droidComponent == nullptr) {
 		player->sendSystemMessage("@pet/droid_modules:stimpack_error");
 		return 0;
 	}
@@ -243,7 +243,7 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		Locker crossLoker(droid, player);
 		
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		if (inventory == NULL) {
+		if (inventory == nullptr) {
 			player->sendSystemMessage("@pet/droid_modules:no_stimpacks");
 			return 0;
 		}
@@ -288,7 +288,7 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 			return 0;
 		}
 
-		if (droid->getPendingTask("droid_request_stimpack") != NULL) {
+		if (droid->getPendingTask("droid_request_stimpack") != nullptr) {
 			player->sendSystemMessage("@pet/droid_modules:stimpack_not_ready");
 			return 0;
 		}
@@ -304,7 +304,7 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 void DroidStimpackModuleDataComponent::sendLoadUI(CreatureObject* player) {
 	ManagedReference<SceneObject* > inventory = player->getSlottedObject("inventory");
 
-	if (inventory == NULL)
+	if (inventory == nullptr)
 		return;
 
 	ManagedReference<SuiListBox*> loader = new SuiListBox(player, SuiWindowType::DROID_LOAD_STIMPACK, SuiListBox::HANDLETWOBUTTON);
@@ -346,16 +346,16 @@ void DroidStimpackModuleDataComponent::sendLoadUI(CreatureObject* player) {
 }
 
 StimPack* DroidStimpackModuleDataComponent::findStimPack() {
-	StimPack* pack = NULL;
+	StimPack* pack = nullptr;
 	float biggest = 0;
 	DroidComponent* container = cast<DroidComponent*>(getParent());
 
-	if (container == NULL)
-		return NULL;
+	if (container == nullptr)
+		return nullptr;
 
 	ManagedReference<SceneObject*> craftingComponents = container->getSlottedObject("crafted_components");
 
-	if (craftingComponents != NULL) {
+	if (craftingComponents != nullptr) {
 		SceneObject* satchel = craftingComponents->getContainerObject(0);
 
 		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
@@ -383,7 +383,7 @@ StimPack* DroidStimpackModuleDataComponent::findStimPack() {
 void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* player, StimPack* pack) {
 	countUses();
 
-	if (player == NULL)
+	if (player == nullptr)
 		return;
 
 	if (!player->hasSkill("science_medic_ability_04")) {
@@ -391,11 +391,11 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 	}
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		return;
 	}
 
-	if (pack == NULL) {
+	if (pack == nullptr) {
 		player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
 		return;
 	}
@@ -413,19 +413,19 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 	// code should goes as follow, count total use of all stims, then deduct amount form capacity
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		return;
 	}
 
 	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
 
-	if (craftingComponents == NULL) {
+	if (craftingComponents == nullptr) {
 		return;
 	}
 
 	SceneObject* satchel = craftingComponents->getContainerObject(0);
 
-	if (satchel == NULL) {
+	if (satchel == nullptr) {
 		return;
 	}
 
@@ -441,7 +441,7 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 	int amountOnStim = pack->getUseCount();
 	StimPack* targetStim = compatibleStimpack(pack->getEffectiveness());
 
-	if (targetStim != NULL) {
+	if (targetStim != nullptr) {
 		Locker tlocker(targetStim);
 
 		if (allowedAmount > amountOnStim) {
@@ -465,7 +465,7 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 			// we cant load it all so split the diff
 			StimPack* newStim = pack->split(allowedAmount);
 
-			if (newStim != NULL) {
+			if (newStim != nullptr) {
 				Locker slocker(newStim);
 				satchel->transferObject(newStim, -1, true);
 				satchel->broadcastObject(newStim, true);

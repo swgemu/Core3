@@ -104,7 +104,7 @@ public:
 		msg->insertInt(object->getClientObjectCRC()); //CRC of the object
 	}
 
-	bool add(const ManagedReference<TangibleObject*>& element, DeltaMessage* message = NULL, int updates = 1) override {
+	bool add(const ManagedReference<TangibleObject*>& element, DeltaMessage* message = nullptr, int updates = 1) override {
 		if (element->isArmorObject()) {
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
@@ -125,7 +125,7 @@ public:
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
 	}
 
-	ManagedReference<TangibleObject*> remove(int index, DeltaMessage* message = NULL, int updates = 1) override {
+	ManagedReference<TangibleObject*> remove(int index, DeltaMessage* message = nullptr, int updates = 1) override {
 		ManagedReference<TangibleObject*> element = get(index);
 
 		if (element->isArmorObject()) {

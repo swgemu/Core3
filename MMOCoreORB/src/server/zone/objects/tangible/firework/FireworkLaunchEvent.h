@@ -24,7 +24,7 @@ public:
 		ManagedReference<FireworkObject*> firework = this->firework.get();
 		ManagedReference<CreatureObject*> player = this->player.get();
 
-		if (firework == NULL || player == NULL)
+		if (firework == nullptr || player == nullptr)
 			return;
 
 		try {
@@ -35,8 +35,8 @@ public:
 			player->error("unreported exception on FireworkLaunchEvent::run()");
 		}
 
-		this->firework = NULL;
-		this->player = NULL;
+		this->firework = nullptr;
+		this->player = nullptr;
 	}
 };
 

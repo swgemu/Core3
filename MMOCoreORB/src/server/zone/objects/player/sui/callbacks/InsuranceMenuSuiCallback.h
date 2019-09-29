@@ -23,7 +23,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isListBox() || cancelPressed || player == NULL)
+		if (!suiBox->isListBox() || cancelPressed || player == nullptr)
 			return;
 
 		if (args->size() < 2)
@@ -43,7 +43,7 @@ public:
 
 		ManagedReference<SceneObject*> term = listBox->getUsingObject().get();
 
-		if (term == NULL) {
+		if (term == nullptr) {
 			StringIdChatParameter params;
 			params.setStringId("@ui:action_target_not_found_prose");
 			params.setTT("@terminal_name:terminal_insurance");
@@ -83,7 +83,7 @@ public:
 				uint64 objectID = listBox->getMenuObjectID(index);
 				ManagedReference<SceneObject*> obj = zoneServer->getObject(objectID);
 
-				if (obj == NULL || !obj->isTangibleObject()) {
+				if (obj == nullptr || !obj->isTangibleObject()) {
 					player->sendSystemMessage("@error_message:unable_to_insure");
 					return;
 				}

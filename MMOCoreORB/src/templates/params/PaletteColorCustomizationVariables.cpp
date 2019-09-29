@@ -28,7 +28,7 @@ bool PaletteColorCustomizationVariables::parse(Chunk* source) {
 
 	IffStream* iffStream = source->getIffStream();
 
-	if (iffStream == NULL) {
+	if (iffStream == nullptr) {
 		//std::cout << "iffstream null\n";
 		return false;
 	}
@@ -69,7 +69,7 @@ void PaletteColorCustomizationVariables::parseType1(IffStream* iffStream) {
 
 	Chunk* chunk = iffStream->openForm('PCCV');
 
-	if (chunk == NULL) {
+	if (chunk == nullptr) {
 		//std::cout << "could not open shit\n";
 		return;
 	}

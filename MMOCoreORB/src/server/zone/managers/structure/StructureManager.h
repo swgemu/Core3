@@ -89,11 +89,11 @@ public:
 	static String getTimeString(uint32 timestamp);
 
 	/**
-	 * Returns the closest parking garage to the obj, or NULL if one can't be found within the required radius.
+	 * Returns the closest parking garage to the obj, or nullptr if one can't be found within the required radius.
 	 * @pre { obj locked, zone unlocked }
 	 * @post { obj locked, zone unlocked }
 	 * @param obj The object to use as reference for searching for the nearest parking garage.
-	 * @return Returns a SceneObject representing the nearest parking garage, or NULL if one was not found in the required range.
+	 * @return Returns a SceneObject representing the nearest parking garage, or nullptr if one was not found in the required range.
 	 */
 	Reference<SceneObject*> getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
@@ -147,7 +147,7 @@ public:
 	 * @param creature The creature attempting to pay maintenance.
 	 * @param terminal The terminal used in the process. Defaults to null.
 	 */
-	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = NULL);
+	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = nullptr);
 
 	/**
 	 * Sends the transfer box prompting for maintenance to be withdrawn.

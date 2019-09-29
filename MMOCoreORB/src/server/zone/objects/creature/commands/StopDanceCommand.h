@@ -27,7 +27,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		if (session == NULL)
+		if (session == nullptr)
 			return GENERALERROR;
 
 		if (!session->isDancing())

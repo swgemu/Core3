@@ -46,7 +46,7 @@ public:
 		return *this;
 	}
 
-	void parseAttributeData(DataTableRow* row) {
+	void parseAttributeData(const DataTableRow* row) {
 		//The data starts at offset 2.
 		int min = 0;
 		int max = 0;
@@ -62,7 +62,7 @@ public:
 		row->getValue(20, totalAttributes);
 	}
 
-	void parseRacialModData(DataTableRow* row) {
+	void parseRacialModData(const DataTableRow* row) {
 		int mod = 0;
 
 		for (int i = 2; i < 11; ++i) {
@@ -72,23 +72,23 @@ public:
 		}
 	}
 
-	inline int getAttributeMin(int idx) {
+	inline int getAttributeMin(int idx) const {
 		return minAttributes.get(idx);
 	}
 
-	inline int getAttributeMax(int idx) {
+	inline int getAttributeMax(int idx) const {
 		return maxAttributes.get(idx);
 	}
 
-	inline int getAttributeMod(int idx) {
+	inline int getAttributeMod(int idx) const {
 		return modAttributes.get(idx);
 	}
 
-	inline int getAttributeTotal() {
+	inline int getAttributeTotal() const {
 		return totalAttributes;
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer str;
 
 		for (int i = 0; i < minAttributes.size(); ++i)

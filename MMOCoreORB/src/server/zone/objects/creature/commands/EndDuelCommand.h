@@ -30,7 +30,7 @@ public:
 
 		CombatManager* combatManager = CombatManager::instance();
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature) {
+		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature) {
 			combatManager->freeDuelList(creature);
 		} else {
 			combatManager->requestEndDuel(creature, cast<CreatureObject*>(targetObject.get()));

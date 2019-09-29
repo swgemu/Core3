@@ -134,7 +134,7 @@ public:
 
 	Vector<String>* getPermissionSkills(uint32 permissionLevel) {
 		if(!contains(permissionLevel))
-			return NULL;
+			return nullptr;
 		else
 			return get(permissionLevel)->getSkillList();
 	}

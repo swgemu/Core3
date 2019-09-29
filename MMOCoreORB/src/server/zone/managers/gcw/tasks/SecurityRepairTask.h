@@ -21,22 +21,22 @@ public:
 
 	void run() {
 
-		if (terminal == NULL || gcwManager == NULL || creature == NULL)
+		if (terminal == nullptr || gcwManager == nullptr || creature == nullptr)
 			return;
 
 		ManagedReference<BuildingObject*> building = terminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-		if (building == NULL)
+		if (building == nullptr)
 			return;
 
 		DataObjectComponentReference* data = building->getDataObjectComponent();
 
-		if (data == NULL)
+		if (data == nullptr)
 			return;
 
 		DestructibleBuildingDataComponent* baseData = cast<DestructibleBuildingDataComponent*>(data->get());
 
-		if (baseData == NULL)
+		if (baseData == nullptr)
 			return;
 
 		if (creature->isDead() || creature->isIncapacitated()) {

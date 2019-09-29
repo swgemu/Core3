@@ -44,40 +44,50 @@ public:
 	}
 
 	~PathGraph() {
-		while (pathNodes.size() > 0)
-			delete pathNodes.remove(0);
+		pathNodes.forEach([](auto node) { delete node; });
 	}
 
 	void readObject(IffStream* iffStream);
 
-	float calculateManhattanDistance(PathNode* node1, PathNode* node2) {
+	static float calculateManhattanDistance(const PathNode* node1, const PathNode* node2) {
 		/*return abs(node1->getX() - node2->getX()) + abs(node1->getY() - node2->getY())
 				+ abs(node1->getZ() - node2->getZ());*/
 
 		return node1->getPosition().squaredDistanceTo(node2->getPosition());
 	}
 
-	PathNode* getNode(int globalNumberID);
+	const PathNode* getNode(int globalNumberID) const;
 
-	inline PathNode* findNearestNode(float x, float z, float y) {
+	inline const PathNode* findNearestNode(float x, float z, float y) const {
 		return findNearestNode(Vector3(x, y, z));
 	}
 
-	PathNode* findNearestNode(const Vector3& pointAlfa);
-	Vector<const PathNode*> getEntrances();
-	PathNode* findNearestGlobalNode(const Vector3& pointAlfa);
-	PathNode* findGlobalNode(int globalNodeID);
+	const PathNode* findNearestNode(const Vector3& pointAlfa) const;
+	Vector<const PathNode*> getEntrances() const;
+	const PathNode* findNearestGlobalNode(const Vector3& pointAlfa) const;
+	const PathNode* findGlobalNode(int globalNodeID) const;
 
 	inline void addPathNode(PathNode* pathNode) {
 		pathNodes.add(pathNode);
 	}
 
-	inline Vector<PathEdge>* getPathEdges() {
+	inline const Vector<PathEdge>* getPathEdges() const {
 		return &pathEdges;
 	}
 
-	inline Vector<PathNode*>* getPathNodes() {
+	inline const Vector<PathNode*>* getPathNodes() const {
 		return &pathNodes;
+	}
+
+	inline Vector<const PathNode*> getGlobalNodes() const {
+		Vector<const PathNode*> nodes;
+
+		for (int i = 0; i < pathNodes.size(); ++i) {
+			if (pathNodes.get(i)->getGlobalGraphNodeID() != -1)
+				nodes.add(pathNodes.get(i));
+		}
+
+		return nodes;
 	}
 
 	inline Vector<PathNode*> getGlobalNodes() {
@@ -91,7 +101,7 @@ public:
 		return nodes;
 	}
 
-	inline FloorMesh* getFloorMesh() {
+	inline const FloorMesh* getFloorMesh() const {
 		return floorMesh;
 	}
 

@@ -9,7 +9,7 @@ void VendorOutfitManager::initialize() {
 
 	setLoggingName("VendorOutfitManager");
 	outfits.setNoDuplicateInsertPlan();
-	outfits.setNullValue(NULL);
+	outfits.setNullValue(nullptr);
 
 	loadLuaOutfits();
 
@@ -54,6 +54,6 @@ void VendorOutfitManager::loadLuaOutfits() {
 	Luaoutfits.pop();
 
 	delete lua;
-	lua = NULL;
+	lua = nullptr;
 }
 

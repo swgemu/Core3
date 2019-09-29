@@ -11,8 +11,8 @@
 #include "templates/slots/ArrangementDescriptor.h"
 
 SharedObjectTemplate::SharedObjectTemplate() : Logger("SharedObjectTemplate") {
-	portalLayout = NULL;
-	appearanceTemplate = NULL;
+	portalLayout = nullptr;
+	appearanceTemplate = nullptr;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
 
 	updatesNavMesh = true;
@@ -78,10 +78,10 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename);
 	} else if (varName == "appearanceFilename") {
 		appearanceFilename = Lua::getStringParameter(state);
-		appearanceTemplate = NULL;
+		appearanceTemplate = nullptr;
 	} else if (varName == "portalLayoutFilename") {
 		portalLayoutFilename = Lua::getStringParameter(state);
-		portalLayout = NULL;
+		portalLayout = nullptr;
 	} else if (varName == "clientDataFile") {
 		clientDataFile = Lua::getStringParameter(state);
 	} else if (varName == "collisionMaterialFlags") {
@@ -283,7 +283,7 @@ void SharedObjectTemplate::parseFileData(IffStream* iffStream) {
 	//while (iffStream->getRemainingSubChunksNumber() > 0) {
 		Chunk* chunk = iffStream->openChunk('XXXX');
 
-		if (chunk == NULL)
+		if (chunk == nullptr)
 			continue;
 
 		String varName;
@@ -300,6 +300,8 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 	stream->openForm('DERV');
 
 	Chunk* chunk = stream->openChunk('XXXX');
+
+	E3_ASSERT(chunk);
 
 	String file;
 	chunk->readString(file);
@@ -318,7 +320,7 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 	IffStream* dervStream = TemplateManager::instance()->openIffFile(file);
 
-	if (dervStream != NULL) {
+	if (dervStream != nullptr) {
 		readObject(dervStream);
 
 		delete dervStream;
@@ -332,7 +334,7 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 	LuaObject* luaObject = TemplateManager::instance()->getLuaObject(serverTemplate);
 
-	if (luaObject != NULL) {
+	if (luaObject != nullptr) {
 		//Logger::console.info("loading derv from " + serverTemplate, true);
 
 		readObject(luaObject);
@@ -437,8 +439,8 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	return;
 }
 
-PortalLayout* SharedObjectTemplate::getPortalLayout() {
-	if (portalLayout != NULL)
+const PortalLayout* SharedObjectTemplate::getPortalLayout() {
+	if (portalLayout != nullptr)
 		return portalLayout;
 	else if (!loadedPortalLayout) {
 		loadedPortalLayout = true;
@@ -456,7 +458,7 @@ PortalLayout* SharedObjectTemplate::getPortalLayout() {
 }
 
 AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
-	if (appearanceTemplate != NULL)
+	if (appearanceTemplate != nullptr)
 		return appearanceTemplate;
 	else if (!loadedAppearanceTemplate) {
 		loadedAppearanceTemplate = true;

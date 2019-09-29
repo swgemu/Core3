@@ -15,10 +15,10 @@ class HopperList : public DeltaVector<ManagedReference<ResourceContainer*> > {
 public:
 
 	ManagedReference<ResourceContainer*> set(int idx,
-			const ManagedReference<ResourceContainer*>& newValue, DeltaMessage* message = NULL, int updates = 1) override {
+			const ManagedReference<ResourceContainer*>& newValue, DeltaMessage* message = nullptr, int updates = 1) override {
 		ManagedReference<ResourceContainer*> object = vector.set(idx, newValue);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
@@ -32,10 +32,10 @@ public:
 		return object;
 	}
 
-	bool add(const ManagedReference<ResourceContainer*>& element, DeltaMessage* message = NULL, int updates = 1) override {
+	bool add(const ManagedReference<ResourceContainer*>& element, DeltaMessage* message = nullptr, int updates = 1) override {
 		bool val = vector.add(element);
 
-		if (message != NULL) {
+		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 

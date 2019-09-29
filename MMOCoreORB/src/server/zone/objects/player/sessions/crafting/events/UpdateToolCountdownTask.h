@@ -23,7 +23,7 @@ public:
 			ManagedReference<TangibleObject* > craftingTool = craftTool.get();
 			ManagedReference<CreatureObject* > crafter = player.get();
 
-			if (craftingTool == NULL || crafter == NULL)
+			if (craftingTool == nullptr || crafter == nullptr)
 				return;
 
 			Locker locker(crafter);

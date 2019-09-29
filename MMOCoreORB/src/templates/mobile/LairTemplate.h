@@ -38,7 +38,7 @@ public:
 	LairTemplate(const String& templateName) {
 		spawnLimit = 0;
 		buildings.setAllowDuplicateInsertPlan();
-		buildings.setNullValue(NULL);
+		buildings.setNullValue(nullptr);
 		faction = 0;
 		mobType = CREATURE;
 		buildingType = LAIR;
@@ -53,17 +53,17 @@ public:
 		if (buildingType == NONE)
 			return String();
 
-		const Vector<String>* objects = NULL;
+		const Vector<String>* objects = nullptr;
 
 		objects = buildings.get(difficulty);
 
-		if (objects == NULL) {
-			for (int i = 0; i < buildings.size() && objects == NULL; ++i) {
+		if (objects == nullptr) {
+			for (int i = 0; i < buildings.size() && objects == nullptr; ++i) {
 				objects = buildings.elementAt(i).getValue();
 			}
 		}
 
-		if (objects != NULL && objects->size() > 0)
+		if (objects != nullptr && objects->size() > 0)
 			return objects->get(System::random(objects->size() - 1));
 		else
 			return String();
@@ -148,7 +148,7 @@ public:
 		LuaObject veryEasy = templateData->getObjectField("buildingsVeryEasy");
 		Vector<String>* buildings = this->buildings.get((uint32)VERYEASY);
 
-		if (buildings == NULL) {
+		if (buildings == nullptr) {
 			buildings = new Vector<String>();
 			this->buildings.put(VERYEASY, buildings);
 		}
@@ -162,7 +162,7 @@ public:
 		LuaObject easy = templateData->getObjectField("buildingsEasy");
 		buildings = this->buildings.get((uint32)EASY);
 
-		if (buildings == NULL) {
+		if (buildings == nullptr) {
 			buildings = new Vector<String>();
 			this->buildings.put(EASY, buildings);
 		}
@@ -177,7 +177,7 @@ public:
 
 		buildings = this->buildings.get((uint32)MEDIUM);
 
-		if (buildings == NULL) {
+		if (buildings == nullptr) {
 			buildings = new Vector<String>();
 			this->buildings.put(MEDIUM, buildings);
 		}
@@ -192,7 +192,7 @@ public:
 
 		buildings = this->buildings.get((uint32)HARD);
 
-		if (buildings == NULL) {
+		if (buildings == nullptr) {
 			buildings = new Vector<String>();
 			this->buildings.put(HARD, buildings);
 		}
@@ -207,7 +207,7 @@ public:
 
 		buildings = this->buildings.get((uint32)VERYHARD);
 
-		if (buildings == NULL) {
+		if (buildings == nullptr) {
 			buildings = new Vector<String>();
 			this->buildings.put((uint32)VERYHARD, buildings);
 		}

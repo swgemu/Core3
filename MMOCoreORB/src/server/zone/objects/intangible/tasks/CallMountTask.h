@@ -34,7 +34,7 @@ public:
 
 		ManagedReference<TangibleObject*> vehicle = device->getControlledObject();
 
-		if (vehicle == NULL)
+		if (vehicle == nullptr)
 			return;
 
 		Locker locker2(device);

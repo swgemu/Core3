@@ -7,7 +7,7 @@
 #include "conf/ConfigManager.h"
 #include "MySqlDatabase.h"
 
-Vector<Database*>* ServerDatabase::databases = NULL;
+Vector<Database*>* ServerDatabase::databases = nullptr;
 AtomicInteger ServerDatabase::currentDB;
 
 ServerDatabase::ServerDatabase(ConfigManager* configManager) {

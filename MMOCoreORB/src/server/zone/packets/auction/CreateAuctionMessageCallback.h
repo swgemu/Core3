@@ -46,12 +46,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<TangibleObject*> vendor = server->getZoneServer()->getObject(vendorID).castTo<TangibleObject*>();
 
-		if (vendor == NULL)
+		if (vendor == nullptr)
 			return;
 
 		if (!vendor->isBazaarTerminal() && !vendor->isVendor())
@@ -61,7 +61,7 @@ public:
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-		if (auctionManager != NULL)
+		if (auctionManager != nullptr)
 			auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, true, premium);
 	}
 

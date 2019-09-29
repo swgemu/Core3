@@ -23,7 +23,7 @@ public:
 		startList(1, 0);
 		insertByte(0x01);
 
-		if (guild == NULL) {
+		if (guild == nullptr) {
 			insertAscii("");
 			return;
 		}
@@ -38,7 +38,7 @@ public:
 		startList(1, 0);
 		insertByte(0x00);
 
-		if (guild == NULL) {
+		if (guild == nullptr) {
 			insertAscii("");
 			return;
 		}

@@ -28,14 +28,14 @@ public:
 
 			uint64 weaponID = tokenizer.getLongToken();
 			Reference<WeaponObject*> weapon = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
-			if (weapon == NULL || !weapon->isHeavyWeapon())
+			if (weapon == nullptr || !weapon->isHeavyWeapon())
 				return INVALIDPARAMETERS;
 
 			if (!weapon->isASubChildOf(creature))
 				return GENERALERROR;
 
 			ManagedReference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target).castTo<TangibleObject*>();
-			if (targetObject == NULL)
+			if (targetObject == nullptr)
 				return GENERALERROR;
 
 			if (!(targetObject->isAttackableBy(creature)))
@@ -43,12 +43,12 @@ public:
 
 			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(weapon->getServerObjectCRC());
 
-			if (templateData == NULL)
+			if (templateData == nullptr)
 				return GENERALERROR;
 
 			SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(templateData);
 
-			if (weaponData == NULL)
+			if (weaponData == nullptr)
 				return GENERALERROR;
 
 			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";";
@@ -75,7 +75,7 @@ public:
 	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
 		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(weapon->getObjectTemplate());
 
-		if (weaponData == NULL) {
+		if (weaponData == nullptr) {
 			warning("Null weaponData in FireHeavyWeapon::getAnimation");
 			return "";
 		}
@@ -88,7 +88,7 @@ public:
 		uint64 weaponID = tokenizer.getLongToken();
 		ManagedReference<WeaponObject*> weapon = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
 
-		if (weapon != NULL)
+		if (weapon != nullptr)
 			return CombatManager::instance()->calculateWeaponAttackSpeed(object, weapon, speedMultiplier);
 		else
 			return defaultTime * speedMultiplier;

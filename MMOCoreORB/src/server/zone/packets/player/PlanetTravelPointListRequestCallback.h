@@ -32,7 +32,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		Locker _locker(object);
@@ -40,7 +40,7 @@ public:
 		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
 		//Handles unknown or disabled zones.
-		if (zone == NULL) {
+		if (zone == nullptr) {
 			object->info("Attempting to travel to non-existant, or disabled, zone [" + zoneName + "].");
 
 			PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zoneName);

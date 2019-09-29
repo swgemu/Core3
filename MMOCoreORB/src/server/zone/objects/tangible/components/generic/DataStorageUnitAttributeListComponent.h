@@ -30,11 +30,11 @@ public:
 			return;
 
 		DataObjectComponent* data = tano->getDataObjectComponent()->get();
-		if(data == NULL || !data->isDataStorageUnitData())
+		if(data == nullptr || !data->isDataStorageUnitData())
 			return;
 
 		DataStorageUnitDataComponent* dsuData = cast<DataStorageUnitDataComponent*>(data);
-		if( dsuData == NULL )
+		if( dsuData == nullptr )
 			return;
 
 		// ID is an integer from 1 to 12

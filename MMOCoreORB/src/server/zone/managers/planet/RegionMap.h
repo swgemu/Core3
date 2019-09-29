@@ -16,7 +16,7 @@ class RegionMap : public ReadWriteLock, public Object {
 public:
 	RegionMap() {
 		regions.setNoDuplicateInsertPlan();
-		regions.setNullValue(NULL);
+		regions.setNullValue(nullptr);
 	}
 
 	~RegionMap() {
@@ -42,7 +42,7 @@ public:
 	 * Gets the first city region in the region map found at the specified coordinates.
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
-	 * @return Returns a city region or NULL if one was not found.
+	 * @return Returns a city region or nullptr if one was not found.
 	 */
 	CityRegion* getRegionAt(float x, float y) {
 		rlock();
@@ -58,7 +58,7 @@ public:
 
 		runlock();
 
-		return NULL;
+		return nullptr;
 	}
 
 	inline bool containsRegion(const String& name) {

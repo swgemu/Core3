@@ -20,13 +20,13 @@ public:
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost == NULL || ghost->getAdminLevel() < 15) {
+		if (ghost == nullptr || ghost->getAdminLevel() < 15) {
 			return 1;
 		}
 
 		ManagedReference<WeatherManager*> weatherManager = player->getZone()->getPlanetManager()->getWeatherManager();
 
-		if (weatherManager == NULL) {
+		if (weatherManager == nullptr) {
 			creature->sendSystemMessage("Weather is globally disabled in this zone");
 			return 0;
 		}
@@ -82,7 +82,7 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* player) {
-		if (player != NULL)
+		if (player != nullptr)
 			player->sendSystemMessage("Syntax: /server weather [enable/disable/info/change] [0-4]");
 	}
 

@@ -105,13 +105,13 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	int skill = 0;
 	int luck = 0;
 
-	if (craftingValues != NULL) {
+	if (craftingValues != nullptr) {
 		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
-		if(manuSchematic != NULL) {
+		if(manuSchematic != nullptr) {
 			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
 			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
 
-			if (player != NULL && draftSchematic != NULL) {
+			if (player != nullptr && draftSchematic != nullptr) {
 				String assemblySkill = draftSchematic->getAssemblySkill();
 				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
 				luck = System::random(player->getSkillMod("luck")
@@ -207,7 +207,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 }
 
 void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) const {
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		return;
 	}
 
@@ -223,7 +223,7 @@ void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) co
 }
 
 void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
-	if (creature == NULL) {
+	if (creature == nullptr) {
 		return;
 	}
 
@@ -240,7 +240,7 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 
 bool WearableObjectImplementation::isEquipped() {
 	ManagedReference<SceneObject*> parent = getParent().get();
-	if (parent != NULL && parent->isPlayerCreature())
+	if (parent != nullptr && parent->isPlayerCreature())
 		return true;
 
 	return false;

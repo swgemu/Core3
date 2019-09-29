@@ -33,17 +33,17 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			return;
 		}
 
 		DroidObject* droid = cast<DroidObject*>(object.get());
-		if (droid == NULL){
+		if (droid == nullptr){
 			return;
 		}
 
 		auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
-		if(module == NULL) {
+		if(module == nullptr) {
 			return;
 		}
 

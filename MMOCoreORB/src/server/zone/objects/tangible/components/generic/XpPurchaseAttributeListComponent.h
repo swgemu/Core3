@@ -16,7 +16,7 @@ public:
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) const {
 
 		XpPurchaseTemplate* templateData = cast<XpPurchaseTemplate*> (object->getObjectTemplate());
-		if (templateData == NULL) {
+		if (templateData == nullptr) {
 			return;
 		}
 

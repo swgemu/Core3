@@ -30,7 +30,7 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
 
-	if (region != NULL) {
+	if (region != nullptr) {
 		if (region->isBanned(player->getObjectID())) {
 				player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 				return 0;
@@ -42,7 +42,7 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 		ManagedReference<BuildingObject*> cloner = cast<BuildingObject*>(sceneObject->getRootParent());
 
-		if (cloner != NULL && (ghost->getCloningFacility() == cloner->getObjectID())) {
+		if (cloner != nullptr && (ghost->getCloningFacility() == cloner->getObjectID())) {
 			player->sendSystemMessage("Your clone data is already stored here.");
 			return 0;
 		}

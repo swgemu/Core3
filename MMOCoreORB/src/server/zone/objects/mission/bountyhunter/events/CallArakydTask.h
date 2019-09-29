@@ -35,7 +35,7 @@ public:
 		this->player = player;
 		this->objective = objective;
 		time = 20;
-		droid = NULL;
+		droid = nullptr;
 	}
 
 	~CallArakydTask() {
@@ -46,7 +46,7 @@ public:
 		ManagedReference<CreatureObject*> playerRef = player.get();
 		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
-		if (playerRef == NULL || objectiveRef == NULL) {
+		if (playerRef == nullptr || objectiveRef == nullptr) {
 			return;
 		}
 
@@ -86,10 +86,10 @@ public:
 			break;
 		case -1: {
 			Locker olocker2(objectiveRef);
-			objectiveRef->setArakydDroid(NULL);
+			objectiveRef->setArakydDroid(nullptr);
 			olocker2.release();
 
-			if (droid != NULL) {
+			if (droid != nullptr) {
 				Locker clocker(droid, playerRef);
 				droid->destroyObjectFromWorld(true);
 			}
@@ -104,7 +104,7 @@ public:
 	Vector3 getLandingCoordinates(CreatureObject* player) {
 		Vector3 position = player->getPosition();
 
-		if (player->getZone() == NULL || player->getZone()->getPlanetManager() == NULL) {
+		if (player->getZone() == nullptr || player->getZone()->getPlanetManager() == nullptr) {
 			return position;
 		}
 
@@ -132,7 +132,7 @@ public:
 	bool noInterferingObjects(CreatureObject* player, const Vector3& position) {
 		CloseObjectsVector* vec = player->getCloseObjects();
 
-		if (vec == NULL)
+		if (vec == nullptr)
 			return true;
 
 		SortedVector<QuadTreeEntry*> closeObjects;
@@ -143,7 +143,7 @@ public:
 
 			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
-			if (objectTemplate != NULL) {
+			if (objectTemplate != nullptr) {
 				float radius = objectTemplate->getNoBuildRadius();
 
 				if (radius > 0) {

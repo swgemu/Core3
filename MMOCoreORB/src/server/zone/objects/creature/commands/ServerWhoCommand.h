@@ -62,7 +62,7 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* player) {
-		if (player != NULL)
+		if (player != nullptr)
 			player->sendSystemMessage("Syntax: /server who - Updates log/who.json and log/online-players.log");
 	}
 };

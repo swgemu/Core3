@@ -29,19 +29,19 @@ public:
 	}
 
 	void run() {
-		if (module == NULL)
+		if (module == nullptr)
 			return;
 
 		DroidObject* droid = module->getDroidObject();
-		if (droid == NULL)
+		if (droid == nullptr)
 			return;
 
 		Locker locker(droid);
 
-		if( droid->getLocalZone() == NULL ){  // Not outdoors
+		if( droid->getLocalZone() == nullptr ){  // Not outdoors
 
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
-			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
+			if( parent == nullptr || !parent->isCellObject() ){ // Not indoors either
 				module->deactivate();
 				droid->removePendingTask("droid_playback");
 				return;
@@ -76,11 +76,11 @@ public:
 			return;
 		}
 		SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
-		if (skillManager == NULL)
+		if (skillManager == nullptr)
 			return;
 
 		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
-		if (performanceManager == NULL)
+		if (performanceManager == nullptr)
 			return;
 
 		String instrumentAnimation;

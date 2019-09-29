@@ -20,7 +20,7 @@ public:
 	}
 
 	void run() {
-		if (game == NULL || game->isGameEnded())
+		if (game == nullptr || game->isGameEnded())
 			return;
 
 		Locker locker(game);

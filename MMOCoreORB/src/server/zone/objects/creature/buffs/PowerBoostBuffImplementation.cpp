@@ -14,7 +14,7 @@ void PowerBoostBuffImplementation::initializeTransientMembers() {
 }
 
 void PowerBoostBuffImplementation::activate(bool applyModifiers) {
-	if(creature.get() != NULL) {
+	if(creature.get() != nullptr) {
 		Locker locker(creature.get());
 		Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 		if (creature.get()->isIncapacitated() || creature.get()->isDead()) {
@@ -31,7 +31,7 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 			// DurationEvent to handle calling the deactivate() when the timer expires.
 			counter++;
 			Reference<PowerBoostBuffDurationEvent*> boostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
-			if (boostCheck == NULL) {
+			if (boostCheck == nullptr) {
 				pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.getReferenceUnsafeStaticCast());
 				creature.get()->addPendingTask("powerBoostTick", pbBuffEvent, 3000);
 			}else {
@@ -43,33 +43,33 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 			doMindTick(true);
 			counter++;
 			Reference<PowerBoostBuffDurationEvent*> boostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
-			if (boostCheck != NULL) {
+			if (boostCheck != nullptr) {
 				boostCheck->reschedule(3000);
 			}
 		} else if(counter > 20 && counter <= 40) {
 			doMindTick(true); // 20-40
 			counter++;
 			Reference<PowerBoostBuffDurationEvent*> boostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
-			if (boostCheck != NULL)
+			if (boostCheck != nullptr)
 				boostCheck->reschedule(3000);
 		} else if(counter == 41) {
 			counter = 45; // increase counter to 45 (to tick Down)..
 			Reference<PowerBoostBuffDurationEvent*> BoostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
-			if (BoostCheck != NULL)
+			if (BoostCheck != nullptr)
 				BoostCheck->reschedule(time - (183 * 1000)); // schedule for duration of the buff. (minus the tick time);
 		} else if(counter >= 45 && counter < 65) {
 			doHealthAndActionTick(false);
 			doMindTick(false);
 			counter++;
 			Reference<PowerBoostBuffDurationEvent*> boostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
-			if (boostCheck != NULL)
+			if (boostCheck != nullptr)
 				boostCheck->reschedule(3000);
 		}
 	}
 }
 
 void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
-	if(creature.get() != NULL) {
+	if(creature.get() != nullptr) {
 		Locker locker(creature.get());
 		Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 		if(counter <= 41) {
@@ -119,7 +119,7 @@ void PowerBoostBuffImplementation::doMindTick(bool up) {
 void PowerBoostBuffImplementation::clearBuffEvent() {
 	Locker locker(creature.get());
 	Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
-	if (pbBuffEvent != NULL) {
+	if (pbBuffEvent != nullptr) {
 		creature.get()->removePendingTask("powerBoostTick");
 	}
 	creature.get()->addMaxHAM(CreatureAttribute::HEALTH, -haBuffAmount ,true);

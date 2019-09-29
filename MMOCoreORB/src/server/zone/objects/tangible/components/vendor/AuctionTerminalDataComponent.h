@@ -37,7 +37,7 @@ public:
 
 	void initializeTransientMembers() {
 		ManagedReference<SceneObject*> strongParent = parent.get();
-		if(strongParent != NULL && strongParent->getZoneServer() != NULL) {
+		if(strongParent != nullptr && strongParent->getZoneServer() != nullptr) {
 			auctionMan = strongParent->getZoneServer()->getAuctionManager();
 			if(uid.isEmpty())
 				updateUID();
@@ -48,7 +48,7 @@ public:
 		ManagedReference<SceneObject*> strongParent = parent.get();
 		ManagedReference<AuctionManager*> auctionManager = auctionMan.get();
 
-		if(auctionManager == NULL || strongParent == NULL || strongParent->getZone() == NULL)
+		if(auctionManager == nullptr || strongParent == nullptr || strongParent->getZone() == nullptr)
 			return;
 
 		String olduid = uid;
@@ -57,7 +57,7 @@ public:
 
 		String region = "@planet_n:" + strongParent->getZone()->getZoneName();
 		ManagedReference<CityRegion*> cityRegion = strongParent->getCityRegion().get();
-		if(cityRegion != NULL)
+		if(cityRegion != nullptr)
 			region = cityRegion->getRegionName();
 
 		uid += region + "." + strongParent->getDisplayedName() + ".";

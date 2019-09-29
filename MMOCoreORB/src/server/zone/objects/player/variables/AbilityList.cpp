@@ -18,7 +18,7 @@ bool AbilityList::contains(const String& element) const {
 	for (int i = 0; i < vector.size(); ++i) {
 		Ability* ability = vector.get(i);
 
-		if (ability == NULL)
+		if (ability == nullptr)
 			continue;
 
 		String skill = ability->getAbilityName().toLowerCase();
@@ -105,7 +105,7 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 
 		Ability* ability = skillManager->getAbility(name);
 
-		if (ability == NULL) {
+		if (ability == nullptr) {
 			Logger::console.error(name + " is null when trying to load from database");
 		} else {
 			vector.add(ability);
@@ -114,12 +114,12 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 }
 
 bool AbilityList::add(Ability* const& ability, DeltaMessage* message, int updates) {
-	if (ability == NULL)
+	if (ability == nullptr)
 		return false;
 
 	bool val = vector.add(ability);
 
-	if (message != NULL) {
+	if (message != nullptr) {
 		if (updates != 0)
 			message->startList(updates, updateCounter += updates);
 

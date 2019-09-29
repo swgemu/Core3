@@ -31,20 +31,20 @@ public:
 
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-		if (data == NULL) {
+		if (data == nullptr) {
 			player->sendSystemMessage("Error: no dataObjectComponent.");
 			return;
 		}
 
 		EventPerkDeed* deed = data->getDeed();
 
-		if (deed == NULL) {
-			player->sendSystemMessage("Error: deed is NULL.");
+		if (deed == nullptr) {
+			player->sendSystemMessage("Error: deed is nullptr.");
 			return;
 		}
 
 		ManagedReference<CreatureObject*> owner = deed->getOwner().get();
-		if( owner != NULL ){
+		if( owner != nullptr ){
 			alm->insertAttribute("owner", owner->getFirstName() );
 		}
 

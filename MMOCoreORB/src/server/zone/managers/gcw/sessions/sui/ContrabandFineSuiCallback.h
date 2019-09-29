@@ -20,9 +20,9 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool acceptedFine = (eventIndex != 1);
 
-		if (player != NULL) {
+		if (player != nullptr) {
 			ManagedReference<ContrabandScanSession*> scanSession = player->getActiveSession(SessionFacadeType::CONTRABANDSCAN).castTo<ContrabandScanSession*>();
-			if (scanSession != NULL) {
+			if (scanSession != nullptr) {
 				scanSession->setAcceptFineAnswer(acceptedFine);
 			}
 		}

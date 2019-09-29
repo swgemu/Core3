@@ -22,7 +22,7 @@ public:
 		uint64 playerID = player->getObjectID();
 
 		ManagedReference<GuildObject*> guild = guildObject.get();
-		if (guild == NULL)
+		if (guild == nullptr)
 			return;
 
 		if (!guild->hasNamePermission(playerID) && !player->getPlayerObject()->isPrivileged()) {

@@ -33,7 +33,7 @@ int LuaSuiBox::_setObject(lua_State* L) {
 int LuaSuiBox::getUsingObject(lua_State* L) {
 	SceneObject* obj = realObject->getUsingObject().get().get();
 
-	if (obj != NULL) {
+	if (obj != nullptr) {
 		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	} else {

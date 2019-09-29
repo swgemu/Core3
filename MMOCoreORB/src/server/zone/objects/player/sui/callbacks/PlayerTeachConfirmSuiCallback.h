@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<SceneObject*> usingObject = sui->getUsingObject().get();
 
-		if (usingObject == NULL || !usingObject->isCreatureObject())
+		if (usingObject == nullptr || !usingObject->isCreatureObject())
 			return;
 
 		CreatureObject* teacher = cast<CreatureObject*>(usingObject.get());

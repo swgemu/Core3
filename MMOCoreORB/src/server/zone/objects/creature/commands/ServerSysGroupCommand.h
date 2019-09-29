@@ -25,7 +25,7 @@ public:
 			ManagedReference<CreatureObject*> player = creature;
 			ManagedReference<GroupObject*> group = player->getGroup();
 
-			if (group == NULL) {
+			if (group == nullptr) {
 				player->sendSystemMessage("@error_message:not_grouped");
 				return GENERALERROR;
 			}

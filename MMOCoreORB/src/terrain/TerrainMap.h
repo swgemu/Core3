@@ -17,16 +17,16 @@ class TerrainMap : public TemplateVariable<chunkType> {
 
 public:
 	TerrainMap(){
-		rawMap = NULL;
+		rawMap = nullptr;
 	}
 
 	~TerrainMap() {
 		delete [] rawMap;
-		rawMap = NULL;
+		rawMap = nullptr;
 	}
 
 	void readObject(engine::util::IffStream* iffStream) {
-		if (rawMap != NULL)
+		if (rawMap != nullptr)
 			delete rawMap;
 
 		iffStream->openChunk(chunkType);

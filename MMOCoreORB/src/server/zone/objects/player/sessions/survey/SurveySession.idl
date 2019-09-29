@@ -15,51 +15,51 @@ include server.zone.packets.resource.SurveyMessage;
 class SurveySession extends Facade {
 	@weakReference
 	protected transient CreatureObject surveyer;
-	
+
 	@weakReference
 	protected transient SurveyTool activeSurveyTool;
-	
+
 	@weakReference
 	protected transient SurveyTool openSurveyTool;
 
 	@weakReference
 	protected transient ResourceManager resourceManager;
-	
+
 	@dereferenced
 	protected transient Coordinate richSampleLocation;
-	
+
 	protected transient boolean doGamble;
-	
+
 	protected transient string lastResourceSampleName;
-	
+
 	protected transient Task surveyTask;
 	protected transient Task sampleTask;
 	protected transient Task sampleResultsTask;
-	
+
 	public SurveySession(CreatureObject creature) {
 		Logger.setLoggingName("CraftingSession");
 		Logger.setLogging(true);
-		
+
 		doGamble = false;
 		lastResourceSampleName = "";
-		
+
 		surveyer = creature;
 	}
 
 	public native int initializeSession(SurveyTool tool);
-	
+
 	private native int startSession();
-	
+
 	public native int cancelSession();
 
-	public native int clearSession();	
+	public native int clearSession();
 
 	public native void startSurvey(final string resname);
-	
+
 	public void reSample() {
 		startSample(lastResourceSampleName);
 	}
-	
+
 	public native void startSample(final string resname);
 
 	private native void surveyCnodeMinigameSui();
@@ -72,43 +72,44 @@ class SurveySession extends Facade {
 	public SurveyTool getActiveSurveyTool() {
 		return activeSurveyTool;
 	}
-	
+
 	public void setActiveSurveyTool(SurveyTool tool) {
 		activeSurveyTool = tool;
 	}
-	
+
 	@weakReference
 	public SurveyTool getOpenSurveyTool() {
 		return openSurveyTool;
 	}
-	
+
 	public void setOpenSurveyTool(SurveyTool tool) {
 		openSurveyTool = tool;
 	}
-	
+
+	@read
 	public boolean tryGamble() {
 		return doGamble == true;
 	}
-	
+
 	public void clearGamble() {
 		doGamble = false;
 	}
-	
+
 	@local
 	public Coordinate getRichSampleLocation() {
 		return richSampleLocation;
 	}
-	
+
 	public void clearRichSampleLocation() {
 		richSampleLocation.setPosition(0, 0, 0);
 	}
-	
+
 	@local
 	public native void rescheduleSurvey(SurveyMessage surveyMessage, WaypointObject waypoint, float maxDensity, ResourceSpawn resourceSpawn);
-	
+
 	@local
 	public native void rescheduleSample();
-	
+
 	@local
-	public native void rescheduleSampleResults(ResourceSpawner resourceSpawner, float density, final string resname);
+	public native void rescheduleSampleResults(final ResourceSpawner resourceSpawner, float density, final string resname);
 }

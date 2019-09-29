@@ -18,7 +18,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> mount = creo.get();
 
-		if (mount == NULL)
+		if (mount == nullptr)
 			return;
 
 		Locker locker(mount);
@@ -27,7 +27,7 @@ public:
 
 		ManagedReference<CreatureObject*> owner = mount->getLinkedCreature().get();
 
-		if (owner != NULL)
+		if (owner != nullptr)
 			owner->sendSystemMessage("@combat_effects:mount_not_tired"); // Your mount is no longer winded.
 	}
 

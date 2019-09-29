@@ -29,7 +29,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		int counter = 0;
@@ -47,11 +47,11 @@ public:
 
 		ManagedReference<SceneObject*> parentObject = creature->getParent().get();
 
-		if (parentObject != NULL) {
+		if (parentObject != nullptr) {
 			if (parentObject->isCellObject()) {
 				ManagedReference<SceneObject*> grandParentObject = parentObject->getParent().get();
 
-				if (grandParentObject != NULL) {
+				if (grandParentObject != nullptr) {
 					x = grandParentObject->getPositionX();
 					y = grandParentObject->getPositionY();
 				}
@@ -99,7 +99,7 @@ public:
 					//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
 					planet = arg1;
 
-					if (server->getZoneServer()->getZone(planet) == NULL) { //Not a valid planet name - malformed command
+					if (server->getZoneServer()->getZone(planet) == nullptr) { //Not a valid planet name - malformed command
 						creature->sendSystemMessage(usageError);
 						return GENERALERROR;
 					}
@@ -144,7 +144,7 @@ public:
 				//A waypoint in the form of /waypoint <name>
 				waypointName = arg1;
 			}
-		} else if (targetObject != NULL) {
+		} else if (targetObject != nullptr) {
 			Locker crosslocker(targetObject, creature);
 
 			x = targetObject->getWorldPositionX();

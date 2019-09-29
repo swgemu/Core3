@@ -13,10 +13,10 @@ void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 
 	NavMeshManager::instance()->cancelJobs(asNavArea());
 
-	if (zone != NULL) {
+	if (zone != nullptr) {
 		PlanetManager* planetManager = zone->getPlanetManager();
 
-		if (planetManager != NULL)
+		if (planetManager != nullptr)
 			planetManager->dropNavArea(meshName);
 	}
 
@@ -119,7 +119,7 @@ void NavAreaImplementation::notifyEnter(SceneObject* object) {
 
     SharedObjectTemplate *shot = object->getObjectTemplate();
 
-    if (shot == NULL)
+    if (shot == nullptr)
         return;
 
     if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object

@@ -11,17 +11,17 @@ void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* scen
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL || player->isDead() || player->isIncapacitated())
+	if (building == nullptr || player->isDead() || player->isIncapacitated())
 		return;
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if(zone == nullptr)
 		return;
 
 	Reference<Task*> pendingTask = building->getPendingTask("destruction");
 
-	if (pendingTask == NULL && building->isOwnerOf(player)) {
+	if (pendingTask == nullptr && building->isOwnerOf(player)) {
 		menuResponse->addRadialMenuItem(227, 3, "@self_destruct:self_destruct"); // Set Self Destruct
 		menuResponse->addRadialMenuItemToRadialID(227, 128, 3, "@self_destruct:fifteen"); // 15 seconds
 		menuResponse->addRadialMenuItemToRadialID(227, 129, 3, "@self_destruct:thirty"); // 30 seconds
@@ -34,12 +34,12 @@ int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* scene
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL || player->isDead() || player->isIncapacitated())
+	if (building == nullptr || player->isDead() || player->isIncapacitated())
 		return 0;
 
 	Reference<Task*> pendingTask = building->getPendingTask("destruction");
 
-	if (pendingTask != NULL)
+	if (pendingTask != nullptr)
 		return 0;
 
 	pendingTask = new DestroyStructureTask(building, true, true);
@@ -58,7 +58,7 @@ int DestructibleBuildingMenuComponent::sendSelfDestructMessage(BuildingObject* b
 	for (uint32 i = 1; i <= building->getTotalCellNumber(); ++i) {
 		ManagedReference<CellObject*> cellObject = building->getCell(i);
 
-		if (cellObject == NULL)
+		if (cellObject == nullptr)
 			continue;
 
 		int childObjects = cellObject->getContainerObjectsSize();

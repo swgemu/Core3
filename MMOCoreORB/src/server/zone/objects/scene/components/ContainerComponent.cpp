@@ -28,24 +28,24 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING);
 
 
-		if (containerFactoryParent != NULL) {
+		if (containerFactoryParent != nullptr) {
 			errorDescription = "@container_error_message:container28";
 			return TransferErrorCode::CANTADD;
-		} else if (objPlayerParent == NULL && objCreatureParent == NULL && objNpcCreatureParent == NULL && objBuildingParent != NULL) {
+		} else if (objPlayerParent == nullptr && objCreatureParent == nullptr && objNpcCreatureParent == nullptr && objBuildingParent != nullptr) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
 
-			if (buio != NULL ) {
+			if (buio != nullptr ) {
 				uint64 bid = buio->getOwnerObjectID();
 
-				if ((containerPlayerParent != NULL && bid != containerPlayerParent->getObjectID()) || (sceneObject->isPlayerCreature() && bid != sceneObject->getObjectID())) {
+				if ((containerPlayerParent != nullptr && bid != containerPlayerParent->getObjectID()) || (sceneObject->isPlayerCreature() && bid != sceneObject->getObjectID())) {
 					errorDescription = "@container_error_message:container27";
 					return TransferErrorCode::CANTREMOVE;
 				}
 			}
-		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL && !sceneObject->isPlayerCreature()) {
+		} else if (objPlayerParent != nullptr && containerPlayerParent == nullptr && containerBuildingParent != nullptr && !sceneObject->isPlayerCreature()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
-			if (buio != NULL && (buio->getOwnerObjectID() != objPlayerParent->getObjectID() || buio->isCivicStructure())) {
+			if (buio != nullptr && (buio->getOwnerObjectID() != objPlayerParent->getObjectID() || buio->isCivicStructure())) {
 				errorDescription = "@container_error_message:container28";
 				return TransferErrorCode::CANTADD;
 			}
@@ -54,7 +54,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	} else if (object->isVendor()) {
 		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		if (!sceneObject->isCellObject() && (!sceneObject->hasArrangementDescriptor("inventory") || containerPlayerParent == NULL)) {
+		if (!sceneObject->isCellObject() && (!sceneObject->hasArrangementDescriptor("inventory") || containerPlayerParent == nullptr)) {
 			return TransferErrorCode::CANTADD;
 		}
 	}
@@ -105,7 +105,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return false;
 
 	if (permission == ContainerPermissions::OPEN && ghost->isPrivileged())
@@ -113,7 +113,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
-	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != NULL && parent != sceneObject) {
+	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != nullptr && parent != sceneObject) {
 		return parent->checkContainerPermission(creature, permission);
 	} else if (permission == ContainerPermissions::MOVECONTAINER && sceneObject->isClientObject()) {
 		return false;
@@ -150,27 +150,27 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
 		ManagedReference<Facade*> facade = object->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
-		if (session != NULL) {
+		if (session != nullptr) {
 			session->cancelSession();
 		}
 	}
 
-	if (objParent != NULL || objZone != NULL) {
-		if (objParent != NULL)
+	if (objParent != nullptr || objZone != nullptr) {
+		if (objParent != nullptr)
 			objParent->removeObject(object, sceneObject, notifyClient);
 
-		if (object->getParent() != NULL) {
+		if (object->getParent() != nullptr) {
 			object->error("error removing from parent");
 
 			return false;
 		}
 
-		if (objZone != NULL)
+		if (objZone != nullptr)
 			objZone->remove(object);
 
-		object->setZone(NULL);
+		object->setZone(nullptr);
 
-		if (objParent == NULL)
+		if (objParent == nullptr)
 			objParent = objZone;
 	}
 
@@ -220,7 +220,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		ManagedReference<Zone*> newRootZone = object->getZone();
 
-		if (newRootZone != NULL && newRootZone != oldRootZone) {
+		if (newRootZone != nullptr && newRootZone != oldRootZone) {
 			newRootZone->registerObjectWithPlanetaryMap(object);
 		}
 	} else {
@@ -231,7 +231,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	contLocker.release();
 
-	if ((containmentType >= 4) && objZone == NULL)
+	if ((containmentType >= 4) && objZone == nullptr)
 		sceneObject->broadcastObject(object, true);
 	else if (notifyClient)
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
@@ -245,7 +245,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	ManagedReference<SceneObject*> rootParent = object->getRootParent();
 
-	if (rootParent != NULL && notifyRoot)
+	if (rootParent != nullptr && notifyRoot)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, sceneObject);
@@ -261,7 +261,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	ManagedReference<SceneObject*> objectKeeper = object;
 
-	if (object->getParent() != NULL && object->getParent() != sceneObject) {
+	if (object->getParent() != nullptr && object->getParent() != sceneObject) {
 		ManagedReference<SceneObject*> objParent = object->getParent();
 
 		containerObjects->drop(object->getObjectID());
@@ -272,7 +272,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 			return false;
 		} else
-			object->setParent(NULL);
+			object->setParent(nullptr);
 	}
 
 	int containedType = object->getContainmentType();
@@ -307,14 +307,14 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	if (containerObjects->contains(object->getObjectID())) {
 		//info("containerObjects doesnt contain specified object", true);
-		//object->setParent(NULL);
+		//object->setParent(nullptr);
 
 		//			return false;
 
 		containerObjects->drop(object->getObjectID());
 	}
 
-	object->setParent(NULL);
+	object->setParent(nullptr);
 
 	contLocker.release();
 
@@ -326,12 +326,12 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	sceneObject->updateToDatabase();
 	object->updateToDatabase();
 
-	if (sceneObject->getParent() == NULL) {
+	if (sceneObject->getParent() == nullptr) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
 		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
-		if (rootParent != NULL)
+		if (rootParent != nullptr)
 			rootParent->notifyObjectRemovedFromChild(object, sceneObject);
 		else
 			sceneObject->notifyObjectRemovedFromChild(object, sceneObject);

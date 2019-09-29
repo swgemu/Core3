@@ -21,7 +21,7 @@ void DroidCustomKitObjectMenuComponent::fillObjectMenuResponse(SceneObject* scen
 		return;
 
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == NULL)
+	if(tano == nullptr)
 		return;
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -29,7 +29,7 @@ void DroidCustomKitObjectMenuComponent::fillObjectMenuResponse(SceneObject* scen
 
 int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
-	if (player == NULL)
+	if (player == nullptr)
 		return 0;
 
 	if (!sceneObject->isASubChildOf(player))
@@ -42,16 +42,16 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 		return 0;
 
 	ManagedReference<TangibleObject*> kitTano = cast<TangibleObject*>(sceneObject);
-	if(kitTano == NULL)
+	if(kitTano == nullptr)
 		return 0;
 
 	uint64 targetID = player->getTargetID();
 	ZoneServer* server = player->getZoneServer();
-	if (server == NULL)
+	if (server == nullptr)
 		return 0;
 
 	ManagedReference<TangibleObject*> target = server->getObject(targetID, true).castTo<TangibleObject*>();
-	if (target == NULL || !target->isDroidObject()) {
+	if (target == nullptr || !target->isDroidObject()) {
 		player->sendSystemMessage("You can only use this tool to customize droids");
 		return 0;
 	}
@@ -62,7 +62,7 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 		bool hasConsent = false;
 
 		ManagedReference<CreatureObject*> targetOwner = server->getObject(ownerID, true).castTo<CreatureObject*>();
-		if (targetOwner != NULL)
+		if (targetOwner != nullptr)
 		{
 			Locker crossLock(targetOwner, player);
 			ManagedReference<PlayerObject*> ghostOwner = targetOwner->getPlayerObject();
@@ -103,7 +103,7 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	}
 
 	DroidObject* painted = cast<DroidObject*>(droid);
-	if (painted != NULL){
+	if (painted != nullptr){
 		painted->refreshPaint();
 	}
 

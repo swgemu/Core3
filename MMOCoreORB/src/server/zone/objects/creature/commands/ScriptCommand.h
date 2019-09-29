@@ -76,14 +76,14 @@ public:
 
 			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objID);
 
-			if (obj == NULL) {
+			if (obj == nullptr) {
 				creature->sendSystemMessage("Invalid object.");
 				return INVALIDPARAMETERS;
 			}
 
 			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-			if (ghost == NULL)
+			if (ghost == nullptr)
 				return GENERALERROR;
 
 			Vector<Reference<ScreenPlayTask*> > eventList = DirectorManager::instance()->getObjectEvents(obj);
@@ -98,7 +98,7 @@ public:
 			for (int i = 0; i < eventList.size(); i++) {
 				Reference<ScreenPlayTask*> task = eventList.get(i);
 
-				if (task == NULL)
+				if (task == nullptr)
 					continue;
 
 				String buffer = task->getScreenPlay() + ":" + task->getTaskKey();

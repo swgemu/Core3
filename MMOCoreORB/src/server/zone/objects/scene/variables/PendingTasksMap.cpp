@@ -14,12 +14,12 @@ using namespace server::zone::objects::scene;
 
 PendingTasksMap::PendingTasksMap() : taskMap(1, 1), orderedTasks(1, 1) {
 	taskMap.setNoDuplicateInsertPlan();
-	taskMap.setNullValue(NULL);
+	taskMap.setNullValue(nullptr);
 }
 
 PendingTasksMap::PendingTasksMap(const PendingTasksMap& p) : Object(), taskMap(p.taskMap), orderedTasks(p.orderedTasks) {
 	taskMap.setNoDuplicateInsertPlan();
-	taskMap.setNullValue(NULL);
+	taskMap.setNullValue(nullptr);
 }
 
 int PendingTasksMap::put(const String& name, Task* task) {

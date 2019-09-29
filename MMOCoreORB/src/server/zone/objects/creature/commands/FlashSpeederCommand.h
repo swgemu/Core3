@@ -29,7 +29,7 @@ public:
 		if( !player->isPlayerCreature() )
 			return GENERALERROR;
 
-		if( player->getPlayerObject() == NULL )
+		if( player->getPlayerObject() == nullptr )
 			return GENERALERROR;
 
 		// Player must have chosen flash speeder as a veteran reward

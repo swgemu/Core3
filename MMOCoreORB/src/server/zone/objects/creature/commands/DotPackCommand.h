@@ -99,7 +99,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 
@@ -250,21 +250,21 @@ public:
 			return INSUFFICIENTHAM;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-		if (object == NULL || !object->isCreatureObject() || creature == object)
+		if (object == nullptr || !object->isCreatureObject() || creature == object)
 			return INVALIDTARGET;
 
 		uint64 objectId = 0;
 
 		parseModifier(arguments.toString(), objectId);
-		ManagedReference<DotPack*> dotPack = NULL;
+		ManagedReference<DotPack*> dotPack = nullptr;
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
 		}
 
-		if (dotPack == NULL)
+		if (dotPack == nullptr)
 			return GENERALERROR;
 
 		PlayerManager* playerManager = server->getPlayerManager();
@@ -323,7 +323,7 @@ public:
 			if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 				DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-				if (buff != NULL) {
+				if (buff != nullptr) {
 					float percent = buff->getSkillModifierValue("heal_recovery");
 
 					delay = round(delay * (100.0f - percent) / 100.0f);
@@ -400,7 +400,7 @@ public:
 			handleArea(creature, creatureTarget, dotPack, dotPack->getArea());
 		}
 
-		if (dotPack != NULL) {
+		if (dotPack != nullptr) {
 			if (creatureTarget != creature)
 				clocker.release();
 

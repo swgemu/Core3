@@ -41,7 +41,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -85,8 +85,8 @@ public:
 	StimPack* findStimPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory == NULL)
-			return NULL;
+		if (inventory == nullptr)
+			return nullptr;
 
 		int medicineUse = creature->getSkillMod("healing_ability");
 		int combatMedicineUse = creature->getSkillMod("combat_healing_ability");
@@ -116,7 +116,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) const {
@@ -142,7 +142,7 @@ public:
 			return false;
 		}
 
-		if (stimPack == NULL) {
+		if (stimPack == nullptr) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -262,7 +262,7 @@ public:
 		if (stimPack->isRangedStimPack()) {
 			RangedStimPack* rangeStim = cast<RangedStimPack*>(stimPack);
 
-			if (rangeStim == NULL)
+			if (rangeStim == nullptr)
 				return;
 
 			uint32 stimPower = rangeStim->calculatePower(creature, targetCreature);
@@ -314,7 +314,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		try {
@@ -406,11 +406,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL) {
+		if (object != nullptr) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+				if (tangibleObject != nullptr && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
@@ -444,7 +444,7 @@ public:
 		} else {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				stimPack = inventory->getContainerObject(pharmaceuticalObjectID).castTo<StimPack*>();
 			}
 		}

@@ -28,16 +28,16 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerObject == nullptr)
 		return;
 
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		return;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		return;
 	}
 
@@ -104,17 +104,17 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+	if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 		return 0;
 	}
 
 	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
-	if(vendorData == NULL) {
+	if(vendorData == nullptr) {
 		return 0;
 	}
 
 	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(sceneObject);
-	if(vendor == NULL)
+	if(vendor == nullptr)
 		return 0;
 
 	bool owner = vendorData->getOwnerId() == player->getObjectID();

@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			creature->sendSystemMessage("@performance:dance_must_be_performing_self");
 			return GENERALERROR;
 		}

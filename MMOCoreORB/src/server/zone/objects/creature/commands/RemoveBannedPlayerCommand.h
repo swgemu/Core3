@@ -23,11 +23,11 @@ public:
 
 		ManagedReference<PlayerObject*> adminGhost = creature->getPlayerObject();
 
-		if (adminGhost == NULL)
+		if (adminGhost == nullptr)
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> targetCreature = NULL;
-		ManagedReference<PlayerObject*> ghost = NULL;
+		ManagedReference<CreatureObject*> targetCreature = nullptr;
+		ManagedReference<PlayerObject*> ghost = nullptr;
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		StringTokenizer args(arguments.toString());
@@ -45,12 +45,12 @@ public:
 
 		}
 
-		if (targetCreature == NULL || !targetCreature->isPlayerCreature())
+		if (targetCreature == nullptr || !targetCreature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		ghost = targetCreature->getPlayerObject();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			creature->sendSystemMessage("Player Ghost not found");
 			return SUCCESS;
 		}
@@ -69,8 +69,8 @@ public:
 		}
 
 		ManagedReference<Account*> account = ghost->getAccount();
-		if (account == NULL) {
-			creature->sendSystemMessage("Account is NULL");
+		if (account == nullptr) {
+			creature->sendSystemMessage("Account is nullptr");
 			return GENERALERROR;
 		}
 
@@ -78,7 +78,7 @@ public:
 
 		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyID(), targetCreature->getFirstName());
 
-		if (entry == NULL) {
+		if (entry == nullptr) {
 			creature->sendSystemMessage("Error getting CharacterListEntry");
 			return GENERALERROR;
 		}

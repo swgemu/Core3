@@ -20,7 +20,7 @@ class ChatPersistentMessageToClient : public BaseMessage {
 		for (int i = 0; i < stringIdParameters->size(); ++i) {
 			StringIdChatParameter* parameter = &stringIdParameters->get(i);
 
-			if (parameter == NULL)
+			if (parameter == nullptr)
 				continue;
 
 			parameter->insertToMessage(this);
@@ -31,7 +31,7 @@ class ChatPersistentMessageToClient : public BaseMessage {
 		for (int i = 0; i < waypointParameters->size(); ++i) {
 			WaypointChatParameter* parameter = &waypointParameters->get(i);
 
-			if (parameter == NULL)
+			if (parameter == nullptr)
 				continue;
 
 			parameter->insertToMessage(this);

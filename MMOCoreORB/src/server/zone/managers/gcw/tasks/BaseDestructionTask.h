@@ -25,7 +25,7 @@ public:
 		countDown--;
 		ManagedReference<GCWManager*> strongRef = gcwManager.get();
 		ManagedReference<BuildingObject*> building = buildingObject.get();
-		if (strongRef == NULL){
+		if (strongRef == nullptr){
 			return;
 		}
 

@@ -88,7 +88,7 @@ public:
 				player->sendSystemMessage(healParams);
 			}
 
-			if (meditateTask != NULL)
+			if (meditateTask != nullptr)
 				meditateTask->reschedule(5000);
 			else
 				meditateTask->schedule(5000);

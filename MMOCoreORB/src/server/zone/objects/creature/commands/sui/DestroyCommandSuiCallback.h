@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL)
+		if (obj == nullptr)
 			return;
 
 		if (obj->isPlayerCreature()) {

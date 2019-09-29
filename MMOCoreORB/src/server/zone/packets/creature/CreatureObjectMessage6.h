@@ -10,7 +10,7 @@
 
 class CreatureObjectMessage6 : public TangibleObjectMessage6 {
 public:
-	CreatureObjectMessage6(CreatureObject* creo)
+	CreatureObjectMessage6(const CreatureObject* creo)
 			: TangibleObjectMessage6(creo, 0x4352454F, 0x16) {
 
 		insertShort((uint16)creo->getLevel());

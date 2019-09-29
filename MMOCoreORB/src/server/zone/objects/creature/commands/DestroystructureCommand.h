@@ -37,14 +37,14 @@ public:
 		uint64 targetid = creature->getTargetID();
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
-		if (obj == NULL || !obj->isStructureObject())
+		if (obj == nullptr || !obj->isStructureObject())
 			return INVALIDTARGET;
 
 		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		if (!ghost->isOwnedStructure(structure) && !ghost->isStaff()) {
@@ -55,17 +55,17 @@ public:
 		if (structure->isGCWBase() && !ghost->isStaff()) {
 			ManagedReference<Zone*> zone = creature->getZone();
 
-			if (zone == NULL)
+			if (zone == nullptr)
 				return GENERALERROR;
 
 			GCWManager* gcwMan = zone->getGCWManager();
 
-			if (gcwMan == NULL)
+			if (gcwMan == nullptr)
 				return GENERALERROR;
 
 			BuildingObject* buildingObject = cast<BuildingObject*>(structure);
 
-			if (buildingObject == NULL)
+			if (buildingObject == nullptr)
 				return GENERALERROR;
 
 			if (((structure->getPvpStatusBitmask() & CreatureFlag::OVERT) && gcwMan->isBaseVulnerable(buildingObject)) || (structure->getOwnerCreatureObject() != creature))
@@ -92,7 +92,7 @@ public:
 	}
 
 	int disbandCamp(CreatureObject* creature, StructureObject* structure) const {
-		Reference<Terminal*> campTerminal = NULL;
+		Reference<Terminal*> campTerminal = nullptr;
 		SortedVector < ManagedReference<SceneObject*> > *childObjects = structure->getChildObjects();
 
 		for (int i = 0; i < childObjects->size(); ++i) {
@@ -102,13 +102,13 @@ public:
 			}
 		}
 
-		if (campTerminal == NULL) {
+		if (campTerminal == nullptr) {
 			return GENERALERROR;
 		}
 
 		CampTerminalMenuComponent* campMenu = cast<CampTerminalMenuComponent*>(campTerminal->getObjectMenuComponent());
 
-		if (campMenu == NULL)
+		if (campMenu == nullptr)
 			return GENERALERROR;
 
 		campMenu->disbandCamp(campTerminal, creature);

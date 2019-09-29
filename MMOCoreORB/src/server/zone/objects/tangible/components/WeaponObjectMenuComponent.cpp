@@ -18,7 +18,7 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
-	if(weapon == NULL)
+	if(weapon == nullptr)
 		return;
 
 	if(weapon->isASubChildOf(player)) {
@@ -41,7 +41,7 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 0;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
-	if(weapon == NULL)
+	if(weapon == nullptr)
 		return 1;
 
 	if(weapon->isASubChildOf(player)) {
@@ -55,7 +55,7 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 			ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
-			if (session != NULL) {
+			if (session != nullptr) {
 				player->sendSystemMessage("@slicing/slicing:already_slicing");
 				return 0;
 			}
@@ -77,7 +77,7 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		if(selectedID == 71) {
 
 			ManagedReference<PowerupObject*> pup = weapon->removePowerup();
-			if(pup == NULL)
+			if(pup == nullptr)
 				return 1;
 
 			Locker locker(pup);

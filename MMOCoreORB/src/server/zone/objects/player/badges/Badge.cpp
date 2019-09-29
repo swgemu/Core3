@@ -13,7 +13,7 @@ Badge::Badge() :
 {}
 
 void Badge::readFromRow(DataTableRow* row) {
-	if (row == NULL)
+	if (row == nullptr)
 		return;
 
 	const int INDEX = 0;

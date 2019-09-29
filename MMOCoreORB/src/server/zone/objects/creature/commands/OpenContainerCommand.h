@@ -30,7 +30,7 @@ public:
 
 		//creature->info("OpenContainerCommand", true);
 
-		ManagedReference<SceneObject*> objectToOpen = NULL;
+		ManagedReference<SceneObject*> objectToOpen = nullptr;
 
 		StringTokenizer args(arguments.toString());
 
@@ -40,13 +40,13 @@ public:
 
 		objectToOpen = server->getZoneServer()->getObject(target);
 
-		if (objectToOpen == NULL)
+		if (objectToOpen == nullptr)
 			return GENERALERROR;
 
 		/// This is weird, when you select a schematic and the crafting station has a
 		/// Hopper the client requests to open the hopper container to the player
 		/// Which isn't supposed to happen
-		if(objectToOpen->getParent() != NULL && objectToOpen->getParent().get()->isCraftingStation())
+		if(objectToOpen->getParent() != nullptr && objectToOpen->getParent().get()->isCraftingStation())
 			return GENERALERROR;
 
 		Locker clocker(objectToOpen, creature);
@@ -54,7 +54,7 @@ public:
 /*
 		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 
-		if (objectsParent != NULL && objectsParent->isCellObject()) {
+		if (objectsParent != nullptr && objectsParent->isCellObject()) {
 			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent());
 
 			if (!building->isOnAdminList(creature->getFirstName())) {
@@ -75,7 +75,7 @@ public:
 */
 
 		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
-		if(container != NULL && container->isContainerLocked()) {
+		if(container != nullptr && container->isContainerLocked()) {
 			creature->sendSystemMessage("@slicing/slicing:locked");
 			return SUCCESS;
 		}
@@ -84,7 +84,7 @@ public:
 		if (objectToOpen->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
 
 			if(objectToOpen->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
-				if(container != NULL && container->isRelocking() == false) {
+				if(container != nullptr && container->isRelocking() == false) {
 					Reference<RelockLootContainerEvent*> relockEvent = new RelockLootContainerEvent(container);
 					relockEvent->schedule(container->getLockTime());
 				}

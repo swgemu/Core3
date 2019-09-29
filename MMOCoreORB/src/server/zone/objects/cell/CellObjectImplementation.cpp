@@ -53,7 +53,7 @@ void CellObjectImplementation::onContainerLoaded() {
 
 	ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return;
 
 	Locker locker(building);
@@ -61,7 +61,7 @@ void CellObjectImplementation::onContainerLoaded() {
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* child = getContainerObject(j);
 
-		building->notifyObjectInsertedToChild(child, asSceneObject(), NULL);
+		building->notifyObjectInsertedToChild(child, asSceneObject(), nullptr);
 	}
 }
 
@@ -91,7 +91,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (player->isCreatureObject() && strongParent != NULL && strongParent->isBuildingObject()) {
+	if (player->isCreatureObject() && strongParent != nullptr && strongParent->isBuildingObject()) {
 		CreatureObject* creature = player->asCreatureObject();
 
 		allowEntry = strongParent->asBuildingObject()->isAllowedEntry(creature);
@@ -104,7 +104,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (strongParent != NULL && strongParent->isBuildingObject()) {
+	if (strongParent != nullptr && strongParent->isBuildingObject()) {
 		BuildingObject* building = strongParent->asBuildingObject();
 
 		int count = 1;
@@ -129,9 +129,9 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 	Zone* zone = getZone();
 
-	Locker* locker = NULL;
+	Locker* locker = nullptr;
 
-	if (zone != NULL) {
+	if (zone != nullptr) {
 //		locker = new Locker(zone);
 	}
 
@@ -142,7 +142,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	try {
 		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow, notifyRoot);
 
-		if (zone != NULL && object->isTangibleObject()) {
+		if (zone != nullptr && object->isTangibleObject()) {
 			TangibleObject* tano = cast<TangibleObject*>(object);
 			zone->updateActiveAreas(tano);
 		}
@@ -154,15 +154,15 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 	}
 
-	if (oldParent == NULL) {
+	if (oldParent == nullptr) {
 		ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
 		CreatureObject* creo = object->asCreatureObject();
 
-		if (building != NULL && creo != NULL)
+		if (building != nullptr && creo != nullptr)
 			building->onEnter(creo);
 	}
 
-	if (locker != NULL)
+	if (locker != nullptr)
 		delete locker;
 
 	return ret;
@@ -182,7 +182,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (strongParent != NULL) {
+	if (strongParent != nullptr) {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
@@ -202,7 +202,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 void CellObjectImplementation::destroyAllPlayerItems() {
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (strongParent == NULL)
+	if (strongParent == nullptr)
 		return;
 
 	int containerSize = getContainerObjectsSize();

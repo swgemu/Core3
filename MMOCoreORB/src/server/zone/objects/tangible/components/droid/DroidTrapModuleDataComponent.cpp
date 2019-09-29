@@ -24,7 +24,7 @@ String DroidTrapModuleDataComponent::getModuleName() {
 }
 void DroidTrapModuleDataComponent::initializeTransientMembers() {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -43,15 +43,15 @@ void DroidTrapModuleDataComponent::fillAttributeList(AttributeListMessage* alm, 
 	alm->insertAttribute( "trap_bonus", trapBonus);
 	ManagedReference<DroidObject*> d = getDroidObject();
 	TangibleObject* o;
-	if (d != NULL) {
-		if (trap == NULL)
+	if (d != nullptr) {
+		if (trap == nullptr)
 			alm->insertAttribute("droid_trap_type",EMPTY_TRAP_MESSAGE);
 		else
 			alm->insertAttribute("droid_trap_type",trap->getObjectName()->getFullPath());
 	}
 	StringBuffer sb;
 	int loaded = 0;
-	if (trap != NULL) {
+	if (trap != nullptr) {
 		loaded = trap->getUseCount();
 	}
 	sb << loaded;
@@ -64,24 +64,24 @@ String DroidTrapModuleDataComponent::toString(){
 }
 void DroidTrapModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidTrapModuleDataComponent* otherModule = cast<DroidTrapModuleDataComponent*>(other);
-	if(otherModule == NULL)
+	if(otherModule == nullptr)
 		return;
 	trapBonus = trapBonus + otherModule->trapBonus;
 	modules += 1;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL){
+	if (droidComponent != nullptr){
 		droidComponent->changeAttributeValue("trap_bonus",(float)trapBonus);
 		droidComponent->changeAttributeValue("module_count",(float)modules);
 	}
 }
 void DroidTrapModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	DroidTrapModuleDataComponent* otherModule = cast<DroidTrapModuleDataComponent*>(other);
-	if(otherModule == NULL)
+	if(otherModule == nullptr)
 		return;
 	trapBonus = otherModule->trapBonus;
 	modules = 1;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL){
+	if (droidComponent != nullptr){
 		droidComponent->addProperty("trap_bonus",(float)trapBonus,0,"exp_effectiveness");
 		droidComponent->addProperty("module_count",(float)modules,0,"hidden",true);
 	}
@@ -93,12 +93,12 @@ void DroidTrapModuleDataComponent::onCall() {
 bool DroidTrapModuleDataComponent::compatibleTrap(CreatureObject* player, uint32 type) {
 	// get trap meta data and see if the player can use it.
 	SharedObjectTemplate* templateData =TemplateManager::instance()->getTemplate(type);
-	if (templateData == NULL) {
+	if (templateData == nullptr) {
 		return false;
 	}
 
 	TrapTemplate* trapData = cast<TrapTemplate*> (templateData);
-	if (trapData == NULL) {
+	if (trapData == nullptr) {
 		return false;
 	}
 
@@ -121,7 +121,7 @@ void DroidTrapModuleDataComponent::onStore() {
  * Add Droid sub-radial options, need to be a top level radial not submenu
  */
 void DroidTrapModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (player != NULL && player->hasSkill("outdoors_scout_novice")) {
+	if (player != nullptr && player->hasSkill("outdoors_scout_novice")) {
 		menuResponse->addRadialMenuItem(TRAP_MODULE_CONTROLS, 3, "@pet/droid_modules:throw_trap_options" );
 		menuResponse->addRadialMenuItemToRadialID(TRAP_MODULE_CONTROLS, TRAP_MODULE_TRAIN, 3, "@pet/droid_modules:train_throw_one" );
 		menuResponse->addRadialMenuItemToRadialID(TRAP_MODULE_CONTROLS, TRAP_MODULE_CLEAR, 3, "@pet/droid_modules:clear_trap" );
@@ -132,7 +132,7 @@ int DroidTrapModuleDataComponent::handleObjectMenuSelect(CreatureObject* player,
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if( droid == NULL || droidComponent == NULL){
+	if( droid == nullptr || droidComponent == nullptr){
 		return 0;
 	}
 	if( droid->isDead() || droid->isIncapacitated() || player->isDead()) {
@@ -144,7 +144,7 @@ int DroidTrapModuleDataComponent::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	if( selectedID == TRAP_MODULE_TRAIN ){
-		if( controller == NULL )
+		if( controller == nullptr )
 			return 0;
 
 		Locker locker(controller);
@@ -153,10 +153,10 @@ int DroidTrapModuleDataComponent::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	if( selectedID == TRAP_MODULE_CLEAR ){
-		if (trap != NULL) {
+		if (trap != nullptr) {
 			trap->destroyObjectFromWorld(true);
 			trap->destroyObjectFromDatabase(true);
-			trap = NULL;
+			trap = nullptr;
 		}
 		player->sendSystemMessage("@pet/droid_modules:trap_matrix_cleared");
 	}
@@ -165,17 +165,17 @@ int DroidTrapModuleDataComponent::handleObjectMenuSelect(CreatureObject* player,
 void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker){
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		return;
 	}
 
 	ManagedReference<PetControlDevice*> pcd = droid->getControlDevice().get().castTo<PetControlDevice*>();
-	if( pcd == NULL ) {
+	if( pcd == nullptr ) {
 		return;
 	}
 
 	PetManager* petManager = droid->getZoneServer()->getPetManager();
-	if( petManager == NULL ) {
+	if( petManager == nullptr ) {
 		return;
 	}
 
@@ -184,7 +184,7 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 		return;
 	}
 	if( petManager->isTrainedCommand( pcd, PetManager::THROWTRAP, cmd ) ){
-		if (trap == NULL) {
+		if (trap == nullptr) {
 			speaker->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
 			return;
 		}
@@ -194,7 +194,7 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 
 
 void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, TangibleObject* input) {
-	if (input == NULL) {
+	if (input == nullptr) {
 		return;
 	}
 
@@ -205,7 +205,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
 
-	if (droid == NULL) {
+	if (droid == nullptr) {
 		return;
 	}
 
@@ -217,7 +217,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 	}
 
 	int loaded = 0;
-	if (trap != NULL) {
+	if (trap != nullptr) {
 		loaded = trap->getUseCount();
 	}
 
@@ -226,7 +226,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 	Locker locker(input);
 
 	// adding to existing trap
-	if (trap == NULL) {
+	if (trap == nullptr) {
 		// add the trap into the unit
 		ObjectManager* objectManager = ObjectManager::instance();
 
@@ -234,14 +234,14 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			// just clone it and set old one to 0 uses to destroy it so it transfer correctly as we dont store this directly in the droid
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 
-			if (protoclone != NULL) {
+			if (protoclone != nullptr) {
 				Locker cloneLocker(protoclone);
 
 				if (protoclone->hasAntiDecayKit()) {
 					protoclone->removeAntiDecayKit();
 				}
 
-				protoclone->setParent(NULL);
+				protoclone->setParent(nullptr);
 				protoclone->setUseCount(input->getUseCount());
 				trap = protoclone;
 				input->decreaseUseCount(input->getUseCount());
@@ -255,14 +255,14 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			// should technically never happen as you cant experiment traps use count but someone might config base useCount > 10
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 
-			if (protoclone != NULL) {
+			if (protoclone != nullptr) {
 				Locker cloneLocker(protoclone);
 
 				if (protoclone->hasAntiDecayKit()) {
 					protoclone->removeAntiDecayKit();
 				}
 
-				protoclone->setParent(NULL);
+				protoclone->setParent(nullptr);
 				protoclone->setUseCount(allowed);
 				input->decreaseUseCount(allowed);
 				trap = protoclone;
@@ -347,13 +347,13 @@ int DroidTrapModuleDataComponent::writeObjectMembers(ObjectOutputStream* stream)
 	return 3;
 }
 void DroidTrapModuleDataComponent::decrementTrap() {
-	if(trap != NULL) {
+	if(trap != nullptr) {
 		Locker locker(trap);
 
 		trap->decreaseUseCount();
 
 		if(trap->getUseCount() == 0) {
-			trap = NULL;
+			trap = nullptr;
 		}
 	}
 }

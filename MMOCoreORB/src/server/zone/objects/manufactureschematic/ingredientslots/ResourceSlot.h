@@ -50,17 +50,17 @@ public:
 			/// Get spawn object
 			ManagedReference<ResourceSpawn* > spawn = incomingResource->getSpawnObject();
 
-			if(spawn == NULL)
+			if(spawn == nullptr)
 				return false;
 
-			if(currentSpawn != NULL && currentSpawn != spawn)
+			if(currentSpawn != nullptr && currentSpawn != spawn)
 				return false;
 
 			/// Verify the resource is the right type
 			if(!incomingResource->getSpawnObject()->isType(contentType))
 				return false;
 
-			if (currentSpawn == NULL) {
+			if (currentSpawn == nullptr) {
 				currentSpawn = spawn;
 			}
 
@@ -95,7 +95,7 @@ public:
 		if(parents.size() == 0)
 			return true;
 
-		if(currentSpawn == NULL) {
+		if(currentSpawn == nullptr) {
 			warning("Spawn is null when trying to return resources");
 			return false;
 		}
@@ -104,7 +104,7 @@ public:
 
 			SceneObject* parent = parents.elementAt(i).getKey();
 
-			if(parent == NULL)
+			if(parent == nullptr)
 				continue;
 
 			bool found = false;
@@ -130,7 +130,7 @@ public:
 
 				locker.release();
 
-				if(newContainer != NULL && newContainer->getQuantity() > 0) {
+				if(newContainer != nullptr && newContainer->getQuantity() > 0) {
 					Locker locker(newContainer);
 
 					if(parent->transferObject(newContainer, -1, false)) {
@@ -140,9 +140,9 @@ public:
 						newContainer->destroyObjectFromDatabase(true);
 					}
 				} else {
-					error("Unable to return resource to parent, NULL container");
+					error("Unable to return resource to parent, nullptr container");
 
-					if (newContainer != NULL) {
+					if (newContainer != nullptr) {
 						Locker locker(newContainer);
 
 						newContainer->destroyObjectFromDatabase(true);
@@ -153,7 +153,7 @@ public:
 		}
 
 		parents.removeAll();
-		currentSpawn = NULL;
+		currentSpawn = nullptr;
 		quantity = 0;
 		return true;
 	}
@@ -184,7 +184,7 @@ public:
 
 	Vector<uint64> getOIDVector() {
 		Vector<uint64> oid;
-		if(currentSpawn != NULL)
+		if(currentSpawn != nullptr)
 			oid.add(currentSpawn->getObjectID());
 		return oid;
 	}

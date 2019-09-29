@@ -23,7 +23,7 @@ int connectCount = 0, disconnectCount = 0;
 
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
-		zones.add(NULL);
+		zones.add(nullptr);
 	}
 
 	info("initialized", true);
@@ -36,7 +36,7 @@ void ClientCore::run() {
 
 	for (int i = 0; i < instances; ++i) {
 		Zone* zone = zones.get(i);
-		if (zone != NULL)
+		if (zone != nullptr)
 			zone->disconnect();
 	}
 
@@ -46,7 +46,7 @@ void ClientCore::run() {
 void ClientCore::loginCharacter(int index) {
 	try {
 		Zone* zone = zones.get(index);
-		if (zone != NULL)
+		if (zone != nullptr)
 			return;
 
 		Reference<LoginSession*> loginSession = new LoginSession(index);
@@ -77,10 +77,10 @@ void ClientCore::loginCharacter(int index) {
 
 void ClientCore::logoutCharacter(int index) {
 	Zone* zone = zones.get(index);
-	if (zone == NULL || !zone->isStarted())
+	if (zone == nullptr || !zone->isStarted())
 		return;
 
-	zones.set(index, NULL);
+	zones.set(index, nullptr);
 
 	zone->disconnect();
 

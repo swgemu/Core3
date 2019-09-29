@@ -32,7 +32,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL)
+		if (object == nullptr)
 			return GENERALERROR;
 
 		if (!creature->isPlayerCreature())
@@ -48,7 +48,7 @@ public:
 		if (object->isWaypointObject()) {
 			Reference<PlayerObject*> playerObject = creature->getSlottedObject("ghost").castTo<PlayerObject*>( );
 
-			if (playerObject != NULL)
+			if (playerObject != nullptr)
 				playerObject->removeWaypoint(target);
 
 			return SUCCESS;
@@ -59,7 +59,7 @@ public:
 		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
 			return GENERALERROR;
 
-		if (objectParent != NULL && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+		if (objectParent != nullptr && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
 			return GENERALERROR;
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
@@ -81,7 +81,7 @@ public:
 				if(tano->hasAntiDecayKit()){
 					ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-					if(inventory == NULL){
+					if(inventory == nullptr){
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
@@ -93,25 +93,25 @@ public:
 
 					ManagedReference<SceneObject*> adkSceno = tano->removeAntiDecayKit();
 
-					if(adkSceno == NULL){
+					if(adkSceno == nullptr){
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
 
 					AntiDecayKit* adk = adkSceno.castTo<AntiDecayKit*>();
 
-					if(adk == NULL){
+					if(adk == nullptr){
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
 
-					if (adk->getParent().get() == NULL) {
+					if (adk->getParent().get() == nullptr) {
 						AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-						if (auctionManager != NULL) {
+						if (auctionManager != nullptr) {
 							AuctionsMap* auctionsMap = auctionManager->getAuctionMap();
 
-							if (auctionsMap != NULL && !auctionsMap->containsItem(adk->getObjectID())) {
+							if (auctionsMap != nullptr && !auctionsMap->containsItem(adk->getObjectID())) {
 								Locker adkLocker(adk);
 								adk->setUsed(false);
 

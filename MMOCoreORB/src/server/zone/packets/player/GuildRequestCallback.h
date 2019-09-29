@@ -28,7 +28,7 @@ public:
 	void run() {
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objectID);
 
-		if (obj == NULL || !obj->isCreatureObject())
+		if (obj == nullptr || !obj->isCreatureObject())
 			return;
 
 		CreatureObject* creature = cast<CreatureObject*>( obj.get());

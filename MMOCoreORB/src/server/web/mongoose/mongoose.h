@@ -68,10 +68,10 @@ enum mg_event {
 //   request_info: Information about HTTP request.
 //
 // Return:
-//   If handler returns non-NULL, that means that handler has processed the
+//   If handler returns non-nullptr, that means that handler has processed the
 //   request by sending appropriate HTTP reply to the client. Mongoose treats
 //   the request as served.
-//   If callback returns NULL, that means that callback has not processed
+//   If callback returns nullptr, that means that callback has not processed
 //   the request. Handler must not send any data to the client in this case.
 //   Mongoose proceeds with request handling as if nothing happened.
 typedef void * (*mg_callback_t)(enum mg_event event,
@@ -82,23 +82,23 @@ typedef void * (*mg_callback_t)(enum mg_event event,
 // Start web server.
 //
 // Parameters:
-//   callback: user defined event handling function or NULL.
-//   options: NULL terminated list of option_name, option_value pairs that
+//   callback: user defined event handling function or nullptr.
+//   options: nullptr terminated list of option_name, option_value pairs that
 //            specify Mongoose configuration parameters.
 //
 // Example:
 //   const char *options[] = {
 //     "document_root", "/var/www",
 //     "listening_ports", "80,443s",
-//     NULL
+//     nullptr
 //   };
-//   struct mg_context *ctx = mg_start(&my_func, NULL, options);
+//   struct mg_context *ctx = mg_start(&my_func, nullptr, options);
 //
 // Please refer to http://code.google.com/p/mongoose/wiki/MongooseManual
 // for the list of valid option and their possible values.
 //
 // Return:
-//   web server context, or NULL on error.
+//   web server context, or nullptr on error.
 struct mg_context *mg_start(mg_callback_t callback, void *user_data,
                             const char **options);
 
@@ -114,15 +114,15 @@ void mg_stop(struct mg_context *);
 // Get the value of particular configuration parameter.
 // The value returned is read-only. Mongoose does not allow changing
 // configuration at run time.
-// If given parameter name is not valid, NULL is returned. For valid
-// names, return value is guaranteed to be non-NULL. If parameter is not
+// If given parameter name is not valid, nullptr is returned. For valid
+// names, return value is guaranteed to be non-nullptr. If parameter is not
 // set, zero-length string is returned.
 const char *mg_get_option(const struct mg_context *ctx, const char *name);
 
 
 // Return array of strings that represent valid configuration options.
 // For each option, a short name, long name, and default value is returned.
-// Array is NULL terminated.
+// Array is nullptr terminated.
 const char **mg_get_valid_option_names(void);
 
 
@@ -133,8 +133,8 @@ const char **mg_get_valid_option_names(void);
 // several ways of implementing authentication on the server side. For another,
 // cookie-based way please refer to the examples/chat.c in the source tree.
 //
-// If password is not NULL, entry is added (or modified if already exists).
-// If password is NULL, entry is deleted.
+// If password is not nullptr, entry is added (or modified if already exists).
+// If password is nullptr, entry is deleted.
 //
 // Return:
 //   1 on success, 0 on error.
@@ -164,7 +164,7 @@ int mg_read(struct mg_connection *, void *buf, size_t len);
 //
 // This is a helper function. It traverses request_info->http_headers array,
 // and if the header is present in the array, returns its value. If it is
-// not present, NULL is returned.
+// not present, nullptr is returned.
 const char *mg_get_header(const struct mg_connection *, const char *name);
 
 
@@ -207,11 +207,11 @@ const char *mg_version(void);
 
 
 // MD5 hash given strings.
-// Buffer 'buf' must be 33 bytes long. Varargs is a NULL terminated list of
+// Buffer 'buf' must be 33 bytes long. Varargs is a nullptr terminated list of
 // asciiz strings. When function returns, buf will contain human-readable
 // MD5 hash. Example:
 //   char buf[33];
-//   mg_md5(buf, "aa", "bb", NULL);
+//   mg_md5(buf, "aa", "bb", nullptr);
 void mg_md5(char *buf, ...);
 
 

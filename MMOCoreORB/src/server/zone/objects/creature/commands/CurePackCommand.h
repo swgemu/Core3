@@ -51,7 +51,7 @@ public:
 
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (inventory != NULL) {
+		if (inventory != nullptr) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -69,7 +69,7 @@ public:
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) const {
@@ -123,7 +123,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != NULL) {
+			if (buff != nullptr) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -194,7 +194,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return;
 
 		// TODO: Convert this to a CombatManager::getAreaTargets() call
@@ -263,7 +263,7 @@ public:
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, PharmaceuticalObject* pharma) const {
-		CurePack* curePack = NULL;
+		CurePack* curePack = nullptr;
 
 		if (pharma->isCurePack())
 			curePack = cast<CurePack*>( pharma);
@@ -337,7 +337,7 @@ public:
 			return false;
 		}
 
-		if (curePack == NULL) {
+		if (curePack == nullptr) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -374,9 +374,9 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
+		if (object != nullptr && !object->isCreatureObject()) {
 			return INVALIDTARGET;
-		} else if (object == NULL)
+		} else if (object == nullptr)
 			object = creature;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
@@ -397,7 +397,7 @@ public:
 		} else {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != NULL) {
+			if (inventory != nullptr) {
 				curePack = inventory->getContainerObject(objectId).castTo<CurePack*>();
 			}
 		}
@@ -446,7 +446,7 @@ public:
 
 		deactivateConditionTreatment(creature);
 
-		if (curePack != NULL) {
+		if (curePack != nullptr) {
 			Locker locker(curePack);
 			curePack->decreaseUseCount();
 		}

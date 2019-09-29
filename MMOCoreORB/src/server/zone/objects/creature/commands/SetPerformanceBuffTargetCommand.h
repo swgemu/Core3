@@ -29,7 +29,7 @@ public:
 		ManagedReference<CreatureObject*> targetObject = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 
-		if(targetObject == NULL) {
+		if(targetObject == nullptr) {
 			creature->sendSystemMessage("@performance:buff_invalid_target_self");
 			return GENERALERROR;
 		}

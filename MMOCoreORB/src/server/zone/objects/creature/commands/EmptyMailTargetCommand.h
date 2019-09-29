@@ -30,14 +30,14 @@ public:
 			targetCreature = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
 		}
 
-		if (targetCreature == NULL || !targetCreature->isPlayerCreature()) {
+		if (targetCreature == nullptr || !targetCreature->isPlayerCreature()) {
 			creature->sendSystemMessage("@player/player_utility:invalid_target"); // "Target for this command is invalid."
 			return INVALIDTARGET;
 		}
 
 		PlayerObject* ghost = targetCreature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		uint64 selfID = creature->getObjectID();

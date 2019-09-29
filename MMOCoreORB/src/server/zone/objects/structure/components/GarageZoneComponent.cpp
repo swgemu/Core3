@@ -9,12 +9,12 @@
 void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
 
-	if (obj == NULL || !obj->isPlayerCreature())
+	if (obj == nullptr || !obj->isPlayerCreature())
 		return;
 
 	GarageDataComponent* data = cast<GarageDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (data == NULL)
+	if (data == nullptr)
 		return;
 
 	uint64 objID = obj->getObjectID();
@@ -30,7 +30,7 @@ void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 	} else {
 		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 
-		if (rootParent == NULL || !rootParent->isVehicleObject())
+		if (rootParent == nullptr || !rootParent->isVehicleObject())
 			return;
 
 		if (!data->hasNotifiedPlayer(objID)) {
@@ -47,12 +47,12 @@ void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
 
-	if (obj == NULL || !obj->isPlayerCreature())
+	if (obj == nullptr || !obj->isPlayerCreature())
 		return;
 
 	GarageDataComponent* data = cast<GarageDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (data == NULL)
+	if (data == nullptr)
 		return;
 
 	if (data->hasNotifiedPlayer(obj->getObjectID()))

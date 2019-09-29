@@ -40,7 +40,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_need_target"); // You need to target the creature you wish to take a DNA sample from.
 			return INVALIDTARGET;
 		}
@@ -59,7 +59,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (cr == NULL || !cr->isAttackableBy(player)){
+		if (cr == nullptr || !cr->isAttackableBy(player)){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target"); // You cannot sample DNA from that target.
 			return INVALIDTARGET;
 		}
@@ -95,7 +95,7 @@ public:
 
 		if (cr->canCollectDna(player)) {
 
-			if (cr->getZone() == NULL){
+			if (cr->getZone() == nullptr){
 				return GENERALERROR;
 			}
 

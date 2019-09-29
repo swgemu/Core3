@@ -45,7 +45,7 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		//ObjectController* objectController = server->getZoneServer()->getObjectController();

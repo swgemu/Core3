@@ -60,7 +60,7 @@ public:
 
 		//Target Object IFF crc
 		SharedObjectTemplate* templateObject = mi->getTargetTemplate();
-		if (templateObject != NULL)
+		if (templateObject != nullptr)
 			insertInt(templateObject->getClientObjectCRC());
 		else
 			insertInt(0);
@@ -90,7 +90,7 @@ public:
 
 		WaypointObject* waypoint = mi->getWaypointToMission();
 
-		if (waypoint == NULL) {
+		if (waypoint == nullptr) {
 			//Waypoint Info
 			insertInt(0); //??
 			insertFloat(0);//insertFloat(mi->getDestX()); //x

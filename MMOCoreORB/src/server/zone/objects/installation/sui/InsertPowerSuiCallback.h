@@ -36,7 +36,7 @@ public:
 
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
-		if (object == NULL || !object->isInstallationObject())
+		if (object == nullptr || !object->isInstallationObject())
 			return;
 
 		InstallationObject* installation = cast<InstallationObject*>( object.get());

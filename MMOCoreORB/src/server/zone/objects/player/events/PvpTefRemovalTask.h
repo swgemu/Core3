@@ -22,12 +22,12 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = creature.get();
 
-		if (player == NULL)
+		if (player == nullptr)
 			return;
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject().get();
 
-		if (ghost == NULL) {
+		if (ghost == nullptr) {
 			return;
 		}
 

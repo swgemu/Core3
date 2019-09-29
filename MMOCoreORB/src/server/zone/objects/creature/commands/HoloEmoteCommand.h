@@ -56,7 +56,7 @@ public:
 	void handleEmote( CreatureObject* player, String& arg ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
-		if( ghost == NULL )
+		if( ghost == nullptr )
 			return;
 
 		Locker gLocker( ghost, player );
@@ -87,7 +87,7 @@ public:
 		}
 
 		// Check cooldown
-		if( player->getCooldownTimerMap() == NULL || !player->getCooldownTimerMap()->isPast("holoEmoteCooldown") ) {
+		if( player->getCooldownTimerMap() == nullptr || !player->getCooldownTimerMap()->isPast("holoEmoteCooldown") ) {
 			player->sendSystemMessage( "Your Holo-Emote generator is in use or recharging" );
 			return;
 		}
@@ -107,7 +107,7 @@ public:
 	void handleHelp( CreatureObject* player ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
-		if( ghost == NULL )
+		if( ghost == nullptr )
 			return;
 
 		Locker gLocker( ghost, player );
@@ -152,7 +152,7 @@ public:
 	void handleDelete( CreatureObject* player ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
-		if( ghost == NULL )
+		if( ghost == nullptr )
 			return;
 
 		Locker gLocker( ghost, player );

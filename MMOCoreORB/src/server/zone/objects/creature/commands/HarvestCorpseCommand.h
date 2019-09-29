@@ -35,7 +35,7 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		if (object == NULL || !object->isCreatureObject() || player == NULL)
+		if (object == nullptr || !object->isCreatureObject() || player == nullptr)
 			return INVALIDTARGET;
 
 		CreatureObject* creo = cast<CreatureObject*>( object.get());
@@ -91,7 +91,7 @@ public:
 			if (!cr->isDead())
 				return GENERALERROR;
 
-			if (cr->getZone() == NULL)
+			if (cr->getZone() == nullptr)
 				return GENERALERROR;
 
 			if (cr->getDnaState() == CreatureManager::DNADEATH) {

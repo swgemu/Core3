@@ -21,7 +21,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	if (mission == NULL)
+	if (mission == nullptr)
 		return;
 
 	MissionObjectiveImplementation::activate();
@@ -32,7 +32,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
-	if (locationActiveArea == NULL) {
+	if (locationActiveArea == nullptr) {
 		locationActiveArea = ( zoneServer->createObject(STRING_HASHCODE("object/active_area.iff"), 1)).castTo<ActiveArea*>();
 	}
 
@@ -46,7 +46,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		locationActiveArea->setRadius(32.f);
 
-		if (zone != NULL) {
+		if (zone != nullptr) {
 			zone->transferObject(locationActiveArea, -1, true);
 		} else {
 			error("Failed to insert entertainer location to zone.");
@@ -89,7 +89,7 @@ void EntertainerMissionObjectiveImplementation::abort() {
 void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObservers() {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	if (locationActiveArea != NULL) {
+	if (locationActiveArea != nullptr) {
 		Locker locationLocker(locationActiveArea, _this.getReferenceUnsafeStaticCast());
 
 		for (int i = 0; i < getObserverCount(); i++) {
@@ -133,11 +133,11 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 
 	ManagedReference<CreatureObject*> object = getPlayerOwner();
 
-	if (object == NULL)
+	if (object == nullptr)
 		return;
 
-	if (isEntertaining && inMissionArea && object != NULL && object->getParentID() != 0) {
-		if (completeTask == NULL) {
+	if (isEntertaining && inMissionArea && object != nullptr && object->getParentID() != 0) {
+		if (completeTask == nullptr) {
 			completeTask = new CompleteMissionAfterCertainTimeTask(_this.getReferenceUnsafeStaticCast());
 		}
 
@@ -147,7 +147,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 			completeTask->schedule(10 * 60 * 1000);
 		}
 	} else {
-		if (completeTask != NULL && completeTask->isScheduled()) {
+		if (completeTask != nullptr && completeTask->isScheduled()) {
 			completeTask->cancel();
 		}
 	}
@@ -183,7 +183,7 @@ Vector3 EntertainerMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
-	if (mission == NULL)
+	if (mission == nullptr)
 		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());

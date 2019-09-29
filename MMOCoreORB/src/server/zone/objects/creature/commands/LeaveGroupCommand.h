@@ -28,7 +28,7 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == NULL)
+		if (group == nullptr)
 			return GENERALERROR;
 
 		groupManager->leaveGroup(group.get(), creature);

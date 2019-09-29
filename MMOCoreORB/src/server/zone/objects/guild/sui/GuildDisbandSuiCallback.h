@@ -29,7 +29,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == NULL || !obj->isTerminal())
+		if (obj == nullptr || !obj->isTerminal())
 			return;
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
@@ -39,7 +39,7 @@ public:
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
-		if (guild == NULL)
+		if (guild == nullptr)
 			return;
 
 		Locker guildLocker(guild, player);

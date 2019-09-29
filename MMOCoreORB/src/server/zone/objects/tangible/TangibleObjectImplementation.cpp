@@ -2,6 +2,8 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
+#include "engine/engine.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/skill/SkillModManager.h"
@@ -32,8 +34,6 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
-#include "engine/engine.h"
-
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();

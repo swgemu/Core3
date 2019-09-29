@@ -22,7 +22,7 @@ class UnloadContainerTask : public Task {
 		void run() {
 			ManagedReference<SceneObject*> obj = container;
 
-			if (obj == NULL)
+			if (obj == nullptr)
 				return;
 
 			if (obj->getLastContainerAccess() < 900000) { // if accessed within the last 15 minutes, reschedule

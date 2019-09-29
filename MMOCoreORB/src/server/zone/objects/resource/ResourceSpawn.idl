@@ -149,7 +149,7 @@ class ResourceSpawn extends SceneObject {
 	@preLocked
 	public native void addAttribute(final string attribute, int value);
 
-	@dirty
+	@read
 	public boolean isType(final string type) {
 		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
 			if(stfSpawnClasses.get(i) == type)
@@ -173,17 +173,17 @@ class ResourceSpawn extends SceneObject {
 	}
 
 	// getters
-	@dirty
+	@read
 	public string getName() {
 		return spawnName;
 	}
 
-	@dirty
+	@read
 	public string getType() {
 		return spawnType;
 	}
 
-	@dirty
+	@read
 	public string getClass(int index) {
 		if(index < spawnClasses.size()) {
 			return spawnClasses.get(index);
@@ -192,7 +192,7 @@ class ResourceSpawn extends SceneObject {
 		}
 	}
 
-	@dirty
+	@read
 	public string getStfClass(int index) {
 		if(index < stfSpawnClasses.size()) {
 			return stfSpawnClasses.get(index);
@@ -201,7 +201,7 @@ class ResourceSpawn extends SceneObject {
 		}
 	}
 
-	@dirty
+	@read
 	public string getFinalClass() {
 		if(spawnClasses.size() > 1)
 			return spawnClasses.get(spawnClasses.size() - 1);
@@ -209,10 +209,10 @@ class ResourceSpawn extends SceneObject {
 			return "";
 	}
 
-	@dirty
+	@read
 	public native string getFamilyName();
 
-	@dirty
+	@read
 	public native string getSurveyMissionSpawnFamilyName();
 
 	@preLocked
@@ -225,7 +225,7 @@ class ResourceSpawn extends SceneObject {
 		despawned = t;
 	}
 
-	@dirty
+	@read
 	public unsigned long getDespawned() {
 		return despawned;
 	}
@@ -250,7 +250,7 @@ class ResourceSpawn extends SceneObject {
 		return poolSlot;
 	}
 
-	@dirty
+	@read
 	public boolean isEnergy() {
 		return energy;
 	}
@@ -265,7 +265,7 @@ class ResourceSpawn extends SceneObject {
 		return surveyToolType;
 	}
 
-	@dirty
+	@read
 	public int getSpawnMapSize() {
 		return spawnMaps.size();
 	}
@@ -280,16 +280,14 @@ class ResourceSpawn extends SceneObject {
 	@read
 	public native string getSpawnMapZone(int i);
 
-	@local
-	@dirty
+	@read
 	public native boolean isUnknownType();
 
 	@local
 	@preLocked
 	public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
 
-	@local
-	@dirty
+	@read
 	private native int getConcentration(boolean jtl);
 
 	@read
@@ -300,32 +298,28 @@ class ResourceSpawn extends SceneObject {
 	@dirty
 	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
 
-	@local
-	@dirty
+	@read
 	public native float getDensityAt(final string zoneName, float x, float y);
 
-	@local
-	@dirty
+	@read
 	public native boolean inShift();
 
-	@local
-	@dirty
+	@read
 	public native int getAttributeAndValue(string attribute, int index);
 
-	@dirty
+	@read
 	public int getAttributeValue(int index) {
 		return spawnAttributes.get(index);
 	}
 
-	@dirty
+	@read
 	public native int getValueOf(int index);
 
-	@dirty
+	@read
 	public native int getValueOf(final string attribute);
 
 	public native void addStatsToDeedListBox(SuiListBox suil);
 
-	@local
-	@dirty
+	@read
 	public native void print();
 }

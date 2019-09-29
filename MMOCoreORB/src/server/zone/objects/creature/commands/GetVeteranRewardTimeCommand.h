@@ -25,16 +25,16 @@ public:
 			return GENERALERROR;
 
 		PlayerObject* playerGhost = player->getPlayerObject();
-		if( playerGhost == NULL )
+		if( playerGhost == nullptr )
 			return GENERALERROR;
 
 		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
-		if( playerManager == NULL )
+		if( playerManager == nullptr )
 			return GENERALERROR;
 
 		// Get account
 		ManagedReference<Account*> account = playerGhost->getAccount();
-		if( account == NULL )
+		if( account == nullptr )
 			return GENERALERROR;
 
 		Locker alocker(account);

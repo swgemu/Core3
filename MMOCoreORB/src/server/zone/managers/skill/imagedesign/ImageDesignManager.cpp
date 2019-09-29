@@ -19,7 +19,7 @@ ImageDesignManager::ImageDesignManager() {
 }
 
 void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, CustomizationData* customData, float value, CreatureObject* creo) {
-	if (creo == NULL || value < 0 || value > 1)
+	if (creo == nullptr || value < 0 || value > 1)
 		return;
 
 	ManagedReference<CreatureObject*> creatureObject = creo;
@@ -69,7 +69,7 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, Cust
 			if (fullVariableNameLimit.contains(var)) {
 				BasicRangedIntCustomizationVariable* ranged = dynamic_cast<BasicRangedIntCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
 
-				if (ranged == NULL) {
+				if (ranged == nullptr) {
 					error("variable " + fullVariableNameLimit + " is not ranged");
 
 					continue;
@@ -110,14 +110,14 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, Cust
 }
 
 void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo) {
-	if (creo == NULL || value < 0 || value > 1)
+	if (creo == nullptr || value < 0 || value > 1)
 		return;
 
 	String speciesGender = getSpeciesGenderString(creo);
 
 	Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
 		return;
 	}
@@ -146,10 +146,10 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 
 			if (fullVariableNameLimit.contains(var)) {
 				BasicRangedIntCustomizationVariable* ranged = dynamic_cast<BasicRangedIntCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
-				PaletteColorCustomizationVariable* palette = NULL;
+				PaletteColorCustomizationVariable* palette = nullptr;
 				uint32 currentVal = value;
 
-				if (ranged != NULL) {
+				if (ranged != nullptr) {
 					int min = ranged->getMinValueInclusive();
 					int max = ranged->getMaxValueExclusive();
 
@@ -161,7 +161,7 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 				} else {
 					palette = dynamic_cast<PaletteColorCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
 
-					if (palette != NULL) {
+					if (palette != nullptr) {
 						if (!validatePalette(palette, currentVal, skillLevel))
 							currentVal = palette->getDefaultValue();
 					}
@@ -177,7 +177,7 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 }
 
 void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, CustomizationData* customData, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
-	if (value > 255 || creo == NULL)
+	if (value > 255 || creo == nullptr)
 		return;
 
 	ManagedReference<CreatureObject*> creatureObject = creo;
@@ -196,7 +196,7 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 		objectToUpdate = hairObject;
 	}
 
-	if (objectToUpdate == NULL)
+	if (objectToUpdate == nullptr)
 		return;
 
 	Vector<String> fullVariables;
@@ -216,14 +216,14 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 }
 
 void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
-	if (value > 255 || creo == NULL)
+	if (value > 255 || creo == nullptr)
 		return;
 
 	String speciesGender = getSpeciesGenderString(creo);
 
 	Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
 
-	if (data == NULL) {
+	if (data == nullptr) {
 		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
 		return;
 	}
@@ -276,7 +276,7 @@ void ImageDesignManager::loadCustomizationData() {
 
 	IffStream* iffStream = templateManager->openIffFile("datatables/customization/customization_data.iff");
 
-	if (iffStream == NULL)
+	if (iffStream == nullptr)
 		return;
 
 	//Get the datatable, and parse it into a datatable object.
@@ -286,7 +286,7 @@ void ImageDesignManager::loadCustomizationData() {
 	for (int i = 0; i < dataTable.getTotalRows(); i++) {
 		DataTableRow* dataRow = dataTable.getRow(i);
 
-		if (dataRow == NULL)
+		if (dataRow == nullptr)
 			continue;
 
 		//Get the species gender
@@ -294,12 +294,12 @@ void ImageDesignManager::loadCustomizationData() {
 		uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
 		PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
 
-		if (tmpl == NULL)
+		if (tmpl == nullptr)
 			continue;
 
 		CustomizationDataMap* dataMap = tmpl->getCustomizationDataMap();
 
-		if (dataMap == NULL)
+		if (dataMap == nullptr)
 			continue;
 
 		CustomizationData customizationData;
@@ -317,9 +317,9 @@ void ImageDesignManager::loadCustomizationData() {
 	}
 
 	//Done with the stream, so delete it.
-	if (iffStream != NULL) {
+	if (iffStream != nullptr) {
 		delete iffStream;
-		iffStream = NULL;
+		iffStream = nullptr;
 	}
 
 }
@@ -331,14 +331,14 @@ Vector<CustomizationData>* ImageDesignManager::getCustomizationData(const String
 
 	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
 
-	if (tmpl == NULL)
-		return NULL;
+	if (tmpl == nullptr)
+		return nullptr;
 
 	return tmpl->getCustomizationData(customizationName);
 }
 
 String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
-	if (creo == NULL)
+	if (creo == nullptr)
 		return "unknown";
 
 	int gender = creo->getGender();
@@ -362,10 +362,10 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 		if (!CustomizationIdManager::instance()->canBeBald(getSpeciesGenderString(targetObject)))
 			return oldHair;
 		else
-			return NULL;
+			return nullptr;
 	}
 
-	if (hairAssetData == NULL)
+	if (hairAssetData == nullptr)
 		return oldHair;
 
 	int skillMod = hairAssetData->getSkillModValue();
@@ -381,8 +381,8 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	ManagedReference<SceneObject*> hair = imageDesigner->getZoneServer()->createObject(hairTemplate.hashCode(), 1);
 
 	//TODO: Validate hairCustomization
-	if (hair == NULL || !hair->isTangibleObject()) {
-		if (hair != NULL) {
+	if (hair == nullptr || !hair->isTangibleObject()) {
+		if (hair != nullptr) {
 			Locker locker(hair);
 			hair->destroyObjectFromDatabase(true);
 		}
@@ -410,8 +410,8 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 }
 
 TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, TangibleObject* hairObject) {
-	if (creo == NULL)
-		return NULL;
+	if (creo == nullptr)
+		return nullptr;
 
 	ManagedReference<TangibleObject*> hair = creo->getSlottedObject("hair").castTo<TangibleObject*>();
 
@@ -419,14 +419,14 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 		return hairObject;
 	}
 
-	if (hair != NULL) {
+	if (hair != nullptr) {
 		Locker locker(hair);
 		hair->destroyObjectFromWorld(true);
 		hair->destroyObjectFromDatabase(true);
 	}
 
-	if (hairObject == NULL)
-		return NULL;
+	if (hairObject == nullptr)
+		return nullptr;
 
 	// Some race condition in the client prevents both the destroy and transfer from happening too close together
 	// Without it placing a hair object in the inventory.
@@ -454,7 +454,7 @@ bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* pale
 
 		PaletteData* data = CustomizationIdManager::instance()->getPaletteData(paletteName);
 
-		if (data == NULL) {
+		if (data == nullptr) {
 			//error("could not find palette data for " + paletteName);
 		} else {
 			int maxIndex;
@@ -501,7 +501,7 @@ bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* pale
 
 bool ImageDesignManager::validateCustomizationString(CustomizationVariables* data, const String& appearanceFilename, int skillLevel) {
 	VectorMap<String, Reference<CustomizationVariable*> > variables;
-	variables.setNullValue(NULL);
+	variables.setNullValue(nullptr);
 	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
 
 	if (variables.size() == 0) {
@@ -519,7 +519,7 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 
 		CustomizationVariable* customizationVariable = variables.get(name).get();
 
-		if (customizationVariable == NULL) {
+		if (customizationVariable == nullptr) {
 			instance()->error("customization variable id " + String::valueOf(id) + " not found in the appearance file " + appearanceFilename + " with value " + String::valueOf(val));
 
 			continue;
@@ -527,13 +527,13 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 
 		PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
 
-		if (palette != NULL) {
+		if (palette != nullptr) {
 			if (!validatePalette(palette, val, skillLevel))
 				return false;
 		} else {
 			BasicRangedIntCustomizationVariable* range = dynamic_cast<BasicRangedIntCustomizationVariable*>(customizationVariable);
 
-			if (range == NULL) {
+			if (range == nullptr) {
 				instance()->error("unkown customization variable type " + name);
 				return false;
 			} else {

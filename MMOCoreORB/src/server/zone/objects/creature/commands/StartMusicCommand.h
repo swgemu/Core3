@@ -30,7 +30,7 @@ public:
 		ManagedReference<EntertainingSession*> session =
 				dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			session = new EntertainingSession(creature);
 			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
 		}
@@ -85,7 +85,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
 
-		if (session != NULL) {
+		if (session != nullptr) {
 			if (session->isDancing()) {
 				session->stopDancing();
 			}
@@ -102,17 +102,17 @@ public:
 		Reference<Instrument*> instrument = creature->getSlottedObject("hold_r").castTo<Instrument*> ();
 		bool targetedInstrument = false;
 
-		if (instrument == NULL) {
+		if (instrument == nullptr) {
 			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(creature->getTargetID());
 
-			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
+			if (nala != nullptr && dynamic_cast<Instrument*> (nala.get())) {
 
 				targetedInstrument = true;
 				instrument = cast<Instrument*> (nala.get());
 				ManagedReference<SceneObject*> creatureParent = creature->getParent().get();
 
 				if (creature->getDistanceTo(nala) >= 3 || nala->getZone()
-						== NULL || (creatureParent == NULL && NULL
+						== nullptr || (creatureParent == nullptr && nullptr
 						!= nala->getParent().get())) {
 					creature->sendSystemMessage("@elevator_text:too_far"); // You are too far away to use that.
 
@@ -120,7 +120,7 @@ public:
 				}
 
 				ManagedReference<CreatureObject*> spawnerPlayer = instrument->getSpawnerPlayer().get();
-				if (spawnerPlayer != NULL && spawnerPlayer != creature) {
+				if (spawnerPlayer != nullptr && spawnerPlayer != creature) {
 					creature->sendSystemMessage("You must be the owner of the instrument");
 
 					return GENERALERROR;
@@ -132,7 +132,7 @@ public:
 					return GENERALERROR;
 				}
 
-				if (instrument->getParent() != NULL || spawnerPlayer != NULL) {
+				if (instrument->getParent() != nullptr || spawnerPlayer != nullptr) {
 					instrument->setDirection(*creature->getDirection());
 					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
 				}
@@ -158,7 +158,7 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group != NULL) {
+		if (group != nullptr) {
 			String bandSong = group->getBandSong();
 
 			if (args.length() < 2) {

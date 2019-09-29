@@ -42,10 +42,10 @@ public:
 
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		if (city == NULL)
+		if (city == nullptr)
 			return;
 
-		if (!suiBox->isListBox() || player == NULL || args->size() <= 0 || cancelPressed)
+		if (!suiBox->isListBox() || player == nullptr || args->size() <= 0 || cancelPressed)
 			return;
 
 		SuiListBox* listbox = cast<SuiListBox*>(suiBox);

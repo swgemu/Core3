@@ -33,7 +33,7 @@ int LuaConversationSession::_setObject(lua_State* L) {
 int LuaConversationSession::setLastConversationScreen(lua_State* L) {
 	/*const char* str = lua_tostring(L, -1);
 
-	if (str != NULL) {
+	if (str != nullptr) {
 		String text(str);
 
 		realObject->setLastConversationScreenName(text);
@@ -51,7 +51,7 @@ int LuaConversationSession::getLastConversationScreen(lua_State* L) {
 
 	//lua_pushstring(L, text.toCharArray());
 
-	if (screen == NULL)
+	if (screen == nullptr)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, screen);

@@ -37,13 +37,13 @@ public:
 			Reference<Task*> sampletask = creature->getPendingTask("sample");
 			Reference<Task*> surveytask = creature->getPendingTask("survey");
 
-			if(surveytask != NULL)
+			if(surveytask != nullptr)
 				return SUCCESS;
 
-			if (sampletask != NULL) {
+			if (sampletask != nullptr) {
 				SampleTask* sampleTask = cast<SampleTask*>( sampletask.get());
 
-				if (sampleTask != NULL) {
+				if (sampleTask != nullptr) {
 					if (!sampleTask->isCancelled()) {
 						creature->sendSystemMessage("@survey:survey_sample");
 
@@ -54,7 +54,7 @@ public:
 
 			ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
-			if(session == NULL) {
+			if(session == nullptr) {
 				creature->sendSystemMessage("@ui:survey_notool");
 				return GENERALERROR;
 			}

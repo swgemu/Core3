@@ -21,7 +21,7 @@ void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 void HarvesterObjectImplementation::synchronizedUIListen(CreatureObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(player) || getZone() == NULL)
+	if (!player->isPlayerCreature() || !isOnAdminList(player) || getZone() == nullptr)
 		return;
 
 	addOperator(player);
@@ -36,7 +36,7 @@ void HarvesterObjectImplementation::synchronizedUIListen(CreatureObject* player,
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* container = resourceHopper.get(i);
 
-		if (container != NULL) {
+		if (container != nullptr) {
 			container->sendTo(player, true);
 		}
 	}

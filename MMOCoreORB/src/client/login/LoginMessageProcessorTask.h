@@ -21,7 +21,7 @@ public:
 
 	~LoginMessageProcessorTask() {
 		delete message;
-		message = NULL;
+		message = nullptr;
 	}
 
 	void run() {
@@ -44,7 +44,7 @@ public:
 		}
 
 		delete message;
-		message = NULL;
+		message = nullptr;
 
 	}
 

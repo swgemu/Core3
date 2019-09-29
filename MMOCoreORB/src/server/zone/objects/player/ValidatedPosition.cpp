@@ -14,7 +14,7 @@ void ValidatedPosition::update(SceneObject* object) {
 
 	ManagedReference<SceneObject*> parentPointer = object->getParent().get();
 
-	if (parentPointer != NULL && parentPointer->isCellObject())
+	if (parentPointer != nullptr && parentPointer->isCellObject())
 		parent = parentPointer->getObjectID();
 	else
 		parent = 0;
@@ -28,7 +28,7 @@ Vector3 ValidatedPosition::getWorldPosition(ZoneServer* zoneServer) {
 
 	ManagedReference<SceneObject*> newParent = zoneServer->getObject(parent);
 
-	if (newParent == NULL)
+	if (newParent == nullptr)
 		return point;
 
 	ManagedReference<SceneObject*> root = newParent->getRootParent();

@@ -22,22 +22,22 @@
 void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL || player  == NULL)
+	if (building == nullptr || player  == nullptr)
 		return;
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return;
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return;
 
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))
@@ -82,22 +82,22 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
 
-	if (building == NULL)
+	if (building == nullptr)
 		return 1;
 
 	Zone* zone = building->getZone();
 
-	if (zone == NULL)
+	if (zone == nullptr)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
-	if (gcwMan == NULL)
+	if (gcwMan == nullptr)
 		return 1;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == nullptr)
 		return 1;
 
 	if (!gcwMan->canUseTerminals(creature, building, sceneObject))

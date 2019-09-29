@@ -22,7 +22,7 @@ void DroidAutoRepairModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -54,7 +54,7 @@ int DroidAutoRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* p
 	if( selectedID == AUTO_REPAIR_MODULE_TOGGLE ){
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if( droid == NULL ){
+		if( droid == nullptr ){
 			info( "Droid is null");
 			return 0;
 		}
@@ -107,7 +107,7 @@ void DroidAutoRepairModuleDataComponent::deactivate() {
 	active = false;
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL ){
+	if( droid == nullptr ){
 		info( "Droid is null" );
 		return;
 	}
@@ -116,7 +116,7 @@ void DroidAutoRepairModuleDataComponent::deactivate() {
 
 	// Cancel auto repair task
 	Task* task = droid->getPendingTask( "droid_auto_repair" );
-	if( task != NULL ){
+	if( task != nullptr ){
 		Core::getTaskManager()->cancelTask(task);
 		droid->removePendingTask( "droid_auto_repair" );
 	}
@@ -138,14 +138,14 @@ void DroidAutoRepairModuleDataComponent::onStore(){
 void DroidAutoRepairModuleDataComponent::addToStack(BaseDroidModuleComponent* other){
 
 	DroidAutoRepairModuleDataComponent* otherModule = cast<DroidAutoRepairModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	autoRepairPower = autoRepairPower + otherModule->autoRepairPower;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	// Attribute should have already been created in copy method
@@ -160,14 +160,14 @@ void DroidAutoRepairModuleDataComponent::addToStack(BaseDroidModuleComponent* ot
 void DroidAutoRepairModuleDataComponent::copy(BaseDroidModuleComponent* other){
 
 	DroidAutoRepairModuleDataComponent* otherModule = cast<DroidAutoRepairModuleDataComponent*>(other);
-	if( otherModule == NULL )
+	if( otherModule == nullptr )
 		return;
 
 	autoRepairPower = otherModule->autoRepairPower;
 
 	// Save stat in parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL)
+	if (droidComponent == nullptr)
 		return;
 
 	droidComponent->addProperty("auto_repair_power", autoRepairPower, 0, "exp_effectiveness");

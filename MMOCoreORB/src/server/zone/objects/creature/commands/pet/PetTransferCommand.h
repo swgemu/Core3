@@ -17,7 +17,7 @@ public:
 
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (controlDevice == NULL)
+		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		// Creature specific command
@@ -28,16 +28,16 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == NULL )
+		if( pet == nullptr )
 			return GENERALERROR;
 
 		ManagedReference< CreatureObject*> player = pet->getLinkedCreature().get();
-		if( player == NULL )
+		if( player == nullptr )
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> commandTarget = server->getZoneServer()->getObject(target);
 
-		if (commandTarget == NULL || !commandTarget->isPlayerCreature()) {
+		if (commandTarget == nullptr || !commandTarget->isPlayerCreature()) {
 			player->sendSystemMessage("Your target must be a player to transfer a pet.");
 			return GENERALERROR;
 		}
@@ -63,7 +63,7 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (targetGhost == NULL || ghost == NULL)
+		if (targetGhost == nullptr || ghost == nullptr)
 			return GENERALERROR;
 
 		int activePets = 0;
@@ -74,7 +74,7 @@ public:
 
 			ManagedReference<PetControlDevice*> device = targetPet->getControlDevice().get().castTo<PetControlDevice*>();
 
-			if (device == NULL)
+			if (device == nullptr)
 				continue;
 
 			if (device->getPetType() == PetManager::CREATUREPET) {
@@ -99,7 +99,7 @@ public:
 
 		ManagedReference<SceneObject*> targetDatapad = targetPlayer->getSlottedObject("datapad");
 
-		if (targetDatapad == NULL)
+		if (targetDatapad == nullptr)
 			return GENERALERROR;
 
 		pet->setCreatureLink(targetPlayer);

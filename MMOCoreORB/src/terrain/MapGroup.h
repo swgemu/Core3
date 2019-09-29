@@ -18,7 +18,7 @@ class MapGroup : public TemplateVariable<'MGRP'> {
 public:
 
 	MapGroup() {
-		mfrcs.setNullValue(NULL);
+		mfrcs.setNullValue(nullptr);
 		mfrcs.setNoDuplicateInsertPlan();
 	}
 

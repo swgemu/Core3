@@ -61,7 +61,7 @@ String ManualPool::healthCheck() {
 		String resourceType = includedResources.elementAt(i).getKey();
 		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
 
-		if (spawn != NULL) {
+		if (spawn != nullptr) {
 			buffer << "   " << i << ". " << resourceType << " : "
 					<< "Pass ("
 					<< spawn->getType() << endl;
@@ -83,7 +83,7 @@ void ManualPool::print() {
 
 		StringBuffer msg;
 
-		if (spawn != NULL)
+		if (spawn != nullptr)
 			msg << spawn->getName() << " : " << spawn->getType();
 		else
 			msg << "EMPTY";

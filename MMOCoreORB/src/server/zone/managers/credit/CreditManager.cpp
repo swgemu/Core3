@@ -8,7 +8,7 @@
 void CreditManager::addBankCredits(uint64 creatureID, int amount, bool notifyClient) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return;
 
 	Locker locker(obj);
@@ -17,7 +17,7 @@ void CreditManager::addBankCredits(uint64 creatureID, int amount, bool notifyCli
 void CreditManager::addCashCredits(uint64 creatureID, int amount, bool notifyClient) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return;
 
 	Locker locker(obj);
@@ -27,7 +27,7 @@ void CreditManager::addCashCredits(uint64 creatureID, int amount, bool notifyCli
 bool CreditManager::subtractBankCredits(uint64 creatureID, int amount, bool notifyClient) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return false;
 
 	Locker locker(obj);
@@ -44,7 +44,7 @@ bool CreditManager::subtractBankCredits(uint64 creatureID, int amount, bool noti
 bool CreditManager::subtractCashCredits(uint64 creatureID, int amount, bool notifyClient) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return false;
 
 	Locker locker(obj);
@@ -62,7 +62,7 @@ bool CreditManager::subtractCashCredits(uint64 creatureID, int amount, bool noti
 bool CreditManager::verifyBankCredits(uint64 creatureID, int amount) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return false;
 
 	if (amount < 0)
@@ -77,7 +77,7 @@ bool CreditManager::verifyBankCredits(uint64 creatureID, int amount) {
 bool CreditManager::verifyCashCredits(uint64 creatureID, int amount) {
 	ManagedReference<CreditObject*> obj = CreditManager::getCreditObject(creatureID);
 
-	if (obj == NULL)
+	if (obj == nullptr)
 		return false;
 
 	if (amount < 0)
@@ -96,10 +96,10 @@ ManagedReference<CreditObject*> CreditManager::getCreditObject(uint64 creoID) {
 
 	ManagedReference<CreditObject*> creditObj =  Core::getObjectBroker()->lookUp(oid).castTo<CreditObject*>();
 
-	if (creditObj == NULL) {
+	if (creditObj == nullptr) {
 		ManagedReference<CreatureObject*> creo = Core::getObjectBroker()->lookUp(creoID).castTo<CreatureObject*>();
-		if (creo == NULL)
-			return NULL;
+		if (creo == nullptr)
+			return nullptr;
 
 		Locker locker(creo);
 		creditObj = creo->getCreditObject();

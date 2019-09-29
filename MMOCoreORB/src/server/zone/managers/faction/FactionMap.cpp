@@ -19,7 +19,7 @@ void FactionMap::addFaction(const Faction& faction) {
 
 Faction* FactionMap::getFaction(const String& factionName) {
 	if (!contains(factionName))
-		return NULL;
+		return nullptr;
 
 	return &get(factionName);
 }

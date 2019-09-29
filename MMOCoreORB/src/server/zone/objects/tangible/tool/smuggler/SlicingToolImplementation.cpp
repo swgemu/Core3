@@ -17,7 +17,7 @@ void SlicingToolImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	SlicingToolTemplate* slicingTempl = dynamic_cast<SlicingToolTemplate*> (templateData);
 
-	if (slicingTempl == NULL)
+	if (slicingTempl == nullptr)
 		return;
 
 	effectiveness = slicingTempl->getEffectiveness();
@@ -36,7 +36,7 @@ int SlicingToolImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 	ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
-	if (session == NULL) {
+	if (session == nullptr) {
 		player->sendSystemMessage("You must be in a slicing session in order to use that.");
 		return 0;
 	}

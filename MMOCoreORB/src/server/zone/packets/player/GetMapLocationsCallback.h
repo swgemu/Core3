@@ -27,14 +27,14 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		Locker _locker(object);
 
 		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-		if (zone != NULL)
+		if (zone != nullptr)
 			zone->sendMapLocationsTo(object);
 	}
 };

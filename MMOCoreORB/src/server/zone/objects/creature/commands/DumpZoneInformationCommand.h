@@ -33,7 +33,7 @@ public:
 
 		Zone* zone = player->getZone();
 
-		if (zone == NULL)
+		if (zone == nullptr)
 			return GENERALERROR;
 
 		PlanetManager* planetManager = zone->getPlanetManager();
@@ -43,7 +43,7 @@ public:
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-		if (city != NULL) {
+		if (city != nullptr) {
 			cityPlayerCount = city->getCurrentPlayerCount();
 		}
 
@@ -51,10 +51,10 @@ public:
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
-		SharedStructureObjectTemplate* buildingTemplateObject = NULL;
+		SharedStructureObjectTemplate* buildingTemplateObject = nullptr;
 		ManagedReference<SceneObject*> building;
 
-		if (cell != NULL && cell->isCellObject()) {
+		if (cell != nullptr && cell->isCellObject()) {
 			cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
 			building = cell->getParent().get();
 			buildingTemplate = building->getServerObjectCRC();
@@ -78,7 +78,7 @@ public:
 
 		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
-		if (vec != NULL) {
+		if (vec != nullptr) {
 			msg << endl << "in range object count = " << vec->size() << endl;
 		}
 

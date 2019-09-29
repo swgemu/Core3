@@ -26,7 +26,11 @@ public:
 		return geometry;
 	}
 
-	const AABB& getBoundingBox() {
+	const MeshData* getGeometry() const {
+		return geometry;
+	}
+
+	const AABB& getBoundingBox() const {
 		return boundingBox;
 	}
 
@@ -43,7 +47,7 @@ public:
 	PortalLayout();
 	~PortalLayout();
 
-	PathGraph *getPathGraph() {
+	const PathGraph *getPathGraph() const {
 		return pathGraph;
 	}
 
@@ -60,46 +64,50 @@ public:
 
 	void connectFloorMeshGraphs();
 
-	int getFloorMeshID(int globalNodeID, int floorMeshToExclude);
+	int getFloorMeshID(int globalNodeID, int floorMeshToExclude) const;
 
-	Vector<PathNode*>* getPath(PathNode* node1, PathNode* node2);
+	Vector<const PathNode*>* getPath(const PathNode* node1, const PathNode* node2) const;
 
-	int getCellID(const String& cellName);
+	int getCellID(const String& cellName) const;
 
-	inline int getCellTotalNumber() {
+	inline int getCellTotalNumber() const {
 		//exclude the outside cell
 		return Math::max(0, cellProperties.size() - 1);
 	}
 
-	inline int getFloorMeshNumber() {
+	inline int getFloorMeshNumber() const {
 		return cellProperties.size();
+	}
+
+	inline const FloorMesh* getFloorMesh(int cellIndex) const {
+		return cellProperties.get(cellIndex)->getFloorMesh();
 	}
 
 	inline FloorMesh* getFloorMesh(int cellIndex) {
 		return cellProperties.get(cellIndex)->getFloorMesh();
 	}
 
-	inline AppearanceTemplate* getAppearanceTemplate(int cellIndex) {
+	inline const AppearanceTemplate* getAppearanceTemplate(int cellIndex) const {
 		return cellProperties.get(cellIndex)->getAppearanceTemplate();
 	}
 
-	const Vector<Reference<CellProperty*> >& getCellProperties() {
+	const Vector<Reference<CellProperty*> >& getCellProperties() const {
 		return cellProperties;
 	}
 
-	inline CellProperty* getCellProperty(int cellIndex) {
+	inline const CellProperty* getCellProperty(int cellIndex) const {
 		return cellProperties.get(cellIndex);
 	}
 
-	inline int getAppearanceTemplatesSize() {
+	inline int getAppearanceTemplatesSize() const {
 		return cellProperties.size();
 	}
 
-	inline const MeshData* getPortalGeometry(int idx) {
+	inline const MeshData* getPortalGeometry(int idx) const {
 		return portalGeometry.get(idx)->getGeometry();
 	}
 
-	const AABB& getPortalBounds(int idx) {
+	const AABB& getPortalBounds(int idx) const {
 		return portalGeometry.get(idx)->getBoundingBox();
 	}
 

@@ -27,12 +27,12 @@ public:
 		if (args->size() < 1)
 			return;
 
-		if (player->getParent() != NULL)
+		if (player->getParent() != nullptr)
 			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 		CityManager* cityManager = player->getZoneServer()->getCityManager();
-		if (city == NULL || cityManager == NULL)
+		if (city == nullptr || cityManager == nullptr)
 			return;
 
 		if (!city->isMayor(player->getObjectID()))
@@ -46,7 +46,7 @@ public:
 		Zone* zone = player->getZone();
 
 		PlayerObject* ghost = player->getPlayerObject();
-		if (ghost == NULL)
+		if (ghost == nullptr)
 			return;
 
 		if (!ghost->hasAbility("recruitskilltrainer"))
@@ -176,7 +176,7 @@ public:
 
 			CreatureObject* trainer = zone->getCreatureManager()->spawnCreature(trainerTemplatePath.hashCode(),0,player->getWorldPositionX(),player->getWorldPositionZ(),player->getWorldPositionY(),0,true);
 
-			if (trainer == NULL) {
+			if (trainer == nullptr) {
 				player->sendSystemMessage("@city/city:st_fail"); // Failed to create the skill trainer for some reason. Try again.
 				return;
 			}

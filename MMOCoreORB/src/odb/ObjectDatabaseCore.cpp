@@ -644,7 +644,7 @@ void ObjectDatabaseCore::dumpDatabaseToJSON(const String& databaseName) {
 			for (DB_MULTIPLE_INIT(p, dataEntry.getDBT());;) {
 				DB_MULTIPLE_KEY_NEXT(p,
 						dataEntry.getDBT(), retkey, retklen, retdata, retdlen);
-				if (p == NULL)
+				if (p == nullptr)
 					break;
 
 				ObjectInputStream* data = new ObjectInputStream(retdlen);
@@ -713,8 +713,8 @@ ObjectDatabase* ObjectDatabaseCore::getDatabase(uint64_t objectID) {
 
 	LocalDatabase* db = databaseManager->getDatabase(tableID);
 
-	if (db == NULL || !db->isObjectDatabase())
-		return NULL;
+	if (db == nullptr || !db->isObjectDatabase())
+		return nullptr;
 
 	ObjectDatabase* database = static_cast<ObjectDatabase*>( db);
 

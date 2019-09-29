@@ -31,7 +31,7 @@ public:
 		uint64 targetid = creature->getTargetID();
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		if (obj == nullptr || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDTARGET;
 		}
@@ -39,7 +39,7 @@ public:
 		StructureObject* structureObject = cast<StructureObject*>( obj.get());
 
 		String targetName, listName, action;
-		ManagedReference<SceneObject*> targetObject = NULL;
+		ManagedReference<SceneObject*> targetObject = nullptr;
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -93,7 +93,7 @@ public:
 			targetObject = playerManager->getPlayer(targetName);
 		}
 
-		if (targetObject == NULL || (!targetObject->isPlayerCreature() && !targetObject->isGuildObject())) {
+		if (targetObject == nullptr || (!targetObject->isPlayerCreature() && !targetObject->isGuildObject())) {
 			return INVALIDPARAMETERS;
 		}
 
@@ -184,7 +184,7 @@ public:
 			ManagedReference<CreatureObject*> targetPlayer = cast<CreatureObject*>(targetObject.get());
 
 			//Update the cell permissions in case the player is in the building currently.
-			if (targetPlayer != NULL && structureObject->isBuildingObject()) {
+			if (targetPlayer != nullptr && structureObject->isBuildingObject()) {
 				BuildingObject* buildingObject = cast<BuildingObject*>( structureObject);
 				buildingObject->updateCellPermissionsTo(targetPlayer);
 			}
@@ -192,14 +192,14 @@ public:
 			ManagedReference<GuildObject*> targetGuild = cast<GuildObject*>(targetObject.get());
 
 			//Update the cell permissions to guild members.
-			if (targetGuild != NULL && structureObject->isBuildingObject()) {
+			if (targetGuild != nullptr && structureObject->isBuildingObject()) {
 				ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
 
 				for (int i = 0; i < targetGuild->getTotalMembers(); ++i) {
 					uint64 memberID = targetGuild->getMember(i);
 					ManagedReference<CreatureObject*> guildMember = server->getZoneServer()->getObject(memberID).castTo<CreatureObject*>();
 
-					if (guildMember != NULL)
+					if (guildMember != nullptr)
 						buildingObject->updateCellPermissionsTo(guildMember);
 				}
 			}

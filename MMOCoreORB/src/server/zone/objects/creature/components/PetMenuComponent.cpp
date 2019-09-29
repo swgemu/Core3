@@ -15,7 +15,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	AiAgent* pet = cast<AiAgent*>(sceneObject);
 
-	if (pet->getGroup() != NULL) {
+	if (pet->getGroup() != nullptr) {
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (group == pet->getGroup()) {
@@ -42,11 +42,11 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		return;
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
-	if( controlDevice == NULL )
+	if( controlDevice == nullptr )
 		return;
 
 	PetManager* petManager = pet->getZoneServer()->getPetManager();
-	if (petManager == NULL)
+	if (petManager == nullptr)
 		return;
 
 	// DROIDS
@@ -63,10 +63,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command_droid"); // PET_COMMAND
 			menuResponse->addRadialMenuItemToRadialID(141, 142, 3, "@pet/pet_menu:menu_follow" ); // PET_FOLLOW
 			menuResponse->addRadialMenuItemToRadialID(141, 143, 3, "@pet/pet_menu:menu_stay" ); // PET_STAY
-			if (droidObject != NULL && droidObject->isCombatDroid())
+			if (droidObject != nullptr && droidObject->isCombatDroid())
 				menuResponse->addRadialMenuItemToRadialID(141, 144, 3, "@pet/pet_menu:menu_guard" ); // PET_GUARD
 			menuResponse->addRadialMenuItemToRadialID(141, 145, 3, "@pet/pet_menu:menu_friend" ); // PET_FRIEND
-			if (droidObject != NULL && droidObject->isCombatDroid())
+			if (droidObject != nullptr && droidObject->isCombatDroid())
 				menuResponse->addRadialMenuItemToRadialID(141, 146, 3, "@pet/pet_menu:menu_attack" ); // PET_ATTACK
 			menuResponse->addRadialMenuItemToRadialID(141, 147, 3, "@pet/pet_menu:menu_patrol" ); // PET_PATROL
 			menuResponse->addRadialMenuItemToRadialID(141, 148, 3, "@pet/pet_menu:menu_get_patrol_point" ); // PET_GET_PATROL_POINT
@@ -74,12 +74,12 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 150, 3, "@pet/pet_menu:menu_assume_formation_1" ); // PET_ASSUME_FORMATION_1
 			menuResponse->addRadialMenuItemToRadialID(141, 151, 3, "@pet/pet_menu:menu_assume_formation_2" ); // PET_ASSUME_FORMATION_2
 			menuResponse->addRadialMenuItemToRadialID(141, 158, 3, "@pet/pet_menu:menu_group" ); // PET_GROUP
-			if (droidObject != NULL && droidObject->isCombatDroid() && droidObject->hasRangedWeapon())
+			if (droidObject != nullptr && droidObject->isCombatDroid() && droidObject->hasRangedWeapon())
 				menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
 			menuResponse->addRadialMenuItemToRadialID(141, 164, 3, "@pet/pet_menu:menu_store" );
 			menuResponse->addRadialMenuItemToRadialID(141, 165, 3, "@pet/pet_menu:menu_follow_other" );
 
-			if( droidObject != NULL && droidObject->isPowerDroid() ){
+			if( droidObject != nullptr && droidObject->isPowerDroid() ){
 				menuResponse->addRadialMenuItemToRadialID(141, 235, 3, "@pet/pet_menu:menu_recharge_other" );
 			}
 		}
@@ -194,7 +194,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		if (controlDevice->isTrainedAsMount() && !pet->isDead() && !pet->isIncapacitated()) {
 			Reference<SceneObject*> rider = pet->getSlottedObject("rider");
 
-			if (rider == NULL) {
+			if (rider == nullptr) {
 				menuResponse->addRadialMenuItem(205, 3, "@pet/pet_menu:menu_mount"); // Climb Aboard Pet
 			} else {
 				menuResponse->addRadialMenuItem(206, 3, "@pet/pet_menu:menu_dismount"); // Climb Off Of Pet
@@ -206,7 +206,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 }
 
 int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (!sceneObject->isPet() || player == NULL)
+	if (!sceneObject->isPet() || player == nullptr)
 		return 0;
 
 	AiAgent* pet = cast<AiAgent*>(sceneObject);
@@ -219,18 +219,18 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (petControlDevice == NULL)
+	if (petControlDevice == nullptr)
 		return 0;
 
 	PetManager* petManager = pet->getZoneServer()->getPetManager();
-	if (petManager == NULL)
+	if (petManager == nullptr)
 		return 0;
 
 	Locker locker(petControlDevice);
 
 	// Store
 	if (selectedID == 59) {
-		if (owner != player && owner != NULL) {
+		if (owner != player && owner != nullptr) {
 			Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
 			task->execute();
 		} else {

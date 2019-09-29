@@ -17,7 +17,7 @@ String DroidMedicalModuleDataComponent::getModuleName() {
 }
 void DroidMedicalModuleDataComponent::initializeTransientMembers() {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent == NULL) {
+	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
@@ -57,20 +57,20 @@ String DroidMedicalModuleDataComponent::toString(){
 }
 void DroidMedicalModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidMedicalModuleDataComponent* otherModule = cast<DroidMedicalModuleDataComponent*>(other);
-	if(otherModule == NULL)
+	if(otherModule == nullptr)
 		return;
 	rating = rating + otherModule->rating;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL)
+	if (droidComponent != nullptr)
 		droidComponent->changeAttributeValue("medical_module",(float)rating);
 }
 void DroidMedicalModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	DroidMedicalModuleDataComponent* otherModule = cast<DroidMedicalModuleDataComponent*>(other);
-	if(otherModule == NULL)
+	if(otherModule == nullptr)
 		return;
 	rating = otherModule->rating;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
-	if (droidComponent != NULL)
+	if (droidComponent != nullptr)
 		droidComponent->addProperty("medical_module",(float)rating,0,"exp_effectiveness");
 }
 void DroidMedicalModuleDataComponent::onCall() {

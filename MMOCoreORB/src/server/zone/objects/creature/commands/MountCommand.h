@@ -28,7 +28,7 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer == NULL || !creature->checkCooldownRecovery("mount_dismount"))
+		if (zoneServer == nullptr || !creature->checkCooldownRecovery("mount_dismount"))
 			return GENERALERROR;
 
 		if (creature->isRidingMount()) {
@@ -43,7 +43,7 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if (object == NULL) {
+		if (object == nullptr) {
 			return INVALIDTARGET;
 		}
 
@@ -66,7 +66,7 @@ public:
 		if (!vehicle->isInRange(creature, 5))
 			return GENERALERROR;
 
-		if (creature->getParent() != NULL || vehicle->getParent() != NULL)
+		if (creature->getParent() != nullptr || vehicle->getParent() != nullptr)
 			return GENERALERROR;
 
 		if (vehicle->isDisabled()) {
@@ -130,7 +130,7 @@ public:
 				ManagedReference<Buff*> gallop = vehicle->getBuff(gallopCRC);
 				Locker blocker(gallop, vehicle);
 
-				if (gallop != NULL) {
+				if (gallop != nullptr) {
 					gallop->applyAllModifiers();
 				}
 			}, "AddGallopModsLambda");
@@ -154,7 +154,7 @@ public:
 		if (vehicle->isMount()) {
 			PetManager* petManager = server->getZoneServer()->getPetManager();
 
-			if (petManager != NULL) {
+			if (petManager != nullptr) {
 				newSpeed = petManager->getMountedRunSpeed(vehicle);
 			}
 		}

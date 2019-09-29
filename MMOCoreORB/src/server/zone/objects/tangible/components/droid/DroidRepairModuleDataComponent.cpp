@@ -30,7 +30,7 @@ void DroidRepairModuleDataComponent::fillObjectMenuResponse(SceneObject* droidOb
 
 	// Add to Program subradial from PetMenuComponent
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == NULL)
+	if (droid == nullptr)
 		return;
 	// converse droid can not have their repair command changed. droids without a personality chip are considered base and get all normal radials
 	if (droid->getOptionsBitmask() & OptionBitmask::CONVERSE)
@@ -44,7 +44,7 @@ int DroidRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* playe
 	if( selectedID == REPAIR_MODULE_ACTIVATE ){
 
 		PetManager* petManager = player->getZoneServer()->getPetManager();
-		if( petManager == NULL )
+		if( petManager == nullptr )
 			return 0;
 
 		petManager->enqueuePetCommand(player, getDroidObject(), String("petRepair").toLowerCase().hashCode(), "");
@@ -53,7 +53,7 @@ int DroidRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* playe
 	// Handle command training
 	else if( selectedID == REPAIR_MODULE_TRAIN ){
 
-		if( controller == NULL )
+		if( controller == nullptr )
 			return 0;
 
 		Locker controllerLocker(controller);
@@ -67,15 +67,15 @@ int DroidRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* playe
 void DroidRepairModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker){
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL )
+	if( droid == nullptr )
 		return;
 
 	ManagedReference<PetControlDevice*> pcd = droid->getControlDevice().get().castTo<PetControlDevice*>();
-	if( pcd == NULL )
+	if( pcd == nullptr )
 		return;
 
 	PetManager* petManager = droid->getZoneServer()->getPetManager();
-	if( petManager == NULL )
+	if( petManager == nullptr )
 		return;
 
 	// Owner-only command

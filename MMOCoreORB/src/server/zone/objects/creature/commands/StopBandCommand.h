@@ -23,14 +23,14 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == NULL) {
+		if (group == nullptr) {
 			creature->sendSystemMessage("You must be the leader of a band to use that command.");
 			return GENERALERROR;
 		}
 
 		Reference<CreatureObject*> leader = group->getLeader();
 
-		if (leader == NULL || creature != leader) {
+		if (leader == nullptr || creature != leader) {
 			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
 			return GENERALERROR;
 		}
@@ -38,7 +38,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		if (session == NULL)
+		if (session == nullptr)
 			return GENERALERROR;
 
 		if (!session->isPlayingMusic())
@@ -52,14 +52,14 @@ public:
 			for (int i = 0; i < group->getGroupSize(); ++i) {
 				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == NULL || !groupMember->isPlayingMusic())
+				if (groupMember == nullptr || !groupMember->isPlayingMusic())
 					continue;
 
 				Locker clocker(groupMember, group);
 
 				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-				if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
+				if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
 					continue;
 
 				if (groupMember == creature) {

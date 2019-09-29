@@ -6,7 +6,7 @@
 int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<Jukebox*> jbox = jukebox.get();
 
-	if (jbox == NULL)
+	if (jbox == nullptr)
 		return 1;
 
 	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA && eventType != ObserverEventType::PARENTCHANGED)
@@ -18,23 +18,23 @@ int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 		ManagedReference<SceneObject*> boxParent = jbox->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 		// Jukebox parent is a player, jukebox was picked up
-		if ((boxParent != NULL) && (boxParent->isPlayerCreature())) {
+		if ((boxParent != nullptr) && (boxParent->isPlayerCreature())) {
 			jbox->destroyChildObjects();
 			return 1;
 		}
 
 	} else {
-		if (arg1 == NULL)
+		if (arg1 == nullptr)
 			return 0;
 
 		SceneObject* sceno = cast<SceneObject*>(arg1);
 
-		if (sceno == NULL || !sceno->isPlayerCreature())
+		if (sceno == nullptr || !sceno->isPlayerCreature())
 			return 0;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sceno);
 
-		if (player == NULL)
+		if (player == nullptr)
 			return 0;
 
 		if (eventType == ObserverEventType::ENTEREDAREA && jbox->isSongPlaying()) {

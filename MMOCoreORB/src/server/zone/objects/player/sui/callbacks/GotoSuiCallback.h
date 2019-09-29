@@ -20,7 +20,7 @@ public:
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
-		if (server == NULL || server->isServerLoading())
+		if (server == nullptr || server->isServerLoading())
 			return;
 
 		bool cancelPressed = (eventIndex == 1);
@@ -42,12 +42,12 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getObject(objectID);
 
-		if (object == NULL)
+		if (object == nullptr)
 			return;
 
 		ManagedReference<WaypointObject*> wp = cast<WaypointObject*>(object.get());
 
-		if (wp == NULL)
+		if (wp == nullptr)
 		    return;
 
 		Locker locker(wp, creature);
@@ -57,7 +57,7 @@ public:
 		for (int i = 0; i < server->getZoneCount(); ++i) {
 			Zone* zone = server->getZone(i);
 
-			if (zone == NULL)
+			if (zone == nullptr)
 				continue;
 
 			if (zone->getZoneName().hashCode() == wp->getPlanetCRC()) {
