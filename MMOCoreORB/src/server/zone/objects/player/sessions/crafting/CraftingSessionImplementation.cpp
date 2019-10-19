@@ -222,7 +222,7 @@ int CraftingSessionImplementation::clearSession() {
 void CraftingSessionImplementation::closeCraftingWindow(int clientCounter, bool wasCraftSuccess) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
-	ObjectControllerMessage* objMsg = NULL;
+	ObjectControllerMessage* objMsg = nullptr;
 
 	//These two packets deal with the hopper
 	if(wasCraftSuccess) {
