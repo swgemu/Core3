@@ -551,22 +551,24 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			}
 
 			if (player->isPlayerCreature()) {
-				if (player->isGrouped()) {
-					ManagedReference<GroupObject*> group = player->getGroup();
+				if (!destructedObject->isEventMob()) {
+					if (player->isGrouped()) {
+						ManagedReference<GroupObject*> group = player->getGroup();
 
-					if (group != nullptr) {
-						for (int i = 0; i < group->getGroupSize(); i++) {
-							ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+						if (group != nullptr) {
+							for (int i = 0; i < group->getGroupSize(); i++) {
+								ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-							if (groupMember->isPlayerCreature()) {
-								Locker locker(groupMember, destructedObject);
-								groupMember->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+								if (groupMember->isPlayerCreature()) {
+									Locker locker(groupMember, destructedObject);
+									groupMember->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+								}
 							}
 						}
+					} else {
+						Locker locker(player, destructedObject);
+						player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 					}
-				} else {
-					Locker locker(player, destructedObject);
-					player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 				}
 
 				FactionManager* factionManager = FactionManager::instance();
