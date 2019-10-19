@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_378f9825",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-10-19T00:26:54Z",
+      "side": 1,
+      "message": "swap this to nullptr, we are phasing out the use of NULL",
+      "revId": "e175220badece9c22be9628a9b21b7b9e243c4dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
