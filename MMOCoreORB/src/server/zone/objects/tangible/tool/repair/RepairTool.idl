@@ -18,6 +18,11 @@ class RepairTool extends TangibleObject {
 		setLoggingName("RepairTool");
 	}
 
+	@dirty
+	public boolean isRepairTool() {
+		return true;
+	}
+	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -38,6 +43,8 @@ class RepairTool extends TangibleObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
@@ -45,4 +52,16 @@ class RepairTool extends TangibleObject {
 	public float getQuality() {
 		return quality;
 	}
+	
+	/**
+	* Send the SUI listbox containing valid repairable items to the given player.
+	* Valid repairable items must meet the following:
+	* 1. Be of a GameObjectType represented by this tools canRepairType mask
+	* 2. Be in the player's immediate inventory only (not equipped, in bags, etc)
+	* 3. Have less than max condition, but greater than 1/1 condition
+	* @param player the player to which to send the SUI listbox. 
+	*/
+	
+	@dirty
+	public native void sendRepairListTo(CreatureObject player);
 }
