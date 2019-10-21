@@ -935,7 +935,7 @@ bool TangibleObjectImplementation::canRepair(CreatureObject* player) {
 	return false;
 }
 
-void TangibleObjectImplementation::repair(CreatureObject* player) {
+void TangibleObjectImplementation::repair(CreatureObject* player, RepairTool * repairTool) {
 
 	if(player == nullptr || player->getZoneServer() == nullptr)
 		return;
@@ -956,33 +956,43 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 		return;
 	}
 
-	SceneObject* inventory = player->getSlottedObject("inventory");
-	if(inventory == nullptr)
+        Reference<RepairToolTemplate*> repairTemplate = nullptr;
+        
+        if( repairTool == nullptr ) {
+                SceneObject* inventory = player->getSlottedObject("inventory");
+                if(inventory == nullptr)
+                        return;
+
+                for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+                        ManagedReference<SceneObject*> item = inventory->getContainerObject(i);
+                        if(item->isRepairTool()) {
+                                repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
+
+                                if (repairTemplate == nullptr) {
+                                        error("No RepairToolTemplate for: " + String::valueOf(item->getServerObjectCRC()));
+                                        return;
+                                }
+
+                                if(repairTemplate->getRepairType() & getGameObjectType()) {
+                                        repairTool = cast<RepairTool*>(item.get());
+                                        break;
+                                }
+                                repairTemplate = nullptr;
+                        }
+                }
+        }
+        else {
+                repairTemplate = cast<RepairToolTemplate*>(repairTool->getObjectTemplate());
+                if(!(repairTemplate->getRepairType() & getGameObjectType())) {
+                        error ("Given RepairTool can't repair this type of object");
+                        return;
+                }
+        }
+        
+	if(repairTool == nullptr) {
+                error ("No RepairTool given or found. Aborting");
 		return;
-
-	ManagedReference<RepairTool*> repairTool = nullptr;
-	Reference<RepairToolTemplate*> repairTemplate = nullptr;
-
-	for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
-		ManagedReference<SceneObject*> item = inventory->getContainerObject(i);
-		if(item->isRepairTool()) {
-			repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
-
-			if (repairTemplate == nullptr) {
-				error("No RepairToolTemplate for: " + String::valueOf(item->getServerObjectCRC()));
-				return;
-			}
-
-			if(repairTemplate->getRepairType() & getGameObjectType()) {
-				repairTool = cast<RepairTool*>(item.get());
-				break;
-			}
-			repairTemplate = nullptr;
-		}
-	}
-
-	if(repairTool == nullptr)
-		return;
+        }
 
 	/// Luck Roll + Profession Mod(25) + Luck Tapes
 	/// + Station Mod - BF
@@ -1028,8 +1038,7 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 
 	Locker locker(repairTool);
 
-	repairTool->destroyObjectFromWorld(true);
-	repairTool->destroyObjectFromDatabase(true);
+	repairTool->decreaseUseCount(1, true);
 
 	player->sendSystemMessage(result);
 }
