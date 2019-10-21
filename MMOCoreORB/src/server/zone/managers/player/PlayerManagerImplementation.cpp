@@ -3666,6 +3666,37 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 	return insurableItems;
 }
 
+SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInventoryItemsOfType(CreatureObject* player, int mask) {
+	SortedVector<ManagedReference<SceneObject*> > matchedItems;
+	matchedItems.setNoDuplicateInsertPlan();
+
+	if (player == nullptr)
+		return matchedItems;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	if ( inventory == nullptr )
+		return matchedItems;
+
+	for (int j = 0; j < inventory->getContainerObjectsSize(); j++) {
+		SceneObject* item = inventory->getContainerObject(j);
+
+		if (!item->isTangibleObject())
+			continue;
+
+		TangibleObject* tano = cast<TangibleObject*>( item);
+
+		if (tano == nullptr )
+			continue;
+
+		if ( (tano -> getGameObjectType()) & mask ) {
+			matchedItems.put(tano);
+		}
+	}
+
+	return matchedItems;
+}
+
 int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 
 	ManagedReference<WeaponObject*> weapon = player->getWeapon();

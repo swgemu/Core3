@@ -9,7 +9,8 @@ import system.util.SortedVector;
 import engine.log.Logger;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.area.ActiveArea;
+import server.zone.objects.tangible.tool.repair.RepairTool;
+import server.zone.objects.area.ActiveArea;
 include templates.params.OptionBitmask;
 include templates.params.ObserverEventType;
 import server.zone.objects.factorycrate.FactoryCrate;
@@ -731,7 +732,15 @@ class TangibleObject extends SceneObject {
 	@dirty
 	public native boolean canRepair(CreatureObject player);
 
-	public native void repair(CreatureObject player);
+	/**
+	* Repair this object with the given tool. If null, this method will
+	* search the player's inventory for an approriate tool (used by the
+	* radial menu repair option)
+	* @param player The player who's performing the repair. Must own this item.
+	* @param repairTool the repairTool with which to perform the repair. If
+	* null, players inventory will be searched for a valid tool
+	*/
+	public native void repair(CreatureObject player, RepairTool repairTool = null);
 
 	@dirty
 	public abstract string repairAttempt(int repairChance) {
@@ -898,4 +907,3 @@ class TangibleObject extends SceneObject {
 	@dirty
 	public native boolean isInNavMesh();
 }
-
