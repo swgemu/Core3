@@ -92,62 +92,62 @@ public:
 		specialChars = luaObject->getStringField("specialChars");
 	}
 
-	int getNameChance() {
+	int getNameChance() const {
 		return nameChance;
 	}
 
-	int getUniqueChance() {
+	int getUniqueChance() const {
 		return uniqueChance;
 	}
 
-	int getMinSyllables() {
+	int getMinSyllables() const {
 		return minSyllables;
 	}
 
-	int getMaxSyllables() {
+	int getMaxSyllables() const {
 		return maxSyllables;
 	}
 
-	int getMinChars() {
+	int getMinChars() const {
 		return minChars;
 	}
 
-	int getMaxChars() {
+	int getMaxChars() const {
 		return maxChars;
 	}
 
-	int getSpecialCharChance() {
+	int getSpecialCharChance() const {
 		return specialCharChance;
 	}
 
-	int getMaxSpecialChars() {
+	int getMaxSpecialChars() const {
 		return maxSpecialChars;
 	}
 
-	int getChanceBeginsSpecial() {
+	int getChanceBeginsSpecial() const {
 		return chanceBeginsSpecial;
 	}
 
-	int getChanceMiddleSpecial() {
+	int getChanceMiddleSpecial() const {
 		return chanceMiddleSpecial;
 	}
 
-	int getChanceEndsSpecial() {
+	int getChanceEndsSpecial() const {
 		return chanceEndsSpecial;
 	}
 
-	int getMaxSpecialSyllables() {
+	int getMaxSpecialSyllables() const {
 		return maxSpecialSyllables;
 	}
 
-	String getRandomSpecialChar() {
+	String getRandomSpecialChar() const {
 		int strLen = specialChars.length() - 1;
 		int randIndex = System::random(strLen);
 		String randChar = specialChars.subString(randIndex, randIndex + 1);
 		return randChar;
 	}
 
-	String getSpecialChars() {
+	const String& getSpecialChars() const {
 		return specialChars;
 	}
 };

@@ -91,6 +91,10 @@ public:
 		return planetSpawnMaps.get(planetCRC);
 	}
 
+	const PlanetSpawnMap* getPlanet(const uint32 planetCRC) const {
+		return planetSpawnMaps.get(planetCRC);
+	}
+
 	/**
 	 * Load the object from a stream.
 	 * @param stream the stream to load the object from.

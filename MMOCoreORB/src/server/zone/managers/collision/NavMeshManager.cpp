@@ -31,50 +31,50 @@ void NavMeshManager::enqueueJob(NavArea* area, AABB areaToBuild, const RecastSet
 		return;
 
 	if (queue != TileQueue && queue != MeshQueue) {
-		error("queue is not tile or mesh in NavMeshManager::enqueueJob. queue is " + queue + " for area " + area->getMeshName() + " in zone " + area->getZone()->getZoneName());
+		error() << "queue is not tile or mesh in NavMeshManager::enqueueJob. queue is " <<
+		       	queue << " for area " << area->getMeshName() << " in zone " << area->getZone()->getZoneName();
 		return;
 	}
 
-    Locker locker(&jobQueueMutex);
+	Locker locker(&jobQueueMutex);
 
-    const String& name = area->getMeshName();
-    Reference<NavMeshJob*> job = runningJobs.get(name);
-    if (job) {
-    	if (job->getNavArea() == area) {
-    		job->addArea(areaToBuild);
+	const String& name = area->getMeshName();
+	Reference<NavMeshJob*> job = runningJobs.get(name);
+	if (job) {
+		if (job->getNavArea() == area) {
+			job->addArea(areaToBuild);
 #ifdef NAVMESH_DEBUG
-        	info("Adding area to running job " + name);
+			info("Adding area to running job " + name);
 #endif
-    	} else {
-    		error("Trying to add area to running job with same name and different NavArea");
-    	}
+		} else {
+			error("Trying to add area to running job with same name and different NavArea");
+		}
 
-    	return;
-    }
+		return;
+	}
 
-    job = jobs.get(name);
-    if (job == nullptr) {
-        job = new NavMeshJob(area, recastConfig, queue);
+	job = jobs.get(name);
+	if (job == nullptr) {
+		job = new NavMeshJob(area, recastConfig, queue);
 #ifdef NAVMESH_DEBUG
-        info("Creating new job for " + name);
+		info("Creating new job for " + name);
 #endif
-    } else {
-    	if (job->getNavArea() != area) {
-    		error("Trying to add area to queued job with same name and different NavArea");
-    		return;
-    	}
+	} else {
+		if (job->getNavArea() != area) {
+			error("Trying to add area to queued job with same name and different NavArea");
+			return;
+		}
 #ifdef NAVMESH_DEBUG
-        info("Adding area to existing job " + name);
+		info("Adding area to existing job " + name);
 #endif
-    }
+	}
 
-    job->addArea(areaToBuild);
-    jobs.put(name, job);
+	job->addArea(areaToBuild);
+	jobs.put(name, job);
 
-    Core::getTaskManager()->scheduleTask([=]{
-        checkJobs();
-    }, "checkJobs", 750, TileQueue.toCharArray());
-
+	Core::getTaskManager()->scheduleTask([=]{
+			checkJobs();
+		}, "checkJobs", 750, TileQueue.toCharArray());
 }
 
 void NavMeshManager::checkJobs() {

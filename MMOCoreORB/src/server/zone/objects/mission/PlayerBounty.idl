@@ -13,7 +13,7 @@ class PlayerBounty extends ManagedObject {
 	protected int reward;
 
 	protected boolean online;
-	
+
 	protected unsigned long lastBountyKill;
 
 	protected unsigned long lastBountyDebuff;
@@ -66,21 +66,22 @@ class PlayerBounty extends ManagedObject {
 		bountyHunterIDs.drop(id);
 	}
 
-	@dirty
+	@read
 	public boolean hasBountyHunter(unsigned long id) {
 		return bountyHunterIDs.contains(id);
 	}
 
 	@local
-	public SortedVector<unsigned long> getBountyHunters() {
+	@read
+	public final SortedVector<unsigned long> getBountyHunters() {
 		return bountyHunterIDs;
 	}
-	
+
 	@read
 	public unsigned long getLastBountyKill() {
 		return lastBountyKill;
 	}
-	
+
 	public void setLastBountyKill(unsigned long newTime) {
 		lastBountyKill = newTime;
 	}

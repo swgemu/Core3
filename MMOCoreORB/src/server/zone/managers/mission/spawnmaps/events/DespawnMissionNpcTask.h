@@ -16,8 +16,8 @@ namespace spawnmaps {
 namespace events {
 
 class DespawnMissionNpcTask : public Task {
-	ManagedReference<MissionManager*> missionManager;
-	Reference<NpcSpawnPoint*> npcSpawnPoint;
+	WeakReference<MissionManager*> missionManager;
+	WeakReference<NpcSpawnPoint*> npcSpawnPoint;
 
 public:
 	DespawnMissionNpcTask(MissionManager* missionManager, NpcSpawnPoint* npcSpawnPoint) {
@@ -26,7 +26,12 @@ public:
 	}
 
 	void run() {
-		missionManager->despawnMissionNpc(npcSpawnPoint);
+		auto strongReferenceSpawnPoint = npcSpawnPoint.get();
+		auto strongReferenceManager = missionManager.get();
+
+		if (strongReferenceSpawnPoint && strongReferenceManager) {
+			strongReferenceManager->despawnMissionNpc(strongReferenceSpawnPoint);
+		}
 	}
 };
 

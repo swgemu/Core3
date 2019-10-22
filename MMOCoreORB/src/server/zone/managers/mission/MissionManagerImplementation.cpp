@@ -146,8 +146,7 @@ void MissionManagerImplementation::loadPlayerBounties() {
 		error("Database exception in MissionManager::loadPlayerBounties(): " + e.getMessage());
 	}
 
-	bool log = i > 0;
-	info("Loaded " + String::valueOf(i) + " player bounties.", log);
+	info(i > 0) << "Loaded " << i << " player bounties.";
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
@@ -1186,7 +1185,8 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	//Find a spawn point in current city.
 	float minDistance = 10.0f;
 	float maxDistance = 300.0f;
-	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
+	auto startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition,
+			getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
 	if (startNpc == nullptr) {
 		//Couldn't find a suitable spawn point.
@@ -1194,7 +1194,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	}
 
 	//Find a spawn point for the delivery target.
-	Vector3* endPosition = startPosition;
+	const Vector3* endPosition = startPosition;
 	if (!inTownMission) {
 		//Find city center of another city and use as position to search for spawn points from.
 		endPosition = missionNpcSpawnMap.getRandomCityCoordinates(planetName.hashCode(), startPosition);
@@ -1204,10 +1204,11 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	minDistance = 15.0f;
 	maxDistance = 1500.0f;
 
-	Reference<NpcSpawnPoint*> endNpc;
+	const NpcSpawnPoint* endNpc = nullptr;
 	int retries = 10;
 	while ((endNpc == nullptr || endNpc == startNpc) && (retries > 0)) {
-		endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
+		endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition,
+				getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 		retries--;
 	}
 
@@ -1268,7 +1269,7 @@ NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const
 	Vector3 pos(x, y, 0);
 
 	//First try for an exact match
-	Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.findSpawnAt(planetCRC, &pos);
+	auto npc = missionNpcSpawnMap.findSpawnAt(planetCRC, &pos);
 
 	if (npc != nullptr && npc->getInUse() == 0) {
 		return npc;
@@ -1639,7 +1640,7 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 		Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 		String message;
-		NpcSpawnPoint* returnedNpc = missionNpcSpawnMap.findSpawnAt(player->getPlanetCRC(), npc->getPosition());
+		auto returnedNpc = missionNpcSpawnMap.findSpawnAt(player->getPlanetCRC(), npc->getPosition());
 		if (returnedNpc != nullptr) {
 			message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
 		} else {
@@ -1879,14 +1880,14 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 
 		playerBountyList.remove(playerBountyList.find(targetId));
 
-		SortedVector<uint64>* bountyHunters = target->getBountyHunters();
+		const SortedVector<uint64>* bountyHunters = target->getBountyHunters();
 
 		for (int i = 0; i < bountyHunters->size(); i++) {
 			failPlayerBountyMission(bountyHunters->get(i));
 		}
 
 		ObjectManager::instance()->destroyObjectFromDatabase(target->_getObjectID());
-		info("Removing player " + String::valueOf(targetId) + " from bounty hunter list.", true);
+		info(true) << "Removing player " << targetId << " from bounty hunter list.";
 	}
 }
 
@@ -2065,15 +2066,17 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 	}
 }
 
-Vector<uint64>* MissionManagerImplementation::getHuntersHuntingTarget(uint64 targetId) {
+Vector<uint64> MissionManagerImplementation::getHuntersHuntingTarget(uint64 targetId) {
+	Vector<uint64> values;
+
 	Locker listLocker(&playerBountyListMutex);
 
-	PlayerBounty* list = playerBountyList.get(targetId);
+	const PlayerBounty* list = playerBountyList.get(targetId);
 
 	if (list != nullptr)
-		return list->getBountyHunters();
+		values = *list->getBountyHunters();
 
-	return nullptr;
+	return values;
 }
 
 void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager) {
@@ -2188,7 +2191,7 @@ bool MissionManagerImplementation::sendPlayerBountyDebug(CreatureObject* creatur
 			promptText += "\nPlayers holding active bounties:";
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 
-			SortedVector<uint64>* bountyHunters = playerBounty->getBountyHunters();
+			const SortedVector<uint64>* bountyHunters = playerBounty->getBountyHunters();
 
 			for (int i = 0; i < bountyHunters->size(); i++) {
 				String name = playerManager->getPlayerName(bountyHunters->get(i));

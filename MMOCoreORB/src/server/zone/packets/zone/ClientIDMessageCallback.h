@@ -129,15 +129,15 @@ public:
 
 	}
 
-	inline uint32 getDataLen() {
+	inline uint32 getDataLen() const {
 		return dataLen;
 	}
 
-	inline uint32 getSessionID() {
+	inline uint32 getSessionID() const {
 		return sessionID;
 	}
 
-	inline uint32 getAccountID() {
+	inline uint32 getAccountID() const {
 		return accountID;
 	}
 };
