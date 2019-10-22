@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_b73e0828",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3657,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2019-10-22T07:15:02Z",
+      "side": 1,
+      "message": "why dont you directly iterate the inventory?\n\nalso should this be recursive to check the items in bags, if there are any?",
+      "revId": "3b30a8b29a422c8e6f68c60bf5dea35c87ee35cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
