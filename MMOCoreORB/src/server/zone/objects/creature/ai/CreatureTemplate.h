@@ -87,6 +87,7 @@ protected:
 	CreatureAttackMap* attacks;
 	uint32 conversationTemplate;
 	uint32 optionsBitmask;
+	uint64 customAiMap;
 
 	String patrolPathTemplate;
 
@@ -266,6 +267,10 @@ public:
 
 	inline uint32 getOptionsBitmask() const {
 		return optionsBitmask;
+	}
+
+	inline uint64 getCustomAiMap() {
+		return customAiMap;
 	}
 
 	inline const String& getFaction() const {

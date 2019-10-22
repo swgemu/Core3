@@ -233,7 +233,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 	CreatureObject* creature = spawnCreature(templateCRC, 0, x, z, y, parentID, persistent);
 
 	if (creature != nullptr && creature->isAiAgent())
-		cast<AiAgent*>(creature)->activateLoad("");
+		creature->asAiAgent()->setAITemplate();
 	else {
 		error("could not spawn template " + String::valueOf(templateCRC) + " with AI.");
 		creature = nullptr;
@@ -297,7 +297,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	placeCreature(creo, x, z, y, parentID);
 
 	if (creo != nullptr && creo->isAiAgent())
-		cast<AiAgent*>(creo)->activateLoad("");
+		creo->asAiAgent()->setAITemplate();
 	else {
 		error("could not spawn template " + templateToSpawn + " as baby with AI.");
 		creo = nullptr;
@@ -340,7 +340,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 te
 	placeCreature(creo, x, z, y, parentID);
 
 	if (creo != nullptr && creo->isAiAgent())
-		cast<AiAgent*>(creo)->activateLoad("");
+		creo->asAiAgent()->setAITemplate();
 
 	return creo;
 }
@@ -425,6 +425,7 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	if (creature->isAiAgent()) {
 		AiAgent* aio = cast<AiAgent*>(creature);
 		aio->setHomeLocation(x, z, y, cellParent);
+		aio->setNextStepPosition(x, z, y, cellParent);
 	}
 
 	creature->initializePosition(x, z, y);
@@ -1043,8 +1044,10 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	creature->setPvpStatusBitmask(0, true);
 
 	if (creature->isAiAgent()) {
-		AiAgent* agent = cast<AiAgent*>(creature);
-		agent->activateLoad("wait");
+		AiAgent* agent = creature->asAiAgent();
+		// TODO (dannuic): is there a better way to do this? We just set the root behavior to "wait" an indefinite amount of time before
+		agent->addCreatureFlag(CreatureFlag::STATIONARY);
+		agent->setAITemplate();
 	}
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
