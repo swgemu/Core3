@@ -33,7 +33,7 @@ protected:
 	 * @param position the position to search from.
 	 * @return closest city number or -1 if none is found.
 	 */
-	int getClosestCityNumber(const Vector3* position) {
+	int getClosestCityNumber(const Vector3* position) const {
 		int city = -1;
 		float minSquaredDistance = 100000.0 * 100000.0;
 		for (int i = 0; i < citySpawnMaps.size(); i++) {
@@ -98,7 +98,7 @@ public:
 	 * Get the planet name.
 	 * @return planet name.
 	 */
-	inline String getPlanetName() {
+	inline const String& getPlanetName() const {
 		return planetName;
 	}
 
@@ -107,7 +107,7 @@ public:
 	 * @param position the position to search from.
 	 * @return closest city or nullptr if no city is available on the planet.
 	 */
-	CitySpawnMap* getClosestCity(const Vector3* position) {
+	CitySpawnMap* getClosestCity(const Vector3* position) const {
 		int cityNumber = getClosestCityNumber(position);
 
 		if (cityNumber >= 0) {
@@ -117,7 +117,7 @@ public:
 		}
 	}
 
-	CitySpawnMap* getRandomCityNotCloseTo(const Vector3* position) {
+	const CitySpawnMap* getRandomCityNotCloseTo(const Vector3* position) const {
 		if (citySpawnMaps.size() == 1) {
 			//Only one city, return it.
 			return citySpawnMaps.get(0);
@@ -147,7 +147,7 @@ public:
 	 * other spawn points.
 	 * @return the added npc spawn point or the nearest existing spawn point if the supplied spawn point is to close.
 	 */
-	NpcSpawnPoint* addToClosestCity(Reference<NpcSpawnPoint* > npc, bool checkDistanceToOtherSpawnPoints) {
+	NpcSpawnPoint* addToClosestCity(NpcSpawnPoint* npc, bool checkDistanceToOtherSpawnPoints) {
 		int closestCityNumber = getClosestCityNumber(npc->getPosition());
 
 		if (closestCityNumber >= 0) {
@@ -168,7 +168,7 @@ public:
 	 * @param position the position to search.
 	 * @return the spawn point on the position or nullptr if none exist.
 	 */
-	NpcSpawnPoint* findSpawnAt(Vector3* position) {
+	NpcSpawnPoint* findSpawnAt(const Vector3* position) const {
 		int closestCityNumber = getClosestCityNumber(position);
 		if (closestCityNumber >= 0) {
 			return citySpawnMaps.get(closestCityNumber)->findSpawnAt(position);

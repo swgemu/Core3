@@ -97,22 +97,29 @@
 
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
+ZonePacketHandler::ZonePacketHandler() : Logger() {
+	server = nullptr;
+}
+
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServer* serv) : Logger(s) {
 	processServer = serv;
 
 	server = processServer->getZoneServer();
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogLevel(Logger::INFO);
 
 	registerMessages();
 	registerObjectControllerMessages();
+}
 
-	MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory2;
+ZonePacketHandler::~ZonePacketHandler() {
+	delete ObjectControllerMessageCallback::objectMessageControllerFactory;
+	ObjectControllerMessageCallback::objectMessageControllerFactory = nullptr;
 }
 
 void ZonePacketHandler::registerMessages() {
-	info("registering Messages");
+	debug("registering Messages");
 
 	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
@@ -176,7 +183,7 @@ void ZonePacketHandler::registerMessages() {
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
-	info("registering ObjectController Messages");
+	debug("registering ObjectController Messages");
 
 	ObjectControllerMessageCallback::objectMessageControllerFactory = new MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
 	MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
@@ -202,11 +209,10 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<InsertedAsPilotCallback>(0x3fa);
 	objectMessageControllerFactory->registerObject<JtlShipListRequestCallback>(0x41C);
 	objectMessageControllerFactory->registerObject<LotteryWindowCallback>(0x43f);
-
 }
 
-Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) {
-	//info("parsing " + pack->toStringData(), true);
+Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) const {
+	debug() << "parsing " << *pack;
 
 	if (client == nullptr)
 		return nullptr;
@@ -215,20 +221,12 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 		uint16 opcount = pack->parseShort();
 		uint32 opcode = pack->parseInt();
 
-		/*
-		StringBuffer buffer;
-		buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
-		info(buffer);
-		*/
+		debug() << "handleMessage: opcount: " << opcount << " opcode: 0x" << hex << opcode;
 
 		MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 
 		if (messageCallback == nullptr) {
-			StringBuffer msg;
-			msg << "unknown opcode 0x" << hex << opcode;
-			info(msg, true);
-
-			//System::out << pack->toStringData() << endl;
+			warning() << "unknown opcode 0x" << hex << opcode;
 
 			return nullptr;
 		}
@@ -245,3 +243,4 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 
 	return nullptr;
 }
+

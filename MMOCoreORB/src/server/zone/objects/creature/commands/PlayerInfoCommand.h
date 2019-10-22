@@ -144,12 +144,10 @@ public:
 				promptText << endl << "Visibility = " << ghost->getVisibility() << endl;
 
 				MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
-				Vector<uint64>* hunterList =  missionManager->getHuntersHuntingTarget(targetObject->getObjectID());
+				Vector<uint64> hunterList =  missionManager->getHuntersHuntingTarget(targetObject->getObjectID());
 
-				if (hunterList != nullptr) {
-					for (int i = 0; i < hunterList->size(); i++) {
-						promptText << "Hunter #" << i << ": " << hunterList->get(i) << endl;
-					}
+				for (int i = 0; i < hunterList.size(); i++) {
+					promptText << "Hunter #" << i << ": " << hunterList.get(i) << endl;
 				}
 
 				promptText << endl;

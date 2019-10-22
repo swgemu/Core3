@@ -46,7 +46,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-	setbuf(stdout, 0);
+	System::setStreamBuffer(stdout, nullptr);
 
 	if (argc) {
 		StackTrace::setBinaryName(argv[0]);

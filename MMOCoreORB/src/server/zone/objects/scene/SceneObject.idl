@@ -56,7 +56,6 @@ include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
-
 include engine.util.JSONSerializationType;
 
 @mock
@@ -1371,7 +1370,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@local
 	@read
 	public boolean isGCWBase(){
-
 		return dataObjectComponent != null &&
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();

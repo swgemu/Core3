@@ -14,7 +14,7 @@ namespace server {
 
  template <typename TypeId, typename Value>
  class ObjectCreatorMap : public HashTable<TypeId, Value> {
-	 int hash(const TypeId& k) const {
+	 int hash(const TypeId& k) const override {
 		 uint32 a = k;
 		 a = (a+0x7ed55d16) + (a<<12);
 		 a = (a^0xc761c23c) ^ (a>>19);
@@ -45,7 +45,7 @@ namespace server {
 	 typedef BaseClassType (*CreateObjectFunc)(Param1Type);
 
  public:
-	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1) {
+	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1) const {
 		 if (!objectCreator.containsKey(uniqueID))
 			 return nullptr;
 
@@ -65,7 +65,7 @@ namespace server {
 		 return objectCreator.drop(uniqueID);
 	 }
 
-	 bool containsObject(UniqueIdType uniqueID) {
+	 bool containsObject(UniqueIdType uniqueID) const {
 		 return objectCreator.containsKey(uniqueID);
 	 }
 
@@ -84,7 +84,7 @@ namespace server {
 	 typedef BaseClassType (*CreateObjectFunc)(Param1Type, Param2Type);
 
  public:
-	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) {
+	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) const {
 		 CreateObjectFunc func = objectCreator.get(uniqueID);
 
 		 if (func != nullptr)
@@ -103,7 +103,7 @@ namespace server {
 		 return objectCreator.drop(uniqueID);
 	 }
 
-	 bool containsObject(UniqueIdType uniqueID) {
+	 bool containsObject(UniqueIdType uniqueID) const {
 		 return objectCreator.containsKey(uniqueID);
 	 }
 

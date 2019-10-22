@@ -817,8 +817,6 @@ void ServerCore::handleCommands() {
 #endif
 
 		try {
-			String fullCommand;
-
 			Thread::sleep(500);
 
 			System::out << "> " << flush;
@@ -829,8 +827,7 @@ void ServerCore::handleCommands() {
 			if (!res)
 				continue;
 
-			fullCommand = line;
-			fullCommand = fullCommand.trim();
+			String fullCommand = String(line).trim();
 
 			StringTokenizer tokenizer(fullCommand);
 
@@ -847,17 +844,13 @@ void ServerCore::handleCommands() {
 			if (it != consoleCommands.npos) {
 				int result = consoleCommands.get(it)(arguments);
 
-				if (result == SHUTDOWN)
+				if (result == CommandResult::SHUTDOWN)
 					return;
 			} else {
-				System::out << "unknown command (" << command << ")\n";
+				warning() << "unknown command (" << command << ")";
 			}
-		} catch (const SocketException& e) {
-			error() << e.getMessage();
-		} catch (const ArrayIndexOutOfBoundsException& e) {
-			error() << e.getMessage();
 		} catch (const Exception& e) {
-			error() << "unreported Exception caught";
+			error(e.getMessage());
 		}
 
 		System::flushStreams();
@@ -869,13 +862,11 @@ void ServerCore::handleCommands() {
 #endif
 
 	}
-
-	Thread::sleep(10000);
 }
 
 void ServerCore::processConfig() {
 	if (!configManager->loadConfigData())
-		info("missing config file.. loading default values\n");
+		warning("missing config file.. loading default values");
 
 	//if (!features->loadFeatures())
 	//info("Problem occurred trying to load features.lua");

@@ -483,7 +483,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 	if (!clientTemplateFile.isEmpty())
 		templateObject->addDerivedFile(clientTemplateFile);
 
-	debug("loaded " + fullName);
+	debug() << "loaded " << fullName;
 
 	if (templateCRCMap->put(key, templateObject) != nullptr) {
 		//error("duplicate template for " + fullName);
@@ -846,9 +846,9 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 
 				floorMesh->readObject(iffStream);
 
-				debug("parsed " + fileName);
+				debug() << "parsed " << fileName;
 			} catch (Exception& e) {
-				warning("could not parse " + fileName);
+				warning() << "could not parse " << fileName;
 
 				delete floorMesh;
 				floorMesh = nullptr;
@@ -948,9 +948,9 @@ PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
 
 				portalLayout->readObject(iffStream);
 
-				debug("parsed " + fileName);
+				debug() << "parsed " << fileName;
 			} catch (Exception& e) {
-				warning("could not parse " + fileName);
+				warning() << "could not parse " << fileName;
 
 				delete portalLayout;
 				portalLayout = nullptr;
@@ -1019,17 +1019,19 @@ LuaObject* TemplateManager::getLuaObject(const String& iffTemplate) {
 		luaTemplatesInstance->runFile("scripts/" + luaFileName);
 	}
 
-	if (templateCRCMap->get(iffTemplate.hashCode()) == nullptr)
+	auto hashCode = iffTemplate.hashCode();
+
+	if (templateCRCMap->get(hashCode) == nullptr)
 		return nullptr;
 
 	LuaFunction getObject(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
-	getObject << iffTemplate.hashCode(); // push first argument
+	getObject << hashCode; // push first argument
 	getObject.callFunction();
 
 	LuaObject* result = new LuaObject(luaTemplatesInstance->getLuaState());
 
 	if (!result->isValidTable()) {
-		System::out << "Unknown lua object template " << iffTemplate << endl;
+		System::err << "Unknown lua object template " << iffTemplate << endl;
 
 		delete result;
 

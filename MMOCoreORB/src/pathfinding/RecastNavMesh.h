@@ -23,7 +23,7 @@ class RecastNavMesh : public Object, public Logger {
 
 public:
 	RecastNavMesh() : Logger("RecastNavMesh"), header() {
-		navMesh = NULL;
+		navMesh = nullptr;
 	}
 
 	~RecastNavMesh() {
@@ -35,7 +35,7 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	bool isLoaded() const {
-		return navMesh != NULL;
+		return navMesh != nullptr;
 	}
 
 	const NavMeshSetHeader& getMeshHeader() {
