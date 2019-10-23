@@ -200,23 +200,23 @@ void NameManager::loadConfigData(bool reload) {
 	lua = nullptr;
 }
 
-bool NameManager::isProfane(String name) {
+bool NameManager::isProfane(const String& name) const {
 	return validateReservedNames(name, NameManagerResult::DECLINED_PROFANE) != NameManagerResult::ACCEPTED;
 }
 
-bool NameManager::isDeveloper(String name) {
+bool NameManager::isDeveloper(const String& name) const {
 	return validateReservedNames(name, NameManagerResult::DECLINED_DEVELOPER) != NameManagerResult::ACCEPTED;
 }
 
-bool NameManager::isFiction(String name) {
+bool NameManager::isFiction(const String& name) const {
 	return validateReservedNames(name, NameManagerResult::DECLINED_FICT_RESERVED) != NameManagerResult::ACCEPTED;
 }
 
-bool NameManager::isReserved(String name) {
+bool NameManager::isReserved(const String& name) const {
 	return validateReservedNames(name, NameManagerResult::DECLINED_RESERVED) != NameManagerResult::ACCEPTED;
 }
 
-int NameManager::validateReservedNames(const String& name, int resultType) {
+int NameManager::validateReservedNames(const String& name, int resultType) const {
 	for (int i = 0; i < reservedNames.size(); i++) {
 		VectorMapEntry<String, int> entry = reservedNames.elementAt(i);
 
@@ -234,7 +234,7 @@ int NameManager::validateReservedNames(const String& name, int resultType) {
 	return NameManagerResult::ACCEPTED;
 }
 
-int NameManager::validateName(CreatureObject* obj) {
+int NameManager::validateName(const CreatureObject* obj) const {
 	const StringId* objectName = obj->getObjectName();
 	UnicodeString name = obj->getCustomObjectName();
 	int species = obj->getSpecies();
@@ -242,7 +242,7 @@ int NameManager::validateName(CreatureObject* obj) {
 	return validateName(name.toString(), species);
 }
 
-NameData* NameManager::getSpeciesData(int species) {
+const NameData* NameManager::getSpeciesData(int species) const {
 	switch (species) {
 	case CreatureObject::HUMAN: return humanData;
 	case CreatureObject::RODIAN: return rodianData;
@@ -258,10 +258,10 @@ NameData* NameManager::getSpeciesData(int species) {
 	}
 }
 
-int NameManager::validateName(const String& name, int species) {
-	NameData* data = getSpeciesData(species);
-	NameRules* firstNameRules = data->getFirstNameRules();
-	NameRules* lastNameRules = data->getLastNameRules();
+int NameManager::validateName(const String& name, int species) const {
+	auto data = getSpeciesData(species);
+	auto firstNameRules = data->getFirstNameRules();
+	auto lastNameRules = data->getLastNameRules();
 
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
@@ -325,7 +325,7 @@ int NameManager::validateName(const String& name, int species) {
 	return validateReservedNames(name);
 }
 
-int NameManager::validateGuildName(const String& name, int type) {
+int NameManager::validateGuildName(const String& name, int type) const {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
@@ -349,7 +349,7 @@ int NameManager::validateGuildName(const String& name, int type) {
 	return validateReservedNames(name);
 }
 
-int NameManager::validateCityName(const String& name) {
+int NameManager::validateCityName(const String& name) const {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
@@ -367,7 +367,7 @@ int NameManager::validateCityName(const String& name) {
 	return validateReservedNames(name);
 }
 
-int NameManager::validateVendorName(const String& name) {
+int NameManager::validateVendorName(const String& name) const {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
@@ -385,7 +385,7 @@ int NameManager::validateVendorName(const String& name) {
 	return validateReservedNames(name);
 }
 
-int NameManager::validateChatRoomName(const String& name) {
+int NameManager::validateChatRoomName(const String& name) const {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
@@ -414,9 +414,9 @@ int NameManager::validateChatRoomName(const String& name) {
 	return NameManagerResult::ACCEPTED;
 }
 
-const String NameManager::makeCreatureName(int type, int species) {
+const String NameManager::makeCreatureName(int type, int species) const {
 	String name;
-	NameData* data = getSpeciesData(species);
+	auto data = getSpeciesData(species);
 
 	// Covers all Imperial Trooper types
 	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
@@ -430,7 +430,7 @@ const String NameManager::makeCreatureName(int type, int species) {
 	return name;
 }
 
-String NameManager::makeImperialTrooperName(int type) {
+String NameManager::makeImperialTrooperName(int type) const {
 	String name;
 
 	if (type == NameManagerType::STORMTROOPER)
@@ -448,7 +448,7 @@ String NameManager::makeImperialTrooperName(int type) {
 	return name;
 }
 
-String NameManager::makeDroidName(int type) {
+String NameManager::makeDroidName(int type) const {
 	const static char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	String name = "";
 
@@ -481,7 +481,7 @@ String NameManager::makeDroidName(int type) {
 	return name;
 }
 
-void NameManager::test() {
+void NameManager::test() const {
 	uint64 start = Time::currentNanoTime();
 
 	int iterations = 1000000;
@@ -514,8 +514,8 @@ void NameManager::test() {
 	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
 }
 
-String NameManager::generateResourceName(const String& randomNameClass) {
-	NameData* data;
+String NameManager::generateResourceName(const String& randomNameClass) const {
+	const NameData* data;
 
 	if (randomNameClass == "energy_resource")
 		data = energyResourceData;
@@ -529,9 +529,9 @@ String NameManager::generateResourceName(const String& randomNameClass) {
 	return generateRandomName(data);
 }
 
-String NameManager::generateRandomName(NameData* nameData) {
+String NameManager::generateRandomName(const NameData* nameData) const {
 	String result = "";
-	NameRules* lastNameRules = nameData->getLastNameRules();
+	auto lastNameRules = nameData->getLastNameRules();
 
 	result += generateSingleName(nameData, nameData->getFirstNameRules());
 
@@ -543,7 +543,7 @@ String NameManager::generateRandomName(NameData* nameData) {
 	return capitalizeName(result);
 }
 
-String NameManager::generateUniqueName(NameData* nameData, NameRules* rules) {
+String NameManager::generateUniqueName(const NameData* nameData, const NameRules* rules) const {
 	String pattern = nameData->getRandomUniquePattern();
 	String result = "";
 	Vector<String> usedRoots;
@@ -574,7 +574,7 @@ String NameManager::generateUniqueName(NameData* nameData, NameRules* rules) {
 	return result;
 }
 
-String NameManager::capitalizeName(String& name) {
+String NameManager::capitalizeName(const String& name) const {
 	String result = "";
 	bool capNext = true;
 	for (int i = 0; i < name.length(); ++i) {
@@ -595,15 +595,14 @@ String NameManager::capitalizeName(String& name) {
 	return result;
 }
 
-String NameManager::generateSingleName(NameData* nameData, NameRules* rules) {
+String NameManager::generateSingleName(const NameData* nameData, const NameRules* rules) const {
 	if (System::random(100) < rules->getUniqueChance())
 		return generateUniqueName(nameData, rules);
 	else
 		return generateRandomizedName(nameData, rules);
 }
 
-String NameManager::generateRandomizedName(NameData* nameData, NameRules* rules) {
-
+String NameManager::generateRandomizedName(const NameData* nameData, const NameRules* rules) const {
 	int syllables = rules->getMinSyllables();
 
 	for (;;) {
@@ -698,7 +697,7 @@ String NameManager::generateRandomizedName(NameData* nameData, NameRules* rules)
 	}
 }
 
-String NameManager::appendSyllable(const String& left, const String& right, NameData* data) {
+String NameManager::appendSyllable(const String& left, const String& right, const NameData* data) const {
 	if (left == "")
 		return right;
 
@@ -748,7 +747,7 @@ String NameManager::appendSyllable(const String& left, const String& right, Name
 		return left + data->getRandomMiddleConsonant() + right;
 }
 
-int NameManager::getFragmentType(const String& frag, NameData* data) {
+int NameManager::getFragmentType(const String& frag, const NameData* data) const {
 	if (data->beginningConsonantContains(frag) || data->middeConsonantContains(frag)|| data->endingConsonantContains(frag))
 		return NameManagerType::FRAG_CONSONANT;
 	else if (data->vowelsContains(frag))

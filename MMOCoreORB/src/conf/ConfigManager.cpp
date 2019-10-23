@@ -95,22 +95,22 @@ void ConfigManager::clearConfigData() {
 	configData.setNoDuplicateInsertPlan();
 
 	// Clear any cached values below
-	cache_PvpMode = false;
-	cache_ProgressMonitors = false;
-	cache_UnloadContainers = false;
-	cache_UseMetrics = false;
-	cache_SessionStatsSeconds = 3600;
-	cache_OnlineLogSize = 100000000;
+	cachedPvpMode = false;
+	cachedProgressMonitors = false;
+	cachedUnloadContainers = false;
+	cachedUseMetrics = false;
+	cachedSessionStatsSeconds = 3600;
+	cachedOnlineLogSize = 100000000;
 }
 
 void ConfigManager::cacheHotItems() {
 	// Items here are asked for often enough to have a performance impact
-	cache_PvpMode = getBool("Core3.PvpMode", false);
-	cache_ProgressMonitors = getBool("Core3.ProgressMonitors", false);
-	cache_UnloadContainers = getBool("Core3.UnloadContainers", true);
-	cache_UseMetrics = getBool("Core3.UseMetrics", false);
-	cache_SessionStatsSeconds = getInt("Core3.SessionStatsSeconds", 3600);
-	cache_OnlineLogSize = getInt("Core3.OnlineLogSize", 100000000);
+	cachedPvpMode = getBool("Core3.PvpMode", false);
+	cachedProgressMonitors = getBool("Core3.ProgressMonitors", false);
+	cachedUnloadContainers = getBool("Core3.UnloadContainers", true);
+	cachedUseMetrics = getBool("Core3.UseMetrics", false);
+	cachedSessionStatsSeconds = getInt("Core3.SessionStatsSeconds", 3600);
+	cachedOnlineLogSize = getInt("Core3.OnlineLogSize", 100000000);
 }
 
 void ConfigManager::dumpConfig(bool includeSecure) {
@@ -158,6 +158,10 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 		info(true) << "Hottest key: " <<
 		       	hottestKey << " usageCounter: " << maxUsageCounter << " (" << maxPS << "/s)";
 	}
+
+	auto engineConfig = Core::getPropertiesString();
+
+	info(true) << engineConfig;
 
 #ifdef DEBUG_CONFIGMANAGER
 	if (getLogLevel() >= Logger::DEBUG) {

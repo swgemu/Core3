@@ -169,7 +169,7 @@ void RecastNavMesh::copyMeshTo(dtNavMesh* mesh) {
 void RecastNavMesh::saveToFile() {
 	const dtNavMesh* mesh = navMesh;
 	if (!mesh) {
-		error("trying to save to file a NULL nav mesh from RecastNavMesh " + name);
+		error("trying to save to file a nullptr nav mesh from RecastNavMesh " + name);
 		return;
 	}
 

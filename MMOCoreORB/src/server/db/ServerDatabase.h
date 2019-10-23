@@ -24,9 +24,7 @@ public:
 		if (databases == nullptr)
 			throw DatabaseException("No Server Database initiated");
 
-		int i = currentDB.get() % databases->size();
-
-		currentDB.increment();
+		int i = currentDB.postIncrement() % databases->size();
 
 		return databases->get(i);
 	}

@@ -39,7 +39,7 @@ public:
 		}
 	}
 
-	uint32 getRandomTemplate(int planetID) {
+	uint32 getRandomTemplate(int planetID) const {
 		Vector<uint32>* lairs = nullptr;
 
 		if (planetID == -1)

@@ -11,20 +11,20 @@ Vector<Database*>* ServerDatabase::databases = nullptr;
 AtomicInteger ServerDatabase::currentDB;
 
 ServerDatabase::ServerDatabase(ConfigManager* configManager) {
-	setLoggingName("ServerDatabase");
-
 	const String& dbHost = configManager->getDBHost();
 	const String& dbUser = configManager->getDBUser();
 	const String& dbPass = configManager->getDBPass();
 	const String& dbName = configManager->getDBName();
 	const int     dbPort = configManager->getDBPort();
 
+	setLoggingName("ServerDatabase " + dbHost + ":" + String::valueOf(dbPort));
+
 	databases = new Vector<Database*>();
 
 	const static int DEFAULT_SERVERDATABASE_INSTANCES = configManager->getInt("Core3.DBInstances", 1);
 
 	for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
-		Database* db = new server::db::mysql::MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
+		Database* db = new server::db::mysql::MySqlDatabase(String("MySqlDatabase" + String::valueOf(i)), dbHost);
 		db->connect(dbName, dbUser, dbPass, dbPort);
 
 		databases->add(db);
@@ -52,9 +52,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 }
 
 ServerDatabase::~ServerDatabase() {
-	while (!databases->isEmpty()) {
-		Database* db = databases->remove(0);
-
+	for (auto db : *databases) {
 		delete db;
 	}
 
@@ -76,7 +74,7 @@ void ServerDatabase::alterDatabase(int nextSchemaVersion, const String& alterSql
 			dbSchemaVersion = nextSchemaVersion;
 			info("Upgraded mysql database schema to version " + String::valueOf(dbSchemaVersion), true);
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		error("Failed to update database schema, please manually execute: " + alterSql + " " + updateVersionSql);
 	}

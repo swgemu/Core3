@@ -671,7 +671,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 			closeobjects->safeCopyReceiversTo(closeNoneReference, CloseObjectsVector::PLAYERTYPE);
 		}
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 

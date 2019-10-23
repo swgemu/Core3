@@ -11,6 +11,7 @@ import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import system.util.VectorMap;
 
+include engine.log.LoggerHelperStream;
 include system.util.SynchronizedVectorMap;
 
 //@nonTransactional
@@ -57,6 +58,27 @@ class ZoneClientSession extends ManagedObject {
 	public native void info(final string msg, boolean force = false);
 	public native void debug(final string msg);
 	public native void error(final string msg);
+
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream info(int forced = false) /*int instead of bool because of const char* implicit cast to bool*/  {
+		return session.info(forced);
+	}
+
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream error()  {
+		return session.error();
+	}
+
+	@read
+	@dereferenced
+	@local
+	public LoggerHelperStream debug()  {
+		return session.debug();
+	}
 
 	public native string getAddress();
 
