@@ -16,6 +16,24 @@
       "revId": "3b30a8b29a422c8e6f68c60bf5dea35c87ee35cf",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_97694428",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3657,
+      "author": {
+        "id": 1827
+      },
+      "writtenOn": "2019-10-23T03:49:58Z",
+      "side": 1,
+      "message": "Directly iterating the inventory is added in patchset 3. I had adapted some code from getInsurableItems and missed the unnecessary looping over all slotteditems.\n\nRegarding recursivness, the RepairTool SUI feature explicitly only works on items in the player\u0027s immediate inventory, so I don\u0027t need recursiveness for now. Since this PlayerManager method is generic, I changed the method name to be more descriptive. It\u0027s only used by my new repair code for now, but I think it\u0027s still a useful method to have.",
+      "parentUuid": "9a561d44_b73e0828",
+      "revId": "3b30a8b29a422c8e6f68c60bf5dea35c87ee35cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
