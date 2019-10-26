@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_17653445",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/repair/RepairToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2019-10-26T07:39:12Z",
+      "side": 1,
+      "message": "need to check here if the repair tool is actually player\u0027s",
+      "revId": "c9e16c48f397d48e69de9c26721fd25b5bc77f53",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
