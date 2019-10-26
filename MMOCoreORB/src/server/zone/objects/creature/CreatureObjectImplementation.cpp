@@ -303,9 +303,9 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	} else
 		sendTo(asCreatureObject(), doClose);
 
-	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
+	CloseObjectsVector* vec = getCloseObjects();
 
-	assert(vec != nullptr);
+	fatal(vec != nullptr) << "close objects vector in creo::sendToOwner null";
 
 	SortedVector<QuadTreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
@@ -343,7 +343,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 		return;
 
 	if (player == thisPointer) {
-		//info("sending baselines to myself", true);
+		debug() << "sending baselines to myself";
 
 		CreatureObjectMessage1* msg = new CreatureObjectMessage1(thisPointer);
 		player->sendMessage(msg);
@@ -429,7 +429,8 @@ void CreatureObjectImplementation::sendOpenHolocronToPageMessage() {
 
 void CreatureObjectImplementation::sendNewbieTutorialRequest(
 		const String& request) {
-	//info("sending newbie request " + request, true);
+	debug() << "sending newbie request " << request;
+
 	NewbieTutorialRequest* message = new NewbieTutorialRequest(request);
 	sendMessage(message);
 }
@@ -742,7 +743,8 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
-	//info("trying to clear CombatState");
+	debug("trying to clear CombatState");
+
 	if (stateBitmask & CreatureState::COMBAT) {
 		if (stateBitmask & CreatureState::PEACE)
 			stateBitmask &= ~CreatureState::PEACE;
@@ -766,7 +768,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 	if (isRidingMount())
 		removeMountedCombatSlow();
 
-	//info("finished clearCombatState");
+	debug("finished clearCombatState");
 }
 
 void CreatureObjectImplementation::setAlternateAppearance(const String& appearanceTemplate, bool notifyClient) {

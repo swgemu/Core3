@@ -1214,7 +1214,7 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	return position;
 }
 
-Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) {
+Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) const {
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + (M_PI / 2) - direction.getRadians();
 

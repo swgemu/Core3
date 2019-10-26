@@ -770,12 +770,12 @@ void ServerCore::shutdown() {
 	typedef std::remove_reference<decltype(*objects)>::type ObjectsMapType;
 
 	while (objectsIterator.hasNext()) {
-		ObjectsMapType::key_type key;
-		ObjectsMapType::value_type value;
+		ObjectsMapType::key_type* key;
+		ObjectsMapType::value_type* value;
 
 		objectsIterator.getNextKeyAndValue(key, value);
 
-		tbl.put(key, value);
+		tbl.put(*key, *value);
 	}
 
 	objectManager->finalizeInstance();
