@@ -4,6 +4,8 @@
 
 #include "ConfigManager.h"
 
+using namespace sys::thread;
+
 ConfigManager::ConfigManager() {
 	setLoggingName("ConfigManager");
 #ifdef DEBUG_CONFIGMANAGER
@@ -43,16 +45,16 @@ bool ConfigManager::loadConfigData() {
 	info("Loaded config file(s) in " + String::valueOf(getConfigDataAgeMs()) + "ms", true);
 #endif // DEBUG_CONFIGMANAGER
 
-	bool result_global, result_core3;
+	bool resultGlobal, resultCore3;
 
 	clearConfigData();
 
 	// Load new-style "Core3.value" settings
 	LuaObject core3 = getGlobalObject("Core3");
 
-	result_core3 = parseConfigData("Core3");
+	resultCore3 = parseConfigData("Core3");
 
-	if (!result_core3)
+	if (!resultCore3)
 		error("Failed to parse Core3 configuration table, falling back on old Globals style config.");
 
 	core3.pop();
@@ -62,9 +64,9 @@ bool ConfigManager::loadConfigData() {
 
 	lua_pushglobaltable(L);
 
-	result_global = parseConfigData("Core3", true);
+	resultGlobal = parseConfigData("Core3", true);
 
-	if (!result_global)
+	if (!resultGlobal)
 		error("Failed to parse legacy configuration globals.");
 
 	lua_pop(L, 1);
@@ -82,7 +84,7 @@ bool ConfigManager::loadConfigData() {
 	dumpConfig();
 #endif // DEBUG_CONFIGMANAGER
 
-	return result_global || result_core3;
+	return resultGlobal || resultCore3;
 }
 
 void ConfigManager::clearConfigData() {

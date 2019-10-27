@@ -154,6 +154,11 @@ int CraftingSessionImplementation::cancelSession() {
 	return clearSession();
 }
 
+int CraftingSessionImplementation::cancelSessionCommand() {
+	closeCraftingWindow(0, false);
+	return cancelSession();
+}
+
 int CraftingSessionImplementation::clearSession() {
 	Locker slocker(_this.getReferenceUnsafeStaticCast());
 
@@ -214,25 +219,30 @@ int CraftingSessionImplementation::clearSession() {
 	return 0;
 }
 
-void CraftingSessionImplementation::closeCraftingWindow(int clientCounter) {
+void CraftingSessionImplementation::closeCraftingWindow(int clientCounter, bool wasCraftSuccess) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
+	ObjectControllerMessage* objMsg = nullptr;
 
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			crafter->getObjectID(), 0x1B, 0x010C);
-	objMsg->insertInt(0x10A);
-	objMsg->insertInt(1);
-	objMsg->insertByte(clientCounter);
+	//These two packets deal with the hopper
+	if(wasCraftSuccess) {
+			objMsg = new ObjectControllerMessage(
+					crafter->getObjectID(), 0x1B, 0x010C);
+			objMsg->insertInt(0x10A);
+			objMsg->insertInt(1);
+			objMsg->insertByte(clientCounter);
 
-	crafter->sendMessage(objMsg);
+			crafter->sendMessage(objMsg);
 
-	objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x010C);
-	objMsg->insertInt(0x10A);
-	objMsg->insertInt(0);
-	objMsg->insertByte(clientCounter);
+			objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x010C);
+			objMsg->insertInt(0x10A);
+			objMsg->insertInt(0);
+			objMsg->insertByte(clientCounter);
 
-	crafter->sendMessage(objMsg);
+			crafter->sendMessage(objMsg);
+	}
 
+	//The actual window close command
 	objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x01C2);
 	objMsg->insertByte(clientCounter);
 
@@ -265,7 +275,7 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	if (index >= currentSchematicList.size()) {
 		crafter->sendSystemMessage("Invalid Schematic Index");
-		closeCraftingWindow(1);
+		closeCraftingWindow(0, false);
 		cancelSession();
 		return;
 	}
@@ -274,7 +284,7 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	if (draftschematic == nullptr) {
 		crafter->sendSystemMessage("@ui_craft:err_no_draft_schematic");
-		closeCraftingWindow(1);
+		closeCraftingWindow(0, false);
 		cancelSession();
 		return;
 	}
@@ -294,7 +304,7 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 			if (prototype == nullptr) {
 				crafter->sendSystemMessage("@ui_craft:err_no_prototype");
-				closeCraftingWindow(1);
+				closeCraftingWindow(0, false);
 				cancelSession();
 				return;
 			}
@@ -315,7 +325,7 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 		}
 	} else {
 		crafter->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-		closeCraftingWindow(1);
+		closeCraftingWindow(0, false);
 		cancelSession();
 	}
 }
@@ -338,7 +348,7 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 
 	if (manufactureSchematic.get() == nullptr) {
 		crafter->sendSystemMessage("@ui_craft:err_no_manf_schematic");
-		closeCraftingWindow(1);
+		closeCraftingWindow(0, false);
 		cancelSession();
 		return false;
 	}
@@ -370,7 +380,7 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 
 	if (strongPrototype == nullptr) {
 		crafter->sendSystemMessage("@ui_craft:err_no_prototype");
-		closeCraftingWindow(1);
+		closeCraftingWindow(0, false);
 		cancelSession();
 		return false;
 	}
@@ -1181,7 +1191,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 	if (manufactureSchematic->isAssembled()
 			&& !manufactureSchematic->isCompleted()) {
 
-		closeCraftingWindow(clientCounter);
+		closeCraftingWindow(clientCounter, true);
 
 		String xpType = manufactureSchematic->getDraftSchematic()->getXpType();
 		int xp = manufactureSchematic->getDraftSchematic()->getXpAmount();
@@ -1204,7 +1214,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 
 	} else {
 
-		closeCraftingWindow(clientCounter);
+		closeCraftingWindow(clientCounter, false);
 
 		sendSlotMessage(clientCounter, IngredientSlot::WEIRDFAILEDMESSAGE);
 	}
@@ -1294,7 +1304,7 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 
 	} else {
 
-		closeCraftingWindow(clientCounter);
+		closeCraftingWindow(clientCounter, false);
 
 		sendSlotMessage(clientCounter, IngredientSlot::WEIRDFAILEDMESSAGE);
 	}
