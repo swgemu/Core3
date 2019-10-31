@@ -40,6 +40,9 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+--Determines the loot implementation version, 0: original, 1: refactored.
+lootVersion = 0
+
 --Determines how often exceptional and legendary items can drop.
 yellowChance = 1000 -- 1 in 1,000
 exceptionalChance = 100000 --1 in 100,000
