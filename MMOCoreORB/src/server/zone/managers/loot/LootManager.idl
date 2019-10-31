@@ -21,6 +21,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.managers.loot.CrystalData;
 include system.lang.ref.Reference;
 include engine.log.Logger;
+include system.util.Vector;
 include system.util.VectorMap;
 
 @dirty
@@ -31,13 +32,15 @@ class LootManager extends ManagedService implements Logger {
 
 	private transient LootGroupMap lootGroupMap;
 
-	private transient float yellowChance;
+	private transient int lootVersion;
+
+	private transient int yellowChance;
 	private transient float yellowModifier;
 
-	private transient float exceptionalChance;
+	private transient int exceptionalChance;
 	private transient float exceptionalModifier;
 
-	private transient float legendaryChance;
+	private transient int legendaryChance;
 	private transient float legendaryModifier;
 
 	@dereferenced
@@ -118,6 +121,8 @@ class LootManager extends ManagedService implements Logger {
 
 		skillModChance = 0.0;
 
+		lootVersion = 0;
+
 		Logger.setLoggingName("LootManager");
 
 		Logger.setGlobalLogging(true);
@@ -158,7 +163,16 @@ class LootManager extends ManagedService implements Logger {
 	private native void loadLootableMods( LuaObject modTable, SortedVector<string> mods );
 
 	@local
-	public native TangibleObject createLootObject(final LootItemTemplate templateObject, int level, boolean maxCondition = false);
+	private native void writeLootLog(TangibleObject prototype, CraftingValues craftingValues, boolean newVersion = false);
+
+	@local
+	public native TangibleObject createLootObject(final LootItemTemplate templateObject, int level, boolean maxCondition = false, boolean logLoot = false);
+
+	@local
+	public native TangibleObject createNewLootObject(final LootItemTemplate templateObject, int level, boolean maxCondition = false, boolean logLoot = false);
+
+	@local
+	private native void setFinalObjectValues(final LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
 
 	@local
 	public native string getRandomLootableMod( unsigned int sceneObjectType );
@@ -170,7 +184,7 @@ class LootManager extends ManagedService implements Logger {
 	@local
 	public native boolean createLootFromCollection(SceneObject container, final LootGroupCollection collection, int level);
 
-	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
+	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false, boolean logLoot = false);
 
 	public native boolean createLootSet(SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);
 
@@ -203,4 +217,27 @@ class LootManager extends ManagedService implements Logger {
 		return crystalData.get(name);
 	}
 
+	@local
+	public native int getLootVersion() {
+		return lootVersion;
+	}
+
+	@local
+	public native void setLootVersion(int value) {
+		lootVersion = value;
+	}
+
+	@local
+	public native void setLootChance(int leg, int exc, int yel) {
+		legendaryChance = leg;
+		exceptionalChance = exc;
+		yellowChance = yel;
+	}
+
+	@local
+	public native void setLootModifier(float leg, float exc, float yel) {
+		legendaryModifier = leg;
+		exceptionalModifier = exc;
+		yellowModifier = yel;
+	}
 }

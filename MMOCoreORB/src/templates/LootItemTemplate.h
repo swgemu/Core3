@@ -17,6 +17,9 @@ protected:
 	String customObjectName;
 	String directObjectTemplate;
 
+	int minimumLevel;
+	int maximumLevel;
+
 	int junkDealerTypeNeeded;
 	int junkMinValue;
 	int junkMaxValue;
@@ -41,6 +44,9 @@ public:
 		staticDotChance = -1;
 		staticDotType = -1;
 
+		minimumLevel = 0;
+		maximumLevel = 0;
+
 		junkDealerTypeNeeded = 0;
 		junkMinValue = 0;
 		junkMaxValue = 0;
@@ -51,6 +57,9 @@ public:
 		customObjectName = templateData->getStringField("customObjectName");
 		directObjectTemplate = templateData->getStringField("directObjectTemplate");
 		suppressSerialNumber = templateData->getBooleanField("suppressSerialNumber");
+
+		minimumLevel = templateData->getIntField("minimumLevel");
+		maximumLevel = templateData->getIntField("maximumLevel");
 
 		junkDealerTypeNeeded = templateData->getIntField("junkDealerTypeNeeded");
 		junkMinValue = templateData->getIntField("junkMinValue");
@@ -232,6 +241,14 @@ public:
 
 	int getJunkDealerTypeNeeded() const {
 		return junkDealerTypeNeeded;
+	}
+
+	int getMinimumLevel() const {
+		return minimumLevel;
+	}
+
+	int getMaximumLevel() const {
+		return maximumLevel;
 	}
 
 	int getJunkMinValue() const {
