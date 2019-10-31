@@ -9,7 +9,7 @@ light_weight_vibro_unit = {
 		{"mindamage",25,25,0},
 		{"maxdamage",30,30,0},
 		{"attackspeed",-0.5,-0.5,1},
-		{"woundchance",8,8,0},
+		{"woundchance",8,8,1},
 		{"midrangemod",18,18,0},
 		{"attackhealthcost",20,20,0},
 		{"attackactioncost",10,10,0},

@@ -1,6 +1,6 @@
 stim_d_smc_vurlene = {
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/medicine/crafted/medpack_damage_d.iff",
 

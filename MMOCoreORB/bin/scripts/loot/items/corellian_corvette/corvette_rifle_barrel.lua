@@ -6,6 +6,12 @@ corvette_rifle_barrel = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/corvette_rifle_barrel.iff",
 	craftingValues = {
+		{"mindamage", 0,0,0,1},
+		{"maxdamage", 0,0,0,1},
+		{"attackspeed",0,0,1,1},
+		{"woundchance",0,0,1,1},
+		{"hitpoints",0,0,0,1},
+		{"midrangemod",0,0,0,1},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

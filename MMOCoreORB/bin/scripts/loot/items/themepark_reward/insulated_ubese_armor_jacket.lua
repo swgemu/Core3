@@ -8,8 +8,8 @@ insulated_ubese_armor_jacket = {
 	craftingValues = {
 		{"armor_integrity",20000,20000,0},
 		{"armor_rating",1,1,0},
-		{"armor_effectiveness",15,15,0},
-		{"kineticeffectiveness",19,19,0},
+		{"armor_effectiveness",15,15,10},
+		{"kineticeffectiveness",19,19,10},
 		{"armor_health_encumbrance",106,106,0},
 		{"armor_action_encumbrance",56,56,0},
 		{"armor_mind_encumbrance",45,45,0},

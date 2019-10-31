@@ -6,7 +6,6 @@ krayt_dragon_scales = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_enhancement_krayt.iff",
 	craftingValues = {
-		{"armor_special_type",0,0,0},
 		{"acideffectiveness",2,8,10},
 		{"heateffectiveness",2,8,10},
 		{"energyeffectiveness",2,8,10},

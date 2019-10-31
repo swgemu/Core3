@@ -2,10 +2,11 @@
 
 jagged_vibroblade = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 0,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/knife/knife_vibroblade_quest.iff",
 	craftingValues = {
+		{"hitpoints",1000,1000,0},
 		{"mindamage",15,15,0},
 		{"maxdamage",90,90,0},
 		{"attackspeed",3.2,3.2,1},
@@ -14,7 +15,7 @@ jagged_vibroblade = {
 		{"midrangemod",5,5,0},
 		{"maxrangemod",5,5,0},
 		{"midrange",3,3,0},
-		{"maxrange",5,5,0},
+		{"maxrange",4,4,0},
 		{"attackhealthcost",5,5,0},
 		{"attackactioncost",15,15,0},
 		{"attackmindcost",5,5,0},

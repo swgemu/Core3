@@ -2,20 +2,16 @@
 
 weapon_stock_quest = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 0,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/stock_advanced_quest.iff",
 	craftingValues = {
 		{"mindamage",25,25,0},
 		{"maxdamage",30,30,0},
 		{"attackspeed",-0.5,-0.5,1},
-		{"woundchance",10,10,0},
+		{"woundchance",10,10,1},
 		{"midrangemod",15,15,0},
 		{"useCount",2,10,0},
-		{"attackhealthcost",0,0,0},
-		{"attackactioncost",0,0,0},
-		{"attackmindcost",0,0,0},
-		{"hitpoints",0,0,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

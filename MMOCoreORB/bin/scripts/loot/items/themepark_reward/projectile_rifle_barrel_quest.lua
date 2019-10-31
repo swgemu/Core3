@@ -9,10 +9,9 @@ projectile_rifle_barrel_quest = {
 		{"mindamage",25,25,0},
 		{"maxdamage",30,30,0},
 		{"attackspeed",-0.4,-0.4,1},
-		{"woundchance",20,20,0},
+		{"woundchance",20,20,1},
 		{"midrangemod",15,15,0},
 		{"useCount",2,10,0},
-		{"hitpoints",0,0,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

@@ -2,14 +2,14 @@
 
 bile_soaked_rancor_tooth = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 0,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/rancor_tooth_quest.iff",
 	craftingValues = {
 		{"mindamage",15,15,0},
 		{"maxdamage",65,65,0},
 		{"attackspeed",0.3,0.3,1},
-		{"woundchance",25,25,0},
+		{"woundchance",25,25,1},
 		{"attackhealthcost",30,30,0},
 		{"attackactioncost",25,25,0},
 		{"attackmindcost",25,25,0},

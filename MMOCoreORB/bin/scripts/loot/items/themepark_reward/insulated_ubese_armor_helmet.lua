@@ -8,8 +8,8 @@ insulated_ubese_armor_helmet = {
 	craftingValues = {
 		{"armor_integrity",20000,20000,0},
 		{"armor_rating",1,1,0},
-		{"armor_effectiveness",15,15,0},
-		{"kineticeffectiveness",19,19,0},
+		{"armor_effectiveness",15,15,10},
+		{"kineticeffectiveness",19,19,10},
 		{"armor_health_encumbrance",9,9,0},
 		{"armor_action_encumbrance",11,11,0},
 		{"armor_mind_encumbrance",180,180,0},

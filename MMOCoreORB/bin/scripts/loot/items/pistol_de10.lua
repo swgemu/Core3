@@ -2,13 +2,32 @@
 
 pistol_de10 = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 0,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_de_10.iff",
 	craftingValues = {
+		{"hitpoints",750,750,0},
+		{"mindamage",90,90,0},
+		{"maxdamage",180,180,0},
+		{"attackspeed",4.0,4.0,1},
+		{"woundchance",15,15,1},
+		{"zerorangemod",0,0,0},
+		{"midrangemod",30,30,0},
+		{"maxrangemod",-80,-80,0},
+		{"midrange",20,20,0},
+		{"maxrange",64,64,0},
+		{"attackhealthcost",20,20,0},
+		{"attackactioncost",45,45,0},
+		{"attackmindcost",20,20,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	
+	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
+	randomDotChance = 625,
+	junkDealerTypeNeeded = JUNKARMS,
+	junkMinValue = 30,
+	junkMaxValue = 55
 }
 
 addLootItemTemplate("pistol_de10", pistol_de10)
