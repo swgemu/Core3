@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_f780808d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2019-11-01T12:30:09Z",
+      "side": 1,
+      "message": "not sure what lootVersion is? I looked around and couldn\u0027t see where its used, I see the getLootVersion() etc but somehow I\u0027m overlooking it\u0027s use?",
+      "revId": "f819205ac743b98023455b431087744e5ed21aac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_977304e7",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2019-11-01T12:30:09Z",
+      "side": 1,
+      "message": "This function will have many challenges at scale with multiple threads, I\u0027d also rather see us use json logs so they can be parsed and analyzed easier. See how player.log is implemented or who.json etc.",
+      "revId": "f819205ac743b98023455b431087744e5ed21aac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
