@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_374af883",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4417
+      },
+      "writtenOn": "2019-11-02T17:20:10Z",
+      "side": 1,
+      "message": "Loot version determines the loot values calculation to be used; current vs. refactor. \n\nSee line 967, by default the current calculation is used and nothing has changed.\n\nThis allows for separate and independent object values calculations and the ability to directly compare their differences.\n\nFor now the refactor is only available for testing via additional testing features included in the included \"/server loot\" sub commands.",
+      "parentUuid": "9a561d44_f780808d",
+      "revId": "f819205ac743b98023455b431087744e5ed21aac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_977304e7",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-01T12:30:09Z",
       "side": 1,
       "message": "This function will have many challenges at scale with multiple threads, I\u0027d also rather see us use json logs so they can be parsed and analyzed easier. See how player.log is implemented or who.json etc.",
+      "revId": "f819205ac743b98023455b431087744e5ed21aac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_174ff493",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 4417
+      },
+      "writtenOn": "2019-11-02T17:20:10Z",
+      "side": 1,
+      "message": "This function is currently only accessible via the included \"/server loot\" sub command and is not capable of being activated globally.\n\nIt use is exclusive to admin generated objects as a testing feature.",
+      "parentUuid": "9a561d44_977304e7",
       "revId": "f819205ac743b98023455b431087744e5ed21aac",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
