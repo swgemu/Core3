@@ -32,11 +32,11 @@ public:
 				|| agent->getNumberOfPlayersInRange() <= 0 || agent->isRetreating() || agent->isFleeing() || agent->isInCombat())
 			return FAILURE;
 
-		assert(child != NULL);
+		assert(child != nullptr);
 
 		// if we have a follow object, then that is the only thing we pay attention to
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
-		if (currObj != NULL) {
+		if (currObj != nullptr) {
 			agent->writeBlackboard("targetProspect", currObj);
 			return child->doAction(agent);
 		}
@@ -44,7 +44,7 @@ public:
 		// get targets we want to apply our child tree to
 		// TODO: might have to fix numberOfPlayersInRange here
 		CloseObjectsVector* vec = (CloseObjectsVector*) agent->getCloseObjects();
-		if (vec == NULL)
+		if (vec == nullptr)
 			return FAILURE;
 
 		SortedVector<QuadTreeEntry*> closeObjects;
@@ -67,7 +67,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == agent || target == NULL || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
+		if (target == agent || target == nullptr || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
 				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
 				|| !target->isAttackableBy(agent))
 			return true;
@@ -75,16 +75,10 @@ public:
 		SceneObject* agentRoot = agent->getRootParent();
 		SceneObject* targetRoot = target->getRootParent();
 
-		uint64 agentParentID = agentRoot != NULL && agentRoot->isBuildingObject() ? agentRoot->getObjectID() : 0;
-		uint64 targetParentID = targetRoot != NULL && targetRoot->isBuildingObject() ? targetRoot->getObjectID() : 0;
+		uint64 agentParentID = agentRoot != nullptr && agentRoot->isBuildingObject() ? agentRoot->getObjectID() : 0;
+		uint64 targetParentID = targetRoot != nullptr && targetRoot->isBuildingObject() ? targetRoot->getObjectID() : 0;
 
 		if (agentParentID != targetParentID)
-			return true;
-
-		uint32 agentFaction = agent->getFaction();
-		uint32 targetFaction = target->getFaction();
-
-		if ((agentFaction != 0 && targetFaction == 0) || (agentFaction == 0 && targetFaction != 0))
 			return true;
 
 		return false;

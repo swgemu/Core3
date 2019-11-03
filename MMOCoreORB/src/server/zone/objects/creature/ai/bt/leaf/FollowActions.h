@@ -30,7 +30,7 @@ public:
 		agent->eraseBlackboard("targetProspect");
 
 		ManagedReference<SceneObject*> tar = agent->getThreatMap()->getHighestThreatCreature();
-		if (tar == NULL)
+		if (tar == nullptr)
 			return FAILURE;
 
 		agent->writeBlackboard("targetProspect", tar);
@@ -53,7 +53,7 @@ public:
 		agent->eraseBlackboard("targetProspect");
 
 		ManagedReference<SceneObject*> tar = agent->getMainDefender();
-		if (tar == NULL)
+		if (tar == nullptr)
 			return FAILURE;
 
 		agent->writeBlackboard("targetProspect", tar);
@@ -76,7 +76,7 @@ public:
 		agent->eraseBlackboard("targetProspect");
 
 		ManagedReference<SceneObject*> tar = agent->getTargetFromTargetsDefenders();
-		if (tar == NULL)
+		if (tar == nullptr)
 			return FAILURE;
 
 		agent->writeBlackboard("targetProspect", tar);
@@ -102,11 +102,11 @@ public:
 			return FAILURE;
 
 		Reference<PetControlDevice*> cd = agent->getControlDevice().castTo<PetControlDevice*>();
-		if (cd == NULL)
+		if (cd == nullptr)
 			return FAILURE;
 
 		ManagedReference<SceneObject*> tar = cd->getLastCommandTarget().get();
-		if (tar == NULL)
+		if (tar == nullptr)
 			return FAILURE;
 
 		agent->writeBlackboard("targetProspect", tar);
@@ -127,7 +127,7 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		agent->restoreFollowObject();
-		return agent->getFollowObject() != NULL ? SUCCESS : FAILURE;
+		return agent->getFollowObject() != nullptr ? SUCCESS : FAILURE;
 	}
 };
 
@@ -146,7 +146,7 @@ public:
 			return SUCCESS;
 
 		ManagedReference<SceneObject*> tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
-		if (tar == NULL) {
+		if (tar == nullptr) {
 			agent->eraseBlackboard("targetProspect");
 			return SUCCESS;
 		}
@@ -173,7 +173,7 @@ public:
 			return FAILURE;
 
 		ManagedReference<SceneObject*> tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
-		if (tar == NULL) {
+		if (tar == nullptr) {
 			agent->eraseBlackboard("targetProspect");
 			return FAILURE;
 		}
@@ -197,7 +197,7 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
-		if (followCopy == NULL)
+		if (followCopy == nullptr)
 			return FAILURE;
 
 		float dist = agent->getDistanceTo(followCopy) - followCopy->getTemplateRadius() - agent->getTemplateRadius();
@@ -227,11 +227,11 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<SceneObject*> tar = NULL;
+		ManagedReference<SceneObject*> tar = nullptr;
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == NULL && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING))
+		if (tar == nullptr && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING))
 			return FAILURE;
 
 		switch (state) {
@@ -280,11 +280,11 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<SceneObject*> tar = NULL;
+		ManagedReference<SceneObject*> tar = nullptr;
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == NULL || !tar->isCreatureObject())
+		if (tar == nullptr || !tar->isCreatureObject())
 			return FAILURE;
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
@@ -316,11 +316,11 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<SceneObject*> tar = NULL;
+		ManagedReference<SceneObject*> tar = nullptr;
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == NULL || !tar->isCreatureObject())
+		if (tar == nullptr || !tar->isCreatureObject())
 			return FAILURE;
 
 		float aggroMod = 1.f;

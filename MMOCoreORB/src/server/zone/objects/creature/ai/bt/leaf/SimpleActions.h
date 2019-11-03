@@ -431,7 +431,7 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		Time* alert = agent->getAlertedTime();
-		if (alert != NULL) {
+		if (alert != nullptr) {
 			alert->updateToCurrentTime();
 			alert->addMiliTime(duration);
 		}

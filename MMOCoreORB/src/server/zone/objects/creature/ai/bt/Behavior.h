@@ -123,7 +123,7 @@ public:
 	}
 
 	void setParent(Behavior* parent_) {
-		assert(parent_ != NULL);
+		assert(parent_ != nullptr);
 		assert(parent_->isComposite() || parent_->isDecorator());
 		parent = parent_;
 	}

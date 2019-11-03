@@ -501,7 +501,7 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
-	if (weao == NULL)
+	if (weao == nullptr)
 		weao = asCreatureObject()->getDefaultWeapon();
 
 	weapon = weao;
@@ -1847,7 +1847,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		unsigned int actionCount, uint64 targetID,
 		const UnicodeString& arguments, int priority,
 		int compareCounter) {
-	if (getZoneServer() == NULL) { /* for unit tests */
+	if (getZoneServer() == nullptr) { /* for unit tests */
 		return;
 	}
 
@@ -3346,7 +3346,7 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 }
 
 Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
-	if (weapon == NULL) {
+	if (weapon == nullptr) {
 		return asCreatureObject()->getDefaultWeapon();
 	} else
 		return weapon;

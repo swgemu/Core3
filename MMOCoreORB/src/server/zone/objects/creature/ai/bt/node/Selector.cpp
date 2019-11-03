@@ -16,7 +16,7 @@ Behavior::Status Selector::execute(AiAgent* agent, unsigned int startIdx) const 
 	// as always, return RUNNING if any child returns RUNNING
 	for (; startIdx < children.size(); ++startIdx) {
 		Behavior* currentChild = children.get(startIdx);
-		assert(currentChild != NULL);
+		assert(currentChild != nullptr);
 
 		Behavior::Status result = currentChild->doAction(agent);
 
@@ -38,7 +38,7 @@ Behavior::Status ParallelSelector::execute(AiAgent* agent, unsigned int startIdx
 	Behavior::Status finalResult = FAILURE;
 	for (; startIdx < children.size(); ++startIdx) {
 		Behavior* currentChild = children.get(startIdx);
-		assert(currentChild != NULL);
+		assert(currentChild != nullptr);
 
 		Behavior::Status result = currentChild->doAction(agent);
 
@@ -60,7 +60,7 @@ Behavior::Status RandomSelector::execute(AiAgent* agent, unsigned int startIdx) 
 	Vector<Reference<Behavior*> > ranChildren = shuffleChildren();
 	for (int i = 0; i < ranChildren.size(); ++i) {
 		Behavior* currentChild = ranChildren.get(i);
-		assert(currentChild != NULL);
+		assert(currentChild != nullptr);
 
 		Behavior::Status result = currentChild->doAction(agent);
 

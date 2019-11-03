@@ -42,7 +42,7 @@ public:
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		const Behavior* child = agent->getBehaviorTree(slotID);
 
-		if (child == NULL)
+		if (child == nullptr)
 			return FAILURE;
 
 		return child->doAction(agent);

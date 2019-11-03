@@ -467,7 +467,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 	setAITemplate();
 
-	if (npcTemplate != NULL)
+	if (npcTemplate != nullptr)
 		setupAttackMaps();
 
 	rescheduleTrackingTask();
@@ -582,7 +582,14 @@ void AiAgentImplementation::doRecovery(int latency) {
 }
 
 bool AiAgentImplementation::selectSpecialAttack() {
-	return selectSpecialAttack(getAttackMap()->getRandomAttackNumber());
+	const CreatureAttackMap* attackMap = getAttackMap();
+
+	if (attackMap == nullptr) {
+		selectDefaultAttack();
+		return true;
+	}
+
+	return selectSpecialAttack(attackMap->getRandomAttackNumber());
 }
 
 bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
@@ -590,7 +597,7 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 		info("selectSpecialAttack(" + String::valueOf(attackNum) + ")", true);
 
 	if (attackMap == nullptr) {
-		info("attackMap == NULL", true);
+		info("attackMap == nullptr", true);
 		return false;
 	}
 
@@ -616,16 +623,16 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
     nextActionArgs = attackMap->getArguments(attackNum);
 
     ZoneServer* zoneServer = getZoneServer();
-    if (zoneServer == NULL)
+    if (zoneServer == nullptr)
         return false;
 
     ObjectController* objectController = zoneServer->getObjectController();
-    if (objectController == NULL)
+    if (objectController == nullptr)
         return false;
 
     QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
     ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-    if (queueCommand == NULL || followCopy == NULL
+    if (queueCommand == nullptr || followCopy == nullptr
             || (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
             || (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
         selectDefaultAttack();
@@ -649,7 +656,7 @@ bool AiAgentImplementation::selectDefaultAttack() {
 }
 
 QueueCommand* AiAgentImplementation::getNextAction() {
-    if (getZoneServer() == NULL || getZoneServer()->getObjectController() == NULL)
+    if (getZoneServer() == nullptr || getZoneServer()->getObjectController() == nullptr)
         return NULL;
 
     return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
@@ -769,8 +776,8 @@ bool AiAgentImplementation::validateTarget() {
 }
 
 bool AiAgentImplementation::validateTarget(SceneObject* target) {
-	if (target == NULL) {
-		//info("validateTarget target == NULL", true);
+	if (target == nullptr) {
+		//info("validateTarget target == nullptr", true);
 		return false;
 	}
 
@@ -782,7 +789,7 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	if (target->isCreatureObject()) {
 		CreatureObject* targetCreatureObject = target->asCreatureObject();
 
-		if (targetCreatureObject == NULL
+		if (targetCreatureObject == nullptr
 				|| !targetCreatureObject->isAttackableBy(asAiAgent())
 				|| targetCreatureObject->isDead()
 				|| targetCreatureObject->isIncapacitated()) {
@@ -792,7 +799,7 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	} else if (target->isTangibleObject()) {
 		TangibleObject* targetTangibleObject = target->asTangibleObject();
 
-		if (targetTangibleObject == NULL
+		if (targetTangibleObject == nullptr
 				|| !targetTangibleObject->isAttackableBy(asAiAgent())
 				|| targetTangibleObject->isDestroyed()) {
 			//info("validateTarget failed TANO checks", true);
@@ -848,7 +855,7 @@ void AiAgentImplementation::setWeapon(const uint32 weaponType) {
 			currentWeap->destroyObjectFromWorld(false);
 		}
 
-		if (finalWeap != NULL && finalWeap != defaultWeapon) {
+		if (finalWeap != nullptr && finalWeap != defaultWeapon) {
 			Locker locker(finalWeap, asAiAgent());
 
 			transferObject(finalWeap, 4, false);
@@ -937,7 +944,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	if (target == NULL || asAiAgent()->getZoneUnsafe() == NULL || followCopy == NULL) {
+	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr || followCopy == nullptr) {
 		setOblivious();
 		return;
 	}
@@ -1753,10 +1760,10 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
 	Reference<Behavior*> rootBehavior = getBehaviorTree(BehaviorTreeSlot::NONE);
-	assert(rootBehavior != NULL);
+	assert(rootBehavior != nullptr);
 
 	// Do pre-checks (these should remain hard-coded)
-	if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == NULL) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+	if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == nullptr) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
 		setFollowObject(NULL);
 		return;
 	}
@@ -1824,7 +1831,7 @@ void AiAgentImplementation::setAITemplate() {
 	for (const auto& slot : BehaviorTreeSlot()) {
 		Behavior* btree = AiMap::instance()->getTemplate(creatureBitmask, slot, customMap);
 
-		if (btree == NULL)
+		if (btree == nullptr)
 			continue;
 
 		setTree(btree, slot);
@@ -1838,7 +1845,7 @@ Behavior* AiAgentImplementation::getBehaviorTree(const BehaviorTreeSlot& slot) {
 }
 
 void AiAgentImplementation::setTree(Behavior* subRoot, const BehaviorTreeSlot& slot) {
-	if (subRoot == NULL) {
+	if (subRoot == nullptr) {
 		btreeMap.drop(slot);
 		return;
 	}
@@ -2187,15 +2194,15 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 }
 
 void AiAgentImplementation::activateMovementEvent() {
-	if (getZoneUnsafe() == NULL || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
+	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
 	const static uint64 minScheduleTime = 100;
 
 	Locker locker(&movementEventMutex);
 
-	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == NULL && !isRetreating()) {
-		if (moveEvent != NULL) {
+	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
+		if (moveEvent != nullptr) {
 			moveEvent->clearCreatureObject();
 			moveEvent = nullptr;
 		}

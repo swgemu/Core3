@@ -65,7 +65,7 @@ public:
 	}
 
 	Behavior* create(const String& key, const uint32 id, const LuaObject& args) {
-		if (!fnMap.containsKey(key) || fnMap.get(key) == NULL)
+		if (!fnMap.containsKey(key) || fnMap.get(key) == nullptr)
 			return NULL;
 
 		return fnMap.get(key)->create(key, id, args);
@@ -535,7 +535,7 @@ private:
 
 		for (int idx = 0; idx < loadVec.size(); ++idx) {
 			Reference<Behavior*> child = loadVec.get(idx);
-			if (child == NULL)
+			if (child == nullptr)
 				continue;
 
 			uint32 parentID = parentMap.get(child->getID());

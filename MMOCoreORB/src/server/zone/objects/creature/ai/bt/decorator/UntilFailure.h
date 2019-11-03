@@ -24,7 +24,7 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		assert(child != NULL);
+		assert(child != nullptr);
 
 		Behavior::Status result = child->doAction(agent);
 		while (result == SUCCESS) {

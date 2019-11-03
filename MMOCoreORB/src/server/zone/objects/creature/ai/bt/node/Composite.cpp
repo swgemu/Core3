@@ -36,10 +36,10 @@ Behavior::Status Composite::doAction(AiAgent* agent) const {
 	else { // we need to find the child that is running and start from there
 		agent->popRunningChain();
 
-		Behavior* currentChild = NULL;
+		Behavior* currentChild = nullptr;
 		for (; currentIdx < children.size(); ++currentIdx) {
 			currentChild = children.get(currentIdx);
-			assert(currentChild != NULL);
+			assert(currentChild != nullptr);
 
 			if (currentChild->getID() == agent->peekRunningChain())
 				break;

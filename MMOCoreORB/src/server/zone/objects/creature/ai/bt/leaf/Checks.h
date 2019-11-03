@@ -67,7 +67,7 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		assert(agent != NULL);
+		assert(agent != nullptr);
 
 		return check(agent) ? SUCCESS : FAILURE;
 	}

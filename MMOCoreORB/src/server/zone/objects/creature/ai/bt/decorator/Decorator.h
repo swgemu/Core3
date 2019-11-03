@@ -71,14 +71,14 @@ public:
 	String print() const {
 		StringBuffer stream;
 		stream << Behavior::print() << "[";
-		if (child != NULL)
+		if (child != nullptr)
 			stream << child->print();
 		stream << "]";
 		return stream.toString();
 	}
 
 	virtual bool checkConditions(AiAgent* agent) const {
-		return child != NULL && Behavior::checkConditions(agent);
+		return child != nullptr && Behavior::checkConditions(agent);
 	}
 
 	Behavior::Status doAction(AiAgent* agent) const {
