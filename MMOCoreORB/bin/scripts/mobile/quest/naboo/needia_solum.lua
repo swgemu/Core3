@@ -28,7 +28,10 @@ needia_solum = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_heavy",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "arven_wendik_mission_target_convotemplate",
 	

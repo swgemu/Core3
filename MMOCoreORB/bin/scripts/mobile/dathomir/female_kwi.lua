@@ -29,7 +29,10 @@ female_kwi = Creature:new {
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.05,
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_yellow",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_yellow",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

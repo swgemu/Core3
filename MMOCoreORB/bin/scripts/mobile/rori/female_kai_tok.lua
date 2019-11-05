@@ -29,7 +29,10 @@ female_kai_tok = Creature:new {
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_green",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_green",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

@@ -28,7 +28,10 @@ reclusive_cavern_spider_queen = Creature:new {
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	scale = 1.5,
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_toxicgreen",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_toxicgreen",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

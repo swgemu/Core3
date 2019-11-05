@@ -30,7 +30,10 @@ grel_rommo = Creature:new {
 	"object/mobile/dressed_rebel_pilot_human_male_02.iff",
 	"object/mobile/dressed_rebel_pilot_rodian_male_01.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "rebel_weapons_medium",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_medium",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "arven_wendik_mission_target_convotemplate",
 	

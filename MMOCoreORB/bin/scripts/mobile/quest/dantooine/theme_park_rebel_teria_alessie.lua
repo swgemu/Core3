@@ -29,7 +29,10 @@ theme_park_rebel_teria_alessie = Creature:new {
 				 "object/mobile/dressed_entertainer_trainer_twk_female_01.iff",
 				 "object/mobile/dressed_dancer_trainer_twk_female_01.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	

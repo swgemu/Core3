@@ -44,7 +44,10 @@ dolac_dark_jedi_master = Creature:new {
 			}
 		}
 	},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "dark_jedi_weapons_gen4",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "dark_jedi_weapons_gen4",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "dolac_legasi_mission_target_convotemplate",
 	

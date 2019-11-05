@@ -28,7 +28,10 @@ remmer_carrion_keeper = Creature:new {
 	templates = {"object/mobile/remmer_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_red",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_red",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

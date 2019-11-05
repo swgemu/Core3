@@ -29,7 +29,10 @@ shaultra_loraweet = Creature:new {
 	templates = {"object/mobile/dressed_noble_old_human_female_01.iff"},
 	lootGroups = {				
 	},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "rebel_weapons_medium",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_medium",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "indintra_imbru_yerevan_mission_target_convotemplate",
 	

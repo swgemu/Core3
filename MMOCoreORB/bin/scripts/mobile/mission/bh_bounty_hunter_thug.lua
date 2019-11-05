@@ -64,7 +64,10 @@ bh_bounty_hunter_thug = Creature:new {
 			lootChance = 3480000
 		}
 	},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_heavy",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
 	secondaryWeapon = "unarmed",
 	reactionStf = "@npc_reaction/slang",
 	

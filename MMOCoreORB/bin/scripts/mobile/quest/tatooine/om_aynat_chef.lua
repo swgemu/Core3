@@ -30,7 +30,10 @@ om_aynat_chef = Creature:new {
 			"object/mobile/dressed_chef_trainer_human_male_01.iff"},
 
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "om_aynat_mission_target_convotemplate",
 

@@ -32,7 +32,10 @@ theme_park_rebel_nym_contact = Creature:new {
 				"object/mobile/dressed_nym_pirate_strong_rod_f.iff",
 				"object/mobile/dressed_nym_pirate_strong_wee_m.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_heavy",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	

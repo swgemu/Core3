@@ -27,7 +27,10 @@ deliver_npc = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_01.iff","object/mobile/dressed_commoner_fat_zabrak_male_02.iff","object/mobile/dressed_commoner_fat_zabrak_female_01.iff","object/mobile/dressed_commoner_fat_zabrak_female_02.iff","object/mobile/dressed_commoner_fat_human_male_01.iff","object/mobile/dressed_commoner_fat_human_male_02.iff","object/mobile/dressed_commoner_fat_human_female_01.iff","object/mobile/dressed_commoner_fat_human_female_02.iff","object/mobile/dressed_commoner_fat_twilek_male_01.iff","object/mobile/dressed_commoner_fat_twilek_male_02.iff","object/mobile/dressed_commoner_fat_twilek_female_01.iff","object/mobile/dressed_commoner_fat_twilek_female_02.iff","object/mobile/dressed_commoner_old_zabrak_male_01.iff","object/mobile/dressed_commoner_old_zabrak_male_02.iff","object/mobile/dressed_commoner_old_zabrak_female_01.iff","object/mobile/dressed_commoner_old_zabrak_female_02.iff","object/mobile/dressed_commoner_old_human_male_01.iff","object/mobile/dressed_commoner_old_human_male_02.iff","object/mobile/dressed_commoner_old_human_female_01.iff","object/mobile/dressed_commoner_old_human_female_02.iff","object/mobile/dressed_commoner_old_twilek_male_01.iff","object/mobile/dressed_commoner_old_twilek_male_02.iff","object/mobile/dressed_commoner_old_twilek_female_01.iff","object/mobile/dressed_commoner_old_twilek_female_02.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "deliver_npc",
 	

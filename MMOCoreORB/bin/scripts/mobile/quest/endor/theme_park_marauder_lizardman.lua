@@ -31,8 +31,12 @@ theme_park_marauder_lizardman = Creature:new {
 		"object/mobile/dressed_cobral_runner_trandoshan_male_01.iff",
 		"object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
-	secondaryWeapon = "none",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
+
 	conversationTemplate = "theme_park_marauder_charal_mission_target_convotemplate",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon

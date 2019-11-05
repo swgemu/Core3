@@ -29,7 +29,10 @@ nightspider_poison_spitter = Creature:new {
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 0.6,
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_toxicgreen",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_toxicgreen",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

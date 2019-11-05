@@ -31,7 +31,10 @@ ole_friend_quest_brennis = Creature:new {
 		"object/mobile/dressed_criminal_thug_bothan_male_01.iff"
 	},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_light",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_light",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "brennis_doore_mission_target_convotemplate",
 	reactionStf = "@npc_reaction/slang",

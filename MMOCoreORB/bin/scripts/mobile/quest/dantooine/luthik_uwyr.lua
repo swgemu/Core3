@@ -28,7 +28,10 @@ luthik_uwyr = Creature:new {
 
 	templates = {"object/mobile/dressed_luthik_uwyr.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "luthik_uwyr_mission_giver_convotemplate",
 	

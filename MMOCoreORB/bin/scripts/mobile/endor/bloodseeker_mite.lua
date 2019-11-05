@@ -29,7 +29,10 @@ bloodseeker_mite = Creature:new {
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_red",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "creature_spit_small_red",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	

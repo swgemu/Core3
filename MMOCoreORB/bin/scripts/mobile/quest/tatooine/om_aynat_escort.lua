@@ -80,7 +80,10 @@ om_aynat_escort = Creature:new {
 			"object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff"},
 
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "om_aynat_mission_target_convotemplate",
 

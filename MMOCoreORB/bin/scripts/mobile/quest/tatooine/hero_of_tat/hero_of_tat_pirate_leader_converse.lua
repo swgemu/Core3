@@ -28,7 +28,10 @@ hero_of_tat_pirate_leader_converse = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_pirate_human_male_01.iff"},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_heavy",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "heroOfTatPirateLeaderConvoTemplate",
 	

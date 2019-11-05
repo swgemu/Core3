@@ -27,7 +27,10 @@ delivery_agent_quest_ignar = Creature:new {
 
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_medium",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_medium",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "ignar_ominaz_mission_target_convotemplate",
 	reactionStf = "@npc_reaction/military",

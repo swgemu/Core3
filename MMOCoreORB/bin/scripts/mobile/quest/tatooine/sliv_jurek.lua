@@ -32,7 +32,10 @@ sliv_jurek = Creature:new {
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"
 	},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "ranged_weapons",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "ranged_weapons",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	

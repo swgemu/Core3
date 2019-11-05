@@ -30,7 +30,10 @@ tanner_helton = Creature:new {
 		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
 		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "ebenn_q3_baobab_mission_target_convotemplate",
 	reactionStf = "@npc_reaction/military",

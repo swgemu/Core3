@@ -31,7 +31,10 @@ race_rival_quest_ignar = Creature:new {
 		"object/mobile/dressed_chadra_fan_m_02.iff",
 		"object/mobile/dressed_chadra_fan_m_03.iff"},
 	lootGroups = {},
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "pirate_weapons_light",
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_light",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "ignar_ominaz_mission_target_convotemplate",
 	
