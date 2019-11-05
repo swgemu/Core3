@@ -586,6 +586,21 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
+		// Make sure mob weapons are destroyed when the ai dies so they can't be looted
+		WeaponObject* curWeap = destructedObject->getCurrentWeapon();
+
+		if (curWeap != nullptr && curWeap != destructedObject->getDefaultWeapon()) {
+			Locker locker(curWeap);
+			curWeap->destroyObjectFromWorld(true);
+		}
+
+		while (creatureInventory->getContainerObjectsSize() > 0)
+		{
+			ManagedReference<SceneObject*> object = creatureInventory->getContainerObject(0);
+			Locker locker(object);
+			object->destroyObjectFromWorld(true);
+		}
+
 		if (creatureInventory != nullptr && player != nullptr && player->isPlayerCreature()) {
 			LootManager* lootManager = zoneServer->getLootManager();
 

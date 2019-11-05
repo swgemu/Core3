@@ -40,7 +40,6 @@ public:
 
 			staffTools->callFunction();
 		} else if (arg == "toggledebug") {
-			printf("target: %lld\n", target);
 			ManagedReference<AiAgent*> aiAgent = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
 
 			if (aiAgent == nullptr)

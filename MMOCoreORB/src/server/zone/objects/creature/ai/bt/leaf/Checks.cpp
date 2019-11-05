@@ -114,9 +114,9 @@ template<> bool CheckFollowInWeaponRange::check(AiAgent* agent) const {
 	else if (checkVar == DataVal::SECONDARYWEAPON)
 		weao = agent->getSecondaryWeapon();
 
-	agent->info("CheckFollowInWeaponRange: dist: " + String::valueOf(dist) + " maxRange: " + String::valueOf(weao->getMaxRange()));
+	//agent->info("CheckFollowInWeaponRange: dist: " + String::valueOf(dist) + " maxRange: " + String::valueOf(weao->getMaxRange()));
 
-	return weao->getMaxRange() >= dist;
+	return weao != nullptr && weao->getMaxRange() >= dist;
 }
 
 template<> bool CheckFollowClosestIdealRange::check(AiAgent* agent) const {
@@ -140,7 +140,7 @@ template<> bool CheckFollowClosestIdealRange::check(AiAgent* agent) const {
 	else if (weao == nullptr)
 		return false;
 
-	agent->info("CheckFollowClosestIdealRange: dist: " + String::valueOf(dist) + " weao: " + String::valueOf(weao->getMaxRange()) + " otherWeao: " + String::valueOf(otherWeao->getMaxRange()));
+	//agent->info("CheckFollowClosestIdealRange: dist: " + String::valueOf(dist) + " weao: " + String::valueOf(weao->getMaxRange()) + " otherWeao: " + String::valueOf(otherWeao->getMaxRange()));
 
 	return fabs(weao->getIdealRange() - dist) <= fabs(otherWeao->getIdealRange() - dist + 1.f);
 }
