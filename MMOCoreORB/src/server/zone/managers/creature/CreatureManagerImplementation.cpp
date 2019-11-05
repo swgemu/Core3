@@ -470,6 +470,13 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 		Locker clocker(defaultWeapon, creature);
 
 		creature->transferObject(defaultWeapon, 4);
+
+		if (creature->isAiAgent()) {
+			WeaponObject* weap = defaultWeapon.castTo<WeaponObject*>();
+			AiAgent* agent = creature->asAiAgent();
+			agent->setDefaultWeapon(weap);
+			agent->setCurrentWeapon(weap);
+		}
 	}
 
 	if (creature->hasSlotDescriptor("inventory")) {

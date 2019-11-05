@@ -443,6 +443,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 		}
 
+		/* TODO - new test
+		 *
 		// Verify weapon groups exist
 		Vector<String> weapons = creature->getWeapons();
 		for (int i = 0; i < weapons.size(); i++) {
@@ -451,6 +453,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			Vector<String> group = CreatureTemplateManager::instance()->getWeapons(weaponGroup);
 			EXPECT_TRUE( group.size() > 0 ) << "Weapon group " << groupName << " from " << templateName << " was not found in weaponMap";
 		}
+		*/
 
 		// Verify conversation template exist, and the mob has converse option bit
 		uint32 convoTemplate = creature->getConversationTemplate();
@@ -472,6 +475,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( outfitGroup != nullptr ) << "Outfit group " << outfit.toCharArray() << " from " << templateName << " was not found.";
 		}
 
+		/*
 		// Verify attacks are valid commands
 		auto cam = creature->getAttacks();
 		for (int i = 0; i < cam->size(); i++) {
@@ -485,7 +489,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		if ((pvpBitmask & CreatureFlag::ATTACKABLE) && objectType == 1025) {
 			// Verify attackable npcs have attacks
 			EXPECT_TRUE( cam->size() > 0 ) << "Attackable npc " << templateName << " does not have attacks.";
-		}
+		}*/
 	}
 
 	// Test Lair Templates

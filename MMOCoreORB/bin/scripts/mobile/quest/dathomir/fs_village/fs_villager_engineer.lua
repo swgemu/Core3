@@ -31,9 +31,14 @@ fs_villager_engineer = Creature:new {
 		"object/mobile/dressed_fs_village_surveyor.iff" -- What is his proper template?
 	},
 	lootGroups = {},
-	weapons = {},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmannovice,brawlernovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(fs_villager_engineer, "fs_villager_engineer")

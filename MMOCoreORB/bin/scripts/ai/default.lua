@@ -60,16 +60,16 @@ equipDefault = {
 	{id="3588683982",	name="Selector",	pid="1893489794"},
 	{id="284029936",	name="Sequence",	pid="3588683982"},
 	{id="848281294",	name="If",	pid="284029936"},
-	{id="2143400703",	name="CheckFollowInWeaponRange",	pid="848281294",	args={condition=WEAPON}},
+	{id="2143400703",	name="CheckFollowInWeaponRange",	pid="848281294",	args={condition=PRIMARYWEAPON}},
 	{id="3507834914",	name="If",	pid="284029936"},
-	{id="1423335520",	name="CheckFollowClosestIdealRange",	pid="3507834914",	args={condition=WEAPON}},
-	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={key="stagedWeapon", val=WEAPON}},
+	{id="1423335520",	name="CheckFollowClosestIdealRange",	pid="3507834914",	args={condition=PRIMARYWEAPON}},
+	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
 	{id="3286553516",	name="Sequence",	pid="3588683982"},
 	{id="4256376058",	name="If",	pid="3286553516"},
-	{id="1599543891",	name="CheckFollowInWeaponRange",	pid="4256376058",	args={condition=DEFAULT}},
+	{id="1599543891",	name="CheckFollowInWeaponRange",	pid="4256376058",	args={condition=SECONDARYWEAPON}},
 	{id="3111019196",	name="If",	pid="3286553516"},
-	{id="3429738785",	name="CheckFollowClosestIdealRange",	pid="3111019196",	args={condition=DEFAULT}},
-	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={key="stagedWeapon", val=DEFAULT}},
+	{id="3429738785",	name="CheckFollowClosestIdealRange",	pid="3111019196",	args={condition=SECONDARYWEAPON}},
+	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
 	{id="1510007529",	name="EquipStagedWeapon",	pid="1893489794"},
 	{id="2512472344",	name="EraseBlackboard",	pid="2941044245",	args={param="stagedWeapon"}},
 	{id="4004759019",	name="EraseBlackboard",	pid="2941044245",	args={param="followRange"}}}
@@ -87,7 +87,7 @@ lookDefault = {
 	{id="1650016708",	name="If",	pid="2391667584"},
 	{id="638753146",	name="CheckProspectLOS",	pid="1650016708"},
 	{id="4076527471",	name="SetFollowState",	pid="2391667584",	args={state=WATCHING}},
-	{id="1583995406",	name="SetAlert",	pid="2391667584",	args={show=1, duration=10.0}}}
+	{id="1583995406",	name="SetAlert",	pid="2391667584",	args={duration=10.0, show=1}}}
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {
@@ -136,7 +136,7 @@ scareDefault = {
 	{id="3009279984",	name="If",	pid="9692099"},
 	{id="1391512006",	name="CheckProspectLOS",	pid="3009279984"},
 	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=64.0}},
-	{id="3135988450",	name="SetAlert",	pid="9692099",	args={show=0, duration=10.0}}}
+	{id="3135988450",	name="SetAlert",	pid="9692099",	args={duration=10.0, show=0}}}
 addAiTemplate("scareDefault", scareDefault)
 
 targetDefault = {
@@ -177,6 +177,5 @@ wanderDefault = {
 	{id="536389142",	name="WriteBlackboard",	pid="4029863740",	args={key="moveMode", val=WALK}},
 	{id="3269636266",	name="TreeSocket",	pid="4029863740",	args={slot=MOVE}},
 	{id="2038642946",	name="Wait",	pid="4029863740",	args={duration=10.0}},
-	{id="2390998747",	name="GeneratePatrol",	pid="1564905074",	args={numPoints=5, distFromHome=10.0}}}
+	{id="2390998747",	name="GeneratePatrol",	pid="1564905074",	args={distFromHome=10.0, numPoints=5}}}
 addAiTemplate("wanderDefault", wanderDefault)
-

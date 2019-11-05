@@ -30,12 +30,14 @@ greater_gulginaw = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/gulginaw_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {"creature_spit_small_yellow"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_yellow",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = {
-		{"dizzyattack",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"dizzyattack",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(greater_gulginaw, "greater_gulginaw")

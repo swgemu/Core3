@@ -44,9 +44,14 @@ crackdown_rebel_elite_sand_rat = Creature:new {
 			lootChance = 3000000
 		}
 	},
-	weapons = {"rebel_weapons_heavy"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "rebel_weapons_heavy",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_elite_sand_rat, "crackdown_rebel_elite_sand_rat")

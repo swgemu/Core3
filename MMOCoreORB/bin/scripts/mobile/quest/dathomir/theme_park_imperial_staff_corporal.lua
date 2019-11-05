@@ -29,9 +29,14 @@ theme_park_imperial_staff_corporal = Creature:new {
 
   templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
   lootGroups = {},
-  weapons = {},
+  primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
   conversationTemplate = "theme_park_nightsister_mission_target_convotemplate",
-  attacks = merge(brawlermaster,marksmanmaster)
+  
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_staff_corporal, "theme_park_imperial_staff_corporal")

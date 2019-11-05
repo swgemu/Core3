@@ -108,12 +108,11 @@ template<> bool CheckFollowInWeaponRange::check(AiAgent* agent) const {
 
 	float dist = agent->readBlackboard("followRange").get<float>();
 
-	// TODO: this logic will change when we allow for multiple weapons
 	WeaponObject* weao = nullptr;
-	if (checkVar != DataVal::DEFAULT)
-		weao = agent->getReadyWeapon();
-	if (checkVar == DataVal::DEFAULT || weao == nullptr)
-		weao = agent->getDefaultWeapon();
+	if (checkVar == DataVal::PRIMARYWEAPON)
+		weao = agent->getPrimaryWeapon();
+	else if (checkVar == DataVal::SECONDARYWEAPON)
+		weao = agent->getSecondaryWeapon();
 
 	agent->info("CheckFollowInWeaponRange: dist: " + String::valueOf(dist) + " maxRange: " + String::valueOf(weao->getMaxRange()));
 
@@ -126,15 +125,14 @@ template<> bool CheckFollowClosestIdealRange::check(AiAgent* agent) const {
 
 	float dist = agent->readBlackboard("followRange").get<float>();
 
-	// TODO: this logic will change when we allow for multiple weapons
 	WeaponObject* weao = nullptr;
 	WeaponObject* otherWeao = nullptr;
-	if (checkVar != DataVal::DEFAULT) {
-		weao = agent->getReadyWeapon();
-		otherWeao = agent->getDefaultWeapon();
-	} else {
-		weao = agent->getDefaultWeapon();
-		otherWeao = agent->getReadyWeapon();
+	if (checkVar == DataVal::PRIMARYWEAPON) {
+		weao = agent->getPrimaryWeapon();
+		otherWeao = agent->getSecondaryWeapon();
+	} else if (checkVar == DataVal::SECONDARYWEAPON) {
+		weao = agent->getSecondaryWeapon();
+		otherWeao = agent->getPrimaryWeapon();
 	}
 
 	if (otherWeao == nullptr)

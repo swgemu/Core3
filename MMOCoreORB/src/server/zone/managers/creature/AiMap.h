@@ -138,6 +138,8 @@ public:
 		lua->setGlobalInt("NPC",						DataVal::NPC							);
 		lua->setGlobalInt("TANGIBLE",					DataVal::TANGIBLE						);
 		lua->setGlobalInt("AGENT",						DataVal::AGENT							);
+		lua->setGlobalInt("PRIMARYWEAPON",				DataVal::PRIMARYWEAPON					);
+		lua->setGlobalInt("SECONDARYWEAPON",			DataVal::SECONDARYWEAPON				);
 
 		lua->setGlobalInt("OBLIVIOUS",					AiAgent::OBLIVIOUS						);
 		lua->setGlobalInt("WATCHING",					AiAgent::WATCHING						);

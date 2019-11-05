@@ -263,9 +263,19 @@ int CreatureTemplateManager::addWeapon(lua_State* L) {
 
 	LuaObject obj(L);
 	if (obj.isValidTable()) {
+		TemplateManager* templateManager = TemplateManager::instance();
+
 		Vector<String> weps;
-		for (int i = 1; i <= obj.getTableSize(); ++i)
-			weps.add(obj.getStringAt(i));
+		for (int i = 1; i <= obj.getTableSize(); ++i) {
+			String tempName = obj.getStringAt(i);
+			SharedObjectTemplate* templateData = templateManager->getTemplate(tempName.hashCode());
+			if (templateData == nullptr && tempName != "unarmed") {
+				instance()->error() << "Weapon group " << ascii << " has invalid weapon configured: " << tempName;
+				continue;
+			}
+
+			weps.add(tempName);
+		}
 
 		CreatureTemplateManager::instance()->weaponMap.put(crc, weps);
 	}

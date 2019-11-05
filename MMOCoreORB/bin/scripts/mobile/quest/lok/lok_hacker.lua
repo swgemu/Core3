@@ -29,8 +29,13 @@ lok_hacker = Creature:new {
        templates = { "object/mobile/dressed_criminal_assassin_human_female_01.iff" },
        conversationTemplate = "lokHackerConvoTemplate",
        lootGroups = {},
-       weapons = {},
-       attacks = {}
+       primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
+       
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(lok_hacker, "lok_hacker")

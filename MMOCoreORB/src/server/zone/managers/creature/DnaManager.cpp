@@ -229,7 +229,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	prototype->setElectric(creatureTemplate->getElectricity());
 	prototype->setAcid(creatureTemplate->getAcid());
 	prototype->setSaber(creatureTemplate->getLightSaber());
-	prototype->setRanged(creatureTemplate->getWeapons().size() > 0);
+	prototype->setRanged(creatureTemplate->getPrimaryWeapon() != "none");
 	prototype->setArmorRating(creatureTemplate->getArmor());
 
 	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::STUN))
@@ -251,7 +251,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER))
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
-	auto attackMap = creatureTemplate->getAttacks();
+	auto attackMap = creatureTemplate->getPrimaryAttacks();
 	if (attackMap->size() > 0) {
 		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
 		if(attackMap->size() > 1) {

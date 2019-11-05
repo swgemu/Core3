@@ -27,9 +27,14 @@ ruwan_tokai = Creature:new {
 
   templates = {"object/mobile/dressed_ruwan_tokai.iff"},
   lootGroups = {},
-  weapons = {},
+  primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
   conversationTemplate = "ruwan_tokai_mission_giver_convotemplate",
-  attacks = {}
+  
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(ruwan_tokai, "ruwan_tokai")

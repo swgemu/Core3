@@ -43,9 +43,14 @@ seasoned_jinda_warrior = Creature:new {
 			lootChance = 1700000
 		}
 	},
-	weapons = {"ewok_weapons"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "ewok_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(riflemanmaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(seasoned_jinda_warrior, "seasoned_jinda_warrior")

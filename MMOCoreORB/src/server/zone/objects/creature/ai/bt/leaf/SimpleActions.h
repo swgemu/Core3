@@ -123,8 +123,13 @@ public:
 		if (!agent->peekBlackboard("stagedWeapon"))
 			return FAILURE;
 
-		uint32 weaponType = agent->readBlackboard("stagedWeapon").get<uint32>();
-		agent->setWeapon(weaponType);
+		uint32 weapon = agent->readBlackboard("stagedWeapon").get<uint32>();
+
+		if (weapon == DataVal::PRIMARYWEAPON)
+			agent->equipPrimaryWeapon();
+		else if (weapon == DataVal::SECONDARYWEAPON)
+			agent->equipSecondaryWeapon();
+
 		return SUCCESS;
 	}
 };

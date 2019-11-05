@@ -125,7 +125,7 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 	bool allowRanged = false;
 	if (petTemplate != nullptr) {
-		if (petTemplate->getWeapons().size() > 0) {
+		if (petTemplate->getPrimaryWeapon() != petTemplate->getDefaultWeapon()) {
 			allowRanged = true;
 		}
 	}

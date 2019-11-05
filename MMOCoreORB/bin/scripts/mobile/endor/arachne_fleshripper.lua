@@ -30,12 +30,14 @@ arachne_fleshripper = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/angler_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {"creature_spit_small_toxicgreen"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_toxicgreen",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = {
-		{"strongpoison",""},
-		{"posturedownattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"strongpoison",""}, {"posturedownattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(arachne_fleshripper, "arachne_fleshripper")

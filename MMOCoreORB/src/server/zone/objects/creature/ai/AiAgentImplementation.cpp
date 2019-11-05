@@ -122,6 +122,7 @@ int AiAgentImplementation::calculateAttackMaxDamage(int level) {
 	}
 	return dmg;
 }
+
 float AiAgentImplementation::calculateAttackSpeed(int level) {
 	float speed = 3.5f - ((float)level / 100.f);
 	return speed;
@@ -159,46 +160,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		setHue(randHue);
 	}
 
-	Vector<String> weapons;
-
-	if (allowedWeapon) {
-		const Vector<String>& wepgroups = npcTemplate->getWeapons();
-
-		for (int i = 0; i < wepgroups.size(); ++i) {
-			const Vector<String>& weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
-
-			weapons.addAll(weptemps);
-		}
-	}
-
-	if (weapons.size() > 0) {
-		String& weaponToUse = weapons.get(System::random(weapons.size() - 1));
-		uint32 crc = weaponToUse.hashCode();
-
-		ManagedReference<WeaponObject*> weao = (getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
-
-		if (weao != nullptr) {
-			float mod = 1 - 0.1*weao->getArmorPiercing();
-			weao->setMinDamage(minDmg * mod);
-			weao->setMaxDamage(maxDmg * mod);
-
-			SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
-			if (weaoTemp != nullptr && weaoTemp->getPlayerRaces()->size() > 0) {
-				weao->setAttackSpeed(speed);
-			} else if (petDeed != nullptr) {
-				weao->setAttackSpeed(petDeed->getAttackSpeed());
-			}
-
-			readyWeapon = weao;
-		} else {
-			readyWeapon = nullptr;
-			error("could not create weapon " + weaponToUse);
-		}
-	} else {
-		readyWeapon = nullptr;
-	}
-
 	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
+
 	if (defaultWeapon != nullptr) {
 		// set the damage of the default weapon
 		defaultWeapon->setMinDamage(minDmg);
@@ -211,7 +174,34 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
+	uint32 primaryWeap = npcTemplate->getPrimaryWeapon().hashCode();
+
+	if (primaryWeap == STRING_HASHCODE("unarmed")) {
+		primaryWeapon = defaultWeapon;
+	} else if (primaryWeap != STRING_HASHCODE("none")) {
+		const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
+		String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
+		uint32 weaponCRC = weaponTemplate.hashCode();
+
+		primaryWeapon = createWeapon(weaponCRC, true);
+	}
+
+	uint32 secondaryWeap = npcTemplate->getSecondaryWeapon().hashCode();
+
+	if (secondaryWeap == STRING_HASHCODE("unarmed")) {
+		secondaryWeapon = defaultWeapon;
+	} else if (secondaryWeap != STRING_HASHCODE("none")) {
+		const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(npcTemplate->getSecondaryWeapon().hashCode());
+		String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
+		uint32 weaponCRC = weaponTemplate.hashCode();
+
+		secondaryWeapon = createWeapon(weaponCRC, false);
+	}
+
 	setupAttackMaps();
+
+	if (primaryWeapon != nullptr)
+		equipPrimaryWeapon();
 
 	int ham = 0;
 	baseHAM.removeAll();
@@ -344,46 +334,194 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 }
 
+WeaponObject* AiAgentImplementation::createWeapon(uint32 templateCRC, bool primaryWeapon) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return nullptr;
+
+	ObjectController* objectController = zoneServer->getObjectController();
+
+	if (objectController == nullptr)
+		return nullptr;
+
+	SceneObject* inventory = asAiAgent()->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return nullptr;
+
+	WeaponObject* newWeapon = nullptr;
+
+	if (templateCRC == STRING_HASHCODE("none")) {
+		if (primaryWeapon) {
+			newWeapon = getDefaultWeapon();
+		} else {
+			return nullptr;
+		}
+	} else if (templateCRC == STRING_HASHCODE("unarmed")) {
+		newWeapon = getDefaultWeapon();
+	} else {
+		newWeapon = (zoneServer->createObject(templateCRC, getPersistenceLevel())).castTo<WeaponObject*>();
+	}
+
+	float minDmg = npcTemplate->getDamageMin();
+	float maxDmg = npcTemplate->getDamageMax();
+	float speed = calculateAttackSpeed(level);
+	bool allowedWeapon = true;
+
+	if (petDeed != nullptr) {
+		minDmg = petDeed->getMinDamage();
+		maxDmg = petDeed->getMaxDamage();
+	}
+
+	if (newWeapon != nullptr) {
+		float mod = 1 - (0.1 * newWeapon->getArmorPiercing());
+		newWeapon->setMinDamage(minDmg * mod);
+		newWeapon->setMaxDamage(maxDmg * mod);
+
+		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(newWeapon->getObjectTemplate());
+
+		if (weaoTemp != nullptr && weaoTemp->getPlayerRaces()->size() > 0) {
+			newWeapon->setAttackSpeed(speed);
+		} else if (petDeed != nullptr) {
+			newWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		}
+
+		if (newWeapon != defaultWeapon) {
+			if (inventory->transferObject(newWeapon, -1, false, true))
+				inventory->broadcastObject(newWeapon, true);
+		}
+	}
+
+	return newWeapon;
+}
+
 void AiAgentImplementation::setupAttackMaps() {
-	const CreatureAttackMap* fullAttackMap;
+	primaryAttackMap = nullptr;
+	secondaryAttackMap = nullptr;
+	defaultAttackMap = nullptr;
+
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ObjectController* objectController = zoneServer->getObjectController();
+
+	if (objectController == nullptr)
+		return;
+
+	const CreatureAttackMap* attackMap;
+
 	if (petDeed != nullptr)
-		fullAttackMap = petDeed->getAttacks();
+		attackMap = petDeed->getAttacks();
 	else
-		fullAttackMap = npcTemplate->getAttacks();
+		attackMap = npcTemplate->getPrimaryAttacks();
 
-	ZoneServer* zoneServer;
-	ObjectController* objectController;
 	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
+	defaultAttackMap = new CreatureAttackMap();
+	primaryAttackMap = new CreatureAttackMap();
+	secondaryAttackMap = new CreatureAttackMap();
 
-	if ((zoneServer = getZoneServer()) != nullptr && (objectController = zoneServer->getObjectController()) != nullptr) {
-		attackMap = new CreatureAttackMap();
-		defaultAttackMap = new CreatureAttackMap();
+	for (int i = 0; i < attackMap->size(); i++) {
+		CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
-		for (int i = 0; i < fullAttackMap->size(); i++) {
-			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
+		if (attack == nullptr)
+			continue;
+
+		if (primaryWeapon != nullptr && (attack->getWeaponType() & primaryWeapon->getWeaponBitmask())) {
+			primaryAttackMap->add(attackMap->get(i));
+		}
+
+		if (defaultWeapon != nullptr && (attack->getWeaponType() & defaultWeapon->getWeaponBitmask())) {
+			defaultAttackMap->add(attackMap->get(i));
+		}
+	}
+
+	if (petDeed == nullptr) {
+		attackMap = npcTemplate->getSecondaryAttacks();
+
+		for (int i = 0; i < attackMap->size(); i++) {
+			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
+
 			if (attack == nullptr)
 				continue;
 
-			if (readyWeapon != nullptr && (attack->getWeaponType() & readyWeapon->getWeaponBitmask())) {
-				attackMap->add(fullAttackMap->get(i));
+			if (secondaryWeapon != nullptr && (attack->getWeaponType() & secondaryWeapon->getWeaponBitmask())) {
+				secondaryAttackMap->add(attackMap->get(i));
 
 			}
 
 			if (defaultWeapon != nullptr && (attack->getWeaponType() & defaultWeapon->getWeaponBitmask())) {
-				defaultAttackMap->add(fullAttackMap->get(i));
+				defaultAttackMap->add(attackMap->get(i));
 			}
 		}
+	}
 
-		// if we didn't get any attacks or the weapon is nullptr, drop the reference to the attack maps
-		if (attackMap->isEmpty())
-			attackMap = nullptr;
-
-		if (defaultAttackMap->isEmpty())
-			defaultAttackMap = nullptr;
-
-	} else {
-		attackMap = nullptr;
+	// if we didn't get any attacks or the weapon is nullptr, drop the reference to the attack maps
+	if (defaultAttackMap != nullptr && defaultAttackMap->isEmpty())
 		defaultAttackMap = nullptr;
+
+	if (primaryAttackMap != nullptr && primaryAttackMap->isEmpty())
+		primaryAttackMap = nullptr;
+
+	if (secondaryAttackMap != nullptr && secondaryAttackMap->isEmpty())
+		secondaryAttackMap = nullptr;
+
+	attackMap = nullptr;
+}
+
+void AiAgentImplementation::unequipWeapons() {
+	SceneObject* inventory = asAiAgent()->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return;
+
+	if (currentWeapon == defaultWeapon)
+		return;
+
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ObjectController* objectController = zoneServer->getObjectController();
+
+	if (objectController == nullptr)
+		return;
+
+	objectController->transferObject(currentWeapon, inventory, -1, true, true);
+
+	currentWeapon = defaultWeapon;
+}
+
+void AiAgentImplementation::equipPrimaryWeapon() {
+	if (primaryWeapon == nullptr || currentWeapon == primaryWeapon)
+		return;
+
+	unequipWeapons();
+
+	if (primaryWeapon == defaultWeapon) {
+		currentWeapon = defaultWeapon;
+	} else {
+		transferObject(primaryWeapon, 4, false);
+		broadcastObject(primaryWeapon, false);
+		currentWeapon = primaryWeapon;
+	}
+}
+
+void AiAgentImplementation::equipSecondaryWeapon() {
+	if (secondaryWeapon == nullptr || currentWeapon == secondaryWeapon)
+		return;
+
+	unequipWeapons();
+
+	if (secondaryWeapon == defaultWeapon) {
+		currentWeapon = defaultWeapon;
+	} else {
+		transferObject(secondaryWeapon, 4, false);
+		broadcastObject(secondaryWeapon, false);
+		currentWeapon = secondaryWeapon;
 	}
 }
 
@@ -413,16 +551,29 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	minDmg *= ratio;
 	maxDmg *= ratio;
 
-	if (readyWeapon != nullptr) {
-		float mod = 1 - 0.1*readyWeapon->getArmorPiercing();
-		readyWeapon->setMinDamage(minDmg * mod);
-		readyWeapon->setMaxDamage(maxDmg * mod);
+	if (primaryWeapon != nullptr) {
+		float mod = 1 - 0.1*primaryWeapon->getArmorPiercing();
+		primaryWeapon->setMinDamage(minDmg * mod);
+		primaryWeapon->setMaxDamage(maxDmg * mod);
 
-		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(readyWeapon->getObjectTemplate());
+		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(primaryWeapon->getObjectTemplate());
 		if (weaoTemp != nullptr && weaoTemp->getPlayerRaces()->size() > 0) {
-			readyWeapon->setAttackSpeed(speed);
+			primaryWeapon->setAttackSpeed(speed);
 		} else if (petDeed != nullptr) {
-			readyWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+			primaryWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		}
+	}
+
+	if (secondaryWeapon != nullptr) {
+		float mod = 1 - 0.1*secondaryWeapon->getArmorPiercing();
+		secondaryWeapon->setMinDamage(minDmg * mod);
+		secondaryWeapon->setMaxDamage(maxDmg * mod);
+
+		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(secondaryWeapon->getObjectTemplate());
+		if (weaoTemp != nullptr && weaoTemp->getPlayerRaces()->size() > 0) {
+			secondaryWeapon->setAttackSpeed(speed);
+		} else if (petDeed != nullptr) {
+			secondaryWeapon->setAttackSpeed(petDeed->getAttackSpeed());
 		}
 	}
 
@@ -596,8 +747,11 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("selectSpecialAttack(" + String::valueOf(attackNum) + ")", true);
 
+	const CreatureAttackMap* attackMap = getAttackMap();
+
 	if (attackMap == nullptr) {
-		info("attackMap == nullptr", true);
+		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+			info("attackMap == nullptr", true);
 		return false;
 	}
 
@@ -608,14 +762,16 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
     }
 
 	if (attackNum >= attackMap->size()) {
-		info("attackNum >= attackMap->size()", true);
+		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+			info("attackNum >= attackMap->size()", true);
         return false;
 	}
 
     String cmd = attackMap->getCommand(attackNum);
 
     if (cmd.isEmpty()) {
-    	info("cmd.isEmpty()", true);
+    	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+    		info("cmd.isEmpty()", true);
         return false;
     }
 
@@ -838,30 +994,6 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	}
 
 	return CreatureObjectImplementation::handleObjectMenuSelect(player, selectedID);
-}
-
-void AiAgentImplementation::setWeapon(const uint32 weaponType) {
-	ManagedReference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
-	WeaponObject* finalWeap = defaultWeapon;
-
-	// TODO: turn this into separate ranged and melee weapons
-	if (weaponType == static_cast<uint32>(DataVal::WEAPON))
-		finalWeap = readyWeapon;
-
-	WeaponObject* currentWeap = getWeapon();
-	if (currentWeap != finalWeap) {
-		if (currentWeap != defaultWeapon && currentWeap != nullptr) {
-			Locker locker(currentWeap, asAiAgent());
-			currentWeap->destroyObjectFromWorld(false);
-		}
-
-		if (finalWeap != nullptr && finalWeap != defaultWeapon) {
-			Locker locker(finalWeap, asAiAgent());
-
-			transferObject(finalWeap, 4, false);
-			broadcastObject(finalWeap, false);
-		}
-	}
 }
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
@@ -2680,9 +2812,7 @@ void AiAgentImplementation::setCombatState() {
 }
 
 bool AiAgentImplementation::hasRangedWeapon() {
-	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
-
-	return (defaultWeapon != nullptr && defaultWeapon->isRangedWeapon()) || (readyWeapon != nullptr && readyWeapon->isRangedWeapon());
+	return (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) || (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon());
 }
 
 bool AiAgentImplementation::getUseRanged() {

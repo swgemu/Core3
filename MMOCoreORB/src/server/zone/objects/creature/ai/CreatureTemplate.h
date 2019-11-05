@@ -82,9 +82,12 @@ protected:
 
 	LootGroupCollection lootgroups;
 
-	Vector<String> weapons;
+	String primaryWeapon;
+	String secondaryWeapon;
 
-	CreatureAttackMap* attacks;
+	CreatureAttackMap* primaryAttacks;
+	CreatureAttackMap* secondaryAttacks;
+
 	uint32 conversationTemplate;
 	uint32 optionsBitmask;
 	uint64 customAiMap;
@@ -354,12 +357,20 @@ public:
 		return &lootgroups;
 	}
 
-	inline const Vector<String>& getWeapons() const {
-		return weapons;
+	inline const String& getPrimaryWeapon() const {
+		return primaryWeapon;
 	}
 
-	inline const CreatureAttackMap* getAttacks() const {
-		return attacks;
+	inline const String& getSecondaryWeapon() const {
+		return secondaryWeapon;
+	}
+
+	inline const CreatureAttackMap* getPrimaryAttacks() const {
+		return primaryAttacks;
+	}
+
+	inline const CreatureAttackMap* getSecondaryAttacks() const {
+		return secondaryAttacks;
 	}
 
 	inline const String& getPatrolPathTemplate() const {

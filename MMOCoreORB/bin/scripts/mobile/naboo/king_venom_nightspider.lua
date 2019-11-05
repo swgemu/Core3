@@ -29,12 +29,14 @@ king_venom_nightspider = Creature:new {
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 0.65,
 	lootGroups = {},
-	weapons = {"creature_spit_small_toxicgreen"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "creature_spit_small_toxicgreen",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = {
-		{"mediumpoison",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"mediumpoison",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(king_venom_nightspider, "king_venom_nightspider")

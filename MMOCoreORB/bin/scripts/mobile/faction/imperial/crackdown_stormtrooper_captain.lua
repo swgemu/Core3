@@ -48,9 +48,14 @@ crackdown_stormtrooper_captain = Creature:new {
 			lootChance = 2800000
 		}						
 	},
-	weapons = {"stormtrooper_weapons"},
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary	primaryWeapon = "stormtrooper_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "imperialRecruiterConvoTemplate",
-	attacks = merge(riflemanmaster,carbineermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(riflemanmaster,carbineermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_captain, "crackdown_stormtrooper_captain")
