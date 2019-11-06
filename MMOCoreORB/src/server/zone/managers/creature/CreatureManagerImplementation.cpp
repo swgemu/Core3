@@ -594,13 +594,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			curWeap->destroyObjectFromWorld(true);
 		}
 
-		while (creatureInventory->getContainerObjectsSize() > 0)
-		{
-			ManagedReference<SceneObject*> object = creatureInventory->getContainerObject(0);
-			Locker locker(object);
-			object->destroyObjectFromWorld(true);
-		}
-
 		for (int j = creatureInventory->getContainerObjectsSize() - 1; j >= 0 ; --j) {
 			ManagedReference<SceneObject*> object = creatureInventory->getContainerObject(j);
 

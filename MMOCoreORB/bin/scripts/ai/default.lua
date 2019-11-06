@@ -82,8 +82,6 @@ lookDefault = {
 	{id="3119101863",	name="CheckFollowState",	pid="1241082520",	args={condition=OBLIVIOUS}},
 	{id="4062139516",	name="If",	pid="3448746212"},
 	{id="1006667864",	name="CheckFollowState",	pid="4062139516",	args={condition=PATROLLING}},
-	{id="1290124447",	name="If",	pid="2391667584"},
-	{id="4151299084",	name="CheckProspectSpeed",	pid="1290124447",	args={condition=FAST}},
 	{id="1650016708",	name="If",	pid="2391667584"},
 	{id="638753146",	name="CheckProspectLOS",	pid="1650016708"},
 	{id="4076527471",	name="SetFollowState",	pid="2391667584",	args={state=WATCHING}},
