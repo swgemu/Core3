@@ -332,6 +332,7 @@ private:
 		_REGISTERLEAF(CheckFollowState);
 		_REGISTERLEAF(CheckHasFollow);
 		_REGISTERLEAF(CheckFollowHasState);
+		_REGISTERLEAF(CheckAggroDelayPast);
 		_REGISTERLEAF(CheckProspectInRange);
 		_REGISTERLEAF(CheckFollowAggression);
 		_REGISTERLEAF(CheckProspectAggression);

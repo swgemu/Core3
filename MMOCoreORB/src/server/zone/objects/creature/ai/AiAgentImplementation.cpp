@@ -1149,7 +1149,6 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	unsigned int stateCopy = getFollowState();
 
 	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
-		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
 		if (defender->isCreatureObject() && threatMap != nullptr)
 			threatMap->addAggro(defender->asCreatureObject(), 1);

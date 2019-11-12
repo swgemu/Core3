@@ -32,6 +32,12 @@ template<> bool CheckHasFollow::check(AiAgent* agent) const {
 	return agent->getFollowObject() != nullptr;
 }
 
+template<> bool CheckAggroDelayPast::check(AiAgent* agent) const {
+	Time* delay = agent->getAggroDelay();
+
+	return delay != nullptr && delay->isPast();
+}
+
 template<> bool CheckFollowHasState::check(AiAgent* agent) const {
 	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 	if (followCopy == nullptr)
@@ -47,9 +53,9 @@ template<> bool CheckProspectInRange::check(AiAgent* agent) const {
 	if (agent->peekBlackboard("targetProspect"))
 		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-	if (checkVar > 0.f)
+	if (checkVar > 0.f) {
 		return tar != nullptr && agent->isInRange(tar, checkVar);
-	else if (tar != nullptr && agent->peekBlackboard("aggroMod")) {
+	} else if (tar != nullptr && agent->peekBlackboard("aggroMod")) {
 		float aggroMod = agent->readBlackboard("aggroMod").get<float>();
 		int radius = agent->getAggroRadius();
 		if (radius == 0)

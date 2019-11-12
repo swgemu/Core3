@@ -18,6 +18,7 @@ enum CheckType {
 	CHECK_FOLLOWSTATE,
 	CHECK_HASFOLLOW,
 	CHECK_FOLLOWHASSTATE,
+	CHECK_AGGRODELAYPAST,
 	CHECK_PROSPECTINRANGE,
 	CHECK_FOLLOWAGGRESSION,
 	CHECK_PROSPECTAGGRESSION,
@@ -103,6 +104,9 @@ template<> bool CheckHasFollow::check(AiAgent* agent) const;
 
 typedef _Check<uint64, CHECK_FOLLOWHASSTATE> CheckFollowHasState;
 template<> bool CheckFollowHasState::check(AiAgent* agent) const;
+
+typedef _Check<uint64, CHECK_AGGRODELAYPAST> CheckAggroDelayPast;
+template<> bool CheckAggroDelayPast::check(AiAgent* agent) const;
 
 typedef _Check<float, CHECK_PROSPECTINRANGE> CheckProspectInRange;
 template<> bool CheckProspectInRange::check(AiAgent* agent) const;

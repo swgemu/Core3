@@ -289,7 +289,7 @@ public:
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
-		float mod = Math::max(0.04f, Math::min(1 - (tarCreo->getLevel() - agent->getLevel()) / 20.f, 1.2f));
+		float mod = Math::max(0.3f, Math::min(1 - (tarCreo->getLevel() - agent->getLevel()) / 20.f, 1.2f));
 		agent->writeBlackboard("aggroMod", mod);
 
 		return agent->peekBlackboard("aggroMod") ? SUCCESS : FAILURE;

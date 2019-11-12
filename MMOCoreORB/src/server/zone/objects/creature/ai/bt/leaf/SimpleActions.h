@@ -441,6 +441,13 @@ public:
 			alert->addMiliTime(duration);
 		}
 
+		Time* delay = agent->getAggroDelay();
+		if (delay != nullptr) {
+			delay->updateToCurrentTime();
+			uint32 newDelay = 2500 + System::random(2000);
+			delay->addMiliTime(newDelay);
+		}
+
 		if (show)
 			agent->showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
 

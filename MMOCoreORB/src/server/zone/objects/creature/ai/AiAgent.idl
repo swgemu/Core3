@@ -148,6 +148,9 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient Time alertedTime;
+	
+	@dereferenced
+	protected transient Time aggroDelay;
 
 	protected transient AiTrackingTask trackingTask;
 
@@ -1220,6 +1223,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getAlertedTime() {
 		return alertedTime;
+	}
+	
+	@local
+	@dirty
+	public Time getAggroDelay() {
+		return aggroDelay;
 	}
 
 	public void incrementLuaCall(final string key) {
