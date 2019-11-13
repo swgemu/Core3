@@ -436,13 +436,15 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		Time* alert = agent->getAlertedTime();
-		if (alert != nullptr) {
-			alert->updateToCurrentTime();
-			alert->addMiliTime(duration);
-		}
+
+		if (alert == nullptr || !alert->isPast())
+			return FAILURE;
+
+		alert->updateToCurrentTime();
+		alert->addMiliTime(duration);
 
 		Time* delay = agent->getAggroDelay();
-		if (delay != nullptr) {
+		if (delay != nullptr && !delay->isPast()) {
 			delay->updateToCurrentTime();
 			uint32 newDelay = 2500 + System::random(2000);
 			delay->addMiliTime(newDelay);

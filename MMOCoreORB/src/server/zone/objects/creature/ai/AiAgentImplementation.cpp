@@ -189,7 +189,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 			if (primaryTemplates.size() > 0) {
 				String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
-				uint32 weaponCRC = weaponTemplate.hashCode();
+				weaponCRC = weaponTemplate.hashCode();
 			}
 		}
 
@@ -212,7 +212,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 			if (secondaryTemplates.size() > 0) {
 				String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
-				uint32 weaponCRC = weaponTemplate.hashCode();
+				weaponCRC = weaponTemplate.hashCode();
 			}
 		}
 
