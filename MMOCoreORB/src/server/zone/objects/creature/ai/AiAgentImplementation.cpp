@@ -174,28 +174,50 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	uint32 primaryWeap = npcTemplate->getPrimaryWeapon().hashCode();
+	String primaryWeap = npcTemplate->getPrimaryWeapon();
+	uint32 primaryWeapHash = primaryWeap.hashCode();
 
-	if (primaryWeap == STRING_HASHCODE("unarmed")) {
+	if (primaryWeapHash == STRING_HASHCODE("unarmed")) {
 		primaryWeapon = defaultWeapon;
-	} else if (primaryWeap != STRING_HASHCODE("none")) {
-		const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
-		String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
-		uint32 weaponCRC = weaponTemplate.hashCode();
+	} else if (primaryWeapHash != STRING_HASHCODE("none")) {
+		uint32 weaponCRC = 0;
 
-		primaryWeapon = createWeapon(weaponCRC, true);
+		if (primaryWeap.indexOf(".iff") != -1) {
+			weaponCRC = primaryWeap.hashCode();
+		} else {
+			const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
+
+			if (primaryTemplates.size() > 0) {
+				String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
+				uint32 weaponCRC = weaponTemplate.hashCode();
+			}
+		}
+
+		if (weaponCRC != 0)
+			primaryWeapon = createWeapon(weaponCRC, true);
 	}
 
-	uint32 secondaryWeap = npcTemplate->getSecondaryWeapon().hashCode();
+	String secondaryWeap = npcTemplate->getSecondaryWeapon();
+	uint32 secondaryWeapHash = secondaryWeap.hashCode();
 
-	if (secondaryWeap == STRING_HASHCODE("unarmed")) {
+	if (secondaryWeapHash == STRING_HASHCODE("unarmed")) {
 		secondaryWeapon = defaultWeapon;
-	} else if (secondaryWeap != STRING_HASHCODE("none")) {
-		const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(npcTemplate->getSecondaryWeapon().hashCode());
-		String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
-		uint32 weaponCRC = weaponTemplate.hashCode();
+	} else if (secondaryWeapHash != STRING_HASHCODE("none")) {
+		uint32 weaponCRC = 0;
 
-		secondaryWeapon = createWeapon(weaponCRC, false);
+		if (secondaryWeap.indexOf(".iff") != -1) {
+			weaponCRC = primaryWeap.hashCode();
+		} else {
+			const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(npcTemplate->getSecondaryWeapon().hashCode());
+
+			if (secondaryTemplates.size() > 0) {
+				String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
+				uint32 weaponCRC = weaponTemplate.hashCode();
+			}
+		}
+
+		if (weaponCRC != 0)
+			secondaryWeapon = createWeapon(weaponCRC, false);
 	}
 
 	setupAttackMaps();
