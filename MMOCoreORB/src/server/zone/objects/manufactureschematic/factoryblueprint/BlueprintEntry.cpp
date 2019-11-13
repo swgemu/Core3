@@ -115,6 +115,7 @@ bool BlueprintEntry::hasEnoughResources() {
 	for(int i = 0; i < matchingHopperItems.size(); ++i) {
 		TangibleObject* object = matchingHopperItems.get(i);
 
+
 		if (object == nullptr) {
 			matchingHopperItems.remove(i);
 			--i;
@@ -139,7 +140,25 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 	int count = 0;
 
 	while(matchingHopperItems.size() > 0) {
-		TangibleObject* object = matchingHopperItems.get(0);
+		int fetch = 0;
+		int count2 = 5000;
+
+		for(int i = 0; i < matchingHopperItems.size(); ++i)
+		{
+			TangibleObject* object2 = matchingHopperItems.get(i);
+			Locker locker(object2);
+
+			if (object2->isFactoryCrate()) {
+				int useCount2 = object2->getUseCount();
+
+				if ((useCount2 == 0) ||(useCount2 < count2)){
+		    	 fetch = i;
+		    	 count2 = useCount2;
+		      }
+			}
+		}
+
+		TangibleObject* object = matchingHopperItems.get(fetch);
 
 		Locker locker(object);
 
