@@ -25,6 +25,7 @@ FIND_PATH(IDLC_BIN_DIR idlc.jar
   ../../engine3/MMOEngine/lib
   ../../engine3/MMOEngine/bin
   ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/bin
+  ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib
   NO_DEFAULT_PATH
 )
 
@@ -36,6 +37,7 @@ FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
   ../../engine3/MMOEngine/src
   ../../engine3/MMOEngine/include
   ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/include
+  ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/src
   NO_DEFAULT_PATH
 )
 
@@ -101,7 +103,7 @@ ELSE (ENGINE3_FOUND)
 
     MESSAGE(STATUS "Using engine3 git submodule")
 
-    IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/utils/engine3/MMOEngine/lib/linux64/libengine3.a")
+    IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3.a")
         MESSAGE(STATUS "Initializing git submodules")
 
         EXECUTE_PROCESS(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
