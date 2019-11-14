@@ -685,7 +685,7 @@ public:
 		return false;
 	}
 
-	virtual bool isCreatureHabitatTemplate() {
+	virtual bool isCreatureHabitatTemplate() const {
 		return false;
 	}
 
@@ -737,7 +737,7 @@ public:
 		return false;
 	}
 
-	virtual bool isPlayerCreatureTemplate() {
+	virtual bool isPlayerCreatureTemplate() const {
 		return false;
 	}
 

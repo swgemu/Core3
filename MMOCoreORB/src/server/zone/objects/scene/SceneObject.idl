@@ -197,7 +197,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native void notifyLoadFromDatabase();
 
-	@dirty
+	@read
 	public abstract int getReceiverFlags() {
         	int flags = super.getReceiverFlags();
 	        if (collidableObject)
@@ -1424,19 +1424,19 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	@dirty
+	@read
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
 
 	@local
-	@dirty
+	@read
 	public ObjectMenuComponent getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
 
 	@local
-	@dirty
+	@read
 	public AttributeListComponent getAttributeListComponent() {
 		return attributeListComponent;
 	}

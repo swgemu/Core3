@@ -72,6 +72,8 @@ file(GLOB_RECURSE tests_headers "tests/*.h")
 set(core3tests_libs)
 set(gmock_libs)
 
+add_dependencies(idlobjects engine3)
+
 if(COMPILE_TESTS)
 	# Define tests
 	enable_testing()
