@@ -241,7 +241,7 @@ class QuadTreeEntry extends Observable {
 	    return receiverFlags;
 	}
 
-	@ read
+	@read
 	public abstract int getReceiverFlags() {
 	    return receiverFlags;
 	}
