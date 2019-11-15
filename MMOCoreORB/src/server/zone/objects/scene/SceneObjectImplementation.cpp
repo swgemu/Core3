@@ -190,7 +190,8 @@ void SceneObjectImplementation::createComponents() {
 		//zoneComponent->initialize(_this.getReferenceUnsafe());
 
 		if (zoneComponent == nullptr) {
-			info("zone component null \'" + zoneComponentClassName + "\' in " + templateObject->getFullTemplateString());
+			info() << "zone component null \'" << zoneComponentClassName << "\' in " <<
+			       	templateObject->getFullTemplateString();
 		}
 
 		createObjectMenuComponent();
@@ -200,7 +201,7 @@ void SceneObjectImplementation::createComponents() {
 			attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
 
 			if (attributeListComponent == nullptr) {
-				info("attributeList component null for " + templateObject->getFullTemplateString());
+				info() << "attributeList component null for " << templateObject->getFullTemplateString();
 			}
 		}
 
@@ -1557,13 +1558,15 @@ SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObserv
 	return observerEventMap.getObservers(eventType);
 }
 
-bool SceneObjectImplementation::isInWater() {
-	if (getZoneUnsafe() == nullptr) {
+bool SceneObjectImplementation::isInWater() const {
+	auto zone = getZoneUnsafe();
+
+	if (zone == nullptr) {
 		error("Zone is nullptr SceneObjectImplementation::isInWater");
 		return false;
 	}
 
-	ManagedReference<PlanetManager*> planetManager = getZoneUnsafe()->getPlanetManager();
+	auto planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
 		error("Unable to get PlanetManager SceneObjectImplementation::isInWater");
@@ -1589,7 +1592,7 @@ bool SceneObjectImplementation::containsNoTradeObjectRecursive() {
 	return false;
 }
 
-String SceneObjectImplementation::getDisplayedName() {
+String SceneObjectImplementation::getDisplayedName() const {
 	if (!customName.isEmpty())
 		return customName.toString();
 
@@ -1760,7 +1763,7 @@ int SceneObjectImplementation::getArrangementDescriptorSize() const {
 	return templateObject->getArrangementDescriptors()->size();
 }
 
-bool SceneObjectImplementation::isDataPad() {
+bool SceneObjectImplementation::isDataPad() const {
 	return templateObject->getFullTemplateString().contains("datapad");
 }
 

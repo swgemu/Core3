@@ -1016,7 +1016,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return direction.getW();
 	}
 
-	@dirty
 	@local
 	@read
 	public native final Quaternion getDirection();
@@ -1052,8 +1051,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return objectName.getStringID();
 	}
 
-	@local
-	@dirty
+	@read
 	public abstract string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
 	}
@@ -2087,16 +2085,16 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native abstract void initializeChildObject(SceneObject controllerObject);
 
-	@dirty
+	@read
 	public native boolean isInWater();
 
 	@dirty
 	public native boolean containsNoTradeObjectRecursive();
 
-	@dirty
+	@read
 	public native string getDisplayedName();
 
-	@ready
+	@read
 	public boolean doSendToClient() {
 		return sendToClient;
 	}
@@ -2140,7 +2138,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return false;
 	}
 
-	@dirty
+	@read
 	public native boolean isDataPad();
 
 	@dirty

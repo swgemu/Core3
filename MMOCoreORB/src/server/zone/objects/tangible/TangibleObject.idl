@@ -341,8 +341,9 @@ class TangibleObject extends SceneObject {
 	 * @return returns true if SceneObject defender exists in the defender vector
 	 */
 	@preLocked
-	@dirty
-	public boolean hasDefender(SceneObject defender) {
+	@local
+	@read
+	public boolean hasDefender(final SceneObject defender) {
 		for (int i = 0; i < defenderList.size(); ++i) {
 			if (defenderList.get(i) == defender)
 				return true;

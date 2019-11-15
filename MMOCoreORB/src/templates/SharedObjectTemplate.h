@@ -577,7 +577,7 @@ public:
 		return false;
 	}
 
-	virtual bool isSharedTangibleObjectTemplate() {
+	virtual bool isSharedTangibleObjectTemplate() const {
 		return false;
 	}
 

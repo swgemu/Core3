@@ -385,7 +385,7 @@ public:
 		body << "Total # of items:\t" << auctionsMap->getPlayerItemCount(target) << endl << endl;
 		body << "Vendors:" << endl;
 
-		SortedVector<unsigned long long>* ownedVendors = targetGhost->getOwnedVendors();
+		const SortedVector<unsigned long long>* ownedVendors = targetGhost->getOwnedVendors();
 		for (int i = 0; i < ownedVendors->size(); i++) {
 			ManagedReference<SceneObject*> vendor = creature->getZoneServer()->getObject(ownedVendors->elementAt(i));
 

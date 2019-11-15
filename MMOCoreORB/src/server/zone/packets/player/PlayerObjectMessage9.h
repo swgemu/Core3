@@ -14,7 +14,7 @@ public:
 	PlayerObjectMessage9(PlayerObjectImplementation* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
-		AbilityList* skills = play->getAbilityList();
+		const AbilityList* skills = play->getAbilityList();
 		skills->insertToMessage(this);
 
 		// crafting states
@@ -25,7 +25,7 @@ public:
 		insertLong(0);
 
 		// datapad draft schematics
-		DeltaVector<ManagedReference<DraftSchematic* > >* schematics = play->getSchematics();
+		const DeltaVector<ManagedReference<DraftSchematic* > >* schematics = play->getSchematics();
 		schematics->insertToMessage(this);
 
 		// crafting?

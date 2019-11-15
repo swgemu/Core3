@@ -582,8 +582,7 @@ void ServerCore::initialize() {
 				if (zonePort == 0) {
 					const String query = "SELECT port FROM galaxy WHERE galaxy_id = "
 								   + String::valueOf(galaxyID);
-					Reference < ResultSet * > result =
-							database->instance()->executeQuery(query);
+					UniqueReference<ResultSet*> result(database->instance()->executeQuery(query));
 
 					if (result != nullptr && result->next()) {
 						zonePort = result->getInt(0);
@@ -593,7 +592,7 @@ void ServerCore::initialize() {
 				database->instance()->executeStatement(
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
 						+ String::valueOf(galaxyID));
-			} catch (DatabaseException &e) {
+			} catch (const DatabaseException &e) {
 				fatal(e.getMessage());
 			}
 

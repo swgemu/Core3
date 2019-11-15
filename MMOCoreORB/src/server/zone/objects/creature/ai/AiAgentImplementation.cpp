@@ -2856,8 +2856,7 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
 }
 
-bool AiAgentImplementation::isEventMob() {
-
+bool AiAgentImplementation::isEventMob() const {
 	if (getDisplayedName().contains(" (event)"))
 		return true;
 
