@@ -526,7 +526,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
@@ -1082,7 +1082,6 @@ Zone* SceneObjectImplementation::getZone() {
 		return zone;
 	}
 }
-
 
 Zone* SceneObjectImplementation::getZoneUnsafe() const {
 	auto root = const_cast<SceneObjectImplementation*>(this)->getRootParentUnsafe();

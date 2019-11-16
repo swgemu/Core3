@@ -25,7 +25,7 @@ public:
 
 	}
 
-	void readObject(LuaObject* templateData) {
+	void readObject(LuaObject* templateData) override {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		toolType = templateData->getIntField("toolType");
@@ -42,23 +42,23 @@ public:
 		tabList.pop();
 	}
 
-	int getToolType() {
+	int getToolType() const {
 		return toolType;
 	}
 
-	int getComplexityLevel() {
+	int getComplexityLevel() const {
 		return complexityLevel;
 	}
 
-	int getForceCriticalAssembly() {
+	int getForceCriticalAssembly() const {
 		return forceCritAssembly;
 	}
 
-	int getForceCriticalExperiment() {
+	int getForceCriticalExperiment() const {
 		return forceCritExperiment;
 	}
 
-	Vector<uint32> getTabs() {
+	const Vector<uint32>& getTabs() const {
 		return tabs;
 	}
 

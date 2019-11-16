@@ -1142,7 +1142,7 @@ bool TangibleObjectImplementation::isDisabled() const {
 
 bool TangibleObjectImplementation::isInNavMesh() {
 	for (int i = 0; i < activeAreas.size(); ++i) {
-		auto& area = activeAreas.get(i);
+		const auto& area = activeAreas.get(i);
 		if (area->isNavArea())
 			return true;
 	}

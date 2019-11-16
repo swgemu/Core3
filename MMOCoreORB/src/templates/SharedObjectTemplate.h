@@ -689,7 +689,7 @@ public:
 		return false;
 	}
 
-	virtual bool isRepairToolTemplate() {
+	virtual bool isRepairToolTemplate() const {
 		return false;
 	}
 
@@ -701,7 +701,7 @@ public:
 		return false;
 	}
 
-	virtual bool isRecycleToolTemplate() {
+	virtual bool isRecycleToolTemplate() const {
 	    	return false;
 	}
 
@@ -741,7 +741,7 @@ public:
 		return false;
 	}
 
-	virtual bool isCraftingStationTemplate() {
+	virtual bool isCraftingStationTemplate() const {
 		return false;
 	}
 
