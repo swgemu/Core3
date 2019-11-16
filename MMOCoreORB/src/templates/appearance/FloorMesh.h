@@ -25,10 +25,12 @@ public:
 		this->triangleID = triangleID;
 		this->edgeID = edgeID;
 	}
+
 	EdgeID() {
 		triangleID = -1;
 		edgeID = -1;
 	}
+
 	EdgeID(const EdgeID& edge) {
 		triangleID = edge.triangleID;
 		edgeID = edge.edgeID;

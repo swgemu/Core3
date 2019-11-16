@@ -102,7 +102,7 @@ int MySqlDatabase::createDatabaseThread() {
 void MySqlDatabase::connect(const String& dbname, const String& user, const String& passw, int port) {
 	Locker locker(this);
 
-	info(true) << "connecting to " << host << "...";
+	info(true) << "connecting to " << host << ":" << port << "...";
 
 	static int databaseThread = createDatabaseThread();
 

@@ -23,9 +23,9 @@ namespace zone {
 	class ObjectManager : public DOBObjectManager, public Singleton<ObjectManager>, public Object {
 		Reference<ZoneProcessServer*> server;
 
-		TemplateManager* templateManager;
+		TemplateManager* templateManager = nullptr;
 
-		int galaxyId;
+		int galaxyId = 0;
 		Reference<ResultSet*> charactersSaved;
 
 		AtomicInteger saveCounter;
