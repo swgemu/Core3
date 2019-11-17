@@ -151,8 +151,9 @@ void ServerCore::registerConsoleCommmands() {
 	});
 
 	consoleCommands.put("save", [this](const String& arguments) -> CommandResult {
-		ObjectManager::instance()->createBackup();
-		//ObjectDatabaseManager::instance()->checkpoint();
+		bool forceFull = !arguments.contains("delta");
+
+		ObjectManager::instance()->createBackup(forceFull);
 
 		return SUCCESS;
 	});
@@ -739,7 +740,7 @@ void ServerCore::shutdown() {
 
 	Thread::sleep(5000);
 
-	objectManager->createBackup();
+	objectManager->createBackup(true);
 
 	while (objectManager->isObjectUpdateInProcess())
 		Thread::sleep(500);
