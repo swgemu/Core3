@@ -322,7 +322,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 		sendContainerObjectsTo(player, forceLoadContainer);
 
 		sendSlottedObjectsTo(player);
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
@@ -501,14 +501,13 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
-
 	AttributeListMessage* alm = new AttributeListMessage(asSceneObject());
 
 	try {
 
 		attributeListComponent->fillAttributeList(alm, object, asSceneObject());
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 
@@ -578,7 +577,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 }
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
@@ -633,7 +632,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
 		delete message;
@@ -711,7 +710,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	static const auto clearMessages = [](auto messages) {
 		messages->forEach([](auto message) { delete message; });
@@ -804,7 +803,9 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
-	if (getZoneUnsafe() == nullptr)
+	auto zone = getZoneUnsafe();
+
+	if (zone == nullptr)
 		return 0;
 
 	int numberOfObjects = 0;
