@@ -799,24 +799,279 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int ma
 	String file;
 	uint32 type = getGameObjectType();
 
-	if(type & SceneObjectType::ARMOR)
+   // hexadecimal numbers are from src/zone/objects/scene/SceneObjectType.h
+
+	switch (type)
+	{
+	case 0x101: // body armor
+	{
 		file = "object/factory/factory_crate_armor.iff";
-	else if(type == SceneObjectType::CHEMICAL || type == SceneObjectType::PHARMACEUTICAL || type == SceneObjectType::PETMEDECINE)
-		file = "object/factory/factory_crate_chemicals.iff";
-	else if(type & SceneObjectType::CLOTHING)
-		file = "object/factory/factory_crate_clothing.iff";
-	else if(type == SceneObjectType::ELECTRONICS)
-		file = "object/factory/factory_crate_electronics.iff";
-	else if(type == SceneObjectType::FOOD || type == SceneObjectType::DRINK)
+		break;
+	}
+	case 0x102: // head armor
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x104: // leg armor
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x105: // arm armor
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x106: // hand armor
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x107: // foot armor
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x108: // shield generator
+	{
+		file = "object/factory/factory_crate_armor.iff";
+		break;
+	}
+	case 0x200A: // food
+	{
 		file = "object/factory/factory_crate_food.iff";
-	else if(type == SceneObjectType::FURNITURE)
+		break;
+	}
+	case 0x200B: // furniture
+	{
 		file = "object/factory/factory_crate_furniture.iff";
-	else if(type & SceneObjectType::INSTALLATION)
-		file = "object/factory/factory_crate_installation.iff";
-	else if(type & SceneObjectType::WEAPON)
+		break;
+	}
+	case 0x2018: // drink
+	{
+		file = "object/factory/factory_crate_food.iff";
+		break;
+	}
+	case 0x201B: // pet  medicine
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x202C://stimpack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x202D://ranged stimpack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x202E://enhance pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x202F://cure pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x2030://dot pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x2031://wound pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x2032://state pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x2033://revive pack
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x20001:// melee weapon
+	{
 		file = "object/factory/factory_crate_weapon.iff";
-	else
+		break;
+	}
+	case 0x20002://ranged weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20003:// thrown weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20004:// heavy weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20006:// special heavy weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20007:// one hand melee weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20008:// two hand melee weapon
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x20009:// polearm
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x2000A:// pistol
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x2000B:// carbine
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x2000C:// rifle
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x40002://chemistry component
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x40004://droid component
+	{
+		file = "object/factory/factory_crate_electronics.iff";
+		break;
+	}
+	case 0x40005://electronics component
+	{
+		file = "object/factory/factory_crate_electronics.iff";
+		break;
+	}
+	case 0x40006://munition component
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}
+	case 0x40007: //structure component
+	{
+	   file = "object/factory/factory_crate_installation.iff";
+	   break;
+	}
+/*	case 0x40008://melee weapon component
+		{
+			file = "object/factory/factory_crate_weapon.iff";
+			break;
+		}
+	case 0x40009://ranged weapon component
+	{
+		file = "object/factory/factory_crate_weapon.iff";
+		break;
+	}	*/
+
+	case 0x4000A: //tissue component
+	{
+		file = "object/factory/factory_crate_chemicals.iff";
+		break;
+	}
+	case 0x1000003: //body suit
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000005: //cloak
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000006: //foot wear
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000007: //dress
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000008: //handwear
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000009: //eyewear
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000A: //headwear
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000B: //jacket
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000C: //pants
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000D: //robe
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000E: //shirt
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x100000F: //vest
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000010: //wookie garb
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	case 0x1000012: //skirt
+	{
+		file = "object/factory/factory_crate_clothing.iff";
+        break;
+	}
+	default:
+	{
 		file = "object/factory/factory_crate_generic_items.iff";
+		break;
+	}
+	}
+
+
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
