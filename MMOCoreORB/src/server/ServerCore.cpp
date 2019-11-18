@@ -681,7 +681,7 @@ void ServerCore::shutdown() {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	while (objectManager->isObjectUpdateInProcess())
+	while (objectManager->isObjectUpdateInProgress())
 		Thread::sleep(500);
 
 	objectManager->cancelDeleteCharactersTask();
@@ -742,7 +742,7 @@ void ServerCore::shutdown() {
 
 	objectManager->createBackup(true);
 
-	while (objectManager->isObjectUpdateInProcess())
+	while (objectManager->isObjectUpdateInProgress())
 		Thread::sleep(500);
 
 	info("database backup done", true);

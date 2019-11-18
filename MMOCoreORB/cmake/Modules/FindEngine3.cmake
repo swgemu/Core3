@@ -103,7 +103,7 @@ ELSE (ENGINE3_FOUND)
 
     MESSAGE(STATUS "Using engine3 git submodule")
 
-    IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/utils/engine3/MMOEngine/lib/unix/libengine3.a")
+    IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/utils/engine3/MMOEngine")
         MESSAGE(STATUS "Initializing git submodules")
 
         EXECUTE_PROCESS(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
