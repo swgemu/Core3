@@ -52,9 +52,9 @@ bool TerrainManager::initialize(const String& terrainFile) {
 }
 
 /**
- *  	|----------------| x1,y1
- *  	|----------------| <- stepping
- *	    |----------------|
+ *	|----------------| x1,y1
+ *	|----------------| <- stepping
+ *	|----------------|
  *  	|----------------|
  *x0,y0 |----------------|
  */
@@ -164,11 +164,8 @@ float TerrainManager::getCachedHeight(float x, float y) {
 
 float TerrainManager::getHeight(float x, float y) {
 	if (x <= min || x >= max || y <= min || y >= max) {
-		StringBuffer message;
-		message << "position  (" << x << ", " << y << ") out of planet/cache bounds: ["
+		warning() << "position  (" << x << ", " << y << ") out of planet/cache bounds: ["
 				<< min << ", " << max << "]";
-
-		warning(message.toString());
 
 		StackTrace::printStackTrace();
 

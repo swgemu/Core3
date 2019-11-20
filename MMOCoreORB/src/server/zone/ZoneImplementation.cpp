@@ -119,7 +119,7 @@ void ZoneImplementation::clearZone() {
 	creatureManager->unloadSpawnAreas();
 
 	HashTable<uint64, ManagedReference<SceneObject*> > tbl;
-	tbl.copyFrom(objectMap->getMap());
+	tbl.copyFrom(*objectMap->getMap());
 
 	zonelocker.release();
 
