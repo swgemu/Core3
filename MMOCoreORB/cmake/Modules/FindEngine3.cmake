@@ -45,19 +45,19 @@ SET(ENGINE3_NAMES engine3)
 
 FIND_LIBRARY(ENGINE3_LIBRARY
 	NAMES ${ENGINE3_NAMES}
-	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix ../MMOEngine/lib/osx)
+	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../MMOEngine/lib/linux64 ../../engine3/MMOEngine/lib/unix ../MMOEngine/lib/osx)
 
 FIND_LIBRARY(ENGINE3_ASAN_LIBRARY
 	NAMES engine3-asan
-	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/MMOEngine/lib/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix  ../MMOEngine/lib/linux64 ../../engine3/MMOEngine/lib/unix)
 
 FIND_LIBRARY(ENGINE3_TSAN_LIBRARY
 	NAMES engine3-tsan
-	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix  ../MMOEngine/lib/linux64 ../../engine3/MMOEngine/lib/unix)
 
 FIND_LIBRARY(ENGINE3_UBSAN_LIBRARY
 	NAMES engine3-ubsan
-	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix ../../engine3/MMOEngine/lib/unix)
+	PATHS ${CMAKE_CURRENT_SOURCE_DIR_DIR}/utils/engine3/unix /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix  ../MMOEngine/lib/linux64 ../../engine3/MMOEngine/lib/unix)
 
 IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY AND ENGINE3_ASAN_LIBRARY AND ENGINE3_TSAN_LIBRARY AND ENGINE3_UBSAN_LIBRARY)
   IF (ENABLE_ASAN)
@@ -73,6 +73,14 @@ IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY AND ENGINE3_ASAN_LI
   SET(IDL_DIRECTIVES -outdir autogen -cp ${ENGINE3_INCLUDE_DIR})
 
   ADD_LIBRARY(engine3 STATIC IMPORTED GLOBAL)
+
+  SET_TARGET_PROPERTIES(engine3 PROPERTIES
+	  IMPORTED_LOCATION_DEBUG ${ENGINE3_LIBRARIES}
+	  IMPORTED_INCLUDE_DIRECTORIES ${ENGINE3_INCLUDE_DIR}
+	  IMPORTED_LOCATION_RELEASE ${ENGINE3_LIBRARIES}
+	  IMPORTED_LOCATION ${ENGINE3_LIBRARIES}
+	  INTERFACE_INCLUDE_DIRECTORIES ${ENGINE3_INCLUDE_DIR}
+	  )
 ELSE ()
   SET(ENGINE3_FOUND FALSE)
   SET(ENGINE3_LIBRARIES)
