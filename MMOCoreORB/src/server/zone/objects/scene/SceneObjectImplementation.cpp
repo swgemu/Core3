@@ -190,7 +190,8 @@ void SceneObjectImplementation::createComponents() {
 		//zoneComponent->initialize(_this.getReferenceUnsafe());
 
 		if (zoneComponent == nullptr) {
-			info("zone component null \'" + zoneComponentClassName + "\' in " + templateObject->getFullTemplateString());
+			info() << "zone component \'" << zoneComponentClassName << "\' null in " <<
+			       	templateObject->getFullTemplateString();
 		}
 
 		createObjectMenuComponent();
@@ -200,7 +201,7 @@ void SceneObjectImplementation::createComponents() {
 			attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
 
 			if (attributeListComponent == nullptr) {
-				info("attributeList component null for " + templateObject->getFullTemplateString());
+				info() << "attributeList component null for " << templateObject->getFullTemplateString();
 			}
 		}
 
@@ -321,7 +322,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 		sendContainerObjectsTo(player, forceLoadContainer);
 
 		sendSlottedObjectsTo(player);
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
@@ -500,14 +501,13 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
-
 	AttributeListMessage* alm = new AttributeListMessage(asSceneObject());
 
 	try {
 
 		attributeListComponent->fillAttributeList(alm, object, asSceneObject());
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 
@@ -525,7 +525,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
@@ -577,7 +577,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 }
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
@@ -632,7 +632,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
 		delete message;
@@ -710,7 +710,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
-	ZoneServer* zoneServer = getZoneServer();
+	const ZoneServer* zoneServer = getZoneServer();
 
 	static const auto clearMessages = [](auto messages) {
 		messages->forEach([](auto message) { delete message; });
@@ -803,7 +803,9 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
-	if (getZoneUnsafe() == nullptr)
+	auto zone = getZoneUnsafe();
+
+	if (zone == nullptr)
 		return 0;
 
 	int numberOfObjects = 0;
@@ -1082,7 +1084,6 @@ Zone* SceneObjectImplementation::getZone() {
 	}
 }
 
-
 Zone* SceneObjectImplementation::getZoneUnsafe() const {
 	auto root = const_cast<SceneObjectImplementation*>(this)->getRootParentUnsafe();
 
@@ -1214,7 +1215,7 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	return position;
 }
 
-Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) {
+Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) const {
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + (M_PI / 2) - direction.getRadians();
 
@@ -1557,13 +1558,15 @@ SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObserv
 	return observerEventMap.getObservers(eventType);
 }
 
-bool SceneObjectImplementation::isInWater() {
-	if (getZoneUnsafe() == nullptr) {
+bool SceneObjectImplementation::isInWater() const {
+	auto zone = getZoneUnsafe();
+
+	if (zone == nullptr) {
 		error("Zone is nullptr SceneObjectImplementation::isInWater");
 		return false;
 	}
 
-	ManagedReference<PlanetManager*> planetManager = getZoneUnsafe()->getPlanetManager();
+	auto planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
 		error("Unable to get PlanetManager SceneObjectImplementation::isInWater");
@@ -1589,7 +1592,7 @@ bool SceneObjectImplementation::containsNoTradeObjectRecursive() {
 	return false;
 }
 
-String SceneObjectImplementation::getDisplayedName() {
+String SceneObjectImplementation::getDisplayedName() const {
 	if (!customName.isEmpty())
 		return customName.toString();
 
@@ -1760,7 +1763,7 @@ int SceneObjectImplementation::getArrangementDescriptorSize() const {
 	return templateObject->getArrangementDescriptors()->size();
 }
 
-bool SceneObjectImplementation::isDataPad() {
+bool SceneObjectImplementation::isDataPad() const {
 	return templateObject->getFullTemplateString().contains("datapad");
 }
 

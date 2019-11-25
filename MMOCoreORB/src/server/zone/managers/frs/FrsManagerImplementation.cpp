@@ -65,9 +65,13 @@ void FrsManagerImplementation::initialize() {
 }
 
 void FrsManagerImplementation::cancelTasks() {
-	voteStatusTask->cancel();
+	if (voteStatusTask) {
+		voteStatusTask->cancel();
+	}
 
-	rankMaintenanceTask->cancel();
+	if (rankMaintenanceTask) {
+		rankMaintenanceTask->cancel();
+	}
 }
 
 void FrsManagerImplementation::loadFrsData() {

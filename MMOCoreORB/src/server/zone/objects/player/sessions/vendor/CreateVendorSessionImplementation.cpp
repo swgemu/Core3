@@ -43,7 +43,7 @@ int CreateVendorSessionImplementation::initializeSession() {
 		return 0;
 	}
 
-	SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
+	const SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
 	for (int i = 0; i < ownedVendors->size(); i++) {
 		ManagedReference<SceneObject*> vendor = player->getZoneServer()->getObject(ownedVendors->elementAt(i));
 

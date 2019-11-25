@@ -44,10 +44,10 @@ public:
 			sui->setPromptTitle("@performance:available_songs"); // Available Songs
 			sui->setPromptText("@performance:select_song"); // Select a song to play.
 
-			AbilityList* list = ghost->getAbilityList();
+			const AbilityList* list = ghost->getAbilityList();
 
 			for (int i = 0; i < list->size(); ++i) {
-				Ability* ability = list->get(i);
+				const Ability* ability = list->get(i);
 
 				String abilityName = ability->getAbilityName();
 

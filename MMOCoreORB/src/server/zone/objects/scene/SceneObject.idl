@@ -197,7 +197,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native void notifyLoadFromDatabase();
 
-	@dirty
+	@read
 	public abstract int getReceiverFlags() {
         	int flags = super.getReceiverFlags();
 	        if (collidableObject)
@@ -976,7 +976,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	@dereferenced
-	@dirty
+	@read
 	public native Vector3 getCoordinate(float distance, float angleDegrees, boolean includeZ);
 
 	@local
@@ -1022,7 +1022,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return direction.getW();
 	}
 
-	@dirty
 	@local
 	@read
 	public native final Quaternion getDirection();
@@ -1058,8 +1057,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return objectName.getStringID();
 	}
 
-	@local
-	@dirty
+	@read
 	public abstract string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
 	}
@@ -1433,19 +1431,19 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@local
-	@dirty
+	@read
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
 
 	@local
-	@dirty
+	@read
 	public ObjectMenuComponent getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
 
 	@local
-	@dirty
+	@read
 	public AttributeListComponent getAttributeListComponent() {
 		return attributeListComponent;
 	}
@@ -2099,16 +2097,16 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native abstract void initializeChildObject(SceneObject controllerObject);
 
-	@dirty
+	@read
 	public native boolean isInWater();
 
 	@dirty
 	public native boolean containsNoTradeObjectRecursive();
 
-	@dirty
+	@read
 	public native string getDisplayedName();
 
-	@ready
+	@read
 	public boolean doSendToClient() {
 		return sendToClient;
 	}
@@ -2152,7 +2150,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return false;
 	}
 
-	@dirty
+	@read
 	public native boolean isDataPad();
 
 	@mock

@@ -1,4 +1,3 @@
 [submodule "MMOCoreORB/utils/engine3"]
 	path = MMOCoreORB/utils/engine3
-	url = http://review.swgemu.com/PublicEngine
-	branch = master
+	url = https://github.com/swgemu/engine3.git

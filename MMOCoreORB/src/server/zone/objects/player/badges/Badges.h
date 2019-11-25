@@ -152,9 +152,7 @@ public:
 
 	}
 
-
-
-	bool hasBadge(int badgeindex) {
+	bool hasBadge(int badgeindex) const {
 		int bitmaskNumber = badgeindex >> 5;
 
 		if (bitmaskNumber > 4 || bitmaskNumber < 0) {
@@ -166,11 +164,9 @@ public:
 		uint32 bit = badgeindex % 32;
 		uint32 value = 1 << bit;
 
-		rlock();
+		ReadLocker locker(this);
 
 		bool res = badgeBitmask[bitmaskNumber] & value;
-
-		runlock();
 
 		return res;
 	}
@@ -187,7 +183,7 @@ public:
 		badgeBitmask[index] = bitmask;
 	}
 
-	uint32 getBitmask(int index) {
+	uint32 getBitmask(int index) const {
 		uint32 res = 0;
 
 		if (index > 4 || index < 0) {
@@ -196,11 +192,9 @@ public:
 			return res;
 		}
 
-		rlock();
+		ReadLocker locker(this);
 
 		res = badgeBitmask[index];
-
-		runlock();
 
 		return res;
 	}
@@ -214,22 +208,18 @@ public:
 		badgeTypeCounts[index] = value;
 	}
 
-	uint8 getTypeCount(uint8 type) {
-		rlock();
+	uint8 getTypeCount(uint8 type) const {
+		ReadLocker locker(this);
 
 		uint8 res = badgeTypeCounts[type];
-
-		runlock();
 
 		return res;
 	}
 
-	uint8 getNumBadges() {
-		rlock();
+	uint8 getNumBadges() const {
+		ReadLocker locker(this);
 
 		uint8 res = badgeTotal;
-
-		runlock();
 
 		return res;
 	}

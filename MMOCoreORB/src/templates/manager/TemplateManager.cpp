@@ -318,7 +318,7 @@ PaletteTemplate* TemplateManager::getPaletteTemplate(const String& fileName) {
 
 	try {
 		palette->readObject(stream);
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error("could not parse palette template: " + String(fileName));
 		error(e.getMessage());
 
@@ -373,7 +373,7 @@ void TemplateManager::loadPlanetMapCategories() {
 		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
 	}
 
-	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories.");
+	info() << "Loaded " << planetMapCategoryList.size() << " planet map categories.";
 }
 
 void TemplateManager::loadLuaTemplates() {
@@ -389,33 +389,33 @@ void TemplateManager::loadLuaTemplates() {
 
 		if (!val)
 			ERROR_CODE = LOAD_LUA_TEMPLATE_ERROR;
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 
 		ERROR_CODE = LOAD_LUA_TEMPLATE_ERROR;
 	}
 
-	printf("\n");
+	System::out << endl;
 	info("Finished loading object templates", true);
 
-	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded");
-	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded");
-	info(String::valueOf(structureFootprints.size()) + " structure footprints.");
+	info() << portalLayoutMap->size() << " portal layouts loaded";
+	info() << floorMeshMap->size() << " floor meshes loaded";
+	info() << structureFootprints.size() << " structure footprints.";
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = nullptr;
 }
 
 void TemplateManager::loadTreArchive() {
-	String path = ConfigManager::instance()->getTrePath();
+	const auto& path = ConfigManager::instance()->getTrePath();
 
 	if (path.length() <= 1) {
 		ERROR_CODE = NO_TRE_PATH;
 		return;
 	}
 
-	Vector<String> treFilesToLoad = ConfigManager::instance()->getTreFiles();
+	const auto& treFilesToLoad = ConfigManager::instance()->getTreFiles();
 
 	if (treFilesToLoad.size() == 0) {
 		ERROR_CODE = NO_TRE_FILES;
@@ -427,26 +427,6 @@ void TemplateManager::loadTreArchive() {
 	if (res != 0) {
 		ERROR_CODE = LOAD_TRES_ERROR;
 	}
-
-/*	info("Loading TRE archives...", true);
-
-
-
-	treeDirectory = new TreeArchive();
-
-	int j = 0;
-
-	for (int i = 0; i < treFilesToLoad.size(); ++i) {
-		String file = treFilesToLoad.get(i);
-
-		String fullPath = path + "/";
-		fullPath += file;
-
-		treeDirectory->unpackFile(fullPath);
-	}
-
-
-	info("Finished loading TRE archives.", true);*/
 }
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
@@ -792,11 +772,11 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_IMPERIAL", CloningBuildingObjectTemplate::FACTION_IMPERIAL);
 }
 
-String TemplateManager::getTemplateFile(uint32 key) const {
+const String& TemplateManager::getTemplateFile(uint32 key) const {
 	SharedObjectTemplate* templateData = templateCRCMap->get(key);
 
 	if (templateData == nullptr) {
-		String ascii = clientTemplateCRCMap->get(key);
+		const String& ascii = clientTemplateCRCMap->get(key);
 
 		if (ascii.isEmpty())
 			throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));

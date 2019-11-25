@@ -30,8 +30,6 @@ if(BUILD_IDL)
 		string(REGEX REPLACE ".+\/src\/" "" idl_f ${idl})
 		string(CONCAT idl_b "src/" ${idl_f})
 
-		get_filename_component(idl_we ${idl} NAME_WE)
-
 		add_custom_command(OUTPUT "${autogen_cpp}" #"${autogen_h}"
 			COMMAND ${Java_JAVA_EXECUTABLE} ${IDLC_JAVA_ARGS} ${IDL_DIRECTIVES} -silence -rbcpp -sd src ${idl_f}
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -74,6 +72,8 @@ file(GLOB_RECURSE tests_headers "tests/*.h")
 set(core3tests_libs)
 set(gmock_libs)
 
+add_dependencies(idlobjects engine3)
+
 if(COMPILE_TESTS)
 	# Define tests
 	enable_testing()
@@ -85,7 +85,6 @@ if(COMPILE_TESTS)
 	set(core3tests_libs core3tests)
 	set(gmock_libs gmock)
 endif(COMPILE_TESTS)
-
 
 # Create core3 binary
 add_executable(core3 main.cpp server/ServerCore.cpp ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers})
@@ -124,8 +123,12 @@ target_link_libraries(core3
 	${whole_archive_start}
 	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 	${whole_archive_end}
-	${ENGINE3_LIBRARIES}
-	${gmock_libs} ${Boost_LIBRARIES} ${GCCLIBATOMIC_LIBRARY} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
+	engine3
+	${gmock_libs} ${Boost_LIBRARIES}
+	${GCCLIBATOMIC_LIBRARY} Threads::Threads
+	${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES}
+	${DB_LIBRARIES} ${OPENSSL_LIBRARIES}
+	${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
 
 if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND AND ENABLE_JEMALLOC_LINK)
 	target_link_libraries(core3 ${JEMALLOC_LIBRARIES})
@@ -136,9 +139,13 @@ if(ENABLE_MULTITHREADED_LINKER)
 endif(ENABLE_MULTITHREADED_LINKER)
 
 if(ENABLE_ODB)
-target_link_libraries(odb3
-	${ENGINE3_LIBRARIES}
-	${gmock_libs} ${Boost_LIBRARIES} ${GCCLIBATOMIC_LIBRARY} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
+	target_link_libraries(odb3
+		engine3
+		${gmock_libs} ${Boost_LIBRARIES}
+		${GCCLIBATOMIC_LIBRARY} Threads::Threads
+		${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES}
+		${DB_LIBRARIES} ${OPENSSL_LIBRARIES}
+		${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
 
 if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND AND ENABLE_JEMALLOC_LINK)
 	target_link_libraries(odb3 ${JEMALLOC_LIBRARIES})

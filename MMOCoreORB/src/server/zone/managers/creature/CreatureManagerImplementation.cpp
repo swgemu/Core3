@@ -541,7 +541,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (player != nullptr) {
 
-			if(player->isGrouped()) {
+			if (player->isGrouped()) {
 				ownerID = player->getGroupID();
 			} else {
 				ownerID = player->getObjectID();
@@ -572,6 +572,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 				if (!destructedObject->getFactionString().isEmpty() && !destructedObject->isEventMob()) {
 					int level = destructedObject->getLevel();
+
 					if(!player->isGrouped())
 						factionManager->awardFactionStanding(player, destructedObject->getFactionString(), level);
 					else
@@ -627,8 +628,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		// Check to see if we can expedite the despawn of this corpse
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
-		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
+		Locker locker(player, destructedObject);
 
+		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 	} catch (...) {
 		destructedObject->scheduleDespawn();
 
@@ -642,7 +644,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	destructedObject->scheduleDespawn();
 
 	if (shouldRescheduleCorpseDestruction) {
-
 		Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 
 		if (despawn != nullptr) {

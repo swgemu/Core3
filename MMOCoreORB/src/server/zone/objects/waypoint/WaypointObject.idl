@@ -114,7 +114,7 @@ class WaypointObject extends IntangibleObject {
 		return color;
 	}
 
-	@dirty
+	@read
 	public native string getDetailedDescription();
 
 	@preLocked

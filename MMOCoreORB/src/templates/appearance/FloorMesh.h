@@ -25,10 +25,12 @@ public:
 		this->triangleID = triangleID;
 		this->edgeID = edgeID;
 	}
+
 	EdgeID() {
 		triangleID = -1;
 		edgeID = -1;
 	}
+
 	EdgeID(const EdgeID& edge) {
 		triangleID = edge.triangleID;
 		edgeID = edge.edgeID;
@@ -188,7 +190,7 @@ public:
 		return neighbors.size() < 3;
 	}
 
-	inline uint32 getID() const {
+	inline uint32 getID() const final {
 		return triangleID;
 	}
 
@@ -200,7 +202,7 @@ public:
 		neighbors.add(node);
 	}
 
-	inline const Vector<TriangleNode*>* getNeighbors() const {
+	inline const Vector<TriangleNode*>* getNeighbors() const final {
 		return &neighbors;
 	}
 

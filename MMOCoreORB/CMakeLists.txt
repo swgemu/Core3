@@ -44,6 +44,7 @@ option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match en
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
 option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" ON)
+option(ENABLE_LOCKFREE_BCLIENT_BUFFERS "Enables lock free base client buffers, requires boost thread" OFF) #needs to match engine3
 
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -64,7 +65,7 @@ find_package(MySql REQUIRED)
 find_package(Berkeley REQUIRED)
 include_directories(${DB_INCLUDE_DIR})
 
-find_package(Java 1.5 COMPONENTS Runtime REQUIRED )
+find_package(Java 1.5 COMPONENTS Runtime REQUIRED)
 
 # Find engine3 includes and libraries
 find_package(Engine3 REQUIRED)
@@ -112,8 +113,6 @@ set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
-find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
-
 find_package(JEMALLOC QUIET)
 
 function(check_working_cxx_atomics varname)
@@ -137,10 +136,6 @@ check_working_cxx_atomics(HAVE_CXX_ATOMICS_WITHOUT_LIB)
 
 if (NOT HAVE_CXX_ATOMICS_WITHOUT_LIB)
 	find_package(GccAtomic REQUIRED)
-endif()
-
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
 if(ENABLE_CCACHE)
@@ -182,6 +177,18 @@ if (ENABLE_ODB_REFERENCES)
 	add_definitions(-DODB_REFERENCES)
 endif()
 
+if (ENABLE_LOCKFREE_BCLIENT_BUFFERS)
+	find_package(Boost REQUIRED COMPONENTS thread)
+
+	add_definitions(-DLOCKFREE_BCLIENT_BUFFERS)
+else()
+	find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
+endif()
+
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     # Define global build gcc compatible flags to check and add if available
     set(GCCEXTRAFLAGS -Wall
@@ -194,7 +201,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU
 	-Wno-missing-declarations
 	-Wno-return-std-move
 	-Wno-implicit-fallthrough
-        -Wno-class-memaccess
+	-Wno-class-memaccess
 	-fcolor-diagnostics)
 
     foreach(flag_comp ${GCCEXTRAFLAGS})

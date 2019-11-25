@@ -133,8 +133,8 @@ public:
 	void registerSpecialCommands(CommandList* sCommands);
 
 	bool loadSlashCommandsFile() {
-
 		info("Loading commands...");
+
 		loadCommandData("datatables/command/command_tables_shared.iff");
 		loadCommandData("datatables/command/command_tables_shared_ground.iff");
 		//loadCommandData("datatables/command/command_tables_shared_space.iff"); disabled cause taunt is conflicting
@@ -146,7 +146,7 @@ public:
 		return res;
 	}
 
-	bool contains(String name) {
+	bool contains(String name) const {
 		return commandFactory.containsCommand(name);
 	}
 

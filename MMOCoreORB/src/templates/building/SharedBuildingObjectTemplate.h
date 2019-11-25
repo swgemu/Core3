@@ -63,7 +63,7 @@ public:
 		return alwaysPublic;
 	}
 
-	inline ChildObject* getSign() {
+	inline const ChildObject* getSign() const {
 		return &sign;
 	}
 
@@ -79,11 +79,11 @@ public:
 		return &childCreatureObjects.get(indx);
 	}
 
-	inline String getTerrainModificationFile() const {
+	inline const String& getTerrainModificationFile() const {
 		return terrainModificationFileName.get();
 	}
 
-	inline String getInteriorLayoutFileName() const {
+	inline const String& getInteriorLayoutFileName() const {
 		return interiorLayoutFileName.get();
 	}
 

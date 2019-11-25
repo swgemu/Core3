@@ -365,7 +365,7 @@ void SharedObjectTemplate::readObject(IffStream* iffStream) {
 	uint32 nextType = iffStream->getNextFormType();
 
 	if (nextType != 'SHOT') {
-		warning() << "expecting SHOT got " << getType(nextType) << " in file: " << iffStream->getFileName();
+		warning() << "expecting SHOT got " << getType(nextType) << " in " << iffStream->getFileName();
 
 		iffStream->openForm(nextType);
 		iffStream->closeForm(nextType);

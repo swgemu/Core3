@@ -59,7 +59,7 @@ public:
 		 return commandCreator.drop(uniqueID);
 	 }
 
-	 bool containsCommand(UniqueIdType uniqueID) {
+	 bool containsCommand(UniqueIdType uniqueID) const {
 		 return commandCreator.containsKey(uniqueID);
 	 }
 

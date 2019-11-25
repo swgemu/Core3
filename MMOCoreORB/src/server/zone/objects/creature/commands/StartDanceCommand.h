@@ -38,10 +38,10 @@ public:
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");
 
-		AbilityList* list = ghost->getAbilityList();
+		const AbilityList* list = ghost->getAbilityList();
 
 		for (int i = 0; i < list->size(); ++i) {
-			Ability* ability = list->get(i);
+			const Ability* ability = list->get(i);
 
 			String abilityName = ability->getAbilityName();
 

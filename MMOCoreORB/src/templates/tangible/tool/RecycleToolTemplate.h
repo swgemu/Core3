@@ -18,7 +18,7 @@ public:
 
 	}
 
-	void readObject(LuaObject* templateData) {
+	void readObject(LuaObject* templateData) override {
 		ContainerTemplate::readObject(templateData);
 
 		toolType = templateData->getByteField("toolType");
@@ -30,15 +30,15 @@ public:
 		resources.pop();
 	}
 
-	short getToolType() {
+	short getToolType() const {
 		return toolType;
 	}
 
-	Vector<String> getResourceTypes() {
+	const Vector<String>& getResourceTypes() const {
 		return resourceTypes;
 	}
 
-	bool isRecycleToolTemplate() {
+	bool isRecycleToolTemplate() const override {
 		return true;
 	}
 };

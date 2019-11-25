@@ -68,7 +68,7 @@ namespace server {
 		   return objectCreator.drop(uniqueID);
 	   }
 
-	   bool containsObject(UniqueIdType uniqueID) {
+	   bool containsObject(UniqueIdType uniqueID) const {
 		   return objectCreator.containsKey(uniqueID);
 	   }
 
