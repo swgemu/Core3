@@ -65,7 +65,7 @@ public:
 		return name.compareTo(pmc.name);
 	}
 
-	void parseFromDataTableRow(DataTableRow* row) {
+	void parseFromDataTableRow(const DataTableRow* row) {
 		try {
 			row->getValue(0, name);
 			nameCRC = name.hashCode();
@@ -76,7 +76,7 @@ public:
 			row->getValue(5, faction);
 			row->getValue(6, factionVisibleOnly);
 
-		} catch (Exception& ex) {
+		} catch (const Exception& ex) {
 			System::out << "Error parsing PlanetMapCategory: " + ex.getMessage() << endl;
 		}
 
