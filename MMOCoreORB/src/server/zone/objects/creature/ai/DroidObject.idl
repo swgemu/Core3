@@ -272,7 +272,7 @@ class DroidObject extends AiAgent {
 	/**
 	 * Returns a reaction stf if the droid has a personality chip
 	 */
-	@local
+	@read
 	public native string getPersonalityBase();
 
 	@local
@@ -491,7 +491,7 @@ class DroidObject extends AiAgent {
 		return getPersonalityBase() != "" || super.hasReactionChatMessages();
 	}
 
-	@dirty
+	@read
 	public string getReactionStf() {
 		if (getPersonalityBase() != "")
 			return getPersonalityBase();
@@ -499,12 +499,12 @@ class DroidObject extends AiAgent {
 		return super.getReactionStf();
 	}
 
-	@dirty
+	@read
 	public int getHamMaximum() {
 		return maximumHam;
 	}
 
-	@dirty
+	@read
 	public int getHamBase() {
 		return maximumHam;
 	}

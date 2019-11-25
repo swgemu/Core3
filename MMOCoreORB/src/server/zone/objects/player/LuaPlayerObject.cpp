@@ -339,7 +339,7 @@ int LuaPlayerObject::addHologrindProfession(lua_State* L){
 }
 
 int LuaPlayerObject::getHologrindProfessions(lua_State* L) {
-	Vector<byte>* professions = realObject->getHologrindProfessions();
+	const Vector<byte>* professions = realObject->getHologrindProfessions();
 
 	lua_newtable(L);
 
@@ -585,7 +585,7 @@ int LuaPlayerObject::closeSuiWindowType(lua_State* L) {
 }
 
 int LuaPlayerObject::getExperienceList(lua_State* L) {
-	DeltaVectorMap<String, int>* expList = realObject->getExperienceList();
+	const DeltaVectorMap<String, int>* expList = realObject->getExperienceList();
 
 	lua_newtable(L);
 

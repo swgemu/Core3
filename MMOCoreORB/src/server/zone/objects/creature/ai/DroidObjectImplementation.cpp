@@ -278,7 +278,7 @@ CraftingStation* DroidObjectImplementation::getCraftingStation(int type) {
 	return nullptr;
 }
 
-String DroidObjectImplementation::getPersonalityBase() {
+String DroidObjectImplementation::getPersonalityBase() const {
 	for (int i = 0; i < modules.size(); i++) {
 		auto module = modules.get(i).castTo<DroidPersonalityModuleDataComponent*>();
 

@@ -114,20 +114,20 @@ public:
 
 			promptText << endl << "Ability list:" << endl;
 
-			AbilityList* abilityList = ghost->getAbilityList();
+			const AbilityList* abilityList = ghost->getAbilityList();
 
 			for (int i = 0; i < abilityList->size(); ++i) {
-				Ability* skill = abilityList->get(i);
+				const Ability* skill = abilityList->get(i);
 				promptText << skill->getAbilityName() << endl;
 			}
 
 			if (creature->getPlayerObject()->getAdminLevel() >= 15) {
-				Vector<byte>* holoProfessions = ghost->getHologrindProfessions();
+				const Vector<byte>* holoProfessions = ghost->getHologrindProfessions();
 
 				promptText << endl;
 				promptText << "Hologrind professions:\n";
 
-				BadgeList* badgeList = BadgeList::instance();
+				const BadgeList* badgeList = BadgeList::instance();
 				if (badgeList != nullptr) {
 					for (int i = 0; i < holoProfessions->size(); ++i) {
 						byte prof = holoProfessions->get(i);

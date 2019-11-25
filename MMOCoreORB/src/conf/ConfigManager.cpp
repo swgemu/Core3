@@ -366,7 +366,7 @@ bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int max
 	return true;
 }
 
-ConfigDataItem* ConfigManager::findItem(const String& name) {
+ConfigDataItem* ConfigManager::findItem(const String& name) const {
 	int pos = configData.find(name);
 
 	if (pos == -1) {

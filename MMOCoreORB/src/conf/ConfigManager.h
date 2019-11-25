@@ -10,6 +10,7 @@
 #include "engine/engine.h"
 
 namespace conf {
+
 	class ConfigDataItem {
 		bool asBool;
 		String asString;
@@ -27,6 +28,7 @@ namespace conf {
 		ConfigDataItem(float value);
 		ConfigDataItem(const String& value);
 		ConfigDataItem(Vector <ConfigDataItem *>* value);
+
 		~ConfigDataItem();
 
 		inline bool getBool() const {
@@ -49,7 +51,7 @@ namespace conf {
 			return asString;
 		}
 
-		inline const Vector<String>& getStringVector() {
+		const Vector<String>& getStringVector() {
 			if (asStringVector == nullptr) {
 				asStringVector = new Vector<String>();
 
@@ -73,7 +75,7 @@ namespace conf {
 			return *asStringVector;
 		}
 
-		inline const SortedVector<String>& getSortedStringVector() {
+		const SortedVector<String>& getSortedStringVector() {
 			if (asSortedStringVector == nullptr) {
 				asSortedStringVector = new SortedVector<String>();
 				auto entries = getStringVector();
@@ -86,7 +88,7 @@ namespace conf {
 			return *asSortedStringVector;
 		}
 
-		inline const Vector<int>& getIntVector() {
+		const Vector<int>& getIntVector() {
 			if (asIntVector == nullptr) {
 				asIntVector = new Vector<int>();
 
@@ -110,7 +112,7 @@ namespace conf {
 			return *asIntVector;
 		}
 
-		inline String toString() {
+		String toString() {
 			usageCounter++;
 
 			if (asVector == nullptr)
@@ -148,12 +150,13 @@ namespace conf {
 
 	public:
 		inline void setDebugTag(const String& tag) {
-			debugTag = String(tag);
+			debugTag = tag;
 		}
 #endif // DEBUG_CONFIGMANAGER
 	};
 
 	class ConfigManager : public Singleton<ConfigManager>, public Lua {
+	protected:
 		Timer configStartTime;
 		VectorMap<String, ConfigDataItem *> configData;
 
@@ -181,7 +184,7 @@ namespace conf {
 		}
 
 		// General config functions
-		ConfigDataItem* findItem(const String& name);
+		ConfigDataItem* findItem(const String& name) const;
 		int getInt(const String& name, int defaultValue);
 		bool getBool(const String& name, bool defaultValue);
 		float getFloat(const String& name, float defaultValue);

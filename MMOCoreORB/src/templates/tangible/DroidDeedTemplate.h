@@ -11,7 +11,6 @@
 #include "templates/tangible/DeedTemplate.h"
 
 class DroidDeedTemplate : public DeedTemplate {
-
 	String controlDeviceObjectTemplate;
 	String mobileTemplate;
 	int species;
@@ -30,17 +29,17 @@ public:
 		controlDeviceObjectTemplate = templateData->getStringField("controlDeviceObjectTemplate");
 		mobileTemplate = templateData->getStringField("mobileTemplate");
 		species = templateData->getIntField("species");
-    }
+	}
 
-	String getControlDeviceObjectTemplate() {
+	const String& getControlDeviceObjectTemplate() const {
 		return controlDeviceObjectTemplate;
 	}
 
-	String getMobileTemplate() {
+	const String& getMobileTemplate() const {
 		return mobileTemplate;
 	}
 
-	int getSpecies() {
+	int getSpecies() const {
 		return species;
 	}
 };

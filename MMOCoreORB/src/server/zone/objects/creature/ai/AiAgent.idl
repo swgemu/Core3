@@ -1086,7 +1086,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@local
-	@dirty
+	@read
 	public final LootGroupCollection getLootGroups() {
 		if (npcTemplate.get() == null || isEventMob())
 			return null;
@@ -1094,7 +1094,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getLootGroups();
 	}
 
-	@dirty
+	@read
 	public abstract string getReactionStf() {
 		if (npcTemplate.get() == null)
 			return "";
@@ -1147,7 +1147,7 @@ class AiAgent extends CreatureObject {
 		showNextMovementPosition = val;
 	}
 
-	@dirty
+	@read
 	public native boolean isEventMob();
 
 	@read

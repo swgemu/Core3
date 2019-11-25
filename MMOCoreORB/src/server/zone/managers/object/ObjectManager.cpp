@@ -983,8 +983,10 @@ void ObjectManager::onUpdateModifiedObjectsToDatabase() {
 
 		//characters_dirty chars
 		try {
-			charactersSaved = ServerDatabase::instance()->executeQuery("SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId));
-		} catch (Exception& e) {
+			const static auto query = "SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId);
+
+			charactersSaved = ServerDatabase::instance()->executeQuery(query);
+		} catch (const Exception& e) {
 			error(e.getMessage());
 		}
 	}

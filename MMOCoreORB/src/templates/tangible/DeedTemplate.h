@@ -26,9 +26,9 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		generatedObjectTemplate = templateData->getStringField("generatedObjectTemplate");
-    }
+    	}
 
-	inline String& getGeneratedObjectTemplate() {
+	inline const String& getGeneratedObjectTemplate() const {
 		return generatedObjectTemplate;
 	}
 };

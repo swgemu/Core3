@@ -72,6 +72,8 @@ file(GLOB_RECURSE tests_headers "tests/*.h")
 set(core3tests_libs)
 set(gmock_libs)
 
+add_dependencies(idlobjects engine3)
+
 if(COMPILE_TESTS)
 	# Define tests
 	enable_testing()
@@ -121,7 +123,7 @@ target_link_libraries(core3
 	${whole_archive_start}
 	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 	${whole_archive_end}
-	${ENGINE3_LIBRARIES}
+	engine3
 	${gmock_libs} ${Boost_LIBRARIES}
 	${GCCLIBATOMIC_LIBRARY} Threads::Threads
 	${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES}
@@ -138,7 +140,7 @@ endif(ENABLE_MULTITHREADED_LINKER)
 
 if(ENABLE_ODB)
 	target_link_libraries(odb3
-		${ENGINE3_LIBRARIES}
+		engine3
 		${gmock_libs} ${Boost_LIBRARIES}
 		${GCCLIBATOMIC_LIBRARY} Threads::Threads
 		${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES}

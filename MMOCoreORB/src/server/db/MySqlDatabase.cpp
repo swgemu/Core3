@@ -40,7 +40,7 @@ public:
 			: result(res), callback(std::move(f)) {
 	}
 
-	void run() {
+	void run() final {
 		callback(result);
 	}
 };
@@ -102,7 +102,7 @@ int MySqlDatabase::createDatabaseThread() {
 void MySqlDatabase::connect(const String& dbname, const String& user, const String& passw, int port) {
 	Locker locker(this);
 
-	info(true) << "connecting to " << host << "...";
+	info(true) << "connecting to " << host << ":" << port << "...";
 
 	static int databaseThread = createDatabaseThread();
 
@@ -120,7 +120,7 @@ void MySqlDatabase::connect(const String& dbname, const String& user, const Stri
 		error();
 	}
 
-	info(true) << "connected to " << host;
+	info(true) << "connected to " << host << ":" << port;
 
 #ifdef WITH_STM
 	autocommit(false);
@@ -145,7 +145,7 @@ void MySqlDatabase::doExecuteStatement(const String& statement) {
 			error(statement.toCharArray());
 			break;
 		} else
-			warning() << "Warning mysql lock wait timeout on statement: " << statement;
+			warning() << "mysql lock wait timeout on statement: " << statement;
 	}
 
 #ifdef WITH_STM
@@ -211,7 +211,7 @@ engine::db::ResultSet* MySqlDatabase::executeQuery(const char* statement) {
 			error(statement);
 			break;
 		} else
-			info() << "Warning mysql lock wait timeout on statement: " << statement;
+			warning() << "mysql lock wait timeout on statement: " << statement;
 	}
 
 	MYSQL_RES* result = mysql_store_result(&mysql);

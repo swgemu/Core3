@@ -34,7 +34,7 @@ int CitySpecializationSessionImplementation::initializeSession() {
 	sui->setUsingObject(terminalObject);
 	sui->setForceCloseDistance(16.f);
 
-	AbilityList* abilityList = nullptr;
+	const AbilityList* abilityList = nullptr;
 
 	if (cityRegion->isMayor(creatureObject->getObjectID())) {
 		abilityList = ghost->getAbilityList();
@@ -52,8 +52,8 @@ int CitySpecializationSessionImplementation::initializeSession() {
 
 	if (abilityList != nullptr) {
 		for (int i = 0; i < abilityList->size(); ++i) {
-			Reference<Ability*> ability = abilityList->getSafe(i);
-			String abilityName = ability->getAbilityName();
+			Reference<const Ability*> ability = abilityList->getSafe(i);
+			const String& abilityName = ability->getAbilityName();
 
 			if (abilityName.beginsWith("city_spec"))
 				sui->addMenuItem("@city/city:" + abilityName);

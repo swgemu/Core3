@@ -23,9 +23,9 @@ namespace zone {
 	class ObjectManager : public DOBObjectManager, public Singleton<ObjectManager>, public Object {
 		Reference<ZoneProcessServer*> server;
 
-		TemplateManager* templateManager;
+		TemplateManager* templateManager = nullptr;
 
-		int galaxyId;
+		int galaxyId = 0;
 		Reference<ResultSet*> charactersSaved;
 
 		AtomicInteger saveCounter;
@@ -57,7 +57,7 @@ namespace zone {
 		ObjectManager(bool initializeTemplates = true);
 		~ObjectManager();
 
-		bool contains(uint32 objectCRC) {
+		bool contains(uint32 objectCRC) const {
 			return objectFactory.containsObject(objectCRC);
 		}
 
@@ -105,8 +105,8 @@ namespace zone {
 
 		void shutdown();
 
-		bool isObjectUpdateInProcess() {
-			return objectUpdateInProcess;
+		bool isObjectUpdateInProgress() const {
+			return objectUpdateInProgress;
 		}
 
 		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);

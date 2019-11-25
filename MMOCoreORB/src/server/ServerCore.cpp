@@ -151,8 +151,9 @@ void ServerCore::registerConsoleCommmands() {
 	});
 
 	consoleCommands.put("save", [this](const String& arguments) -> CommandResult {
-		ObjectManager::instance()->createBackup();
-		//ObjectDatabaseManager::instance()->checkpoint();
+		bool forceFull = !arguments.contains("delta");
+
+		ObjectManager::instance()->createBackup(forceFull);
 
 		return SUCCESS;
 	});
@@ -582,8 +583,7 @@ void ServerCore::initialize() {
 				if (zonePort == 0) {
 					const String query = "SELECT port FROM galaxy WHERE galaxy_id = "
 								   + String::valueOf(galaxyID);
-					Reference < ResultSet * > result =
-							database->instance()->executeQuery(query);
+					UniqueReference<ResultSet*> result(database->instance()->executeQuery(query));
 
 					if (result != nullptr && result->next()) {
 						zonePort = result->getInt(0);
@@ -593,7 +593,7 @@ void ServerCore::initialize() {
 				database->instance()->executeStatement(
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
 						+ String::valueOf(galaxyID));
-			} catch (DatabaseException &e) {
+			} catch (const DatabaseException &e) {
 				fatal(e.getMessage());
 			}
 
@@ -681,7 +681,7 @@ void ServerCore::shutdown() {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	while (objectManager->isObjectUpdateInProcess())
+	while (objectManager->isObjectUpdateInProgress())
 		Thread::sleep(500);
 
 	objectManager->cancelDeleteCharactersTask();
@@ -740,9 +740,9 @@ void ServerCore::shutdown() {
 
 	Thread::sleep(5000);
 
-	objectManager->createBackup();
+	objectManager->createBackup(true);
 
-	while (objectManager->isObjectUpdateInProcess())
+	while (objectManager->isObjectUpdateInProgress())
 		Thread::sleep(500);
 
 	info("database backup done", true);

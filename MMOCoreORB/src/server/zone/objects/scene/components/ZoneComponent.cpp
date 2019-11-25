@@ -463,8 +463,8 @@ void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
 }
 
 void ZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
-											SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
-											SceneObject *sceneObject, SceneObject *vectorOwner) {
+					SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
+					SceneObject *sceneObject, SceneObject *vectorOwner) {
 	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
 		closeobjects->safeCopyTo(closeSceneObjects);
 

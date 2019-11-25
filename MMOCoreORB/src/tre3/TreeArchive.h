@@ -82,7 +82,7 @@ public:
 		int idx = treeDir->find(fileName);
 
 		if (idx == -1) {
-			warning("Did not find fileName: " + fileName);
+			warning() << recordPath << " not found.";
 			return nullptr;
 		}
 

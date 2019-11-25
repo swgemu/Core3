@@ -882,8 +882,8 @@ void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetOb
 	}
 }
 
-void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) {
-	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) const {
+	const SharedTangibleObjectTemplate* tano = dynamic_cast<const SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == nullptr)
 		return;
@@ -891,7 +891,7 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 	const VectorMap<String, int>* mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int> entry = mods->elementAt(i);
+		const auto& entry = mods->elementAt(i);
 
 		targetObject->removeSkillMod(SkillModManager::TEMPLATE, entry.getKey(), entry.getValue());
 	}
@@ -1142,7 +1142,7 @@ bool TangibleObjectImplementation::isDisabled() const {
 
 bool TangibleObjectImplementation::isInNavMesh() {
 	for (int i = 0; i < activeAreas.size(); ++i) {
-		auto& area = activeAreas.get(i);
+		const auto& area = activeAreas.get(i);
 		if (area->isNavArea())
 			return true;
 	}
