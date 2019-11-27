@@ -727,8 +727,8 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@local
-	@dirty
-	public BuffList getBuffList() {
+	@read
+	public final BuffList getBuffList() {
 		return creatureBuffs;
 	}
 
