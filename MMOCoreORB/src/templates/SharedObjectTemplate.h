@@ -661,7 +661,7 @@ public:
 		return false;
 	}
 
-	virtual bool isInstrumentObjectTemplate() {
+	virtual bool isInstrumentObjectTemplate() const {
 		return false;
 	}
 

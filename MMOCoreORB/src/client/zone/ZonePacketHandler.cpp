@@ -175,9 +175,7 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 	SceneObject* object = objectManager->createObject(crc, objectID);
 
 	if (object == nullptr) {
-		StringBuffer infoMsg;
-		infoMsg << "unknown crc 0x" << hex << crc << " received in SceneObjectCreateMessage";
-		client->debug(infoMsg.toString());
+		client->debug() << "unknown crc 0x" << hex << crc << " received in SceneObjectCreateMessage";
 		return;
 	}
 

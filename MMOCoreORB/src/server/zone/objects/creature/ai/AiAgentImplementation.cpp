@@ -365,7 +365,7 @@ void AiAgentImplementation::setupAttackMaps() {
 		defaultAttackMap = new CreatureAttackMap();
 
 		for (int i = 0; i < fullAttackMap->size(); i++) {
-			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
+			const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
 			if (attack == nullptr)
 				continue;
 
@@ -883,7 +883,7 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 				return;
 			}
 
-			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+			const QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 			if (queueCommand == nullptr || followCopy == nullptr
 					|| (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
@@ -1129,9 +1129,9 @@ void AiAgentImplementation::selectDefaultWeapon() {
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
-	CombatQueueCommand* queueCommand = cast<CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
+	const CombatQueueCommand* queueCommand = cast<const CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
 
-	VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
+	const VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
 
 	if (effects->size() == 0) {
 		return true;

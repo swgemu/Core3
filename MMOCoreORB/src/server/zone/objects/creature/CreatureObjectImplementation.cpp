@@ -485,7 +485,7 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 			if (objectController == nullptr)
 				continue;
 
-			QueueCommand* qc = objectController->getQueueCommand(command->getCommand());
+			const QueueCommand* qc = objectController->getQueueCommand(command->getCommand());
 			if (qc == nullptr)
 				continue;
 
@@ -1577,7 +1577,7 @@ void CreatureObjectImplementation::updateLocomotion() {
 				CreatureLocomotion::FAST);
 }
 
-UnicodeString CreatureObjectImplementation::getCreatureName() {
+UnicodeString CreatureObjectImplementation::getCreatureName() const {
 	return getCustomObjectName();
 }
 
@@ -1591,8 +1591,6 @@ void CreatureObjectImplementation::updateGroupInviterID(uint64 id,
 	delta->close();
 
 	broadcastMessage(delta, true);
-
-
 }
 
 void CreatureObjectImplementation::updateGroup(GroupObject* grp,
@@ -1854,7 +1852,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	ManagedReference<ObjectController*> objectController =
 			getZoneServer()->getObjectController();
 
-	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
+	const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
 	if (queueCommand == nullptr) {
 		//StringBuffer msg;
@@ -2247,7 +2245,7 @@ void CreatureObjectImplementation::dismount() {
 	executeObjectControllerAction(STRING_HASHCODE("dismount"));
 }
 
-float CreatureObjectImplementation::calculateBFRatio() {
+float CreatureObjectImplementation::calculateBFRatio() const {
 	if (shockWounds <= 250)
 		return 1.f;
 
@@ -2934,7 +2932,7 @@ void CreatureObjectImplementation::sendCustomCombatSpam(const UnicodeString& cus
 	sendMessage(spam);
 }
 
-String CreatureObjectImplementation::getFirstName() {
+String CreatureObjectImplementation::getFirstName() const {
 	UnicodeString fullName = getCustomObjectName();
 
 	int idx = fullName.indexOf(' ');
@@ -2953,7 +2951,7 @@ String CreatureObjectImplementation::setFirstName(const String& newFirstName) {
 	return getZoneServer()->getPlayerManager()->setFirstName(asCreatureObject(), newFirstName);
 }
 
-String CreatureObjectImplementation::getLastName() {
+String CreatureObjectImplementation::getLastName() const {
 	UnicodeString lastName;
 
 	UnicodeString fullName = getCustomObjectName();
@@ -3336,10 +3334,10 @@ int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player,
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
-float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float baseCost) {
+float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float baseCost) const {
 	float cost = baseCost - (((float)(this->getHAM(stat) - 300) / 1200.f) * baseCost);
 
-	if(cost < 0)
+	if (cost < 0)
 		cost = 0;
 
 	return cost;
