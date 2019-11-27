@@ -4078,7 +4078,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 	Locker locker(player);
 
 	try {
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		VectorMap<byte, int> attributeValues;
 		attributeValues.setNullValue(0);
@@ -4105,7 +4105,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				continue;
 			}
 
-			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
+			const VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
 
 			for (int j = 0; j < attributeModifiers->size(); ++j) {
 				byte modifier = attributeModifiers->elementAt(j).getKey();
@@ -4151,7 +4151,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				player->setMaxHAM(i, calculated, false);
 			}
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }
@@ -4180,7 +4180,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 
 		smodsGuard.release();
 
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		for (int i = 0; i < buffs->getBuffListSize(); i++) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
@@ -4196,7 +4196,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 			player->updateGroupInviterID(grp->getLeader()->getObjectID());
 			GroupManager::instance()->joinGroup(player);
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }

@@ -693,8 +693,11 @@ void CreatureObjectImplementation::removeMountedCombatSlow(bool showEndMessage) 
 
 	Core::getTaskManager()->executeTask([=] () {
 		Locker locker(vehicle);
-		uint32 buffCRC = STRING_HASHCODE("mounted_combat_slow");
+
+		constexpr uint32 buffCRC = STRING_HASHCODE("mounted_combat_slow");
+
 		bool hasBuff = vehicle->hasBuff(buffCRC);
+
 		if (hasBuff) {
 			vehicle->removeBuff(buffCRC);
 			if (showEndMessage) {
@@ -2604,10 +2607,10 @@ void CreatureObjectImplementation::renewBuff(uint32 buffCRC, int duration, bool 
 				buff->sendTo(creo);
 		}
 
-		Vector<unsigned long long>* secondaryCRCs = buff->getSecondaryBuffCRCs();
+		const Vector<unsigned long long>* secondaryCRCs = buff->getSecondaryBuffCRCs();
 		blocker.release();
 
-		for(int i=0; i<secondaryCRCs->size(); i++) {
+		for(int i = 0; i < secondaryCRCs->size(); i++) {
 			creo->renewBuff(secondaryCRCs->get(i), duration, sendToClient);
 		}
 	}
@@ -2620,7 +2623,7 @@ bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 	bool ret = creatureBuffs.removeBuff(buffcrc);
 
 	if (buff != nullptr) {
-		Vector<unsigned long long>* secondaryCRCs = buff->getSecondaryBuffCRCs();
+		const Vector<unsigned long long>* secondaryCRCs = buff->getSecondaryBuffCRCs();
 
 		for (int i = 0; i < secondaryCRCs->size(); i++) {
 			removeBuff(secondaryCRCs->get(i));
@@ -2633,7 +2636,7 @@ bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 bool CreatureObjectImplementation::removeStateBuff(uint64 state) {
 	bool ret = removeBuff(Long::hashCode(state));
 
-	assert(!hasState(state));
+	fatal(!hasState(state), "state was not removed after removeBuff");
 
 	return ret;
 }
