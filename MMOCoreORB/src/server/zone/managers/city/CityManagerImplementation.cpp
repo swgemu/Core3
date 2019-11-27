@@ -1170,7 +1170,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 			CreatureObject* oldmayorCreo = cast<CreatureObject*> (oldmayor.get());
 
 			if (oldmayorCreo != nullptr) {
-				Time* cooldownTime = oldmayorCreo->getCooldownTime("city_specialization");
+				const Time* cooldownTime = oldmayorCreo->getCooldownTime("city_specialization");
 				int64 miliDiff = 0;
 
 				if (cooldownTime != nullptr) {

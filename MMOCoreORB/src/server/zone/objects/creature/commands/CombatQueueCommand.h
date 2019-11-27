@@ -544,12 +544,12 @@ public:
 		return poolsToDamage;
 	}
 
-	inline VectorMap<uint8, StateEffect>* getStateEffects() const {
-		return &(const_cast<CombatQueueCommand*>(this)->stateEffects);
+	inline const VectorMap<uint8, StateEffect>* getStateEffects() const {
+		return &stateEffects;
 	}
 
-	inline Vector<DotEffect>* getDotEffects() const {
-		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
+	inline const Vector<DotEffect>* getDotEffects() const {
+		return &dotEffects;
 	}
 
 	void setAnimationString(const String& anim) {
@@ -620,11 +620,11 @@ public:
 		this->accuracySkillMod = acc;
 	}
 
-	bool hasCombatSpam() {
+	bool hasCombatSpam() const {
 		return !combatSpam.isEmpty();
 	}
 
-	bool isCombatCommand() {
+	bool isCombatCommand() const {
 		return true;
 	}
 

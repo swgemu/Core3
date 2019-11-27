@@ -15,7 +15,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const override {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -45,7 +45,7 @@ public:
 		return SUCCESS;
 	}
 
-	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
+	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) const override {
 		ManagedReference<CreatureObject*> creo = creature->asCreatureObject();
 
 		if(creo == nullptr)

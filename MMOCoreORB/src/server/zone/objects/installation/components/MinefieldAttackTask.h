@@ -58,10 +58,10 @@ public:
 
 		if(sceneObject->getZoneServer() != nullptr){
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			QueueCommand* command = objectController->getQueueCommand(STRING_HASHCODE("minefieldattack"));
+			const QueueCommand* command = objectController->getQueueCommand(STRING_HASHCODE("minefieldattack"));
 
 			if(command != nullptr){
-				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
+				const CombatQueueCommand* combatCommand = cast<const CombatQueueCommand*>(command);
 				if(combatCommand != nullptr){
 					CombatManager::instance()->doCombatAction(sceneObject.castTo<TangibleObject*>(), weapon, player, combatCommand);
 				}

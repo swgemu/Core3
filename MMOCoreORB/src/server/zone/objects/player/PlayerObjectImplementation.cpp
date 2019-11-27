@@ -458,7 +458,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
-	debug("sending friendslist message  size " + String::valueOf(friendList.size()));
+	debug() << "sending friendslist message  size " << friendList.size();
 
 	ChatManager* chatManager = server->getChatManager();
 
@@ -1845,7 +1845,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	}
 
 	if (isOnline()) {
-		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
+		const CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
 		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() &&
 			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) &&

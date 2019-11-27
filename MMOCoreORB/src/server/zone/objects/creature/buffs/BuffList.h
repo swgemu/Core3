@@ -56,10 +56,7 @@ public:
 	Buff* getBuffByCRC(uint32 buffcrc) const {
 		Locker guard(&mutex);
 
-		if (buffList.contains(buffcrc))
-			return buffList.get(buffcrc);
-
-		return nullptr;
+		return buffList.get(buffcrc);
 	}
 
 	long long getModifierByName(const String& skillMod) const {

@@ -16,7 +16,7 @@
 /**
  * Rename for clarity/convenience
  */
-typedef VectorMapEntry<String,int> Mod;
+using Mod = VectorMapEntry<String,int>;
 
 /**
  * @inf
@@ -32,7 +32,7 @@ typedef VectorMapEntry<String,int> Mod;
 class ModSortingHelper : public Mod {
 public:
 	ModSortingHelper(): Mod( "", 0) {}
-	ModSortingHelper( String name, int value ) : Mod( name, value ) {}
+	ModSortingHelper(String name, int value) : Mod(name, value) {}
 
 	/**
 	 * @inf
@@ -78,7 +78,7 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 
 	//Anti Decay Kit
-	if(hasAntiDecayKit() && !isArmorObject()){
+	if (hasAntiDecayKit() && !isArmorObject()){
 		alm->insertAttribute("@veteran_new:antidecay_examine_title", "@veteran_new:antidecay_examine_text");
 	}
 
@@ -90,14 +90,13 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	 * sockets				0-0(novice artisan) (Don't use)
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
-	if(initialUpdate) {
+	if (initialUpdate) {
 		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
-
 	if (socketsGenerated) {
 		return;
 	}
@@ -140,7 +139,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	socketsGenerated = true;
 }
 
-int WearableObjectImplementation::socketsUsed() {
+int WearableObjectImplementation::socketsUsed() const {
 	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
 	if (objectCreatedPreUsedSocketCountFix) {
 		return wearableSkillMods.size() - modsNotInSockets;
@@ -151,12 +150,10 @@ int WearableObjectImplementation::socketsUsed() {
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		Attachment* attachment) {
-
 	if (!isASubChildOf(player))
 		return;
 
 	if (socketsLeft() > 0) {
-
 		Locker locker(player);
 
 		if (isEquipped()) {
@@ -253,7 +250,6 @@ bool WearableObjectImplementation::isEquipped() {
 }
 
 String WearableObjectImplementation::repairAttempt(int repairChance) {
-
 	String message = "@error_message:";
 
 	if(repairChance < 25) {

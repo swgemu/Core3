@@ -22,13 +22,10 @@ RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : M
 
 void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, uint64 objectID) {
 	//Pre: Player is WLOCKED
-
 	//Post: Player is WLOCKED
-
 	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
 
 	if (menuObject != nullptr) {
-
 		Locker clocker(menuObject, player);
 
 		//info("entering object menu request ");
@@ -53,17 +50,13 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == nullptr) {
-		StringBuffer infoMsg;
-		infoMsg << "nullptr object selected in ObjectMenuSelect objectID: 0x" << hex << objectID;
-		error(infoMsg.toString());
+		error() << "nullptr object selected in ObjectMenuSelect objectID: 0x" << hex << objectID;
 
 		return;
 	}
 
 	try {
-
 		Locker locker(player);
-
 		Locker clocker(selectedObject, player);
 
 		ManagedReference<BuildingObject*> rootParent = cast<BuildingObject*>(selectedObject->getRootParent());
@@ -74,11 +67,11 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 		/*if (!selectedObject->checkContainerPermission(player, ContainerPermissions::USE))
 			return;*/
 
-		selectedObject->debug("entering radial call " + String::valueOf(selectID));
+		selectedObject->debug() << "entering radial call " << selectID;
 		selectedObject->handleObjectMenuSelect(player, selectID);
 
 		selectedObject->notifyObservers(ObserverEventType::OBJECTRADIALUSED, player, selectID);
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error("exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
 
 		error(e.getMessage());
