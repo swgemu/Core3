@@ -28,6 +28,7 @@ RESTServer::~RESTServer() {
 #include <chrono>
 
 #include "engine/engine.h"
+#include "conf/ConfigManager.h"
 
 using namespace web;
 using namespace web::http;
@@ -35,8 +36,40 @@ using namespace web::http::experimental::listener;
 
 using namespace std;
 
+// simple API Authtoken check
+bool check_auth(http_request request) {
+	auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
+
+	if (apiAuthToken.length() == 0) {
+		RESTServer::logger.error("Core3.RESTServer.APIToken not set, refusing to authorize API call.");
+		return false;
+	}
+
+	if (apiAuthToken.length() < 15) {
+		RESTServer::logger.error("Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API call.");
+		return false;
+	}
+
+	auto headers = request.headers();
+
+	if (request.headers().find(header_names::authorization) == headers.end())
+		return false;
+
+	auto requestToken = String(headers[header_names::authorization].c_str());
+
+	if (requestToken == apiAuthToken)
+		return true;
+
+	return false;
+}
+
 void handle_get(http_request request) {
 	auto start = chrono::steady_clock::now();
+
+	if (!check_auth(request)) {
+		request.reply(status_codes::Forbidden, U("Invalid API Token"));
+		return;
+	}
 
 	const auto& uri = request.relative_uri();
 
