@@ -52,7 +52,7 @@ class Deed extends TangibleObject {
 	/**
 	 * Gets the object template path for the object which is generated from this deed being used.
 	 */
-	@dirty
+	@read
 	public string getGeneratedObjectTemplate() {
 		return generatedObjectTemplate;
 	}
@@ -66,7 +66,7 @@ class Deed extends TangibleObject {
 		return true;
 	}
 
-	@dirty
+	@read
 	public boolean isGenerated() {
 		return generated;
 	}
