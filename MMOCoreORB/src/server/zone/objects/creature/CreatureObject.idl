@@ -1906,11 +1906,9 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
-	@preLocked
 	public native int getSkillMod(final string skillmod);
 
 	@dirty
-	@preLocked
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 
 	@read
