@@ -41,12 +41,12 @@ bool check_auth(http_request request) {
 	auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
 
 	if (apiAuthToken.length() == 0) {
-		RESTServer::logger.error("Core3.RESTServer.APIToken not set, refusing to authorize API call.");
+		RESTServer::logger.error() << "Core3.RESTServer.APIToken not set, refusing to authorize API call.";
 		return false;
 	}
 
 	if (apiAuthToken.length() < 15) {
-		RESTServer::logger.error("Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API call.");
+		RESTServer::logger.error() << "Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API call.";
 		return false;
 	}
 
@@ -95,7 +95,7 @@ void handle_get(http_request request) {
 				responses.push_back(entry);
 			}
 		} catch (const Exception& e) {
-			RESTServer::logger.error(e.getMessage());
+			RESTServer::logger.error() << e.getMessage();
 		}
 	}
 
@@ -125,7 +125,43 @@ void RESTServer::start() {
 		restListener->close().wait();
 	}
 
-	restListener = new http_listener(("http://0.0.0.0:" + String::valueOf(port) + "/object").toCharArray());
+	http_listener_config serverConfig;
+
+	serverConfig.set_ssl_context_callback([&](boost::asio::ssl::context& ctx) {
+		auto sslKeyFilename = ConfigManager::instance()->getString("Core3.RESTServer.SSLKeyFile", "");
+
+		if (sslKeyFilename.length() == 0) {
+			logger.error() << "missing Core3.RESTServer.SSLKeyFile";
+			return;
+		}
+
+		auto sslCrtFilename = ConfigManager::instance()->getString("Core3.RESTServer.SSLCertFile", "");
+
+		if (sslCrtFilename.length() == 0) {
+			logger.error() << "missing Core3.RESTServer.SSLCertFile";
+			return;
+		}
+
+		ctx.set_options(boost::asio::ssl::context::default_workarounds);
+
+		boost::system::error_code error;
+
+		ctx.use_certificate_chain_file(sslCrtFilename.toCharArray(), error);
+
+		if (error) {
+			logger.error() << "load ssl cert failed: " << error.message().c_str();
+			return;
+		}
+
+		ctx.use_private_key_file(sslKeyFilename.toCharArray(), boost::asio::ssl::context::pem, error);
+
+		if (error) {
+			logger.error() << "load ssl key failed: " << error.message().c_str();
+			return;
+		}
+	});
+
+	restListener = new http_listener(("https://0.0.0.0:" + String::valueOf(port) + "/object").toCharArray(), serverConfig);
 
 	restListener->support(methods::GET, handle_get);
 	//listener.support(methods::POST, handle_post);
@@ -135,13 +171,12 @@ void RESTServer::start() {
 	try {
 		restListener->open()
 			.then([this] {
-			logger.info("listening to port " + String::valueOf(port), true);
+			logger.info(true) << "listening to port " << port;
 		}).wait();
 	} catch (exception const & e) {
-		logger.error(e.what());
+		logger.error() << e.what();
 	}
 }
-
 
 void RESTServer::stop() {
 	doRun.set(false);
@@ -155,7 +190,7 @@ void RESTServer::stop() {
 #else
 
 void RESTServer::start() {
-	logger.error("disabled, server compiled without rest support");
+	logger.error() << "disabled, server compiled without rest support";
 }
 
 void RESTServer::stop() {
@@ -163,4 +198,3 @@ void RESTServer::stop() {
 }
 
 #endif
-
