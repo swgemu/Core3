@@ -9,6 +9,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 int FishObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 245) {
@@ -25,9 +26,28 @@ int FishObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	if (getContainerObjectsSize() > 0) {
+
 		String text = "@fishing:mnu_filet";
 
-		menuResponse->addRadialMenuItem(245, 3, text);
+		if (getRootParent() == nullptr)
+			return;
+
+		if (getRootParent()->isStructureObject())
+		{
+			StructureObject* house = cast<StructureObject*>(getRootParent());
+
+			if (house != nullptr && house->isOnAdminList(player))
+			{
+				menuResponse->addRadialMenuItem(245, 3, text);
+			}
+		}
+
+		SceneObject* inventory = player->getSlottedObject("inventory");
+
+		if (inventory != nullptr && getRootParent() == inventory)
+		{
+			menuResponse->addRadialMenuItem(245, 3, text);
+		}
 	}
 }
 
