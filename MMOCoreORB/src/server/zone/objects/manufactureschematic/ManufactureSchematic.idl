@@ -334,6 +334,9 @@ class ManufactureSchematic extends IntangibleObject {
 	public native int getFactoryCrateSize();
 
 	@dirty
+	public native string getFactoryCrateType();
+
+	@dirty
 	public native boolean allowFactoryRun();
 
 	@dirty

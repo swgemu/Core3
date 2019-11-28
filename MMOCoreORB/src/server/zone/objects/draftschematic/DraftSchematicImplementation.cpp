@@ -176,3 +176,8 @@ int DraftSchematicImplementation::getLabratory() {
 int DraftSchematicImplementation::getFactoryCrateSize() {
 	return schematicTemplate->getFactoryCrateSize();
 }
+String DraftSchematicImplementation::getFactoryCrateType() {
+	return schematicTemplate->getFactoryCrateType();
+}
+
+

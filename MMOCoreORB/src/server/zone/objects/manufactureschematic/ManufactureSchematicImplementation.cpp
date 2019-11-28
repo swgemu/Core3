@@ -594,6 +594,15 @@ int ManufactureSchematicImplementation::getFactoryCrateSize() {
 	return draftSchematic->getFactoryCrateSize();
 }
 
+String ManufactureSchematicImplementation::getFactoryCrateType() {
+	if (draftSchematic == nullptr)
+		return 0;
+
+	return draftSchematic->getFactoryCrateType();
+}
+
+
+
 bool ManufactureSchematicImplementation::allowFactoryRun() {
 
 	return getFactoryCrateSize() > 0;

@@ -169,8 +169,10 @@ public:
 
 			prototype->updateToDatabase();
 
+			String crateType = draftSchematic->getFactoryCrateType();
+
 			if (quantity > 1) {
-				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(quantity, true);
+				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(quantity,crateType, true);
 
 				if (crate == nullptr) {
 					prototype->destroyObjectFromDatabase(true);

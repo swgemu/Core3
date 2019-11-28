@@ -75,6 +75,8 @@ void DraftSchematicObjectTemplate::parseVariableData(const String& varName, LuaO
 		labratory = Lua::getIntParameter(state);
 	} else if (varName == "factoryCrateSize") {
 		factoryCrateSize = Lua::getIntParameter(state);
+	} else if (varName == "factoryCrateType") {
+		factoryCrateType = Lua::getStringParameter(state);
 	} else if (varName == "isMagic") {
 		isMagic = Lua::getBooleanParameter(state);
 	} else if (varName == "assemblySkill") {

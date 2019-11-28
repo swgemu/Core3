@@ -54,6 +54,8 @@ object_draft_schematic_clothing_clothing_armor_composite_boots = object_draft_sc
    xpType = "crafting_clothing_armor", 
    xp = 420, 
 
+   factoryCrateType =  "object/factory/factory_crate_armor.iff",
+
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 

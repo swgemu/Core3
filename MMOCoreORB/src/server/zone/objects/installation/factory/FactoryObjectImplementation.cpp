@@ -653,7 +653,12 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return nullptr;
 	}
 
-	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(maxSize, false);
+	ManagedReference<ManufactureSchematic*> schematic =
+			getContainerObject(0).castTo<ManufactureSchematic*>();
+
+	String crateType = schematic->getFactoryCrateType();
+
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(maxSize,crateType, false);
 
 	if (crate == nullptr) {
 		stopFactory("manf_error_7", "", "", -1);
