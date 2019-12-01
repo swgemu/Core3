@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_fa4d05c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/fishing/FishObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-12-01T16:44:00Z",
+      "side": 1,
+      "message": "Store the value of getRootParent() somewhere so you\u0027re not calling the function multiple times",
+      "revId": "dcb352c546a8710bd46ed0fae8a4668aa8d897ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
