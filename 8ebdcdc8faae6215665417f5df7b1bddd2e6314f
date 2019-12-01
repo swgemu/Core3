@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_5ad6b1c6",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/nightsister_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-12-01T16:45:46Z",
+      "side": 0,
+      "message": "You need to adjust the other values to account for the 50000 you\u0027re taking out",
+      "revId": "8ebdcdc8faae6215665417f5df7b1bddd2e6314f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
