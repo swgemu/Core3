@@ -150,7 +150,6 @@ class StructureObject extends TangibleObject {
 	public native abstract void updateStructureStatus();
 
 	@prelocked
-	@dirty
 	@read
 	public native string getDebugStructureStatus();
 

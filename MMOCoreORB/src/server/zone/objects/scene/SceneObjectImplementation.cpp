@@ -69,7 +69,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		createObjectMenuComponent();
 	}
 
-	if(dataObjectComponent != nullptr) {
+	if (dataObjectComponent != nullptr) {
 		dataObjectComponent->setParent(asSceneObject());
 		dataObjectComponent->initializeTransientMembers();
 	}
@@ -414,10 +414,11 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			objectMenuComponent = new LuaObjectMenuComponent(name);
-			debug("New Lua ObjectMenuComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug() << "New Lua ObjectMenuComponent created: '" << name << "' for " << templateObject->getFullTemplateString();
+
 			ComponentManager::instance()->putComponent(name, objectMenuComponent);
 		} else {
-			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+			error() << "ObjectMenuComponent not found: '" << name << "' for " << templateObject->getFullTemplateString();
 		}
 
 		test.pop();
@@ -436,10 +437,11 @@ void SceneObjectImplementation::setContainerComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			containerComponent = new LuaContainerComponent(name);
-			debug("New Lua ContainerComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug() << "New Lua ContainerComponent created: '" << name << "' for " << templateObject->getFullTemplateString();
+
 			ComponentManager::instance()->putComponent(name, containerComponent);
 		} else {
-			error("ContainerComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+			error() << "ContainerComponent not found: '" <<  name << "' for " << templateObject->getFullTemplateString();
 		}
 
 		test.pop();

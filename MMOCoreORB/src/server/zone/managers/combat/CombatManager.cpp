@@ -150,7 +150,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 }
 
 void CombatManager::forcePeace(CreatureObject* attacker) const {
-	assert(attacker->isLockedByCurrentThread());
+	fatal(attacker->isLockedByCurrentThread(), "attacker must be locked");
 
 	const DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
@@ -261,7 +261,6 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 }
 
 int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CombatQueueCommand* command) const {
-
 	if (command == nullptr)
 		return -3;
 
@@ -2257,7 +2256,7 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	if (!animation.isEmpty())
 		animationCRC = animation.hashCode();
 
-	assert(animationCRC != 0);
+	fatal(animationCRC != 0, "animationCRC is 0");
 
 	uint64 weaponID = weapon->getObjectID();
 

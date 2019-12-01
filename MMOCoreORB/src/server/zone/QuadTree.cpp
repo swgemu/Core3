@@ -207,7 +207,7 @@ void QuadTree::insert(QuadTreeEntry *obj) {
 		raise(SIGSEGV);
 	}*/
 
-	assert(obj->getParent() == nullptr);
+	E3_ASSERT(obj->getParent() == nullptr);
 
 	Locker locker(&mutex);
 

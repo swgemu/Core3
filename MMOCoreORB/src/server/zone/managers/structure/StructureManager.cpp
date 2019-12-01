@@ -605,7 +605,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (!isCityHall && !player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
-		Time* timeremaining = player->getCooldownTime("declare_residence");
+		const Time* timeremaining = player->getCooldownTime("declare_residence");
 		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
 		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / -3600000.f)));
 

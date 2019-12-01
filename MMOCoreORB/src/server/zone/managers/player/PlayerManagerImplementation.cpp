@@ -109,8 +109,7 @@
 #include <sys/stat.h>
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl,
-							bool trackOnlineUsers) :
-										Logger("PlayerManager") {
+					bool trackOnlineUsers) : Logger("PlayerManager") {
 
 	playerLoggerFilename = "log/player.log";
 	playerLoggerLines = ConfigManager::instance()->getMaxLogLines();
@@ -135,12 +134,12 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	if (ServerCore::truncateDatabases()) {
 		try {
-			String query = "TRUNCATE TABLE characters";
+			const static String query = "TRUNCATE TABLE characters";
 
 			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 			info("characters table truncated", true);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			error(e.getMessage());
 		}
 	}
@@ -156,7 +155,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 			auto name = entry.getKey();
 			auto level = entry.getValue();
 
-			info("Player: " + name + " level: " + String::valueOf(level), true);
+			info(true) << "Player: " << name << " level: " << level;
 		}
 	}
 
@@ -192,7 +191,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 	}
 
 	if (logSecs < 10) {
-		error("rescheduleOnlinePlayerLogTask: attempt to set log schedule too low: " + String::valueOf(logSecs));
+		error() << "rescheduleOnlinePlayerLogTask: attempt to set log schedule too low: " << logSecs;
 		return false;
 	}
 
@@ -206,7 +205,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 
 	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
 
-	info("Loging online players every " + String::valueOf(logSecs) + " seconds.", true);
+	info(true) << "Loging online players every " << logSecs << " seconds.";
 
 	return true;
 }
@@ -267,7 +266,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 
 	rewardsListLua.pop();
 
-	info("Loaded " + String::valueOf(veteranRewards.size()) + " veteran rewards.", true);
+	info(true) << "Loaded " << veteranRewards.size() << " veteran rewards.";
 
 	LuaObject jboxSongs = lua->getGlobalObject("jukeboxSongs");
 
@@ -309,7 +308,7 @@ void PlayerManagerImplementation::loadStartingLocations() {
 
 	delete iffStream;
 
-	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
+	info(true) << "Loaded " << startingLocationList.getTotalLocations() << " starting locations.";
 }
 
 void PlayerManagerImplementation::loadXpBonusList() {
@@ -355,7 +354,7 @@ void PlayerManagerImplementation::loadXpBonusList() {
 			xpBonusList.put(speciesName, bonusList);
 	}
 
-	info("Loaded xp bonuses for " + String::valueOf(xpBonusList.size()) + " species.", true);
+	info(true) << "Loaded xp bonuses for " << xpBonusList.size() << " species.";
 }
 
 void PlayerManagerImplementation::loadQuestInfo() {
@@ -381,15 +380,14 @@ void PlayerManagerImplementation::loadQuestInfo() {
 		questInfo.add(quest);
 	}
 
-	info("Loaded " + String::valueOf(questInfo.size()) + " quests.", true);
+	info(true) << "Loaded " << questInfo.size() << " quests.";
 }
 
 void PlayerManagerImplementation::loadPermissionLevels() {
 	try {
 		permissionLevelList = PermissionLevelList::instance();
 		permissionLevelList->loadLevels();
-	}
-	catch(Exception& e) {
+	} catch(const Exception& e) {
 		error("Couldn't load permission levels.");
 		error(e.getMessage());
 	}
@@ -425,13 +423,11 @@ void PlayerManagerImplementation::loadNameMap() {
 			}
 		}
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		fatal(e.getMessage());
 	}
 
-	StringBuffer msg;
-	msg << "loaded " << nameMap->size() << " character names in memory";
-	info(msg.toString(), true);
+	info(true) << "loaded " << nameMap->size() << " character names in memory";
 }
 
 void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& logEntry) {
@@ -459,7 +455,7 @@ void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& log
 
 		// report failure if any
 		if (err != 0)
-			error("Failed to archive player log to " + archiveFilename.toString() + " err = " + String::valueOf(err));
+			error() << "Failed to archive player log to " << archiveFilename.toString() << " err = " << err;
 
 		playerLogger.setFileLogger(playerLoggerFilename, true);
 	}
@@ -867,7 +863,7 @@ String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const
 }
 
 String PlayerManagerImplementation::setLastName(CreatureObject* creature, const String& newLastName, bool skipVerify) {
-    if (creature == nullptr)
+	if (creature == nullptr)
 		return "nullptr creature specified";
 
 	if (!creature->isPlayerCreature())
@@ -1060,9 +1056,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 }
 
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {
-	if (destructor == nullptr) {
-		assert(0 && "destructor should always be != nullptr.");
-	}
+	fatal(destructor, "destructor cant be nullptr.");
 
 	if (!destructedObject->isPlayerCreature())
 		return 1;
@@ -4082,7 +4076,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 	Locker locker(player);
 
 	try {
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		VectorMap<byte, int> attributeValues;
 		attributeValues.setNullValue(0);
@@ -4109,7 +4103,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				continue;
 			}
 
-			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
+			const VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
 
 			for (int j = 0; j < attributeModifiers->size(); ++j) {
 				byte modifier = attributeModifiers->elementAt(j).getKey();
@@ -4155,7 +4149,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				player->setMaxHAM(i, calculated, false);
 			}
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }
@@ -4184,7 +4178,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 
 		smodsGuard.release();
 
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		for (int i = 0; i < buffs->getBuffListSize(); i++) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
@@ -4200,7 +4194,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 			player->updateGroupInviterID(grp->getLeader()->getObjectID());
 			GroupManager::instance()->joinGroup(player);
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }
@@ -5177,13 +5171,14 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
-
 	if (player == nullptr || ai == nullptr)
 		return false;
 
 	if (!player->isPlayerCreature()) {
 		return true;
 	}
+
+	Locker locker(player, ai);
 
 	if (ai->isNonPlayerCreatureObject()) {
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);
