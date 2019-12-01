@@ -58,7 +58,7 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		}
 
 		if (!player->checkCooldownRecovery("mark_of_hero")) {
-			Time* timeRemaining = player->getCooldownTime("mark_of_hero");
+			const Time* timeRemaining = player->getCooldownTime("mark_of_hero");
 			StringIdChatParameter cooldown("quest/hero_of_tatooine/system_messages", "restore_not_yet");
 			cooldown.setTO(getCooldownString(timeRemaining->miliDifference() * -1));
 			player->sendSystemMessage(cooldown);
@@ -68,7 +68,7 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		player->healDamage(player, CreatureAttribute::HEALTH, 200);
 		player->healDamage(player, CreatureAttribute::ACTION, 200);
 		player->healDamage(player, CreatureAttribute::MIND, 200);
-		
+
 		player->removeFeignedDeath();
 
 		data->setCharges(charges - 1);

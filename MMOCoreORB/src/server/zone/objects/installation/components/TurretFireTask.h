@@ -70,7 +70,7 @@ public:
 
 		ManagedReference<ObjectController*> objectController = turret->getZoneServer()->getObjectController();
 
-		CombatQueueCommand* command = cast<CombatQueueCommand*>(objectController->getQueueCommand(STRING_HASHCODE("turretfire")));
+		const CombatQueueCommand* command = cast<const CombatQueueCommand*>(objectController->getQueueCommand(STRING_HASHCODE("turretfire")));
 		ManagedReference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 		if (command != nullptr && weapon != nullptr) {

@@ -8,7 +8,6 @@ import server.zone.objects.tangible.wearables.WearableObject;
 
 @json
 class RobeObject extends WearableObject {
-
 	public RobeObject() {
 		Logger.setLoggingName("RobeObject");
 	}
@@ -19,6 +18,7 @@ class RobeObject extends WearableObject {
 		Logger.setLoggingName("RobeObject");
 	}
 
+	@read
 	public native string getSkillRequired();
 
 	@dirty

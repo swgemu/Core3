@@ -628,8 +628,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		// Check to see if we can expedite the despawn of this corpse
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
-		Locker locker(player, destructedObject);
-
 		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 	} catch (...) {
 		destructedObject->scheduleDespawn();

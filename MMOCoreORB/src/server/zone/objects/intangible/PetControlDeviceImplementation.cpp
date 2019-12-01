@@ -84,7 +84,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call"); // cant call pet right now
 		return;
 	}
-	assert(pet->isLockedByCurrentThread());
+
+	E3_ASSERT(pet->isLockedByCurrentThread());
 
 	unsigned int petFaction = pet->getFaction();
 
@@ -105,7 +106,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		}
 	}
 
-	if(player->getPendingTask("call_pet") != nullptr) {
+	if (player->getPendingTask("call_pet") != nullptr) {
 		StringIdChatParameter waitTime("pet/pet_menu", "call_delay_finish_pet"); // Already calling a Pet: Call will be finished in %DI seconds.
 		AtomicTime nextExecution;
 		Core::getTaskManager()->getNextExecutionTime(player->getPendingTask("call_pet"), nextExecution);

@@ -464,7 +464,7 @@ void AiAgentImplementation::setupAttackMaps() {
 		attackMap = npcTemplate->getSecondaryAttacks();
 
 		for (int i = 0; i < attackMap->size(); i++) {
-			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
+			const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
 			if (attack == nullptr)
 				continue;
@@ -808,7 +808,7 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
     if (objectController == nullptr)
         return false;
 
-    QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+    const QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
     ManagedReference<SceneObject*> followCopy = getFollowObject().get();
     if (queueCommand == nullptr || followCopy == nullptr
             || (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
@@ -1020,9 +1020,9 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
-	CombatQueueCommand* queueCommand = cast<CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
+	const CombatQueueCommand* queueCommand = cast<const CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
 
-	VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
+	const VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
 
 	if (effects->size() == 0) {
 		return true;

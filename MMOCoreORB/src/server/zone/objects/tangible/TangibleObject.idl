@@ -707,7 +707,7 @@ class TangibleObject extends SceneObject {
 		junkValue = jValue;
 	}
 
-	@dirty
+	@read
 	public abstract int getJunkValue() {
 		return junkValue;
 	}

@@ -89,16 +89,14 @@ void SkillManager::loadClientData() {
 		parent->addChild(skill);
 
 		if (skillMap.put(skill->getSkillName().hashCode(), skill) != nullptr) {
-			error("overwriting skill name");
-
-			assert(0 && "skill name hashcode error");
+			fatal("overwriting skill name");
 		}
 
 		//Load the abilities of the skill into the ability map.
-		Vector<String> commands = skill->commands;
+		const auto& commands = skill->commands;
 
 		for (int i = 0; i < commands.size(); ++i) {
-			String command = commands.get(i);
+			const auto& command = commands.get(i);
 
 			if (!abilityMap.containsKey(command)) {
 				abilityMap.put(command, new Ability(command));
