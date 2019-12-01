@@ -748,25 +748,25 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public abstract int addDotState(CreatureObject attacker,
-									unsigned long dotType,
-									unsigned long objectID,
-									unsigned int strength,
-									byte type,
-									unsigned int duration,
-									float potency,
-									unsigned int defense,
-									int secondaryStrength = 0) {
+				unsigned long dotType,
+				unsigned long objectID,
+				unsigned int strength,
+				byte type,
+				unsigned int duration,
+				float potency,
+				unsigned int defense,
+				int secondaryStrength = 0) {
 
 		return damageOverTimeList.addDot(this,
-										 attacker,
-										 objectID,
-										 duration,
-										 dotType,
-										 type,
-										 strength,
-										 potency,
-										 defense,
-										 secondaryStrength);
+				attacker,
+				objectID,
+				duration,
+				dotType,
+				type,
+				strength,
+				potency,
+				defense,
+				secondaryStrength);
 	}
 
 	@preLocked
@@ -1837,27 +1837,27 @@ class CreatureObject extends TangibleObject {
 		return height;
 	}
 
-	@dirty
+	@read
 	public boolean isDroidSpecies() {
 		//Determine if creature is a droid.
 		return getSpecies() >= 203 && getSpecies() <= 225 && getSpecies() != 207;
 	}
 
-	@dirty
+	@read
 	public boolean isWalkerSpecies() {
 		//Determine if creature is an ATST or ATAT.
 		return getSpecies() == 226;
 	}
 
-	@dirty
+	@read
 	public boolean isProbotSpecies() {
 		return getSpecies() == 216;
 	}
 
-	@dirty
+	@read
 	public native boolean hasEffectImmunity(byte effectType);
 
-	@dirty
+	@read
 	public native boolean hasDotImmunity(unsigned int dotType);
 
 	@read
@@ -1906,11 +1906,9 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
-	@preLocked
 	public native int getSkillMod(final string skillmod);
 
 	@dirty
-	@preLocked
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 
 	@read
@@ -2140,14 +2138,8 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native boolean isPlayerCreature();
 
-	@dirty
-	public abstract int getReceiverFlags() {
-	    int type = CloseObjectsVector.CREOTYPE;
-	    if (isPlayerCreature())
-	        type = type | CloseObjectsVector.PLAYERTYPE;
-
-	    return type | super.getReceiverFlags();
-	}
+	@read
+	public native int getReceiverFlags();
 
 	@dirty
 	public abstract boolean isInformantCreature() {

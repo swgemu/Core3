@@ -95,7 +95,7 @@ public:
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
-	String getTemplateFile(uint32 key) const;
+	const String& getTemplateFile(uint32 key) const;
 
 	SharedObjectTemplate* getTemplate(uint32 key) const;
 

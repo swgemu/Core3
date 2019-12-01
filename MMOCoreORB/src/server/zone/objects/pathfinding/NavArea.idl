@@ -30,7 +30,7 @@ class NavArea extends ActiveArea {
 	// List of objects this navmesh currently has built in it's scene.
 	@dereferenced
 	protected HashSet<unsigned long> containedObjects;
-	
+
 	@dereferenced
 	protected transient ReadWriteLock containedLock;
 
@@ -85,7 +85,7 @@ class NavArea extends ActiveArea {
 		disableUpdates = disable;
 	}
 
-	@dirty
+	@read
 	public boolean isNavArea() {
 		return true;
 	}

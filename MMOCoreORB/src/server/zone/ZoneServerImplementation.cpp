@@ -767,7 +767,7 @@ void ZoneServerImplementation::setServerStateShuttingDown() {
 	info(msg, true);
 }
 
-String ZoneServerImplementation::getLoginMessage() {
+String ZoneServerImplementation::getLoginMessage() const {
 	return loginMessage;
 }
 

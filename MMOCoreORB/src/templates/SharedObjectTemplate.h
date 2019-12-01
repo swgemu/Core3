@@ -577,7 +577,7 @@ public:
 		return false;
 	}
 
-	virtual bool isSharedTangibleObjectTemplate() {
+	virtual bool isSharedTangibleObjectTemplate() const {
 		return false;
 	}
 
@@ -685,11 +685,11 @@ public:
 		return false;
 	}
 
-	virtual bool isCreatureHabitatTemplate() {
+	virtual bool isCreatureHabitatTemplate() const {
 		return false;
 	}
 
-	virtual bool isRepairToolTemplate() {
+	virtual bool isRepairToolTemplate() const {
 		return false;
 	}
 
@@ -701,7 +701,7 @@ public:
 		return false;
 	}
 
-	virtual bool isRecycleToolTemplate() {
+	virtual bool isRecycleToolTemplate() const {
 	    	return false;
 	}
 
@@ -737,11 +737,11 @@ public:
 		return false;
 	}
 
-	virtual bool isPlayerCreatureTemplate() {
+	virtual bool isPlayerCreatureTemplate() const {
 		return false;
 	}
 
-	virtual bool isCraftingStationTemplate() {
+	virtual bool isCraftingStationTemplate() const {
 		return false;
 	}
 

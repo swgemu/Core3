@@ -156,7 +156,7 @@ int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
 	if (ghost == nullptr)
 		return 0;
 
-	SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
+	const SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
 	int total = 0;
 
 	for (int i = 0; i < ownedVendors->size(); i++) {

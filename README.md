@@ -1,14 +1,15 @@
-# SWGEmu Core3 #
+# SWGEmu Core3
 
-## What is SWGEmu? ##
+## What is SWGEmu?
 
 Star Wars Galaxies was a massively multi-player online role playing game introduced by Sony Online Entertainment in the year 2003 and shut down in 2011.
 It is this game the SWGEmu project focuses to recreate at a specific milestone referred to as Pre-CU, or Pre-Combat Upgrade. The Combat Upgrade was a set of game changes which radically changed the game-play, to the dislike of thousands of players. These changes led to the founding of this project, in an attempt to "recreate" the game as it was during the Pre-CU era.
 At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emulator is meant to imitate Sony Online Entertainment's server-side software, which hosted the galaxies of Star Wars Galaxies during the Pre-CU era.
 
-#### How to build ####
+## How to Build
 
-##### Dependencies #####
+### Dependencies
+
   * CMake 3.1.0 or higher
   * BerkeleyDB 5.3
   * MySQL Client and Server
@@ -20,10 +21,16 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
   * engine3
   * java jre 1.7+
 
-### Debian 9+ or Ubuntu 16.04+ ###
-  * Install dependencies
+### Build
+
+  * Install dependencies (Debian 9+ or Ubuntu 16.04+)
 
         sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre
+
+  * Install dependencies (RHEL/CentOS 8+ or Fedora 28+)
+
+        sudo dnf install automake cmake git gcc gcc-c++ java-1.8.0-openjdk-headless libatomic libdb-devel lua-devel make mariadb-devel openssl-devel
+
   * Clone core3 repository somewhere  (~/git)
 
         mkdir -p ~/git
@@ -37,11 +44,13 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
 
         mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
 
-### How to Run ###
+## How to Run
+
     cd ~/git/Core3/MMOCoreORB/bin
     ./core3
 
-### License ###
+## License
+
     Copyright (C) 2019 SWGEmu
 
     This program is free software: you can redistribute it and/or modify

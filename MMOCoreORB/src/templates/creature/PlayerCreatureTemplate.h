@@ -57,7 +57,7 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-	bool isPlayerCreatureTemplate() {
+	bool isPlayerCreatureTemplate() const {
 		return true;
 	}
 };

@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
 	} catch (const Exception& e) {
 		e.printStackTrace();
 	} catch (...) {
-		System::out << "unreported exception caught main()" << endl;
+		System::err << "unreported exception caught main()" << endl;
 	}
 
 	pthread_exit(&ret);
