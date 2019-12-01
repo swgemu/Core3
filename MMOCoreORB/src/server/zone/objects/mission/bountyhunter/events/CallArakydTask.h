@@ -79,6 +79,7 @@ public:
 				objectiveRef->setArakydDroid(droid);
 				olocker.release();
 
+				Locker lock(droid);
 				droid->addCreatureFlag(CreatureFlag::STATIC);
 				droid->setAITemplate();
 				time -= 1;

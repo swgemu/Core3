@@ -29,7 +29,8 @@ tricky_donkuwah_scout = Creature:new {
 
 	templates = {
 		"object/mobile/dulok_male.iff",
-		"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_female.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -42,14 +43,14 @@ tricky_donkuwah_scout = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "donkuwah_weapons",
-	secondaryWeapon = "unarmed",
+	primaryWeapon = "ewok_melee",
+	secondaryWeapon = "ewok_ranged",
 	conversationTemplate = "",
 	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(fencermaster,brawlermaster),
-	secondaryAttacks = { }
+	primaryAttacks = merge(brawlermaster,pikemanmaster),
+	secondaryAttacks = merge(riflemanmaster,marksmanmaster),
 }
 
 CreatureTemplates:addCreatureTemplate(tricky_donkuwah_scout, "tricky_donkuwah_scout")
