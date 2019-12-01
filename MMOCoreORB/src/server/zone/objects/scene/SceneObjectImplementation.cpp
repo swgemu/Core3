@@ -69,7 +69,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		createObjectMenuComponent();
 	}
 
-	if(dataObjectComponent != nullptr) {
+	if (dataObjectComponent != nullptr) {
 		dataObjectComponent->setParent(asSceneObject());
 		dataObjectComponent->initializeTransientMembers();
 	}

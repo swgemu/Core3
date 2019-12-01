@@ -18,7 +18,7 @@ void BuffImplementation::init() {
 	skillModifiers.setNoDuplicateInsertPlan();
 	skillModifiers.setNullValue(0);
 
-	assert(buffDuration >= 0);
+	E3_ASSERT(buffDuration >= 0);
 }
 
 void BuffImplementation::initializeTransientMembers() {

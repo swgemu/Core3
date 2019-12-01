@@ -199,7 +199,7 @@ void VendorDataComponent::runVendorUpdate() {
 	} else {
 
 		/// Award hourly XP
-		assert(vendor->isLockedByCurrentThread());
+		E3_ASSERT(vendor->isLockedByCurrentThread());
 
 		Locker locker(owner, vendor);
 		playerManager->awardExperience(owner, "merchant", 150 * hoursSinceLastUpdate, false);
@@ -230,7 +230,7 @@ float VendorDataComponent::getMaintenanceRate() {
 	}
 
 	// Additional 6 credits per hour to be registered on the map
-	if(registered)
+	if (registered)
 		maintRate += 6.f;
 
 	return maintRate;

@@ -1056,9 +1056,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 }
 
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {
-	if (destructor == nullptr) {
-		assert(0 && "destructor should always be != nullptr.");
-	}
+	fatal(destructor, "destructor cant be nullptr.");
 
 	if (!destructedObject->isPlayerCreature())
 		return 1;
@@ -5173,13 +5171,14 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
-
 	if (player == nullptr || ai == nullptr)
 		return false;
 
 	if (!player->isPlayerCreature()) {
 		return true;
 	}
+
+	Locker locker(player, ai);
 
 	if (ai->isNonPlayerCreatureObject()) {
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);

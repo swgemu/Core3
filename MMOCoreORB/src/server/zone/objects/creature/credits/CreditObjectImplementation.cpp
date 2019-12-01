@@ -6,7 +6,7 @@ void CreditObjectImplementation::setCashCredits(int credits, bool notifyClient) 
 	if (cashCredits == credits)
 		return;
 
-	assert(credits >= 0);
+	E3_ASSERT(credits >= 0);
 
 	cashCredits = credits;
 
@@ -35,7 +35,7 @@ void CreditObjectImplementation::setBankCredits(int credits, bool notifyClient) 
 	if (bankCredits == credits)
 		return;
 
-	assert(credits >= 0);
+	E3_ASSERT(credits >= 0);
 
 	bankCredits = credits;
 

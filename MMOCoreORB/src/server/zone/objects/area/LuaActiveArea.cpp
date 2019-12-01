@@ -28,7 +28,7 @@ LuaActiveArea::LuaActiveArea(lua_State *L) : LuaSceneObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<ActiveArea*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<ActiveArea*>(lua_touserdata(L, 1));
 #endif
@@ -43,7 +43,7 @@ int LuaActiveArea::_setObject(lua_State* L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<ActiveArea*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<ActiveArea*>(lua_touserdata(L, -1));
 #endif
