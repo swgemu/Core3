@@ -74,7 +74,7 @@ class AiAgent extends CreatureObject {
 	protected WeaponObject defaultWeapon;
 	protected WeaponObject primaryWeapon;
 	protected WeaponObject secondaryWeapon;
-	
+
 	protected WeaponObject currentWeapon;
 
 	protected transient CreatureAttackMap primaryAttackMap;
@@ -148,7 +148,7 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient Time alertedTime;
-	
+
 	@dereferenced
 	protected transient Time aggroDelay;
 
@@ -168,7 +168,7 @@ class AiAgent extends CreatureObject {
 	public static final int PATROLLING = 4;
 	public static final int FLEEING = 5;
 	public static final int LEASHING = 6;
-	
+
 	protected transient unsigned long customAiMap;
 
 	public AiAgent() {
@@ -181,7 +181,7 @@ class AiAgent extends CreatureObject {
 		nextMovementInterval = UPDATEMOVEMENTINTERVAL;
 
 		reactionRank = 0;
-		
+
 		customAiMap = 0;
 
 		convoTemplateCRC = 0;
@@ -431,16 +431,16 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public native void setupAttackMaps();
-	
+
 	@local
 	public native WeaponObject createWeapon(unsigned int weaponCRC, boolean primaryWeapon);
-	
+
 	@local
 	public native void unequipWeapons();
-	
+
 	@local
 	public native void equipPrimaryWeapon();
-	
+
 	@local
 	public native void equipSecondaryWeapon();
 
@@ -797,7 +797,7 @@ class AiAgent extends CreatureObject {
 	@mock
 	@preLocked
 	@local
-	public abstract native QueueCommand getNextAction();
+	public abstract native final QueueCommand getNextAction();
 	@mock
 	public abstract native boolean validateStateAttack();
 
@@ -1224,7 +1224,7 @@ class AiAgent extends CreatureObject {
 	public Time getAlertedTime() {
 		return alertedTime;
 	}
-	
+
 	@local
 	@dirty
 	public Time getAggroDelay() {
@@ -1363,37 +1363,37 @@ class AiAgent extends CreatureObject {
 	public void eraseBlackboard(final string key) {
 		blackboard.drop(key);
 	}
-	
+
 	@preLocked
 	public void setCustomAiMap(unsigned long customMap) {
 		customAiMap = customMap;
 	}
-	
+
 	@preLocked
 	public void setCurrentWeapon(WeaponObject weap) {
 		currentWeapon = weap;
 	}
-	
+
 	@preLocked
 	public void setDefaultWeapon(WeaponObject weap) {
 		defaultWeapon = weap;
 	}
-	
+
 	@dirty
 	public abstract WeaponObject getPrimaryWeapon() {
 		return primaryWeapon;
 	}
-	
+
 	@dirty
 	public abstract WeaponObject getSecondaryWeapon() {
 		return secondaryWeapon;
 	}
-	
+
 	@dirty
 	public abstract WeaponObject getDefaultWeapon() {
 		return defaultWeapon;
 	}
-	
+
 	@dirty
 	public abstract WeaponObject getCurrentWeapon() {
 		return defaultWeapon;

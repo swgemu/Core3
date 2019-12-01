@@ -161,7 +161,7 @@ template<> bool CheckRandomLevel::check(AiAgent* agent) const {
 }
 
 template<> bool CheckAttackInRange::check(AiAgent* agent) const {
-	QueueCommand* queueCommand = agent->getNextAction();
+	const QueueCommand* queueCommand = agent->getNextAction();
 	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 
 	if (queueCommand == nullptr || followCopy == nullptr)

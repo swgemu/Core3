@@ -446,7 +446,7 @@ void AiAgentImplementation::setupAttackMaps() {
 	secondaryAttackMap = new CreatureAttackMap();
 
 	for (int i = 0; i < attackMap->size(); i++) {
-		CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
+		const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
 		if (attack == nullptr)
 			continue;
@@ -833,9 +833,9 @@ bool AiAgentImplementation::selectDefaultAttack() {
     return true;
 }
 
-QueueCommand* AiAgentImplementation::getNextAction() {
+const QueueCommand* AiAgentImplementation::getNextAction() {
     if (getZoneServer() == nullptr || getZoneServer()->getObjectController() == nullptr)
-        return NULL;
+        return nullptr;
 
     return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 }
