@@ -1022,35 +1022,33 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 }
 
 uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* playerCreature, int condition) {
-	//Switch the sign of the value
-	int32 value = -condition;
+	// Switch the sign of the value
+	int value = -condition;
 
 	if (value < 0)
 		return 0;
 
-	uint32 recoveryTime = (value / 5); //In seconds - 3 seconds is recoveryEvent timer
+	int recoveryTime = (value / 5); // In seconds - 3 seconds is recoveryEvent timer
 
-	//Recovery time is gated between 10 and 60 seconds.
-	recoveryTime = Math::min(Math::max(recoveryTime, 10u), 60u);
+	// Recovery time cannot be higher than 60 seconds.
+	recoveryTime = (recoveryTime > 60) ? 60 : recoveryTime;
 
 	//Check for incap recovery food buff - overrides recovery time gate.
-	/*if (hasBuff(BuffCRC::FOOD_INCAP_RECOVERY)) {
-		Buff* buff = getBuff(BuffCRC::FOOD_INCAP_RECOVERY);
+	if (playerCreature->hasBuff(STRING_HASHCODE("food.incap_recovery"))) {
+		Buff* buff = playerCreature->getBuff(STRING_HASHCODE("food.incap_recovery"));
 
 		if (buff != nullptr) {
 			float percent = buff->getSkillModifierValue("incap_recovery");
 
 			recoveryTime = round(recoveryTime * ((100.0f - percent) / 100.0f));
 
-			StfParameter* params = new StfParameter();
-			params->addDI(percent);
+            StringIdChatParameter message("combat_effects", "incap_recovery");
+            message.setDI(recoveryTime);
+            playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
 
-			sendSystemMessage("combat_effects", "incap_recovery", params); //Incapacitation recovery time reduced by %DI%.
-			delete params;
-
-			removeBuff(buff);
+			playerCreature->removeBuff(buff);
 		}
-	}*/
+	}
 
 	return recoveryTime;
 }
@@ -1092,8 +1090,8 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
 
 
-		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
-		playerCreature->setCountdownTimer(incapTime, true);
+		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
+		playerCreature->setCountdownTimer((uint32) incapTime, true);
 
 		Reference<Task*> oldTask = playerCreature->getPendingTask("incapacitationRecovery");
 

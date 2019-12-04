@@ -805,6 +805,15 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 		return;
 
 	if (amount > 0) {
+          
+          	if (ghost->hasCappedExperience("force_rank_xp"))
+                {
+                	StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
+                	message.setTO("exp_n", "force_rank_xp");
+                	player->sendSystemMessage(message);
+                	return;
+                }
+          
 		ghost->addExperience("force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {
@@ -4109,4 +4118,3 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 ZoneServer* FrsManagerImplementation::getZoneServer() {
 	return zoneServer.get();
 }
-

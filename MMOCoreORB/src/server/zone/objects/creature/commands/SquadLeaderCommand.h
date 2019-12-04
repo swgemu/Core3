@@ -126,9 +126,7 @@ public:
 		if (group == nullptr)
 			return 0;
 
-		float modifier = (float)(group->getGroupSize()) / 10.0f;
-			if (modifier < 1.0)
-				modifier += 1.0f;
+		float modifier = 1.0f + ((float)(group->getGroupSize()) / 20.0f);
 
 			return modifier;
 	}
