@@ -19,6 +19,9 @@ namespace server {
 using namespace server::zone;
 
 #include "server/login/LoginServer.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 #include "server/ping/PingServer.h"
 
 namespace conf {
@@ -61,6 +64,9 @@ class ServerCore : public Core, public Logger {
 	WebServer* webServer;
 	MetricsManager* metricsManager;
 	server::web3::RESTServer* restServer;
+#ifdef WITH_SESSION_API
+	Reference<server::login::SessionAPIClient*> sessionAPIClient;
+#endif // WITH_SESSION_API
 
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
