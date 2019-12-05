@@ -6,6 +6,7 @@
 #define LOGINCLIENT_H_
 
 #include "engine/engine.h"
+#include "engine/service/proto/packets/DisconnectMessage.h"
 
 #include "packets/ErrorMessage.h"
 
@@ -43,14 +44,25 @@ namespace login {
 			accountID = -1;
 		}
 
+		String getIPAddress() const {
+			if (session == nullptr)
+				return "null-session";
+
+			return session->getIPAddress();
+		}
+
 		void sendMessage(Message* msg) {
 			session->sendPacket(cast<BasePacket*>(msg));
 		}
 	
-		void sendErrorMessage(const String& title, const String& text, bool fatal = false) {
+		void sendErrorMessage(const String& title, const String& text, bool fatal = false, bool sendDisconnect = true) {
 			ErrorMessage* errorMessage = new ErrorMessage(title, text, fatal);
 
 			sendMessage(errorMessage);
+
+			if (sendDisconnect) {
+				session->sendPacket(new DisconnectMessage(session));
+			}
 		}
 
 		void info(const String& msg, bool doLog = true) {
