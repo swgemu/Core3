@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_3a313d0c",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/components/GarageZoneComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-12-05T23:45:04Z",
+      "side": 1,
+      "message": "gotta re-null check here because obj might have been set to getSlottedObject(\"rider\")",
+      "revId": "e3b75d3119f06bb37e798217963fbcff04570b06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_1a36f903",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/components/GarageZoneComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2019-12-05T23:45:04Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "e3b75d3119f06bb37e798217963fbcff04570b06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
