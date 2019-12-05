@@ -9,6 +9,9 @@
 #include "AccountManager.h"
 #include "server/login/LoginClient.h"
 #include "server/login/LoginServer.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 #include "server/login/packets/AccountVersionMessage.h"
 #include "server/login/packets/EnumerateCharacterId.h"
 #include "server/login/packets/LoginClientToken.h"
@@ -64,6 +67,16 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	if (account == nullptr)
 		return;
 
+#ifdef WITH_SESSION_API
+	auto sessionApproval = SessionAPIClient::instance()->approveNewSession(client, account);
+
+	if (!sessionApproval.isActionAllowed()) {
+		client->info("Login session not approved: " + sessionApproval.getLogMessage(), true);
+		client->sendErrorMessage(sessionApproval.getTitle(), sessionApproval.getMessage(true));
+		return;
+	}
+#endif // WITH_SESSION_API
+
 	//TODO: This should probably be refactored at some point.
 	uint32 sessionID = System::random();
 
@@ -75,6 +88,16 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	client->setAccountID(accountID);
 
 	String ip = client->getSession()->getAddress().getIPAddress();
+
+#ifdef WITH_SESSION_API
+	auto sessionStart = SessionAPIClient::instance()->startNewSession(client, account);
+
+	if (!sessionStart.isActionAllowed()) {
+		client->info("Login session start failed: " + sessionStart.getLogMessage(), true);
+		client->sendErrorMessage(sessionStart.getTitle(), sessionStart.getMessage(true), 0, true);
+		return;
+	}
+#endif // WITH_SESSION_API
 
 	StringBuffer sessionQuery;
 	sessionQuery << "REPLACE INTO sessions (account_id, session_id, ip, expires) VALUES (";
