@@ -18,6 +18,9 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
@@ -50,6 +53,16 @@ public:
 
 			return;
 		}
+
+#ifdef WITH_SESSION_API
+		auto connectApproval = SessionAPIClient::instance()->approvePlayerConnect(client->getIPAddress(), ghost->getAccountID(), characterID);
+
+		if (!connectApproval.isActionAllowed()) {
+			client->info("Player connect not approved: " + connectApproval.getLogMessage(), true);;
+			client->sendMessage(new ErrorMessage(connectApproval.getTitle(), connectApproval.getMessage(true), 0));
+			return;
+		}
+#endif // WITH_SESSION_API
 
 		player->setClient(client);
 		client->setPlayer(player);

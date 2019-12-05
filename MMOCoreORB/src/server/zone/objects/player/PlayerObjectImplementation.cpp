@@ -74,6 +74,9 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	playerLogLevel = ConfigManager::instance()->getPlayerLogLevel();
@@ -1299,6 +1302,13 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	resetSessionStats(true);
 
+#ifdef WITH_SESSION_API
+	auto client = playerCreature->getClient();
+
+	// NOTE: Call after resetSessionStats so first session_stats has been saved and can be inspected
+	SessionAPIClient::instance()->notifyPlayerOnline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(), playerCreature->getObjectID());
+#endif // WITH_SESSION_API
+
 	ChatManager* chatManager = server->getChatManager();
 	ZoneServer* zoneServer = server->getZoneServer();
 
@@ -1417,6 +1427,13 @@ void PlayerObjectImplementation::notifyOffline() {
 	}
 
 	logSessionStats(true);
+
+#ifdef WITH_SESSION_API
+	auto client = playerCreature->getClient();
+
+	// NOTE: Call after logSessionStats so session_stats has been saved and can be inspected
+	SessionAPIClient::instance()->notifyPlayerOffline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(), playerCreature->getObjectID());
+#endif // WITH_SESSION_API
 }
 
 void PlayerObjectImplementation::incrementSessionMovement(float moveDelta) {
