@@ -39,6 +39,7 @@ option(ENABLE_NATIVE "Enables -march=native compiler option" ON)
 option(ENABLE_OMIT_FRAMEPOINTER "Enables -fno-omit-frame-pointer compiler option" ON)
 option(ENABLE_ERROR_ON_WARNINGS "Enables -Werror compiler option" ON)
 option(ENABLE_REST_SERVER "Enables RESTServer if cpprestsdk is found" OFF)
+option(ENABLE_SESSION_API "Enables Session API support" OFF)
 option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
@@ -76,6 +77,11 @@ include_directories(${OPENSSL_INCLUDE_DIR})
 
 find_package(ZLIB REQUIRED)
 include_directories(${ZLIB_INCLUDE_DIRS})
+
+if (ENABLE_SESSION_API)
+    message(STATUS "Compiling with session API support")
+    add_definitions(-DWITH_SESSION_API)
+endif()
 
 if(ENABLE_MULTITHREADED_LINKER)
 	macro(check_cxx_linker_flag _Flag _Var)
