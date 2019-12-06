@@ -12,6 +12,9 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/login/LoginServer.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 #include "ping/PingServer.h"
 #include "status/StatusServer.h"
 #include "web/WebServer.h"
@@ -47,6 +50,9 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 	database = nullptr;
 	mantisDatabase = nullptr;
 	restServer = nullptr;
+#if WITH_SESSION_API
+	sessionAPIClient = nullptr;
+#endif // WITH_SESSION_API
 
 	truncateAllData = truncateDatabases;
 	arguments = args;
@@ -441,6 +447,15 @@ void ServerCore::registerConsoleCommmands() {
 	consoleCommands.put("dumpcfg", dumpConfigLambda);
 	consoleCommands.put("dumpconfig", dumpConfigLambda);
 
+#ifdef WITH_SESSION_API
+	const auto sessionApiLambda = [this](const String& arguments) -> CommandResult {
+		return SessionAPIClient::instance()->consoleCommand(arguments) ? SUCCESS : ERROR;
+	};
+
+	consoleCommands.put("sessions", sessionApiLambda);
+	consoleCommands.put("sessionapi", sessionApiLambda);
+#endif // WITH_SESSION_API
+
 	consoleCommands.put("toggleModifiedObjectsDump", [this](const String& arguments) -> CommandResult {
 		DOBObjectManager::setDumpLastModifiedTraces(!DOBObjectManager::getDumpLastModifiedTraces());
 
@@ -640,6 +655,12 @@ void ServerCore::initialize() {
 			restServer->start();
 		}
 
+#if WITH_SESSION_API
+		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
+			sessionAPIClient = SessionAPIClient::instance();
+		}
+#endif // WITH_SESSION_API
+
 		info("initialized", true);
 
 		System::flushStreams();
@@ -678,6 +699,12 @@ void ServerCore::shutdown() {
 		delete restServer;
 		restServer = nullptr;
 	}
+
+#ifdef WITH_SESSION_API
+	if (sessionAPIClient) {
+		sessionAPIClient->finalizeInstance();
+	}
+#endif // WITH_SESSION_API
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
