@@ -68,13 +68,18 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 		return;
 
 #ifdef WITH_SESSION_API
-	auto sessionApproval = SessionAPIClient::instance()->approveNewSession(client, account);
+	SessionAPIClient::instance()->approveNewSession(client->getIPAddress(), account->getAccountID(), [=](SessionApprovalResult result) {
+		if (!result.isActionAllowed()) {
+			client->info("Login session not approved: " + result.getLogMessage(), true);
+			client->sendErrorMessage(result.getTitle(), result.getMessage(true));
+			return;
+		}
 
-	if (!sessionApproval.isActionAllowed()) {
-		client->info("Login session not approved: " + sessionApproval.getLogMessage(), true);
-		client->sendErrorMessage(sessionApproval.getTitle(), sessionApproval.getMessage(true));
-		return;
-	}
+		loginApprovedAccount(client, account);
+	});
+};
+
+void AccountManager::loginApprovedAccount(LoginClient* client, ManagedReference<Account*> account) {
 #endif // WITH_SESSION_API
 
 	//TODO: This should probably be refactored at some point.
@@ -90,13 +95,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	String ip = client->getSession()->getAddress().getIPAddress();
 
 #ifdef WITH_SESSION_API
-	auto sessionStart = SessionAPIClient::instance()->startNewSession(client, account);
-
-	if (!sessionStart.isActionAllowed()) {
-		client->info("Login session start failed: " + sessionStart.getLogMessage(), true);
-		client->sendErrorMessage(sessionStart.getTitle(), sessionStart.getMessage(true), 0, true);
-		return;
-	}
+	SessionAPIClient::instance()->notifySessionStart(ip, accountID);
 #endif // WITH_SESSION_API
 
 	StringBuffer sessionQuery;

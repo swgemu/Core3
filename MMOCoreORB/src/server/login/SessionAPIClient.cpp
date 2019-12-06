@@ -33,6 +33,8 @@ SessionAPIClient::SessionAPIClient() {
 
 	debugLevel = ConfigManager::instance()->getInt("Core3.Login.API.DebugLevel", 0);
 
+	setLogLevel(static_cast<Logger::LogLevel>(debugLevel));
+
 	dryRun = ConfigManager::instance()->getBool("Core3.Login.API.DryRun", false);
 
 	apiToken = ConfigManager::instance()->getString("Core3.Login.API.APIToken", "");
@@ -55,6 +57,7 @@ SessionAPIClient::SessionAPIClient() {
 
 	info(true) << "Starting " << toString();
 
+	// TODO: Make this a config option?
 	// crossplat::threadpool::initialize_with_threads(8);
 }
 
@@ -77,8 +80,16 @@ String SessionAPIClient::toString() {
 	return buf.toString();
 }
 
-SessionApprovalResult SessionAPIClient::apiCall(String src, int debugLevel, const String basePath) {
+void SessionAPIClient::apiCall(const String src, int debugLevel, const String basePath, const SessionAPICallback& resultCallback) {
 	incrementTrxCount();
+
+	String path = basePath;
+
+	if (dryRun) {
+		path = basePath + (basePath.indexOf("?") == -1 ? "?" : "&") + "debug=1&dryrun=1";
+	}
+
+	debug() << src << " START apiCall [path=" << path << "]";
 
 	web::http::client::http_client_config client_config;
 
@@ -90,150 +101,117 @@ SessionApprovalResult SessionAPIClient::apiCall(String src, int debugLevel, cons
 
 	req.headers().add(U("Authorization"), apiToken.toCharArray());
 
-	String path = basePath;
-
-	if (dryRun) {
-		path = basePath + (basePath.indexOf("?") == -1 ? "?" : "&") + "debug=1&dryrun=1";
-	}
-
 	req.set_request_uri(path.toCharArray());
 
-	SessionApprovalResult result;
-
-	auto logPrefix = result.getClientTrxId() + " " + src + ": ";
-
-	if (getDebugLevel() > debugLevel) {
-		info() << logPrefix << "START apiCall [path=" << path << "]";
-	}
-
 	client.request(req)
-		.then([&](http_response resp) {
+		.then([this, src](http_response resp) {
 			if (resp.status_code() != 200) {
-				error() << logPrefix << "Response status code " << resp.status_code() << " returned.";
-				result.setDetails("Call failed, status_code: " + String::valueOf(resp.status_code()));
+				error() << src << "Response status code " << resp.status_code() << " returned.";
 			}
 
 			return resp.extract_json();
-		}).then([&](json::value result_json) {
+		}).then([this, src, debugLevel, path, resultCallback](json::value result_json) {
+			SessionApprovalResult result;
+
+			auto logPrefix = result.getClientTrxId() + " " + src + ": ";
+
 			if (result_json.is_null()) {
 				error() << logPrefix << "Null JSON result from server.";
 				result.setAction(SessionApprovalResult::ApprovalAction::TEMPFAIL);
 				result.setTitle("Temporary Server Error");
 				result.setMessage("If the error continues please contact support and mention error code = K");
-				return;
-			}
-
-			result.setRawJSON(String(result_json.serialize().c_str()));
-
-			if (result_json.has_field("action")) {
-				result.setAction(String(result_json[U("action")].as_string().c_str()));
-			} else if (failOpen) {
-				warning() << logPrefix << "Missing action from result, failing to ALLOW: JSON: " << result_json.serialize().c_str();
-				result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
 			} else {
-				result.setAction(SessionApprovalResult::ApprovalAction::TEMPFAIL);
-				result.setTitle("Temporary Server Error");
-				result.setMessage("If the error continues please contact support and mention error code = L");
-				result.setDetails("Missing action field from server");
-			}
+				result.setRawJSON(String(result_json.serialize().c_str()));
 
-			if (result_json.has_field("title")) {
-				result.setTitle(String(result_json[U("title")].as_string().c_str()));
-			}
+				if (result_json.has_field("action")) {
+					result.setAction(String(result_json[U("action")].as_string().c_str()));
+				} else if (failOpen) {
+					warning() << logPrefix << "Missing action from result, failing to ALLOW: JSON: " << result_json.serialize().c_str();
+					result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
+				} else {
+					result.setAction(SessionApprovalResult::ApprovalAction::TEMPFAIL);
+					result.setTitle("Temporary Server Error");
+					result.setMessage("If the error continues please contact support and mention error code = L");
+					result.setDetails("Missing action field from server");
+				}
 
-			if (result_json.has_field("message")) {
-				result.setMessage(String(result_json[U("message")].as_string().c_str()));
-			}
+				if (result_json.has_field("title")) {
+					result.setTitle(String(result_json[U("title")].as_string().c_str()));
+				}
 
-			if (result_json.has_field("details")) {
-				result.setDetails(String(result_json[U("details")].as_string().c_str()));
-			}
+				if (result_json.has_field("message")) {
+					result.setMessage(String(result_json[U("message")].as_string().c_str()));
+				}
 
-			if (result_json.has_field("debug")) {
-				auto debug = result_json[U("debug")];
+				if (result_json.has_field("details")) {
+					result.setDetails(String(result_json[U("details")].as_string().c_str()));
+				}
 
-				if (debug.has_field("trx_id")) {
-					result.setDebugValue("trx_id", String(debug[U("trx_id")].as_string().c_str()));
+				if (result_json.has_field("debug")) {
+					auto debug = result_json[U("debug")];
+
+					if (debug.has_field("trx_id")) {
+						result.setDebugValue("trx_id", String(debug[U("trx_id")].as_string().c_str()));
+					}
 				}
 			}
-		})
 
-	.wait();
+			if (dryRun) {
+				debug() << logPrefix << "DryRun: original result = " << result.toString();
 
-	if (dryRun) {
-		if (getDebugLevel() > 0) {
-			info() << logPrefix << "DryRun: original result = " << result.toString();
-		}
+				result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
+				result.setTitle("");
+				result.setMessage("");
+				result.setDetails("");
+				result.setDebugValue("trx_id", "dry-run-trx-id");
+			}
 
-		result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
-		result.setTitle("");
-		result.setMessage("");
-		result.setDetails("");
-		result.setDebugValue("trx_id", "dry-run-trx-id");
-	}
+			debug() << logPrefix << "END apiCall [path=" << path << "] result = " << result.toString();
 
-	if (getDebugLevel() >= debugLevel) {
-		info() << logPrefix << "END apiCall [path=" << path << "] result = " << result.toString();
-	}
-
-	return result;
+			Core::getTaskManager()->executeTask([resultCallback, result] {
+				resultCallback(result);
+			}, "SessionAPIClientResult", "slowQueue");
+		});
 }
 
 void SessionAPIClient::apiNotify(String src, int debugLevel, const String basePath) {
-	Core::getTaskManager()->executeTask([=]() {
-		auto result = apiCall(src, 2, basePath);
-
-		if (getDebugLevel() > 0 && !result.isActionAllowed()) {
+	apiCall(src, 2, basePath, [=](SessionApprovalResult result) {
+		if (!result.isActionAllowed()) {
 			error() << src << " unexpected failure: " << result.toString();
 		}
-	}, "SessionAPIClientNotify", "slowQueue");
+	});
 }
 
-SessionApprovalResult SessionAPIClient::approveNewSession(LoginClient* client, Account* account) {
+void SessionAPIClient::approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << account->getAccountID()
-		<< "/session/" << client->getIPAddress()
-		<< "/approval"
-		;
+	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/approval";
 
-	return apiCall(__FUNCTION__, 1, path.toString());
+	apiCall(__FUNCTION__, 1, path.toString(), resultCallback);
 }
 
-SessionApprovalResult SessionAPIClient::startNewSession(LoginClient* client, Account* account) {
+void SessionAPIClient::notifySessionStart(const String ip, uint32 accountID) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << account->getAccountID()
-		<< "/session/" << client->getIPAddress()
-		<< "/start"
-		;
+	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/start";
 
-	return apiCall(__FUNCTION__, 1, path.toString());
+	apiNotify(__FUNCTION__, 1, path.toString());
 }
 
 void SessionAPIClient::notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID
-		<< "/session/" << ip
-		<< "/player/" << characterID
-		<< "/disconnect"
-		<< "?eventType=" << eventType
-		;
+	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/disconnect" << "?eventType=" << eventType;
 
 	apiNotify(__FUNCTION__, 2, path.toString());
 }
 
-SessionApprovalResult SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID) {
+void SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID
-		<< "/session/" << ip
-		<< "/player/" << characterID
-		<< "/approval"
-		;
+	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/approval";
 
-	return apiCall(__FUNCTION__, 1, path.toString());
+	apiCall(__FUNCTION__, 1, path.toString(), resultCallback);
 }
 
 void SessionAPIClient::notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID) {
@@ -353,13 +331,13 @@ String SessionApprovalResult::getLogMessage() const {
 		<< "action: " << actionToString(getAction()) << ", "
 		;
 
-	if (debugLevel > 0) {
+	if (debugLevel == Logger::DEBUG) {
 		buf << "message: '" << getMessage() << "', ";
 	}
 
 	buf << "details: '" << getDetails() << "'" ;
 
-	if (debugLevel > 0 && getRawJSON().length() > 0) {
+	if (debugLevel == Logger::DEBUG && getRawJSON().length() > 0) {
 		buf << ", JSON: '" << getRawJSON() << "'";
 	}
 
