@@ -218,16 +218,16 @@ namespace server {
 			bool consoleCommand(String arguments);
 
 			// API Helpers
-			SessionApprovalResult apiCall(String src, int debugLevel, String basePath);
+			void apiCall(const String src, int debugLevel, const String basePath, const Function<void(SessionApprovalResult)>& resultCallback);
 			void apiNotify(String src, int debugLevel, const String basePath);
 
 			// Calls in general order of execution
-			SessionApprovalResult approveNewSession(LoginClient* client, Account* account);
-			SessionApprovalResult startNewSession(LoginClient* client, Account* account);
+			void approveNewSession(const String ip, uint32 accountID, const Function<void(SessionApprovalResult)>& resultCallback);
+			void notifySessionStart(const String ip, uint32 accountID);
 			void notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType);
-			SessionApprovalResult approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID);
+			void approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const Function<void(SessionApprovalResult)>& resultCallback);
 			void notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID);
-			void notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID);
+			void notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID);;
 		};
 	}
 }
