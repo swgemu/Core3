@@ -34,7 +34,7 @@ public:
 
 	int getBatteryDrain();
 
-	String toString();
+	String toString() const;
 
     	bool isStackable() { return true; }
 

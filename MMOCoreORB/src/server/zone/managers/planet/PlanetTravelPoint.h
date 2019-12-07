@@ -170,7 +170,7 @@ public:
 		return shuttleObject.get();
 	}
 
-	String toString() {
+	String toString() const {
 		StringBuffer buf;
 
 		buf << "[PlanetTravelPoint 0x" + String::hexvalueOf((int64)this)
@@ -181,14 +181,7 @@ public:
 			<< " Arrival: " << arrivalVector.toString()
 			<< " shuttle = ";
 
-		if(shuttleObject == nullptr) {
-			buf << "nullptr";
-		} else {
-			buf << "[oid:" << shuttleObject.get()->getObjectID()
-				<< " " << shuttleObject.get()->getObjectNameStringIdName()
-				<< " @ " << shuttleObject.get()->getWorldPosition().toString()
-				<< "]";
-		}
+			buf << "[oid:" << shuttleObject.getSavedObjectID() << "]";
 
 		buf << "]";
 

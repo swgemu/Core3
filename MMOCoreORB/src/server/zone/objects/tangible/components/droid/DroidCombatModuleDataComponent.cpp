@@ -15,7 +15,7 @@ DroidCombatModuleDataComponent::~DroidCombatModuleDataComponent() {
 
 }
 
-String DroidCombatModuleDataComponent::getModuleName() {
+String DroidCombatModuleDataComponent::getModuleName() const {
 	return String("combat_module");
 }
 
@@ -62,7 +62,7 @@ void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 }
 
-String DroidCombatModuleDataComponent::toString() {
+String DroidCombatModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

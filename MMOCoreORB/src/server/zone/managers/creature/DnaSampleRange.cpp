@@ -27,7 +27,8 @@ DnaSampleRange::DnaSampleRange(LuaObject& obj) {
 
 DnaSampleRange::~DnaSampleRange() {
 }
-String DnaSampleRange::toString() {
+
+String DnaSampleRange::toString() const {
 	StringBuffer buffer;
 	buffer.append("VHQ ").append("[").append(vhqMax).append("-").append(vhqMin).append("],");
 	buffer.append("HQ ").append("[").append(hqMax).append("-").append(hqMin).append("],");
@@ -38,6 +39,7 @@ String DnaSampleRange::toString() {
 	buffer.append("VLQ ").append("[").append(vlqMax).append("-").append(vlqMin).append("]\n");
 	return buffer.toString();
 }
+
 bool DnaSampleRange::inRange(int amount) const {
 	return amount >= vlqMin && amount <= vhqMax;
 }

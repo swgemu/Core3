@@ -215,8 +215,8 @@ namespace server {
 				return debugLevel;
 			}
 
-			String toString();
-			String toStringData();
+			String toString() const;
+			String toStringData() const;
 
 			// Hook for console "sessionapi" command
 			bool consoleCommand(const String& arguments);

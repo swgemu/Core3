@@ -26,7 +26,7 @@ protected:
 public:
 	DroidMerchantModuleDataComponent();
 	~DroidMerchantModuleDataComponent();
-	String getModuleName();
+	String getModuleName() const;
 	void setWaypoint(ManagedReference<WaypointObject*> wp);
 	void initializeTransientMembers();
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
@@ -34,8 +34,8 @@ public:
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 	void handlePetCommand(String cmd, CreatureObject* speaker) ;
 	int getBatteryDrain();
-	String toString();
-	String getMessage() { return message; }
+	String toString() const;
+	const String& getMessage() const { return message; }
 	bool isActive(){ return active; }
 	void onCall();
 	void deactivate();

@@ -66,11 +66,11 @@ SessionAPIClient::~SessionAPIClient() {
 	info(true) << "Shutdown";
 }
 
-String SessionAPIClient::toStringData() {
+String SessionAPIClient::toStringData() const {
 	return toString();
 }
 
-String SessionAPIClient::toString() {
+String SessionAPIClient::toString() const {
 	StringBuffer buf;
 
 	buf << "SessionAPIClient " << this << " ["

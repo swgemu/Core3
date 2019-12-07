@@ -22,7 +22,7 @@ DroidDetonationModuleDataComponent::~DroidDetonationModuleDataComponent() {
 
 }
 
-String DroidDetonationModuleDataComponent::getModuleName() {
+String DroidDetonationModuleDataComponent::getModuleName() const {
 	return String("detonation_module");
 }
 
@@ -144,7 +144,7 @@ void DroidDetonationModuleDataComponent::deactivate() {
 	droid->removePendingTask("droid_detonation");
 }
 
-String DroidDetonationModuleDataComponent::toString() {
+String DroidDetonationModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

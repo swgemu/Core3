@@ -24,12 +24,15 @@ DroidEffectsModuleDataComponent::DroidEffectsModuleDataComponent() {
 	}
 
 }
+
 DroidEffectsModuleDataComponent::~DroidEffectsModuleDataComponent() {
 
 }
-String DroidEffectsModuleDataComponent::getModuleName() {
+
+String DroidEffectsModuleDataComponent::getModuleName() const {
 	return String("effects_module");
 }
+
 void DroidEffectsModuleDataComponent::initializeTransientMembers() {
 
 	// Pull module stat from parent sceno
@@ -250,7 +253,7 @@ void DroidEffectsModuleDataComponent::deactivate() {
 
 }
 
-String DroidEffectsModuleDataComponent::toString(){
+String DroidEffectsModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

@@ -62,7 +62,8 @@ public:
 				zoneServer](SessionApprovalResult result) {
 
 			if (!result.isActionAllowed()) {
-				clientObject->info("Player connect not approved: " + result.getLogMessage(), true);
+				clientObject->info(true) << "Player connect not approved: " << result.getLogMessage();
+
 				clientObject->sendMessage(new ErrorMessage(result.getTitle(), result.getMessage(true), 0));
 				return;
 			}
