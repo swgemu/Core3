@@ -749,7 +749,7 @@ void ServerCore::shutdown() {
 #ifdef WITH_SESSION_API
 	if (sessionAPIClient) {
 		if (configManager != nullptr) {
-			sessionAPIClient->notifyGalaxyShutdown(configManager->getZoneGalaxyID());
+			sessionAPIClient->notifyGalaxyShutdown();
 		}
 
 		sessionAPIClient->finalizeInstance();

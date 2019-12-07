@@ -31,13 +31,17 @@ SessionAPIClient::SessionAPIClient() {
 	setGlobalLogging(false);
 	setLogging(true);
 
-	debugLevel = ConfigManager::instance()->getInt("Core3.Login.API.DebugLevel", 0);
+	auto config = ConfigManager::instance();
+
+	debugLevel = config->getInt("Core3.Login.API.DebugLevel", 0);
 
 	setLogLevel(static_cast<Logger::LogLevel>(debugLevel));
 
-	dryRun = ConfigManager::instance()->getBool("Core3.Login.API.DryRun", false);
+	galaxyID = config->getZoneGalaxyID();
 
-	apiToken = ConfigManager::instance()->getString("Core3.Login.API.APIToken", "");
+	dryRun = config->getBool("Core3.Login.API.DryRun", false);
+
+	apiToken = config->getString("Core3.Login.API.APIToken", "");
 
 	if (apiToken.length() == 0) {
 		warning() << "Missing Core3.Login.API.APIToken, Sessions API disabled.";
@@ -45,7 +49,7 @@ SessionAPIClient::SessionAPIClient() {
 		return;
 	}
 
-	baseURL = ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "");
+	baseURL = config->getString("Core3.Login.API.BaseURL", "");
 
 	if (baseURL.length() == 0) {
 		warning() << "Missing Core3.Login.API.BaseURL, Sessions API disabled.";
@@ -53,7 +57,7 @@ SessionAPIClient::SessionAPIClient() {
 		return;
 	}
 
-	failOpen = ConfigManager::instance()->getBool("Core3.Login.API.FailOpen", false);
+	failOpen = config->getBool("Core3.Login.API.FailOpen", false);
 
 	info(true) << "Starting " << toString();
 
@@ -229,12 +233,15 @@ void SessionAPIClient::apiNotify(const String& src, const String& basePath) {
 void SessionAPIClient::notifyGalaxyStart(uint32 galaxyID) {
 	StringBuffer path;
 
+	// Save for later
+	this->galaxyID = galaxyID;
+
 	path << "/v1/core3/galaxy/" << galaxyID << "/start";
 
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::notifyGalaxyShutdown(uint32 galaxyID) {
+void SessionAPIClient::notifyGalaxyShutdown() {
 	StringBuffer path;
 
 	path << "/v1/core3/galaxy/" << galaxyID << "/shutdown";
@@ -245,7 +252,7 @@ void SessionAPIClient::notifyGalaxyShutdown(uint32 galaxyID) {
 void SessionAPIClient::approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/approval";
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/approval";
 
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
@@ -253,7 +260,7 @@ void SessionAPIClient::approveNewSession(const String& ip, uint32 accountID, con
 void SessionAPIClient::notifySessionStart(const String& ip, uint32 accountID) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/start";
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/start";
 
 	apiNotify(__FUNCTION__, path.toString());
 }
@@ -261,7 +268,8 @@ void SessionAPIClient::notifySessionStart(const String& ip, uint32 accountID) {
 void SessionAPIClient::notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/disconnect" << "?eventType=" << eventType;
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/disconnect"
+		<< "?eventType=" << eventType;
 
 	apiNotify(__FUNCTION__, path.toString());
 }
@@ -269,7 +277,7 @@ void SessionAPIClient::notifyDisconnectClient(const String& ip, uint32 accountID
 void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/approval";
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/approval";
 
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
@@ -277,11 +285,7 @@ void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, 
 void SessionAPIClient::notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID
-		<< "/session/" << ip
-		<< "/player/" << characterID
-		<< "/online"
-		;
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/online";
 
 	apiNotify(__FUNCTION__, path.toString());
 }
@@ -289,11 +293,7 @@ void SessionAPIClient::notifyPlayerOnline(const String& ip, uint32 accountID, ui
 void SessionAPIClient::notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID) {
 	StringBuffer path;
 
-	path << "/v1/core3/account/" << accountID
-		<< "/session/" << ip
-		<< "/player/" << characterID
-		<< "/offline"
-		;
+	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/offline";
 
 	apiNotify(__FUNCTION__, path.toString());
 }

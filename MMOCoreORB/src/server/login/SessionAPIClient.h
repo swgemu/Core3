@@ -193,6 +193,7 @@ namespace server {
 		class SessionAPIClient : public Logger, public Singleton<SessionAPIClient>, public Object {
 		protected:
 			AtomicInteger trxCount = 0;
+			int galaxyID = 0;
 			int debugLevel = 0;
 			String apiToken = "";
 			String baseURL = "";
@@ -227,13 +228,13 @@ namespace server {
 
 			// Calls in general order of execution
 			void notifyGalaxyStart(uint32 galaxyID);
-			void notifyGalaxyShutdown(uint32 galaxyID);
-			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
-			void notifySessionStart(const String& ip, uint32 accountID);
-			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
-			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
-			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID);
-			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);;
+			void notifyGalaxyShutdown();
+			void approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback);
+			void notifySessionStart(const String ip, uint32 accountID);
+			void notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType);
+			void approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
+			void notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID);
+			void notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID);;
 		};
 	}
 }
