@@ -51,7 +51,7 @@ public:
 
 		//System::out << query.toString() << endl;
 
-		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query));
 
 		if (result != nullptr && result->next()) {
 			uint32 sesskey = result->getUnsignedInt(0);
@@ -67,7 +67,7 @@ public:
 
 				try {
 					ServerDatabase::instance()->executeStatement(delQuery);
-				} catch (DatabaseException& e) {
+				} catch (const DatabaseException& e) {
 					client->info(e.getMessage(), true);
 				}
 				//Session was found
@@ -92,19 +92,18 @@ public:
 					client->resetCharacters();
 
 					Reference<CharacterList*> characters = account->getCharacterList();
-					GalaxyBanEntry* galaxyBan = account->getGalaxyBan(server->getZoneServer()->getGalaxyID());
+					const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(server->getZoneServer()->getGalaxyID());
 
-					if(galaxyBan != nullptr) {
+					if (galaxyBan != nullptr) {
 						ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
 						client->sendMessage(errMsg);
 						return;
 					}
 
-					for(int i = 0; i < characters->size(); ++i) {
-
+					for (int i = 0; i < characters->size(); ++i) {
 						CharacterListEntry* entry = &characters->get(i);
 
-						if(!entry->isBanned())
+						if (!entry->isBanned())
 							client->addCharacter(entry->getObjectID(), entry->getGalaxyID());
 						else
 							client->addBannedCharacter(entry->getObjectID(), entry->getGalaxyID());

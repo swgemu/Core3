@@ -10,7 +10,6 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 void XpPurchaseMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-
 	if (!sceneObject->isTangibleObject())
 		return;
 

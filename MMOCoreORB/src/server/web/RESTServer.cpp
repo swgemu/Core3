@@ -20,6 +20,7 @@ RESTServer::~RESTServer() {
 #ifdef COMPILE_CORE3_REST
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>
+#include <pplx/threadpool.h>
 
 #include <map>
 #include <set>
@@ -189,6 +190,9 @@ void RESTServer::stop() {
 		restListener->close().wait();
 		restListener = nullptr;
 	}
+
+	crossplat::threadpool::shared_instance().service().stop();
+	logger.info(true) << "shut down thread pool";
 }
 
 #else

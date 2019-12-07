@@ -59,7 +59,7 @@ namespace server {
 				return String("UNKOWN(" + String::valueOf((int)action) + ")");
 			}
 
-			inline void setAction(String stringAction) {
+			inline void setAction(const String& stringAction) {
 				if (stringAction == "TEMPFAIL") {
 					resultAction = ApprovalAction::TEMPFAIL;
 					return;
@@ -88,7 +88,7 @@ namespace server {
 				resultAction = ApprovalAction::UNKNOWN;
 			}
 
-			inline void setTrxId(String trxId) {
+			inline void setTrxId(const String& trxId) {
 				resultDebug.put("trx_id", trxId);
 			}
 
@@ -104,7 +104,7 @@ namespace server {
 				resultClientTrxId = clientTrxId;
 			}
 
-			inline String getClientTrxId() const {
+			inline const String& getClientTrxId() const {
 				return resultClientTrxId;
 			}
 
@@ -140,7 +140,7 @@ namespace server {
 				resultTitle = title;
 			}
 
-			inline String getTitle() const {
+			inline const String& getTitle() const {
 				return resultTitle;
 			}
 
@@ -160,7 +160,7 @@ namespace server {
 				resultDetails = details;
 			}
 
-			inline String getDetails() const {
+			inline const String& getDetails() const {
 				return resultDetails;
 			}
 
@@ -175,15 +175,15 @@ namespace server {
 				return String("");
 			}
 
-			inline HashTable<String, String> getDebugHashTable() const {
+			inline const HashTable<String, String>& getDebugHashTable() const {
 				return resultDebug;
 			}
 
-			inline String getRawJSON() const {
+			inline const String& getRawJSON() const {
 				return resultRawJSON;
 			}
 
-			inline void setRawJSON(String json) {
+			inline void setRawJSON(const String& json) {
 				resultRawJSON = json;
 			}
 		};
@@ -219,21 +219,21 @@ namespace server {
 			String toStringData();
 
 			// Hook for console "sessionapi" command
-			bool consoleCommand(String arguments);
+			bool consoleCommand(const String& arguments);
 
 			// API Helpers
-			void apiCall(const String src, const String basePath, const SessionAPICallback& resultCallback);
-			void apiNotify(String src, const String basePath);
+			void apiCall(const String& src, const String& basePath, const SessionAPICallback& resultCallback);
+			void apiNotify(const String& src, const String& basePath);
 
 			// Calls in general order of execution
 			void notifyGalaxyStart(uint32 galaxyID);
 			void notifyGalaxyShutdown(uint32 galaxyID);
-			void approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback);
-			void notifySessionStart(const String ip, uint32 accountID);
-			void notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType);
-			void approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
-			void notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID);
-			void notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID);;
+			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
+			void notifySessionStart(const String& ip, uint32 accountID);
+			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
+			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
+			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID);
+			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);;
 		};
 	}
 }

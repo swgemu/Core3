@@ -84,7 +84,7 @@ String SessionAPIClient::toString() {
 	return buf.toString();
 }
 
-void SessionAPIClient::apiCall(const String src, const String basePath, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::apiCall(const String& src, const String& basePath, const SessionAPICallback& resultCallback) {
 	incrementTrxCount();
 
 	String path = basePath;
@@ -218,7 +218,7 @@ void SessionAPIClient::apiCall(const String src, const String basePath, const Se
 		});
 }
 
-void SessionAPIClient::apiNotify(String src, const String basePath) {
+void SessionAPIClient::apiNotify(const String& src, const String& basePath) {
 	apiCall(src, basePath, [=](SessionApprovalResult result) {
 		if (!result.isActionAllowed()) {
 			error() << src << " unexpected failure: " << result;
@@ -242,7 +242,7 @@ void SessionAPIClient::notifyGalaxyShutdown(uint32 galaxyID) {
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/approval";
@@ -250,7 +250,7 @@ void SessionAPIClient::approveNewSession(const String ip, uint32 accountID, cons
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
-void SessionAPIClient::notifySessionStart(const String ip, uint32 accountID) {
+void SessionAPIClient::notifySessionStart(const String& ip, uint32 accountID) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/start";
@@ -258,7 +258,7 @@ void SessionAPIClient::notifySessionStart(const String ip, uint32 accountID) {
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType) {
+void SessionAPIClient::notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/disconnect" << "?eventType=" << eventType;
@@ -266,7 +266,7 @@ void SessionAPIClient::notifyDisconnectClient(const String ip, uint32 accountID,
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/approval";
@@ -274,7 +274,7 @@ void SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, u
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
-void SessionAPIClient::notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID) {
+void SessionAPIClient::notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID
@@ -286,7 +286,7 @@ void SessionAPIClient::notifyPlayerOnline(const String ip, uint32 accountID, uin
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID) {
+void SessionAPIClient::notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID
@@ -298,7 +298,7 @@ void SessionAPIClient::notifyPlayerOffline(const String ip, uint32 accountID, ui
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-bool SessionAPIClient::consoleCommand(String arguments) {
+bool SessionAPIClient::consoleCommand(const String& arguments) {
 	StringTokenizer tokenizer(arguments);
 
 	String subcmd;
