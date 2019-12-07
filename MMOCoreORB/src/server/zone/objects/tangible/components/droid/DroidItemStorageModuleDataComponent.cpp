@@ -16,7 +16,7 @@ DroidItemStorageModuleDataComponent::~DroidItemStorageModuleDataComponent() {
 
 }
 
-String DroidItemStorageModuleDataComponent::getModuleName() {
+String DroidItemStorageModuleDataComponent::getModuleName() const {
 	return String("item_storage_module");
 }
 
@@ -63,7 +63,7 @@ void DroidItemStorageModuleDataComponent::fillAttributeList(AttributeListMessage
 	alm->insertAttribute( "storage_module", rating > 10 ? 10 : rating );
 }
 
-String DroidItemStorageModuleDataComponent::toString() {
+String DroidItemStorageModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

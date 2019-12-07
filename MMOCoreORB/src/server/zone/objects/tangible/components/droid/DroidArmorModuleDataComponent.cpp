@@ -80,7 +80,7 @@ int DroidArmorModuleDataComponent::getBatteryDrain() {
 	return 0;
 }
 
-String DroidArmorModuleDataComponent::toString() {
+String DroidArmorModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

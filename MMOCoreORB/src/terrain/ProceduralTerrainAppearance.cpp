@@ -90,8 +90,8 @@ void ProceduralTerrainAppearance::getWaterBoundariesInAABB(const AABB& bounds, V
 		Vector3 boundaryExtents = boundsBox.extents();
 		Vector3 extents = bounds.extents();
 
-		if(fabs(center.getX()) > (boundaryExtents.getX() + extents.getX())) continue;
-	   	if(fabs(center.getY()) > (boundaryExtents.getY() + extents.getY())) continue;
+		if (fabs(center.getX()) > (boundaryExtents.getX() + extents.getX())) continue;
+	   	if (fabs(center.getY()) > (boundaryExtents.getY() + extents.getY())) continue;
 
 		boundaries->add(boundary);
 	}

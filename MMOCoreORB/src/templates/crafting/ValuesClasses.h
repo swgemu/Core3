@@ -362,13 +362,12 @@ public:
 		values->setPercentage(value);
 	}
 
-	String toString() {
+	String toString() const {
 		Values* tempValues;
 
 		StringBuffer str;
 
 		for (int i = 0;i < valueList.size(); ++i) {
-
 			tempValues = valueList.get(i);
 
 			str << "Property Name: " << tempValues->getName();

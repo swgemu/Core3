@@ -18,7 +18,7 @@ DroidMerchantModuleDataComponent::DroidMerchantModuleDataComponent() {
 DroidMerchantModuleDataComponent::~DroidMerchantModuleDataComponent() {
 
 }
-String DroidMerchantModuleDataComponent::getModuleName() {
+String DroidMerchantModuleDataComponent::getModuleName() const {
 	return String("merchant_barker");
 }
 void DroidMerchantModuleDataComponent::initializeTransientMembers() {
@@ -178,7 +178,7 @@ void DroidMerchantModuleDataComponent::deactivate() {
 
 }
 
-String DroidMerchantModuleDataComponent::toString(){
+String DroidMerchantModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 
