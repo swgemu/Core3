@@ -53,11 +53,18 @@ namespace login {
 
 		void sendErrorMessage(const String& title, const String& text, bool fatal = false, bool sendDisconnect = true) {
 			ErrorMessage* errorMessage = new ErrorMessage(title, text, fatal);
-
 			sendMessage(errorMessage);
 
+			constexpr auto disconnectDelay = 500;
+
 			if (sendDisconnect) {
-				session->sendPacket(new DisconnectMessage(session));
+				Core::getTaskManager()->scheduleTask([session = WeakReference<BaseClientProxy*>(this->session)] {
+					auto strongRef = session.get();
+
+					if (strongRef) {
+						strongRef->disconnect();
+					}
+				}, "disconnectErrorTask", disconnectDelay);
 			}
 		}
 
