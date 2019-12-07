@@ -41,19 +41,21 @@ SessionAPIClient::SessionAPIClient() {
 
 	dryRun = config->getBool("Core3.Login.API.DryRun", false);
 
-	apiToken = config->getString("Core3.Login.API.APIToken", "");
-
-	if (apiToken.length() == 0) {
-		warning() << "Missing Core3.Login.API.APIToken, Sessions API disabled.";
-		dryRun = true;
-		return;
-	}
-
 	baseURL = config->getString("Core3.Login.API.BaseURL", "");
 
 	if (baseURL.length() == 0) {
 		warning() << "Missing Core3.Login.API.BaseURL, Sessions API disabled.";
-		dryRun = true;
+		apiEnabled = false;
+		return;
+	} else {
+		apiEnabled = true;
+	}
+
+	apiToken = config->getString("Core3.Login.API.APIToken", "");
+
+	if (apiToken.length() == 0) {
+		warning() << "Missing Core3.Login.API.APIToken, Sessions API disabled.";
+		apiEnabled = false;
 		return;
 	}
 
@@ -78,6 +80,7 @@ String SessionAPIClient::toString() const {
 	StringBuffer buf;
 
 	buf << "SessionAPIClient " << this << " ["
+		<< "apiEnabled: " << apiEnabled << ", "
 		<< "trxCount: " << trxCount << ", "
 		<< "failOpen: " << failOpen << ", "
 		<< "dryRun: " << dryRun << ", "
@@ -89,6 +92,22 @@ String SessionAPIClient::toString() const {
 }
 
 void SessionAPIClient::apiCall(const String& src, const String& basePath, const SessionAPICallback& resultCallback) {
+	// If not enabled just return ALLOW all the time
+	if (!apiEnabled) {
+		SessionApprovalResult result;
+
+		result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
+		result.setTitle("");
+		result.setMessage("");
+		result.setDetails("API Not enabled.");
+		result.setDebugValue("trx_id", "api-disabled");
+
+		Core::getTaskManager()->executeTask([resultCallback, result] {
+			resultCallback(result);
+		}, "SessionAPIClientResult", "slowQueue");
+		return;
+	}
+
 	incrementTrxCount();
 
 	String path = basePath;
@@ -311,10 +330,24 @@ bool SessionAPIClient::consoleCommand(const String& arguments) {
 	if (subcmd == "help") {
 		System::out << "Available sessionapi commands:" << endl
 			<< "\thelp - This command" << endl
+			<< "\tenable - Enable Session API Client" << endl
+			<< "\tdisable - Disable Session API Client" << endl
 			<< "\tstatus - Session API status" << endl
 			<< "\tdryrun {off} - Control session dry run setting" << endl
 			<< "\tdebug {level} - Set debug level for session API" << endl
 			;
+		return true;
+	} else if (subcmd == "enable") {
+		if (baseURL.length() == 0 || apiToken.length() == 0) {
+			info(true) << "SessionAPIClient can not be enabled without Core3.Login.API.BaseURL and Core3.Login.API.APIToken.";
+		} else {
+			apiEnabled = true;
+			info(true) << "SessionAPIClient enabled.";
+		}
+		return true;
+	} else if (subcmd == "disable") {
+		apiEnabled = false;
+		info(true) << "SessionAPIClient disabled.";
 		return true;
 	} else if (subcmd == "status") {
 		System::out << "Status for " << toString() << endl;
