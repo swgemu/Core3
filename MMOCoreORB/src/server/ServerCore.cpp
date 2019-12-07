@@ -658,6 +658,10 @@ void ServerCore::initialize() {
 #if WITH_SESSION_API
 		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
 			sessionAPIClient = SessionAPIClient::instance();
+
+			if (configManager != nullptr) {
+				sessionAPIClient->notifyGalaxyStart(configManager->getZoneGalaxyID());
+			}
 		}
 #endif // WITH_SESSION_API
 
@@ -700,12 +704,6 @@ void ServerCore::shutdown() {
 		restServer = nullptr;
 	}
 
-#ifdef WITH_SESSION_API
-	if (sessionAPIClient) {
-		sessionAPIClient->finalizeInstance();
-	}
-#endif // WITH_SESSION_API
-
 	ObjectManager* objectManager = ObjectManager::instance();
 
 	while (objectManager->isObjectUpdateInProgress())
@@ -747,6 +745,15 @@ void ServerCore::shutdown() {
 			frsManager->cancelTasks();
 		}
 	}
+
+#ifdef WITH_SESSION_API
+	if (sessionAPIClient) {
+		if (configManager != nullptr) {
+			sessionAPIClient->notifyGalaxyShutdown(configManager->getZoneGalaxyID());
+		}
+		sessionAPIClient->finalizeInstance();
+	}
+#endif // WITH_SESSION_API
 
 	if (pingServer != nullptr) {
 		pingServer->stop();

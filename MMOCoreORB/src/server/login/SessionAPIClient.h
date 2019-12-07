@@ -43,6 +43,7 @@ namespace server {
 			SessionApprovalResult();
 
 			String toString() const;
+			String toStringData() const;
 			String getLogMessage() const;
 
 			String actionToString(ApprovalAction action) const {
@@ -215,15 +216,18 @@ namespace server {
 			}
 
 			String toString();
+			String toStringData();
 
 			// Hook for console "sessionapi" command
 			bool consoleCommand(String arguments);
 
 			// API Helpers
-			void apiCall(const String src, int debugLevel, const String basePath, const SessionAPICallback& resultCallback);
-			void apiNotify(String src, int debugLevel, const String basePath);
+			void apiCall(const String src, const String basePath, const SessionAPICallback& resultCallback);
+			void apiNotify(String src, const String basePath);
 
 			// Calls in general order of execution
+			void notifyGalaxyStart(uint32 galaxyID);
+			void notifyGalaxyShutdown(uint32 galaxyID);
 			void approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback);
 			void notifySessionStart(const String ip, uint32 accountID);
 			void notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType);

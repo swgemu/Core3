@@ -66,6 +66,10 @@ SessionAPIClient::~SessionAPIClient() {
 	info(true) << "Shutdown";
 }
 
+String SessionAPIClient::toStringData() {
+	return toString();
+}
+
 String SessionAPIClient::toString() {
 	StringBuffer buf;
 
@@ -80,7 +84,7 @@ String SessionAPIClient::toString() {
 	return buf.toString();
 }
 
-void SessionAPIClient::apiCall(const String src, int debugLevel, const String basePath, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::apiCall(const String src, const String basePath, const SessionAPICallback& resultCallback) {
 	incrementTrxCount();
 
 	String path = basePath;
@@ -95,6 +99,10 @@ void SessionAPIClient::apiCall(const String src, int debugLevel, const String ba
 
 	client_config.set_validate_certificates(false);
 
+	utility::seconds timeout(5);
+
+	client_config.set_timeout(timeout);
+
 	http_client client(baseURL.toCharArray(), client_config);
 
 	http_request req(methods::GET);
@@ -104,16 +112,52 @@ void SessionAPIClient::apiCall(const String src, int debugLevel, const String ba
 	req.set_request_uri(path.toCharArray());
 
 	client.request(req)
-		.then([this, src](http_response resp) {
-			if (resp.status_code() != 200) {
-				error() << src << "Response status code " << resp.status_code() << " returned.";
+		.then([this, src, path](pplx::task<http_response> task) {
+			http_response resp;
+			bool failed = false;
+
+			try {
+				resp = task.get();
+			} catch (const http_exception& e) {
+				error() << src << " " << path << " HTTP Exception caught: " << e.what();
+				failed = true;
+			}
+
+			if (failed || resp.status_code() != 200) {
+				error() << src << " HTTP Status " << resp.status_code() << " returned.";
+
+				auto json_err = json::value();
+
+				json_err[U("action")] = json::value::string(U("TEMPFAIL"));
+				json_err[U("title")] = json::value::string(U("Temporary Server Error"));
+				json_err[U("message")] = json::value::string(U("If the error continues please contact support and mention error code = N"));
+
+				StringBuffer buf;
+
+				if (failed) {
+					buf << "Exception caught handling request, ";
+				}
+
+				buf << "http_response.status_code() == " << resp.status_code();
+
+				json_err[U("details")] = json::value::string(U(buf.toString().toCharArray()));
+
+				return pplx::task_from_result(json_err);
 			}
 
 			return resp.extract_json();
-		}).then([this, src, debugLevel, path, resultCallback](json::value result_json) {
+		}).then([this, src, path, resultCallback](pplx::task<json::value> task) {
 			SessionApprovalResult result;
-
 			auto logPrefix = result.getClientTrxId() + " " + src + ": ";
+			auto result_json = json::value();
+			bool failed = false;
+
+			try {
+				result_json = task.get();
+			} catch (const http_exception& e) {
+				error() << logPrefix << " " << path << " HTTP Exception caught reading body: " << e.what();
+				failed = true;
+			}
 
 			if (result_json.is_null()) {
 				error() << logPrefix << "Null JSON result from server.";
@@ -157,7 +201,7 @@ void SessionAPIClient::apiCall(const String src, int debugLevel, const String ba
 			}
 
 			if (dryRun) {
-				debug() << logPrefix << "DryRun: original result = " << result.toString();
+				debug() << logPrefix << "DryRun: original result = " << result;
 
 				result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
 				result.setTitle("");
@@ -166,7 +210,7 @@ void SessionAPIClient::apiCall(const String src, int debugLevel, const String ba
 				result.setDebugValue("trx_id", "dry-run-trx-id");
 			}
 
-			debug() << logPrefix << "END apiCall [path=" << path << "] result = " << result.toString();
+			debug() << logPrefix << "END apiCall [path=" << path << "] result = " << result;
 
 			Core::getTaskManager()->executeTask([resultCallback, result] {
 				resultCallback(result);
@@ -174,12 +218,28 @@ void SessionAPIClient::apiCall(const String src, int debugLevel, const String ba
 		});
 }
 
-void SessionAPIClient::apiNotify(String src, int debugLevel, const String basePath) {
-	apiCall(src, 2, basePath, [=](SessionApprovalResult result) {
+void SessionAPIClient::apiNotify(String src, const String basePath) {
+	apiCall(src, basePath, [=](SessionApprovalResult result) {
 		if (!result.isActionAllowed()) {
-			error() << src << " unexpected failure: " << result.toString();
+			error() << src << " unexpected failure: " << result;
 		}
 	});
+}
+
+void SessionAPIClient::notifyGalaxyStart(uint32 galaxyID) {
+	StringBuffer path;
+
+	path << "/v1/core3/galaxy/" << galaxyID << "/start";
+
+	apiNotify(__FUNCTION__, path.toString());
+}
+
+void SessionAPIClient::notifyGalaxyShutdown(uint32 galaxyID) {
+	StringBuffer path;
+
+	path << "/v1/core3/galaxy/" << galaxyID << "/shutdown";
+
+	apiNotify(__FUNCTION__, path.toString());
 }
 
 void SessionAPIClient::approveNewSession(const String ip, uint32 accountID, const SessionAPICallback& resultCallback) {
@@ -187,7 +247,7 @@ void SessionAPIClient::approveNewSession(const String ip, uint32 accountID, cons
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/approval";
 
-	apiCall(__FUNCTION__, 1, path.toString(), resultCallback);
+	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
 void SessionAPIClient::notifySessionStart(const String ip, uint32 accountID) {
@@ -195,7 +255,7 @@ void SessionAPIClient::notifySessionStart(const String ip, uint32 accountID) {
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/start";
 
-	apiNotify(__FUNCTION__, 1, path.toString());
+	apiNotify(__FUNCTION__, path.toString());
 }
 
 void SessionAPIClient::notifyDisconnectClient(const String ip, uint32 accountID, uint64_t characterID, String eventType) {
@@ -203,7 +263,7 @@ void SessionAPIClient::notifyDisconnectClient(const String ip, uint32 accountID,
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/disconnect" << "?eventType=" << eventType;
 
-	apiNotify(__FUNCTION__, 2, path.toString());
+	apiNotify(__FUNCTION__, path.toString());
 }
 
 void SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
@@ -211,7 +271,7 @@ void SessionAPIClient::approvePlayerConnect(const String ip, uint32 accountID, u
 
 	path << "/v1/core3/account/" << accountID << "/session/" << ip << "/player/" << characterID << "/approval";
 
-	apiCall(__FUNCTION__, 1, path.toString(), resultCallback);
+	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
 void SessionAPIClient::notifyPlayerOnline(const String ip, uint32 accountID, uint64_t characterID) {
@@ -223,7 +283,7 @@ void SessionAPIClient::notifyPlayerOnline(const String ip, uint32 accountID, uin
 		<< "/online"
 		;
 
-	apiNotify(__FUNCTION__, 1, path.toString());
+	apiNotify(__FUNCTION__, path.toString());
 }
 
 void SessionAPIClient::notifyPlayerOffline(const String ip, uint32 accountID, uint64_t characterID) {
@@ -235,7 +295,7 @@ void SessionAPIClient::notifyPlayerOffline(const String ip, uint32 accountID, ui
 		<< "/offline"
 		;
 
-	apiNotify(__FUNCTION__, 1, path.toString());
+	apiNotify(__FUNCTION__, path.toString());
 }
 
 bool SessionAPIClient::consoleCommand(String arguments) {
@@ -297,6 +357,10 @@ bool SessionAPIClient::consoleCommand(String arguments) {
 	info(true) << "Unknown sessionapi subcommand: " << subcmd;
 
 	return false;
+}
+
+String SessionApprovalResult::toStringData() const {
+	return toString();
 }
 
 String SessionApprovalResult::toString() const {
