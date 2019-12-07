@@ -42,12 +42,15 @@ void EventPerkDeedImplementation::fillAttributeList(AttributeListMessage* alm, C
 void EventPerkDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if(isASubChildOf(player)) {
+	if (isASubChildOf(player)) {
 		menuResponse->addRadialMenuItem(20, 3, "@event_perk:use_event_perk"); // Deploy Rental
 	}
 }
 
 int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (!isASubChildOf(player)) {
+		return 1;
+	}
 
 	if (selectedID == 20) {
 		if (generated) {

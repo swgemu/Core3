@@ -3792,13 +3792,13 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	account->setBanAdmin(admin->getAccountID());
 
 	try {
+		Reference<const CharacterList*> characters = account->getCharacterList();
 
-		Reference<CharacterList*> characters = account->getCharacterList();
 		for (int i = 0; i < characters->size(); ++i) {
-			CharacterListEntry* entry = &characters->get(i);
+			const CharacterListEntry* entry = &characters->get(i);
 			if (entry->getGalaxyID() == server->getGalaxyID()) {
-
 				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
+
 				if (player != nullptr) {
 					clearOwnedStructuresPermissions(player);
 
@@ -3891,9 +3891,10 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	try {
 
 		if (server->getGalaxyID() == galaxy) {
-			Reference<CharacterList*> characters = account->getCharacterList();
+			Reference<const CharacterList*> characters = account->getCharacterList();
+
 			for (int i = 0; i < characters->size(); ++i) {
-				CharacterListEntry* entry = &characters->get(i);
+				const CharacterListEntry* entry = &characters->get(i);
 				if (entry->getGalaxyID() == galaxy) {
 
 					ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
@@ -3973,7 +3974,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 
 	Locker locker(account);
 
-	Reference<CharacterList*> characters = account->getCharacterList();
+	Reference<const CharacterList*> characters = account->getCharacterList();
 
 	for (int i = 0; i<characters->size(); i++) {
 		CharacterListEntry& entry = characters->get(i);

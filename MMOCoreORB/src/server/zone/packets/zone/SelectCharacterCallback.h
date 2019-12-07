@@ -55,16 +55,21 @@ public:
 		}
 
 #ifdef WITH_SESSION_API
-		SessionAPIClient::instance()->approvePlayerConnect(client->getIPAddress(), ghost->getAccountID(), characterID, [=](SessionApprovalResult result) {
+		SessionAPIClient::instance()->approvePlayerConnect(client->getIPAddress(), ghost->getAccountID(), characterID,
+				[object = Reference<SceneObject*>(obj), characterID,
+				playerCreature = Reference<CreatureObject*>(player),
+				clientObject = Reference<ZoneClientSession*>(client),
+				zoneServer](SessionApprovalResult result) {
+
 			if (!result.isActionAllowed()) {
-				client->info("Player connect not approved: " + result.getLogMessage(), true);
-				client->sendMessage(new ErrorMessage(result.getTitle(), result.getMessage(true), 0));
+				clientObject->info("Player connect not approved: " + result.getLogMessage(), true);
+				clientObject->sendMessage(new ErrorMessage(result.getTitle(), result.getMessage(true), 0));
 				return;
 			}
 
-			Locker locker(obj);
+			Locker locker(object);
 
-			connectApprovedPlayer(obj, characterID, player, client, zoneServer);
+			connectApprovedPlayer(object, characterID, playerCreature, clientObject, zoneServer);
 		});
 	};
 

@@ -325,7 +325,7 @@ void ServerCore::registerConsoleCommmands() {
 		if (arguments == "name") {
 			ZoneServer* server = zoneServerRef.get();
 
-			if(server != nullptr)
+			if (server != nullptr)
 				server->getNameManager()->loadConfigData(true);
 		} else {
 			System::out << "Invalid manager. Reloadable managers: name" << endl;
@@ -439,7 +439,7 @@ void ServerCore::registerConsoleCommmands() {
 	consoleCommands.put("setpvp", setPvpModeLambda);
 
 	const auto dumpConfigLambda = [this](const String& arguments) -> CommandResult {
-		ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
+		ConfigManager::instance()->dumpConfig(arguments == "all");
 
 		return SUCCESS;
 	};
@@ -751,6 +751,7 @@ void ServerCore::shutdown() {
 		if (configManager != nullptr) {
 			sessionAPIClient->notifyGalaxyShutdown();
 		}
+
 		sessionAPIClient->finalizeInstance();
 	}
 #endif // WITH_SESSION_API

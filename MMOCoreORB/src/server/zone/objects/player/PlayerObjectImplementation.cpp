@@ -1306,7 +1306,8 @@ void PlayerObjectImplementation::notifyOnline() {
 	auto client = playerCreature->getClient();
 
 	// NOTE: Call after resetSessionStats so first session_stats has been saved and can be inspected
-	SessionAPIClient::instance()->notifyPlayerOnline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(), playerCreature->getObjectID());
+	SessionAPIClient::instance()->notifyPlayerOnline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress,
+			getAccountID(), playerCreature->getObjectID());
 #endif // WITH_SESSION_API
 
 	ChatManager* chatManager = server->getChatManager();
@@ -1432,7 +1433,8 @@ void PlayerObjectImplementation::notifyOffline() {
 	auto client = playerCreature->getClient();
 
 	// NOTE: Call after logSessionStats so session_stats has been saved and can be inspected
-	SessionAPIClient::instance()->notifyPlayerOffline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(), playerCreature->getObjectID());
+	SessionAPIClient::instance()->notifyPlayerOffline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(),
+			playerCreature->getObjectID());
 #endif // WITH_SESSION_API
 }
 
