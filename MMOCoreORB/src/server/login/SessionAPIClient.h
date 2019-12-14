@@ -59,7 +59,7 @@ namespace server {
 				return String("UNKOWN(" + String::valueOf((int)action) + ")");
 			}
 
-			inline void setAction(const String& stringAction) {
+			void setAction(const String& stringAction) {
 				if (stringAction == "TEMPFAIL") {
 					resultAction = ApprovalAction::TEMPFAIL;
 					return;
@@ -168,11 +168,16 @@ namespace server {
 				resultDebug.put(key, value);
 			}
 
-			inline String getDebugValue(const String key) const {
-				if (resultDebug.containsKey(key))
-					return resultDebug.get(key);
+			inline const String& getDebugValue(const String key) const {
+				auto entry = resultDebug.getEntry(key);
 
-				return String("");
+				if (entry) {
+					return entry->getValue();
+				} else {
+					const static String empty;
+
+					return empty;
+				}
 			}
 
 			inline const HashTable<String, String>& getDebugHashTable() const {
@@ -230,7 +235,7 @@ namespace server {
 			// Calls in general order of execution
 			void notifyGalaxyStart(uint32 galaxyID);
 			void notifyGalaxyShutdown();
-            void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
+			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
 			void notifySessionStart(const String& ip, uint32 accountID);
 			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
 			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
