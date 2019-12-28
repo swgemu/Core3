@@ -54,8 +54,14 @@ public:
 			return;
 		}
 
+		player->setClient(client);
+		client->setPlayer(player);
+
 #ifdef WITH_SESSION_API
-		SessionAPIClient::instance()->approvePlayerConnect(client->getIPAddress(), ghost->getAccountID(), characterID,
+		auto clientIP = client->getIPAddress();
+		auto loggedInAccounts = zoneServer->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(clientIP);
+
+		SessionAPIClient::instance()->approvePlayerConnect(clientIP, ghost->getAccountID(), characterID, loggedInAccounts,
 				[object = Reference<SceneObject*>(obj), characterID,
 				playerCreature = Reference<CreatureObject*>(player),
 				clientObject = Reference<ZoneClientSession*>(client),
@@ -81,9 +87,6 @@ public:
 			return;
 		}
 #endif // WITH_SESSION_API
-
-		player->setClient(client);
-		client->setPlayer(player);
 
 		String zoneName = ghost->getSavedTerrainName();
 		Zone* zone = zoneServer->getZone(zoneName);
