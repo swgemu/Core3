@@ -37,6 +37,7 @@ namespace server {
 			String resultMessage;
 			String resultDetails;
 			String resultRawJSON;
+			uint64 resultElapsedTimeMS;
 			HashTable<String, String> resultDebug;
 
 		public:
@@ -164,6 +165,14 @@ namespace server {
 				return resultDetails;
 			}
 
+			inline void setElapsedTimeMS(uint64 elapsedTimeMS) {
+				resultElapsedTimeMS = elapsedTimeMS;
+			}
+
+			inline uint64 getElapsedTimeMS() const {
+				return resultElapsedTimeMS;
+			}
+
 			inline void setDebugValue(const String key, const String value) {
 				resultDebug.put(key, value);
 			}
@@ -198,6 +207,7 @@ namespace server {
 		class SessionAPIClient : public Logger, public Singleton<SessionAPIClient>, public Object {
 		protected:
 			AtomicInteger trxCount = 0;
+			AtomicInteger errCount = 0;
 			bool apiEnabled = false;
 			int galaxyID = 0;
 			int debugLevel = 0;
@@ -212,6 +222,10 @@ namespace server {
 
 			inline void incrementTrxCount() {
 				trxCount.increment();
+			}
+
+			inline void incrementErrorCount() {
+				errCount.increment();
 			}
 
 			inline void setDebugLevel(int newDebugLevel) {
@@ -238,9 +252,9 @@ namespace server {
 			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
 			void notifySessionStart(const String& ip, uint32 accountID);
 			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
-			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback);
+			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, SortedVector<uint32> loggedInAccounts, const SessionAPICallback& resultCallback);
 			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID);
-			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);;
+			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);
 		};
 	}
 }

@@ -82,6 +82,7 @@ String SessionAPIClient::toString() const {
 	buf << "SessionAPIClient " << this << " ["
 		<< "apiEnabled: " << apiEnabled << ", "
 		<< "trxCount: " << trxCount << ", "
+		<< "errCount: " << errCount << ", "
 		<< "failOpen: " << failOpen << ", "
 		<< "dryRun: " << dryRun << ", "
 		<< "debugLevel: " << debugLevel << ", "
@@ -107,6 +108,8 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 		}, "SessionAPIClientResult", "slowQueue");
 		return;
 	}
+
+	Time startTime;
 
 	incrementTrxCount();
 
@@ -147,6 +150,8 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 			}
 
 			if (failed || resp.status_code() != 200) {
+				incrementErrorCount();
+
 				error() << src << " HTTP Status " << resp.status_code() << " returned.";
 
 				auto json_err = json::value();
@@ -169,7 +174,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 			}
 
 			return resp.extract_json();
-		}).then([this, src, path, resultCallback](pplx::task<json::value> task) {
+		}).then([this, src, path, resultCallback, startTime](pplx::task<json::value> task) {
 			SessionApprovalResult result;
 			auto logPrefix = result.getClientTrxId() + " " + src + ": ";
 			auto result_json = json::value();
@@ -183,6 +188,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 			}
 
 			if (result_json.is_null()) {
+				incrementErrorCount();
 				error() << logPrefix << "Null JSON result from server.";
 				result.setAction(SessionApprovalResult::ApprovalAction::TEMPFAIL);
 				result.setTitle("Temporary Server Error");
@@ -196,6 +202,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 					warning() << logPrefix << "Missing action from result, failing to ALLOW: JSON: " << result_json.serialize().c_str();
 					result.setAction(SessionApprovalResult::ApprovalAction::ALLOW);
 				} else {
+					incrementErrorCount();
 					result.setAction(SessionApprovalResult::ApprovalAction::TEMPFAIL);
 					result.setTitle("Temporary Server Error");
 					result.setMessage("If the error continues please contact support and mention error code = L");
@@ -222,6 +229,11 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 					}
 				}
 			}
+
+			result.setElapsedTimeMS(startTime.miliDifference());
+
+			if (result.getElapsedTimeMS() > 500)
+				warning() << "Slow API Call: " << result.toString();
 
 			if (dryRun) {
 				debug() << logPrefix << "DryRun: original result = " << result;
@@ -293,10 +305,18 @@ void SessionAPIClient::notifyDisconnectClient(const String& ip, uint32 accountID
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, SortedVector<uint32> loggedInAccounts, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/approval";
+
+	if (loggedInAccounts.size() > 0) {
+		path << "?loggedin_accounts";
+
+		for (int i = 0; i < loggedInAccounts.size(); ++i) {
+			path << (i == 0 ? "=" : ",") << loggedInAccounts.get(i);
+		}
+	}
 
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
@@ -412,7 +432,7 @@ String SessionApprovalResult::toString() const {
 		buf << ", JSON: '" << getRawJSON() << "'";
 	}
 
-	buf << "]";
+	buf << ", elapsedTimeMS: " << getElapsedTimeMS() << "]";
 
 	return buf.toString();
 }
@@ -438,7 +458,7 @@ String SessionApprovalResult::getLogMessage() const {
 		buf << ", JSON: '" << getRawJSON() << "'";
 	}
 
-	buf << "]";
+	buf << ", elapsedTimeMS: " << getElapsedTimeMS() << "]";
 
 	return buf.toString();
 }
@@ -456,6 +476,7 @@ SessionApprovalResult::SessionApprovalResult() {
 	resultMessage = "";
 	resultDetails = "";
 	resultRawJSON = "";
+	resultElapsedTimeMS = 0ull;
 }
 
 #endif // WITH_SESSION_API

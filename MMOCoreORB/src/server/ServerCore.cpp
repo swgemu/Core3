@@ -746,16 +746,6 @@ void ServerCore::shutdown() {
 		}
 	}
 
-#ifdef WITH_SESSION_API
-	if (sessionAPIClient) {
-		if (configManager != nullptr) {
-			sessionAPIClient->notifyGalaxyShutdown();
-		}
-
-		sessionAPIClient->finalizeInstance();
-	}
-#endif // WITH_SESSION_API
-
 	if (pingServer != nullptr) {
 		pingServer->stop();
 		pingServer = nullptr;
@@ -814,6 +804,16 @@ void ServerCore::shutdown() {
 	}
 
 	objectManager->finalizeInstance();
+
+#ifdef WITH_SESSION_API
+	if (sessionAPIClient) {
+		if (configManager != nullptr) {
+			sessionAPIClient->notifyGalaxyShutdown();
+		}
+
+		sessionAPIClient->finalizeInstance();
+	}
+#endif // WITH_SESSION_API
 
 	configManager = nullptr;
 	metricsManager = nullptr;
