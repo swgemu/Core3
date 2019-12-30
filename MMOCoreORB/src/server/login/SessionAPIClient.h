@@ -101,7 +101,7 @@ namespace server {
 				return String("<not set>");
 			}
 
-			inline void setClientTrxId(String clientTrxId) {
+			inline void setClientTrxId(const String& clientTrxId) {
 				resultClientTrxId = clientTrxId;
 			}
 
@@ -137,7 +137,7 @@ namespace server {
 				return resultAction == ApprovalAction::BAN;
 			}
 
-			inline void setTitle(String title) {
+			inline void setTitle(const String& title) {
 				resultTitle = title;
 			}
 
@@ -145,7 +145,7 @@ namespace server {
 				return resultTitle;
 			}
 
-			inline void setMessage(String message) {
+			inline void setMessage(const String& message) {
 				resultMessage = message;
 			}
 
@@ -157,7 +157,7 @@ namespace server {
 				return resultMessage + "\n\ntrx_id: " + resultDebug.get("trx_id");
 			}
 
-			inline void setDetails(String details) {
+			inline void setDetails(const String& details) {
 				resultDetails = details;
 			}
 
@@ -173,11 +173,11 @@ namespace server {
 				return resultElapsedTimeMS;
 			}
 
-			inline void setDebugValue(const String key, const String value) {
+			inline void setDebugValue(const String& key, const String& value) {
 				resultDebug.put(key, value);
 			}
 
-			inline const String& getDebugValue(const String key) const {
+			inline const String& getDebugValue(const String& key) const {
 				auto entry = resultDebug.getEntry(key);
 
 				if (entry) {
