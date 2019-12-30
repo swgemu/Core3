@@ -54,9 +54,6 @@ public:
 			return;
 		}
 
-		player->setClient(client);
-		client->setPlayer(player);
-
 #ifdef WITH_SESSION_API
 		auto clientIP = client->getIPAddress();
 		auto loggedInAccounts = zoneServer->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(clientIP);
@@ -87,6 +84,9 @@ public:
 			return;
 		}
 #endif // WITH_SESSION_API
+
+		player->setClient(client);
+		client->setPlayer(player);
 
 		String zoneName = ghost->getSavedTerrainName();
 		Zone* zone = zoneServer->getZone(zoneName);
