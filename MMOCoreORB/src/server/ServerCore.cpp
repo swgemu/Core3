@@ -695,6 +695,8 @@ void ServerCore::run() {
 }
 
 void ServerCore::shutdown() {
+	handleCmds = false;
+
 	info(true) << "shutting down server..";
 
 	if (restServer) {
@@ -844,58 +846,77 @@ void ServerCore::shutdown() {
 	info("server closed", true);
 }
 
+ServerCore::CommandResult ServerCore::processConsoleCommand(String commandString) {
+#ifdef WITH_STM
+	Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
+#endif
+
+	CommandResult result = CommandResult::NOTFOUND;
+
+	try {
+		StringTokenizer tokenizer(commandString);
+
+		String command, arguments;
+
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(command);
+
+		if (tokenizer.hasMoreTokens())
+			arguments = tokenizer.getRemainingString();
+
+		auto it = consoleCommands.find(command);
+
+		if (it != consoleCommands.npos) {
+			result = consoleCommands.get(it)(arguments);
+		} else {
+			result = CommandResult::NOTFOUND;
+		}
+	} catch (const Exception& e) {
+		error() << commandString << " EXCEPTION: " <<  e.getMessage();
+		return CommandResult::ERROR;
+	}
+
+#ifdef WITH_STM
+	try {
+		TransactionalMemoryManager::commitPureTransaction(transaction);
+	} catch (const TransactionAbortedException& e) {
+	}
+#endif
+
+	return result;
+}
+
 void ServerCore::handleCommands() {
 	while (handleCmds) {
+		Thread::sleep(500);
 
-#ifdef WITH_STM
-		Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
-#endif
+		System::out << "> " << flush;
 
-		try {
-			Thread::sleep(500);
+		char line[256];
+		auto res = fgets(line, sizeof(line), stdin);
 
-			System::out << "> " << flush;
+		if (!res)
+			continue;
 
-			char line[256];
-			auto res = fgets(line, sizeof(line), stdin);
+		auto cmd = String(line).trim();
 
-			if (!res)
-				continue;
+		if (cmd.length() == 0)
+			continue;
 
-			String fullCommand = String(line).trim();
-
-			StringTokenizer tokenizer(fullCommand);
-
-			String command, arguments;
-
-			if (tokenizer.hasMoreTokens())
-				tokenizer.getStringToken(command);
-
-			if (tokenizer.hasMoreTokens())
-				arguments = tokenizer.getRemainingString();
-
-			auto it = consoleCommands.find(command);
-
-			if (it != consoleCommands.npos) {
-				int result = consoleCommands.get(it)(arguments);
-
-				if (result == CommandResult::SHUTDOWN)
-					return;
-			} else {
-				warning() << "unknown command (" << command << ")";
-			}
-		} catch (const Exception& e) {
-			error(e.getMessage());
+		if (!handleCmds) {
+			error() << "console command processing disabled, ignoring: " << cmd;
+			break;
 		}
+
+		auto result = processConsoleCommand(cmd);
+
+		if (result == CommandResult::SHUTDOWN)
+			return;
+
+		if (result == CommandResult::NOTFOUND)
+			warning() << "unknown command (" << cmd << ")";
 
 		System::flushStreams();
-#ifdef WITH_STM
-		try {
-			TransactionalMemoryManager::commitPureTransaction(transaction);
-		} catch (const TransactionAbortedException& e) {
-		}
-#endif
-
 	}
 }
 

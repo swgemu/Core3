@@ -4,11 +4,12 @@
  * @created     : Sunday Nov 11, 2018 11:31:08 CET
  */
 
+#include "server/ServerCore.h"
 #include "RESTServer.h"
 
 using namespace server::web3;
 
-const Logger server::web3::RESTServer::logger("RESTServer");
+Logger server::web3::RESTServer::logger("RESTServer");
 
 RESTServer::RESTServer(uint16 port) : doRun(true), port(port) {
 
@@ -58,25 +59,48 @@ namespace web3 {
 		if (request.headers().find(header_names::authorization) == headers.end())
 			return false;
 
+		auto authHeader = "Bearer " + apiAuthToken;
 		auto requestToken = String(headers[header_names::authorization].c_str());
 
-		if (requestToken == apiAuthToken)
+		if (requestToken == authHeader)
 			return true;
 
 		return false;
 	}
 
-	void handle_get(http_request request) {
-		auto start = chrono::steady_clock::now();
+	void error_response(http_request request, const utility::string_t error) {
+		const auto& uri = request.absolute_uri();
 
-		if (!check_auth(request)) {
-			request.reply(status_codes::Forbidden, U("Invalid API Token"));
-			return;
-		}
+		RESTServer::logger.error()
+			<< error.c_str()
+			<< " - " << request.method().c_str()
+			<< " " << uri.to_string().c_str()
+			;
+
+		auto result = json::value();
+
+		result[U("status")] = json::value::string(U("ERROR"));
+		result[U("error")] = json::value::string(U(error));
+
+		http_response response(status_codes::Accepted);
+
+		response.set_status_code(status_codes::NotFound);
+
+		response.set_body(result);
+
+		request.reply(response);
+	}
+
+	void handle_get_object(http_request request) {
+		auto start = chrono::steady_clock::now();
 
 		const auto& uri = request.relative_uri();
 
 		auto fragments = uri::split_path(uri.to_string());
+
+		// Skip resource path
+		fragments.erase(fragments.begin());
+		fragments.erase(fragments.begin());
 
 		nlohmann::json responses = nlohmann::json::array();
 
@@ -121,12 +145,139 @@ namespace web3 {
 		request.reply(response);
 	}
 
+	void handle_get_version(http_request request) {
+		auto result = json::value();
+
+		result[U("status")] = json::value::string(U("OK"));
+		result[U("api_version")] = json::value::number(1);
+
+		http_response response(status_codes::Accepted);
+
+		response.set_status_code(status_codes::OK);
+
+		response.set_body(result);
+
+		request.reply(response);
+	}
+
+	void handle_post_admin(http_request request) {
+		const auto& uri = request.relative_uri();
+
+		RESTServer::logger.info(true) << "REMOTE ADMIN COMMAND: " << uri.to_string().c_str();
+
+		auto fragments = uri::split_path(uri.path());
+
+		// Skip resource path
+		fragments.erase(fragments.begin());
+		fragments.erase(fragments.begin());
+
+		http_response response(status_codes::Accepted);
+
+		if (fragments.size() <= 0) {
+			response.set_status_code(status_codes::NotFound);
+			request.reply(response);
+		}
+
+		auto subCommand = fragments.front();
+
+		response.set_status_code(status_codes::OK);
+
+		auto result = json::value();
+
+		result[U("status")] = json::value::string(U("OK"));
+		result[U("subcommand")] = json::value::string(subCommand);
+
+		if (subCommand == "console") {
+			fragments.erase(fragments.begin());
+
+			if (fragments.size() <= 0) {
+				error_response(request, "Missing console command");
+				return;
+			}
+
+			StringBuffer buf;
+
+			for (const auto& part : fragments) {
+				buf << " " << part.c_str();
+			}
+
+			auto get_vars = uri::split_query(uri.query());
+
+			auto find_args = get_vars.find(U("args"));
+
+			if (find_args != get_vars.end()) {
+				buf << " " << uri::decode(find_args->second).c_str();
+			}
+
+			auto consoleCommand = buf.toString().trim();
+
+			result[U("console_command")] = json::value::string(consoleCommand.toCharArray());
+
+			Core::getTaskManager()->scheduleTask([consoleCommand] {
+				RESTServer::logger.info(true) << "REMOTE CONSOLE COMMAND: " << consoleCommand;
+				auto cmdResult = ServerCore::getInstance()->processConsoleCommand(consoleCommand);
+				RESTServer::logger.info(true) << "REMOTE CONSOLE COMMAND RESULT: " << cmdResult;
+
+				if (cmdResult == ServerCore::CommandResult::SHUTDOWN) {
+					RESTServer::logger.info(true) << "REMOTE CONSOLE COMMAND SHUTTING DOWN SERVER";
+					ServerCore::getInstance()->shutdown();
+				}
+			}, "RESTConsoleCommandTask", 10);
+		}
+
+		response.set_body(result);
+
+		request.reply(response);
+	}
+
+	// Simple routers
+
+	void handle_get(http_request request) {
+		if (!check_auth(request)) {
+			request.reply(status_codes::Forbidden, U("Invalid API Token"));
+			return;
+		}
+
+		const auto& uri = request.relative_uri();
+
+		if (uri.path() == "/v1/version") {
+			handle_get_version(request);
+			return;
+		}
+
+		if (uri.path().rfind("/v1/object/", 0) == 0) {
+			handle_get_object(request);
+			return;
+		}
+
+		error_response(request, "Invalid resource");
+	}
+
+	void handle_post(http_request request) {
+		if (!check_auth(request)) {
+			request.reply(status_codes::Forbidden, U("Invalid API Token"));
+			return;
+		}
+
+		const auto& uri = request.relative_uri();
+
+		if (uri.path().rfind("/v1/admin/", 0) == 0) {
+			handle_post_admin(request);
+			return;
+		}
+
+		error_response(request, "Invalid resource");
+	}
+
 	UniqueReference<http_listener*> restListener;
 }
 }
 
 void RESTServer::start() {
+	logger.setLogLevel(Logger::DEBUG);
+
 	if (restListener != nullptr) {
+		logger.info() << "shutting down previous listener";
 		restListener->close().wait();
 	}
 
@@ -166,10 +317,10 @@ void RESTServer::start() {
 		}
 	});
 
-	restListener = new http_listener(("https://0.0.0.0:" + String::valueOf(port) + "/object").toCharArray(), serverConfig);
+	restListener = new http_listener(("https://0.0.0.0:" + String::valueOf(port)).toCharArray(), serverConfig);
 
 	restListener->support(methods::GET, handle_get);
-	//listener.support(methods::POST, handle_post);
+	restListener->support(methods::POST, handle_post);
 	//listener.support(methods::PUT, handle_put);
 	//listener.support(methods::DEL, handle_del);
 

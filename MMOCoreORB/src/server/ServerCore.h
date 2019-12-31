@@ -71,12 +71,15 @@ class ServerCore : public Core, public Logger {
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
 
+public:
 	enum CommandResult {
 		SUCCESS = 0,
 		ERROR = 1,
-		SHUTDOWN
+		SHUTDOWN,
+		NOTFOUND
 	};
 
+private:
 	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
 
 	bool handleCmds;
@@ -100,6 +103,7 @@ public:
 	void run() override;
 
 	void shutdown();
+	CommandResult processConsoleCommand(String commandString);
 	void handleCommands();
 	void processConfig();
 	void signalShutdown();
