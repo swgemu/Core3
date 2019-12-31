@@ -133,7 +133,9 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 
 	http_request req(methods::GET);
 
-	req.headers().add(U("Authorization"), apiToken.toCharArray());
+	String authHeader = "Bearer " + apiToken;
+
+	req.headers().add(U("Authorization"), authHeader.toCharArray());
 
 	req.set_request_uri(path.toCharArray());
 
