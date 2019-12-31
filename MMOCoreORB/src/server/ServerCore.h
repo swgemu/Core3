@@ -7,6 +7,7 @@
 
 #include "engine/engine.h"
 #include "system/lang/Function.h"
+#include "system/io/Pipe.h"
 
 #include "server/features/Features.h"
 
@@ -53,6 +54,7 @@ namespace engine {
 using namespace server::web;
 
 class ServerCore : public Core, public Logger {
+	Pipe consoleCommandPipe;
 	ConfigManager* configManager;
 	ServerDatabase* database;
 	MantisDatabase* mantisDatabase;
@@ -71,12 +73,15 @@ class ServerCore : public Core, public Logger {
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
 
+public:
 	enum CommandResult {
 		SUCCESS = 0,
 		ERROR = 1,
-		SHUTDOWN
+		SHUTDOWN,
+		NOTFOUND
 	};
 
+private:
 	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
 
 	bool handleCmds;
@@ -87,6 +92,7 @@ class ServerCore : public Core, public Logger {
 	static ServerCore* instance;
 
 	void registerConsoleCommmands();
+	CommandResult processConsoleCommand(String commandString);
 
 public:
 	ServerCore(bool truncateDatabases, const SortedVector<String>& args);
@@ -100,6 +106,7 @@ public:
 	void run() override;
 
 	void shutdown();
+	void queueConsoleCommand(String commandString);
 	void handleCommands();
 	void processConfig();
 	void signalShutdown();
@@ -126,6 +133,36 @@ public:
 	}
 
 	static int getSchemaVersion();
+
+private:
+	class ConsoleReaderService : public ServiceThread {
+		ServerCore* core;
+
+	public:
+		ConsoleReaderService(ServerCore* serverCoreInstance) : ServiceThread("ConsoleReader") {
+			core = serverCoreInstance;
+		}
+
+		void run() {
+			setReady(true);
+
+			while (true) {
+				char line[PIPE_BUF];
+
+				auto res = fgets(line, PIPE_BUF, stdin);
+
+				if (!res)
+					continue;
+
+				auto cmd = String(line).trim();
+
+				if (cmd.length() == 0)
+					continue;
+
+				core->queueConsoleCommand(cmd);
+			}
+		}
+	};
 };
 
 #endif /*SERVERCORE_H_*/

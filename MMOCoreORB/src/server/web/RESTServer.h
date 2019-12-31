@@ -18,7 +18,7 @@ namespace server {
 	const uint16 port;
 
  public:
-	const static Logger logger;
+	static Logger logger;
 
 	RESTServer(uint16 port);
 	~RESTServer();
