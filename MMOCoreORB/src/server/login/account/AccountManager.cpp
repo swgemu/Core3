@@ -68,14 +68,28 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 		return;
 
 #ifdef WITH_SESSION_API
-	SessionAPIClient::instance()->approveNewSession(client->getIPAddress(), account->getAccountID(), [=](SessionApprovalResult result) {
+	SessionAPIClient::instance()->approveNewSession(client->getIPAddress(), account->getAccountID(),
+			[this,
+			loginClient = Reference<LoginClient*>(client),
+			loginAccount = Reference<Account*>(account)
+			](SessionApprovalResult result) {
+
+		if (result.isActionTemporaryFailure()) {
+			error()
+			    << "Unexpected failure in approveNewSession for user ["
+				<< (loginAccount == nullptr ? "<unknown user>" : loginAccount->getUsername())
+				<< "]: " << result.getLogMessage();
+		}
+
+		if (loginClient == nullptr || loginAccount == nullptr)
+			return;
+
 		if (!result.isActionAllowed()) {
-			client->info("Login session not approved: " + result.getLogMessage(), true);
-			client->sendErrorMessage(result.getTitle(), result.getMessage(true));
+			loginClient->sendErrorMessage(result.getTitle(), result.getMessage(true));
 			return;
 		}
 
-		loginApprovedAccount(client, account);
+		loginApprovedAccount(loginClient, loginAccount);
 	});
 };
 
