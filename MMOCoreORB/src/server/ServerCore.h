@@ -36,10 +36,6 @@ class MantisDatabase;
 class StatusServer;
 
 namespace server {
- namespace web {
- 	 class WebServer;
- }
-
  namespace web3 {
  	class RESTServer;
  }
@@ -51,8 +47,6 @@ namespace engine {
 	}
 }
 
-using namespace server::web;
-
 class ServerCore : public Core, public Logger {
 	Pipe consoleCommandPipe;
 	ConfigManager* configManager;
@@ -63,7 +57,6 @@ class ServerCore : public Core, public Logger {
 	Reference<StatusServer*> statusServer;
 	server::features::Features* features;
 	Reference<PingServer*> pingServer;
-	WebServer* webServer;
 	MetricsManager* metricsManager;
 	server::web3::RESTServer* restServer;
 #ifdef WITH_SESSION_API
@@ -92,7 +85,7 @@ private:
 	static ServerCore* instance;
 
 	void registerConsoleCommmands();
-	CommandResult processConsoleCommand(String commandString);
+	CommandResult processConsoleCommand(const String& commandString);
 
 public:
 	ServerCore(bool truncateDatabases, const SortedVector<String>& args);
@@ -106,7 +99,7 @@ public:
 	void run() override;
 
 	void shutdown();
-	void queueConsoleCommand(String commandString);
+	void queueConsoleCommand(const String& commandString);
 	void handleCommands();
 	void processConfig();
 	void signalShutdown();

@@ -18,7 +18,6 @@
 #endif // WITH_SESSION_API
 #include "ping/PingServer.h"
 #include "status/StatusServer.h"
-#include "web/WebServer.h"
 #include "web/RESTServer.h"
 #include "server/zone/ZoneServer.h"
 
@@ -61,7 +60,6 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 	zoneServerRef = nullptr;
 	statusServer = nullptr;
 	pingServer = nullptr;
-	webServer = nullptr;
 	database = nullptr;
 	mantisDatabase = nullptr;
 	restServer = nullptr;
@@ -586,10 +584,6 @@ void ServerCore::initialize() {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
 
-		if (configManager->getMakeWeb()) {
-			webServer = WebServer::instance();
-		}
-
 		ZoneServer* zoneServer = zoneServerRef.get();
 
 		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
@@ -637,10 +631,6 @@ void ServerCore::initialize() {
 					configManager->getStatusAllowedConnections();
 
 			statusServer->start(statusPort, statusAllowedConnections);
-		}
-
-		if (webServer != nullptr) {
-			webServer->start(configManager);
 		}
 
 		if (pingServer != nullptr) {
@@ -769,11 +759,6 @@ void ServerCore::shutdown() {
 		pingServer = nullptr;
 	}
 
-	if (webServer != nullptr) {
-		webServer->stop();
-		webServer = nullptr;
-	}
-
 	if (statusServer != nullptr) {
 		statusServer->stop();
 		statusServer = nullptr;
@@ -862,7 +847,7 @@ void ServerCore::shutdown() {
 	info("server closed", true);
 }
 
-ServerCore::CommandResult ServerCore::processConsoleCommand(String commandString) {
+ServerCore::CommandResult ServerCore::processConsoleCommand(const String& commandString) {
 #ifdef WITH_STM
 	Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
 #endif
@@ -889,6 +874,7 @@ ServerCore::CommandResult ServerCore::processConsoleCommand(String commandString
 		}
 	} catch (const Exception& e) {
 		error() << commandString << " EXCEPTION: " <<  e.getMessage();
+
 		return CommandResult::ERROR;
 	}
 
@@ -902,7 +888,7 @@ ServerCore::CommandResult ServerCore::processConsoleCommand(String commandString
 	return result;
 }
 
-void ServerCore::queueConsoleCommand(String commandString) {
+void ServerCore::queueConsoleCommand(const String& commandString) {
 	if (!handleCmds) {
 		error() << "Ignoring queued command: " << commandString;
 		return;
@@ -996,7 +982,7 @@ bool coredetail::ConsoleReaderService::inputAvailable() const {
 
 	fatal(ret != -1) << "select on stdin failed";
 
-	return (FD_ISSET(STDIN_FILENO, &fds));
+	return FD_ISSET(STDIN_FILENO, &fds);
 }
 
 void coredetail::ConsoleReaderService::run() {
