@@ -133,36 +133,6 @@ public:
 	}
 
 	static int getSchemaVersion();
-
-private:
-	class ConsoleReaderService : public ServiceThread {
-		ServerCore* core;
-
-	public:
-		ConsoleReaderService(ServerCore* serverCoreInstance) : ServiceThread("ConsoleReader") {
-			core = serverCoreInstance;
-		}
-
-		void run() {
-			setReady(true);
-
-			while (true) {
-				char line[PIPE_BUF];
-
-				auto res = fgets(line, PIPE_BUF, stdin);
-
-				if (!res)
-					continue;
-
-				auto cmd = String(line).trim();
-
-				if (cmd.length() == 0)
-					continue;
-
-				core->queueConsoleCommand(cmd);
-			}
-		}
-	};
 };
 
 #endif /*SERVERCORE_H_*/
