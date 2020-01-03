@@ -12,6 +12,7 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/login/LoginServer.h"
+#include "system/lang/SignalException.h"
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -38,6 +39,19 @@ ManagedReference<ZoneServer*> ServerCore::zoneServerRef = nullptr;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
+
+namespace coredetail {
+	class ConsoleReaderService : public ServiceThread {
+		ServerCore* core;
+
+	public:
+		ConsoleReaderService(ServerCore* serverCoreInstance);
+
+		bool inputAvailable() const;
+
+		void run() override;
+	};
+}
 
 ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args) :
 		Core("log/core3.log", "core3engine", LogLevel::LOG), Logger("Core") {
@@ -903,8 +917,9 @@ void ServerCore::handleCommands() {
 		return;
 
 	consoleCommandPipe.create(false);
-	Reference<ConsoleReaderService*> reader = new ConsoleReaderService(instance);
-	reader->start(true);
+
+	auto reader = coredetail::ConsoleReaderService(instance);
+	reader.start(true);
 
 	while (handleCmds) {
 		Thread::sleep(500);
@@ -922,7 +937,7 @@ void ServerCore::handleCommands() {
 
 		auto cmd = String(line).trim();
 
-		if (cmd.length() == 0)
+		if (cmd.isEmpty())
 			continue;
 
 		if (!handleCmds) {
@@ -938,10 +953,14 @@ void ServerCore::handleCommands() {
 		if (result == CommandResult::NOTFOUND)
 			warning() << "unknown command (" << cmd << ")";
 
-		::fflush(stdout);
+		System::flushStream(stdout);
 	}
 
-	reader->stop(false);
+	reader.setRunning(false);
+
+	Thread::yield();
+
+	reader.join();
 
 	consoleCommandPipe.close();
 
@@ -951,9 +970,6 @@ void ServerCore::handleCommands() {
 void ServerCore::processConfig() {
 	if (!configManager->loadConfigData())
 		warning("missing config file.. loading default values");
-
-	//if (!features->loadFeatures())
-	//info("Problem occurred trying to load features.lua");
 }
 
 int ServerCore::getSchemaVersion() {
@@ -962,3 +978,46 @@ int ServerCore::getSchemaVersion() {
 
 	return -1;
 }
+
+coredetail::ConsoleReaderService::ConsoleReaderService(ServerCore* serverCoreInstance) : ServiceThread("ConsoleReader"), core(serverCoreInstance) {
+}
+
+bool coredetail::ConsoleReaderService::inputAvailable() const {
+	struct timeval tv = {};
+	tv.tv_sec = 0;
+	tv.tv_usec = 2000; //2ms
+
+	fd_set fds;
+
+	FD_ZERO(&fds);
+	FD_SET(STDIN_FILENO, &fds);
+
+	auto ret = select(STDIN_FILENO + 1, &fds, nullptr, nullptr, &tv);
+
+	fatal(ret != -1) << "select on stdin failed";
+
+	return (FD_ISSET(STDIN_FILENO, &fds));
+}
+
+void coredetail::ConsoleReaderService::run() {
+	setReady(true);
+
+	while (doRun.get(std::memory_order_seq_cst)) {
+		char line[PIPE_BUF];
+
+		if (inputAvailable()) {
+			auto res = fgets(line, sizeof(line), stdin);
+
+			if (!res)
+				continue;
+
+			auto cmd = String(line).trim();
+
+			if (cmd.length() == 0)
+				continue;
+
+			core->queueConsoleCommand(cmd);
+		}
+	}
+}
+
