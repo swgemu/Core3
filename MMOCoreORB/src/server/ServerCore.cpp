@@ -984,8 +984,8 @@ coredetail::ConsoleReaderService::ConsoleReaderService(ServerCore* serverCoreIns
 
 bool coredetail::ConsoleReaderService::inputAvailable() const {
 	struct timeval tv = {};
-	tv.tv_sec = 0;
-	tv.tv_usec = 2000; //2ms
+	tv.tv_sec = 1;
+	tv.tv_usec = 0;
 
 	fd_set fds;
 
@@ -1005,19 +1005,20 @@ void coredetail::ConsoleReaderService::run() {
 	while (doRun.get(std::memory_order_seq_cst)) {
 		char line[PIPE_BUF];
 
-		if (inputAvailable()) {
-			auto res = fgets(line, sizeof(line), stdin);
+		if (!inputAvailable())
+			continue;
 
-			if (!res)
-				continue;
+		auto res = fgets(line, sizeof(line), stdin);
 
-			auto cmd = String(line).trim();
+		if (!res)
+			continue;
 
-			if (cmd.length() == 0)
-				continue;
+		auto cmd = String(line).trim();
 
-			core->queueConsoleCommand(cmd);
-		}
+		if (cmd.isEmpty())
+			continue;
+
+		core->queueConsoleCommand(cmd);
 	}
 }
 

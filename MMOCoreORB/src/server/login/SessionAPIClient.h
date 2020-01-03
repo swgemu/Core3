@@ -252,7 +252,8 @@ namespace server {
 			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
 			void notifySessionStart(const String& ip, uint32 accountID);
 			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
-			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, SortedVector<uint32> loggedInAccounts, const SessionAPICallback& resultCallback);
+			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID,
+					const ArrayList<uint32>& loggedInAccounts, const SessionAPICallback& resultCallback);
 			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID);
 			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);
 		};

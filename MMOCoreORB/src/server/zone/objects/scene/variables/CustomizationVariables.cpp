@@ -65,7 +65,7 @@ void CustomizationVariables::setVariable(const String& type, int16 value) {
 }
 
 void CustomizationVariables::getVariable(int idx, uint8& type, int16& value) const {
-	VectorMapEntry<uint8, int16> entry = SortedVector<VectorMapEntry<uint8, int16> >::get(idx);
+	const auto& entry = SortedVector<VectorMapEntry<uint8, int16> >::get(idx);
 
 	type = entry.getKey();
 	value = entry.getValue();

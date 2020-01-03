@@ -307,7 +307,8 @@ void SessionAPIClient::notifyDisconnectClient(const String& ip, uint32 accountID
 	apiNotify(__FUNCTION__, path.toString());
 }
 
-void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID, SortedVector<uint32> loggedInAccounts, const SessionAPICallback& resultCallback) {
+void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID,
+		const ArrayList<uint32>& loggedInAccounts, const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/approval";

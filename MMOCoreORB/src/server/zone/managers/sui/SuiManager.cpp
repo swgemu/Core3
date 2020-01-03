@@ -308,7 +308,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 	ManagedReference<SuiCharacterBuilderBox*> cbSui = cast<SuiCharacterBuilderBox*>( suiBox);
 
-	CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
+	const CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
 
 	PlayerObject* ghost = player->getPlayerObject();
 
@@ -318,7 +318,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 	//Back was pressed. Send the node above it.
 	if (otherPressed) {
-		CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
+		const CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
 
 		if(parentNode == nullptr)
 			return;
@@ -330,7 +330,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 		return;
 	}
 
-	CharacterBuilderMenuNode* node = currentNode->getChildNodeAt(index);
+	const CharacterBuilderMenuNode* node = currentNode->getChildNodeAt(index);
 
 	//Node doesn't exist or the index was out of bounds. Should probably resend the menu here.
 	if (node == nullptr) {

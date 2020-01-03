@@ -236,7 +236,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	info() << "deleting from database";
+	debug() << "deleting from database";
 
 	fatal(!isPlayerCreature()) << "attempting to delete a player creature from database";
 
@@ -493,10 +493,6 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (staticObject)
 		return;
-
-	/*StringBuffer msg;
-	msg << "sending destroy to " << player->getLoggingName();
-	info(msg.toString(), true);*/
 
 	BaseMessage* msg = new SceneObjectDestroyMessage(asSceneObject());
 	player->sendMessage(msg);
@@ -1435,7 +1431,7 @@ void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) 
 	float err = fabs(directionangle - direction.getRadians());
 
 	if (err < 0.05) {
-		//info("not updating " + String::valueOf(directionangle), true);
+		debug() << "not updating " << directionangle;
 		return;
 	}
 

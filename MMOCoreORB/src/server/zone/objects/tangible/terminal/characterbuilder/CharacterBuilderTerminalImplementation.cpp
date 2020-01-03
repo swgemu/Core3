@@ -18,8 +18,6 @@ void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTempla
 		return;
 
 	rootNode = terminalData->getItemList();
-
-	//info("loaded " + String::valueOf(itemList.size()));
 }
 
 void CharacterBuilderTerminalImplementation::initializeTransientMembers() {
@@ -32,7 +30,7 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(CreatureObjec
 	if (!ConfigManager::instance()->getCharacterBuilderEnabled())
 		return 1;
 
-	//info("entering start terminal radial call", true);
+	debug() << "entering start terminal radial call";
 
 	if (selectedID != 20) // not use object
 		return 1;
@@ -46,7 +44,7 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(CreatureObject* 
 	if (!ConfigManager::instance()->getCharacterBuilderEnabled())
 		return;
 
-	//info("entering sendInitialChoices", true);
+	debug() << "entering sendInitialChoices";
 
 	if (rootNode == nullptr) {
 		player->sendSystemMessage("There was an error initializing the menu for this character builder terminal. Sorry for the inconvenience.");
@@ -119,7 +117,7 @@ void CharacterBuilderTerminalImplementation::grantGlowyBadges(CreatureObject* pl
 	if (ghost == nullptr)
 		return;
 
-	Vector<int> ids = terminalTemplate->getGlowyBadgeIds();
+	const auto& ids = terminalTemplate->getGlowyBadgeIds();
 
 	for (int i = 0; i < ids.size(); i++) {
 		ghost->awardBadge(ids.get(i));
@@ -151,7 +149,7 @@ void CharacterBuilderTerminalImplementation::grantJediInitiate(CreatureObject* p
 
 	luaVillageGmCmd->callFunction();
 
-	Vector<String> branches = terminalTemplate->getVillageBranchUnlocks();
+	const auto& branches = terminalTemplate->getVillageBranchUnlocks();
 
 	for (int i = 0; i < branches.size(); i++) {
 		String branch = branches.get(i);
