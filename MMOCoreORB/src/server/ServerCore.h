@@ -35,11 +35,13 @@ class ServerDatabase;
 class MantisDatabase;
 class StatusServer;
 
+#ifdef WITH_REST_API
 namespace server {
  namespace web3 {
  	class RESTServer;
  }
 }
+#endif // WITH_REST_API
 
 namespace engine {
 	namespace core {
@@ -58,7 +60,9 @@ class ServerCore : public Core, public Logger {
 	server::features::Features* features;
 	Reference<PingServer*> pingServer;
 	MetricsManager* metricsManager;
+#ifdef WITH_REST_API
 	server::web3::RESTServer* restServer;
+#endif // WITH_REST_API
 #ifdef WITH_SESSION_API
 	Reference<server::login::SessionAPIClient*> sessionAPIClient;
 #endif // WITH_SESSION_API

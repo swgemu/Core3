@@ -62,7 +62,9 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 	pingServer = nullptr;
 	database = nullptr;
 	mantisDatabase = nullptr;
+#ifdef WITH_REST_API
 	restServer = nullptr;
+#endif // WITH_REST_API
 #if WITH_SESSION_API
 	sessionAPIClient = nullptr;
 #endif // WITH_SESSION_API
@@ -656,10 +658,10 @@ void ServerCore::initialize() {
 		statiscticsTask->schedulePeriodic(10000, 10000);
 #endif
 
-		if (configManager->getRESTPort()) {
-			restServer = new server::web3::RESTServer(configManager->getRESTPort());
-			restServer->start();
-		}
+#ifdef WITH_REST_API
+		restServer = new server::web3::RESTServer();
+		restServer->start();
+#endif // WITH_REST_API
 
 #if WITH_SESSION_API
 		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
@@ -705,12 +707,14 @@ void ServerCore::shutdown() {
 
 	handleCmds = false;
 
+#ifdef WITH_REST_API
 	if (restServer) {
 		restServer->stop();
 
 		delete restServer;
 		restServer = nullptr;
 	}
+#endif // WITH_REST_API
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
