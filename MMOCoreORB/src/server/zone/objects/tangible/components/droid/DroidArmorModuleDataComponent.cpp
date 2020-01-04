@@ -14,7 +14,7 @@ DroidArmorModuleDataComponent::~DroidArmorModuleDataComponent() {
 
 }
 
-String DroidArmorModuleDataComponent::getModuleName() {
+String DroidArmorModuleDataComponent::getModuleName() const {
 	return String("armor_module");
 }
 

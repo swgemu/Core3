@@ -295,7 +295,7 @@ class ResourceSpawn extends SceneObject {
 
 	@local
 	@dereferenced
-	@dirty
+	@read
 	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
 
 	@read

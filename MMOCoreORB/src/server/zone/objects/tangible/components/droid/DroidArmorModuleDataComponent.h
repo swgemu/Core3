@@ -24,7 +24,7 @@ public:
 
 	~DroidArmorModuleDataComponent();
 
-	String getModuleName();
+	String getModuleName() const;
 
 	void initializeTransientMembers();
 
