@@ -30,9 +30,9 @@ class StaticObject extends SceneObject {
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 
-    @dirty
-    @local
-    public native abstract StaticObject asStaticObject();
+	@dirty
+	@local
+	public native abstract StaticObject asStaticObject();
 
 	@dirty
 	public boolean isStaticObjectClass() {

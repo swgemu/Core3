@@ -95,7 +95,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  		return nullptr;
  	}
 
- 	ManagedReference<LairObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<LairObject*>();
+ 	Reference<LairObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<LairObject*>();
 
  	if (building == nullptr) {
  		error("error spawning " + buildingToSpawn);
@@ -149,7 +149,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
  		return nullptr;
  	}
 
- 	ManagedReference<PoiBuilding*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<PoiBuilding*>();
+ 	Reference<PoiBuilding*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<PoiBuilding*>();
 
  	if (building == nullptr) {
  		error("error spawning " + buildingToSpawn);
@@ -190,7 +190,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 	if (mobiles->size() == 0)
 		return nullptr;
 
-	ManagedReference<TheaterObject*> theater = zoneServer->createObject(STRING_HASHCODE("object/intangible/theater/base_theater.iff"), 0).castTo<TheaterObject*>();
+	Reference<TheaterObject*> theater = zoneServer->createObject(STRING_HASHCODE("object/intangible/theater/base_theater.iff"), 0).castTo<TheaterObject*>();
 
 	if (theater == nullptr) {
 		error("error creating intangible theater");

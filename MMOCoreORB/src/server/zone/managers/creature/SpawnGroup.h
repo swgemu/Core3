@@ -71,19 +71,19 @@ public:
 		return *this;
 	}
 
-	String getTemplateName() const {
+	const String& getTemplateName() const {
 		return templateName;
 	}
 
-	Vector<Reference<LairSpawn*> >* getSpawnList() {
-		return &spawnList;
+	const Vector<Reference<LairSpawn*> >& getSpawnList() {
+		return spawnList;
 	}
 
-	void setTemplateName(String templateName) {
+	void setTemplateName(const String& templateName) {
 		this->templateName = templateName;
 	}
 
-	int getMinLevelCeiling() {
+	int getMinLevelCeiling() const {
 		return minLevelCeiling;
 	}
 };

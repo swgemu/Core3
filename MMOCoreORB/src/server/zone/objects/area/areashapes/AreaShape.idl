@@ -35,7 +35,7 @@ class AreaShape extends ManagedObject {
 	 */
 	@dereferenced
 	@local
-	@dirty
+	@read
 	public native Vector3 getAreaCenter();
 
 	/**
@@ -44,7 +44,7 @@ class AreaShape extends ManagedObject {
 	 * @param y the y coordinate.
 	 * @return true if the coordinate is within the area shape.
 	 */
-	@dirty
+	@read
 	public abstract boolean containsPoint(float x, float y) {
 		return false;
 	}
@@ -57,7 +57,7 @@ class AreaShape extends ManagedObject {
 	@dereferenced
 	@local
 	@mock
-	@dirty
+	@read
 	public abstract boolean containsPoint(@dereferenced final Vector3 point) {
 		return false;
 	}
@@ -66,7 +66,7 @@ class AreaShape extends ManagedObject {
 	 * Get the minimum radius of a circle bounding the area shape.
 	 * @return the minimum bonding radius.
 	 */
-	@dirty
+	@read
 	public abstract float getRadius() {
 		return 0;
 	}
@@ -77,7 +77,7 @@ class AreaShape extends ManagedObject {
 	 */
 	@dereferenced
 	@local
-	@dirty
+	@read
 	public native abstract Vector3 getRandomPosition();
 
 	/**
@@ -89,14 +89,14 @@ class AreaShape extends ManagedObject {
 	 */
 	@dereferenced
 	@local
-	@dirty
+	@read
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
 	 */
-	@dirty
+	@read
 	public abstract boolean isCircularAreaShape() {
 		return false;
 	}
@@ -105,7 +105,7 @@ class AreaShape extends ManagedObject {
 	 * Check if this is a rectangular area shape.
 	 * @return true if it is a rectangular area shape.
 	 */
-	@dirty
+	@read
 	public abstract boolean isRectangularAreaShape() {
 		return false;
 	}
@@ -114,7 +114,7 @@ class AreaShape extends ManagedObject {
 	 * Check if this is a ring area shape.
 	 * @return true if it is a ring area shape.
 	 */
-	@dirty
+	@read
 	public abstract boolean isRingAreaShape() {
 		return false;
 	}
@@ -124,7 +124,7 @@ class AreaShape extends ManagedObject {
 	 * @param areaShape the area shape to check for intersections with.
 	 * @return true if the area shapes intersects each other.
 	 */
-	@dirty
+	@read
 	public abstract boolean intersectsWith(AreaShape areaShape) {
 		return false;
 	}
@@ -133,7 +133,7 @@ class AreaShape extends ManagedObject {
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
 	 */
-	@dirty
+	@read
 	public abstract float getArea() {
 		return 0;
 	}

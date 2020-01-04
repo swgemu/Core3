@@ -6,6 +6,7 @@
 #define PRONECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/ui/LaunchBrowserMessage.h"
 
 class ProneCommand : public QueueCommand {
 public:

@@ -7,12 +7,12 @@
 
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 
-Vector3 AreaShapeImplementation::getRandomPosition() {
+Vector3 AreaShapeImplementation::getRandomPosition() const {
 	Vector3 position;
 	return position;
 }
 
-Vector3 AreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) {
+Vector3 AreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
 	if (containsPoint(origin)) {
 		return origin;
 	} else {
@@ -21,6 +21,6 @@ Vector3 AreaShapeImplementation::getRandomPosition(const Vector3& origin, float 
 	}
 }
 
-Vector3 AreaShapeImplementation::getAreaCenter() {
+Vector3 AreaShapeImplementation::getAreaCenter() const {
 	return areaCenter;
 }
