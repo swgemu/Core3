@@ -105,7 +105,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 
 		Core::getTaskManager()->executeTask([resultCallback, result] {
 			resultCallback(result);
-		}, "SessionAPIClientResult", "slowQueue");
+		}, ("SessionAPIClientResult-nop-" + src).toCharArray(), "slowQueue");
 		return;
 	}
 
@@ -251,7 +251,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 
 			Core::getTaskManager()->executeTask([resultCallback, result] {
 				resultCallback(result);
-			}, "SessionAPIClientResult", "slowQueue");
+			}, ("SessionAPIClientResult-" + src).toCharArray(), "slowQueue");
 		});
 }
 
