@@ -498,7 +498,8 @@ public:
 				return "creature_attack" + intensity;
 		}
 
-		//info("Generated Attack Animation- " + buffer.toString(), true);
+		debug() << "Generated Attack Animation- " << buffer;
+
 		return buffer.toString();
 	}
 
@@ -520,12 +521,13 @@ public:
 
 			return anim;
 		}
-		//info("Generated Attack Animation- " + anim, true);
+
+		debug() << "Generated Attack Animation- " << anim;
+
 		return anim;
 	}
 
 	virtual String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
-
 		if (animation.isEmpty())
 			return getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
 

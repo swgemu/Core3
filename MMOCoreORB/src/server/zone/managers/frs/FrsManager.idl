@@ -111,7 +111,7 @@ class FrsManager extends ManagedService implements Logger {
 
 	public FrsManager(ZoneServer zserv) {
 		Logger.setLoggingName("FrsManager");
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 
 		zoneServer = zserv;
 		rankMaintenanceTask = null;

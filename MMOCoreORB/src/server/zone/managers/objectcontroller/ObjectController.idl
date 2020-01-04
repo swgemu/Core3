@@ -28,7 +28,7 @@ class ObjectController extends ManagedService implements Logger {
 
 		Logger.setLoggingName("ObjectController");
 
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
 		loadCommands();

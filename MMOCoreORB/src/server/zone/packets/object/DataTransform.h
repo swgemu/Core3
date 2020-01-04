@@ -62,13 +62,13 @@ public:
 		objectControllerMain = objectControllerCallback;
 
 		ManagedReference<CreatureObject*> player = client->getPlayer();
-		
+
 		if (player != nullptr) {
 			Zone* zone = player->getZone();
-			
+
 			if (zone != nullptr) {
 				String zoneName = zone->getZoneName();
-			
+
 				setCustomTaskQueue(zoneName);
 			}
 		}
@@ -91,7 +91,7 @@ public:
 
 		//client->info(message->toStringData(), true);
 
-		//info("datatransform", true);
+		debug("datatransform parsed");
 	}
 
 	void bounceBack(CreatureObject* object, ValidatedPosition& pos) {
@@ -103,7 +103,7 @@ public:
 
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
-		
+
 		if (object == nullptr)
 			return;
 
@@ -169,7 +169,7 @@ public:
 			object->error(msg.toString());
 			*/
 			return;
-		}	
+		}
 
 		/*float floorHeight = CollisionManager::instance()->getWorldFloorCollision(positionX, positionY, object->getZone(), true);
 
@@ -256,7 +256,7 @@ public:
 
 		ghost->setClientLastMovementStamp(movementStamp);
 
-		if (oldX == positionX && oldY == positionY && oldZ == positionZ && 
+		if (oldX == positionX && oldY == positionY && oldZ == positionZ &&
 			dirw == directionW && dirz == directionZ && dirx == directionX && diry == directionY) {
 
 			return;

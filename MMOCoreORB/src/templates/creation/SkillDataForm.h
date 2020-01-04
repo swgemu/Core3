@@ -53,16 +53,16 @@ public:
 		iffStream->closeForm('PFDT');
 	}
 
-	inline int getTotalPaths() {
+	inline int getTotalPaths() const {
 		return professionInfoPaths.size();
 	}
 
-	inline String getPathBySkillName(const String& professionName) {
+	inline const String& getPathBySkillName(const String& professionName) const {
 		return professionInfoPaths.get(professionName);
 	}
 
-	inline String getSkillNameAt(int idx) {
-		VectorMapEntry<String, String>* entry = &professionInfoPaths.elementAt(idx);
+	inline const String& getSkillNameAt(int idx) const {
+		const VectorMapEntry<String, String>* entry = &professionInfoPaths.elementAt(idx);
 
 		return entry->getKey();
 	}

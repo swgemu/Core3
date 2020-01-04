@@ -183,6 +183,7 @@ void SceneObjectImplementation::createContainerComponent() {
 void SceneObjectImplementation::createObjectMenuComponent() {
 	setObjectMenuComponent(templateObject->getObjectMenuComponent());
 }
+
 void SceneObjectImplementation::createComponents() {
 	if (templateObject != nullptr) {
 		String zoneComponentClassName = templateObject->getZoneComponent();
@@ -1289,7 +1290,7 @@ void SceneObjectImplementation::createChildObjects() {
 	bool client = isClientObject();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
-		ChildObject* child = templateObject->getChildObject(i);
+		const auto child = templateObject->getChildObject(i);
 
 		if (child == nullptr)
 			continue;
@@ -1671,7 +1672,7 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 }
 
 const Vector<String>* SceneObjectImplementation::getArrangementDescriptor(int idx) const {
-	return &templateObject->getArrangementDescriptors()->get(idx);
+	return &templateObject->getArrangementDescriptors().get(idx);
 }
 
 bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
@@ -1758,7 +1759,7 @@ Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel()
 }
 
 int SceneObjectImplementation::getArrangementDescriptorSize() const {
-	return templateObject->getArrangementDescriptors()->size();
+	return templateObject->getArrangementDescriptors().size();
 }
 
 bool SceneObjectImplementation::isDataPad() const {

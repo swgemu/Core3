@@ -14,7 +14,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	//info("parsing " + pack->toStringData(), true);
+	debug() << "parsing " << *pack;
 
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();

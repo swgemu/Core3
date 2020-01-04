@@ -31,8 +31,7 @@
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
-
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(false);
 
 	zoneServer = ServerCore::getZoneServer();
@@ -112,9 +111,7 @@ void PlayerCreationManager::loadRacialCreationData() {
 		}
 	}
 
-	info(
-			"Loaded " + String::valueOf(racialCreationData.size())
-					+ " playable species.");
+	info() << "Loaded " << racialCreationData.size() << " playable species.";
 }
 
 void PlayerCreationManager::loadProfessionDefaultsInfo() {
@@ -147,7 +144,7 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 		delete iffStream;
 
 		professionDefaultsInfo.put(name, pdi);
-		//info("Loading: " + pfdt.getSkillNameAt(i) + " Path: " + pfdt.getPathBySkillName(pfdt.getSkillNameAt(i)), true);
+		debug() << "Loading: " << pfdt.getSkillNameAt(i) << " Path: " << pfdt.getPathBySkillName(pfdt.getSkillNameAt(i));
 	}
 
 	//Now we want to load the profession mods.
@@ -179,9 +176,7 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 		}
 	}
 
-	info(
-			"Loaded " + String::valueOf(professionDefaultsInfo.size())
-					+ " creation professions.");
+	info() << "Loaded " << professionDefaultsInfo.size() << " creation professions.";
 }
 
 void PlayerCreationManager::loadDefaultCharacterItems() {
@@ -252,7 +247,7 @@ void PlayerCreationManager::loadHairStyleInfo() {
 
 		totalHairStyles += hsi->getTotalStyles();
 
-		//info("Loaded " + String::valueOf(hsi->getTotalStyles()) + " hair styles for template " + hsi->getPlayerTemplate());
+		debug() << "Loaded " << hsi->getTotalStyles() << " hair styles for template " << hsi->getPlayerTemplate();
 	}
 
 	iffStream->closeForm(version);
@@ -260,13 +255,11 @@ void PlayerCreationManager::loadHairStyleInfo() {
 
 	delete iffStream;
 
-	info(
-			"Loaded " + String::valueOf(totalHairStyles)
-					+ " total creation hair styles.");
+	info() << "Loaded " << totalHairStyles << " total creation hair styles.";
 }
 
 void PlayerCreationManager::loadLuaConfig() {
-	info("Loading configuration script.");
+	debug("Loading configuration script.");
 
 	Lua* lua = new Lua();
 	lua->init();

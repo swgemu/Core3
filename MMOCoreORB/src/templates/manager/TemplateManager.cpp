@@ -440,7 +440,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 		return;
 	}
 
-	//info("loading " + fullName, true);
+	debug() << "loading " << fullName;
 
 	String fileName = fullName.subString(fullName.lastIndexOf('/') + 1, fullName.lastIndexOf('.'));
 

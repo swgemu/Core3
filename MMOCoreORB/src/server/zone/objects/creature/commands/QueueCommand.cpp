@@ -33,7 +33,7 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : L
 	cooldown = 0;
 	defaultPriority = NORMAL;
 
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(true);
 	setLoggingName("QueueCommand " + skillname);
 }
