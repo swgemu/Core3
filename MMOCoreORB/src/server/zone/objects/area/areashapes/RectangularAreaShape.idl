@@ -12,7 +12,7 @@ class RectangularAreaShape extends AreaShape {
 	/** The bottom left corner of the rectangle. */
 	protected float blX;
 	protected float blY;
-	
+
 	/** The upper right corner of the rectangle. */
 	protected float urX;
 	protected float urY;
@@ -43,8 +43,8 @@ class RectangularAreaShape extends AreaShape {
 	 * Get the height of the rectangle.
 	 * @return height of the rectangle.
 	 */
-	@dirty
-	public abstract float getHeight() {
+	@read
+	public float getHeight() {
 		return urY - blY;
 	}
 
@@ -52,8 +52,8 @@ class RectangularAreaShape extends AreaShape {
 	 * Get the width of the rectangle.
 	 * @return width of the rectangle.
 	 */
-	@dirty
-	public abstract float getWidth() {
+	@read
+	public float getWidth() {
 		return urX - blX;
 	}
 
@@ -63,8 +63,8 @@ class RectangularAreaShape extends AreaShape {
 	 * @param y the y coordinate.
 	 * @return true if the coordinate is within the area shape.
 	 */
-	@dirty
-	public native abstract boolean containsPoint(float x, float y);
+	@read
+	public native boolean containsPoint(float x, float y);
 
 	/**
 	 * Check if the coordinate is within the area shape.
@@ -73,8 +73,8 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract boolean containsPoint(@dereferenced final Vector3 point);
+	@read
+	public native boolean containsPoint(@dereferenced final Vector3 point);
 
 	/**
 	 * Generate a random position within the area.
@@ -82,8 +82,8 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract Vector3 getRandomPosition();
+	@read
+	public native Vector3 getRandomPosition();
 
 	/**
 	 * Generate a random position within the area with the supplied origin and radius as limits.
@@ -94,15 +94,15 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
+	@read
+	public native Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
 	/**
 	 * Check if this is a rectangular area shape.
 	 * @return true if it is a rectangular area shape.
 	 */
-	@dirty
-	public abstract boolean isRectangularAreaShape() {
+	@read
+	public boolean isRectangularAreaShape() {
 		return true;
 	}
 
@@ -111,8 +111,8 @@ class RectangularAreaShape extends AreaShape {
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
 	 */
-	@dirty
-	public native abstract boolean intersectsWith(AreaShape areaShape);
+	@read
+	public native boolean intersectsWith(AreaShape areaShape);
 
 	/**
 	 * Calculates the point in the area that has the shortest distance to the supplied
@@ -122,7 +122,7 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
+	@read
 	private native Vector3 getClosestPoint(@dereferenced final Vector3 position);
 
 	/**
@@ -133,15 +133,15 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
+	@read
 	private native Vector3 getFarthestPoint(@dereferenced final Vector3 position);
 
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
 	 */
-	@dirty
-	public abstract float getArea() {
+	@read
+	public float getArea() {
 		return getHeight() * getWidth();
 	}
 }

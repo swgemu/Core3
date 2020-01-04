@@ -14,7 +14,6 @@ include system.util.HashSet;
 import server.zone.Zone;
 
 class NavArea extends ActiveArea {
-
 	protected string meshName;
 
 	@dereferenced
@@ -68,7 +67,7 @@ class NavArea extends ActiveArea {
 	public native void notifyLoadFromDatabase();
 
 	@local
-	@dirty
+	@read
 	public final AABB getMeshBounds() {
 		return meshBounds;
 	}
@@ -93,10 +92,10 @@ class NavArea extends ActiveArea {
 	@dirty
 	public native NavArea asNavArea();
 
-	@dirty
+	@read
 	public native boolean objectInMesh(SceneObject obj);
 
-	@dirty
+	@read
 	public string getMeshName() {
 		return meshName;
 	}
@@ -124,11 +123,11 @@ class NavArea extends ActiveArea {
 	public native void setRadius(float f);
 
 	@local
-	@dirty
+	@read
 	@dereferenced
 	public native AABB getBoundingBox();
 
-	@dirty
+	@read
 	public abstract native boolean containsPoint(float x, float y);
 
 	@read
@@ -136,7 +135,7 @@ class NavArea extends ActiveArea {
 		return recastNavMesh.isLoaded();
 	}
 
-	@dirty
+	@read
 	public int getContainedObjectsCount() {
 		return containedObjects.size();
 	}

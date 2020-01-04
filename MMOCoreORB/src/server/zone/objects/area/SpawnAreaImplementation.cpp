@@ -23,12 +23,12 @@ void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	for (int i = 0; i < groupCRCs->size(); i++) {
 		SpawnGroup* group = ctm->getSpawnGroup(groupCRCs->get(i));
 
-		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
+		const Vector<Reference<LairSpawn*> >& spawnList = group->getSpawnList();
 
-		for (int j = 0; j < spawnList->size(); j++) {
-			Reference<LairSpawn*> spawn = spawnList->get(j);
+		for (int j = 0; j < spawnList.size(); j++) {
+			const auto& spawn = spawnList.get(j);
 
-			possibleSpawns.add(spawn);
+			possibleSpawns.emplace(spawn);
 
 			totalWeighting += spawn->getWeighting();
 		}
@@ -48,7 +48,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 		positionFound = true;
 
 		for (int i = 0; i < noSpawnAreas.size(); ++i) {
-			ManagedReference<SpawnArea*> noSpawnArea = noSpawnAreas.get(i).get();
+			auto noSpawnArea = noSpawnAreas.get(i).get();
 
 			if (noSpawnArea != nullptr && noSpawnArea->containsPoint(position.getX(), position.getY())) {
 				positionFound = false;
@@ -197,9 +197,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
 
 	if (obj != nullptr) {
-		StringBuffer msg;
-		msg << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
-		obj->info(msg.toString());
+		obj->debug() << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
 	} else {
 		error("could not spawn lair " + lairTemplate);
 
