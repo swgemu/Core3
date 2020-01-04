@@ -109,13 +109,13 @@ class ActiveArea extends SceneObject {
 		return campingPermitted;
 	}
 
-	@dirty
+	@read
 	public native boolean containsPoint(float x, float y, unsigned long cellid);
 
-	@dirty
+	@read
 	public abstract native boolean containsPoint(float x, float y);
 
-	@dirty
+	@read
 	public float getRadius2() {
 		if (areaShape != null) {
 			return areaShape.getRadius() * areaShape.getRadius();
@@ -192,7 +192,7 @@ class ActiveArea extends SceneObject {
 		return areaShape;
 	}
 
-	@dirty
+	@read
 	public native boolean intersectsWith(ActiveArea area);
 
 	@preLocked

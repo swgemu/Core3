@@ -67,7 +67,8 @@ class SpawnArea extends ActiveArea {
 
 	@local
 	@rawTemplate(value = "Reference<LairSpawn*>")
-	public Vector getSpawnList() {
+	@read
+	public final Vector getSpawnList() {
 		return possibleSpawns;
 	}
 

@@ -36,8 +36,8 @@ class CircularAreaShape extends AreaShape {
 	 * Get the radius of the circle.
 	 * @return radius of the circle
 	 */
-	@dirty
-	public abstract float getRadius() {
+	@read
+	public float getRadius() {
 		return radius;
 	}
 
@@ -45,7 +45,7 @@ class CircularAreaShape extends AreaShape {
 	 * Get the squared radius of the circle.
 	 * @return squared radius of the circle
 	 */
-	@dirty
+	@read
 	public float getRadius2() {
 		return radius2;
 	}
@@ -56,8 +56,8 @@ class CircularAreaShape extends AreaShape {
 	 * @param y the y coordinate.
 	 * @return true if the coordinate is within the area shape.
 	 */
-	@dirty
-	public native abstract boolean containsPoint(float x, float y);
+	@read
+	public native boolean containsPoint(float x, float y);
 
 	/**
 	 * Check if the coordinate is within the area shape.
@@ -66,8 +66,8 @@ class CircularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract boolean containsPoint(@dereferenced final Vector3 point);
+	@read
+	public native boolean containsPoint(@dereferenced final Vector3 point);
 
 	/**
 	 * Generate a random position within the area.
@@ -75,8 +75,8 @@ class CircularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract Vector3 getRandomPosition();
+	@read
+	public native Vector3 getRandomPosition();
 
 	/**
 	 * Generate a random position within the area with the supplied origin and radius as limits.
@@ -87,15 +87,15 @@ class CircularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
-	@dirty
-	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
+	@read
+	public native Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
 	 */
-	@dirty
-	public abstract boolean isCircularAreaShape() {
+	@read
+	public boolean isCircularAreaShape() {
 		return true;
 	}
 
@@ -104,21 +104,21 @@ class CircularAreaShape extends AreaShape {
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
 	 */
-	@dirty
-	public native abstract boolean intersectsWith(AreaShape areaShape);
+	@read
+	public native boolean intersectsWith(AreaShape areaShape);
 
 	/**
 	 * Check if this area shape intersects with the supplied circular area shape.
 	 * @param circle the circular area shape to check for intersections with.
 	 * @return true if the circles intersect with each other.
 	 */
-	@dirty
+	@read
 	private native boolean intersectsWithCircle(CircularAreaShape circle);
 
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
 	 */
-	@dirty
-	public native abstract float getArea();
+	@read
+	public native float getArea();
 }
