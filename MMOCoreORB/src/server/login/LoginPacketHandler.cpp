@@ -19,7 +19,7 @@ LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplem
 	server = processServer->getLoginServer();
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogging(false);
 }
 
 void LoginPacketHandler::handleMessage(Message* pack) {

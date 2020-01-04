@@ -98,7 +98,7 @@ public:
 
 		parsedSpeed = message->parseFloat();
 
-		//info("datatransform with parent", true);
+		debug("datatransform with parent parsed");
 	}
 
 	void bounceBack(CreatureObject* object, ValidatedPosition& pos) {

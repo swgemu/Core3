@@ -27,7 +27,7 @@ ShipManager::ShipManager() {
 		Reference<ShipComponent*> component = new ShipComponent();
 		component->readObject(row);
 
-		//info("loaded ship component " + component->getName() + " crc:0x" + String::hexvalueOf(int(component->getName().hashCode())), true);
+		debug() << "loaded ship component " << component->getName() << " crc: " << component->getName();
 
 		shipComponents.put(component->getName().hashCode(), component);
 	}
