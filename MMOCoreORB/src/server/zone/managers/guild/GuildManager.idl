@@ -41,7 +41,7 @@ class GuildManager extends ManagedService implements Logger {
 
 	public GuildManager(ZoneServer serv, ZoneProcessServer proc) {
 		Logger.setLoggingName("GuildManager");
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
 		pendingGuilds.setNoDuplicateInsertPlan();
@@ -161,7 +161,7 @@ class GuildManager extends ManagedService implements Logger {
 	public native void renameGuild(GuildObject guild);
 
 	public native GuildObject createGuild(CreatureObject player, final string guildName, final string guildAbbrev);
-	
+
 	public native boolean disbandGuild(CreatureObject player, GuildObject guild);
 
 	public native void sponsorPlayer(CreatureObject player, final string playerName);
@@ -186,7 +186,7 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void sendTransferAckTo(CreatureObject player,  final string newOwnerName, SceneObject guildTerminal);
 
-	public native void transferLeadership(CreatureObject newOwner, CreatureObject oldOwner, boolean election);  
+	public native void transferLeadership(CreatureObject newOwner, CreatureObject oldOwner, boolean election);
 
 	public native void sendAcceptLotsTo(CreatureObject newOwner, GuildTerminal guildTerminal);
 

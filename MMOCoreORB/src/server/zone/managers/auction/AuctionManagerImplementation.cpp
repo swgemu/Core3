@@ -1495,7 +1495,6 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int locationT
 }
 
 void AuctionManagerImplementation::getAuctionData(CreatureObject* player, SceneObject* usedVendor, const String& planet, const String& region, SceneObject* vendor, int searchType, uint32 itemCategory, const UnicodeString& filterText, int minPrice, int maxPrice, bool includeEntranceFee, int clientCounter, int offset) {
-
 	TerminalListVector terminalList;
 
 	if (usedVendor->isBazaarTerminal() && searchType != ST_VENDOR_SELLING) { // This is to prevent bazaar items from showing on Vendor Search
@@ -1509,12 +1508,12 @@ void AuctionManagerImplementation::getAuctionData(CreatureObject* player, SceneO
 }
 
 void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uint64 objectid) {
+	Reference<AuctionItem*> auctionItem = auctionMap->getItem(objectid);
 
-	ManagedReference<AuctionItem*> auctionItem = auctionMap->getItem(objectid);
-	if(auctionItem == nullptr)
+	if (auctionItem == nullptr)
 		return;
 
-	ManagedReference<SceneObject*> object = zoneServer->getObject(auctionItem->getAuctionedItemObjectID());
+	Reference<SceneObject*> object = zoneServer->getObject(auctionItem->getAuctionedItemObjectID());
 
 	if (object == nullptr) {
 		error("not a valid object in getItemAttributes");
@@ -1552,10 +1551,10 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 		if(tano != nullptr)
 			tano->getCustomizationString(cust);
 	}
+
 	msg->insertAscii(cust);
 
 	player->sendMessage(msg);
-
 }
 
 void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 objectID) {

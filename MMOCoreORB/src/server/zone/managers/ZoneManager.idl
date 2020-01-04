@@ -18,7 +18,7 @@ class ZoneManager extends ManagedService implements Logger {
 	public ZoneManager(@dereferenced final string name) {
 		Logger.setLoggingName(name);
 
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
 		zoneServer = null;

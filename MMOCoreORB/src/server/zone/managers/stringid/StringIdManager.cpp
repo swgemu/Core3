@@ -33,12 +33,12 @@ void StringIdManager::populateDatabase() {
 		ObjectInputStream* stream = TemplateManager::instance()->openTreFile(files->get(i));
 
 		if (stream == nullptr) {
-			//error("could not open file " + files->get(i));
+			debug() << "could not open file " << files->get(i);
 
 			continue;
 		} else {
 			if (stream->size() > 4) {
-				//info("opening " + files->get(i), true);
+				debug() << "opening " << files->get(i);
 
 				StringFile stringFile;
 				if (!stringFile.load(stream)) {
@@ -63,7 +63,7 @@ void StringIdManager::populateDatabase() {
 
 					String full = "@" + file + ":" + name;
 
-					//info("key = " + full + " value = " + value.toString(), true);
+					debug() << "key = " << full << " value = " << value;
 
 					ObjectOutputStream* data = new ObjectOutputStream();
 					value.toBinaryStream(data);

@@ -1465,7 +1465,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 
 	String creatorName = nm->makeCreatureName();
 
-	//info("creator name " + creatorName, true);
+	debug() << "creator name " << creatorName;
 
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(creatorName);

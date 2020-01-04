@@ -71,7 +71,7 @@ public:
 		iffStream->closeForm('PTMP');
 	}
 
-	inline bool hasStyle(const String& style) {
+	inline bool hasStyle(const String& style) const {
 		for (int i = 0; i < styles.size(); ++i) {
 			if (styles.get(i) == style)
 				return true;
@@ -80,11 +80,11 @@ public:
 		return false;
 	}
 
-	inline int getTotalStyles() {
+	inline int getTotalStyles() const {
 		return styles.size();
 	}
 
-	inline String& getPlayerTemplate() {
+	inline const String& getPlayerTemplate() const {
 		return playerTemplate;
 	}
 };

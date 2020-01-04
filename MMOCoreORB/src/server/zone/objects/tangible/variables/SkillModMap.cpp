@@ -14,7 +14,7 @@ SkillModMap::SkillModMap() {
 	addSerializableVariables();
 }
 
-SkillModMap::SkillModMap(const SkillModMap& smm) : Object() {
+SkillModMap::SkillModMap(const SkillModMap& smm) : Object(), Serializable(smm) {
 	skillMods = smm.skillMods;
 
 	addSerializableVariables();

@@ -277,8 +277,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	int containedType = object->getContainmentType();
 
-	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
-
 	int arrangementSize = object->getArrangementDescriptorSize();
 
 	int arrangementGroup = Math::max(0, containedType - 4);
@@ -306,7 +304,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	}
 
 	if (containerObjects->contains(object->getObjectID())) {
-		//info("containerObjects doesnt contain specified object", true);
 		//object->setParent(nullptr);
 
 		//			return false;

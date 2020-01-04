@@ -90,9 +90,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 		return;
 	}
 
-	StringBuffer msg;
-	msg << "Unknown message callback with SuiWindowType: " << hex << windowType << ". Falling back on old handler system.";
-	//info(msg, true);
+	debug() << "Unknown message callback with SuiWindowType: " << hex << windowType << ". Falling back on old handler system.";
 
 	switch (windowType) {
 	case SuiWindowType::DANCING_START:

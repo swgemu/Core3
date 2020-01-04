@@ -15,7 +15,7 @@ RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : M
 	setLoggingName("RadialManager");
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogging(false);
 
 	zoneServer = server;
 }
@@ -28,7 +28,8 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 	if (menuObject != nullptr) {
 		Locker clocker(menuObject, player);
 
-		//info("entering object menu request ");
+		debug("entering object menu request");
+
 		menuObject->fillObjectMenuResponse(defaultMenuResponse, player);
 	}
 

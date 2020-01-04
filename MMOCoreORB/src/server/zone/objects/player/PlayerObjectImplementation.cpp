@@ -1385,7 +1385,8 @@ void PlayerObjectImplementation::notifyOnline() {
 }
 
 void PlayerObjectImplementation::notifyOffline() {
-	//info("notifyOffline", true);
+	debug("notifyOffline");
+
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 	if (chatManager == nullptr)
 		return;
