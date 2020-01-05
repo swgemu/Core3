@@ -100,15 +100,15 @@ void ZoneServerImplementation::initializeTransientMembers() {
 
 void ZoneServerImplementation::loadGalaxyName() {
 	try {
-		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
+		const String query = "SELECT name FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
 
-		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query));
 
 		if (result->next())
 			galaxyName = result->getString(0);
 
-	} catch (DatabaseException& e) {
-		info(e.getMessage());
+	} catch (const DatabaseException& e) {
+		fatal(e.getMessage());
 	}
 
 	setLoggingName("ZoneServer " + galaxyName);

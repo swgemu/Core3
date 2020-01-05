@@ -93,12 +93,8 @@ namespace server {
 				resultDebug.put("trx_id", trxId);
 			}
 
-			inline String getTrxId() const {
-				if (resultDebug.containsKey("trx_id")) {
-					return resultDebug.get("trx_id");
-				}
-
-				return String("<not set>");
+			inline const String& getTrxId() const {
+				return resultDebug.get("trx_id");
 			}
 
 			inline void setClientTrxId(const String& clientTrxId) {
@@ -150,11 +146,13 @@ namespace server {
 			}
 
 			inline String getMessage(bool appendTrxId = false) const {
-				if (!appendTrxId || !resultDebug.containsKey("trx_id")) {
+				auto entry = resultDebug.getEntry("trx_id");
+
+				if (!appendTrxId || !entry) {
 					return resultMessage;
 				}
 
-				return resultMessage + "\n\ntrx_id: " + resultDebug.get("trx_id");
+				return resultMessage + "\n\ntrx_id: " + entry->getValue();
 			}
 
 			inline void setDetails(const String& details) {
@@ -184,7 +182,6 @@ namespace server {
 					return entry->getValue();
 				} else {
 					const static String empty;
-
 					return empty;
 				}
 			}

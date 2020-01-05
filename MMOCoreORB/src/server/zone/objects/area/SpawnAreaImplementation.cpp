@@ -116,7 +116,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	Zone* zone = getZone();
 
 	if (zone == nullptr) {
-		error("zone is nullptr");
+		warning("zone is nullptr");
 		return;
 	}
 
