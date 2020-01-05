@@ -25,7 +25,7 @@ public:
 		objectControllerCallback = nullptr;
 	}
 
-	static MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;
+	static UniqueReference<MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>*> objectMessageControllerFactory;
 
 	const char* getTaskName();
 
