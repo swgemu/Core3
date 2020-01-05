@@ -83,19 +83,18 @@ public:
 
 		for (int i = 0; i < files.size(); i++) {
 			String file = files.get(i);
-			ObjectInputStream* stream = templateManager->openTreFile(file);
+			UniqueReference<ObjectInputStream*> stream(templateManager->openTreFile(file));
 
 			if (stream != nullptr) {
-
 				if (stream->size() > 4) {
 					StringFile stringFile;
+
 					if (stringFile.load(stream)) {
 						file = file.replaceFirst("string/en/","");
 						file = file.replaceFirst(".stf","");
 
-						const HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
-
-						HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
+						const auto& hashTable = stringFile.getStringMap();
+						auto iterator = hashTable.iterator();
 
 						while (iterator.hasNext()) {
 							String name;
@@ -111,9 +110,6 @@ public:
 					}
 
 				}
-
-				delete stream;
-
 			}
 
 		}
