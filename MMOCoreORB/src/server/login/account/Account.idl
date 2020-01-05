@@ -12,7 +12,6 @@ import system.lang.ref.Reference;
 
 @json
 class Account extends ManagedObject implements Logger {
-
 	protected transient boolean active;
 
 	protected transient string username;
