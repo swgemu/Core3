@@ -40,7 +40,7 @@ bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
 
 namespace coredetail {
-	class ConsoleReaderService : public ServiceThread {
+	class ConsoleReaderService final : public ServiceThread {
 		ServerCore* core;
 
 	public:
@@ -649,12 +649,7 @@ void ServerCore::initialize() {
 			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
-#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-#else
-		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(10000, 10000);
-#endif
 
 		if (configManager->getRESTPort()) {
 			restServer = new server::web3::RESTServer(configManager->getRESTPort());
@@ -848,10 +843,6 @@ void ServerCore::shutdown() {
 }
 
 ServerCore::CommandResult ServerCore::processConsoleCommand(const String& commandString) {
-#ifdef WITH_STM
-	Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
-#endif
-
 	CommandResult result = CommandResult::NOTFOUND;
 
 	try {
@@ -877,13 +868,6 @@ ServerCore::CommandResult ServerCore::processConsoleCommand(const String& comman
 
 		return CommandResult::ERROR;
 	}
-
-#ifdef WITH_STM
-	try {
-		TransactionalMemoryManager::commitPureTransaction(transaction);
-	} catch (const TransactionAbortedException& e) {
-	}
-#endif
 
 	return result;
 }

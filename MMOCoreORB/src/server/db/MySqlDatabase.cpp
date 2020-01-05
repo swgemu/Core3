@@ -14,7 +14,7 @@ Distribution of this file for usage outside of Core3 is prohibited.
 
 using namespace server::db::mysql;
 
-class MysqlTask : public Task {
+class MysqlTask final : public Task {
 	MySqlDatabase* database;
 	String query;
 public:
@@ -24,14 +24,14 @@ public:
 	void run() final {
 		try {
 			database->doExecuteStatement(query);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			database->error(e.getMessage().toCharArray());
 		}
 
 	}
 };
 
-class MysqlCallback : public Task {
+class MysqlCallback final : public Task {
 	engine::db::ResultSet* result;
 	Function<void(engine::db::ResultSet*)> callback;
 
@@ -45,7 +45,7 @@ public:
 	}
 };
 
-class MysqlLambda : public Task {
+class MysqlLambda final : public Task {
 	MySqlDatabase* database;
 	String query;
 	Function<void(engine::db::ResultSet*)> function;
@@ -135,9 +135,6 @@ void MySqlDatabase::doExecuteStatement(const String& statement) {
 	timer.start();
 #endif
 
-	/*if (mysql_query(&mysql, statement))
-		error(statement);*/
-
 	while (mysql_query(&mysql, statement.toCharArray())) {
 		unsigned int errorNumber = mysql_errno(&mysql);
 
@@ -168,11 +165,7 @@ void MySqlDatabase::doExecuteStatement(const String& statement) {
 void MySqlDatabase::executeStatement(const char* statement) {
 	Reference<Task*> task = new MysqlTask(this, statement);
 	task->setCustomTaskQueue(mysqlThreadName);
-
-	auto manager = Core::getTaskManager();
-
-	if (manager != nullptr)
-		manager->executeTask(task);
+	task->execute();
 }
 
 void MySqlDatabase::executeStatement(const String& statement) {
@@ -186,18 +179,11 @@ void MySqlDatabase::executeStatement(const StringBuffer& statement) {
 void MySqlDatabase::executeQuery(const char* query, Function<void(engine::db::ResultSet*)>&& function) {
 	Reference<MysqlLambda*> lambda = new MysqlLambda(this, query, std::move(function));
 	lambda->setCustomTaskQueue(mysqlThreadName);
-
-	auto manager = Core::getTaskManager();
-
-	if (manager != nullptr)
-		manager->executeTask(lambda);
+	lambda->execute();
 }
 
 engine::db::ResultSet* MySqlDatabase::executeQuery(const char* statement) {
 	Locker locker(this);
-
-	/*if (mysql_query(&mysql, statement))
-		error(statement);*/
 
 #ifdef COLLECT_TASKSTATISTICS
 	Timer timer(Time::MONOTONIC_TIME);
@@ -240,7 +226,6 @@ engine::db::ResultSet* MySqlDatabase::executeQuery(const char* statement) {
 #endif
 
 	ResultSet* res = new ResultSet(&mysql, result);
-
 	return res;
 }
 
@@ -275,7 +260,6 @@ void MySqlDatabase::close() {
 
 	info("disconnected");
 }
-
 
 void MySqlDatabase::error() {
 	StringBuffer msg;

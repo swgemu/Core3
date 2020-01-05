@@ -21,7 +21,7 @@ namespace server {
   namespace db {
     namespace mysql {
 
-    class MySqlDatabase : public Database, public Mutex,  public Logger {
+    class MySqlDatabase : public Database, public Mutex, public Logger {
 		MYSQL mysql;
 		String host;
 
