@@ -19,7 +19,6 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 	ipAddress = session != nullptr ? session->getIPAddress() : "";
 
 	player = nullptr;
-	sessionID = 0;
 
 	accountID = 0;
 
@@ -180,11 +179,11 @@ void ZoneClientSessionImplementation::error(const String& msg) {
 	session->error(msg);
 }
 
-String ZoneClientSessionImplementation::getAddress() {
+String ZoneClientSessionImplementation::getAddress() const {
 	return session->getAddress();
 }
 
-String ZoneClientSessionImplementation::getIPAddress() {
+String ZoneClientSessionImplementation::getIPAddress() const {
 	return ipAddress.isEmpty() ? "0.0.0.0" : ipAddress;
 }
 
@@ -192,7 +191,7 @@ BaseClientProxy* ZoneClientSessionImplementation::getSession() {
 	return session;
 }
 
-int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
+int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) const {
 	int count = 0;
 
 	for (int i = 0; i < characters.size(); ++i) {
@@ -208,28 +207,12 @@ int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
 	return count;
 }
 
-bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int galaxyId) {
-/*	int lowerBound = characters.lowerBound(VectorMapEntry<uint32, uint64>(galaxyId));
-
-	if (lowerBound < 0)
-		return false;
-
-	for (int i = lowerBound; i < characters.size(); ++i) {
-		if (characters.elementAt(i).getKey() != galaxyId)
-			break;
-
-		if (characters.elementAt(i).getValue() == cid)
-			return true;
-	}
-
-	*/
-
+bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int galaxyId) const {
 	for (int i = 0; i < characters.size(); ++i) {
 		if (characters.getKey(i) == galaxyId &&
 			characters.get(i) == cid)
 			return true;
 	}
-
 
 	return false;
 }
