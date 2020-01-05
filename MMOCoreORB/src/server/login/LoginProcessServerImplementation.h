@@ -17,18 +17,17 @@ namespace server {
 		class LoginServer;
 
 		class LoginProcessServerImplementation : public Object {
-			ManagedWeakReference<LoginServer*> server;
+			WeakReference<LoginServer*> server;
 
-			LoginPacketHandler* loginPacketHandler;
+			UniqueReference<LoginPacketHandler*> loginPacketHandler;
 
 		public:
 			LoginProcessServerImplementation(LoginServer* serv);
-
 			~LoginProcessServerImplementation();
 
 			void initialize();
 
-			inline ManagedWeakReference<LoginServer*> getLoginServer() {
+			inline WeakReference<LoginServer*> getLoginServer() {
 				return server;
 			}
 

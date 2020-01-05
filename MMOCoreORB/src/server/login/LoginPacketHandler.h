@@ -15,7 +15,7 @@ namespace login {
 
 	class LoginPacketHandler : public Logger {
 		LoginProcessServerImplementation* processServer;
-		ManagedReference<LoginServer*> server;
+		Reference<LoginServer*> server;
 
 	public:
 
