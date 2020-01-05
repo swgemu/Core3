@@ -34,20 +34,18 @@ bool StringFile::load(ObjectInputStream* inputFile) {
 		for (int i = 0; i < stringCount; ++i) {
 			num = inputFile->readInt();
 			key = inputFile->readInt();
-			//size = inputFile->readInt();
 
 			UnicodeString description;
 
 			uint32 len = inputFile->readInt();
 			inputFile->shiftOffset(len * 2);
 
-			description.append((unsigned short*) (inputFile->getBuffer() + inputFile->getOffset() - len * 2), len);
+			description.append(reinterpret_cast<uint16*>(inputFile->getBuffer() + inputFile->getOffset() - len * 2), len);
 
-			//desc.setElementAt(num - 1, description);
 			desc.put(num, description);
 
 			debug() << "num = " << num
-					<< " description = " << description.toString();
+					<< " description = " << description;
 		}
 
 		for (int j = 0; j < stringCount; ++j) {
@@ -63,7 +61,6 @@ bool StringFile::load(ObjectInputStream* inputFile) {
 
 			str = buffer.toString();
 
-			//id.setElementAt(num - 1, str);
 			id.put(num, str);
 
 			debug() << "string = " << str;
@@ -77,7 +74,7 @@ bool StringFile::load(ObjectInputStream* inputFile) {
 
 			UnicodeString description = desc.get(num);
 
-			stringMap.put(idKey, description);
+			stringMap.put(std::move(idKey), std::move(description));
 		}
 
 		return true;

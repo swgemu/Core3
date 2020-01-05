@@ -412,7 +412,7 @@ void PlayerManagerImplementation::loadNameMap() {
 	try {
 		String query = "SELECT character_oid, firstname FROM characters where character_oid > 16777216 and galaxy_id = " + String::valueOf(server->getGalaxyID()) + " order by character_oid asc";
 
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery(query));
 
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
@@ -699,7 +699,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
 				+ fname + "\"";
 
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery(query));
 		bool nameExists = res->next();
 
 		return !nameExists;
@@ -5368,29 +5368,27 @@ void PlayerManagerImplementation::cleanupCharacters() {
 }
 
 bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int galaxyID) {
-	String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID) + " AND galaxy_id = " + String::valueOf(galaxyID);
+	const String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID) + " AND galaxy_id = " + String::valueOf(galaxyID);
 
 	try {
-		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query));
 
 		if (result == nullptr) {
 			error("ERROR WHILE LOOKING UP CHARACTER IN SQL TABLE");
-		} else if (result.get()->getRowsAffected() > 1) {
+		} else if (result->getRowsAffected() > 1) {
 
 			error("More than one character with oid = " + String::valueOf(characterID) + " in galaxy " + String::valueOf(galaxyID));
 			return false;
 
-		} else if (result.get()->getRowsAffected() == 0) {
+		} else if (result->getRowsAffected() == 0) {
 			return true;
 		}
 
 		return false;
-
-	} catch ( DatabaseException &err) {
-		info("database error " + err.getMessage(),true);
+	} catch (const DatabaseException& err) {
+		error() << "database error " << err.getMessage();
 		return false;
 	}
-
 }
 
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
