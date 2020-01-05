@@ -94,7 +94,7 @@ public:
 				}
 
 				for (int i = 0; i < characters->size(); ++i) {
-					CharacterListEntry* entry = &characters->get(i);
+					const CharacterListEntry* entry = &characters->get(i);
 
 					if (!entry->isBanned())
 						client->addCharacter(entry->getObjectID(), entry->getGalaxyID());
