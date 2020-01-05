@@ -19,9 +19,9 @@ namespace zone {
 	class ZoneServer;
 
 	class ZonePacketHandler : public Logger, public Object {
-		ManagedReference<ZoneProcessServer*> processServer;
+		Reference<ZoneProcessServer*> processServer;
 
-		ManagedReference<ZoneServer*> server;
+		Reference<ZoneServer*> server;
 
 		MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory;
 

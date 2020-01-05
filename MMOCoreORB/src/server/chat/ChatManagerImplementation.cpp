@@ -223,7 +223,7 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 }
 
 void ChatManagerImplementation::loadMoodTypes() {
-	IffStream* iffStream = TemplateManager::instance()->openIffFile("chat/mood_types.iff");
+	UniqueReference<IffStream*> iffStream(TemplateManager::instance()->openIffFile("chat/mood_types.iff"));
 
 	if (iffStream == nullptr) {
 		error("Could not open chat/mood_types.iff");
@@ -250,24 +250,18 @@ void ChatManagerImplementation::loadMoodTypes() {
 	iffStream->closeForm('0000');
 	iffStream->closeForm('MOOD');
 
-	delete iffStream;
-
 	moodTypes.put("meditating", i + 1);
 	moodTypes.put("entertained", i + 2);
 
-	ObjectInputStream* stream = TemplateManager::instance()->openTreFile("string/en/mood_types.stf");
+	UniqueReference<ObjectInputStream*> stream(TemplateManager::instance()->openTreFile("string/en/mood_types.stf"));
 
 	if (stream != nullptr) {
-
 		if (stream->size() > 4) {
-
 			StringFile stringFile;
 
 			if (stringFile.load(stream)) {
-
-				const HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
-
-				HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
+				const auto& hashTable = stringFile.getStringMap();
+				auto iterator = hashTable.iterator();
 
 				while (iterator.hasNext()) {
 					UnicodeString value = iterator.getNextValue();
@@ -285,14 +279,12 @@ void ChatManagerImplementation::loadMoodTypes() {
 				}
 			}
 		}
-
-		delete stream;
 	}
 
 	moodAnimations.put("meditating", "meditating");
 	moodAnimations.put("entertained", "entertained");
 
-	info("Loaded " + String::valueOf(moodTypes.size()) + " mood types.", true);
+	info(true) << "Loaded " << moodTypes.size() << " mood types.";
 }
 
 void ChatManagerImplementation::initiateRooms() {
