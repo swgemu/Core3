@@ -139,8 +139,7 @@ void LoginServerImplementation::processMessage(Message* message) {
 	debug() << "processing message " << *message;
 
 	Reference<Task*> task = new LoginMessageProcessorTask(message, processor->getPacketHandler());
-
-	Core::getTaskManager()->executeTask(task);
+	task->execute();
 }
 
 LoginClient* LoginServerImplementation::getLoginClient(ServiceClient* session) {
