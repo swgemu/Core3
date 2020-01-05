@@ -114,8 +114,6 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServer* serv) :
 }
 
 ZonePacketHandler::~ZonePacketHandler() {
-	delete ObjectControllerMessageCallback::objectMessageControllerFactory;
-	ObjectControllerMessageCallback::objectMessageControllerFactory = nullptr;
 }
 
 void ZonePacketHandler::registerMessages() {
@@ -186,7 +184,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	debug("registering ObjectController Messages");
 
 	ObjectControllerMessageCallback::objectMessageControllerFactory = new MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
-	MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
+	auto objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory.get();
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
@@ -231,6 +229,7 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 			return nullptr;
 		}
 
+		//TODO: move this into the task itself eventually
 		if (!messageCallback->parseMessage(pack)) {
 			delete messageCallback;
 			return nullptr;

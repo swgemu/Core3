@@ -9,7 +9,7 @@
 
 #include "ObjectControllerMessageCallback.h"
 
-MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = nullptr;
+UniqueReference<MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>*> ObjectControllerMessageCallback::objectMessageControllerFactory;
 
 void ObjectControllerMessageCallback::parse(Message* message) {
 	priority = message->parseInt();

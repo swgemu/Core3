@@ -93,12 +93,8 @@ namespace server {
 				resultDebug.put("trx_id", trxId);
 			}
 
-			inline String getTrxId() const {
-				if (resultDebug.containsKey("trx_id")) {
-					return resultDebug.get("trx_id");
-				}
-
-				return String("<not set>");
+			inline const String& getTrxId() const {
+				return resultDebug.get("trx_id");
 			}
 
 			inline void setClientTrxId(const String& clientTrxId) {

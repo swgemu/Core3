@@ -469,9 +469,7 @@ String SessionApprovalResult::getLogMessage() const {
 SessionApprovalResult::SessionApprovalResult() {
 	// Generate simple code for log tracing
 	uint64 trxid = (System::getMikroTime() << 8) | System::random(255);
-	StringBuffer buf;
-	buf << hex << trxid;
-	resultClientTrxId = buf.toString();
+	resultClientTrxId = String::hexvalueOf(trxid);
 
 	resultTrxId = "";
 	resultAction = ApprovalAction::UNKNOWN;
@@ -480,6 +478,8 @@ SessionApprovalResult::SessionApprovalResult() {
 	resultDetails = "";
 	resultRawJSON = "";
 	resultElapsedTimeMS = 0ull;
+
+	resultDebug.setNullValue("<not set>");
 }
 
 #endif // WITH_SESSION_API
