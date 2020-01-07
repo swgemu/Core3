@@ -6,6 +6,7 @@ package server.zone.objects.creature.ai;
 
 import system.util.Vector;
 import system.lang.Time;
+import system.lang.String;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
@@ -168,7 +169,8 @@ class AiAgent extends CreatureObject {
 	public static final int PATROLLING = 4;
 	public static final int FLEEING = 5;
 	public static final int LEASHING = 6;
-
+	public static final int EVADING = 7;
+	
 	protected transient unsigned long customAiMap;
 
 	public AiAgent() {
@@ -694,11 +696,13 @@ class AiAgent extends CreatureObject {
 		synchronized (targetMutex) {
 			if (this.isRetreating())
 				return;
+				
+			if (followObject != obj) {
+				setFollowState(FOLLOWING);
 
-			setFollowState(FOLLOWING);
-
-			setTargetObject(obj);
-			//activateMovementEvent();
+				setTargetObject(obj);
+				//activateMovementEvent();
+			}
 		}
 	}
 

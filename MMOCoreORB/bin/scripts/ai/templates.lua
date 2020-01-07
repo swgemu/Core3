@@ -63,6 +63,18 @@ bitmaskLookup = {
 		{MOVE, "movePet"}
 	}},
 
+	{FACTION_PET, {
+		{IDLE, "idlePet"},
+		{TARGET, "targetPet"},
+		{MOVE, "movePet"}
+	}},
+
+	{DROID_PET, {
+		{IDLE, "idlePet"},
+		{TARGET, "targetPet"},
+		{MOVE, "movePet"}
+	}},
+
 	{ESCORT, {
 		{IDLE, "walkEscort"},
 		{TARGET, "targetDefault"}

@@ -45,7 +45,7 @@ object_mobile_vendor_zabrak_female = object_mobile_vendor_shared_zabrak_female:n
 
 	templateType = VENDORCREATURE,
 
-	optionsBitmask = 386,
+	optionsBitmask = 258,
 	pvpStatusBitmask = 0,
 
 	objectMenuComponent = "VendorMenuComponent",

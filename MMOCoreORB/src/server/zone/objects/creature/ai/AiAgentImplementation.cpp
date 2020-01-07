@@ -1846,6 +1846,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (getFollowState() == AiAgent::PATROLLING && patrolPoints.size() > 0)
 			savedPatrolPoints.add(patrolPoints.remove(0));
 
+		if (getFollowState() == AiAgent::EVADING)
+			setFollowState(AiAgent::FOLLOWING);
+
 		ManagedReference<SceneObject*> followCopy = followObject.get();
 		if (followCopy == nullptr)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
@@ -2193,7 +2196,15 @@ int AiAgentImplementation::setDestination() {
 		clearPatrolPoints();
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 		break;
+	case AiAgent::EVADING:
+		if (followCopy == nullptr || getPatrolPointSize() == 0) {
+			setOblivious();
+			return setDestination();
+		}
+
+		break;
 	default:
+
 		setOblivious();
 		break;
 	}
