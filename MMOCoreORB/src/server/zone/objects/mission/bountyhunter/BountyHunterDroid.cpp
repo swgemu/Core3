@@ -64,12 +64,13 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 	}
 
 	ManagedReference<AiAgent*> droid = cast<AiAgent*>(player->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("seeker"), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0));
-	{
-		Locker locker(droid);
 
-		droid->addCreatureFlag(CreatureFlag::STATIC);
-		droid->setAITemplate();
-	}
+	Locker lock(droid);
+
+	droid->addCreatureFlag(CreatureFlag::STATIC);
+	droid->setAITemplate();
+
+	lock.release();
 
 	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track, false);
 

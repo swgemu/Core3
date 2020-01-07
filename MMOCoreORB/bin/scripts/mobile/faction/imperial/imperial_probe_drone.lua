@@ -31,8 +31,8 @@ imperial_probe_drone = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "droid_probot_ranged",
-	secondaryWeapon = "unarmed",
+	primaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
+	secondaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	defaultAttack = "attack",
 
 }

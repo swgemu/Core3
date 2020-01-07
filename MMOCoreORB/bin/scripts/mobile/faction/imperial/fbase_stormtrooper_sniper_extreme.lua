@@ -45,14 +45,14 @@ fbase_stormtrooper_sniper_extreme = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "st_sniper_weapons",
-	secondaryWeapon = "unarmed",
+	primaryWeapon = "stormtrooper_rifle",
+	secondaryWeapon = "stormtrooper_pistol",
 	reactionStf = "@npc_reaction/stormtrooper",
 	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(riflemanmaster,brawlermaster,marksmanmaster),
-	secondaryAttacks = { }
+	primaryAttacks = merge(riflemanmaster,marksmanmaster),
+	secondaryAttacks = marksmanmaster
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_stormtrooper_sniper_extreme, "fbase_stormtrooper_sniper_extreme")

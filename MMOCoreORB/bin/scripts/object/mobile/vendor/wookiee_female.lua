@@ -45,7 +45,7 @@ object_mobile_vendor_wookiee_female = object_mobile_vendor_shared_wookiee_female
 	
 	templateType = VENDORCREATURE,
 	
-	optionsBitmask = 386,
+	optionsBitmask = 258,
 	pvpStatusBitmask = 0,
 
 	objectMenuComponent = "VendorMenuComponent",

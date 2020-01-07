@@ -148,6 +148,7 @@ public:
 		lua->setGlobalInt("PATROLLING",					AiAgent::PATROLLING						);
 		lua->setGlobalInt("FLEEING",					AiAgent::FLEEING						);
 		lua->setGlobalInt("LEASHING",					AiAgent::LEASHING						);
+		lua->setGlobalInt("EVADING",					AiAgent::EVADING						);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);
@@ -376,6 +377,7 @@ private:
 		_REGISTERLEAF(SetFollowState);
 		_REGISTERLEAF(CalculateAggroMod);
 		_REGISTERLEAF(RunAway);
+		_REGISTERLEAF(Evade);
 		_REGISTERLEAF(FindNextPosition);
 		_REGISTERLEAF(Leash);
 		_REGISTERLEAF(CompleteMove);

@@ -44,7 +44,7 @@
 object_mobile_vendor_weequay_male = object_mobile_vendor_shared_weequay_male:new {
 
 	templateType = VENDORCREATURE,
-	optionsBitmask = 386,
+	optionsBitmask = 258,
 	pvpStatusBitmask = 0,
 
 	objectMenuComponent = "VendorMenuComponent",

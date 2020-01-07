@@ -4,9 +4,13 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/BlackboardData.h"
+#include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/Zone.h"
 
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/chat/ChatManager.h"
 
 namespace server {
 namespace zone {
@@ -348,6 +352,155 @@ public:
 
 private:
 	float dist;
+};
+
+class Evade : public Behavior {
+public:
+	Evade(const String& className, const uint32 id, const LuaObject& args)
+		: Behavior(className, id, args), minEvadeChance(0.015), maxEvadeChance(0.05) {
+			parseArgs(args);
+	}
+
+	Evade(const Evade& a)
+			: Behavior(a), minEvadeChance(a.minEvadeChance), maxEvadeChance(a.maxEvadeChance) {
+	}
+
+	Evade& operator=(const Evade& a) {
+		if (this == &a)
+			return *this;
+		Behavior::operator=(a);
+		minEvadeChance = a.minEvadeChance;
+		maxEvadeChance = a.maxEvadeChance;
+		return *this;
+	}
+
+	void parseArgs(const LuaObject& args) {
+		minEvadeChance = getArg<float>()(args, "minEvadeChance");
+		maxEvadeChance = getArg<float>()(args, "maxEvadeChance");
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (!agent->isInCombat() || agent->isPet())
+			return FAILURE;
+
+		if (agent->getFollowState() == AiAgent::EVADING)
+			return SUCCESS;
+
+		Zone* zone = agent->getZoneUnsafe();
+
+		if (zone == nullptr)
+			return FAILURE;
+
+		// TODO: Change when we can do interior pathing
+		if (agent->getParentID() != 0)
+			return FAILURE;
+
+		float minDist = 15.f;
+		float maxDist = 20.f;
+
+		float minChance = minEvadeChance;
+		float maxChance = maxEvadeChance;
+
+		ManagedReference<SceneObject*> tar = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+
+		if (tar == nullptr || !tar->isCreatureObject())
+			return FAILURE;
+
+		float primaryRange = 0;
+		float secondaryRange = 0;
+
+		if (agent->getPrimaryWeapon() != nullptr)
+			primaryRange = agent->getPrimaryWeapon()->getMaxRange();
+
+		if (agent->getSecondaryWeapon() != nullptr)
+			secondaryRange = agent->getSecondaryWeapon()->getMaxRange();
+
+		// No need to evade if creature is melee only
+		if (primaryRange < 10.f && secondaryRange < 10.f)
+			return FAILURE;
+
+		CreatureObject* tarCreo = tar->asCreatureObject();
+
+		if (tarCreo->isPlayerCreature()) {
+			float playerWeaponRange = 0;
+
+			if (tarCreo->getWeapon() != nullptr)
+				playerWeaponRange = tarCreo->getWeapon()->getMaxRange();
+
+			if (playerWeaponRange < 10.f) {
+				minDist = 5.f;
+
+				if (System::random(100) < 30)
+					maxDist = playerWeaponRange + 5;
+				else
+					maxDist = playerWeaponRange - 1;
+
+				if (minDist > maxDist)
+					minDist = maxDist;
+			}
+		}
+
+		if (minChance > maxChance)
+			minChance = maxChance;
+
+		float finalChance = maxChance;
+		float chanceDiff = maxChance - minChance;
+		float diffModifier = chanceDiff * (agent->getHAM(CreatureAttribute::HEALTH) / agent->getMaxHAM(CreatureAttribute::HEALTH));
+		finalChance -= chanceDiff * diffModifier;
+		finalChance *= 100;
+
+		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
+		StringBuffer msg;
+		msg << "Min Evade " << minChance << ", Max Evade: " << maxChance << " chanceDiff " << chanceDiff << ", modifier: " << diffModifier << ", modified diff: " << chanceDiff * diffModifier;
+		chatManager->broadcastChatMessage(agent, msg.toString(), 0, 0, 0);
+
+		int randRoll = System::random(100);
+
+		msg.deleteAll();
+
+		msg << "Final chance: " << finalChance << ", roll: " << randRoll;
+		chatManager->broadcastChatMessage(agent, msg.toString(), 0, 0, 0);
+
+		if (finalChance < 100 && randRoll > finalChance)
+			return FAILURE;
+
+		float distance = minDist + System::random(maxDist - minDist);
+		float angle = System::random(360);
+		float newAngle = angle * (M_PI / 180.0f);
+
+		float newX = tarCreo->getPositionX() + (cos(newAngle) * distance);
+		float newY = tarCreo->getPositionY() + (sin(newAngle) * distance);
+
+		float newZ = zone->getHeight(newX, newY);
+
+		Vector3 position = Vector3(newX, newY, newZ);
+
+		auto thisWorldPos = agent->getWorldPosition();
+
+		if (CollisionManager::checkSphereCollision(position, 5, zone))
+			return FAILURE;
+
+		chatManager->broadcastChatMessage(agent, "Evading!", 0, 0, 0);
+
+		agent->setFollowState(AiAgent::EVADING);
+		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+
+	private:
+	float minEvadeChance;
+	float maxEvadeChance;
 };
 
 }
