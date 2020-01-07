@@ -498,7 +498,8 @@ public:
 				return "creature_attack" + intensity;
 		}
 
-		//info("Generated Attack Animation- " + buffer.toString(), true);
+		debug() << "Generated Attack Animation- " << buffer;
+
 		return buffer.toString();
 	}
 
@@ -520,12 +521,13 @@ public:
 
 			return anim;
 		}
-		//info("Generated Attack Animation- " + anim, true);
+
+		debug() << "Generated Attack Animation- " << anim;
+
 		return anim;
 	}
 
 	virtual String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
-
 		if (animation.isEmpty())
 			return getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
 
@@ -544,12 +546,12 @@ public:
 		return poolsToDamage;
 	}
 
-	inline VectorMap<uint8, StateEffect>* getStateEffects() const {
-		return &(const_cast<CombatQueueCommand*>(this)->stateEffects);
+	inline const VectorMap<uint8, StateEffect>* getStateEffects() const {
+		return &stateEffects;
 	}
 
-	inline Vector<DotEffect>* getDotEffects() const {
-		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
+	inline const Vector<DotEffect>* getDotEffects() const {
+		return &dotEffects;
 	}
 
 	void setAnimationString(const String& anim) {
@@ -620,11 +622,11 @@ public:
 		this->accuracySkillMod = acc;
 	}
 
-	bool hasCombatSpam() {
+	bool hasCombatSpam() const {
 		return !combatSpam.isEmpty();
 	}
 
-	bool isCombatCommand() {
+	bool isCombatCommand() const {
 		return true;
 	}
 

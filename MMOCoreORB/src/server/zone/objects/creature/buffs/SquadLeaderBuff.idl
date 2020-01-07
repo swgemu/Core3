@@ -77,7 +77,7 @@ class SquadLeaderBuff extends Buff {
 		return SquadLeaderCommand.isValidGroupAbilityTarget(leader, player, false);
 	}
 
-	@dirty
+	@read
 	public boolean checkRenew() {
 		if (leader == null || player == null || player.getGroupID() != leader.getGroupID()) {
 			return false;

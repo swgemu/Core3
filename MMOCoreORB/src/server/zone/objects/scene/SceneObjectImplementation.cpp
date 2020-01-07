@@ -69,7 +69,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		createObjectMenuComponent();
 	}
 
-	if(dataObjectComponent != nullptr) {
+	if (dataObjectComponent != nullptr) {
 		dataObjectComponent->setParent(asSceneObject());
 		dataObjectComponent->initializeTransientMembers();
 	}
@@ -183,6 +183,7 @@ void SceneObjectImplementation::createContainerComponent() {
 void SceneObjectImplementation::createObjectMenuComponent() {
 	setObjectMenuComponent(templateObject->getObjectMenuComponent());
 }
+
 void SceneObjectImplementation::createComponents() {
 	if (templateObject != nullptr) {
 		String zoneComponentClassName = templateObject->getZoneComponent();
@@ -236,7 +237,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	info() << "deleting from database";
+	debug() << "deleting from database";
 
 	fatal(!isPlayerCreature()) << "attempting to delete a player creature from database";
 
@@ -414,10 +415,11 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			objectMenuComponent = new LuaObjectMenuComponent(name);
-			debug("New Lua ObjectMenuComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug() << "New Lua ObjectMenuComponent created: '" << name << "' for " << templateObject->getFullTemplateString();
+
 			ComponentManager::instance()->putComponent(name, objectMenuComponent);
 		} else {
-			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+			error() << "ObjectMenuComponent not found: '" << name << "' for " << templateObject->getFullTemplateString();
 		}
 
 		test.pop();
@@ -436,10 +438,11 @@ void SceneObjectImplementation::setContainerComponent(const String& name) {
 
 		if (test.isValidTable()) {
 			containerComponent = new LuaContainerComponent(name);
-			debug("New Lua ContainerComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			debug() << "New Lua ContainerComponent created: '" << name << "' for " << templateObject->getFullTemplateString();
+
 			ComponentManager::instance()->putComponent(name, containerComponent);
 		} else {
-			error("ContainerComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+			error() << "ContainerComponent not found: '" <<  name << "' for " << templateObject->getFullTemplateString();
 		}
 
 		test.pop();
@@ -491,10 +494,6 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (staticObject)
 		return;
-
-	/*StringBuffer msg;
-	msg << "sending destroy to " << player->getLoggingName();
-	info(msg.toString(), true);*/
 
 	BaseMessage* msg = new SceneObjectDestroyMessage(asSceneObject());
 	player->sendMessage(msg);
@@ -1291,7 +1290,7 @@ void SceneObjectImplementation::createChildObjects() {
 	bool client = isClientObject();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
-		ChildObject* child = templateObject->getChildObject(i);
+		const auto child = templateObject->getChildObject(i);
 
 		if (child == nullptr)
 			continue;
@@ -1433,7 +1432,7 @@ void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) 
 	float err = fabs(directionangle - direction.getRadians());
 
 	if (err < 0.05) {
-		//info("not updating " + String::valueOf(directionangle), true);
+		debug() << "not updating " << directionangle;
 		return;
 	}
 
@@ -1673,7 +1672,7 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 }
 
 const Vector<String>* SceneObjectImplementation::getArrangementDescriptor(int idx) const {
-	return &templateObject->getArrangementDescriptors()->get(idx);
+	return &templateObject->getArrangementDescriptors().get(idx);
 }
 
 bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
@@ -1760,7 +1759,7 @@ Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel()
 }
 
 int SceneObjectImplementation::getArrangementDescriptorSize() const {
-	return templateObject->getArrangementDescriptors()->size();
+	return templateObject->getArrangementDescriptors().size();
 }
 
 bool SceneObjectImplementation::isDataPad() const {

@@ -90,7 +90,7 @@ LuaPlayerObject::LuaPlayerObject(lua_State *L) : LuaIntangibleObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<PlayerObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = reinterpret_cast<PlayerObject*>(lua_touserdata(L, 1));
 #endif
@@ -105,7 +105,7 @@ int LuaPlayerObject::_setObject(lua_State* L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<PlayerObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = (PlayerObject*)lua_touserdata(L, -1);
 #endif

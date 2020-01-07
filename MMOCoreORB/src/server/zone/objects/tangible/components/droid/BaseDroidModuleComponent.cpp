@@ -14,7 +14,7 @@ BaseDroidModuleComponent::~BaseDroidModuleComponent() {
 
 }
 
-String BaseDroidModuleComponent::getModuleName() {
+String BaseDroidModuleComponent::getModuleName() const {
 	return String("base");
 }
 
@@ -66,7 +66,7 @@ bool BaseDroidModuleComponent::actsAsCraftingStation() {
 	return false;
 }
 
-String BaseDroidModuleComponent::toString() {
+String BaseDroidModuleComponent::toString() const {
 	StringBuffer str;
 	str << getModuleName() << "\n";
 	return str.toString();

@@ -146,10 +146,10 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player, b
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	//info("building sendto..", true);
+	debug("building sendto..");
 
 	if (!isStaticBuilding()) { // send Baselines etc..
-		//info("sending building object create");
+		debug("sending building object create");
 
 		SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 	} //else { // just send the objects that are in the building, without the cells because they are static in the client
@@ -345,7 +345,7 @@ void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 
 void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
-	//info("sending building baselines",true);
+	debug("sending building baselines");
 
 	BaseMessage* buio3 = new TangibleObjectMessage3(asBuildingObject());
 	player->sendMessage(buio3);
@@ -401,7 +401,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 }
 
 void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	//info("BuildingObjectImplementation::notifyInsertToZone", true);
+	debug("BuildingObjectImplementation::notifyInsertToZone");
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
@@ -1266,7 +1266,7 @@ void BuildingObjectImplementation::createChildObjects() {
 		GCWManager* gcwMan = thisZone->getGCWManager();
 
 		for (int i = 0; i < serverTemplate->getChildObjectsSize();i++) {
-			ChildObject* child = serverTemplate->getChildObject(i);
+			const ChildObject* child = serverTemplate->getChildObject(i);
 
 			if (child == nullptr)
 				continue;

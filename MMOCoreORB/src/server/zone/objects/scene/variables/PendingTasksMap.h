@@ -23,7 +23,7 @@ class SceneObject;
 
 class PendingTasksMap : public Object {
 protected:
-	Mutex mutex;
+	mutable Mutex mutex;
 
 	VectorMap<String, Reference<Task*> > taskMap;
 
@@ -31,7 +31,6 @@ protected:
 
 public:
 	PendingTasksMap();
-
 	PendingTasksMap(const PendingTasksMap& p);
 
 	int put(const String& name, Task* task);
@@ -40,11 +39,11 @@ public:
 
 	bool contains(const String& name);
 
-	Reference<Task*> get(const String& name);
+	Reference<Task*> get(const String& name) const;
 
 	void putOrdered(Task* task, server::zone::objects::scene::SceneObject* sceneObject);
 
-	int getOrderedTasksSize();
+	int getOrderedTasksSize() const;
 
 	bool runMoreOrderedTasks(server::zone::objects::scene::SceneObject* sceneObject);
 

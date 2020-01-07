@@ -34,7 +34,7 @@ public:
 
 		if (!player->checkCooldownRecovery("declare_overt_cooldown")) {
 			StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
-			Time* cooldownTimer = player->getCooldownTime("declare_overt_cooldown");
+			const Time* cooldownTimer = player->getCooldownTime("declare_overt_cooldown");
 			int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
 			params.setTO(String::valueOf(minutes) + " minutes.");
 			player->sendSystemMessage(params);

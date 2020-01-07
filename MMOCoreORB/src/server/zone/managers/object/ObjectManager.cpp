@@ -408,7 +408,7 @@ void ObjectManager::loadStaticObjects() {
 	ObjectInputStream objectData(2000);
 
 	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-		Reference<SceneObject*> object = getObject(objectID).castTo<SceneObject*>();
+		Reference<SceneObject*> object = getObject(objectID).castMoveTo<SceneObject*>();
 
 		if (object != nullptr)
 			continue;
@@ -441,7 +441,6 @@ void ObjectManager::loadStaticObjects() {
 }
 
 int ObjectManager::updatePersistentObject(DistributedObject* object) {
-	//use a linked list
 	object->_setUpdated(true);
 
 	return 0;
@@ -456,7 +455,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		SharedObjectTemplate* templateData = templateManager->getTemplate(objectCRC);
 
 		if (templateData == nullptr) {
-			error("trying to create object with unknown objectcrc 0x" + String::hexvalueOf((int)objectCRC));
+			error() << "trying to create object with unknown objectcrc 0x" << hex << (int)objectCRC;
+
 			return nullptr;
 		}
 
@@ -465,7 +465,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		object = objectFactory.createObject(gameObjectType);
 
 		if (object == nullptr) {
-			error("creating object unknown gameObjectType " + String::valueOf(gameObjectType));
+			error() << "creating object unknown gameObjectType " << gameObjectType;
+
 			return nullptr;
 		}
 
@@ -524,7 +525,6 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 }*/
 
 SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient) {
-
 	ObjectOutputStream objectData(500);
 
 	(cast<ManagedObject*>(object))->writeObject(&objectData);
@@ -672,9 +672,7 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 
 	uint16 tableID = (uint16)(objectID >> 48);
 
-	/*StringBuffer infoMsg;
-	infoMsg << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
-	info(infoMsg.toString(), true);*/
+	debug() << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
 
 	LocalDatabase* db = databaseManager->getDatabase(tableID);
 
@@ -684,7 +682,6 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 	ObjectDatabase* database = cast<ObjectDatabase*>( db);
 
 	// only for debugging proposes
-
 	ObjectInputStream objectData(500);
 
 	if (database->getData(objectID, &objectData, berkeley::LockMode::READ_UNCOMMITED, false, true)) {
@@ -700,7 +697,7 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 
 	if (dobject != nullptr) {
 		//error("different object already in database");
-		return cast<DistributedObjectStub*>( dobject);
+		return cast<DistributedObjectStub*>(dobject);
 	}
 
 	try {
@@ -725,8 +722,7 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 
 			scene->setLoggingName(loggingName);
 
-			//(cast<SceneObject*>(object))->info("loaded from db");
-
+			scene->debug("loaded from db");
 		} else if (Serializable::getVariable<String>(_classNameHashCode, &className, &objectData)) {
 			object = createObject(className, false, "", objectID, false);
 
@@ -736,8 +732,8 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 			}
 
 			_locker.release();
-			deSerializeObject(object.castTo<ManagedObject*>(), &objectData);
 
+			deSerializeObject(object.castTo<ManagedObject*>(), &objectData);
 		} else {
 			error("could not load object from database, unknown template crc or class name");
 		}
@@ -776,7 +772,7 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 			uint16 tableID = (uint16)(sceno->getObjectID() >> 48);
 			ObjectDatabaseManager::instance()->getDatabaseName(tableID, dbName);
 
-			error("could not deserialize scene object of type: " + String::valueOf(sceno->getGameObjectType()) + " from DB: " + dbName);
+			error() << "could not deserialize scene object of type: " << sceno->getGameObjectType() << " from DB: " << dbName;
 		} else {
 			error("could not deserialize managed object from DB");
 		}
@@ -812,7 +808,8 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid,
 	object->setLoggingName(newLogName.toString());
 
 	object->deploy(newLogName.toString());
-	debug("deployed.." + newLogName.toString());
+
+	debug() << "deployed.." << newLogName;
 
 	return object;
 }

@@ -66,8 +66,8 @@ class PlayerManager extends Observer implements Logger {
 
 	@weakReference
 	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
-	protected transient int onlinePlayerLogSum;
-	protected transient boolean onlinePlayersLogOnSessionChange;
+	protected transient int onlinePlayerLogSum = 0;
+	protected transient boolean onlinePlayersLogOnSessionChange = false;
 
 	@dereferenced
 	protected transient Time lastOnlinePlayerLogMsg;

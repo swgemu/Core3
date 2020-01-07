@@ -268,10 +268,10 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 	const BuffList* buffList = creature->getBuffList();
 	for(int i = 0; i < buffList->getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = buffList->getBuffByIndex(i);
-		VectorMap<String, int>* skillMods = buff->getSkillModifiers();
+		const VectorMap<String, int>* skillMods = buff->getSkillModifiers();
 		for(int j = 0; j < skillMods->size(); ++j) {
-			String name = skillMods->elementAt(j).getKey();
-			int value = skillMods->get(name);
+			const String& name = skillMods->elementAt(j).getKey();
+			int value = skillMods->elementAt(j).getValue();
 
 			if(mods.contains(name)) {
 				value += mods.get(name);

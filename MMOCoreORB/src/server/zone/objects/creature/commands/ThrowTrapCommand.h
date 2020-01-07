@@ -104,7 +104,7 @@ public:
 			}
 
 			int targetDefense = targetCreature->getSkillMod(trapData->getDefenseMod());
-			Time* cooldown = creature->getCooldownTime("throwtrap");
+			const Time* cooldown = creature->getCooldownTime("throwtrap");
 			if((cooldown != nullptr && !cooldown->isPast()) ||
 					creature->getPendingTask("throwtrap") != nullptr) {
 				creature->sendSystemMessage("@trap/trap:sys_not_ready");

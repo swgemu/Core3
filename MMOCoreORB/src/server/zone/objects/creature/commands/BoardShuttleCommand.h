@@ -257,6 +257,16 @@ private:
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
+		ManagedReference<PlayerObject* > ghost = player->getPlayerObject();
+
+		if (ghost == nullptr)
+			return;
+
+		if (ghost->hasSuiBoxWindowType(SuiWindowType::TRAVEL_TICKET_SELECTION))
+		{
+			ghost->closeSuiWindowType(SuiWindowType::TRAVEL_TICKET_SELECTION);
+		}
+
 		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
 		creature->sendSystemMessage("@travel:boarding_ticket_selection"); //You must select a ticket to use before boarding.
 		suiListBox->setPromptTitle("Select Destination");

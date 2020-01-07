@@ -1020,9 +1020,9 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
-	CombatQueueCommand* queueCommand = cast<CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
+	const CombatQueueCommand* queueCommand = cast<const CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
 
-	VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
+	const VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
 
 	if (effects->size() == 0) {
 		return true;

@@ -319,8 +319,7 @@ PaletteTemplate* TemplateManager::getPaletteTemplate(const String& fileName) {
 	try {
 		palette->readObject(stream);
 	} catch (const Exception& e) {
-		error("could not parse palette template: " + String(fileName));
-		error(e.getMessage());
+		error() << "could not parse palette template: " << fileName << e.getMessage();
 
 		delete palette;
 		palette = nullptr;
@@ -441,7 +440,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 		return;
 	}
 
-	//info("loading " + fullName, true);
+	debug() << "loading " << fullName;
 
 	String fileName = fullName.subString(fullName.lastIndexOf('/') + 1, fullName.lastIndexOf('.'));
 

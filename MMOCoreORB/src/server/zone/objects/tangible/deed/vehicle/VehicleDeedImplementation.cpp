@@ -49,14 +49,12 @@ void VehicleDeedImplementation::updateCraftingValues(CraftingValues* values, boo
 void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if(isASubChildOf(player))
+	if (isASubChildOf(player))
 		menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_generate");
 }
 
 int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
 	if (selectedID == 20) {
-
 		if (generated || !isASubChildOf(player))
 			return 1;
 

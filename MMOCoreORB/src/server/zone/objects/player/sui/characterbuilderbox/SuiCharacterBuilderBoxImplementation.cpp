@@ -27,16 +27,16 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 	addSetting("3", "btnOther", "visible", "true");
 	addSetting("3", "btnOther", "visible", "@refresh");
 
-    addSetting("3","btnOther","Location","102,262");
-    addSetting("3","btnOther","Size","81,19");
-    addSetting("3","btnOther","ScrollExtent","81,19");
+	addSetting("3","btnOther","Location","102,262");
+	addSetting("3","btnOther","Size","81,19");
+	addSetting("3","btnOther","ScrollExtent","81,19");
 
-    addSetting("3","btnOk","Location","188,262");
-    addSetting("3","btnOk","Size","81,19");
-    addSetting("3","btnOk","ScrollExtent","81,19");
+	addSetting("3","btnOk","Location","188,262");
+	addSetting("3","btnOk","Size","81,19");
+	addSetting("3","btnOk","ScrollExtent","81,19");
 
-    addSetting("3","btnCancel","Size","81,19");
-    addSetting("3","btnCancel","ScrollExtent","81,19");
+	addSetting("3","btnCancel","Size","81,19");
+	addSetting("3","btnCancel","ScrollExtent","81,19");
 
 	addSetting("3", "btnCancel", "Text", "@cancel");
 
@@ -47,7 +47,7 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 
 	//Fill the above Data Container
 	for (int i = 0; i < currentNode->getChildNodeSize(); ++i) {
-		CharacterBuilderMenuNode* node = currentNode->getChildNodeAt(i);
+		auto node = currentNode->getChildNodeAt(i);
 
 		if (node == nullptr)
 			continue;
@@ -73,10 +73,10 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 	return message;
 }
 
-CharacterBuilderMenuNode* SuiCharacterBuilderBoxImplementation::getCurrentNode() {
+const CharacterBuilderMenuNode* SuiCharacterBuilderBoxImplementation::getCurrentNode() {
 	return currentNode;
 }
 
-void SuiCharacterBuilderBoxImplementation::setCurrentNode(CharacterBuilderMenuNode* node) {
+void SuiCharacterBuilderBoxImplementation::setCurrentNode(const CharacterBuilderMenuNode* node) {
 	currentNode = node;
 }

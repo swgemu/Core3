@@ -24,7 +24,7 @@ public:
 
 	~DroidCombatModuleDataComponent();
 
-	String getModuleName();
+	String getModuleName() const;
 
 	void initializeTransientMembers();
 
@@ -32,7 +32,7 @@ public:
 
 	int getBatteryDrain() { return 0;}
 
-	String toString();
+	String toString() const;
 
 	bool isStackable() { return true; }
 

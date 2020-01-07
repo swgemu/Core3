@@ -12,9 +12,12 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/login/LoginServer.h"
+#include "system/lang/SignalException.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 #include "ping/PingServer.h"
 #include "status/StatusServer.h"
-#include "web/WebServer.h"
 #include "web/RESTServer.h"
 #include "server/zone/ZoneServer.h"
 
@@ -29,11 +32,25 @@
 #include "server/zone/QuadTree.h"
 
 #include "engine/core/MetricsManager.h"
+#include "engine/service/ServiceThread.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = nullptr;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
+
+namespace coredetail {
+	class ConsoleReaderService : public ServiceThread {
+		ServerCore* core;
+
+	public:
+		ConsoleReaderService(ServerCore* serverCoreInstance);
+
+		bool inputAvailable() const;
+
+		void run() override;
+	};
+}
 
 ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args) :
 		Core("log/core3.log", "core3engine", LogLevel::LOG), Logger("Core") {
@@ -43,10 +60,14 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 	zoneServerRef = nullptr;
 	statusServer = nullptr;
 	pingServer = nullptr;
-	webServer = nullptr;
 	database = nullptr;
 	mantisDatabase = nullptr;
+#ifdef WITH_REST_API
 	restServer = nullptr;
+#endif // WITH_REST_API
+#if WITH_SESSION_API
+	sessionAPIClient = nullptr;
+#endif // WITH_SESSION_API
 
 	truncateAllData = truncateDatabases;
 	arguments = args;
@@ -243,6 +264,7 @@ void ServerCore::registerConsoleCommmands() {
 		if (zoneServer != nullptr) {
 			ChatManager* chatManager = zoneServer->getChatManager();
 			chatManager->broadcastGalaxy(nullptr, arguments);
+			info(true) << "Console broadcasted: " << arguments;
 		}
 
 		return SUCCESS;
@@ -319,7 +341,7 @@ void ServerCore::registerConsoleCommmands() {
 		if (arguments == "name") {
 			ZoneServer* server = zoneServerRef.get();
 
-			if(server != nullptr)
+			if (server != nullptr)
 				server->getNameManager()->loadConfigData(true);
 		} else {
 			System::out << "Invalid manager. Reloadable managers: name" << endl;
@@ -433,13 +455,22 @@ void ServerCore::registerConsoleCommmands() {
 	consoleCommands.put("setpvp", setPvpModeLambda);
 
 	const auto dumpConfigLambda = [this](const String& arguments) -> CommandResult {
-		ConfigManager::instance()->dumpConfig(arguments == "all" ? true : false);
+		ConfigManager::instance()->dumpConfig(arguments == "all");
 
 		return SUCCESS;
 	};
 
 	consoleCommands.put("dumpcfg", dumpConfigLambda);
 	consoleCommands.put("dumpconfig", dumpConfigLambda);
+
+#ifdef WITH_SESSION_API
+	const auto sessionApiLambda = [this](const String& arguments) -> CommandResult {
+		return SessionAPIClient::instance()->consoleCommand(arguments) ? SUCCESS : ERROR;
+	};
+
+	consoleCommands.put("sessions", sessionApiLambda);
+	consoleCommands.put("sessionapi", sessionApiLambda);
+#endif // WITH_SESSION_API
 
 	consoleCommands.put("toggleModifiedObjectsDump", [this](const String& arguments) -> CommandResult {
 		DOBObjectManager::setDumpLastModifiedTraces(!DOBObjectManager::getDumpLastModifiedTraces());
@@ -555,10 +586,6 @@ void ServerCore::initialize() {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
 
-		if (configManager->getMakeWeb()) {
-			webServer = WebServer::instance();
-		}
-
 		ZoneServer* zoneServer = zoneServerRef.get();
 
 		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
@@ -608,10 +635,6 @@ void ServerCore::initialize() {
 			statusServer->start(statusPort, statusAllowedConnections);
 		}
 
-		if (webServer != nullptr) {
-			webServer->start(configManager);
-		}
-
 		if (pingServer != nullptr) {
 			int pingPort = configManager->getPingPort();
 			int pingAllowedConnections =
@@ -635,10 +658,20 @@ void ServerCore::initialize() {
 		statiscticsTask->schedulePeriodic(10000, 10000);
 #endif
 
-		if (configManager->getRESTPort()) {
-			restServer = new server::web3::RESTServer(configManager->getRESTPort());
-			restServer->start();
+#ifdef WITH_REST_API
+		restServer = new server::web3::RESTServer();
+		restServer->start();
+#endif // WITH_REST_API
+
+#if WITH_SESSION_API
+		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
+			sessionAPIClient = SessionAPIClient::instance();
+
+			if (configManager != nullptr) {
+				sessionAPIClient->notifyGalaxyStart(configManager->getZoneGalaxyID());
+			}
 		}
+#endif // WITH_SESSION_API
 
 		info("initialized", true);
 
@@ -672,12 +705,16 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info(true) << "shutting down server..";
 
+	handleCmds = false;
+
+#ifdef WITH_REST_API
 	if (restServer) {
 		restServer->stop();
 
 		delete restServer;
 		restServer = nullptr;
 	}
+#endif // WITH_REST_API
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
@@ -724,11 +761,6 @@ void ServerCore::shutdown() {
 	if (pingServer != nullptr) {
 		pingServer->stop();
 		pingServer = nullptr;
-	}
-
-	if (webServer != nullptr) {
-		webServer->stop();
-		webServer = nullptr;
 	}
 
 	if (statusServer != nullptr) {
@@ -780,6 +812,16 @@ void ServerCore::shutdown() {
 
 	objectManager->finalizeInstance();
 
+#ifdef WITH_SESSION_API
+	if (sessionAPIClient) {
+		if (configManager != nullptr) {
+			sessionAPIClient->notifyGalaxyShutdown();
+		}
+
+		sessionAPIClient->finalizeInstance();
+	}
+#endif // WITH_SESSION_API
+
 	configManager = nullptr;
 	metricsManager = nullptr;
 
@@ -809,67 +851,115 @@ void ServerCore::shutdown() {
 	info("server closed", true);
 }
 
-void ServerCore::handleCommands() {
-	while (handleCmds) {
-
+ServerCore::CommandResult ServerCore::processConsoleCommand(const String& commandString) {
 #ifdef WITH_STM
-		Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
+	Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
 #endif
 
-		try {
-			Thread::sleep(500);
+	CommandResult result = CommandResult::NOTFOUND;
 
-			System::out << "> " << flush;
+	try {
+		StringTokenizer tokenizer(commandString);
 
-			char line[256];
-			auto res = fgets(line, sizeof(line), stdin);
+		String command, arguments;
 
-			if (!res)
-				continue;
+		if (tokenizer.hasMoreTokens())
+			tokenizer.getStringToken(command);
 
-			String fullCommand = String(line).trim();
+		if (tokenizer.hasMoreTokens())
+			arguments = tokenizer.getRemainingString();
 
-			StringTokenizer tokenizer(fullCommand);
+		auto it = consoleCommands.find(command);
 
-			String command, arguments;
-
-			if (tokenizer.hasMoreTokens())
-				tokenizer.getStringToken(command);
-
-			if (tokenizer.hasMoreTokens())
-				arguments = tokenizer.getRemainingString();
-
-			auto it = consoleCommands.find(command);
-
-			if (it != consoleCommands.npos) {
-				int result = consoleCommands.get(it)(arguments);
-
-				if (result == CommandResult::SHUTDOWN)
-					return;
-			} else {
-				warning() << "unknown command (" << command << ")";
-			}
-		} catch (const Exception& e) {
-			error(e.getMessage());
+		if (it != consoleCommands.npos) {
+			result = consoleCommands.get(it)(arguments);
+		} else {
+			result = CommandResult::NOTFOUND;
 		}
+	} catch (const Exception& e) {
+		error() << commandString << " EXCEPTION: " <<  e.getMessage();
 
-		System::flushStreams();
-#ifdef WITH_STM
-		try {
-			TransactionalMemoryManager::commitPureTransaction(transaction);
-		} catch (const TransactionAbortedException& e) {
-		}
-#endif
-
+		return CommandResult::ERROR;
 	}
+
+#ifdef WITH_STM
+	try {
+		TransactionalMemoryManager::commitPureTransaction(transaction);
+	} catch (const TransactionAbortedException& e) {
+	}
+#endif
+
+	return result;
+}
+
+void ServerCore::queueConsoleCommand(const String& commandString) {
+	if (!handleCmds) {
+		error() << "Ignoring queued command: " << commandString;
+		return;
+	}
+
+	auto line = commandString + "\n";
+	consoleCommandPipe.writeLine(line.toCharArray());
+}
+
+void ServerCore::handleCommands() {
+	if (!handleCmds)
+		return;
+
+	consoleCommandPipe.create(false);
+
+	auto reader = coredetail::ConsoleReaderService(instance);
+	reader.start(true);
+
+	while (handleCmds) {
+		Thread::sleep(500);
+
+		System::out << "\nREADY\n> " << flush;
+
+		char line[PIPE_BUF];
+
+		auto len = consoleCommandPipe.readLine(line, sizeof(line));
+
+		if (!len)
+			continue;
+
+		line[len] = 0;
+
+		auto cmd = String(line).trim();
+
+		if (cmd.isEmpty())
+			continue;
+
+		if (!handleCmds) {
+			error() << "console command processing disabled, ignoring: " << cmd;
+			break;
+		}
+
+		auto result = processConsoleCommand(cmd);
+
+		if (result == CommandResult::SHUTDOWN)
+			break;
+
+		if (result == CommandResult::NOTFOUND)
+			warning() << "unknown command (" << cmd << ")";
+
+		System::flushStream(stdout);
+	}
+
+	reader.setRunning(false);
+
+	Thread::yield();
+
+	reader.join();
+
+	consoleCommandPipe.close();
+
+	info(true) << "Console Closed";
 }
 
 void ServerCore::processConfig() {
 	if (!configManager->loadConfigData())
 		warning("missing config file.. loading default values");
-
-	//if (!features->loadFeatures())
-	//info("Problem occurred trying to load features.lua");
 }
 
 int ServerCore::getSchemaVersion() {
@@ -878,3 +968,47 @@ int ServerCore::getSchemaVersion() {
 
 	return -1;
 }
+
+coredetail::ConsoleReaderService::ConsoleReaderService(ServerCore* serverCoreInstance) : ServiceThread("ConsoleReader"), core(serverCoreInstance) {
+}
+
+bool coredetail::ConsoleReaderService::inputAvailable() const {
+	struct timeval tv = {};
+	tv.tv_sec = 1;
+	tv.tv_usec = 0;
+
+	fd_set fds;
+
+	FD_ZERO(&fds);
+	FD_SET(STDIN_FILENO, &fds);
+
+	auto ret = select(STDIN_FILENO + 1, &fds, nullptr, nullptr, &tv);
+
+	fatal(ret != -1) << "select on stdin failed";
+
+	return FD_ISSET(STDIN_FILENO, &fds);
+}
+
+void coredetail::ConsoleReaderService::run() {
+	setReady(true);
+
+	while (doRun.get(std::memory_order_seq_cst)) {
+		char line[PIPE_BUF];
+
+		if (!inputAvailable())
+			continue;
+
+		auto res = fgets(line, sizeof(line), stdin);
+
+		if (!res)
+			continue;
+
+		auto cmd = String(line).trim();
+
+		if (cmd.isEmpty())
+			continue;
+
+		core->queueConsoleCommand(cmd);
+	}
+}
+

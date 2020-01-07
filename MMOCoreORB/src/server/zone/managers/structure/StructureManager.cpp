@@ -208,7 +208,7 @@ int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objec
 	float centerX = (structureFootprint->getCenterX() * 8) + 4;
 	float centerY = (structureFootprint->getCenterY() * 8) + 4;
 
-	//info ("centerX:" + String::valueOf(centerX) + " centerY:" + String::valueOf(centerY), true);
+	debug() << "getStructureFootprint centerX:" << centerX << " centerY:" << centerY;
 
 	float topLeftX = -centerX;
 	float topLeftY = (structureFootprint->getRowSize() * 8 ) - centerY;
@@ -254,8 +254,8 @@ int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objec
 	w1 = Math::max(resultTop.getX(), resultBottom.getX());
 	l1 = Math::max(resultTop.getZ(), resultBottom.getZ());
 
-	//info("objectTemplate:" + objectTemplate->getFullTemplateString() + " :" + structureFootprint->toString(), true);
-	//info("angle:" + String::valueOf(angle) + " w0:" + String::valueOf(w0) + " l0:" + String::valueOf(l0) + " w1:" + String::valueOf(w1) + " l1:" + String::valueOf(l1), true);
+	debug() << "objectTemplate:" << objectTemplate->getFullTemplateString() << " :" << *structureFootprint
+		<< "angle:" << angle << " w0:" << w0 << " l0:" << l0 << " w1:" << w1 << " l1:" << l1;
 
 	return 0;
 }
@@ -320,8 +320,8 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 
 		BoundaryRectangle placingFootprint(x0, y0, x1, y1);
 
-		//info("placing center x:" + String::valueOf(x) + " y:" + String::valueOf(y), true);
-		//info("placingFootprint x0:" + String::valueOf(x0) + " y0:" + String::valueOf(y0) + " x1:" + String::valueOf(x1) + " y1:" + String::valueOf(y1), true);
+		debug() << "placing center x:" << x << " y:" << y
+			<< "placingFootprint x0:" << x0 << " y0:" << y0 << " x1:" << x1 << " y1:" << y1;
 
 		for (int i = 0; i < inRangeObjects.size(); ++i) {
 			SceneObject* scene = inRangeObjects.get(i).castTo<SceneObject*>();
@@ -344,7 +344,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 
 			BoundaryRectangle rect(xx0, yy0, xx1, yy1);
 
-			//info("existing footprint xx0:" + String::valueOf(xx0) + " yy0:" + String::valueOf(yy0) + " xx1:" + String::valueOf(xx1) + " yy1:" + String::valueOf(yy1), true);
+			debug() << "existing footprint xx0:" << xx0 << " yy0:" << yy0 << " xx1:" << xx1 << " yy1:" << yy1;
 
 			// check 4 points of the current rect
 			if (rect.containsPoint(x0, y0)
@@ -352,7 +352,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 					|| rect.containsPoint(x1, y0)
 					|| rect.containsPoint(x1, y1) ) {
 
-				//info("existing footprint contains placing point", true);
+				debug() << "existing footprint contains placing point";
 
 				creature->sendSystemMessage("@player_structure:no_room"); //there is no room to place the structure here..
 
@@ -364,7 +364,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 					|| placingFootprint.containsPoint(xx1, yy0)
 					|| placingFootprint.containsPoint(xx1, yy1)
 					|| (xx0 == x0 && yy0 == y0 && xx1 == x1 && yy1 == y1)) {
-				//info("placing footprint contains existing point", true);
+				debug() << "placing footprint contains existing point";
 
 				creature->sendSystemMessage("@player_structure:no_room"); //there is no room to place the structure here.
 
@@ -605,7 +605,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (!isCityHall && !player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
-		Time* timeremaining = player->getCooldownTime("declare_residence");
+		const Time* timeremaining = player->getCooldownTime("declare_residence");
 		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
 		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / -3600000.f)));
 

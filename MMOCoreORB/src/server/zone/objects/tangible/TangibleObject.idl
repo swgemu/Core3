@@ -99,7 +99,7 @@ class TangibleObject extends SceneObject {
 
 		antiDecayKitObject = null;
 
-		luaStringData.setNoDuplicateInsertPlan();
+		luaStringData.setAllowOverwriteInsertPlan();
 	}
 
 	@dirty
@@ -707,7 +707,7 @@ class TangibleObject extends SceneObject {
 		junkValue = jValue;
 	}
 
-	@dirty
+	@read
 	public abstract int getJunkValue() {
 		return junkValue;
 	}
@@ -835,10 +835,10 @@ class TangibleObject extends SceneObject {
 
 	@preLocked
 	public void applyAntiDecayKit(CreatureObject player, SceneObject adk) {
-		if(!hasAntiDecayKit()) {
+		if (!hasAntiDecayKit()) {
 			antiDecayKitObject = adk;
 
-			if(adk.getParent() != null)
+			if (adk.getParent() != null)
 				adk.destroyObjectFromWorld(true);
 
 			sendAttributeListTo(player);
@@ -847,7 +847,7 @@ class TangibleObject extends SceneObject {
 
 	@preLocked
 	public SceneObject removeAntiDecayKit() {
-		if(hasAntiDecayKit()) {
+		if (hasAntiDecayKit()) {
 			SceneObject adk = antiDecayKitObject;
 			antiDecayKitObject = null;
 			return adk;
@@ -881,10 +881,7 @@ class TangibleObject extends SceneObject {
 
 	@preLocked
 	public void setLuaStringData(final string key, final string data) {
-		if (luaStringData.contains(key))
-			luaStringData.get(key) = data;
-		else
-			luaStringData.put(key, data);
+		luaStringData.put(key, data);
 	}
 
 	@preLocked

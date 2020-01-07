@@ -1673,7 +1673,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building, CreatureObject* creature, SceneObject* hqTerminal) {
 	if (!creature->checkCooldownRecovery("declare_overt_cooldown")) {
 		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
-		Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
+		const Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
 		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
 		params.setTO(String::valueOf(minutes) + " minutes.");
 		creature->sendSystemMessage(params);
@@ -1730,7 +1730,8 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 
 	Locker clock(building, creature);
 
-	//info("Resetting vulnerability timer",true);
+	debug() << "Resetting vulnerability timer";
+
 	baseData->setLastResetTime(Time());
 
 	Time nextTime = Time();
@@ -2131,7 +2132,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	TemplateManager* templateManager = TemplateManager::instance();
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
 	Reference<SharedObjectTemplate*> minefieldTemplate = nullptr;
-	ChildObject* child = nullptr;
+	const ChildObject* child = nullptr;
 
 	int currentMinefieldIndex = 0;
 
@@ -2212,7 +2213,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
 
 	Reference<SharedObjectTemplate*> turretTemplate = nullptr;
-	ChildObject* child = nullptr;
+	const ChildObject* child = nullptr;
 	int currentTurretIndex = 0;
 
 	Locker block(building,creature);
@@ -2283,7 +2284,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	}
 }
 
-uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, ChildObject* child, CreatureObject* creature, Deed* deed) {
+uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, const ChildObject* child, CreatureObject* creature, Deed* deed) {
 	Vector3 position = building->getPosition();
 
 	const Quaternion* direction = building->getDirection();

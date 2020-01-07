@@ -18,6 +18,7 @@ class ChatMessage extends ManagedObject {
 		message = msg;
 	}
 
+	@read
 	public string toString() {
 		return message;
 	}

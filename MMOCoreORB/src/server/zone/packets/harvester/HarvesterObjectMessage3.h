@@ -32,7 +32,7 @@ public:
 
 
 		insertInt(0);
-		insertInt(String::hashCode("rebel"));
+		insertInt(STRING_HASHCODE("rebel"));
 
 
 		insertInt(hino->getConditionDamage());//insertInt(0x03E80000); // max condition ??

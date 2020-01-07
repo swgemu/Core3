@@ -1465,7 +1465,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 
 	String creatorName = nm->makeCreatureName();
 
-	//info("creator name " + creatorName, true);
+	debug() << "creator name " << creatorName;
 
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(creatorName);
@@ -1666,7 +1666,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	if (zone == nullptr)
 		return nullptr;
 
-	Vector<Reference<LairSpawn*> >* availableLairList = nullptr;
+	const Vector<Reference<LairSpawn*> >* availableLairList = nullptr;
 	int minLevelCeiling = 20;
 
 	if (type == MissionTypes::DESTROY) {
@@ -1698,7 +1698,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 			return nullptr;
 		}
 
-		availableLairList = destroyMissionGroup->getSpawnList();
+		availableLairList = &destroyMissionGroup->getSpawnList();
 		minLevelCeiling = destroyMissionGroup->getMinLevelCeiling();
 
 	} else if (type == MissionTypes::HUNTING) {

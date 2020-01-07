@@ -17,7 +17,7 @@ class TreeArchive : public Logger {
 public:
 	TreeArchive() {
 		setLoggingName("TreeArchive");
-		setLogging(true);
+		setLogging(false);
 
 		nodeMap.setNullValue(nullptr);
 
@@ -49,7 +49,7 @@ public:
 
 				nodeMap.put(std::move(dir), std::move(records));
 			}
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			error("Invalid path: " + path);
 		}
 	}

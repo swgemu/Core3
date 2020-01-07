@@ -112,20 +112,19 @@ class ArmorObject extends WearableObject {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
-	@dirty
 	private native void calculateSpecialProtection(CraftingValues values);
 
-	@dirty
+	@read
 	native string getStringType(int type);
 
 	private native void setProtectionValue(int type, float value);
 
-	@dirty
+	@read
 	public boolean isSpecial(int type) {
 		return specialResists & type;
 	}
 
-	@dirty
+	@read
 	public native boolean isVulnerable(int type);
 
 	@dirty
@@ -137,89 +136,80 @@ class ArmorObject extends WearableObject {
 		rating = rate;
 	}
 
-	@dirty
+	@read
 	public int getRating() {
 		return rating;
 	}
 
-	@dirty
+	@read
 	private native float getTypeValue(int type, float value);
 
-	@dirty
-	@local
+	@read
 	public native float getKinetic();
 
 	public void setKinetic(float value) {
 		kinetic = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getEnergy();
 
 	public void setEnergy(float value) {
 		energy = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getElectricity();
 
 	public void setElectricity(float value) {
 		electricity = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getStun();
 
 	public void setStun(float value) {
 		stun = value;
 	}
 
-	@local
-	@dirty
+	@read
 	public native float getBlast();
 
 	public void setBlast(float value) {
 		blast = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getHeat();
 
 	public void setHeat(float value) {
 		heat = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getCold();
 
 	public void setCold(float value) {
 		cold = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getAcid();
 
 	public void setAcid(float value) {
 		acid = value;
 	}
 
-	@dirty
-	@local
+	@read
 	public native float getLightSaber();
 
 	public void setLightSaber(float value) {
 		lightSaber = value;
 	}
 
-	@dirty
+	@read
 	public int getHealthEncumbrance() {
-		if(healthEncumbrance < 0)
+		if (healthEncumbrance < 0)
 			return healthEncumbrance * (2 - encumbranceSlice);
 
 		return healthEncumbrance * encumbranceSlice;
@@ -229,9 +219,9 @@ class ArmorObject extends WearableObject {
 		healthEncumbrance = encumber;
 	}
 
-	@dirty
+	@read
 	public int getActionEncumbrance() {
-		if(actionEncumbrance < 0)
+		if (actionEncumbrance < 0)
 			return actionEncumbrance * (2 - encumbranceSlice);
 
 		return actionEncumbrance * encumbranceSlice;
@@ -241,9 +231,9 @@ class ArmorObject extends WearableObject {
 		actionEncumbrance = encumber;
 	}
 
-	@dirty
+	@read
 	public int getMindEncumbrance() {
-		if(mindEncumbrance < 0)
+		if (mindEncumbrance < 0)
 			return mindEncumbrance * (2 - encumbranceSlice);
 
 		return mindEncumbrance * encumbranceSlice;
@@ -254,18 +244,18 @@ class ArmorObject extends WearableObject {
 	}
 
 	public void setEffectivenessSlice(float value) {
-		if(value > 0.5f || value < 0)
+		if (value > 0.5f || value < 0)
 			return;
 		effectivenessSlice = 1 + value;
 	}
 
 	public void setEncumbranceSlice(float value) {
-		if(value > 0.5f || value < 0)
+		if (value > 0.5f || value < 0)
 			return;
 		encumbranceSlice = 1 - value;
 	}
 
-	@dirty
+	@read
 	public unsigned byte getHitLocation() {
 		return hitLocation;
 	}

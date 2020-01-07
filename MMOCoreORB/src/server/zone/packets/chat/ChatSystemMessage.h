@@ -17,7 +17,6 @@ public:
 	};
 
 public:
-
 	ChatSystemMessage(const UnicodeString& message, byte displayType = DISPLAY_CHATANDSCREEN) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x6D2A6413); //ChatSystemMessage

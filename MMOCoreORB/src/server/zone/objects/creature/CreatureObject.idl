@@ -38,6 +38,7 @@ import system.thread.ReadWriteLock;
 import server.zone.objects.creature.credits.CreditObject;
 include engine.util.u3d.Vector3;
 include system.util.SortedVector;
+include system.lang.ref.WeakReference;
 include engine.log.Logger;
 include server.zone.CloseObjectsVector;
 include server.zone.QuadTreeEntry;
@@ -47,8 +48,9 @@ import server.zone.managers.auction.AuctionSearchTask;
 @mock
 @json
 class CreatureObject extends TangibleObject {
-	@weakReference
-	protected transient ZoneClientSession owner;
+	@rawTemplate(value = "ZoneClientSession*")
+	@dereferenced
+	protected transient WeakReference owner;
 
     	protected CreditObject creditObject;
 
@@ -398,7 +400,6 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
 	 */
-	@dirty
 	public native float calculateSpeed();
 
 	@preLocked
@@ -494,7 +495,7 @@ class CreatureObject extends TangibleObject {
 	@arg1preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 
-	@dirty
+	@read
 	public boolean hasDamage(int attribute) {
 		return hamList.get(attribute) + wounds.get(attribute) < maxHamList.get(attribute);
 	}
@@ -722,26 +723,23 @@ class CreatureObject extends TangibleObject {
 		return wearablesVector;
 	}
 
-	@dirty
+	@read
 	public void sendBuffsTo(CreatureObject creature) {
 		creatureBuffs.sendTo(creature);
 	}
 
 	@local
-	@dirty
-	public BuffList getBuffList() {
+	@read
+	public final BuffList getBuffList() {
 		return creatureBuffs;
 	}
 
-	@dirty
+	@read
 	public Buff getBuff(unsigned int buffcrc) {
-		if (creatureBuffs.hasBuff(buffcrc))
-			return creatureBuffs.getBuffByCRC(buffcrc);
-
-		return null;
+		return creatureBuffs.getBuffByCRC(buffcrc);
 	}
 
-	@dirty
+	@read
 	public long getSkillModFromBuffs(final string skillMod) {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
@@ -784,7 +782,7 @@ class CreatureObject extends TangibleObject {
 		return damageOverTimeList;
 	}
 
-	@dirty
+	@read
 	public boolean hasBuff(unsigned int buffcrc) {
 		return creatureBuffs.hasBuff(buffcrc);
 	}
@@ -1228,12 +1226,12 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void setFactionRank(int rank, boolean notifyClient = true);
 
-	@dirty
+	@read
 	public native string getFirstName();
 
 	public native string setFirstName(final string newFirstName);
 
-	@dirty
+	@read
 	public native string getLastName();
 
 	public native string setLastName(final string newLastName, boolean skipVerify);
@@ -1285,14 +1283,12 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@preLocked
-	public void setClient(ZoneClientSession cli) {
-		owner = cli;
-	}
+	public native void setClient(ZoneClientSession cli);
 
 	@preLocked
 	public native void dismount();
 
-	@dirty
+	@read
 	public native float calculateBFRatio();
 
 	@preLocked
@@ -1356,7 +1352,7 @@ class CreatureObject extends TangibleObject {
 		timeOfDeath.updateToCurrentTime();
 	}
 
-	@dirty
+	@read
 	public boolean hasAttackDelay() {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
@@ -1365,7 +1361,7 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
 	}
 
-	@dirty
+	@read
 	public boolean hasIncapTimer() {
 		return !cooldownTimerMap.isPast("incapTimer");
 	}
@@ -1375,7 +1371,7 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap;
 	}
 
-	@dirty
+	@read
 	public boolean hasSpice() {
 		return creatureBuffs.hasSpice();
 	}
@@ -1388,7 +1384,7 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeDelay", delay);
 	}
 
-	@dirty
+	@read
 	public boolean checkPostureChangeDelay() {
 		return cooldownTimerMap.isPast("postureChangeDelay");
 	}
@@ -1397,7 +1393,7 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili("postureDownRecovery", 30000);
 	}
 
-	@dirty
+	@read
 	public boolean checkPostureDownRecovery() {
 		return cooldownTimerMap.isPast("postureDownRecovery");
 	}
@@ -1406,7 +1402,7 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili("postureUpRecovery", 30000);
 	}
 
-	@dirty
+	@read
 	public boolean checkPostureUpRecovery() {
 		return cooldownTimerMap.isPast("postureUpRecovery");
 	}
@@ -1415,7 +1411,7 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
 	}
 
-	@dirty
+	@read
 	public boolean checkKnockdownRecovery() {
 		return cooldownTimerMap.isPast("knockdownRecovery");
 	}
@@ -1429,6 +1425,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public abstract native void queueDizzyFallEvent();
 
+	@read
 	public boolean hasDizzyEvent() {
 		return dizzyFallDownEvent != null;
 	}
@@ -1446,6 +1443,7 @@ class CreatureObject extends TangibleObject {
 	 * Takes the screenPlayStatesMutex.
 	 * @param screenPlay ScreenPlay to retrieve
          */
+	@dirty
 	public unsigned long getScreenPlayState(final string screenPlay) {
 		synchronized (screenPlayStatesMutex) {
 			return screenPlayStates.get(screenPlay);
@@ -1472,13 +1470,14 @@ class CreatureObject extends TangibleObject {
 		}
 	}
 
-	@dirty
+	@read
 	public boolean checkCooldownRecovery(final string cooldown) {
 		return cooldownTimerMap.isPast(cooldown);
 	}
 
+	@read
 	@local
-	public Time getCooldownTime(final string cooldown) {
+	public final Time getCooldownTime(final string cooldown) {
 		return cooldownTimerMap.getTime(cooldown);
 	}
 
@@ -1501,7 +1500,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void activateImmediateAction();
 
-	@dirty
+	@read
 	public native unicode getCreatureName();
 
 	@read
@@ -1667,8 +1666,8 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	@local
-	@dirty
-	public CommandQueueActionVector getCommandQueue() {
+	@read
+	public final CommandQueueActionVector getCommandQueue() {
 		return commandQueue;
 	}
 
@@ -1691,6 +1690,7 @@ class CreatureObject extends TangibleObject {
 		return lastActionCounter;
 	}
 
+	@read
 	public unsigned int getLastActionCounter() {
 		return lastActionCounter;
 	}
@@ -1942,7 +1942,7 @@ class CreatureObject extends TangibleObject {
 	@local
 	public native CreatureObject asCreatureObject();
 
-	@dirty
+	@read
 	public boolean isNextActionPast() {
 		return nextAction.isPast();
 	}
@@ -2184,7 +2184,7 @@ class CreatureObject extends TangibleObject {
 		return skillModMutex;
 	}
 
-	@dirty
+	@read
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
 	@preLocked

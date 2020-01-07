@@ -591,9 +591,9 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		Vector<String> lairTemplates;
 
 		// Verify spawn list
-		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
-		for (int i = 0; i < spawnList->size(); i++) {
-			LairSpawn* spawn = spawnList->get(i);
+		const auto& spawnList = group->getSpawnList();
+		for (int i = 0; i < spawnList.size(); i++) {
+			LairSpawn* spawn = spawnList.get(i);
 			std::string lairName( spawn->getLairTemplateName().toCharArray() );
 
 			// Verify lair template exists and isn't duplicated in the group
@@ -636,9 +636,9 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		Vector<String> lairTemplates;
 
 		// Verify spawn list
-		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
-		for (int i = 0; i < spawnList->size(); i++) {
-			LairSpawn* spawn = spawnList->get(i);
+		const auto& spawnList = group->getSpawnList();
+		for (int i = 0; i < spawnList.size(); i++) {
+			LairSpawn* spawn = spawnList.get(i);
 			std::string lairName( spawn->getLairTemplateName().toCharArray() );
 
 			// Verify lair template exists

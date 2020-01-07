@@ -43,7 +43,7 @@ LuaBuildingObject::LuaBuildingObject(lua_State *L) : LuaTangibleObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<BuildingObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = reinterpret_cast<BuildingObject*>(lua_touserdata(L, 1));
 #endif
@@ -58,7 +58,7 @@ int LuaBuildingObject::_setObject(lua_State* L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<BuildingObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = reinterpret_cast<BuildingObject*>(lua_touserdata(L, -1));
 #endif

@@ -17,7 +17,7 @@ DroidPersonalityModuleDataComponent::~DroidPersonalityModuleDataComponent() {
 
 }
 
-String DroidPersonalityModuleDataComponent::getModuleName() {
+String DroidPersonalityModuleDataComponent::getModuleName() const {
 	return "personality_chip";
 }
 
@@ -62,7 +62,7 @@ void DroidPersonalityModuleDataComponent::deactivate() {
 	// no op
 }
 
-String DroidPersonalityModuleDataComponent::toString() {
+String DroidPersonalityModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

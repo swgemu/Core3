@@ -196,3 +196,66 @@ add_custom_target(rebuild-idl
 	COMMENT "Rebuilding idl sources"
         VERBATIM)
 
+if (ENABLE_REST_SERVER OR ENABLE_SESSION_API)
+	find_package(cpprestsdk QUIET NAMES cpprestsdk cpprest)
+
+	if (cpprestsdk_FOUND)
+		target_link_libraries(core3 cpprestsdk::cpprest)
+
+		message(STATUS "Compiling with cpprestsdk package")
+	else ()
+		find_path(CUST_CPPREST_INCLUDE_DIR
+			NAMES
+			cpprest/http_listener.h
+			PATHS
+			${CASABLANCA_PKGCONF_INCLUDE_DIRS}
+			${CASABLANCA_DIR}
+			$ENV{CASABLANCA_DIR}
+			/usr/local/include
+			/usr/include
+			../../casablanca
+			PATH_SUFFIXES
+			Release/include
+			include
+			)
+
+		if (CUST_CPPREST_INCLUDE_DIR-NOTFOUND)
+			message(STATUS "Cant find cpprest/http_listener.h")
+		endif(CUST_CPPREST_INCLUDE_DIR-NOTFOUND)
+
+		# Library
+		find_library(CUST_CPPREST_LIBRARY
+			NAMES
+			cpprest
+			cpprest_2_9.lib
+			cpprestsdk
+			PATHS
+			${CASABLANCA_PKGCONF_LIBRARY_DIRS}
+			${CASABLANCA_DIR}
+			${CASABLANCA_DIR}
+			$ENV{CASABLANCA_DIR}
+			/usr/local
+			/usr/lib
+			/usr/local/lib
+			/usr
+			../../casablanca
+			PATH_SUFFIXES
+			lib
+			Release/build.release/Binaries/
+			build.release/Binaries/
+			)
+
+		if (CUST_CPPREST_LIBRARY-NOTFOUND)
+			message(STATUS "Cant find cpprestsdk library")
+		endif(CUST_CPPREST_LIBRARY-NOTFOUND)
+
+		if (CUST_CPPREST_INCLUDE_DIR-NOTFOUND AND CUST_CPPREST_LIBRARY-NOTFOUND)
+			message(STATUS "cpprestsdk not found, compiling without")
+		else ()
+			include_directories(${CUST_CPPREST_INCLUDE_DIR})
+			target_link_libraries(core3 ${CUST_CPPREST_LIBRARY})
+
+			message(STATUS "Compiling with cpprestsdk")
+		endif()
+	endif()
+endif()

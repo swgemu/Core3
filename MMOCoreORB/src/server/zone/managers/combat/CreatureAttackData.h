@@ -48,8 +48,8 @@ protected:
 
 	uint64 targetID;
 
-	VectorMap<uint8, StateEffect>* stateEffects;
-	Vector<DotEffect>* dotEffects;
+	const VectorMap<uint8, StateEffect>* stateEffects;
+	const Vector<DotEffect>* dotEffects;
 
 	bool forceAttack;
 	uint8 trails;
@@ -66,7 +66,7 @@ public:
 	void fillFromBase();
 	void setVariable(const String& var, const String& val);
 
-	String getCommandName() const;
+	const String& getCommandName() const;
 	uint32 getCommandCRC() const;
 
 	float getActionDamageMultiplier() const {

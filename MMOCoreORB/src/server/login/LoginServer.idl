@@ -19,6 +19,7 @@ import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
 
+@dirty
 class LoginServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
 

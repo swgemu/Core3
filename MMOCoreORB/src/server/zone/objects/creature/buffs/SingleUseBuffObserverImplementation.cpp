@@ -26,7 +26,7 @@ int SingleUseBuffObserverImplementation::notifyObserverEvent(unsigned int eventT
 	ManagedReference<ObjectController*> objectController = player->getZoneServer()->getObjectController();
 
 	unsigned int commandCRC = buff->getCommandCRC();
-	QueueCommand* queueCommand = objectController->getQueueCommand(commandCRC);
+	const QueueCommand* queueCommand = objectController->getQueueCommand(commandCRC);
 
 	SceneObject* creature = cast<SceneObject*>( observable);
 

@@ -26,7 +26,7 @@ class TreeFileRecord : public Object, public Logger {
 public:
 	TreeFileRecord() : Object(), Logger(), checksum(0), uncompressedSize(0), fileOffset(0), compressionType(0), compressedSize(0), nameOffset(0) {
 		setLoggingName("TreeFileRecord");
-		setLogging(true);
+		setLogging(false);
 
 		memset(md5Sum, 0, 16);
 	}
@@ -43,7 +43,7 @@ public:
 		memcpy(md5Sum, tfr.md5Sum, 16);
 
 		setLoggingName("TreeFileRecord " + recordName);
-		setLogging(true);
+		setLogging(false);
 	}
 
 	TreeFileRecord& operator= (const TreeFileRecord& tfr) {

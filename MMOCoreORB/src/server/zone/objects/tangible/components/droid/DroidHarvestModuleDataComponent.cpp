@@ -23,7 +23,7 @@ DroidHarvestModuleDataComponent::DroidHarvestModuleDataComponent() {
 DroidHarvestModuleDataComponent::~DroidHarvestModuleDataComponent() {
 
 }
-String DroidHarvestModuleDataComponent::getModuleName() {
+String DroidHarvestModuleDataComponent::getModuleName() const {
 	return String("harvest_module");
 }
 void DroidHarvestModuleDataComponent::initializeTransientMembers() {
@@ -207,7 +207,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	harvestTargets.removeAll(0,10);
 }
 
-String DroidHarvestModuleDataComponent::toString(){
+String DroidHarvestModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

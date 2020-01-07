@@ -80,7 +80,7 @@ public:
 		return true;
 	}
 
-	bool isPast() {
+	bool isPast() const {
 		return timeStamp.isPast();
 	}
 
@@ -100,12 +100,14 @@ public:
 		return &timeStamp;
 	}
 
-
+	const Time* getTime() const {
+		return &timeStamp;
+	}
 };
 
 class CooldownTimerMap : public Object {
 	HashTable<String, CooldownTimer> timers;
-	Mutex cooldownMutex;
+	mutable Mutex cooldownMutex;
 
 public:
 	CooldownTimerMap() : timers(1, 1) {
@@ -128,13 +130,15 @@ public:
 		return *this;
 	}
 
-	bool isPast(const String& cooldownName) {
+	bool isPast(const String& cooldownName) const {
 		Locker locker(&cooldownMutex);
 
-		if (!timers.containsKey(cooldownName))
+		auto entry = timers.getEntry(cooldownName);
+
+		if (entry == nullptr)
 			return true;
 
-		return timers.get(cooldownName).isPast();
+		return entry->getValue().isPast();
 	}
 
 	void updateToCurrentAndAddMili(const String& cooldownName, uint64 mili) {
@@ -169,13 +173,15 @@ public:
 		cooldown->addMiliTime(mili);
 	}
 
-	Time* getTime(const String& cooldownName) {
+	const Time* getTime(const String& cooldownName) const {
 		Locker locker(&cooldownMutex);
 
-		if (!timers.containsKey(cooldownName))
+		auto entry = timers.getEntry(cooldownName);
+
+		if (entry == nullptr)
 			return nullptr;
 
-		Time* cooldown = timers.get(cooldownName).getTime();
+		const Time* cooldown = entry->getValue().getTime();
 
 		return cooldown;
 	}

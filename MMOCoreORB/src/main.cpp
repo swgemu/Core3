@@ -2,8 +2,7 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "system/thread/ChildProcess.h"
-
+#include "CoreProcess.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
@@ -16,34 +15,6 @@
 #endif
 
 #include "engine/orb/db/DOBObjectManager.h"
-
-class CoreProcess : public ChildProcess {
-	const SortedVector<String>& arguments;
-
-public:
-	CoreProcess(const SortedVector<String>& args) : arguments(args) {
-	}
-
-	void run() {
-		bool truncateData = arguments.contains("clean");
-
-		ServerCore core(truncateData, arguments);
-		core.start();
-	}
-
-	void handleCrash() {
-		//TODO: implement
-	}
-
-	bool isDeadlocked() {
-		//TODO: implement
-		return false;
-	}
-
-	void handleDeadlock() {
-		//TODO: implement
-	}
-};
 
 int main(int argc, char* argv[]) {
 	System::setStreamBuffer(stdout, nullptr);

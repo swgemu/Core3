@@ -304,12 +304,12 @@ public:
 	const PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
-	const Vector < Vector<String> >* getArrangementDescriptors() const {
+	const Vector <Vector<String>>& getArrangementDescriptors() const {
 		if (arrangementDescriptors == nullptr) {
 			const static Vector < Vector<String> > EMPTY_DESCRIPTORS;
-			return &EMPTY_DESCRIPTORS;
+			return EMPTY_DESCRIPTORS;
 		} else
-			return &arrangementDescriptors->getArrangementSlots();
+			return arrangementDescriptors->getArrangementSlots();
 	}
 
 	/*inline Vector<float>* getScale() {
@@ -419,7 +419,7 @@ public:
 		return childObjects.size();
 	}
 
-	inline ChildObject* getChildObject(int idx) const {
+	inline const ChildObject* getChildObject(int idx) const {
 		return &childObjects.get(idx);
 	}
 
@@ -432,17 +432,17 @@ public:
 	}
 
 	bool hasArrangementDescriptor(const String& s) const {
-		bool foundIt = false;
+		const auto& hAD = getArrangementDescriptors();
 
-		const Vector < Vector <String> >* hAD = getArrangementDescriptors();
+		for (int i = 0; i < hAD.size(); ++i) {
+			const auto& slotItems = hAD.get(i);
 
-		for (int i = 0; i < hAD->size() && !foundIt; ++i) {
-			Vector <String>& slotItems = hAD->get(i);
-
-			foundIt = slotItems.contains(s);
+			if (slotItems.contains(s)) {
+				return true;
+			}
 		}
 
-		return foundIt;
+		return false;
 	}
 
 	bool getDelayedContainerLoad() const {
@@ -450,7 +450,7 @@ public:
 	}
 
 public:
-	void setAppearanceFilename(String appearanceFilename) {
+	void setAppearanceFilename(const String& appearanceFilename) {
 		this->appearanceFilename = appearanceFilename;
 	}
 
@@ -458,7 +458,7 @@ public:
 		this->clearFloraRadius = clearFloraRadius;
 	}
 
-	void setClientDataFile(String clientDataFile) {
+	void setClientDataFile(const String& clientDataFile) {
 		this->clientDataFile = clientDataFile;
 	}
 
@@ -514,7 +514,7 @@ public:
 		this->noBuildRadius = noBuildRadius;
 	}
 
-	void setObjectName(String objectName) {
+	void setObjectName(const String& objectName) {
 		this->objectName = objectName;
 	}
 
@@ -554,7 +554,7 @@ public:
 		this->surfaceType = surfaceType;
 	}
 
-	void setTintPallete(String tintPallete) {
+	void setTintPallete(const String& tintPallete) {
 		this->tintPallete = tintPallete;
 	}
 
@@ -661,7 +661,7 @@ public:
 		return false;
 	}
 
-	virtual bool isInstrumentObjectTemplate() {
+	virtual bool isInstrumentObjectTemplate() const {
 		return false;
 	}
 

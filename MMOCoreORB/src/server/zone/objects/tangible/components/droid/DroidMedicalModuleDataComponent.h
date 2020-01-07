@@ -22,14 +22,14 @@ protected:
 public:
 	DroidMedicalModuleDataComponent();
 	~DroidMedicalModuleDataComponent();
-	String getModuleName();
+	String getModuleName() const;
 	void initializeTransientMembers();
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	void loadSkillMods(CreatureObject* player);
 	void unloadSkillMods(CreatureObject* player);
 	bool skillsByRange() { return true;}
 	int getBatteryDrain() { return 0;}
-	String toString();
+	String toString() const;
 	// crafting droid module specific
 	void onCall();
 	void onStore();

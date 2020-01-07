@@ -33,7 +33,7 @@ public:
 		if (!player->checkCooldownRecovery("innate_vitalize")) {
 			StringIdChatParameter stringId;
 
-			Time* cdTime = player->getCooldownTime("innate_vitalize");
+			const Time* cdTime = player->getCooldownTime("innate_vitalize");
 
 			// Returns -time. Multiple by -1 to return positive.
 			int timeLeft = floor((float)cdTime->miliDifference() / 1000) *-1;

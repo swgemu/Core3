@@ -3,18 +3,18 @@
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 
-bool RingAreaShapeImplementation::containsPoint(float x, float y) {
+bool RingAreaShapeImplementation::containsPoint(float x, float y) const {
 	Vector3 position;
 	position.set(x, 0, y);
 
 	return ((areaCenter.squaredDistanceTo(position) <= outerRadius2) && (areaCenter.squaredDistanceTo(position) >= innerRadius2));
 }
 
-bool RingAreaShapeImplementation::containsPoint(const Vector3& point) {
+bool RingAreaShapeImplementation::containsPoint(const Vector3& point) const {
 	return ((areaCenter.squaredDistanceTo(point) <= outerRadius2) && (areaCenter.squaredDistanceTo(point) >= innerRadius2));
 }
 
-Vector3 RingAreaShapeImplementation::getRandomPosition() {
+Vector3 RingAreaShapeImplementation::getRandomPosition() const {
 	float distance = System::random((int)(outerRadius - innerRadius)) + innerRadius;
 	float angle = System::random(360) * Math::DEG2RAD;
 
@@ -24,7 +24,7 @@ Vector3 RingAreaShapeImplementation::getRandomPosition() {
 	return position;
 }
 
-Vector3 RingAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) {
+Vector3 RingAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
 	Vector3 position;
 	bool found = false;
 	int retries = 5;
@@ -43,26 +43,26 @@ Vector3 RingAreaShapeImplementation::getRandomPosition(const Vector3& origin, fl
 	return position;
 }
 
-bool RingAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
+bool RingAreaShapeImplementation::intersectsWith(AreaShape* areaShape) const {
 	if (areaShape == nullptr) {
 		return false;
 	}
 
 	if (areaShape->isRectangularAreaShape()) {
-		ManagedReference<RectangularAreaShape*> rectangle = cast<RectangularAreaShape*>(areaShape);
+		auto rectangle = cast<RectangularAreaShape*>(areaShape);
 		return rectangle->intersectsWith(_this.getReferenceUnsafeStaticCast());
 	} else if (areaShape->isCircularAreaShape()) {
-		ManagedReference<CircularAreaShape*> circle = cast<CircularAreaShape*>(areaShape);
+		auto circle = cast<CircularAreaShape*>(areaShape);
 		return intersectsWithCircle(circle);
 	} else if (areaShape->isRingAreaShape()) {
-		ManagedReference<RingAreaShape*> ring = cast<RingAreaShape*>(areaShape);
+		auto ring = cast<RingAreaShape*>(areaShape);
 		return intersectsWithRing(ring);
 	} else {
 		return false;
 	}
 }
 
-bool RingAreaShapeImplementation::intersectsWithCircle(CircularAreaShape* circle) {
+bool RingAreaShapeImplementation::intersectsWithCircle(CircularAreaShape* circle) const {
 	float squaredCenterDistance = areaCenter.squaredDistanceTo(circle->getAreaCenter());
 
 	if (squaredCenterDistance > outerRadius2) { // circle center is outside the outer ring
@@ -76,7 +76,7 @@ bool RingAreaShapeImplementation::intersectsWithCircle(CircularAreaShape* circle
 	return true;
 }
 
-bool RingAreaShapeImplementation::intersectsWithRing(RingAreaShape* ring) {
+bool RingAreaShapeImplementation::intersectsWithRing(RingAreaShape* ring) const {
 	float squaredCenterDistance = areaCenter.squaredDistanceTo(ring->getAreaCenter());
 
 	if (squaredCenterDistance > outerRadius2) { // ring center is outside the outer ring
@@ -94,6 +94,6 @@ bool RingAreaShapeImplementation::intersectsWithRing(RingAreaShape* ring) {
 	return true;
 }
 
-float RingAreaShapeImplementation::getArea() {
+float RingAreaShapeImplementation::getArea() const {
 	return (Math::PI * outerRadius2 - Math::PI * innerRadius2);
 }

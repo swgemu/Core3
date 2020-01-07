@@ -440,7 +440,7 @@ class WeaponObject extends TangibleObject {
 		dotUses.elementAt(index) = u;
 	}
 
-	@dirty
+	@read
 	public native string getWeaponType();
 
 	@read
@@ -560,6 +560,7 @@ class WeaponObject extends TangibleObject {
 
 	public native boolean applyPowerup(CreatureObject player, PowerupObject pup);
 
+	@reference
 	public native PowerupObject removePowerup();
 
 	public native void decreasePowerupUses(CreatureObject player);

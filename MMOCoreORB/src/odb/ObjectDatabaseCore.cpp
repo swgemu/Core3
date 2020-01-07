@@ -56,6 +56,8 @@ ObjectDatabaseCore::ObjectDatabaseCore(Vector<String> arguments, const char* eng
 }
 
 void ObjectDatabaseCore::initialize() {
+	using namespace sys::lang;
+
 	info("starting up ObjectDatabase..");
 
 	Core::initializeProperties("ODB3");

@@ -17,6 +17,7 @@ class PsgArmorObject extends ArmorObject {
 
 	public native void initializeTransientMembers();
 
+	@dirty
 	public boolean isPsgArmorObject() {
 		return true;
 	}

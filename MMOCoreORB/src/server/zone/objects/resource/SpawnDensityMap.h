@@ -114,7 +114,7 @@ public:
 		return value * density;
 	}
 
-	void print() {
+	void print() const {
 		System::out << "Seed: " << seed << " Modifier: "
 				<< modifier << " Density: " << density << endl;
 	}

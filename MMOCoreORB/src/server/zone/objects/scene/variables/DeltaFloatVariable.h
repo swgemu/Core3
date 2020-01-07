@@ -9,7 +9,10 @@
 #define DELTAFLOATVARIABLE_H_
 
 #include "DeltaBasicVariable.h"
+
 #include "server/zone/packets/DeltaMessage.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 template<int BaselineName, uint8 Type, int DeltaID>
 class DeltaFloatVariable : public DeltaBasicVariable<float> {

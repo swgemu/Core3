@@ -16,30 +16,30 @@ import server.zone.objects.creature.CreatureObject;
 @dirty
 class ObjectController extends ManagedService implements Logger {
 	private transient ZoneProcessServer server;
-	
+
 	private transient CommandConfigManager configManager;
 	private transient CommandList queueCommands;
-	
+
 	@dereferenced
 	private transient Logger adminLog;
-	
+
 	public ObjectController(ZoneProcessServer srv) {
 		server = srv;
-		
+
 		Logger.setLoggingName("ObjectController");
-		
-		Logger.setLogging(true);
+
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
+
 		loadCommands();
 	}
-	
+
 	public native void finalize();
-	
+
 	public native void loadCommands();
-	
+
 	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
-	
+
 	/**
 	 * Activates a queue command from a creature object
 	 * @param object creature object that the command will be run on
@@ -49,19 +49,21 @@ class ObjectController extends ManagedService implements Logger {
 	 * @param arguments arguments of the command
 	 * @returns time in seconds of command execution
 	 */
+	@read
 	public native float activateCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
-	
-	@local
-	public native void addQueueCommand(QueueCommand command);
-	
-	@local
-	@dirty
-	public native QueueCommand getQueueCommand(final string name);
 
 	@local
-	@dirty
-	public native QueueCommand getQueueCommand(unsigned int crc);
-	
+	public native void addQueueCommand(QueueCommand command);
+
 	@local
+	@read
+	public native final QueueCommand getQueueCommand(final string name);
+
+	@local
+	@read
+	public native final QueueCommand getQueueCommand(unsigned int crc);
+
+	@local
+	@read
 	public native void logAdminCommand(SceneObject object, final QueueCommand command, unsigned long targetID, final unicode argumets);
 }

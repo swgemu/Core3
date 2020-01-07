@@ -10,22 +10,22 @@ void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject*
 	if (varName == "defaultLanguage")
 		defaultLanguage = Lua::getIntParameter(state);
 	else if (varName == "startingSkills") {
-		startingSkills->removeAll();
+		startingSkills.removeAll();
 
 		LuaObject skills(state);
 
 		for (int i = 1; i <= skills.getTableSize(); ++i) {
-			startingSkills->add(skills.getStringAt(i));
+			startingSkills.add(skills.getStringAt(i));
 		}
 
 		skills.pop();
 	} else if (varName == "startingItems") {
-		startingItems->removeAll();
+		startingItems.removeAll();
 
 		LuaObject items(state);
 
 		for (int i = 1; i <= items.getTableSize(); ++i) {
-			startingItems->add(items.getStringAt(i));
+			startingItems.add(items.getStringAt(i));
 		}
 
 		items.pop();
@@ -44,9 +44,9 @@ void PlayerCreatureTemplate::readObject(LuaObject* templateData) {
 
 	int i = 0;
 
-	lua_pushnil(L);  
+	lua_pushnil(L);
 	while (lua_next(L, -2) != 0) {
-		// 'key' is at index -2 and 'value' at index -1 
+		// 'key' is at index -2 and 'value' at index -1
 		//printf("%s - %s\n",
 		//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
 
@@ -60,10 +60,10 @@ void PlayerCreatureTemplate::readObject(LuaObject* templateData) {
 		} else {
 			lua_pop(L, 1);
 		}
-		
+
 		++i;
 	}
-	
+
 	return;
 }
 

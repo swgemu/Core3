@@ -89,7 +89,7 @@ int CitySpecializationSessionImplementation::sendConfirmationBox(const String& c
 
 		if (!creatureObject->checkCooldownRecovery("city_specialization")) {
 			StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
-			Time* timeRemaining = creatureObject->getCooldownTime("city_specialization");
+			const Time* timeRemaining = creatureObject->getCooldownTime("city_specialization");
 			params.setTO(String::valueOf(round(fabs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
 			creatureObject->sendSystemMessage(params);
 

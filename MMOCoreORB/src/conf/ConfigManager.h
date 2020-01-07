@@ -218,10 +218,6 @@ namespace conf {
 			return getBool("Core3.MakeStatus", true);
 		}
 
-		inline bool getMakeWeb() {
-			return getBool("Core3.MakeWeb", true);
-		}
-
 		inline bool getDumpObjFiles() {
 			return getBool("Core3.DumpObjFiles", true);
 		}
@@ -352,22 +348,6 @@ namespace conf {
 
 		inline uint16 getPingPort() {
 			return getInt("Core3.PingPort", 44462);
-		}
-
-		inline const String& getWebPorts() {
-			return getString("Core3.WebPorts", "44460");
-		}
-
-		inline const String& getWebAccessLog() {
-			return getString("Core3.WebAccessLog", "log/web_access.log");
-		}
-
-		inline const String& getWebErrorLog() {
-			return getString("Core3.WebErrorLog", "log/web_error.log");
-		}
-
-		inline int getWebSessionTimeout() {
-			return getInt("Core3.WebAccessLog", 600);
 		}
 
 		inline const String& getLoginRequiredVersion() {

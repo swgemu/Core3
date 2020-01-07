@@ -31,8 +31,7 @@
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
-
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(false);
 
 	zoneServer = ServerCore::getZoneServer();
@@ -112,9 +111,7 @@ void PlayerCreationManager::loadRacialCreationData() {
 		}
 	}
 
-	info(
-			"Loaded " + String::valueOf(racialCreationData.size())
-					+ " playable species.");
+	info() << "Loaded " << racialCreationData.size() << " playable species.";
 }
 
 void PlayerCreationManager::loadProfessionDefaultsInfo() {
@@ -147,7 +144,7 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 		delete iffStream;
 
 		professionDefaultsInfo.put(name, pdi);
-		//info("Loading: " + pfdt.getSkillNameAt(i) + " Path: " + pfdt.getPathBySkillName(pfdt.getSkillNameAt(i)), true);
+		debug() << "Loading: " << pfdt.getSkillNameAt(i) << " Path: " << pfdt.getPathBySkillName(pfdt.getSkillNameAt(i));
 	}
 
 	//Now we want to load the profession mods.
@@ -179,9 +176,7 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 		}
 	}
 
-	info(
-			"Loaded " + String::valueOf(professionDefaultsInfo.size())
-					+ " creation professions.");
+	info() << "Loaded " << professionDefaultsInfo.size() << " creation professions.";
 }
 
 void PlayerCreationManager::loadDefaultCharacterItems() {
@@ -252,7 +247,7 @@ void PlayerCreationManager::loadHairStyleInfo() {
 
 		totalHairStyles += hsi->getTotalStyles();
 
-		//info("Loaded " + String::valueOf(hsi->getTotalStyles()) + " hair styles for template " + hsi->getPlayerTemplate());
+		debug() << "Loaded " << hsi->getTotalStyles() << " hair styles for template " << hsi->getPlayerTemplate();
 	}
 
 	iffStream->closeForm(version);
@@ -260,13 +255,11 @@ void PlayerCreationManager::loadHairStyleInfo() {
 
 	delete iffStream;
 
-	info(
-			"Loaded " + String::valueOf(totalHairStyles)
-					+ " total creation hair styles.");
+	info() << "Loaded " << totalHairStyles << " total creation hair styles.";
 }
 
 void PlayerCreationManager::loadLuaConfig() {
-	info("Loading configuration script.");
+	debug("Loading configuration script.");
 
 	Lua* lua = new Lua();
 	lua->init();
@@ -438,15 +431,15 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 				false);
 		addStartingItems(playerCreature, clientTemplate, false);
 		addRacialMods(playerCreature, fileName,
-				playerTemplate->getStartingSkills(),
-				playerTemplate->getStartingItems(), false);
+				&playerTemplate->getStartingSkills(),
+				&playerTemplate->getStartingItems(), false);
 	} else {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				true);
 		addStartingItems(playerCreature, clientTemplate, true);
 		addRacialMods(playerCreature, fileName,
-				playerTemplate->getStartingSkills(),
-				playerTemplate->getStartingItems(), true);
+				&playerTemplate->getStartingSkills(),
+				&playerTemplate->getStartingItems(), true);
 	}
 
 	// Set starting cash and starting bank
@@ -942,23 +935,21 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 	}
 
 	//Add race specific items.
-	Vector < String > *startingItems = playerTemplate->getStartingItems();
+	const Vector <String>& startingItems = playerTemplate->getStartingItems();
 
-	if (startingItems != nullptr) {
-		for (int i = 0; i < startingItems->size(); ++i) {
-			ManagedReference<SceneObject*> item = zoneServer->createObject(
-					startingItems->get(i).hashCode(), 1);
+	for (int i = 0; i < startingItems.size(); ++i) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(
+				startingItems.get(i).hashCode(), 1);
 
-			if (item != nullptr && container != nullptr && !item->isWeaponObject()) {
-				if (!container->transferObject(item, -1, true)) {
-					item->destroyObjectFromDatabase(true);
-				}
-			} else if (item != nullptr) {
+		if (item != nullptr && container != nullptr && !item->isWeaponObject()) {
+			if (!container->transferObject(item, -1, true)) {
 				item->destroyObjectFromDatabase(true);
 			}
+		} else if (item != nullptr) {
+			item->destroyObjectFromDatabase(true);
 		}
-
 	}
+
 }
 
 void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
@@ -977,6 +968,7 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 	}
 
 	PlayerObject* player = creature->getPlayerObject();
+
 	if (player == nullptr) {
 		instance()->info("addStartingWeaponsInto: playerObject nullptr");
 		return;
@@ -1028,29 +1020,27 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 
 
 	//Add race specific items.
-	Vector < String > *startingItems = playerTemplate->getStartingItems();
+	const Vector<String>& startingItems = playerTemplate->getStartingItems();
 
-	if (startingItems != nullptr) {
-		for (int i = 0; i < startingItems->size(); ++i) {
-			ManagedReference<SceneObject*> item = zoneServer->createObject(
-					startingItems->get(i).hashCode(), 1);
+	for (int i = 0; i < startingItems.size(); ++i) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(
+				startingItems.get(i).hashCode(), 1);
 
-			if (item != nullptr && container != nullptr && item->isWeaponObject()) {
-				if (container->transferObject(item, -1, true)) {
-					item->sendTo(creature, true);
-				} else {
-					item->destroyObjectFromDatabase(true);
-				}
-			} else if (item != nullptr) {
+		if (item != nullptr && container != nullptr && item->isWeaponObject()) {
+			if (container->transferObject(item, -1, true)) {
+				item->sendTo(creature, true);
+			} else {
 				item->destroyObjectFromDatabase(true);
 			}
+		} else if (item != nullptr) {
+			item->destroyObjectFromDatabase(true);
 		}
 	}
 }
 
 void PlayerCreationManager::addRacialMods(CreatureObject* creature,
-		const String& race, Vector<String>* startingSkills,
-		Vector<String>* startingItems, bool equipmentOnly) const {
+		const String& race, const Vector<String>* startingSkills,
+		const Vector<String>* startingItems, bool equipmentOnly) const {
 	Reference<RacialCreationData*> racialData = racialCreationData.get(race);
 
 	if (racialData == nullptr)

@@ -44,8 +44,7 @@ public:
 
 		// Check to see if "innate_roar" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_roar")) {
-
-			Time* cdTime = player->getCooldownTime("innate_roar");
+			const Time* cdTime = player->getCooldownTime("innate_roar");
 
 			// Returns -time. Multiple by -1 to return positive.
 			int timeLeft = floor((float)cdTime->miliDifference() / 1000) * -1;

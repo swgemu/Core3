@@ -13,53 +13,53 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 
 class ShipObject extends TangibleObject {
 	protected float totalMass;
-	
+
 	protected float currentMass;
-	
+
 	//ShipObjectMessage6 variables
-	
+
 	/**
 	 * stored in radians
 	 */
 	@rawTemplate(value = "'SHIP', 6, 6")
 	@dereferenced
 	protected DeltaFloatVariable maxYawAcceleration;
-	
+
 	/**
 	 * stored in radians
 	 */
 	@rawTemplate(value = "'SHIP', 6, 7")
 	@dereferenced
 	protected DeltaFloatVariable maxPitchAcceleration;
-	
+
 	/**
 	 * stored in radians
 	 */
 	@rawTemplate(value = "'SHIP', 6, 8")
 	@dereferenced
 	protected DeltaFloatVariable maxRollAcceleration;
-	
+
 	/**
 	 * scale factor between 0 and 1
 	 */
 	@rawTemplate(value = "'SHIP', 6, 9")
 	@dereferenced
 	protected DeltaFloatVariable currentYawAcceleration;
-	
+
 	/**
 	 * scale factor between 0 and 1
 	 */
 	@rawTemplate(value = "'SHIP', 6, 10")
 	@dereferenced
 	protected DeltaFloatVariable currentPitchAcceleration;
-	
+
 	/**
 	 * scale factor between 0 and 1
 	 */
 	@rawTemplate(value = "'SHIP', 6, 11")
 	@dereferenced
 	protected DeltaFloatVariable currentRollAcceleration;
-	
+
 	protected float maxSpeed;
 
 	/**
@@ -67,69 +67,75 @@ class ShipObject extends TangibleObject {
 	 */
 	@dereferenced
 	protected DeltaVectorMap<unsigned int, unsigned int> shipComponents;
-	
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
-		
+
 		super.objectVisible = 1;
-		
+
 		totalMass = 500.0;
-		
+
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 	}
-	
+
+	@dirty
 	public native unsigned short getUniqueID();
-	
+
 	public native void initializeTransientMembers();
-	
+
 	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	public void setMaxYawAcceleration(float radians, boolean notifyClient = true) {
 		maxYawAcceleration.update(radians, notifyClient, this);
 	}
-	
+
 	public void setCurrentYawAcceleration(float scale, boolean notifyClient = true) {
 		currentYawAcceleration.update(scale, notifyClient, this);
 	}
-	
+
 	public void setMaxPitchAcceleration(float radians, boolean notifyClient = true) {
 		maxPitchAcceleration.update(radians, notifyClient, this);
 	}
-	
+
 	public void setCurrentPitchAcceleration(float scale, boolean notifyClient = true) {
 		currentPitchAcceleration.update(scale, notifyClient, this);
 	}
-	
+
 	public void setMaxRollAcceleration(float radians, boolean notifyClient = true) {
 		maxRollAcceleration.update(radians, notifyClient, this);
 	}
-	
+
 	public void setCurrentRollAcceleration(float scale, boolean notifyClient = true) {
 		currentRollAcceleration.update(scale, notifyClient, this);
 	}
-	
+
+	@read
 	public float getMaxYawAcceleration() {
 		return maxYawAcceleration.get();
 	}
-	
+
+	@read
 	public float getMaxRollAcceleration() {
 		return maxRollAcceleration.get();
 	}
-	
+
+	@read
 	public float getMaxPitchAcceleration() {
 		return maxPitchAcceleration.get();
 	}
-	
+
+	@read
 	public float getTotalMass() {
 		return totalMass;
 	}
-		
+
+	@read
 	public float getMaxSpeed() {
 		return maxSpeed;
 	}
-	
+
 	public boolean isShipObject() {
 		return true;
 	}

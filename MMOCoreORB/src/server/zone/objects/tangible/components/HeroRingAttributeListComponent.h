@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/HeroRingDataComponent.h"
 
 class HeroRingAttributeListComponent: public AttributeListComponent {
@@ -30,12 +31,12 @@ public:
 		alm->insertAttribute("charges", charges);
 
 		if (!creature->checkCooldownRecovery("mark_of_hero")) {
-			Time* timeRemaining = creature->getCooldownTime("mark_of_hero");
+			const Time* timeRemaining = creature->getCooldownTime("mark_of_hero");
 			alm->insertAttribute("time_remaining", getCooldownString(timeRemaining->miliDifference() * -1));
 		}
 	}
 
-	String getCooldownString(uint32 delta) const {
+	static String getCooldownString(uint32 delta) {
 
 		int seconds = delta / 1000;
 

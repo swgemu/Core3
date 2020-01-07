@@ -68,18 +68,17 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	return true;
 }
 
-float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
+float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC,
+		unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) const {
 	// Pre: object is wlocked
 	// Post: object is wlocked
 
-	QueueCommand* queueCommand = getQueueCommand(actionCRC);
+	const QueueCommand* queueCommand = getQueueCommand(actionCRC);
 
 	float durationTime = 0.f;
 
 	if (queueCommand == nullptr) {
-		StringBuffer msg;
-		msg << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
-		object->error(msg.toString());
+		object->error() << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
 
 		return 0.f;
 	}
@@ -91,7 +90,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	const String& characterAbility = queueCommand->getCharacterAbility();
 
 	if (characterAbility.length() > 1) {
-		object->debug("activating characterAbility " + characterAbility);
+		object->debug() << "activating characterAbility " << characterAbility;
 
 		if (object->isPlayerCreature()) {
 			Reference<PlayerObject*> playerObject =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
@@ -122,12 +121,12 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 				Reference<PlayerObject*> ghost =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 				if (ghost == nullptr || !ghost->hasGodMode() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
-					StringBuffer logEntry;
-					logEntry << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
+					adminLog.warning() << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
 							<< "' command without permissions";
-					adminLog.warning(logEntry.toString());
+
 					object->sendSystemMessage("@error_message:insufficient_permissions");
 					object->clearQueueAction(actionCount, 0, 2);
+
 					return 0.f;
 				}
 			} else {
@@ -135,7 +134,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			}
 
 			logAdminCommand(object, queueCommand, targetID, arguments);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			Logger::error("Unhandled Exception logging admin commands" + e.getMessage());
 		}
 	}
@@ -173,20 +172,20 @@ void ObjectControllerImplementation::addQueueCommand(QueueCommand* command) {
 	queueCommands->put(command);
 }
 
-QueueCommand* ObjectControllerImplementation::getQueueCommand(const String& name) {
+const QueueCommand* ObjectControllerImplementation::getQueueCommand(const String& name) const {
 	return queueCommands->getSlashCommand(name);
 }
 
-QueueCommand* ObjectControllerImplementation::getQueueCommand(uint32 crc) {
+const QueueCommand* ObjectControllerImplementation::getQueueCommand(uint32 crc) const {
 	return queueCommands->getSlashCommand(crc);
 }
 
-void ObjectControllerImplementation::logAdminCommand(SceneObject* object, const QueueCommand* queueCommand, uint64 targetID, const UnicodeString& arguments) {
+void ObjectControllerImplementation::logAdminCommand(SceneObject* object, const QueueCommand* queueCommand, uint64 targetID, const UnicodeString& arguments) const {
 	String name = "unknown";
 
 	Reference<SceneObject*> targetObject = Core::getObjectBroker()->lookUp(targetID).castTo<SceneObject*>();
 
-	if(targetObject != nullptr) {
+	if (targetObject != nullptr) {
 		name = targetObject->getDisplayedName();
 
 		if(targetObject->isPlayerCreature())
@@ -197,8 +196,6 @@ void ObjectControllerImplementation::logAdminCommand(SceneObject* object, const 
 		name = "(null)";
 	}
 
-	StringBuffer logEntry;
-	logEntry << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
+	adminLog.info() << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
 								<< "' on " << name << " with params '" << arguments.toString() << "'";
-	adminLog.info(logEntry.toString());
 }

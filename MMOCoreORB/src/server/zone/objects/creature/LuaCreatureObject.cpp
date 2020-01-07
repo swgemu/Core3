@@ -146,7 +146,7 @@ LuaCreatureObject::LuaCreatureObject(lua_State *L) : LuaTangibleObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, 1));
 #endif
@@ -164,7 +164,7 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 	if (obj != realObject)
 		realObject = obj;
 
-	assert(!_getRealSceneObject() || realObject != nullptr);
+	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
 	auto obj = static_cast<CreatureObject*>(lua_touserdata(L, -1));
 
@@ -559,7 +559,7 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 
 	TangibleObject* attacker = cast<TangibleObject*>(scene);
 
-	assert(attacker);
+	E3_ASSERT(attacker);
 
 	Locker locker(realObject);
 

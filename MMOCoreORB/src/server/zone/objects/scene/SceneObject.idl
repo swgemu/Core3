@@ -1444,7 +1444,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	@read
-	public AttributeListComponent getAttributeListComponent() {
+	public final AttributeListComponent getAttributeListComponent() {
 		return attributeListComponent;
 	}
 

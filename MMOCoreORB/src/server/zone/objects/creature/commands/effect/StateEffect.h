@@ -94,61 +94,61 @@ public:
 		jediMods.pop();
 	}
 
-    const Vector<String>& getDefenderExclusionTimers() const {
-        return defenderExclusionTimers;
-    }
+	const Vector<String>& getDefenderExclusionTimers() const {
+		return defenderExclusionTimers;
+	}
 
-    const Vector<String>& getDefenderJediStateDefenseModifiers() const {
-        return defenderJediStateDefenseModifiers;
-    }
+	const Vector<String>& getDefenderJediStateDefenseModifiers() const {
+		return defenderJediStateDefenseModifiers;
+	}
 
-    const Vector<String>& getDefenderStateDefenseModifiers() const {
-        return defenderStateDefenseModifiers;
-    }
+	const Vector<String>& getDefenderStateDefenseModifiers() const {
+		return defenderStateDefenseModifiers;
+	}
 
-    uint8 getEffectType() const {
-        return effectType;
-    }
+	uint8 getEffectType() const {
+		return effectType;
+	}
 
-    uint32 getStateChance() const {
-        return stateChance;
-    }
+	uint32 getStateChance() const {
+		return stateChance;
+	}
 
-    uint32 getStateLength() const {
-        return stateLength;
-    }
+	uint32 getStateLength() const {
+		return stateLength;
+	}
 
-    uint32 getStateStrength() const {
-        return stateStrength;
-    }
+	uint32 getStateStrength() const {
+		return stateStrength;
+	}
 
-    void setDefenderExclusionTimers(const Vector<String>& defenderExclusionTimers) {
-        this->defenderExclusionTimers = defenderExclusionTimers;
-    }
+	void setDefenderExclusionTimers(const Vector<String>& defenderExclusionTimers) {
+		this->defenderExclusionTimers = defenderExclusionTimers;
+	}
 
-    void setDefenderJediStateDefenseModifiers(const Vector<String>& defenderJediStateDefenseModifiers) {
-        this->defenderJediStateDefenseModifiers = defenderJediStateDefenseModifiers;
-    }
+	void setDefenderJediStateDefenseModifiers(const Vector<String>& defenderJediStateDefenseModifiers) {
+		this->defenderJediStateDefenseModifiers = defenderJediStateDefenseModifiers;
+	}
 
-    void setDefenderStateDefenseModifiers(const Vector<String>& defenderStateDefenseModifiers) {
-        this->defenderStateDefenseModifiers = defenderStateDefenseModifiers;
-    }
+	void setDefenderStateDefenseModifiers(const Vector<String>& defenderStateDefenseModifiers) {
+		this->defenderStateDefenseModifiers = defenderStateDefenseModifiers;
+	}
 
-    void setEffectType(uint8 effectType) {
-        this->effectType = effectType;
-    }
+	void setEffectType(uint8 effectType) {
+		this->effectType = effectType;
+	}
 
-    void setStateChance(uint32 stateChance) {
-        this->stateChance = stateChance;
-    }
+	void setStateChance(uint32 stateChance) {
+		this->stateChance = stateChance;
+	}
 
-    void setStateLength(uint32 stateLength) {
-        this->stateLength = stateLength;
-    }
+	void setStateLength(uint32 stateLength) {
+		this->stateLength = stateLength;
+	}
 
-    void setStateStrength(uint32 stateStrength) {
-        this->stateStrength = stateStrength;
-    }
+	void setStateStrength(uint32 stateStrength) {
+		this->stateStrength = stateStrength;
+	}
 };
 
 

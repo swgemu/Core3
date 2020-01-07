@@ -109,8 +109,7 @@
 #include <sys/stat.h>
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl,
-							bool trackOnlineUsers) :
-										Logger("PlayerManager") {
+					bool trackOnlineUsers) : Logger("PlayerManager") {
 
 	playerLoggerFilename = "log/player.log";
 	playerLoggerLines = ConfigManager::instance()->getMaxLogLines();
@@ -135,12 +134,12 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	if (ServerCore::truncateDatabases()) {
 		try {
-			String query = "TRUNCATE TABLE characters";
+			const static String query = "TRUNCATE TABLE characters";
 
 			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 			info("characters table truncated", true);
-		} catch (Exception& e) {
+		} catch (const Exception& e) {
 			error(e.getMessage());
 		}
 	}
@@ -156,7 +155,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 			auto name = entry.getKey();
 			auto level = entry.getValue();
 
-			info("Player: " + name + " level: " + String::valueOf(level), true);
+			info(true) << "Player: " << name << " level: " << level;
 		}
 	}
 
@@ -192,7 +191,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 	}
 
 	if (logSecs < 10) {
-		error("rescheduleOnlinePlayerLogTask: attempt to set log schedule too low: " + String::valueOf(logSecs));
+		error() << "rescheduleOnlinePlayerLogTask: attempt to set log schedule too low: " << logSecs;
 		return false;
 	}
 
@@ -206,7 +205,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 
 	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
 
-	info("Loging online players every " + String::valueOf(logSecs) + " seconds.", true);
+	info(true) << "Loging online players every " << logSecs << " seconds.";
 
 	return true;
 }
@@ -267,7 +266,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 
 	rewardsListLua.pop();
 
-	info("Loaded " + String::valueOf(veteranRewards.size()) + " veteran rewards.", true);
+	info(true) << "Loaded " << veteranRewards.size() << " veteran rewards.";
 
 	LuaObject jboxSongs = lua->getGlobalObject("jukeboxSongs");
 
@@ -309,7 +308,7 @@ void PlayerManagerImplementation::loadStartingLocations() {
 
 	delete iffStream;
 
-	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
+	info(true) << "Loaded " << startingLocationList.getTotalLocations() << " starting locations.";
 }
 
 void PlayerManagerImplementation::loadXpBonusList() {
@@ -355,7 +354,7 @@ void PlayerManagerImplementation::loadXpBonusList() {
 			xpBonusList.put(speciesName, bonusList);
 	}
 
-	info("Loaded xp bonuses for " + String::valueOf(xpBonusList.size()) + " species.", true);
+	info(true) << "Loaded xp bonuses for " << xpBonusList.size() << " species.";
 }
 
 void PlayerManagerImplementation::loadQuestInfo() {
@@ -381,15 +380,14 @@ void PlayerManagerImplementation::loadQuestInfo() {
 		questInfo.add(quest);
 	}
 
-	info("Loaded " + String::valueOf(questInfo.size()) + " quests.", true);
+	info(true) << "Loaded " << questInfo.size() << " quests.";
 }
 
 void PlayerManagerImplementation::loadPermissionLevels() {
 	try {
 		permissionLevelList = PermissionLevelList::instance();
 		permissionLevelList->loadLevels();
-	}
-	catch(Exception& e) {
+	} catch(const Exception& e) {
 		error("Couldn't load permission levels.");
 		error(e.getMessage());
 	}
@@ -425,13 +423,11 @@ void PlayerManagerImplementation::loadNameMap() {
 			}
 		}
 
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		fatal(e.getMessage());
 	}
 
-	StringBuffer msg;
-	msg << "loaded " << nameMap->size() << " character names in memory";
-	info(msg.toString(), true);
+	info(true) << "loaded " << nameMap->size() << " character names in memory";
 }
 
 void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& logEntry) {
@@ -459,7 +455,7 @@ void PlayerManagerImplementation::writePlayerLogEntry(JSONSerializationType& log
 
 		// report failure if any
 		if (err != 0)
-			error("Failed to archive player log to " + archiveFilename.toString() + " err = " + String::valueOf(err));
+			error() << "Failed to archive player log to " << archiveFilename.toString() << " err = " << err;
 
 		playerLogger.setFileLogger(playerLoggerFilename, true);
 	}
@@ -867,7 +863,7 @@ String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const
 }
 
 String PlayerManagerImplementation::setLastName(CreatureObject* creature, const String& newLastName, bool skipVerify) {
-    if (creature == nullptr)
+	if (creature == nullptr)
 		return "nullptr creature specified";
 
 	if (!creature->isPlayerCreature())
@@ -1026,43 +1022,39 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 }
 
 uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* playerCreature, int condition) {
-	//Switch the sign of the value
-	int32 value = -condition;
+	// Switch the sign of the value
+	int value = -condition;
 
 	if (value < 0)
 		return 0;
 
-	uint32 recoveryTime = (value / 5); //In seconds - 3 seconds is recoveryEvent timer
+	int recoveryTime = (value / 5); // In seconds - 3 seconds is recoveryEvent timer
 
-	//Recovery time is gated between 10 and 60 seconds.
-	recoveryTime = Math::min(Math::max(recoveryTime, 10u), 60u);
+	// Recovery time cannot be higher than 60 seconds.
+	recoveryTime = (recoveryTime > 60) ? 60 : recoveryTime;
 
 	//Check for incap recovery food buff - overrides recovery time gate.
-	/*if (hasBuff(BuffCRC::FOOD_INCAP_RECOVERY)) {
-		Buff* buff = getBuff(BuffCRC::FOOD_INCAP_RECOVERY);
+	if (playerCreature->hasBuff(STRING_HASHCODE("food.incap_recovery"))) {
+		Buff* buff = playerCreature->getBuff(STRING_HASHCODE("food.incap_recovery"));
 
 		if (buff != nullptr) {
 			float percent = buff->getSkillModifierValue("incap_recovery");
 
 			recoveryTime = round(recoveryTime * ((100.0f - percent) / 100.0f));
 
-			StfParameter* params = new StfParameter();
-			params->addDI(percent);
+            StringIdChatParameter message("combat_effects", "incap_recovery");
+            message.setDI(recoveryTime);
+            playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
 
-			sendSystemMessage("combat_effects", "incap_recovery", params); //Incapacitation recovery time reduced by %DI%.
-			delete params;
-
-			removeBuff(buff);
+			playerCreature->removeBuff(buff);
 		}
-	}*/
+	}
 
 	return recoveryTime;
 }
 
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {
-	if (destructor == nullptr) {
-		assert(0 && "destructor should always be != nullptr.");
-	}
+	fatal(destructor, "destructor cant be nullptr.");
 
 	if (!destructedObject->isPlayerCreature())
 		return 1;
@@ -1098,8 +1090,8 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
 
 
-		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
-		playerCreature->setCountdownTimer(incapTime, true);
+		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
+		playerCreature->setCountdownTimer((uint32) incapTime, true);
 
 		Reference<Task*> oldTask = playerCreature->getPendingTask("incapacitationRecovery");
 
@@ -3348,10 +3340,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		//float delta = abs(parsedSpeed - maxAllowedSpeed);
 
 		if (changeBuffer->size() == 0) { // no speed changes
-			StringBuffer msg;
+			auto msg = player->info();
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
 			msg << " parsed " << parsedSpeed;
-			player->info(msg.toString());
+
+			msg.flush();
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -3362,10 +3355,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		const Time* timeStamp = &firstChange->getTimeStamp();
 
 		if (timeStamp->miliDifference() > 2000) { // we already should have lowered the speed, 2 seconds lag
-			StringBuffer msg;
+			auto msg = player->info();
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
 			msg << " parsed " << parsedSpeed;
-			player->info(msg.toString());
+
+			msg.flush();
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -3387,12 +3381,12 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 				maxAllowedSpeed = allowed;
 		}
 
-		StringBuffer msg;
+		auto msg = player->info();
 		msg << "max allowed speed should be " << maxAllowedSpeed;
 		msg << " parsed " << parsedSpeed;
 		msg << " changeBufferSize: " << changeBuffer->size();
 
-		player->info(msg.toString());
+		msg.flush();
 
 		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -3408,22 +3402,20 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	uint32 deltaTime = ghost->getServerMovementTimeDelta();//newStamp - stamp;
 
 	if (deltaTime < 1000) {
-		//info("time hasnt passed yet", true);
+		player->debug() << "deltaTime hasnt passed yet";
 		return 0;
 	}
 
 	uint32 stamp = ghost->getClientLastMovementStamp();
 
 	if (stamp > newStamp) {
-		//info("older stamp received", true);
+		player->debug() << "older client movement stamp received";
 		return 1;
 	}
 
 	Vector3 newWorldPosition(newX, newY, newZ);
 
-	/*StringBuffer newWorldPosMsg;
-	newWorldPosMsg << "x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
-	player->info(newWorldPosMsg.toString(), true);*/
+	player->debug() << "checkSpeedHackSecondTest newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
 
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
@@ -3437,9 +3429,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
 	}
 
-	/*newWorldPosMsg.deleteAll();
-	newWorldPosMsg << "x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
-	player->info(newWorldPosMsg.toString(), true);*/
+	player->debug() << "after parent transform newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
 
 	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
 
@@ -3455,11 +3445,11 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (dist < 1) {
-		//info("distance too small", true);
+		player->debug("speed hack distance too small");
 		return 0;
 	}
 
-	float speed = dist / (float) deltaTime * 1000;
+	float speed = dist / (float) deltaTime * 1000.f;
 
 	/*if (oldNewPosZ > oldValidZ) {
 		float heightDist = oldNewPosZ - oldValidZ;
@@ -3473,9 +3463,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 
 	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
 
-	/*StringBuffer msg;
-	msg << "distancia recorreguda " << dist << " a una velocitat " << speed;
-	info(msg, true);*/
+	player->debug() << "distancia recorreguda " << dist << " a una velocitat " << speed;
 
 	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
 
@@ -3496,8 +3484,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	}
 
 	return ret;
-
-	//return 0;
 }
 
 void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
@@ -3786,7 +3772,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO account_bans values (nullptr, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -3800,13 +3786,13 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	account->setBanAdmin(admin->getAccountID());
 
 	try {
+		Reference<const CharacterList*> characters = account->getCharacterList();
 
-		Reference<CharacterList*> characters = account->getCharacterList();
 		for (int i = 0; i < characters->size(); ++i) {
-			CharacterListEntry* entry = &characters->get(i);
+			const CharacterListEntry* entry = &characters->get(i);
 			if (entry->getGalaxyID() == server->getGalaxyID()) {
-
 				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
+
 				if (player != nullptr) {
 					clearOwnedStructuresPermissions(player);
 
@@ -3868,7 +3854,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO galaxy_bans values (nullptr, " << account->getAccountID() << ", " << admin->getAccountID() << "," << galaxy << ", now()," << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << "," << galaxy << ", now()," << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -3899,9 +3885,10 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	try {
 
 		if (server->getGalaxyID() == galaxy) {
-			Reference<CharacterList*> characters = account->getCharacterList();
+			Reference<const CharacterList*> characters = account->getCharacterList();
+
 			for (int i = 0; i < characters->size(); ++i) {
-				CharacterListEntry* entry = &characters->get(i);
+				const CharacterListEntry* entry = &characters->get(i);
 				if (entry->getGalaxyID() == galaxy) {
 
 					ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
@@ -3972,7 +3959,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO character_bans values (nullptr, " << account->getAccountID() << ", " << admin->getAccountID() << ", " << galaxyID << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", " << galaxyID << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -3981,7 +3968,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 
 	Locker locker(account);
 
-	Reference<CharacterList*> characters = account->getCharacterList();
+	Reference<const CharacterList*> characters = account->getCharacterList();
 
 	for (int i = 0; i<characters->size(); i++) {
 		CharacterListEntry& entry = characters->get(i);
@@ -4082,7 +4069,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 	Locker locker(player);
 
 	try {
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		VectorMap<byte, int> attributeValues;
 		attributeValues.setNullValue(0);
@@ -4109,7 +4096,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				continue;
 			}
 
-			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
+			const VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
 
 			for (int j = 0; j < attributeModifiers->size(); ++j) {
 				byte modifier = attributeModifiers->elementAt(j).getKey();
@@ -4155,7 +4142,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 				player->setMaxHAM(i, calculated, false);
 			}
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }
@@ -4184,7 +4171,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 
 		smodsGuard.release();
 
-		BuffList* buffs = player->getBuffList();
+		const BuffList* buffs = player->getBuffList();
 
 		for (int i = 0; i < buffs->getBuffListSize(); i++) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
@@ -4200,7 +4187,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 			player->updateGroupInviterID(grp->getLeader()->getObjectID());
 			GroupManager::instance()->joinGroup(player);
 		}
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error(e.getMessage());
 	}
 }
@@ -4428,7 +4415,6 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 }
 
 void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, CreatureObject* respondingPlayer, SceneObject* askingPlayerRing) {
-
 	if (!askingPlayer->isPlayerCreature()) {
 		return;
 	}
@@ -5177,13 +5163,14 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
-
 	if (player == nullptr || ai == nullptr)
 		return false;
 
 	if (!player->isPlayerCreature()) {
 		return true;
 	}
+
+	Locker locker(player, ai);
 
 	if (ai->isNonPlayerCreatureObject()) {
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);

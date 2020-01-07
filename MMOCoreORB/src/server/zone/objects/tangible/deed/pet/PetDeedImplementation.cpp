@@ -315,8 +315,9 @@ void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 
 int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 21) {
-		if(generated || !player->hasSkill("outdoors_bio_engineer_novice") || !isASubChildOf(player))
+		if (generated || !player->hasSkill("outdoors_bio_engineer_novice") || !isASubChildOf(player))
 			return 1;
+
 		if (player->isRidingMount()) {
 			player->sendSystemMessage("You cannot sample DNA while mounted");
 			return 1;

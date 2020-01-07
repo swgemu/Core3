@@ -34,7 +34,7 @@ DroidPlaybackModuleDataComponent::~DroidPlaybackModuleDataComponent() {
 
 }
 
-String DroidPlaybackModuleDataComponent::getModuleName() {
+String DroidPlaybackModuleDataComponent::getModuleName() const {
 	return String("playback_module");
 }
 
@@ -419,7 +419,7 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 	selectedIndex = -1;
 }
 
-String DroidPlaybackModuleDataComponent::toString() {
+String DroidPlaybackModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

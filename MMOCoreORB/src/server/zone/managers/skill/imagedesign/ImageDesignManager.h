@@ -28,7 +28,7 @@ public:
 	void updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo = nullptr);
 	void updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo = nullptr);
 
-	Vector<CustomizationData>* getCustomizationData(const String& speciesGender, const String& customizationName);
+	const Vector<CustomizationData>* getCustomizationData(const String& speciesGender, const String& customizationName);
 
 	String getSpeciesGenderString(CreatureObject* creo = nullptr);
 
