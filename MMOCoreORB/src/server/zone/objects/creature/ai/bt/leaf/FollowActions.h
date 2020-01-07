@@ -452,17 +452,7 @@ public:
 		finalChance -= chanceDiff * diffModifier;
 		finalChance *= 100;
 
-		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
-		StringBuffer msg;
-		msg << "Min Evade " << minChance << ", Max Evade: " << maxChance << " chanceDiff " << chanceDiff << ", modifier: " << diffModifier << ", modified diff: " << chanceDiff * diffModifier;
-		chatManager->broadcastChatMessage(agent, msg.toString(), 0, 0, 0);
-
 		int randRoll = System::random(100);
-
-		msg.deleteAll();
-
-		msg << "Final chance: " << finalChance << ", roll: " << randRoll;
-		chatManager->broadcastChatMessage(agent, msg.toString(), 0, 0, 0);
 
 		if (finalChance < 100 && randRoll > finalChance)
 			return FAILURE;
@@ -482,8 +472,6 @@ public:
 
 		if (CollisionManager::checkSphereCollision(position, 5, zone))
 			return FAILURE;
-
-		chatManager->broadcastChatMessage(agent, "Evading!", 0, 0, 0);
 
 		agent->setFollowState(AiAgent::EVADING);
 		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());

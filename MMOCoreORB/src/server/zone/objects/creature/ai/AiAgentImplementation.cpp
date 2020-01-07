@@ -466,8 +466,6 @@ void AiAgentImplementation::setupAttackMaps() {
 		for (int i = 0; i < attackMap->size(); i++) {
 			const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
-		for (int i = 0; i < fullAttackMap->size(); i++) {
-			const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
 			if (attack == nullptr)
 				continue;
 
