@@ -24,7 +24,7 @@ DroidMaintenanceModuleDataComponent::~DroidMaintenanceModuleDataComponent() {
 	// No op
 }
 
-String DroidMaintenanceModuleDataComponent::getModuleName() {
+String DroidMaintenanceModuleDataComponent::getModuleName() const {
 	return String("maintenance_module");
 }
 
@@ -211,19 +211,23 @@ void DroidMaintenanceModuleDataComponent::addToStack(BaseDroidModuleComponent* o
 
 }
 
-String DroidMaintenanceModuleDataComponent::toString(){
+String DroidMaintenanceModuleDataComponent::toString() const {
 	StringBuffer str;
 	str << getModuleName() << "\n";
 	str << "Number of Assigned Structures: " << assignedStructures.size() << "\n";
+
 	for (int i = 0; i < assignedStructures.size(); i++) {
 		uint64 objectID = assignedStructures.elementAt(i);
 		str << "\tStructure: " << objectID << "\n";
 	}
+
 	return str.toString();
 }
+
 bool DroidMaintenanceModuleDataComponent::isAssignedTo(uint64 structure) {
 	return assignedStructures.contains(structure);
 }
+
 bool DroidMaintenanceModuleDataComponent::assignStructure( uint64 objectID ){
 
 	if( !assignedStructures.contains( objectID ) && assignedStructures.size() <= maxStructures) {

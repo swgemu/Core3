@@ -29,7 +29,7 @@ public:
 
 	~DroidStimpackModuleDataComponent();
 
-	String getModuleName();
+	String getModuleName() const;
 
 	void initializeTransientMembers();
 
@@ -37,7 +37,7 @@ public:
 
 	int getBatteryDrain();
 
-	String toString();
+	String toString() const;
 
 	void onCall();
 

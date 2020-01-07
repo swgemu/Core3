@@ -257,12 +257,11 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if(isASubChildOf(player))
+	if (isASubChildOf(player))
 		menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_unpack"); //"Ready Droid Unit"
 }
 
 int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
 	if (selectedID == 20) {
 		if (generated || !isASubChildOf(player))
 			return 1;

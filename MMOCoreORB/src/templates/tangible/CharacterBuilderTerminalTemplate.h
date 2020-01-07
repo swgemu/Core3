@@ -61,15 +61,15 @@ public:
 		luaItemList.pop();
     }
 
-    inline CharacterBuilderMenuNode* getItemList() const {
+    inline const CharacterBuilderMenuNode* getItemList() const {
         return rootNode;
     }
 
-    inline Vector<int> getGlowyBadgeIds() const {
+    inline const Vector<int>& getGlowyBadgeIds() const {
         return glowyBadgeIds;
     }
 
-    inline Vector<String> getVillageBranchUnlocks() const {
+    inline const Vector<String>& getVillageBranchUnlocks() const {
         return villageBranchUnlocks;
     }
 };

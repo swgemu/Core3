@@ -222,7 +222,7 @@ public:
 
 	void recalculateValues(bool initial);
 
-	String toString();
+	String toString() const;
 
 	inline int getExperimentalPropertyTitleSize() const {
 		return experimentalValuesMap.size();

@@ -8,6 +8,8 @@
 #ifndef DELTABASICVARIABLE_H_
 #define DELTABASICVARIABLE_H_
 
+#include "engine/engine.h"
+
 template<typename K>
 class DeltaBasicVariable {
 protected:

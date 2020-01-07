@@ -100,7 +100,7 @@ class Account extends ManagedObject implements Logger {
 		return active == true;
 	}
 
-	@dirty
+	@read
 	public unsigned int getAccountID() {
 		return accountID;
 	}
@@ -114,27 +114,27 @@ class Account extends ManagedObject implements Logger {
 		return galaxyAccountInfo;
 	}
 
-	@dirty
+	@read
 	public unsigned int getStationID() {
 		return stationID;
 	}
 
-	@dirty
+	@read
 	public unsigned int getAdminLevel() {
 		return adminLevel;
 	}
 
-	@dirty
+	@read
 	public string getUsername() {
 		return username;
 	}
 
-	@dirty
+	@read
 	public string getSalt() {
 		return salt;
 	}
 
-	@dirty
+	@read
 	public unsigned int getTimeCreated() {
 		return created;
 	}
@@ -151,24 +151,27 @@ class Account extends ManagedObject implements Logger {
 	@preLocked
 	public native void updateGalaxyBans();
 
-	@dirty
+	@read
 	public unsigned int getBanExpires() {
 		return banExpires;
 	}
 
-	@dirty
+	@read
 	public string getBanReason() {
 		return banReason;
 	}
 
-	@dirty
+	@read
 	public native boolean isBanned();
 
 	@dirty
 	@local
 	public native CharacterList getCharacterList();
 
-	@dirty
+	@read
+	@local
+	public native final GalaxyBanEntry getGalaxyBan(final unsigned int galaxy);
+
 	@local
 	public native GalaxyBanEntry getGalaxyBan(final unsigned int galaxy);
 
@@ -181,14 +184,17 @@ class Account extends ManagedObject implements Logger {
 		galaxyBans.drop(galaxy);
 	}
 
-	@dirty
+	@read
+	@local
+	public native final CharacterListEntry getCharacterBan(final unsigned int  galaxy, final string name);
+
 	@local
 	public native CharacterListEntry getCharacterBan(final unsigned int  galaxy, final string name);
 
-	@dirty
+	@read
 	@local
 	public native unsigned int getAgeInDays();
 
-	@dirty
+	@read
 	public native boolean isSqlLoaded();
 }

@@ -16,7 +16,7 @@ DroidDataStorageModuleDataComponent::~DroidDataStorageModuleDataComponent() {
 
 }
 
-String DroidDataStorageModuleDataComponent::getModuleName() {
+String DroidDataStorageModuleDataComponent::getModuleName() const {
 	return String("datapad_storage_module");
 }
 
@@ -63,7 +63,7 @@ void DroidDataStorageModuleDataComponent::fillAttributeList(AttributeListMessage
 	alm->insertAttribute("data_module", rating > 10 ? 10 : rating);
 }
 
-String DroidDataStorageModuleDataComponent::toString() {
+String DroidDataStorageModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

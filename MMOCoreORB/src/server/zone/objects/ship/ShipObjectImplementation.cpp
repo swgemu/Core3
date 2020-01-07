@@ -40,7 +40,7 @@ void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//if (player->getParent().get() == _this.getReferenceUnsafeStaticCast() || getRootParent().get() == player) {
 		BaseMessage* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
 		player->sendMessage(ship4);
-	
+
 		BaseMessage* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
 		player->sendMessage(ship1);
 	//}

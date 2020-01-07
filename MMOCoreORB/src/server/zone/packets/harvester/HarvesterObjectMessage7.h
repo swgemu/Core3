@@ -65,7 +65,7 @@ public:
 
 	}
 
-	void insertResourceIDList(Vector<ManagedReference<ResourceSpawn*> >* hino) {
+	void insertResourceIDList(const Vector<ManagedReference<ResourceSpawn*> >* hino) {
 		for (int x = 0; x < 2; x++) {
 			insertInt(hino->size());
 			insertInt(hino->size());
@@ -75,7 +75,7 @@ public:
 		}
 	}
 
-	void insertResourceNameList(Vector<ManagedReference<ResourceSpawn*> >* hino) {
+	void insertResourceNameList(const Vector<ManagedReference<ResourceSpawn*> >* hino) {
 		insertInt(hino->size());
 		insertInt(hino->size());
 		for (int i = 0; i < hino->size(); i++) {
@@ -83,7 +83,7 @@ public:
 		}
 	}
 
-	void insertResourceTypeList(Vector<ManagedReference<ResourceSpawn*> >* hino) {
+	void insertResourceTypeList(const Vector<ManagedReference<ResourceSpawn*> >* hino) {
 		insertInt(hino->size());
 		insertInt(hino->size());
 		for (int i = 0; i < hino->size(); i++) {

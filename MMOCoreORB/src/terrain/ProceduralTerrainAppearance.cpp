@@ -90,8 +90,8 @@ void ProceduralTerrainAppearance::getWaterBoundariesInAABB(const AABB& bounds, V
 		Vector3 boundaryExtents = boundsBox.extents();
 		Vector3 extents = bounds.extents();
 
-		if(fabs(center.getX()) > (boundaryExtents.getX() + extents.getX())) continue;
-	   	if(fabs(center.getY()) > (boundaryExtents.getY() + extents.getY())) continue;
+		if (fabs(center.getX()) > (boundaryExtents.getX() + extents.getX())) continue;
+	   	if (fabs(center.getY()) > (boundaryExtents.getY() + extents.getY())) continue;
 
 		boundaries->add(boundary);
 	}
@@ -121,7 +121,7 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 
 	iffStream->getString(terrainFile);
 
-	//info(terrainFile);
+	debug() << "parsing " << terrainFile;
 
 	size = iffStream->getFloat();
 	chunkSize = iffStream->getFloat();
@@ -416,7 +416,7 @@ int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) const {
 		}
 	} while (count < customTerrain.size() && (terrain = customTerrain.get(count++)));
 
-	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
+	debug() << "full traverse environment id for (" << x << "," << y << ") is " << fullTraverse;
 
 	return fullTraverse;
 }
@@ -445,7 +445,7 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) const {
 		}
 	} while (count < customTerrain.size() && (terrain = customTerrain.get(count++)));
 
-	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
+	debug() << "full traverse height for (" << x << "," << y << ") is " << fullTraverse;
 
 	return fullTraverse;
 }

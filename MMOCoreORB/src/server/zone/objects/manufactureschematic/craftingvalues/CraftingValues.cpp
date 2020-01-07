@@ -121,8 +121,8 @@ void CraftingValues::clearAll() {
 	clearSlots();
 }
 
-String CraftingValues::toString() {
-	Subclasses* tempSubclasses;
+String CraftingValues::toString() const {
+	const Subclasses* tempSubclasses;
 
 	StringBuffer str;
 

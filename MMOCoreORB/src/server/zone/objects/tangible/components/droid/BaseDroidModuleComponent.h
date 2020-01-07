@@ -72,7 +72,7 @@ public:
 
 	~BaseDroidModuleComponent();
 
-	virtual String getModuleName();
+	virtual String getModuleName() const;
 
 	void initializeTransientMembers();
 
@@ -110,7 +110,7 @@ public:
 	virtual bool actsAsCraftingStation();
 
 	// string rep of the module
-	virtual String toString();
+	virtual String toString() const;
 
 	virtual void onCall();
 

@@ -31,14 +31,14 @@ protected:
 public:
 	DroidEffectsModuleDataComponent();
 	~DroidEffectsModuleDataComponent();
-	String getModuleName();
+	String getModuleName() const;
 	void initializeTransientMembers();
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 	int getBatteryDrain();
 	void deactivate();
-	String toString();
+	String toString() const;
 	void onCall();
 	void onStore();
 	bool isActive(){ return active; }

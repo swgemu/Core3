@@ -14,7 +14,7 @@ DroidArmorModuleDataComponent::~DroidArmorModuleDataComponent() {
 
 }
 
-String DroidArmorModuleDataComponent::getModuleName() {
+String DroidArmorModuleDataComponent::getModuleName() const {
 	return String("armor_module");
 }
 
@@ -80,7 +80,7 @@ int DroidArmorModuleDataComponent::getBatteryDrain() {
 	return 0;
 }
 
-String DroidArmorModuleDataComponent::toString() {
+String DroidArmorModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 

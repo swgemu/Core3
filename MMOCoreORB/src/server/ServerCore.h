@@ -7,6 +7,7 @@
 
 #include "engine/engine.h"
 #include "system/lang/Function.h"
+#include "system/io/Pipe.h"
 
 #include "server/features/Features.h"
 
@@ -19,6 +20,9 @@ namespace server {
 using namespace server::zone;
 
 #include "server/login/LoginServer.h"
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 #include "server/ping/PingServer.h"
 
 namespace conf {
@@ -31,15 +35,13 @@ class ServerDatabase;
 class MantisDatabase;
 class StatusServer;
 
+#ifdef WITH_REST_API
 namespace server {
- namespace web {
- 	 class WebServer;
- }
-
  namespace web3 {
  	class RESTServer;
  }
 }
+#endif // WITH_REST_API
 
 namespace engine {
 	namespace core {
@@ -47,9 +49,8 @@ namespace engine {
 	}
 }
 
-using namespace server::web;
-
 class ServerCore : public Core, public Logger {
+	Pipe consoleCommandPipe;
 	ConfigManager* configManager;
 	ServerDatabase* database;
 	MantisDatabase* mantisDatabase;
@@ -58,19 +59,26 @@ class ServerCore : public Core, public Logger {
 	Reference<StatusServer*> statusServer;
 	server::features::Features* features;
 	Reference<PingServer*> pingServer;
-	WebServer* webServer;
 	MetricsManager* metricsManager;
+#ifdef WITH_REST_API
 	server::web3::RESTServer* restServer;
+#endif // WITH_REST_API
+#ifdef WITH_SESSION_API
+	Reference<server::login::SessionAPIClient*> sessionAPIClient;
+#endif // WITH_SESSION_API
 
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
 
+public:
 	enum CommandResult {
 		SUCCESS = 0,
 		ERROR = 1,
-		SHUTDOWN
+		SHUTDOWN,
+		NOTFOUND
 	};
 
+private:
 	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
 
 	bool handleCmds;
@@ -81,6 +89,7 @@ class ServerCore : public Core, public Logger {
 	static ServerCore* instance;
 
 	void registerConsoleCommmands();
+	CommandResult processConsoleCommand(const String& commandString);
 
 public:
 	ServerCore(bool truncateDatabases, const SortedVector<String>& args);
@@ -94,6 +103,7 @@ public:
 	void run() override;
 
 	void shutdown();
+	void queueConsoleCommand(const String& commandString);
 	void handleCommands();
 	void processConfig();
 	void signalShutdown();

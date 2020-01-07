@@ -51,7 +51,7 @@ public:
 		return accountID;
 	}
 
-	Time getCreationDate() const {
+	const Time& getCreationDate() const {
 		return creationDate;
 	}
 
@@ -75,7 +75,7 @@ public:
 		this->banReason = banReason;
 	}
 
-	String getBanReason() const {
+	const String& getBanReason() const {
 		return banReason;
 	}
 
@@ -83,7 +83,7 @@ public:
 		this->banExpiration = banExpiration;
 	}
 
-	uint32 getBanExpiration() {
+	uint32 getBanExpiration() const {
 		return banExpiration.getTime();
 	}
 

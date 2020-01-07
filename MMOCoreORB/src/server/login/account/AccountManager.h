@@ -39,6 +39,10 @@ namespace server {
 
 				void loginAccount(LoginClient* client, Message* packet);
 
+#ifdef WITH_SESSION_API
+				void loginApprovedAccount(LoginClient* client, ManagedReference<Account*> account);
+#endif // WITH_SESSION_API
+
 				Account* validateAccountCredentials(LoginClient* client, const String& username, const String& password);
 
 				Account* createAccount(const String& username, const String& password, String& passwordStored);

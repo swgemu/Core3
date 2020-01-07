@@ -19,11 +19,11 @@ public:
 
 	SkillModMap& operator=(const SkillModMap& smm);
 
-	void add(SkillModMap* map);
-	void add(VectorMap<String, int64>* map);
+	void add(const SkillModMap* map);
+	void add(const VectorMap<String, int64>* map);
 
-	void subtract(SkillModMap* map);
-	void subtract(VectorMap<String, int64>* map);
+	void subtract(const SkillModMap* map);
+	void subtract(const VectorMap<String, int64>* map);
 
 	void addSerializableVariables() {
 		addSerializableVariable("skillMods", &skillMods);
@@ -32,25 +32,25 @@ public:
 	/**
 	 * Returns the number of mods in the map.
 	 */
-	inline int size() {
+	inline int size() const {
 		return skillMods.size();
 	}
 
 	/**
 	 * Returns true if the map contains a value for the mod.
 	 */
-	inline bool contains(const String& mod) {
+	inline bool contains(const String& mod) const {
 		return skillMods.contains(mod);
 	}
 
 	/**
 	 * If the key exists, returns the value, otherwise returns 0.
 	 */
-	inline int64 get(const String& mod) {
+	inline int64 get(const String& mod) const {
 		return skillMods.get(mod);
 	}
 
-	inline int64 get(int idx) {
+	inline int64 get(int idx) const {
 		return skillMods.get(idx);
 	}
 

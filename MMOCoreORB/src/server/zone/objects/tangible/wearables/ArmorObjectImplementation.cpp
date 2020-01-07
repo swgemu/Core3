@@ -258,12 +258,13 @@ bool ArmorObjectImplementation::isVulnerable(int type) const {
 float ArmorObjectImplementation::getTypeValue(int type, float value) const {
 	int newValue = 0;
 
-	if(vulnerabilites & type)
+	if (vulnerabilites & type)
 		newValue = value;
 
-	else if(isSpecial(type)) {
+	else if (isSpecial(type)) {
 		newValue = specialProtection + value;
-		if(newValue > 80)
+
+		if (newValue > 80)
 			newValue = 80;
 	} else {
 		newValue = baseProtection + value;
@@ -282,7 +283,7 @@ float ArmorObjectImplementation::getTypeValue(int type, float value) const {
 }
 
 int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_03")) {
+	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_03") && isASubChildOf(player)) {
 		if (isSliced()) {
 			player->sendSystemMessage("@slicing/slicing:already_sliced");
 			return 0;
@@ -301,7 +302,6 @@ int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		session->initalizeSlicingMenu(player, _this.getReferenceUnsafeStaticCast());
 
 		return 0;
-
 	} else
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }

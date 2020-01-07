@@ -29,7 +29,7 @@ public:
 
 	~DroidDetonationModuleDataComponent();
 
-	String getModuleName();
+	String getModuleName() const;
 
 	void initializeTransientMembers();
 
@@ -43,7 +43,7 @@ public:
 
 	void deactivate();
 
-	String toString();
+	String toString() const;
 
 	void onCall();
 

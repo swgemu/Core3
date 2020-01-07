@@ -7,37 +7,53 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
 
-	if (obj == nullptr || !obj->isPlayerCreature())
+	if (obj == nullptr)
+		return;
+	
+	if (obj->isVehicleObject())
+	{
+		obj = obj->getSlottedObject("rider");
+          	if (obj == nullptr){
+          		return;
+                }
+	}
+
+	if (!obj->isCreatureObject())
 		return;
 
+	CreatureObject* player = obj->asCreatureObject();
+	
+	if (player == nullptr)
+		return;
+	
 	GarageDataComponent* data = cast<GarageDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
 	if (data == nullptr)
 		return;
 
-	uint64 objID = obj->getObjectID();
+	uint64 objID = player->getObjectID();
 
-	float deltaX = sceneObject->getPositionX() - obj->getPositionX();
-	float deltaY = sceneObject->getPositionY() - obj->getPositionY();
+	float deltaX = sceneObject->getPositionX() - player->getPositionX();
+	float deltaY = sceneObject->getPositionY() - player->getPositionY();
 	float rangeSq = deltaX * deltaX + deltaY * deltaY;
 
 	if (rangeSq > 4096) { // 64^2
 		if (data->hasNotifiedPlayer(objID))
+		{
 			data->removeNotifiedPlayer(objID);
-
+		}
 	} else {
-		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 
-		if (rootParent == nullptr || !rootParent->isVehicleObject())
-			return;
-
-		if (!data->hasNotifiedPlayer(objID)) {
+		if (!data->hasNotifiedPlayer(objID) && player->isRidingMount()) {
 			data->addNotifiedPlayer(objID);
-
-			CreatureObject* player = obj->asCreatureObject();
 			player->sendSystemMessage("@pet/pet_menu:garage_proximity"); //You have entered into the proximity of a vehicle garage.
+		}
+		else if (data->hasNotifiedPlayer(objID) && !player->isRidingMount())
+		{
+				data->removeNotifiedPlayer(objID);
 		}
 	}
 }
@@ -47,7 +63,23 @@ void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
 
-	if (obj == nullptr || !obj->isPlayerCreature())
+	if (obj == nullptr)
+		return;
+
+	if (obj->isVehicleObject())
+	{
+		obj = obj->getSlottedObject("rider");
+          	if (obj == nullptr){
+          		return;
+                }
+	}
+
+	if (!obj->isCreatureObject())
+		return;
+
+	CreatureObject* player = obj->asCreatureObject();
+	
+	if (player == nullptr)
 		return;
 
 	GarageDataComponent* data = cast<GarageDataComponent*>(sceneObject->getDataObjectComponent()->get());
@@ -55,6 +87,8 @@ void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 	if (data == nullptr)
 		return;
 
-	if (data->hasNotifiedPlayer(obj->getObjectID()))
-		data->removeNotifiedPlayer(obj->getObjectID());
+	uint64 objID = player->getObjectID();
+
+	if (data->hasNotifiedPlayer(objID))
+		data->removeNotifiedPlayer(objID);
 }

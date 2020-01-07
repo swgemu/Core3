@@ -25,9 +25,7 @@ void StructureDeedImplementation::initializeTransientMembers() {
 }
 
 int StructureDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
 	if (selectedID == 20) {
-
 		if (!isASubChildOf(player))
 			return 0;
 

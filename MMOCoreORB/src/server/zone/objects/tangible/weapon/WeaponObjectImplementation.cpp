@@ -118,7 +118,7 @@ void WeaponObjectImplementation::createChildObjects() {
 	ZoneServer* zoneServer = server->getZoneServer();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
-		ChildObject* child = templateObject->getChildObject(i);
+		const ChildObject* child = templateObject->getChildObject(i);
 
 		if (child == nullptr)
 			continue;

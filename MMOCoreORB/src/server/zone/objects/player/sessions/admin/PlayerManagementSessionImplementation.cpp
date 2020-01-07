@@ -90,8 +90,8 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 
 	//Account Ban
 	if (tablevel == 0) {
-
 		banMode = ACCOUNT;
+
 		if (targetAccount->isBanned()) {
 			sendBanReason(true);
 			banType = UNBAN;
@@ -101,11 +101,11 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 		}
 
 	} else if (tablevel == 1) {
-
 		if (galaxy != 0) {
 			banMode = GALAXY;
 			galaxyID = galaxy;
-			GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxy);
+			const GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxy);
+
 			if (galaxyBan != nullptr) {
 				sendBanReason(true);
 				banType = UNBAN;
@@ -117,12 +117,12 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 		}
 
 	} else if (tablevel == 2) {
-
 		if (!name.isEmpty()) {
 			banMode = CHARACTER;
 			galaxyID = galaxy;
 			targetName = name;
-			CharacterListEntry* entry = targetAccount->getCharacterBan(galaxy, name);
+			const CharacterListEntry* entry = targetAccount->getCharacterBan(galaxy, name);
+
 			if(entry != nullptr) {
 				sendBanReason(true);
 				banType = UNBAN;
@@ -381,14 +381,14 @@ void PlayerManagementSessionImplementation::showUnbanSummary() {
 		summary << " Account: " << targetAccount->getUsername() <<  endl;
 		banExpiration = targetAccount->getBanExpires();
 	} else if (banMode == GALAXY && galaxyID != 0) {
-		GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
+		const GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
 		if (galaxyBan != nullptr) {
 			banExpiration = galaxyBan->getBanExpiration();
 		}
 		summary << " From " << galaxyName << " Galaxy" <<  endl;
 	} else if (banMode == CHARACTER && !targetName.isEmpty()) {
 		summary << " Character: " << targetName <<  endl;
-		CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
+		const CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
 		if (entry != nullptr) {
 			banExpiration = entry->getBanExpiration();
 		}
@@ -441,8 +441,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 			message = playerManager->banAccount(ghost, targetAccount, banExpiration - time(0), banReason);
 
 	} else if (banMode == GALAXY) {
-
-		GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
+		const GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxyID);
 
 		/// Check for galaxy ban status changes
 		if ((banType == BAN && galaxyBan != nullptr) ||
@@ -463,8 +462,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 			message = playerManager->banFromGalaxy(ghost, targetAccount, galaxyID, banExpiration - time(0), banReason);
 
 	} else if (banMode == CHARACTER){
-
-		CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
+		const CharacterListEntry* entry = targetAccount->getCharacterBan(galaxyID, targetName);
 
 		/// Check for player ban status changes
 		if ((banType == BAN && entry != nullptr) ||

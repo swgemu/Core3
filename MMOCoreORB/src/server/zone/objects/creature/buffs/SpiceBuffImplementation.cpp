@@ -15,7 +15,7 @@ void SpiceBuffImplementation::deactivate(bool removeModifiers) {
 
 	if (removeModifiers) {
 		//StackTrace::printStackTrace();
-		//info("activating downer", true);
+		debug("activating downer");
 		uint32 crc = String::hashCode("spice." + buffName + ".down");
 		ManagedReference<Buff*> downer = new SpiceDownerBuff(creature.get(), buffName, crc, 120);
 

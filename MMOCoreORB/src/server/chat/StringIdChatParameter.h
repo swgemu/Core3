@@ -60,7 +60,7 @@ public:
 
 	friend void to_json(nlohmann::json& j, const StringIdChatParameter& p);
 
-	virtual String toString() const {
+	virtual String toString() const override {
 		return StringId::getFullPath();
 	}
 

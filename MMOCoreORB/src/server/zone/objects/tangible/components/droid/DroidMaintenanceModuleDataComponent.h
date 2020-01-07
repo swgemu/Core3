@@ -25,13 +25,13 @@ protected:
 public:
 	DroidMaintenanceModuleDataComponent();
 	~DroidMaintenanceModuleDataComponent();
-	String getModuleName();
+	String getModuleName() const;
 	void initializeTransientMembers();
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 	int getBatteryDrain();
-	String toString();
+	String toString() const;
 	void copy(BaseDroidModuleComponent* other);
 	bool isStackable() { return true; }
 	void addToStack(BaseDroidModuleComponent* other);

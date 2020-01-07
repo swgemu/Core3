@@ -160,8 +160,7 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) const {
 }
 
 Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
-		const String& zonerestriction, Vector<String>& activeZones) {
-
+		const String& zonerestriction, Vector<String>& activeZones) const {
 	/**
 	 * Here we are using defined rules to set the number
 	 * of zones and specific zones of this specific spawn
@@ -169,12 +168,12 @@ Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	Vector<String> zonenames;
 	int zonecount = 0;
 
-	if(minpool == maxpool)
+	if (minpool == maxpool)
 		zonecount = maxpool;
 	else
 		zonecount = System::random(maxpool - minpool) + minpool;
 
-	if(zonecount > activeZones.size())
+	if (zonecount > activeZones.size())
 		zonecount = activeZones.size();
 
 	/// If resource is zone restricted, add only the restricted zone

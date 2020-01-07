@@ -106,8 +106,8 @@ int LuaTangibleObject::getPaletteColorCount(lua_State* L) {
 
 	int colors = 0;
 
-	for (int i = 0; i< variables.size(); ++i) {
-		String varkey = variables.elementAt(i).getKey();
+	for (int i = 0; i < variables.size(); ++i) {
+		const String& varkey = variables.elementAt(i).getKey();
 
 		if (varkey.contains(variableName)) {
 			CustomizationVariable* customizationVariable = variables.get(varkey).get();
@@ -118,15 +118,13 @@ int LuaTangibleObject::getPaletteColorCount(lua_State* L) {
 			PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
 
 			if (palette != nullptr) {
-				String paletteFileName = palette->getPaletteFileName();
-				PaletteTemplate* paletteTemplate = TemplateManager::instance()->getPaletteTemplate(paletteFileName);
+				const auto& paletteFileName = palette->getPaletteFileName();
+				UniqueReference<PaletteTemplate*> paletteTemplate(TemplateManager::instance()->getPaletteTemplate(paletteFileName));
 
 				if (paletteTemplate == nullptr)
 					continue;
 
 				colors = paletteTemplate->getColorCount();
-
-				delete paletteTemplate;
 
 				break;
 			}
