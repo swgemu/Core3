@@ -446,7 +446,7 @@ void AiAgentImplementation::setupAttackMaps() {
 	secondaryAttackMap = new CreatureAttackMap();
 
 	for (int i = 0; i < attackMap->size(); i++) {
-		CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
+		const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
 		if (attack == nullptr)
 			continue;
@@ -464,7 +464,7 @@ void AiAgentImplementation::setupAttackMaps() {
 		attackMap = npcTemplate->getSecondaryAttacks();
 
 		for (int i = 0; i < attackMap->size(); i++) {
-			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
+			const CombatQueueCommand* attack = cast<const CombatQueueCommand*>(objectController->getQueueCommand(attackMap->getCommand(i)));
 
 			if (attack == nullptr)
 				continue;
@@ -808,7 +808,7 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
     if (objectController == nullptr)
         return false;
 
-    QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+    const QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
     ManagedReference<SceneObject*> followCopy = getFollowObject().get();
     if (queueCommand == nullptr || followCopy == nullptr
             || (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
@@ -833,9 +833,9 @@ bool AiAgentImplementation::selectDefaultAttack() {
     return true;
 }
 
-QueueCommand* AiAgentImplementation::getNextAction() {
+const QueueCommand* AiAgentImplementation::getNextAction() {
     if (getZoneServer() == nullptr || getZoneServer()->getObjectController() == nullptr)
-        return NULL;
+        return nullptr;
 
     return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 }
