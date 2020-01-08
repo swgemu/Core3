@@ -1912,7 +1912,6 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 }
 
 void PlayerObjectImplementation::checkForNewSpawns() {
-	return;
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (creature->isInvisible()) {
