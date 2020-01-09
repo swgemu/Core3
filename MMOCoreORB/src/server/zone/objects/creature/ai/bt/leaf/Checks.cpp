@@ -120,8 +120,14 @@ template<> bool CheckFollowInWeaponRange::check(AiAgent* agent) const {
 	else if (checkVar == DataVal::SECONDARYWEAPON)
 		weao = agent->getSecondaryWeapon();
 
-	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
-		agent->info("CheckFollowInWeaponRange: dist: " + String::valueOf(dist) + " maxRange: " + String::valueOf(weao->getMaxRange()));
+	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
+		int maxRange = 0;
+
+		if (weao != nullptr)
+			maxRange = weao->getMaxRange();
+
+		agent->info("CheckFollowInWeaponRange: dist: " + String::valueOf(dist) + " maxRange: " + String::valueOf(maxRange));
+	}
 
 	return weao != nullptr && weao->getMaxRange() >= dist;
 }

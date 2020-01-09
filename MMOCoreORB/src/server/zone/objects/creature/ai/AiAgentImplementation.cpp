@@ -172,14 +172,14 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		} else if (isPet()) {
 			defaultWeapon->setAttackSpeed(speed);
 		}
+
+		primaryWeapon = defaultWeapon;
 	}
 
 	String primaryWeap = npcTemplate->getPrimaryWeapon();
 	uint32 primaryWeapHash = primaryWeap.hashCode();
 
-	if (primaryWeapHash == STRING_HASHCODE("unarmed")) {
-		primaryWeapon = defaultWeapon;
-	} else if (primaryWeapHash != STRING_HASHCODE("none")) {
+	if (primaryWeapHash != STRING_HASHCODE("unarmed") && primaryWeapHash != STRING_HASHCODE("none")) {
 		uint32 weaponCRC = 0;
 
 		if (primaryWeap.indexOf(".iff") != -1) {

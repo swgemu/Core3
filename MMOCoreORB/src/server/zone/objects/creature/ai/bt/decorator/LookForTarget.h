@@ -51,14 +51,14 @@ public:
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 		// Shuffle closeobjects to randomize target checks
-		//std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
-		QuadTreeEntry* temp;
+		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
+		/*QuadTreeEntry* temp;
 		int index;
 		for (int i = 0; i < closeObjects.size(); i++) {
 			index = (int) System::random(closeObjects.size() - 1 - i) + i;
 			temp = closeObjects.set(i, closeObjects.get(index));
 			closeObjects.set(index, temp);
-		}
+		}*/
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			ManagedReference<SceneObject*> scene = static_cast<SceneObject*>(closeObjects.get(i));
