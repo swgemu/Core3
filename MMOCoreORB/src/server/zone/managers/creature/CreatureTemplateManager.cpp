@@ -19,6 +19,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	/*setLogging(false);
 		setGlobalLogging(true);*/
 	//setLoggingName("CreatureTemplateManager");
+	globalAttackSpeedOverride = 0.0f;
 
 	lua = new Lua();
 	lua->init();
@@ -91,6 +92,8 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 
 void CreatureTemplateManager::loadLuaConfig() {
 	lua->runFile("scripts/managers/creature_manager.lua");
+
+	globalAttackSpeedOverride = lua->getGlobalFloat("globalAttackSpeedOverride");
 
 	LuaObject luaObject = lua->getGlobalObject("aiSpeciesData");
 

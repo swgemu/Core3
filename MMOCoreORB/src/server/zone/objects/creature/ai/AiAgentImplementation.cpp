@@ -147,6 +147,15 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float minDmg = npcTemplate->getDamageMin();
 	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
+
+	float globalSpeedOverride = CreatureTemplateManager::instance()->getGlobalAttackSpeedOverride();
+	float customSpeed = npcTemplate->getAttackSpeed();
+
+	if (globalSpeedOverride > 0.0f)
+		speed = globalSpeedOverride;
+	else if (customSpeed > 0.0f)
+		speed = customSpeed;
+
 	bool allowedWeapon = true;
 
 	if (petDeed != nullptr) {
@@ -389,6 +398,15 @@ WeaponObject* AiAgentImplementation::createWeapon(uint32 templateCRC, bool prima
 	float minDmg = npcTemplate->getDamageMin();
 	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
+
+	float globalSpeedOverride = CreatureTemplateManager::instance()->getGlobalAttackSpeedOverride();
+	float customSpeed = npcTemplate->getAttackSpeed();
+
+	if (globalSpeedOverride > 0.0f)
+		speed = globalSpeedOverride;
+	else if (customSpeed > 0.0f)
+		speed = customSpeed;
+
 	bool allowedWeapon = true;
 
 	if (petDeed != nullptr) {
@@ -567,6 +585,14 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 	float speed = calculateAttackSpeed(lvl);
+
+	float globalSpeedOverride = CreatureTemplateManager::instance()->getGlobalAttackSpeedOverride();
+	float customSpeed = npcTemplate->getAttackSpeed();
+
+	if (globalSpeedOverride > 0.0f)
+		speed = globalSpeedOverride;
+	else if (customSpeed > 0.0f)
+		speed = customSpeed;
 
 	float ratio = ((float)lvl) / (float)baseLevel;
 

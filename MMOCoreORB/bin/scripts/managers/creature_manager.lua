@@ -1,3 +1,7 @@
+-- This variable will override the default attack speed for all non player creatures, set to 0.0 to disable
+-- If set to 0.0, creatures will use either mobile specific attack speed values or default to level based calculations
+globalAttackSpeedOverride = 0.0
+
 -- { speciesId, skeleton, canSit, canLieDown }
 aiSpeciesData = {
 	{ 0, "human", false, false }, -- human

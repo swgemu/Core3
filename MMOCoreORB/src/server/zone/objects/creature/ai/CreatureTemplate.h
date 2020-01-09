@@ -64,6 +64,7 @@ protected:
 	int damageMax;
 	float specialDamageMult;
 	int range;
+	float attackSpeed;
 
 	float scale;
 
@@ -298,6 +299,10 @@ public:
 
 	inline int getDamageMax() const {
 		return damageMax;
+	}
+
+	inline float getAttackSpeed() const {
+		return attackSpeed;
 	}
 
 	inline float getSpecialDamageMult() const {
