@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/sui/SelectHarvestTypeSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 DroidHarvestModuleDataComponent::DroidHarvestModuleDataComponent() {
 	harvestBonus = 0;

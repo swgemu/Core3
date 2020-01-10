@@ -164,7 +164,7 @@ public:
 				int instrid = performanceManager->getInstrumentId(args);
 				instrid += performanceManager->getInstrumentAnimation(bandMemberInstrument->getInstrumentType(), instrumentAnimation);
 
-				bandMemberSession->sendEntertainingUpdate(groupMember, /*0x3C4CCCCD*/0.0125, instrumentAnimation, 0x07339FF8, instrid);
+				bandMemberSession->sendEntertainingUpdate(groupMember, /*0x3C4CCCCD*/0.0125f, instrumentAnimation, 0x07339FF8, instrid);
 				bandMemberSession->setPerformanceName(args);
 
 				groupMember->notifyObservers(ObserverEventType::CHANGEENTERTAIN, groupMember);

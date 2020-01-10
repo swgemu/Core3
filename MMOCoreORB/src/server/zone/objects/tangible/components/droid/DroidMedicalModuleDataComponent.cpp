@@ -4,6 +4,7 @@
 
 #include "DroidMedicalModuleDataComponent.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 DroidMedicalModuleDataComponent::DroidMedicalModuleDataComponent() {
 	setLoggingName("DroidMedicalModule");

@@ -3432,3 +3432,7 @@ void AiAgentImplementation::clearCreatureBit(uint32 option) {
 		creatureBitmask = creatureBitmask & ~option;
 	}
 }
+
+bool AiAgentImplementation::isPet() const {
+	return (getControlDevice() != nullptr);
+}

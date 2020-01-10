@@ -19,6 +19,11 @@ class LootItemTemplate;
 class LootGroupMap : public Singleton<LootGroupMap>, public Object, public Logger {
 public:
 	static Lua* lua;
+
+#ifdef PLATFORM_WIN
+#undef NO_ERROR
+#endif
+
 	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR };
 	static int ERROR_CODE;
 

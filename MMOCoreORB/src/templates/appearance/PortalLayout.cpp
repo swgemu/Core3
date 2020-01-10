@@ -61,7 +61,7 @@ void PortalLayout::readPortalGeometry0003(IffStream *iff, int numPortals) {
 		for (int i=0; i<size; i++) {
 			Vector3 &vert = verts->get(i);
 
-			vert = center + ((vert - center) * 1.1);
+			vert = center + ((vert - center) * 1.1f);
 
 			// Triangle fan
 			if ( i >= 2) {

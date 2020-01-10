@@ -61,7 +61,7 @@ public:
 			return GENERALERROR;
 		}
 
-		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125, performanceManager->getDanceAnimation(args), 0x07339FF8, 0xDD);
+		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125f, performanceManager->getDanceAnimation(args), 0x07339FF8, 0xDD);
 		session->setPerformanceName(args);
 
 		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
