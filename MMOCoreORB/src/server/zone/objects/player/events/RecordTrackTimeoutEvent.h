@@ -7,6 +7,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -15,21 +16,12 @@ namespace events {
 
 class RecordTrackTimeoutEvent: public Task {
 	Reference<DroidPlaybackModuleDataComponent*> module;
-	ManagedReference<CreatureObject*> player;
+	Reference<CreatureObject*> player;
 	int recordingState;
 public:
-	RecordTrackTimeoutEvent(DroidPlaybackModuleDataComponent* m,CreatureObject* p, int type) {
-		module = m;
-		player = p;
-		recordingState = type;
-	}
+	RecordTrackTimeoutEvent(DroidPlaybackModuleDataComponent* m, CreatureObject* p, int type);
 
-	void run() {
-		if (module == nullptr)
-			return;
-		Locker plock(player);
-		module->sessionTimeout(player,recordingState);
-	}
+	void run();
 
 };
 
@@ -38,5 +30,6 @@ public:
 }
 }
 }
+using namespace server::zone::objects::player::events;
 
 #endif /* RECORDTRACKTIMEOUTEVENT_H */

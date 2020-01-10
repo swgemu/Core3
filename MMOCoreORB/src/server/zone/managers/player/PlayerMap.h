@@ -5,127 +5,41 @@
 #ifndef PLAYERMAP_H_
 #define PLAYERMAP_H_
 
+#include "engine/engine.h"
+
 namespace server {
 namespace zone {
+	namespace objects {
+		namespace creature {
+			class CreatureObject;
+		}
+	}
 namespace managers {
 namespace player {
 
+using namespace server::zone::objects::creature;
+
 class PlayerMap : public Mutex, public Object {
-	HashTable<String, ManagedReference<CreatureObject*> > players;
-	HashTableIterator<String, ManagedReference<CreatureObject*> > iter;
+	HashTable<String, Reference<CreatureObject*> > players;
+	HashTableIterator<String, Reference<CreatureObject*> > iter;
 
 public:
-	PlayerMap(int initsize) : Mutex("PlayerMap"), players(initsize), iter(&players) {
-	}
+	PlayerMap(int initsize);
 
-	void put(const String& name, CreatureObject* player, bool doLock = true) {
-		lock(doLock);
+	void put(const String& name, CreatureObject* player, bool doLock = true);
 
-		try {
-			players.put(name.toLowerCase(), player);
-		} catch (Exception& e) {
-			System::out << e.getMessage();
-			e.printStackTrace();
-		} catch (...) {
-			unlock(doLock);
+	CreatureObject* get(const String& name, bool doLock = true);
+	CreatureObject* remove(const String& name, bool doLock = true);
 
-			throw;
-		}
+	CreatureObject* getNextValue(bool doLock = true);
 
-		unlock(doLock);
-	}
+	CreatureObject* next(bool doLock = true);
 
-	CreatureObject* get(const String& name, bool doLock = true) {
-		CreatureObject* player = nullptr;
+	bool hasNext(bool doLock = true);
 
-		lock(doLock);
+	void resetIterator(bool doLock = true);
 
-		try {
-
-			player = players.get(name.toLowerCase());
-
-		} catch (Exception& e) {
-			System::out << e.getMessage();
-			e.printStackTrace();
-		} catch (...) {
-			unlock(doLock);
-
-			throw;
-		}
-
-		unlock(doLock);
-
-		return player;
-	}
-
-	CreatureObject* remove(const String& name, bool doLock = true) {
-		CreatureObject* player = nullptr;
-
-		lock(doLock);
-
-		try {
-
-			player = players.remove(name.toLowerCase());
-
-		} catch (Exception& e) {
-			System::out << e.getMessage();
-			e.printStackTrace();
-		} catch (...) {
-			unlock(doLock);
-
-			throw;
-		}
-
-		unlock(doLock);
-
-		return player;
-	}
-
-	CreatureObject* getNextValue(bool doLock = true) {
-		CreatureObject* player = nullptr;
-
-		lock(doLock);
-
-		player = iter.getNextValue();
-
-		unlock(doLock);
-
-		return player;
-	}
-
-	CreatureObject* next(bool doLock = true) {
-		return getNextValue(doLock);
-	}
-
-	bool hasNext(bool doLock = true) {
-		bool res = false;
-
-		lock(doLock);
-
-		res = iter.hasNext();
-
-		unlock(doLock);
-
-		return res;
-	}
-
-	void resetIterator(bool doLock = true) {
-		lock(doLock);
-
-		iter.resetIterator();
-
-		unlock(doLock);
-	}
-
-	int size(bool doLock = true) {
-		lock(doLock);
-
-		int res = players.size();
-
-		unlock(doLock);
-
-		return res;
-	}
+	int size(bool doLock = true);
 
 };
 

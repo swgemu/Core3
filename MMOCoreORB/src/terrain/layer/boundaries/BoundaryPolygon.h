@@ -239,7 +239,7 @@ public:
 
 			/* First check if the ray is possible to cross the line */
 			if ( px > x1 && px <= x2 && ( py < vertices.get(i)->getY() || py <= vertices.get((i+1) % vertices.size())->getY() ) ) {
-				static const float eps = 0.000001;
+				static const float eps = 0.000001f;
 
 				/* Calculate the equation of the line */
 				float dx = vertices.get((i+1) % vertices.size())->getX() - vertices.get(i)->getX();

@@ -30,7 +30,7 @@ class PetControlObserver extends Observer {
 		
 		PetControlDevice strongRef = petControlDevice;
 		
-		if (strongRef != null) {
+		if (strongRef) {
 			CreatureObject creature = (CreatureObject) observable;
 			strongRef.cancelSpawnObject(creature);
 		}

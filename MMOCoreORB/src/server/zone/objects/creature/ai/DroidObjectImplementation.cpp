@@ -6,6 +6,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/managers/conversation/ConversationManager.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"

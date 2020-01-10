@@ -9,6 +9,9 @@
 #include "templates/tangible/TrapTemplate.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 const String DroidTrapModuleDataComponent::EMPTY_TRAP_MESSAGE = "@pet/droid_modules:no_trap_loaded";
 DroidTrapModuleDataComponent::DroidTrapModuleDataComponent() {
