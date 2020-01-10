@@ -97,7 +97,7 @@ TEST_F(ConfigManagerTest, DynamicTest) {
 	auto tmp2 = configManager->getBool("Core3.TestBool", false);
 	ASSERT_TRUE(tmp2);
 
-	configManager->setFloat("Core3.TestFloat", 12345.6);
+	configManager->setFloat("Core3.TestFloat", 12345.6f);
 	auto tmp3 = configManager->getFloat("Core3.TestFloat", 0.0);
 	ASSERT_NE(tmp3, 0.0);
 

@@ -21,7 +21,7 @@ float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;
 
 	if (creature->isProne() || creature->isKnockedDown() || creature->isIncapacitated()) {
-		heightOrigin = 0.3;
+		heightOrigin = 0.3f;
 	} else if (creature->isKneeling()) {
 		heightOrigin /= 2.f;
 	}

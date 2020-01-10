@@ -194,7 +194,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 
 	overallQuality = values->getCurrentPercentage("power_level"); // effectiveness
 	if (overallQuality < 0)
-		overallQuality = 0.1;
+		overallQuality = 0.1f;
 
 	combatRating = values->getCurrentValue("cmbt_module");
 	if (combatRating < 0)

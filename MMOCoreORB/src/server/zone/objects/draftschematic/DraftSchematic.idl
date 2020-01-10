@@ -101,7 +101,7 @@ class DraftSchematic extends IntangibleObject {
 
 	@dirty
 	public boolean isValidDraftSchematic() {
-		return schematicTemplate != null;
+		return schematicTemplate;
 	}
 
 	@local

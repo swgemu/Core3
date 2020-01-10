@@ -64,6 +64,10 @@ void HeightMap::load(const String& path) {
 float HeightMap::getHeight(float x, float y) {
 	if (reader == nullptr)
 		return 0;
+#ifdef PLATFORM_WIN
+#undef isinf
+#undef isnan
+#endif
 
 	if (std::isinf(x) || std::isnan(x) || std::isinf(y) || std::isnan(y))
 		return 0;

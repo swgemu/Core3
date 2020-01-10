@@ -38,7 +38,7 @@ class ControlDevice extends IntangibleObject {
 	public void updateToDatabaseAllObjects(boolean startTask) {
 		TangibleObject obj = controlledObject;
 
-		if (obj != null) {
+		if (obj) {
 			obj.updateToDatabaseWithoutChildren();
 
 			super.updateToDatabaseAllObjects(startTask);

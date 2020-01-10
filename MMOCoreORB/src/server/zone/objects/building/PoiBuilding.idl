@@ -5,13 +5,14 @@
 package server.zone.objects.building;
 
 import server.zone.objects.building.BuildingObject;
-import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.CloseObjectsVector;
-import server.zone.QuadTreeEntry;
-include system.thread.atomic.AtomicInteger;
-include engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
+import server.zone.QuadTreeEntry;
+
+include system.thread.atomic.AtomicInteger;
+include server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
+include engine.log.Logger;
+include server.zone.CloseObjectsVector;
 
 class PoiBuilding extends BuildingObject {
 	@dereferenced
@@ -77,7 +78,7 @@ class PoiBuilding extends BuildingObject {
 	}
 
 	public void activateDespawnEvent() {
-		if (despawnEvent != null)
+		if (despawnEvent)
 			return;
 
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
@@ -85,7 +86,7 @@ class PoiBuilding extends BuildingObject {
 	}
 
 	public void clearDespawnEvent() {
-		if (despawnEvent == null)
+		if (!despawnEvent)
 			return;
 
 		despawnEvent.cancel();

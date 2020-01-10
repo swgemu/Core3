@@ -7,11 +7,12 @@ package server.zone.objects.area;
 import server.zone.objects.area.ActiveArea;
 import system.util.HashTable;
 import engine.core.ManagedObject;
-import server.zone.managers.creature.LairSpawn;
 import server.zone.objects.area.SpawnAreaObserver;
 import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
+
+include server.zone.managers.creature.LairSpawn;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 
