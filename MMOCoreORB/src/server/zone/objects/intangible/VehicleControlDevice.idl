@@ -46,14 +46,14 @@ class VehicleControlDevice extends ControlDevice {
 
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
 
-			if (controlledObject == null) {
+			if (!controlledObject) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
 			} else {
 				this.generateObject(player);
 			}
 		} else if (selectedID == RadialOptions.VEHICLE_STORE) {
-			if (controlledObject == null) {
+			if (!controlledObject) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
 			} else {

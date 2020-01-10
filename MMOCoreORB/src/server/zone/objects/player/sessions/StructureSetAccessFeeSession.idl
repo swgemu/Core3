@@ -43,7 +43,7 @@ class StructureSetAccessFeeSession extends Facade {
 
 	public int cancelSession() {
 		CreatureObject strongRef = player;
-		if (strongRef != null)
+		if (strongRef)
 			strongRef.dropActiveSession(SessionFacadeType.SETSTRUCTUREACCESSFEE);
 
 		clearSession();

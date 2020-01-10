@@ -27,7 +27,7 @@ class LambdaObserver extends Observer {
 	LambdaObserverFunction function;
 	
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
-		if(function != null)
+		if(function)
 			return function.notifyObserverEvent(eventType, observable, arg1, arg2);
         	else
                 	return 1;

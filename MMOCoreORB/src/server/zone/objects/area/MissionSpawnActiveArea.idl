@@ -6,7 +6,8 @@ package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.area.ActiveArea;
+
+include server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.DestroyMissionObjective;
 
 @json
@@ -29,7 +30,7 @@ class MissionSpawnActiveArea extends ActiveArea {
 		} else {
 			DestroyMissionObjective objective = destroyMissionObjective;
 
-			if (objective != null) {
+			if (objective) {
 				//Logger.info("objective not null", true);
 
 				CreatureObject missionOwner = objective.getPlayerOwner();
