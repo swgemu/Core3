@@ -99,7 +99,7 @@ void ZoneImplementation::stopManagers() {
 	}
 
 	if (planetManager != nullptr) {
-		planetManager->finalize();
+		//planetManager->finalize();
 		planetManager = nullptr;
 	}
 

@@ -34,7 +34,7 @@ class MigrateStatsSession extends Facade {
 	
 	public int cancelSession() {
 		CreatureObject creo = creature;
-		if (creo != null) {
+		if (creo) {
 			creo.dropActiveSession(SessionFacadeType.MIGRATESTATS);
 		}
 		
@@ -62,7 +62,7 @@ class MigrateStatsSession extends Facade {
 	public void migrateStats() {
 		CreatureObject creo = creature;
 
-		if (creo == null) {
+		if (!creo) {
 			cancelSession();
 			return;
 		}

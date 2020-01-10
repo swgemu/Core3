@@ -150,7 +150,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		}
 
 		float quality = component->getAttributeValue("mechanism_quality");
-		unsigned long chosen = droidSuiBox->getMenuObjectID(menuID);
+		uint64 chosen = droidSuiBox->getMenuObjectID(menuID);
 		this->targetPlanet = pl->getZoneServer()->getResourceManager()->getPlanetByIndex(chosen);
 		int duration = 1000 * (3600 - (27 * quality));
 		int minutes = duration/60000;

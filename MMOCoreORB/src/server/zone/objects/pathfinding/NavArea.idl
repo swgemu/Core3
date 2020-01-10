@@ -4,14 +4,15 @@
 
 package server.zone.objects.pathfinding;
 
-import server.zone.objects.area.ActiveArea;
 import server.zone.objects.scene.SceneObject;
-import engine.util.u3d.AABB;
-import engine.util.u3d.Vector3;
 import system.thread.ReadWriteLock;
+import server.zone.Zone;
+
 include pathfinding.RecastNavMesh;
 include system.util.HashSet;
-import server.zone.Zone;
+include server.zone.objects.area.ActiveArea;
+include engine.util.u3d.AABB;
+include engine.util.u3d.Vector3;
 
 class NavArea extends ActiveArea {
 	protected string meshName;

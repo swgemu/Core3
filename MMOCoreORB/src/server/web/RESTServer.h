@@ -40,7 +40,7 @@ namespace server {
 
  private:
 	String mAuthHeader;
-	ArrayList<RESTEndpoint> mAPIEndpoints;
+	ArrayList<RESTEndpoint, ArrayListNoReallocTrait::value> mAPIEndpoints;
 	APIProxyPlayerManager* mPlayerManagerProxy;
 
 	void registerEndpoints();

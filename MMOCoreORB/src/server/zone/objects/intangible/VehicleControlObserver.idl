@@ -29,7 +29,7 @@ class VehicleControlObserver extends Observer {
 		
 		VehicleControlDevice dev = vehicleControlDevice;
 
-		if (dev != null) {
+		if (dev) {
 			CreatureObject creature = (CreatureObject) observable;
 			dev.cancelSpawnObject(creature);
 		}
