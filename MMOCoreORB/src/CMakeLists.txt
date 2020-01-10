@@ -96,7 +96,7 @@ if(ENABLE_ODB)
 endif(ENABLE_ODB)
 
 if(COMPILE_TESTS)
-	add_dependencies(core3 gmock idlobjects)
+	add_dependencies(core3 idlobjects)
 else(COMPILE_TESTS)
 	add_dependencies(core3 idlobjects)
 endif(COMPILE_TESTS)
@@ -111,11 +111,16 @@ set(whole_archive_start)
 set(whole_archive_end)
 
 # Add custom link options
-if(APPLE)
+if(WIN32)
+	set(whole_archive_start "")
+	set(whole_archive_end "")
+
+	set (CMAKE_LINK_WHAT_YOU_USE OFF) 
+elseif(APPLE)
 	set(whole_archive_start "-Wl,-all_load")
 	set(whole_archive_end "") #-Wl,-noall_load deprecated
 elseif(UNIX)
-	set(whole_archive_start "-Wl,--whole-archive")
+	set(whole_archive_start "-Wl,--whole-archive -Wl,--no-as-needed")
 	set(whole_archive_end "-Wl,--no-whole-archive")
 endif()
 
@@ -124,11 +129,14 @@ target_link_libraries(core3
 	${core3tests_libs} db3 conf3 web3 status3 ping3 login3 chat3 core3terrain core3templates core3pathfinding idlobjects
 	${whole_archive_end}
 	engine3
-	${gmock_libs} ${Boost_LIBRARIES}
-	${GCCLIBATOMIC_LIBRARY} Threads::Threads
-	${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES}
+	${gmock_libs}
+	${Boost_LIBRARIES}
+	${GCCLIBATOMIC_LIBRARY} ${PTHREAD_LIB_LINK} ${MYSQL_LIB}
+	${LUA_LIBRARIES}
 	${DB_LIBRARIES} ${OPENSSL_LIBRARIES}
 	${ZLIB_LIBRARIES} ${CMAKE_DL_LIBS})
+
+add_test(AllTestsInMain core3)
 
 if (NOT ENABLE_ASAN AND NOT ENABLE_TSAN AND NOT ENABLE_UBSAN AND JEMALLOC_FOUND AND ENABLE_JEMALLOC_LINK)
 	target_link_libraries(core3 ${JEMALLOC_LIBRARIES})

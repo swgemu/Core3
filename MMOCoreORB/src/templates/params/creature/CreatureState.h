@@ -13,6 +13,7 @@ class CreatureState : public Singleton<CreatureState>, public Logger, public Obj
 public:
 	HashTable<String, uint64> states;
 
+	//enum class State : __int64 {
 	enum {
 		INVALID                  = 0x00,
 		COVER                    = 0x01,
@@ -47,10 +48,10 @@ public:
 		PILOTINGSHIP             = 0x20000000,
 		SHIPOPERATIONS           = 0x40000000,
 		SHIPGUNNER               = 0x80000000,
-		SHIPINTERIOR             = (uint64) 1 << 32,
-		PILOTINGPOBSHIP          = (uint64) 1 << 33
 	};
 
+	static const uint64 SHIPINTERIOR = 1ull << 32;
+	static const uint64	PILOTINGPOBSHIP = 1ull << 33;
 
 	void loadStateData() {
 		UniqueReference<IffStream*> iffStream(TemplateManager::instance()->openIffFile("datatables/include/state.iff"));
