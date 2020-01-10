@@ -6,7 +6,8 @@ package server.zone.objects.area;
 
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.area.SpawnArea;
+
+include server.zone.objects.area.SpawnArea;
 include engine.log.Logger;
 import engine.core.ManagedObject;
 
@@ -25,7 +26,7 @@ class SpawnAreaObserver extends Observer implements Logger {
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		SpawnArea area = spawnArea;
 
-		if (area == null)
+		if (!area)
 			return 1;
 		else
 			return area.notifyObserverEvent(eventType, observable, arg1, arg2);

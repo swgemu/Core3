@@ -92,7 +92,7 @@ class ResourceContainer extends TangibleObject {
 	public string getSpawnName() {
 		string ret;
 
-		if (spawnObject != null) {
+		if (spawnObject) {
 			ret = spawnObject.getName();
 		}
 
@@ -103,7 +103,7 @@ class ResourceContainer extends TangibleObject {
 	public string getSpawnType() {
 		string ret;
 
-		if (spawnObject != null) {
+		if (spawnObject) {
 			ret = spawnObject.getType();
 		}
 
@@ -114,7 +114,7 @@ class ResourceContainer extends TangibleObject {
 	public unsigned long getSpawnID() {
 		unsigned long id = 0;
 
-		if (spawnObject != null) {
+		if (spawnObject) {
 			id = spawnObject.getObjectID();
 		}
 

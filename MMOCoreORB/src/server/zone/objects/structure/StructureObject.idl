@@ -490,7 +490,7 @@ class StructureObject extends TangibleObject {
 
 	@read
 	public boolean hasNavmesh() {
-		return navArea != null;
+		return navArea;
 	}
 
 	@preLocked

@@ -90,10 +90,10 @@ class SuiBox extends ManagedObject implements Logger {
 
 		CreatureObject strongRef = player;
 
-		if (strongRef != null) {
+		if (strongRef) {
 			PlayerObject ghost = strongRef.getPlayerObject();
 
-			if (ghost != null) {
+			if (ghost) {
 				boxID = ghost.getNewSuiBoxID(windowType);
 			}
 		}

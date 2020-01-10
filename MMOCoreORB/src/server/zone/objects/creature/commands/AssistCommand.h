@@ -29,7 +29,7 @@ public:
 			return INVALIDTARGET;
 
 		CreatureObject *targetCreo = targetObject->asCreatureObject();
-		unsigned long targetID = targetCreo->getTargetID();
+		uint64 targetID = targetCreo->getTargetID();
           
 		if(targetID == 0)
 			return INVALIDTARGET;
