@@ -80,7 +80,7 @@ class PlayerManagementSession extends Facade {
 	public int cancelSession() {
 		CreatureObject adm = admin;
 
-		if (adm != null)
+		if (adm)
 			adm.dropActiveSession(SessionFacadeType.PLAYERMANAGEMENT);
 
 		clearSession();

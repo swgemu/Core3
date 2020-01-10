@@ -10,7 +10,7 @@ import server.chat.room.ChatRoom;
 import engine.service.proto.BaseMessage;
 include server.zone.objects.group.GroupList;
 include server.zone.managers.group.GroupManager;
-import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
+include server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
 include server.chat.StringIdChatParameter;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
