@@ -79,7 +79,7 @@ class LairObject extends TangibleObject {
 	}
 
 	public void activateDespawnEvent() {
-		if (despawnEvent != null)
+		if (despawnEvent)
 			return;
 
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
@@ -87,7 +87,7 @@ class LairObject extends TangibleObject {
 	}
 
 	public void clearDespawnEvent() {
-		if (despawnEvent == null)
+		if (!despawnEvent)
 			return;
 
 		despawnEvent.cancel();

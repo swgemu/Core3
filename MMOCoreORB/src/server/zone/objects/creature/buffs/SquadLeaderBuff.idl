@@ -50,10 +50,10 @@ class SquadLeaderBuff extends Buff {
 
 	@preLocked
 	public void activate() {
-		if (player == null)
+		if (!player)
 			return;
 
-		if (leader == null || player.getGroupID() != leader.getGroupID()) {
+		if (!leader || player.getGroupID() != leader.getGroupID()) {
 			player.removeBuff(super.buffCRC);
 			return;
 		}
@@ -71,7 +71,7 @@ class SquadLeaderBuff extends Buff {
 
 	@dirty
 	public boolean qualifiesForActivation() {
-		if (player == null || leader == null || leader.isDead() || leader.isIncapacitated())
+		if (!player|| !leader || leader.isDead() || leader.isIncapacitated())
 			return false;
 
 		return SquadLeaderCommand.isValidGroupAbilityTarget(leader, player, false);
@@ -79,7 +79,7 @@ class SquadLeaderBuff extends Buff {
 
 	@read
 	public boolean checkRenew() {
-		if (leader == null || player == null || player.getGroupID() != leader.getGroupID()) {
+		if (!leader || !player || player.getGroupID() != leader.getGroupID()) {
 			return false;
 		}
 

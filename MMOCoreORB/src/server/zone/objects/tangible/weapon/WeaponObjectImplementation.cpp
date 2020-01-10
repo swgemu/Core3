@@ -499,8 +499,8 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) const {
 
 	float calcSpeed = speed + getConditionReduction(speed);
 
-	if (calcSpeed < 0.1)
-		calcSpeed = 0.1;
+	if (calcSpeed < 0.1f)
+		calcSpeed = 0.1f;
 
 	return calcSpeed;
 }

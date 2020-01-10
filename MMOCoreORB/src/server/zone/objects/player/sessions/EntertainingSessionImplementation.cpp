@@ -395,7 +395,7 @@ void EntertainingSessionImplementation::startDancing(const String& dance, const 
 
 	Locker locker(entertainer);
 
-	sendEntertainingUpdate(entertainer, /*0x3C4CCCCD*/0.0125, animation, 0x07339FF8, 0xDD);
+	sendEntertainingUpdate(entertainer, /*0x3C4CCCCD*/0.0125f, animation, 0x07339FF8, 0xDD);
 	performanceName = dance;
 	dancing = true;
 
@@ -415,7 +415,7 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 
 	ManagedReference<GroupObject*> group = entertainer->getGroup();
 
-	sendEntertainingUpdate(entertainer, 0.0125, instrumentAnimation, 0x07352BAC, instrid);
+	sendEntertainingUpdate(entertainer, 0.0125f, instrumentAnimation, 0x07352BAC, instrid);
 	performanceName = song;
 	playingMusic = true;
 

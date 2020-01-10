@@ -8,13 +8,15 @@
 
 package server.zone.objects.region;
 
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
+import system.thread.Mutex;
+import engine.util.u3d.AABB;
+import server.zone.objects.pathfinding.NavArea;
+
 include server.zone.ZoneReference;
+include server.zone.objects.region.Region;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
@@ -22,14 +24,13 @@ include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.events.CitizenAssessmentEvent;
 include system.thread.atomic.AtomicInteger;
 include pathfinding.RecastNavMesh;
-import system.thread.Mutex;
-import engine.util.u3d.AABB;
-import server.zone.objects.pathfinding.NavArea;
+include server.zone.objects.structure.StructureObject;
 include engine.core.ManagedObject;
 include system.util.Vector;
 include system.util.SortedVector;
 include system.util.VectorMap;
 include engine.log.Logger;
+include server.zone.objects.creature.CreatureObject;
 
 @json
 class CityRegion extends ManagedObject implements Logger {
@@ -341,7 +342,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public float getPositionX() {
 		Region aa = regions.get(0);
 
-		if (aa == null)
+		if (!aa)
 			return 0.0;
 
 		return aa.getPositionX();
@@ -351,7 +352,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public float getPositionY() {
 		Region aa = regions.get(0);
 
-		if (aa == null)
+		if (!aa)
 			return 0.0;
 
 		return aa.getPositionY();
@@ -367,7 +368,7 @@ class CityRegion extends ManagedObject implements Logger {
 
 		Region aa = regions.get(0);
 
-		if (aa == null)
+		if (!aa)
 			return 0.0;
 
 		return aa.getRadius();

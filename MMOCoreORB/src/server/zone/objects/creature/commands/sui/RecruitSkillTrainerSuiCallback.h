@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/city/CityManager.h"
 
 class RecruitSkillTrainerSuiCallback : public SuiCallback {
 public:

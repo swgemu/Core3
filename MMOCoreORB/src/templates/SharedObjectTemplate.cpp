@@ -185,7 +185,7 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		LuaObject obj(state);
 
 		if (obj.isValidTable()) {
-			for (int i = 1; i <= obj.getTableSize(); +i) {
+			for (int i = 1; i <= obj.getTableSize(); ++i) {
 				LuaObject group = obj.getObjectAt(i);
 
 				groupPermissions.put(group.getStringAt(1).hashCode(), group.getIntAt(2));
