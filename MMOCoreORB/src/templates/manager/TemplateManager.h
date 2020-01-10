@@ -55,6 +55,11 @@ public:
 	static Lua* luaTemplatesInstance;
 	static AtomicInteger loadedTemplatesCount;
 	static int ERROR_CODE;
+
+#ifdef PLATFORM_WIN
+#undef NO_ERROR
+#endif
+
 	enum TEMPLATE_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR, NO_TRE_PATH, NO_TRE_FILES,
 		LOAD_TRES_ERROR, SLOT_DEFINITION_FILE_NOT_FOUND,
 		ASSETCUSTOMIZATIONMANAGER_FILE_NOT_FOUND,

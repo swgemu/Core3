@@ -62,7 +62,7 @@ class SuiListBox extends SuiBox {
 			
 			SuiListBoxMenuItem menuItem = menuItems.get(idx);
 			
-			if (menuItem != null)
+			if (menuItem)
 				return menuItem.getObjectID();
 		}
 		

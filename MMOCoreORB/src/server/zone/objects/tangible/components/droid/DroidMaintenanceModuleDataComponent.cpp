@@ -2,6 +2,7 @@
  * 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
+#include "server/zone/objects/structure/StructureObject.h"
 #include "DroidMaintenanceModuleDataComponent.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
@@ -12,6 +13,7 @@
 #include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
 #include "server/zone/objects/creature/credits/CreditObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 DroidMaintenanceModuleDataComponent::DroidMaintenanceModuleDataComponent() {
 	setLoggingName("DroidMaintenanceModule");

@@ -9,6 +9,8 @@
 
 #include "engine/engine.h"
 
+#ifndef PLATFORM_WIN
+
 #include "system/thread/ChildProcess.h"
 
 #include "server/ServerCore.h"
@@ -41,6 +43,7 @@ public:
 	}
 };
 
+#endif
 
 #endif /* end of include guard COREPROCESS_H */
 

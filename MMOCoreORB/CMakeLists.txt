@@ -120,6 +120,18 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
+if(WIN32)
+	string(TOLOWER ${CMAKE_BUILD_TYPE} E3_BUILD_TYPE)
+
+	if(E3_BUILD_TYPE STREQUAL "debug")
+		set(PTHREAD_LIB_LINK pthreadVCE3d)
+	else()
+		set(PTHREAD_LIB_LINK pthreadVCE3)
+	endif()
+else()
+	set(PTHREAD_LIB_LINK Threads::Threads)
+endif()
+
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
@@ -166,11 +178,15 @@ endif(IDL_NOPRELOCKS)
 
 # Include googlemock and googletest
 if(COMPILE_TESTS)
-    add_subdirectory(utils/googletest-release-1.8.0/googlemock)
+	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googletest/include)
-    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.8.0/googlemock/include)
+    add_subdirectory(utils/googletest-release-1.10.0)
 
+    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.10.0/googletest/include)
+    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.10.0/googlemock/include)
+
+	enable_testing()
+	
     add_definitions(-DCOMPILE_CORE3_TESTS)
 else(COMPILE_TESTS)
     set(IDL_DIRECTIVES ${IDL_DIRECTIVES} -nomocks)
@@ -297,6 +313,7 @@ add_custom_target(update-engine3
 	COMMAND ${GIT_EXECUTABLE} submodule update --recursive --remote
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
+set_property(TARGET core3 PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 #message(STATUS "Compiler flags:" ${CMAKE_CXX_COMPILE_FLAGS})
