@@ -9,6 +9,7 @@ import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.managers.radial.RadialOptions;
+import server.zone.objects.scene.SceneObject;
 
 @json
 class ShipControlDevice extends ControlDevice {
@@ -31,14 +32,18 @@ class ShipControlDevice extends ControlDevice {
 
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
 
-			if (super.controlledObject == null) {
+			if (!super.controlledObject) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
-			} else if (player.getParent() == null) {
-				this.generateObject(player);
+			} else {
+				SceneObject parent = player.getParent();
+
+				if (!parent) {
+					this.generateObject(player);
+				}
 			}
 		} else if (selectedID == RadialOptions.VEHICLE_STORE) {
-			if (super.controlledObject == null) {
+			if (!super.controlledObject) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
 			} else {

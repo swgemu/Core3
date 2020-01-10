@@ -173,7 +173,7 @@ class MissionObject extends IntangibleObject {
 	public native void updateMissionLocation();
 
 	public void abort() {
-		if (missionObjective != null)
+		if (missionObjective)
 			missionObjective.abort();
 	}
 

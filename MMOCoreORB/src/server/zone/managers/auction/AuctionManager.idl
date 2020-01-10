@@ -125,7 +125,7 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public synchronized void updateVendorUID(SceneObject vendor, final string oldUID, final string newUID) {
 
-		if(auctionMap == null) {
+		if(!auctionMap) {
 			pendingUIDUpdates.put(vendor, newUID);
 			pendingOldUIDUpdates.put(vendor, oldUID);
 			return;

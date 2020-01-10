@@ -4,12 +4,12 @@
 
 package server.zone.managers.minigames;
 
-import engine.log.Logger;
-import server.zone.objects.creature.CreatureObject;
-import system.util.VectorMap;
-import system.util.Vector;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
+include engine.log.Logger;
+include server.zone.objects.creature.CreatureObject;
+include system.util.VectorMap;
+include system.util.Vector;
+include server.zone.objects.scene.SceneObject;
+include server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
 
 include engine.util.Observer;
 

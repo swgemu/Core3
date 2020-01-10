@@ -14,6 +14,7 @@
 #include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/objects/region/LuaCityRegion.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
