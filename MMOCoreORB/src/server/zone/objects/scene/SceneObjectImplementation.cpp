@@ -2000,13 +2000,27 @@ String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDe
 
 	// Spread the files out across directories
 	fileNameBuf << "exports";
+#ifdef PLATFORM_WIN
+	mkdir(fileNameBuf.toString().toCharArray());
+#else
 	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+#endif
 
 	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
+
+#ifdef PLATFORM_WIN
+	mkdir(fileNameBuf.toString().toCharArray());
+#else
 	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+#endif
 
 	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
+
+#ifdef PLATFORM_WIN
+	mkdir(fileNameBuf.toString().toCharArray());
+#else
 	mkdir(fileNameBuf.toString().toCharArray(), 0770);
+#endif
 
 	fileNameBuf << "/" << String::valueOf(oid) << "-" << now.getMiliTime() << ".json";
 

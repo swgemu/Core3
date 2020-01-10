@@ -11,8 +11,8 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
-float PowerupObjectImplementation::MAXPRIMARY = 33.16;
-float PowerupObjectImplementation::MAXSECONDARY = 16.33;
+float PowerupObjectImplementation::MAXPRIMARY = 33.16f;
+float PowerupObjectImplementation::MAXSECONDARY = 16.33f;
 
 void PowerupObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
