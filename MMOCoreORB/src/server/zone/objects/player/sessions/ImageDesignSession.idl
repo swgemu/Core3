@@ -94,7 +94,7 @@ class ImageDesignSession extends Facade {
 	
 	public void queueIdTimeoutEvent() {
 		synchronized (idTimeoutLock) {
-			if (idTimeoutEvent == null) {
+			if (!idTimeoutEvent) {
 				ImageDesignTimeoutEvent ev = new ImageDesignTimeoutEvent(this);
 			
 				idTimeoutEvent = ev;
@@ -107,7 +107,7 @@ class ImageDesignSession extends Facade {
 
 	public void dequeueIdTimeoutEvent() {
 		synchronized (idTimeoutLock) {
-			if (idTimeoutEvent != null) {
+			if (idTimeoutEvent) {
 			
 				if (idTimeoutEvent.isScheduled())
 					idTimeoutEvent.cancel();

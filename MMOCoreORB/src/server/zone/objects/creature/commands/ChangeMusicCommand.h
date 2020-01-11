@@ -96,7 +96,7 @@ public:
 		int instrid = performanceManager->getInstrumentId(args);
 		instrid += performanceManager->getInstrumentAnimation(instrument->getInstrumentType(), instrumentAnimation);
 
-		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125, instrumentAnimation, 0x07339FF8, instrid);
+		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125f, instrumentAnimation, 0x07339FF8, instrid);
 		session->setPerformanceName(args);
 
 		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);

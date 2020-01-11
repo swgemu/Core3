@@ -8,15 +8,15 @@ import system.util.SortedVector;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.structure.StructureObject;
-import server.zone.objects.building.BuildingObject;
 import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.scene.SceneObject;
 import system.thread.Mutex;
 import server.zone.objects.tangible.deed.Deed;
-import server.zone.managers.gcw.TerminalSpawn;
 
+include server.zone.objects.building.BuildingObject;
+include server.zone.managers.gcw.TerminalSpawn;
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;

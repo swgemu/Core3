@@ -71,7 +71,7 @@ void ClientCore::loginCharacter(int index) {
 
 		connectCount++;
 	} catch (Exception& e) {
-
+		e.printMessage();
 	}
 }
 

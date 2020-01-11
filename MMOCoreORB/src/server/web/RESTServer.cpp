@@ -1,3 +1,7 @@
+/*
+                Copyright <SWGEmu>
+        See file COPYING for copying conditions.*/
+
 /**
  * @author      : theanswer (theanswer@Victors-MacBook-Pro.local)
  * @file        : RESTServer
@@ -8,6 +12,9 @@
 
 #include "server/ServerCore.h"
 #include "RESTServer.h"
+#include "RESTEndpoint.h"
+#include "APIRequest.h"
+#include "APIProxyPlayerManager.h"
 
 using namespace server::web3;
 
@@ -46,14 +53,12 @@ namespace web3 {
 }
 
 void RESTServer::registerEndpoints() {
-	debug() << "Registering apiEndpoints...";
+	debug() << "Registering mAPIEndpoints...";
 
-	apiEndpoints.setNoDuplicateInsertPlan();
+	mAPIEndpoints.add(RESTEndpoint("GET:/v1/version/", {}, [this] (APIRequest& apiRequest) -> void {
+		auto result = JSONSerializationType::object();
 
-	apiEndpoints.put("GET:/v1/version/", [this] (http_request request, Vector<String> matches) -> void {
-		auto result = json::value();
-
-		result[U("api_version")] = json::value::number(1);
+		result["api_version"] = 1;
 
 		StringTokenizer revLines(ConfigManager::instance()->getRevision());
 		revLines.setDelimeter("\n");
@@ -61,27 +66,21 @@ void RESTServer::registerEndpoints() {
 		if (revLines.hasMoreTokens()) {
 			String revFirstLine;
 			revLines.getStringToken(revFirstLine);
-			result[U("core3_version")] = json::value::string(revFirstLine.toCharArray());
+			result["core3_version"] = revFirstLine;
 		}
 
-		success_response(request, result);
-	});
+		apiRequest.success(result);
+	}));
 
-	apiEndpoints.put("GET:/v1/object/", [this] (http_request request, Vector<String> matches) -> void {
-		const auto& uri = request.relative_uri();
-
-		auto get_vars = uri::split_query(uri.query());
-
-		auto find_oids = get_vars.find(U("oids"));
-
-		if (find_oids == get_vars.end()) {
-			error_response(request, "missing query field 'oids'");
+	mAPIEndpoints.add(RESTEndpoint("GET:/v1/object/", {}, [this] (APIRequest& apiRequest) -> void {
+		if (!apiRequest.hasQueryField("oids")) {
+			apiRequest.fail("missing query field 'oids'");
 			return;
 		}
 
-		nlohmann::json responses = nlohmann::json::array();
+		auto responses = JSONSerializationType::array();
 
-		StringTokenizer oidStrList(uri::decode(find_oids->second));
+		StringTokenizer oidStrList(apiRequest.getQueryFieldString("oids"));
 		oidStrList.setDelimeter(",");
 
 		int countFound = 0;
@@ -97,52 +96,41 @@ void RESTServer::registerEndpoints() {
 				if (obj != nullptr) {
 					ReadLocker lock(obj);
 
-					nlohmann::json jsonData;
+					JSONSerializationType jsonData;
 					obj->writeJSON(jsonData);
 
-					nlohmann::json entry;
+					JSONSerializationType entry;
 					entry[String::valueOf(oid)] = jsonData;
 
 					responses.push_back(entry);
 					countFound++;
 				}
 			} catch (const Exception& e) {
-				error() << e.getMessage();
+				apiRequest.fail("Exception looking up objects", "Exception: " + e.getMessage());
+				return;
 			}
 		}
 
 		debug() << "Found " << countFound << " object(s)";
 
 		if (responses.empty()) {
-			error_response(request, "Nothing found");
+			apiRequest.fail("Nothing found");
 		} else {
-			auto result = json::value();
+			JSONSerializationType result;
 
-			result[U("objects")] = json::value::parse(responses.dump());
+			result["objects"] = responses;
 
-			success_response(request, result);
+			apiRequest.success(result);
 		}
-	});
+	}));
 
-	apiEndpoints.put("POST:/v1/admin/console/(\\w+)/*(.*)", [this] (http_request request, Vector<String> matches) -> void {
+	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
 		StringBuffer buf;
 
-		for (int i = 1;i < matches.size();i++) {
-			auto match = matches.get(i);
+		buf << apiRequest.getPathFieldString("command");
 
-			if (!match.isEmpty()) {
-				buf << " " << match;
-			}
-		}
-
-		const auto& uri = request.relative_uri();
-
-		auto get_vars = uri::split_query(uri.query());
-
-		auto find_args = get_vars.find(U("args"));
-
-		if (find_args != get_vars.end()) {
-			buf << " " << uri::decode(find_args->second);
+		if (apiRequest.hasQueryField("args")) {
+			buf << " " << apiRequest.getQueryFieldString("args");
 		}
 
 		auto consoleCommand = buf.toString().trim();
@@ -151,18 +139,34 @@ void RESTServer::registerEndpoints() {
 
 		ServerCore::getInstance()->queueConsoleCommand(consoleCommand);
 
-		auto result = json::value();
+		JSONSerializationType result;
 
-		result[U("console_command")] = json::value::string(consoleCommand.toCharArray());
+		result["console_command"] = consoleCommand;
 
-		success_response(request, result);
-	});
+		apiRequest.success(result);
+	}));
 
-	debug() << "Registered " << apiEndpoints.size() << " endpoint(s)";
+	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
+		try {
+			mPlayerManagerProxy->handle(apiRequest);
+		} catch (http_exception const & e) {
+			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+		}
+	}));
+
+	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
+		try {
+			mPlayerManagerProxy->handle(apiRequest);
+		} catch (http_exception const & e) {
+			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+		}
+	}));
+
+	debug() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
 }
 
-void RESTServer::routeRequest(http_request request) {
-	if (!check_auth(request)) {
+void RESTServer::routeRequest(http_request& request) {
+	if (!checkAuth(request)) {
 		request.reply(status_codes::Forbidden, U("Invalid API Token"));
 		return;
 	}
@@ -175,121 +179,57 @@ void RESTServer::routeRequest(http_request request) {
 		endpointKey += "/";
 	}
 
-	VectorMapEntry<String, Function<void(http_request request, Vector<String> matches)>> hitEntry;
-	int hitLength = 0;
-	std::regex hitRegex;
+	try {
+		RESTEndpoint hitEndpoint;
 
-	for (auto entry : apiEndpoints) {
-		auto regex = entry.getKey();
-
-		std::regex re(regex.toCharArray());
-
-		if (std::regex_search(endpointKey.toCharArray(), re)) {
-			if (regex.length() > hitLength) {
-				hitLength = regex.length();
-				hitRegex = re;
-				hitEntry = entry;
+		for (auto endpoint : mAPIEndpoints) {
+			if (endpoint.isMatch(endpointKey) && endpoint.getWeight() > hitEndpoint.getWeight()) {
+				hitEndpoint = endpoint;
 			}
 		}
-	}
 
-	if (hitLength > 0) {
-		// Parse any regex hits for this path
-		Vector<String> matches;
-		std::cmatch reMatches;
-
-		if (std::regex_match (endpointKey.toCharArray(), reMatches, hitRegex)) {
-			for (auto reMatch : reMatches) {
-				matches.add(String(reMatch));
-			}
+		if (hitEndpoint.getWeight() == 0) {
+			request.reply(status_codes::NotFound, U("Invalid resource"));
+			return;
 		}
 
 		if (getLogLevel() >= Logger::DEBUG) {
 			auto msg = debug();
+			auto pathFields = hitEndpoint.getPathFields(endpointKey);
 
-			msg << "HIT: " << hitEntry.getKey();
+			msg << "HIT: " << hitEndpoint.toString();
 
-			if (matches.size() > 0) {
-				msg << " Matches: ";
-				for (auto match : matches) {
-					msg << "[" << match << "]";
-				}
+			auto pathFieldIter = pathFields.iterator();
+
+			while (pathFieldIter.hasNext()) {
+				String fieldName, fieldValue;
+				pathFieldIter.getNextKeyAndValue(fieldName, fieldValue);
+
+				msg << " " << fieldName << "=[" << fieldValue << "]";
 			}
 
 			msg.flush();
 		}
 
-		hitEntry.getValue()(request, matches);
-		return;
+		Core::getTaskManager()->executeTask([=] {
+			try {
+				auto apiRequest = APIRequest(request, endpointKey, getLogLevel());
+
+				hitEndpoint.handle(apiRequest);
+			} catch (Exception& e) {
+				error() << "Unexpected exception in RESTAPITask: " + e.getMessage();
+				request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
+			}
+		}, "RESTAPITask-" + hitEndpoint.toString(), "slowQueue");
+	} catch (Exception& e) {
+		error() << "Unexpected exception in request router: " + e.getMessage();
+		request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
 	}
-
-	error_response(request, "Invalid resouce");
 }
 
-void RESTServer::error_response(http_request request, String errorMessage) {
-	const auto& uri = request.absolute_uri();
-
-	error()
-		<< request.method()
-		<< " " << request.relative_uri()
-		<< " error: " << errorMessage
-		;
-
-	auto result = json::value();
-
-	result[U("status")] = json::value::string(U("ERROR"));
-	result[U("error")] = json::value::string(errorMessage.toCharArray());
-
-	http_response response(status_codes::Accepted);
-
-	response.set_status_code(status_codes::NotFound);
-
-	response.set_body(result);
-
-	request.reply(response);
-}
-
-void RESTServer::success_response(http_request request, json::value result) {
-	result[U("status")] = json::value::string(U("OK"));
-
-	auto resultStr = String(result.serialize());
-
-	if (resultStr.length() > 255) {
-		resultStr = resultStr.subString(0, 252) + "...";
-	}
-
-	info(true)
-		<< request.method()
-		<< " " << request.relative_uri()
-		<< " result=" <<  resultStr
-		;
-
-	http_response response(status_codes::Accepted);
-
-	response.set_status_code(status_codes::OK);
-
-	response.set_body(result);
-
-	request.reply(response);
-}
-
-bool RESTServer::check_auth(http_request request) {
-	static String authHeader;
-
-	if (authHeader.isEmpty()) {
-		auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
-
-		if (apiAuthToken.length() == 0) {
-			error() << "Core3.RESTServer.APIToken not set, refusing to authorize API call.";
-			return false;
-		}
-
-		if (apiAuthToken.length() < 15) {
-			error() << "Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API call.";
-			return false;
-		}
-
-		authHeader = "Bearer " + apiAuthToken;
+bool RESTServer::checkAuth(http_request& request) {
+	if (mAuthHeader.isEmpty()) {
+		return false;
 	}
 
 	auto headers = request.headers();
@@ -299,45 +239,7 @@ bool RESTServer::check_auth(http_request request) {
 
 	auto requestToken = String(headers[header_names::authorization]);
 
-	return requestToken == authHeader;
-}
-
-const String RESTServer::getJsonString(json::value jvalue, const String& fieldName, bool required, const String& defaultValue) {
-	if (!jvalue.has_field(fieldName)) {
-		if (required) {
-			throw InvalidRequest("Invalid request, missing field: " + fieldName);
-		}
-
-		return defaultValue;
-	}
-
-	auto value = jvalue[U(fieldName)];
-
-	if (value.is_string()) {
-		return value.as_string();
-	}
-
-	throw InvalidRequest("Invalid request, invalid value type for field " + fieldName);
-}
-
-uint64_t RESTServer::getJsonUnsignedLong(json::value jvalue, const String& fieldName, bool required, uint64_t defaultValue) {
-	if (!jvalue.has_field(fieldName)) {
-		if (required) {
-			throw InvalidRequest("Invalid request, missing field: " + fieldName);
-		}
-
-		return defaultValue;
-	}
-
-	auto value = jvalue[U(fieldName)];
-
-	if (value.is_string()) {
-		return UnsignedLong::valueOf(value.as_string());
-	} else if (value.is_number()) {
-		return value.as_number().to_uint64();
-	}
-
-	throw InvalidRequest("Invalid request, invalid value type for field " + fieldName);
+	return requestToken == mAuthHeader;
 }
 
 void RESTServer::start() {
@@ -348,6 +250,22 @@ void RESTServer::start() {
 	if (restListener != nullptr) {
 		info() << "shutting down previous listener";
 		restListener->close().wait();
+	}
+
+	auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
+
+	if (apiAuthToken.length() == 0) {
+		error() << "Core3.RESTServer.APIToken not set, refusing to authorize API calls";
+	} else if (apiAuthToken.length() < 15) {
+		error() << "Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API calls";
+	} else {
+		mAuthHeader = "Bearer " + apiAuthToken;
+	}
+
+	mPlayerManagerProxy = new APIProxyPlayerManager();
+
+	if (mPlayerManagerProxy == nullptr) {
+		throw OutOfMemoryError();
 	}
 
 	port = ConfigManager::instance()->getRESTPort();
@@ -398,10 +316,7 @@ void RESTServer::start() {
 
 	restListener = new http_listener(("https://0.0.0.0:" + String::valueOf(port)).toCharArray(), serverConfig);
 
-	restListener->support(methods::GET, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::POST, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::PUT, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::DEL, [this](http_request request) { routeRequest(request); });
+	restListener->support([this](http_request request) { routeRequest(request); });
 
 	try {
 		restListener->open()
@@ -421,7 +336,12 @@ void RESTServer::stop() {
 		restListener = nullptr;
 	}
 
+	if (mPlayerManagerProxy != nullptr) {
+		mPlayerManagerProxy = nullptr;
+	}
+
 	crossplat::threadpool::shared_instance().service().stop();
 	info(true) << "shut down thread pool";
 }
+
 #endif // WITH_REST_API

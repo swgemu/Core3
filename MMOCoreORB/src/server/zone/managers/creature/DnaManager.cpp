@@ -82,7 +82,7 @@ int DnaManager::generateXp(int creatureLevel) {
 	float x2 = 0.0025801845 * (creatureLevel * 3);
 	float x3 = 0.1673150401 * (creatureLevel * 2);
 	float x4 = 6.757844921 * creatureLevel;
-	float x5 = 46.75746899;
+	float x5 = 46.75746899f;
 	return (int)ceil(x1-x2+x3+x4+x5);
 }
 int DnaManager::addQualityTemplate(lua_State * L) {

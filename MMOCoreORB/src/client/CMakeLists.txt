@@ -11,7 +11,7 @@ add_executable(core3client ${core3client_sources} ${core3client_headers})
 
 add_dependencies(core3client engine3)
 
-target_link_libraries(core3client engine3 ${ZLIB_LIBRARIES} ${GCCLIBATOMIC_LIBRARY} Threads::Threads ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES})
+target_link_libraries(core3client engine3 ${ZLIB_LIBRARIES} ${GCCLIBATOMIC_LIBRARY} ${PTHREAD_LIB_LINK} ${MYSQL_LIB} ${LUA_LIBRARIES} ${DB_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES})
 
 if(ENABLE_MULTITHREADED_LINKER)
 	use_gold(core3client)

@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/sui/LoadStimpackSuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 DroidStimpackModuleDataComponent::DroidStimpackModuleDataComponent() {
 	setLoggingName("DroidStimpackModule");

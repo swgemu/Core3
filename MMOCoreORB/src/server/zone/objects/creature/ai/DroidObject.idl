@@ -9,7 +9,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.ai.AiAgent;
-import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
+include server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.objects.structure.StructureObject;
 include system.util.Vector;

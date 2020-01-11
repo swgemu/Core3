@@ -594,51 +594,64 @@ bool PlayerManagerImplementation::existsPlayerCreatureOID(uint64 oid) {
 }
 
 bool PlayerManagerImplementation::kickUser(const String& name, const String& admin, String& reason, bool doBan) {
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-
-	if (chatManager == nullptr)
-		return false;
-
-	ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
+	Reference<CreatureObject*> player = getPlayer(name);
 
 	if (player == nullptr)
 		return false;
 
-	ManagedReference<CreatureObject*> adminplayer = chatManager->getPlayer(admin);
+	Reference<CreatureObject*> adminPlayer = getPlayer(admin);
 
-	if (adminplayer == nullptr)
+	if (adminPlayer == nullptr)
 		return false;
+
+	info(true) << admin << (doBan ? " kickbanned " : " kicked ") << name << " for '" << reason << "'";
+
+	StringBuffer buf;
+	buf << "You have been kicked by " << admin << " for '" << reason << "'";
+	auto kickMessage = buf.toString();
+
+	player->sendSystemMessage(kickMessage);
+
+	ErrorMessage* errmsg = new ErrorMessage(admin, kickMessage, 0);
+	player->sendMessage(errmsg);
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-
-	Reference<PlayerObject*> adminghost = adminplayer->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-	if (adminghost == nullptr)
-		return false;
-
-	StringBuffer kickMessage;
-	kickMessage << "You have been kicked by " << admin << " for '" << reason << "'";
-	player->sendSystemMessage(kickMessage.toString());
 
 	if (ghost != nullptr)
 		ghost->setLoggingOut();
 
-	ErrorMessage* errmsg = new ErrorMessage(admin, "You have been kicked", 0);
-	player->sendMessage(errmsg);
-
 	player->sendMessage(new LogoutMessage());
 
-	ManagedReference<ZoneClientSession*> session = player->getClient();
+	Core::getTaskManager()->scheduleTask([
+			this, playerCreo = Reference<CreatureObject*>(player), adminCreo = Reference<CreatureObject*>(adminPlayer), reason, doBan] {
 
-	if (session != nullptr)
-		session->disconnect(true);
+		Reference<ZoneClientSession*> session = playerCreo->getClient();
 
-	/// 10 min ban
-	if (doBan) {
-		String banMessage = banAccount(adminghost, ghost->getAccount(), 60 * 10, reason);
-		adminplayer->sendSystemMessage(banMessage);
-	}
+		if (session != nullptr)
+			session->disconnect(true);
+
+		Reference<PlayerObject*> ghost = playerCreo->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+		if (ghost == nullptr)
+			return;
+
+		Reference<Account*> account = ghost->getAccount();
+
+		if (account == nullptr)
+			return;
+
+		if (doBan) {
+			Reference<PlayerObject*> adminGhost = adminCreo->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+			if (adminGhost != nullptr) {
+				String banMessage = banAccount(adminGhost, account, 60 * 10, reason);
+
+				adminCreo->sendSystemMessage(banMessage);
+			}
+		} else {
+			adminCreo->sendSystemMessage("Kicked " + playerCreo->getFirstName() + " on account " + account->getUsername() + ".");
+		}
+	}, "kickUserTask", 500);
 
 	return true;
 }
@@ -3782,8 +3795,16 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	Locker locker(account);
 
 	account->setBanReason(reason);
-	account->setBanExpires(System::getMiliTime() + seconds*1000);
+	account->setBanExpires(System::getMiliTime() + seconds * 1000);
 	account->setBanAdmin(admin->getAccountID());
+
+	StringBuffer banResult;
+
+	Time expireTime;
+
+	expireTime.addMiliTime(seconds * 1000);
+
+	banResult << "Account \"" + account->getUsername() + "\" successfully banned until " << expireTime.getFormattedTime() + " server time";
 
 	try {
 		Reference<const CharacterList*> characters = account->getCharacterList();
@@ -3808,10 +3829,12 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 			}
 		}
 	} catch(Exception& e) {
-		return "Account Successfully Banned, but error kicking characters. " + e.getMessage();
+		banResult << ", error kicking characters: " + e.getMessage();
 	}
 
-	return "Account Successfully Banned";
+	banResult << ".";
+
+	return banResult.toString();
 }
 
 String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* account, const String& reason) {

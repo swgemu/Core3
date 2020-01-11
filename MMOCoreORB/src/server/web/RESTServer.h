@@ -1,3 +1,7 @@
+/*
+                Copyright <SWGEmu>
+        See file COPYING for copying conditions.*/
+
 /**
  * @author      : theanswer (theanswer@Victors-MacBook-Pro.local)
  * @file        : RESTServer
@@ -22,6 +26,10 @@ namespace web {
 
 namespace server {
  namespace web3 {
+ class APIRequest;
+ class APIProxyPlayerManager;
+ class RESTEndpoint;
+
  using namespace web;
  using namespace web::http;
 
@@ -31,15 +39,13 @@ namespace server {
 	uint16 port;
 
  private:
-	VectorMap<String, Function<void(http_request request, Vector<String> matches)>> apiEndpoints;
+	String mAuthHeader;
+	ArrayList<RESTEndpoint, ArrayListNoReallocTrait::value> mAPIEndpoints;
+	APIProxyPlayerManager* mPlayerManagerProxy;
 
 	void registerEndpoints();
-	void routeRequest(http_request request);
-	void error_response(http_request request, String errorMessage);
-	void success_response(http_request request, json::value result);
-	bool check_auth(http_request request);
-	const String getJsonString(json::value jvalue, const String& fieldName, bool required=true, const String& defaultValue="");
-	uint64_t getJsonUnsignedLong(json::value jvalue, const String& fieldName, bool required=true, uint64_t defaultValue=0);
+	bool checkAuth(http_request& request);
+	void routeRequest(http_request& request);
 
  public:
 	RESTServer();
@@ -48,12 +54,6 @@ namespace server {
 	void start();
 
 	void stop();
-};
-
-class InvalidRequest : public Exception {
- public:
-	InvalidRequest(const String& msg) : Exception(msg) {
-	}
 };
 
 }

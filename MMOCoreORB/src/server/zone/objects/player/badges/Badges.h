@@ -96,7 +96,7 @@ public:
 		j["badgeTotal"] = b.badgeTotal;
 	}
 
-	void setBadge(const uint badgeid) {
+	void setBadge(const uint32 badgeid) {
 		const Badge* badge = BadgeList::instance()->get(badgeid);
 		setBadge(badge);
 	}

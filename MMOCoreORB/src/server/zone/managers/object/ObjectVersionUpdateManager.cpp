@@ -356,7 +356,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
 
 			int useCount = 0;
-			uint objCRC = 0;
+			uint32 objCRC = 0;
 			AbilityListMigrator abilityList;
 
 			String className;
@@ -429,7 +429,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 			try {
 				if (!Serializable::getVariable<int>(STRING_HASHCODE("TangibleObject.useCount"), &useCount, &objectData) ||
-						!Serializable::getVariable<uint>(STRING_HASHCODE("SceneObject.serverObjectCRC"), &objCRC, &objectData)) {
+						!Serializable::getVariable<uint32>(STRING_HASHCODE("SceneObject.serverObjectCRC"), &objCRC, &objectData)) {
 					objectData.clear();
 					continue;
 				}

@@ -3132,8 +3132,12 @@ void AiAgentImplementation::clearCreatureBit(uint32 option) {
 		creatureBitmask = creatureBitmask & ~option;
 	}
 }
+
+bool AiAgentImplementation::isPet() const {
+	return (getControlDevice() != nullptr);
+}
+
 void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardData& data) {
 	blackboard.drop(key);
 	blackboard.put(key, data);
 }
-

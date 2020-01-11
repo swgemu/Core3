@@ -161,7 +161,7 @@ public:
 	}
 
 	void setActiveMinefield(int indx, uint64 minefieldOID) {
-		minefieldSlots.get(indx) == minefieldOID;
+		minefieldSlots.get(indx) = minefieldOID;
 	}
 
 	void initializeTransientMembers();

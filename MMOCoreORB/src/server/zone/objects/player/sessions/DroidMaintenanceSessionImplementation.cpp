@@ -18,6 +18,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/intangible/tasks/StorePetTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 void DroidMaintenanceSessionImplementation::initialize() {
 	ManagedReference<CreatureObject*> creature = this->player.get();
