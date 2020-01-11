@@ -2000,29 +2000,21 @@ String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDe
 
 	// Spread the files out across directories
 	fileNameBuf << "exports";
-#ifdef PLATFORM_WIN
-	mkdir(fileNameBuf.toString().toCharArray());
-#else
-	mkdir(fileNameBuf.toString().toCharArray(), 0770);
-#endif
+	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
+		warning() << "could not create " << fileNameBuf << " directory";
+	}
 
-	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
+	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
+	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
+		warning() << "could not create " << fileNameBuf << " directory";
+	}
 
-#ifdef PLATFORM_WIN
-	mkdir(fileNameBuf.toString().toCharArray());
-#else
-	mkdir(fileNameBuf.toString().toCharArray(), 0770);
-#endif
+	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
+	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
+		warning() << "could not create " << fileNameBuf << " directory";
+	}
 
-	fileNameBuf << "/" << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
-
-#ifdef PLATFORM_WIN
-	mkdir(fileNameBuf.toString().toCharArray());
-#else
-	mkdir(fileNameBuf.toString().toCharArray(), 0770);
-#endif
-
-	fileNameBuf << "/" << String::valueOf(oid) << "-" << now.getMiliTime() << ".json";
+	fileNameBuf << File::directorySeparator() << oid << "-" << now.getMiliTime() << ".json";
 
 	String fileName = fileNameBuf.toString();
 

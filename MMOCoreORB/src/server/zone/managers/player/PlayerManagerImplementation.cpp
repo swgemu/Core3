@@ -6184,22 +6184,24 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 	// Write who file
 	try {
 		// Write a new "current status" file
-		FileWriter* logFile = new FileWriter(new File("log/who.json.next"), false);
+		File file("log/who.json.next");
+		FileWriter logFile(&file, false);
 
-		(*logFile) << logLine;
+		logFile << logLine;
 
-		logFile->close();
-
-		delete logFile->getFile();
-		delete logFile;
+		logFile.close();
 
 		// Update current status file
+#ifdef PLATFORM_WIN
+		std::remove("log/who.json");
+#endif
 		int err = std::rename("log/who.json.next", "log/who.json");
 
-		if (err != 0)
-			error("Failed to rename log/who.json.next to log/who.json err = " + String::valueOf(err));
-	} catch (Exception& e) {
-		error("logOnlinePlayers failed to write log/who.json: " + e.getMessage());
+		if (err != 0) {
+			error() << "Failed to rename log/who.json.next to log/who.json err = " << err;
+		}
+	} catch (const Exception& e) {
+		error() << "logOnlinePlayers failed to write log/who.json: " << e.getMessage();
 	}
 
 	if (onlyWho)
@@ -6221,20 +6223,18 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 			int err = std::rename(fileName.toCharArray(), archiveFilename.toString().toCharArray());
 
 			if (err != 0)
-				error("Failed to archive online-players to " + archiveFilename.toString() + " err = " + String::valueOf(err));
+				error() << "Failed to archive online-players to " << archiveFilename.toString() << " err = " << err;
 		}
 	}
 
 	try {
 		// Append log file with this entry
-		FileWriter* logFile = new FileWriter(new File(fileName), true);
+		File file(fileName);
+		FileWriter logFile(&file, true);
 
-		(*logFile) << logLine;
+		logFile << logLine;
 
-		logFile->close();
-
-		delete logFile->getFile();
-		delete logFile;
+		logFile.close();
 
 		logfileLock.release();
 
@@ -6261,7 +6261,7 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 			lastOnlinePlayerLogMsg.updateToCurrentTime();
 			onlinePlayerLogSum = LogSum;
 		}
-	} catch (Exception& e) {
-		error("logOnlinePlayers failed to write " + fileName + ": " + e.getMessage());
+	} catch (const Exception& e) {
+		error() << "logOnlinePlayers failed to write " << fileName << ": " << e.getMessage();
 	}
 }
