@@ -1360,64 +1360,56 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@local
 	@read
 	public boolean isVendor() {
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isVendorData();
 	}
 
 	@local
 	@read
 	public boolean isGCWBase(){
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();
 	}
 
 	@local
 	@read
 	public boolean isTurret() {
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isTurretData();
 	}
 
 	@local
 	@read
 	public boolean isMinefield(){
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isMinefieldData();
 	}
 
 	@local
 	@read
 	public boolean isDetector() {
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isDetectorData();
 	}
 
 	@local
 	@read
 	public boolean isSecurityTerminal(){
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isSecurityTerminalData();
 	}
 
 	@local
 	@read
 	public boolean isTurretControlTerminal(){
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isTurretControlTerminalData();
 	}
 
 	@local
 	@read
 	public boolean isEventPerk() {
-		return dataObjectComponent &&
-		dataObjectComponent.get() != null &&
+		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isEventPerkData();
 	}
 
