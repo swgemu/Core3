@@ -11,9 +11,6 @@
 
 #include "server/features/Features.h"
 
-#include <map>
-#include <string>
-
 namespace server {
 	namespace zone{
 		class ZoneServer;
@@ -52,8 +49,6 @@ namespace engine {
 	}
 }
 
-//#define UNORDERED_MAP_CONSOLE_COMMANDS
-
 class ServerCore : public Core, public Logger {
 	Pipe consoleCommandPipe;
 	ConfigManager* configManager;
@@ -85,11 +80,8 @@ public:
 
 private:
 	using CommandFunctionType = Function<CommandResult(const String & arguments)>;
-#ifndef UNORDERED_MAP_CONSOLE_COMMANDS
+
 	VectorMap<String, CommandFunctionType> consoleCommands;
-#else
-	std::unordered_map<std::string, CommandFunctionType> consoleCommands;
-#endif
 
 	bool handleCmds;
 

@@ -95,16 +95,10 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 void ServerCore::registerConsoleCommmands() {
 	debug() << "registering console commands...";
 
-#ifndef UNORDERED_MAP_CONSOLE_COMMANDS
 	consoleCommands.setNoDuplicateInsertPlan();
-#endif
 
 	const auto addCommand = [this](auto name, auto lambda) {
-#ifdef UNORDERED_MAP_CONSOLE_COMMANDS
-		consoleCommands[name] = lambda;
-#else
 		consoleCommands.put(name, lambda);
-#endif
 	};
 
 	addCommand("exit", [this](const String& arguments) -> CommandResult {
@@ -199,11 +193,7 @@ void ServerCore::registerConsoleCommmands() {
 		System::out << "available commands: ";
 
 		for (const auto& entry : consoleCommands) {
-#ifndef UNORDERED_MAP_CONSOLE_COMMANDS
 			System::out << entry.getKey() << "  ";
-#else
-			System::out << entry.first << "  ";
-#endif
 		}
 
 		System::out << endl;
@@ -891,13 +881,8 @@ ServerCore::CommandResult ServerCore::processConsoleCommand(const String& comman
 
 		auto it = consoleCommands.find(command);
 
-#ifndef UNORDERED_MAP_CONSOLE_COMMANDS
 		if (it != consoleCommands.npos) {
 			result = consoleCommands.get(it)(arguments);
-#else
-		if (it != consoleCommands.end()) {
-			result = it->second(arguments);
-#endif
 		} else {
 			result = CommandResult::NOTFOUND;
 		}
