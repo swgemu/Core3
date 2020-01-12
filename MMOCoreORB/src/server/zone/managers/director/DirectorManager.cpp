@@ -318,7 +318,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->init();
 	luaEngine->setLoggingName("DirectorManagerLuaInstance");
 	luaEngine->setGlobalLogging(true);
-	luaEngine->setLogging(true);
+
+	if (DEBUG_MODE) {
+		luaEngine->setLogLevel(Logger::DEBUG);
+	} else {
+		luaEngine->setLogLevel(Logger::INFO);
+	}
 
 	luaEngine->setFileLogger("log/lua.log", true);
 	luaEngine->setLogJSON(ConfigManager::instance()->getLuaLogJSON());
