@@ -28,6 +28,9 @@ namespace server {
 	using namespace web::http;
 
 	class APIRequest : public Logger {
+	public:
+		// using APIRequestLoggerCallback = Function<int(LogLevel level, const char* message, const APIRequest& apiRequest)>;
+
 	private:
 		Time mStartTime;
 		String mTrxId;
@@ -45,11 +48,14 @@ namespace server {
 		bool parseQueryFields();
 		void reply(JSONSerializationType result, const String& status, APIRequestStatusValue status_code);
 
+		using APIRequestLogCallback = Function<void(const char *msg, LogLevel type, bool forceSync)>;
+
 	public:
-		APIRequest(http_request gatewayRequest, const String endpointKey, Logger::LogLevel logLevel = Logger::INFO);
+		APIRequest(http_request gatewayRequest, const String endpointKey, Logger& logger);
 		~APIRequest();
 
 		String toString() const;
+		String toStringData() const;
 
 		inline bool isMethodGET() const {
 			return mGatewayRequest.method() == "GET";

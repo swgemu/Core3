@@ -57,6 +57,7 @@ class RESTEndpoint {
 		int getWeight() const;
 		HashTable<String, String> getPathFields(const String& endpointKey) const;
 		void handle(APIRequest& apiRequest) const;
+		String toStringData() const;
 };
 
 }
