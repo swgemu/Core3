@@ -72,6 +72,22 @@ namespace login {
 			session->info(msg, doLog);
 		}
 
+		auto error() const {
+			return session->error();
+		}
+
+		auto info(bool val) const {
+			return session->info(val);
+		}
+
+		auto warning() const {
+			return session->warning();
+		}
+
+		auto debug() const {
+			return session->debug();
+		}
+
 		ServiceClient* getSession() {
 			return session;
 		}

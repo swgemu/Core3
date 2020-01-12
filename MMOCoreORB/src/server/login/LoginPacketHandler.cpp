@@ -16,7 +16,7 @@ LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplem
 
 	processServer = serv;
 
-	server = processServer->getLoginServer();
+	server = processServer->getLoginServer().get();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -99,7 +99,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 			dbDelete = 1;
 
 			error() << "Could not move character to deleted_characters table. " << endl <<
-				"QUERY: " << moveStatement.toString();
+				"QUERY: " << moveStatement;
 
 		}
 
@@ -109,7 +109,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 			dbDelete = 1;
 
 			error() << "Could not verify character was moved to deleted_characters " << endl <<
-				"QUERY: " << moveStatement.toString();
+				"QUERY: " << moveStatement;
 		}
 
 	} catch (const Exception& e) {
@@ -124,12 +124,10 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
 			if (deleteResults == nullptr || deleteResults.get()->getRowsAffected() == 0) {
 				error() << "Unable to delete character from character table. " << endl
-					<< "QUERY: " << deleteStatement.toString();
+					<< "QUERY: " << deleteStatement;
 
 				dbDelete = 1;
 			}
-
-
 		} catch (const Exception& e) {
 			error() << e.getMessage();
 			dbDelete = 1;

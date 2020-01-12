@@ -113,4 +113,9 @@ void ServerDatabase::updateDatabaseSchema() {
 		"ALTER TABLE `session_stats`"
 		" ADD COLUMN `uptime` INT(11) DEFAULT '-1' AFTER `timestamp`;"
 	);
+
+	alterDatabase(1004,
+		"ALTER TABLE `sessions`"
+		" MODIFY `session_id` CHAR(255) NOT NULL;"
+	);
 }
