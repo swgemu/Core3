@@ -109,12 +109,15 @@ void APIProxyPlayerManager::handle(APIRequest& apiRequest) {
 			return;
 		}
 
-		result["character_name"] = characterName;
+		result["action"] = expires > 0 ? "kickbanned player" : "kicked player";
+		result["target"] = characterName;
 
 		if (!playerManager->kickUser(characterName, adminName, reason, expires > 0 ? true : false)) {
 			apiRequest.fail("kickUser failed");
 			return;
 		}
+
+		result["action_result"] = "SUCCESS";
 	} else if (command == "ban") {
 		Reference<CreatureObject*> adminCreo = playerManager->getPlayer(adminName);
 
@@ -142,7 +145,9 @@ void APIProxyPlayerManager::handle(APIRequest& apiRequest) {
 		String banResult;
 
 		if (galaxyID == 0 || characterID == 0) {
-			banResult = playerManager->banAccount(adminGhost, account, expires, reason);
+			result["action"] = "banned account";
+			result["target"] = account->getUsername();
+			result["action_result"] = playerManager->banAccount(adminGhost, account, expires, reason);
 		} else {
 			auto characterName = playerManager->getPlayerName(characterID);
 
@@ -151,15 +156,21 @@ void APIProxyPlayerManager::handle(APIRequest& apiRequest) {
 				return;
 			}
 
-			result["character_name"] = characterName;
-
-			banResult = playerManager->banCharacter(adminGhost, account, characterName, galaxyID, expires, reason);
+			result["action"] = "banned player";
+			result["target"] = characterName;
+			result["action_result"] = playerManager->banCharacter(adminGhost, account, characterName, galaxyID, expires, reason);
 		}
 
-		result["ban_result"] = banResult;
-
-		adminCreo->sendSystemMessage("API command ban: " + banResult);
+		adminCreo->sendSystemMessage("API command ban: " + String(result["action_result"]));
 	}
+
+	apiRequest.info(true)
+		<< adminName << " "
+		<< result["action"].get<std::string>() << " "
+		<< result["target"].get<std::string>() << " "
+		<< "for '" << reason << "' "
+		<< "expires = " << expires << ", "
+		<< "result = " << result["action_result"].get<std::string>();
 
 	apiRequest.success(result);
 }

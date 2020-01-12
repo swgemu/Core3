@@ -54,6 +54,10 @@ String RESTEndpoint::toString() const {
 	return buf.toString();
 }
 
+String RESTEndpoint::toStringData() const {
+	return toString();
+}
+
 bool RESTEndpoint::isMatch(const String& endpointKey) const {
 	return std::regex_search(endpointKey.toCharArray(), mRegEx);
 }

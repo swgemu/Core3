@@ -20,6 +20,10 @@ using namespace server::web3;
 
 RESTServer::RESTServer() {
 	setLoggingName("RESTServer");
+	setFileLogger("log/core3_api.log", true);
+	setLogToConsole(false);
+	setGlobalLogging(false);
+	setLogging(true);
 	doRun.set(true);
 }
 
@@ -53,9 +57,14 @@ namespace web3 {
 }
 
 void RESTServer::registerEndpoints() {
-	debug() << "Registering mAPIEndpoints...";
+	const auto addEndpoint = [this](auto endpoint) {
+		mAPIEndpoints.add(endpoint);
+		info() << "Registered " << endpoint;
+	};
 
-	mAPIEndpoints.add(RESTEndpoint("GET:/v1/version/", {}, [this] (APIRequest& apiRequest) -> void {
+	info() << "Registering mAPIEndpoints...";
+
+	addEndpoint(RESTEndpoint("GET:/v1/version/", {}, [this] (APIRequest& apiRequest) -> void {
 		auto result = JSONSerializationType::object();
 
 		result["api_version"] = 1;
@@ -72,7 +81,7 @@ void RESTServer::registerEndpoints() {
 		apiRequest.success(result);
 	}));
 
-	mAPIEndpoints.add(RESTEndpoint("GET:/v1/object/", {}, [this] (APIRequest& apiRequest) -> void {
+	addEndpoint(RESTEndpoint("GET:/v1/object/", {}, [this] (APIRequest& apiRequest) -> void {
 		if (!apiRequest.hasQueryField("oids")) {
 			apiRequest.fail("missing query field 'oids'");
 			return;
@@ -124,7 +133,7 @@ void RESTServer::registerEndpoints() {
 		}
 	}));
 
-	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
+	addEndpoint(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
 		StringBuffer buf;
 
 		buf << apiRequest.getPathFieldString("command");
@@ -146,7 +155,7 @@ void RESTServer::registerEndpoints() {
 		apiRequest.success(result);
 	}));
 
-	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
+	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
 		try {
 			mPlayerManagerProxy->handle(apiRequest);
 		} catch (http_exception const & e) {
@@ -154,7 +163,7 @@ void RESTServer::registerEndpoints() {
 		}
 	}));
 
-	mAPIEndpoints.add(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
+	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
 		try {
 			mPlayerManagerProxy->handle(apiRequest);
 		} catch (http_exception const & e) {
@@ -162,21 +171,22 @@ void RESTServer::registerEndpoints() {
 		}
 	}));
 
-	debug() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
+	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
 }
 
 void RESTServer::routeRequest(http_request& request) {
-	if (!checkAuth(request)) {
-		request.reply(status_codes::Forbidden, U("Invalid API Token"));
-		return;
-	}
-
 	const auto& uri = request.relative_uri();
 
 	String endpointKey = request.method() + ":" + uri.path();
 
 	if (!endpointKey.endsWith("/")) {
 		endpointKey += "/";
+	}
+
+	if (!checkAuth(request)) {
+		warning() << "AUTHFAIL " << endpointKey;
+		request.reply(status_codes::Forbidden, U("Invalid API Token"));
+		return;
 	}
 
 	try {
@@ -197,7 +207,7 @@ void RESTServer::routeRequest(http_request& request) {
 			auto msg = debug();
 			auto pathFields = hitEndpoint.getPathFields(endpointKey);
 
-			msg << "HIT: " << hitEndpoint.toString();
+			msg << "HIT: " << hitEndpoint;
 
 			auto pathFieldIter = pathFields.iterator();
 
@@ -213,16 +223,22 @@ void RESTServer::routeRequest(http_request& request) {
 
 		Core::getTaskManager()->executeTask([=] {
 			try {
-				auto apiRequest = APIRequest(request, endpointKey, getLogLevel());
+				auto apiRequest = APIRequest(request, endpointKey, *this);
 
+				debug() << "START REQUEST: " << apiRequest;
 				hitEndpoint.handle(apiRequest);
+				info() << "REQUEST: " << apiRequest;
+
+				if (apiRequest.getElapsedTimeMS() > 500) {
+					warning() << "SLOW API CALL: " << apiRequest;
+				}
 			} catch (Exception& e) {
 				error() << "Unexpected exception in RESTAPITask: " + e.getMessage();
 				request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
 			}
 		}, "RESTAPITask-" + hitEndpoint.toString(), "slowQueue");
 	} catch (Exception& e) {
-		error() << "Unexpected exception in request router: " + e.getMessage();
+		error() << endpointKey << ": Unexpected exception in request router: " + e.getMessage();
 		request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
 	}
 }
@@ -252,6 +268,14 @@ void RESTServer::start() {
 		restListener->close().wait();
 	}
 
+	port = ConfigManager::instance()->getRESTPort();
+
+	if (port == 0) {
+		info() << "disabled, RESTPort not set";
+		doRun.set(false);
+		return;
+	}
+
 	auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
 
 	if (apiAuthToken.length() == 0) {
@@ -266,14 +290,6 @@ void RESTServer::start() {
 
 	if (mPlayerManagerProxy == nullptr) {
 		throw OutOfMemoryError();
-	}
-
-	port = ConfigManager::instance()->getRESTPort();
-
-	if (port == 0) {
-		info() << "disabled, RESTPort not set";
-		doRun.set(false);
-		return;
 	}
 
 	registerEndpoints();
@@ -321,7 +337,7 @@ void RESTServer::start() {
 	try {
 		restListener->open()
 			.then([this] {
-			info(true) << "listening to port " << port;
+			info(true) << "listening on port " << port;
 		}).wait();
 	} catch (exception const & e) {
 		error() << e.what();
@@ -332,6 +348,8 @@ void RESTServer::stop() {
 	doRun.set(false);
 
 	if (restListener != nullptr) {
+		info() << "Stopping listener.";
+
 		restListener->close().wait();
 		restListener = nullptr;
 	}
@@ -341,6 +359,7 @@ void RESTServer::stop() {
 	}
 
 	crossplat::threadpool::shared_instance().service().stop();
+
 	info(true) << "shut down thread pool";
 }
 
