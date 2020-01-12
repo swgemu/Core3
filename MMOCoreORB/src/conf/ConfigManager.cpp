@@ -20,6 +20,8 @@ ConfigManager::~ConfigManager() {
 }
 
 bool ConfigManager::loadConfigData() {
+	Locker guard(&mutex);
+
 	if (configStartTime.getStartTime() != 0)
 		configStartTime.stop();
 
@@ -88,6 +90,8 @@ bool ConfigManager::loadConfigData() {
 }
 
 void ConfigManager::clearConfigData() {
+	Locker guard(&mutex);
+
 	for (int i = 0; i < configData.size(); ++i) {
 		auto entry = configData.getUnsafe(i).getValue();
 		delete entry;
@@ -106,6 +110,8 @@ void ConfigManager::clearConfigData() {
 }
 
 void ConfigManager::cacheHotItems() {
+	Locker guard(&mutex);
+
 	// Items here are asked for often enough to have a performance impact
 	cachedPvpMode = getBool("Core3.PvpMode", false);
 	cachedProgressMonitors = getBool("Core3.ProgressMonitors", false);
@@ -116,6 +122,8 @@ void ConfigManager::cacheHotItems() {
 }
 
 void ConfigManager::dumpConfig(bool includeSecure) {
+	ReadLocker guard(&mutex);
+
 	uint64 age = getConfigDataAgeMs() / 1000;
 
 	info(true) << "dumpConfig: START (Config Age: " << age << " s)";
@@ -380,6 +388,8 @@ ConfigDataItem* ConfigManager::findItem(const String& name) const {
 }
 
 int ConfigManager::getInt(const String& name, int defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -389,6 +399,8 @@ int ConfigManager::getInt(const String& name, int defaultValue) {
 }
 
 bool ConfigManager::getBool(const String& name, bool defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -398,6 +410,8 @@ bool ConfigManager::getBool(const String& name, bool defaultValue) {
 }
 
 float ConfigManager::getFloat(const String& name, float defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -407,6 +421,8 @@ float ConfigManager::getFloat(const String& name, float defaultValue) {
 }
 
 const String& ConfigManager::getString(const String& name, const String& defaultValue) {
+	Locker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr) {
@@ -419,6 +435,8 @@ const String& ConfigManager::getString(const String& name, const String& default
 }
 
 const Vector<String>& ConfigManager::getStringVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -428,6 +446,8 @@ const Vector<String>& ConfigManager::getStringVector(const String& name) {
 }
 
 const SortedVector<String>& ConfigManager::getSortedStringVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -437,6 +457,8 @@ const SortedVector<String>& ConfigManager::getSortedStringVector(const String& n
 }
 
 const Vector<int>& ConfigManager::getIntVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -446,6 +468,8 @@ const Vector<int>& ConfigManager::getIntVector(const String& name) {
 }
 
 bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
+	Locker guard(&mutex);
+
 	if (newItem == nullptr || name.isEmpty())
 		return false;
 
@@ -501,9 +525,9 @@ bool ConfigManager::setStringFromFile(const String& name, const String& fileName
 		reader.close();
 
 		return setString(name, newValue.toString());
-	} catch (FileNotFoundException& e) {
+	} catch (const FileNotFoundException& e) {
 		error("setStringFromFile(" + name + ", " + fileName +") File Not Found.");
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error("setStringFromFile(" + name + ", " + fileName +") Unexpected exception reading file.");
 	}
 
