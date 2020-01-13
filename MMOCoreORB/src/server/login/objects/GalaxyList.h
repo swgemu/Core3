@@ -83,7 +83,15 @@ public:
 
 	uint16 getRandomPort() const {
 #ifdef USE_RANDOM_EXTRA_PORTS
-		return (uint16) extraPorts.get(System::random(extraPorts.size() - 1));
+		const static auto type = ConfigManager::instance()->getInt("Core3.ZonePortsBalancer", 1);
+
+		if (type == 1) {
+			static AtomicInteger roundRobin;
+
+			return (uint16)extraPorts.get(roundRobin.increment() % extraPorts.size());
+		} else {
+			return (uint16)extraPorts.get(System::random(extraPorts.size() - 1));
+		}
 #else // USE_RANDOM_EXTRA_PORTS
 		return port;
 #endif // USE_RANDOM_EXTRA_PORTS

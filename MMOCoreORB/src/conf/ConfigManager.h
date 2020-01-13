@@ -166,8 +166,10 @@ namespace conf {
 #endif // DEBUG_CONFIGMANAGER
 	};
 
-	class ConfigManager : public Singleton<ConfigManager>, public Lua {
+	class ConfigManager : public Singleton<ConfigManager>, public Object, public Logger {
 	protected:
+		Lua lua;
+
 		Timer configStartTime;
 		VectorMap<String, ConfigDataItem *> configData;
 
