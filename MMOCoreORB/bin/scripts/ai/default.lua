@@ -106,7 +106,7 @@ moveDefault = {
 	{id="1901811754",	name="CheckRetreat",	pid="361808887",	args={condition=256}},
 	{id="4131275375",	name="Leash",	pid="1049607122"},
 	{id="3937110156",	name="ParallelSelector",	pid="95757095"},
-	{id="3859304677",	name="Evade",	pid="3937110156",	args={maxEvadeChance=0.05, minEvadeChance=0.002}},
+	{id="3859304677",	name="Evade",	pid="3937110156",	args={maxEvadeChance=0.07, minEvadeChance=0.02}},
 	{id="3690551020",	name="FindNextPosition",	pid="3937110156"}}
 addAiTemplate("moveDefault", moveDefault)
 

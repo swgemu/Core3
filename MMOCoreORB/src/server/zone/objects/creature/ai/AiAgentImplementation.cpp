@@ -1198,8 +1198,12 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 
 	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
 		setFollowObject(defender);
-		if (defender->isCreatureObject() && threatMap != nullptr)
-			threatMap->addAggro(defender->asCreatureObject(), 1);
+		if (defender->isCreatureObject()) {
+			if (threatMap != nullptr)
+				threatMap->addAggro(defender->asCreatureObject(), 1);
+
+			notifyPackMobs(defender->asCreatureObject());
+		}
 	} else if (stateCopy <= STALKING) {
 		setFollowState(AiAgent::FOLLOWING);
 	}
@@ -2512,6 +2516,58 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
+void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
+	if (lastPackNotify.miliDifference() < 2000)
+		return;
+
+	auto closeObjectsVector = getCloseObjects();
+	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+	String socialGroup = getSocialGroup().toLowerCase();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
+
+		if (!object->isCreatureObject())
+			continue;
+
+		CreatureObject* creo = object->asCreatureObject();
+
+		if (creo == nullptr || creo->isDead() || creo->isPlayerCreature() || creo->isInCombat())
+			continue;
+
+		if (!(creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE))
+			continue;
+
+		AiAgent* agent = creo->asAiAgent();
+
+		if (!(agent->getCreatureBitmask() & CreatureFlag::PACK))
+			continue;
+
+		String targetSocialGroup = agent->getSocialGroup().toLowerCase();
+
+		if (targetSocialGroup.isEmpty() || targetSocialGroup != socialGroup)
+			continue;
+
+		// TODO: Make this distance variable per mob?
+		float packRange = 10.f;
+
+		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+			packRange = 16.f;
+
+		if (!agent->isInRange(asAiAgent(), 8.0f))
+			continue;
+
+		Core::getTaskManager()->executeTask([=] () {
+			Locker locker(agent);
+
+			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
+			agent->addDefender(attacker);
+		}, "PackAttackLambda");
+	}
+
+	lastPackNotify.updateToCurrentTime();
+}
 
 void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 
