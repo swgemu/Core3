@@ -2555,7 +2555,7 @@ void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
 		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
 			packRange = 16.f;
 
-		if (!agent->isInRange(asAiAgent(), 8.0f))
+		if (!agent->isInRange(asAiAgent(), packRange))
 			continue;
 
 		Core::getTaskManager()->executeTask([=] () {
