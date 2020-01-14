@@ -596,6 +596,21 @@ void ServerCore::initialize() {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
 
+#ifdef WITH_REST_API
+		restServer = new server::web3::RESTServer();
+		restServer->start();
+#endif // WITH_REST_API
+
+#if WITH_SESSION_API
+		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
+			sessionAPIClient = SessionAPIClient::instance();
+
+			if (configManager != nullptr) {
+				sessionAPIClient->notifyGalaxyStart(configManager->getZoneGalaxyID());
+			}
+		}
+#endif // WITH_SESSION_API
+
 		ZoneServer* zoneServer = zoneServerRef.get();
 
 		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
@@ -662,21 +677,6 @@ void ServerCore::initialize() {
 		}
 
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-
-#ifdef WITH_REST_API
-		restServer = new server::web3::RESTServer();
-		restServer->start();
-#endif // WITH_REST_API
-
-#if WITH_SESSION_API
-		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
-			sessionAPIClient = SessionAPIClient::instance();
-
-			if (configManager != nullptr) {
-				sessionAPIClient->notifyGalaxyStart(configManager->getZoneGalaxyID());
-			}
-		}
-#endif // WITH_SESSION_API
 
 		info("initialized", true);
 
