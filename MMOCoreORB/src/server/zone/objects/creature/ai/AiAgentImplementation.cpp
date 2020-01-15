@@ -666,7 +666,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
 	// Fix for pets created prior to ai update
-	if (defaultWeapon == nullptr) {
+	if (petDeed != nullptr && defaultWeapon == nullptr) {
 		SharedObjectTemplate* temp = getObjectTemplate();
 		loadTemplateData(temp);
 	}
