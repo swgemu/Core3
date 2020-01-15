@@ -10,8 +10,11 @@
 
 #ifdef WITH_REST_API
 
-#include "server/ServerCore.h"
 #include "RESTServer.h"
+#include "server/ServerCore.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "conf/ConfigManager.h"
+
 #include "RESTEndpoint.h"
 #include "APIRequest.h"
 #include "APIProxyPlayerManager.h"
@@ -40,9 +43,6 @@ RESTServer::~RESTServer() {
 #include <memory>
 #include <chrono>
 #include <regex>
-
-#include "engine/engine.h"
-#include "conf/ConfigManager.h"
 
 using namespace web;
 using namespace web::http;
@@ -87,12 +87,15 @@ void RESTServer::registerEndpoints() {
 			return;
 		}
 
-		auto responses = JSONSerializationType::array();
+		auto parents = apiRequest.getQueryFieldBool("parents", false, false);
+		auto recursive = apiRequest.getQueryFieldBool("recursive", false, false);
+		int maxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
 
 		StringTokenizer oidStrList(apiRequest.getQueryFieldString("oids"));
 		oidStrList.setDelimeter(",");
 
 		int countFound = 0;
+		auto objects = JSONSerializationType::object();
 
 		while(oidStrList.hasMoreTokens()) {
 			try {
@@ -105,14 +108,26 @@ void RESTServer::registerEndpoints() {
 				if (obj != nullptr) {
 					ReadLocker lock(obj);
 
-					JSONSerializationType jsonData;
-					obj->writeJSON(jsonData);
+					auto scno = dynamic_cast<SceneObject*>(obj.get());
 
-					JSONSerializationType entry;
-					entry[String::valueOf(oid)] = jsonData;
+					if (scno != nullptr && recursive) {
+						if (parents) {
+							auto rootObj = scno->getRootParent();
 
-					responses.push_back(entry);
-					countFound++;
+							if (rootObj != nullptr) {
+								scno = rootObj;
+							}
+						}
+
+						countFound += scno->writeRecursiveJSON(objects, maxDepth);
+					} else {
+						JSONSerializationType jsonData;
+						obj->writeJSON(jsonData);
+						countFound++;
+						jsonData["_oid"] = oid;
+						jsonData["_depth"] = 1;
+						objects[String::valueOf(oid)] = jsonData;
+					}
 				}
 			} catch (const Exception& e) {
 				apiRequest.fail("Exception looking up objects", "Exception: " + e.getMessage());
@@ -122,12 +137,22 @@ void RESTServer::registerEndpoints() {
 
 		debug() << "Found " << countFound << " object(s)";
 
-		if (responses.empty()) {
+		if (countFound == 0) {
 			apiRequest.fail("Nothing found");
 		} else {
-			JSONSerializationType result;
+			JSONSerializationType metadata;
 
-			result["objects"] = responses;
+			Time now;
+			metadata["exportTime"] = now.getFormattedTimeFull();
+			metadata["objectCount"] = countFound;
+			metadata["maxDepth"] = maxDepth;
+			metadata["recursive"] = recursive;
+			metadata["parents"] = parents;
+			metadata["query_oids"] = apiRequest.getQueryFieldString("oids");
+
+			JSONSerializationType result;
+			result["objects"] = objects;
+			result["metadata"] = metadata;
 
 			apiRequest.success(result);
 		}

@@ -2150,7 +2150,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	@local
-	public native int writeRecursiveJSON(@dereferenced JSONSerializationType j, int maxDepth);
+	public native int writeRecursiveJSON(@dereferenced JSONSerializationType j, int maxDepth, Vector<unsigned long> oidPath=null);
 
 	@dirty
 	public native string exportJSON(final string exportNote, int maxDepth = -1);
