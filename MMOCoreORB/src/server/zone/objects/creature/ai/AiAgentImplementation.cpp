@@ -169,9 +169,10 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		setHue(randHue);
 	}
 
-	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
+	Reference<WeaponObject*> defaultWeap = asCreatureObject()->getDefaultWeapon();
 
-	if (defaultWeapon != nullptr) {
+	if (defaultWeap != nullptr) {
+		defaultWeapon = defaultWeap;
 		// set the damage of the default weapon
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
@@ -663,6 +664,12 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
+
+	// Fix for pets created prior to ai update
+	if (defaultWeapon == nullptr) {
+		SharedObjectTemplate* temp = getObjectTemplate();
+		loadTemplateData(temp);
+	}
 
 	setAITemplate();
 
