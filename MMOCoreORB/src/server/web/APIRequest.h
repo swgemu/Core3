@@ -44,6 +44,7 @@ namespace server {
 
 		bool parseQueryFields();
 		void reply(JSONSerializationType result, const String& status, APIRequestStatusValue status_code);
+		bool stringToBool(const String& boolStr) const;
 
 	public:
 		APIRequest(http_request gatewayRequest, const String endpointKey, Logger& logger);
@@ -103,11 +104,13 @@ namespace server {
 		bool hasQueryField(const String& fieldName) const;
 		const String& getQueryFieldString(const String& fieldName, bool required=true, const String& defaultValue="");
 		uint64_t getQueryFieldUnsignedLong(const String& fieldName, bool required=true, uint64_t defaultValue=0);
+		bool getQueryFieldBool(const String& fieldName, bool required=true, bool defaultValue=false);
 
 		bool parseRequestJSON(bool failOnError=true, bool failOnEmpty=true);
 		bool hasRequestField(const String& fieldName) const;
 		const String getRequestFieldString(const String& fieldName, bool required=true, const String& defaultValue="");
 		uint64_t getRequestFieldUnsignedLong(const String& fieldName, bool required=true, uint64_t defaultValue=0);
+		bool getRequestFieldBool(const String& fieldName, bool required=true, bool defaultValue=false);
 
 		void success(JSONSerializationType result, APIRequestStatusValue status_code=APIRequestStatus::OK);
 		void fail(const String& userMessage, const String& logMessage="", const APIRequestStatusValue status_code=APIRequestStatus::BadRequest);
