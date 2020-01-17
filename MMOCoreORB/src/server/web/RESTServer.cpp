@@ -261,7 +261,7 @@ void RESTServer::routeRequest(http_request& request) {
 				error() << "Unexpected exception in RESTAPITask: " + e.getMessage();
 				request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
 			}
-		}, "RESTAPITask-" + hitEndpoint.toString(), "slowQueue");
+		}, "RESTAPITask-" + hitEndpoint.toString(), "RESTServerWorker");
 	} catch (Exception& e) {
 		error() << endpointKey << ": Unexpected exception in request router: " + e.getMessage();
 		request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
@@ -285,6 +285,9 @@ bool RESTServer::checkAuth(http_request& request) {
 
 void RESTServer::start() {
 	auto logLevel = ConfigManager::instance()->getInt("Core3.RESTServer.LogLevel", (int)Logger::INFO);
+	auto numberOfThreads = ConfigManager::instance()->getInt("Core3.RESTServer.WorkerThreads", 4);
+
+	const auto static initialized = Core::getTaskManager()->initializeCustomQueue("RESTServerWorker", numberOfThreads);
 
 	setLogLevel(static_cast<Logger::LogLevel>(logLevel));
 
