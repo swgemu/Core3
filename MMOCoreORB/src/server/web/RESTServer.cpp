@@ -199,6 +199,14 @@ void RESTServer::registerEndpoints() {
 		}
 	}));
 
+	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/character/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
+		try {
+			mPlayerManagerProxy->lookupCharacter(apiRequest);
+		} catch (http_exception const & e) {
+			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+		}
+	}));
+
 	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
 }
 
