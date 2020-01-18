@@ -124,8 +124,11 @@ void RESTServer::registerEndpoints() {
 						JSONSerializationType jsonData;
 						obj->writeJSON(jsonData);
 						countFound++;
+						jsonData["_depth"] = 0;
 						jsonData["_oid"] = oid;
-						jsonData["_depth"] = 1;
+						jsonData["_className"] = obj->_getClassName();
+						jsonData["_oidPath"] = JSONSerializationType::array();
+						jsonData["_oidPath"].push_back(oid);
 						objects[String::valueOf(oid)] = jsonData;
 					}
 				}
