@@ -2886,6 +2886,8 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 
 		return;
 	} else {
+		debug() << "sending " << *msg;
+
 		ownerClient->sendMessage(msg);
 	}
 }
