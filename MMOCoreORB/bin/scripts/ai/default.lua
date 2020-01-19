@@ -12,7 +12,7 @@ addAiTemplate("aggroDefault", aggroDefault)
 attackDefault = {
 	{id="4024177786",	name="Sequence",	pid="none"},
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
-	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={val=DEFAULT, key="attackType"}},
+	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="1793608263",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="1011850080",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="2342191700",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
@@ -26,7 +26,7 @@ attackDefault = {
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
 	{id="285069068",	name="Sequence",	pid="302238494"},
-	{id="4146066819",	name="WriteBlackboard",	pid="285069068",	args={val=DEFAULT, key="attackType"}},
+	{id="4146066819",	name="WriteBlackboard",	pid="285069068",	args={key="attackType", val=DEFAULT}},
 	{id="2582933389",	name="SelectAttack",	pid="285069068",	args={attackNum=-1}},
 	{id="2327622682",	name="EnqueueAttack",	pid="285069068"}}
 addAiTemplate("attackDefault", attackDefault)
@@ -68,13 +68,13 @@ equipDefault = {
 	{id="2143400703",	name="CheckFollowInWeaponRange",	pid="848281294",	args={condition=PRIMARYWEAPON}},
 	{id="3507834914",	name="If",	pid="284029936"},
 	{id="1423335520",	name="CheckFollowClosestIdealRange",	pid="3507834914",	args={condition=PRIMARYWEAPON}},
-	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={val=PRIMARYWEAPON, key="stagedWeapon"}},
+	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
 	{id="3286553516",	name="Sequence",	pid="3588683982"},
 	{id="4256376058",	name="If",	pid="3286553516"},
 	{id="1599543891",	name="CheckFollowInWeaponRange",	pid="4256376058",	args={condition=SECONDARYWEAPON}},
 	{id="3111019196",	name="If",	pid="3286553516"},
 	{id="3429738785",	name="CheckFollowClosestIdealRange",	pid="3111019196",	args={condition=SECONDARYWEAPON}},
-	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={val=SECONDARYWEAPON, key="stagedWeapon"}},
+	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
 	{id="1510007529",	name="EquipStagedWeapon",	pid="1893489794"},
 	{id="2512472344",	name="EraseBlackboard",	pid="2941044245",	args={param="stagedWeapon"}},
 	{id="4004759019",	name="EraseBlackboard",	pid="2941044245",	args={param="followRange"}}}
@@ -119,7 +119,7 @@ rootDefault = {
 	{id="2197461733",	name="TreeSocket",	pid="3085594992",	args={slot=EQUIP}},
 	{id="1754584012",	name="TreeSocket",	pid="3085594992",	args={slot=ATTACK}},
 	{id="3434357109",	name="Sequence",	pid="1711463331"},
-	{id="2676240638",	name="WriteBlackboard",	pid="3434357109",	args={val=RUN, key="moveMode"}},
+	{id="2676240638",	name="WriteBlackboard",	pid="3434357109",	args={key="moveMode", val=RUN}},
 	{id="4148461600",	name="AlwaysSucceed",	pid="3434357109"},
 	{id="4224133747",	name="TreeSocket",	pid="4148461600",	args={slot=MOVE}},
 	{id="3497802169",	name="TreeSocket",	pid="714360210",	args={slot=AWARE}},
@@ -179,9 +179,12 @@ wanderDefault = {
 	{id="4029863740",	name="Sequence",	pid="1564905074"},
 	{id="3655407871",	name="If",	pid="4029863740"},
 	{id="523920708",	name="CheckHasPatrol",	pid="3655407871"},
-	{id="536389142",	name="WriteBlackboard",	pid="4029863740",	args={val=WALK, key="moveMode"}},
+	{id="536389142",	name="WriteBlackboard",	pid="4029863740",	args={key="moveMode", val=WALK}},
 	{id="3269636266",	name="TreeSocket",	pid="4029863740",	args={slot=MOVE}},
 	{id="2038642946",	name="Wait",	pid="4029863740",	args={duration=10.0}},
-	{id="2390998747",	name="GeneratePatrol",	pid="1564905074",	args={distFromHome=10.0, numPoints=5}}}
+	{id="1529860918",	name="Sequence",	pid="1564905074"},
+	{id="529086427",	name="If",	pid="1529860918"},
+	{id="636152133",	name="CheckOutdoors",	pid="529086427"},
+	{id="2390998747",	name="GeneratePatrol",	pid="1529860918",	args={distFromHome=10.0, numPoints=5}}}
 addAiTemplate("wanderDefault", wanderDefault)
 

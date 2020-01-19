@@ -2543,6 +2543,9 @@ void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
 		if (creo == nullptr || creo->isDead() || creo->isPlayerCreature() || creo->isInCombat())
 			continue;
 
+		if (creo->getParentID() != getParentID())
+			continue;
+
 		if (!(creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE))
 			continue;
 
