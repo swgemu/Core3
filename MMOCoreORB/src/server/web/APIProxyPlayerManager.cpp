@@ -101,9 +101,8 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 
 				auto ghost = creo->getPlayerObject();
 
-				ReadLocker gLock(ghost);
-
 				if (ghost != nullptr) {
+					ReadLocker gLock(ghost);
 					auto oidPath = new Vector<uint64>;
 					oidPath->add(creo->getObjectID());
 					ghost->writeRecursiveJSON(objects, 1, oidPath);
@@ -112,9 +111,8 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 
 				auto crobj = creo->getCreditObject();
 
-				ReadLocker crLock(crobj);
-
 				if (crobj != nullptr) {
+					ReadLocker crLock(crobj);
 					auto oid = crobj->_getObjectID();
 					JSONSerializationType jsonData;
 					crobj->writeJSON(jsonData);

@@ -110,7 +110,11 @@ void RESTServer::registerEndpoints() {
 
 					auto scno = dynamic_cast<SceneObject*>(obj.get());
 
-					if (scno != nullptr && recursive) {
+					if (scno != nullptr) {
+						if (!recursive) {
+							maxDepth = 1;
+						}
+
 						if (parents) {
 							auto rootObj = scno->getRootParent();
 
