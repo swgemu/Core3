@@ -26,7 +26,8 @@ namespace server {
 				ALLOW = 0,
 				WARN = 1,
 				REJECT = 2,
-				BAN = 3
+				BAN = 3,
+				DEBUG = 4
 			};
 
 		private:
@@ -55,6 +56,7 @@ namespace server {
 				case ApprovalAction::WARN:		return String("WARN");
 				case ApprovalAction::REJECT:	return String("REJECT");
 				case ApprovalAction::BAN:		return String("BAN");
+				case ApprovalAction::DEBUG:		return String("DEBUG");
 				}
 
 				return String("UNKOWN(" + String::valueOf((int)action) + ")");
@@ -83,6 +85,11 @@ namespace server {
 
 				if (stringAction == "BAN") {
 					resultAction = ApprovalAction::BAN;
+					return;
+				}
+
+				if (stringAction == "DEBUG") {
+					resultAction = ApprovalAction::DEBUG;
 					return;
 				}
 
@@ -118,7 +125,7 @@ namespace server {
 			}
 
 			inline bool isActionAllowed() const {
-				return resultAction == ApprovalAction::ALLOW;
+				return resultAction == ApprovalAction::ALLOW || resultAction == ApprovalAction::DEBUG;
 			}
 
 			inline bool isActionWarning() const {
@@ -131,6 +138,10 @@ namespace server {
 
 			inline bool isActionBan() const {
 				return resultAction == ApprovalAction::BAN;
+			}
+
+			inline bool isActionDebug() const {
+				return resultAction == ApprovalAction::DEBUG;
 			}
 
 			inline void setTitle(const String& title) {

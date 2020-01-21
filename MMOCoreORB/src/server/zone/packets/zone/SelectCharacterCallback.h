@@ -73,6 +73,14 @@ public:
 
 			Locker locker(object);
 
+			if (result.isActionDebug() && playerCreature != nullptr) {
+				auto ghost = playerCreature->getPlayerObject();
+
+				if (ghost != nullptr) {
+					ghost->setLogLevel(Logger::DEBUG);
+				}
+			}
+
 			connectApprovedPlayer(object, characterID, playerCreature, clientObject, zoneServer);
 		});
 	};
