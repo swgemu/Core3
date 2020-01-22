@@ -40,7 +40,7 @@ bool ServerCore::truncateAllData = false;
 ServerCore* ServerCore::instance = nullptr;
 
 namespace coredetail {
-	class ConsoleReaderService : public ServiceThread {
+	class ConsoleReaderService final : public ServiceThread {
 		ServerCore* core;
 
 	public:
@@ -596,6 +596,17 @@ void ServerCore::initialize() {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
 
+#ifdef WITH_REST_API
+		restServer = new server::web3::RESTServer();
+		restServer->start();
+#endif // WITH_REST_API
+
+#if WITH_SESSION_API
+		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
+			sessionAPIClient = SessionAPIClient::instance();
+		}
+#endif // WITH_SESSION_API
+
 		ZoneServer* zoneServer = zoneServerRef.get();
 
 		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs(), zoneServer);
@@ -661,31 +672,19 @@ void ServerCore::initialize() {
 			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
-#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-#else
-		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(10000, 10000);
-#endif
 
-#ifdef WITH_REST_API
-		restServer = new server::web3::RESTServer();
-		restServer->start();
-#endif // WITH_REST_API
+		info("initialized", true);
+
+		System::flushStreams();
 
 #if WITH_SESSION_API
 		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
-			sessionAPIClient = SessionAPIClient::instance();
-
 			if (configManager != nullptr) {
 				sessionAPIClient->notifyGalaxyStart(configManager->getZoneGalaxyID());
 			}
 		}
 #endif // WITH_SESSION_API
-
-		info("initialized", true);
-
-		System::flushStreams();
 
 		if (arguments.contains("playercleanup") && zoneServer != nullptr) {
 			zoneServer->getPlayerManager()->cleanupCharacters();
@@ -862,10 +861,6 @@ void ServerCore::shutdown() {
 }
 
 ServerCore::CommandResult ServerCore::processConsoleCommand(const String& commandString) {
-#ifdef WITH_STM
-	Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
-#endif
-
 	CommandResult result = CommandResult::NOTFOUND;
 
 	try {
@@ -891,13 +886,6 @@ ServerCore::CommandResult ServerCore::processConsoleCommand(const String& comman
 
 		return CommandResult::ERROR;
 	}
-
-#ifdef WITH_STM
-	try {
-		TransactionalMemoryManager::commitPureTransaction(transaction);
-	} catch (const TransactionAbortedException& e) {
-	}
-#endif
 
 	return result;
 }

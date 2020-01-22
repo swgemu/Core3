@@ -146,9 +146,14 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 		if (isAutoRegistrationEnabled() && client != nullptr) {
 			account = createAccount(username, password, passwordStored);
 		} else {
-			if (client != nullptr)
-				client->sendErrorMessage("Login Error", "Automatic registration is currently disabled. "
-						"Please contact the administrators of the server in order to get an authorized account.");
+			if (client != nullptr) {
+				client->sendErrorMessage("Login Error",
+					ConfigManager::instance()->getString("Core3.RegistrationMessage",
+						"Automatic registration is currently disabled. "
+						"Please contact the administrators of the server in order to get an authorized account."
+					)
+				);
+			}
 
 			return nullptr;
 		}

@@ -257,6 +257,10 @@ if (ENABLE_REST_SERVER OR ENABLE_SESSION_API)
 			include_directories(${CUST_CPPREST_INCLUDE_DIR})
 			target_link_libraries(core3 ${CUST_CPPREST_LIBRARY})
 
+			if(ENABLE_ODB)
+				target_link_libraries(odb3 ${CUST_CPPREST_LIBRARY})
+			endif()
+
 			message(STATUS "Compiling with cpprestsdk")
 		endif()
 	endif()

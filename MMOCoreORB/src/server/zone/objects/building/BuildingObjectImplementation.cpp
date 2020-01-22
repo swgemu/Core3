@@ -337,7 +337,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 
 void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (!isStaticBuilding()) {
-		info("sending building object destroy");
+		debug("sending building object destroy");
 
 		SceneObjectImplementation::sendDestroyTo(player);
 	}

@@ -10,6 +10,8 @@
 
 #ifdef WITH_SESSION_API
 
+#define SESSION_API_CLIENT_VERSION 1002
+
 #include "SessionAPIClient.h"
 
 #include <cpprest/filestream.h>
@@ -269,7 +271,7 @@ void SessionAPIClient::notifyGalaxyStart(uint32 galaxyID) {
 	// Save for later
 	this->galaxyID = galaxyID;
 
-	path << "/v1/core3/galaxy/" << galaxyID << "/start";
+	path << "/v1/core3/galaxy/" << galaxyID << "/start?client_version=" << SESSION_API_CLIENT_VERSION;
 
 	apiNotify(__FUNCTION__, path.toString());
 }
@@ -277,7 +279,7 @@ void SessionAPIClient::notifyGalaxyStart(uint32 galaxyID) {
 void SessionAPIClient::notifyGalaxyShutdown() {
 	StringBuffer path;
 
-	path << "/v1/core3/galaxy/" << galaxyID << "/shutdown";
+	path << "/v1/core3/galaxy/" << galaxyID << "/shutdown?client_version=" << SESSION_API_CLIENT_VERSION;
 
 	apiNotify(__FUNCTION__, path.toString());
 }
@@ -469,17 +471,12 @@ String SessionApprovalResult::getLogMessage() const {
 SessionApprovalResult::SessionApprovalResult() {
 	// Generate simple code for log tracing
 	uint64 trxid = (System::getMikroTime() << 8) | System::random(255);
-	StringBuffer buf;
-	buf << hex << trxid;
-	resultClientTrxId = buf.toString();
 
-	resultTrxId = "";
+	resultClientTrxId = String::hexvalueOf(trxid);
 	resultAction = ApprovalAction::UNKNOWN;
-	resultTitle = "";
-	resultMessage = "";
-	resultDetails = "";
-	resultRawJSON = "";
 	resultElapsedTimeMS = 0ull;
+
+	resultDebug.setNullValue("<not set>");
 }
 
 #endif // WITH_SESSION_API

@@ -128,7 +128,7 @@ public:
 
 			const static Logger logger("ValuesClasses");
 
-			logger.warning() << name << " value class has the same maxValue and minValue that are equal to: " << maxValue;
+			logger.debug() << name << " value class has the same maxValue and minValue that are equal to: " << maxValue;
 		} else if (maxValue > minValue) {
 			newpercentage = (value - minValue) / (maxValue - minValue);
 		} else {

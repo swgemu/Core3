@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
 
 #include "APIProxyPlayerManager.h"
 #include "APIRequest.h"
@@ -32,6 +33,108 @@ server::zone::managers::player::PlayerManager* APIProxyPlayerManager::getPlayerM
 	}
 
 	return server->getPlayerManager();
+}
+
+void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
+	if (!apiRequest.isMethodGET()) {
+		apiRequest.fail("Only supports GET");
+		return;
+	}
+
+	auto qName = apiRequest.getQueryFieldString("name", false);
+	auto qNames = apiRequest.getQueryFieldString("names", false);
+	auto qRecursive = apiRequest.getQueryFieldBool("recursive", false, false);
+	int qMaxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
+
+	if (qName.isEmpty() && qNames.isEmpty()) {
+		apiRequest.fail("Invalid request, must specify query parameter name or names");
+		return;
+	}
+
+	auto mode = apiRequest.getPathFieldString("mode", true);
+
+	Vector<String> names;
+
+	if (!qName.isEmpty()) {
+		names.add(qName);
+	}
+
+	if (!qNames.isEmpty()) {
+		StringTokenizer nameList(qNames);
+		nameList.setDelimeter(",");
+
+		while (nameList.hasMoreTokens()) {
+			String name;
+			nameList.getStringToken(name);
+
+			if (!name.isEmpty()) {
+				names.add(name);
+			}
+		}
+	}
+
+	auto playerManager = getPlayerManager();
+
+	if (playerManager == nullptr) {
+		apiRequest.fail("Unable to get playerManager");
+		return;
+	}
+
+	JSONSerializationType result, found, objects;
+
+	for (auto name : names) {
+		auto creo = playerManager->getPlayer(name);
+
+		if (creo != nullptr) {
+			found[name] = creo->getObjectID();
+		} else {
+			found[name] = 0;
+		}
+
+		if (mode == "find") {
+			if (qRecursive) {
+				creo->writeRecursiveJSON(objects, qMaxDepth);
+			} else {
+				Locker wLock(creo);
+
+				creo->writeRecursiveJSON(objects, 1);
+
+				auto ghost = creo->getPlayerObject();
+
+				if (ghost != nullptr) {
+					ReadLocker gLock(ghost);
+					auto oidPath = new Vector<uint64>;
+					oidPath->add(creo->getObjectID());
+					ghost->writeRecursiveJSON(objects, 1, oidPath);
+					delete oidPath;
+				}
+
+				auto crobj = creo->getCreditObject();
+
+				if (crobj != nullptr) {
+					ReadLocker crLock(crobj);
+					auto oid = crobj->_getObjectID();
+					JSONSerializationType jsonData;
+					crobj->writeJSON(jsonData);
+					jsonData["_depth"] = 1;
+					jsonData["_oid"] = oid;
+					jsonData["_className"] = crobj->_getClassName();
+					jsonData["_oidPath"] = JSONSerializationType::array();
+					jsonData["_oidPath"].push_back(creo->getObjectID());
+					jsonData["_oidPath"].push_back(oid);
+					objects[String::valueOf(oid)] = jsonData;
+				}
+			}
+		}
+	}
+
+	result["characters"] = found;
+
+	if (mode == "find") {
+		result["objects"] = objects;
+	}
+
+	apiRequest.success(result);
 }
 
 void APIProxyPlayerManager::handle(APIRequest& apiRequest) {

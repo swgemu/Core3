@@ -45,23 +45,23 @@ public:
 		chatManager->handleChatInstantMessageToCharacter(this);
 	}
 
-	inline String& getName() {
+	inline const String& getName() const {
 		return name;
 	}
 
-	inline String& getGalaxy() {
+	inline const String& getGalaxy() const {
 		return galaxy;
 	}
 
-	inline String& getGame() {
+	inline const String& getGame() const {
 		return game;
 	}
 
-	inline UnicodeString& getMessage() {
+	inline const UnicodeString& getMessage() const {
 		return message;
 	}
 
-	inline int getSequence() {
+	inline int getSequence() const {
 		return sequence;
 	}
 
