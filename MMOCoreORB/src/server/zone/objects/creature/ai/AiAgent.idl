@@ -113,6 +113,9 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient Time lastDamageReceived;
+	
+	@dereferenced
+	protected transient Time lastPackNotify;
 
 	protected int reactionRank;
 
@@ -459,6 +462,11 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	@arg1preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
+	
+	@preLocked
+	@arg1preLocked
+	public native void notifyPackMobs(CreatureObject attacker);
+	
 
 	@preLocked
 	public native int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
