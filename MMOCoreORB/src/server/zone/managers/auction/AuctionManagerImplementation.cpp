@@ -304,8 +304,6 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			}
 
 			if (startupTask) {
-				info(true) << logTag << ": Scanning for invalid items for sale.";
-
 				auto sellingId = item->getAuctionedItemObjectID();
 				auto sellingItem = zoneServer->getObject(sellingId);
 
