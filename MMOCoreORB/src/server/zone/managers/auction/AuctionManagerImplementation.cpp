@@ -219,8 +219,9 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
-	int count_total = 0;
-	int count_updated = 0;
+	int countTotal = 0;
+	int countUpdated = 0;
+	int countInvalid = 0;
 
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*>& list = items->get(i);
@@ -236,7 +237,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 
 			Locker locker(item);
 
-			count_total++;
+			countTotal++;
 
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 			ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
@@ -247,7 +248,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				auctionMap->deleteItem(vendor, item);
 
 				if (ownerName.isEmpty())
-					error("Auction for item " + String::valueOf(item->getAuctionedItemObjectID()) + " had invalid owner, oid: " + String::valueOf(item->getOwnerID()) + ", deleting item.");
+					error() << "Auction for item " << item->getAuctionedItemObjectID() << " had invalid owner, oid: " << item->getOwnerID() << ", deleting item.";
 
 				Core::getTaskManager()->executeTask([this, sellingId] () {
 						ManagedReference<SceneObject*> sceno = zoneServer->getObject(sellingId);
@@ -287,7 +288,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 						newTask->reschedule((item->getExpireTime() - time(0)) * 1000);
 				}
 
-				error("Auction for item " + String::valueOf(item->getAuctionedItemObjectID()) + " had invalid expiration time. Old: " + String::valueOf(oldExpire) + ", new: " + String::valueOf(item->getExpireTime()) + ", owner: " + ownerName);
+				error() << "Auction for item " << item->getAuctionedItemObjectID() << " had invalid expiration time. Old: " << oldExpire << ", new: " << item->getExpireTime() << ", owner: " << ownerName;
 			}
 
 			if (item->getExpireTime() <= currentTime) {
@@ -300,6 +301,23 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			if (item->getStatus() == AuctionItem::RETRIEVED) {
 				auctionMap->deleteItem(vendor, item);
 				continue;
+			}
+
+			if (startupTask) {
+				info(true) << logTag << ": Scanning for invalid items for sale.";
+
+				auto sellingId = item->getAuctionedItemObjectID();
+				auto sellingItem = zoneServer->getObject(sellingId);
+
+				if (sellingItem == nullptr) {
+					error() << logTag << ": Auction for item " << sellingId << " had null item, expiring sale.";
+					expireSale(item);
+					countInvalid++;
+				} else if (sellingItem->isNoTrade() || sellingItem->containsNoTradeObjectRecursive()) {
+					error() << logTag << ": Auction for item " << sellingId << " isNoTrade or containes NoTrade items, expiring sale.";
+					expireSale(item);
+					countInvalid++;
+				}
 			}
 
 			if (startupTask && !item->isUpdated()) {
@@ -331,12 +349,15 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				}
 
 				item->setUpdated(true);
-				count_updated++;
+				countUpdated++;
 			}
 		}
 	}
 
-	info(logTag + " Checked " + String::valueOf(count_total) + " auction item(s) and updated " + String::valueOf(count_updated) + " item(s)", true);
+	auto elapsed = expireTime.miliDifference() / 1000.0;
+	int ps = elapsed > 0 ? countTotal / elapsed : countTotal;
+
+	info(true) << logTag << ": Checked " << countTotal << " auction item(s), updated " << countUpdated << " item(s) and expired " << countInvalid << " invalid item(s), (" << ps << "/s)";
 }
 
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, SceneObject* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
@@ -368,6 +389,10 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	if (objectToSell == nullptr || objectToSell->isNoTrade() || objectToSell->containsNoTradeObjectRecursive()) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 		player->sendMessage(soldMessage);
+
+		if (objectToSell != nullptr) {
+			player->sendSystemMessage("@container_error_message:container26"); // This item could not be transferred.
+		}
 		return;
 	}
 
