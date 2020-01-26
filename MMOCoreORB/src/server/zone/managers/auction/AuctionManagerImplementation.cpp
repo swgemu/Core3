@@ -303,18 +303,24 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				continue;
 			}
 
-			if (startupTask) {
+			if (startupTask && ConfigManager::instance()->getBool("Core3.AuctionManager.Startup.ExpireInvalid", false)) {
+				String validationError;
 				auto sellingId = item->getAuctionedItemObjectID();
 				auto sellingItem = zoneServer->getObject(sellingId);
 
 				if (sellingItem == nullptr) {
-					error() << logTag << ": Auction for item " << sellingId << " had null item, expiring sale.";
-					expireSale(item);
-					countInvalid++;
+					validationError = "has null item";
 				} else if (sellingItem->isNoTrade() || sellingItem->containsNoTradeObjectRecursive()) {
-					error() << logTag << ": Auction for item " << sellingId << " isNoTrade or containes NoTrade items, expiring sale.";
+					validationError = "isNoTrade or containes NoTrade items";
+				}
+
+				if (!validationError.isEmpty()) {
 					expireSale(item);
 					countInvalid++;
+
+					JSONSerializationType jsonData;
+					item->writeJSON(jsonData);
+					error() << logTag << ": Invalid auction for item " << sellingId << " " << validationError << ", expiring auction: " << jsonData.dump();
 				}
 			}
 
@@ -355,7 +361,19 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 	auto elapsed = expireTime.miliDifference() / 1000.0;
 	int ps = elapsed > 0 ? countTotal / elapsed : countTotal;
 
-	info(true) << logTag << ": Checked " << countTotal << " auction item(s), updated " << countUpdated << " item(s) and expired " << countInvalid << " invalid item(s), (" << ps << "/s)";
+	auto msg = info(true);
+
+	msg << logTag
+		<< ": Checked " << countTotal << " auction item(s),"
+		<< " updated " << countUpdated << " item(s)"
+		;
+
+	if (ConfigManager::instance()->getBool("Core3.AuctionManager.Startup.ExpireInvalid", false)) {
+		msg << " and expired " << countInvalid << " invalid item(s),";
+	}
+
+	msg << " (" << ps << "/s)";
+	msg.flush();
 }
 
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, SceneObject* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
