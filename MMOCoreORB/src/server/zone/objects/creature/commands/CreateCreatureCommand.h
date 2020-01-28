@@ -175,8 +175,10 @@ public:
 
 		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
 
-		if (scale > 0 && scale != 1.0)
+		if (scale > 0 && scale != 1.0) {
+			Locker nlocker(npc);
 			npc->setHeight(scale);
+		}
 
 		return SUCCESS;
 	}
