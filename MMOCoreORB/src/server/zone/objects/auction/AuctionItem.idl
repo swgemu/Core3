@@ -6,10 +6,11 @@ package server.zone.objects.auction;
 
 import engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
+import engine.log.Logger;
 include server.zone.objects.scene.variables.StringId;
 
 @json
-class AuctionItem extends ManagedObject {
+class AuctionItem extends ManagedObject implements Logger {
 	protected unsigned long vendorID;
 
 	protected unsigned long auctionedItemObjectID;
@@ -54,6 +55,7 @@ class AuctionItem extends ManagedObject {
 	public final static int EXPIRED = 4;
 	public final static int OFFERED = 5;
 	public final static int RETRIEVED = 6;
+	public final static int DELETED = 99;
 
 	public AuctionItem(unsigned long objectid) {
 		auctionedItemObjectID = objectid;
@@ -80,9 +82,9 @@ class AuctionItem extends ManagedObject {
 		updated = false;
 
 		auctionOptions = 0;
-
-		//Logger.setLoggingName("AuctionItem");
 	}
+
+	public native void initializeTransientMembers();
 
 	/**
 	 * Compares object ids of this object with obj
@@ -102,6 +104,8 @@ class AuctionItem extends ManagedObject {
 	}
 
 	public native void notifyLoadFromDatabase();
+
+	public native boolean destroyAuctionItemFromDatabase(boolean checkAuctionMap = true, boolean deleteAuctionedObject = false);
 
 	@preLocked
 	public void setVendorID(unsigned long val) {
@@ -340,4 +344,7 @@ class AuctionItem extends ManagedObject {
 	public boolean isUpdated() {
 		return updated;
 	}
+
+	@read
+	public native unsigned long getObjectID();
 }
