@@ -2970,36 +2970,31 @@ bool AiAgentImplementation::hasSpecialAttack(int num) {
 }
 
 bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
-	if (object == nullptr) {
+	if (object == nullptr)
 		return false;
-	}
 
-	if (object->isCreatureObject()) {
+	if (object->isCreatureObject())
 		return isAttackableBy(object->asCreatureObject());
-	}
 
-	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING) {
+	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING)
 		return false;
-	}
 
 	if (isPet()) {
 		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral()) {
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral())
 			return false;
-		}
 
 		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
 
-		if (owner == nullptr) {
+		if (owner == nullptr)
 			return false;
-		}
 
 		return owner->isAttackableBy(object, true);
 	}
 
-	if (pvpStatusBitmask == 0) {
+	if (pvpStatusBitmask == 0)
 		return false;
-	}
 
 	unsigned int targetFaction = object->getFaction();
 
@@ -3007,20 +3002,17 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 		if (targetFaction == getFaction()) {
 			return false;
 		}
-
 	}
 
 	return true;
 }
 
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
-	if (object == nullptr || object == asAiAgent()) {
+	if (object == nullptr || object == asAiAgent())
 		return false;
-	}
 
-	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING) {
+	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING)
 		return false;
-	}
 
 	if (isPet()) {
 		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
@@ -3039,33 +3031,29 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->isPet() || object->isVehicleObject()) {
 		ManagedReference<PetControlDevice*> pcd = object->getControlDevice().get().castTo<PetControlDevice*>();
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral())
 			return false;
-		}
 
 		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
 
-		if (owner == nullptr) {
+		if (owner == nullptr)
 			return false;
-		}
 
 		return isAttackableBy(owner);
 	}
 
-	if (pvpStatusBitmask == 0) {
+	if (pvpStatusBitmask == 0)
 		return false;
-	}
 
 	unsigned int targetFaction = object->getFaction();
 
 	if (getFaction() != 0) {
-		if (targetFaction == getFaction()) {
+		if (targetFaction == getFaction())
 			return false;
-		}
 
-		if (object->isPlayerCreature() && (targetFaction == 0 || (object->getFactionStatus() == FactionStatus::ONLEAVE))) {
-				return false;
-		}
+		if (targetFaction == 0 || (object->getFactionStatus() == FactionStatus::ONLEAVE))
+			return false;
 	}
 
 	if (object->isAiAgent()) {
@@ -3075,19 +3063,19 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		AiAgent* ai = object->asAiAgent();
 
 		const CreatureTemplate* targetTemplate = ai->getCreatureTemplate();
-		if ((npcTemplate.get() != nullptr && targetTemplate != nullptr) && (npcTemplate->getTemplateName() == targetTemplate->getTemplateName())) {
+
+		if ((npcTemplate.get() != nullptr && targetTemplate != nullptr) && (npcTemplate->getTemplateName() == targetTemplate->getTemplateName()))
 			return false;
-		}
 
 		String targetSocialGroup = ai->getSocialGroup().toLowerCase();
-		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup().toLowerCase()) {
+
+		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup().toLowerCase())
 			return false;
-		}
 
 		uint32 targetLairTemplateCRC = ai->getLairTemplateCRC();
-		if (targetLairTemplateCRC != 0 && targetLairTemplateCRC == getLairTemplateCRC()) {
+
+		if (targetLairTemplateCRC != 0 && targetLairTemplateCRC == getLairTemplateCRC())
 			return false;
-		}
 	}
 
 	return true;

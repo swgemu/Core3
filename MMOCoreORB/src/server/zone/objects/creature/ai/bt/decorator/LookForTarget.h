@@ -76,7 +76,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == agent || target == nullptr || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
+		if (target == nullptr || target == agent || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
 				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
 				|| !target->isAttackableBy(agent))
 			return true;
