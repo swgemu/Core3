@@ -1,8 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
 DeathWatchBunkerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1,
-
 	passkey = {
 		hall = "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
 		storage = "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",
@@ -845,7 +843,7 @@ function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlaye
 end
 
 function DeathWatchBunkerScreenPlay:notifyTerminalChatSent(pPlayer, pChatMessage)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pChatMessage == nil) then
 		return 0
 	end
 
@@ -879,10 +877,21 @@ function DeathWatchBunkerScreenPlay:notifyTerminalChatSent(pPlayer, pChatMessage
 
 	local spatialMsg = getChatMessage(pChatMessage)
 
+	if (spatialMsg == nil or spatialMsg == "") then
+		printLuaError("Invalid spatial message from player " .. SceneObject(pPlayer):getDisplayedName())
+		return 0
+	end
+
 	local tokenizer = {}
 	for word in spatialMsg:gmatch("%w+") do table.insert(tokenizer, word) end
 
 	local spatialCommand = tokenizer[1]
+
+	if (spatialCommand == nil or spatialCommand == "") then
+		printLuaError("Invalid spatial command from player " .. SceneObject(pPlayer):getDisplayedName() .. ", spatial message: " .. spatialMsg)
+		return 0
+	end
+
 	writeStringData("dwb:bombDroidHandlerLastSpatialCommand", spatialCommand)
 
 	local moveDistance = 0
