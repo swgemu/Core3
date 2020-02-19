@@ -323,6 +323,23 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 	}
 
+	for (int i = 0; i < childCreatureObjects.size(); ++i) {
+		ManagedReference<CreatureObject*> child = childCreatureObjects.get(i);
+
+		if (child == nullptr)
+			continue;
+
+		Locker locker(child);
+
+		AiAgent* ai = child->asAiAgent();
+
+		if (ai != nullptr) {
+			ai->setRespawnTimer(0);
+		}
+
+		child->destroyObjectFromWorld(true);
+	}
+
 	childObjects.removeAll();
 	childCreatureObjects.removeAll();
 
