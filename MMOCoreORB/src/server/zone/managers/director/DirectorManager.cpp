@@ -325,8 +325,13 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 		luaEngine->setLogLevel(Logger::INFO);
 	}
 
-	luaEngine->setFileLogger("log/lua.log", true);
+	luaEngine->setFileLogger("log/lua.log", true, ConfigManager::instance()->getRotateLogAtStart());
 	luaEngine->setLogJSON(ConfigManager::instance()->getLuaLogJSON());
+	luaEngine->setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
+
+	if (luaEngine->getLogJSON()) {
+		luaEngine->setLogSynchronized(true);
+	}
 
 	setupLuaPackagePath(luaEngine);
 
