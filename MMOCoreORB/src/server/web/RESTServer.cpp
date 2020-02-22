@@ -23,7 +23,9 @@ using namespace server::web3;
 
 RESTServer::RESTServer() {
 	setLoggingName("RESTServer");
-	setFileLogger("log/core3_api.log", true);
+	setFileLogger("log/core3_api.log", true, ConfigManager::instance()->getRotateLogAtStart());
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.RESTServer.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
 	setLogToConsole(false);
 	setGlobalLogging(false);
 	setLogging(true);

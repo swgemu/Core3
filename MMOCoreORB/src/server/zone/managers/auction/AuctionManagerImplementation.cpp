@@ -42,7 +42,9 @@ void AuctionManagerImplementation::initialize() {
 
 	if (logLevel > -1) {
 		setGlobalLogging(false);
-		setFileLogger("log/auctions.log", true);
+		setFileLogger("log/auctions.log", true, ConfigManager::instance()->getRotateLogAtStart());
+		setLogSynchronized(true);
+		setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.AuctionManager.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
 		setLogToConsole(false);
 		info(true) << "AuctionManager initializing.";
 		setLogLevel(static_cast<Logger::LogLevel>(logLevel));

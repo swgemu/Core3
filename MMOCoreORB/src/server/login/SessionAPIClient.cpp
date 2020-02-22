@@ -28,7 +28,9 @@ SessionAPIClient::SessionAPIClient() {
 
 	// Separate log file to avoid spamming the console
 	setLoggingName("SessionAPIClient");
-	setFileLogger("log/session_api.log", true);
+	setFileLogger("log/session_api.log", true, ConfigManager::instance()->getRotateLogAtStart());
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.Login.API.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
 	setLogToConsole(false);
 	setGlobalLogging(false);
 	setLogging(true);

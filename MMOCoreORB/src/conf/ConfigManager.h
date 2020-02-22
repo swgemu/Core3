@@ -436,6 +436,14 @@ namespace conf {
 			return getInt("Core3.LogFileLevel", Logger::INFO);
 		}
 
+		inline int getRotateLogSizeMB() {
+			return getInt("Core3.RotateLogSizeMB", 100);
+		}
+
+		inline bool getRotateLogAtStart() {
+			return getBool("Core3.RotateLogAtStart", false);
+		}
+
 		inline void setProgressMonitors(bool val) {
 			setBool("Core3.ProgressMonitors", val);
 
