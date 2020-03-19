@@ -294,7 +294,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 			} else {
 				Locker _locker(terminal);
 
-				player->setCashCredits(player->getCashCredits() - amount,true);
+				player->subtractCashCredits(amount);
 
 				StringIdChatParameter textPlayer("base_player","prose_pay_success");
 				textPlayer.setDI(amount);
@@ -344,7 +344,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 
 			} else {
 				Locker _locker(terminal);
-				player->setCashCredits(player->getCashCredits() - amount,true);
+				player->subtractCashCredits(amount);
 				terminal->getBets()->add(new GamblingBet(player, amount, roulette.get(target)));
 				StringIdChatParameter textPlayer("gambling/default_interface","prose_bet_placed");
 				textPlayer.setDI(amount);
@@ -549,7 +549,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 						textPlayer.setDI(win);
 						player->sendSystemMessage(textPlayer);
 
-						player->setCashCredits(player->getCashCredits() + win, true);
+						player->addCashCredits(win, true);
 
 					} else if ((0 < terminal->getFirst() && terminal->getFirst() < 4) && (0 < terminal->getSecond() && terminal->getSecond() < 4) && (0 < terminal->getThird() && terminal->getThird() < 4)) {
 
@@ -561,7 +561,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 						textPlayer.setDI(win);
 						player->sendSystemMessage(textPlayer);
 
-						player->setCashCredits(player->getCashCredits() + win, true);
+						player->addCashCredits(win, true);
 
 					} else {
 
@@ -722,7 +722,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 							textPlayer.setDI(winnings->get(i));
 							player->sendSystemMessage(textPlayer);
 
-							player->setCashCredits(player->getCashCredits() + winnings->get(i), true);
+							player->addCashCredits(winnings->get(i), true);
 						}
 					}
 				}
