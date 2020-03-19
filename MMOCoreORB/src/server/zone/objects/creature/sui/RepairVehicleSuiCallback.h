@@ -57,7 +57,7 @@ public:
 			return;
 		}
 
-		player->setBankCredits(totalFunds - repairCost, true);
+		player->subtractBankCredits(repairCost);
 
 		StringIdChatParameter params("@base_player:prose_pay_success_no_target"); //You successfully make a payment of %DI credits.
 		params.setDI(repairCost);

@@ -654,16 +654,6 @@ class CreatureObject extends TangibleObject {
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = true);
 
 	/**
-	 * Updates the bank credits of this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified bank credits }
-	 * @param credits the new credits
-	 * @param notifyClient if set true the client will be updated with the changes
-	 */
-	@preLocked
-	public native void setBankCredits(int credits, boolean notifyClient = true);
-
-	/**
 	 * Adds the buff to the creature, activating it and sending packets if it is a player.
 	 * Buffs should never be added to the list without sending of packets.
 	 * @param buff The Buff object to add the creature.
@@ -808,6 +798,15 @@ class CreatureObject extends TangibleObject {
 	public native void addCashCredits(int credits, boolean notifyClient = true);
 
 	@preLocked
+	public native void clearBankCredits(boolean notifyClient = true);
+
+	@preLocked
+	public native void clearCashCredits(boolean notifyClient = true);
+
+	@preLocked
+	public native void transferCredits(int cash, int bank, boolean notifyClient = true);
+
+	@preLocked
 	public native CreditObject getCreditObject();
 
 	@preLocked
@@ -816,27 +815,17 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void subtractCashCredits(int credits);
 
-	@dirty
-	public boolean verifyCashCredits(int credits) {
-		if (credits < 0)
-			return false;
-
-		if (getCashCredits() < credits)
-			return false;
-
-		return true;
-	}
+	@preLocked
+	public native boolean subtractCredits(int credits);
 
 	@dirty
-	public boolean verifyBankCredits(int credits) {
-		if (credits < 0)
-			return false;
+	public native boolean verifyCashCredits(int credits);
 
-		if (getBankCredits() < credits)
-			return false;
+	@dirty
+	public native boolean verifyBankCredits(int credits);
 
-		return true;
-	}
+	@dirty
+	public native boolean verifyCredits(int credits);
 
 	@dirty
 	public native boolean isDancing();
@@ -851,16 +840,6 @@ class CreatureObject extends TangibleObject {
 	public native boolean isEntertaining() {
 		return isDancing() || isPlayingMusic();
 	}
-
-	/**
-	 * Update the cash credits of this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified cash credits }
-	 * @param credits the new credits
-	 * @param notifyClient if set true the client will be updated with the changes
-	 */
-	@preLocked
-	public native void setCashCredits(int credits, boolean notifyClient = true);
 
 	/**
 	 * Sets the terrain negotiation variable, and updates it.
