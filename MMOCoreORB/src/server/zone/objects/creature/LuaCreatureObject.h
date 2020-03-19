@@ -30,8 +30,6 @@ namespace creature {
 
 		int _setObject(lua_State* L);
 		// Methods we will need to use
-		int getBankCredits(lua_State *L);
-		int setBankCredits(lua_State* L);
 		int setHAM(lua_State* L);
 		int setBaseHAM(lua_State* L);
 		int setMaxHAM(lua_State* L);
@@ -80,8 +78,11 @@ namespace creature {
 		int setFactionRank(lua_State* L);
 		int getFactionRank(lua_State* L);
 		int getCashCredits(lua_State* L);
+		int getBankCredits(lua_State *L);
 		int subtractCashCredits(lua_State* L);
+		int subtractBankCredits(lua_State* L);
 		int addCashCredits(lua_State* L);
+		int addBankCredits(lua_State* L);
 		int removeScreenPlayState(lua_State* L);
 		int setLootRights(lua_State* L);
 		int isGrouped(lua_State* L);
