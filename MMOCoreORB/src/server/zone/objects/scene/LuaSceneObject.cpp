@@ -340,7 +340,7 @@ int LuaSceneObject::isInRangeWithObject(lua_State* L) {
 	float range = lua_tonumber(L, -1);
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -2);
 
-	bool res = realObject->isInRange(obj, range);
+	bool res = obj != nullptr && realObject->isInRange(obj, range);
 
 	lua_pushboolean(L, res);
 
@@ -351,7 +351,7 @@ int LuaSceneObject::isInRangeWithObject3d(lua_State* L) {
 	float range = lua_tonumber(L, -1);
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -2);
 
-	bool res = realObject->isInRange3d(obj, range);
+	bool res = obj != nullptr && realObject->isInRange3d(obj, range);
 
 	lua_pushboolean(L, res);
 

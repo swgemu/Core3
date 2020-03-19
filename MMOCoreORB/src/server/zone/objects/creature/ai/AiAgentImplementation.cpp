@@ -799,9 +799,6 @@ bool AiAgentImplementation::selectSpecialAttack() {
 }
 
 bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info("selectSpecialAttack(" + String::valueOf(attackNum) + ")", true);
-
 	const CreatureAttackMap* attackMap = getAttackMap();
 
 	if (attackMap == nullptr) {
@@ -810,11 +807,8 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 		return false;
 	}
 
-    if (attackNum < 0) {
-    	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-    		info("attackNum < 0", true);
+    if (attackNum < 0)
         return selectSpecialAttack();
-    }
 
 	if (attackNum >= attackMap->size()) {
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
@@ -848,9 +842,6 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
             || (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
         selectDefaultAttack();
     }
-
-    if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-    	info("selectSpecialAttack return true", true);
 
     return true;
 }
@@ -1905,9 +1896,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}*/
 
 	updateLocomotion();
-
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info ("currentSpeed:" + String::valueOf(currentSpeed), true);
 
 	return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING || found;
 }
