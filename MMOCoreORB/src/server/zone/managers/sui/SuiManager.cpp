@@ -231,14 +231,7 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 	if (!player->isInRange(bankObject, 5))
 		return;
 
-	uint32 currentCash = player->getCashCredits();
-	uint32 currentBank = player->getBankCredits();
-
-	if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
-		player->setCashCredits(cash);
-		player->setBankCredits(bank);
-	}
-
+	player->transferCredits(cash, bank);
 }
 
 void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

@@ -47,13 +47,7 @@ public:
 			return;
 		}
 
-		uint32 currentCash = player->getCashCredits();
-		uint32 currentBank = player->getBankCredits();
-
-		if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
-			player->setCashCredits(cash);
-			player->setBankCredits(bank);
-		}
+		player->transferCredits(cash, bank);
 
 		player->sendSystemMessage("@base_player:bank_success");
 	}
