@@ -80,7 +80,7 @@ public:
 					if (player->verifyCashCredits(amount))
 						player->subtractCashCredits(amount);
 					else
-						player->setCashCredits(0, true);
+						player->clearCashCredits();
 
 					success = true;
 				}
@@ -89,7 +89,7 @@ public:
 					if (player->verifyBankCredits(amount))
 						player->subtractBankCredits(amount);
 					else
-						player->setBankCredits(0, true);
+						player->clearBankCredits();
 
 					success = true;
 				}
