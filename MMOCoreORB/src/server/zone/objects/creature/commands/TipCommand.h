@@ -39,7 +39,7 @@ private:
 		player->subtractCashCredits(amount);
 
 		Locker clocker(targetPlayer, player);
-		targetPlayer->addCashCredits(amount, false); // FIXME: param notifyClient does nothing atm. in CreatureObject.idl:632
+		targetPlayer->addCashCredits(amount, false);
 
 		StringIdChatParameter tiptarget("base_player", "prose_tip_pass_target"); // %TT tips you %DI credits.
 		tiptarget.setDI(amount);

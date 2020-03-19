@@ -12,6 +12,8 @@ import server.zone.objects.creature.CreatureObject;
 class CreditObject extends ManagedObject {
 	protected int bankCredits;
 	protected int cashCredits;
+	
+	public static final int CREDITCAP = 2000000000; // 2 billion, client does not support anything larger than a signed int
 
 	@preLocked
 	public native void notifyLoadFromDatabase();
