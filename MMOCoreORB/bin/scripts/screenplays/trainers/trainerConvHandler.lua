@@ -249,9 +249,9 @@ function trainerConvHandler:handleConfirmLearnScreen(pConvTemplate, pPlayer, pNp
 		if (moneyRequired <= cashCredits) then
 			CreatureObject(pPlayer):subtractCashCredits(moneyRequired)
 		else
-			moneyRequired = moneyRequired - cashCredits
+			bankRequired = moneyRequired - cashCredits
 			CreatureObject(pPlayer):subtractCashCredits(cashCredits)
-			CreatureObject(pPlayer):setBankCredits(bankCredits - moneyRequired)
+			CreatureObject(pPlayer):subtractBankCredits(bankRequired)
 		end
 
 		local messageString = LuaStringIdChatParameter(stringTable .. "prose_skill_learned")
