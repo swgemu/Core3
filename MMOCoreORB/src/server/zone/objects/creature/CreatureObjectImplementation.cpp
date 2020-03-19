@@ -1311,20 +1311,6 @@ void CreatureObjectImplementation::addEncumbrance(int type, int value,
 	setEncumbrance(type, newValue, notifyClient);
 }
 
-void CreatureObjectImplementation::setBankCredits(int credits,
-		bool notifyClient) {
-
-	Locker locker(creditObject);
-	creditObject->setBankCredits(credits, notifyClient);
-}
-
-void CreatureObjectImplementation::setCashCredits(int credits,
-		bool notifyClient) {
-
-	Locker locker(creditObject);
-	creditObject->setCashCredits(credits, notifyClient);
-}
-
 void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 	if (skillList.contains(skill))
 		return;
@@ -2015,62 +2001,59 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
+void CreatureObjectImplementation::addBankCredits(int credits, bool notifyClient) {
+	Locker locker(creditObject);
+	creditObject->addBankCredits(credits, notifyClient);
+}
+
+void CreatureObjectImplementation::addCashCredits(int credits, bool notifyClient) {
+	Locker locker(creditObject);
+	creditObject->addCashCredits(credits, notifyClient);
+}
+
+void CreatureObjectImplementation::clearBankCredits(bool notifyClient) {
+	Locker locker(creditObject);
+	creditObject->clearBankCredits(notifyClient);
+}
+
+void CreatureObjectImplementation::clearCashCredits(bool notifyClient) {
+	Locker locker(creditObject);
+	creditObject->clearCashCredits(notifyClient);
+}
+
+void CreatureObjectImplementation::transferCredits(int cash, int bank, bool notifyClient) {
+	Locker locker(creditObject);
+	creditObject->transferCredits(cash, bank, notifyClient);
+}
+
 void CreatureObjectImplementation::subtractBankCredits(int credits) {
 	Locker locker(creditObject);
-
-	int newCredits = creditObject->getBankCredits() - credits;
-
-	if (newCredits < 0)
-		return;
-
-	creditObject->setBankCredits(newCredits, true);
+	creditObject->subtractBankCredits(credits, true);
 }
 
 void CreatureObjectImplementation::subtractCashCredits(int credits) {
 	Locker locker(creditObject);
-
-	int newCredits = creditObject->getCashCredits() - credits;
-
-	if (newCredits < 0)
-		return;
-
-	creditObject->setCashCredits(newCredits, true);
+	creditObject->subtractCashCredits(credits, true);
 }
 
-void CreatureObjectImplementation::addCashCredits(int credits, bool notifyClient) {
-	if (credits < 0) {
-		error() << "Unexpected credit value in " << __FUNCTION__ << "(" << credits << ")";
-		return;
-	}
-
+bool CreatureObjectImplementation::subtractCredits(int credits) {
 	Locker locker(creditObject);
-
-	uint32 newCredits = creditObject->getCashCredits() + credits;
-
-	if (newCredits > 2000000000) {
-		error() << "Credit overflow in " << __FUNCTION__ << "(" << credits << ") overflowed by: " << (newCredits - 2000000000);
-		newCredits = 2000000000;
-	}
-
-	creditObject->setCashCredits(newCredits, true);
+	return creditObject->subtractCredits(credits, true);
 }
 
-void CreatureObjectImplementation::addBankCredits(int credits, bool notifyClient) {
-	if (credits < 0) {
-		error() << "Unexpected credit value in " << __FUNCTION__ << "(" << credits << ")";
-		return;
-	}
-
+bool CreatureObjectImplementation::verifyCashCredits(int credits) {
 	Locker locker(creditObject);
+	return creditObject->verifyCashCredits(credits);
+}
 
-	uint32 newCredits = creditObject->getBankCredits() + credits;
+bool CreatureObjectImplementation::verifyBankCredits(int credits) {
+	Locker locker(creditObject);
+	return creditObject->verifyBankCredits(credits);
+}
 
-	if (newCredits > 2000000000) {
-		error() << "Credit overflow in " << __FUNCTION__ << "(" << credits << ") overflowed by: " << (newCredits - 2000000000);
-		newCredits = 2000000000;
-	}
-
-	creditObject->setBankCredits(newCredits, true);
+bool CreatureObjectImplementation::verifyCredits(int credits) {
+	Locker locker(creditObject);
+	return creditObject->verifyCredits(credits);
 }
 
 void CreatureObjectImplementation::notifyLoadFromDatabase() {
