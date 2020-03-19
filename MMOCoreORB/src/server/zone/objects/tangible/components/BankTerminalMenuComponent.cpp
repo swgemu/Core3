@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/sui/callbacks/BankTerminalSuiCallback.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
 
 void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const {
 
@@ -148,8 +149,12 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		return 0;
 	} else if (selectedID == DEPOSITALL) {
-
 		uint32 cash = creature->getCashCredits();
+		uint32 bank = creature->getBankCredits();
+		uint32 newBank = bank + cash;
+
+		if (newBank > CreditObject::CREDITCAP)
+			cash = newBank - CreditObject::CREDITCAP;
 
 		StringIdChatParameter params;
 		params.setStringId("@base_player:prose_deposit_success");
@@ -161,8 +166,12 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		return 0;
 	} else if (selectedID == WITHDRAWALL) {
+		uint32 cash = creature->getCashCredits();
+		uint32 bank = creature->getBankCredits();
+		uint32 newCash = bank + cash;
 
-		uint32 cash = creature->getBankCredits();
+		if (newCash > CreditObject::CREDITCAP)
+			cash = newCash - CreditObject::CREDITCAP;
 
 		StringIdChatParameter params;
 		params.setStringId("@base_player:prose_withdraw_success");
