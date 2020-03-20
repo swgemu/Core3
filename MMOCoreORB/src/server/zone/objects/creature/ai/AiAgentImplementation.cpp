@@ -807,8 +807,9 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 		return false;
 	}
 
-    if (attackNum < 0)
+    if (attackNum < 0) {
         return selectSpecialAttack();
+    }
 
 	if (attackNum >= attackMap->size()) {
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
