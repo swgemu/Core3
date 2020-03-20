@@ -2037,6 +2037,42 @@ void CreatureObjectImplementation::subtractCashCredits(int credits) {
 	creditObject->setCashCredits(newCredits, true);
 }
 
+void CreatureObjectImplementation::addCashCredits(int credits, bool notifyClient) {
+	if (credits < 0) {
+		error() << "Unexpected credit value in " << __FUNCTION__ << "(" << credits << ")";
+		return;
+	}
+
+	Locker locker(creditObject);
+
+	uint32 newCredits = creditObject->getCashCredits() + credits;
+
+	if (newCredits > 2000000000) {
+		error() << "Credit overflow in " << __FUNCTION__ << "(" << credits << ") overflowed by: " << (newCredits - 2000000000);
+		newCredits = 2000000000;
+	}
+
+	creditObject->setCashCredits(newCredits, true);
+}
+
+void CreatureObjectImplementation::addBankCredits(int credits, bool notifyClient) {
+	if (credits < 0) {
+		error() << "Unexpected credit value in " << __FUNCTION__ << "(" << credits << ")";
+		return;
+	}
+
+	Locker locker(creditObject);
+
+	uint32 newCredits = creditObject->getBankCredits() + credits;
+
+	if (newCredits > 2000000000) {
+		error() << "Credit overflow in " << __FUNCTION__ << "(" << credits << ") overflowed by: " << (newCredits - 2000000000);
+		newCredits = 2000000000;
+	}
+
+	creditObject->setBankCredits(newCredits, true);
+}
+
 void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 	/**
@@ -3898,4 +3934,3 @@ void CreatureObjectImplementation::setHue(int hueIndex) {
 void CreatureObjectImplementation::setClient(ZoneClientSession* cli) {
 	owner = cli;
 }
-

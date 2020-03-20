@@ -802,16 +802,10 @@ class CreatureObject extends TangibleObject {
 	public native boolean isResuscitable();
 
 	@preLocked
-	public void addBankCredits(int credits, boolean notifyClient = true) {
-		int newCredits = getBankCredits() + credits;
-		setBankCredits(newCredits);
-	}
+	public native void addBankCredits(int credits, boolean notifyClient = true);
 
 	@preLocked
-	public void addCashCredits(int credits, boolean notifyClient = true) {
-		int newCredits = getCashCredits() + credits;
-		setCashCredits(newCredits);
-	}
+	public native void addCashCredits(int credits, boolean notifyClient = true);
 
 	@preLocked
 	public native CreditObject getCreditObject();
