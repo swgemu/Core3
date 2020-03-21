@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_6b0e4936",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "this changes the behavior to always return true, is that right? maybe verify credits call would be better?",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_cb12f557",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4bff0502",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "all these need to be logged",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_ab0fc12d",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "this method is not used anymore AFAIK and should be removed entirely",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_2b045114",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObject.idl",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "why do you need this if you have the owner object below already",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_0b1d0d67",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObject.idl",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "tabs vs spaces",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_8b091d2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "should this ever hit? should this be an assert?",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_eb19b97a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4b26e5bb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "credits needs to be checked for \u003e\u003d 0 also cap",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_2b2bb183",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "credits \u003e\u003d 0 pre condition",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_8b20fd9c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "credits precondition as above",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_6b25a9aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_cb3955da",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "mem leak of all these",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_0b34eddc",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "System::err",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_ab36a1e5",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "System::err \u003c\u003c",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_eb3099ea",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "System::err",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4b4d4572",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-03-21T22:44:33Z",
+      "side": 1,
+      "message": "System::err",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
