@@ -64,6 +64,7 @@ void AuctionManagerImplementation::initialize() {
 	int countDatabaseItems = 0;
 	uint64 objectID = 0;
 
+	Vector<Reference<AuctionItem*> > retrievedItems;
 	Vector<ManagedReference<AuctionItem*> > orphanedBazaarItems;
 	ManagedReference<SceneObject*> defaultBazaar = nullptr;
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
@@ -81,6 +82,11 @@ void AuctionManagerImplementation::initialize() {
 		if (progressTime.miliDifference() > 5000) {
 			progressTime.updateToCurrentTime();
 			info(true) << "Scanned " << countDatabaseItems << " auctionitems db object(s) and loaded " << auctionMap->getTotalItemCount() << " object(s).";
+		}
+
+		if (auctionItem->getStatus() == AuctionItem::RETRIEVED) {
+			retrievedItems.add(auctionItem);
+			continue;
 		}
 
 		debug() << "loading actionItem: " << *auctionItem;
@@ -151,6 +157,19 @@ void AuctionManagerImplementation::initialize() {
 		}
 	}
 
+	for(int i = 0; i < retrievedItems.size(); ++i) {
+		auto auctionItem = retrievedItems.get(i);
+
+		if (auctionItem == nullptr) {
+			continue;
+		}
+
+		error() << "Deleting RETRIEVED auction item on dbload, auctionItem: " << *auctionItem;
+
+		auctionItem->setAuctionedItemObjectID(0);
+		auctionItem->destroyAuctionItemFromDatabase(false, false);
+	}
+
 	/// This is in case a bazaar is removed, it could move and item
 	/// to a difference city, but at least it doesn't poof
 	if(defaultBazaar != nullptr) {
@@ -191,10 +210,12 @@ void AuctionManagerImplementation::initialize() {
 
 	auto elapsed = startTime.miliDifference() / 1000.0;
 	int ps = elapsed > 0 ? countDatabaseItems / elapsed : countDatabaseItems;
+	int skipped = countDatabaseItems - auctionMap->getTotalItemCount();
 
 	info(true)
 		<< "Scanned " << countDatabaseItems << " auctionitem db object(s) "
 		<< "in " << elapsed << " second(s), (" << ps << "/s), "
+		<< "skipped " << skipped << ", "
 		<< "loaded " << auctionMap->getTotalItemCount() << " object(s) into auctionsMap.";
 }
 
@@ -333,6 +354,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			}
 
 			if (item->getStatus() == AuctionItem::RETRIEVED) {
+				error() << "Found RETRIEVED item in maintenance, auctionItem: " << *item;
 				auctionMap->deleteItem(vendor, item);
 				continue;
 			}
@@ -345,13 +367,14 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				if (sellingItem == nullptr) {
 					validationError = "has null item";
 				} else if (sellingItem->isNoTrade() || sellingItem->containsNoTradeObjectRecursive()) {
-					validationError = "isNoTrade or containes NoTrade items";
+					validationError = "isNoTrade or contains NoTrade items";
 				}
 
 				if (!validationError.isEmpty()) {
 					countInvalid++;
 					error() << logTag << ": Invalid auction for item " << sellingId << " " << validationError << ", expiring auctionItem: " << *item;
 					expireSale(item);
+					continue;
 				}
 			}
 
@@ -452,6 +475,19 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 			return;
 		}
 	} else {
+		if (oldItem->getStatus() == AuctionItem::DELETED) {
+			error() << "Attempt to sell a DELETED item, auctionItem: " << *oldItem;
+			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
+			player->sendMessage(soldMessage);
+			return;
+		}
+
+		if (oldItem->getStatus() == AuctionItem::RETRIEVED) {
+			error() << "Attempt to sell a RETRIEVED item, auctionItem: " << *oldItem;
+			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
+			player->sendMessage(soldMessage);
+			return;
+		}
 
 		if(oldItem->getStatus() == AuctionItem::FORSALE) {
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::ALREADYFORSALE);
@@ -521,6 +557,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	int result = auctionMap->addItem(player, vendor, item);
 
 	if(result != ItemSoldMessage::SUCCESS) {
+		info() << "Failed to addSaleItem to auctionMap, result=" << result << ", auctionItem: " << *item;
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, result);
 		player->sendMessage(soldMessage);
 		auctionMap->removeFromCommodityLimit(item);
@@ -584,9 +621,10 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		auctionEvents.put(item->getAuctionedItemObjectID(), newTask);
 	}
 
-	BaseMessage* msg = new ItemSoldMessage(objectid, 0);
+	BaseMessage* msg = new ItemSoldMessage(objectid, ItemSoldMessage::SUCCESS);
 	player->sendMessage(msg);
 
+	info() << "addSaleItem(): SUCCESS, auctionItem: " << *item;
 }
 
 String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
@@ -1299,6 +1337,8 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 
 		item->setStatus(AuctionItem::RETRIEVED);
 
+		item->setAuctionedItemObjectID(0);
+
 		String vuid = getVendorUID(vendor);
 
 		auctionMap->deleteItem(vendor, item);
@@ -1368,7 +1408,12 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					continue;
 
 				if (item->getStatus() == AuctionItem::DELETED) {
-					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping deleted auctionItem: " << *item;
+					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping DELETED auctionItem: " << *item;
+					continue;
+				}
+
+				if (item->getStatus() == AuctionItem::RETRIEVED) {
+					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping RETRIEVED auctionItem: " << *item;
 					continue;
 				}
 
@@ -2079,4 +2124,8 @@ String AuctionManagerImplementation::removeColorCodes(const String& name) {
 	}
 
 	return itemName;
+}
+
+Logger* AuctionManagerImplementation::getLogger() {
+	return dynamic_cast<Logger*>(this);
 }

@@ -11,7 +11,6 @@
 #include "server/zone/managers/auction/AuctionManager.h"
 
 void AuctionItemImplementation::initializeTransientMembers() {
-	setLoggingName("AuctionItem");
 	ManagedObjectImplementation::initializeTransientMembers();
 }
 
@@ -22,12 +21,6 @@ void AuctionItemImplementation::clearAuctionWithdraw() {
 
 void AuctionItemImplementation::notifyLoadFromDatabase() {
 	clearAuctionWithdraw();
-
-	StringBuffer logName;
-
-	logName << getLoggingName() << " 0x" << hex << getObjectID();
-
-	setLoggingName(logName.toString());
 
 	if (getStatus() == AuctionItem::DELETED) {
 		error() << "notifyLoadFromDatabase(), AuctionItem flagged as DELETED: " << *this;
@@ -83,10 +76,8 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 				}
 			}, "AuctionItem_destroyAuctionItemFromDatabase", "slowQueue");
 		}
-	}
-
-	if (getAuctionedItemObjectID() > 0) {
-		warning() << "destroyAuctionItemFromDatabase: still has object attached, auctionItem: " << *this;
+	} else if (getAuctionedItemObjectID() > 0) {
+		error() << "destroyAuctionItemFromDatabase: still has object attached, auctionItem: " << *this;
 	}
 
 	setAuctionedItemObjectID(0);
@@ -102,4 +93,42 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 
 uint64 AuctionItemImplementation::getObjectID() const {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
+}
+
+Logger* AuctionItemImplementation::getLogger() const {
+	auto server = ServerCore::getZoneServer();
+
+	if (server != nullptr) {
+		auto auctionManager = server->getAuctionManager();
+
+		if (auctionManager != nullptr) {
+			return auctionManager->getLogger();
+		}
+	}
+
+	return &Logger::console;
+}
+
+LoggerHelper AuctionItemImplementation::error() const {
+	auto logHelper = getLogger()->error();
+
+	logHelper << "[AuctionItem 0x" << hex << getObjectID() << "] ";
+
+	return logHelper;
+}
+
+LoggerHelper AuctionItemImplementation::info(int forced) const {
+	auto logHelper = getLogger()->info(forced);
+
+	logHelper << "[AuctionItem 0x" << hex << getObjectID() << "] ";
+
+	return logHelper;
+}
+
+LoggerHelper AuctionItemImplementation::debug() const {
+	auto logHelper = getLogger()->debug();
+
+	logHelper << "[AuctionItem 0x" << hex << getObjectID() << "] ";
+
+	return logHelper;
 }
