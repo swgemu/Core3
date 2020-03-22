@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_4b74259c",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "Will add verifyBankCredits",
+      "parentUuid": "9a561d44_6b0e4936",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_cb12f557",
         "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-21T22:44:33Z",
       "side": 1,
       "message": "same as above",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_2b79f193",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "verifyCashCredits",
+      "parentUuid": "9a561d44_cb12f557",
       "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_eb47f949",
+        "filename": "MMOCoreORB/src/server/zone/managers/credit/CreditManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "Any nullptr\u0027s for the obj are logged in the getCreditObject function below.",
+      "parentUuid": "9a561d44_4bff0502",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_ab0fc12d",
         "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_8b6e3dc8",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "Referenced in void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 eventIndex, Vector\u003cUnicodeString\u003e* args) {\n...\n\n    case SuiWindowType::BANK_TRANSFER:\n        handleBankTransfer(player, suiBox, eventIndex, args);\n        break;\n...",
+      "parentUuid": "9a561d44_ab0fc12d",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_2b045114",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObject.idl",
         "patchSetId": 6
@@ -81,6 +153,24 @@
       "writtenOn": "2020-03-21T22:44:33Z",
       "side": 1,
       "message": "why do you need this if you have the owner object below already",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_6b73e9b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObject.idl",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "Persistence for analysis/debugging when dumping.",
+      "parentUuid": "9a561d44_2b045114",
       "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -115,6 +205,24 @@
       "writtenOn": "2020-03-21T22:44:33Z",
       "side": 1,
       "message": "should this ever hit? should this be an assert?",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_cb6795e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/credits/CreditObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "Hate to crash the server if it did hit, it would be better to log and find the issue (error fires StackTrace too).",
+      "parentUuid": "9a561d44_8b091d2f",
       "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -217,6 +325,24 @@
       "writtenOn": "2020-03-21T22:44:33Z",
       "side": 1,
       "message": "mem leak of all these",
+      "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_ab64e1e5",
+        "filename": "MMOCoreORB/src/tests/CreditObjectTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-03-22T09:16:39Z",
+      "side": 1,
+      "message": "fixed in the latest patch, also ran with asan",
+      "parentUuid": "9a561d44_cb3955da",
       "revId": "51efd3b573c773d7034d8b2f1f74742cf0cd4b36",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
