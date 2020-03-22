@@ -120,20 +120,20 @@ class CreditObject extends ManagedObject {
 
 	public native void setOwner(CreatureObject obj);
 
-    @read
-    @dereferenced
-    @local
-    public native LoggerHelperStream error();
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream error();
 
-    @read
-    @dereferenced
-    @local
-    public native LoggerHelperStream info(int forced = false); /*int instead of bool because of const char* implicit cast to bool*/
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream info(int forced = false); /*int instead of bool because of const char* implicit cast to bool*/
 
-    @read
-    @dereferenced
-    @local
-    public native LoggerHelperStream debug();
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream debug();
 
 	@read
 	@local

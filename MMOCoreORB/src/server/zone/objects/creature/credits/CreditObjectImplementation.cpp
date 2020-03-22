@@ -101,6 +101,11 @@ void CreditObjectImplementation::subtractBankCredits(int credits, bool notifyCli
 }
 
 void CreditObjectImplementation::subtractCashCredits(int credits, bool notifyClient) {
+	if (credits < 0) {
+		error() << "WARNING: Negative subtractCashCredits(credits=" << credits << "), current: " << *this;
+		return;
+	}
+
 	if (credits > cashCredits) {
 		error() << "WARNING: Overdraft subtractCashCredits(credits=" << credits << "), current: " << *this;
 		credits -= cashCredits;
@@ -120,6 +125,11 @@ void CreditObjectImplementation::subtractCashCredits(int credits, bool notifyCli
 }
 
 bool CreditObjectImplementation::subtractCredits(int credits, bool notifyClient, bool bankFirst) {
+	if (credits < 0) {
+		error() << "WARNING: Negative subtractCredits(credits=" << credits << "), current: " << *this;
+		return false;
+	}
+
 	if (credits > cashCredits + bankCredits) {
 		return false;
 	}
@@ -146,6 +156,11 @@ bool CreditObjectImplementation::subtractCredits(int credits, bool notifyClient,
 }
 
 void CreditObjectImplementation::addBankCredits(int credits, bool notifyClient) {
+	if (credits < 0) {
+		error() << "WARNING: Negative addBankCredits(credits=" << credits << "), current: " << *this;
+		return;
+	}
+
 	uint64 newBalance = (uint64)bankCredits + (uint64)credits;
 
 	if (newBalance > CreditObject::CREDITCAP) {
@@ -167,6 +182,11 @@ void CreditObjectImplementation::addBankCredits(int credits, bool notifyClient) 
 }
 
 void CreditObjectImplementation::addCashCredits(int credits, bool notifyClient) {
+	if (credits < 0) {
+		error() << "WARNING: Negative addCashCredits(credits=" << credits << "), current: " << *this;
+		return;
+	}
+
 	uint64 newBalance = (uint64)cashCredits + (uint64)credits;
 
 	if (newBalance > CreditObject::CREDITCAP) {
@@ -222,10 +242,10 @@ LoggerHelper CreditObjectImplementation::debug() const {
 }
 
 String CreditObjectImplementation::toStringData() const {
-    JSONSerializationType jsonData;
+	JSONSerializationType jsonData;
 	jsonData["ownerObjectID"] = getOwnerObjectID();
 	jsonData["bankCredits"] = bankCredits;
 	jsonData["cashCredits"] = cashCredits;
-    jsonData["objectID"] = _this.getReferenceUnsafeStaticCast()->_getObjectID();
-    return jsonData.dump();
+	jsonData["objectID"] = _this.getReferenceUnsafeStaticCast()->_getObjectID();
+	return jsonData.dump();
 }

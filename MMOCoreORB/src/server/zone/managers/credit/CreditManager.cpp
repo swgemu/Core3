@@ -17,6 +17,7 @@ void CreditManager::addBankCredits(uint64 creatureID, int amount, bool notifyCli
 	Locker locker(obj);
 	obj->addBankCredits(amount, notifyClient);
 }
+
 void CreditManager::addCashCredits(uint64 creatureID, int amount, bool notifyClient) {
 	auto obj = CreditManager::getCreditObject(creatureID);
 
@@ -34,6 +35,11 @@ bool CreditManager::subtractBankCredits(uint64 creatureID, int amount, bool noti
 		return false;
 
 	Locker locker(obj);
+
+	if (!obj->verifyBankCredits(amount)) {
+		return false;
+	}
+
 	obj->subtractBankCredits(amount);
 
 	return true;
@@ -46,6 +52,11 @@ bool CreditManager::subtractCashCredits(uint64 creatureID, int amount, bool noti
 		return false;
 
 	Locker locker(obj);
+
+	if (!obj->verifyCashCredits(amount)) {
+		return false;
+	}
+
 	obj->subtractCashCredits(amount);
 
 	return true;
