@@ -212,6 +212,9 @@ class AuctionItem extends ManagedObject {
 	}
 
 	@read
+	public native string getStatusString();
+
+	@read
 	public unsigned long getVendorID() {
 		return vendorID;
 	}

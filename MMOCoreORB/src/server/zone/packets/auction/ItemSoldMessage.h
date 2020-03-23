@@ -5,6 +5,8 @@
 #ifndef ITEMSOLDMESSAGE_H_
 #define ITEMSOLDMESSAGE_H_
 
+#include "engine/engine.h"
+
 /*
  * Status codes
  * 0  - Sale succeeded
@@ -48,6 +50,27 @@ public:
 		
 		insertLong(objectid);
 		insertInt(status); 
+	}
+
+	static String statusToString(int status) {
+		switch (status) {
+		case SUCCESS: return String("SUCCESS");
+		case INVALIDAUCTIONER: return String("INVALIDAUCTIONER");
+		case INVALIDITEM: return String("INVALIDITEM");
+		case VENDORNOTWORKING: return String("VENDORNOTWORKING");
+		case INVALIDSALEPRICE: return String("INVALIDSALEPRICE");
+		case INVALIDSALEDURATION: return String("INVALIDSALEDURATION");
+		case ALREADYFORSALE: return String("ALREADYFORSALE");
+		case UNKNOWNERROR: return String("UNKNOWNERROR");
+		case NOTOWN: return String("NOTOWN");
+		case NOTENOUGHCREDITS: return String("NOTENOUGHCREDITS");
+		case TOOMANYITEMS: return String("TOOMANYITEMS");
+		case OVER20000: return String("OVER20000");
+		}
+
+		StringBuffer msg;
+		msg << "ItemSoldMessage::Unknown(" << status << ")";
+		return msg.toString();
 	}
 };
 
