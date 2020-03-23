@@ -9,6 +9,7 @@
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/packets/auction/ItemSoldMessage.h"
 
 void AuctionItemImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -62,7 +63,12 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 		if (sellingID > 0) {
 			setAuctionedItemObjectID(0);
 
-			Core::getTaskManager()->executeTask([sellingID] () {
+			Core::getTaskManager()->executeTask([
+				sellingID,
+				aoid = getObjectID(),
+				statusString = getStatusString(),
+				logger = getLogger()
+			] () {
 				auto server = ServerCore::getZoneServer();
 
 				if (server == nullptr)
@@ -72,6 +78,20 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 
 				if (scno != nullptr) {
 					Locker locker(scno);
+
+					if (ConfigManager::instance()->getBool("Core3.AuctionItem.ExportOnDestroy", false)) {
+						StringBuffer exportMsg;
+
+						exportMsg << "destroyAuctionItemFromDatabase"
+							<< " status=" << statusString
+						    << " auctionObjectID: " << aoid
+						;
+
+						auto path = scno->exportJSON(exportMsg.toString());
+
+						logger->info() << "[AuctionItem 0x" << hex << aoid << "] destroyAuctionItemFromDatabase: Exported deleted item to " << path;
+					}
+
 					scno->destroyObjectFromDatabase(true);
 				}
 			}, "AuctionItem_destroyAuctionItemFromDatabase", "slowQueue");
@@ -93,6 +113,10 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 
 uint64 AuctionItemImplementation::getObjectID() const {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
+}
+
+String AuctionItemImplementation::getStatusString() const {
+	return ItemSoldMessage::statusToString(status);
 }
 
 Logger* AuctionItemImplementation::getLogger() const {
