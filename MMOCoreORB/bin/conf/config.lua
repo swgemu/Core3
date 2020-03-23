@@ -96,7 +96,7 @@ Core3 = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
+	"corellia",
 	--"creature_test",
 	--"dantooine",
 	--"dathomir",
