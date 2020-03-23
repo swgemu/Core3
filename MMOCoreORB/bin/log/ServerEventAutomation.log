@@ -1,0 +1,8 @@
+Sun Mar 22 23:53:58 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 1s, session: 0s) on tutorial at 2434 2405 - playerLoggedIn
+Sun Mar 22 23:59:55 2020 [ServerEventAutomation] playerEvent TraderJoe (oid: 281474993512721, played: 1s, session: 0s) on tutorial at 4416 3041 - playerLoggedIn
+Mon Mar 23 00:00:56 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 5m 26s, session: 0s) on tatooine at 3529 -4806 - playerLoggedIn
+Mon Mar 23 00:02:10 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 6m 39s, session: 1m 12s) on tatooine at 3526 -4810 - playerLoggedOut
+Mon Mar 23 00:05:13 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 6m 40s, session: 0s) on tatooine at 3526 -4810 - playerLoggedIn
+Mon Mar 23 00:10:38 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 6m 50s, session: 0s) on tatooine at 3523 -4807 - playerLoggedIn
+Mon Mar 23 00:25:11 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 7m 0s, session: 0s) on tatooine at 3520 -4813 - playerLoggedIn
+Mon Mar 23 00:37:34 2020 [ServerEventAutomation] playerEvent NickWill (oid: 281474993512694, played: 7m 24s, session: 0s) on tatooine at 3525 -4813 - playerLoggedIn
