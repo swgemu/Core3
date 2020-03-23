@@ -64,7 +64,7 @@ void AuctionManagerImplementation::initialize() {
 	int countDatabaseItems = 0;
 	uint64 objectID = 0;
 
-	Vector<Reference<AuctionItem*> > retrievedItems;
+	Vector<Reference<AuctionItem*> > itemsToDelete;
 	Vector<ManagedReference<AuctionItem*> > orphanedBazaarItems;
 	ManagedReference<SceneObject*> defaultBazaar = nullptr;
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
@@ -84,12 +84,11 @@ void AuctionManagerImplementation::initialize() {
 			info(true) << "Scanned " << countDatabaseItems << " auctionitems db object(s) and loaded " << auctionMap->getTotalItemCount() << " object(s).";
 		}
 
-		if (auctionItem->getStatus() == AuctionItem::RETRIEVED) {
-			retrievedItems.add(auctionItem);
+		if (auctionItem->getStatus() == AuctionItem::RETRIEVED
+		|| (auctionItem->getStatus() == AuctionItem::EXPIRED && auctionItem->getExpireTime() <= time(0))) {
+			itemsToDelete.add(auctionItem);
 			continue;
 		}
-
-		debug() << "loading actionItem: " << *auctionItem;
 
 		ManagedReference<SceneObject*> vendor = zoneServer->getObject(auctionItem->getVendorID());
 
@@ -141,7 +140,20 @@ void AuctionManagerImplementation::initialize() {
 		int result = auctionMap->addItem(nullptr, vendor, auctionItem);
 
 		if(result != ItemSoldMessage::SUCCESS) {
-			error() << "Failed to addItem to AuctionsMap, result= " << result << " auctionItem: " << *auctionItem;
+			auto msg = error();
+
+			msg << "Failed to addItem to AuctionsMap, result=" << result << " auctionItem: " << *auctionItem;
+
+			if (result == ItemSoldMessage::ALREADYFORSALE) {
+				Reference<AuctionItem*> otherItem = auctionMap->getItem(auctionItem->getAuctionedItemObjectID());
+
+				if (otherItem != nullptr) {
+					msg << "; otherAuctionItem: " << *otherItem;
+				}
+			}
+
+			msg.flush();
+
 			continue;
 		}
 
@@ -157,14 +169,14 @@ void AuctionManagerImplementation::initialize() {
 		}
 	}
 
-	for(int i = 0; i < retrievedItems.size(); ++i) {
-		auto auctionItem = retrievedItems.get(i);
+	for(int i = 0; i < itemsToDelete.size(); ++i) {
+		auto auctionItem = itemsToDelete.get(i);
 
 		if (auctionItem == nullptr) {
 			continue;
 		}
 
-		error() << "Deleting RETRIEVED auction item on dbload, auctionItem: " << *auctionItem;
+		error() << "Deleting " << auctionItem->getStatusString() << " item on dbload, auctionItem: " << *auctionItem;
 
 		auctionItem->setAuctionedItemObjectID(0);
 		auctionItem->destroyAuctionItemFromDatabase(false, false);
@@ -1407,13 +1419,8 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 				if(item == nullptr)
 					continue;
 
-				if (item->getStatus() == AuctionItem::DELETED) {
-					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping DELETED auctionItem: " << *item;
-					continue;
-				}
-
-				if (item->getStatus() == AuctionItem::RETRIEVED) {
-					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping RETRIEVED auctionItem: " << *item;
+				if (item->getStatus() == AuctionItem::DELETED || item->getStatus() == AuctionItem::RETRIEVED) {
+					info() << "fillAuctionQueryHeadersResponseMessage(): Skipping " << item->getStatusString() << " auctionItem: " << *item;
 					continue;
 				}
 
