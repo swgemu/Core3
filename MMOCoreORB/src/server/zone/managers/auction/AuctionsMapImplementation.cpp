@@ -94,7 +94,12 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 }
 
 void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* item, bool deleteAuctionedObject) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+	removeItem(vendor, item);
+	item->destroyAuctionItemFromDatabase(false, deleteAuctionedObject);
+}
 
+void AuctionsMapImplementation::removeItem(SceneObject* vendor, AuctionItem* item) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(vendor != nullptr) {
@@ -105,7 +110,6 @@ void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* ite
 	}
 
 	allItems.drop(item->getAuctionedItemObjectID());
-	item->destroyAuctionItemFromDatabase(false, deleteAuctionedObject);
 }
 
 void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {

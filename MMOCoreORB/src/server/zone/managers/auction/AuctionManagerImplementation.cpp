@@ -139,10 +139,25 @@ void AuctionManagerImplementation::initialize() {
 
 		int result = auctionMap->addItem(nullptr, vendor, auctionItem);
 
+		// On duplicate item, pick the highest auctionItem oid and arrange to delete the rest
+		if (result == ItemSoldMessage::ALREADYFORSALE) {
+			Reference<AuctionItem*> currentItem = auctionMap->getItem(auctionItem->getAuctionedItemObjectID());
+
+			if (auctionItem->getObjectID() > currentItem->getObjectID()) {
+				auctionMap->removeItem(vendor, currentItem);
+				itemsToDelete.add(currentItem);
+
+				// Try again, result is checked below
+				result = auctionMap->addItem(nullptr, vendor, auctionItem);
+			} else {
+				itemsToDelete.add(auctionItem);
+			}
+		}
+
 		if(result != ItemSoldMessage::SUCCESS) {
 			auto msg = error();
 
-			msg << "Failed to addItem to AuctionsMap, result=" << result << " auctionItem: " << *auctionItem;
+			msg << "Failed to addItem to AuctionsMap " << ItemSoldMessage::statusToString(result) << ", auctionItem: " << *auctionItem;
 
 			if (result == ItemSoldMessage::ALREADYFORSALE) {
 				Reference<AuctionItem*> otherItem = auctionMap->getItem(auctionItem->getAuctionedItemObjectID());
@@ -153,7 +168,6 @@ void AuctionManagerImplementation::initialize() {
 			}
 
 			msg.flush();
-
 			continue;
 		}
 
@@ -176,11 +190,21 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
-		error() << "Deleting " << auctionItem->getStatusString() << " item on dbload, auctionItem: " << *auctionItem;
+		auto msg = error();
+
+		msg << "Deleting " << auctionItem->getStatusString() << " item";
+
+		if (auctionMap->containsItem(auctionItem->getAuctionedItemObjectID())) {
+			msg << " (Duplicate Listing)";
+		}
+
+		msg << ", auctionItem: " << *auctionItem;
 
 		if (auctionItem->getStatus() == AuctionItem::RETRIEVED) {
 			auctionItem->setAuctionedItemObjectID(0);
 		}
+
+		msg.flush();
 
 		auctionItem->destroyAuctionItemFromDatabase(false, auctionItem->getStatus() == AuctionItem::EXPIRED);
 	}

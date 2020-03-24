@@ -206,7 +206,6 @@ class AuctionItem extends ManagedObject {
 		return auction;
 	}
 
-	@read
 	public int getStatus() {
 		return status;
 	}

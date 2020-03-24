@@ -9,7 +9,6 @@
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/packets/auction/ItemSoldMessage.h"
 
 void AuctionItemImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -116,7 +115,18 @@ uint64 AuctionItemImplementation::getObjectID() const {
 }
 
 String AuctionItemImplementation::getStatusString() const {
-	return ItemSoldMessage::statusToString(status);
+	switch (status) {
+	case FORSALE:	return String("FORSALE");
+	case SOLD:		return String("SOLD");
+	case EXPIRED:	return String("EXPIRED");
+	case OFFERED:	return String("OFFERED");
+	case RETRIEVED:	return String("RETRIEVED");
+	case DELETED:	return String("DELETED");
+	}
+
+	StringBuffer msg;
+	msg << "UnknownStatus(" << status << ")";
+	return msg.toString();
 }
 
 Logger* AuctionItemImplementation::getLogger() const {
