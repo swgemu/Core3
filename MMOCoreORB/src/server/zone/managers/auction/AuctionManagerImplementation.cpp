@@ -62,6 +62,7 @@ void AuctionManagerImplementation::initialize() {
 	Time startTime;
 	Time progressTime;
 	int countDatabaseItems = 0;
+	int countDuplicates = 0;
 	uint64 objectID = 0;
 
 	Vector<Reference<AuctionItem*> > itemsToDelete;
@@ -141,10 +142,13 @@ void AuctionManagerImplementation::initialize() {
 
 		// On duplicate item, pick the highest auctionItem oid and arrange to delete the rest
 		if (result == ItemSoldMessage::ALREADYFORSALE) {
+			countDuplicates++;
 			Reference<AuctionItem*> currentItem = auctionMap->getItem(auctionItem->getAuctionedItemObjectID());
 
 			if (auctionItem->getObjectID() > currentItem->getObjectID()) {
-				auctionMap->removeItem(vendor, currentItem);
+				Reference<SceneObject*> currentVendor = zoneServer->getObject(currentItem->getVendorID());
+
+				auctionMap->removeItem(currentVendor, currentItem);
 				itemsToDelete.add(currentItem);
 
 				// Try again, result is checked below
@@ -254,7 +258,7 @@ void AuctionManagerImplementation::initialize() {
 	info(true)
 		<< "Scanned " << countDatabaseItems << " auctionitem db object(s) "
 		<< "in " << elapsed << " second(s), (" << ps << "/s), "
-		<< "skipped " << skipped << ", "
+		<< "skipped " << skipped << " (" << countDuplicates << " duplicate listings), "
 		<< "loaded " << auctionMap->getTotalItemCount() << " object(s) into auctionsMap.";
 }
 
