@@ -28,6 +28,7 @@ namespace server {
  namespace web3 {
  class APIRequest;
  class APIProxyPlayerManager;
+ class APIProxyChatManager;
  class RESTEndpoint;
 
  using namespace web;
@@ -42,6 +43,7 @@ namespace server {
 	String mAuthHeader;
 	ArrayList<RESTEndpoint, ArrayListNoReallocTrait::value> mAPIEndpoints;
 	APIProxyPlayerManager* mPlayerManagerProxy;
+	APIProxyChatManager* mProxyChatManager;
 
 	void registerEndpoints();
 	bool checkAuth(http_request& request);
