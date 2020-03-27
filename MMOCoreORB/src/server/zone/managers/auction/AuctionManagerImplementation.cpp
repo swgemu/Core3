@@ -80,6 +80,8 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
+		Locker lock(auctionItem);
+
 		if (progressTime.miliDifference() > 5000) {
 			progressTime.updateToCurrentTime();
 			info(true) << "Scanned " << countDatabaseItems << " auctionitems db object(s) and loaded " << auctionMap->getTotalItemCount() << " object(s).";
@@ -106,7 +108,7 @@ void AuctionManagerImplementation::initialize() {
 			}
 
 			warning() << "Auction Item's vendor is gone, deleting auctionItem: " << *auctionItem;
-			auctionMap->deleteItem(vendor, auctionItem, true);
+			itemsToDelete.add(auctionItem);
 			continue;
 		}
 
@@ -114,9 +116,7 @@ void AuctionManagerImplementation::initialize() {
 
 		if (ownerName.isEmpty()) {
 			error() << "Auction with invalid owner, deleting auctionItem: " << *auctionItem;
-
-			uint64 sellingId = auctionItem->getAuctionedItemObjectID();
-			auctionMap->deleteItem(vendor, auctionItem, true);
+			itemsToDelete.add(auctionItem);
 			continue;
 		}
 
@@ -155,6 +155,7 @@ void AuctionManagerImplementation::initialize() {
 				result = auctionMap->addItem(nullptr, vendor, auctionItem);
 			} else {
 				itemsToDelete.add(auctionItem);
+				continue;
 			}
 		}
 
@@ -194,23 +195,37 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
+		Locker lock(auctionItem);
+
+		// By default delete auctioned object on Expired auctions.
+		auto deleteAuctionedObject = auctionItem->getStatus() == AuctionItem::EXPIRED;
+
 		auto msg = error();
 
 		msg << "Deleting " << auctionItem->getStatusString() << " item";
 
 		if (auctionMap->containsItem(auctionItem->getAuctionedItemObjectID())) {
 			msg << " (Duplicate Listing)";
+
+			deleteAuctionedObject = false; // Other auctionItem holds the object
+		}
+
+		Reference<SceneObject*> vendor = zoneServer->getObject(auctionItem->getVendorID());
+
+		if (vendor == nullptr) {
+			msg << " (Vendor missing)";
 		}
 
 		msg << ", auctionItem: " << *auctionItem;
 
-		if (auctionItem->getStatus() == AuctionItem::RETRIEVED) {
+		if (!deleteAuctionedObject) {
+			// If we're not deleting it clear the auctioned item
 			auctionItem->setAuctionedItemObjectID(0);
 		}
 
 		msg.flush();
 
-		auctionItem->destroyAuctionItemFromDatabase(false, auctionItem->getStatus() == AuctionItem::EXPIRED);
+		auctionItem->destroyAuctionItemFromDatabase(false, deleteAuctionedObject);
 	}
 
 	/// This is in case a bazaar is removed, it could move and item
@@ -219,6 +234,8 @@ void AuctionManagerImplementation::initialize() {
 
 		for(int i = 0; i < orphanedBazaarItems.size(); ++i) {
 			ManagedReference<AuctionItem*> auctionItem = orphanedBazaarItems.get(i);
+
+			Locker lock(auctionItem);
 
 			String vuid = getVendorUID(defaultBazaar);
 			auctionMap->addItem(nullptr, defaultBazaar, auctionItem);
@@ -308,6 +325,7 @@ void AuctionManagerImplementation::checkAuctions(bool startupTask) {
 
 void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, const String& logTag, bool startupTask) {
 	Time expireTime;
+	Time progressTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	int countTotal = 0;
@@ -315,10 +333,13 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 	int countInvalid = 0;
 
 	for (int i = 0; i < items->size(); ++i) {
-		Reference<TerminalItemList*>& list = items->get(i);
+		Reference<TerminalItemList*>& terminalList = items->get(i);
 
-		if (list == nullptr || list->size() == 0)
+		if (terminalList == nullptr || terminalList->size() == 0)
 			continue;
+
+		// Get a copy of this terminal's list because the loop deletes some objects as it runs
+		Reference<TerminalItemList*> list = new TerminalItemList(*terminalList);
 
 		for (int j = 0; j < list->size(); ++j) {
 			ManagedReference<AuctionItem*> item = list->get(j);
@@ -329,6 +350,11 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			Locker locker(item);
 
 			countTotal++;
+
+			if (progressTime.miliDifference() > 5000) {
+				progressTime.updateToCurrentTime();
+				info(true) << logTag << ": Checked " << countTotal  << " auctions in " << i << " of " << items->size() << " " << logTag << "s.";
+			}
 
 			if (item->getStatus() == AuctionItem::DELETED) {
 				error() << "Skipping deleted auctionItem: " << *item;
@@ -408,15 +434,16 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 				auto sellingItem = zoneServer->getObject(sellingId);
 
 				if (sellingItem == nullptr) {
-					validationError = "has null item";
+					validationError = "has null item, deleting";
+					auctionMap->deleteItem(vendor, item, true);
 				} else if (sellingItem->isNoTrade() || sellingItem->containsNoTradeObjectRecursive()) {
-					validationError = "isNoTrade or contains NoTrade items";
+					validationError = "isNoTrade or contains NoTrade items, expiring";
+					expireSale(item);
 				}
 
 				if (!validationError.isEmpty()) {
 					countInvalid++;
-					error() << logTag << ": Invalid auction for item " << sellingId << " " << validationError << ", expiring auctionItem: " << *item;
-					expireSale(item);
+					error() << logTag << ": Invalid auction for item " << sellingId << " " << validationError << " auctionItem: " << *item;
 					continue;
 				}
 			}
@@ -465,11 +492,11 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 		<< " updated " << countUpdated << " item(s)"
 		;
 
-	if (ConfigManager::instance()->getBool("Core3.AuctionManager.Startup.ExpireInvalid", false)) {
-		msg << " and expired " << countInvalid << " invalid item(s),";
+	if (startupTask && ConfigManager::instance()->getBool("Core3.AuctionManager.Startup.ExpireInvalid", false)) {
+		msg << " and found " << countInvalid << " invalid item(s),";
 	}
 
-	msg << " (" << ps << "/s)";
+	msg << " in " << int(elapsed) << " second(s) (" << ps << "/s)";
 	msg.flush();
 }
 
