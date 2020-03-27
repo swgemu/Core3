@@ -30,8 +30,7 @@ void StructureMaintenanceTask::run() {
 		return;
 
 	if (zoneServer->isServerLoading()) {
-		schedule(1000);
-
+		reschedule(20 * 1000);
 		return;
 	}
 
