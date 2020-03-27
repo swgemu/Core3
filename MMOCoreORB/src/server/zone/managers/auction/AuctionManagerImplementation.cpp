@@ -76,7 +76,7 @@ void AuctionManagerImplementation::initialize() {
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if(auctionItem == nullptr) {
-			error("unable to load auction item: " + String::valueOf(objectID));
+			error() << "Unable to load auction item: " << objectID;
 			continue;
 		}
 
@@ -503,7 +503,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, SceneObject* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
 
 	if (vendor == nullptr || (!vendor->isVendor() && !vendor->isBazaarTerminal())) {
-		error("terminal is not a valid vendor object");
+		error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Not valid vendor object.";
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::VENDORNOTWORKING);
 		player->sendMessage(soldMessage);
 		return;
@@ -538,22 +538,23 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	if(oldItem == nullptr) {
 		if (objectToSell == nullptr || !objectToSell->isASubChildOf(player)) {
-			if(objectToSell != nullptr)
-				error("trying to add invalid object");
+			if (objectToSell != nullptr)
+				error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Selling invalid object.";
+
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
 			return;
 		}
 	} else {
 		if (oldItem->getStatus() == AuctionItem::DELETED) {
-			error() << "Attempt to sell a DELETED item, auctionItem: " << *oldItem;
+			error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Attempt to sell a DELETED item, auctionItem: " << *oldItem;
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
 			return;
 		}
 
 		if (oldItem->getStatus() == AuctionItem::RETRIEVED) {
-			error() << "Attempt to sell a RETRIEVED item, auctionItem: " << *oldItem;
+			error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Attempt to sell a RETRIEVED item, auctionItem: " << *oldItem;
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
 			return;
@@ -567,7 +568,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 		/// Is it being sold from the stockroom
 		if (oldItem->getOwnerID() != player->getObjectID()) {
-			error("trying to add invalid object");
+			error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Selling object owned by another player: " << oldItem->getOwnerID();
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
 			return;
@@ -583,7 +584,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	ManagedReference<Zone*> zone = vendor->getZone();
 	if (zone == nullptr) {
-		error("null vendor zone");
+		error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): Vendor has null zone?";
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::UNKNOWNERROR);
 		player->sendMessage(soldMessage);
 		return;
@@ -616,7 +617,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	ManagedReference<AuctionItem*> item = createVendorItem(player, objectToSell.get(), vendor, description, price, duration, auction, premium);
 
 	if(item == nullptr) {
-		error("Unable to create vendor item");
+		error() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): createVendorItem failed.";
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::UNKNOWNERROR);
 		player->sendMessage(soldMessage);
 		return;
@@ -627,7 +628,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	int result = auctionMap->addItem(player, vendor, item);
 
 	if(result != ItemSoldMessage::SUCCESS) {
-		info() << "Failed to addSaleItem to auctionMap, result=" << result << ", auctionItem: " << *item;
+		info() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): failed to add to auctionMap, result=" << ItemSoldMessage::statusToString(result) << ", auctionItem: " << *item;
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, result);
 		player->sendMessage(soldMessage);
 		auctionMap->removeFromCommodityLimit(item);
@@ -694,15 +695,12 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	BaseMessage* msg = new ItemSoldMessage(objectid, ItemSoldMessage::SUCCESS);
 	player->sendMessage(msg);
 
-	info() << "addSaleItem(): SUCCESS, auctionItem: " << *item;
+	info() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): SUCCESS, auctionItem: " << *item;
 }
 
 String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
-
-	//planet.region.vendorname.oid#x,y
-
 	if(vendor->getZone() == nullptr) {
-		error("no zone for our poor vendor");
+		error() << "Vendor missing zone: " << *vendor;
 		return "nozone.nozone.sadpandavendor." + String::valueOf(vendor->getObjectID()) + "#0,0";
 	}
 
@@ -722,7 +720,7 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium, bool stockroomSale) {
 
 	if (vendor == nullptr) {
-		error("nullptr Vendor");
+		error() << "checkSaleItem(" << player->getObjectID() << ", object=" << object->getObjectID() << ", vendor=nullptr): Vendor is null";
 		return ItemSoldMessage::UNKNOWNERROR;
 	}
 
@@ -787,7 +785,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 		}
 	}
 
-	return 0;
+	return ItemSoldMessage::SUCCESS;
 }
 
 AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* player, SceneObject* objectToSell, SceneObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium) {
@@ -1064,7 +1062,10 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	}
 
 	if (seller == nullptr) {
+		// doInstantBuy(CreatureObject* player, AuctionItem* item)
 		error("seller null for name " + item->getOwnerName());
+
+		error() << "doInstantBuy(player=" << player->getObjectID() << ", item=" << item->getObjectID() << "): Seller not found [" << item->getOwnerName() << "], auctionItem: " << *item;
 		return;
 	}
 
@@ -1379,14 +1380,14 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectid);
 	if (item == nullptr) {
-		error("nullptr item in retrieveItem()");
+		error() << "retrieveItem(player=" << player->getObjectID() << ", objectid=" << objectid << ", vendorID=" << vendorID << "): Item not found in auctionMap";
 		return;
 	}
 
 	ManagedReference<SceneObject*> objectToRetrieve = zoneServer->getObject(objectid);
 
 	if (objectToRetrieve == nullptr) {
-		error("null objectToRetrieve in retrieveItem()");
+		error() << "retrieveItem(player=" << player->getObjectID() << ", objectid=" << objectid << ", vendorID=" << vendorID << "): invalid object.";
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 		player->sendMessage(msg);
 		return;
@@ -1617,13 +1618,32 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 }
 
 void AuctionManagerImplementation::getData(CreatureObject* player, int locationType, uint64 vendorObjectID, int searchType, unsigned int itemCategory, const UnicodeString& filterText, int minPrice, int maxPrice, bool includeEntranceFee, int clientCounter, int offset) {
+	auto errorMessage = [=] () -> LoggerHelper {
+		auto msg = error();
+
+		msg << "getData(player=" << player->getObjectID()
+			<< ", locationType=" << locationType
+			<< ", vendor=" << vendorObjectID
+			<< ", searchType=" << searchType
+			<< ", itemCategory=" << itemCategory
+			<< ", filterText=[" << filterText << "]"
+			<< ", minPrice=" << minPrice
+			<< ", maxPrice=" << maxPrice
+			<< ", includeEntranceFee=" << includeEntranceFee
+			<< ", clientCounter=" << clientCounter
+			<< ", offset=" << offset
+			<< "): ";
+
+		return msg;
+	};
+
 	if (player->getAuctionSearchTask().get() != nullptr)
 		return;
 
 	ManagedReference<TangibleObject*> vendorInUse = (zoneServer->getObject(vendorObjectID)).castTo<TangibleObject*>();
 
 	if (vendorInUse == nullptr || (!vendorInUse->isVendor() && !vendorInUse->isBazaarTerminal())) {
-		error("null vendor in getData()");
+		errorMessage() << "Vendor not found.";
 		return;
 	}
 
@@ -1633,7 +1653,7 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int locationT
 		return;
 
 	if(player->getZone() == nullptr) {
-		error("player not in a zone");
+		errorMessage() << "Player not in a zone.";
 		return;
 	}
 
@@ -1646,13 +1666,13 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int locationT
 
 		DataObjectComponentReference* data = vendorInUse->getDataObjectComponent();
 		if(data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
-			error("Vendor has no data component in getData");
+			errorMessage() << "Vendor has no data component.";
 			return;
 		}
 
 		VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
 		if(vendorData == nullptr) {
-			error("Vendor has wrong data component in getData");
+			errorMessage() << "Vendor has wrong data component.";
 			return;
 		}
 
@@ -1681,7 +1701,6 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int locationT
 		break;
 	}
 
-
 	AuctionSearchTask* task = new AuctionSearchTask(_this.getReferenceUnsafeStaticCast(), player, vendorInUse, planet, region, vendor, searchType, itemCategory, filterText, minPrice, maxPrice, includeEntranceFee, clientCounter, offset);
 	player->setAuctionSearchTask(task);
 	task->schedule(100);
@@ -1709,7 +1728,7 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 	Reference<SceneObject*> object = zoneServer->getObject(auctionItem->getAuctionedItemObjectID());
 
 	if (object == nullptr) {
-		error("not a valid object in getItemAttributes");
+		error() << "getItemAttributes(player=" << player->getObjectID() << ", objectid=" << objectid << ") getObject failed.";
 		return;
 	}
 
@@ -1725,6 +1744,7 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != nullptr && ghost->isPrivileged()) {
+		msg->insertAttribute("Auction OID", String::valueOf(auctionItem->getObjectID()));
 		msg->insertAttribute("Item Type", auctionItem->getItemType());
 		bool isCrate = auctionItem->isFactoryCrate();
 		msg->insertAttribute("Is Factory Crate:", isCrate);
@@ -1756,7 +1776,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 	// Item wasnt found. it doesn't exist
 	if (item == nullptr) {
-		error("null item in cancelItem()");
+		error() << "cancelItem(player=" << player->getObjectID() << ", objectID=" << objectID << "): Item not found in auctionMap.";
 		BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, CancelLiveAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
 		return;
@@ -1769,7 +1789,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 	if (item->getStatus() == AuctionItem::FORSALE) {
 		if(item->getOwnerID() != player->getObjectID()) {
-			error("not the owner of the item in cancelItem()");
+			error() << "cancelItem(player=" << player->getObjectID() << ", objectID=" << objectID << "): Not owner of item, owner: " << item->getOwnerID();
 			BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, CancelLiveAuctionResponseMessage::NOTOWNER);
 			player->sendMessage(msg);
 			return;
@@ -1785,7 +1805,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	} else if (item->getStatus() == AuctionItem::OFFERED) {
 		if(item->getOfferToID() != player->getObjectID() &&
 				item->getOwnerID() != player->getObjectID()) {
-			error("not the target of offered item in cancelItem()");
+			error() << "cancelItem(player=" << player->getObjectID() << ", objectID=" << objectID << "): Not the target of offer, auctionItem: " << *item;
 			BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, CancelLiveAuctionResponseMessage::INVALIDITEM);
 			player->sendMessage(msg);
 			return;
