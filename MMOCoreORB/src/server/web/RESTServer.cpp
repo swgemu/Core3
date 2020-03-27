@@ -18,6 +18,7 @@
 #include "RESTEndpoint.h"
 #include "APIRequest.h"
 #include "APIProxyPlayerManager.h"
+#include "APIProxyChatManager.h"
 
 using namespace server::web3;
 
@@ -213,6 +214,14 @@ void RESTServer::registerEndpoints() {
 		}
 	}));
 
+	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
+		try {
+			mProxyChatManager->handle(apiRequest);
+		} catch (http_exception const & e) {
+			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+		}
+	}));
+
 	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
 }
 
@@ -334,6 +343,12 @@ void RESTServer::start() {
 	mPlayerManagerProxy = new APIProxyPlayerManager();
 
 	if (mPlayerManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mProxyChatManager = new APIProxyChatManager();
+
+	if (mProxyChatManager == nullptr) {
 		throw OutOfMemoryError();
 	}
 
