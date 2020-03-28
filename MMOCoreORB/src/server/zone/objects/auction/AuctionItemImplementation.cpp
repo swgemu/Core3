@@ -95,7 +95,7 @@ bool AuctionItemImplementation::destroyAuctionItemFromDatabase(bool checkAuction
 				}
 			}, "AuctionItem_destroyAuctionItemFromDatabase", "slowQueue");
 		}
-	} else if (getAuctionedItemObjectID() > 0) {
+	} else if (getAuctionedItemObjectID() > 0 && status != AuctionItem::EXPIRED) {
 		error() << "destroyAuctionItemFromDatabase: still has object attached, auctionItem: " << *this;
 	}
 
