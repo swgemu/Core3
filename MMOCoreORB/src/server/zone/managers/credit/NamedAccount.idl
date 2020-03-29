@@ -1,0 +1,38 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.managers.credit;
+
+import engine.core.ManagedObject;
+
+class NamedAccount extends ManagedObject {
+	protected string accountName;
+	protected long accountValue;
+
+	public NamedAccount(string acctName) {
+		accountName = acctName;
+		accountValue = 0;
+	}
+	
+	public string getName() {
+		return accountName;
+	}
+	
+	public long getCredits() {
+		return accountValue;
+	}
+
+	public void setCredits(int amount) {
+		accountValue = amount;
+	}
+	
+	public void addCredits(int amount) {
+		accountValue = accountValue + amount;
+	}
+	
+	public void subtractCredits(int amount) {
+		accountValue = accountValue - amount;
+	}
+
+}

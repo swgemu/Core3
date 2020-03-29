@@ -1,0 +1,2 @@
+/usr/bin/ar qc libchat3.a  CMakeFiles/chat3.dir/ChatManagerImplementation.cpp.o CMakeFiles/chat3.dir/ChatParameter.cpp.o CMakeFiles/chat3.dir/LuaStringIdChatParameter.cpp.o CMakeFiles/chat3.dir/PersistentMessageImplementation.cpp.o CMakeFiles/chat3.dir/StringIdChatParameter.cpp.o CMakeFiles/chat3.dir/WaypointChatParameter.cpp.o CMakeFiles/chat3.dir/room/ChatRoomImplementation.cpp.o
+/usr/bin/ranlib libchat3.a

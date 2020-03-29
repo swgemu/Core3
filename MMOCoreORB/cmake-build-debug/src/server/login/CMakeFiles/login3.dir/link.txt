@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblogin3.a  CMakeFiles/login3.dir/LoginPacketHandler.cpp.o CMakeFiles/login3.dir/LoginProcessServerImplementation.cpp.o CMakeFiles/login3.dir/LoginServerImplementation.cpp.o CMakeFiles/login3.dir/account/AccountImplementation.cpp.o CMakeFiles/login3.dir/account/AccountManager.cpp.o CMakeFiles/login3.dir/account/GalaxyAccountInfo.cpp.o CMakeFiles/login3.dir/account/GalaxyAccountInfoMap.cpp.o
+/usr/bin/ranlib liblogin3.a

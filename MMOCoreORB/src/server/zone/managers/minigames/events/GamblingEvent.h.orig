@@ -1,0 +1,75 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+#ifndef GAMBLINGEVENT_H_
+#define GAMBLINGEVENT_H_
+
+#include "server/zone/ZoneProcessServer.h"
+<<<<<<< Updated upstream
+
+namespace server {
+	namespace zone {
+		namespace objects {
+			namespace tangible {
+				namespace terminal {
+					namespace gambling {
+						class GamblingTerminal;
+					}
+				}
+			}
+		}
+	}
+}
+
+=======
+#include "server/zone/managers/minigames/gambling/GamblingManager.h"
+>>>>>>> Stashed changes
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class GamblingEvent : public Task {
+	Reference<server::zone::objects::tangible::terminal::gambling::GamblingTerminal*> gamblingTerminal;
+	int gameCount;
+
+public:
+	GamblingEvent(server::zone::objects::tangible::terminal::gambling::GamblingTerminal* gamblingTerm, int counter);
+
+<<<<<<< Updated upstream
+	void run();
+=======
+			//player->info("activating command queue action");
+
+			ManagedReference<GamblingManager*> manager = gamblingTerminal->getZoneProcessServer()->getGamblingManager();
+			//gamblingTerminal->setState(state+1);
+			//if ((gamblingTerminal->getState() != GamblingTerminal::NOGAMERUNNING) && (gamblingTerminal->getGameCount() == gameCount)) {
+			//	manager->continueGame(gamblingTerminal);
+			//}
+
+			//player->info("command queue action activated");
+
+
+		} catch (...) {
+			throw;
+		}
+
+		//gamblingTerminal = nullptr; <- ?
+
+	}
+>>>>>>> Stashed changes
+
+};
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::managers::minigames::events;
+
+#endif /* GAMBLINGSLOTEVENT_H_ */

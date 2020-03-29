@@ -1,0 +1,76 @@
+package server.zone.managers.credit;
+
+import engine.core.ManagedService;
+import server.zone.ZoneServer;
+import engine.log.Logger;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.credits.CreditObject;
+include server.zone.managers.credit.NamedAccount;
+include system.util.VectorMap;
+include system.lang.ref.Reference;
+
+class CreditManager extends ManagedService implements Logger {
+	@dereferenced
+	protected transient VectorMap<unsigned long, NamedAccount> namedAccountList;
+	
+	private transient ZoneServer zoneServer;
+	
+	public static final short ACCT_CHAR_CREATION = 0;
+	public static final short ACCT_NEWBIE_TUTORIAL = 1;
+	public static final short ACCT_CUSTOMER_SERVICE = 2;
+	public static final short ACCT_DYNAMIC_MISSION = 3;
+	public static final short ACCT_PLAYER_MISSION = 4;
+	public static final short ACCT_BOUNTY = 5;
+	public static final short ACCT_CLONING = 6;
+	public static final short ACCT_INSURANCE = 7;
+	public static final short ACCT_TRAVEL = 8;
+	public static final short ACCT_SHIPPING = 9;
+	public static final short ACCT_BAZAAR = 10;
+	public static final short ACCT_DISPENSER = 11;
+	public static final short ACCT_SKILL_TRAINING = 12;
+	public static final short ACCT_REBEL = 13;
+	public static final short ACCT_IMPERIAL = 14;
+	public static final short ACCT_JABBA = 15;
+	public static final short ACCT_POI = 16;
+	public static final short ACCT_CORPSE_EXP = 17;
+	public static final short ACCT_TESTING = 18;
+	public static final short ACCT_STRUCT_MAINT = 19;
+	public static final short ACCT_TIP_SURCHARGE = 20;
+	public static final short ACCT_VENDOR_MAINT = 21;
+	public static final short ACCT_NPC_LOOT = 22;
+	public static final short ACCT_JUNK_DEALER = 23;
+	public static final short ACCT_CANTINA_DRINK = 24;
+	public static final short ACCT_BETA_TEST = 25;
+	public static final short ACCT_BAD_GROUP_SPLIT = 26;
+	public static final short ACCT_GAMBLING_SLOTS = 27;
+	public static final short ACCT_GAMBLING_ROULETTE = 28;
+	public static final short ACCT_GAMBLING_SABACC = 29;
+	public static final short ACCT_VEHICLE_REPAIR = 30;
+	public static final short ACCT_RELIC_DEALER = 31;
+	public static final short ACCT_NEW_PLAYER_QUEST = 32;
+	public static final short ACCT_FINES = 33;
+	public static final short ACCT_BANK = 34;
+	public static final short ACCT_DEFAULT = 35;
+	
+	public static final short NAMED_COUNT = 36;
+	
+	public CreditManager(ZoneServer zserv) {
+		Logger.setLoggingName("CreditManager");
+		Logger.setLogging(true);
+		
+		zoneServer = zserv;
+	}
+	
+	public native void loadData();
+	
+	public native void addBankCredits(unsigned long creatureID, int amount, boolean notifyClient = true);
+	public native void addCashCredits(unsigned long creatureID, int amount, boolean notifyClient = true);
+	public native boolean subtractBankCredits(unsigned long creatureID, int amount, boolean notifyClient = true);
+	public native boolean subtractCashCredits(unsigned long creatureID, int amount, boolean notifyClient = true);
+	public native boolean verifyBankCredits(unsigned long creatureID, int amount);
+	public native boolean verifyCashCredits(unsigned long creatureID, int amount);
+	public native CreditObject getCreditObject(unsigned long creoID);
+	
+	public native string getNamedAccountName(short acct);
+	public native unsigned long getNamedAccountCRC(short acct);
+}

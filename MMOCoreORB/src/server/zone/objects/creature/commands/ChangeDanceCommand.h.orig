@@ -1,0 +1,76 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+#ifndef CHANGEDANCECOMMAND_H_
+#define CHANGEDANCECOMMAND_H_
+
+#include "StartDanceCommand.h"
+
+class ChangeDanceCommand : public QueueCommand {
+public:
+
+	ChangeDanceCommand(const String& name, ZoneProcessServer* server)
+		: QueueCommand(name, server) {
+
+	}
+
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		if (!checkStateMask(creature))
+			return INVALIDSTATE;
+
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
+
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+		if (session == nullptr) {
+			creature->sendSystemMessage("@performance:dance_must_be_performing_self"); // You must be dancing before you can change the dance.
+			return GENERALERROR;
+		}
+
+		if (!session->isDancing()) {
+			creature->sendSystemMessage("@performance:dance_must_be_performing_self"); // You must be dancing before you can change the dance.
+			return GENERALERROR;
+		}
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		String args = arguments.toString();
+
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+		if (args.length() < 1) {
+			performanceManager->sendAvailableDances(creature);
+			return SUCCESS;
+		}
+
+		String fullString = String("startDance") + "+" + args;
+
+		if (!ghost->hasAbility(fullString)) {
+			creature->sendSystemMessage("@performance:dance_lack_skill_self"); // You do not have the skill to perform the dance.
+			return GENERALERROR;
+		}
+
+		int performanceIndex = performanceManager->getPerformanceIndex(PerformanceType::DANCE, args, 0);
+
+		if (performanceIndex == 0) {
+			creature->sendSystemMessage("@performance:dance_unknown_self"); // 	You do not know that dance.
+			return GENERALERROR;
+		}
+
+<<<<<<< Updated upstream
+		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125f, performanceManager->getDanceAnimation(args), 0x07339FF8, 0xDD);
+		session->setPerformanceName(args);
+=======
+		session->sendEntertainingUpdate(creature, performanceIndex);
+>>>>>>> Stashed changes
+
+		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
+
+		return SUCCESS;
+	}
+
+};
+
+#endif //CHANGEDANCECOMMAND_H_

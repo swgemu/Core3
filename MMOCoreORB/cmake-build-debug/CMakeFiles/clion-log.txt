@@ -1,0 +1,48 @@
+/home/vagrant/Desktop/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/vagrant/workspace/MMOCoreORB
+-- The CXX compiler identification is GNU 6.3.0
+-- The C compiler identification is GNU 6.3.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Lua: /usr/local/lib/liblua.a;/usr/lib/x86_64-linux-gnu/libm.so;dl (found suitable version "5.3.2", minimum required is "5.3") 
+-- Found MySQL server version: 10.1.26-MariaDB
+-- Found MySQL Include dir: /usr/include/mysql  library dir: /usr/lib/x86_64-linux-gnu
+-- Found MySQL client libraries: mysqlclient
+-- Found berkeley db version: Berkeley DB 5.3.28: (September  9, 2013)
+-- Found berkeley db includes: /usr/include
+-- Found berkeley db library: /usr/lib/x86_64-linux-gnu/libdb-5.3.so
+-- Found Java: /usr/bin/java (found suitable version "1.8.0.151", minimum required is "1.5") found components:  Runtime 
+-- Found engine3 includes: /home/vagrant/workspace/MMOEngine/include
+-- Found engine3 library: /home/vagrant/workspace/MMOEngine/lib/unix/libengine3.a
+-- Found idlc /home/vagrant/workspace/MMOEngine/bin
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.0.2l") 
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.8") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE  
+CMake Warning at /home/vagrant/Desktop/clion-2017.3.2/bin/cmake/share/cmake-3.9/Modules/FindBoost.cmake:552 (message):
+  Imported targets and dependency information not available for Boost version
+  (all versions older than 1.33)
+Call Stack (most recent call first):
+  /home/vagrant/Desktop/clion-2017.3.2/bin/cmake/share/cmake-3.9/Modules/FindBoost.cmake:892 (_Boost_COMPONENT_DEPENDENCIES)
+  /home/vagrant/Desktop/clion-2017.3.2/bin/cmake/share/cmake-3.9/Modules/FindBoost.cmake:1523 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:56 (find_package)
+
+
+-- Found PythonInterp: /usr/bin/python (found version "2.7.13") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vagrant/workspace/MMOCoreORB/cmake-build-debug

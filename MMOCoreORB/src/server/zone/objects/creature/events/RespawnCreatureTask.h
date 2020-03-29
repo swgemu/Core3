@@ -28,7 +28,7 @@ public:
 	void run() {
 		Locker locker(creature);
 
-		if (creature->getRespawnTimer() == 0)
+		if (creature->getHomeObject().get() == nullptr && creature->getRespawnTimer() == 0)
 			return;
 
 		creature->respawn(zone, level);

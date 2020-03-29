@@ -9,6 +9,7 @@
 #define BANKTERMINALSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
 
 class BankTerminalSuiCallback : public SuiCallback {
 public:
@@ -51,6 +52,15 @@ public:
 		uint32 currentBank = player->getBankCredits();
 
 		if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
+			if (cash > CreditObject::CREDITCAP) {
+				int overflowAmt = cash - CreditObject::CREDITCAP;
+				cash = CreditObject::CREDITCAP;
+				bank += overflowAmt;
+			} else if (bank > CreditObject::CREDITCAP) {
+				int overflowAmt = bank - CreditObject::CREDITCAP;
+				bank = CreditObject::CREDITCAP;
+				cash += overflowAmt;
+			}
 			player->setCashCredits(cash);
 			player->setBankCredits(bank);
 		}

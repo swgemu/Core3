@@ -1,0 +1,2 @@
+/usr/bin/ar qc libconf3.a  CMakeFiles/conf3.dir/ConfigManager.cpp.o
+/usr/bin/ranlib libconf3.a

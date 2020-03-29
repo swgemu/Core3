@@ -1,0 +1,24 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.intangible;
+
+import server.zone.objects.intangible.IntangibleObject;
+include server.zone.objects.scene.variables.ContainerPermissions;
+
+class DataItemObject extends IntangibleObject {
+	public DataItemObject() {
+		Logger.setLoggingName("DataItemObject");
+		
+		ContainerPermissions permissions = super.getContainerPermissions();
+		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+	}
+
+	@dirty
+	public boolean isDataItemObject() {
+		return true;
+	}
+}

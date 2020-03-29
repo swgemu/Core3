@@ -1,0 +1,2 @@
+/usr/bin/ar qc libping3.a  CMakeFiles/ping3.dir/PingServer.cpp.o
+/usr/bin/ranlib libping3.a

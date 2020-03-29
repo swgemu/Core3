@@ -1,0 +1,233 @@
+#include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/managers/credit/NamedAccount.h"
+#include "server/zone/objects/creature/credits/CreditObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/object/ObjectManager.h"
+
+void CreditManagerImplementation::loadData() {
+	info("Loading named credit account data from namedaccounts.db");
+
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	ObjectDatabase* acctDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("namedaccounts", true);
+
+	if (acctDatabase == nullptr) {
+		error("Could not load the namedaccounts database.");
+		return;
+	}
+
+	try {
+		ObjectDatabaseIterator iterator(acctDatabase);
+
+		uint64 objectID = 0;
+
+		while (iterator.getNextKey(objectID)) {
+			Reference<NamedAccount*> acctObj = Core::getObjectBroker()->lookUp(objectID).castTo<NamedAccount*>();
+
+			if (acctObj == nullptr)
+				continue;
+
+			namedAccountList.put(acctObj->getName().hashCode(), acctObj);
+		}
+	} catch (DatabaseException& e) {
+		error("Database exception in CreditManagerImplementation::loadData(): "	+ e.getMessage());
+	}
+
+	for (int i = 0; i < NAMED_COUNT; i++) {
+		String acctName = getNamedAccountName(i);
+		uint64 acctCRC = acctName.hashCode();
+
+		if (namedAccountList.contains(acctCRC))
+			continue;
+
+		NamedAccount* newAcct = new NamedAccount(acctName);
+		ObjectManager::instance()->persistObject(newAcct, 1, "namedaccounts");
+
+		namedAccountList.put(acctCRC, newAcct);
+	}
+}
+
+void CreditManagerImplementation::addBankCredits(uint64 creatureID, int amount, bool notifyClient) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return;
+
+	Locker locker(obj);
+	obj->setBankCredits(obj->getBankCredits()+amount, notifyClient);
+}
+void CreditManagerImplementation::addCashCredits(uint64 creatureID, int amount, bool notifyClient) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return;
+
+	Locker locker(obj);
+	obj->setCashCredits(obj->getCashCredits()+amount, notifyClient);
+}
+
+bool CreditManagerImplementation::subtractBankCredits(uint64 creatureID, int amount, bool notifyClient) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return false;
+
+	Locker locker(obj);
+	int newCredits = obj->getBankCredits() - amount;
+
+	if(newCredits < 0)
+		return false;
+
+	obj->setBankCredits(newCredits, notifyClient);
+
+	return true;
+}
+
+bool CreditManagerImplementation::subtractCashCredits(uint64 creatureID, int amount, bool notifyClient) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return false;
+
+	Locker locker(obj);
+
+	int newCredits = obj->getCashCredits() - amount;
+
+	if (newCredits < 0)
+		return false;
+
+	obj->setCashCredits(newCredits, notifyClient);
+
+	return true;
+}
+
+bool CreditManagerImplementation::verifyBankCredits(uint64 creatureID, int amount) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return false;
+
+	if (amount < 0)
+		return false;
+
+	if (obj->getBankCredits() < amount)
+		return false;
+
+	return true;
+}
+
+bool CreditManagerImplementation::verifyCashCredits(uint64 creatureID, int amount) {
+	ManagedReference<CreditObject*> obj = getCreditObject(creatureID);
+
+	if (obj == nullptr)
+		return false;
+
+	if (amount < 0)
+		return false;
+
+	if (obj->getCashCredits() < amount)
+		return false;
+
+	return true;
+}
+
+CreditObject* CreditManagerImplementation::getCreditObject(uint64 creoID) {
+	static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
+
+	uint64 oid = ((creoID & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
+
+	ManagedReference<CreditObject*> creditObj = Core::getObjectBroker()->lookUp(oid).castTo<CreditObject*>();
+
+	if (creditObj == nullptr) {
+		ManagedReference<CreatureObject*> creo = Core::getObjectBroker()->lookUp(creoID).castTo<CreatureObject*>();
+
+		if (creo == nullptr)
+			return nullptr;
+
+		Locker locker(creo);
+		creditObj = creo->getCreditObject();
+	}
+
+	return creditObj;
+}
+
+String CreditManagerImplementation::getNamedAccountName(short acct) {
+	switch (acct) {
+	case ACCT_CHAR_CREATION: return "charactercreation"; // Character Creation
+	case ACCT_NEWBIE_TUTORIAL: return "newbietutorial"; // Newbie Tutorial
+	case ACCT_CUSTOMER_SERVICE: return "customerservice"; // Customer Service
+	case ACCT_DYNAMIC_MISSION: return "missionsystemdynamic"; // Dynamic Mission System
+	case ACCT_PLAYER_MISSION: return "missionsystemplayer"; // Player Mission System
+	case ACCT_BOUNTY: return "bountysystem"; // Bounty System
+	case ACCT_CLONING: return "cloningsystem"; // Cloning System
+	case ACCT_INSURANCE: return "insurancesystem"; // Insurance System
+	case ACCT_TRAVEL: return "travelsystem"; // the Galactic Travel Commission
+	case ACCT_SHIPPING: return "shippingsystem"; // the Galactic Shipping Commission
+	case ACCT_BAZAAR: return "bazaarsystem"; // the Galactic Trade Commission
+	case ACCT_DISPENSER: return "dispensersystem"; // Dispenser System
+	case ACCT_SKILL_TRAINING: return "skilltrainingsystem"; // Skill Training Union
+	case ACCT_REBEL: return "rebelfaction"; // Rebellion
+	case ACCT_IMPERIAL: return "imperialfaction"; // the Empire
+	case ACCT_JABBA: return "jabbaspalace"; // Jabba the Hutt
+	case ACCT_POI: return "poisystem"; // POI System
+	case ACCT_CORPSE_EXP: return "corpseexpiration"; // Corpse Expiration Tracking
+	case ACCT_TESTING: return "testing"; // Testing
+	case ACCT_STRUCT_MAINT: return "structuremaintanence"; // Structure Maintenance
+	case ACCT_TIP_SURCHARGE: return "tipsurcharge"; // Tip Surcharge
+	case ACCT_VENDOR_MAINT: return "vendormaintanence"; // Vendor Wages
+	case ACCT_NPC_LOOT: return "npcloot"; // NPC Loot
+	case ACCT_JUNK_DEALER: return "junkdealer"; // Junk Dealer
+	case ACCT_CANTINA_DRINK: return "cantinadrink"; // Cantina Drink
+	case ACCT_BETA_TEST: return "betatest"; // Beta Test Fund
+	case ACCT_BAD_GROUP_SPLIT: return "badgroupcoinsplit"; // Group Split Error Account
+	case ACCT_GAMBLING_SLOTS: return "gamblingslotstandard"; // Standard Slot Machine Account
+	case ACCT_GAMBLING_ROULETTE: return "gamblingroulette"; // Roulette Account
+	case ACCT_GAMBLING_SABACC: return "gamblingcardsabacc"; // Sabacc Account
+	case ACCT_VEHICLE_REPAIR: return "vehiclerepairs"; // Vehicle Repair System
+	case ACCT_RELIC_DEALER: return "relicdealer"; // Relic Dealer
+	case ACCT_NEW_PLAYER_QUEST: return "newplayerquests"; // New Player Quests
+	case ACCT_FINES: return "fines"; // Contraband Scanning Fines
+	case ACCT_BANK: return "bank"; // bank
+	default: return "default";
+	}
+}
+
+uint64 CreditManagerImplementation::getNamedAccountCRC(short acct) {
+	switch (acct) {
+	case ACCT_CHAR_CREATION: return 0xD483FF18;
+	case ACCT_NEWBIE_TUTORIAL: return 0xB6169CA9;
+	case ACCT_CUSTOMER_SERVICE: return 0x80899CF9;
+	case ACCT_DYNAMIC_MISSION: return 0x49B1BD4B;
+	case ACCT_PLAYER_MISSION: return 0x4807CA42;
+	case ACCT_BOUNTY: return 0x2BB92899;
+	case ACCT_CLONING: return 0xA3F392DA;
+	case ACCT_INSURANCE: return 0xDFBC22B;
+	case ACCT_TRAVEL: return 0xF31D50B7;
+	case ACCT_SHIPPING: return 0x141AFAD1;
+	case ACCT_BAZAAR: return 0x1AFEE7CC;
+	case ACCT_DISPENSER: return 0x3C7D99FD;
+	case ACCT_SKILL_TRAINING: return 0xBF3D9FE6;
+	case ACCT_REBEL: return 0xB7987B1F;
+	case ACCT_IMPERIAL: return 0xB48D931A;
+	case ACCT_JABBA: return 0x658C3B69;
+	case ACCT_POI: return 0xD211B805;
+	case ACCT_CORPSE_EXP: return 0x310003E6;
+	case ACCT_TESTING: return 0x213D8F48;
+	case ACCT_STRUCT_MAINT: return 0xE0C3DF95;
+	case ACCT_TIP_SURCHARGE: return 0x3E467FCB;
+	case ACCT_VENDOR_MAINT: return 0x1D298AA5;
+	case ACCT_NPC_LOOT: return 0xF1A54D2D;
+	case ACCT_JUNK_DEALER: return 0xF247AD6E;
+	case ACCT_CANTINA_DRINK: return 0x6EFBC379;
+	case ACCT_BETA_TEST: return 0xCFBB389D;
+	case ACCT_BAD_GROUP_SPLIT: return 0xFEC20B7F;
+	case ACCT_GAMBLING_SLOTS: return 0x573787D3;
+	case ACCT_GAMBLING_ROULETTE: return 0x68B561DA;
+	case ACCT_GAMBLING_SABACC: return 0xAAE38B99;
+	case ACCT_VEHICLE_REPAIR: return 0x355172F;
+	case ACCT_RELIC_DEALER: return 0x343B91FF;
+	case ACCT_NEW_PLAYER_QUEST: return 0xF8FC3463;
+	case ACCT_FINES: return 0x4DD46139;
+	case ACCT_BANK: return 0x7A686A36;
+	default: return 0x8F651465;
+	}
+}

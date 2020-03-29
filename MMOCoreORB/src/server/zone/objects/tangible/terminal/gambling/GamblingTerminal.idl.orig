@@ -1,0 +1,85 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions. */
+
+package server.zone.objects.tangible.terminal.gambling;
+
+import server.zone.packets.object.ObjectMenuResponse;
+<<<<<<< Updated upstream
+=======
+import system.util.Vector;
+import system.util.VectorMap;
+import server.zone.managers.minigames.events.GamblingEvent;
+>>>>>>> Stashed changes
+import server.chat.StringIdChatParameter;
+
+include server.zone.objects.tangible.terminal.Terminal;
+include system.util.Vector;
+include system.util.VectorMap;
+include templates.tangible.GamblingTerminalTemplate;
+include templates.SharedObjectTemplate;
+<<<<<<< Updated upstream
+include system.lang.ref.Reference;
+include server.zone.objects.creature.CreatureObject;
+include server.zone.managers.minigames.GamblingBet;
+include server.zone.managers.minigames.events.GamblingEvent;
+=======
+>>>>>>> Stashed changes
+
+class GamblingTerminal extends Terminal {
+<<<<<<< Updated upstream
+	protected string gamblingRegion;
+
+=======
+>>>>>>> Stashed changes
+	protected int machineType;
+	protected boolean acceptingBets;
+	
+	public GamblingTerminal() {
+		machineType = 0;
+		acceptingBets = true;
+
+		Logger.setLoggingName("GamblingTerminal");
+	}
+
+	
+	@dirty
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		if (!templateData.isGamblingTerminalTemplate()) {
+			error("critical error");
+			return;
+		}
+		
+		GamblingTerminalTemplate templ = (GamblingTerminalTemplate) templateData;
+		
+		machineType = templ.getMachineType();
+	}
+	
+	@read
+	public int getTableType() {
+		return machineType;
+	}
+	
+	@read
+	public boolean isAcceptingBets() {
+		return acceptingBets;
+	}
+	
+	public void setAcceptingBets(boolean status) {
+		acceptingBets = status;
+	}
+}

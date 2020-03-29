@@ -1,0 +1,108 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.managers.minigames.gambling;
+
+import engine.log.Logger;
+import engine.core.ManagedService;
+include system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+import system.util.VectorMap;
+import system.util.Vector;
+include server.zone.managers.minigames.gambling.GamblingGameData;
+include server.zone.managers.minigames.gambling.SlotGameData;
+import server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
+
+class GamblingManager extends ManagedService implements Logger {
+	public static final short SLOTS = 1;
+	public static final short ROULETTE = 2;
+	public static final short SABACC = 3;
+	
+	public transient boolean gamblingEnabled;
+	public transient unsigned long betTimeout;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned int, Reference<GamblingGameData> > gameData;
+	
+	@dereferenced
+	protected transient Vector<Reference<SlotGameData> > slotResults;
+	
+	@dereferenced
+	protected transient Vector<short> slotWeights;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, Vector<unsigned long> > playerList;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, int> bankValues;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, unsigned long> playerPids;
+	
+	public GamblingManager() {
+		gamblingEnabled = true;
+		
+		bankValues.setNoDuplicateInsertPlan();
+		playerList.setNoDuplicateInsertPlan();
+		playerPids.setNoDuplicateInsertPlan();
+	}
+	
+	public native void initialize();
+	
+	public native void addPlayerToTable(unsigned long tableID, unsigned long playerID);
+	
+	public native unsigned long getPlayerTable(unsigned long playerID);
+	
+	public native int getTablePlayerCount(unsigned long tableID);
+	public native int getMaxPlayers(int tableType);
+	
+	public boolean isGamblingEnabled() {
+		return gamblingEnabled;
+	}
+	
+	public native string getGameName(int tableType);
+
+	public native void joinTable(CreatureObject player, GamblingTerminal terminal);
+	public native void leaveTable(CreatureObject player);
+	
+	public native void startSlots(CreatureObject player, GamblingTerminal terminal);
+	public native void spinSlots(CreatureObject player, GamblingTerminal terminal);
+	public native void handleSlotResults(CreatureObject player, GamblingTerminal terminal, int slotRoll);
+	public native void sendSlotsSUI(CreatureObject player, GamblingTerminal terminal);
+	public native void handleSlotSUI(CreatureObject player, GamblingTerminal terminal, boolean quitPressed, boolean betOne);
+	public native void doSlotsBet(CreatureObject player, GamblingTerminal terminal, int betAmount, boolean forceSpin = false);
+	
+	public native void handleBet(CreatureObject player, GamblingTerminal terminal, int betAmount, final string betType);
+
+	public native void closePlayerSUI(CreatureObject player);
+	
+	public unsigned long getPlayerPid(unsigned long playerID) {
+		if (!playerPids.contains(playerID))
+			return 0;
+		
+		return playerPids.get(playerID);
+	}
+	
+	public void removePlayerPid(unsigned long playerID) {
+		playerPids.drop(playerID);
+	}
+	
+	public void addPlayerPid(unsigned long playerID, unsigned long pid) {
+		playerPids.add(playerID, pid);
+	}
+	
+	public native int getRandomSlotRoll();
+	
+	public int getBankValue(unsigned long terminalID) {
+		return bankValues.get(terminalID);
+	}
+	
+	public void setBankValue(unsigned long terminalID, int value) {
+		bankValues.add(terminalID, value);
+	}
+	
+	public void clearBankValue(unsigned long terminalID) {
+		bankValues.drop(terminalID);
+	}
+}

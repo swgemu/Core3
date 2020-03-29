@@ -3899,3 +3899,52 @@ void CreatureObjectImplementation::setClient(ZoneClientSession* cli) {
 	owner = cli;
 }
 
+void CreatureObjectImplementation::addCashCredits(int credits, bool notifyClient) {
+	if (credits <= 0) {
+		return;
+	}
+
+	int curCredits = getCashCredits();
+	uint32 newCashCredits = curCredits + credits;
+
+	if (newCashCredits > CreditObject::CREDITCAP) {
+		int overflowAmount = newCashCredits - CreditObject::CREDITCAP;
+		newCashCredits = CreditObject::CREDITCAP;
+
+		int bankCredits = getBankCredits();
+		uint32 newBankCredits = bankCredits + overflowAmount;
+
+		if (newBankCredits > CreditObject::CREDITCAP) {
+			newBankCredits = CreditObject::CREDITCAP;
+		}
+
+		setBankCredits(newBankCredits, notifyClient);
+	}
+
+	setCashCredits(newCashCredits, notifyClient);
+}
+
+void CreatureObjectImplementation::addBankCredits(int credits, bool notifyClient) {
+	if (credits <= 0) {
+		return;
+	}
+
+	int curCredits = getBankCredits();
+	uint32 newBankCredits = curCredits + credits;
+
+	if (newBankCredits > CreditObject::CREDITCAP) {
+		int overflowAmount = newBankCredits - CreditObject::CREDITCAP;
+		newBankCredits = CreditObject::CREDITCAP;
+
+		int cashCredits = getCashCredits();
+		uint32 newCashCredits = cashCredits + overflowAmount;
+
+		if (newCashCredits > CreditObject::CREDITCAP) {
+			newCashCredits = CreditObject::CREDITCAP;
+		}
+
+		setCashCredits(newCashCredits, notifyClient);
+	}
+
+	setBankCredits(newBankCredits, notifyClient);
+}

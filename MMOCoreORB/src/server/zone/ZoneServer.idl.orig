@@ -1,0 +1,444 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone;
+
+import server.zone.objects.scene.SceneObject;
+import engine.service.proto.BasePacketHandler;
+import engine.service.DatagramServiceThread;
+import engine.service.Message;
+import engine.core.ManagedService;
+import engine.log.Logger;
+
+import system.lang.Exception;
+import system.lang.Time;
+import system.util.VectorMap;
+import system.net.Socket;
+import system.net.SocketAddress;
+import system.net.Packet;
+import system.thread.atomic.AtomicInteger;
+
+import server.zone.ZoneProcessServer;
+import server.zone.ZoneClientSession;
+import server.zone.ZoneHandler;
+import server.zone.Zone;
+import server.chat.ChatManager;
+import conf.ConfigManager;
+import server.zone.managers.object.ObjectManager;
+import server.zone.managers.player.PlayerManager;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.radial.RadialManager;
+import server.zone.managers.reaction.ReactionManager;
+import server.zone.managers.frs.FrsManager;
+import server.zone.managers.skill.SkillManager;
+import server.zone.managers.resource.ResourceManager;
+import server.zone.managers.crafting.CraftingManager;
+import server.zone.managers.loot.LootManager;
+import server.zone.managers.auction.AuctionManager;
+import server.zone.managers.mission.MissionManager;
+import server.zone.managers.stringid.StringIdManager;
+import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.managers.creature.DnaManager;
+import server.zone.managers.creature.PetManager;
+import server.zone.managers.guild.GuildManager;
+import server.zone.managers.city.CityManager;
+import server.zone.managers.credit.CreditManager;
+import server.zone.managers.name.NameManager;
+
+@dirty
+class ZoneServer extends ManagedService implements Logger {
+	private transient DatagramServiceThread datagramService;
+
+	private transient BasePacketHandler phandler;
+
+	private transient ConfigManager configManager;
+
+	private transient ZoneHandler zoneHandler;
+
+	private transient ZoneProcessServer processor;
+
+	private transient VectorMap<string, Zone> zones;
+
+	private transient ObjectManager objectManager;
+	private PlayerManager playerManager;
+	private ReactionManager reactionManager;
+	private FrsManager frsManager;
+	private ChatManager chatManager;
+	private RadialManager radialManager;
+	private CityManager cityManager;
+	private CreditManager creditManager;
+
+	private ResourceManager resourceManager;
+	private CraftingManager craftingManager;
+	private LootManager lootManager;
+	private AuctionManager auctionManager;
+	private MissionManager missionManager;
+	private GuildManager guildManager;
+	private PetManager petManager;
+
+	private transient boolean deleteNavAreas;
+
+	private transient StringIdManager stringIdManager;
+
+	private transient CreatureTemplateManager creatureTemplateManager;
+
+	private transient DnaManager dnaManager;
+
+	private int totalSentPackets;
+
+	private int serverCap;
+
+	private int totalResentPackets;
+
+	@dereferenced
+	private AtomicInteger currentPlayers;
+
+	@dereferenced
+	private AtomicInteger maximumPlayers;
+
+	@dereferenced
+	private AtomicInteger totalPlayers;
+
+	@dereferenced
+	private AtomicInteger totalDeletedPlayers;
+
+	@dereferenced
+	private AtomicInteger serverState;
+
+	private string galaxyName;
+	private string loginMessage;
+
+	private int galaxyID;
+
+	@dereferenced
+	private Time startTimestamp;
+
+	public static final int OFFLINE = 0;
+	public static final int LOADING = 1;
+	public static final int ONLINE = 2;
+	public static final int LOCKED = 3;
+	public static final int SHUTTINGDOWN = 4;
+
+	// The range of objects kept within closeObjects vectors.
+	// Changing this will have a large impact on performance.
+	public static final float CLOSEOBJECTRANGE = 192;
+
+	public native ZoneServer(ConfigManager config);
+
+	public native void initializeTransientMembers();
+
+	@local
+	@dirty
+	public native ZoneClientSession createConnection(Socket sock, @dereferenced SocketAddress addr);
+
+	private native void loadGalaxyName();
+
+	public native void initialize();
+
+	public native void shutdown();
+
+	public native void startManagers();
+
+	public native void startZones();
+
+	public native void stopManagers();
+
+	public native void start(int p, int mconn = 10);
+
+	public native void stop();
+
+	public native void clearZones();
+
+	public native void timedShutdown(int minutes);
+
+	@local
+	@dirty
+	public native void handleMessage(ZoneClientSession client, Packet message);
+
+	@local
+	@dirty
+	public native void processMessage(Message message);
+
+	@local
+	@dirty
+	public native boolean handleError(ZoneClientSession client, @dereferenced Exception e);
+
+	@dirty
+	public native void addTotalSentPacket(int count);
+
+	@dirty
+	public native void addTotalResentPacket(int count);
+
+	@dirty
+	public native void printInfo();
+
+	@dirty
+	public native string getInfo();
+
+	@dirty
+	public native void printEvents();
+
+	@reference
+	@dirty
+	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
+
+	@reference
+	@dirty
+	public native SceneObject createObject(unsigned int templateCRC, final string dbname, int persistenceLevel = 2);
+
+	@reference
+	@dirty
+	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
+
+	@reference
+	@dirty
+	public native SceneObject createClientObject(unsigned int templateCRC, unsigned long objectID = 0);
+
+	@dirty
+	public native void updateObjectToDatabase(SceneObject object);
+
+	@dirty
+	public native void updateObjectToStaticDatabase(SceneObject object);
+
+	@dirty
+	public native void destroyObjectFromDatabase(unsigned long objectID);
+
+	public native void lock(boolean doLock = true);
+
+	public native void unlock(boolean doLock = true);
+
+	public void fixScheduler() {
+		//scheduler.fixQueue();
+	}
+
+	public native void changeUserCap(int amount = 50);
+
+	@dirty
+	public native int getConnectionCount();
+
+	@dirty
+	public native void increaseOnlinePlayers();
+
+	@dirty
+	public native void decreaseOnlinePlayers();
+
+	@dirty
+	public native void increaseTotalDeletedPlayers();
+
+	@read
+	public int getGalaxyID() {
+		return galaxyID;
+	}
+
+	@read
+	public string getGalaxyName() {
+		return galaxyName;
+	}
+
+	public void setGalaxyName(final string name) {
+		galaxyName = name;
+	}
+
+	@read
+	public boolean isServerLocked() {
+		return serverState.get() == LOCKED;
+	}
+
+	@read
+	public boolean isServerOnline() {
+		return serverState.get() == ONLINE;
+	}
+
+	@read
+	public boolean isServerOffline() {
+		return serverState.get() == OFFLINE;
+	}
+
+	@read
+	public boolean isServerLoading() {
+		return serverState.get() == LOADING;
+	}
+
+	@read
+	public boolean isServerShuttingDown() {
+		return serverState.get() == SHUTTINGDOWN;
+	}
+
+	@read
+	public int getServerCap() {
+		return serverCap;
+	}
+
+	@read
+	public int getServerState() {
+		return serverState.get();
+	}
+
+	@read
+	public Zone getZone(final string terrainName) {
+		return zones.get(terrainName);
+	}
+
+	/**
+	 * Gets a note based on it's position in the zone map.
+	 * NOTE: This idx is not to be considered consistent.
+	 * @param idx The index in the map to get the zone.
+	 */
+	@dirty
+	public Zone getZone(int idx) {
+		return zones.get(idx);
+	}
+
+	@read
+	public int getZoneCount() {
+		return zones.size();
+	}
+
+	@read
+	public int getMaxPlayers() {
+		return maximumPlayers.get();
+	}
+
+	@read
+	public int getTotalPlayers() {
+		return totalPlayers.get();
+	}
+
+	@read
+	public int getDeletedPlayers() {
+		return totalDeletedPlayers.get();
+	}
+
+	@local
+	@dirty
+	public ObjectManager getObjectManager() {
+		return objectManager;
+	}
+
+	@dirty
+	public PlayerManager getPlayerManager() {
+		return playerManager;
+	}
+
+	@dirty
+	public ReactionManager getReactionManager() {
+		return reactionManager;
+	}
+
+	@dirty
+	public FrsManager getFrsManager() {
+		return frsManager;
+	}
+
+	@dirty
+	public ChatManager getChatManager() {
+		return chatManager;
+	}
+
+	@dirty
+	public CityManager getCityManager() {
+		return cityManager;
+	}
+
+	@dirty
+	public ObjectController getObjectController() {
+		return processor.getObjectController();
+	}
+
+	@dirty
+	public MissionManager getMissionManager() {
+		return missionManager;
+	}
+
+	@dirty
+	public RadialManager getRadialManager() {
+		return radialManager;
+	}
+
+	@dirty
+	public GuildManager getGuildManager() {
+		return guildManager;
+	}
+
+	@dirty
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
+	@dirty
+	public CraftingManager getCraftingManager() {
+		return craftingManager;
+	}
+
+	@dirty
+	public LootManager getLootManager() {
+		return lootManager;
+	}
+
+	@dirty
+	public AuctionManager getAuctionManager() {
+		return auctionManager;
+	}
+
+	@dirty
+	public PetManager getPetManager() {
+		return petManager;
+	}
+
+	@local
+	@dirty
+	public SkillManager getSkillManager() {
+		return processor.getSkillManager();
+	}
+<<<<<<< Updated upstream
+
+=======
+	
+	@dirty
+	public CreditManager getCreditManager() {
+		return creditManager;
+	}
+	
+>>>>>>> Stashed changes
+	@local
+	@dirty
+	public NameManager getNameManager() {
+		return processor.getNameManager();
+	}
+
+	@local
+	@dirty
+	public Time getStartTimestamp() {
+		return startTimestamp;
+	}
+
+	public void setGalaxyID(int galaxyid) {
+		galaxyID = galaxyid;
+	}
+
+	public void setServerState(int state) {
+		serverState.set(state);
+	}
+
+	public void setShouldDeleteNavAreas(boolean b) {
+		deleteNavAreas = b;
+	}
+
+	@read
+	public boolean shouldDeleteNavAreas() {
+		return deleteNavAreas;
+	}
+
+	public native void setServerStateLocked();
+
+	public native void setServerStateOnline();
+
+	public native void setServerStateShuttingDown();
+
+	public native void loadLoginMessage();
+	public native void changeLoginMessage(final string motd);
+
+	@read
+	public native string getLoginMessage();
+}
