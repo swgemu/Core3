@@ -43,7 +43,7 @@ public:
 		// Perform the bank tip
 		Locker clocker(targetPlayer, player);
 		player->subtractBankCredits(amount + surcharge);
-		targetPlayer->addBankCredits(amount, false); // FIXME: param notifyClient does nothing atm. in CreatureObject.idl:637
+		targetPlayer->addBankCredits(amount, true);
 
 		// Duly notify parties involved
 		if (targetPlayer->isOnline()) {
