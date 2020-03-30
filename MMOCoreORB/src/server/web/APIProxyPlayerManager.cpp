@@ -89,6 +89,7 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 			found[name] = creo->getObjectID();
 		} else {
 			found[name] = 0;
+			continue;
 		}
 
 		if (mode == "find") {
