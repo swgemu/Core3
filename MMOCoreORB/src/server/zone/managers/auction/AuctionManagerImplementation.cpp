@@ -1406,9 +1406,10 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 	if(destination->transferObject(objectToRetrieve, -1, false)) {
 		destination->broadcastObject(objectToRetrieve, true);
 
+		item->setStatus(AuctionItem::RETRIEVED);
+
 		auctionMap->deleteItem(vendor, item);
 
-		item->setStatus(AuctionItem::RETRIEVED);
 		item->setAuctionedItemObjectID(0);
 
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
