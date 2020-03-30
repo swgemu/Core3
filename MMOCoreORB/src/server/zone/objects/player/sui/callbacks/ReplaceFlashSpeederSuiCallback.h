@@ -29,7 +29,7 @@ public:
 			return;
 
 		// Player must have enough credits
-		if (player->verifyCredits(FLASH_SPEEDER_COST)) {
+		if (!player->verifyCredits(FLASH_SPEEDER_COST)) {
 			player->sendSystemMessage( "@veteran:flash_speeder_no_credits" ); // "You do not have enough credits to receive a replacement."
 			return;
 		}
