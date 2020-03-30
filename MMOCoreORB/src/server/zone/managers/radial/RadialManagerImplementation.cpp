@@ -51,8 +51,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == nullptr) {
-		error() << "nullptr object selected in ObjectMenuSelect objectID: 0x" << hex << objectID;
-
+		player->error() << "RadialManagerImplementation::handleObjectMenuSelect(player=" << player->getObjectID() << ", selectID=" << selectID << ", objectID=" << objectID << "): Failed to get selectedObject from zone server.";
 		return;
 	}
 
