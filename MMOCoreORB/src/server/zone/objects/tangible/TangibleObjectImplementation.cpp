@@ -95,10 +95,24 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 	if (hasAntiDecayKit()) {
 		AntiDecayKit* adk = antiDecayKitObject.castTo<AntiDecayKit*>();
 
-		if (adk != nullptr && !adk->isUsed()) {
-			Locker locker(adk);
+		if (adk != nullptr) {
+			if (!adk->isUsed()) {
+				Locker locker(adk);
+				adk->setUsed(true);
+			}
 
-			adk->setUsed(true);
+			auto strongAdkParent = adk->getParent().get();
+
+			if (strongAdkParent != nullptr) {
+				error()
+					<< "oid: " << getObjectID()
+					<< " has AntiDecayKit(" << adk->getObjectID()
+					<< ") with parent: " << strongAdkParent->getObjectID()
+					<< ", removing from world."
+					;
+				Locker lock(adk);
+				adk->destroyObjectFromWorld(true);
+			}
 		}
 	}
 }
