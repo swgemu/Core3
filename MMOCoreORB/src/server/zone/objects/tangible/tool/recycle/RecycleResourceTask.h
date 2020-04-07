@@ -115,7 +115,7 @@ public:
 
 		Locker clocker(insertedItem, player);
 
-		insertedItem->destroyObjectFromWorld(false);
+		insertedItem->destroyObjectFromWorld(true);
 		insertedItem->destroyObjectFromDatabase(true);
 
 	}
