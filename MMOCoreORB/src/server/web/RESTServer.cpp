@@ -12,13 +12,13 @@
 
 #include "RESTServer.h"
 #include "server/ServerCore.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "conf/ConfigManager.h"
 
 #include "RESTEndpoint.h"
 #include "APIRequest.h"
 #include "APIProxyPlayerManager.h"
 #include "APIProxyChatManager.h"
+#include "APIProxyObjectManager.h"
 
 using namespace server::web3;
 
@@ -84,87 +84,11 @@ void RESTServer::registerEndpoints() {
 		apiRequest.success(result);
 	}));
 
-	addEndpoint(RESTEndpoint("GET:/v1/object/", {}, [this] (APIRequest& apiRequest) -> void {
-		if (!apiRequest.hasQueryField("oids")) {
-			apiRequest.fail("missing query field 'oids'");
-			return;
-		}
-
-		auto parents = apiRequest.getQueryFieldBool("parents", false, false);
-		auto recursive = apiRequest.getQueryFieldBool("recursive", false, false);
-		int maxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
-
-		StringTokenizer oidStrList(apiRequest.getQueryFieldString("oids"));
-		oidStrList.setDelimeter(",");
-
-		int countFound = 0;
-		auto objects = JSONSerializationType::object();
-
-		while(oidStrList.hasMoreTokens()) {
-			try {
-				uint64 oid = oidStrList.getUnsignedLongToken();
-
-				debug() << countFound << ") Lookup oid " << oid;
-
-				auto obj = Core::lookupObject(oid).castTo<ManagedObject*>();
-
-				if (obj != nullptr) {
-					ReadLocker lock(obj);
-
-					auto scno = dynamic_cast<SceneObject*>(obj.get());
-
-					if (scno != nullptr) {
-						if (!recursive) {
-							maxDepth = 1;
-						}
-
-						if (parents) {
-							auto rootObj = scno->getRootParent();
-
-							if (rootObj != nullptr) {
-								scno = rootObj;
-							}
-						}
-
-						countFound += scno->writeRecursiveJSON(objects, maxDepth);
-					} else {
-						JSONSerializationType jsonData;
-						obj->writeJSON(jsonData);
-						countFound++;
-						jsonData["_depth"] = 0;
-						jsonData["_oid"] = oid;
-						jsonData["_className"] = obj->_getClassName();
-						jsonData["_oidPath"] = JSONSerializationType::array();
-						jsonData["_oidPath"].push_back(oid);
-						objects[String::valueOf(oid)] = jsonData;
-					}
-				}
-			} catch (const Exception& e) {
-				apiRequest.fail("Exception looking up objects", "Exception: " + e.getMessage());
-				return;
-			}
-		}
-
-		debug() << "Found " << countFound << " object(s)";
-
-		if (countFound == 0) {
-			apiRequest.fail("Nothing found");
-		} else {
-			JSONSerializationType metadata;
-
-			Time now;
-			metadata["exportTime"] = now.getFormattedTimeFull();
-			metadata["objectCount"] = countFound;
-			metadata["maxDepth"] = maxDepth;
-			metadata["recursive"] = recursive;
-			metadata["parents"] = parents;
-			metadata["query_oids"] = apiRequest.getQueryFieldString("oids");
-
-			JSONSerializationType result;
-			result["objects"] = objects;
-			result["metadata"] = metadata;
-
-			apiRequest.success(result);
+	addEndpoint(RESTEndpoint("GET:/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
+		try {
+			mObjectManagerProxy->handle(apiRequest);
+		} catch (http_exception const & e) {
+			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
 		}
 	}));
 
@@ -216,7 +140,7 @@ void RESTServer::registerEndpoints() {
 
 	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
 		try {
-			mProxyChatManager->handle(apiRequest);
+			mChatManagerProxy->handle(apiRequest);
 		} catch (http_exception const & e) {
 			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
 		}
@@ -309,6 +233,45 @@ bool RESTServer::checkAuth(http_request& request) {
 	return requestToken == mAuthHeader;
 }
 
+void RESTServer::createProxies() {
+	destroyProxies();
+
+	mPlayerManagerProxy = new APIProxyPlayerManager();
+
+	if (mPlayerManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mChatManagerProxy = new APIProxyChatManager();
+
+	if (mChatManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mObjectManagerProxy = new APIProxyObjectManager();
+
+	if (mObjectManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+}
+
+void RESTServer::destroyProxies() {
+	if (mPlayerManagerProxy != nullptr) {
+		delete mPlayerManagerProxy;
+		mPlayerManagerProxy = nullptr;
+	}
+
+	if (mChatManagerProxy != nullptr) {
+		delete mChatManagerProxy;
+		mChatManagerProxy = nullptr;
+	}
+
+	if (mObjectManagerProxy != nullptr) {
+		delete mObjectManagerProxy;
+		mObjectManagerProxy = nullptr;
+	}
+}
+
 void RESTServer::start() {
 	auto logLevel = ConfigManager::instance()->getInt("Core3.RESTServer.LogLevel", (int)Logger::INFO);
 	auto numberOfThreads = ConfigManager::instance()->getInt("Core3.RESTServer.WorkerThreads", 4);
@@ -340,17 +303,7 @@ void RESTServer::start() {
 		mAuthHeader = "Bearer " + apiAuthToken;
 	}
 
-	mPlayerManagerProxy = new APIProxyPlayerManager();
-
-	if (mPlayerManagerProxy == nullptr) {
-		throw OutOfMemoryError();
-	}
-
-	mProxyChatManager = new APIProxyChatManager();
-
-	if (mProxyChatManager == nullptr) {
-		throw OutOfMemoryError();
-	}
+	createProxies();
 
 	registerEndpoints();
 
@@ -414,9 +367,7 @@ void RESTServer::stop() {
 		restListener = nullptr;
 	}
 
-	if (mPlayerManagerProxy != nullptr) {
-		mPlayerManagerProxy = nullptr;
-	}
+	destroyProxies();
 
 	crossplat::threadpool::shared_instance().service().stop();
 
