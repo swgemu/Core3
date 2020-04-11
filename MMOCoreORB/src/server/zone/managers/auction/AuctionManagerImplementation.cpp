@@ -2084,20 +2084,21 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	}
 }
 
-void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
+void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item, bool sendMail) {
 	Locker locker(item);
 
-	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
-	if (vendor != nullptr) {
+	Reference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
-		ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
+	if (vendor != nullptr && sendMail) {
+
+		Reference<ChatManager*> cman = zoneServer->getChatManager();
 		String sender = "auctioner";
 
 		// Waypoint to Vendor / bazaar
 		float waypointX = vendor->getWorldPositionX();
 		float waypointY = vendor->getWorldPositionY();
 
-		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
+		Reference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
 
 		Locker lockerWaypoint(waypoint);
 
@@ -2119,8 +2120,6 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 
 		cman->sendMail(sender, sellerSubject, sellerBody, item->getOwnerName(), waypoint);
 	}
-
-	uint64 oid = item->getAuctionedItemObjectID();
 
 	auctionMap->deleteItem(vendor, item, true);
 }

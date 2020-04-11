@@ -146,7 +146,7 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native void expireAuction(AuctionItem item);
 
-	public native void deleteExpiredSale(AuctionItem item);
+	public native void deleteExpiredSale(AuctionItem item, boolean sendMail = true);
 
 	public boolean isMarketEnabled() {
 		return marketEnabled == true;

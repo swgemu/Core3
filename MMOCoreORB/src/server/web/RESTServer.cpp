@@ -84,7 +84,7 @@ void RESTServer::registerEndpoints() {
 		apiRequest.success(result);
 	}));
 
-	addEndpoint(RESTEndpoint("GET:/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
+	addEndpoint(RESTEndpoint("(?:GET|DELETE):/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
 		try {
 			mObjectManagerProxy->handle(apiRequest);
 		} catch (http_exception const & e) {
