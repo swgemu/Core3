@@ -29,6 +29,7 @@ namespace server {
  class APIRequest;
  class APIProxyPlayerManager;
  class APIProxyChatManager;
+ class APIProxyObjectManager;
  class RESTEndpoint;
 
  using namespace web;
@@ -42,9 +43,12 @@ namespace server {
  private:
 	String mAuthHeader;
 	ArrayList<RESTEndpoint, ArrayListNoReallocTrait::value> mAPIEndpoints;
-	APIProxyPlayerManager* mPlayerManagerProxy;
-	APIProxyChatManager* mProxyChatManager;
+	APIProxyPlayerManager* mPlayerManagerProxy = nullptr;
+	APIProxyChatManager* mChatManagerProxy = nullptr;
+	APIProxyObjectManager* mObjectManagerProxy = nullptr;
 
+	void createProxies();
+	void destroyProxies();
 	void registerEndpoints();
 	bool checkAuth(http_request& request);
 	void routeRequest(http_request& request);
