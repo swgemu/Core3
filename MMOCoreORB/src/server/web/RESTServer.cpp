@@ -85,11 +85,7 @@ void RESTServer::registerEndpoints() {
 	}));
 
 	addEndpoint(RESTEndpoint("(?:GET|DELETE):/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mObjectManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mObjectManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
@@ -115,35 +111,19 @@ void RESTServer::registerEndpoints() {
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/character/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->lookupCharacter(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->lookupCharacter(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mChatManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mChatManagerProxy->handle(apiRequest);
 	}));
 
 	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
@@ -201,15 +181,31 @@ void RESTServer::routeRequest(http_request& request) {
 				auto apiRequest = APIRequest(request, endpointKey, *this);
 
 				debug() << "START REQUEST: " << apiRequest;
-				hitEndpoint.handle(apiRequest);
+
+				try {
+					hitEndpoint.handle(apiRequest);
+				} catch (http_exception const & e) {
+					apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+				}
+
 				info() << "REQUEST: " << apiRequest;
 
 				if (apiRequest.getElapsedTimeMS() > 500) {
 					warning() << "SLOW API CALL: " << apiRequest;
 				}
 			} catch (Exception& e) {
-				error() << "Unexpected exception in RESTAPITask: " + e.getMessage();
-				request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
+				error() << "Unexpected exception in RESTAPITask: " << e.getMessage();
+				request.reply(status_codes::BadGateway, U("Unexpected exception handling request."));
+			} catch (JSONSerializationType::exception& e) {
+				error() << "Unexpected JSON exception in RESTAPITask: " << e.what();
+				request.reply(status_codes::BadGateway, U("Unexpected JSON exception handling request."));
+			} catch (...) {
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask: " << __cxxabiv1::__cxa_current_exception_type()->name();
+#else
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask";
+#endif
+				request.reply(status_codes::BadGateway, U("Uncaptured exception handling request"));
 			}
 		}, "RESTAPITask-" + hitEndpoint.toString(), "RESTServerWorker");
 	} catch (Exception& e) {

@@ -288,7 +288,6 @@ int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 
 	for (int i = 0; i < getTotalMembers(); i++) {
 		uint64 memberID = getMember(i);
-		Logger::console.info(true) << "dump member " << memberID;
 
 		auto member = server->getObject(memberID);
 
@@ -299,7 +298,9 @@ int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 		}
 	}
 
-	delete oidPath;
+	if (oidPath->size() == 0) {
+		delete oidPath;
+	}
 
 	return count;
 }
