@@ -30,6 +30,7 @@ namespace server {
  class APIProxyPlayerManager;
  class APIProxyChatManager;
  class APIProxyObjectManager;
+ class APIProxyGuildManager;
  class RESTEndpoint;
 
  using namespace web;
@@ -46,6 +47,7 @@ namespace server {
 	APIProxyPlayerManager* mPlayerManagerProxy = nullptr;
 	APIProxyChatManager* mChatManagerProxy = nullptr;
 	APIProxyObjectManager* mObjectManagerProxy = nullptr;
+	APIProxyGuildManager* mGuildManagerProxy = nullptr;
 
 	void createProxies();
 	void destroyProxies();

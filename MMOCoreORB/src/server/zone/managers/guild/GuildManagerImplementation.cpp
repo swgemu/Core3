@@ -2311,3 +2311,16 @@ void GuildManagerImplementation::viewElectionStandings(GuildObject* guild, Creat
 	player->getPlayerObject()->addSuiBox(listbox);
 	player->sendMessage(listbox->generateMessage());
 }
+
+void GuildManagerImplementation::iterateGuilds(const GuildObjectIterator& iterator) {
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < guildList.size(); ++i) {
+		Reference<GuildObject*> guild = guildList.getValueAt(i);
+
+		if (guild != nullptr) {
+			Locker locker(guild);
+			iterator(guild);
+		}
+	}
+}

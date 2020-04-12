@@ -137,9 +137,11 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 				ReadLocker gLock(guild);
 				auto oidPath = new Vector<uint64>;
 				oidPath->add(creo->getObjectID());
-				countFound += guild->writeRecursiveJSON(objects, 1, oidPath);
+				countFound += guild->writeRecursiveJSON(objects, qRecursive ? qMaxDepth : 1, oidPath);
 				delete oidPath;
 			}
+		} else {
+			countFound++;
 		}
 	}
 

@@ -19,6 +19,7 @@
 #include "APIProxyPlayerManager.h"
 #include "APIProxyChatManager.h"
 #include "APIProxyObjectManager.h"
+#include "APIProxyGuildManager.h"
 
 using namespace server::web3;
 
@@ -120,6 +121,10 @@ void RESTServer::registerEndpoints() {
 
 	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/character/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
 		mPlayerManagerProxy->lookupCharacter(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/guild/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
+		mGuildManagerProxy->lookupGuild(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
@@ -249,6 +254,12 @@ void RESTServer::createProxies() {
 	if (mObjectManagerProxy == nullptr) {
 		throw OutOfMemoryError();
 	}
+
+	mGuildManagerProxy = new APIProxyGuildManager();
+
+	if (mGuildManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
 }
 
 void RESTServer::destroyProxies() {
@@ -265,6 +276,11 @@ void RESTServer::destroyProxies() {
 	if (mObjectManagerProxy != nullptr) {
 		delete mObjectManagerProxy;
 		mObjectManagerProxy = nullptr;
+	}
+
+	if (mGuildManagerProxy != nullptr) {
+		delete mGuildManagerProxy;
+		mGuildManagerProxy = nullptr;
 	}
 }
 
