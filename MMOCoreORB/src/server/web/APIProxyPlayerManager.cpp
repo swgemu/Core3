@@ -18,6 +18,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/credits/CreditObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 #include "APIProxyPlayerManager.h"
 #include "APIRequest.h"
@@ -80,6 +81,8 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		return;
 	}
 
+	int countFound = 0;
+
 	JSONSerializationType result, found, objects;
 
 	for (auto name : names) {
@@ -94,11 +97,11 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 
 		if (mode == "find") {
 			if (qRecursive) {
-				creo->writeRecursiveJSON(objects, qMaxDepth);
+				countFound += creo->writeRecursiveJSON(objects, qMaxDepth);
 			} else {
 				Locker wLock(creo);
 
-				creo->writeRecursiveJSON(objects, 1);
+				countFound += creo->writeRecursiveJSON(objects, 1);
 
 				auto ghost = creo->getPlayerObject();
 
@@ -106,7 +109,7 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 					ReadLocker gLock(ghost);
 					auto oidPath = new Vector<uint64>;
 					oidPath->add(creo->getObjectID());
-					ghost->writeRecursiveJSON(objects, 1, oidPath);
+					countFound += ghost->writeRecursiveJSON(objects, 1, oidPath);
 					delete oidPath;
 				}
 
@@ -117,6 +120,7 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 					auto oid = crobj->_getObjectID();
 					JSONSerializationType jsonData;
 					crobj->writeJSON(jsonData);
+					countFound++;
 					jsonData["_depth"] = 1;
 					jsonData["_oid"] = oid;
 					jsonData["_className"] = crobj->_getClassName();
@@ -126,16 +130,47 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 					objects[String::valueOf(oid)] = jsonData;
 				}
 			}
+
+			auto guild = creo->getGuildObject().get();
+
+			if (guild != nullptr) {
+				ReadLocker gLock(guild);
+				auto oidPath = new Vector<uint64>;
+				oidPath->add(creo->getObjectID());
+				countFound += guild->writeRecursiveJSON(objects, 1, oidPath);
+				delete oidPath;
+			}
 		}
 	}
 
-	result["characters"] = found;
+	if (countFound == 0) {
+		apiRequest.fail("Nothing found");
+	} else {
+		JSONSerializationType metadata;
 
-	if (mode == "find") {
-		result["objects"] = objects;
+		Time now;
+		metadata["exportTime"] = now.getFormattedTimeFull();
+		metadata["objectCount"] = countFound;
+		metadata["maxDepth"] = qMaxDepth;
+		metadata["recursive"] = qRecursive;
+
+		if (apiRequest.hasQueryField("name")) {
+			metadata["query_names"] = apiRequest.getQueryFieldString("name");
+		} else {
+			metadata["query_names"] = apiRequest.getQueryFieldString("names");
+		}
+
+		JSONSerializationType result;
+
+		result["metadata"] = metadata;
+		result["names"] = found;
+
+		if (mode == "find") {
+			result["objects"] = objects;
+		}
+
+		apiRequest.success(result);
 	}
-
-	apiRequest.success(result);
 }
 
 void APIProxyPlayerManager::handle(APIRequest& apiRequest) {
