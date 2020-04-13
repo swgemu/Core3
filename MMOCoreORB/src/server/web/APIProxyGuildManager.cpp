@@ -38,12 +38,21 @@ void APIProxyGuildManager::lookupGuild(APIRequest& apiRequest) {
 		return;
 	}
 
+	auto server = getZoneServer();
+
+	if (server == nullptr) {
+		apiRequest.fail("Failed to getZoneServer");
+		return;
+	}
+
 	auto qName = apiRequest.getQueryFieldString("name", false);
 	auto qNames = apiRequest.getQueryFieldString("names", false);
 	auto qRecursive = apiRequest.getQueryFieldBool("recursive", false, false);
 	auto qCaseInsensitive = apiRequest.getQueryFieldBool("ignorecase", false, false);
 	auto qSearch = apiRequest.getQueryFieldString("search", false, "");
-	int qMaxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
+	int qMaxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 2);
+	auto qLimit = apiRequest.getQueryFieldUnsignedLong("limit", false, 20);
+	auto qOffset = apiRequest.getQueryFieldUnsignedLong("offset", false, 0);
 
 	if (qName.isEmpty() && qNames.isEmpty() && qSearch.isEmpty()) {
 		apiRequest.fail("Invalid request, must specify one of: name, names, search");
@@ -85,10 +94,13 @@ void APIProxyGuildManager::lookupGuild(APIRequest& apiRequest) {
 		return;
 	}
 
+	Time startSearchTime;
 	int countFound = 0;
+	auto objects = JSONSerializationType::object();
+	auto found = JSONSerializationType::object();
+	SortedVector<uint64> hits;
 
-	JSONSerializationType result, found, objects;
-	Vector<Reference<GuildObject*>> hits;
+	hits.setAllowOverwriteInsertPlan();
 
 	guildManager->iterateGuilds([&](GuildObject* guild) -> void {
 		if (guild == nullptr) {
@@ -99,22 +111,26 @@ void APIProxyGuildManager::lookupGuild(APIRequest& apiRequest) {
 		auto guildName = qCaseInsensitive ? guild->getGuildName().toLowerCase() : guild->getGuildName();
 
 		if (!qSearch.isEmpty() && (guildAbbr.contains(qSearch) || guildName.contains(qSearch))) {
-			hits.add(guild);
+			hits.put(guild->getObjectID());
 		} else {
 			for (auto name: names) {
 				if (name == guildAbbr || (qCaseInsensitive && name.toLowerCase() == guildAbbr)) {
-					hits.add(guild);
+					hits.put(guild->getObjectID());
 					break;
 				}
 			}
 		}
 	});
 
+	Time startExportTime;
+	auto msSearch = startSearchTime.miliDifference();
 	auto mode = apiRequest.getPathFieldString("mode", true);
 
 	// Handle matched guilds
-	for (int i = 0; i < hits.size(); ++i) {
-		auto guild = hits.get(i);
+	auto stop = qOffset + qLimit > hits.size() ? hits.size() : qOffset + qLimit;
+
+	for (int i = qOffset; i < stop; ++i) {
+		Reference<GuildObject*> guild = server->getObject(hits.get(i)).castTo<GuildObject*>();
 
 		if (guild == nullptr) {
 			continue;
@@ -130,38 +146,39 @@ void APIProxyGuildManager::lookupGuild(APIRequest& apiRequest) {
 		}
 	}
 
-	if (countFound == 0) {
-		apiRequest.fail("Nothing found");
+	auto msExport = startExportTime.miliDifference();
+
+	JSONSerializationType metadata;
+
+	Time now;
+	metadata["exportTime"] = now.getFormattedTimeFull();
+	metadata["objectCount"] = countFound;
+	metadata["maxDepth"] = qMaxDepth;
+	metadata["recursive"] = qRecursive;
+	metadata["msSearch"] = msSearch;
+	metadata["msExport"] = msExport;
+
+	// Pagination data
+	metadata["offset"] = qOffset;
+	metadata["limit"] = qLimit;
+	metadata["total"] = hits.size();
+
+	if (hits.size() > qOffset + qLimit) {
+		metadata["resultsRemaining"] = hits.size() - (qOffset + qLimit);
 	} else {
-		JSONSerializationType metadata;
-
-		Time now;
-		metadata["exportTime"] = now.getFormattedTimeFull();
-		metadata["objectCount"] = countFound;
-		metadata["maxDepth"] = qMaxDepth;
-		metadata["recursive"] = qRecursive;
-
-		if (apiRequest.hasQueryField("name")) {
-			metadata["query_names"] = apiRequest.getQueryFieldString("name");
-		} else if (apiRequest.hasQueryField("names")) {
-			metadata["query_names"] = apiRequest.getQueryFieldString("names");
-		}
-
-		if (apiRequest.hasQueryField("search")) {
-			metadata["query_search"] = apiRequest.getQueryFieldString("search");
-		}
-
-		JSONSerializationType result;
-
-		result["metadata"] = metadata;
-		result["names"] = found;
-
-		if (mode == "find") {
-			result["objects"] = objects;
-		}
-
-		apiRequest.success(result);
+		metadata["resultsRemaining"] = 0;
 	}
+
+	JSONSerializationType result;
+
+	result["metadata"] = metadata;
+	result["names"] = found;
+
+	if (mode == "find") {
+		result["objects"] = objects;
+	}
+
+	apiRequest.success(result);
 }
 
 void APIProxyGuildManager::handle(APIRequest& apiRequest) {
