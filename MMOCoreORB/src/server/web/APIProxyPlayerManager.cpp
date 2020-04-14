@@ -42,17 +42,41 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		return;
 	}
 
-	auto qName = apiRequest.getQueryFieldString("name", false);
-	auto qNames = apiRequest.getQueryFieldString("names", false);
-	auto qRecursive = apiRequest.getQueryFieldBool("recursive", false, false);
-	int qMaxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
+	auto server = getZoneServer();
 
-	if (qName.isEmpty() && qNames.isEmpty()) {
-		apiRequest.fail("Invalid request, must specify query parameter name or names");
+	if (server == nullptr) {
+		apiRequest.fail("Failed to getZoneServer");
 		return;
 	}
 
-	auto mode = apiRequest.getPathFieldString("mode", true);
+	auto qName = apiRequest.getQueryFieldString("name", false);
+	auto qNames = apiRequest.getQueryFieldString("names", false);
+    auto qSearch = apiRequest.getQueryFieldString("search", false, "").toLowerCase();
+	auto qRecursive = apiRequest.getQueryFieldBool("recursive", false, false);
+	auto qMaxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 3);
+    auto qLimit = apiRequest.getQueryFieldUnsignedLong("limit", false, 20);
+    auto qOffset = apiRequest.getQueryFieldUnsignedLong("offset", false, 0);
+	bool findMode = apiRequest.getPathFieldString("mode", true) == "find";
+
+	if (qName.isEmpty() && qNames.isEmpty() && qSearch.isEmpty()) {
+		apiRequest.fail("Invalid request, must specify one of: name, names, search");
+		return;
+	}
+
+	if (!qSearch.isEmpty() && qSearch.length() < 3) {
+		apiRequest.fail("Invalid request, search much be at least 3 characters in length.");
+		return;
+	}
+
+	if (findMode && qLimit > 100) {
+		apiRequest.fail("Invalid request, limit must not be more than 100 for find");
+		return;
+	}
+
+	if (qLimit > 1000) {
+		apiRequest.fail("Invalid request, limit must not be more than 1000 for lookup");
+		return;
+	}
 
 	Vector<String> names;
 
@@ -81,98 +105,133 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		return;
 	}
 
+	Timer msSearch, msExport;
 	int countFound = 0;
+	auto found = JSONSerializationType::object();
+	auto objects = JSONSerializationType::object();
+	SortedVector<uint64> hits;
 
-	JSONSerializationType result, found, objects;
+	hits.setAllowOverwriteInsertPlan();
+
+	msSearch.start();
 
 	for (auto name : names) {
-		auto creo = playerManager->getPlayer(name);
+		auto oid = playerManager->getObjectID(name);
 
-		if (creo != nullptr) {
-			found[name] = creo->getObjectID();
-		} else {
-			found[name] = 0;
+		if (oid != 0) {
+			hits.put(oid);
+		}
+	}
+
+	if (!qSearch.isEmpty()) {
+		playerManager->iteratePlayerNames([&](String name, uint64 oid) -> void {
+			if (name.beginsWith(qSearch)) {
+				hits.put(oid);
+			}
+		});
+	}
+
+	msSearch.stop();
+
+	msExport.start();
+
+	auto stop = qOffset + qLimit > hits.size() ? hits.size() : qOffset + qLimit;
+
+	for (int i = qOffset; i < stop; ++i) {
+		auto oid = hits.get(i);
+
+		found[playerManager->getPlayerName(oid)] = oid;
+
+		if (!findMode) {
+			countFound++;
 			continue;
 		}
 
-		if (mode == "find") {
-			if (qRecursive) {
-				countFound += creo->writeRecursiveJSON(objects, qMaxDepth);
-			} else {
-				Locker wLock(creo);
+		Reference<CreatureObject*> creo = server->getObject(hits.get(i)).castTo<CreatureObject*>();
 
-				countFound += creo->writeRecursiveJSON(objects, 1);
+		if (creo == nullptr) {
+			continue;
+		}
 
-				auto ghost = creo->getPlayerObject();
+		if (qRecursive) {
+			countFound += creo->writeRecursiveJSON(objects, qMaxDepth);
+		} else {
+			Locker wLock(creo);
 
-				if (ghost != nullptr) {
-					ReadLocker gLock(ghost);
-					auto oidPath = new Vector<uint64>;
-					oidPath->add(creo->getObjectID());
-					countFound += ghost->writeRecursiveJSON(objects, 1, oidPath);
-					delete oidPath;
-				}
+			countFound += creo->writeRecursiveJSON(objects, 1);
 
-				auto crobj = creo->getCreditObject();
+			auto ghost = creo->getPlayerObject();
 
-				if (crobj != nullptr) {
-					ReadLocker crLock(crobj);
-					auto oid = crobj->_getObjectID();
-					JSONSerializationType jsonData;
-					crobj->writeJSON(jsonData);
-					countFound++;
-					jsonData["_depth"] = 1;
-					jsonData["_oid"] = oid;
-					jsonData["_className"] = crobj->_getClassName();
-					jsonData["_oidPath"] = JSONSerializationType::array();
-					jsonData["_oidPath"].push_back(creo->getObjectID());
-					jsonData["_oidPath"].push_back(oid);
-					objects[String::valueOf(oid)] = jsonData;
-				}
-			}
-
-			auto guild = creo->getGuildObject().get();
-
-			if (guild != nullptr) {
-				ReadLocker gLock(guild);
+			if (ghost != nullptr) {
+				ReadLocker gLock(ghost);
 				auto oidPath = new Vector<uint64>;
 				oidPath->add(creo->getObjectID());
-				countFound += guild->writeRecursiveJSON(objects, qRecursive ? qMaxDepth : 1, oidPath);
+				countFound += ghost->writeRecursiveJSON(objects, 1, oidPath);
 				delete oidPath;
 			}
-		} else {
-			countFound++;
+
+			auto crobj = creo->getCreditObject();
+
+			if (crobj != nullptr) {
+				ReadLocker crLock(crobj);
+				auto oid = crobj->_getObjectID();
+				JSONSerializationType jsonData;
+				crobj->writeJSON(jsonData);
+				countFound++;
+				jsonData["_depth"] = 1;
+				jsonData["_oid"] = oid;
+				jsonData["_className"] = crobj->_getClassName();
+				jsonData["_oidPath"] = JSONSerializationType::array();
+				jsonData["_oidPath"].push_back(creo->getObjectID());
+				jsonData["_oidPath"].push_back(oid);
+				objects[String::valueOf(oid)] = jsonData;
+			}
+		}
+
+		auto guild = creo->getGuildObject().get();
+
+		if (guild != nullptr) {
+			ReadLocker gLock(guild);
+			auto oidPath = new Vector<uint64>;
+			oidPath->add(creo->getObjectID());
+			countFound += guild->writeRecursiveJSON(objects, qRecursive ? qMaxDepth : 1, oidPath);
+			delete oidPath;
 		}
 	}
 
-	if (countFound == 0) {
-		apiRequest.fail("Nothing found");
-	} else {
-		JSONSerializationType metadata;
+	msExport.stop();
 
-		Time now;
-		metadata["exportTime"] = now.getFormattedTimeFull();
-		metadata["objectCount"] = countFound;
-		metadata["maxDepth"] = qMaxDepth;
-		metadata["recursive"] = qRecursive;
+	JSONSerializationType metadata;
 
-		if (apiRequest.hasQueryField("name")) {
-			metadata["query_names"] = apiRequest.getQueryFieldString("name");
-		} else {
-			metadata["query_names"] = apiRequest.getQueryFieldString("names");
-		}
+	Time now;
+	metadata["exportTime"] = now.getFormattedTimeFull();
+	metadata["objectCount"] = countFound;
+	metadata["maxDepth"] = qMaxDepth;
+	metadata["recursive"] = qRecursive;
+	metadata["msSearch"] = msSearch.getElapsedTimeMs();
+	metadata["msExport"] = msExport.getElapsedTimeMs();
 
-		JSONSerializationType result;
+    // Pagination data
+    metadata["offset"] = qOffset;
+    metadata["limit"] = qLimit;
+    metadata["total"] = hits.size();
 
-		result["metadata"] = metadata;
-		result["names"] = found;
+    if (hits.size() > qOffset + qLimit) {
+        metadata["resultsRemaining"] = hits.size() - (qOffset + qLimit);
+    } else {
+        metadata["resultsRemaining"] = 0;
+    }
 
-		if (mode == "find") {
-			result["objects"] = objects;
-		}
+	JSONSerializationType result;
 
-		apiRequest.success(result);
+	result["metadata"] = metadata;
+	result["names"] = found;
+
+	if (findMode) {
+		result["objects"] = objects;
 	}
+
+	apiRequest.success(result);
 }
 
 void APIProxyPlayerManager::handle(APIRequest& apiRequest) {

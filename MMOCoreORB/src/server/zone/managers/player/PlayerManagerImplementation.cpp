@@ -6263,3 +6263,15 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 		error() << "logOnlinePlayers failed to write " << fileName << ": " << e.getMessage();
 	}
 }
+
+void PlayerManagerImplementation::iteratePlayerNames(const PlayerNameIterator& iterator) {
+	auto names = nameMap->getNames();
+	auto iter = names.iterator();
+
+	while (iter.hasNext()) {
+		String name;
+		uint64 oid;
+		iter.getNextKeyAndValue(name, oid);
+		iterator(name, oid);
+	}
+}
