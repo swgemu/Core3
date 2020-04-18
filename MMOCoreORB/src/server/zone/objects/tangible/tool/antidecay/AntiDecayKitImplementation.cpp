@@ -10,7 +10,20 @@ void AntiDecayKitImplementation::initializeTransientMembers() {
 
 	ContainerImplementation::initializeTransientMembers();
 
-	setLoggingName("AntiDecayKit");
+	StringBuffer logName;
+
+	logName << "AntiDecayKit 0x" << hex << getObjectID();
+
+	setLoggingName(logName.toString());
+}
+
+void AntiDecayKitImplementation::notifyLoadFromDatabase() {
+	auto strongParent = parent.get();
+
+	if (used && strongParent != nullptr) {
+		error() << "Is used and has parent " <<  strongParent->getObjectID() << ", removing from world.";
+		_this.getReferenceUnsafeStaticCast()->destroyObjectFromWorld(true);
+	}
 }
 
 void AntiDecayKitImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

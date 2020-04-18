@@ -3519,7 +3519,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 			cashCredits += (cashCredits * luck) / 20;
 
 		player->addCashCredits(cashCredits, true);
-		ai->setCashCredits(0);
+		ai->clearCashCredits();
 
 		StringIdChatParameter param("base_player", "prose_coin_loot"); //You loot %DI credits from %TT.
 		param.setDI(cashCredits);
@@ -6261,5 +6261,17 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 		}
 	} catch (const Exception& e) {
 		error() << "logOnlinePlayers failed to write " << fileName << ": " << e.getMessage();
+	}
+}
+
+void PlayerManagerImplementation::iteratePlayerNames(const PlayerNameIterator& iterator) {
+	auto names = nameMap->getNames();
+	auto iter = names.iterator();
+
+	while (iter.hasNext()) {
+		String name;
+		uint64 oid;
+		iter.getNextKeyAndValue(name, oid);
+		iterator(name, oid);
 	}
 }

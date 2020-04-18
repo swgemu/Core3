@@ -19,6 +19,7 @@ include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 include system.util.VectorMap;
 include server.zone.objects.guild.GuildObject;
+include server.zone.managers.guild.GuildObjectIterator;
 
 @dirty
 class GuildManager extends ManagedService implements Logger {
@@ -211,4 +212,7 @@ class GuildManager extends ManagedService implements Logger {
 	public native void castVote(GuildObject guild, CreatureObject player, unsigned long candidateID);
 
 	public native void viewElectionStandings(GuildObject guild, CreatureObject player, GuildTerminal terminal);
+
+	@local
+	public native void iterateGuilds(@dereferenced final GuildObjectIterator iterator);
 }

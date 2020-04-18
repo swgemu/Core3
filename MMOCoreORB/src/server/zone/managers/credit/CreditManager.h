@@ -10,14 +10,15 @@
 
 class CreditManager : public Singleton<CreditManager>, public Logger, public Object {
 public:
+	CreditManager();
 	static void addBankCredits(uint64 creatureID, int amount, bool notifyClient = true);
 	static void addCashCredits(uint64 creatureID, int amount, bool notifyClient = true);
 	static bool subtractBankCredits(uint64 creatureID, int amount, bool notifyClient = true);
 	static bool subtractCashCredits(uint64 creatureID, int amount, bool notifyClient = true);
+	static void transferCredits(uint64 creatureID, int cash, int bank, bool notifyClient = true);
 	static bool verifyBankCredits(uint64 creatureID, int amount);
 	static bool verifyCashCredits(uint64 creatureID, int amount);
-	static ManagedReference<CreditObject*> getCreditObject(uint64 creoID);
+	static Reference<CreditObject*> getCreditObject(uint64 creoID);
 };
-
 
 #endif //CORE3_CREDITMANAGER_H

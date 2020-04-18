@@ -47,6 +47,7 @@ import system.thread.Mutex;
 include engine.util.JSONSerializationType;
 import server.zone.objects.player.events.OnlinePlayerLogTask;
 import system.lang.Time;
+include server.zone.managers.player.PlayerNameIterator;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -586,4 +587,7 @@ class PlayerManager extends Observer implements Logger {
 	}
 
 	public native void stopOnlinePlayerLogTask();
+
+	@local
+	public native void iteratePlayerNames(@dereferenced final PlayerNameIterator iterator);
 }

@@ -13,8 +13,6 @@
 #include "RESTEndpoint.h"
 #include "APIRequest.h"
 
-#define TRACE(msg) System::out << ":" << __PRETTY_FUNCTION__ << ":" << __LINE__ << " - " << msg << "\n"; System::flushStream(stdout);
-
 using namespace std;
 using namespace server::web3;
 

@@ -28,6 +28,10 @@ void destroyNavMeshQuery(void* value) {
 PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery(destroyNavMeshQuery) {
 	setFileLogger("log/pathfinder.log");
 	setLogJSON(ConfigManager::instance()->getPathfinderLogJSON());
+	setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
+	if (getLogJSON()) {
+		setLogSynchronized(true);
+	}
 
 	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ (SAMPLE_POLYFLAGS_DISABLED));
 	m_filter.setExcludeFlags(0);

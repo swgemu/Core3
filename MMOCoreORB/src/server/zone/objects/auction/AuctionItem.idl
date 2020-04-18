@@ -6,6 +6,8 @@ package server.zone.objects.auction;
 
 import engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
+import engine.log.Logger;
+include engine.log.LoggerHelperStream;
 include server.zone.objects.scene.variables.StringId;
 
 @json
@@ -54,6 +56,7 @@ class AuctionItem extends ManagedObject {
 	public final static int EXPIRED = 4;
 	public final static int OFFERED = 5;
 	public final static int RETRIEVED = 6;
+	public final static int DELETED = 99;
 
 	public AuctionItem(unsigned long objectid) {
 		auctionedItemObjectID = objectid;
@@ -80,9 +83,9 @@ class AuctionItem extends ManagedObject {
 		updated = false;
 
 		auctionOptions = 0;
-
-		//Logger.setLoggingName("AuctionItem");
 	}
+
+	public native void initializeTransientMembers();
 
 	/**
 	 * Compares object ids of this object with obj
@@ -102,6 +105,8 @@ class AuctionItem extends ManagedObject {
 	}
 
 	public native void notifyLoadFromDatabase();
+
+	public native boolean destroyAuctionItemFromDatabase(boolean checkAuctionMap = true, boolean deleteAuctionedObject = false);
 
 	@preLocked
 	public void setVendorID(unsigned long val) {
@@ -201,10 +206,12 @@ class AuctionItem extends ManagedObject {
 		return auction;
 	}
 
-	@read
 	public int getStatus() {
 		return status;
 	}
+
+	@read
+	public native string getStatusString();
 
 	@read
 	public unsigned long getVendorID() {
@@ -287,6 +294,10 @@ class AuctionItem extends ManagedObject {
 	}
 
 	@read
+	@local
+	private native Logger getLogger();
+
+	@read
 	public boolean isPremiumAuction() {
 		return auctionOptions & OPTION_PREMIUM;
 	}
@@ -340,4 +351,22 @@ class AuctionItem extends ManagedObject {
 	public boolean isUpdated() {
 		return updated;
 	}
+
+	@read
+	public native unsigned long getObjectID();
+
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream error();
+
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream info(int forced = false); /*int instead of bool because of const char* implicit cast to bool*/
+
+	@read
+	@dereferenced
+	@local
+	public native LoggerHelperStream debug();
 }

@@ -12,18 +12,22 @@
 
 #include "RESTServer.h"
 #include "server/ServerCore.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "conf/ConfigManager.h"
 
 #include "RESTEndpoint.h"
 #include "APIRequest.h"
 #include "APIProxyPlayerManager.h"
+#include "APIProxyChatManager.h"
+#include "APIProxyObjectManager.h"
+#include "APIProxyGuildManager.h"
 
 using namespace server::web3;
 
 RESTServer::RESTServer() {
 	setLoggingName("RESTServer");
-	setFileLogger("log/core3_api.log", true);
+	setFileLogger("log/core3_api.log", true, ConfigManager::instance()->getRotateLogAtStart());
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.RESTServer.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
 	setLogToConsole(false);
 	setGlobalLogging(false);
 	setLogging(true);
@@ -81,88 +85,8 @@ void RESTServer::registerEndpoints() {
 		apiRequest.success(result);
 	}));
 
-	addEndpoint(RESTEndpoint("GET:/v1/object/", {}, [this] (APIRequest& apiRequest) -> void {
-		if (!apiRequest.hasQueryField("oids")) {
-			apiRequest.fail("missing query field 'oids'");
-			return;
-		}
-
-		auto parents = apiRequest.getQueryFieldBool("parents", false, false);
-		auto recursive = apiRequest.getQueryFieldBool("recursive", false, false);
-		int maxDepth = apiRequest.getQueryFieldUnsignedLong("maxdepth", false, 1000);
-
-		StringTokenizer oidStrList(apiRequest.getQueryFieldString("oids"));
-		oidStrList.setDelimeter(",");
-
-		int countFound = 0;
-		auto objects = JSONSerializationType::object();
-
-		while(oidStrList.hasMoreTokens()) {
-			try {
-				uint64 oid = oidStrList.getUnsignedLongToken();
-
-				debug() << countFound << ") Lookup oid " << oid;
-
-				auto obj = Core::lookupObject(oid).castTo<ManagedObject*>();
-
-				if (obj != nullptr) {
-					ReadLocker lock(obj);
-
-					auto scno = dynamic_cast<SceneObject*>(obj.get());
-
-					if (scno != nullptr) {
-						if (!recursive) {
-							maxDepth = 1;
-						}
-
-						if (parents) {
-							auto rootObj = scno->getRootParent();
-
-							if (rootObj != nullptr) {
-								scno = rootObj;
-							}
-						}
-
-						countFound += scno->writeRecursiveJSON(objects, maxDepth);
-					} else {
-						JSONSerializationType jsonData;
-						obj->writeJSON(jsonData);
-						countFound++;
-						jsonData["_depth"] = 0;
-						jsonData["_oid"] = oid;
-						jsonData["_className"] = obj->_getClassName();
-						jsonData["_oidPath"] = JSONSerializationType::array();
-						jsonData["_oidPath"].push_back(oid);
-						objects[String::valueOf(oid)] = jsonData;
-					}
-				}
-			} catch (const Exception& e) {
-				apiRequest.fail("Exception looking up objects", "Exception: " + e.getMessage());
-				return;
-			}
-		}
-
-		debug() << "Found " << countFound << " object(s)";
-
-		if (countFound == 0) {
-			apiRequest.fail("Nothing found");
-		} else {
-			JSONSerializationType metadata;
-
-			Time now;
-			metadata["exportTime"] = now.getFormattedTimeFull();
-			metadata["objectCount"] = countFound;
-			metadata["maxDepth"] = maxDepth;
-			metadata["recursive"] = recursive;
-			metadata["parents"] = parents;
-			metadata["query_oids"] = apiRequest.getQueryFieldString("oids");
-
-			JSONSerializationType result;
-			result["objects"] = objects;
-			result["metadata"] = metadata;
-
-			apiRequest.success(result);
-		}
+	addEndpoint(RESTEndpoint("(?:GET|DELETE):/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
+		mObjectManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
@@ -188,27 +112,23 @@ void RESTServer::registerEndpoints() {
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->handle(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/character/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
-		try {
-			mPlayerManagerProxy->lookupCharacter(apiRequest);
-		} catch (http_exception const & e) {
-			apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
-		}
+		mPlayerManagerProxy->lookupCharacter(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/guild/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
+		mGuildManagerProxy->lookupGuild(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
+		mChatManagerProxy->handle(apiRequest);
 	}));
 
 	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
@@ -266,15 +186,31 @@ void RESTServer::routeRequest(http_request& request) {
 				auto apiRequest = APIRequest(request, endpointKey, *this);
 
 				debug() << "START REQUEST: " << apiRequest;
-				hitEndpoint.handle(apiRequest);
+
+				try {
+					hitEndpoint.handle(apiRequest);
+				} catch (http_exception const & e) {
+					apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+				}
+
 				info() << "REQUEST: " << apiRequest;
 
 				if (apiRequest.getElapsedTimeMS() > 500) {
 					warning() << "SLOW API CALL: " << apiRequest;
 				}
 			} catch (Exception& e) {
-				error() << "Unexpected exception in RESTAPITask: " + e.getMessage();
-				request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
+				error() << "Unexpected exception in RESTAPITask: " << e.getMessage();
+				request.reply(status_codes::BadGateway, U("Unexpected exception handling request."));
+			} catch (JSONSerializationType::exception& e) {
+				error() << "Unexpected JSON exception in RESTAPITask: " << e.what();
+				request.reply(status_codes::BadGateway, U("Unexpected JSON exception handling request."));
+			} catch (...) {
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask: " << __cxxabiv1::__cxa_current_exception_type()->name();
+#else
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask";
+#endif
+				request.reply(status_codes::BadGateway, U("Uncaptured exception handling request"));
 			}
 		}, "RESTAPITask-" + hitEndpoint.toString(), "RESTServerWorker");
 	} catch (Exception& e) {
@@ -296,6 +232,56 @@ bool RESTServer::checkAuth(http_request& request) {
 	auto requestToken = String(headers[header_names::authorization]);
 
 	return requestToken == mAuthHeader;
+}
+
+void RESTServer::createProxies() {
+	destroyProxies();
+
+	mPlayerManagerProxy = new APIProxyPlayerManager();
+
+	if (mPlayerManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mChatManagerProxy = new APIProxyChatManager();
+
+	if (mChatManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mObjectManagerProxy = new APIProxyObjectManager();
+
+	if (mObjectManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mGuildManagerProxy = new APIProxyGuildManager();
+
+	if (mGuildManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+}
+
+void RESTServer::destroyProxies() {
+	if (mPlayerManagerProxy != nullptr) {
+		delete mPlayerManagerProxy;
+		mPlayerManagerProxy = nullptr;
+	}
+
+	if (mChatManagerProxy != nullptr) {
+		delete mChatManagerProxy;
+		mChatManagerProxy = nullptr;
+	}
+
+	if (mObjectManagerProxy != nullptr) {
+		delete mObjectManagerProxy;
+		mObjectManagerProxy = nullptr;
+	}
+
+	if (mGuildManagerProxy != nullptr) {
+		delete mGuildManagerProxy;
+		mGuildManagerProxy = nullptr;
+	}
 }
 
 void RESTServer::start() {
@@ -329,11 +315,7 @@ void RESTServer::start() {
 		mAuthHeader = "Bearer " + apiAuthToken;
 	}
 
-	mPlayerManagerProxy = new APIProxyPlayerManager();
-
-	if (mPlayerManagerProxy == nullptr) {
-		throw OutOfMemoryError();
-	}
+	createProxies();
 
 	registerEndpoints();
 
@@ -397,9 +379,7 @@ void RESTServer::stop() {
 		restListener = nullptr;
 	}
 
-	if (mPlayerManagerProxy != nullptr) {
-		mPlayerManagerProxy = nullptr;
-	}
+	destroyProxies();
 
 	crossplat::threadpool::shared_instance().service().stop();
 
