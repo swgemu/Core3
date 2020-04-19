@@ -1693,10 +1693,9 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 
 void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
 	float buffMod = 1;
-
 	if (posture == CreaturePosture::UPRIGHT) {
 		buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
-	} else if(posture == CreaturePosture::PRONE && hasBuff(CreatureState::COVER)) {
+	} else if(posture == CreaturePosture::PRONE && hasState(CreatureState::COVER)) {
 		if (hasSkill("combat_rifleman_speed_03")) {
 			buffMod = 0.5f;
 		} else {
@@ -2395,6 +2394,9 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 		buff->setSkillModifier("ranged_defense", 25);
 
 		addBuff(buff);
+
+		// Update after buff has been applied.
+		updateSpeedAndAccelerationMods();
 	}
 }
 
