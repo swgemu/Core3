@@ -1,4 +1,4 @@
-settler = Creature:new {
+settler_thug = Creature:new {
 	objectName = "@mob/creature_names:settler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -46,4 +46,4 @@ settler = Creature:new {
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(settler, "settler")
+CreatureTemplates:addCreatureTemplate(settler_thug, "settler_thug")
