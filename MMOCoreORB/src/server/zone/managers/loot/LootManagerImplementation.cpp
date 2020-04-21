@@ -408,9 +408,6 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 				max = ((max * level / maxMod) + max) * excMod;
 			}
 
-		} else if (excMod != 1.0) {
-			min *= yellowModifier;
-			max *= yellowModifier;
 		}
 
 		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
