@@ -1924,6 +1924,8 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 
 	int count = 0;
 
+	Locker lock(asSceneObject());
+
 	JSONSerializationType thisObject;
 	writeJSON(thisObject);
 	thisObject["_maxDepth"] = maxDepth;
@@ -1931,9 +1933,13 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 	thisObject["_oid"] = getObjectID();
 	thisObject["_className"] = _className;
 
-	auto oidPathJSON = JSONSerializationType::array();
-
 	oidPath->add(getObjectID());
+
+	auto childObjects = *getChildObjects(); // Get a copy before we release the lock
+
+	lock.release();
+
+	auto oidPathJSON = JSONSerializationType::array();
 
 	for (int i = 0;i < oidPath->size();i++) {
 		oidPathJSON.push_back(oidPath->get(i));
@@ -1949,20 +1955,14 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 		auto obj = getContainerObject(i);
 
 		if (obj != nullptr) {
-			ReadLocker locker(obj);
-
 			count += obj->writeRecursiveJSON(j, maxDepth - 1, oidPath);
 		}
 	}
 
-	auto childObjects = getChildObjects();
-
-	for (int i = 0;i < childObjects->size(); ++i) {
-		auto obj = childObjects->get(i);
+	for (int i = 0;i < childObjects.size(); ++i) {
+		auto obj = childObjects.get(i);
 
 		if (obj != nullptr) {
-			ReadLocker locker(obj);
-
 			count += obj->writeRecursiveJSON(j, maxDepth - 1, oidPath);
 		}
 	}
@@ -1971,8 +1971,6 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 		auto obj =  getSlottedObject(i);
 
 		if (obj != nullptr) {
-			ReadLocker locker(obj);
-
 			count += obj->writeRecursiveJSON(j, maxDepth - 1, oidPath);
 		}
 	}
