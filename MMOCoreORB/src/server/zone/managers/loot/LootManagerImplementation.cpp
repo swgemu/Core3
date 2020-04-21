@@ -355,13 +355,12 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		// 10000 will result in the top of the range being chosen.
 		// (Mantis #7869) 
 		int precision = craftingValues->getPrecision(subtitle);		
-		if( precision == (int)ValuesMap::VALUENOTFOUND ) {
-		        error ("No precision found for " + subtitle);
-		}
-		else if( precision == 0 ) {
-		        int range = abs(max-min);
-		        int randomValue = System::random(range);
-		        percentage = (float)randomValue / (float)(range);
+		if (precision == (int)ValuesMap::VALUENOTFOUND) {
+			error ("No precision found for " + subtitle);
+		} else if (precision == 0) {
+			int range = abs(max-min);
+			int randomValue = System::random(range);
+			percentage = (float)randomValue / (float)(range);
 		}
 		
 		craftingValues->setCurrentPercentage(subtitle, percentage);
