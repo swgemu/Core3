@@ -77,8 +77,6 @@ bool ConfigManager::loadConfigData() {
 	setStringFromFile("Core3.MOTD", "conf/motd.txt");
 	setStringFromFile("Core3.Revision", "conf/rev.txt");
 
-	cacheHotItems();
-
 #ifdef DEBUG_CONFIGMANAGER
 	info("Parsed config into memory in " + String::valueOf(getConfigDataAgeMs()) + "ms", true);
 	setString("Core3.ConfigManagerDebug", "Test1");
@@ -99,26 +97,7 @@ void ConfigManager::clearConfigData() {
 
 	configData.removeAll();
 	configData.setNoDuplicateInsertPlan();
-
-	// Clear any cached values below
-	cachedPvpMode = false;
-	cachedProgressMonitors = false;
-	cachedUnloadContainers = false;
-	cachedUseMetrics = false;
-	cachedSessionStatsSeconds = 3600;
-	cachedOnlineLogSize = 100000000;
-}
-
-void ConfigManager::cacheHotItems() {
-	Locker guard(&mutex);
-
-	// Items here are asked for often enough to have a performance impact
-	cachedPvpMode = getBool("Core3.PvpMode", false);
-	cachedProgressMonitors = getBool("Core3.ProgressMonitors", false);
-	cachedUnloadContainers = getBool("Core3.UnloadContainers", true);
-	cachedUseMetrics = getBool("Core3.UseMetrics", false);
-	cachedSessionStatsSeconds = getInt("Core3.SessionStatsSeconds", 3600);
-	cachedOnlineLogSize = getInt("Core3.OnlineLogSize", 100000000);
+	incrementConfigVersion();
 }
 
 void ConfigManager::dumpConfig(bool includeSecure) {
@@ -173,63 +152,8 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 
 	info(true) << engineConfig;
 
-#ifdef DEBUG_CONFIGMANAGER
-	if (getLogLevel() >= Logger::DEBUG) {
-		testConfig(this);
-	}
-#endif // DEBUG_CONFIGMANAGER
-
 	info("dumpConfig: END", true);
 }
-
-#ifdef DEBUG_CONFIGMANAGER
-bool ConfigManager::testConfig(ConfigManager* configManager) {
-	info("testConfig: START", true);
-
-	auto tmp1 = configManager->getString("Core3.InactiveAccountText", "Account Disabled");
-	info("Core3.InactiveAccountTitle = " + tmp1, true);
-
-	auto tmp2 = configManager->getInactiveAccountText();
-	info("getInactiveAccountText = " + tmp2, true);
-
-	if (tmp1 != tmp2)
-		throw Exception("testConfig() return value mismatch");
-
-	info("LogFile = " + configManager->getLogFile(), true);
-
-	if (configManager->getMakeZone()) {
-		info("getMakeZone() = true", true);
-	} else {
-		info("getMakeZone() = false", true);
-	}
-
-	auto enabledZones = configManager->getEnabledZones();
-
-	info("ZonesEnabled:", true);
-
-	for (int i = 0; i < enabledZones.size(); ++i) {
-		String zoneName = enabledZones.get(i);
-		info("    '" + zoneName + "'", true);
-	}
-
-	Vector<String> treFilesToLoad = configManager->getTreFiles();
-
-	info("TreFiles:", true);
-
-	for (int i = 0; i < treFilesToLoad.size(); ++i) {
-		String zoneName = treFilesToLoad.get(i);
-		info("    '" + zoneName + "'", true);
-	}
-
-	const uint16& dbPort = configManager->getDBPort();
-
-	info("DBPort = " + String::valueOf(dbPort), true);
-
-	info("testConfig: END", true);
-
-	return true;
-}
-#endif // DEBUG_CONFIGMANAGER
 
 bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int maxDepth) {
 	lua_State* L = lua.getLuaState();
@@ -491,12 +415,19 @@ ConfigDataItem* ConfigManager::findItem(const String& name) const {
 
 	if (pos == -1) {
 		return nullptr;
-#ifdef DEBUG_CONFIGMANAGER
-		info("findItem failed for: " + name, true);
-#endif // DEBUG_CONFIGMANAGER
 	}
 
 	return configData.get(pos);
+}
+
+int ConfigManager::getUsageCounter(const String& name) const {
+	ConfigDataItem* itm = findItem(name);
+
+	if (itm == nullptr) {
+		return -1;
+	}
+
+	return itm->getUsageCounter();
 }
 
 int ConfigManager::getInt(const String& name, int defaultValue) {

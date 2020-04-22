@@ -173,13 +173,7 @@ namespace conf {
 		Timer configStartTime;
 		VectorMap<String, ConfigDataItem *> configData;
 
-		// Cached values
-		bool cachedPvpMode = false;
-		bool cachedProgressMonitors = false;
-		bool cachedUnloadContainers = false;
-		bool cachedUseMetrics = false;
-		int cachedSessionStatsSeconds = 1;
-		int cachedOnlineLogSize = 0;
+		// Each change increments configVersion allowing cached results to auto-reload
 		mutable AtomicInteger configVersion = 0;
 
 		ReadWriteLock mutex;
@@ -216,6 +210,7 @@ namespace conf {
 
 		// General config functions
 		bool contains(const String& name) const;
+		int getUsageCounter(const String& name) const;
 		int getInt(const String& name, int defaultValue);
 		bool getBool(const String& name, bool defaultValue);
 		float getFloat(const String& name, float defaultValue);
@@ -252,31 +247,52 @@ namespace conf {
 			return getBool("Core3.DumpObjFiles", true);
 		}
 
-		inline bool shouldUnloadContainers() const {
+		inline bool shouldUnloadContainers() {
 			// Use cached value as this is called often
+			static uint32 cachedVersion = 0;
+			static bool cachedUnloadContainers;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedUnloadContainers = getBool("Core3.UnloadContainers", true);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedUnloadContainers;
 		}
 
-		inline bool shouldUseMetrics() const {
+		inline bool shouldUseMetrics() {
 			// On Basilisk this is called 400/s
+			static uint32 cachedVersion = 0;
+			static bool cachedUseMetrics;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedUseMetrics = getBool("Core3.UseMetrics", false);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedUseMetrics;
 		}
 
-		inline bool getPvpMode() const {
+		inline bool getPvpMode() {
 			// Use cached value as this is a hot item called in:
 			//   CreatureObjectImplementation::isAttackableBy
 			//   CreatureObjectImplementation::isAggressiveTo
+			static uint32 cachedVersion = 0;
+			static bool cachedPvpMode;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedPvpMode = getBool("Core3.PvpMode", false);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedPvpMode;
 		}
 
 		inline bool setPvpMode(bool val) {
-			if (!setBool("Core3.PvpMode", val))
-				return false;
-
-			// Updated cached value
-			cachedPvpMode = getBool("Core3.PvpMode", val);
-
-			return true;
+			return setBool("Core3.PvpMode", val);
 		}
 
 		inline const String& getORBNamingDirectoryAddress() {
@@ -293,6 +309,15 @@ namespace conf {
 
 		inline bool isProgressMonitorActivated() {
 			// Use cached value as this a hot item called in lots of loops
+			static uint32 cachedVersion = 0;
+			static bool cachedProgressMonitors;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedProgressMonitors = getBool("Core3.ProgressMonitors", false);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedProgressMonitors;
 		}
 
@@ -458,9 +483,6 @@ namespace conf {
 
 		inline void setProgressMonitors(bool val) {
 			setBool("Core3.ProgressMonitors", val);
-
-			// Updated cached value
-			cachedProgressMonitors = getBool("Core3.ProgressMonitors", val);
 		}
 
 		inline const String& getTermsOfService() {
@@ -515,7 +537,16 @@ namespace conf {
 			return getInt("Core3.MaxLogLines", 1000000);
 		}
 
-		inline int getSessionStatsSeconds() const {
+		inline int getSessionStatsSeconds() {
+			static uint32 cachedVersion = 0;
+			static int cachedSessionStatsSeconds;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedSessionStatsSeconds = getInt("Core3.SessionStatsSeconds", 3600);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedSessionStatsSeconds;
 		}
 
@@ -523,7 +554,16 @@ namespace conf {
 			return getInt("Core3.OnlineLogSeconds", 300);
 		}
 
-		inline int getOnlineLogSize() const {
+		inline int getOnlineLogSize() {
+			static uint32 cachedVersion = 0;
+			static int cachedOnlineLogSize;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedOnlineLogSize = getInt("Core3.OnlineLogSize", 100000000);
+				cachedVersion = configVersion.get();
+			}
+
 			return cachedOnlineLogSize;
 		}
 	};

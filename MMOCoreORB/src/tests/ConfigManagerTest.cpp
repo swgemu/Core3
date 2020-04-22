@@ -106,6 +106,48 @@ TEST_F(ConfigManagerTest, DynamicTest) {
 	ASSERT_EQ(tmp4, "This is a test");
 }
 
+TEST_F(ConfigManagerTest, CacheTest) {
+	Timer timer;
+	int totalReads = 1000000;
+
+	configManager->setBool("Core3.TestBool", true);
+
+	timer.start();
+	for (int i = 0; i < totalReads; i++) {
+		auto result = configManager->getBool("Core3.TestBool", false);
+		ASSERT_TRUE(result);
+	}
+	timer.stop();
+
+	auto msBase = (timer.getElapsedTime() / 1000000.0f);
+
+	std::cerr << "[>>>>>>>>>>] " << totalReads << " base reads in " << msBase << " ms" << std::endl;
+
+	auto tmp1 = configManager->setPvpMode(true);
+	ASSERT_TRUE(tmp1);
+	ASSERT_EQ(configManager->getUsageCounter("Core3.PvpMode"), 0);
+
+	auto counter_start = configManager->getUsageCounter("Core3.PvpMode");
+
+	timer.clear();
+	timer.start();
+	for (int i = 0; i < totalReads; i++) {
+		auto result = configManager->getPvpMode();
+		ASSERT_TRUE(result);
+	}
+	timer.stop();
+
+	auto msCached = (timer.getElapsedTime() / 1000000.0f);
+
+	std::cerr << "[>>>>>>>>>>] " << totalReads << " cached reads in " << msCached << " ms (" << (int)(msBase / msCached) << " x faster)" << std::endl;
+
+	auto counter_end = configManager->getUsageCounter("Core3.PvpMode");
+
+	ASSERT_EQ(counter_end, counter_start + 1);
+
+	ASSERT_TRUE((msBase / msCached) > 5);
+}
+
 TEST_F(ConfigManagerTest, JSONTest) {
 	String errMsg;
 	StringBuffer buf;
