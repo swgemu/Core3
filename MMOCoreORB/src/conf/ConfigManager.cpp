@@ -126,7 +126,7 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 
 	uint64 age = getConfigDataAgeMs() / 1000;
 
-	info(true) << "dumpConfig: START (Config Age: " << age << " s)";
+	info(true) << "dumpConfig: START (Config Age: " << age << " s, Version#:" << getConfigVersion() << ")";
 
 	String hottestKey;
 	int maxPS = 0;
@@ -374,6 +374,118 @@ bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int max
 	return true;
 }
 
+bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializationType jsonNode, String& errorMessage, bool updateOnly) {
+	for (auto jsonData = jsonNode.begin(); jsonData != jsonNode.end(); ++jsonData) {
+		String key = (prefix.isEmpty() ? "" : prefix + ".") + jsonData.key();
+
+		if (jsonData->is_array()) {
+			if (updateOnly && !contains(key)) {
+				errorMessage = "Array key " + key + " doesn't exist.";
+				error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+				return false;
+			}
+
+			Vector <ConfigDataItem *>* elements = new Vector <ConfigDataItem *>();
+
+			for (auto jsonElement = jsonData->begin();jsonElement != jsonData->end(); ++jsonElement) {
+				switch (jsonElement->type()) {
+				case JSONSerializationType::value_t::boolean:
+					elements->add(new ConfigDataItem((bool)jsonElement.value().get<bool>()));
+					break;
+
+				case JSONSerializationType::value_t::number_float:
+				case JSONSerializationType::value_t::number_unsigned:
+				case JSONSerializationType::value_t::number_integer:
+					elements->add(new ConfigDataItem((lua_Number)jsonElement.value().get<double>()));
+					break;
+
+				case JSONSerializationType::value_t::string:
+					elements->add(new ConfigDataItem(jsonElement.value().get<std::string>()));
+					break;
+
+				default:
+					errorMessage = "Failed to parse json type " + String(jsonElement->type_name()) + " into array " + key;
+					error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+					return false;
+					break;
+				}
+			}
+
+			if (!updateItem(key, new ConfigDataItem(elements))) {
+				return false;
+			}
+			continue;
+		}
+
+		if (jsonData->is_object()) {
+			if (!parseConfigJSONRecursive(key, jsonData.value(), errorMessage, updateOnly)) {
+				return false;
+			}
+			continue;
+		}
+
+		if (updateOnly && !contains(key)) {
+			errorMessage = "Key " + key + " doesn't exist.";
+			error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+			return false;
+		}
+
+		switch (jsonData->type()) {
+		case JSONSerializationType::value_t::boolean:
+			setBool(key, jsonData.value().get<bool>());
+			break;
+
+		case JSONSerializationType::value_t::number_float:
+		case JSONSerializationType::value_t::number_unsigned:
+		case JSONSerializationType::value_t::number_integer:
+			setNumber(key, (lua_Number)jsonData.value().get<double>());
+			break;
+
+		case JSONSerializationType::value_t::string:
+			setString(key, jsonData.value().get<std::string>());
+			break;
+
+		default:
+			errorMessage = "Failed to parse json type " + String(jsonData->type_name()) + " into " + key;
+			error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+			return false;
+			break;
+		}
+	}
+
+	return true;
+}
+
+bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly) {
+	Locker guard(&mutex);
+
+	try {
+		JSONSerializationType jsonData = JSONSerializationType::parse(jsonString);
+		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
+	} catch (JSONSerializationType::exception e) {
+		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	} catch (const Exception& e) {
+		errorMessage = "Exception while parsing config:" + e.getMessage();
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	} catch (...) {
+		StringBuffer err;
+		err << "Uncaptured exception parsing config"
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+			<< ": " << __cxxabiv1::__cxa_current_exception_type()->name()
+#endif
+			<< ".";
+		errorMessage = err.toString();
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	}
+
+	return false;
+}
+
+bool ConfigManager::contains(const String& name) const {
+	return configData.find(name) != -1;
+}
+
 ConfigDataItem* ConfigManager::findItem(const String& name) const {
 	int pos = configData.find(name);
 
@@ -488,6 +600,7 @@ bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 #endif // DEBUG_CONFIGMANAGER
 
 	configData.put(std::move(name), std::move(newItem));
+	incrementConfigVersion();
 	return true;
 }
 
