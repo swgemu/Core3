@@ -180,6 +180,7 @@ namespace conf {
 		bool cachedUseMetrics = false;
 		int cachedSessionStatsSeconds = 1;
 		int cachedOnlineLogSize = 0;
+		mutable AtomicInteger configVersion = 0;
 
 		ReadWriteLock mutex;
 
@@ -188,6 +189,11 @@ namespace conf {
 		bool updateItem(const String& name, ConfigDataItem* newItem);
 
 		bool parseConfigData(const String& prefix, bool isGlobal = false, int maxDepth = 5);
+		bool parseConfigJSONRecursive(const String prefix, JSONSerializationType jsonNode, String& errorMessage, bool updateOnly = true);
+
+		void incrementConfigVersion() {
+			configVersion.increment();
+		}
 
 	public:
 		ConfigManager();
@@ -196,6 +202,7 @@ namespace conf {
 		bool loadConfigData();
 		void clearConfigData();
 		void cacheHotItems();
+		bool parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly = true);
 		void dumpConfig(bool includeSecure = false);
 		bool testConfig(ConfigManager* configManager);
 
@@ -203,7 +210,12 @@ namespace conf {
 			return configStartTime.elapsedMs();
 		}
 
+		int getConfigVersion() {
+			return configVersion.get();
+		}
+
 		// General config functions
+		bool contains(const String& name) const;
 		int getInt(const String& name, int defaultValue);
 		bool getBool(const String& name, bool defaultValue);
 		float getFloat(const String& name, float defaultValue);
