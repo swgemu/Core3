@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_26048814",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_8609142f",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_660e8036",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_c612ec57",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_a60ff82d",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_061d0467",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "can we test for the actual value here and all the other GT checks below",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_e619f07a",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4626dcbb",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_262be883",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_8620f49c",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2020-04-22T16:13:07Z",
+      "side": 1,
+      "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
