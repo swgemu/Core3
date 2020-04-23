@@ -23,6 +23,8 @@ ConfigManager::~ConfigManager() {
 bool ConfigManager::loadConfigData() {
 	Locker guard(&mutex);
 
+	logChanges = false;
+
 	if (configStartTime.getStartTime() != 0)
 		configStartTime.stop();
 
@@ -84,6 +86,8 @@ bool ConfigManager::loadConfigData() {
 	setString("Core3.ConfigManagerDebug", "Compiled with DEBUG_CONFIGMANAGER");
 	dumpConfig();
 #endif // DEBUG_CONFIGMANAGER
+
+	logChanges = true;
 
 	return resultGlobal || resultCore3;
 }
@@ -382,6 +386,31 @@ bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializat
 	return true;
 }
 
+bool ConfigManager::parseConfigJSON(const JSONSerializationType jsonData, String& errorMessage, bool updateOnly) {
+	Locker guard(&mutex);
+
+	try {
+		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
+	} catch (JSONSerializationType::exception e) {
+		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (const Exception& e) {
+		errorMessage = "Exception while parsing config:" + e.getMessage();
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (...) {
+		StringBuffer err;
+		err << "Uncaptured exception parsing config"
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+			<< ": " << __cxxabiv1::__cxa_current_exception_type()->name()
+#endif
+			<< ".";
+		errorMessage = err.toString();
+		error() << "parseConfigJSON: " << errorMessage;
+	}
+
+	return false;
+}
+
 bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly) {
 	Locker guard(&mutex);
 
@@ -577,6 +606,14 @@ bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 		configData.drop(name);
 		delete oldItem;
 		oldItem = nullptr;
+	}
+
+	if (logChanges) {
+		if (isSensitiveKey(name)) {
+			info(true) << "Configuration updated: " << name;
+		} else {
+			info(true) << "Configuration update: " << name << " = [" << newItem->toString() << "]";
+		}
 	}
 
 #ifdef DEBUG_CONFIGMANAGER
