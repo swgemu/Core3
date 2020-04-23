@@ -120,6 +120,8 @@ namespace conf {
 			return *asIntVector;
 		}
 
+		void getAsJSON(JSONSerializationType& jsonData);
+
 		String toString() {
 			Locker guard(&mutex);
 
@@ -184,6 +186,8 @@ namespace conf {
 
 		bool parseConfigData(const String& prefix, bool isGlobal = false, int maxDepth = 5);
 		bool parseConfigJSONRecursive(const String prefix, JSONSerializationType jsonNode, String& errorMessage, bool updateOnly = true);
+		void writeJSONPath(StringTokenizer& tokens, JSONSerializationType& jsonData, const JSONSerializationType& jsonValue);
+		bool isSensitiveKey(const String& key);
 
 		void incrementConfigVersion() {
 			configVersion.increment();
@@ -218,6 +222,7 @@ namespace conf {
 		const Vector<String>& getStringVector(const String& name);
 		const SortedVector<String>& getSortedStringVector(const String& name);
 		const Vector<int>& getIntVector(const String& name);
+		bool getAsJSON(const String& target, JSONSerializationType& jsonData);
 
 		bool setNumber(const String& name, lua_Number newValue);
 		bool setInt(const String& name, int newValue);
