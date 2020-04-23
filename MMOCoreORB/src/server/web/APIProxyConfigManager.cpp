@@ -43,11 +43,65 @@ void APIProxyConfigManager::handleGET(APIRequest& apiRequest) {
 }
 
 void APIProxyConfigManager::handlePUT(APIRequest& apiRequest) {
-	apiRequest.fail("Not implemented");
+	auto key = apiRequest.getPathFieldString("key").replaceAll("/", ".");
+
+	auto value = apiRequest.getQueryFieldString("value");
+
+	if (!ConfigManager::instance()->contains(key)) {
+		apiRequest.fail(key + " not found.", key + " not found.", APIRequestStatus::NotFound);
+	}
+
+	if (!ConfigManager::instance()->setString(key, value)) {
+		apiRequest.fail("Failed to update " + key, "Failed to update " + key, APIRequestStatus::NotModified);
+		return;
+	}
+
+	JSONSerializationType metadata;
+
+	Time now;
+	metadata["exportTime"] = now.getFormattedTimeFull();
+
+	JSONSerializationType result;
+
+	result["metadata"] = metadata;
+
+	JSONSerializationType jsonData;
+
+	ConfigManager::instance()->getAsJSON(key, jsonData);
+
+	result["result"] = jsonData;
+
+	apiRequest.success(result);
 }
 
 void APIProxyConfigManager::handlePOST(APIRequest& apiRequest) {
-	apiRequest.fail("Not implemented");
+	auto key = apiRequest.getPathFieldString("key");
+
+	if (!key.isEmpty()) {
+		apiRequest.fail("Invalid request, key cannot be specified for POST operations");
+		return;
+	}
+
+	apiRequest.parseRequestJSON();
+
+	String errMsg;
+	auto jsonData = apiRequest.getRequestJSON();
+
+	if (!ConfigManager::instance()->parseConfigJSON(apiRequest.getRequestJSON(), errMsg, true)) {
+		apiRequest.fail("Update failed: " + errMsg, "Update failed: " + errMsg, APIRequestStatus::NotModified);
+		return;
+	}
+
+	JSONSerializationType metadata;
+
+	Time now;
+	metadata["exportTime"] = now.getFormattedTimeFull();
+
+	JSONSerializationType result;
+
+	result["metadata"] = metadata;
+
+	apiRequest.success(result);
 }
 
 void APIProxyConfigManager::handle(APIRequest& apiRequest) {

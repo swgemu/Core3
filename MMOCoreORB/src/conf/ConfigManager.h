@@ -173,6 +173,8 @@ namespace conf {
 		Lua lua;
 
 		Timer configStartTime;
+		bool logChanges = false;
+
 		VectorMap<String, ConfigDataItem *> configData;
 
 		// Each change increments configVersion allowing cached results to auto-reload
@@ -201,6 +203,7 @@ namespace conf {
 		void clearConfigData();
 		void cacheHotItems();
 		bool parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly = true);
+		bool parseConfigJSON(const JSONSerializationType jsonData, String& errorMessage, bool updateOnly = true);
 		void dumpConfig(bool includeSecure = false);
 		bool testConfig(ConfigManager* configManager);
 
