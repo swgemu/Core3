@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_c6394cda",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_26048814",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_8609142f",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-22T16:13:07Z",
       "side": 1,
       "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_a636d8e5",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_8609142f",
       "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_0634e4dc",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_660e8036",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_c612ec57",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2020-04-22T16:13:07Z",
       "side": 1,
       "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_e630d0ea",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_c612ec57",
       "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_464d3c72",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_a60ff82d",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_061d0467",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2020-04-22T16:13:07Z",
       "side": 1,
       "message": "can we test for the actual value here and all the other GT checks below",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_a63d38be",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "It is possible.\n\nI choose to not check the actual value here and in the other checks in order to not couple the tests to the current implementation. If I would have checked the actual speed mod I would just have added the values they returned as the expected values without much thought. I didn\u0027t think that was the best solution.\n\nThoughts, comments?",
+      "parentUuid": "9a561d44_061d0467",
       "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_2652c813",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_e619f07a",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_4626dcbb",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
@@ -132,6 +258,24 @@
       "writtenOn": "2020-04-22T16:13:07Z",
       "side": 1,
       "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_86575402",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_4626dcbb",
       "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_665cc026",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_262be883",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_8620f49c",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
@@ -166,6 +328,24 @@
       "writtenOn": "2020-04-22T16:13:07Z",
       "side": 1,
       "message": "spaces vs tabs",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_c6402c38",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-23T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a561d44_8620f49c",
       "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
