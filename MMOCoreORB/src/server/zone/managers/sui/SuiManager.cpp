@@ -27,6 +27,7 @@
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = nullptr;
@@ -231,6 +232,7 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 	if (!player->isInRange(bankObject, 5))
 		return;
 
+	TransactionLog trx(player, player, TrxCode::BANK, 0, false);
 	player->transferCredits(cash, bank);
 }
 
@@ -485,7 +487,10 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				bluefrog->enhanceCharacter(player);
 
 			} else if (templatePath == "credits") {
-				player->addCashCredits(50000, true);
+				{
+					TransactionLog trx(TrxCode::CHARACTERBUILDER, player, 50000, true);
+					player->addCashCredits(50000, true);
+				}
 				player->sendSystemMessage("You have received 50.000 Credits");
 
 			} else if (templatePath == "faction_rebel") {
