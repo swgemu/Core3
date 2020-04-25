@@ -20,6 +20,7 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
 #include "events/CompleteMissionObjectiveTask.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -241,6 +242,7 @@ void MissionObjectiveImplementation::awardReward() {
 		player->sendSystemMessage(stringId);
 
 		Locker lockerPl(player, _this.getReferenceUnsafeStaticCast());
+		TransactionLog trx(TrxCode::MISSIONSYSTEMDYNAMIC, player, dividedReward, false);
 		player->addBankCredits(dividedReward, true);
 	}
 

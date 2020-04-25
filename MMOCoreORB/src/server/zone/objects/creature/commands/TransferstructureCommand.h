@@ -10,6 +10,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class TransferstructureCommand : public QueueCommand {
 public:
@@ -117,7 +118,6 @@ public:
 		}
 
 		return doTransferStructure(creature, targetCreature, structure);
-
 	}
 
 	// pre: creature, targetCreature, and structure are not locked
@@ -152,7 +152,6 @@ public:
 
 		if (!targetGhost->hasLotsRemaining(lotSize)) {
 			if ( !bForceTransfer) {
-				System::out << "lotsize: " << lotSize << endl;
 				StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
 				params.setTT(targetCreature->getObjectID());
 				creature->sendSystemMessage(params);
@@ -191,6 +190,15 @@ public:
 			locker.release();
 		}
 
+		TransactionLog trx(creature, targetCreature, structure, TrxCode::TRANSFERSTRUCT);
+		trx.addState("surplusMaintenance", structure->getSurplusMaintenance());
+		trx.addState("surplusPower", structure->getSurplusPower());
+		trx.addRelatedObject(structure->getObjectID(), true);
+
+		if (trx.isVerbose()) {
+			trx.setExportRelatedObjects(true);
+		}
+
 		if (ghost != nullptr) {
 			Locker lock(creature);
 
@@ -202,6 +210,8 @@ public:
 		Locker targetLock(targetCreature);
 
 		targetGhost->addOwnedStructure(structure);
+
+		trx.commit();
 
 		Locker clocker(structure, targetCreature);
 
