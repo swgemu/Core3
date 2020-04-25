@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/tangible/tasks/VendorReturnToPositionTask.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent(), adBarkingMutex() {
 	ownerId = 0;
@@ -277,13 +278,21 @@ void VendorDataComponent::handlePayMaintanence(int value) {
 	}
 
 	if(owner->getBankCredits() + owner->getCashCredits() >= value) {
-		maintAmount += value;
-
 		if(owner->getBankCredits() > value) {
+			TransactionLog trx(owner, strongParent, TrxCode::VENDORMAINTANENCE, value, false);
+			maintAmount += value;
 			owner->subtractBankCredits(value);
 		} else {
-			owner->subtractCashCredits(value - owner->getBankCredits());
-			owner->subtractBankCredits(owner->getBankCredits());
+			{
+				TransactionLog trxCash(owner, strongParent, TrxCode::VENDORMAINTANENCE, value - owner->getBankCredits(), true);
+				owner->subtractCashCredits(value - owner->getBankCredits());
+				maintAmount += value - owner->getBankCredits();
+			}
+			{
+				TransactionLog trxBank(owner, strongParent, TrxCode::VENDORMAINTANENCE, owner->getBankCredits(), false);
+				owner->subtractBankCredits(owner->getBankCredits());
+				maintAmount += owner->getBankCredits();
+			}
 		}
 
 		StringIdChatParameter message("@player_structure:vendor_maint_accepted");
@@ -337,8 +346,11 @@ void VendorDataComponent::handleWithdrawMaintanence(int value) {
 		return;
 	}
 
-	maintAmount -= value;
-	owner->addBankCredits(value, true);
+	{
+		TransactionLog trx(strongParent, owner, TrxCode::VENDORMAINTANENCE, value, true);
+		maintAmount -= value;
+		owner->addBankCredits(value, true);
+	}
 
 	StringIdChatParameter message("@player_structure:vendor_withdraw"); // You successfully withdraw %DI credits from the maintenance pool.
 	message.setDI(value);

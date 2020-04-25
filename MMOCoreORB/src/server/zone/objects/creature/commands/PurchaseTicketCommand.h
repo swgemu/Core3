@@ -9,6 +9,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -173,10 +174,17 @@ public:
 				return GENERALERROR;
 			}
 
-			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
-			creature->subtractCashCredits(diff); //Take the rest from the cash.
+			{
+				TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, bank, false);
+				creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+			}
+			{
+				TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, diff, true);
+				creature->subtractCashCredits(diff); //Take the rest from the cash.
+			}
 
 		} else {
+			TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, fare, false);
 			creature->subtractBankCredits(fare); //Take all of the fare from the bank.
 		}
 
