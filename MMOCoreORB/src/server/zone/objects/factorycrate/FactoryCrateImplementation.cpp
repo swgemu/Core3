@@ -14,6 +14,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void FactoryCrateImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -178,6 +179,15 @@ bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player
 		 */
 		if(protoclone->getIsCraftedEnhancedItem()) {
 			protoclone->addMagicBit(false);
+		}
+
+		TransactionLog trx(asSceneObject(), player, protoclone, TrxCode::EXTRACTCRATE);
+		trx.addState("useCount", getUseCount() - 1);
+		trx.addState("protoMapSize", protoclone->getContainerObjectsSize());
+
+		if (protoclone->getContainerObjectsSize() > 0) {
+			trx.setDebug(true);
+			trx.addRelatedObject(protoclone->getObjectID(), true);
 		}
 
 		inventory->transferObject(protoclone, -1, true);
