@@ -3607,35 +3607,42 @@ bool CreatureObjectImplementation::isPlayerCreature() {
 }
 
 CreditObject* CreatureObjectImplementation::getCreditObject() {
-	if (creditObject != nullptr)
-		return creditObject;
+	if (creditObject == nullptr) {
+		static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
 
-	static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
+		uint64 oid = ((getObjectID() & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
 
-	uint64 oid = ((getObjectID() & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
-
-	ManagedReference<ManagedObject*> obj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
-
-	if (obj == nullptr) {
-		obj = ObjectManager::instance()->createObject("CreditObject", isPersistent() ? 3 : 0, "credits", oid);
+		ManagedReference<ManagedObject*> obj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
 
 		if (obj == nullptr) {
-			return nullptr;
-		}
+			obj = ObjectManager::instance()->createObject("CreditObject", isPersistent() ? 3 : 0, "credits", oid);
 
-		creditObject = obj.castTo<CreditObject*>();
-		if (creditObject == nullptr) {
-			return nullptr;
+			if (obj == nullptr) {
+				return nullptr;
+			}
+
+			creditObject = obj.castTo<CreditObject*>();
+
+			if (creditObject == nullptr) {
+				return nullptr;
+			}
+
+			Locker locker(creditObject);
+			creditObject->setBankCredits(bankCredits, false);
+			creditObject->setCashCredits(cashCredits, false);
+			creditObject->setOwner(asCreatureObject());
+			cashCredits = 0;
+			bankCredits = 0;
+		} else {
+			creditObject = obj.castTo<CreditObject*>();
 		}
-		Locker locker(creditObject);
-		creditObject->setBankCredits(bankCredits, false);
-		creditObject->setCashCredits(cashCredits, false);
-		creditObject->setOwner(asCreatureObject());
-		cashCredits = 0;
-		bankCredits = 0;
 	}
 
-	return obj.castTo<CreditObject*>();
+	if (creditObject != nullptr && creditObject->getOwnerObjectID() != getObjectID()) {
+		creditObject->setOwner(asCreatureObject());
+	}
+
+	return creditObject;
 }
 
 void CreatureObjectImplementation::removeOutOfRangeObjects() {
