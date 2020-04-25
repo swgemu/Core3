@@ -161,6 +161,11 @@ class LotteryDroid extends CreatureObject {
 	}
 
 	@read
+	public int getCreditPool() {
+		return creditPool;
+	}
+
+	@read
 	public int getNumPlayers() {
 		return playerList.size();
 	}

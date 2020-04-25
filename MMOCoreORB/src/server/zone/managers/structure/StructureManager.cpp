@@ -45,6 +45,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 namespace StorageManagerNamespace {
 	 int indexCallback(DB *secondary, const DBT *key, const DBT *data, DBT *result) {
@@ -550,6 +551,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->initializePosition(x, z, y);
 	structureObject->rotate(angle);
 
+	TransactionLog trx(creature, nullptr, structureObject, TrxCode::STRUCTUREDEED);
 	zone->transferObject(structureObject, -1, true);
 
 	structureObject->createChildObjects();
@@ -764,8 +766,11 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 					return session->cancelSession();
 				}
 
+				TransactionLog trx(TrxCode::STRUCTUREDEED, creature, rewardSceno);
+
 				// Transfer to player
 				if( !inventory->transferObject(rewardSceno, -1, false, true) ){ // Allow overflow
+					trx.abort() << "Failed to reclaim deed";
 					creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 					rewardSceno->destroyObjectFromDatabase(true);
 					return session->cancelSession();
@@ -777,6 +782,9 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 				creature->sendSystemMessage("@player_structure:selfpowered");
 			}
 
+			TransactionLog trx(TrxCode::STRUCTUREDEED, creature, deed);
+			trx.addState("originalStructureObjectID", structureObject->getObjectID());
+
 			deed->setSurplusMaintenance(maint - redeedCost);
 			deed->setSurplusPower(structureObject->getSurplusPower());
 
@@ -784,7 +792,10 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 
 			destroyStructure(structureObject);
 
-			inventory->transferObject(deed, -1, true);
+			if (!inventory->transferObject(deed, -1, true)) {
+				trx.abort() << "failed to transfer deed to player inventory";
+			}
+
 			inventory->broadcastObject(deed, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}
@@ -1321,8 +1332,11 @@ void StructureManager::payMaintenance(StructureObject* structure,
 
 	creature->sendSystemMessage(params);
 
-	creature->subtractCashCredits(amount);
-	structure->addMaintenance(amount);
+	{
+		TransactionLog trx(creature, structure, TrxCode::STRUCTUREMAINTANENCE, amount, true);
+		creature->subtractCashCredits(amount);
+		structure->addMaintenance(amount);
+	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
@@ -1358,8 +1372,11 @@ void StructureManager::withdrawMaintenance(StructureObject* structure, CreatureO
 
 	creature->sendSystemMessage(params);
 
-	creature->addCashCredits(amount);
-	structure->subtractMaintenance(amount);
+	{
+		TransactionLog trx(structure, creature, TrxCode::STRUCTUREMAINTANENCE, amount, true);
+		creature->addCashCredits(amount);
+		structure->subtractMaintenance(amount);
+	}
 }
 
 bool StructureManager::isInStructureFootprint(StructureObject* structure, float positionX, float positionY, int extraFootprintMargin){

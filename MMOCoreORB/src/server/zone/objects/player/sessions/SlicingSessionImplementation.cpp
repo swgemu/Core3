@@ -723,11 +723,16 @@ void SlicingSessionImplementation::handleContainerSlice() {
 			return;
 		}
 
-		if (System::random(10) != 4)
-			lootManager->createLoot(container, "looted_container");
+		TransactionLog trx(TrxCode::SLICECONTAINER, player, container);
+
+		if (System::random(10) != 4) {
+			lootManager->createLoot(trx, container, "looted_container");
+		}
 
 		inventory->transferObject(container, -1);
 		container->sendTo(player, true);
+
+		trx.commit();
 
 		if (inventory->hasObjectInContainer(tangibleObject->getObjectID())) {
 			//inventory->removeObject(tangibleObject, true);

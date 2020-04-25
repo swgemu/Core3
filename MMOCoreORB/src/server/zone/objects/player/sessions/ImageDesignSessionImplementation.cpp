@@ -15,6 +15,8 @@
 #include "server/zone/objects/player/sessions/ImageDesignSession.h"
 #include "server/zone/objects/player/sessions/MigrateStatsSession.h"
 #include "server/zone/packets/object/ImageDesignMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();
@@ -246,11 +248,14 @@ int ImageDesignSessionImplementation::doPayment() {
 	}
 
 	if (requiredPayment <= targetCreature->getCashCredits()) {
+		TransactionLog trx(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, requiredPayment, true);
 		targetCreature->subtractCashCredits(requiredPayment);
 		designerCreature->addCashCredits(requiredPayment);
 	} else {
 		int requiredBankCredits = requiredPayment - targetCreature->getCashCredits();
+		TransactionLog trxCash(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, targetCreature->getCashCredits(), true);
 		targetCreature->subtractCashCredits(targetCreature->getCashCredits());
+		TransactionLog trxBank(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, requiredBankCredits, true);
 		targetCreature->subtractBankCredits(requiredBankCredits);
 		designerCreature->addCashCredits(requiredPayment);
 	}
