@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -674,7 +675,10 @@ int LuaCreatureObject::getCashCredits(lua_State* L) {
 int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 	Locker locker(realObject);
 
-	realObject->subtractCashCredits(lua_tointeger(L, -1));
+	int credits = lua_tointeger(L, -1);
+	TransactionLog trx(realObject, TrxCode::LUASCRIPT, credits, true);
+	trx.addContextFromLua(L);
+	realObject->subtractCashCredits(credits);
 
 	return 0;
 }
@@ -682,7 +686,10 @@ int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 int LuaCreatureObject::subtractBankCredits(lua_State* L) {
 	Locker locker(realObject);
 
-	realObject->subtractBankCredits(lua_tointeger(L, -1));
+	int credits = lua_tointeger(L, -1);
+	TransactionLog trx(realObject, TrxCode::LUASCRIPT, credits, false);
+	trx.addContextFromLua(L);
+	realObject->subtractBankCredits(credits);
 
 	return 0;
 }
@@ -693,6 +700,8 @@ int LuaCreatureObject::addCashCredits(lua_State* L) {
 
 	Locker locker(realObject);
 
+	TransactionLog trx(TrxCode::LUASCRIPT, realObject, credits, true);
+	trx.addContextFromLua(L);
 	realObject->addCashCredits(credits, notifyClient);
 
 	return 0;
@@ -704,6 +713,8 @@ int LuaCreatureObject::addBankCredits(lua_State* L) {
 
 	Locker locker(realObject);
 
+	TransactionLog trx(TrxCode::LUASCRIPT, realObject, credits, false);
+	trx.addContextFromLua(L);
 	realObject->addBankCredits(credits, notifyClient);
 
 	return 0;
