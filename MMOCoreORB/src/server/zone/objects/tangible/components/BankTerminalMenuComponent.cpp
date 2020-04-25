@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/sui/callbacks/BankTerminalSuiCallback.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const {
 
@@ -156,6 +157,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		params.setDI(cash);
 		creature->sendSystemMessage(params);
 
+		TransactionLog trx(creature, creature, TrxCode::BANK, cash, true);
 		creature->subtractCashCredits(cash);
 		creature->addBankCredits(cash);
 
@@ -169,6 +171,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		params.setDI(cash);
 		creature->sendSystemMessage(params);
 
+		TransactionLog trx(creature, creature, TrxCode::BANK, cash, false);
 		creature->subtractBankCredits(cash);
 		creature->addCashCredits(cash);
 

@@ -13,6 +13,7 @@
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "templates/creature/VendorCreatureTemplate.h"
@@ -226,7 +227,10 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		randomizeVendorLooks(cast<CreatureObject*>(vendor.get()));
 	}
 
+	TransactionLog trx(TrxCode::VENDORLIFECYCLE, player, vendor);
+
 	if(!inventory->transferObject(vendor, -1, false)) {
+		trx.abort() << "transferObject failed.";
 		player->sendSystemMessage("@player_structure:create_failed");
 		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
