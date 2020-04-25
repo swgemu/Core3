@@ -22,6 +22,7 @@ include server.zone.managers.loot.CrystalData;
 include system.lang.ref.Reference;
 include engine.log.Logger;
 include system.util.VectorMap;
+include server.zone.objects.transaction.TransactionLog;
 
 @dirty
 class LootManager extends ManagedService implements Logger {
@@ -165,14 +166,17 @@ class LootManager extends ManagedService implements Logger {
 
 	public native int calculateLootCredits(int level);
 
-	public native boolean createLoot(SceneObject container, AiAgent creature);
+	@local
+	public native boolean createLoot(@dereferenced TransactionLog trx, SceneObject container, AiAgent creature);
 
 	@local
-	public native boolean createLootFromCollection(SceneObject container, final LootGroupCollection collection, int level);
+	public native boolean createLootFromCollection(@dereferenced TransactionLog trx, SceneObject container, final LootGroupCollection collection, int level);
 
-	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
+	@local
+	public native boolean createLoot(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
 
-	public native boolean createLootSet(SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);
+	@local
+	public native boolean createLootSet(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);
 
 	//public native void generateStats(final string lootTemplate, CraftingValues)
 

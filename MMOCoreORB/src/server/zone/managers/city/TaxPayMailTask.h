@@ -11,6 +11,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/credit/CreditManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class TaxPayMailTask : public Task {
 	Vector<uint64> citizens;
@@ -49,6 +50,8 @@ public:
 
 			params.setTO(name);
 
+			TransactionLog trx(citizenOID, TrxCode::CITYINCOMETAX, incomeTax, false);
+
 			if (!CreditManager::subtractBankCredits(citizenOID, incomeTax)) {
 				// Failed to Pay Income Tax!
 				params.setStringId("city/city", "income_tax_nopay_body");
@@ -58,7 +61,11 @@ public:
 				params.setStringId("city/city", "income_tax_nopay_mayor_body");
 				chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_mayor_subject", params, mayorName, nullptr);
 
+				trx.abort() << "Unable to pay income tax to city";
+
 				continue;
+			} else {
+				trx.commit();
 			}
 
 			// City Income Tax Paid

@@ -10,6 +10,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class PermissionListModifyCommand : public QueueCommand {
 public:
@@ -158,6 +159,15 @@ public:
 		StringIdChatParameter params;
 		params.setTO(targetName);
 
+		TransactionLog trx(creature, targetObject, structureObject, TrxCode::PERMISSIONLIST);
+
+		if (trx.isVerbose()) {
+			// Include extra details
+			trx.addState("commandCreature", creature->getObjectID());
+			trx.addState("commandArguments", arguments.toString());
+			trx.addRelatedObject(targetObject->getObjectID());
+		}
+
 		int returnCode = StructurePermissionList::LISTNOTFOUND;
 
 		if (action == "add")
@@ -167,14 +177,22 @@ public:
 		else
 			returnCode = structureObject->togglePermission(listName, targetID);
 
+		trx.addState("permissionAction", action);
+		trx.addState("permissionList", listName.toLowerCase());
+		trx.addState("permissionTarget", targetName);
+
 		switch (returnCode) {
 		case StructurePermissionList::GRANTED:
+			trx.addState("permissionResult", "granted");
 			params.setStringId("@player_structure:player_added"); //%NO added to the list.
 			break;
 		case StructurePermissionList::REVOKED:
+			trx.addState("permissionResult", "revoked");
 			params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
 			break;
 		default:
+			trx.addState("permissionResult", "failed");
+			trx.abort() << "Permission change failed with code: " << returnCode;
 			return GENERALERROR;
 		}
 

@@ -127,7 +127,13 @@ public:
 				if (lootManager == nullptr)
 					return INVALIDPARAMETERS;
 
-				lootManager->createLoot(inventory, lootGroup, level);
+				TransactionLog trx(TrxCode::ADMINCOMMAND, creature);
+				trx.addState("commandType", commandType);
+				if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
+					trx.commit(true);
+				} else {
+					trx.abort() << "createLoot failed for lootGroup " << lootGroup << " level " << level;
+				}
 			} else if (commandType.beginsWith("createresource")) {
 				String resourceName;
 				args.getStringToken(resourceName);
@@ -185,8 +191,14 @@ public:
 
 						ManagedReference<SceneObject*> inventory = targetPlayer->getSlottedObject("inventory");
 						if (inventory != nullptr) {
-							if( lootManager->createLoot(inventory, lootGroup, level) )
+							TransactionLog trx(creature, targetPlayer, nullptr, TrxCode::ADMINCOMMAND);
+							trx.addState("commandType", commandType);
+							if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
+								trx.commit(true);
 								targetPlayer->sendSystemMessage( "You have received a loot item!");
+							} else {
+								trx.abort() << "createLoot failed for lootGroup " << lootGroup << " level " << level;
+							}
 						}
 
 						tlock.release();

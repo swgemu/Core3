@@ -34,6 +34,7 @@
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "AuctionSearchTask.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void AuctionManagerImplementation::initialize() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -623,12 +624,18 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		return;
 	}
 
+	TransactionLog trx(player, vendor, objectToSell, TrxCode::AUCTIONADDSALE);
+	trx.setAutoCommit(false);
+	trx.addRelatedObject(item->getAuctionedItemObjectID(), true);
+	trx.setExportRelatedObjects(true);
+
 	Locker locker(item);
 
 	int result = auctionMap->addItem(player, vendor, item);
 
 	if(result != ItemSoldMessage::SUCCESS) {
-		info() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): failed to add to auctionMap, result=" << ItemSoldMessage::statusToString(result) << ", auctionItem: " << *item;
+		trx.abort() << "failed to add to auctionMap, result=" << ItemSoldMessage::statusToString(result);
+		info() << "addSaleItem(plyer=" << player->getObjectID() << ", objectid=" << objectid << "): " << trx.getErrorMessage() << ", auctionItem: " << *item;
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, result);
 		player->sendMessage(soldMessage);
 		auctionMap->removeFromCommodityLimit(item);
@@ -641,6 +648,8 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	objectToSellLocker.release();
 
+	trx.commit();
+
 	if (vendor->isBazaarTerminal()) {
 		StringIdChatParameter str("@base_player:sale_fee"); // The fee for your listing is %DI credits.
 
@@ -651,11 +660,17 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 				costReduction = .60f;
 
 		if (item->isPremiumAuction()) {
-			player->subtractBankCredits(costReduction * (SALESFEE * 5));
+			{
+				TransactionLog trx(player, TrxCode::BAZAARSYSTEM, costReduction * (SALESFEE * 5), false);
+				player->subtractBankCredits(costReduction * (SALESFEE * 5));
+			}
 			str.setDI(costReduction * (SALESFEE * 5));
 
 		} else {
-			player->subtractBankCredits(costReduction * SALESFEE);
+			{
+				TransactionLog trx(player, TrxCode::BAZAARSYSTEM, costReduction * SALESFEE, false);
+				player->subtractBankCredits(costReduction * SALESFEE);
+			}
 			str.setDI(costReduction * SALESFEE);
 		}
 
@@ -939,6 +954,10 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBidderName(playername);
 	item->clearAuctionWithdraw();
 
+	TransactionLog trx(player, seller, TrxCode::INSTANTBUY, item->getPrice(), false);
+	trx.setAutoCommit(false);
+	trx.addRelatedObject(item->getAuctionedItemObjectID(), true);
+	trx.setExportRelatedObjects(true);
 	player->subtractBankCredits(item->getPrice());
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
@@ -1063,6 +1082,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	if (seller == nullptr) {
 		// doInstantBuy(CreatureObject* player, AuctionItem* item)
+		trx.errorMessage() << "Null Seller: " + item->getOwnerName();
+		trx.commit();
 		error("seller null for name " + item->getOwnerName());
 
 		error() << "doInstantBuy(player=" << player->getObjectID() << ", item=" << item->getObjectID() << "): Seller not found [" << item->getOwnerName() << "], auctionItem: " << *item;
@@ -1072,9 +1093,15 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	locker.release();
 
 	Locker slocker(seller);
-	seller->addBankCredits(item->getPrice() - tax);
-	slocker.release();
+	seller->addBankCredits(item->getPrice());
+	trx.commit();
 
+	if (tax > 0) {
+		TransactionLog trxFee(seller, TrxCode::CITYSALESTAX, tax, false);
+		trxFee.groupWith(trx);
+		seller->subtractBankCredits(item->getPrice());
+	}
+	slocker.release();
 
 	if(city != nullptr && !city->isClientRegion() && tax){
 		Locker clock(city);
@@ -1122,6 +1149,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 			return;
 		}
 
+		TransactionLog trx(priorBidder, TrxCode::AUCTIONBID, fullPrice, false);
 		priorBidder->subtractBankCredits(fullPrice);
 		item->setPrice(proxyBid + increase);
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::SUCCEDED);
@@ -1165,7 +1193,10 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBidderName(playername);
 
 		// take money from high bidder
-		player->subtractBankCredits(item->getPrice());
+		{
+			TransactionLog trx(player, TrxCode::AUCTIONBID, item->getPrice(), false);
+			player->subtractBankCredits(item->getPrice());
+		}
 
 		if (priorBidder != nullptr) {
 			Locker clocker(priorBidder, player);
@@ -1173,6 +1204,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 			if (priorBidder != player)
 				priorBidder->sendSystemMessage(bidderBody);
 
+			TransactionLog trx(TrxCode::AUCTIONBID, priorBidder, item->getPrice(), false);
 			priorBidder->addBankCredits(item->getPrice());
 		}
 
@@ -1188,6 +1220,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
+		TransactionLog trx(player, TrxCode::AUCTIONBID, item->getPrice(), false);
 		player->subtractBankCredits(item->getPrice());
 	}
 
@@ -1345,6 +1378,7 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(bidder);
 
+			TransactionLog trx(TrxCode::AUCTIONBID, bidder, itemPrice, false);
 			bidder->addBankCredits(itemPrice);
 			bidder->sendSystemMessage(*(buyerBody.get()));
 		}, "RefundAuctionLambda");
@@ -1403,7 +1437,12 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 	else
 		destination = player->getSlottedObject("inventory");
 
+	TransactionLog trx(vendor, player, objectToRetrieve, TrxCode::AUCTIONRETRIEVE);
+	trx.addRelatedObject(objectid, true);
+	trx.setExportRelatedObjects(true);
+
 	if(destination->transferObject(objectToRetrieve, -1, false)) {
+		trx.commit();
 		destination->broadcastObject(objectToRetrieve, true);
 
 		item->setStatus(AuctionItem::RETRIEVED);
@@ -1415,10 +1454,12 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 		player->sendMessage(msg);
 	} else {
+		trx.abort() << "transferObject failed";
 		msg = new RetrieveAuctionItemResponseMessage(objectid, RetrieveAuctionItemResponseMessage::NOTALLOWED);
 		player->sendMessage(msg);
 	}
 }
+
 bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* item) {
 	int itemType = item->getItemType();
 	bool isCrate = item->isFactoryCrate();
@@ -2121,6 +2162,8 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item, bool sen
 		cman->sendMail(sender, sellerSubject, sellerBody, item->getOwnerName(), waypoint);
 	}
 
+	TransactionLog trx(vendor, TrxCode::AUCTIONEXPIRED, zoneServer->getObject(item->getAuctionedItemObjectID()));
+	trx.addRelatedObject(item->getAuctionedItemObjectID(), true);
 	auctionMap->deleteItem(vendor, item, true);
 }
 

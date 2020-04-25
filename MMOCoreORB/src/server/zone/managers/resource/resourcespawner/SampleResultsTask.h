@@ -11,6 +11,8 @@
 #ifndef SAMPLERESULTSTASK_H_
 #define SAMPLERESULTSTASK_H_
 
+#include "server/zone/objects/transaction/TransactionLog.h"
+
 class ResourceSpawner;
 
 class SampleResultsTask : public Task {
@@ -32,8 +34,10 @@ public:
 	void run() {
 		Locker locker(playerCreature);
 
-		resourceSpawner->sendSampleResults(playerCreature, density, resname);
+		TransactionLog trx(TrxCode::HARVESTED, playerCreature);
+		resourceSpawner->sendSampleResults(trx, playerCreature, density, resname);
 		playerCreature->removePendingTask("sampleresults");
+		trx.commit();
 	}
 
 };

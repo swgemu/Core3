@@ -5,6 +5,8 @@
 #ifndef CREATEOBJECTTASK_H_
 #define CREATEOBJECTTASK_H_
 
+#include "server/zone/objects/transaction/TransactionLog.h"
+
 class CreateObjectTask : public Task {
 
 	ManagedReference<CraftingTool*> craftingTool;
@@ -25,7 +27,7 @@ public:
 
 		craftingTool->setCountdownTimer(0, true);
 
-		ManagedReference<TangibleObject*> prototype = craftingTool->getPrototype();
+		auto prototype = craftingTool->getPrototype();
 
 		if (prototype == nullptr || practice) {
 			craftingTool->removeAllContainerObjects();
@@ -39,6 +41,8 @@ public:
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
 		if (inventory != nullptr && craftingTool->isASubChildOf(crafter) && !inventory->isContainerFullRecursive()) {
+
+			TransactionLog trx(crafter, inventory, prototype, TrxCode::CRAFTINGSESSION);
 
 			if (inventory->transferObject(prototype, -1, true)) {
 				crafter->sendSystemMessage("@system_msg:prototype_transferred");

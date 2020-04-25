@@ -8,14 +8,15 @@ import engine.log.Logger;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.Observer;
 include server.zone.objects.area.ForageMap;
+include server.zone.objects.transaction.TransactionLog;
 
 class ForageManager extends Observer implements Logger {
-	
+
 	public static final int SCOUT = 1;
 	public static final int MEDICAL = 2;
 	public static final int LAIR = 3;
 	public static final int SHELLFISH = 4;
-	 
+
 	@dereferenced
 	protected ForageMap forageAreas;
 
@@ -87,6 +88,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native boolean forageGiveResource(CreatureObject player, float forageX, float forageY, final string planet, string resType); 
+	@local
+	private native boolean forageGiveResource(@dereferenced TransactionLog trx, CreatureObject player, float forageX, float forageY, final string planet, string resType);
 }
 
