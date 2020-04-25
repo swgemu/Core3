@@ -23,6 +23,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "templates/installation/FactoryObjectTemplate.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	InstallationObjectImplementation::loadTemplateData(templateData);
@@ -297,6 +298,8 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 		return;
 	}
 
+	TransactionLog trx(player, asSceneObject(), schematic, TrxCode::FACTORYOPERATION);
+
 	if(transferObject(schematic, -1, true)) {
 
 		StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
@@ -310,6 +313,8 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 		player->sendSystemMessage("This schematic limit is: " + String::valueOf(schematic->getManufactureLimit()));
 	} else {
+		trx.abort() << "transferObject failed.";
+
 		StringIdChatParameter message("manf_station", "schematic_not_added"); //Schematic %TT was not added to the station
 
 		if(schematic->getCustomObjectName().isEmpty())
@@ -340,6 +345,8 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 	if(!schematic->isManufactureSchematic())
 		return;
 
+	TransactionLog trx(asSceneObject(), player, schematic, TrxCode::FACTORYOPERATION);
+
 	if(datapad->transferObject(schematic, -1, false)) {
 		datapad->broadcastObject(schematic, true);
 
@@ -352,6 +359,8 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 		player->sendSystemMessage(message);
 	} else {
+		trx.abort() << "transferObject failed.";
+
 		StringIdChatParameter message("manf_station", "schematic_not_removed"); //Schematic %TT was not removed from the station and been placed in your datapad. Have a nice day!
 
 		if(schematic->getCustomObjectName().isEmpty())

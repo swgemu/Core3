@@ -19,6 +19,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
@@ -428,11 +429,19 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 				sendScannerChatMessage(zone, scanner, player, "warning_imperial", "warning_rebel");
 				scanner->doAnimation("wave_on_directing");
 				if (fineToPay <= player->getCashCredits()) {
-					player->subtractCashCredits(fineToPay);
+					{
+						TransactionLog trx(player, TrxCode::FINES, fineToPay, true);
+						player->subtractCashCredits(fineToPay);
+					}
 				} else {
 					fineToPay -= player->getCashCredits();
-					player->subtractCashCredits(player->getCashCredits());
-					player->subtractBankCredits(fineToPay);
+					{
+						TransactionLog trxCash(player, TrxCode::FINES, player->getCashCredits(), true);
+						player->subtractCashCredits(player->getCashCredits());
+
+						TransactionLog trxBank(player, TrxCode::FINES, fineToPay, false);
+						player->subtractBankCredits(fineToPay);
+					}
 				}
 			} else {
 				sendScannerChatMessage(zone, scanner, player, "failure_to_pay_imperial", "failure_to_pay_rebel");

@@ -16,6 +16,7 @@ import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.objects.resource.ResourceSpawn;
+include server.zone.objects.transaction.TransactionLog;
 include system.util.Vector;
 
 /**
@@ -60,7 +61,9 @@ class ResourceManager extends Observer implements Logger {
 	public native void sendSample(CreatureObject playerCreature, final string resname, final string sampleAnimation);
 	
 	public native ResourceContainer harvestResource(CreatureObject player, final string type, final int quantity);
-	public native boolean harvestResourceToPlayer(CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
+
+	@local
+	public native boolean harvestResourceToPlayer(@dereferenced TransactionLog trx, CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
 	
 	public native unsigned int getAvailablePowerFromPlayer(CreatureObject player);
 	public native void removePowerFromPlayer(CreatureObject player, unsigned int power);

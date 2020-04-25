@@ -37,6 +37,7 @@
 #include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/objects/building/PoiBuilding.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -521,6 +522,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	threatMap->removeObservers();
 
+	auto destructorObjectID = destructor->getObjectID();
+
 	if (destructedObject != destructor)
 		destructor->unlock();
 
@@ -584,14 +587,22 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob()) {
 				destructedObject->clearCashCredits();
-				destructedObject->addCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
+				int credits = lootManager->calculateLootCredits(destructedObject->getLevel());
+				TransactionLog trx(TrxCode::NPCLOOT, destructedObject, credits, true);
+				trx.addState("destructor", destructorObjectID);
+				destructedObject->addCashCredits(credits);
 			}
 
 			Locker locker(creatureInventory);
 
+			TransactionLog trx(TrxCode::NPCLOOT, destructedObject);
 			creatureInventory->setContainerOwnerID(ownerID);
 
-			lootManager->createLoot(creatureInventory, destructedObject);
+			if (lootManager->createLoot(trx, creatureInventory, destructedObject)) {
+				trx.commit(true);
+			} else {
+				trx.abort() << "createLoot failed for ai object.";
+			}
 		}
 
 		Reference<AiAgent*> strongReferenceDestructedObject = destructedObject;
@@ -724,14 +735,19 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 		return;
 	}
 
+	TransactionLog trx(TrxCode::HARVESTED, owner, resourceSpawn);
+
 	if (pet->hasStorage()) {
-		bool didit = resourceManager->harvestResourceToPlayer(droid, resourceSpawn, quantityExtracted);
+		bool didit = resourceManager->harvestResourceToPlayer(trx, droid, resourceSpawn, quantityExtracted);
 		if (!didit) {
-			resourceManager->harvestResourceToPlayer(owner, resourceSpawn, quantityExtracted);
+			trx.addState("droidOverflow", true);
+			resourceManager->harvestResourceToPlayer(trx, owner, resourceSpawn, quantityExtracted);
 		}
 	} else {
-		resourceManager->harvestResourceToPlayer(owner, resourceSpawn, quantityExtracted);
+		resourceManager->harvestResourceToPlayer(trx, owner, resourceSpawn, quantityExtracted);
 	}
+
+	trx.commit();
 
 	/// Send System Messages
 	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
@@ -879,7 +895,9 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (creature->getParent().get() != nullptr)
 		quantityExtracted = 1;
 
-	resourceManager->harvestResourceToPlayer(player, resourceSpawn, quantityExtracted);
+	TransactionLog trx(TrxCode::HARVESTED, player, resourceSpawn);
+	resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted);
+	trx.commit();
 
 	/// Send System Messages
 	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
