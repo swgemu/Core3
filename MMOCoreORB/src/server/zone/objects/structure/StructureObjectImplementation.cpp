@@ -24,6 +24,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -617,25 +618,43 @@ int StructureObjectImplementation::getDecayPercentage() {
 void StructureObjectImplementation::payMaintenance(int maintenance, CreditObject* creditObj, bool cashFirst) {
 	//Pay maintenance.
 
+	auto structure = _this.getReferenceUnsafeStaticCast();
 	int payedSoFar;
 	if (cashFirst) {
 		if (creditObj->getCashCredits() >= maintenance) {
+			TransactionLog trx(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, maintenance, true);
 			creditObj->subtractCashCredits(maintenance);
+			addMaintenance(maintenance);
 		} else {
 			payedSoFar = creditObj->getCashCredits();
+
+			TransactionLog trxCash(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, payedSoFar, true);
 			creditObj->subtractCashCredits(payedSoFar);
+			addMaintenance(payedSoFar);
+
+			TransactionLog trxBank(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, maintenance - payedSoFar, false);
+			trxBank.groupWith(trxCash);
 			creditObj->subtractBankCredits(maintenance - payedSoFar);
+			addMaintenance(maintenance - payedSoFar);
 		}
 	} else {
 		if (creditObj->getBankCredits() >= maintenance) {
+			TransactionLog trx(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, maintenance, false);
 			creditObj->subtractBankCredits(maintenance);
+			addMaintenance(maintenance);
 		} else {
 			payedSoFar = creditObj->getBankCredits();
+
+			TransactionLog trxCash(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, payedSoFar, false);
 			creditObj->subtractBankCredits(payedSoFar);
+			addMaintenance(payedSoFar);
+
+			TransactionLog trxBank(creditObj, structure, TrxCode::STRUCTUREMAINTANENCE, maintenance - payedSoFar, true);
+			trxBank.groupWith(trxBank);
 			creditObj->subtractCashCredits(maintenance - payedSoFar);
+			addMaintenance(maintenance - payedSoFar);
 		}
 	}
-	addMaintenance(maintenance);
 }
 
 bool StructureObjectImplementation::isCampStructure() const {

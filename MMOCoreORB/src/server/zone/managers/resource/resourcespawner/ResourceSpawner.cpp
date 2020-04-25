@@ -934,7 +934,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	session->rescheduleSample();
 }
 
-void ResourceSpawner::sendSampleResults(CreatureObject* player, const float density, const String& resname) const {
+void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* player, const float density, const String& resname) const {
 
 	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
@@ -1053,7 +1053,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 	if (playerManager != nullptr)
 		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
-	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
+	addResourceToPlayerInventory(trx, player, resourceSpawn, unitsExtracted);
 	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density * 100);
 
 	if (resourceSpawn->isType("radioactive")) {
@@ -1067,7 +1067,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 	}
 }
 
-bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) const {
+bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) const {
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	Locker locker(inventory);
@@ -1104,6 +1104,8 @@ bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 	// Create New resource container if one isn't found in inventory
 	Reference<ResourceContainer*> harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
+	trx.addRelatedObject(harvestedResource);
+
 	if (inventory->transferObject(harvestedResource, -1, false)) {
 		inventory->broadcastObject(harvestedResource, true);
 		return true;
@@ -1111,6 +1113,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
           	Locker resLocker(harvestedResource);
 
 		harvestedResource->destroyObjectFromDatabase(true);
+		trx.errorMessage() << "transferObject failed in " << __FUNCTION__ << " near line " << __LINE__;
 		return false;
 	}
 }
@@ -1143,12 +1146,12 @@ Reference<ResourceContainer*> ResourceSpawner::harvestResource(CreatureObject* p
 	return nullptr;
 }
 
-bool ResourceSpawner::harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
+bool ResourceSpawner::harvestResource(TransactionLog& trx, CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
 	Locker locker(resourceSpawn);
 
 	resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 
-	return addResourceToPlayerInventory(player, resourceSpawn, quantity);
+	return addResourceToPlayerInventory(trx, player, resourceSpawn, quantity);
 }
 
 ResourceSpawn* ResourceSpawner::getCurrentSpawn(const String& restype, const String& zoneName) const {

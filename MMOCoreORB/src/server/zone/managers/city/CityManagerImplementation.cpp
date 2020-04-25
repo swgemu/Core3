@@ -37,6 +37,7 @@
 #include "TaxPayMailTask.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 #ifndef CITY_DEBUG
 #define CITY_DEBUG
@@ -571,8 +572,12 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 		return;
 	}
 
-	mayor->addBankCredits(value, true);
-	city->subtractFromCityTreasury(value);
+	{
+		TransactionLog trx(TrxCode::CITYTREASURY, mayor, value, false);
+		trx.addState("treasury", city->getCityTreasury());
+		mayor->addBankCredits(value, true);
+		city->subtractFromCityTreasury(value);
+	}
 
 	mayor->addCooldown("city_withdrawal", CityManagerImplementation::treasuryWithdrawalCooldown);
 
@@ -626,8 +631,12 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 		return;
 	}
 
-	city->addToCityTreasury(total);
-	creature->subtractCashCredits(total);
+	{
+		TransactionLog trx(creature, TrxCode::CITYTREASURY, total, true);
+		trx.addState("treasury", city->getCityTreasury());
+		creature->subtractCashCredits(total);
+		city->addToCityTreasury(total);
+	}
 
 	StringIdChatParameter params("city/city", "deposit_treasury"); //You deposit %DI credits into the treasury.
 	params.setDI(total);

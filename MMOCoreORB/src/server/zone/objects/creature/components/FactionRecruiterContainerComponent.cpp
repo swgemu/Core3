@@ -5,6 +5,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 #include "server/zone/managers/player/BadgeList.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
@@ -106,8 +107,11 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 	object->destroyObjectFromDatabase();
 
 	int credits = System::random(500) + 500;
-	player->sendSystemMessage("You receive " + String::valueOf(credits) + " credits.");
-	player->addCashCredits(credits, true);
+	{
+		TransactionLog trx(faction == "rebel" ? TrxCode::REBELFACTION : TrxCode::IMPERIALFACTION, player, credits, true);
+		player->sendSystemMessage("You receive " + String::valueOf(credits) + " credits.");
+		player->addCashCredits(credits, true);
+	}
 
 	if (!hasBadge) {
 		ghost->awardBadge(badge->getIndex());
