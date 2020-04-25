@@ -34,6 +34,7 @@
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "AuctionSearchTask.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void AuctionManagerImplementation::initialize() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -651,11 +652,17 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 				costReduction = .60f;
 
 		if (item->isPremiumAuction()) {
-			player->subtractBankCredits(costReduction * (SALESFEE * 5));
+			{
+				TransactionLog trx(player, TrxCode::AUCTIONSALESFEE, costReduction * (SALESFEE * 5), false);
+				player->subtractBankCredits(costReduction * (SALESFEE * 5));
+			}
 			str.setDI(costReduction * (SALESFEE * 5));
 
 		} else {
-			player->subtractBankCredits(costReduction * SALESFEE);
+			{
+				TransactionLog trx(player, TrxCode::AUCTIONSALESFEE, costReduction * SALESFEE, false);
+				player->subtractBankCredits(costReduction * SALESFEE);
+			}
 			str.setDI(costReduction * SALESFEE);
 		}
 
@@ -939,6 +946,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBidderName(playername);
 	item->clearAuctionWithdraw();
 
+	TransactionLog trx(player, seller, TrxCode::INSTANTBUY, item->getPrice(), false);
+	trx.setAutoCommit(false);
 	player->subtractBankCredits(item->getPrice());
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
@@ -1063,6 +1072,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	if (seller == nullptr) {
 		// doInstantBuy(CreatureObject* player, AuctionItem* item)
+		trx.errorMessage() << "Null Seller: " + item->getOwnerName();
+		trx.commit();
 		error("seller null for name " + item->getOwnerName());
 
 		error() << "doInstantBuy(player=" << player->getObjectID() << ", item=" << item->getObjectID() << "): Seller not found [" << item->getOwnerName() << "], auctionItem: " << *item;
@@ -1072,9 +1083,14 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	locker.release();
 
 	Locker slocker(seller);
-	seller->addBankCredits(item->getPrice() - tax);
-	slocker.release();
+	seller->addBankCredits(item->getPrice());
+	trx.commit();
 
+	if (tax > 0) {
+		TransactionLog trxFee(seller, TrxCode::CITYSALESTAX, tax, false);
+		seller->subtractBankCredits(item->getPrice());
+	}
+	slocker.release();
 
 	if(city != nullptr && !city->isClientRegion() && tax){
 		Locker clock(city);
@@ -1122,6 +1138,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 			return;
 		}
 
+		TransactionLog trx(priorBidder, TrxCode::AUCTIONBID, fullPrice, false);
 		priorBidder->subtractBankCredits(fullPrice);
 		item->setPrice(proxyBid + increase);
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::SUCCEDED);
@@ -1165,7 +1182,10 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBidderName(playername);
 
 		// take money from high bidder
-		player->subtractBankCredits(item->getPrice());
+		{
+			TransactionLog trx(player, TrxCode::AUCTIONBID, item->getPrice(), false);
+			player->subtractBankCredits(item->getPrice());
+		}
 
 		if (priorBidder != nullptr) {
 			Locker clocker(priorBidder, player);
@@ -1173,6 +1193,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 			if (priorBidder != player)
 				priorBidder->sendSystemMessage(bidderBody);
 
+			TransactionLog trx(TrxCode::AUCTIONBID, priorBidder, item->getPrice(), false);
 			priorBidder->addBankCredits(item->getPrice());
 		}
 
@@ -1188,6 +1209,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
+		TransactionLog trx(player, TrxCode::AUCTIONBID, item->getPrice(), false);
 		player->subtractBankCredits(item->getPrice());
 	}
 
@@ -1345,6 +1367,7 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(bidder);
 
+			TransactionLog trx(TrxCode::AUCTIONBID, bidder, itemPrice, false);
 			bidder->addBankCredits(itemPrice);
 			bidder->sendSystemMessage(*(buyerBody.get()));
 		}, "RefundAuctionLambda");

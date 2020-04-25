@@ -37,6 +37,7 @@
 #include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/objects/building/PoiBuilding.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -521,6 +522,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	threatMap->removeObservers();
 
+	auto destructorObjectID = destructor->getObjectID();
+
 	if (destructedObject != destructor)
 		destructor->unlock();
 
@@ -584,7 +587,10 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob()) {
 				destructedObject->clearCashCredits();
-				destructedObject->addCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
+				int credits = lootManager->calculateLootCredits(destructedObject->getLevel());
+				TransactionLog trx(TrxCode::NPCLOOT, destructedObject, credits, true);
+				trx.addState("destructor", destructorObjectID);
+				destructedObject->addCashCredits(credits);
 			}
 
 			Locker locker(creatureInventory);

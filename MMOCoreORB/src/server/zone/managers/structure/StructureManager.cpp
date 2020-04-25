@@ -45,6 +45,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 namespace StorageManagerNamespace {
 	 int indexCallback(DB *secondary, const DBT *key, const DBT *data, DBT *result) {
@@ -1321,8 +1322,11 @@ void StructureManager::payMaintenance(StructureObject* structure,
 
 	creature->sendSystemMessage(params);
 
-	creature->subtractCashCredits(amount);
-	structure->addMaintenance(amount);
+	{
+		TransactionLog trx(creature, structure, TrxCode::STRUCTUREMAINTANENCE, amount, true);
+		creature->subtractCashCredits(amount);
+		structure->addMaintenance(amount);
+	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
@@ -1358,8 +1362,11 @@ void StructureManager::withdrawMaintenance(StructureObject* structure, CreatureO
 
 	creature->sendSystemMessage(params);
 
-	creature->addCashCredits(amount);
-	structure->subtractMaintenance(amount);
+	{
+		TransactionLog trx(structure, creature, TrxCode::STRUCTUREMAINTANENCE, amount, true);
+		creature->addCashCredits(amount);
+		structure->subtractMaintenance(amount);
+	}
 }
 
 bool StructureManager::isInStructureFootprint(StructureObject* structure, float positionX, float positionY, int extraFootprintMargin){
