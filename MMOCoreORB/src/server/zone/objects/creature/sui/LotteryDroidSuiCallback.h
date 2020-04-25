@@ -6,6 +6,7 @@
 #include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class LotteryDroidSuiCallback : public SuiCallback {
 private:
@@ -110,6 +111,7 @@ public:
 				player->sendSystemMessage("@event_perk:lottery_add_credits_nsf");
 				lotteryDroid->sendAddCreditsSUI(player);
 			} else {
+				TransactionLog trx(player, lotteryDroid, TrxCode::LOTTERYDROID, creditAmt, true);
 				lotteryDroid->addToCreditPool(creditAmt);
 				player->subtractCashCredits(creditAmt);
 			}
@@ -122,6 +124,7 @@ public:
 				player->sendSystemMessage("@event_perk:lottery_add_credits_nsf");
 				return;
 			} else {
+				TransactionLog trx(player, lotteryDroid, TrxCode::LOTTERYDROID, ticketPrice, true);
 				lotteryDroid->addNewPlayer(player->getObjectID());
 				player->subtractCashCredits(ticketPrice);
 				lotteryDroid->addToCreditPool(ticketPrice);
