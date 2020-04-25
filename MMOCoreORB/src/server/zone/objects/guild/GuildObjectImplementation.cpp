@@ -281,8 +281,6 @@ int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 	auto guildLeader = server->getObject(guildLeaderID);
 
 	if (guildLeader != nullptr) {
-		ReadLocker lock(guildLeader);
-
 		count += guildLeader->writeRecursiveJSON(j, maxDepth - 1, oidPath);
 	}
 
@@ -292,8 +290,6 @@ int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 		auto member = server->getObject(memberID);
 
 		if (member != nullptr) {
-			ReadLocker lock(member);
-
 			count += member->writeRecursiveJSON(j, maxDepth - 1, oidPath);
 		}
 	}

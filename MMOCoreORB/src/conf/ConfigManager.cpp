@@ -3,6 +3,7 @@
 		See file COPYING for copying conditions.*/
 
 #include "ConfigManager.h"
+#include <regex>
 
 using namespace sys::thread;
 
@@ -21,6 +22,8 @@ ConfigManager::~ConfigManager() {
 
 bool ConfigManager::loadConfigData() {
 	Locker guard(&mutex);
+
+	logChanges = false;
 
 	if (configStartTime.getStartTime() != 0)
 		configStartTime.stop();
@@ -84,6 +87,8 @@ bool ConfigManager::loadConfigData() {
 	dumpConfig();
 #endif // DEBUG_CONFIGMANAGER
 
+	logChanges = true;
+
 	return resultGlobal || resultCore3;
 }
 
@@ -118,8 +123,9 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 
 		String stringVal = itm->toString();
 
-		if (!includeSecure && (key.toLowerCase().contains("pass") || key.toLowerCase().contains("secret")))
+		if (!includeSecure && isSensitiveKey(key)) {
 			stringVal = "*******";
+		}
 
 		auto msg = info(true);
 
@@ -380,6 +386,31 @@ bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializat
 	return true;
 }
 
+bool ConfigManager::parseConfigJSON(const JSONSerializationType jsonData, String& errorMessage, bool updateOnly) {
+	Locker guard(&mutex);
+
+	try {
+		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
+	} catch (JSONSerializationType::exception e) {
+		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (const Exception& e) {
+		errorMessage = "Exception while parsing config:" + e.getMessage();
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (...) {
+		StringBuffer err;
+		err << "Uncaptured exception parsing config"
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+			<< ": " << __cxxabiv1::__cxa_current_exception_type()->name()
+#endif
+			<< ".";
+		errorMessage = err.toString();
+		error() << "parseConfigJSON: " << errorMessage;
+	}
+
+	return false;
+}
+
 bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly) {
 	Locker guard(&mutex);
 
@@ -510,6 +541,58 @@ const Vector<int>& ConfigManager::getIntVector(const String& name) {
 	return itm->getIntVector();
 }
 
+bool ConfigManager::isSensitiveKey(const String& key) {
+	auto lcKey = key.toLowerCase();
+
+	return lcKey.contains("secret") || lcKey.contains("pass") || lcKey.contains("token");
+}
+
+void ConfigManager::writeJSONPath(StringTokenizer& tokens, JSONSerializationType& jsonData, const JSONSerializationType& jsonValue) {
+	String nextName;
+	tokens.getStringToken(nextName);
+
+	if (tokens.hasMoreTokens()) {
+		if (jsonData[nextName].is_null()) {
+			jsonData[nextName] = JSONSerializationType::object();
+		}
+		writeJSONPath(tokens, jsonData[nextName], jsonValue);
+	} else {
+		jsonData[nextName] = jsonValue;
+	}
+}
+
+bool ConfigManager::getAsJSON(const String& target, JSONSerializationType& jsonData) {
+	ReadLocker guard(&mutex);
+
+	try {
+		auto re = std::regex((target + "(?:\\..*$|$)").toCharArray());
+		jsonData = JSONSerializationType::object();
+
+		for (int i = 0; i < configData.size(); ++i) {
+			JSONSerializationType jsonValue;
+			auto entry = configData.elementAt(i);
+			String key = entry.getKey();
+
+			if (isSensitiveKey(key)) {
+				jsonValue = "*******";
+			} else {
+				ConfigDataItem* itm = entry.getValue();
+				itm->getAsJSON(jsonValue);
+			}
+
+			if (std::regex_search(key.toCharArray(), re)) {
+				StringTokenizer tokenizer(key);
+				tokenizer.setDelimeter(".");
+				writeJSONPath(tokenizer, jsonData, jsonValue);
+			}
+		}
+	} catch(...) {
+		return false;
+	}
+
+	return true;
+}
+
 bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 	Locker guard(&mutex);
 
@@ -523,6 +606,14 @@ bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 		configData.drop(name);
 		delete oldItem;
 		oldItem = nullptr;
+	}
+
+	if (logChanges) {
+		if (isSensitiveKey(name)) {
+			info(true) << "Configuration updated: " << name;
+		} else {
+			info(true) << "Configuration update: " << name << " = [" << newItem->toString() << "]";
+		}
 	}
 
 #ifdef DEBUG_CONFIGMANAGER
@@ -660,4 +751,26 @@ ConfigDataItem::~ConfigDataItem() {
 		delete asIntVector;
 		asIntVector = nullptr;
 	}
+}
+
+void ConfigDataItem::getAsJSON(JSONSerializationType& jsonData) {
+	if (asVector != nullptr) {
+		jsonData = JSONSerializationType::array();
+
+		for (int i = 0;i < asVector->size(); i++) {
+			JSONSerializationType jsonValue;
+			ConfigDataItem* curItem = asVector->get(i);
+
+			if (curItem == nullptr) {
+				continue;
+			}
+
+			curItem->getAsJSON(jsonValue);
+			jsonData.push_back(jsonValue);
+		}
+
+		return;
+	}
+
+	jsonData = asString;
 }

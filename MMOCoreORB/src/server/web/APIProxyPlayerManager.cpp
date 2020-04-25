@@ -156,21 +156,19 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		if (qRecursive) {
 			countFound += creo->writeRecursiveJSON(objects, qMaxDepth);
 		} else {
-			Locker wLock(creo);
-
 			countFound += creo->writeRecursiveJSON(objects, 1);
 
+			Locker wLock(creo);
 			auto ghost = creo->getPlayerObject();
+			auto crobj = creo->getCreditObject();
+			wLock.release();
 
 			if (ghost != nullptr) {
-				ReadLocker gLock(ghost);
 				auto oidPath = new Vector<uint64>;
 				oidPath->add(creo->getObjectID());
 				countFound += ghost->writeRecursiveJSON(objects, 1, oidPath);
 				delete oidPath;
 			}
-
-			auto crobj = creo->getCreditObject();
 
 			if (crobj != nullptr) {
 				ReadLocker crLock(crobj);
@@ -191,7 +189,6 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		auto guild = creo->getGuildObject().get();
 
 		if (guild != nullptr) {
-			ReadLocker gLock(guild);
 			auto oidPath = new Vector<uint64>;
 			oidPath->add(creo->getObjectID());
 			countFound += guild->writeRecursiveJSON(objects, qRecursive ? qMaxDepth : 1, oidPath);

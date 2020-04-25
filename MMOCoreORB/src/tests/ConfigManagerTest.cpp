@@ -125,7 +125,7 @@ TEST_F(ConfigManagerTest, CacheTest) {
 
 	auto tmp1 = configManager->setPvpMode(true);
 	ASSERT_TRUE(tmp1);
-	ASSERT_EQ(configManager->getUsageCounter("Core3.PvpMode"), 0);
+	ASSERT_EQ(configManager->getUsageCounter("Core3.PvpMode"), 1);
 
 	auto counter_start = configManager->getUsageCounter("Core3.PvpMode");
 
