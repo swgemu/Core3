@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_46d09c53",
+        "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-25T13:18:30Z",
+      "side": 1,
+      "message": "I added a test checking the speed modifier for all postures.",
+      "parentUuid": "9a561d44_a63d38be",
+      "revId": "2ba4bd3877e82c95b43737d26e1af72e60a32183",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_e619f07a",
         "filename": "MMOCoreORB/src/tests/CreatureObjectTest.cpp",
         "patchSetId": 3
