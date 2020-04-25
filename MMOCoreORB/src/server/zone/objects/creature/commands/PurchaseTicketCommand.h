@@ -9,6 +9,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -173,10 +174,30 @@ public:
 				return GENERALERROR;
 			}
 
-			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
-			creature->subtractCashCredits(diff); //Take the rest from the cash.
+			TransactionLog trxBank(creature, TrxCode::TRAVELSYSTEM, bank, false);
+			trxBank.addState("departurePlanet", departurePlanet);
+			trxBank.addState("departurePoint", departurePoint);
+			trxBank.addState("arrivalPlanet", arrivalPlanet);
+			trxBank.addState("arrivalPoint", arrivalPoint);
 
+			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+
+			TransactionLog trxCash(creature, TrxCode::TRAVELSYSTEM, diff, true);
+			trxCash.groupWith(trxBank);
+			trxCash.addState("departurePlanet", departurePlanet);
+			trxCash.addState("departurePoint", departurePoint);
+			trxCash.addState("arrivalPlanet", arrivalPlanet);
+			trxCash.addState("arrivalPoint", arrivalPoint);
+
+			creature->subtractCashCredits(diff); //Take the rest from the cash.
+			trxCash.groupWith(trxBank);
 		} else {
+			TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, fare, false);
+			trx.addState("departurePlanet", departurePlanet);
+			trx.addState("departurePoint", departurePoint);
+			trx.addState("arrivalPlanet", arrivalPlanet);
+			trx.addState("arrivalPoint", arrivalPoint);
+
 			creature->subtractBankCredits(fare); //Take all of the fare from the bank.
 		}
 
