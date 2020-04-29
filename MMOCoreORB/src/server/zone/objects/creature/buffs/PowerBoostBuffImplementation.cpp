@@ -17,10 +17,6 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 	if (creature.get() != nullptr) {
 		Locker locker(creature.get());
 		Locker lockerX(_this.getReferenceUnsafeStaticCast(), creature.get());
-		if (creature.get()->isIncapacitated() || creature.get()->isDead()) {
-			// if the target is dead/incapped but the tick is happening before we de-active, then ignore the event
-			return;
-		}
 		if (counter == 0) {
 			mindBuffAmount = 0;
 			haBuffAmount = 0;
@@ -89,30 +85,26 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
 	Locker locker(creature.get());
 	Locker lockerX(_this.getReferenceUnsafeStaticCast(), creature.get());
-	if (!creature.get()->isIncapacitated() && !creature.get()->isDead()) {
-		if (up) {
-			creature.get()->addMaxHAM(CreatureAttribute::HEALTH, pbTick, true);
-			creature.get()->addMaxHAM(CreatureAttribute::ACTION, pbTick, true);
-			haBuffAmount += pbTick;
-		} else {
-			creature.get()->addMaxHAM(CreatureAttribute::HEALTH, -pbTick, true);
-			creature.get()->addMaxHAM(CreatureAttribute::ACTION, -pbTick, true);
-			haBuffAmount -= pbTick;
-		}
+	if (up) {
+		creature.get()->addMaxHAM(CreatureAttribute::HEALTH, pbTick, true);
+		creature.get()->addMaxHAM(CreatureAttribute::ACTION, pbTick, true);
+		haBuffAmount += pbTick;
+	} else {
+		creature.get()->addMaxHAM(CreatureAttribute::HEALTH, -pbTick, true);
+		creature.get()->addMaxHAM(CreatureAttribute::ACTION, -pbTick, true);
+		haBuffAmount -= pbTick;
 	}
 }
 
 void PowerBoostBuffImplementation::doMindTick(bool up) {
 	Locker locker(creature.get());
 	Locker lockerX(_this.getReferenceUnsafeStaticCast(), creature.get());
-	if (!creature.get()->isIncapacitated() && !creature.get()->isDead()) {
-		if (up) {
-			creature.get()->addMaxHAM(CreatureAttribute::MIND, pbTick, true);
-			mindBuffAmount += pbTick;
-		} else {
-			creature.get()->addMaxHAM(CreatureAttribute::MIND, -pbTick, true);
-			mindBuffAmount -= pbTick;
-		}
+	if (up) {
+		creature.get()->addMaxHAM(CreatureAttribute::MIND, pbTick, true);
+		mindBuffAmount += pbTick;
+	} else {
+		creature.get()->addMaxHAM(CreatureAttribute::MIND, -pbTick, true);
+		mindBuffAmount -= pbTick;
 	}
 }
 
@@ -122,6 +114,7 @@ void PowerBoostBuffImplementation::clearBuffEvent() {
 	if (pbBuffEvent != nullptr) {
 		creature.get()->removePendingTask("powerBoostTick");
 	}
+	counter = 65;
 	creature.get()->addMaxHAM(CreatureAttribute::HEALTH, -haBuffAmount, true);
 	creature.get()->addMaxHAM(CreatureAttribute::ACTION, -haBuffAmount, true);
 	haBuffAmount = 0;
