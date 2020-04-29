@@ -211,10 +211,6 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 				xpGranted = 100;
 		}
 
-		// Drop the Session for both the designer and the targetCreature;
-		strongReferenceDesigner->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
-		strongReferenceTarget->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
-
 		// Award XP.
 		PlayerManager* playerManager = strongReferenceDesigner->getZoneServer()->getPlayerManager();
 
@@ -224,8 +220,8 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			playerManager->awardExperience(strongReferenceDesigner, "imagedesigner", xpGranted, true);
 		}
 
-		if (idTimeoutEvent != nullptr && idTimeoutEvent->isScheduled())
-			dequeueIdTimeoutEvent();
+		// End the session
+		cancelSession();
 	}
 
 	targetObject->sendMessage(message);
