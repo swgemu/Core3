@@ -353,17 +353,16 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		// range mods, etc), we need to base the percentage on a random roll
 		// of possible values (min -> max), otherwise only an exact roll of
 		// 10000 will result in the top of the range being chosen.
-		// (Mantis #7869) 
-		int precision = craftingValues->getPrecision(subtitle);		
-		if( precision == (int)ValuesMap::VALUENOTFOUND ) {
-		        error ("No precision found for " + subtitle);
+		// (Mantis #7869)
+		int precision = craftingValues->getPrecision(subtitle);
+		if (precision == (int)ValuesMap::VALUENOTFOUND) {
+			error ("No precision found for " + subtitle);
+		} else if (precision == 0) {
+			int range = abs(max-min);
+			int randomValue = System::random(range);
+			percentage = (float)randomValue / (float)(range);
 		}
-		else if( precision == 0 ) {
-		        int range = abs(max-min);
-		        int randomValue = System::random(range);
-		        percentage = (float)randomValue / (float)(range);
-		}
-		
+
 		craftingValues->setCurrentPercentage(subtitle, percentage);
 
 		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "forcecost") {
