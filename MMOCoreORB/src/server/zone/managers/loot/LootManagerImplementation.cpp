@@ -373,44 +373,42 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			continue;
 		}
 
-		if (subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
-			float minMod = (max > min) ? 2000.f : -2000.f;
-			float maxMod = (max > min) ? 500.f : -500.f;
+		if (subtitle == "useCount" || subtitle == "quantity" || subtitle == "charges" || subtitle == "uses" || subtitle == "charge") {
+			continue;
+		}
 
-			if (max > min && min >= 0) { // Both max and min non-negative, max is higher
-				min = ((min * level / minMod) + min) * excMod;
-				max = ((max * level / maxMod) + max) * excMod;
+		float minMod = (max > min) ? 2000.f : -2000.f;
+		float maxMod = (max > min) ? 500.f : -500.f;
 
-			} else if (max > min && max <= 0) { // Both max and min are non-positive, max is higher
-				minMod *= -1;
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) / excMod;
+		if (max > min && min >= 0) { // Both max and min non-negative, max is higher
+			min = ((min * level / minMod) + min) * excMod;
+			max = ((max * level / maxMod) + max) * excMod;
 
-			} else if (max > min) { // max is positive, min is negative
-				minMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) * excMod;
+		} else if (max > min && max <= 0) { // Both max and min are non-positive, max is higher
+			minMod *= -1;
+			maxMod *= -1;
+			min = ((min * level / minMod) + min) / excMod;
+			max = ((max * level / maxMod) + max) / excMod;
 
-			} else if (max < min && max >= 0) { // Both max and min are non-negative, min is higher
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) / excMod;
+		} else if (max > min) { // max is positive, min is negative
+			minMod *= -1;
+			min = ((min * level / minMod) + min) / excMod;
+			max = ((max * level / maxMod) + max) * excMod;
 
-			} else if (max < min && min <= 0) { // Both max and min are non-positive, min is higher
-				minMod *= -1;
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) * excMod;
-				max = ((max * level / maxMod) + max) * excMod;
+		} else if (max < min && max >= 0) { // Both max and min are non-negative, min is higher
+			min = ((min * level / minMod) + min) / excMod;
+			max = ((max * level / maxMod) + max) / excMod;
 
-			} else { // max is negative, min is positive
-				maxMod *= -1;
-				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) * excMod;
-			}
+		} else if (max < min && min <= 0) { // Both max and min are non-positive, min is higher
+			minMod *= -1;
+			maxMod *= -1;
+			min = ((min * level / minMod) + min) * excMod;
+			max = ((max * level / maxMod) + max) * excMod;
 
-		} else if (excMod != 1.0) {
-			min *= yellowModifier;
-			max *= yellowModifier;
+		} else { // max is negative, min is positive
+			maxMod *= -1;
+			min = ((min * level / minMod) + min) / excMod;
+			max = ((max * level / maxMod) + max) * excMod;
 		}
 
 		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
