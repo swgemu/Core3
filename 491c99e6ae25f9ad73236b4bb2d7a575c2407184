@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_c67b0c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-29T20:46:27Z",
+      "side": 1,
+      "message": "I have not been able to test this locally yet. I\u0027m struggling with getting more than two characters in on the same server at the moment.\n\nBut if anyone have an idea to solve it or can test and verify the fix locally I would be very pleased!",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "491c99e6ae25f9ad73236b4bb2d7a575c2407184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
