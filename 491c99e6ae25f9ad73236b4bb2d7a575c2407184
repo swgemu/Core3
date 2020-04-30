@@ -22,6 +22,30 @@
       "revId": "491c99e6ae25f9ad73236b4bb2d7a575c2407184",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_e6729048",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-30T18:08:47Z",
+      "side": 1,
+      "message": "I managed to log in with three characters and verify the fix.",
+      "parentUuid": "9a561d44_c67b0c28",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "491c99e6ae25f9ad73236b4bb2d7a575c2407184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
