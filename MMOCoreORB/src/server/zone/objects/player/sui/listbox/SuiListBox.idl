@@ -43,17 +43,23 @@ class SuiListBox extends SuiBox {
 	 */
 	public native void addMenuItem(final string name, unsigned long objectID = 0);
 
-	public string getMenuItemName(int index){
-		SuiListBoxMenuItem menuItem = menuItems.get(index);
+	public string getMenuItemName(int index) {
+		if (index < menuItems.size()) {
+			SuiListBoxMenuItem menuItem = menuItems.get(index);
 		
-		return menuItem.getOptionName();
+			if (menuItem) {
+				return menuItem.getOptionName();
+			}
+		}
+
+		return "";
 	}
 
 	/**
 	 * Clears all Menu Items from the list box
 	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
 	 */
-	public void removeAllMenuItems(){
+	public void removeAllMenuItems() {
 		menuItems.removeAll();
 	}
 
@@ -76,19 +82,19 @@ class SuiListBox extends SuiBox {
 	@local
 	public native BaseMessage generateMessage();
 
-	public void setNextBox(unsigned int boxID){
+	public void setNextBox(unsigned int boxID) {
 		next = boxID;
 	}
 
-	public void setPreviousBox(unsigned int boxID){
+	public void setPreviousBox(unsigned int boxID) {
 		previous = boxID;
 	}
 
-	public unsigned long getNextBox(){
+	public unsigned long getNextBox() {
 		return next;
 	}
 
-	public unsigned long getPreviousBox(){
+	public unsigned long getPreviousBox() {
 		return previous;
 	}
 	
