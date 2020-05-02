@@ -150,10 +150,10 @@ function GeonosianLab:createContainerLoot(pContainer)
 end
 
 function GeonosianLab:notifyContainerLooted(pContainer, pLooter)
-	if pItem == nil or pLooter == nil or not SceneObject(pLooter):isCreatureObject() then
+	if pContainer == nil or pLooter == nil or not SceneObject(pLooter):isCreatureObject() then
 		return 1
 	end
-
+	
 	createEvent(600 * 1000, "GeonosianLab", "createContainerLoot", pContainer, "")
 
 	return 1
@@ -676,7 +676,7 @@ function GeonosianLab:notifyExitedBunker(pBuilding, pPlayer)
 	deleteData(playerID .. ":geoEngineerState")
 	deleteData(playerID .. ":geoAssistantState")
 	deleteData(playerID .. ":geo_security_tech_talked")
-	CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_tenloss")
+	deleteData(playerID .. ":geoHumanScientistState")
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
 
@@ -726,13 +726,15 @@ function GeonosianLab:respawnDebris(pDebris, index)
 		return
 	end
 
+	SceneObject(pDebris):destroyObjectFromDatabase()
+
 	local debrisData = self.debrisLocs[tonumber(index)]
 
-	pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, 1, 0, 0, 0)
+	local newDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
 
-	if (pDebris ~= nil) then
-		writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
-		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", pDebris)
+	if (newDebris ~= nil) then
+		writeData(SceneObject(newDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
+		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", newDebris)
 	end
 end
 
@@ -744,7 +746,6 @@ function GeonosianLab:notifyDebrisDestroyed(pDebris, pPlayer)
 	local index = readData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex")
 
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "yavin4", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
-	createEvent(1000, "Warren", "destroySceneObject", pDebris, "")
 	createEvent(180000, "GeonosianLab", "respawnDebris", pDebris, tostring(index))
 	CreatureObject(pPlayer):clearCombatState(1)
 

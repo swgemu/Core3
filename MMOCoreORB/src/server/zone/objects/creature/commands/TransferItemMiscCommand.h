@@ -183,7 +183,7 @@ public:
 
 		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != nullptr || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != nullptr);
 
-		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != nullptr);
+		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != nullptr || (objectToTransfer->getParentRecursively(SceneObjectType::CONTAINER)) != nullptr);
 
 		Locker clocker(objectsParent, creature);
 
@@ -216,4 +216,3 @@ public:
 };
 
 #endif //TRANSFERITEMMISCCOMMAND_H_
-
