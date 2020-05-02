@@ -133,7 +133,7 @@ function GeonosianLab:createContainerLoot(pContainer)
 
 	local containerNum = readData(SceneObject(pContainer):getObjectID() .. ":containerNum")
 
-	if (containerNum == 0) then
+	if (containerNum == 0 or containerNum > #self.lootContainers) then
 		return
 	end
 
@@ -150,7 +150,7 @@ function GeonosianLab:createContainerLoot(pContainer)
 end
 
 function GeonosianLab:notifyContainerLooted(pContainer, pLooter)
-	if pItem == nil or pLooter == nil or not SceneObject(pLooter):isCreatureObject() then
+	if pContainer == nil or pLooter == nil or not SceneObject(pLooter):isCreatureObject() then
 		return 1
 	end
 
@@ -609,7 +609,6 @@ function GeonosianLab:keypadSuiCallback(pPlayer, pSui, eventIndex, code, pressed
 			local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 			if (pGhost ~= nil) then
-				printf("starting slicing session on " .. SceneObject(pKeypad):getObjectID() .. "\n")
 				PlayerObject(pGhost):startSlicingSession(pKeypad, true)
 			end
 		end
@@ -676,7 +675,7 @@ function GeonosianLab:notifyExitedBunker(pBuilding, pPlayer)
 	deleteData(playerID .. ":geoEngineerState")
 	deleteData(playerID .. ":geoAssistantState")
 	deleteData(playerID .. ":geo_security_tech_talked")
-	CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_tenloss")
+	deleteData(playerID .. ":geoHumanScientistState")
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
 
@@ -722,17 +721,13 @@ function GeonosianLab:giveGeoItem(pPlayer, itemTemplate)
 end
 
 function GeonosianLab:respawnDebris(pDebris, index)
-	if (pDebris == nil) then
-		return
-	end
-
 	local debrisData = self.debrisLocs[tonumber(index)]
 
-	pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, 1, 0, 0, 0)
+	local pNewDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
 
-	if (pDebris ~= nil) then
-		writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
-		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", pDebris)
+	if (pNewDebris ~= nil) then
+		writeData(SceneObject(pNewDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
+		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", pNewDebris)
 	end
 end
 
@@ -744,9 +739,10 @@ function GeonosianLab:notifyDebrisDestroyed(pDebris, pPlayer)
 	local index = readData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex")
 
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "yavin4", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
-	createEvent(1000, "Warren", "destroySceneObject", pDebris, "")
-	createEvent(180000, "GeonosianLab", "respawnDebris", pDebris, tostring(index))
+	createEvent(3 * 60 * 1000, "GeonosianLab", "respawnDebris", nil, tostring(index))
 	CreatureObject(pPlayer):clearCombatState(1)
+
+	SceneObject(pDebris):destroyObjectFromWorld();
 
 	return 1
 end
