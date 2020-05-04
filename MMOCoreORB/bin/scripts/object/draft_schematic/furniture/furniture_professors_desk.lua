@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_professors_desk = object_draft_schematic_furniture_shared_furniture_professors_desk:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_professors_desk, "object/draft_schematic/furniture/furniture_professors_desk.iff")

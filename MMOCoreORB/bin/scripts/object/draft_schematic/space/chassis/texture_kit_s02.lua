@@ -50,7 +50,8 @@ object_draft_schematic_space_chassis_texture_kit_s02 = object_draft_schematic_sp
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 44, 
 

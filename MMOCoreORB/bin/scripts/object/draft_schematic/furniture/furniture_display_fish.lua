@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_display_fish = object_draft_schematic_furniture_shared_furniture_display_fish:new {
-
+	factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_display_fish, "object/draft_schematic/furniture/furniture_display_fish.iff")

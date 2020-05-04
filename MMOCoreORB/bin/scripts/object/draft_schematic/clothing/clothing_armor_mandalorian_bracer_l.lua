@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_armor_mandalorian_bracer_l = object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_mandalorian_bracer_l, "object/draft_schematic/clothing/clothing_armor_mandalorian_bracer_l.iff")

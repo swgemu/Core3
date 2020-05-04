@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_rifle_quest_rebel_longrifle = object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_quest_rebel_longrifle, "object/draft_schematic/weapon/rifle_quest_rebel_longrifle.iff")

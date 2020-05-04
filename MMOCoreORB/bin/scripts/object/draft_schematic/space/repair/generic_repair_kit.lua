@@ -50,7 +50,8 @@ object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 70, 
 

@@ -50,11 +50,11 @@ object_draft_schematic_furniture_furniture_table_gambling = object_draft_schemat
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
-
+   factoryCrateSize = 0,
+   factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
    xpType = "crafting_spice", 
    xp = 140, 
-
-   factoryCrateSize = 0,
 
    assemblySkill = "spice_assembly", 
    experimentingSkill = "spice_experimentation", 

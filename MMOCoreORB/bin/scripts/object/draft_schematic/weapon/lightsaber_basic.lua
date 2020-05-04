@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_lightsaber_basic = object_draft_schematic_weapon_shared_lightsaber_basic:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_basic, "object/draft_schematic/weapon/lightsaber_basic.iff")

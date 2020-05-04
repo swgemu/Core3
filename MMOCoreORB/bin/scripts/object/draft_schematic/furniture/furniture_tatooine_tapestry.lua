@@ -50,11 +50,11 @@ object_draft_schematic_furniture_furniture_tatooine_tapestry = object_draft_sche
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
-
+   factoryCrateSize = 0,
+   factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
    xpType = "crafting_clothing_general", 
    xp = 340, 
-   
-   factoryCrateSize = 0,
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 

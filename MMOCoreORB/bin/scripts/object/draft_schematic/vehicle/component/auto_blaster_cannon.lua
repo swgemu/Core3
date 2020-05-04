@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_auto_blaster_cannon = object_draft_schematic_vehicle_component_shared_auto_blaster_cannon:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_auto_blaster_cannon, "object/draft_schematic/vehicle/component/auto_blaster_cannon.iff")

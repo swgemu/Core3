@@ -50,7 +50,8 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 140, 
 

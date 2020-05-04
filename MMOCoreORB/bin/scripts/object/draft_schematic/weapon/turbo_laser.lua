@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_turbo_laser = object_draft_schematic_weapon_shared_turbo_laser:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_turbo_laser, "object/draft_schematic/weapon/turbo_laser.iff")

@@ -50,7 +50,8 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "jedi_general", 
    xp = 0, 
 

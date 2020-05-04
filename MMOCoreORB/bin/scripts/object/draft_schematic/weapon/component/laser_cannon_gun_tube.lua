@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_laser_cannon_gun_tube = object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_laser_cannon_gun_tube, "object/draft_schematic/weapon/component/laser_cannon_gun_tube.iff")

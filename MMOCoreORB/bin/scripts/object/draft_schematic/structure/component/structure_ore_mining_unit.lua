@@ -51,7 +51,8 @@ object_draft_schematic_structure_component_structure_ore_mining_unit = object_dr
 	complexity = 12,
 	size = 1,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1200,
 

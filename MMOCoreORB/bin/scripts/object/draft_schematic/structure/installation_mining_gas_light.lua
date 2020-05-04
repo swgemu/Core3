@@ -51,7 +51,8 @@ object_draft_schematic_structure_installation_mining_gas_light = object_draft_sc
 	complexity = 18,
 	size = 10,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_general",
 	xp = 425,
 

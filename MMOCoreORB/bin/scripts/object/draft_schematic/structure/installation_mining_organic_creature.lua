@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_structure_installation_mining_organic_creature = object_draft_schematic_structure_shared_installation_mining_organic_creature:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_organic_creature, "object/draft_schematic/structure/installation_mining_organic_creature.iff")

@@ -50,7 +50,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_nutri
    craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
    complexity = 26, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_chemicals.iff",
+   
    xpType = "crafting_bio_engineer_creature", 
    xp = 220, 
 

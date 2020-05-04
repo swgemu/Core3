@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_launcher = object_draft_schematic_vehicle_component_shared_launcher:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_launcher, "object/draft_schematic/vehicle/component/launcher.iff")

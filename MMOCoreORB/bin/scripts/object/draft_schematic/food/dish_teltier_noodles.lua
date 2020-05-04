@@ -50,7 +50,8 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_general", 
    xp = 75, 
 

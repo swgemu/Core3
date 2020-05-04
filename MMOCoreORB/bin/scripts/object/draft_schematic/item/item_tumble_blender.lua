@@ -51,7 +51,8 @@ object_draft_schematic_item_item_tumble_blender = object_draft_schematic_item_sh
 	complexity = 12,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
 	xpType = "crafting_general",
 	xp = 36,
 

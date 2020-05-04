@@ -50,7 +50,8 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 14, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 60, 
 
