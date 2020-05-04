@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_energization_crystals = object_draft_schematic_weapon_component_shared_energization_crystals:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_energization_crystals, "object/draft_schematic/weapon/component/energization_crystals.iff")

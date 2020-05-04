@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_structural_frame_advanced = object_draft_schematic_vehicle_component_shared_structural_frame_advanced:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_structural_frame_advanced, "object/draft_schematic/vehicle/component/structural_frame_advanced.iff")

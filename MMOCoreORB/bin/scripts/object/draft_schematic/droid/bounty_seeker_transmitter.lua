@@ -51,6 +51,7 @@ object_draft_schematic_droid_bounty_seeker_transmitter = object_draft_schematic_
 	complexity = 16,
 	size = 1,
 	factoryCrateSize = 5,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 300,

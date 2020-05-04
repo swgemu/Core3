@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_galven_tube_circuits = object_draft_schematic_weapon_component_shared_galven_tube_circuits:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_galven_tube_circuits, "object/draft_schematic/weapon/component/galven_tube_circuits.iff")

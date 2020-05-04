@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_shisa = object_draft_schematic_furniture_shared_furniture_shisa:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_shisa, "object/draft_schematic/furniture/furniture_shisa.iff")

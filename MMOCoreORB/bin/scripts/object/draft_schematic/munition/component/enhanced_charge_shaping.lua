@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_component_enhanced_charge_shaping = object_draft_schematic_munition_component_shared_enhanced_charge_shaping:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_enhanced_charge_shaping, "object/draft_schematic/munition/component/enhanced_charge_shaping.iff")

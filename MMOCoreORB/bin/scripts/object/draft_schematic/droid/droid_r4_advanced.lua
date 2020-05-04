@@ -51,6 +51,7 @@ object_draft_schematic_droid_droid_r4_advanced = object_draft_schematic_droid_sh
 	complexity = 25,
 	size = 1,
 	factoryCrateSize = 5,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 100,

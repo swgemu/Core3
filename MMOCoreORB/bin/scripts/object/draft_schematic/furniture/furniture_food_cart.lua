@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_food_cart = object_draft_schematic_furniture_shared_furniture_food_cart:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_food_cart, "object/draft_schematic/furniture/furniture_food_cart.iff")

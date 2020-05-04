@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_medpack_wound_action = object_draft_schematic_chemistry_shared_medpack_wound_action:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_wound_action, "object/draft_schematic/chemistry/medpack_wound_action.iff")

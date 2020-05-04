@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_jewelry_ring_03 = object_draft_schematic_clothing_shared_clothing_jewelry_ring_03:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_jewelry_ring_03, "object/draft_schematic/clothing/clothing_jewelry_ring_03.iff")

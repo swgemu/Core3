@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
 	complexity = 19,
 	size = 2,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 440,
 

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_hvy_projectile_feed_mech = object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_hvy_projectile_feed_mech, "object/draft_schematic/vehicle/component/hvy_projectile_feed_mech.iff")

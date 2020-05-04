@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_
 	complexity = 15,
 	size = 2,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 350,
 

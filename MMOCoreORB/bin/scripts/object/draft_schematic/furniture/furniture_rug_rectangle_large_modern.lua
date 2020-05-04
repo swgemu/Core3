@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_rug_rectangle_large_modern = object_draft_schematic_furniture_shared_furniture_rug_rectangle_large_modern:new {
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_rug_rectangle_large_modern, "object/draft_schematic/furniture/furniture_rug_rectangle_large_modern.iff")

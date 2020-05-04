@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_bacta_tank_large = object_draft_schematic_furniture_shared_furniture_bacta_tank_large:new {
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bacta_tank_large, "object/draft_schematic/furniture/furniture_bacta_tank_large.iff")

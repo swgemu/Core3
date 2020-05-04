@@ -51,6 +51,7 @@ object_draft_schematic_droid_droid_mse = object_draft_schematic_droid_shared_dro
 	complexity = 15,
 	size = 1,
 	factoryCrateSize = 10,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 140,

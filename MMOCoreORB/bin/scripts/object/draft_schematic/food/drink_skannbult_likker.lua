@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_skannbult_likker = object_draft_schematic_food_shared_drink_skannbult_likker:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_skannbult_likker, "object/draft_schematic/food/drink_skannbult_likker.iff")

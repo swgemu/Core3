@@ -50,7 +50,8 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 35, 
 

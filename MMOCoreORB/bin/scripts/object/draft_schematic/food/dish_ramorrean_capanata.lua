@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_ramorrean_capanata = object_draft_schematic_food_shared_dish_ramorrean_capanata:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_ramorrean_capanata, "object/draft_schematic/food/dish_ramorrean_capanata.iff")

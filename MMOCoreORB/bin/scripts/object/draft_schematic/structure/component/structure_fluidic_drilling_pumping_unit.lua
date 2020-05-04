@@ -51,7 +51,8 @@ object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_un
 	complexity = 13,
 	size = 4,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1170,
 

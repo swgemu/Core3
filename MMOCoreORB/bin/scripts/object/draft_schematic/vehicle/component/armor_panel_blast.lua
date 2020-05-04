@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_armor_panel_blast = object_draft_schematic_vehicle_component_shared_armor_panel_blast:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_armor_panel_blast, "object/draft_schematic/vehicle/component/armor_panel_blast.iff")

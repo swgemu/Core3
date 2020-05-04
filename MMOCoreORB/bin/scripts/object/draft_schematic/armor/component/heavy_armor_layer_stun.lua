@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_component_heavy_armor_layer_stun = object_draft_schematic_armor_component_shared_heavy_armor_layer_stun:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_heavy_armor_layer_stun, "object/draft_schematic/armor/component/heavy_armor_layer_stun.iff")

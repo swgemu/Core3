@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_chassis_firespray = object_draft_schematic_space_chassis_shared_firespray:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_firespray, "object/draft_schematic/space/chassis/firespray.iff")

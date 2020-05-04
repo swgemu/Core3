@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_reverse_engineering_reactor_analysis_tool = object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_reactor_analysis_tool, "object/draft_schematic/space/reverse_engineering/reactor_analysis_tool.iff")

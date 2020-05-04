@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dessert_puffcake = object_draft_schematic_food_shared_dessert_puffcake:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_puffcake, "object/draft_schematic/food/dessert_puffcake.iff")

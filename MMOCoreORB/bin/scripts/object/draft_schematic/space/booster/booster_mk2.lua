@@ -50,7 +50,8 @@ object_draft_schematic_space_booster_booster_mk2 = object_draft_schematic_space_
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 0, 
-
+   factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
    xpType = "shipwright", 
    xp = 125, 
 
