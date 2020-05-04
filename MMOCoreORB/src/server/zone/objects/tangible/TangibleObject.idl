@@ -726,7 +726,7 @@ class TangibleObject extends SceneObject {
 	 * Creates a factory crate for this object, can insert this object or a clone
 	 */
 	@reference
-	public native FactoryCrate createFactoryCrate(int maxSize, boolean insertSelf = false);
+	public native FactoryCrate createFactoryCrate(int maxSize, string type, boolean insertSelf = false);
 
 	@dirty
 	public native boolean canRepair(CreatureObject player);
