@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_antakarian_fire_dancer = object_draft_schematic_food_shared_drink_antakarian_fire_dancer:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_antakarian_fire_dancer, "object/draft_schematic/food/drink_antakarian_fire_dancer.iff")

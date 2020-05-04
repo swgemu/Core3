@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_carbine_quest_smuggler_underslung = object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_carbine_quest_smuggler_underslung, "object/draft_schematic/weapon/carbine_quest_smuggler_underslung.iff")

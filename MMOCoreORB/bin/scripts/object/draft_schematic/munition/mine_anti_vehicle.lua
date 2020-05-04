@@ -50,7 +50,8 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 3, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 60, 
 

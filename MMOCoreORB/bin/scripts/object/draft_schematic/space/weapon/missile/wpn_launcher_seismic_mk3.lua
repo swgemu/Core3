@@ -51,7 +51,8 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_seismic_mk3 = object_dr
 	complexity = 23,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 1250,
 

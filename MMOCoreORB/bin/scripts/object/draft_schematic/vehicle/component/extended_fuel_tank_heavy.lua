@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_extended_fuel_tank_heavy = object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_extended_fuel_tank_heavy, "object/draft_schematic/vehicle/component/extended_fuel_tank_heavy.iff")

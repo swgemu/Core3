@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_starship_shield_generator_mk1 = object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_starship_shield_generator_mk1, "object/draft_schematic/vehicle/component/starship_shield_generator_mk1.iff")

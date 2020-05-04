@@ -50,7 +50,8 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_food_general", 
    xp = 200, 
 

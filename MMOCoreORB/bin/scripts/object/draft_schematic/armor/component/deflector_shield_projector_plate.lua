@@ -51,6 +51,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
 	complexity = 30,
 	size = 2,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_armor.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 80,

@@ -51,7 +51,8 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
 	complexity = 13,
 	size = 10,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 2400,
 

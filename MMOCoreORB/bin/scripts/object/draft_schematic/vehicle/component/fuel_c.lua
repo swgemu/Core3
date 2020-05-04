@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_fuel_c = object_draft_schematic_vehicle_component_shared_fuel_c:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_fuel_c, "object/draft_schematic/vehicle/component/fuel_c.iff")

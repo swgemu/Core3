@@ -50,7 +50,8 @@ object_draft_schematic_space_engine_engine_limiter_mk4 = object_draft_schematic_
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 0, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 313, 
 

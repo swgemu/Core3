@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_power_plant_mk2 = object_draft_schematic_vehicle_component_shared_power_plant_mk2:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_power_plant_mk2, "object/draft_schematic/vehicle/component/power_plant_mk2.iff")

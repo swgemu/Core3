@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_med_stimpack_state_dizzy_b = object_draft_schematic_chemistry_shared_med_stimpack_state_dizzy_b:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_state_dizzy_b, "object/draft_schematic/chemistry/med_stimpack_state_dizzy_b.iff")

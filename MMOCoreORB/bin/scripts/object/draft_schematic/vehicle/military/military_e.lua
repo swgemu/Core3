@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_military_military_e = object_draft_schematic_vehicle_military_shared_military_e:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_military_e, "object/draft_schematic/vehicle/military/military_e.iff")

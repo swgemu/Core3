@@ -50,7 +50,8 @@ object_draft_schematic_food_dish_ahrisa = object_draft_schematic_food_shared_dis
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_food_general", 
    xp = 120, 
 

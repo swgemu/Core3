@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_item_item_powerup_weapon_melee_lightsaber = object_draft_schematic_item_shared_item_powerup_weapon_melee_lightsaber:new {
-
+    factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_melee_lightsaber, "object/draft_schematic/item/item_powerup_weapon_melee_lightsaber.iff")

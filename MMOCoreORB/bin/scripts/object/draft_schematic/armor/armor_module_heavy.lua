@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_armor_module_heavy = object_draft_schematic_armor_shared_armor_module_heavy:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_module_heavy, "object/draft_schematic/armor/armor_module_heavy.iff")

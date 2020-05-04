@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen5 = object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen5, "object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen5.iff")

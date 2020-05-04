@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
 	complexity = 18,
 	size = 1,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 250,
 

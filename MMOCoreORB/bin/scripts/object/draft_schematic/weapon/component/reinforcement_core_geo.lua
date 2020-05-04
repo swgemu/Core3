@@ -50,7 +50,8 @@ object_draft_schematic_weapon_component_reinforcement_core_geo = object_draft_sc
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 25, 
 
