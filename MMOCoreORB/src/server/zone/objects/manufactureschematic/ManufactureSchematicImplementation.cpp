@@ -614,3 +614,10 @@ int ManufactureSchematicImplementation::getLabratory() {
 
 	return draftSchematic->getLabratory();
 }
+
+String ManufactureSchematicImplementation::getFactoryCrateType() {
+		if (draftSchematic == nullptr)
+		return;
+
+	return draftSchematic->getFactoryCrateType();
+}

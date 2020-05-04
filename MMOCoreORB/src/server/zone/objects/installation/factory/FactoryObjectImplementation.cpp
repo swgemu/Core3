@@ -574,10 +574,12 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	if (crateSize > 1) {
+		String crateType = schematic->getFactoryCrateType();
+
 		ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(prototype);
 
 		if (crate == nullptr)
-			crate = createNewFactoryCrate(prototype, crateSize);
+			crate = createNewFactoryCrate(prototype, crateSize, crateType);
 		else {
 			Locker clocker(crate, _this.getReferenceUnsafeStaticCast());
 			crate->setUseCount(crate->getUseCount() + 1, false);
@@ -648,11 +650,11 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 	return nullptr;
 }
 
-FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype, int maxSize) {
+FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype, int maxSize, String &type) {
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
-	if(outputHopper == nullptr) {
+	if(outputHopper == nullptr || type == nullptr) {
 		stopFactory("manf_error_6", "", "", -1);
 		return nullptr;
 	}
@@ -662,7 +664,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return nullptr;
 	}
 
-	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(maxSize, false);
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(maxSize, type, false);
 
 	if (crate == nullptr) {
 		stopFactory("manf_error_7", "", "", -1);
