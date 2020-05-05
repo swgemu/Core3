@@ -297,7 +297,13 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 			if (!playerManager->doBurstRun(player, hamModifier, cooldownModifier))
 				return 0;
-
+		} else if (effect == "wookiee_roar") {
+			uint64 target = player->getTargetID();
+			player->enqueueCommand(STRING_HASHCODE("wookieeroar"), 0, target, "", 1);
+		} else if (effect == "enhanced_regen") {
+			uint64 target = player->getObjectID();
+			String regenBonus = String::valueOf(nutrition);
+			player->enqueueCommand(STRING_HASHCODE("regeneration"), 0, target, regenBonus, 1);
 		} else if (effect == "food_reduce") {
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
