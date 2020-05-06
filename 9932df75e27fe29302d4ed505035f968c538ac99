@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_66ede08b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegenerationCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-05-06T04:21:09Z",
+      "side": 1,
+      "message": "Please fix all trailing white spaces",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "9932df75e27fe29302d4ed505035f968c538ac99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
