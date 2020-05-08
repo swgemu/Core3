@@ -507,6 +507,11 @@ function JediTrials:completeKnightForTesting(pPlayer, councilType)
 			enclaveLoc = { 5079, 0, 305 }
 		end
 
+		local player = CreatureObject(pPlayer)
+
+		if (player:isRidingMount()) then
+			player:dismount()
+		end
 		SceneObject(pPlayer):switchZone("yavin4", enclaveLoc[1], enclaveLoc[2], enclaveLoc[3], 0)
 	end
 end
