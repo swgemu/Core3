@@ -893,6 +893,11 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	end
 
 	local cellID = SceneObject(pCell):getObjectID()
+	local player = CreatureObject(pPlayer)
+
+	if (player:isRidingMount()) then
+		player:dismount()
+	end
 	SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellID)
 end
 
