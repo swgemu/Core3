@@ -49,13 +49,20 @@ CustomizationVariables& CustomizationVariables::operator=(const CustomizationVar
 }
 
 void CustomizationVariables::setVariable(uint8 type, int16 value) {
+#if DEBUG_CUSTOMIZATION_PARSING
+	if (debug) {
+		auto msg = Logger::console.info(true);
+		msg << "CustomizationVariables::setVariable(type=" << type << " [";
+		msg << CustomizationIdManager::instance()->getCustomizationVariable(type) << "], value=" << value << ")";
+		msg.flush();
+	}
+#endif // DEBUG_CUSTOMIZATION_PARSING
 	if (!contains(type))
 		keyIndex.add(type);
 
 	drop(type);
 
 	put(type, value);
-	//System::out << "inserted type:[" << hex << type << "] value:[" << hex << value << "]\n";
 }
 
 void CustomizationVariables::setVariable(const String& type, int16 value) {
@@ -115,104 +122,106 @@ void CustomizationVariables::getData(String& ascii) const {
 }
 
 void CustomizationVariables::parseFromClientString(const String& custString) {
-	/*const char* array = custString.toCharArray();
-
-	StringBuffer str;
-	str << "parsing CustomizationString [" << custString.length() << "] " << uppercase << hex;
-
-	for (int i = 0; i < custString.length(); ++i) {
-		unsigned int byte = ((unsigned int) array[i]) & 0xFF;
-
-		if ((byte & 0xF0) == 0)
-			str << "0" << hex << byte  << " ";
-		else
-			str << hex << byte  << " ";
-	}
-
-	Logger::console.info(str.toString(), true);
-
-*/
 	removeAll();
 	keyIndex.removeAll();
 
 	if (custString.length() < 2)
 		return;
 
-	try {
-		unknown = (uint8) custString.charAt(0);
-		//uint8 type = 0;
+	auto logHexDump = [](const String& msg, const String& str, int offset = 0, bool isError = false) -> void {
+		auto logmsg = isError ? Logger::console.error() : Logger::console.info(true);
 
-		int totalVars = (uint8) custString.charAt(1);
-		int offset = 1;
+		logmsg << msg << " [" << str.length() << "]" << uppercase << hex;
+
+		while (offset < str.length()) {
+			uint8 byte = str.charAt(offset++);
+
+			logmsg << ((byte & 0xF0) ? " " : " 0");
+			logmsg << hex << byte;
+		}
+
+		logmsg.flush();
+	};
+
+#if DEBUG_CUSTOMIZATION_PARSING
+	debug = true;
+	logHexDump("parsing CustomizationString", custString);
+#endif // DEBUG_CUSTOMIZATION_PARSING
+
+	try {
+		int offset = 0;
+
+		// Return next decoded byte (after any escapes as needed)
+		auto nextByte = [&] () mutable -> uint8 {
+			uint8 byte = custString.charAt(offset++);
+#if DEBUG_CUSTOMIZATION_PARSING
+			auto logmsg = Logger::console.info(true);
+			logmsg << "nextByte@" << (offset-1) << " = " << byte;
+#endif // DEBUG_CUSTOMIZATION_PARSING
+
+			if (byte == 0xFF) { // Handle escape
+				byte = custString.charAt(offset++);
+#if DEBUG_CUSTOMIZATION_PARSING
+				logmsg << "; escapeCode@" << (offset-1) << " = " << byte;
+#endif // DEBUG_CUSTOMIZATION_PARSING
+
+				switch(byte) {
+				case 0x01: byte = 0x00; break;
+				case 0x02: byte = 0xFF; break;
+				case 0x03:
+					throw Exception("unexpected EOS at " + String::valueOf(offset));
+				default:
+					throw Exception("unexpected escape byte [0x" + String::hexvalueOf(byte) + " at " + String::valueOf(offset));
+				}
+			}
+
+#if DEBUG_CUSTOMIZATION_PARSING
+			logmsg << "; returning " << byte << " [0x" << hex << byte << "]";
+			logmsg.flush();
+#endif // DEBUG_CUSTOMIZATION_PARSING
+			return byte;
+		};
+
+		unknown = nextByte(); // Always 1
+
+		if (unknown != 1) {
+			Logger::console.error("unexpected value for unknown in parseFromClientString: " + String::valueOf(unknown));
+		}
+
+		int totalVars = nextByte();
 
 		if (totalVars == 0xFF)
 			return;
 
 		for (int i = 0; i < totalVars; ++i) {
-			uint8 value;
+#if DEBUG_CUSTOMIZATION_PARSING
+			logHexDump("Variable #" + String::valueOf(i+1), custString, offset);
+#endif // DEBUG_CUSTOMIZATION_PARSING
 
-			uint8 type = (uint8) custString.charAt(++offset);
+			uint8 type = nextByte();
+			int16 value = nextByte();
 
-			bool isSigned = false;
-
-			if (type & 0x80) { //signed type
+			if (type & 0x80) { // signed value
 				type &= 0x7F;
-
-				isSigned = true;
+				value |= (nextByte() << 8);
 			}
 
-			uint8 value1 = (uint8) custString.charAt(++offset);
+			setVariable(type, value);
+		}
 
-			if (isSigned) {
-				if (value1 != 0xFF) {
-					uint8 footer1 = custString.charAt(++offset);
-					uint8 footer2 = custString.charAt(++offset);
+#if DEBUG_CUSTOMIZATION_PARSING
+		logHexDump("after parsing CustomizationString", custString, offset);
+		debug = false;
+#endif // DEBUG_CUSTOMIZATION_PARSING
 
-					if (footer2 == 2) { //negative
-						setVariable(type, 0xFF00 | value1);
-					} else { // positive
-						setVariable(type, value1);
-					}
-				} else {
-					setVariable(type, value1);
-				}
-			} else {
-				if (value1 == 0xFF) {
-					value1 = custString.charAt(++offset);
-
-					if (value1 == 0x01)
-						value = 0x00; // zero
-					else // value1 == 0x02
-						value = 0xFF; // 255
-				} else {
-					value = value1;
-				}
-
-				setVariable(type, value);
-			}
+		if (custString.subString(offset) != "\xFF\x03") {
+			throw Exception("Did not see EOS after parsing, offset=" + String::valueOf(offset));
 		}
 	} catch (Exception& e) {
 		removeAll();
 		StackTrace::printStackTrace();
-		Logger::console.error("Exception in CustomizationVariables& operator=(String& custString)\n");
-
-		const char* array = custString.toCharArray();
-
-		StringBuffer str;
-		str << "parsing CustomizationString [" << custString.length() << "] " << uppercase << hex;
-
-		for (int i = 0; i < custString.length(); ++i) {
-			unsigned int byte = ((unsigned int) array[i]) & 0xFF;
-
-			if ((byte & 0xF0) == 0)
-				str << "0" << hex << byte  << " ";
-			else
-				str << hex << byte  << " ";
-		}
-
-		Logger::console.error(str.toString());
+		logHexDump("Exception in " + String(__FUNCTION__) + e.getMessage(), custString, 0, true);
 	}
-
 }
 
 
