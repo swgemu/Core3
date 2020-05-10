@@ -391,7 +391,7 @@ bool ConfigManager::parseConfigJSON(const JSONSerializationType jsonData, String
 
 	try {
 		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
-	} catch (JSONSerializationType::exception e) {
+	} catch (const JSONSerializationType::exception& e) {
 		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
 		error() << "parseConfigJSON: " << errorMessage;
 	} catch (const Exception& e) {
@@ -417,7 +417,7 @@ bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessa
 	try {
 		JSONSerializationType jsonData = JSONSerializationType::parse(jsonString);
 		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
-	} catch (JSONSerializationType::exception e) {
+	} catch (const JSONSerializationType::exception& e) {
 		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
 		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
 	} catch (const Exception& e) {
