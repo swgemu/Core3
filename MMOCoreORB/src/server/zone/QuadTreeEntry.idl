@@ -34,6 +34,8 @@ class QuadTreeEntry extends Observable {
 	transient protected CloseObjectsVector closeobjects;
 
 	protected float radius;
+	protected float radiusX;
+	protected int areaType;
 
 	public native QuadTreeEntry(QuadTreeNode n = null);
 
@@ -105,15 +107,17 @@ class QuadTreeEntry extends Observable {
 
 	@dirty
 	public abstract boolean isInRange(float x, float y, float range) {
-	 	float rangesq = range * range;
+		if (!areaType) {
+			float deltaX = x - coordinates.getPositionX();
+			float deltaY = y - coordinates.getPositionY();
 
-		float deltaX = x - coordinates.getPositionX();
-		float deltaY = y - coordinates.getPositionY();
+			if (deltaX * deltaX + deltaY * deltaY <= range * range)
+				return true;
+			else
+				return false;
+		}
 
-		if (deltaX * deltaX + deltaY * deltaY <= rangesq)
-			return true;
-		else
-			return false;
+		return containsPoint(x, y, range);	
 	}
 
 	@read
@@ -147,6 +151,25 @@ class QuadTreeEntry extends Observable {
 
 	@read
 	public abstract native boolean containsPoint(float x, float y);
+
+	@read
+	public abstract native boolean containsPoint(float x, float y, float range);
+
+	@read
+	@local
+	private abstract native boolean globalContainsPoint(float x, float y);	
+
+	@read
+	@local
+	private abstract native boolean circleContainsPoint(float x, float y, float range);
+
+	@read
+	@local
+	private abstract native boolean rectangleContainsPoint(float x, float y, float range);
+
+	@read
+	@local
+	private abstract native boolean ringContainsPoint(float x, float y, float range);
 
 	@dirty
 	public native QuadTreeEntry getRootParent();
@@ -294,8 +317,21 @@ class QuadTreeEntry extends Observable {
 		bounding = true;
 	}
 
-	public void setRadius(float rad) {
-		radius = rad;
+	public void setRadius(float value) {
+		radius = value;
+	}
+
+	@local
+	public void setDimensions(float value, float valueX, int type) {
+		if (type == 2 || type == 3) {
+			radius  = value;
+			radiusX = valueX;
+		}
+		else {
+			radius = value;
+		}
+		
+		areaType = type;
 	}
 
 	public void clearBounding() {

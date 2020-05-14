@@ -5,20 +5,22 @@ Distribution of this file for usage outside of Core3 is prohibited.
 
 #include <autogen/server/zone/ZoneServer.h>
 #include "server/zone/QuadTreeEntry.h"
-
 #include "server/zone/QuadTreeNode.h"
 
 QuadTreeEntryImplementation::QuadTreeEntryImplementation(QuadTreeNode* n) {
 	node = n;
 	bounding = false;
 
-	//visibilityRange = 128;
-
 	closeobjects = nullptr;
 
-	//closeobjects.setInsertPlan(SortedVector<QuadTreeEntry*>::NO_DUPLICATE);
-
 	radius = 0.5f;
+	radiusX = 0.0f;
+
+	areaType = 0;
+
+	//	areaType:	0:DEFAULT	1:CICLE		2:RECTANGLE		3:RING		-1:GLOBAL
+	//	radius  :	= radius	= radius 	= height		= outer		:inf
+	//	radiusX :	= nil		= nil		= width			= inner		:inf
 
 	receiverFlags = 0;
 }
@@ -28,7 +30,55 @@ void QuadTreeEntryImplementation::setNode(QuadTreeNode* n) {
 }
 
 bool QuadTreeEntryImplementation::containsPoint(float px, float py) const {
-	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius * radius );
+	if (!areaType)
+		return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius * radius );
+
+	return containsPoint(px, py, 0.5f);
+}
+
+bool QuadTreeEntryImplementation::containsPoint(float px, float py, float range) const {
+	switch (areaType)
+	{
+		case -1 : return globalContainsPoint(px, py);
+
+		case  1 : return circleContainsPoint(px, py, range);
+
+		case  2 : return rectangleContainsPoint(px, py, range);
+
+		case  3 : return ringContainsPoint(px, py, range);
+
+		default : return false;
+	}
+}
+
+bool QuadTreeEntryImplementation::globalContainsPoint(float px, float py) const {
+	return px > -7680.f && px < 7680.f && py > -7680.f && py < 7680.f;
+}
+
+bool QuadTreeEntryImplementation::circleContainsPoint(float px, float py, float range) const {
+	float deltaX = px - getPositionX();
+	float deltaY = py - getPositionY();
+	float deltaR = range + radius;
+
+	return (deltaX * deltaX) + (deltaY * deltaY) <= (deltaR * deltaR);
+}
+
+bool QuadTreeEntryImplementation::rectangleContainsPoint(float px, float py, float range) const {
+	float deltaX = range + (radiusX / 2.f);
+	float deltaY = range + (radius / 2.f);
+
+	return px > (getPositionX() - deltaX) && px < (getPositionX() + deltaX)
+		&& py > (getPositionY() - deltaY) && py < (getPositionY() + deltaY);
+}
+
+bool QuadTreeEntryImplementation::ringContainsPoint(float px, float py, float range) const {
+	float deltaX  = px - getPositionX();
+	float deltaY  = py - getPositionY();
+	float deltaR  = range + radius;
+	float deltaRx = range > radiusX ? 0 : range - radiusX;
+
+	return (deltaX * deltaX) + (deltaY * deltaY) <= (deltaR * deltaR)
+		&& (deltaX * deltaX) + (deltaY * deltaY) >= (deltaRx * deltaRx);
 }
 
 bool QuadTreeEntryImplementation::isInSWArea(QuadTreeNode* node) const {
