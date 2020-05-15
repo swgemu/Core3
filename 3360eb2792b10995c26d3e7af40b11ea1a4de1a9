@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_d1710479",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GenerateCraftedItemCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "formatting, and these can just be one line",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_715d98e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/factory/FactoryObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "formatting",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_316320b3",
+        "filename": "MMOCoreORB/src/server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "formatting",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_91582cfc",
+        "filename": "MMOCoreORB/src/server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "returning 0 when its a string return type?",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_f151a8d9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "Whats this variable for if you\u0027re sending factoryCrateType as a parameter?",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_515e94ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "Aren\u0027t you sending the path of the crate type in as a parameter? is any of this needed anymore?",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_b16e1095",
+        "filename": "MMOCoreORB/src/templates/intangible/DraftSchematicObjectTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:43:26Z",
+      "side": 1,
+      "message": "what if the schematic has no factoryCrateType in its lua? Need to set a default somewhere",
+      "revId": "3360eb2792b10995c26d3e7af40b11ea1a4de1a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
