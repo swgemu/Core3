@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_d14aa426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geoLab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:36:10Z",
+      "side": 0,
+      "message": "Leave this, this isn\u0027t where the issue is, but you can fix the screenplay name",
+      "revId": "491c99e6ae25f9ad73236b4bb2d7a575c2407184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_b147301d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geoLab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:36:10Z",
+      "side": 1,
+      "message": "This is likely the actual cause of the issue, since the object is destroyed from world in destroySceneObject this would prevent it from respawning, so remove this instead",
+      "revId": "f7b54335cb0753215b6e24807034bf863a790482",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_91414c0e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geoLab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:36:10Z",
+      "side": 1,
+      "message": "this is unnecessary, the debris isnt persistent so it won\u0027t be in the database",
+      "revId": "f7b54335cb0753215b6e24807034bf863a790482",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_71463825",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geoLab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-05-15T12:36:10Z",
+      "side": 1,
+      "message": "Stick to the variable naming scheme we use elsewhere for pointers",
+      "revId": "f7b54335cb0753215b6e24807034bf863a790482",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
