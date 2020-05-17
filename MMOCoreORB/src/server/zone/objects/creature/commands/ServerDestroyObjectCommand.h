@@ -144,11 +144,15 @@ public:
 	}
 
 	void destroyObject(SceneObject* object, CreatureObject* creature) const {
+		StringIdChatParameter message("shared", "rsp_object_deleted_prose"); //You have destroyed %TT (%TO).
+        message.setTT(object->getDisplayedName());
+		message.setTO(object->getGameObjectTypeStringID());
+
 		object->destroyObjectFromWorld(true);
-
 		object->destroyObjectFromDatabase(true);
+		if(creature != nullptr)
+			creature->sendSystemMessage(message);
 	}
-
 };
 
 #endif //SERVERDESTROYOBJECTCOMMAND_H_
