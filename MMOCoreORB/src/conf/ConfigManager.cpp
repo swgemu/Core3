@@ -315,9 +315,10 @@ bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializat
 				return false;
 			}
 
+			bool isValid = true;
 			Vector <ConfigDataItem *>* elements = new Vector <ConfigDataItem *>();
 
-			for (auto jsonElement = jsonData->begin();jsonElement != jsonData->end(); ++jsonElement) {
+			for (auto jsonElement = jsonData->begin();isValid && jsonElement != jsonData->end(); ++jsonElement) {
 				switch (jsonElement->type()) {
 				case JSONSerializationType::value_t::boolean:
 					elements->add(new ConfigDataItem((bool)jsonElement.value().get<bool>()));
@@ -334,16 +335,22 @@ bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializat
 					break;
 
 				default:
+					isValid = false;
 					errorMessage = "Failed to parse json type " + String(jsonElement->type_name()) + " into array " + key;
 					error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
-					return false;
 					break;
 				}
 			}
 
-			if (!updateItem(key, new ConfigDataItem(elements))) {
+			if (isValid && !updateItem(key, new ConfigDataItem(elements))) {
+				isValid = false;
+			}
+
+			if (!isValid) {
+				delete elements;
 				return false;
 			}
+
 			continue;
 		}
 
@@ -391,7 +398,7 @@ bool ConfigManager::parseConfigJSON(const JSONSerializationType jsonData, String
 
 	try {
 		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
-	} catch (JSONSerializationType::exception e) {
+	} catch (const JSONSerializationType::exception& e) {
 		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
 		error() << "parseConfigJSON: " << errorMessage;
 	} catch (const Exception& e) {
@@ -417,7 +424,7 @@ bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessa
 	try {
 		JSONSerializationType jsonData = JSONSerializationType::parse(jsonString);
 		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
-	} catch (JSONSerializationType::exception e) {
+	} catch (const JSONSerializationType::exception& e) {
 		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
 		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
 	} catch (const Exception& e) {

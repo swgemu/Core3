@@ -36,7 +36,7 @@ class AuctionItem extends ManagedObject {
 	protected int status;
 
 	protected boolean onBazaar;
-	
+
 	protected boolean isCrate;
 	protected int cratedItemType;
 
@@ -73,7 +73,7 @@ class AuctionItem extends ManagedObject {
 		auction = true;
 
 		onBazaar = false;
-		
+
 		isCrate = false;
 		cratedItemType = 0;
 
@@ -206,6 +206,7 @@ class AuctionItem extends ManagedObject {
 		return auction;
 	}
 
+	@read
 	public int getStatus() {
 		return status;
 	}
@@ -321,27 +322,27 @@ class AuctionItem extends ManagedObject {
 	public int getSize() {
 		return size;
 	}
-	
+
 	@read
 	public int getCratedItemType() {
 		return cratedItemType;
 	}
-	
+
 	@preLocked
 	public void setCratedItemType(int type) {
 		cratedItemType = type;
 	}
-	
+
 	@read
 	public boolean isFactoryCrate() {
 		return isCrate;
 	}
-	
+
 	@preLocked
 	public void setFactoryCrate(boolean crate) {
 		isCrate = crate;
 	}
-	
+
 	@preLocked
 	public void setUpdated(boolean val) {
 		updated = val;

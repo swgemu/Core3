@@ -159,6 +159,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	speedMultiplierBase = 1.f;
 	speedMultiplierMod = 1.f;
 	currentSpeed = 0.f;
+	walkSpeed = 0.f;
+	runSpeed = 0.f;
 	turnScale = 1.f;
 
 	cooldownTimerMap = new CooldownTimerMap();
