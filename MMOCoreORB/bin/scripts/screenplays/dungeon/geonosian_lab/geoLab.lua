@@ -722,19 +722,13 @@ function GeonosianLab:giveGeoItem(pPlayer, itemTemplate)
 end
 
 function GeonosianLab:respawnDebris(pDebris, index)
-	if (pDebris == nil) then
-		return
-	end
-
-	SceneObject(pDebris):destroyObjectFromDatabase()
-
 	local debrisData = self.debrisLocs[tonumber(index)]
 
-	local newDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
+	pDebris = spawnSceneObject("yavin4", debrisData.template, debrisData.x, debrisData.z, debrisData.y, debrisData.cell, math.rad(debrisData.rot))
 
-	if (newDebris ~= nil) then
-		writeData(SceneObject(newDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
-		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", newDebris)
+	if (pDebris ~= nil) then
+		writeData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex", index)
+		createObserver(OBJECTDESTRUCTION, "GeonosianLab", "notifyDebrisDestroyed", pDebris)
 	end
 end
 
@@ -746,6 +740,7 @@ function GeonosianLab:notifyDebrisDestroyed(pDebris, pPlayer)
 	local index = readData(SceneObject(pDebris):getObjectID() .. ":geonosianLab:debrisIndex")
 
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "yavin4", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
+	createEvent(1000, "GeonosianLab", "destroySceneObject", pDebris, "")
 	createEvent(180000, "GeonosianLab", "respawnDebris", pDebris, tostring(index))
 	CreatureObject(pPlayer):clearCombatState(1)
 

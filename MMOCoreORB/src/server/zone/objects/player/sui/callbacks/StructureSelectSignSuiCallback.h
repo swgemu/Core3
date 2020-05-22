@@ -35,7 +35,7 @@ public:
 		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
 		int index = Integer::valueOf(args->get(0).toString());
 
-		if (index < 0)
+		if (index < 0 || index >= suiListBox->getMenuSize())
 			return;
 
 		String suiItem = suiListBox->getMenuItemName(index);

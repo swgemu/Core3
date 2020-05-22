@@ -9,8 +9,13 @@
 
 #include "engine/util/json_utils.h"
 
+// #define DEBUG_CUSTOMIZATION_PARSING 1
+
 class CustomizationVariables : public VectorMap<uint8, int16> {
-	uint8 unknown;
+#if DEBUG_CUSTOMIZATION_PARSING
+	bool debug = false;
+#endif // DEBUG_CUSTOMIZATION_PARSING
+	uint8 unknown = 0;
 
 	Vector<uint8> keyIndex;
 
