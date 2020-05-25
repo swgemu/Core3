@@ -159,6 +159,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	speedMultiplierBase = 1.f;
 	speedMultiplierMod = 1.f;
 	currentSpeed = 0.f;
+	walkSpeed = 0.f;
+	runSpeed = 0.f;
 	turnScale = 1.f;
 
 	cooldownTimerMap = new CooldownTimerMap();
@@ -1326,6 +1328,9 @@ void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 	} else {
 		skillList.add(skill, nullptr);
 	}
+
+	// Some skills affect player movement, update speed and acceleration.
+	updateSpeedAndAccelerationMods();
 }
 
 void CreatureObjectImplementation::removeSkill(Skill* skill, bool notifyClient) {
@@ -1343,6 +1348,9 @@ void CreatureObjectImplementation::removeSkill(Skill* skill, bool notifyClient) 
 	} else {
 		skillList.remove(skill);
 	}
+
+	// Some skills affect player movement, update speed and acceleration.
+	updateSpeedAndAccelerationMods();
 }
 
 void CreatureObjectImplementation::removeSkill(const String& skill,
@@ -1703,7 +1711,7 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 
 	if (posture == CreaturePosture::UPRIGHT) {
 		buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
-	} else if(posture == CreaturePosture::PRONE && hasBuff(CreatureState::COVER)) {
+	} else if(posture == CreaturePosture::PRONE && hasState(CreatureState::COVER)) {
 		if (hasSkill("combat_rifleman_speed_03")) {
 			buffMod = 0.5f;
 		} else {
@@ -2406,6 +2414,9 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 		buff->setSkillModifier("ranged_defense", 25);
 
 		addBuff(buff);
+
+		// Update speed after buff has been applied.
+		updateSpeedAndAccelerationMods();
 	}
 }
 
@@ -3613,35 +3624,43 @@ bool CreatureObjectImplementation::isPlayerCreature() {
 }
 
 CreditObject* CreatureObjectImplementation::getCreditObject() {
-	if (creditObject != nullptr)
-		return creditObject;
+	if (creditObject == nullptr) {
+		static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
 
-	static const uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("credits");
+		uint64 oid = ((getObjectID() & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
 
-	uint64 oid = ((getObjectID() & 0x0000FFFFFFFFFFFFull) | (databaseID << 48));
-
-	ManagedReference<ManagedObject*> obj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
-
-	if (obj == nullptr) {
-		obj = ObjectManager::instance()->createObject("CreditObject", isPersistent() ? 3 : 0, "credits", oid);
+		ManagedReference<ManagedObject*> obj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
 
 		if (obj == nullptr) {
-			return nullptr;
+			obj = ObjectManager::instance()->createObject("CreditObject", isPersistent() ? 3 : 0, "credits", oid);
+
+			if (obj == nullptr) {
+				return nullptr;
+			}
+
+			creditObject = obj.castTo<CreditObject*>();
+
+			if (creditObject == nullptr) {
+				return nullptr;
+			}
+
+			Locker locker(creditObject);
+			creditObject->setBankCredits(bankCredits, false);
+			creditObject->setCashCredits(cashCredits, false);
+			creditObject->setOwner(asCreatureObject());
+			cashCredits = 0;
+			bankCredits = 0;
+		} else {
+			creditObject = obj.castTo<CreditObject*>();
 		}
 
-		creditObject = obj.castTo<CreditObject*>();
-		if (creditObject == nullptr) {
-			return nullptr;
+		if (creditObject != nullptr && creditObject->getOwnerObjectID() != getObjectID()) {
+			Locker locker(creditObject);
+			creditObject->setOwner(asCreatureObject());
 		}
-		Locker locker(creditObject);
-		creditObject->setBankCredits(bankCredits, false);
-		creditObject->setCashCredits(cashCredits, false);
-		creditObject->setOwner(asCreatureObject());
-		cashCredits = 0;
-		bankCredits = 0;
 	}
 
-	return obj.castTo<CreditObject*>();
+	return creditObject;
 }
 
 void CreatureObjectImplementation::removeOutOfRangeObjects() {

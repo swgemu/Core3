@@ -19,17 +19,17 @@ class SuiListBox extends SuiBox {
 
 	private unsigned long next;
 	private unsigned long previous;
-	
+
 	public static final int MSGSELECTED = 0;
 	public static final int HANDLESINGLEBUTTON = 1;
 	public static final int HANDLETWOBUTTON = 2;
 	public static final int HANDLETHREEBUTTON = 3;
-	
+
 	public SuiListBox(CreatureObject player, unsigned int windowType = 0, unsigned int listBoxType = 0) {
 		super(player, windowType, SuiBox.LISTBOX);
-		
+
 		type = listBoxType;
-		
+
 		init();
 	}
 
@@ -43,29 +43,35 @@ class SuiListBox extends SuiBox {
 	 */
 	public native void addMenuItem(final string name, unsigned long objectID = 0);
 
-	public string getMenuItemName(int index){
-		SuiListBoxMenuItem menuItem = menuItems.get(index);
-		
-		return menuItem.getOptionName();
+	public string getMenuItemName(int index) {
+		if (index < menuItems.size()) {
+			SuiListBoxMenuItem menuItem = menuItems.get(index);
+
+			if (menuItem) {
+				return menuItem.getOptionName();
+			}
+		}
+
+		return "";
 	}
 
 	/**
 	 * Clears all Menu Items from the list box
 	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
 	 */
-	public void removeAllMenuItems(){
+	public void removeAllMenuItems() {
 		menuItems.removeAll();
 	}
 
 	public unsigned long getMenuObjectID(unsigned int idx) {
 		if (idx < menuItems.size()) {
-			
+
 			SuiListBoxMenuItem menuItem = menuItems.get(idx);
-			
+
 			if (menuItem)
 				return menuItem.getObjectID();
 		}
-		
+
 		return 0;
 	}
 
@@ -76,22 +82,22 @@ class SuiListBox extends SuiBox {
 	@local
 	public native BaseMessage generateMessage();
 
-	public void setNextBox(unsigned int boxID){
+	public void setNextBox(unsigned int boxID) {
 		next = boxID;
 	}
 
-	public void setPreviousBox(unsigned int boxID){
+	public void setPreviousBox(unsigned int boxID) {
 		previous = boxID;
 	}
 
-	public unsigned long getNextBox(){
+	public unsigned long getNextBox() {
 		return next;
 	}
 
-	public unsigned long getPreviousBox(){
+	public unsigned long getPreviousBox() {
 		return previous;
 	}
-	
+
 	public boolean isListBox() {
 		return true;
 	}

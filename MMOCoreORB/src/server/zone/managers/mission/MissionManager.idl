@@ -60,6 +60,15 @@ class MissionManager extends Observer implements Logger {
 	unsigned long playerBountyKillBuffer;
 	unsigned long playerBountyDebuffLength;
 
+	unsigned long destroyMissionBaseDistance;
+	unsigned long destroyMissionDifficultyDistanceFactor;
+	unsigned long destroyMissionRandomDistance;
+	unsigned long destroyMissionDifficultyRandomDistance;
+	unsigned long destroyMissionBaseReward;
+	unsigned long destroyMissionDifficultyRewardFactor;
+	unsigned long destroyMissionRandomReward;
+	unsigned long destroyMissionDifficultyRandomReward;
+
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;

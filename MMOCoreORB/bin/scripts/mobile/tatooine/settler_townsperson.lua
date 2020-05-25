@@ -1,9 +1,9 @@
-settler = Creature:new {
+settler_townsperson = Creature:new {
 	objectName = "@mob/creature_names:settler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "thug",
-	faction = "thug",
+	socialGroup = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -41,17 +41,9 @@ settler = Creature:new {
 			}
 		}
 	},
-
-	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
-	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "rebel_weapons_light",
-	secondaryWeapon = "unarmed",
+	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/townperson",
-	
-	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
-	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(marksmannovice,brawlernovice),
-	secondaryAttacks = { }
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(settler, "settler")
+CreatureTemplates:addCreatureTemplate(settler_townsperson, "settler_townsperson")

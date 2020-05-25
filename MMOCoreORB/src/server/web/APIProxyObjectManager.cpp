@@ -47,6 +47,7 @@ int APIProxyObjectManager::writeObjectJSON(uint64 oid, bool recursive, bool pare
 				}
 			}
 
+			lock.release();
 			countFound += scno->writeRecursiveJSON(objects, maxDepth);
 		} else {
 			JSONSerializationType jsonData;
@@ -158,9 +159,12 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, Stri
 
 	StringBuffer result;
 
+	lock.release();
 	result << "DELETED; Exported to " << exportJSON(obj.get(), exportMsg.toString());
 
 	if (scno != nullptr) {
+		Locker lock(scno);
+
 		auto auctionManager = getZoneServer()->getAuctionManager();
 
 		if (auctionManager != nullptr) {
@@ -182,6 +186,8 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, Stri
 		scno->destroyObjectFromWorld(true);
 		scno->destroyObjectFromDatabase(true);
 	} else {
+		Locker lock(obj);
+
 		Reference<AuctionItem*> aitem = dynamic_cast<AuctionItem*>(obj.get());
 
 		if (aitem != nullptr) {
@@ -218,6 +224,7 @@ String APIProxyObjectManager::exportJSON(ManagedObject* obj, const String& expor
 	if (scno != nullptr) {
 		count = scno->writeRecursiveJSON(exportedObjects, maxDepth);
 	} else {
+		Locker lock(obj);
 		JSONSerializationType jsonData;
 		obj->writeJSON(jsonData);
 		jsonData["_depth"] = 0;

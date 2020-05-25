@@ -139,7 +139,6 @@ void APIProxyGuildManager::lookupGuild(APIRequest& apiRequest) {
 		found[guild->getGuildAbbrev()] = guild->getObjectID();
 
 		if (mode == "find") {
-			Locker lock(guild);
 			countFound += guild->writeRecursiveJSON(objects, qRecursive ? qMaxDepth : 1);
 		} else {
 			countFound++;
