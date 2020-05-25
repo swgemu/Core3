@@ -1855,6 +1855,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		//StackTrace::printStackTrace();
 		return;
 	}
+	info(true) << "Enqueue command " << getDisplayedName() << " " << queueCommand->getQueueCommandName() << " " << actionCRC << " " << actionCount << " " << priority << " " << compareCounter;
 
 	if(queueCommand->addToCombatQueue()) {
 		removeBuff(STRING_HASHCODE("private_feign_buff"));
@@ -1885,6 +1886,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	}
 
 	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
+		info(true) << "Clear queue";
 		clearQueueAction(actionCount);
 
 		return;
@@ -1898,21 +1900,28 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 	if (commandQueue->size() != 0 || !nextAction.isPast()) {
 		if (commandQueue->size() == 0) {
+			info(true) << "First action in queue has expired, schedule it";
 			Reference<CommandQueueActionEvent*> e =
 					new CommandQueueActionEvent(asCreatureObject());
 			e->schedule(nextAction);
 		}
 
-		if (priority == QueueCommand::NORMAL)
+		if (priority == QueueCommand::NORMAL) {
+			info(true) << "Normal priority enqueue";
 			commandQueue->put(action.get());
+		}
 		else if (priority == QueueCommand::FRONT) {
-			if (commandQueue->size() > 0)
+			if (commandQueue->size() > 0) {
+				info(true) << "Front priority set compare counter -1";
 				action->setCompareToCounter(
 						commandQueue->get(0)->getCompareToCounter() - 1);
+			}
 
+			info(true) << "Enqueue in front";
 			commandQueue->put(action.get());
 		}
 	} else {
+		info(true) << "Nothing in queue, execute immediately";
 		nextAction.updateToCurrentTime();
 
 		commandQueue->put(action.get());
@@ -1962,14 +1971,17 @@ void CreatureObjectImplementation::activateImmediateAction() {
 
 void CreatureObjectImplementation::activateQueueAction() {
 	if (nextAction.isFuture()) {
+		info(true) << "Next action in the future";
 		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
 		e->schedule(nextAction);
 
 		return;
 	}
 
-	if (commandQueue->size() == 0)
+	if (commandQueue->size() == 0) {
+		info(true) << "No more commands";
 		return;
+	}
 
 	Reference<CommandQueueAction*> action = commandQueue->remove(0);
 
@@ -1980,16 +1992,22 @@ void CreatureObjectImplementation::activateQueueAction() {
 			action->getActionCounter(), action->getTarget(),
 			action->getArguments());
 
+	info(true) << "Command returned delay " << time;
+
 	nextAction.updateToCurrentTime();
 
-	if (time > 0)
+	if (time > 0) {
+		info(true) << "adding time to nextAction";
 		nextAction.addMiliTime((uint32)(time * 1000));
+	}
 
 	if (commandQueue->size() != 0) {
+		info(true) << "Commands still in queue schedule CommandQueueActionEvent";
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(
 				asCreatureObject());
 
 		if (!nextAction.isFuture()) {
+			info(true) << "next action not in the future, add 100 ms";
 			nextAction.updateToCurrentTime();
 			nextAction.addMiliTime(100);
 		}
