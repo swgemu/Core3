@@ -1838,28 +1838,23 @@ float CreatureObjectImplementation::getTerrainNegotiation() const {
 	return slopeMod;
 }
 
-void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
-		unsigned int actionCount, uint64 targetID,
-		const UnicodeString& arguments, int priority,
-		int compareCounter) {
-	ManagedReference<ObjectController*> objectController =
-			getZoneServer()->getObjectController();
+void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter) {
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
 	if (queueCommand == nullptr) {
-		//StringBuffer msg;
-		//msg << "trying to enqueue nullptr QUEUE COMMAND 0x" << hex << actionCRC;
-		//error(msg.toString());
+		// StringBuffer msg;
+		// msg << "trying to enqueue nullptr QUEUE COMMAND 0x" << hex << actionCRC;
+		// error(msg.toString());
 
-		//StackTrace::printStackTrace();
+		// StackTrace::printStackTrace();
 		return;
 	}
 
-	if(queueCommand->addToCombatQueue()) {
+	if (queueCommand->addToCombatQueue()) {
 		removeBuff(STRING_HASHCODE("private_feign_buff"));
 	}
-
 
 	if (priority < 0)
 		priority = queueCommand->getDefaultPriority();
@@ -1868,8 +1863,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 	if (priority == QueueCommand::IMMEDIATE) {
 #ifndef WITH_STM
-		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount,
-				targetID, arguments);
+		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount, targetID, arguments);
 #else
 		action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
 
@@ -1890,25 +1884,23 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		return;
 	}
 
-	action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount,
-			arguments);
+	action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
 
 	if (compareCounter >= 0)
 		action->setCompareToCounter((int)compareCounter);
 
 	if (commandQueue->size() != 0 || !nextAction.isPast()) {
 		if (commandQueue->size() == 0) {
-			Reference<CommandQueueActionEvent*> e =
-					new CommandQueueActionEvent(asCreatureObject());
+			Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
 			e->schedule(nextAction);
 		}
 
-		if (priority == QueueCommand::NORMAL)
+		if (priority == QueueCommand::NORMAL) {
 			commandQueue->put(action.get());
-		else if (priority == QueueCommand::FRONT) {
-			if (commandQueue->size() > 0)
-				action->setCompareToCounter(
-						commandQueue->get(0)->getCompareToCounter() - 1);
+		} else if (priority == QueueCommand::FRONT) {
+			if (commandQueue->size() > 0) {
+				action->setCompareToCounter(commandQueue->get(0)->getCompareToCounter() - 1);
+			}
 
 			commandQueue->put(action.get());
 		}
@@ -1939,23 +1931,17 @@ void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& 
 }
 
 void CreatureObjectImplementation::activateImmediateAction() {
-	/*if (immediateQueue->size() == 0)
-	 return;*/
-
 	Reference<CommandQueueAction*> action = immediateQueue->get(0);
 
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
+
+	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
 	immediateQueue->remove(0);
 
-	ManagedReference<ObjectController*> objectController =
-			getZoneServer()->getObjectController();
-
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(),
-			action->getActionCounter(), action->getTarget(),
-			action->getArguments());
-
 	if (immediateQueue->size() > 0) {
-		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(
-				asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
+		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
 		Core::getTaskManager()->executeTask(ev);
 	}
 }
@@ -1968,26 +1954,27 @@ void CreatureObjectImplementation::activateQueueAction() {
 		return;
 	}
 
-	if (commandQueue->size() == 0)
+	if (commandQueue->size() == 0) {
 		return;
+	}
 
-	Reference<CommandQueueAction*> action = commandQueue->remove(0);
+	Reference<CommandQueueAction*> action = commandQueue->get(0);
 
-	ManagedReference<ObjectController*> objectController =
-			getZoneServer()->getObjectController();
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(),
-			action->getActionCounter(), action->getTarget(),
-			action->getArguments());
+	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	nextAction.updateToCurrentTime();
 
-	if (time > 0)
+	if (time > 0) {
 		nextAction.addMiliTime((uint32)(time * 1000));
+	}
+
+	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
+	commandQueue->remove(0);
 
 	if (commandQueue->size() != 0) {
-		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(
-				asCreatureObject());
+		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
 
 		if (!nextAction.isFuture()) {
 			nextAction.updateToCurrentTime();

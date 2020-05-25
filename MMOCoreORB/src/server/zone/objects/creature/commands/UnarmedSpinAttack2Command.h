@@ -22,6 +22,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		info(true) << "Execute command: UnarmedSpinAttack2Command";
 		return doCombatAction(creature, target);
 	}
 
