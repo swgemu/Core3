@@ -1928,11 +1928,12 @@ void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& 
 void CreatureObjectImplementation::activateImmediateAction() {
 	Reference<CommandQueueAction*> action = immediateQueue->get(0);
 
-	immediateQueue->remove(0);
-
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
+	immediateQueue->remove(0);
 
 	if (immediateQueue->size() > 0) {
 		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
@@ -1952,7 +1953,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 		return;
 	}
 
-	Reference<CommandQueueAction*> action = commandQueue->remove(0);
+	Reference<CommandQueueAction*> action = commandQueue->get(0);
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
@@ -1963,6 +1964,9 @@ void CreatureObjectImplementation::activateQueueAction() {
 	if (time > 0) {
 		nextAction.addMiliTime((uint32)(time * 1000));
 	}
+
+	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
+	commandQueue->remove(0);
 
 	if (commandQueue->size() != 0) {
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
