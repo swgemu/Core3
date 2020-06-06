@@ -8,7 +8,9 @@
 #ifndef LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 #define LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "templates/faction/Factions.h"
 
@@ -20,6 +22,14 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int spawnNumber;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
+	const int TIMETILLSHUTTLELANDING = 6000;
+	const int LANDINGTIME = 18000;
+	const int SPAWNDELAY = 750;
+	const int CLEANUPTIME = 30000;
+	const int CLEANUPRESCHEDULETIME = 1000;
+
+	const int MAXDIFFICULTY = 10;
+	const int MINDIFFICULTY = 3;
 
 	struct LambdaTroop {
 		const String troopTemplate;
@@ -67,33 +77,36 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	LambdaTroop* troops;
 
-	void spawnSingleTroop(SceneObject* lambdaShuttle, const String& creatureTemplate, float xOffset, float yOffset) {
+	void spawnSingleTroop(SceneObject* lambdaShuttle, CreatureObject* player, const String& creatureTemplate, float xOffset, float yOffset) {
 		Zone* zone = lambdaShuttle->getZone();
 		float x = lambdaShuttle->getPositionX() + xOffset;
 		float y = lambdaShuttle->getPositionY() + yOffset;
 		float z = zone->getHeight(x, y);
-		CreatureObject* npc = zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false);
+		AiAgent* npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false));
 		if (npc != nullptr) {
+			Locker npcLock(npc);
+			npc->activateLoad("");
+			CombatManager::instance()->startCombat(npc, player);
 			containmentTeam.add(npc);
 		}
 	}
 
-	void spawnOneSetOfTroops(SceneObject* lambdaShuttle) {
+	void spawnOneSetOfTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
 		if (troops[spawnNumber].singleSpawn) {
-			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, 0.0f, 0.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.0f, 0.0f);
 		} else {
-			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, 0.5f, spawnNumber * 1.0f);
-			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, -0.5f, spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.5f, spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, -0.5f, spawnNumber * 1.0f);
 		}
 		spawnNumber++;
 	}
 
-	void spawnTroops(SceneObject* lambdaShuttle) {
-		spawnOneSetOfTroops(lambdaShuttle);
+	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
+		spawnOneSetOfTroops(lambdaShuttle, player);
 		if (spawnNumber > difficulty) {
 			state = TAKEOFF;
 		}
-		reschedule(750);
+		reschedule(SPAWNDELAY);
 	}
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
@@ -102,7 +115,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
 
-		reschedule(6000);
+		reschedule(TIMETILLSHUTTLELANDING);
 		state = LAND;
 	}
 
@@ -110,7 +123,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
 
-		reschedule(18000);
+		reschedule(LANDINGTIME);
 		state = SPAWNTROOPS;
 	}
 
@@ -118,8 +131,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 
+		reschedule(CLEANUPTIME);
 		state = CLEANUP;
-		reschedule(30000);
 	}
 
 	void cleanUp(SceneObject* lambdaShuttle) {
@@ -143,7 +156,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		}
 
 		if (rescheduleTask) {
-			reschedule(1000);
+			reschedule(CLEANUPRESCHEDULETIME);
 		} else {
 			state = FINISHED;
 		}
@@ -170,10 +183,10 @@ public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty) {
 		weakPlayer = player;
 		state = SPAWN;
-		if (difficulty > 10) {
-			this->difficulty = 10;
-		} else if (difficulty < 3) {
-			this->difficulty = 3;
+		if (difficulty > MAXDIFFICULTY) {
+			this->difficulty = MAXDIFFICULTY;
+		} else if (difficulty < MINDIFFICULTY) {
+			this->difficulty = MINDIFFICULTY;
 		} else {
 			this->difficulty = difficulty;
 		}
@@ -208,7 +221,7 @@ public:
 			lambdaShuttleLanding(lambdaShuttle);
 			break;
 		case SPAWNTROOPS:
-			spawnTroops(lambdaShuttle);
+			spawnTroops(lambdaShuttle, player);
 			break;
 		case TAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
