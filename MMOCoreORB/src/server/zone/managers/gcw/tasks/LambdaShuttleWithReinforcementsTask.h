@@ -51,17 +51,17 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	};
 
 	LambdaTroop REBELTROOPS[11] = {
-			{"rebel_sergeant", true},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false},
-			{"rebel_sergeant", false}
+			{"crackdown_rebel_guard_captain", true},
+			{"crackdown_rebel_cadet", false},
+			{"crackdown_rebel_soldier", false},
+			{"crackdown_rebel_liberator", false},
+			{"crackdown_rebel_soldier", false},
+			{"crackdown_rebel_guardsman", false},
+			{"crackdown_rebel_elite_sand_rat", false},
+			{"crackdown_rebel_command_security_guard", false},
+			{"crackdown_rebel_commando", false},
+			{"crackdown_rebel_comm_operator", false},
+			{"crackdown_rebel_soldier", false}
 	};
 
 	enum LamdaShuttleState {
