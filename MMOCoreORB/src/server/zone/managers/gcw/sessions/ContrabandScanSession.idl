@@ -16,7 +16,7 @@ class ContrabandScanSession extends Facade {
 	private static final int SCANTIME = 10; // 10 iterations = 10 s
 	private static final int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
 	private static final int RANAWAYFACTIONFINE = 100;
-	private static final int RECOGNIZEDFACTIONRANK = 7;
+	private static final int RECOGNIZEDFACTIONRANK = 9;
 	private static final int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
 	private static final int RANKDETECTIONCHANCEMODIFIER = 1; // Each faction rank increases the chance to detect opposite faction by this amount.
 	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
