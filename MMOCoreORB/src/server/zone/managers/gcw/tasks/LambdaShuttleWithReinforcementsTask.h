@@ -28,8 +28,10 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	const int CLEANUPTIME = 30000;
 	const int CLEANUPRESCHEDULETIME = 1000;
 
-	const int MAXDIFFICULTY = 10;
-	const int MINDIFFICULTY = 3;
+	const int TROOPSSPAWNPERDIFFICULTY = 5;
+
+	const int MAXDIFFICULTY = 2;
+	const int MINDIFFICULTY = 1;
 
 	struct LambdaTroop {
 		const String troopTemplate;
@@ -103,7 +105,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
 		spawnOneSetOfTroops(lambdaShuttle, player);
-		if (spawnNumber > difficulty) {
+		if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
 			state = TAKEOFF;
 		}
 		reschedule(SPAWNDELAY);

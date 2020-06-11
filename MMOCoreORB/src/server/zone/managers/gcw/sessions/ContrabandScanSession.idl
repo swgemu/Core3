@@ -42,6 +42,9 @@ class ContrabandScanSession extends Facade {
 	private int timeLeft;
 	private int previousTimeLeft;
 
+	private transient int currentWinningFaction;
+	private transient int currentWinningFactionDifficultyScaling;
+
 	private boolean alreadyTriedToAvoidScan;
 
 	private boolean acceptedFine;
@@ -59,7 +62,7 @@ class ContrabandScanSession extends Facade {
 
 	protected transient Task contrabandScanTask;
 
-	public ContrabandScanSession(AiAgent scanner, CreatureObject player) {
+	public ContrabandScanSession(AiAgent scanner, CreatureObject player, int winningFaction, int winningFactionDifficultyScaling) {
 		Logger.setLoggingName("ContrabandScanSession");
 		Logger.setLogging(true);
 
@@ -75,6 +78,8 @@ class ContrabandScanSession extends Facade {
 		fineAnswerGiven = false;
 		fineToPay = 0;
 		smugglerAvoidedScan = false;
+		currentWinningFaction = winningFaction;
+		currentWinningFactionDifficultyScaling = winningFactionDifficultyScaling;
 	}
 
 	public native int initializeSession();
@@ -86,6 +91,8 @@ class ContrabandScanSession extends Facade {
 	public native void runContrabandScan();
 
 	public native boolean scanPrerequisitesMet(AiAgent scanner, CreatureObject player);
+
+	public native void adjustReinforcementStrength(AiAgent scanner);
 
 	public void setAcceptFineAnswer(boolean acceptFine) {
 		fineAnswerGiven = true;

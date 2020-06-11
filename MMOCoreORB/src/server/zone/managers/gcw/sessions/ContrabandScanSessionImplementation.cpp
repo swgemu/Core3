@@ -28,6 +28,8 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		return false;
 	}
 
+	adjustReinforcementStrength(scanner);
+
 	checkIfPlayerIsSmuggler(player);
 
 	if (contrabandScanTask == nullptr) {
@@ -152,6 +154,13 @@ void ContrabandScanSessionImplementation::sendSystemMessage(AiAgent* scanner, Cr
 bool ContrabandScanSessionImplementation::scanPrerequisitesMet(AiAgent* scanner, CreatureObject* player) {
 	return scanner != nullptr && player != nullptr && player->isPlayerCreature() && !scanner->isDead() && !player->isDead()
 			&& !player->isFeigningDeath() && !player->isIncapacitated() && !scanner->isInCombat() && !player->isInCombat();
+}
+
+void ContrabandScanSessionImplementation::adjustReinforcementStrength(AiAgent* scanner) {
+	// If scanners faction is not winning, set reinforcement strength to 1, otherwise keep the strength provided from the GCW manager.
+	if (scanner->getFaction() != currentWinningFaction) {
+		currentWinningFactionDifficultyScaling = 1;
+	}
 }
 
 bool ContrabandScanSessionImplementation::playerTriesToAvoidScan(AiAgent* scanner, CreatureObject* player) {
@@ -325,7 +334,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanner->doAnimation("point_accusingly");
 			player->setFactionStatus(FactionStatus::COVERT);
 
-			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), player->getFactionRank());
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling);
 			lambdaTask->schedule(TASKDELAY);
 
 			scanState = FINISHED;
