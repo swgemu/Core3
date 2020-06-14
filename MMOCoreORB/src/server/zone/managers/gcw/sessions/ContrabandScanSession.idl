@@ -121,4 +121,5 @@ class ContrabandScanSession extends Facade {
 	private native void waitForPayFineAnswer(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void removeFineSuiWindow(CreatureObject player);
 	private native void calculateSmugglingSuccess(CreatureObject player);
+	private native int getSmugglerAvoidanceChance(CreatureObject creature);
 }
