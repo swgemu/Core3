@@ -463,26 +463,47 @@ void ContrabandScanSessionImplementation::removeFineSuiWindow(CreatureObject* pl
 }
 
 void ContrabandScanSessionImplementation::calculateSmugglingSuccess(CreatureObject* player) {
-	int avoidanceChance = 0;
-	if (player->hasSkill("combat_smuggler_novice")) {
-		avoidanceChance += 15;
+	int avoidanceChance = getSmugglerAvoidanceChance(player);
+
+	if (player->isGrouped()) {
+		Reference<GroupObject*> playerGroup = player->getGroup();
+		for (int i = 0; i < playerGroup->getGroupSize(); i++) {
+			Reference<CreatureObject*> groupMember = playerGroup->getGroupMember(i);
+
+			if (groupMember == nullptr || player->getDistanceTo(groupMember) > 35) {
+				continue;
+			}
+			int memberAvoidanceChance = getSmugglerAvoidanceChance(groupMember);
+			if (memberAvoidanceChance > avoidanceChance) {
+				avoidanceChance = memberAvoidanceChance;
+			}
+		}
 	}
-	if (player->hasSkill("combat_smuggler_underworld_01")) {
-		avoidanceChance += 15;
-	}
-	if (player->hasSkill("combat_smuggler_underworld_02")) {
-		avoidanceChance += 15;
-	}
-	if (player->hasSkill("combat_smuggler_underworld_03")) {
-		avoidanceChance += 15;
-	}
-	if (player->hasSkill("combat_smuggler_underworld_04")) {
-		avoidanceChance += 15;
-	}
-	if (player->hasSkill("combat_smuggler_master")) {
-		avoidanceChance += 20;
-	}
+
 	if (System::random(100) < avoidanceChance) {
 		smugglerAvoidedScan = true;
 	}
+}
+
+int ContrabandScanSessionImplementation::getSmugglerAvoidanceChance(CreatureObject* creature) {
+	int avoidanceChance = 0;
+	if (creature->hasSkill("combat_smuggler_novice")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_01")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_02")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_03")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_04")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_master")) {
+		avoidanceChance += 20;
+	}
+	return avoidanceChance;
 }
