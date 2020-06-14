@@ -30,7 +30,7 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	adjustReinforcementStrength(scanner);
 
-	checkIfPlayerIsSmuggler(player);
+	calculateSmugglingSuccess(player);
 
 	if (contrabandScanTask == nullptr) {
 		contrabandScanTask = new ContrabandScanTask(player);
@@ -462,8 +462,27 @@ void ContrabandScanSessionImplementation::removeFineSuiWindow(CreatureObject* pl
 	}
 }
 
-void ContrabandScanSessionImplementation::checkIfPlayerIsSmuggler(CreatureObject* player) {
-	if (player->hasSkill("combat_smuggler_novice") && (System::random(100) > SMUGGLERAVOIDSCANCHANCE)) {
+void ContrabandScanSessionImplementation::calculateSmugglingSuccess(CreatureObject* player) {
+	int avoidanceChance = 0;
+	if (player->hasSkill("combat_smuggler_novice")) {
+		avoidanceChance += 15;
+	}
+	if (player->hasSkill("combat_smuggler_underworld_01")) {
+		avoidanceChance += 15;
+	}
+	if (player->hasSkill("combat_smuggler_underworld_02")) {
+		avoidanceChance += 15;
+	}
+	if (player->hasSkill("combat_smuggler_underworld_03")) {
+		avoidanceChance += 15;
+	}
+	if (player->hasSkill("combat_smuggler_underworld_04")) {
+		avoidanceChance += 15;
+	}
+	if (player->hasSkill("combat_smuggler_master")) {
+		avoidanceChance += 20;
+	}
+	if (System::random(100) < avoidanceChance) {
 		smugglerAvoidedScan = true;
 	}
 }
