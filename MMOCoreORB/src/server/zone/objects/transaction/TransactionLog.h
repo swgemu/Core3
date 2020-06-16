@@ -90,7 +90,19 @@ enum class TrxCode {
 };
 // clang-format on
 
-#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+#if defined(__clang__)
+#if __has_builtin(__builtin_FILE)
+#define use_builtin_FILE 1
+#else
+#define use_builtin_FILE 0
+#endif
+#else
+#if defined(__GNUC__) || defined(__GNUG__)
+#define use_builtin_FILE 1
+#endif
+#endif
+
+#if use_builtin_FILE
 #define CAPTURE_CALLER_DECLARE const char* file = __builtin_FILE(), const char* function = __builtin_FUNCTION(), int line = __builtin_LINE()
 #else
 #define CAPTURE_CALLER_DECLARE const char* file = "unknown", const char* function = "unknown", int line = 0
