@@ -19,6 +19,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
@@ -28,7 +29,9 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		return false;
 	}
 
-	checkIfPlayerIsSmuggler(player);
+	adjustReinforcementStrength(scanner);
+
+	calculateSmugglingSuccess(player);
 
 	if (contrabandScanTask == nullptr) {
 		contrabandScanTask = new ContrabandScanTask(player);
@@ -152,6 +155,13 @@ void ContrabandScanSessionImplementation::sendSystemMessage(AiAgent* scanner, Cr
 bool ContrabandScanSessionImplementation::scanPrerequisitesMet(AiAgent* scanner, CreatureObject* player) {
 	return scanner != nullptr && player != nullptr && player->isPlayerCreature() && !scanner->isDead() && !player->isDead()
 			&& !player->isFeigningDeath() && !player->isIncapacitated() && !scanner->isInCombat() && !player->isInCombat();
+}
+
+void ContrabandScanSessionImplementation::adjustReinforcementStrength(AiAgent* scanner) {
+	// If scanners faction is not winning, set reinforcement strength to 1, otherwise keep the strength provided from the GCW manager.
+	if (scanner->getFaction() != currentWinningFaction) {
+		currentWinningFactionDifficultyScaling = 1;
+	}
 }
 
 bool ContrabandScanSessionImplementation::playerTriesToAvoidScan(AiAgent* scanner, CreatureObject* player) {
@@ -325,7 +335,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanner->doAnimation("point_accusingly");
 			player->setFactionStatus(FactionStatus::COVERT);
 
-			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), player->getFactionRank());
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling);
 			lambdaTask->schedule(TASKDELAY);
 
 			scanState = FINISHED;
@@ -428,10 +438,16 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 				sendScannerChatMessage(zone, scanner, player, "warning_imperial", "warning_rebel");
 				scanner->doAnimation("wave_on_directing");
 				if (fineToPay <= player->getCashCredits()) {
+					TransactionLog trx(player, TrxCode::FINES, fineToPay, true);
 					player->subtractCashCredits(fineToPay);
 				} else {
 					fineToPay -= player->getCashCredits();
+
+					TransactionLog trxCash(player, TrxCode::FINES, player->getCashCredits(), true);
 					player->subtractCashCredits(player->getCashCredits());
+
+					TransactionLog trxBank(player, TrxCode::FINES, fineToPay, false);
+					trxBank.groupWith(trxCash);
 					player->subtractBankCredits(fineToPay);
 				}
 			} else {
@@ -453,8 +469,48 @@ void ContrabandScanSessionImplementation::removeFineSuiWindow(CreatureObject* pl
 	}
 }
 
-void ContrabandScanSessionImplementation::checkIfPlayerIsSmuggler(CreatureObject* player) {
-	if (player->hasSkill("combat_smuggler_novice") && (System::random(100) > SMUGGLERAVOIDSCANCHANCE)) {
+void ContrabandScanSessionImplementation::calculateSmugglingSuccess(CreatureObject* player) {
+	int avoidanceChance = getSmugglerAvoidanceChance(player);
+
+	if (player->isGrouped()) {
+		Reference<GroupObject*> playerGroup = player->getGroup();
+		for (int i = 0; i < playerGroup->getGroupSize(); i++) {
+			Reference<CreatureObject*> groupMember = playerGroup->getGroupMember(i);
+
+			if (groupMember == nullptr || player->getDistanceTo(groupMember) > 35) {
+				continue;
+			}
+			int memberAvoidanceChance = getSmugglerAvoidanceChance(groupMember);
+			if (memberAvoidanceChance > avoidanceChance) {
+				avoidanceChance = memberAvoidanceChance;
+			}
+		}
+	}
+
+	if (System::random(100) < avoidanceChance) {
 		smugglerAvoidedScan = true;
 	}
+}
+
+int ContrabandScanSessionImplementation::getSmugglerAvoidanceChance(CreatureObject* creature) {
+	int avoidanceChance = 0;
+	if (creature->hasSkill("combat_smuggler_novice")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_01")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_02")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_03")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_underworld_04")) {
+		avoidanceChance += 15;
+	}
+	if (creature->hasSkill("combat_smuggler_master")) {
+		avoidanceChance += 20;
+	}
+	return avoidanceChance;
 }

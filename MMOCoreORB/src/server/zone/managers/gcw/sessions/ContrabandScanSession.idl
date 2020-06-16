@@ -16,7 +16,7 @@ class ContrabandScanSession extends Facade {
 	private static final int SCANTIME = 10; // 10 iterations = 10 s
 	private static final int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
 	private static final int RANAWAYFACTIONFINE = 100;
-	private static final int RECOGNIZEDFACTIONRANK = 7;
+	private static final int RECOGNIZEDFACTIONRANK = 9;
 	private static final int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
 	private static final int RANKDETECTIONCHANCEMODIFIER = 1; // Each faction rank increases the chance to detect opposite faction by this amount.
 	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
@@ -42,6 +42,9 @@ class ContrabandScanSession extends Facade {
 	private int timeLeft;
 	private int previousTimeLeft;
 
+	private transient int currentWinningFaction;
+	private transient int currentWinningFactionDifficultyScaling;
+
 	private boolean alreadyTriedToAvoidScan;
 
 	private boolean acceptedFine;
@@ -59,7 +62,7 @@ class ContrabandScanSession extends Facade {
 
 	protected transient Task contrabandScanTask;
 
-	public ContrabandScanSession(AiAgent scanner, CreatureObject player) {
+	public ContrabandScanSession(AiAgent scanner, CreatureObject player, int winningFaction, int winningFactionDifficultyScaling) {
 		Logger.setLoggingName("ContrabandScanSession");
 		Logger.setLogging(true);
 
@@ -75,6 +78,8 @@ class ContrabandScanSession extends Facade {
 		fineAnswerGiven = false;
 		fineToPay = 0;
 		smugglerAvoidedScan = false;
+		currentWinningFaction = winningFaction;
+		currentWinningFactionDifficultyScaling = winningFactionDifficultyScaling;
 	}
 
 	public native int initializeSession();
@@ -86,6 +91,8 @@ class ContrabandScanSession extends Facade {
 	public native void runContrabandScan();
 
 	public native boolean scanPrerequisitesMet(AiAgent scanner, CreatureObject player);
+
+	public native void adjustReinforcementStrength(AiAgent scanner);
 
 	public void setAcceptFineAnswer(boolean acceptFine) {
 		fineAnswerGiven = true;
@@ -113,5 +120,6 @@ class ContrabandScanSession extends Facade {
 	private native void sendContrabandFineSuiWindow(Zone zone, AiAgent scanner, CreatureObject player, int numberOfContrabandItems);
 	private native void waitForPayFineAnswer(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void removeFineSuiWindow(CreatureObject player);
-	private native void checkIfPlayerIsSmuggler(CreatureObject player);
+	private native void calculateSmugglingSuccess(CreatureObject player);
+	private native int getSmugglerAvoidanceChance(CreatureObject creature);
 }

@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "templates/params/OptionBitmask.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class InsuranceAllConfirmSuiCallback : public SuiCallback {
 public:
@@ -63,6 +64,8 @@ public:
 		int j = 0;
 		bool finished = true;
 
+		TransactionLog trxBank(player, TrxCode::INSURANCESYSTEM, 100 * insurableItems.size()); // Actual cost is set below
+
 		for (int i = 0; i < insurableItems.size(); ++i) {
 			SceneObject* obj = insurableItems.get(i);
 			if (((i + 1) * 100) > money) {
@@ -83,17 +86,25 @@ public:
 				uint32 bitmask = item->getOptionsBitmask();
 				bitmask |= OptionBitmask::INSURED;
 				item->setOptionsBitmask(bitmask);
+				trxBank.addRelatedObject(obj->getObjectID());
 			}
 		}
 
+		trxBank.addState("insuredCount", j);
 		cost *= j;
 
 		if (bank < cost) {
 			int diff = cost - bank;
 
+			trxBank.setAmount(diff, true);
 			player->subtractBankCredits(cost - diff);
+			trxBank.commit();
+
+			TransactionLog trxCash(player, TrxCode::INSURANCESYSTEM, cost - diff, true);
+			trxCash.groupWith(trxBank);
 			player->subtractCashCredits(diff);
 		} else {
+			trxBank.setAmount(cost, false);
 			player->subtractBankCredits(cost);
 		}
 

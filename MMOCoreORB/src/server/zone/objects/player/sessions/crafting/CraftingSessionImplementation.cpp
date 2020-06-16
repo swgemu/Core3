@@ -28,6 +28,7 @@
 
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/params/RangedIntCustomizationVariable.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
@@ -346,14 +347,17 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 	manufactureSchematic =
 			 (draftschematic->createManufactureSchematic(craftingTool)).castTo<ManufactureSchematic*>();
 
-	if (manufactureSchematic.get() == nullptr) {
+	auto schematic = manufactureSchematic.get();
+
+	if (schematic == nullptr) {
 		crafter->sendSystemMessage("@ui_craft:err_no_manf_schematic");
 		closeCraftingWindow(0, false);
 		cancelSession();
 		return false;
 	}
 
-	craftingTool->transferObject(manufactureSchematic.get(), 0x4, true);
+	TransactionLog trx(crafter, craftingTool, schematic, TrxCode::CRAFTINGSESSION);
+	craftingTool->transferObject(schematic, 0x4, true);
 	//manufactureSchematic->sendTo(crafter, true);
 
 	if (crafterGhost != nullptr && crafterGhost->getDebug()) {
@@ -389,6 +393,7 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 
 	strongPrototype->createChildObjects();
 
+	TransactionLog trx(crafter, craftingTool, strongPrototype, TrxCode::CRAFTINGSESSION);
 	craftingTool->transferObject(strongPrototype, -1, false);
 	strongPrototype->sendTo(crafter, true);
 
@@ -1299,6 +1304,7 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		manufactureSchematic->setPersistent(2);
 		prototype->setPersistent(2);
 
+		TransactionLog trx(crafter, datapad, manufactureSchematic, TrxCode::CRAFTINGSESSION);
 		datapad->transferObject(manufactureSchematic, -1, true);
 		manufactureSchematic->setPrototype(prototype);
 

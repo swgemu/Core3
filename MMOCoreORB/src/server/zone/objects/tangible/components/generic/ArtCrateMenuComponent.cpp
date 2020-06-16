@@ -35,7 +35,12 @@ int ArtCrateMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		lootManager->createLoot(inventory, "death_watch_bunker_art", 1);
+		TransactionLog trx(TrxCode::NPCLOOTCLAIM, player);
+		if (lootManager->createLoot(trx, inventory, "death_watch_bunker_art", 1)) {
+			trx.commit(true);
+		} else {
+			trx.abort() << "createLoot death_watch_bunker_art failed";
+		}
 
 		sceneObject->destroyObjectFromWorld(true);
 		sceneObject->destroyObjectFromDatabase(true);

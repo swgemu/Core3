@@ -378,9 +378,11 @@ void GCWManagerImplementation::updateWinningFaction() {
 	}
 
 	int scaling = 0;
-	for (int i = 0; i < difficultyScalingThresholds.size(); i++) {
-		if (score >= difficultyScalingThresholds.get(i)) {
-			scaling++;
+	if (score > 0) {
+		for (int i = 0; i < difficultyScalingThresholds.size(); i++) {
+			if (score >= difficultyScalingThresholds.get(i)) {
+				scaling++;
+			}
 		}
 	}
 	winnerDifficultyScaling = scaling;
@@ -2581,7 +2583,7 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 	}
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
-		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player);
+		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling());
 		contrabandScanSession->initializeSession();
 	}
 }
