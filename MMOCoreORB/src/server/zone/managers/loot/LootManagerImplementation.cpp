@@ -504,6 +504,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 				}
 			}
 		}
+	}
 
 	return prototype;
 }
