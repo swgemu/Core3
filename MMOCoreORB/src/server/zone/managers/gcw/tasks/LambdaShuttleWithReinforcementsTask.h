@@ -87,7 +87,6 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		AiAgent* npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false));
 		if (npc != nullptr) {
 			Locker npcLock(npc);
-			npc->activateLoad("");
 			CombatManager::instance()->startCombat(npc, player);
 			containmentTeam.add(npc);
 		}
