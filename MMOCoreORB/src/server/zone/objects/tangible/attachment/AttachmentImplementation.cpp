@@ -37,8 +37,8 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 
 		int mod = System::random(max - min) + min;
 
-		if(mod == 0)
-			mod = 1;
+		if(mod < 25)
+			mod = 25;
 
 		String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod(gameObjectType);
 
