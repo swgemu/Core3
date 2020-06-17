@@ -1,11 +1,11 @@
 --Should all created players start with God Mode? 1 = yes, 0 = no
 freeGodMode = 0;
 --How many cash credits new characters start with after creating a character (changed during test phase, normal value is 100)
-startingCash = 100
---startingCash = 100000
+--startingCash = 100
+startingCash = 100000
 --How many bank credits new characters start with after creating a character (changed during test phase, normal value is 1000)
-startingBank = 1000
---startingBank = 100000
+--startingBank = 1000
+startingBank = 100000
 --How many skill points a new characters start with
 skillPoints = 250
 
@@ -20,7 +20,7 @@ professions = {
 }
 
 marksmanPistol = "object/weapon/ranged/pistol/pistol_cdef.iff"
-	
+
 marksmanRifle = "object/weapon/ranged/rifle/rifle_cdef.iff"
 
 marksmanCarbine = "object/weapon/ranged/carbine/carbine_cdef.iff"
@@ -45,7 +45,9 @@ slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
 marojMelon = "object/tangible/food/foraged/foraged_fruit_s1.iff"
 
-x31Speeder = "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff"
+--x31Speeder = "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff"
+
+swoop = "object/tangible/deed/vehicle_deed/speederbike_swoop_deed.iff"
 
 professionSpecificItems = {
 	combat_brawler = { brawlerOneHander, brawlerTwoHander, brawlerPolearm },
