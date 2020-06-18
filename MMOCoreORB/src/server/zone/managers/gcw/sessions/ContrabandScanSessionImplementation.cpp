@@ -111,6 +111,9 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 	case JEDIMINDTRICKSCANNERCHAT:
 		jediMindTrickResult(zone, scanner, player);
 		break;
+	case JEDIDETECT:
+		jediDetect(zone, scanner, player);
+		break;
 	case SCANDELAY:
 		performScan(zone, scanner, player);
 		break;
@@ -217,6 +220,11 @@ bool ContrabandScanSessionImplementation::isContraband(SceneObject* item) {
 		}
 	}
 	return false;
+}
+
+
+bool ContrabandScanSessionImplementation::notDarkJedi(CreatureObject* player) {
+	return !player->hasSkill("force_rank_dark_novice");
 }
 
 int ContrabandScanSessionImplementation::countContrabandItemsInContainer(SceneObject* container) {
@@ -403,6 +411,18 @@ unsigned int ContrabandScanSessionImplementation::jediMindTrickSuccessChance(Cre
 	return successChance;
 }
 
+unsigned int ContrabandScanSessionImplementation::jediAvoidDetectionSuccessChance(CreatureObject* player) {
+	unsigned int successChance = JEDIAVOIDDETECTIONBASECHANCE;
+	if (player->hasSkill("force_title_jedi_master")) {
+		successChance -= 15;
+	} else if (player->hasSkill("force_title_jedi_rank_04")) {
+		successChance -= 10;
+	} else if (player->hasSkill("force_title_jedi_rank_03")) {
+		successChance -= 5;
+	}
+	return successChance;
+}
+
 void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 	String stringId = "@imperial_presence/contraband_search:";
@@ -411,7 +431,7 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 	if (System::random(100) > jediMindTrickSuccessChance(player)) {
 		stringId += "jedi_fail";
 		mood = "suspicious";
-		scanState = SCANDELAY;
+		scanState = JEDIDETECT;
 		scanner->doAnimation("wave_finger_warning");
 	} else {
 		stringId += dependingOnJediSkills(player, "dont_search_novice", "dont_search", "dont_search_dark");
@@ -424,6 +444,21 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 	StringIdChatParameter chatMessage;
 	chatMessage.setStringId(stringId);
 	chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, chatManager->getMoodID(mood));
+}
+
+void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+	if (System::random(100) < jediAvoidDetectionSuccessChance(player) || (scanner->getFaction() == Factions::FACTIONREBEL && notDarkJedi(player))) {
+		scanState = SCANDELAY;
+	} else {
+		sendScannerChatMessage(zone, scanner, player, "discovered_jedi_imperial", "discovered_jedi_rebel");
+		scanner->doAnimation("point_accusingly");
+		StringIdChatParameter chatMessage;
+
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), JEDIREINFORCEMENTDIFFICULTY);
+		lambdaTask->schedule(TASKDELAY);
+
+		scanState = FINISHED;
+	}
 }
 
 void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAgent* scanner, CreatureObject* player) {
