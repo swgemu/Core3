@@ -343,7 +343,8 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanner->doAnimation("point_accusingly");
 			player->setFactionStatus(FactionStatus::COVERT);
 
-			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling);
+			String landingMessage = getFactionStringId(scanner, "containment_team_imperial", "containment_team_rebel");
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling, landingMessage);
 			lambdaTask->schedule(TASKDELAY);
 
 			scanState = FINISHED;
@@ -454,7 +455,8 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 		scanner->doAnimation("point_accusingly");
 		StringIdChatParameter chatMessage;
 
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), JEDIREINFORCEMENTDIFFICULTY);
+		String landingMessage = getFactionStringId(scanner, "containment_team_jedi_imperial", "containment_team_jedi_rebel");
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), JEDIREINFORCEMENTDIFFICULTY, landingMessage);
 		lambdaTask->schedule(TASKDELAY);
 
 		scanState = FINISHED;
