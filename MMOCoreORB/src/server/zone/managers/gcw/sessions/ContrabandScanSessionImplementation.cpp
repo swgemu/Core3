@@ -337,15 +337,25 @@ void ContrabandScanSessionImplementation::initiateScan(Zone* zone, AiAgent* scan
 
 void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	scanState = JEDIMINDTRICKPLAYERCHAT;
+	unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
 	if (scanner->getFaction() == player->getFaction()) {
-		if (player->getFactionRank() > RECOGNIZEDFACTIONRANK) {
+		bool recognized = false;
+		if (player->getFactionStatus() == FactionStatus::OVERT) {
+			recognized = true;
 			sendScannerChatMessage(zone, scanner, player, "business_imperial", "business_rebel");
+		} else if (player->getFactionRank() >= RECOGNIZEDFACTIONRANK) {
+			recognized = true;
+			sendPersonalizedScannerChatMessage(zone, scanner, player, "sorry_sir_name", "sorry_sir_name");
+		} else if (System::random(100) < detectionChance) {
+			recognized = true;
+			sendPersonalizedScannerChatMessage(zone, scanner, player, "sorry_sir", "sorry_sir");
+		}
+		if (recognized) {
 			sendSystemMessage(scanner, player, "probe_scan_done");
 			scanner->doAnimation("wave_on_directing");
 			scanState = FINISHED;
 		}
 	} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
-		unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
 		if (System::random(100) < detectionChance && !smugglerAvoidedScan) {
 			if (player->getFactionRank() < RECOGNIZEDFACTIONRANK) {
 				sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
