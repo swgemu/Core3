@@ -356,7 +356,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanState = FINISHED;
 		}
 	} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
-		if (System::random(100) < detectionChance && !smugglerAvoidedScan) {
+		if (player->getFactionStatus() == FactionStatus::OVERT || (System::random(100) < detectionChance && !smugglerAvoidedScan)) {
 			if (player->getFactionRank() < RECOGNIZEDFACTIONRANK) {
 				sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
 			} else {
@@ -364,7 +364,10 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			}
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
-			player->setFactionStatus(FactionStatus::COVERT);
+
+			if (player->getFactionStatus() != FactionStatus::OVERT) {
+				player->setFactionStatus(FactionStatus::COVERT);
+			}
 
 			String landingMessage = getFactionStringId(scanner, "containment_team_imperial", "containment_team_rebel");
 			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling, landingMessage);
