@@ -82,6 +82,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	racialPenaltyEnabled = lua->getGlobalInt("racialPenaltyEnabled");
 	initialVulnerabilityDelay = lua->getGlobalInt("initialVulnerabilityDelay");
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
+	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {
@@ -2578,7 +2579,7 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 }
 
 void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
-	if (!player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
+	if (!crackdownScansEnabled || !player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
 		return;
 	}
 

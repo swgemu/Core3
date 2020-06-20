@@ -46,6 +46,8 @@ maxBasesPerPlayer = 3
 -- xp bonus for faction controlling a planet
 bonusXP = 15
 
+-- Crackdown settings
+crackdownScansEnabled = true
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
 
