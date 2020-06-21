@@ -47,7 +47,7 @@ maxBasesPerPlayer = 3
 bonusXP = 15
 
 -- Crackdown settings
-crackdownScansEnabled = true
+crackdownScansEnabled = false
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
 
