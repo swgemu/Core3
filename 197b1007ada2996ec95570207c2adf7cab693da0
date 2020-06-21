@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_71175852",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-06-21T17:16:26Z",
+      "side": 1,
+      "message": "I suggest that you put this if statment inside the existing else statement instead. That way you can share the code instead of duplicating it and risk mismatch later in the two branches. \n\nPerhaps you should also check that the number of contraband items are above zero as well? Would make more sense I think that a smuggler without any contraband does not get the message.",
+      "range": {
+        "startLine": 305,
+        "startChar": 4,
+        "endLine": 305,
+        "endChar": 34
+      },
+      "revId": "197b1007ada2996ec95570207c2adf7cab693da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
