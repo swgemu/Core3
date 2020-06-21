@@ -302,6 +302,13 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			sendContrabandFineSuiWindow(zone, scanner, player, numberOfContrabandItems);
 			scanState = WAITFORPAYFINEANSWER;
 			timeLeft = WAITFORPAYFINEANSWERTIMEOUT;
+		} else if (smugglerAvoidedScan) {
+			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
+			sendSystemMessage(scanner, player, "probe_scan_negative");
+			scanner->doAnimation("wave_on_directing");
+			player->sendSystemMessage("@base_player:smuggler_send_system_message");
+			scanState = FINISHED;
+
 		} else {
 			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_negative");
