@@ -30,7 +30,7 @@ class ResourceManager extends Observer implements Logger {
 	private transient ResourceSpawner resourceSpawner;
 	private transient int shiftInterval;
 	
-	public static final int RESOURCE_DEED_QUANTITY = 30000;
+	public static final int RESOURCE_DEED_QUANTITY = 100000;
 	
 	public ResourceManager(ZoneServer server, ZoneProcessServer impl) {
 
