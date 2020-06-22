@@ -30,11 +30,11 @@ class ContrabandScanSession extends Facade {
 	private static final int SCANCHANCE = 0;
 	private static final int INITIATESCAN = 1;
 	private static final int AVOIDINGSCAN = 2;
-	private static final int FACTIONRANKCHECK = 3;
-	private static final int JEDIMINDTRICKPLAYERCHAT = 4;
-	private static final int JEDIMINDTRICKSCANNERTHINK = 5;
-	private static final int JEDIMINDTRICKSCANNERCHAT = 6;
-	private static final int JEDIDETECT = 7;
+	private static final int JEDIMINDTRICKPLAYERCHAT = 3;
+	private static final int JEDIMINDTRICKSCANNERTHINK = 4;
+	private static final int JEDIMINDTRICKSCANNERCHAT = 5;
+	private static final int JEDIDETECT = 6;
+	private static final int FACTIONRANKCHECK = 7;
 	private static final int SCANDELAY = 8;
 	private static final int WAITFORPAYFINEANSWER = 9;
 	private static final int FINISHED = 10;
