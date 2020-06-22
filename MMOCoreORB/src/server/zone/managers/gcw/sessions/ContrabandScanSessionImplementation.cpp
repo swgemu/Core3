@@ -100,9 +100,6 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 	case INITIATESCAN:
 		initiateScan(zone, scanner, player);
 		break;
-	case FACTIONRANKCHECK:
-		checkPlayerFactionRank(zone, scanner, player);
-		break;
 	case JEDIMINDTRICKPLAYERCHAT:
 		performJediMindTrick(zone, scanner, player);
 		break;
@@ -114,6 +111,9 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		break;
 	case JEDIDETECT:
 		jediDetect(zone, scanner, player);
+		break;
+	case FACTIONRANKCHECK:
+		checkPlayerFactionRank(zone, scanner, player);
 		break;
 	case SCANDELAY:
 		performScan(zone, scanner, player);
@@ -335,8 +335,7 @@ void ContrabandScanSessionImplementation::initiateScan(Zone* zone, AiAgent* scan
 	sendScannerChatMessage(zone, scanner, player, "scan_greeting_imperial", "scan_greeting_rebel");
 	scanner->doAnimation("stop");
 
-	scanState = FACTIONRANKCHECK;
-	timeLeft = SCANTIME;
+	scanState = JEDIMINDTRICKPLAYERCHAT;
 }
 
 void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiAgent* scanner, CreatureObject* player) {
@@ -411,7 +410,8 @@ void ContrabandScanSessionImplementation::performJediMindTrick(Zone* zone, AiAge
 
 		scanState = JEDIMINDTRICKSCANNERTHINK;
 	} else {
-		scanState = SCANDELAY;
+		scanState = FACTIONRANKCHECK;
+		timeLeft = SCANTIME;
 	}
 }
 
@@ -479,7 +479,8 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 
 void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	if (System::random(100) < jediAvoidDetectionSuccessChance(player) || (scanner->getFaction() == Factions::FACTIONREBEL && notDarkJedi(player))) {
-		scanState = SCANDELAY;
+		scanState = FACTIONRANKCHECK;
+		timeLeft = SCANTIME;
 	} else {
 		sendScannerChatMessage(zone, scanner, player, "discovered_jedi_imperial", "discovered_jedi_rebel");
 		scanner->doAnimation("point_accusingly");
