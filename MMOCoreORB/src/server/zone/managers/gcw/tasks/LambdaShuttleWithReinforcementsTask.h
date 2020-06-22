@@ -8,6 +8,7 @@
 #ifndef LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 #define LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 
+#include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -20,6 +21,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	Vector<WeakReference<CreatureObject*>> containmentTeam;
 	int difficulty;
 	int spawnNumber;
+	String chatMessageId;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int TIMETILLSHUTTLELANDING = 6000;
@@ -90,6 +92,12 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 			npc->activateLoad("");
 			CombatManager::instance()->startCombat(npc, player);
 			containmentTeam.add(npc);
+
+			if (spawnNumber == 0) {
+				StringIdChatParameter chatMessage;
+				chatMessage.setStringId(chatMessageId);
+				zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+			}
 		}
 	}
 
@@ -182,7 +190,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId) {
 		weakPlayer = player;
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
@@ -197,6 +205,7 @@ public:
 		} else {
 			troops = REBELTROOPS;
 		}
+		this->chatMessageId = chatMessageId;
 		spawnNumber = 0;
 	}
 
