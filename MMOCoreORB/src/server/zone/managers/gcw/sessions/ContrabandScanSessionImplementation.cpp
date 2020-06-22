@@ -5,6 +5,7 @@
  *      Author: loshult
  */
 
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
 #include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
@@ -376,6 +377,8 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), currentWinningFactionDifficultyScaling, landingMessage);
 			lambdaTask->schedule(TASKDELAY);
 
+			CombatManager::instance()->startCombat(scanner, player);
+
 			scanState = FINISHED;
 		}
 	}
@@ -489,6 +492,8 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 		String landingMessage = getFactionStringId(scanner, "containment_team_jedi_imperial", "containment_team_jedi_rebel");
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), JEDIREINFORCEMENTDIFFICULTY, landingMessage);
 		lambdaTask->schedule(TASKDELAY);
+
+		CombatManager::instance()->startCombat(scanner, player);
 
 		scanState = FINISHED;
 	}
