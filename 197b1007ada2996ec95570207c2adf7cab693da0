@@ -46,6 +46,30 @@
       "revId": "197b1007ada2996ec95570207c2adf7cab693da0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_0c1d2367",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-06-22T04:11:33Z",
+      "side": 1,
+      "message": "Yes, you are right, we probably want the message even though no contraband exists on the player just to show that the mechanism works. Otherwise players will probably bug report it over and over again.",
+      "parentUuid": "9a561d44_2c046714",
+      "range": {
+        "startLine": 305,
+        "startChar": 4,
+        "endLine": 305,
+        "endChar": 34
+      },
+      "revId": "197b1007ada2996ec95570207c2adf7cab693da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
