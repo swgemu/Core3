@@ -23,7 +23,7 @@ void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertInt(0);
 }
 
-bool ResourceSpawnImplementation::inShift() {
+bool ResourceSpawnImplementation::inShift() const {
 	return despawned > time(0);
 }
 
@@ -32,7 +32,7 @@ void ResourceSpawnImplementation::addAttribute(const String& attribute, int valu
 }
 
 int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
-		int index) {
+		int index) const {
 
 	if (index < spawnAttributes.size()) {
 		attribute = spawnAttributes.elementAt(index).getKey();
@@ -42,7 +42,7 @@ int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
 	}
 }
 
-int ResourceSpawnImplementation::getValueOf(int stat) {
+int ResourceSpawnImplementation::getValueOf(int stat) const {
 
 	String attribute = "";
 
@@ -85,14 +85,14 @@ int ResourceSpawnImplementation::getValueOf(int stat) {
 	return getValueOf(attribute);
 }
 
-int ResourceSpawnImplementation::getValueOf(const String& attribute) {
+int ResourceSpawnImplementation::getValueOf(const String& attribute) const {
 	if(spawnAttributes.contains(attribute))
 		return spawnAttributes.get(attribute);
 
 	return 0;
 }
 
-bool ResourceSpawnImplementation::isUnknownType() {
+bool ResourceSpawnImplementation::isUnknownType() const {
 	for (int i = 0; i < stfSpawnClasses.size(); ++i) {
 		if (stfSpawnClasses.get(i).indexOf("unknown") != -1)
 			return true;
@@ -100,7 +100,7 @@ bool ResourceSpawnImplementation::isUnknownType() {
 	return false;
 }
 
-String ResourceSpawnImplementation::getFamilyName() {
+String ResourceSpawnImplementation::getFamilyName() const {
    	int offset = 2;
 
    	if(isUnknownType())
@@ -112,7 +112,7 @@ String ResourceSpawnImplementation::getFamilyName() {
    		return "";
 }
 
-String ResourceSpawnImplementation::getSurveyMissionSpawnFamilyName() {
+String ResourceSpawnImplementation::getSurveyMissionSpawnFamilyName() const {
    	int offset = 3;
 
    	if(isUnknownType() || isType("chemical"))
@@ -133,7 +133,7 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int max
 	for (int i = 0; i < zonenames.size(); ++i) {
 
 		Zone* zone = server->getZoneServer()->getZone(zonenames.get(i));
-		if (zone == NULL)
+		if (zone == nullptr)
 			continue;
 
 		SpawnDensityMap newMap(isType("ore"), concentration, zone->getMinX(),
@@ -143,7 +143,7 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int max
 	}
 }
 
-int ResourceSpawnImplementation::getConcentration(bool jtl) {
+int ResourceSpawnImplementation::getConcentration(bool jtl) const {
 	/**
 	 * Here we are using defined rules to set the max
 	 * density of this specific spawn
@@ -160,8 +160,7 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 }
 
 Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
-		const String& zonerestriction, Vector<String>& activeZones) {
-
+		const String& zonerestriction, Vector<String>& activeZones) const {
 	/**
 	 * Here we are using defined rules to set the number
 	 * of zones and specific zones of this specific spawn
@@ -169,12 +168,12 @@ Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	Vector<String> zonenames;
 	int zonecount = 0;
 
-	if(minpool == maxpool)
+	if (minpool == maxpool)
 		zonecount = maxpool;
 	else
 		zonecount = System::random(maxpool - minpool) + minpool;
 
-	if(zonecount > activeZones.size())
+	if (zonecount > activeZones.size())
 		zonecount = activeZones.size();
 
 	/// If resource is zone restricted, add only the restricted zone
@@ -191,26 +190,26 @@ Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	return activeZones;
 }
 
-float ResourceSpawnImplementation::getDensityAt(const String& zoneName, float x, float y) {
+float ResourceSpawnImplementation::getDensityAt(const String& zoneName, float x, float y) const {
 	if (!spawnMaps.contains(zoneName))
 		return 0;
 
 	if (!inShift())
 		return 0;
 
-	SpawnDensityMap map = spawnMaps.get(zoneName);
+	const SpawnDensityMap map = spawnMaps.get(zoneName);
 
 	return map.getDensityAt(x, y);
 }
 
-String ResourceSpawnImplementation::getSpawnMapZone(int i) {
+String ResourceSpawnImplementation::getSpawnMapZone(int i) const {
 	if (spawnMaps.size() > i)
 		return spawnMaps.getKey(i);
 	else
 		return "";
 }
 
-uint32 ResourceSpawnImplementation::getPlanetCRC() {
+uint32 ResourceSpawnImplementation::getPlanetCRC() const {
 	String zoneName = getSpawnMapZone(0);
 
 	if (zoneName == "")
@@ -227,11 +226,11 @@ void ResourceSpawnImplementation::extractResource(const String& zoneName, int un
 }
 
 Reference<ResourceContainer*> ResourceSpawnImplementation::createResource(int units) {
-   	Reference<ResourceContainer*> newResource = NULL;
+   	Reference<ResourceContainer*> newResource = nullptr;
 
    	newResource = (getZoneServer()->createObject(containerCRC, 2)).castTo<ResourceContainer*>();
 
-   	if(newResource == NULL) {
+   	if(newResource == nullptr) {
    		error("Unable to create resource container, using generic.  CRC attempted was: " + String::valueOf(containerCRC));
    		print();
    		String genericContainer = "object/resource_container/organic_food.iff";
@@ -245,8 +244,7 @@ Reference<ResourceContainer*> ResourceSpawnImplementation::createResource(int un
    	if (units != 0)
    		newResource->setQuantity(units);
 
-   	String resourceName = getFinalClass() + " (" + getName() + ")";
-    	newResource->setCustomObjectName(resourceName, false);
+   	newResource->setCustomObjectName(getFamilyName(), false);
 
    	++containerReferenceCount;
 
@@ -276,7 +274,7 @@ void ResourceSpawnImplementation::addStatsToDeedListBox(SuiListBox* suil) {
 	}
 }
 
-void ResourceSpawnImplementation::print() {
+void ResourceSpawnImplementation::print() const {
 	info("**** Resource Data ****\n", true);
 	info("Class: " + getFinalClass(), true);
 	info("Name: " + spawnName, true);
