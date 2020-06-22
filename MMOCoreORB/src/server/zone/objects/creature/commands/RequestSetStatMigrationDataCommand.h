@@ -47,7 +47,7 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
 		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
 
-		if (session == NULL) {
+		if (session == nullptr) {
 			return GENERALERROR;
 		}
 
