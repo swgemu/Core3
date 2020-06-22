@@ -16,6 +16,7 @@ import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.objects.resource.ResourceSpawn;
+include server.zone.objects.transaction.TransactionLog;
 include system.util.Vector;
 
 /**
@@ -28,46 +29,48 @@ class ResourceManager extends Observer implements Logger {
 	private transient ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient int shiftInterval;
-
-	public static final int RESOURCE_DEED_QUANTITY = 100000;
-
+	
+	public static final int RESOURCE_DEED_QUANTITY = 30000;
+	
 	public ResourceManager(ZoneServer server, ZoneProcessServer impl) {
 
 		Logger.setLoggingName("ResourceManager");
-
+		
 		Logger.setLogging(true);
 		Logger.setGlobalLogging(true);
-
+		
 		zoneServer = server;
 		processor = impl;
-
+	
 		resourceSpawner = new ResourceSpawner(server, impl);
-
+	
 		Logger.info("ResourceManager started");
 	}
-
-
+	
+	
 	public native void stop();
 	public native void initialize();
 	public native void shiftResources();
-
+	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-
-	public native int getResourceRecycleType(ResourceSpawn resource);
+	
+	public native int getResourceRecycleType(ResourceSpawn resource);	
 
 	public native void sendResourceListForSurvey(CreatureObject playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(CreatureObject playerCreature, final string resname);
 	public native void sendSample(CreatureObject playerCreature, final string resname, final string sampleAnimation);
-
+	
 	public native ResourceContainer harvestResource(CreatureObject player, final string type, final int quantity);
-	public native boolean harvestResourceToPlayer(CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
-
-	public native unsigned int getAvailablePowerFromPlayer(CreatureObject player);
-	public native void removePowerFromPlayer(CreatureObject player, unsigned int power);
 
 	@local
+	public native boolean harvestResourceToPlayer(@dereferenced TransactionLog trx, CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
+	
+	public native unsigned int getAvailablePowerFromPlayer(CreatureObject player);
+	public native void removePowerFromPlayer(CreatureObject player, unsigned int power);
+	
+	@local
 	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, final string zoneName);
-
+	
 	public native void createResourceSpawn(CreatureObject playerCreature, final unicode args);
 	public native void givePlayerResource(CreatureObject playerCreature, final string restype, final int quantity);
 
@@ -77,28 +80,28 @@ class ResourceManager extends Observer implements Logger {
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	private native void loadSurveyData();
-
+	
 	private native void startResourceSpawner();
 
 	public native boolean isRecycledResource(ResourceSpawn resource);
 
 	public native ResourceSpawn getRecycledVersion(ResourceSpawn resource);
-
+	
 	/// Resource Deed Methods
 	public native void addNodeToListBox(SuiListBox sui, final string nodeName);
 	public native string addParentNodeToListBox(SuiListBox sui, final string currentNode);
 
 	public native void listResourcesForPlanetOnScreen(CreatureObject creature, final string planet);
 
-	public native string healthCheck();
-
+	public native string healthCheck(); 
+	
 	public native string dumpResources();
-
+	
 	public native string despawnResource(string resourceName);
-
+	
 	public native void addPlanetsToListBox(SuiListBox sui);
 	public native string getPlanetByIndex(int idx);
-
+	
 	@local
 	public ResourceSpawner getResourceSpawner() {
 		return resourceSpawner;
