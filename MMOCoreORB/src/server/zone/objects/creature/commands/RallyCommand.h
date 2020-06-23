@@ -71,6 +71,10 @@ public:
 
 			if (!isValidGroupAbilityTarget(leader, member, true))
 				continue;
+			// FIX RALLY: Check distance from leader to member
+			if (!checkDistance(leader, member, 64))
+				continue;
+			
 
 			Locker clocker(member, leader);
 
