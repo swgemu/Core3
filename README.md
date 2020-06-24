@@ -6,6 +6,11 @@ Star Wars Galaxies was a massively multi-player online role playing game introdu
 It is this game the SWGEmu project focuses to recreate at a specific milestone referred to as Pre-CU, or Pre-Combat Upgrade. The Combat Upgrade was a set of game changes which radically changed the game-play, to the dislike of thousands of players. These changes led to the founding of this project, in an attempt to "recreate" the game as it was during the Pre-CU era.
 At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emulator is meant to imitate Sony Online Entertainment's server-side software, which hosted the galaxies of Star Wars Galaxies during the Pre-CU era.
 
+They will download with an extra _0.tre Back yours up and then change the name of these
+Patch 03 https://drive.google.com/file/d/1MY5FmYkD9r4HfIELwARop8Puas4fEKXM/view?usp=sharing
+Patch 11 https://drive.google.com/file/d/1flLuI5_sDtivVaEgq4oiZaorps6LqWV_/view?usp=sharing
+
+
 ## Changes in this repo
  * Will need to download 2 new tre files (patch 3 and 11)
   * Must pick Zabrak and start with Brawler
@@ -31,7 +36,7 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
 ### Build
 
   * Install dependencies (debian-9.12.0-amd64-netinst.iso, need to open ports)
-
+https://github.com/TrigsC/swgemutxt/blob/master/OpenPorts.JPG
         su -
         apt-get update && apt-get upgrade && apt-get install build-essential default-mysql-server default-libmysqlclient-dev default-jre libdb5.3-dev liblua5.3-dev libssl-dev cmake git gdb tmux
         exit
