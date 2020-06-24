@@ -34,9 +34,8 @@ Patch 11 https://drive.google.com/file/d/1flLuI5_sDtivVaEgq4oiZaorps6LqWV_/view?
 ## How to Build
 
 ### Build
-
+ https://github.com/TrigsC/swgemutxt/blob/master/OpenPorts.JPG
   * Install dependencies (debian-9.12.0-amd64-netinst.iso, need to open ports)
-https://github.com/TrigsC/swgemutxt/blob/master/OpenPorts.JPG
         su -
         apt-get update && apt-get upgrade && apt-get install build-essential default-mysql-server default-libmysqlclient-dev default-jre libdb5.3-dev liblua5.3-dev libssl-dev cmake git gdb tmux
         exit
