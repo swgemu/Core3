@@ -233,14 +233,18 @@ public:
 			patient->sendSystemMessage(msgTarget.toString());
 		}
 	}
-
+	// DEDA FIX
 	uint32 getEnhancePackStrength(EnhancePack *enhancePack, CreatureObject* enhancer, CreatureObject *patient) const {
 		uint32 buffPower = 0;
+		float buffNerf = 0.2;
 		if (BuffAttribute::isProtection(enhancePack->getAttribute())) {  // If it's a protection enhancement, wound treatment has no effect
 			buffPower = enhancePack->getEffectiveness();
 			buffPower = buffPower * patient->calculateBFRatio();
-		} else
+			buffPower = buffPower * buffNerf;
+		} else {
 			buffPower = enhancePack->calculatePower(enhancer, patient);
+			buffPower = buffPower * buffNerf;
+		}
 
 		return buffPower;
 	}
