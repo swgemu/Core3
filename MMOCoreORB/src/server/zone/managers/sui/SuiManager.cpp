@@ -461,6 +461,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 						modName = "(Doctor)";
 						apron->addSkillMod(SkillModManager::WEARABLE, "medicine_assembly", 25);
 						apron->addSkillMod(SkillModManager::WEARABLE, "medicine_experimentation", 25);
+					} else if(templatePath == "crafting_apron_doctor_buff") {
+						modName = "(DoctorBuff)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "healing_wound_treatment", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "healing_wound_speed", 25);	
+						apron->addSkillMod(SkillModManager::WEARABLE, "healing_ability", 25);	
 					} else if(templatePath == "crafting_apron_combat_medic") {
 						modName = "(Combat Medic)";
 						apron->addSkillMod(SkillModManager::WEARABLE, "combat_medicine_assembly", 25);
@@ -492,10 +497,10 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "credits") {
 				{
-					TransactionLog trx(TrxCode::CHARACTERBUILDER, player, 50000, true);
-					player->addCashCredits(50000, true);
+					TransactionLog trx(TrxCode::CHARACTERBUILDER, player, 500000, true);
+					player->addCashCredits(500000, true);
 				}
-				player->sendSystemMessage("You have received 50.000 Credits");
+				player->sendSystemMessage("You have received 500000 Credits");
 
 			} else if (templatePath == "faction_rebel") {
 				ghost->increaseFactionStanding("rebel", 100000);
