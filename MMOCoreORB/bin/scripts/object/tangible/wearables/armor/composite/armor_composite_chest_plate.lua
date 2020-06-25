@@ -96,23 +96,23 @@ object_tangible_wearables_armor_composite_armor_composite_chest_plate = object_t
 	specialResists = ELECTRICITY,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 300,
+	healthEncumbrance = 292,
 	actionEncumbrance = 120,
-	mindEncumbrance = 85,
+	mindEncumbrance = 87,
 
 	maxCondition = 30000,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 65,
-	energy = 65,
+	kinetic = 90,
+	energy = 90,
 	electricity = 80,
-	stun = 25,
-	blast = 65,
-	heat = 65,
-	cold = 65,
-	acid = 65,
+	stun = 38,
+	blast = 90,
+	heat = 76,
+	cold = 73,
+	acid = 90,
 	lightSaber = 0,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
