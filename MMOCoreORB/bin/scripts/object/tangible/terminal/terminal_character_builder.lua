@@ -1550,11 +1550,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Color Crystal", "color_crystals",
 				"Krayt Pearl", "krayt_pearls"
 			},
-			--"Attachments",
-			--{
-			--	"Armor Attachment", "object/tangible/gem/armor.iff",
-			--	"Clothing Attachment", "object/tangible/gem/clothing.iff",
-			--},
+			"Attachments",
+			{
+				"Armor Attachment", "object/tangible/gem/armor.iff",
+				"Clothing Attachment", "object/tangible/gem/clothing.iff",
+			},
 			"Armor",
 			{
 				--	"Bone Armor",
@@ -1650,6 +1650,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Droid Engineer", "crafting_apron_droid_engineer",
 					"Tailor", "crafting_apron_tailor",
 					"Weaponsmith", "crafting_apron_weaponsmith",
+					"DoctorBuff", "crafting_apron_doctor_buff",
 				},
 				"Backpacks",
 				{
