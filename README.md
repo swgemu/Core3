@@ -13,14 +13,16 @@ Patch 11 https://drive.google.com/file/d/1flLuI5_sDtivVaEgq4oiZaorps6LqWV_/view?
 
 ## Changes in this repo
  * Will need to download 2 new tre files (patch 3 and 11)
-  * Must pick Zabrak and start with Brawler
-  * Stat Migration changed (higher min and max)
-  * Buffs Nerfed to only 20% strength
+ * Must pick Zabrak and start with Brawler
+ * Stat Migration changed (higher min and max)
+ * Buffs Nerfed to only 20% strength
+ * Ent Buffs Nerfed to 25% strength and 40 min Duration
  * Updated to current SWGEmu Code
  * Factory Crate Cap 1k
  * Factory Time Complexity Lowered
  * Create Character Timer Removed
  * Resource Deed 100k
+ * Frog attachments are 25
  * All attachments are 25
  * Blue Frog Buffs
  * Starting Cash and Swoop
