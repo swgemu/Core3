@@ -392,6 +392,19 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					player->sendSystemMessage("Not within combat.");
 					return;
 				}
+			} else if (templatePath == "armor_attachments" || templatePath == "cloting_attachments") {
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+				if (inventory == nullptr)
+					return;
+
+				LootManager* lootManager = zserv->getLootManager();
+				TransactionLog trx(TrxCode::CHARACTERBUILDER, player);
+				if (lootManager->createLoot(trx, inventory, templatePath, 300, true)) {
+					trx.commit(true);
+				} else {
+					trx.abort() << "createLoot " << templatePath << " failed.";
+				}
 
 			} else if (templatePath.beginsWith("crafting_apron_")) {
 				//"object/tangible/wearables/apron/apron_chef_s01.iff"
