@@ -3163,9 +3163,10 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 
 	if (ghost == nullptr)
 		return false;
-
-	if (ghost->hasBhTef())
-		return false;
+	// DEDA Fix
+	//if healer has BFTef, healer can heal
+	//if (ghost->hasBhTef())
+	//	return false;
 
 	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 
