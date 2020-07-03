@@ -3046,6 +3046,10 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if ((!bypassDeadCheck && (isDead() || (isIncapacitated() && !isFeigningDeath()))) || isInvisible())
 		return false;
 
+	if (ghost->hasCrackdownTefTowards(object->getFaction())) {
+		return true;
+	}
+
 	if (getPvpStatusBitmask() == CreatureFlag::NONE)
 		return false;
 
@@ -3089,6 +3093,10 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 				return false;
 			if (ConfigManager::instance()->getPvpMode())
 				return true;
+
+			if (object->isAiAgent() && ghost->hasCrackdownTefTowards(object->getFaction())) {
+				return true;
+			}
 		}
 	}
 
