@@ -243,6 +243,11 @@ class PlayerObject extends IntangibleObject {
 	protected Time lastGcwPvpCombatActionTimestamp;
 
 	@dereferenced
+	protected Time lastCrackdownGcwCombatActionTimestamp;
+
+	protected unsigned int crackdownFactionTefCrc;
+
+	@dereferenced
 	protected transient Reference<PvpTefRemovalTask> pvpTefTask;
 
 	@dereferenced
@@ -372,6 +377,8 @@ class PlayerObject extends IntangibleObject {
 
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		lastCrackdownGcwCombatActionTimestamp.updateToCurrentTime();
+		crackdownFactionTefCrc = 0;
 
 		lastDigestion.updateToCurrentTime();
 
@@ -1735,6 +1742,10 @@ class PlayerObject extends IntangibleObject {
 
 	@read
 	public native boolean hasBhTef();
+
+	public native void setCrackdownTefTowards(unsigned int factionCrc);
+
+	public native boolean hasCrackdownTefTowards(unsigned int factionCrc);
 
 	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
 

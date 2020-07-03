@@ -457,6 +457,14 @@ unsigned int ContrabandScanSessionImplementation::jediAvoidDetectionSuccessChanc
 	return successChance;
 }
 
+void ContrabandScanSessionImplementation::addCrackdownTef(AiAgent* scanner, CreatureObject* player) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost != nullptr) {
+		ghost->setCrackdownTefTowards(scanner->getFaction());
+	}
+}
+
 void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 	String stringId = "@imperial_presence/contraband_search:";
@@ -493,6 +501,7 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), JEDIREINFORCEMENTDIFFICULTY, landingMessage);
 		lambdaTask->schedule(TASKDELAY);
 
+		addCrackdownTef(scanner, player);
 		CombatManager::instance()->startCombat(scanner, player);
 
 		scanState = FINISHED;

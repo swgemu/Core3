@@ -2377,6 +2377,16 @@ bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
+void PlayerObjectImplementation::setCrackdownTefTowards(unsigned int factionCrc) {
+	crackdownFactionTefCrc = factionCrc;
+	lastCrackdownGcwCombatActionTimestamp.updateToCurrentTime();
+	lastCrackdownGcwCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+}
+
+bool PlayerObjectImplementation::hasCrackdownTefTowards(unsigned int factionCrc) {
+	return !lastCrackdownGcwCombatActionTimestamp.isPast() && crackdownFactionTefCrc == factionCrc;
+}
+
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
