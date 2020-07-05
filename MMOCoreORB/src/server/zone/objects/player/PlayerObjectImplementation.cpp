@@ -2331,13 +2331,22 @@ Time PlayerObjectImplementation::getLastGcwPvpCombatActionTimestamp() const {
 	return lastGcwPvpCombatActionTimestamp;
 }
 
-void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction) {
+Time PlayerObjectImplementation::getLastGcwCrackdownCombatActionTimestamp() const {
+	return lastCrackdownGcwCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastCombatActionTimestamp(bool updateGcwCrackdownAction, bool updateGcwAction, bool updateBhAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
 		return;
 
-	bool alreadyHasTef = hasPvpTef();
+	bool alreadyHasTef = hasTef();
+
+	if (updateGcwCrackdownAction) {
+		lastCrackdownGcwCombatActionTimestamp.updateToCurrentTime();
+		lastCrackdownGcwCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+	}
 
 	if (updateBhAction) {
 		bool alreadyHasBhTef = hasBhTef();
@@ -2362,11 +2371,15 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 }
 
 void PlayerObjectImplementation::updateLastBhPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(false, true);
+	updateLastCombatActionTimestamp(false, false, true);
 }
 
 void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(true, false);
+	updateLastCombatActionTimestamp(false, true, false);
+}
+
+bool PlayerObjectImplementation::hasTef() const {
+	return hasCrackdownTef() || hasPvpTef();
 }
 
 bool PlayerObjectImplementation::hasPvpTef() const {
@@ -2377,29 +2390,41 @@ bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
-void PlayerObjectImplementation::setCrackdownTefTowards(unsigned int factionCrc) {
+void PlayerObjectImplementation::setCrackdownTefTowards(unsigned int factionCrc, bool scheduleTefRemovalTask) {
 	crackdownFactionTefCrc = factionCrc;
-	lastCrackdownGcwCombatActionTimestamp.updateToCurrentTime();
-	lastCrackdownGcwCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+	if (scheduleTefRemovalTask) {
+		updateLastCombatActionTimestamp(true, false, false);
+	}
 }
 
-bool PlayerObjectImplementation::hasCrackdownTefTowards(unsigned int factionCrc) {
+bool PlayerObjectImplementation::hasCrackdownTefTowards(unsigned int factionCrc) const {
 	return !lastCrackdownGcwCombatActionTimestamp.isPast() && crackdownFactionTefCrc == factionCrc;
 }
 
-void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow) {
+bool PlayerObjectImplementation::hasCrackdownTef() const {
+	return !lastCrackdownGcwCombatActionTimestamp.isPast() && crackdownFactionTefCrc != 0;
+}
+
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeCrackdownGcwTefNow, bool removeGcwTefNow, bool removeBhTefNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
-	if (parent == nullptr)
+	if (parent == nullptr) {
 		return;
+	}
 
 	if (pvpTefTask == nullptr) {
 		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
-	if (removeGcwTefNow || removeBhTefNow) {
-		if (removeGcwTefNow)
+	if (removeCrackdownGcwTefNow || removeGcwTefNow || removeBhTefNow) {
+		if (removeCrackdownGcwTefNow) {
+			crackdownFactionTefCrc = 0;
+			lastCrackdownGcwCombatActionTimestamp.updateToCurrentTime();
+		}
+
+		if (removeGcwTefNow) {
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		}
 
 		if (removeBhTefNow) {
 			lastBhPvpCombatActionTimestamp.updateToCurrentTime();
@@ -2412,10 +2437,13 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	}
 
 	if (!pvpTefTask->isScheduled()) {
-		if (hasPvpTef()) {
+		if (hasTef()) {
+			auto gcwCrackdownTefMs = getLastGcwCrackdownCombatActionTimestamp().miliDifference();
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
-			pvpTefTask->schedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
+			auto scheduleTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
+			scheduleTime = gcwCrackdownTefMs < scheduleTime ? gcwCrackdownTefMs : scheduleTime;
+			pvpTefTask->schedule(llabs(scheduleTime));
 		} else {
 			pvpTefTask->execute();
 		}
@@ -2423,7 +2451,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 }
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
-	schedulePvpTefRemovalTask(removeNow, removeNow);
+	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow);
 }
 
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() const {

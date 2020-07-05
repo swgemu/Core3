@@ -1731,11 +1731,19 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public native Time getLastGcwPvpCombatActionTimestamp();
 
-	public native void updateLastPvpCombatActionTimestamp(boolean updateGcwAction, boolean updateBhAction);
+	@dereferenced
+	@local
+	@read
+	public native Time getLastGcwCrackdownCombatActionTimestamp();
+
+	public native void updateLastCombatActionTimestamp(boolean updateGcwCrackdownAction, boolean updateGcwAction, boolean updateBhAction);
 
 	public native void updateLastBhPvpCombatActionTimestamp();
 
 	public native void updateLastGcwPvpCombatActionTimestamp();
+
+	@read
+	public native boolean hasTef();
 
 	@read
 	public native boolean hasPvpTef();
@@ -1743,11 +1751,15 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public native boolean hasBhTef();
 
-	public native void setCrackdownTefTowards(unsigned int factionCrc);
+	public native void setCrackdownTefTowards(unsigned int factionCrc, boolean scheduleTefRemovalTask = true);
 
+	@read
 	public native boolean hasCrackdownTefTowards(unsigned int factionCrc);
 
-	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
+	@read
+	public native boolean hasCrackdownTef();
+
+	public native void schedulePvpTefRemovalTask(boolean removeCrackdownGcwTefNow, boolean removeGcwTefNow, boolean removeBhTefNow);
 
 	public native void schedulePvpTefRemovalTask(boolean removeNow = false);
 
