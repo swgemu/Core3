@@ -455,6 +455,8 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 
 	if (targetCreature == nullptr)
 		return GENERALERROR;
+	// TEF Fix
+	checkForTef(creature, targetCreature);
 
 	int retval = GENERALERROR;
 

@@ -2809,9 +2809,15 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		// this is basically the isEnemy check, but with the GCW faction (they should both return the same thing)
 		if (ghost == nullptr && (targetFaction != getFaction()))
 			return true;
+		// TEF FIX
+		//else if (hasPersonalEnemyFlag(target) || target->hasPersonalEnemyFlag(asCreatureObject()))
+		//	return true;
+		//else if (ghost != nullptr && (ghost->hasPersonalEnemyFlag() && target->hasPersonalEnemyFlag(asCreatureObject()) && (targetFaction == getFaction()) && target->getFactionStatus() == FactionStatus::COVERT))
+		//	return true;
 		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-		else if (ghost != nullptr && (targetFaction != getFaction()) && target->getFactionStatus() != FactionStatus::ONLEAVE)
+		else if (ghost != nullptr && (targetFaction != getFaction()) && (target->getFactionStatus() == FactionStatus::OVERT || target->getPvpStatusBitmask() & CreatureFlag::TEF))
 			return true;
+		
 	}
 
 	// now grab the generic faction (which could include imp/reb)
