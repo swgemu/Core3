@@ -2753,6 +2753,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Weapons",
 			{
+				"PSG",
+				{
+					"Imperial PSG", "object/tangible/component/armor/shield_generator_personal_imperial_test.iff",
+				},
 				"Carbines",
 				{
 					--		"CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef.iff",
@@ -2784,7 +2788,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				{
 					--		"Sword", "object/weapon/melee/sword/sword_01.iff",
 					--		"Sword (noob)", "object/weapon/melee/sword/sword_01_noob.iff",
-					--		"Curved Sword", "object/weapon/melee/sword/sword_02.iff",
+					"Curved Sword", "object/weapon/melee/sword/sword_02.iff",
 					--		"Ryyk Blade", "object/weapon/melee/sword/sword_blade_ryyk.iff",
 					--		"Curved Nyax Sword", "object/weapon/melee/sword/sword_curved_nyax.iff",
 					--		"Nyax Sword", "object/weapon/melee/sword/sword_nyax.iff",
@@ -2812,12 +2816,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					--		"DL44 Pistol", "object/weapon/ranged/pistol/pistol_dl44.iff",
 					--		"DL44 Metal Pistol", "object/weapon/ranged/pistol/pistol_dl44_metal.iff",
 					--		"DX2 Pistol", "object/weapon/ranged/pistol/pistol_dx2.iff",
-					"FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5.iff",
+					--"FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5.iff",
 					--		"Featherweight FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",
-					--		"Geonosian Sonic Blaster", "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
-					"Launcher Pistol", "object/weapon/ranged/pistol/pistol_launcher.iff",
+					"Geonosian Sonic Blaster", "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
+					--"Launcher Pistol", "object/weapon/ranged/pistol/pistol_launcher.iff",
 					--		"Power5 Pistol", "object/weapon/ranged/pistol/pistol_power5.iff",
-					"Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
+					--"Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
 					--		"Modified Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster_quest.iff",
 					"Scatter Pistol", "object/weapon/ranged/pistol/pistol_scatter.iff",
 				--		"Scout Blaster", "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
@@ -2853,7 +2857,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					--		"Lithitanium Rifle", "object/weapon/ranged/rifle/rifle_victor_tusken.iff",
 					--		"SG82 Rifle", "object/weapon/ranged/rifle/rifle_sg82.iff",
 					--		"Spraystick", "object/weapon/ranged/rifle/rifle_spraystick.iff",
-					--		"Tenloss DXR-6 Disruptor Rifle", "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
+					"Tenloss DXR-6 Disruptor Rifle", "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
 					"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
 				--		"Tusken Rifle", "object/weapon/ranged/rifle/rifle_tusken.iff"
 				},
@@ -2861,7 +2865,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				{
 					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
 					--		"Grooved Two-handed Sword", "object/weapon/melee/2h_sword/2h_sword_katana_quest.iff",
-					--		"Scythe Blade", "object/weapon/melee/2h_sword/2h_sword_scythe.iff",
+					"Scythe Blade", "object/weapon/melee/2h_sword/2h_sword_scythe.iff",
 					"Power Hammer", "object/weapon/melee/2h_sword/2h_sword_maul.iff",
 				--		"Two-handed Cleaver", "object/weapon/melee/2h_sword/2h_sword_cleaver.iff",
 				--		"Black Sun Executioner's Hack", "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff",
