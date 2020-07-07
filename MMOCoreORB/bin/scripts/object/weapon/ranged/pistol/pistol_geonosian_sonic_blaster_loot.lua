@@ -100,9 +100,9 @@ object_weapon_ranged_pistol_pistol_geonosian_sonic_blaster_loot = object_weapon_
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 18,
-	actionAttackCost = 43,
-	mindAttackCost = 17,
+	healthAttackCost = 24,
+	actionAttackCost = 32,
+	mindAttackCost = 14,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -114,10 +114,10 @@ object_weapon_ranged_pistol_pistol_geonosian_sonic_blaster_loot = object_weapon_
 	maxRange = 45,
 	maxRangeAccuracy = 5,
 
-	minDamage = 18,
-	maxDamage = 88,
+	minDamage = 180,
+	maxDamage = 570,
 
-	attackSpeed = 4,
+	attackSpeed = 1.5,
 
 	woundsRatio = 12,
 

@@ -47,6 +47,7 @@ object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shar
 	duration = 41,
 	filling = 27,
 	nutrition = 44,
+	useCount = 99,
 
 	effectType = 3, -- Event Based Buff
 	eventTypes = {DAMAGERECEIVED},

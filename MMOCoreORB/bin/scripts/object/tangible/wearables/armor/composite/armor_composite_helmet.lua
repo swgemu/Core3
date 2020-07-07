@@ -88,6 +88,8 @@ object_tangible_wearables_armor_composite_armor_composite_helmet = object_tangib
 
 	specialResists = ELECTRICITY,
 
+	Sockets = 4,
+
 	-- These are default Blue Frog stats
 	healthEncumbrance = 83,
 	actionEncumbrance = 80,

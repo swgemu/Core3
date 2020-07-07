@@ -47,6 +47,7 @@ object_tangible_food_crafted_drink_spiced_tea = object_tangible_food_crafted_sha
 	duration = 3077,
 	filling = 7,
 	nutrition = 92,
+	useCount = 99,
 
 	effectType = 1,
 

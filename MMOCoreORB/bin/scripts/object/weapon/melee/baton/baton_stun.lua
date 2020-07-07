@@ -103,9 +103,9 @@ object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_st
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily"Stun Baton":"1H Melee":"0":"stun"
-	healthAttackCost = 20,
-	actionAttackCost = 51,
-	mindAttackCost = 45,
+	healthAttackCost = 8,
+	actionAttackCost = 40,
+	mindAttackCost = 34,
 	forceCost = 0,
 
 	pointBlankRange = 0,
@@ -117,10 +117,10 @@ object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_st
 	maxRange = 4,
 	maxRangeAccuracy = 0,
 
-	minDamage = 156,
-	maxDamage = 259,
+	minDamage = 330,
+	maxDamage = 430,
 
-	attackSpeed = 2.3,
+	attackSpeed = 3.1,
 
 	woundsRatio = 2,
 

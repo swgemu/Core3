@@ -44,12 +44,12 @@
 object_tangible_medicine_crafted_medpack_cure_disease_area_a = object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a:new {
 	gameObjectType = 8239,
 	templateType = CUREPACK,
-	useCount = 10,
-	medicineUse = 5,
-	effectiveness = 100,
+	useCount = 99,
+	medicineUse = 70,
+	effectiveness = 480,
 	state = DISEASED,
 	commandToExecute = "curedisease",
-	area = 5,
+	area = 15,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
