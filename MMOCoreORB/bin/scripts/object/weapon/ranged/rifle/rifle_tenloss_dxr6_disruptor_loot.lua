@@ -101,9 +101,9 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 29,
-	actionAttackCost = 26,
-	mindAttackCost = 48,
+	healthAttackCost = 68,
+	actionAttackCost = 72,
+	mindAttackCost = 85,
 	forceCost = 0,
 
 	pointBlankAccuracy = -69,
@@ -115,10 +115,10 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 	maxRange = 64,
 	maxRangeAccuracy = 15,
 
-	minDamage = 70,
-	maxDamage = 115,
+	minDamage = 250,
+	maxDamage = 620,
 
-	attackSpeed = 7.5,
+	attackSpeed = 4.4,
 
 	woundsRatio = 27,
 
