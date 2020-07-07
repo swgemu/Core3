@@ -5,6 +5,8 @@
 #ifndef CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 #define CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 
+#include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
+
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:
 
@@ -14,12 +16,26 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
+		// This command has temporary been set up to test the Lambda shuttle landing routine without having to go through the contraband scan.
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
+
+		if (!creature->isPlayerCreature()) {
+			return GENERALERROR;
+		}
+
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+		if (ghost == nullptr || !ghost->isPrivileged()) {
+			return GENERALERROR;
+		}
+
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial");
+		lambdaTask->schedule(1);
 
 		return SUCCESS;
 	}
