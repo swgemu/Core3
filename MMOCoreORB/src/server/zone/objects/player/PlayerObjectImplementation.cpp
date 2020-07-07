@@ -2863,7 +2863,11 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 
 	if (newStatus == FactionStatus::COVERT) {
 		inputbox->setPromptText("@gcw:gcw_status_change_covert"); // You are changing your GCW Status to 'Combatant'. This transition will take 30 seconds. It will allow you to attack and be attacked by enemy NPC's. Type YES in this box to confirm the change.
-	} else if (newStatus == FactionStatus::OVERT) {
+	// Test for box with no data
+	// TEF Fix
+	} else if (curStatus == FactionStatus::COVERT && (parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+		return;
+	} else if (newStatus == FactionStatus::OVERT && !(parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
 		inputbox->setPromptText("@gcw:gcw_status_change_overt"); // You are changing your GCW Status to 'Special Forces'. This transition will take 5 minutes. It will allow you to attack and be attacked by hostile players and NPC's.Type YES in this box to confirm the change.
 	}
 

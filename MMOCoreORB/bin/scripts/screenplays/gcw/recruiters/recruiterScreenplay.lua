@@ -598,10 +598,10 @@ function recruiterScreenplay:getSmugglerDiscount(pPlayer)
 	end
 	return 1.0
 end
-
+--Set to Covert 1 instead of leave
 function recruiterScreenplay:handleGoOnLeave(pPlayer)
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
-	CreatureObject(pPlayer):setFactionStatus(0)
+	CreatureObject(pPlayer):setFactionStatus(1)
 end
 
 function recruiterScreenplay:handleGoCovert(pPlayer)

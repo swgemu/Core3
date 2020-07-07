@@ -44,9 +44,9 @@ public:
 				return;
 			}
 
-			player->sendSystemMessage("@gcw:handle_go_covert"); // You will be flagged as a Combatant in 30 seconds.
+			//player->sendSystemMessage("@gcw:handle_go_covert"); // You will be flagged as a Combatant in 30 seconds.
+			player->sendSystemMessage("You will be flagged as a Covert in 30 seconds."); // No string available for overt.
 			player->setFutureFactionStatus(FactionStatus::COVERT);
-
 			ManagedReference<CreatureObject*> creo = player->asCreatureObject();
 
 			Core::getTaskManager()->scheduleTask([creo]{
@@ -56,8 +56,12 @@ public:
 					creo->setFactionStatus(FactionStatus::COVERT);
 				}
 			}, "UpdateFactionStatusTask", 30000);
-		} else if (newStatus == FactionStatus::OVERT) {
-			player->sendSystemMessage("You will be flagged as Special Forces in 5 minutes."); // No string available for overt.
+		// TEF Fix
+		} else if (curStatus == FactionStatus::COVERT && (player->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+			return;
+		} else if (curStatus == FactionStatus::COVERT && !(player->getPvpStatusBitmask() & CreatureFlag::TEF) && newStatus==FactionStatus::OVERT) {
+		//} else if (newStatus == FactionStatus::OVERT) {
+			player->sendSystemMessage("You will be flagged as Overt in 5 minutes."); // No string available for overt.
 			player->setFutureFactionStatus(FactionStatus::OVERT);
 
 			ManagedReference<CreatureObject*> creo = player->asCreatureObject();

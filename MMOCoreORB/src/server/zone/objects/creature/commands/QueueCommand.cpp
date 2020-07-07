@@ -259,9 +259,9 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
-
+		// TEF Fix
 		if (!CombatManager::instance()->areInDuel(creature, target)
-				&& targetGhost != nullptr && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
+				&& targetGhost != nullptr && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT) && targetGhost->hasPvpTef()) {
 			ghost->updateLastGcwPvpCombatActionTimestamp();
 		}
 	} else if (target->isPet()) {

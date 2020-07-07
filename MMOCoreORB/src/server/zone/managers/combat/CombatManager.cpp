@@ -249,11 +249,36 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 		if (attackingCreature != nullptr) {
 			PlayerObject* ghost = attackingCreature->getPlayerObject();
+			PlayerObject* ghostAttacker = attacker->getPlayerObject();
 
 			if (ghost != nullptr) {
 				Locker olocker(attackingCreature, attacker);
 				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+				ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
+				if (defenderObject != nullptr){
+					olocker.release();
+					Locker olocker(defenderCreature, attacker);
+					if (defenderCreature->isAiAgent())
+						ghostAttacker->updateLastPvpCombatActionTimestamp(true,false);
+					ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
+					if (defenderPlayer != nullptr && shouldGcwTef)
+						defenderPlayer->updateLastPvpCombatActionTimestamp(true,false);
+				}
 			}
+			// Future Reference
+			//ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
+			//if (defenderCreature->isAiAgent()) {
+			//	Locker olocker(defenderCreature, attacker);
+			//	ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+			//}
+			//if (attackingCreature->isPlayerCreature()) {
+			//	Locker olocker(attackingCreature, attacker);
+			//	ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+			//}
+			//if (ghostAttacker != nullptr && attacker->isPlayerCreature()){
+			//	Locker olocker(attackingCreature, attacker);
+			//	ghostAttacker->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+			//}
 		}
 	}
 
@@ -318,6 +343,25 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			if (aiAgent->getHAM(i) < (aiAgent->getMaxHAM(i) / 2)) {
 				help = true;
 				break;
+			}
+		}
+			// Update PvP TEF Duration
+		// TEF FIX
+		if (shouldGcwTef || shouldBhTef) {
+
+			if (attacker->isPlayerCreature()) {
+				PlayerObject* ghost = attacker->getPlayerObject();
+
+				if (ghost != nullptr) {
+					Locker olocker(attacker, tano);
+					ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+				}
+				// Future Reference
+				/*if (ghost->hasPvpTef() && defender->isPlayerCreature()) {
+					PlayerObject* ghostDefender = defender->getPlayerObject();
+					Locker olocker(defender, attacker);
+					ghostDefender->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+				}*/
 			}
 		}
 
@@ -2898,6 +2942,8 @@ void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defen
 		if (!(*shouldGcwTef) && (attackingCreature->getFaction() != targetCreature->getFaction()) && (attackingCreature->getFactionStatus() == FactionStatus::OVERT) && (targetCreature->getFactionStatus() == FactionStatus::OVERT))
 			*shouldGcwTef = true;
 
+		if (!(*shouldGcwTef) && attackingCreature->getFaction() != targetCreature->getFaction() && attackingCreature->getFactionStatus() == FactionStatus::OVERT && (targetCreature->getFactionStatus() == FactionStatus:: COVERT))
+			*shouldGcwTef = true;
 		if (!(*shouldBhTef) && (attackingCreature->hasBountyMissionFor(targetCreature) || targetCreature->hasBountyMissionFor(attackingCreature)))
 			*shouldBhTef = true;
 	}

@@ -32,6 +32,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 
 	elseif (screenID == "accept_join") then
 		CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
+		-- Set To covert on join_military
 		CreatureObject(pPlayer):setFactionStatus(1)
 
 	elseif (screenID == "accepted_go_overt") then
