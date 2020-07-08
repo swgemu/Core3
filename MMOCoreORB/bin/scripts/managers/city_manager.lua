@@ -70,7 +70,7 @@ NewCityGracePeriod = 1440
 OldCityGracePeriod = 4320
 
 --Whether or not to allow the use of the command, /cityWarn to give players a TEF while in the city limits.
-EnableCityWarn = false
+EnableCityWarn = true
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
 CitizensPerRank = {1, 1, 1, 1, 1}
@@ -238,7 +238,7 @@ CitySpecializations = {
 		name = "@city/city:city_spec_stronghold",
 		cost = 150000,
 		skillMods = {
-			{"private_defense", 90}
+			{"private_defense", 25}
 		}
 	},
 }
