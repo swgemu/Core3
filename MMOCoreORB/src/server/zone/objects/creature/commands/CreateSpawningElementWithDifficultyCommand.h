@@ -5,6 +5,7 @@
 #ifndef CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 #define CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
 
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
@@ -31,6 +32,11 @@ public:
 
 		Reference<PlayerObject*> ghost = creature->getPlayerObject();
 		if (ghost == nullptr || !ghost->isPrivileged()) {
+			return GENERALERROR;
+		}
+
+		Reference<GCWManager*> gcwManager = creature->getZone()->getGCWManager();
+		if (gcwManager == nullptr || !gcwManager->getCrackdownScansEnabled()) {
 			return GENERALERROR;
 		}
 

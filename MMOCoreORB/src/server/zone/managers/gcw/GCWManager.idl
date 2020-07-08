@@ -476,4 +476,10 @@ class GCWManager extends ManagedService implements Logger {
 	public int getResetTimer() {
 		return resetTimer;
 	}
+
+	@local
+	@read
+	public int getCrackdownScansEnabled() {
+		return crackdownScansEnabled;
+	}
 }
