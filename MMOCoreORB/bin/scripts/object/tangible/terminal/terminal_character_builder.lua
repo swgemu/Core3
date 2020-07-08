@@ -1557,6 +1557,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Armor",
 			{
+				"PSG",
+				{
+					"Imperial PSG", "object/tangible/component/armor/shield_generator_personal_imperial_test.iff",
+				},
 				--	"Bone Armor",
 				--	{
 				--		"Bone Left Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_l.iff",
@@ -1633,6 +1637,14 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Composite Helmet", "object/tangible/wearables/armor/composite/armor_composite_helmet.iff",
 					"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
 				},
+				"Ubese Armor",
+				{
+					"Ubese Boots", "object/tangible/wearables/armor/ubese/armor_ubese_boots.iff",
+					--"Ubese Gloves", "",
+					"Ubese Helmet", "object/tangible/wearables/armor/ubese/armor_ubese_helmet.iff",
+					"Ubese Jacket", "object/tangible/wearables/armor/ubese/armor_ubese_jacket.iff",
+					--"Ubese Left Bracer", "",
+				}
 			--	"Singing Mountain Clan Armor",
 			--	{
 			--		"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
@@ -2753,10 +2765,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Weapons",
 			{
-				"PSG",
-				{
-					"Imperial PSG", "object/tangible/component/armor/shield_generator_personal_imperial_test.iff",
-				},
 				"Carbines",
 				{
 					--		"CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef.iff",
