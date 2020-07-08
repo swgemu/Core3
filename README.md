@@ -17,6 +17,8 @@ Patch 11 https://drive.google.com/file/d/1flLuI5_sDtivVaEgq4oiZaorps6LqWV_/view?
  * Stat Migration changed (higher min and max)
  * Buffs Nerfed to only 20% strength
  * Ent Buffs Nerfed to 25% strength and 40 min Duration
+ * Removed Covert (On Leave and Special Forces Only)
+ * Healers with BHTef can still heal
  * Updated to current SWGEmu Code
  * Factory Crate Cap 1k
  * Factory Time Complexity Lowered
