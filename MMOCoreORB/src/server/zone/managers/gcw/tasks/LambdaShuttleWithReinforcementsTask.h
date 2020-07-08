@@ -121,6 +121,9 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
 		lambdaShuttle->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
+		Quaternion direction;
+		direction.setHeadingDirection(Math::deg2rad(player->getDirection()->getDegrees() + 180.f));
+		lambdaShuttle->setDirection(direction);
 		player->getZone()->transferObject(lambdaShuttle, -1, true);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
