@@ -392,7 +392,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					player->sendSystemMessage("Not within combat.");
 					return;
 				}
-			} else if (templatePath == "armor_attachments" || templatePath == "cloting_attachments") {
+			} else if (templatePath == "armor_attachments" || templatePath == "clothing_attachments") {
 				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 				if (inventory == nullptr)
