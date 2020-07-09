@@ -10,10 +10,7 @@
 
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:
-
-	CreateSpawningElementWithDifficultyCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	CreateSpawningElementWithDifficultyCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -40,12 +37,14 @@ public:
 			return GENERALERROR;
 		}
 
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial");
+		Quaternion direction;
+		direction.setHeadingDirection(Math::deg2rad(creature->getDirection()->getDegrees() + 180.f));
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+			creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction);
 		lambdaTask->schedule(1);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
+#endif // CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_

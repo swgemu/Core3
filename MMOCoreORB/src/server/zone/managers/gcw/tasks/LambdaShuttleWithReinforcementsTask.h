@@ -22,6 +22,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int difficulty;
 	int spawnNumber;
 	String chatMessageId;
+	Vector3 spawnPosition;
+	Quaternion spawnDirection;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int TIMETILLSHUTTLELANDING = 6000;
@@ -120,10 +122,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
-		lambdaShuttle->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-		Quaternion direction;
-		direction.setHeadingDirection(Math::deg2rad(player->getDirection()->getDegrees() + 180.f));
-		lambdaShuttle->setDirection(direction);
+		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
+		lambdaShuttle->setDirection(spawnDirection);
 		player->getZone()->transferObject(lambdaShuttle, -1, true);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
@@ -193,7 +193,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction) {
 		weakPlayer = player;
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
@@ -210,6 +210,8 @@ public:
 		}
 		this->chatMessageId = chatMessageId;
 		spawnNumber = 0;
+		spawnPosition = position;
+		spawnDirection = direction;
 	}
 
 	void run() {
