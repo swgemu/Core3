@@ -2216,7 +2216,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"@veteran_new:techconsole_d","object/tangible/veteran_reward/frn_tech_console_sectional_d.iff",
 				"@veteran_new:mini_jabba","object/tangible/veteran_reward/frn_vet_jabba_toy.iff",
 				"@veteran_new:mini_stormtrooper","object/tangible/veteran_reward/frn_vet_stormtrooper_toy.iff",
-				"@veteran_new:antidecay","object/tangible/veteran_reward/antidecay.iff",
+				--"@veteran_new:antidecay","object/tangible/veteran_reward/antidecay.iff",
 				--450 Day Rewards
 				"Camp Center (Small)","object/tangible/camp/camp_spit_s2.iff",
 				"Camp Center (Large)","object/tangible/camp/camp_spit_s3.iff",
