@@ -603,5 +603,5 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 
 	Reference<Task*> lambdaTask =
 		new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage, player->getWorldPosition(), direction);
-	lambdaTask->schedule(TASKDELAY);
+	lambdaTask->schedule(IMMEDIATELY);
 }

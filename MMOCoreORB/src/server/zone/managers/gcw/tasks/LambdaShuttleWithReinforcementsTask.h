@@ -26,7 +26,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	Quaternion spawnDirection;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
-	const int TIMETILLSHUTTLELANDING = 6000;
+	const int TIMETILLSHUTTLELANDING = 100;
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
 	const int CLEANUPTIME = 30000;
