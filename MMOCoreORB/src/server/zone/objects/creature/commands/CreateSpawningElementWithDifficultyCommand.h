@@ -38,7 +38,7 @@ public:
 		}
 
 		Quaternion direction;
-		direction.setHeadingDirection(Math::deg2rad(creature->getDirection()->getDegrees() + 180.f));
+		direction.setHeadingDirection(creature->getDirection()->getRadians());
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 			creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction);
 		lambdaTask->schedule(1);

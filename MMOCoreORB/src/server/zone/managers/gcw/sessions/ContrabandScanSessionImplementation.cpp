@@ -10,6 +10,7 @@
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
 #include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
 #include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
@@ -598,10 +599,17 @@ int ContrabandScanSessionImplementation::getSmugglerAvoidanceChance(CreatureObje
 }
 
 void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, CreatureObject* player, int difficulty, const String& landingMessage) {
-	Quaternion direction;
-	direction.setHeadingDirection(Math::deg2rad(player->getDirection()->getDegrees() + 180.f));
-
-	Reference<Task*> lambdaTask =
-		new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage, player->getWorldPosition(), direction);
-	lambdaTask->schedule(IMMEDIATELY);
+	MissionManager* missionManager = player->getZoneServer()->getMissionManager();
+	auto spawnPoint =
+		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+	if (spawnPoint != nullptr) {
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage,
+																			  *spawnPoint->getPosition(), *spawnPoint->getDirection());
+		lambdaTask->schedule(IMMEDIATELY);
+	} else {
+		StringBuffer errorMessage;
+		errorMessage << "Could not find any Lambda shuttle landing point on " << scanner->getZone()->getZoneName() << " close to ("
+					 << scanner->getWorldPositionX() << ", " << scanner->getWorldPositionY() << ").";
+		error(errorMessage.toString());
+	}
 }
