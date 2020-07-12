@@ -26,6 +26,7 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		int res = creature->hasBuff(buffCRC) ? NOSTACKJEDIBUFF : doJediSelfBuffCommand(creature);
+		//int res = doJediSelfBuffCommand(creature);
 
 		if (res == NOSTACKJEDIBUFF) {
 			creature->sendSystemMessage("@jedi_spam:already_force_running"); // You are already force running.

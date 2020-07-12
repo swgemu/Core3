@@ -44,10 +44,10 @@
 ForceRun3Command = {
         name = "forcerun3",
         forceCost = 600,
-        duration = 120,
+        duration = 40,
         --animationCRC = hashCode()
         clientEffect = "clienteffect/pl_force_run_self.cef",
-        speedMod = 3.5
+        speedMod = 3.0
 }
 
 AddCommand(ForceRun3Command)
