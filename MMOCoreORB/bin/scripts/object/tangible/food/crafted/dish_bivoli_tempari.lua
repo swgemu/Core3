@@ -44,9 +44,10 @@
 object_tangible_food_crafted_dish_bivoli_tempari = object_tangible_food_crafted_shared_dish_bivoli_tempari:new {
 	templateType = CONSUMABLE,
 
-	duration = 10,
-	filling = 10,
-	nutrition = 10,
+	duration = 1020,
+	filling = 28,
+	nutrition = 23,
+	useCount = 99,
 
 	effectType = 4,
 

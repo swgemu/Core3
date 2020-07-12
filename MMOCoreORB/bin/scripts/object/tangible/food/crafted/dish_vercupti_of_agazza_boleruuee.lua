@@ -44,9 +44,10 @@
 object_tangible_food_crafted_dish_vercupti_of_agazza_boleruuee = object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee:new {
 	templateType = CONSUMABLE,
 
-	duration = 10,
-	filling = 10,
-	nutrition = 10,
+	duration = 600,
+	filling = 66,
+	nutrition = 1100,
+	useCount = 99,
 
 	effectType = 1,
 

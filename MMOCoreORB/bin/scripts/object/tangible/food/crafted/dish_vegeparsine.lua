@@ -44,9 +44,10 @@
 object_tangible_food_crafted_dish_vegeparsine = object_tangible_food_crafted_shared_dish_vegeparsine:new {
 	templateType = CONSUMABLE,
 
-	duration = 10,
-	filling = 10,
-	nutrition = 10,
+	duration = 798,
+	filling = 22,
+	nutrition = 24,
+	useCount = 99,
 
 	effectType = 4,
 

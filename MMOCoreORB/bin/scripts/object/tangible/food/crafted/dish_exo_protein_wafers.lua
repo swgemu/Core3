@@ -45,9 +45,9 @@ object_tangible_food_crafted_dish_exo_protein_wafers = object_tangible_food_craf
 
 	templateType = CONSUMABLE,
 
-	duration = 1217,
+	duration = 24,
 	filling = 4,
-	nutrition = 54,
+	nutrition = 24,
 	useCount = 99,
 
 	effectType = 3, -- Event Based Buff
