@@ -632,8 +632,8 @@ void EntertainingSessionImplementation::addEntertainerBuffDuration(CreatureObjec
 
 	buffDuration += duration;
 	//DEDA FIX
-	if (buffDuration > (34.0f + (10.0f / 60.0f)) ) // 2 hrs 10 seconds
-		buffDuration = (34.0f + (10.0f / 60.0f)); // 2hrs 10 seconds
+	if (buffDuration > (60.0f + (10.0f / 60.0f)) ) // 2 hrs 10 seconds
+		buffDuration = (60.0f + (10.0f / 60.0f)); // 2hrs 10 seconds
 
 	setEntertainerBuffDuration(creature, performanceType, buffDuration);
 }
@@ -654,8 +654,8 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 		maxBuffStrength = (float) entertainer->getSkillMod("healing_music_mind");
 	}
 	//DEDA FIX
-	if(maxBuffStrength > 25.0f)
-		maxBuffStrength = 25.0f;	//cap at 125% power
+	if(maxBuffStrength > 7.5f)
+		maxBuffStrength = 7.5f;	//cap at 125% power
 
 	float factionPerkStrength = entertainer->getSkillMod("private_faction_buff_mind");
 
