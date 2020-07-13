@@ -233,10 +233,10 @@ public:
 			patient->sendSystemMessage(msgTarget.toString());
 		}
 	}
-	// DEDA FIX
+	// Buff Nerf
 	uint32 getEnhancePackStrength(EnhancePack *enhancePack, CreatureObject* enhancer, CreatureObject *patient) const {
 		uint32 buffPower = 0;
-		float buffNerf = 0.2;
+		float buffNerf = 0.1;
 		if (BuffAttribute::isProtection(enhancePack->getAttribute())) {  // If it's a protection enhancement, wound treatment has no effect
 			buffPower = enhancePack->getEffectiveness();
 			buffPower = buffPower * patient->calculateBFRatio();
@@ -439,7 +439,7 @@ public:
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, enhancePack->getDuration(), enhancePack->getAbsorption());
+		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, enhancePack->getDuration() * .33, enhancePack->getAbsorption());
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);
