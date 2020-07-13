@@ -103,6 +103,8 @@ object_tangible_component_armor_shield_generator_personal_imperial_test = object
 	actionEncumbrance = 0,
 	mindEncumbrance = 0,
 
+	maxCondition = 2800,
+
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
