@@ -424,7 +424,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 // TEF FIX
 	if (shouldGcwTef || shouldBhTef) {
 
-		if (attacker->isPlayerCreature() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+		if (attacker->isPlayerCreature() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 			PlayerObject* ghost = attacker->getPlayerObject();
 
 			if (ghost != nullptr) {
