@@ -3158,6 +3158,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		return true;
 	if ((pvpStatusBitmask & CreatureFlag::OVERT && ghost->hasPvpTef()) && (object->getFaction() != getFaction()) && (object->getFaction() != 0) && targetGhost->hasPvpTef())
 		return true;
+	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef())
+		return true;
 
 	ManagedReference<GuildObject*> guildObject = guild.get();
 	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
@@ -3416,7 +3418,7 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 
 			if (creatureTemplate != nullptr) {
 				String templateFaction = creatureTemplate->getFaction();
-
+					 //&& factionStatus == FactionStatus::COVERT
 				if (!templateFaction.isEmpty() && (templateFaction.hashCode() != crc)) {
 					petsToStore.add(pet.castTo<CreatureObject*>());
 					player->sendSystemMessage("You're no longer the right faction for one of your pets, storing...");
