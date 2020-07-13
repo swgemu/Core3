@@ -2680,7 +2680,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Medpack Dizzy", "object/tangible/medicine/crafted/medpack_dizzy_a.iff",
 				"Medpack Intimidated", "object/tangible/medicine/crafted/medpack_intimidated_a.iff",
 				"Medpack Stunned", "object/tangible/medicine/crafted/medpack_stunned_a.iff",
-				"Revive Pack", "object/tangible/medicine/medpack_revive.iff"
+				"Revive Pack", "object/tangible/medicine/medpack_revive.iff",
+				"Medpack Poison Mind Area C", "object/tangible/medicine/crafted/medpack_poison_area_mind_c.iff",
+				"Medpack Poison Health Area C", "object/tangible/medicine/crafted/medpack_poison_area_health_c.iff",
+				"Medpack Poison Health Single C", "object/tangible/medicine/crafted/medpack_poison_health_c.iff",
+				"Medpack Poison Mind Single C", "object/tangible/medicine/crafted/medpack_poison_mind_c.iff"
 			},
 			--"Scout Equipment",
 			--{

@@ -47,7 +47,7 @@ object_tangible_medicine_crafted_medpack_enhance_strength_d = object_tangible_me
 	useCount = 21,
 	medicineUse = 5,
 	effectiveness = 948,
-	duration = 1800,
+	duration = 10800,
 	attribute = 1,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
