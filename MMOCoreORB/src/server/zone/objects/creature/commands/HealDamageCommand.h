@@ -15,6 +15,12 @@
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/managers/faction/FactionManager.h"
+#include "templates/params/creature/CreatureFlag.h"
+//#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+//#include "server/zone/managers/combat/CombatManager.h"
 
 class HealDamageCommand : public QueueCommand {
 	float range;
@@ -555,6 +561,13 @@ public:
 		deactivateInjuryTreatment(creature, stimPack->isRangedStimPack());
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
+		//PlayerObject* targetGhost = targetCreature->getPlayerObject();
+		//PlayerObject* ghost = creature->getPlayerObject();
+		//PlayerObject* targetGhost = targetCreature->getPlayerObject().get();
+		PlayerObject* ghost = creature->getPlayerObject().get();
+		if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT)
+			ghost->updateLastGcwPvpCombatActionTimestamp();
 
 		checkForTef(creature, targetCreature);
 

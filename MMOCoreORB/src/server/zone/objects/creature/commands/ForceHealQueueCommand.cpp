@@ -9,6 +9,8 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 	speed = 3;
@@ -456,6 +458,9 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 	if (targetCreature == nullptr)
 		return GENERALERROR;
 	// TEF Fix
+	PlayerObject* ghost = creature->getPlayerObject().get();
+	if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT)
+		ghost->updateLastGcwPvpCombatActionTimestamp();
 	checkForTef(creature, targetCreature);
 
 	int retval = GENERALERROR;

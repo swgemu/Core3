@@ -1197,9 +1197,10 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	if (ghost != nullptr) {
 		ghost->resetIncapacitationTimes();
-		if (ghost->hasPvpTef()) {
-			ghost->schedulePvpTefRemovalTask(true, true);
-		}
+		// TEF FIX Should stay TEF until Clone
+		//if (ghost->hasPvpTef()) {
+		//	ghost->schedulePvpTefRemovalTask(true, true);
+		//}
 	}
 
 	ThreatMap* threatMap = player->getThreatMap();
@@ -1498,6 +1499,10 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	// Clone as Covert
 	if (player->getFactionStatus() != FactionStatus::COVERT && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_IMPERIAL && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_REBEL && !player->hasSkill("force_title_jedi_rank_03"))
 		player->setFactionStatus(FactionStatus::COVERT);
+	// TEF FIX Should stay TEF until Clone
+	if (ghost->hasPvpTef()) {
+		ghost->schedulePvpTefRemovalTask(true, true);
+	}
 
 	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
 
