@@ -8,6 +8,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";
@@ -21,6 +22,8 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 	if (zone == nullptr)
 		return visibilityIncrease;
+	//if(creature->isGrouped())
+	//	return visibilityIncrease;
 
 
 	SortedVector<QuadTreeEntry*> closeObjects;
@@ -51,6 +54,10 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 		if (!creature->isInRange(c, 32) || !CollisionManager::checkLineOfSight(creature, c))
 			continue;
 
+		// Group members do not give visibility
+		if (c->isPlayerCreature() && creature->getGroupID() != 0 && creature->getGroupID() == c->getGroupID())
+			continue;
+
 		if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
 			visibilityIncrease += 0.5;
 			//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
@@ -65,6 +72,8 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 		}
 
 	}
+
+	
 
 	//info("Increasing visibility for player " + String::valueOf(creature->getObjectID()) + " with " + String::valueOf(visibilityIncrease), true);
 	return visibilityIncrease;
