@@ -74,6 +74,8 @@ class FactoryCrate extends TangibleObject {
 		return true;
 	}
 
+	public native boolean isValidFactoryCrate();
+
 	@read
 	public int getMaxCapacity() {
 		return maxCapacity;

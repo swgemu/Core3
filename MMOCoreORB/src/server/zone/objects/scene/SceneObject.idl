@@ -135,6 +135,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dereferenced
 	protected ContainerObjectsMap containerObjects;
 
+	protected unsigned long originalObjectID;
+
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
