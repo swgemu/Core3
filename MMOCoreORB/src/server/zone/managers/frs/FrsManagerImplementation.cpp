@@ -1034,7 +1034,8 @@ int FrsManagerImplementation::calculatePvpExperienceChange(CreatureObject* attac
 	int xpChange = getBaseExperienceGain(playerGhost, opponentGhost, !isVictim);
 
 	if (xpChange != 0) {
-		xpChange = (int)((float)xpChange * contribution);
+		// Give full FRS xp
+		xpChange = (int)((float)xpChange / 1);
 
 		// Adjust xp value depending on pvp rating
 		// A lower rated victim will lose less experience, a higher rated victim will lose more experience
