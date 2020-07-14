@@ -486,6 +486,11 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 	Locker locker(tano);
 
+	if (tano->getRootParent() == NULL) {
+		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
+		return;
+	}
+
 	/// Check if item is on the player, but not in a crafting tool
 	/// Or if the item is in a crafting station to prevent some duping
 	if (!tano->isASubChildOf(crafter) && (craftingStation == nullptr || !tano->isASubChildOf(craftingStation))) {
@@ -1400,6 +1405,11 @@ bool CraftingSessionImplementation::checkPrototype() {
 
 		if (weapon->hasPowerup())
 			return false;
+	}
+
+	if (prototype->getContainerObjectsSize() > 0) {
+		error() << "checkPrototype(): prototype->getContainerObjectsSize() > 0, prototype: " << *prototype;
+		return false;
 	}
 
 	return true;
