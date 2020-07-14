@@ -199,7 +199,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			if (creatureTemplate != nullptr && creature->getFaction() != 0) {
 				const auto& templateFaction = creatureTemplate->getFaction();
 
-				if (!templateFaction.isEmpty() && factionStatus == FactionStatus::ONLEAVE) {
+				if (!templateFaction.isEmpty() && factionStatus == FactionStatus::COVERT) {
 					petsToStore.add(pet.castTo<CreatureObject*>());
 					creature->sendSystemMessage("You're no longer the right faction status for one of your pets, storing...");
 					continue;
