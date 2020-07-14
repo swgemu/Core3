@@ -80,6 +80,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	if (originalObjectID == 0) {
+		originalObjectID = getObjectID();
+	}
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -131,6 +135,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	childObjects.setNoDuplicateInsertPlan();
 
 	collidableObject = false;
+
+	originalObjectID = 0;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
