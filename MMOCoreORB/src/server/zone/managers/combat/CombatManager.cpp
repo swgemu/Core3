@@ -1218,7 +1218,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		float armorReduction =  getArmorObjectReduction(psg, damageType);
 		float dmgAbsorbed = damage;
 
-		damage *= getArmorPiercing(psg, armorPiercing);
+		// Remove AP from PSG
+		//damage *= getArmorPiercing(psg, armorPiercing);
+		damage *= 0;
 
         if (armorReduction > 0) damage *= 1.f - (armorReduction / 100.f);
 
