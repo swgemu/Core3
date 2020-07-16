@@ -2398,7 +2398,7 @@ void PlayerObjectImplementation::setCrackdownTefTowards(unsigned int factionCrc,
 }
 
 bool PlayerObjectImplementation::hasCrackdownTefTowards(unsigned int factionCrc) const {
-	return !lastCrackdownGcwCombatActionTimestamp.isPast() && crackdownFactionTefCrc == factionCrc;
+	return !lastCrackdownGcwCombatActionTimestamp.isPast() && factionCrc != 0 && crackdownFactionTefCrc == factionCrc;
 }
 
 bool PlayerObjectImplementation::hasCrackdownTef() const {

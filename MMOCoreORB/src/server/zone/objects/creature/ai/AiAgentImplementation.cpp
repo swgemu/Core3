@@ -3292,6 +3292,13 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		return false;
 	}
 
+	if (object->isPlayerCreature()) {
+		Reference<PlayerObject*> ghost = object->getPlayerObject();
+		if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
+			return true;
+		}
+	}
+
 	unsigned int targetFaction = object->getFaction();
 
 	if (getFaction() != 0) {
