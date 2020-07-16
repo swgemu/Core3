@@ -1220,7 +1220,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		// Remove AP from PSG
 		//damage *= getArmorPiercing(psg, armorPiercing);
-		damage *= 0;
+		damage *= 1;
 
         if (armorReduction > 0) damage *= 1.f - (armorReduction / 100.f);
 
