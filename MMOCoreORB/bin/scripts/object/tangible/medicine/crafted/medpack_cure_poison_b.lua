@@ -44,9 +44,9 @@
 object_tangible_medicine_crafted_medpack_cure_poison_b = object_tangible_medicine_crafted_shared_medpack_cure_poison_b:new {
 	gameObjectType = 8239,
 	templateType = CUREPACK,
-	useCount = 10,
-	medicineUse = 5,
-	effectiveness = 100,
+	useCount = 99,
+	medicineUse = 55,
+	effectiveness = 344,
 	state = POISONED,
 	commandToExecute = "curepoison",
 	area = 0,
