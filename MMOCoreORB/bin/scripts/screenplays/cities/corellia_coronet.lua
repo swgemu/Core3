@@ -464,7 +464,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	-- FOR TESTING
 	spawnMobile(self.planet, "rebel_recruiter", 0,-138,28,-4735,0,0)
 	spawnMobile(self.planet, "imperial_recruiter", 0,-137,28,-4732,0,0)
-	spawnMobile(self.planet, "krayt_dragon_ancient", 180,-155.29,28,-4622,0,0)
+	spawnMobile(self.planet, "krayt_dragon_ancient", 180,-382.95,28,-4672.95,0,0)
 	spawnMobile(self.planet, "dark_jedi_master", 180,-233,28,-4681.9,0,0)
 	spawnMobile(self.planet, "nightsister_elder", 180,-119,28,-4519,0,0)
 	spawnMobile(self.planet, "acklay", 180,70,28,-4734,0,0)
