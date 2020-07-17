@@ -44,10 +44,10 @@
 ForceLightningCone2Command = {
 	name = "forcelightningcone2",
 
-	minDamage = 600,
-	maxDamage = 1200,
+	minDamage = 2400,
+	maxDamage = 4800,
 	speed = 4.0,
-	forceCost = 250,
+	forceCost = 125,
 	accuracySkillMod = "forcelightning_accuracy",
 	coneAngle = 60,
 	coneAction = true,
@@ -69,6 +69,9 @@ ForceLightningCone2Command = {
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcelightningcone2",
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

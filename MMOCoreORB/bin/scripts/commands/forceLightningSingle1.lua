@@ -44,10 +44,10 @@
 ForceLightningSingle1Command = {
 	name = "forcelightningsingle1",
 
-	minDamage = 400,
-	maxDamage = 700,
+	minDamage = 1600,
+	maxDamage = 2800,
 	speed = 4.0,
-	forceCost = 75,
+	forceCost = 36,
 	visMod = 25,
 
 	accuracySkillMod = "forcelightning_accuracy",
@@ -56,6 +56,9 @@ ForceLightningSingle1Command = {
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcelightningsingle1",
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

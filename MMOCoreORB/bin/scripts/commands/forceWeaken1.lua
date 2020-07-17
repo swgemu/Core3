@@ -46,7 +46,7 @@ ForceWeaken1Command = {
 
 	damageMultiplier = 0,
 	speed = 4.0,
-	forceCost = 400,
+	forceCost = 200,
 	visMod = 25,
 	accuracySkillMod = "forceweaken_accuracy",
 	forceAttack = true,
@@ -57,6 +57,11 @@ ForceWeaken1Command = {
 	combatSpam = "forceweaken1",
 
 	poolsToDamage = NO_ATTRIBUTE,
+
+	frsLightMinDamageModifier = 5,
+	frsLightMaxDamageModifier = 10,
+	frsDarkMinDamageModifier = 5,
+	frsDarkMaxDamageModifier = 10,
 
 	range = 32
 }
