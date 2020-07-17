@@ -11,10 +11,10 @@ knife_janta = {
 		{"attackspeed",3.9,2.7,1},
 		{"woundchance",6,12,0},
 		{"hitpoints",750,1500,0},
-		{"zerorangemod",17,33,0},
-		{"maxrangemod",17,33,0},
+		{"zerorangemod",-10,-10,0},
+		{"maxrangemod",-10,-10,0},
 		{"midrange",3,3,0},
-		{"midrangemod",17,33,0},
+		{"midrangemod",-10,-10,0},
 		{"maxrange",7,7,0},
 		{"attackhealthcost",8,4,0},
 		{"attackactioncost",38,20,0},
@@ -38,7 +38,7 @@ knife_janta = {
 		{"strength", 110, 110},
 		{"duration", 150, 150},
 		{"potency", 60, 60},
-		{"uses", 650, 650}
+		{"uses", 500, 500}
 	},
 
 	junkDealerTypeNeeded = JUNKARMS,
