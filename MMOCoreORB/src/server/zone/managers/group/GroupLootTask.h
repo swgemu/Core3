@@ -196,7 +196,7 @@ public:
 			Locker plocker(payee, corpse);
 
 			{
-				TransactionLog trx(corpse, player, TrxCode::NPCLOOTCLAIM, payout, true);
+				TransactionLog trx(corpse, payee, TrxCode::NPCLOOTCLAIM, payout, true);
 				trx.addState("srcDisplayedName", corpse->getDisplayedName());
 				trx.addState("groupSize", group->getGroupSize());
 				trx.addState("inRangeSize", payees.size());
