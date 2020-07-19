@@ -3014,9 +3014,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
-	if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
-		return true;
-	}
+	//if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
+	//	return true;
+	//}
 
 	// TEF FIX
 	if ((ghost->hasPvpTef() || object->getPvpStatusBitmask() & CreatureFlag::TEF) && getFaction() != object->getFaction())
@@ -3215,8 +3215,8 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 		PlayerObject* targetGhost = targetCreo->getPlayerObject();
 		if(targetGhost != nullptr && (targetGhost->hasPvpTef() || ghost->hasPvpTef()))
 			return true;
-		if(targetGhost != nullptr && targetGhost->hasBhTef())
-			return false;
+		//if(targetGhost != nullptr && targetGhost->hasBhTef())
+		//	return false;
 	}
 
 	return true;
