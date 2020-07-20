@@ -55,7 +55,7 @@ class BuildingObject extends StructureObject {
 
 	public boolean publicStructure;
 
-	public static final int MAXPLAYERITEMS = 400;
+	public static final int MAXPLAYERITEMS = 800;
 
 	protected unicode signName;
 
