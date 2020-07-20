@@ -35,7 +35,7 @@ knife_janta = {
 	-- staticDotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
 	staticDotValues = {
 		{"attribute", 6, 6}, -- See CreatureAttributes.h in src for numbers.
-		{"strength", 110, 110},
+		{"strength", 60, 60},
 		{"duration", 150, 150},
 		{"potency", 60, 60},
 		{"uses", 500, 500}
