@@ -37,11 +37,42 @@ public:
 			return GENERALERROR;
 		}
 
-		Quaternion direction;
-		direction.setHeadingDirection(creature->getDirection()->getRadians());
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-			creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction);
-		lambdaTask->schedule(1);
+		StringTokenizer args(arguments.toString());
+
+		if (!args.hasMoreTokens()) {
+			Quaternion direction;
+			direction.setHeadingDirection(creature->getDirection()->getRadians());
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction);
+			lambdaTask->schedule(1);
+		} else {
+			String arg = "";
+
+			args.getStringToken(arg);
+
+			if (arg == "closestlambda") {
+				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
+				if (missionManager != nullptr) {
+					NpcSpawnPoint* nsp = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
+																			  creature->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+					if (nsp != nullptr) {
+						Quaternion direction;
+						direction.setHeadingDirection(nsp->getDirection()->getRadians());
+						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction);
+						lambdaTask->schedule(1);
+						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() + ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
+						creature->sendSystemMessage(text);
+					} else {
+						return INVALIDSTATE;
+					}
+				} else {
+					return INVALIDSTATE;
+				}
+			} else {
+				return INVALIDPARAMETERS;
+			}
+		}
 
 		return SUCCESS;
 	}
