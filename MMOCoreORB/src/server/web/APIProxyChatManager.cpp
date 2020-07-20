@@ -22,6 +22,8 @@
 #include "server/zone/objects/creature/credits/CreditObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/guild/GuildObject.h"
+#include "server/chat/PersistentMessage.h"
+#include "system/lang/ref/WeakReference.h"
 
 #include "APIProxyChatManager.h"
 #include "APIRequest.h"
@@ -204,11 +206,22 @@ void APIProxyChatManager::handle(APIRequest& apiRequest) {
 			return;
 		}
 
+		JSONSerializationType sent;
+
 		auto errMsg = expandTo(to, [&] (String playerName) -> String {
-			auto ret = chatManager->sendMail(from, subject, body, playerName, &stringIdParameters, &waypointParameters);
+
+			WeakReference<PersistentMessage*> msg;
+
+			auto ret = chatManager->sendMail(from, subject, body, playerName, &stringIdParameters, &waypointParameters, &msg);
 
 			if (ret != ChatManager::IM_SUCCESS) {
 				return "sendMail [" + playerName + "] failed, ret=0x" + String::hexvalueOf(ret);
+			}
+
+			auto mail = msg.get();
+
+			if (mail != nullptr) {
+				sent[playerName] = mail->getObjectID();
 			}
 
 			countSent++;
@@ -217,6 +230,7 @@ void APIProxyChatManager::handle(APIRequest& apiRequest) {
 
 		result["count_sent"] = countSent;
 		result["action_result"] = errMsg.isEmpty() ? "SUCCESS" : "FAILED";
+		result["sent"] = sent;
 
 		if (!errMsg.isEmpty()) {
 			result["action_error"] = errMsg;
