@@ -264,6 +264,18 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 					ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
 					if (defenderPlayer != nullptr && shouldGcwTef)
 						defenderPlayer->updateLastPvpCombatActionTimestamp(true,false);
+					if (defenderPlayer != nullptr && defenderPlayer->hasBhTef())//&& attacker->isGrouped()){
+						ghost->updateLastBhPvpCombatActionTimestamp();
+						/*ManagedReference<GroupObject*> group = attacker->getGroup();
+						if (group != nullptr) {
+							for (int i = 0; i < group->getGroupSize(); i++) {
+								ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+								if (groupMember->isPlayerCreature()) {
+									return true;
+								}
+							}
+						}
+					}*/
 				}
 			}
 		}
@@ -423,15 +435,30 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 // TEF FIX
 	if (shouldGcwTef || shouldBhTef) {
+		if (attacker->isPlayerCreature()){
+			PlayerObject* ghost = attacker->getPlayerObject();
+			ManagedReference<PlayerObject*> defenderPlayer = defender->getPlayerObject();
+			if (ghost != nullptr) {
+				if (defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
+					Locker olocker(attacker, defender);
+					ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+				} else if (defenderPlayer->hasBhTef()) {
 
-		if (attacker->isPlayerCreature() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
+					Locker olocker(attacker, defenderPlayer);
+					ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+				}
+
+			}
+			
+		}
+		/*if (attacker->isPlayerCreature() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 			PlayerObject* ghost = attacker->getPlayerObject();
 
 			if (ghost != nullptr) {
 				Locker olocker(attacker, defender);
 				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
 			}
-		}
+		}*/
 	}
 
 	broadcastCombatAction(attacker, defender, weapon, data, damage, hitVal, hitLocation);
