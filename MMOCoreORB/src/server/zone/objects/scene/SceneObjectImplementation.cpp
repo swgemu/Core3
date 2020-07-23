@@ -137,6 +137,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	collidableObject = false;
 
 	originalObjectID = 0;
+
+	forceNoTrade = false;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

@@ -823,6 +823,15 @@ class TangibleObject extends SceneObject {
 	}
 
 	@read
+	public abstract boolean isNoTrade() {
+		if (antiDecayKitObject) {
+			return antiDecayKitObject.isNoTrade() || super.isNoTrade();
+		}
+
+		return super.isNoTrade();
+	}
+
+	@read
 	public boolean hasAntiDecayKit() {
 		return antiDecayKitObject;
 	}
