@@ -522,6 +522,12 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		StringBuffer cond;
 		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;
 
+		if (forceNoTrade) {
+			cond << "\n\n\\#B00000Staff have blocked this item from being traded.\n";
+		} else if (antiDecayKitObject != nullptr && antiDecayKitObject->isNoTrade()) {
+			cond << "\n\n\\#B00000Staff have blocked the Anti Decay Kit on this item from being traded.\n";
+		}
+
 		alm->insertAttribute("condition", cond);
 	}
 

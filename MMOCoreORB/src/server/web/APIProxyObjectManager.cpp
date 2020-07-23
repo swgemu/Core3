@@ -394,8 +394,7 @@ bool APIProxyObjectManager::updateObject(APIRequest& apiRequest, uint64 oid, Str
 	// TODO this should be more generic to support more properties
 
 	if (propertyName == "noTrade") {
-		// Pending code on scno
-		// scno->setNoTrade(value);
+		scno->setNoTrade(value);
 	} else {
 		resultMessage = "Updates to " + className + "." + propertyName + " not supported.";
 		return false;
