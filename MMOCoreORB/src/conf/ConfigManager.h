@@ -574,6 +574,45 @@ namespace conf {
 
 			return cachedOnlineLogSize;
 		}
+
+		inline String getNoTradeMessage() {
+			static uint32 cachedVersion = 0;
+			static String cachedNoTradeMessage;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedNoTradeMessage = getString("Core3.TangibleObject.NoTradeMessage", "");
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedNoTradeMessage;
+		}
+
+		inline String getForceNoTradeMessage() {
+			static uint32 cachedVersion = 0;
+			static String cachedForceNoTradeMessage;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedForceNoTradeMessage = getString("Core3.TangibleObject.ForceNoTradeMessage", "");
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedForceNoTradeMessage;
+		}
+
+		inline String getForceNoTradeADKMessage() {
+			static uint32 cachedVersion = 0;
+			static String cachedForceNoTradeADKMessage;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedForceNoTradeADKMessage = getString("Core3.TangibleObject.ForceNoTradeADKMessage", "");
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedForceNoTradeADKMessage;
+		}
 	};
 }
 
