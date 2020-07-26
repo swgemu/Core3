@@ -27,7 +27,7 @@ rebelRecruiterConvoTemplate:addScreen(greet_changing_status);
 
 greet_enemy = ConvoScreen:new {
 	id = "greet_enemy",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_464", -- What are you doing talking to me? People like you are destroying the galaxy.
+	leftDialog = "@faction_recruiter:greeting_hate", -- What are you doing talking to me? People like you are destroying the galaxy.
 	stopConversation = "true",
 	options = {
 	}
@@ -40,9 +40,9 @@ member_covert_start = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_466", -- Hello friend. Is there something that I may do to help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_resign_from_faction", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -55,9 +55,9 @@ member_overt_start = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_466", -- Hello friend. Is there something that I may do to help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_resign_from_faction", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -90,8 +90,8 @@ join_military = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_584", -- This is not a decision to be taken lightly. Rebels are hunted across the galaxy. If you join us, while you are an active combatant, Imperials will attack you on sight but Imperial Special Forces will leave you alone. Are you ready for that?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_586", "accept_join"}, -- That doesn't scare me. Down with the Emperor!
-		{"@conversation/faction_recruiter_rebel:s_592", "think_more"}, -- Now that you put it that way, perhaps I was a bit hasty.
+		{"@faction_recruiter:response_join_faction", "accept_join"}, -- That doesn't scare me. Down with the Emperor!
+		{"@faction_recruiter:response_no_to_join", "think_more"}, -- Now that you put it that way, perhaps I was a bit hasty.
 	}
 }
 
@@ -119,7 +119,7 @@ rebelRecruiterConvoTemplate:addScreen(accept_join);
 
 think_more = ConvoScreen:new {
 	id = "think_more",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_594", -- We only want serious, committed candidates. If you change your mind, talk to me then.
+	leftDialog = "@faction_recruiter:join_faction_player_no", -- We only want serious, committed candidates. If you change your mind, talk to me then.
 	stopConversation = "true",
 	options = {
 	}
@@ -129,11 +129,11 @@ rebelRecruiterConvoTemplate:addScreen(think_more);
 
 confirm_go_overt = ConvoScreen:new {
 	id = "confirm_go_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_516", -- We can use good people in Special Forces. As a member of the Special Forces, you will be able to attack and be attacked by Imperial Special Forces members. Does this interest you?
+	leftDialog = "@faction_recruiter:go_declared_confirm", -- We can use good people in Special Forces. As a member of the Special Forces, you will be able to attack and be attacked by Imperial Special Forces members. Does this interest you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_518", "accepted_go_overt"}, -- Yes. I want to hunt Imperial Special Forces. Sign me up!
-		{"@conversation/faction_recruiter_rebel:s_522", "greet_member_start_overt"} -- Actually, maybe it isn't for me after all. Never mind.
+		{"@faction_recruiter:option_go_declared", "accepted_go_overt"}, -- Yes. I want to hunt Imperial Special Forces. Sign me up!
+		{"@faction_recruiter:response_no_to_go_declared", "greet_member_start_overt"} -- Actually, maybe it isn't for me after all. Never mind.
 	}
 }
 
@@ -141,11 +141,11 @@ rebelRecruiterConvoTemplate:addScreen(confirm_go_overt);
 
 confirm_go_covert = ConvoScreen:new {
 	id = "confirm_go_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_506", -- You are currently in Special Forces. Do you need to step back from it for now?
+	leftDialog = "@faction_recruiter:go_covert_confirm", -- You are currently in Special Forces. Do you need to step back from it for now?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_508", "accepted_go_covert"}, -- Yes please. I would like to return to combatant status and not fight the Imperial Special Forces.
-		{"@conversation/faction_recruiter_rebel:s_512", "stay_special_forces"} -- Actually, I want to stay in Special Forces.
+		{"@faction_recruiter:response_yes_to_go_covert", "accepted_go_covert"}, -- Yes please. I would like to return to combatant status and not fight the Imperial Special Forces.
+		{"@faction_recruiter:response_no_to_go_covert", "stay_special_forces"} -- Actually, I want to stay in Special Forces.
 	}
 }
 
@@ -156,9 +156,9 @@ stay_special_forces = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_514", -- Good show! Show those Imperials what for. May I help you with something else instead?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_resign_from_faction", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -167,7 +167,7 @@ rebelRecruiterConvoTemplate:addScreen(stay_special_forces);
 
 accepted_go_overt = ConvoScreen:new {
 	id = "accepted_go_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_520", -- Good for you! I'll update your status and you will be a member of the Special Forces in 30 seconds.
+	leftDialog = "@faction_recruiter:go_declared_yes", -- Good for you! I'll update your status and you will be a member of the Special Forces in 30 seconds.
 	stopConversation = "true",
 	options = {
 	}
@@ -177,7 +177,7 @@ rebelRecruiterConvoTemplate:addScreen(accepted_go_overt);
 
 accepted_go_covert = ConvoScreen:new {
 	id = "accepted_go_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_510", -- That's a shame. It will take some time to push the paperwork through for approval. Your status will change in about 5 minutes.
+	leftDialog = "@faction_recruiter:go_covert_yes", -- That's a shame. It will take some time to push the paperwork through for approval. Your status will change in about 5 minutes.
 	stopConversation = "true",
 	options = {
 	}
@@ -202,9 +202,9 @@ stay_covert = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_536", -- I wish all of our soldiers had your dedication. I salute you!
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_resign_from_faction", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -228,9 +228,9 @@ stay_overt = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_536", -- I wish all of our soldiers had your dedication. I salute you!
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
-		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
+		{"@faction_recruiter:option_resign_from_faction", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -252,8 +252,8 @@ leave_resign_covert = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_540", -- How could you turn your back on people trying to win freedom from tyranny? We need everyone we can get! Won't you reconsider?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_542", "accepted_resign"}, -- I'm sure. I have had enough war. I want out.
-		{"@conversation/faction_recruiter_rebel:s_546", "dont_resign_covert"} -- You are right. It was a momentary lapse. I will stay with the Rebellion.
+		{"@faction_recruiter:response_yes_to_resign", "accepted_resign"}, -- I'm sure. I have had enough war. I want out.
+		{"@faction_recruiter:option_recind_resignation", "dont_resign_covert"} -- You are right. It was a momentary lapse. I will stay with the Rebellion.
 	}
 }
 
@@ -264,9 +264,9 @@ dont_resign_covert = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_548", -- Doubt is understandable, but have faith. We are on the right side. No one wants to cater to a tyrant. Down with the Empire!
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_resign_from_faction", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -290,9 +290,9 @@ dont_resign_overt = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_548", -- Doubt is understandable, but have faith. We are on the right side. No one wants to cater to a tyrant. Down with the Empire!
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
-		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@faction_recruiter:option_faction_orders", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		--{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
+		{"@faction_recruiter:option_resign_from_faction", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
 		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
@@ -301,7 +301,7 @@ rebelRecruiterConvoTemplate:addScreen(dont_resign_overt);
 
 accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_544", -- So be it. If you decide that you want to come back, let me know. But for now, you are no longer a member of the Rebellion.
+	leftDialog = "@faction_recruiter:resign_complete", -- So be it. If you decide that you want to come back, let me know. But for now, you are no longer a member of the Rebellion.
 	stopConversation = "true",
 	options = {
 	}
