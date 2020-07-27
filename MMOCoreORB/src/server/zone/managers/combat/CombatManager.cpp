@@ -254,7 +254,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 			ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
 			Locker olocker(defenderCreature, attacker);
 			if (defenderObject != nullptr){
-				if (defenderCreature->isAiAgent() && defenderCreature->getFaction() != attacker->getFaction())
+				if (defenderCreature->isAiAgent() && defenderCreature->getFaction() != attacker->getFaction() && (defenderCreature->getFaction() == Factions::FACTIONREBEL || defenderCreature->getFaction() == Factions::FACTIONIMPERIAL))
 					ghostAttacker->updateLastPvpCombatActionTimestamp(true,false);
 				if (ghost != nullptr) {
 						if (ghostAttacker != nullptr) {
@@ -453,7 +453,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
 					}
 				}
-			} else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction())
+			} else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL))
 				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef,shouldBhTef);
 		}
 		/*if (attacker->isPlayerCreature() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
