@@ -1085,11 +1085,11 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 			return true;
 		}
 		if (isImperial() && (!object->isRebel() || object->getFactionStatus() == 0)) {
-			return false;
+			return true;
 		}
 
 		if (isRebel() && (object->isImperial() || object->getFactionStatus() == 0)) {
-			return false;
+			return true;
 		}
 	} else if (isImperial() && !(object->isRebel())) {
 		return false;
