@@ -1451,7 +1451,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native void setContainerComponent(final string name);
 	public native void setZoneComponent(final string name);
 
-	@dirty
 	public void setForceNoTrade(boolean newForceNoTrade) {
 		forceNoTrade = newForceNoTrade;
 	}
