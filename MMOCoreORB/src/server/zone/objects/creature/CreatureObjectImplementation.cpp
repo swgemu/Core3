@@ -1966,7 +1966,8 @@ void CreatureObjectImplementation::activateQueueAction() {
 	}
 
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
-	commandQueue->remove(0);
+	// Note clear queue action may remove itself as part of the action execution.
+	deleteQueueAction(action->getActionCounter());
 
 	if (commandQueue->size() != 0) {
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
