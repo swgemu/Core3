@@ -1539,7 +1539,8 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	if (attacker->isPlayerCreature()) {
 		if (data.isForceAttack() && !defender->isPlayerCreature())
-			damage *= 2 + System::random(1);
+			//damage *= 2 + System::random(1);
+			damage *= 6;
 		else if (!data.isForceAttack())
 			damage *= 1.5;
 	}
