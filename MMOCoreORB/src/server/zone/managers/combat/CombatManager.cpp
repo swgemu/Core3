@@ -266,9 +266,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 								ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
 								if (defenderPlayer != nullptr && shouldGcwTef)
 									defenderPlayer->updateLastPvpCombatActionTimestamp(true,false);
-								if (defenderPlayer != nullptr && defenderPlayer->hasBhTef())//&& attacker->isGrouped()){
+								/*if (defenderPlayer != nullptr && defenderPlayer->hasBhTef())//&& attacker->isGrouped()){
 									ghost->updateLastBhPvpCombatActionTimestamp();
-									/*ManagedReference<GroupObject*> group = attacker->getGroup();
+									ManagedReference<GroupObject*> group = attacker->getGroup();
 									if (group != nullptr) {
 										for (int i = 0; i < group->getGroupSize(); i++) {
 											ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
@@ -448,10 +448,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 					if (defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 						Locker olocker(attacker, defender);
 						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
-					} else if (defenderPlayer->hasBhTef()) {
+					}/* else if (defenderPlayer->hasBhTef()) {
 						Locker olocker(attacker, defenderPlayer);
 						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
-					}
+					}*/
 				}
 			} else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL))
 				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef,shouldBhTef);

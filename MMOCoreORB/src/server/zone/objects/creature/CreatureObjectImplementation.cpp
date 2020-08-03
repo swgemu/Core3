@@ -3018,7 +3018,8 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 		return true;
 	}
 
-	if (ghost->hasBhTef() && object->isGrouped()){
+	//BH GTEF for Later use
+	/*if (ghost->hasBhTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();
 		if (group != nullptr) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
@@ -3028,7 +3029,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 				}
 			}
 		}
-	}
+	}*/
 
 	// TEF FIX
 	if ((ghost->hasPvpTef() || object->getPvpStatusBitmask() & CreatureFlag::TEF) && getFaction() != object->getFaction())
@@ -3172,8 +3173,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		return true;
 	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef())
 		return true;
-
-	if (ghost->hasBhTef() && object->isGrouped()){
+	//BH GTEF for later use
+	/*if (ghost->hasBhTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();
 		if (group != nullptr) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
@@ -3183,7 +3184,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 				}
 			}
 		}
-	}
+	}*/
 
 	ManagedReference<GuildObject*> guildObject = guild.get();
 	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
