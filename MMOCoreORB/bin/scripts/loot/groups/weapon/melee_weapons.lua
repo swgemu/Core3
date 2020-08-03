@@ -11,7 +11,7 @@ melee_weapons = {
 		{itemTemplate = "baton_gaderiffi", weight = 400000},
 		{itemTemplate = "knife_dagger", weight = 500000},
 		{itemTemplate = "knife_survival", weight = 500000},
-		{itemTemplate = "knife_stone", weight = 500000},
+		{itemTemplate = "knife_stone", weight = 900000},
 		{itemTemplate = "knife_vibroblade", weight = 500000},
 		{itemTemplate = "melee_vibroknuckler", weight = 400000},
 		{itemTemplate = "polearm_staff_metal", weight = 500000},
