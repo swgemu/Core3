@@ -44,8 +44,8 @@
 ForceChokeCommand = {
 	name = "forcechoke",
 
-	minDamage = 700,
-	maxDamage = 1500,
+	minDamage = 175,
+	maxDamage = 375,
 	speed = 4.0,
 	forceCost = 200,
 	visMod = 25,

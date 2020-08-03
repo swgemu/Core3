@@ -44,8 +44,8 @@
 ForceThrow1Command = {
 	name = "forcethrow1",
 
-	minDamage = 600,
-	maxDamage = 1200,
+	minDamage = 150,
+	maxDamage = 300,
 	speed = 4.0,
 	forceCost = 14,
 	visMod = 25,

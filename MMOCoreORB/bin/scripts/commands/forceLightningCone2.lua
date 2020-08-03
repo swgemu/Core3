@@ -44,8 +44,8 @@
 ForceLightningCone2Command = {
 	name = "forcelightningcone2",
 
-	minDamage = 2400,
-	maxDamage = 4800,
+	minDamage = 600,
+	maxDamage = 1200,
 	speed = 4.0,
 	forceCost = 125,
 	accuracySkillMod = "forcelightning_accuracy",
