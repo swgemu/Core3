@@ -44,8 +44,8 @@
 MindBlast2Command = {
 	name = "mindblast2",
 
-	minDamage = 250,
-	maxDamage = 500,
+	minDamage = 500,
+	maxDamage = 1000,
 	speed = 4.0,
 	forceCost = 80,
 	visMod = 25,
