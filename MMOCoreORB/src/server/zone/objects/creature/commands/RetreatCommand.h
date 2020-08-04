@@ -93,6 +93,9 @@ public:
 			if (!isValidGroupAbilityTarget(creature, member, false))
 				continue;
 
+			if(!checkDistance(player, member, 64))
+				continue;
+
 			Locker clocker(member, player);
 
 			sendCombatSpam(member);
@@ -145,7 +148,7 @@ public:
 
 		player->addBuff(buff);
 
-		player->updateCooldownTimer("retreat", 30000);
+		player->updateCooldownTimer("retreat", 60000);
 
 	}
 

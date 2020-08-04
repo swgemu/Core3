@@ -79,6 +79,9 @@ public:
 			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
+			if (!checkDistance(leader, member, 64))
+				continue;
+
 			Locker clocker(member, leader);
 
 			sendCombatSpam(member);

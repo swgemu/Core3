@@ -87,6 +87,9 @@ public:
 			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
+			if (!checkDistance(leader, member, 64))
+				continue;
+
 			if (!member->isInCombat())
 				continue;
 
