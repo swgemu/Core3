@@ -668,8 +668,13 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target) || target->isVehicleObject())
 		return false;
 
-	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction())
-		return true;
+	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction()) {
+		//PlayerObject* ghost = target->getPlayerObject();
+		if (target->getFactionStatus() == FactionStatus::OVERT || target->getPvpStatusBitmask() & CreatureFlag::TEF)
+			return true;
+		//if (ghost->hasPvpTef() && target->getFactionStatus() == FactionStatus::COVERT)
+		//	return true;
+	}
 
 	SharedInstallationObjectTemplate* instTemplate = templateObject.castTo<SharedInstallationObjectTemplate*>();
 
