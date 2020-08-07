@@ -9,11 +9,15 @@
 #include "server/zone/Zone.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+//#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/player/FactionStatus.h"
+
 
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTangibleObject())
@@ -36,6 +40,15 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	if (!gcwMan->isBaseVulnerable(building))
 		return;
+
+	// Reserved for future reference. Terminals give TEF
+	/*uint32 playerFactionStatus = player->getFactionStatus();
+	PlayerObject* ghost = player->getPlayerObject();
+	if (building->getFaction() != player->getFaction()) {
+		if (playerFactionStatus == FactionStatus::COVERT) {
+			ghost->updateLastPvpCombatActionTimestamp(true,false);
+		}
+	}*/
 
 	if (gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 		menuResponse->addRadialMenuItem(20, 3, "@ui:repair");
