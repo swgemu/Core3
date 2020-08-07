@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_subpro_elite_accelatron_mk5 = object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 45123.0,
+	hitpoints = 1659.0,
+	armor = 829.0,
+	energyUsage = 608.0,
+	speed = 40.0,
+	maxEnergy = 2198.0,
+	rechargeRate = 58.0,
+	boosterDrain = 223.0,
+	boosterAccel = 49.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_subpro_elite_accelatron_mk5, "object/tangible/ship/components/booster/bst_subpro_elite_accelatron_mk5.iff")

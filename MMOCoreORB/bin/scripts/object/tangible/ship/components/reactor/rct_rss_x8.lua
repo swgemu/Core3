@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_rss_x8 = object_tangible_ship_components_reactor_shared_rct_rss_x8:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14423.0,
+	hitpoints = 954.0,
+	armor = 480.0,
+	energyUsage = 6.0,
+	maxEnergy = 19508.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_rss_x8, "object/tangible/ship/components/reactor/rct_rss_x8.iff")

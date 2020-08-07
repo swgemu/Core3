@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_incom_disruptor = object_tangible_ship_components_weapon_shared_wpn_incom_disruptor:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2631.0,
+	hitpoints = 347.0,
+	armor = 181.0,
+	energyUsage = 2106.0,
+	minDamage = 618.0,
+	maxDamage = 864.0,
+	refireRate = 2.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 2.0,
+	armorEffectiveness = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_disruptor, "object/tangible/ship/components/weapon/wpn_incom_disruptor.iff")

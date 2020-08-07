@@ -113,6 +113,9 @@
 #include "templates/tangible/TrapTemplate.h"
 #include "templates/tangible/VehicleCustomKitTemplate.h"
 #include "templates/tangible/VehicleDeedTemplate.h"
+
+#include "templates/tangible/ShipDeedTemplate.h"
+
 #include "templates/tangible/WoundPackTemplate.h"
 #include "templates/tangible/XpPurchaseTemplate.h"
 
@@ -430,6 +433,7 @@ void TemplateManager::loadTreArchive() {
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
 	uint32 templateType = templateData->getIntField("templateType");
+
 	String clientTemplateFile = templateData->getStringField("clientTemplateFileName");
 
 	SharedObjectTemplate* templateObject = templateFactory.createObject(templateType);
@@ -459,8 +463,9 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 
 	templateObject->readObject(templateData);
 
-	if (!clientTemplateFile.isEmpty())
+	if (!clientTemplateFile.isEmpty()) {
 		templateObject->addDerivedFile(clientTemplateFile);
+	}
 
 	debug() << "loaded " << fullName;
 
@@ -512,6 +517,9 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<StructureDeedTemplate>(SharedObjectTemplate::STRUCTUREDEED);
 	templateFactory.registerObject<PetDeedTemplate>(SharedObjectTemplate::PETDEED);
 	templateFactory.registerObject<VehicleDeedTemplate>(SharedObjectTemplate::VEHICLEDEED);
+
+	templateFactory.registerObject<ShipDeedTemplate>(SharedObjectTemplate::SHIPDEED);
+
 	templateFactory.registerObject<DroidDeedTemplate>(SharedObjectTemplate::DROIDDEED);
 	templateFactory.registerObject<EventPerkDeedTemplate>(SharedObjectTemplate::EVENTPERKDEED);
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
@@ -696,6 +704,9 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
 	luaTemplatesInstance->setGlobalInt("STRUCTUREDEED", SharedObjectTemplate::STRUCTUREDEED);
 	luaTemplatesInstance->setGlobalInt("VEHICLEDEED", SharedObjectTemplate::VEHICLEDEED);
+
+	luaTemplatesInstance->setGlobalInt("SHIPDEED", SharedObjectTemplate::SHIPDEED);
+
 	luaTemplatesInstance->setGlobalInt("PETDEED", SharedObjectTemplate::PETDEED);
 	luaTemplatesInstance->setGlobalInt("DROIDDEED", SharedObjectTemplate::DROIDDEED);
 	luaTemplatesInstance->setGlobalInt("EVENTPERKDEED", SharedObjectTemplate::EVENTPERKDEED);

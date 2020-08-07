@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_rss_special = object_tangible_ship_components_booster_shared_bst_rss_special:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3681.0,
+	hitpoints = 524.0,
+	armor = 265.0,
+	energyUsage = 526.0,
+	speed = 32.0,
+	maxEnergy = 1656.0,
+	rechargeRate = 48.0,
+	boosterDrain = 173.0,
+	boosterAccel = 40.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_rss_special, "object/tangible/ship/components/booster/bst_rss_special.iff")

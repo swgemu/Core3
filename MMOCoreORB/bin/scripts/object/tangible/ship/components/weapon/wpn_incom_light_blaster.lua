@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_incom_light_blaster = object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 902.0,
+	hitpoints = 145.0,
+	armor = 68.0,
+	energyUsage = 2009.0,
+	minDamage = 291.0,
+	maxDamage = 391.0,
+	refireRate = 7.0,
+	energyPerShot = 26.0,
+	shieldEffectiveness = 7.0,
+	armorEffectiveness = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_light_blaster, "object/tangible/ship/components/weapon/wpn_incom_light_blaster.iff")

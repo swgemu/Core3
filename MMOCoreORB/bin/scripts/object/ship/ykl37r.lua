@@ -43,6 +43,17 @@
 
 object_ship_ykl37r = object_ship_shared_ykl37r:new {
 
+	name = "ykl37r",
+	slideFactor = 1.81,
+	chassisHitpoints = 654,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 95.82692, armor = 98.05847,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 98.70071, armor = 97.88046, speed = 44.55561, pitch = 20.9312, roll = 21.22866, yaw = 20.54779, acceleration = 7.812149, rollRate = 42.56039, pitchRate = 41.85131, deceleration = 12.09663, yawRate = 43.19313,},
+	shield_0 = { name = "shd_generic", hitpoints = 382.9281, armor = 491.327, regen = 4.998025, front = 578.6795, back = 586.4003,},
+	armor_0 = { name = "arm_generic", hitpoints = 673.0124, armor = 683.8469,},
+	armor_1 = { name = "arm_generic", hitpoints = 675.7657, armor = 689.0214,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 32.12646, energy = 814.4739,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 191.0018, armor = 196.5669, rate = 0.4277721, drain = 15.39765, maxDamage = 333.7205, shieldEfficiency = 0, minDamage = 305.243, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_ykl37r, "object/ship/ykl37r.iff")

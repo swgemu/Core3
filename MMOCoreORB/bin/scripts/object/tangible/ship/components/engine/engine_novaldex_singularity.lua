@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_novaldex_singularity = object_tangible_ship_components_engine_shared_engine_novaldex_singularity:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6191.0,
+	hitpoints = 640.0,
+	armor = 318.0,
+	energyUsage = 1658.0,
+	speed = 53.0,
+	pitch = 54.0,
+	yaw = 55.0,
+	roll = 58.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_novaldex_singularity, "object/tangible/ship/components/engine/engine_novaldex_singularity.iff")

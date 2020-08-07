@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_seinar_interface_mk3 = object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 5467.0,
+	hitpoints = 956.0,
+	armor = 484.0,
+	energyUsage = 503.0,
+	droidSpeed = 28.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_seinar_interface_mk3, "object/tangible/ship/components/droid_interface/ddi_seinar_interface_mk3.iff")

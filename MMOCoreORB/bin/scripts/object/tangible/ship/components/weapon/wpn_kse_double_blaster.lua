@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kse_double_blaster = object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2383.0,
+	hitpoints = 319.0,
+	armor = 160.0,
+	energyUsage = 2104.0,
+	minDamage = 610.0,
+	maxDamage = 864.0,
+	refireRate = 10.0,
+	energyPerShot = 24.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kse_double_blaster, "object/tangible/ship/components/weapon/wpn_kse_double_blaster.iff")

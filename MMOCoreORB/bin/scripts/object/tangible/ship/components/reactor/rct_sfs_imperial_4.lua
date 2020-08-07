@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_sfs_imperial_4 = object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14423.0,
+	hitpoints = 954.0,
+	armor = 486.0,
+	energyUsage = 3.0,
+	maxEnergy = 19008.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sfs_imperial_4, "object/tangible/ship/components/reactor/rct_sfs_imperial_4.iff")

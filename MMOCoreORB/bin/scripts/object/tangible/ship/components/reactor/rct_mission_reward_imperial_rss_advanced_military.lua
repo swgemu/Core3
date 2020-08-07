@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mission_reward_imperial_rss_advanced_military = object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 36036.0,
+	hitpoints = 1827.0,
+	armor = 915.0,
+	energyUsage = 2.0,
+	maxEnergy = 24502.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mission_reward_imperial_rss_advanced_military, "object/tangible/ship/components/reactor/rct_mission_reward_imperial_rss_advanced_military.iff")

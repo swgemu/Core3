@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_kessel_rebel_mandal_corrugated_plastisteel = object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42125.0,
+	hitpoints = 1542.0,
+	armor = 1548.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_rebel_mandal_corrugated_plastisteel, "object/tangible/ship/components/armor/arm_kessel_rebel_mandal_corrugated_plastisteel.iff")

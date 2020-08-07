@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mission_reward_neutral_kse_handcrafted = object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9180.0,
+	hitpoints = 1273.0,
+	armor = 1272.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_neutral_kse_handcrafted, "object/tangible/ship/components/armor/arm_mission_reward_neutral_kse_handcrafted.iff")

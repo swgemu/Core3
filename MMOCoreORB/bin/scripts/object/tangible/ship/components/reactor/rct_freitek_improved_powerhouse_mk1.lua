@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_freitek_improved_powerhouse_mk1 = object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5782.0,
+	hitpoints = 525.0,
+	armor = 263.0,
+	energyUsage = 6.0,
+	maxEnergy = 12507.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_freitek_improved_powerhouse_mk1, "object/tangible/ship/components/reactor/rct_freitek_improved_powerhouse_mk1.iff")

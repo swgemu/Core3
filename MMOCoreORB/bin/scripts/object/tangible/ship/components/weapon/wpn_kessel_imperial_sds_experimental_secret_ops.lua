@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kessel_imperial_sds_experimental_secret_ops = object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56404.0,
+	hitpoints = 1382.0,
+	armor = 696.0,
+	energyUsage = 2404.0,
+	minDamage = 2485.0,
+	maxDamage = 4016.0,
+	refireRate = 7.0,
+	energyPerShot = 44.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_imperial_sds_experimental_secret_ops, "object/tangible/ship/components/weapon/wpn_kessel_imperial_sds_experimental_secret_ops.iff")

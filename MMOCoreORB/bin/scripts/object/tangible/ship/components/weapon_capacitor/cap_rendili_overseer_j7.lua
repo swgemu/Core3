@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_rendili_overseer_j7 = object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1004.0,
+	hitpoints = 154.0,
+	armor = 84.0,
+	energyUsage = 1009.0,
+	rechargeRate = 21.0,
+	rechargeRateMod = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_rendili_overseer_j7, "object/tangible/ship/components/weapon_capacitor/cap_rendili_overseer_j7.iff")

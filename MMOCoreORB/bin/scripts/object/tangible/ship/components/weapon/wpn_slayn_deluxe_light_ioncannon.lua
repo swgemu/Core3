@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_slayn_deluxe_light_ioncannon = object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1752.0,
+	hitpoints = 190.0,
+	armor = 94.0,
+	energyUsage = 2004.0,
+	minDamage = 365.0,
+	maxDamage = 491.0,
+	refireRate = 4.0,
+	energyPerShot = 30.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_slayn_deluxe_light_ioncannon, "object/tangible/ship/components/weapon/wpn_slayn_deluxe_light_ioncannon.iff")

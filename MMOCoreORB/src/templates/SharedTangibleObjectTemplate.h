@@ -63,6 +63,30 @@ protected:
 	Vector<Reference<ResourceWeight* > >* resourceWeights;
 	//CustomizationVariableMapping customizationVariableMapping;
 
+	//JTL stuff
+	float shipMaxEnergy;
+	float shipRechargeRate;
+	float shipHitpoints;
+	float shipArmor;
+	float shipEnergyConsumption;
+	float shipMass;
+	float shipRELevel;
+	float shipSpeed;
+	float shipPitch;
+	float shipMinDamage;
+	float shipMaxDamage;
+	float shipYaw;
+	float shipRoll;
+	float boosterAcceleration;
+	float boosterDrain;
+	float droidCommandSpeed;
+	float weaponShieldEffectiveness;
+	float weaponArmorEffectiveness;
+	float energyPerShot;
+	float shieldHitpointsFront;
+	float shieldHitpointsRear;
+	float refireRate;
+
 public:
 	SharedTangibleObjectTemplate();
 
@@ -202,6 +226,94 @@ public:
 
 	int getSkillMod(const String& mod) const {
 		return skillMods.get(mod);
+	}
+
+	inline float getShipMaxEnergy() const {
+		return shipMaxEnergy;
+	}
+
+	inline float getShipRechargeRate() const {
+		return shipRechargeRate;
+	}
+
+	inline float getShipHitpoints() const {
+		return shipHitpoints;
+	}
+
+	inline float getShipArmor() const {
+		return shipArmor;
+	}
+
+	inline float getShipEnergyConsumption() const {
+		return shipEnergyConsumption;
+	}
+
+	inline float getShipMass() const {
+		return shipMass;
+	}
+
+	inline float getShipReverseEngineeringLevel() const {
+		return shipRELevel;
+	}
+
+	inline float getShipSpeed() const {
+		return shipSpeed;
+	}
+
+	inline float getShipPitch() const {
+		return shipPitch;
+	}
+
+	inline float getShipYaw() const {
+		return shipYaw;
+	}
+
+	inline float getShipRoll() const {
+		return shipRoll;
+	}
+
+	inline float getBoosterDrain() const {
+		return boosterDrain;
+	}
+
+	inline float getBoosterAcceleration() const {
+		return boosterAcceleration;
+	}
+
+	inline float getDroidCommandSpeed() const {
+		return droidCommandSpeed;
+	}
+
+	inline float getWeaponShieldEffectiveness() const {
+		return weaponShieldEffectiveness;
+	}
+
+	inline float getWeaponArmorEffectiveness() const {
+		return weaponArmorEffectiveness;
+	}
+
+	inline float getEnergyPerShot() const {
+		return energyPerShot;
+	}
+
+	inline float getShieldHitpointsFront() const {
+		return shieldHitpointsFront;
+	}
+
+	inline float getShieldHitpointsRear() const {
+		return shieldHitpointsRear;
+	}
+
+	inline float getWeaponMinDamage() const {
+		return shipMinDamage;
+	}
+
+	inline float getWeaponMaxDamage() const {
+		return shipMaxDamage;
+	}
+
+	inline float getWeaponRefireRate() const {
+		return refireRate;
 	}
 
 	bool isSharedTangibleObjectTemplate() const override {

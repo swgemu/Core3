@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_taim_heavy = object_tangible_ship_components_shield_generator_shared_shd_taim_heavy:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 19829.0,
+	hitpoints = 897.0,
+	armor = 449.0,
+	energyUsage = 2936.0,
+	shieldFront = 1250.0,
+	shieldRear = 1249.0,
+	rechargeRate = 14.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_taim_heavy, "object/tangible/ship/components/shield_generator/shd_taim_heavy.iff")

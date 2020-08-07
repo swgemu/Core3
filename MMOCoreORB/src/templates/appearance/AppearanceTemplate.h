@@ -16,6 +16,7 @@ class AppearanceTemplate : public Object {
 	String fileName;
 	BaseBoundingVolume* volume = nullptr;
 	BaseBoundingVolume* collisionVolume = nullptr;
+	VectorMap<String, Matrix4> hardpoints;
 public:
 
 	virtual uint32 getType() const {
@@ -24,6 +25,10 @@ public:
 
 	const String& getFloorMesh() const {
 		return floorName;
+	}
+
+	const VectorMap<String, Matrix4>& getHardpoints() const {
+		return hardpoints;
 	}
 
 	const BaseBoundingVolume* getBoundingVolume() const {
@@ -52,6 +57,13 @@ public:
 	 */
 	virtual int intersects(const Ray& ray, float maxDistance, SortedVector <IntersectionResult>& result) const = 0;
 
+	String toString(Matrix4& mat) {
+		char buffer[512];
+		sprintf(buffer, "\n[% 05.3f, % 05.3f, % 05.3f, % 05.3f]\n[% 05.3f, % 05.3f, % 05.3f, % 05.3f]\n[% 05.3f, % 05.3f, % 05.3f, % 05.3f]\n[% 05.3f, % 05.3f, % 05.3f, % 05.3f]",
+		mat[0][0], mat[0][1], mat[0][2], mat[0][3], mat[1][0], mat[1][1], mat[1][2], mat[1][3], mat[2][0], mat[2][1], mat[2][2], mat[2][3],
+		mat[3][0], mat[3][1], mat[3][2], mat[3][3]);
+		return String(buffer);
+	}
 
 	virtual void readObject(IffStream* iffStream) {
 
@@ -65,7 +77,36 @@ public:
 			collisionVolume = BoundingVolumeFactory::getVolume(iffStream);
 
 
-			iffStream->openForm('HPTS');
+			Chunk *chunk = iffStream->openForm('HPTS');
+            try {
+                int numHardpoints = chunk->getChunksSize();
+                for (int i = 0; i < numHardpoints; i++) {
+                    iffStream->openChunk('HPNT');
+                    Matrix4 transform;
+                    transform[0][0] = iffStream->getFloat();
+                    transform[1][0] = iffStream->getFloat();
+                    transform[2][0] = iffStream->getFloat();
+                    transform[3][0] = iffStream->getFloat();
+
+                    transform[0][1] = iffStream->getFloat();
+                    transform[1][1] = iffStream->getFloat();
+                    transform[2][1] = iffStream->getFloat();
+                    transform[3][1] = iffStream->getFloat();
+
+                    transform[0][2] = iffStream->getFloat();
+                    transform[1][2] = iffStream->getFloat();
+                    transform[2][2] = iffStream->getFloat();
+                    transform[3][2] = iffStream->getFloat();
+
+                    String name;
+                    iffStream->getString(name);
+                    hardpoints.put(name, transform);
+					Logger::console.info(fileName + " Loading hardpoint: " + name + " Transform: " + toString(transform), true);
+                    iffStream->closeChunk('HPNT');
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 			// Skip loading hardpoints
 			iffStream->closeForm('HPTS');

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_freitek_outrunner_x1 = object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1401.0,
+	hitpoints = 231.0,
+	armor = 118.0,
+	energyUsage = 501.0,
+	speed = 32.0,
+	maxEnergy = 1502.0,
+	rechargeRate = 38.0,
+	boosterDrain = 158.0,
+	boosterAccel = 30.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_freitek_outrunner_x1, "object/tangible/ship/components/booster/bst_freitek_outrunner_x1.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_phased_fullerine_fx92 = object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 37544.0,
+	hitpoints = 1052.0,
+	armor = 526.0,
+	energyUsage = 3008.0,
+	shieldFront = 1564.0,
+	shieldRear = 1566.0,
+	rechargeRate = 20.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_phased_fullerine_fx92, "object/tangible/ship/components/shield_generator/shd_phased_fullerine_fx92.iff")

@@ -43,6 +43,17 @@
 
 object_ship_player_player_basic_tiefighter = object_ship_player_shared_player_basic_tiefighter:new {
 
+	name = "player_basic_tiefighter",
+	slideFactor = 1.95,
+	chassisHitpoints = 400,
+	chassisMass = 5000,
+	reactor = { name = "rct_tiefighter_basic", hitpoints = 193.3756, armor = 97.10411,},
+	engine = { name = "eng_tiefighter_basic", hitpoints = 197.5299, armor = 97.35545, speed = 49.00538, pitch = 47.90972, roll = 51.01502, yaw = 47.31527, acceleration = 15.51835, rollRate = 75.38376, pitchRate = 71.14635, deceleration = 13.36026, yawRate = 71.63885,},
+	armor_0 = { name = "armor_tiefighter_basic", hitpoints = 632.2285, armor = 640.0355,},
+	armor_1 = { name = "armor_tiefighter_basic", hitpoints = 649.0071, armor = 635.1793,},
+	capacitor = { name = "cap_tiefighter_basic", hitpoints = 196.3024, armor = 97.62894, rechargeRate = 19.30076, energy = 498.3523,},
+	droid_interface = { name = "ddi_tiefighter_basic", hitpoints = 198.608, armor = 97.3598,},
+	weapon_0 = { name = "wpn_tiefighter_basic", hitpoints = 192.3501, armor = 99.45217, rate = 0.3369635, drain = 16.91832, maxDamage = 401.2384, shieldEfficiency = 0, minDamage = 327.9787, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_basic_tiefighter, "object/ship/player/player_basic_tiefighter.iff")

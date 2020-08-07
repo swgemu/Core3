@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_imperial_cygnus_starblaster = object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5696.0,
+	hitpoints = 523.0,
+	armor = 259.0,
+	energyUsage = 2606.0,
+	minDamage = 922.0,
+	maxDamage = 1289.0,
+	refireRate = 1.0,
+	energyPerShot = 29.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_imperial_cygnus_starblaster, "object/tangible/ship/components/weapon/wpn_mission_reward_imperial_cygnus_starblaster.iff")

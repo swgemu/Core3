@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_deepwell_k33_prototype = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56409.0,
+	hitpoints = 1655.0,
+	armor = 831.0,
+	energyUsage = 1208.0,
+	rechargeRate = 46.0,
+	rechargeRateMod = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_deepwell_k33_prototype, "object/tangible/ship/components/weapon_capacitor/cap_kessel_rebel_deepwell_k33_prototype.iff")

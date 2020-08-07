@@ -57,6 +57,7 @@ include templates.collision.BaseBoundingVolume;
 include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
 include engine.util.JSONSerializationType;
+import server.zone.objects.ship.ShipObject;
 
 @mock
 @json
@@ -323,6 +324,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
 
+	public native int getSlot(final string name);
 	/**
 	 * Destroys the object from the world
 	 */
@@ -1016,6 +1018,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return direction.getW();
 	}
 
+	@dirty // brakiss: why is this required? what exactly does this annotation do in this context?
 	@local
 	@read
 	public native final Quaternion getDirection();
@@ -1052,6 +1055,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@read
+	@dirty // brakiss: why is this required? what exactly does this annotation do in this context?
 	public abstract string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
 	}
@@ -1502,6 +1506,12 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract ShipObject asShipObject();
+
+	@read
 	public abstract boolean isShipObject() {
 		return false;
 	}
@@ -1515,6 +1525,12 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public abstract boolean isDroidObject() {
 		return false;
+	}
+
+	@local
+	@dirty
+	public abstract boolean isHyperspacing() {
+	    return false;
 	}
 
 	@dirty

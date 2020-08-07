@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_kessel_rebel_sorosuub_spidershell_plating = object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 38616.0,
+	hitpoints = 1473.0,
+	armor = 1468.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_rebel_sorosuub_spidershell_plating, "object/tangible/ship/components/armor/arm_kessel_rebel_sorosuub_spidershell_plating.iff")

@@ -43,6 +43,21 @@
 
 object_ship_player_player_firespray = object_ship_player_shared_player_firespray:new {
 
+	name = "player_firespray",
+	slideFactor = 1.68,
+	chassisHitpoints = 1650,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 98.64068, armor = 98.83962,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.52977, armor = 97.78248, speed = 54.21301, pitch = 68.48127, roll = 78.06176, yaw = 49.14983, acceleration = 27.58748, rollRate = 91.24681, pitchRate = 87.73351, deceleration = 14.02503, yawRate = 84.78439,},
+	shield_0 = { name = "shd_generic", hitpoints = 398.4799, armor = 488.6996, regen = 4.917778, front = 1397.665, back = 1356.204,},
+	armor_0 = { name = "arm_generic", hitpoints = 194.2605, armor = 196.2654,},
+	armor_1 = { name = "arm_generic", hitpoints = 192.349, armor = 199.9833,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 26.24701, energy = 667.1345,},
+	booster = { name = "bst_generic", hitpoints = 19.89734, armor = 19.65063, energy = 95.81511, acceleration = 19.54564, speed = 14.66021, energyUsage = 9.593817, rechargeRate = 4.977661,},
+	droid_interface = { name = "ddi_generic", hitpoints = 19.47379, armor = 19.89639,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 196.1458, armor = 192.6049, rate = 0.3447307, drain = 23.1472, maxDamage = 240.1277, shieldEfficiency = 0, minDamage = 118.379, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 199.0284, armor = 190.1464, rate = 0.3285807, drain = 22.91145, maxDamage = 23.30607, shieldEfficiency = 0, minDamage = 23.42046, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_std_countermeasure", hitpoints = 240.6413, armor = 245.1019, rate = 0.09599161, drain = 22.66683, maxDamage = 96.29526, shieldEfficiency = 0, minDamage = 24.61045, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_firespray, "object/ship/player/player_firespray.iff")

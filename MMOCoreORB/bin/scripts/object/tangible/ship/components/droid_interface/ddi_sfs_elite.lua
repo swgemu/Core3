@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_sfs_elite = object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 23509.0,
+	hitpoints = 1658.0,
+	armor = 832.0,
+	energyUsage = 510.0,
+	droidSpeed = 16.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sfs_elite, "object/tangible/ship/components/droid_interface/ddi_sfs_elite.iff")

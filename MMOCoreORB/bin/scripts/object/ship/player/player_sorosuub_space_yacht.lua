@@ -43,6 +43,18 @@
 
 object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_player_sorosuub_space_yacht:new {
 
+	name = "player_sorosuub_space_yacht",
+	slideFactor = 1.76,
+	chassisHitpoints = 1512,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 285.402, armor = 291.3666,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.83093, armor = 99.44305, speed = 45.67611, pitch = 39.10896, roll = 39.2719, yaw = 20.1447, acceleration = 11.72711, rollRate = 58.29478, pitchRate = 58.64743, deceleration = 15.42485, yawRate = 39.86395,},
+	shield_0 = { name = "shd_generic", hitpoints = 397.8397, armor = 489.1867, regen = 4.848504, front = 953.884, back = 941.7534,},
+	armor_0 = { name = "arm_generic", hitpoints = 192.2914, armor = 191.1192,},
+	armor_1 = { name = "arm_generic", hitpoints = 190.1474, armor = 197.6478,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.42095, energy = 490.3307,},
+	booster = { name = "bst_generic", hitpoints = 19.26239, armor = 19.92333, energy = 97.1871, acceleration = 19.26703, speed = 14.25545, energyUsage = 9.939795, rechargeRate = 4.928347,},
+	lots = 4,
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_sorosuub_space_yacht, "object/ship/player/player_sorosuub_space_yacht.iff")

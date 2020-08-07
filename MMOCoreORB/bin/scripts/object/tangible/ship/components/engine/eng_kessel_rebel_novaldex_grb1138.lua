@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kessel_rebel_novaldex_grb1138 = object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 43880.0,
+	hitpoints = 1109.0,
+	armor = 553.0,
+	energyUsage = 1805.0,
+	speed = 73.0,
+	pitch = 64.0,
+	yaw = 66.0,
+	roll = 67.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kessel_rebel_novaldex_grb1138, "object/tangible/ship/components/engine/eng_kessel_rebel_novaldex_grb1138.iff")

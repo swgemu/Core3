@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_freitek_xd2 = object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2129.0,
+	hitpoints = 349.0,
+	armor = 173.0,
+	energyUsage = 1052.0,
+	rechargeRate = 29.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_freitek_xd2, "object/tangible/ship/components/weapon_capacitor/cap_freitek_xd2.iff")

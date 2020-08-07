@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_damorian_rx7 = object_tangible_ship_components_engine_shared_engine_damorian_rx7:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4332.0,
+	hitpoints = 440.0,
+	armor = 225.0,
+	energyUsage = 1579.0,
+	speed = 61.0,
+	pitch = 62.0,
+	yaw = 64.0,
+	roll = 64.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_damorian_rx7, "object/tangible/ship/components/engine/engine_damorian_rx7.iff")

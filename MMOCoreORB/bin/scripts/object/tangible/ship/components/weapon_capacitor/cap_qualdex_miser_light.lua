@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_qualdex_miser_light = object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 901.0,
+	hitpoints = 145.0,
+	armor = 70.0,
+	energyUsage = 908.0,
+	rechargeRate = 20.0,
+	rechargeRateMod = 0.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_qualdex_miser_light, "object/tangible/ship/components/weapon_capacitor/cap_qualdex_miser_light.iff")

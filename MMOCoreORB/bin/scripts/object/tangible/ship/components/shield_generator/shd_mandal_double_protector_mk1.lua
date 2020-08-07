@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mandal_double_protector_mk1 = object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2123.0,
+	hitpoints = 188.0,
+	armor = 97.0,
+	energyUsage = 2561.0,
+	shieldFront = 250.0,
+	shieldRear = 259.0,
+	rechargeRate = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mandal_double_protector_mk1, "object/tangible/ship/components/shield_generator/shd_mandal_double_protector_mk1.iff")

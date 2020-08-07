@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_subpro_advanced_plasisteel = object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 24112.0,
+	hitpoints = 1288.0,
+	armor = 1289.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_subpro_advanced_plasisteel, "object/tangible/ship/components/armor/arm_subpro_advanced_plasisteel.iff")

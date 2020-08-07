@@ -37,6 +37,7 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
+#include "server/zone/objects/ship/ShipObject.h"
 //#include "PositionUpdateTask.h"
 
 #include "variables/ContainerPermissions.h"
@@ -234,6 +235,10 @@ void SceneObjectImplementation::link(SceneObject* client, uint32 containmentType
 
 BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containmentType) {
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
+}
+
+int SceneObjectImplementation::getSlot(const String& name) {
+	return -1;
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -879,9 +884,6 @@ void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	//#ifdef WITH_STM
 	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
 	//#else
-
-	//Core::getTaskManager()->executeTask(new PositionUpdateTask(asSceneObject(), entry));
-	//#endif
 
 	zoneComponent->notifyPositionUpdate(asSceneObject(), entry);
 }
@@ -1852,6 +1854,14 @@ CreatureObject* SceneObjectImplementation::asCreatureObject() {
 
 CreatureObject* SceneObject::asCreatureObject() {
 	return nullptr;
+}
+
+ShipObject* SceneObject::asShipObject() {
+    return nullptr;
+}
+
+ShipObject* SceneObjectImplementation::asShipObject() {
+    return nullptr;
 }
 
 Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {

@@ -43,6 +43,16 @@
 
 object_ship_freighterlight_tier3 = object_ship_shared_freighterlight_tier3:new {
 
+	name = "freighterlight_tier3",
+	slideFactor = 1.83,
+	chassisHitpoints = 2400,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2076.689, armor = 2064.158,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2052.065, armor = 2062.251, speed = 43.07039, pitch = 24.47161, roll = 29.2205, yaw = 18.58396, acceleration = 10.32276, rollRate = 55.2113, pitchRate = 47.64679, deceleration = 8.980403, yawRate = 40.12091,},
+	shield_0 = { name = "shd_generic", hitpoints = 2158.885, armor = 2095.381, regen = 8.779842, front = 12934.95, back = 12430.25,},
+	armor_0 = { name = "arm_generic", hitpoints = 6597.979, armor = 6823.715,},
+	armor_1 = { name = "arm_generic", hitpoints = 6767.7, armor = 6743.099,},
+	capacitor = { name = "cap_generic", hitpoints = 2065.876, armor = 2101.573, rechargeRate = 97.06277, energy = 4912.691,},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterlight_tier3, "object/ship/freighterlight_tier3.iff")

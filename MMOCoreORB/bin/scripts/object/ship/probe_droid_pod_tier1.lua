@@ -43,6 +43,16 @@
 
 object_ship_probe_droid_pod_tier1 = object_ship_shared_probe_droid_pod_tier1:new {
 
+	name = "probe_droid_pod_tier1",
+	slideFactor = 1.82,
+	chassisHitpoints = 120,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 74.9761, armor = 74.62645,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 74.22855, armor = 72.97294, speed = 41.98246, pitch = 22.57341, roll = 27.61499, yaw = 18.27468, acceleration = 10.0208, rollRate = 52.07744, pitchRate = 44.48434, deceleration = 8.452023, yawRate = 38.34855,},
+	shield_0 = { name = "shd_generic", hitpoints = 72.94738, armor = 72.90033, regen = 1.433476, front = 293.3112, back = 292.2212,},
+	armor_0 = { name = "arm_generic", hitpoints = 156.0145, armor = 152.1129,},
+	armor_1 = { name = "arm_generic", hitpoints = 154.1991, armor = 153.0754,},
+	capacitor = { name = "cap_generic", hitpoints = 72.55849, armor = 72.96308, rechargeRate = 97.86006, energy = 4949.167,},
 }
 
 ObjectTemplates:addTemplate(object_ship_probe_droid_pod_tier1, "object/ship/probe_droid_pod_tier1.iff")

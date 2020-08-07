@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_gallofree_jx2 = object_tangible_ship_components_engine_shared_eng_gallofree_jx2:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 903.0,
+	hitpoints = 153.0,
+	armor = 80.0,
+	energyUsage = 1507.0,
+	speed = 50.0,
+	pitch = 52.0,
+	yaw = 51.0,
+	roll = 52.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_gallofree_jx2, "object/tangible/ship/components/engine/eng_gallofree_jx2.iff")

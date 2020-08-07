@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_slayn_ion_booster_mk1 = object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 800.0,
+	hitpoints = 156.0,
+	armor = 81.0,
+	energyUsage = 500.0,
+	speed = 16.0,
+	maxEnergy = 1008.0,
+	rechargeRate = 29.0,
+	boosterDrain = 102.0,
+	boosterAccel = 30.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_slayn_ion_booster_mk1, "object/tangible/ship/components/booster/bst_slayn_ion_booster_mk1.iff")

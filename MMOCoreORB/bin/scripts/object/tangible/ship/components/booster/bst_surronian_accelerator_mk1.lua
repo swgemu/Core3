@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_surronian_accelerator_mk1 = object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9619.0,
+	hitpoints = 953.0,
+	armor = 485.0,
+	energyUsage = 555.0,
+	speed = 37.0,
+	maxEnergy = 1819.0,
+	rechargeRate = 47.0,
+	boosterDrain = 186.0,
+	boosterAccel = 45.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_surronian_accelerator_mk1, "object/tangible/ship/components/booster/bst_surronian_accelerator_mk1.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_kse_elite = object_tangible_ship_components_shield_generator_shared_shd_kse_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 67212.0,
+	hitpoints = 1244.0,
+	armor = 623.0,
+	energyUsage = 3002.0,
+	shieldFront = 1840.0,
+	shieldRear = 1840.0,
+	rechargeRate = 16.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kse_elite, "object/tangible/ship/components/shield_generator/shd_kse_elite.iff")

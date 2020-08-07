@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_novaldex_eventhorizon = object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1576.0,
+	hitpoints = 192.0,
+	armor = 100.0,
+	energyUsage = 1503.0,
+	speed = 57.0,
+	pitch = 60.0,
+	yaw = 60.0,
+	roll = 65.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_novaldex_eventhorizon, "object/tangible/ship/components/engine/eng_novaldex_eventhorizon.iff")

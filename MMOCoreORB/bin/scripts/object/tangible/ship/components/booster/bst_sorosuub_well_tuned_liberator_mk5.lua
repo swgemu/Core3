@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_sorosuub_well_tuned_liberator_mk5 = object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator_mk5:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 45125.0,
+	hitpoints = 1657.0,
+	armor = 833.0,
+	energyUsage = 602.0,
+	speed = 41.0,
+	maxEnergy = 2198.0,
+	rechargeRate = 58.0,
+	boosterDrain = 226.0,
+	boosterAccel = 45.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sorosuub_well_tuned_liberator_mk5, "object/tangible/ship/components/booster/bst_sorosuub_well_tuned_liberator_mk5.iff")

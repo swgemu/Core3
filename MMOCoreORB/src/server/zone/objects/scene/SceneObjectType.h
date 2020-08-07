@@ -298,6 +298,8 @@ public:
 	// Not in client **********
 	const static int EVENTPERKDEED = 0x800007;
 	const static int VETHARVESTERDEED = 0x800008;
+
+	const static int SHIPDEED = 0x800009;
 	// ************************
 
 	const static int CLOTHING = 0x1000000;

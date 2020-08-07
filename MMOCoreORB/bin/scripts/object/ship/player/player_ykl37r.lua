@@ -43,6 +43,22 @@
 
 object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 
+	name = "player_ykl37r",
+	slideFactor = 1.85,
+	chassisHitpoints = 5000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 393.4749, armor = 392.1788,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.38634, armor = 97.26779, speed = 64.8352, pitch = 53.1233, roll = 51.811, yaw = 20.72012, acceleration = 14.20368, rollRate = 81.44453, pitchRate = 74.89443, deceleration = 13.23707, yawRate = 36.14846,},
+	shield_0 = { name = "shd_generic", hitpoints = 399.6198, armor = 488.0886, regen = 2.93632, front = 1559.694, back = 1589.634,},
+	armor_0 = { name = "arm_generic", hitpoints = 1092.445, armor = 1065.585,},
+	armor_1 = { name = "arm_generic", hitpoints = 1064.248, armor = 1095.966,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 35.55407, energy = 1101.659,},
+	booster = { name = "bst_generic", hitpoints = 19.30068, armor = 19.50534, energy = 96.55447, acceleration = 19.0435, speed = 14.3576, energyUsage = 9.907719, rechargeRate = 4.798415,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 191.7337, armor = 198.4741, rate = 0.3354505, drain = 23.31645, maxDamage = 1452.662, shieldEfficiency = 0, minDamage = 727.0751, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 195.7502, armor = 193.4968, rate = 0.3280407, drain = 22.70662, maxDamage = 965.8762, shieldEfficiency = 0, minDamage = 601.3749, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_xwing_missile_s01", hitpoints = 19.53581, armor = 19.31941, rate = 5.815926, drain = 23.09743, maxDamage = 22.9824, shieldEfficiency = 0, minDamage = 23.42325, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_std_countermeasure", hitpoints = 247.8035, armor = 245.5052, rate = 0.09767031, drain = 23.58665, maxDamage = 98.10107, shieldEfficiency = 0, minDamage = 24.81069, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
+	lots = 4,
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_ykl37r, "object/ship/player/player_ykl37r.iff")

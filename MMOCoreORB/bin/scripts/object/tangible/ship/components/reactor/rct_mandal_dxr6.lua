@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mandal_dxr6 = object_tangible_ship_components_reactor_shared_rct_mandal_dxr6:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 36039.0,
+	hitpoints = 1481.0,
+	armor = 738.0,
+	energyUsage = 2.0,
+	maxEnergy = 26557.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mandal_dxr6, "object/tangible/ship/components/reactor/rct_mandal_dxr6.iff")

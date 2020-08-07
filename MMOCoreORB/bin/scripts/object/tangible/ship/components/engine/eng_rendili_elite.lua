@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_rendili_elite = object_tangible_ship_components_engine_shared_eng_rendili_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 48653.0,
+	hitpoints = 1316.0,
+	armor = 654.0,
+	energyUsage = 1733.0,
+	speed = 81.0,
+	pitch = 77.0,
+	yaw = 76.0,
+	roll = 73.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rendili_elite, "object/tangible/ship/components/engine/eng_rendili_elite.iff")

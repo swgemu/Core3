@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_baktoid_spider_shell_g2 = object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1554.0,
+	hitpoints = 212.0,
+	armor = 217.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_baktoid_spider_shell_g2, "object/tangible/ship/components/armor/armor_baktoid_spider_shell_g2.iff")

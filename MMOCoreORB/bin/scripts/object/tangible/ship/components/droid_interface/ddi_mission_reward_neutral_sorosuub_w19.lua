@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_mission_reward_neutral_sorosuub_w19 = object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 2628.0,
+	hitpoints = 626.0,
+	armor = 316.0,
+	energyUsage = 606.0,
+	droidSpeed = 35.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mission_reward_neutral_sorosuub_w19, "object/tangible/ship/components/droid_interface/ddi_mission_reward_neutral_sorosuub_w19.iff")

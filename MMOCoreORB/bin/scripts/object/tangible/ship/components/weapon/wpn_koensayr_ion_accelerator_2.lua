@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_koensayr_ion_accelerator_2 = object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6883.0,
+	hitpoints = 636.0,
+	armor = 324.0,
+	energyUsage = 2206.0,
+	minDamage = 1081.0,
+	maxDamage = 1594.0,
+	refireRate = 4.0,
+	energyPerShot = 26.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_koensayr_ion_accelerator_2, "object/tangible/ship/components/weapon/wpn_koensayr_ion_accelerator_2.iff")

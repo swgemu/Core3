@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mandal_mangler_mk1 = object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1005.0,
+	hitpoints = 157.0,
+	armor = 82.0,
+	energyUsage = 2201.0,
+	minDamage = 304.0,
+	maxDamage = 403.0,
+	refireRate = 6.0,
+	energyPerShot = 23.0,
+	shieldEffectiveness = 10.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mandal_mangler_mk1, "object/tangible/ship/components/weapon/wpn_mandal_mangler_mk1.iff")

@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_z95_basic = object_tangible_ship_components_droid_interface_shared_ddi_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 505.0,
+	hitpoints = 151.0,
+	armor = 83.0,
+	energyUsage = 505.0,
+	droidSpeed = 34.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_z95_basic, "object/tangible/ship/components/droid_interface/ddi_z95_basic.iff")

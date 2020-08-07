@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_sorosuub_echelon_1 = object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 13651.0,
+	hitpoints = 1406.0,
+	armor = 710.0,
+	energyUsage = 509.0,
+	droidSpeed = 15.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sorosuub_echelon_1, "object/tangible/ship/components/droid_interface/ddi_sorosuub_echelon_1.iff")

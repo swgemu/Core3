@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_incom_light_plate = object_tangible_ship_components_armor_shared_arm_incom_light_plate:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 869.0,
+	hitpoints = 171.0,
+	armor = 170.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_incom_light_plate, "object/tangible/ship/components/armor/arm_incom_light_plate.iff")

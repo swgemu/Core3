@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_qualdex_xboost_mk4 = object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 14355.0,
+	hitpoints = 940.0,
+	armor = 473.0,
+	energyUsage = 581.0,
+	speed = 28.0,
+	maxEnergy = 1333.0,
+	rechargeRate = 36.0,
+	boosterDrain = 140.0,
+	boosterAccel = 28.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_qualdex_xboost_mk4, "object/tangible/ship/components/booster/bst_qualdex_xboost_mk4.iff")

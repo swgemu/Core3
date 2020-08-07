@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_moncal_standard = object_tangible_ship_components_engine_shared_eng_moncal_standard:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2369.0,
+	hitpoints = 349.0,
+	armor = 178.0,
+	energyUsage = 1581.0,
+	speed = 53.0,
+	pitch = 46.0,
+	yaw = 46.0,
+	roll = 48.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_moncal_standard, "object/tangible/ship/components/engine/eng_moncal_standard.iff")

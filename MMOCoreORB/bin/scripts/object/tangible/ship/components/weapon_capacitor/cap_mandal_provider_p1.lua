@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mandal_provider_p1 = object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 49355.0,
+	hitpoints = 1653.0,
+	armor = 826.0,
+	energyUsage = 1201.0,
+	rechargeRate = 51.0,
+	rechargeRateMod = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mandal_provider_p1, "object/tangible/ship/components/weapon_capacitor/cap_mandal_provider_p1.iff")

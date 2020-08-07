@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_slayn_vortex_mk4 = object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 36046.0,
+	hitpoints = 1481.0,
+	armor = 741.0,
+	energyUsage = 1.0,
+	maxEnergy = 26456.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_slayn_vortex_mk4, "object/tangible/ship/components/reactor/rct_slayn_vortex_mk4.iff")

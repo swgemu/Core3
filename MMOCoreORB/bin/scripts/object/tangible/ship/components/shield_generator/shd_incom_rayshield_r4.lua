@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_incom_rayshield_r4 = object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2118.0,
+	hitpoints = 188.0,
+	armor = 99.0,
+	energyUsage = 2559.0,
+	shieldFront = 257.0,
+	shieldRear = 250.0,
+	rechargeRate = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_incom_rayshield_r4, "object/tangible/ship/components/shield_generator/shd_incom_rayshield_r4.iff")

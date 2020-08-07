@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_sds_elite = object_tangible_ship_components_reactor_shared_rct_sds_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62044.0,
+	hitpoints = 1657.0,
+	armor = 834.0,
+	energyUsage = 3.0,
+	maxEnergy = 32001.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sds_elite, "object/tangible/ship/components/reactor/rct_sds_elite.iff")

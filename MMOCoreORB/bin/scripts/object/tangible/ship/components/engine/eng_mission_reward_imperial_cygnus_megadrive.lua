@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mission_reward_imperial_cygnus_megadrive = object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 13768.0,
+	hitpoints = 1116.0,
+	armor = 563.0,
+	energyUsage = 2109.0,
+	speed = 80.0,
+	pitch = 73.0,
+	yaw = 64.0,
+	roll = 63.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mission_reward_imperial_cygnus_megadrive, "object/tangible/ship/components/engine/eng_mission_reward_imperial_cygnus_megadrive.iff")

@@ -43,6 +43,17 @@
 
 object_ship_assaultship = object_ship_shared_assaultship:new {
 
+	name = "assaultship",
+	slideFactor = 1,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 96.05299, armor = 97.72736,},
+	engine = { name = "eng_generic", hitpoints = 98.83556, armor = 99.14944, speed = 49.88302, pitch = 23.05017, roll = 23.42142, yaw = 23.26724, acceleration = 42.61156, rollRate = 39.9012, pitchRate = 39.71355, deceleration = 36.90677, yawRate = 41.06225,},
+	shield_0 = { name = "shd_generic", hitpoints = 194.4048, armor = 190.9529, regen = 4.923894, front = 194.4937, back = 194.8526,},
+	armor_0 = { name = "arm_generic", hitpoints = 781.739, armor = 766.9294,},
+	armor_1 = { name = "arm_generic", hitpoints = 782.1686, armor = 787.6256,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 137.9457, energy = 3442.146,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 199.3354, armor = 191.032, rate = 1.31652, drain = 64.17976, maxDamage = 247.0937, shieldEfficiency = 0, minDamage = 118.0961, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_assaultship, "object/ship/assaultship.iff")

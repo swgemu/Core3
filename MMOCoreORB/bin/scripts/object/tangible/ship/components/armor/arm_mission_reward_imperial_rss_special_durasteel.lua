@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mission_reward_imperial_rss_special_durasteel = object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 24841.0,
+	hitpoints = 1878.0,
+	armor = 1873.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_imperial_rss_special_durasteel, "object/tangible/ship/components/armor/arm_mission_reward_imperial_rss_special_durasteel.iff")

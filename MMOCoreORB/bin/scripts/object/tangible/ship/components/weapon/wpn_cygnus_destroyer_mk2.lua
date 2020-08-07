@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_cygnus_destroyer_mk2 = object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2884.0,
+	hitpoints = 383.0,
+	armor = 193.0,
+	energyUsage = 2103.0,
+	minDamage = 617.0,
+	maxDamage = 866.0,
+	refireRate = 5.0,
+	energyPerShot = 29.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_cygnus_destroyer_mk2, "object/tangible/ship/components/weapon/wpn_cygnus_destroyer_mk2.iff")

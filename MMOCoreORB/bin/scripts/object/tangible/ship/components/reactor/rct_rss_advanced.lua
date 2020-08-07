@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_rss_advanced = object_tangible_ship_components_reactor_shared_rct_rss_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51481.0,
+	hitpoints = 1160.0,
+	armor = 581.0,
+	energyUsage = 2.0,
+	maxEnergy = 27355.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_rss_advanced, "object/tangible/ship/components/reactor/rct_rss_advanced.iff")

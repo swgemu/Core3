@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_novaldex_advanced_droid_interface = object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 19508.0,
+	hitpoints = 1107.0,
+	armor = 557.0,
+	energyUsage = 502.0,
+	droidSpeed = 18.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_novaldex_advanced_droid_interface, "object/tangible/ship/components/droid_interface/ddi_novaldex_advanced_droid_interface.iff")

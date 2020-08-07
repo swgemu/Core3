@@ -11,6 +11,8 @@
 #include "server/zone/managers/crafting/ComponentMap.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 
+#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 class ObjectCommand : public QueueCommand {
 public:
@@ -34,7 +36,15 @@ public:
 			String commandType;
 			args.getStringToken(commandType);
 
-			if (commandType.beginsWith("createitem")) {
+			if (commandType.beginsWith("createship")) {
+				ManagedReference<ShipObject*> ship = ShipManager::instance()->generateImperialNewbieShip(NULL);
+				Zone* zone = creature->getZone();
+				if (zone != NULL) {
+					Locker locker(ship);
+					ship->initializePosition(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ());
+					zone->transferObject(ship, -1, true);
+				}
+			} else if (commandType.beginsWith("createitem")) {
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
 

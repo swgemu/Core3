@@ -43,6 +43,20 @@
 
 object_ship_rebel_gunboat_tier3 = object_ship_shared_rebel_gunboat_tier3:new {
 
+	name = "rebel_gunboat_tier3",
+	slideFactor = 1.76,
+	chassisHitpoints = 12000,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 10274.32, armor = 10665.58,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 10337.58, armor = 10676.53, speed = 42.75221, pitch = 23.84349, roll = 30.02824, yaw = 18.76913, acceleration = 10.74359, rollRate = 55.20356, pitchRate = 47.02589, deceleration = 8.837842, yawRate = 39.92463,},
+	shield_0 = { name = "shd_generic", hitpoints = 10742.18, armor = 10505.14, regen = 13.58685, front = 42798.16, back = 41652.6,},
+	armor_0 = { name = "arm_generic", hitpoints = 22343.97, armor = 22299.9,},
+	armor_1 = { name = "arm_generic", hitpoints = 22320.88, armor = 22498.42,},
+	capacitor = { name = "cap_generic", hitpoints = 10631.83, armor = 10263.94, rechargeRate = 96.24628, energy = 4937.143,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 10382.89, armor = 10661.86, rate = 0.7604854, drain = 0.9592716, maxDamage = 397.7962, shieldEfficiency = 0.5366882, minDamage = 271.4058, ammo = 0, ammo_type = 0, armorEfficiency = 0.5341818,},
+	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 10590.64, armor = 10732.33, rate = 0.7754498, drain = 0.9541319, maxDamage = 387.453, shieldEfficiency = 0.5457196, minDamage = 276.358, ammo = 0, ammo_type = 0, armorEfficiency = 0.5362667,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 10312.72, armor = 10754.29, rate = 0.7475817, drain = 0.9682286, maxDamage = 402.331, shieldEfficiency = 0.5462911, minDamage = 268.8446, ammo = 0, ammo_type = 0, armorEfficiency = 0.5389304,},
+	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 10776, armor = 10261.51, rate = 2.86453, drain = 0.9526157, maxDamage = 1173.166, shieldEfficiency = 0.7473319, minDamage = 534.4631, ammo = 4, ammo_type = 18, armorEfficiency = 0.7199593,},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_gunboat_tier3, "object/ship/rebel_gunboat_tier3.iff")

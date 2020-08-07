@@ -43,6 +43,17 @@
 
 object_ship_z95_tier2 = object_ship_shared_z95_tier2:new {
 
+	name = "z95_tier2",
+	slideFactor = 1.84,
+	chassisHitpoints = 600,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 440.7987, armor = 445.9872,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 438.3741, armor = 443.3789, speed = 45.74054, pitch = 23.20255, roll = 28.0647, yaw = 18.07193, acceleration = 11.42927, rollRate = 52.44942, pitchRate = 46.82407, deceleration = 8.835044, yawRate = 37.80058,},
+	shield_0 = { name = "shd_generic", hitpoints = 441.599, armor = 442.5183, regen = 5.231143, front = 1913.943, back = 1953.731,},
+	armor_0 = { name = "arm_generic", hitpoints = 729.6221, armor = 755.8477,},
+	armor_1 = { name = "arm_generic", hitpoints = 736.4781, armor = 746.6008,},
+	capacitor = { name = "cap_generic", hitpoints = 449.4066, armor = 444.8651, rechargeRate = 95.57732, energy = 4831.352,},
+	weapon_0 = { name = "wpn_z95_blaster", hitpoints = 440.9713, armor = 443.8295, rate = 0.7714736, drain = 0.9793235, maxDamage = 79.83333, shieldEfficiency = 0.5581539, minDamage = 59.24998, ammo = 0, ammo_type = 0, armorEfficiency = 0.5562814,},
 }
 
 ObjectTemplates:addTemplate(object_ship_z95_tier2, "object/ship/z95_tier2.iff")

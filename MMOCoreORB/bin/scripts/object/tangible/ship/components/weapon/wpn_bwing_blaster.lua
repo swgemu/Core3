@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_bwing_blaster = object_tangible_ship_components_weapon_shared_wpn_bwing_blaster:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1759.0,
+	hitpoints = 188.0,
+	armor = 99.0,
+	energyUsage = 2004.0,
+	minDamage = 365.0,
+	maxDamage = 490.0,
+	refireRate = 10.0,
+	energyPerShot = 30.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_bwing_blaster, "object/tangible/ship/components/weapon/wpn_bwing_blaster.iff")

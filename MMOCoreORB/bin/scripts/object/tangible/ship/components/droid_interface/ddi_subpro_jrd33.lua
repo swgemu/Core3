@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_subpro_jrd33 = object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 1250.0,
+	hitpoints = 350.0,
+	armor = 181.0,
+	energyUsage = 500.0,
+	droidSpeed = 34.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_subpro_jrd33, "object/tangible/ship/components/droid_interface/ddi_subpro_jrd33.iff")

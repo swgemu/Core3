@@ -26,6 +26,7 @@ public:
 	void parse(Message* message) {
 		message->shiftOffset(4);
 		terminalObjectID = message->parseLong();
+		Logger::console.info("Incoming Terminal ID: " + String::valueOf(terminalObjectID), true);
 	}
 
 	void run() {
@@ -45,8 +46,10 @@ public:
 			return;
 		}
 
-		JtlShipListResponse* resp = new JtlShipListResponse(player, invokedObject);
-		player->sendMessage(resp);
+		Core::getTaskManager()->scheduleTask([=]{
+			JtlShipListResponse* resp = new JtlShipListResponse(player, invokedObject);
+			player->sendMessage(resp);
+		}, "Im_out_of_ideas", 250);
 	}
 };
 

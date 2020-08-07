@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mission_reward_rebel_qualdex_battery_array = object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 8927.0,
+	hitpoints = 911.0,
+	armor = 460.0,
+	energyUsage = 1050.0,
+	rechargeRate = 38.0,
+	rechargeRateMod = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mission_reward_rebel_qualdex_battery_array, "object/tangible/ship/components/weapon_capacitor/cap_mission_reward_rebel_qualdex_battery_array.iff")

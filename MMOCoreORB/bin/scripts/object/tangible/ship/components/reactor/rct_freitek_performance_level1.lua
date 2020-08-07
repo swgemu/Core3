@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_freitek_performance_level1 = object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2312.0,
+	hitpoints = 228.0,
+	armor = 119.0,
+	energyUsage = 1.0,
+	maxEnergy = 10004.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_freitek_performance_level1, "object/tangible/ship/components/reactor/rct_freitek_performance_level1.iff")

@@ -9,55 +9,39 @@
 #define JTLSHIPLISTRESPONSE_H_
 
 #include "ObjectControllerMessage.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 //TODO: This is very unsafe still...
 class JtlShipListResponse : public ObjectControllerMessage {
 public:
 	JtlShipListResponse(CreatureObject* creo, SceneObject* terminal)
-		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x41D) {
-
-		insertInt(0); // size
+		: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x41D) {
 
 
-		SceneObject* datapad = creo->getSlottedObject("datapad");
+			PlayerObject* ghost = creo->getPlayerObject();
+			if (ghost == nullptr)
+				return;
 
-		//int offs = getOffset();
+			int numShips = 0;
+			Vector<Reference<ShipObject*>> ships;
+			for (int i=0; i<ghost->getNumShips(); i++) {
+				ManagedReference<ShipObject*> ship = ghost->getShip(i).get();
+				if (ship != nullptr)
+					ships.add(ship);
+			}
 
-		//insertInt(2);
-
-		//insertLong(terminal->getObjectID());
-
-		/* TODO: Better method of this.
-		ManagedReference<ActiveArea*> region = terminal->getActiveRegion();
-
-		if (region != nullptr && region->isRegion())
-			insertAscii(region->getDisplayedName());
-		else
-			insertAscii(terminal->getZone()->getZoneName());
-		*/
-
-		/*
-		insertAscii("cRush Rocks");
-
-		VectorMap<uint64, ManagedReference<SceneObject*> >* datapadObjects = datapad->getContainerObjects();
-
-		for (int i = 0; i < datapadObjects->size(); ++i) {
-			ManagedReference<SceneObject*> datapadObject = datapadObjects->get(i);
-
-			if (datapadObject->getGameObjectType() == SceneObjectType::SHIPCONTROLDEVICE) {
-				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
-
-				if (shipControlDevice->getControlledObject() != nullptr) {
-					ManagedReference<ShipObject*> ship = cast<ShipObject*>( shipControlDevice->getControlledObject());
-
-					insertLong(ship->getObjectID());
-					insertAscii("cRush Rocks"); //TODO: Fix to retrieve ship->getParkedLocation();
-				}
+			insertInt(ships.size()+1); // size
+			Logger::console.info("Outgoing Terminal ID: " + String::valueOf(terminal->getObjectID()), true);
+			insertLong(terminal->getObjectID());
+			insertAscii("tatooine");
+			for (auto &ship : ships) {
+				Logger::console.info("Outgoing ship ID: " + String::valueOf(ship->getObjectID()), true);
+				insertLong(ship->getObjectID());
+				insertAscii("tatooine");
 			}
 		}
-		*/
-	}
 };
 
 #endif /* JTLSHIPLISTRESPONSE_H_ */

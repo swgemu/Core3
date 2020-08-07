@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_incom_elite = object_tangible_ship_components_reactor_shared_rct_incom_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62041.0,
+	hitpoints = 1655.0,
+	armor = 834.0,
+	energyUsage = 9.0,
+	maxEnergy = 28002.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_incom_elite, "object/tangible/ship/components/reactor/rct_incom_elite.iff")

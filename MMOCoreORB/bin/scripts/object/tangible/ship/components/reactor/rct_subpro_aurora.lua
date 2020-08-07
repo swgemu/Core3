@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_subpro_aurora = object_tangible_ship_components_reactor_shared_rct_subpro_aurora:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14424.0,
+	hitpoints = 1055.0,
+	armor = 531.0,
+	energyUsage = 4.0,
+	maxEnergy = 20203.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_subpro_aurora, "object/tangible/ship/components/reactor/rct_subpro_aurora.iff")

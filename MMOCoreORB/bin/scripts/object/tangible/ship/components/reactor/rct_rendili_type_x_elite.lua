@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_rendili_type_x_elite = object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62040.0,
+	hitpoints = 1656.0,
+	armor = 834.0,
+	energyUsage = 0.0,
+	maxEnergy = 28004.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_rendili_type_x_elite, "object/tangible/ship/components/reactor/rct_rendili_type_x_elite.iff")

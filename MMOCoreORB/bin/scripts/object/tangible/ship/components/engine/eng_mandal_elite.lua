@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mandal_elite = object_tangible_ship_components_engine_shared_eng_mandal_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 54998.0,
+	hitpoints = 1104.0,
+	armor = 555.0,
+	energyUsage = 1506.0,
+	speed = 93.0,
+	pitch = 80.0,
+	yaw = 74.0,
+	roll = 73.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mandal_elite, "object/tangible/ship/components/engine/eng_mandal_elite.iff")

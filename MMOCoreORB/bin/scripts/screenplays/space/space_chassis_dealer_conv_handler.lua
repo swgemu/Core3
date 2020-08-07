@@ -46,8 +46,17 @@ function chassis_dealer_conv_handler:purchaseChassisConfirmation(pPlayer, pSui, 
 
 	local possibleBlueprints = ChassisDealer:getValidBlueprints(pPlayer)
 	local selectedBluePrint = possibleBlueprints[selection][1]
+	CreatureObject(pPlayer):sendSystemMessage("selectedBluePrint is " ..selectedBluePrint)
 	local path = ChassisDealer:getPathByName(selectedBluePrint)
 
+  if (path == nil) then
+  	CreatureObject(pPlayer):sendSystemMessage("path is nil for some reason")
+  end
+
+  if (pInventory == nil) then
+  	CreatureObject(pPlayer):sendSystemMessage("pInventory is nil for some reason")
+  end
+  
 	if (path == nil or pInventory == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@chassis_npc:failed")
 	else

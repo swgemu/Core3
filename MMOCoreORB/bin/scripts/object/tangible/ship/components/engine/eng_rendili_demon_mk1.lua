@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_rendili_demon_mk1 = object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6193.0,
+	hitpoints = 636.0,
+	armor = 320.0,
+	energyUsage = 1658.0,
+	speed = 53.0,
+	pitch = 55.0,
+	yaw = 53.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rendili_demon_mk1, "object/tangible/ship/components/engine/eng_rendili_demon_mk1.iff")

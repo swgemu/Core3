@@ -148,6 +148,25 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
 
+        try {
+            LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
+            loadJTLData(&travelPoints);
+            travelPoints.pop();
+
+            LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
+            if (!launchLocation.isValidTable())
+                return;
+
+            jtlZoneName = launchLocation.getStringAt(1);
+            float x = launchLocation.getFloatAt(2);
+            float y = launchLocation.getFloatAt(3);
+            float z = launchLocation.getFloatAt(4);
+            jtlLaunchLocation = Vector3(x, y, z);
+            launchLocation.pop();
+        } catch (Exception e) {
+            error(e.getMessage());
+        }
+
 		loadSnapshotObjects();
 
 		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
@@ -201,6 +220,25 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = nullptr;
+}
+
+void PlanetManagerImplementation::loadJTLData(LuaObject* luaObject) {
+	if (!luaObject->isValidTable())
+		return;
+//
+	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
+        lua_State *L = luaObject->getLuaState();
+        lua_rawgeti(L, -1, i);
+
+        LuaObject location(L);
+
+        String locationName = location.getStringAt(1);
+        float x = location.getFloatAt(2);
+        float y = location.getFloatAt(3);
+        float z = location.getFloatAt(4);
+        jtlTravelDestinations.put(locationName, Vector3(x, y, z));
+        location.pop();
+    }
 }
 
 void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
@@ -1328,4 +1366,8 @@ int PlanetManagerImplementation::destroyAllEventObjects() {
 	}
 
 	return counter;
+}
+
+Vector3 PlanetManagerImplementation::getJTLLaunchLocation() {
+    return jtlLaunchLocation;
 }

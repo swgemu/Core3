@@ -43,6 +43,18 @@
 
 object_ship_spacestation_imperial = object_ship_shared_spacestation_imperial:new {
 
+	name = "spacestation_imperial",
+	slideFactor = 1.76,
+	chassisHitpoints = 30000,
+	chassisMass = 50000,
+	reactor = { name = "rct_generic", hitpoints = 4784.225, armor = 1987.221,},
+	shield_0 = { name = "shd_generic", hitpoints = 9607.81, armor = 2988.824, regen = 49.31623, front = 5947.377, back = 5963.385,},
+	shield_1 = { name = "shd_generic", hitpoints = 4789.996, armor = 2978.286, regen = 38.73238, front = 2996.965, back = 2987.196,},
+	armor_0 = { name = "arm_generic", hitpoints = 4885.021, armor = 4808.957,},
+	armor_1 = { name = "arm_generic", hitpoints = 4885.804, armor = 4953.121,},
+	capacitor = { name = "cap_generic", hitpoints = 4852.163, armor = 961.3992, rechargeRate = 126.975, energy = 2322.189,},
+	bridge = { name = "bdg_generic", hitpoints = 1956.12, armor = 1916.21,},
+	hangar = { name = "hgr_generic", hitpoints = 1933.855, armor = 1997.672,},
 }
 
 ObjectTemplates:addTemplate(object_ship_spacestation_imperial, "object/ship/spacestation_imperial.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_alderaan_royal_plate = object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3863.0,
+	hitpoints = 488.0,
+	armor = 489.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_alderaan_royal_plate, "object/tangible/ship/components/armor/armor_alderaan_royal_plate.iff")

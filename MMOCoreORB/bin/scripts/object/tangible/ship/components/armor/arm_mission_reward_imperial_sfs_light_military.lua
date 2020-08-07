@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mission_reward_imperial_sfs_light_military = object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 2049.0,
+	hitpoints = 469.0,
+	armor = 464.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_imperial_sfs_light_military, "object/tangible/ship/components/armor/arm_mission_reward_imperial_sfs_light_military.iff")

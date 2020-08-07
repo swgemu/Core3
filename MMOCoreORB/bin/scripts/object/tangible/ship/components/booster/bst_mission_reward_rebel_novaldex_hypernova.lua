@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_mission_reward_rebel_novaldex_hypernova = object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex_hypernova:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3158.0,
+	hitpoints = 673.0,
+	armor = 337.0,
+	energyUsage = 455.0,
+	speed = 35.0,
+	maxEnergy = 1987.0,
+	rechargeRate = 53.0,
+	boosterDrain = 206.0,
+	boosterAccel = 37.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_rebel_novaldex_hypernova, "object/tangible/ship/components/booster/bst_mission_reward_rebel_novaldex_hypernova.iff")

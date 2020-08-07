@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kessel_imperial_rendili_hyperion_drive = object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 40374.0,
+	hitpoints = 1102.0,
+	armor = 559.0,
+	energyUsage = 1809.0,
+	speed = 76.0,
+	pitch = 62.0,
+	yaw = 64.0,
+	roll = 63.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kessel_imperial_rendili_hyperion_drive, "object/tangible/ship/components/engine/eng_kessel_imperial_rendili_hyperion_drive.iff")

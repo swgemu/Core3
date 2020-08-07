@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_qualdex_small_kyromaster = object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 906.0,
+	hitpoints = 145.0,
+	armor = 80.0,
+	energyUsage = 1426.0,
+	speed = 46.0,
+	pitch = 50.0,
+	yaw = 48.0,
+	roll = 48.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_qualdex_small_kyromaster, "object/tangible/ship/components/engine/eng_qualdex_small_kyromaster.iff")

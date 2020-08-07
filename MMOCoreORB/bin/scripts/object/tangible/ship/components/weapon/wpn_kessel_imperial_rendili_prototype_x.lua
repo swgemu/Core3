@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kessel_imperial_rendili_prototype_x = object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42906.0,
+	hitpoints = 999.0,
+	armor = 498.0,
+	energyUsage = 2401.0,
+	minDamage = 1985.0,
+	maxDamage = 3213.0,
+	refireRate = 7.0,
+	energyPerShot = 33.0,
+	shieldEffectiveness = 7.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_imperial_rendili_prototype_x, "object/tangible/ship/components/weapon/wpn_kessel_imperial_rendili_prototype_x.iff")

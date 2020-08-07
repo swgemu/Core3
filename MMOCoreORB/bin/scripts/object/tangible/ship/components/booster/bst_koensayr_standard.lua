@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_koensayr_standard = object_tangible_ship_components_booster_shared_bst_koensayr_standard:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2102.0,
+	hitpoints = 352.0,
+	armor = 178.0,
+	energyUsage = 534.0,
+	speed = 19.0,
+	maxEnergy = 1107.0,
+	rechargeRate = 33.0,
+	boosterDrain = 113.0,
+	boosterAccel = 28.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_koensayr_standard, "object/tangible/ship/components/booster/bst_koensayr_standard.iff")

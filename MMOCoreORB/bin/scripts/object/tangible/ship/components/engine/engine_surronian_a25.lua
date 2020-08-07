@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_surronian_a25 = object_tangible_ship_components_engine_shared_engine_surronian_a25:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2251.0,
+	hitpoints = 335.0,
+	armor = 171.0,
+	energyUsage = 1507.0,
+	speed = 48.0,
+	pitch = 51.0,
+	yaw = 48.0,
+	roll = 47.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_surronian_a25, "object/tangible/ship/components/engine/engine_surronian_a25.iff")

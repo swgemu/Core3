@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_sds_imperial_finest = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56408.0,
+	hitpoints = 1658.0,
+	armor = 830.0,
+	energyUsage = 1201.0,
+	rechargeRate = 48.0,
+	rechargeRateMod = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_sds_imperial_finest, "object/tangible/ship/components/weapon_capacitor/cap_kessel_imperial_sds_imperial_finest.iff")

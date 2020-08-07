@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_subpro_advanced_cannon = object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6876.0,
+	hitpoints = 637.0,
+	armor = 321.0,
+	energyUsage = 2207.0,
+	minDamage = 1081.0,
+	maxDamage = 1593.0,
+	refireRate = 6.0,
+	energyPerShot = 25.0,
+	shieldEffectiveness = 7.0,
+	armorEffectiveness = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_subpro_advanced_cannon, "object/tangible/ship/components/weapon/wpn_subpro_advanced_cannon.iff")

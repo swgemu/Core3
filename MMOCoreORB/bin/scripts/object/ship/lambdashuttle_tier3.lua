@@ -43,6 +43,18 @@
 
 object_ship_lambdashuttle_tier3 = object_ship_shared_lambdashuttle_tier3:new {
 
+	name = "lambdashuttle_tier3",
+	slideFactor = 1.74,
+	chassisHitpoints = 3600,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2054.966, armor = 2111.472,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2054.868, armor = 2089.759, speed = 42.38141, pitch = 23.60909, roll = 29.37815, yaw = 18.79306, acceleration = 10.66354, rollRate = 54.07703, pitchRate = 47.77102, deceleration = 8.903277, yawRate = 40.59714,},
+	shield_0 = { name = "shd_generic", hitpoints = 2122.186, armor = 2097.433, regen = 18.01411, front = 16667.97, back = 16843.17,},
+	armor_0 = { name = "arm_generic", hitpoints = 6644.055, armor = 6723.215,},
+	armor_1 = { name = "arm_generic", hitpoints = 6616.647, armor = 6774.833,},
+	capacitor = { name = "cap_generic", hitpoints = 2095.551, armor = 2099.49, rechargeRate = 96.75986, energy = 4844.713,},
+	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 2116.935, armor = 2078.662, rate = 0.7493284, drain = 0.9563532, maxDamage = 276.0558, shieldEfficiency = 0.5570046, minDamage = 190.2787, ammo = 0, ammo_type = 0, armorEfficiency = 0.5598789,},
+	weapon_1 = { name = "wpn_tieadvanced_blaster", hitpoints = 2085.622, armor = 2075.806, rate = 0.7663828, drain = 0.9840569, maxDamage = 279.5765, shieldEfficiency = 0.5435246, minDamage = 193.5923, ammo = 0, ammo_type = 0, armorEfficiency = 0.5490316,},
 }
 
 ObjectTemplates:addTemplate(object_ship_lambdashuttle_tier3, "object/ship/lambdashuttle_tier3.iff")
