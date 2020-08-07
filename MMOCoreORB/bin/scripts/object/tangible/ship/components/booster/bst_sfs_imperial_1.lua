@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_sfs_imperial_1 = object_tangible_ship_components_booster_shared_bst_sfs_imperial_1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 804.0,
+	hitpoints = 152.0,
+	armor = 77.0,
+	energyUsage = 501.0,
+	speed = 21.0,
+	maxEnergy = 1008.0,
+	rechargeRate = 26.0,
+	boosterDrain = 101.0,
+	boosterAccel = 28.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sfs_imperial_1, "object/tangible/ship/components/booster/bst_sfs_imperial_1.iff")

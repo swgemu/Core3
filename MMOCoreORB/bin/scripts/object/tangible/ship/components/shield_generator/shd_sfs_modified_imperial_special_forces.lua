@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_sfs_modified_imperial_special_forces = object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 21458.0,
+	hitpoints = 939.0,
+	armor = 469.0,
+	energyUsage = 2937.0,
+	shieldFront = 1250.0,
+	shieldRear = 1250.0,
+	rechargeRate = 16.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_sfs_modified_imperial_special_forces, "object/tangible/ship/components/shield_generator/shd_sfs_modified_imperial_special_forces.iff")

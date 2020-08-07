@@ -63,6 +63,9 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	transferObject(controlledObject, 4, true);
 	
+	// ToDo: this should of course take the planet that is currently orbited and the landing locations from somewhere
+	player->switchZone("tatooine", 3534, 5, -4803, 0);
+
 	updateStatus(0);
 }
 

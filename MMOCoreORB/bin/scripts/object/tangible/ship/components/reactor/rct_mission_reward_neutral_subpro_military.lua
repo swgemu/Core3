@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mission_reward_neutral_subpro_military = object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14425.0,
+	hitpoints = 1242.0,
+	armor = 624.0,
+	energyUsage = 8.0,
+	maxEnergy = 19009.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mission_reward_neutral_subpro_military, "object/tangible/ship/components/reactor/rct_mission_reward_neutral_subpro_military.iff")

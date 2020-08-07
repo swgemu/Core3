@@ -43,6 +43,17 @@
 
 object_ship_tieadvanced_tier3 = object_ship_shared_tieadvanced_tier3:new {
 
+	name = "tieadvanced_tier3",
+	slideFactor = 1.76,
+	chassisHitpoints = 1440,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 1282.249, armor = 1256.177,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 1245.583, armor = 1265.61, speed = 44.37777, pitch = 23.32588, roll = 29.06681, yaw = 18.8111, acceleration = 10.44071, rollRate = 53.01935, pitchRate = 47.86562, deceleration = 9.088488, yawRate = 39.3404,},
+	shield_0 = { name = "shd_generic", hitpoints = 1234.764, armor = 1249.142, regen = 10.85143, front = 5102.762, back = 5027.613,},
+	armor_0 = { name = "arm_generic", hitpoints = 2726.712, armor = 2674.76,},
+	armor_1 = { name = "arm_generic", hitpoints = 2635.573, armor = 2728.102,},
+	capacitor = { name = "cap_generic", hitpoints = 1247.164, armor = 1265.883, rechargeRate = 95.36397, energy = 4915.364,},
+	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 1260.331, armor = 1279.49, rate = 0.7717382, drain = 0.9803177, maxDamage = 192.7638, shieldEfficiency = 0.5559489, minDamage = 126.7316, ammo = 0, ammo_type = 0, armorEfficiency = 0.541214,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieadvanced_tier3, "object/ship/tieadvanced_tier3.iff")

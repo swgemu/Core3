@@ -26,6 +26,9 @@
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/ship/ShipManager.h"
+
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -467,6 +470,31 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 
 				if (accountPermissionLevel > 0 && (accountPermissionLevel == 9 || accountPermissionLevel == 10 || accountPermissionLevel == 12 || accountPermissionLevel == 15)) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
+
+					ManagedReference<ShipControlDevice*> shipControlDevice = zoneServer.get()->createObject(STRING_HASHCODE("object/intangible/ship/xwing_pcd.iff"), 1).castTo<ShipControlDevice*>();
+//					ShipObject* ship = (ShipObject*) zoneServer.get()->createObject(STRING_HASHCODE("object/ship/player/player_sorosuub_space_yacht.iff"), 1);
+					ManagedReference<ShipObject*> ship = ShipManager::instance()->generateImperialNewbieShip(playerCreature);
+							//zoneServer.get()->createObject(STRING_HASHCODE("object/ship/player/player_firespray.iff"), 1).castTo<ShipObject*>();
+
+                    {
+                    Locker temp(shipControlDevice);
+					shipControlDevice->setControlledObject(ship);
+
+					if (!shipControlDevice->transferObject(ship, 4))
+						info("Adding of ship to device failed");
+                    }
+
+					ManagedReference<SceneObject*> datapad = playerCreature->getSlottedObject("datapad");
+
+					if (datapad != nullptr) {
+						if (!datapad->transferObject(shipControlDevice, -1)) {
+							shipControlDevice->destroyObjectFromDatabase(true);
+						}
+						ghost->addShip(ship);
+					} else {
+						shipControlDevice->destroyObjectFromDatabase(true);
+						error("could not get datapad from player");
+					}
 				}
 
 				if (accountPermissionLevel < 9) {

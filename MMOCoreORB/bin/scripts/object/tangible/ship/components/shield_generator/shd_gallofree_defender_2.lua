@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_gallofree_defender_2 = object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 43553.0,
+	hitpoints = 1288.0,
+	armor = 651.0,
+	energyUsage = 2934.0,
+	shieldFront = 1655.0,
+	shieldRear = 1664.0,
+	rechargeRate = 17.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_gallofree_defender_2, "object/tangible/ship/components/shield_generator/shd_gallofree_defender_2.iff")

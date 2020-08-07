@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_mandal_jbj_mk4 = object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 14361.0,
+	hitpoints = 938.0,
+	armor = 474.0,
+	energyUsage = 581.0,
+	speed = 25.0,
+	maxEnergy = 1336.0,
+	rechargeRate = 34.0,
+	boosterDrain = 141.0,
+	boosterAccel = 30.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mandal_jbj_mk4, "object/tangible/ship/components/booster/bst_mandal_jbj_mk4.iff")

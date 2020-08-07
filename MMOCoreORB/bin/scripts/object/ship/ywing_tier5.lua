@@ -43,6 +43,19 @@
 
 object_ship_ywing_tier5 = object_ship_shared_ywing_tier5:new {
 
+	name = "ywing_tier5",
+	slideFactor = 1.77,
+	chassisHitpoints = 2457.6,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 3039.583, armor = 3172.738,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 3121.654, armor = 3082.443, speed = 45.22293, pitch = 25.41153, roll = 31.63075, yaw = 19.58229, acceleration = 10.97593, rollRate = 56.17588, pitchRate = 49.40057, deceleration = 9.639746, yawRate = 42.21022,},
+	shield_0 = { name = "shd_generic", hitpoints = 3182.095, armor = 3054.777, regen = 22.61085, front = 12318.9, back = 12342.98,},
+	armor_0 = { name = "arm_generic", hitpoints = 7267.925, armor = 7442.641,},
+	armor_1 = { name = "arm_generic", hitpoints = 7263.388, armor = 7431.481,},
+	capacitor = { name = "cap_generic", hitpoints = 3112.3, armor = 3058.153, rechargeRate = 96.65614, energy = 4916.424,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 3178.907, armor = 3142.522, rate = 0.7687958, drain = 0.9775272, maxDamage = 313.2766, shieldEfficiency = 0.5341775, minDamage = 194.762, ammo = 0, ammo_type = 0, armorEfficiency = 0.5332128,},
+	weapon_1 = { name = "wpn_slayn_ioncannon", hitpoints = 3183.512, armor = 3137.773, rate = 0.7625586, drain = 0.9823328, maxDamage = 316.5932, shieldEfficiency = 0.5556786, minDamage = 198.4426, ammo = 0, ammo_type = 0, armorEfficiency = 0.5345286,},
+	weapon_2 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 3149.43, armor = 3147.201, rate = 2.924803, drain = 0.9735604, maxDamage = 982.0332, shieldEfficiency = 0.7405556, minDamage = 401.7298, ammo = 4, ammo_type = 20, armorEfficiency = 0.7193879,},
 }
 
 ObjectTemplates:addTemplate(object_ship_ywing_tier5, "object/ship/ywing_tier5.iff")

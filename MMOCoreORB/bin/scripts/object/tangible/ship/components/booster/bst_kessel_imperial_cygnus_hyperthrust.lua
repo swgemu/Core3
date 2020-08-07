@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kessel_imperial_cygnus_hyperthrust = object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hyperthrust:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37441.0,
+	hitpoints = 1107.0,
+	armor = 559.0,
+	energyUsage = 603.0,
+	speed = 26.0,
+	maxEnergy = 1468.0,
+	rechargeRate = 40.0,
+	boosterDrain = 153.0,
+	boosterAccel = 31.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_imperial_cygnus_hyperthrust, "object/tangible/ship/components/booster/bst_kessel_imperial_cygnus_hyperthrust.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_seinar_coated_plasteel = object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 885.0,
+	hitpoints = 176.0,
+	armor = 174.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_seinar_coated_plasteel, "object/tangible/ship/components/armor/armor_seinar_coated_plasteel.iff")

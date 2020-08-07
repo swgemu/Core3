@@ -43,6 +43,18 @@
 
 object_ship_player_player_basic_hutt_light = object_ship_player_shared_player_basic_hutt_light:new {
 
+	name = "player_basic_hutt_light",
+	slideFactor = 1.95,
+	chassisHitpoints = 400,
+	chassisMass = 5000,
+	reactor = { name = "rct_z95_basic", hitpoints = 195.7923, armor = 95.29742,},
+	engine = { name = "eng_z95_basic", hitpoints = 197.2977, armor = 96.48777, speed = 41.97808, pitch = 46.45346, roll = 50.12757, yaw = 47.75044, acceleration = 13.487, rollRate = 72.95708, pitchRate = 70.98392, deceleration = 12.42272, yawRate = 69.62978,},
+	shield_0 = { name = "shd_z95_basic", hitpoints = 194.8111, armor = 95.15244, regen = 1.983407, front = 291.2292, back = 294.0934,},
+	armor_0 = { name = "armor_z95_basic", hitpoints = 240.3752, armor = 248.0597,},
+	armor_1 = { name = "armor_z95_basic", hitpoints = 239.5695, armor = 244.7753,},
+	capacitor = { name = "cap_z95_basic", hitpoints = 190.138, armor = 99.76407, rechargeRate = 19.37333, energy = 498.4818,},
+	droid_interface = { name = "ddi_z95_basic", hitpoints = 196.5276, armor = 99.76324,},
+	weapon_0 = { name = "wpn_z95_basic", hitpoints = 191.6508, armor = 97.84093, rate = 0.3363926, drain = 16.67389, maxDamage = 415.008, shieldEfficiency = 0, minDamage = 326.0522, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_basic_hutt_light, "object/ship/player/player_basic_hutt_light.iff")

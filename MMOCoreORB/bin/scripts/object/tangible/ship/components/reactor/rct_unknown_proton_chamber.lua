@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_unknown_proton_chamber = object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14429.0,
+	hitpoints = 959.0,
+	armor = 483.0,
+	energyUsage = 2.0,
+	maxEnergy = 21004.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_unknown_proton_chamber, "object/tangible/ship/components/reactor/rct_unknown_proton_chamber.iff")

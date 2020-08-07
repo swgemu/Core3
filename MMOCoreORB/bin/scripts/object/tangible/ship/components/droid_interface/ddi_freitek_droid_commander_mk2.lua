@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_freitek_droid_commander_mk2 = object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 5472.0,
+	hitpoints = 954.0,
+	armor = 480.0,
+	energyUsage = 509.0,
+	droidSpeed = 21.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_freitek_droid_commander_mk2, "object/tangible/ship/components/droid_interface/ddi_freitek_droid_commander_mk2.iff")

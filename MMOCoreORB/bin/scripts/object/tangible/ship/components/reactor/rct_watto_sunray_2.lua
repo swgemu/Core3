@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_watto_sunray_2 = object_tangible_ship_components_reactor_shared_rct_watto_sunray_2:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2315.0,
+	hitpoints = 256.0,
+	armor = 124.0,
+	energyUsage = 4.0,
+	maxEnergy = 10500.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_watto_sunray_2, "object/tangible/ship/components/reactor/rct_watto_sunray_2.iff")

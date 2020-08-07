@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_gyrhil_auto_blaster = object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31401.0,
+	hitpoints = 1170.0,
+	armor = 593.0,
+	energyUsage = 2308.0,
+	minDamage = 1995.0,
+	maxDamage = 3085.0,
+	refireRate = 4.0,
+	energyPerShot = 37.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_gyrhil_auto_blaster, "object/tangible/ship/components/weapon/wpn_gyrhil_auto_blaster.iff")

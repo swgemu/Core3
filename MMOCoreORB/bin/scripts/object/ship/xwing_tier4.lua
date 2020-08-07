@@ -43,6 +43,17 @@
 
 object_ship_xwing_tier4 = object_ship_shared_xwing_tier4:new {
 
+	name = "xwing_tier4",
+	slideFactor = 1.82,
+	chassisHitpoints = 2112,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2199.963, armor = 2248.208,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2208.172, armor = 2212.597, speed = 44.75935, pitch = 24.20215, roll = 30.52634, yaw = 19.05796, acceleration = 10.64928, rollRate = 56.84783, pitchRate = 48.40015, deceleration = 9.399098, yawRate = 40.06662,},
+	shield_0 = { name = "shd_generic", hitpoints = 2260.249, armor = 2270.406, regen = 16.0259, front = 8985.227, back = 8771.726,},
+	armor_0 = { name = "arm_generic", hitpoints = 4326.296, armor = 4239.774,},
+	armor_1 = { name = "arm_generic", hitpoints = 4340.269, armor = 4389.762,},
+	capacitor = { name = "cap_generic", hitpoints = 2247.919, armor = 2263.257, rechargeRate = 97.0752, energy = 4789.32,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 2233.444, armor = 2246.856, rate = 0.7515899, drain = 0.9857258, maxDamage = 273.716, shieldEfficiency = 0.5451456, minDamage = 180.0491, ammo = 0, ammo_type = 0, armorEfficiency = 0.5505669,},
 }
 
 ObjectTemplates:addTemplate(object_ship_xwing_tier4, "object/ship/xwing_tier4.iff")

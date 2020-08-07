@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_seinar_reflector_elite = object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 3579.0,
+	hitpoints = 350.0,
+	armor = 178.0,
+	energyUsage = 2682.0,
+	shieldFront = 468.0,
+	shieldRear = 463.0,
+	rechargeRate = 13.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_reflector_elite, "object/tangible/ship/components/shield_generator/shd_seinar_reflector_elite.iff")

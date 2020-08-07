@@ -3454,7 +3454,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
-		if (!root->isBuildingObject())
+		if (!root->isBuildingObject() && !root->isShipObject())
 			return 1;
 
 		float length = Math::sqrt(newX * newX + newY * newY);

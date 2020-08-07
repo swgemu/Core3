@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_armek_ultra_collider = object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51485.0,
+	hitpoints = 1104.0,
+	armor = 553.0,
+	energyUsage = 9.0,
+	maxEnergy = 27605.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_armek_ultra_collider, "object/tangible/ship/components/reactor/rct_armek_ultra_collider.iff")

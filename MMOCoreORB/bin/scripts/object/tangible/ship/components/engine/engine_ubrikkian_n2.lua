@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_ubrikkian_n2 = object_tangible_ship_components_engine_shared_engine_ubrikkian_n2:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42121.0,
+	hitpoints = 1106.0,
+	armor = 560.0,
+	energyUsage = 1806.0,
+	speed = 71.0,
+	pitch = 61.0,
+	yaw = 68.0,
+	roll = 65.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_ubrikkian_n2, "object/tangible/ship/components/engine/engine_ubrikkian_n2.iff")

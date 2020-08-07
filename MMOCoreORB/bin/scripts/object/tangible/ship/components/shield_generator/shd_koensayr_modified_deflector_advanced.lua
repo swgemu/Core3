@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_koensayr_modified_deflector_advanced = object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 55771.0,
+	hitpoints = 1102.0,
+	armor = 551.0,
+	energyUsage = 3063.0,
+	shieldFront = 1469.0,
+	shieldRear = 1475.0,
+	rechargeRate = 18.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_koensayr_modified_deflector_advanced, "object/tangible/ship/components/shield_generator/shd_koensayr_modified_deflector_advanced.iff")

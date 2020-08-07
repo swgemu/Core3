@@ -43,6 +43,22 @@
 
 object_ship_player_player_xwing = object_ship_player_shared_player_xwing:new {
 
+	name = "player_xwing",
+	slideFactor = 1.95,
+	chassisHitpoints = 6000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 3162.779, armor = 1577.898,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 3100.646, armor = 1547.045, speed = 88.89402, pitch = 77.74859, roll = 76.08578, yaw = 74.17932, acceleration = 16.41803, rollRate = 70.87788, pitchRate = 70.40349, deceleration = 14.86729, yawRate = 71.43987,},
+	shield_0 = { name = "shd_generic", hitpoints = 3063.218, armor = 1535.663, regen = 29.77072, front = 9863.458, back = 9636.04,},
+	armor_0 = { name = "arm_generic", hitpoints = 7992.892, armor = 7736.91,},
+	armor_1 = { name = "arm_generic", hitpoints = 7840.671, armor = 7766.51,},
+	capacitor = { name = "cap_generic", hitpoints = 3077.529, armor = 1565.867, rechargeRate = 58.67234, energy = 1923.184,},
+	booster = { name = "bst_generic", hitpoints = 899.4767, armor = 879.5552, energy = 2385.906, acceleration = 19.44374, speed = 39.82451, energyUsage = 9.810509, rechargeRate = 58.34419,},
+	droid_interface = { name = "ddi_generic", hitpoints = 867.1381, armor = 874.595,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 3107.491, armor = 1575.777, rate = 0.3906129, drain = 19.53834, maxDamage = 5229.694, shieldEfficiency = 0, minDamage = 3970.184, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 3146.795, armor = 1583.318, rate = 0.3987256, drain = 19.05866, maxDamage = 5288.59, shieldEfficiency = 0, minDamage = 3967.771, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_xwing_missile_s01", hitpoints = 3062.799, armor = 1518.981, rate = 0.3114218, drain = 28.79232, maxDamage = 5132.656, shieldEfficiency = 0.870634, minDamage = 3871.577, ammo = 50, ammo_type = 5, armorEfficiency = 0.2198195,},
+	weapon_4 = { name = "wpn_std_countermeasure", hitpoints = 243.0028, armor = 247.8218, rate = 0.09622593, drain = 23.41949, maxDamage = 97.17074, shieldEfficiency = 0, minDamage = 24.89145, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_xwing, "object/ship/player/player_xwing.iff")

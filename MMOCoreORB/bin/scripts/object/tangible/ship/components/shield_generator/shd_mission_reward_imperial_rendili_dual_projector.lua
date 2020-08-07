@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_imperial_rendili_dual_projector = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 6263.0,
+	hitpoints = 527.0,
+	armor = 261.0,
+	energyUsage = 2689.0,
+	shieldFront = 908.0,
+	shieldRear = 901.0,
+	rechargeRate = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_imperial_rendili_dual_projector, "object/tangible/ship/components/shield_generator/shd_mission_reward_imperial_rendili_dual_projector.iff")

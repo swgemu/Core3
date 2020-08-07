@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_incom_elite = object_tangible_ship_components_droid_interface_shared_ddi_incom_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 23505.0,
+	hitpoints = 1659.0,
+	armor = 826.0,
+	energyUsage = 504.0,
+	droidSpeed = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_incom_elite, "object/tangible/ship/components/droid_interface/ddi_incom_elite.iff")

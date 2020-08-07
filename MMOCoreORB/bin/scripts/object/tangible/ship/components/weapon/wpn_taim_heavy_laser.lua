@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_taim_heavy_laser = object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31395.0,
+	hitpoints = 1176.0,
+	armor = 591.0,
+	energyUsage = 2307.0,
+	minDamage = 1995.0,
+	maxDamage = 3085.0,
+	refireRate = 8.0,
+	energyPerShot = 43.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_taim_heavy_laser, "object/tangible/ship/components/weapon/wpn_taim_heavy_laser.iff")

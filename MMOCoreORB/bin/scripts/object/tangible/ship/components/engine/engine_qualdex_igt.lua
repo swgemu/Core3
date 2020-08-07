@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_qualdex_igt = object_tangible_ship_components_engine_shared_engine_qualdex_igt:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 28260.0,
+	hitpoints = 1176.0,
+	armor = 591.0,
+	energyUsage = 1728.0,
+	speed = 80.0,
+	pitch = 73.0,
+	yaw = 67.0,
+	roll = 67.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_qualdex_igt, "object/tangible/ship/components/engine/engine_qualdex_igt.iff")

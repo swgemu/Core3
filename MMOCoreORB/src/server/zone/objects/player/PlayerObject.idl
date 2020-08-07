@@ -19,6 +19,7 @@ import server.zone.objects.player.events.PvpTefRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.waypoint.WaypointObject;
+import server.zone.objects.ship.ShipObject;
 include templates.SharedObjectTemplate;
 import server.zone.ZoneClientSession;
 import server.login.account.Account;
@@ -56,6 +57,10 @@ class PlayerObject extends IntangibleObject {
 	protected string savedTerrainName;
 	protected unsigned long savedParentID;
 
+	@rawTemplate(value='ManagedWeakReference<ShipObject*>')
+	@dereferenced
+	protected Vector ships;
+	
 	@dereferenced
 	protected Badges badges;
 
@@ -2013,4 +2018,23 @@ class PlayerObject extends IntangibleObject {
 
 	@read
 	public native string getPlayedTimeString(boolean verbose = false);
+	
+	public void addShip(ShipObject obj) {
+		ships.add(obj);
+	}
+
+	public void removeShip(int idx) {
+		ships.remove(idx);
+	}
+
+	@weakReference
+	@read
+	public ShipObject getShip(int idx) {
+		return ships.get(idx);
+	}
+
+	@read
+	public int getNumShips() {
+		return ships.size();
+	}
 }

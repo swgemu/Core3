@@ -73,6 +73,9 @@
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
+
+#include "server/zone/objects/tangible/ship/crafted/ShipDeed.h"
+
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "server/zone/objects/tangible/deed/droid/DroidDeed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"

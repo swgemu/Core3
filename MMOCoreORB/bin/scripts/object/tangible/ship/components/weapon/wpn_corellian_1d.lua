@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_corellian_1d = object_tangible_ship_components_weapon_shared_wpn_corellian_1d:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 17946.0,
+	hitpoints = 943.0,
+	armor = 470.0,
+	energyUsage = 2307.0,
+	minDamage = 1596.0,
+	maxDamage = 2462.0,
+	refireRate = 7.0,
+	energyPerShot = 36.0,
+	shieldEffectiveness = 2.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_corellian_1d, "object/tangible/ship/components/weapon/wpn_corellian_1d.iff")

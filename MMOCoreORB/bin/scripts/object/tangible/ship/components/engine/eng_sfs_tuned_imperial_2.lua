@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sfs_tuned_imperial_2 = object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4533.0,
+	hitpoints = 483.0,
+	armor = 240.0,
+	energyUsage = 1577.0,
+	speed = 64.0,
+	pitch = 60.0,
+	yaw = 65.0,
+	roll = 67.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sfs_tuned_imperial_2, "object/tangible/ship/components/engine/eng_sfs_tuned_imperial_2.iff")

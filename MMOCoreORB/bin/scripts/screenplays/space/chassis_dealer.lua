@@ -7,7 +7,8 @@ ships = {
 	blacksun_heavy_s01 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 1", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s01_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s01_deed.iff"},
 	blacksun_heavy_s02 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 2", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s02_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s02_deed.iff"},
 	blacksun_heavy_s03 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 3", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s03_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s03_deed.iff"},
-	blacksun_heavy_s04 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 4", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s04_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s04_deed.iff"}
+	blacksun_heavy_s04 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 4", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s04_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s04_deed.iff"},
+	z95	=	{name = "Z-95 Chassis Blueprints", blueprint = "object/tangible/ship/components/chassis/z95_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/z95_deed.iff"}
 }
 
 ChassisDealer = Object:new {}
@@ -50,6 +51,7 @@ function ChassisDealer:getPathByName(objectName)
 	local returnString = nil
 
 	foreach(ships, function(theShip)
+		printLuaError("In getPathByName, in foreach. objectname is: " .. objectName .. " theShip.name is " .. theShip.name)
 		if (string.find(objectName, theShip.name) ~= nil) then
 			returnString = theShip.blueprint
 		end

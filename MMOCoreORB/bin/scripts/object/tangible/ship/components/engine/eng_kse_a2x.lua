@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kse_a2x = object_tangible_ship_components_engine_shared_eng_kse_a2x:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 905.0,
+	hitpoints = 159.0,
+	armor = 81.0,
+	energyUsage = 1504.0,
+	speed = 50.0,
+	pitch = 48.0,
+	yaw = 49.0,
+	roll = 47.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kse_a2x, "object/tangible/ship/components/engine/eng_kse_a2x.iff")

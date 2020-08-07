@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_cygnus_tuned_mk1 = object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2316.0,
+	hitpoints = 230.0,
+	armor = 113.0,
+	energyUsage = 2.0,
+	maxEnergy = 10001.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_cygnus_tuned_mk1, "object/tangible/ship/components/reactor/rct_cygnus_tuned_mk1.iff")

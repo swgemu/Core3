@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_hk_scorcher_3 = object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14209.0,
+	hitpoints = 799.0,
+	armor = 398.0,
+	energyUsage = 2209.0,
+	minDamage = 1680.0,
+	maxDamage = 2479.0,
+	refireRate = 5.0,
+	energyPerShot = 44.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_hk_scorcher_3, "object/tangible/ship/components/weapon/wpn_hk_scorcher_3.iff")

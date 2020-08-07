@@ -43,6 +43,17 @@
 
 object_ship_decimator = object_ship_shared_decimator:new {
 
+	name = "decimator",
+	slideFactor = 1.81,
+	chassisHitpoints = 654,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 95.90758, armor = 98.60257,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 98.38642, armor = 95.57016, speed = 44.93588, pitch = 20.53907, roll = 21.25076, yaw = 20.4151, acceleration = 7.727978, rollRate = 42.63755, pitchRate = 41.06813, deceleration = 12.11134, yawRate = 42.63313,},
+	shield_0 = { name = "shd_generic", hitpoints = 390.8747, armor = 488.2868, regen = 4.816055, front = 584.2844, back = 588.1197,},
+	armor_0 = { name = "arm_generic", hitpoints = 690.6407, armor = 689.4864,},
+	armor_1 = { name = "arm_generic", hitpoints = 677.5273, armor = 686.4539,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.26661, energy = 816.7931,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 191.1592, armor = 192.9333, rate = 0.4277923, drain = 15.28074, maxDamage = 329.2509, shieldEfficiency = 0, minDamage = 318.1564, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_decimator, "object/ship/decimator.iff")

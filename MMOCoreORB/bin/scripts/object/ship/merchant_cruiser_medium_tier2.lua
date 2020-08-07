@@ -43,6 +43,21 @@
 
 object_ship_merchant_cruiser_medium_tier2 = object_ship_shared_merchant_cruiser_medium_tier2:new {
 
+	name = "merchant_cruiser_medium_tier2",
+	slideFactor = 1.76,
+	chassisHitpoints = 6000,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 4489.618, armor = 4381.367,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 4365.197, armor = 4397.695, speed = 41.21326, pitch = 22.90241, roll = 28.17224, yaw = 18.74071, acceleration = 10.16129, rollRate = 52.61631, pitchRate = 47.11389, deceleration = 8.675982, yawRate = 39.53732,},
+	shield_0 = { name = "shd_generic", hitpoints = 4293.744, armor = 4301.271, regen = 7.88596, front = 17443.23, back = 17608.15,},
+	armor_0 = { name = "arm_generic", hitpoints = 9409.773, armor = 9257.783,},
+	armor_1 = { name = "arm_generic", hitpoints = 9315.726, armor = 9240.271,},
+	capacitor = { name = "cap_generic", hitpoints = 4334.665, armor = 4459.749, rechargeRate = 95.53326, energy = 4824.985,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 4391.136, armor = 4304.279, rate = 0.7450342, drain = 0.9765325, maxDamage = 210.6662, shieldEfficiency = 0.5539984, minDamage = 154.5177, ammo = 0, ammo_type = 0, armorEfficiency = 0.5458419,},
+	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 4405.522, armor = 4438.681, rate = 0.7629908, drain = 0.9951139, maxDamage = 215.419, shieldEfficiency = 0.551863, minDamage = 154.3544, ammo = 0, ammo_type = 0, armorEfficiency = 0.5527091,},
+	weapon_2 = { name = "wpn_incom_blaster", hitpoints = 4415.027, armor = 4431.829, rate = 0.7712641, drain = 0.9642957, maxDamage = 219.5453, shieldEfficiency = 0.5380406, minDamage = 152.6045, ammo = 0, ammo_type = 0, armorEfficiency = 0.5565039,},
+	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 4379.866, armor = 4326.969, rate = 2.996723, drain = 0.9936015, maxDamage = 638.8206, shieldEfficiency = 0.7223246, minDamage = 302.653, ammo = 5, ammo_type = 17, armorEfficiency = 0.7219664,},
+	weapon_4 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 4445.275, armor = 4321.205, rate = 2.909174, drain = 0.9625892, maxDamage = 632.3728, shieldEfficiency = 0.726876, minDamage = 310.8459, ammo = 5, ammo_type = 17, armorEfficiency = 0.7184557,},
 }
 
 ObjectTemplates:addTemplate(object_ship_merchant_cruiser_medium_tier2, "object/ship/merchant_cruiser_medium_tier2.iff")

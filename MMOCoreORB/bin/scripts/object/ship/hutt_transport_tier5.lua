@@ -43,6 +43,16 @@
 
 object_ship_hutt_transport_tier5 = object_ship_shared_hutt_transport_tier5:new {
 
+	name = "hutt_transport_tier5",
+	slideFactor = 1.83,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 6166.193, armor = 6097.097,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 6065.175, armor = 6242.405, speed = 46.59774, pitch = 25.35111, roll = 30.92851, yaw = 20.30697, acceleration = 11.20307, rollRate = 56.06475, pitchRate = 51.61685, deceleration = 9.445853, yawRate = 42.3082,},
+	shield_0 = { name = "shd_generic", hitpoints = 6367.522, armor = 6363.888, regen = 22.5079, front = 36693.8, back = 36789.91,},
+	armor_0 = { name = "arm_generic", hitpoints = 19988.54, armor = 19884.95,},
+	armor_1 = { name = "arm_generic", hitpoints = 19737.24, armor = 19951.7,},
+	capacitor = { name = "cap_generic", hitpoints = 6362.257, armor = 6100.617, rechargeRate = 99.42552, energy = 4950.867,},
 }
 
 ObjectTemplates:addTemplate(object_ship_hutt_transport_tier5, "object/ship/hutt_transport_tier5.iff")

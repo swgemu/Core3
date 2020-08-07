@@ -1,0 +1,92 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+
+class ShipEngineComponent extends ShipComponent {
+
+	float maxPitch;
+	float maxRoll;
+	float maxYaw;
+	float maxSpeed;
+	float acceleration;
+	float deceleration;
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	public native void initializeTransientMembers();
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	public void setMaxSpeed(float value) {
+		maxSpeed = value;
+	}
+
+	public void setMaxAcceleration(float value) {
+	    acceleration = value;
+	}
+
+	public void setMaxDeceleration(float value) {
+	    deceleration = value;
+	}
+
+	public void setMaxYaw(float value) {
+		if (value < 1.0f)
+			value = 1.0f;
+			maxYaw = value;
+	}
+
+	public void setMaxRoll(float value) {
+		if (value < 1.0f)
+			value = 1.0f;
+			maxRoll = value;
+	}
+
+	public void setMaxPitch(float value) {
+		if (value < 1.0f)
+			value = 1.0f;
+			maxPitch = value;
+	}
+
+	public float getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public float getMaxPitch() {
+		return maxPitch;
+	}
+
+	public float getMaxYaw() {
+		return maxYaw;
+	}
+
+	public float getMaxRoll() {
+		return maxRoll;
+	}
+
+    public ShipEngineComponent() {
+        super();
+        maxPitch = 1.0f;
+        maxYaw = 1.0f;
+        maxRoll = 1.0f;
+        acceleration = 40.0f;
+        deceleration = 40.0f;
+    }
+}

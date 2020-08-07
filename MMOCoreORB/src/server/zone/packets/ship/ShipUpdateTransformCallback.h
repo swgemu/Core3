@@ -15,7 +15,7 @@
 #include "ShipUpdateTransformMessage.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-
+#include "server/zone/objects/ship/ShipObject.h"
 #include "PackedVelocity.h"
 #include "PackedRotationRate.h"
 

@@ -43,6 +43,22 @@
 
 object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hutt_turret_ship:new {
 
+	name = "player_hutt_turret_ship",
+	slideFactor = 1.76,
+	chassisHitpoints = 1512,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 298.5859, armor = 293.59,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.05453, armor = 99.5019, speed = 45.28425, pitch = 39.07172, roll = 39.94278, yaw = 20.39184, acceleration = 12.03205, rollRate = 59.10788, pitchRate = 60.85636, deceleration = 15.43395, yawRate = 39.61805,},
+	shield_0 = { name = "shd_generic", hitpoints = 389.1004, armor = 488.346, regen = 4.906437, front = 944.6312, back = 956.4858,},
+	armor_0 = { name = "arm_generic", hitpoints = 199.7896, armor = 193.4351,},
+	armor_1 = { name = "arm_generic", hitpoints = 194.2157, armor = 192.6566,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.81267, energy = 509.1956,},
+	booster = { name = "bst_generic", hitpoints = 19.15845, armor = 19.07937, energy = 95.04938, acceleration = 19.82329, speed = 14.27864, energyUsage = 9.834052, rechargeRate = 4.996946,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 197.9332, armor = 193.0661, rate = 0.3303496, drain = 23.39249, maxDamage = 245.888, shieldEfficiency = 0, minDamage = 116.536, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 193.6815, armor = 194.5917, rate = 0.3333288, drain = 23.02759, maxDamage = 22.62797, shieldEfficiency = 0, minDamage = 23.58794, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 19.27279, armor = 19.80032, rate = 0.3447994, drain = 23.09595, maxDamage = 22.60188, shieldEfficiency = 0, minDamage = 23.1928, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_incom_disruptor", hitpoints = 19.91959, armor = 19.5616, rate = 0.3411166, drain = 22.83431, maxDamage = 23.2063, shieldEfficiency = 0, minDamage = 22.55597, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_4 = { name = "wpn_std_countermeasure", hitpoints = 242.1129, armor = 242.1036, rate = 9.918377, drain = 22.79713, maxDamage = 98.86002, shieldEfficiency = 0, minDamage = 24.51417, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_hutt_turret_ship, "object/ship/player/player_hutt_turret_ship.iff")

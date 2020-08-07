@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_seinar_ps56 = object_tangible_ship_components_engine_shared_engine_seinar_ps56:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2481.0,
+	hitpoints = 367.0,
+	armor = 189.0,
+	energyUsage = 1659.0,
+	speed = 55.0,
+	pitch = 59.0,
+	yaw = 54.0,
+	roll = 59.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_seinar_ps56, "object/tangible/ship/components/engine/engine_seinar_ps56.iff")

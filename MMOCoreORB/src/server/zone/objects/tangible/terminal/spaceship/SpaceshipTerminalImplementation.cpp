@@ -7,5 +7,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 int SpaceshipTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	error() << "In SsTI::handleObjectMenuSelect, selectedId is: " << selectedID;
 	return 0;
 }

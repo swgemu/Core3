@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_mission_reward_rebel_qualdex_halcyon = object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_halcyon:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 26209.0,
+	hitpoints = 1684.0,
+	armor = 847.0,
+	energyUsage = 604.0,
+	speed = 31.0,
+	maxEnergy = 2397.0,
+	rechargeRate = 62.0,
+	boosterDrain = 241.0,
+	boosterAccel = 49.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_rebel_qualdex_halcyon, "object/tangible/ship/components/booster/bst_mission_reward_rebel_qualdex_halcyon.iff")

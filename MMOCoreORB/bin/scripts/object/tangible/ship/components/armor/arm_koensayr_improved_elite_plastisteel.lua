@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_koensayr_improved_elite_plastisteel = object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 34433.0,
+	hitpoints = 1212.0,
+	armor = 1211.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_koensayr_improved_elite_plastisteel, "object/tangible/ship/components/armor/arm_koensayr_improved_elite_plastisteel.iff")

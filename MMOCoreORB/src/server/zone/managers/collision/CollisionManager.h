@@ -51,7 +51,7 @@ public:
 	static Ray convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model);
 	static Vector3 convertToModelSpace(const Vector3& point, SceneObject* model);
 	static const TriangleNode* getTriangle(const Vector3& point, const FloorMesh* floor);
-	static Reference<Matrix4*> getTransformMatrix(SceneObject* model);
+	static Reference<Matrix4*> getInverseTransform(SceneObject *model);
 	/**
 	 * @returns nearest available path node int the floor path graph with the lowest distance from triangle to final target
 	 */
@@ -77,8 +77,10 @@ public:
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);
 
 	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);
-
+	static bool checkShipWeaponCollision(ShipObject* ship, const Vector3 startPosition, const Vector3& targetPosition, Vector3& collisionPoint, Vector<ManagedReference<SceneObject*> >& collidedObjects);
+	static Matrix4 Inverse(Matrix4 mat);
 	static bool checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint);
+	static Matrix4 getTransformMatrix(SceneObject *sceno);
 
 };
 

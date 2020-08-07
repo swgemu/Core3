@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_subpro_reinforced_plasteel = object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9650.0,
+	hitpoints = 876.0,
+	armor = 872.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_subpro_reinforced_plasteel, "object/tangible/ship/components/armor/armor_subpro_reinforced_plasteel.iff")

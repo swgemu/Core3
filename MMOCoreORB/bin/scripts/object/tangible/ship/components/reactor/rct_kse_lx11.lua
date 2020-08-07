@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_kse_lx11 = object_tangible_ship_components_reactor_shared_rct_kse_lx11:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1320.0,
+	hitpoints = 156.0,
+	armor = 82.0,
+	energyUsage = 5.0,
+	maxEnergy = 10000.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kse_lx11, "object/tangible/ship/components/reactor/rct_kse_lx11.iff")

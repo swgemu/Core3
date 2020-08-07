@@ -48,6 +48,21 @@ class PlanetManager extends ManagedService implements Logger {
 
 	protected PlanetTravelPointList planetTravelPointList;
 
+	@rawTemplate(value="String, Vector3")
+	@dereferenced
+	protected transient VectorMap jtlTravelDestinations;
+
+	@dereferenced
+	protected transient string jtlZoneName;
+
+	@dereferenced
+	protected transient Vector3 jtlLaunchLocation;
+
+	@dirty
+	@local
+	@dereferenced
+	public native Vector3 getJTLLaunchLocation();
+	
 	//In seconds.
 	protected int shuttleportAwayTime;
 	protected int shuttleportLandedTime;
@@ -141,6 +156,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	private native void loadNavAreas(LuaObject lua);
 
+	@local
+	private native void loadJTLData(LuaObject lua);
+	
 	public void addNavArea(final string name, NavArea area) {
 		navMeshAreas.put(name, area);
 	}
@@ -286,6 +304,23 @@ class PlanetManager extends ManagedService implements Logger {
 		return performanceLocations;
 	}
 
+    @dirty
+    @local
+    @dereferenced
+    public final Vector3 getJTLTravelDestination(string key) {
+        return jtlTravelDestinations.get(key);
+    }
+
+    @dirty
+    public boolean hasJTLTravelDestination(string key) {
+        return jtlTravelDestinations.contains(key);
+    }
+
+    @dirty
+    public string getJTLZoneName() {
+        return jtlZoneName;
+    }
+    
 	/**
 	 * Checks to see if the point is an existing planet travel point.
 	 * @param pointName The name of the point to check for.

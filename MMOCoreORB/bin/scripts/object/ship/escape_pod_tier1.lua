@@ -43,6 +43,16 @@
 
 object_ship_escape_pod_tier1 = object_ship_shared_escape_pod_tier1:new {
 
+	name = "escape_pod_tier1",
+	slideFactor = 1.99,
+	chassisHitpoints = 120,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 72.72079, armor = 74.6375,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 72.50068, armor = 72.66665, speed = 40.3746, pitch = 22.22906, roll = 27.71842, yaw = 17.88419, acceleration = 9.880699, rollRate = 51.28959, pitchRate = 44.94685, deceleration = 8.481543, yawRate = 37.01615,},
+	shield_0 = { name = "shd_generic", hitpoints = 72.7999, armor = 72.83786, regen = 1.458847, front = 293.7108, back = 287.0549,},
+	armor_0 = { name = "arm_generic", hitpoints = 158.4473, armor = 159.0218,},
+	armor_1 = { name = "arm_generic", hitpoints = 159.2785, armor = 153.0147,},
+	capacitor = { name = "cap_generic", hitpoints = 74.27911, armor = 71.51224, rechargeRate = 97.69896, energy = 4828.993,},
 }
 
 ObjectTemplates:addTemplate(object_ship_escape_pod_tier1, "object/ship/escape_pod_tier1.iff")

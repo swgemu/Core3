@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_baktoid_shock_armor = object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1521.0,
+	hitpoints = 209.0,
+	armor = 210.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_baktoid_shock_armor, "object/tangible/ship/components/armor/armor_baktoid_shock_armor.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_mission_reward_neutral_mandal_m_series = object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_m_series:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3152.0,
+	hitpoints = 679.0,
+	armor = 340.0,
+	energyUsage = 452.0,
+	speed = 31.0,
+	maxEnergy = 1980.0,
+	rechargeRate = 52.0,
+	boosterDrain = 200.0,
+	boosterAccel = 42.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_neutral_mandal_m_series, "object/tangible/ship/components/booster/bst_mission_reward_neutral_mandal_m_series.iff")

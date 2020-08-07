@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_rebel_taim_military_grade = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 43549.0,
+	hitpoints = 1404.0,
+	armor = 707.0,
+	energyUsage = 2938.0,
+	shieldFront = 2434.0,
+	shieldRear = 2437.0,
+	rechargeRate = 15.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_rebel_taim_military_grade, "object/tangible/ship/components/shield_generator/shd_mission_reward_rebel_taim_military_grade.iff")

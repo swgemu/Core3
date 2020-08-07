@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_xwing_engine_s02_test = object_tangible_ship_components_engine_shared_xwing_engine_s02_test:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 910.0,
+	hitpoints = 157.0,
+	armor = 77.0,
+	energyUsage = 1504.0,
+	speed = 43.0,
+	pitch = 46.0,
+	yaw = 50.0,
+	roll = 46.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_xwing_engine_s02_test, "object/tangible/ship/components/engine/xwing_engine_s02_test.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_kessel_imperial_cygnus_experimental_system = object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51482.0,
+	hitpoints = 1106.0,
+	armor = 559.0,
+	energyUsage = 3058.0,
+	shieldFront = 1475.0,
+	shieldRear = 1468.0,
+	rechargeRate = 13.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_imperial_cygnus_experimental_system, "object/tangible/ship/components/shield_generator/shd_kessel_imperial_cygnus_experimental_system.iff")

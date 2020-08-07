@@ -43,6 +43,18 @@
 
 object_ship_tieadvanced = object_ship_shared_tieadvanced:new {
 
+	name = "tieadvanced",
+	slideFactor = 1.84,
+	chassisHitpoints = 322,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 97.88988, armor = 95.11012,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 95.64938, armor = 99.06286, speed = 51.70359, pitch = 28.09003, roll = 27.92437, yaw = 27.93928, acceleration = 21.35566, rollRate = 51.70591, pitchRate = 53.52766, deceleration = 10.45788, yawRate = 52.58622,},
+	shield_0 = { name = "shd_generic", hitpoints = 195.1856, armor = 194.0223, regen = 4.963309, front = 386.2133, back = 675.6202,},
+	armor_0 = { name = "arm_generic", hitpoints = 483.2105, armor = 493.9247,},
+	armor_1 = { name = "arm_generic", hitpoints = 492.3435, armor = 492.0125,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 56.7245, energy = 1413.089,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 199.7925, armor = 192.111, rate = 0.5716904, drain = 27.27335, maxDamage = 308.5856, shieldEfficiency = 0, minDamage = 200.0856, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_sienar_heatseeker_missile_s01", hitpoints = 190.3251, armor = 194.4109, rate = 2.917864, drain = 27.58492, maxDamage = 26.57997, shieldEfficiency = 0, minDamage = 26.43489, ammo = 50, ammo_type = 2, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieadvanced, "object/ship/tieadvanced.iff")

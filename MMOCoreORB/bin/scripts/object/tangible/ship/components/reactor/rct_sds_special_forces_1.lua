@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_sds_special_forces_1 = object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 36041.0,
+	hitpoints = 1404.0,
+	armor = 702.0,
+	energyUsage = 8.0,
+	maxEnergy = 26004.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sds_special_forces_1, "object/tangible/ship/components/reactor/rct_sds_special_forces_1.iff")

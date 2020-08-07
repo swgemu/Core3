@@ -43,6 +43,20 @@
 
 object_ship_player_player_blacksun_heavy_s01 = object_ship_player_shared_player_blacksun_heavy_s01:new {
 
+	name = "player_blacksun_heavy_s01",
+	slideFactor = 1.91,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 292.9725, armor = 299.5309,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.6465, armor = 97.75994, speed = 40.43465, pitch = 20.62251, roll = 20.84657, yaw = 20.48238, acceleration = 11.59244, rollRate = 41.15862, pitchRate = 42.04427, deceleration = 15.05197, yawRate = 42.06062,},
+	shield_0 = { name = "shd_generic", hitpoints = 783.6112, armor = 496.0798, regen = 4.791908, front = 585.0226, back = 766.2216,},
+	armor_0 = { name = "arm_generic", hitpoints = 678.8878, armor = 697.2473,},
+	armor_1 = { name = "arm_generic", hitpoints = 669.7052, armor = 680.1978,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 35.18039, energy = 569.5192,},
+	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.62413, armor = 19.77116, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 197.6348, armor = 198.6877, rate = 0.3358833, drain = 22.88481, maxDamage = 397.8456, shieldEfficiency = 0, minDamage = 310.6662, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 196.2011, armor = 192.69, rate = 0.3301291, drain = 23.57168, maxDamage = 22.8097, shieldEfficiency = 0, minDamage = 23.23072, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 19.44605, armor = 19.74653, rate = 0.3429416, drain = 22.91661, maxDamage = 22.54667, shieldEfficiency = 0, minDamage = 22.86555, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_blacksun_heavy_s01, "object/ship/player/player_blacksun_heavy_s01.iff")

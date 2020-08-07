@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_moncal_light = object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 852.0,
+	hitpoints = 150.0,
+	armor = 76.0,
+	energyUsage = 1010.0,
+	rechargeRate = 24.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_moncal_light, "object/tangible/ship/components/weapon_capacitor/cap_moncal_light.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_corellian_tjh3 = object_tangible_ship_components_booster_shared_bst_corellian_tjh3:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 803.0,
+	hitpoints = 154.0,
+	armor = 84.0,
+	energyUsage = 506.0,
+	speed = 22.0,
+	maxEnergy = 1002.0,
+	rechargeRate = 28.0,
+	boosterDrain = 102.0,
+	boosterAccel = 22.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_corellian_tjh3, "object/tangible/ship/components/booster/bst_corellian_tjh3.iff")

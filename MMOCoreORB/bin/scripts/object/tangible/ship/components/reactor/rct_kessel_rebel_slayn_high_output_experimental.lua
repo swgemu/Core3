@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_kessel_rebel_slayn_high_output_experimental = object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62047.0,
+	hitpoints = 1411.0,
+	armor = 704.0,
+	energyUsage = 0.0,
+	maxEnergy = 28009.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_rebel_slayn_high_output_experimental, "object/tangible/ship/components/reactor/rct_kessel_rebel_slayn_high_output_experimental.iff")

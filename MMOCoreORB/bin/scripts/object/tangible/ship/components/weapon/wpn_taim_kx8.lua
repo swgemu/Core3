@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_taim_kx8 = object_tangible_ship_components_weapon_shared_wpn_taim_kx8:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 16385.0,
+	hitpoints = 843.0,
+	armor = 422.0,
+	energyUsage = 2308.0,
+	minDamage = 1593.0,
+	maxDamage = 2470.0,
+	refireRate = 4.0,
+	energyPerShot = 28.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_taim_kx8, "object/tangible/ship/components/weapon/wpn_taim_kx8.iff")

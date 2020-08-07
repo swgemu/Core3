@@ -46,6 +46,29 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);
+
+	shipMaxEnergy= 0.0f;
+	shipRechargeRate= 0.0f;
+	shipHitpoints= 0.0f;
+	shipArmor= 0.0f;
+	shipEnergyConsumption= 0.0f;
+	shipMass= 0.0f;
+	shipRELevel= 0.0f;
+	shipSpeed= 0.0f;
+	shipPitch= 0.0f;
+	shipMinDamage= 0.0f;
+	shipMaxDamage= 0.0f;
+	shipYaw= 0.0f;
+	shipRoll= 0.0f;
+	boosterAcceleration= 0.0f;
+	boosterDrain= 0.0f;
+	droidCommandSpeed= 0.0f;
+	weaponShieldEffectiveness= 0.0f;
+	weaponArmorEffectiveness= 0.0f;
+	energyPerShot= 0.0f;
+	shieldHitpointsFront= 0.0f;
+	shieldHitpointsRear= 0.0f;
+	refireRate= 0.0f;
 }
 
 SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
@@ -232,6 +255,46 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 			experimentalCombineType->add(experimentalCombineList.getIntAt(i));
 		}
 		experimentalCombineList.pop();
+	} else if (varName == "maxEnergy") {
+		shipMaxEnergy = Lua::getFloatParameter(state);
+	} else if (varName == "rechargeRate") {
+		shipRechargeRate = Lua::getFloatParameter(state);
+	} else if (varName == "hitpoints") {
+		shipHitpoints = Lua::getFloatParameter(state);
+	} else if (varName == "armor") {
+		shipArmor = Lua::getFloatParameter(state);
+	} else if (varName == "energyConsumption") {
+		shipEnergyConsumption = Lua::getFloatParameter(state);
+	} else if (varName == "mass") {
+		shipMass = Lua::getFloatParameter(state);
+	} else if (varName == "speed") {
+		shipSpeed = Lua::getFloatParameter(state);
+	} else if (varName == "pitch") {
+		shipPitch = Lua::getFloatParameter(state);
+	} else if (varName == "yaw") {
+		shipYaw = Lua::getFloatParameter(state);
+	} else if (varName == "roll") {
+		shipRoll = Lua::getFloatParameter(state);
+	} else if (varName == "minDamage") {
+		shipMinDamage = Lua::getFloatParameter(state);
+	} else if (varName == "maxDamage") {
+		shipMaxDamage = Lua::getFloatParameter(state);
+	} else if (varName == "boosterAccel") {
+		boosterAcceleration = Lua::getFloatParameter(state);
+	} else if (varName == "boosterDrain") {
+		boosterDrain = Lua::getFloatParameter(state);
+	} else if (varName == "droidSpeed") {
+		droidCommandSpeed = Lua::getFloatParameter(state);
+	} else if (varName == "shieldEffectiveness") {
+		weaponShieldEffectiveness = Lua::getFloatParameter(state);
+	} else if (varName == "armorEffectiveness") {
+		weaponArmorEffectiveness = Lua::getFloatParameter(state);
+	} else if (varName == "energyPerShot") {
+		energyPerShot = Lua::getFloatParameter(state);
+	} else if (varName == "shieldFront") {
+		shieldHitpointsFront = Lua::getFloatParameter(state);
+	} else if (varName == "shieldRear") {
+		shieldHitpointsRear = Lua::getFloatParameter(state);
 	} else {
 		data->pop();
 	}

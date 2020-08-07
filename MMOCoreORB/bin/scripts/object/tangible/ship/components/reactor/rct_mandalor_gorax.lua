@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mandalor_gorax = object_tangible_ship_components_reactor_shared_rct_mandalor_gorax:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51485.0,
+	hitpoints = 1549.0,
+	armor = 771.0,
+	energyUsage = 5.0,
+	maxEnergy = 27306.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mandalor_gorax, "object/tangible/ship/components/reactor/rct_mandalor_gorax.iff")

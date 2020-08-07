@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_intimidator_mk2 = object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2107.0,
+	hitpoints = 350.0,
+	armor = 181.0,
+	energyUsage = 534.0,
+	speed = 22.0,
+	maxEnergy = 1104.0,
+	rechargeRate = 36.0,
+	boosterDrain = 120.0,
+	boosterAccel = 25.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_intimidator_mk2, "object/tangible/ship/components/booster/bst_incom_intimidator_mk2.iff")

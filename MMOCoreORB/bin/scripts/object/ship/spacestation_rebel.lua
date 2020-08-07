@@ -43,6 +43,18 @@
 
 object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
 
+	name = "spacestation_rebel",
+	slideFactor = 1.76,
+	chassisHitpoints = 30000,
+	chassisMass = 50000,
+	reactor = { name = "rct_generic", hitpoints = 4864.198, armor = 1927.314,},
+	shield_0 = { name = "shd_generic", hitpoints = 49365.72, armor = 49624.62, regen = 47.67813, front = 48455.73, back = 48032.23,},
+	shield_1 = { name = "shd_generic", hitpoints = 48882.62, armor = 47800.8, regen = 39.36435, front = 48013.15, back = 49541.21,},
+	armor_0 = { name = "arm_generic", hitpoints = 48254.88, armor = 49781.66,},
+	armor_1 = { name = "arm_generic", hitpoints = 47808.96, armor = 47687.39,},
+	capacitor = { name = "cap_generic", hitpoints = 49517.34, armor = 47863.55, rechargeRate = 124.5681, energy = 2244.048,},
+	bridge = { name = "bdg_generic", hitpoints = 196090.3, armor = 199986.6,},
+	hangar = { name = "hgr_generic", hitpoints = 194788.1, armor = 193346.9,},
 }
 
 ObjectTemplates:addTemplate(object_ship_spacestation_rebel, "object/ship/spacestation_rebel.iff")

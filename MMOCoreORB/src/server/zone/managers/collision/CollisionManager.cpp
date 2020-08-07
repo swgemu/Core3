@@ -16,6 +16,8 @@
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "templates/appearance/DetailAppearanceTemplate.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
 
 float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;
@@ -581,41 +583,126 @@ const TriangleNode* CollisionManager::getTriangle(const Vector3& point, const Fl
 }
 
 Vector3 CollisionManager::convertToModelSpace(const Vector3& point, SceneObject* model) {
-	Reference<Matrix4*> modelMatrix = getTransformMatrix(model);
+	Reference<Matrix4*> modelMatrix = getInverseTransform(model);
 
 	Vector3 transformedPoint = point * *modelMatrix;
 
 	return transformedPoint;
 }
 
-Reference<Matrix4*> CollisionManager::getTransformMatrix(SceneObject* model) {
+Matrix4 CollisionManager::Inverse(Matrix4 mat) {
+	//
+	// Inversion by Cramer's rule.  Code taken from an Intel publication
+	//
+	double Result[4][4];
+	double tmp[12]; /* temp array for pairs */
+	double src[16]; /* array of transpose source matrix */
+	double det; /* determinant */
+	/* transpose matrix */
+	for (unsigned int i = 0; i < 4; i++) {
+		src[i + 0] = mat[i][0];
+		src[i + 4] = mat[i][1];
+		src[i + 8] = mat[i][2];
+		src[i + 12] = mat[i][3];
+	}
+	/* calculate pairs for first 8 elements (cofactors) */
+	tmp[0] = src[10] * src[15];
+	tmp[1] = src[11] * src[14];
+	tmp[2] = src[9] * src[15];
+	tmp[3] = src[11] * src[13];
+	tmp[4] = src[9] * src[14];
+	tmp[5] = src[10] * src[13];
+	tmp[6] = src[8] * src[15];
+	tmp[7] = src[11] * src[12];
+	tmp[8] = src[8] * src[14];
+	tmp[9] = src[10] * src[12];
+	tmp[10] = src[8] * src[13];
+	tmp[11] = src[9] * src[12];
+	/* calculate first 8 elements (cofactors) */
+	Result[0][0] = tmp[0] * src[5] + tmp[3] * src[6] + tmp[4] * src[7];
+	Result[0][0] -= tmp[1] * src[5] + tmp[2] * src[6] + tmp[5] * src[7];
+	Result[0][1] = tmp[1] * src[4] + tmp[6] * src[6] + tmp[9] * src[7];
+	Result[0][1] -= tmp[0] * src[4] + tmp[7] * src[6] + tmp[8] * src[7];
+	Result[0][2] = tmp[2] * src[4] + tmp[7] * src[5] + tmp[10] * src[7];
+	Result[0][2] -= tmp[3] * src[4] + tmp[6] * src[5] + tmp[11] * src[7];
+	Result[0][3] = tmp[5] * src[4] + tmp[8] * src[5] + tmp[11] * src[6];
+	Result[0][3] -= tmp[4] * src[4] + tmp[9] * src[5] + tmp[10] * src[6];
+	Result[1][0] = tmp[1] * src[1] + tmp[2] * src[2] + tmp[5] * src[3];
+	Result[1][0] -= tmp[0] * src[1] + tmp[3] * src[2] + tmp[4] * src[3];
+	Result[1][1] = tmp[0] * src[0] + tmp[7] * src[2] + tmp[8] * src[3];
+	Result[1][1] -= tmp[1] * src[0] + tmp[6] * src[2] + tmp[9] * src[3];
+	Result[1][2] = tmp[3] * src[0] + tmp[6] * src[1] + tmp[11] * src[3];
+	Result[1][2] -= tmp[2] * src[0] + tmp[7] * src[1] + tmp[10] * src[3];
+	Result[1][3] = tmp[4] * src[0] + tmp[9] * src[1] + tmp[10] * src[2];
+	Result[1][3] -= tmp[5] * src[0] + tmp[8] * src[1] + tmp[11] * src[2];
+	/* calculate pairs for second 8 elements (cofactors) */
+	tmp[0] = src[2] * src[7];
+	tmp[1] = src[3] * src[6];
+	tmp[2] = src[1] * src[7];
+	tmp[3] = src[3] * src[5];
+	tmp[4] = src[1] * src[6];
+	tmp[5] = src[2] * src[5];
+
+	tmp[6] = src[0] * src[7];
+	tmp[7] = src[3] * src[4];
+	tmp[8] = src[0] * src[6];
+	tmp[9] = src[2] * src[4];
+	tmp[10] = src[0] * src[5];
+	tmp[11] = src[1] * src[4];
+	/* calculate second 8 elements (cofactors) */
+	Result[2][0] = tmp[0] * src[13] + tmp[3] * src[14] + tmp[4] * src[15];
+	Result[2][0] -= tmp[1] * src[13] + tmp[2] * src[14] + tmp[5] * src[15];
+	Result[2][1] = tmp[1] * src[12] + tmp[6] * src[14] + tmp[9] * src[15];
+	Result[2][1] -= tmp[0] * src[12] + tmp[7] * src[14] + tmp[8] * src[15];
+	Result[2][2] = tmp[2] * src[12] + tmp[7] * src[13] + tmp[10] * src[15];
+	Result[2][2] -= tmp[3] * src[12] + tmp[6] * src[13] + tmp[11] * src[15];
+	Result[2][3] = tmp[5] * src[12] + tmp[8] * src[13] + tmp[11] * src[14];
+	Result[2][3] -= tmp[4] * src[12] + tmp[9] * src[13] + tmp[10] * src[14];
+	Result[3][0] = tmp[2] * src[10] + tmp[5] * src[11] + tmp[1] * src[9];
+	Result[3][0] -= tmp[4] * src[11] + tmp[0] * src[9] + tmp[3] * src[10];
+	Result[3][1] = tmp[8] * src[11] + tmp[0] * src[8] + tmp[7] * src[10];
+	Result[3][1] -= tmp[6] * src[10] + tmp[9] * src[11] + tmp[1] * src[8];
+	Result[3][2] = tmp[6] * src[9] + tmp[11] * src[11] + tmp[3] * src[8];
+	Result[3][2] -= tmp[10] * src[11] + tmp[2] * src[8] + tmp[7] * src[9];
+	Result[3][3] = tmp[10] * src[10] + tmp[4] * src[8] + tmp[9] * src[9];
+	Result[3][3] -= tmp[8] * src[9] + tmp[11] * src[10] + tmp[5] * src[8];
+	/* calculate determinant */
+	det = src[0] * Result[0][0] + src[1] * Result[0][1] + src[2] * Result[0][2] + src[3] * Result[0][3];
+	/* calculate matrix inverse */
+	det = 1.0f / det;
+
+	Matrix4 FloatResult;
+	for (unsigned int i = 0; i < 4; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
+			FloatResult[i][j] = float(Result[i][j] * det);
+		}
+	}
+	return FloatResult;
+}
+
+Matrix4 CollisionManager::getTransformMatrix(SceneObject* model) {
+	Matrix4 translationMatrix;
+	translationMatrix.setRotationMatrix(model->getDirection()->toMatrix3());
+	translationMatrix.transpose();
+	translationMatrix.setTranslation(model->getPositionX(), model->getPositionZ(), model->getPositionY());
+	return translationMatrix;
+}
+
+Reference<Matrix4*> CollisionManager::getInverseTransform(SceneObject *model) {
 	//this can be optimized by storing the matrix on the model and update it when needed
 	//Reference
 
 	Reference<Matrix4*> modelMatrix = model->getTransformForCollisionMatrix();
 
-	if (modelMatrix == nullptr) {
+	if (true) {//modelMatrix == nullptr) {
 		//modelMatrix = new Matrix4();
 
 		Matrix4 translationMatrix;
-		translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
+		translationMatrix.setRotationMatrix(model->getDirection()->toMatrix3());
+		translationMatrix.transpose();
+		translationMatrix.setTranslation(model->getPositionX(), model->getPositionZ(), model->getPositionY());
 
-		float rad = -model->getDirection()->getRadians();
-		float cosRad = cos(rad);
-		float sinRad = sin(rad);
-
-		Matrix3 rot;
-		rot[0][0] = cosRad;
-		rot[0][2] = -sinRad;
-		rot[1][1] = 1;
-		rot[2][0] = sinRad;
-		rot[2][2] = cosRad;
-
-		Matrix4 rotateMatrix;
-		rotateMatrix.setRotationMatrix(rot);
-
-		//Matrix4 modelMatrix;
-		modelMatrix = new Matrix4(translationMatrix * rotateMatrix);
+		modelMatrix = new Matrix4(translationMatrix.inverse());
 
 		model->setTransformForCollisionMatrixIfNull(modelMatrix);
 	}
@@ -624,7 +711,7 @@ Reference<Matrix4*> CollisionManager::getTransformMatrix(SceneObject* model) {
 }
 
 Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model) {
-	Reference<Matrix4*> modelMatrix = getTransformMatrix(model);
+	Reference<Matrix4*> modelMatrix = getInverseTransform(model);
 
 	Vector3 transformedOrigin = rayOrigin * *modelMatrix;
 	Vector3 transformedEnd = rayEnd * *modelMatrix;
@@ -709,6 +796,73 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 
 					collisionPoint.set(rayOrigin.getX() + (direction.getX() * intersectionDistance), rayOrigin.getY() + (direction.getY() * intersectionDistance), rayOrigin.getZ() + (direction.getZ() * intersectionDistance));
 					//ship->info("colliding with building", true);
+
+					return true;
+				}
+			} catch (Exception& e) {
+				ship->error(e.getMessage());
+			} catch (...) {
+				throw;
+			}
+
+
+		}
+	}
+
+	return false;
+}
+
+bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 startPosition, const Vector3& targetPosition, Vector3& collisionPoint, Vector<ManagedReference<SceneObject*> >& collidedObjects) {
+	Zone* zone = obj->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	Vector3 rayOrigin = startPosition;
+	Vector3 rayEnd = targetPosition;
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+
+	float dist = rayEnd.distanceTo(rayOrigin);
+	float intersectionDistance;
+	Triangle* triangle = NULL;
+
+
+	Vector3 center = startPosition - ((targetPosition - startPosition) * 0.5f);
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
+	//zone->getInRangeObjects(center.getX(), center.getY(), center.length()*2.5f, &objects, true);
+	obj->getCloseObjects()->safeCopyTo(objects);
+	for (int i = 0; i < objects.size(); ++i) {
+		const AppearanceTemplate *app = NULL;
+
+		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
+
+        if (scno == obj)
+            continue;
+
+		ShipObject *ship = dynamic_cast<ShipObject*>(scno);
+		if (ship == NULL) {
+			continue;
+		}
+
+		try {
+			app = ship->getObjectTemplate()->getAppearanceTemplate();
+
+		} catch (Exception& e) {
+			app = NULL;
+		} catch (...) {
+			throw;
+		}
+
+		if (app != NULL) {
+			//moving ray to model space
+
+			try {
+				Ray ray = convertToModelSpace(rayOrigin, rayEnd, ship);
+				if (app->intersects(ray, dist, intersectionDistance, triangle, true)) {
+					Vector3 point = ray.getOrigin() + (ray.getDirection() * intersectionDistance);
+					collisionPoint.set(point.getX(), point.getY(), point.getZ());
+					Logger::console.info("Tri Center: " + triangle->getBarycenter().toString(), true);
+					collidedObjects.add(scno);
 
 					return true;
 				}

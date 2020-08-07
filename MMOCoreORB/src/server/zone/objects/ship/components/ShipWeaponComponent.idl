@@ -1,0 +1,87 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+
+class ShipWeaponComponent extends ShipComponent {
+
+    float shieldEffectiveness;
+    float armorEffectiveness;
+    float maxDamage;
+    float minDamage;
+    float refireRate;
+    float energyPerShot;
+
+	public float getShieldEffectiveness() {
+		return shieldEffectiveness;
+	}
+
+	public float getArmorEffectiveness() {
+		return armorEffectiveness;
+	}
+
+	public float getMaxDamage() {
+		return maxDamage;
+	}
+
+	public float getMinDamage() {
+		return minDamage;
+	}
+
+	public float getRefireRate() {
+		return refireRate;
+	}
+
+	public float getEnergyPerShot() {
+		return energyPerShot;
+	}
+
+	public void setShieldEffectiveness(float value) {
+		shieldEffectiveness = value;
+	}
+
+	public void setArmorEffectiveness(float value) {
+		armorEffectiveness = value;
+	}
+
+	public void setMaxDamage(float value) {
+		maxDamage = value;
+	}
+
+	public void setMinDamage(float value) {
+		minDamage = value;
+	}
+
+	public void setRefireRate(float value) {
+		refireRate = value;
+	}
+
+	public void setEnergyPerShot(float value) {
+		energyPerShot = value;
+	}
+
+    public ShipWeaponComponent() {
+        super();
+    }
+
+    @local
+    public native void loadTemplateData(SharedObjectTemplate templateData);
+
+    @local
+    public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+    @local
+    @dirty
+    public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+    public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}

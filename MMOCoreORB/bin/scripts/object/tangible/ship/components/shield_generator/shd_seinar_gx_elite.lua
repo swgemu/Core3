@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_seinar_gx_elite = object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1219.0,
+	hitpoints = 142.0,
+	armor = 69.0,
+	energyUsage = 2634.0,
+	shieldFront = 205.0,
+	shieldRear = 207.0,
+	rechargeRate = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_gx_elite, "object/tangible/ship/components/shield_generator/shd_seinar_gx_elite.iff")

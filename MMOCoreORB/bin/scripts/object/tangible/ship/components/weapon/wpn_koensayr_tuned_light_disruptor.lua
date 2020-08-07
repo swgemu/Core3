@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_koensayr_tuned_light_disruptor = object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1756.0,
+	hitpoints = 196.0,
+	armor = 98.0,
+	energyUsage = 2004.0,
+	minDamage = 364.0,
+	maxDamage = 489.0,
+	refireRate = 4.0,
+	energyPerShot = 30.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_koensayr_tuned_light_disruptor, "object/tangible/ship/components/weapon/wpn_koensayr_tuned_light_disruptor.iff")

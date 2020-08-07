@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_rendili = object_tangible_ship_components_shield_generator_shared_shd_rendili:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5536.0,
+	hitpoints = 435.0,
+	armor = 222.0,
+	energyUsage = 2688.0,
+	shieldFront = 582.0,
+	shieldRear = 578.0,
+	rechargeRate = 12.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_rendili, "object/tangible/ship/components/shield_generator/shd_rendili.iff")

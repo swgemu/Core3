@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_gallofree_level1 = object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 3134.0,
+	hitpoints = 644.0,
+	armor = 322.0,
+	energyUsage = 506.0,
+	droidSpeed = 25.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_gallofree_level1, "object/tangible/ship/components/droid_interface/ddi_gallofree_level1.iff")

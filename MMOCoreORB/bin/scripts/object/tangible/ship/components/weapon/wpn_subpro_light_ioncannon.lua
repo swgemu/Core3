@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_subpro_light_ioncannon = object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1002.0,
+	hitpoints = 151.0,
+	armor = 79.0,
+	energyUsage = 2006.0,
+	minDamage = 292.0,
+	maxDamage = 390.0,
+	refireRate = 8.0,
+	energyPerShot = 23.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_subpro_light_ioncannon, "object/tangible/ship/components/weapon/wpn_subpro_light_ioncannon.iff")

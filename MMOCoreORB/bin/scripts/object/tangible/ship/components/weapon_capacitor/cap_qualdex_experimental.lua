@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_qualdex_experimental = object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 51707.0,
+	hitpoints = 1492.0,
+	armor = 750.0,
+	energyUsage = 1108.0,
+	rechargeRate = 42.0,
+	rechargeRateMod = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_qualdex_experimental, "object/tangible/ship/components/weapon_capacitor/cap_qualdex_experimental.iff")

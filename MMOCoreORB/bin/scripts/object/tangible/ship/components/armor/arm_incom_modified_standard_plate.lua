@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_incom_modified_standard_plate = object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3866.0,
+	hitpoints = 475.0,
+	armor = 479.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_incom_modified_standard_plate, "object/tangible/ship/components/armor/arm_incom_modified_standard_plate.iff")

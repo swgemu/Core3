@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_kessel_rebel_incom_t11_elite = object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42127.0,
+	hitpoints = 1105.0,
+	armor = 557.0,
+	energyUsage = 1809.0,
+	speed = 67.0,
+	pitch = 61.0,
+	yaw = 66.0,
+	roll = 63.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kessel_rebel_incom_t11_elite, "object/tangible/ship/components/engine/eng_kessel_rebel_incom_t11_elite.iff")

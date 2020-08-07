@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_corellian_standard = object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 6883.0,
+	hitpoints = 644.0,
+	armor = 321.0,
+	energyUsage = 1109.0,
+	rechargeRate = 31.0,
+	rechargeRateMod = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_corellian_standard, "object/tangible/ship/components/weapon_capacitor/cap_corellian_standard.iff")

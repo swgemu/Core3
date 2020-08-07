@@ -1839,6 +1839,8 @@ float CreatureObjectImplementation::getTerrainNegotiation() const {
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter) {
+
+	error() << "In CreoImpl::enqueueCommand, actionCRC is: " << actionCRC << " priority is: " << priority << "arguments are: " << arguments << " targetID is: " << targetID;
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_moncal_advanced_weave = object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 33043.0,
+	hitpoints = 1550.0,
+	armor = 1551.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_moncal_advanced_weave, "object/tangible/ship/components/armor/arm_moncal_advanced_weave.iff")

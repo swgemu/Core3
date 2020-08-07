@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_hk_mk1 = object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 3133.0,
+	hitpoints = 644.0,
+	armor = 320.0,
+	energyUsage = 504.0,
+	droidSpeed = 32.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_hk_mk1, "object/tangible/ship/components/droid_interface/ddi_hk_mk1.iff")

@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 #include "server/zone/managers/collision/PathFinderManager.h"
 
@@ -94,7 +95,11 @@ public:
 			}, "ListJediLambda");
 
 			return 0;
-
+		} else if (command == "createship") {
+					ManagedReference<ShipObject*> ship = ShipManager::instance()->generateNeutralNewbieShip(NULL);
+					Locker locker(ship);
+					ship->initializePosition(0, 0, 0);
+					player->getZone()->transferObject(ship, -1);
 		} else if (command == "listfrs") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 

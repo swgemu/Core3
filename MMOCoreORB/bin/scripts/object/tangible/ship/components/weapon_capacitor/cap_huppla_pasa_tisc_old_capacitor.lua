@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_huppla_pasa_tisc_old_capacitor = object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4821.0,
+	hitpoints = 549.0,
+	armor = 280.0,
+	energyUsage = 1103.0,
+	rechargeRate = 43.0,
+	rechargeRateMod = 0.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_huppla_pasa_tisc_old_capacitor, "object/tangible/ship/components/weapon_capacitor/cap_huppla_pasa_tisc_old_capacitor.iff")

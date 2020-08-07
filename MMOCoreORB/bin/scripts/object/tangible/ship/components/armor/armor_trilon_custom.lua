@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_trilon_custom = object_tangible_ship_components_armor_shared_armor_trilon_custom:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 5519.0,
+	hitpoints = 621.0,
+	armor = 613.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_trilon_custom, "object/tangible/ship/components/armor/armor_trilon_custom.iff")

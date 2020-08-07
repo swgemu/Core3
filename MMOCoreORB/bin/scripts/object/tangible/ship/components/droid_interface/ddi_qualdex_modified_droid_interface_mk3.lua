@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_qualdex_modified_droid_interface_mk3 = object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 7809.0,
+	hitpoints = 941.0,
+	armor = 476.0,
+	energyUsage = 502.0,
+	droidSpeed = 19.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_qualdex_modified_droid_interface_mk3, "object/tangible/ship/components/droid_interface/ddi_qualdex_modified_droid_interface_mk3.iff")

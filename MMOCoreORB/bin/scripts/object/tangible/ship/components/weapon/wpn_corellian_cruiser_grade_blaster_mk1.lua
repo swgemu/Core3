@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_corellian_cruiser_grade_blaster_mk1 = object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1102.0,
+	hitpoints = 181.0,
+	armor = 95.0,
+	energyUsage = 2010.0,
+	minDamage = 302.0,
+	maxDamage = 403.0,
+	refireRate = 8.0,
+	energyPerShot = 22.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_corellian_cruiser_grade_blaster_mk1, "object/tangible/ship/components/weapon/wpn_corellian_cruiser_grade_blaster_mk1.iff")

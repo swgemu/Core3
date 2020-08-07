@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_gallofree_light = object_tangible_ship_components_booster_shared_bst_gallofree_light:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 809.0,
+	hitpoints = 155.0,
+	armor = 76.0,
+	energyUsage = 510.0,
+	speed = 24.0,
+	maxEnergy = 1005.0,
+	rechargeRate = 28.0,
+	boosterDrain = 109.0,
+	boosterAccel = 22.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_gallofree_light, "object/tangible/ship/components/booster/bst_gallofree_light.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_alderaan_royal_weave = object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3474.0,
+	hitpoints = 420.0,
+	armor = 418.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_alderaan_royal_weave, "object/tangible/ship/components/armor/armor_alderaan_royal_weave.iff")

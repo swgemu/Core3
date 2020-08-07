@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_z95_basic = object_tangible_ship_components_shield_generator_shared_shd_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1107.0,
+	hitpoints = 158.0,
+	armor = 78.0,
+	energyUsage = 2556.0,
+	shieldFront = 207.0,
+	shieldRear = 209.0,
+	rechargeRate = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_z95_basic, "object/tangible/ship/components/shield_generator/shd_z95_basic.iff")

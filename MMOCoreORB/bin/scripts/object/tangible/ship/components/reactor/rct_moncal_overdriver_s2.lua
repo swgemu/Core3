@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_moncal_overdriver_s2 = object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14429.0,
+	hitpoints = 1056.0,
+	armor = 525.0,
+	energyUsage = 1.0,
+	maxEnergy = 21007.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_moncal_overdriver_s2, "object/tangible/ship/components/reactor/rct_moncal_overdriver_s2.iff")

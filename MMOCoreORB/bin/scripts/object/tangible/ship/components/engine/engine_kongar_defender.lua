@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_kongar_defender = object_tangible_ship_components_engine_shared_engine_kongar_defender:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4137.0,
+	hitpoints = 410.0,
+	armor = 210.0,
+	energyUsage = 1509.0,
+	speed = 59.0,
+	pitch = 60.0,
+	yaw = 67.0,
+	roll = 61.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_kongar_defender, "object/tangible/ship/components/engine/engine_kongar_defender.iff")

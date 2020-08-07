@@ -70,6 +70,8 @@ class Zone extends SceneObject {
 
 	@dereferenced
 	private transient AtomicBoolean managersStarted;
+	protected boolean spaceZone;
+	
 	private transient boolean zoneCleared;
 
 	public native Zone(ZoneProcessServer processor, final string zoneName);
@@ -221,6 +223,11 @@ class Zone extends SceneObject {
 
 	public native float getBoundingRadius();
 
+	@dirty
+	public boolean isSpaceZone() {
+	    return spaceZone;
+	}
+	
 	/**
 	 * Registers the object to the planetary map. This also makes the object visible to the find command.
 	 * @param object The object to register to the planetary map.

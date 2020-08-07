@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_mission_reward_imperial_sfs_military_grade = object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 6564.0,
+	hitpoints = 1144.0,
+	armor = 573.0,
+	energyUsage = 605.0,
+	droidSpeed = 26.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mission_reward_imperial_sfs_military_grade, "object/tangible/ship/components/droid_interface/ddi_mission_reward_imperial_sfs_military_grade.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mandal_powersoak = object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56403.0,
+	hitpoints = 1659.0,
+	armor = 829.0,
+	energyUsage = 1204.0,
+	rechargeRate = 45.0,
+	rechargeRateMod = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mandal_powersoak, "object/tangible/ship/components/weapon_capacitor/cap_mandal_powersoak.iff")

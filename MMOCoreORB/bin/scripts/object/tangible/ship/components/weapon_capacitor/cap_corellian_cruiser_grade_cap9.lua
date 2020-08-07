@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_corellian_cruiser_grade_cap9 = object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 32763.0,
+	hitpoints = 1544.0,
+	armor = 772.0,
+	energyUsage = 1202.0,
+	rechargeRate = 50.0,
+	rechargeRateMod = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_corellian_cruiser_grade_cap9, "object/tangible/ship/components/weapon_capacitor/cap_corellian_cruiser_grade_cap9.iff")

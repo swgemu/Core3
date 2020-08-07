@@ -75,6 +75,9 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+
+#include "server/zone/objects/ship/ShipObject.h"
+
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -1831,6 +1834,11 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	if (creature == nullptr)
 		return;
+
+	Reference<SceneObject*> creoParent = creature->getParent().get();
+	if (creoParent != nullptr && creoParent->isShipObject()) {
+		creoParent->asShipObject()->doRecovery(latency);
+	}
 
 	if (!isTeleporting()) {
 		creature->removeOutOfRangeObjects();

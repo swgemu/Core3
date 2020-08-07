@@ -43,6 +43,16 @@
 
 object_ship_freighterheavy_tier4 = object_ship_shared_freighterheavy_tier4:new {
 
+	name = "freighterheavy_tier4",
+	slideFactor = 1.91,
+	chassisHitpoints = 3840,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 4125.828, armor = 4095.255,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 4099.962, armor = 3991.605, speed = 45.1427, pitch = 24.77286, roll = 30.50391, yaw = 19.4721, acceleration = 10.62095, rollRate = 55.92722, pitchRate = 49.87097, deceleration = 9.374779, yawRate = 41.0502,},
+	shield_0 = { name = "shd_generic", hitpoints = 3962.014, armor = 3984.339, regen = 22.27382, front = 40925.89, back = 40785.5,},
+	armor_0 = { name = "arm_generic", hitpoints = 22016.66, armor = 21892.39,},
+	armor_1 = { name = "arm_generic", hitpoints = 21309.18, armor = 21084.69,},
+	capacitor = { name = "cap_generic", hitpoints = 4003.832, armor = 4075.134, rechargeRate = 96.05294, energy = 4975.014,},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterheavy_tier4, "object/ship/freighterheavy_tier4.iff")

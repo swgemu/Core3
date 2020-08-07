@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_subpro_dyna2 = object_tangible_ship_components_reactor_shared_rct_subpro_dyna2:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 36039.0,
+	hitpoints = 1271.0,
+	armor = 632.0,
+	energyUsage = 2.0,
+	maxEnergy = 26355.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_subpro_dyna2, "object/tangible/ship/components/reactor/rct_subpro_dyna2.iff")

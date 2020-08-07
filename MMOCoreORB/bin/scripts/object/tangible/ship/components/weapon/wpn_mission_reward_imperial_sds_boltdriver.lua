@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_imperial_sds_boltdriver = object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 21849.0,
+	hitpoints = 1127.0,
+	armor = 566.0,
+	energyUsage = 2802.0,
+	minDamage = 1920.0,
+	maxDamage = 2960.0,
+	refireRate = 8.0,
+	energyPerShot = 34.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_imperial_sds_boltdriver, "object/tangible/ship/components/weapon/wpn_mission_reward_imperial_sds_boltdriver.iff")

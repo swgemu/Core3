@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_taim_standard = object_tangible_ship_components_shield_generator_shared_shd_taim_standard:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5054.0,
+	hitpoints = 434.0,
+	armor = 216.0,
+	energyUsage = 2884.0,
+	shieldFront = 585.0,
+	shieldRear = 580.0,
+	rechargeRate = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_taim_standard, "object/tangible/ship/components/shield_generator/shd_taim_standard.iff")

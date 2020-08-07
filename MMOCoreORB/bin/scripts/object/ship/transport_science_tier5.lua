@@ -43,6 +43,16 @@
 
 object_ship_transport_science_tier5 = object_ship_shared_transport_science_tier5:new {
 
+	name = "transport_science_tier5",
+	slideFactor = 1.83,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 6055.575, armor = 6369.307,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 6087.82, armor = 6216.768, speed = 47.02497, pitch = 24.81484, roll = 31.81628, yaw = 19.93396, acceleration = 11.22417, rollRate = 57.19715, pitchRate = 51.25757, deceleration = 9.387942, yawRate = 43.19764,},
+	shield_0 = { name = "shd_generic", hitpoints = 6122.386, armor = 6209.116, regen = 22.93885, front = 36508.72, back = 37233.51,},
+	armor_0 = { name = "arm_generic", hitpoints = 19461.15, armor = 20141.33,},
+	armor_1 = { name = "arm_generic", hitpoints = 19424.91, armor = 19659.14,},
+	capacitor = { name = "cap_generic", hitpoints = 6273.394, armor = 6358.327, rechargeRate = 98.87985, energy = 4939.263,},
 }
 
 ObjectTemplates:addTemplate(object_ship_transport_science_tier5, "object/ship/transport_science_tier5.iff")

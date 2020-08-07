@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_armek_plasma_web = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 43550.0,
+	hitpoints = 1410.0,
+	armor = 701.0,
+	energyUsage = 2934.0,
+	shieldFront = 2439.0,
+	shieldRear = 2439.0,
+	rechargeRate = 15.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_armek_plasma_web, "object/tangible/ship/components/shield_generator/shd_mission_reward_neutral_armek_plasma_web.iff")

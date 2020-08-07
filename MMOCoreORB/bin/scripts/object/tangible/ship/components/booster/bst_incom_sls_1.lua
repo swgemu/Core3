@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_sls_1 = object_tangible_ship_components_booster_shared_bst_incom_sls_1:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37448.0,
+	hitpoints = 1106.0,
+	armor = 558.0,
+	energyUsage = 604.0,
+	speed = 25.0,
+	maxEnergy = 1469.0,
+	rechargeRate = 40.0,
+	boosterDrain = 147.0,
+	boosterAccel = 30.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_sls_1, "object/tangible/ship/components/booster/bst_incom_sls_1.iff")

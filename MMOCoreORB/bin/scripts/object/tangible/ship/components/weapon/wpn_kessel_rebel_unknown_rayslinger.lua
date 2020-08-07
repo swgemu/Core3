@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kessel_rebel_unknown_rayslinger = object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56405.0,
+	hitpoints = 1380.0,
+	armor = 693.0,
+	energyUsage = 2604.0,
+	minDamage = 2560.0,
+	maxDamage = 4136.0,
+	refireRate = 1.0,
+	energyPerShot = 42.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_rebel_unknown_rayslinger, "object/tangible/ship/components/weapon/wpn_kessel_rebel_unknown_rayslinger.iff")

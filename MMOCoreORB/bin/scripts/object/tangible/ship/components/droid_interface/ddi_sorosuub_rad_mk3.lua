@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_sorosuub_rad_mk3 = object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 7808.0,
+	hitpoints = 941.0,
+	armor = 473.0,
+	energyUsage = 509.0,
+	droidSpeed = 21.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sorosuub_rad_mk3, "object/tangible/ship/components/droid_interface/ddi_sorosuub_rad_mk3.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_sfs_polyweb_advanced = object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 55777.0,
+	hitpoints = 996.0,
+	armor = 500.0,
+	energyUsage = 3010.0,
+	shieldFront = 1475.0,
+	shieldRear = 1467.0,
+	rechargeRate = 17.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_sfs_polyweb_advanced, "object/tangible/ship/components/shield_generator/shd_sfs_polyweb_advanced.iff")

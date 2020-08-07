@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mandal_x57_vandal = object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4135.0,
+	hitpoints = 432.0,
+	armor = 219.0,
+	energyUsage = 1576.0,
+	speed = 60.0,
+	pitch = 69.0,
+	yaw = 61.0,
+	roll = 68.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mandal_x57_vandal, "object/tangible/ship/components/engine/eng_mandal_x57_vandal.iff")

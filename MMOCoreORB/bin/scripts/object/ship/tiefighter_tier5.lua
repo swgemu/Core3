@@ -43,6 +43,17 @@
 
 object_ship_tiefighter_tier5 = object_ship_shared_tiefighter_tier5:new {
 
+	name = "tiefighter_tier5",
+	slideFactor = 1.85,
+	chassisHitpoints = 3686.4,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 3027.34, armor = 3150.808,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 3057.009, armor = 3176.463, speed = 46.62571, pitch = 25.47468, roll = 31.84615, yaw = 20.58797, acceleration = 11.13056, rollRate = 56.76321, pitchRate = 50.5124, deceleration = 9.398825, yawRate = 42.48166,},
+	shield_0 = { name = "shd_generic", hitpoints = 3146.452, armor = 3096.703, regen = 0, front = 0, back = 0,},
+	armor_0 = { name = "arm_generic", hitpoints = 10106.6, armor = 9758.436,},
+	armor_1 = { name = "arm_generic", hitpoints = 10019.86, armor = 10015.07,},
+	capacitor = { name = "cap_generic", hitpoints = 3094.228, armor = 3168.944, rechargeRate = 95.42989, energy = 4796.306,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 3031.631, armor = 3124.447, rate = 0.7454476, drain = 0.9835394, maxDamage = 318.6493, shieldEfficiency = 0.5466422, minDamage = 204.2657, ammo = 0, ammo_type = 0, armorEfficiency = 0.5586483,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tiefighter_tier5, "object/ship/tiefighter_tier5.iff")
