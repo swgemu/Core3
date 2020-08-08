@@ -860,6 +860,8 @@ class TangibleObject extends SceneObject {
 		return null;
 	}
 
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
 	@read
 	public native boolean isCityStreetLamp();
 
