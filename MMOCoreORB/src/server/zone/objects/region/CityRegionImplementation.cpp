@@ -29,6 +29,10 @@
 #include "server/zone/objects/creature/commands/TransferstructureCommand.h"
 #include "pathfinding/RecastNavMesh.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
+#include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
+#include "server/zone/objects/player/sui/callbacks/CityRemoveMilitiaMemberSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityAddMilitiaMemberSuiCallback.h"
 
 int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
@@ -68,6 +72,8 @@ void CityRegionImplementation::initialize() {
 	cityHall = nullptr;
 
 	mayorID = 0;
+
+	//militiaID = 0;
 
 	shuttleID = 0;
 
@@ -450,6 +456,15 @@ void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration)
 bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 	if(getMayorID() != 0 && objectid == getMayorID())
 		return true;
+	//PlayerManager* playerManager = zoneServer->getPlayerManager();
+	//uint64 militiaid = playerManager->getObjectID(playerName);
+	//ManagedReference<SceneObject*> militiaId = zoneServer->getObject(objectid->getMilitiaID());
+	//ManagedReference<SceneObject*> mayorObject = server->getObject(getMilitiaID());
+	//ManagedReference<SceneObject*> militiaMember = creature->getZoneServer()->getObject(militiaID);
+	if(isMilitiaMember(objectid))
+		return true;
+	//if(getMilitiaID() != 0 && objectid == getMilitiaID())
+	//	return true;
 
 	uint32 timestamp = zoningRights.get(objectid);
 

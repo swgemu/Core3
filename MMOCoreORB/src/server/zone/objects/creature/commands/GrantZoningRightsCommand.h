@@ -46,6 +46,9 @@ public:
 		if (city->isMayor(target))
 			return GENERALERROR; //Cannot revoke the rights of the mayor
 
+		if (city->isMilitiaMember(target))
+			return GENERALERROR;
+
 		//Target already has zoning rights
 		if (city->hasZoningRights(target)) {
 			city->removeZoningRights(target);
