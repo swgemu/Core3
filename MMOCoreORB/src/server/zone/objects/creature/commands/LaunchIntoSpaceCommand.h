@@ -101,8 +101,10 @@ public:
             Core::getTaskManager()->executeTask([newZone, ship, strongCreo, position]{
                 Locker locker(ship);
                 Locker cross(ship, newZone);
-                newZone->transferObject(ship, -1, true);
                 ship->initializePosition(position.getX(), position.getY(), position.getZ());
+
+                newZone->transferObject(ship, -1, true);
+
                 cross.release();
 
                 Locker creoCross(ship, strongCreo);
