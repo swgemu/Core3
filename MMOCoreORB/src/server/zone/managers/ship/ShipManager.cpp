@@ -594,7 +594,8 @@ ShipObject* ShipManager::generateImperialNewbieShip(Reference<CreatureObject*> o
     return ship;
 }
 ShipObject* ShipManager::generateRebelNewbieShip(Reference<CreatureObject*> owner) {
-    ManagedReference<ShipObject*> ship = generateShip("object/ship/star_destroyer.iff");
+    //ManagedReference<ShipObject*> ship = generateShip("object/ship/star_destroyer.iff");
+	ManagedReference<ShipObject*> ship = generateShip("object/ship/player/player_basic_z95.iff");
 	Locker locker(ship);
 	ship->setChassisMaxHealth(1000.0f);
 	ship->setCurrentChassisHealth(1000.0f);

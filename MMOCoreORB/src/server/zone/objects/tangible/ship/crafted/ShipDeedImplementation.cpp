@@ -17,6 +17,8 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 void ShipDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
 
@@ -121,16 +123,19 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 		Locker vlocker(ship, player);
 
-		shipControlDevice->setControlledObject(ship);
-
 	    ship->setChassisMaxHealth(1000.0f);
 	    ship->setCurrentChassisHealth(1000.0f);
-
 	    ship->setOwner(player);
+
+		shipControlDevice->setControlledObject(ship);
+		if (!shipControlDevice->transferObject(ship, 4))
+			info("Adding of ship to device failed");
 
 		if (datapad->transferObject(shipControlDevice, -1)) {
 			datapad->broadcastObject(shipControlDevice, true);
-			shipControlDevice->generateObject(player);
+			//shipControlDevice->generateObject(player);
+
+			player->getPlayerObject()->addShip(ship);
 
 			generated = true;
 
