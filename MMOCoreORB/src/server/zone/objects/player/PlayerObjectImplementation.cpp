@@ -2331,18 +2331,24 @@ Time PlayerObjectImplementation::getLastGcwPvpCombatActionTimestamp() const {
 	return lastGcwPvpCombatActionTimestamp;
 }
 
-void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction) {
+Time PlayerObjectImplementation::getLastRealGcwTefPvpCombatActionTimestamp() const {
+	return lastRealGcwTefPvpCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction, bool updateRealGcwAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
 		return;
 
 	bool alreadyHasTef = hasPvpTef();
+	bool alreadyHasRealGcwTef = hasRealGcwTef();
 
 	if (updateBhAction) {
 		bool alreadyHasBhTef = hasBhTef();
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 		lastBhPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+		info("updateBhAction", true);
 
 		if (!alreadyHasBhTef)
 			parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
@@ -2351,33 +2357,48 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 	if (updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+		info("updateGcwAction", true);
+	}
+
+	if (updateRealGcwAction) {
+		lastRealGcwTefPvpCombatActionTimestamp.updateToCurrentTime();
+		lastRealGcwTefPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+		info("updateRealGcwAction", true);
 	}
 
 	schedulePvpTefRemovalTask();
 
-	if (!alreadyHasTef) {
+	if (!alreadyHasTef || !alreadyHasRealGcwTef) {
 		updateInRangeBuildingPermissions();
 		parent->setPvpStatusBit(CreatureFlag::TEF);
 	}
 }
 
 void PlayerObjectImplementation::updateLastBhPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(false, true);
+	updateLastPvpCombatActionTimestamp(false, true, false);
 }
 
 void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(true, false);
+	updateLastPvpCombatActionTimestamp(true, false, false);
+}
+
+void PlayerObjectImplementation::updateLastRealGcwTefPvpCombatActionTimestamp() {
+	updateLastPvpCombatActionTimestamp(false, false, true);
 }
 
 bool PlayerObjectImplementation::hasPvpTef() const {
-	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
+	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef(); // || hasRealGcwTef();
 }
 
 bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
-void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow) {
+bool PlayerObjectImplementation::hasRealGcwTef() const {
+	return !lastRealGcwTefPvpCombatActionTimestamp.isPast();
+}
+
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow, bool removeRealGcwTefNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
@@ -2387,7 +2408,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
-	if (removeGcwTefNow || removeBhTefNow) {
+	if (removeGcwTefNow || removeBhTefNow || removeRealGcwTefNow) {
 		if (removeGcwTefNow)
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 
@@ -2396,16 +2417,25 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 			parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
 		}
 
+		if (removeRealGcwTefNow) {
+			lastRealGcwTefPvpCombatActionTimestamp.updateToCurrentTime();
+			//parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
+		}
+
 		if (pvpTefTask->isScheduled()) {
 			pvpTefTask->cancel();
 		}
 	}
 
 	if (!pvpTefTask->isScheduled()) {
-		if (hasPvpTef()) {
+		if (hasPvpTef() || hasRealGcwTef()) {
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
-			pvpTefTask->schedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
+			auto realGcwTefMs = getLastRealGcwTefPvpCombatActionTimestamp().miliDifference();
+			auto scheduledTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
+			scheduledTime = realGcwTefMs < scheduledTime ? realGcwTefMs : scheduledTime;
+			pvpTefTask->schedule(llabs(scheduledTime));
+			//pvpTefTask->schedule(llabs(realGcwTefMs < gcwTefMs ? (realGcwTefMs < bhTefMs ? realGcwTefMs : bhTefMs) : (gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs)));
 		} else {
 			pvpTefTask->execute();
 		}
@@ -2413,7 +2443,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 }
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
-	schedulePvpTefRemovalTask(removeNow, removeNow);
+	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow);
 }
 
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() const {
@@ -2864,10 +2894,12 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 	if (newStatus == FactionStatus::COVERT) {
 		inputbox->setPromptText("@gcw:gcw_status_change_covert"); // You are changing your GCW Status to 'Combatant'. This transition will take 30 seconds. It will allow you to attack and be attacked by enemy NPC's. Type YES in this box to confirm the change.
 	// Test for box with no data
+	//PlayerObject* ghost = parent->getPlayerObject();
+	//ManagedReference<PlayerObject*> ghost = parent->getPlayerObject();
 	// TEF Fix
-	} else if (curStatus == FactionStatus::COVERT && (parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+	} else if (curStatus == FactionStatus::COVERT && (parent->getPvpStatusBitmask() & CreatureFlag::TEF)) { //parent->getPvpStatusBitmask() & CreatureFlag::TEF
 		return;
-	} else if (newStatus == FactionStatus::OVERT && !(parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+	} else if (newStatus == FactionStatus::OVERT && !(parent->getPvpStatusBitmask() & CreatureFlag::TEF)) { //parent->getPvpStatusBitmask() & CreatureFlag::TEF
 		return;
 		//inputbox->setPromptText("@gcw:gcw_status_change_overt"); // You are changing your GCW Status to 'Special Forces'. This transition will take 5 minutes. It will allow you to attack and be attacked by hostile players and NPC's.Type YES in this box to confirm the change.
 	}

@@ -261,8 +261,8 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 		// TEF Fix
 		if (!CombatManager::instance()->areInDuel(creature, target)
-				&& targetGhost != nullptr && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT) && targetGhost->hasPvpTef()) {
-			ghost->updateLastGcwPvpCombatActionTimestamp();
+				&& targetGhost != nullptr && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT) && targetGhost->hasRealGcwTef()) {
+			ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
 		}
 	} else if (target->isPet()) {
 		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
@@ -271,8 +271,8 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
 			if (!CombatManager::instance()->areInDuel(creature, owner)
-					&& ownerGhost != nullptr && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
-				ghost->updateLastGcwPvpCombatActionTimestamp();
+					&& ownerGhost != nullptr && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasRealGcwTef()) {
+				ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
 			}
 		}
 	}

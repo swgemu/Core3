@@ -33,10 +33,19 @@ public:
 
 		Locker locker(player);
 
-		if (ghost->hasPvpTef()) {
+		if (ghost->hasPvpTef() || ghost->hasRealGcwTef()) {
 			auto gcwTefMs = ghost->getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = ghost->getLastBhPvpCombatActionTimestamp().miliDifference();
-			this->reschedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
+			auto realGcwTefMs = ghost->getLastRealGcwTefPvpCombatActionTimestamp().miliDifference();
+			auto scheduledTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
+			scheduledTime = realGcwTefMs < scheduledTime ? realGcwTefMs : scheduledTime;
+			this->reschedule(llabs(scheduledTime));
+			//if (realGcwTefMs < 0) {
+			//	this->reschedule(llabs(realGcwTefMs));
+			//} else{
+			//	this->reschedule(llabs(realGcwTefMs < gcwTefMs ? (realGcwTefMs < bhTefMs ? realGcwTefMs : bhTefMs) : (gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs)));
+			//}
+			
 		} else {
 			ghost->updateInRangeBuildingPermissions();
 			player->clearPvpStatusBit(CreatureFlag::TEF);

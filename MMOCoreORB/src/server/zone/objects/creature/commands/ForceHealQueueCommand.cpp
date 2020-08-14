@@ -460,7 +460,7 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 	// TEF Fix
 	PlayerObject* ghost = creature->getPlayerObject().get();
 	if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT)
-		ghost->updateLastGcwPvpCombatActionTimestamp();
+		ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
 	checkForTef(creature, targetCreature);
 
 	int retval = GENERALERROR;

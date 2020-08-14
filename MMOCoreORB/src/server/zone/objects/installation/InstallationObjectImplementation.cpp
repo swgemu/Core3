@@ -669,8 +669,10 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 		return false;
 
 	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction()) {
-		//PlayerObject* ghost = target->getPlayerObject();
-		if (target->getFactionStatus() == FactionStatus::OVERT || target->getPvpStatusBitmask() & CreatureFlag::TEF)
+		PlayerObject* ghost = target->getPlayerObject();
+		if (target->getFactionStatus() == FactionStatus::OVERT)// || ghost->hasPvpTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
+			return true;
+		if (target->getFactionStatus() == FactionStatus::COVERT && ghost->hasRealGcwTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
 			return true;
 		//if (ghost->hasPvpTef() && target->getFactionStatus() == FactionStatus::COVERT)
 		//	return true;

@@ -90,6 +90,7 @@
 #include "templates/appearance/PaletteTemplate.h"
 #include "server/zone/managers/auction/AuctionSearchTask.h"
 
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -3002,8 +3003,8 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isOnLoadScreen())
 		return false;
 
-	if (hasPersonalEnemyFlag(object) && object->hasPersonalEnemyFlag(asCreatureObject()))
-		return true;
+	//if (hasPersonalEnemyFlag(object) && object->hasPersonalEnemyFlag(asCreatureObject()))
+	//	return true;
 
 	if (ConfigManager::instance()->getPvpMode() && isPlayerCreature())
 		return true;
@@ -3032,7 +3033,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	}*/
 
 	// TEF FIX
-	if ((ghost->hasPvpTef() || object->getPvpStatusBitmask() & CreatureFlag::TEF) && getFaction() != object->getFaction())
+	if ((ghost->hasRealGcwTef() || targetGhost->hasRealGcwTef()) && getFaction() != object->getFaction()) //object->getPvpStatusBitmask() & CreatureFlag::TEF) 
 		return true;
 
 	ManagedReference<GuildObject*> guildObject = guild.get();
@@ -3078,7 +3079,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 
 	// if tano is overt, creature must be overt
 	// TEF FIX
-	if((getFactionStatus() == FactionStatus::COVERT && !(getPvpStatusBitmask() & CreatureFlag::TEF)) && object->getFaction() != 0) {
+	if((getFactionStatus() == FactionStatus::COVERT && !(ghost->hasRealGcwTef())) && object->getFaction() != 0) { //getPvpStatusBitmask() & CreatureFlag::TEF
 		return false;
 	//} else if((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 	//	return false;
@@ -3139,7 +3140,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 			return false;
 		else if (isPlayerCreature() && getFactionStatus() == FactionStatus::ONLEAVE)
 			return false;
-		else if (isPlayerCreature() && getFactionStatus() == FactionStatus::COVERT && !ghost->hasPvpTef())
+		else if (isPlayerCreature() && getFactionStatus() == FactionStatus::COVERT && !ghost->hasRealGcwTef())
 			return false;
 
 		return true;
@@ -3151,8 +3152,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (ghost == nullptr || targetGhost == nullptr)
 		return false;
 
-	if (hasPersonalEnemyFlag(object) && object->hasPersonalEnemyFlag(asCreatureObject()))
-		return true;
+	//if (hasPersonalEnemyFlag(object) && object->hasPersonalEnemyFlag(asCreatureObject()))
+	//	return true;
 
 	bool areInDuel = (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(asCreatureObject()));
 
@@ -3162,17 +3163,31 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (object->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(object)))
 		return true;
 
+	//bool bhFight = (object->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(object)));
+
 	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
 		return false;
-
-	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
+	//if (!bhFight) {
+		//ManagedReference<PlayerObject*> ghostPlayer = ghost->getPlayerObject();
+	if (object->getFaction() != getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
+		if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT))
+			return true;
+		if (ghost->hasRealGcwTef() && object->getPvpStatusBitmask() & CreatureFlag::OVERT)
+			return true;
+		if ((pvpStatusBitmask & CreatureFlag::OVERT && ghost->hasRealGcwTef()) && targetGhost->hasRealGcwTef())
+			return true;
+		if (ghost->hasRealGcwTef() && targetGhost->hasRealGcwTef())
+			return true;
+		}
+	//}
+	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
+	//	return true;
+	//if ((targetGhost->hasPvpTef()) && (object->getFaction() != getFaction()) && (object->getFaction() != 0) && object->getPvpStatusBitmask() & CreatureFlag::OVERT && !(bhFight)) //pvpStatusBitmask & CreatureFlag::TEF
+	//	return true;
+	/*if ((pvpStatusBitmask & CreatureFlag::OVERT && ghost->hasPvpTef()) && (object->getFaction() != getFaction()) && (object->getFaction() != 0) && targetGhost->hasPvpTef() && !(bhFight))
 		return true;
-	if ((pvpStatusBitmask & CreatureFlag::TEF) && (object->getFaction() != getFaction()) && (object->getFaction() != 0) && object->getPvpStatusBitmask() & CreatureFlag::OVERT)
-		return true;
-	if ((pvpStatusBitmask & CreatureFlag::OVERT && ghost->hasPvpTef()) && (object->getFaction() != getFaction()) && (object->getFaction() != 0) && targetGhost->hasPvpTef())
-		return true;
-	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef())
-		return true;
+	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef() && !(bhFight))
+		return true;*/
 	//BH GTEF for later use
 	/*if (ghost->hasBhTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();
@@ -3243,7 +3258,7 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 			//if(getFaction() != object->getFaction() && (targetFactionStatus == FactionStatus::COVERT || targetGhost->hasPvpTef()))
 			//	return false;
 			if(getFaction() != object->getFaction()) {
-				if(targetFactionStatus == FactionStatus::COVERT && targetGhost->hasPvpTef())
+				if(targetFactionStatus == FactionStatus::COVERT && targetGhost->hasRealGcwTef())
 					return false;
 				if(targetFactionStatus == FactionStatus::OVERT)
 					return false;

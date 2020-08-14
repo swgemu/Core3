@@ -2815,7 +2815,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		//else if (ghost != nullptr && (ghost->hasPersonalEnemyFlag() && target->hasPersonalEnemyFlag(asCreatureObject()) && (targetFaction == getFaction()) && target->getFactionStatus() == FactionStatus::COVERT))
 		//	return true;
 		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-		else if (ghost != nullptr && (targetFaction != getFaction()) && (target->getFactionStatus() == FactionStatus::OVERT || target->getPvpStatusBitmask() & CreatureFlag::TEF))
+		else if (ghost != nullptr && (targetFaction != getFaction()) && (target->getFactionStatus() == FactionStatus::OVERT || ghost->hasRealGcwTef())) //target->getPvpStatusBitmask() & CreatureFlag::TEF
 			return true;
 		
 	}

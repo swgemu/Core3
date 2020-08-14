@@ -567,7 +567,7 @@ public:
 		//PlayerObject* targetGhost = targetCreature->getPlayerObject().get();
 		PlayerObject* ghost = creature->getPlayerObject().get();
 		if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT)
-			ghost->updateLastGcwPvpCombatActionTimestamp();
+			ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
 
 		checkForTef(creature, targetCreature);
 
