@@ -73,8 +73,6 @@ void CityRegionImplementation::initialize() {
 
 	mayorID = 0;
 
-	//militiaID = 0;
-
 	shuttleID = 0;
 
 	hasShuttle = false;
@@ -456,15 +454,9 @@ void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration)
 bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 	if(getMayorID() != 0 && objectid == getMayorID())
 		return true;
-	//PlayerManager* playerManager = zoneServer->getPlayerManager();
-	//uint64 militiaid = playerManager->getObjectID(playerName);
-	//ManagedReference<SceneObject*> militiaId = zoneServer->getObject(objectid->getMilitiaID());
-	//ManagedReference<SceneObject*> mayorObject = server->getObject(getMilitiaID());
-	//ManagedReference<SceneObject*> militiaMember = creature->getZoneServer()->getObject(militiaID);
+
 	if(isMilitiaMember(objectid))
 		return true;
-	//if(getMilitiaID() != 0 && objectid == getMilitiaID())
-	//	return true;
 
 	uint32 timestamp = zoningRights.get(objectid);
 
