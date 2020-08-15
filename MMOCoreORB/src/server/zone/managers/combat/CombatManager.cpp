@@ -271,11 +271,13 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 			PlayerObject* ghostDefender = defendingCreature->getPlayerObject();
 
 			if (ghostAttacker != nullptr) {
-				if (defender->isAiAgent() && defender->getFaction() != attackingCreature->getFaction()) { // && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+				if (defender->isAiAgent() && defender->getFaction() != attackingCreature->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
 					ghostAttacker->updateLastPvpCombatActionTimestamp(false, false, true);
-				} else {
+				}
+				if (defender->isPlayerCreature()) {
 					ghostAttacker->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef,shouldRealGcwTef);
 				}
+				
 			}
 			/*if (ghostDefender != nullptr) {
 				ghostDefender->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef,shouldRealGcwTef);
@@ -482,7 +484,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		if (attacker->isPlayerCreature()){
 			info("shouldRealGcwTefpvpdtca1", true);
 			PlayerObject* ghost = attacker->getPlayerObject();
-			if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction()) {// && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL))
+			if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
 				ghost->updateLastPvpCombatActionTimestamp(false,false,true);
 				info("shouldRealGcwTefpvpdtca2", true);
 			}
