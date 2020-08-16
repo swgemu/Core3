@@ -2348,7 +2348,7 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 		bool alreadyHasBhTef = hasBhTef();
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 		lastBhPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
-		info("updateBhAction", true);
+		//info("updateBhAction", true);
 
 		if (!alreadyHasBhTef)
 			parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
@@ -2357,13 +2357,13 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 	if (updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
-		info("updateGcwAction", true);
+		//info("updateGcwAction", true);
 	}
 
 	if (updateRealGcwAction) {
 		lastRealGcwTefPvpCombatActionTimestamp.updateToCurrentTime();
 		lastRealGcwTefPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
-		info("updateRealGcwAction", true);
+		//info("updateRealGcwAction", true);
 	}
 
 	schedulePvpTefRemovalTask();

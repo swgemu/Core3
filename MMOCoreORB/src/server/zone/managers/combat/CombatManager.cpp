@@ -207,10 +207,10 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	damage = doTargetCombatAction(attacker, weapon, defenderObject, data, &shouldGcwTef, &shouldBhTef, &shouldRealGcwTef);
 	
 	//info("damage stuff" + String::valueOf(damage), true);
-	if (shouldBhTef)
+	/*if (shouldBhTef)
 		info("shouldBhTefdca" + shouldBhTef, true);
 	if (shouldRealGcwTef)
-		info("shouldRealGcwTefdca" + shouldRealGcwTef, true);
+		info("shouldRealGcwTefdca" + shouldRealGcwTef, true);*/
 
 	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
 		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
@@ -473,20 +473,20 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		}
 	}
-	if (shouldBhTef)
+	/*if (shouldBhTef)
 		info("shouldBhTefpvpdtca", true);
 	if (shouldGcwTef)
 		info("shouldGcwTefpvpdtca", true);
 	if (shouldRealGcwTef)
-		info("shouldRealGcwTefpvpdtca", true);
+		info("shouldRealGcwTefpvpdtca", true);*/
 // TEF FIX
 	if (shouldRealGcwTef) { // || shouldBhTef || shouldGcwTef) {
 		if (attacker->isPlayerCreature()){
-			info("shouldRealGcwTefpvpdtca1", true);
+			//info("shouldRealGcwTefpvpdtca1", true);
 			PlayerObject* ghost = attacker->getPlayerObject();
 			if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
 				ghost->updateLastPvpCombatActionTimestamp(false,false,true);
-				info("shouldRealGcwTefpvpdtca2", true);
+				//info("shouldRealGcwTefpvpdtca2", true);
 			}
 			//ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
 			/*if (defender->isPlayerCreature()) {
