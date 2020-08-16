@@ -856,6 +856,7 @@ void AiAgentImplementation::selectSpecialAttack() {
 }
 
 void AiAgentImplementation::selectSpecialAttack(int attackNum) {
+	info(true) << "select special attack";
 	const CreatureAttackMap* attackMap = getAttackMap();
 	if (attackMap == nullptr) {
 		selectDefaultAttack();
@@ -897,6 +898,7 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 }
 
 void AiAgentImplementation::selectDefaultAttack() {
+	info(true) << "select default attack";
 	if (npcTemplate == nullptr)
 		nextActionCRC = STRING_HASHCODE("defaultattack");
 	else

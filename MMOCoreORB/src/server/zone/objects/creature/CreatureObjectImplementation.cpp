@@ -1895,8 +1895,9 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		} else if (priority == QueueCommand::FRONT) {
 			if (commandQueue->size() > 0) {
 				action->setCompareToCounter(commandQueue->get(0)->getCompareToCounter() - 1);
+				info(true) << "updating compare counter to " << commandQueue->get(0)->getCompareToCounter() - 1;
 			}
-
+			info(true) << "enqueued command: " << action->getCommand();
 			commandQueue->put(action.get());
 		}
 	} else {
@@ -1953,7 +1954,13 @@ void CreatureObjectImplementation::activateQueueAction() {
 		return;
 	}
 
+	info(true) << "commands in queue";
+	for (int i = 0; i < commandQueue->size(); i++) {
+		info(true) << "  " << i << ": " << commandQueue->get(i)->getCommand() << ", " << commandQueue->get(i)->getActionCounter();
+	}
 	Reference<CommandQueueAction*> action = commandQueue->get(0);
+	info(true) << "command to activate: " << action->getCommand();
+	//commandQueue->remove(0);
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
@@ -1967,7 +1974,24 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
 	// Note clear queue action may remove itself as part of the action execution.
-	deleteQueueAction(action->getActionCounter());
+	//deleteQueueAction(action->getActionCounter());
+
+	info(true) << "commands in queue after activation";
+	for (int i = 0; i < commandQueue->size(); i++) {
+		info(true) << "  " << i << ": " << commandQueue->get(i)->getCommand() << ", " << commandQueue->get(i)->getActionCounter();
+	}
+	for (int i = 0; i < commandQueue->size(); i++) {
+		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+			commandQueue->remove(i);
+			break;
+		}
+	}
+
+	info(true) << "commands in queue after deletion";
+	for (int i = 0; i < commandQueue->size(); i++) {
+		info(true) << "  " << i << ": " << commandQueue->get(i)->getCommand() << ", " << commandQueue->get(i)->getActionCounter();
+	}
 
 	if (commandQueue->size() != 0) {
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
@@ -1982,10 +2006,15 @@ void CreatureObjectImplementation::activateQueueAction() {
 }
 
 void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
+	info(true) << "deleteQueueAction, size: " << commandQueue->size();
+	info(true) << "deleteQueueAction, actionCount: " << actionCount;
 	for (int i = 0; i < commandQueue->size(); ++i) {
+		info(true) << "deleteQueueAction, i: " << i;
 		CommandQueueAction* action = commandQueue->get(i);
 
+		info(true) << "deleteQueueAction, action->getActionCounter(): " << action->getActionCounter();
 		if (action->getActionCounter() == actionCount) {
+			info(true) << "deleteQueueAction, remove(i): " << i;
 			commandQueue->remove(i);
 			break;
 		}
