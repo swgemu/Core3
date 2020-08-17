@@ -22,7 +22,7 @@
     observable - object that can be seen by observers (non player objects)
 
     pros:
-        Moving objects is extremely fast compared to most other partitioning systems 
+        Moving objects is extremely fast compared to most other partitioning systems
         The partitioning method is extremely easy to understand and implement
     cons:
         Because all cells are evenly distributed we can't control the fidelity of the partioning near areas with many objects(in space I somewhat doubt that this will be a problem)
@@ -37,11 +37,11 @@
 
         I have added optimization for querying close objects where we only check the outermost cells, since anything closer will by definition always be closer than the radius.
 
-    
-    Todo: 
+
+    Todo:
         need more tests
 
-        need benchmark(no point in trying to optimize without measurements) 
+        need benchmark(no point in trying to optimize without measurements)
 
 */
 
@@ -63,18 +63,18 @@ public:
     void addObject(SceneObject* object);
     void moveObject(SceneObject* object);
     void removeObject(SceneObject* object);
-    
+
     void addObserver(SceneObject* observer, const float& radius);
     void moveObserver(SceneObject* observer);
-    void removeObserver(SceneObject* observer); 
+    void removeObserver(SceneObject* observer);
 
-    Vector<SceneObject*> getCloseObjects(SceneObject* observer);   
-    Vector<SceneObject*> getCloseObjects(SceneObject* observer, const float& radius);   
+    Vector<SceneObject*> getCloseObjects(SceneObject* observer);
+    Vector<SceneObject*> getCloseObjects(SceneObject* observer, const float& radius);
 
     Vector<SceneObject*> getCloseObservers(SceneObject* observer);
-    Vector<SceneObject*> getCloseObservers(SceneObject* observer, const float& radius);   
+    Vector<SceneObject*> getCloseObservers(SceneObject* observer, const float& radius);
 
-    Vector<SceneObject*> getCloseObserversByLocation(const float& x, const float& y, const float& z, const float& radius);  
+    Vector<SceneObject*> getCloseObserversByLocation(const float& x, const float& y, const float& z, const float& radius);
 private:
     class Observer;
     class Observable;
@@ -84,17 +84,17 @@ private:
     void internalRemoveObservable(Observable& observable);
     void internalAddObserver(Observer& observer);
     void internalRemoveObserver(Observer& observer);
-    
+
     Vector<SceneObject*> internalGetCloseObjects(const Observer& observer, const float& radius);
 
-    void fillCloseObjects(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1, 
+    void fillCloseObjects(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1,
                     const unsigned int& y0, const unsigned int& y1,
                     const unsigned int& z0, const unsigned int& z1);
 
 
     Vector<SceneObject*> internalGetCloseObservers(const Observer& observer, const float& radius);
 
-    void fillCloseObservers(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1, 
+    void fillCloseObservers(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1,
                     const unsigned int& y0, const unsigned int& y1,
                     const unsigned int& z0, const unsigned int& z1);
 private:
@@ -103,7 +103,7 @@ private:
         bool parseFromBinaryStream(ObjectInputStream* stream);
         bool toBinaryStream(ObjectOutputStream* stream);
         bool operator==(const Location& rhs);
-        unsigned int x, y, z; 
+        unsigned int x, y, z;
     };
 
     class Cell {
@@ -115,7 +115,7 @@ private:
 
         bool parseFromBinaryStream(ObjectInputStream* stream);
         bool toBinaryStream(ObjectOutputStream* stream);
- 
+
         HashTable<SceneObject*, Observer*> observers;
         HashTable<SceneObject*, Observable*> observables;
     };
@@ -130,10 +130,10 @@ private:
 
         bool parseFromBinaryStream(ObjectInputStream* stream);
         bool toBinaryStream(ObjectOutputStream* stream);
-    
+
         float x, y, z; //the last coordinates of the observer since move
         float radius;
-        unsigned int radiusCellUnit; 
+        unsigned int radiusCellUnit;
         Location location;
         SceneObject* object;
     };
@@ -148,7 +148,7 @@ private:
 
         bool parseFromBinaryStream(ObjectInputStream* stream);
         bool toBinaryStream(ObjectOutputStream* stream);
- 
+
         float x, y, z; //the last coordinates of the observable since move
         Location location;
         SceneObject* object;

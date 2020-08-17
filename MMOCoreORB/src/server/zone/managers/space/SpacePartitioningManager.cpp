@@ -29,14 +29,14 @@ bool SpacePartitioningManager::Location::operator==(const Location& rhs)
     return x == rhs.x && y == rhs.y && z == rhs.z;
 }
 
-bool SpacePartitioningManager::Cell::parseFromBinaryStream(ObjectInputStream* stream) 
+bool SpacePartitioningManager::Cell::parseFromBinaryStream(ObjectInputStream* stream)
 {
     observers.parseFromBinaryStream(stream);
     observables.parseFromBinaryStream(stream);
 	return true;
 }
 
-bool SpacePartitioningManager::Cell::toBinaryStream(ObjectOutputStream* stream) 
+bool SpacePartitioningManager::Cell::toBinaryStream(ObjectOutputStream* stream)
 {
     observers.toBinaryStream(stream);
     observables.toBinaryStream(stream);
@@ -106,7 +106,7 @@ SpacePartitioningManager::Observer& SpacePartitioningManager::Observer::operator
     return *this;
 }
 
-bool SpacePartitioningManager::Observer::parseFromBinaryStream(ObjectInputStream* stream) 
+bool SpacePartitioningManager::Observer::parseFromBinaryStream(ObjectInputStream* stream)
 {
     x = stream->readFloat();
     y = stream->readFloat();
@@ -118,7 +118,7 @@ bool SpacePartitioningManager::Observer::parseFromBinaryStream(ObjectInputStream
 	return true;
 }
 
-bool SpacePartitioningManager::Observer::toBinaryStream(ObjectOutputStream* stream) 
+bool SpacePartitioningManager::Observer::toBinaryStream(ObjectOutputStream* stream)
 {
     stream->writeFloat(x);
     stream->writeFloat(y);
@@ -163,7 +163,7 @@ SpacePartitioningManager::Observable& SpacePartitioningManager::Observable::oper
     return *this;
 }
 
-bool SpacePartitioningManager::Observable::parseFromBinaryStream(ObjectInputStream* stream) 
+bool SpacePartitioningManager::Observable::parseFromBinaryStream(ObjectInputStream* stream)
 {
     x = stream->readFloat();
     y = stream->readFloat();
@@ -173,7 +173,7 @@ bool SpacePartitioningManager::Observable::parseFromBinaryStream(ObjectInputStre
 	return true;
 }
 
-bool SpacePartitioningManager::Observable::toBinaryStream(ObjectOutputStream* stream) 
+bool SpacePartitioningManager::Observable::toBinaryStream(ObjectOutputStream* stream)
 {
     stream->writeFloat(x);
     stream->writeFloat(y);
@@ -194,14 +194,14 @@ SpacePartitioningManager::SpacePartitioningManager(const unsigned int& cellSize,
         Cell cell;
         cells.add(cell);
     }
-    
+
 }
 
 SpacePartitioningManager::~SpacePartitioningManager()
 {
 }
 
-float SpacePartitioningManager::clampCoordinate(const float& v) 
+float SpacePartitioningManager::clampCoordinate(const float& v)
 {
     return std::max(-boundCoordinates, std::min(boundCoordinates, v));
 }
@@ -223,7 +223,7 @@ SpacePartitioningManager::Location SpacePartitioningManager::convert3DToLocation
     unsigned int nz = (unsigned int)(clampCoordinate(z) + boundCoordinates);
 
     Location location;
-    
+
     location.x = nx >> bitshiftLength;
     location.y = ny >> bitshiftLength;
     location.z = nz >> bitshiftLength;
@@ -268,7 +268,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObjects(const Obs
 
     unsigned int cellRadius = convertRadiusToCellUnit(radius);
 
-    
+
     if(cellRadius >= 1) {
 
         //get the cells that are guaranteed to be in the cells without checking radius distance for individual objects
@@ -296,7 +296,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObjects(const Obs
 
                     auto obsIteration = cell.observables.iterator();
 
-                    while(obsIteration.hasNext()) {    
+                    while(obsIteration.hasNext()) {
                         close.add(obsIteration.next()->object);
                     }
 
@@ -315,7 +315,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObjects(const Obs
         unsigned int f1_x0 = clampLocationElement(observer.location.x - cellRadius);
         unsigned int f1_y0 = clampLocationElement(observer.location.y - cellRadius);
         unsigned int f1_z0 = clampLocationElement(observer.location.z - cellRadius);
-    
+
         unsigned int f1_x1 = clampLocationElement(observer.location.x + cellRadius);
         unsigned int f1_y1 = clampLocationElement(observer.location.y + cellRadius);
         unsigned int f1_z1 = clampLocationElement(observer.location.z - cellRadius);
@@ -372,11 +372,11 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObjects(const Obs
 }
 
 
-void SpacePartitioningManager::fillCloseObjects(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1, 
+void SpacePartitioningManager::fillCloseObjects(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1,
                     const unsigned int& y0, const unsigned int& y1,
                     const unsigned int& z0, const unsigned int& z1)
 {
-    
+
     for(unsigned int x = x0; x <= x1; ++x) {
 
         for(unsigned int y = y0; y <= y1; ++y) {
@@ -392,8 +392,8 @@ void SpacePartitioningManager::fillCloseObjects(Vector<SceneObject*>& v, const O
 
                 auto obsIteration = cell.observables.iterator();
 
-                while(obsIteration.hasNext()) {   
-                    
+                while(obsIteration.hasNext()) {
+
                     Observable* obs = obsIteration.next();
 
                     Vector3 a(obs->x, obs->y, obs->z);
@@ -419,7 +419,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObservers(const O
 
     unsigned int cellRadius = convertRadiusToCellUnit(radius);
 
-    
+
     if(cellRadius >= 1) {
 
         //get the cells that are guaranteed to be in the cells without checking radius distance for individual objects
@@ -447,7 +447,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObservers(const O
 
                     auto obsIteration = cell.observers.iterator();
 
-                    while(obsIteration.hasNext()) {    
+                    while(obsIteration.hasNext()) {
                         close.add(obsIteration.next()->object);
                     }
 
@@ -466,7 +466,7 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObservers(const O
         unsigned int f1_x0 = clampLocationElement(observer.location.x - cellRadius);
         unsigned int f1_y0 = clampLocationElement(observer.location.y - cellRadius);
         unsigned int f1_z0 = clampLocationElement(observer.location.z - cellRadius);
-    
+
         unsigned int f1_x1 = clampLocationElement(observer.location.x + cellRadius);
         unsigned int f1_y1 = clampLocationElement(observer.location.y + cellRadius);
         unsigned int f1_z1 = clampLocationElement(observer.location.z - cellRadius);
@@ -523,11 +523,11 @@ Vector<SceneObject*> SpacePartitioningManager::internalGetCloseObservers(const O
 }
 
 
-void SpacePartitioningManager::fillCloseObservers(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1, 
+void SpacePartitioningManager::fillCloseObservers(Vector<SceneObject*>& v, const Observer& observer, const float& radius, const unsigned int& x0, const unsigned int& x1,
                     const unsigned int& y0, const unsigned int& y1,
                     const unsigned int& z0, const unsigned int& z1)
 {
-    
+
     for(unsigned int x = x0; x <= x1; ++x) {
 
         for(unsigned int y = y0; y <= y1; ++y) {
@@ -543,8 +543,8 @@ void SpacePartitioningManager::fillCloseObservers(Vector<SceneObject*>& v, const
 
                 auto obsIteration = cell.observers.iterator();
 
-                while(obsIteration.hasNext()) {   
-                    
+                while(obsIteration.hasNext()) {
+
                     Observer* obs = obsIteration.next();
 
                     Vector3 a(obs->x, obs->y, obs->z);
@@ -661,7 +661,7 @@ Vector<SceneObject*> SpacePartitioningManager::getCloseObjects(SceneObject* obje
 
 Vector<SceneObject*> SpacePartitioningManager::getCloseObjects(SceneObject* object, const float& radius)
 {
-    
+
     Observer& observer = observers.get(object);
 
     Vector<SceneObject*> close = internalGetCloseObjects(observer, std::min(radius, observer.radius));
