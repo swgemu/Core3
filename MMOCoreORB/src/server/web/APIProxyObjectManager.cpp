@@ -15,6 +15,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"
+#include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 
@@ -200,7 +201,7 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, bool
 			}
 
 			if (dest != nullptr) {
-				auto adk = tano->removeAntiDecayKit();
+				Reference<AntiDecayKit*> adk = dynamic_cast<AntiDecayKit*>(tano->removeAntiDecayKit());
 
 				if (adk != nullptr) {
 					Reference<SceneObject*> where = dest->isPlayerCreature() ? dest : dest->getParentRecursively(SceneObjectType::PLAYERCREATURE);
@@ -213,6 +214,7 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, bool
 						Locker lock(dest);
 						Locker cLock(adk, dest);
 
+						adk->setUsed(false);
 						adk->initializePosition(scno->getPositionX(), scno->getPositionZ(), scno->getPositionY());
 						adk->setDirection(Math::deg2rad(scno->getDirectionAngle()));
 						dest->transferObject(adk, -1, true, true);
