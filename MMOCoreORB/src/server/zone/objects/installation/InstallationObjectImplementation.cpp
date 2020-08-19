@@ -668,15 +668,22 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target) || target->isVehicleObject())
 		return false;
 
-	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction()) {
-		PlayerObject* ghost = target->getPlayerObject();
-		if (target->getFactionStatus() == FactionStatus::OVERT)// || ghost->hasPvpTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
-			return true;
-		if (target->getFactionStatus() == FactionStatus::COVERT && ghost->hasRealGcwTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
-			return true;
-		//if (ghost->hasPvpTef() && target->getFactionStatus() == FactionStatus::COVERT)
-		//	return true;
+	if (target->isPlayerCreature()) {
+		if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction()) {
+			Reference<PlayerObject*> ghost = target->getPlayerObject();
+			if (ghost != nullptr && target->getFactionStatus() == FactionStatus::OVERT)// || ghost->hasPvpTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
+				return true;
+			if (ghost != nullptr && ghost->hasRealGcwTef()) //target->getPvpStatusBitmask() & CreatureFlag::TEF)
+				return true;
+			if (ghost != nullptr && target->getFactionStatus() == FactionStatus::COVERT)
+				return false;
+			//if (ghost->hasPvpTef() && target->getFactionStatus() == FactionStatus::COVERT)
+			//	return true;
+		}
 	}
+
+	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction())
+		return true;
 
 	SharedInstallationObjectTemplate* instTemplate = templateObject.castTo<SharedInstallationObjectTemplate*>();
 
@@ -739,13 +746,20 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 		return isAttackableBy(owner);
 
-	} else if (object->isPlayerCreature() && thisFaction != 0) {
-		if (object->getFactionStatus() == 0) {
-			return false;
-		}
+	} else if (object->isPlayerCreature()) {
+		if (thisFaction != 0) {
+			Reference<PlayerObject*> ghost = object->getPlayerObject();
+			//if (ghost != nullptr && ghost->hasRealGcwTef()) {
+			//	return true;
+			//}
 
-		if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFactionStatus() != FactionStatus::OVERT) {
-			return false;
+			if (object->getFactionStatus() == 0) {
+				return false;
+			}
+
+			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFactionStatus() != FactionStatus::COVERT) {
+				return false;
+			}
 		}
 	}
 

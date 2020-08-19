@@ -396,6 +396,15 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		AiAgent* aiAgent = cast<AiAgent*>(attacker);
 		aiAgent->sendReactionChat(ReactionManager::HITTARGET);
 	}
+	if (shouldRealGcwTef) { // || shouldBhTef || shouldGcwTef) {
+		if (attacker->isPlayerCreature()){
+			//info("shouldRealGcwTefpvpdtca1", true);
+			PlayerObject* ghost = attacker->getPlayerObject();
+			if (tano->isTurret()) {// && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+				ghost->updateLastPvpCombatActionTimestamp(false,false,true);
+			}
+		}
+	}
 
 	return damage;
 }
@@ -488,6 +497,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 				ghost->updateLastPvpCombatActionTimestamp(false,false,true);
 				//info("shouldRealGcwTefpvpdtca2", true);
 			}
+			//if (defender->isInstallationObject() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+			//	ghost->updateLastPvpCombatActionTimestamp(false,false,true);
+			//}
 			//ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
 			/*if (defender->isPlayerCreature()) {
 				ManagedReference<PlayerObject*> defenderPlayer = defender->getPlayerObject();
