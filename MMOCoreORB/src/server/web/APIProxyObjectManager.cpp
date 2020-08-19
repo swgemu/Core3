@@ -15,6 +15,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"
+#include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 
@@ -137,7 +138,7 @@ void APIProxyObjectManager::handleGET(APIRequest& apiRequest) {
 	}
 }
 
-int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, String& resultMessage) {
+int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, bool refundADK, String& resultMessage) {
 	auto obj = Core::lookupObject(oid).castTo<ManagedObject*>();
 
 	if (obj == nullptr) {
@@ -166,6 +167,7 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, Stri
 		Locker lock(scno);
 
 		auto auctionManager = getZoneServer()->getAuctionManager();
+		auto auctionOwnerID = 0ull;
 
 		if (auctionManager != nullptr) {
 			auto auctionsMap = auctionManager->getAuctionMap();
@@ -175,16 +177,76 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, Stri
 					Reference<AuctionItem*> aitem = auctionsMap->getItem(oid);
 
 					if (aitem != nullptr) {
+						auctionOwnerID = aitem->getOwnerID();
 						result << "; item was for sale on AuctionItem(" << aitem->getObjectID();
-						result << "), auction deleted and exported to " << exportJSON(aitem, exportMsg.toString());
+						result << ") by player " << auctionOwnerID << ", auction deleted and exported to ";
+						result << exportJSON(aitem, exportMsg.toString());
 						auctionManager->deleteExpiredSale(aitem, false);
 					}
 				}
 			}
 		}
 
-		scno->destroyObjectFromWorld(true);
-		scno->destroyObjectFromDatabase(true);
+		auto tano = scno->asTangibleObject();
+
+		if (tano != nullptr && tano->hasAntiDecayKit() && refundADK) {
+			auto dest = scno->getParent().get();
+
+			if (dest == nullptr && auctionOwnerID > 0) {
+				dest = getZoneServer()->getObject(auctionOwnerID);
+			}
+
+			if (dest != nullptr && dest->isCreatureObject()) {
+				dest = dest->getSlottedObject("inventory");
+			}
+
+			if (dest != nullptr) {
+				Reference<AntiDecayKit*> adk = dynamic_cast<AntiDecayKit*>(tano->removeAntiDecayKit());
+
+				if (adk != nullptr) {
+					Reference<SceneObject*> where = dest->isPlayerCreature() ? dest : dest->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+					if (where == nullptr) {
+						where = dest->getParentRecursively(SceneObjectType::BUILDING);
+					}
+
+					if (where != nullptr) {
+						Locker lock(dest);
+						Locker cLock(adk, dest);
+
+						adk->setUsed(false);
+						adk->initializePosition(scno->getPositionX(), scno->getPositionZ(), scno->getPositionY());
+						adk->setDirection(Math::deg2rad(scno->getDirectionAngle()));
+						dest->transferObject(adk, -1, true, true);
+						dest->broadcastObject(adk, true);
+
+						result << "; refunded AntiDecayKit(" << adk->getObjectID() << ") to ";
+						result << where->_getClassName() << "(" << where->getObjectID() << ")";
+						result << " into " << dest->_getClassName() << "(" << dest->getObjectID() << ")";
+					} else {
+						Locker lock(adk);
+
+						result << "; will not refund AntiDecayKit(" << adk->getObjectID() << ") to ";
+						result << dest->_getClassName() << "(" << dest->getObjectID() << ")";
+
+						adk->destroyObjectFromWorld(true);
+						adk->destroyObjectFromDatabase(true);
+					}
+				}
+			}
+		}
+
+		Reference<CreatureObject*> creo = scno->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+		if (creo != nullptr) {
+			Locker lock(creo);
+			creo->removeWearableObject(scno->asTangibleObject(), true);
+			scno->destroyObjectFromWorld(true);
+			scno->destroyObjectFromDatabase(true);
+		} else {
+			scno->destroyObjectFromWorld(true);
+			scno->destroyObjectFromDatabase(true);
+		}
 	} else {
 		Locker lock(obj);
 
@@ -296,13 +358,15 @@ void APIProxyObjectManager::handleDELETE(APIRequest& apiRequest) {
 		return;
 	}
 
+	auto refundADK = apiRequest.getQueryFieldBool("refundADK", false, false);
+
 	if (oid != 0) {
 		try {
 			apiRequest.debug() << countDeleted << ") Lookup oid " << oid;
 
 			String resultMessage;
 
-			countDeleted += deleteObject(apiRequest, oid, resultMessage);
+			countDeleted += deleteObject(apiRequest, oid, refundADK, resultMessage);
 
 			results[String::valueOf(oid)] = resultMessage;
 		} catch (const Exception& e) {
@@ -323,7 +387,7 @@ void APIProxyObjectManager::handleDELETE(APIRequest& apiRequest) {
 
 				String resultMessage;
 
-				countDeleted += deleteObject(apiRequest, oid, resultMessage);
+				countDeleted += deleteObject(apiRequest, oid, refundADK, resultMessage);
 
 				results[String::valueOf(oid)] = resultMessage;
 			} catch (const Exception& e) {
@@ -358,6 +422,102 @@ void APIProxyObjectManager::handleDELETE(APIRequest& apiRequest) {
 	}
 }
 
+bool APIProxyObjectManager::updateObject(APIRequest& apiRequest, uint64 oid, String& resultMessage) {
+	auto className = apiRequest.getPathFieldString("class");
+
+	if (className != "SceneObject") {
+		resultMessage = "Updates to " + className + " not supported";
+		return false;
+	}
+
+	auto obj = Core::lookupObject(oid).castTo<ManagedObject*>();
+
+	if (obj == nullptr) {
+		resultMessage = "Object not found";
+		return false;
+	}
+
+	Locker lock(obj);
+
+	Reference<SceneObject*> scno = dynamic_cast<SceneObject*>(obj.get());
+
+	if (scno == nullptr) {
+		resultMessage = "Updates only supported for SceneObject's";
+		return false;
+	}
+
+	auto propertyName = apiRequest.getPathFieldString("property");
+	auto value = apiRequest.getQueryFieldBool("value");
+
+	StringBuffer exportMsg;
+
+	exportMsg << "Updating " << propertyName << "=" << value << " via API, trxId: " << apiRequest.getTrxId();
+
+	resultMessage = "UPDATED; Exported original to " + exportJSON(obj.get(), exportMsg.toString());
+
+	// TODO this should be more generic to support more properties
+
+	if (propertyName == "forceNoTrade") {
+		scno->setForceNoTrade(value);
+	} else {
+		resultMessage = "Updates to " + className + "." + propertyName + " not supported.";
+		return false;
+	}
+
+	return true;
+}
+
+void APIProxyObjectManager::handlePUT(APIRequest& apiRequest) {
+	auto oid = apiRequest.getPathFieldUnsignedLong("oid", false, 0);
+
+	if (oid == 0) {
+		apiRequest.fail("missing oid in uri");
+		return;
+	}
+
+	int countUpdated = 0;
+	auto results = JSONSerializationType::object();
+
+	try {
+		apiRequest.debug() << "Update oid " << oid;
+
+		String resultMessage;
+
+		if (!updateObject(apiRequest, oid, resultMessage)) {
+			apiRequest.fail(resultMessage);
+			return;
+		}
+
+		results[String::valueOf(oid)] = resultMessage;
+		countUpdated += 1;
+	} catch (const Exception& e) {
+		apiRequest.fail("Exception updating object", "Exception: " + e.getMessage());
+		return;
+	}
+
+	apiRequest.debug() << "Updated " << countUpdated << " object(s)";
+
+	if (countUpdated == 0) {
+		apiRequest.fail("Nothing found to update.");
+	} else {
+		JSONSerializationType metadata;
+
+		Time now;
+		metadata["exportTime"] = now.getFormattedTimeFull();
+		metadata["objectCount"] = countUpdated;
+		metadata["maxDepth"] = 1;
+		metadata["recursive"] = false;
+		metadata["parents"] = false;
+		metadata["query_oids"] = String::valueOf(oid);
+
+		JSONSerializationType result;
+		result["results"] = results;
+		result["metadata"] = metadata;
+
+		apiRequest.success(result);
+	}
+}
+
 void APIProxyObjectManager::handle(APIRequest& apiRequest) {
 	if (apiRequest.isMethodGET()) {
 		handleGET(apiRequest);
@@ -366,6 +526,11 @@ void APIProxyObjectManager::handle(APIRequest& apiRequest) {
 
 	if (apiRequest.isMethodDELETE()) {
 		handleDELETE(apiRequest);
+		return;
+	}
+
+	if (apiRequest.isMethodPUT()) {
+		handlePUT(apiRequest);
 		return;
 	}
 

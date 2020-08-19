@@ -90,6 +90,10 @@ void RESTServer::registerEndpoints() {
 		mObjectManagerProxy->handle(apiRequest);
 	}));
 
+	addEndpoint(RESTEndpoint("(?:PUT):/v1/object/(\\d+)/(\\w+)/(\\w+)/", {"oid", "class", "property"}, [this] (APIRequest& apiRequest) -> void {
+		mObjectManagerProxy->handle(apiRequest);
+	}));
+
 	addEndpoint(RESTEndpoint("(?:GET|POST|PUT):/v1/admin/config/(?:(.*)/|)", {"key"}, [this] (APIRequest& apiRequest) -> void {
 		mConfigManagerProxy->handle(apiRequest);
 	}));

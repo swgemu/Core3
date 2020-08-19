@@ -8,6 +8,7 @@
 #ifndef LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 #define LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 
+#include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -20,9 +21,12 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	Vector<WeakReference<CreatureObject*>> containmentTeam;
 	int difficulty;
 	int spawnNumber;
+	String chatMessageId;
+	Vector3 spawnPosition;
+	Quaternion spawnDirection;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
-	const int TIMETILLSHUTTLELANDING = 6000;
+	const int TIMETILLSHUTTLELANDING = 100;
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
 	const int CLEANUPTIME = 30000;
@@ -80,15 +84,27 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	LambdaTroop* troops;
 
 	void spawnSingleTroop(SceneObject* lambdaShuttle, CreatureObject* player, const String& creatureTemplate, float xOffset, float yOffset) {
+		Quaternion offset = Quaternion(0, xOffset, 0, yOffset);
+		Quaternion rotation = Quaternion(Vector3(0, 1, 0), spawnDirection.getRadians());
+		offset = rotation * offset * rotation.getConjugate();  // Rotate offset quaternion to match spawnDirection.
+
 		Zone* zone = lambdaShuttle->getZone();
-		float x = lambdaShuttle->getPositionX() + xOffset;
-		float y = lambdaShuttle->getPositionY() + yOffset;
+		float x = lambdaShuttle->getPositionX() + offset.getX();
+		float y = lambdaShuttle->getPositionY() + offset.getZ();
 		float z = zone->getHeight(x, y);
-		AiAgent* npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false));
+
+		AiAgent* npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
+
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			CombatManager::instance()->startCombat(npc, player);
 			containmentTeam.add(npc);
+
+			if (spawnNumber == 0) {
+				StringIdChatParameter chatMessage;
+				chatMessage.setStringId(chatMessageId);
+				zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+			}
 		}
 	}
 
@@ -111,7 +127,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
-		lambdaShuttle->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
+		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
+		lambdaShuttle->setDirection(spawnDirection);
 		player->getZone()->transferObject(lambdaShuttle, -1, true);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
@@ -181,7 +198,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction) {
 		weakPlayer = player;
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
@@ -196,7 +213,10 @@ public:
 		} else {
 			troops = REBELTROOPS;
 		}
+		this->chatMessageId = chatMessageId;
 		spawnNumber = 0;
+		spawnPosition = position;
+		spawnDirection = direction;
 	}
 
 	void run() {

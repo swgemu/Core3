@@ -50,7 +50,7 @@ end
 
 ServerEventAutomation = Object:new {
 	vebose = false,
-	syntax_version = 2,
+	syntax_version = 3,
 	config = nil
 }
 
@@ -66,6 +66,10 @@ function ServerEventAutomation:playerLoggedIn(pPlayer)
 	end
 
 	self:sendEventEmails(pPlayer, "playerLoggedIn")
+
+	if self.config.surveys ~= nil then
+		self:scheduleSurvey(pPlayer, getRandomNumber(5, 10), "playerLoggedIn")
+	end
 end
 
 function ServerEventAutomation:playerLoggedOut(pPlayer)
@@ -88,8 +92,6 @@ function ServerEventAutomation:sendEventEmails(pPlayer, source_event)
 	local now = getTimestamp()
 
 	for email_id, email in pairs(self.config.emails) do
-		email.id = email_id
-
 		if (email.start_time == nil or now >= email.start_time) and (email.end_time == nil or now <= email.end_time) then
 			if not self:getSent(pPlayer, email) then
 				if email.target == nil or email.target(self, pPlayer, email) then
@@ -139,16 +141,153 @@ function ServerEventAutomation:sendEventEmail(pPlayer, email)
 	sendMail(from, subject, body, firstName)
 end
 
-function ServerEventAutomation:getSentKey(pPlayer, email)
-	return CreatureObject(pPlayer):getObjectID() .. ":ServerEventAutomation:email:" .. email.id
+function ServerEventAutomation:sendSurveys(pPlayer, source_event)
+	if (pPlayer == nil) then
+		return
+	end
+
+	-- Are surveys configured?
+	if self.config.surveys == nil then
+		return
+	end
+
+	local now = getTimestamp()
+
+	for survey_id, survey in pairs(self.config.surveys) do
+		if (survey.start_time == nil or now >= survey.start_time) and (survey.end_time == nil or now <= survey.end_time) then
+			if not self:getSent(pPlayer, survey) then
+				if survey.target == nil or survey.target(self, pPlayer, survey) then
+						self:sendSurvey(pPlayer, survey)
+						if survey.after_send ~= nil then
+								survey.after_send(self, pPlayer, survey)
+						end
+				else
+						self:logPlayerEvent(pPlayer, "filteredFromSurvey:" .. survey_id)
+				end
+			else
+				if self.verbose then
+					self:logPlayerEvent(pPlayer, "surveyAlreadySent:" .. survey_id)
+				end
+			end
+		else
+			if self.verbose then
+				self:logEvent("survey " .. survey_id .. " is not eligible to send, now = " .. now .. " survey.start_time = " .. survey.start_time .. " survey.end_time = " .. survey.end_time)
+			end
+		end
+	end
 end
 
-function ServerEventAutomation:setSent(pPlayer, email)
-	setQuestStatus(self:getSentKey(pPlayer, email), getTimestamp())
+function ServerEventAutomation:sendSurvey(pPlayer, survey)
+	local firstName = CreatureObject(pPlayer):getFirstName()
+	local title = survey.title
+	local body = survey.body
+
+	if title == nil then
+		title = "In-Game Survey"
+	end
+
+	if body == nil then
+		self:logPlayerEvent(pPlayer, "invalidConfiguration, body missing")
+		return
+	end
+
+	if survey.options == nil then
+		self:logPlayerEvent(pPlayer, "invalidConfiguration, options missing")
+		return
+	end
+
+	body = string.gsub(body, "%%firstname%%", firstName)
+
+	local sui = SuiListBox.new("ServerEventAutomation", "handleSurveyResponse")
+	sui.setProperty("", "Size", survey.size or "500,250")
+	sui.setTargetNetworkId(SceneObject(pPlayer):getObjectID())
+	sui.setTitle(title)
+	sui.setPrompt(body)
+	sui.setStoredData("survey_id", survey.id)
+	sui.setStoredData("start_tm", getTimestamp())
+
+	options = self:shuffleOptions(survey.options)
+
+	for i = 1, #options, 1 do
+		sui.add(options[i][1], options[i][2])
+	end
+
+	self:logPlayerEvent(pPlayer, "Sending survey " .. survey.id)
+
+	sui.sendTo(pPlayer)
 end
 
-function ServerEventAutomation:getSent(pPlayer, email)
-	local when = getQuestStatus(self:getSentKey(pPlayer, email))
+function ServerEventAutomation:shuffleOptions(array)
+    local arrayCount = #array
+    for i = arrayCount, 2, -1 do
+        local j = getRandomNumber(1, i)
+        array[i], array[j] = array[j], array[i]
+    end
+    return array
+end
+
+function ServerEventAutomation:handleSurveyResponse(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
+	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
+
+	if (pPageData == nil) then
+		self:logPlayerEvent(pPlayer, "nil pPageData")
+		return
+	end
+
+	local suiPageData = LuaSuiPageData(pPageData)
+	local survey_id = suiPageData:getStoredData("survey_id") or "unknown"
+	local start_tm = suiPageData:getStoredData("start_tm") or getTimestamp()
+	local delta = getTimestamp() - start_tm
+	local response = suiPageData:getStoredData(tostring(args))
+	local survey = self.config.surveys[survey_id]
+
+	if cancelPressed then
+		self:logPlayerEvent(pPlayer, survey_id .. ": Cancelled Survey")
+		self:scheduleSurvey(pPlayer, getRandomNumber(60, 180), "user_cancelled")
+		return
+	end
+
+	if tonumber(args) < 0 then
+		self:logPlayerEvent(pPlayer, survey_id .. ": Ignored Survey")
+		self:scheduleSurvey(pPlayer, getRandomNumber(60, 180), "user_ignored")
+		return
+	end
+
+	self:logPlayerEvent(pPlayer, survey_id .. ": Selected " .. response .. " after " .. delta .. " seconds.")
+
+	local fh = io.open("log/SurveyAnswers.log", "a+")
+	fh:write(string.format("%s %d %s %s %d\n", getFormattedTime(), CreatureObject(pPlayer):getObjectID(), survey_id, response, delta))
+	fh:flush()
+	fh:close()
+
+	self:logEvent("Finished survey " .. survey.id .. " title: " .. survey.title)
+
+	self:setSent(pPlayer, survey)
+end
+
+function ServerEventAutomation:scheduleSurvey(pPlayer, when, reason)
+	if pPlayer == nil then
+		self:logEvent("scheduleSurvey called with nil player")
+		return
+	end
+
+	self:logPlayerEvent(pPlayer, "scheduleSurvey " .. tostring(when))
+
+	createEvent(when * 1000, "ServerEventAutomation", "sendSurveys", pPlayer, reason)
+end
+
+function ServerEventAutomation:getSentKey(pPlayer, item)
+	return CreatureObject(pPlayer):getObjectID() .. ":ServerEventAutomation:" .. item.namespace .. ":" .. item.id
+end
+
+function ServerEventAutomation:setSent(pPlayer, item)
+	setQuestStatus(self:getSentKey(pPlayer, item), getTimestamp())
+end
+
+function ServerEventAutomation:getSent(pPlayer, item)
+	local when = getQuestStatus(self:getSentKey(pPlayer, item))
 
 	if when == nil then
 		return false
@@ -165,6 +304,11 @@ function ServerEventAutomation:logEvent(what)
 end
 
 function ServerEventAutomation:logPlayerEvent(pPlayer, what)
+	if pPlayer == nil then
+		self:logEvent("NIL PLAYER: " .. what)
+		return
+	end
+
 	local creature = CreatureObject(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 	self:logEvent(string.format(
@@ -195,9 +339,35 @@ function ServerEventAutomation:init(config_file)
 
 	-- Check to see if the config is compatiable with the code
 	if self.config.syntax_version == nil or self.config.syntax_version > self.syntax_version then
-		self:logEvent("WARNING: Configuartion syntax_version doesn't match code syntax_version, please verify feature support.")
+		self:logEvent("WARNING: Configuartion syntax_version doesn't match code syntax_version(" .. self.syntax_version .. "), please verify feature support.")
 		self.config = nil
 		return
+	end
+
+	local now = getTimestamp()
+
+	if self.config.emails ~= nil then
+		for email_id, email in pairs(self.config.emails) do
+			if (email.end_time ~= nil and now > email.end_time) then
+				self:logEvent("Discarding email " .. email_id .. " because end_time is in the past.")
+				self.config.emails[email_id] = nil
+			else
+				self.config.emails[email_id].id = email_id
+				self.config.emails[email_id].namespace = "email"
+			end
+		end
+	end
+
+	if self.config.surveys ~= nil then
+		for survey_id, survey in pairs(self.config.surveys) do
+			if (survey.end_time ~= nil and now > survey.end_time) then
+				self:logEvent("Discarding survey " .. survey_id .. " because end_time is in the past.")
+				self.config.surveys[survey_id] = nil
+			else
+				self.config.surveys[survey_id].id = survey_id
+				self.config.surveys[survey_id].namespace = "survey"
+			end
+		end
 	end
 
 	if self.config.verbose ~= nil and self.config.verbose then

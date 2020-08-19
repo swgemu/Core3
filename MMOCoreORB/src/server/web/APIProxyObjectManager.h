@@ -24,9 +24,11 @@ namespace server {
 		void handle(APIRequest& apiRequest);
 	private:
 		void handleGET(APIRequest& apiRequest);
+		void handlePUT(APIRequest& apiRequest);
 		void handleDELETE(APIRequest& apiRequest);
 		int writeObjectJSON(uint64 oid, bool recursive, bool parents, JSONSerializationType& objects, int maxDepth);
-		int deleteObject(APIRequest& apiRequest, uint64 oid, String& resultMessage);
+		int deleteObject(APIRequest& apiRequest, uint64 oid, bool refundADK, String& resultMessage);
+		bool updateObject(APIRequest& apiRequest, uint64 oid, String& resultMessage);
 		String exportJSON(ManagedObject* obj, const String& exportNote);
 	};
  }

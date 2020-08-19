@@ -57,6 +57,8 @@ enum class TrxCode {
 	// SWGEmu Specific Codes
 	ACCESSFEE            = 100, // Access Fee
 	ADMINCOMMAND,               // From an admin command
+	ADKAPPLY,                   // Apply and ADK to item
+	ADKREMOVE,                  // Remove ADK from item
 	AUCTIONADDSALE,             // addSaleItem()
 	AUCTIONBID,                 // Auction Bid Escrow
 	AUCTIONEXPIRED,             // Never retrieved and expired
@@ -90,7 +92,19 @@ enum class TrxCode {
 };
 // clang-format on
 
-#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+#if defined(__clang__)
+#if __has_builtin(__builtin_FILE)
+#define use_builtin_FILE 1
+#else
+#define use_builtin_FILE 0
+#endif
+#else
+#if defined(__GNUC__) || defined(__GNUG__)
+#define use_builtin_FILE 1
+#endif
+#endif
+
+#if use_builtin_FILE
 #define CAPTURE_CALLER_DECLARE const char* file = __builtin_FILE(), const char* function = __builtin_FUNCTION(), int line = __builtin_LINE()
 #else
 #define CAPTURE_CALLER_DECLARE const char* file = "unknown", const char* function = "unknown", int line = 0
@@ -106,6 +120,9 @@ class TransactionLog {
 	bool mAborted = false;
 	bool mExportRelated = false;
 	StringBuffer mError;
+	Vector3 mWorldPosition;
+	String mZoneName;
+	String mWorldPositionContext;
 	Vector<uint64> mRelatedObjects;
 	SortedVector<uint64> mChildObjects;
 	JSONSerializationType mState = JSONSerializationType::object();
@@ -165,6 +182,9 @@ public:
 		mAborted = rhs.mAborted;
 		mExportRelated = rhs.mExportRelated;
 		mError << rhs.mError;
+		mWorldPosition = rhs.mWorldPosition;
+		mWorldPositionContext = rhs.mWorldPositionContext;
+		mZoneName = rhs.mZoneName;
 		mRelatedObjects = rhs.mRelatedObjects;
 		mChildObjects = rhs.mChildObjects;
 		mState = rhs.mState;
@@ -280,7 +300,7 @@ public:
 		catchAndLog(__FUNCTION__, [&]() -> void { mState[key] = value; });
 	}
 
-	void addStateWorldPosition(String baseKeyName, SceneObject* scno);
+	void addWorldPosition(String context, SceneObject* scno);
 
 	static const String getNewTrxID();
 

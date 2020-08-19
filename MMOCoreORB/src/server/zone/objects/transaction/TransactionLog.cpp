@@ -519,6 +519,10 @@ void TransactionLog::addStateObjectMetadata(const String& baseKeyName, SceneObje
 		if (!serial.isEmpty()) {
 			addState(baseKeyName + "ObjectSerial", tano->getSerialNumber());
 		}
+
+		if (tano->hasAntiDecayKit()) {
+			addState(baseKeyName + "AntiDecayKitObjectID", tano->getAntiDecayKitObjectID());
+		}
 	}
 
 	auto tmpl = obj->getObjectTemplate();
@@ -531,29 +535,28 @@ void TransactionLog::addStateObjectMetadata(const String& baseKeyName, SceneObje
 		}
 	}
 
-	auto zone = obj->getZone();
-
-	if (zone != nullptr && baseKeyName != "src" && baseKeyName != "dst") {
-		auto pos = obj->getWorldPosition();
-		addState(baseKeyName + "WorldPositionX", (int)pos.getX());
-		addState(baseKeyName + "WorldPositionZ", (int)pos.getZ());
-		addState(baseKeyName + "WorldPositionY", (int)pos.getY());
-		addState(baseKeyName + "Zone", zone != nullptr ? zone->getZoneName() : "null");
-	}
+	addWorldPosition(baseKeyName, obj);
 }
 
-void TransactionLog::addStateWorldPosition(String baseKeyName, SceneObject* scno) {
-	if (scno == nullptr) {
+void TransactionLog::addWorldPosition(String context, SceneObject* scno) {
+	if (scno == nullptr || !mWorldPositionContext.isEmpty()) {
 		return;
 	}
 
-	auto pos = scno->getWorldPosition();
-	addState(baseKeyName + "WorldPositionX", (int)pos.getX());
-	addState(baseKeyName + "WorldPositionZ", (int)pos.getZ());
-	addState(baseKeyName + "WorldPositionY", (int)pos.getY());
+	auto root = scno->getRootParentUnsafe();
 
-	auto zone = scno->getZone();
-	addState(baseKeyName + "Zone", zone != nullptr ? zone->getZoneName() : "null");
+	if (root == nullptr || !root->isBuildingObject()) {
+		root = scno;
+	}
+
+	auto zone = root->getZone();
+
+	if (zone != nullptr) {
+		mWorldPositionContext = context;
+		mWorldPosition = root->getWorldPosition();
+		mZoneName = zone->getZoneName();
+		return;
+	}
 }
 
 void TransactionLog::addStateCreditBalances(const String& key, const String& when) {
@@ -684,6 +687,14 @@ void TransactionLog::writeLog() {
 
 	if (mAborted) {
 		mState["aborted"] = mAborted;
+	}
+
+	if (!mWorldPositionContext.isEmpty()) {
+		addState("WorldPositionContext", mWorldPositionContext);
+		addState("WorldPositionX", (int)mWorldPosition.getX());
+		addState("WorldPositionZ", (int)mWorldPosition.getZ());
+		addState("WorldPositionY", (int)mWorldPosition.getY());
+		addState("zone", mZoneName);
 	}
 
 	mState["relatedObjects"] = mRelatedObjects;
@@ -836,6 +847,8 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	// SWGEmu Specific
 	case TrxCode::ACCESSFEE:                return "accessfee";                 // Access Fee
 	case TrxCode::ADMINCOMMAND:             return "admincommand";              // From an admin command
+	case TrxCode::ADKAPPLY:                 return "adkapply";                  // Apply ADK to an item
+	case TrxCode::ADKREMOVE:                return "adkremove";                 // Remove ADK from item
 	case TrxCode::AUCTIONADDSALE:           return "auctionaddsale";            // addSaleItem()
 	case TrxCode::AUCTIONBID:               return "auctionbid";                // Auction Bid Escrow
 	case TrxCode::AUCTIONEXPIRED:           return "auctionexpired";            // Never retrieved and expired

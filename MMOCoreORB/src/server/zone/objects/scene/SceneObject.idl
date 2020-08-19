@@ -135,6 +135,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dereferenced
 	protected ContainerObjectsMap containerObjects;
 
+	protected unsigned long originalObjectID;
+
+	protected boolean forceNoTrade;
+
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
@@ -1456,9 +1460,18 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native void setContainerComponent(final string name);
 	public native void setZoneComponent(final string name);
 
+	public void setForceNoTrade(boolean newForceNoTrade) {
+		forceNoTrade = newForceNoTrade;
+	}
+
 	@read
-	public boolean isNoTrade() {
-		return templateObject.isNoTrade();
+	public abstract boolean isNoTrade() {
+		return forceNoTrade || templateObject.isNoTrade();
+	}
+
+	@read
+	public boolean isForceNoTrade() {
+		return forceNoTrade;
 	}
 
 	@read

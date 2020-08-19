@@ -729,7 +729,6 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 }
 
 int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium, bool stockroomSale) {
-
 	if (vendor == nullptr) {
 		error() << "checkSaleItem(player=" << player->getObjectID() << ", object=" << object->getObjectID() << ", vendor=nullptr): Vendor is null";
 		return ItemSoldMessage::UNKNOWNERROR;
@@ -741,8 +740,21 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 	if (player->getPlayerObject()->getVendorCount() > player->getSkillMod("manage_vendor"))
 		return ItemSoldMessage::TOOMANYITEMS;
 
-	if (vendor->isVendor()) {
+	auto itemParent = object->getParent().get();
 
+	if (itemParent == nullptr && !stockroomSale) {
+		error() << "checkSaleItem(player=" << player->getObjectID() << ", object=" << object->getObjectID() << ", vendor=" << vendor->getObjectID()
+				<< "): itemParent is null; stockroomSale=" << stockroomSale;
+		return ItemSoldMessage::UNKNOWNERROR;
+	}
+
+	if (itemParent != nullptr && !itemParent->checkContainerPermission(player, ContainerPermissions::MOVEOUT)) {
+		error() << "checkSaleItem(player=" << player->getObjectID() << ", object=" << object->getObjectID() << ", vendor=" << vendor->getObjectID()
+				<< "): No MOVEOUT permission from " << itemParent->getObjectID() << " (" << itemParent->getObjectName()->getFullPath() << ") stockroomSale=" << stockroomSale;
+		return ItemSoldMessage::INVALIDITEM;
+	}
+
+	if (vendor->isVendor()) {
 		VendorDataComponent* vendorData = cast<VendorDataComponent*>(vendor->getDataObjectComponent()->get());
 
 		if (vendorData == nullptr) {
@@ -778,7 +790,6 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 
 		if (premium && player->getBankCredits() < SALESFEE * 5)
 			return ItemSoldMessage::NOTENOUGHCREDITS;
-
 	}
 
 	if (object->isIntangibleObject() && !object->isManufactureSchematic())

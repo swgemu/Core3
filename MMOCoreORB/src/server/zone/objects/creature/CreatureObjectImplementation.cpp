@@ -1973,7 +1973,13 @@ void CreatureObjectImplementation::activateQueueAction() {
 	}
 
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
-	commandQueue->remove(0);
+	for (int i = 0; i < commandQueue->size(); i++) {
+		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+			commandQueue->remove(i);
+			break;
+		}
+	}
 
 	if (commandQueue->size() != 0) {
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
@@ -3053,6 +3059,10 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if ((!bypassDeadCheck && (isDead() || (isIncapacitated() && !isFeigningDeath()))) || isInvisible())
 		return false;
 
+	if (ghost->hasCrackdownTefTowards(object->getFaction())) {
+		return true;
+	}
+
 	if (getPvpStatusBitmask() == CreatureFlag::NONE)
 		return false;
 
@@ -3096,6 +3106,10 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 				return false;
 			if (ConfigManager::instance()->getPvpMode())
 				return true;
+
+			if (object->isAiAgent() && ghost->hasCrackdownTefTowards(object->getFaction())) {
+				return true;
+			}
 		}
 	}
 
