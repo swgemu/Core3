@@ -57,6 +57,8 @@ enum class TrxCode {
 	// SWGEmu Specific Codes
 	ACCESSFEE            = 100, // Access Fee
 	ADMINCOMMAND,               // From an admin command
+	ADKAPPLY,                   // Apply and ADK to item
+	ADKREMOVE,                  // Remove ADK from item
 	AUCTIONADDSALE,             // addSaleItem()
 	AUCTIONBID,                 // Auction Bid Escrow
 	AUCTIONEXPIRED,             // Never retrieved and expired
@@ -118,6 +120,9 @@ class TransactionLog {
 	bool mAborted = false;
 	bool mExportRelated = false;
 	StringBuffer mError;
+	Vector3 mWorldPosition;
+	String mZoneName;
+	String mWorldPositionContext;
 	Vector<uint64> mRelatedObjects;
 	SortedVector<uint64> mChildObjects;
 	JSONSerializationType mState = JSONSerializationType::object();
@@ -177,6 +182,9 @@ public:
 		mAborted = rhs.mAborted;
 		mExportRelated = rhs.mExportRelated;
 		mError << rhs.mError;
+		mWorldPosition = rhs.mWorldPosition;
+		mWorldPositionContext = rhs.mWorldPositionContext;
+		mZoneName = rhs.mZoneName;
 		mRelatedObjects = rhs.mRelatedObjects;
 		mChildObjects = rhs.mChildObjects;
 		mState = rhs.mState;
@@ -292,7 +300,7 @@ public:
 		catchAndLog(__FUNCTION__, [&]() -> void { mState[key] = value; });
 	}
 
-	void addStateWorldPosition(String baseKeyName, SceneObject* scno);
+	void addWorldPosition(String context, SceneObject* scno);
 
 	static const String getNewTrxID();
 

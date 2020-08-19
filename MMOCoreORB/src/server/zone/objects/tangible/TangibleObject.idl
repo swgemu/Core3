@@ -836,6 +836,15 @@ class TangibleObject extends SceneObject {
 		return antiDecayKitObject;
 	}
 
+	@read
+	public unsigned long getAntiDecayKitObjectID() {
+		if (!hasAntiDecayKit()) {
+		    return 0;
+		}
+
+		return antiDecayKitObject.getObjectID();
+	}
+
 	@preLocked
 	public void applyAntiDecayKit(CreatureObject player, SceneObject adk) {
 		if (!hasAntiDecayKit()) {
