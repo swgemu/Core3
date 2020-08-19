@@ -1083,6 +1083,11 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 			if (resource->getSpawnName() == resourceSpawn->getName() &&
 					resource->getQuantity() < ResourceContainer::MAXSIZE) {
 				if  ((resource->getQuantity() + unitsExtracted) <= ResourceContainer::MAXSIZE ){
+					trx.addRelatedObject(resource);
+					trx.addState("resourceType", resourceSpawn->getType());
+					trx.addState("resourceName", resourceSpawn->getName());
+					trx.addState("resourceQuantity", unitsExtracted);
+
 					int newStackSize = resource->getQuantity() + unitsExtracted;
 					resource->setQuantity(newStackSize);
 					return true;
@@ -1099,6 +1104,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 		if (!player->isIncapacitated() && !player->isDead()){
 			player->setPosture(CreaturePosture::UPRIGHT, true);
 		}
+		trx.errorMessage() << "No inventory space";
 		return false;
 	}
 	// Create New resource container if one isn't found in inventory
@@ -1107,15 +1113,20 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 	trx.addRelatedObject(harvestedResource);
 
 	if (inventory->transferObject(harvestedResource, -1, false)) {
+		trx.addState("resourceType", resourceSpawn->getType());
+		trx.addState("resourceName", resourceSpawn->getName());
+		trx.addState("resourceQuantity", unitsExtracted);
+
 		inventory->broadcastObject(harvestedResource, true);
-		return true;
 	} else {
-          	Locker resLocker(harvestedResource);
+		Locker resLocker(harvestedResource);
 
 		harvestedResource->destroyObjectFromDatabase(true);
 		trx.errorMessage() << "transferObject failed in " << __FUNCTION__ << " near line " << __LINE__;
 		return false;
 	}
+
+	return true;
 }
 
 Reference<ResourceContainer*> ResourceSpawner::harvestResource(CreatureObject* player,
