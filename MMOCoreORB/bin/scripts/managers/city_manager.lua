@@ -49,19 +49,19 @@ which carries forward this exception.
 	--------------------
 --]]
 --The amount of time in minutes before the city specialization may be changed again.
-CitySpecializationCooldown = 1
+CitySpecializationCooldown = 604800000
 
 --The amount of time in minutes before another withdrawal from the city treasury may be made.
-TreasuryWithdrawalCooldown = 1
+TreasuryWithdrawalCooldown = 86400000
 
 --The number of city update cycles that must pass before mayoral voting process is complete.
-CityVotingCycles = 2016
+CityVotingCycles = 3
 
 --The number of city update cyles after which to lock the mayoral voting race registration.
-CityVotingCyclesUntilLocked = 2016
+CityVotingCyclesUntilLocked = 2
 
 --The amount of time in minutes before the city performs an update.
-CityUpdateInterval = 5
+CityUpdateInterval = 10080
 
 --The amount of time in minutes a new city has to gain enough citizens to remain a city.
 NewCityGracePeriod = 1440
@@ -73,7 +73,7 @@ OldCityGracePeriod = 4320
 EnableCityWarn = true
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
-CitizensPerRank = {1, 1, 1, 1, 1}
+CitizensPerRank = {2, 4, 6, 8, 10}
 --CitizensPerRank = {10, 20, 35, 55, 85}
 
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
@@ -85,7 +85,7 @@ TrainersPerRank = 3
 MissionTerminalsPerRank = 3
 
 -- Amount to discount city maintenance  float.  1 = 100%, .75 =75%, .5=50% etc
-maintenanceDiscount = .01
+maintenanceDiscount = 1.0
 
 --[[
 	CITIES ALLOWED PER PLANET
