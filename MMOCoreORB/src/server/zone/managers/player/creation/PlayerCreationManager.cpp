@@ -38,8 +38,8 @@ PlayerCreationManager::PlayerCreationManager() :
 	professionDefaultsInfo.setNoDuplicateInsertPlan();
 	hairStyleInfo.setNoDuplicateInsertPlan();
 
-	startingCash = 1000000;
-	startingBank = 1000000;
+	startingCash = 100;
+	startingBank = 1000;
 
 	freeGodMode = false;
 
