@@ -166,7 +166,9 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				if (npc->isInCombat()) {
 					rescheduleTask = true;
 				} else {
-					npc->destroyObjectFromWorld(true);
+					if (!npc->isDead()) {
+						npc->destroyObjectFromWorld(true);
+					}
 					containmentTeam.remove(i);
 				}
 			} else {
