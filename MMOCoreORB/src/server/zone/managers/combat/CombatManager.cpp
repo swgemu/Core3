@@ -253,12 +253,38 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	/*if (shouldBhTef)
 		info("shouldBhTefpvp", true);
 	if (shouldGcwTef)
-		info("shouldGcwTefpvp", true);
-	if (shouldRealGcwTef)
-		info("shouldRealGcwTefpvp", true);*/
+		info("shouldGcwTefpvp", true);*/
+	//if (shouldRealGcwTef)
+	//	info("OUTshouldRealGcwTefpvp", true);
+
+	if (shouldBhTef || shouldRealGcwTef){
+		ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
+		if (attackingCreature != nullptr){
+			PlayerObject* ghost = attackingCreature->getPlayerObject();
+			PlayerObject* ghostAttacker = attacker->getPlayerObject();
+			ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
+			Locker olocker(defenderCreature,attacker);
+			if (defenderObject != nullptr){
+				if (defenderCreature->isAiAgent()  && defenderCreature->getFaction() != attacker->getFaction() && (defenderCreature->getFaction() == Factions::FACTIONREBEL || defenderCreature->getFaction() == Factions::FACTIONIMPERIAL))
+					ghostAttacker->updateLastPvpCombatActionTimestamp(false, false, true);
+				if (ghost != nullptr) {
+					if (ghostAttacker != nullptr){
+						olocker.release();
+						Locker olocker(attackingCreature,attacker);
+						ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef);
+						/*if (defenderCreature->isPlayerCreature()) {
+							ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
+							if (defenderPlayer != nullptr && shouldRealGcwTef)
+								defenderPlayer->updateLastPvpCombatActionTimestamp(false,false,true);
+						}*/
+					}
+				}
+			}
+		}
+	}
 
 	// Update PvP TEF Duration
-	if (shouldGcwTef || shouldBhTef || shouldRealGcwTef) {
+	/*if (shouldGcwTef || shouldBhTef || shouldRealGcwTef) {
 		ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
 		CreatureObject* defender = nullptr;
 		ManagedReference<CreatureObject*> defendingCreature = nullptr;
@@ -269,21 +295,34 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		if (attackingCreature != nullptr && defendingCreature != nullptr) {
 			PlayerObject* ghostAttacker = attackingCreature->getPlayerObject();
 			PlayerObject* ghostDefender = defendingCreature->getPlayerObject();
-
+			info("1", true);
+			Locker olocker(defenderCreature,attacker);
 			if (ghostAttacker != nullptr) {
 				if (defender->isAiAgent() && defender->getFaction() != attackingCreature->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
 					ghostAttacker->updateLastPvpCombatActionTimestamp(false, false, true);
+					info("AI", true);
 				}
-				if (defender->isPlayerCreature()) {
-					ghostAttacker->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef,shouldRealGcwTef);
+				//if (defender != nullptr && defender->isPlayerCreature()) {
+				//	ghostDefender->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef,shouldRealGcwTef);
+				//}
+				if (attacker != nullptr && defender != nullptr && attacker->isPlayerCreature() && defender->isPlayerCreature()) {
+					//Locker olocker(attackingCreature, attacker);
+					info("attackertef", true);
+					ghostAttacker->updateLastPvpCombatActionTimestamp(shouldGcwTef,shouldBhTef,shouldRealGcwTef);
+					
+					if (defender != nullptr && defender->isPlayerCreature() && shouldRealGcwTef) {
+						info("defendertef", true);
+						ghostDefender->updateLastPvpCombatActionTimestamp(false,false,shouldRealGcwTef);
+					}		
+				
 				}
 				
 			}
-			/*if (ghostDefender != nullptr) {
+			if (ghostDefender != nullptr) {
 				ghostDefender->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef,shouldRealGcwTef);
-			}*/
-		}
-		/*if (attackingCreature != nullptr) {
+			}
+		//}
+		if (attackingCreature != nullptr) {
 			PlayerObject* ghost = attackingCreature->getPlayerObject();
 			PlayerObject* ghostAttacker = attacker->getPlayerObject();
 			ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
@@ -319,8 +358,8 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 						}
 					}
 			}
-		}*/
-	}
+		}
+	}*/
 
 	return damage;
 }
@@ -489,28 +528,28 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (shouldRealGcwTef)
 		info("shouldRealGcwTefpvpdtca", true);*/
 // TEF FIX
-	if (shouldRealGcwTef) { // || shouldBhTef || shouldGcwTef) {
+	if (shouldBhTef || shouldRealGcwTef) { // || shouldBhTef || shouldGcwTef) {
 		if (attacker->isPlayerCreature()){
 			//info("shouldRealGcwTefpvpdtca1", true);
 			PlayerObject* ghost = attacker->getPlayerObject();
-			if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
-				ghost->updateLastPvpCombatActionTimestamp(false,false,true);
+			//if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+			//	ghost->updateLastPvpCombatActionTimestamp(false,false,true);
 				//info("shouldRealGcwTefpvpdtca2", true);
-			}
+			//}
 			//if (defender->isInstallationObject() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
 			//	ghost->updateLastPvpCombatActionTimestamp(false,false,true);
 			//}
 			//ManagedReference<CreatureObject*> defenderCreature = cast<CreatureObject*>(defenderObject);
-			/*if (defender->isPlayerCreature()) {
+			if (defender != nullptr && defender->isPlayerCreature()) {
 				ManagedReference<PlayerObject*> defenderPlayer = defender->getPlayerObject();
 				if (ghost != nullptr && defenderPlayer != nullptr) {
 					if (defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 						Locker olocker(attacker, defender);
 						ghost->updateLastPvpCombatActionTimestamp(false, shouldBhTef, shouldRealGcwTef);
-					} else if (defenderPlayer->hasBhTef()) {
+					}/* else if (defenderPlayer->hasBhTef()) {
 						Locker olocker(attacker, defenderPlayer);
 						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
-					}
+					}*/
 				}
 			} else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL))
 				ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef);
@@ -522,7 +561,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		//		Locker olocker(attacker, defender);
 		//		ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
 		//	}*/
-		}
+		//}
 	}
 
 	broadcastCombatAction(attacker, defender, weapon, data, damage, hitVal, hitLocation);
