@@ -1187,8 +1187,12 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 	if (value < 0)
 		value = 0;
 
-	if (value >= baseHAM.get(type))
+	if (value >= baseHAM.get(type)) {
+		//info(to_string(value), true);
+		//info(to_string(baseHAM.get(type)), true);
 		value = baseHAM.get(type) - 1;
+		//info(to_string(value), true);
+	}
 
 	if (wounds.get(type) == value)
 		return;
@@ -2809,9 +2813,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(healthRegen > 0) {
 		healthWoundHeal += (int)(healthRegen * 0.2);
 		if(healthWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::HEALTH, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, 1, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::HEALTH, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, 9, true, false);
 			healthWoundHeal -= 100;
 		}
 	}
@@ -2822,9 +2826,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(actionRegen > 0) {
 		actionWoundHeal += (int)(actionRegen * 0.2);
 		if(actionWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::ACTION, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STAMINA, 1, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::ACTION, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STAMINA, 9, true, false);
 			actionWoundHeal -= 100;
 		}
 	}
@@ -2835,9 +2839,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(mindRegen > 0) {
 		mindWoundHeal += (int)(mindRegen * 0.2);
 		if(mindWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::MIND, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::FOCUS, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, 1, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::MIND, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::FOCUS, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, 9, true, false);
 			mindWoundHeal -= 100;
 		}
 	}
