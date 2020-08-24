@@ -61,7 +61,7 @@ MindBlast2Command = {
 			{ "jedi_state_defense" },
 			55,
 			0,
-			10
+			60
 		),
 
 		StateEffect(
@@ -71,7 +71,7 @@ MindBlast2Command = {
 			{ "jedi_state_defense" },
 			55,
 			0,
-			10
+			60
 		),
 
 		StateEffect(
@@ -81,7 +81,7 @@ MindBlast2Command = {
 			{ "jedi_state_defense" },
 			55,
 			0,
-			10
+			30
 		)
 	},
 
