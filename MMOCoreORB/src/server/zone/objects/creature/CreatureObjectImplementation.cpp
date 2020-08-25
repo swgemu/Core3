@@ -1186,12 +1186,10 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 		bool notifyClient) {
 	if (value < 0)
 		value = 0;
-
-	if (value >= baseHAM.get(type)) {
-		//info(to_string(value), true);
-		//info(to_string(baseHAM.get(type)), true);
-		value = baseHAM.get(type) - 1;
-		//info(to_string(value), true);
+	info(String::valueOf(baseHAM.get(type)), true);
+	if (value >= (baseHAM.get(type) * 0.666)) {
+		value = (baseHAM.get(type) * 0.666) - 1;
+		//info(String::valueOf(value), true);
 	}
 
 	if (wounds.get(type) == value)
