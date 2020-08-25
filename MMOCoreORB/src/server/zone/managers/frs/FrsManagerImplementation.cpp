@@ -1,4 +1,5 @@
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/frs/RankMaintenanceTask.h"
@@ -19,6 +20,7 @@
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/player/PlayerMap.h"
+
 
 void FrsManagerImplementation::initialize() {
 	auto zoneServer = this->zoneServer.get();
@@ -924,7 +926,7 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 	if (rank == 0)
 		return;
 
-	int maintXp = baseMaintCost * rank;
+	int maintXp = baseMaintCost * rank * 5;
 
 	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
@@ -993,6 +995,9 @@ bool FrsManagerImplementation::isValidFrsBattle(CreatureObject* attacker, Creatu
 
 	// No credit if they are in the same council
 	if ((attackerCouncil == COUNCIL_LIGHT && victimCouncil == COUNCIL_LIGHT) || (attackerCouncil == COUNCIL_DARK && victimCouncil == COUNCIL_DARK))
+		return false;
+
+	if (CombatManager::instance()->areInDuel(attacker, victim))
 		return false;
 
 	return true;
