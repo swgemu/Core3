@@ -517,7 +517,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage) const {
 	const Vector<DotEffect>* dotEffects = data.getDotEffects();
 
-	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE)
+	if (defender->isInvulnerable())
 		return;
 
 	for (int i = 0; i < dotEffects->size(); i++) {
@@ -566,7 +566,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 }
 
 void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) const {
-	if (defender->getPvpStatusBitmask() == CreatureFlag::NONE)
+	if (defender->isInvulnerable())
 		return;
 
 	if (!weapon->isCertifiedFor(attacker))
@@ -1319,7 +1319,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 }
 
 float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage) const {
-	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+	if (defender->isInvulnerable()) {
 		return 0;
 	}
 	if (defender->isCreatureObject()) {
@@ -1806,7 +1806,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 	const VectorMap<uint8, StateEffect>* stateEffects = data.getStateEffects();
 	int stateAccuracyBonus = data.getStateAccuracyBonus();
 
-	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE)
+	if (targetCreature->isInvulnerable())
 		return;
 
 	int playerLevel = 0;
@@ -1968,7 +1968,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	float ratio = weapon->getWoundsRatio();
 	float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
 
-	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+	if (defender->isInvulnerable()) {
 		return 0;
 	}
 
@@ -2107,7 +2107,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	if (poolsToDamage == 0)
 		return 0;
 
-	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+	if (defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
 		return 0;
 	}
 
