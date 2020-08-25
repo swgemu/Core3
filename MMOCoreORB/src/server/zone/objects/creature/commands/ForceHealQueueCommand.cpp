@@ -457,11 +457,18 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 
 	if (targetCreature == nullptr)
 		return GENERALERROR;
+
 	// TEF Fix
 	PlayerObject* ghost = creature->getPlayerObject().get();
-	if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT)
+	if (creature->getFaction() != targetCreature->getFaction() && creature->getFactionStatus() == FactionStatus::COVERT && ghost->hasRealGcwTef()) {
+		creature->sendSystemMessage("@healing:pvp_no_help");
+		return GENERALERROR;
+	}
+	
+	if (creature->getFactionStatus() == FactionStatus::COVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT) {
 		ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
-	checkForTef(creature, targetCreature);
+		checkForTef(creature, targetCreature);
+	}
 
 	int retval = GENERALERROR;
 
