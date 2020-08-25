@@ -2813,9 +2813,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(healthRegen > 0) {
 		healthWoundHeal += (int)(healthRegen * 0.2);
 		if(healthWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::HEALTH, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::HEALTH, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, 5, true, false);
 			healthWoundHeal -= 100;
 		}
 	}
@@ -2826,9 +2826,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(actionRegen > 0) {
 		actionWoundHeal += (int)(actionRegen * 0.2);
 		if(actionWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::ACTION, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STAMINA, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::ACTION, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STAMINA, 5, true, false);
 			actionWoundHeal -= 100;
 		}
 	}
@@ -2839,9 +2839,9 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(mindRegen > 0) {
 		mindWoundHeal += (int)(mindRegen * 0.2);
 		if(mindWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::MIND, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::FOCUS, 9, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, 9, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::MIND, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::FOCUS, 5, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, 5, true, false);
 			mindWoundHeal -= 100;
 		}
 	}
