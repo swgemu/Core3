@@ -190,7 +190,7 @@ int APIProxyObjectManager::deleteObject(APIRequest& apiRequest, uint64 oid, bool
 		auto tano = scno->asTangibleObject();
 
 		if (tano != nullptr && tano->hasAntiDecayKit() && refundADK) {
-			auto dest = scno->getParent().get();
+			Reference<SceneObject*> dest = scno->getParent().get();
 
 			if (dest == nullptr && auctionOwnerID > 0) {
 				dest = getZoneServer()->getObject(auctionOwnerID);
