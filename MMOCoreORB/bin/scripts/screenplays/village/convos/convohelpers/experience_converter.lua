@@ -21,6 +21,7 @@ ExperienceConverter = ScreenPlay:new {
 			{ "combat_rangedspecialize_heavy", 30 },
 			{ "combat_rangedspecialize_pistol", 30 },
 			{ "combat_rangedspecialize_rifle", 30 },
+			{ "jedi_general", 3 },
 			{ "squadleader", 90 }
 		},
 		senses = {
@@ -50,6 +51,7 @@ ExperienceConverter = ScreenPlay:new {
 			{ "combat_rangedspecialize_heavy", 30 },
 			{ "combat_rangedspecialize_pistol", 30 },
 			{ "combat_rangedspecialize_rifle", 30 },
+			{ "jedi_general", 3 },
 			{ "squadleader", 90 }
 		},
 		crafting = {
