@@ -692,6 +692,31 @@ PlanetTravelPoint* PlanetManagerImplementation::getRandomStarport() {
 	return planetStarports.get(System::random(planetStarports.size() - 1));
 }
 
+Vector3 PlanetManagerImplementation::getRandomSpawnPoint() {
+	Vector3 position;
+	bool found = false;
+	float minX = zone->getMinX(), maxX = zone->getMaxX();
+	float minY = zone->getMinY(), maxY = zone->getMaxY();
+	float diameterX = maxX - minX;
+	float diameterY = maxY - minY;
+	int retries = 20;
+
+	while (!found && retries > 0) {
+		position.setX(System::random(diameterX) + minX);
+		position.setY(System::random(diameterY) + minY);
+
+		found = isSpawningPermittedAt(position.getX(), position.getY());
+
+		retries--;
+	}
+
+	if (retries == 0) {
+		position.set(0, 0, 0);
+	}
+
+	return position;
+}
+
 void PlanetManagerImplementation::loadClientPoiData() {
 
 	Locker locker(&poiMutex);

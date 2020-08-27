@@ -90,9 +90,9 @@ class PlanetManager extends ManagedService implements Logger {
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
-		
+
 		performanceLocations = new MissionTargetMap();
-		
+
 		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
@@ -175,7 +175,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
-	
+
 	@local
 	public native PlanetTravelPoint getRandomStarport();
 
@@ -187,6 +187,10 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
+
+	@local
+	@dereferenced
+	public native Vector3 getRandomSpawnPoint();
 
 	public native boolean isSpawningPermittedAt(float x, float y, float margin = 0);
 

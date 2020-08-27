@@ -1830,25 +1830,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 		return position;
 	}
 
-	bool found = false;
-	float minX = targetZone->getMinX(), maxX = targetZone->getMaxX();
-	float minY = targetZone->getMinY(), maxY = targetZone->getMaxY();
-	float diameterX = maxX - minX;
-	float diameterY = maxY - minY;
-	int retries = 20;
-
-	while (!found && retries > 0) {
-		position.setX(System::random(diameterX) + minX);
-		position.setY(System::random(diameterY) + minY);
-
-		found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), nullptr);
-
-		retries--;
-	}
-
-	if (retries == 0) {
-		position.set(0, 0, 0);
-	}
+	position = targetZone->getPlanetManager()->getRandomSpawnPoint();
 
 	return position;
 }
