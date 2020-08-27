@@ -2335,7 +2335,11 @@ Time PlayerObjectImplementation::getLastRealGcwTefPvpCombatActionTimestamp() con
 	return lastRealGcwTefPvpCombatActionTimestamp;
 }
 
-void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction, bool updateRealGcwAction) {
+Time PlayerObjectImplementation::getLastGroupTefPvpCombatActionTimestamp() const {
+	return lastGroupTefPvpCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction, bool updateRealGcwAction, bool updateGroupTefAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
@@ -2343,6 +2347,7 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 
 	bool alreadyHasTef = hasPvpTef();
 	bool alreadyHasRealGcwTef = hasRealGcwTef();
+	bool alreadyHasGroupTef = hasGroupTef();
 
 	if (updateBhAction) {
 		bool alreadyHasBhTef = hasBhTef();
@@ -2366,28 +2371,37 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 		//info("updateRealGcwAction", true);
 	}
 
+	if (updateGroupTefAction) {
+		lastGroupTefPvpCombatActionTimestamp.updateToCurrentTime();
+		lastGroupTefPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+	}
+
 	schedulePvpTefRemovalTask();
 
-	if (!alreadyHasTef || !alreadyHasRealGcwTef) {
+	if (!alreadyHasTef || !alreadyHasRealGcwTef || !alreadyHasGroupTef) {
 		updateInRangeBuildingPermissions();
 		parent->setPvpStatusBit(CreatureFlag::TEF);
 	}
 }
 
 void PlayerObjectImplementation::updateLastBhPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(false, true, false);
+	updateLastPvpCombatActionTimestamp(false, true, false, false);
 }
 
 void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(true, false, false);
+	updateLastPvpCombatActionTimestamp(true, false, false, false);
 }
 
 void PlayerObjectImplementation::updateLastRealGcwTefPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(false, false, true);
+	updateLastPvpCombatActionTimestamp(false, false, true, false);
+}
+
+void PlayerObjectImplementation::updateLastGroupTefPvpCombatActionTimestamp() {
+	updateLastPvpCombatActionTimestamp(false, false, false, true);
 }
 
 bool PlayerObjectImplementation::hasPvpTef() const {
-	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef(); // || hasRealGcwTef();
+	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
 }
 
 bool PlayerObjectImplementation::hasBhTef() const {
@@ -2398,7 +2412,11 @@ bool PlayerObjectImplementation::hasRealGcwTef() const {
 	return !lastRealGcwTefPvpCombatActionTimestamp.isPast();
 }
 
-void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow, bool removeRealGcwTefNow) {
+bool PlayerObjectImplementation::hasGroupTef() const {
+	return !lastGroupTefPvpCombatActionTimestamp.isPast();
+}
+
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow, bool removeRealGcwTefNow, bool removeGroupTefNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
@@ -2419,7 +2437,10 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 
 		if (removeRealGcwTefNow) {
 			lastRealGcwTefPvpCombatActionTimestamp.updateToCurrentTime();
-			//parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
+		}
+
+		if (removeGroupTefNow) {
+			lastGroupTefPvpCombatActionTimestamp.updateToCurrentTime();
 		}
 
 		if (pvpTefTask->isScheduled()) {
@@ -2428,13 +2449,16 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	}
 
 	if (!pvpTefTask->isScheduled()) {
-		if (hasPvpTef() || hasRealGcwTef()) {
+		if (hasPvpTef() || hasRealGcwTef() || hasGroupTef()) {
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
 			auto realGcwTefMs = getLastRealGcwTefPvpCombatActionTimestamp().miliDifference();
+			auto groupTefMs = getLastGroupTefPvpCombatActionTimestamp().miliDifference();
 			auto scheduledTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
 			scheduledTime = realGcwTefMs < scheduledTime ? realGcwTefMs : scheduledTime;
+			scheduledTime = groupTefMs < scheduledTime ? groupTefMs : scheduledTime;
 			pvpTefTask->schedule(llabs(scheduledTime));
+
 			//pvpTefTask->schedule(llabs(realGcwTefMs < gcwTefMs ? (realGcwTefMs < bhTefMs ? realGcwTefMs : bhTefMs) : (gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs)));
 		} else {
 			pvpTefTask->execute();
@@ -2443,7 +2467,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 }
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
-	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow);
+	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow, removeNow);
 }
 
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() const {

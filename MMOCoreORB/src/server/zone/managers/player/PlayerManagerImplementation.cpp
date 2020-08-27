@@ -1199,7 +1199,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		ghost->resetIncapacitationTimes();
 		// TEF FIX Should stay TEF until Clone
 		if (ghost->hasPvpTef()) {
-			ghost->schedulePvpTefRemovalTask(false, true, false);
+			ghost->schedulePvpTefRemovalTask(false, true, false, false);
 		}
 	}
 
@@ -1501,7 +1501,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->setFactionStatus(FactionStatus::COVERT);
 	// TEF FIX Should stay TEF until Clone
 	if (ghost->hasPvpTef() || ghost->hasRealGcwTef()) {
-		ghost->schedulePvpTefRemovalTask(true, true, true);
+		ghost->schedulePvpTefRemovalTask(true, true, true, true);
 	}
 
 	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);

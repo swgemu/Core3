@@ -33,12 +33,14 @@ public:
 
 		Locker locker(player);
 
-		if (ghost->hasPvpTef() || ghost->hasRealGcwTef()) {
+		if (ghost->hasPvpTef() || ghost->hasRealGcwTef() || ghost->hasGroupTef()) {
 			auto gcwTefMs = ghost->getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = ghost->getLastBhPvpCombatActionTimestamp().miliDifference();
 			auto realGcwTefMs = ghost->getLastRealGcwTefPvpCombatActionTimestamp().miliDifference();
+			auto groupTefMs = ghost->getLastGroupTefPvpCombatActionTimestamp().miliDifference();
 			auto scheduledTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
 			scheduledTime = realGcwTefMs < scheduledTime ? realGcwTefMs : scheduledTime;
+			scheduledTime = groupTefMs < scheduledTime ? groupTefMs : scheduledTime;
 			this->reschedule(llabs(scheduledTime));
 			//if (realGcwTefMs < 0) {
 			//	this->reschedule(llabs(realGcwTefMs));

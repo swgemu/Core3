@@ -3028,6 +3028,20 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 		return true;
 	}
 
+	//GTEF for Later use
+	if (ghost->hasGroupTef() && object->isGrouped()){
+		ManagedReference<GroupObject*> group = object->getGroup();
+		if (group != nullptr) {
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+				if (groupMember->isPlayerCreature()) {
+					return true;
+				}
+			}
+		}
+	}
+
+
 	//BH GTEF for Later use
 	/*if (ghost->hasBhTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();
@@ -3040,6 +3054,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 			}
 		}
 	}*/
+
+	//if (ghost->hasGroupTef())
+	//	return true;
 
 	// TEF FIX
 	if ((ghost->hasRealGcwTef() || targetGhost->hasRealGcwTef()) && getFaction() != object->getFaction()) //object->getPvpStatusBitmask() & CreatureFlag::TEF) 
@@ -3197,6 +3214,20 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		return true;
 	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef() && !(bhFight))
 		return true;*/
+
+	//GTEF for later use
+	if (ghost->hasGroupTef() && object->isGrouped()){
+		ManagedReference<GroupObject*> group = object->getGroup();
+		if (group != nullptr) {
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+				if (groupMember->isPlayerCreature()) {
+					return true;
+				}
+			}
+		}
+	}
+
 	//BH GTEF for later use
 	/*if (ghost->hasBhTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();

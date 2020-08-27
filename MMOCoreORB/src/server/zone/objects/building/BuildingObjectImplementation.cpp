@@ -401,7 +401,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 	if (!isClientObject()) {
 		PlayerObject* ghost = player->getPlayerObject().get();
 
-		if (ghost != nullptr && (ghost->hasPvpTef() || ghost->hasRealGcwTef())) {
+		if (ghost != nullptr && (ghost->hasPvpTef() || ghost->hasBhTef() ||ghost->hasRealGcwTef() || ghost->hasGroupTef())) {
 			return false;
 		}
 	}

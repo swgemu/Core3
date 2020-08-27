@@ -93,7 +93,7 @@ public:
 			case 3: {
 				// BOOM
 				int areaDamage = module->calculateDamage(droid);
-				bool shouldGcwTef = false, shouldBhTef = false, shouldRealGcwTef = false;
+				bool shouldGcwTef = false, shouldBhTef = false, shouldRealGcwTef = false, shouldGroupTef = false;
 
 				// find all valid targets in 17 m range and hit them with the damage
 				CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
@@ -177,7 +177,7 @@ public:
 								tomaster.setDI((int)amount);
 								player->sendSystemMessage(tomaster);
 
-								CombatManager::instance()->checkForTefs(player, creo, &shouldGcwTef, &shouldBhTef, &shouldRealGcwTef);
+								CombatManager::instance()->checkForTefs(player, creo, &shouldGcwTef, &shouldBhTef, &shouldRealGcwTef, &shouldGroupTef);
 							}
 
 						}
@@ -204,11 +204,11 @@ public:
 				}
 
 				// Update PvP TEF Duration
-				if (shouldGcwTef || shouldBhTef || shouldRealGcwTef) {
+				if (shouldGcwTef || shouldBhTef || shouldRealGcwTef || shouldGroupTef) {
 					PlayerObject* ghost = player->getPlayerObject();
 
 					if (ghost != nullptr) {
-						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef, shouldRealGcwTef);
+						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef, shouldRealGcwTef, shouldGroupTef);
 					}
 				}
 
