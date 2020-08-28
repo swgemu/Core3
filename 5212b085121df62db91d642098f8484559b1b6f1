@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_80cf37b0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ServerDestroyObjectCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2020-08-28T15:49:23Z",
+      "side": 1,
+      "message": "Move this above the destroys and wrap the message stuff in the same if block, the message variables arent needed if the creature is null and this doesnt need to be below the destroys",
+      "revId": "5212b085121df62db91d642098f8484559b1b6f1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
