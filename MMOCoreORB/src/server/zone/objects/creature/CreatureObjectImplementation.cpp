@@ -3027,6 +3027,13 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
 		return true;
 	}
+	
+	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
+		return false; 
+	}
+	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
+		return false;
+	}
 
 	//GTEF for Later use
 	if (ghost->hasGroupTef() && object->isGrouped()){
@@ -3205,6 +3212,13 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		if (ghost->hasRealGcwTef() && targetGhost->hasRealGcwTef())
 			return true;
 		}
+
+	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
+		return false; 
+	}
+	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
+		return false;
+	}
 	//}
 	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 	//	return true;
