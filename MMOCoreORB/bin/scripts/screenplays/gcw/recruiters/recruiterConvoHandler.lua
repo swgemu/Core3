@@ -64,7 +64,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			return
 		end
 		if (PlayerObject(pGhost):hasRealGcwTef()) then
-			CreatureObject(pPlayer):sendSystemMessage("Cannot Resign with a TEF.")
+			CreatureObject(pPlayer):sendSystemMessage("Cannot Resign while TEFed.")
 			return
 		end
 
