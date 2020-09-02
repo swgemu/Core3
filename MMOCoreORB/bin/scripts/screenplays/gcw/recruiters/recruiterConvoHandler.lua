@@ -63,6 +63,10 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
 			return
 		end
+		if (PlayerObject(pGhost):hasRealGcwTef()) then
+			CreatureObject(pPlayer):sendSystemMessage("Cannot Resign with a TEF.")
+			return
+		end
 
 		if (CreatureObject(pPlayer):isOvert()) then
 			CreatureObject(pPlayer):setFutureFactionStatus(0)

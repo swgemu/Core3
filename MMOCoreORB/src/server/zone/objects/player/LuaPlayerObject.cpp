@@ -82,6 +82,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "startSlicingSession", &LuaPlayerObject::startSlicingSession },
 		{ "setVisibility", &LuaPlayerObject::setVisibility },
 		{ "getPlayedTimeString", &LuaPlayerObject::getPlayedTimeString },
+		{ "hasRealGcwTef", &LuaPlayerObject::hasRealGcwTef },
 		{ 0, 0 }
 };
 
@@ -747,6 +748,12 @@ int LuaPlayerObject::getPlayedTimeString(lua_State* L) {
 	Locker locker(realObject);
 
 	lua_pushstring(L, realObject->getPlayedTimeString(verbose).toCharArray());
+
+	return 1;
+}
+
+int LuaPlayerObject::hasRealGcwTef(lua_State* L) {
+	lua_pushboolean(L, realObject->hasRealGcwTef());
 
 	return 1;
 }
