@@ -248,6 +248,8 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected Time lastGroupTefPvpCombatActionTimestamp;
 
+	protected unsigned int groupTefCrc;
+
 	@dereferenced
 	protected transient Reference<PvpTefRemovalTask> pvpTefTask;
 
@@ -380,6 +382,7 @@ class PlayerObject extends IntangibleObject {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 		lastRealGcwTefPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGroupTefPvpCombatActionTimestamp.updateToCurrentTime();
+		groupTefCrc = 0;
 
 		lastDigestion.updateToCurrentTime();
 
@@ -1763,6 +1766,11 @@ class PlayerObject extends IntangibleObject {
 
 	@read
 	public native boolean hasGroupTef();
+
+	public native void setGroupTefTowards(unsigned int groupID, boolean scheduleTefRemovalTask = true);
+
+	@read
+	public native boolean hasGroupTefTowards(unsigned int groupID);
 
 	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow, boolean removeRealGcwTefNow, boolean removeGroupTefNow);
 

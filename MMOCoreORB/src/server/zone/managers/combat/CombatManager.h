@@ -162,6 +162,7 @@ public:
 	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef, bool* shouldRealGcwTef, bool* shouldGroupTef) const;
 	void getFrsModifiedForceAttackDamage(CreatureObject* attacker, float& minDmg, float& maxDmg, const CreatureAttackData& data) const;
 	int getArmorObjectReduction(ArmorObject* armor, int damageType) const;
+	void addGroupTef(CreatureObject* attacker, CreatureObject* defender) const;
 
 	ArmorObject* getPSGArmor(CreatureObject* defender) const;
 

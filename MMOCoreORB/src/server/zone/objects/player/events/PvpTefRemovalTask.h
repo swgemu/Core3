@@ -50,6 +50,7 @@ public:
 			
 		} else {
 			ghost->updateInRangeBuildingPermissions();
+			ghost->setGroupTefTowards(0, false);
 			player->clearPvpStatusBit(CreatureFlag::TEF);
 		}
 

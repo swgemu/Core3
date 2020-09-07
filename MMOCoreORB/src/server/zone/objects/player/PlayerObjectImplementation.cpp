@@ -2412,8 +2412,19 @@ bool PlayerObjectImplementation::hasRealGcwTef() const {
 	return !lastRealGcwTefPvpCombatActionTimestamp.isPast();
 }
 
+void PlayerObjectImplementation::setGroupTefTowards(unsigned int groupID, bool scheduleTefRemovalTask) {
+	groupTefCrc = groupID;
+	if (scheduleTefRemovalTask) {
+		updateLastPvpCombatActionTimestamp(false, false, false, true);
+	}
+}
+
+bool PlayerObjectImplementation::hasGroupTefTowards(unsigned int groupID) const {
+	return !lastGroupTefPvpCombatActionTimestamp.isPast() && groupID != 0 && groupTefCrc == groupID;
+}
+
 bool PlayerObjectImplementation::hasGroupTef() const {
-	return !lastGroupTefPvpCombatActionTimestamp.isPast();
+	return !lastGroupTefPvpCombatActionTimestamp.isPast() && groupTefCrc != 0;
 }
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow, bool removeBhTefNow, bool removeRealGcwTefNow, bool removeGroupTefNow) {
@@ -2426,7 +2437,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
-	if (removeGcwTefNow || removeBhTefNow || removeRealGcwTefNow) {
+	if (removeGcwTefNow || removeBhTefNow || removeRealGcwTefNow || removeGroupTefNow) {
 		if (removeGcwTefNow)
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 
@@ -2440,6 +2451,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 		}
 
 		if (removeGroupTefNow) {
+			groupTefCrc = 0;
 			lastGroupTefPvpCombatActionTimestamp.updateToCurrentTime();
 		}
 
@@ -2449,7 +2461,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	}
 
 	if (!pvpTefTask->isScheduled()) {
-		if (hasPvpTef() || hasRealGcwTef() || hasGroupTef()) {
+		if (hasPvpTef() || hasRealGcwTef() || hasBhTef() || hasGroupTef()) {
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
 			auto realGcwTefMs = getLastRealGcwTefPvpCombatActionTimestamp().miliDifference();

@@ -1186,7 +1186,7 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 		bool notifyClient) {
 	if (value < 0)
 		value = 0;
-	info(String::valueOf(baseHAM.get(type)), true);
+	//info(String::valueOf(baseHAM.get(type)), true);
 	if (value >= (baseHAM.get(type) * 0.666)) {
 		value = (baseHAM.get(type) * 0.666) - 1;
 		//info(String::valueOf(value), true);
@@ -3021,22 +3021,57 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (CombatManager::instance()->areInDuel(object, asCreatureObject()))
 		return true;
 
+	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
+		return false; 
+	}
+	//if (object->isGrouped()){
+	if (ghost->hasGroupTefTowards(object->getGroupID())){
+		//if (ghost->hasGroupTefTowards(object->getGroupID())){
+			//return true;
+		info("isAggressiveTo group", true);
+		info(String::valueOf(object->getGroupID()) + ": Object Group Id.", true);
+		return true;
+			/*ManagedReference<GroupObject*> defenderGroup = object->getGroup();
+			if (defenderGroup != nullptr) {
+				for (int i = 0; i < defenderGroup->getGroupSize(); i++) {
+					ManagedReference<CreatureObject*> groupMember = defenderGroup->getGroupMember(i);
+					if (groupMember->isPlayerCreature()) {
+						return true;
+					}
+				}
+			}*/
+		//}
+	}
+
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
 	if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
 		return true;
 	}
-	
-	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
-		return false; 
-	}
+
+	//if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
+	//	return false; 
+	//}
+
 	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
 		return false;
 	}
 
+
+
+	// TEF FIX
+	if ((ghost->hasRealGcwTef() || targetGhost->hasRealGcwTef()) && getFaction() != object->getFaction()) //object->getPvpStatusBitmask() & CreatureFlag::TEF) 
+		return true;
+
+	ManagedReference<GuildObject*> guildObject = guild.get();
+	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
+		return true;
+
+
+
 	//GTEF for Later use
-	if (ghost->hasGroupTef() && object->isGrouped()){
+	/*if (ghost->hasGroupTef() && object->isGrouped()){
 		ManagedReference<GroupObject*> group = object->getGroup();
 		if (group != nullptr) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
@@ -3046,7 +3081,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 				}
 			}
 		}
-	}
+	}*/
 
 
 	//BH GTEF for Later use
@@ -3065,13 +3100,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	//if (ghost->hasGroupTef())
 	//	return true;
 
-	// TEF FIX
-	if ((ghost->hasRealGcwTef() || targetGhost->hasRealGcwTef()) && getFaction() != object->getFaction()) //object->getPvpStatusBitmask() & CreatureFlag::TEF) 
-		return true;
 
-	ManagedReference<GuildObject*> guildObject = guild.get();
-	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
-		return true;
 
 	return false;
 }
@@ -3113,6 +3142,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	// if tano is overt, creature must be overt
 	// TEF FIX
 	if((getFactionStatus() == FactionStatus::COVERT && !(ghost->hasRealGcwTef())) && object->getFaction() != 0) { //getPvpStatusBitmask() & CreatureFlag::TEF
+		info("tano being run.", true);
 		return false;
 	//} else if((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 	//	return false;
@@ -3229,18 +3259,51 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if ((object->getFaction() != getFaction()) && ghost->hasPvpTef() && targetGhost->hasPvpTef() && !(bhFight))
 		return true;*/
 
+	ManagedReference<GuildObject*> guildObject = guild.get();
+	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
+		return true;
+	//if (object->isGrouped()){
+	if (ghost->hasGroupTefTowards(object->getGroupID()))
+		return true;
+	//}
+
+	//ManagedReference<CreatureObject*> player = creature->asCreatureObject();
+	//ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+	//ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+	//ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
+	// convert ghost to creature object to get group id
+	/*if (ghost->hasGroupTef()){
+		ManagedReference<CreatureObject*> creatureGhost = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
+		if (!creatureGhost->isGrouped()){
+			return true;
+		}
+		if (object->isGrouped()){
+			ManagedReference<GroupObject*> attackedGroup = object->getGroup().get();
+			if (attackedGroup != nullptr) {
+				//int attackedGroupID = attackedGroup->getGroupID();
+				for (int i = 0; i < attackedGroup->getGroupSize(); i++) {
+					ManagedReference<CreatureObject*> groupMember = attackedGroup->getGroupMember(i);
+					if (groupMember->isPlayerCreature()) {
+						return true;
+					}
+				}
+			}
+		}
+	}*/
 	//GTEF for later use
-	if (ghost->hasGroupTef() && object->isGrouped()){
-		ManagedReference<GroupObject*> group = object->getGroup();
-		if (group != nullptr) {
-			for (int i = 0; i < group->getGroupSize(); i++) {
-				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+	/*if (ghost->hasGroupTef() && object->isGrouped()){
+		ManagedReference<GroupObject*> attackedGroup = object->getGroup().get();
+
+		if (attackedGroup != nullptr) {
+			int attackedGroupID = attackedGroup->getGroupID();
+			for (int i = 0; i < attackedGroup->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = attackedGroup->getGroupMember(i);
 				if (groupMember->isPlayerCreature()) {
 					return true;
 				}
 			}
 		}
-	}
+	}*/
 
 	//BH GTEF for later use
 	/*if (ghost->hasBhTef() && object->isGrouped()){
@@ -3255,9 +3318,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		}
 	}*/
 
-	ManagedReference<GuildObject*> guildObject = guild.get();
-	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
-		return true;
+
 
 	return false;
 }
