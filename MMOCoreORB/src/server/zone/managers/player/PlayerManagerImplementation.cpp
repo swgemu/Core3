@@ -1220,6 +1220,11 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			if (attackerCreature->isPlayerCreature()) {
 				if (!CombatManager::instance()->areInDuel(attackerCreature, player)) {
 					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+					if (attacker->getFaction() == Factions::FACTIONREBEL) {
+						attacker->playEffect("clienteffect/holoemote_rebel.cef", "head");
+					} else if (attacker->getFaction() == Factions::FACTIONIMPERIAL) {
+						attacker->playEffect("clienteffect/holoemote_imperial.cef", "head");
+					}
 				}
 			}
 
