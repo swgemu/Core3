@@ -3021,16 +3021,53 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (CombatManager::instance()->areInDuel(object, asCreatureObject()))
 		return true;
 
+
+
+	if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
+		return true;
+	}
+
 	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
 		return false; 
 	}
+
+	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
+		return false;
+	}
+
+	//GTEF for Later use
+	/*if (ghost->hasGroupTefTowards(object->getGroupID())){
+		ManagedReference<GroupObject*> group = object->getGroup().get();
+		if (group != nullptr) {
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+				if (groupMember->isPlayerCreature()) {
+					info("AGG Group Guy: " + object->getFirstName(), true);
+					info("AGG Group Memeber: " + groupMember->getFirstName(), true);
+					return true;
+				}
+			}
+		}
+	}*/
+
 	//if (object->isGrouped()){
-	if (ghost->hasGroupTefTowards(object->getGroupID())){
+	//if (ghost->hasGroupTef()) {
+	//Reference<CreatureObject*> ghostObject = ghost->getParent().get()->asCreatureObject();
+	//ZoneServer* zoneServer = getZoneServer();
+	//ManagedReference<CreatureObject*> ghostObject = zoneServer->getObject(ghost->getObjectID()).castTo<CreatureObject*>();
+	//ManagedReference<CreatureObject*> ghostObject = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
+	//if (ghost->hasGroupTef())
+	if (ghost->hasGroupTefTowards(object->getGroupID())) 
+	//if (targetGhost->hasGroupTef() && targetGhost->hasGroupTefTowards(ghostObject->getGroupID()))
+		return true;
+	//if (targetGhost->hasGroupTefTowards(ghostObject->getGroupID()))
+		//return true;
+	//if (object->getGroupID() != 0 && ghost->hasGroupTefTowards(object->getGroupID())) {
 		//if (ghost->hasGroupTefTowards(object->getGroupID())){
 			//return true;
-		info("isAggressiveTo group", true);
-		info(String::valueOf(object->getGroupID()) + ": Object Group Id.", true);
-		return true;
+		//info("isAggressiveTo group", true);
+		//info(String::valueOf(object->getGroupID()) + ": Object Group Id.", true);
+		//return true;
 			/*ManagedReference<GroupObject*> defenderGroup = object->getGroup();
 			if (defenderGroup != nullptr) {
 				for (int i = 0; i < defenderGroup->getGroupSize(); i++) {
@@ -3041,22 +3078,17 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 				}
 			}*/
 		//}
-	}
+	//}
 
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
-	if (ghost->hasBhTef() && (hasBountyMissionFor(object) || object->hasBountyMissionFor(asCreatureObject()))) {
-		return true;
-	}
 
 	//if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
 	//	return false; 
 	//}
 
-	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
-		return false;
-	}
+
 
 
 
@@ -3230,6 +3262,39 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 
 	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
 		return false;
+
+	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
+		return false; 
+	}
+
+	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
+		return false;
+	}
+
+	//GTEF for Later use
+	/*if (ghost->hasGroupTefTowards(object->getGroupID())){
+		ManagedReference<GroupObject*> group = object->getGroup().get();
+		if (group != nullptr) {
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+				if (groupMember->isPlayerCreature()) {
+					info("ATT Group Guy: " + object->getFirstName(), true);
+					info("ATT Group Memeber: " + groupMember->getFirstName(), true);
+					return true;
+				}
+			}
+		}
+	}*/
+
+	//Reference<CreatureObject*> ghostObject = ghost->getParent().get()->asCreatureObject();
+	//if (ghost->hasGroupTef())
+	//Reference<CreatureObject*> ghostObject = ghost->getParent().get()->asCreatureObject();
+	if (ghost->hasGroupTefTowards(object->getGroupID()))// && targetGhost->hasGroupTefTowards(ghostObject->getGroupID()))
+	//if (targetGhost->hasGroupTef() && targetGhost->hasGroupTefTowards(ghostObject->getGroupID()))
+		return true;
+	
+	//if (targetGhost->hasGroupTefTowards(ghostObject->getGroupID()))
+	//	return true;
 	//if (!bhFight) {
 		//ManagedReference<PlayerObject*> ghostPlayer = ghost->getPlayerObject();
 	if (object->getFaction() != getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
@@ -3241,14 +3306,10 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 			return true;
 		if (ghost->hasRealGcwTef() && targetGhost->hasRealGcwTef())
 			return true;
-		}
+		//return false;
+	}
 
-	if (object->getFaction() == Factions::FACTIONNEUTRAL || getFaction() == Factions::FACTIONNEUTRAL){ 
-		return false; 
-	}
-	if (object->getFaction() == getFaction() && object->getFaction() != 0 && (object->getFaction() == Factions::FACTIONREBEL || object->getFaction() == Factions::FACTIONIMPERIAL)) {
-		return false;
-	}
+
 	//}
 	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 	//	return true;
@@ -3263,8 +3324,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (guildObject != nullptr && guildObject->isInWaringGuild(object))
 		return true;
 	//if (object->isGrouped()){
-	if (ghost->hasGroupTefTowards(object->getGroupID()))
-		return true;
+
 	//}
 
 	//ManagedReference<CreatureObject*> player = creature->asCreatureObject();

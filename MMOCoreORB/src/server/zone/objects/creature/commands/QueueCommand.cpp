@@ -264,8 +264,9 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 				&& targetGhost != nullptr && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT) && targetGhost->hasRealGcwTef()) {
 			ghost->updateLastRealGcwTefPvpCombatActionTimestamp();
 		}
-		if (targetGhost != nullptr && target->isGrouped() && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT)){
-			info("QueueCommand checkfortef target grouped", true);
+		if (ghost->hasGroupTefTowards(target->getGroupID())){
+		//if (targetGhost != nullptr && target->isGrouped() && (target->getFactionStatus() == FactionStatus::OVERT || target->getFactionStatus() == FactionStatus::COVERT)){
+			//info("QueueCommand checkfortef target grouped", true);
 			ghost->updateLastGroupTefPvpCombatActionTimestamp();
 		}
 	} else if (target->isPet()) {

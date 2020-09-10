@@ -1100,11 +1100,11 @@ bool TangibleObjectImplementation::isAttackableBy(TangibleObject* object) {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	if (isImperial() && !(object->isRebel())) {
-		return false;
-	} else if (isRebel() && !(object->isImperial())) {
-		return false;
-	} else if (object->isPlayerCreature()) {
+	if (object->isPlayerCreature()) {
+		Reference<PlayerObject*> ghost = object->getPlayerObject();
+		if (ghost != nullptr && ghost->hasGroupTefTowards(object->getGroupID())) {
+			return true;
+		}
 		if (isImperial() && (!object->isRebel() || object->getFactionStatus() == 0)) {
 			return false;
 		}
@@ -1112,6 +1112,18 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 		if (isRebel() && (!object->isImperial() || object->getFactionStatus() == 0)) {
 			return false;
 		}
+	} else if (isImperial() && !(object->isRebel())) {
+		return false;
+	} else if (isRebel() && !(object->isImperial())) {
+		return false;
+	/*} else if (object->isPlayerCreature()) {
+		if (isImperial() && (!object->isRebel() || object->getFactionStatus() == 0)) {
+			return false;
+		}
+
+		if (isRebel() && (!object->isImperial() || object->getFactionStatus() == 0)) {
+			return false;
+		}*/
 
 	} else if (object->isAiAgent()) {
 		AiAgent* ai = object->asAiAgent();
