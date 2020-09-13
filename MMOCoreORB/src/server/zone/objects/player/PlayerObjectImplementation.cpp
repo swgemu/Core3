@@ -2420,7 +2420,7 @@ void PlayerObjectImplementation::setGroupTefTowards(unsigned int groupID, bool s
 }
 
 bool PlayerObjectImplementation::hasGroupTefTowards(unsigned int groupID) const {
-	return !lastGroupTefPvpCombatActionTimestamp.isPast() && groupID != 0 && groupTefCrc == groupID;
+	return !lastGroupTefPvpCombatActionTimestamp.isPast() && groupTefCrc == groupID; //groupID != 0 && 
 }
 
 bool PlayerObjectImplementation::hasGroupTef() const {
