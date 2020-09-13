@@ -3205,7 +3205,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	// if tano is overt, creature must be overt
 	// TEF FIX
 	if((getFactionStatus() == FactionStatus::COVERT && !(ghost->hasRealGcwTef())) && object->getFaction() != 0) { //getPvpStatusBitmask() & CreatureFlag::TEF
-		info("tano being run.", true);
+		//info("tano being run.", true);
 		return false;
 	//} else if((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 	//	return false;
