@@ -962,7 +962,7 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 	if (rank == 0)
 		return;
 
-	int maintXp = baseMaintCost * rank * 5;
+	int maintXp = baseMaintCost * rank; // * 5;
 
 	auto zoneServer = this->zoneServer.get();
 	ChatManager* chatManager = zoneServer->getChatManager();
