@@ -375,6 +375,21 @@ void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 }
 
 void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
+	std::map<int, int> frs_xp_caps = {
+		{0,15000},
+		{1,25000},
+		{2,37500},
+		{3,50000},
+		{4,75000},
+		{5,100000},
+		{6,125000},
+		{7,187500},
+		{8,250000},
+		{9,375000},
+		{10,625000},
+		{11,625000}
+	};
+
 	if (player == nullptr)
 		return;
 
@@ -464,6 +479,14 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 			if (!ghost->hasPermissionGroup(groupName))
 				ghost->addPermissionGroup(groupName, true);
 		}
+	}
+
+	int curExperience = ghost->getExperience("force_rank_xp");
+	int maxExperience = frs_xp_caps.at(realPlayerRank);
+	if (curExperience >= maxExperience) {
+		curExperience *= -1;
+		ghost->addExperience("force_rank_xp", curExperience, true);
+		ghost->addExperience("force_rank_xp", maxExperience, true);
 	}
 
 	ghost->recalculateForcePower();
