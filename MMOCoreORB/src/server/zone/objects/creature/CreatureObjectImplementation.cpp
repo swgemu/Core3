@@ -3028,7 +3028,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	//TODO: the defender ghost no longer has a group so // he has a tef towards my group not me
 	// ghost no longer has a tef towards the group of object if object is not grouped
 	//ManagedReference<CreatureObject*> ghostObject = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
-	if (ghost->hasBhTef() && ghost->hasGroupTefTowards(object->getGroupID())) {
+	if (targetGhost->hasBhTef() && ghost->hasBhTef() && ghost->hasGroupTefTowards(object->getGroupID())) {
 		return true;
 		/*ManagedReference<GroupObject*> group = object->getGroup();
 		if (group != nullptr) {
