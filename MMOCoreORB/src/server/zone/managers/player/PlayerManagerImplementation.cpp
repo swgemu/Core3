@@ -1222,8 +1222,14 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
 					if (attacker->getFaction() == Factions::FACTIONREBEL) {
 						attacker->playEffect("clienteffect/holoemote_rebel.cef", "head");
+						StringBuffer factionDeathBroadcast;
+						factionDeathBroadcast << "A Rebel named " << attackerCreature->getFirstName() << " has murdered " << player->getFirstName() << ", an Empire Loyalist.";
+						player->getZoneServer()->getChatManager()->broadcastGalaxy(nullptr, factionDeathBroadcast.toString());
 					} else if (attacker->getFaction() == Factions::FACTIONIMPERIAL) {
 						attacker->playEffect("clienteffect/holoemote_imperial.cef", "head");
+						StringBuffer factionDeathBroadcast;
+						factionDeathBroadcast << attackerCreature->getFirstName() << ", an Empire Loyalist, has found and slaughtered the Rebel Scum named " << player->getFirstName() << ".";
+						player->getZoneServer()->getChatManager()->broadcastGalaxy(nullptr, factionDeathBroadcast.toString());
 					}
 				}
 			}
