@@ -42,7 +42,7 @@
 
 object_building_tatooine_cantina_tatooine = object_building_tatooine_shared_cantina_tatooine:new {
 	skillMods = {
-		{"private_med_wound_mind", 20},
+		{"private_med_wound_mind", 100},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5},
 		{"private_safe_logout", 1}
