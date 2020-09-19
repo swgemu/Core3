@@ -268,31 +268,33 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 			Locker olocker(defenderCreature,attacker);
 			if (defenderObject != nullptr){
 				//info("OUT3shouldRealGcwTefpvp", true);
-				if (defenderCreature->isAiAgent() && defenderCreature->getFaction() != attacker->getFaction() && (defenderCreature->getFaction() == Factions::FACTIONREBEL || defenderCreature->getFaction() == Factions::FACTIONIMPERIAL))
+				if (defenderCreature->isAiAgent() && defenderCreature->getFaction() != attacker->getFaction() && (defenderCreature->getFaction() == Factions::FACTIONREBEL || defenderCreature->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defenderCreature))
 					ghostAttacker->updateLastPvpCombatActionTimestamp(false, false, true, false);
 				if (ghost != nullptr) {
 					//info("OUT4shouldRealGcwTefpvp", true);
 					if (ghostAttacker != nullptr){
+						if (!areInDuel(attacker, defenderCreature)) {
 						//info("OUT5shouldRealGcwTefpvp", true);
-						olocker.release();
-						Locker olocker(attackingCreature,attacker);
-						if (defenderCreature->isGrouped()) {
-							//info("OUT5shouldRealGcwTefpvp", true);
-							addGroupTef(attacker, defenderCreature);
-							ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, true);
-						} else if (!defenderCreature->isGrouped()) {
-							ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, false);
+							olocker.release();
+							Locker olocker(attackingCreature,attacker);
+							if (defenderCreature->isGrouped()) {
+								//info("OUT5shouldRealGcwTefpvp", true);
+								addGroupTef(attacker, defenderCreature);
+								ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, true);
+							} else if (!defenderCreature->isGrouped()) {
+								ghost->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, false);
+							}
+							/*if (defenderCreature->isGrouped() && defenderCreature->isPlayerObject()) {
+								info("doCombatAction isGrouped", true);
+								addGroupTef(attacker, defenderCreature);
+								ghostAttacker->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, shouldGroupTef);
+							}
+							if (defenderCreature->isPlayerCreature()) {
+								ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
+								if (defenderPlayer != nullptr && shouldRealGcwTef)
+									defenderPlayer->updateLastPvpCombatActionTimestamp(false,false,true);
+							}*/
 						}
-						/*if (defenderCreature->isGrouped() && defenderCreature->isPlayerObject()) {
-							info("doCombatAction isGrouped", true);
-							addGroupTef(attacker, defenderCreature);
-							ghostAttacker->updateLastPvpCombatActionTimestamp(false,shouldBhTef,shouldRealGcwTef, shouldGroupTef);
-						}
-						if (defenderCreature->isPlayerCreature()) {
-							ManagedReference<PlayerObject*> defenderPlayer = defenderCreature->getPlayerObject();
-							if (defenderPlayer != nullptr && shouldRealGcwTef)
-								defenderPlayer->updateLastPvpCombatActionTimestamp(false,false,true);
-						}*/
 					}
 				}
 			}
@@ -623,7 +625,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 								ghost->updateLastPvpCombatActionTimestamp(false,true,false,false);
 							}
 						}
-						if (defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && (attacker->getFaction() == Factions::FACTIONREBEL || attacker->getFaction() == Factions::FACTIONIMPERIAL)) {
+						if (defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && (attacker->getFaction() == Factions::FACTIONREBEL || attacker->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 							if(defender->isGrouped()) {
 								//info("doTargetCombatAction defenderisGrouped", true);
 								
@@ -636,12 +638,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 							}
 						}
 
-					} else if (shouldBhTef) {
+					} else if (shouldBhTef && !areInDuel(attacker, defender)) {
 						//info("shouldbhtef", true);
-						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef, shouldRealGcwTef, shouldGroupTef);
+						ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef, shouldRealGcwTef, false);
 					}
 				} 
-				else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL)) {
+				else if (defender->isAiAgent() && defender->getFaction() != attacker->getFaction() && (defender->getFaction() == Factions::FACTIONREBEL || defender->getFaction() == Factions::FACTIONIMPERIAL) && !areInDuel(attacker, defender)) {
 					ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef,false,shouldRealGcwTef, false);
 				}
 				//Locker olocker(attackingCreature, attacker);
