@@ -260,6 +260,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native float getGCWDiscount(CreatureObject creature);
 
 	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
+	public native void performCheckWildContrabandScanTask();
 
 	private native void spawnBaseTerminals(BuildingObject building);
 	private native void despawnBaseTerminals(BuildingObject building);
