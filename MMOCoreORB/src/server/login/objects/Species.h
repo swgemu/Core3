@@ -5,6 +5,8 @@
 #ifndef SPECIES_H_
 #define SPECIES_H_
 
+namespace login {
+
 const static char* Race[] = {
     "object/creature/player/human_male.iff", // human male
     "object/creature/player/trandoshan_male.iff", // trandoshan male
@@ -27,5 +29,7 @@ const static char* Race[] = {
     "object/creature/player/sullustan_female.iff", // sullustan female
     "object/creature/player/ithorian_female.iff"  // DA E7   -   ithorian female
 };
+
+}
 
 #endif /*SPECIES_H_*/

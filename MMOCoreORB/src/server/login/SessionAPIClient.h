@@ -26,7 +26,8 @@ namespace server {
 				ALLOW = 0,
 				WARN = 1,
 				REJECT = 2,
-				BAN = 3
+				BAN = 3,
+				DEBUG = 4
 			};
 
 		private:
@@ -55,6 +56,7 @@ namespace server {
 				case ApprovalAction::WARN:		return String("WARN");
 				case ApprovalAction::REJECT:	return String("REJECT");
 				case ApprovalAction::BAN:		return String("BAN");
+				case ApprovalAction::DEBUG:		return String("DEBUG");
 				}
 
 				return String("UNKOWN(" + String::valueOf((int)action) + ")");
@@ -86,6 +88,11 @@ namespace server {
 					return;
 				}
 
+				if (stringAction == "DEBUG") {
+					resultAction = ApprovalAction::DEBUG;
+					return;
+				}
+
 				resultAction = ApprovalAction::UNKNOWN;
 			}
 
@@ -93,12 +100,8 @@ namespace server {
 				resultDebug.put("trx_id", trxId);
 			}
 
-			inline String getTrxId() const {
-				if (resultDebug.containsKey("trx_id")) {
-					return resultDebug.get("trx_id");
-				}
-
-				return String("<not set>");
+			inline const String& getTrxId() const {
+				return resultDebug.get("trx_id");
 			}
 
 			inline void setClientTrxId(const String& clientTrxId) {
@@ -122,7 +125,7 @@ namespace server {
 			}
 
 			inline bool isActionAllowed() const {
-				return resultAction == ApprovalAction::ALLOW;
+				return resultAction == ApprovalAction::ALLOW || resultAction == ApprovalAction::DEBUG;
 			}
 
 			inline bool isActionWarning() const {
@@ -135,6 +138,10 @@ namespace server {
 
 			inline bool isActionBan() const {
 				return resultAction == ApprovalAction::BAN;
+			}
+
+			inline bool isActionDebug() const {
+				return resultAction == ApprovalAction::DEBUG;
 			}
 
 			inline void setTitle(const String& title) {
@@ -150,11 +157,13 @@ namespace server {
 			}
 
 			inline String getMessage(bool appendTrxId = false) const {
-				if (!appendTrxId || !resultDebug.containsKey("trx_id")) {
+				auto entry = resultDebug.getEntry("trx_id");
+
+				if (!appendTrxId || !entry) {
 					return resultMessage;
 				}
 
-				return resultMessage + "\n\ntrx_id: " + resultDebug.get("trx_id");
+				return resultMessage + "\n\ntrx_id: " + entry->getValue();
 			}
 
 			inline void setDetails(const String& details) {
@@ -184,7 +193,6 @@ namespace server {
 					return entry->getValue();
 				} else {
 					const static String empty;
-
 					return empty;
 				}
 			}

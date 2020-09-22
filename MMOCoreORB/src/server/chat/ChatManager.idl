@@ -6,22 +6,25 @@ package server.chat;
 
 import engine.core.ManagedService;
 import server.zone.ZoneServer;
-import server.chat.room.ChatRoom;
-import server.chat.room.ChatRoomMap;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import engine.service.proto.BaseMessage;
-import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
-import system.util.VectorMap;
 import server.zone.objects.player.PlayerObject;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.objects.waypoint.WaypointObject;
 import server.chat.PendingMessageList;
+import server.chat.PersistentMessage;
+
+include server.zone.managers.player.PlayerMap;
 include server.chat.StringIdChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
+include server.chat.room.ChatRoom;
+include server.chat.room.ChatRoomMap;
+include system.util.VectorMap;
+include system.lang.ref.Reference;
 
 @dirty
 class ChatManager extends ManagedService implements Logger {
@@ -388,7 +391,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
 
 	@local
-	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
+	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters, @rawTemplate(value = "PersistentMessage*") Reference sentMail = null);
 
 	//////////////////////////////////////////////////////
 

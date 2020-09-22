@@ -27,10 +27,10 @@ include engine.util.u3d.Vector3;
 include server.zone.QuadTreeReference;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.region.CityRegion;
 import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
 include system.thread.atomic.AtomicBoolean;
+include server.zone.objects.region.CityRegion;
 
 @mock
 class Zone extends SceneObject {
@@ -94,6 +94,9 @@ class Zone extends SceneObject {
 
 	@local
 	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = true);
+
+	@local
+	public native int getInRangePlayers(float x, float y, float range, SortedVector<QuadTreeEntry> objects);
 
 	public native void createContainerComponent();
 

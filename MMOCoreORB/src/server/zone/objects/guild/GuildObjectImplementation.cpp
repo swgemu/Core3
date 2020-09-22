@@ -260,3 +260,43 @@ uint64 GuildObjectImplementation::getMemberWithHighestPermission() {
 
 	return highestMember;
 }
+
+int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int maxDepth, Vector<uint64>* oidPath) {
+	if (maxDepth <= 0)
+		return 0;
+
+	int count = SceneObjectImplementation::writeRecursiveJSON(j, maxDepth, oidPath);
+
+	if (oidPath == nullptr)
+		oidPath = new Vector<uint64>();
+
+	oidPath->add(getObjectID());
+
+	auto server = ServerCore::getZoneServer();
+
+	if (server == nullptr) {
+		return count;
+	}
+
+	auto guildLeader = server->getObject(guildLeaderID);
+
+	if (guildLeader != nullptr) {
+		count += guildLeader->writeRecursiveJSON(j, maxDepth - 1, oidPath);
+	}
+
+	for (int i = 0; i < getTotalMembers(); i++) {
+		uint64 memberID = getMember(i);
+
+		auto member = server->getObject(memberID);
+
+		if (member != nullptr) {
+			count += member->writeRecursiveJSON(j, maxDepth - 1, oidPath);
+		}
+	}
+
+	if (oidPath->size() == 0) {
+		delete oidPath;
+	}
+
+	return count;
+}

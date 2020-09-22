@@ -31,7 +31,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 	}
 
 	try {
-		Reference<ResultSet*> result = instance()->executeQuery("SELECT `schema_version` FROM `db_metadata`;");
+		UniqueReference<ResultSet*> result(instance()->executeQuery("SELECT `schema_version` FROM `db_metadata`;"));
 
 		if (result != nullptr && result->next())
 			dbSchemaVersion = result->getInt(0);
@@ -40,7 +40,7 @@ ServerDatabase::ServerDatabase(ConfigManager* configManager) {
 
 		String createTable = "CREATE TABLE `db_metadata` AS SELECT 1000 as `schema_version`;";
 		try {
-			Reference<ResultSet*> result = instance()->executeQuery(createTable);
+			UniqueReference<ResultSet*> result(instance()->executeQuery(createTable));
 		} catch (const Exception& e) {
 			error("Failed to create db_metadata table, please manually create in mysql: " + createTable);
 		}
@@ -67,16 +67,17 @@ void ServerDatabase::alterDatabase(int nextSchemaVersion, const String& alterSql
 	String updateVersionSql = "UPDATE `db_metadata` SET `schema_version` = " + String::valueOf(nextSchemaVersion);
 
 	try {
-		Reference<ResultSet*> result = instance()->executeQuery(alterSql);
+		UniqueReference<ResultSet*> result(instance()->executeQuery(alterSql));
 
 		if (result != nullptr) {
 			result = instance()->executeQuery(updateVersionSql);
 			dbSchemaVersion = nextSchemaVersion;
-			info("Upgraded mysql database schema to version " + String::valueOf(dbSchemaVersion), true);
+
+			info(true) << "Upgraded mysql database schema to version " << dbSchemaVersion;
 		}
 	} catch (const Exception& e) {
 		error(e.getMessage());
-		error("Failed to update database schema, please manually execute: " + alterSql + " " + updateVersionSql);
+		error() << "Failed to update database schema, please manually execute: " << alterSql << " " << updateVersionSql;
 	}
 }
 
@@ -112,5 +113,10 @@ void ServerDatabase::updateDatabaseSchema() {
 	alterDatabase(1003,
 		"ALTER TABLE `session_stats`"
 		" ADD COLUMN `uptime` INT(11) DEFAULT '-1' AFTER `timestamp`;"
+	);
+
+	alterDatabase(1004,
+		"ALTER TABLE `sessions`"
+		" MODIFY `session_id` CHAR(255) NOT NULL;"
 	);
 }

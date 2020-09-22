@@ -123,9 +123,12 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native string getVendorUID(SceneObject vendor);
 
+	@local
+	public native Logger getLogger();
+
 	public synchronized void updateVendorUID(SceneObject vendor, final string oldUID, final string newUID) {
 
-		if(auctionMap == null) {
+		if(!auctionMap) {
 			pendingUIDUpdates.put(vendor, newUID);
 			pendingOldUIDUpdates.put(vendor, oldUID);
 			return;
@@ -143,7 +146,7 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native void expireAuction(AuctionItem item);
 
-	public native void deleteExpiredSale(AuctionItem item);
+	public native void deleteExpiredSale(AuctionItem item, boolean sendMail = true);
 
 	public boolean isMarketEnabled() {
 		return marketEnabled == true;

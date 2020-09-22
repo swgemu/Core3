@@ -3,6 +3,7 @@
 		See file COPYING for copying conditions.*/
 
 #include "ConfigManager.h"
+#include <regex>
 
 using namespace sys::thread;
 
@@ -20,20 +21,24 @@ ConfigManager::~ConfigManager() {
 }
 
 bool ConfigManager::loadConfigData() {
+	Locker guard(&mutex);
+
+	logChanges = false;
+
 	if (configStartTime.getStartTime() != 0)
 		configStartTime.stop();
 
 	configStartTime.start();
 
-	if (!runFile("conf/config.lua")) {
-		error("ConfigManager failed to parse conf/config.lua");
+	if (!lua.runFile("conf/config.lua")) {
+		fatal("ConfigManager failed to parse conf/config.lua");
 		return false;
 	}
 
 	File file("conf/config-local.lua");
 
 	if (file.setReadOnly()) {
-		if (!runFile("conf/config-local.lua")) {
+		if (!lua.runFile("conf/config-local.lua")) {
 			error("ConfigManager failed to parse conf/config-local.lua");
 			return false;
 		}
@@ -50,7 +55,7 @@ bool ConfigManager::loadConfigData() {
 	clearConfigData();
 
 	// Load new-style "Core3.value" settings
-	LuaObject core3 = getGlobalObject("Core3");
+	LuaObject core3 = lua.getGlobalObject("Core3");
 
 	resultCore3 = parseConfigData("Core3");
 
@@ -60,7 +65,7 @@ bool ConfigManager::loadConfigData() {
 	core3.pop();
 
 	// Load legacy "globals" style configuration
-	lua_State* L = getLuaState();
+	lua_State* L = lua.getLuaState();
 
 	lua_pushglobaltable(L);
 
@@ -75,8 +80,6 @@ bool ConfigManager::loadConfigData() {
 	setStringFromFile("Core3.MOTD", "conf/motd.txt");
 	setStringFromFile("Core3.Revision", "conf/rev.txt");
 
-	cacheHotItems();
-
 #ifdef DEBUG_CONFIGMANAGER
 	info("Parsed config into memory in " + String::valueOf(getConfigDataAgeMs()) + "ms", true);
 	setString("Core3.ConfigManagerDebug", "Test1");
@@ -84,10 +87,14 @@ bool ConfigManager::loadConfigData() {
 	dumpConfig();
 #endif // DEBUG_CONFIGMANAGER
 
+	logChanges = true;
+
 	return resultGlobal || resultCore3;
 }
 
 void ConfigManager::clearConfigData() {
+	Locker guard(&mutex);
+
 	for (int i = 0; i < configData.size(); ++i) {
 		auto entry = configData.getUnsafe(i).getValue();
 		delete entry;
@@ -95,30 +102,15 @@ void ConfigManager::clearConfigData() {
 
 	configData.removeAll();
 	configData.setNoDuplicateInsertPlan();
-
-	// Clear any cached values below
-	cachedPvpMode = false;
-	cachedProgressMonitors = false;
-	cachedUnloadContainers = false;
-	cachedUseMetrics = false;
-	cachedSessionStatsSeconds = 3600;
-	cachedOnlineLogSize = 100000000;
-}
-
-void ConfigManager::cacheHotItems() {
-	// Items here are asked for often enough to have a performance impact
-	cachedPvpMode = getBool("Core3.PvpMode", false);
-	cachedProgressMonitors = getBool("Core3.ProgressMonitors", false);
-	cachedUnloadContainers = getBool("Core3.UnloadContainers", true);
-	cachedUseMetrics = getBool("Core3.UseMetrics", false);
-	cachedSessionStatsSeconds = getInt("Core3.SessionStatsSeconds", 3600);
-	cachedOnlineLogSize = getInt("Core3.OnlineLogSize", 100000000);
+	incrementConfigVersion();
 }
 
 void ConfigManager::dumpConfig(bool includeSecure) {
+	ReadLocker guard(&mutex);
+
 	uint64 age = getConfigDataAgeMs() / 1000;
 
-	info(true) << "dumpConfig: START (Config Age: " << age << " s)";
+	info(true) << "dumpConfig: START (Config Age: " << age << " s, Version#:" << getConfigVersion() << ")";
 
 	String hottestKey;
 	int maxPS = 0;
@@ -131,8 +123,9 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 
 		String stringVal = itm->toString();
 
-		if (!includeSecure && (key.toLowerCase().contains("pass") || key.toLowerCase().contains("secret")))
+		if (!includeSecure && isSensitiveKey(key)) {
 			stringVal = "*******";
+		}
 
 		auto msg = info(true);
 
@@ -165,65 +158,12 @@ void ConfigManager::dumpConfig(bool includeSecure) {
 
 	info(true) << engineConfig;
 
-#ifdef DEBUG_CONFIGMANAGER
-	if (getLogLevel() >= Logger::DEBUG) {
-		testConfig(this);
-	}
-#endif // DEBUG_CONFIGMANAGER
-
 	info("dumpConfig: END", true);
 }
 
-#ifdef DEBUG_CONFIGMANAGER
-bool ConfigManager::testConfig(ConfigManager* configManager) {
-	info("testConfig: START", true);
-
-	auto tmp1 = configManager->getString("Core3.InactiveAccountText", "Account Disabled");
-	info("Core3.InactiveAccountTitle = " + tmp1, true);
-
-	auto tmp2 = configManager->getInactiveAccountText();
-	info("getInactiveAccountText = " + tmp2, true);
-
-	if (tmp1 != tmp2)
-		throw Exception("testConfig() return value mismatch");
-
-	info("LogFile = " + configManager->getLogFile(), true);
-
-	if (configManager->getMakeZone()) {
-		info("getMakeZone() = true", true);
-	} else {
-		info("getMakeZone() = false", true);
-	}
-
-	auto enabledZones = configManager->getEnabledZones();
-
-	info("ZonesEnabled:", true);
-
-	for (int i = 0; i < enabledZones.size(); ++i) {
-		String zoneName = enabledZones.get(i);
-		info("    '" + zoneName + "'", true);
-	}
-
-	Vector<String> treFilesToLoad = configManager->getTreFiles();
-
-	info("TreFiles:", true);
-
-	for (int i = 0; i < treFilesToLoad.size(); ++i) {
-		String zoneName = treFilesToLoad.get(i);
-		info("    '" + zoneName + "'", true);
-	}
-
-	const uint16& dbPort = configManager->getDBPort();
-
-	info("DBPort = " + String::valueOf(dbPort), true);
-
-	info("testConfig: END", true);
-
-	return true;
-}
-#endif // DEBUG_CONFIGMANAGER
-
 bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int maxDepth) {
+	lua_State* L = lua.getLuaState();
+
 	// Enter with table on top of lua stack
 	if (!lua_istable(L, -1)) {
 #ifdef DEBUG_CONFIGMANAGER
@@ -231,8 +171,6 @@ bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int max
 #endif // DEBUG_CONFIGMANAGER
 		return false;
 	}
-
-	lua_State* L = getLuaState();
 
 	lua_pushnil(L); // First key
 
@@ -366,20 +304,173 @@ bool ConfigManager::parseConfigData(const String& prefix, bool isGlobal, int max
 	return true;
 }
 
+bool ConfigManager::parseConfigJSONRecursive(const String prefix, JSONSerializationType jsonNode, String& errorMessage, bool updateOnly) {
+	for (auto jsonData = jsonNode.begin(); jsonData != jsonNode.end(); ++jsonData) {
+		String key = (prefix.isEmpty() ? "" : prefix + ".") + jsonData.key();
+
+		if (jsonData->is_array()) {
+			if (updateOnly && !contains(key)) {
+				errorMessage = "Array key " + key + " doesn't exist.";
+				error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+				return false;
+			}
+
+			bool isValid = true;
+			Vector <ConfigDataItem *>* elements = new Vector <ConfigDataItem *>();
+
+			for (auto jsonElement = jsonData->begin();isValid && jsonElement != jsonData->end(); ++jsonElement) {
+				switch (jsonElement->type()) {
+				case JSONSerializationType::value_t::boolean:
+					elements->add(new ConfigDataItem((bool)jsonElement.value().get<bool>()));
+					break;
+
+				case JSONSerializationType::value_t::number_float:
+				case JSONSerializationType::value_t::number_unsigned:
+				case JSONSerializationType::value_t::number_integer:
+					elements->add(new ConfigDataItem((lua_Number)jsonElement.value().get<double>()));
+					break;
+
+				case JSONSerializationType::value_t::string:
+					elements->add(new ConfigDataItem(jsonElement.value().get<std::string>()));
+					break;
+
+				default:
+					isValid = false;
+					errorMessage = "Failed to parse json type " + String(jsonElement->type_name()) + " into array " + key;
+					error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+					break;
+				}
+			}
+
+			if (isValid && !updateItem(key, new ConfigDataItem(elements))) {
+				isValid = false;
+			}
+
+			if (!isValid) {
+				delete elements;
+				return false;
+			}
+
+			continue;
+		}
+
+		if (jsonData->is_object()) {
+			if (!parseConfigJSONRecursive(key, jsonData.value(), errorMessage, updateOnly)) {
+				return false;
+			}
+			continue;
+		}
+
+		if (updateOnly && !contains(key)) {
+			errorMessage = "Key " + key + " doesn't exist.";
+			error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+			return false;
+		}
+
+		switch (jsonData->type()) {
+		case JSONSerializationType::value_t::boolean:
+			setBool(key, jsonData.value().get<bool>());
+			break;
+
+		case JSONSerializationType::value_t::number_float:
+		case JSONSerializationType::value_t::number_unsigned:
+		case JSONSerializationType::value_t::number_integer:
+			setNumber(key, (lua_Number)jsonData.value().get<double>());
+			break;
+
+		case JSONSerializationType::value_t::string:
+			setString(key, jsonData.value().get<std::string>());
+			break;
+
+		default:
+			errorMessage = "Failed to parse json type " + String(jsonData->type_name()) + " into " + key;
+			error() << "parseConfigJSONRecursive(" << key << "): " << errorMessage;
+			return false;
+			break;
+		}
+	}
+
+	return true;
+}
+
+bool ConfigManager::parseConfigJSON(const JSONSerializationType jsonData, String& errorMessage, bool updateOnly) {
+	Locker guard(&mutex);
+
+	try {
+		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
+	} catch (const JSONSerializationType::exception& e) {
+		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (const Exception& e) {
+		errorMessage = "Exception while parsing config:" + e.getMessage();
+		error() << "parseConfigJSON: " << errorMessage;
+	} catch (...) {
+		StringBuffer err;
+		err << "Uncaptured exception parsing config"
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+			<< ": " << __cxxabiv1::__cxa_current_exception_type()->name()
+#endif
+			<< ".";
+		errorMessage = err.toString();
+		error() << "parseConfigJSON: " << errorMessage;
+	}
+
+	return false;
+}
+
+bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessage, bool updateOnly) {
+	Locker guard(&mutex);
+
+	try {
+		JSONSerializationType jsonData = JSONSerializationType::parse(jsonString);
+		return parseConfigJSONRecursive("", jsonData, errorMessage, updateOnly);
+	} catch (const JSONSerializationType::exception& e) {
+		errorMessage = "Exception while parsing json:" + String(e.what()) + "(" + e.id + ")";
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	} catch (const Exception& e) {
+		errorMessage = "Exception while parsing config:" + e.getMessage();
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	} catch (...) {
+		StringBuffer err;
+		err << "Uncaptured exception parsing config"
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+			<< ": " << __cxxabiv1::__cxa_current_exception_type()->name()
+#endif
+			<< ".";
+		errorMessage = err.toString();
+		error() << "parseConfigJSON(" << jsonString << "): " << errorMessage;
+	}
+
+	return false;
+}
+
+bool ConfigManager::contains(const String& name) const {
+	return configData.find(name) != -1;
+}
+
 ConfigDataItem* ConfigManager::findItem(const String& name) const {
 	int pos = configData.find(name);
 
 	if (pos == -1) {
 		return nullptr;
-#ifdef DEBUG_CONFIGMANAGER
-		info("findItem failed for: " + name, true);
-#endif // DEBUG_CONFIGMANAGER
 	}
 
 	return configData.get(pos);
 }
 
+int ConfigManager::getUsageCounter(const String& name) const {
+	ConfigDataItem* itm = findItem(name);
+
+	if (itm == nullptr) {
+		return -1;
+	}
+
+	return itm->getUsageCounter();
+}
+
 int ConfigManager::getInt(const String& name, int defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -389,6 +480,8 @@ int ConfigManager::getInt(const String& name, int defaultValue) {
 }
 
 bool ConfigManager::getBool(const String& name, bool defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -398,6 +491,8 @@ bool ConfigManager::getBool(const String& name, bool defaultValue) {
 }
 
 float ConfigManager::getFloat(const String& name, float defaultValue) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -407,6 +502,8 @@ float ConfigManager::getFloat(const String& name, float defaultValue) {
 }
 
 const String& ConfigManager::getString(const String& name, const String& defaultValue) {
+	Locker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr) {
@@ -419,6 +516,8 @@ const String& ConfigManager::getString(const String& name, const String& default
 }
 
 const Vector<String>& ConfigManager::getStringVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -428,6 +527,8 @@ const Vector<String>& ConfigManager::getStringVector(const String& name) {
 }
 
 const SortedVector<String>& ConfigManager::getSortedStringVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -437,6 +538,8 @@ const SortedVector<String>& ConfigManager::getSortedStringVector(const String& n
 }
 
 const Vector<int>& ConfigManager::getIntVector(const String& name) {
+	ReadLocker guard(&mutex);
+
 	ConfigDataItem* itm = findItem(name);
 
 	if (itm == nullptr)
@@ -445,7 +548,61 @@ const Vector<int>& ConfigManager::getIntVector(const String& name) {
 	return itm->getIntVector();
 }
 
+bool ConfigManager::isSensitiveKey(const String& key) {
+	auto lcKey = key.toLowerCase();
+
+	return lcKey.contains("secret") || lcKey.contains("pass") || lcKey.contains("token");
+}
+
+void ConfigManager::writeJSONPath(StringTokenizer& tokens, JSONSerializationType& jsonData, const JSONSerializationType& jsonValue) {
+	String nextName;
+	tokens.getStringToken(nextName);
+
+	if (tokens.hasMoreTokens()) {
+		if (jsonData[nextName].is_null()) {
+			jsonData[nextName] = JSONSerializationType::object();
+		}
+		writeJSONPath(tokens, jsonData[nextName], jsonValue);
+	} else {
+		jsonData[nextName] = jsonValue;
+	}
+}
+
+bool ConfigManager::getAsJSON(const String& target, JSONSerializationType& jsonData) {
+	ReadLocker guard(&mutex);
+
+	try {
+		auto re = std::regex((target + "(?:\\..*$|$)").toCharArray());
+		jsonData = JSONSerializationType::object();
+
+		for (int i = 0; i < configData.size(); ++i) {
+			JSONSerializationType jsonValue;
+			auto entry = configData.elementAt(i);
+			String key = entry.getKey();
+
+			if (isSensitiveKey(key)) {
+				jsonValue = "*******";
+			} else {
+				ConfigDataItem* itm = entry.getValue();
+				itm->getAsJSON(jsonValue);
+			}
+
+			if (std::regex_search(key.toCharArray(), re)) {
+				StringTokenizer tokenizer(key);
+				tokenizer.setDelimeter(".");
+				writeJSONPath(tokenizer, jsonData, jsonValue);
+			}
+		}
+	} catch(...) {
+		return false;
+	}
+
+	return true;
+}
+
 bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
+	Locker guard(&mutex);
+
 	if (newItem == nullptr || name.isEmpty())
 		return false;
 
@@ -458,12 +615,21 @@ bool ConfigManager::updateItem(const String& name, ConfigDataItem* newItem) {
 		oldItem = nullptr;
 	}
 
+	if (logChanges) {
+		if (isSensitiveKey(name)) {
+			info(true) << "Configuration updated: " << name;
+		} else {
+			info(true) << "Configuration update: " << name << " = [" << newItem->toString() << "]";
+		}
+	}
+
 #ifdef DEBUG_CONFIGMANAGER
 	info("updateItem: " + name + " = [" + newItem->toString() + "]", true);
 	newItem->setDebugTag(name);
 #endif // DEBUG_CONFIGMANAGER
 
 	configData.put(std::move(name), std::move(newItem));
+	incrementConfigVersion();
 	return true;
 }
 
@@ -501,9 +667,9 @@ bool ConfigManager::setStringFromFile(const String& name, const String& fileName
 		reader.close();
 
 		return setString(name, newValue.toString());
-	} catch (FileNotFoundException& e) {
+	} catch (const FileNotFoundException& e) {
 		error("setStringFromFile(" + name + ", " + fileName +") File Not Found.");
-	} catch (Exception& e) {
+	} catch (const Exception& e) {
 		error("setStringFromFile(" + name + ", " + fileName +") Unexpected exception reading file.");
 	}
 
@@ -592,4 +758,26 @@ ConfigDataItem::~ConfigDataItem() {
 		delete asIntVector;
 		asIntVector = nullptr;
 	}
+}
+
+void ConfigDataItem::getAsJSON(JSONSerializationType& jsonData) {
+	if (asVector != nullptr) {
+		jsonData = JSONSerializationType::array();
+
+		for (int i = 0;i < asVector->size(); i++) {
+			JSONSerializationType jsonValue;
+			ConfigDataItem* curItem = asVector->get(i);
+
+			if (curItem == nullptr) {
+				continue;
+			}
+
+			curItem->getAsJSON(jsonValue);
+			jsonData.push_back(jsonValue);
+		}
+
+		return;
+	}
+
+	jsonData = asString;
 }

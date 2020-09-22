@@ -27,6 +27,7 @@
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = nullptr;
@@ -231,14 +232,8 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 	if (!player->isInRange(bankObject, 5))
 		return;
 
-	uint32 currentCash = player->getCashCredits();
-	uint32 currentBank = player->getBankCredits();
-
-	if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
-		player->setCashCredits(cash);
-		player->setBankCredits(bank);
-	}
-
+	TransactionLog trx(player, player, TrxCode::BANK, 0, false);
+	player->transferCredits(cash, bank);
 }
 
 void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -476,9 +471,13 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					apron->setCustomObjectName(apronName, false);
 				}
 
+				TransactionLog trx(TrxCode::CHARACTERBUILDER, player, apron);
+
 				if (inventory->transferObject(apron, -1, true)) {
+					trx.commit();
 					apron->sendTo(player, true);
 				} else {
+					trx.abort() << "Failed to transferObject to player inventory";
 					apron->destroyObjectFromDatabase(true);
 					return;
 				}
@@ -492,7 +491,10 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				bluefrog->enhanceCharacter(player);
 
 			} else if (templatePath == "credits") {
-				player->addCashCredits(50000, true);
+				{
+					TransactionLog trx(TrxCode::CHARACTERBUILDER, player, 50000, true);
+					player->addCashCredits(50000, true);
+				}
 				player->sendSystemMessage("You have received 50.000 Credits");
 
 			} else if (templatePath == "faction_rebel") {
@@ -538,7 +540,12 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					return;
 
 				LootManager* lootManager = zserv->getLootManager();
-				lootManager->createLoot(inventory, templatePath, 300, true);
+				TransactionLog trx(TrxCode::CHARACTERBUILDER, player);
+				if (lootManager->createLoot(trx, inventory, templatePath, 300, true)) {
+					trx.commit(true);
+				} else {
+					trx.abort() << "createLoot " << templatePath << " failed.";
+				}
 
 			} else if (templatePath == "max_xp") {
 				ghost->maximizeExperience();
@@ -618,7 +625,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				ghost->addEventPerk(item);
 			}
 
+			TransactionLog trx(TrxCode::CHARACTERBUILDER, player, item);
+
 			if (inventory->transferObject(item, -1, true)) {
+				trx.commit();
+
 				item->sendTo(player, true);
 
 				StringIdChatParameter stringId;
@@ -627,6 +638,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				player->sendSystemMessage(stringId);
 
 			} else {
+				trx.abort() << "Failed to transferObject to player inventory";
 				item->destroyObjectFromDatabase(true);
 				player->sendSystemMessage("Error putting item in inventory.");
 				return;

@@ -4,13 +4,27 @@
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void AntiDecayKitImplementation::initializeTransientMembers() {
 
 	ContainerImplementation::initializeTransientMembers();
 
-	setLoggingName("AntiDecayKit");
+	StringBuffer logName;
+
+	logName << "AntiDecayKit 0x" << hex << getObjectID();
+
+	setLoggingName(logName.toString());
+}
+
+void AntiDecayKitImplementation::notifyLoadFromDatabase() {
+	auto strongParent = parent.get();
+
+	if (used && strongParent != nullptr) {
+		error() << "Is used and has parent " <<  strongParent->getObjectID() << ", removing from world.";
+		_this.getReferenceUnsafeStaticCast()->destroyObjectFromWorld(true);
+	}
 }
 
 void AntiDecayKitImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -60,6 +74,8 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 		player->sendSystemMessage("@veteran_new:failed_item_cannot_be_placed_in_inventory"); // The Anti Decay Kit failed to place an item back into your inventory. Please make sure that your inventory has room for this item and try again.
 		return;
 	}
+
+	TransactionLog trx(player, tano, asSceneObject(), TrxCode::ADKAPPLY);
 
 	tano->setConditionDamage(0);
 	tano->applyAntiDecayKit(player, _this.getReferenceUnsafeStaticCast());

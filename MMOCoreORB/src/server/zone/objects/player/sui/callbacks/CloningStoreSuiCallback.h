@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class CloningStoreSuiCallback : public SuiCallback {
 public:
@@ -67,9 +68,16 @@ public:
 			}
 
 			//pay bank portion
+			TransactionLog trxBank(player, TrxCode::CLONINGSYSTEM, cost - diff);
+
 			player->subtractBankCredits(cost - diff);
+
+			TransactionLog trxCash(player, TrxCode::CLONINGSYSTEM, diff, true);
+			trxCash.groupWith(trxBank);
+
 			player->subtractCashCredits(diff);
 		} else {
+			TransactionLog trx(player, TrxCode::INSURANCESYSTEM, cost);
 			player->subtractBankCredits(cost);
 		}
 

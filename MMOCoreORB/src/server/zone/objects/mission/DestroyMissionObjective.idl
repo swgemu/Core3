@@ -6,14 +6,15 @@ package server.zone.objects.mission;
 
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
-import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.objects.tangible.LairObject;
 import server.zone.Zone;
+import engine.core.ManagedObject;
+
 include engine.util.u3d.Vector3;
 include engine.log.Logger;
-import engine.core.ManagedObject;
+include server.zone.objects.mission.MissionObjective;
+include server.zone.objects.tangible.LairObject;
+include server.zone.objects.area.MissionSpawnActiveArea;
 
 @json
 class DestroyMissionObjective extends MissionObjective {

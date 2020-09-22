@@ -28,6 +28,9 @@ public:
 	void run() {
 		Locker locker(creature);
 
+		if (creature->getHomeObject().get() == nullptr && creature->getRespawnTimer() == 0)
+			return;
+
 		creature->respawn(zone, level);
 
 		//creature->printReferenceHolders();

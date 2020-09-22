@@ -11,25 +11,21 @@
 
 #include "server/features/Features.h"
 
-namespace server {
-	namespace zone{
-		class ZoneServer;
-	}
-}
-
-using namespace server::zone;
-
 #include "server/login/LoginServer.h"
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
 #include "server/ping/PingServer.h"
 
+namespace server {
+	namespace zone {
+		class ZoneServer;
+	}
+}
+
 namespace conf {
 	class ConfigManager;
 }
-
-using namespace conf;
 
 class ServerDatabase;
 class MantisDatabase;
@@ -51,7 +47,7 @@ namespace engine {
 
 class ServerCore : public Core, public Logger {
 	Pipe consoleCommandPipe;
-	ConfigManager* configManager;
+	conf::ConfigManager* configManager;
 	ServerDatabase* database;
 	MantisDatabase* mantisDatabase;
 	DistributedObjectBroker* orb;
@@ -79,7 +75,9 @@ public:
 	};
 
 private:
-	VectorMap<String, Function<CommandResult(const String& arguments)>> consoleCommands;
+	using CommandFunctionType = Function<CommandResult(const String & arguments)>;
+
+	VectorMap<String, CommandFunctionType> consoleCommands;
 
 	bool handleCmds;
 

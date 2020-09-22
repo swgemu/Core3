@@ -48,7 +48,8 @@ class AuctionsMap extends ManagedObject {
 	private native int addVendorItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
 	private native int addBazaarItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
 
-	public native void deleteItem(SceneObject vendor, AuctionItem item);
+	public native void deleteItem(SceneObject vendor, AuctionItem item, boolean deleteAuctionedObject = false);
+	public native void removeItem(SceneObject vendor, AuctionItem item);
 	private native void removeVendorItem(SceneObject vendor, AuctionItem item);
 	private native void removeBazaarItem(SceneObject vendor, AuctionItem item);
 

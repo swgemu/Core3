@@ -7,8 +7,8 @@
 #define SKILLMANAGER_H_
 
 #include "server/zone/objects/player/variables/Ability.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 
-class Skill;
 class PerformanceManager;
 
 namespace server {

@@ -97,13 +97,124 @@ TEST_F(ConfigManagerTest, DynamicTest) {
 	auto tmp2 = configManager->getBool("Core3.TestBool", false);
 	ASSERT_TRUE(tmp2);
 
-	configManager->setFloat("Core3.TestFloat", 12345.6);
+	configManager->setFloat("Core3.TestFloat", 12345.6f);
 	auto tmp3 = configManager->getFloat("Core3.TestFloat", 0.0);
 	ASSERT_NE(tmp3, 0.0);
 
 	configManager->setString("Core3.TestString", "This is a test");
 	auto tmp4 = configManager->getString("Core3.TestString", "failed");
 	ASSERT_EQ(tmp4, "This is a test");
+}
+
+TEST_F(ConfigManagerTest, CacheTest) {
+	Timer timer;
+	int totalReads = 1000000;
+
+	configManager->setBool("Core3.TestBool", true);
+
+	timer.start();
+	for (int i = 0; i < totalReads; i++) {
+		auto result = configManager->getBool("Core3.TestBool", false);
+		ASSERT_TRUE(result);
+	}
+	timer.stop();
+
+	auto msBase = (timer.getElapsedTime() / 1000000.0f);
+
+	std::cerr << "[>>>>>>>>>>] " << totalReads << " base reads in " << msBase << " ms" << std::endl;
+
+	auto tmp1 = configManager->setPvpMode(true);
+	ASSERT_TRUE(tmp1);
+	ASSERT_EQ(configManager->getUsageCounter("Core3.PvpMode"), 1);
+
+	auto counter_start = configManager->getUsageCounter("Core3.PvpMode");
+
+	timer.clear();
+	timer.start();
+	for (int i = 0; i < totalReads; i++) {
+		auto result = configManager->getPvpMode();
+		ASSERT_TRUE(result);
+	}
+	timer.stop();
+
+	auto msCached = (timer.getElapsedTime() / 1000000.0f);
+
+	std::cerr << "[>>>>>>>>>>] " << totalReads << " cached reads in " << msCached << " ms (" << (int)(msBase / msCached) << " x faster)" << std::endl;
+
+	auto counter_end = configManager->getUsageCounter("Core3.PvpMode");
+
+	ASSERT_EQ(counter_end, counter_start + 1);
+
+	ASSERT_TRUE((msBase / msCached) > 5);
+}
+
+TEST_F(ConfigManagerTest, JSONTest) {
+	String errMsg;
+	StringBuffer buf;
+	auto version_start = configManager->getConfigVersion();
+
+	buf << "{"
+		<< "  \"Core3\": {"
+		<< "    \"TestBool\": false,"
+		<< "    \"TestInt\": 87654321,"
+		<< "    \"TestFloat\": 6.54321,"
+		<< "    \"TestString\": \"tset a si sihT\","
+		<< "    \"TestArray\": [ \"one\", \"two\", \"three\", \"four\", \"five\" ]"
+		<< "  }"
+		<< "}"
+		;
+
+	auto json = buf.toString();
+
+	// Check failure when updateOnly = True
+	std::cerr << "[>>>>>>>>>>] Expect Error about key not existing..." << std::endl;
+
+	auto result = configManager->parseConfigJSON(json, errMsg, true);
+
+	ASSERT_TRUE(!result);
+
+	ASSERT_TRUE(errMsg.contains("Core3.Test"));
+
+	// Should have been zero changes to values
+	ASSERT_TRUE(version_start == configManager->getConfigVersion());
+
+	errMsg = "";
+
+	std::cerr << "[>>>>>>>>>>] Check with updateOnly = false" << std::endl;
+
+	auto result2 = configManager->parseConfigJSON(json, errMsg, false);
+
+	if (!result2) {
+		std::cerr << "[   FAILED ] " << errMsg.toCharArray() << std::endl;
+	}
+
+	ASSERT_TRUE(result2);
+
+	ASSERT_TRUE(errMsg.isEmpty());
+
+	auto tmp1 = configManager->getInt("Core3.TestInt", 99999);
+	ASSERT_EQ(tmp1, 87654321);
+
+	auto tmp2 = configManager->getBool("Core3.TestBool", true);
+	ASSERT_TRUE(!tmp2);
+
+	auto tmp3 = configManager->getFloat("Core3.TestFloat", 0.0);
+	ASSERT_EQ(tmp3, 6.54321f);
+
+	auto tmp4 = configManager->getString("Core3.TestString", "failed");
+	ASSERT_EQ(tmp4, "tset a si sihT");
+
+	auto tmp5 = configManager->getStringVector("Core3.TestArray");
+	ASSERT_TRUE(tmp5.get(0) == "one");
+	ASSERT_TRUE(tmp5.get(1) == "two");
+	ASSERT_TRUE(tmp5.get(2) == "three");
+	ASSERT_TRUE(tmp5.get(3) == "four");
+	ASSERT_TRUE(tmp5.get(4) == "five");
+
+	auto version_end = configManager->getConfigVersion();
+
+	// Version should increment everytime a value is changed
+	ASSERT_TRUE(version_end > version_start);
 }
 
 TEST_F(ConfigManagerTest, DumpConfig) {

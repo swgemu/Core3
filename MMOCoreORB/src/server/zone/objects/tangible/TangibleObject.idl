@@ -9,7 +9,7 @@ import system.util.SortedVector;
 import engine.log.Logger;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.area.ActiveArea;
+include server.zone.objects.area.ActiveArea;
 include templates.params.OptionBitmask;
 include templates.params.ObserverEventType;
 import server.zone.objects.factorycrate.FactoryCrate;
@@ -823,8 +823,26 @@ class TangibleObject extends SceneObject {
 	}
 
 	@read
+	public abstract boolean isNoTrade() {
+		if (antiDecayKitObject) {
+			return antiDecayKitObject.isNoTrade() || super.isNoTrade();
+		}
+
+		return super.isNoTrade();
+	}
+
+	@read
 	public boolean hasAntiDecayKit() {
-		return antiDecayKitObject != null;
+		return antiDecayKitObject;
+	}
+
+	@read
+	public unsigned long getAntiDecayKitObjectID() {
+		if (!hasAntiDecayKit()) {
+		    return 0;
+		}
+
+		return antiDecayKitObject.getObjectID();
 	}
 
 	@preLocked
@@ -832,7 +850,9 @@ class TangibleObject extends SceneObject {
 		if (!hasAntiDecayKit()) {
 			antiDecayKitObject = adk;
 
-			if (adk.getParent() != null)
+			SceneObject parent = adk.getParent();
+
+			if (parent)
 				adk.destroyObjectFromWorld(true);
 
 			sendAttributeListTo(player);
@@ -848,6 +868,8 @@ class TangibleObject extends SceneObject {
 		}
 		return null;
 	}
+
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	@read
 	public native boolean isCityStreetLamp();

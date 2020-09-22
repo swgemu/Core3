@@ -17,14 +17,13 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
 Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "_setObject", &LuaCreatureObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
-		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
-		{ "setBankCredits", &LuaCreatureObject::setBankCredits },
 		{ "sendSystemMessage", &LuaCreatureObject::sendSystemMessage },
 		{ "sendSystemMessageWithDI", &LuaCreatureObject::sendSystemMessageWithDI },
 		{ "sendSystemMessageWithTO", &LuaCreatureObject::sendSystemMessageWithTO },
@@ -89,8 +88,11 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
 		{ "getCashCredits", &LuaCreatureObject::getCashCredits},
+		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
 		{ "subtractCashCredits", &LuaCreatureObject::subtractCashCredits},
+		{ "subtractBankCredits", &LuaCreatureObject::subtractBankCredits},
 		{ "addCashCredits", &LuaCreatureObject::addCashCredits},
+		{ "addBankCredits", &LuaCreatureObject::addBankCredits},
 		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
 		{ "isGrouped", &LuaCreatureObject::isGrouped},
 		{ "isGroupedWith", &LuaCreatureObject::isGroupedWith},
@@ -139,6 +141,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList },
 		{ "getSkillMod", &LuaCreatureObject::getSkillMod },
 		{ "getGender", &LuaCreatureObject::getGender },
+		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
+		{ "dismount", &LuaCreatureObject::dismount },
 		{ 0, 0 }
 };
 
@@ -387,14 +391,6 @@ int LuaCreatureObject::setMaxHAM(lua_State* L) {
 int LuaCreatureObject::playMusicMessage(lua_State *L) {
 	String value = lua_tostring(L, -1);
 	realObject->playMusicMessage(value);
-
-	return 0;
-}
-
-int LuaCreatureObject::setBankCredits(lua_State *L) {
-	uint32 credits = (uint32) lua_tonumber(L, -1);
-
-	realObject->setBankCredits(credits);
 
 	return 0;
 }
@@ -681,7 +677,21 @@ int LuaCreatureObject::getCashCredits(lua_State* L) {
 int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 	Locker locker(realObject);
 
-	realObject->subtractCashCredits(lua_tointeger(L, -1));
+	int credits = lua_tointeger(L, -1);
+	TransactionLog trx(realObject, TrxCode::LUASCRIPT, credits, true);
+	trx.addContextFromLua(L);
+	realObject->subtractCashCredits(credits);
+
+	return 0;
+}
+
+int LuaCreatureObject::subtractBankCredits(lua_State* L) {
+	Locker locker(realObject);
+
+	int credits = lua_tointeger(L, -1);
+	TransactionLog trx(realObject, TrxCode::LUASCRIPT, credits, false);
+	trx.addContextFromLua(L);
+	realObject->subtractBankCredits(credits);
 
 	return 0;
 }
@@ -692,7 +702,22 @@ int LuaCreatureObject::addCashCredits(lua_State* L) {
 
 	Locker locker(realObject);
 
+	TransactionLog trx(TrxCode::LUASCRIPT, realObject, credits, true);
+	trx.addContextFromLua(L);
 	realObject->addCashCredits(credits, notifyClient);
+
+	return 0;
+}
+
+int LuaCreatureObject::addBankCredits(lua_State* L) {
+	bool notifyClient = lua_toboolean(L, -1);
+	int credits = lua_tonumber(L, -2);
+
+	Locker locker(realObject);
+
+	TransactionLog trx(TrxCode::LUASCRIPT, realObject, credits, false);
+	trx.addContextFromLua(L);
+	realObject->addBankCredits(credits, notifyClient);
 
 	return 0;
 }
@@ -1089,4 +1114,17 @@ int LuaCreatureObject::getGender(lua_State* L) {
 	lua_pushnumber(L, realObject->getGender());
 
 	return 1;
+}
+
+int LuaCreatureObject::isRidingMount(lua_State* L) {
+	bool isMounted = realObject->isRidingMount();
+
+	lua_pushboolean(L, isMounted);
+
+	return 1;
+}
+
+int LuaCreatureObject::dismount(lua_State* L) {
+	realObject->dismount();
+	return 0;
 }

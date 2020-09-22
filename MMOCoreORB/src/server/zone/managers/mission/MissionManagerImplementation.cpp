@@ -101,6 +101,15 @@ void MissionManagerImplementation::loadLuaSettings() {
 		playerBountyKillBuffer = lua->getGlobalLong("playerBountyKillBuffer");
 		playerBountyDebuffLength = lua->getGlobalLong("playerBountyDebuffLength");
 
+		destroyMissionBaseDistance = lua->getGlobalLong("destroyMissionBaseDistance");
+		destroyMissionDifficultyDistanceFactor = lua->getGlobalLong("destroyMissionDifficultyDistanceFactor");
+		destroyMissionRandomDistance = lua->getGlobalLong("destroyMissionRandomDistance");
+		destroyMissionDifficultyRandomDistance = lua->getGlobalLong("destroyMissionDifficultyRandomDistance");
+		destroyMissionBaseReward = lua->getGlobalLong("destroyMissionBaseReward");
+		destroyMissionDifficultyRewardFactor = lua->getGlobalLong("destroyMissionDifficultyRewardFactor");
+		destroyMissionRandomReward = lua->getGlobalLong("destroyMissionRandomReward");
+		destroyMissionDifficultyRandomReward = lua->getGlobalLong("destroyMissionDifficultyRandomReward");
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -784,7 +793,9 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		foundPosition = true;
 
-		startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360), false);
+		int distance = destroyMissionBaseDistance + destroyMissionDifficultyDistanceFactor * difficultyLevel;
+		distance += System::random(destroyMissionRandomDistance) + System::random(destroyMissionDifficultyRandomDistance * difficultyLevel);
+		startPos = player->getWorldCoordinate((float)distance, (float)System::random(360), false);
 
 		if (zone->isWithinBoundaries(startPos)) {
 			float height = zone->getHeight(startPos.getX(), startPos.getY());
@@ -822,7 +833,11 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
-	mission->setRewardCredits(System::random(diffDisplay * 15) + (difficultyLevel * 375));
+
+	int reward = destroyMissionBaseReward + destroyMissionDifficultyRewardFactor * difficultyLevel;
+	reward += System::random(destroyMissionRandomReward) + System::random(destroyMissionDifficultyRandomReward * difficultyLevel);
+	mission->setRewardCredits(reward);
+
 	mission->setMissionDifficulty(difficultyLevel, diffDisplay, difficulty);
 	mission->setSize(randomLairSpawn->getSize());
 	mission->setFaction(faction);
@@ -1815,25 +1830,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 		return position;
 	}
 
-	bool found = false;
-	float minX = targetZone->getMinX(), maxX = targetZone->getMaxX();
-	float minY = targetZone->getMinY(), maxY = targetZone->getMaxY();
-	float diameterX = maxX - minX;
-	float diameterY = maxY - minY;
-	int retries = 20;
-
-	while (!found && retries > 0) {
-		position.setX(System::random(diameterX) + minX);
-		position.setY(System::random(diameterY) + minY);
-
-		found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), nullptr);
-
-		retries--;
-	}
-
-	if (retries == 0) {
-		position.set(0, 0, 0);
-	}
+	position = targetZone->getPlanetManager()->getRandomSpawnPoint();
 
 	return position;
 }
@@ -2032,7 +2029,7 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 				ManagedReference<CreatureObject*> creo = server->getObject(activeBountyHunters.get(i)).castTo<CreatureObject*>();
 				auto ghost = creo->getPlayerObject();
 				if (ghost != nullptr)
-					ghost->schedulePvpTefRemovalTask(false, true);
+					ghost->schedulePvpTefRemovalTask(false, false, true);
 			}
 		}
 	}
@@ -2057,7 +2054,7 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 
 					auto ghost = player->getPlayerObject();
 					if (ghost != nullptr)
-						ghost->schedulePvpTefRemovalTask(false, true);
+						ghost->schedulePvpTefRemovalTask(false, false, true);
 				}
 
 				objective->fail();

@@ -22,6 +22,15 @@
 #include "ingredientslots/ResourceSlot.h"
 #include "ingredientslots/ComponentSlot.h"
 
+void ManufactureSchematicImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	if (prototype != nullptr) {
+		prototype->destroyObjectFromDatabase(true);
+		prototype = nullptr;
+	}
+
+	SceneObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
+
 void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 	alm->insertAttribute("data_volume", dataSize);

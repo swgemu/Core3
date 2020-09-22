@@ -15,7 +15,9 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 
 	statusInterval = configManager->getStatusInterval();
 
+#ifndef PLATFORM_WIN
 	signal(SIGPIPE, SIG_IGN);
+#endif
 	
 	setLogging(false);
 }

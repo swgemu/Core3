@@ -186,7 +186,7 @@ class VehicleObject extends CreatureObject {
 	public boolean isAttackableBy(CreatureObject object) {
 		CreatureObject creature = super.linkedCreature;
 
-		if (creature == null || isDestroyed())
+		if (!creature || isDestroyed())
 			return false;
 
 		if (object.getZone() != getZone())

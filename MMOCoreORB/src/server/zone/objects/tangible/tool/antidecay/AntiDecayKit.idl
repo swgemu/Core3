@@ -19,6 +19,8 @@ class AntiDecayKit extends Container {
 
 	public native void initializeTransientMembers();
 
+	public native void notifyLoadFromDatabase();
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);

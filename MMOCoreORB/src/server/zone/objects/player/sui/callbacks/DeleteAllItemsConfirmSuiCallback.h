@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class DeleteAllItemsConfirmSuiCallback : public SuiCallback {
 public:
@@ -30,6 +31,15 @@ public:
 		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 		Locker _lock(building, creature);
+
+		TransactionLog trx(TrxCode::PLAYERMISCACTION, creature, building);
+
+		if (trx.isVerbose()) {
+			// Force a synchronous export because the objects will be deleted before we can export them!
+			trx.addRelatedObject(building, true);
+			trx.setExportRelatedObjects(true);
+			trx.exportRelated();
+		}
 
 		building->destroyAllPlayerItems();
 

@@ -6,15 +6,17 @@
  */
 
 #include "engine/engine.h"
-#include "server/zone/objects/player/sessions/ImageDesignSession.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/object/ImageDesignMessage.h"
-#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
-#include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
-#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
+#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
+#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
+#include "server/zone/packets/object/ImageDesignMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();
@@ -114,9 +116,6 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 	else
 		targetObject = strongReferenceDesigner;
 
-	//ManagedReference<SceneObject*> obj = targetObject->getParentRecursively(SceneObjectType::SALONBUILDING);
-	//tent = obj != nullptr ? obj->getObjectID()
-
 	ImageDesignChangeMessage* message = new ImageDesignChangeMessage(targetObject->getObjectID(), designer, targetPlayer, tent, type);
 
 	imageDesignData.insertToMessage(message);
@@ -133,27 +132,21 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 				idTimeoutEvent = new ImageDesignTimeoutEvent(_this.getReferenceUnsafeStaticCast());
 
 			if (!idTimeoutEvent->isScheduled())
-				idTimeoutEvent->schedule(120000); //2 minutes
+				idTimeoutEvent->schedule(120000); // 2 minutes
 		} else {
 			commitChanges = doPayment();
 		}
 	}
 
-	//System::out << h << endl;
 	if (commitChanges) {
-		//TODO: set XP Values
-
 		int xpGranted = 0; // Minimum Image Design XP granted (base amount).
-
-		//if (imageDesignData.mi)
 
 		String hairTemplate = imageDesignData.getHairTemplate();
 
 		bool statMig = imageDesignData.isStatMigrationRequested();
 
-		if (statMig && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING)
-				&& strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) && strongReferenceDesigner != strongReferenceTarget) {
-
+		if (statMig && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) &&
+			strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) && strongReferenceDesigner != strongReferenceTarget) {
 			ManagedReference<Facade*> facade = strongReferenceTarget->getActiveSession(SessionFacadeType::MIGRATESTATS);
 			ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
 
@@ -176,7 +169,8 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			if (hairObject != nullptr)
 				hairObject->getCustomizationString(oldCustomization);
 
-			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
+			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, imageDesignData.getHairTemplate(),
+															  imageDesignData.getHairCustomizationString());
 
 			if (hairObject != nullptr) {
 				Locker hlocker(hairObject);
@@ -196,9 +190,8 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			}
 		}
 
-
 		if (colorAttributes->size() > 0) {
-			if(xpGranted < 100)
+			if (xpGranted < 100)
 				xpGranted = 100;
 			for (int i = 0; i < colorAttributes->size(); ++i) {
 				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
@@ -210,33 +203,27 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		// Add holo emote
 		String holoemote = imageDesignData.getHoloEmote();
-		if( !holoemote.isEmpty() ){
-
+		if (!holoemote.isEmpty()) {
 			PlayerObject* ghost = strongReferenceTarget->getPlayerObject();
-			ghost->setInstalledHoloEmote( holoemote );  // Also resets number of uses available
+			ghost->setInstalledHoloEmote(holoemote); // Also resets number of uses available
 
 			strongReferenceTarget->sendSystemMessage("@image_designer:new_holoemote"); //"Congratulations! You have purchased a new Holo-Emote generator. Type '/holoemote help' for instructions."
 
-			if(xpGranted < 100)
+			if (xpGranted < 100)
 				xpGranted = 100;
-
 		}
-
-		// Drop the Session for both the designer and the targetCreature;
-		strongReferenceDesigner->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
-		strongReferenceTarget->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
 
 		// Award XP.
 		PlayerManager* playerManager = strongReferenceDesigner->getZoneServer()->getPlayerManager();
 
 		if (playerManager != nullptr && xpGranted > 0) {
-			if(strongReferenceDesigner == strongReferenceTarget)
+			if (strongReferenceDesigner == strongReferenceTarget)
 				xpGranted /= 2;
 			playerManager->awardExperience(strongReferenceDesigner, "imagedesigner", xpGranted, true);
 		}
 
-		if (idTimeoutEvent != nullptr && idTimeoutEvent->isScheduled())
-			dequeueIdTimeoutEvent();
+		// End the session
+		cancelSession();
 	}
 
 	targetObject->sendMessage(message);
@@ -261,11 +248,18 @@ int ImageDesignSessionImplementation::doPayment() {
 	}
 
 	if (requiredPayment <= targetCreature->getCashCredits()) {
+		TransactionLog trx(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, requiredPayment, true);
 		targetCreature->subtractCashCredits(requiredPayment);
 		designerCreature->addCashCredits(requiredPayment);
 	} else {
 		int requiredBankCredits = requiredPayment - targetCreature->getCashCredits();
+
+		TransactionLog trxCash(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, targetCreature->getCashCredits(), true);
 		targetCreature->subtractCashCredits(targetCreature->getCashCredits());
+
+		TransactionLog trxBank(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, requiredBankCredits, true);
+		trxBank.groupWith(trxCash);
+
 		targetCreature->subtractBankCredits(requiredBankCredits);
 		designerCreature->addCashCredits(requiredPayment);
 	}
@@ -336,16 +330,15 @@ void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64
 
 	imageDesignData = data;
 
-	ImageDesignRejectMessage* message = new ImageDesignRejectMessage(targetCreature->getObjectID(), designer, targetPlayer,tent, type);
+	ImageDesignRejectMessage* message = new ImageDesignRejectMessage(targetCreature->getObjectID(), designer, targetPlayer, tent, type);
 	imageDesignData.insertToMessage(message);
 	targetCreature->sendMessage(message);
 
-	ImageDesignRejectMessage* msg2 = new ImageDesignRejectMessage(designerCreature->getObjectID(), designer, targetPlayer,tent, type);
+	ImageDesignRejectMessage* msg2 = new ImageDesignRejectMessage(designerCreature->getObjectID(), designer, targetPlayer, tent, type);
 	imageDesignData.insertToMessage(msg2);
 	designerCreature->sendMessage(msg2);
 
-
-	//TODO: Needs research.
+	// TODO: Needs research.
 
 	cancelSession();
 }

@@ -532,7 +532,7 @@ class WeaponObject extends TangibleObject {
 
 	@read
 	public boolean hasPowerup() {
-		return powerupObject != null;
+		return powerupObject;
 	}
 
 	public native boolean applyPowerup(CreatureObject player, PowerupObject pup);

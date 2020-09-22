@@ -107,6 +107,8 @@
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/objects/player/events/OnlinePlayerLogTask.h"
 #include <sys/stat.h>
+#include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/creature/commands/TransferItemMiscCommand.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl,
 					bool trackOnlineUsers) : Logger("PlayerManager") {
@@ -412,7 +414,7 @@ void PlayerManagerImplementation::loadNameMap() {
 	try {
 		String query = "SELECT character_oid, firstname FROM characters where character_oid > 16777216 and galaxy_id = " + String::valueOf(server->getGalaxyID()) + " order by character_oid asc";
 
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery(query));
 
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
@@ -594,51 +596,64 @@ bool PlayerManagerImplementation::existsPlayerCreatureOID(uint64 oid) {
 }
 
 bool PlayerManagerImplementation::kickUser(const String& name, const String& admin, String& reason, bool doBan) {
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-
-	if (chatManager == nullptr)
-		return false;
-
-	ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
+	Reference<CreatureObject*> player = getPlayer(name);
 
 	if (player == nullptr)
 		return false;
 
-	ManagedReference<CreatureObject*> adminplayer = chatManager->getPlayer(admin);
+	Reference<CreatureObject*> adminPlayer = getPlayer(admin);
 
-	if (adminplayer == nullptr)
+	if (adminPlayer == nullptr)
 		return false;
+
+	info(true) << admin << (doBan ? " kickbanned " : " kicked ") << name << " for '" << reason << "'";
+
+	StringBuffer buf;
+	buf << "You have been kicked by " << admin << " for '" << reason << "'";
+	auto kickMessage = buf.toString();
+
+	player->sendSystemMessage(kickMessage);
+
+	ErrorMessage* errmsg = new ErrorMessage(admin, kickMessage, 0);
+	player->sendMessage(errmsg);
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-
-	Reference<PlayerObject*> adminghost = adminplayer->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-	if (adminghost == nullptr)
-		return false;
-
-	StringBuffer kickMessage;
-	kickMessage << "You have been kicked by " << admin << " for '" << reason << "'";
-	player->sendSystemMessage(kickMessage.toString());
 
 	if (ghost != nullptr)
 		ghost->setLoggingOut();
 
-	ErrorMessage* errmsg = new ErrorMessage(admin, "You have been kicked", 0);
-	player->sendMessage(errmsg);
-
 	player->sendMessage(new LogoutMessage());
 
-	ManagedReference<ZoneClientSession*> session = player->getClient();
+	Core::getTaskManager()->scheduleTask([
+			this, playerCreo = Reference<CreatureObject*>(player), adminCreo = Reference<CreatureObject*>(adminPlayer), reason, doBan] {
 
-	if (session != nullptr)
-		session->disconnect(true);
+		Reference<ZoneClientSession*> session = playerCreo->getClient();
 
-	/// 10 min ban
-	if (doBan) {
-		String banMessage = banAccount(adminghost, ghost->getAccount(), 60 * 10, reason);
-		adminplayer->sendSystemMessage(banMessage);
-	}
+		if (session != nullptr)
+			session->disconnect(true);
+
+		Reference<PlayerObject*> ghost = playerCreo->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+		if (ghost == nullptr)
+			return;
+
+		Reference<Account*> account = ghost->getAccount();
+
+		if (account == nullptr)
+			return;
+
+		if (doBan) {
+			Reference<PlayerObject*> adminGhost = adminCreo->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+			if (adminGhost != nullptr) {
+				String banMessage = banAccount(adminGhost, account, 60 * 10, reason);
+
+				adminCreo->sendSystemMessage(banMessage);
+			}
+		} else {
+			adminCreo->sendSystemMessage("Kicked " + playerCreo->getFirstName() + " on account " + account->getUsername() + ".");
+		}
+	}, "kickUserTask", 500);
 
 	return true;
 }
@@ -686,7 +701,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
 				+ fname + "\"";
 
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery(query));
 		bool nameExists = res->next();
 
 		return !nameExists;
@@ -1182,8 +1197,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	if (ghost != nullptr) {
 		ghost->resetIncapacitationTimes();
-		if (ghost->hasPvpTef()) {
-			ghost->schedulePvpTefRemovalTask(true, true);
+		if (ghost->hasTef()) {
+			ghost->schedulePvpTefRemovalTask(true, true, true);
 		}
 	}
 
@@ -2466,6 +2481,9 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 		return;
 	}
 
+	// Get a trx group to trace all trx's in this session
+	auto trxGroup = TransactionLog::getNewTrxGroup();
+
 	tradeContainer->setVerifiedTrade(true);
 
 	uint64 targID = tradeContainer->getTradeTargetPlayer();
@@ -2498,6 +2516,9 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 			for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 				ManagedReference<SceneObject*> item = tradeContainer->getTradeItem(i);
 
+				TransactionLog trx(player, receiver, item, TrxCode::PLAYERTRADE);
+				trx.setTrxGroup(trxGroup);
+
 				if (item->isTangibleObject()) {
 					if (objectController->transferObject(item, receiverInventory, -1, true))
 						item->sendDestroyTo(player);
@@ -2513,18 +2534,29 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 			for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
 				ManagedReference<SceneObject*> item = receiverTradeContainer->getTradeItem(i);
 
+				TransactionLog trx(receiver, player, item, TrxCode::PLAYERTRADE);
+				trx.setTrxGroup(trxGroup);
+
 				if (item->isTangibleObject()) {
-					if (objectController->transferObject(item, playerInventory, -1, true))
+					if (objectController->transferObject(item, playerInventory, -1, true)) {
 						item->sendDestroyTo(receiver);
+					} else {
+						trx.errorMessage() << "transferObject failed";
+					}
 				} else {
-					if (objectController->transferObject(item, playerDatapad, -1, true))
+					if (objectController->transferObject(item, playerDatapad, -1, true)) {
 						item->sendDestroyTo(receiver);
+					} else {
+						trx.errorMessage() << "transferObject failed";
+					}
 				}
 			}
 
 			uint32 giveMoney = tradeContainer->getMoneyToTrade();
 
 			if (giveMoney > 0) {
+				TransactionLog trx(player, receiver, TrxCode::PLAYERTRADE, giveMoney, true);
+				trx.setTrxGroup(trxGroup);
 				player->subtractCashCredits(giveMoney);
 				receiver->addCashCredits(giveMoney);
 			}
@@ -2532,6 +2564,8 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 			giveMoney = receiverTradeContainer->getMoneyToTrade();
 
 			if (giveMoney > 0) {
+				TransactionLog trx(receiver, player, TrxCode::PLAYERTRADE, giveMoney, true);
+				trx.setTrxGroup(trxGroup);
 				receiver->subtractCashCredits(giveMoney);
 				player->addCashCredits(giveMoney);
 			}
@@ -3497,6 +3531,8 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (creatureInventory == nullptr)
 		return;
 
+	auto trxGroup = TransactionLog::getNewTrxGroup();
+
 	int cashCredits = ai->getCashCredits();
 
 	if (cashCredits > 0) {
@@ -3505,8 +3541,13 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		if (luck > 0)
 			cashCredits += (cashCredits * luck) / 20;
 
-		player->addCashCredits(cashCredits, true);
-		ai->setCashCredits(0);
+		{
+			TransactionLog trx(ai, player, TrxCode::NPCLOOTCLAIM, cashCredits, true);
+			trx.setTrxGroup(trxGroup);
+			trx.addState("srcDisplayedName", ai->getDisplayedName());
+			player->addCashCredits(cashCredits, true);
+			ai->clearCashCredits();
+		}
 
 		StringIdChatParameter param("base_player", "prose_coin_loot"); //You loot %DI credits from %TT.
 		param.setDI(cashCredits);
@@ -3529,15 +3570,13 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		return;
 	}
 
-	StringBuffer args;
-	args << playerInventory->getObjectID() << " -1 0 0 0";
-
-	String stringArgs = args.toString();
-
 	for (int i = totalItems - 1; i >= 0; --i) {
 		SceneObject* object = creatureInventory->getContainerObject(i);
 
-		player->executeObjectControllerAction(STRING_HASHCODE("transferitemmisc"), object->getObjectID(), stringArgs);
+		TransactionLog trx(ai, player, object, TrxCode::NPCLOOTCLAIM);
+		trx.setTrxGroup(trxGroup);
+
+		TransferItemMiscCommand::doTransferItemMisc(player, object, playerInventory, -1, trx);
 	}
 
 	if (creatureInventory->getContainerObjectsSize() <= 0) {
@@ -3782,8 +3821,16 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	Locker locker(account);
 
 	account->setBanReason(reason);
-	account->setBanExpires(System::getMiliTime() + seconds*1000);
+	account->setBanExpires(System::getMiliTime() + seconds * 1000);
 	account->setBanAdmin(admin->getAccountID());
+
+	StringBuffer banResult;
+
+	Time expireTime;
+
+	expireTime.addMiliTime(seconds * 1000);
+
+	banResult << "Account \"" + account->getUsername() + "\" successfully banned until " << expireTime.getFormattedTime() + " server time";
 
 	try {
 		Reference<const CharacterList*> characters = account->getCharacterList();
@@ -3808,10 +3855,12 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 			}
 		}
 	} catch(Exception& e) {
-		return "Account Successfully Banned, but error kicking characters. " + e.getMessage();
+		banResult << ", error kicking characters: " + e.getMessage();
 	}
 
-	return "Account Successfully Banned";
+	banResult << ".";
+
+	return banResult.toString();
 }
 
 String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* account, const String& reason) {
@@ -4962,7 +5011,6 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	// Final check to see if milestone has already been claimed on any of the player's characters
 	// (prevent claiming while multi-logged)
 
-
 	bool milestoneClaimed = false;
 	if (!playerGhost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
 		milestoneClaimed = true;
@@ -4989,12 +5037,17 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 		return;
 	}
 
-	// Transfer to player
-	if (!inventory->transferObject(rewardSceno, -1, false, true)) { // Allow overflow
-		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
-		rewardSceno->destroyObjectFromDatabase(true);
-		cancelVeteranRewardSession(player);
-		return;
+	{
+		TransactionLog trx(TrxCode::VETERANREWARD, player, rewardSceno);
+
+		// Transfer to player
+		if (!inventory->transferObject(rewardSceno, -1, false, true)) { // Allow overflow
+			trx.abort() << "Failed to transfer to player inventory";
+			player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
+			rewardSceno->destroyObjectFromDatabase(true);
+			cancelVeteranRewardSession(player);
+			return;
+		}
 	}
 
 	inventory->broadcastObject(rewardSceno, true);
@@ -5004,7 +5057,6 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	GalaxyAccountInfo* accountInfo = account->getGalaxyAccountInfo(player->getZoneServer()->getGalaxyName());
 
 	accountInfo->addChosenVeteranReward(rewardSession->getMilestone(), reward.getTemplateFile());
-
 
 	cancelVeteranRewardSession(player);
 
@@ -5345,29 +5397,27 @@ void PlayerManagerImplementation::cleanupCharacters() {
 }
 
 bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int galaxyID) {
-	String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID) + " AND galaxy_id = " + String::valueOf(galaxyID);
+	const String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID) + " AND galaxy_id = " + String::valueOf(galaxyID);
 
 	try {
-		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query));
 
 		if (result == nullptr) {
 			error("ERROR WHILE LOOKING UP CHARACTER IN SQL TABLE");
-		} else if (result.get()->getRowsAffected() > 1) {
+		} else if (result->getRowsAffected() > 1) {
 
 			error("More than one character with oid = " + String::valueOf(characterID) + " in galaxy " + String::valueOf(galaxyID));
 			return false;
 
-		} else if (result.get()->getRowsAffected() == 0) {
+		} else if (result->getRowsAffected() == 0) {
 			return true;
 		}
 
 		return false;
-
-	} catch ( DatabaseException &err) {
-		info("database error " + err.getMessage(),true);
+	} catch (const DatabaseException& err) {
+		error() << "database error " << err.getMessage();
 		return false;
 	}
-
 }
 
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
@@ -6161,22 +6211,24 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 	// Write who file
 	try {
 		// Write a new "current status" file
-		FileWriter* logFile = new FileWriter(new File("log/who.json.next"), false);
+		File file("log/who.json.next");
+		FileWriter logFile(&file, false);
 
-		(*logFile) << logLine;
+		logFile << logLine;
 
-		logFile->close();
-
-		delete logFile->getFile();
-		delete logFile;
+		logFile.close();
 
 		// Update current status file
+#ifdef PLATFORM_WIN
+		std::remove("log/who.json");
+#endif
 		int err = std::rename("log/who.json.next", "log/who.json");
 
-		if (err != 0)
-			error("Failed to rename log/who.json.next to log/who.json err = " + String::valueOf(err));
-	} catch (Exception& e) {
-		error("logOnlinePlayers failed to write log/who.json: " + e.getMessage());
+		if (err != 0) {
+			error() << "Failed to rename log/who.json.next to log/who.json err = " << err;
+		}
+	} catch (const Exception& e) {
+		error() << "logOnlinePlayers failed to write log/who.json: " << e.getMessage();
 	}
 
 	if (onlyWho)
@@ -6198,20 +6250,18 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 			int err = std::rename(fileName.toCharArray(), archiveFilename.toString().toCharArray());
 
 			if (err != 0)
-				error("Failed to archive online-players to " + archiveFilename.toString() + " err = " + String::valueOf(err));
+				error() << "Failed to archive online-players to " << archiveFilename.toString() << " err = " << err;
 		}
 	}
 
 	try {
 		// Append log file with this entry
-		FileWriter* logFile = new FileWriter(new File(fileName), true);
+		File file(fileName);
+		FileWriter logFile(&file, true);
 
-		(*logFile) << logLine;
+		logFile << logLine;
 
-		logFile->close();
-
-		delete logFile->getFile();
-		delete logFile;
+		logFile.close();
 
 		logfileLock.release();
 
@@ -6238,7 +6288,19 @@ void PlayerManagerImplementation::logOnlinePlayers(bool onlyWho) {
 			lastOnlinePlayerLogMsg.updateToCurrentTime();
 			onlinePlayerLogSum = LogSum;
 		}
-	} catch (Exception& e) {
-		error("logOnlinePlayers failed to write " + fileName + ": " + e.getMessage());
+	} catch (const Exception& e) {
+		error() << "logOnlinePlayers failed to write " << fileName << ": " << e.getMessage();
+	}
+}
+
+void PlayerManagerImplementation::iteratePlayerNames(const PlayerNameIterator& iterator) {
+	auto names = nameMap->getNames();
+	auto iter = names.iterator();
+
+	while (iter.hasNext()) {
+		String name;
+		uint64 oid;
+		iter.getNextKeyAndValue(name, oid);
+		iterator(name, oid);
 	}
 }

@@ -1,3 +1,7 @@
+/*
+                Copyright <SWGEmu>
+        See file COPYING for copying conditions.*/
+
 /**
  * @author      : theanswer (theanswer@Victors-MacBook-Pro.local)
  * @file        : RESTServer
@@ -6,13 +10,28 @@
 
 #ifdef WITH_REST_API
 
-#include "server/ServerCore.h"
 #include "RESTServer.h"
+#include "server/ServerCore.h"
+#include "conf/ConfigManager.h"
+
+#include "RESTEndpoint.h"
+#include "APIRequest.h"
+#include "APIProxyPlayerManager.h"
+#include "APIProxyChatManager.h"
+#include "APIProxyObjectManager.h"
+#include "APIProxyGuildManager.h"
+#include "APIProxyConfigManager.h"
 
 using namespace server::web3;
 
 RESTServer::RESTServer() {
 	setLoggingName("RESTServer");
+	setFileLogger("log/core3_api.log", true, ConfigManager::instance()->getRotateLogAtStart());
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.RESTServer.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
+	setLogToConsole(false);
+	setGlobalLogging(false);
+	setLogging(true);
 	doRun.set(true);
 }
 
@@ -30,9 +49,6 @@ RESTServer::~RESTServer() {
 #include <chrono>
 #include <regex>
 
-#include "engine/engine.h"
-#include "conf/ConfigManager.h"
-
 using namespace web;
 using namespace web::http;
 using namespace web::http::experimental::listener;
@@ -46,14 +62,17 @@ namespace web3 {
 }
 
 void RESTServer::registerEndpoints() {
-	debug() << "Registering apiEndpoints...";
+	const auto addEndpoint = [this](auto endpoint) {
+		mAPIEndpoints.add(endpoint);
+		info() << "Registered " << endpoint;
+	};
 
-	apiEndpoints.setNoDuplicateInsertPlan();
+	info() << "Registering mAPIEndpoints...";
 
-	apiEndpoints.put("GET:/v1/version/", [this] (http_request request, Vector<String> matches) -> void {
-		auto result = json::value();
+	addEndpoint(RESTEndpoint("GET:/v1/version/", {}, [this] (APIRequest& apiRequest) -> void {
+		auto result = JSONSerializationType::object();
 
-		result[U("api_version")] = json::value::number(1);
+		result["api_version"] = 1;
 
 		StringTokenizer revLines(ConfigManager::instance()->getRevision());
 		revLines.setDelimeter("\n");
@@ -61,88 +80,32 @@ void RESTServer::registerEndpoints() {
 		if (revLines.hasMoreTokens()) {
 			String revFirstLine;
 			revLines.getStringToken(revFirstLine);
-			result[U("core3_version")] = json::value::string(revFirstLine.toCharArray());
+			result["core3_version"] = revFirstLine;
 		}
 
-		success_response(request, result);
-	});
+		apiRequest.success(result);
+	}));
 
-	apiEndpoints.put("GET:/v1/object/", [this] (http_request request, Vector<String> matches) -> void {
-		const auto& uri = request.relative_uri();
+	addEndpoint(RESTEndpoint("(?:GET|DELETE):/v1/object/(?:(\\d*)/|)", {"oid"}, [this] (APIRequest& apiRequest) -> void {
+		mObjectManagerProxy->handle(apiRequest);
+	}));
 
-		auto get_vars = uri::split_query(uri.query());
+	addEndpoint(RESTEndpoint("(?:PUT):/v1/object/(\\d+)/(\\w+)/(\\w+)/", {"oid", "class", "property"}, [this] (APIRequest& apiRequest) -> void {
+		mObjectManagerProxy->handle(apiRequest);
+	}));
 
-		auto find_oids = get_vars.find(U("oids"));
+	addEndpoint(RESTEndpoint("(?:GET|POST|PUT):/v1/admin/config/(?:(.*)/|)", {"key"}, [this] (APIRequest& apiRequest) -> void {
+		mConfigManagerProxy->handle(apiRequest);
+	}));
 
-		if (find_oids == get_vars.end()) {
-			error_response(request, "missing query field 'oids'");
-			return;
-		}
 
-		nlohmann::json responses = nlohmann::json::array();
-
-		StringTokenizer oidStrList(uri::decode(find_oids->second));
-		oidStrList.setDelimeter(",");
-
-		int countFound = 0;
-
-		while(oidStrList.hasMoreTokens()) {
-			try {
-				uint64 oid = oidStrList.getUnsignedLongToken();
-
-				debug() << countFound << ") Lookup oid " << oid;
-
-				auto obj = Core::lookupObject(oid).castTo<ManagedObject*>();
-
-				if (obj != nullptr) {
-					ReadLocker lock(obj);
-
-					nlohmann::json jsonData;
-					obj->writeJSON(jsonData);
-
-					nlohmann::json entry;
-					entry[String::valueOf(oid)] = jsonData;
-
-					responses.push_back(entry);
-					countFound++;
-				}
-			} catch (const Exception& e) {
-				error() << e.getMessage();
-			}
-		}
-
-		debug() << "Found " << countFound << " object(s)";
-
-		if (responses.empty()) {
-			error_response(request, "Nothing found");
-		} else {
-			auto result = json::value();
-
-			result[U("objects")] = json::value::parse(responses.dump());
-
-			success_response(request, result);
-		}
-	});
-
-	apiEndpoints.put("POST:/v1/admin/console/(\\w+)/*(.*)", [this] (http_request request, Vector<String> matches) -> void {
+	addEndpoint(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
 		StringBuffer buf;
 
-		for (int i = 1;i < matches.size();i++) {
-			auto match = matches.get(i);
+		buf << apiRequest.getPathFieldString("command");
 
-			if (!match.isEmpty()) {
-				buf << " " << match;
-			}
-		}
-
-		const auto& uri = request.relative_uri();
-
-		auto get_vars = uri::split_query(uri.query());
-
-		auto find_args = get_vars.find(U("args"));
-
-		if (find_args != get_vars.end()) {
-			buf << " " << uri::decode(find_args->second);
+		if (apiRequest.hasQueryField("args")) {
+			buf << " " << apiRequest.getQueryFieldString("args");
 		}
 
 		auto consoleCommand = buf.toString().trim();
@@ -151,145 +114,124 @@ void RESTServer::registerEndpoints() {
 
 		ServerCore::getInstance()->queueConsoleCommand(consoleCommand);
 
-		auto result = json::value();
+		JSONSerializationType result;
 
-		result[U("console_command")] = json::value::string(consoleCommand.toCharArray());
+		result["console_command"] = consoleCommand;
 
-		success_response(request, result);
-	});
+		apiRequest.success(result);
+	}));
 
-	debug() << "Registered " << apiEndpoints.size() << " endpoint(s)";
+	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/galaxy/(\\d+)/character/(\\d+)/", {"accountID", "galaxyID", "characterID"}, [this] (APIRequest& apiRequest) -> void {
+		mPlayerManagerProxy->handle(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("POST:/v1/admin/account/(\\d+)/", {"accountID"}, [this] (APIRequest& apiRequest) -> void {
+		mPlayerManagerProxy->handle(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/character/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
+		mPlayerManagerProxy->lookupCharacter(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("GET:/v1/(find|lookup)/guild/", {"mode"}, [this] (APIRequest& apiRequest) -> void {
+		mGuildManagerProxy->lookupGuild(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("POST:/v1/chat/(mail|message|galaxy)/", {"msgType"}, [this] (APIRequest& apiRequest) -> void {
+		mChatManagerProxy->handle(apiRequest);
+	}));
+
+	info() << "Registered " << mAPIEndpoints.size() << " endpoint(s)";
 }
 
-void RESTServer::routeRequest(http_request request) {
-	if (!check_auth(request)) {
-		request.reply(status_codes::Forbidden, U("Invalid API Token"));
-		return;
-	}
-
+void RESTServer::routeRequest(http_request& request) {
 	const auto& uri = request.relative_uri();
 
-	String endpointKey = request.method() + ":" + uri.path();
+	String endpointKey = request.method() + ":" + uri::decode(uri.path());
 
 	if (!endpointKey.endsWith("/")) {
 		endpointKey += "/";
 	}
 
-	VectorMapEntry<String, Function<void(http_request request, Vector<String> matches)>> hitEntry;
-	int hitLength = 0;
-	std::regex hitRegex;
-
-	for (auto entry : apiEndpoints) {
-		auto regex = entry.getKey();
-
-		std::regex re(regex.toCharArray());
-
-		if (std::regex_search(endpointKey.toCharArray(), re)) {
-			if (regex.length() > hitLength) {
-				hitLength = regex.length();
-				hitRegex = re;
-				hitEntry = entry;
-			}
-		}
+	if (!checkAuth(request)) {
+		warning() << "AUTHFAIL " << endpointKey;
+		request.reply(status_codes::Forbidden, U("Invalid API Token"));
+		return;
 	}
 
-	if (hitLength > 0) {
-		// Parse any regex hits for this path
-		Vector<String> matches;
-		std::cmatch reMatches;
+	try {
+		RESTEndpoint hitEndpoint;
 
-		if (std::regex_match (endpointKey.toCharArray(), reMatches, hitRegex)) {
-			for (auto reMatch : reMatches) {
-				matches.add(String(reMatch));
+		for (auto endpoint : mAPIEndpoints) {
+			if (endpoint.isMatch(endpointKey) && endpoint.getWeight() > hitEndpoint.getWeight()) {
+				hitEndpoint = endpoint;
 			}
+		}
+
+		if (hitEndpoint.getWeight() == 0) {
+			request.reply(status_codes::NotFound, U("Invalid resource"));
+			return;
 		}
 
 		if (getLogLevel() >= Logger::DEBUG) {
 			auto msg = debug();
+			auto pathFields = hitEndpoint.getPathFields(endpointKey);
 
-			msg << "HIT: " << hitEntry.getKey();
+			msg << "HIT: " << hitEndpoint;
 
-			if (matches.size() > 0) {
-				msg << " Matches: ";
-				for (auto match : matches) {
-					msg << "[" << match << "]";
-				}
+			auto pathFieldIter = pathFields.iterator();
+
+			while (pathFieldIter.hasNext()) {
+				String fieldName, fieldValue;
+				pathFieldIter.getNextKeyAndValue(fieldName, fieldValue);
+
+				msg << " " << fieldName << "=[" << fieldValue << "]";
 			}
 
 			msg.flush();
 		}
 
-		hitEntry.getValue()(request, matches);
-		return;
+		Core::getTaskManager()->executeTask([=] {
+			try {
+				auto apiRequest = APIRequest(request, endpointKey, *this);
+
+				debug() << "START REQUEST: " << apiRequest;
+
+				try {
+					hitEndpoint.handle(apiRequest);
+				} catch (http_exception const & e) {
+					apiRequest.fail("Failed to parse request.", "Exception handling request: " + String(e.what()));
+				}
+
+				info() << "REQUEST: " << apiRequest;
+
+				if (apiRequest.getElapsedTimeMS() > 500) {
+					warning() << "SLOW API CALL: " << apiRequest;
+				}
+			} catch (Exception& e) {
+				error() << "Unexpected exception in RESTAPITask: " << e.getMessage();
+				request.reply(status_codes::BadGateway, U("Unexpected exception handling request."));
+			} catch (JSONSerializationType::exception& e) {
+				error() << "Unexpected JSON exception in RESTAPITask: " << e.what();
+				request.reply(status_codes::BadGateway, U("Unexpected JSON exception handling request."));
+			} catch (...) {
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask: " << __cxxabiv1::__cxa_current_exception_type()->name();
+#else
+				error() << endpointKey << ": Uncaptured exception in RESTAPITask";
+#endif
+				request.reply(status_codes::BadGateway, U("Uncaptured exception handling request"));
+			}
+		}, "RESTAPITask-" + hitEndpoint.toString(), "RESTServerWorker");
+	} catch (Exception& e) {
+		error() << endpointKey << ": Unexpected exception in request router: " + e.getMessage();
+		request.reply(status_codes::BadGateway, U("Unexpected exception in request router"));
 	}
-
-	error_response(request, "Invalid resouce");
 }
 
-void RESTServer::error_response(http_request request, String errorMessage) {
-	const auto& uri = request.absolute_uri();
-
-	error()
-		<< request.method()
-		<< " " << request.relative_uri()
-		<< " error: " << errorMessage
-		;
-
-	auto result = json::value();
-
-	result[U("status")] = json::value::string(U("ERROR"));
-	result[U("error")] = json::value::string(errorMessage.toCharArray());
-
-	http_response response(status_codes::Accepted);
-
-	response.set_status_code(status_codes::NotFound);
-
-	response.set_body(result);
-
-	request.reply(response);
-}
-
-void RESTServer::success_response(http_request request, json::value result) {
-	result[U("status")] = json::value::string(U("OK"));
-
-	auto resultStr = String(result.serialize());
-
-	if (resultStr.length() > 255) {
-		resultStr = resultStr.subString(0, 252) + "...";
-	}
-
-	info(true)
-		<< request.method()
-		<< " " << request.relative_uri()
-		<< " result=" <<  resultStr
-		;
-
-	http_response response(status_codes::Accepted);
-
-	response.set_status_code(status_codes::OK);
-
-	response.set_body(result);
-
-	request.reply(response);
-}
-
-bool RESTServer::check_auth(http_request request) {
-	static String authHeader;
-
-	if (authHeader.isEmpty()) {
-		auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
-
-		if (apiAuthToken.length() == 0) {
-			error() << "Core3.RESTServer.APIToken not set, refusing to authorize API call.";
-			return false;
-		}
-
-		if (apiAuthToken.length() < 15) {
-			error() << "Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API call.";
-			return false;
-		}
-
-		authHeader = "Bearer " + apiAuthToken;
+bool RESTServer::checkAuth(http_request& request) {
+	if (mAuthHeader.isEmpty()) {
+		return false;
 	}
 
 	auto headers = request.headers();
@@ -299,49 +241,75 @@ bool RESTServer::check_auth(http_request request) {
 
 	auto requestToken = String(headers[header_names::authorization]);
 
-	return requestToken == authHeader;
+	return requestToken == mAuthHeader;
 }
 
-const String RESTServer::getJsonString(json::value jvalue, const String& fieldName, bool required, const String& defaultValue) {
-	if (!jvalue.has_field(fieldName)) {
-		if (required) {
-			throw InvalidRequest("Invalid request, missing field: " + fieldName);
-		}
+void RESTServer::createProxies() {
+	destroyProxies();
 
-		return defaultValue;
+	mPlayerManagerProxy = new APIProxyPlayerManager();
+
+	if (mPlayerManagerProxy == nullptr) {
+		throw OutOfMemoryError();
 	}
 
-	auto value = jvalue[U(fieldName)];
+	mChatManagerProxy = new APIProxyChatManager();
 
-	if (value.is_string()) {
-		return value.as_string();
+	if (mChatManagerProxy == nullptr) {
+		throw OutOfMemoryError();
 	}
 
-	throw InvalidRequest("Invalid request, invalid value type for field " + fieldName);
+	mObjectManagerProxy = new APIProxyObjectManager();
+
+	if (mObjectManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mGuildManagerProxy = new APIProxyGuildManager();
+
+	if (mGuildManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
+
+	mConfigManagerProxy = new APIProxyConfigManager();
+
+	if (mConfigManagerProxy == nullptr) {
+		throw OutOfMemoryError();
+	}
 }
 
-uint64_t RESTServer::getJsonUnsignedLong(json::value jvalue, const String& fieldName, bool required, uint64_t defaultValue) {
-	if (!jvalue.has_field(fieldName)) {
-		if (required) {
-			throw InvalidRequest("Invalid request, missing field: " + fieldName);
-		}
-
-		return defaultValue;
+void RESTServer::destroyProxies() {
+	if (mPlayerManagerProxy != nullptr) {
+		delete mPlayerManagerProxy;
+		mPlayerManagerProxy = nullptr;
 	}
 
-	auto value = jvalue[U(fieldName)];
-
-	if (value.is_string()) {
-		return UnsignedLong::valueOf(value.as_string());
-	} else if (value.is_number()) {
-		return value.as_number().to_uint64();
+	if (mChatManagerProxy != nullptr) {
+		delete mChatManagerProxy;
+		mChatManagerProxy = nullptr;
 	}
 
-	throw InvalidRequest("Invalid request, invalid value type for field " + fieldName);
+	if (mObjectManagerProxy != nullptr) {
+		delete mObjectManagerProxy;
+		mObjectManagerProxy = nullptr;
+	}
+
+	if (mGuildManagerProxy != nullptr) {
+		delete mGuildManagerProxy;
+		mGuildManagerProxy = nullptr;
+	}
+
+	if (mConfigManagerProxy != nullptr) {
+		delete mConfigManagerProxy;
+		mConfigManagerProxy = nullptr;
+	}
 }
 
 void RESTServer::start() {
 	auto logLevel = ConfigManager::instance()->getInt("Core3.RESTServer.LogLevel", (int)Logger::INFO);
+	auto numberOfThreads = ConfigManager::instance()->getInt("Core3.RESTServer.WorkerThreads", 4);
+
+	const auto static initialized = Core::getTaskManager()->initializeCustomQueue("RESTServerWorker", numberOfThreads);
 
 	setLogLevel(static_cast<Logger::LogLevel>(logLevel));
 
@@ -357,6 +325,18 @@ void RESTServer::start() {
 		doRun.set(false);
 		return;
 	}
+
+	auto apiAuthToken = ConfigManager::instance()->getString("Core3.RESTServer.APIToken", "");
+
+	if (apiAuthToken.length() == 0) {
+		error() << "Core3.RESTServer.APIToken not set, refusing to authorize API calls";
+	} else if (apiAuthToken.length() < 15) {
+		error() << "Core3.RESTServer.APIToken too short, must be at least 15 characters, refusing to authorize API calls";
+	} else {
+		mAuthHeader = "Bearer " + apiAuthToken;
+	}
+
+	createProxies();
 
 	registerEndpoints();
 
@@ -398,15 +378,12 @@ void RESTServer::start() {
 
 	restListener = new http_listener(("https://0.0.0.0:" + String::valueOf(port)).toCharArray(), serverConfig);
 
-	restListener->support(methods::GET, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::POST, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::PUT, [this](http_request request) { routeRequest(request); });
-	restListener->support(methods::DEL, [this](http_request request) { routeRequest(request); });
+	restListener->support([this](http_request request) { routeRequest(request); });
 
 	try {
 		restListener->open()
 			.then([this] {
-			info(true) << "listening to port " << port;
+			info(true) << "listening on port " << port;
 		}).wait();
 	} catch (exception const & e) {
 		error() << e.what();
@@ -417,11 +394,17 @@ void RESTServer::stop() {
 	doRun.set(false);
 
 	if (restListener != nullptr) {
+		info() << "Stopping listener.";
+
 		restListener->close().wait();
 		restListener = nullptr;
 	}
 
+	destroyProxies();
+
 	crossplat::threadpool::shared_instance().service().stop();
+
 	info(true) << "shut down thread pool";
 }
+
 #endif // WITH_REST_API

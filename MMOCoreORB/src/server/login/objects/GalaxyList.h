@@ -11,24 +11,17 @@
 // #define USE_RANDOM_EXTRA_PORTS
 
 class Galaxy {
-	uint32 id;
+	uint32 id = 0;
 	String name;
 	String address;
-	uint32 port;
-	uint32 pingPort;
-	uint32 population;
+	uint32 port = 0;
+	uint32 pingPort = 0;
+	uint32 population = 0;
 #ifdef USE_RANDOM_EXTRA_PORTS
 	Vector<uint32> extraPorts;
 #endif // USE_RANDOM_EXTRA_PORTS
 public:
-	Galaxy() {
-		id = 0;
-		name = "";
-		address = "";
-		port = 0;
-		pingPort = 0;
-		population = 0;
-	}
+	Galaxy() = default;
 
 	Galaxy(ResultSet *result) {
 		id = result->getUnsignedInt(0);
@@ -90,7 +83,15 @@ public:
 
 	uint16 getRandomPort() const {
 #ifdef USE_RANDOM_EXTRA_PORTS
-		return (uint16) extraPorts.get(System::random(extraPorts.size() - 1));
+		const static auto type = ConfigManager::instance()->getInt("Core3.ZonePortsBalancer", 1);
+
+		if (type == 1) {
+			static AtomicInteger roundRobin;
+
+			return (uint16)extraPorts.get(roundRobin.increment() % extraPorts.size());
+		} else {
+			return (uint16)extraPorts.get(System::random(extraPorts.size() - 1));
+		}
 #else // USE_RANDOM_EXTRA_PORTS
 		return port;
 #endif // USE_RANDOM_EXTRA_PORTS
@@ -134,16 +135,16 @@ class GalaxyList {
 	int curIdx = 0;
 
 public:
-	GalaxyList(String username) {
+	GalaxyList(const String& username) {
 		StringBuffer query;
 		query << "SELECT * FROM galaxy";
 
-		Reference<ResultSet*> results = ServerDatabase::instance()->executeQuery(query);
+		UniqueReference<ResultSet*> results(ServerDatabase::instance()->executeQuery(query));
 
 		if (results == nullptr)
 			return;
 
-		while(results->next()) {
+		while (results->next()) {
 			auto galaxy = Galaxy(results);
 
 			Vector<String> galaxyAccessList;

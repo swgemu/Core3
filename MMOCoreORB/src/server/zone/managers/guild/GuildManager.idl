@@ -12,12 +12,14 @@ import server.zone.ZoneServer;
 import server.chat.ChatManager;
 import server.chat.room.ChatRoom;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.creature.CreatureObject;
+
 include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 include system.util.VectorMap;
+include server.zone.objects.guild.GuildObject;
+include server.zone.managers.guild.GuildObjectIterator;
 
 @dirty
 class GuildManager extends ManagedService implements Logger {
@@ -210,4 +212,7 @@ class GuildManager extends ManagedService implements Logger {
 	public native void castVote(GuildObject guild, CreatureObject player, unsigned long candidateID);
 
 	public native void viewElectionStandings(GuildObject guild, CreatureObject player, GuildTerminal terminal);
+
+	@local
+	public native void iterateGuilds(@dereferenced final GuildObjectIterator iterator);
 }

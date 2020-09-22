@@ -18,6 +18,8 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/intangible/tasks/StorePetTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void DroidMaintenanceSessionImplementation::initialize() {
 	ManagedReference<CreatureObject*> creature = this->player.get();
@@ -233,10 +235,13 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	// that seems ok he wont be able to touch the droid for a long time anyways so lets roleplay out it just runs out in low power situation.
 	// we had enough to run.
 	if (creature->getCashCredits() >= totalFees) {
+		TransactionLog log(creature, droid, TrxCode::STRUCTUREMAINTANENCE, totalFees, true);
 		creature->subtractCashCredits(totalFees);
 	} else {
 		int payedSoFar = creature->getCashCredits();
+		TransactionLog logCash(creature, droid, TrxCode::STRUCTUREMAINTANENCE, payedSoFar, true);
 		creature->subtractCashCredits(payedSoFar);
+		TransactionLog logBank(creature, droid, TrxCode::STRUCTUREMAINTANENCE, totalFees - payedSoFar, true);
 		creature->subtractBankCredits(totalFees - payedSoFar);
 	}
 	// now the structures.

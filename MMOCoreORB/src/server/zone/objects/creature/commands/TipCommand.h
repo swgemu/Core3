@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/callbacks/TipCommandSuiCallback.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class TipCommand: public QueueCommand {
 private:
@@ -36,10 +37,12 @@ private:
 		// We have a target, who is on-line, in range, with sufficient funds.
 		// Lock target player to prevent simultaneous tips to not register correctly.
 
-		player->subtractCashCredits(amount);
-
 		Locker clocker(targetPlayer, player);
-		targetPlayer->addCashCredits(amount, false); // FIXME: param notifyClient does nothing atm. in CreatureObject.idl:632
+		{
+			TransactionLog trx(player, targetPlayer, TrxCode::PLAYERTIP, amount, true);
+			player->subtractCashCredits(amount);
+			targetPlayer->addCashCredits(amount, true);
+		}
 
 		StringIdChatParameter tiptarget("base_player", "prose_tip_pass_target"); // %TT tips you %DI credits.
 		tiptarget.setDI(amount);

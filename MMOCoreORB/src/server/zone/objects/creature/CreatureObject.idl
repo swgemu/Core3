@@ -6,7 +6,7 @@ package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.chat.StringIdChatParameter;
-import server.zone.objects.group.GroupObject;
+include server.zone.objects.group.GroupObject;
 import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.player.PlayerObject;
@@ -654,16 +654,6 @@ class CreatureObject extends TangibleObject {
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = true);
 
 	/**
-	 * Updates the bank credits of this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified bank credits }
-	 * @param credits the new credits
-	 * @param notifyClient if set true the client will be updated with the changes
-	 */
-	@preLocked
-	public native void setBankCredits(int credits, boolean notifyClient = true);
-
-	/**
 	 * Adds the buff to the creature, activating it and sending packets if it is a player.
 	 * Buffs should never be added to the list without sending of packets.
 	 * @param buff The Buff object to add the creature.
@@ -802,16 +792,19 @@ class CreatureObject extends TangibleObject {
 	public native boolean isResuscitable();
 
 	@preLocked
-	public void addBankCredits(int credits, boolean notifyClient = true) {
-		int newCredits = getBankCredits() + credits;
-		setBankCredits(newCredits);
-	}
+	public native void addBankCredits(int credits, boolean notifyClient = true);
 
 	@preLocked
-	public void addCashCredits(int credits, boolean notifyClient = true) {
-		int newCredits = getCashCredits() + credits;
-		setCashCredits(newCredits);
-	}
+	public native void addCashCredits(int credits, boolean notifyClient = true);
+
+	@preLocked
+	public native void clearBankCredits(boolean notifyClient = true);
+
+	@preLocked
+	public native void clearCashCredits(boolean notifyClient = true);
+
+	@preLocked
+	public native void transferCredits(int cash, int bank, boolean notifyClient = true);
 
 	@preLocked
 	public native CreditObject getCreditObject();
@@ -822,27 +815,17 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void subtractCashCredits(int credits);
 
-	@dirty
-	public boolean verifyCashCredits(int credits) {
-		if (credits < 0)
-			return false;
-
-		if (getCashCredits() < credits)
-			return false;
-
-		return true;
-	}
+	@preLocked
+	public native boolean subtractCredits(int credits);
 
 	@dirty
-	public boolean verifyBankCredits(int credits) {
-		if (credits < 0)
-			return false;
+	public native boolean verifyCashCredits(int credits);
 
-		if (getBankCredits() < credits)
-			return false;
+	@dirty
+	public native boolean verifyBankCredits(int credits);
 
-		return true;
-	}
+	@dirty
+	public native boolean verifyCredits(int credits);
 
 	@dirty
 	public native boolean isDancing();
@@ -857,16 +840,6 @@ class CreatureObject extends TangibleObject {
 	public native boolean isEntertaining() {
 		return isDancing() || isPlayingMusic();
 	}
-
-	/**
-	 * Update the cash credits of this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified cash credits }
-	 * @param credits the new credits
-	 * @param notifyClient if set true the client will be updated with the changes
-	 */
-	@preLocked
-	public native void setCashCredits(int credits, boolean notifyClient = true);
 
 	/**
 	 * Sets the terrain negotiation variable, and updates it.
@@ -1098,6 +1071,9 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native boolean isHealableBy(CreatureObject object);
 
+	@dirty
+	public native boolean isInvulnerable();
+
 	/**
 	 * Evaluates if the bounty hunter has a mission with the target.
 	 * @param target the target.
@@ -1242,7 +1218,7 @@ class CreatureObject extends TangibleObject {
 	public boolean isOnline() {
 		PlayerObject ghost = getPlayerObject();
 
-		if (ghost == null)
+		if (!ghost)
 			return false;
 
 		return ghost.isOnline();
@@ -1250,22 +1226,22 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public boolean canTreatInjuries() {
-		return super.getPendingTask("injuryTreatment") == null;
+		return !super.getPendingTask("injuryTreatment");
 	}
 
 	@dirty
 	public boolean canTreatStates() {
-		return super.getPendingTask("stateTreatment") == null;
+		return !super.getPendingTask("stateTreatment");
 	}
 
 	@dirty
 	public boolean canTreatWounds() {
-		return super.getPendingTask("woundTreatment") == null;
+		return !super.getPendingTask("woundTreatment");
 	}
 
 	@dirty
 	public boolean canTreatConditions() {
-		return super.getPendingTask("conditionTreatment") == null;
+		return !super.getPendingTask("conditionTreatment");
 	}
 
 	@reference
@@ -1427,7 +1403,7 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public boolean hasDizzyEvent() {
-		return dizzyFallDownEvent != null;
+		return dizzyFallDownEvent;
 	}
 
 	@preLocked
@@ -1505,7 +1481,7 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public boolean isGrouped() {
-		return group != null;
+		return group;
 	}
 
 	@read
@@ -1592,7 +1568,7 @@ class CreatureObject extends TangibleObject {
 	public unsigned long getCreatureLinkID() {
 		CreatureObject strongRef = linkedCreature;
 
-		if (strongRef != null)
+		if (strongRef)
 			return strongRef.getObjectID();
 		else
 			return 0;
@@ -1731,7 +1707,7 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public unsigned long getWeaponID() {
-		if (weapon == null)
+		if (!weapon)
 			return 0;
 		else
 			return weapon.getObjectID();
@@ -1752,7 +1728,7 @@ class CreatureObject extends TangibleObject {
 	public int getGuildID() {
 		GuildObject strongRef = guild;
 
-		if (strongRef != null)
+		if (strongRef)
 			return strongRef.getGuildID();
 		else
 			return 0;
@@ -1762,7 +1738,7 @@ class CreatureObject extends TangibleObject {
 	public boolean isInGuild() {
 		GuildObject strongRef = guild;
 
-		return strongRef != null;
+		return strongRef;
 	}
 
 	@preLocked
@@ -1772,7 +1748,7 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public unsigned long getGroupID() {
-		if (group != null)
+		if (group)
 			return group.getObjectID();
 		else
 			return 0;

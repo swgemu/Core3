@@ -35,6 +35,7 @@
 
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -323,6 +324,23 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 	}
 
+	for (int i = 0; i < childCreatureObjects.size(); ++i) {
+		ManagedReference<CreatureObject*> child = childCreatureObjects.get(i);
+
+		if (child == nullptr)
+			continue;
+
+		Locker locker(child);
+
+		AiAgent* ai = child->asAiAgent();
+
+		if (ai != nullptr) {
+			ai->setRespawnTimer(0);
+		}
+
+		child->destroyObjectFromWorld(true);
+	}
+
 	childObjects.removeAll();
 	childCreatureObjects.removeAll();
 
@@ -337,7 +355,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 
 void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (!isStaticBuilding()) {
-		info("sending building object destroy");
+		debug("sending building object destroy");
 
 		SceneObjectImplementation::sendDestroyTo(player);
 	}
@@ -1148,16 +1166,22 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 		return;
 	}
 
-	player->subtractCashCredits(accessFee);
-
 	ManagedReference<CreatureObject*> owner = getOwnerCreatureObject();
+
+	TransactionLog trx(player, owner, TrxCode::ACCESSFEE, accessFee, true);
+	trx.setAutoCommit(false);
+
+	player->subtractCashCredits(accessFee);
 
 	if (owner != nullptr) {
 		Locker clocker(owner, player);
 		owner->addBankCredits(accessFee, true);
 	} else {
 		error("Unable to pay access fee credits to owner");
+		trx.errorMessage() << "Unable to pay access fee to owner";
 	}
+
+	trx.commit();
 
 	if (paidAccessList.contains(player->getObjectID()))
 		paidAccessList.drop(player->getObjectID());

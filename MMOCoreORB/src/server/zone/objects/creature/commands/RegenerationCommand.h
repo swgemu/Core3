@@ -47,14 +47,20 @@ public:
 			stringId.setDI(timeLeft);
 			player->sendSystemMessage(stringId);
 			return GENERALERROR;
-
 		}
 
 		// Grab the SkillMod for regeneration.
 		int regenMod = player->getSkillMod("private_innate_regeneration");
+		float regenFoodBuff = player->getSkillMod("enhanced_regen");
+		float regenBuffMod = 0;
 
-		// Base modifier of 175, multiplied by the skilMod of regenerate (buff food can increase this).
-		int regenValue = 175 * regenMod;
+		if (regenFoodBuff > 0) {
+			if (regenFoodBuff > 100)
+				regenFoodBuff = 100;
+			regenBuffMod = ((regenFoodBuff / 100 ) * 175);
+		}
+		// Base modifier of 175, multiplied by the species skill mod, and added to enhancement from Karkan food
+		int regenValue = 175 * regenMod + regenBuffMod;
 
 		ManagedReference<Buff*> regenBuff = new Buff(player, buffcrc, 300, BuffType::INNATE); // Duration of 5min
 
@@ -70,6 +76,7 @@ public:
 		player->addBuff(regenBuff);
 		player->showFlyText("combat_effects", "innate_regeneration", 0, 255, 0); // +Regeneration+
 		player->addCooldown("innate_regeneration", 3600 * 1000); // 1 hour reuse time.
+		player->removeSkillMod(SkillModManager::TEMPORARYMOD,"enhanced_regen",true);
 
 		return SUCCESS;
 	}

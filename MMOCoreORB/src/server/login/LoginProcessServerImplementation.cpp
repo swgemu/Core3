@@ -15,10 +15,6 @@ LoginProcessServerImplementation::LoginProcessServerImplementation(LoginServer* 
 }
 
 LoginProcessServerImplementation::~LoginProcessServerImplementation() {
-	if (loginPacketHandler != nullptr) {
-		delete loginPacketHandler;
-		loginPacketHandler = nullptr;
-	}
 }
 
 void LoginProcessServerImplementation::initialize() {

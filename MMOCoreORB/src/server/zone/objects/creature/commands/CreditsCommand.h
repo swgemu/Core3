@@ -6,6 +6,7 @@
 #define CREDITSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class CreditsCommand : public QueueCommand {
 public:
@@ -65,11 +66,13 @@ public:
 			if (action == "add") {
 
 				if (location.toLowerCase() == "cash") {
+					TransactionLog trx(TrxCode::CUSTOMERSERVICE, player, amount, true);
 					player->addCashCredits(amount);
 					success = true;
 				}
 
 				if (location.toLowerCase() == "bank") {
+					TransactionLog trx(TrxCode::CUSTOMERSERVICE, player, amount, false);
 					player->addBankCredits(amount);
 					success = true;
 				}
@@ -77,19 +80,25 @@ public:
 			} else if (action == "subtract") {
 
 				if (location.toLowerCase() == "cash") {
-					if (player->verifyCashCredits(amount))
+					if (player->verifyCashCredits(amount)) {
+						TransactionLog trx(player, TrxCode::CUSTOMERSERVICE, amount, true);
 						player->subtractCashCredits(amount);
-					else
-						player->setCashCredits(0, true);
+					} else {
+						TransactionLog trx(player, TrxCode::CUSTOMERSERVICE, player->getCashCredits(), true);
+						player->clearCashCredits();
+					}
 
 					success = true;
 				}
 
 				if (location.toLowerCase() == "bank") {
-					if (player->verifyBankCredits(amount))
+					if (player->verifyBankCredits(amount)) {
+						TransactionLog trx(player, TrxCode::CUSTOMERSERVICE, amount, false);
 						player->subtractBankCredits(amount);
-					else
-						player->setBankCredits(0, true);
+					} else {
+						TransactionLog trx(player, TrxCode::CUSTOMERSERVICE, player->getBankCredits(), false);
+						player->clearBankCredits();
+					}
 
 					success = true;
 				}

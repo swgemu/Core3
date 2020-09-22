@@ -5,9 +5,6 @@
 
 #include "server/db/ServerDatabase.h"
 #include "PlayerCreationManager.h"
-#include "ProfessionDefaultsInfo.h"
-#include "RacialCreationData.h"
-#include "HairStyleInfo.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/chat/ChatManager.h"
@@ -28,6 +25,7 @@
 #include "templates/customization/CustomizationIdManager.h"
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -412,8 +410,16 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	playerCreature->setClient(client);
 
 	// Set starting cash and starting bank
-	playerCreature->setCashCredits(startingCash, false);
-	playerCreature->setBankCredits(startingBank, false);
+	playerCreature->clearCashCredits(false);
+	playerCreature->clearBankCredits(false);
+	{
+		TransactionLog trx(TrxCode::CHARACTERCREATION, playerCreature, startingCash, true);
+		playerCreature->addCashCredits(startingCash, false);
+	}
+	{
+		TransactionLog trx(TrxCode::CHARACTERCREATION, playerCreature, startingBank, false);
+		playerCreature->addBankCredits(startingBank, false);
+	}
 
 	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
@@ -442,10 +448,6 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 				&playerTemplate->getStartingItems(), true);
 	}
 
-	// Set starting cash and starting bank
-	playerCreature->setCashCredits(startingCash, false);
-	playerCreature->setBankCredits(startingBank, false);
-
 	if (ghost != nullptr) {
 		int accID = client->getAccountID();
 		ghost->setAccountID(accID);
@@ -463,41 +465,18 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 				int accountPermissionLevel = playerAccount->getAdminLevel();
 				String accountName = playerAccount->getUsername();
 
-				if(accountPermissionLevel > 0 && (accountPermissionLevel == 9 || accountPermissionLevel == 10 || accountPermissionLevel == 12 || accountPermissionLevel == 15)) {
+				if (accountPermissionLevel > 0 && (accountPermissionLevel == 9 || accountPermissionLevel == 10 || accountPermissionLevel == 12 || accountPermissionLevel == 15)) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
-
-					/*
-					Reference<ShipControlDevice*> shipControlDevice = zoneServer->createObject(STRING_HASHCODE("object/intangible/ship/sorosuub_space_yacht_pcd.iff"), 1).castTo<ShipControlDevice*>();
-					//ShipObject* ship = (ShipObject*) server->createObject(STRING_HASHCODE("object/ship/player/player_sorosuub_space_yacht.iff"), 1);
-					Reference<ShipObject*> ship = zoneServer->createObject(STRING_HASHCODE("object/ship/player/player_basic_tiefighter.iff"), 1).castTo<ShipObject*>();
-
-					shipControlDevice->setControlledObject(ship);
-
-					if (!shipControlDevice->transferObject(ship, 4))
-						info("Adding of ship to device failed");
-
-					ManagedReference<SceneObject*> datapad = playerCreature->getSlottedObject("datapad");
-
-					if (datapad != nullptr) {
-						if (!datapad->transferObject(shipControlDevice, -1)) {
-							shipControlDevice->destroyObjectFromDatabase(true);
-						}
-					} else {
-						shipControlDevice->destroyObjectFromDatabase(true);
-						error("could not get datapad from player");
-					}
-					*/
 				}
 
 				if (accountPermissionLevel < 9) {
 					try {
 						StringBuffer query;
-						//query << "SELECT UNIX_TIMESTAMP(creation_date) FROM characters c WHERE galaxy_id = " << zoneServer.get()->getGalaxyID() << " AND account_id = " << client->getAccountID() << " ORDER BY creation_date desc;";
 						uint32 galaxyId = zoneServer.get()->getGalaxyID();
 						uint32 accountId = client->getAccountID();
 						query << "(SELECT UNIX_TIMESTAMP(c.creation_date) as t FROM characters as c WHERE c.account_id = " << accountId << " AND c.galaxy_id = " << galaxyId << " ORDER BY c.creation_date DESC) UNION (SELECT UNIX_TIMESTAMP(d.creation_date) FROM deleted_characters as d WHERE d.account_id = " << accountId << " AND d.galaxy_id = " << galaxyId << " ORDER BY d.creation_date DESC) ORDER BY t DESC LIMIT 1";
 
-						Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+						UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery(query));
 
 						if (res != nullptr && res->next()) {
 							uint32 sec = res->getUnsignedInt(0);
@@ -511,9 +490,8 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 								playerCreature->destroyPlayerCreatureFromDatabase(true);
 								return false;
 							}
-							//timeVal.se
 						}
-					} catch (DatabaseException& e) {
+					} catch (const DatabaseException& e) {
 						error(e.getMessage());
 					}
 
@@ -581,7 +559,7 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 				<< raceFile.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException& e) {
+	} catch (const DatabaseException& e) {
 		error(e.getMessage());
 	}
 
