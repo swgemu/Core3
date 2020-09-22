@@ -717,6 +717,61 @@ Vector3 PlanetManagerImplementation::getRandomSpawnPoint() {
 	return position;
 }
 
+Vector3 PlanetManagerImplementation::getInSightSpawnPoint(CreatureObject* creature, float minDistance, float maxDistance, float angle) {
+	Vector3 position = creature->getPosition();
+
+	do {
+		for (int i = 0; i < 10; i++) {
+			position = creature->getWorldCoordinate(minDistance + System::random(20), angle - System::random(2 * angle), true);
+
+			if (noInterferingObjects(creature, position)) {
+				return position;
+			}
+		}
+
+		minDistance += 10;
+		angle += 5;
+	} while (maxDistance <= 120);
+
+	return creature->getPosition();
+}
+
+bool PlanetManagerImplementation::noInterferingObjects(CreatureObject* creature, const Vector3& position) {
+	CloseObjectsVector* vec = creature->getCloseObjects();
+
+	if (vec == nullptr)
+		return true;
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	vec->safeCopyTo(closeObjects);
+
+	for (int j = 0; j < closeObjects.size(); j++) {
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(j));
+
+		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+
+		if (objectTemplate != nullptr) {
+			float radius = objectTemplate->getNoBuildRadius();
+
+			if (radius > 0) {
+				Vector3 objWorldPos = obj->getWorldPosition();
+
+				if (objWorldPos.squaredDistanceTo(position) < radius * radius) {
+					return false;
+				}
+			}
+
+			if (objectTemplate->isSharedStructureObjectTemplate()) {
+				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), position.getX(), position.getY(), 2)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
 void PlanetManagerImplementation::loadClientPoiData() {
 
 	Locker locker(&poiMutex);
