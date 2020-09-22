@@ -1,0 +1,66 @@
+package server.zone.managers.gcw.sessions;
+
+import engine.util.Facade;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.ai.AiAgent;
+import engine.core.Task;
+include engine.util.u3d.Vector3;
+
+class WildContrabandScanSession extends Facade {
+	private static final int CONTRABANDSCANCOOLDOWN = 90000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
+	private static final int TASKDELAY = 1000; // 1 s delay.
+
+	// Wild Contraband Scan Session States
+	private static final int LANDING = 0;
+	private static final int CLOSINGIN = 1;
+	private static final int INITIATESCAN = 2;
+	private static final int SCANDELAY = 3;
+	private static final int WAITFORSHUTTLE = 4;
+	private static final int TAKEOFF = 5;
+	private static final int FINISHED = 6;
+
+	private int scanState;
+
+	private int timeLeft;
+	private transient int currentWinningFactionDifficultyScaling;
+
+	@weakReference
+	private transient CreatureObject weakPlayer;
+
+	private transient AiAgent droid;
+
+	private transient Task wildContrabandScanTask;
+
+	@dereferenced
+	private Vector3 landingCoordinates;
+
+	public WildContrabandScanSession(CreatureObject player, int winningFactionDifficultyScaling) {
+		Logger.setLoggingName("WildContrabandScanSession");
+		Logger.setLogging(true);
+
+		weakPlayer = player;
+
+		scanState = LANDING;
+		timeLeft = 0;
+
+		currentWinningFactionDifficultyScaling = winningFactionDifficultyScaling;
+	}
+
+	public native int initializeSession();
+
+	public native int cancelSession();
+
+	public native int clearSession();
+
+	public native void runWildContrabandScan();
+
+	public native boolean scanPrerequisitesMet(CreatureObject player);
+
+	private native void landProbeDroid(CreatureObject player);
+
+	@local
+	@dereferenced
+	private native Vector3 getLandingCoordinates(CreatureObject player);
+
+}
