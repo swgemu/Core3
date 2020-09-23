@@ -150,7 +150,7 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 				client->sendErrorMessage("Login Error",
 					ConfigManager::instance()->getString("Core3.RegistrationMessage",
 						"Automatic registration is currently disabled. "
-						"Please contact the administrators of the server in order to get an authorized account."
+						"Please register at swgintended.herokuapp.com/register to create an account. You will receive an email to validate your account."
 					)
 				);
 			}
