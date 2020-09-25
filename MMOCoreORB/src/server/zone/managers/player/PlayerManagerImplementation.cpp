@@ -5834,7 +5834,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	//ServerDatabase::instance()->executeStatement(gcw_death_query);
 	UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(gcw_death_query.toString()));
 	uint32 deathID = result->getLastAffectedRow();
-	info(String::valueOf(deathID), true);
+	//info(String::valueOf(deathID), true);
 
 
 
