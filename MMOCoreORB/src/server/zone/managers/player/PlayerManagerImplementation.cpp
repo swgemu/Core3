@@ -5817,6 +5817,42 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	FrsManager* frsManager = server->getFrsManager();
 	int frsXpAdjustment = 0;
 	bool throttleOnly = true;
+	String deathFaction;
+	//uint32 deathID = 0;
+
+	if (player->isRebel())
+		deathFaction = "Rebel";
+	else if (player->isImperial())
+		deathFaction = "Imperial";
+	else
+		deathFaction = "Civilian";
+
+	StringBuffer gcw_death_query;
+	gcw_death_query << "INSERT INTO pvp_death(pvp_death_id, character_oid, faction, date) VALUES (NULL," << player->getObjectID() << ",'" << deathFaction << "',NULL);";
+
+//try {
+	//ServerDatabase::instance()->executeStatement(gcw_death_query);
+	UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(gcw_death_query.toString()));
+	uint32 deathID = result->getLastAffectedRow();
+	info(String::valueOf(deathID), true);
+
+
+
+	
+	//if (result == nullptr) {
+	//	error("ERROR INSERTING INTO DEATH INTO DATABASE!");
+	//} 
+	//if (result != nullptr && result->next()){
+	//	deathID = result->getLastAffectedRow();
+		//deathID = result->getInt(0);
+	//	info(String::valueOf(deathID), true);
+	//}
+
+//} catch (const Exception& e) {
+//	fatal(e.getMessage());
+	//}
+	
+
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
@@ -5840,6 +5876,13 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		if (player->getDistanceTo(attacker) > 80.f)
 			continue;
+
+		float damageContr = (float) entry->getTotalDamage() / totalDamage;
+
+
+		StringBuffer gcw_kill_query;
+		gcw_kill_query << "INSERT INTO pvp_kill(pvp_kill_id, pvp_death_id, damage, character_oid, date) VALUES (NULL," << deathID << "," << damageContr << "," << attacker->getObjectID() << ",NULL);";
+		ServerDatabase::instance()->executeStatement(gcw_kill_query.toString());
 
 		int curAttackerRating = attackerGhost->getPvpRating();
 
@@ -5882,6 +5925,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
+
 
 		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attacker, player)) {
 			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, false);
