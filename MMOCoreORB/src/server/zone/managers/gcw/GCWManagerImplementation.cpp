@@ -22,6 +22,7 @@
 #include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
 #include "server/zone/managers/gcw/tasks/CheckGCWTask.h"
+#include "server/zone/managers/gcw/tasks/CheckWildContrabandScanTask.h"
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
@@ -40,10 +41,12 @@
 #include "server/zone/objects/player/sui/callbacks/TurretControlSuiCallback.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
+#include "server/zone/managers/gcw/sessions/WildContrabandScanSession.h"
 
 void GCWManagerImplementation::initialize() {
 	loadLuaConfig();
@@ -51,6 +54,7 @@ void GCWManagerImplementation::initialize() {
 
 void GCWManagerImplementation::start() {
 	performGCWTasks(true);
+	performCheckWildContrabandScanTask();
 }
 
 void GCWManagerImplementation::loadLuaConfig() {
@@ -2592,6 +2596,37 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling());
 		contrabandScanSession->initializeSession();
 	}
+}
+
+void GCWManagerImplementation::performCheckWildContrabandScanTask() {
+	if (!crackdownScansEnabled) {
+		return;
+	}
+
+	Vector3 hitPoint = zone->getPlanetManager()->getRandomSpawnPoint();
+
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closePlayers = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+
+	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), 10240, closePlayers);
+
+	if (closePlayers->size() > 0) {
+		int playerIndex = int(System::random(closePlayers->size() - 1));
+		for (int i = 0; i < closePlayers->size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closePlayers->get(i).get());
+
+			CreatureObject* player = object->asCreatureObject();
+		}
+		SceneObject* object = cast<SceneObject*>(closePlayers->get(playerIndex).get());
+
+		CreatureObject* player = object->asCreatureObject();
+		if (player->checkCooldownRecovery("crackdown_scan")) {
+			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
+			wildContrabandScanSession->initializeSession();
+		}
+	}
+
+	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
+	task->schedule(10000);
 }
 
 void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
