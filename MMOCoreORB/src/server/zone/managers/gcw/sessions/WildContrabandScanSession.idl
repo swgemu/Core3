@@ -10,6 +10,7 @@ include engine.util.u3d.Vector3;
 class WildContrabandScanSession extends Facade {
 	private static final int CONTRABANDSCANCOOLDOWN = 90000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
 	private static final int TASKDELAY = 1000; // 1 s delay.
+	private static final int SCANTIME = 10; // 10 s scan time.
 
 	// Wild Contraband Scan Session States
 	private static final int LANDING = 0;
@@ -18,7 +19,8 @@ class WildContrabandScanSession extends Facade {
 	private static final int SCANDELAY = 3;
 	private static final int WAITFORSHUTTLE = 4;
 	private static final int TAKEOFF = 5;
-	private static final int FINISHED = 6;
+	private static final int CLEANUP = 6;
+	private static final int FINISHED = 7;
 
 	private int scanState;
 
@@ -62,5 +64,7 @@ class WildContrabandScanSession extends Facade {
 	@local
 	@dereferenced
 	private native Vector3 getLandingCoordinates(CreatureObject player);
+
+	private native void sendSystemMessage(CreatureObject player, final string messageName);
 
 }
