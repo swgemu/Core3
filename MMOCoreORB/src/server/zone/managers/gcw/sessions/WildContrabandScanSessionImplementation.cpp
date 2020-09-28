@@ -80,24 +80,51 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		if (timeLeft <= 0) {
 			droid = cast<AiAgent*>(player->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
 																						  landingCoordinates.getZ(), landingCoordinates.getY(), 0));
+			droid->activateLoad("stationary");
+			droid->setFollowObject(player);
 			scanState = INITIATESCAN;
 		}
 		break;
 	case INITIATESCAN:
+		sendSystemMessage(player, "dismount_imperial");
+
+		if (player->isRidingMount()) {
+			player->dismount();
+			sendSystemMessage(player, "dismount");
+		}
+		sendSystemMessage(player, "probe_scan");
+
+		timeLeft = SCANTIME;
 		scanState = SCANDELAY;
 		break;
 	case SCANDELAY:
-		scanState = WAITFORSHUTTLE;
+		if (timeLeft <= 0) {
+			sendSystemMessage(player, "probe_scan_negative");
+			scanState = WAITFORSHUTTLE;
+		}
 		break;
 	case WAITFORSHUTTLE:
 		scanState = TAKEOFF;
 		break;
-	case TAKEOFF: {
-		scanState = FINISHED;
-		Locker clocker(droid, player);
-		droid->destroyObjectFromWorld(true);
-	} break;
+	case TAKEOFF:
+		scanState = CLEANUP;
+		timeLeft = 10;
+		if (droid != nullptr) {
+			Locker clocker(droid, player);
+			droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
+		}
+		break;
+	case CLEANUP:
+		if (timeLeft <= 0) {
+			if (droid != nullptr) {
+				Locker clocker(droid, player);
+				droid->destroyObjectFromWorld(true);
+			}
+			scanState = FINISHED;
+		}
+		break;
 	default:
+		error("Incorrect state");
 		break;
 	}
 
@@ -127,4 +154,10 @@ Vector3 WildContrabandScanSessionImplementation::getLandingCoordinates(CreatureO
 	PlanetManager* planetManager = player->getZone()->getPlanetManager();
 
 	return planetManager->getInSightSpawnPoint(player, 30, 120, 15);
+}
+
+void WildContrabandScanSessionImplementation::sendSystemMessage(CreatureObject* player, const String& messageName) {
+	StringIdChatParameter systemMessage;
+	systemMessage.setStringId("@imperial_presence/contraband_search:" + messageName);
+	player->sendSystemMessage(systemMessage);
 }
