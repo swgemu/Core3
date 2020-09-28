@@ -61,7 +61,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		cancelSession();
 	}
 
-	Locker locker(player);
+	Locker plocker(player);
 
 	ManagedReference<Zone*> zone = player->getZone();
 
@@ -74,18 +74,41 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	switch (scanState) {
 	case LANDING:
 		landProbeDroid(player);
-		scanState = CLOSINGIN;
+		scanState = HEADTOPLAYER;
 		break;
-	case CLOSINGIN:
+	case HEADTOPLAYER:
 		if (timeLeft <= 0) {
-			droid = cast<AiAgent*>(player->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
-																						  landingCoordinates.getZ(), landingCoordinates.getY(), 0));
-			droid->activateLoad("stationary");
-			droid->setFollowObject(player);
-			scanState = INITIATESCAN;
+			weakDroid = cast<AiAgent*>(player->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
+																							  landingCoordinates.getZ(), landingCoordinates.getY(), 0));
+			AiAgent* droid = getDroid();
+			if (droid != nullptr) {
+				Locker clocker(droid, player);
+				droid->activateLoad("stationary");
+				droid->setFollowObject(player);
+				scanState = CLOSINGIN;
+				timeLeft = 30;
+			} else {
+				error("Probot is missing.");
+				scanState = FINISHED;
+			}
 		}
 		break;
-	case INITIATESCAN:
+	case CLOSINGIN:
+		if (timeLeft > 0) {
+			AiAgent* droid = getDroid();
+			if (droid != nullptr) {
+				if (player->getWorldPosition().distanceTo(droid->getWorldPosition()) < 32) {
+					scanState = INITIATESCAN;
+				}
+			} else {
+				error("Probot is missing.");
+				scanState = FINISHED;
+			}
+		} else {
+			scanState = TAKEOFF; // Probot has not reached the player in 30 s, take off again.
+		}
+		break;
+	case INITIATESCAN: {
 		sendSystemMessage(player, "dismount_imperial");
 
 		if (player->isRidingMount()) {
@@ -94,9 +117,18 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		}
 		sendSystemMessage(player, "probe_scan");
 
-		timeLeft = SCANTIME;
-		scanState = SCANDELAY;
-		break;
+		AiAgent* droid = getDroid();
+		if (droid != nullptr) {
+			Locker clocker(droid, player);
+			droid->showFlyText("imperial_presence/contraband_search", "probe_scan_fly", 255, 0, 0);
+			droid->setFollowObject(player);
+			timeLeft = SCANTIME;
+			scanState = SCANDELAY;
+		} else {
+			error("Probot is missing.");
+			scanState = FINISHED;
+		}
+	} break;
 	case SCANDELAY:
 		if (timeLeft <= 0) {
 			sendSystemMessage(player, "probe_scan_negative");
@@ -106,18 +138,22 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	case WAITFORSHUTTLE:
 		scanState = TAKEOFF;
 		break;
-	case TAKEOFF:
+	case TAKEOFF: {
 		scanState = CLEANUP;
 		timeLeft = 10;
+		AiAgent* droid = getDroid();
 		if (droid != nullptr) {
-			Locker clocker(droid, player);
+			Locker dlocker(droid);
 			droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
+		} else {
+			scanState = FINISHED; // Probot is destroyed.
 		}
-		break;
+	} break;
 	case CLEANUP:
 		if (timeLeft <= 0) {
+			AiAgent* droid = getDroid();
 			if (droid != nullptr) {
-				Locker clocker(droid, player);
+				Locker dlocker(droid);
 				droid->destroyObjectFromWorld(true);
 			}
 			scanState = FINISHED;
@@ -160,4 +196,8 @@ void WildContrabandScanSessionImplementation::sendSystemMessage(CreatureObject* 
 	StringIdChatParameter systemMessage;
 	systemMessage.setStringId("@imperial_presence/contraband_search:" + messageName);
 	player->sendSystemMessage(systemMessage);
+}
+
+AiAgent* WildContrabandScanSessionImplementation::getDroid() {
+	return weakDroid.get();
 }
