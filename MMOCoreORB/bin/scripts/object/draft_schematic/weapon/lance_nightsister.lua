@@ -82,7 +82,7 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
 			{"strength", 40},
 			{"duration", 1200},
 			{"potency", 70},
-			{"uses", 9000}
+			{"uses", 500}
 		},
 		{
 			{"type", 2}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
@@ -90,7 +90,7 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
 			{"strength", 40},
 			{"duration", 1200},
 			{"potency", 70},
-			{"uses", 9000}
+			{"uses", 500}
 		}
 	},
 

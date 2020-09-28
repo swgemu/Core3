@@ -40,7 +40,7 @@ jagged_vibroblade = {
 		{"strength", 75, 75},
 		{"duration", 80, 80},
 		{"potency", 60, 60},
-		{"uses", 9999, 9999}
+		{"uses", 500, 500}
 	}
 
 }

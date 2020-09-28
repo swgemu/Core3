@@ -79,10 +79,10 @@ object_draft_schematic_weapon_pistol_republic_blaster_quest = object_draft_schem
 		{
 			{"type", 4}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
 			{"attribute", 0}, -- See CreatureAttributes.h in src for numbers.
-			{"strength", 105},
+			{"strength", 75},
 			{"duration", 80},
 			{"potency", 75},
-			{"uses", 9000}
+			{"uses", 500}
 		}
 	},
 }

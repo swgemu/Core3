@@ -80,10 +80,10 @@ object_draft_schematic_weapon_rifle_light_blaster_e11_carbine_quest = object_dra
 		{
 			{"type", 4}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
 			{"attribute", 0}, -- See CreatureAttributes.h in src for numbers.
-			{"strength", 150},
+			{"strength", 70},
 			{"duration", 60},
 			{"potency", 75},
-			{"uses", 9000}
+			{"uses", 500}
 		}
 	},
 

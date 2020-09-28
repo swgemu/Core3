@@ -38,7 +38,7 @@ gamorrean_battleaxe_quest = {
 		{"strength", 50, 50},
 		{"duration", 400, 400},
 		{"potency", 60, 60},
-		{"uses", 9999, 9999}
+		{"uses", 500, 500}
 	}
 
 }

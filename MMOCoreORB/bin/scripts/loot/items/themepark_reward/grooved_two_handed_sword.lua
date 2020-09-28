@@ -37,10 +37,10 @@ grooved_two_handed_sword = {
 	-- staticDotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
 	staticDotValues = {
 		{"attribute", 0, 0}, -- See CreatureAttributes.h in src for numbers.
-		{"strength", 125, 125},
+		{"strength", 80, 80},
 		{"duration", 60, 60},
 		{"potency", 50, 50},
-		{"uses", 9999, 9999}
+		{"uses", 500, 500}
 	}
 
 }
