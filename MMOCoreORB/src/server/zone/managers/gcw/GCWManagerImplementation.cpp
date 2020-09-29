@@ -9,9 +9,11 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
@@ -2627,6 +2629,57 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(10000);
+}
+
+
+bool GCWManagerImplementation::isContraband(SceneObject* item) {
+	if (item->isTangibleObject()) {
+		ManagedReference<TangibleObject*> tangibleItem = item->asTangibleObject();
+		if (tangibleItem->isSliced()) {
+			return true;
+		} else if (tangibleItem->isConsumable()) {
+			ManagedReference<Consumable*> consumable = tangibleItem.castTo<Consumable*>();
+			if (consumable->isSpice()) {
+				return true;
+			}
+		} else if (tangibleItem->isFactoryCrate()) {
+			ManagedReference<FactoryCrate*> crate = tangibleItem.castTo<FactoryCrate*>();
+			ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+			return isContraband(prototype.castTo<SceneObject*>());
+		}
+	}
+	return false;
+}
+
+int GCWManagerImplementation::countContrabandItemsInContainer(SceneObject* container) {
+	int numberOfContrabandItems = 0;
+	int containerSize = container->getContainerObjectsSize();
+	if (containerSize > 1) {
+		for (int i = 0; i < containerSize; i++) {
+			numberOfContrabandItems += countContrabandItemsInContainer(container->getContainerObject(i));
+		}
+	}
+	if (isContraband(container)) {
+		numberOfContrabandItems++;
+	}
+	return numberOfContrabandItems;
+}
+
+int GCWManagerImplementation::countContrabandItems(CreatureObject* player) {
+	VectorMap<String, ManagedReference<SceneObject*>> slots;
+	player->getSlottedObjects(slots);
+
+	int numberOfSlots = slots.size();
+	int numberOfContrabandItems = 0;
+
+	for (int i = 0; i < numberOfSlots; i++) {
+		VectorMapEntry<String, ManagedReference<SceneObject*>> container = slots.elementAt(i);
+		if (container.getKey() != "bank" && container.getKey() != "datapad") {
+			numberOfContrabandItems += countContrabandItemsInContainer(container.getValue());
+		}
+	}
+
+	return numberOfContrabandItems;
 }
 
 void GCWManagerImplementation::spawnBaseTerminals(BuildingObject* bldg) {
