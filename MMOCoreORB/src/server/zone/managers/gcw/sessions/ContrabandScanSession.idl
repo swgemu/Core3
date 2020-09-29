@@ -13,15 +13,12 @@ class ContrabandScanSession extends Facade {
 	private static final int SCANINITIATECHANCE = 8; // 1/8 chance to initiate scan - 12.5 % chance.
 	private static final int TASKDELAY = 1000; // 1 s delay.
 	private static final int IMMEDIATELY = 1; // Minimum delay.
-	private static final int PLAYERSCANCOOLDOWN = 90000; // 90 s cooldown - Should be set to a much higher value when all functionality has been verified.
 	private static final int SCANTIME = 10; // 10 iterations = 10 s
 	private static final int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
-	private static final int RANAWAYFACTIONFINE = 100;
 	private static final int RECOGNIZEDFACTIONRANK = 9;
 	private static final int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
 	private static final int RANKDETECTIONCHANCEMODIFIER = 3; // Each faction rank increases the percentage chance to detect opposite faction by this amount.
 	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
-	private static final int CONTRABANDFINEPERITEM = 10000;
 	private static final int WAITFORPAYFINEANSWERTIMEOUT = 60; // 60 iterations = 60 s timeout.
 	private static final int SMUGGLERAVOIDSCANCHANCE = 80; // 80 percent chance for smugglers to completly avoid all scan related detections.
 	private static final int JEDIAVOIDDETECTIONBASECHANCE = 80; // 80 percent base chance for avoiding being detected as a jedi after all other scan avoidance checks.

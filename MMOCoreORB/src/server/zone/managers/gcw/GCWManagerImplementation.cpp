@@ -90,6 +90,9 @@ void GCWManagerImplementation::loadLuaConfig() {
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
+	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
+	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
+	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {

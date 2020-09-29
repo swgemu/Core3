@@ -25,7 +25,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 		wildContrabandScanTask->schedule(TASKDELAY);
 	}
 
-	player->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+	player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 
 	if (player->getActiveSession(SessionFacadeType::WILDCONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
