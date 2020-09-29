@@ -14,13 +14,14 @@ class WildContrabandScanSession extends Facade {
 
 	// Wild Contraband Scan Session States
 	private static final int LANDING = 0;
-	private static final int CLOSINGIN = 1;
-	private static final int INITIATESCAN = 2;
-	private static final int SCANDELAY = 3;
-	private static final int WAITFORSHUTTLE = 4;
-	private static final int TAKEOFF = 5;
-	private static final int CLEANUP = 6;
-	private static final int FINISHED = 7;
+	private static final int HEADTOPLAYER = 1;
+	private static final int CLOSINGIN = 2;
+	private static final int INITIATESCAN = 3;
+	private static final int SCANDELAY = 4;
+	private static final int WAITFORSHUTTLE = 5;
+	private static final int TAKEOFF = 6;
+	private static final int CLEANUP = 7;
+	private static final int FINISHED = 8;
 
 	private int scanState;
 
@@ -30,7 +31,7 @@ class WildContrabandScanSession extends Facade {
 	@weakReference
 	private transient CreatureObject weakPlayer;
 
-	private transient AiAgent droid;
+	private transient AiAgent weakDroid;
 
 	private transient Task wildContrabandScanTask;
 
@@ -66,5 +67,6 @@ class WildContrabandScanSession extends Facade {
 	private native Vector3 getLandingCoordinates(CreatureObject player);
 
 	private native void sendSystemMessage(CreatureObject player, final string messageName);
+	private native AiAgent getDroid();
 
 }
