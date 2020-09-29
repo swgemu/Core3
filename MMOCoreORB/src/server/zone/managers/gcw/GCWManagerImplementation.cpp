@@ -2621,9 +2621,11 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 		SceneObject* object = cast<SceneObject*>(closePlayers->get(playerIndex).get());
 
 		CreatureObject* player = object->asCreatureObject();
-		if (player->checkCooldownRecovery("crackdown_scan")) {
-			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
-			wildContrabandScanSession->initializeSession();
+		if (player->checkCooldownRecovery("crackdown_scan") && player->getParentID() == 0) {
+			if (crackdownScanPrivilegedPlayers || (player->isPlayerObject() && !player->getPlayerObject()->isPrivileged())) {
+				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
+				wildContrabandScanSession->initializeSession();
+			}
 		}
 	}
 
