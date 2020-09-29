@@ -51,6 +51,10 @@ crackdownScansEnabled = true
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
 crackdownScanPrivilegedPlayers = false
+--crackdownPlayerScanCooldown = 24 * 60 * 60  -- In seconds
+crackdownPlayerScanCooldown = 2 * 60  -- In seconds, remove this row when testing is completed.
+crackdownContrabandFineCredits = 10000
+crackdownContrabandFineFactionPoints = 100
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 

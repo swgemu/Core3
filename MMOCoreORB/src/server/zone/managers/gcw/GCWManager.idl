@@ -75,6 +75,9 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int winnerDifficultyScaling;
 	private transient boolean crackdownScansEnabled;
 	private transient boolean crackdownScanPrivilegedPlayers;
+	private transient int crackdownPlayerScanCooldown;
+	private transient int crackdownContrabandFineCredits;
+	private transient int crackdownContrabandFineFactionPoints;
 
 	public transient unsigned long gcwCheckTimer;
 	public transient int vulnerabilityDuration;
@@ -261,6 +264,9 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
 	public native void performCheckWildContrabandScanTask();
+	private native boolean isContraband(SceneObject item);
+	private native int countContrabandItemsInContainer(SceneObject container);
+	public native int countContrabandItems(CreatureObject player);
 
 	private native void spawnBaseTerminals(BuildingObject building);
 	private native void despawnBaseTerminals(BuildingObject building);
@@ -408,6 +414,24 @@ class GCWManager extends ManagedService implements Logger {
 	@read
 	public int getWinningFactionDifficultyScaling() {
 		return winnerDifficultyScaling;
+	}
+
+	@local
+	@read
+	public int getCrackdownPlayerScanCooldown() {
+		return crackdownPlayerScanCooldown;
+	}
+
+	@local
+	@read
+	public int getCrackdownContrabandFineCredits() {
+		return crackdownContrabandFineCredits;
+	}
+
+	@local
+	@read
+	public int getCrackdownContrabandFineFactionPoints() {
+		return crackdownContrabandFineFactionPoints;
 	}
 
 	@local

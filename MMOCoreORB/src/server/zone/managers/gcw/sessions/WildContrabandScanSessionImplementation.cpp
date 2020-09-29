@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/sessions/WildContrabandScanSession.h"
 #include "server/zone/managers/gcw/tasks/WildContrabandScanTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -24,7 +25,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 		wildContrabandScanTask->schedule(TASKDELAY);
 	}
 
-	player->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+	player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 
 	if (player->getActiveSession(SessionFacadeType::WILDCONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
@@ -131,8 +132,18 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	} break;
 	case SCANDELAY:
 		if (timeLeft <= 0) {
-			sendSystemMessage(player, "probe_scan_negative");
-			scanState = WAITFORSHUTTLE;
+			int numberOfContrabandItems = 0;
+			GCWManager* gcwManager = zone->getGCWManager();
+			if (gcwManager != nullptr) {
+				numberOfContrabandItems = gcwManager->countContrabandItems(player);
+			}
+			if (numberOfContrabandItems > 0) {
+				sendSystemMessage(player, "probe_scan_positive");
+				scanState = TAKEOFF;
+			} else {
+				sendSystemMessage(player, "probe_scan_negative");
+				scanState = TAKEOFF;
+			}
 		}
 		break;
 	case WAITFORSHUTTLE:
