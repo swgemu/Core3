@@ -488,7 +488,7 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		addConditionDamage(prototype, craftingValues);
 
 	delete craftingValues;
-	/*// DEDA FIX
+	// Attachment Names in Inventory
 	if(prototype->isAttachment()){
 		Attachment* attachment = cast<Attachment*>( prototype.get());
 		HashTable<String, int>* mods = attachment->getSkillMods();
@@ -515,7 +515,8 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 					prototype->setCustomObjectName(prototype->getDisplayedName() + " (" + String::valueOf(value) + ") AA",false);
 				}
 			}
-		}*/
+		}
+	}
 
 	return prototype;
 }
