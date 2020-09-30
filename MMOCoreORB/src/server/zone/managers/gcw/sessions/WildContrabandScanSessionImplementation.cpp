@@ -8,7 +8,9 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/sessions/WildContrabandScanSession.h"
+#include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
 #include "server/zone/managers/gcw/tasks/WildContrabandScanTask.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -139,7 +141,20 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			}
 			if (numberOfContrabandItems > 0) {
 				sendSystemMessage(player, "probe_scan_positive");
-				scanState = TAKEOFF;
+				scanState = WAITFORSHUTTLE;
+
+				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
+				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
+																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+				if (spawnPoint != nullptr) {
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "", *spawnPoint->getPosition(),
+																						  *spawnPoint->getDirection(), false);
+					lambdaTask->schedule(1);
+				} else {
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "", landingCoordinates,
+																						  Quaternion(Vector3(0, 1, 0), player->getDirection()->getRadians() + 3.14f), false);
+					lambdaTask->schedule(1);
+				}
 			} else {
 				sendSystemMessage(player, "probe_scan_negative");
 				scanState = TAKEOFF;

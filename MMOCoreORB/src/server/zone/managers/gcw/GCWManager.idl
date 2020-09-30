@@ -263,6 +263,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native float getGCWDiscount(CreatureObject creature);
 
 	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
+	public native void startContrabandScanSession(AiAgent scanner, CreatureObject player, boolean enforced);
 	public native void performCheckWildContrabandScanTask();
 	private native boolean isContraband(SceneObject item);
 	private native int countContrabandItemsInContainer(SceneObject container);

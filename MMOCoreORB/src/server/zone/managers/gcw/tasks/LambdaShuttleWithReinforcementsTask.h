@@ -18,18 +18,20 @@
 class LambdaShuttleWithReinforcementsTask : public Task {
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
-	Vector<WeakReference<CreatureObject*>> containmentTeam;
+	Vector<WeakReference<AiAgent*>> containmentTeam;
 	int difficulty;
 	int spawnNumber;
 	String chatMessageId;
 	Vector3 spawnPosition;
 	Quaternion spawnDirection;
+	bool attack;
+	int closingInTime;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int TIMETILLSHUTTLELANDING = 100;
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
-	const int CLEANUPTIME = 30000;
+	const int CLEANUPTIME = 300000;
 	const int CLEANUPRESCHEDULETIME = 1000;
 
 	const int TROOPSSPAWNPERDIFFICULTY = 5;
@@ -75,6 +77,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		LAND,
 		SPAWNTROOPS,
 		TAKEOFF,
+		CLOSINGIN,
 		CLEANUP,
 		FINISHED
 	};
@@ -98,14 +101,20 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			npc->activateLoad("");
-			CombatManager::instance()->startCombat(npc, player);
-			containmentTeam.add(npc);
+			if (attack) {
+				CombatManager::instance()->startCombat(npc, player);
 
-			if (spawnNumber == 0) {
-				StringIdChatParameter chatMessage;
-				chatMessage.setStringId(chatMessageId);
-				zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+				if (spawnNumber == 0) {
+					StringIdChatParameter chatMessage;
+					chatMessage.setStringId(chatMessageId);
+					zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+				}
+			} else if (spawnNumber == 0) {
+				npc->setFollowObject(player);
+			} else {
+				npc->setFollowObject(containmentTeam.get(Math::max(spawnNumber - 2, 0)).get());
 			}
+			containmentTeam.add(npc);
 		}
 	}
 
@@ -150,8 +159,29 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 
-		reschedule(CLEANUPTIME);
-		state = CLEANUP;
+		if (attack) {
+			reschedule(CLEANUPTIME);
+			state = CLEANUP;
+		} else {
+			reschedule(SPAWNDELAY);
+			state = CLOSINGIN;
+			closingInTime = 180;
+		}
+	}
+
+	void closingInOnPlayer(CreatureObject* player) {
+		AiAgent* npc = containmentTeam.get(0).get();
+		if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16) {
+			player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
+
+			reschedule(CLEANUPTIME);
+			state = CLEANUP;
+		} else if (closingInTime > 0) {
+			reschedule(SPAWNDELAY);
+		} else {
+			reschedule(SPAWNDELAY);
+			state = CLEANUP;
+		}
 	}
 
 	void cleanUp(SceneObject* lambdaShuttle) {
@@ -160,7 +190,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		bool rescheduleTask = false;
 
 		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
-			ManagedReference<CreatureObject*> npc = containmentTeam.get(i).get();
+			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
 			if (npc != nullptr) {
 				Locker npcLock(npc);
 				if (npc->isInCombat()) {
@@ -201,7 +231,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack) {
 		weakPlayer = player;
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
@@ -220,6 +250,7 @@ public:
 		spawnNumber = 0;
 		spawnPosition = position;
 		spawnDirection = direction;
+		this->attack = attack;
 	}
 
 	void run() {
@@ -249,6 +280,9 @@ public:
 			break;
 		case TAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
+			break;
+		case CLOSINGIN:
+			closingInOnPlayer(player);
 			break;
 		case CLEANUP:
 			cleanUp(lambdaShuttle);
