@@ -272,7 +272,7 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 }
 
 void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureObject* player) {
-	if (System::random(SCANINITIATECHANCE) >= SCANINITIATECHANCE - 1) { // 1 in SCANINITIATECHANCE chance to initiate the scan.
+	if (System::random(SCANINITIATECHANCE) >= SCANINITIATECHANCE - 1 || enforcedScan) { // 1 in SCANINITIATECHANCE chance to initiate the scan.
 		scanState = INITIATESCAN;
 		player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 	} else {
@@ -295,7 +295,7 @@ void ContrabandScanSessionImplementation::initiateScan(Zone* zone, AiAgent* scan
 }
 
 void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiAgent* scanner, CreatureObject* player) {
-	scanState = JEDIMINDTRICKPLAYERCHAT;
+	scanState = SCANDELAY;
 	unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
 	if (scanner->getFaction() == player->getFaction()) {
 		bool recognized = false;
@@ -556,7 +556,7 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
 	if (spawnPoint != nullptr) {
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage,
-																			  *spawnPoint->getPosition(), *spawnPoint->getDirection());
+																			  *spawnPoint->getPosition(), *spawnPoint->getDirection(), true);
 		lambdaTask->schedule(IMMEDIATELY);
 	} else {
 		StringBuffer errorMessage;

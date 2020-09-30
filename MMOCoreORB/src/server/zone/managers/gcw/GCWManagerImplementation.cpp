@@ -2598,9 +2598,13 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 	}
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
-		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling());
-		contrabandScanSession->initializeSession();
+		startContrabandScanSession(scanner, player, false);
 	}
+}
+
+void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, CreatureObject* player, bool enforced) {
+	ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling(), enforced);
+	contrabandScanSession->initializeSession();
 }
 
 void GCWManagerImplementation::performCheckWildContrabandScanTask() {

@@ -43,7 +43,7 @@ public:
 			Quaternion direction;
 			direction.setHeadingDirection(creature->getDirection()->getRadians());
 			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction);
+				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction, false);
 			lambdaTask->schedule(1);
 		} else {
 			String arg = "";
@@ -59,7 +59,7 @@ public:
 						Quaternion direction;
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
 						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction);
+							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, false);
 						lambdaTask->schedule(1);
 						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() + ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
 						creature->sendSystemMessage(text);
