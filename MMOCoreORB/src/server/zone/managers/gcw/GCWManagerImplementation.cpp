@@ -2616,16 +2616,11 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 	if (closePlayers->size() > 0) {
 		int playerIndex = int(System::random(closePlayers->size() - 1));
-		for (int i = 0; i < closePlayers->size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closePlayers->get(i).get());
-
-			CreatureObject* player = object->asCreatureObject();
-		}
 		SceneObject* object = cast<SceneObject*>(closePlayers->get(playerIndex).get());
 
 		CreatureObject* player = object->asCreatureObject();
 		if (player->checkCooldownRecovery("crackdown_scan") && player->getParentID() == 0) {
-			if (crackdownScanPrivilegedPlayers || (player->isPlayerObject() && !player->getPlayerObject()->isPrivileged())) {
+			if (crackdownScanPrivilegedPlayers || (player->getPlayerObject() != nullptr && !player->getPlayerObject()->isPrivileged())) {
 				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
 				wildContrabandScanSession->initializeSession();
 			}
