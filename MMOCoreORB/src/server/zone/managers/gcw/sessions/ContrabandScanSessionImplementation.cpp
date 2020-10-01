@@ -83,7 +83,7 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 
 	ManagedReference<Zone*> zone = scanner->getZone();
 
-	if (zone == nullptr) {
+	if (zone == nullptr || zone->getGCWManager() == nullptr) {
 		cancelSession();
 	}
 
