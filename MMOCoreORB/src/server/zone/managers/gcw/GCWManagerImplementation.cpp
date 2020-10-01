@@ -2621,9 +2621,9 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 	if (closePlayers->size() > 0) {
 		int playerIndex = int(System::random(closePlayers->size() - 1));
 		SceneObject* object = cast<SceneObject*>(closePlayers->get(playerIndex).get());
-
 		CreatureObject* player = object->asCreatureObject();
-		if (player->checkCooldownRecovery("crackdown_scan") && player->getParentID() == 0) {
+
+		if (player->checkCooldownRecovery("crackdown_scan") && player->getParentID() == 0 && zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) {
 			if (crackdownScanPrivilegedPlayers || (player->getPlayerObject() != nullptr && !player->getPlayerObject()->isPrivileged())) {
 				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
 				wildContrabandScanSession->initializeSession();

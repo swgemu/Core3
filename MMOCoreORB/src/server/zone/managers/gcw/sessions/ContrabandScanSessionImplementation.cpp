@@ -54,6 +54,11 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 int ContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
+	ManagedReference<AiAgent*> scanner = weakScanner.get();
+
+	if (scanner != nullptr && enforcedScan) {
+		scanner->leash();
+	}
 
 	if (player != nullptr) {
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
