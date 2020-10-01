@@ -18,10 +18,9 @@ class WildContrabandScanSession extends Facade {
 	private static final int CLOSINGIN = 2;
 	private static final int INITIATESCAN = 3;
 	private static final int SCANDELAY = 4;
-	private static final int WAITFORSHUTTLE = 5;
-	private static final int TAKEOFF = 6;
-	private static final int CLEANUP = 7;
-	private static final int FINISHED = 8;
+	private static final int TAKEOFF = 5;
+	private static final int TAKINGOFF = 6;
+	private static final int FINISHED = 7;
 
 	private int scanState;
 

@@ -46,6 +46,12 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 int WildContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
+	AiAgent* droid = getDroid();
+	if (droid != nullptr) {
+		Locker dlocker(droid);
+		droid->destroyObjectFromWorld(true);
+	}
+
 	if (player != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
 	}
@@ -135,7 +141,8 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			error("Probot is missing.");
 			scanState = FINISHED;
 		}
-	} break;
+	}
+		break;
 	case SCANDELAY:
 		if (timeLeft <= 0) {
 			int numberOfContrabandItems = 0;
@@ -145,7 +152,8 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			}
 			if (numberOfContrabandItems > 0) {
 				sendSystemMessage(player, "probe_scan_positive");
-				scanState = WAITFORSHUTTLE;
+				scanState = TAKEOFF;
+				timeLeft = 45;
 
 				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
 				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
@@ -162,30 +170,31 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			} else {
 				sendSystemMessage(player, "probe_scan_negative");
 				scanState = TAKEOFF;
+				timeLeft = 5;
 			}
-		}
-		break;
-	case WAITFORSHUTTLE:
-		scanState = TAKEOFF;
-		break;
-	case TAKEOFF: {
-		scanState = CLEANUP;
-		timeLeft = 10;
-		AiAgent* droid = getDroid();
-		if (droid != nullptr) {
-			Locker dlocker(droid);
-			droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
-		} else {
-			scanState = FINISHED; // Probot is destroyed.
-		}
-	} break;
-	case CLEANUP:
-		if (timeLeft <= 0) {
 			AiAgent* droid = getDroid();
 			if (droid != nullptr) {
 				Locker dlocker(droid);
-				droid->destroyObjectFromWorld(true);
+				droid->leash();
+				droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
 			}
+		}
+		break;
+	case TAKEOFF:
+		if (timeLeft <= 0) {
+			scanState = TAKINGOFF;
+			timeLeft = 7;
+			AiAgent* droid = getDroid();
+			if (droid != nullptr) {
+				Locker dlocker(droid);
+				droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
+			} else {
+				scanState = FINISHED; // Probot is destroyed.
+			}
+		}
+		break;
+	case TAKINGOFF:
+		if (timeLeft <= 0) {
 			scanState = FINISHED;
 		}
 		break;
