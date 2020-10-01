@@ -93,7 +93,7 @@ veteranRewards = {
 		{templateFile = "object/tangible/veteran_reward/frn_vet_x_wing_toy.iff", milestone=180, oneTime=false, description="@veteran_new:mini_xwing"},
 
 		-- 270 Day Rewards
-		{templateFile = "object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff", milestone=270, oneTime=true},
+		--{templateFile = "object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff", milestone=270, oneTime=true},
 		{templateFile = "object/tangible/wearables/goggles/goggles_s01.iff", milestone=270, oneTime=false, description="Special Edition Goggles Style 1"},
 		{templateFile = "object/tangible/wearables/goggles/goggles_s02.iff", milestone=270, oneTime=false, description="Special Edition Goggles Style 2"},
 		{templateFile = "object/tangible/wearables/goggles/goggles_s03.iff", milestone=270, oneTime=false, description="Special Edition Goggles Style 3"},
