@@ -20,6 +20,10 @@
 int WildContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
+	if (player == nullptr || player->getZone() == nullptr || player->getZone()->getGCWManager() == nullptr) {
+		return false;
+	}
+
 	if (wildContrabandScanTask == nullptr) {
 		wildContrabandScanTask = new WildContrabandScanTask(player);
 	}
