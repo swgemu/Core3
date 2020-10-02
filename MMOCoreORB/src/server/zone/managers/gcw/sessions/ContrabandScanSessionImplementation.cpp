@@ -56,6 +56,9 @@ int ContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
 
+	Locker locker(player);
+	Locker crossLocker(scanner, player);
+
 	if (scanner != nullptr && enforcedScan) {
 		scanner->leash();
 	}
@@ -79,12 +82,12 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
+	Locker locker(player);
+	Locker crossLocker(scanner, player);
+
 	if (!scanPrerequisitesMet(scanner, player)) {
 		cancelSession();
 	}
-
-	Locker locker(player);
-	Locker crossLocker(scanner, player);
 
 	ManagedReference<Zone*> zone = scanner->getZone();
 
