@@ -339,6 +339,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			String landingMessage = getFactionStringId(scanner, "containment_team_imperial", "containment_team_rebel");
 			callInLambdaShuttle(scanner, player, currentWinningFactionDifficultyScaling, landingMessage);
 
+			enforcedScan = false;
 			CombatManager::instance()->startCombat(scanner, player);
 
 			scanState = FINISHED;
@@ -463,6 +464,7 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 		callInLambdaShuttle(scanner, player, JEDIREINFORCEMENTDIFFICULTY, landingMessage);
 
 		addCrackdownTef(scanner, player);
+		enforcedScan = false;
 		CombatManager::instance()->startCombat(scanner, player);
 
 		scanState = FINISHED;
