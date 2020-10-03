@@ -59,11 +59,11 @@ class WildContrabandScanSession extends Facade {
 
 	public native boolean scanPrerequisitesMet(CreatureObject player);
 
-	private native void landProbeDroid(CreatureObject player);
+	private native void landProbeDroid(Zone zone, CreatureObject player);
 
 	@local
 	@dereferenced
-	private native Vector3 getLandingCoordinates(CreatureObject player);
+	private native Vector3 getLandingCoordinates(Zone zone, CreatureObject player);
 
 	private native void sendSystemMessage(CreatureObject player, final string messageName);
 	private native AiAgent getDroid();
