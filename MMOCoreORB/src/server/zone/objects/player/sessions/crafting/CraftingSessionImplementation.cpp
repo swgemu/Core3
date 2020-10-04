@@ -290,29 +290,6 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 		return;
 	}
 
-	SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(draftschematic->getTanoCRC());
-	if (templateData != nullptr) {
-		std::vector<sys::lang::String> denylist{
-			"armor_composite_bicep_l",
-			"armor_composite_bicep_r",
-			"armor_composite_boots",
-			"armor_composite_bracer_l",
-			"armor_composite_bracer_r",
-			"armor_composite_chest_plate",
-			"armor_composite_gloves",
-			"armor_composite_helmet",
-			"armor_composite_leggings",
-			"armor_ubese_helmet"
-		};
-
-		if (std::find(std::begin(denylist), std::end(denylist), templateData->getTemplateFileName()) != std::end(denylist)) {
-			crafter->sendSystemMessage("This draft schematic is temporarily disabled.");
-			closeCraftingWindow(0, false);
-			cancelSession();
-			return;
-		}
-	}
-
 	clearSession();
 
 	if (crafterGhost != nullptr && crafterGhost->getDebug()) {
