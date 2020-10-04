@@ -171,7 +171,10 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	void closingInOnPlayer(CreatureObject* player) {
 		AiAgent* npc = containmentTeam.get(0).get();
-		if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16) {
+		if (npc == nullptr) {
+			reschedule(CLEANUPTIME);
+			state = CLEANUP;
+		} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
 			player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
 
 			reschedule(CLEANUPTIME);
