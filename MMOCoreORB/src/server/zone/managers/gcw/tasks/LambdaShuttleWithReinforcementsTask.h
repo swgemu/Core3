@@ -26,6 +26,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	Quaternion spawnDirection;
 	bool attack;
 	int closingInTime;
+	int timeToDespawnLambdaShuttle;
+	int cleanUpTime;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int TIMETILLSHUTTLELANDING = 100;
@@ -158,55 +160,53 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		timeToDespawnLambdaShuttle = 17;
 
 		if (attack) {
-			reschedule(CLEANUPTIME);
 			state = CLEANUP;
 		} else {
-			reschedule(SPAWNDELAY);
 			state = CLOSINGIN;
-			closingInTime = 180;
 		}
+		reschedule(CLEANUPRESCHEDULETIME);
 	}
 
 	void closingInOnPlayer(CreatureObject* player) {
+		--closingInTime;
 		AiAgent* npc = containmentTeam.get(0).get();
 		if (npc == nullptr) {
-			reschedule(CLEANUPTIME);
 			state = CLEANUP;
 		} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
 			player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
 
-			reschedule(CLEANUPTIME);
 			state = CLEANUP;
-		} else if (closingInTime > 0) {
-			reschedule(SPAWNDELAY);
-		} else {
-			reschedule(SPAWNDELAY);
+		} else if (closingInTime <= 0) {
 			state = CLEANUP;
 		}
+		reschedule(CLEANUPRESCHEDULETIME);
 	}
 
-	void cleanUp(SceneObject* lambdaShuttle) {
-		lambdaShuttle->destroyObjectFromWorld(true);
-
+	void cleanUp() {
 		bool rescheduleTask = false;
+		if (--cleanUpTime <= 0) {
 
-		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
-			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
-			if (npc != nullptr) {
-				Locker npcLock(npc);
-				if (npc->isInCombat()) {
-					rescheduleTask = true;
-				} else {
-					if (!npc->isDead()) {
-						npc->destroyObjectFromWorld(true);
+			for (int i = containmentTeam.size() - 1; i >= 0; i--) {
+				ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
+				if (npc != nullptr) {
+					Locker npcLock(npc);
+					if (npc->isInCombat()) {
+						rescheduleTask = true;
+					} else {
+						if (!npc->isDead()) {
+							npc->destroyObjectFromWorld(true);
+						}
+						containmentTeam.remove(i);
 					}
+				} else {
 					containmentTeam.remove(i);
 				}
-			} else {
-				containmentTeam.remove(i);
 			}
+		} else {
+			rescheduleTask = true;
 		}
 
 		if (rescheduleTask) {
@@ -254,6 +254,9 @@ public:
 		spawnPosition = position;
 		spawnDirection = direction;
 		this->attack = attack;
+		closingInTime = 120;
+		timeToDespawnLambdaShuttle = -1;
+		cleanUpTime = 60;
 	}
 
 	void run() {
@@ -270,6 +273,10 @@ public:
 		}
 
 		Locker objLocker(lambdaShuttle);
+
+		if (--timeToDespawnLambdaShuttle == 0) {
+			lambdaShuttle->destroyObjectFromWorld(true);
+		}
 
 		switch (state) {
 		case SPAWN:
@@ -288,7 +295,7 @@ public:
 			closingInOnPlayer(player);
 			break;
 		case CLEANUP:
-			cleanUp(lambdaShuttle);
+			cleanUp();
 			break;
 		default:
 			break;
