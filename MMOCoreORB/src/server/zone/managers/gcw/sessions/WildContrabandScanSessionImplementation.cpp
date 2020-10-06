@@ -168,16 +168,17 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 																						  Quaternion(Vector3(0, 1, 0), player->getDirection()->getRadians() + 3.14f), false);
 					lambdaTask->schedule(1);
 				}
+
+				AiAgent* droid = getDroid();
+				if (droid != nullptr) {
+					Locker dlocker(droid);
+					droid->leash();
+					droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
+				}
 			} else {
 				sendSystemMessage(player, "probe_scan_negative");
 				scanState = TAKEOFF;
 				timeLeft = 5;
-			}
-			AiAgent* droid = getDroid();
-			if (droid != nullptr) {
-				Locker dlocker(droid);
-				droid->leash();
-				droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
 			}
 		}
 		break;
