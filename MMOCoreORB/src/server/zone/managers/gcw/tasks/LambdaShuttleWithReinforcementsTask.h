@@ -30,11 +30,9 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int cleanUpTime;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
-	const int TIMETILLSHUTTLELANDING = 100;
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
-	const int CLEANUPTIME = 300000;
-	const int CLEANUPRESCHEDULETIME = 1000;
+	const int TASKDELAY = 1000;
 
 	const int TROOPSSPAWNPERDIFFICULTY = 5;
 
@@ -76,6 +74,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	enum LamdaShuttleState {
 		SPAWN,
+		UPRIGHT,
+		ZONEIN,
 		LAND,
 		SPAWNTROOPS,
 		TAKEOFF,
@@ -141,12 +141,11 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
 		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
 		lambdaShuttle->setDirection(spawnDirection);
-		player->getZone()->transferObject(lambdaShuttle, -1, true);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
 
-		reschedule(TIMETILLSHUTTLELANDING);
-		state = LAND;
+		reschedule(TASKDELAY);
+		state = UPRIGHT;
 	}
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
@@ -155,6 +154,19 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 		reschedule(LANDINGTIME);
 		state = SPAWNTROOPS;
+	}
+
+	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
+		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
+		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		reschedule(TASKDELAY);
+		state = ZONEIN;
+	}
+
+	void lambdaShuttleZoneIn(SceneObject* lambdaShuttle, CreatureObject* player) {
+		player->getZone()->transferObject(lambdaShuttle, -1, true);
+		reschedule(TASKDELAY);
+		state = LAND;
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
@@ -167,7 +179,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		} else {
 			state = CLOSINGIN;
 		}
-		reschedule(CLEANUPRESCHEDULETIME);
+		reschedule(TASKDELAY);
 	}
 
 	void closingInOnPlayer(CreatureObject* player) {
@@ -182,7 +194,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		} else if (closingInTime <= 0) {
 			state = CLEANUP;
 		}
-		reschedule(CLEANUPRESCHEDULETIME);
+		reschedule(TASKDELAY);
 	}
 
 	void cleanUp() {
@@ -210,7 +222,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		}
 
 		if (rescheduleTask) {
-			reschedule(CLEANUPRESCHEDULETIME);
+			reschedule(TASKDELAY);
 		} else {
 			state = FINISHED;
 		}
@@ -281,6 +293,12 @@ public:
 		switch (state) {
 		case SPAWN:
 			lambdaShuttleSpawn(lambdaShuttle, player);
+			break;
+		case UPRIGHT:
+			lambdaShuttleUpright(lambdaShuttle);
+			break;
+		case ZONEIN:
+			lambdaShuttleZoneIn(lambdaShuttle, player);
 			break;
 		case LAND:
 			lambdaShuttleLanding(lambdaShuttle);

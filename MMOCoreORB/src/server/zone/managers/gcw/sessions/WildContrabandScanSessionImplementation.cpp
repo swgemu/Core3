@@ -19,9 +19,14 @@
 
 int WildContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
+
+	if (player == nullptr) {
+		return false;
+	}
+
 	ManagedReference<Zone*> zone = player->getZone();
 
-	if (player == nullptr || zone == nullptr || zone->getGCWManager() == nullptr) {
+	if (zone == nullptr || zone->getGCWManager() == nullptr) {
 		return false;
 	}
 
