@@ -33,6 +33,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
 	const int TASKDELAY = 1000;
+	const int LAMBDATAKEOFFDESPAWNTIME = 17;
 
 	const int TROOPSSPAWNPERDIFFICULTY = 5;
 
@@ -80,7 +81,14 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		SPAWNTROOPS,
 		TAKEOFF,
 		CLOSINGIN,
-		CLEANUP,
+		DELAY,
+		PICKUPSPAWN,
+		PICKUPUPRIGHT,
+		PICKUPZONEIN,
+		PICKUPLAND,
+		DESPAWN,
+		PICKUPTAKEOFF,
+		PICKUPDESPAWN,
 		FINISHED
 	};
 
@@ -143,89 +151,73 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		lambdaShuttle->setDirection(spawnDirection);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
-
-		reschedule(TASKDELAY);
-		state = UPRIGHT;
 	}
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
-
-		reschedule(LANDINGTIME);
-		state = SPAWNTROOPS;
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
-		reschedule(TASKDELAY);
-		state = ZONEIN;
-	}
-
-	void lambdaShuttleZoneIn(SceneObject* lambdaShuttle, CreatureObject* player) {
-		player->getZone()->transferObject(lambdaShuttle, -1, true);
-		reschedule(TASKDELAY);
-		state = LAND;
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
-		timeToDespawnLambdaShuttle = 17;
-
-		if (attack) {
-			state = CLEANUP;
-		} else {
-			state = CLOSINGIN;
-		}
-		reschedule(TASKDELAY);
+		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
 	}
 
 	void closingInOnPlayer(CreatureObject* player) {
-		--closingInTime;
-		AiAgent* npc = containmentTeam.get(0).get();
-		if (npc == nullptr) {
-			state = CLEANUP;
-		} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
-			player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
+		if (attack) {
+			state = DELAY;
+		} else {
+			--closingInTime;
+			AiAgent* npc = containmentTeam.get(0).get();
+			if (npc == nullptr) {
+				state = DELAY;
+			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
+				player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
 
-			state = CLEANUP;
-		} else if (closingInTime <= 0) {
-			state = CLEANUP;
+				state = DELAY;
+			} else if (closingInTime <= 0) {
+				state = DELAY;
+			}
 		}
 		reschedule(TASKDELAY);
 	}
 
-	void cleanUp() {
-		bool rescheduleTask = false;
+	void delay() {
 		if (--cleanUpTime <= 0) {
+			state = PICKUPSPAWN;
+		}
+		reschedule(TASKDELAY);
+	}
 
-			for (int i = containmentTeam.size() - 1; i >= 0; i--) {
-				ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
-				if (npc != nullptr) {
-					Locker npcLock(npc);
-					if (npc->isInCombat()) {
-						rescheduleTask = true;
-					} else {
-						if (!npc->isDead()) {
-							npc->destroyObjectFromWorld(true);
-						}
-						containmentTeam.remove(i);
-					}
+	void despawnNpcs() {
+		bool npcsLeftToDespawn = false;
+		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
+			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
+			if (npc != nullptr) {
+				Locker npcLock(npc);
+				if (npc->isInCombat()) {
+					npcsLeftToDespawn = true;
 				} else {
+					if (!npc->isDead()) {
+						npc->destroyObjectFromWorld(true);
+					}
 					containmentTeam.remove(i);
 				}
+			} else {
+				containmentTeam.remove(i);
 			}
-		} else {
-			rescheduleTask = true;
 		}
 
-		if (rescheduleTask) {
-			reschedule(TASKDELAY);
-		} else {
-			state = FINISHED;
+		if (!npcsLeftToDespawn) {
+			state = PICKUPTAKEOFF;
 		}
+		reschedule(TASKDELAY);
 	}
 
 	SceneObject* getLambdaShuttle(CreatureObject* player) {
@@ -293,27 +285,70 @@ public:
 		switch (state) {
 		case SPAWN:
 			lambdaShuttleSpawn(lambdaShuttle, player);
+			state = UPRIGHT;
+			reschedule(TASKDELAY);
 			break;
 		case UPRIGHT:
 			lambdaShuttleUpright(lambdaShuttle);
+			state = ZONEIN;
+			reschedule(TASKDELAY);
 			break;
 		case ZONEIN:
-			lambdaShuttleZoneIn(lambdaShuttle, player);
+			player->getZone()->transferObject(lambdaShuttle, -1, true);
+			state = LAND;
+			reschedule(TASKDELAY);
 			break;
 		case LAND:
 			lambdaShuttleLanding(lambdaShuttle);
+			state = SPAWNTROOPS;
+			reschedule(LANDINGTIME);
 			break;
 		case SPAWNTROOPS:
 			spawnTroops(lambdaShuttle, player);
 			break;
 		case TAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
+			state = CLOSINGIN;
+			reschedule(TASKDELAY);
 			break;
 		case CLOSINGIN:
 			closingInOnPlayer(player);
 			break;
-		case CLEANUP:
-			cleanUp();
+		case DELAY:
+			delay();
+			break;
+		case PICKUPSPAWN:
+			lambdaShuttleSpawn(lambdaShuttle, player);
+			state = PICKUPUPRIGHT;
+			reschedule(TASKDELAY);
+			break;
+		case PICKUPUPRIGHT:
+			lambdaShuttleUpright(lambdaShuttle);
+			state = PICKUPZONEIN;
+			reschedule(TASKDELAY);
+			break;
+		case PICKUPZONEIN:
+			player->getZone()->transferObject(lambdaShuttle, -1, true);
+			state = PICKUPLAND;
+			reschedule(TASKDELAY);
+			break;
+		case PICKUPLAND:
+			lambdaShuttleLanding(lambdaShuttle);
+			state = DESPAWN;
+			reschedule(LANDINGTIME);
+			break;
+		case DESPAWN:
+			despawnNpcs();
+			break;
+		case PICKUPTAKEOFF:
+			lambdaShuttleTakeoff(lambdaShuttle);
+			state = PICKUPDESPAWN;
+			reschedule(TASKDELAY);
+			break;
+		case PICKUPDESPAWN:
+			if (timeToDespawnLambdaShuttle == 0) {
+				state = FINISHED;
+			}
 			break;
 		default:
 			break;
