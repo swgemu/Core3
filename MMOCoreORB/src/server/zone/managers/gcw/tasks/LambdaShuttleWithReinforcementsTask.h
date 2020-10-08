@@ -34,6 +34,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
 	const int TASKDELAY = 1000;
+	const int CLEANUPDELAY = 60000;
 	const int LAMBDATAKEOFFDESPAWNTIME = 17;
 
 	const int TROOPSSPAWNPERDIFFICULTY = 5;
@@ -190,22 +191,21 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void delay() {
-		if (--cleanUpTime <= 0) {
-			state = PICKUPSPAWN;
-		}
-		reschedule(TASKDELAY);
+		state = PICKUPSPAWN;
+		reschedule(CLEANUPDELAY);
 	}
 
 	void despawnNpcs(SceneObject* lambdaShuttle) {
+		--cleanUpTime;
 		bool npcsLeftToDespawn = false;
 		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
 			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
 			if (npc != nullptr) {
 				Locker npcLock(npc);
-				if (npc->isInCombat()) {
+				if (npc->isInCombat() && cleanUpTime >= 0) {
 					npcsLeftToDespawn = true;
 				} else {
-					if (!npc->isDead() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) > 2) {
+					if (!npc->isDead() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) > 2 && cleanUpTime >= 0) {
 						npc->setFollowObject(lambdaShuttle);
 						npcsLeftToDespawn = true;
 					} else {
@@ -220,7 +220,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 			}
 		}
 
-		if (!npcsLeftToDespawn) {
+		if (!npcsLeftToDespawn || cleanUpTime < 0) {
 			state = PICKUPTAKEOFF;
 		}
 		reschedule(TASKDELAY);
