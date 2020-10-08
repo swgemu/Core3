@@ -163,7 +163,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 
 				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
 				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
-																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN, 128.f);
 				if (spawnPoint != nullptr) {
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "", *spawnPoint->getPosition(),
 																						  *spawnPoint->getDirection(), false);
