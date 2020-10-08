@@ -55,6 +55,10 @@ crackdownScanPrivilegedPlayers = false
 crackdownPlayerScanCooldown = 2 * 60  -- In seconds, remove this row when testing is completed.
 crackdownContrabandFineCredits = 10000
 crackdownContrabandFineFactionPoints = 100
+crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "tatooine", "yavin4"}
+-- Radius for the area in which all players are retrieved in order to select one of them randomly to be scanned in the wild.
+-- All objects in the octree in that radius will be iterated.
+crackdownPerformanceWildScanPlayerFindRadius = 10240  -- Tweak this in order to decrease the load on the server when a wild scan is tried.
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 

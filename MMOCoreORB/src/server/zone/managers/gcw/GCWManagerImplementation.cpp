@@ -93,6 +93,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
+	crackdownPerformanceWildScanPlayerFindRadius = lua->getGlobalInt("crackdownPerformanceWildScanPlayerFindRadius");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {
@@ -109,6 +110,14 @@ void GCWManagerImplementation::loadLuaConfig() {
 		}
 	}
 	pairs.pop();
+
+	LuaObject planets = lua->getGlobalObject("crackdownPlanetsWithWildScans");
+	if (planets.isValidTable()) {
+		for (int i = 1; i <= planets.getTableSize(); ++i) {
+			planetsWithWildScans.add(planets.getStringAt(i));
+		}
+	}
+	planets.pop();
 
 	LuaObject pointsObject = lua->getGlobalObject("HQValues");
 
@@ -2594,7 +2603,7 @@ void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, Crea
 }
 
 void GCWManagerImplementation::performCheckWildContrabandScanTask() {
-	if (!crackdownScansEnabled) {
+	if (!crackdownScansEnabled || planetsWithWildScans.find(zone->getZoneName()) == Vector<String>::npos) {
 		return;
 	}
 
@@ -2602,7 +2611,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 	Reference<SortedVector<ManagedReference<QuadTreeEntry*>>*> closePlayers = new SortedVector<ManagedReference<QuadTreeEntry*>>();
 
-	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), 10240, closePlayers);
+	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), crackdownPerformanceWildScanPlayerFindRadius, closePlayers);
 
 	if (closePlayers->size() > 0) {
 		int playerIndex = int(System::random(closePlayers->size() - 1));
