@@ -28,6 +28,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int closingInTime;
 	int timeToDespawnLambdaShuttle;
 	int cleanUpTime;
+	float spawnOffset;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int LANDINGTIME = 18000;
@@ -122,7 +123,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 			} else if (spawnNumber == 0) {
 				npc->setFollowObject(player);
 			} else {
-				npc->setFollowObject(containmentTeam.get(Math::max(spawnNumber - 2, 0)).get());
+				npc->setFollowObject(containmentTeam.get(Math::max(containmentTeam.size() - 2, 0)).get());
 			}
 			containmentTeam.add(npc);
 		}
@@ -130,10 +131,10 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	void spawnOneSetOfTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
 		if (troops[spawnNumber].singleSpawn) {
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.0f, 0.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.0f, spawnOffset);
 		} else {
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.5f, spawnNumber * 1.0f);
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, -0.5f, spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.5f, spawnOffset - spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, -0.5f, spawnOffset - spawnNumber * 1.0f);
 		}
 		spawnNumber++;
 	}
@@ -261,6 +262,7 @@ public:
 		closingInTime = 120;
 		timeToDespawnLambdaShuttle = -1;
 		cleanUpTime = 60;
+		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
 	}
 
 	void run() {
