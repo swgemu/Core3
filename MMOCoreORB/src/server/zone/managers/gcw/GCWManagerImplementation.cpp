@@ -93,6 +93,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
+	crackdownPerformanceWildScanPlayerFindRadius = lua->getGlobalInt("crackdownPerformanceWildScanPlayerFindRadius");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {
@@ -2610,7 +2611,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 	Reference<SortedVector<ManagedReference<QuadTreeEntry*>>*> closePlayers = new SortedVector<ManagedReference<QuadTreeEntry*>>();
 
-	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), 10240, closePlayers);
+	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), crackdownPerformanceWildScanPlayerFindRadius, closePlayers);
 
 	if (closePlayers->size() > 0) {
 		int playerIndex = int(System::random(closePlayers->size() - 1));
