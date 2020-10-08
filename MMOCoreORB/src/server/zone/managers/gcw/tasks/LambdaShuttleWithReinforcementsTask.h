@@ -196,7 +196,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		reschedule(TASKDELAY);
 	}
 
-	void despawnNpcs() {
+	void despawnNpcs(SceneObject* lambdaShuttle) {
 		bool npcsLeftToDespawn = false;
 		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
 			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
@@ -205,10 +205,15 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				if (npc->isInCombat()) {
 					npcsLeftToDespawn = true;
 				} else {
-					if (!npc->isDead()) {
-						npc->destroyObjectFromWorld(true);
+					if (!npc->isDead() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) > 2) {
+						npc->setFollowObject(lambdaShuttle);
+						npcsLeftToDespawn = true;
+					} else {
+						if (!npc->isDead()) {
+							npc->destroyObjectFromWorld(true);
+						}
+						containmentTeam.remove(i);
 					}
-					containmentTeam.remove(i);
 				}
 			} else {
 				containmentTeam.remove(i);
@@ -340,7 +345,7 @@ public:
 			reschedule(LANDINGTIME);
 			break;
 		case DESPAWN:
-			despawnNpcs();
+			despawnNpcs(lambdaShuttle);
 			break;
 		case PICKUPTAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
