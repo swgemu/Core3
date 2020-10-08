@@ -110,6 +110,14 @@ void GCWManagerImplementation::loadLuaConfig() {
 	}
 	pairs.pop();
 
+	LuaObject planets = lua->getGlobalObject("crackdownPlanetsWithWildScans");
+	if (planets.isValidTable()) {
+		for (int i = 1; i <= planets.getTableSize(); ++i) {
+			planetsWithWildScans.add(planets.getStringAt(i));
+		}
+	}
+	planets.pop();
+
 	LuaObject pointsObject = lua->getGlobalObject("HQValues");
 
 	if (pointsObject.isValidTable()) {
@@ -2594,7 +2602,7 @@ void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, Crea
 }
 
 void GCWManagerImplementation::performCheckWildContrabandScanTask() {
-	if (!crackdownScansEnabled) {
+	if (!crackdownScansEnabled || planetsWithWildScans.find(zone->getZoneName()) == Vector<String>::npos) {
 		return;
 	}
 

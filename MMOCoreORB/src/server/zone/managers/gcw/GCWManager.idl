@@ -65,6 +65,9 @@ class GCWManager extends ManagedService implements Logger {
 	protected transient Vector<int> difficultyScalingThresholds;
 
 	@dereferenced
+	protected transient Vector<string> planetsWithWildScans;
+
+	@dereferenced
 	protected transient HashTable<int, float> racialPenaltyMap;
 
 	private transient int rebelBases;

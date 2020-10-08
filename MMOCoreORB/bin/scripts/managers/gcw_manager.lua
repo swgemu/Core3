@@ -55,6 +55,7 @@ crackdownScanPrivilegedPlayers = false
 crackdownPlayerScanCooldown = 2 * 60  -- In seconds, remove this row when testing is completed.
 crackdownContrabandFineCredits = 10000
 crackdownContrabandFineFactionPoints = 100
+crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "tatooine", "yavin4"}
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 
