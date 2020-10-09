@@ -59,7 +59,7 @@ int ContrabandScanSessionImplementation::cancelSession() {
 	Locker locker(player);
 	Locker crossLocker(scanner, player);
 
-	if (scanner != nullptr && enforcedScan) {
+	if (scanner != nullptr && enforcedScan && !scanner->isInCombat()) {
 		scanner->leash();
 	}
 

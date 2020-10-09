@@ -1278,7 +1278,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	return true;
 }
 
-NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType, const float maxRange) {
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 	Vector3 pos(x, y, 0);
@@ -1294,7 +1294,7 @@ NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const
 	float min = 0.0f;
 	float max = 50.0f;
 
-	while (max <= 1600.0f) {
+	while (max <= maxRange) {
 		npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, &pos, spawnType, min, max);
 		if (npc != nullptr && npc->getInUse() == 0) {
 			return npc;

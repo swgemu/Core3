@@ -98,7 +98,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	case HEADTOPLAYER:
 		if (timeLeft <= 0) {
 			weakDroid = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
-																							  landingCoordinates.getZ(), landingCoordinates.getY(), 0));
+																				 landingCoordinates.getZ(), landingCoordinates.getY(), 0));
 			AiAgent* droid = getDroid();
 			if (droid != nullptr) {
 				Locker clocker(droid, player);
@@ -147,8 +147,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			error("Probot is missing.");
 			scanState = FINISHED;
 		}
-	}
-		break;
+	} break;
 	case SCANDELAY:
 		if (timeLeft <= 0) {
 			int numberOfContrabandItems = 0;
@@ -163,14 +162,16 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 
 				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
 				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
-																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN, 128.f);
 				if (spawnPoint != nullptr) {
-					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "", *spawnPoint->getPosition(),
-																						  *spawnPoint->getDirection(), false);
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1,
+																						  "@imperial_presence/contraband_search:containment_team_imperial",
+																						  *spawnPoint->getPosition(), *spawnPoint->getDirection(), false);
 					lambdaTask->schedule(1);
 				} else {
-					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "", landingCoordinates,
-																						  Quaternion(Vector3(0, 1, 0), player->getDirection()->getRadians() + 3.14f), false);
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
+						Quaternion(Vector3(0, 1, 0), player->getDirection()->getRadians() + 3.14f), false);
 					lambdaTask->schedule(1);
 				}
 
