@@ -14,7 +14,7 @@ int LambdaTrooperObserverImplementation::notifyObserverEvent(unsigned int eventT
 		return 0;
 	}
 
-    for (int i = 0; i < containmentTeam->size(); i++) {
+	for (int i = 0; i < containmentTeam->size(); i++) {
 		AiAgent* npc = containmentTeam->get(i).get();
 		if (npc != nullptr) {
 			Locker locker(npc);
@@ -25,5 +25,5 @@ int LambdaTrooperObserverImplementation::notifyObserverEvent(unsigned int eventT
 		}
 	}
 
-    return 1;
+	return 1;
 }

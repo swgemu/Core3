@@ -98,7 +98,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	case HEADTOPLAYER:
 		if (timeLeft <= 0) {
 			weakDroid = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
-																							  landingCoordinates.getZ(), landingCoordinates.getY(), 0));
+																				 landingCoordinates.getZ(), landingCoordinates.getY(), 0));
 			AiAgent* droid = getDroid();
 			if (droid != nullptr) {
 				Locker clocker(droid, player);
@@ -147,8 +147,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			error("Probot is missing.");
 			scanState = FINISHED;
 		}
-	}
-		break;
+	} break;
 	case SCANDELAY:
 		if (timeLeft <= 0) {
 			int numberOfContrabandItems = 0;

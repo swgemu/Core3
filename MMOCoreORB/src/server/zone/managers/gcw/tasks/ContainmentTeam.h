@@ -18,15 +18,11 @@ namespace tasks {
 
 class ContainmentTeam : public Vector<WeakReference<AiAgent*>> {
 public:
-	/**
-	 * Constructor.
-	 */
-	ContainmentTeam() : Vector<WeakReference<AiAgent*>>() {}
+	ContainmentTeam() : Vector<WeakReference<AiAgent*>>() {
+	}
 
-	/**
-	 * Destructor.
-	 */
-	~ContainmentTeam() {}
+	~ContainmentTeam() {
+	}
 };
 
 } // namespace tasks
