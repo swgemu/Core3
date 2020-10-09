@@ -3,8 +3,9 @@
 		See file COPYING for copying conditions.
  */
 
-#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
+
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
