@@ -13,12 +13,14 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
+#include "server/zone/managers/gcw/tasks/ContainmentTeam.h"
 #include "templates/faction/Factions.h"
 
 class LambdaShuttleWithReinforcementsTask : public Task {
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
-	Vector<WeakReference<AiAgent*>> containmentTeam;
+	ContainmentTeam containmentTeam;
 	int difficulty;
 	int spawnNumber;
 	String chatMessageId;
@@ -121,10 +123,18 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 					chatMessage.setStringId(chatMessageId);
 					zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
 				}
-			} else if (spawnNumber == 0) {
-				npc->setFollowObject(player);
 			} else {
-				npc->setFollowObject(containmentTeam.get(Math::max(containmentTeam.size() - 2, 0)).get());
+				if (spawnNumber == 0) {
+					npc->setFollowObject(player);
+				} else {
+					npc->setFollowObject(containmentTeam.get(Math::max(containmentTeam.size() - 2, 0)).get());
+				}
+				ManagedReference<LambdaTrooperObserver*> lambdaTrooperObserver = new LambdaTrooperObserver();
+				lambdaTrooperObserver->setContainmentTeam(&containmentTeam);
+				npc->registerObserver(ObserverEventType::DAMAGERECEIVED, lambdaTrooperObserver);
+				npc->registerObserver(ObserverEventType::DEFENDERADDED, lambdaTrooperObserver);
+				npc->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lambdaTrooperObserver);
+				npc->registerObserver(ObserverEventType::STARTCOMBAT, lambdaTrooperObserver);
 			}
 			containmentTeam.add(npc);
 		}
