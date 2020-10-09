@@ -11,6 +11,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
@@ -51,33 +52,24 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		bool singleSpawn;
 	};
 
-	LambdaTroop IMPERIALTROOPS[11] = {
-			{"stormtrooper_squad_leader", true},
-			{"stormtrooper", false},
-			{"stormtrooper", false},
-			{"stormtrooper_sniper", false},
-			{"stormtrooper", false},
-			{"stormtrooper_rifleman", false},
-			{"stormtrooper_medic", false},
-			{"stormtrooper_sniper", false},
-			{"stormtrooper_rifleman", false},
-			{"stormtrooper", false},
-			{"stormtrooper_bombardier", false}
-	};
+	LambdaTroop IMPERIALTROOPS[11] = {{"stormtrooper_squad_leader", true},
+									  {"stormtrooper", false},
+									  {"stormtrooper", false},
+									  {"stormtrooper_sniper", false},
+									  {"stormtrooper", false},
+									  {"stormtrooper_rifleman", false},
+									  {"stormtrooper_medic", false},
+									  {"stormtrooper_sniper", false},
+									  {"stormtrooper_rifleman", false},
+									  {"stormtrooper", false},
+									  {"stormtrooper_bombardier", false}};
 
-	LambdaTroop REBELTROOPS[11] = {
-			{"crackdown_rebel_guard_captain", true},
-			{"crackdown_rebel_cadet", false},
-			{"crackdown_rebel_soldier", false},
-			{"crackdown_rebel_liberator", false},
-			{"crackdown_rebel_soldier", false},
-			{"crackdown_rebel_guardsman", false},
-			{"crackdown_rebel_elite_sand_rat", false},
-			{"crackdown_rebel_command_security_guard", false},
-			{"crackdown_rebel_commando", false},
-			{"crackdown_rebel_comm_operator", false},
-			{"crackdown_rebel_soldier", false}
-	};
+	LambdaTroop REBELTROOPS[11] = {{"crackdown_rebel_guard_captain", true},	  {"crackdown_rebel_cadet", false},
+								   {"crackdown_rebel_soldier", false},		  {"crackdown_rebel_liberator", false},
+								   {"crackdown_rebel_soldier", false},		  {"crackdown_rebel_guardsman", false},
+								   {"crackdown_rebel_elite_sand_rat", false}, {"crackdown_rebel_command_security_guard", false},
+								   {"crackdown_rebel_commando", false},		  {"crackdown_rebel_comm_operator", false},
+								   {"crackdown_rebel_soldier", false}};
 
 	enum LamdaShuttleState {
 		SPAWN,
@@ -105,7 +97,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	void spawnSingleTroop(SceneObject* lambdaShuttle, CreatureObject* player, const String& creatureTemplate, float xOffset, float yOffset) {
 		Quaternion offset = Quaternion(0, xOffset, 0, yOffset);
 		Quaternion rotation = Quaternion(Vector3(0, 1, 0), spawnDirection.getRadians());
-		offset = rotation * offset * rotation.getConjugate();  // Rotate offset quaternion to match spawnDirection.
+		offset = rotation * offset * rotation.getConjugate(); // Rotate offset quaternion to match spawnDirection.
 
 		Zone* zone = lambdaShuttle->getZone();
 		float x = lambdaShuttle->getPositionX() + offset.getX();
@@ -153,7 +145,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
-		if (!attack && faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) {
+		if (!attack && ((faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) ||
+						(player->getPlayerObject() != nullptr && player->getPlayerObject()->hasCrackdownTefTowards(faction)))) {
 			if (player->getFactionStatus() == FactionStatus::OVERT || player->getFactionStatus() == FactionStatus::COVERT) {
 				attack = true;
 			}
