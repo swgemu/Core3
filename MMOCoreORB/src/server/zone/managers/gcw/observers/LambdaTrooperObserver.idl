@@ -11,8 +11,6 @@ import engine.util.Observable;
 
 include engine.log.Logger;
 include server.zone.managers.gcw.tasks.ContainmentTeam;
-include system.util.Vector;
-include system.lang.ref.WeakReference;
 
 class LambdaTrooperObserver extends Observer implements Logger {
 
