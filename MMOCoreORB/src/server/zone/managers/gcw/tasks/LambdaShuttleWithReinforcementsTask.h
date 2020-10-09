@@ -15,6 +15,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
 #include "server/zone/managers/gcw/tasks/ContainmentTeam.h"
+#include "server/zone/objects/player/FactionStatus.h"
 #include "templates/faction/Factions.h"
 
 class LambdaShuttleWithReinforcementsTask : public Task {
@@ -31,6 +32,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int timeToDespawnLambdaShuttle;
 	int cleanUpTime;
 	float spawnOffset;
+	unsigned int faction;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int LANDINGTIME = 18000;
@@ -151,6 +153,11 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
+		if (!attack && faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) {
+			if (player->getFactionStatus() == FactionStatus::OVERT || player->getFactionStatus() == FactionStatus::COVERT) {
+				attack = true;
+			}
+		}
 		spawnOneSetOfTroops(lambdaShuttle, player);
 		if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
 			state = TAKEOFF;
@@ -278,6 +285,7 @@ public:
 		timeToDespawnLambdaShuttle = -1;
 		cleanUpTime = 60;
 		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
+		this->faction = faction;
 	}
 
 	void run() {
