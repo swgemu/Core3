@@ -10,6 +10,10 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 int LambdaTrooperObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	if (containmentTeam == nullptr) {
+		return 1;
+	}
+
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 	if (attacker == nullptr) {
 		return 0;
