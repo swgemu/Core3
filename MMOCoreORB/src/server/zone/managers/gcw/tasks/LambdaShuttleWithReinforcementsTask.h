@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
 #include "server/zone/managers/gcw/tasks/ContainmentTeam.h"
 #include "server/zone/objects/player/FactionStatus.h"
@@ -22,6 +23,7 @@
 class LambdaShuttleWithReinforcementsTask : public Task {
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
+	ManagedReference<LambdaTrooperObserver*> lambdaTrooperObserver;
 	ContainmentTeam containmentTeam;
 	int difficulty;
 	int spawnNumber;
@@ -34,12 +36,12 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int cleanUpTime;
 	float spawnOffset;
 	unsigned int faction;
+	int delayTime;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int LANDINGTIME = 18000;
 	const int SPAWNDELAY = 750;
 	const int TASKDELAY = 1000;
-	const int CLEANUPDELAY = 60000;
 	const int LAMBDATAKEOFFDESPAWNTIME = 17;
 
 	const int TROOPSSPAWNPERDIFFICULTY = 5;
@@ -123,13 +125,9 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				} else {
 					npc->setFollowObject(containmentTeam.get(Math::max(containmentTeam.size() - 2, 0)).get());
 				}
-				ManagedReference<LambdaTrooperObserver*> lambdaTrooperObserver = new LambdaTrooperObserver();
-				lambdaTrooperObserver->setContainmentTeam(&containmentTeam);
-				npc->registerObserver(ObserverEventType::DAMAGERECEIVED, lambdaTrooperObserver);
-				npc->registerObserver(ObserverEventType::DEFENDERADDED, lambdaTrooperObserver);
-				npc->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lambdaTrooperObserver);
 				npc->registerObserver(ObserverEventType::STARTCOMBAT, lambdaTrooperObserver);
 			}
+
 			containmentTeam.add(npc);
 		}
 	}
@@ -201,15 +199,17 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void delay() {
-		state = PICKUPSPAWN;
-		reschedule(CLEANUPDELAY);
+		if (--delayTime <= 0) {
+			state = PICKUPSPAWN;
+		}
+		reschedule(TASKDELAY);
 	}
 
 	void despawnNpcs(SceneObject* lambdaShuttle) {
 		--cleanUpTime;
 		bool npcsLeftToDespawn = false;
 		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
-			ManagedReference<AiAgent*> npc = containmentTeam.get(i).get();
+			auto npc = containmentTeam.get(i).get();
 			if (npc != nullptr) {
 				Locker npcLock(npc);
 				if (npc->isInCombat() && cleanUpTime >= 0) {
@@ -256,6 +256,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack) {
 		weakPlayer = player;
+		lambdaTrooperObserver = new LambdaTrooperObserver();
+		lambdaTrooperObserver->setContainmentTeam(&containmentTeam);
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
 			this->difficulty = MAXDIFFICULTY;
@@ -279,6 +281,11 @@ public:
 		cleanUpTime = 60;
 		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
 		this->faction = faction;
+		delayTime = 60;
+	}
+
+	~LambdaShuttleWithReinforcementsTask() {
+		lambdaTrooperObserver->setContainmentTeam(nullptr);
 	}
 
 	void run() {
@@ -367,6 +374,7 @@ public:
 			if (timeToDespawnLambdaShuttle == 0) {
 				state = FINISHED;
 			}
+			reschedule(TASKDELAY);
 			break;
 		default:
 			break;

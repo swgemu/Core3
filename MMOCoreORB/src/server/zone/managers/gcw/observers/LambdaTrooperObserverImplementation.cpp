@@ -3,12 +3,17 @@
 		See file COPYING for copying conditions.
  */
 
-#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
+
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 int LambdaTrooperObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	if (containmentTeam == nullptr) {
+		return 1;
+	}
+
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 	if (attacker == nullptr) {
 		return 0;
