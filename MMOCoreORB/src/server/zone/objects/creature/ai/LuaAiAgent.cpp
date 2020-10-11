@@ -326,6 +326,8 @@ int LuaAiAgent::setDestination(lua_State* L) {
 }
 
 int LuaAiAgent::completeMove(lua_State* L) {
+	Locker locker(realObject);
+
 	bool retVal = realObject->completeMove();
 
 	lua_pushboolean(L, retVal);
