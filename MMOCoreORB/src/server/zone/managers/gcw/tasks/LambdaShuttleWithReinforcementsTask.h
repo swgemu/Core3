@@ -236,6 +236,16 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		reschedule(TASKDELAY);
 	}
 
+	bool transferLambdaShuttle(CreatureObject* player, SceneObject* lambdaShuttle) {
+		Zone* zone = player->getZone();
+		if (zone == nullptr) {
+			return false;
+		} else {
+			zone->transferObject(lambdaShuttle, -1, true);
+			return true;
+		}
+	}
+
 	SceneObject* getLambdaShuttle(CreatureObject* player) {
 		ManagedReference<SceneObject*> lambdaShuttle = weakLambdaShuttle.get();
 
@@ -305,6 +315,7 @@ public:
 
 		if (--timeToDespawnLambdaShuttle == 0) {
 			lambdaShuttle->destroyObjectFromWorld(true);
+			weakLambdaShuttle = nullptr;
 		}
 
 		switch (state) {
@@ -319,8 +330,11 @@ public:
 			reschedule(TASKDELAY);
 			break;
 		case ZONEIN:
-			player->getZone()->transferObject(lambdaShuttle, -1, true);
-			state = LAND;
+			if (transferLambdaShuttle(player, lambdaShuttle)) {
+				state = LAND;
+			} else {
+				state = FINISHED;
+			}
 			reschedule(TASKDELAY);
 			break;
 		case LAND:
@@ -353,8 +367,11 @@ public:
 			reschedule(TASKDELAY);
 			break;
 		case PICKUPZONEIN:
-			player->getZone()->transferObject(lambdaShuttle, -1, true);
-			state = PICKUPLAND;
+			if (transferLambdaShuttle(player, lambdaShuttle)) {
+				state = PICKUPLAND;
+			} else {
+				state = FINISHED;
+			}
 			reschedule(TASKDELAY);
 			break;
 		case PICKUPLAND:
