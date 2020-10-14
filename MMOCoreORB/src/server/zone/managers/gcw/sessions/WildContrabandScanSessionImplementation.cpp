@@ -7,6 +7,7 @@
 
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/gcw/observers/ProbotObserver.h"
 #include "server/zone/managers/gcw/sessions/WildContrabandScanSession.h"
 #include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
 #include "server/zone/managers/gcw/tasks/WildContrabandScanTask.h"
@@ -88,6 +89,11 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		cancelSession();
 	}
 
+	AiAgent* droid = getDroid();
+	if (droid != nullptr && droid->isInCombat()) {
+		scanState = INCOMBAT;
+	}
+
 	timeLeft--;
 
 	switch (scanState) {
@@ -97,13 +103,16 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		break;
 	case HEADTOPLAYER:
 		if (timeLeft <= 0) {
-			weakDroid = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, landingCoordinates.getX(),
+			weakDroid = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(STRING_HASHCODE("crackdown_probot"), 0, landingCoordinates.getX(),
 																				 landingCoordinates.getZ(), landingCoordinates.getY(), 0));
 			AiAgent* droid = getDroid();
 			if (droid != nullptr) {
 				Locker clocker(droid, player);
 				droid->activateLoad("stationary");
 				droid->setFollowObject(player);
+				ManagedReference<ProbotObserver*> probotObserver = new ProbotObserver();
+				probotObserver->setProbot(droid);
+				droid->registerObserver(ObserverEventType::STARTCOMBAT, probotObserver);
 				scanState = CLOSINGIN;
 				timeLeft = 30;
 			} else {
@@ -188,6 +197,20 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			}
 		}
 		break;
+	case INCOMBAT: {
+		AiAgent* droid = getDroid();
+		if (droid != nullptr) {
+			if (!droid->isInCombat() && !droid->isDead()) {
+				scanState = TAKEOFF;
+				timeLeft = 5;
+			} else if (droid->isDead()) {
+				scanState = TAKINGOFF;
+				timeLeft = 60;
+			}
+		} else {
+			scanState = FINISHED; // Probot is destroyed.
+		}
+	} break;
 	case TAKEOFF:
 		if (timeLeft <= 0) {
 			scanState = TAKINGOFF;
@@ -219,7 +242,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 }
 
 bool WildContrabandScanSessionImplementation::scanPrerequisitesMet(CreatureObject* player) {
-	return player != nullptr && player->isPlayerCreature() && !player->isDead() && !player->isFeigningDeath() && !player->isIncapacitated() && !player->isInCombat();
+	return player != nullptr && player->isPlayerCreature();
 }
 
 void WildContrabandScanSessionImplementation::landProbeDroid(Zone* zone, CreatureObject* player) {
