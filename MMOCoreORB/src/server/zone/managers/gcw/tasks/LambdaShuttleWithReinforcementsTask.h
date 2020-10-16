@@ -15,16 +15,14 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/observers/LambdaTrooperObserver.h"
-#include "server/zone/managers/gcw/tasks/ContainmentTeam.h"
+#include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/faction/Factions.h"
 
 class LambdaShuttleWithReinforcementsTask : public Task {
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
-	ManagedReference<LambdaTrooperObserver*> lambdaTrooperObserver;
-	ContainmentTeam containmentTeam;
+	ManagedReference<ContainmentTeamObserver*> containmentTeamObserver;
 	int difficulty;
 	int spawnNumber;
 	String chatMessageId;
@@ -106,7 +104,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		float y = lambdaShuttle->getPositionY() + offset.getZ();
 		float z = zone->getHeight(x, y);
 
-		AiAgent* npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
+		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
 
 		if (npc != nullptr) {
 			Locker npcLock(npc);
@@ -123,12 +121,12 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				if (spawnNumber == 0) {
 					npc->setFollowObject(player);
 				} else {
-					npc->setFollowObject(containmentTeam.get(Math::max(containmentTeam.size() - 2, 0)).get());
+					npc->setFollowObject(containmentTeamObserver->getMember(Math::max(containmentTeamObserver->size() - 2, 0)));
 				}
-				npc->registerObserver(ObserverEventType::STARTCOMBAT, lambdaTrooperObserver);
+				npc->registerObserver(ObserverEventType::STARTCOMBAT, containmentTeamObserver);
 			}
 
-			containmentTeam.add(npc);
+			containmentTeamObserver->addMember(npc);
 		}
 	}
 
@@ -184,7 +182,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 			state = DELAY;
 		} else {
 			--closingInTime;
-			AiAgent* npc = containmentTeam.get(0).get();
+			auto npc = containmentTeamObserver->getMember(0);
 			if (npc == nullptr) {
 				state = DELAY;
 			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
@@ -207,33 +205,21 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	void despawnNpcs(SceneObject* lambdaShuttle) {
 		--cleanUpTime;
-		bool npcsLeftToDespawn = false;
-		for (int i = containmentTeam.size() - 1; i >= 0; i--) {
-			auto npc = containmentTeam.get(i).get();
-			if (npc != nullptr) {
-				Locker npcLock(npc);
-				if (npc->isInCombat() && cleanUpTime >= 0) {
-					npcsLeftToDespawn = true;
-				} else {
-					if (!npc->isDead() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) > 2 && cleanUpTime >= 0) {
-						npc->setFollowObject(lambdaShuttle);
-						npcsLeftToDespawn = true;
-					} else {
-						if (!npc->isDead()) {
-							npc->destroyObjectFromWorld(true);
-						}
-						containmentTeam.remove(i);
-					}
-				}
-			} else {
-				containmentTeam.remove(i);
-			}
-		}
 
-		if (!npcsLeftToDespawn || cleanUpTime < 0) {
+		if (containmentTeamObserver->despawnMembersCloseToLambdaShuttle(lambdaShuttle, cleanUpTime < 0)) {
 			state = PICKUPTAKEOFF;
 		}
 		reschedule(TASKDELAY);
+	}
+
+	bool transferLambdaShuttle(CreatureObject* player, SceneObject* lambdaShuttle) {
+		Zone* zone = player->getZone();
+		if (zone == nullptr) {
+			return false;
+		} else {
+			zone->transferObject(lambdaShuttle, -1, true);
+			return true;
+		}
 	}
 
 	SceneObject* getLambdaShuttle(CreatureObject* player) {
@@ -256,8 +242,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack) {
 		weakPlayer = player;
-		lambdaTrooperObserver = new LambdaTrooperObserver();
-		lambdaTrooperObserver->setContainmentTeam(&containmentTeam);
+		containmentTeamObserver = new ContainmentTeamObserver();
 		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
 			this->difficulty = MAXDIFFICULTY;
@@ -284,10 +269,6 @@ public:
 		delayTime = 60;
 	}
 
-	~LambdaShuttleWithReinforcementsTask() {
-		lambdaTrooperObserver->setContainmentTeam(nullptr);
-	}
-
 	void run() {
 		ManagedReference<CreatureObject*> player = weakPlayer.get();
 
@@ -305,6 +286,7 @@ public:
 
 		if (--timeToDespawnLambdaShuttle == 0) {
 			lambdaShuttle->destroyObjectFromWorld(true);
+			weakLambdaShuttle = nullptr;
 		}
 
 		switch (state) {
@@ -319,8 +301,11 @@ public:
 			reschedule(TASKDELAY);
 			break;
 		case ZONEIN:
-			player->getZone()->transferObject(lambdaShuttle, -1, true);
-			state = LAND;
+			if (transferLambdaShuttle(player, lambdaShuttle)) {
+				state = LAND;
+			} else {
+				state = FINISHED;
+			}
 			reschedule(TASKDELAY);
 			break;
 		case LAND:
@@ -353,8 +338,11 @@ public:
 			reschedule(TASKDELAY);
 			break;
 		case PICKUPZONEIN:
-			player->getZone()->transferObject(lambdaShuttle, -1, true);
-			state = PICKUPLAND;
+			if (transferLambdaShuttle(player, lambdaShuttle)) {
+				state = PICKUPLAND;
+			} else {
+				state = FINISHED;
+			}
 			reschedule(TASKDELAY);
 			break;
 		case PICKUPLAND:

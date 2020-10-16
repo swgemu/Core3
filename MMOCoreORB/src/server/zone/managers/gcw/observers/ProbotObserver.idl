@@ -5,32 +5,33 @@
 
 package server.zone.managers.gcw.observers;
 
+import server.zone.objects.creature.ai.AiAgent;
+
 import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 
 include engine.log.Logger;
-include server.zone.managers.gcw.tasks.ContainmentTeam;
 
-class LambdaTrooperObserver extends Observer implements Logger {
+class ProbotObserver extends Observer implements Logger {
 
-	@local
-	protected ContainmentTeam containmentTeam;
+	protected AiAgent probot;
 
-	public LambdaTrooperObserver() {
+	public ProbotObserver() {
 		super();
 
-		Logger.setLoggingName("LambdaTrooperObserver");
+		Logger.setLoggingName("ProbotObserver");
+
+		probot = null;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
-	public boolean isLambdaTrooperObserver() {
+	public boolean isProbotObserver() {
 		return true;
 	}
 
-	@local
-	public void setContainmentTeam(ContainmentTeam team) {
-		containmentTeam = team;
+	public void setProbot(AiAgent probotDroid) {
+		probot = probotDroid;
 	}
 }
