@@ -1318,7 +1318,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	public native SceneObject getRootParentUnsafe();
 
-	public native void updateSavedRootParentRecursive(SceneObject newRoot);
+	public native void updateSavedRootParentRecursive(SceneObject newRoot, int maxDepth = 100);
 
 	/**
 	 * Returns the parent of object type in the tree
