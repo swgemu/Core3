@@ -10,8 +10,6 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 int ContainmentTeamObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	Locker locker(&containmentTeamLock);
-
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 	if (attacker == nullptr) {
 		return 0;
@@ -34,35 +32,45 @@ int ContainmentTeamObserverImplementation::size() {
 
 AiAgent* ContainmentTeamObserverImplementation::getMember(unsigned int teamMemberIndex) {
 	Locker locker(&containmentTeamLock);
-	return teamMembers.get(teamMemberIndex);
+	if (teamMemberIndex < teamMembers.size()) {
+		return teamMembers.get(teamMemberIndex);
+	} else {
+		return nullptr;
+	}
+}
+
+void ContainmentTeamObserverImplementation::removeMember(unsigned int teamMemberIndex) {
+	Locker locker(&containmentTeamLock);
+	if (teamMemberIndex < teamMembers.size()) {
+		teamMembers.remove(teamMemberIndex);
+	}
 }
 
 bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(SceneObject* lambdaShuttle, bool forcedCleanup) {
-	Locker locker(&containmentTeamLock);
-
-	for (int i = teamMembers.size() - 1; i >= 0; i--) {
-		auto npc = teamMembers.get(i);
+	// Do not lock containmentTeamLock in this method to avoid deadlocks. Use the minimal locking methods above.
+	for (int i = size() - 1; i >= 0; i--) {
+		auto npc = getMember(i);
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			if ((!npc->isInCombat() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) < 2) || forcedCleanup) {
 				if (!npc->isDead()) {
 					npc->destroyObjectFromWorld(true);
 				}
-				teamMembers.remove(i);
+				removeMember(i);
 			} else if (!npc->isInCombat() && !npc->isDead() && !forcedCleanup) {
 				npc->setFollowObject(lambdaShuttle);
 			}
 		} else {
-			teamMembers.remove(i);
+			removeMember(i);
 		}
 	}
 	return teamMembers.size() == 0;
 }
 
 void ContainmentTeamObserverImplementation::attack(TangibleObject* object) {
-	Locker locker(&containmentTeamLock);
-	for (int i = teamMembers.size() - 1; i >= 0; i--) {
-		auto npc = teamMembers.get(i);
+	// Do not lock containmentTeamLock in this method to avoid deadlocks. Use the minimal locking methods above.
+	for (int i = size() - 1; i >= 0; i--) {
+		auto npc = getMember(i);
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 
