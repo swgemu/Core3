@@ -44,6 +44,9 @@ class ContainmentTeamObserver extends Observer implements Logger {
 	public native AiAgent getMember(unsigned int teamMemberIndex);
 
     @local
+	public native void removeMember(unsigned int teamMemberIndex);
+
+    @local
 	public native boolean despawnMembersCloseToLambdaShuttle(SceneObject lambdaShuttle, boolean forcedCleanup);
 
     @local
