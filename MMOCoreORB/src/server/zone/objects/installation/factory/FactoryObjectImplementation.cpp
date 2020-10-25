@@ -49,14 +49,18 @@ void FactoryObjectImplementation::notifyLoadFromDatabase() {
 	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
-	if(inputHopper != nullptr) {
+	if (inputHopper != nullptr) {
 		inputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
 		inputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+		Locker lock(inputHopper);
+		inputHopper->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 	}
 
-	 if (outputHopper != nullptr) {
+	if (outputHopper != nullptr) {
 		outputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
 		outputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+		Locker lock(outputHopper);
+		outputHopper->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 	}
 }
 
@@ -64,10 +68,16 @@ void FactoryObjectImplementation::createChildObjects() {
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
 	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), getPersistenceLevel());
 
+	Locker ilocker(ingredientHopper);
+	ingredientHopper->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+
 	transferObject(ingredientHopper, 4);
 
 	String outputHopperName = "object/tangible/hopper/manufacture_installation_output_hopper_1.iff";
 	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), getPersistenceLevel());
+
+	Locker olocker(outputHopper);
+	outputHopper->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 
 	transferObject(outputHopper, 4);
 

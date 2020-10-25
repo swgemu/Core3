@@ -28,6 +28,15 @@ namespace server {
 using namespace server::zone::objects::scene;
 using namespace server::zone::objects::creature;
 
+enum ContainerType {
+	NONE = 0,        // Nothing is allowed to be put in this object
+	SLOTTED = 1,    // Only allowed to put into slots (transferType >= 4)
+	VOLUME = 2,     // Tangible items only
+	INTANGIBLE = 3, // Only allow intangible items (i.e. Waypoint into a datapad)
+	GENERIC = 4,    // Tangible and Intangible allowed
+	RIDABLE = 5,    // Special for mounts, slotted only and the slots are visible to world
+};
+
 class ContainerComponent : public SceneObjectComponent {
 
 public:
