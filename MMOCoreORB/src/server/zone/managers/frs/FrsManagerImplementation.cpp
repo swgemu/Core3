@@ -3309,6 +3309,7 @@ bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	int challengeRank = challengeData->getChallengeRank();
 	challengeData->setChallengeCompleted();
 
+	managerData->removeArenaChallenge(challengerID);
 	managerData->removeArenaFighter(challengerID);
 	managerData->removeArenaFighter(accepterID);
 
@@ -3338,8 +3339,8 @@ bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 		strongKiller->sendPvpStatusTo(strongVictim);
 
 		if (challengerWon) {
-			strongMan->demotePlayer(strongVictim);
-			strongMan->promotePlayer(strongKiller);
+		strongMan->demotePlayer(strongVictim);
+		strongMan->promotePlayer(strongKiller);
 		}
 	}, "HandleDarkCouncilDeathXpTask");
 
