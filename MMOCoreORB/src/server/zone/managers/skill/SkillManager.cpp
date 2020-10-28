@@ -636,18 +636,7 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	}
 
 	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
-
-	//Clear all xp limits to the default limits.
-	for (int i = 0; i < defaultXpLimits.size(); ++i) {
-		String xpType = defaultXpLimits.elementAt(i).getKey();
-		int xpLimit = defaultXpLimits.elementAt(i).getValue();
-
-		if (xpTypeCapList->contains(xpType)) {
-			xpTypeCapList->get(xpType) = xpLimit;
-		} else {
-			xpTypeCapList->put(xpType, xpLimit);
-		}
-	}
+	xpTypeCapList->removeAll();
 
 	//Iterate over the player skills and update xp limits accordingly.
 	ManagedReference<CreatureObject*> player = ghost->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
@@ -663,9 +652,20 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 		if (skillBox == nullptr)
 			continue;
 
-		if (xpTypeCapList->contains(skillBox->getXpType()) && (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap())) {
+		if (!xpTypeCapList->contains(skillBox->getXpType())) {
+			xpTypeCapList->put(skillBox->getXpType(), skillBox->getXpCap());
+		} else if (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap()) {
 			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
 		}
+	}
+
+	//Add defaults when no skill box caps exist
+	for (int i = 0; i < defaultXpLimits.size(); ++i) {
+		String xpType = defaultXpLimits.elementAt(i).getKey();
+		int xpLimit = defaultXpLimits.elementAt(i).getValue();
+
+		if (!xpTypeCapList->contains(xpType))
+			xpTypeCapList->put(xpType, xpLimit);
 	}
 
 	//Iterate over the player xp types and cap all xp types to the limits.

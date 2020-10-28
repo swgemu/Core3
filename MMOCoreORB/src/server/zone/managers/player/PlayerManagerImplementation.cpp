@@ -1385,7 +1385,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 				(cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY && player->hasSkill("force_rank_dark_novice"))) {
 			FrsManager* frsManager = server->getFrsManager();
 
-			if (frsManager->isFrsEnabled()) {
+			if (frsManager != nullptr && frsManager->isFrsEnabled()) {
 				String name = "Jedi Enclave (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
 				cloneMenu->addMenuItem(name, loc->getObjectID());
 			}
