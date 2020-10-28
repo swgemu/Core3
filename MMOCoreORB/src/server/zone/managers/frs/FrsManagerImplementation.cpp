@@ -3309,6 +3309,7 @@ bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	int challengeRank = challengeData->getChallengeRank();
 	challengeData->setChallengeCompleted();
 
+	managerData->removeArenaChallenge(challengerID);
 	managerData->removeArenaFighter(challengerID);
 	managerData->removeArenaFighter(accepterID);
 
