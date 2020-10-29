@@ -115,7 +115,13 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				if (spawnNumber == 0) {
 					StringIdChatParameter chatMessage;
 					chatMessage.setStringId(chatMessageId);
-					zone->getZoneServer()->getChatManager()->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+					auto zoneServer = zone->getZoneServer();
+					if (zoneServer != nullptr) {
+						auto chatManager = zoneServer->getChatManager();
+						if (chatManager != nullptr) {
+							chatManager->broadcastChatMessage(npc, chatMessage, player->getObjectID(), 0, 0);
+						}
+					}
 				}
 			} else {
 				if (spawnNumber == 0) {
@@ -186,7 +192,13 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 			if (npc == nullptr) {
 				state = DELAY;
 			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
-				player->getZone()->getGCWManager()->startContrabandScanSession(npc, player, true);
+				auto zone = player->getZone();
+				if (zone != nullptr) {
+					auto gcwManager = zone->getGCWManager();
+					if (gcwManager != nullptr) {
+						gcwManager->startContrabandScanSession(npc, player, true);
+					}
+				}
 
 				state = DELAY;
 			} else if (closingInTime <= 0) {
