@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_632cad4b",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/janta_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2020-10-30T12:09:11Z",
+      "side": 1,
+      "message": "Item total chance is greater than 10000000: janta_common",
+      "revId": "a49796ed859fe1a4e6ae62a88920317028e77192",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
