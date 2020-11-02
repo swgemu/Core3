@@ -87,6 +87,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 
 	if (zone == nullptr) {
 		cancelSession();
+		return;
 	}
 
 	AiAgent* droid = getDroid();

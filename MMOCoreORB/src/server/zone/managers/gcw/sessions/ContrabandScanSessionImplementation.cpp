@@ -87,6 +87,7 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 
 	if (!scanPrerequisitesMet(scanner, player)) {
 		cancelSession();
+		return;
 	}
 
 	ManagedReference<Zone*> zone = scanner->getZone();
