@@ -648,13 +648,13 @@ void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
 	}
 
 	playerData->setRank(-1);
-	playerData->setCouncilType(0);
 
 	Locker clocker(managerData, player);
 	managerData->removeChallengeTime(playerID);
 	clocker.release();
 
 	updatePlayerSkills(player);
+	playerData->setCouncilType(0);
 
 	StringIdChatParameter param("@force_rank:council_left"); // You have left the %TO.
 
