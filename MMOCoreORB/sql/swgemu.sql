@@ -31,7 +31,7 @@ CREATE TABLE  `swgemu`.`account_bans` (
   `account_id` int(10) unsigned NOT NULL,
   `issuer_id` int(10) unsigned NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `expires` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `expires` int(10) unsigned NOT NULL DEFAULT '0',
   `reason` tinytext NOT NULL,
   PRIMARY KEY (`ban_id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
