@@ -158,7 +158,10 @@ class FrsManager extends ManagedService implements Logger {
 	public native void playerLoggedIn(CreatureObject player);
 
 	@arg1preLocked
-	public native void validatePlayerData(CreatureObject player);
+	public native void validatePlayerData(CreatureObject player, boolean verifyBan = false);
+	
+	@arg1preLocked
+	public native boolean isBanned(CreatureObject player);
 
 	@arg1preLocked
 	public native void removeFromFrs(CreatureObject player);
