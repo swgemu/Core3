@@ -372,7 +372,42 @@ void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 	deductDebtExperience(player);
 }
 
-void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
+bool FrsManagerImplementation::isBanned(CreatureObject* player) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	Reference<Account*> account = ghost->getAccount();
+
+	if (account == nullptr || account->isBanned())
+		return true;
+
+	auto zoneServer = this->zoneServer.get();
+
+	if (zoneServer == nullptr)
+		return false;
+
+	uint galaxyID = zoneServer->getGalaxyID();
+
+	const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyID);
+
+	if (galaxyBan != nullptr)
+		return true;
+
+	Reference<CharacterList*> characters = account->getCharacterList();
+
+	for (int i = 0; i<characters->size(); i++) {
+		CharacterListEntry& entry = characters->get(i);
+
+		if (entry.getFirstName() == player->getFirstName() && entry.getGalaxyID() == galaxyID && entry.isBanned())
+			return true;
+	}
+
+	return false;
+}
+
+void FrsManagerImplementation::validatePlayerData(CreatureObject* player, bool verifyBan) {
 	if (player == nullptr)
 		return;
 
@@ -383,7 +418,7 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player) {
 
 	Reference<Account*> account = ghost->getAccount();
 
-	if (account == nullptr || account->isBanned()) {
+	if (verifyBan && isBanned(player)) {
 		removeFromFrs(player);
 		verifyRoomAccess(player, -1);
 		ghost->recalculateForcePower();
