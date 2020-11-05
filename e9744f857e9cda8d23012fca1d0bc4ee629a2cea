@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_a38245fe",
+        "filename": "MMOCoreORB/bin/scripts/managers/resource_manager_spawns.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 2094
+      },
+      "writtenOn": "2020-11-05T00:56:21Z",
+      "side": 1,
+      "message": "Not sure why this is added to the commit.",
+      "revId": "e9744f857e9cda8d23012fca1d0bc4ee629a2cea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
