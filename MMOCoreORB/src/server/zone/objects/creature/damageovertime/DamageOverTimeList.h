@@ -33,6 +33,17 @@ public:
 		dot = list.dot;
 	}
 
+	DamageOverTimeList& operator=(const DamageOverTimeList& list) {
+		if (this == &list) {
+			return *this;
+		}
+
+		nextTick = list.nextTick;
+		dot = list.dot;
+
+		return *this;
+	}
+
 	friend void to_json(nlohmann::json& j, const DamageOverTimeList& l) {
 		const VectorMap<uint64, Vector<DamageOverTime> >& map = l;
 

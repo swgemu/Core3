@@ -1957,6 +1957,9 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
+	nextAction.updateToCurrentTime();
+	nextAction.addMiliTime(1000);
+
 	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	nextAction.updateToCurrentTime();

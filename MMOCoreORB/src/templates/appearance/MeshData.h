@@ -33,6 +33,18 @@ public:
 		verts[2] = mesh.verts[2];
 	}
 
+	MeshTriangle& operator=(const MeshTriangle& mesh) {
+		if (this == &mesh) {
+			return *this;
+		}
+
+		verts[0] = mesh.verts[0];
+		verts[1] = mesh.verts[1];
+		verts[2] = mesh.verts[2];
+
+		return *this;
+	}
+
 	const int* getVerts() const {
 		return verts;
 	}
