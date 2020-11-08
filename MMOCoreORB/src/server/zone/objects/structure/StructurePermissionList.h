@@ -40,6 +40,8 @@ public:
 	StructurePermissionList();
 	StructurePermissionList(const StructurePermissionList& spl);
 
+	StructurePermissionList& operator=(const StructurePermissionList& list);
+
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 

@@ -31,10 +31,8 @@ public:
 		edgeID = -1;
 	}
 
-	EdgeID(const EdgeID& edge) {
-		triangleID = edge.triangleID;
-		edgeID = edge.edgeID;
-	}
+	EdgeID(const EdgeID& edge) = default;
+	EdgeID& operator=(const EdgeID& edge) = default;
 
 	inline int getEdgeID() const { return edgeID; }
 	inline int getTriangleID() const { return triangleID; }

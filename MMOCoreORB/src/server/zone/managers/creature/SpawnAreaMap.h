@@ -12,7 +12,7 @@
 #include "server/zone/Zone.h"
 
 class SpawnAreaMap : public SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
-	Lua* lua;
+	Reference<Lua*> lua;
 protected:
 
 	ManagedReference<Zone*> zone;
@@ -52,11 +52,20 @@ public:
 		lua = l.lua;
 	}
 
-	virtual ~SpawnAreaMap() {
-		if (lua != nullptr) {
-			delete lua;
-			lua = nullptr;
+	SpawnAreaMap& operator=(const SpawnAreaMap& l) {
+		if (this == &l) {
+			return *this;
 		}
+
+		lua = l.lua;
+		zone = l.zone;
+		noSpawnAreas = l.noSpawnAreas;
+		worldSpawnAreas = l.worldSpawnAreas;
+
+		return *this;
+	}
+
+	virtual ~SpawnAreaMap() {
 	}
 
 	void loadMap(Zone* z);

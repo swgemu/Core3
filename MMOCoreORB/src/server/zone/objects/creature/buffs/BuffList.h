@@ -20,6 +20,8 @@ public:
 	BuffList();
 	BuffList(const BuffList& bf);
 
+	BuffList& operator=(const BuffList& bf);
+
 	void sendTo(CreatureObject* player) const;
 	void sendDestroyTo(CreatureObject* player) const;
 
