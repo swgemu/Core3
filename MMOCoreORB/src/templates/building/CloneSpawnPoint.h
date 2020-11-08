@@ -28,6 +28,18 @@ public:
 		cellid = p.cellid;
 	}
 
+	CloneSpawnPoint& operator=(const CloneSpawnPoint& p) {
+		if (this == &p) {
+			return *this;
+		}
+
+		coordinate = p.coordinate;
+		direction = p.direction;
+		cellid = p.cellid;
+
+		return *this;
+	}
+
 	void parseFromLua(LuaObject* luaObject) {
 		coordinate.setPositionX(luaObject->getFloatField("x"));
 		coordinate.setPositionZ(luaObject->getFloatField("z"));

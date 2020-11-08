@@ -38,6 +38,16 @@ public:
 		creature = obj;
 	}
 
+	GroupMember& operator=(const GroupMember& obj) {
+		if (this == &obj) {
+			return *this;
+		}
+
+		creature = obj.creature;
+
+		return *this;
+	}
+
 	bool operator==(const GroupMember& member) const {
 		return creature.get() == member.creature.get();
 	}
