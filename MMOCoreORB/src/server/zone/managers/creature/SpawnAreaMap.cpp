@@ -27,8 +27,6 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	}
 
 	lua->deinit();
-
-	delete lua;
 	lua = nullptr;
 }
 
