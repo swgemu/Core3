@@ -2619,7 +2619,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 		CreatureObject* player = object->asCreatureObject();
 
 		if (player->checkCooldownRecovery("crackdown_scan") && player->getParentID() == 0 && player->getPlayerObject() != nullptr &&
-			player->getPlayerObject()->getSessionMiliSecs() > 60 * 1000 &&
+			player->getPlayerObject()->getSessionMiliSecs() > 60 * 1000 && !player->isDead() && !player->isIncapacitated() && !player->isFeigningDeath() && !player->isInCombat() &&
 			zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) {
 			if (crackdownScanPrivilegedPlayers || (player->getPlayerObject() != nullptr && !player->getPlayerObject()->isPrivileged())) {
 				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
