@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_6312edb5",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/janta_common.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-12T12:42:25Z",
+      "side": 1,
+      "message": "Remove these trailing white spaces. \n\nYou can probably set up your editor to do it automatically for you when you save a file.",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "5b4922c84031c67cc8cfaac5d4807d98c8956d0f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
