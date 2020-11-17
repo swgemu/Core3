@@ -95,13 +95,13 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	LambdaTroop* troops;
 
 	void spawnSingleTroop(SceneObject* lambdaShuttle, CreatureObject* player, const String& creatureTemplate, float xOffset, float yOffset) {
-		Quaternion offset = Quaternion(0, xOffset, 0, yOffset);
-		Quaternion rotation = Quaternion(Vector3(0, 1, 0), spawnDirection.getRadians());
-		offset = rotation * offset * rotation.getConjugate(); // Rotate offset quaternion to match spawnDirection.
+		float rotationRadians = spawnDirection.getRadians();
+		float xOffsetRotated = xOffset * Math::cos(rotationRadians) + yOffset * Math::sin(rotationRadians);
+		float yOffsetRotated = -xOffset * Math::sin(rotationRadians) + yOffset * Math::cos(rotationRadians);
 
 		Zone* zone = lambdaShuttle->getZone();
-		float x = lambdaShuttle->getPositionX() + offset.getX();
-		float y = lambdaShuttle->getPositionY() + offset.getZ();
+		float x = lambdaShuttle->getPositionX() + xOffsetRotated;
+		float y = lambdaShuttle->getPositionY() + yOffsetRotated;
 		float z = zone->getHeight(x, y);
 
 		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
