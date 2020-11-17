@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
 	complexity = 27,
 	size = 2,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 350,
 

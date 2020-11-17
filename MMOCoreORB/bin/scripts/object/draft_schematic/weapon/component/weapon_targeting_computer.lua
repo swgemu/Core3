@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_weapon_targeting_computer = object_draft_schematic_weapon_component_shared_weapon_targeting_computer:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_weapon_targeting_computer, "object/draft_schematic/weapon/component/weapon_targeting_computer.iff")

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_weapon_link = object_draft_schematic_vehicle_component_shared_weapon_link:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_weapon_link, "object/draft_schematic/vehicle/component/weapon_link.iff")

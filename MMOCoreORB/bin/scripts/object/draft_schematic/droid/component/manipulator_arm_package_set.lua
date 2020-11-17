@@ -50,6 +50,7 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 4, 
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
    xpType = "crafting_droid_general", 
    xp = 316, 

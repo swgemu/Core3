@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_mass_driver = object_draft_schematic_vehicle_component_shared_mass_driver:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_mass_driver, "object/draft_schematic/vehicle/component/mass_driver.iff")

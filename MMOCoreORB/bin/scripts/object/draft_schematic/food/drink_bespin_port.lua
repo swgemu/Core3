@@ -50,7 +50,8 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_food_general", 
    xp = 280, 
 

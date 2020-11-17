@@ -50,7 +50,8 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 110, 
 

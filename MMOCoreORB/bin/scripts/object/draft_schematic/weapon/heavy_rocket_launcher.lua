@@ -50,7 +50,8 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 770, 
 

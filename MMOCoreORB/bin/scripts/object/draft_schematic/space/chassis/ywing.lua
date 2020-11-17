@@ -51,7 +51,8 @@ object_draft_schematic_space_chassis_ywing = object_draft_schematic_space_chassi
 	complexity = 27,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 3750,
 

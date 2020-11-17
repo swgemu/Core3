@@ -51,7 +51,8 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
 	complexity = 36,
 	size = 14,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 7800,
 

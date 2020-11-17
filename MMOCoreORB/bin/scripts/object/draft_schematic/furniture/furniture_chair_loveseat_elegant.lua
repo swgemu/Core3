@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_chair_loveseat_elegant = object_draft
 	complexity = 31,
 	size = 3,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1250,
 

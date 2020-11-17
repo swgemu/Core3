@@ -50,7 +50,8 @@ object_draft_schematic_weapon_2h_sword_scythe = object_draft_schematic_weapon_sh
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 250, 
 

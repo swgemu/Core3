@@ -48,7 +48,8 @@ object_draft_schematic_item_quest_item_fs_medic_puzzle_heal_pack = object_draft_
 	complexity = 5,
 	size = 1,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
+   
 	xpType = "crafting_medicine_general",
 	xp = 30,
 

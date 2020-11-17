@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_reactor_unit = object_draft_schematic_vehicle_component_shared_reactor_unit:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_reactor_unit, "object/draft_schematic/vehicle/component/reactor_unit.iff")

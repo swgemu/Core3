@@ -50,7 +50,8 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 700, 
 

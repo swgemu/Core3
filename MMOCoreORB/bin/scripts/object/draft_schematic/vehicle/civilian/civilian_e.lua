@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_civilian_civilian_e = object_draft_schematic_vehicle_civilian_shared_civilian_e:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_civilian_e, "object/draft_schematic/vehicle/civilian/civilian_e.iff")

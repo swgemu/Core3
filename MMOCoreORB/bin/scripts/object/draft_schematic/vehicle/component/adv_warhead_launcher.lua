@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_adv_warhead_launcher = object_draft_schematic_vehicle_component_shared_adv_warhead_launcher:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_adv_warhead_launcher, "object/draft_schematic/vehicle/component/adv_warhead_launcher.iff")

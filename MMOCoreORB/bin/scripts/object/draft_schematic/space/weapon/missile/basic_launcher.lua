@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_weapon_missile_basic_launcher = object_draft_schematic_space_weapon_missile_shared_basic_launcher:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_basic_launcher, "object/draft_schematic/space/weapon/missile/basic_launcher.iff")

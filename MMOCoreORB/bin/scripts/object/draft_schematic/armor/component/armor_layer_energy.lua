@@ -51,6 +51,7 @@ object_draft_schematic_armor_component_armor_layer_energy = object_draft_schemat
 	complexity = 20,
 	size = 3,
 	factoryCrateSize = 100,
+	factoryCrateTypeateTypeateTypeateType = "object/factory/factory_crate_generic_items.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 90,

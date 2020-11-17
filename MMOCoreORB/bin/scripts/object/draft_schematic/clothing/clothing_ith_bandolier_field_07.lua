@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_ith_bandolier_field_07 = object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_bandolier_field_07, "object/draft_schematic/clothing/clothing_ith_bandolier_field_07.iff")

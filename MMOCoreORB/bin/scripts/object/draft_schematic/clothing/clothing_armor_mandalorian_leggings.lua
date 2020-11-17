@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_armor_mandalorian_leggings = object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_mandalorian_leggings, "object/draft_schematic/clothing/clothing_armor_mandalorian_leggings.iff")

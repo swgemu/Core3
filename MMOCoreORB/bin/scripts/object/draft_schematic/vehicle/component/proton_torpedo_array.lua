@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_proton_torpedo_array = object_draft_schematic_vehicle_component_shared_proton_torpedo_array:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_proton_torpedo_array, "object/draft_schematic/vehicle/component/proton_torpedo_array.iff")

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_item_quest_item_fs_craft_puzzle_decryption_chip = object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip:new {
-
+    factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_fs_craft_puzzle_decryption_chip, "object/draft_schematic/item/quest_item/fs_craft_puzzle_decryption_chip.iff")

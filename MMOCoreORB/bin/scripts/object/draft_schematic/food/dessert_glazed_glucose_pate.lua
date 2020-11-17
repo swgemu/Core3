@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dessert_glazed_glucose_pate = object_draft_schematic_food_shared_dessert_glazed_glucose_pate:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_glazed_glucose_pate, "object/draft_schematic/food/dessert_glazed_glucose_pate.iff")
