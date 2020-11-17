@@ -117,6 +117,13 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient Vector<string> rebelStrongholds;
 
+	@dereferenced
+	protected transient Vector<string> corelliaCities;
+	@dereferenced
+	protected transient Vector<string> nabooCities;
+	@dereferenced
+	protected transient Vector<string> tatooineCities;
+
 	public GCWManager(Zone zne){
 		imperialBases = 0;
 		imperialScore = 0;
@@ -408,6 +415,9 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	private native void updateWinningFaction();
+
+	@local
+	private native void spawnGcwControlBanners();
 
 	@local
 	@read

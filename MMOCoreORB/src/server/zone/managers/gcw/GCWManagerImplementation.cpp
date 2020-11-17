@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
@@ -186,6 +187,37 @@ void GCWManagerImplementation::loadLuaConfig() {
 	info("Loaded " + String::valueOf(imperialStrongholds.size()) + " imperial strongholds and " + String::valueOf(rebelStrongholds.size()) +
 		 " rebel strongholds.");
 
+	LuaObject controlledCitiesObject = lua->getGlobalObject("factionControlCities");
+	if (controlledCitiesObject.isValidTable()) {
+
+		LuaObject corelliaCitiesObject = controlledCitiesObject.getObjectField("corellia");
+		if (corelliaCitiesObject.isValidTable()) {
+			for (int i = 1; i <= corelliaCitiesObject.getTableSize(); i++)
+				corelliaCities.add(corelliaCitiesObject.getStringAt(i));
+		}
+		corelliaCitiesObject.pop();
+
+		LuaObject nabooCitiesObject = controlledCitiesObject.getObjectField("naboo");
+		if (nabooCitiesObject.isValidTable()) {
+			for (int i = 1; i <= nabooCitiesObject.getTableSize(); i++)
+				nabooCities.add(nabooCitiesObject.getStringAt(i));
+		}
+		nabooCitiesObject.pop();
+
+		LuaObject tatooineCitiesObject = controlledCitiesObject.getObjectField("tatooine");
+		if (tatooineCitiesObject.isValidTable()) {
+			for (int i = 1; i <= tatooineCitiesObject.getTableSize(); i++)
+				tatooineCities.add(tatooineCitiesObject.getStringAt(i));
+		}
+		tatooineCitiesObject.pop();
+
+	}
+	controlledCitiesObject.pop();
+
+	info ("Loaded " + String::valueOf(corelliaCities.size()) + " Corellia Faction Controlled Cities.");
+	info ("Loaded " + String::valueOf(nabooCities.size()) + " Naboo Faction Controlled Cities.");
+	info ("Loaded " + String::valueOf(tatooineCities.size()) + " Tatooine Faction Controlled Cities.");
+
 	LuaObject terminalSpawnTable = lua->getGlobalObject("terminalSpawns");
 
 	if (terminalSpawnTable.isValidTable()) {
@@ -297,7 +329,8 @@ void GCWManagerImplementation::performGCWTasks(bool initial) {
 	setImperialScore(imperialsScore);
 
 	updateWinningFaction();
-
+	//spawnGcwControlBanners();
+	
 	uint64 timer = gcwCheckTimer * 1000;
 
 	if (initial) {
@@ -405,6 +438,40 @@ void GCWManagerImplementation::updateWinningFaction() {
 		}
 	}
 	winnerDifficultyScaling = scaling;
+}
+
+void GCWManagerImplementation::spawnGcwControlBanners() {
+	String planetString = zone->getZoneName();
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	//LuaFunction* luaSpawnCityControlBanners = lua->createFunction("scripts/screenplays/gcw/city_control_banners.lua", "spawnGcwControlBanners", 0);
+
+	//String city = corelliaCities.get(1);
+	//*luaSpawnCityControlBanners << city;
+	//luaSpawnCityControlBanners->callFunction();
+
+/*	if (planetString == "corellia") {
+		for (int i = 0; i <= corelliaCities.size(); i++) {
+			String city = corelliaCities.get(i);
+		}
+		*luaSpawnCityControlBanners << city;
+		luaSpawnCityControlBanners->callFunction();
+	}
+
+	if (planetString == "naboo") {
+		for (int i = 0; i <= nabooCities.size(); i++) {
+			String city = nabooCities.get(i);
+			*luaSpawnCityControlBanners << city;
+			luaSpawnCityControlBanners->callFunction();
+		}
+	}
+
+	if (planetString == "tatooine") {
+		for (int i = 0; i <= tatooineCities.size(); i++) {
+			String city = tatooineCities.get(i);
+			*luaSpawnCityControlBanners << city;
+			luaSpawnCityControlBanners->callFunction();
+		}
+	}*/
 }
 
 bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
