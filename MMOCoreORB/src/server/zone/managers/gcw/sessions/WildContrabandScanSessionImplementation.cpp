@@ -179,9 +179,13 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 																						  *spawnPoint->getPosition(), *spawnPoint->getDirection(), false);
 					lambdaTask->schedule(1);
 				} else {
+					float spawnDirection = player->getDirection()->getRadians() + Math::PI;
+					if (spawnDirection >= 2 * Math::PI) {
+						spawnDirection -= 2 * Math::PI;
+					}
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
-						Quaternion(Vector3(0, 1, 0), player->getDirection()->getRadians() + 3.14f), false);
+						Quaternion(Vector3(0, 1, 0), spawnDirection), false);
 					lambdaTask->schedule(1);
 				}
 
