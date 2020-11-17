@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_booster_xwing_booster_mk1 = object_draft_schematic_space_booster_shared_xwing_booster_mk1:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_xwing_booster_mk1, "object/draft_schematic/space/booster/xwing_booster_mk1.iff")

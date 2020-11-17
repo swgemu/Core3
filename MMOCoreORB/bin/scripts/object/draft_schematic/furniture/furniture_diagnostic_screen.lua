@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_diagnostic_screen = object_draft_schematic_furniture_shared_furniture_diagnostic_screen:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_diagnostic_screen, "object/draft_schematic/furniture/furniture_diagnostic_screen.iff")

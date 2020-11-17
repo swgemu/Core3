@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_kylessian_fruit_distillate = object_draft_schematic_food_shared_drink_kylessian_fruit_distillate:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_kylessian_fruit_distillate, "object/draft_schematic/food/drink_kylessian_fruit_distillate.iff")

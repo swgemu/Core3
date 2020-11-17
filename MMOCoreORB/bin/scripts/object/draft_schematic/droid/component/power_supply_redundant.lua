@@ -51,6 +51,7 @@ object_draft_schematic_droid_component_power_supply_redundant = object_draft_sch
 	complexity = 10,
 	size = 1,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 50,

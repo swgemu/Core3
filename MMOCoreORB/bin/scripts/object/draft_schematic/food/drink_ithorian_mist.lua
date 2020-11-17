@@ -50,6 +50,7 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
+   factoryCrateType = "object/factory/factory_crate_food.iff",
 
    xpType = "crafting_food_general", 
    xp = 240, 

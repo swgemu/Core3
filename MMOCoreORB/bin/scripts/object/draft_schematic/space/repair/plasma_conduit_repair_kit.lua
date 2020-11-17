@@ -50,7 +50,8 @@ object_draft_schematic_space_repair_plasma_conduit_repair_kit = object_draft_sch
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 32, 
 

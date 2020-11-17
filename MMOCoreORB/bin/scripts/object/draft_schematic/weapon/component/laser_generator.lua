@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_laser_generator = object_draft_schematic_weapon_component_shared_laser_generator:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_laser_generator, "object/draft_schematic/weapon/component/laser_generator.iff")

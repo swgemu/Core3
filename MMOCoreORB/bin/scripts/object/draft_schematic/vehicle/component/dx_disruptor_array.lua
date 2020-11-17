@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_dx_disruptor_array = object_draft_schematic_vehicle_component_shared_dx_disruptor_array:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_dx_disruptor_array, "object/draft_schematic/vehicle/component/dx_disruptor_array.iff")

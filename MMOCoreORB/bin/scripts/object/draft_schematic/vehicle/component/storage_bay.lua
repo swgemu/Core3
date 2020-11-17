@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_storage_bay = object_draft_schematic_vehicle_component_shared_storage_bay:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_storage_bay, "object/draft_schematic/vehicle/component/storage_bay.iff")

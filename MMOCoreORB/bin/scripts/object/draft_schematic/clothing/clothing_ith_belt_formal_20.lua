@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_ith_belt_formal_20 = object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_belt_formal_20, "object/draft_schematic/clothing/clothing_ith_belt_formal_20.iff")

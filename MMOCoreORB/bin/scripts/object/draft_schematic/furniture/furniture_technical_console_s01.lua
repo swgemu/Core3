@@ -49,11 +49,11 @@ object_draft_schematic_furniture_furniture_technical_console_s01 = object_draft_
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 36, 
    size = 1, 
-
+   factoryCrateSize = 0,
+   factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
    xpType = "crafting_structure_general", 
    xp = 1480, 
-
-   factoryCrateSize = 0,
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 

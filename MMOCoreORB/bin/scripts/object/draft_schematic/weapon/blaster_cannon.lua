@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_blaster_cannon = object_draft_schematic_weapon_shared_blaster_cannon:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_blaster_cannon, "object/draft_schematic/weapon/blaster_cannon.iff")

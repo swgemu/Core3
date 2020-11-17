@@ -50,6 +50,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_01 = object_draft_
    craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 2, 
+   factoryCrateType = "object/factory/factory_crate_clothing.iff",
 
    xpType = "crafting_clothing_general", 
    xp = 70, 

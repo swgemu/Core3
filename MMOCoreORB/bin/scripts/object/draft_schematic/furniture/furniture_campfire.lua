@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_campfire = object_draft_schematic_furniture_shared_furniture_campfire:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_campfire, "object/draft_schematic/furniture/furniture_campfire.iff")

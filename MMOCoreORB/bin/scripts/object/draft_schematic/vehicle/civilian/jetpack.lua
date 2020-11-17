@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_civilian_jetpack = object_draft_schematic_vehicle_civilian_shared_jetpack:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_jetpack, "object/draft_schematic/vehicle/civilian/jetpack.iff")

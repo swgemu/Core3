@@ -51,6 +51,7 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
 	complexity = 15,
 	size = 2,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
 
 	xpType = "crafting_medicine_general",
 	xp = 55,

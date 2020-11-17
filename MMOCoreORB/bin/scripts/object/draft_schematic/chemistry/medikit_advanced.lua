@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_medikit_advanced = object_draft_schematic_chemistry_shared_medikit_advanced:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medikit_advanced, "object/draft_schematic/chemistry/medikit_advanced.iff")

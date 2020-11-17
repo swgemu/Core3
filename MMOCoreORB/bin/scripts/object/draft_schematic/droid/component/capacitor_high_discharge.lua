@@ -51,6 +51,7 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
 	complexity = 15,
 	size = 1,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 100,

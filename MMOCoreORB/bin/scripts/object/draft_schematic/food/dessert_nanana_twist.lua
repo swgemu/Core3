@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dessert_nanana_twist = object_draft_schematic_food_shared_dessert_nanana_twist:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_nanana_twist, "object/draft_schematic/food/dessert_nanana_twist.iff")

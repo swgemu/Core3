@@ -50,6 +50,7 @@ object_draft_schematic_droid_component_combat_socket_bank = object_draft_schemat
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
    xpType = "crafting_droid_general", 
    xp = 135, 

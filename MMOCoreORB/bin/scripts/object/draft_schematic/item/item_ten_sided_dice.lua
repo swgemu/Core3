@@ -50,7 +50,8 @@ object_draft_schematic_item_item_ten_sided_dice = object_draft_schematic_item_sh
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 2, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 16, 
 

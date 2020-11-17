@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_table_coffee_modern_02 = object_draft_schematic_furniture_shared_furniture_table_coffee_modern_02:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_coffee_modern_02, "object/draft_schematic/furniture/furniture_table_coffee_modern_02.iff")

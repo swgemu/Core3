@@ -51,7 +51,8 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
 	complexity = 15,
 	size = 10,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 900,
 

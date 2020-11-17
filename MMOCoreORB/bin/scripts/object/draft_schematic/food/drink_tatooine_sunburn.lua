@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_tatooine_sunburn = object_draft_schematic_food_shared_drink_tatooine_sunburn:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_tatooine_sunburn, "object/draft_schematic/food/drink_tatooine_sunburn.iff")

@@ -50,7 +50,8 @@ object_draft_schematic_scout_item_camokit_naboo = object_draft_schematic_scout_s
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 2, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "scout", 
    xp = 170, 
 

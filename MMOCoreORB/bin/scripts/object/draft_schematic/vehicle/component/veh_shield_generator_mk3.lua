@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_veh_shield_generator_mk3 = object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_veh_shield_generator_mk3, "object/draft_schematic/vehicle/component/veh_shield_generator_mk3.iff")

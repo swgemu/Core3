@@ -50,7 +50,8 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 5, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_structure_general", 
    xp = 900, 
 

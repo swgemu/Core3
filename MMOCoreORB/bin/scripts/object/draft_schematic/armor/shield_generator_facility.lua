@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_shield_generator_facility = object_draft_schematic_armor_shared_shield_generator_facility:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shield_generator_facility, "object/draft_schematic/armor/shield_generator_facility.iff")
