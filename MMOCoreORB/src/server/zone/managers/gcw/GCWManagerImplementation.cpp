@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
@@ -57,6 +58,7 @@ void GCWManagerImplementation::initialize() {
 void GCWManagerImplementation::start() {
 	performGCWTasks(true);
 	performCheckWildContrabandScanTask();
+	spawnGcwControlBanners();
 }
 
 void GCWManagerImplementation::loadLuaConfig() {
@@ -296,6 +298,7 @@ void GCWManagerImplementation::performGCWTasks(bool initial) {
 	setRebelScore(rebelsScore);
 	setImperialScore(imperialsScore);
 
+	despawnGcwControlBanners();
 	updateWinningFaction();
 
 	uint64 timer = gcwCheckTimer * 1000;
@@ -405,6 +408,25 @@ void GCWManagerImplementation::updateWinningFaction() {
 		}
 	}
 	winnerDifficultyScaling = scaling;
+	spawnGcwControlBanners();
+}
+
+void GCWManagerImplementation::spawnGcwControlBanners() {
+	String zoneName = zone->getZoneName();
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaSpawnCityControlBanners = lua->createFunction("CityControlBanners", "spawnGcwControlBanners", 0);
+
+	*luaSpawnCityControlBanners << zoneName;
+	luaSpawnCityControlBanners->callFunction();
+}
+
+void GCWManagerImplementation::despawnGcwControlBanners() {
+	String zoneName = zone->getZoneName();
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaDespawnCityControlBanners = lua->createFunction("CityControlBanners", "despawnGcwControlBanners", 0);
+
+	*luaDespawnCityControlBanners << zoneName;
+	luaDespawnCityControlBanners->callFunction();
 }
 
 bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
