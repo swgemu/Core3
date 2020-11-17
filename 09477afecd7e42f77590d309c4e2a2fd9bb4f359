@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_43652944",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-17T07:28:45Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "09477afecd7e42f77590d309c4e2a2fd9bb4f359",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_a35a4581",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-17T07:28:45Z",
+      "side": 1,
+      "message": "Consider sending the bannerTable directly here, since you have all information in the calling method to retrieve it.",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "09477afecd7e42f77590d309c4e2a2fd9bb4f359",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_e3539d6a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-17T07:28:45Z",
+      "side": 1,
+      "message": "Consider using the opposite order and else instead. That way you could remove the specific set to FACTIONIMPERIAL in the calling method. It will also take care of any value not being rebel, neutral or imperial. \"Defensive programming\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 5
+      },
+      "revId": "09477afecd7e42f77590d309c4e2a2fd9bb4f359",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_835f4172",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-17T07:28:45Z",
+      "side": 1,
+      "message": "Do you need to store this information? It is not used.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "09477afecd7e42f77590d309c4e2a2fd9bb4f359",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_c3501961",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-17T07:28:45Z",
+      "side": 1,
+      "message": "How do you sync this timing with the GCW task? Is there a risk of multiple banners beeing spawned at the same time? Will there be instances where no banners are spawned?",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "09477afecd7e42f77590d309c4e2a2fd9bb4f359",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
