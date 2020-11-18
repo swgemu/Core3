@@ -197,6 +197,16 @@ class PlayerManager extends Observer implements Logger {
 	@local @dereferenced
 	public native SortedVector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
 
+	/**
+	* Returns a collection of items, in the players inventory, whose GameObjectType is 
+	* indicated in the given mask
+	* @param player The player for which to find the items.
+	* @param mask A bitmask representing the GambeObjectTypes to search for
+	* @return a collection of matching SceneObjects
+	*/
+	@local @dereferenced
+	public native SortedVector<SceneObject> getInventoryItemsOfType(CreatureObject player, int mask);
+
 	@local
 	public native void addInsurableItemsRecursive(SceneObject obj, SortedVector<SceneObject> items, boolean onlyInsurable);
 
