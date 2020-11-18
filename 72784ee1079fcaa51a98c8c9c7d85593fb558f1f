@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_c3ac9938",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-18T07:19:57Z",
+      "side": 1,
+      "message": "I think you need to add the planet name here as well. Otherwise different planets will overwrite each other.",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "72784ee1079fcaa51a98c8c9c7d85593fb558f1f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_23aab519",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_banners.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-18T07:19:57Z",
+      "side": 1,
+      "message": "As miztah said, run the despawn first in the lua method that spawns the banners.",
+      "range": {
+        "startLine": 155,
+        "startChar": 28,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "72784ee1079fcaa51a98c8c9c7d85593fb558f1f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
