@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/gcw/tasks/StartVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/EndVulnerabilityTask.h"
 #include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
@@ -297,6 +298,7 @@ void GCWManagerImplementation::performGCWTasks(bool initial) {
 	setImperialScore(imperialsScore);
 
 	updateWinningFaction();
+	spawnGcwControlBanners();
 
 	uint64 timer = gcwCheckTimer * 1000;
 
@@ -405,6 +407,20 @@ void GCWManagerImplementation::updateWinningFaction() {
 		}
 	}
 	winnerDifficultyScaling = scaling;
+}
+
+void GCWManagerImplementation::spawnGcwControlBanners() {
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	String zoneName = zone->getZoneName();
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaSpawnCityControlBanners = lua->createFunction("CityControlBanners", "spawnGcwControlBanners", 0);
+
+	*luaSpawnCityControlBanners << zoneName;
+	luaSpawnCityControlBanners->callFunction();
 }
 
 bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
