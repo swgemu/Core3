@@ -208,8 +208,11 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 		return;
 	 	}
 
+		String lairName = lair->getName();
+
 	 	Locker llocker(lairObject);
 
+		lairObject->setObjectName("@lair_n:" + lairName, false);
 	 	lairObject->setFaction(lair->getFaction());
 	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
 	 	lairObject->setOptionsBitmask(0, false);
