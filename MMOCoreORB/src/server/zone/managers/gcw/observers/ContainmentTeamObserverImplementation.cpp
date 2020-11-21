@@ -52,7 +52,7 @@ bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(S
 		auto npc = getMember(i);
 		if (npc != nullptr) {
 			Locker npcLock(npc);
-			if ((!npc->isInCombat() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) < 2) || forcedCleanup) {
+			if ((!npc->isInCombat() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) < 4) || forcedCleanup) {
 				if (!npc->isDead()) {
 					npc->destroyObjectFromWorld(true);
 				}
