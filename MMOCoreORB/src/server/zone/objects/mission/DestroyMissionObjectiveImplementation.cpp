@@ -184,6 +184,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	}
 
 	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
+	//LairTemplate* lair = mission->getTargetOptionalTemplate();
 
 	if (lair == nullptr) {
 		error("incorrect lair template in destroy mission objective " + lairTemplate);
@@ -208,8 +209,11 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 		return;
 	 	}
 
+		String lairName = lair->getName();
+
 	 	Locker llocker(lairObject);
 
+		lairObject->setObjectName("@lair_n:" + lairName, false);
 	 	lairObject->setFaction(lair->getFaction());
 	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
 	 	lairObject->setOptionsBitmask(0, false);
