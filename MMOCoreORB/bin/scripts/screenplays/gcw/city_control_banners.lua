@@ -105,7 +105,7 @@ CityControlBanners = ScreenPlay:new {
 			{-2993.608, 5.000, 1964.793, 0, math.rad(74.044)},
 		--Mos Entha
 			--Starport
-			{1303.348, 7.000, 3146.391, 0, math.rad(37.104)},
+			{1303.348, 7.000, 3146.391, 0, math.rad(-37.104)},
 			--Shuttleports
 			{1381.281, 7.575, 3472.505, 0, math.rad(0.763)},
 			{1716.585, 7.602, 3190.000, 0, math.rad(0.725)},
