@@ -664,7 +664,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
-	if(outputHopper == nullptr || type == nullptr) {
+	if(outputHopper == nullptr || type.isEmpty()) {
 		stopFactory("manf_error_6", "", "", -1);
 		return nullptr;
 	}
