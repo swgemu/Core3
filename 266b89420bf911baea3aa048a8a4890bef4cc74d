@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_36a031f4",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T10:50:27Z",
+      "side": 1,
+      "message": "clips through buildings during take off",
+      "range": {
+        "startLine": 1152,
+        "startChar": 2,
+        "endLine": 1152,
+        "endChar": 36
+      },
+      "revId": "266b89420bf911baea3aa048a8a4890bef4cc74d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_96a5bd06",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T10:50:27Z",
+      "side": 1,
+      "message": "Clips through terrain during take off.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 35
+      },
+      "revId": "266b89420bf911baea3aa048a8a4890bef4cc74d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_76aaa9d5",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T10:50:27Z",
+      "side": 1,
+      "message": "Clips through terrain during take off.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 2,
+        "endLine": 1160,
+        "endChar": 40
+      },
+      "revId": "266b89420bf911baea3aa048a8a4890bef4cc74d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_d6ae15e7",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T10:50:27Z",
+      "side": 1,
+      "message": "Clips through terrain during take off.",
+      "range": {
+        "startLine": 1161,
+        "startChar": 2,
+        "endLine": 1161,
+        "endChar": 36
+      },
+      "revId": "266b89420bf911baea3aa048a8a4890bef4cc74d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
