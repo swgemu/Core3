@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_56820553",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T12:51:31Z",
+      "side": 1,
+      "message": "Auto-levelling of NPC\u0027s causes the Lambda shuttle to change direction after landing and it takes of right into a mountain.\n\nI think we need to be sure that the landing site is flat so that the lambda spawns horizontal and not at an angle.",
+      "range": {
+        "startLine": 635,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 35
+      },
+      "revId": "8d8b2b0e7cb37f8280eb2018f06ab52cb32304c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_36879163",
+        "filename": "MMOCoreORB/bin/scripts/managers/mission/mission_npc_spawn_points.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-11-26T12:51:31Z",
+      "side": 1,
+      "message": "Same thing with this one.",
+      "range": {
+        "startLine": 636,
+        "startChar": 2,
+        "endLine": 636,
+        "endChar": 37
+      },
+      "revId": "8d8b2b0e7cb37f8280eb2018f06ab52cb32304c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
