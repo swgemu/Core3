@@ -69,6 +69,14 @@ NpcSpawnPoint* MissionNpcSpawnMap::addSpawnPoint(uint32 planetCRC, Reference<Npc
 	return nullptr;
 }
 
+void MissionNpcSpawnMap::removeSpawnPoint(uint32 planetCRC, NpcSpawnPoint* npc) {
+	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
+
+	if (planet != nullptr) {
+		return planet->remove(npc);
+	}
+}
+
 NpcSpawnPoint* MissionNpcSpawnMap::findSpawnAt(uint32 planetCRC, const Vector3* position) const {
 	Reference<const PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
 
