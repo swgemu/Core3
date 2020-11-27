@@ -567,7 +567,7 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
 	if (spawnPoint != nullptr) {
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage,
-																			  *spawnPoint->getPosition(), *spawnPoint->getDirection(), true);
+																			  *spawnPoint->getPosition(), *spawnPoint->getDirection(), true, true);
 		lambdaTask->schedule(IMMEDIATELY);
 	} else {
 		StringBuffer errorMessage;

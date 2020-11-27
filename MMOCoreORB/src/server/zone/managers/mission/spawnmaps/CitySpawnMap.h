@@ -134,6 +134,14 @@ public:
 	}
 
 	/**
+	 * Remove a spawn point.
+	 * @param npc the npc spawn point to remove.
+	 */
+	void remove(NpcSpawnPoint* npc) {
+		npcSpawnMap.removeElement(npc);
+	}
+
+	/**
 	 * Finds the nearest NPC spawn point.
 	 * @param position the position to search from.
 	 * @return the nearest NPC spawn point.
