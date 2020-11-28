@@ -43,14 +43,14 @@ public:
 			Quaternion direction;
 			direction.setHeadingDirection(creature->getDirection()->getRadians());
 			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction, false);
+				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction, false, true);
 			lambdaTask->schedule(1);
 		} else {
 			String arg = "";
 
 			args.getStringToken(arg);
 
-			if (arg == "closestlambda") {
+			if (arg == "closestlambda" || arg == "closestlambdanotroops") {
 				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
 				if (missionManager != nullptr) {
 					NpcSpawnPoint* nsp = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
@@ -59,7 +59,7 @@ public:
 						Quaternion direction;
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
 						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, false);
+							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, false, arg == "closestlambda");
 						lambdaTask->schedule(1);
 						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() + ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
 						creature->sendSystemMessage(text);
@@ -69,6 +69,9 @@ public:
 				} else {
 					return INVALIDSTATE;
 				}
+			} else if (arg == "removeclosestlambda") {
+				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
+				missionManager->removeSpawnPoint(creature, "lambda");
 			} else {
 				return INVALIDPARAMETERS;
 			}
