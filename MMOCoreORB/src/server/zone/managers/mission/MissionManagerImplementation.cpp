@@ -1675,6 +1675,37 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 	}
 }
 
+void MissionManagerImplementation::removeSpawnPoint(CreatureObject* player, const String& spawnTypes) {
+	if (player == nullptr) {
+		return;
+	}
+
+	if (player->getParentID() != 0 || spawnTypes == "") {
+		String text = "Player position = " + player->getPosition().toString() + ", direction = " + String::valueOf(player->getDirection()->getRadians()) + ", cell id = " + String::valueOf(player->getParentID());
+		player->sendSystemMessage(text);
+		return;
+	}
+
+	Reference<NpcSpawnPoint* > npc = new NpcSpawnPoint(player, spawnTypes);
+	if (npc != nullptr && npc->getSpawnType() != 0) {
+		//Lock mission spawn points.
+		Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+		String message;
+		auto returnedNpc = getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), npc->getSpawnType());
+		if (returnedNpc != nullptr) {
+			missionNpcSpawnMap.removeSpawnPoint(player->getPlanetCRC(), returnedNpc);
+			missionNpcSpawnMap.saveSpawnPoints();
+			message = "NPC spawn point removed at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
+		} else {
+			message = "No NPC spawn point found close to coordinates " + player->getPosition().toString() + " of spawn type " + spawnTypes;
+		}
+		player->sendSystemMessage(message);
+	} else {
+		player->sendSystemMessage("Incorrect parameters.");
+	}
+}
+
 LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* player, const uint32 faction, unsigned int type) {
 	Zone* zone = player->getZone();
 

@@ -29,6 +29,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	Vector3 spawnPosition;
 	Quaternion spawnDirection;
 	bool attack;
+	bool spawnContainmentTeam;
 	int closingInTime;
 	int timeToDespawnLambdaShuttle;
 	int cleanUpTime;
@@ -104,7 +105,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		float y = lambdaShuttle->getPositionY() + yOffsetRotated;
 		float z = zone->getHeight(x, y);
 
-		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
+		Reference<AiAgent*> npc =
+			cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
 
 		if (npc != nullptr) {
 			Locker npcLock(npc);
@@ -153,8 +155,12 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 				attack = true;
 			}
 		}
-		spawnOneSetOfTroops(lambdaShuttle, player);
-		if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
+		if (spawnContainmentTeam) {
+			spawnOneSetOfTroops(lambdaShuttle, player);
+			if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
+				state = TAKEOFF;
+			}
+		} else {
 			state = TAKEOFF;
 		}
 		reschedule(SPAWNDELAY);
@@ -252,7 +258,8 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack) {
+	LambdaShuttleWithReinforcementsTask(
+		CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack, bool spawnContainmentTeam) {
 		weakPlayer = player;
 		containmentTeamObserver = new ContainmentTeamObserver();
 		state = SPAWN;
@@ -273,6 +280,7 @@ public:
 		spawnPosition = position;
 		spawnDirection = direction;
 		this->attack = attack;
+		this->spawnContainmentTeam = spawnContainmentTeam;
 		closingInTime = 120;
 		timeToDespawnLambdaShuttle = -1;
 		cleanUpTime = 60;
@@ -330,7 +338,11 @@ public:
 			break;
 		case TAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
-			state = CLOSINGIN;
+			if (spawnContainmentTeam) {
+				state = CLOSINGIN;
+			} else {
+				state = PICKUPDESPAWN;
+			}
 			reschedule(TASKDELAY);
 			break;
 		case CLOSINGIN:
