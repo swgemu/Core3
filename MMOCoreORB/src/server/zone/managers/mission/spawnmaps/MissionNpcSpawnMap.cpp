@@ -15,6 +15,7 @@ void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 
 		LuaObject cities = lua->getGlobalObject("cities");
 
+		spawnMap.clear();
 		spawnMap.addCities(&cities);
 
 		LuaObject universeObject = lua->getGlobalObject("universe");
@@ -120,4 +121,5 @@ void MissionNpcSpawnMap::saveSpawnPoints() {
 	file << "}" << std::endl << std::endl;
 
 	spawnMap.saveSpawnPoints(file);
+	loadSpawnPointsFromLua();
 }
