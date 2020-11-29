@@ -1,0 +1,1 @@
+includeFile("../custom_scripts/loot/groups/visions_quest_loot_group.lua")
