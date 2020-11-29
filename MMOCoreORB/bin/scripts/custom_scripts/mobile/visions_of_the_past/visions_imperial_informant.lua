@@ -1,0 +1,35 @@
+visions_imperial_informant = Creature:new {
+	customName = "Rich Koster (a Imperial Informant)",
+	socialGroup = "imperial",
+	faction = "imperial",
+	level = 4,
+	chanceHit = 0.24,
+	damageMin = 40,
+	damageMax = 45,
+	baseXp = 62,
+	baseHAM = 113,
+	baseHAMmax = 138,
+	armor = 0,
+	resists = {15,15,15,15,15,15,15,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "VisionsRichKosterConvoTemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(visions_imperial_informant, "visions_imperial_informant")
