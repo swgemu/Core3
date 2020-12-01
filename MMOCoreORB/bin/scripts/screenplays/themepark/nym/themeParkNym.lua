@@ -238,19 +238,20 @@ function NymContainerComponent:transferObject(pContainer, pObj, slot)
 	end
 
 	local questObjectPath, correctItemMsg, wrongItemMsg, questState, questStateValue
-	if (SceneObject(pContainer):getObjectName() == "jinkins") then
+	--[[if (SceneObject(pContainer):getObjectName() == "jinkins") then
 		questObjectPath = "object/tangible/loot/quest/nym_droid_memory_chip.iff"
 		correctItemMsg = "@celebrity/jinkins:gave_brain"
 		wrongItemMsg = "@celebrity/jinkins:whats_this"
 		questState = "nym_theme_park_jinkinsNpc"
-		questStateValue = 2
-	elseif (SceneObject(pContainer):getObjectName() == "kole") then
+		questStateValue = 2]]
+	--[[if (SceneObject(pContainer):getObjectName() == "kole") then
 		questObjectPath = "object/tangible/loot/quest/nym_filtered_gas.iff"
 		correctItemMsg = "@celebrity/kole:gave_gas"
 		wrongItemMsg = "@celebrity/kole:whats_this"
 		questState = "nym_theme_park_koleNpc"
-		questStateValue = 2
-	elseif (SceneObject(pContainer):getObjectName() == "nym") then
+		questStateValue = 2]]
+		
+	if (SceneObject(pContainer):getObjectName() == "nym") then
 		if (SceneObject(pObj):getTemplateObjectPath() ~= "object/tangible/loot/quest/nym_hard_drive.iff") and (SceneObject(pObj):getTemplateObjectPath() ~= "object/tangible/loot/quest/nym_imggc.iff") then
 			spatialChat(pContainer, "@celebrity/jinkins:whats_this") -- Nym has no "whats_this", using jinkins response
 			return 0
@@ -369,13 +370,11 @@ function NymContainerComponent:canAddObject(pContainer, pObj, slot)
 
 	local containerSceo = SceneObject(pContainer)
 	local creature = CreatureObject(pPlayer)
-	if (containerSceo:getObjectName() == "jinkins" and creature:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") and not creature:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
-		return true
-	elseif (containerSceo:getObjectName() == "kole" and creature:hasScreenPlayState(1, "nym_theme_park_koleNpc") and not creature:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
-		return true
-	elseif (containerSceo:getObjectName() == "nym" and creature:hasScreenPlayState(1, "nym_theme_park_nymNpc") and (not creature:hasScreenPlayState(4, "nym_theme_park_nymNpc") or not creature:hasScreenPlayState(8, "nym_theme_park_nymNpc")) and not creature:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
+	
+	if (containerSceo:getObjectName() == "nym" and creature:hasScreenPlayState(1, "nym_theme_park_nymNpc") and (not creature:hasScreenPlayState(4, "nym_theme_park_nymNpc") or not creature:hasScreenPlayState(8, "nym_theme_park_nymNpc")) and not creature:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
 		return true
 	end
+	
 	return -1
 end
 
@@ -398,7 +397,7 @@ function ThemeParkNym:spawnNpcs()
 		if npcSpawnData.position == SIT then
 			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
 		end
-		if (npcSpawnData.npcTemplate == "jinkins") or (npcSpawnData.npcTemplate == "kole") or (npcSpawnData.npcTemplate == "nym") then
+		if (npcSpawnData.npcTemplate == "nym") then
 			SceneObject(pNpc):setContainerComponent("NymContainerComponent")
 		end
 	end
