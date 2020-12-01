@@ -101,7 +101,9 @@ function NymConvoHandler:runJinkinsScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
+
 	if (screenID == "heres_droid_memory") then
+
 		local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymPirateCaveWaypointID"))
 		if (oldWaypointID ~= 0) then
 			PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
@@ -110,7 +112,9 @@ function NymConvoHandler:runJinkinsScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		local waypointID = PlayerObject(pGhost):addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 		setQuestStatus(playerID .. ":nymPirateCaveWaypointID", waypointID)
 		self.themePark:setState(CreatureObject(pPlayer), 1, "nym_theme_park_jinkinsNpc")
+
 	elseif (screenID == "heres_the_guy") then
+
 		local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymHermitWaypointID"))
 		if (oldWaypointID ~= 0) then
 			PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
@@ -119,14 +123,37 @@ function NymConvoHandler:runJinkinsScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		local waypointID = PlayerObject(pGhost):addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 		setQuestStatus(playerID .. ":nymHermitWaypointID", waypointID)
 		self.themePark:setState(CreatureObject(pPlayer), 1, "nym_theme_park_chosterNpc")
+
+	elseif (screenID == "hand_it_over") then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject('inventory')
+
+		if (pInventory == nil) then
+			return ConvoScreen
+		end
+
+		local pObj = getContainerObjectsByTemplate(pInventory, "object/tangible/loot/quest/nym_droid_memory_chip.iff")
+
+		if pObj ~= nil then
+			ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
+			ThemeParkNym:setState(CreatureObject(pPlayer), 2, "nym_theme_park_jinkinsNpc")
+			SceneObject(pObj):destroyObjectFromWorld()
+			spatialChat(pNpc, "@celebrity/jinkins:gave_brain")
+			SceneObject(pObj):destroyObjectFromDatabase()
+		else
+			spatialChat(pNpc, "@celebrity/jinkins:whats_this")
+		end
+
 	elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
+
 		if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
 			clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_nym")
 		else
 			clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_kole")
 		end
 		clonedConversation:addOption("@celebrity/jinkins:see_ya", "good_bye")
+
 	end
+
 	return pConvScreen
 end
 
@@ -167,6 +194,34 @@ function NymConvoHandler:runKoleScreenHandlers(pConvTemplate, pPlayer, pNpc, sel
 		local waypointID = PlayerObject(pGhost):addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 		setQuestStatus(playerID .. ":nymBribeWaypointID", waypointID)
 		self.themePark:setState(CreatureObject(pPlayer), 1, "nym_theme_park_mooreNpc")
+
+	elseif (screenID == "hand_it_over") then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject('inventory')
+
+		if (pInventory == nil) then
+			return ConvoScreen
+		end
+
+		local pObj = getContainerObjectsByTemplate(pInventory, "object/tangible/loot/quest/nym_filtered_gas.iff")
+
+		if pObj ~= nil then
+			ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
+			ThemeParkNym:setState(CreatureObject(pPlayer), 2, "nym_theme_park_koleNpc")
+			SceneObject(pObj):destroyObjectFromWorld()
+			spatialChat(pNpc, "@celebrity/kole:gave_gas")
+			SceneObject(pObj):destroyObjectFromDatabase()
+		else
+			spatialChat(pNpc, "@celebrity/kole:whats_this")
+		end
+	elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
+
+		if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
+			clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_nym")
+		else
+			clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_kole")
+		end
+		clonedConversation:addOption("@celebrity/jinkins:see_ya", "good_bye")
+
 	end
 	return pConvScreen
 end
