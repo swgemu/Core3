@@ -1665,6 +1665,7 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 			} else if (*returnedNpc->getPosition() == *npc->getPosition()) {
 				message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawn type " + String::valueOf(npc->getSpawnType());
 				missionNpcSpawnMap.saveSpawnPoints();
+				missionNpcSpawnMap.loadSpawnPointsFromLua();
 			} else {
 				message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
 			}
