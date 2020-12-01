@@ -174,9 +174,9 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
 																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN, 128.f);
 				if (spawnPoint != nullptr) {
-					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1,
-																						  "@imperial_presence/contraband_search:containment_team_imperial",
-																						  *spawnPoint->getPosition(), *spawnPoint->getDirection(), false, true);
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", *spawnPoint->getPosition(),
+						*spawnPoint->getDirection(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				} else {
 					float spawnDirection = player->getDirection()->getRadians() + Math::PI;
@@ -185,7 +185,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 					}
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
-						Quaternion(Vector3(0, 1, 0), spawnDirection), false, true);
+						Quaternion(Vector3(0, 1, 0), spawnDirection), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				}
 
