@@ -42,8 +42,9 @@ public:
 		if (!args.hasMoreTokens()) {
 			Quaternion direction;
 			direction.setHeadingDirection(creature->getDirection()->getRadians());
-			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-				creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction, false, true);
+			Reference<Task*> lambdaTask =
+				new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial",
+														creature->getWorldPosition(), direction, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 			lambdaTask->schedule(1);
 		} else {
 			String arg = "";
@@ -58,10 +59,16 @@ public:
 					if (nsp != nullptr) {
 						Quaternion direction;
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
+						LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN;
+						if (arg == "closestlambdanotroops") {
+							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLENOTROOPS;
+						}
 						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, false, arg == "closestlambda");
+							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()),
+							direction, reinforcementType);
 						lambdaTask->schedule(1);
-						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() + ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
+						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() +
+									  ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
 						creature->sendSystemMessage(text);
 					} else {
 						return INVALIDSTATE;

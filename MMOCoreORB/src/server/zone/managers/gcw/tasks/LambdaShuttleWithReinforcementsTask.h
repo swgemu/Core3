@@ -20,6 +20,10 @@
 #include "templates/faction/Factions.h"
 
 class LambdaShuttleWithReinforcementsTask : public Task {
+public:
+	enum ReinforcementType { LAMBDASHUTTLEATTACK, LAMBDASHUTTLESCAN, LAMBDASHUTTLENOTROOPS };
+
+private:
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
 	ManagedReference<ContainmentTeamObserver*> containmentTeamObserver;
@@ -28,14 +32,13 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	String chatMessageId;
 	Vector3 spawnPosition;
 	Quaternion spawnDirection;
-	bool attack;
-	bool spawnContainmentTeam;
 	int closingInTime;
 	int timeToDespawnLambdaShuttle;
 	int cleanUpTime;
 	float spawnOffset;
 	unsigned int faction;
 	int delayTime;
+	ReinforcementType reinforcementType;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
 	const int LANDINGTIME = 18000;
@@ -111,7 +114,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			npc->activateLoad("");
-			if (attack) {
+			if (reinforcementType == LAMBDASHUTTLEATTACK) {
 				CombatManager::instance()->startCombat(npc, player);
 
 				if (spawnNumber == 0) {
@@ -149,13 +152,13 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
-		if (!attack && ((faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) ||
-						(player->getPlayerObject() != nullptr && player->getPlayerObject()->hasCrackdownTefTowards(faction)))) {
+		if (reinforcementType == LAMBDASHUTTLESCAN && ((faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) ||
+													   (player->getPlayerObject() != nullptr && player->getPlayerObject()->hasCrackdownTefTowards(faction)))) {
 			if (player->getFactionStatus() == FactionStatus::OVERT || player->getFactionStatus() == FactionStatus::COVERT) {
-				attack = true;
+				reinforcementType = LAMBDASHUTTLEATTACK;
 			}
 		}
-		if (spawnContainmentTeam) {
+		if (reinforcementType != LAMBDASHUTTLENOTROOPS) {
 			spawnOneSetOfTroops(lambdaShuttle, player);
 			if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
 				state = TAKEOFF;
@@ -190,7 +193,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 	void closingInOnPlayer(CreatureObject* player) {
-		if (attack) {
+		if (reinforcementType == LAMBDASHUTTLEATTACK) {
 			state = DELAY;
 		} else {
 			--closingInTime;
@@ -258,8 +261,7 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(
-		CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, bool attack, bool spawnContainmentTeam) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, ReinforcementType reinforcementType) {
 		weakPlayer = player;
 		containmentTeamObserver = new ContainmentTeamObserver();
 		state = SPAWN;
@@ -279,14 +281,13 @@ public:
 		spawnNumber = 0;
 		spawnPosition = position;
 		spawnDirection = direction;
-		this->attack = attack;
-		this->spawnContainmentTeam = spawnContainmentTeam;
 		closingInTime = 120;
 		timeToDespawnLambdaShuttle = -1;
 		cleanUpTime = 60;
 		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
 		this->faction = faction;
 		delayTime = 60;
+		this->reinforcementType = reinforcementType;
 	}
 
 	void run() {
@@ -338,7 +339,7 @@ public:
 			break;
 		case TAKEOFF:
 			lambdaShuttleTakeoff(lambdaShuttle);
-			if (spawnContainmentTeam) {
+			if (reinforcementType != LAMBDASHUTTLENOTROOPS) {
 				state = CLOSINGIN;
 			} else {
 				state = PICKUPDESPAWN;

@@ -21,9 +21,9 @@ int ProbotObserverImplementation::notifyObserverEvent(unsigned int eventType, Ob
 		landingCoordinates = probot->getZone()->getPlanetManager()->getInSightSpawnPoint(attacker, 30, 120, 15);
 	}
 
-	Reference<Task*> lambdaTask =
-		new LambdaShuttleWithReinforcementsTask(attacker, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial",
-												landingCoordinates, Quaternion(Vector3(0, 1, 0), attacker->getDirection()->getRadians() + 3.14f), true, true);
+	Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
+		attacker, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
+		Quaternion(Vector3(0, 1, 0), attacker->getDirection()->getRadians() + 3.14f), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK);
 	lambdaTask->schedule(1);
 
 	probot->showFlyText("imperial_presence/contraband_search", "probot_distress_fly", 255, 0, 0);
