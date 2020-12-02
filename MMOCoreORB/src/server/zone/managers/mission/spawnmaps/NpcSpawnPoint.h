@@ -70,7 +70,7 @@ protected:
 
 public:
 
-	enum {
+	enum SpawnType {
 		NOSPAWN              = 1,  // Spawn type no spawn.
 		NEUTRALSPAWN         = 2,  // Spawn type neutral spawn.
 		IMPERIALSPAWN        = 4,  // Spawn type imperial spawn.
