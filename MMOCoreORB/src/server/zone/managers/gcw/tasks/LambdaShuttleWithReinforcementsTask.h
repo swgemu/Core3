@@ -147,11 +147,17 @@ private:
 	}
 
 	void spawnOneSetOfTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
+		auto offset = spawnOffset;
+		float spawnSeparation = 1.0f;
+		if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+			offset /= 2;
+			spawnSeparation /= 2;
+		}
 		if (troops[spawnNumber].singleSpawn) {
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.0f, spawnOffset);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.0f, offset);
 		} else {
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.5f, spawnOffset - spawnNumber * 1.0f);
-			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, -0.5f, spawnOffset - spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, 0.5f, offset - spawnNumber * spawnSeparation);
+			spawnSingleTroop(lambdaShuttle, player, troops[spawnNumber].troopTemplate, -0.5f, offset - spawnNumber * spawnSeparation);
 		}
 		spawnNumber++;
 	}
