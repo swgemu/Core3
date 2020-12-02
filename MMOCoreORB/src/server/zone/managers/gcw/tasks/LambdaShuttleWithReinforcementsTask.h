@@ -21,7 +21,7 @@
 
 class LambdaShuttleWithReinforcementsTask : public Task {
 public:
-	enum ReinforcementType { LAMBDASHUTTLEATTACK, LAMBDASHUTTLESCAN, LAMBDASHUTTLENOTROOPS };
+	enum ReinforcementType { LAMBDASHUTTLEATTACK, LAMBDASHUTTLESCAN, LAMBDASHUTTLENOTROOPS, NOLAMBDASHUTTLEONLYTROOPS };
 
 private:
 	WeakReference<CreatureObject*> weakPlayer;
@@ -76,7 +76,7 @@ private:
 								   {"crackdown_rebel_soldier", false}};
 
 	enum LamdaShuttleState {
-		SPAWN,
+		SPAWNSHUTTLE,
 		UPRIGHT,
 		ZONEIN,
 		LAND,
@@ -103,9 +103,14 @@ private:
 		float xOffsetRotated = xOffset * Math::cos(rotationRadians) + yOffset * Math::sin(rotationRadians);
 		float yOffsetRotated = -xOffset * Math::sin(rotationRadians) + yOffset * Math::cos(rotationRadians);
 
-		Zone* zone = lambdaShuttle->getZone();
-		float x = lambdaShuttle->getPositionX() + xOffsetRotated;
-		float y = lambdaShuttle->getPositionY() + yOffsetRotated;
+		Zone* zone = player->getZone();
+		float x = spawnPosition.getX() + xOffsetRotated;
+		float y = spawnPosition.getY() + yOffsetRotated;
+		if (lambdaShuttle != nullptr) {
+			zone = lambdaShuttle->getZone();
+			x = lambdaShuttle->getPositionX() + xOffsetRotated;
+			y = lambdaShuttle->getPositionY() + yOffsetRotated;
+		}
 		float z = zone->getHeight(x, y);
 
 		Reference<AiAgent*> npc =
@@ -161,7 +166,11 @@ private:
 		if (reinforcementType != LAMBDASHUTTLENOTROOPS) {
 			spawnOneSetOfTroops(lambdaShuttle, player);
 			if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
-				state = TAKEOFF;
+				if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+					state = CLOSINGIN;
+				} else {
+					state = TAKEOFF;
+				}
 			}
 		} else {
 			state = TAKEOFF;
@@ -170,6 +179,7 @@ private:
 	}
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
+		Locker objLocker(lambdaShuttle);
 		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
 		lambdaShuttle->setDirection(spawnDirection);
 		lambdaShuttle->createChildObjects();
@@ -177,16 +187,19 @@ private:
 	}
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
+		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
+		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
+		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
@@ -219,7 +232,11 @@ private:
 
 	void delay() {
 		if (--delayTime <= 0) {
-			state = PICKUPSPAWN;
+			if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+				state = DESPAWN;
+			} else {
+				state = PICKUPSPAWN;
+			}
 		}
 		reschedule(TASKDELAY);
 	}
@@ -227,8 +244,12 @@ private:
 	void despawnNpcs(SceneObject* lambdaShuttle) {
 		--cleanUpTime;
 
-		if (containmentTeamObserver->despawnMembersCloseToLambdaShuttle(lambdaShuttle, cleanUpTime < 0)) {
-			state = PICKUPTAKEOFF;
+		if (containmentTeamObserver->despawnMembersCloseToLambdaShuttle(spawnPosition, cleanUpTime < 0)) {
+			if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+				state = FINISHED;
+			} else {
+				state = PICKUPTAKEOFF;
+			}
 		}
 		reschedule(TASKDELAY);
 	}
@@ -238,12 +259,17 @@ private:
 		if (zone == nullptr) {
 			return false;
 		} else {
+			Locker objLocker(lambdaShuttle);
 			zone->transferObject(lambdaShuttle, -1, true);
 			return true;
 		}
 	}
 
 	SceneObject* getLambdaShuttle(CreatureObject* player) {
+		if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+			return nullptr;
+		}
+
 		ManagedReference<SceneObject*> lambdaShuttle = weakLambdaShuttle.get();
 
 		if (lambdaShuttle == nullptr) {
@@ -264,7 +290,6 @@ public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, ReinforcementType reinforcementType) {
 		weakPlayer = player;
 		containmentTeamObserver = new ContainmentTeamObserver();
-		state = SPAWN;
 		if (difficulty > MAXDIFFICULTY) {
 			this->difficulty = MAXDIFFICULTY;
 		} else if (difficulty < MINDIFFICULTY) {
@@ -288,6 +313,12 @@ public:
 		this->faction = faction;
 		delayTime = 60;
 		this->reinforcementType = reinforcementType;
+		if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
+			state = SPAWNTROOPS;
+		} else {
+			state = SPAWNSHUTTLE;
+		}
+		spawnPosition.setZ(player->getZone()->getHeight(spawnPosition.getX(), spawnPosition.getY()));
 	}
 
 	void run() {
@@ -299,19 +330,18 @@ public:
 
 		ManagedReference<SceneObject*> lambdaShuttle = getLambdaShuttle(player);
 
-		if (lambdaShuttle == nullptr) {
+		if (lambdaShuttle == nullptr && reinforcementType != NOLAMBDASHUTTLEONLYTROOPS) {
 			return;
 		}
 
-		Locker objLocker(lambdaShuttle);
-
 		if (--timeToDespawnLambdaShuttle == 0) {
+			Locker objLocker(lambdaShuttle);
 			lambdaShuttle->destroyObjectFromWorld(true);
 			weakLambdaShuttle = nullptr;
 		}
 
 		switch (state) {
-		case SPAWN:
+		case SPAWNSHUTTLE:
 			lambdaShuttleSpawn(lambdaShuttle, player);
 			state = UPRIGHT;
 			reschedule(TASKDELAY);
