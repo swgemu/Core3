@@ -15,6 +15,7 @@ import system.thread.Mutex;
 
 include engine.log.Logger;
 include system.util.Vector;
+include engine.util.u3d.Vector3;
 
 class ContainmentTeamObserver extends Observer implements Logger {
 
@@ -47,7 +48,7 @@ class ContainmentTeamObserver extends Observer implements Logger {
 	public native void removeMember(unsigned int teamMemberIndex);
 
     @local
-	public native boolean despawnMembersCloseToLambdaShuttle(SceneObject lambdaShuttle, boolean forcedCleanup);
+	public native boolean despawnMembersCloseToLambdaShuttle(@dereferenced final Vector3 landingPosition, boolean forcedCleanup);
 
     @local
 	public native void attack(TangibleObject object);
