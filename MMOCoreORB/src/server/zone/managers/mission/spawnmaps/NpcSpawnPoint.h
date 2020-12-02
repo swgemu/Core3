@@ -76,7 +76,8 @@ public:
 		IMPERIALSPAWN      = 4,  // Spawn type imperial spawn.
 		REBELSPAWN         = 8,  // Spawn type rebel spawn.
 		BHTARGETSPAWN      = 16, // Spawn type bh target.
-		LAMBDASHUTTLESPAWN = 32  // Spawn type Lambda shuttle landing coordinates.
+		LAMBDASHUTTLESPAWN = 32, // Spawn type Lambda shuttle landing coordinates.
+		CONTAINMENTTEAM    = 64  // Spawn type containment team coordinates.
 	};
 
 	/**

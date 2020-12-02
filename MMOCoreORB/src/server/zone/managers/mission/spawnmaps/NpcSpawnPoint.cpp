@@ -34,6 +34,9 @@ NpcSpawnPoint::NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
 	if (st.contains("lambda")) {
 		spawnType |= LAMBDASHUTTLESPAWN;
 	}
+	if (st.contains("containmentteam")) {
+		spawnType |= CONTAINMENTTEAM;
+	}
 	if (st.contains("nospawn")) {
 		//No spawn overrides all other spawn types.
 		spawnType = NOSPAWN;
