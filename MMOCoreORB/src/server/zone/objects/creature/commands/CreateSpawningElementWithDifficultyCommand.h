@@ -51,23 +51,27 @@ public:
 
 			args.getStringToken(arg);
 
-			if (arg == "closestlambda" || arg == "closestlambdanotroops" || arg == "closestlambdaonlytroops") {
+			if (arg == "closestlambda" || arg == "closestlambdanotroops" || arg == "closestcontainmentteam") {
 				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
 				if (missionManager != nullptr) {
-					NpcSpawnPoint* nsp = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
-																			  creature->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+					NpcSpawnPoint::SpawnType spawnType = NpcSpawnPoint::LAMBDASHUTTLESPAWN;
+					if (arg == "closestcontainmentteam") {
+						spawnType = NpcSpawnPoint::CONTAINMENTTEAMSPAWN;
+					}
+					NpcSpawnPoint* nsp =
+						missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), spawnType);
 					if (nsp != nullptr) {
 						Quaternion direction;
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
 						LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN;
 						if (arg == "closestlambdanotroops") {
 							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLENOTROOPS;
-						} else if (arg == "closestlambdaonlytroops") {
+						} else if (arg == "closestcontainmentteam") {
 							reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
 						}
-						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()),
-							direction, reinforcementType);
+						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2,
+																							  "@imperial_presence/contraband_search:containment_team_imperial",
+																							  *(nsp->getPosition()), direction, reinforcementType);
 						lambdaTask->schedule(1);
 						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() +
 									  ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
