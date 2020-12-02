@@ -211,7 +211,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		while (areaDefenders->size() > 0) {
 			for (int i = areaDefenders->size()-1; i >= 0 ; i--) {
 				TangibleObject* tano = areaDefenders->get(i);
-				if (tano == attacker ||  tano == nullptr) {
+				if (tano == attacker || tano == nullptr) {
 					areaDefenders->remove(i);
 					continue;
 				}
@@ -2663,6 +2663,10 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 
 			if (!tano->isAttackableBy(attacker)) {
 				//error("object is not attackable");
+				continue;
+			}
+
+			if (!creo->isInvulnerable()) {
 				continue;
 			}
 
