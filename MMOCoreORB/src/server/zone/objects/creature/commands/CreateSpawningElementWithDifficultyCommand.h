@@ -51,7 +51,7 @@ public:
 
 			args.getStringToken(arg);
 
-			if (arg == "closestlambda" || arg == "closestlambdanotroops") {
+			if (arg == "closestlambda" || arg == "closestlambdanotroops" || arg == "closestlambdaonlytroops") {
 				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
 				if (missionManager != nullptr) {
 					NpcSpawnPoint* nsp = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
@@ -62,6 +62,8 @@ public:
 						LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN;
 						if (arg == "closestlambdanotroops") {
 							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLENOTROOPS;
+						} else if (arg == "closestlambdaonlytroops") {
+							reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
 						}
 						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 							creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()),

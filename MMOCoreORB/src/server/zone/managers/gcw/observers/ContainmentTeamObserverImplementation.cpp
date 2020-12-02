@@ -46,19 +46,22 @@ void ContainmentTeamObserverImplementation::removeMember(unsigned int teamMember
 	}
 }
 
-bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(SceneObject* lambdaShuttle, bool forcedCleanup) {
+bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vector3& landingPosition, bool forcedCleanup) {
 	// Do not lock containmentTeamLock in this method to avoid deadlocks. Use the minimal locking methods above.
 	for (int i = size() - 1; i >= 0; i--) {
 		auto npc = getMember(i);
 		if (npc != nullptr) {
 			Locker npcLock(npc);
-			if ((!npc->isInCombat() && npc->getWorldPosition().distanceTo(lambdaShuttle->getWorldPosition()) < 4) || forcedCleanup) {
+			auto distance = npc->getWorldPosition().distanceTo(landingPosition);
+			if ((!npc->isInCombat() && distance < 4) || forcedCleanup) {
 				if (!npc->isDead()) {
 					npc->destroyObjectFromWorld(true);
 				}
 				removeMember(i);
 			} else if (!npc->isInCombat() && !npc->isDead() && !forcedCleanup) {
-				npc->setFollowObject(lambdaShuttle);
+				npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000);
+				npc->setHomeLocation(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
+				npc->leash();
 			}
 		} else {
 			removeMember(i);
