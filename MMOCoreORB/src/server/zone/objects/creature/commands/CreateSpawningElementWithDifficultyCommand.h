@@ -85,6 +85,9 @@ public:
 			} else if (arg == "removeclosestlambda") {
 				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
 				missionManager->removeSpawnPoint(creature, "lambda");
+			}  else if (arg == "removeclosestcontainmentteam") {
+				Reference<MissionManager*> missionManager = creature->getZoneServer()->getMissionManager();
+				missionManager->removeSpawnPoint(creature, "containmentteam");
 			} else {
 				return INVALIDPARAMETERS;
 			}
