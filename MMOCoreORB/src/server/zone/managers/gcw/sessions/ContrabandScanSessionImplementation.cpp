@@ -563,8 +563,30 @@ int ContrabandScanSessionImplementation::getSmugglerAvoidanceChance(CreatureObje
 
 void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, CreatureObject* player, int difficulty, const String& landingMessage) {
 	MissionManager* missionManager = player->getZoneServer()->getMissionManager();
-	auto spawnPoint =
+	auto lambdaSpawnPoint =
 		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+	auto containmentTeamSpawnPoint =
+		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::CONTAINMENTTEAMSPAWN);
+
+	LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType;
+	NpcSpawnPoint* spawnPoint = nullptr;
+	if (lambdaSpawnPoint != nullptr && containmentTeamSpawnPoint != nullptr) {
+		auto position = player->getWorldPosition();
+		if (position.distanceTo(*lambdaSpawnPoint->getPosition()) <= position.distanceTo(*containmentTeamSpawnPoint->getPosition())) {
+			reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK;
+			spawnPoint = lambdaSpawnPoint;
+		} else {
+			reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
+			spawnPoint = containmentTeamSpawnPoint;
+		}
+	} else if (lambdaSpawnPoint != nullptr) {
+		reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK;
+		spawnPoint = lambdaSpawnPoint;
+	} else {
+		reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
+		spawnPoint = containmentTeamSpawnPoint;
+	}
+
 	if (spawnPoint != nullptr) {
 		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), difficulty, landingMessage, *spawnPoint->getPosition(),
 																			  *spawnPoint->getDirection(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK);
