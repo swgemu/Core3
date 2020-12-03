@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_d625750b",
+        "filename": "MMOCoreORB/src/server/zone/managers/resource/resourcespawner/resourcemap/ResourceMap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-12-03T08:20:07Z",
+      "side": 1,
+      "message": "Please fix the trailing white spaces.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "b49e94fc97dd6f1c6bf8bb027c17a4e80faf9257",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
