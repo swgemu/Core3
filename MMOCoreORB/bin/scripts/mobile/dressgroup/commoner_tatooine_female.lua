@@ -1,0 +1,26 @@
+commoner_tatooine_female = {
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_02.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
+	"object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_01.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_02.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_03.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_04.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_05.iff",
+	"object/mobile/dressed_commoner_tatooine_bith_female_06.iff",
+	"object/mobile/dressed_commoner_tatooine_rodian_female_01.iff",
+	"object/mobile/dressed_commoner_tatooine_rodian_female_02.iff",
+	"object/mobile/dressed_commoner_tatooine_rodian_female_03.iff",
+	"object/mobile/dressed_commoner_tatooine_rodian_female_04.iff",
+	"object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff",
+	"object/mobile/dressed_commoner_tatooine_trandoshan_female_02.iff",
+	"object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff",
+	"object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff",
+}
+
+addDressGroup("commoner_tatooine_female", commoner_tatooine_female)
