@@ -649,7 +649,7 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
 
-		if (skillBox == nullptr)
+		if (skillBox == nullptr || skillBox->getXpCap() == 0)
 			continue;
 
 		if (!xpTypeCapList->contains(skillBox->getXpType())) {
