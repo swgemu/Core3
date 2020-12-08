@@ -37,9 +37,11 @@ public:
 
 			play->setLinkDead(isSafeArea);
 
-			if (play->isOnline())
+			if (play->isOnline()) {
 				play->disconnect(true, false);
+			}
 
+			play->notifyOffline();
 
 		} catch (Exception& e) {
 			play->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
