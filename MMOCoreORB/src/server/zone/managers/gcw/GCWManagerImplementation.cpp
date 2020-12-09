@@ -2618,6 +2618,22 @@ void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, Crea
 	contrabandScanSession->initializeSession();
 }
 
+String GCWManagerImplementation::getCrackdownInfo(CreatureObject* player) const {
+	auto zone = player->getZone();
+	if (zone == nullptr) {
+		return "No zone information";
+	} else {
+		return "Crackdown scan information:"
+			"\nScans enabled - " + String::valueOf(crackdownScansEnabled) +
+			"\nScans enabled (privileged players) - " + String::valueOf(crackdownScanPrivilegedPlayers) +
+			"\nScans enabled on this playet - " + String::valueOf(planetsWithWildScans.find(zone->getZoneName()) != Vector<String>::npos) +
+			"\nPlayer has no scan cooldown - " + String::valueOf(player->checkCooldownRecovery("crackdown_scan")) +
+			"\nPlayer outside - " + String::valueOf(player->getParentID() == 0) +
+			"\nIs spawning permitted at the coordinates - " + String::valueOf(zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) +
+			"\nIs player privileged - " + String::valueOf(player->getPlayerObject()->isPrivileged());
+	}
+}
+
 void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 	if (!crackdownScansEnabled || planetsWithWildScans.find(zone->getZoneName()) == Vector<String>::npos) {
 		return;
