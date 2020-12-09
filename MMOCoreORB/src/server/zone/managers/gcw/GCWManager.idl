@@ -515,4 +515,8 @@ class GCWManager extends ManagedService implements Logger {
 	public int getCrackdownScansEnabled() {
 		return crackdownScansEnabled;
 	}
+
+	@local
+	@read
+	public native string getCrackdownInfo(CreatureObject player);
 }
