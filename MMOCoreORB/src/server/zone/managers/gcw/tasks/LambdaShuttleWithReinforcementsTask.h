@@ -139,7 +139,7 @@ private:
 				} else {
 					npc->setFollowObject(containmentTeamObserver->getMember(Math::max(containmentTeamObserver->size() - 2, 0)));
 				}
-				npc->registerObserver(ObserverEventType::STARTCOMBAT, containmentTeamObserver);
+				npc->registerObserver(ObserverEventType::DEFENDERADDED, containmentTeamObserver);
 			}
 
 			containmentTeamObserver->addMember(npc);
