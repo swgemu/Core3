@@ -113,7 +113,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				droid->setFollowObject(player);
 				ManagedReference<ProbotObserver*> probotObserver = new ProbotObserver();
 				probotObserver->setProbot(droid);
-				droid->registerObserver(ObserverEventType::STARTCOMBAT, probotObserver);
+				droid->registerObserver(ObserverEventType::DEFENDERADDED, probotObserver);
 				scanState = CLOSINGIN;
 				timeLeft = 30;
 			} else {
