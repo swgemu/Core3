@@ -114,7 +114,7 @@ public:
 					reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
 					spawnPoint = containmentTeamSpawnPoint;
 				} else {
-					creature->sendSystemMessage("No containment team or lambda shuttle spawns in range.");
+					creature->sendSystemMessage("No containment team or Lambda shuttle spawns in range.");
 					return GENERALERROR;
 				}
 
