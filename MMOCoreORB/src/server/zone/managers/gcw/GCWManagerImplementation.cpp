@@ -2626,7 +2626,7 @@ String GCWManagerImplementation::getCrackdownInfo(CreatureObject* player) const 
 		return "Crackdown scan information:"
 			"\nScans enabled - " + String::valueOf(crackdownScansEnabled) +
 			"\nScans enabled (privileged players) - " + String::valueOf(crackdownScanPrivilegedPlayers) +
-			"\nScans enabled on this playet - " + String::valueOf(planetsWithWildScans.find(zone->getZoneName()) != Vector<String>::npos) +
+			"\nScans enabled on this planet - " + String::valueOf(planetsWithWildScans.find(zone->getZoneName()) != Vector<String>::npos) +
 			"\nPlayer has no scan cooldown - " + String::valueOf(player->checkCooldownRecovery("crackdown_scan")) +
 			"\nPlayer outside - " + String::valueOf(player->getParentID() == 0 || player->isRidingMount()) +
 			"\nIs spawning permitted at the coordinates - " + String::valueOf(zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) +
