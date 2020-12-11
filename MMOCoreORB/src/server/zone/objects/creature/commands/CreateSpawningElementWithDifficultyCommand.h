@@ -97,6 +97,7 @@ public:
 
 				LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType;
 				NpcSpawnPoint* spawnPoint = nullptr;
+
 				if (lambdaSpawnPoint != nullptr && containmentTeamSpawnPoint != nullptr) {
 					auto position = creature->getWorldPosition();
 					if (position.distanceTo(*lambdaSpawnPoint->getPosition()) <= position.distanceTo(*containmentTeamSpawnPoint->getPosition())) {
@@ -109,9 +110,12 @@ public:
 				} else if (lambdaSpawnPoint != nullptr) {
 					reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK;
 					spawnPoint = lambdaSpawnPoint;
-				} else {
+				} else if (containmentTeamSpawnPoint != nullptr) {
 					reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
 					spawnPoint = containmentTeamSpawnPoint;
+				} else {
+					creature->sendSystemMessage("No containment team or lambda shuttle spawns in range.");
+					return GENERALERROR;
 				}
 
 				String text = "Closest reinforcement spawn point is " + spawnPoint->getPosition()->toString() + ", direction " +
