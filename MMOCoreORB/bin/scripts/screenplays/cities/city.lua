@@ -92,3 +92,85 @@ function CityScreenPlay:respawn(pAiAgent, args)
 
 	self:spawnMob(mobNumber, controllingFaction, difficulty)
 end
+
+
+--Patrols Implementation
+
+
+function CityScreenPlay:spawnPatrolMobiles()
+	if (isZoneEnabled(self.planet)) then
+		for i = 1, #self.patrolMobiles do
+			self:spawnPatrol(i)
+		end
+	end
+end
+
+function CityScreenPlay:spawnPatrol(num)
+	local patrolsTable = self.patrolMobiles
+
+	if num <= 0 or num > #patrolsTable then
+		return
+	end
+
+	local patrol = patrolsTable[num]
+	local pMobile = nil
+
+	--{template, patrolPoints, level?, x, z, y, direction, cell, mood},
+	pMobile = spawnMobile(self.planet, patrol[1], patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8])
+
+	if pMobile ~= nil then
+		local pOid = SceneObject(pMobile):getObjectID()
+
+		writeData(pOid .. ":patrolPoints", num)
+		writeData(pOid .. ":currentLoc", 1)
+		self:setupMobilePatrol(pMobile)
+	end
+end
+
+function CityScreenPlay:setupMobilePatrol(pMobile)
+	createEvent(1000, "CityScreenPlay", "mobilePatrol", pMobile, "")
+	createObserver(DESTINATIONREACHED, "CityScreenPlay", "mobileDestinationReached", pMobile)
+	AiAgent(pDroid):setAiTemplate("manualescortwalk")
+	AiAgent(pDroid):setFollowState(4)
+end
+
+function CityScreenPlay:mobilePatrol(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	local pOid = SceneObject(pMobile):getObjectID()
+	local curLoc = readData(pOid .. ":currentLoc")
+	local patrolNum = readData{pOid .. "patrolPoints"}
+	local patrolPoints = self.patrolPoints(patrolNum)
+
+	if (curLoc == 1) then
+		nextLoc = patrolPoints[2]
+	else
+		nextLoc = patrolPoints[3]
+	end
+
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+	AiAgent(pMobile):setNextPosition(nextLoc[1], nextLoc[2], nextLoc[3], 0)
+	AiAgent(pMobile):executeBehavior()
+
+end
+
+function CityScreenPlay:mobileDestinationReached(pMobile)
+	if (pMobile == nil) then
+		return 0
+	end
+
+	local curLoc = readData(SceneObject(pMobile):getObjectID() .. ":currentLoc")
+
+	if (curLoc == 1) then
+		writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 2)
+	else
+		writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
+	end
+
+	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pMobile, "")
+
+	return 0
+end
