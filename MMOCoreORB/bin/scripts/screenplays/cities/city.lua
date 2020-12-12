@@ -6,6 +6,9 @@ CityScreenPlay = ScreenPlay:new {
 	planet = "",
 
 	gcwMobs = {},
+	patrolMobiles = {},
+	patrolPoints = {},
+
 }
 
 function CityScreenPlay:spawnGcwMobiles()
@@ -91,4 +94,95 @@ function CityScreenPlay:respawn(pAiAgent, args)
 	end
 
 	self:spawnMob(mobNumber, controllingFaction, difficulty)
+end
+
+
+--Patrols Implementation
+
+
+function CityScreenPlay:spawnPatrolMobiles()
+	if (isZoneEnabled(self.planet)) then
+		for i = 1, #self.patrolMobiles do
+			self:spawnPatrol(i)
+		end
+	end
+end
+
+function CityScreenPlay:spawnPatrol(num)
+	local patrolsTable = self.patrolMobiles
+
+	if num <= 0 or num > #patrolsTable then
+		return
+	end
+
+	local patrol = patrolsTable[num]
+	local points = patrol[1]
+	local pMobile = nil
+
+	--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+	local pMobile = spawnMobile(self.planet, patrol[2], patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
+
+	if pMobile ~= nil then
+		local pOid = SceneObject(pMobile):getObjectID()
+
+		writeStringData(pOid .. ":patrolPoints", points)
+		writeData(pOid .. ":currentLoc", 1)
+		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
+	end
+end
+
+function CityScreenPlay:setupMobilePatrol(pMobile)
+	createEvent(getRandomNumber(3) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
+	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
+	AiAgent(pMobile):setAiTemplate("manualescortwalk")
+	AiAgent(pMobile):setFollowState(4)
+end
+
+function CityScreenPlay:mobileDestinationReached(pMobile)
+	if (pMobile == nil) then
+		return 0
+	end
+
+	local pOid = SceneObject(pMobile):getObjectID()
+	local currentLoc = readData(pOid .. ":currentLoc")
+	local mobileTable = readStringData(pOid .. ":patrolPoints")
+	local pointSet = self.patrolPoints
+	local pointSets = pointSet[mobileTable]
+	local patrolPointCount = #pointSets
+
+	if (currentLoc >= patrolPointCount) then
+		writeData(pOid .. ":currentLoc", 1)
+	else
+		writeData(pOid .. ":currentLoc", currentLoc + 1)
+	end
+
+	createEvent(getRandomNumber(30) * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+
+	return 0
+end
+
+function CityScreenPlay:mobilePatrol(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	local pointSets = self.patrolPoints
+	local pOid = SceneObject(pMobile):getObjectID()
+	local mobileTable = readStringData(pOid .. ":patrolPoints")
+	local currentLoc = readData(pOid .. ":currentLoc")
+
+	local pointSet = pointSets[mobileTable]
+	local patrolPointCount = #pointSet
+	local nextPoint
+
+	if (currentLoc ~= 0 and currentLoc >= patrolPointCount) then
+		nextPoint = pointSet[1]
+	else
+		nextPoint = pointSet[currentLoc + 1]
+	end
+
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
+	AiAgent(pMobile):executeBehavior()
 end

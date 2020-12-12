@@ -20,14 +20,12 @@ cll8_binary_load_lifter = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/cll8_binary_load_lifter.iff"
-	},		
+	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
