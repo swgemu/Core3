@@ -21,14 +21,12 @@ r3 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/r3.iff"
-	},		
+	templates = {"object/mobile/r3.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
