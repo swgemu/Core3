@@ -92,3 +92,89 @@ function CityScreenPlay:respawn(pAiAgent, args)
 
 	self:spawnMob(mobNumber, controllingFaction, difficulty)
 end
+
+
+--Patrols Implementation
+
+
+function CityScreenPlay:spawnPatrolMobiles()
+	if (isZoneEnabled(self.planet)) then
+		for i = 1, #self.patrolMobiles do
+			self:spawnPatrol(i)
+		end
+	end
+end
+
+function CityScreenPlay:spawnPatrol(num)
+	local patrolsTable = self.patrolMobiles
+
+	if num <= 0 or num > #patrolsTable then
+		return
+	end
+
+	local patrol = patrolsTable[num]
+	local pMobile = nil
+
+	--{template, patrolPoints, level?, x, z, y, direction, cell, mood},
+	pMobile = spawnMobile(self.planet, patrol[1], patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
+
+	if pMobile ~= nil then
+		local pOid = SceneObject(pMobile):getObjectID()
+
+		writeData(pOid .. ":patrolPoints", patrol[2])
+		writeData(pOid .. ":currentLoc", 1)
+		self:setupMobilePatrol(pMobile)
+	end
+end
+
+function CityScreenPlay:setupMobilePatrol(pMobile)
+	createEvent(1000, "CityScreenPlay", "mobilePatrol", pMobile, "")
+	createObserver(DESTINATIONREACHED, "CityScreenPlay", "mobileDestinationReached", pMobile)
+	AiAgent(pDroid):setAiTemplate("manualescortwalk")
+	AiAgent(pDroid):setFollowState(4)
+end
+
+function CityScreenPlay:mobilePatrol(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	local pOid = SceneObject(pMobile):getObjectID()
+	local patrolNum = readData(pOid .. ":patrolPoints")
+	local currentLoc = readData(pOid .. ":currentLoc")
+	local patrolPoint = self.patrolPoints(patrolNum)
+	local nextLoc
+
+	if (currentLoc == 1) then
+		nextLoc = patrolPoint[2]
+	elseif (currentLoc == 2 and patrolPoint[3] ~= nil) then
+		nextLoc = patrolPoint[3]
+	else
+		nextLoc = patrolPoint[1]
+	end
+
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+	AiAgent(pMobile):setNextPosition(nextLoc.x, nextLoc.z, nextLoc.y, 0)
+	AiAgent(pMobile):executeBehavior()
+
+end
+
+function CityScreenPlay:mobileDestinationReached(pMobile)
+	if (pMobile == nil) then
+		return 0
+	end
+
+	local currentLoc = readData(SceneObject(pMobile):getObjectID() .. ":currentLoc")
+	local pOid = SceneObject(pMobile):getObjectID()
+
+	if (currentLoc == 1) then
+		writeData(pOid .. ":currentLoc", 2)
+	elseif (currentLoc == 2) then
+		writeData(pOid .. ":currentLoc", 1)
+	end
+
+	createEvent(1000, "CityScreenPlay", "mobilePatrol", pMobile, "")
+
+	return 0
+end
