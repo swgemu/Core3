@@ -93,6 +93,15 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -344.9,28,-4444.3,-48,0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{"cll8_binary_load_lifter", 1, 0, -147, 28, -4775, 140.109, 0, ""},
+	},
+
+	patrolPoints = {
+		{{x = -147, z = 28, y = -4775}, {x = -145, z = 28, y = -4691}},
+	},
 }
 
 registerScreenPlay("CorelliaCoronetScreenPlay", true)
@@ -102,6 +111,7 @@ function CorelliaCoronetScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
