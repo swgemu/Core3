@@ -6,6 +6,9 @@ CityScreenPlay = ScreenPlay:new {
 	planet = "",
 
 	gcwMobs = {},
+	patrolMobiles = {},
+	patrolPoints = {},
+
 }
 
 function CityScreenPlay:spawnGcwMobiles()
@@ -91,4 +94,98 @@ function CityScreenPlay:respawn(pAiAgent, args)
 	end
 
 	self:spawnMob(mobNumber, controllingFaction, difficulty)
+end
+
+
+--Patrols Implementation
+
+
+function CityScreenPlay:spawnPatrolMobiles()
+	if (isZoneEnabled(self.planet)) then
+		for i = 1, #self.patrolMobiles do
+			self:spawnPatrol(i)
+		end
+	end
+end
+
+function CityScreenPlay:spawnPatrol(num)
+	local patrolsTable = self.patrolMobiles
+
+	if num <= 0 or num > #patrolsTable then
+		return
+	end
+
+	local patrol = patrolsTable[num]
+	local patrolPoints = patrol[1]
+	local pMobile = nil
+
+	--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+	pMobile = spawnMobile(self.planet, patrol[2], patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
+
+	if pMobile ~= nil then
+		local pOid = SceneObject(pMobile):getObjectID()
+
+		writeData(pOid .. ":patrolPoints", patrolPoints)
+		writeData(pOid .. ":currentLoc", 1)
+		self:setupMobilePatrol(pMobile)
+	end
+end
+
+function CityScreenPlay:setupMobilePatrol(pMobile)
+	createEvent(2000, "CityScreenPlay", "mobilePatrol", pMobile, '')
+	createObserver(DESTINATIONREACHED, "CityScreenPlay", "mobileDestinationReached", pMobile)
+	AiAgent(pMobile):setAiTemplate("manualescortwalk")
+	AiAgent(pMobile):setFollowState(4)
+end
+
+function CityScreenPlay:mobilePatrol(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+	
+	local pOid = SceneObject(pMobile):getObjectID()
+	local mobileTable = readData(pOid .. ":patrolPoints")
+	local currentLoc = readData(pOid .. ":currentLoc")	
+	
+	local pointSet = self.patrolPoints[mobileTable]
+	local patrolPointCount = #pointSet
+	
+	if patrolPointCount <= 0 or patrolPointCount > 3 then
+		return
+	end
+	
+	local nextPoint
+
+	if (currentLoc == 1) then
+		nextPoint = pointSet[2]
+	elseif (currentLoc == 2 and patrolPointCount > 3) then
+		nextPoint = pointSet[3]
+	else
+		nextPoint = pointSet[1]
+	end
+
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], 0)
+	AiAgent(pMobile):executeBehavior()
+
+end
+
+function CityScreenPlay:mobileDestinationReached(pMobile)
+	if (pMobile == nil) then
+		return 0
+	end
+
+	local currentLoc = readData(SceneObject(pMobile):getObjectID() .. ":currentLoc")
+	local pOid = SceneObject(pMobile):getObjectID()
+
+	if (currentLoc == 1) then
+		writeData(pOid .. ":currentLoc", 2)
+	elseif (currentLoc == 2) then
+		writeData(pOid .. ":currentLoc", 1)
+	end
+
+	createEvent(1000, "CityScreenPlay", "mobilePatrol", pMobile, "")
+
+	return 0
 end

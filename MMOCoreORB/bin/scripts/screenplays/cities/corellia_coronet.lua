@@ -91,8 +91,20 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -1.67932,28,-4464.42,93.3597,0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -60,28.5,-4597.2,-96,0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -344.9,28,-4444.3,-48,0, "", ""},
-		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""}
 	},
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{1, "cll8_binary_load_lifter", 0, -147, 28, -4775, 140.109, 0, ""},
+		{2, "r3", 60, -149.754,28,-4785.34,297.928,0, "calm"}
+	},
+
+	patrolPoints = {
+		{{-147, 28, -4775}, {-145, 28, -4691}},
+		{{-149, 28, -4785}, {-196.5, 28, -4778}}
+	},
+
 }
 
 registerScreenPlay("CorelliaCoronetScreenPlay", true)
@@ -102,6 +114,7 @@ function CorelliaCoronetScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -298,7 +311,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "businessman",60,-306.34,28,-4620.82,67.4368,0)
 	spawnMobile(self.planet, "businessman",60,-312.404,28,-4646.51,242.881,0)
 	spawnMobile(self.planet, "businessman",60,-135.995,28,-4745.63,251.824,0)
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,-146.217,28,-4738.99,346.392,0)
+	--spawnMobile(self.planet, "cll8_binary_load_lifter",60,-146.217,28,-4738.99,346.392,0)
 	spawnMobile(self.planet, "commoner",60,-306.539,28,-4546.52,95.6639,0)
 	spawnMobile(self.planet, "commoner",60,-306.061,28,-4600.68,146.312,0)
 	spawnMobile(self.planet, "commoner",60,-258.479,28,-4620,198.098,0)
@@ -408,8 +421,8 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "meatlump_stooge",300,293.9,29.7,-4552.4,-93,0)
 
 	--Misc
-	pNpc = spawnMobile(self.planet, "r3",60,-149.754,28,-4785.34,297.928,0)
-	self:setMoodString(pNpc, "calm")
+	--pNpc = spawnMobile(self.planet, "r3",60,-149.754,28,-4785.34,297.928,0)
+	--self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "r3",60,-182.479,28,-4731.42,293.019,0)
 	self:setMoodString(pNpc, "calm")
 
