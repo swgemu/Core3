@@ -2,7 +2,7 @@ r4 = Creature:new {
 	objectName = "@mob/creature_names:r4",
 	randomNameType = NAME_R4,
 	socialGroup = "townsperson",
-	faction = "townsperson",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -21,14 +21,14 @@ r4 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {
 		"object/mobile/r4.iff"
-	},		
+	},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

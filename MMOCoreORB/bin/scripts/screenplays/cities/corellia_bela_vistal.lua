@@ -1,19 +1,36 @@
-BelaVistalScreenPlay = ScreenPlay:new {
+CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "BelaVistalScreenPlay"
+	screenplayName = "CorelliaBelaVistalScreenPlay",
+
+	planet = "corellia",
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{"r4_1", "r4", 1, 6715, 330, -5903, 0, 0, "calm"},
+		{"r2_1", "r2", 1, 6859, 315, -5706, 0, 0, "calm"},
+		{"cll8_1", "cll8_binary_load_lifter", 1, 6826, 315, -5778, 0, 0, ""}
+	},
+
+	patrolPoints = {
+		r4_1 = {{6715, 330, -5903, 0}, {6693, 330, -5920, 0}, {6690, 330, -5906, 0}, {6647, 330, -5905, 0}},
+		r2_1 = {{6858, 315, -5688, 0}, {6859, 315, -5700, 0}, {6816, 315, -5699, 0}, {6861, 315, -5700, 0}},
+		cll8_1 = {{6826, 315, -5807, 0}, {6825, 315, -5725, 0}, {6769, 315, -5725, 0}, {6770, 315, -5736, 0}, {6817, 315, -5735, 0}}
+	},
+
 }
 
-registerScreenPlay("BelaVistalScreenPlay", true)
+registerScreenPlay("CorelliaBelaVistalScreenPlay", true)
 
-function BelaVistalScreenPlay:start()
-	if (isZoneEnabled("corellia")) then
+function CorelliaBelaVistalScreenPlay:start()
+	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnSceneObjects()
+		self:spawnPatrolMobiles()
 	end
 end
 
-function BelaVistalScreenPlay:spawnSceneObjects()
+function CorelliaBelaVistalScreenPlay:spawnSceneObjects()
 
 	--Guild Hall regular
 	spawnSceneObject("corellia", "object/tangible/loot/simple_kit/paint_cartridge.iff", 5.3, 2.3, 10.2, 2365923, math.rad(-19) )
@@ -21,7 +38,7 @@ function BelaVistalScreenPlay:spawnSceneObjects()
 	spawnSceneObject("corellia", "object/static/structure/general/droid_r4_powerdown.iff", 6.0, 1.0, 20.2, 2365805, math.rad(143) )
 end
 
-function BelaVistalScreenPlay:spawnMobiles()
+function CorelliaBelaVistalScreenPlay:spawnMobiles()
 
 	--Cloning Facility
 	local pNpc = spawnMobile("corellia", "surgical_droid_21b",60,3.1,0.1,11.5,0,2365903)
@@ -60,7 +77,6 @@ function BelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--Outside
-	spawnMobile("corellia", "cll8_binary_load_lifter", 60, 6826.88, 315, -5778.01, 0.0395659, 0)
 	spawnMobile("corellia", "commoner", 60, 6832.06, 315, -5606.82, 252.9, 0)
 	spawnMobile("corellia", "commoner", 60, 6847.34, 315, -5617.89, 54.6527, 0)
 	spawnMobile("corellia", "commoner", 60, 6829.04, 315, -5626.01, 119.354, 0)
@@ -184,10 +200,6 @@ function BelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("corellia", "stormtrooper",400,6837.95,315,-5806.84,302.784,0)
 	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "r4",60,6715.38,330,-5903.81,0.0395659,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("corellia", "r2",60,6857.06,315,-5702.8,0,0)
-	self:setMoodString(pNpc, "calm")
 	spawnMobile("corellia", "junk_malik", 0, 6969.06, 330, -5588.66, 105, 0)
 	pNpc = spawnMobile("corellia", "junk_dealer", 0, 6840.98, 315, -5630.49, -47, 0)
 	if pNpc ~= nil then
