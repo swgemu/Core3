@@ -31,8 +31,6 @@ surgical_droid_21b = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
-
 CreatureTemplates:addCreatureTemplate(surgical_droid_21b, "surgical_droid_21b")
