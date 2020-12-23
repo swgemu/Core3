@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_f61c006d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/dantooine_imperial_outpost.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-12-23T08:49:58Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "eecb2e5163350f23d2120c42f3c61297304b84d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
