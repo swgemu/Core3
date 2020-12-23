@@ -20,9 +20,8 @@ surgical_droid_21b = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -31,8 +30,6 @@ surgical_droid_21b = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
-
 CreatureTemplates:addCreatureTemplate(surgical_droid_21b, "surgical_droid_21b")

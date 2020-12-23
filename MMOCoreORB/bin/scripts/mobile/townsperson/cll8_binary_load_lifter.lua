@@ -1,7 +1,7 @@
 cll8_binary_load_lifter = Creature:new {
 	objectName = "@mob/creature_names:cll8_binary_load_lifter",
 	socialGroup = "townsperson",
-	faction = "townsperson",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -28,9 +28,7 @@ cll8_binary_load_lifter = Creature:new {
 	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(cll8_binary_load_lifter, "cll8_binary_load_lifter")

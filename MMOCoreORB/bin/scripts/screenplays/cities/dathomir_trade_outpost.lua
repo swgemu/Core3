@@ -1,7 +1,24 @@
-DathomirTradeOutpostScreenPlay = ScreenPlay:new {
+DathomirTradeOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "DathomirTradeOutpostScreenPlay"
+	screenplayName = "DathomirTradeOutpostScreenPlay",
+
+	planet = "dathomir",
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{"r4_1", "r4", 60, 620, 6, 3088, 191.123, 0, ""},
+		{"r4_2", "r4", 60, 619.822, 6, 3097.36, 339.758, 0, ""},
+		{"r5_1", "r5", 60, 627.744, 6, 3086.77, 278.522, 0, ""},a
+		
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		r4_1 = {{620, 6, 3085, 0, 1}, {620, 6, 3065, 0, 1}, {599, 6, 3058, 0, 1}, {590, 6, 3080, 0, 1}, {618, 6, 3089, 0, 0}},
+		r4_2 = {{620, 6, 3089, 0, 1}, {613, 6, 3106, 0, 0}, {607, 6, 3109, 0, 1}, {615, 6, 3108, 0, 0}, {623, 6, 3101, 0, 1}, {619, 6, 3087, 0, 0}},
+		r5_1 = {{633, 6, 3084, 0, 1}, {622, 6, 3086, 0}, {636, 6, 3085, 0, 1}, {637, 6, 3044, 0, 1}, {619, 6, 3029, 0, 1}, {619, 6, 3043, 0}, {637, 6, 3044, 0, 1}},
+	},
 }
 
 registerScreenPlay("DathomirTradeOutpostScreenPlay", true)
@@ -9,6 +26,7 @@ registerScreenPlay("DathomirTradeOutpostScreenPlay", true)
 function DathomirTradeOutpostScreenPlay:start()
 	if (isZoneEnabled("dathomir")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -41,7 +59,5 @@ function DathomirTradeOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "scientist", 60, 623.05, 6, 3037.98, 54.874, 0)
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,590,6,3091,-31,0)
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,598,6,3025,180,0)
-	spawnMobile("dathomir", "r4", 60, 620.654, 6, 3085.98, 191.123, 0)
-	spawnMobile("dathomir", "r4", 60, 619.822, 6, 3097.36, 339.758, 0)
-	spawnMobile("dathomir", "r5", 60, 627.744, 6, 3086.77, 278.522, 0)
+
 end
