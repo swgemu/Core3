@@ -72,6 +72,30 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1447.4,7,3346.4,-105,0, "", ""},
 		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1448.8,7,3344.5,-105,0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"r3_1", "r3", 60, 1242.26, 7, 3155.65, 78.1127, 0, "calm"},
+		{"r3_2", "r4", 60, 1456.33, 7, 3336.99, 338.919, 0, "calm"},
+		{"r4_1", "r4", 60, 1565.89, 7, 3111.38, 272.874, 0, "calm"},
+		{"r4_2", "r4", 60, 1583.75, 7, 3113.82, 97.4626, 0, "calm"},
+		{"r5_1", "r5", 60, 1324.5, 7, 3242.3, 186.564, 0, "calm"},
+		{"r5_2", "r5", 60, 1614.51, 7, 3127.01, 256.31, 0, "calm"},
+		{"eg6_1", "eg6_power_droid", 60, 1332.6, 7, 3239.0, 8.18614, 0, ""},
+		{"surgical_1", "surgical_droid_21b", 60, -25.52, 0.26, -3.48, 0, 1153586, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		r3_1 = {{1242, 7, 3155, 0, 1}, {1287, 7, 3142, 0, 1}, {1305, 7, 3130, 0, 1}, {1326, 7, 3078, 0, 1}, {1305, 7, 3130, 0, 1}},
+		r3_2 = {{1456, 7, 3336, 0, 1}, {1306, 7, 3332, 0, 1}, {1455, 7, 3338, 0, 1}, {1472, 7, 3390, 0, 1}},
+		r4_1 = {{1565, 7, 3111, 0, 1}, {1515, 7, 3109, 0, 1}, {1493, 7, 3094, 0, 1}, {1452, 7, 3093, 0, 1}, {1493, 7, 3094, 0, 1}, {1515, 7, 3109, 0, 1}},
+		r4_2 = {{1583, 7, 3113, 0, 1}, {1612, 7, 3115, 0, 1}, {1628, 7, 3098, 0, 1}, {1630, 7, 2984, 0, 1}, {1628, 7, 3098, 0, 1}, {1612, 7, 3115, 0, 1}},
+		r5_1 = {{1324.5, 7, 3242.3, 0, 1}, {1324.8, 7, 3190.1, 0, 1}, {1303.7, 7, 3167.5, 0, 1}, {1324.8, 7, 3190.1, 0, 1}},
+		r5_2 = {{1614, 7, 3127, 0, 1}, {1630, 7, 3248, 0, 1}, {1620, 7, 3132, 0, 1}, {1727, 7, 3140, 0, 1}},
+		eg6_1 = {{1332, 7, 3239, 0, 1}, {1329, 7, 3251, 0, 1}, {1276, 7, 3257, 0, 1}, {1457, 7, 3253, 0, 1}, {1329, 7, 3251, 0, 1}},
+		surgical_1 = {{-21.7, 0.26, -5.1, 1153586, 1}, {-11.3, 0.3, -6.5, 1153586, 0}, {-11.1, 0.3, 5.6, 1153586, 1}, {-21.5, 0.3, 6.3, 1153586, 1}},
+	},
 }
 
 registerScreenPlay("TatooineMosEnthaScreenPlay", true)
@@ -79,6 +103,7 @@ registerScreenPlay("TatooineMosEnthaScreenPlay", true)
 function TatooineMosEnthaScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -341,7 +366,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "calm")
 
 	--Med Center
-	spawnMobile(self.planet, "surgical_droid_21b",60,-25.52,0.26,-3.48,142.122,1153586)
 	spawnMobile(self.planet, "trainer_combatmedic",0,-16.4794,0.26,9.71928,162,1153586)
 	spawnMobile(self.planet, "trainer_doctor",0,-24.6019,0.26,-3.96049,212,1153586)
 	spawnMobile(self.planet, "trainer_medic",0,-17.0194,0.26,-1.8269,149,1153586)
@@ -429,7 +453,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "criminal",300,1621.1,7,3317.4,18,0)
 	pNpc = spawnMobile(self.planet, "dim_u_monastery_nun",300,1326.93,7,3164.39,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "eg6_power_droid",60,1332.45,7.90682,3237.09,8.18614,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,1266,7,3184,225,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,1727,7,3093,225,0)
 	pNpc = spawnMobile(self.planet, "miner",60,1326.44,7,3119.75,0,0)
@@ -444,18 +467,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "ovo",60,1744.45,7,3057.53,0,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "gadget_specialist",60,1209.57,7,2923.54,58.9701,0)
-	pNpc = spawnMobile(self.planet, "r3",60,1242.26,7,3155.65,78.1127,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,1456.33,7,3336.99,338.919,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,1565.89,7,3111.38,272.874,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,1583.75,7,3113.82,97.4626,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,1332.83,11,3233.94,186.564,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,1614.51,7,3127.01,256.31,0)
-	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "rodian_clan_medic",300,1190.5,7,2957,135.004,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "rodian_clan_medic",300,1744.45,7,3058.83,180.005,0)

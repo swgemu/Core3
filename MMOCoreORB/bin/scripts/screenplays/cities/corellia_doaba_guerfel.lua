@@ -26,11 +26,13 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
 		{"surgical_1", "surgical_droid_21b", 1, -1.19, 0.184067, -1.89, 0, 4345354, "calm"},
 	},
 
 	patrolPoints = {
-		surgical_1 = {{-12.3, 0.2, -1.5, 4345355}, {10.4, 0.2, -1.9, 4345354}, {9.6, 0.2, 9.8, 4345354}, {-11.8, 0.2, 9.9, 4345354}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		surgical_1 = {{-12.3, 0.2, -1.5, 4345355, 1}, {10.4, 0.2, -1.9, 4345354, 1}, {9.6, 0.2, 9.8, 4345354, 1}, {-11.8, 0.2, 9.9, 4345354, 0}},
 	},
 }
 

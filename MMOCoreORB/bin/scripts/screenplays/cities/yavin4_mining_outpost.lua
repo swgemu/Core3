@@ -1,7 +1,19 @@
-Yavin4MiningOutpostScreenPlay = ScreenPlay:new {
+Yavin4MiningOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "Yavin4MiningOutpostScreenPlay"
+	screenplayName = "Yavin4MiningOutpostScreenPlay",
+
+	planet = "yavin4",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"surgical_1", "surgical_droid_21b", 60, -1.9, 0.7, 2.5, 175, 7925478, "neutral"},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		surgical_1 = {{-1.9, 0.7, 2.5, 7925478, 1}, {-1.8, 0.7, 4.4, 7925478, 1}, {3.1, 0.7, 4.5, 7925478, 0}, {3.2, 0.7, 3.6, 7925478, 1}, {3.1, 0.7, 4.5, 7925478, 1}, {-1.8, 0.7, 4.4, 7925478, 1}},
+	},
 }
 
 registerScreenPlay("Yavin4MiningOutpostScreenPlay", true)
@@ -9,6 +21,7 @@ registerScreenPlay("Yavin4MiningOutpostScreenPlay", true)
 function Yavin4MiningOutpostScreenPlay:start()
 	if (isZoneEnabled("yavin4")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -19,9 +32,6 @@ function Yavin4MiningOutpostScreenPlay:spawnMobiles()
 
 	pNpc = spawnMobile("yavin4", "medic",60,2.3,0.7,6.5,-5,7925478)
 	self:setMoodString(pNpc, "sad")
-
-	pNpc = spawnMobile("yavin4", "surgical_droid_21b",60,-1.9,0.7,2.5,175,7925478)
-	self:setMoodString(pNpc, "neutral")
 
 	--tavern b
 	pNpc = spawnMobile("yavin4", "shadowy_figure",60,0.4,0.6,-0.7,-179,7925451)
@@ -41,5 +51,5 @@ function Yavin4MiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "rebel_commando", 460, -255.5, 35.0, 4859.2, 81, 0)
 	spawnMobile("yavin4", "rebel_commando", 460, -250.5, 35.0, 4854.2, 86, 0)
 	spawnMobile("yavin4", "rebel_commando", 460, -260.5, 35.0, 4864.2, 76, 0)
-	
+
 end

@@ -38,6 +38,30 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"mos_eisley_police_sergeant", "mos_eisley_police_sergeant_rebel", 3536.3,5,-4799.3,226,0, "npc_accusing", "calm"},
 		{"mos_eisley_police_lieutenant", "mos_eisley_police_lieutenant_rebel", 3243.7,5,-4533.1,137,0, "npc_imperial", "calm"},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, 3352.63, 4.00222, -4771.23, 23.6541, 0, ""},
+		{"r2_1", "r2", 60, 3710.16, 4, -4789.97, 354.654, 0, "calm"},
+		{"r3_1", "r3", 60, 15.9215, -0.894992, -0.217826, 56.8618, 1082877, "happy"},
+		{"r4_1", "r4", 60, 3466.08,4, -4883.93, 56.7343, 0, "calm"},
+		{"r5_1", "r5", 60, 1.4, 1.0, 5.7, 13, 1187871, "happy"},
+		{"r5_2", "r5", 60, 3324.84, 4.14982, -4819.95, 222.5, 0, "calm"},
+		{"r5_3", "r5", 60, 3460.21, 4.00358, -4888.86, 241.665, 0, "calm"},
+		{"eg6_1", "eg6_power_droid", 60, 3650.68, 5, -4734.71, 276.881, 0, ""}
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{3318, 5, -4811, 0, 1}, {3359, 5, -4755, 0, 1}, {3403, 5, -4775, 0, 1}, {3430, 5, -4772, 0, 1}, {3470, 5, -4795, 0, 1}, {3377, 5, -4745, 0, 1}},
+		r2_1 = {{3710, 4, -4789, 0, 1}, {3708, 5, -4747, 0, 1}, {3676, 5, -4731, 0, 1}, {3739, 5, -4781, 0, 1}, {3724, 5, -4854, 0, 1}, {3640, 5, -4870, 0, 1}, {3724, 5, -4854, 0, 1}, {3711, 5, -4827, 0 ,1}},
+		r3_1 = {{15.9, -0.89, -0.21, 1082877, 1}, {9.2, -0.9, 7.8, 1082877, 1}, {-9.4, -0.9, 8.6, 1082877, 1}, {9.2, -0.9, 7.8, 1082877, 0}},
+		r4_1 = {{3466, 5, -4883, 0, 1}, {3478, 5, -4856, 0, 1}, {3496, 5, -4838, 0, 1}, {3515, 5, -4851, 0, 1}, {3495, 5, -4858, 0, 1}},
+		r5_1 = {{1.4, 1.0, 5.7, 1187871, 1}, {1.3, 1.0, 2.7, 1187871, 1}, {10.1, 1.0, -0.1, 1187871, 0}, {10.0, 1, -8.9, 1187871, 1}, {10.1, 1.0, -0.1, 1187871, 1}, {-9.3, 1.0, 1.5, 1187871, 1}, {-10.3, 1.0, -8.5, 1187871, 1}, {-9.3, 1.0, 1.5, 1187871, 1}, {1.3, 1.0, 2.7, 1187871, 0}},
+		r5_2 = {{3324, 4, -4819, 0, 1}, {3284, 5, -4838, 0, 1}, {3281, 5, -4864, 0, 1}, {3266, 5, -4878, 0, 1}, {3249, 5, -4863, 0, 1}, {3265, 5, -4843, 0, 1}, {3284, 5, -4838, 0, 1}},
+		r5_3 = {{3460, 5, -4888, 0, 1}, {3473, 5, -4899, 0, 1}, {3419.0, 5, -4966.4, 0, 1}, {3394.9, 5, -4944.1, 0, 1}, {3428.3, 5, -4911.1, 0, 1}, {3444.6, 5, -4883.9, 0, 1}},
+		eg6_1 = {{3650, 5, -4734, 0 ,1}, {3523, 5, -4713, 0, 1}, {3478, 5, -4725, 0, 1}, {3523, 5, -4713, 0, 1}},
+	},
 }
 
 registerScreenPlay("TatooineMosEisleyScreenPlay", true)
@@ -45,6 +69,7 @@ registerScreenPlay("TatooineMosEisleyScreenPlay", true)
 function TatooineMosEisleyScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -165,8 +190,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "patron_quarren",60,17,-0.9,6.8,226,1082877)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "r3",60,15.9215,-0.894992,-0.217826,56.8618,1082877)
-	self:setMoodString(pNpc, "happy")
 	pNpc = spawnMobile(self.planet, "stormtrooper",400,2.84,-0.894992,-6.3,16.0005,1082877)
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile(self.planet, "stormtrooper_squad_leader",400,3.62,-0.894992,-6.78,360.011,1082877)
@@ -313,8 +336,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "chiss_female",60,2.2,1.0,6.7,-89,1187871)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "r5",60,1.4,1.0,5.7,13,1187871)
-	self:setMoodString(pNpc, "happy")
 	spawnMobile(self.planet, "seeker",360,-24.8,1.0,-8.0,93,1187873)
 	spawnMobile(self.planet, "seeker",240,-24.9,1.0,-9.1,80,1187873)
 	spawnMobile(self.planet, "seeker",360,-24.5,1.0,-10.2,62,1187873)
@@ -432,7 +453,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "businessman",60,3414.1,5,-4629.9,155,0)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,3352.63,4.00222,-4771.23,23.6541,0)
 	pNpc = spawnMobile(self.planet, "commoner",60,3415.9,5,-4630.2,60,0)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
 	pNpc = spawnMobile(self.planet, "commoner",60,3371.5,0,-4858.4,210,0)
@@ -484,7 +504,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "criminal",300,3352.2,5.0,-4821.5,90,0)
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	spawnMobile(self.planet, "criminal",300,3401.83,5,-4868.72,295.372,0)
-	spawnMobile(self.planet, "eg6_power_droid",60,3650.68,5,-4734.71,276.881,0)
 	pNpc = spawnMobile(self.planet, "explorer",60,3421,5,-4953.33,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,3447,5,-4850,135,0)
@@ -541,14 +560,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "noble",60,3542.38,5,-4826.12,295.121,0)
 	pNpc = spawnMobile(self.planet, "noble",60,3410.4,0,-4632.8,330,0)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
-	pNpc = spawnMobile(self.planet, "r2",60,3710.16,4,-4789.97,354.654,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,3466.08,4,-4883.93,56.7343,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,3324.84,4.14982,-4819.95,222.5,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,3460.21,4.00358,-4888.86,241.665,0)
-	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "rodian_clan_captain",300,3421,5,-4954.63,360.011,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "rodian_clan_warchief",300,3248.76,5,-4841.69,180.005,0)

@@ -1,5 +1,21 @@
-DantooineAgroOutpostScreenPlay = ScreenPlay:new {
+DantooineAgroOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
+
+	planet = "dantooine",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, 1573, 4, -6412, 313, 0, ""},
+		{"r2_1", "r2", 60, 1583.12, 4, -6407.59, 69, 0, ""},
+		{"r3_1", "r3", 60, 1592.98, 4, -6400.58, 80, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		cll8_1 = {{1573, 4, -6412, 0, 1}, {1562, 4, -6417, 0, 1}, {1564, 4, -6433, 0, 1}, {1560, 4, -6400, 0, 0}, {1565, 4, -6400, 0, 1}, {1545, 4, -6389, 0, 1}, {1564, 4, -6415, 0, 1}},
+		r2_1 = {{1583, 4, -6407, 0, 1}, {1576, 4, -6401, 0, 1}, {1581, 4, -6397, 0, 1}, {1596, 4, -6405, 0, 1}},
+		r3_1 = {{1592, 4, -6400, 0, 1}, {1581, 4, -6374, 0, 1}, {1619, 4, -6368, 0, 1}, {1607, 4, -6392, 0, 1}, {1596, 4, -6390, 0, 1}},
+	},
 
 	screenplayName = "DantooineAgroOutpostScreenPlay"
 }
@@ -9,6 +25,7 @@ registerScreenPlay("DantooineAgroOutpostScreenPlay", true)
 function DantooineAgroOutpostScreenPlay:start()
 	if (isZoneEnabled("dantooine")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -29,7 +46,6 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "businessman", 60, 1580, 4,-6439, 200, 0)
 	spawnMobile("dantooine", "businessman", 60, 1571, 4, -6397, 303, 0)
 	spawnMobile("dantooine", "businessman", 60, 1597, 4, -6416, 208, 0)
-	spawnMobile("dantooine", "cll8_binary_load_lifter", 60, 1573, 4, -6412, 313, 0)
 	spawnMobile("dantooine", "commoner", 60, 1586, 4, -6398, 189, 0)
 	spawnMobile("dantooine", "commoner", 60, 1575, 4, -6396, 324, 0)
 	spawnMobile("dantooine", "commoner", 60, 1570, 4, -6370, 178, 0)
@@ -46,8 +62,6 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "pirate", 300, 1539, 4, -6407, 34, 0)
 	spawnMobile("dantooine", "pirate", 300, 1556, 4, -6411, 188, 0)
 	spawnMobile("dantooine", "scientist", 60, 1583, 4, -6439, 7, 0)
-	spawnMobile("dantooine", "r2", 60, 1583.12, 4, -6407.59, 69, 0)
-	spawnMobile("dantooine", "r3", 60, 1592.98, 4, -6400.58, 80, 0)
 	spawnMobile("dantooine", "ytzosh", 60, 1636.98, 4, -6402.56, 322, 0)
 	spawnMobile("dantooine", "ussox", 60, 1635.07, 4, -6402.37, 322, 0)
 	pNpc = spawnMobile("dantooine", "yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0)
