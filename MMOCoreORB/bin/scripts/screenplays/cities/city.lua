@@ -128,9 +128,9 @@ function CityScreenPlay:spawnPatrol(num)
 end
 
 function CityScreenPlay:setupMobilePatrol(pMobile)
-	createEvent(getRandomNumber(10, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
+	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
-	AiAgent(pMobile):setAiTemplate("manualescortwalk")
+	AiAgent(pMobile):setAiTemplate("citypatrol")
 	AiAgent(pMobile):setFollowState(4)
 end
 
@@ -152,7 +152,14 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 		writeData(pOid .. ":currentLoc", currentLoc + 1)
 	end
 
-	createEvent(getRandomNumber(30, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+	local currentSet = pointSets[currentLoc]
+	local noDelay = currentSet[5]
+
+	if (noDelay == 1) then
+		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
+	else
+		createEvent(getRandomNumber( 30, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+	end
 	return 0
 end
 

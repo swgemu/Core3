@@ -1,7 +1,23 @@
-DantooineMiningOutpostScreenPlay = ScreenPlay:new {
+DantooineMiningOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "DantooineMiningOutpostScreenPlay"
+	screenplayName = "DantooineMiningOutpostScreenPlay",
+
+	planet = "dantooine",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"r2_1", "r2", 60, -635.747, 3, 2503.81, 354, 0, ""},
+		{"r4_1", "r4", 60, -643.739, 3, 2506.86, 129, 0, ""},
+		{"r4_2", "r4", 60, -666.582, 3, 2494.33, 121, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		r2_1 = {{-635, 3, 2503, 0, 1}, {-627, 3, 2494, 0, 1}, {-584, 3, 2506, 0, 1}, {-611, 3, 2483, 0, 1}, {-622, 3, 2484, 0, 1}},
+		r4_1 = {{-643, 3, 2506, 0, 1}, {-648, 3, 2510, 0, 1}, {-655, 3, 2498, 0, 1}, {-643, 3, 2508, 0, 1}},
+		r4_2 = {{-666, 3, 2494, 0, 1}, {-638, 3, 2456, 0, 1}, {-658, 3, 2442, 0, 1}, {-658, 3, 2465, 0, 1}, {-649, 3, 2484, 0, 1}},
+	},
 }
 
 registerScreenPlay("DantooineMiningOutpostScreenPlay", true)
@@ -9,6 +25,7 @@ registerScreenPlay("DantooineMiningOutpostScreenPlay", true)
 function DantooineMiningOutpostScreenPlay:start()
 	if (isZoneEnabled("dantooine")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -55,8 +72,5 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("dantooine", "fern_yarrow",60,-625.684,3,2481.19,119.665,0)
 	self:setMoodString(pNpc, "neutral")
-	spawnMobile("dantooine", "r2", 60, -635.747, 3, 2503.81, 354, 0)
-	spawnMobile("dantooine", "r4", 60, -643.739, 3, 2506.86, 129, 0)
-	spawnMobile("dantooine", "r4", 60, -666.582, 3, 2494.33, 121, 0)
 	spawnMobile("dantooine", "planet_record_keeper_dantooine", 60, -604.016, 3, 2538.15, 200.426, 0)
 end
