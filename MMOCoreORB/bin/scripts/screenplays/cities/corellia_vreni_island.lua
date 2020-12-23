@@ -1,20 +1,36 @@
-VreniIslandScreenPlay = ScreenPlay:new {
+CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "VreniIslandScreenPlay",
+	screenplayName = "CorelliaVreniIslandScreenPlay",
 
+	planet = "corellia",
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 1, -5696, 14.6, -6154.2, 75, 0, ""},
+		{"eg6_1", "eg6_power_droid", 60, -5690.7, 14.6, -6154.2, -87, 0, ""},
+		{"eg6_2", "eg6_power_droid" , 60, -5692.65, 14.6, -6151.28, 179.632, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		cll8_1 ={{-5696, 14.6, -6154, 0, 1}, {-5693, 14.6, -6163, 0, 1}, {-5688, 14.6, -6180, 0, 1}, {-5673, 14.6, -6180, 0, 1}, {-5688, 14.6, -6180, 0, 1}},
+		eg6_1 = {{-5690, 14.6, -6154, 0, 1}, {-5686, 14.6, -6154, 0, 1}, {-5685, 14.6, -6166, 0, 1}},
+		eg6_2 = {{-5692, 14.6, -6151, 0, 1}, {-5693, 14.6, -6137, 0, 1}, {-5686, 14.6, -6142, 0, 1}},
+	},
 }
 
-registerScreenPlay("VreniIslandScreenPlay", true)
+registerScreenPlay("CorelliaVreniIslandScreenPlay", true)
 
-function VreniIslandScreenPlay:start()
+function CorelliaVreniIslandScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 	end
 end
 
-function VreniIslandScreenPlay:spawnSceneObjects()
+function CorelliaVreniIslandScreenPlay:spawnSceneObjects()
 
 	--Hotel
 	spawnSceneObject("corellia", "object/static/structure/general/droid_probedroid_powerdown.iff", -6.2, 1.0, 21.7, 2775411, math.rad(-163) )
@@ -24,12 +40,11 @@ function VreniIslandScreenPlay:spawnSceneObjects()
 
 end
 
-function VreniIslandScreenPlay:spawnMobiles()
+function CorelliaVreniIslandScreenPlay:spawnMobiles()
 
 	local pNpc = spawnMobile("corellia", "commoner_technician",60,7.1,1.0,19.3,137,2775411)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
 	spawnMobile("corellia", "businessman",60,-5428.59,24.1812,-6228.31,140.458,0)
-	spawnMobile("corellia", "cll8_binary_load_lifter",60,-5696,14.6,-6154.2,75,0)
 	spawnMobile("corellia", "commoner",60,-5505.69,23.4,-6118.63,272.183,0)
 	spawnMobile("corellia", "commoner",60,-5468.42,23.4,-6144.87,182.034,0)
 	spawnMobile("corellia", "commoner",60,-5495.01,23.4,-6190.5,325.039,0)
@@ -66,8 +81,6 @@ function VreniIslandScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "specforce_marine",300,-5290.0,4.0,-6432.9,180,0)
 	spawnMobile("corellia", "specforce_marine",300,-5149.3,4.2,-6418.8,-90,0)
 	spawnMobile("corellia", "specforce_marine",300,-5160.1,4.0,-6413.2,90,0)
-	spawnMobile("corellia", "eg6_power_droid",60,-5690.7,14.6,-6154.2,-87,0)
-	spawnMobile("corellia", "eg6_power_droid",60,-5692.65,14.6,-6151.28,179.632,0)
 	spawnMobile("corellia", "entertainer",60,-22.5021,1.6,4.63468,179.972,2775415)
 	spawnMobile("corellia", "info_broker",60,-22.5017,1.59973,3.53494,359.971,2775415)
 	spawnMobile("corellia", "informant_npc_lvl_3",0,-5559,23.4,-6220,90,0)

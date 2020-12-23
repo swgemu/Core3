@@ -90,6 +90,20 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -5058.83,21,-2579.08,135.145,0, "", ""},
 		{"corsec_sergeant", "corsec_sergeant",-5410.17, 20.9418, -2789.21, 215.169, 0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{template, patrolPoints, level, x, z, y, direction, cell, mood},
+		{"eg6_1", "eg6_power_droid", 60, -5605.25, 21, -2721.9, 155.92, 0, ""},
+		{"eg6_2", "eg6_power_droid", 60, -5295.6, 21, -2396.69, 237.183, 0, ""},
+		{"surgical_1", "surgical_droid_21b", 60, -23.3,  0.27, -2.7, 5.78928, 1935835, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		eg6_1 = {{-5605, 21, -2721, 0, 1}, {-5622, 21, -2732, 0, 1}, {-5636, 21, -2755, 0 ,1}, { -5641, 21, -2790, 0, 1}, {-5636, 21, -2755, 0 ,1}, {-5622, 21, -2732, 0, 1}, {-5604, 21, -2728, 0, 1}, {-5587, 21, -2738, 0, 1}, {-5570, 21, -2801, 0, 1}, {-5587, 21, -2738, 0, 1}},
+		eg6_2 = {{-5294,  21, -2392, 0, 1}, {-5303, 21, -2382, 0, 0}, { -5273, 21, -2353, 0, 1}, { -5268, 21, -2362, 0, 1}, { -5275, 21, -2394., 0, 1}},
+		surgical_1 = {{-23.3, 0.26, -2.7, 1935835, 1}, {-11.3, 0.3, -6.5, 1935835, 0}, {-11.1, 0.3, 5.6, 1935835, 1}, {-30.0, 0.3, 6.0, 1935835, 1}, {-29.9, 0.3, -6.0, 1935835, 0}},
+	},
 }
 
 registerScreenPlay("CorelliaTyrenaScreenPlay", true)
@@ -99,6 +113,7 @@ function CorelliaTyrenaScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -143,7 +158,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "worried")
 	spawnMobile(self.planet, "trainer_doctor", 0,21,0.26,-5,0,1935831)
 	spawnMobile(self.planet, "trainer_medic", 0,13.8906,0.26,3.8275,183,1935831)
-	spawnMobile(self.planet, "surgical_droid_21b", 60,-25.52,0.26,-3.48,5.78928,1935835)
+
 	spawnMobile(self.planet, "trainer_combatmedic", 0,-17,0.26,10,180,1935835)
 	spawnMobile(self.planet, "trainer_doctor", 0,-24.2179,0.26,-3.63691,195,1935835)
 	spawnMobile(self.planet, "trainer_medic", 0,-15.9755,0.26,0.30427,15,1935835)
@@ -353,8 +368,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 
 	--Misc Outside
-	spawnMobile(self.planet, "eg6_power_droid", 60,-5605.25,21,-2721.9,155.92,0)
-	spawnMobile(self.planet, "eg6_power_droid", 60,-5295.6,21,-2396.69,237.183,0)
 	pNpc = spawnMobile(self.planet, "entertainer",60,-5539.77,21,-2683.65,0,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "entertainer",60,-5196.06,21,-2408.57,0,0)

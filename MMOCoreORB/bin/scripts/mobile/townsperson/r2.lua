@@ -26,9 +26,7 @@ r2 = Creature:new {
 	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/r2.iff"
-	},
+	templates = {"object/mobile/r2.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
