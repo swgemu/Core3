@@ -374,7 +374,10 @@ class AiAgent extends CreatureObject {
 	@local
 	@preLocked
 	public native void updateCurrentPosition(PatrolPoint point);
-
+	
+	@local
+	public native void updatePetSwimmingState();
+	
 	@local
 	@dirty
 	@preLocked
