@@ -58,6 +58,15 @@ public:
 		if (player == nullptr)
 			return GENERALERROR;
 
+		if (player->isSwimming()) {
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
+			return GENERALERROR;
+		}
+
+		if (pet->isSwimming()) {
+			return GENERALERROR;
+		}
+
 		if (!CollisionManager::checkLineOfSight(player, targetObject)) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return INVALIDTARGET;
