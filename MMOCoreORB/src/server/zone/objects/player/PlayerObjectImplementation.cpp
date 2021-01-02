@@ -359,6 +359,7 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void PlayerObjectImplementation::notifySceneReady() {
 	teleporting = false;
 	onLoadScreen = false;
+	forcedTransform = false;
 
 	BaseMessage* msg = new CmdSceneReady();
 	sendMessage(msg);

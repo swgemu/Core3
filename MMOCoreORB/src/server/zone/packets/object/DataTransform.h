@@ -110,16 +110,23 @@ public:
 		if (object->getZone() == nullptr)
 			return;
 
+		PlayerObject* ghost = object->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return;
+		}
+
 		int posture = object->getPosture();
 
 		//TODO: This should be derived from the locomotion table
-		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED
-				|| posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING) ) {
+		if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
+				&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
+				|| posture == CreaturePosture::SKILLANIMATING))) {
 
 			updatePosition(object);
 		} else {
-			object->setCurrentSpeed(0);
 
+			object->setCurrentSpeed(0);
 			object->updateLocomotion();
 
 			ValidatedPosition pos;
@@ -141,6 +148,10 @@ public:
 				else
 					object->updateZone(light);
 			}
+		}
+
+		if (ghost->isForcedTransform()) {
+			ghost->setForcedTransform(false);
 		}
 	}
 
@@ -239,11 +250,13 @@ public:
 		if (playerManager == nullptr)
 			return;
 
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0) {
 			return;
+		}
 
-		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, nullptr) != 0)
+		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, nullptr) != 0) {
 			return;
+		}
 
 		playerManager->updateSwimmingState(object, positionZ, &intersections, (CloseObjectsVector*) object->getCloseObjects());
 
@@ -284,10 +297,17 @@ public:
 		object->setCurrentSpeed(parsedSpeed);
 		object->updateLocomotion();
 
-		if (objectControllerMain->getPriority() == 0x23)
+		if (objectControllerMain->getPriority() == 0x23) {
 			object->updateZone(false);
-		else
+		} else {
 			object->updateZone(true);
+		}
+
+		if (ghost->isForcedTransform()) {
+			auto msg = object->info();
+			msg << "DataTransform - Player isForcedTransform == TRUE";
+			msg.flush();
+		}
 	}
 };
 

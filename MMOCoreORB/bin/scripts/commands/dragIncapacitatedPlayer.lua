@@ -43,6 +43,7 @@
 
 DragIncapacitatedPlayerCommand = {
         name = "dragincapacitatedplayer",
+        defaultTime = 1;
 }
 
 AddCommand(DragIncapacitatedPlayerCommand)
