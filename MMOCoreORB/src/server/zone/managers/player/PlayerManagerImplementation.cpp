@@ -3388,6 +3388,12 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 
 			msg.flush();
 
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost != nullptr && ghost->isForcedTransform()) {
+				return 0;
+			}
+
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
 			return 1;
