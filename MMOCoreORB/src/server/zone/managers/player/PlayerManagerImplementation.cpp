@@ -3377,8 +3377,10 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
+	
+	PlayerObject* ghost = player->getPlayerObject();
 
-	if (parsedSpeed > maxAllowedSpeed * errorMultiplier) {
+	if (!ghost->isDragging() && parsedSpeed > maxAllowedSpeed * errorMultiplier) {
 		//float delta = abs(parsedSpeed - maxAllowedSpeed);
 
 		if (changeBuffer->size() == 0) { // no speed changes

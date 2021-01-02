@@ -90,6 +90,8 @@ class PlayerObject extends IntangibleObject {
 
 	protected boolean onLoadScreen;
 
+	protected boolean dragging;
+
 	protected boolean muted;
 	protected string mutedReason;
 	protected int tosVersionAccepted;
@@ -323,6 +325,7 @@ class PlayerObject extends IntangibleObject {
 
 		teleporting = false;
 		onLoadScreen = false;
+		dragging = false;
 
 		muted = false;
 		mutedReason = "";
@@ -1233,6 +1236,10 @@ class PlayerObject extends IntangibleObject {
 		onLoadScreen = val;
 	}
 
+	public void setDragging(boolean val) {
+		dragging = val;
+	}
+
 	@read
 	public int getNumBadges() {
 		return badges.getNumBadges();
@@ -1487,6 +1494,11 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public boolean isOnLoadScreen() {
 		return onLoadScreen;
+	}
+	
+	@read
+	public boolean isDragging() {
+		return dragging;
 	}
 
 	public void addChatRoom(unsigned int roomID) {
