@@ -83,6 +83,8 @@ class TangibleObject extends SceneObject {
 	protected SortedVector<ActiveArea> activeAreas;
 
 	protected SceneObject antiDecayKitObject;
+	
+	protected boolean jediRobe;
 
 	/**
 	 * TangibleObject constructor, used to initialized the object
@@ -98,6 +100,8 @@ class TangibleObject extends SceneObject {
 		invisible = false;
 
 		antiDecayKitObject = null;
+		
+		jediRobe = false;
 
 		luaStringData.setAllowOverwriteInsertPlan();
 	}
@@ -496,7 +500,7 @@ class TangibleObject extends SceneObject {
 	public abstract boolean isConsumable() {
 		return false;
 	}
-
+	
 	@local
 	@dirty
 	public CustomizationVariables getCustomizationVariables() {
@@ -671,6 +675,11 @@ class TangibleObject extends SceneObject {
 		sliced = slice;
 	}
 
+	@read
+	public boolean isJediRobe() {
+		return jediRobe;
+	}
+	
 	public void setCustomizationString(final string vars) {
 		customizationVariables.parseFromClientString(vars);
 	}
