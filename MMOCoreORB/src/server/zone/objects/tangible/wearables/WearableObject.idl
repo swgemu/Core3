@@ -65,7 +65,7 @@ class WearableObject extends TangibleObject {
 	public boolean isWearableObject() {
 		return true;
 	}
-
+	
 	@dirty
 	public native boolean isEquipped();
 
