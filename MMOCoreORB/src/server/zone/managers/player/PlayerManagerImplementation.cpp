@@ -102,6 +102,7 @@
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/badges/Badge.h"
 #include "server/zone/objects/building/TutorialBuildingObject.h"
 #include "server/zone/managers/frs/FrsManager.h"
@@ -3624,10 +3625,20 @@ void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, S
 
 		TangibleObject* item = cast<TangibleObject*>( object);
 
-		if (item == nullptr || item->hasAntiDecayKit())
+		if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe())
 			continue;
 
-		if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
+		printf("function called");
+
+		if (item->isJediRobe()) {
+			printf("Jedi Robe == true");
+		}
+
+		if (item->isJediRobe()) {
+			printf("Jedi Robe == false");
+		}
+
+		if ((!(item->getOptionsBitmask() & OptionBitmask::INSURED)) && (item->isArmorObject() || item->isWearableObject())) {
 			items->put(item);
 		} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 			items->put(item);
@@ -3661,9 +3672,17 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 			if (item == nullptr || item->hasAntiDecayKit())
 				continue;
 
-			if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
+			if (item->isJediRobe()) {
+				printf("Jedi Robe == true");
+			}
+
+			if (item->isJediRobe()) {
+				printf("Jedi Robe == false");
+			}
+
+			if (!item->isJediRobe() && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
 				insurableItems.put(item);
-			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+			} else if (!item->isJediRobe() && (item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 				insurableItems.put(item);
 			}
 		}
